@@ -5,27 +5,27 @@
  "single_writer": true,
  "do_not_hand_edit": true,
  "summary": {
-  "total_entries": 758,
-  "skills": 599,
-  "namespaces": 159,
-  "bodies": 594,
+  "total_entries": 673,
+  "skills": 523,
+  "namespaces": 150,
+  "bodies": 518,
   "projections": 5,
-  "alias_paths": 87,
+  "alias_paths": 175,
   "max_skill_depth": 4,
   "skills_by_depth": {
-   "0": 192,
-   "1": 188,
+   "0": 173,
+   "1": 160,
    "2": 20,
-   "4": 199
+   "4": 170
   },
   "namespaces_by_depth": {
-   "0": 59,
+   "0": 53,
    "1": 27,
    "2": 11,
-   "3": 62
+   "3": 59
   },
-  "with_owner": 260,
-  "with_authority": 230
+  "with_owner": 230,
+  "with_authority": 204
  },
  "harnesses": [
   "claude",
@@ -41,28 +41,6 @@
   {
    "name": "aaa",
    "path": "/root/AAA/skills/aaa",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 0,
-   "namespace": null,
-   "contains": 1,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
-   "name": "aaa-governance",
-   "path": "/root/AAA/skills/aaa-governance",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 0,
-   "namespace": null,
-   "contains": 1,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
-   "name": "aaa-substrate",
-   "path": "/root/AAA/skills/aaa-substrate",
    "kind": "namespace",
    "state": "namespace",
    "depth": 0,
@@ -100,7 +78,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 16,
+   "contains": 10,
    "owner_layer": null,
    "sha256": null
   },
@@ -281,17 +259,6 @@
    "sha256": null
   },
   {
-   "name": "court-audit",
-   "path": "/root/AAA/skills/court-audit",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 0,
-   "namespace": null,
-   "contains": 1,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
    "name": "creative",
    "path": "/root/AAA/skills/creative",
    "kind": "namespace",
@@ -331,7 +298,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 2,
+   "contains": 0,
    "owner_layer": null,
    "sha256": null
   },
@@ -353,7 +320,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 202,
+   "contains": 173,
    "owner_layer": null,
    "sha256": null
   },
@@ -397,7 +364,7 @@
    "state": "namespace",
    "depth": 1,
    "namespace": "domains",
-   "contains": 180,
+   "contains": 152,
    "owner_layer": null,
    "sha256": null
   },
@@ -408,7 +375,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 12,
+   "contains": 8,
    "owner_layer": null,
    "sha256": null
   },
@@ -419,7 +386,7 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 1,
+   "contains": 0,
    "owner_layer": null,
    "sha256": null
   },
@@ -446,17 +413,6 @@
    "sha256": null
   },
   {
-   "name": "skill-mesh",
-   "path": "/root/AAA/skills/domains/general/aaa/skill-mesh",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 3,
-   "namespace": "domains",
-   "contains": 3,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
    "name": "substrate",
    "path": "/root/AAA/skills/domains/general/aaa/substrate",
    "kind": "namespace",
@@ -474,7 +430,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 35,
+   "contains": 30,
    "owner_layer": null,
    "sha256": null
   },
@@ -496,7 +452,7 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 22,
+   "contains": 17,
    "owner_layer": null,
    "sha256": null
   },
@@ -540,7 +496,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 14,
+   "contains": 12,
    "owner_layer": null,
    "sha256": null
   },
@@ -551,7 +507,7 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 10,
+   "contains": 8,
    "owner_layer": null,
    "sha256": null
   },
@@ -595,7 +551,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 34,
+   "contains": 30,
    "owner_layer": null,
    "sha256": null
   },
@@ -650,7 +606,7 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 4,
+   "contains": 0,
    "owner_layer": null,
    "sha256": null
   },
@@ -738,7 +694,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 85,
+   "contains": 72,
    "owner_layer": null,
    "sha256": null
   },
@@ -947,35 +903,13 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 5,
+   "contains": 2,
    "owner_layer": null,
    "sha256": null
   },
   {
    "name": "social-media",
    "path": "/root/AAA/skills/domains/general/workshop/social-media",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 3,
-   "namespace": "domains",
-   "contains": 1,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
-   "name": "telegram-ops",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 3,
-   "namespace": "domains",
-   "contains": 9,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
-   "name": "verification-discipline",
-   "path": "/root/AAA/skills/domains/general/workshop/verification-discipline",
    "kind": "namespace",
    "state": "namespace",
    "depth": 3,
@@ -1134,7 +1068,7 @@
    "state": "namespace",
    "depth": 1,
    "namespace": "domains",
-   "contains": 5,
+   "contains": 4,
    "owner_layer": null,
    "sha256": null
   },
@@ -1145,7 +1079,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 2,
+   "contains": 1,
    "owner_layer": null,
    "sha256": null
   },
@@ -1156,7 +1090,7 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 2,
+   "contains": 1,
    "owner_layer": null,
    "sha256": null
   },
@@ -1255,7 +1189,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 15,
+   "contains": 11,
    "owner_layer": null,
    "sha256": null
   },
@@ -1332,7 +1266,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 6,
+   "contains": 1,
    "owner_layer": null,
    "sha256": null
   },
@@ -1343,7 +1277,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 29,
+   "contains": 30,
    "owner_layer": null,
    "sha256": null
   },
@@ -1355,17 +1289,6 @@
    "depth": 0,
    "namespace": null,
    "contains": 3,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
-   "name": "hermes",
-   "path": "/root/AAA/skills/hermes",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 0,
-   "namespace": null,
-   "contains": 2,
    "owner_layer": null,
    "sha256": null
   },
@@ -1398,7 +1321,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 5,
+   "contains": 6,
    "owner_layer": null,
    "sha256": null
   },
@@ -1442,7 +1365,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 4,
+   "contains": 1,
    "owner_layer": null,
    "sha256": null
   },
@@ -1607,7 +1530,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 3,
+   "contains": 2,
    "owner_layer": null,
    "sha256": null
   },
@@ -1641,17 +1564,6 @@
    "depth": 0,
    "namespace": null,
    "contains": 2,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
-   "name": "search-web",
-   "path": "/root/AAA/skills/search-web",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 0,
-   "namespace": null,
-   "contains": 1,
    "owner_layer": null,
    "sha256": null
   },
@@ -1706,18 +1618,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 8,
-   "owner_layer": null,
-   "sha256": null
-  },
-  {
-   "name": "telegram-ops",
-   "path": "/root/AAA/skills/telegram-ops",
-   "kind": "namespace",
-   "state": "namespace",
-   "depth": 0,
-   "namespace": null,
-   "contains": 1,
+   "contains": 6,
    "owner_layer": null,
    "sha256": null
   },
@@ -1804,6 +1705,41 @@
     "risk_tier": "high",
     "autonomy_tier": "T2",
     "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F8",
+     "F11",
+     "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "Agent Onboarding",
+   "path": "/root/AAA/skills/FORGE-onboarding/agent-onboarding",
+   "skill_md": "/root/AAA/skills/FORGE-onboarding/agent-onboarding/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "FORGE-onboarding",
+   "sha256": "0176a4e88504b2ee4c6b2dcf54388cad0131fc667852df02885f3075e1903d6b",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "medium",
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
     "floor_scope": [
      "F1",
      "F2",
@@ -1942,34 +1878,6 @@
      "F11",
      "F13"
     ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "aaa-doctrine-sealing",
-   "path": "/root/AAA/skills/aaa-governance/aaa-doctrine-sealing",
-   "skill_md": "/root/AAA/skills/aaa-governance/aaa-doctrine-sealing/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "aaa-governance",
-   "sha256": "d969bf3923d26e5db77d837ac7370a0f21db3b22ae9f451032d34e84aa39bf5b",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -2175,73 +2083,6 @@
      "F02",
      "F10",
      "F11",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "aaa-skill-governor-runtime",
-   "path": "/root/AAA/skills/aaa-skill-governor-runtime",
-   "skill_md": "/root/AAA/skills/aaa-skill-governor-runtime/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "7be70039205aea81eebb9e3bc16f5396ab906dfc94a2a06103213ecaf057dd71",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "333-AGI",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F7",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "session-init-human-first",
-   "path": "/root/AAA/skills/aaa-substrate/session-init-human-first",
-   "skill_md": "/root/AAA/skills/aaa-substrate/session-init-human-first/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "aaa-substrate",
-   "sha256": "e60c1013213744944f7fca37a3026f467138900ce1071157e344154a3d6f2224",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "F13",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "high",
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F9",
      "F13"
     ]
    },
@@ -2549,37 +2390,6 @@
    ]
   },
   {
-   "name": "agi-web-optimization",
-   "path": "/root/AAA/skills/agi-web-optimization",
-   "skill_md": "/root/AAA/skills/agi-web-optimization/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "4170148bfef02168f19e67019c2a82f57a2ae56792fac4513548570334ac5a44",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-long-context",
-    "floor_scope": [
-     "F2",
-     "F4"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "agy-scar-hardening",
    "path": "/root/AAA/skills/agy-scar-hardening",
    "skill_md": "/root/AAA/skills/agy-scar-hardening/SKILL.md",
@@ -2840,7 +2650,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "79632d9695bd77eb0dccaab43ff08252efb90a1e73e62271d89eddc7fda164fc",
+   "sha256": "7d2a43007583705007ad7c1e1c9e9978c037aab2b51bd6c062dff7339d64af34",
    "version": "4.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -2910,120 +2720,40 @@
    ]
   },
   {
-   "name": "audit-repo-reality",
-   "path": "/root/AAA/skills/audit-repo-reality",
-   "skill_md": "/root/AAA/skills/audit-repo-reality/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "ad8dd02e1a45b98a2751436d899eb451168073d71101b493fb74e6e14224ecf3",
-   "version": "2026.08.14.2",
-   "deprecated": false,
-   "owner_layer": "F13 SOVEREIGN (Arif) \u2014 forged by 333-AGI",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T0",
-    "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": [
-     "F02",
-     "F04",
-     "F07",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "audit-repository-entropy",
-   "path": "/root/AAA/skills/audit-repository-entropy",
-   "skill_md": "/root/AAA/skills/audit-repository-entropy/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "275e33728c7fccc523aeae2cf89823a98026e98a1c38fe6dd4c1145e71dd8991",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "agent-claim-verification",
-   "path": "/root/AAA/skills/audit/agent-claim-verification",
-   "skill_md": "/root/AAA/skills/audit/agent-claim-verification/SKILL.md",
+   "name": "audit-ops",
+   "path": "/root/AAA/skills/audit/audit-ops",
+   "skill_md": "/root/AAA/skills/audit/audit-ops/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 1,
    "namespace": "audit",
-   "sha256": "9f3e921297f73801f8275d29172ea411133acf60f79a25f5a7f0ca6f2ac84cd4",
-   "version": null,
+   "sha256": "b60010ec97e807323e94967ca5a1d9a9b0966862220c68ffc8bb0344f1fe045f",
+   "version": "2.0.0",
    "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F9",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "audit-intake-verification",
-   "path": "/root/AAA/skills/audit/audit-intake-verification",
-   "skill_md": "/root/AAA/skills/audit/audit-intake-verification/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "audit",
-   "sha256": "58b5ef01dfe1778b2a70b67a591cdc0798e836b74746dcc5ae0df57f5d1502e9",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "Hermes",
-   "aliases": [],
+   "owner_layer": "F13 SOVEREIGN (Arif) \u2014 forged by AAA",
+   "aliases": [
+    "/root/AAA/skills/agent-claim-verification",
+    "/root/AAA/skills/audit-intake-verification",
+    "/root/AAA/skills/audit-repo-reality",
+    "/root/AAA/skills/audit-repository-entropy",
+    "/root/AAA/skills/cross-ai-analysis-distillation",
+    "/root/AAA/skills/cross-surface-conformance-audit",
+    "/root/AAA/skills/external-review-intake",
+    "/root/AAA/skills/inherited-claim-audit",
+    "/root/AAA/skills/pasted-review-falsification",
+    "/root/AAA/skills/third-party-audit-intake"
+   ],
    "authority": {
     "risk_tier": "T1",
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
     "floor_scope": [
      "F1",
      "F2",
      "F4",
-     "F6",
+     "F7",
+     "F9",
+     "F11",
      "F13"
     ]
    },
@@ -3152,40 +2882,6 @@
    ]
   },
   {
-   "name": "corpus-claim-falsification",
-   "path": "/root/AAA/skills/audit/corpus-claim-falsification",
-   "skill_md": "/root/AAA/skills/audit/corpus-claim-falsification/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "audit",
-   "sha256": "aaf85c7062ffaec0e879c6bf493e58c5a39fe3e9dc1685cba0289831212be1a5",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "curator",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "high",
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F5",
-     "F6",
-     "F9"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "corpus-evidence-discipline",
    "path": "/root/AAA/skills/audit/corpus-evidence-discipline",
    "skill_md": "/root/AAA/skills/audit/corpus-evidence-discipline/SKILL.md",
@@ -3208,66 +2904,6 @@
      "F4",
      "F5",
      "F9"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "cross-ai-analysis-distillation",
-   "path": "/root/AAA/skills/audit/cross-ai-analysis-distillation",
-   "skill_md": "/root/AAA/skills/audit/cross-ai-analysis-distillation/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "audit",
-   "sha256": "a334f1133b037bc462937137827fa2b8a885d0591a157410eaf77efd14353acc",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "cross-surface-conformance-audit",
-   "path": "/root/AAA/skills/audit/cross-surface-conformance-audit",
-   "skill_md": "/root/AAA/skills/audit/cross-surface-conformance-audit/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "audit",
-   "sha256": "03ad312d3643ee9d42c57ecf49a9a7e28885128bfc84d8aaa45d8d435a1fa6a8",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "Hermes (arifOS federation)",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F7",
-     "F11"
     ]
    },
    "harnesses": [
@@ -3342,38 +2978,6 @@
    ]
   },
   {
-   "name": "pasted-review-falsification",
-   "path": "/root/AAA/skills/audit/pasted-review-falsification",
-   "skill_md": "/root/AAA/skills/audit/pasted-review-falsification/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "audit",
-   "sha256": "c51a191c686a9d16c08435efdcabbbec5bad21a98be42facfb69387c56b842c2",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "Hermes",
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F6",
-     "F7"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "probe-evidence-integrity",
    "path": "/root/AAA/skills/audit/probe-evidence-integrity",
    "skill_md": "/root/AAA/skills/audit/probe-evidence-integrity/SKILL.md",
@@ -3423,39 +3027,6 @@
     "autonomy_tier": null,
     "capability_tier": null,
     "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "third-party-audit-intake",
-   "path": "/root/AAA/skills/audit/third-party-audit-intake",
-   "skill_md": "/root/AAA/skills/audit/third-party-audit-intake/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "audit",
-   "sha256": "1bc4699b978173785a44f15fae99f40a02d6146500638c5793c16297ebf3eec7",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "Hermes",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "T1",
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F13"
-    ]
    },
    "harnesses": [
     "claude",
@@ -4210,34 +3781,6 @@
    ]
   },
   {
-   "name": "inherited-claim-audit",
-   "path": "/root/AAA/skills/court-audit/inherited-claim-audit",
-   "skill_md": "/root/AAA/skills/court-audit/inherited-claim-audit/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "court-audit",
-   "sha256": "402d7daf6c21487658992202e0a8f02e9c353bb2a52e7640275e36902b688020",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "predictive-claim-falsification",
    "path": "/root/AAA/skills/court/predictive-claim-falsification",
    "skill_md": "/root/AAA/skills/court/predictive-claim-falsification/SKILL.md",
@@ -4553,7 +4096,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "cron-ops",
-   "sha256": "5e09c2b7547ae3dcf3f87312dc71984e090dad262b982fc80bb4f3449fa99ae8",
+   "sha256": "c6eb43a298decb4bd8a0070ba1815a9ee048dd8f91e75b9daad6d1385cb8fd71",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -4801,62 +4344,6 @@
      "F6",
      "F13"
     ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "mcp-edit-activation",
-   "path": "/root/AAA/skills/devops/mcp-edit-activation",
-   "skill_md": "/root/AAA/skills/devops/mcp-edit-activation/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "devops",
-   "sha256": "51ad9f15630521a5049ac1a6e4127b9993cf3bccf4fb7de47ae0c0fbe2e63916",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "mcp-transport-fix",
-   "path": "/root/AAA/skills/devops/mcp-transport-fix",
-   "skill_md": "/root/AAA/skills/devops/mcp-transport-fix/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "devops",
-   "sha256": "5712aad9aac5802db926384f5194dcee6f031d41a4bcd5ad33f7375dad61c881",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "HERMES",
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -5157,34 +4644,6 @@
    ]
   },
   {
-   "name": "forge-mcp-registry-publish",
-   "path": "/root/AAA/skills/domains/general/aaa/catalog-ops/forge-mcp-registry-publish",
-   "skill_md": "/root/AAA/skills/domains/general/aaa/catalog-ops/forge-mcp-registry-publish/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "20066337415532d1db99a92a7c96348baefe0b03e7650bbaa6258ee416a63482",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "arifos-memory-architecture",
    "path": "/root/AAA/skills/domains/general/aaa/context-ops/arifos-memory-architecture",
    "skill_md": "/root/AAA/skills/domains/general/aaa/context-ops/arifos-memory-architecture/SKILL.md",
@@ -5269,99 +4728,6 @@
    ]
   },
   {
-   "name": "skill-audit-methodology",
-   "path": "/root/AAA/skills/domains/general/aaa/skill-mesh/skill-audit-methodology",
-   "skill_md": "/root/AAA/skills/domains/general/aaa/skill-mesh/skill-audit-methodology/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "fcfc48b1936a2dd6891bf7e09d19ca65168c3838cc3060fede25dfde21f9f703",
-   "version": "1.2.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F4",
-     "F7",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "skill-taxonomy-reclassification",
-   "path": "/root/AAA/skills/domains/general/aaa/skill-mesh/skill-taxonomy-reclassification",
-   "skill_md": "/root/AAA/skills/domains/general/aaa/skill-mesh/skill-taxonomy-reclassification/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "cbce2ba1917ec08ef63e7e89c075b1b81c8eeb9b22b2f74eb39d04d418e0298d",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F4",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "skills-cold-storage-ops",
-   "path": "/root/AAA/skills/domains/general/aaa/skill-mesh/skills-cold-storage-ops",
-   "skill_md": "/root/AAA/skills/domains/general/aaa/skill-mesh/skills-cold-storage-ops/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "cb82356676f9164d8259a91788c6f17035c782338ba72c10f9b769957d65c197",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "aaa-knowledge-files",
    "path": "/root/AAA/skills/domains/general/aaa/substrate/aaa-knowledge-files",
    "skill_md": "/root/AAA/skills/domains/general/aaa/substrate/aaa-knowledge-files/SKILL.md",
@@ -5418,34 +4784,6 @@
    ]
   },
   {
-   "name": "arifos-auto-init",
-   "path": "/root/AAA/skills/domains/general/aaa/substrate/arifos-auto-init",
-   "skill_md": "/root/AAA/skills/domains/general/aaa/substrate/arifos-auto-init/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "9b51c61c14f78a92471d96a26937defbe3e491405c4485912edf5d389a9fdd8c",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "arifos-runtime-module-authoring",
    "path": "/root/AAA/skills/domains/general/aaa/substrate/arifos-runtime-module-authoring",
    "skill_md": "/root/AAA/skills/domains/general/aaa/substrate/arifos-runtime-module-authoring/SKILL.md",
@@ -5481,7 +4819,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "c7dc72c26daf0198a98e7d5bf904dd50102678ddd0963bf2962cfa3179be5bb3",
+   "sha256": "febaed8ba50959b7b7f91d63d8b05bda7e3aedb6f2b5295bb7e5670e959a68c0",
    "version": "3.0.0",
    "deprecated": false,
    "owner_layer": "F13",
@@ -5496,6 +4834,48 @@
      "F4",
      "F6",
      "F7",
+     "F9",
+     "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "session-ops",
+   "path": "/root/AAA/skills/domains/general/aaa/substrate/session-ops",
+   "skill_md": "/root/AAA/skills/domains/general/aaa/substrate/session-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 4,
+   "namespace": "domains",
+   "sha256": "b828058e8ae186d5aefd0066eea113f251f42e3a3afb4b55e42a0f1038d40206",
+   "version": "2.0.0",
+   "deprecated": false,
+   "owner_layer": "F13 SOVEREIGN",
+   "aliases": [
+    "/root/AAA/skills/arifos-frozen-snapshot-init",
+    "/root/AAA/skills/session-federation-discovery",
+    "/root/AAA/skills/session-init-human-first",
+    "/root/AAA/skills/session-librarian",
+    "/root/AAA/skills/session-lifecycle-temporal",
+    "/root/AAA/skills/session-lifecycle-temporal-v2"
+   ],
+   "authority": {
+    "risk_tier": "high",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F6",
      "F9",
      "F13"
     ]
@@ -5833,34 +5213,6 @@
    ]
   },
   {
-   "name": "constitutional-floors",
-   "path": "/root/AAA/skills/domains/general/apex/governance-core/constitutional-floors",
-   "skill_md": "/root/AAA/skills/domains/general/apex/governance-core/constitutional-floors/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "3ef5589c9e5df6016c48a00b6c011b6e5f383996b8b79bb1a790419c8bfa88e8",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "Constitutional Kernel Architecture",
    "path": "/root/AAA/skills/domains/general/apex/governance-core/constitutional-kernel-architecture",
    "skill_md": "/root/AAA/skills/domains/general/apex/governance-core/constitutional-kernel-architecture/SKILL.md",
@@ -5943,128 +5295,6 @@
     "autonomy_tier": null,
     "capability_tier": null,
     "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "federation-mcp-drift-audit",
-   "path": "/root/AAA/skills/domains/general/apex/governance-core/federation-mcp-drift-audit",
-   "skill_md": "/root/AAA/skills/domains/general/apex/governance-core/federation-mcp-drift-audit/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "ee78d9b87b146b7e558198f9de719121028a9aaf32b8741816884e45e387a348",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "HERMES",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T0",
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F4",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-execution-governance",
-   "path": "/root/AAA/skills/domains/general/apex/governance-core/forge-execution-governance",
-   "skill_md": "/root/AAA/skills/domains/general/apex/governance-core/forge-execution-governance/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "cb9cd1a20f3a49ec8e6220e9988e105b29a3c281eac9a2599475f05ad239608b",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-governance-analysis",
-   "path": "/root/AAA/skills/domains/general/apex/governance-core/forge-governance-analysis",
-   "skill_md": "/root/AAA/skills/domains/general/apex/governance-core/forge-governance-analysis/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "570071eeb3ca2a23b46a71533e7d90ef5c4ca58e0a6eaddf14d5bed1de947f5b",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-mcp-governance-wrapper",
-   "path": "/root/AAA/skills/domains/general/apex/governance-core/forge-mcp-governance-wrapper",
-   "skill_md": "/root/AAA/skills/domains/general/apex/governance-core/forge-mcp-governance-wrapper/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "2e971beced191febcbf2066ec10dcd65f261fad19543ed1a79a4f514413ef61a",
-   "version": "1.0.0-2026.08.28",
-   "deprecated": false,
-   "owner_layer": "A-FORGE",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "high",
-    "autonomy_tier": "T2",
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11",
-     "F13"
-    ]
    },
    "harnesses": [
     "claude",
@@ -6229,7 +5459,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "a3ced23a05df9726c55a84fe03b6b9d8d4e7103ff90b65350ebd796c4ae59773",
+   "sha256": "8f5342b0e9890f71bcd8d8e472fe3da1ed286e76d54f8e06f6d310a9325b34d1",
    "version": null,
    "deprecated": false,
    "owner_layer": "Hermes",
@@ -6560,38 +5790,6 @@
    ]
   },
   {
-   "name": "agent-finding-verification",
-   "path": "/root/AAA/skills/domains/general/court/court-audit/agent-finding-verification",
-   "skill_md": "/root/AAA/skills/domains/general/court/court-audit/agent-finding-verification/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "6e3928b2459c53f1b5ea566643f7d9d45b90f7f9a2c3d76435023fb397cc5125",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F4",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "assertion-window-discipline",
    "path": "/root/AAA/skills/domains/general/court/court-audit/assertion-window-discipline",
    "skill_md": "/root/AAA/skills/domains/general/court/court-audit/assertion-window-discipline/SKILL.md",
@@ -6603,34 +5801,6 @@
    "version": null,
    "deprecated": false,
    "owner_layer": "Hermes",
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "audit-falsification-discipline",
-   "path": "/root/AAA/skills/domains/general/court/court-audit/audit-falsification-discipline",
-   "skill_md": "/root/AAA/skills/domains/general/court/court-audit/audit-falsification-discipline/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "dd8f4548b3076dc94b6670b5ded9a1c821752d23201c7a3bacd6940219bf963c",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
@@ -7296,122 +6466,6 @@
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T2",
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "external-platform-mcp",
-   "path": "/root/AAA/skills/domains/general/forge/mcp-ops/external-platform-mcp",
-   "skill_md": "/root/AAA/skills/domains/general/forge/mcp-ops/external-platform-mcp/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "7192265504d0c64ffe9053f5ce384fc240db45249e549265fc975ea4210dd009",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T1.5",
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F8",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-minimax-mcp-direct-invoke",
-   "path": "/root/AAA/skills/domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke",
-   "skill_md": "/root/AAA/skills/domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "4bdb9a661835b9ba838c099c57a9b517ca4fe5677242b0fe38753c4e4711c3d2",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "mcp-ecosystem-indexing",
-   "path": "/root/AAA/skills/domains/general/forge/mcp-ops/mcp-ecosystem-indexing",
-   "skill_md": "/root/AAA/skills/domains/general/forge/mcp-ops/mcp-ecosystem-indexing/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "9fe1eb15a7ad9a0b542a5284cfc8b5afe10a62f883cc1f4d402d6611eda61703",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "telegram-mcp-product-line",
-   "path": "/root/AAA/skills/domains/general/forge/mcp-ops/telegram-mcp-product-line",
-   "skill_md": "/root/AAA/skills/domains/general/forge/mcp-ops/telegram-mcp-product-line/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "c86c5438a2426fa4f46abef0ae703aaa15658dbd123c14c7aff7808ceb7f1ce4",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
     "capability_tier": null,
     "floor_scope": null
    },
@@ -8101,7 +7155,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "28c04aece1da8edc4b8cc74ae74057d0b59357cf7ac4b3a45f5e531b5f9e0dfe",
+   "sha256": "6089ae77d2a1650ae897a753080f026d7087c3872535ab07c53a126803085370",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -9617,62 +8671,6 @@
    ]
   },
   {
-   "name": "forge-web-intelligence",
-   "path": "/root/AAA/skills/domains/general/workshop/search-web/forge-web-intelligence",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/search-web/forge-web-intelligence/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "21b99ffb5cce98e7245bbc3781cd710c28e5a69b5023617ffe52926bc0f5513a",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "sovereign-search",
-   "path": "/root/AAA/skills/domains/general/workshop/search-web/sovereign-search",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/search-web/sovereign-search/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "97dda63c51a3a62255769ad48fef5786012faed2c45fe17afb0b7353b3c54661",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "tts-route-deep-research",
    "path": "/root/AAA/skills/domains/general/workshop/search-web/tts-route-deep-research",
    "skill_md": "/root/AAA/skills/domains/general/workshop/search-web/tts-route-deep-research/SKILL.md",
@@ -9690,36 +8688,6 @@
     "autonomy_tier": null,
     "capability_tier": null,
     "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "web-extraction-fallbacks",
-   "path": "/root/AAA/skills/domains/general/workshop/search-web/web-extraction-fallbacks",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/search-web/web-extraction-fallbacks/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "6b06314c0be6642198f2c3c03a972a8149c08b4e9b88fb499c08e448151ac125",
-   "version": "1.1.0-2026.08.27",
-   "deprecated": false,
-   "owner_layer": "curator-managed",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F7"
-    ]
    },
    "harnesses": [
     "claude",
@@ -9754,286 +8722,6 @@
      "F8",
      "F13"
     ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "hermes-lane-switch-routing",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/hermes-lane-switch-routing",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/hermes-lane-switch-routing/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "3a2e54024e077cba0d83d731b07a6ec0ab6a5f31c5d33a7f730e911067557f01",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "hermes-telegram-gateway-authorization",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/hermes-telegram-gateway-authorization",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/hermes-telegram-gateway-authorization/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "929636d21ada1f73a79a72c9e0cd92666edfd41e9b95f930c018b5337c8794ec",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "relay-echo-loop-handling",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/relay-echo-loop-handling",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/relay-echo-loop-handling/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "2574192569a31f137fde132dd4aa8a027a1699e3280b932d305ce41edf20483a",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "telegram-bot-identity-and-group-routing",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-bot-identity-and-group-routing",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-bot-identity-and-group-routing/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "173ae219709f85c5c28b7670cc3e661c65210d5aa67207f48920df3fe6b9fc74",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "telegram-bot-routing-doctrine",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-bot-routing-doctrine",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-bot-routing-doctrine/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "aed962f48a39ee53219d8b8b25eb9a872d3bb3abeb70b87d3cc1611d581cd85d",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "telegram-conversation-history-extraction",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-conversation-history-extraction",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-conversation-history-extraction/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "f99aa1838b7737d8765c00b2854c1c99b15d4a9a96e63bd91a074628f6d3fa95",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "telegram-group-bot-rollout",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-group-bot-rollout",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-group-bot-rollout/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "19cb53407fa0bb95ef04bc8f06678bddb7e887a216e2620d7abdf8f9c13492e0",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "telegram-group-sender-identity",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-group-sender-identity",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-group-sender-identity/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "5949e7e7a17721f3f779eb4a7c1b1e0c3992e9c2c6c11352ee7e7975809b4c0f",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "telegram-userbot-telethon",
-   "path": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-userbot-telethon",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/telegram-ops/telegram-userbot-telethon/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "3b626d016d4979e3dcb25e4f3b64d9353cb08d470eda6f32b1f7e523c90867f6",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "hermes-naked-prior-audit",
-   "path": "/root/AAA/skills/domains/general/workshop/verification-discipline/hermes-naked-prior-audit",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/verification-discipline/hermes-naked-prior-audit/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "9a9621ed6b77f0b9786468e2bd04d01870f155762df322a40f6ed9dfd98c87ef",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -10640,51 +9328,21 @@
    ]
   },
   {
-   "name": "wealth-mcp-testing",
-   "path": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-testing",
-   "skill_md": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-testing/SKILL.md",
+   "name": "wealth-mcp-ops",
+   "path": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-ops",
+   "skill_md": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-ops/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "86cd80de402e86b45a4b6c6d336c63ef9425af188ccaa120c7eee891d694e352",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "wealth-mcp-tool-hardening",
-   "path": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-tool-hardening",
-   "skill_md": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-tool-hardening/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "824599438afb11a19912ebb002cf5396c6acded317861dad9b4383274e1a36cb",
+   "sha256": "6d81e724aaf38bf95b2ce3566aa2400713b8dbbf12d57eccd523d89665587964",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-testing",
+    "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-tool-hardening"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -10692,6 +9350,7 @@
     "floor_scope": [
      "F1",
      "F2",
+     "F4",
      "F11"
     ]
    },
@@ -11210,13 +9869,34 @@
    "state": "body",
    "depth": 1,
    "namespace": "engineering",
-   "sha256": "fa0e72aec76034b83859720918fbf57769690d4e6725688c89bbd3f961d8d432",
-   "version": "2.1.0",
+   "sha256": "ebe2ebdfa487f65e2d33be10935490de5cdcd4edf40aa3855f14be52bdbbd314",
+   "version": "3.0.1",
    "deprecated": false,
    "owner_layer": "AAA",
    "aliases": [
+    "/root/AAA/skills/capabilities/coding/mcp-testing",
+    "/root/AAA/skills/devops/mcp-edit-activation",
+    "/root/AAA/skills/devops/mcp-transport-fix",
     "/root/AAA/skills/domains/forge/mcp-ops",
-    "/root/AAA/skills/domains/forge/mcp-ops.DEPRECATED-2026-09-19"
+    "/root/AAA/skills/domains/forge/mcp-ops.DEPRECATED-2026-09-19",
+    "/root/AAA/skills/domains/forge/mcp-testing",
+    "/root/AAA/skills/domains/general/aaa/catalog-ops/forge-mcp-registry-publish",
+    "/root/AAA/skills/domains/general/apex/governance-core/federation-mcp-drift-audit",
+    "/root/AAA/skills/domains/general/apex/governance-core/forge-mcp-governance-wrapper",
+    "/root/AAA/skills/domains/general/forge/mcp-ops/external-platform-mcp",
+    "/root/AAA/skills/domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke",
+    "/root/AAA/skills/domains/general/forge/mcp-ops/mcp-ecosystem-indexing",
+    "/root/AAA/skills/domains/general/forge/mcp-ops/telegram-mcp-product-line",
+    "/root/AAA/skills/engineering/mcp-testing",
+    "/root/AAA/skills/forge-fastmcp",
+    "/root/AAA/skills/forge-mcp-a2a-agentic",
+    "/root/AAA/skills/forge-mcp-gui",
+    "/root/AAA/skills/governance/mcp-organ-probe",
+    "/root/AAA/skills/mcp-context-compression",
+    "/root/AAA/skills/mcp-edit-activation",
+    "/root/AAA/skills/mcp-organ-probe",
+    "/root/AAA/skills/mcp-sota-shopping-list",
+    "/root/AAA/skills/mcp-transport-fix"
    ],
    "authority": {
     "risk_tier": "low",
@@ -11231,42 +9911,6 @@
      "F11",
      "F12",
      "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "mcp-testing",
-   "path": "/root/AAA/skills/engineering/mcp-testing",
-   "skill_md": "/root/AAA/skills/engineering/mcp-testing/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "engineering",
-   "sha256": "f9d2d8b2d56a33a059beae566cdf738c9cdd9337dfb13c387a1cf7340925635d",
-   "version": "2.1.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [
-    "/root/AAA/skills/capabilities/coding/mcp-testing",
-    "/root/AAA/skills/domains/forge/mcp-testing"
-   ],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11"
     ]
    },
    "harnesses": [
@@ -11341,116 +9985,6 @@
      "F7",
      "F9",
      "F10",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "skill-creator",
-   "path": "/root/AAA/skills/engineering/skill-creator",
-   "skill_md": "/root/AAA/skills/engineering/skill-creator/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "engineering",
-   "sha256": "078dd236cf5f7cdf05d08a032ee8331e44e845db588a2eafbe0c0bb202ac6cb4",
-   "version": "2.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [
-    "/root/AAA/skills/domains/forge/skill-creator"
-   ],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F7",
-     "F9",
-     "F10",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "skill-drift",
-   "path": "/root/AAA/skills/engineering/skill-drift",
-   "skill_md": "/root/AAA/skills/engineering/skill-drift/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "engineering",
-   "sha256": "167bd9e9efa0e2545a36f589e06e7a55f5dec62aef843635586fb19ac97d0d2b",
-   "version": "2.1.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [
-    "/root/AAA/skills/domains/forge/skill-drift"
-   ],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-long-context",
-    "floor_scope": [
-     "F2",
-     "F3",
-     "F4",
-     "F8",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "skill-inventory",
-   "path": "/root/AAA/skills/engineering/skill-inventory",
-   "skill_md": "/root/AAA/skills/engineering/skill-inventory/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "engineering",
-   "sha256": "2ef28be9182b9a0dfd2d8612605a1eabc311ce8c2e1e7d8fdba6936d6dfbef55",
-   "version": "2.1.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [
-    "/root/AAA/skills/domains/forge/skill-inventory"
-   ],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-long-context",
-    "floor_scope": [
-     "F2",
-     "F4",
-     "F7",
-     "F9",
      "F11"
     ]
    },
@@ -12307,11 +10841,14 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ed05cb4c67de23e12f2380699628816773a98fa7dd46db39c0e7d87013817f86",
+   "sha256": "5d8b1fdbddfc94cf36ea402427c1477a4f9d1d862e61cd8f16004f890ccf5986",
    "version": "2026.09.04",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-act-federation-ingress",
+    "/root/AAA/skills/FORGE-sct-federation-ingress"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -12428,41 +10965,6 @@
    ]
   },
   {
-   "name": "forge-ci-diagnose",
-   "path": "/root/AAA/skills/forge-ci-diagnose",
-   "skill_md": "/root/AAA/skills/forge-ci-diagnose/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "c500c4e71a2288c8c7f13fe8cee8e850325e346c0f4fa40165541638da1661c7",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F9",
-     "F11",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "forge-code-analysis",
    "path": "/root/AAA/skills/forge-code-analysis",
    "skill_md": "/root/AAA/skills/forge-code-analysis/SKILL.md",
@@ -12470,11 +10972,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9fb29d46cffae56054f35a5bf97aebd20b1ffe125cbb6397dbbc1d390af45b7d",
+   "sha256": "a1778448910ea112d2c2cc4bf7d078850f5cd52ddab7a0ba964a6b0db09ff2b8",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-code-analysis"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -12504,11 +11008,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3552c6c2a5a06c017bcd6356ccfb75f8f4ce363094f608ce66ff343fd8b11169",
+   "sha256": "ecc245345f814f5a57479ab3a79d7abf66a88a05d5b1a3dd07c185e237f5e2aa",
    "version": "1.1.0-2026.08.21",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-context-compressor"
+   ],
    "authority": {
     "risk_tier": null,
     "autonomy_tier": null,
@@ -12566,41 +11072,6 @@
    ]
   },
   {
-   "name": "FORGE-cross-repo-doc-zen",
-   "path": "/root/AAA/skills/forge-cross-repo-doc-zen",
-   "skill_md": "/root/AAA/skills/forge-cross-repo-doc-zen/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "2edf2c40f1531851b18783eb4d1934bc521734c009475d06e5dbba95b43743af",
-   "version": "2026.08.06",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [
-    "/root/AAA/skills/workflows/core/FORGE-cross-repo-doc-zen"
-   ],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T2",
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "forge-design-intelligence",
    "path": "/root/AAA/skills/forge-design-intelligence",
    "skill_md": "/root/AAA/skills/forge-design-intelligence/SKILL.md",
@@ -12608,11 +11079,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f7fafa45e4457a3f64bd80f4b0116131d67607b6f9640268f9838e1df8abc34a",
+   "sha256": "7e772ff424eb507a6096c465077d343ab78519a2cd2d26cb551515657f0530de",
    "version": "1.0.0-2026-08-20",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-design-intelligence"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -12641,11 +11114,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2337ea821a05ff503802c0d4dc3ad6f234d6769fd265dd4815da69094e9daef1",
+   "sha256": "c2cbb3faff933a4032cdc036df00497e77810370c6c87b37c7d0c985ced83159",
    "version": "1.0.0-2026.07.17",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-did-web-identity"
+   ],
    "authority": {
     "risk_tier": "high",
     "autonomy_tier": "T2",
@@ -12745,11 +11220,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ed572ca30cc530fb5d649cd9139d2ba3fc4e2a11219996dd34dd5c64c14f20ac",
+   "sha256": "0e913c5c315bd0d6853bfc30b16f24199f64acd46e29710d576cf6105783776f",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-esm-require-guard"
+   ],
    "authority": {
     "risk_tier": null,
     "autonomy_tier": null,
@@ -12773,11 +11250,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9a35ed69e498186980a9c08191ef13b77d470b3ea0aa4badc6f07c891e937cbb",
+   "sha256": "8931e699be288550f230a17f68513577f3236bcbaf28955642c2c1f8453f390e",
    "version": "1.0.0-2026.07.17",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-fastapi-api-builder"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -12786,39 +11265,6 @@
      "F1",
      "F4",
      "F12"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-fastmcp",
-   "path": "/root/AAA/skills/forge-fastmcp",
-   "skill_md": "/root/AAA/skills/forge-fastmcp/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "26eaec7c58c9911cdabb5bb5ffd14250d43071dbd618659eedb59e8c8f575487",
-   "version": "1.2.0",
-   "deprecated": false,
-   "owner_layer": "A-FORGE",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F7"
     ]
    },
    "harnesses": [
@@ -12862,38 +11308,6 @@
    ]
   },
   {
-   "name": "forge-github-ops",
-   "path": "/root/AAA/skills/forge-github-ops",
-   "skill_md": "/root/AAA/skills/forge-github-ops/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "b46b3e86ff0646555c70ed2d101a4fa9909d9f5c6329b079aa104feef05cac39",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "forge-google-workspace",
    "path": "/root/AAA/skills/forge-google-workspace",
    "skill_md": "/root/AAA/skills/forge-google-workspace/SKILL.md",
@@ -12901,11 +11315,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "41ac9a63acf2e150188797de6dce5df55a56cc8d954944d08e3b5619d0afd86b",
+   "sha256": "72e4c2a14ad4c696f721f06568802b08e2a291879eef564448ef9ecaf282bdaa",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-google-workspace"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -12916,39 +11332,6 @@
      "F4",
      "F11",
      "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-governance-jsonld",
-   "path": "/root/AAA/skills/forge-governance-jsonld",
-   "skill_md": "/root/AAA/skills/forge-governance-jsonld/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "0eec6b04ccb58d307edb207013c94de88ffdc9b6c8b47dad336b9ca721365e81",
-   "version": "1.0.0-2026.07.17",
-   "deprecated": false,
-   "owner_layer": "A-FORGE",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11"
     ]
    },
    "harnesses": [
@@ -13001,11 +11384,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "136d5e653b173e7953f19b76badd4c2c4c8d374263e633b72c0d3619d50e194e",
+   "sha256": "fa58f2d707561b84aaa7e5734ebd6902b1db552432039da12acb2fef8a63b0fb",
    "version": null,
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-infra-crons"
+   ],
    "authority": {
     "risk_tier": null,
     "autonomy_tier": null,
@@ -13029,11 +11414,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "de194afe63f26e92cc17bc0d4c7d6f6d5e314bc34a8694f7b2528366f47a48fc",
+   "sha256": "a57862d7c39b6fe4b97e2258c9de8cc1c9623c6188d1f338f73a084fbe6f27fd",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-infra-guardian"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T0",
@@ -13101,11 +11488,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e406a3134a0134b7945a9aca764e9390c2585299bb9028764f692495e8b15285",
+   "sha256": "b95e46da09f9c0eadbae57b385e1235a5b436353e0731337143dbedacb49a4d0",
    "version": "1.0.2",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-kimi-code"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -13136,11 +11525,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "565fcc8fe080f95befadf316b932e586aa4fd7528dcdc44c28cb095135ca6857",
+   "sha256": "9a8bfd0ea8f315d44bf1e6ac1b3e2ed6971a97f3bb2089943cfbcd846f47e989",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-komda-color-law"
+   ],
    "authority": {
     "risk_tier": null,
     "autonomy_tier": null,
@@ -13192,76 +11583,6 @@
    ]
   },
   {
-   "name": "forge-mcp-a2a-agentic",
-   "path": "/root/AAA/skills/forge-mcp-a2a-agentic",
-   "skill_md": "/root/AAA/skills/forge-mcp-a2a-agentic/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "b59ef31fa729ae0ef8d74a74ed14d06994d975c222ba0dba85cc766e158895a2",
-   "version": "1.0.0-2026.07.17",
-   "deprecated": false,
-   "owner_layer": "A-FORGE",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "high",
-    "autonomy_tier": "T2",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F8",
-     "F11",
-     "F12",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-mcp-gui",
-   "path": "/root/AAA/skills/forge-mcp-gui",
-   "skill_md": "/root/AAA/skills/forge-mcp-gui/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "f2766d94715b80e484c86bcf0c22e60c66665e8b14265bfacd15ea3e6cd99e2b",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T2",
-    "capability_tier": "fed-long-context",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11",
-     "F12"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "forge-model-monitor",
    "path": "/root/AAA/skills/forge-model-monitor",
    "skill_md": "/root/AAA/skills/forge-model-monitor/SKILL.md",
@@ -13269,11 +11590,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "68e156c5a1d08147f9263ac1f866d16c5f32425d69ee1ddaeaffc8748022167b",
+   "sha256": "0c46f4ead0e575bd136a13e54727d644a3cd6b38cbaaad9c24a11aea6139244f",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-model-monitor"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T0",
@@ -13335,11 +11658,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b39577deb42d13fb0b6dbba655fa75d5ac3fca63323449f08cca80e9c20e3a36",
+   "sha256": "1156c18be714092555ab4fbab039649260aeff7db9dfef7b5ff43834e9e145ee",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-musyawarah-gotong"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -13372,11 +11697,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7ea4a73900b3323dd7868f6ae1c6b13060f56cdfe7863abe2bac790bbb5997a6",
+   "sha256": "e907d588f801586e81426b57e54b5e5eec366b9a89ccf885f101e8f736bd3087",
    "version": "1.0.0-2026.07.17",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-nextjs-mastery"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -13404,49 +11731,16 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ebaa0967150f31cdd703001d074ac83737c2e941173928603e55ed9ab0ef97cf",
+   "sha256": "516d7dd70484cecf6290736acbd032c791faa207753233bb9b8386018a5fbdc6",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-onboarding"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F8",
-     "F11",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "Agent Onboarding",
-   "path": "/root/AAA/skills/forge-onboarding/agent-onboarding",
-   "skill_md": "/root/AAA/skills/forge-onboarding/agent-onboarding/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "forge-onboarding",
-   "sha256": "0176a4e88504b2ee4c6b2dcf54388cad0131fc667852df02885f3075e1903d6b",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": null,
     "capability_tier": "fed-agent-subagent",
     "floor_scope": [
      "F1",
@@ -13474,11 +11768,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "914ef83fd12d1a5954d4246b9f129f8f323a885f47e0befd45370d13342e1eb1",
+   "sha256": "f89523826d806d685520a44f581eb759b2ea4e36e879751d710a5a6e2ca309ea",
    "version": "1.0.0-2026.07.17",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-postgres-schema-design"
+   ],
    "authority": {
     "risk_tier": "high",
     "autonomy_tier": "T2",
@@ -13507,11 +11803,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "fc85de3cb951070ea24ff7fe37675478c8c2747751e077efb0e4e04f399a110b",
+   "sha256": "80a64db84b2ad81f7c4dd0f812141993fb78dc58349acd709e5a3687f87caebe",
    "version": "1.0.0-2026.07.17",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-react-spa-discipline"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -13539,11 +11837,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "63def8c55e385f5904e2e47f17cfcfe6416ef4b735c4950a2cb2acf63447ecfe",
+   "sha256": "ab8fe7b2573a96b8716b807173ddca87965e006f8f564c7b7c395afbacddb547",
    "version": "1.0.0-2026.07.17",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-redis-qdrant-integration"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -13571,18 +11871,25 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d7b9029e810df90d404e74742d024b5d91cdc0131439ad34c882b0591ad3435b",
-   "version": "1.0.0",
+   "sha256": "d75c6bd922c9b5d711ab84d88795b7639b108aff1b0dd8035044cb968cca553d",
+   "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-repo-intelligence",
+    "/root/AAA/skills/forge-ci-diagnose",
+    "/root/AAA/skills/forge-cross-repo-doc-zen",
+    "/root/AAA/skills/workflows/core/FORGE-cross-repo-doc-zen"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
+    "capability_tier": "fed-reasoning-heavy",
     "floor_scope": [
      "F1",
      "F2",
+     "F4",
+     "F9",
      "F11"
     ]
    },
@@ -13708,11 +12015,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ef7e7f0614c0602c784e8b536b5a7120d6ca335502bbd25d24490bd92667eea2",
+   "sha256": "0cb86ab21aad456a012de44485bc258c28b6ee25c16be525e599f43e6114df8b",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-spatial-grounding"
+   ],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -13873,11 +12182,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "59997ae22bd34e2a1e9115011df1851b26a476e24c914cddd1aef11c607c3a8a",
+   "sha256": "3615258b1be958b53a0b12ea3af6be37d5c62e1ba370dd74abb93592fa8eefa0",
    "version": "1.0.0-2026.07.17",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-tailwind-tokens"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -13885,41 +12196,6 @@
     "floor_scope": [
      "F1",
      "F4"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-telegram-audit",
-   "path": "/root/AAA/skills/forge-telegram-audit",
-   "skill_md": "/root/AAA/skills/forge-telegram-audit/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "50cbe6e61d984c849f742cae6ddf2fa1670f880289f92ed05bcb4973449b6dfb",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": "A-FORGE",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T0",
-    "capability_tier": "fed-long-context",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11",
-     "F12",
-     "F13"
     ]
    },
    "harnesses": [
@@ -14390,163 +12666,35 @@
    ]
   },
   {
-   "name": "github-auth",
-   "path": "/root/AAA/skills/github/github-auth",
-   "skill_md": "/root/AAA/skills/github/github-auth/SKILL.md",
+   "name": "github-ops",
+   "path": "/root/AAA/skills/github/github-ops",
+   "skill_md": "/root/AAA/skills/github/github-ops/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 1,
    "namespace": "github",
-   "sha256": "83d908a495c34477a88e7a11bdba80179483e71d070278d23323586cc0883ff0",
-   "version": "1.1.0",
+   "sha256": "83553f24001911a9d7355064b5680c6660fe8a9c1dc9dca0b622236e7da50086",
+   "version": "2.0.0",
    "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
+   "owner_layer": "AAA",
+   "aliases": [
+    "/root/AAA/skills/forge-github-ops",
+    "/root/AAA/skills/github/github-auth",
+    "/root/AAA/skills/github/github-code-review",
+    "/root/AAA/skills/github/github-issue-to-pr",
+    "/root/AAA/skills/github/github-issues",
+    "/root/AAA/skills/github/github-pr-workflow",
+    "/root/AAA/skills/github/github-repo-management"
+   ],
    "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "github-code-review",
-   "path": "/root/AAA/skills/github/github-code-review",
-   "skill_md": "/root/AAA/skills/github/github-code-review/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "github",
-   "sha256": "957c4d454ca71d7d62f05ef04aaf0e346e623e7f8be2eb718498a07e6d17139f",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "github-issue-to-pr",
-   "path": "/root/AAA/skills/github/github-issue-to-pr",
-   "skill_md": "/root/AAA/skills/github/github-issue-to-pr/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "github",
-   "sha256": "d422963778ee3fadb182322aa65b742f47a73b456b00fd0935e8ab66caf118e0",
-   "version": "0.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "github-issues",
-   "path": "/root/AAA/skills/github/github-issues",
-   "skill_md": "/root/AAA/skills/github/github-issues/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "github",
-   "sha256": "3e278a457786a741b439155e9d846257a4c6a0fc70324e2ab968800438e7bf8a",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "github-pr-workflow",
-   "path": "/root/AAA/skills/github/github-pr-workflow",
-   "skill_md": "/root/AAA/skills/github/github-pr-workflow/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "github",
-   "sha256": "d752ffa2993cb64edee12b5be89030e007aaebffc5bdd0032466ef7a57dd1c8c",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "github-repo-management",
-   "path": "/root/AAA/skills/github/github-repo-management",
-   "skill_md": "/root/AAA/skills/github/github-repo-management/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "github",
-   "sha256": "7b528746118c94d2d468f5d805ed3266b16bc97054dde80f57411cbea9ef1d7b",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F11"
+    ]
    },
    "harnesses": [
     "claude",
@@ -14566,69 +12714,6 @@
    "depth": 0,
    "namespace": null,
    "sha256": "7536dc60111a1048123bd92a8a4874b6b6401b7a1d0f593cfb8a51774fea63f0",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "governance-audit",
-   "path": "/root/AAA/skills/governance-audit",
-   "skill_md": "/root/AAA/skills/governance-audit/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "198698d9fa362452e29bc9e3da8aaae5a1005b8ec90de91b0e757deaac3ec079",
-   "version": "2.0.0",
-   "deprecated": false,
-   "owner_layer": "Hermes",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F9",
-     "F11",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "governance-benchmark-authoring",
-   "path": "/root/AAA/skills/governance-benchmark-authoring",
-   "skill_md": "/root/AAA/skills/governance-benchmark-authoring/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "78ff1643014370fb2c140202667fef1d05c86331dd7032ecf777bbf56fa211dd",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -14834,7 +12919,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "b045c0bcfe35bd6bfc3b1c959fd228990b68de0ab348ed3cd9bb69089170597f",
+   "sha256": "bb6299e55a5f990ba3eef8adf8048cb09360a677937b111d61881af5206c863d",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "Hermes (arifOS federation)",
@@ -15016,17 +13101,22 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "81958eda199168b6294f37cee3efb2ef6b4b296543438786e68d193b007aea21",
-   "version": "1.0.0",
+   "sha256": "ad95f4bd240b36ccb900480c87df56c01b777fe13745eae16750417b90c52b25",
+   "version": "2.0.0",
    "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
+   "owner_layer": "AAA",
+   "aliases": [
+    "/root/AAA/skills/audit/corpus-claim-falsification"
+   ],
    "authority": {
     "risk_tier": "high",
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
     "floor_scope": [
+     "F1",
      "F2",
+     "F5",
+     "F6",
      "F9",
      "F11"
     ]
@@ -15157,39 +13247,6 @@
    ]
   },
   {
-   "name": "external-review-intake",
-   "path": "/root/AAA/skills/governance/external-review-intake",
-   "skill_md": "/root/AAA/skills/governance/external-review-intake/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "governance",
-   "sha256": "3639c85b0d68ac1cb8f9a64d0a9d2b261ba6e8124eb8c0494f697b128268abc6",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T0",
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F3",
-     "F9",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "federation-cycle-instrument",
    "path": "/root/AAA/skills/governance/federation-cycle-instrument",
    "skill_md": "/root/AAA/skills/governance/federation-cycle-instrument/SKILL.md",
@@ -15283,6 +13340,45 @@
    ]
   },
   {
+   "name": "governance-ops",
+   "path": "/root/AAA/skills/governance/governance-ops",
+   "skill_md": "/root/AAA/skills/governance/governance-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "0dd197a1bac570a15643ed5e8511c5670b2bbc88742c518fcf67695be6041ce9",
+   "version": "2.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [
+    "/root/AAA/skills/forge-governance-jsonld",
+    "/root/AAA/skills/governance-audit",
+    "/root/AAA/skills/governance-benchmark-authoring"
+   ],
+   "authority": {
+    "risk_tier": "high",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F9",
+     "F11",
+     "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "institutional-language-audit",
    "path": "/root/AAA/skills/governance/institutional-language-audit",
    "skill_md": "/root/AAA/skills/governance/institutional-language-audit/SKILL.md",
@@ -15303,38 +13399,6 @@
      "F2",
      "F7",
      "F9"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "mcp-organ-probe",
-   "path": "/root/AAA/skills/governance/mcp-organ-probe",
-   "skill_md": "/root/AAA/skills/governance/mcp-organ-probe/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "governance",
-   "sha256": "149288ba7d640356ee0ecf5e8bf515a9dcccdd9f86c97220b252ec8db1371cd6",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F4",
-     "F11"
     ]
    },
    "harnesses": [
@@ -15375,6 +13439,39 @@
    ]
   },
   {
+   "name": "provenance-typed-analysis",
+   "path": "/root/AAA/skills/governance/provenance-typed-analysis",
+   "skill_md": "/root/AAA/skills/governance/provenance-typed-analysis/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "faf7ac619caa450e17e7bdc00ddd4f57493db156e8fd91c7696799b909ddc7b7",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "medium",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "public-claims-maintenance",
    "path": "/root/AAA/skills/governance/public-claims-maintenance",
    "skill_md": "/root/AAA/skills/governance/public-claims-maintenance/SKILL.md",
@@ -15382,7 +13479,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "9e6d84a56affe4807e6c68b9142f7b5e8aee0e2159d7dcd3e1da662427688bd7",
+   "sha256": "acdd19fd61a47a7ef49b213d327ac2c9ec539b104535dd3134758ad0672021c5",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -15540,6 +13637,37 @@
      "F1",
      "F2",
      "F4"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "skill-cluster-merge",
+   "path": "/root/AAA/skills/governance/skill-cluster-merge",
+   "skill_md": "/root/AAA/skills/governance/skill-cluster-merge/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "d44f5569366a7df953a123721c3e319e9a0bc524843c0b4acd5a1db828ecbf22",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F11"
     ]
    },
    "harnesses": [
@@ -15783,11 +13911,13 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2b310905bc9bb5c33edb1b6d83556bf562a5be82ca1546dc1ca745107d9a4244",
+   "sha256": "a62633f468bc9129bbfd26198b3c45ef0e2710a539c82157e1ef54363b68957e",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "Hermes-Prime",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/HERMES-opencode-protocol"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -15830,130 +13960,6 @@
     "floor_scope": [
      "F2",
      "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "hermes-research-substrate",
-   "path": "/root/AAA/skills/hermes-research-substrate",
-   "skill_md": "/root/AAA/skills/hermes-research-substrate/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "b69e45b17397317a2a411460cdbd3c8d80fe9d2fc97e0ee15c6ba7d372498cb3",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "hermes-telegram-stack-zen",
-   "path": "/root/AAA/skills/hermes-telegram-stack-zen",
-   "skill_md": "/root/AAA/skills/hermes-telegram-stack-zen/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "f613205e3e2a0785d9389b2f3d203074d731351c44128db1ba682b066f3643ad",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": "federation-architect",
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "web-scrape",
-   "path": "/root/AAA/skills/hermes/web-scrape",
-   "skill_md": "/root/AAA/skills/hermes/web-scrape/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "hermes",
-   "sha256": "c656638441185102e3af114694508da2c65caa08c6ac836c91c54e8c304f94c0",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-multimodal-vision",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F7",
-     "F12"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "web-search",
-   "path": "/root/AAA/skills/hermes/web-search",
-   "skill_md": "/root/AAA/skills/hermes/web-search/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "hermes",
-   "sha256": "ec45e6f4796c3f5b189f079e741208e4f0796329037f84e26c9292731ed8f648",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-long-context",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F7",
-     "F12"
     ]
    },
    "harnesses": [
@@ -16043,6 +14049,41 @@
     "floor_scope": [
      "F2",
      "F3",
+     "F5",
+     "F6",
+     "F9",
+     "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "human-care-coaching",
+   "path": "/root/AAA/skills/human-interface/human-care-coaching",
+   "skill_md": "/root/AAA/skills/human-interface/human-care-coaching/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "human-interface",
+   "sha256": "33fa6bff7abf79d29d9b2ffccb4120204f380fcac39cf9b0217042f3314e51d4",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "medium",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
      "F5",
      "F6",
      "F9",
@@ -16523,11 +14564,14 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "76509fff24c88f54d0843b8d7fb0eac1d8af0d0ad26f20d5b2f99ba3b2a4cf11",
+   "sha256": "fa405b9fe19ed1b0b07d658a12f9e09b70a0f82da21f6b39c97553416ac171ff",
    "version": "1.1.0-2026.07.08",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/KERNEL-trinity-33",
+    "/root/AAA/skills/trinity-33-canonical"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -16556,17 +14600,18 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "203ee4f6c6b3ee39906c4641c30e49ae5c67cb942016b49de00309cbed300f54",
+   "sha256": "4a179f8e34f25c573513e34271c73144a9ebc9bca14ae32f3ea4b455b225a167",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
    "aliases": [
+    "/root/AAA/skills/knowledge/know-language",
     "/root/AAA/skills/primitives/think/know-language"
    ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
-    "capability_tier": null,
+    "capability_tier": "federation-substrate-knowledge",
     "floor_scope": [
      "F1",
      "F2",
@@ -16591,17 +14636,18 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "300c2b595ba6b39f6d81240c97314d29468f15a45b2c4f09fb4f4b9e93d27026",
+   "sha256": "3076752158dceb918fc1c720333cf08c3411e8a42e64949ae33088bbd3c26d98",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
    "aliases": [
+    "/root/AAA/skills/knowledge/know-math",
     "/root/AAA/skills/primitives/think/know-math"
    ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
-    "capability_tier": null,
+    "capability_tier": "federation-substrate-knowledge",
     "floor_scope": [
      "F1",
      "F2",
@@ -16626,116 +14672,22 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ea282898e390edd021e62ce5f21fd72a171291190a93c85dd97817c7dbcf3c86",
+   "sha256": "e60253d91e8efeb89629c6016b6797a817ffbca98bc02c87ce6aa4d17f0b6bce",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
    "aliases": [
+    "/root/AAA/skills/knowledge/know-physics",
     "/root/AAA/skills/primitives/think/know-physics"
    ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
-    "capability_tier": null,
+    "capability_tier": "federation-substrate-knowledge",
     "floor_scope": [
      "F1",
      "F2",
      "F4",
-     "F7"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "know-language",
-   "path": "/root/AAA/skills/knowledge/know-language",
-   "skill_md": "/root/AAA/skills/knowledge/know-language/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "knowledge",
-   "sha256": "c8a1e7aaa2fe935227139023f4a3ca4c2f7477c315892019cef13be0085b01ce",
-   "version": "1.0",
-   "deprecated": false,
-   "owner_layer": "AAA/knowledge",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "federation-substrate-knowledge",
-    "floor_scope": [
-     "F1",
-     "F7"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "know-math",
-   "path": "/root/AAA/skills/knowledge/know-math",
-   "skill_md": "/root/AAA/skills/knowledge/know-math/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "knowledge",
-   "sha256": "122faf120e8206b97f173ef8f19fea66e7ca32fcd6ba398abc4b856fbeb698b5",
-   "version": "1.0",
-   "deprecated": false,
-   "owner_layer": "AAA/knowledge",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "federation-substrate-knowledge",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F7"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "know-physics",
-   "path": "/root/AAA/skills/knowledge/know-physics",
-   "skill_md": "/root/AAA/skills/knowledge/know-physics/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "knowledge",
-   "sha256": "5be571deac94ab8b05feba07921c86a1553f3b44ab7704d09284b65980a3e7ca",
-   "version": "1.0",
-   "deprecated": false,
-   "owner_layer": "AAA/knowledge",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "federation-substrate-knowledge",
-    "floor_scope": [
-     "F1",
-     "F2",
      "F7"
     ]
    },
@@ -16841,34 +14793,6 @@
    ]
   },
   {
-   "name": "link-to-evidence",
-   "path": "/root/AAA/skills/link-to-evidence",
-   "skill_md": "/root/AAA/skills/link-to-evidence/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "2a0bd2b988a21f5334d52ac584afa67a582243fd599206207d7f777ce568d876",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "live-system-audit-discipline",
    "path": "/root/AAA/skills/live-system-audit-discipline",
    "skill_md": "/root/AAA/skills/live-system-audit-discipline/SKILL.md",
@@ -16876,7 +14800,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4eb6d088b8080ba8a1aeb7798a289b65c1cc7b1fb3d69bf573dc7fa15541f58a",
+   "sha256": "136edecc35ee466b173dac9bef1d5a35ecfbdcdcc8a5868506f20f34d1558fee",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -16969,66 +14893,6 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "mcp-context-compression",
-   "path": "/root/AAA/skills/mcp-context-compression",
-   "skill_md": "/root/AAA/skills/mcp-context-compression/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "ffd4c3345203cf9f0f4d3cf5996d93f07150c655bd9df9706a3f9cb48789bb6d",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F2",
-     "F4",
-     "F7"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "mcp-sota-shopping-list",
-   "path": "/root/AAA/skills/mcp-sota-shopping-list",
-   "skill_md": "/root/AAA/skills/mcp-sota-shopping-list/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "86b92eb53b78786afec862e760358797b9a1dafff4d5cf7cc87f7e863211c846",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -17834,34 +15698,6 @@
    "namespace": "productivity",
    "sha256": "856c1bce359ca7da0cc83f06e7b6b59f9445c16084d0510fc1541101af57f263",
    "version": "2.3.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "session-librarian",
-   "path": "/root/AAA/skills/productivity/session-librarian",
-   "skill_md": "/root/AAA/skills/productivity/session-librarian/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "productivity",
-   "sha256": "9da2d0ba82b771ae83560965ffaa910db01e76bba8c1d914133a0d8c6957f2ba",
-   "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -18845,34 +16681,6 @@
    ]
   },
   {
-   "name": "web-search-query-gate-recovery",
-   "path": "/root/AAA/skills/search-web/web-search-query-gate-recovery",
-   "skill_md": "/root/AAA/skills/search-web/web-search-query-gate-recovery/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "search-web",
-   "sha256": "b03a7de7d2f1f2dabfb2f7d7bff748beed0d5a98098f6f210b6b689c87ae756f",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "responsible-disclosure-handling",
    "path": "/root/AAA/skills/security-ops/responsible-disclosure-handling",
    "skill_md": "/root/AAA/skills/security-ops/responsible-disclosure-handling/SKILL.md",
@@ -18929,90 +16737,36 @@
    ]
   },
   {
-   "name": "session-lifecycle-temporal",
-   "path": "/root/AAA/skills/session-lifecycle-temporal",
-   "skill_md": "/root/AAA/skills/session-lifecycle-temporal/SKILL.md",
+   "name": "skill-mesh",
+   "path": "/root/AAA/skills/skill-mesh",
+   "skill_md": "/root/AAA/skills/skill-mesh/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0e5d999e448c1a5c0342b85ff77d92e44fd4fa0b97d6c87ea49ad0f9c2dae11e",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": "F13 SOVEREIGN",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F6",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "session-lifecycle-temporal",
-   "path": "/root/AAA/skills/session-lifecycle-temporal-v2",
-   "skill_md": "/root/AAA/skills/session-lifecycle-temporal-v2/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "06da1df363b4e2b3f64e8c88daceec551a85a01638dbbb85a5cbc36a51433ad7",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": "F13 SOVEREIGN",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F6",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "skill-library-integrity",
-   "path": "/root/AAA/skills/skill-library-integrity",
-   "skill_md": "/root/AAA/skills/skill-library-integrity/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "25ecf65d5dc69d93a4f3fe5697fcd080436aca1107299e4ad0c26e0fffb9b2c4",
-   "version": "1.0.0",
+   "sha256": "06a6b2968c402a7c6c3d101fbe4f861027f6b3023fc7b8ec55adefe220d646ab",
+   "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/aaa-skill-governor-runtime",
+    "/root/AAA/skills/domains/forge/skill-creator",
+    "/root/AAA/skills/domains/forge/skill-drift",
+    "/root/AAA/skills/domains/forge/skill-inventory"
+   ],
    "authority": {
-    "risk_tier": null,
+    "risk_tier": "medium",
     "autonomy_tier": "T1",
-    "capability_tier": null,
+    "capability_tier": "fed-long-context",
     "floor_scope": [
      "F1",
      "F2",
+     "F3",
      "F4",
+     "F7",
+     "F8",
+     "F9",
+     "F10",
      "F11"
     ]
    },
@@ -19143,34 +16897,6 @@
      "F12",
      "F13"
     ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "arifos-frozen-snapshot-init",
-   "path": "/root/AAA/skills/substrate/arifos-frozen-snapshot-init",
-   "skill_md": "/root/AAA/skills/substrate/arifos-frozen-snapshot-init/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "substrate",
-   "sha256": "7c1728ce061c0af4776b357e7788b092312da2eb35e095cc921941cf79efa8a2",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -19365,34 +17091,6 @@
    ]
   },
   {
-   "name": "session-federation-discovery",
-   "path": "/root/AAA/skills/substrate/session-federation-discovery",
-   "skill_md": "/root/AAA/skills/substrate/session-federation-discovery/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "substrate",
-   "sha256": "e225758c31a00b29333b925034ed69802d604dc7def7844cda4c2d4966c4f2ef",
-   "version": "1.0.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "verify-gate",
    "path": "/root/AAA/skills/substrate/verify-gate",
    "skill_md": "/root/AAA/skills/substrate/verify-gate/SKILL.md",
@@ -19431,23 +17129,33 @@
    ]
   },
   {
-   "name": "outbound-message-delivery",
-   "path": "/root/AAA/skills/telegram-ops/outbound-message-delivery",
-   "skill_md": "/root/AAA/skills/telegram-ops/outbound-message-delivery/SKILL.md",
+   "name": "telegram-ops",
+   "path": "/root/AAA/skills/telegram-ops",
+   "skill_md": "/root/AAA/skills/telegram-ops/SKILL.md",
    "kind": "skill",
    "state": "body",
-   "depth": 1,
-   "namespace": "telegram-ops",
-   "sha256": "684d1ef429caab478f404a3d257eeed2a6da5dce9aa668ca618df256971e2c9a",
-   "version": "1.0.0",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "e6e1ffcfcd7dfb887334012288441e19c6ceb20e23f69150ebab93ff7ff8e65a",
+   "version": "2.0.0",
    "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
+   "owner_layer": "AAA/telegram-ops",
+   "aliases": [
+    "/root/AAA/skills/forge-telegram-audit",
+    "/root/AAA/skills/hermes-telegram-stack-zen",
+    "/root/AAA/skills/outbound-message-delivery"
+   ],
    "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
+    "risk_tier": "high",
+    "autonomy_tier": "T1",
+    "capability_tier": "federation-architect",
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F9",
+     "F11"
+    ]
    },
    "harnesses": [
     "claude",
@@ -19960,6 +17668,46 @@
     "autonomy_tier": null,
     "capability_tier": null,
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "web-ops",
+   "path": "/root/AAA/skills/web-ops",
+   "skill_md": "/root/AAA/skills/web-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "a5a60897a03900e40b91d4c92771354bf4e55d9b03d4d13fbee71b1cbd0f561c",
+   "version": "2.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [
+    "/root/AAA/skills/agi-web-optimization",
+    "/root/AAA/skills/hermes-research-substrate",
+    "/root/AAA/skills/web-scrape",
+    "/root/AAA/skills/web-search",
+    "/root/AAA/skills/web-search-query-gate-recovery"
+   ],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F7",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
