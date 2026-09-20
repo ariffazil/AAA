@@ -1,8 +1,18 @@
 {
  "version": "2026.09.20",
- "last_audit": "2026-09-20T21:37:11+08:00",
+ "last_audit": "2026-09-20T22:13:48+08:00",
  "auditor": "333-AGI session SEAL-386cc71901e64263 (surface-entropy chain #1+#4, Arif-directed order #5A->#4->#1->#5B->#2->#3->#6) | +2026-09-20 hermes session (Attention Chaos Audit; BHV-surface-guard-per-probe-receipt retired under F13 order)",
  "open_divergences": [
+  {
+   "id": "DIV-SURFACE-GUARD-ALERT-DEAD",
+   "status": "OPEN",
+   "owner": "/root/A-FORGE (surface-guard-daemon + config/mcp-surface-guard.json)",
+   "reality": "publishHoldAlert() cannot fire: the `nats` client package is not installed in /root/A-FORGE, so the dynamic import fails and logs 'NATS module not available - skipping alert' on every drift (44+ logged). A NATS server IS running on 127.0.0.1:4222. Separately, config keys on_drift.notify=['arif','aaa_cockpit'] and on_drift.log_to='vault999' appear nowhere in the code — declared notification that has never existed.",
+   "consequence": "A schema-drift HOLD could never reach a human through the declared push path. The working surfaces are the journal (error/warn level), latest.json, per-transition event files and the forge_surface_guard MCP pull tool.",
+   "stopgap_taken": "Decorative config keys removed and replaced with an explicit alert_surface block naming the surfaces that exist and flagging the NATS push as NON-FUNCTIONAL.",
+   "closure": "F13 binary: install the nats client AND name a verified subscriber for subject 888_HOLD, or delete the push path. Not resolvable by an agent alone — either choice changes what the federation promises about alerting.",
+   "classification": "DECLARED_ONLY"
+  },
   {
    "id": "DIV-HERMES-BACKUP-GAP",
    "status": "OPEN",
@@ -131,6 +141,12 @@
   }
  ],
  "recent_closures": [
+  {
+   "id": "CLOSE-surface-guard-baseline-amnesty",
+   "commit": "A-FORGE (surface-guard baseline persistence)",
+   "date": "2026-09-20",
+   "detail": "Baseline was in-memory only: every restart re-pinned the current surface and reported PASS with no record. Now persisted to /root/A-FORGE/config/surface-snapshots.json, loaded at boot, with a per-boot baseline-<ts>.json receipt stating loaded-vs-absent (amnesty). Added a 3-confirmation gate before a new surface may become the reference, a warm read on first contact, and a confirmation probe that discards cold/flapping reads as TRANSIENT. Root cause of the 45-day HOLD found: A-FORGE-MCP answers the first session request after transport creation from a COLD state and all later requests from a WARM state; all 121 tool hashes differ between regimes. Receipt: /root/VAULT999/RECEIPTS/2026-09-20-surface-guard-baseline-persistence.json"
+  },
   {
    "id": "MASKED-SEVERITY",
    "commit": "b20018017",
