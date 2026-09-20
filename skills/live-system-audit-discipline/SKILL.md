@@ -187,6 +187,27 @@ states where you looked, on which host, and by which method.
 - **An echo is not a measurement.** Before reporting a value as the system's, vary the
   parameter you sent and confirm the answer changes with it; some endpoints return what the
   caller supplied, so a fixed probe measures only itself.
+- **Reproduce a surprising zero with a second, differently-shaped command before publishing it.**
+  A false zero from *command shape* is indistinguishable from a true zero, and it is the figure that
+  flips a verdict — you will report a defect that is not there, or clear one that is. The classic
+  shape is an unparenthesised alternation, where the implicit `-print` does not bind the same way
+  across implementations:
+
+  ```bash
+  # suspect: the implicit -print may attach to the last term only
+  find <dirA> <dirB> -name '*.x' -o -name '*.x.*'
+  # robust: wrap the alternation, then confirm the count a second way
+  find <dirA> <dirB> \( -name '*.x' -o -name '*.x.*' \) -print
+  ls <dir> | grep -cE '\.x(\.|$)'
+  ```
+
+  The rule is not "find is broken" but "one form is one witness": a zero that cannot be reproduced two
+  ways is a measurement of your own command, not of absence. Cheap to check, and it is exactly the
+  class of error that survives into a published finding because a zero looks like a clean result.
+- **Scope a negative to the window you actually searched.** "Never used", "never fired", "no caller"
+  read as properties of the system and are usually properties of the retained log. State the first and
+  last retained timestamps beside the count, and derive any ratio against that window rather than an
+  assumed lifetime.
 - **Re-verify immediately before you write.** On a live shared repo another writer may land
   between your read and your patch. Re-check mtime/hash at write time.
 - **A comparator must fail closed on missing inputs.** A drift surface compared
@@ -238,6 +259,20 @@ Rules that follow:
 3. **The control usually works where it is applied. Find where it is NOT applied.** The recurring
    defect is not a broken guard; it is a correct guard attached to the wrong surface, or to no
    surface. Ask "who actually calls this, and what do they call instead?"
+
+   **Before you call a control NOT WIRED, read its registration surface — not its name.** "Not
+   wired" is a wire claim and carries the same burden as "wired". A component is registered under a
+   *generic* key that names its **path**, so grepping the config for the component's conceptual name
+   returns nothing and looks identical to absence. Enumerate the runtime's extension points by their
+   fixed keys (`hooks:`, `pre_tool_call:`, `plugins: enabled:`, `events:`) and read the entries — the
+   component's own file need never contain its trigger name. Then grep the registration site for the
+   component's **absolute path**, not its label. Corollary: an unexpected refusal, block, or timeout
+   from a component you believe is unwired is *positive* evidence it is on the path — your own
+   accident is a free wire-probe, so re-read before publishing. Measured shape: a mutation gate
+   reported as "looks unwired" after a name-grep of one directory; the runtime config declared it by
+   absolute path under `pre_tool_call` with `fail_closed: true`, and it had already fired earlier in
+   the same session. Both false verdicts — *a gate that blocks nothing* and *a gate that is not
+   there* — come from the same mistake: reading a label instead of a resolution path.
 4. **Encryption beside its own key is not encryption.** A ciphertext and its key in the same readable
    directory is *plaintext with extra steps* — verify by decrypting, not by confirming the file ends
    in `.enc`. Report the credential as EXTRACTABLE, not merely readable; the difference is whether an
@@ -281,7 +316,72 @@ honest callers while any caller who sets one environment variable passes through
 theatre, and worse than none: it teaches everyone the boundary exists. Mark it NOT WIRED, state the
 measured open paths, and hand the OS-level fix to the owner.
 
+## A clean report is a claim about the instrument — audit the instrument's own state
+
+A monitor, guard or validator has **state**, and its verdict is computed against that state. When the
+state is wrong, the instrument reports clean and nothing anywhere errors. Three ways it happens, all
+found by reading the instrument rather than the thing it measures.
+
+- **A reference that does not survive restart grants a silent amnesty.** If the pinned baseline,
+  snapshot or fingerprint lives only in memory, the first check after any restart sees nothing to
+  compare against, pins whatever is being served at that instant, and returns zero drift. A verdict
+  accumulated over weeks evaporates on a restart, and no record says it did. Detect it by reading the
+  store class: a `Map` with a comment naming the persistence path is the tell — then check whether
+  that path has ever existed (`ls`, plus `git log -- <path>`; a path in a comment is not a file).
+  Test it directly: note the current verdict, restart the instrument, and see whether the same
+  condition is still reported. **A finding that disappears when the instrument restarts is a finding
+  about the instrument.** Corollary: a restart is a free experiment — use it deliberately and record
+  the before/after verdict as a measurement, not as a maintenance step.
+- **The first read after a transport or session is created is not the steady-state read.** A server
+  that builds its registry, transport or schema tree lazily answers the first request from a cold
+  state and every later one from a warm state. Measured shape: all 121 tool schema hashes differed
+  between the two regimes — the same value set, inverted — so a reference pinned from a cold read
+  made every subsequent warm read look like a permanent change. Never pin a reference from the first
+  read; re-read before pinning, and before publishing a change re-read once against the SAME
+  reference, discarding the finding if the second read agrees with the reference. The corroborating
+  evidence is usually already in the service's own log — a line like "transport created on first
+  session request" at the exact timestamp of the anomaly.
+- **Ask who reads the output before treating the output as evidence.** Grep the box for a consumer of
+  the artifact the instrument writes: the service source, the scheduler, the audit tree, the tool
+  registry. An output with no reader is not a witness, it is a file — and that finding outranks every
+  number the instrument produced. Volume is not significance.
+
+  **Corollary — when every stage can hand work to the next, grade the chain by where work
+  TERMINATES.** A pipeline in which each component can pass the artefact onward produces volume, not
+  consequence, and nothing errors while it accumulates: receipts written, no reader, no decision
+  attached. Ask of each output which decision or human it lands on; work that cannot be attached to a
+  cause or a decision is activity, not result. Throughput is never the outcome metric for a system
+  whose stages can all forward.
+
+**Verify a change to an instrument on the installed artifact, not on a plan.** Build the harness
+against the artifact that will actually run, redirect only its output paths, and assert both
+directions: an unchanged input writes nothing, and a changed input writes exactly once. Add a
+deliberately unstable source — a fake endpoint that alternates its answer on every call — and assert
+it produces zero findings and moves no reference. A fix for a flapping instrument tested only against
+a steady one has not been tested.
+
+## A rate needs the whole population, and the population's own shape
+
+- **Quote a census, not a slice, before you quote a percentage.** A sample supports a claim about the
+  samples; reading the entire population is usually cheap and is the only thing that supports "100% of
+  N". Where a full pass is too expensive, state the fraction examined in the same sentence as the figure.
+- **Test for duplicate-ness before reporting duplication.** Grouping records by timestamp and counting
+  groups with more than one member measures timestamp collisions, not duplicated content. Hash the
+  payloads with volatile fields (timestamps, latencies, durations) stripped and compare — grouping is a
+  hypothesis, hashing is the measurement. A file size that differs between two "identical" records is
+  the same defect: compare content, not metadata.
+- **Extract the properties you will want later BEFORE you purge a population.** Deleting an observed
+  pile destroys the ability to measure anything about it afterwards: a rate, a distribution, a
+  first-seen date. Record the aggregate statistics and a sorted `name<TAB>size` manifest hash first,
+  keep a few samples as live witnesses, and put both paths in the receipt. A purge is irreversible for
+  every question not asked before it ran — and the question you end up wanting is usually the one you
+  did not have yet.
+
 ## Depth
+
+`references/sovereign-verdict-reporting.md` — asked for a flat verdict on his own build: measure
+before ranking, split the verdict by layer, name the one non-commodity delta, retract by replacing.
+
 
 `references/live-probe-discipline.md` — served artifact vs working checkout, same-name-two-stores,
 working while others write, independent verification, treating a blocked mutation as a result.
@@ -290,3 +390,9 @@ working while others write, independent verification, treating a blocked mutatio
 enumerate the gate chain, satisfy it one gate per attempt, classify each blocker as caller error
 vs defect vs intentional constraint, and report the gate and its measured margin instead of "it
 was blocked."
+
+`references/attention-entropy-audit-recipe.md` — asked for an attention / entropy / chaos audit:
+inventory the load and classify it by state, measure each item's attention cost against its reality
+impact, apply the parasite test (who reads it · has it ever changed a decision · does it have a
+rotation or kill rule), rank most-attention-for-least-reality first, and close on the single removal
+that releases the most.

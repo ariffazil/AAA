@@ -339,6 +339,20 @@ A healthy dedupe or compression stat says nothing about *which trees are in scop
 backup covers neither the deployment root nor the agent work tree, "we have backups" is true
 and irrelevant to every candidate on the list.
 
+**Hash the doomed set before you remove it.** A purge destroys the ability to measure anything about
+the population afterwards — its rate, its distribution, its first-seen date — and those are usually
+the questions asked next. Write a receipt first: file count, byte total, oldest and newest timestamps,
+an aggregate census by status and reason class, a sorted `name<TAB>size` manifest hash over the whole
+doomed set, exactly what you deliberately retained as samples, and the reversal path (for a
+regenerating artifact, "the producer writes a fresh one on the next tick" is a reversal). Then
+delete. The manifest is a few hundred bytes and turns an irreversible act into an auditable one;
+without it the purge leaves behind only a number.
+
+**Say what the purge cost you in measurement, not just in disk.** If the pile you are deleting was
+the only record of how often a condition occurred, the honest receipt names that as a limitation of
+the removal, in the same document. Destroying the instrument and the evidence in one action is
+recoverable for disk and not recoverable for the question.
+
 **Report three buckets, not one number:** safe to remove / needs the owner's decision /
 load-bearing. Do not quietly restate a smaller figure as though it were the original plan —
 name which items failed and why, because each failure is a finding about the setup.
@@ -359,6 +373,35 @@ work exists. The durable fix is to push and to widen backup coverage — not to 
    scan that reports it has invented a vulnerability. Use `stat -L -c '%a %U:%G %n'` and
    `readlink -f`; then check the target's mode, not the link's.
 5. Claim before measurement returns — probe is not evidence until it exits.
+
+## `logrotate --force` is not a dry run
+
+`logrotate -d <conf>` is the only non-mutating mode. Adding `--state <tmp>` does
+not make `--force` safe: it makes logrotate perform a **real** rotation while
+writing its bookkeeping elsewhere. Measured case: a "parse test" run this way
+renamed three retained evidence files to `*.1` and left 0-byte stubs in their
+place — the artifacts a purge receipt pointed at, silently emptied.
+
+```bash
+logrotate -d /etc/logrotate.d/<rule>        # parse + decide, touches nothing
+```
+
+If it has already run: the content sits in the `*.1` file, not gone. Remove the
+0-byte stub, rename `.1` back, then verify byte sizes against the receipt.
+Never re-run `--force` "to check" — the check is `-d`.
+
+**A rotation rule must not include the monitor's live state file.** Directories
+holding a single always-current file (`latest.json`, `.last-signature`) need those
+names excluded from the rotation pattern, or the next run rotates the monitor's own
+state and the following probe emits a spurious transition.
+
+## A control surface is not a service
+
+When the change being shipped alters *what a governance/watchdog component
+decides to emit*, treat it as a control mutation, not a bugfix: state the
+before/after observable, prove it with an A/B run of the deployed artifact, and
+record the authority that ordered it. A behaviour that silently changes what the
+institution can see needs a receipt naming who authorized it and why.
 
 ---
 *DITEMPA BUKAN DIBERI*

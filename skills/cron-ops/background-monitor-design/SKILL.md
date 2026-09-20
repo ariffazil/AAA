@@ -25,6 +25,46 @@ happens". Load this before writing the script, not after the first false alarm.
 
 Every design decision below follows from that rule.
 
+## Corollary: gate the WRITER, not just the reader
+
+The rule above is usually implemented on the read side (a gating command that
+suppresses the agent). That is not enough. A monitor that writes one record per
+tick regardless of change is the same defect wearing a different hat: silence is
+preserved, but the pile grows, and every future sweep pays for it.
+
+**Measured case (2026-09-20, KVM8):** a drift watchdog wrote one
+`drift-<ts>.json` per 60s probe for 45 days — 38,282 files, 219.6 MB, **100% HOLD
+across the full census (38,280 readable)**, a single reason class, **46% of writes
+byte-identical duplicates** (17,379 of 20,903 timestamp groups held >1 file;
+400/400 sampled groups identical after stripping volatile timestamps), and **zero
+readers anywhere on the box**. It changed no decision in 45 days. Deleting the
+writer and gating it on state transition cost one commit and reclaimed 219.6 MB.
+
+Design rule: hash the report with volatile fields stripped (timestamps, latency,
+durations) and write an event record **only when the signature differs from the
+last persisted one**. Keep exactly one always-current state file (overwritten in
+place) so the monitor's current view is readable without scanning a pile.
+
+```js
+// strip clock fields so the signature tracks STATE, not time
+const sig = sha256(JSON.stringify(strip(report, ['checked_at','detected_at','latency_ms'])))
+if (sig === readLastSignature()) return false;   // no transition -> no new record
+writeEvent(report); writeLastSignature(sig);
+```
+
+Three questions before shipping any monitor:
+1. **Who reads this output?** If the honest answer is "nobody yet", write to one
+   current-state file and stop. A record with no reader is archive, not governance.
+2. **Has this alert ever changed a decision?** Sample the whole population, not a
+   convenient slice — a 500-file sample said "100% HOLD"; the full census proved it.
+   If the answer is zero over a month, the alert is a wallpaper generator.
+3. **Does the writer have a rotation rule?** An event-per-tick writer on a box with
+   no logrotate is a disk leak with a schedule. Add the rule in the same commit.
+
+Prefer replacing an event emitter with a **state-transition emitter**. This is
+attention-kill-criterion applied to behaviour: stop verifying when additional
+verification cannot change a decision.
+
 ## Procedure
 
 1. **Decide the detection, then the delivery.** Write down (a) the precise
