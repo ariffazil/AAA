@@ -4,21 +4,21 @@ canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
 disk_reconciliation:
-  refreshed: '2026-09-20T15:06:46+00:00'
+  refreshed: '2026-09-20T20:37:03+00:00'
   method: 'skills-census.py --write — machine-derived, do not hand-edit; NOT on a schedule, refresh by running the tool'
-  physical_disk_skills: 528
-  canonical_skills: 723
-  viewed_skills: 516
-  loadable_skills: 503
+  physical_disk_skills: 551
+  canonical_skills: 747
+  viewed_skills: 712
+  loadable_skills: 698
   overlay_skills: 'codex=0, continue=0, gemini=12, kimi=105, opencode=17, qwen=29'
-  whole_mesh_skills: 691
+  whole_mesh_skills: 714
   duplicate_identity_groups: 25
   duplicate_identity_skills: 50
-  shells: 5
+  shells: 4
   diverged: 0
-  broken_symlinks: 1
-  witness_hash: 388fcf49ec7a8a78
-  verdict: FAIL
+  broken_symlinks: 0
+  witness_hash: 617a78efabf36fd2
+  verdict: WARN
 layers:
   substrate:
     count: 8
