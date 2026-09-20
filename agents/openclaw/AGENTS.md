@@ -15,7 +15,7 @@ OpenClaw runtime overlay.
 - **A-FORGE MCP broker:** KVM8 `:7072` (forge.arif-fazil.com/mcp) — execute lanes route through A-FORGE, never direct
 - **A-FORGE legacy HTTP:** KVM8 `:7071` (af-forge-sense) — read-only probe compatible
 - **Kernel governance:** arifOS `:8088` (mcp.arif-fazil.com) — judge + seal via constitutional
-- **Cold archive (KVM8):** `/root/.quarantine/zen-20260912/.openclaw-cold/openclaw-heritage-2.8G-20260904/` (NOT `/root/.openclaw-cold/` — path migrated 2026-09-07; verify before use)
+- **Cold archive (KVM8):** **ABSENT** (measured 2026-09-20). Neither `/root/.openclaw-cold/` nor `/root/.quarantine/zen-20260912/.openclaw-cold/openclaw-heritage-2.8G-20260904/` exists. Do not plan on heritage files.
 - **Agent identity (kernel):** `openclaw/FI-017` · capabilities: OBSERVE · REASON · ROUTE · MEMORY · max_blast_radius: T1 · bound_to: `arif-fazil/F13`
 - **AAA agent card (canonical):** `/root/AAA/agent-cards/functions/openclaw/agent-card.json` (schemaVersion 2.3.0)
 - **A2A federation card:** `/root/AAA/a2a-server/agent-cards/federation/openclaw.json` (protocolVersion 1.2)
