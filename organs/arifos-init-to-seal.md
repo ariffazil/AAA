@@ -5,6 +5,16 @@
 > **Domain:** F1-F13 floors, session binding, SCT minting  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Session binding, SCT token validity, identity hash match |
+| **Reality** | Actual identity and authority of the actor at execution time |
+| **Failure mode** | TOCTOU — token was valid at bind time but authority changed or identity was spoofed between check and use |
+
+**Every session must ask:** "Does this token prove current authority, or only past authorization?"
+
 ## INIT
 
 ```python

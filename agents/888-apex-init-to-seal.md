@@ -5,6 +5,16 @@
 > **Domain:** Floor inspection, SEAL/HOLD/VOID recommendation  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Floor evaluation scores, pass/fail counts, checklist completion |
+| **Reality** | Constitutional fitness — whether the action is actually safe, authorized, and wise |
+| **Failure mode** | Checkbox compliance — all floors pass but the action is harmful because the floor definitions missed the real risk |
+
+**Every judgment must ask:** "Do these floor scores reflect constitutional safety, or only formal compliance?"
+
 ## INIT
 
 ```python

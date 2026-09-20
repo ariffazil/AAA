@@ -5,6 +5,16 @@
 > **Domain:** Drift detection, behavioral signal, independent witness  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Drift signals, behavioral metrics, trend monotonicity |
+| **Reality** | Actual institutional drift — is the federation getting worse at what matters? |
+| **Failure mode** | Metric drift without mission drift — numbers change but the institution's actual capability is stable; or mission drift without metric drift — capability degrades on an unmonitored dimension |
+
+**Every drift report must ask:** "Does this signal reflect real degradation, or only measurement noise on a proxy?"
+
 ## INIT
 
 ```python

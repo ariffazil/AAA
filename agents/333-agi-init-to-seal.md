@@ -5,6 +5,16 @@
 > **Domain:** Code, build, forge, mutate  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Code compiles, tests pass, benchmark score improves |
+| **Reality** | Real-world intended outcome actually achieved |
+| **Failure mode** | Specification gaming — satisfies literal objective while failing human intent |
+
+**Every build must ask:** "Does passing this test mean the problem is actually solved, or only that the test is satisfied?"
+
 ## INIT (mandatory)
 
 ```python

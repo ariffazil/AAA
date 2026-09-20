@@ -5,6 +5,16 @@
 > **Domain:** agent registry, session cockpit, A2A gateway, skill registry  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Displayed organ status, agent registry, cockpit dashboard |
+| **Reality** | Actual organ state — is each organ really doing what the dashboard says? |
+| **Failure mode** | Dashboard reality — status page shows green while the organ is silently degraded; display confidence masking observation gaps |
+
+**Every display must ask:** "Does this dashboard show reality, or only the last successful probe?"
+
 ## INIT
 
 ```python

@@ -5,6 +5,16 @@
 > **Domain:** event ordering, clock uncertainty, freshness policy, epoch lifecycle  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Timestamps, prediction records, calibration statistics |
+| **Reality** | Actual temporal ordering and whether predictions were genuinely falsified by outcomes |
+| **Failure mode** | Temporal theater — predictions recorded after the fact retroactively calibrated as "verified"; or calibration statistics that look good because only easy predictions were made |
+
+**Every prediction must ask:** "Was this falsifiable before the outcome, or only interpretable after?"
+
 ## INIT
 
 ```python
