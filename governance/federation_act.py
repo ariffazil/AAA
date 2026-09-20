@@ -19,6 +19,7 @@ DITEMPA BUKAN DIBERI — Tokens are forged, not assumed.
 from __future__ import annotations
 
 import hashlib
+import hmac
 import json
 import logging
 import os
@@ -40,6 +41,103 @@ SCT_RE = re.compile(r"^sct_v1\.[A-Za-z0-9_\-]+(?:\.[A-Za-z0-9_\-]+)?$")
 def _fingerprint(token: str) -> str:
     """Cryptographic fingerprint of a token — NEVER log the raw token."""
     return "sha256:" + hashlib.sha256(token.encode()).hexdigest()[:12]
+
+
+# ══════════════════════════════════════════════════════════════════════
+# G-09 FIX (2026-09-20, FI-008) — local HMAC verification for the
+# sovereign-ignition recovery branch.
+#
+# DEFECT: that branch decoded the payload and trusted the `auth` claim
+# merely because the signature region was well-formed. The comment claimed
+# "an attacker cannot mint an SCT without the kernel's HMAC key" — but no
+# code ever checked the HMAC. Proven 2026-09-14: 4 of 6 attempts ALLOWED
+# act_v1.<b64({"auth":"SOVEREIGN"})>.deadbeefdeadbeef into GEOX, WELL and
+# WEALTH.
+#
+# FIX: verify the HMAC locally with the kernel's own signing secret. That
+# secret already resolves on this host, so no kernel round-trip is needed —
+# which is what the recovery branch existed to avoid. If the secret cannot
+# be resolved we FAIL CLOSED: an unverifiable token is not an authorized one.
+# ══════════════════════════════════════════════════════════════════════
+
+_PROD_SIGNING_KEY_PATHS = (
+    "/root/.secrets/arifos-session-secret.key",
+    "/root/.secrets/sct-signing.key",
+    "/var/lib/arifos/secrets/session_secret",
+)
+
+
+def _resolve_local_signing_secret() -> bytes | None:
+    """Resolve the SCT HMAC key as the kernel does.
+
+    Mirrors arifosmcp.runtime.act_token._get_signing_secret(), minus its
+    process-local RANDOM fallback: a random key would silently reject every
+    valid token, so return None and let the caller fail closed.
+    """
+    secret = os.getenv("ARIFOS_SESSION_SECRET")
+    if not secret:
+        sf = os.getenv("ARIFOS_SESSION_SECRET_FILE")
+        if sf and os.path.exists(sf):
+            try:
+                with open(sf, encoding="utf-8") as fh:
+                    secret = fh.read().strip()
+            except OSError:
+                secret = None
+    if not secret:
+        for env_file in ("/root/.secrets/kunci-root.env", "/root/.secrets/kunci-mas.env"):
+            try:
+                if not os.path.isfile(env_file):
+                    continue
+                with open(env_file, encoding="utf-8") as fh:
+                    for line in fh:
+                        line = line.strip()
+                        if line.startswith("export ARIFOS_SESSION_SECRET=") or line.startswith(
+                            "ARIFOS_SESSION_SECRET="
+                        ):
+                            val = line.split("=", 1)[1].strip().strip('"').strip("'")
+                            if val:
+                                secret = val
+                                break
+                if secret:
+                    break
+            except OSError:
+                continue
+    if secret:
+        return secret.encode() if isinstance(secret, str) else secret
+    for path in _PROD_SIGNING_KEY_PATHS:
+        try:
+            if not os.path.isfile(path):
+                continue
+            with open(path, "rb") as fh:
+                raw = fh.read()
+            if len(raw) == 32:
+                return raw
+            text = raw.decode("utf-8", errors="ignore").strip()
+            if text:
+                return text.encode()
+        except OSError:
+            continue
+    return None
+
+
+def _verify_local_hmac(payload_b64: str, sig: str) -> tuple[bool, str]:
+    """Constant-time HMAC check. Dual-length accept mirrors the kernel."""
+    secret = _resolve_local_signing_secret()
+    if not secret:
+        return False, "SCT_HMAC_SECRET_UNAVAILABLE"
+    if not sig:
+        return False, "SCT_HMAC_MISSING"
+    try:
+        expected = hmac.new(secret, payload_b64.encode("ascii"), hashlib.sha256).hexdigest()
+    except (UnicodeEncodeError, TypeError, ValueError):
+        return False, "SCT_HMAC_UNCOMPUTABLE"
+    if len(sig) == 64:
+        return (True, "hmac-full") if hmac.compare_digest(expected, sig) else (False, "SCT_HMAC_MISMATCH")
+    if len(sig) >= 16:
+        ok = hmac.compare_digest(expected[:16], sig[:16])
+        return (True, "hmac-legacy-16") if ok else (False, "SCT_HMAC_MISMATCH")
+    return False, "SCT_HMAC_UNCOMPUTABLE"
+
 
 
 @dataclass
@@ -388,18 +486,37 @@ def verify_federation_sct(
 
     if not result.get("valid"):
         # ── FORGED 2026-07-27 (FI-008 · GEOX authority-sync fix) ──
-        # arifOS kernel `validate` mode currently returns status=pending
-        # (not valid=true) for live sessions. As a fail-OPEN recovery
-        # for the sovereign ignition path, decode the SCT payload
-        # directly and trust the signed `auth` claim if the HMAC region
-        # is well-formed. This keeps a forged token out: an attacker
-        # cannot mint an SCT without the kernel's HMAC key, so the
-        # payload claim + valid SCT_v1 shape is sufficient proof of
-        # authority for the cross-organ gate. F2 truth: we still log
-        # the kernel divergence for the receipt ledger.
+        # arifOS kernel `validate` mode can return status=pending (not
+        # valid=true) for live sessions. As a recovery path for the sovereign
+        # ignition flow, decode the payload locally — but only after the
+        # signature verifies. See the G-09 note below. F2 truth: the kernel
+        # divergence is still logged for the receipt ledger.
+        # G-09 FIX (2026-09-20, FI-008): this branch previously trusted the
+        # payload's `auth` claim because the signature region was only
+        # SHAPE-CHECKED, never verified — so a forged token with any signature
+        # reached GEOX, WELL and WEALTH (proven 2026-09-14: 4/6 allowed).
+        # The claim must now be backed by a real HMAC check against the
+        # kernel's signing secret. No key -> no authority.
         try:
             payload_part = sct.split(".", 2)[1] if sct.count(".") >= 2 else ""
+            sig_part = sct.rsplit(".", 1)[1] if sct.count(".") >= 2 else ""
             if payload_part:
+                hmac_ok, hmac_reason = _verify_local_hmac(payload_part, sig_part)
+                if not hmac_ok:
+                    logger.warning(
+                        "SCT recovery branch REFUSED: %s (token %s)",
+                        hmac_reason,
+                        _fingerprint(sct),
+                    )
+                    return SCTVerification(
+                        ok=False,
+                        error_code=hmac_reason,
+                        error_message=(
+                            "Recovery path requires a verified HMAC signature; "
+                            f"{hmac_reason}. Kernel also rejected the token."
+                        ),
+                    )
+
                 import base64
 
                 padded = payload_part + "=" * ((4 - len(payload_part) % 4) % 4)
@@ -407,6 +524,12 @@ def verify_federation_sct(
                 payload = json.loads(decoded.decode("utf-8"))
                 payload_auth = payload.get("auth") or payload.get("authority")
                 if payload_auth in ("FULL", "SOVEREIGN", "LIMITED_MUTATE", "OPERATOR"):
+                    logger.info(
+                        "SCT recovery branch ACCEPTED %s via %s (token %s)",
+                        payload_auth,
+                        hmac_reason,
+                        _fingerprint(sct),
+                    )
                     return SCTVerification(
                         ok=True,
                         claims=payload,
@@ -414,7 +537,7 @@ def verify_federation_sct(
                         authority=payload_auth,
                     )
         except Exception:
-            pass
+            logger.exception("SCT recovery branch failed; refusing (fail-closed)")
         return SCTVerification(
             ok=False,
             error_code="SCT_INVALID",
