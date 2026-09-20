@@ -1,0 +1,95 @@
+{
+  "receipt_id": "glama-middleman-2026-09-21",
+  "ts_utc": "2026-09-20T17:18:58Z",
+  "actor": "FI-007",
+  "objective": "Glama unused middleman: do not lock sovereign MCP door; cut false alerts; do not unlist without Glama account",
+  "decision": {
+    "sovereign_mcp_auth": "UNCHANGED_OPEN_DISCOVERY",
+    "glama_listing": "LEFT_IN_PLACE_NO_API_TO_UNLIST",
+    "false_tool_change_emails": "UNSUBSCRIBED_CATEGORY",
+    "orphan_caddy_glama_json": "NOT_PUBLISHED_NOT_UPDATED",
+    "github_stale_glama_json": "NOT_MUTATED"
+  },
+  "observed": {
+    "tools_list": {
+      "url": "https://mcp.arif-fazil.com/mcp",
+      "http": 200,
+      "bytes": 35193,
+      "n_tools": 8,
+      "names": [
+        "arif_init",
+        "arif_observe",
+        "arif_think",
+        "arif_route",
+        "arif_memory",
+        "arif_judge",
+        "arif_forge",
+        "arif_seal"
+      ]
+    },
+    "anonymous_arif_forge": {
+      "verdict": "HOLD",
+      "actor_id": "anonymous",
+      "actor_verified": false,
+      "can_mutate": false,
+      "trace_id": "trc-8c86d00c7f8d"
+    },
+    "anonymous_arif_seal": {
+      "verdict": "OBSERVE_ONLY",
+      "seal_allowed": false,
+      "mutation_allowed": false,
+      "actor_id": "anonymous",
+      "actor_verified": false,
+      "trace_id": "trc-6674d6768956",
+      "note": "mode=verify read-path; write still blocked"
+    },
+    "glama_gateway_initialize_no_token": {
+      "url": "https://glama.ai/endpoints/w30a5aeni6/mcp",
+      "http": 400,
+      "error": "access_token_not_found"
+    },
+    "glama_api_directory": {
+      "http": 401,
+      "note": "no GLAMA_API_KEY in kunci-root; SMITHERY_API_KEY exists (different registry)"
+    },
+    "well_known_glama_json_caddy": {
+      "mcp.arif-fazil.com/.well-known/glama.json": 404,
+      "arifos.arif-fazil.com/.well-known/glama.json": 404,
+      "arifosmcp.arif-fazil.com/.well-known/glama.json": "200 HTML SPA, not a card"
+    },
+    "github_crawled_card": {
+      "path": "ariffazil/arifOS/static/.well-known/glama.json",
+      "version": "2026.07.17",
+      "claims_total_mcp_tools": 65,
+      "live_registry": {
+        "registry_size": 62,
+        "declared_tools": 48,
+        "exposed_tools": 8,
+        "release": "v2026.08.01"
+      }
+    },
+    "tool_change_emails": {
+      "from": "support@glama.ai",
+      "dates_utc": [
+        "2026-09-12",
+        "2026-09-18",
+        "2026-09-20"
+      ],
+      "claim": "rewrote arif_judge",
+      "classification": "FALSE_DELTA_COLD_PROBE",
+      "unsubscribe": "category MCP connector tool change notifications; alreadyUnsubscribed=true after POST confirm"
+    },
+    "glama_usage_7d": {
+      "state": "REPORTED_BY_HERMES",
+      "value": "0 tool calls",
+      "this_probe": "NOT_INDEPENDENTLY_MEASURED"
+    }
+  },
+  "not_done": [
+    "did not add bearer/auth to mcp.arif-fazil.com/mcp",
+    "did not unlist glama.ai/mcp/servers/ariffazil/arifos (requires claimed Glama account / dashboard)",
+    "did not expand Glama to GEOX/WELL/WEALTH/FORGE",
+    "did not publish orphan disk glama.json via Caddy"
+  ],
+  "remaining_f13": "Unlist/disable the Glama connector itself still needs the Glama dashboard (claim + Admin). Not re-asked as kekal/tarik/auth menu."
+}

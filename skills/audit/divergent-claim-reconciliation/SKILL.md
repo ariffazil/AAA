@@ -31,6 +31,21 @@ Write down, for each side: **host + node role + surface + time window.**
 written" are different claims with different evidence requirements. An observer that finds
 nothing on its own seat has produced a *finding about its seat*, not a verdict on the artifact.
 
+**The process dimension of a vantage.** Host, surface and window are the obvious axes; a fourth is
+*whose context* the reading was taken in. A service's own health field is computed with the process's
+cwd, user and config — so re-take it there before calling the service a liar:
+
+```bash
+PID=$(systemctl show <svc> -p MainPID --value)
+readlink /proc/$PID/cwd          # the directory it actually runs in
+ps -o user= -p $PID              # the user it actually runs as
+sudo -u <that-user> <the command the service runs>
+```
+
+Measured: a service reporting a dirty working tree looked like a contradiction against a clean repo
+until the same `git status` ran as the service's own user, which returned an untracked path the root
+user's config excludes. Two vantages, one repo, no defect. A user-level ignore rule is a vantage.
+
 ## Step 2 — Enumerate surfaces before choosing a cause
 
 A client reporting missing capabilities has one of three causes. Each has a different fix.
@@ -55,6 +70,20 @@ tool's declared schema. Read the schema, retry once with the documented shape, t
 
 **Why:** a self-inflicted bad argument reported as a broken tool sends the next session
 patching healthy code, burning budget on an invented fault.
+
+### Check the clock as well as the call shape
+
+A reading is a claim with a timestamp. Before filing a divergence, check whether the fix landed
+*after* the reading that reports the problem: compare a monitor's `last_run_at` against the mtime of
+the artefact it guards. An error from an earlier run is stale, not live. And state moves *inside* a
+session — an upgrade, a restart, another writer's commit — so re-probe immediately before any
+irreversible action; a reading that was true when taken can be false by the time it is acted on.
+
+### Read the reason field before declaring an entry dead
+
+A `disabled` / `paused` / `skipped` entry is not a corpse. Its reason field routinely names a
+successor, a migration target, or the directive that retired it — the record of *why*. Deleting it
+deletes the explanation. If the clutter is the real complaint, fix the **listing**, not the record.
 
 ## Step 4 — Check the axes before calling something a paradox
 
@@ -102,6 +131,11 @@ system claims to have.
 ## Always-on rules
 
 - Every claim and every denial carries `scope: host + role + surface + window`.
+- A self-report is computed in the reporter's own context; reproduce it there (cwd, user) before
+  calling it a contradiction.
+- A reading carries a timestamp; an error older than the fix is stale, and state can move mid-session.
+- Read an entry's reason field before declaring it dead — a paused-with-reason entry is a tombstone,
+  not a corpse.
 - Presence needs one surface; a true absence needs all of them.
 - Check your own call shape before declaring a tool broken.
 - Two live surfaces on one host disagreeing = real defect, not cache.

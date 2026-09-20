@@ -298,6 +298,20 @@ Rules that follow:
    the reason string for a resource bound — timeout, budget, quota, ceiling — and if the bound is
    shorter than the minimum cost of the operation, the finding is *gate unsatisfiable*, owned by
    whoever set the bound, not a policy outcome.
+   **Let the work speak: A/B the identical payload through two classifications.** Re-run the same
+   candidate under a different tier/class and compare only the timing fields. If the *content* is the
+   reason, the verdict repeats; if the *budget* is the reason, the second run completes and the measured
+   duration is set by the work rather than by the ceiling. Do not change the payload between the two
+   runs — one variable, one comparison. A duration landing exactly on the ceiling is a kill, not a
+   completion, and the string it produced is a timeout wearing a verdict's clothes.
+   **A caller stricter than the library it calls is the defect.** When the tool resolves an absent or
+   unrecognised argument to a *tighter* class than the module it imports resolves the same case to, the
+   caller is wrong, not the configuration. Read what the library does with that same input before
+   accepting the caller's default.
+   **Then make the binding assertable.** A classification constant declared inside a long function
+   cannot be imported, diffed or tested — which is how a default drifts below the measured cost of the
+   work and stays there. Hoist it to module scope and pin the invariant with a test that fails on the
+   old value.
    **Clearing one gate reveals the next.** A blocked verdict is often a CHAIN of independent
    blockers, each fail-closed on its own. Name the gate you cleared and the gate that replaced it;
    do not report the first success as the path being open, and do not report the second gate as the

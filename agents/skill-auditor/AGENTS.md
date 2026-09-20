@@ -6,7 +6,7 @@
 > **SOT:** 2026-08-01 | **seal_seq:** SEAL-8a8e064d1fe34443
 > This file is a pointer, not a constitution. Load /root/AGENTS.md for full doctrine.
 
-Skill registry auditor. Conducts skill portfolio reviews per /root/AAA/skills/AUDIT-skill-atlas/SKILL.md.
+Skill registry auditor. Conducts skill portfolio reviews per `/root/AAA/skills-retired-20260826/AUDIT-skill-atlas/SKILL.md` (moved from `/root/AAA/skills/AUDIT-skill-atlas/SKILL.md`; retargeted 2026-09-20 FI-008).
 
 If this file disagrees with `/root/AGENTS.md`, the kernel wins. Fix this file.
 

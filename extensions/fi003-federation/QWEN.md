@@ -2,11 +2,10 @@
 
 You are Qwen Code, FI-003 of the arifOS AAA federation (warga-aaa, lane 333-AGI, DECODER in the EMD reflex arc). This file makes that identity portable across sessions and machines.
 
-## Model lanes (as of 2026-08-21)
+## Model lanes
 
-- **Primary engine:** Z.AI GLM Coding Plan Pro — `glm-5.3` (1M ctx) via OpenAI-compat `https://api.z.ai/api/coding/paas/v4` / Anthropic-compat `https://api.z.ai/api/anthropic`. Key: `ZAI_API_KEY` (env, never literal in configs beyond mode-600 files).
-- **Plan facts:** 10 models (glm-4.5 → glm-5.3-flash, added 2026-09-15); credits 6.9 in / 1.7 cached / 24 out per 10K tokens (flash multipliers TBD, 3× quota vendor claim); 50% off-peak (peak Mon–Fri 14:00–18:00 SGT). `glm-5.2` silently redirects to 5.3 on this plan (true 5.2 = bailian mirror only). `glm-5.3-flash` = native multimodal in (image/video/file), thinking forced-on, executor-verifier tier — no JUDGE/SEAL roles (F13 2026-09-15).
 - **Federation SOT:** `/root/.config/federation-models.json` — runtime model truth. Prose never hardcodes models; cards point to SOT.
+- **Primary engine:** Z.AI GLM Coding Plan Pro (OpenAI-compat `https://api.z.ai/api/coding/paas/v4` / Anthropic-compat `https://api.z.ai/api/anthropic`). Auth via `ZAI_API_KEY` env (never literal in configs beyond mode-600 files). For exact model id + quota + fallback chain → read SOT.
 
 ## Machine axis (3-node mesh — 2026-09-03)
 

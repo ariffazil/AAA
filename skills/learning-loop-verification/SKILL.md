@@ -145,6 +145,56 @@ findings with three separate owners.
   the same defect class as a table nobody reads, and it is worse to leave unreported because
   it gets quoted as authority.
 
+- **Every completed verification needs a terminal explanation.** A record that has reached the
+  verified state must resolve to `LESSON_CREATED` *or* to an evidence-backed `NO_LESSON_REASON`
+  (`NO_MEANINGFUL_SURPRISE`, `BELOW_LEARNING_THRESHOLD`, `MISSING_REQUIRED_FIELDS`,
+  `EXTRACTOR_NOT_INVOKED`, `POLICY_INTENTIONALLY_SUPPRESSED`, `OTHER_MEASURED_CAUSE`). Verified
+  outcomes sitting beside zero lessons is an unexplained gap, not evidence the loop is young — "not
+  mature yet" stops being a reason the moment a record is verified. The invariant to enforce is
+  `VERIFIED → {LESSON_CREATED | NO_LESSON_REASON}`, and it is what makes the loop auditable instead
+  of merely productive.
+- **A lesson whose error class is a placeholder is noise, not closure.** Count the lesson only after
+  checking what class the producer resolved. A classifier that cannot determine the real error class
+  usually writes its own sentinel (`UNKNOWN`, `OTHER`, `None`, `""`) into the record — and the lesson
+  extractor then emits a lesson *about the sentinel*: `Unknown error type 'UNKNOWN' seen 1 times.`
+  That increments `lessons_total` while carrying zero information, so it satisfies the
+  `VERIFIED → LESSON_CREATED` invariant on paper and fails it in substance. Read one produced lesson
+  end to end before crediting the arrow as closed; a placeholder class is a finding about the
+  classifier, and it is *worse* than an honest zero, because the count now looks healthy.
+  The inverse also holds: a guard that skips correct predictions compares against a string sentinel
+  (`if error_type == "NONE"`) while the producer may write a language null (`None`) — a mismatch that
+  silently routes "no error" down the unknown-error branch. Resolve the sentinel in the data before
+  deciding which branch a record takes.
+- **You can obtain the terminal reason by invoking the producer's own extractor once — but declare the
+  store mutation you cause.** When the arrow is unproven because nothing has run since the last
+  verification, running the organ's extractor by hand converts a guessed reason into a measured one.
+  It also writes to the organ's store. Say so in the report: the byte delta, that it is idempotent
+  and deduped by fingerprint, and that the scheduled run would have done the same. An undeclared
+  write to a store you are auditing is indistinguishable from the contamination you are looking for.
+- **Separate `NO_LESSON_BECAUSE_SCHEDULED_AFTER_THE_OUTCOME` from a broken arrow.** Compare the
+  verification timestamp against the extractor's last invocation. A record verified *after* the last
+  run is `EXTRACTOR_NOT_INVOKED_SINCE_VERIFICATION` — the machinery is intact and simply has not been
+  asked yet. Reporting that as a consumer failure sends someone to rebuild a working stage.
+- **Low lesson count can be correct; an unexplained zero cannot.** Do not optimise for more lessons.
+  If outcomes matched expectations, no lesson is the right answer and manufacturing one is drift.
+  What is unacceptable is zero lessons with no terminal reason recorded against any verified item.
+- **Measure the conversion funnel before prescribing a build.** Count each arrow separately —
+  `OBSERVE→PREDICT`, `PREDICT→DUE`, `DUE→VERIFIED`, `VERIFIED→LESSON_CANDIDATE`,
+  `LESSON_CANDIDATE→LESSON` — with a median age per stage. A very large first stage and a near-zero
+  last stage localises the fault to one arrow. A proposal that cannot name *which* arrow is broken
+  will usually prescribe rebuilding machinery that already runs, so always check for existing
+  schedulers, timers and loop scripts before accepting "the mechanism is missing".
+- **A scheduler exit status is not an outcome.** A verifier timer reporting `success` with
+  `due_count=0` is `SCHEDULER_SUCCESS`, not `VERIFICATION_SUCCESS`. Keep the two states separate in
+  every report: a healthy timer over an empty work list certifies nothing about the arrow it was
+  built to close. The same applies to a loop-closer that runs cleanly every cycle because nothing
+  ever reaches a closable state.
+- **Check whether the domain record is even parseable before auditing rates over it.** If the store
+  returns one constant kind/type for every row, you are reading a field the writer never populated —
+  the fine-grained breakdown you were handed came from the organ's internal counters, not from the
+  data. Say which numbers you could re-derive and which you are inheriting; never present an
+  inherited breakdown as your own measurement.
+
 ### A middleware organ that ran once and stalled
 
 An organ can hold well-formed state files, be scheduled, and be `active` — while having completed
