@@ -199,4 +199,27 @@ Until CHRON repair ships, **the doctrine is true; the deployment is not.** The f
 
 The next move — to make this doctrine live — is **getting the 2026-09-18 repair past the kernel `arif_judge` gate** (signing lane restored + F13 to re-judge the `chron-mcp.service` reload with `F13_REQUIRED → F13_SEAL`). That is F13-class binary.
 
+---
+
+## Bridge to Maturation Dynamics (F13, 2026-09-20)
+
+CHRON v2's five-tuple barrier `{distance, closing_rate, load_weight, consequence, witness_count}` is the **infrastructure that makes G(t) computable**. Each APEX dial maps to CHRON barriers:
+
+| APEX dial | CHRON barrier kind | How it updates G(t) |
+|-----------|-------------------|---------------------|
+| A(t) — Authority | governance barrier | authority envelope TTL, trust decay |
+| P(t) — Physics | prediction barrier | verified predictions, calibration score |
+| E(t) — Evidence | trust barrier | evidence count, decisive verdicts |
+| X(t) — Witness | **witness barrier** (W³) | W³ = ∛(H × AI × Ext), hysteresis bands, FRAME drift |
+
+When a barrier's `closing_rate` changes, the corresponding dial's contribution to G(t) updates. CHRON emits material changes; arifOS recomputes G; the trajectory advances.
+
+**Key invariant:** Never present G without maturity class. CHRON's `evidence_count` and `calibration_accuracy` determine whether G is frontier (0 verified), appraised (1–9), calibrated (10–49, Brier available), or battle-tested (50+, out-of-sample). A frontier G=0.95 is less trustworthy than a calibrated G=0.70.
+
+The deepest theorem (Rose ↔ APEX parallel): **Probability must mature. Trust must mature.** Both exploration POS and agent governance G fail when collapsed from trajectory to scalar.
+
+Full doctrine: `/root/AAA/instructions/maturation-dynamics.md`
+Cross-domain parallel: `/root/AAA/instructions/apex-rose-parallel.md`
+Eureka: `EUREKA-2026-09-20-ROSE-APEX-MATURATION`
+
 DITEMPA BUKAN DIBERI ⚒️
