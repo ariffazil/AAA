@@ -39,10 +39,15 @@ python3 scripts/skill-collision-census.py --out /tmp/census.json
 python3 scripts/skill-collision-census.py --root canonical=/path/a --root overlay=/path/b
 ```
 
-**Dereference before counting.** Every skill-tree probe must follow symlinks
-(`os.walk(followlinks=True)`, `find -L`, `realpath`). A plain walk of a symlink farm reports
-a live, fully populated tree as empty. The script does this — do not "simplify" it back to
-`os.listdir`.
+**Dereference to discover, then collapse by realpath before counting bodies.**
+Follow symlinks (`os.walk(followlinks=True)`) so a view-tree is not reported empty.
+Then count **unique `realpath(SKILL.md)` as BODIES**. Visit count minus unique reals
+= ALIAS / PROJECTION names, not extra capabilities.
+
+**NEW — 2026-09-20 (610 → 68 → 0 bodies):** a census that follows links and then
+treats every path as a body reports aliases as duplicates. That is false work.
+Classification precedes diagnosis: BODY · ALIAS · PROJECTION · RETIRED · CANONICAL.
+Do not emit a "collapse N duplicates" task until N is unique inodes, not path visits.
 
 ## Rule 2 — De-metadata before extracting triggers
 
@@ -71,9 +76,10 @@ Never merge or archive a trigger collision — those are legitimate neighbours w
 clause is under-specified. Add the discriminating clause to each description instead.
 
 **Special case — the brand × variant matrix.** `<brand>-meta-mesa` / `<brand>-zen-router` /
-`<brand>-agentic-state` across N brands is N files holding 3 capabilities with the brand as a
-parameter. A real consolidation candidate, but the blast radius crosses every harness that
-loads it: HOLD, do not prune.
+`<brand>-agentic-state`: if the disk already has `canonical: true` + `supersedes:` +
+symlinks (meta-mesa merged 2026-09-19), do **not** re-merge. Remaining fragment is
+**consumer memory** storing alias names as separate `skills_used` — fix the observer,
+not the tree. HOLD on prune.
 
 Reporting these classes as one "overlap %" makes both undecidable and invites the wrong fix.
 
