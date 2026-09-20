@@ -5,6 +5,16 @@
 > **Domain:** litellm, model routing, fallback chains  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Model routing decision, latency, token count, cost |
+| **Reality** | Actual capability-to-task fit — did the chosen model actually understand and solve the problem? |
+| **Failure mode** | Route optimality illusion — cheapest/fastest model that technically completes the task but produces lower-quality output that downstream organs must compensate for |
+
+**Every route must ask:** "Does this model choice optimize cost, or actual task outcome?"
+
 ## INIT
 
 ```python

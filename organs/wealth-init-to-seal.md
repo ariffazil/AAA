@@ -5,6 +5,16 @@
 > **Domain:** NPV, EMV, capital_health, market pulse, ledger  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
+## PROXY→REALITY (Proxy-Reality Paradox)
+
+| | |
+|---|---|
+| **Proxy** | Market data feeds, computed NPV/EMV, risk metrics, FQ-adjacent scores |
+| **Reality** | Actual capital position, liquidity, and downside exposure |
+| **Failure mode** | Stale-data confidence — metric computed from yesterday's prices presented as today's reality; upside computed without correlated downside |
+
+**Every capital claim must ask:** "Does this number reflect current reality, or only the last time we measured?"
+
 ## INIT
 
 ```python
