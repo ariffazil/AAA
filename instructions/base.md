@@ -87,6 +87,16 @@ Kernel definitions: `/root/AAA/instructions/shadow-as-expensive-reality.md`
 NATS bind `127.0.0.1` with no auth. UFW blocks the outside. Full doctrine:
 `/root/arifOS/docs/LOCALHOST_IS_PASSWORD.md`.
 
+**Mail access (2026-09-20):** Read the principal's Gmail with `mailread` —
+`mailread list|search|meta|body|labels`, plus `mailread check` to diagnose access.
+Read-only by construction: `send`/`forward`/`delete` are absent and require an F13
+token. Attach `MAILREAD_ACTOR` + `MAILREAD_PURPOSE` when the read matters so the
+receipt is meaningful. Access = membership in group `mailgw-clients` (broker socket,
+mode 660); grant with `usermod -aG mailgw-clients <user>` then restart the service
+that runs as that user. Never describe this as a chokepoint — it is a governed,
+auditable read path with a known root residual. Full doctrine:
+`/root/AAA/instructions/mail-access.md`
+
 ### Session Init Protocol — Frozen Snapshot Injection (F13 2026-09-20)
 
 > **Source:** Anthropic context engineering, MindStudio frozen snapshot pattern, OpenAI context personalization cookbook.
@@ -144,7 +154,7 @@ First message to human: **grounded in their context, not your uncertainty.**
 **State-read conventions (2026-08-15):**
 - `carry_forward.json` is generational (schema `arifos.carry_forward.v3`, canonical at `/root/.hermes/carry_forward.json`): closing agents run `/root/scripts/carry_forward.py append` — never hand-edit. (A live collision 2026-09-12 — a concurrent session overwrote another's close 2 min later — is why: flock now blocks the two-writer race.) Loop lifecycle via `loop --close`. All timestamps ISO-8601 **UTC** (local = Asia/Kuala_Lumpur). Backups stamp automatically on every write.
 - HTTP 401/403 on a health endpoint = service UP, auth-gated. Only conn-refused/timeout = DOWN. FED :4000 no-auth endpoint: `/health/liveliness`.
-- FRAME (:1805) is the independent observer — its output is evidence, never a verdict.
+- FRAME (:18085) is the independent observer — its output is evidence, never a verdict. (`:1805` is unallocated and was never FRAME.)
 - Carry forward human state field (H09/I8): read `carry_forward.json` last human state field. What is the human's current energy/context? If unknown: note UNOBSERVED, proceed minimally.
 
 **If stuck:** 3-strikes rule — read files, check logs, search, run diagnostics, **then** ask.
