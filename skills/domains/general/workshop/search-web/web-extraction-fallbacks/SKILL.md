@@ -68,6 +68,25 @@ Use this skill when `web_extract` fails with a SearXNG error, when `browser_exec
 
 ---
 
+## PATTERN 1B: Playwright Binary Missing (web_extract infra failure)
+
+**Trigger:** `web_extract` returns `Failed to launch chromium because executable doesn't exist at /root/.cache/ms-playwright/chromium-.../chrome-linux64/chrome`
+
+**Root cause:** The Playwright binary that `web_extract` uses internally is not installed on this VPS. This is NOT a site block — it is an infrastructure gap. Every URL will fail the same way.
+
+**Fallback (skip web_extract entirely — go straight to browser_exec DOM extraction):**
+
+1. `browser_exec` with `new_tab(url)` → opens the page in Browser Use (separate browser backend)
+2. `wait_for_load()` → ensures page renders
+3. `js('''(() => { const selectors = ['article', '.post-content', '.entry-content', '.content', 'main', '#content']; for (const sel of selectors) { const el = document.querySelector(sel); if (el && el.textContent.trim().length > 200) return el.textContent.trim(); } return document.body.textContent.trim(); })()''')` → extracts text from DOM
+4. If truncated, continue with `js()` pagination
+
+**Why this works:** `browser_exec` uses Browser Use's own Chromium, not Playwright. Different binary, different installation path. The two tools are independent browser backends.
+
+**Time budget:** 0 retries on web_extract. First failure with Playwright error → pivot to browser_exec immediately.
+
+---
+
 ## PATTERN 3: Combined Failure (SearXNG + Cloudflare)
 
 **The scenario:** User shares a news URL from a Cloudflare-protected site. `web_extract` fails (SearXNG). `browser_exec` times out (Cloudflare). Both primary methods dead.
@@ -143,7 +162,8 @@ User asks for web content / research
   │
   ├─ Try web_extract
   │   ├─ Success → return content
-  │   └─ SearXNG error → PATTERN 1 fallback
+  │   ├─ SearXNG error → PATTERN 1 fallback
+  │   └─ Playwright binary missing → PATTERN 1B (browser_exec DOM extraction)
   │
   ├─ Try browser_exec (if PATTERN 1 insufficient)
   │   ├─ Success → return content
@@ -208,6 +228,7 @@ For SPA sites, browser actions, or authenticated extraction, use `forge_web_extr
 | ❌ | ✅ |
 |---|---|
 | Retrying web_extract after SearXNG error | Pivot to web_search immediately |
+| Retrying web_extract after Playwright binary error | Pivot to browser_exec DOM extraction immediately |
 | 3+ browser_exec attempts on same URL | Maximum 1 attempt, then search fallback |
 | Treating snippet-derived content as `[OBS]` | Label as `[DER]` — synthesized from snippets |
 | Long timeout on browser_exec (>60s) | Fail fast, reconstruct from search |

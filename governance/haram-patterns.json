@@ -1,0 +1,33 @@
+{
+  "schema": "arifos.haram-patterns.v1",
+  "ratified": "2026-09-20",
+  "source": "ChatGPT external analysis + 333-AGI synthesis",
+  "status": "PROPOSED — requires F13 ratification",
+  "patterns": [
+    {"id": "H01", "pattern": "Raw observation treated as infallible", "fix": "EvidenceWeight = f(provenance, integrity, independence, freshness, reliability, scope)"},
+    {"id": "H02", "pattern": "Confidence treated as truth", "fix": "Confidence ≠ Truth unless calibration demonstrated"},
+    {"id": "H03", "pattern": "Memory treated as current reality", "fix": "memory → candidate context, not truth. Present observation > stale memory."},
+    {"id": "H04", "pattern": "Prediction treated as outcome", "fix": "Prediction ≠ Outcome. Separate prediction states from observation states."},
+    {"id": "H05", "pattern": "Metric attainment treated as mission success", "fix": "Agent says success ≠ Success. External outcome verification required."},
+    {"id": "H06", "pattern": "Tool existence treated as tool availability", "fix": "tool exists ≠ tool works. CapabilityRoot must probe actual health."},
+    {"id": "H07", "pattern": "Tool availability treated as authority", "fix": "W7: Identity ≠ Capability ≠ Authority"},
+    {"id": "H08", "pattern": "Claimed identity treated as verified identity", "fix": "actor_claimed ≠ actor_verified ≠ actor_cryptographically_verified"},
+    {"id": "H09", "pattern": "Multiple correlated witnesses treated as independent consensus", "fix": "WitnessStrength ≠ WitnessCount. Require failure-domain diversity."},
+    {"id": "H10", "pattern": "Contradictions silently averaged or overwritten", "fix": "W5: Contradictions are first-class objects. Never resolve by averaging."},
+    {"id": "H11", "pattern": "One global HEALTHY/READY flag authorizing unrelated actions", "fix": "W8: Per-capability readiness. observe=READY, deploy=HOLD."},
+    {"id": "H12", "pattern": "External data allowed to become executable instruction implicitly", "fix": "W13: ExternalContent = Data, never auto = Instruction."},
+    {"id": "H13", "pattern": "Stale evidence used without freshness disclosure", "fix": "W6: Every mutable fact carries timestamp, freshness, staleness_policy."},
+    {"id": "H14", "pattern": "Exact timestamps presented despite unknown clock uncertainty", "fix": "W6: Time = estimate + ordering + uncertainty."},
+    {"id": "H15", "pattern": "Agent self-report accepted as sufficient proof of consequential success", "fix": "W9: Actor ≠ Witness. External outcome verification."},
+    {"id": "H16", "pattern": "Agent allowed to alter its own evaluation criterion during evaluation", "fix": "W16: Bounded learning. Evaluation criteria are constitutionally locked."},
+    {"id": "H17", "pattern": "Agent allowed to expand its own authority", "fix": "W7 + W15: Authority requires external grant. Capability ≠ Authority."},
+    {"id": "H18", "pattern": "Irreversible action without appropriate scoped authority", "fix": "W15: RequiredAuthority ∝ BlastRadius × Irreversibility × Uncertainty."},
+    {"id": "H19", "pattern": "Learning directly promoted into policy without evaluation/rollback", "fix": "W17: Change → test → external outcome → independent verify → promote/reject."},
+    {"id": "H20", "pattern": "Audit/provenance rewritten to fit the latest narrative", "fix": "VAULT999 append-only. Contradictions preserved, never deleted."},
+    {"id": "H21", "pattern": "UNKNOWN converted into certainty merely to continue workflow", "fix": "W4: UNKNOWN must remain UNKNOWN until evidence changes it."},
+    {"id": "H22", "pattern": "Failure/off-nominal paths omitted from validation", "fix": "NASA IV&V: test nominal AND off-nominal behavior."},
+    {"id": "H23", "pattern": "Huge context dump substituted for selective retrieval", "fix": "W14: Progressive disclosure. Minimum sufficient state."},
+    {"id": "H24", "pattern": "Constitution used to suppress contradictory reality", "fix": "W1: Reality constrains constitution. Constitution ≠ Reality."},
+    {"id": "H25", "pattern": "AGI/ASI capability claimed from architecture rather than empirical performance", "fix": "Capability must be demonstrated, not asserted from design."}
+  ]
+}
