@@ -1,273 +1,80 @@
-"""CHRON MCP — query API for other organs.
+#!/usr/bin/env python3
+"""DEPRECATED LOCATION — CHRON organ module. Canonical source: /root/chron/chron_mcp.py
 
-Exposes CHRON data as MCP tools:
-  - chron_episodes: query episodes by function/principal/time
-  - chron_predictions: list predictions by status
-  - chron_calibration: get calibration stats
-  - chron_verify_due: run verification on due predictions
-  - chron_lessons: get extracted lessons
-  - chron_store_stats: episode/prediction counts
+WHY THIS FILE EXISTS IN THIS SHAPE
+----------------------------------
+/root/AAA/scripts was the DOCUMENTED CHRON path (a cron card named it as the
+organ's evidence path). It is NOT the executing path. The systemd units that run
+CHRON execute from /root/chron (ExecStart lines in
+/etc/systemd/system/chron-*.service), and PYTHONPATH=/root makes the `chron`
+package resolve to /root/chron — measured: chron.__file__ == /root/chron/__init__.py.
 
-CHRON MCP is the query interface. CHRON is the organ.
-If MCP dies, capability lives in the store.
+This copy was a frozen snapshot of the same tree at commit 78a23416 (2026-09-18
+14:18) and was never updated; /root/chron carries every later repair.
+MEASURED PROOF of strict-subset status (difflib.unified_diff, old=this file,
+new=/root/chron/chron_mcp.py): AAA-only lines = 5, chron-only = 5. The only
+content unique to this copy was one superseded expression inside the
+chron_store_stats() tool:
 
-DITEMPA BUKAN DIBERI ⚒️
+    [5 lines] verified = [
+                  p
+                  for p in preds
+                  if p.get("status") in ("VERIFIED_CORRECT", "VERIFIED_INCORRECT")
+              ]
+
+The canonical module replaces it with a join against the verification log and a
+canonical-verdict normaliser (`_canonical_verdict`, `_DECISIVE`). After the
+2026-09-18 immutability repair, birth records keep status="ACTIVE" forever, so the
+AAA-side expression returns an EMPTY list — it is not merely older, it is wrong on
+the current data model. No symbol, branch or constant is lost by delegating.
+Full AAA-only line dump: /root/chron/CANONICAL-TREE.md
+
+Canonical record:      /root/chron/CANONICAL-TREE.md
+Pre-change copy:       /root/AAA/scripts/.archived-20260921T032142Z-chron-canonical-dedup/chron_mcp.py
+
+DITEMPA BUKAN DIBERI
 """
+
 
 from __future__ import annotations
 
-import json
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any
+import importlib
+import importlib.util
+import sys
 
-# Import CHRON modules
-from chron.chron_store import get_store
-from chron.chron_prediction import (
-    get_active,
-    get_due,
-    get_verified,
-    compute_calibration,
-    load_predictions,
-    generate_from_chron_events,
-)
-from chron.chron_verify import run_verification
-from chron.chron_learn import extract_lessons, load_lessons, get_candidates
+# ─────────────────────────── DELEGATION ───────────────────────────
+# The canonical CHRON tree is the `chron` PACKAGE at /root/chron, so these
+# modules are package-internal by design. /root/AAA/scripts contains a sibling
+# module `chron.py` (the ALPHA-ZEN clock) which shadows the package, so
+# `import chron.chron_mcp` fails with "'chron' is not a package" while this directory is
+# first on sys.path. Register the package by file path instead of mutating
+# sys.path — verified to resolve with the shadow present.
 
+_PKG_NAME = "chron"
+_PKG_DIR = "/root/chron"
+_CANONICAL = "chron.chron_mcp"
 
-def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-
-
-# ───────────────────────── TOOLS ─────────────────────────
-
-
-def chron_episodes(
-    function: str | None = None,
-    principal: str | None = None,
-    since: str | None = None,
-    limit: int = 10,
-) -> dict:
-    """Query CHRON episodes.
-
-    Args:
-        function: Filter by function (observe/predict/verify/learn)
-        principal: Filter by principal (arif/syed/federation)
-        since: ISO timestamp — only episodes after this time
-        limit: Max results (default 10)
-    """
-    store = get_store()
-    episodes = store.query(
-        function=function, principal=principal, since=since, limit=limit
+_existing = sys.modules.get(_PKG_NAME)
+if _existing is None or not hasattr(_existing, "__path__"):
+    _spec = importlib.util.spec_from_file_location(
+        _PKG_NAME,
+        _PKG_DIR + "/__init__.py",
+        submodule_search_locations=[_PKG_DIR],
     )
-    return {
-        "episodes": episodes,
-        "total": store.count(),
-        "functions": store.functions(),
-        "query_time": _now_iso(),
-    }
+    if _spec is None or _spec.loader is None:
+        raise ImportError(
+            "canonical CHRON package not found at " + _PKG_DIR +
+            " — refusing to run a stale copy. See "
+            "/root/AAA/reports/chron-tree-consolidation-2026-09-21.md"
+        )
+    _pkg = importlib.util.module_from_spec(_spec)
+    sys.modules[_PKG_NAME] = _pkg
+    _spec.loader.exec_module(_pkg)
 
+if __name__ == "__main__":
+    import runpy
 
-def chron_predictions(status: str = "all") -> dict:
-    """List predictions by status.
-
-    Args:
-        status: Filter — 'all', 'active', 'due', 'verified', 'expired'
-    """
-    if status == "active":
-        preds = get_active()
-    elif status == "due":
-        preds = get_due()
-    elif status == "verified":
-        preds = get_verified()
-    else:
-        preds = load_predictions()
-
-    return {
-        "predictions": preds,
-        "count": len(preds),
-        "status_filter": status,
-        "query_time": _now_iso(),
-    }
-
-
-def chron_calibration() -> dict:
-    """Get calibration statistics.
-
-    Returns Brier scores, accuracy, error distribution.
-    """
-    calibration = compute_calibration()
-    return {
-        "calibration": calibration,
-        "query_time": _now_iso(),
-    }
-
-
-def chron_verify_due(dry_run: bool = False) -> dict:
-    """Run verification on all due predictions.
-
-    Args:
-        dry_run: If True, don't update predictions or create episodes.
-    """
-    result = run_verification(dry_run=dry_run)
-    return result
-
-
-def chron_lessons(status: str = "all") -> dict:
-    """Get extracted lessons.
-
-    Args:
-        status: Filter — 'all', 'candidates', 'promoted'
-    """
-    if status == "candidates":
-        lessons = get_candidates()
-    else:
-        lessons = load_lessons()
-
-    return {
-        "lessons": lessons,
-        "count": len(lessons),
-        "status_filter": status,
-        "query_time": _now_iso(),
-    }
-
-
-def chron_store_stats() -> dict:
-    """Get CHRON store statistics."""
-    store = get_store()
-    preds = load_predictions()
-    lessons = load_lessons()
-
-    active = [p for p in preds if p.get("status") == "ACTIVE"]
-    verified = [
-        p
-        for p in preds
-        if p.get("status") in ("VERIFIED_CORRECT", "VERIFIED_INCORRECT")
-    ]
-    due = get_due()
-
-    return {
-        "episodes": {
-            "total": store.count(),
-            "by_function": store.functions(),
-        },
-        "predictions": {
-            "total": len(preds),
-            "active": len(active),
-            "verified": len(verified),
-            "due_now": len(due),
-        },
-        "lessons": {
-            "total": len(lessons),
-            "candidates": len([l for l in lessons if l.get("status") == "CANDIDATE"]),
-        },
-        "query_time": _now_iso(),
-    }
-
-
-def chron_generate_predictions() -> dict:
-    """Generate predictions from chron_events.json.
-
-    Returns new predictions created.
-    """
-    new_preds = generate_from_chron_events()
-    return {
-        "generated": len(new_preds),
-        "predictions": new_preds,
-        "query_time": _now_iso(),
-    }
-
-
-# ───────────────────────── TOOL REGISTRY ─────────────────────────
-
-TOOLS = {
-    "chron_episodes": {
-        "fn": chron_episodes,
-        "description": "Query CHRON episodes by function/principal/time",
-        "parameters": {
-            "function": {
-                "type": "string",
-                "enum": ["observe", "predict", "verify", "learn"],
-                "optional": True,
-            },
-            "principal": {
-                "type": "string",
-                "enum": ["arif", "syed", "federation"],
-                "optional": True,
-            },
-            "since": {
-                "type": "string",
-                "description": "ISO timestamp",
-                "optional": True,
-            },
-            "limit": {"type": "integer", "default": 10},
-        },
-    },
-    "chron_predictions": {
-        "fn": chron_predictions,
-        "description": "List predictions by status",
-        "parameters": {
-            "status": {
-                "type": "string",
-                "enum": ["all", "active", "due", "verified"],
-                "default": "all",
-            },
-        },
-    },
-    "chron_calibration": {
-        "fn": chron_calibration,
-        "description": "Get calibration statistics (Brier scores, accuracy)",
-        "parameters": {},
-    },
-    "chron_verify_due": {
-        "fn": chron_verify_due,
-        "description": "Run verification on due predictions",
-        "parameters": {
-            "dry_run": {"type": "boolean", "default": False},
-        },
-    },
-    "chron_lessons": {
-        "fn": chron_lessons,
-        "description": "Get extracted lessons from verified predictions",
-        "parameters": {
-            "status": {
-                "type": "string",
-                "enum": ["all", "candidates"],
-                "default": "all",
-            },
-        },
-    },
-    "chron_store_stats": {
-        "fn": chron_store_stats,
-        "description": "Get CHRON store statistics",
-        "parameters": {},
-    },
-    "chron_generate_predictions": {
-        "fn": chron_generate_predictions,
-        "description": "Generate predictions from chron_events.json",
-        "parameters": {},
-    },
-}
-
-
-def list_tools() -> list[dict]:
-    """List all available CHRON MCP tools."""
-    return [
-        {
-            "name": name,
-            "description": tool["description"],
-            "parameters": tool["parameters"],
-        }
-        for name, tool in TOOLS.items()
-    ]
-
-
-def call_tool(name: str, **kwargs) -> dict:
-    """Call a CHRON MCP tool by name."""
-    if name not in TOOLS:
-        return {"error": f"Unknown tool: {name}", "available": list(TOOLS.keys())}
-    try:
-        result = TOOLS[name]["fn"](**kwargs)
-        return result
-    except Exception as e:
-        return {"error": str(e), "tool": name}
+    runpy.run_module(_CANONICAL, run_name="__main__", alter_sys=True)
+else:
+    _mod = importlib.import_module(_CANONICAL)
+    globals().update({k: v for k, v in vars(_mod).items() if not k.startswith("__")})
