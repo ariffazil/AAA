@@ -21,8 +21,32 @@ THE LAW
   keeps saying 21 days a month later.
 
   Every event carries a source. A date with no provenance does not ship.
+
+SHADOW GUARD (Phase 1 fix, 2026-09-21)
+  chron.py is a SCRIPT, not a module. If any code in /root/AAA/scripts/ imports
+  this file as `import chron`, it shadows the canonical chron package at
+  /root/chron/ (the time-axis organ). The hermes cron jobs invoke this script
+  via `python3 /root/AAA/scripts/chron.py` (script mode) so the shadow does not
+  fire in production. But latent risk exists if a future script accidentally
+  `import chron` from /root/AAA/scripts/ — it would load this file and miss
+  chron_store, chron_prediction, etc.
+
+  The guard below refuses module-mode import.   To get the canonical chron
+  package, scripts in /root/AAA/scripts/ MUST set PYTHONPATH=/root so the
+  package resolves to /root/chron/__init__.py.
 """
+
 from __future__ import annotations
+
+# Phase 1 — refuse module-mode import (shadow guard)
+# See SHADOW GUARD docstring above. Only allow script-mode execution.
+if __name__ != "__main__":
+    raise RuntimeError(
+        "/root/AAA/scripts/chron.py is a SCRIPT — module-mode import is refused.\n"
+        "Reason: it would shadow the canonical chron package at /root/chron/.\n"
+        "Fix: invoke as `python3 /root/AAA/scripts/chron.py` (script mode), "
+        "or set PYTHONPATH=/root so `import chron` resolves to /root/chron/__init__.py."
+    )
 
 import json
 import sys
@@ -89,11 +113,12 @@ def components(e: dict, days: int) -> dict:
     """
     return {
         # truth-shaped: does the claim hold, and how strongly
-        "truth_score": (CONSEQUENCE_W.get(e.get("consequence", "LOW"), 1.0)
-                        * CONFIDENCE_W.get(e.get("confidence", "CONFIRMED"), 1.0)),
+        "truth_score": (
+            CONSEQUENCE_W.get(e.get("consequence", "LOW"), 1.0)
+            * CONFIDENCE_W.get(e.get("confidence", "CONFIRMED"), 1.0)
+        ),
         # time-shaped: how soon, and does it demand action
-        "urgency_score": (urgency(days)
-                          * ACTION_W.get(e.get("actionability", "WATCH"), 1.0)),
+        "urgency_score": (urgency(days) * ACTION_W.get(e.get("actionability", "WATCH"), 1.0)),
         "consequence": e.get("consequence", "LOW"),
         "confidence": e.get("confidence", "CONFIRMED"),
         "actionability": e.get("actionability", "WATCH"),
@@ -129,7 +154,7 @@ def active(events: list[dict], *, who: str | None = None) -> list[dict]:
             continue
         days = (d - today).days
         if days < 0:
-            continue                      # expired: no stale countdown, ever
+            continue  # expired: no stale countdown, ever
         comp = components(e, days)
         out.append({**e, "days": days, "score": score(e, days), **comp})
     out.sort(key=lambda x: (-x["score"], x["days"]))
@@ -160,8 +185,7 @@ def year_shape() -> str:
     t = _today()
     doy = t.timetuple().tm_yday
     total = 366 if (t.year % 4 == 0 and (t.year % 100 != 0 or t.year % 400 == 0)) else 365
-    return (f"{t.year} dah {100.0 * doy / total:.0f}% habis — tinggal {total - doy} hari, "
-            f"minggu ke-{t.isocalendar()[1]}")
+    return f"{t.year} dah {100.0 * doy / total:.0f}% habis — tinggal {total - doy} hari, minggu ke-{t.isocalendar()[1]}"
 
 
 def main(argv: list[str]) -> int:
@@ -170,15 +194,36 @@ def main(argv: list[str]) -> int:
         return 0
     if argv and argv[0] == "--json":
         evs = active(load())
-        print(json.dumps({
-            "as_of": _today().isoformat(),
-            "year": year_shape(),
-            "ranked": [{k: e[k] for k in ("id", "title", "target_date", "days",
-                                          "audience", "kind", "confidence",
-                                          "consequence", "actionability", "score",
-                                          "truth_score", "urgency_score")}
-                       for e in evs],
-        }, indent=2, ensure_ascii=False))
+        print(
+            json.dumps(
+                {
+                    "as_of": _today().isoformat(),
+                    "year": year_shape(),
+                    "ranked": [
+                        {
+                            k: e[k]
+                            for k in (
+                                "id",
+                                "title",
+                                "target_date",
+                                "days",
+                                "audience",
+                                "kind",
+                                "confidence",
+                                "consequence",
+                                "actionability",
+                                "score",
+                                "truth_score",
+                                "urgency_score",
+                            )
+                        }
+                        for e in evs
+                    ],
+                },
+                indent=2,
+                ensure_ascii=False,
+            )
+        )
         return 0
     if argv and argv[0] == "--self-test":
         evs = load()
@@ -191,27 +236,55 @@ def main(argv: list[str]) -> int:
         # score from opposite directions; if the parts were destroyed by the
         # blend, a reader cannot tell which is which. This test constructs that
         # exact collision and requires the components to resolve it.
-        urgent_trivial = {"id": "a", "title": "urgent trivial", "target_date": "2099-01-01",
-                          "consequence": "LOW", "confidence": "CONFIRMED",
-                          "actionability": "ACT_NOW"}
-        calm_weighty = {"id": "b", "title": "calm weighty", "target_date": "2099-01-01",
-                        "consequence": "HIGH", "confidence": "CONFIRMED",
-                        "actionability": "WATCH"}
+        urgent_trivial = {
+            "id": "a",
+            "title": "urgent trivial",
+            "target_date": "2099-01-01",
+            "consequence": "LOW",
+            "confidence": "CONFIRMED",
+            "actionability": "ACT_NOW",
+        }
+        calm_weighty = {
+            "id": "b",
+            "title": "calm weighty",
+            "target_date": "2099-01-01",
+            "consequence": "HIGH",
+            "confidence": "CONFIRMED",
+            "actionability": "WATCH",
+        }
         ca = components(urgent_trivial, 1)
         cb = components(calm_weighty, 28)
         assert ca["truth_score"] < cb["truth_score"], "truth not exposed"
         assert ca["urgency_score"] > cb["urgency_score"], "urgency not exposed"
-        print(f"separation test    : PASS (truth {ca['truth_score']} vs {cb['truth_score']}, "
-              f"urgency {ca['urgency_score']} vs {cb['urgency_score']})")
+        print(
+            f"separation test    : PASS (truth {ca['truth_score']} vs {cb['truth_score']}, "
+            f"urgency {ca['urgency_score']} vs {cb['urgency_score']})"
+        )
 
         # prove expiry works without touching the store
-        past = [{"id": "x", "title": "past", "target_date": "2020-01-01",
-                 "audience": "both", "kind": "DEADLINE", "source": "synthetic"}]
+        past = [
+            {
+                "id": "x",
+                "title": "past",
+                "target_date": "2020-01-01",
+                "audience": "both",
+                "kind": "DEADLINE",
+                "source": "synthetic",
+            }
+        ]
         assert active(past) == [], "expiry failed"
         print("expiry test        : PASS (a past event is dropped)")
         # prove the privacy filter works
-        priv = [{"id": "p", "title": "private", "target_date": "2099-01-01",
-                 "audience": "arif", "kind": "PERSONAL_SAFE", "source": "synthetic"}]
+        priv = [
+            {
+                "id": "p",
+                "title": "private",
+                "target_date": "2099-01-01",
+                "audience": "arif",
+                "kind": "PERSONAL_SAFE",
+                "source": "synthetic",
+            }
+        ]
         assert active(priv) == [], "privacy filter failed for shared view"
         assert len(active(priv, who="arif")) == 1, "owner view lost the event"
         print("privacy test       : PASS (arif-only hidden from the shared card)")
