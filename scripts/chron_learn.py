@@ -1,201 +1,75 @@
-"""CHRON Learn — lesson extraction from verified predictions.
+#!/usr/bin/env python3
+"""DEPRECATED LOCATION — CHRON organ module. Canonical source: /root/chron/chron_learn.py
 
-Closes the A3 arrow: OUTCOME → LEARNING.
+WHY THIS FILE EXISTS IN THIS SHAPE
+----------------------------------
+/root/AAA/scripts was the DOCUMENTED CHRON path (a cron card named it as the
+organ's evidence path). It is NOT the executing path. The systemd units that run
+CHRON execute from /root/chron (ExecStart lines in
+/etc/systemd/system/chron-*.service), and PYTHONPATH=/root makes the `chron`
+package resolve to /root/chron — measured: chron.__file__ == /root/chron/__init__.py.
 
-For each verified prediction:
-  1. Compute Brier score
-  2. Classify error (DATA_ERROR, ASSUMPTION_ERROR, MODEL_ERROR, REGIME_CHANGE)
-  3. Extract lesson if error is meaningful
-  4. Create learn episode
-  5. Track lesson candidates for promotion to policy
+This copy was a frozen snapshot of the same tree at commit 78a23416 (2026-09-18
+14:18) and was never updated; /root/chron carries every later repair.
+MEASURED PROOF of strict-subset status (difflib.unified_diff, old=this file,
+new=/root/chron/chron_learn.py): AAA-only lines = 5, chron-only = 29, and all 5
+AAA-only lines are prose, not logic. The only content unique to this copy was:
 
-Lesson lifecycle:
-  CANDIDATE → LESSON → POLICY_CANDIDATE → POLICY
+    [line] the OLD extract_lessons() docstring (2 sentences)
+    [line] a blank line
+    [line] the comment "# Create learn episode"
 
-Promotion requires:
-  - Recurrence (same error_class seen 2+ times)
-  - Measured effect (lesson applied → error reduced)
-  - External validation (FRAME or arifOS confirms)
+The canonical module adds a fingerprint dedup (the L4/L5 loop-closure repair) and
+skips lessons already held. No symbol, branch or constant exists here that is
+absent canonically -> strict subset. Full AAA-only line dump:
+/root/chron/CANONICAL-TREE.md
 
-DITEMPA BUKAN DIBERI ⚒️
+Canonical record:      /root/chron/CANONICAL-TREE.md
+Pre-change copy:       /root/AAA/scripts/.archived-20260921T032142Z-chron-canonical-dedup/chron_learn.py
+
+DITEMPA BUKAN DIBERI
 """
+
 
 from __future__ import annotations
 
-import json
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Optional
+import importlib
+import importlib.util
+import sys
 
-from chron.chron_prediction import get_verified, compute_calibration, save_calibration
-from chron.chron_episode import learn_from_error
-from chron.chron_store import get_store
+# ─────────────────────────── DELEGATION ───────────────────────────
+# The canonical CHRON tree is the `chron` PACKAGE at /root/chron, so these
+# modules are package-internal by design. /root/AAA/scripts contains a sibling
+# module `chron.py` (the ALPHA-ZEN clock) which shadows the package, so
+# `import chron.chron_learn` fails with "'chron' is not a package" while this directory is
+# first on sys.path. Register the package by file path instead of mutating
+# sys.path — verified to resolve with the shadow present.
 
-LESSONS_FILE = Path("/root/chron/data/lessons.jsonl")
+_PKG_NAME = "chron"
+_PKG_DIR = "/root/chron"
+_CANONICAL = "chron.chron_learn"
 
-
-def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-
-
-# ───────────────────────── LESSON EXTRACTION ─────────────────────────
-
-
-def extract_lessons() -> list[dict]:
-    """Extract lessons from all verified predictions.
-
-    Returns list of lesson candidates.
-    """
-    verified = get_verified(limit=100)
-    if not verified:
-        return []
-
-    store = get_store()
-    lessons = []
-
-    # Group by error_type for pattern detection
-    by_error: dict[str, list[dict]] = {}
-    for p in verified:
-        et = p.get("error_type", "UNKNOWN")
-        by_error.setdefault(et, []).append(p)
-
-    for error_type, preds in by_error.items():
-        if error_type == "NONE":
-            continue  # No lesson from correct predictions
-
-        # Count recurrence
-        recurrence = len(preds)
-
-        # Extract lesson from error pattern
-        if error_type == "ASSUMPTION_ERROR":
-            lesson_text = (
-                f"Predictions with {error_type} assumptions are recurring "
-                f"({recurrence} times). Review assumption quality before accepting "
-                f"predictions with untested assumptions."
-            )
-        elif error_type == "DATA_ERROR":
-            lesson_text = (
-                f"Verification failed due to missing data ({recurrence} times). "
-                f"Improve data collection pipeline before verifying predictions."
-            )
-        elif error_type == "MODEL_ERROR":
-            lesson_text = (
-                f"Prediction model was wrong ({recurrence} times). "
-                f"Recalibrate model or switch to ensemble approach."
-            )
-        elif error_type == "REGIME_CHANGE":
-            lesson_text = (
-                f"Regime change detected ({recurrence} times). "
-                f"Predictions based on historical patterns may be invalid."
-            )
-        else:
-            lesson_text = (
-                f"Unknown error type '{error_type}' seen {recurrence} times. "
-                f"Investigate root cause."
-            )
-
-        # Compute mean Brier for this error class
-        brier_scores = [
-            p.get("brier_score", 0.25)
-            for p in preds
-            if p.get("brier_score") is not None
-        ]
-        mean_brier = sum(brier_scores) / len(brier_scores) if brier_scores else None
-
-        lesson = {
-            "lesson_id": f"lesson-{error_type.lower()}-{recurrence}",
-            "error_type": error_type,
-            "recurrence": recurrence,
-            "mean_brier": mean_brier,
-            "lesson": lesson_text,
-            "status": "CANDIDATE",
-            "created_at": _now_iso(),
-            "promotion_eligible": recurrence >= 2,
-            "prediction_ids": [p.get("prediction_id") for p in preds],
-        }
-
-        # Create learn episode
-        if preds:
-            ep = learn_from_error(
-                preds[0],  # representative prediction
-                error_type,
-                lesson_text,
-                mean_brier or 0.25,
-            )
-            store.append(ep)
-
-        lessons.append(lesson)
-
-    # Save lessons
-    _save_lessons(lessons)
-
-    # Update calibration
-    calibration = compute_calibration()
-    save_calibration(calibration)
-
-    return lessons
-
-
-def _save_lessons(lessons: list[dict]) -> None:
-    """Append lessons to JSONL store."""
-    LESSONS_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(LESSONS_FILE, "a") as f:
-        for lesson in lessons:
-            f.write(json.dumps(lesson, default=str) + "\n")
-
-
-def load_lessons() -> list[dict]:
-    """Load all lessons from JSONL store."""
-    if not LESSONS_FILE.exists():
-        return []
-    lessons = []
-    with open(LESSONS_FILE) as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                try:
-                    lessons.append(json.loads(line))
-                except json.JSONDecodeError:
-                    continue
-    return lessons
-
-
-def get_candidates() -> list[dict]:
-    """Get lesson candidates eligible for promotion."""
-    return [
-        l
-        for l in load_lessons()
-        if l.get("status") == "CANDIDATE" and l.get("promotion_eligible")
-    ]
-
-
-# ───────────────────────── CLI ─────────────────────────
-
-
-def main() -> int:
-    import sys
-
-    args = sys.argv[1:]
-
-    if args and args[0] == "candidates":
-        candidates = get_candidates()
-        print(f"Lesson candidates eligible for promotion: {len(candidates)}")
-        for c in candidates:
-            print(f"  [{c['lesson_id']}] {c['lesson'][:60]}")
-            print(
-                f"    recurrence: {c['recurrence']}  brier: {c.get('mean_brier', '?')}"
-            )
-    else:
-        lessons = extract_lessons()
-        print(f"CHRON Learn — extracted {len(lessons)} lessons")
-        for l in lessons:
-            print(f"  [{l['lesson_id']}] {l['lesson'][:60]}")
-            print(
-                f"    recurrence: {l['recurrence']}  eligible: {l['promotion_eligible']}"
-            )
-
-    return 0
-
+_existing = sys.modules.get(_PKG_NAME)
+if _existing is None or not hasattr(_existing, "__path__"):
+    _spec = importlib.util.spec_from_file_location(
+        _PKG_NAME,
+        _PKG_DIR + "/__init__.py",
+        submodule_search_locations=[_PKG_DIR],
+    )
+    if _spec is None or _spec.loader is None:
+        raise ImportError(
+            "canonical CHRON package not found at " + _PKG_DIR +
+            " — refusing to run a stale copy. See "
+            "/root/AAA/reports/chron-tree-consolidation-2026-09-21.md"
+        )
+    _pkg = importlib.util.module_from_spec(_spec)
+    sys.modules[_PKG_NAME] = _pkg
+    _spec.loader.exec_module(_pkg)
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import runpy
+
+    runpy.run_module(_CANONICAL, run_name="__main__", alter_sys=True)
+else:
+    _mod = importlib.import_module(_CANONICAL)
+    globals().update({k: v for k, v in vars(_mod).items() if not k.startswith("__")})
