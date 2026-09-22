@@ -310,7 +310,7 @@ def main():
         }
 
     fm = FederationMemory(
-        actor_id="aaa-skill-mesh-populate",
+        actor_id=os.getenv("ARIFOS_ACTOR_ID", "aaa-skill-mesh-populate"),
         session_id=os.getenv("ARIFOS_SESSION_ID", "system"),
     )
 
@@ -353,18 +353,43 @@ def main():
             tags=["skill-mesh", "populate", f"capability-tier:{tier}"],
             source_type="skill_index",
             source_uri=str(filepath),
+            idempotency_key=f"skill-mesh:{organ}:{skill_id}",
         )
-        # MCP error-results arrive as 200 + isError:true — do NOT count
-        # them as stored (no phantom receipts; F2 — probe before claim).
+        # Receipt verification (F2 — probe before claim; no phantom counters):
+        #  1. MCP tool-level errors arrive as 200 + isError:true.
+        #  2. Constitutional HOLD/VOID arrive as isError:false with verdict
+        #     HOLD and NO memory_id — the kernel refused the write.
+        # Only verdict=SEAL with a memory_id counts as stored.
+        stored_receipt = False
+        err_text = ""
         if isinstance(result, dict) and result.get("isError"):
+            try:
+                err_text = result["content"][0].get("text", "")[:160]
+            except (KeyError, IndexError, TypeError):
+                pass
+        elif isinstance(result, dict):
+            try:
+                _inner = json.loads(result["content"][0].get("text", ""))
+                _res = _inner.get("result", {}) or {}
+                _mid = _res.get("memory_id") or (_res.get("payload") or {}).get("memory_id")
+                if str(_inner.get("verdict", "")).upper() == "SEAL" and _mid:
+                    stored_receipt = True
+                else:
+                    _cc = _inner.get("constitutional_check", {}) or {}
+                    err_text = (
+                        f"verdict={_inner.get('verdict')} "
+                        f"failed_floors={_cc.get('failed_floors')}"
+                    )
+            except (KeyError, IndexError, TypeError, ValueError):
+                receipt_id = result.get("receipt_id")
+                if receipt_id:
+                    stored_receipt = True
+                else:
+                    err_text = "unparseable receipt"
+        if not stored_receipt:
             failed_stores.append(f"{organ}:{skill_id}")
             if len(failed_stores) <= 3:
-                err_text = ""
-                try:
-                    err_text = result["content"][0].get("text", "")[:120]
-                except (KeyError, IndexError, TypeError):
-                    pass
-                print(f"   ⚠ store FAILED {organ}:{skill_id} — {err_text}")
+                print(f"   ⚠ store FAILED {organ}:{skill_id} — {err_text or 'no receipt'}")
         else:
             stored_count += 1
 
