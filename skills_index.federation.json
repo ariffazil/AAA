@@ -1,0 +1,3800 @@
+{
+  "schema": "arifos.skills.federation.v1",
+  "generated_at": "2026-09-22T14:13:14.893956+00:00",
+  "roots": {
+    "AAA": "/root/AAA/skills",
+    "HERMES": "/root/HERMES/skills",
+    "kimi-code": "/root/.kimi-code/skills",
+    "arifOS": "/root/arifOS/skills",
+    "A-FORGE": "/root/A-FORGE/skills"
+  },
+  "priority": [
+    "AAA",
+    "arifOS",
+    "HERMES",
+    "A-FORGE",
+    "kimi-code"
+  ],
+  "total_files": 810,
+  "unique_skills": 754,
+  "deduped": 56,
+  "per_organ_files": {
+    "AAA": 674,
+    "HERMES": 26,
+    "kimi-code": 74,
+    "arifOS": 35,
+    "A-FORGE": 1
+  },
+  "skills": [
+    {
+      "name": "tool-fitness-compiler",
+      "organ": "A-FORGE",
+      "path": "/root/A-FORGE/skills/tool-fitness-compiler/SKILL.md"
+    },
+    {
+      "name": "a-forge-development",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/forge-dev/a-forge-development/SKILL.md"
+    },
+    {
+      "name": "a2a-agent-card-registration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/onboarding/a2a-agent-card-registration/SKILL.md"
+    },
+    {
+      "name": "a2a-task-delegator",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/a2a-task-delegator/SKILL.md"
+    },
+    {
+      "name": "AAA-asr-glm-ingest",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-asr-glm-ingest/SKILL.md"
+    },
+    {
+      "name": "AAA-audio-emd-pipeline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-audio-emd-pipeline/SKILL.md"
+    },
+    {
+      "name": "aaa-audio-mms-ctc-witness",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/witness/aaa-audio-mms-ctc-witness/SKILL.md"
+    },
+    {
+      "name": "AAA-audio-qualia-doctrine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa-audio-qualia-doctrine/SKILL.md"
+    },
+    {
+      "name": "aaa-doctrine-sealing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/governance/aaa-doctrine-sealing/SKILL.md"
+    },
+    {
+      "name": "aaa-event-bridge",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/cron-ops/aaa-event-bridge/SKILL.md"
+    },
+    {
+      "name": "aaa-human-physique-topology",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa-human-physique-topology/SKILL.md"
+    },
+    {
+      "name": "aaa-image-editing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/media/aaa-image-editing/SKILL.md"
+    },
+    {
+      "name": "aaa-knowledge-files",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/substrate/aaa-knowledge-files/SKILL.md"
+    },
+    {
+      "name": "aaa-musyawarah-execution",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa-musyawarah-execution/SKILL.md"
+    },
+    {
+      "name": "AAA-OCR-optical-compression",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa-ocr-optical-compression/SKILL.md"
+    },
+    {
+      "name": "aaa-pdf-voice-protocol",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa-pdf-voice-protocol/SKILL.md"
+    },
+    {
+      "name": "aaa-setup-help",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa-setup-help/SKILL.md"
+    },
+    {
+      "name": "aaa-shadow-mode",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa-shadow-mode/SKILL.md"
+    },
+    {
+      "name": "aaa-skill-governor-runtime",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/aaa-skill-governor-runtime/SKILL.md"
+    },
+    {
+      "name": "AAA-somatic-emd-pipeline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-somatic-emd-pipeline/SKILL.md"
+    },
+    {
+      "name": "AAA-somatic-engine-catalog",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-somatic-engine-catalog/SKILL.md"
+    },
+    {
+      "name": "AAA-somatic-music-doctrine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-somatic-music-doctrine/SKILL.md"
+    },
+    {
+      "name": "AAA-tts-engine-catalog",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-tts-engine-catalog/SKILL.md"
+    },
+    {
+      "name": "AAA-video-emd-pipeline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/capabilities/media/AAA-video-emd-pipeline/SKILL.md"
+    },
+    {
+      "name": "AAA-voice-cloning-mimo-minimax",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-voice-cloning-mimo-minimax/SKILL.md"
+    },
+    {
+      "name": "AAA-voice-cloning-qwen-cloud",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AAA-voice-cloning-qwen-cloud/SKILL.md"
+    },
+    {
+      "name": "abang-sado-creative-lane",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/creative-design/abang-sado-creative-lane/SKILL.md"
+    },
+    {
+      "name": "aforge-test-runner",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/verify-work/aforge-test-runner/SKILL.md"
+    },
+    {
+      "name": "Agent Onboarding",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-onboarding/agent-onboarding/SKILL.md"
+    },
+    {
+      "name": "agent-capability-self-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/capabilities/agent-capability-self-audit/SKILL.md"
+    },
+    {
+      "name": "agent-claim-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/agent-claim-verification/SKILL.md"
+    },
+    {
+      "name": "agent-exploration-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/substrate/agent-exploration-discipline/SKILL.md"
+    },
+    {
+      "name": "agent-finding-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/agent-finding-verification/SKILL.md"
+    },
+    {
+      "name": "agent-output-contract",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/agent-output-contract/SKILL.md"
+    },
+    {
+      "name": "agent-session-forensics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/verification-discipline/agent-session-forensics/SKILL.md"
+    },
+    {
+      "name": "agent-to-agent-enablement",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/mesh-transport/agent-to-agent-enablement/SKILL.md"
+    },
+    {
+      "name": "agent-tool-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agent-tool-verification/SKILL.md"
+    },
+    {
+      "name": "agentic-autonomy-loop",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/agentic-autonomy-loop/SKILL.md"
+    },
+    {
+      "name": "agentic-state",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agentic-state/SKILL.md"
+    },
+    {
+      "name": "agentic-trading-companion",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/wealth/workshop/trading-exec/agentic-trading-companion/SKILL.md"
+    },
+    {
+      "name": "agi-agentic-web-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agi-agentic-web-delivery/SKILL.md"
+    },
+    {
+      "name": "AGI-decisions-reflect",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agi-decisions-reflect/SKILL.md"
+    },
+    {
+      "name": "agi-dream-engine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agi-dream-engine/SKILL.md"
+    },
+    {
+      "name": "AGI-graph-engineering-patterns",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/AGI-graph-engineering-patterns/SKILL.md"
+    },
+    {
+      "name": "AGI-multimodal-bridge",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agi-multimodal-bridge/SKILL.md"
+    },
+    {
+      "name": "agi-nusantara-substrate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agi-nusantara-substrate/SKILL.md"
+    },
+    {
+      "name": "AGI-plan-dag",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agi-plan-dag/SKILL.md"
+    },
+    {
+      "name": "agi-web-optimization",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/agi-web-optimization/SKILL.md"
+    },
+    {
+      "name": "agy-scar-hardening",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/agy-scar-hardening/SKILL.md"
+    },
+    {
+      "name": "ai-video-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/video-gen/ai-video-generation/SKILL.md"
+    },
+    {
+      "name": "alert-inbox-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/alert-inbox-triage/SKILL.md"
+    },
+    {
+      "name": "all-time-and-delisted-charts",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/trading/all-time-and-delisted-charts/SKILL.md"
+    },
+    {
+      "name": "alpha-zen-lanes",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/apex-cognitive-reflex/alpha-zen-lanes/SKILL.md"
+    },
+    {
+      "name": "APEX ACT — Constitutional Reflex (Hermes ASI)",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/apex_verdict_hold/hermes/SKILL.md"
+    },
+    {
+      "name": "apex-gate-evaluator",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/apex-gate-evaluator/SKILL.md"
+    },
+    {
+      "name": "APEX-humility-godel",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel/SKILL.md"
+    },
+    {
+      "name": "APEX-quantum-eureka",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/APEX-quantum-eureka/SKILL.md"
+    },
+    {
+      "name": "apex-verdict",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/apex-verdict/SKILL.md"
+    },
+    {
+      "name": "arif-daily-sensorium",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/research-core/arif-daily-sensorium/SKILL.md"
+    },
+    {
+      "name": "arif-family-members",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/personal-lane/arif-family-members/SKILL.md"
+    },
+    {
+      "name": "arif-human-membrane-integration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/human-interface/arif-human-membrane-integration/SKILL.md"
+    },
+    {
+      "name": "arif-sites-content-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/web-stack/arif-sites-content-ops/SKILL.md"
+    },
+    {
+      "name": "arif-style-zen-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/recursive-audit/arif-style-zen-audit/SKILL.md"
+    },
+    {
+      "name": "ariflow-component-forging",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/organ-forging/ariflow-component-forging/SKILL.md"
+    },
+    {
+      "name": "arifOS ACT — Constitutional Reflex",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/apex_verdict_hold/claude/SKILL.md"
+    },
+    {
+      "name": "arifOS Eight-Verb Canonical Chain",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/arifos-eight-verb-canonical/SKILL.md"
+    },
+    {
+      "name": "arifos-auto-init",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/session/arifos-auto-init/SKILL.md"
+    },
+    {
+      "name": "arifos-constitutional-judge",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/arifos-constitutional-judge/SKILL.md"
+    },
+    {
+      "name": "arifos-external-council",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/arifos-external-council/SKILL.md"
+    },
+    {
+      "name": "arifos-frozen-snapshot-init",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/session/arifos-frozen-snapshot-init/SKILL.md"
+    },
+    {
+      "name": "arifos-kernel-ceremony",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/verdict/arifos-kernel-ceremony/SKILL.md"
+    },
+    {
+      "name": "arifos-kernel-seal-ritual",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/seal-ritual/arifos-kernel-seal-ritual/SKILL.md"
+    },
+    {
+      "name": "arifos-kernel-zen-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/arifos-kernel-zen-audit/SKILL.md"
+    },
+    {
+      "name": "arifos-memory-architecture",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/context-ops/arifos-memory-architecture/SKILL.md"
+    },
+    {
+      "name": "arifos-offline-governance-proof",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance-core/arifos-offline-governance-proof/SKILL.md"
+    },
+    {
+      "name": "arifos-organ-forging",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/organ-forging/arifos-organ-forging/SKILL.md"
+    },
+    {
+      "name": "arifos-runtime-module-authoring",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/substrate/arifos-runtime-module-authoring/SKILL.md"
+    },
+    {
+      "name": "ascii-art",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/ascii-art/SKILL.md"
+    },
+    {
+      "name": "asi-agentic-governance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/asi-agentic-governance/SKILL.md"
+    },
+    {
+      "name": "asi-summarize",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/asi-summarize/SKILL.md"
+    },
+    {
+      "name": "assertion-window-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/assertion-window-discipline/SKILL.md"
+    },
+    {
+      "name": "audience-scoped-disclosure",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-interface/audience-scoped-disclosure/SKILL.md"
+    },
+    {
+      "name": "audio-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-analysis/SKILL.md"
+    },
+    {
+      "name": "audio-feature-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-feature-analysis/SKILL.md"
+    },
+    {
+      "name": "audit-falsification-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/audit-falsification-discipline/SKILL.md"
+    },
+    {
+      "name": "audit-intake-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/audit-intake-verification/SKILL.md"
+    },
+    {
+      "name": "audit-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/audit-ops/SKILL.md"
+    },
+    {
+      "name": "audit-repo-reality",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/audit-repo-reality/SKILL.md"
+    },
+    {
+      "name": "audit-repository-entropy",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/audit-repository-entropy/SKILL.md"
+    },
+    {
+      "name": "audit-seal",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/substrate/audit-seal/SKILL.md"
+    },
+    {
+      "name": "auditable-numeric-artifacts",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/auditable-numeric-artifacts/SKILL.md"
+    },
+    {
+      "name": "authority-reality-grounder",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/authority-reality-grounder/SKILL.md"
+    },
+    {
+      "name": "autonomous-learning-loop",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance-core/autonomous-learning-loop/SKILL.md"
+    },
+    {
+      "name": "autonomous-loop-engineering",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge/autonomous-loop-engineering/SKILL.md"
+    },
+    {
+      "name": "background-monitor-design",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/cron-ops/background-monitor-design/SKILL.md"
+    },
+    {
+      "name": "basin-charge-screening",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/geo/basin-charge-screening/SKILL.md"
+    },
+    {
+      "name": "bijaksana-compile",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/bijaksana-compile/SKILL.md"
+    },
+    {
+      "name": "BIOHACK-PEPTIDES",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/well/workshop/physique-intel/BIOHACK-PEPTIDES/SKILL.md"
+    },
+    {
+      "name": "biohacker-peptide-stack",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/well/workshop/research-core/biohacker-peptide-stack/SKILL.md"
+    },
+    {
+      "name": "blind-prediction-testing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/blind-prediction-testing/SKILL.md"
+    },
+    {
+      "name": "blogwatcher",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/research/blogwatcher/SKILL.md"
+    },
+    {
+      "name": "brevo-email-sending",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/email-outbound/brevo-email-sending/SKILL.md"
+    },
+    {
+      "name": "bridge-lane-functional-probe",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation-topology/bridge-lane-functional-probe/SKILL.md"
+    },
+    {
+      "name": "bridge-protocol",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/substrate/bridge-protocol/SKILL.md"
+    },
+    {
+      "name": "browser-playwright-runner",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/browser-playwright-runner/SKILL.md"
+    },
+    {
+      "name": "builder-commercial-positioning",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/business-intel/builder-commercial-positioning/SKILL.md"
+    },
+    {
+      "name": "caller-trace",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/reflective/caller-trace/SKILL.md"
+    },
+    {
+      "name": "canonical-source-designation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge/canonical-source-designation/SKILL.md"
+    },
+    {
+      "name": "capability-addressing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/capability-addressing/SKILL.md"
+    },
+    {
+      "name": "capability-surface-conformance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/capability-surface-conformance/SKILL.md"
+    },
+    {
+      "name": "capability-telemetry-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/capability-telemetry-audit/SKILL.md"
+    },
+    {
+      "name": "causal-attribution-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/causal-attribution-discipline/SKILL.md"
+    },
+    {
+      "name": "ccc-pool-multihost-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/mesh-transport/ccc-pool-multihost-audit/SKILL.md"
+    },
+    {
+      "name": "chart-artifact-render-qa",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/chart-artifact-render-qa/SKILL.md"
+    },
+    {
+      "name": "chat-screenshot-forensics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/vision-analyzer/chat-screenshot-forensics/SKILL.md"
+    },
+    {
+      "name": "china-ai-key-classification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/secret-hygiene/china-ai-key-classification/SKILL.md"
+    },
+    {
+      "name": "chokepoint-enforcement-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/chokepoint-enforcement-audit/SKILL.md"
+    },
+    {
+      "name": "chron-consequence-tracking",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/chron-consequence-tracking/SKILL.md"
+    },
+    {
+      "name": "cicd-deploy",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/cicd-deploy/SKILL.md"
+    },
+    {
+      "name": "circular-mark-and-arabic-typography",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/design/circular-mark-and-arabic-typography/SKILL.md"
+    },
+    {
+      "name": "civic-article-publishing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/aaa/civic-article-publishing/SKILL.md"
+    },
+    {
+      "name": "civic-intelligence-pdf",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/document-intel/civic-intelligence-pdf/SKILL.md"
+    },
+    {
+      "name": "civic-shadow-editorial",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/creative-design/civic-shadow-editorial/SKILL.md"
+    },
+    {
+      "name": "civic-social-infographic",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/creative-design/civic-social-infographic/SKILL.md"
+    },
+    {
+      "name": "claim-ledger-integrity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/claim-ledger-integrity/SKILL.md"
+    },
+    {
+      "name": "claim-receipt-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/claim-receipt-discipline/SKILL.md"
+    },
+    {
+      "name": "claimed-defect-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/claimed-defect-verification/SKILL.md"
+    },
+    {
+      "name": "code-review",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/code-review/SKILL.md"
+    },
+    {
+      "name": "codebase-reality",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/codebase-reality/SKILL.md"
+    },
+    {
+      "name": "cognitive-commands",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/cognitive-commands/SKILL.md"
+    },
+    {
+      "name": "comfyui",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/comfyui/SKILL.md"
+    },
+    {
+      "name": "companion-clis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/companion-clis/SKILL.md"
+    },
+    {
+      "name": "company-failure-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wealth/company-failure-analysis/SKILL.md"
+    },
+    {
+      "name": "company-solvency-forensics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wealth/company-solvency-forensics/SKILL.md"
+    },
+    {
+      "name": "compensation-claim-grading",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/research/compensation-claim-grading/SKILL.md"
+    },
+    {
+      "name": "composio-social-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/social-media/composio-social-intelligence/SKILL.md"
+    },
+    {
+      "name": "concurrent-agent-writers",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/concurrent-agent-writers/SKILL.md"
+    },
+    {
+      "name": "Constitutional Kernel Architecture",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/constitutional-kernel-architecture/SKILL.md"
+    },
+    {
+      "name": "constitutional-floors",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/governance/constitutional-floors/SKILL.md"
+    },
+    {
+      "name": "contextstream-memory-code-search",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/contextstream-memory-code-search/SKILL.md"
+    },
+    {
+      "name": "control-reality-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/control-reality-audit/SKILL.md"
+    },
+    {
+      "name": "corporate-language-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/corporate-language-audit/SKILL.md"
+    },
+    {
+      "name": "corpus-claim-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/corpus-claim-discipline/SKILL.md"
+    },
+    {
+      "name": "corpus-evidence-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/corpus-evidence-discipline/SKILL.md"
+    },
+    {
+      "name": "credential-exposure-containment",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/security/credential-exposure-containment/SKILL.md"
+    },
+    {
+      "name": "cross-ai-analysis-distillation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/cross-ai-analysis-distillation/SKILL.md"
+    },
+    {
+      "name": "cross-host-artifact-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation-topology/cross-host-artifact-delivery/SKILL.md"
+    },
+    {
+      "name": "cross-node-artifact-transfer",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation-topology/cross-node-artifact-transfer/SKILL.md"
+    },
+    {
+      "name": "cross-surface-conformance-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/cross-surface-conformance-audit/SKILL.md"
+    },
+    {
+      "name": "dashscope-video-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/video-gen/dashscope-video-generation/SKILL.md"
+    },
+    {
+      "name": "deal-consolidation-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/intel-brief/deal-consolidation-intelligence/SKILL.md"
+    },
+    {
+      "name": "decision-risk-quantification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/finance/decision-risk-quantification/SKILL.md"
+    },
+    {
+      "name": "deep-research",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/search-web/deep-research/SKILL.md"
+    },
+    {
+      "name": "delegated-build-fanout",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/delegated-build-fanout/SKILL.md"
+    },
+    {
+      "name": "delta-omega-psi-multimodal-cognition",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/delta-omega-psi-multimodal-cognition/SKILL.md"
+    },
+    {
+      "name": "deploy-drift-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/federation-release/deploy-drift-verification/SKILL.md"
+    },
+    {
+      "name": "deployment-claim-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/federation-release/deployment-claim-verification/SKILL.md"
+    },
+    {
+      "name": "dignity-substrate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/governance/dignity-substrate/SKILL.md"
+    },
+    {
+      "name": "disclosure-advisory",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/counseling/disclosure-advisory/SKILL.md"
+    },
+    {
+      "name": "dissipative-transition-hold",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/dissipative-transition-hold/SKILL.md"
+    },
+    {
+      "name": "divergent-claim-reconciliation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/divergent-claim-reconciliation/SKILL.md"
+    },
+    {
+      "name": "docforge-document-lane",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/document-intel/docforge-document-lane/SKILL.md"
+    },
+    {
+      "name": "document-pipeline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/document-pipeline/SKILL.md"
+    },
+    {
+      "name": "drift-watch",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/drift-watch/SKILL.md"
+    },
+    {
+      "name": "duckdb-analytics-engine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/duckdb-analytics-engine/SKILL.md"
+    },
+    {
+      "name": "durable-artifact-authoring",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/durable-artifact-authoring/SKILL.md"
+    },
+    {
+      "name": "durable-claim-ledger",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/durable-claim-ledger/SKILL.md"
+    },
+    {
+      "name": "email-outbound",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/email-outbound/email-outbound/SKILL.md"
+    },
+    {
+      "name": "emem-shared-memory",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/emem-shared-memory/SKILL.md"
+    },
+    {
+      "name": "enforcement-coverage-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/enforcement-coverage-verification/SKILL.md"
+    },
+    {
+      "name": "entity-failure-forensics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/finance/entity-failure-forensics/SKILL.md"
+    },
+    {
+      "name": "entity-position-dossier",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/intel-brief/entity-position-dossier/SKILL.md"
+    },
+    {
+      "name": "entropy-metabolizer",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/entropy-metabolizer/SKILL.md"
+    },
+    {
+      "name": "escalation-trajectory-hold",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/escalation-trajectory-hold/SKILL.md"
+    },
+    {
+      "name": "evaluating-llms-harness",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mlops/evaluation/evaluating-llms-harness/SKILL.md"
+    },
+    {
+      "name": "event-driven-alerting",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/event-driven-alerting/SKILL.md"
+    },
+    {
+      "name": "evidence-gate-hardening",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/evidence-gate-hardening/SKILL.md"
+    },
+    {
+      "name": "evidence-hierarchy",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/evidence-hierarchy/SKILL.md"
+    },
+    {
+      "name": "excalidraw",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/excalidraw/SKILL.md"
+    },
+    {
+      "name": "external-artifact-verdict",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/external-artifact-verdict/SKILL.md"
+    },
+    {
+      "name": "external-platform-mcp",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/external-platform-mcp/SKILL.md"
+    },
+    {
+      "name": "external-review-intake",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/external-review-intake/SKILL.md"
+    },
+    {
+      "name": "external-technology-evaluation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/research-core/external-technology-evaluation/SKILL.md"
+    },
+    {
+      "name": "fed-model-chain-editing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/model-routing/fed-model-chain-editing/SKILL.md"
+    },
+    {
+      "name": "federation-connect-headscale",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation-connect-headscale/SKILL.md"
+    },
+    {
+      "name": "federation-cycle-instrument",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/federation-cycle-instrument/SKILL.md"
+    },
+    {
+      "name": "federation-dep-upgrade",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation-topology/federation-dep-upgrade/SKILL.md"
+    },
+    {
+      "name": "federation-health",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/federation-health/SKILL.md"
+    },
+    {
+      "name": "federation-housekeeping-master",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/federation-housekeeping-master/SKILL.md"
+    },
+    {
+      "name": "federation-knowledge-sweep",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/research-core/federation-knowledge-sweep/SKILL.md"
+    },
+    {
+      "name": "federation-machine-migration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/federation-topology/federation-machine-migration/SKILL.md"
+    },
+    {
+      "name": "federation-machine-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/federation-topology/federation-machine-verification/SKILL.md"
+    },
+    {
+      "name": "federation-mcp-drift-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-mcp-consolidation/restored-by-convergence-pass/domains/general/apex/governance-core/federation-mcp-drift-audit/SKILL.md"
+    },
+    {
+      "name": "federation-memory-writeback",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/federation-memory-writeback/SKILL.md"
+    },
+    {
+      "name": "federation-node-reachability",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/federation-topology/federation-node-reachability/SKILL.md"
+    },
+    {
+      "name": "federation-organ-recovery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/well/forge/federation-topology/federation-organ-recovery/SKILL.md"
+    },
+    {
+      "name": "federation-release-attestation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation-release-attestation/SKILL.md"
+    },
+    {
+      "name": "federation-scheduler-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/cron-ops/federation-scheduler-audit/SKILL.md"
+    },
+    {
+      "name": "federation-service-recovery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/well/forge/federation-topology/federation-service-recovery/SKILL.md"
+    },
+    {
+      "name": "federation-state-report",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation/federation-state-report/SKILL.md"
+    },
+    {
+      "name": "fi-mesh-check",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/fi-mesh-check/SKILL.md"
+    },
+    {
+      "name": "fi-qwen-upgrade",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/fi-qwen-upgrade/SKILL.md"
+    },
+    {
+      "name": "fi-zai-probe",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/fi-zai-probe/SKILL.md"
+    },
+    {
+      "name": "financial-distress-data-lanes",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/finance/financial-distress-data-lanes/SKILL.md"
+    },
+    {
+      "name": "financial-distress-forensics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/finance/financial-distress-forensics/SKILL.md"
+    },
+    {
+      "name": "financial-history-charting",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/financial-history-charting/SKILL.md"
+    },
+    {
+      "name": "financial-report-forensic",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/forensics/financial-report-forensic/SKILL.md"
+    },
+    {
+      "name": "first-party-evidence-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/first-party-evidence-audit/SKILL.md"
+    },
+    {
+      "name": "flash",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/flash/SKILL.md"
+    },
+    {
+      "name": "food-nutrition-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/research-core/food-nutrition-intelligence/SKILL.md"
+    },
+    {
+      "name": "forge-act-federation-ingress",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-act-federation-ingress/SKILL.md"
+    },
+    {
+      "name": "forge-agentic-web-builder",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-agentic-web-builder/SKILL.md"
+    },
+    {
+      "name": "forge-artifact-publisher",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-artifact-publisher/SKILL.md"
+    },
+    {
+      "name": "forge-call-map",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-call-map/SKILL.md"
+    },
+    {
+      "name": "FORGE-ci-diagnose",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/repo-intelligence/FORGE-ci-diagnose/SKILL.md"
+    },
+    {
+      "name": "FORGE-code-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-code-analysis/SKILL.md"
+    },
+    {
+      "name": "FORGE-context-compressor",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-context-compressor/SKILL.md"
+    },
+    {
+      "name": "FORGE-cross-agent-handoff",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-cross-agent-handoff/SKILL.md"
+    },
+    {
+      "name": "FORGE-cross-repo-doc-zen",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/repo-intelligence/forge-cross-repo-doc-zen/SKILL.md"
+    },
+    {
+      "name": "FORGE-design-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-design-intelligence/SKILL.md"
+    },
+    {
+      "name": "FORGE-did-web-identity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-did-web-identity/SKILL.md"
+    },
+    {
+      "name": "forge-document-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-document-intelligence/SKILL.md"
+    },
+    {
+      "name": "forge-embedding-qdrant-integration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge/forge-embedding-qdrant-integration/SKILL.md"
+    },
+    {
+      "name": "FORGE-ephemeral-genesis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-ephemeral-genesis/SKILL.md"
+    },
+    {
+      "name": "FORGE-esm-require-guard",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-esm-require-guard/SKILL.md"
+    },
+    {
+      "name": "forge-event-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/cron-ops/forge-event-delivery/SKILL.md"
+    },
+    {
+      "name": "forge-execution-governance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/governance/forge-execution-governance/SKILL.md"
+    },
+    {
+      "name": "FORGE-fastapi-api-builder",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-fastapi-api-builder/SKILL.md"
+    },
+    {
+      "name": "forge-fastmcp",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-mcp-consolidation/restored-by-convergence-pass/forge-fastmcp/SKILL.md"
+    },
+    {
+      "name": "FORGE-federation-manifest",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/FORGE-federation-manifest/SKILL.md"
+    },
+    {
+      "name": "forge-git-seal",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-git-seal/SKILL.md"
+    },
+    {
+      "name": "forge-github-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/github/forge-github-ops/SKILL.md"
+    },
+    {
+      "name": "FORGE-google-workspace",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-google-workspace/SKILL.md"
+    },
+    {
+      "name": "forge-governance-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/governance/forge-governance-analysis/SKILL.md"
+    },
+    {
+      "name": "forge-governance-jsonld",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/governance/forge-governance-jsonld/SKILL.md"
+    },
+    {
+      "name": "forge-hermes-self-evolution",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-hermes-self-evolution/SKILL.md"
+    },
+    {
+      "name": "FORGE-infra-crons",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-infra-crons/SKILL.md"
+    },
+    {
+      "name": "FORGE-infra-guardian",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-infra-guardian/SKILL.md"
+    },
+    {
+      "name": "FORGE-issue-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-issue-triage/SKILL.md"
+    },
+    {
+      "name": "FORGE-kimi-code",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-kimi-code/SKILL.md"
+    },
+    {
+      "name": "FORGE-komda-color-law",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-komda-color-law/SKILL.md"
+    },
+    {
+      "name": "FORGE-lsp-pre-edit-gate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-lsp-pre-edit-gate/SKILL.md"
+    },
+    {
+      "name": "forge-mcp-a2a-agentic",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/forge-mcp-a2a-agentic/SKILL.md"
+    },
+    {
+      "name": "forge-mcp-governance-wrapper",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/forge-mcp-governance-wrapper/SKILL.md"
+    },
+    {
+      "name": "forge-mcp-gui",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/forge-mcp-gui/SKILL.md"
+    },
+    {
+      "name": "forge-mcp-registry-publish",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/forge-mcp-registry-publish/SKILL.md"
+    },
+    {
+      "name": "forge-minimax-mcp-direct-invoke",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/forge-minimax-mcp-direct-invoke/SKILL.md"
+    },
+    {
+      "name": "FORGE-model-monitor",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-model-monitor/SKILL.md"
+    },
+    {
+      "name": "forge-monolith-split",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/repo-intelligence/forge-monolith-split/SKILL.md"
+    },
+    {
+      "name": "forge-multimodal-router",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-multimodal-router/SKILL.md"
+    },
+    {
+      "name": "FORGE-musyawarah-gotong",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-musyawarah-gotong/SKILL.md"
+    },
+    {
+      "name": "forge-musyawawah-deliberation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/musyawarah/forge-musyawawah-deliberation/SKILL.md"
+    },
+    {
+      "name": "FORGE-nextjs-mastery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-nextjs-mastery/SKILL.md"
+    },
+    {
+      "name": "FORGE-onboarding",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-onboarding/SKILL.md"
+    },
+    {
+      "name": "forge-pdf-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/document-intel/forge-pdf-delivery/SKILL.md"
+    },
+    {
+      "name": "forge-phased-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/media-delivery/forge-phased-delivery/SKILL.md"
+    },
+    {
+      "name": "FORGE-postgres-schema-design",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-postgres-schema-design/SKILL.md"
+    },
+    {
+      "name": "FORGE-react-spa-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-react-spa-discipline/SKILL.md"
+    },
+    {
+      "name": "FORGE-redis-qdrant-integration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-redis-qdrant-integration/SKILL.md"
+    },
+    {
+      "name": "FORGE-repo-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/repo-intelligence/FORGE-repo-intelligence/SKILL.md"
+    },
+    {
+      "name": "forge-route-least-power",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-route-least-power/SKILL.md"
+    },
+    {
+      "name": "FORGE-sct-federation-ingress",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-act-federation-ingress/SKILL.md"
+    },
+    {
+      "name": "FORGE-seal-a-close",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-seal-a-close/SKILL.md"
+    },
+    {
+      "name": "forge-secret-hygiene",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-secret-hygiene/SKILL.md"
+    },
+    {
+      "name": "FORGE-spatial-grounding",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-spatial-grounding/SKILL.md"
+    },
+    {
+      "name": "FORGE-subagent-lifecycle",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-subagent-lifecycle/SKILL.md"
+    },
+    {
+      "name": "FORGE-subagent-spawn",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-subagent-spawn/SKILL.md"
+    },
+    {
+      "name": "forge-symlink-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-symlink-audit/SKILL.md"
+    },
+    {
+      "name": "FORGE-t3a-binding-matrix",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-t3a-binding-matrix/SKILL.md"
+    },
+    {
+      "name": "FORGE-tailwind-tokens",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-tailwind-tokens/SKILL.md"
+    },
+    {
+      "name": "forge-telegram-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/forge-telegram-audit/SKILL.md"
+    },
+    {
+      "name": "FORGE-vault999-witness",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-vault999-witness/SKILL.md"
+    },
+    {
+      "name": "forge-vision-densify",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-vision-densify/SKILL.md"
+    },
+    {
+      "name": "forge-visual-qa-w3",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-visual-qa-w3/SKILL.md"
+    },
+    {
+      "name": "forge-vss-verifier-suite",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-vss-verifier-suite/SKILL.md"
+    },
+    {
+      "name": "forge-web-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/forge-web-intelligence/SKILL.md"
+    },
+    {
+      "name": "FORGE-well-boundary-repair",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge-well-boundary-repair/SKILL.md"
+    },
+    {
+      "name": "forge_card_migrate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation-identity-zen/forge_card_migrate/SKILL.md"
+    },
+    {
+      "name": "fork-drift-assessment",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/federation-release/fork-drift-assessment/SKILL.md"
+    },
+    {
+      "name": "futures-forecast-briefing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/research-core/futures-forecast-briefing/SKILL.md"
+    },
+    {
+      "name": "gate-grounding-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/gate-grounding-audit/SKILL.md"
+    },
+    {
+      "name": "generated-artifact-integrity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge/generated-artifact-integrity/SKILL.md"
+    },
+    {
+      "name": "generated-media-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/media-delivery/generated-media-delivery/SKILL.md"
+    },
+    {
+      "name": "geological-figure-production",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/geo/workshop/my-domain-intel/geological-figure-production/SKILL.md"
+    },
+    {
+      "name": "geoscience-report-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/devops/geoscience-report-generation/SKILL.md"
+    },
+    {
+      "name": "geox-basin-claims-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/geo/geox-basin-claims-audit/SKILL.md"
+    },
+    {
+      "name": "geox-grounding",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/geox-grounding/SKILL.md"
+    },
+    {
+      "name": "geox-production-cockpit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/geox-production-cockpit/SKILL.md"
+    },
+    {
+      "name": "git-history-hygiene",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/devops/git-history-hygiene/SKILL.md"
+    },
+    {
+      "name": "github",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/repo-intelligence/upstream-github-container/SKILL.md"
+    },
+    {
+      "name": "github-auth",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/github/github-auth/SKILL.md"
+    },
+    {
+      "name": "github-code-review",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/github/github-code-review/SKILL.md"
+    },
+    {
+      "name": "github-issue-to-pr",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/github/github-issue-to-pr/SKILL.md"
+    },
+    {
+      "name": "github-issues",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/github/github-issues/SKILL.md"
+    },
+    {
+      "name": "github-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/github/github-ops/SKILL.md"
+    },
+    {
+      "name": "github-pr-workflow",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/github/github-pr-workflow/SKILL.md"
+    },
+    {
+      "name": "github-repo-management",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/github/github-repo-management/SKILL.md"
+    },
+    {
+      "name": "goodnight-loop-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/goodnight-loop-discipline/SKILL.md"
+    },
+    {
+      "name": "google-workspace-gws",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/google-workspace-gws/SKILL.md"
+    },
+    {
+      "name": "governance-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/governance/governance-audit/SKILL.md"
+    },
+    {
+      "name": "governance-benchmark-authoring",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/governance/governance-benchmark-authoring/SKILL.md"
+    },
+    {
+      "name": "governance-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/governance-ops/SKILL.md"
+    },
+    {
+      "name": "governed-uncertainty",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/governed-uncertainty/SKILL.md"
+    },
+    {
+      "name": "graphiti-temporal-memory-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/graphiti-temporal-memory-ops/SKILL.md"
+    },
+    {
+      "name": "handoff-contract",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/federation/handoff-contract/SKILL.md"
+    },
+    {
+      "name": "happyhorse-video-api",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/video-gen/happyhorse-video-api/SKILL.md"
+    },
+    {
+      "name": "har-derived-api-client",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/web-stack/har-derived-api-client/SKILL.md"
+    },
+    {
+      "name": "health-product-claim-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/research-core/health-product-claim-audit/SKILL.md"
+    },
+    {
+      "name": "heartmula",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/audio-emd/heartmula/SKILL.md"
+    },
+    {
+      "name": "hermes-asi-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/hermes-asi-intelligence/SKILL.md"
+    },
+    {
+      "name": "hermes-browser-skills-mesh-snap",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/mesh-transport/hermes-browser-skills-mesh-snap/SKILL.md"
+    },
+    {
+      "name": "hermes-coding-gateway",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/hermes-coding-gateway/SKILL.md"
+    },
+    {
+      "name": "hermes-cron-zen",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/cron-ops/hermes-cron-zen/SKILL.md"
+    },
+    {
+      "name": "hermes-federated-identity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/hermes-federated-identity/SKILL.md"
+    },
+    {
+      "name": "hermes-gateway-image-routing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/hermes-gateway-image-routing/SKILL.md"
+    },
+    {
+      "name": "hermes-lane-switch-routing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/hermes-lane-switch-routing/SKILL.md"
+    },
+    {
+      "name": "hermes-naked-prior-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/session/hermes-naked-prior-audit/SKILL.md"
+    },
+    {
+      "name": "HERMES-opencode-protocol",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/HERMES-opencode-protocol/SKILL.md"
+    },
+    {
+      "name": "hermes-rasa-doctrine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/hermes-rasa-doctrine/SKILL.md"
+    },
+    {
+      "name": "hermes-rca-forge",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/hermes-rca-forge/SKILL.md"
+    },
+    {
+      "name": "hermes-research-substrate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/hermes-research-substrate/SKILL.md"
+    },
+    {
+      "name": "hermes-response-format-fit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/human-interface/hermes-response-format-fit/SKILL.md"
+    },
+    {
+      "name": "hermes-response-latency-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/incident-response/hermes-response-latency-triage/SKILL.md"
+    },
+    {
+      "name": "hermes-runtime-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/hermes-ops/hermes-runtime-audit/SKILL.md"
+    },
+    {
+      "name": "hermes-telegram-gateway-authorization",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/hermes-telegram-gateway-authorization/SKILL.md"
+    },
+    {
+      "name": "hermes-telegram-stack-zen",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/hermes-telegram-stack-zen/SKILL.md"
+    },
+    {
+      "name": "hermes-upstream-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/repo-intelligence/hermes-upstream-audit/SKILL.md"
+    },
+    {
+      "name": "hermes-voice-config",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/voice-stack/hermes-voice-config/SKILL.md"
+    },
+    {
+      "name": "hospital-patient-advocacy",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/health-advocacy/hospital-patient-advocacy/SKILL.md"
+    },
+    {
+      "name": "huggingface-hub",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mlops/huggingface-hub/SKILL.md"
+    },
+    {
+      "name": "human-advisory-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/counseling/human-advisory-discipline/SKILL.md"
+    },
+    {
+      "name": "human-apps-roadmap-2026",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-apps-roadmap-2026/SKILL.md"
+    },
+    {
+      "name": "human-care-coaching",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-interface/human-care-coaching/SKILL.md"
+    },
+    {
+      "name": "human-corpus-falsification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/research-core/human-corpus-falsification/SKILL.md"
+    },
+    {
+      "name": "human-facing-artifact-design",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge/human-facing-artifact-design/SKILL.md"
+    },
+    {
+      "name": "human-facing-recurring-card",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-interface/human-facing-recurring-card/SKILL.md"
+    },
+    {
+      "name": "human-logistics-advisory",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-logistics-advisory/SKILL.md"
+    },
+    {
+      "name": "human-meaning-membrane",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-meaning-membrane/SKILL.md"
+    },
+    {
+      "name": "human-recognition-architecture",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-interface/human-recognition-architecture/SKILL.md"
+    },
+    {
+      "name": "human-response-witness",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-alignment/human-response-witness/SKILL.md"
+    },
+    {
+      "name": "human-state-estimation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-state-estimation/SKILL.md"
+    },
+    {
+      "name": "human-voice-writing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/voice-stack/human-voice-writing/SKILL.md"
+    },
+    {
+      "name": "identity-axiom-derivation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/identity-axiom-derivation/SKILL.md"
+    },
+    {
+      "name": "identity-invariance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/warga/constitutional/identity-invariance/SKILL.md"
+    },
+    {
+      "name": "image-analyzer-vision",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/image-analyzer-vision/SKILL.md"
+    },
+    {
+      "name": "image-gen-fallback-chain",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/image-gen-fallback-chain/SKILL.md"
+    },
+    {
+      "name": "image-identity-transfer",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/image-identity-transfer/SKILL.md"
+    },
+    {
+      "name": "image-restyle-and-edit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/image-restyle-and-edit/SKILL.md"
+    },
+    {
+      "name": "image-text-editing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/image-text-editing/SKILL.md"
+    },
+    {
+      "name": "imagegen",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.system/imagegen/SKILL.md"
+    },
+    {
+      "name": "imagine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/imagine/SKILL.md"
+    },
+    {
+      "name": "inbox-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/workshop/inbox-triage/SKILL.md"
+    },
+    {
+      "name": "incident-response",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/incident-response/SKILL.md"
+    },
+    {
+      "name": "infographic-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/creative-design/infographic-generation/SKILL.md"
+    },
+    {
+      "name": "inherited-claim-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/inherited-claim-audit/SKILL.md"
+    },
+    {
+      "name": "insider-exposure-inventory",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/insider-exposure-inventory/SKILL.md"
+    },
+    {
+      "name": "institution-entropy-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/institution-entropy-audit/SKILL.md"
+    },
+    {
+      "name": "institutional-fact-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/research/institutional-fact-verification/SKILL.md"
+    },
+    {
+      "name": "institutional-forensic-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/repo-intelligence/institutional-forensic-analysis/SKILL.md"
+    },
+    {
+      "name": "institutional-language-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/institutional-language-audit/SKILL.md"
+    },
+    {
+      "name": "institutional-leadership-lineage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/2026-09-17-leadership-roster-merge/research-core/institutional-leadership-lineage/SKILL.md"
+    },
+    {
+      "name": "intelligence-briefing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/intelligence-briefing/SKILL.md"
+    },
+    {
+      "name": "internal-holdings-locate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/internal-holdings-locate/SKILL.md"
+    },
+    {
+      "name": "interpretation-calibration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/interpretation-calibration/SKILL.md"
+    },
+    {
+      "name": "kabarkan-observability",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/telemetry/kabarkan-observability/SKILL.md"
+    },
+    {
+      "name": "kernel-bind",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/substrate/kernel-bind/SKILL.md"
+    },
+    {
+      "name": "kernel-trinity-33",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/kernel-trinity-33/SKILL.md"
+    },
+    {
+      "name": "know-language",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/know-language/SKILL.md"
+    },
+    {
+      "name": "know-math",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/know-math/SKILL.md"
+    },
+    {
+      "name": "know-physics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/know-physics/SKILL.md"
+    },
+    {
+      "name": "know-pragmatics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/knowledge/know-pragmatics/SKILL.md"
+    },
+    {
+      "name": "kpj-sales-dashboard",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/business-intel/kpj-sales-dashboard/SKILL.md"
+    },
+    {
+      "name": "kvm4-ccc-dispatch",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/mesh-transport/kvm4-ccc-dispatch/SKILL.md"
+    },
+    {
+      "name": "layered-perspective-brief",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/intel-brief/layered-perspective-brief/SKILL.md"
+    },
+    {
+      "name": "leadership-roster-archive",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/2026-09-17-leadership-roster-merge/research-core/leadership-roster-archive/SKILL.md"
+    },
+    {
+      "name": "learning-loop-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/learning-loop-verification/SKILL.md"
+    },
+    {
+      "name": "least-privilege-secret-scoping",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge/least-privilege-secret-scoping/SKILL.md"
+    },
+    {
+      "name": "lightweight-image-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/lightweight-image-generation/SKILL.md"
+    },
+    {
+      "name": "link-to-evidence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/link-to-evidence/SKILL.md"
+    },
+    {
+      "name": "listed-equity-chart-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wealth/listed-equity-chart-delivery/SKILL.md"
+    },
+    {
+      "name": "litellm-proxy-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/model-routing/litellm-proxy-triage/SKILL.md"
+    },
+    {
+      "name": "live-pipeline-trace-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/live-pipeline-trace-audit/SKILL.md"
+    },
+    {
+      "name": "live-probe-audit-pattern",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/live-probe-audit-pattern/SKILL.md"
+    },
+    {
+      "name": "live-service-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/live-service-ops/SKILL.md"
+    },
+    {
+      "name": "live-system-audit-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/live-system-audit-discipline/SKILL.md"
+    },
+    {
+      "name": "live-system-investigation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/live-system-investigation/SKILL.md"
+    },
+    {
+      "name": "llama-cpp",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mlops/inference/llama-cpp/SKILL.md"
+    },
+    {
+      "name": "local-memory-retrieval",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/context-ops/local-memory-retrieval/SKILL.md"
+    },
+    {
+      "name": "loved-one-worry-support",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/loved-one-worry-support/SKILL.md"
+    },
+    {
+      "name": "machine-read-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/verification-discipline/machine-read-verification/SKILL.md"
+    },
+    {
+      "name": "mailbox-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-interface/mailbox-triage/SKILL.md"
+    },
+    {
+      "name": "makcikgpt-article-craft",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/civic-publishing/makcikgpt-article-craft/SKILL.md"
+    },
+    {
+      "name": "makcikgpt-article-forging",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/creative-design/makcikgpt-article-forging/SKILL.md"
+    },
+    {
+      "name": "makcikgpt-civic-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/creative-design/makcikgpt-civic-intelligence/SKILL.md"
+    },
+    {
+      "name": "Malaysia Reality Stack — Primary-Source Routing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/MY-REALITY-STACK/SKILL.md"
+    },
+    {
+      "name": "malaysia-reality-interface",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/malaysia-reality-interface/SKILL.md"
+    },
+    {
+      "name": "malaysian-employment-separation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/legal-my/malaysian-employment-separation/SKILL.md"
+    },
+    {
+      "name": "malaysian-family-law",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/my-reality/workshop/legal-my/malaysian-family-law/SKILL.md"
+    },
+    {
+      "name": "malaysian-physique-circuit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/well/workshop/physique-intel/malaysian-physique-circuit/SKILL.md"
+    },
+    {
+      "name": "malaysian-tenancy-consumer-dispute",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/my-reality/workshop/legal-my/malaysian-tenancy-consumer-dispute/SKILL.md"
+    },
+    {
+      "name": "mapbox-cartography-gis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mapbox-cartography-gis/SKILL.md"
+    },
+    {
+      "name": "market-analysis-scope",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wealth/market-analysis-scope/SKILL.md"
+    },
+    {
+      "name": "market-claim-assessment",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wealth/market-claim-assessment/SKILL.md"
+    },
+    {
+      "name": "market-collapse-forensics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/finance/market-collapse-forensics/SKILL.md"
+    },
+    {
+      "name": "market-prediction-falsification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wealth/market-prediction-falsification/SKILL.md"
+    },
+    {
+      "name": "mata",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mata/SKILL.md"
+    },
+    {
+      "name": "mcp-context-compression",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-context-compression/SKILL.md"
+    },
+    {
+      "name": "mcp-ecosystem-indexing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-ecosystem-indexing/SKILL.md"
+    },
+    {
+      "name": "mcp-edit-activation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-edit-activation/SKILL.md"
+    },
+    {
+      "name": "mcp-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-ops/SKILL.md"
+    },
+    {
+      "name": "mcp-organ-probe",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-organ-probe/SKILL.md"
+    },
+    {
+      "name": "mcp-sota-shopping-list",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-sota-shopping-list/SKILL.md"
+    },
+    {
+      "name": "mcp-testing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-testing/SKILL.md"
+    },
+    {
+      "name": "mcp-transport-fix",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/mcp/mcp-transport-fix/SKILL.md"
+    },
+    {
+      "name": "measurement-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance-core/measurement-discipline/SKILL.md"
+    },
+    {
+      "name": "media-content-extraction",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/media/media-content-extraction/SKILL.md"
+    },
+    {
+      "name": "media-ingest-lane",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/media-ingest-lane/SKILL.md"
+    },
+    {
+      "name": "media-lane-outage-ladder",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/media-lane-outage-ladder/SKILL.md"
+    },
+    {
+      "name": "media-link-ingest",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/2026-09-16-media-skill-dedup/media-link-ingest/SKILL.md"
+    },
+    {
+      "name": "medical-document-interpretation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/document-intel/medical-document-interpretation/SKILL.md"
+    },
+    {
+      "name": "memory-manage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/substrate/memory-manage/SKILL.md"
+    },
+    {
+      "name": "merge-reconciler",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/autonomous-ai-agents/merge-reconciler/SKILL.md"
+    },
+    {
+      "name": "meta-mesa",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/meta-mesa/SKILL.md"
+    },
+    {
+      "name": "mimo-audio",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mimo-audio/SKILL.md"
+    },
+    {
+      "name": "mimo-v2-5-tts",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mimo-audio/references/official/SKILL.md"
+    },
+    {
+      "name": "mimo-vision",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mimo-vision/SKILL.md"
+    },
+    {
+      "name": "minimax-cli",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/minimax-cli/SKILL.md"
+    },
+    {
+      "name": "minimax-image-gen",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/minimax-image-gen/SKILL.md"
+    },
+    {
+      "name": "mmx-cli",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mmx-cli/SKILL.md"
+    },
+    {
+      "name": "mmx-h3-video",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/video-gen/h3-video/SKILL.md"
+    },
+    {
+      "name": "mmx-mesh",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/minimax-tools/mmx-mesh/SKILL.md"
+    },
+    {
+      "name": "mobile-device-edge",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/device-edge/mobile-device-edge/SKILL.md"
+    },
+    {
+      "name": "model-score-disclosure",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/model-score-disclosure/SKILL.md"
+    },
+    {
+      "name": "mt5-ai-trading-agent",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/wealth/workshop/trading-exec/mt5-ai-trading-agent/SKILL.md"
+    },
+    {
+      "name": "mulerouter-media",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/minimax-tools/mulerouter-media/SKILL.md"
+    },
+    {
+      "name": "multi-harness-sync",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/federation/multi-harness-sync/SKILL.md"
+    },
+    {
+      "name": "multi-period-cashflow-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/finance/multi-period-cashflow-analysis/SKILL.md"
+    },
+    {
+      "name": "music-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/audio-emd/music-generation/SKILL.md"
+    },
+    {
+      "name": "music-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/audio-emd/music-intelligence/SKILL.md"
+    },
+    {
+      "name": "my-reality",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/my-reality/workshop/my-domain-intel/my-reality/SKILL.md"
+    },
+    {
+      "name": "nano-pdf",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/productivity/nano-pdf/SKILL.md"
+    },
+    {
+      "name": "nasi-lemak-business-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/my-reality/workshop/business-intel/nasi-lemak-business-intelligence/SKILL.md"
+    },
+    {
+      "name": "nasilemak-engine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/my-reality/workshop/business-intel/nasilemak-engine/SKILL.md"
+    },
+    {
+      "name": "nusantara-voice-stack",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/voice-stack/nusantara-voice-stack/SKILL.md"
+    },
+    {
+      "name": "observability-completeness-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/telemetry/observability-completeness-audit/SKILL.md"
+    },
+    {
+      "name": "observe-ground",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/substrate/observe-ground/SKILL.md"
+    },
+    {
+      "name": "ocr-and-documents",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/productivity/ocr-and-documents/SKILL.md"
+    },
+    {
+      "name": "open-slide-integration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/document-intel/open-slide-integration/SKILL.md"
+    },
+    {
+      "name": "openai-docs",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.system/openai-docs/SKILL.md"
+    },
+    {
+      "name": "openclaw",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/openclaw/SKILL.md"
+    },
+    {
+      "name": "openclaw-human-meaning",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/openclaw-human-meaning/SKILL.md"
+    },
+    {
+      "name": "opencode-config-zen",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/mesh-transport/opencode-config-zen/SKILL.md"
+    },
+    {
+      "name": "openhue",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/smart-home/openhue/SKILL.md"
+    },
+    {
+      "name": "operational-signal-routing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/operational-signal-routing/SKILL.md"
+    },
+    {
+      "name": "ops-event-routing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/cron-ops/ops-event-routing/SKILL.md"
+    },
+    {
+      "name": "organ-capability-map",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/organ-capability-map/SKILL.md"
+    },
+    {
+      "name": "outbound-message-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/outbound-message-delivery/SKILL.md"
+    },
+    {
+      "name": "paged-media-report-layout",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/document-intel/paged-media-report-layout/SKILL.md"
+    },
+    {
+      "name": "parallel-agent-fanout",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/forge/parallel-agent-fanout/SKILL.md"
+    },
+    {
+      "name": "pasted-material-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/pasted-material-analysis/SKILL.md"
+    },
+    {
+      "name": "pasted-review-falsification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/pasted-review-falsification/SKILL.md"
+    },
+    {
+      "name": "ped-hormone-advisory",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/ped-hormone-advisory/SKILL.md"
+    },
+    {
+      "name": "person-dossier-from-public-sources",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/research-core/person-dossier-from-public-sources/SKILL.md"
+    },
+    {
+      "name": "person-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/person-intelligence/SKILL.md"
+    },
+    {
+      "name": "persona-boundary-conduct",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-interface/persona-boundary-conduct/SKILL.md"
+    },
+    {
+      "name": "persona-triad-reasoning",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/persona-triad-reasoning/SKILL.md"
+    },
+    {
+      "name": "persona-voice-binding",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/persona/persona-voice-binding/SKILL.md"
+    },
+    {
+      "name": "petronas-entity-filings-probe",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/my-reality/workshop/my-domain-intel/petronas-entity-filings-probe/SKILL.md"
+    },
+    {
+      "name": "petronas-petros-shell-dispute",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/my-reality/workshop/research-core/petronas-petros-shell-dispute/SKILL.md"
+    },
+    {
+      "name": "phone-bridge",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/device-edge/phone-bridge/SKILL.md"
+    },
+    {
+      "name": "photo-style-transfer",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/image-gen/photo-style-transfer/SKILL.md"
+    },
+    {
+      "name": "photorealistic-human-image-gen",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/photorealistic-human-image-gen/SKILL.md"
+    },
+    {
+      "name": "photorealistic-human-multi-model",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/photorealistic-human-multi-model/SKILL.md"
+    },
+    {
+      "name": "pipeline-integrity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/pipeline-integrity/SKILL.md"
+    },
+    {
+      "name": "plan",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/software-development/plan/SKILL.md"
+    },
+    {
+      "name": "plugin-creator",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.system/plugin-creator/SKILL.md"
+    },
+    {
+      "name": "poster-vision-extraction",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/vision-analyzer/poster-vision-extraction/SKILL.md"
+    },
+    {
+      "name": "pr-governance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/pr-governance/SKILL.md"
+    },
+    {
+      "name": "pr-portfolio-sweep",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/pr-portfolio-sweep/SKILL.md"
+    },
+    {
+      "name": "prediction-honesty-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wealth/prediction-honesty-audit/SKILL.md"
+    },
+    {
+      "name": "predictive-claim-falsification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/court/predictive-claim-falsification/SKILL.md"
+    },
+    {
+      "name": "pretext",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/pretext/SKILL.md"
+    },
+    {
+      "name": "principal-analysis-artifact",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/document-intel/principal-analysis-artifact/SKILL.md"
+    },
+    {
+      "name": "probe-evidence-integrity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/probe-evidence-integrity/SKILL.md"
+    },
+    {
+      "name": "prompts-chat-library",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/prompts-chat-library/SKILL.md"
+    },
+    {
+      "name": "propose-seal",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/propose-seal/SKILL.md"
+    },
+    {
+      "name": "provenance-typed-analysis",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/provenance-typed-analysis/SKILL.md"
+    },
+    {
+      "name": "provider-endpoint-migration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/provider-endpoint-migration/SKILL.md"
+    },
+    {
+      "name": "provider-notice-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/provider-notice-triage/SKILL.md"
+    },
+    {
+      "name": "provider-pool-outage-fallback",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/media/provider-pool-outage-fallback/SKILL.md"
+    },
+    {
+      "name": "public-claims-maintenance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/public-claims-maintenance/SKILL.md"
+    },
+    {
+      "name": "public-column-publishing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/public-column-publishing/SKILL.md"
+    },
+    {
+      "name": "public-ingress-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/infra/public-ingress-audit/SKILL.md"
+    },
+    {
+      "name": "public-persona-read",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/cognitive-reflex/public-persona-read/SKILL.md"
+    },
+    {
+      "name": "publication-risk-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/publication-risk-audit/SKILL.md"
+    },
+    {
+      "name": "qwen-harness-tools",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwen-harness-tools/SKILL.md"
+    },
+    {
+      "name": "qwen-token-plan-team-edition",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/qwencloud/qwen-token-plan-team-edition/SKILL.md"
+    },
+    {
+      "name": "qwencloud-cli",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/qwencloud/qwencloud-cli/SKILL.md"
+    },
+    {
+      "name": "qwencloud-deploy",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-deploy/SKILL.md"
+    },
+    {
+      "name": "qwencloud-image-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-image-generation/SKILL.md"
+    },
+    {
+      "name": "qwencloud-mesh",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/qwencloud/qwencloud-mesh/SKILL.md"
+    },
+    {
+      "name": "qwencloud-model-selector",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-model-selector/SKILL.md"
+    },
+    {
+      "name": "qwencloud-ops-auth",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-ops-auth/SKILL.md"
+    },
+    {
+      "name": "qwencloud-text",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-text/SKILL.md"
+    },
+    {
+      "name": "qwencloud-update-check",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-update-check/SKILL.md"
+    },
+    {
+      "name": "qwencloud-usage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-usage/SKILL.md"
+    },
+    {
+      "name": "qwencloud-video-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-video-generation/SKILL.md"
+    },
+    {
+      "name": "qwencloud-vision",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/qwencloud-vision/SKILL.md"
+    },
+    {
+      "name": "rasa-qualia-governance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/rasa-qualia-governance/SKILL.md"
+    },
+    {
+      "name": "Real-Person Reference Photos — Anti-Fabrication",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/forge-real-person-reference-photos/SKILL.md"
+    },
+    {
+      "name": "Reality Loop - Autonomous 000 to 999 Recursive Improvement",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/reality-loop-operator/SKILL.md"
+    },
+    {
+      "name": "reality-kernel-phase1-evidence-ledger",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/vault-ledger/reality-kernel-phase1-evidence-ledger/SKILL.md"
+    },
+    {
+      "name": "recovery-playbook",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/recovery-playbook/SKILL.md"
+    },
+    {
+      "name": "recursive-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/governance/recursive-audit/SKILL.md"
+    },
+    {
+      "name": "reference-image-rendering",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/reference-image-rendering/SKILL.md"
+    },
+    {
+      "name": "relationship-kernel",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/personal-lane/relationship-kernel/SKILL.md"
+    },
+    {
+      "name": "relationship-memory-isolation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/relationship-memory-isolation/SKILL.md"
+    },
+    {
+      "name": "relay-echo-loop-handling",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/relay-echo-loop-handling/SKILL.md"
+    },
+    {
+      "name": "rendered-artifact-verification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/design/rendered-artifact-verification/SKILL.md"
+    },
+    {
+      "name": "rendered-document-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/document-intel/rendered-document-audit/SKILL.md"
+    },
+    {
+      "name": "repo-cleanup",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/forge/repo-cleanup/SKILL.md"
+    },
+    {
+      "name": "research-paper-writing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/research/research-paper-writing/SKILL.md"
+    },
+    {
+      "name": "responsible-disclosure-handling",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/security-ops/responsible-disclosure-handling/SKILL.md"
+    },
+    {
+      "name": "review-agent",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.system/review-agent/SKILL.md"
+    },
+    {
+      "name": "route-dispatch",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/substrate/route-dispatch/SKILL.md"
+    },
+    {
+      "name": "rsi-federation-mesh",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/rsi-federation-mesh/SKILL.md"
+    },
+    {
+      "name": "rtc-loop",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/rtc-loop/SKILL.md"
+    },
+    {
+      "name": "runpod",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/runpod/SKILL.md"
+    },
+    {
+      "name": "runpod-mcp",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/runpod-mcp/SKILL.md"
+    },
+    {
+      "name": "runpod-usage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/runpod-usage/SKILL.md"
+    },
+    {
+      "name": "runpodctl",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/runpodctl/SKILL.md"
+    },
+    {
+      "name": "runtime-probe",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/mcp/runtime-probe/SKILL.md"
+    },
+    {
+      "name": "sanctuary-boundary-enforcer",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/sanctuary-boundary-enforcer/SKILL.md"
+    },
+    {
+      "name": "scar-bridge-install",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/scar-bridge-install/SKILL.md"
+    },
+    {
+      "name": "scar-integration",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/governance/scar-integration/SKILL.md"
+    },
+    {
+      "name": "scientific-pdf-generation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation/SKILL.md"
+    },
+    {
+      "name": "sd-lora-ecosystem",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/sd-lora-ecosystem/SKILL.md"
+    },
+    {
+      "name": "seal-discipline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/seal-discipline/SKILL.md"
+    },
+    {
+      "name": "sealed-deliverable-provenance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/sealed-deliverable-provenance/SKILL.md"
+    },
+    {
+      "name": "secret-exposure-containment",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/security/secret-exposure-containment/SKILL.md"
+    },
+    {
+      "name": "secret-safe-inspection",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/security/secret-safe-inspection/SKILL.md"
+    },
+    {
+      "name": "security-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/security-audit/SKILL.md"
+    },
+    {
+      "name": "security-disclosure-handling",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/security/security-disclosure-handling/SKILL.md"
+    },
+    {
+      "name": "seismic-interpretation-alignment",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/geo/seismic-interpretation-alignment/SKILL.md"
+    },
+    {
+      "name": "self-recurrence-guards",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/self-recurrence-guards/SKILL.md"
+    },
+    {
+      "name": "sensitive-publication-governance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/sensitive-publication-governance/SKILL.md"
+    },
+    {
+      "name": "serving-llms-vllm",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mlops/inference/serving-llms-vllm/SKILL.md"
+    },
+    {
+      "name": "session-federation-discovery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/session/session-federation-discovery/SKILL.md"
+    },
+    {
+      "name": "session-init-human-first",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/session/session-init-human-first/SKILL.md"
+    },
+    {
+      "name": "session-librarian",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/session/session-librarian/SKILL.md"
+    },
+    {
+      "name": "session-lifecycle-temporal",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/session/session-lifecycle-temporal/SKILL.md"
+    },
+    {
+      "name": "session-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/aaa/substrate/session-ops/SKILL.md"
+    },
+    {
+      "name": "shadow-mapping",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/shadow-mapping/SKILL.md"
+    },
+    {
+      "name": "shadow-mode",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/shadow-mode/SKILL.md"
+    },
+    {
+      "name": "shadow-paradox-13",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/shadow-paradox-13/SKILL.md"
+    },
+    {
+      "name": "signal-strength-gating",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/signal-strength-gating/SKILL.md"
+    },
+    {
+      "name": "sinboy-shadow-lane",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/sinboy-shadow-lane/SKILL.md"
+    },
+    {
+      "name": "site-traffic-reality",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/site-traffic-reality/SKILL.md"
+    },
+    {
+      "name": "sketch",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/sketch/SKILL.md"
+    },
+    {
+      "name": "skill-audit-methodology",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skill-audit-methodology/SKILL.md"
+    },
+    {
+      "name": "skill-cluster-merge",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/skill-cluster-merge/SKILL.md"
+    },
+    {
+      "name": "skill-creator",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skill-creator/SKILL.md"
+    },
+    {
+      "name": "skill-drift",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skill-drift/SKILL.md"
+    },
+    {
+      "name": "skill-installer",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.system/skill-installer/SKILL.md"
+    },
+    {
+      "name": "skill-inventory",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skill-inventory/SKILL.md"
+    },
+    {
+      "name": "skill-library-integrity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skill-library-integrity/SKILL.md"
+    },
+    {
+      "name": "skill-mesh",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/skill-mesh/SKILL.md"
+    },
+    {
+      "name": "skill-taxonomy-reclassification",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skill-taxonomy-reclassification/SKILL.md"
+    },
+    {
+      "name": "skills-cold-storage-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skills-cold-storage-ops/SKILL.md"
+    },
+    {
+      "name": "sleep-data-interpretation",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/well/workshop/research-core/sleep-data-interpretation/SKILL.md"
+    },
+    {
+      "name": "social-media-content-ingestion",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/media/social-media-content-ingestion/SKILL.md"
+    },
+    {
+      "name": "social-video-extract",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/2026-09-16-media-skill-dedup/social-video-extract/SKILL.md"
+    },
+    {
+      "name": "social-video-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/video-gen/social-video-intelligence/SKILL.md"
+    },
+    {
+      "name": "sovereign-search",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/sovereign-search/SKILL.md"
+    },
+    {
+      "name": "sovereign-surface-design",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/design/sovereign-surface-design/SKILL.md"
+    },
+    {
+      "name": "sovereign-theoretical-directive",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/governance-core/sovereign-theoretical-directive/SKILL.md"
+    },
+    {
+      "name": "sovereign-worry-witness",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/witness/sovereign-worry-witness/SKILL.md"
+    },
+    {
+      "name": "staged-write-triage",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/staged-write-triage/SKILL.md"
+    },
+    {
+      "name": "submission-readiness-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/submission-readiness-audit/SKILL.md"
+    },
+    {
+      "name": "substrate-taxonomy",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/substrate-taxonomy/SKILL.md"
+    },
+    {
+      "name": "subsurface-dossier-from-public-domain",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/subsurface-dossier-from-public-domain/SKILL.md"
+    },
+    {
+      "name": "surface-consistency-audit",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/audit/surface-consistency-audit/SKILL.md"
+    },
+    {
+      "name": "symbol-namespace-integrity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/symbol-namespace-integrity/SKILL.md"
+    },
+    {
+      "name": "synthesis-verification-gate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/synthesis-verification-gate/SKILL.md"
+    },
+    {
+      "name": "synthetic-human-media-pipeline",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/image-gen/synthetic-human-media-pipeline/SKILL.md"
+    },
+    {
+      "name": "telegram-bot-identity-and-group-routing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-bot-identity-and-group-routing/SKILL.md"
+    },
+    {
+      "name": "telegram-bot-routing-doctrine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-bot-routing-doctrine/SKILL.md"
+    },
+    {
+      "name": "telegram-conversation-history-extraction",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-conversation-history-extraction/SKILL.md"
+    },
+    {
+      "name": "telegram-direct-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/telegram-ops/telegram-direct-delivery/SKILL.md"
+    },
+    {
+      "name": "telegram-group-bot-rollout",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-group-bot-rollout/SKILL.md"
+    },
+    {
+      "name": "telegram-group-sender-identity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-group-sender-identity/SKILL.md"
+    },
+    {
+      "name": "telegram-mcp-product-line",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-mcp-consolidation/restored-by-convergence-pass/domains/general/forge/mcp-ops/telegram-mcp-product-line/SKILL.md"
+    },
+    {
+      "name": "telegram-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/telegram-ops/SKILL.md"
+    },
+    {
+      "name": "telegram-userbot-telethon",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-userbot-telethon/SKILL.md"
+    },
+    {
+      "name": "telemetry-watchdog",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/telemetry-watchdog/SKILL.md"
+    },
+    {
+      "name": "temporal-artifact-integrity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance-core/temporal-artifact-integrity/SKILL.md"
+    },
+    {
+      "name": "temporal-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/temporal-intelligence/SKILL.md"
+    },
+    {
+      "name": "termux-arif-tailscale-ssh",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/device-edge/termux-arif-tailscale-ssh/SKILL.md"
+    },
+    {
+      "name": "text-forensics",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/research-core/text-forensics/SKILL.md"
+    },
+    {
+      "name": "third-party-advisory-doc",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/counseling/third-party-advisory-doc/SKILL.md"
+    },
+    {
+      "name": "third-party-artifact-review",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/human-interface/third-party-artifact-review/SKILL.md"
+    },
+    {
+      "name": "third-party-audit-intake",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/audit/third-party-audit-intake/SKILL.md"
+    },
+    {
+      "name": "token-plan-image",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/token-plan-image/SKILL.md"
+    },
+    {
+      "name": "token-plan-speech",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/token-plan-speech/SKILL.md"
+    },
+    {
+      "name": "token-plan-tts",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/voice-stack/text-to-speech/SKILL.md"
+    },
+    {
+      "name": "token-plan-video",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/token-plan-video/SKILL.md"
+    },
+    {
+      "name": "tokenrouter-guide",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/forge/model-routing/tokenrouter-guide/SKILL.md"
+    },
+    {
+      "name": "touchdesigner-mcp",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/creative/touchdesigner-mcp/SKILL.md"
+    },
+    {
+      "name": "trading-risk-review",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/trading/trading-risk-review/SKILL.md"
+    },
+    {
+      "name": "trading-signal-chart",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/wealth/workshop/trading-exec/trading-signal-chart/SKILL.md"
+    },
+    {
+      "name": "trinity-33-canonical",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/KERNEL-trinity-33/SKILL.md"
+    },
+    {
+      "name": "tts-route-deep-research",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/search-web/tts-route-deep-research/SKILL.md"
+    },
+    {
+      "name": "venture-positioning-advisory",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/governance/venture-positioning-advisory/SKILL.md"
+    },
+    {
+      "name": "verify-gate",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/substrate/verify-gate/SKILL.md"
+    },
+    {
+      "name": "verify-runtime",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/core/governance/verify-runtime/SKILL.md"
+    },
+    {
+      "name": "verify-work",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/verify-work/SKILL.md"
+    },
+    {
+      "name": "video-prompt-engineering",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/video-gen/video-prompt-engineering/SKILL.md"
+    },
+    {
+      "name": "visual-artifact-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/media-delivery/visual-artifact-delivery/SKILL.md"
+    },
+    {
+      "name": "visual-surface-delivery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/design/visual-surface-delivery/SKILL.md"
+    },
+    {
+      "name": "voice-lane",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/voice-lane/SKILL.md"
+    },
+    {
+      "name": "void-paradox-doctrine",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/court/court-audit/void-paradox-doctrine/SKILL.md"
+    },
+    {
+      "name": "vps-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/engineering/vps-ops/SKILL.md"
+    },
+    {
+      "name": "warga-constitutional",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/warga/constitutional/SKILL.md"
+    },
+    {
+      "name": "wawabot-anthropology-surface",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wawabot-anthropology-surface/SKILL.md"
+    },
+    {
+      "name": "wealth-mcp-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-ops/SKILL.md"
+    },
+    {
+      "name": "wealth-mcp-testing",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-mcp-consolidation/restored-by-convergence-pass/domains/wealth/forge/mcp-ops/wealth-mcp-testing/SKILL.md"
+    },
+    {
+      "name": "wealth-mcp-tool-hardening",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.frozen/2026-09-20-mcp-consolidation/restored-by-convergence-pass/domains/wealth/forge/mcp-ops/wealth-mcp-tool-hardening/SKILL.md"
+    },
+    {
+      "name": "web-extraction-fallbacks",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/web-extraction-fallbacks/SKILL.md"
+    },
+    {
+      "name": "web-ops",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/web-ops/SKILL.md"
+    },
+    {
+      "name": "web-scrape",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/web-scrape/SKILL.md"
+    },
+    {
+      "name": "web-search",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/web-search/SKILL.md"
+    },
+    {
+      "name": "web-search-query-gate-recovery",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/.archive/merge-20260920/web/web-search-query-gate-recovery/SKILL.md"
+    },
+    {
+      "name": "web-surface-design-fidelity",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/design/web-surface-design-fidelity/SKILL.md"
+    },
+    {
+      "name": "weekly-federation-maintenance",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/federation/weekly-federation-maintenance/SKILL.md"
+    },
+    {
+      "name": "weights-and-biases",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/mlops/evaluation/weights-and-biases/SKILL.md"
+    },
+    {
+      "name": "WELL-3baik-log",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/WELL-3baik-log/SKILL.md"
+    },
+    {
+      "name": "well-operations",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/well-domain/well-operations/SKILL.md"
+    },
+    {
+      "name": "whatsapp-group-intelligence",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/research-core/whatsapp-group-intelligence/SKILL.md"
+    },
+    {
+      "name": "wisdom-letter-for-loved-ones",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/wisdom-letter-for-loved-ones/SKILL.md"
+    },
+    {
+      "name": "wisdom-reader",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/wisdom-reader/SKILL.md"
+    },
+    {
+      "name": "witness-semantic-recall",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/witness-semantic-recall/SKILL.md"
+    },
+    {
+      "name": "XAUUSD-trading-stack",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/xauusd-trading/SKILL.md"
+    },
+    {
+      "name": "youtube-eureka",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/media/youtube-eureka/SKILL.md"
+    },
+    {
+      "name": "youtube-video-info",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/domains/general/workshop/video-gen/youtube-video-info/SKILL.md"
+    },
+    {
+      "name": "zen-router",
+      "organ": "AAA",
+      "path": "/root/AAA/skills/zen-router/SKILL.md"
+    },
+    {
+      "name": "AGI-skill-unification",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/AGI-skill-unification/SKILL.md"
+    },
+    {
+      "name": "apex_verdict_hold",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/apex_verdict_hold/SKILL.md"
+    },
+    {
+      "name": "arifos-evidence-policy",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/arifos-evidence-policy/SKILL.md"
+    },
+    {
+      "name": "ASI-agentic-architecture",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/ASI-agentic-architecture/SKILL.md"
+    },
+    {
+      "name": "ASI-drift-watch",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/ASI-drift-watch/SKILL.md"
+    },
+    {
+      "name": "ASI-fabrication-prevention",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/ASI-fabrication-prevention/SKILL.md"
+    },
+    {
+      "name": "EUREKA777-paradox-resolution",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/EUREKA777-paradox-resolution/SKILL.md"
+    },
+    {
+      "name": "firecrawl-web-search",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/general/workshop/search-web/firecrawl-web-search/SKILL.md"
+    },
+    {
+      "name": "FLAME-operator",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/FLAME-operator/SKILL.md"
+    },
+    {
+      "name": "FLAME-router",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/FLAME-router/SKILL.md"
+    },
+    {
+      "name": "FORGE-federation-orchestrator",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/FORGE-federation-orchestrator/SKILL.md"
+    },
+    {
+      "name": "FORGE-incident-triage",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/FORGE-incident-triage/SKILL.md"
+    },
+    {
+      "name": "FORGE-skill-linter",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/FORGE-skill-linter/SKILL.md"
+    },
+    {
+      "name": "FORGE-vps-docker",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/FORGE-vps-docker/SKILL.md"
+    },
+    {
+      "name": "forge-vss-parser",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/general/court/witness/forge-vss-parser/SKILL.md"
+    },
+    {
+      "name": "hermes-layer-discipline",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/general/apex/cognitive-reflex/hermes-layer-discipline/SKILL.md"
+    },
+    {
+      "name": "hermes-rasa",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/general/apex/cognitive-reflex/hermes-rasa/SKILL.md"
+    },
+    {
+      "name": "hermes-shadow",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/general/apex/cognitive-reflex/hermes-shadow/SKILL.md"
+    },
+    {
+      "name": "human-reality-bridge",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/human-reality-bridge/SKILL.md"
+    },
+    {
+      "name": "institutional-epistemic-sink-forensics",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/institutional-epistemic-sink-forensics/SKILL.md"
+    },
+    {
+      "name": "knowledge",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/.archive-2026-09-18/skeletons/knowledge/SKILL.md"
+    },
+    {
+      "name": "PETRONAS-intelligence-router",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/my-reality/workshop/my-domain-intel/PETRONAS-intelligence-router/SKILL.md"
+    },
+    {
+      "name": "powerpoint",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/general/workshop/document-intel/powerpoint/SKILL.md"
+    },
+    {
+      "name": "reflective",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/domains/general/aaa/substrate/reflective/SKILL.md"
+    },
+    {
+      "name": "seven-zen-organs-enforcement",
+      "organ": "HERMES",
+      "path": "/root/HERMES/skills/seven-zen-organs-enforcement/SKILL.md"
+    },
+    {
+      "name": "AAA Agentic Governance (AAA-Cockpit, canonical)",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/aaa-agentic-governance/SKILL.md"
+    },
+    {
+      "name": "agent-foundation",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/agent-foundation/SKILL.md"
+    },
+    {
+      "name": "agentic-governance",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/agentic-governance/SKILL.md"
+    },
+    {
+      "name": "agi-autonomous-controller",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/agi-autonomous-controller/SKILL.md"
+    },
+    {
+      "name": "apex-docs",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/apex-docs/SKILL.md"
+    },
+    {
+      "name": "architect-explainer",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/architect-explainer/SKILL.md"
+    },
+    {
+      "name": "arif-a2a-call",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/arif-a2a-call/SKILL.md"
+    },
+    {
+      "name": "arif-init-wrapper",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/arif-init-wrapper/SKILL.md"
+    },
+    {
+      "name": "arifos-deploy",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/arifos-deploy/SKILL.md"
+    },
+    {
+      "name": "arifOS-Langfuse",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/langfuse-arifos/SKILL.md"
+    },
+    {
+      "name": "arifos-mcp-call",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/arifos-mcp-call/SKILL.md"
+    },
+    {
+      "name": "browser",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/browser/SKILL.md"
+    },
+    {
+      "name": "constitutional-governance",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/constitutional-governance/SKILL.md"
+    },
+    {
+      "name": "deepnshadow",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/deepnshadow/SKILL.md"
+    },
+    {
+      "name": "entropy-optimization",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/entropy-optimization/SKILL.md"
+    },
+    {
+      "name": "epistemic-integrity",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/epistemic-integrity/SKILL.md"
+    },
+    {
+      "name": "forge-program",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/forge-program/SKILL.md"
+    },
+    {
+      "name": "git-sync",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/git-sync/SKILL.md"
+    },
+    {
+      "name": "github-repo-manager",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/github-repo-manager/SKILL.md"
+    },
+    {
+      "name": "google-workspace",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/google-workspace/SKILL.md"
+    },
+    {
+      "name": "health-probe",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/health-probe/SKILL.md"
+    },
+    {
+      "name": "memory-archivist",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/memory-archivist/SKILL.md"
+    },
+    {
+      "name": "metabolic-trinity",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/metabolic-trinity/SKILL.md"
+    },
+    {
+      "name": "notebooklm-bridge",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/notebooklm-bridge/SKILL.md"
+    },
+    {
+      "name": "notion",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/notion/SKILL.md"
+    },
+    {
+      "name": "openclaw-ops",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/openclaw-ops/SKILL.md"
+    },
+    {
+      "name": "orthogonal-abstraction",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/orthogonal-abstraction/SKILL.md"
+    },
+    {
+      "name": "os-health",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/os-health/SKILL.md"
+    },
+    {
+      "name": "postcheck-verifier",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/postcheck-verifier/SKILL.md"
+    },
+    {
+      "name": "RSI-recursive-improvement",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/RSI-recursive-improvement/SKILL.md"
+    },
+    {
+      "name": "skill-composer",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/skill-composer/SKILL.md"
+    },
+    {
+      "name": "tasks",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/tasks/SKILL.md"
+    },
+    {
+      "name": "trinity-forger",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/trinity-forger/SKILL.md"
+    },
+    {
+      "name": "vps-docker",
+      "organ": "arifOS",
+      "path": "/root/arifOS/skills/vps-docker/SKILL.md"
+    },
+    {
+      "name": "agi-asi-apex-loop",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/agi-asi-apex-loop/SKILL.md"
+    },
+    {
+      "name": "akal-cognitive-invariants",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/cognitive-level-assertion-protocol/SKILL.md"
+    },
+    {
+      "name": "APEX-fff-loop-protocol",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/APEX-fff-loop-protocol/SKILL.md"
+    },
+    {
+      "name": "apex-gates",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/SKILL.md"
+    },
+    {
+      "name": "apex_audit_coverage_check",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/apex_audit_coverage_check/SKILL.md"
+    },
+    {
+      "name": "apex_authority_check",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/apex_authority_check/SKILL.md"
+    },
+    {
+      "name": "apex_floor_check",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/apex_floor_check/SKILL.md"
+    },
+    {
+      "name": "apex_reversibility_test",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/apex_reversibility_test/SKILL.md"
+    },
+    {
+      "name": "apex_scope_check",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/apex_scope_check/SKILL.md"
+    },
+    {
+      "name": "apex_tool_approval_gate",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/apex_tool_approval_gate/SKILL.md"
+    },
+    {
+      "name": "apex_verdict_seal",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/apex-gates/apex_verdict_seal/SKILL.md"
+    },
+    {
+      "name": "ASI-skill-binding",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/skill-mesh/ASI-skill-binding/SKILL.md"
+    },
+    {
+      "name": "atlas333-cognitive-geometry",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/atlas333-cognitive-geometry/SKILL.md"
+    },
+    {
+      "name": "AUDIT-agent-skill-mesh",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/skill-mesh/AUDIT-agent-skill-mesh/SKILL.md"
+    },
+    {
+      "name": "AUDIT-drift-detector",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/skill-mesh/AUDIT-drift-detector/SKILL.md"
+    },
+    {
+      "name": "AUDIT-recursive-audit",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/skill-mesh/AUDIT-recursive-audit/SKILL.md"
+    },
+    {
+      "name": "AUDIT-skill-atlas",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/skill-mesh/AUDIT-skill-atlas/SKILL.md"
+    },
+    {
+      "name": "check-work",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/check-work/SKILL.md"
+    },
+    {
+      "name": "create-skill",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/create-skill/SKILL.md"
+    },
+    {
+      "name": "federated-skill-architecture",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/skill-mesh/federated-skill-architecture/SKILL.md"
+    },
+    {
+      "name": "FORGE-cicd-docker-deploy",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-cicd-docker-deploy/SKILL.md"
+    },
+    {
+      "name": "FORGE-deploy-probe-gate",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-deploy-probe-gate/SKILL.md"
+    },
+    {
+      "name": "FORGE-docker-entropy",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-docker-entropy/SKILL.md"
+    },
+    {
+      "name": "FORGE-incident-escalation",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-incident-escalation/SKILL.md"
+    },
+    {
+      "name": "forge-mcp",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/forge-mcp/SKILL.md"
+    },
+    {
+      "name": "FORGE-mcp-federation-ops",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops/SKILL.md"
+    },
+    {
+      "name": "FORGE-mcp-lifeguard",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-lifeguard/SKILL.md"
+    },
+    {
+      "name": "FORGE-mcp-ops",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-ops/SKILL.md"
+    },
+    {
+      "name": "FORGE-mcp-probe",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-probe/SKILL.md"
+    },
+    {
+      "name": "FORGE-mcp-smoke-test",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-smoke-test/SKILL.md"
+    },
+    {
+      "name": "forge-mcp-testing",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-testing/SKILL.md"
+    },
+    {
+      "name": "FORGE-pr-governance",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-pr-governance/SKILL.md"
+    },
+    {
+      "name": "FORGE-pr-review",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-pr-review/SKILL.md"
+    },
+    {
+      "name": "FORGE-precommit-review",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-precommit-review/SKILL.md"
+    },
+    {
+      "name": "FORGE-readme-truth-check",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-readme-truth-check/SKILL.md"
+    },
+    {
+      "name": "FORGE-skill-creator",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-skill-creator/SKILL.md"
+    },
+    {
+      "name": "FORGE-telemetry-watchdog",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-telemetry-watchdog/SKILL.md"
+    },
+    {
+      "name": "FORGE-verify-runtime",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-verify-runtime/SKILL.md"
+    },
+    {
+      "name": "FORGE-vps-runbook",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/FORGE-vps-runbook/SKILL.md"
+    },
+    {
+      "name": "hermes",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/hermes/SKILL.md"
+    },
+    {
+      "name": "hermes-claude-code-spawn",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/hermes/hermes-claude-code-spawn/SKILL.md"
+    },
+    {
+      "name": "hermes-forge",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/hermes/hermes-forge/SKILL.md"
+    },
+    {
+      "name": "hermes-init",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/hermes/hermes-init/SKILL.md"
+    },
+    {
+      "name": "lane-router",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/lane-router/SKILL.md"
+    },
+    {
+      "name": "openclaw-claude-code-spawn",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/openclaw-claude-code-spawn/SKILL.md"
+    },
+    {
+      "name": "openclaw-forge",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/openclaw-forge/SKILL.md"
+    },
+    {
+      "name": "openclaw-init",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/openclaw-init/SKILL.md"
+    },
+    {
+      "name": "opencode",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/opencode/SKILL.md"
+    },
+    {
+      "name": "opencode-forge",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/opencode/opencode-forge/SKILL.md"
+    },
+    {
+      "name": "opencode-init",
+      "organ": "kimi-code",
+      "path": "/root/.kimi-code/skills/opencode/opencode-init/SKILL.md"
+    }
+  ]
+}
