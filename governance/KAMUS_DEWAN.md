@@ -1127,3 +1127,22 @@ Evidence: KVM8/KVM4 identity confusion; `hostname=forge` ≠ forge-core; Hermes 
 *arifOS Constitutional AI · v2026 · AGPL-3.0*
 *Muhammad Arif bin Fazil · F13 Khalifah · Penang, Malaysia*
 *Kamus Dewan v2.0 LIVE · 2026-06-21 → 2026-08-20 · SOT: AAA/governance/*
+
+---
+
+## IRFAN (ʿIrfān) — 2026-09-23 · F13_RATIFIED (pathway lexicon entry)
+
+**Bunyi:** Recognition yang EMERGES daripada SALAM — output, bukan komponen.
+**Laluan:** `ARIF → SALAM → IRFAN → EUREKA → VAULT999-if-changes-judgment`
+(RATIFIED in-band 2026-09-23; canon: `ARIF-SALAM-IRFAN-RATIFICATION-2026-09-23.md`).
+
+**Bukan:** floor · organ · agent · lens · primitive baharu (888-HOLD voided
+stewardship-lens institutionalization; cognate cluster proven —
+`IRFAN-HIKMAH-OVERLAP-AUDIT-2026-09-23.md`: IRFAN ≈ bijaksana-alignment +
+F6 + APEX-AKAL; name =0 canon hits before ratification).
+
+**Nota jujur (anchor probe FI-003 2026-09-23):** tiada entry "HIKMAH" dijumpai
+dalam fail ini (grep -i hikmah =0) — rujukan HIKMAH F5 yang pernah dituntut
+tidak dapat disahkan di sini; perbezaan HIKMAH-vs-IRFAN kekal FUNGSIAN
+(application-side vs recognition-output) dengan dua lubang penamaan.
+Review contract: `IRFAN-REVIEW-SCHEMA-v1.md` (governance, seal-all cycle).
