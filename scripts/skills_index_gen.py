@@ -18,8 +18,15 @@ is flat by default); if a skill dir itself contains a `category:` frontmatter fi
 we honour it, else we bucket by its top-level dir name. Because AAA/skills is flat
 ({skill_name}/SKILL.md), category defaults to the owning top-level subdir OR "general".
 
+Federation mode (v1.1.0):
+  python3 skills_index_gen.py --federation [--out /root/AAA/skills_index.json]
+    crawls all five federation roots (order = dedupe precedence, AAA is
+    canonical), dedupes by normalized skill name, and emits a merged index
+    with `root: "<federation:5-organs>"` and per-skill `source_organ`.
+
 Usage:
   python3 skills_index_gen.py [--out /root/AAA/skills_index.json] [--dry-run]
+                             [--root PATH] [--federation]
 
 DITEMPA BUKAN DIBERI.
 """
@@ -35,6 +42,17 @@ from pathlib import Path
 
 DEFAULT_SKILLS_ROOT = Path("/root/AAA/skills")
 DEFAULT_OUT = Path("/root/AAA/skills_index.json")
+
+# ── federation roots (order = dedupe precedence; AAA is canonical) ────
+FEDERATION_ROOTS: list[tuple[str, Path]] = [
+    ("AAA", Path("/root/AAA/skills")),
+    ("arifOS", Path("/root/arifOS/skills")),
+    ("HERMES", Path("/root/HERMES/skills")),
+    ("A-FORGE", Path("/root/A-FORGE/skills")),
+    ("kimi-code", Path("/root/.kimi-code/skills")),
+]
+FEDERATION_ROOT_LABEL = "<federation:5-organs>"
+FEDERATION_SCHEMA_VERSION = "1.1.0-federation"
 
 # ── frontmatter extraction ─────────────────────────────────────────────
 _FM_RE = re.compile(r"^---\s*\n(.*?)\n---\s*", re.DOTALL)
@@ -66,24 +84,21 @@ def infer_category(meta: dict, skill_dir: Path) -> str:
     return "general"
 
 
-def build_index(root: Path) -> dict:
-    skills = []
-    errors = []
-    t0 = time.time()
+def _crawl_root(organ: str, root: Path) -> tuple[list[dict], list[str]]:
+    """Crawl one organ root for SKILL.md files.
 
-    for skill_dir in sorted(root.iterdir()):
-        if not skill_dir.is_dir():
+    READ-ONLY. Full recursive walk (rglob) so nested skill trees
+    (HERMES, kimi-code, deep AAA categories) are all seen; `_retired`
+    subtrees are excluded. Fails safely on permission errors (skip +
+    warn, not crash). Returns (skills_list, errors_list); every kept
+    entry carries `source_organ`.
+    """
+    skills: list[dict] = []
+    errors: list[str] = []
+    for sk_file in sorted(root.rglob("SKILL.md")):
+        if "_retired" in sk_file.parts:
             continue
-        sk_file = skill_dir / "SKILL.md"
-        # some skills nest deeper, accept {dir}/SKILL.md or {dir}/skillname/SKILL.md
-        if not sk_file.exists():
-            for sub in skill_dir.iterdir():
-                if sub.is_dir() and (sub / "SKILL.md").exists():
-                    sk_file = sub / "SKILL.md"
-                    break
-        if not sk_file.exists():
-            errors.append(f"{skill_dir.name}: no SKILL.md found")
-            continue
+        skill_dir = sk_file.parent
         try:
             text = sk_file.read_text(encoding="utf-8", errors="replace")
         except (PermissionError, OSError) as e:
@@ -99,8 +114,16 @@ def build_index(root: Path) -> dict:
                 "dir": str(skill_dir),
                 "frontmatter": meta,
                 "has_sk": True,
+                "source_organ": organ,
             }
         )
+    return skills, errors
+
+
+def build_index(root: Path) -> dict:
+    """Single-root index (backward compat — AAA-only behavior preserved)."""
+    t0 = time.time()
+    skills, errors = _crawl_root("AAA", root)
 
     index = {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -114,18 +137,66 @@ def build_index(root: Path) -> dict:
     return index
 
 
+def build_federation_index(roots: list[tuple[str, Path]]) -> dict:
+    """Crawl all federation roots and merge into one deduped index.
+
+    Dedupe key: normalized skill name (lowercased, stripped). The first
+    organ in `roots` priority order that claims a name is canonical
+    (AAA > arifOS > HERMES > A-FORGE > kimi-code); later duplicates are
+    skipped. Every kept entry carries `source_organ`.
+    """
+    t0 = time.time()
+    seen: dict[str, dict] = {}
+    errors: list[str] = []
+    organ_counts: dict[str, int] = {organ: 0 for organ, _ in roots}
+    duplicates = 0
+
+    for organ, root in roots:
+        if not root.is_dir():
+            errors.append(f"{organ}: skills root not found: {root}")
+            continue
+        root_skills, root_errors = _crawl_root(organ, root)
+        errors.extend(f"{organ}: {e}" for e in root_errors)
+        for skill in root_skills:
+            key = skill["name"].strip().lower()
+            if key in seen:
+                duplicates += 1
+                continue  # first organ in priority order is canonical
+            seen[key] = skill
+            organ_counts[organ] = organ_counts.get(organ, 0) + 1
+
+    skills = list(seen.values())
+    index = {
+        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "root": FEDERATION_ROOT_LABEL,
+        "schema_version": FEDERATION_SCHEMA_VERSION,
+        "count": len(skills),
+        "duplicates_skipped": duplicates,
+        "organ_counts": organ_counts,
+        "elapsed_ms": int((time.time() - t0) * 1000),
+        "errors": errors,
+        "skills": skills,
+    }
+    return index
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Skills index generator (Opsi-B bridge)")
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
-    ap.add_argument("--root", type=Path, default=DEFAULT_SKILLS_ROOT)
+    ap.add_argument("--root", type=Path, default=DEFAULT_SKILLS_ROOT,
+                    help="single-root mode (backward compat); ignored with --federation")
+    ap.add_argument("--federation", action="store_true",
+                    help="crawl all 5 federation roots, dedupe (AAA canonical), merged index")
     ap.add_argument("--dry-run", action="store_true", help="print summary, don't write")
     args = ap.parse_args()
 
-    if not args.root.is_dir():
-        print(f"ERROR: skills root not found: {args.root}", file=sys.stderr)
-        return 1
-
-    index = build_index(args.root)
+    if args.federation:
+        index = build_federation_index(FEDERATION_ROOTS)
+    else:
+        if not args.root.is_dir():
+            print(f"ERROR: skills root not found: {args.root}", file=sys.stderr)
+            return 1
+        index = build_index(args.root)
 
     if args.dry_run:
         print(
@@ -143,6 +214,9 @@ def main() -> int:
     tmp.replace(args.out)  # atomic
     print(f"[ACT] skills index written: {args.out}")
     print(f"      skills={index['count']} errors={len(index['errors'])} elapsed={index['elapsed_ms']}ms")
+    if args.federation:
+        print(f"      duplicates_skipped={index.get('duplicates_skipped', 0)} "
+              f"organ_counts={json.dumps(index.get('organ_counts', {}), sort_keys=True)}")
     for e in index["errors"][:10]:
         print(f"  ⚠ {e}")
     return 0
