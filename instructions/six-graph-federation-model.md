@@ -152,6 +152,48 @@ Reality → Capability → [WEALTH] → Authority → Execution
 
 Where WEALTH is the federation's consequence-propagation engine operating across all existing skills, MCPs, and agents — not as another skill, but as a layer that every skill invocation passes through.
 
+
+<!-- BEGIN ANNOTATION 2026-09-23 — F13 LIFT+SEAL-ALL; staging read-as-tested; edge-section placement, no structural change -->
+## Patch Location
+After the existing "Authority → Execution" edge description in
+`/root/AAA/instructions/six-graph-federation-model.md`, insert the
+following paragraph as an annotation (not as a replacement):
+
+---
+
+**Edge Label: Responsible-Use** (consolidation of 4 existing occupants,
+not a new node).
+
+This edge governs the transition from Authority to Execution. It is the
+most populated edge in the Six-Graph and previously carried its
+label/responsibility *distributed unnamed* across four artifacts:
+
+1. **Authority Envelope** (AGENTS.md canonical) — `CanMutate =
+   AuthorityGranted ∧ ScopeMatches ∧ TargetPermitted ∧ BoundaryActive`
+   with TOCTOU binding. The formal Authority→Execution monitor.
+2. **APEX Path Selector** P-split — "APEX cadang (propose) → SEAL
+   melupuskan (finalize) → A-FORGE executes". The sovereign *should*
+   vs sovereign *may* veto pre-filter.
+3. **Axiom 2 — Governance-Selectivity** (`APEX-MATH-CANON-2026-09-23.md`).
+   First mathematical formalization of identity-as-selection; extends
+   Six-Graph Authority graph.
+4. **Four-Layer Separation** — AAA (why) → Kernel (if) → A-FORGE (how)
+   → VAULT999 (proved it happened).
+
+**Invariant:** No single actor may perform Authority-Approval +
+Execution + Verification + Witness. The Responsible-Use edge enforces
+this separation mechanically, not merely procedurally.
+
+**Falsification:** Any execution that bypasses the four-occupant
+separation is HARAM by Axiom 1 (Capability ≠ Authority). The edge
+itself does not mint authority; it only constrains how already-granted
+authority may be exercised with dignity (F6) and wisdom (bijaksana-alignment).
+
+---
+
+(End of annotation. No structural change to Six-Graph.)
+
+<!-- END ANNOTATION -->
 ## 5. Coding Agents and the Consequence Graph
 
 Coding agents already know the code graph. WEALTH adds the consequence graph:
