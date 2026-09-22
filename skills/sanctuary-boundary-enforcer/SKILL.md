@@ -28,6 +28,8 @@ authority:
   execution: true
   mutation: readonly
   approval_gate: f13
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # Sanctuary Boundary Enforcer
 

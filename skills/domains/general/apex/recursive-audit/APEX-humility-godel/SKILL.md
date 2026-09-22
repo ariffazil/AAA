@@ -1,6 +1,8 @@
 ---
 name: APEX-humility-godel
 description: "OWNER 3 of the human-alignment quartet."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # APEX-humility-godel — Owner 3: Reflect / Audit

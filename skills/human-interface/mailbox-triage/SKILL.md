@@ -6,6 +6,8 @@ risk_tier: low
 floor_scope: [F2, F4, F7, F11]
 autonomy_tier: T1
 tags: [mail, gmail, mailread, triage, inbox, urgency, human-interface]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Mailbox Triage

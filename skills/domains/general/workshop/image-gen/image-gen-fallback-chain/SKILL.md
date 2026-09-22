@@ -10,6 +10,8 @@ metadata:
     category: creative
     requires: [mmx-cli]
     related: [minimax-cli, photorealistic-human-image-gen, mulerouter-media, token-plan-image]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Image Generation Fallback Chain (under multi-provider outage)

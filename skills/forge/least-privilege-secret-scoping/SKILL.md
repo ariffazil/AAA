@@ -19,6 +19,8 @@ triggers:
   - "per-service secrets"
   - "EnvironmentFile over-scoped"
   - "/proc/environ dumped"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Least-Privilege Secret Scoping

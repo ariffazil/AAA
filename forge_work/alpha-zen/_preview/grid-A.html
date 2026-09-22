@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="ms"><head><meta charset="utf-8"><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1080px; background:#faf8f4; color:#1c1c1c;
+        font-family:"Lato","DejaVu Sans",sans-serif; -webkit-font-smoothing:antialiased; }
+.wrap { width:1080px; padding:42px 46px 36px; }
+
+/* ONE hierarchy: masthead > day line > column frame > tier > body > trail */
+.head { display:flex; align-items:center; gap:18px; border-bottom:2.5px solid #1c1c1c;
+         padding-bottom:14px; }
+.head .moon { margin-left:auto; font-size:22px; color:#8a5a10; }
+.kick { font-size:12px; letter-spacing:.26em; font-weight:700; color:#8a5a10; }
+.title { font-size:27px; font-weight:800; letter-spacing:-.3px; line-height:1.15; }
+
+/* the two quotes stay — the identity device — but demoted to a quiet strip so
+   they stop competing with the tier headings */
+.qs { display:flex; gap:26px; margin:18px 0 0; }
+.q { flex:1; }
+.qt { font-size:13.5px; line-height:1.5; font-style:italic; color:#6b6b6b; }
+.qa { font-size:10.5px; margin-top:4px; color:#6b6b6b; font-weight:700;
+       letter-spacing:.06em; text-transform:uppercase; }
+.q.g .qt { color:#4a4235; }
+
+.hl { font-size:18.5px; line-height:1.45; color:#1c1c1c; margin:18px 0 0;
+       padding-left:14px; border-left:4px solid #8a5a10; }
+
+/* the column frame, declared ONCE */
+.cols { display:flex; margin:26px 0 0; padding-bottom:5px;
+         border-bottom:1.5px solid #1c1c1c; }
+.ha, .hs { font-size:11px; letter-spacing:.24em; font-weight:800; width:calc(50% - 38px); }
+.ha { color:#16293d; }
+.hs { color:#8a5a10; }
+
+.band { margin-top:22px; }
+.bt { font-size:14px; letter-spacing:.2em; font-weight:800; color:#8a5a10;
+       margin-bottom:6px; }
+.row { display:flex; border-bottom:1px solid #dedad2; padding:11px 0; }
+.rn { width:30px; font-size:13px; font-weight:800; color:#43357a; }
+.rl { width:46px; font-size:10px; font-weight:800; letter-spacing:.07em; color:#6b6b6b;
+       line-height:1.3; text-transform:uppercase; padding-right:6px; }
+.cell { width:calc(50% - 38px); font-size:15.8px; line-height:1.5; }
+.ca { color:#16293d; border-right:1px solid #dedad2; padding-right:18px; }
+.cs { color:#3f3320; padding-left:18px; }
+
+/* provenance: collected, quiet, out of the reading path */
+.srcb { margin-top:26px; padding-top:12px; border-top:1px solid #dedad2; }
+.srch { font-size:10.5px; letter-spacing:.22em; font-weight:800; color:#6b6b6b;
+         margin-bottom:6px; }
+.srcr { font-size:11.5px; line-height:1.6; color:#6b6b6b; }
+
+.chron { background:#fff; border:1px solid #dedad2; border-left:5px solid #8a5a10;
+          padding:14px 18px; margin-top:22px; }
+.chronh { font-size:11px; letter-spacing:.22em; font-weight:800; color:#8a5a10;
+           margin-bottom:8px; }
+.cr { font-size:15px; line-height:1.55; font-weight:600; }
+.crp { font-size:14px; line-height:1.55; font-weight:600; color:#43357a;
+        padding-left:22px; border-left:2px solid #dedad2; margin:3px 0 3px 2px; }
+.foot { margin-top:22px; padding-top:11px; border-top:1px solid #dedad2;
+         font-size:11px; letter-spacing:.14em; color:#6b6b6b; font-weight:700; }
+</style></head><body><div class="wrap">
+
+<div class="head">
+  <svg viewBox="0 0 66 66" width="66" height="66"
+  xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yin-yang">
+  <defs><clipPath id="dc"><circle cx="33.0" cy="33.0" r="31.0"/></clipPath></defs>
+  <circle cx="33.0" cy="33.0" r="31.0" fill="#e7dcc6"/>
+  <g clip-path="url(#dc)"><path d="M 33.0,2.0 A 31.0,31.0 0 0 0 33.0,64.0 A 15.5,15.5 0 0 0 33.0,33.0 A 15.5,15.5 0 0 1 33.0,2.0 Z" fill="#16293d"/></g>
+  <circle cx="33.0" cy="48.5" r="4.428571428571429" fill="#e7dcc6"/>
+  <circle cx="33.0" cy="17.5" r="4.428571428571429" fill="#16293d"/>
+  <circle cx="33.0" cy="33.0" r="31.0" fill="none" stroke="#16293d" stroke-width="1.6"/>
+</svg>
+  <div>
+    <div class="kick">SEBELUM HARI MULA</div>
+    <div class="title">ALPHA-ZEN · 21 SEP 2026</div>
+  </div>
+  <div class="moon">◑</div>
+</div>
+
+<div class="qs">
+  <div class="q y"><div class="qt">&ldquo;The first principle is that you must not fool yourself — and you are the easiest person to fool.&rdquo;</div>
+    <div class="qa">Arif · Richard Feynman, Caltech commencement address, 1974</div></div>
+  <div class="q g"><div class="qt">&ldquo;Low-load resistance exercise training is an effective alternative to traditional high-load strategies for increasing strength and muscle size.&rdquo;</div>
+    <div class="qa">Syed · Journal of Applied Physiology (japplphysiol.00353.2025)</div></div>
+</div>
+
+<div class="hl">Minggu ni semua benda yang sepatutnya bising — selat kena serang, kadar dinaikkan — tapi pasaran buat bunyi paling kuat masa dia senyap.</div>
+
+<div class="cols"><div class="ha">ARIF</div><div class="hs">SYED</div></div>
+
+
+<div class="band">
+  <div class="bt">KENA TAHU</div>
+  
+<div class="row">
+  <div class="rn">01</div>
+  <div class="rl">WORLD</div>
+  <div class="cell ca">Krisis Selat Hormuz 2026. Paip bypass Riyadh — jalan minyak Saudi keluar tanpa lalu Selat — kena serang, terus tutup. Riyadh tuduh pejuang sokongan Iran di Iraq. Aramco pindah balik eksport ikut Teluk, dan pasaran tarik nafas lega.</div>
+  <div class="cell cs">Emas XAUUSD 4,363.30. Struktur EMA masih bullish — EMA20 4,361.73 di atas EMA50, EMA50 di atas EMA200. RSI 59.3, belum letih. Tapi verdict sistem: SABAR — RR cuma 1.0, confluence 0.016. Arah betul, harga belum bagi.</div>
+</div>
+<div class="row">
+  <div class="rn">02</div>
+  <div class="rl">REALITY</div>
+  <div class="cell ca">Brent bacaan sistem 99.36, trend DOWNTREND keyakinan 0.95 — EMA20 bawah EMA50 bawah EMA200, RSI 44.2. Tapi setahun dia naik 55.66% dan sebulan 9.78%. Dua bacaan ni bukan bercanggah: pasaran dah spike sebab perang, sekarang dia roll over sambil dunia lega.</div>
+  <div class="cell cs">Fed naik 25 basis points, isyarat nak naik lagi — pasaran letak hampir 60% peluang hike bulan depan. BoJ ikut, 1.25%, paras tertinggi dalam 31 tahun. US10Y 4.998%, DXY 100.28. Semua bank pusat utama ketat serentak.</div>
+</div>
+<div class="row">
+  <div class="rn">03</div>
+  <div class="rl">CLOCK</div>
+  <div class="cell ca">Belanjawan 2027, 9 Oktober. Pre-Budget Statement dah tunjuk arah: peralihan tenaga bersih, produktiviti agri-makanan, mitigasi banjir. Dua baris yang semua orang cari: dividen PETRONAS, dan nasib subsidi RON95. Bila minyak naik lebih separuh setahun, dua baris tu bukan detail.</div>
+  <div class="cell cs">Tingkap harga minyak mingguan tutup 23 September — CHRON yang pegang kiraan, bukan ayat ni. Hujung September, butiran penuh subsidi RON95 bersasar keluar, kata MOF. Lepas tu baru jelas siapa layak dan siapa tak.</div>
+</div>
+</div>
+<div class="band">
+  <div class="bt">SUKA TAHU</div>
+  
+<div class="row">
+  <div class="rn">04</div>
+  <div class="rl">OUR WORLD</div>
+  <div class="cell ca">Sementara satu selat bergolak, PETRONAS buka jalan lain. Kontrak LNG lima tahun dengan METLEN (Greece). Estuary Cluster PSC award dan serahan data seismik Mutiara Cluster. Kilang LNG Sabah masuk commissioning tahun depan. Yang menang bukan yang paling kuat — yang laluannya paling banyak.</div>
+  <div class="cell cs">Meta-analisis 2026, atlet berpasukan: latihan rintangan digabung sekatan aliran darah naikkan hipertrofi dan kekuatan. Kajian lain dalam J Appl Physiol terus kata beban rendah pun boleh jadi alternatif — banyak jalan menuju Rome. Yang tentukan bukan angka pada plat besi.</div>
+</div>
+<div class="row">
+  <div class="rn">05</div>
+  <div class="rl">MONEY</div>
+  <div class="cell ca">Jadual TradingEconomics letak Urals — minyak Rusia yang kena sekatan — $113.41, atas Brent $103.62. Yang dihukum dijual lebih mahal dari benchmark. Sebab dia jalan darat, tak perlu lalu Selat. Hukuman yang direka untuk buat minyak Rusia murah, sekarang buat dia mahal.</div>
+  <div class="cell cs">Nisbah emas/perak 65.3. Perak $66.84. Bila nisbah ni rapat, maksudnya perak tengah mendahului emas — dorongan bukan lagi semata takut, tapi permintaan industri dan selera risiko. Dua-dua logam, dua-dua cerita berbeza.</div>
+</div>
+<div class="row">
+  <div class="rn">06</div>
+  <div class="rl">HUMAN</div>
+  <div class="cell ca">Negeri Sembilan. Exco umum Yang di-Pertuan Besar dah tiada. Istana balas: pelantikan exco dibatalkan serta-merta, kerana mereka pecahkan sumpah. AGC kata exco memang tak pernah ada kuasa buat kenyataan tu. Kuasa bukan benda yang kau dakwa — ia benda yang diberi. Bila kau tolak pemberi, pemberian tu pun hilang.</div>
+  <div class="cell cs">Meta-regresi 2026 atas sarcopenia: latihan rintangan memang naikkan jisim otot dalam orang tua, tapi bila kau tala macam-macam pemboleh ubah latihan, hasilnya tak bertambah lebih. Umur tetap kurangkan respons. Makin tua, yang penting bukan resepi canggih — yang penting kau tetap buat.</div>
+</div>
+</div>
+<div class="band">
+  <div class="bt">EUREKA</div>
+  
+<div class="row">
+  <div class="rn">07</div>
+  <div class="rl">CONNECTION</div>
+  <div class="cell ca">Redundansi yang jadi satu titik tunggal. Backup yang kau paling bergantung untuk elak masalah — dia yang paling bahaya bila jatuh. Bila sokongan tu mati, kau bukan hilang satu jalan, kau hilang dua: yang asal tersekat, yang alternatif pun lengkap tiada.</div>
+  <div class="cell cs">Titik yang sama dalam latihan. Accessory yang kau tambah untuk baiki satu bahagian lemah — lama-lama kau tak boleh angkat tanpa dia. Yang asalnya sokongan dah jadi asas. Bila takde gym, bukan satu senaman hilang, program kau roboh sama.</div>
+</div>
+<div class="row">
+  <div class="rn">08</div>
+  <div class="rl">RANDOM</div>
+  <div class="cell ca">Cascadia dan San Andreas — dua sesar besar yang selama ni dianggap bebas — ada bukti boleh sync: satu gempa besar boleh cetuskan yang satu lagi. Dua sistem yang nampak berasingan selalu dianggap selamat. Kenyataannya mereka kongsi dasar yang sama, dan perkongsian tu baru nampak masa dua-dua gagal.</div>
+  <div class="cell cs">Deload dan de-risking satu benda. Kau potong exposure bukan sebab kau salah — kau potong sebab kau dah tak boleh percaya bacaan kau sendiri. Badan penat ubah cara kau rasa berat. Volatiliti tinggi ubah cara kau baca setup. Bila deria yang kau guna untuk ukur dah tercemar, langkah paling jujur ialah kecilkan saiz.</div>
+</div>
+<div class="row">
+  <div class="rn">09</div>
+  <div class="rl">TONIGHT</div>
+  <div class="cell ca">Fed naik. BoJ naik ke paras tertinggi dalam 31 tahun. Selat minyak kena serang. Emas? Masih kira-kira 22% di bawah rekod Januari, tapi masih naik 16.7% setahun. Textbook kata tak boleh semua ni sekali. Harga tak ramal peristiwa — harga bayar persediaan orang. Yang bergerak bukan berita, tapi siapa dah pasang awal.</div>
+  <div class="cell cs">Sama dalam latihan. Angka pada bar bukan sebab kau kuat — dia rekod apa yang kau dah buat berbulan-bulan sebelum tu. PR cuma cetakan, bukan proses. Sesi yang kau tak ingat, yang kau buat masa malas, tu yang sebenarnya bina. Yang nampak hari ni, cuma lewat.</div>
+</div>
+</div>
+
+<div class="srcb"><div class="srch">SUMBER</div>CNBC · USA Today · Reuters · WEALTH · TradingEconomics · NYT · MOF · CHRON · worldoil · PETRONAS · Frontiers in Physiology · FMT</div>
+
+<div class="chron"><div class="chronh">CHRON — JAM YANG SEDANG JALAN</div><div class="cr">Belanjawan 2027 dibentang di Parlimen — 18 hari · Baris dividen PETRONAS dan subsidi bahan api jadi boleh dicek pada hari itu</div><div class="cr">Harga minyak kuat kuasa 17-23 Sept tamat — 2 hari · Harga minggu seterusnya diumum sekitar tarikh ini</div><div class="crp">ramalan: Harga RON95 untuk 24–30 Sept kekal ≤ RM2.05/liter, keyakinan 85%</div><div class="cr">Perlindungan elektrik 800 kWh tamat, revert ke 600 kWh — 3 bulan (101 hari) · Bil Januari naik walaupun penggunaan tidak berubah</div></div>
+<div class="foot">DITEMPA BUKAN DIBERI</div>
+</div></body></html>

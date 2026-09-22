@@ -38,6 +38,8 @@ attention:
     - "key_age_matrix"
     - "remediation_receipt"
 tags: [symlink, secret, hygiene, repo, cleanup, F1, F2, F4, F7]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # core/forge/repo-cleanup

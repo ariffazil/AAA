@@ -4,6 +4,8 @@ description: "Use when advising a person on their body or schedule."
 metadata:
   hermes:
     tags: [advisory, care, relationships, human-context]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Human Logistics Advisory
@@ -12,7 +14,7 @@ When to use: whenever a person asks for advice about their own body, sleep, reco
 
 ## Procedure
 
-**First, probe what already exists about this person.** Recurring personal matters carry history — an earlier plan, a deliverable, a prior session. Sweep for it and read it before composing advice. Re-deriving something that already exists, or contradicting it unknowingly, costs the person more than the advice is worth. For body and injury cases (post-op timelines, rehab gating, return to sport) read `references/body-rehab-advisory.md` before answering.
+**First, probe what already exists about this person.** Recurring personal matters carry history — an earlier plan, a deliverable, a prior session. Sweep for it and read it before composing advice. Re-deriving something that already exists, or contradicting it unknowingly, costs the person more than the advice is worth. For body and injury cases (post-op timelines, rehab gating, return to sport) read `references/body-rehab-advisory.md` before answering. **For an ACUTE symptom reported now — pain, a flare, dizziness, bleeding, something that just happened — read `references/acute-symptom-triage.md` first;** it carries the red-flag screen, the escalation ladder, and the rule that you cannot diagnose from a chat.
 
 1. **Probe the constraint before the recommendation.** Establish the person's fixed anchors first: wake time, work hours, family obligations, income rhythm, commute. Only then compute. If you do not hold them, say what you need and offer options instead of a plan.
 2. **Answer at the level asked.** "What should I eat?" wants a food list. "How many hours?" wants arithmetic. Vague counsel ("eat well", "recover properly") reads as evasion and forces a second ask.

@@ -1,6 +1,8 @@
 ---
 name: arifos-organ-forging
 description: Forge new constitutional organs in arifOS — vector indexing, dual-gate architecture, EMD pipeline integration, Qdrant backfill, derived-view enrichment
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arifOS Organ Forging

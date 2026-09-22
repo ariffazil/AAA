@@ -13,6 +13,8 @@ triggers:
   - ".git is hundreds of megabytes"
   - "remove a blob from history and push"
   - "which branch carries this big file"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Git History Hygiene

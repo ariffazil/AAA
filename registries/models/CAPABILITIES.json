@@ -5,8 +5,8 @@
     "forged": "2026-08-18",
     "forged_by": "kimi-code/FI-008",
     "owner": "Modality Truth",
-    "doctrine": "Modalities \u2260 Features. They drift separately. Default = false. If a flag is absent, the model does not have it.",
-    "phase": "1 \u2014 modality SOT only. Phase 2 = drift audit. Phase 3+ = consumers (Hermes, OpenClaw).",
+    "doctrine": "Modalities ≠ Features. They drift separately. Default = false. If a flag is absent, the model does not have it.",
+    "phase": "1 — modality SOT only. Phase 2 = drift audit. Phase 3+ = consumers (Hermes, OpenClaw).",
     "supersedes_scattered": [
       "kimi-code/config.toml capabilities arrays (image_in/video_in/audio_in)",
       "A-FORGE/litellm-config.yaml supports_vision / supports_function_calling / supports_prompt_caching",
@@ -20,8 +20,12 @@
       "law": "arifOS :8088"
     },
     "audit_command": "python3 /root/AAA/registries/models/capabilities_audit.py",
-    "drift_policy": "Zero drift tolerated. Run capabilities_audit before any Hermes/consumer reads. Drift > 0 \u2192 HOLD + patch.",
-    "provenance": "Extracted 2026-08-18 from 4 scattered sources. Snapshots: /root/forge_work/_quarantine/2026-08-18-capabilities-sot/"
+    "drift_policy": "Zero drift tolerated. Run capabilities_audit before any Hermes/consumer reads. Drift > 0 → HOLD + patch.",
+    "provenance": "Extracted 2026-08-18 from 4 scattered sources. Snapshots: /root/forge_work/_quarantine/2026-08-18-capabilities-sot/",
+    "last_catalog_update": "2026-09-22",
+    "catalog_history": [
+      "2026-09-22 FI-008: +mimo-v2.6-pro/flash/pro-ultraspeed (catalog gap close; existing 5 drifts untouched per Phase-3 HOLD)"
+    ]
   },
   "defaults": {
     "modalities": {
@@ -53,7 +57,7 @@
       }
     },
     "MiniMax-M3": {
-      "_note": "Multimodal flagship \u2014 1M ctx. Vision + audio + video + image + music generation per provider docs + federation-models.json capabilities array (music, tts, image_generation, video_generation).",
+      "_note": "Multimodal flagship — 1M ctx. Vision + audio + video + image + music generation per provider docs + federation-models.json capabilities array (music, tts, image_generation, video_generation).",
       "modalities": {
         "vision": true,
         "audio_in": true,
@@ -84,7 +88,7 @@
       }
     },
     "kimi-k3": {
-      "_note": "Kimi Moonshot K3 \u2014 1M ctx, image+video input per kimi/config.toml.",
+      "_note": "Kimi Moonshot K3 — 1M ctx, image+video input per kimi/config.toml.",
       "modalities": {
         "vision": true,
         "video_in": true
@@ -96,7 +100,7 @@
       }
     },
     "kimi-k2.7-code": {
-      "_note": "Coding specialist \u2014 image input.",
+      "_note": "Coding specialist — image input.",
       "modalities": {
         "vision": true
       },
@@ -179,7 +183,7 @@
       }
     },
     "qwen3.8-max": {
-      "_note": "Qwen Token Plan flagship \u2014 vision per kimi/config.",
+      "_note": "Qwen Token Plan flagship — vision per kimi/config.",
       "modalities": {
         "vision": true,
         "video_in": true
@@ -263,7 +267,7 @@
       }
     },
     "gpt-5.5": {
-      "_note": "OpenAI flagship via opencode-zen \u2014 vision + reasoning per kimi/config.",
+      "_note": "OpenAI flagship via opencode-zen — vision + reasoning per kimi/config.",
       "modalities": {
         "vision": true
       },
@@ -291,7 +295,7 @@
       }
     },
     "gemini-2.5-flash": {
-      "_note": "Google Gemini Flash \u2014 multimodal native (vision + audio). Free tier 10rpm/250 RPD.",
+      "_note": "Google Gemini Flash — multimodal native (vision + audio). Free tier 10rpm/250 RPD.",
       "modalities": {
         "vision": true,
         "audio_in": true
@@ -488,7 +492,7 @@
       }
     },
     "deepseek-v4-pro": {
-      "_note": "Text-only per default. Vision optional in some cascades \u2014 not confirmed in i-arif chain.",
+      "_note": "Text-only per default. Vision optional in some cascades — not confirmed in i-arif chain.",
       "modalities": {},
       "features": {
         "tool_calling": true,
@@ -523,7 +527,7 @@
       }
     },
     "glm-5.3": {
-      "_note": "Z.ai Coding Plan Pro \u2014 text-only in default. 1M ctx.",
+      "_note": "Z.ai Coding Plan Pro — text-only in default. 1M ctx.",
       "modalities": {},
       "features": {
         "tool_calling": true,
@@ -538,7 +542,7 @@
       }
     },
     "mimo-v2.5-pro": {
-      "_note": "Xiaomi MiMo \u2014 vision per federation-models.json modalities.",
+      "_note": "Xiaomi MiMo — vision per federation-models.json modalities.",
       "modalities": {
         "vision": true
       },
@@ -962,6 +966,57 @@
         "structured_output": false,
         "reasoning_tier": "mid"
       }
+    },
+    "mimo-v2.6-pro": {
+      "_note": "MiMo V2.6 Pro (Sep 22 2026). AA Index 46. Catalogued 2026-09-22 FI-008 stabilization: uncatalogued->catalogued. Omnimodal INPUT (text+image+video+audio); no output-generation tokens in source capabilities -> *_out false (zero-drift aligned to federation-models.json).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true,
+        "video_in": true,
+        "audio_out": false,
+        "video_out": false,
+        "image_out": false
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "frontier",
+        "context_window": 1048576
+      },
+      "catalogued": "2026-09-22"
+    },
+    "mimo-v2.6-flash": {
+      "_note": "MiMo V2.6 Flash — latency lane, omnimodal INPUT. Live-verified 2026-09-22: 147 tok/s reasoning run + vision run through litellm :4013. No output-generation tokens (no tts/music/image_generation) -> *_out false (zero-drift aligned).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true,
+        "video_in": true,
+        "audio_out": false,
+        "video_out": false,
+        "image_out": false
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high",
+        "context_window": 1048576
+      },
+      "catalogued": "2026-09-22"
+    },
+    "mimo-v2.6-pro-ultraspeed": {
+      "_note": "MiMo V2.6 Pro UltraSpeed on mimo-platform PAYG. Live 200 @ 17ms 2026-09-22 (reasoning tokens consume budget — max_tokens must exceed reasoning overhead). Source modalities include audio+video -> audio_in/video_in true (zero-drift aligned).",
+      "modalities": {
+        "vision": true,
+        "audio_in": true,
+        "video_in": true,
+        "audio_out": false,
+        "video_out": false,
+        "image_out": false
+      },
+      "features": {
+        "tool_calling": true,
+        "reasoning_tier": "high",
+        "latency_tier": "ultrafast"
+      },
+      "catalogued": "2026-09-22"
     }
   }
 }

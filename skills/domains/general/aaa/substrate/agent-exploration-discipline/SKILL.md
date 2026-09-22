@@ -3,6 +3,8 @@ name: agent-exploration-discipline
 description: "Use when a search or verify loop is circling."
 version: 1.0.0
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agent Exploration Discipline

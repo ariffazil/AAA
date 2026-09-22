@@ -34,6 +34,8 @@ tests:
 - Every edge must carry real data or authority — decorative edges fail
 - Every node must have one bounded job — multi-job nodes fail
 - Independent nodes must be parallelizable — forced serialization fails
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Graph Engineering Patterns — 12 Canonical Shapes

@@ -59,6 +59,8 @@ tags:
 # reportlab + matplotlib stack for daily gold/trading signal PDFs.
 # That skill has its own one-page layout spec (navy/gold/teal/red palette)
 # and a proven chart template in templates/gold_signal_chart.py.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Scientific PDF Generation

@@ -1,8 +1,8 @@
 {
-  "id": "canary-1789927699-f89b0f",
+  "id": "canary-1790119216-f2e786",
   "ok": true,
-  "hop_ms": 3,
-  "checked_at": "2026-09-20T18:08:19Z",
+  "hop_ms": 12,
+  "checked_at": "2026-09-22T23:20:16Z",
   "subject": "arifos.floor.canary",
   "consumer": "aaa-ops-fabric"
 }

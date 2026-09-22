@@ -6,6 +6,8 @@ forged: 2026-08-25
 owner: 888-APEX
 description: Use when claiming, attributing, or timing events. 5 guards.
 floor_scope: [F2, F7, F9]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # SELF-RECURRENCE-GUARDS

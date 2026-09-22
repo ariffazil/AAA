@@ -12,6 +12,8 @@ triggers:
   - who's interesting in this group
   - identify key people from this chat
   - user asserts or asks to confirm an emotional verdict about someone in the log ("tell me I hate X", "does X hate me", "aku benci dia kan")
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Text Forensics — Longitudinal Chat/Text Behavioral Analysis

@@ -3,6 +3,8 @@ name: live-system-audit-discipline
 description: "Use when auditing a live system or reporting probe results."
 version: 1.0.0
 license: MIT
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # live-system-audit-discipline
@@ -75,6 +77,17 @@ false against the live system, stop re-falsifying them. The paste is template te
 worth recording is that the artifact is not connected to a measurement at all. Say that once and
 move on — running the same disproof a third time spends sovereign attention without changing the
 record, and the repeat count is itself the signal.
+
+**Two instances are not a pattern, and a peer agreement is not corroboration.** Naming a class
+of defect requires n>=3 from independent sources, AND the mechanism must be the same across
+each. Two findings on different mechanisms (one tool classified wrong by source, another tool
+classified right by source) read as a single observation per tool — not as a defect class. Two
+agents reaching the same confident wrong conclusion is worse than one, because it presents as
+corroboration and bypasses the falsifier that a single-agent claim would have triggered. When a
+peer retracts, retract your own amplifications of their retracted claim in the same thread, not
+two messages later — and check whether you added a label that they never used, then propagated
+the label as if it were their finding. A peer who says "gate has teeth" and you turn that into
+"fail-closed system" have produced a finding that neither of you verified together.
 
 **Decompose before you build on a figure, not just before you publish it.** A count inherited
 from another writer carries their undecomposed denominator into your conclusion. Split it into
@@ -184,6 +197,15 @@ states where you looked, on which host, and by which method.
 - **Never widen a single-surface probe into a claim about the system.** One endpoint, one
   client, or one output mode is a midpoint, not the organ. Probe a second surface, or scope the
   claim in the sentence itself.
+- **When a gate denies your probe, that IS the finding — do not substitute a source read.**
+  A stateless-client denied at L1 has produced one observation: L1 denies stateless-client.
+  It has NOT produced: "the gate is fail-closed overall", "the gate denies all unverified callers",
+  or any class-level claim about the system. If your next move is to read source code or another
+  tool's audit log to "fill in" what the gate denied, you are inferring past your evidence. State
+  the denial, name the tool/mode/actor, hand off to whoever holds the verified session — and stop.
+  Reading the source gives you the developer's INTENT, not the runtime behavior. The two can
+  diverge (compiled classifier, dead flag, fail-open fall-back) and the only thing that resolves
+  the divergence is a live probe by an actor that the gate does not deny.
 - **An echo is not a measurement.** Before reporting a value as the system's, vary the
   parameter you sent and confirm the answer changes with it; some endpoints return what the
   caller supplied, so a fixed probe measures only itself.
@@ -204,12 +226,31 @@ states where you looked, on which host, and by which method.
   The rule is not "find is broken" but "one form is one witness": a zero that cannot be reproduced two
   ways is a measurement of your own command, not of absence. Cheap to check, and it is exactly the
   class of error that survives into a published finding because a zero looks like a clean result.
+
+  **Second shape: a size tool's zero on a path that resolves through a symlink.** A directory reached
+  by a symlink can report `0` bytes while holding gigabytes at its target — and because `0` reads as
+  "empty, safe to remove", that error lands straight in a deletion list. Check `ls -la` and
+  `readlink` (or `findmnt -T`) before any size tool is believed: an `l` in the mode column means you
+  measured the link, not the tree. Then re-measure the resolved target. Two silent variants:
+  a link whose target is already counted elsewhere (removing the link frees nothing) and a link whose
+  target is a live store (removing the *target* destroys what the link was only naming). A path that
+  appears both as a top-level entry and inside another tree is the tell — resolve it before ranking it.
 - **Scope a negative to the window you actually searched.** "Never used", "never fired", "no caller"
   read as properties of the system and are usually properties of the retained log. State the first and
   last retained timestamps beside the count, and derive any ratio against that window rather than an
   assumed lifetime.
 - **Re-verify immediately before you write.** On a live shared repo another writer may land
   between your read and your patch. Re-check mtime/hash at write time.
+- **One ID per identity, never two namespaces for the same object.** A standing pattern in this
+  codebase is minting parallel identifiers for the same artifact with two prefixes (e.g.
+  `az-<sha8>` for signal identity, `azc-<YYYYMMDD>-<NN>` for the calibration audit of the same
+  signal) and asking downstream consumers to reconcile the two via `seq` mapping or sidecar
+  joins. The reconciliation always fails somewhere, and the failure mode is silent: a join key
+  drifts, a foreign reference goes dead, and the audit trail loses a thread. **One ID per
+  object.** When a secondary ordering or grouping is needed (ordinal within a day, sequence
+  within a render), make it a sidecar field (`seq`, `order`) on the same record — not a parallel
+  namespace. The cost of two namespaces is paid forever; the cost of one extra field is paid
+  once at query time.
 - **A comparator must fail closed on missing inputs.** A drift surface compared
   `source_commit: null` against `built_commit: null`, got "matches", and asserted
   `deployment_attestation: "aligned"` while holding no commit identity whatsoever — the one verdict
@@ -384,6 +425,14 @@ a steady one has not been tested.
   payloads with volatile fields (timestamps, latencies, durations) stripped and compare — grouping is a
   hypothesis, hashing is the measurement. A file size that differs between two "identical" records is
   the same defect: compare content, not metadata.
+
+  **For directory trees, per-tree `du` double-counts a hardlinked pair.** Two paths with matching
+  apparent and on-disk sizes are not two copies when they share inodes — measuring each separately
+  reports the tree twice and inflates the reclaim estimate by 2×. Measure them **together**
+  (`du -sc <treeA> <treeB> | tail -1`) and compare inode sets
+  (`find <tree> -type f -printf '%i\n' | sort | md5sum`) or count files at `-links 1`. Sizes that sum
+  to one tree's worth of bytes, with few single-linked files, is a deduplicated pair — designed, not
+  accidental, and deleting one "duplicate" frees nothing while removing a recovery path.
 - **Extract the properties you will want later BEFORE you purge a population.** Deleting an observed
   pile destroys the ability to measure anything about it afterwards: a rate, a distribution, a
   first-seen date. Record the aggregate statistics and a sorted `name<TAB>size` manifest hash first,
@@ -410,3 +459,9 @@ inventory the load and classify it by state, measure each item's attention cost 
 impact, apply the parasite test (who reads it · has it ever changed a decision · does it have a
 rotation or kill rule), rank most-attention-for-least-reality first, and close on the single removal
 that releases the most.
+
+`references/subtractive-cleanup-census.md` — asked to make a live host simpler / smaller / remove
+entropy / produce a removal map before deleting: the probe set (port→unit map, enabled-vs-active
+units, ExecStart-missing orphans, git-dirt sweep, resource attribution, store census), the eight
+disposition buckets, the P0→P8 order, the batch-and-canary rule, the authority boundary that stops an
+unverified session, and the false positives that make a "safe to delete" list wrong.

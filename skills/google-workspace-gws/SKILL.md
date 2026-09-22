@@ -1,6 +1,8 @@
 ---
 name: google-workspace-gws
 description: "Use when needing Gmail, Google Drive, Calendar, Docs, or Sheets from any agent on forge VPS — wired via official gws CLI (OAuth live, verified 2026-09-16)."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Google Workspace via gws CLI (official @googleworkspace/cli)

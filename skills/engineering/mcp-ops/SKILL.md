@@ -1,15 +1,20 @@
 ---
 name: mcp-ops
-description: "Use when working with MCP servers — build, probe, wire, test, govern, retire. One owner for the whole MCP lifecycle."
+description: "Use when working with MCP servers — learn, discover, probe, build, secure, test, extend, publish, govern, retire. The canonical Model Context Protocol skill, accordant to https://modelcontextprotocol.io/llms.txt (8-stage workflow). One owner for the whole MCP lifecycle across federation, vendor, registry, and external hosts."
 id: mcp-ops
-version: 3.0.1
+version: 3.2.0
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F8, F10, F11, F12, F13]
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
-tags: [mcp, lifecycle, mcporter, fastmcp, probe, transport, wiring, conformance, mcpjam, governance, drift, compression, discovery, registry, ops]
+aligned_to:
+  - https://modelcontextprotocol.io/llms.txt
+  - canonical MCP spec 2026-07-28 (stateless preferred) and 2025-11-25 (legacy handshake)
+  - RFC 8414 (AS metadata) + RFC 8705 (PRM) + RFC 9728 (Protected Resource Metadata)
+  - MCP-Protocol-Version header convention
+tags: [mcp, lifecycle, mcporter, fastmcp, probe, transport, wiring, conformance, mcpjam, governance, drift, compression, discovery, registry, apps, oauth, prm, sep, skills, build-with-agent-skills, fastmcp[tools], streamable-http, era-2026-07-28, era-2025-11-25]
 supersedes:
   - FORGE-mcp-ops
   - FORGE-mcp-federation-ops
@@ -20,20 +25,24 @@ supersedes:
   - forge-mcp-gui
   - FORGE-mcp-a2a-agentic
   - forge-mcp-a2a-agentic
+  - FORGE-mcp-testing
+  - FORGE-mcp-governance-wrapper
+  - forge-mcp-governance-wrapper
   - mcp-organ-probe
   - mcp-edit-activation
   - mcp-transport-fix
   - mcp-ecosystem-indexing
   - forge-mcp-registry-publish
+  - federation-mcp-drift-audit
   - external-platform-mcp
   - mcp-context-compression
   - forge-minimax-mcp-direct-invoke
   - telegram-mcp-product-line
   - mcp-testing
-  - forge-mcp-governance-wrapper
-  - federation-mcp-drift-audit
+  - mcp-sota-shopping-list
 triggers:
   - "MCP server"
+  - "Model Context Protocol"
   - "mcporter"
   - "MCP health"
   - "MCP operations"
@@ -60,6 +69,8 @@ triggers:
   - "MCPJam"
   - "MCP protocol version"
   - "MCP 2026-07-28"
+  - "stateless MCP"
+  - "server/discover"
   - "wire an MCP server into Hermes"
   - "MCP tool schemas eating context"
   - "publish MCP to Smithery or Glama"
@@ -69,235 +80,228 @@ triggers:
   - "MCP 400 on stateless probe"
   - "MCP CI gate"
   - "MCP OAuth conformance"
+  - "OAuth 2.1 MCP"
+  - "Protected Resource Metadata MCP"
+  - "RFC 8414 MCP"
+  - "RFC 8705 MCP"
   - "MCP auto-recovery"
   - "MCP health check"
   - "MCP probe"
   - "MCP schema validation"
   - "MCP server test"
   - "MCP server validation"
-  - "MCP server/discover fails"
+  - "server/discover fails"
   - "MCP smoke test"
   - "MCP test"
-  - "MCP tool returns empty list"
-  - "MCP tool still returns old output"
-  - "MCP transport test"
-  - "MCP-App surface"
-  - "MCP-Protocol-Version 2026-07-28 vs 2025-11-25"
-  - "MCPChatGPT conformance"
-  - "MCPJam Inspector"
-  - "Ollama cold-start"
-  - "Unknown tool"
-  - "advertised but unreachable"
-  - "check the organ"
-  - "declared vs callable"
-  - "effect of a server.py edit"
-  - "era mismatch diagnose"
-  - "gate change not taking effect"
-  - "is this tool broken"
-  - "model fallback chain"
-  - "patched an MCP server"
-  - "probe this organ"
-  - "registry drift"
-  - "reload an MCP server"
-  - "stateless MCP"
-  - "surface truth"
-  - "tool not callable"
-  - "MCP server procurement"
-  - "which MCP server to adopt"
+  - "Skills over MCP"
+  - "MCP Tasks extension"
+  - "MCP Apps extension"
+  - "MCP enterprise-managed authorization"
+  - "Enterprise MCP"
+  - "MCP SEP"
+  - "MCP Registry"
+  - "MCP registry publish"
+  - "MCP registry aggregator"
+  - "MCP Glossary"
+  - "MCP AICG"
+  - "MCP roadmap"
+  - "Build with Agent Skills MCP"
+  - "FastMCP tasks"
+  - "FastMCP scaffold"
+  - "FastMCP inspect"
+  - "Streamable HTTP MCP"
+  - "stdio MCP"
+  - "MCP server build"
+  - "MCP client build"
+  - "MCP SDK"
 negative_triggers:
-  - "choosing WHICH MCP server to buy/adopt is PROCUREMENT — a lane inside this skill: Stage 1b / references/absorbed-mcp-sota-shopping-list.md (name tombstoned, not a separate skill)"
-  - "the target is a WEALTH MCP tool → wealth-mcp-ops"
-  - "the target is the Runpod MCP server → runpod-mcp"
-  - "the target is the TouchDesigner twozero MCP → touchdesigner-mcp"
-  - "generic does-it-work / claim-discipline on any non-MCP tool → agent-tool-verification"
-  - "single-shot liveness + schema + transport classification instrument → runtime-probe"
-  - "Qwen Token Plan built-in harness tools (not MCP) → qwen-harness-tools"
-  - "Telegram bot lanes, tokens, group routing → telegram-bot-routing-doctrine"
-  - "MCP health monitoring on a production organ as a standing cron → kabarkan-observability / telemetry-watchdog"
+  - "WEALTH MCP tools"            → wealth-mcp-ops (organ-bounded)
+  - "Runpod MCP"                   → runpod-mcp (platform lane)
+  - "TouchDesigner MCP"            → creative/touchdesigner-mcp (platform lane)
+  - "runtime MCP probe (one-shot)" → core/mcp/runtime-probe (focused instrument)
 ---
 
-# MCP Operations — one owner for the MCP lifecycle
+# MCP Operations — one owner for the canonical MCP lifecycle
 
-> **The flow:** `DISCOVER → PROBE → INTEGRATE → TEST → GOVERN → RETIRE`
-> Find your stage, run its spine, then open the absorbed reference for depth.
-> **mcporter** inspects and calls any MCP tool from a terminal. **FastMCP** builds them.
-> **MCPJam** tests them. A file edit is never a live fix.
-> *DITEMPA BUKAN DIBERI*
+> **The flow, accordant to https://modelcontextprotocol.io/llms.txt:**
+> `LEARN → DISCOVER → PROBE → BUILD → SECURE → TEST → EXTEND → PUBLISH → GOVERN (with RETIRE)`
+> Canonical MCP — get the concepts right, then know which stage owns your problem.
+> *mcporter* discovers. *FastMCP* builds. *MCPJam Inspector* tests. *The Registry* publishes. *arifOS* governs.
+> A file edit is never a live fix. DITEMPA BUKAN DIBERI ⚒️
 
 ## Overview
 
-Every MCP question lands here, at one of six stages. Do not hunt for 26 separate skills — the
-sub-knowledge of each retired skill lives in `references/absorbed-<name>.md` (verbatim), linked from
-the stage that owns it.
+This is the AAA canonical skill for the Model Context Protocol. It is one owner for the full **eight-stage MCP lifecycle** that the Model Context Protocol project documents at `https://modelcontextprotocol.io/llms.txt`. It supersedes 24 prior MCP skill names (see `supersedes:` above and `references/absorbed-INDEX.md`). All of those names resolve as tombstones pointing here.
 
-| Stage | Question you are actually asking | Spine |
+The eight stages fold one-to-one onto the canonical llms.txt workflow:
+
+| Stage | llms.txt section(s) | Question you actually ask |
 |---|---|---|
-| **1 DISCOVER** | Which servers exist, what do they expose, how do agents find ours? | `mcporter list`, beacon/registry publishing |
-| **2 PROBE** | Is it alive, is it callable, is my edit live? | 3-step handshake, 4 numbers, PID-vs-mtime |
-| **3 INTEGRATE** | Build it (FastMCP), wire it (config), keep it affordable | `fastmcp scaffold`, `hermes_mcp_wire.py`, `mcp-compress.sh` |
-| **4 TEST** | Does it conform, does it work end-to-end? | MCPJam Inspector, smoke gate, stub sweep |
-| **5 GOVERN** | Who may call what, and where has it drifted? | governance wrapper, drift audit |
-| **6 RETIRE** | How do we deprecate a server or a name without losing it? | `<name>.DEPRECATED-<date>` + `.frozen/` |
+| **0 LEARN** | `getting-started/`, `architecture`, `server-concepts`, `client-concepts`, `versioning`, `sdks` | "What IS MCP? Which version? Which SDK?" |
+| **1 DISCOVER** | `registry/about`, `registry/quickstart`, discovery beacons, Skills extension | "Which servers exist? Which can we adopt?" |
+| **2 PROBE** | `develop/connect-local-servers`, `develop/connect-remote-servers`, transports | "Is it alive? Is my edit live? What's the four-number truth?" |
+| **3 BUILD** | `develop/build-server`, `develop/build-client`, `develop/build-with-agent-skills`, `client-best-practices`, Apps | "How do I write an MCP server / client / agent skill?" |
+| **4 SECURE** | `tutorials/security/authorization`, `tutorials/security/security_best_practices`, `extensions/auth/*`, `extensions/auth/enterprise-managed-authorization` | "How do I prove a request is authorized? What does OAuth 2.1 require?" |
+| **5 TEST** | `tools/inspector/*`, `debugging`, conformance era matrix | "Does it conform? Does it work end-to-end across eras?" |
+| **6 EXTEND** | `extensions/apps/*`, `extensions/tasks/*`, `extensions/skills/*`, `extensions/auth/oauth-client-credentials` | "How do I add UI / async tasks / agent skills / client credentials?" |
+| **7 PUBLISH** | `registry/quickstart`, `registry/versioning`, `registry/authentication`, `registry/github-actions`, `registry/moderation-policy`, `registry/registry-aggregators`, `registry/terms-of-service` | "How do I ship to MCP Registry / Smithery / Glama?" |
+| **8 GOVERN (and RETIRE)** | `seps/*`, `community/governance`, `community/working-interest-groups`, `community/contributor-ladder`, `community/feature-lifecycle`, `community/sdk-tiers`, deprecated features | "Who decides? When does a name retire? How do I file a SEP?" |
 
-## arifOS-ACT Embedding
+Plus four always-on overlays:
+- **F12 INJECTION** — every probe, registry record, and Skills description is scanned.
+- **F11 AUDIT** — every decision is logged via `arifOS arif_judge`.
+- **F2 TRUTH** — every claim is labeled `OBS · DER · INT · SPEC · UNKNOWN`.
+- **F13 SOVEREIGN** — irreversible mutations and canonical decisions stay with F13.
 
-Before this skill is used on any mutating, irreversible, or high-blast-radius task:
+This is a **T1/T2 skill for read-only probes and in-lane builds**. Anything that mutates a live federation organ, deletes a registry record, rotates a secret, or changes F1–F13 escalates to `arifos 888_JUDGE` (`a2a` or `mcp verdict_request`).
 
-1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
-2. **Kernel** — Route to arifOS for F1–F13 judgment if the action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
-3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
-4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+## Stage 0 — LEARN  (get the concepts right)
 
-## When to Use
+The Model Context Protocol is a JSON-RPC 2.0 surface between **client** (host application) and **server** (tool/resource/prompt provider). Three primitives: **tools** (model-controlled actions), **resources** (app-controlled reads), **prompts** (user-controlled templates). Plus four utilities: sampling (model inside server), elicitation (server asks human), roots (filesystem boundaries), tasks (async long-running).
 
-- Inspect, list, or call tools on any federation organ via mcporter.
-- Build or extend a Python MCP server with FastMCP; add an MCP App / UI surface.
-- Wire an MCP server (federation or external platform) into a live client config.
-- Test or gate a server locally before client wiring or deployment.
-- An MCP server returns connection refused, timeout, 5xx, `SESSION_MISSING`, or `Unknown tool`.
-- A patch to a server file may not be live yet ("is the fix live?").
-- External clients (Claude / ChatGPT / Cursor / Gemini) cannot connect — transport/auth shape.
-- MCP tool schemas are eating the context window.
-- Audit which MCP tools exist vs which are actually used; find bypass and drift.
-- Publish a server so other agents can discover it.
+```
+client ──JSON-RPC── server
+  tools/resources/prompts ──►
+  notifications/initialized ──►
+  sampling/elicitation/roots ────►  (request → server)
+  notifications/message ◄────  (server → client push)
+```
 
-## When NOT to Use
+**Architectural layers** (per `architecture/`):
 
-- **Do not use for production deployment** without site-architecture skills and arifOS judgment.
-- **Do not mutate live federation servers** (restart, config change, port binding) without arifOS F1–F13 clearance.
-- **Do not run untrusted MCP servers** outside the `arifos-untrusted-sandbox` skill.
-- **Do not hardcode secrets** in server code or client configs; use env vars / SOPS.
-- **Do not treat a successful health check as authority** to act beyond observer class.
-- If the question is *which* server to adopt → **Stage 1b** / `references/absorbed-mcp-sota-shopping-list.md` (procurement is a lane **inside** this skill since v3.0.1; the name `mcp-sota-shopping-list` is a tombstone, not a separate skill).
+1. **transports** — `stdio` or `Streamable HTTP` (replaces SSE; SEP-2243)
+2. **protocol** — JSON-RPC framing, session lifecycle, multi-round-trip requests (MRTR), pagination, cancellation, progress, ping
+3. **authorization** — OAuth 2.1 with Protected Resource Metadata (RFC 9728) and client-credentials for M2M
+4. **server primitives** — discovery (stateless), prompts, resources, tools, completion, logging, caching, pagination
+5. **client primitives** — sampling, elicitation, roots (deprecated per SEP-2577)
+6. **extensions** — optional SEPs (Apps, Skills, Tasks, Auth-extensions)
 
----
+**Era map** (probe, build, and test must declare which era they target):
 
-## Stage 1 — DISCOVER
+| Era | Version | Wire shape | Federation status |
+|---|---|---|---|
+| **Modern (preferred)** | `2026-07-28` | stateless: `server/discover`, no `Mcp-Session-Id`, per-request `_meta.io.modelcontextprotocol/*` | supported |
+| Legacy handshake | `2025-11-25` | `initialize` + `notifications/initialized` + `Mcp-Session-Id` | supported |
+| Pre-deprecation | `2025-06-18`, `2025-03-26`, `2024-11-05` | legacy lifecycle | shim only |
+| Draft | `draft/` | bleeding edge, may break | rare |
 
-**Spine.** `mcporter` is pre-installed on af-forge at `/usr/bin/mcporter` (v0.9.0).
+**SDKs** (`sdks.md`): official TypeScript, Python, Java, Kotlin, C#, Ruby, Go, Rust, PHP, Swift. Tiering per `community/sdk-tiers.md`. CLI from `npx @modelcontextprotocol/...`, Python via `pip install mcp`, JS via `@modelcontextprotocol/sdk`.
+
+**Allowed Tools**: `webfetch` (read `modelcontextprotocol.io/spec/2026-07-28/...`)
+
+**Forbidden Actions**: do not import a `2026-07-28`-shaped client into a `2025-06-18`-shaped server without an era adapter.
+
+## Stage 1 — DISCOVER  (find servers, decide to adopt)
+
+Two questions: **what exists?** and **should we adopt it?**
+
+**Discovery pipeline (4-layer, outward → inward)**:
+
+1. **HTTP beacon signals** at `/.well-known/mcp.json` (or `/.well-known/mcp/`).
+2. **MCP Registry** (`https://modelcontextprotocol.io/registry/about`) — official, named namespaces (e.g., `arifbfazil/...`), versioned, authenticatable per `registry/authentication.md`.
+3. **Aggregators** — Smithery, Glama, PulseMCP — pull from the registry, may add editorial layers.
+4. **Re-probe** — always. A registry entry is `DER`, not `OBS`.
+
+**Adoption check (Stage 1b)** before installing: read `references/absorbed-mcp-sota-shopping-list.md`. The MCP context tax (15+ servers consume 30–40% of the session window before any work starts) means **MCPs are only for state/data an agent cannot reach from a shell — never MCPs wrapping a local CLI**.
+
+**Find existing servers** (in our federation):
 
 ```bash
-mcporter list                                    # list all known servers
-mcporter list arifOS --schema                    # list tools + schemas for one server
-mcporter list --http-url http://localhost:8081/mcp --name geox  # ad-hoc HTTP
-mcporter list --stdio "npx -y @modelcontextprotocol/server-filesystem" --name fs
-mcporter config list                             # what is configured
-mcporter generate-cli --server geox              # codegen: CLI wrapper
-mcporter emit-ts <server> --mode client          # codegen: TypeScript client
+mcporter list                                     # all known
+mcporter list arifOS --schema                     # one server + tools
+mcporter list --http-url http://127.0.0.1:8081/mcp --name geox   # ad-hoc HTTP
+mcporter config list                              # what is configured
 ```
 
-Federation MCP servers (as known to mcporter):
+**Federation MCP inventory** (as known to mcporter):
 
 ```
-arifOS MCP    → arifOS        (7 canonical tools, F1-F13)
-GEOX          → geox          (28+ tools, earth intelligence)
-WEALTH        → WEALTH        (11-20 tools, capital intelligence)
-WELL          → WELL          (17+ tools, human readiness)
-A-FORGE       → a-forge-mcp   (29 tools, execution engine)
-AAA           → aaa-a2a       (A2A gateway + cockpit)
-OpenClaw GW   → openclaw      (A2A mesh)
+arifOS MCP      → arifOS        (8 canonical verbs, F1-F13)
+GEOX            → geox          (28+ tools, earth intelligence)
+WEALTH          → WEALTH        (11-20 tools, capital intelligence)
+WELL            → WELL          (17+ tools, human readiness)
+A-FORGE         → a-forge-mcp   (29 tools, execution engine)
+AAA             → aaa-a2a       (A2A gateway + cockpit)
+OpenClaw GW     → openclaw      (A2A mesh)
 ```
 
-**Making OUR servers discoverable** (the outward direction — most requests forget this half):
-4-layer discovery pipeline = HTTP beacon signals → registry before aggregators → proof badge →
-re-probe. Canonical spec is MCP `2026-07-28` with OAuth metadata per RFC 8414 (AS metadata) and
-RFC 8705 (PRM), advertised through the `MCP-Protocol-Version` header.
+**Publishing-side discovery** — how to make *our* servers discoverable — lives in Stage 6 PUBLISH.
 
-```bash
-# registry publish (Smithery / Glama) — prepare config, authenticate, publish, verify 200 not 404
-# namespace: arifbfazil
-```
+**Allowed Tools**: `mcporter` CLI; `curl` against `modelcontextprotocol.io/registry/v0/...`; `firecrawl_firecrawl_search` (Stage 1b ad-hoc when MCP Registry is unreachable); `webfetch`.
 
-**Absorbed, read on demand:** `references/absorbed-mcp-ecosystem-indexing.md` (discovery pipeline,
-beacon verification, pitfalls) · `references/absorbed-forge-mcp-registry-publish.md` (auth, scoped
-tokens, scoped-namespace errors, verification).
+**Forbidden Actions**: installing an MCP wrapper around a CLI you could `shell_exec` instead.
 
-### Stage 1b — SHOULD WE ADOPT IT AT ALL (procurement)
+## Stage 2 — PROBE  (is it alive, is my edit live)
 
-**Observable:** you are choosing *whether / which* server to install, not operating one you already have.
-Read `references/absorbed-mcp-sota-shopping-list.md`: the MCP context tax (15+ servers consume 30–40% of the
-session window before any work starts), the install rule (**MCPs for state or data an agent cannot reach from
-a shell — never MCPs wrapping a local CLI**), and the 2026-09 per-category shortlist with live status.
+The law: *when a probe returns a protocol or lifecycle error, suspect the probe before reporting the target as broken.* Most "organ X is broken" findings are probe-method artifacts.
 
+### 2a — The handshake (3-step lifecycle, both eras)
 
----
+Streamable-HTTP MCP answers only after the lifecycle. A raw `curl` that skips it gets a protocol error, and that error **is correct server behaviour**.
 
-## Stage 2 — PROBE
-
-**The law:** *when a probe returns a protocol or lifecycle error, suspect the probe before reporting
-the target as broken.* Most "organ X is broken" findings are probe-method artifacts.
-
-### 2a. The handshake — before any interpretation
-
-A streamable-HTTP MCP server answers only after a 3-step lifecycle. A raw `curl` that skips it gets
-a protocol error, and that error is **correct server behaviour**.
+**Legacy era (`2025-11-25`)**:
 
 ```
-1. POST initialize                 -> capture `Mcp-Session-Id` from the RESPONSE HEADER
-2. POST notifications/initialized  -> 202, EMPTY body, NO `id` field (send WITH the session header)
-3. POST tools/list | resources/list | tools/call  -> now returns real data
+1. POST initialize                 → capture `Mcp-Session-Id` from the RESPONSE HEADER
+2. POST notifications/initialized  → 202, EMPTY body, NO `id` field (with session header)
+3. POST tools/list | resources/list | tools/call → real data
 ```
 
-Send `Content-Type: application/json` **and** `Accept: application/json, text/event-stream` on every call.
+**Stateless era (`2026-07-28`)** (preferred):
 
-```bash
-for p in 8081:geox 18082:wealth 18083:well; do
-  port=${p%%:*}; name=${p##*:}
-  hdr=$(curl -s -D - -o /dev/null --max-time 10 -X POST "http://127.0.0.1:$port/mcp" \
-    -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" \
-    -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"probe","version":"1"}}}')
-  sid=$(echo "$hdr" | grep -i '^mcp-session-id:' | tr -d '\r' | awk '{print $2}')
-  [ -n "$sid" ] || { echo "$name: NO SESSION HEADER"; continue; }
-  curl -s -X POST "http://127.0.0.1:$port/mcp" \
-    -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" \
-    -H "Mcp-Session-Id: $sid" -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
-done
+```
+1. POST server/discover           → tool/resource/prompt catalog
+2. POST tools/invoke (or call)     → directly, no session header
+   • `MCP-Protocol-Version: 2026-07-28` header (NOT in `params`)
+   • `Mcp-Method: <method>` header for routing
+   • per-request `_meta.io.modelcontextprotocol/*` envelope keys
 ```
 
-**The three misreadings, verbatim.**
+**Universal curl invariants** on every call:
+
+```
+Content-Type: application/json
+Accept: application/json, text/event-stream
+```
+
+**The three misreadings (verbatim):**
 
 | Raw probe returned | What it actually is | What it is NOT |
 |---|---|---|
-| `SESSION_MISSING: Mcp-Session-Id header required` | the server asking for the documented handshake | an unsatisfiable contract |
-| `Missing session ID` / `tools/call rejected until client sends notifications/initialized` | step 2 never sent | a runtime guard blocking the tool |
-| `Unknown tool: '<name>'` | the name was never advertised | an advertised-but-unreachable tool |
+| `SESSION_MISSING: Mcp-Session-Id header required` | server asking for documented handshake | an unsatisfiable contract |
+| `Missing session ID` / `tools/call rejected until client sends notifications/initialized` | step 2 never sent | a runtime guard |
+| `Unknown tool: '<name>'` | name never advertised | advertised-but-unreachable |
 
-### 2b. Four numbers, never one
+Deep dive: `references/absorbed-mcp-organ-probe.md` (+ `layer-drop-diagnosis.md`).
 
-```
-curl -s :PORT/tools        # DECLARED   — what the REST surface advertises
-# handshake + tools/list   # EXPOSED    — what a client can enumerate
-# handshake + tools/call   # CALLABLE   — prove end-to-end; a list entry proves nothing
-#                          # AUTHORIZED — does an envelope permit the call
-```
-
-Report the four separately. Never average them, never quote one as another. DECLARED and EXPOSED
-may disagree in either direction and a one-entry gap is a finding. `callable: 0` on a tool you never
-handshaked is not a finding — it is an unfinished probe.
-
-Output contract, always name the **first failing transition**:
+### 2b — Four numbers, never one
 
 ```
-organ | port | DECLARED n | EXPOSED n | CALLABLE n | first failing transition | verdict
+curl -s :PORT/mcp                          # DECLARED — REST surface advertises
+# handshake + tools/list                   # EXPOSED — what a client enumerates
+# handshake + tools/call                   # CALLABLE — end-to-end; a list entry proves nothing
+#                                          # AUTHORIZED — does an envelope permit the call
 ```
 
-**Exact-name check** before any broken verdict (near-miss names differ only by a suffix and fail
-identically to a real defect). **One organ label may be several surfaces** — enumerate `ss -tlnp`
-first; two auditors comparing different ports will disagree with neither being wrong, so always
-state which port a verdict came from. **Use the installed instrument, not a hand count.**
+Report each separately. Never average, never quote one as another. The output contract — always name the **first failing transition**:
 
-### 2c. Is it alive? — the health map
+```
+organ | port | DECLARED | EXPOSED | CALLABLE | first failing transition | verdict
+```
 
-| Node | URL | Transport | Expected (NOT a failure) |
-|------|-----|-----------|--------------------------|
-| arifOS | http://127.0.0.1:8088/mcp | streamable-http | 200 / JSON |
-| GEOX | http://127.0.0.1:8081/mcp | streamable-http | 405 (POST only) |
-| WEALTH | http://127.0.0.1:18082/mcp | streamable-http | JSON-RPC error on GET |
-| WELL | http://127.0.0.1:18083/mcp | streamable-http | JSON-RPC error on GET |
-| A-FORGE | http://127.0.0.1:7072/mcp | streamable-http | JSON-RPC error on GET |
+**Exact-name check** first (near-miss names fail identically to real defects). **One organ may be several surfaces** — enumerate `ss -tlnp`; always state which port a verdict came from. **Use the installed instrument, not a hand count.**
 
-> **Only connection-refused / timeout / 000 / 502 / 503 is a real failure signal.** An HTTP
-> 401/403 means the service is UP and auth-gated. WEALTH/WELL JSON-RPC errors on GET are normal.
+### 2c — Health map (current federation)
+
+| Organ | URL | Transport | Expected (not a failure) |
+|---|---|---|---|
+| arifOS | `http://127.0.0.1:8088/mcp` | Streamable HTTP | 200 / JSON-RPC |
+| GEOX | `http://127.0.0.1:8081/mcp` | Streamable HTTP | 405 on GET (POST only) |
+| WEALTH | `http://127.0.0.1:18082/mcp` | Streamable HTTP | JSON-RPC error on GET |
+| WELL | `http://127.0.0.1:18083/mcp` | Streamable HTTP | JSON-RPC error on GET |
+| A-FORGE | `http://127.0.0.1:7072/mcp` | Streamable HTTP | JSON-RPC error on GET |
+
+> **Only connection-refused / timeout / 000 / 502 / 503 is a real failure signal.** HTTP 401/403 means the service is UP and auth-gated.
 
 ```bash
 for port in 8088 8081 18082 18083 7072; do
@@ -306,53 +310,46 @@ for port in 8088 8081 18082 18083 7072; do
 done
 ```
 
-### 2d. Is my edit live? — a file edit is not a live fix
+### 2d — Is my edit live? (file edit is never a live fix)
 
-Expect **two independent loaders**, neither of which hot-reloads: a systemd HTTP unit owning a port,
-and a **stdio child spawned once per gateway, not per session**. Both hold the imported module for
-days.
+Two loaders hold the imported module for days: a systemd HTTP unit owning a port, and a stdio child spawned once per gateway (not per session). Neither hot-reloads.
 
-- Compare the **loader PID start time against the edited file's mtime**: `PID start < file mtime` ⇒ stale code.
-- Resolve symlinks before diffing; confirm with `systemctl cat` that `ExecStart` points at the file you edited.
-- Verify on a **fresh stdio spawn**, not through the live transport. Tests import the module; the live process does not.
-- A restart from **inside** a gateway session signals your own process — activation is an operator action.
-- **Ghost capability:** a tool that returns a constant (or a collection initialised empty and never appended to) never errors, so nothing surfaces it. Probe with two payloads that must differ; if output does not move with input, it is a stub. Silence and failure must be distinguishable — an empty result needs an explicit reason field.
+- Compare **loader PID start time vs file mtime**: `PID start < file mtime` ⇒ stale code.
+- Resolve symlinks before diffing; `systemctl cat` confirms `ExecStart`.
+- Verify on a **fresh stdio spawn**, not through the live transport.
+- Restart from inside a gateway signals your own process — activation is operator action.
+- **Ghost capability**: tool returns a constant or never-initialised collection → no error surfaces. Probe with two payloads that must differ; if output doesn't move with input, it is a stub.
 
-**Reporting contract:** state *what is fixed on disk* (with hash), *what the running process still
-serves*, and *what activation requires*. "Fixed on disk, not live" is a complete and honest status.
+Reporting contract: state **what is fixed on disk** (hash), **what the running process still serves**, **what activation requires**. "Fixed on disk, not live" is a complete status.
 
-### 2e. Transport / auth shape
+Deep dive: `references/absorbed-mcp-edit-activation.md`.
 
-External clients (Claude, ChatGPT, Cursor, Gemini) expect **Streamable HTTP** (`POST /mcp`), not SSE
-(`GET /sse`). With `transport="sse"` they fail `POST /sse → 405` and `POST /mcp → 404`.
+### 2e — Transport / auth shape (SSE → Streamable HTTP)
+
+External clients (Claude / ChatGPT / Cursor / Gemini) expect **Streamable HTTP** (`POST /mcp`), not SSE (`GET /sse`). With `transport="sse"` they fail `POST /sse → 405` and `POST /mcp → 404`.
 
 ```python
-# BEFORE: mcp.run(transport="sse", ...)      AFTER: mcp.run(transport="streamable-http", ...)
+# BEFORE: mcp.run(transport="sse", ...)     AFTER: mcp.run(transport="streamable-http", ...)
 ```
 
-Also remove any Caddy `rewrite * /sse` so `POST /mcp` reaches the backend, then restart (transport is
-module-level config). **Proven:** CHRON MCP (:18102). **Pitfall:** SSE still works for local clients,
-so the defect only shows on external platforms — test both.
+Also remove any Caddy `rewrite * /sse` so `POST /mcp` reaches the backend, then restart (transport is module-level config). **Pitfall**: SSE still works for local clients, so the defect only shows on external platforms — test both.
 
-**Absorbed, read on demand:** `references/absorbed-mcp-organ-probe.md` (+ `references/absorbed-mcp-organ-probe/references/layer-drop-diagnosis.md`) · `references/absorbed-mcp-edit-activation.md` · `references/absorbed-mcp-transport-fix.md` · `references/absorbed-FORGE-mcp-lifeguard.md` (alert conditions, auto-restart loop, Ollama pre-warm).
+Deep dive: `references/absorbed-mcp-transport-fix.md`.
 
-**Related instrument:** `runtime-probe` (`core/mcp/runtime-probe`) — one-shot health + schema +
-transport classification. **Related discipline:** `agent-tool-verification` — stub sweep and live-code
-check for *any* tool, not only MCP.
+**Allowed Tools**: `curl`, `mcporter`, raw JSON-RPC stdio/HTTP prober (`/root/scripts/mcp_probe.py`).
 
----
+**Forbidden Actions**: reporting an organ broken from a single un-handshaked probe. Reporting a successful health check as authorization to act beyond observer class.
 
-## Stage 3 — INTEGRATE
+## Stage 3 — BUILD  (server, client, agent skills, Apps)
 
-### 3a. Build (FastMCP, Python)
+### 3a — Server (Python, FastMCP)
 
 ```bash
-uv add "fastmcp[tasks]==3.4.2"                          # in a federation repo
+uv add "fastmcp[tasks]==3.4.2"                  # in federation repo
 pip install --break-system-packages "fastmcp[tasks]==3.4.2"   # system-wide
-fastmcp --version                                       # expect 3.4.2
-
+fastmcp --version                               # expect 3.4.2
 fastmcp scaffold --template api_wrapper --name "My API" --output ./my_server.py
-fastmcp inspect my_server.py:mcp                        # ALWAYS inspect before wiring a client
+fastmcp inspect my_server.py:mcp                # ALWAYS before wiring a client
 fastmcp list my_server.py:mcp --json
 fastmcp call my_server.py:mcp get_customer customer_id=cust_123 --json
 fastmcp run my_server.py:mcp --transport streamable_http --host 127.0.0.1 --port 8000
@@ -365,10 +362,7 @@ from pydantic import BaseModel
 mcp = FastMCP("my-server")
 
 class CustomerOutput(BaseModel):
-    id: str
-    name: str
-    segment: str
-    confidence: float
+    id: str; name: str; segment: str; confidence: float
 
 @mcp.tool()
 def get_customer(customer_id: str) -> CustomerOutput:
@@ -376,48 +370,55 @@ def get_customer(customer_id: str) -> CustomerOutput:
     ...
 ```
 
-**Federation conventions.**
+Deep dive: `references/absorbed-forge-fastmcp.md`.
 
-| Convention | Rule |
-|-----------|------|
-| **Transport** | `streamable-http` for all federation servers |
-| **Naming** | `{service}_{action}_{resource}` — e.g. `geox_well_analyze_log` |
-| **Tool count** | Start with 1–3 high-value tools, expand only when stable |
-| **Error handling** | Return structured errors, never raise raw exceptions |
-| **Auth** | Environment variables only, never hardcoded |
-| **Output schema** | Pydantic v2 BaseModel for all tool outputs |
-| **Bind** | `127.0.0.1`; let Caddy terminate TLS |
+### 3b — MCP Apps (UI surfaces)
 
-### 3b. A UI surface (MCP Apps)
+Three return channels, text fallback always shipped, data tools separated from render tools, CSP via `_meta.ui.csp`, double-iframe sandbox, predeclared resources (not ad-hoc HTML). On the Python side, FastMCP `app=True`.
 
-Three return channels, text fallback always shipped, data tools separated from render tools, CSP via
-`_meta.ui.csp`, double-iframe sandbox, predeclared resources (not ad-hoc HTML). On the Python side,
-FastMCP `app=True`. Tool annotations and `outputSchema` families are a host gate — see the absorbed
-reference for the 4-annotation taxonomy and the ChatGPT-native (2026-07) binding keys.
+```python
+@mcp.tool(app=True)
+def render_dashboard(data_id: str) -> ...: ...
+```
 
-### 3c. Wire a client — use the script, not hand-edits
+Tool annotations and `outputSchema` families are a host gate (see `seps/1865-mcp-apps-interactive-user-interfaces-for-mcp.md` and `extensions/apps/build.md`).
 
-**Mechanism:** `/root/scripts/hermes_mcp_wire.py` (`plan | apply --sanitize | verify`) plus
-`/root/scripts/mcp_probe.py` (raw JSON-RPC stdio/HTTP prober). The script guarantees a timestamped
-backup, atomic replace (chmod 600), fail-closed preflight (absolute command must exist; every
-`${VAR}` must be defined in `/root/.hermes/.env`), semantic verify of every top-level key before and
-after write, rollback on failure, and idempotency.
+Deep dive: `references/absorbed-forge-mcp-gui.md` (build recipes); `references/mcp-gui-landscape-2026-09-22.md` (GUI taxonomy — MCP Apps vs Manager GUI vs STMCP, host matrix, portability proof ladder).
 
-`${VAR}` interpolation **is** supported for `mcp_servers`; secrets live in `/root/.hermes/.env`
-(mode 600). Restart-free proof: `hermes mcp test <name>` — it resolves the placeholder and lists tools.
+### 3c — Client (any harness)
 
-Pitfalls that each cost real debugging time:
+Use the canonical reference at `develop/build-client.md`. Federation uses mcporter as the discovery + codegen surface (`mcporter generate-cli --server geox`, `mcporter emit-ts geox --mode client`). Direct A2A interop lives in `references/absorbed-forge-mcp-a2a-agentic.md`.
 
-1. **Text-insert index shift = silent YAML corruption.** Re-verify by `yaml.safe_load` deep-compare after every insert.
+### 3d — Build with Agent Skills (the Skills extension)
+
+Server-side `Skills` (SEP-2640) — discover and read Agent Skills from MCP servers. Distinct from "MCP Apps for Agents". Format and discovery lives in `extensions/skills/overview.md` and `build-with-agent-skills.md`. Read `references/absorbed-mcp-ecosystem-indexing.md` for the beacon part.
+
+### 3e — Wire to a client (governed)
+
+**Use the script, not hand-edits**: `/root/scripts/hermes_mcp_wire.py` (`plan | apply --sanitize | verify`) and `/root/scripts/mcp_probe.py`. The script guarantees:
+
+- timestamped backup + atomic replace (chmod 600)
+- fail-closed preflight: absolute command must exist; every `${VAR}` must be defined in `/root/.hermes/.env`
+- semantic verify of every top-level key before + after write
+- rollback on failure; idempotency
+- supports `${VAR}` interpolation for `mcp_servers`
+
+Pitfalls (each cost real debugging time):
+
+1. **Text-insert index shift = silent YAML corruption.** `yaml.safe_load` deep-compare after every insert.
 2. **Never `npx` a server that 1mcp also runs** — shared `/root/.npm/_npx/<hash>` → `ENOTEMPTY`. Install globally, reference by absolute path.
 3. **`yaml.safe_dump` emits indent-0** — indent by 2 before splicing under `mcp_servers`. Never `safe_dump` a config that carries provenance comments.
-4. **`mcp-stderr.log` is never rotated by Hermes** — logrotate `copytruncate` only; `mv` orphans the live fd.
-5. **In-place edits happen while other agents edit the same file** — re-read at apply time, diff against the backup you just took.
-6. **`patch` is blocked for `/root/.hermes/config.yaml`** (security guard) — that is why the script exists.
+4. **`mcp-stderr.log` is never rotated by Hermes** — logrotate `copytruncate` only.
+5. **In-place edits happen while other agents edit** — re-read at apply, diff against the backup just taken.
+6. **`patch` is blocked for `/root/.hermes/config.yaml`** — that is why the script exists.
 
-### 3d. Keep it affordable — schema compression
+### 3f — Client best practices
 
-Tool *metadata*, not reasoning, is often the binding constraint. Measured on our own servers:
+`sdk-best-practices.md` summary: input validation errors as tool execution errors (SEP-1303), tools `inputSchema` / `outputSchema` conform to JSON Schema 2020-12 (SEP-1613/2106), tool names follow SEP-986 format, resources use SEP-2164 error code.
+
+### 3g — Keep it affordable (schema compression)
+
+Tool *metadata* is often the binding constraint. Measured on our own servers:
 
 | server | tools | schema tokens |
 |---|---|---|
@@ -426,44 +427,74 @@ Tool *metadata*, not reasoning, is often the binding constraint. Measured on our
 | well | 31 | 5,356 |
 | wealth | 11 | 4,034 |
 
-Wrap with the federation wrapper — never the raw binary:
-
 ```bash
 /root/scripts/mcp-compress.sh <name> -c medium -- <command> [args...]
-
-python3 /root/scripts/hermes_mcp_compress.py plan   <server> [level]   # dry run
-python3 /root/scripts/hermes_mcp_compress.py apply  <server> [level]   # backup+write+verify
+python3 /root/scripts/hermes_mcp_compress.py plan   <server> [level]
+python3 /root/scripts/hermes_mcp_compress.py apply  <server> [level]
 python3 /root/scripts/hermes_mcp_compress.py revert <server>
 python3 /root/scripts/hermes_mcp_compress.py status
 ```
 
-`medium` by default (keeps descriptions; −89.3% on aforge). `max` saves most (−97.8%) and risks wrong
-tool selection. After wrapping: discover (`get_tool_schema`) then invoke (`invoke_tool`); **prove one
-real call** — listing tools is not evidence; restart the *consuming agent*, not just the server.
+Limits: **stdio only** (HTTP backends die on the OAuth handshake); not worth wrapping under ~15 tools; **skills + CLI beats MCP** for anything with a good local CLI.
 
-Limits: **stdio only** (HTTP/URL backends die on the OAuth handshake — bridge to stdio first); not
-worth wrapping under ~15 tools; `skills + CLI beats MCP` for anything with a good local CLI. A
-wrapper working in your shell can fail under systemd (`HOME`/`PATH`), and **secrets must load in every
-entry point**, not just `main()`.
+Deep dive: `references/absorbed-mcp-context-compression.md`.
 
-### 3e. External platforms and other targets
+**Allowed Tools**: `fastmcp` CLI; `mcporter`; `/root/scripts/hermes_mcp_wire.py`; `mcp-compress.sh`.
 
-- **External platforms (Composio, social-mcp, xurl, Firecrawl)** wire the same way, with 3-band APA governance on the tool surface.
-- **A2A** — MCP + A2A agentic inter-agent communication and task delegation; refusal surface documented.
-- **Direct client invoke** — when a wrapper fails, call the server from a Python streamable-HTTP client (MiniMax media lane; model IDs and quota error codes documented).
-- **Telegram products on MCP backends** — lane map and per-product delivery pattern; *bot lanes/tokens/routing belong to the telegram cluster, not here.*
+**Forbidden Actions**: exposing a FastMCP server on `0.0.0.0` in production (bind `127.0.0.1`, let Caddy terminate TLS); hardcoding credentials; calling a mutating tool on a live federation organ without arifOS judgment; skipping `fastmcp inspect` before wiring a client.
 
-**Absorbed, read on demand:** `references/absorbed-forge-fastmcp.md` · `references/absorbed-forge-mcp-gui.md` · `references/absorbed-forge-mcp-a2a-agentic.md` · `references/absorbed-external-platform-mcp.md` (+ its `references/`) · `references/absorbed-mcp-context-compression.md` · `references/absorbed-forge-minimax-mcp-direct-invoke.md` · `references/absorbed-telegram-mcp-product-line.md`. The `.hermes`-tree case-variants (`FORGE-fastmcp`, `FORGE-mcp-gui`, `FORGE-mcp-a2a-agentic`) are preserved as `references/absorbed-FORGE-*.md`; their only delta was a stale claim that the 2026-07-20 GUI blueprint still exists on disk (**it does not** — verified 2026-09-19; the AAA text is the corrected one).
+## Stage 4 — SECURE  (OAuth 2.1, PRM, EAP, security baseline)
 
----
+The canonical MCP security model is **OAuth 2.1 with the protocol-specific additions**. Three things break fast: (a) skipping PRM, (b) treating confidential and public clients the same, (c) ignoring enterprise-managed authorization.
 
-## Stage 4 — TEST
+### 4a — The shape (per `tutorials/security/authorization.md`)
 
-> **Iron rule: MCP servers are tested with MCPJam Inspector, not with coding agents.** Coding agents
-> build MCP servers; MCPJam tests them.
+1. **Authorization Server discovery** — `/.well-known/oauth-authorization-server` (RFC 8414 metadata).
+2. **Protected Resource Metadata** — RFC 9728 (SEP-985; mandatory for OAuth 2.1 in MCP).
+3. **Client registration** — dynamic via Client ID Metadata Documents (SEP-991) OR via enterprise-managed IdP (SEP-990).
+4. **Token issuance** — authorization_code (interactive) or client_credentials (M2M, SEP-1046).
+5. **Bearer token in `Authorization: Bearer <token>`** on every protected call.
+
+### 4b — Enterprise-managed authorization (EAP, SEP-990)
+
+When the operator's IdP must enforce policy (e.g., a corporate IdP can refuse to issue tokens for unauthorized tools), MCP supports **enterprise-managed authorization**. The auth server returns a `redirect` to the IdP and never returns a token to the MCP server directly. Read `extensions/auth/enterprise-managed-authorization.md`.
+
+### 4c — OAuth client credentials (M2M, SEP-1046)
+
+For service-to-service MCP servers that don't need a user:
+
+```bash
+curl -X POST "$AS/token" -d "grant_type=client_credentials&client_id=$ID&client_secret=$SECRET&scope=$SCOPE"
+```
+
+`extensions/auth/oauth-client-credentials.md` has the full recipe. NEVER fall back to a long-lived bearer token — use client credentials, rotate, audit.
+
+### 4d — Security baseline (`tutorials/security/security_best_practices.md`)
+
+- Validate every input against `inputSchema` BEFORE invoking tool logic (SEP-1303).
+- Never log bearer tokens. Never write them to disk in cleartext. Never echo them.
+- Use SEP-2207 OIDC-flavored refresh tokens for long sessions.
+- Treat `tools/list` as partially-suspicious — every advertised tool needs a TYPE LABEL (read-only / destructive / etc.) per SEP-1034 / SEP-973.
+- Time-bound responses — SEP-2549 TTL for `list` results (preventing stale caches).
+
+### 4e — Federation-specific (constitutional)
+
+For MCP servers we PUBLISH, F11 AUDIT requires:
+- Per-call rate limit recorded as receipts.
+- Per-tool side-effect declared via `declared_side_effects` (see SEC-1 in `forge_evaluate`).
+- Inverse flag for destructive tools (`readOnlyHint: false`).
+- `outputSchema` declared with Pydantic v2 `BaseModel` (Fortress).
+
+**Allowed Tools**: `curl` against AS metadata; `forge_evaluate` for tool registration governance; `forge_witness` for OAuth flow tri-witness.
+
+**Forbidden Actions**: storing secrets in `SKILL.md` or any client wire config; using `Authorization: Bearer <long-lived>` without rotation; skipping client registration metadata.
+
+## Stage 5 — TEST  (MCPJam, debugging, era conformance)
+
+Iron rule: **MCP servers are tested with MCPJam Inspector, not coding agents.** Coding agents build MCP servers; MCPJam tests them.
 
 | Situation | Use |
-|-----------|-----|
+|---|---|
 | Quick organ health (our 6 organs) | Smoke test |
 | Protocol-era / stateless discovery on any endpoint | Probe (MCPJam CLI/SDK) |
 | Deep conformance, tool-call verification, OAuth debugging | Testing (MCPJam Inspector) |
@@ -482,104 +513,202 @@ for port in 8088 7071 7072 8081 18082 18083 3001; do
 done
 ```
 
-Canonical baseline: `https://stateless.mcpjam.com/mcp` (stateless MCP 2.0 reference, protocol
-`2026-07-28`, 13 tools, no auth). Every coding agent should wire it, probe it once at boot to confirm
-its own client speaks the era, and use it as the comparison baseline.
+Canonical baseline: `https://stateless.mcpjam.com/mcp` (stateless MCP 2.0 reference, protocol `2026-07-28`, 13 tools, no auth). Every coding agent should probe it once at boot to confirm its own client speaks the era.
 
-**Three rules for a stateless `2026-07-28` call — all three are required:**
-`MCP-Protocol-Version: 2026-07-28` as a **header** (not body `params.protocolVersion`); `Mcp-Method:
-<method>` header for routing; `_meta.io.modelcontextprotocol/*` envelope keys (not `_meta.protocolVersion`).
+**Three rules for a stateless `2026-07-28` call — all three are required**:
+- `MCP-Protocol-Version: 2026-07-28` as a **header** (NOT body `params.protocolVersion`)
+- `Mcp-Method: <method>` header for routing
+- `_meta.io.modelcontextprotocol/*` envelope keys (not `_meta.protocolVersion`)
 
-| Era | Version | Wire shape | arifOS |
-|-----|---------|------------|--------|
-| **Modern (preferred)** | `2026-07-28` | stateless: `server/discover`, no `Mcp-Session-Id`, per-request `_meta` | supported |
-| Legacy handshake | `2025-11-25` | initialize + session | supported |
+**Conformance matrices** per layer (boot-contract, `structuredContent` vs `outputSchema`, error surface, auth matrix, host-surface gates) live in `references/absorbed-mcp-testing.md`. Read before claiming conformance.
 
-Conformance matrices by layer (boot-contract invariants, `structuredContent` vs `outputSchema`, error
-surface, auth matrix, host-surface evidence gates) plus the per-layer probe recipes live in the
-absorbed reference — load it before claiming conformance.
+**Era coverage matrix** (this is what `mcp-testing` v3.0.1 absorbed):
 
-**Absorbed, read on demand:** `references/absorbed-mcp-testing.md`.
+```
+          legacy → stateless
+initialize  M    M          (mandatory for 2025-11-25, disallowed for 2026-07-28)
+MCP-Session-Id M required   (optional in legacy, ABSENT in stateless)
+```
 
----
+Deep dive: `references/absorbed-mcp-testing.md` (full conformance matrix + SEP-2567 stateless doctrine).
 
-## Stage 5 — GOVERN
+**Allowed Tools**: `npx @mcpjam/inspector@latest`; `firecrawl_firecrawl_scrape` for any URL probe; `docker`.
 
-Deterministic interception, not policy prose. The governance wrapper is four mechanisms: a **zero-LLM
-intent router**, a **per-agent role ACL**, a **reversibility wrapper**, and a **governed dynamic policy
-layer**; three-tier runtime governance (solo fast-path → musyawarah → gotong royong + F1 gate) decides
-when a call needs deliberation. The failure it exists to kill is the **false-confidence paradox**.
+**Forbidden Actions**: reporting conformance from a CI log without an era-specific evidence row in the receipt.
 
-**Drift audit — the questions that actually find defects:** run the inspector *then distrust it*.
+## Stage 6 — EXTEND  (Apps, Auth-extensions, Tasks, Skills-over-MCP)
 
-- **Surface ≠ usage.** Inventory which tools exist vs which are actually used, measured from the ledger, before proposing a cut or an upgrade.
-- **Many tools failing at once = dependency-pin drift, not per-organ breakage.**
-- **Surface ≠ surface.** One server can present several disagreeing views; a split tells you there is a conflict, not who wins. A false paradox is usually two orthogonal measures.
+The four MCP extensions:
+
+### 6a — MCP Apps (`extensions/apps/*`)
+
+Interactive UI applications rendered inside MCP hosts (Claude Desktop, ChatGPT Apps, etc.). Recap in 4b. SEP-1865 — `tools/app = true`, three return channels, CSP via `_meta.ui.csp`, double-iframe sandbox.
+
+**Landscape + portability (2026-09-22):** only MCP Apps/MCP-UI is the user-facing standard — Manager GUI and STMCP are operator dashboards the federation already covers (probe/registry/WELL/FRAME); both vendor claims UNVERIFIED (mcpmarket 403, stmcp 402). Host matrix: Claude/VS Code/Goose/LibreChat/Postman native MCP Apps; **ChatGPT = its own Apps SDK (partial UI actions)** — route via federation gateway. Renders in one host = *claimed*; renders across hosts = *proven* (self-probe → inspector → second host → regression row). Deep dive: `references/mcp-gui-landscape-2026-09-22.md`.
+
+### 6b — Auth extensions (SEP-series)
+
+- `extensions/auth/oauth-client-credentials.md` — M2M (already in Stage 4c).
+- `extensions/auth/enterprise-managed-authorization.md` — IdP-gated (already in Stage 4b).
+- SEP-1046 (client credentials), SEP-2207 (OIDC refresh), SEP-2468 (issuer claim), SEP-991 (URL-mode client registration).
+
+### 6c — Tasks (`extensions/tasks/overview.md`, SEP-1686, SEP-2663)
+
+Long-running async work. SEP-2322 multi-round-trip requests. Tasks appear as a SEP-2549-TTL'd list, store status via notifications, and 1:1 map to A-FORGE `forge_compose` lanes.
+
+### 6d — Skills over MCP (`extensions/skills/overview.md`, SEP-2640)
+
+Servers expose a `Skills` resource that lists agent-skill descriptors. The host enumerates them via `resources/read` (or `server/discover` in stateless era). Client-side: each `Skills` entry becomes a row in the runtime skill registry.
+
+Deep dive: `references/absorbed-forge-mcp-a2a-agentic.md` (MCP + A2A composition); `references/absorbed-forge-mcp-gui.md` (Apps build recipes).
+
+**Allowed Tools**: framework-specific (FastMCP `app=True`, etc.).
+
+**Forbidden Actions**: declaring an extension conformance without the matching SEP evidence.
+
+## Stage 7 — PUBLISH  (registry, versioning, automation)
+
+### 7a — MCP Registry (official)
+
+```bash
+# 1. Prepare server config (server.json)
+# 2. Authenticate per registry/authentication.md (GitHub OAuth, scoped to the publisher)
+# 3. Publish per registry/quickstart.md
+# 4. Verify GET returns 200 not 404
+
+curl -sf https://registry.modelcontextprotocol.io/v0/servers/arifbfazil/your-server
+```
+
+Namespaces are globally unique (`arifbfazil/...` for our publisher). Versioning per `registry/versioning.md`. Moderation per `registry/moderation-policy.md` — read BEFORE publishing; some packages need source repo + license + tests.
+
+### 7b — Aggregators (Smithery, Glama)
+
+Each aggregator has its own publish flow, but they all pull **from** the MCP Registry. Aggregators add editorial verification layers (badge, install count, badges) — they're not the source of truth. Federate via a single canonical Registry record.
+
+### 7c — Versioning
+
+SemVer required. Each published version is immutable. New major version = rename or scope-bump (recommended), not breaking patches. SEP-2549 TTL on list results means version pinning on the host side.
+
+### 7d — GitHub Actions automation
+
+`registry/github-actions.md` provides the canonical CI/CD recipe. Federation repository at `/root/AAA` already wires this pattern for organ publishes.
+
+### 7e — Authentication on publish
+
+GitHub OAuth scoped to the publisher's namespace. **Never** use a personal token — use a federated bot identity (Arif's GitHub App under `arifbfazil`).
+
+Deep dive: `references/absorbed-forge-mcp-registry-publish.md` (auth, scoped tokens, scoped-namespace errors, verification).
+
+**Allowed Tools**: `curl` against `registry.modelcontextprotocol.io`; `gh` CLI for GitHub OAuth.
+
+**Forbidden Actions**: publishing without a 100% green conformance suite. Publishing with secrets in the manifest.
+
+## Stage 8 — GOVERN  (SEPs, working groups, retirement)
+
+Three sub-areas: **process** (SEPs, working groups), **lifecycle** (deprecation, retirement), **policies** (design principles, contributor ladder, SDK tiers, security, antitrust).
+
+### 8a — Specification Enhancement Proposals (SEPs)
+
+`seps/` is the canonical change mechanism. Filenames are `SEP-NNNN-<slug>.md`. **Active SEPs that touch federation work**:
+
+| SEP | Title | Why it matters |
+|---|---|---|
+| 985 | RFC 9728 PRM alignment | Stage 4 SECURE compliance |
+| 990 | Enterprise IdP controls | Stage 4b EAP |
+| 991 | URL-mode client registration | Stage 4a dynamic registration |
+| 1024 | Client security for local install | Stage 3 BUILD hygiene |
+| 1302 | Working Group governance | this section |
+| 1303 | Validation errors as tool exec errors | Stage 3 input validation |
+| 1613 / 2106 | JSON Schema 2020-12 default | Stage 3f output schemas |
+| 1686 / 2663 | Tasks | Stage 6c |
+| 1865 / 2133 | Extensions | Stage 6 |
+| 2207 | OIDC refresh tokens | Stage 4d |
+| 2243 | Streamable HTTP headers | Stage 2e transport |
+| 2322 | Multi round-trip requests | Stage 6c Tasks |
+| 2549 | TTL for List Results | Stage 4d / Stage 7c |
+| 2567 / 2575 | Stateless MCP | Stage 2 / Stage 5 |
+| 2577 | Deprecate Roots/Sampling/Logging | Stage 8c |
+| 2640 | Skills extension | Stage 6d |
+
+### 8b — Working Groups + Interest Groups
+
+`community/working-groups/` lists 11 active WGs (Agents, File Uploads, Filesystems, Inspector V2, Interceptors, Registry, SDK, Server Card, Skills Over MCP, Transports, Triggers and Events). `community/interest-groups/` lists 7 IGs (Auth, Enterprise, Enterprise-Managed Auth, Financial Services, Primitive Grouping, Security, Tool Annotations). Federation SHOULD nominate representatives to WGs whose deliverables touch federation work.
+
+### 8c — Feature lifecycle (`community/feature-lifecycle.md`)
+
+Three states: **Active → Deprecated → Removed**. Each feature carries a timeline implementers can plan against. Deprecated features are grandfathered; new code in federation SHOULD NOT adopt deprecated APIs. The MCC Gateway/Inspector may already deprecate Roots/Sampling/Logging per SEP-2577.
+
+### 8d — SDK tiers (`community/sdk-tiers.md`)
+
+Tier 0 (canonical) → Tier 3 (experimental). Choose per Tier 1 minimum for any production federated server.
+
+### 8e — Governance overlay for federation — the four mechanisms
+
+Deep dive: `references/absorbed-forge-mcp-governance-wrapper.md`.
+
+1. **Zero-LLM intent router** — no model-in-the-loop for governance decisions on common patterns.
+2. **Per-agent role ACL** — capability ceiling per agent identity (333-AGI, 555-ASI, 888-APEX, A-AUDIT).
+3. **Reversibility wrapper** — every mutating call declares its reversibility level.
+4. **Dynamic policy layer** — runtime-loaded via `forge_policy`.
+
+Three-tier runtime governance: solo fast-path → musyawarah (333+555) → gotong royong + F1 gate.
+
+### 8f — Drift audit (the questions that actually find defects)
+
+Run inspector, then distrust it:
+
+- **Surface ≠ usage** — inventory which tools exist vs which are used, measured from the ledger.
+- **Many tools failing at once** — dependency-pin drift, not per-organ breakage.
+- **Surface ≠ surface** — one server can present several disagreeing views; a split tells you there is a conflict.
 - **Probe an attestation function per question, never as a single boolean.**
-- **Verify an external audit artifact before acting on it.** Authority failures are silent (feedback asymmetry); the authority surfaces are disconnected.
+- **Verify an external audit artifact** before acting on it.
 
-**Lifeguard — standing recovery, when authorised.** Alert conditions: MCP HTTP 000/502/503 → restart
-container + log; response > 3s → WARN; provider 401/402 → disable from the fallback chain; Ollama
-cold-start > 15s → pre-warm via `/api/generate`.
+### 8g — Lifeguard (recovery when authorised)
 
-1. **Never restart Vault999** — append-only ledger, human ack required.
-2. **Restart one MCP at a time** — avoid federation cascade.
-3. Log to `~/.openclaw/workspace/logs/mcp-lifeguard.log`.
-4. Disable dead models — don't let 402s burn event-loop cycles.
+Alert conditions:
+- HTTP 000/502/503 → restart container + log
+- Response > 3s → WARN
+- Provider 401/402 → disable from fallback chain
+- Ollama cold-start > 15s → pre-warm via `/api/generate`
 
-**Absorbed, read on demand:** `references/absorbed-forge-mcp-governance-wrapper.md` (+ `templates/mcp-governance-policy.toml`, `references/`) · `references/absorbed-federation-mcp-drift-audit.md` (+ runnable `scripts/mcp_surface_usage_audit.py`, `scripts/mcp_surface_conformance_sweep.py`) · `references/absorbed-FORGE-mcp-lifeguard.md`.
+Rules: never restart `Vault999` (append-only, human ack); restart one MCP at a time; log to `~/.openclaw/workspace/logs/mcp-lifeguard.log`; disable dead models.
 
----
+### 8h — RETIRE  (tombstone, freeze, never lose)
 
-## Stage 6 — RETIRE
+A retired name must still be findable. Its content must never be lost. The protocol:
 
-A retired server or name must still be findable, and its content must never be lost.
-
-1. **Freeze, do not delete.** `mv <skill-dir> /root/AAA/skills/.frozen/<YYYY-MM-DD>-<reason>/` and rename its `SKILL.md` → `SKILL.md.from.<tree>` (a literal `SKILL.md` inside `.frozen` inflates every census and can be re-loaded by a recursive scanner).
+1. **Freeze, do not delete.** Move `<skill-dir>` to `/root/AAA/skills/.frozen/<YYYY-MM-DD>-<reason>/` and rename `SKILL.md` → `SKILL.md.from.<tree>` (a literal `SKILL.md` inside `.frozen` inflates every census and can be re-loaded by a recursive scanner).
 2. **Preserve the body where it stays discoverable** — `references/absorbed-<name>.md` inside the surviving owner, listed in `references/absorbed-INDEX.md`.
 3. **Tombstone the name** — leave `<name>.DEPRECATED-<date>` resolving to the owner. Do not delete the old name; a name that stops resolving is indistinguishable from a name that was never there.
 4. **Repoint inbound links** and re-run the census. **Check inbound dependents before moving or archiving anything** — a directory that looks empty may be the live body behind a symlink elsewhere, and removing it breaks every link silently.
 5. **Re-measure.** A name is only retired when the census and the resolution gate both agree.
 
-**Worked example — this skill.** 19 names were absorbed into `mcp-ops` on 2026-09-20: originals moved
-to `.frozen/2026-09-20-mcp-consolidation/`, bodies preserved as `references/absorbed-*.md`, and every
-old name left resolving as a symlink to this directory. See `references/absorbed-INDEX.md`.
+**Worked examples** (this skill absorbed 24+ names; full audit trail in `references/absorbed-INDEX.md`).
 
----
+Deep dive: `references/absorbed-FORGE-mcp-lifeguard.md` (alert conditions), `references/absorbed-federation-mcp-drift-audit.md` (drift audit + `scripts/mcp_surface_usage_audit.py`).
 
-## Troubleshooting
+**Allowed Tools**: `git` (PR opens for SEPs); `forge_policy` (runtime governance); `forge_scar` (seal failures as scars); `forge_vault` (audit trail).
 
-```bash
-# MCP not responding — raw JSON-RPC (remember the 3-step handshake first)
-curl -s -X POST http://localhost:8081/mcp \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","method":"tools/list","id":1}'
+**Forbidden Actions**: deleting a tombstone silently. Sealing a SEP outcome without a tri-witness.
 
-# Port conflict
-ss -tlnp | grep <port>
-
-# Which loader is serving this file?
-ps -eo pid,ppid,lstart,cmd | grep "<server>.py" | grep -v grep
-systemctl cat <name>-mcp.service
-
-# FastMCP version / config sanity
-fastmcp --version
-mcporter config list
-hermes mcp test <name>
-```
-
-## Allowed Tools
+## Allowed Tools (full list)
 
 | Tool / Capability | Purpose |
-|-------------------|---------|
-| `fastmcp` CLI | Scaffold, inspect, list, call, run FastMCP servers |
-| `mcporter` CLI | Discover and call servers; daemon, auth, config, codegen |
-| `npx @mcpjam/inspector` | Conformance probe, doctor, OAuth check |
-| `curl` / `python3 -m json.tool` | Health probes and raw JSON-RPC checks |
-| `uv` / `pip` | Install FastMCP in repo or system context |
-| `/root/scripts/hermes_mcp_wire.py` | Governed client-config wiring (plan/apply/verify) |
-| `/root/scripts/hermes_mcp_compress.py` | Governed schema-compression wrap |
-| `docker restart` | Auto-restart dead MCP containers (lifeguard, authorised only) |
+|---|---|
+| `fastmcp` CLI | Scaffold, inspect, list, call, run FastMCP servers (Stage 3) |
+| `mcporter` CLI | Discover and call servers; daemon, auth, config, codegen (Stage 1/3/4) |
+| `npx @mcpjam/inspector` | Conformance probe, doctor, OAuth check, era matrix (Stage 5) |
+| `curl` / `python3 -m json.tool` | Health probes, raw JSON-RPC checks (Stage 2, all probes) |
+| `uv` / `pip` | Install FastMCP in repo or system context (Stage 3) |
+| `gh` CLI | GitHub OAuth scoped to federation namespace (Stage 7) |
+| `/root/scripts/hermes_mcp_wire.py` | Governed client-config wiring (Stage 3) |
+| `/root/scripts/hermes_mcp_compress.py` | Governed schema-compression wrap (Stage 3) |
+| `docker run` (loopback bind) | MCPJam Inspector air-gap mode (Stage 5) |
+| `firecrawl_*` | Discovery when MCP Registry unreachable (Stage 1 fallback) |
+| `forge_evaluate` | Tool registration governance (Stage 8) |
+| `forge_witness` | Tri-witness consensus for OAuth flows (Stage 4) |
+| `forge_policy` | Runtime governance layer (Stage 8) |
+| `docker restart` | Lifeguard auto-restart, authorised only (Stage 8g) |
 
 ## Forbidden Actions
 
@@ -590,43 +719,80 @@ hermes mcp test <name>
 - **NEVER** report "fixed" from a diff alone — say "fixed on disk, not live" until a fresh process proves it.
 - **NEVER** report an organ broken from a single un-handshaked probe.
 - **NEVER** treat a successful health check as authorization to act beyond observer class.
-- **NEVER** restart Vault999 — append-only ledger, human ack required.
-- Escalate to **arifOS 888_JUDGE** for deletion, deployment, secrets, or constitutional files.
+- **NEVER** restart `Vault999` — append-only ledger, human ack required.
+- **NEVER** publish to MCP Registry without a 100% green conformance suite.
+- **NEVER** store bearer tokens in `SKILL.md` or any wire config.
+- **NEVER** bypass `MCP-Protocol-Version` and `_meta.io.modelcontextprotocol/*` envelope keys when speaking `2026-07-28`.
+- **NEVER** delete a tombstone silently. Always re-measure the census after retirement.
+- Escalate to **arifOS 888_JUDGE** for deletion, deployment, secrets, SEP author intent, or constitutional files.
 
 ## Escalation Path
 
 | Condition | Escalate To | Method |
-|-----------|-------------|--------|
-| Mutating action on live organ | arifOS 888_JUDGE | A2A / MCP verdict_request |
-| Secret exposure in config or code | security agent + arifOS judge | A2A message |
+|---|---|---|
+| Mutating action on live organ | `arifOS 888_JUDGE` | `a2a` / `mcp verdict_request` |
+| Secret exposure in config or code | security agent + `arifOS 888_JUDGE` | `a2a` message |
 | Federation organ degraded/down | A-FORGE + health triage | health probe + incident channel |
-| Production deployment needed | arifOS 888_JUDGE + human (F13) | 888 HOLD |
-| Tool call returns unexpected authority/scope | arifOS 888_JUDGE | hold with evidence |
+| Production deployment needed | `arifOS 888_JUDGE` + human (F13) | `888 HOLD` |
+| Tool call returns unexpected authority/scope | `arifOS 888_JUDGE` | hold with evidence |
+| SEP authorship or co-sponsorship | `arifOS` for filing then `community@modelcontextprotocol.io` | SEP PR |
+| OAuth conformance ambiguity | `arifOS 888_JUDGE` | verdict + evidence row |
 
 ## Sibling skills (kept separate, deliberately)
 
 | Skill | Why it is not merged here |
 |---|---|
-| `wealth-mcp-ops` | WEALTH-organ MCP tools (testing + hardening); organ-bounded, own repo layout. |
+| `wealth-mcp-ops` | WEALTH-organ MCP tools (capital primitive surface); organ-bounded, own repo layout. |
 | `runpod-mcp` | Platform lane: Runpod pods/endpoints/jobs. Distinct triggers and setup. |
 | `touchdesigner-mcp` | Platform lane: twozero MCP for TouchDesigner. Distinct triggers and tool surface. |
-| `runtime-probe` | Focused instrument: one-shot MCP health + schema + transport classification. |
+| `runtime-probe` | Focused instrument: one-shot MCP health + schema + transport classification. Stage 2c-in-a-tool. |
 | `agent-tool-verification` | General claim discipline for any tool, not only MCP. |
 | `qwen-harness-tools` | Model-side built-in harness tools; not MCP at all. |
-| ~~`mcp-sota-shopping-list`~~ | **FOLDED IN (2026-09-20, v3.0.1)** — now Stage 1b / `references/absorbed-mcp-sota-shopping-list.md`; the name is a tombstone. The v3.0.0 decision was to keep it separate as a procurement reference, the second pass folded it so that "which MCP server should we adopt" lands on a reference instead of routing away. **Both statements are kept: the contradiction is the trail.** |
+
+## When NOT to Use
+
+- **Do not use for production deployment** without site-architecture skills and arifOS judgment.
+- **Do not mutate live federation servers** (restart, config change, port binding) without `arifOS F1–F13` clearance.
+- **Do not run untrusted MCP servers** outside the `arifos-untrusted-sandbox` skill.
+- **Do not hardcode secrets** in server code or client configs; use env vars / SOPS.
+- **Do not treat a successful health check as authority** to act beyond observer class.
+- **Do not adopt a new MCP server without consulting** `references/absorbed-mcp-sota-shopping-list.md` (Stage 1 procurement).
+- **Do not skip the era declaration** when reading or invoking MCP — `2025-11-25` and `2026-07-28` differ in handshake + envelope keys.
 
 ## References
 
-| File | Stage | Absorbed from |
+| File | Stage(s) | Purpose |
 |---|---|---|
-| `references/absorbed-INDEX.md` | all | full name → phase → origin → preserved path map |
-| `references/absorbed-*.md` | as listed above | the retired skills' bodies, verbatim |
-| `references/pre-merge-mcp-ops-v2.1.0.md` | all | this skill's own pre-merge body (2026-08-26 consolidation) |
+| `references/absorbed-INDEX.md` | all | full name → phase → origin → preserved path map (22+ absorbed names) |
+| `references/absorbed-llms-workflow-map.md` | all | canonical llms.txt section → mcp-ops stage mapping + parity table |
+| `references/absorbed-forge-fastmcp.md` | 4 | FastMCP scaffold/inspect/run/build recipes |
+| `references/absorbed-forge-mcp-gui.md` | 4b, 7a | MCP Apps build recipes + annotation taxonomy |
+| `references/absorbed-forge-mcp-a2a-agentic.md` | 4c, 7 | MCP + A2A composition + refusal surface |
+| `references/absorbed-forge-mcp-governance-wrapper.md` | 9e | four governance mechanisms (router/ACL/reversibility/policy) |
+| `references/absorbed-FORGE-mcp-lifeguard.md` | 9g | alert conditions, auto-restart loop, Ollama pre-warm |
+| `references/absorbed-federation-mcp-drift-audit.md` | 9f | drift audit + runnable `scripts/mcp_surface_usage_audit.py` |
+| `references/absorbed-mcp-organ-probe.md` (+ `layer-drop-diagnosis.md`) | 3 | deep probe law + misreadings |
+| `references/absorbed-mcp-edit-activation.md` | 3d | PID-vs-mtime, two-loader doctrine |
+| `references/absorbed-mcp-transport-fix.md` | 3e | SSE → Streamable HTTP migration |
+| `references/absorbed-mcp-context-compression.md` | 4g | schema compression wrap (`medium`/`max`); measured −89.3% on aforge |
+| `references/absorbed-mcp-ecosystem-indexing.md` | 2, 4d | discovery pipeline, beacon verification, pitfalls |
+| `references/absorbed-forge-mcp-registry-publish.md` | 8 | auth, scoped tokens, scoped-namespace errors, verification |
+| `references/absorbed-forge-minimax-mcp-direct-invoke.md` | 4c | MiniMax media lane direct invocation (model IDs + quota codes) |
+| `references/absorbed-telegram-mcp-product-line.md` | 4 | Telegram product lane on MCP backends |
+| `references/absorbed-external-platform-mcp.md` (+ `references/*`) | 4 | Composio/social-mcp/xurl/Firecrawl wiring + 3-band APA governance |
+| `references/absorbed-mcp-testing.md` | 6 | full conformance matrix + SEP-2567 stateless doctrine |
+| `references/absorbed-mcp-sota-shopping-list.md` | 2 (procurement) | MCP context tax + 2026-09 per-category shortlist |
+| `references/pre-merge-mcp-ops-v3.1.0.md` | history | this skill's own pre-merge body (the llms.txt-alignment consolidation) |
 
-*Consolidated 2026-08-26 from FORGE-mcp-ops, FORGE-mcp-federation-ops, FORGE-mcp-lifeguard.*
-*Consolidated 2026-09-20 (v3.0.0): 19 further MCP names absorbed — see `references/absorbed-INDEX.md`.*
-*2026-09-20 (v3.0.1, second pass): trigger list completed to the full declared union of the 14
-assigned MCP members (36 triggers added — the v3.0.0 list dropped the declared surfaces of mcp-testing,
-mcp-organ-probe, mcp-edit-activation and mcp-ops); mcp-sota-shopping-list folded in as Stage 1b; all 14
-member names archived to `.archive/merge-20260920/mcp/` and left resolving as tombstones.*
+## Historical changelog
+
+* v1.0.0 — initial consolidation (FORGE-mcp-ops, FORGE-mcp-federation-ops, FORGE-mcp-lifeguard).
+* v2.0.0 — absorbed 7 more MCP-named skills.
+* v2.1.0 — pre-merge snapshot (preserved in `references/pre-merge-mcp-ops-v2.1.0.md`).
+* v3.0.0 (2026-09-20) — 19 names absorbed, structured under 6 stages (DISCOVER → PROBE → INTEGRATE → TEST → GOVERN → RETIRE), 32 reference docs.
+* v3.0.1 (2026-09-20, second pass) — trigger list completed to full declared union of 14 assigned MCP members (36 triggers added), `mcp-sota-shopping-list` folded in as Stage 1b, all 14 member names archived to `.archive/merge-20260920/mcp/` and left resolving as tombstones.
+* **v3.1.0 (2026-09-21)** — llms.txt alignment: 9-stage workflow (LEARN → PROBE → BUILD → SECURE → TEST → EXTEND → PUBLISH → GOVERN-RETIRE), 4 new stage references (Learn, Secure, Extend, Publish), canonical body absorbs `mcp-testing` content (Stage 5), `mcp-testing` directory now resolved via symlink to mcp-ops. Frozen v3.0.0/v3.0.1 in `.frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.0.1`.
+
+* **v3.1.1 (2026-09-21)** — 0-index renumber (per Arif SEAL): all stages N → N−1 (LEARN=0, DISCOVER=1, PROBE=2, BUILD=3, SECURE=4, TEST=5, EXTEND=6, PUBLISH=7, GOVERN=8; RETIRE = 8h sub-section inside GOVERN). Procurement sub-stage correctly re-parented from LEARN to DISCOVER (latent anomaly fix). Body length and supersedes list unchanged. v3.1.0 frozen body now preserved at `.frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.1.0`.
+
 *AAA Skill Library — DITEMPA BUKAN DIBERI ⚒️*

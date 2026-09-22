@@ -1,6 +1,8 @@
 ---
 name: durable-claim-ledger
 description: "Use when a claim about system state must stay re-checkable."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Durable Claim Ledger
@@ -36,6 +38,50 @@ In this federation the mechanism is the `claim_ledger` MCP: `claim_artifact_regi
 **Check for an existing ledger before inventing a store.** A second store duplicating a
 working one is the same defect class as a second clock — it manufactures two truths and
 neither side can see the other.
+
+**Know which store owns which record class before reading a negative out of it.** A zero from the
+wrong store is an *empty search space*, not an absence. Measured: a search for commit-receipt ids in
+the events ledger returned 0 hits for all seven organs and read as "the seals are missing"; the
+records live in a different ledger, and all seven were present the whole time. Before reporting a
+record missing, name the store that owns that record class and confirm it is the one you searched —
+the path that is adjacent, older, or named for the same subsystem is exactly the wrong one. Report a
+near-miss as one clause, never as a finding: a phantom defect spends attention and discounts the
+findings that are real.
+
+## A dedup guard over an append-only store must read the WHOLE store
+
+An append-only ledger's writer usually carries a guard — "skip if this id is already present". Scope
+that guard to a **window** (`f.readlines()[-1000:]`) and it stops being a guard: the store outgrows
+the window, every older id falls outside it, and the writer re-appends records that are already
+there. Measured on a ~93k-line ledger: **837 of 1,015 ids (82.5%) were invisible to a 1,000-line
+window**, 73 ids duplicated, 103 excess rows — while the script's own docstring promised
+"idempotent: re-running on the same commit produces no duplicate".
+
+**The consequence is unrecoverable by design.** In an append-only store a duplicate cannot be
+deleted, only superseded, so a dedup defect permanently corrupts the ledger's counts and its
+readers' confidence. The immutability that makes the store trustworthy is exactly what makes the
+writer's bug permanent. So a writer's dedup guard is a *durability* control, not a convenience —
+scope it whole-store, or give it an index, and never let it read a window.
+
+Two tells that a guard is windowed rather than whole:
+
+- **Duplicates arrive in contiguous runs across independent subjects.** A run covering every organ
+  in a single pass is a retroactive re-seal of the whole set, not one writer misfiring repeatedly —
+  and it dates the moment the ids first drifted out of reach.
+- **The defect is invisible while the store is young.** It cannot exist until the window stops
+  reaching the oldest live id, so no amount of testing against a fresh ledger will catch it, and the
+  guard's source reads as correct in review.
+
+Falsify by counting, never by reading the guard's source:
+
+```bash
+grep -o '<id-pattern>' <store> | sort | uniq -c | awk '$1>1'      # duplicated ids and multiplicity
+```
+
+Then confirm the mechanism: check that each duplicate's **last** occurrence falls outside the
+guard's window. That is what separates "the guard is scoped wrong" from "two writers raced". Fix
+the scope, then re-run the writer expecting **zero appends** when every subject is already recorded.
+A guard fix not proven by a no-op run is untested.
 
 ## VOID is a claim, not a silence
 
@@ -78,6 +124,48 @@ name as a COPY and point the ledger at the addressed one — a fixed path means 
 overwrites the file the previous row hashed, and a ledger whose target is mutable records
 events rather than claims.
 
+**A receipt over a git HEAD does not cover the working tree.** "Commit X is sealed" attests the
+commit object and nothing else. Content the author has written but not committed sits outside every
+seal built on HEAD while the receipt reads as complete coverage. Measured: six governance documents
+Authored the same day were all **untracked** in a repo whose HEAD was sealed on a schedule — the
+sealed object contained none of them, and nothing anywhere reported a gap. When a seal's claim is
+"this work is recorded", the check is `git status --porcelain` measured against what the seal covers,
+not the presence of a receipt. Say which of the two you verified: *the commit is sealed* and *the
+work is sealed* are different claims, and only the first is automatic.
+
+## An integrity manifest must not pin what is meant to grow
+
+The section above covers a seal over a *mutable* file — honest for an instant, then stale. The
+converse is worse, because it fails **by construction**: a whole-file digest recorded over an
+append-only store can only ever report FAILED.
+
+Classify the artifact before choosing the evidence.
+
+| Artifact class | Correct integrity evidence | Wrong evidence |
+|---|---|---|
+| immutable (release, sealed deliverable, one-shot export) | whole-file sha256 | — |
+| append-only (ledger, event log, seal chain) | hash-chain linkage (`prev_hash`), monotonic sequence, entry count + head digest | whole-file sha256 |
+| live (rolling log, in-place state file) | freshness or rotation assertion, last-write timestamp | whole-file sha256 |
+
+Measured: a public integrity manifest pinned the sha256 of a ledger appended to on every seal, plus
+a live log and the generator script itself. Three of ~63 entries failed on every verification — the
+ledger because it had *grown*, the log because it is *live*, the generator because it was *edited*
+after the pin. Nothing was tampered with; the manifest was demanding that growing objects hold
+still.
+
+**Why the wrong one is worse than none:** a check that is red by construction is a check that gets
+ignored, and it spends the signal that would have caught a real break. Three expected failures train
+the reader to skip the fourth.
+
+For an append-only store the honest check is over a **committed prefix**: record
+`(entry_count, chain_head_digest)` at a declared point, then verify that prefix still matches while
+permitting the tail to grow. That catches the two things a whole-file hash was reaching for —
+retroactive edit and truncation — and it can actually pass.
+
+When you find a manifest failing this way, classify each mismatch before naming a cause: grown,
+edited and live are three different facts, and only one of them is a security event. Report the class
+of each failed entry rather than a single verdict over the manifest.
+
 ## Routing is a chain, not a field
 
 ```
@@ -101,5 +189,6 @@ See `references/routing-evidence.md` for the host-layer enumeration and the id-r
 | Omitting what you do not know | Record it as VOID with confidence 0.0 |
 | Rewriting a stale seal | Append ORIGINAL / COUNTEREVIDENCE / CORRECTION |
 | Sealing a mutable file as final | Content-address it, or re-seal after the change |
+| Whole-file hash pinned over a growing ledger | Pin the chain invariant or a committed prefix |
 | `status: ok` read as delivered | Require a receipt; else SENT-unconfirmed |
 | Building a second ledger | Check for an existing store first |

@@ -15,6 +15,8 @@ triggers:
   - "leverage"
   - "bankrupt company chart"
   - "chart company yang dah bankrap"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Market Claim Assessment

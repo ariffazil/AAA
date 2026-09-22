@@ -7,6 +7,8 @@ owner: AAA
 tags: [ollama, provider, migration, systemd, env, embeddings, federation]
 floor_scope: [F1, F2, F4]
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Provider Endpoint Migration

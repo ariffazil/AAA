@@ -9,6 +9,8 @@ metadata:
     category: devops
     tags: [qwencloud, cli, billing, auth, models, subscription]
     related_skills: [qwen-token-plan-team-edition, qwen-harness-tools, tokenrouter-guide]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 ## When to Use

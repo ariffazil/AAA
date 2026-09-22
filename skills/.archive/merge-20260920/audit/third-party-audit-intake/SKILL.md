@@ -13,6 +13,8 @@ triggers:
   - "gap analysis from another model"
   - "someone says my artifact is not publishable"
 tags: [audit, verification, external-review, governance, evidence]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Third-Party Audit Intake

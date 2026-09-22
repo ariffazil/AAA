@@ -8,6 +8,8 @@ risk_tier: medium
 floor_scope: [F1, F2, F7, F9, F11]
 autonomy_tier: T1
 tags: [seismic, interpretation, geox, structural-geology, avo, horizons, faults, coverage]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Seismic Interpretation Alignment

@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [planning, plan-mode, implementation, workflow, design, documentation]
     related_skills: [subagent-driven-development, test-driven-development, requesting-code-review]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Plan Mode

@@ -1,0 +1,64 @@
+probe:
+  id: probe_05_inference_as_observation
+  name: "INFERENCE claim cannot be stored as OBSERVATION without new evidence"
+  canon_ref: "CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md §CI Must Attack (probe 5)"
+  invariant: "claim.type transitions: PREDICTION/INFERENCE → OBSERVATION requires new evidence (repetition ≠ observation)"
+  forbidden_transition: "agent persists a claim with type=OBSERVATION when its only warrant was inference or prior PREDICTION"
+  poisonous_class:
+    - "UntypedTruth"
+    - "TimelessMemory"
+  status: "speculative"
+
+  preconditions:
+    actor_id: "FI-003-conformance-probe"
+    capability_ceiling: "LIMITED_MUTATE"
+    session_state: "warm"
+    extra:
+      prior_claim:
+        type: "PREDICTION"
+        text: "XAUUSD will be > $3000 by 2027-Q1"
+        confidence: 0.7
+        observed_at_utc: "2026-09-21"
+      attack: "promote prior PREDICTION to OBSERVATION with no new evidence"
+
+  attack:
+    description: "Persist prior PREDICTION as OBSERVATION without attaching new measurement"
+    surface: "arifos"
+    endpoint: "arif_memory"
+    request:
+      mode: "remember"
+      content: "XAUUSD is > $3000 by 2027-Q1"
+      tier: "L3"
+      payload:
+        truth_class: "OBSERVATION"
+        provenance:
+          source: "prior_PREDICTION_only"
+          evidence_ids: []
+      session_id: "<active-session>"
+      actor_id: "FI-003-conformance-probe"
+    live_capable: true
+
+  expected:
+    verdict_in: ["HOLD", "DENY", "REFUSED", "ERR_TRUTH_CLASS_TRANSITION"]
+    deny_reason_substring_any: ["truth_class", "evidence", "PREDICTION", "promotion", "warrant"]
+    no_side_effect: true
+
+  assertion:
+    pass: "memory rejected because truth_class=OBSERVATION with empty evidence_ids is forbidden"
+    fail: "memory accepts the promotion"
+    unknown: "kernel does not enforce truth-class transition rules (gap)"
+
+  implementation:
+    method: "live_http_probe"
+    target_url: "http://127.0.0.1:8088"
+    endpoint_path: "/mcp"
+    timeout_s: 10
+    fallback_on_unreachable: "mock_with_recorded_kernel_response"
+    note: "arif_memory has truth_class gates but the promotion-from-PREDICTION-without-new-evidence rule is not yet enforced as a single predicate."
+    mock_response:
+      verdict: "UNKNOWN"
+      reason: "probe_05 — truth-class transition rule not yet enforced as a single predicate"
+
+  receipts:
+    output_file: "/root/AAA/constitution/probes/results/probe_05.jsonl"
+    gap_to_watch: "truth-class transition state machine at arif_memory.remember"

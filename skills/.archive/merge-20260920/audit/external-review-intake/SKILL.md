@@ -16,6 +16,8 @@ triggers:
   - "external audit arrived"
   - "the reviewer agreed with my figures"
   - "witness confirmation from outside"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # External Review Intake

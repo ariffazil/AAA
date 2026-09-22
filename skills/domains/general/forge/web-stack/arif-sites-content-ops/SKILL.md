@@ -11,6 +11,8 @@ metadata:
     related_skills: [makcikgpt-article-forging, site-deployment-verification, caddy-reverse-proxy]
     floors_protected: [F2, F4, F11]
     origin: 2026-07-18 essay audit → 2026-08-01 Caddy patch + cron immune system + external witness audit
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # arifOS Sites Content Operations

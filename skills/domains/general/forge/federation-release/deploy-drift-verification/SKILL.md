@@ -16,6 +16,8 @@ floor_scope:
 - F4
 - F11
 autonomy_tier: T0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # Deploy-Drift Verification — did the fix actually reach runtime?
 
@@ -141,6 +143,23 @@ Worked values for a Caddy-fronted SPA host with a split config and split roots �
 vhost layout, the `@static_dirs` vs `@spa_routes` split, the page-that-exists-twice check, and
 the closure probe — are in `references/webroot-serving-resolution.md`.
 
+**A static file under a webroot is a snapshot with an age — and if nothing syncs it, your repo edit
+never reaches the wire.** A repo that documents "`<path>` is the canonical live surface" is making a
+claim about what is *served*, not about what is *committed*. Where the served copy is a plain copy of a
+repo file, hash the pair to date the snapshot and decide whether a sync exists at all:
+
+```bash
+sha256sum "<webroot>/<path>" "<repo>/<path>"      # equal = the served copy is current
+stat -c '%y  %n' "<webroot>/<path>" "<repo>/<path>"
+```
+
+Equality is not reassurance — it dates the copy. The fault appears the moment someone edits the repo
+file: the pointer in the docs now names a path that no longer describes what users receive, and every
+subsequent check that reads the repo reports the change as live. **When the vhost config does not
+mention the file, do not conclude it is unserved** — search the webroot for the path to find which tree
+answers it, then determine whether that tree is a deploy target or a manual copy. A snapshot with no
+sync job is a one-time deploy: report its age, and treat republishing as a deploy decision, not an edit.
+
 ## Publish ORDER is part of the deploy — a pointer published before its target poisons the edge cache
 
 Every layer above is about whether a fix *reached* the served tree. This one is about the order in
@@ -236,13 +255,20 @@ shape: **the running process is the artifact, and it is holding the modules it i
    # name the drifted SET instead of eyeballing two timestamps:
    find <install_dir> -name "*.py" -newermt '<unit ActiveEnterTimestamp>'
    ```
-   Source newer than process start ⇒ the runtime is executing pre-edit code. Nothing else will
-   catch this: there is no stale `dist/` to notice and no build log to read. The `-newermt`
-   sweep turns the comparison into an enumerated answer — the exact modules the live process
-   cannot be holding — and it is the same command that returns EMPTY after the restart, which is
-   the after-receipt. Pair it with a named pre/post signal from the completed boot log (a
-   traceback or warning count) so "the unit restarted" and "the fix is live" stay two separate
-   observations.
+   Source newer than process start ⇒ the runtime is executing pre-edit code. There is no stale
+   `dist/` to notice and no build log to read, so this comparison is the primary detector. The
+   `-newermt` sweep turns it into an enumerated answer — the exact modules the live process cannot
+   be holding — and it is the same command that returns EMPTY after the restart. Pair it with a
+   named pre/post signal from the completed boot log (a traceback or warning count) so "the unit
+   restarted" and "the fix is live" stay two separate observations.
+
+   **The strongest receipt is a marker the new code writes into the LIVE OUTPUT stream.** A process
+   holding a pre-edit module cannot produce the new module's output, so pick a field, key or log
+   token that ONLY the new code emits, and count it in the production artifact — the durable ledger,
+   the health payload, the journal. Measured: a dedup patch had never executed once, because the
+   worker booted two minutes BEFORE the patch landed; `0 of 112` records in that emitter's own
+   ledger carried the `dedup` field the patched code always writes. The marker count also survives
+   the case where mtime lies — a restored backup, `cp -p`, or a checkout with preserved timestamps.
 2. **Which tree does `import` actually resolve to?** Ask the service's own interpreter:
    `venv/bin/python -c "import <pkg>, <pkg>.<module>; print(<pkg>.__file__)"` — an editable install
    routes through a `.pth` finder back to the checkout, so a same-named copy elsewhere on disk
@@ -409,6 +435,22 @@ ls -l /proc/<pid>/cwd                             # tree the process resolves re
 cat /proc/<pid>/cgroup                            # 0::/system.slice/<unit>.service  <- the unit
 systemctl show <unit> -p ExecStart -p WorkingDirectory -p ActiveEnterTimestamp
 ```
+
+**Several processes can share one argv shape — resolve the LISTENER before deriving any timeline.**
+A `ps | grep <name>` sweep returns the stdio-launcher copies, a compressor wrapper, and the process
+that actually holds the socket, all with near-identical command lines. Taking a start time from the
+wrong one manufactures a paradox that does not exist: "the server booted before its artifact was
+built" is almost always the wrong PID, since the artifact-loading process is the one bound to the
+port.
+
+```bash
+ss -tlnp | grep ':<port>'        # the PID that holds the socket is the only one that matters
+ps -p <that-pid> -o lstart,cmd    # its start time, not a sibling's
+```
+
+Only after the listener is identified may you compare its start time against artifact mtimes. Order
+this check before any timing-based conclusion, because the conclusion is unfalsifiable once stated
+and gets acted on.
 
 The `cgroup` line names the owning unit exactly, and `cmd` reveals the launch form. A bare
 `<venv>/bin/python -c "from <pkg>.<mod> import main; main()"` is the collapsed case from above:

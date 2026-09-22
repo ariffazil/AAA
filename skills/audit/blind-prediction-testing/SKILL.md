@@ -11,6 +11,8 @@ triggers:
   - any claim of forecast skill from a person, a chart, a signal, an organ or a model
   - a calibration, accuracy or hit-rate figure quoted without its baseline
   - whenever you are about to agree that a signal works
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Blind Prediction Testing

@@ -27,6 +27,8 @@ orthogonal_tags:
   trinitarian: [ΦΙ]
   functional: [Governance, Audit]
   layer: HEXAGON
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # asi-agentic-governance

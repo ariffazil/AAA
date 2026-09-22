@@ -1,0 +1,179 @@
+Arif, aku dah jalankan dua-dua laporan tu atas mesin hidup — bukan atas kertas. Verdict dulu, baru gap, baru susunan.
+
+Satu ayat: dua-dua laporan betul pasal tiga benda besar, salah pasal tiga benda penting, dan terlepas enam defect yang lebih bahaya dari apa yang depa senaraikan.
+
+Semua bacaan aku di bawah ambil 05:50-06:00 MYT, 21 Sep. Kernel arifOS restart pukul 05:55:13 tengah siasatan ni, jadi angka sebelum tu aku tanda basi.
+
+════════════════════════════════════
+A. YANG BETUL — aku sahkan sendiri
+════════════════════════════════════
+
+1. HERMES + CHRON memang takda dalam router registry arifOS.
+   Aku panggil arif_route organ=geox → facts balik: "organ=GEOX, port=8081, status=routed, routing_rule=intent_map".
+   Panggil organ=hermes → takda satu pun field organ.
+   Panggil organ=chron → sama, takda.
+   Dan ni yang lebih teruk: bila organ tak dikenali, router tak cakap "UNKNOWN_ORGAN". Dia balik HOLD kosong — sama bunyinya macam hold sebab authority. Aku tak boleh bezakan "organ takda" dengan "organ ada tapi aku takde kuasa". Dua keadaan, satu verdict.
+
+2. arif_think memang shell kognitif.
+   Aku hantar soalan politik sebenar → evidence_used: [], inferences: [], counterarguments: [], claim_state INFERENCE, verdict HOLD, execution_state AWAIT_INPUT, next_safe_action "Review result".
+   Ia tak error. Ia nampak macam siap. Padahal kosong. Ini yang paling bahaya: kegagalan yang berpakaian kejayaan.
+
+3. CHRON memang observe-heavy. Aku kira fail sendiri, tak percaya API:
+   episodes.jsonl = 56,865 baris → observe 56,841 · verify 6 · learn 2 · predict 16.
+
+════════════════════════════════════
+B. YANG DUA-DUA LAPORAN SALAH
+════════════════════════════════════
+
+1. "WEALTH unusable / interface impossible" — SALAH.
+   Aku panggil capital_market {mode:fx, targets:"MYR,USD,EUR", session_id:"hermes-audit-2026-09-21"} → balik rate hidup: USD/MYR 4.0805, USD/EUR 0.8726, provider Frankfurter, tarikh 2026-09-18.
+   Kontrak tu BOLEH dipenuhi. Jenis argumen je (targets string, bukan list) dan mode wajib.
+   Yang betul: capital_health memang ROSAK — mode=status dan mode=health dua-dua balik INTERNAL_ERROR "ToolError", severity FATAL, recoverability ESCALATE_TO_888_HOLD. Jadi organ capital tak boleh laporkan kesihatan dia sendiri. Itu defect sebenar, dan ia defect yang berbeza dari "session".
+   Lagi: server tu klasifikasi error dia sendiri tak konsisten. Type-error biasa (targets=hantar list) dilabel INTERNAL_ERROR/FATAL/ESCALATE_TO_888_HOLD; missing-arg pada tool lain dilabel MISSING_REQUIRED_FIELD/RECOVERABLE. Agent tak boleh tahu "aku salah hantar" lawan "server hang". Error taxonomy goyang.
+
+2. "40% predictions ada evidence snapshot" — SALAH, dan lebih teruk.
+   15/15 ACTIVE predictions: evidence KOSONG. Sembilan ada field `evidence` dengan senarai kosong; tujuh langsung takda field tu. Bukan 40% — kosong bulat.
+   Satu-satunya prediction yang ada evidence ialah pred-chron-loop-test-0bc4ce80 — dan itu pipeline self-test.
+
+3. "55,409 episodes" — angka tu datang dari API store_stats. Atas disk ada 56,865.
+   Δ 1,456 baris wujud atas disk tapi tak dilihat oleh API. Bila dua permukaan bagi angka berbeza untuk satu kuantiti, itu penemuan — bukan isu "stale sikit".
+
+════════════════════════════════════
+C. GAP YANG DUA-DUA TERLEPAS
+════════════════════════════════════
+
+G1. Denominator 55k tu satu firehose, bukan 55k pemerhatian bebas.
+    56,816 dari 56,865 baris bawa question yang SAMA: "What happened in the federation?" — dari arifFlow telemetry, ~1 rekod semenit.
+    Maksudnya: 0.011% verification rate tu bukan "mesin banyak melihat, sikit menyemak". Ia "satu heartbeat menulis 55k kali, dan penyemakan tak pernah jalan".
+    Episodes file dah 63MB, index.json 19MB, dan membesar semenit-semenit. Ini sumber entropi nombor satu dalam federation — dan kedua-dua laporan cadang tambah lapisan di atasnya.
+
+G2. Verification boleh bertukar jadi ANDAIAN bila tool down — dan andaian tu ditulis sebagai OBS.
+    Ada tiga rekod verify:
+      "UNVERIFIABLE — source event not found"
+      "UNVERIFIABLE — no search backend available"
+      "Date-bound event (2026-09-15). Search unavailable — assuming occurred per date commitment."
+    Yang ketiga tu ditulis truth_class=OBS, confidence=0.9, dan mengeluarkan outcome record.
+    Jadi bila search mati, sistem tak gagal — dia mengaku tahu. Outcome rekaan tu masuk kalibrasi, dan kalibrasi tu jadi pelajaran.
+    Ini defect paling bahaya dalam CHRON, dan takda satu pun laporan sebut pasal dia.
+
+G3. Kalibrasi dikira atas fixture test sendiri.
+    calibration.json: total=2, correct=1, incorrect=1, accuracy=0.5, mean_brier=0.2462.
+    Satu dari dua tu ialah pred-chron-loop-test-0bc4ce80 ("arifOS deploy commit 877407798 akan produce deployment_drift...").
+    Separuh "bukti kalibrasi" sistem ialah ujian pipeline dia sendiri. Metrik yang dikira atas fixture sendiri bukan metrik.
+
+G4. Dua store bercanggah dalam loop yang sama.
+    Ledger kata learn=2. lessons.jsonl ada 1 (status CANDIDATE, promotion_eligible=false, error_type UNKNOWN, mean_brier 0.49).
+    Yang lebih tajam: episod learn yang aku baca atas ledger mengaku basis dia pred-e8627010d4bf, brier 0.023, kesimpulan "date-bound MARKET_EVENT predictions dengan MOF source boleh dipercayai".
+    pred-e8627010d4bf TAKDA dalam predictions.jsonl. Ia prediction yatim.
+    Dan pelajaran tunggal yang masih hidup cuma berkata "unknown error type 'UNKNOWN', investigate" — ia tak ajar apa-apa.
+    Jadi "1 lesson dari 55k" tu pun bukan fakta yang stabil.
+
+G5. A-FORGE MCP dalam crash loop, dan port dia dipegang orang lain.
+    systemctl: a-forge-mcp = activating (auto-restart) sejak 05:55:37, ExecStart exit status=1, EADDRINUSE 127.0.0.1:7072.
+    Yang pegang 7072: proses node pid 1411944, mula 04:54:38, parent 1411942 — BUKAN unit systemd tu.
+    Jadi "A-FORGE hidup" betul pasal port, salah pasal servis. Dua-dua laporan probe port, tak probe unit — jadi dua-dua tak nampak.
+    Lagi satu: A-FORGE terdedah dua kali — :7071 (121 tools) dan :3003 (225 tools, nama berganda forge_forge_*). Satu organ, dua muka, nama tak sepadan.
+
+G6. session_id tu formaliti, bukan capability.
+    Semua 14 tool WEALTH terima session_id. Lapan dalam whitelist OBSERVE (tak perlu session). Enam lagi wajib.
+    Tapi apa yang disemak? Server cuma pastikan string tu bukan token "_default", lepas tu buat initialize ke kernel dan balik ok. Apa-apa string bukan-asal boleh laku.
+    Jadi L11 AUTH tu bunyinya macam kawalan; hakikatnya apa-apa jujukan aksara pun lulus. Ikut doktrin kita sendiri: environment variable bukan capability — dan di sini, session_id pun bukan capability.
+    Ni penting sebab Upgrade 4 dalam laporan kedua cadang propagate session_id ni ke 30 permukaan. Kalau yang dipropagate tu formaliti, kau cuma membiakkan formaliti.
+
+G7. Kernel restart tengah audit — dan laporan-laporan tu tak letak cap masa.
+    arifos.service mula semula 05:55:13 (NRestarts=0, jadi ia sengaja dimulakan, bukan crash). Semua bacaan sebelum tu basi.
+    Unit arifos.service ada 40+ drop-in conf. Empat ExecStartPre iptables keluar status=4 setiap kali start.
+    Peraturan kita sendiri (live-probe discipline) kata setiap angka kena bawa measured_at + service_start_time. Dua-dua laporan langgar.
+
+G8. Takda satu pun laporan cadang BUANG apa-apa.
+    Keadaan sekarang: 30+ port mendengar, lima permukaan aggregator yang mendedahkan semula tool organ lain, tool name berganda, 63MB episodes membesar 1/minit, 40+ drop-in pada satu servis.
+    Cadangan "satu ingress" TAMBAH satu lapisan. Kalau pelan tu tak keluarkan lebih banyak dari yang dia masukkan, itu bukan zen — itu monolit yang pandai bercakap.
+
+════════════════════════════════════
+D. SUSUNAN ZEN — kecil dulu, buang dulu
+════════════════════════════════════
+
+P0 — satu petang, semua kecil, semua boleh balik:
+
+  1. CHRON verifier fail-closed. Kalau tak boleh observe → prediction kekal ACTIVE/UNVERIFIABLE. Buang terus laluan "assuming occurred". Satu baris falsafah: kita tak pernah mengaku tahu bila alat mati.
+  2. Bersihkan kalibrasi. Keluarkan fixture test dari calibration.json dan dari lessons. Kira balik. Biar accuracy kembali UNKNOWN sampai ada n sampel sebenar — n=2 itu bukan kalibrasi, itu anekdot.
+  3. evidence wajib di peringkat schema, bukan di peringkat polisi. Prediction tanpa E_t = INVALID, ditolak masa create, bukan didenda masa verify.
+  4. arif_route: organ tak dikenali → error bertaip UNKNOWN_ORGAN + senaraikan registry yang ada. Senyap mesti jadi bising.
+  5. Bunuh orphan 7072 dan pastikan unit yang pegang port. Kalau proses tu ada sebab wujud, jadikan dia unit. Port squatter + fail-closed unit = loop selama-lamanya.
+  6. capital_health — baiki, atau buang dari registry sampai ia boleh lapor diri sendiri. Organ yang tak boleh lapor kesihatan sendiri tak patut berada atas permukaan awam.
+
+P1 — beberapa hari:
+
+  7. Satu registry organ kanonik, satu fail. Router baca dari situ; semua permukaan lain terbit dari situ. Lepas tu BARU boleh buang 3003 / 3002 / 18088 yang menduplikasi tool organ.
+  8. CHRON: tukar apa yang dikira. Observe kena tulis bila ada perubahan material, bukan bila jam berdentang. Dan metrik utama bukan "berapa episode", tapi "berapa kali loop VERIFY→LEARN→POLICY tutup".
+  9. Satu skema klasifikasi error rentas semua organ: {client_error | server_error | auth | unknown}. Supaya agent boleh bezakan salah sendiri lawan sistem rosak.
+
+P2 — hanya bila P0 dan P1 hijau:
+
+  10. arif_route jadi graph orchestrator. Berita baik: ia dah 60% siap — skema dia dah ada organ_tool, arguments, mission_id. Kerja sebenar cuma registry + fan-in.
+      TAPI dulu: kernel tu satu proses sahaja (Main PID 1543279, Tasks 13, ada drop-in 99-reduce-concurrency).
+      Dan WEALTH semak session dengan memanggil BALIK kernel atas HTTP — kod dia sendiri ada nota scar "2.0s timeout bila single-worker kernel sibuk".
+      Fan-out tambah panggilan balik = risiko dia panggil dirinya sampai tersekat.
+      Buktikan ia tak boleh tersekat dulu. Baru bina orchestrator. Dua-dua laporan tak sentuh benda ni.
+  11. Baru lepas tu: envelope bersatu + satu ingress awam (mcp.arif-fazil.com) + progressive disclosure. Dan bila buat, saizkan skema. A-FORGE 121 tool = 58k token metadata sebelum kerja bermula. Satu pintu masuk tanpa mampat skema = kau pindahkan kos tu, bukan kurangkan.
+
+JANGAN buat dulu:
+  - Reality Graph (Upgrade 9). Jangan bina graf atas loop yang tak pernah tutup.
+  - Semantic routing pintar.
+  - Tambah organ baru.
+  Dua-dua laporan letak tiga benda ni di hadapan. Susunan tu salah. Loop yang paling penting — verify → error → lesson → ubah tingkah laku — baru dua kali jalan dalam 56 ribu episod, dan dua-dua jalan atas fixture atau atas andaian.
+
+════════════════════════════════════
+E. SATU METRIK SAHAJA UNTUK DIPANTAU
+════════════════════════════════════
+
+  Berapa prediction yang ditutup dengan observation sah (bukan andaian, bukan search mati, bukan fixture) dan menghasilkan lesson yang mengubah keputusan berikutnya.
+
+  Angka tu sekarang: kosong. Bukan sifar sebagai kiraan — sifar sebagai kualiti. Tiga daripada enam verify tu sintetik, satu andaian, dan satu-satunya pelajaran hidup berkata "unknown error type UNKNOWN".
+
+  Bila angka tu naik dari kosong, baru federation tu jadi institusi. Sebelum tu, ia mesin pemerhatian yang sangat rajin.
+
+════════════════════════════════════
+
+P0 no. 1-6 tu semua kecil, boleh balik, dan tak sentuh duit atau permukaan awam. Bagi kata, aku gerak.
+
+════════════════════════════════════
+TAMBAHAN + PEMBETULAN — 06:05 MYT (root cause G1 dijumpai)
+════════════════════════════════════
+
+Penulis firehose: /etc/cron.d/chron-bridge-flow → */5 * * * * → /root/chron/bridge_flow.py
+Bridge tu DELTA-GATED (offset byte), jadi ia tak tulis semula baris lama. Volum tu datang dari arifFlow sendiri.
+
+TAPI aku jumpa defect yang membatalkan angka utama dalam KETIGA-TIGA laporan (dua laporan luar DAN draf aku sendiri):
+
+bridge_flow.py baris 103 menulis HARDCODED: "function": "observe" — untuk SETIAP receipt,
+tak kira step_type apa. Step_type sebenar disimpan di metadata.step_type sahaja.
+
+Ukuran atas episodes.jsonl (56,885 baris):
+  field atas (yang CHRON kira sebagai 'function'):
+     observe 55,786 · predict 16 · verify 6 · learn 2
+  metadata.step_type (apa yang SEBENARNYA berlaku):
+     Verify 27,051 · Execute 16,625 · Seal 7,017 · Route 3,830 · Cool 2,313
+  metadata.floor_verdict: Pass 54,453 · Hold 1,679 · Caution 704
+
+Maksudnya:
+  - Angka "55,409 observations vs 6 verifications = 0.011%" itu ARTIFAK PROJEKSI FIELD.
+    Mesin tu bukan jarang menyemak — ia ADA 27,051 Verify dan 54,453 verdict Pass.
+  - Tapi yang 27k itu BUKAN pemerhatian federation. Ia langkah-upacara arifFlow sendiri
+    ("Verify by 333-AGI in SEAL-xxx — verdict=Pass"), ditulis ~1/minit oleh SEAL pipeline dia.
+  - Jadi dua pembilang tu mengukur DUA MESIN BERBEZA di bawah satu nama field.
+    Nisbah tu bukan rendah. Ia tak bermakna.
+
+Yang masih berdiri (tak berubah):
+  - Loop epistemik sebenar CHRON: 20 predictions, 6 verify episod, 2 learn episod.
+    Itu pembilang yang betul. Dan ia memang tak tutup.
+  - G2 (verify jadi andaian bila search mati), G3 (kalibrasi atas fixture), G4 (prediction yatim) — semua kekal.
+  - G1 dalam bentuk baharu, lebih tajam: denominator 55k itu bukan "banyak melihat",
+    ia MESIN MENULIS CERITA TENTANG DIRINYA SENDIRI, 1 baris semenit, dan cerita tu dilabel 'observe'.
+
+Implikasi untuk pelan P0:
+  - P0 no.3 (evidence wajib) dan P1 no.8 (tukar apa yang dikira) jadi lebih penting, bukan kurang.
+  - Tambah P0 baru: betulkan field projection. function kena ikut metadata.step_type.
+    Sebelum tu, setiap metrik CHRON salah — termasuk dashboard dan audit.
+  - Dan soalan sebenar: perlukah 27k langkah-upacara flow masuk CHRON sama sekali?
+    Kalau ya, ia perlu kelas sendiri (ceremony), bukan 'observe'.

@@ -10,6 +10,8 @@ triggers:
   - "HuggingFace dataset"
   - "conflict resolution specification"
   - "judiciary layer"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Governance Benchmark Authoring & Publishing

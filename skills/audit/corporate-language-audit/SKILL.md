@@ -5,6 +5,8 @@ version: 1.0.0
 owner: Hermes
 risk_tier: low
 tags: [language, audit, corporate, pr, governance, measurement]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Corporate Language Audit

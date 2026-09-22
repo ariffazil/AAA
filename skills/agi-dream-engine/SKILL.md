@@ -2,10 +2,8 @@
 id: agentic-dream-engine
 name: agi-dream-engine
 autonomy_tier: T1
-version: 1.0.0
-description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI,
-  888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate
-  memory without violating F1-F13.
+version: 2.0.0
+description: "v2 HARDENED: 72h reasoning distillation producing structured DreamCandidates with four independent axes (p_occurrence, p_predictive, p_normative, consequence), counterstory generation, causal status, CHRON calibration bridge, and promotion lifecycle. Substrate consolidation via separate process. No self-witnessing."
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -64,7 +62,13 @@ ecology_state: WARM
 
 ## Overview
 
-## arifOS-ACT Embedding
+The Dream Engine is a **substrate process** — Python scripts scheduled by systemd — not an LLM loop. LLM enters ONLY for distillation (pattern extraction + counterstory generation).
+
+**v1→v2 (2026-09-21):** Single p= confidence → four independent axes. Prose wisdom.md → structured DreamCandidate JSONL. No falsification → mandatory counterstories. No lifecycle → 11-state promotion chain.
+
+**The definition:** Dream Engine = asynchronous evidence-consolidation, replay, falsification, calibration and bounded policy-learning subsystem for persistent agents.
+
+### arifOS-ACT Embedding
 
 Before using this skill on any mutating, irreversible, or high-blast-radius task:
 1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
@@ -72,16 +76,15 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
 4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
 
+### Architecture
 
-The existing dream-engine (`/root/AAA/dream_engine/`; systemd `arif-dream.timer`) is a **single-organ**, **single-cadence** nightly batch that consolidates the last 24 hours of `memory_records` into canon. It is an entropy pump, not a phenomenology claim (F9).
+```
+EXPERIENCE → CANDIDATE → FALSIFICATION → PREDICTION → REALITY → CALIBRATION → GOVERNANCE
+```
 
-This skill extends that engine into a **federation protocol**: every AAA warga agent, plus OpenCode and OpenClaw, can run its own dream cycle, but all canon promotions route through the same constitutional gates:
+wisdom.md is NOT the destination. It is a temporary artifact in a larger learning chain.
 
-- F13-locked synthesis threshold
-- Hard daily cap
-- Counterfactual rehearsal
-- Dual attribution (`actor_id` = agent, `source_ref.ratified_by` = Arif)
-- L4 `memory_records` + `memory_audit_log` write path
+No component may close its own epistemic loop. Dream Engine generates candidates. CHRON measures outcomes. arifOS governs promotion. A-FORGE executes bounded change.
 
 ## When to Use
 
@@ -103,6 +106,43 @@ This skill extends that engine into a **federation protocol**: every AAA warga a
 Extended corollary for multi-agent federation:
 
 > Each agent has its own entropy pump, but all pumps drain into the same canonical reservoir. The reservoir has one lock: F13.
+
+## The Four Independent Axes
+
+frequency(pattern) ≠ probability(pattern is wise). An agent can consistently repeat a stupid behaviour.
+
+| Axis | What it measures | How computed | Initially |
+|------|-----------------|-------------|-----------|
+| p_occurrence | How often did it appear? | session_count / total_sessions | Set from LLM |
+| p_predictive | Does it predict outcomes? | CHRON calibration (Brier score) | null (untested) |
+| p_normative | Does it govern behavior? | F13 ratification authority | null (no authority) |
+| consequence | What if it's wrong? | cost_if_wrong × reversibility | Set from LLM |
+
+Two candidates at p_occurrence=0.7 are NOT equivalent if one has blast_radius=CATASTROPHIC and the other LOW.
+
+## DreamCandidate Lifecycle
+
+```
+OBSERVED → CANDIDATE → REPLAYED → PROSPECTIVE → REPLICATED → LESSON → POLICY_PROPOSAL → RATIFIED
+    ↓                                                              ↓
+  never promoted                                           SUPERSEDED / RETRACTED / DECAYED
+```
+
+State transitions require evidence at each gate. Only RATIFIED can influence system behavior.
+
+Decay: not observed in 6 cycles (18 days) → RETRACT. A system that can learn but cannot forget becomes dogma.
+
+## The Dream Candidate Pipeline
+
+| Step | Script | What it does | LLM? |
+|------|--------|-------------|------|
+| 1. Extract | `engines/dream_engine.py` | Pull reasoning traces from state.db | No |
+| 2. Distill | `engines/dream_engine.py` | LLM pattern extraction + counterstories | Yes |
+| 3. Build | `engines/dream_engine.py` | Construct DreamCandidate objects | No |
+| 4. Write | `engines/dream_engine.py` | JSONL + wisdom.md render | No |
+| 5. CHRON bridge | `dream_engine/dream_chron_bridge.py` | Compute p_predictive from verified predictions | No |
+| 6. Scar verification | `engines/dream_engine.py` | Count active scars, attach metadata | No |
+| 7. Deliver | `engines/dream_engine.py` | Telegram AAA group summary | No |
 
 ## The Five Dream Functions (Eureka Insights)
 
@@ -313,14 +353,22 @@ One-paragraph summary of the federation dream design.
 - F13 ratification needed for threshold/cap/cadence changes.
 ```
 
+## Pitfalls
+
+- **frequency ≠ wisdom:** p_occurrence is session frequency, not epistemic confidence. A pattern appearing in 8/8 sessions can have p_predictive=0.2 when tested against outcomes. Never treat the occurrence score as validation.
+- **Path drift:** wisdom.md has existed at two paths (`/root/AAA/dream-engine/wisdom.md` and `/root/AAA/knowledge-graph/dream-engine/wisdom.md`). Always stat the file before claiming its date. The canonical output is `knowledge-graph/dream-engine/`; the old path is now a symlink.
+- **CHRON domain gap:** CHRON predictions are domain-specific (currently XAUUSD trading). Dream candidates about technical/governance patterns get p_predictive=null because no matching predictions exist. The bridge reports the gap honestly — null means 'untested', not 'absent'.
+- **Compression drift:** MDL pressure makes abstractions smaller, but reality has exceptions. Every candidate carries `scope_boundary` (where it does NOT hold) to prevent premature universalization.
+- **Self-certification is forbidden:** Dream Engine may generate candidates. Dream Engine may not certify candidates. Kamoi 2024: self-correction unreliable without external feedback.
+
 ## References
 
-- `/root/AAA/dream_engine/SKILL.md` — engine operating skill (canonical)
-- `/root/AAA/dream_engine/DESIGN.md` — engine design
-- `/root/arifOS/arifosmcp/migrations/001_memory_schema.sql` — canonical memory schema
-- `arXiv:2606.03979` — Behrouz et al., *Language Models Need Sleep*
-- `PMC3079906` — Wamsley & Stickgold, *Memory, Sleep and Dreaming: Experiencing Consolidation*
-- `arXiv:2504.13171` — Letta team, *Sleep-time Compute*
+- Schema: `/root/AAA/dream_engine/specs/dream_candidate.schema.json`
+- Literature: `/root/AAA/dream_engine/FOUNDATIONS.md` (12 mandatory anchors)
+- Design: `/root/AAA/dream_engine/DESIGN.md`
+- CHRON bridge: `/root/AAA/dream_engine/dream_chron_bridge.py`
+- Memory architecture: `/root/AAA/governance/FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md`
+- Canonical engine skill: `/root/AAA/dream_engine/SKILL.md`
 
 ---
 

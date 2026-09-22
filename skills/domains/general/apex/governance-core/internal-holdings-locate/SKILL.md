@@ -19,6 +19,8 @@ triggers:
   - "no data"
   - "not found"
   - "inventory sweep"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Internal Holdings Locate

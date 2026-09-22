@@ -2,10 +2,16 @@
 id: audit-seal
 name: audit-seal
 risk_tier: low
-floor_scope: [F1, F2, F4, F7]
+floor_scope:
+- F1
+- F2
+- F4
+- F7
 version: 1.0.0
 layer: substrate
-description: "Use when sealing audit decisions or recording constitutional events. Every decision logged. Irreversible decisions sealed. ΔS ≤ 0 on every output. Receipts > narratives."
+description: Use when sealing audit decisions or recording constitutional events.
+  Every decision logged. Irreversible decisions sealed. ΔS ≤ 0 on every output. Receipts
+  > narratives.
 owner: F13 SOVEREIGN
 status: active
 three_axis: true
@@ -30,6 +36,7 @@ ecology_state: WARM
 - **resource_budget**: {'cpu': 'low', 'time_ms': 5000, 'entropy': 'must_decrease'}
 - **audit_surface**: ['seal_count', 'chain_integrity', 'last_seq', 'vault_ref']
 
+
 ## Axis 2: Bridge Connections
 
 - **kernel_verbs**: ['arif_seal', 'arif_compose']
@@ -39,11 +46,13 @@ ecology_state: WARM
 - **inputs**: {'payload': 'string', 'verdict': 'object', 'actor': 'string'}
 - **outputs**: {'seal_id': 'string', 'vault_ref': 'string', 'hash': 'string'}
 
+
 ## Axis 3: Contrast
 
 - **Not**: mem-vault, meta-observe, meta-drift
 - **Distinction**: DECISION audit discipline. mem-vault is STORAGE mechanism. meta-observe is AGENT SELF-MONITORING. meta-drift is SCHEMA change detection.
 - **Trigger conflicts**: fires on decisions and completions; mem-vault fires on storage operations
+
 
 ## Replaces
 

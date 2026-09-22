@@ -29,6 +29,8 @@ triggers:
   - versi
   - lagu asal
   - ai cover
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Music Generation Pipeline

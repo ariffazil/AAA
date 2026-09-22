@@ -6,6 +6,8 @@ tags: [governance, constitutional, f1, f13, pressure, hold, reflex]
 metadata:
   hermes:
     tags: [governance, constitutional, pressure]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Escalation Trajectory Hold

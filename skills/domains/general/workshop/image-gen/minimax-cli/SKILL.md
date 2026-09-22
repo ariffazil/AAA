@@ -8,6 +8,8 @@ metadata:
     category: creative
     requires: [mmx-cli]
     related_skills: [token-plan-image, lightweight-image-generation, mulerouter-media]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # MiniMax CLI (mmx-cli)

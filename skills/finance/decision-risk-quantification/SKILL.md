@@ -11,6 +11,8 @@ triggers:
   - "can you predict"
   - "can AI trade better than humans"
   - a leveraged position, P&L or account screenshot arrives for assessment
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Decision Risk Quantification

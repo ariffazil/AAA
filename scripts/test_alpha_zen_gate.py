@@ -9,8 +9,10 @@ Anchor (W_SCAR provenance): /root/AAA/scripts/chron_events.json
 """
 import copy
 import json
+import re
 import subprocess
 import sys
+from datetime import date, timedelta
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -41,7 +43,42 @@ def case(name: str, mutate, expect: str) -> bool:
     return ok
 
 
-GOOD_CARD = json.loads(GOOD.read_text())
+TODAY = date.today()
+_MON = ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ogos", "Sep", "Okt", "Nov", "Dis"]
+_ISO = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
+_DM = re.compile(r"\b\d{1,2}\s+(?:Sept|Sep|Jan|Feb|Mac|Apr|Mei|Jun|Jul|Ogos|Okt|Nov|Dis)\b", re.I)
+
+
+def _d(d: date) -> str:
+    return f"{d.day} {_MON[d.month - 1]} {d.year}"
+
+
+def make_fresh(card: dict) -> dict:
+    """Re-stamp every source date to TODAY before the suite runs.
+
+    WHY THIS EXISTS — the suite's fixture is a dated CARD FILE, and the gate's own
+    G11 rule expires any priced source older than STALE_DAYS. So a suite that was
+    20/20 on the day it was written decays into failure on a timer: measured
+    2026-09-21, 14/20 with all six failures being positive controls whose fixture
+    had aged past four days.
+
+    A suite that always fails gets ignored, and a gate nobody runs is not a gate —
+    the same rot as a config allow-list that drifts behind the runtime, or a
+    validator that refuses every write. The fix is to re-stamp the fixture at load
+    and let the two G11 cases supply their OWN relative dates, so the rule is still
+    exercised in BOTH directions: an old source must HOLD, a fresh one must PASS.
+    """
+    out = copy.deepcopy(card)
+    for r in out.get("rows", []):
+        for who in ("arif", "syed"):
+            cell = r.get(who) or {}
+            if cell.get("source"):
+                cell["source"] = _DM.sub(_d(TODAY), _ISO.sub(TODAY.isoformat(),
+                                                            cell["source"]))
+    return out
+
+
+GOOD_CARD = make_fresh(json.loads(GOOD.read_text()))
 
 CASES = [
     ("good card passes", lambda c: None, "PASS"),
@@ -75,12 +112,14 @@ CASES = [
     ("empty Syed lane on one row",
      lambda c: c["rows"][4]["syed"].__setitem__("text", ""), "HOLD"),
     # G11 — the parallel lane's failure mode: a real source with a stale number.
-    ("stale price (gold source 17 days old)",
-     lambda c: c["rows"][0]["syed"].__setitem__("source", "Kitco, 1 Sept"), "HOLD"),
+    ("stale price (gold source 30 days old)",
+     lambda c: c["rows"][0]["syed"].__setitem__(
+         "source", f"Kitco, {_d(TODAY - timedelta(days=30))}"), "HOLD"),
     ("price with an undated source",
      lambda c: c["rows"][0]["syed"].__setitem__("source", "Kitco"), "HOLD"),
     ("fresh price still passes",
-     lambda c: c["rows"][0]["syed"].__setitem__("source", "JM Bullion, 17 Sept"), "PASS"),
+     lambda c: c["rows"][0]["syed"].__setitem__(
+         "source", f"JM Bullion, {_d(TODAY)}"), "PASS"),
     # G12 — the frozen countdown, found in both this card AND a parallel engine.
     ("prose carries a frozen day-count",
      lambda c: c["rows"][2]["arif"].__setitem__(

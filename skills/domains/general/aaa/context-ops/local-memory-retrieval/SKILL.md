@@ -1,6 +1,8 @@
 ---
 name: local-memory-retrieval
 description: "Use when recalling, writing, or adjudicating memory — check disk first."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Local Memory Retrieval
@@ -255,6 +257,16 @@ Seven rules that hold for every queue:
 - **Answered too fast:** replying from the injected memory block without a disk sweep misses corrections, artifacts, and newer consolidations. The injected block is a digest, not the record.
 - **Nickname miss:** grepping only the formal name returns nothing while the entity lives in the stores under its handle. Always search both.
 - **Truncated grep context:** `grep -io '.\{200\}X.\{300\}'` windows cut mid-sentence — read the file when surrounding meaning matters.
+- **Grep over a multi-megabyte cache can outlast the command timeout.** Cached tool output from an older
+  session is often one enormous single-line blob, so an unanchored `grep -oE` rescans megabytes per
+  match and dies on the clock rather than on the data. Prefer the small curated reference file covering
+  the same territory — it is usually the distilled version of exactly that cache — or bound the search
+  (`timeout`, `head -c`, a tighter pattern) before pointing grep at a cache. A timeout is not "no match":
+  report which store you could not read.
+- **A figure the person can screenshot is worth more than any store you can grep.** When the recall
+  target is a number about their own money, body or work, say what the record holds and ask them for the
+  receipt — the primary is in their pocket, and reconciling three derived estimates against each other
+  burns their patience before it produces anything checkable.
 - **Lane card skipped:** a lane card can carry a standing veto (the sovereign's own falsification of a reading, and the pronoun he wants used for that person). Briefing past it re-opens a question he already settled and makes the agent look like it kept score. Read the card before the sweep; reprint his reads as his.
 - **Sibling session already answered:** in a multi-session runtime the same question can land in two live sessions minutes apart, producing two identical sweeps and two deliveries. Before a long sweep, query `state.db` for that user message in the last ~30 minutes; if a sibling already answered, verify its facts rather than re-deriving them.
 - **Discovery crowded out by the live session:** when the query is built from words the user JUST typed, FTS discovery returns the current session as the top hit and the older session holding the answer may be absent from the result set entirely — a discovery call that mirrors the live message is not evidence of absence. Query `state.db` `messages` directly with a distinctive keyword from the earlier discussion (`SELECT id, session_id, role, content FROM messages WHERE content LIKE '%<keyword>%' ORDER BY id`), then take the `session_id` and read that session whole. `session_id` is date-prefixed (`YYYYMMDD_HHMMSS_hash`), so the id itself names the day — no need to hydrate a session to date it.

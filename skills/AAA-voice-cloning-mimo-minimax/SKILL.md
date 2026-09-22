@@ -23,6 +23,8 @@ tags:
   - identity
   - f13
 owner: AAA
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # AAA · Voice Cloning — MiniMax (mimo-v2.5-tts-voiceclone)

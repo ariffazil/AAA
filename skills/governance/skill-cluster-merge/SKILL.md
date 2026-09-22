@@ -7,6 +7,7 @@ risk_tier: low
 floor_scope: [F2, F11]
 autonomy_tier: T1
 ecology_state: WARM
+capability_tier: fed-agent-subagent
 ---
 
 # Skill Cluster Merge

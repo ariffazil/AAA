@@ -15,6 +15,8 @@ metadata:
   hermes:
     tags: [governance, epistemic, hallucination, verification]
     related_skills: [verify-gate, observe-ground, claim-receipt-discipline]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Synthesis Verification Gate

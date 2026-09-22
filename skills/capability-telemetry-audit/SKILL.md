@@ -12,6 +12,8 @@ triggers:
   - "is this agent actually closing its loops"
   - "audit your own behaviour"
   - "skill bloat"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Capability Telemetry Audit

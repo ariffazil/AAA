@@ -4,6 +4,8 @@ description: Sleep screenshot analysis. Recovery verdict + next move.
 version: 1.0.0
 tags: [sleep, smartwatch, garmin, recovery, gym, biometrics]
 forged: 2026-08-24
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Sleep Data Screenshot Interpretation

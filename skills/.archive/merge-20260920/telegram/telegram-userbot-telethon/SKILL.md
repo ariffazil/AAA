@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [telegram, telethon, userbot, mtproto, relay]
     related_skills: [openclaw-channel-config, hermes-telegram-group-setup, telegram-group-relay]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Telegram Userbot (Telethon)

@@ -17,6 +17,8 @@ triggers:
   - "reality pulse"
   - "my-reality"
 verified_on: 2026-08-15
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # my-reality — Malaysia Reality Adapters (P0)

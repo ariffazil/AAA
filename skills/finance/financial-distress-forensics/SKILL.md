@@ -3,6 +3,8 @@ name: financial-distress-forensics
 description: "Use when assessing if a listed company can fail."
 version: 1.0.0
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # financial-distress-forensics

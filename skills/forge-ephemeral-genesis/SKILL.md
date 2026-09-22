@@ -12,6 +12,8 @@ tags: [ephemeral, genesis, capability-metabolism, tool-generation, anti-accumula
 scope: all_agents
 priority: 75
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FORGE EPHEMERAL GENESIS — Capability Metabolism Engine

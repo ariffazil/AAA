@@ -38,6 +38,8 @@ triggers:
   - "verify this report"
   - "second reader"
   - "peer report audit"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Live Probe Audit Pattern
@@ -275,6 +277,9 @@ An external review of "what the agent said" samples one session from many. Match
 - Never read "no data" as "all clear"
 - Never read exit status through a pipeline (`cmd | tail; echo $?` prints `tail`'s status)
 - Never commit to a count that disagrees with the census until proven otherwise — re-run with `-L`, with `-name` filter, against the census
+- **Vision-model audits can hallucinate bugs.** A vision report claiming "template overlap" or "truncated text" must be checked against the actual source (CSS, raw text, file size) before patching. "Fixing" a phantom bug is itself a defect — it adds entropy and pollutes the diff. Probe the source file the vision reported on; if the bug isn't there, log the false positive and move on.
+- **A log is not a memory.** A `cycles.jsonl` accumulating N records has no memory until someone computes `f(today, t-N)`. Without a comparator, drift across days goes un-noticed even when the writes are honest. Every append-only log that claims to feed a learning loop needs at least one query path; if no consumer is wired, the log is archaeology.
+- **Idempotent writes + stable content-hash IDs close recursive writes.** Use `MERGE` (graph) or `INSERT ... ON CONFLICT DO NOTHING` (SQL) keyed by `sha256(content)[:8]`. This makes re-emission non-destructive and lets later runs query earlier ones by ID without schema join keys.
 
 ## Common Drift Patterns (compressed)
 
@@ -304,3 +309,4 @@ An external review of "what the agent said" samples one session from many. Match
 
 Archived session archaeology and detailed worked examples in `references/`:
 - `references/archive-session-specific-audits.md` — Reader-dormancy, hash-chain, invariant-preservation, env-wiring, agent-card alignment, cross-witness session, autonomous deployment, code-edit receipt, cron telemetry, and unification receipt worked examples
+- `references/reality-first-gap-repair-receipt.md` — Receipt shape for sealing a multi-gap repair on a running cron/organ. Five-question format; anti-patterns.

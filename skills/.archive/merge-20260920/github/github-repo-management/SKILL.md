@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [GitHub, Repositories, Git, Releases, Secrets, Configuration]
     related_skills: [github-auth, github-pr-workflow, github-issues]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GitHub Repository Management

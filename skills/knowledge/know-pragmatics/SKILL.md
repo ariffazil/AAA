@@ -9,6 +9,7 @@ capability_tier: federation-substrate-knowledge
 floor_scope: [F1, F7]
 tags: [pragmatics, reversibility, effort-value, practice-vs-theory]
 triggers: ["pragmatic", "in practice", "actually works", "cheapest", "reversible", "good enough", "effort vs value"]
+ecology_state: WARM
 ---
 
 # Know-Pragmatics — Practical Substrate

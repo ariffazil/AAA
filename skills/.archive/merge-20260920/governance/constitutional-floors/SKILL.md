@@ -46,6 +46,8 @@ trigger:
   - "F13 veto"
   - "floor enforcement"
   - "constitutional gate"
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Constitutional Floors (F1–F13) — Full Ecosystem

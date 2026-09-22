@@ -19,6 +19,8 @@ triggers:
   - "position sizing"
   - "risk management"
   - "execute trade"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agentic Trading Companion — ACTIVE NODE

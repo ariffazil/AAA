@@ -7,6 +7,8 @@ category: governance
 tags: [audit, controls, gates, hooks, enforcement, evidence, dead-ends]
 floors: [F2, F4, F11, F13]
 autonomy_tier: T1
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Control Reality Audit
@@ -26,11 +28,75 @@ autonomy_tier: T1
 | **THEATRE** | cannot withhold, ever | always exits 0 · advisory-only · dry-run by default · no caller · records and proceeds |
 | **DISABLED** | could withhold, is configured off | off in config, or behind a flag/env var nothing sets |
 | **BROKEN** | crashes or never executes | syntax error, missing module, unset shell variable, wrong path |
+| **FAIL-OPEN** | its *availability handler* permits | the control cannot withhold while degraded, and returns a pass-shaped verdict — `except ImportError: passed=True`, `|| true`, `2>/dev/null`, a default that permits when a flag was never set |
 | **REAL** | can and does withhold | a *recorded* block exists, with a timestamp |
 | **ENFORCED-BY-NOBODY** | can withhold, is never consulted | the control is real, the *platform* never asks for its verdict — its check is absent from the set that gates the protected branch |
 | **UNPROVEN** | no evidence either way | the default when you cannot show it |
 
 Default to **UNPROVEN**. `"nothing failed"` is not `"it works"` — a control that cannot fail produces no failure signal by construction, so its silence carries no information.
+
+### The fail-open branch — the permit that looks like a pass
+
+A control can be REAL in normal operation and still **permit** whenever it is degraded. The
+availability handler is where this hides, and the four tests below do not reach it: liveness asks
+whether the control runs, not what it returns **when it cannot**.
+
+```bash
+grep -n 'except ImportError\|except ModuleNotFoundError\|except: *pass\||| true\|2>/dev/null' <control-file>
+```
+
+Read what each handler **returns**, not that it exists. A handler yielding a pass-shaped result
+(`passed=True`, `verdict: OK`, `exit 0`, with a reason such as *"not available — soft pass (degraded
+mode)"*) is the class: the control has converted **not evaluated** into **evaluated and clean**, and
+from the outside the receipt still looks like a pass — same shape, same downstream reads.
+
+- **Compare sibling controls in the same file.** Where one member of a gate family fails closed on
+  unavailability and another fails open, that inconsistency is citable evidence on its own: it shows
+the author already knew the correct posture. Name both findings with line numbers in one sentence —
+the comparison carries more weight than either finding alone.
+- **Classify LATENT vs LIVE before reporting it, and carry the probe.** Execute the availability path
+  and print the result. A defect that fires only when an install is partial is LATENT, and saying so
+  is part of the finding: framed as a live outage it triggers a wrong deploy decision, framed as
+  latent alone it gets ignored. The deliverable is the measured pair — *fires when X; does not fire
+  today because Y*.
+- **Report the blast radius and hand the trade back.** Failing closed on a primary gate converts a
+  silent availability fault into a hard refusal: every action that used to flow now holds. That is
+  usually the correct posture, but it is consequence-bearing and the repair is a separate authorized
+  act (§8) — deliver blast radius plus the revert path, not an applied fix.
+
+### The announced fail-closed that is fail-open to a pre-seeded default
+
+A sharper variant, and harder to see because the control *detects and reports correctly*. A
+governance gate compares a pinned commit against the running version, sets a violation flag, logs
+`Governance in fail-closed mode`, and returns early without loading the on-disk policy overrides.
+Every step is honest. The system is still permissive, for two reasons that must be checked
+separately:
+
+1. **The fallback default survives the early return.** Where the constructor seeds a permissive
+   default *before* the loader runs, returning early drops the overrides and leaves the default in
+   force. Read the constructor's ordering against the loader's return path: `seed default → load →
+   return-on-violation` means violation yields the default, not a deny. Then read what the default
+   actually grants — an `allow_by_default: true` sovereign policy is fail-open wearing a fail-closed
+   log line.
+2. **The violation flag may have no caller.** Grep the accessor (`isPinViolated`) across source *and*
+   build output. A flag that is written, exposed, and never read blocks nothing; the log message is
+   then the only artefact of the violation, and a log message is not a control.
+
+```
+grep -rn "<flagAccessor>" src/ dist/ | grep -v '\.d\.ts'   # definition-only = dead flag
+```
+
+**Do not overcorrect in the other direction.** Other layers can be genuinely load-bearing while the
+policy layer is inert — provenance/authority bands often run independently of policy loading, so an
+unverified caller may still be denied the mutation. Read the audit log's actual verdicts and their
+reason strings before describing the blast radius: name *who* gains what when the policy layer goes
+inert, not "everything is open". The precise statement (verified actors fall back to allow-by-default;
+unverified callers are still held by the authority layer) is the actionable one, and it is also the
+one that survives a peer's cross-check.
+
+**A self-declared posture is a claim about the fallback path, not about the happy path.** Whatever a
+gate's log says it does when violated, the verdict comes from what the code returns after the
+violation branch — read that branch to its return value.
 
 ## 2. The four liveness tests — run all four, per instrument
 
@@ -47,6 +113,71 @@ ls -l <output-artifact>; stat -c %y <log>   # 4. HAS IT EVER PRODUCED OUTPUT?
 - **#4** via mtime and its own output artifacts, never by running it. If the trigger file is written by the very probe you are running, its mtime is not liveness evidence — disclose that.
 - A scheduled audit that prints a critical verdict on every run while containing zero exit statements is the loudest theatre there is: maximum alarm signal, minimum consequence.
 - A guard whose refusal requires an opt-in `--strict`/`--enforce` flag that no caller passes is a brake nobody pulls.
+
+### The policy-file variant — enforcement declared inside the artifact
+
+Test #3 above is written for an *executable* control. When the control is a **policy or data file**
+(yaml, json, a mapping table), the test becomes: grep for the code that **loads** it — not for the
+policy's name, and not for the enforcement points it names.
+
+**Measured:** a federation behaviour map declared in its own header that enforcement lived across
+four named systems, and its rules stated that every agent MUST load it at session start, that the
+state machine SHALL track a per-agent violation count, that a first violation becomes DEGRADED plus
+an alert, and that the cockpit SHALL surface the status. A grep for **each named enforcement point**
+across scripts, hooks, the build tree and the server returned **zero** hits. The file had been frozen
+for two months. The header is the claim; the loader is the control — a policy declaring enforcement
+it does not have is the same defect as a script that always exits 0, and it is worse than an absent
+policy because its existence gets cited as coverage.
+
+**The repair is never "add more rules to the policy."** When an unloaded policy is found, the
+tempting answer — enumerate every prohibition, ratify the lot, file it — adds controls that cannot
+fire and produces the feeling of governance with none of the mechanism. Either (a) shrink the
+document to the rules a mechanism can check **today** and demote the rest to advisory doctrine, or
+(b) build the loader the header already promises. Prefer (a) when no mechanism exists and nobody
+owns building one. **A small canon that fires beats a large canon that is silent.**
+
+### The aliveness ratio — count the laws AND the firings
+
+Inventory is not liveness. Measure both sides of the same claim in one sitting:
+
+```bash
+# laws: rule-shaped lines across the canon directories
+grep -rEc '^[[:space:]]*([-*][[:space:]]*)?(HARAM|WAJIB|[0-9]+\.)[[:space:]]' <canon-dirs>
+# firings: entries in the only ledger of actions actually denied, held, or blocked
+wc -l < <mutation|violation|denial ledger>
+```
+
+**Measured:** 4,628 rule-shaped lines across 469 files against **4** entries in the only ledger of
+things that actually fired — roughly one firing per 1,157 laws, newest entry four days old. Report
+the ratio, not the two numbers separately; the ratio is the finding.
+
+Then ask the questions a governed system must be able to answer about itself: which rule **never**
+fires, which fires constantly, which rules conflict, how many HOLDs later proved unnecessary, how
+many ALLOWs produced a bad outcome. In the measured case every one was unanswerable — not because
+the data was lost, but because **no per-rule counter and no outcome binding existed anywhere**. That
+absence is itself the finding, and it is the one to report first: a constitution that cannot say
+which of its laws has ever fired is being read as coverage while functioning as literature.
+
+**The test for any proposed control: name the recorded event that proves it fired.** If no such
+event can be recorded, it is a sentence, not a control. Corollary — governance complexity has a
+budget: past some size no agent, including the author, can reason about the system, and every later
+reader pays the reading cost on every session.
+
+### A metric that penalises HOLD manufactures the fake-green it exists to prevent
+
+When a withheld, unsealed, or HOLD outcome is scored as debt against a threshold, every actor under
+that score optimises to **close** rather than to withhold. This is not a model defect; it is the
+incentive working as designed.
+
+**Measured coexistence:** a kernel correctly returned `HOLD` / `OBSERVE_ONLY` for cryptographically
+unverified authority — the desired behaviour — while a health metric scored unsealed sessions
+against a small threshold and the autonomy doc listed "leave completed work unsealed" as a fault.
+The runtime taught caution; the scoreboard taught closure. **The scoreboard is what gets read.**
+
+Classify it as a control failure, not a discipline problem: a governed system must be able to say
+HOLD without penalty, or the measurement produces exactly the false passes the gates were built to
+stop. When auditing, pair every "unsealed / open loop" count with the question *did any of these
+deserve to stay open?* — and if the metric cannot answer, the metric is the defect.
 
 ## The enforcement layer — who is required to consult it
 
@@ -90,6 +221,15 @@ same invocation**:
   red stops carrying information and reviewers learn to ignore it. That is a different finding from
   "the gate is broken": classify it as *cannot tell the sample apart from the real thing*, and note
   that fixing the **detector** restores the signal while suppressing the **fixture** destroys evidence.
+- **A gate whose failure is guaranteed by construction is not measuring integrity.** Measured: an
+  integrity manifest pinned a fixed digest over a file the system was designed to append to, so every
+  legitimate write read as `FAILED` — 3 of 63 entries, all of them expected-to-move files, none of them
+  tampered. Before reporting tamper, classify the *evidence class*: an artifact that is immutable is
+  correctly pinned by a frozen hash; an artifact that **must change** is verified by a **chain**
+  (`prev_hash` / `this_hash` linked across records), never by a fixed digest. Getting the class wrong
+  yields a permanent false alarm with the same consequence as a permanent pass — the reader learns to
+  ignore both. The manifest is itself a control: grep what regenerates it and whether its pin is
+  refreshed on the guarded artifact's own cadence.
 - Read a red gate in **its own log**. Fetch the failed job's output and quote the lines it actually
   flagged before naming a cause; a job that pools several unrelated scopes into one pass/fail verdict
   must be reported as such, because its single red cannot say which scope failed.
@@ -168,6 +308,8 @@ Any figure in a doctrine or report that is load-bearing for its argument:
   success. A skipped or `action_required` run is not a pass, and one permanently-red check turns the
   headline into an overstatement.
 - **Do not fix what you audit.** Repairing mid-audit destroys the evidence and puts the auditor in the executor's seat. Report; the repair is a separate authorized act.
+- **Enforcement coverage is measured over every PATH, not over every actor who obeys.** A control that can withhold is still not enforcement while another route reaches the same state unchecked. The test is not "did it block me?" but **"do all paths to this state pass through it?"** — if the actor bound by it can step one directory over, use a different tool, or write through the filesystem and land the identical change, coverage is below 1.0 and the check governs **conduct**, not mutation. Measured instance: an in-tool write was refused by a content scanner for findings that lived in the artefact's own pre-existing text, while a plain file write in the same session landed the same edit with no scan at all. Classify the uncovered paths and report coverage **as a fraction with the paths named** — never as `ENFORCED` because it refused you, and never as `ABSENT` because it did not cover everything. *A control that only binds the actor who chooses to comply is a convention wearing a gate's clothes.*
+- **When you are the actor that found the gap, the bypass is disclosed, never used quietly — and never earned by rewording.** Two failure directions, and both are defects: (a) reword the payload until the scanner stops complaining, which converts a governance control into an evidence-loss mechanism (§8 self-referential gate) and hides a real finding; (b) route around it and report the work as clean. The honest sequence: report the blocked state with the **exact blocked operation**, take the change through a path your authority actually covers, note that the two are equivalent for this payload, and put the bypass in the receipt so the next reader is not misled by a clean-looking result. **A control quietly routed around is worse than the refusal it replaced**, because the refusal at least produced a signal.
 
 ## 9. Running a batch audit across many surfaces
 

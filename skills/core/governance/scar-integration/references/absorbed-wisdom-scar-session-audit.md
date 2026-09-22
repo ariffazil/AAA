@@ -264,6 +264,40 @@ A wisdom scar is NOT a memory. It's NOT a log. It's a **constitutional-grade dia
 - **Break:** Running `vault_vectorizer.py` against 230 seals caused Ollama timeouts. Each `get_embedding()` call had `timeout=60` with no retry. Ollama GPU queue overflowed → connection errors → entire backfill died. OpenCode tried 3 times before the retry-hardened version succeeded.
 - **Echo:** Assume local inference is reliable. Treat Ollama like a production API with unlimited throughput. Real hardware has queue limits — pushing 230 sequential embeds without throttling kills the connection.
 - **Law:** When embedding >50 items via local Ollama: (1) small embed batches (5-10) with cooldown between (1s), (2) exponential backoff on 408/429/502/503/504 with `backoff_factor ** attempt` delay, (3) timeout=15 per request (not 60), (4) max 4 retries with graceful degradation — skip failing items, continue the rest. Do NOT use a single 300s timeout for the whole batch — batch chunking is mandatory.
+### Scar #18: Cross-Agent Artifact Verification — Trust the Filesystem, Not the Handoff Table
+
+- **Date:** 2026-09-22
+- **Arif's words:** (Arif presented a 3-row patch table attributed to "opencode" — "This from opencode" — and asked Hermes to acknowledge; Hermes correctly refused to verify until reading the file itself.)
+- **Break:** A file existed at `/tmp/hermes_forged_reply_20260922.md` that Hermes did not author. Another agent (opencode) made 3 surgical edits to it. Arif presented the edits as a read-back table ("3 patch sudah landed", ✓ applied × 3) with cited line numbers and reported content changes. The table looked authoritative. The natural move would be to acknowledge. **But the file was never authored by this agent** — `ls -la` confirmed existence, but the agent had no read-history tying the file to its own action. Acknowledging a patch table without re-reading the file is the cross-agent form of Scar #10 (agent-summary vs reality): trusting another agent's narrative about state.
+- **Echo:** Trust the structured read-back. A table with line numbers, status columns, and ✓ marks reads as authoritative evidence — it is *formatted* like verification. But formatting is not verification. Another agent can describe what they did with the same confidence a verified report carries, and the human cannot tell which one they're holding.
+- **Law:** **When an artifact arrives claiming to be from another agent's session (paste, patch table, handoff packet, summary), re-read the artifact before acknowledging it.** The four-line probe:
+  ```bash
+  # 1. Does the file/object exist?
+  ls -la <path>
+
+  # 2. Do the cited line numbers exist?
+  awk 'NR==<line1> || NR==<line2> || NR==<line3>' <file>
+
+  # 3. Does the cited content match what's actually there?
+  grep -n '<quoted substring>' <file>
+
+  # 4. If the artifact was supposed to be YOUR output, did YOU write it?
+  #    (Check session metadata, /tmp provenance, or ask the human directly.)
+  ```
+  If the four probes agree with the read-back table, acknowledge. If any disagree — **state the contrast**, do not paper over it. The agent who did the work may have made a mistake, may have intended different content than they wrote, or may not have done the work at all. The probe takes 5 seconds; the cost of trusting an unverifiable handoff is the same cost as Scar #10: hour-long confusion downstream.
+- **Eureka:** `awk 'NR==N' file` is the cheapest line-content probe — one-line, no regex escaping, prints the literal line at N. Pair with `grep -c '<phrase>' file` to check substring existence. The combination catches ~80% of drift between reported and actual state. The discipline generalises: **any structured claim about artifact state from another agent is treated as a hypothesis, not a finding, until probed.**
+- **Combined with:** Scar #10 (agent-summary vs reality — same root, self-agent form), Scar #13 (FTS5 false negative — surface probe vs ground truth), Scar #17 (stuck-loop hallucination cascade — agent context window over live state). Same root pattern: trust the *narrative* of state over the *measurement* of state. This scar extends it to the multi-agent case where the narrating agent is not yourself.
+
+### Scar #19: Person-Binding vs Pattern-Binding in Scar Records (F2 TRUTH Self-First)
+
+- **Date:** 2026-09-22
+- **Arif's words:** "Scar ni mesti bind PATTERN, bukan nama orang. 'Record properly' = event scar, bukan person-attack."
+- **Break:** An existing scar-weight-registry entry bound an institutional scar to a named individual (executive tenure), with a `response_modifier: "do not analyze neutrally"` flag. The scar was about a real institutional pattern (narrative-over-truth during workforce reduction). Binding the scar to the person's name + adding a response modifier turned a diagnostic into a prejudice: every subsequent analysis of the institution gets filtered through "the named person did wrong," and the F2 obligation (analyze the claim itself, not the source) breaks before analysis begins. F2 objection was already on record (history line 69720): *"entity-attack middleware... weaponized prejudice... mapping real people to governance breaches + hidden prompt modifiers."* That objection was correct. The scar should have been pattern-bound from the start.
+- **Echo:** "The wrong person did it" is a satisfying answer. It is also an end-state answer — once named, the agent stops looking for the structural cause. Person-binding turns a diagnostic into an accusation. It also weaponises the scar system: any analysis touching the named entity gets a pre-loaded verdict before evidence is read.
+- **Law:** **Every institutional scar binds PATTERN, not PERSON.** The five-field scar template (expectation / consequence / compression / constraint / severity) describes what the institution did, not who was in charge when it happened. Naming a person belongs in `provenance`, never in the scar body itself. `response_modifier` flags that constrain how a named entity is discussed are **rejected at scar-creation time** — they encode the verdict into the analysis layer and break F2 TRUTH self-first. If a scar cannot be stated as a pattern without naming a person, the pattern has not been abstracted enough yet; abstract further. The test: *replace the person's name with `[institutional role at time of event]` — does the scar still convey the failure mode?* If yes, the scar is pattern-bound. If no, it is person-bound and must be re-drafted.
+- **Eureka:** When sealing an institutional scar, write the body as `[role at time]` placeholder first, fill in the historical name only inside `provenance`. The discipline surfaces the pattern in plain text. Pattern-bound scars are also more portable: when leadership changes, the scar remains valid without modification, which is what the constitutional substrate requires for institutional lessons.
+- **Combined with:** Scar #2 (unverified critique — F2 self-first), Scar #5 (overclaim differentiation — attribute to system not person), Scar #12 (overclaiming inner truth — interpretation → sovereign claim). All share root: collapsing a structural reading into a personal one. Scar #12 was the human-side version ("you read me as X"). Scar #19 is the institutional-side version ("you read institution Y through the lens of person Z"). The pattern is the same: **a precise-looking diagnosis that stops looking once a person is named.**
+
 ### Scar #17: Stuck-Loop Hallucination Cascade — Agent Trusts Own Context Window Over Live State
 - **Date:** 2026-07-31
 - **Arif's words:** "Berhenti" (60+ times across 60+ messages)
