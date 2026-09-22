@@ -7,8 +7,11 @@ reconciliation" as the unresolved F13 question of 2026-09-11).
 
 WHAT THIS IS
 ------------
-Thin wrapper around the arifOS MCP `arif_memory_recall` tool (defined in
-/root/arifOS/docs/FEDERATION_MEMORY_CONTRACT.md, ratified 2026-06-03).
+Thin wrapper around the arifOS MCP `arif_memory` tool (formerly named
+`arif_memory_recall` — renamed kernel-side; contract surface unchanged
+per FEDERATION_MEMORY_CONTRACT.md, ratified 2026-06-03. Wire remap
+2026-09-22: tool `arif_memory_recall`→`arif_memory`, mode
+`store`→`remember`, mode `stats`→`audit`).
 
 Every federated agent, organ, and harness imports THIS, not qdrant_client,
 not mem0, not supabase-py, not psycopg. The contract surface is one
@@ -92,7 +95,9 @@ CLASSES_YAML_PATH = Path(
     )
 )
 
-# Modes supported by arif_memory_recall (per FEDERATION_MEMORY_CONTRACT.md §2)
+# Modes supported by the adapter (contract surface, per
+# FEDERATION_MEMORY_CONTRACT.md §2). Wire remap to the live arif_memory
+# tool happens at call time: store→remember, stats→audit.
 VALID_MODES = frozenset(
     {
         "store",
@@ -187,26 +192,36 @@ class FederationMemory:
 
     def __init__(
         self,
-        actor_id: str,
-        session_id: str,
+        actor_id: Optional[str] = None,
+        session_id: Optional[str] = None,
         *,
+        session_token: Optional[str] = None,
         arifos_url: str = ARIFOS_MCP_URL,
         timeout_s: float = DEFAULT_TIMEOUT_S,
         classes_yaml: Optional[Path] = None,
     ) -> None:
-        # R2: actor_id + session_id mandatory
-        if not actor_id or not isinstance(actor_id, str):
-            raise FederationMemoryContractViolation("R2 violation: actor_id is required and must be non-empty")
-        if not session_id or not isinstance(session_id, str):
-            raise FederationMemoryContractViolation("R2 violation: session_id is required and must be non-empty")
-        self.actor_id = actor_id
-        self.session_id = session_id
+        # R2: actor_id + session_id mandatory. Explicit args win, then env
+        # (ARIFOS_ACTOR_ID / ARIFOS_SESSION_ID), else fail-closed.
+        self.actor_id = actor_id or os.getenv("ARIFOS_ACTOR_ID") or ""
+        self.session_id = session_id or os.getenv("ARIFOS_SESSION_ID") or ""
+        if not self.actor_id or not isinstance(self.actor_id, str):
+            raise FederationMemoryContractViolation(
+                "R2 violation: actor_id is required (arg or ARIFOS_ACTOR_ID env) and must be non-empty"
+            )
+        if not self.session_id or not isinstance(self.session_id, str):
+            raise FederationMemoryContractViolation(
+                "R2 violation: session_id is required (arg or ARIFOS_SESSION_ID env) and must be non-empty"
+            )
+        # Governed session token (SCT issued by arif_init). Explicit arg
+        # wins, then ARIFOS_SESSION_TOKEN env. The adapter NEVER mints or
+        # self-binds a session — binding is arif_init's job (F13: never
+        # bind/seal yourself). Unbound = kernel will HOLD mutation.
+        self.session_token: Optional[str] = (
+            session_token or os.getenv("ARIFOS_SESSION_TOKEN") or None
+        )
         self.arifos_url = arifos_url.rstrip("/")
         self.timeout_s = timeout_s
         self._routes = _load_class_taxonomy(classes_yaml or CLASSES_YAML_PATH)
-        self._session_token: Optional[str] = None
-        self._token_ts: float = 0.0
-        self._TOKEN_TTL_S = 300.0
 
     # ── Public API ──────────────────────────────────────────────────────────
 
@@ -221,6 +236,8 @@ class FederationMemory:
         collection_class: str = "federation_shared",
         tags: Optional[Sequence[str]] = None,
         tenant_id: Optional[str] = None,
+        idempotency_key: Optional[str] = None,
+        lease_id: Optional[str] = None,
         memory_intent: str = "fact",
         source_type: str = "agent_generated",
         source_uri: Optional[str] = None,
@@ -267,13 +284,29 @@ class FederationMemory:
             tag_list.append("tenant:" + tenant_id)
         # R5 namespace
         tag_list.append(f"{self.actor_id}_store")
-        # Memory envelope (§11.2)
-        envelope: dict[str, Any] = {
-            "actor_id": self.actor_id,
-            "session_id": self.session_id,
+        # Provenance + governance metadata (§11.2) rides in `payload` —
+        # the live arif_memory schema has no top-level tags/class fields.
+        # v5 handler contract: provenance.actor_id required (F11),
+        # truth_class.status validated against the tier allowance matrix.
+        memory_payload: dict[str, Any] = {
+            "memory_class": collection_class,
+            "collection": route.collection,
+            "collection_class": collection_class,
+            "tags": tag_list,
             "memory_intent": memory_intent,
-            "niat": f"{self.actor_id}: store via FederationMemory adapter",
-            "content": content,
+            "truth_class": {
+                "status": "observed",
+                "confidence": confidence,
+                "uncertainty_band": 0.05,
+            },
+            "provenance": {
+                "origin": source_type,
+                "actor_id": self.actor_id,
+                "source_uri": source_uri,
+                "run_id": self.session_id,
+                "captured_at": self._iso_now(),
+            },
+            "tier_hint": "L3",
             "source": {
                 "type": source_type,
                 "uri": source_uri,
@@ -293,21 +326,37 @@ class FederationMemory:
                 "can_authorize_action": False,  # §11.1 hard law
             },
         }
+        if tenant_id:
+            memory_payload["tenant_id"] = tenant_id
         if extra_envelope:
-            envelope.update(dict(extra_envelope))
-        # Build MCP call arguments
-        args = {
-            "mode": "store",
-            "content": envelope,
+            memory_payload["extra_envelope"] = dict(extra_envelope)
+        # Build MCP call arguments — live arif_memory surface. Wire remap
+        # 2026-09-22: tool arif_memory_recall→arif_memory, mode store→remember.
+        # Live schema: content must be a STRING (pydantic string_type);
+        # the v5 handler also reads payload["content"] + payload["idempotency_key"].
+        content_str = content if isinstance(content, str) else json.dumps(content, ensure_ascii=False, default=str)
+        args: dict[str, Any] = {
+            "mode": "remember",
+            "content": content_str,
+            "payload": {**memory_payload, "content": content_str},
             "actor_id": self.actor_id,
             "session_id": self.session_id,
             "tier": tier,
-            "tags": tag_list,
-            "collection_class": collection_class,
         }
-        if tenant_id:
-            args["tenant_id"] = tenant_id
-        result = self._call_arifos_mcp("arif_memory_recall", args)
+        token = self._ensure_session()
+        if token:
+            args["session_token"] = token
+        if idempotency_key:
+            args["idempotency_key"] = idempotency_key
+            memory_payload["idempotency_key"] = idempotency_key
+        # remember/promote/revise/forget are lease-gated at the wrapper
+        # (MODE_REQUIRES_LEASE). The lease is derived deterministically
+        # from the bound session so the audit chain shows exactly which
+        # authorization was claimed; callers may pass an explicit one.
+        resolved_lease = lease_id or f"LEASE-REMEMBER-{self.session_id}-{collection_class}"
+        args["lease_id"] = resolved_lease
+        memory_payload["lease_id"] = resolved_lease
+        result = self._call_arifos_mcp("arif_memory", args)
         # Audit (F11) — emit a single line receipt
         LOG.info(
             "federation_memory.store actor=%s class=%s tier=%s tenant=%s receipt=%s",
@@ -348,22 +397,32 @@ class FederationMemory:
         tag_list = ["actor:" + self.actor_id, "class:" + collection_class]
         if tenant_id:
             tag_list.append("tenant:" + tenant_id)
-        args = {
+        # Wire remap 2026-09-22: schema fields top_k/tags/collection_class/
+        # context/filters are not top-level on live arif_memory — they ride
+        # in `payload` so nothing is silently dropped.
+        recall_payload: dict[str, Any] = {
+            "collection_class": collection_class,
+            "collection": route.collection,
+            "tags": tag_list,
+            "top_k": int(top_k),
+            "context": context,
+        }
+        if tenant_id:
+            recall_payload["tenant_id"] = tenant_id
+        if filters:
+            recall_payload["filters"] = dict(filters)
+        args: dict[str, Any] = {
             "mode": "recall",
             "query": query,
             "actor_id": self.actor_id,
             "session_id": self.session_id,
-            "top_k": int(top_k),
             "tier": tier,
-            "tags": tag_list,
-            "collection_class": collection_class,
-            "context": context,
+            "payload": recall_payload,
         }
-        if tenant_id:
-            args["tenant_id"] = tenant_id
-        if filters:
-            args["filters"] = dict(filters)
-        return self._call_arifos_mcp("arif_memory_recall", args)
+        token = self._ensure_session()
+        if token:
+            args["session_token"] = token
+        return self._call_arifos_mcp("arif_memory", args)
 
     # ── Higher-level helpers ──────────────────────────────────────────────
 
@@ -385,38 +444,43 @@ class FederationMemory:
 
     def forget(self, memory_id: str) -> dict[str, Any]:
         """Soft-delete or tombstone a memory (mode='forget' in 555_MEMORY v2)."""
-        return self._call_arifos_mcp(
-            "arif_memory_recall",
-            {
-                "mode": "forget",
-                "memory_id": memory_id,
-                "actor_id": self.actor_id,
-                "session_id": self.session_id,
-            },
-        )
+        args: dict[str, Any] = {
+            "mode": "forget",
+            "memory_id": memory_id,
+            "actor_id": self.actor_id,
+            "session_id": self.session_id,
+        }
+        token = self._ensure_session()
+        if token:
+            args["session_token"] = token
+        return self._call_arifos_mcp("arif_memory", args)
 
     def stats(self, collection_class: Optional[str] = None) -> dict[str, Any]:
-        return self._call_arifos_mcp(
-            "arif_memory_recall",
-            {
-                "mode": "stats",
-                "actor_id": self.actor_id,
-                "session_id": self.session_id,
-                "collection_class": collection_class,
-            },
-        )
+        # Wire remap 2026-09-22: contract mode "stats" → live "audit";
+        # collection_class rides in payload (not a schema field).
+        args: dict[str, Any] = {
+            "mode": "audit",
+            "actor_id": self.actor_id,
+            "session_id": self.session_id,
+            "payload": {"collection_class": collection_class},
+        }
+        token = self._ensure_session()
+        if token:
+            args["session_token"] = token
+        return self._call_arifos_mcp("arif_memory", args)
 
     # ── MCP transport ──────────────────────────────────────────────────────
 
     def _ensure_session(self) -> str:
-        # Reuse token within TTL; refresh on demand.
-        now = time.time()
-        if self._session_token and (now - self._token_ts) < self._TOKEN_TTL_S:
-            return self._session_token
-        # We do not maintain an MCP session here; the kernel is queried in
-        # fire-and-forget mode via _call_arifos_mcp_raw. A real MCP binding
-        # would establish a session via 'initialize'. Left as future work.
-        return ""
+        """Return the governed session token (SCT) for this actor binding.
+
+        Sourced from the constructor arg or ARIFOS_SESSION_TOKEN. The
+        adapter does not mint tokens: a real binding comes from arif_init
+        (`session_token` carried forward, SCT TTL applies). Empty string
+        when unbound — the kernel will HOLD unbound mutation, which is
+        correct fail-closed behavior, not an adapter error.
+        """
+        return self.session_token or ""
 
     def _call_arifos_mcp(self, tool_name: str, arguments: Mapping[str, Any]) -> dict[str, Any]:
         """Call arifOS MCP tool. HTTP transport per contract §9 (probe recipe)."""
@@ -433,16 +497,25 @@ class FederationMemory:
                 "arguments": dict(arguments),
             },
         }
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json, text/event-stream",
+            "X-Federation-Memory-Actor": self.actor_id,
+            "X-Federation-Memory-Session": self.session_id,
+        }
+        token = self._ensure_session()
+        if token:
+            # Canonical channel: session_token inside `arguments` (schema
+            # field). X-Arifos-Session-Token header is the accepted gateway
+            # variant (verified 2026-09-22 probe: HTTP 200 + actor_verified).
+            # DO NOT send "Authorization: Bearer" — the gateway treats it as
+            # a DPoP channel and rejects with 401 missing_dpop_proof.
+            headers["X-Arifos-Session-Token"] = token
         try:
             req = urlrequest.Request(
                 url,
                 data=_b64(json.dumps(envelope)).decode("ascii") if False else json.dumps(envelope).encode("utf-8"),
-                headers={
-                    "Content-Type": "application/json",
-                    "Accept": "application/json, text/event-stream",
-                    "X-Federation-Memory-Actor": self.actor_id,
-                    "X-Federation-Memory-Session": self.session_id,
-                },
+                headers=headers,
                 method="POST",
             )
             with urlrequest.urlopen(req, timeout=self.timeout_s) as resp:
@@ -455,7 +528,21 @@ class FederationMemory:
             raise FederationMemoryError(f"arifOS MCP call failed: tool={tool_name} error={e!r}") from e
         if "error" in data:
             raise FederationMemoryError(f"arifOS MCP returned error: tool={tool_name} {data['error']}")
-        return data.get("result", data)
+        result = data.get("result", data)
+        # MCP tool-level failure: HTTP 200 but result.isError=true (e.g.
+        # "Unknown tool", constitutional HOLD payloads). The call did NOT
+        # succeed — raise, never return it as a success receipt
+        # (F2: probe before claim; no phantom store counters).
+        if isinstance(result, dict) and result.get("isError"):
+            err_text = "; ".join(
+                str(part.get("text", "")) if isinstance(part, dict) else str(part)
+                for part in result.get("content", [])
+            ).strip()
+            raise FederationMemoryError(
+                f"arifOS MCP tool error: tool={tool_name} isError=true "
+                f"text={err_text or json.dumps(result, default=str)[:300]}"
+            )
+        return result
 
     # ── Helpers ────────────────────────────────────────────────────────────
 
