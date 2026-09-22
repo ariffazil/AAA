@@ -149,15 +149,20 @@ def main() -> None:
         # stopped. Rename before fix: the count is real, the verb was not.
         label = "WOULD-HOLD" if dry_run else "BLOCK"
         action_word = "would block" if dry_run else "blocks"
-        for rid, actor, step, ts in violations:
-            action = action_class_of(step)
-            print(
-                f"MUSYAWARAH GATE [{label}]: {action} receipt without musyawawah_reference "
-                f"({action_word} commit) "
-                f"— receipt_id={rid} actor={actor} step={step} created_at={ts}",
-                file=sys.stderr,
-            )
+        # A2c (F13 2026-09-22 "all as recommended"): subtract dry-run noise.
+        # Per-receipt lines (3083/commit, 640KB) advertised a gate that was
+        # not enforcing — news-shaped output for a no-op. The count survives
+        # in the DRY-RUN summary below; the ENFORCING path still prints every
+        # BLOCK before exit(1). The WOULD-HOLD label fix above is kept.
         if not dry_run:
+            for rid, actor, step, ts in violations:
+                action = action_class_of(step)
+                print(
+                    f"MUSYAWARAH GATE [{label}]: {action} receipt without musyawawah_reference "
+                    f"({action_word} commit) "
+                    f"— receipt_id={rid} actor={actor} step={step} created_at={ts}",
+                    file=sys.stderr,
+                )
             sys.exit(1)
         print(f"MUSYAWARAH GATE [DRY-RUN]: {len(violations)} violation(s) NOT enforced "
               f"— nothing was blocked{exempt_note}", file=sys.stderr)
