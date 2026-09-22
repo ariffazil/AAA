@@ -16,6 +16,8 @@ triggers:
   - image-to-image / image-edit lane selection
   - a face in the scene must not be shown, or a person in frame must not be identifiable
   - verifying a render against a face gate or a hand gate
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Reference-Image Rendering

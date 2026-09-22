@@ -13,6 +13,8 @@ triggers:
   - "provider=unknown"
   - "empty result set"
   - "terminal refused"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Web Search Query Gate Recovery

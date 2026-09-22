@@ -1,6 +1,8 @@
 ---
 name: agent-to-agent-enablement
 description: Use when enabling or debugging A2A peer transport.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agent-to-Agent (A2A) Enablement

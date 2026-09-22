@@ -18,6 +18,8 @@ triggers:
   - audio classification
   - music evaluation
   - audio scoring module
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Audio Analysis & DSP Scoring

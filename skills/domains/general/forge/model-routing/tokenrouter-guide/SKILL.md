@@ -1,6 +1,8 @@
 ---
 name: tokenrouter-guide
 description: "How Hermes uses TokenRouter — model selection, auto-routing, cost strategy, FREE tier, sovereign anchor"
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # 🪙 TokenRouter Guide for Hermes

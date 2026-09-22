@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [mcp, indexing, discoverability, agents, security, well-known, oauth]
     category: data-intelligence
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MCP Ecosystem Indexing

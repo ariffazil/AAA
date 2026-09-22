@@ -6,6 +6,7 @@ capability_tier: fed-agent-subagent
 floor_scope: [F1, F2, F7, F11]
 autonomy_tier: T1
 risk_tier: low
+ecology_state: WARM
 ---
 # /entropy-metabolizer
 

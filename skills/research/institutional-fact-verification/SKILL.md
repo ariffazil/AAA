@@ -5,6 +5,8 @@ version: 1.0.0
 risk_tier: low
 floor_scope: [F2, F11]
 tags: [verification, sourcing, contracts, corporate-structure, provenance]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Institutional Fact Verification
@@ -87,7 +89,42 @@ them as a competence test, and being wrong in one line discredits the surroundin
 - **Editing the sealed source because the fix is obvious.** Obvious correctness does not confer
   authority to write.
 
+## When the subject is the user's own life on this VPS
+
+When the user asks for evidence about **their own** institution, situation, contract, dossier,
+scar, colleague, town hall, rightsizing cycle, MSS exit, etc., and the requested evidence
+plausibly exists **on this server**, treat the VPS filesystem as the primary substrate for *that*
+user's reality — not curated canon files (HAMPA cards, scar cards, EVIDENCE.md narratives, sealed
+artisan pages) which are *summary layers written after the event*, not the primary record.
+
+Five-step pattern:
+
+1. **Probe filesystem for source files before narrating canon.** Run real `find` / `grep` / `cat`
+   first; treat the canonical `HAMPA/human-*.md`, scar files, and EVIDENCE.md narratives as
+   *summary or interpretation*, not as the primary record. The user is asking about their own
+   life — the canon may itself embed the institutional narrative that the filesystem also stores
+   raw.
+2. **When the user says "those kalau email and Laletha" or "what do my chat logs say", they want
+   the actual files, not a curated version.** If the direct source `.eml` files are absent, say so
+   honestly and show which curated bridge (`HAMPA/*card.md`) you fell back on. Do not present the
+   bridge as the original.
+3. **Distinguish raw substrate from interpretive summary.** `[OSS]` raw `.eml` or `.txt` artefact,
+   `[OSS]` HAMPA card citing the artefact, `[DER]` scar narrative interpreting both. When the
+   user asks for evidence, fetch in increasing-curation order and let them choose where to read.
+4. **Cite the file path.** Every claim about a personal/institutional event on this VPS must end
+   with the file path (and SHA if sealed). No "I remember from training" — only what you loaded
+   this session.
+5. **Never narrate the story before probing.** If the probe finds empty, say so and ask the user
+   to point. If the user already named the source ("the Laletha 11 May memo", "the Kak Su 12 June
+   email"), narrow the probe to those exact paths and surface whatever you find — *including the
+   case where the named source is in the curated bridge but not on disk*.
+
+This lane coexists with Core Rule #1 ("Fetch the organisation's own announcement first") — the
+announcement page becomes the filesystem, and the news coverage becomes the curated bridge.
+
 ## References
 
 - `references/reconciliation-annex-recipe.md` — the table shape, classification rules, and
   proposed-resolution format for publishing an internal corpus conflict.
+- `references/personal-evidence-on-this-vps.md` — the five-step personal-substrate probe pattern,
+  with worked `find` / `grep` examples for HAMPA, scar memory, outbox/inbox, and `forge_work/`.

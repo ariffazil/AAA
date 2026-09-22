@@ -1,6 +1,8 @@
 ---
 name: public-persona-read
 description: "Use when reading a public person from social artifacts."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Public Persona Read — Subject Not In His Life

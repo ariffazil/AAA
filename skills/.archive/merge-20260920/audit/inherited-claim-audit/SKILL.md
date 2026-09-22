@@ -14,6 +14,8 @@ metadata:
   hermes:
     tags: [epistemic, verification, audit, provenance, third-party-data]
     related_skills: [claim-receipt-discipline, synthesis-verification-gate, text-forensics, relationship-memory-isolation]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Inherited-Claim Audit

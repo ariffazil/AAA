@@ -7,6 +7,8 @@ metadata:
   hermes:
     category: creative
     related_skills: [comfyui, minimax-cli, token-plan-image, mulerouter-media]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Lightweight Image Generation

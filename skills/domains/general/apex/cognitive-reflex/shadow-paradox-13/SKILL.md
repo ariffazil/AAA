@@ -1,3 +1,7 @@
+---
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
+---
 # Shadow Paradox 13 — Agent Self-Audit
 
 > **USE WHEN:** Agent produces output about humans, self-reflection, confidence claims, or "what I know." Also when asked to reflect on its own reasoning or limitations.

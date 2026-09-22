@@ -10,6 +10,8 @@ triggers:
   - cinematic video
   - video generation
 related_skills: [mulerouter-media, minimax-cli]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Video Prompt Engineering

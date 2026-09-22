@@ -10,6 +10,8 @@ metadata:
     tags: [open-slide, agentic-authoring, presentations, design-system, staged-reveals, scoping-protocol]
     category: creative
     related_skills: [powerpoint, scientific-pdf-generation, civic-intelligence-pdf]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Open-Slide Integration — Agentic Authoring Runtime

@@ -11,6 +11,8 @@ triggers:
   - "show the chart before it died"
   - "chart before bankruptcy"
   - candlestick history request for a dead ticker
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # All-Time and Delisted-Company Charts

@@ -69,6 +69,8 @@ triggers:
   - "empty result set"
   - "terminal refused"
   - "Use when web_search refuses a query. Reword and retry."
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # web-ops — one ladder from "I need the web" to "the extraction failed, here is what I do next"

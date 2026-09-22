@@ -15,6 +15,8 @@ triggers:
   - "opencode_render.py"
   - "federation-model-sync"
   - "AGENT_MODEL_MAP opencode"
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # OpenCode Config Zen — SOT-Driven Provider/Model/Agent Alignment

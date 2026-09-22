@@ -1,6 +1,8 @@
 ---
 name: bridge-lane-functional-probe
 description: Use when a service is 'active' but its lane may be dead.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Bridge / lane functional probe
@@ -104,6 +106,57 @@ listening — an ops problem. `404` means the HTTP server is up and the path is 
 routing/config problem with a different fix. A unit can be `active (running)` while its port
 refuses connections: unit-live, **not reachable**. Both of those are as far from EFFECTIVE as a
 catalog entry is.
+
+**`000` is itself overloaded — REFUSED and MUTE both print `000`.** Connection refused means
+nothing is listening. A listener that accepts the TCP connection and then sends nothing *also*
+yields `000`, and `curl -sv` shows the tell: a `Connected to 127.0.0.1 ... port N` line with no
+`<` response lines after it. Those are different states with opposite handling — refused is ops,
+mute is a **WEDGED** process. A wedged service is neither up nor down, and calling it "down" sends
+you to restart a process that is already running.
+
+Discriminate with the raw socket — the cheapest instrument that can tell them apart:
+
+```python
+import socket
+s = socket.socket(); s.settimeout(4)
+try:
+    s.connect(("127.0.0.1", PORT))
+    s.sendall(b"GET / HTTP/1.0\r\n\r\n")
+    data = s.recv(200)
+    print("WEDGED — accepted, mute" if data == b"" else f"ANSWERING: {data[:60]!r}")
+except ConnectionRefusedError:
+    print("REFUSED — nothing listening")
+except socket.timeout:
+    print("WEDGED — accepted, no response within timeout")
+```
+
+Three outcomes, three verdicts: refused (no listener), empty `recv` (accepting but mute), bytes
+(answering). The listener census cannot separate them either — `ss -tlnp | grep :PORT` shows a
+wedged process as a normal `LISTEN`, so a wedged socket survives every check that only looks at
+whether something is bound.
+
+**Before repairing or restarting a wedged listener, prove it is a live path and not an ORPHAN.**
+A wedged process commonly coexists with a healthy surface serving the same content by another route,
+because the wedged one stopped being the delivery path at some earlier change and nothing tore it
+down. Grep every live config for its port before deciding what it is:
+
+```bash
+grep -rn '<port>' /etc/caddy/ /etc/nginx/ /root/scripts/ <service-config-roots> | grep -v '\.bak'
+```
+
+Zero hits outside its own start command means it is orphaned, and the correct action is
+**removal, not repair** — restarting it would resurrect a duplicate delivery path. Confirm the
+public surface answers from the other route both before and after removal; a surface that returns
+the same status both times makes the removal provably non-breaking, whereas removal on its own only
+proves you stopped something.
+
+Also record that you could not establish the listener's original intent, instead of back-filling a
+story for it. "Orphaned, purpose unknown" is the honest verdict; "obsolete leftover" is an
+invention, and the next reader will act on it.
+
+A duplicate bind can also fail *silently* rather than loudly — with `SO_REUSEADDR` the second bind
+succeeds and one of the two listeners simply never receives traffic. A port you believe is served by
+service A may in fact be served by a forgotten service B on the same address.
 
 **Resolve the loopback address explicitly — `127.0.0.1`, never `localhost`.** On a dual-stack
 host `localhost` may resolve to `::1` first while the organ binds IPv4 only (or the reverse), and

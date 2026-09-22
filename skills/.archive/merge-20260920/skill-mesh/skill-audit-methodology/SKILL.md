@@ -34,6 +34,8 @@ triggers:
   - "hermes skill deduplication"
   - "hermes-vs-aaa collapse"
 floors: [F2, F4, F7, F11]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Skill Audit Methodology

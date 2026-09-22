@@ -18,6 +18,8 @@ triggers:
   - "immutable file"
   - "monotonicity"
   - "rollback scope"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # forge-execution-governance

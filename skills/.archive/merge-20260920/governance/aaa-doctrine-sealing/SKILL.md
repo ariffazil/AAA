@@ -1,6 +1,8 @@
 ---
 name: aaa-doctrine-sealing
 description: "Use when F13 says seal or code this into canon. Seal a session eureka into AAA canon across all layers."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # AAA Doctrine Sealing — Session Insight → Canon (canonical)

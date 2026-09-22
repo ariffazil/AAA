@@ -3,6 +3,8 @@ name: photo-style-transfer
 description: "Use when restyling a photo into another aesthetic."
 version: 1.0.0
 tags: [image-editing, style-transfer, image-to-image, dashscope, qwen-image-edit, multimodal]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Photo Style Transfer (restyle an existing photo)

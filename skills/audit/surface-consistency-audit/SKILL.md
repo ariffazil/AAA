@@ -3,6 +3,8 @@ name: surface-consistency-audit
 description: "Use when surfaces of one system disagree on a value."
 version: 1.0.0
 tags: [audit, consistency, multi-surface, wire-protocol, conflation]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Surface Consistency Audit
@@ -116,6 +118,26 @@ carries is *also* computed locally — the spread wins because it is applied lat
 field already patched for the same class is a strong tell: when a fix note in the code says "status
 and X now agree", check the **next field over**, which is usually still shadowed.
 
+### Duplicate literal keys in one static document
+
+The runtime form of the shadowed field is a dict spread. The static form is a **document that declares
+the same field twice at different depths**, and both readings are defensible to whoever greps first:
+
+```bash
+grep -n '"protocolVersion"\|"version"\|"status"' <file>   # ALL occurrences, not the first
+```
+
+Two rules fall out:
+
+- **Read the policy and the artifact together.** A repo whose own doctrine says *never stamp X* while
+  its shipped artifact carries X holds a self-contradiction inside one tree. The policy file is the
+  witness; the artifact is the defect.
+- **Enumerate the family before judging the instance.** When every sibling in a family declares one
+  value and a single member declares another, the outlier is the defect — a cross-family sweep settles
+  in one command what reading one artifact never can. Watch specifically for a **service version**
+  being used as a **wire-protocol version**: two different numbers that look alike and travel under the
+  same-looking field name.
+
 Full axis inventory and the four naming shapes that qualify a status field:
 `references/status-field-axes.md`.
 
@@ -153,6 +175,64 @@ For any checker, ask what it **filters out** before it compares, not only whethe
 subtracted, or the verdict is unearned. The same move applies to every "all-clear": read the
 allow-list, because the allow-list is where the blind spot is.
 
+## Step 6 — Audit the comparand, not only the comparison
+
+A verifier can be correct and still certify the wrong object. Four shapes, all green.
+
+**A gate's scope is not its verdict.** Read which set the gate iterates, then compare it to the set
+production actually serves. Measured: a deploy gate validated profile `public_agent` (6 tools) and
+printed `✅ registries consistent`, while the live wire served profile `sovereign` (8). Both sides
+were internally consistent — the gate simply never looked at the two verbs that mutate reality. The
+cheap decisive move is to **run the gate's own predicate across every member of the set**, not just
+the one it names:
+
+```python
+for p in all_profiles:                 # not just the hard-coded one
+    abi, caps, unknown, ok = gate(p)
+    print(p, ok, "GATED" if p == gated_profile else "UNCHECKED")
+```
+
+Five of six profiles came back `UNCHECKED` — a fact no single-profile run can produce. A gate
+narrower than the surface it guards is worse than no gate, because it *signs*.
+
+**Placement: a gate after the mutation cannot fail-close.** Read the line numbers, not the step
+names. Measured: stamp write at one line, service restart ~10 lines later, the "canon gate" ~60
+lines after that. A failure there aborts with the change already live. Order the gate before the
+first irreversible step, or state plainly that it is a post-hoc audit rather than a gate.
+
+**A comparand drawn from the same source as the subject reports only self-consistency.** Ask what
+each side of a drift comparison is derived from. Measured: `/health` reported
+`deployment_drift_status: aligned` while the deployment was six commits ahead of the canonical
+remote — the comparison was built-vs-live, both derived from the same working tree. An instrument
+named for drift that never reads the external reference is blind to the only drift that matters, and
+it fails in *both* directions: the same field cried drift over a stale stamp earlier, and later
+reported `aligned` over a divergent one. Name the reference each comparison resolves against, or the
+field's name is a claim its predicate never tests.
+
+**A status read through a pipe belongs to the pipe's last command.** `cmd | tee log` reports `tee`'s
+exit status, so a failed deploy records as success for any caller reading pipeline status. Reproduce
+in one line — `bash -c 'exit 1' | tee /dev/null; echo $?` prints `0` — then use `${PIPESTATUS[0]}`
+or drop the pipe. Same defect as the three above: a surface carrying a value that belongs to a
+neighbouring object.
+
+## Sweep the family, not the instance
+
+When you find one instance of "a surface reporting a value belonging to a different object", assume
+it is a family and enumerate it before fixing anything. The instances cluster across layers — a
+verdict string, a status field, an exit code, a gate's scope, a log line's subject — and they are
+spread across repos, so a sweep confined to the repo the first instance came from will undercount
+badly.
+
+Measured in one night: ten instances. Six lived outside the repository whose audit started the
+search, which is exactly why the **count is the deliverable** — report the family with a per-instance
+one-liner (mechanism → why it reads as passing), because each is individually fixable and together
+they justify one rule:
+
+> Every field must be traceable to the literal predicate that produced it, and to nothing else.
+
+Fixing one call site leaves the siblings lying, and the next reader re-finds them one at a time at
+full cost.
+
 ## Pitfalls
 
 - **A client-side cache is not a server defect.** Before calling an advertised surface broken,
@@ -188,6 +268,25 @@ allow-list, because the allow-list is where the blind spot is.
 - **A negative claim carries the same burden as a positive one.** A lagging replica reports
   missing whatever is newer than its last sync; an absence claim carries node + path + copy-age
   or it is a rumour.
+- **A reason string can state a failed check as satisfied.** Measured: a kernel `HOLD` listed
+  `L02: Truth Score: 0.960 >= 0.99 (Standard Verification)` — 0.960 is not >= 0.99, and the operator
+  is part of a format template emitted regardless of outcome, so the reason text reports a *passing*
+  comparison inside a *failing* verdict, on the floor whose entire job is to stop an irreversible
+  write. Rule: a machine-generated reason must render the comparison's **actual** outcome (per-check
+  PASS/FAIL, or the operator as evaluated), never a fixed operator chosen when the check was
+  written. Every reader — human or agent — takes that line as a pass.
+- **One identifier, two objects; one concept, two ledgers.** Before treating an id as a stable key
+  (in an envelope, a receipt, a join), verify it resolves to exactly one object: measured, a row id
+  was annotated PROVISIONAL for one event and later inhabited by a different, legitimate event, so
+  both a provisional marker and a real seal resolved to the same number. Separately, the append path
+  wrote a *second* ledger while the published one did not advance, so "sealed" named two different
+  files. Enumerate how many files a concept is written to before quoting its state.
+
+- **A statically-served surface is a snapshot, and "canonical surface" in a doc is a claim about the
+  wire, not about the repo.** Where a document points at a file as the canonical or live surface, hash
+  the served bytes against the repo file and date both. A hand-copied webroot copy has no sync job, so
+  a repo edit reaches no user while every repo-side check reports the change as live. Serving
+  mechanics: `deploy-drift-verification`.
 
 ## Verdict contract
 
@@ -228,6 +327,41 @@ Also: the deploy script derived its source from its own location (`$(dirname $0)
 the **checked-out branch**, so production can carry unpushed branch code while the scheduler
 believes it is guarding against exactly that. Verify which tree the deploy actually reads — do not
 infer it from the unit's description.
+
+### A served capability can have no commit behind it
+
+The build step is the surface that launders uncommitted work into production. A symbol absent from
+`HEAD` but present in the working tree compiles into the build output, is served on the live
+surface, and acquires no provenance at all — nothing in git, the registry, or the declared contract
+records that it exists. Distinguish the states explicitly rather than inferring "deployed" from
+"served":
+
+```bash
+git cat-file -p HEAD:<file> | grep -c '<symbol>'   # 0 = not committed
+grep -c '<symbol>' <file>                          # >0 = in working tree
+grep -rl '<symbol>' dist/ | head                   # >0 = built and servable
+git status --porcelain <file>                      # ' M' = the edit is uncommitted
+```
+
+`0 / >0 / >0` with ` M` is the class: **live on the surface, uncommitted in source, absent from every
+registry**. Ask then who is still blocked by it — an unregistered tool is usually still classified,
+and a classifier entry can be the only thing holding it. Report the gap as missing provenance, never
+as "unauthorized": the two have different owners and different fixes.
+
+The classifier itself can disagree with the runtime. Where source labels a capability read-only and
+the gate's own DENY reason labels it irreversible, report both readings with their sources — the
+compiled build output may not match the tree you grepped, so name which artifact each label came
+from instead of resolving the mismatch by picking one.
+
+### A deploy stamp is a third version surface, not git HEAD
+
+A gate that compares a pinned commit against "the current version" usually reads a *stamped* file
+(`.git_commit`, a build-info endpoint, an image label), not `git rev-parse HEAD`. Those diverge
+independently, so three SHAs can be live at once — the pin, the stamp, and the actual HEAD — and a
+two-way comparison is blind to the third. Read what the gate resolves as current *before* deciding
+which divergence it can see: a gate comparing pin-vs-stamp cannot see stamp-vs-HEAD drift, and its
+health field will report the stamp while the tree has moved on. Enumerate all three and name which
+pair each surface actually compares.
 
 When delivery is blocked, the complete verdict names the chain position, not a boolean:
 `PRODUCED → COMMITTED → PUSHED(ref) → DEPLOYED → OBSERVED`, and for each un-reached state, the

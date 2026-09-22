@@ -1,0 +1,41 @@
+{
+ "schema": "fed-provider-failure-scars/v1",
+ "forged": "2026-09-22",
+ "authority": "F13 verdict: forge scar system before new providers",
+ "scars": [
+  {
+   "id": "SCAR-001",
+   "name": "liveness_without_witness",
+   "severity": "HIGH",
+   "file": "SCAR-001.md",
+   "promoted_from": "SHADOW-DS-V41-002 + deepseek 402 incident 2026-09-22",
+   "events": 0,
+   "w_scar": 0.8,
+   "w_scar_note": "provisional per F13 verdict 2026-09-22 (scar-weight-registry v1.1.0 scale 0.0-1.0); sovereign may re-weight",
+   "gravity_route": "priority += RankGate.SCAR_GRAVITY * (1 - reliability)"
+  },
+  {
+   "id": "SCAR-002",
+   "name": "retired_alias_hard_fail",
+   "severity": "HIGH",
+   "file": "SCAR-002.md",
+   "promoted_from": "SHADOW-DS-V41-001 + deepseek-v4-flash-0731 HTTP400",
+   "events": 0,
+   "w_scar": 0.5,
+   "w_scar_note": "provisional per F13 verdict 2026-09-22 (scar-weight-registry v1.1.0 scale 0.0-1.0); sovereign may re-weight",
+   "gravity_route": "priority += RankGate.SCAR_GRAVITY * (1 - reliability)"
+  },
+  {
+   "id": "SCAR-003",
+   "name": "telemetry_confidence_exceeds_reality",
+   "severity": "HIGH",
+   "file": "SCAR-003.md",
+   "promoted_from": "mulerouter balance $49.92 displayed vs -0.75 actual + GET200/402 class",
+   "events": 0,
+   "w_scar": 0.7,
+   "w_scar_note": "provisional per F13 verdict 2026-09-22 (scar-weight-registry v1.1.0 scale 0.0-1.0); sovereign may re-weight",
+   "gravity_route": "priority += RankGate.SCAR_GRAVITY * (1 - reliability)"
+  }
+ ],
+ "gravity_wired_at": "2026-09-22 fed_router.RankGate.SCAR_GRAVITY=3.0"
+}

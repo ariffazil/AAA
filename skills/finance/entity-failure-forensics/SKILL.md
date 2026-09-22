@@ -3,6 +3,8 @@ name: entity-failure-forensics
 description: "Use when analysing if an entity will fail financially."
 version: 1.0.0
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # entity-failure-forensics

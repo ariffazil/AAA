@@ -13,6 +13,8 @@ triggers:
   - "answering a question that was aimed at another person"
 floors: [F2, F3, F5, F6, F9, F13]
 tags: [human-interface, disclosure, register, audience, privacy, briefing, outsider]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Audience-Scoped Disclosure

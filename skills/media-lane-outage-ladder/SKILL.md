@@ -15,6 +15,8 @@ triggers:
   - the primary TTS or image provider returns a usage/credit limit mid-session
   - a provider rejects a prompt as NSFW / policy-blocked after accepting it earlier
   - deciding whether to wait for a quota reset or ship a different engine
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Media Lane Outage Ladder
@@ -25,6 +27,30 @@ must be said in the delivery line.
 
 This skill is the DECISION PROCEDURE. Per-register prompt craft lives in the register's own lane
 skill; exact call shapes for the alternate lanes are in `references/alternate-media-lanes.md`.
+
+## Step 0 — A "free" request must be matched to a model, not to an account
+
+When the requester says *use the free quota*, the per-model quota list is the authority:
+
+- **Match modality before anything else.** A free-tier list can be entirely video (`*-t2v`, `*-i2v`,
+  `*-animate`) while the request is for a still image. The model-code suffix decides this, not the
+  vendor name — a text-to-video allocation cannot produce an image, and the image models sitting beside
+  it in the catalogue are billed per image. Say so plainly and offer the modality the free quota does
+  cover; never silently substitute a billable model for a free one.
+- **An absent quota field is not a free tier.** The model catalogue API returns per-model prices but no
+  remaining-free-quota state, so "no pricing objection was raised" proves nothing about cost.
+  Remaining free quota is readable only from the account console list or the CLI's free-tier view, and
+  the CLI view needs a live login. If neither is readable, treat the call as billable until proven
+  otherwise and ask.
+- **Expiring free quota is a reason to spend it deliberately.** Read the expiry and the unused seconds
+  off the list, total them, and prefer the allocation that is about to lapse when the request can be
+  satisfied by it.
+
+**Check the exported provider value before the first submit.** These generation scripts speak only the
+native provider; an account-level provider or fallback name exported for a different lane (a token-plan
+or coding-plan identifier) makes the script exit on an unknown-provider error before any request leaves
+the machine — and that class of key cannot reach these models at all. The failure looks like a quota or
+policy rejection and is neither, so it wastes a diagnosis cycle if you start climbing the ladder.
 
 ## Step 1 — Classify the error before touching another lane
 

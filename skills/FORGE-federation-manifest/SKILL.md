@@ -20,6 +20,8 @@ triggers:
   - "deployment attestation"
   - "source deployed drift"
 tags: [federation, topology, manifest, mcp, protocol, deployment, attestation]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Federation Manifest — arifOS Topology (v2.0)

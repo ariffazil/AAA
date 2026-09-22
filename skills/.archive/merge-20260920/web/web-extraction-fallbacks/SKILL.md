@@ -19,6 +19,8 @@ trigger_phrases:
 dependencies:
   mcp_servers: []
   skills: [AGI-agentic-web]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # web-extraction-fallbacks — URL Extraction Failure Patterns

@@ -1,6 +1,8 @@
 ---
 name: telegram-conversation-history-extraction
 description: Read Telegram chat history from gateway.log when no API.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Telegram Conversation History Extraction

@@ -8,6 +8,8 @@ metadata:
     category: creative
     requires: [mmx-cli]
     related: [minimax-cli, photorealistic-human-image-gen, nusantara-voice-stack, forge-real-person-reference-photos, image-identity-transfer]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Synthetic Human Media Pipeline
@@ -69,13 +71,13 @@ Group prompts fail in a specific way: bodies fuse into one mass, hands and objec
 - **Exactly one focal gaze.** One subject gets `both eyes open and fixed straight into the camera lens, steady and calm`; everyone else looks away, at each other, or down. Two direct gazes split the composition and the model loses both.
 - **Delete text-bearing props — do not ask the prompt to fix them.** Buckets, signage, wall plates and shorts logos render as garbled glyphs and are the first thing QA flags. Remove the object and end the prompt with `no logos, no lettering, no numbers, no signage`.
 - **Anchor a named ethnicity with an explicit trait list.** A bare group name drifts to MENA / South-Asian casting by default. For Malaysian Malay: `warm light-brown skin, epicanthic folds, broad flat noses, wide cheekbones, thick straight black hair, sparse thin moustache, no thick beards`. When the drift persists, re-roll the `--seed` — rewording only the ethnicity token rarely fixes it.
-- **A negative clause is the weakest control in the prompt.** `no beard`, `no moustache`, `no stubble`, `no grey`, `no watermark` are obeyed loosely — the sampler supplies the attribute anyway (a full beard and grey hair rendered on a subject briefed as clean shaven with short black hair, across every seed of a roll). Treat each negative as a QC item rather than a guarantee: write it once, then check for it after the roll and **re-roll the seed** instead of rewording, because new wording rarely suppresses an attribute the sampler has already chosen. Only the seed index reliably moves these.
+- **A negative clause is the weakest control in the prompt.** `no beard`, `no moustache`, `no stubble`, `no grey`, `no watermark` are obeyed loosely — the sampler supplies the attribute anyway (a full beard and grey hair rendered on a subject briefed as clean shaven with short black hair, across every seed of a roll). Treat each negative as a QC item rather than a guarantee: write it once, then check for it after the roll and **re-roll the seed** instead of rewording, because new wording rarely suppresses an attribute the sampler has already chosen. Only the seed index reliably moves most of these. **Facial hair is the documented exception — neither lever clears it.** Four escalating wordings (`clean shaven` → `no beard, no moustache, no stubble` → an explicit `faces completely hairless, smooth clean jaw and upper lip` clause → the same clause plus an added `no sideburns, no grey hair`) across sixteen seeds of a seated two-figure brief returned bearded men every time. **Two full rounds failing the same QC item is the stop signal** — the remaining levers are the FRAME (set the crop below the chin, shoot from behind, drop the key so the jaw falls into shadow) or shipping it and naming the divergence in the delivery line (§6). A bearded take captioned as the clean-shaven brief is the honesty failure; the beard itself is only a miss.
 - **Observer/doorway foreground.** An out-of-focus near subject seen from behind puts the viewer inside the observer's body and is the strongest single device in this genre. State it narrowly: `dark soft out-of-focus silhouette of a man seen only from behind, back of head and shoulder, plain dark t-shirt`. Without the narrow wording the model renders a second full figure with a face.
 - **A near hand that touches the other subject does not composite — use a silhouette or a hovering hand instead.** Asked for a foreground palm pressed flat on a second person's bare chest, image-01 returns the hand hovering in front of the torso with no contact shadow, folds it into the subject's own arm, or melts it — consistently, across several wordings and seeds. Do not spend more than two wordings on it. Take one of three routes: accept the hovering half-open hand and label it as such on delivery, crop tight enough that only a forearm crosses the frame, or swap the near element for the backlit silhouette above, which composites cleanly where a touching hand does not.
 - **Intimate two-person frames leak faces — make "no face visible" a QC gate, not a prompt clause.** In a close embrace or back-hug, image-01 resolves a face or a three-quarter profile on one or both subjects even when the brief says the faces are hidden. Restating the denial at higher volume does not help — it can backfire (a louder `neither face is visible anywhere in the frame` pass produced *more* face-visible takes than the plain one), so do not spend iterations rewording. State the framing once (`back of head, nape and shoulders only, no eyes, no nose, no mouth, no profile`), then roll seeds and reject on sight. Leak rate in this register is high: budget 6–8 seeds per accepted still.
 - **A composition instruction does not remove a head — only the camera and a crop do.** Wording that puts both heads outside the frame (`cropped just below the collarbones so that both heads are outside the frame entirely, no head and no face in the picture`) still rendered full frontal faces on half of a four-seed roll. Treat head removal as a framing/crop decision taken after the roll, never as a clause to be trusted; budget the seeds for the face gate either way.
 - **A two-figure embrace inverts the composition AND fuses the hands, so the escape is to drop to ONE figure — not to reword and not to re-roll.** On a back-hug brief the model pressed the smaller man against the larger man's **chest** in seven of eight seeds and produced melted/fused hands in **eight of eight**; a second batch that spelled out `both seen from behind, no hands visible` cleared neither gate. Roughly 28 seeds across four compositions produced no shippable two-figure frame. **Two full rolls failing the SAME gate is the stop signal — change the composition, not the seed and not the wording.** What cleared on the first try was a SOLO frame: the big man's back and shoulders filling the frame, head turned fully away, so the face gate has nothing to leak and the gesture still reads.
-- **Design the frame so the highest-failure anatomy is out of shot, and you stop paying for it seed after seed.** Hands are the single most-failing surface in this lane. A composition that removes them — `both arms opened wide outward and angled downward, the left and right edges of the frame cutting them off at the forearms, no hands and no fingers anywhere` — converts an unfixable QC item into a non-issue, and the requester asked for the gesture, not the fingers. Crop as a fallback: send the arms below the crop line (`hands clasped behind the back`, cut away) when an open pose will not hold. Prefer either to spending seeds on finger accuracy.
+- **Design the frame so the highest-failure anatomy is out of shot, and you stop paying for it seed after seed.** Hands are the single most-failing surface in this lane. A composition that removes them — `both arms opened wide outward and angled downward, the left and right edges of the frame cutting them off at the forearms, no hands and no fingers anywhere` — converts an unfixable QC item into a non-issue, and the requester asked for the gesture, not the fingers. **The waist-up cut is the cheapest instance and the one to reach for first on any seated two-figure brief:** `composition cuts at the waist, no hands visible in the frame` cleared the anatomy gate on 3 of 4 seeds, against four wordings that tried to *pose* the hands cleanly inside the same frame — framing deletes a defect class that wording only relocates. Crop as a fallback: send the arms below the crop line (`hands clasped behind the back`, cut away) when an open pose will not hold. Prefer either to spending seeds on finger accuracy.
 - **Put the face gate first in the QC list, with the failure modes named.** Ask *"is ANY face or profile visible anywhere — eyes, nose, mouth, cheek?"* A generic "describe the image" buries a visible profile inside a paragraph of prose and you ship it. Same for hands and contact points: name the artifact you are hunting, or the QC answer passes it. Put **every negative you wrote** on the QC list as well — facial hair on a clean-shaven brief, grey in the hair, bare feet, a watermark, a logo on the shorts — because a render can pass every anatomy and composition check and still contradict the brief on a clause you never asked about.
 - **More seeds when a named invariant must survive.** Quality varies more between seeds than between prompt wordings. Two is the floor; when an invariant is load-bearing (a hidden face, a size relationship, a phenotype, a single focal gaze) generate 4+, QA all of them, and keep the one where that invariant actually survived — do not ship a compromise because it arrived first.
 
@@ -210,6 +212,13 @@ carrying `voice_id`, `speed`, and the text of every take makes the whole run add
 
 ### Reading the round-trip score — desync vs defect
 
+**The score is a lead; the transcript is the witness.** Decide the take on the words first — a clean
+take has measured **20.5% raw** on dense dialect, and a take scoring **99%** has carried a fused pair
+and a meaning-flipped closing line. The substitution table described below is a DIAGNOSTIC for a take
+you have already judged wrong on its words. It is never a precondition for shipping, and growing it to
+make a number look right converts the gate into decoration — the effort goes into the instrument
+instead of the artifact.
+
 A raw score near **20%** is the loanword-desync signature, not a bad take. A single English loanword
 inside BM text (`alpha`, `macho`) desyncs the aligner on its own, and a stack of them plus two
 minimal-pair words measured 20.9% raw and only 83.8% with the full alias table applied — still under the
@@ -223,9 +232,9 @@ gate, so not shippable either way.
 - **Only words the line must contain stay as aliases** — the loanword, and minimal-pair BM words the
   engine cannot hold (`dada` heard as `dadah`, `pura` as `pera`). Re-render once with the text edits,
   re-run with the same table, and the take lands 100%.
-- **An alias table is a diagnostic first.** A take still under the gate after normalisation is not
-excusable by adding more rows — sort the causes instead. `--alias` takes a bare digit key too
-  (`--alias 4=empat`) for a numeral the engine spells out.
+- **An alias table is a diagnostic, and only for a take already failing on its words.** A take still under
+  the gate after normalisation is not excusable by adding more rows — sort the causes instead. `--alias`
+  takes a bare digit key too (`--alias 4=empat`) for a numeral the engine spells out.
 - **Never alias to hide an insertion.** A genuinely inserted phrase survives normalisation and stays
   flagged; a table that makes a real insertion score clean has converted the gate into decoration.
 - **An INSERTED list as long as the transcript, with MISSING empty, is an aligner RESYNC — not
@@ -270,9 +279,11 @@ excusable by adding more rows — sort the causes instead. `--alias` takes a bar
   while MISSING collapses to a single ordinary word. Answer it by aliasing the expanded form back to one
   token (`--alias "tak ada=takde"`); multi-word alias keys work when the matcher word-bounds them. **A long
   INSERTED list with exactly one MISSING word is this signature, not contamination.**
-- **Score correctly BEFORE spending a re-render.** The order that works: one zero-alias pass to read the raw
-  state, one token-diff pass printing every divergent pair in order, build the table from that diff, then
-  re-score. Guessing which substitution fired costs more takes than the diagnostic pass does.
+- **Sort the causes before spending a re-render — with a token diff, not a bigger table.** One zero-alias
+  pass to see the raw state, then `difflib.SequenceMatcher` over the normalised token lists printing every
+  divergent pair in order. Fix the spelling-choice pairs in the TEXT and re-render only what that edit did
+  not clear. Re-scoring against an enlarged table, on a take whose words are already correct, answers a
+  question nobody acted on.
 - **Never conclude "transcriber hallucination" from a visible tail alone — read the stamps against EOF.**
   The discriminator is not whether the phrase looks invented; it is whether its timestamps can exist in the
   file at all. Words whose stamps run **past the file duration** (measured: one ending at 117.24 s on an
@@ -352,10 +363,11 @@ voice loses neither the scene nor the floor. The answer ships as a take like eve
 
 ## 6. Delivery honesty
 
-Two declarations belong in every delivery of synthetic human media, in the user's own register, **before** any praise of the result:
+Three declarations belong in every delivery of synthetic human media, in the user's own register, **before** any praise of the result:
 
 1. **Which engine rendered it** — name the model and, for voice, the voice id/name. If the engine fell back to something other than what the user expected, say which one actually produced the file. A silent swap is the same failure as a fabricated claim.
 2. **That the people are not real.** The subjects are synthetic; say so plainly rather than letting the artifact imply otherwise.
+3. **That the SET is invented too, whenever the request named a place as his.** A scene he framed as "our house", his own living room, his gym: the room is synthetic scenery exactly as the figures are, declared in the same breath. Labelling the bodies and letting the place read as real is half a disclosure — and the place is the half that reaches into his actual life.
 
 **No stored face anchor.** This agent holds no face reference for the sovereign or for any third party. Do not generate a face and present it as them.
 

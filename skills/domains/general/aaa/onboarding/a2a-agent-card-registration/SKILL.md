@@ -46,6 +46,8 @@ triggers:
   - "compress descriptions"
   - "zen the cards"
   - "bulk description compression"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # A2A Agent Card Registration — Constitutional Metadata

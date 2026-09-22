@@ -11,6 +11,8 @@ triggers:
   - "a scheduled render, brief, or card"
   - "hash-sealed artifact or ledger"
   - "verify a pipeline that someone else built"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Pipeline integrity

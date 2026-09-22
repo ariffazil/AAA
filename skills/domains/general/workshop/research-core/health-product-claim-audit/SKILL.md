@@ -2,6 +2,8 @@
 name: health-product-claim-audit
 description: "Evaluate health product claims against clinical evidence — supplements, treatments, devices."
 tags: [health, product, supplement, evidence, audit, malaysia, claim]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Health Product Claim Audit

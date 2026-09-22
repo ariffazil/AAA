@@ -15,3 +15,5 @@
 {"ts":"2026-09-17T18:01:01Z","event_id":"evt_20260918_0201_73ca6564","source":"drift_scanner","severity":"P1","type":"VERIFIED","hash":"73ca65642660d1f3","host":"forge"}
 {"ts":"2026-09-18T18:01:02Z","event_id":"evt_20260919_0201_4aec0bcd","source":"drift_scanner","severity":"P1","type":"VERIFIED","hash":"4aec0bcdd5bbca65","host":"forge"}
 {"ts":"2026-09-20T16:07:15Z","event_id":"evt_20260921_0007_6aca5aaf","source":"rsi_exhale","severity":"P2","type":"STATE_CHANGED","hash":"6aca5aafbbc85083","host":"forge"}
+{"ts":"2026-09-22T16:07:14Z","event_id":"evt_20260923_0007_2b3177bc","source":"rsi_exhale","severity":"P0","type":"DETECTED","hash":"2b3177bcaefa4032","host":"forge"}
+{"ts":"2026-09-22T22:07:14Z","event_id":"evt_20260923_0607_c80395de","source":"rsi_exhale","severity":"P0","type":"DETECTED","hash":"c80395ded1320370","host":"forge"}

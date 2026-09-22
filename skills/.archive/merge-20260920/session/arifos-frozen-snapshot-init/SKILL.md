@@ -10,6 +10,8 @@ trigger:
   - "init protocol"
   - "ur message not carry fwd"
   - "init sucks"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Frozen Snapshot Injection — Session Init Protocol

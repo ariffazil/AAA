@@ -35,6 +35,24 @@
     "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
     "headline": { "type": "string", "description": "Optional one-line read. Omit rather than pad." },
 
+    "signals": {
+      "type": "array", "minItems": 4, "maxItems": 8,
+      "description": "THE SIGNAL CARD — what actually publishes. The 9 rows are the candidate POOL; this is the SELECTION. 4-8 lines, one sentence each, in human language. No tier name, no row number, no source string is rendered: the reader must be able to tell whose world a line belongs to from the sentence itself. F13-directed 2026-09-21 ('too chaos, signal only'). Guarded by gate G13.",
+      "items": {
+        "type": "object",
+        "required": ["who", "text"],
+        "additionalProperties": false,
+        "properties": {
+          "who": { "enum": ["arif", "syed", "shared"],
+                   "description": "Selection metadata and anchor accounting. NEVER rendered — it exists so the gate can prove both men were served, not to label the reader." },
+          "text": { "type": "string",
+                    "description": "ONE sentence, max 240 chars, BM Penang, human language. No machine label, no day-count, no private marker." },
+          "source": { "type": "string",
+                      "description": "Provenance. Recorded for audit; never printed on the signal card." }
+        }
+      }
+    },
+
     "yin_quote": { "$ref": "#/$defs/quote" },
     "yang_quote": { "$ref": "#/$defs/quote" },
 
@@ -70,7 +88,12 @@
       "properties": {
         "text": { "type": "string" },
         "source": { "type": "string", "description": "REQUIRED when tier is KENA_TAHU and the item is NEWS/market/deadline/event." },
-        "tag": { "enum": ["OBS", "DER", "INT", "CONTESTED"] }
+        "tag": { "enum": ["OBS", "DER", "INT", "CONTESTED"] },
+        "claim_id": {
+          "type": "string",
+          "pattern": "^az-[0-9a-f]{8}$",
+          "description": "Stable claim identity, sha256(date:mode:row:who:text)[:8] prefixed with 'az-'. Lets the night card cross-check morning claims and feed alpha_zen_to_grafema.py idempotently. Optional in input; the renderer does not require it."
+        }
       }
     },
     "quote": {

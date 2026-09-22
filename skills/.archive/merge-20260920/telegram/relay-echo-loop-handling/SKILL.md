@@ -2,6 +2,8 @@
 name: relay-echo-loop-handling
 description: Use when bot replies echo back as new input. Go silent.
 tags: [relay, echo-loop, telegram, injection, silence]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Relay Echo Loop Handling

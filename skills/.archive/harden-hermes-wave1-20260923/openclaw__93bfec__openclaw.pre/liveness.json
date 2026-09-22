@@ -1,0 +1,22 @@
+{
+  "liveness_status": "ALIVE",
+  "last_invoked": null,
+  "invocation_count": 0,
+  "outcome_delta_total": 0.0,
+  "sessions_since_invoked": 1,
+  "sessions_with_zero_outcome": 0,
+  "autogen_provenance": {
+    "agent": "kimi-code/FI-008",
+    "session": "FI-008-CLOSEOUT-2026-08-06",
+    "timestamp": "2026-08-06T03:30:00Z",
+    "sovereign_directive": "Autogen OpenClaw SKILL (governance-heavy)",
+    "evidence_paths": [
+      "/root/AAA/scripts/openclaw-watchdog.sh",
+      "/root/AAA/schemas/openclaw-gateway.schema.json",
+      "/root/AAA/skills/FORGE-telegram-audit/SKILL.md"
+    ],
+    "floor_scope": ["F1", "F2", "F4", "F11", "F13"],
+    "risk_tier": "medium",
+    "autonomy_tier": "T2"
+  }
+}

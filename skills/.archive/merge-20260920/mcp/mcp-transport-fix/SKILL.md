@@ -5,6 +5,8 @@ description: Fix MCP auth failures when external clients cannot connect.
 version: 1.0.0
 author: Hermes
 tags: MCP, transport, auth, Claude, ChatGPT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MCP Transport Fix — SSE vs Streamable HTTP

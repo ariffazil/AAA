@@ -4,6 +4,8 @@ description: "7-section sealed decision packet on EVERY agent response."
 version: 0.1.0
 status: ACTIVE_DISCIPLINE (this contract governs response SHAPE, not content — no F13 seal needed to be polite)
 origin: sovereign screenshot diagnosis 2026-08-30 + hotfix prompt
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agent Output Contract — The 7-Section Decision Packet

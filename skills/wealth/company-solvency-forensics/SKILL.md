@@ -3,6 +3,8 @@ name: company-solvency-forensics
 description: Use when judging if a company can survive or will collapse.
 version: 1.0.0
 tags: [solvency, distress, bankruptcy, sec-edgar, xbrl, cash-conversion, forensics]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Company Solvency Forensics

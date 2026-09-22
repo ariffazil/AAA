@@ -8,6 +8,8 @@ metadata:
     category: creative
     requires: [mmx-cli]
     related: [lightweight-image-generation, image-gen-fallback-chain, photorealistic-human-image-gen]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Generated Media Delivery

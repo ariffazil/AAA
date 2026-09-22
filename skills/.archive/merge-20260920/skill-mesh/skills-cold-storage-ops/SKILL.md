@@ -2,6 +2,8 @@
 name: skills-cold-storage-ops
 description: Thaw or freeze skills. Use when a skill is missing.
 version: 1.0.0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Skills Cold Storage Ops

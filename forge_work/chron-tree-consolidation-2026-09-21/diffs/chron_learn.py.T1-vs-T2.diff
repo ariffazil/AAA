@@ -1,0 +1,68 @@
+--- /root/AAA/scripts/chron_learn.py	2026-09-20 17:50:50.336065620 +0800
++++ /root/chron/chron_learn.py	2026-09-18 23:46:48.218056105 +0800
+@@ -41,10 +41,27 @@
+ # ───────────────────────── LESSON EXTRACTION ─────────────────────────
+ 
+ 
++def _lesson_fingerprint(lesson: dict) -> str:
++    """Stable identity for a lesson: error class + recurrence + mean Brier.
++
++    Two extractions of the same error pattern are the same lesson; this is what
++    lets the loop skip them instead of re-appending every cycle.
++    """
++    import hashlib
++
++    mb = lesson.get("mean_brier")
++    key = (
++        f"{lesson.get('error_type')}|{lesson.get('recurrence')}|"
++        f"{round(float(mb), 4) if mb is not None else 'NA'}"
++    )
++    return hashlib.sha256(key.encode()).hexdigest()[:12]
++
++
+ def extract_lessons() -> list[dict]:
+-    """Extract lessons from all verified predictions.
++    """Extract NEW lessons from all verified predictions.
+ 
+-    Returns list of lesson candidates.
++    Returns only lessons not already held (see _lesson_fingerprint). Callers
++    that want the full inventory should use load_lessons().
+     """
+     verified = get_verified(limit=100)
+     if not verified:
+@@ -52,6 +69,7 @@
+ 
+     store = get_store()
+     lessons = []
++    seen = {l.get("fingerprint") for l in load_lessons() if l.get("fingerprint")}
+ 
+     # Group by error_type for pattern detection
+     by_error: dict[str, list[dict]] = {}
+@@ -113,8 +131,18 @@
+             "promotion_eligible": recurrence >= 2,
+             "prediction_ids": [p.get("prediction_id") for p in preds],
+         }
++        fp = _lesson_fingerprint(lesson)
++        lesson["fingerprint"] = fp
++
++        # Dedup (2026-09-18 loop-closure repair, L4/L5): this function runs on
++        # every loop cycle and previously appended unconditionally, so N runs
++        # produced N copies of the same lesson and N learn episodes — inflating
++        # lessons_total and candidate counts with no new information. A lesson
++        # whose fingerprint we already hold is not new work.
++        if fp in seen:
++            continue
+ 
+-        # Create learn episode
++        # Create learn episode only for genuinely new lessons
+         if preds:
+             ep = learn_from_error(
+                 preds[0],  # representative prediction
+@@ -124,6 +152,7 @@
+             )
+             store.append(ep)
+ 
++        seen.add(fp)
+         lessons.append(lesson)
+ 
+     # Save lessons

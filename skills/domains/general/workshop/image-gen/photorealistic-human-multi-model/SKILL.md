@@ -7,6 +7,8 @@ metadata:
   hermes:
     category: creative
     related: [photorealistic-human-image-gen, token-plan-image, minimax-cli]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Photorealistic Human — Multi-Model Comparison

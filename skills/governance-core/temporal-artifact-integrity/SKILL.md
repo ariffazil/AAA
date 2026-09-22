@@ -1,6 +1,8 @@
 ---
 name: temporal-artifact-integrity
 description: "Use when a countdown or hash-sealed ledger must verify."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Temporal Artifact Integrity

@@ -2,11 +2,13 @@
 id: minimax-image-gen
 name: minimax-image-gen
 version: 1.0.0-2026.08.04
-description: "Generate images, videos, TTS, voice clone, and music via MiniMax MCP server."
+description: Generate images, videos, TTS, voice clone, and music via MiniMax MCP server. Use when user asks to "draw", "generate image", "create picture", "make a photo", "text to image", "image generation".
 owner: 333-AGI
 risk_tier: T1
 floor_scope: F2, F4, F7
 autonomy_tier: T1
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 # MiniMax Image Generation
 

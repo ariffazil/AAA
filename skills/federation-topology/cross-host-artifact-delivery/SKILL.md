@@ -18,6 +18,8 @@ triggers:
   - "scp"
   - "rsync"
   - "already on disk"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Cross-Host Artifact Delivery

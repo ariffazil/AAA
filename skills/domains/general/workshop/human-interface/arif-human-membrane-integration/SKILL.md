@@ -4,6 +4,8 @@ description: "Use when integrating human-meaning-membrane into the Hermes flow â
 triggers:
   - "integrate membrane"
   - "substrate upgrade"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 Substrate upgrade: membrane into Hermes interaction flow. SOUL.md patch, FED routing, OpenClaw integration, MCP schema update, test scenarios.

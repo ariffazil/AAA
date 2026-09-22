@@ -16,6 +16,48 @@ believing a fix is live.
 
 `changed on disk` is not `serving`. Report the former; a reload is a separate, often gated, step.
 
+## Cross-host: localhost is not federation
+
+A claim of "written to the federation graph" is host-local until the bind address proves
+otherwise. A Docker container publishing `127.0.0.1:6380` is reachable only from inside the same
+host; another host on the same network cannot query it even if it has the same image. Two
+hosts running identical FalkorDB / Qdrant / Redis images with identical graph names ("arifos",
+"af_forge", "arif_l5_knowledge") are still **two independent graphs**, not one.
+
+When the claim is "X is in the federation graph", probe four things before writing it:
+
+1. Bind address of the store (NOT the port, NOT the image name). `ss -tlnp | grep <port>`.
+3. Graph name actually written to (read it from the writer's own config or call site).
+4. Network path from a different host to the store (curl from another box on the wire, not from
+   the same host).
+
+A write to `arifos` graph on `127.0.0.1:6380` of host A is invisible to host B even when B has
+its own `arifos` graph — the namespaces are different stores. Two hosts can each independently
+report "29 Episodes in arifos" without contradiction; the failure is to call this a federation
+graph when neither side has network reachability.
+
+A receipt that says "X written to federation graph" without these four probes is a receipt for
+local action, not federation action. Demote the language: "written to host-local store
+<host>:<graph>".
+
+## Source read beats vision read when the file is local
+
+A vision call on a PNG rendered from a text-format source costs more than opening the source
+file. The vision pass can also hallucinate — a "truncated footer" claim that a 2-second
+`read_file` shows is intact is exactly that. Read the source when:
+
+- The artifact under inspection was generated locally (rendered card, compiled output, formatted
+  log) and the source is on disk in the same session.
+- The defect class is layout/string-specific (truncation, overflow, ordering) — vision's
+  spatial reasoning is weaker than grep's lexical one for these.
+- The user is in a tight loop and a hallucinated "defect" would trigger wasted investigation.
+
+Reserve vision for cases where the source is unavailable (scanned doc, photo of physical
+artifact, terminal rendered to canvas, agent cannot access the file directly) or where the
+defect class is genuinely visual (misalignment, color clash, occlusion). If the choice between
+"vision this" and "read the source" is open, read the source — vision is the more expensive
+and the less reliable path for this class of claim.
+
 ## Same name, two stores
 
 One logical name (vault, registry, ledger) can resolve to different physical locations on the same

@@ -13,6 +13,8 @@ triggers:
   - "a review praises the principal"
 floors: [F2, F6, F7]
 tags: [audit, external-review, falsification, mirrors, provenance]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Pasted Review Falsification

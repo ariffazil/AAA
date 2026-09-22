@@ -4,6 +4,8 @@ description: "Use when a shared link must be read as evidence."
 metadata:
   hermes:
     tags: [fetch, evidence, media, probe]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Link to Evidence

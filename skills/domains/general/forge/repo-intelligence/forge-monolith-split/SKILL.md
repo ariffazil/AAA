@@ -7,6 +7,8 @@ license: MIT
 description: Split a monolithic Python file into per-module files.
 tags: [refactoring, python, modularization]
 related_skills: [code-review]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FORGE Monolith Split

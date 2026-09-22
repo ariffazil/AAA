@@ -1,6 +1,8 @@
 ---
 name: malaysian-physique-circuit
 description: MSIA BB comp intel, source map, Syed winner-only doctrine.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Malaysian Physique Circuit

@@ -6,6 +6,8 @@ license: MIT
 description: "Use when building a 24/7 agent that ticks on its own."
 tags: [agent, autonomy, loop, deepseek, mcp, federation, tick]
 related_skills: [federation-model-routing, arifos-federation-ops, hermes-forge, FORGE-subagent-spawn]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agentic Autonomy Loop

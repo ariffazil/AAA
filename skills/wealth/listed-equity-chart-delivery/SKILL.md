@@ -15,6 +15,8 @@ triggers:
   - asked to show a stock's history, peak, fall, or "since <event>"
   - asked about a delisted or renamed ticker
   - asked to evaluate a company from its price chart
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Listed Equity Chart Delivery

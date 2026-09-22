@@ -14,6 +14,8 @@ triggers:
   - "transaction excel"
   - "dashboard pdf"
   - "Trans_20"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # KPJ Sales Dashboard

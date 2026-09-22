@@ -3,6 +3,8 @@ name: causal-attribution-discipline
 description: "Use when asked WHY an event happened from indirect evidence."
 version: 1.0.0
 tags: [evidence, causation, attribution, forensics, witness]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Causal Attribution from Indirect Evidence

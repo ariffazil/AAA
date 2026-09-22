@@ -1,6 +1,8 @@
 ---
 name: hermes-rasa-doctrine
 description: "Runtime doctrine for human-reality handling — HERMES RASA."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # HERMES RASA — Reflex Card

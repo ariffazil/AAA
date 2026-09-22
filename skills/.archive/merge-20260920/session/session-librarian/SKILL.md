@@ -10,6 +10,8 @@ metadata:
     tags: [Sessions, Organization, Cleanup, Library, Productivity]
     category: productivity
     related_skills: [weekly-review-planning]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Session Librarian

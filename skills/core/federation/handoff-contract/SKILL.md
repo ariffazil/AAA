@@ -34,6 +34,8 @@ attention:
     - "receipt"
     - "return_contract"
 tags: [federation, handoff, A2A, delegation, F11, F13]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # core/federation/handoff-contract

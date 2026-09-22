@@ -3,6 +3,8 @@ name: autonomous-learning-loop
 description: "Use when building or auditing a self-improving loop."
 tags: [autonomy, loop, learning, verification, promotion, rsi, capability]
 related_skills: [agentic-autonomy-loop, live-probe-audit-pattern, verify-work]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Autonomous Learning Loop

@@ -17,6 +17,8 @@ triggers:
   - "the registry says X, this table says Y"
   - "this number has no source"
   - "which figures can I actually stand behind"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Public Claims Maintenance
@@ -181,6 +183,17 @@ MUTATION: <what was conformed> — reversible, committed <sha>
 - **An identifier can be a ROLE, not a seat.** A duty can sit in a roster table looking exactly like a numbered slot. Before treating a row as a second owner, check whether the underlying contract assigns that duty to an existing owner. Two rows for one agent = a phantom seat: delete the row, don't renumber it.
 - **"Three agree" is not a quorum unless the sources are independent.** Two copies of one document plus a derived view of it is one source wearing three hats. Count independent *registration* paths, not file paths.
 - **The root cause is rarely the wrong number — it is that no sweep happens when the number changes.** A renumber landing without a repository-wide grep leaves three eras of numbering alive in one tree. Sweep the identifier, not just the file you were shown.
+
+## When the repair ships as a PR (git-mechanical pitfalls)
+
+A truth sweep usually lands as a pull request, and the repository's own gates will judge it. Four failure modes each cost a rebuild:
+
+- **A partial `git add` followed by a bare `git commit` sweeps other writers' staged files into your commit.** Other sessions leave changes *staged* in a shared working tree (a version bump, a dependency fix). `git add README.md docs/x.md` then `git commit -F -` commits the whole index — including their file — and the required check for that file then fails on *your* diff. Commit with a pathspec (`git commit -F msg README.md docs/x.md`), and verify `git show --stat` immediately after. If the stat shows a file you did not touch, rebuild the branch on the base rather than amending.
+- **Never quote a repository's own guard as `Verified` without running it.** A row claiming "`--check` passes" survived in a README while the guard was red on `main`. Run the exact command and paste the exit status.
+- **Separate pre-existing drift from your own diff by reproducing on a pristine base worktree.** `git worktree add /tmp/base origin/main`, run the guard there; the same failure on a clean base means pre-existing. Give it its own gap row and say so in the PR, so the red check is not read as your regression.
+- **A manifest field cannot mean two things.** If a CI check binds `live_commit` to git HEAD lineage, it cannot also mean "the commit the deployed service reports". Name both fields (e.g. `deployed_kernel_commit` from `/health`) or state the lineage caveat in the field itself — do not silently redefine a field to turn a gate green.
+
+**A gate that fails on every PR is a finding, not an obstacle.** Two seen in one pass: a trailer check demanding a `REPO=` trailer on GitHub's own ephemeral merge commit, and a self-seal prohibition requiring a signed attestation from a *non-author* identity. Report the workflow line, the required fix, and the owner. Never manufacture the attestation and never edit the gate unilaterally.
 
 ## Pitfalls
 

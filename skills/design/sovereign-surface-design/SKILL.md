@@ -1,6 +1,8 @@
 ---
 name: sovereign-surface-design
-description: "Use when designing or re-skinning a sovereign web surface."
+description: "Use when designing, re-skinning, or auditing a sovereign web surface."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Sovereign Surface Design
@@ -136,6 +138,9 @@ Three checks, in order:
   role, contrast table, and composition that was accepted versus rejected.
 - `scripts/render_and_measure.py` — render an HTML preview at several widths, then report
   pixel coverage, dominant palette, WCAG ratios, and whether the JS wrote its values.
+- `references/public-surface-function-audit.md` — the non-visual pass: is the offer reachable by a
+  human, is the share card a raster, what a non-JS crawler sees, register of the first fold, and the
+  order to deliver findings in. Read this before proposing a redesign of a live page.
 
 ## See also
 

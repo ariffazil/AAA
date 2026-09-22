@@ -1,6 +1,8 @@
 ---
 name: petronas-entity-filings-probe
 description: Use when probing PETRONAS subsidiary filings (UK).
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # PETRONAS Entity-Level Filings Probe
@@ -105,6 +107,7 @@ The insider's most persuasive evidence is their own earlier writing, and it is t
 
 ## References
 
+- `references/governance-mapping-pattern.md` — mapping power consolidation, vendor conflict chains, and timing convergence in GLC governance analysis. Four-pattern framework, epistemic tag system, mandatory dossier sections, and the "downgrade to noise" falsification requirement.
 - `references/group-financial-report-audit.md` — auditing the PETRONAS group interim/FY report: the accumulated-share-of-losses trap, net-cash arithmetic, dividend-declared vs analyst estimate, operational-vs-one-off separation, two-series cross-labelling, deck-percentage vs report-absolute, non-cash borrowing movement, and how to handle a conflict with your own stored canon.
 - `references/dispute-time-value-and-optionality.md` — pricing a dispute, a concession or a competitor's entry through time value: float and earnings-uplift computation, effective-price decay under unpenalised delay, clock asymmetry between political and asset actors, reading pleadings for what a party did NOT contest, and the satellite-vehicle vs headcount-reduction distinction.
 - `references/counterparty-sec-filings.md` — working the SEC EDGAR lane for a foreign listed counterparty: the declared-User-Agent requirement, what a 6-K exhibit discloses that a host-country release does not, reading the acquirer's own gain-on-contribution as evidence of transfer value, and the ownership-vs-operatorship split worked through the Searah JV.

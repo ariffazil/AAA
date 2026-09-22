@@ -9,6 +9,8 @@ floor_scope: [F2, F4, F7, F9, F10, F13]
 autonomy_tier: T1
 forged: 2026-09-06
 status: active
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # dissipative-transition-hold
 

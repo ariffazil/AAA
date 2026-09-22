@@ -9,6 +9,8 @@ metadata:
     category: AGI
     tags: [qwencloud, meta-mesa, agi, asi, text, vision, image, video, tts, deploy, billing, mesh]
     related_skills: [qwencloud-cli, qwen-harness-tools, qwen-token-plan-team-edition, tokenrouter-guide, AGI-skill-unification]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # QwenCloud AGI/ASI Meta-Mesa Skill

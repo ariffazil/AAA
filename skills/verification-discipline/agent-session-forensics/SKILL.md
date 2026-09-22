@@ -3,6 +3,8 @@ name: agent-session-forensics
 description: "Use when asked how a prior run produced something."
 version: 1.0.0
 tags: [forensics, state-db, provenance, session-audit, subagent-dispatch, artifact-hash]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agent Session Forensics

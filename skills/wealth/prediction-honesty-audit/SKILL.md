@@ -1,6 +1,8 @@
 ---
 name: prediction-honesty-audit
 description: Use when asked to predict a price or outcome.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Prediction Honesty Audit

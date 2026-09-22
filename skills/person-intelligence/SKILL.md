@@ -10,7 +10,10 @@ merged_from:
   - public-profile-persona-mapping
 constitutional_floors: [F2, F4, F6, F7, F9, F13]
 triggers:
-  # --- human-intelligence-gathering ---
+  #
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+--- human-intelligence-gathering ---
   - "tell me about [person]"
   - "what does [person] want from me"
   - "profile [person]"

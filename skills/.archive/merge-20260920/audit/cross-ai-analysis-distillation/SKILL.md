@@ -3,6 +3,8 @@ name: cross-ai-analysis-distillation
 description: "Distill pasted external AI analysis against live disk."
 version: 1.0.0
 license: MIT
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Cross-AI Analysis Distillation

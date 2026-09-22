@@ -1,6 +1,8 @@
 ---
 name: operational-signal-routing
 description: 'Use when routing monitored or scheduled output to humans.'
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # operational-signal-routing
 

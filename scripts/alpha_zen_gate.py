@@ -22,6 +22,7 @@ WHAT IT REFUSES
   G10 render        the PDF/PNG exists and has a text-free sanity size
 
   Exit 0 = may send. Exit 1 = HOLD. Never sends anything itself.
+  G14 register      machine vocabulary must not reach a cell a human reads.
   G11 freshness     KENA_TAHU market/price claims must carry a DATE in the source,
                     and that date must be recent. A stale number with a real source
                     passes G3 and is still wrong.
@@ -95,6 +96,23 @@ STRUCTURAL = ("sistem", "system", "institusi", "institution", "governance", "tad
               "geology", "petroleum", "energy", "tenaga", "capital", "modal", "epistem",
               "architecture", "arkitektur", "data", "model", "provenance")
 
+# ── machine vocabulary. Reads as precision, carries no meaning to a human. ────
+# (pattern, label). Warned, never held — the boundary is a judgement: "RSI 59.3"
+# is a figure a trader reads fine, "confluence 0.016" is not. So it is made
+# VISIBLE rather than enforced, and the writer translates it.
+#
+# This tuple is named by the G14 warning check. A check that references a
+# constant nobody defined does not warn — it raises NameError and the gate
+# crashes for EVERY card, which is how this comment came to exist.
+MACHINE_TOKENS: tuple[tuple[str, str], ...] = (
+    (r"\bconfluence\b", "confluence"),
+    (r"\bRR\b", "RR"),
+    (r"\bEMA\s?\d+\b", "EMA code"),
+    (r"\bRSI\b", "RSI code"),
+    (r"\b(?:keyakinan|confidence)\s*0?\.\d+", "raw confidence"),
+    (r"\bverdict\b", "verdict"),
+)
+
 # ── privacy markers. A card both men read must not contain these. ────────────
 PRIVATE_MARKERS = (
     "dia pernah cakap", "hang pernah cakap", "arif pernah cakap", "syed pernah cakap",
@@ -103,6 +121,22 @@ PRIVATE_MARKERS = (
     "berdasarkan apa yang hang cerita", "sebab hang pernah",
     "mss rm", "rm418", "od1",          # named private figures must not reprint
 )
+
+#: Vocabulary the engine uses to talk to itself, which must not reach a cell a
+#: human reads. `RR 1.0, confluence 0.016` is opacity wearing the look of
+#: precision — the reader can act on neither. `Momentum 59.3` is different: a
+#: trader reads that figure directly, so only the raw engine internals and the
+#: bare indicator codes are listed here.
+MACHINE_TOKENS = (
+    (r"\bRR\s*(?:cuma\s*)?[\d.]+", "RR=<n>"),
+    (r"\bconfluence\s*[\d.]+", "confluence=<n>"),
+    (r"\bkeyakinan\s*[\d.]+", "keyakinan=<float>"),
+    (r"\bconfidence\s*[\d.]+", "confidence=<float>"),
+    (r"\bEMA\s*\d+", "EMA<n>"),
+    (r"\bRSI\s*[\d.]+", "RSI=<n>"),
+    (r"\bDOWNTREND\b|\bUPTREND\b", "TREND_TOKEN"),
+)
+
 
 
 def _norm(s: str) -> str:
@@ -200,6 +234,36 @@ def run(card_path: Path) -> tuple[bool, list[str], list[str]]:
     ok, detail = chron_ok()
     if not ok:
         errs.append(f"G4 chron: {detail}")
+
+    # G14 human register — WARN, not HOLD.
+    #
+    # The engine's internal vocabulary (RR, confluence, raw confidence floats) and
+    # bare indicator codes (EMA20, RSI) are how the machine talks to itself. In a
+    # cell a human reads, they are opacity wearing the look of precision: "RR cuma
+    # 1.0, confluence 0.016" tells the reader nothing he can act on, while the
+    # translated form ("sebab masuk tak cukup kuat untuk harga sekarang") carries
+    # the same finding.
+    #
+    # Warn rather than hold because the boundary is a judgement — "Momentum 59.3"
+    # is a figure a trader reads fine, "confluence 0.016" is not. A hard gate here
+    # would start deleting legitimate signal. The warning makes it VISIBLE so the
+    # writer fixes it; silence would let the register drift back.
+    # Armed on BOTH surfaces, because they are not the same surface: the pool rows
+    # are candidates, and `signals` is what actually publishes (G13). A rule that
+    # only guards the pool would let the machine vocabulary walk out the door on the
+    # one card the reader sees — clean where nobody looks, dirty where everybody does.
+    def _reg(txt: str, where: str) -> None:
+        hit = sorted({lab for pat, lab in MACHINE_TOKENS if re.search(pat, txt)})
+        if hit:
+            warns.append(f"G14 {where}: machine vocabulary in a human cell "
+                         f"({', '.join(hit)}) — translate to what it means, or drop it")
+
+    for r in rows:
+        for who in ("arif", "syed"):
+            _reg(((r.get(who) or {}).get("text") or ""), f"row {r.get('n')} ({who})")
+    for i, sig in enumerate(c.get("signals") or []):
+        if isinstance(sig, dict):
+            _reg((sig.get("text") or ""), f"signals[{i}] ({sig.get('who')})")
 
     # G5 duplication — any two rows sharing a strong subject overlap
     for i in range(len(rows)):
@@ -302,6 +366,101 @@ def run(card_path: Path) -> tuple[bool, list[str], list[str]]:
                     f"({m.group(0)!r}). A number written into text is frozen at "
                     f"authoring time and will be wrong tomorrow. Cite the DATE "
                     f"instead; let CHRON carry the countdown.")
+
+    # ── G13 THE SIGNAL CARD ────────────────────────────────────────────────
+    # F13-directed 2026-09-21: "too chaos, signal only". The 9 rows are the
+    # candidate POOL; `signals` is what actually publishes.
+    #
+    # This is not a second gate bolted on for symmetry. Narrowing is where
+    # people get dropped: the first lines to vanish from a "signal only" card
+    # are the ones whose subject is rarest in the day's news — which is
+    # exactly Syed's whole lane. So the publication layer gets its own wall:
+    # the pool may be wide, the card must be narrow, and BOTH men must still
+    # come out of it with something.
+    sigs = c.get("signals")
+    if sigs is not None:
+        # GYM is reused as-is (body words). GOLD is NOT: GOLD is a POOL anchor,
+        # where "kadar" or "risk" is enough to say a row is about money. The
+        # signal card needs a line a reader can recognise AS the gold/trading
+        # lane, so the loose topic words are dropped here and the rest matched
+        # on word boundaries.
+        gym = GYM
+        gold = ("emas", "gold", "xauusd", "perak", "silver", "bank pusat", "central bank",
+                "rizab", "reserve", "dxy", "us10y", "trading", "posisi")
+        if not isinstance(sigs, list) or not (4 <= len(sigs) <= 8):
+            got = len(sigs) if isinstance(sigs, list) else "not a list"
+            errs.append(f"G13 signals: need 4-8 lines, got {got} — a signal card "
+                        f"that needs scrolling is the card it was meant to replace")
+        seen: list[tuple[int, set[str]]] = []
+        if isinstance(sigs, list):
+            for i, s in enumerate(sigs):
+                if not isinstance(s, dict):
+                    errs.append(f"G13 signals[{i}]: not an object")
+                    continue
+                if s.get("who") not in ("arif", "syed", "shared"):
+                    errs.append(f"G13 signals[{i}]: who must be arif|syed|shared, "
+                                f"got {s.get('who')!r}")
+                txt = (s.get("text") or "").strip()
+                if not txt:
+                    errs.append(f"G13 signals[{i}]: empty — a signal that says nothing "
+                                f"is a blank line with a receipt")
+                    continue
+                if len(txt) > 240:
+                    errs.append(f"G13 signals[{i}]: {len(txt)} chars — a signal is one "
+                                f"sentence, not a paragraph. Cut it or leave it in the pool.")
+                for tok in ("KENA_TAHU", "SUKA_TAHU", "EUREKA", "ARIF:", "SYED:"):
+                    if tok.lower() in txt.lower():
+                        errs.append(f"G13 signals[{i}]: contains the machine label {tok!r} — "
+                                    f"the card speaks human; the tiers stay in the file")
+                for m in daycount.finditer(txt):
+                    st = m.start(1)
+                    if st >= 1 and txt[st - 1] == ",":
+                        continue
+                    if int(m.group(1)) >= 400:
+                        continue
+                    if allow_ctx.search(txt[max(0, m.start() - 30):m.end() + 30]):
+                        continue
+                    errs.append(f"G13 signals[{i}]: carries a day-count ({m.group(0)!r}) that "
+                                f"is wrong tomorrow — cite the date and let CHRON count")
+                for mk in PRIVATE_MARKERS:
+                    if mk in txt.lower():
+                        errs.append(f"G13 signals[{i}]: private marker {mk!r} — "
+                                    f"read it as the other man would")
+                subj = _subject(txt)
+                for j, prev in seen:
+                    if not subj or not prev:
+                        continue
+                    ov = len(subj & prev) / max(1, min(len(subj), len(prev)))
+                    if ov >= 0.45:
+                        errs.append(f"G13 signals[{i}] and signals[{j}] share {ov:.0%} of "
+                                    f"subject terms — one event printed twice")
+                seen.append((i, subj))
+            texts = [(s.get("text") or "").lower() for s in sigs if isinstance(s, dict)]
+            # WORD-BOUNDARY matching, not substring. Caught by the negative control:
+            # "kemas kini" contains "emas", so deleting the gold line STILL passed
+            # the gold anchor. A substring test turns a coincidence of spelling into
+            # evidence of a signal — the same defect class as G12 flagging
+            # "11,000 tahun" as a countdown.
+            def _wb(tl: list[str], lex: tuple[str, ...]) -> bool:
+                pat = rf"\b(?:{'|'.join(re.escape(k) for k in lex)})"
+                return any(re.search(pat, t) for t in tl)
+
+            # Lexical backstop, not a judgement: it proves a gym line and a gold
+            # line are PRESENT. Whether either is any good is the composer's job.
+            if not _wb(texts, gym):
+                errs.append("G13 anchors: no gym/body line survived the narrowing — "
+                            "Syed's permanent attractor was dropped to make room")
+            if not _wb(texts, gold):
+                errs.append("G13 anchors: no gold/trading line survived the narrowing — "
+                            "Syed's permanent attractor was dropped to make room")
+            if not any(s.get("who") in ("arif", "shared") for s in sigs
+                       if isinstance(s, dict)):
+                errs.append("G13 relevance: every line belongs to Syed's world — "
+                            "Arif is reading someone else's card")
+            if not any(s.get("who") in ("syed", "shared") for s in sigs
+                       if isinstance(s, dict)):
+                errs.append("G13 relevance: every line belongs to Arif's world — "
+                            "Syed is reading someone else's card")
 
     return (not errs), errs, warns
 

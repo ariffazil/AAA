@@ -7,6 +7,8 @@ category: verification-discipline
 tags: [asr, whisper, vision, ocr, hallucination, evidence, verification, media]
 floor_scope: [F2, F4, F7, F9]
 autonomy_tier: T1
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Machine-read verification — falsify the model before you relay it

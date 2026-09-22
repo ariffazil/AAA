@@ -17,6 +17,8 @@ triggers:
   - "healthy but no data"
   - "white box not working"
   - "backend configured but empty"
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Kabarkan — Sovereign Observability Plane

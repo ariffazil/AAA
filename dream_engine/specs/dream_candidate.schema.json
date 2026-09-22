@@ -1,0 +1,314 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://arifos.dev/schemas/dream-candidate-v2.json",
+  "title": "DreamCandidate",
+  "description": "Machine-readable dream output. Each candidate is an observed pattern proposed for promotion — NOT a ratified lesson. Three orthogonal confidence dimensions replace the single p= scalar.",
+  "type": "object",
+  "required": ["id", "claim", "provenance", "evidence", "epistemics", "lifecycle"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^DC-[0-9]{4}-[0-9]{3,}$",
+      "description": "Unique identifier: DC-YYYY-NNN"
+    },
+    "claim": {
+      "type": "object",
+      "required": ["statement"],
+      "properties": {
+        "statement": {
+          "type": "string",
+          "description": "One concise structural observation. Falsifiable. No narrative."
+        },
+        "scope": {
+          "type": "string",
+          "description": "Context where this pattern holds. E.g. 'technical-agent/runtime-state', 'human-interface', 'federation-wide'."
+        },
+        "scope_boundary": {
+          "type": "string",
+          "description": "Where this pattern does NOT hold. Prevents compression drift — every rule needs its exception surface."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "operational_hypothesis",
+            "governance_pattern",
+            "persona_preference",
+            "dangerous_hypothesis",
+            "contextual_heuristic",
+            "observation_only"
+          ],
+          "description": "Epistemic class of the claim."
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_sessions", "observation_window"],
+      "properties": {
+        "source_organs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Which agent/organs produced traces supporting this candidate."
+        },
+        "source_sessions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Session IDs where this pattern was observed."
+        },
+        "observation_window": {
+          "type": "object",
+          "properties": {
+            "start": { "type": "string", "format": "date-time" },
+            "end": { "type": "string", "format": "date-time" }
+          }
+        },
+        "derivation_model": {
+          "type": "string",
+          "description": "Model used for distillation."
+        },
+        "episode_refs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pointers to raw episodes in CHRON or state.db."
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["observations"],
+      "properties": {
+        "observations": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total observations supporting this pattern."
+        },
+        "supporting": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "contradictory": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "supporting_quotes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "maxItems": 3,
+          "description": "Max 3 verbatim supporting excerpts."
+        }
+      }
+    },
+    "epistemics": {
+      "type": "object",
+      "required": ["p_occurrence", "p_predictive", "p_normative", "causal_status"],
+      "properties": {
+        "p_occurrence": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "How consistently did this pattern appear? frequency(observation)."
+        },
+        "p_predictive": {
+          "type": ["number", "null"],
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "How well does this pattern predict future outcomes? null = untested."
+        },
+        "p_normative": {
+          "type": ["number", "null"],
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "How much authority does this have to govern behavior? null = no authority yet."
+        },
+        "causal_status": {
+          "type": "string",
+          "enum": [
+            "UNTESTED",
+            "CORRELATION_ONLY",
+            "CAUSAL_HYPOTHESIS",
+            "CAUSAL_SUPPORTED",
+            "CAUSAL_REFUTED",
+            "COUNTERFACTUAL_TESTED"
+          ],
+          "description": "Pearl's causal ladder position."
+        },
+        "confidence_interval": {
+          "type": ["object", "null"],
+          "properties": {
+            "lower": { "type": "number" },
+            "upper": { "type": "number" },
+            "method": { "type": "string" }
+          }
+        }
+      }
+    },
+    "consequence": {
+      "type": "object",
+      "description": "Fourth independent axis: what happens if this candidate is wrong?",
+      "properties": {
+        "cost_if_wrong": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH", "CATASTROPHIC"],
+          "description": "Cost of acting on a false candidate."
+        },
+        "reversibility": {
+          "type": "string",
+          "enum": ["EASILY_REVERSIBLE", "REVERSIBLE_WITH_COST", "DIFFICULT_TO_REVERSE", "IRREVERSIBLE"]
+        },
+        "affected_surfaces": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Which systems/agents are affected if this candidate governs behavior incorrectly."
+        },
+        "recovery_path": {
+          "type": "string",
+          "description": "How to recover if this candidate is applied and turns out wrong."
+        }
+      }
+    },
+    "falsification": {
+      "type": "object",
+      "properties": {
+        "counterstories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Rival explanations for this pattern."
+        },
+        "cheapest_probe": {
+          "type": "string",
+          "description": "The lowest-cost test that could disconfirm this candidate."
+        },
+        "disconfirming_condition": {
+          "type": "string",
+          "description": "Under what conditions would this pattern fail?"
+        }
+      }
+    },
+    "rehearsal": {
+      "type": "object",
+      "properties": {
+        "replay_cases": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Historical episodes replayed against this candidate."
+        },
+        "counterfactual_cases": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failures": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Replay cases where the candidate failed."
+        }
+      }
+    },
+    "temporal": {
+      "type": "object",
+      "properties": {
+        "prediction_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "CHRON prediction IDs generated from this candidate."
+        },
+        "calibration_n": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of resolved predictions."
+        },
+        "brier_score": {
+          "type": ["number", "null"],
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Brier score for resolved predictions. Lower = better calibrated."
+        }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "properties": {
+        "blast_radius": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+        },
+        "reversible": {
+          "type": "boolean"
+        },
+        "human_dependency": {
+          "type": "boolean",
+          "description": "Does implementing this require human approval?"
+        },
+        "personal_memory_dependency": {
+          "type": "boolean",
+          "description": "Does this pattern depend on personal/STORY-class memory? If so, it cannot be promoted to agent canon."
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["state", "created_at"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "OBSERVED",
+            "CANDIDATE",
+            "REPLAYED",
+            "PROSPECTIVE",
+            "REPLICATED",
+            "LESSON",
+            "POLICY_PROPOSAL",
+            "RATIFIED",
+            "SUPERSEDED",
+            "RETRACTED",
+            "DECAYED"
+          ],
+          "description": "Promotion state. Only RATIFIED can influence system behavior."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_tested_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "last_seen_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Last time this pattern was observed in live traces."
+        },
+        "decay_policy": {
+          "type": "string",
+          "description": "E.g. 'RETRACT if not observed in 6 cycles', 'DECAY p_occurrence by 0.05 per cycle'."
+        },
+        "supersedes": {
+          "type": ["string", "null"],
+          "description": "ID of the candidate this one replaces."
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "properties": {
+        "proposed_by": {
+          "type": "string",
+          "default": "DREAM_ENGINE"
+        },
+        "witnessed_by": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Organs that independently verified this candidate."
+        },
+        "ratified_by": {
+          "type": ["string", "null"],
+          "description": "F13 sovereign or 888-APEX seal. null = not ratified."
+        }
+      }
+    }
+  }
+}

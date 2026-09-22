@@ -1,0 +1,903 @@
+{
+  "total": 188,
+  "ratified_zen": [
+    {
+      "file": "naming-doctrine.md",
+      "size": 39020,
+      "zen_score": 16
+    }
+  ],
+  "ratified_low_zen": [
+    {
+      "file": "apex-zen-alignment.md",
+      "size": 829,
+      "zen_score": 0
+    },
+    {
+      "file": "attention-routing.md",
+      "size": 1265,
+      "zen_score": 0
+    },
+    {
+      "file": "three-consequence-domains.md",
+      "size": 1882,
+      "zen_score": 0
+    },
+    {
+      "file": "human-attention-membrane.md",
+      "size": 1940,
+      "zen_score": 0
+    },
+    {
+      "file": "four-layer-separation.md",
+      "size": 2047,
+      "zen_score": 0
+    },
+    {
+      "file": "experience-surface.md",
+      "size": 2086,
+      "zen_score": 0
+    },
+    {
+      "file": "experience-metabolism-reflex.md",
+      "size": 2439,
+      "zen_score": 0
+    },
+    {
+      "file": "arif-human-principal.md",
+      "size": 2680,
+      "zen_score": 0
+    },
+    {
+      "file": "probe-before-panic.md",
+      "size": 2768,
+      "zen_score": 0
+    },
+    {
+      "file": "sanctuary-invariant.md",
+      "size": 2774,
+      "zen_score": 0
+    },
+    {
+      "file": "trauma-theorem.md",
+      "size": 2777,
+      "zen_score": 0
+    },
+    {
+      "file": "human-memory-compartmentalization.md",
+      "size": 2901,
+      "zen_score": 0
+    },
+    {
+      "file": "memory-promotion-gate.md",
+      "size": 3010,
+      "zen_score": 0
+    },
+    {
+      "file": "anti-collapse-doctrine.md",
+      "size": 3173,
+      "zen_score": 0
+    },
+    {
+      "file": "universal-agent-relationship-constitution.md",
+      "size": 3407,
+      "zen_score": 0
+    },
+    {
+      "file": "law-of-binding.md",
+      "size": 3485,
+      "zen_score": 0
+    },
+    {
+      "file": "escalation-boundary.md",
+      "size": 3551,
+      "zen_score": 0
+    },
+    {
+      "file": "gui-spec.md",
+      "size": 3609,
+      "zen_score": 0
+    },
+    {
+      "file": "agent-compartment.md",
+      "size": 3636,
+      "zen_score": 0
+    },
+    {
+      "file": "write-price-collapse.md",
+      "size": 3770,
+      "zen_score": 0
+    },
+    {
+      "file": "sovereign-attention-preservation.md",
+      "size": 3781,
+      "zen_score": 0
+    },
+    {
+      "file": "prompting-attention-allocation.md",
+      "size": 3821,
+      "zen_score": 0
+    },
+    {
+      "file": "temporal-intelligence-doctrine.md",
+      "size": 3861,
+      "zen_score": 0
+    },
+    {
+      "file": "cognitive-cost-transfer-eurekas.md",
+      "size": 4130,
+      "zen_score": 0
+    },
+    {
+      "file": "economics-as-witness.md",
+      "size": 4186,
+      "zen_score": 0
+    },
+    {
+      "file": "interpreter-drift.md",
+      "size": 4239,
+      "zen_score": 0
+    },
+    {
+      "file": "consequence-honoring-doctrine.md",
+      "size": 4283,
+      "zen_score": 0
+    },
+    {
+      "file": "state-transition-discipline.md",
+      "size": 4287,
+      "zen_score": 0
+    },
+    {
+      "file": "apex-zen-breath-loop.md",
+      "size": 4401,
+      "zen_score": 0
+    },
+    {
+      "file": "attention-scarcity-economics.md",
+      "size": 4516,
+      "zen_score": 0
+    },
+    {
+      "file": "attention-kill-criterion.md",
+      "size": 4964,
+      "zen_score": 0
+    },
+    {
+      "file": "national-intelligence-invariants.md",
+      "size": 5125,
+      "zen_score": 0
+    },
+    {
+      "file": "federation-orthogonality.md",
+      "size": 5129,
+      "zen_score": 0
+    },
+    {
+      "file": "three-plane-architecture.md",
+      "size": 5509,
+      "zen_score": 0
+    },
+    {
+      "file": "temporal-grounding-doctrine.md",
+      "size": 5625,
+      "zen_score": 0
+    },
+    {
+      "file": "anti-haram-behavior-canonical.md",
+      "size": 5815,
+      "zen_score": 0
+    },
+    {
+      "file": "shadow-paradoxes-13.md",
+      "size": 5959,
+      "zen_score": 0
+    },
+    {
+      "file": "exit-cost-invariant.md",
+      "size": 5976,
+      "zen_score": 0
+    },
+    {
+      "file": "institutional-memory-strata.md",
+      "size": 6353,
+      "zen_score": 0
+    },
+    {
+      "file": "attention-init-boundary.md",
+      "size": 6580,
+      "zen_score": 0
+    },
+    {
+      "file": "federation-personality-taxonomy-2026-09-11.md",
+      "size": 6665,
+      "zen_score": 0
+    },
+    {
+      "file": "authority-envelope.md",
+      "size": 7066,
+      "zen_score": 0
+    },
+    {
+      "file": "jauhari-intelligence-doctrine.md",
+      "size": 7507,
+      "zen_score": 0
+    },
+    {
+      "file": "dunbar-constraint.md",
+      "size": 7821,
+      "zen_score": 0
+    },
+    {
+      "file": "doctrine-admission-gate.md",
+      "size": 8043,
+      "zen_score": 0
+    },
+    {
+      "file": "consequence-bearing-identity.md",
+      "size": 8418,
+      "zen_score": 0
+    },
+    {
+      "file": "reclassification-gate.md",
+      "size": 8905,
+      "zen_score": 0
+    },
+    {
+      "file": "triad-perspective-consequence-persistence.md",
+      "size": 9031,
+      "zen_score": 0
+    },
+    {
+      "file": "ATTENTION_GOVERNOR.md",
+      "size": 9115,
+      "zen_score": 0
+    },
+    {
+      "file": "emd-architecture.md",
+      "size": 9420,
+      "zen_score": 0
+    },
+    {
+      "file": "harness-commoditization-boundary.md",
+      "size": 9603,
+      "zen_score": 0
+    },
+    {
+      "file": "six-graph-federation-model.md",
+      "size": 9624,
+      "zen_score": 0
+    },
+    {
+      "file": "human-meaning-membrane.md",
+      "size": 9753,
+      "zen_score": 0
+    },
+    {
+      "file": "witness-cost-gradient.md",
+      "size": 10646,
+      "zen_score": 0
+    },
+    {
+      "file": "federation-orthogonality-invariant-floor-mapping.md",
+      "size": 11150,
+      "zen_score": 0
+    },
+    {
+      "file": "register-as-channel.md",
+      "size": 13245,
+      "zen_score": 0
+    },
+    {
+      "file": "LEAN_BOOT_PROFILE.md",
+      "size": 13691,
+      "zen_score": 0
+    },
+    {
+      "file": "anti-haram-behavior-canonical-human.md",
+      "size": 14361,
+      "zen_score": 0
+    },
+    {
+      "file": "codebase-reality-forger-init-v1.md",
+      "size": 14825,
+      "zen_score": 0
+    },
+    {
+      "file": "F13-RATIFICATION-READINESS.md",
+      "size": 16023,
+      "zen_score": 0
+    },
+    {
+      "file": "world-model-daemon-spec.md",
+      "size": 17254,
+      "zen_score": 0
+    },
+    {
+      "file": "hermes-shadow.md",
+      "size": 18983,
+      "zen_score": 0
+    },
+    {
+      "file": "attention-graph.md",
+      "size": 18984,
+      "zen_score": 0
+    },
+    {
+      "file": "cultural-evolution-doctrine.md",
+      "size": 22548,
+      "zen_score": 0
+    },
+    {
+      "file": "LEAN_BOOT_TRIGGER_TABLE.md",
+      "size": 23510,
+      "zen_score": 0
+    },
+    {
+      "file": "huma-edge-reality-bridge-contrast.md",
+      "size": 23656,
+      "zen_score": 0
+    },
+    {
+      "file": "agi-asi-skills-fundamentals.md",
+      "size": 24954,
+      "zen_score": 0
+    }
+  ],
+  "drafts": [
+    {
+      "file": "attention-routing.md",
+      "size": 1265,
+      "zen_score": 0
+    },
+    {
+      "file": "exit-cost-invariant.md",
+      "size": 5976,
+      "zen_score": 0
+    },
+    {
+      "file": "attention-init-boundary.md",
+      "size": 6580,
+      "zen_score": 0
+    },
+    {
+      "file": "federation-personality-taxonomy-2026-09-11.md",
+      "size": 6665,
+      "zen_score": 0
+    },
+    {
+      "file": "doctrine-admission-gate.md",
+      "size": 8043,
+      "zen_score": 0
+    },
+    {
+      "file": "reclassification-gate.md",
+      "size": 8905,
+      "zen_score": 0
+    },
+    {
+      "file": "triad-perspective-consequence-persistence.md",
+      "size": 9031,
+      "zen_score": 0
+    },
+    {
+      "file": "F13-RATIFICATION-READINESS.md",
+      "size": 16023,
+      "zen_score": 0
+    },
+    {
+      "file": "world-model-daemon-spec.md",
+      "size": 17254,
+      "zen_score": 0
+    },
+    {
+      "file": "monotonic-recovery.md",
+      "size": 1222,
+      "zen_score": 0
+    },
+    {
+      "file": "witness-maintenance.md",
+      "size": 1311,
+      "zen_score": 0
+    },
+    {
+      "file": "care-governor.md",
+      "size": 2208,
+      "zen_score": 0
+    },
+    {
+      "file": "capability-rich-authority-poor.md",
+      "size": 3440,
+      "zen_score": 0
+    },
+    {
+      "file": "skill-zen-collapse-doctrine.md",
+      "size": 3762,
+      "zen_score": 0
+    },
+    {
+      "file": "state-dependent-doctrine.md",
+      "size": 3934,
+      "zen_score": 0
+    },
+    {
+      "file": "orthogonal-verification-surfaces.md",
+      "size": 3979,
+      "zen_score": 0
+    },
+    {
+      "file": "HERMES-RASA-CANONICAL-COMPRESSION.md",
+      "size": 4028,
+      "zen_score": 0
+    },
+    {
+      "file": "reversibility-as-information-test.md",
+      "size": 4186,
+      "zen_score": 0
+    },
+    {
+      "file": "meaning-consequence-vitality.md",
+      "size": 4419,
+      "zen_score": 0
+    },
+    {
+      "file": "external-action-repair.md",
+      "size": 4492,
+      "zen_score": 0
+    },
+    {
+      "file": "add-only-truth-preservation.md",
+      "size": 4539,
+      "zen_score": 0
+    },
+    {
+      "file": "modular-orthogonal-federation.md",
+      "size": 4773,
+      "zen_score": 0
+    },
+    {
+      "file": "capability-temperature-architecture.md",
+      "size": 4851,
+      "zen_score": 0
+    },
+    {
+      "file": "bijaksana-audit-discipline.md",
+      "size": 4963,
+      "zen_score": 0
+    },
+    {
+      "file": "representation-reality-invariant.md",
+      "size": 5498,
+      "zen_score": 0
+    },
+    {
+      "file": "scar-engineering.md",
+      "size": 5778,
+      "zen_score": 0
+    },
+    {
+      "file": "functional-spec-binding-path.md",
+      "size": 7466,
+      "zen_score": 0
+    },
+    {
+      "file": "fsl-f13-non-substitution-boundary.md",
+      "size": 7735,
+      "zen_score": 0
+    },
+    {
+      "file": "story-as-drift-vector.md",
+      "size": 7735,
+      "zen_score": 0
+    },
+    {
+      "file": "functional-spec-canonical-ontology.md",
+      "size": 7755,
+      "zen_score": 0
+    },
+    {
+      "file": "functional-spec-vaul999-anchoring.md",
+      "size": 7767,
+      "zen_score": 0
+    },
+    {
+      "file": "hermes-layer-discipline.md",
+      "size": 9388,
+      "zen_score": 0
+    },
+    {
+      "file": "syed-forge-doctrines.md",
+      "size": 10820,
+      "zen_score": 0
+    },
+    {
+      "file": "hermes-shadow-paradox.md",
+      "size": 12863,
+      "zen_score": 0
+    },
+    {
+      "file": "hermes-v1-canon.md",
+      "size": 15324,
+      "zen_score": 0
+    },
+    {
+      "file": "bbb-actor-physics-framework.md",
+      "size": 18992,
+      "zen_score": 0
+    }
+  ],
+  "unmarked": [
+    {
+      "file": "agentic-federation-substrate.md",
+      "size": 11646
+    },
+    {
+      "file": "zen-checkpoint.md",
+      "size": 689
+    },
+    {
+      "file": "capability-gate.md",
+      "size": 737
+    },
+    {
+      "file": "bijaksana-alignment-v1.md",
+      "size": 851
+    },
+    {
+      "file": "knowledge-ingestion-schema.md",
+      "size": 1069
+    },
+    {
+      "file": "attention-as-reality-continuity.md",
+      "size": 1231
+    },
+    {
+      "file": "zen-alignment-audit-v1.md",
+      "size": 1294
+    },
+    {
+      "file": "closed-loop-vmodel.md",
+      "size": 1408
+    },
+    {
+      "file": "context-axes.md",
+      "size": 1685
+    },
+    {
+      "file": "vault999-writer-discipline.md",
+      "size": 1748
+    },
+    {
+      "file": "protocol-layers-doctrine.md",
+      "size": 1819
+    },
+    {
+      "file": "godel-eurekas-brief.md",
+      "size": 2010
+    },
+    {
+      "file": "autonomous-execution-seal.md",
+      "size": 2046
+    },
+    {
+      "file": "human-memory.md",
+      "size": 2077
+    },
+    {
+      "file": "testimony-gate.md",
+      "size": 2136
+    },
+    {
+      "file": "CANON-LOCK-PROTOCOL.md",
+      "size": 2172
+    },
+    {
+      "file": "claim-receipt-binding.md",
+      "size": 2246
+    },
+    {
+      "file": "causal-ingestion.md",
+      "size": 2399
+    },
+    {
+      "file": "ccc-autonomy-ladder.md",
+      "size": 2492
+    },
+    {
+      "file": "data-authority-hierarchy.md",
+      "size": 2542
+    },
+    {
+      "file": "universe-bootstrap.md",
+      "size": 2642
+    },
+    {
+      "file": "constitutional-separation.md",
+      "size": 2689
+    },
+    {
+      "file": "wawabot-anthropology.md",
+      "size": 2721
+    },
+    {
+      "file": "ecosystem-expansion.md",
+      "size": 2873
+    },
+    {
+      "file": "autonomous-substrate-kernel.md",
+      "size": 3076
+    },
+    {
+      "file": "gate-promotion.md",
+      "size": 3163
+    },
+    {
+      "file": "cbi-doctrine-family-bridge.md",
+      "size": 3166
+    },
+    {
+      "file": "reality-compression.md",
+      "size": 3166
+    },
+    {
+      "file": "kernel-hardening-eurekas.md",
+      "size": 3264
+    },
+    {
+      "file": "category-individual.md",
+      "size": 3425
+    },
+    {
+      "file": "shadow-as-expensive-reality.md",
+      "size": 3451
+    },
+    {
+      "file": "witnessed-territory.md",
+      "size": 3534
+    },
+    {
+      "file": "mail-access.md",
+      "size": 3555
+    },
+    {
+      "file": "apex-rose-parallel.md",
+      "size": 3607
+    },
+    {
+      "file": "security.md",
+      "size": 3665
+    },
+    {
+      "file": "evidence-discipline.md",
+      "size": 3669
+    },
+    {
+      "file": "anti-calhoun.md",
+      "size": 3796
+    },
+    {
+      "file": "governance-eurekas-20260910.md",
+      "size": 3834
+    },
+    {
+      "file": "human-reality-invariants.md",
+      "size": 3852
+    },
+    {
+      "file": "build.md",
+      "size": 3856
+    },
+    {
+      "file": "zen.md",
+      "size": 3992
+    },
+    {
+      "file": "consequence-binding.md",
+      "size": 4118
+    },
+    {
+      "file": "witness-zen-doctrine.md",
+      "size": 4136
+    },
+    {
+      "file": "epistemic-witness-doctrine.md",
+      "size": 4187
+    },
+    {
+      "file": "cost-of-translation.md",
+      "size": 4256
+    },
+    {
+      "file": "human-zero-visibility-invariant.md",
+      "size": 4307
+    },
+    {
+      "file": "conscience-embodiment.md",
+      "size": 4493
+    },
+    {
+      "file": "_UNRENDERED_INDEX.md",
+      "size": 4575
+    },
+    {
+      "file": "constitution.md",
+      "size": 4719
+    },
+    {
+      "file": "apex-swot-loop.md",
+      "size": 4993
+    },
+    {
+      "file": "autonomy.md",
+      "size": 5078
+    },
+    {
+      "file": "geology-artifact-kinabalu-basin.md",
+      "size": 5136
+    },
+    {
+      "file": "apex-reality-kernel.md",
+      "size": 5266
+    },
+    {
+      "file": "compute-attention-invariant.md",
+      "size": 5290
+    },
+    {
+      "file": "topology.md",
+      "size": 5493
+    },
+    {
+      "file": "pointers.md",
+      "size": 5684
+    },
+    {
+      "file": "epistemic-precedent-indicators.md",
+      "size": 5726
+    },
+    {
+      "file": "musyawarah.md",
+      "size": 5745
+    },
+    {
+      "file": "agentic-kernel-asi-doctrine.md",
+      "size": 5878
+    },
+    {
+      "file": "reality-alignment-kernel.md",
+      "size": 6075
+    },
+    {
+      "file": "exe-receipt-discipline.md",
+      "size": 6167
+    },
+    {
+      "file": "openclaw-constitutional-init.md",
+      "size": 6360
+    },
+    {
+      "file": "reality-first.md",
+      "size": 6375
+    },
+    {
+      "file": "constitutional-runtime-promotion.md",
+      "size": 6414
+    },
+    {
+      "file": "dissipative-transition.md",
+      "size": 6702
+    },
+    {
+      "file": "github-zen.md",
+      "size": 7018
+    },
+    {
+      "file": "federation-invariants.md",
+      "size": 7272
+    },
+    {
+      "file": "agentic-architecture.md",
+      "size": 7275
+    },
+    {
+      "file": "skill-mesh-conflict-register.md",
+      "size": 7856
+    },
+    {
+      "file": "proxy-reality-paradox.md",
+      "size": 7885
+    },
+    {
+      "file": "federation-orthogonality-future-state.md",
+      "size": 7977
+    },
+    {
+      "file": "maturation-dynamics.md",
+      "size": 8455
+    },
+    {
+      "file": "representation-layer-integrity.md",
+      "size": 8500
+    },
+    {
+      "file": "arifos-institutional-emergence-doctrine.md",
+      "size": 9009
+    },
+    {
+      "file": "identity-continuity.md",
+      "size": 9575
+    },
+    {
+      "file": "registry-witness-governance.md",
+      "size": 9750
+    },
+    {
+      "file": "coding-federation-external-contrast.md",
+      "size": 10129
+    },
+    {
+      "file": "civilizational-dependency-graph.md",
+      "size": 10458
+    },
+    {
+      "file": "agentic-web.md",
+      "size": 10622
+    },
+    {
+      "file": "anti-shadow-architecture.md",
+      "size": 11151
+    },
+    {
+      "file": "base.md",
+      "size": 11742
+    },
+    {
+      "file": "human-cognitive-artifact-invariants.md",
+      "size": 11825
+    },
+    {
+      "file": "CARRY-FORWARD-PATH-RECONCILIATION.md",
+      "size": 12760
+    },
+    {
+      "file": "amodei-corpus-agent-lessons.md",
+      "size": 12809
+    },
+    {
+      "file": "epistemic-operating-rules.md",
+      "size": 14231
+    },
+    {
+      "file": "civ-21.md",
+      "size": 14341
+    },
+    {
+      "file": "hermes-interdisciplinary-layers.md",
+      "size": 14460
+    },
+    {
+      "file": "reality-bound-authority.md",
+      "size": 15435
+    },
+    {
+      "file": "inter-agent-protocol.md",
+      "size": 16106
+    },
+    {
+      "file": "agi-grade-authority-kernel-invariants.md",
+      "size": 17482
+    },
+    {
+      "file": "hermes-shadow-SOURCE-2026-09-16.md",
+      "size": 20894
+    },
+    {
+      "file": "CARRY-FORWARD-ARIFOS-LANE-LINEAGE-003.md",
+      "size": 20961
+    },
+    {
+      "file": "hermes-rasa.md",
+      "size": 30843
+    }
+  ]
+}

@@ -19,6 +19,8 @@ triggers:
   - "what did he say to you"
   - "abang sado penat"
   - "worry about a loved one"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Loved-One Worry Support

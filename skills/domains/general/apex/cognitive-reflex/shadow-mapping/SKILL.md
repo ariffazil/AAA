@@ -3,6 +3,8 @@ name: shadow-mapping
 description: "Shadow mapping from WhatsApp for Arif. F5-private."
 version: 1.1.0
 tags: [shadow, mapping, scars, private]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Shadow Mapping — Deep Relational Synthesis

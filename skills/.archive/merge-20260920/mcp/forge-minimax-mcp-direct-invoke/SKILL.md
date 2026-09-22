@@ -1,6 +1,8 @@
 ---
 name: forge-minimax-mcp-direct-invoke
 description: "Use when invoking minimax-media MCP via Python client directly, bypassing any wrapper. Invoke MCP minimax-media via Python client."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # forge-minimax-mcp-direct-invoke

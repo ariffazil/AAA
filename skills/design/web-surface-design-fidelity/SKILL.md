@@ -6,6 +6,8 @@ risk_tier: low
 floor_scope: [F2, F4, F6, F13]
 autonomy_tier: T1
 tags: [design, typography, composition, frontend, preview, visual-fidelity]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Web Surface Design Fidelity

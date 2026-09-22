@@ -14,6 +14,8 @@ triggers:
   - "latency breakdown / TTFT"
   - "subsurface systems audit"
   - "profile the running system"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Live Pipeline Trace Audit

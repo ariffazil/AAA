@@ -13,6 +13,8 @@ trigger_when:
   - a_background_process_keeps_staging_writes
   - user_asks_to_approve_all
 tags: [meta, triage, approvals, memory, governance, hygiene]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Staged Write Triage

@@ -4,6 +4,8 @@ description: Peptide protocols. Dose/timing/stacking for gym crowd.
 version: 1.0.0
 tags: [biohacking, peptide, mots-c, nad+, semax, selank, mitochondrial, recovery, longevity, gym]
 forged: 2026-08-24
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Biohacker Peptide Stack — Class-Level Skill

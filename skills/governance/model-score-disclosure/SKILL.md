@@ -16,6 +16,8 @@ triggers:
   - a chart, percentile cone, or barrier distance is presented as a forecast
   - scoring your own predictions against a revealed answer key
   - a predictive claim needs to be stated, ranked, or priced
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Model Score Disclosure

@@ -11,6 +11,8 @@ constraints:
   - F9 (Anti-Hantu): No simulated empathy. Epistemic shifts only, not emotional posturing.
   - F2 (Truth): All prior classifications must be verifiable or declared UNVERIFIED.
 tags: [hermes, epistemic-hygiene, session-start, F2-inward, semantic-debt]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # 🪞 HERMES NAKED PRIOR AUDIT

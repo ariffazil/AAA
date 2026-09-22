@@ -7,6 +7,8 @@ category: media
 tags: [media, ingestion, yt-dlp, instagram, youtube, ffmpeg, vision, telegram]
 floor_scope: [F2, F4, F9]
 autonomy_tier: T1
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Media Link Ingest

@@ -1,6 +1,8 @@
 ---
 name: seal-discipline
 description: "Distinguish SEAL (Lane A constitutional) from RECEIPT (Lane B autonomous) from SABAR (Lane A honest sub-threshold) BEFORE emitting any verdict."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # 🔒 SEAL-discipline — Vocabulary Discipline for Constitutional Records

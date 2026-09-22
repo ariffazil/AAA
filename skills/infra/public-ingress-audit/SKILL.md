@@ -6,6 +6,8 @@ risk_tier: T0
 floor_scope: [F1, F2, F4, F11, F13]
 autonomy_tier: OBSERVE_ONLY
 forged_from: unacknowledged proxy ingress change surfaced by a config drift watcher
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Public Ingress Audit

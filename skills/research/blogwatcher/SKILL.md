@@ -11,6 +11,8 @@ metadata:
     homepage: https://github.com/JulienTant/blogwatcher-cli
 prerequisites:
   commands: [blogwatcher-cli]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Blogwatcher

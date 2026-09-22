@@ -18,6 +18,8 @@ triggers:
   - "surface truth"
   - "declared vs callable"
   - "check the organ"
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # MCP Organ Probe

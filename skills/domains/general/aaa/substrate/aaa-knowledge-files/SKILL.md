@@ -12,6 +12,8 @@ triggers:
   - "domain axiom file"
   - "knowledge file validation"
   - "dependency chain knowledge"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # AAA Knowledge Domain Files

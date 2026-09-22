@@ -1,8 +1,8 @@
 # Xiaomi MiMo Shadow — Hazard Profile
 # arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-15 by FORGE (000Ω)
 model_id: xiaomi_mimo_shadow
-version: 0.1.0
-status: DRAFT (no live API probe of federation account yet; hazards are projected from public docs)
+version: 0.2.0
+status: "ACTIVE (live-probed 2026-09-22 FI-008 — text+vision round-trips on V2.6 lanes; hazards below now mix VENDOR_CLAIM with OBSERVED)"
 
 shadow:
 
@@ -246,28 +246,82 @@ shadow:
       - "Backups in place for rollback if needed"
       - "Migration note in config file points at shadow file for context"
     evidence: "Diff applied 2026-06-15; JSON parse-verified; grep confirmed zero remaining mimo-v2-pro/omni/flash/tts in production configs"
-    severity: MEDIUM
-    class: cost_transparency
+    # NOTE 2026-09-22 FI-008: an orphaned duplicate of SHADOW-MIMO-009 (lines without
+    # `- id:`) sat here and silently overwrote entry-010 keys on YAML parse. Removed.
+
+  - id: SHADOW-MIMO-011
+    name: token_plan_quota_429_terminal_without_gateway_fallback
+    severity: HIGH
+    class: availability
     pattern: |
-      Per Xiaomi's token plan page, the V2.5-Pro tier carries approximately
-      a 2x credit multiplier vs the V2.5 (base/omni) tier per million tokens.
-      This is not visible on the rate-limit page. If any workload auto-routes
-      to V2.5-Pro instead of V2.5 (e.g. via an alias or future model name
-      collision), cost forecasting using base-tier numbers will under-budget
-      by 2x. The shadow compounds with SHADOW-MIMO-001 (silent price reroute)
-      and SHADOW-MIMO-008 (silent capability upgrade) — a workload can
-      silently double in cost AND capability at the same time, with no
-      observable signal in the response.
-    triggers: [pro_tier_assumption, cost_per_million_estimate, base_tier_pricing]
+      OBSERVED 2026-09-22: the mimo-token-plan lane returns
+      "litellm.RateLimitError: quota exhausted" (429) for V2.6 groups. Before the
+      fallback section was loaded, that 429 was TERMINAL — litellm answered
+      "No fallback model group found for lookup_groups=mimo-v2.6-flash".
+      Same failure class previously parked the V2.5 lane (see litellm order-91
+      park note). Exhaustion behaviour is HARD_STOP: the monthly pool does NOT
+      spill onto bonus/balance — traffic must be repointed at the PAYG lane
+      (mimo-v2.6-*-payg, api.xiaomimimo.com) which had live quota.
+    triggers: [token_plan_429, quota_exhausted, mimo-v2.6, no_fallback_model_group]
+    provenance: OBSERVED
     floor_posture_delta:
       F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
+      F8_LAW: system_boundary
+    mitigation:
+      - "Keep litellm router_settings fallbacks: mimo-v2.6-pro/flash -> *-payg -> MiniMax-M3 (added 2026-09-22)"
+      - "On 429 quota_exhausted, cascade to PAYG immediately — never retry the same token-plan lane twice"
+      - "Treat console credit counters as non-authoritative; live chat probe is truth (observed >100% counter vs live 200)"
+    evidence: "Gateway canary 2026-09-22: mimo-v2.6-flash token-plan 429 -> fallback -> mimo-v2.6-flash-payg HTTP 200 CASCADE_OK; receipt dacd1dbf"
+
+  - id: SHADOW-MIMO-012
+    name: mimo_fallback_edits_invisible_until_gateway_restart
+    severity: HIGH
+    class: availability
+    pattern: |
+      OBSERVED 2026-09-22: litellm-federation runs as
+      `docker run -v litellm-config.yaml:/app/config.yaml` (single-file bind
+      mount). Editors that replace the file create a new inode; the RUNNING
+      container keeps serving the OLD config until restart. Result: fallback
+      edits for mimo lanes existed on disk (12:33) but were absent in-process
+      (container started previous day) — the token-plan 429 could not cascade.
+      Symptom: config grep shows the fallback, live gateway says
+      "No fallback model group found".
+    triggers: [config_edited_no_effect, fallback_not_firing, docker_bind_mount, single_file_volume]
+    provenance: OBSERVED
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F8_LAW: system_boundary
       F11_AUDIT: provenance_required
     mitigation:
-      - "Always read the model_id echo in the API response; treat it as the source of truth for billing"
-      - "Reconcile monthly invoices against per-model cost projections using actual model_id, not assumed"
-      - "If a workload must stay on base tier, hard-pin the model_id string and reject any response that returns a different ID"
-    evidence: "Xiaomi MiMo Open Platform token plan page (Perplexity cross-check 2026-06-15)"
+      - "NEVER edit litellm-config.yaml ad hoc — use /root/A-FORGE/scripts/apply-litellm-config.sh (validate + restart + health gate + canary + checksum marker)"
+      - "After any config change, re-test one real completion per changed model group"
+      - "Script records applied sha256 at /root/A-FORGE/.litellm-config.applied.sha256"
+    evidence: "Root-caused 2026-09-22 FI-008: config mtime 2026-09-22 12:33 vs container start 2026-09-21 00:57; restart restored fallbacks (29->32 groups), canary APPLY_OK"
+
+  - id: SHADOW-MIMO-013
+    name: probe_vs_live_divergence_on_mimo_endpoints
+    severity: MEDIUM
+    class: observability
+    pattern: |
+      OBSERVED 2026-09-22: fed-provider-probe.sh reports mimo-platform and
+      mimo-token-plan as `000|UNREACHABLE` (probe exit 0, telemetry refreshed)
+      WHILE gateway chat completions to mimo-v2.6-flash-payg / mimo-v2.6-pro
+      return HTTP 200 with reasoning tokens — minutes apart. The probe's
+      endpoint/method (GET-style reachability) and the serving path
+      (POST /v1/chat/completions) disagree. Any health logic that declares a
+      mimo lane down from the probe alone will false-positive (cf.
+      probe-before-panic doctrine).
+    triggers: [probe_unreachable_but_chat_200, health_false_negative, mimo-platform, mimo-token-plan]
+    provenance: OBSERVED
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F11_AUDIT: probe_vs_live_both_required
+    mitigation:
+      - "Dual-signal health: probe UNREACHABLE + gateway chat 200 => lane is LIVE (chat wins for serving decisions)"
+      - "Dual-signal inverse: probe LIVE + chat non-200 => lane is DOWN (chat wins)"
+      - "Open item: reconcile fed-provider-probe.sh mimo checks with the POST path (probe may use GET /models or wrong key host)"
+    evidence: "fed-provider-probe 2026-09-22T05:21:41Z: mimo-platform|000|UNREACHABLE, mimo-token-plan|000|UNREACHABLE; gateway canary same window HTTP 200"
 
 provenance:
   source: Xiaomi_MiMo_Open_Platform_public_docs
@@ -281,11 +335,14 @@ provenance:
     - URL: https://api.xiaomi.com/docs/updates
       observed_at: '2026-06-11'
       page: Migration notice (V2-Flash + V2-TTS → V2.5)
-  observed_at: '2026-06-15T20:00:00Z'
-  observed_by: FORGE (000Ω)
-  confidence: medium  # public docs only; no live API probe of this federation's account yet
+    - URL: live gateway + fed-provider-probe (federation-internal)
+      observed_at: '2026-09-22'
+      page: V2.6 lanes OBSERVED hazards SHADOW-MIMO-011/012/013
+  observed_at: '2026-09-22T05:30:00Z'
+  observed_by: FORGE (000Ω) + kimi-code/FI-008
+  confidence: high  # V2.6 hazards OBSERVED live; original 001-010 remain public-docs-based
 
 ttl:
-  expires_at: '2026-09-15T20:00:00Z'  # re-audit after the 2026-06-30 hard deprecation passes
-  review_required_at: '2026-07-15T20:00:00Z'  # one month after the deprecation deadline
+  expires_at: '2026-12-15T20:00:00Z'  # extended 2026-09-22: live re-audit done, next review after V2.5 Stage-3 SABAR lift window
+  review_required_at: '2026-09-29T00:00:00Z'  # >=7d Stage-2 stability data per migration seal
   auto_extend_if_no_new_incidents: true

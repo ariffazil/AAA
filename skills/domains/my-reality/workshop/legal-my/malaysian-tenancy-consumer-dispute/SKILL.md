@@ -2,6 +2,8 @@
 name: malaysian-tenancy-consumer-dispute
 description: "Malaysian tenancy, consumer, courier/delivery, and small-claims disputes — drafting BM notices, TTPM strategy, courier claim process, landlord-tenant rights"
 tags: [malaysia, tenancy, TTPM, consumer, legal, BM, landlord, dispute, courier, delivery]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Malaysian Tenancy & Consumer Disputes

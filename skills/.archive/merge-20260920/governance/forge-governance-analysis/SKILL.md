@@ -2,6 +2,8 @@
 name: forge-governance-analysis
 tags: [governance, institutional, board, corporate]
 description: "Use for corporate governance analysis."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # FORGE Governance Analysis — Systematic Workflow

@@ -52,7 +52,15 @@ re-check `list-heads` before blaming the bundle format.
 
 ## 4. Was it lost, or did it land?
 
-Given a lost object whose stat you recorded (`git diff --stat <base> <lost>`) and the paths it touched:
+First read what the object **contains** — diff it against its own base, never against HEAD:
+
+```bash
+git diff --name-status <sha>^1 <sha>    # the real delta
+
+git diff --stat HEAD <sha>              # once HEAD has moved: the whole tree. Useless.
+```
+
+Then, given a lost object whose stat you recorded (`git diff --stat <base> <lost>`) and the paths it touched:
 
 ```bash
 for f in <paths>; do

@@ -2,6 +2,8 @@
 name: rendered-document-audit
 description: Use when auditing a rendered PDF or deck before delivery.
 category: document-intel
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Rendered Document Audit

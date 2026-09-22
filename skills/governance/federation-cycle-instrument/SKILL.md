@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: [F2, F3, F4]
 autonomy_tier: T1
 tags: [asabiyyah, measurement, enforcement-coverage, doctrine-decay, ibnu-khaldun, instrument]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Federation Cycle Instrument (asabiyyah)

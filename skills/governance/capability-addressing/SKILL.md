@@ -13,6 +13,8 @@ triggers:
   - "collision census"
   - "the model picks the wrong skill"
 floors: [F2, F4, F7]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Capability Addressing

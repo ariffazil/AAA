@@ -4,6 +4,8 @@ description: "PETRONAS–Petros–Shell MDS dispute 2024-2026: espionage case, g
 version: 1.0.0
 author: hermes-prime
 tags: [petronas, petros, shell, sarawak, gas, dispute, simulative-exploitation, acemoglu, institutional-collapse, mbr, bank-guarantee]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # PETRONAS–Petros–Shell MDS Dispute (2024-2026)

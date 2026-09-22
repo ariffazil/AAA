@@ -7,6 +7,8 @@ triggers:
   - "who should I meet"
   - "reunion attendee analysis"
   - "event decision support"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # WhatsApp Group Intelligence

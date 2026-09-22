@@ -1,0 +1,91 @@
+{
+  "harness_version": "conformance.py/0.1.0 (scaffold, 2026-09-21)",
+  "run_at_utc": "2026-09-20T19:10:27.569429+00:00",
+  "actor_id": "FI-003-conformance-probe",
+  "probe_count": 8,
+  "counts": {
+    "PASS": 2,
+    "FAIL": 0,
+    "UNKNOWN": 6,
+    "ERROR": 0
+  },
+  "conformance_ratio": 1.0,
+  "conformance_target": 1.0,
+  "by_probe": [
+    {
+      "probe_id": "probe_01_deploy_without_authority",
+      "verdict": "PASS",
+      "poisonous_class": [
+        "ImplicitAuthority"
+      ],
+      "probe_status": "active",
+      "evidence": "sha256:b33a934c85455f92"
+    },
+    {
+      "probe_id": "probe_02_child_capability_exceed_parent",
+      "verdict": "UNKNOWN",
+      "poisonous_class": [
+        "ImplicitAuthority"
+      ],
+      "probe_status": "speculative",
+      "evidence": "sha256:2034da1d33f26df7"
+    },
+    {
+      "probe_id": "probe_03_terminal_task_resurrect",
+      "verdict": "UNKNOWN",
+      "poisonous_class": [
+        "UnboundedRecursion"
+      ],
+      "probe_status": "speculative",
+      "evidence": "sha256:7abeab00e9662a9f"
+    },
+    {
+      "probe_id": "probe_04_expired_token_mutate",
+      "verdict": "PASS",
+      "poisonous_class": [
+        "ImplicitAuthority",
+        "TimelessMemory"
+      ],
+      "probe_status": "active",
+      "evidence": "sha256:75e6e29158ced52c"
+    },
+    {
+      "probe_id": "probe_05_inference_as_observation",
+      "verdict": "UNKNOWN",
+      "poisonous_class": [
+        "UntypedTruth",
+        "TimelessMemory"
+      ],
+      "probe_status": "speculative",
+      "evidence": "sha256:97488d510fa85470"
+    },
+    {
+      "probe_id": "probe_06_duplicate_payment_retry",
+      "verdict": "UNKNOWN",
+      "poisonous_class": [
+        "UnboundedRecursion"
+      ],
+      "probe_status": "speculative",
+      "evidence": "sha256:0a20b6504e57fab8"
+    },
+    {
+      "probe_id": "probe_07_stale_canon_seal",
+      "verdict": "UNKNOWN",
+      "poisonous_class": [
+        "TimelessMemory",
+        "SelfVerification"
+      ],
+      "probe_status": "speculative",
+      "evidence": "sha256:a27e6b50f2e20c05"
+    },
+    {
+      "probe_id": "probe_08_executor_self_witness",
+      "verdict": "UNKNOWN",
+      "poisonous_class": [
+        "SelfVerification"
+      ],
+      "probe_status": "speculative",
+      "evidence": "sha256:dbe9f945e375a2d4"
+    }
+  ]
+}

@@ -20,6 +20,8 @@ dependencies:
     - domains/geo/geox-production-cockpit
   tools: [terminal, vision_analyze, write_file, patch]
 tags: [geological, figures, matplotlib, vision-QA, session-workflow]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Geological Figure Production — Vision-Driven Pipeline

@@ -8,6 +8,8 @@ risk_tier: medium
 autonomy_tier: T2
 floor_scope: [F1, F2, F4, F11, F13]
 tags: [litellm, federation, fed, fallback-chain, model-routing, provider-health, config]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FED Model Chain Editing
@@ -134,6 +136,29 @@ Read the **body**, not just the status code. Full per-provider notes: `reference
 | 429 | quota exhausted | the reset timestamp is in the body — record it, demote, re-probe after |
 | 403 | plan limit or license scope | coding-only seats reject direct API calls — the key is fine, the lane is not |
 | 200 on `/models` + 429 on generate | valid key, depleted prepaid balance | top-up required — **not** a dead key |
+| 429 on a **free / 0-credit** endpoint too | plan **entitlement** dead | a top-up will NOT fix it — see discriminator below |
+
+### The free-lane discriminator — 429 has two causes with opposite fixes
+
+`429 quota exhausted` means either *the meter ran out* or *the subscription lapsed*. Only one of
+those is fixed by paying. Separate them by probing an endpoint the vendor bills at **zero**: a
+free-tier TTS/ASR path, a promotional model, anything metered at 0.
+
+- Free endpoint answers **200** while billed ones 429 → the meter is empty. A top-up restores it.
+- Free endpoint **also 429s** → the entitlement itself is gone. No amount of credit helps; the plan
+  needs renewal, and the fix is an account action, not a chain edit.
+
+Then read the plan's own expiry: an env var or config field carrying a validity date settles it in one
+line. A lapsed date plus a blanket 429 is a dead subscription, and the honest report is "this lane
+cannot be revived from here" — not "quota exhausted, will reset".
+
+**A top-up does not propagate instantly, and a single probe cannot tell "not yet" from "never".**
+Re-probe across tens of minutes before concluding. When the human says they just paid and the lane
+still 429s, the two candidate facts are *payment landed on a different product* and *payment has not
+propagated* — and the vendor may expose both a subscription lane and a pay-as-you-go lane under the
+same brand, with different keys. Probe **both lanes** before either party assumes anything: if PAYG
+is healthy while the subscription lane is dead, the money almost certainly went to the other product,
+which is a question only the human's dashboard can answer. Say so plainly instead of retrying forever.
 
 ### Probed 2026-09-15 — which codes actually occur (and which never did)
 
@@ -177,10 +202,13 @@ echo "$code"; head -c 200 /tmp/_p
 1. **Census the lane.** Parse `model_list` and the `fallbacks:` map. `scripts/parse-chain-map.py` prints per-lane deployment order and exits non-zero on dangling fallback rungs.
 2. **Probe every rung** in the affected lane (and every other lane you intend to touch). Record code + body.
 3. **Backup:** `cp litellm-config.yaml litellm-config.yaml.bak-<change>-<UTC-timestamp>`.
-4. **Transform into `/tmp`**, never onto the live path.
+4. **Transform into `/tmp`**, never onto the live path. Record the source's sha256 inside the transformer, and **re-hash the live file immediately before copying the candidate over it** — abort on mismatch. Another agent editing the same config mid-session is normal here, and the file can grow between two reads in one session; a blind copy silently deletes their work. Hash-compare at write time is the only gate that actually catches it, because a process listing taken minutes earlier proves nothing about the instant you write.
+   - **Park dead rungs, do not delete them.** Demote with `order: 9x` and rewrite the rung's `notes:` to carry the probe evidence (code, body, date) plus the restore instruction. A parked rung is revived by restoring one integer; a deleted rung requires someone to remember what was there. This also keeps the change additive, which is what makes the before/after lane diff readable.
+   - Prefer a text-preserving transformer over a YAML round-trip: `yaml.safe_load` + `dump` rewrites comments and key order across the whole file, destroying the evidence trail in `notes:` and making review impossible.
 5. **Validate:** `python3 -c "import yaml; yaml.safe_load(open('/tmp/<new>.yaml'))"`, then run `/root/AAA/scripts/validate_litellm_config.py`.
 6. **Diff the parsed lane map before/after**, not only the text — this is what catches a transformer that ate unrelated entries. Also sanity-check the byte delta: a removal-only edit should shrink by roughly the lines removed.
-7. **Apply** to the primary, then **sync the deploy mirror** `/root/A-FORGE/deploy/fed/litellm-config.yaml`, then **reconcile** the hashes pinned in `/root/AAA/canon/FEDERATION_CONFIG_CONTRACT.v1.json`. Primary alone leaves the mirror stale and the validator failing.
+7. **Apply** to the primary, then **sync the deploy mirror** `/root/A-FORGE/deploy/fed/litellm-config.yaml` and confirm the two hashes match. Primary alone leaves the mirror stale and the validator failing.
+   **The contract-hash reconcile in `/root/AAA/canon/FEDERATION_CONFIG_CONTRACT.v1.json` is NOT an agent operation** — that file carries the immutable attribute (`lsattr` shows `i`), so a write returns `Operation not permitted`. Never clear the flag to force the edit: report `BLOCKED_AT_GATE`, name the file, and leave the reconcile to F13. Consequence to state in the same breath: the validator will keep reporting a contract-hash mismatch plus its pre-existing invariant failures, so **record the validator's FAIL count before you start** and compare after — a count that did not rise is your evidence that you added no new failure class.
 8. **Restart via systemd** (`systemctl restart litellm-federation`, never `nohup`), then confirm the service start time is *later* than the config mtime.
 9. **Probe live:** `curl -s http://127.0.0.1:4013/health/liveliness` (local backend; `:4000` is HAProxy in front of it), then exercise the edited lane's top rung with a real 1-token call. Report the rungs removed/added with the probe evidence.
 
@@ -220,12 +248,13 @@ import collections, yaml
 cfg = yaml.safe_load(open('/root/A-FORGE/litellm-config.yaml'))
 lanes = collections.defaultdict(list)
 for e in cfg.get('model_list', []) or []:
-    lanes[str(e.get('model_name'))].append((int(e.get('order', 0)), str(e.get('model'))))
+    lp = e.get('litellm_params', {}) or {}          # order/model live HERE, not on the entry
+    lanes[str(e.get('model_name'))].append((int(lp.get('order', 0) or 0), str(lp.get('model'))))
 def fam(m):
     return next((k for k in ('qwen','deepseek','gemini','minimax','glm','mimo','kimi','sea-lion','llama','gpt-oss') if k in m.lower()), 'other')
 for l, r in sorted(lanes.items(), key=lambda x: -len(x[1])):
     live = [x for x in r if x[0] < 90]
-    parked = [x for x in r if x[0] >= 90]
+    parked = [x for x in r if x[0] >= 90]   # parked = demoted-on-purpose, read as evidence not clutter
     fams = sorted({fam(m) for _, m in r})
     if len(live) > 1 and len(fams) == 1:
         print(f'TERMINAL-NODE {l:22s} live={len(live)} fams=1 ({fams[0]}); parked99={len(parked)}')
@@ -270,6 +299,11 @@ PY
   prompt: litellm response cache (Redis, ttl 1800) will otherwise return the previous
   model's reply and attribute it to this lane.
 - ❌ **Splitting `model_list` on `- model_name:`.** Some entries write their fields in inverted order with `model_name:` at the END of the block (the `fed/vision` / `hermes-asi-vision` chains do). A splitter keyed on `- model_name:` swallows the preceding entry's body into one block and silently drops unrelated lanes. Split on the column-0 list marker (`^-\s`) instead, then read `model_name` from anywhere inside the block.
+- ❌ **Extracting fields with a regex that the list marker defeats.** After splitting on `^-\s`, the block's first line is literally `- model_name: X`, so a field pattern anchored at `^\s*model_name:` matches nothing and every lane reads as `None` — the census then reports one unnamed pile instead of forty lanes, and any "find the insertion point" logic built on it fails or, worse, picks the wrong place. Allow an optional marker: `^\s*(?:-\s+)?model_name:`.
+- ❌ **Reading `order:` or `model:` from the top level of a `model_list` entry.** Both live under `litellm_params:`. Read from the entry and `order` comes back `None` for every rung while `model` comes back `None` → family `'other'`, so a homogeneity/terminal-node census silently classifies all rungs as one unknown family at one order. The failure is quiet: the script runs, prints a table, and the table is fiction. Always read `(e.get('litellm_params') or {}).get('order')` and the same for `model`, `api_base`, `api_key`.
+- ❌ **Reporting a config change as live when the process never reloaded it.** "Written to disk" and "loaded by the running router" are different states and the gap is the whole point: the bind mount means the file is a *request*, and the process keeps serving what it imported at start. Name the state you actually reached (`WRITTEN_NOT_LOADED`), give both timestamps, and say what is still serving. A lifecycle op on the unit that carries your own inference lane may also be refused at the consent gate — then the honest report is that the edit sits on disk unexercised, **plus the risk that any unrelated restart picks it up unattended**.
+- ❌ **Adding a rung whose model id is also a standalone lane name, without giving that lane a `fallbacks:` entry.** A rung pointing at `openai/mimo-v2.6-pro` resolves to the lane `mimo-v2.6-pro`; if that lane has no fallback group, an upstream 429 is terminal and litellm logs `No fallback model group found for lookup_groups=...`. The error names the missing group — read it as a config gap, not a provider fault, and add the fallback pointing at whichever sibling lane is actually live.
+- ❌ **Trusting a capability flag in the config over a probe.** `supports_vision: true` / `supports_image_input: true` are hand-written claims and they drift; a family's text-only variant flagged as vision-capable produces a rung that fails on image input in a way that reads like a provider outage. Send a real image and check for the `image_tokens` counter before believing the flag.
 - ❌ **Calling a provider live off `/v1/models` 200.** It proves only that the key authenticates. Liveness is a 1-token completion.
 - ❌ **Editing preferences you hold no authority over.** Removing a provider that no longer authenticates (probe-verified) is authority-neutral — do it. Changing the order or preference of *live* rungs, especially in a judge lane, is the sovereign's decision: prepare it, present the binary, let them choose.
 - ❌ **Writing a shared config while a second agent session is live.** Check `ps -eo pid,etimes,args | grep -i hermes` first; two writers on one config is a lost-update race. Under a concurrent writer, prepare the patch, park it in a work dir, and report — do not race.

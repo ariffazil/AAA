@@ -2,6 +2,8 @@
 id: hermes-asi-intelligence
 name: hermes-asi-intelligence
 description: "Use when assessing signals, motives, or decisions for over-interpretation."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # HERMES ASI Intelligence — 5 Runtime Doctrines

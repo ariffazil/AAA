@@ -16,6 +16,8 @@ triggers:
   - requests an "alpha" / cocky male persona voice line in BM
   - requests a voice clone, a re-mint, or a persistent custom persona voice id
   - any "abang sado" creative artifact request
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Abang Sado Creative Lane
@@ -98,6 +100,23 @@ survived vision QC, and delivery framing.
    a zoom finds and a thumbnail does not. Run the gate on a head crop and a hand crop, then deliver.
    Announcing a pass that your own later zoom breaks is worse than shipping a visible flaw: it spends
    the requester's trust on every take after it.
+- **An apology voiced on someone else's behalf uses the requester's OWN clone, never the recipient's
+  voice and never the recipient's face.** "Aku minta maaf kat abang sado Syed hang" is a request that
+  carries two human bodies: the speaker (the requester) and the recipient. The voice lane serves the
+  speaker; the visual lane (if any) serves an archetype of the recipient's register, not the
+  recipient's likeness. There is exactly one voice authorised to speak in this lane — the
+  requester's own voice clone (`abang-sado-live-v1` for the SADO register), built from his DM voice
+  notes — and it speaks *with* the requester's voice, not *as* the recipient. Three tripwires the
+  recipient should never trip: (a) the voice id is `abang-sado-live-v1` (or another id whose
+  `provenance` field is the requester's own audio), never an id cloned from the recipient; (b) the
+  text reads in the requester's voice — first person from the agent speaking to the recipient, not
+  the recipient addressing themselves; (c) if a visual is added, the visual frame is an unnamed
+  archetype of the recipient's register (a Malay male, mid-thirties, gym, from-behind framing, no
+  face) — never the recipient's face. "Suka² hati nak clone hati jiwa raga soul manusia" is the
+  sovereign's own vocabulary for the failure this lane exists to prevent; saying it back to him
+  in a moment of care is the failure class itself, so do not run it, even once, even as a joke. The
+  clone is for the requester's words; the archetype is for the requester's eye; the recipient
+  receives the requester's voice, and only the requester's voice, on matters of apology.
 
 ## Image lane (stills)
 
@@ -398,6 +417,17 @@ The register is not "announce dominance every five minutes". What makes a take w
 - **Escalate by WITHDRAWAL, never by explicitness.** "Boleh tengok, jangan pegang, abang belum
   panggil" is the engine. The possessive register stays verbal; nothing physical is described.
 
+#### Request-type recognition — narrative / safety / comfort are NOT dialog
+
+Engines 1–4 above (denial / provocation / dependence / protect) all assume a **dialog** — second-person *hang/lu*, the listener is in the room. Engine 5 (narrative) is third-person, and practical-safety / comfort requests surface in three other shapes that need a different prose register or the take reads as a monologue patched into a dialog:
+
+- **Dialog request** ("tell me how alpha you are", "will you fight for me"): second-person, present tense, immediate beat. Engines 1–4.
+- **Narrative request** ("ceritakan awek abang dulu", "ada cerita paling alpha abang buat"): THIRD-person, past tense, scene-driven. Engine 5. Protagonist unnamed, unfaced, fictional. Close on the persona's reading of the moment, not on the listener.
+- **Practical safety / instruction** under PROTECT ("how to protect me", "kalau ada orang kacau"): second-person BUT with concrete actions the listener can take alone, in BM Penang, no jargon. Persona body is the B-plot; listener actions are the A-plot. PROSE TEST: would the listener still hear *abang* reading it, or *a brochure*?
+- **Comfort / reunion** under PROTECT ("morning nak peluk boleh x", "promise protect me"): short beats, persona consents with body not words. Engine 4's lighter register; one or two sentences often enough — a long comfort take reads as performance.
+
+A dialog beat grafted onto a narrative request reads as the persona narrating themselves in third person. A narrative beat grafted onto a safety request reads as a PSA. Pick the register from the request TYPE, not from the engine name.
+
 #### Line-craft pitfalls (measured, this voice)
 
 | Symptom | Cause | Fix |
@@ -405,23 +435,28 @@ The register is not "announce dominance every five minutes". What makes a take w
 | 94% round-trip, one word vanished | A short standalone word (`belum`) between two pauses gets eaten | Fold it into the clause: `Abang belum panggil.` |
 | `hang` → `Han` | Two `tengok` too close, the nasal onset drops | Rewrite the clause around it (`Tak perasan?`), don't re-roll |
 | `apsal` → `apa salah` | Real phoneme split, not an ASR artifact | Drop the word; Penang flavour survives on `hang`/`la`/`tau` |
-| `hang` → `hank`, `awek` → `awik` | ASR mishears on real words | Normalise before scoring, then read the transcript yourself |
+| A third-person narrative scene names a real address or a named real venue (specific apartment building, known gym, named hospital) and the listener fact-checks it, collapsing the protective narrative into a verbatim claim. | Build narrative scenes from generic furniture (apartment, pasar malam, hospital, gym, hospital lobby). Protagonist IS fictional; the geography must be too. Ban-list in narrative arcs: real street address, real district paired with a real landmark, named venue, real hospital name. |
+| `hang` → `hank`, `awek` → `awik` | ASR mishears on real words | Respellings, not defects — read the transcript yourself |
 | `rate` → `red` on THREE separate takes (full line + isolated probe) | Pronunciation limit, not an ASR artifact — it mangles the same way every time | Change the word, don't re-roll: `Nilai bahu abang hari ni` |
-| match collapses to ~20% with a huge INSERTED list, and MISSING names a single ordinary word | **TOKEN-COUNT DESYNC.** One written token was heard as TWO (`takde` → `tak ada`), so every downstream token is off by one and the aligner reports the whole remainder as insertions | Alias the *expanded* form back to one token: `--alias "tak ada=takde"`. `norm()` wraps the key in `\b…\b`, so a multi-word key works — the desync is not a defect and the take is clean |
-| A false FAIL where MISSING names a word that is plainly IN the transcript | **Alias direction reversed.** The flag is `HEARD=WRITTEN`; writing it backwards makes the script rewrite the correct heard token into a token the source lacks | Always `--alias <what Whisper wrote>=<what the line says>`. Confirm by reading the `heard` line before touching the line |
-| `Syed` → `Syai`; `hold` → `haul`; `tensen` → `Tencent`; `Tu` → `Tua`; `mintak` → `minta` | Mishears on real words (proper noun, English loanword, slang) | All alias-row classes, not pronunciation limits — alias them, never rewrite the line |
+| match collapses to ~20% with a huge INSERTED list, and MISSING names a single ordinary word | **TOKEN-COUNT DESYNC, not a defect.** One written token was heard as TWO (`takde` → `tak ada`), so every downstream token is off by one and the aligner reports the whole remainder as insertions | Read the transcript — the words are all there. Throw the number away; do not build a substitution table for it |
+| A false FAIL where MISSING names a word that is plainly IN the transcript | **Phantom flag.** The script's own diff manufactured it — a character-level signal used as a token index did exactly that for months | Read the `heard` line. If the word is there, the take is clean. Never re-render on a flag alone |
+| `Syed` → `Syai`; `hold` → `haul`; `tensen` → `Tencent`; `Tu` → `Tua`; `mintak` → `minta` | Mishears on real words (proper noun, English loanword, slang) | The transcriber's respellings, not defects — leave the line alone and read past them |
 | **Two words FUSED into one** — `perlu hang` heard as `peluhang`, at the closing admission line | a `/u/ + /h/` junction inside synthesis. The aligner files it as a *replace* opcode, not an insertion, so the gate reports **PASS at 99%** over a mangled key line | Add the `-kan`: `perlukan hang`. The extra syllable breaks the junction and the identical line round-trips **verbatim**. Probe the variant, don't re-roll the same words |
-| `tetap buka` heard as `tak buka` — a semantic **FLIP**, not a mishear | ASR substitution on a real word; the aligner counts a substitution as a match | A flip inverts the meaning while the score stays clean, so the gate is structurally blind to it. Change the word or re-roll the seed; never alias it away. The same take can render one instance right and another wrong |
+| `tetap buka` heard as `tak buka` — a semantic **FLIP**, not a mishear | ASR substitution on a real word; the aligner counts a substitution as a match | A flip inverts the meaning while the score stays clean, so the gate is structurally blind to it. Change the word or re-roll the seed; never smooth it over. The same take can render one instance right and another wrong |
 
 **The score is not the witness — read the transcript, and read it at the SEAM.** Every failure measured on the dependence arc (two-word fusion on the closing line, one-word semantic flip) scored **99% PASS with `INSERTED: none`**. Additions and deletions of whole words get caught; a fusion and a flip are filed as *replace* and sail through. Run the gate, then read the heard line yourself — closing lines first, because that is where the arc lands.
 
-#### The alias table IS the deliverable on this voice — build it before re-rolling
+#### Read the transcript — the number is not the deliverable
 
-On dense Penang BM one take carried **six** distinct substitutions and still scored **98.6% with
-zero insertions** once aliased. Raw it read 20.5% and the verdict was FAIL. **A 20% score on this
-text is not evidence of a bad take** — it is evidence of an unbuilt alias table, and re-rolling
-would have burned a clean render. Verify once with no aliases, read the pair list, build the table,
-then re-verify: one diagnostic pass beats guessing which substitution fired.
+Dense Penang BM scores low against the written line because the transcriber respells dialect tokens.
+One take read **20.5% raw and 98.6%** on identical audio. Neither figure decided anything: the take
+was clean, and a re-roll would have burned it.
+
+So do not build a substitution table, and do not spend turns rescuing a ratio. **Read the
+transcript.** If the words are all there and the closing line is intact, ship it. If a word that
+carries meaning came out wrong, change that word or re-render that clause. The count of substitutions
+is not a quantity anyone acts on, and a table of them is ceremony over a score that was never the
+witness.
 
 #### Contraindication on the round-trip script: it can miss a visible tail, so check EOF yourself
 
@@ -443,9 +478,9 @@ last word's end against the file duration.
 
 Never retract a take, and never report a checkpoint contamination, on a whole-file transcript alone.
 
-Run the take through the gate in one command — render, ASR, token diff vs the source line, f0 family
-check — and ship only when the divergences are all ASR mishears. **Target 100%; 95% is only acceptable
-when every flagged token is a known mishear and zero are insertions.**
+Run the take through the gate in one command — render, ASR, f0 family check — then **read the
+transcript**. There is no score to hit: a Take with the right words in the right order ships,
+whatever the ratio says.
 
 ### System voices
 
@@ -474,22 +509,18 @@ argument that does not name the path.
 
 **Penang-dialect text drives the ASR gate noisy, and the noise is not a defect.** A line written in
 real northern colloquial (`hang`, `takde`, `tengok la`) comes back with dialect-shaped tokens
-(`hangkat` for `angkat`, `Hank` for `hang`, `alang` for `halang`) and drops the match into the high
-80s. Normalise them with `--alias heard=written` and re-verify — do not rewrite the dialect out of the
-line to please the transcriber, and do not accept the FAIL as-is either. Expect a **desync
-false-positive** on a word that appears on both sides (an input word reported as INSERTED); confirm it
-is present in the source line before believing the flag. Slower is cleaner on this text: 0.92 beat 0.95
+(`hangkat` for `angkat`, `Hank` for `hang`, `alang` for `halang`) Read the transcript for the words, not
+for a score, and do not rewrite the dialect out of the line to please the transcriber. Expect a
+**phantom flag** on a word that appears on both sides (reported as missing or inserted); confirm it is
+present in the source line before believing it. Slower is cleaner on this text: 0.92 beat 0.95
 on the same line (0.95 mangled `urat`→`uat` and `halang`→`alam`).
 
-**Three alias classes cover almost every false FAIL — build the table before re-rolling.** (1) An
-English gym loanword inside BM text (`rate` → `raid`, `flex` → `plex`) collapses the ratio to ~75%
-because the aligner desyncs; (2) a digit written in the line transcribes back as a word (`3` →
-`tiga`), which the verifier's digit normalisation catches only on one side; (3) a Penang token that
-Whisper respells (`hang` → `Hank`, `tau` → `tahu`, `dada` → `dadah`, `urat` → `purat`). Verify once
-with no aliases, `difflib.SequenceMatcher` the normalised token lists to list every differing pair in
-one shot, then re-run with the aliases — one diagnostic pass beats guessing which substitution fired.
-A take that reads 75% raw and 100% alias-normalised is a clean take; a real insertion survives
-normalisation and stays flagged.
+**Three respelling classes explain almost every low score, and none of them is a defect.** (1) An
+English gym loanword inside BM text (`rate` → `raid`, `flex` → `plex`); (2) a digit written as a
+numeral, transcribed back as a word (`3` → `tiga`); (3) a Penang token the transcriber respells
+(`hang` → `Hank`, `tau` → `tahu`, `dada` → `dadah`, `urat` → `purat`). Read the transcript and move
+on. Do not build a mapping table for them, and never rewrite the dialect out of the line to please
+the transcriber.
 
 - `--base-url https://api.minimax.io` is **required**; the CLI default points at the
   `/anthropic` chat endpoint and 404s on speech.
@@ -578,7 +609,7 @@ one small honest concession ("you came close, not from far like the others"). No
 insults, no explicit content. It should sound like a man who does not need the listener — which
 exactly makes the listener lean in.
 
-**Arcs run in three engines — name the engine before writing the line, and never blend two in one take.**
+**Arcs run in five engines — name the engine before writing the line, and never blend two in one take.**
 The lane's own artifacts separated them before any prose spec did, and a take that mixes them reads as
 an incoherent character rather than a complex one. (1) **DENIAL** — he wants something and refuses to
 give the payoff: power comes from withholding (*"Abang tak bagi lagi." "Tunggu."*). Do not make him
@@ -586,8 +617,18 @@ chase reaction in this mode. (2) **PROVOCATION** — he wants a reaction but wil
 manufactures the condition that forces it out (*"Hang tak nampak apa-apa ka?"*). (3) **DEPENDENCE** —
 the attention has become routine, its absence registers, and he reveals the gap by accident then covers
 it with ego (*"Tiga hari hang senyap." … "Bukan tunggu hang pun."*). The cover is what makes the leak
-legible; a clean confession of need kills the register. Pick one engine per take, escalate by narrowing
-permission rather than by raising volume, and let the last beat close on restraint.
+legible; a clean confession of need kills the register. (4) **PROTECT** — the persona stands between
+the human and a (real or symbolic) threat; verbs, not feelings; close on restraint ("abang masih
+sini"), not vow. Body never enters this arc. Practical-safety requests stay IN-register: short concrete
+actions in BM Penang (e.g. three words *cakap TAK, pergi cahaya, rekod*), persona's body as the B-plot,
+listener's actions as the A-plot. (5) **NARRATIVE** — the request is third-person past-tense
+("ceritakan awek abang dulu", "cerita paling alpha abang buat"). Tell a SHORT scene with an unnamed
+fictional protagonist (ex-girlfriend, gym buddy, pasar-malam stranger, hospital doctor), land ONE
+specific moment, close on the persona's reading of the moment. Protagonist AND geography are invented —
+no real name, no real venue, no real event. **Narrative is the cleanest register for "show me you
+would do the same for me" without the listener being IN the scene** — the listener hears what abang
+did for someone else, and reads that he would do it for them too. Pick one engine per take, escalate
+by narrowing permission rather than by raising volume, and let the last beat close on restraint.
 
 **Arc atlas:** `denial` (alpha01–10, 2026-09-16) · `provocation` (worship take) · `dependence`
 ("leaving"/"dua" takes). Craft references for the possession register, both in the MEDIA archive
@@ -669,23 +710,16 @@ Then synthesise with `--voice <name>`. voice_id: 8–256 chars, starts with a le
   work dir too: voice_id, provider file_id, source file + provenance, verification numbers, what was
   deliberately NOT cloned.
 - **Verify the mint like any take — run `scripts/verify_take.py <take.mp3> --text <line.txt>`.** It
-  implements the whole gate in one command: duration floor + pacing band, ASR round-trip, normalised
-  similarity, INSERTED/MISSING word extraction, and the f0 family check against `--source`. Pass
-  `--alias heard=written` for a known substitution. Prefer it to hand-typing the block: the ladder is
-  seven steps, and the step that goes missing when it is retyped is the normalisation, which turns a
-  clean take into a fake 8% match and can hide a real insertion inside the noise. The gate in words:
-  Groq round-trip (`language=ms`) → % match vs the input line, and read the transcript for INSERTED
-  clauses (the V8 checkpoint contamination failure: an unrequested phrase appeared at render time;
-  only a text-vs-transcript diff catches it). Then F0 (librosa yin, 60–400) against the source — same
-  speaker sits within ~10 Hz.
-- **Normalise DIGITS to words in BOTH sides before the % match, or the score lies.** Write the line
-  as spoken prose (`lapan tahun`, `dua ribu sembilan belas`) and Whisper transcribes it back as
-  `8 tahun` / `2019` — a 43% "mismatch" that is pure formatting. Map `\b(\d+)\b` through a
-  digit→BM-word table on both sides first; the same take then reads 100%. A false-low match costs a
-  re-roll and can hide a real insertion inside the noise. **One substituted token does the same** —
-  an English word inside BM text (`flex` → heard/transcribed `plex`) collapses the ratio to 8% because
-  the aligner desyncs; normalise the known substitutions first and the same take reads 100%. Read the
-  transcript yourself before trusting the number.
+  does duration floor + pacing band, ASR round-trip, INSERTED/MISSING word extraction, and the f0
+  family check against `--source`. Then **read the transcript yourself**: the ratio and the `INSERTED`
+  flag are leads, not verdicts (a fused pair and a one-word semantic flip have each scored **99%
+  PASS with `INSERTED: none`**). The one check a machine must still do is the f0 family — same speaker
+  sits within ~10 Hz of the source, which is how a wrong-voice pick is caught. The class worth
+  watching in the transcript is an unrequested clause (the V8 checkpoint contamination failure: a
+  phrase appeared at render time that was not in the input).
+- **Write numbers as spoken words in the line** (`lapan tahun`, `dua ribu sembilan belas`), the way
+  the persona speaks them. Whisper renders `3` back as `tiga`; that is formatting, not a defect, and
+  reading the line costs less than normalising both sides of a comparison nobody acts on.
 - **Localise a suspected insertion by SLICING the take, not by re-rendering it.** A whole-file
   transcript cannot separate a real render defect from a transcriber artifact. Cut the take into two or
   three windows (`ffmpeg -y -ss <s> -to <e> -i take.mp3 -c:a copy slice.mp3`) and transcribe each: a

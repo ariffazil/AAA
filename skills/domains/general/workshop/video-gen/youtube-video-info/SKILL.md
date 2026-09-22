@@ -12,6 +12,8 @@ forged_by: "kimi-code/FI-008 (F13 directive: make YouTube work for Hermes ASI)"
 trigger_when:
   - "message contains youtu.be/ or youtube.com/watch or youtube.com/shorts"
   - "user asks what a video is, or sends a video link for discussion"
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # YouTube Video Info — VPS-Safe Lane

@@ -9,7 +9,8 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [Evaluation, LM Evaluation Harness, Benchmarking, MMLU, HumanEval, GSM8K, EleutherAI, Model Quality, Academic Benchmarks, Industry Standard]
-
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # lm-evaluation-harness - LLM Benchmarking

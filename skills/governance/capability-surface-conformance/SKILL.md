@@ -35,6 +35,8 @@ triggers:
   - "fail-open branch"
   - "the comment says it checks but the code does not"
   - "doctrine says it enforces"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Capability Surface Conformance
@@ -168,7 +170,14 @@ or caches.
 3. **Never accept a tool-name list from an audit.** Enumerate a fresh surface yourself,
 then dispatch each claimed name.
 4. **Diff semantics, not names.** A name-level hash passes while stage, authority, schema
-and exposure diverge.
+and exposure diverge. **And read the SERVED identity before treating N names as N surfaces:** an
+alias layer that resolves several requested names to one backing implementation turns agreement
+between them into an attribution error. Measured on a model-alias surface — three "different"
+aliases returned byte-identical text because all three resolved to a single backing model, and two
+more returned empty content for a lane that was not provisioned. Three names agreeing is not
+consensus; it is one surface wearing three labels. Read the response's own identity field, require
+non-empty content, and consult the alias table before concluding anything from agreement OR
+disagreement — otherwise a capability comparison reports on a single witness it believes is several.
 5. **One registry, one owner.** Fix the owner of registration/dispatch and make every
 projection derive from it. Patching projections one by one is the failing anti-pattern.
 6. **Read the same field at every nesting level** of a single response before trusting any
@@ -212,6 +221,24 @@ of it.
     for every wrong shape; the shape check is the one that finds the defects. Same law as
     advertised-but-uncallable, one layer down: `broken: 0` answers "does the target exist", and
     does not answer "can anything read it".
+
+11. **A capability wired into the library but not into its entry point is unreachable.** Adding a
+    parameter to a function is not adding a capability. If the CLI parser, the dispatcher or the
+    scheduler entry point was not extended in the same change, no shell or cron path can invoke it —
+    and every test that calls the function directly stays green the whole time, because the tests
+    bypass the projection that is missing. Measured: a new render mode had its builder function, its
+    gate, its schema entry and its `render(style=...)` parameter, and **no `--style` flag** — the
+    capability existed for in-process callers only, so the scheduling path could never select it.
+    Grep the entry point for the new symbol before calling the work done:
+
+    ```bash
+    grep -n 'add_argument' <cli>.py | grep -i '<new-option>'   # empty output means unreachable
+    ```
+
+    Sibling defect, same blind spot: two modes writing the **same output filename**, so one render
+    silently overwrites the other's artifact — and if a delivery contract names that path, the wrong
+    artifact gets sent. When a new mode shares a destination with an existing one, the mode belongs
+    in the filename. A collision is invisible until the wrong thing is delivered.
 
 ## Procedure
 
@@ -307,6 +334,14 @@ behaviour actually changed.
   absent from the canonical census, outside the store's own governance, and one `git clean` in that
   harness away from vanishing. When a view points into a harness/profile tree the finding is not
   "a broken link" — it is a body that has not been promoted yet.
+- **Present-in-mesh is not present-in-profile, and a canonical census is not a seat's view.** A body
+  can exist in the canonical store, appear in the shared index, and be **absent from the profile a
+  given harness actually loads** — so that seat never surfaces it and the capability is discoverable
+  only if someone names it out loud. When the question is "can this seat do X", enumerate the PROFILE
+  the seat loads, not the store it draws from: `grep` the capability across every `*_SKILL_PROFILE.json`
+  / curated view root, not just the shared index. The honest answer when the file exists and the key
+  is reachable is **"available if named"**, never "it can do it" — the loader is the thing that
+  decides, and a profile entry is the only remedy that changes behaviour.
 - **Projection drift in the opposite direction.** The wire surface can be correct while a
   convenience endpoint is stale. Verify both before declaring either wrong.
 - **Stage/token drift.** A numeric identifier that survives only as a *verdict token*,

@@ -1,6 +1,8 @@
 ---
 name: docforge-document-lane
 description: Use when building a verifiable document pipeline.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # docforge document lane

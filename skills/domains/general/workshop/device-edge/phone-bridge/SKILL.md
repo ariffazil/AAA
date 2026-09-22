@@ -1,6 +1,8 @@
 ---
 name: phone-bridge
 description: "Use when bridging Termux phone sensors (battery, camera, GPS) via FastAPI for edge-device workflows. Termux FastAPI bridge for battery, camera, GPS, sensors."
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Phone Bridge

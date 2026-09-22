@@ -9,6 +9,8 @@ metadata:
     category: devops
     tags: [tts, voice, voice-note, audio, unified-voice]
     related_skills: [minimax-cli, hermes-config, hermes-telegram-gateway-ops]
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # Hermes Voice / TTS Configuration
@@ -412,9 +414,32 @@ tts:
 
 ### When NOT to use
 
-- Production voice notes (4+ min latency unacceptable)
-- i-ARIF persona voice (that's V8/soul-envelope, not Arif's voice)
-- Latency-critical situations
+- **Production voice notes (4+ min latency unacceptable)
+- **i-ARIF persona voice (that's V8/soul-envelope, not Arif's voice)
+- **Latency-critical situations
+
+### Pitfall: `difflib.SequenceMatcher` default `autojunk=True` corrupts short-string ASR similarity
+
+ASR round-trip scripts commonly use
+`difflib.SequenceMatcher(None, src_norm, heard_norm).ratio()` to score how close the
+heard transcript is to the source text. The default `autojunk=True` discards matching
+structure on inputs under ~200 characters, returning ~0.6 even on a perfect match —
+the "evidence" you then print to the human is meaningless on short utterances, and the
+agent that trusts it will claim the voice matches when it cannot measure whether it does.
+
+Symptom of the bug: similarity ~0.62 on what is clearly a perfect transcript.
+Symptom of the fix: similarity ~0.97 on the same input.
+
+**Always pass `autojunk=False` explicitly** for any ASR round-trip:
+```python
+difflib.SequenceMatcher(None, norm(TEXT), norm(heard), autojunk=False).ratio()
+```
+
+Rule of thumb: if the source text is under ~200 characters after lowercasing + punctuation
+strip, `autojunk` will silently degrade the score. Above that length the heuristic
+disengages and the default becomes safe — but the explicit kwarg is still the right call
+because the cost of being wrong (silently meaningless round-trip evidence) is much
+higher than the cost of being explicit.
 
 ### Reference
 

@@ -8,6 +8,8 @@ metadata:
   hermes:
     tags: [arif, family, siblings, kanak-kanak, personal, birthdays]
     related_skills: [shadow-mapping, telegram-bot-identity-and-group-routing]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Arif's Family Members — Kanak-kanak Group

@@ -20,6 +20,8 @@ trigger_phrases:
 dependencies:
   mcp_servers: []
   skills: [deep-research, web-extraction-fallbacks, hermes-rasa]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Futures / Forecast Briefing

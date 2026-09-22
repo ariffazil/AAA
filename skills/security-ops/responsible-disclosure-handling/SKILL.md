@@ -3,6 +3,8 @@ name: responsible-disclosure-handling
 description: "Use when an outsider reports a vuln or asks for credit."
 version: 1.0.0
 tags: [security, disclosure, cve, credit, third-party, endorsement, oss-maintainer, f13]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Responsible Disclosure Handling

@@ -1,0 +1,276 @@
+{
+ "items": [
+  {
+   "item_id": "correction-edition-005",
+   "section": "SITUATION",
+   "claim_state": "RETRACTED",
+   "title": "CORRECTION: two claims in EDITION-005 were wrong. Corrected here, not edited",
+   "summary": "EDITION-005 said Brent settled at USD 103.87 on Friday 19 September, up 0.66 cents. 19 September 2026 was a Saturday, and CNBC reported on Friday 18 September that Brent traded 0.9 percent lower to settle at USD 103.87 with WTI at USD 100.30 - the third consecutive down session. The date and the direction were both wrong. EDITION-005 also said the APIMS dashboard showed all Malaysian stations green on 19 September. Malay Mail reported 17 areas nationwide at unhealthy API as of 4pm on 19 September. The original rows stay in the register unaltered; this row sits beside them.",
+   "source": "CNBC oil close, 18 September 2026 (Brent settled 103.87, WTI 100.30, third down session); weekday computed from ISO date; Malay Mail, 19 September 2026 (17 areas unhealthy as at 4pm). Both re-measured this run, not inferred."
+  },
+  {
+   "item_id": "brent-hormuz-price",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Brent settled USD 103.87 on Friday, down 0.9 percent - third straight decline",
+   "summary": "Brent settled at USD 103.87 on Friday 18 September, down 0.9 percent, with WTI at USD 100.30. That is the third consecutive down session and comes off a four-month high near USD 106 on Tuesday 15 September. The market reason is not peace, it is supply: Saudi Arabia signalled it restores roughly half the East-West pipeline within days, and traders read the outage as less disruptive than feared. For Malaysia the direction matters more than the level - a falling Brent subtracts from petroleum revenue and subtracts from the subsidy bill at the same time.",
+   "source": "CNBC, 18 September 2026 (Brent settled 103.87, WTI 100.30, third straight session lower); Trading Economics Brent history page, 18 September 2026 (eased below USD 103 from a four-month high of USD 106 on Tuesday). Also carried by Vantage Markets and FinanceFeeds the same day, but both trace to the same futures tape - origin units W=2, not W=4."
+  },
+  {
+   "item_id": "hormuz-reopening-plan",
+   "section": "SITUATION",
+   "claim_state": "NEW",
+   "title": "Iran and Oman say they agreed a plan to reopen the strait. Muscat has not confirmed it",
+   "summary": "Iran foreign minister said on 16 September that Tehran and Muscat agreed a plan to reopen the Strait of Hormuz. The claim is carried by TASS and has not been confirmed or denied by the Omani side, and no transit regime has been published. Treat it as declaratory until a shipper, an insurer or Muscat acts on it. It is the largest upside risk to the oil price this month, and the largest downside risk if it turns out to be real.",
+   "source": "TASS, 16 September 2026, via GlobalSecurity.org Iran War daily update Day 204 (19 September 2026), which lists whether the Iran-Oman plan is confirmed or denied by Muscat as an open indicator. Single origin unit, W=1, declaratory, no corroborating party."
+  },
+  {
+   "item_id": "saudi-hormuz-flows",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Saudi barrels through Hormuz jumped to 2.8 million a day. Transit counts still read single digits",
+   "summary": "Satellite imagery cited by the US Energy Department shows Saudi Arabia moving about 2.8 million barrels a day through the Strait of Hormuz over the six days before 18 September, against about 700,000 barrels a day in August. Against that, Reuters using Kpler data recorded four commodity vessel transits on 15 September and Windward recorded twelve on 16 September. The two datasets disagree by a factor of three on the same water in the same week. This is not a number to anchor on until it reconciles.",
+   "source": "GlobalSecurity.org Iran War Day 204 update, 19 September 2026, carrying Bloomberg on the Saudi Hormuz pivot (16 September) and Reuters via gCaptain on single-digit crossings (16 September). Two genuinely independent origin units disagreeing - recorded as CONTESTED evidence inside a MOVED item."
+  },
+  {
+   "item_id": "yanbu-pipeline-outage",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Aramco: half pipeline capacity within days, full repair in four to six weeks",
+   "summary": "Aramco is targeting roughly half capacity on the East-West pipeline within days and full repair in four to six weeks from the 18 September statement. Half capacity is the figure that moved the crude price; the four-to-six-week tail is what the market has not yet priced. If the tail holds, the supply cushion stays thin into the first week of October - the same week Budget 2027 is tabled.",
+   "source": "Aramco statement of 18 September 2026 as carried by CNBC and FinanceFeeds, 18 September 2026; the four-to-six-week repair estimate cross-checked in GlobalSecurity.org Iran War Day 204 update, 19 September 2026."
+  },
+  {
+   "item_id": "petronas-lng-asian-demand",
+   "section": "SITUATION",
+   "claim_state": "NEW",
+   "title": "PETRONAS LNG says its portfolio - Bintulu, Canada and the coming Sabah plant - is built for Asian demand growth",
+   "summary": "PETRONAS LNG chief executive Ezran Mahadzir said the integrated LNG portfolio - established Bintulu operations in Sarawak, Canadian supply and the upcoming Sabah facility - gives the flexibility Asian buyers now require. Read it as the company telling the market it intends to hold Asian share through the supply build-out, not cede it. For anyone with a career horizon inside upstream, it is a statement that the LNG chain is being treated as the durable half of the business.",
+   "source": "The Star StarBiz, 18 September 2026, PETRONAS LNG poised for Asian demand growth. Named executive, named assets. Single origin unit, W=1 - company statement, not independent reporting."
+  },
+  {
+   "item_id": "budget-2027-tabling",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Budget 2027 is tabled Friday 9 October - 18 days from today",
+   "summary": "The government tables Budget 2027 in Parliament on Friday 9 October 2026, the second budget under the 13th Malaysia Plan. The pre-Budget statement of 18 August set ten consultation areas, with cost-of-living relief, high-value jobs and wages at the front. Nothing is required today; it becomes the clock that matters once the four-to-six-week pipeline repair tail and the fuel price cycle arrive in the same fortnight.",
+   "source": "Ministry of Finance Pre-Budget Statement 2027, mof.gov.my (tabled 9 October 2026); corroborated by OpenGov Asia, Human Resources Online and imoney, all citing the same MOF statement - origin units W=1."
+  },
+  {
+   "item_id": "petroleum-revenue-projection",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "The revenue anchor now has a crack in it: paper price and physical price have parted",
+   "summary": "The register carries the anchor of roughly RM 300 million of petroleum revenue per USD 1 per barrel. That anchor was built on the benchmark. This week the benchmark and the physical market parted: Brent futures settled at USD 103.87 while Oman crude was reported above USD 130 and Shanghai INE crude elevated, with the physical market at a premium to futures. Malaysia exported barrels price off Asian physical markers, not off Brent futures. So a headline fall in Brent does not translate one-for-one into a fall in Malaysian realisation - and anyone quoting the headline alone will get the direction of the revenue line wrong.",
+   "source": "GlobalSecurity.org Iran War Day 204 update, 19 September 2026 (Brent settled in a 102.41 to 103.87 range across venues; physical market continues at a premium above the futures benchmark with Oman crude above 130). The RM 300 million per USD 1 anchor is carried from the register; the physical-versus-paper split is new evidence against applying it naively."
+  },
+  {
+   "item_id": "petronas-estuary-mutiara",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Estuary and Mutiara PSC awards carry forward, no new development",
+   "summary": "The Estuary Cluster PSC award and the Mutiara Cluster seismic data handover of 9 September carry forward with no new development this edition. Nothing here needs a decision.",
+   "source": "PETRONAS media release, 9 September 2026. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "petronas-carigali-mtjda-a18-01",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Block A-18-01 PSC carries forward - Carigali subsidiary, 35 years",
+   "summary": "The Block A-18-01 production sharing contract carries forward with no new development. This is the Carigali-side item and stays in the register because it sits closest to your own seat.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "petronas-sea-metec",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "SEA METEC methane measurement centre carries forward",
+   "summary": "No new development this edition. Kept because methane measurement is where the CCS and carbon-tax threads actually meet.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "petronas-metlen-lng",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "PETRONAS-METLEN LNG sale and purchase agreement carries forward",
+   "summary": "No new development this edition.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "petronas-1h2026-results",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "PETRONAS 1H 2026 results carry forward",
+   "summary": "No new development this edition. Worth noting the price environment: 1H 2026 was largely pre-war pricing, so the second half carries the war premium and the first half does not.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "carbon-tax-delay",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Carbon tax delay carries forward; Budget 2027 is the next date that matters",
+   "summary": "Nothing new this edition. The next plausible announcement window is the 9 October budget, which is why it stays on the clock.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "fed-hike-2026-09",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Fed sits at 3.75-4.00 per cent after the first hike since 2023",
+   "summary": "No new development this edition. The war file records this as a monetary policy reversal caused by the conflict - the US is absorbing war costs through rates, which is why the crude price and the ringgit are no longer independent of each other.",
+   "source": "Register carry-forward; mechanism recorded in GlobalSecurity.org Iran War Day 204 update, 19 September 2026. No new Fed action 18-21 September 2026."
+  },
+  {
+   "item_id": "petronas-pda-petition-scope",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Sarawak petition on three federal laws plus the 1954 boundary order carries forward",
+   "summary": "No new development this edition. The sequence to keep straight: Sarawak filed its petition on 23 February 2026, and on 16 March 2026 the Federal Court allowed PETRONAS to pursue its challenge to the Sarawak laws. What has never been published is the hearing date on the merits.",
+   "source": "Reuters, 16 March 2026 (Malaysia top court allows Petronas to challenge Sarawak laws); Sabah Media, 24 February 2026 (petition filed 23 February 2026); PETRONAS media release on the earlier leave decision. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "houthi-mocha-seizure",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Houthi position at Mocha holds; Bab el-Mandeb traffic still affected",
+   "summary": "No new development this edition. The war file records US-held secret talks with the Houthis after the Red Sea offensive, which is the channel to watch rather than the front line.",
+   "source": "Register carry-forward; GlobalSecurity.org Iran War Day 204 update, 19 September 2026 (US-Houthi talks carried by Reuters via gCaptain, 16 September 2026)."
+  },
+  {
+   "item_id": "haze-emergency-threshold",
+   "section": "RISK",
+   "claim_state": "MOVED",
+   "title": "Haze reversed hard: 17 unhealthy areas on 19 September, 32 by 20 September",
+   "summary": "The haze did not ease. It went backwards. Malay Mail reported 17 areas nationwide at unhealthy API as at 4pm on 19 September; by the morning of 20 September that was 21 areas with Serian in Sarawak highest at 182, and later the same day 32 areas with Serian at 173. EDITION-005 reported this item as eased. That was wrong and is corrected above. The operative rule is unchanged: schools, kindergartens and childcare centres close immediately once API passes 200 in their area, and Bintulu already ran a week of online learning in early September on that rule.",
+   "source": "Malay Mail 19 September 2026 (17 areas unhealthy at 4pm); Malay Mail 20 September 2026 (21 areas at 8am, Serian 182); Malay Mail 20 September 2026 (32 areas, Serian 173); NST (Serian very unhealthy, API 212 at 8am). Department of Environment school-closure threshold at API 200, via NST. Serian readings differ because they are different reporting times - recorded as a range, not reconciled."
+  },
+  {
+   "item_id": "petrol-price-band-sept-2026",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "title": "Pump prices hold to 23 September: RON97 RM4.87, diesel RM5.27. Subsidised RON95 stays RM1.99",
+   "summary": "The band running 17-23 September holds RON97 at RM4.87 and diesel at RM5.27, with BUDI95 RON95 held at RM1.99 and BUDI Diesel at RM2.10 for eligible Malaysians, and the BUDI95 monthly quota restored to 300 litres from 1 September. The next announcement is Wednesday 23 September. Brent three-session fall is the first real downward pressure on the unsubsidised grades in weeks.",
+   "source": "rates.my petrol page, effective 17 September 2026, sourced to data.gov.my; paultan.org, 30 August and 1 September 2026 (BUDI95 quota restored to 300 litres from 1 September, RM1.99 unchanged); Malay Mail, 3 September 2026. Announcement cadence is weekly on Wednesday."
+  },
+  {
+   "item_id": "electricity-threshold-reversion",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "title": "Electricity protection threshold reverts from 800 to 600 kWh on 1 January 2027",
+   "summary": "No change this edition. It stays a RISK because the date is fixed and the customer base affected is large, and it lands three months before your OD1 window.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "coal-generation-cost",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "title": "Coal at USD 148 per tonne; the minister has tied it to the electricity bill",
+   "summary": "No change this edition. Note the asymmetry against oil: Brent fell for three sessions while coal held, so the generation-cost pressure the minister described has not eased even though the crude headline improved.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "section": "WALL",
+   "claim_state": "OPEN",
+   "title": "WALL: the Federal Court full hearing date on the PDA 1974 challenge is still unpublished",
+   "summary": "This is UNRESOLVED in the strict sense - the date is knowable and has simply not been published. Leave to proceed was granted on 16 March 2026 and no hearing date has been announced in the six months since. It stays a WALL because the date is the trigger for everything downstream on Sarawak petroleum jurisdiction, and it can arrive without warning.",
+   "source": "Reuters, 16 March 2026 (leave granted); no subsequent Federal Court listing located between 17 March and 21 September 2026. Classified UNRESOLVED, not WITHDRAWN - a diligence limit, not a permanent limit."
+  },
+  {
+   "item_id": "petros-lng-jurisdiction",
+   "section": "WALL",
+   "claim_state": "CONTESTED",
+   "title": "WALL: whether LNG exported from Bintulu sits with PETROS or stays with PETRONAS is still CONTESTED",
+   "summary": "Still contested, still recorded as contested. The May 2025 joint declaration named PETROS the exclusive buyer and distributor of domestic gas within Sarawak while PETRONAS retained its national role - and the export LNG question was not settled by that. It stays CONTESTED rather than OPEN because the parties have publicly taken incompatible positions and neither has withdrawn.",
+   "source": "Register carry-forward; May 2025 Sarawak-PETRONAS Joint Declaration as recorded. No reconciling instrument located as of 21 September 2026."
+  },
+  {
+   "item_id": "war-risk-insurance-lag",
+   "section": "VOID",
+   "claim_state": "NEW",
+   "title": "The shooting can stop before the bill does",
+   "summary": "War risk insurance and tanker rates move slower than the news and slower than the futures tape. Shipping crude from the Gulf to Asia was being assessed near USD 78 per metric tonne by mid-2026, roughly four times the five-year pre-conflict average, with war risk cover alone above USD 20 per tonne. This is the number that says a Hormuz reopening does not return Malaysian delivered energy costs to normal on the day it is announced. Concrete consequence: if Budget 2027 on 9 October assumes import cost relief from a lower Brent, the insurance and freight legs will lag it by months, and the realised relief will be smaller than the headline fall implies.",
+   "source": "Al Jazeera, 23 July 2026 (USD 77.96 per metric tonne, about USD 21m for a 270,000-tonne cargo); Nautilus Shipping war risk review, mid-2026 (about USD 78 per metric tonne, roughly four times the five-year pre-conflict average; war risk alone above USD 20 per tonne). Two origin units on the level, both trade-side rather than government-side."
+  },
+  {
+   "item_id": "epf-nomination-void",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "EPF nomination voiding on change of marital status carries forward",
+   "summary": "No change this edition. Kept because it is the cheapest thing on this list to close and the most expensive to discover late.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "unclaimed-money-register",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "RM 13.3 billion of unclaimed money at the Accountant-General office carries forward",
+   "summary": "No change this edition.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "sarawak-election-clock",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "Sarawak state election due by April 2027",
+   "summary": "No change this edition. It shares a clock with your OD1 window: the state election and the PDA challenge both want resolution in the same six months.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "tasik-bera-encroachment",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "Tasik Bera encroachment carries forward",
+   "summary": "No change this edition.",
+   "source": "Register carry-forward. No update published 18-21 September 2026."
+  },
+  {
+   "item_id": "own-od1-window",
+   "section": "OWN",
+   "claim_state": "OPEN",
+   "title": "OD1 March 2027 - the window has not moved, but the ground under it did this week",
+   "summary": "OD1 March 2027 is unchanged and the MSS package is already quoted. What moved this week is the weather around the decision, not the date: Brent fell three sessions while the physical market stayed high, so the revenue line out of PETRONAS is less predictable than the headline suggests; the haze went the wrong way; and Budget 2027 lands on 9 October, which is the next formal occasion anyone will say anything about the sector in public. Nothing here requires you to move.",
+   "source": "Register carry-forward (OD1 March 2027, MSS quoted). Ground movement sourced to the SITUATION and RISK items above."
+  },
+  {
+   "item_id": "eureka-mal-blood-group",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "A 50-year-old blood mystery was solved and there is now a 47th human blood group",
+   "summary": "Scientists have identified the gene behind the AnWj antigen, a puzzle open since 1972, and the answer is the MAL gene. That makes MAL an official human blood group system, ISBT 047. A single protein is enough to produce the antigen, which is what closed the case. It matters because a genetic test can now find the rare patients and the rare donors before a transfusion goes wrong.",
+   "source": "ScienceDaily, 19 September 2026 (NHS Blood and Transplant-led work); Sci.News, New Blood Group System Discovered: MAL. Two write-ups of one primary paper - W=1 for the finding."
+  },
+  {
+   "item_id": "eureka-plague-400-years",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Plague did not leave Europe when the Black Death did - it stayed for centuries",
+   "summary": "Ancient DNA shows Yersinia pestis returning to Europe in repeated waves for 350 to 400 years after the Black Death, evolving into fresh lineages and travelling along the same routes as trade, migration and war. The pandemic ended. The pathogen did not go anywhere. A useful corrective to how we talk about things being over.",
+   "source": "ScienceDaily, 20 September 2026 (University of Tartu and partners); Archaeology News Online Magazine, September 2026 (more than 350 years). Primary study, two write-ups - W=1."
+  },
+  {
+   "item_id": "eureka-disorder-stability",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Perfect uniformity makes a network fragile; balanced disorder makes it stable",
+   "summary": "Physicists at Northwestern found that carefully balanced variation - disorder - can make networks more stable, not less. Power grids, ecosystems, neurons and materials all improved when their parts were not perfectly alike. It runs against the instinct that order is always the safer bet.",
+   "source": "ScienceDaily, 19 September 2026 (Northwestern University). Single origin unit, W=1, single primary study."
+  },
+  {
+   "item_id": "eureka-axon-pearls",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Nerve fibres may not be smooth tubes. Textbooks may have been wrong for a century",
+   "summary": "A century of diagrams show axons as smooth tubes. New imaging suggests they naturally resemble strings of tiny pearls. If it holds, a lot of drawn neurobiology is a simplification rather than a picture.",
+   "source": "ScienceDaily, 17 September 2026, on brain-cell axons naturally resembling strings of tiny pearls. Carried late rather than skipped, marked with its original date."
+  },
+  {
+   "item_id": "eureka-hunga-tonga-methane",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "A volcano cloud that started destroying methane",
+   "summary": "The Hunga Tonga eruption appears to have triggered a chemical reaction that destroyed some of the methane released into the atmosphere at the same time. A volcano making a greenhouse gas problem smaller for a moment is not the direction anyone expected.",
+   "source": "ScienceDaily, 15 September 2026, Scientists Stunned as Volcano Cloud Starts Destroying Methane. Single origin unit, W=1. Carried late, marked with its original date."
+  }
+ ]
+}

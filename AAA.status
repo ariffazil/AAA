@@ -1,0 +1,136 @@
+ M README.md
+ M cards/genesis_card.yaml
+ M cockpit/shadow-matrix/last-run.json
+ M forge_work/alpha-zen/ALPHA-ZEN-MORNING.png
+ M forge_work/alpha-zen/cycles.jsonl
+ M forge_work/alpha-zen/morning.html
+ M forge_work/brief-rules.md
+ M forge_work/brief-state.sqlite3
+ M forge_work/docforge-ledger.jsonl
+ M public/.well-known/agent-card.json
+ M public/.well-known/agent.json
+ M scripts/alpha_zen_card.py
+ M scripts/alpha_zen_card.schema.json
+ M scripts/alpha_zen_gate.py
+ M scripts/chron_events.json
+ M scripts/test_alpha_zen_gate.py
+ M skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
+ M skills/apex-cognitive-reflex/alpha-zen-lanes/SKILL.md
+ M skills/audit/auditable-numeric-artifacts/SKILL.md
+ M skills/audit/corpus-evidence-discipline/SKILL.md
+ M skills/audit/probe-evidence-integrity/SKILL.md
+ M skills/audit/surface-consistency-audit/SKILL.md
+ M skills/audit/surface-consistency-audit/references/status-field-axes.md
+ M skills/concurrent-agent-writers/SKILL.md
+ M skills/concurrent-agent-writers/references/recovery-verification.md
+ M skills/cron-ops/background-monitor-design/SKILL.md
+ M skills/cron-ops/federation-scheduler-audit/SKILL.md
+ M skills/delegated-build-fanout/SKILL.md
+ M skills/design/sovereign-surface-design/SKILL.md
+ M skills/document-intel/paged-media-report-layout/SKILL.md
+ M skills/document-intel/principal-analysis-artifact/SKILL.md
+ M skills/domains/general/aaa/substrate/bridge-protocol/SKILL.md
+ M skills/domains/general/apex/governance-core/event-driven-alerting/SKILL.md
+ M skills/domains/general/apex/governance-core/live-service-ops/SKILL.md
+ M skills/domains/general/forge/cron-ops/hermes-cron-zen/SKILL.md
+ M skills/domains/general/forge/federation-release/deploy-drift-verification/SKILL.md
+ M skills/domains/general/workshop/creative-design/abang-sado-creative-lane/SKILL.md
+ M skills/domains/general/workshop/creative-design/abang-sado-creative-lane/scripts/verify_take.py
+ M skills/domains/general/workshop/creative-design/makcikgpt-civic-intelligence/SKILL.md
+ M skills/domains/general/workshop/image-gen/synthetic-human-media-pipeline/SKILL.md
+ M skills/federation-topology/bridge-lane-functional-probe/SKILL.md
+ M skills/finance/financial-distress-data-lanes/SKILL.md
+ M skills/forge-git-seal/SKILL.md
+ M skills/forge/autonomous-loop-engineering/SKILL.md
+ M skills/forge/generated-artifact-integrity/SKILL.md
+ M skills/forge/human-facing-artifact-design/SKILL.md
+ M skills/governance-core/measurement-discipline/SKILL.md
+ M skills/governance/capability-surface-conformance/SKILL.md
+ M skills/governance/claim-ledger-integrity/SKILL.md
+ M skills/governance/claimed-defect-verification/SKILL.md
+ M skills/governance/control-reality-audit/SKILL.md
+ M skills/governance/durable-claim-ledger/SKILL.md
+ M skills/governance/enforcement-coverage-verification/SKILL.md
+ M skills/governance/evidence-gate-hardening/SKILL.md
+ M skills/governance/public-claims-maintenance/SKILL.md
+ M skills/human-interface/persona-boundary-conduct/SKILL.md
+ M skills/human-logistics-advisory/SKILL.md
+ M skills/learning-loop-verification/SKILL.md
+ M skills/legal-my/malaysian-employment-separation/SKILL.md
+ M skills/live-system-audit-discipline/SKILL.md
+ M skills/mimo-audio/SKILL.md
+ M state/ops-fabric/canary.json
+ M state/ops-fabric/dedup/da1dcfdc9f321a68.json
+ M state/ops-fabric/events.jsonl
+?? AAA.HEAD
+?? AAA.status
+?? attention/
+?? canary/
+?? canon/13-CONSTITUTIONAL-LAWS.md
+?? canon/7-MACHINE-LAWS.md
+?? canon/BIJAKSANA-SUBSTRATE-CANON-2026-09-21.md
+?? canon/COMMERCIAL-SURVIVAL-CANON-2026-09-21.md
+?? canon/CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md
+?? canon/CONSTITUTIONAL-COMPLEXITY-BUDGET-2026-09-21.md
+?? canon/CROSSWALK-F1-F13-OWASP-NIST-2026-09-21.md
+?? canon/HARAM-186.md
+?? canon/META-WISDOM-CANON-2026-09-21.md
+?? canon/PETRONAS/qdrant_backup_20260911T233408Z.json
+?? canon/deltas/
+?? constitution/probes/
+?? eurekas/EUREKA-NAMING-CREATION-2026-09-21.md
+?? eurekas/STABILIZE-2026-09-21-REMEASURE-F5.md
+?? eurekas/probes-2026-09-21/
+?? forge_work/2026-09-21-edition-006/
+?? forge_work/2026-09-21-federation-stabilization-tasks/
+?? forge_work/alpha-zen/ALPHA-ZEN-MORNING-9b616e06.png
+?? forge_work/alpha-zen/ALPHA-ZEN-MORNING-SIGNAL-f2618a2e.png
+?? forge_work/alpha-zen/ALPHA-ZEN-MORNING-SIGNAL.png
+?? forge_work/alpha-zen/_chron-test/
+?? forge_work/alpha-zen/_preview/
+?? forge_work/alpha-zen/_preview_signal.py
+?? forge_work/alpha-zen/_signal-test/
+?? forge_work/alpha-zen/morning-SIGNAL.html
+?? forge_work/alpha-zen/signal-2026-09-21/
+?? forge_work/alpha-zen/test-v2/
+?? forge_work/federation-zen-audit-2026-09-21/
+?? instructions/anti-haram-behavior-canonical-human.md
+?? proposals/PATCH-PROPOSAL-2026-09-21-arifos-proof-suite-v2-wiring.md
+?? proposals/PATCH-PROPOSAL-2026-09-21-findings-F-009-proof-regression.md
+?? reports/2026-09-21-EXTERNAL-LITERATURE-CONFORMANCE-MAP.md
+?? reports/TRILOGY-COMPLETION-2026-09-21.md
+?? reports/TRILOGY-GAP-ANALYSIS-2026-09-21.md
+?? reports/anti-haram-human-witness-2026-09-21.md
+?? reports/bijaksana-substrate-witness-2026-09-21.md
+?? reports/claude-code-audit-2026-09-21.md
+?? reports/commercial-survival-witness-2026-09-21.md
+?? reports/conformance-probe-scaffold-witness-2026-09-21.md
+?? reports/constitutional-architecture-witness-2026-09-21.md
+?? reports/constitutional-complexity-budget-witness-2026-09-21.md
+?? reports/constitutional-correction-witness-2026-09-21.md
+?? research/CANON-LITERATURE-COROLLARY-MAP-2026-09-21.md
+?? scripts/PHANTOM_REGISTRY_2026-09-21.md
+?? scripts/alpha_zen_chron.py
+?? scripts/attention_plane.py
+?? scripts/lint-memory-phantoms.sh
+?? scripts/stamp-legacy-phantoms.sh
+?? scripts/test_alpha_zen_g13.py
+?? skills/audit/probe-evidence-integrity/references/public-surface-probes.md
+?? skills/business-intel/
+?? skills/design/sovereign-surface-design/references/public-surface-function-audit.md
+?? skills/domains/general/apex/governance-core/live-service-ops/references/generated-baseline-reads.md
+?? skills/domains/general/workshop/creative-design/abang-sado-creative-lane/references/zen-one-command.md
+?? skills/governance-core/arifos-offline-governance-proof/
+?? skills/governance/venture-positioning-advisory/
+?? skills/human-logistics-advisory/references/acute-symptom-triage.md
+?? skills/learning-loop-verification/references/conservation-accounting.md
+?? skills/live-system-audit-discipline/references/subtractive-cleanup-census.md
+?? skills/security/secret-safe-inspection/
+?? specs/NEVER-COPY-PASTE.md
+?? specs/a2a-constitutional-layer.md
+?? specs/epoch-binding-canonical-candidates.md
+?? tests/test_aaa_attention_convergence.py
+?? tests/test_dual_identity_delegation.py
+?? tests/test_hermes_entity_classifier.py
+?? tests/test_mission_classifier.py
+?? tests/test_wealth_identity_pivot_p1.py

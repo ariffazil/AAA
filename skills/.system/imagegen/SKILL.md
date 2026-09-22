@@ -1,6 +1,8 @@
 ---
 name: "imagegen"
 description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts."
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Image Generation Skill

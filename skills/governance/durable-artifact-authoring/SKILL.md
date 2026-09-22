@@ -2,6 +2,7 @@
 name: durable-artifact-authoring
 description: "Use when sealing session insight into federation canon."
 capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Durable Artifact Authoring

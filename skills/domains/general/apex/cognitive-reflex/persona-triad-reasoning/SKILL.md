@@ -16,6 +16,8 @@ triggers:
   - "missing persona"
 floors: [F2, F6, F9, F13]
 tags: [persona, triad, cognitive-reflex, civilisation, dunbar, reasoning]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Persona-Triad Reasoning — the cognitive lens

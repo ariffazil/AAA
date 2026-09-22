@@ -15,6 +15,8 @@ triggers:
   - "nasihat penuh"
   - "surat dari masa depan"
   - "write a letter from future [name]"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Wisdom Letter for Loved Ones

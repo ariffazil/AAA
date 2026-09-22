@@ -43,6 +43,8 @@ merged_from:
   - court-audit/proxy-verification-audit
 retired_to: /root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit
 authority: F13 sovereign in-chat order 2026-09-19 (namespace collapse) — eight skills answering one question collapsed into one router.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Governance Audit — is this control real, or is it a label?

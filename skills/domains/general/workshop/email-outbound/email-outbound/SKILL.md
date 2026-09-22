@@ -11,6 +11,8 @@ metadata:
   hermes:
     tags: [email, brevo, gmail]
     related_skills: []
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Outbound Email from the Federation VPS

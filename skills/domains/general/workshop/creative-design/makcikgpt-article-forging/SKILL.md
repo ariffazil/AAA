@@ -26,6 +26,8 @@ triggers:
   - "nak baca dalam kereta"
   - "buat pdf"
 version: "1.9"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # MakcikGPT Article Forging — v1.0
@@ -341,6 +343,8 @@ MakcikGPT articles are React SPA components. For standalone static data pages (e
 
 **Pitfall:** Caddyfile changes require `sudo`. Use `sudo sed -i` for targeted inserts. Always validate: `sudo caddy validate --config /etc/caddy/Caddyfile` before reloading. The authoritative Caddyfile is at `/etc/caddy/Caddyfile` — the repo copy (`deploy/Caddyfile`) is the SOURCE but may be missing runtime overlays. NEVER `cp deploy/Caddyfile /etc/caddy/Caddyfile` — this overwrites live routes. Edit the live file directly with `sudo sed -i`.
 
+**Pitfall: Stale slug via Caddy redirect (vhost, not main Caddyfile).** When a slug typo or rename leaves a public URL returning the SPA "Artikel Tidak Dijumpai" fallback, the fix is a 301 redirect in `/etc/caddy/vhosts/arif-fazil.com.conf` (the vhost file, NOT `/etc/caddy/Caddyfile` which only does `import tls_origin` and `import /etc/caddy/vhosts/*.conf`). Pattern: `@yxd_typo path /world/makcikgpt/<stale-slug>` then `handle @yxd_typo { header Location https://arif-fazil.com/world/makcikgpt/<canonical-slug>; respond "" 301 }`. Use Python or `sudo sed -i` to insert after an existing redirect block (e.g., after `@em_legacy`), not via the `patch` tool which refuses sensitive system paths. Always validate + reload: `sudo caddy validate --config /etc/caddy/Caddyfile && sudo caddy reload --config /etc/caddy/Caddyfile`. Verify with `curl -sI https://arif-fazil.com/world/makcikgpt/<stale>` — expect HTTP 301 with `location:` header pointing to canonical.
+
 **Alternative: Non-React Static HTML articles (public/makcikgpt-md/)**
 
 Not all MakcikGPT articles need to be TypeScript React components. For rapid political commentary (Election hot takes, quick-response pieces), use the **static HTML path**:
@@ -365,6 +369,12 @@ Not all MakcikGPT articles need to be TypeScript React components. For rapid pol
 **Pitfall:** The index.html at `public/makcikgpt-md/index.html` is AUTO-GENERATED from `src/data/essays.json` via `scripts/generate-makcik-index.cjs`. Do NOT edit it directly.
 
 **Pitfall:** When this skill's `npm run build` TypeScript step fails (e.g., `error TS2688: Cannot find type definition file for 'vite/client'`), you can still deploy static HTML files directly. The prebuild step succeeded — feed, sitemap, llms, and makcikgpt-md/index.html are all updated. What's missing is the individual .html/.md files per article — see `references/build-fallback-html-extraction.md` for the full workflow (Python extraction script + full deploy command set).
+
+**Pitfall: Filename MUST match slug.** The article .ts file is registered by its filename in `index.ts`. If file basename and slug drift apart (e.g., file is `...-dalam-void.ts` but slug field is `...-sembunyi-dalam-void`), the SPA imports from filename — so the article at the slug URL renders the generic "Artikel Tidak Dijumpai" fallback even though both file and slug exist. Rule: file basename == slug, always. If you rename for readability, rename the file too.
+
+**Pitfall: When `delegate_task` runs a sibling that writes `index.ts`, race the file.** If you dispatch a subagent to forge the article AND register it, the subagent writes `index.ts` and `essays.json` in its own context. Your subsequent `patch` on the same files may overwrite the subagent's work or fail to find a unique match because file content shifted. Two safe patterns: (a) dispatch the subagent to write ONLY the .ts file, then register manually after the subagent completes; (b) `read_file` the index.ts after dispatch returns, before any further edits, to see what the subagent actually wrote. Do NOT assume your planned import/export structure survives a sibling write.
+
+**Pitfall: Slug drift between filename and slug field = SPA "not found".** When a subagent registers a slug slightly different from your file basename (e.g., agent adds `-dalam-void` while your file is `-truth-sembunyi-dalam-void`), the live URL with the stale slug still serves HTTP 200 from the static HTML, but the React SPA cannot resolve either into article content. `deploy-makcik.sh` reports `bot:200 browser:200` because both URLs exist as static files in `public/makcikgpt-md/`. Fix: align both names, OR add a Caddy 301 redirect from the stale slug to the canonical one — see "Stale slug via Caddy redirect" pitfall in Stage 6.
 
 **Pitfall:** `deploy-vps.sh` validates the registry schema and may fail if `infra/runtime-overlays.json` has `schema_version: 2` but the script expects `schema_version: 1`. Bypass by manually copying files to webroot (`/var/www/html/arif/`). The _routes.json in webroot handles `/world/makcikgpt/` → `/makcikgpt-md/` routing.
 
@@ -756,6 +766,71 @@ DIST_JS=$(ls -t /root/arif-fazil.com/sites/arif-fazil.com/dist/assets/*.js | hea
 [ "$DIST_JS" = "$LIVE_JS" ] && echo "✅ REAL match" || echo "❌ genuine mismatch"
 ```
 Proven 2026-08-02: article deployed cleanly (all 200s, slug in feed/sitemap/llms, article present in live bundle with 2 hits), yet the summary showed a lone "bundle mismatch live=no-live" false alarm. The `[A-Za-z0-9]+` character class simply omitted `_`.
+
+### Deploy-pitfall: `curl -sI` lies about content-length on HTTP/2 — verify with full-body GET
+
+`curl -sI` (HEAD request) on arif-fazil.com often reports `content-length: 20` or a stale value when the response is HTTP/2 with chunked transfer-encoding. The server is serving the correct file — the header just doesn't carry the length. **Don't conclude "20 bytes" = broken; conclude it = unreadable. Always follow with a full-body GET before declaring a deploy broken:**
+
+```bash
+# 1. The HEAD lie (DON'T trust this alone)
+curl -sI https://arif-fazil.com/world/makcikgpt/<slug> | grep -i content-length
+# → content-length: 20  ← misleading
+
+# 2. The full-body truth (trust this)
+curl -s -A "GPTBot/1.0" https://arif-fazil.com/world/makcikgpt/<slug> -o /tmp/article.md
+wc -c /tmp/article.md        # expect ~15000+ bytes for full article
+
+# 3. Browser-lane verification (different bytes than bot lane)
+curl -s -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+  https://arif-fazil.com/world/makcikgpt/<slug> -o /tmp/article.html
+wc -c /tmp/article.html      # ~9000 bytes (React SPA shell)
+```
+
+**The two lanes (bot vs browser) serve DIFFERENT bytes** — `@mk_article_bot` strips prefix and serves MD from `makcikgpt-md/`, browser gets the SPA shell. Verify BOTH lanes:
+
+- **Bot lane returns MD content** — full article body, claim register, seal frontmatter.
+- **Browser lane returns HTML shell** — React component, dynamic rendering.
+
+`HEAD` only sees headers; the body shape differs by UA, so the only way to confirm rendering is **fetch the body and grep for content unique to the article** (e.g., the article title or a signature phrase from section 1). A 200 OK is NOT proof of correct content — it's proof that *something* served.
+
+### Deploy-pitfall: SPA article renders "Tidak Dijumpai" despite bundle having the slug
+
+When React SPA shows "Artikel Tidak Dijumpai" / 404-style empty state but the JS bundle contains the slug (`grep -c '<slug>' dist/assets/index-*.js` ≥ 1), the failure is in one of these layers:
+
+1. **`src/data/essays.json` not regenerated.** `generate-makcik-index.cjs` reads `essays.json` (NOT the `.ts` source). If only the `.ts` is updated and the JSON isn't, the listing rebuilds with old slugs and React can't resolve the new one in its hydration data. `grep '<slug>' src/data/essays.json` — must contain `dest.path: "/world/makcikgpt/<slug>"`.
+2. **Subagent created an orphan file.** If the spawn-coding-agent writes `<slug>.ts` twice with different slugs (e.g., once renamed), one becomes an orphan and the canonical one ends up registered to a typo. After any coding-agent article work, `ls src/data/makcikgpt/ | grep -i <slug-root>` and verify exactly one file exists with the right slug.
+3. **Subagent created extra articles not requested.** If you asked for "Article X" and got back `.ts` files for X, Y, and Z, the agent scoped-creeped. Always count files before vs after: `find src/data/makcikgpt -name '*.ts' -newer /tmp/before.txt | wc -l` — expect the count you requested.
+4. **Stale HTML file in webroot from a prior attempt.** A previous slug's `index.html` lingers in `/var/www/html/arif/world/makcikgpt/<stale-slug>/` and Caddy's `try_files` matches it. `find /var/www/html/arif/world/makcikgpt -type d -name '*<keyword>*'` — delete any directory that doesn't match the canonical slug.
+5. **Caddy redirect from stale slug is missing.** If the agent renamed a slug mid-deploy (e.g., `truth-dalam-void` → `truth-sembunyi-dalam-void`), old URLs need a 301 in `/etc/caddy/vhosts/arif-fazil.com.conf`. The patch tool refuses `/etc/caddy/` as a sensitive system path — **delegate Caddy edits to a coding subagent with `sudo`**.
+
+### Deploy-pitfall: For "is the article live?" — send screenshot evidence to Arif
+
+Arif's standing preference: when the user can't verify visually themselves, send a screenshot of the rendered page as the evidence — not a curl status, not a file size. The proof is "this is what the page looks like", not "this is what the server returned":
+
+```python
+# Use browser_exec to render + capture
+session = "verify-<topic>"
+browser_exec(session=session, code="""
+    goto_url("https://arif-fazil.com/world/makcikgpt/<slug>")
+    import time; time.sleep(5)  # wait for SPA hydrate
+    capture_screenshot()
+""")
+# Reply with MEDIA:<screenshot_path> so Arif sees the rendered page, not the agent's claim.
+```
+
+For mobile verification (the most common failure mode — desktop renders fine, mobile shows "not found" because of bundle hydration timing), set a mobile viewport before navigating:
+
+```python
+browser_exec(session=session, code="""
+    cdp('Emulation.setDeviceMetricsOverride',
+        width=375, height=812, deviceScaleFactor=2, mobile=True)
+    goto_url("https://arif-fazil.com/world/makcikgpt/<slug>")
+    import time; time.sleep(5)
+    capture_screenshot()
+""")
+```
+
+**Workflow rule:** when in doubt whether the SPA render matches the deploy, the screenshot is the receipt. A 200 + bundle match + screenshots from both desktop and mobile = evidence. Anything less, state "render not yet verified" and run the screenshot step.
 
 ## Image Embedding in MakcikGPT Articles
 

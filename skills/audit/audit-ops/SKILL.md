@@ -8,7 +8,10 @@ floor_scope: [F1, F2, F4, F7, F9, F11, F13]
 autonomy_tier: T1
 description: "Use when a claim, audit, or review must be verified. Route by provenance and observable shape to one of 12 references, then probe."
 triggers:
-  # --- union of member triggers (55) — computed, not by eye ---
+  #
+capability_tier: fed-long-context
+ecology_state: WARM
+--- union of member triggers (55) — computed, not by eye ---
   - "audit this report"
   - "verify this claim"
   - "is this sealed"

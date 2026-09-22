@@ -135,6 +135,65 @@ shadow:
     cascade_severity: HIGH
     cascade_note: "Individual shadows rated MEDIUM, but interaction product is functionally HIGH in continuous sessions. FED router should treat any session exceeding 50K tokens with reasoning-heavy 333 tasks as an elevated threat surface."
 
+  - id: SHADOW-DS-V41-001
+    name: retired_alias_expiry
+    severity: HIGH
+    class: availability
+    pattern: |
+      DeepSeek changelog 2026-09-10: deepseek-v4-flash and
+      deepseek-v4-flash-vision-exp are RETIRED, only "temporarily routed"
+      to V4.1 (deepseek-flash); deepseek-chat/-reasoner retired 2026-07-24
+      (still aliasing — uncommitted grace). When compatibility ends, every
+      hard-coded retired name hard-fails. Already observed class:
+      deepseek-v4-flash-0731 official endpoint returns HTTP 400
+      "supported API model names are deepseek-flash, deepseek-v4-pro".
+    triggers: [deepseek_v4_flash, deepseek_chat, flash_0731, alias_routing]
+    provenance: OBSERVED
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F8_LAW: system_boundary
+    mitigation:
+      - "Canonical everywhere: deepseek-flash (SOT model_routes wired 2026-09-22)"
+      - "Treat alias support as expiring courtesy, not API contract"
+      - "litellm asi-555 keeps -0731 ONLY on qwen-MaaS (catalog name valid, quota-429)"
+    evidence: "api-docs changelog 2026-09-10 + live canaries 2026-09-22 official chat=200 flash=200 0731=400; qwen-MaaS 0731=429"
+
+  - id: SHADOW-DS-V41-002
+    name: get_models_lies_when_balance_dead
+    severity: HIGH
+    class: observability
+    pattern: |
+      GET /models stays 200 while chat/completions returns 402 Insufficient
+      Balance (observed 2026-09-22 on the 666_JUDGE lane). GET-only health
+      boards mark money-dead lanes LIVE — exactly how substrate looked
+      healthy while every seal attempt failed.
+    triggers: [get_models_200, chat_402, health_false_live]
+    provenance: OBSERVED
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F11_AUDIT: chat_canary_required
+    mitigation:
+      - "Probe deepseek chat canary writes PAYMENT_REQUIRED on 402 (shipped 2026-09-22)"
+      - "Never trust GET /models liveness for spend-gated lanes"
+    evidence: "2026-09-22 probe showed deepseek|200|LIVE beside deepseek-chat|402|PAYMENT_REQUIRED; after topup chat=200"
+
+  - id: SHADOW-DS-V41-003
+    name: thinking_effort_and_offpeak_pricing
+    severity: INFO
+    class: cost_transparency
+    pattern: |
+      Since 2026-08-13 V4-Pro/V4-Flash thinking supports effort low/high/max;
+      since 2026-08-16 peak/off-peak pricing with off-peak at HALF price
+      (16:00 UTC boundary). V4.1-Flash (2026-09-10) cut list prices further.
+      Callers not setting effort or scheduling ignore available cost levers.
+    triggers: [thinking_effort, offpeak_scheduling, cost_model_stale]
+    provenance: VENDOR_CLAIM
+    floor_posture_delta:
+      F1_AMANAH: cost_hold
+    mitigation:
+      - "Set thinking effort per task class; batch non-urgent LLM work off-peak"
+    evidence: "DeepSeek changelog 2026-08-13 / 2026-08-16 / 2026-09-10"
+
 floor_posture:
   F1_AMANAH: standard
   F2_TRUTH: strict_grounding
@@ -153,11 +212,11 @@ floor_posture:
 lifecycle:
   created: "2026-06-12"
   created_by: "Omega (Ω)"
-  updated: "2026-08-03"
-  updated_by: "333-AGI (Δ MIND) — SHADOW-DS-006 cascade composite: DS-002×DS-004 severity MEDIUM→HIGH"
+  updated: "2026-09-22"
+  updated_by: "FI-008 — DeepSeek changelog 2026-09-10 fleet sync: +DS-V41-001/002/003 (alias expiry, GET-lies, effort/offpeak)"
   status: "ACTIVE"
   activation: "PRIMARY FEDERATION MODEL — all agents bound"
-  shadows: 6
+  shadows: 9
   highest_severity: "HIGH (DS-006 cascade, DS-001 fabrication)"
 
 ditempa_bukan_diberi: true

@@ -15,6 +15,8 @@ triggers:
   - "why is this counter zero"
   - "counter mismatch"
   - "retract a verification"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Claim Ledger Integrity
@@ -102,6 +104,19 @@ worse than none, because the ledger now looks maintained.
 - **An idempotency check must test for a decisive verdict, not for a row.** A
   "does a row exist" test makes a VOID or UNVERIFIABLE row permanently block
   re-verification — the record can never recover.
+- **An idempotency guard that scans a *window* fails silently as the ledger grows.** A
+  dedupe check that reads only the last N lines stops seeing old ids once the store outgrows
+  N, so a writer whose HEAD has gone quiet re-appends its identical record every cycle. Read
+  the guard, not the docstring: a ledger header saying "idempotent — re-running produces no
+  duplicate" is a claim to test, and the test is a count, not a read. Group occurrences per id
+  (`grep -o '<id-pattern>' store | sort | uniq -c`); any `count > 1` is proof the guard broke.
+  The **shape of the duplicates names the cause**: contiguous runs of exactly N records mean
+  one whole N-writer pass re-fired, scattered singles mean one writer is misfiring. Fix the
+  scan to read the full store, then falsify the fix with real ids the old guard missed and the
+  new one finds, plus a re-run that must append **zero** lines — a re-run that adds a record
+  proves the patch did not take. Note the blast radius before proposing repair: on a
+  `chattr +a` store the duplicates are permanent, so the remedy is a superseding tombstone,
+  never deletion.
 - **A counter whose source path is hardcoded cannot be tested.** If a summariser ignores an
   injected store path, no fixture-based test can exercise it, which is how the defect
   survives to production. Treat an un-testable read path as a finding in itself.

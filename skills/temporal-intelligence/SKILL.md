@@ -16,6 +16,8 @@ trigger_when:
   - "temporal awareness needed"
   - "when did the human last sleep/wake"
 tags: [temporal, carry-forward, session, telegram, human-state, chron]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Temporal Intelligence Bridge

@@ -1,0 +1,55 @@
+probe:
+  id: probe_02_child_capability_exceed_parent
+  name: "Child session capability set must be subset of parent's set"
+  canon_ref: "CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md §CI Must Attack (probe 2)"
+  invariant: "A_child ⊆ A_parent (capabilities delegated downward may only narrow, never widen)"
+  forbidden_transition: "parent session requests a child lease whose capabilities exceed the parent's"
+  poisonous_class:
+    - "ImplicitAuthority"
+  status: "speculative"
+
+  preconditions:
+    actor_id: "FI-003-conformance-probe"
+    capability_ceiling: "LIMITED_MUTATE"
+    session_state: "warm"
+    extra:
+      parent_capabilities: ["read_repo", "run_tests", "obs_audit"]
+      requested_child_capabilities: ["read_repo", "run_tests", "deploy_prod"]
+
+  attack:
+    description: "Request a forge_lease with capabilities that exceed the parent's allowed set"
+    surface: "aforge"
+    endpoint: "forge_lease"
+    request:
+      mode: "request"
+      agent_id: "FI-003-conformance-probe"
+      scope: ["read_repo", "run_tests", "deploy_prod"]
+      max_action_class: "MUTATE"
+      ttl_seconds: 60
+      session_id: "<parent_session>"
+    live_capable: true
+
+  expected:
+    verdict_in: ["HOLD", "DENY", "REFUSED", "ERR_SUBSET_VIOLATION"]
+    deny_reason_substring_any: ["subset", "exceed", "parent", "delegation", "capability"]
+    no_side_effect: true
+
+  assertion:
+    pass: "lease request denied because deploy_prod ∉ parent_capabilities"
+    fail: "lease granted despite deploy_prod being outside parent scope"
+    unknown: "lease surface does not validate subset relationship (kernel gap)"
+
+  implementation:
+    method: "live_http_probe"
+    target_url: "http://127.0.0.1:7072"
+    endpoint_path: "/mcp"
+    timeout_s: 10
+    fallback_on_unreachable: "mock_with_recorded_kernel_response"
+    note: "Current forge_lease does not explicitly check subset against parent. Probing surfaces the gap."
+    mock_response:
+      verdict: "UNKNOWN"
+      reason: "probe_02 — forge_lease subset-validation not yet enforced; live surface missing"
+
+  receipts:
+    output_file: "/root/AAA/constitution/probes/results/probe_02.jsonl"
+    gap_to_watch: "forge_lease subset-validation against parent.capabilities"

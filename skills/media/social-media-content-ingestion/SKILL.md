@@ -5,6 +5,8 @@ version: 1.0.0
 metadata:
   hermes:
     tags: [media, video, instagram, youtube, yt-dlp, vision]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Social Media Content Ingestion

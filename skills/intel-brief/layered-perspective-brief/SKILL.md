@@ -3,6 +3,8 @@ name: layered-perspective-brief
 description: "Use when asked what you/they/the public think of X."
 version: 1.0.0
 tags: [intelligence, perspective-layers, stakeholder-read, falsifiers, sovereign-read]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Layered Perspective Brief

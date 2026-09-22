@@ -8,6 +8,8 @@ risk_tier: medium
 floor_scope: [F2, F7, F9]
 autonomy_tier: T1
 tags: [geology, petroleum-system, source-rock, thermal-maturity, prospectivity, frontier, basin]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Basin Charge Screening
@@ -122,6 +124,13 @@ development paid from capex, and should be evaluated as such.
 
 `references/charge-screening-arithmetic.md` — the computation worked end to end on a real frontier case,
 plus a decision table mapping section thickness, crust, and gradient to expected verdicts.
+
+## 10. Pitfalls
+
+- **Do not synthesize basin state from a single corpus when multiple sealed files exist on disk.** Before composing the brief, run a parallel sweep of `/root/GEOX/okf/<basin>/`, `/root/GEOX/docs/eureka_insights/`, `/root/GEOX/outputs/<basin>/`, and `/root/.qwen/tmp/*<basin>*`. A claim sourced only from one 30-line `okf` summary carries less warrant than the same claim triangulated across a knowledge bundle + an eureka insight + a sealed PDF brief. The PDF in `outputs/` often contains an 11-page tectonic synthesis that supersedes the markdown. Cite which sources you triangulated.
+- **When `mcp__geox__*` rejects consecutive calls ("rejected the last N calls"), switch immediately to filesystem canonical sources.** The MCP server can refuse a session-bound actor (`SESSION_INVALID`) or rate-limit; do not retry the same call. Fall back to `/root/GEOX/` knowledge bundle + `pdftotext` on `/root/.qwen/tmp/*<basin>*.pdf` as the canonical earth-source-of-truth, then continue the analysis. The MCP layer is convenience, not authority.
+- **Carry the user's working dataset roster in the brief — not the canonical corpus roster.** The user is the one who knows which wells are in his project's working dataset (e.g. KL2 working roster = Barton-2, Rotan-1, Bunga Lili-1, Buluh-1, Maligan-1, Pekaka-1, Sugut-1ST1, Solisip-1 — Buluh-1 has a *synthetic* checkshot column, Bunga Lili-1 is deviated ~45°). GEOX may return its own corpus roster that does not match the user's project scope. State which roster you sourced from.
+- **When the user asks a political question framed as a geology question, treat the politics as the primary deliverable and the geology as evidence.** "Now gather all info we have about Kinabalu basin" attached to *"useless CP review last Thursday, they have guts to assign new review, the team is clueless about Kinabalu basin"* is not a basin brief request — it is a *positioning brief* request. The deliverable is (a) the evidence base that supports the user's position, (b) the technical gaps in the team's framing, (c) the institutional levers (internal vs external reviewer, biostrat error timeline, KT-7 cheapest-discriminator test) he can pull. A clean basin profile that ignores the political frame answers an unasked question.
 
 ---
 

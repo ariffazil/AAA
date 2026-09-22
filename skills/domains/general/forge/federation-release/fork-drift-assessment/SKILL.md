@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [fork, drift, upgrade, upstream, git, security, assessment, pr-review]
     related_skills: [github-pr-workflow, github-code-review, repository-sot-inventory, deep-codebase-audit]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Fork Drift Assessment

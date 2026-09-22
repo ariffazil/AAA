@@ -3,6 +3,8 @@ name: media-content-extraction
 description: "Extract IG/YouTube content and generate images."
 version: 1.0.0
 author: 333-AGI
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Media Content Extraction

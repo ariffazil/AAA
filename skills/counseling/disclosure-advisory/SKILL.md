@@ -14,6 +14,8 @@ triggers:
   - "keep this between us / help me hide this"
 floors: [F1, F2, F5, F6, F9]
 tags: [counseling, disclosure, bonds, conduct, confidentiality]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Disclosure Advisory — "should the other person know?"

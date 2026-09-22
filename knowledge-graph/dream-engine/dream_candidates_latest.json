@@ -1,0 +1,839 @@
+{
+  "version": "2.0.0-test",
+  "metadata": {
+    "window_start": "2026-09-18",
+    "window_end": "2026-09-21",
+    "total_sessions": 8,
+    "chron_bridge": {
+      "applied_at": "2026-09-21T15:57:52.191383+00:00",
+      "total_predictions": 29,
+      "verified_predictions": 2,
+      "candidates_calibrated": 0,
+      "candidates_total": 10,
+      "global_calibration": {
+        "$schema": "chron_calibration_v2",
+        "policy": "chron-observation-level-rule-v1",
+        "headline": "accuracy/mean_brier are EFFECTIVE: one underlying observation counts once. raw_* keys show the same ledger counted naively, one row per hypothesis, so the inflation is visible rather than hidden.",
+        "single_source_of_truth": "/root/chron/data/calibration.json",
+        "canonical_store": "/root/chron/data/predictions.jsonl",
+        "total": 3,
+        "correct": 1,
+        "incorrect": 1,
+        "mixed": 1,
+        "accuracy": 0.5,
+        "mean_brier": 0.22499999999999998,
+        "by_error_type": {
+          "NONE": 1,
+          "UNKNOWN": 1
+        },
+        "mean_confidence": 0.7083333333333334,
+        "bias": 0.20833333333333337,
+        "bias_magnitude": 0.20833333333333337,
+        "reliability": 0.10000000000000009,
+        "effective_n": 3,
+        "decisive": 3,
+        "unverifiable": 0,
+        "orphan_records": 0,
+        "records_in_log": 8,
+        "raw": {
+          "n": 4,
+          "correct": 2,
+          "incorrect": 2,
+          "accuracy": 0.5,
+          "mean_brier": 0.21437499999999998,
+          "ids": [
+            "pred-d54455f9b039",
+            "pred-chron-loop-test-0bc4ce80",
+            "pred-xau-001-up4250",
+            "pred-xau-002-down4000"
+          ],
+          "scope": "rows in the canonical store (chron-jsonl) only"
+        },
+        "raw_all_stores": {
+          "n": 6,
+          "note": "includes mirror rows held by the retired store; not a denominator"
+        },
+        "correlation_inflation": {
+          "raw_n": 4,
+          "effective_n": 3,
+          "samples_removed": 1,
+          "raw_mean_brier": 0.21437499999999998,
+          "effective_mean_brier": 0.22499999999999998
+        },
+        "stores": {
+          "hermes-json": 12,
+          "chron-jsonl": 29
+        },
+        "predictions_total": 41,
+        "ids": {
+          "prediction_ids_present": 41,
+          "prediction_ids_missing": 0,
+          "ledger_ids_minted": 41
+        },
+        "duplicate_observation_guard": {
+          "fired": true,
+          "rule": "R2 \u2014 count the observation, not the hypothesis",
+          "groups": [
+            {
+              "observation_key": "price|XAUUSD|yfinance:GC=F|4399.7|2026-09-17T00:00:00Z",
+              "primary_prediction_id": "pred-xau-001-up4250",
+              "n_before": 4,
+              "n_after": 1,
+              "class": "MIXED",
+              "hit_rate": 0.5,
+              "collapsed": [
+                {
+                  "ledger_id": "lid-a6607995188d",
+                  "store": "chron-jsonl",
+                  "prediction_id": "pred-xau-002-down4000",
+                  "verdict": "VERIFIED_INCORRECT",
+                  "brier_score": 0.3025
+                },
+                {
+                  "ledger_id": "lid-8bf55b5dfa59",
+                  "store": "hermes-json",
+                  "prediction_id": "pred-xau-001-up4250",
+                  "verdict": "VERIFIED_CORRECT",
+                  "brier_score": 0.0625
+                },
+                {
+                  "ledger_id": "lid-7ae8652c8a42",
+                  "store": "hermes-json",
+                  "prediction_id": "pred-xau-002-down4000",
+                  "verdict": "VERIFIED_INCORRECT",
+                  "brier_score": 0.3025
+                }
+              ]
+            }
+          ],
+          "collapsed_total": 3
+        },
+        "duplicate_observations_collapsed": 3,
+        "resolved_groups": [
+          {
+            "observation_key": "price|XAUUSD|yfinance:GC=F|4399.7|2026-09-17T00:00:00Z",
+            "primary_prediction_id": "pred-xau-001-up4250",
+            "n_before": 4,
+            "n_after": 1,
+            "class": "MIXED",
+            "hit_rate": 0.5,
+            "collapsed": [
+              {
+                "ledger_id": "lid-a6607995188d",
+                "store": "chron-jsonl",
+                "prediction_id": "pred-xau-002-down4000",
+                "verdict": "VERIFIED_INCORRECT",
+                "brier_score": 0.3025
+              },
+              {
+                "ledger_id": "lid-8bf55b5dfa59",
+                "store": "hermes-json",
+                "prediction_id": "pred-xau-001-up4250",
+                "verdict": "VERIFIED_CORRECT",
+                "brier_score": 0.0625
+              },
+              {
+                "ledger_id": "lid-7ae8652c8a42",
+                "store": "hermes-json",
+                "prediction_id": "pred-xau-002-down4000",
+                "verdict": "VERIFIED_INCORRECT",
+                "brier_score": 0.3025
+              }
+            ]
+          }
+        ],
+        "decisive_by_store": {
+          "chron-jsonl": 3,
+          "hermes-json": 1
+        },
+        "synthetic_self_tests": 1,
+        "synthetic_self_test_ids": [
+          "pred-chron-loop-test-0bc4ce80"
+        ],
+        "orphan_verifications": [],
+        "honest_scopes": {
+          "canonical_unified_including_self_tests": {
+            "n": 3,
+            "correct": 1,
+            "incorrect": 1,
+            "mixed": 1,
+            "accuracy": 0.5,
+            "mean_brier": 0.22499999999999998
+          },
+          "canonical_unified_excluding_self_tests": {
+            "n": 2,
+            "correct": 0,
+            "incorrect": 1,
+            "mixed": 1,
+            "accuracy": 0.25,
+            "mean_brier": 0.33624999999999994
+          },
+          "gold_pair_scope": {
+            "n": 1,
+            "correct": 0,
+            "incorrect": 0,
+            "mixed": 1,
+            "accuracy": 0.5,
+            "mean_brier": 0.1825
+          }
+        },
+        "updated_at": "2026-09-21T03:54:00.479258Z"
+      },
+      "active_lessons": 2
+    }
+  },
+  "candidates": [
+    {
+      "id": "DC-2026-001",
+      "claim": {
+        "statement": "Parallel-batched reconnaissance precedes execution",
+        "scope": "technical-agent",
+        "type": "operational_hypothesis"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 8,
+        "supporting": 8,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.95,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-002",
+      "claim": {
+        "statement": "Skill-loading as permission gate before artifacts",
+        "scope": "technical-agent",
+        "type": "operational_hypothesis"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 7,
+        "supporting": 7,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.92,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-003",
+      "claim": {
+        "statement": "Priority ladder before fetch sequences",
+        "scope": "technical-agent",
+        "type": "contextual_heuristic"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 3,
+        "supporting": 3,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.85,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-004",
+      "claim": {
+        "statement": "Probe-confirm-retry on uncertain states",
+        "scope": "technical-agent",
+        "type": "operational_hypothesis"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 4,
+        "supporting": 4,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.88,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-005",
+      "claim": {
+        "statement": "Voice synthesis default for persona content",
+        "scope": "human-interface",
+        "type": "persona_preference"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 3,
+        "supporting": 3,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.75,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-006",
+      "claim": {
+        "statement": "Identity priming even on technical queries",
+        "scope": "human-interface",
+        "type": "dangerous_hypothesis"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 3,
+        "supporting": 3,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.78,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-007",
+      "claim": {
+        "statement": "Constraint-aware meta-evaluation as final pass",
+        "scope": "governance-federation",
+        "type": "governance_pattern"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 3,
+        "supporting": 3,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.82,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-008",
+      "claim": {
+        "statement": "Machine as identity-pressure proxy",
+        "scope": "human-interface",
+        "type": "observation_only"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 3,
+        "supporting": 3,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.7,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-009",
+      "claim": {
+        "statement": "VOID as selected operation",
+        "scope": "governance-federation",
+        "type": "governance_pattern"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 5,
+        "supporting": 5,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.73,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    },
+    {
+      "id": "DC-2026-010",
+      "claim": {
+        "statement": "AAA frozen snapshot vs CHRON living tree",
+        "scope": "governance-federation",
+        "type": "observation_only"
+      },
+      "provenance": {
+        "source_sessions": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "observation_window": {
+          "start": "2026-09-18T00:00:00",
+          "end": "2026-09-21T00:00:00"
+        }
+      },
+      "evidence": {
+        "observations": 3,
+        "supporting": 3,
+        "contradictory": 0,
+        "unknown": 0
+      },
+      "epistemics": {
+        "p_occurrence": 0.72,
+        "p_predictive": null,
+        "p_normative": null,
+        "causal_status": "UNTESTED",
+        "predictive_metadata": {
+          "reason": "insufficient_matches",
+          "matched_count": 0,
+          "required": 2
+        },
+        "global_calibration": {
+          "accuracy": 0.5,
+          "mean_brier": 0.22499999999999998,
+          "effective_n": 3,
+          "bias": 0.20833333333333337
+        }
+      },
+      "consequence": {
+        "cost_if_wrong": "LOW",
+        "reversibility": "EASILY_REVERSIBLE"
+      },
+      "falsification": {
+        "counterstories": [],
+        "cheapest_probe": ""
+      },
+      "temporal": {
+        "prediction_ids": [],
+        "calibration_n": 0,
+        "brier_score": null
+      },
+      "lifecycle": {
+        "state": "CANDIDATE",
+        "created_at": "2026-09-21T22:53:30"
+      },
+      "authority": {
+        "proposed_by": "DREAM_ENGINE",
+        "witnessed_by": [],
+        "ratified_by": null
+      }
+    }
+  ]
+}

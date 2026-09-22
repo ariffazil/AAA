@@ -14,6 +14,8 @@ triggers:
   - binding an existing registry voice to a federated persona agent
   - writing or updating a persona INIT.md or its agent-card voice block
   - deciding whether a persona voice is actually live in the runtime
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # Persona Voice Binding

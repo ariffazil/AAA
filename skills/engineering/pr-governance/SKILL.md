@@ -81,6 +81,24 @@ Classify PR risk based on:
 
 ## §2. CHECKLIST LAYER — Per-PR Review
 
+### Required-Check vs Gate-Noise Decision Rule (before any merge attempt)
+
+Before approving or merging, classify every red check into one of two buckets:
+
+1. **Required for branch protection** — `gh api repos/<org>/<repo>/branches/main/protection --jq .required_status_checks.contexts`. If this check passes AND `enforce_admins: false`, the merge is legally possible via `gh pr merge --admin --squash --delete-branch`.
+2. **Not required, but loud** — every other failing check is informational. It may be useful (sanity, secondary validation), but it does not block merge.
+
+Three concrete noise classes the federation has hit:
+
+- **`sot-manifest-check` racing Mergify + `fetch-depth: 2`**: shallow clone sees only 2 commits on the PR branch. Mergify adds an auto-commit on top, pushing your code commits off-screen. The gate fails because your actual SHA is two commits back. Fix is structural (re-open as single squashed commit before Mergify runs, or disable Mergify on that branch), not local (re-stamping `live_commit` repeatedly is a losing race).
+- **Pre-commit hook auto-bundled a tangential file** (e.g. moved a package from `[extras]` to `runtime`): the patch is correct, but the hook added a change you did not write. Notice it in the PR diff; either accept it as a known good or split the commit.
+- **Server-level checks** (validate-routing, sentinel, MCP spec, fast signal, external witness) inheriting a pre-existing flake unrelated to your patch: do not chase the flake in your PR.
+
+The merge strategy flows from the classification:
+- Required PASS + only non-required FAIL → admin-squash is legal; merge now and fix the noise in a follow-up commit.
+- Required FAIL → block; the patch has a real defect.
+- Required PASS but patch-attributable failures exist → split the patch first.
+
 ### Structural Checks
 
 1. **Constitutional file detection** — if F1/F13 files changed, cross-check with governance

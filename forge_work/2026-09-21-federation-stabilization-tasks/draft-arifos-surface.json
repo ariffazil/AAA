@@ -1,0 +1,27 @@
+{
+  "organ": "arifos",
+  "schema_version": "0.1.0",
+  "generated_at_utc": "2026-09-20T18:25:31.983040+00:00",
+  "generator": "FI-008 draft generator 2026-09-21",
+  "canonical": [
+    "arif_init",
+    "arif_observe",
+    "arif_think",
+    "arif_route",
+    "arif_memory",
+    "arif_judge",
+    "arif_forge",
+    "arif_seal"
+  ],
+  "compat": [],
+  "private": [],
+  "deprecated": [],
+  "metadata": {
+    "last_verified_utc": "2026-09-20T18:25:31.983040+00:00",
+    "verifier": "FI-008 (draft, not yet ratified)",
+    "contract_drift_status": "UNVERIFIED",
+    "last_drift_check_utc": null,
+    "federation_release_ref": "sha256:a8c2612056b527086f85d47421af7e26399297c226c8377012e4241fd1a7af3b"
+  },
+  "rationale": "arifOS contracts are well-aligned: 8 canonical = 8 tools/list = 8 callable; 5 vantages hash-match per session prior. Promote draft to canonical after verifying private=13 matches internal CANONICAL_TOOLS superset."
+}

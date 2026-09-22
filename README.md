@@ -1,106 +1,379 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.09.13
-last_verified: 2026-09-14T08:30:00Z
-live_commit: 8a2c373dc
-a2a_port: 3001
-a2a_status: loopback JSON-RPC healthy; public POST /a2a exact path 405 (Caddy /a2a/* HOLD)
-protocol: A2A v1.0 (wire Major.Minor; GitHub tag v1.0.1 is spec patch — never stamp 1.2)
-canonical_surface: a2a/CANONICAL_SURFACE.md
-apex_zen: A2A delegates ⊥ MCP equips ⊥ ACT mutates ⊥ arifOS governs ⊥ F13 decides
-godel_lock: ACTIVE federation-wide
-role: ATTENTION PLANE — Federation State, A2A Gateway, Skill Catalog, Intent Routing, Verification
-authority: DISPLAY_ONLY — never judges (arifOS), never metabolizes (arifFlow), never executes (A-FORGE)
-agent_lanes: 3 (333-AGI, 555-ASI, 888-APEX; FORGE is adat agentic substrate)
-truth_rule: /health + live Agent Card + POST /a2a/ beat any static count in prose
-vault: CONNECTED
-seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
-holds: Caddy exact /a2a · JWS card keys · medical purge (Pilihan A) · WELL biometrics
+federation_release: v2026.09.21 (P2 — AAA-ATTENTION-CONVERGENCE)
+last_verified: 2026-09-21T02:11:00Z
+apex_zen: HERMES claims → CHRON temporal → AAA attention → arifOS authority → A-FORGE execution
+
+identity:
+  AAA : (evidence, state, deadlines, drift, uncertainty) → AttentionPacket
+  irreducible_question: "What deserves scarce attention now?"
+
+pipeline: Reality → HERMES → CHRON → AAA → arifOS/Human
+
+public_ingress:
+  MCP authority ingress:    arifOS :8088 (governed requests)
+  A2A federation discovery: AAA    :3001 (inter-agent)
+
+attention_formula:
+  P = (Impact × Urgency × EvidenceQuality × Novelty) / AttentionCost
+  EvidenceQuality = (1 - Uncertainty) × Reversibility
+
+hard_overrides:
+  - authority_violation: P = ∞
+  - security_breach:    P = ∞
+  - deadline_expiry:    P = ∞
+  - failed_invariant:   P = ∞
+  - irreversibility_floor: P ≥ 0.85
+
+organs_in_federation:
+  arifOS:    authority plane     (irreducible: "May this action happen?")
+  A-FORGE:  execution plane     (irreducible: "How do I execute the authorized action?")
+  HERMES:   meaning plane       (irreducible: "What exactly is being claimed?")
+  CHRON:    temporal plane      (irreducible: "When does this matter, and what did we expect?")
+  FRAME:    independent witness (irreducible: "What actually happened?")
+  VAULT999: immutable ledger    (irreducible: "Can we prove the chain later?")
+  AAA:      attention plane     (irreducible: "What deserves scarce attention now?")
+  arifFlow: metabolism/telemetry (FQ / receipts)
+
+useful_agency_equation:
+  UsefulAgency = Intelligence × Attention × Authority × TemporalDiscipline × MeaningIntegrity
+  If any → 0, then AgencyQuality → 0.
+
+counts_are_live:
+  README numbers are release snapshots; live counts come from the federation registry.
+  README_state = projection(registry_state)
 -->
 
 # AAA — Attention Plane & Federation Registry
 
-[![🧠 Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg)](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml)
-[![🛡️ Governance Gate](https://github.com/ariffazil/AAA/actions/workflows/governance-gate.yml/badge.svg)](https://github.com/ariffazil/AAA/actions/workflows/governance-gate.yml)
-[![🔐 Gitleaks](https://github.com/ariffazil/AAA/actions/workflows/gitleaks.yml/badge.svg)](https://github.com/ariffazil/AAA/actions/workflows/gitleaks.yml)
-[![Docker Image](https://img.shields.io/badge/ghcr.io-ariffazil%2Faaa--a2a-2496ED?logo=docker)](https://github.com/ariffazil/AAA/pkgs/container/aaa-a2a)
-[![A2A Protocol](https://img.shields.io/badge/A2A-1.0-6C47FF)](./a2a/CANONICAL_SURFACE.md)
-[![Node](https://img.shields.io/badge/node-%E2%89%A522-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](./LICENSE)
+> **In a world where intelligence is abundant, attention is the scarce resource.**
 
-## The attention plane of the arifOS federation — compressing reality into sovereign attention.
+AAA converts federated reality into sovereign attention. It does not judge (arifOS), execute (A-FORGE), or witness (FRAME / VAULT999 / arifFlow). It makes reality visible and prioritised.
 
-AAA converts federated reality into actionable sovereign attention through observation, verification, registration, and routing. It does not judge (arifOS), execute (A-FORGE), or witness (arifFlow). It makes reality visible, trustworthy, and actionable.
+**Identity (P2 2026-09-21):**
 
-In a world where intelligence is abundant, attention is the scarce resource. AAA exists to ensure the right reality reaches the right authority at the right time.
+```text
+AAA : (evidence, state, deadlines, drift, uncertainty) → AttentionPacket
+```
+
+**Irreducible question:** *"What deserves scarce attention now?"*
 
 **Licensed under AGPL-3.0.**
 
-| Audience | What you get |
-|---|---|
-| **Human** | One switchboard. Intent in, the right organ out. No terminal dump in your pocket |
-| **Agent / A2A** | Public card `/.well-known/agent-card.json`. JSON-RPC at `/a2a/` with `A2A-Version: 1.0`. Extended card is authenticated, not a topology dump |
-| **Institution** | DISPLAY_ONLY edge: routes and shows state. Judgment is [arifOS](https://github.com/ariffazil/arifOS). Hands are [A-FORGE](https://github.com/ariffazil/A-FORGE) |
+---
 
-Canonical live surface: [`a2a/CANONICAL_SURFACE.md`](./a2a/CANONICAL_SURFACE.md)
+## The Pipeline
+
+```text
+Reality
+   ↓
+HERMES    What exactly is being claimed?
+   ↓
+CHRON     When does this matter, and what did we expect?
+   ↓
+AAA       What deserves scarce attention now?     ← this organ
+   ↓
+arifOS    What authority exists to act?
+   ↓
+A-FORGE   How do I execute the authorized action?
+   ↓
+Human
+```
+
+AAA sits between CHRON's temporal context and arifOS's authority gate. It consumes the upstream pipeline; it never invents its own meaning or temporal salience.
 
 ---
 
-## The Problem
+## Public Ingress (clear story)
 
-As federations grow, intelligence becomes abundant but human attention becomes scarce. The challenge is no longer generating answers — it is determining what matters, what requires attention now, and what can safely wait. Without an attention layer, operators drown in logs, dashboards, metrics, and agent chatter.
+| Use case | Connect to | Protocol | Port |
+|---|---|---|---|
+| Governed requests (humans, agents) | **arifOS** | MCP | `:8088` |
+| Inter-agent discovery, A2A federation | **AAA** | A2A v1.0 (JSON-RPC) | `:3001` |
 
-AAA solves this by providing:
+Answer to "Should I connect to AAA or arifOS?":
+- **Normal governed use → arifOS.**
+- **Agent-to-agent discovery / interoperability → AAA.**
 
-- **Attention compression** — converts complex federated reality into actionable sovereign attention
-- **Federation state** — canonical `federation_state()` object with organ health, FQ, holds, bottlenecks
-- **Verification** — cross-checks observed state against live federation reality
-- **Intent routing** — deterministic classification that maps intent to the correct organ
-- **Skill catalog** — 200+ skills discoverable and composable across organs
+No contradiction exists because the protocol edges are different.
+
+---
+
+## Canonical AttentionPacket (P2 2026-09-21)
+
+Every UI projects from one machine-readable object — no dashboard code, no N dashboards:
+
+```json
+{
+  "subject": "WEALTH surface drift",
+  "attention_class": "ACTION_REQUIRED",
+  "priority": 0.91,
+
+  "why_now": "HIGH schema drift detected",
+  "deadline": null,
+
+  "impact": 0.9,
+  "urgency": 0.8,
+  "uncertainty": 0.2,
+  "reversibility": 0.9,
+
+  "epistemic_state": "OBSERVED",
+  "source_count": 2,
+  "contradictions": 0,
+
+  "temporal": {
+    "chron_available": true,
+    "chron_source": "chron:chron_temporal_briefing",
+    "attention_debt": 0.0,
+    "prediction_due": false
+  },
+
+  "recommended_organ": "WEALTH",
+  "required_authority": "arifOS",
+  "execution_required": false,
+
+  "overrides": [],
+  "evidence_basis": [
+    "chron:chron_temporal_briefing",
+    "hermes:principal_type_classifier"
+  ]
+}
+```
+
+16+ canonical fields. One subject → one packet.
+
+### Priority formula
+
+```
+P = (Impact × Urgency × EvidenceQuality × Novelty) / AttentionCost
+```
+
+where `EvidenceQuality = (1 - Uncertainty) × Reversibility`.
+
+### Hard overrides (force P = ∞, must-show)
+
+| Override | Reason |
+|---|---|
+| `authority_violation` | Constitutional boundary breached |
+| `security_breach` | Integrity compromised |
+| `deadline_expiry` | Temporal urgency hit zero |
+| `failed_invariant` | Canon-0 violation |
+| `irreversibility_floor` | P ≥ 0.85 (high floor, not ∞) for irreversible actions |
+
+The system can say **"Don't show Arif this now"** — that is its most valuable capability.
+
+### Attention classes (5)
+
+`ACTION_REQUIRED` ≥ 0.85 · `INFORM` ≥ 0.5 · `DEFER` ≥ 0.2 · `SILENT` < 0.2 · `HOLD` (override-driven)
+
+---
+
+## What AAA Is and Is Not
+
+| AAA IS | AAA IS NOT |
+|---|---|
+| Classifies | A judge |
+| Prioritises | An executor |
+| Compresses reality → AttentionPacket | A workflow engine |
+| Recommends routing | Dispatches (that's arifOS) |
+| Cross-checks ObservedState_A ?= ObservedState_B (state reconciliation) | Establishes Claim = AbsoluteTruth |
+| Observes, classifies, forwards, prioritises | Owns goals, authority, mutation, judgment |
+
+**The invariant:** `Routing a message ≠ authorizing its consequence`.
 
 ---
 
 ## Architecture
 
 ```
-                    ┌─────────────────┐
-                    │    Sovereign    │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │  AAA Attention  │
-                    │     Plane       │
-                    │   Port :3001    │
-                    └────────┬────────┘
-                             │
-         ┌───────────────────┼───────────────────┐
-         │                   │                   │
-         ▼                   ▼                   ▼
-    ┌─────────┐      ┌─────────────┐     ┌─────────────┐
-    │ Observe │      │   Verify    │     │    Route    │
-    │ (State) │      │ (aaastate   │     │ (Intent     │
-    │         │      │  verify)    │     │  Classify)  │
-    └────┬────┘      └──────┬──────┘     └──────┬──────┘
-         │                  │                    │
-         └──────────────────┼────────────────────┘
-                            ▼
-                   ┌─────────────────┐
-                   │ Federation State │
-                   │  (canonical)    │
-                   └────────┬────────┘
-                            │
-    ┌──────────┬────────────┼────────────┬──────────┐
-    │          │            │            │          │
-    ▼          ▼            ▼            ▼          ▼
- arifOS     A-FORGE     arifFlow     WEALTH    GEOX/WELL
- Authority  Execution   Witness     Capital   Domain
-  Plane      Plane       Plane      Plane      Organs
+                ┌──────────────────────────────────────────┐
+                │              Sovereign                  │
+                └──────────────────┬─────────────────────┘
+                                   │
+                ┌──────────────────▼─────────────────────┐
+                │              AAA :3001                  │
+                │         Attention Plane                 │
+                │   (classification + prioritization       │
+                │    + recommendation, NO dispatch)        │
+                └──────┬──────────────────────────┬───────┘
+                       │                          │
+              observes │                          │ recommends
+                       ▼                          ▼
+            ┌────────────────────┐      ┌─────────────────────┐
+            │  HERMES :18087     │      │  CHRON :18102       │
+            │  Meaning Plane     │      │  Temporal Plane     │
+            │  (claim, prove-    │      │  (deadlines,        │
+            │   nance, contra-   │      │   calibration,      │
+            │   diction)         │      │   attention_debt)   │
+            └────────────────────┘      └─────────────────────┘
+                       │                          │
+                       └──────────┬───────────────┘
+                                  ▼
+                        AAA consumes both
+                                  │
+                                  ▼
+                   ┌──────────────────────────┐
+                   │  AttentionPacket(s)     │
+                   │  (one per subject)       │
+                   └────────────┬───────────┘
+                                ▼
+                   ┌──────────────────────────┐
+                   │  arifOS :8088            │
+                   │  (governed dispatch)     │
+                   └──────────────────────────┘
 ```
+
+AAA does NOT touch A-FORGE, FRAME, VAULT999, or arifFlow directly. It produces AttentionPackets that arifOS / Human consume.
+
+---
+
+## Federation Irreducible Questions (7 organs)
+
+Every organ answers one question it owns. No organ cosplays as another.
+
+| Organ | Plane | Irreducible question |
+|---|---|---|
+| **HERMES** | Meaning | "What exactly is being claimed?" |
+| **CHRON** | Temporal | "When does this matter, and what did we expect?" |
+| **AAA** | Attention | "What deserves scarce attention now?" |
+| **arifOS** | Authority | "What authority exists to act?" |
+| **A-FORGE** | Execution | "How do I execute the authorized action?" |
+| **FRAME** | Witness | "What actually happened?" |
+| **VAULT999** | Ledger | "Can we prove the chain later?" |
+
+### Supporting planes (not irreducible-question organs)
+
+| Plane | Function |
+|---|---|
+| **arifFlow** | metabolism / FQ / receipts (NOT witness plane) |
+| **WEALTH** | Capital Consequence Intelligence (Ω-invariant primitives) |
+| **GEOX** | Earth Intelligence |
+| **WELL** | Vitality Mirror |
+
+### What arifFlow actually is (P2 correction)
+
+Your earlier README called `arifFlow — Witness Plane`. **Correction:**
+
+| Component | Role | NOT |
+|---|---|---|
+| FRAME | independent witness | not ledger, not telemetry |
+| VAULT999 | immutable ledger | not witness, not telemetry |
+| arifFlow | metabolism / FQ / receipts | not witness, not ledger |
+
+`Witness ≠ Telemetry ≠ Ledger`. Three distinct roles.
+
+---
+
+## State Reconciliation (P2 correction)
+
+Earlier README said AAA "verifies" federated state. **Correction:**
+
+AAA establishes `ObservedState_A ?= ObservedState_B`. It does NOT establish `Claim = AbsoluteTruth`. The term for this discipline is **state reconciliation** (or **consistency verification**), not **verification**.
+
+Every `organ.status = DOWN` carries:
+- `observed_at`
+- `source`
+- `source_age`
+- `confidence`
+- `probe_method`
+- `failure_reason`
+
+because `organ.status = DOWN` doesn't necessarily mean `organ is dead` — it may mean probe timed out, auth failed, or network path failed. AAA preserves that distinction.
+
+---
+
+## Useful Agency Equation
+
+```
+UsefulAgency = Intelligence × Attention × Authority × TemporalDiscipline × MeaningIntegrity
+```
+
+| Axiom | Organ |
+|---|---|
+| Intelligence is abundant | (humans, agents) |
+| **Attention is scarce** | **AAA** |
+| Authority is scarce | arifOS |
+| **Temporal discipline is irreversible** | **CHRON** |
+| **Meaning is lossy** | **HERMES** |
+
+If any → 0, then `AgencyQuality → 0`. Federation design must hold all five non-zero.
+
+---
+
+## A2A v1.0 Compliance
+
+| Required Element | Status | Where |
+|------------------|--------|-------|
+| Agent card at `/.well-known/agent-card.json` | ✅ | [`public/.well-known/`](./public/.well-known/) · live: <https://aaa.arif-fazil.com/.well-known/agent-card.json> |
+| Required card fields | ✅ | `.well-known/agent-card.json` |
+| JSON-RPC transport at `/a2a/` with `A2A-Version: 1.0` | ✅ | [a2a/](./a2a/) |
+| Protocol binding declaration | ✅ | `protocolBinding: JSONRPC` (note: A2A itself supports JSON-RPC, gRPC, HTTP+JSON) |
+| Authenticated extended card | ✅ | `capabilities.authenticated_extended_card: true` |
+| Agent metadata card | ✅ | `.well-known/agent.json` |
+| Protocol conformance evidence | ✅ | [`PROTOCOL_CONFORMANCE.md`](./PROTOCOL_CONFORMANCE.md) |
+
+> **Note:** A2A v1.0 supports multiple protocol bindings (JSON-RPC, gRPC, HTTP+JSON). AAA uses JSON-RPC; A2A itself is not "JSON-RPC only."
+
+---
+
+## Live Counts (from SOT, not prose)
+
+> README numbers are release snapshots. **Live counts come from the federation registry.**
+> `README_state = projection(registry_state)`
+
+| Count | Source | Last verified |
+|---|---|---|
+| Organs (live) | `federation_state.py --organs` | live |
+| Skills (live) | AAA skill catalog | live |
+| Repositories (live) | git submodule status | live |
+| Categories (live) | derived from skill catalog | live |
+
+Hardcoded counts rot. Live counts do not.
+
+---
+
+## AAA in Three Sentences
+
+> AAA does not create more intelligence. It decides what intelligence deserves attention.
+>
+> AAA consumes HERMES (meaning) and CHRON (temporal). It does not duplicate them.
+>
+> AAA is a recommendation plane. arifOS is the dispatch plane. They are different organs.
+
+---
+
+## Division of Constitutional Labor (P2 corrected)
+
+| Organ | Constitutional Role | Scarcity | Does NOT |
+|-------|---------------------|----------|----------|
+| **arifOS** | **Authority Plane** — constitutional judgment | Authority | Never executes, never witnesses |
+| **AAA** | **Attention Plane** — classification + prioritization + recommendation | Attention | Never judges, never executes, never dispatches |
+| **HERMES** | **Meaning Plane** — claim/provenance/contradiction | Meaning integrity | Never judges, never executes |
+| **CHRON** | **Temporal Plane** — deadlines, calibration, attention_debt | Temporal discipline | Never judges, never executes |
+| **A-FORGE** | **Execution Plane** — bounded mutation | Execution | Never adjudicates, never witnesses |
+| **FRAME** | **Witness Plane** — independent observation | Reality | Never judges, never executes |
+| **VAULT999** | **Ledger Plane** — immutable record | Provenance | Never judges, never executes |
+| **arifFlow** | **Metabolism Plane** — FQ / receipts / telemetry | — | Never witnesses, never judges |
+| **WEALTH** | **Capital Consequence Intelligence** | Capital | Never judges, never executes |
+| **GEOX** | **Earth Intelligence** | Domain | Never judges, never routes |
+| **WELL** | **Vitality Mirror** | Substrate | Never judges, never executes |
+
+---
+
+## What AAA Recommends vs. What arifOS Dispatches
+
+| | AAA | arifOS |
+|---|---|---|
+| Function | Classification + prioritization + recommendation | Governed dispatch + authority |
+| Authority | NONE (DISPLAY_ONLY) | FULL (LIMITED_MUTATE / FULL) |
+| Output | AttentionPacket | Tool call / mutation |
+| Decision | "This deserves attention" | "This action may proceed" |
+| Failure mode | Wrong priority (recoverable) | Constitutional breach (888_HOLD) |
+
+> `AAA_route = recommendation` ≠ `arifOS_route = governed dispatch`
 
 ---
 
 ## Quick Start
-
-### Docker
 
 ```bash
 git clone https://github.com/arif-fazil/AAA.git
@@ -110,132 +383,9 @@ docker compose up -d
 # Verify
 curl http://localhost:3001/health
 curl http://localhost:4000/health/liveliness
-```
 
-### Local Development
-
-```bash
-cd AAA
-npm install
-npm run dev
-
-# Or with Docker Compose for full stack (AAA + FED)
-docker compose up -d
-```
-
----
-
-## Key Components
-
-### A2A Mesh Gateway
-Agent-to-agent communication broker using the Agent-to-Agent (A2A) protocol v1.0.0. Handles message routing, session management, and inter-organ communication.
-
-### FED Gateway (Multi-Model Inference)
-Federation model gateway with fallback chains across providers (FLAME Router retired 2026-09-04):
-- **FED** `:4000` — HAProxy intake into the federation model lanes (LiteLLM)
-- **Fallback chains** — retry with backoff; position 3+ on a different provider/route
-- **Local fallback** — Ollama, zero-cost
-
-When a model fails, FED routes to the next provider — no interruption.
-
-### Intent Classification
-Deterministic mission routing that maps human language to machine states:
-- Six stable mission states (no seventh — ambiguous → HOLD)
-- Works even when the ML classifier is down
-- Phase 2: optional model-assisted intent parsing
-
-### Skill Catalog
-200+ skills across 11 categories:
-- **333-AGI** — General intelligence, web, research, epistemic discovery
-- **555-ASI** — Causal reasoning, structural intelligence, vision analysis
-- **888-APEX** — Sovereign adjudicative, constitutional audit
-- **FORGE (adat)** — Code, infrastructure, deployment (inherited capability substrate)
-- **warga** — Citizen agent skills
-- And more (productivity, media, smart home, social)
-
-### Federation State & Attention Plane
-Canonical `federation_state()` object — the keystone. Every surface projects from the same state:
-
-- **Organ health** — 8 organs, latency, failure reasons
-- **Flow Quotient (FQ)** — per-actor metabolism, diagnosis, stuck actors
-- **Authority debt** — holds, seals, oldest hold, held actors
-- **Bottleneck detection** — infrastructure, authority, metabolism, or none
-- **Verification** — `aaa_state_verify.py` cross-checks state against live sources
-
-Surfaces: [Web Cockpit](https://aaa.arif-fazil.com) · [Static API](https://aaa.arif-fazil.com/state.json) · Terminal (`python3 federation_state.py crf`) · Verification (`python3 aaa_state_verify.py`)
-
----
-
-## Federation Role
-
-AAA sits between reality and the sovereign:
-
-```
-Reality → AAA (observe + verify + compress) → Sovereign Attention
-```
-
-### Division of Constitutional Labor
-
-| Organ | Constitutional Role | Scarcity | Does NOT |
-|-------|---------------------|----------|----------|
-| **arifOS** | **Authority Plane** — constitutional judgment | Authority | Never executes, never witnesses |
-| **AAA** | **Attention Plane** — reality compression + routing | Attention | Never judges, never executes, never mutates |
-| **arifFlow** | **Witness Plane** — metabolic recording | Reality | Never judges, never executes |
-| **A-FORGE** | **Execution Plane** — bounded mutation | Execution | Never adjudicates, never witnesses |
-| **GEOX** | **Earth Intelligence** | Domain | Never judges, never routes |
-| **WEALTH** | **Capital Intelligence** | Capital | Never judges, never executes |
-| **WELL** | **Human Readiness** | Substrate | Never judges, never executes |
-
-AAA **observes, verifies, compresses, and routes — but never judges, executes, or mutates.** Verdicts belong to arifOS. Mutations belong to A-FORGE. Reality recording belongs to arifFlow.
-
-### What AAA Is Not
-
-AAA is not an orchestrator. AAA is not a workflow engine. AAA is not a judge. AAA is not an executor. AAA is not an agent manager.
-
-AAA does not decide truth. AAA does not mutate reality. AAA only ensures that reality reaches attention.
-
----
-
-## Federation Repository Taxonomy (5-Tier)
-
-The arifOS Federation organizes its 35 repositories into five distinct operational tiers:
-
-- **Tier 1 — Core Runtime:** `arifOS`, `A-FORGE`, `arifFlow`, `AAA`, `GEOX`, `WEALTH`, `WELL`. The living spine of the federation.
-- **Tier 2 — Governance Infrastructure:** `scripts`, `FRAME`, `web-canon`, `arifOS-model-registry`. Rulebooks, tools, schemas, and operational scripts.
-- **Tier 3 — Federation Interfaces:** `arif-fazil.com`, `ariffazil`, `HERMES`. Human and sovereign public boundaries.
-- **Tier 4 — Infrastructure Attachments:** `compose`, `searxng`, `syedos`, `A2B`, `awesome-mcp-servers`, `macrostrat`. Auxiliary configurations and benchmarks without runtime authority.
-- **Tier 5 — Archives:** 15 retired historical repositories under zero execution rights (`[L4 ARCHIVE]`).
-
----
-
-## Health Checks
-
-| Endpoint | Description | Auth |
-|----------|-------------|------|
-| `GET /health` | AAA organ liveness | None |
-| `GET /health/skills` | Skill catalog status | None |
-| `GET /health/liveliness` | FED gateway liveliness (no auth) | None |
-| `GET /health/agents` | Agent registry | None |
-
----
-
-## A2A Compliance (v1.0)
-
-| Required Element | Status | Where |
-|------------------|--------|-------|
-| Agent card discovery at `/.well-known/agent-card.json` | ✅ | [`public/.well-known/`](./public/.well-known/) · live: <https://aaa.arif-fazil.com/.well-known/agent-card.json> |
-| Required card fields (`name`, `description`, `url`, `version`, `capabilities`, `defaultInputModes`, `defaultOutputModes`, `skills`, `securitySchemes`) | ✅ | `.well-known/agent-card.json` (8 skills) |
-| JSON-RPC transport at `/a2a/` with `A2A-Version: 1.0` | ✅ | [a2a/](./a2a/) · JSON-RPC 2.0 wire |
-| Protocol binding declaration (`protocolBinding: JSONRPC`) | ✅ | `supportedInterfaces` |
-| Authenticated extended card | ✅ | `capabilities.authenticated_extended_card: true` |
-| Agent metadata card (`agent.json`) | ✅ | `.well-known/agent.json` |
-| Protocol conformance evidence | ✅ | [`PROTOCOL_CONFORMANCE.md`](./PROTOCOL_CONFORMANCE.md) |
-| Canonical live surface doc | ✅ | [`a2a/CANONICAL_SURFACE.md`](./a2a/CANONICAL_SURFACE.md) |
-
-Fetch the card from any A2A client:
-
-```bash
-curl -s https://aaa.arif-fazil.com/.well-known/agent-card.json | jq '{name, version, protocolVersion}'
+# Generate a sample AttentionPacket
+python3 /root/AAA/scripts/attention_plane.py
 ```
 
 ---
@@ -250,15 +400,12 @@ curl -s https://aaa.arif-fazil.com/.well-known/agent-card.json | jq '{name, vers
 - [Deployment Guide](DEPLOYMENT.md)
 - [Changelog](CHANGELOG.md)
 - [Security Policy](SECURITY.md)
-- [Contributing](CONTRIBUTING.md)
 
 ---
 
 ## License
 
 **GNU Affero General Public License v3.0 (AGPL-3.0)**
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU AGPL v3.0. See [LICENSE](LICENSE) for the full text.
 
 ---
 

@@ -7,6 +7,8 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 description: "Adds visual understanding to text-only Token Plan models (glm-5, glm-4.7, MiniMax-M2.5, qwen3-max-2026-01-23, qwen3-coder-next, qwen3-coder-plus) by routing image inputs through a vision-capable model. Activates when the user passes an image to a text-only model or asks 'what's in this image'."
 autonomy_tier: T1
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 For text-only Token Plan models, use this skill to gain visual understanding by delegating to a vision-capable model (`qwen3.7-plus`, `qwen3.6-plus`, `qwen3.5-plus`, `kimi-k2.5`, `qwen3.8-max`).

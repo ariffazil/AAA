@@ -1,6 +1,8 @@
 ---
 name: hermes-lane-switch-routing
 description: "Understand and diagnose the Hermes lane_switch plugin — the multi-human per-person context-isolation layer in the arifOS federation."
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Hermes Lane Switch Routing — multi-human per-person context

@@ -1,6 +1,8 @@
 ---
 name: civic-article-publishing
 description: Use when writing or publishing a public civic article.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Civic Article Publishing

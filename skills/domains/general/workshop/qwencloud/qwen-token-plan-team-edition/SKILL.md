@@ -9,6 +9,8 @@ metadata:
     category: devops
     tags: [qwen, token-plan, team-edition, aliyun, multimodal, oss]
     related_skills: [token-plan-image, happyhorse-video-api, tokenrouter-guide]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 ## When to Use

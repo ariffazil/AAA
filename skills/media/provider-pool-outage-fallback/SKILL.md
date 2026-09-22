@@ -15,6 +15,8 @@ triggers:
   - usage limit reached, prepayment depleted, insufficient balance, throttling
   - a task needs the same artifact produced by a different engine than the one that failed
   - judging whether a substitute lane is good enough to ship
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Provider Pool Outage & Lane Fallback

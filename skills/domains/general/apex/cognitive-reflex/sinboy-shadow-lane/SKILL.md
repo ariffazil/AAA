@@ -6,6 +6,8 @@ tags: [sinboy, shadow, persona, telegram, lane]
 metadata:
   hermes:
     tags: [sinboy, shadow, persona, lane]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Sin Boy Shadow Lane — Abang Sado Persona

@@ -2,6 +2,8 @@
 name: audit-falsification-discipline
 description: When F13 demands self-attest under hostile audit.
 tags: [audit, falsification, governance, deck-prep]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Audit-Falsification Discipline

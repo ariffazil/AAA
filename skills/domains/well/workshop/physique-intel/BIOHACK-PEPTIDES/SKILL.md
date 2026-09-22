@@ -6,6 +6,8 @@ version: 1.0.0
 last_researched: 2026-08-20
 source_primary: peptidedeck.com dosage charts (fetched 2026-08-20) + published trial literature
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # BIOHACK-PEPTIDES — SADO Group Peptide Intelligence

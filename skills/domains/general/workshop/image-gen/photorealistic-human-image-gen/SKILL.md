@@ -8,6 +8,8 @@ metadata:
     category: creative
     requires: [mmx-cli]
     related: [minimax-cli, lightweight-image-generation]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Photorealistic Human Image Generation

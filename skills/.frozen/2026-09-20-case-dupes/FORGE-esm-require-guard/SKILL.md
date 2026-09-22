@@ -4,6 +4,7 @@ description: "ESM/CommonJS interop guard - blocks silent require() failure of .m
 tags: [forge, guard, esm, pre-commit, scar-derived]
 license: MIT
 capability_tier: default
+ecology_state: WARM
 ---
 
 # FORGE-esm-require-guard — ESM/CommonJS Interop Guard

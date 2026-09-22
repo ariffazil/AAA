@@ -1,6 +1,8 @@
 ---
 name: hermes-research-substrate
 description: Use when searching scholarly papers.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Hermes Research Substrate -- Agent Skill

@@ -32,6 +32,8 @@ support_files:
   - references/corpus-counting.md
   - references/human-state-mcp.md
   - scripts/corpus_probe.py
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Corpus Claim Discipline
