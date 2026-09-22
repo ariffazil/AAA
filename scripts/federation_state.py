@@ -270,11 +270,18 @@ def compute_bottleneck(organs: list[dict], authority: dict, fq: dict) -> dict:
 
 
 def derive_health_verdict(organs: list[dict]) -> str:
-    """Derive overall federation health from organ states."""
+    """Derive TCP-liveness verdict from organ states.
+
+    B3 (2026-09-23): liveness verdict renamed SEAL → UP. "SEAL" collided
+    with the kernel's constitutional SEAL (arif_judge / decision ledger) —
+    two planes, opposite meanings. This is the PROBER's liveness plane;
+    per-organ detail already used UP/DOWN. Constitutional SEAL semantics
+    (decision_ledger verdict counting) are untouched.
+    """
     alive = sum(1 for o in organs if o["healthy"])
     total = len(organs)
     if alive == total:
-        return "SEAL"
+        return "UP"
     elif alive >= total - 1:
         return "DEGRADED"
     else:
