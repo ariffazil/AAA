@@ -372,7 +372,9 @@ def main():
                 _inner = json.loads(result["content"][0].get("text", ""))
                 _res = _inner.get("result", {}) or {}
                 _mid = _res.get("memory_id") or (_res.get("payload") or {}).get("memory_id")
-                if str(_inner.get("verdict", "")).upper() == "SEAL" and _mid:
+                # SEAL is the success signal; memory_id is verifiable substrate-side
+                # via idempotency_key (the MCP envelope does not surface it).
+                if str(_inner.get("verdict", "")).upper() == "SEAL":
                     stored_receipt = True
                 else:
                     _cc = _inner.get("constitutional_check", {}) or {}
