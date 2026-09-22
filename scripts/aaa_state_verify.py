@@ -234,10 +234,12 @@ def main():
     print("\n── LAYER 3: REALITY VERIFICATION ──")
 
     # Cross-check: does the health verdict match reality?
-    # If all organs are UP, health should be SEAL
+    # If all organs are UP, health should be UP (TCP-liveness verdict,
+    # renamed from SEAL 2026-09-23 — SEAL is reserved for the
+    # constitutional plane, not the prober's liveness plane)
     # If some are down, health should be DEGRADED or CRITICAL
     if state_alive == state_total:
-        expected_health = "SEAL"
+        expected_health = "UP"
     elif state_alive >= state_total - 1:
         expected_health = "DEGRADED"
     else:
