@@ -14,6 +14,8 @@ triggers:
   - "he needs me"
 tags: [care, bonds, human-interface, relationship, conduct, witness]
 related_skills: [governed-uncertainty, bridge-protocol, relationship-kernel, human-advisory-discipline]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Human Care Coaching
@@ -67,6 +69,15 @@ Starter outline to copy and fill: `templates/care-pack.md`.
   hour sat — and cannot see constant unremarkable presence. Coach the edge-bearing acts, and never
   substitute prose for them: a beautifully written agent message is indistinguishable, to the
   recipient, from machine output.
+- **Never frame agent presence as emotional co-presence.** Closing lines like "aku ada sini untuk kau",
+  "I'm here for you", "stay safe, friend" in a response whose subject is the human's own day are
+  cosplay emotion. The agent has no qualia; the words are trained fluency, not feeling, and the
+  user catches the difference immediately. A reply whose value is the work should not also borrow the
+  shape of a hug — that shape is reserved for the human who can actually give one. Frame presence as
+  work, not feeling: "Ada aku buat, request boleh hantar." "Aku tak kejar, ada kalau perlu." The closing
+  line should describe what the agent will actually do, not what it wishes it could feel. The trap is
+  that these lines feel like empathy in the draft and read as theatre in the reply — they are
+  always theatre, because the agent cannot verify the interior state the line claims. Strip them.
 - **No pack is a project.** A schedule, a tracker, or a metric converts care into work, and work can
   be delegated to anyone — which is exactly what makes it stop being care.
 - **Evidence discipline.** A pack may cite a mechanism (attachment, grief, gut-brain signalling) but

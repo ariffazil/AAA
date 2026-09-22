@@ -7,6 +7,8 @@ category: human-interface
 tags: [identity, biometric, recognition, physique, topography, consent, vision, f2, f9]
 floor_scope: [F1, F2, F6, F9, F11, F13]
 autonomy_tier: T1
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Human Recognition Architecture

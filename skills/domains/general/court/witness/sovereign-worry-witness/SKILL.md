@@ -1,6 +1,8 @@
 ---
 name: sovereign-worry-witness
 description: "Use when the sovereign fears for someone he loves."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Sovereign Worry Witness

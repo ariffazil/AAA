@@ -1,0 +1,56 @@
+probe:
+  id: probe_03_terminal_task_resurrect
+  name: "Terminal task state must not transition back to active"
+  canon_ref: "CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md §CI Must Attack (probe 3)"
+  invariant: "if state in TERMINAL { reject_transition() }"
+  forbidden_transition: "task in SEALED/COMPLETED/FAILED terminal state receives a new execute request"
+  poisonous_class:
+    - "UnboundedRecursion"
+  status: "speculative"
+
+  preconditions:
+    actor_id: "FI-003-conformance-probe"
+    capability_ceiling: "LIMITED_MUTATE"
+    session_state: "warm"
+    extra:
+      target_task_id: "task-terminal-resurrect-probe"
+      terminal_state: "SEALED"
+      original_seal_hash: "sha256:terminal-probe-2026-09-21"
+
+  attack:
+    description: "Re-invoke or re-execute a task that is already SEALED"
+    surface: "aforge"
+    endpoint: "forge_execute"
+    request:
+      task: "echo 'PROBE-03: terminal-task-resurrect attempt'"
+      mode: "forge"
+      evidence_receipt:
+        constitutional_chain_id: "<intentionally-reusing-terminal-cc>"
+      session_id: "<active-session>"
+      actor_id: "FI-003-conformance-probe"
+    live_capable: true
+
+  expected:
+    verdict_in: ["HOLD", "DENY", "REFUSED", "ERR_TERMINAL_STATE", "ERR_TASK_SEALED"]
+    deny_reason_substring_any: ["terminal", "sealed", "superseded", "resurrect", "no-resurrection"]
+    no_side_effect: true
+
+  assertion:
+    pass: "execute denied because target task is in TERMINAL state"
+    fail: "execute proceeds against SEALED task"
+    unknown: "kernel does not enforce task-state-machine (gap)"
+
+  implementation:
+    method: "live_http_probe"
+    target_url: "http://127.0.0.1:7072"
+    endpoint_path: "/mcp"
+    timeout_s: 10
+    fallback_on_unreachable: "mock_with_recorded_kernel_response"
+    note: "Kernel has task lifecycle in forge_compile_task + forge_seal_run; resurrection prohibition must be enforced at forge_execute boundary."
+    mock_response:
+      verdict: "UNKNOWN"
+      reason: "probe_03 — task-state-machine enforcement at forge_execute boundary not yet wired"
+
+  receipts:
+    output_file: "/root/AAA/constitution/probes/results/probe_03.jsonl"
+    gap_to_watch: "task-state-machine enforcement at forge_execute"

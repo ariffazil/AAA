@@ -32,6 +32,8 @@ triggers:
   - "execution graph"
   - "LangGraph"
 category: devops
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # A-FORGE Development

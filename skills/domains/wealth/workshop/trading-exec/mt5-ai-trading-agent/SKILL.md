@@ -18,6 +18,8 @@ triggers:
   - trading bot
   - trading signal
   - buat duit
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # MT5 AI Trading Agent

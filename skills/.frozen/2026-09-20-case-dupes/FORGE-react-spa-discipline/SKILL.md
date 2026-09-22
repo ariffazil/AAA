@@ -7,6 +7,8 @@ owner: A-FORGE
 risk_tier: medium
 floor_scope: ['F1', 'F4', 'F12']
 autonomy_tier: T1
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # ⚒️ React SPA Discipline — Component Architecture
 

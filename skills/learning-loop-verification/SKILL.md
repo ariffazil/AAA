@@ -14,6 +14,8 @@ triggers:
   - "is the system actually learning"
   - "the rule is ratified but nothing enforces it"
   - "doctrine exists with no executor"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Learning Loop Verification
@@ -45,6 +47,41 @@ findings with three separate owners.
 | 4 | Landing | did the write reach the artifact? | grep the artifact for the payload AND the ledger for the row |
 | 5 | Measurement | does the change alter later behaviour? | the live instrument's characterization fields |
 | 6 | Backlog | what is waiting on a decision? | status histogram over the queue |
+
+## Conservation accounting — the count that must balance (F2)
+
+Every hop is a filter: `X → Y`. It must account for the whole of its input.
+
+```
+N_input = N_accepted + Σ N_rejected(named reason) + N_deferred(future condition)
+```
+
+If the two sides disagree, the difference is not "no signal" — it is unaccounted state. And it is
+the one defect no liveness check can see, because the mechanism reports success either way.
+
+1. **Instrument the live module, never a re-implementation.** Load the production file by path
+   (`importlib.util.spec_from_file_location`) and call its own predicates and constants
+   (`MAX_PICKS`, `STALE_DAYS`, `_is_sovereign`, `_is_stale`). A hand-rolled copy of the filter tests
+   your reading of the code, not the code. Do not call the module's `write_*` path — record the
+   selection only, and leave the store untouched.
+2. **Replay the exact branch order** and attach a named reason to every rejection, broken down to
+   the individual guard that fired (`sovereign_pattern:DELIBERATE NEXT SESSION`,
+   `not_stale:too_young(0.43d<3d)`). An aggregate `rejected: 128` is not auditable; the per-guard
+   histogram is what proves the filter is specific rather than blunt.
+3. **Separate DEFERRED from REJECTED.** Items that passed every guard and were cut only by a
+   capacity cap (`[:MAX_PICKS]`) are next run's work, not refusals. Folding them into "rejected"
+   hides the throughput ceiling — and that is exactly how a pure throughput problem gets misreported
+   as a broken filter.
+4. **Run it twice: live, and reconstructed at the historical run time.** The observed pass uses the
+   real clock; the reconstructed pass filters entries by their own timestamp to the run under audit.
+   Reconstructing by timestamp is not a backup read — say so, because an absent backup means you are
+   approximating the input state, not recovering it.
+5. **Expect to be wrong; this is a falsifier, not a confirmation.** If it balances, the filter is
+   innocent and you retract, in writing, with the arithmetic. A probe built to confirm the
+   hypothesis you already published is not a probe.
+
+Balancing at one hop proves nothing about the next. Apply it at *every* hop — producer, filter,
+judgment, write-back — and the defect usually surfaces where you were not looking.
 
 ## Procedure
 
@@ -99,6 +136,26 @@ findings with three separate owners.
   the reversible ones to the agent lane instead of escalating the whole queue.
 - **Count distinct signals, not files.** Check producer dedupe before reading queue volume
   as signal strength; a producer can emit the same item twice within minutes.
+- **Count distinct OBSERVATIONS, not scored rows.** Dedupe of *inputs* does not protect the
+  *outcome* count. Two opposing claims about one quantity — a long hypothesis and a short one, both
+  settled by the same closing price — are two rows and one fact. A routine that scores each row
+  independently therefore reports `decisive: 2` from a single market event, and any hit-rate over that
+  pair is an artefact of the duplication rather than a measurement. Before quoting an accuracy, a
+  Brier score, or a calibration bucket, group the settled rows by the observation that decided them
+  and count groups: `N_rows > N_observations` means the rate is inflated, and a complementary pair
+  (one up, one down) will pin it near 50% on construction. Prefer one scored claim per falsifier; if
+  the store permits opposite hypotheses, the accuracy meter must dedupe by falsifier, not by row id.
+- **Two derived reports over one ledger that disagree means one is stale.** When a hand-computed
+  summary and the instrument's own report carry different values for the same quantity over the same
+  rows, that is not a range or a rounding difference — it is two writers, and at least one is reading
+  a different window or an unsuperseded predecessor. Resolve which file is the source before citing
+  either; do not average them, and do not report whichever one flatters the system.
+- **Two status surfaces over one system may carry opposite verdicts and never reconcile.** A health
+  surface reading `OPTIMAL` while a reconciliation surface over the same machine reports `CRITICAL`
+  is not ambiguity to be narrated away — it is a defect with a specific repair: name which surface the
+  downstream consumer reads, and make the other derive from it or cite it. Independent observers must
+  be *independent*, not unreconciled; when they disagree, nothing that reads only one of them can be
+  trusted to notice.
 - **Skill count is not capability.** Learning that only ever appends artifacts grows the
   surface without changing behaviour. Ask what the *next* decision does differently; with
   no answer, the loop recorded experience without compressing it.
@@ -153,6 +210,13 @@ findings with three separate owners.
   mature yet" stops being a reason the moment a record is verified. The invariant to enforce is
   `VERIFIED → {LESSON_CREATED | NO_LESSON_REASON}`, and it is what makes the loop auditable instead
   of merely productive.
+  The same obligation binds every *non*-completion, which is where it is most often skipped: a
+  `HOLD`, `DEFER`, `SKIP` or `VOID` that persists its verdict token but not the reason it chose it
+  is a decision-shaped object with no decision inside. Test it as a rate, not a spot check —
+  `verdicts_persisted / executions` beside `reasons_persisted / executions` over the consumer's own
+  log. A verdict rate of 100% sitting next to a reason rate of 0% reads as a healthy, decisive
+  mechanism, and it will loop forever because nothing downstream can act on a refusal whose cause
+  was never written down.
 - **A lesson whose error class is a placeholder is noise, not closure.** Count the lesson only after
   checking what class the producer resolved. A classifier that cannot determine the real error class
   usually writes its own sentinel (`UNKNOWN`, `OTHER`, `None`, `""`) into the record — and the lesson
@@ -193,7 +257,23 @@ findings with three separate owners.
   returns one constant kind/type for every row, you are reading a field the writer never populated —
   the fine-grained breakdown you were handed came from the organ's internal counters, not from the
   data. Say which numbers you could re-derive and which you are inheriting; never present an
-  inherited breakdown as your own measurement.
+  an inherited breakdown as your own measurement.
+- **An empty output is not evidence of no work — read the consumer's log before concluding.** An
+  empty queue or artifact file is a *post-consumption* state at least as often as a never-produced
+  one. The trace of a produced-then-drained item lives in bucket files, journals and the consumer's
+  own execution log; the producer's empty artifact is the one place it does not. Concluding "produced
+  nothing" from an empty file is the same class of error as reading a null payload as a measured
+  zero — and worse in an audit, because it manufactures a defect the consumer's log would have
+  disproved in a single read. Look for the consumer's execution log and its `DONE: N <items>` line
+  before you name the producer.
+- **A dedupe key held in the queue the consumer drains causes permanent re-examination.** When a
+  consumer rewrites the queue to hold only the *remaining* items, the record of what it already
+  examined leaves with the item — so the producer re-selects the identical work next cycle, forever.
+  Measure it as repetition: count executions grouped by item id, then group those counts. Three ids
+  cycling while the rest advance is the signature. The fix is structural and is not a larger cap:
+  the memory of "already examined" belongs in a durable ledger *outside* the transport, keyed by item
+  id and carrying the verdict. A queue is transport; a ledger is memory. A producer whose dedupe
+  reads the queue's current contents has no memory at all.
 
 ### A middleware organ that ran once and stalled
 
@@ -278,3 +358,6 @@ capability surface; leave governance under human sovereignty.
   real units before citing it, the unit-identity output contract, and batch-run safety (smoke-test,
   fail-fast on every dead-input class, incremental writes). Read before quoting any agreement,
   consensus, coverage, or drift figure.
+- `references/conservation-accounting.md` — the per-hop balance test in full: the importlib probe
+  pattern, the per-guard rejection histogram, the deferred-vs-rejected split, and the worked
+  refutation that shows what a balanced result looks like.

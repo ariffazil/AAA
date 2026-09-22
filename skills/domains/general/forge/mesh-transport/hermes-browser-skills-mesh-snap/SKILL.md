@@ -6,6 +6,8 @@ version: 1.0.0
 risk_tier: low
 owner: F13 SOVEREIGN — Muhammad Arif
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hermes · Skills-Mesh · Browser Convergence — Snapshot 2026-08-13

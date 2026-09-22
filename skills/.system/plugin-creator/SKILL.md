@@ -1,6 +1,8 @@
 ---
 name: plugin-creator
 description: "Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entries by default."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Plugin Creator

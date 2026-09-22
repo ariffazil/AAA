@@ -9,6 +9,8 @@ triggers:
   - "personal briefing card"
   - "infographic for us"
   - "balance card"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Human-facing recurring card

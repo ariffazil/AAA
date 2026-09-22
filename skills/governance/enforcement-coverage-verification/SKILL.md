@@ -19,6 +19,8 @@ triggers:
   - "all paths pass through the gate"
   - "acceptance suite passed"
   - "citizens can no longer bypass"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Enforcement Coverage Verification
@@ -48,6 +50,28 @@ exists to catch.
 Name which of the three you proved. `CONVENTION_GATE` (actors comply voluntarily, audit-logged) and
 `CHOKEPOINT` (no path avoids the check) are different verdicts; reporting the first as the second
 is a transition lie.
+
+## Scope — which object does the gate actually validate?
+
+Coverage asks *can a caller avoid the gate?* **Scope asks which object the gate examines.** A gate
+can have perfect coverage of an object that is not the one in production, and it will sign for it.
+
+Do not accept the verdict; enumerate the gate's subject set and compare it against what production
+serves:
+
+```bash
+# iterate EVERY declared subject (profile / class / target) and record which ones the gate checks
+for subject in $ALL_DECLARED; do
+  printf '%s gated=%s\n' "$subject" "$(<does the gate validate this one?>)"
+done
+```
+
+Measured: a deploy gate validated one profile (6 tools) and printed `✅ registries consistent`,
+while the wire served a different profile (8 tools) — the execute verb and the durable-write verb
+sat outside its scope. Running the same gate over all six declared profiles returned **one `GATED`,
+five `UNCHECKED`**. A gate narrower than the surface is worse than no gate, because it *signs*.
+Report `SCOPE` alongside coverage; `GATED` and `UNCHECKED` are different verdicts and must never be
+merged into one green.
 
 ## Procedure
 
@@ -156,6 +180,45 @@ is a transition lie.
   may simply be downstream of a different control that denied first. Read the full reason list and
   attribute the denial to the specific floor that fired, then report the others as *also satisfied*
   or *not reached*, never as one merged score.
+- **A gate placed after the mutation cannot fail-closed.** Record where the check sits in the
+  sequence relative to the write it guards (stamp write, service restart, deploy). If it runs
+  *later* than the change, its failure arrives with the change already live — it is a report, not a
+  gate. Read the line numbers, not the step's name: a step numbered `5.5` can still execute after
+  step 6. Order is verify → mutate → observe; a check that runs third is decoration.
+- **Audit the failure posture of every branch, including the ones a normal call cannot reach.** A gate's
+  `except` arms are the boundary under load: unavailable dependency, failed import, timeout, degraded
+  mode. A soft-pass arm (`except ImportError: return passed=True`) converts *not evaluated* into
+  *passed* while the pipeline still emits a pass-shaped result — so "N floors active" silently becomes
+  "N floors not checked", with nothing red anywhere. Grep the control for every `except` and read what
+  each arm returns. A gate is only as strong as its weakest failure arm, and the happy path never
+  exercises it, which is why a direct call to the gate reports PASS.
+- **Compare sibling gates in the same module for posture consistency.** Measured: one module's primary
+  gate returned `passed=True` on `ImportError` while the neighbouring gate in the same file returned
+  `passed=False` with a written `FAIL-CLOSED` comment for the same class of condition. Both were
+  deliberate; only one was right for that action class. The inconsistency *is* the finding, and the
+  in-repo precedent is the argument — cite the sibling gate's own comment when proposing the fix
+  rather than inventing a new policy from outside.
+- **Separate LATENT from LIVE before reporting severity.** Having found a fail-open arm, probe whether
+  it can fire today — import the module, resolve the dependency, inspect the packaged artifact — and say
+  which you found. An arm that cannot currently trigger is a latent defect to fix on a branch;
+  describing it as a live outage is the same class of overclaim as calling a convention a chokepoint.
+  The converse also holds: "it imports fine here" does not clear it, because the arm exists for the
+  environment you did not test — partial install, omitted optional dependency, broken packaging.
+- **One "value belonging to a different object" is a family, not an incident.** When a surface
+  reports a neighbouring object's state, sweep the whole family before stopping. Three instances
+  measured in one session: a deploy stamp taken from the source tree's `git HEAD` rather than the
+  built artifact; a gate keyed to a profile other than the served one; an exit status read through a
+  pipe. The generalisation: **every surface that reports state must be asked *of which object is
+  this a fact?*, and the answer must be the object its reader cares about.**
+- **Never read exit status through a pipe.** In `cmd | tee log`, the reported status is *tee's*. A
+  failed command is recorded as success by every caller that reads the pipeline status — use
+  `${PIPESTATUS[0]}`, or avoid the pipe. Reproduce it once before trusting any harness that reports
+  exit codes for piped work: `bash -c 'exit 1' | tee /dev/null` reports `0`.
+- **A field that compares two artifacts to each other reports `aligned` by construction.** A drift
+  field computed as *built vs live* reads `aligned` whenever both derive from the same tree, even
+  while the deployment sits several commits behind the canonical reference. Ask what the *reference*
+  is; if the answer is "the other half of itself", the field cannot see the drift its name promises.
+  Either add a comparison against the canonical reference or rename the field to what it measures.
 
 ## What the probe licenses
 

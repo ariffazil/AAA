@@ -12,6 +12,8 @@ triggers:
   - "he replied — expand"
   - Arif pastes a chat screenshot of his conversation with a third party
   - Arif relays an emoji reaction in place of a reply
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Human Response Witness

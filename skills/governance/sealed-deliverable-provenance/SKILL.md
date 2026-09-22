@@ -9,6 +9,8 @@ triggers:
   - "auditable edition"
   - "prove this was not edited"
   - "daily briefing with a seal"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Sealed Deliverable Provenance

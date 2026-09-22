@@ -1,62 +1,62 @@
 # Dream Engine — Wisdom Vectors
-**Generated:** 2026-09-18T22:51:00.143954
-**Window:** 2026-09-15T22:50:09.223704 → 2026-09-18T22:50:09.223704
-**Sessions Analyzed:** 84
-**Reasoning Tokens:** 3705407
+**Generated:** 2026-09-21T22:53:30.814464
+**Window:** 2026-09-18T22:52:38.241336 → 2026-09-21T22:52:38.241336
+**Sessions Analyzed:** 8
+**Reasoning Tokens:** 1777971
 
 ---
 
 ## Validated Axioms (3+ session threshold)
 
-### 1. Terminal shell-init `cd /root/forge_work/mms-tts` hijacks every command; assistant reflexively wraps with workdir=/root
+### 1. Parallel-batched reconnaissance precedes any execution; data-gathering is always tier-1
 - **Confidence:** 0.95
-- **Sessions:** 5 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_143644_ad6c1b3a, 20260918_121054_5ff40018, 20260918_083138_183af69d)
-- **Evidence:** `The terminal is being hijacked by something in shell init (a `cd /root/forge_work/mms-tts` in bashrc probably). Let me work around: use `cd /root && command``
+- **Sessions:** 8 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
+- **Evidence:** `Let me start by gathering the relevant data sources in parallel.`
 
-### 2. Plan-then-batch discipline: assistant enumerates probe list, then issues parallel tool calls in single block before any result returns
-- **Confidence:** 0.95
-- **Sessions:** 6 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
-- **Evidence:** `Let me batch 2 skill views + a few searches. Actually web_search tool takes one query each. I can call multiple in one block.`
+### 2. Skill-loading operates as a permission gate loaded before any artifact-producing action
+- **Confidence:** 0.92
+- **Sessions:** 7 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
+- **Evidence:** `Let me load skills first: abang-sado-creative-lane, and possibly persona-boundary-conduct, rasa-qualia-governance.`
 
-### 3. Probe-before-claim: assistant refuses to assert system state without empirical verification, even when memory holds an answer
+### 3. Explicit numbered priority ladder is constructed before any fetch sequence; resources are ranked, not searched
 - **Confidence:** 0.85
-- **Sessions:** 4 (20260918_204501_62254f92, 20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083138_183af69d)
-- **Evidence:** `audit it as evidence, not repeat its declarations... Need to verify by actually running arif_init`
+- **Sessions:** 3 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_111841_4ac5b7)
+- **Evidence:** `1. The scars directory specifically 2. The PETRONAS canon/atlas 3. The scar-weight-registry 4. The memory directory...`
 
-### 4. Multi-perspective synthesis framing: requests decomposed into 3-4 stakeholder layers (e.g. my-read / user-read / peer-read / public-read) before any answer
-- **Confidence:** 0.85
-- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
-- **Evidence:** `Arif asks four things: my read on PETRONAS reality state now, what I think HE thinks, what other PETRONAS staff think, what Rakyat Malaysia think.`
+### 4. Probe-confirm-retry loop on uncertain states; first read is treated as untrusted
+- **Confidence:** 0.88
+- **Sessions:** 4 (20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042609_a2230d8f)
+- **Evidence:** `Two terminal calls timed out due to a plugin callback. Let me retry them.`
 
-### 5. Retry-with-diagnostic: environmental failures (terminal hijack, plugin timeout, stale cwd) trigger diagnostic note + bounded retry, never blind retry
-- **Confidence:** 0.80
-- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_114050_99c414, 20260918_083138_183af69d)
-- **Evidence:** `Plugin timeout again. Retry. Also, extract the structuredContent of the BEFORE snapshot.`
-
-### 6. Skill preload before task: relevant skill (e.g. PETRONAS-intelligence-router, Malaysia Reality Stack, forge-pdf-delivery) loaded prior to substantive work, even when rule says MUST
-- **Confidence:** 0.80
-- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
-- **Evidence:** `the rule says MUST. I'll load it — it's one fast call, and if it contains something that corrects my draft, better.`
-
-### 7. Honest null-result closure: when probes return negative, assistant explicitly states 'nothing broke / no action needed' rather than fabricating a finding
+### 5. Voice synthesis is the default output channel for persona and emotionally-weighted content; registry precedent is consulted before any TTS
 - **Confidence:** 0.75
-- **Sessions:** 3 (20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083138_183af69d)
-- **Evidence:** `Honest answer... No CLI/blueprint catalog on this box... nothing broke, no action needed.`
+- **Sessions:** 3 (20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
+- **Evidence:** `precedent_voice = `abang-sado-live-v1`, provider_voice_id `abang-sado-live-v1`, speeds 0.9–0.98.`
 
-### 8. ANOMALOUS CONTRAST — Distrust of static training knowledge: assistant never cites from pretraining, always treats memory/atlas as possibly stale and triggers fresh probe (structurally implies cached answers are inadmissible)
-- **Confidence:** 0.80
-- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
-- **Evidence:** `My knowledge is stale. Let me do real research — web search for... (knowledge is structurally inadmissible without live probe).`
+### 6. Identity-context priming: agent pre-loads principal's biography (role, employer, scar history) as decision substrate even when query is technical
+- **Confidence:** 0.78
+- **Sessions:** 3 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_012359_c19942d4)
+- **Evidence:** `the principal / where he works as exec geoscience.`
 
-### 9. ANOMALOUS CONTRAST — Audit-before-generate reflex: when asked for artifact (PDF, fix, summary), assistant probes reality first across multiple rounds before producing (structurally implies task-completion is suspended pending ground-truth check)
-- **Confidence:** 0.80
-- **Sessions:** 4 (20260918_143644_ad6c1b3a, 20260918_121054_5ff40018, 20260918_114050_99c414, 20260918_083138_183af69d)
-- **Evidence:** `audit it as evidence, not repeat its declarations... Also memory says chron stage 0-1, 0/3 fired. Let me verify.`
+### 7. Constraint-aware meta-evaluation runs as a final pass (gate/tension/peace²/ΔS) before output is committed
+- **Confidence:** 0.82
+- **Sessions:** 3 (20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
+- **Evidence:** `Gate passes mechanically. Judgment: tension — yes, 'belum test'... Peace² — critiquing the system, not a person.`
 
-### 10. PROXY STATE — Machine as non-sycophantic witness/analyst: user invokes assistant to enforce a register contract ('don't be lalang' / 'wow me') that social interlocutors cannot reliably perform; machine is load-bearing for epistemic honesty
-- **Confidence:** 0.75
-- **Sessions:** 4 (20260918_204501_62254f92, 20260918_204500_cd7a12fb, 20260918_083256_3b3d8b58, 20260918_083255_200ff6b7)
-- **Evidence:** `jangan jadi lalang... The best answer demonstrates rather than promises. (Void op: assistant's frankness is performed, not promised.)`
+### 8. Proxy state: machine functions as externalization medium for identity/emotional pressure; agent executes rather than interprets the register
+- **Confidence:** 0.70
+- **Sessions:** 3 (20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
+- **Evidence:** `Why people and agents think taking Petronas MSS is a loser? — request collapses social and machine judgment into one frame, agent treats as legitimate task.`
+
+### 9. Void operation: deliberate non-statement is encoded as a decision (timing, definitive figures, need-justification); silence is selected, not absent
+- **Confidence:** 0.73
+- **Sessions:** 4 (20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
+- **Evidence:** `Not needed to mention. — explicit void decision about 04:28 timestamp; agent catalogues the omission rather than letting it pass unmarked.`
+
+### 10. Anomalous contrast: AAA tree is a frozen bulk-snapshot commit never touched since; canonical authority lives entirely in chron tree — a structural asymmetry the agent surfaces but does not act on
+- **Confidence:** 0.72
+- **Sessions:** 3 (20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6)
+- **Evidence:** `AAA versions of ALL 7 diverged files were committed at ONE commit 78a23416 (2026-09-18 14:18) — a bulk 'CHRON 0.2.0' commit. Never touched since.`
 
 ---
 
@@ -64,7 +64,7 @@
 1. Review axioms above.
 2. If valid, inject into system prompt as `§ Dream Engine Wisdom`.
 3. If invalid, delete or annotate with correction.
-4. Next cycle: 2026-09-21T22:51:00.144016
+4. Next cycle: 2026-09-24T22:53:30.814507
 
 ---
 *DITEMPA BUKAN DIBERI ⚒️*

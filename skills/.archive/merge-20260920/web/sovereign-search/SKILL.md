@@ -8,6 +8,8 @@ platforms: [linux]
 metadata:
   hermes:
     tags: [hermes, search, searxng, self-hosted, sovereign]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Sovereign Search

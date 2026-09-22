@@ -62,6 +62,8 @@ triggers:
   - "what are the rate limits for"
   - "API limits and headers for"
   - "research [service/product] limits"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Deep Research

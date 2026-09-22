@@ -15,6 +15,8 @@ triggers:
   - "machine migration"
   - "zen my HERMES / close session before move"
   - "prepare for handover"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Federation Machine Migration — Readiness, Zen-Close, Verification

@@ -14,6 +14,8 @@ triggers:
   - "why did HOLD not fire"
   - "verify a control actually controls"
 tags: [governance, audit, gate, evidence, controls]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Gate Grounding Audit — presence is not evidence

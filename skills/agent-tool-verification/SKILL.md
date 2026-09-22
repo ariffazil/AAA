@@ -17,6 +17,8 @@ triggers:
   - "claim a server is fixed"
   - "deploy a patch to a running service"
   - "agent claims it is built"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agent Tool Verification
@@ -98,6 +100,17 @@ def stub_sweep(mod, cases: dict):
   *below* the threshold reads as satisfied to anyone skimming. Compare the numbers yourself — never
   let formatting decide whether a check passed, and never quote a reason string as proof of the
   check it names.
+- **Emit must come after ack, never before.** A consumer that emits irreversible side effects
+  (Telegram notifications, vault appends, ledger entries) before it acknowledges its message source
+  amplifies every redelivery into a fresh side effect. The shape: durable message bus → consumer
+  with `MAX_DELIVER=N` → consumer fires `emit()` (writes + notifies) → THEN awaits `msg.ack()` →
+  ack times out → message redelivered, count incremented → consumer fires `emit()` again with a
+  fresh trace id. Result: N copies of one event written to the receipt ledger and N notifications
+  to the same human channel, all trace-distinct, all carrying the same idempotency key. The
+  dedup counter goes up but the suppression does not. **Always ack before emit, or key emit on
+  message metadata so a redelivery is a no-op.** Ordering change, not a redesign — but if the
+  dedup function is read-but-not-enforced (the flag is set, the gate function never calls it),
+  the read itself is the lie and the rewrite is the fix.
 
 ---
 

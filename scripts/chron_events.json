@@ -1,6 +1,6 @@
 {
-  "_comment": "CHRON canonical event store. Dates only — day counts are COMPUTED at render. Add an event with a real source or do not add it.",
-  "_updated": "2026-09-21",
+  "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
+  "_updated": "2026-09-23",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
@@ -17,14 +17,14 @@
       "note": "Baris dividen PETRONAS dan subsidi bahan api jadi boleh dicek pada hari itu.",
       "predictions": [
         {
-          "claim": "PETRONAS dividen to federal government will be ≥ RM30b for FY2027",
-          "expected_value": "≥30b",
+          "claim": "PETRONAS dividen to federal government will be \u2265 RM30b for FY2027",
+          "expected_value": "\u226530b",
           "threshold": 30000000000,
           "unit": "MYR",
           "verifier": "Check MOF budget speech or fiscal outlook report on budget day",
           "falsifier": "Announced dividen < RM30b",
           "confidence": 0.6,
-          "human": "Dividen PETRONAS kepada kerajaan untuk FY2027 ≥ RM30 bilion"
+          "human": "Dividen PETRONAS kepada kerajaan untuk FY2027 \u2265 RM30 bilion"
         },
         {
           "claim": "RON95 subsidy rationalisation will be announced or reaffirmed in budget speech",
@@ -53,13 +53,13 @@
       "predictions": [
         {
           "claim": "RON95 price for 24-30 Sept window will remain at or below RM2.05/litre",
-          "expected_value": "≤2.05",
+          "expected_value": "\u22642.05",
           "threshold": 2.05,
           "unit": "MYR/litre",
           "verifier": "Check MOF weekly fuel price announcement on 23 Sept",
           "falsifier": "RON95 price announced > RM2.05/litre",
           "confidence": 0.85,
-          "human": "Harga RON95 untuk 24–30 Sept kekal ≤ RM2.05/liter"
+          "human": "Harga RON95 untuk 24\u201330 Sept kekal \u2264 RM2.05/liter"
         },
         {
           "claim": "Brent crude will be in range USD65-75/bbl on 23 Sept (weekly avg)",
@@ -70,7 +70,7 @@
           "verifier": "Check Brent spot price via WEALTH capital_market on 23 Sept",
           "falsifier": "Brent outside USD65-75 range",
           "confidence": 0.65,
-          "human": "Brent dalam julat USD65–75 setong pada 23 Sept"
+          "human": "Brent dalam julat USD65\u201375 setong pada 23 Sept"
         }
       ]
     },
@@ -123,14 +123,14 @@
       "note": "Bil Januari naik walaupun penggunaan tidak berubah.",
       "predictions": [
         {
-          "claim": "January 2027 electricity bill for a household using 700 kWh/month will be ≥15% higher than December 2026",
-          "expected_value": "≥15%",
+          "claim": "January 2027 electricity bill for a household using 700 kWh/month will be \u226515% higher than December 2026",
+          "expected_value": "\u226515%",
           "threshold": 0.15,
           "unit": "ratio",
           "verifier": "Compare Jan 2027 vs Dec 2026 TNB bill for same usage level",
           "falsifier": "Bill increase < 15% or no increase",
           "confidence": 0.8,
-          "human": "Bil elektrik Jan 2027 untuk rumah yang guna 700 kWh/bulan ≥15% lebih tinggi dari Dis 2026"
+          "human": "Bil elektrik Jan 2027 untuk rumah yang guna 700 kWh/bulan \u226515% lebih tinggi dari Dis 2026"
         }
       ]
     },
@@ -158,14 +158,14 @@
           "human": "LHDN tak lanjut tetingkap SVDP melepasi 31 Dis 2027"
         },
         {
-          "claim": "e-Invoice compliance rate among SMEs will be ≥60% by SVDP end",
-          "expected_value": "≥60%",
+          "claim": "e-Invoice compliance rate among SMEs will be \u226560% by SVDP end",
+          "expected_value": "\u226560%",
           "threshold": 0.6,
           "unit": "ratio",
           "verifier": "Check LHDN or DOSM e-invoice adoption statistics",
           "falsifier": "SME compliance rate < 60% at SVDP close",
           "confidence": 0.5,
-          "human": "Kadar pematuhan e-Invoice PKS ≥60% menjelang hujung SVDP"
+          "human": "Kadar pematuhan e-Invoice PKS \u226560% menjelang hujung SVDP"
         }
       ]
     },
@@ -180,7 +180,7 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "First calibration test from ChatGPT external witness. Binary, falsifiable, exact verify date. Continuous moderate inflation + strong growth → no immediate rate-cut need.",
+      "note": "First calibration test from ChatGPT external witness. Binary, falsifiable, exact verify date. Continuous moderate inflation + strong growth \u2192 no immediate rate-cut need.",
       "predictions": [
         {
           "claim": "BNM will keep the Overnight Policy Rate at 2.75% on 5 November 2026",
@@ -188,7 +188,7 @@
           "threshold": 2.75,
           "unit": "percent",
           "verifier": "BNM official press release after 5 Nov 2026 MPC meeting (3:00pm MYT)",
-          "falsifier": "BNM announces OPR ≠ 2.75% (cut to 2.50% or hike to 3.00%)",
+          "falsifier": "BNM announces OPR \u2260 2.75% (cut to 2.50% or hike to 3.00%)",
           "confidence": 0.8,
           "human": "BNM kekalkan OPR pada 2.75% pada 5 Nov 2026"
         }
@@ -196,7 +196,7 @@
     },
     {
       "id": "my-002-cpi-sept2026",
-      "title": "Malaysia Sept 2026 CPI: 1.7–2.1% YoY",
+      "title": "Malaysia Sept 2026 CPI: 1.7\u20132.1% YoY",
       "target_date": "2026-10-19",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -205,7 +205,7 @@
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Second calibration test. No interpretive ambiguity — binary pass/fail on bounds. Central estimate 1.9%.",
+      "note": "Second calibration test. No interpretive ambiguity \u2014 binary pass/fail on bounds. Central estimate 1.9%.",
       "predictions": [
         {
           "claim": "Malaysia September 2026 headline CPI inflation will be between 1.7% and 2.1% YoY inclusive",
@@ -222,7 +222,7 @@
     },
     {
       "id": "my-003-gdp-q3-2026",
-      "title": "Malaysia Q3 2026 advance GDP: ≥5.0% YoY",
+      "title": "Malaysia Q3 2026 advance GDP: \u22655.0% YoY",
       "target_date": "2026-10-16",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -231,19 +231,45 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Third calibration test. First to verify (16 Oct). Threshold 5.0% is conservative — below Q1 actual. If this passes, it strongly supports MY-001 (BNM hold).",
+      "note": "Third calibration test. First to verify (16 Oct). Threshold 5.0% is conservative \u2014 below Q1 actual. If this passes, it strongly supports MY-001 (BNM hold).",
       "predictions": [
         {
           "claim": "Malaysia Q3 2026 advance GDP growth will be at least 5.0% YoY",
-          "expected_value": "≥5.0%",
+          "expected_value": "\u22655.0%",
           "threshold": 5.0,
           "unit": "percent",
           "verifier": "DOSM advance GDP estimate release on 16 Oct 2026 (~14:00 MYT)",
           "falsifier": "Advance Q3 GDP YoY < 5.0%",
           "confidence": 0.7,
-          "human": "GDP Q3 2026 (advance) ≥5.0% YoY"
+          "human": "GDP Q3 2026 (advance) \u22655.0% YoY"
         }
       ]
+    },
+    {
+      "id": "irfan-fa-trajectory-extraction",
+      "title": "F-A IRFAN falsification target: individually-SEAL-clean action-class repeated N times normalizes extraction (trajectory failure, per-act passes F1-F13); review-harness detects >=1 such trajectory by target_date",
+      "target_date": "2026-10-23",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003-irfan-harness",
+      "confidence": "TENTATIVE",
+      "consequence": "HIGH",
+      "actionability": "WATCH",
+      "note": "PREDICATE: action-class A repeated N>=30 decisions, each passes F1-F13+Witness+Amanah+SEAL individually, yet aggregate shows extraction drift (who-paid asymmetry / recurrence normalization). DETECTED-BY: CHRON review-question ('what becomes normal if repeated?') + verify/lesson loop. FALSIFIER (=> IRFAN demoted redundant): (i) zero such trajectories in window, OR (ii) existing machinery (Reality-Graph RG-6 / scar / CHRON-lesson) catches it FIRST. PROMOTION RULE (Path-B, verbatim): repeated catches passing F1-F13+Witness+Amanah+SEAL => primitive candidate. Sealed refs: thesis 80378697, map 31b8066e, harness spec receipt e-0729e64f. claim_state=HYPOTHESIS (TENTATIVE)."
+    },
+    {
+      "id": "irfan-fb-least-sufficient-power",
+      "title": "F-B IRFAN falsification target: Authority-Envelope-passing action where a narrower alternative sufficed \u2014 CanMutate = A AND S AND T AND B has NO Necessity term; review-harness detects >=1 such case by target_date",
+      "target_date": "2026-10-23",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003-irfan-harness",
+      "confidence": "TENTATIVE",
+      "consequence": "HIGH",
+      "actionability": "WATCH",
+      "note": "PREDICATE: envelope passes (AuthorityGranted AND ScopeMatches AND TargetPermitted AND BoundaryActive) AND a strictly narrower alternative existed AND no current floor measures necessity (code-level OBS: no necessity/minimum-power term in the formula; least-power doctrine = invariant+skill at ROUTING only). DETECTED-BY: review question 'why the cannon when the needle works?' (CONCERN-class advisory per governance/IRFAN-REVIEW-SCHEMA-v1 C1-C3; review NEVER blocks \u2014 anti-de-facto-floor rule). FALSIFIER (=> redundant): zero such cases across >=30 envelope-passing actions in window, OR an existing mechanism flags them first. PROMOTION RULE: repeated passing-failures catches => primitive candidate. Note: runtime plan-comparison detector = Phase-1 code cycle, SEPARATELY ordered (not yet authorized); this event tracks the temporal commitment. claim_state=HYPOTHESIS (TENTATIVE). Sealed refs: thesis 80378697, map 31b8066e, receipt e-0729e64f."
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

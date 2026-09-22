@@ -2,6 +2,8 @@
 name: company-failure-analysis
 description: "Use when judging if a firm is heading for failure."
 tags: [finance, credit, bankruptcy, distress, sec-edgar, valuation, malaysia, bursa, falsifiability]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Company Failure Analysis

@@ -30,6 +30,7 @@ forged: 2026-09-07
 forged_by: 333-AGI on F13 directive
 constitutional_floor: F2 TRUTH + F9 ANTI-HANTU + F13 SOVEREIGN
 f13_directive: "AI agents must not generate human physique images from naive fuzzy adjectives. Human physique topography must be anchored in falsifiable biomechanical strata, continuous surface topology, and optical normal physics."
+ecology_state: WARM
 ---
 # AAA-human-physique-topology
 

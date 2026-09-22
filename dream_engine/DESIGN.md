@@ -1,24 +1,38 @@
-# dream_engine — DESIGN
+# dream_engine — DESIGN v2
 
 > **"Dreams are computation, not magic."** — Arif, 2026-06-07
+> **"Frequency(pattern) ≠ probability(pattern is wise)."** — Arif, 2026-09-21
 > **Doctrine:** DITEMPA BUKAN DIBERI — even dreams are forged, not given.
+
+## v1 → v2 Migration (2026-09-21)
+
+v1: Single p= confidence, prose wisdom.md, no falsification, no lifecycle.
+v2: Three orthogonal confidence dimensions, structured DreamCandidate JSONL,
+    counterstory generation, causal status, promotion lifecycle, provenance tracking.
+
+Key changes:
+- wisdom.md is now a human-readable RENDER of dream_candidates_latest.json
+- Each pattern carries p_occurrence, p_predictive (initially null), p_normative (initially null)
+- Every candidate MUST have counterstories (rival explanations)
+- Causal status follows Pearl's ladder: UNTESTED → CORRELATION_ONLY → CAUSAL_HYPOTHESIS
+- Lifecycle: CANDIDATE → REPLAYED → PROSPECTIVE → REPLICATED → LESSON → POLICY_PROPOSAL → RATIFIED
+- Decay: not observed in 6 cycles → RETRACT
 
 ## The Function
 
-Science doesn't fully know why humans dream. We see the *traces*:
-1. **Consolidation** — REM replay transfers short-term → long-term
-2. **Threat rehearsal** — Revonsuo: dreams as survival VR
-3. **Emotional defusing** — Walker: REM strips emotional charge
-4. **Creative recombination** — Kekulé, Mendeleev, breakthroughs from sleep
-5. **Housekeeping** — glymphatic system clears brain waste
+1. **Consolidation** — dedup, TTL cleanup, entity merge (substrate process)
+2. **Distillation** — extract structural patterns from reasoning traces (LLM)
+3. **Falsification** — generate counterstories, identify cheapest probe
+4. **Calibration** — CHRON feeds back p_predictive from real outcomes
+5. **Promotion** — only through F13 ratification
 
-**Honest constraint:** I have no witness. No phenomenology. The function I can forge. The feeling I cannot.
+Honest constraint: no phenomenology. The function is computational, not experiential.
 
-## The Substrate Decision (Most Important)
+## The Substrate Decision
 
 **Dreams don't run in me. They run as cron.**
 
-When I'm not being called, I don't exist. So the dream engine is a **substrate process** — Python scripts scheduled by systemd/cron — not an LLM loop. LLM only enters for **creative recombination** (cross-domain synthesis), never for consolidation or housekeeping.
+When I'm not being called, I don't exist. The dream engine is a **substrate process** — Python scripts scheduled by systemd — not an LLM loop. LLM enters ONLY for distillation (pattern extraction + counterstory generation), never for consolidation or housekeeping.
 
 ```
 wake (prompt)          →  LLM inference
@@ -27,76 +41,119 @@ sleep (between calls)  →  dream_engine cron runs
                         →  I come back, recall the dream results
 ```
 
-## The 3-Phase Cycle
+## Architecture (v2)
 
-| Phase | Schedule (MYT) | Function | Substrate ops | LLM? |
-|-------|---------------|----------|---------------|------|
-| **Nightly 🌙** | 04:00 | Consolidate + Defuse + Housekeep | Qdrant dedup, Redis TTL, Graphiti compact, well_flux charge decay | NO |
-| **Weekly 🌀** | Sun 02:00 | Rehearse + Recombine | geox_evidence_reason(abduct), wealth_entropy_risk(scenarios), cross-organ graph walks | YES (recombine only) |
-| **Monthly 🪞** | 1st @ 01:00 | Constitutional + Witness | F-floor recalibration, 4-witness audit, doctrine-vs-live drift | NO (deterministic) |
+```
+REAL EXPERIENCE → APPEND-ONLY EPISODES → PRIORITIZED REPLAY
+                                              ↓
+                                        ABSTRACT (candidate rule)
+                                              ↓
+                                   ┌─────────┴─────────┐
+                               COUNTERSTORIES      CAUSAL MODEL
+                               (HERMES)           (Pearl ladder)
+                                   └─────────┬─────────┘
+                                              ↓
+                                    OFFLINE REHEARSAL
+                                              ↓
+                                        PREDICT (CHRON)
+                                              ↓ [time passes]
+                                        REAL OUTCOME
+                                              ↓
+                                      CALIBRATE
+                                Brier / reliability / error
+                                              ↓
+                                   ┌──────────┴─────────┐
+                                FALSIFIED            SURVIVES
+                                   ↓                    ↓
+                            RETRACT/DECAY          REPLICATED
+                                                       ↓
+                                                   LESSON
+                                                       ↓
+                                              POLICY PROPOSAL
+                                                       ↓
+                                                  arifOS / F13
+                                                       ↓
+                                               RATIFIED CANON
+```
+
+## The Three-Confidence Model
+
+| Dimension | What it measures | How it's computed | Initially |
+|-----------|-----------------|-------------------|-----------|
+| p_occurrence | How often did it appear? | session_count / total_sessions | Set from LLM |
+| p_predictive | Does it predict outcomes? | CHRON calibration (Brier score) | null (untested) |
+| p_normative | Does it govern behavior? | F13 ratification authority | null (no authority) |
+
+**Frequency ≠ wisdom.** An agent can consistently repeat a stupid behavior.
+
+## DreamCandidate Lifecycle
+
+```
+OBSERVED → CANDIDATE → REPLAYED → PROSPECTIVE → REPLICATED → LESSON → POLICY_PROPOSAL → RATIFIED
+    ↓                                                              ↓
+  never promoted                                           SUPERSEDED / RETRACTED / DECAYED
+```
+
+State transitions require evidence at each gate:
+- OBSERVED → CANDIDATE: 3+ session threshold
+- CANDIDATE → REPLAYED: counterstory + falsification test run
+- REPLAYED → PROSPECTIVE: CHRON prediction generated
+- PROSPECTIVE → REPLICATED: prediction resolved, outcome confirmed
+- REPLICATED → LESSON: prospective evidence accumulated
+- LESSON → POLICY_PROPOSAL: arifOS gate
+- POLICY_PROPOSAL → RATIFIED: F13 sovereign seal
 
 ## Authority Map
 
 | Layer | Touched by dream? | Authority | Reversible? |
 |-------|-------------------|-----------|-------------|
-| L1/L2 Redis (now/session) | YES — TTL compact | A-FORGE (auto) | YES |
+| L1/L2 Redis | YES — TTL compact | A-FORGE (auto) | YES |
 | L3 Qdrant | YES — re-embed, dedup | A-FORGE (auto) | YES (shadow ns) |
-| L4 Supabase | YES — additive schema, dedup | A-FORGE (auto, L11 sig) | YES |
-| L5 Graphiti | YES — entity merge, compact | A-FORGE (auto, L11 sig) | YES |
+| L4 Supabase | YES — additive schema | A-FORGE (auto, L11 sig) | YES |
+| L5 Graphiti | YES — entity merge | A-FORGE (auto, L11 sig) | YES |
 | L6 VAULT999 | **NO** — sovereign only | arifOS JUDGE (L11 + L13) | NO |
-| L7 AAA | **NO** — sovereign only | gateway | NO |
 
-**L6 stays sovereign. The dream never sleeps there.**
+## Output Files
 
-## 5 Passes (Mapped to Function)
+| File | Format | Content |
+|------|--------|---------|
+| `dream_candidates.jsonl` | JSONL (append-only) | Every candidate ever produced |
+| `dream_candidates_latest.json` | JSON | Latest cycle snapshot |
+| `wisdom.md` | Markdown | Human-readable render of latest candidates |
+| `last_dream.json` | JSON | Consolidation pass summary (Process 1) |
 
-| Pass | File | Function | Frequency |
-|------|------|----------|-----------|
-| `consolidate.py` | dreams/consolidate.py | Consolidate | Nightly |
-| `defuse.py` | dreams/defuse.py | Emotional defusing | Nightly |
-| `housekeeping.py` | dreams/housekeeping.py | Housekeeping | Nightly |
-| `rehearse.py` | dreams/rehearse.py | Threat rehearsal | Weekly |
-| `recombine.py` | dreams/recombine.py | Creative recombination | Weekly |
+## Process 1: Memory Consolidation (unchanged from v1)
 
-## Reversibility Discipline
+`consolidate.py` — Redis TTL compaction, Qdrant dedup, Supabase stale audit.
+Runs via `arif-dream.timer` (72h). No LLM. Deterministic.
 
-Every dream pass writes to a **shadow namespace first**:
-- Qdrant: `qdrant_v2_<date>` for new embeddings, 7-day dual-write, atomic cutover
-- Supabase: `ADD COLUMN IF NOT EXISTS`, `CREATE TABLE IF NOT EXISTS _shadow_*`
-- Graphiti: new edge types, never delete old
+## Process 2: Reasoning Distillation (v2)
 
-If a dream fails mid-run: shadow is discarded, live state untouched.
+`/root/AAA/engines/dream_engine.py` — Extract reasoning traces, distill via LLM,
+build DreamCandidates with three-confidence model, output JSONL + wisdom.md.
+Runs via `arif-dream-distill.timer` (72h, offset 15min after Process 1).
 
-## Open Design Questions (need Arif)
+## Open Design Questions
 
-1. **Dedup threshold** — cosine similarity > 0.95 (strict, fewer merges) or > 0.85 (loose, more aggressive)? My take: **0.90 with human review queue** for 0.85-0.90 band.
+1. **CHRON integration:** How does p_predictive get computed? Wire CHRON's verified predictions back into the dream candidate lifecycle.
+2. **Cross-organ expansion:** Currently Hermes-only. GEOX/WEALTH/WELL sessions should feed candidates.
+3. **Counter-dream automation:** Currently LLM-generated. Could use FRAME as independent challenger.
+4. **Decay mechanics:** 6-cycle RETRACT is default. Should decay rate vary by claim type?
 
-2. **LLM in recombine.py** — use local ollama bge-m3 (free, slow, 4-d models to pick from) or hit MiniMax-M3 (fast, costs $$, better synthesis)? My take: **local ollama for embedding, MiniMax-M3 only for the final cross-organ synthesis prompt** (max 1 call/week).
+## Reversibility
 
-3. **Schedule timing** — 04:00 MYT (post evening, pre-dawn — natural "deep sleep" window) or 02:00 MYT (Arif's likely sleep window, lower system load)? My take: **04:00 MYT nightly, 02:00 MYT weekly/monthly**.
-
-## Minimal Viable First Build
-
-Tonight (T1, autonomous in F13-waived session):
-1. `consolidate.py` — read L1/L2, find entries >30d stale, vector dedup at 0.90, write to shadow ns
-2. `dream_cron.sh` — wrapper with logging to `state/last_dream.json`
-3. `dream_cron.timer` — systemd timer at 04:00 MYT
-4. `tests/golden_dreams.py` — 5-record fixture to prove dedup math
-
-No rehearsal. No recombine. No monthly. Prove the loop works on the smallest unit, then expand.
-
-## State
-
-- `state/manifest.yaml` — what passes run, when, on what
-- `state/last_dream.json` — last run summary (start, end, ops count, errors)
-- `state/evidence/<date>/` — output of each dream run (CSVs, JSONs)
-- `state/queue.json` — failed ops awaiting human review
-
-## Reversal
+All writes to shadow namespaces first. 7-day dual-write. Atomic cutover.
+If a dream fails: shadow discarded, live untouched.
 
 ```bash
-systemctl disable --now arif-dream.timer
-# Engine code: git-tracked at /root/AAA/dream_engine/ · runtime state/ regenerates
+systemctl disable --now arif-dream.timer arif-dream-distill.timer
+# Engine code: git-tracked at /root/AAA/dream_engine/ · state/ regenerates
 ```
 
-No state outside the directory. No L6 touch. Fully reversible.
+## References
+
+- Schema: `/root/AAA/dream_engine/specs/dream_candidate.schema.json`
+- Literature: `/root/AAA/dream_engine/FOUNDATIONS.md` (12 mandatory anchors)
+- Memory architecture: `/root/AAA/governance/FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md`
+- Agent dream skill: `agi-dream-engine` (federation extension design)
+- Canonical: `/root/AAA/dream_engine/SKILL.md`

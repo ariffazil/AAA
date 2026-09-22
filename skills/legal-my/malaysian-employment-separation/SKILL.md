@@ -2,6 +2,8 @@
 name: malaysian-employment-separation
 description: "Use when advising on a Malaysian job exit or MSS package."
 tags: [malaysia, employment, MSS, VSS, retrenchment, tax, LHDN, EPF, EIS, advisory, legal, compensation-sizing, stigma, exit-decision]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Malaysian Employment Separation & Exit Advisory
@@ -32,6 +34,13 @@ tax, the re-employment disqualifier, and the runway calculus.
    holding the money.
 4. **A lump sum is funding for a transition, not a windfall.** Its value is the months of runway
    it buys, so the whole advisory collapses onto one missing number: monthly **burn**, not salary.
+   Report the size under **two denominators, because both are true and they point opposite ways**:
+   as a multiple of monthly wages *and* as a fraction of one year's pay. A package worth roughly two
+   years' salary reads as overwhelming against burn and as modest as income replacement; the windfall
+   illusion comes from quoting only the first, the despair from quoting only the second.
+   **Never issue a verdict of "enough".** The question is always "enough for what", and it resolves
+   onto three things the adviser does not hold: monthly burn, the expected time to the next income,
+   and the dependants.
 5. **Dependants change the risk class.** The same package is freedom for one person and a single
    round of ammunition for someone with young children and 15+ years of obligations remaining.
    Ask, then adjust the verdict rather than the arithmetic.
@@ -114,7 +123,11 @@ answer, not a dodge.
 3. **Large-employer separation schemes commonly run 1–1.5 months per completed year, with a total
    cap** — 24 to 36 months is the observed practice band.
 4. **Short service still carries a lump floor** — a few months' wages for a couple of years of
-   service is normal in a scheme of this type, not generous.
+   service is normal in a scheme of this type, not generous. Where the formula carries a **flat
+   addition** (`multiple × years + N months`), effective months-per-year is **not monotone** — it is
+   highest for the shortest service and decays toward the multiple as service lengthens. So a
+   short-service anecdote neither validates nor refutes a long-service formula, and quoting "months
+   per year" across service lengths without the flat term is wrong at both ends.
 5. **Label crowd-sourced figures** — forums, social posts, personal blogs — as reported and
    unverifiable, name which class they are, and never average them into the estimate. An unsourced
    six-figure or seven-figure claim is noise, and saying so is part of the answer.
@@ -142,6 +155,13 @@ RM10,000 × completed years; the excess is taxed in the year of receipt at the p
 marginal rate. Give the shape as a labelled illustration — exempt slice, taxable remainder, rough
 net share of gross — and route the figure itself to a licensed tax agent (Advisory stance 2).
 
+**Give the pile an income-equivalent.** Divide the net figure by the horizon the person names and
+quote the monthly income it stands in for. A package worth roughly twenty months of wages spent
+over twenty-four months replaces about four-fifths of one month's salary per month; spent over five
+years it replaces under half. That single division answers "is it a lot?" better than any adjective,
+because it converts the question from size into duration — the only axis on which the number is
+decidable.
+
 **Close on the two numbers only the person holds:** monthly burn and true months of runway.
 Without those, no range means anything.
 
@@ -167,6 +187,11 @@ after it.
 4. **The base the multiple applies to.** Get it in writing whether "one month's wages" means basic
    pay or basic plus fixed allowances. On a 20+ month package this single definitional clause moves
    the gross by a third (see the base note in the sizing section above).
+5. **The flat addition's characterisation.** The fixed `+ N months` element is the one most exposed
+   to being read as a gratuity for past service rather than compensation for loss of employment, and
+   that reading can forfeit the exemption on that element alone. Ask for the whole package documented
+   as compensation for loss of employment on a service-years formula, and for the flat element's
+   label in writing, separately from the rest.
 
 Then hand back four numbers plus a runway — gross, exempt slice, taxable remainder, net — and run
 `scripts/exit_package_calc.py` for the arithmetic instead of re-deriving the tax bands by hand each

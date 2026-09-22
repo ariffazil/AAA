@@ -7,6 +7,8 @@ category: forge
 tags: [mcp, context, tokens, harness, federation, compression]
 floor_scope: [F2, F4, F7]
 autonomy_tier: T1
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # MCP Context Compression — the ceiling that is not model IQ

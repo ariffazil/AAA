@@ -2,6 +2,8 @@
 name: geox-basin-claims-audit
 description: Use when auditing GEOX basin claims or knowledge.
 tags: [geox, audit, claims, provenance, sabah, malay-basin]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # GEOX Basin Claims & Audit

@@ -5,6 +5,8 @@ author: kimi-code (FI-008)
 forged: 2026-08-30
 source-artifact: /root/forge_work/2026-08-30-housekeeping-artifact/RECEIVED-ARTIFACT.md
 law: Universe Bootstrap (F13, 2026-08-30) — govern capabilities, not implementations
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Federation Housekeeping Master — ARIFOS::HOUSEKEEPING::MASTER::v2-forged

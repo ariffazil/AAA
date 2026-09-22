@@ -1,6 +1,8 @@
 ---
 name: tts-route-deep-research
 description: "Use when routing TTS requests across providers or deep-researching TTS engine capabilities and routing. Probe every TTS endpoint across providers. Never assume."
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # tts-route-deep-research

@@ -2,6 +2,8 @@
 name: forge-mcp-registry-publish
 description: "Publish MCP to Smithery or Glama. Covers auth and namespace."
 tags: [mcp, registry, publish, smithery, exposure]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MCP Registry Publishing

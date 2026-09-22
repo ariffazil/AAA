@@ -230,9 +230,12 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
         "ok": True, "standing_rules": len(fb.active()),
         "rules_file": str(rules_path),
     }
+    # No hard page-break between the front matter and the register. A forced
+    # break after a short Standing Instructions block leaves a near-empty page
+    # on its own, which the ink_present gate correctly refuses as an orphan
+    # (EDITION-008 refusal, 2026-09-23). Let content flow decide the break.
     body = (render_delta_html(delta, prev_edition)
             + render_rules_html(fb)
-            + "<div style='page-break-before:always'></div>"
             + render_items_html(items))
     src = run_dir / "content.html"
     src.write_text(body)

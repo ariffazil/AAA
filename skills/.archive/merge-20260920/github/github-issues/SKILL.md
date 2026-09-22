@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [GitHub, Issues, Project-Management, Bug-Tracking, Triage]
     related_skills: [github-auth, github-pr-workflow]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GitHub Issues Management

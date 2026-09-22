@@ -2,6 +2,8 @@
 name: arifos-kernel-seal-ritual
 description: Use when sealing work via arifOS kernel (arif_seal HOLD).
 tags: [arifos, kernel, seal, vault999, governance]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # arifOS Kernel Seal Ritual

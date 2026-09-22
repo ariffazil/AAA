@@ -30,6 +30,8 @@ triggers:
   - 'a request to separate OBSERVED from INFERRED from UNKNOWN about a named human'
   - 'a request to test whether a story about someone is supported by records'
   - 'any mission that begins "do not contact them, do not manufacture tests"'
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # First-Party Evidence Audit (canonical)

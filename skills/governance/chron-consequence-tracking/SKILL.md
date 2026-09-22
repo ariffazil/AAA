@@ -13,6 +13,8 @@ triggers:
   - "prediction verified"
   - "calibration"
   - "temporal commitment"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # CHRON — Temporal Consequence Tracking

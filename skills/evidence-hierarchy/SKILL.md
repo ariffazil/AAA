@@ -7,6 +7,8 @@ layer: substrate
 floor_scope: [F2, F11]
 owner: F13 SOVEREIGN
 status: active
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # evidence-hierarchy

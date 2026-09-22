@@ -3,6 +3,8 @@ name: skill-installer
 description: "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path."
 metadata:
   short-description: Install curated skills from openai/skills or other repos
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Skill Installer

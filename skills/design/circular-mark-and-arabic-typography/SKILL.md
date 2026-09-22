@@ -5,6 +5,8 @@ version: 1.0.0
 owner: Hermes
 risk_tier: low
 tags: [logo, avatar, arabic, typography, svg, telegram, verification]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Circular Mark & Arabic Typography

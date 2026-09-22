@@ -14,6 +14,8 @@ triggers:
   - "mark every claim without a public source"
   - "flag sentences only an insider could write"
 tags: [audit, source-grounding, corpus, defamation, provenance, publishing]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Insider-Exposure Inventory

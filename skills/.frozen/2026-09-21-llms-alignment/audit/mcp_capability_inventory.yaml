@@ -1,0 +1,290 @@
+# mcp_capability_inventory.yaml
+# Phase-1 deliverable of the 6-phase Agentic Federation Closure Flow (per Arif, 2026-09-21).
+# Mission: authoritative census of all MCP-related skills. Mode: READ ONLY.
+#
+# Source: live probe 2026-09-21 across /root/AAA/skills (canonical) + 3 mirror trees
+#         (/root/.opencode/skills, /root/.agents/skills, /root/.claude/skills).
+date: '2026-09-21'
+scope: mcp
+mission_id: mcp-federation-inventory-v3.1.1
+producer: 333-AGI autonomous continuation
+classification: READ-ONLY EVIDENCE
+meta:
+  total_symlinks_probed: 245
+  dead_symlinks: 0
+  total_unique_mcp_skills: 1
+  total_tombstone_symlinks_to_mcp_ops: 22
+  total_absorbed_reference_docs: 35
+  total_sibling_skills_kept_separate: 6
+  total_frozen_bodies: 5
+shadow_frozen_chain:
+- path: .frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.0.1
+  sha256: ebe2ebdfa487f65e2d33be10935490de5cdcd4edf40aa3855f14be52bdbbd314
+  size_bytes: 32556
+  role: pre-llms.txt-alignment mcp-ops body
+- path: .frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.1.0
+  sha256: bfc0b92800867849f7b38d86cbdcf54dcb93dbc4e131036e282305928d89d165
+  size_bytes: 44274
+  role: intermediate v3.1.0 (1-indexed) body, before 0-index renumber
+- path: .frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-testing
+  sha256: ebe2ebdfa487f65e2d33be10935490de5cdcd4edf40aa3855f14be52bdbbd314
+  size_bytes: 32556
+  role: mcp-testing body — proven inode-consolidated with mcp-ops
+- path: .frozen/2026-09-21-llms-alignment/absorbed-INDEX.md.from.pre-alignment
+  sha256: on-disk
+  size_bytes: 9925
+  role: INDEX prior to llms.txt alignment rewrite
+- path: .frozen/2026-09-21-llms-alignment/OWNERSHIP_MAP.yaml.from.pre-mcp3.1.1
+  sha256: 8e45fb12fd3d8e6d26a4d69fc10cd54a3b00ad4aea7c486037cfa94d9215c523
+  size_bytes: 8643
+  role: OWNERSHIP_MAP prior to P3_mcp_tooling ratification
+capabilities:
+- id: mcp-ops
+  name: MCP Operations
+  primary_capability: MCP lifecycle owner (LEARN -> DISCOVER -> PROBE -> BUILD -> SECURE -> TEST -> EXTEND -> PUBLISH -> GOVERN)
+  purpose: Single canonical skill for the full Model Context Protocol workflow, accordant to https://modelcontextprotocol.io/llms.txt.
+    Absorbs every prior MCP-named skill in the federation (24+ names) via references/.
+  inputs:
+  - Operator intent (e.g., 'wire MCP server', 'add OAuth', 'publish to registry')
+  - Live MCP endpoints (Streamable HTTP transports)
+  - registry.modelcontextprotocol.io records
+  - SEP + community working-group / interest-group notices
+  outputs:
+  - 'Probe receipts (4-number truth: DECLARED/EXPOSED/CALLABLE/AUTHORIZED)'
+  - Build receipts (FastMCP scaffold/inspect/run)
+  - Test receipts (MCPJam Inspector era coverage)
+  - Publish receipts (MCP Registry submission records)
+  - Governance receipts (SEPs, working/interest-group membership)
+  dependencies:
+  - arifOS 8088 (constitutional kernel — governs MUTATE / SEAL verbs)
+  - A-FORGE 7072 (execution shell — forge_* tools implement ACT stage)
+  - FED :4000 (litellm flash lane — model route for hermes/333 calls)
+  - mcporter v0.9.0 CLI (/usr/bin/mcporter)
+  - '@mcpjam/inspector npm package'
+  - FastMCP 3.4.2 (Python)
+  - /root/scripts/hermes_mcp_wire.py, hermes_mcp_compress.py
+  primary_storage: /root/AAA/skills/engineering/mcp-ops
+  primary_storage_skill_md: /root/AAA/skills/engineering/mcp-ops/SKILL.md
+  primary_storage_skill_md_sha256: de09f5faf0ef2319750bb4c1f26f4be066e276a45dc6977d873d79ed23f0c3dc
+  primary_storage_skill_md_size_bytes: 44724
+  primary_storage_skill_md_lines: 796
+  primary_storage_skill_md_version: 3.1.1
+  primary_storage_skill_md_aligned_to:
+  - https://modelcontextprotocol.io/llms.txt
+  - canonical MCP spec 2026-07-28 (stateless preferred)
+  - canonical MCP spec 2025-11-25 (legacy handshake)
+  - RFC 8414 (AS metadata)
+  - RFC 8705 (PRM)
+  - RFC 9728 (Protected Resource Metadata)
+  - MCP-Protocol-Version header convention
+  risk_tier: low
+  autonomy_tier: T1
+absorbed:
+  pattern: each entry preserves the original name as a tombstone + references/absorbed-<name>.md body
+  entries:
+  - original_name: FORGE-mcp-ops
+    absorbed_at: v3.0.0
+    preserved_at: .archive/merge-20260920/mcp/
+    shape: tombstones across 4 mirror trees
+  - original_name: FORGE-mcp-federation-ops
+    absorbed_at: v3.0.0
+    stage_in_v3_1_1:
+    - 1
+    - 2
+  - original_name: FORGE-mcp-lifeguard
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-FORGE-mcp-lifeguard.md + dir/
+    stage_in_v3_1_1:
+    - 8
+    - 8g
+  - original_name: FORGE-fastmcp
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-FORGE-fastmcp.md + references/absorbed-forge-fastmcp/
+    stage_in_v3_1_1:
+    - 3
+    - 3a
+  - original_name: forge-fastmcp
+    absorbed_at: v3.0.1
+    preserved_at: symlink to mcp-ops
+    stage_in_v3_1_1: 3
+  - original_name: FORGE-mcp-gui
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-FORGE-mcp-gui.md + references/absorbed-forge-mcp-gui/
+    stage_in_v3_1_1:
+    - 3
+    - 3b
+    - 6
+    - 6a
+  - original_name: forge-mcp-gui
+    absorbed_at: v3.0.1
+    preserved_at: symlink to mcp-ops
+  - original_name: FORGE-mcp-a2a-agentic
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-FORGE-mcp-a2a-agentic.md + references/absorbed-forge-mcp-a2a-agentic/
+    stage_in_v3_1_1:
+    - 3
+    - 3c
+    - 6
+  - original_name: forge-mcp-a2a-agentic
+    absorbed_at: v3.0.1
+    preserved_at: symlink to mcp-ops
+  - original_name: FORGE-mcp-testing
+    absorbed_at: v3.1.0
+    preserved_at: .frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-testing
+    note: inode-consolidated with engineering/mcp-ops (verified same sha ebe2ebdfa487)
+    stage_in_v3_1_1: 5
+  - original_name: FORGE-mcp-governance-wrapper
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-FORGE-mcp-governance-wrapper.md + references/absorbed-forge-mcp-governance-wrapper/{references,templates}/
+    stage_in_v3_1_1:
+    - 8
+    - 8e
+  - original_name: federation-mcp-drift-audit
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-federation-mcp-drift-audit.md + references/absorbed-federation-mcp-drift-audit/scripts/
+    stage_in_v3_1_1:
+    - 8
+    - 8f
+  - original_name: mcp-organ-probe
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-mcp-organ-probe.md + references/absorbed-mcp-organ-probe/references/
+    stage_in_v3_1_1:
+    - 2
+    - 2a
+  - original_name: mcp-edit-activation
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-mcp-edit-activation.md
+    stage_in_v3_1_1:
+    - 2
+    - 2d
+  - original_name: mcp-transport-fix
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-mcp-transport-fix.md
+    stage_in_v3_1_1:
+    - 2
+    - 2e
+  - original_name: mcp-ecosystem-indexing
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-mcp-ecosystem-indexing.md
+    stage_in_v3_1_1:
+    - 1
+    - 3
+    - 3d
+  - original_name: forge-mcp-registry-publish
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-forge-mcp-registry-publish.md
+    stage_in_v3_1_1:
+    - 7
+    - 7a
+  - original_name: external-platform-mcp
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-external-platform-mcp.md + references/absorbed-external-platform-mcp/references/
+    stage_in_v3_1_1: 3
+  - original_name: mcp-context-compression
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-mcp-context-compression.md
+    stage_in_v3_1_1:
+    - 3
+    - 3g
+  - original_name: forge-minimax-mcp-direct-invoke
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-forge-minimax-mcp-direct-invoke.md
+    stage_in_v3_1_1:
+    - 3
+    - 3c
+  - original_name: telegram-mcp-product-line
+    absorbed_at: v3.0.0
+    preserved_at: references/absorbed-telegram-mcp-product-line.md + references/absorbed-telegram-mcp-product-line/references/
+    stage_in_v3_1_1: 3
+  - original_name: mcp-testing
+    absorbed_at: v3.1.0
+    preserved_at: engineering/mcp-testing is a symlink to engineering/mcp-ops (no separate body)
+    stage_in_v3_1_1: 5
+  - original_name: mcp-sota-shopping-list
+    absorbed_at: v3.0.1
+    preserved_at: references/absorbed-mcp-sota-shopping-list.md
+    stage_in_v3_1_1:
+    - 1
+    - 1b
+siblings_kept_separate:
+- id: wealth-mcp-ops
+  rationale: WEALTH-organ MCP tools (capital primitive surface); organ-bounded
+  path: /root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-ops
+- id: runpod-mcp
+  rationale: Runpod platform lane; distinct triggers and setup
+  path: /root/AAA/skills/runpod-mcp
+- id: touchdesigner-mcp
+  rationale: TouchDesigner platform lane; distinct triggers and tool surface
+  path: /root/AAA/skills/creative/touchdesigner-mcp
+- id: core-mcp-runtime-probe
+  rationale: 'Focused instrument: one-shot MCP health + schema + transport classification'
+  path: /root/AAA/skills/core/mcp/runtime-probe
+- id: agent-tool-verification
+  rationale: General claim discipline for any tool, not only MCP
+  path: /root/AAA/skills/.claude/skills/.archive/merge-20260920/agent-tool-verification
+- id: qwen-harness-tools
+  rationale: Model-side built-in harness tools; not MCP at all
+  path: /root/AAA/skills/.agents/skills/qwen-harness-tools
+hermes_profile_scope:
+- path: /root/AAA/skills/capabilities/coding/mcp-ops
+  target: /root/.hermes/profiles/aaa-hermes/skills/FORGE-mcp-ops
+  sha256: d98000a023a33bd29d37e5de1565fc6a4b566b9383aa9d1b7417f246bb715ebd
+  size_bytes: 5214
+  version: 1.0.0 (legacy FORGE-mcp-ops body — mcporter CLI surface only)
+  rationale: Hermes-internal lane, not part of the AAA MCP federation consolidation
+  action: kept as-is; not stale, intentional scope boundary
+live_organs:
+- organ: arifOS
+  port: 8088
+  probe_result: HTTP 200 / JSON-RPC
+- organ: GEOX
+  port: 8081
+  probe_result: HTTP 200 (Streamable HTTP POST-only, 405 on GET is normal)
+- organ: WEALTH
+  port: 18082
+  probe_result: HTTP 405 (POST-only, JSON-RPC error on GET normal)
+- organ: WELL
+  port: 18083
+  probe_result: HTTP 405 (POST-only, JSON-RPC error on GET normal)
+- organ: A-FORGE
+  port: 7072
+  probe_result: HTTP 200
+live_organs_total: 5
+live_organs_unreachable: 0
+tombstones_resolved_to_v3_1_1:
+- /root/AAA/skills/capabilities/coding/mcp-testing
+- /root/AAA/skills/domains/forge/mcp-ops
+- /root/AAA/skills/domains/forge/mcp-testing
+- /root/AAA/skills/domains/general/apex/governance-core/federation-mcp-drift-audit
+- /root/AAA/skills/domains/general/apex/governance-core/forge-mcp-governance-wrapper
+- /root/AAA/skills/domains/general/aaa/catalog-ops/forge-mcp-registry-publish
+- /root/AAA/skills/domains/general/forge/mcp-ops/external-platform-mcp
+- /root/AAA/skills/domains/general/forge/mcp-ops/forge-minimax-mcp-direct-invoke
+- /root/AAA/skills/domains/general/forge/mcp-ops/mcp-ecosystem-indexing
+- /root/AAA/skills/domains/general/forge/mcp-ops/telegram-mcp-product-line
+- /root/AAA/skills/devops/mcp-edit-activation
+- /root/AAA/skills/devops/mcp-transport-fix
+- /root/AAA/skills/.archive/mcp-ops
+- /root/AAA/skills/forge-fastmcp
+- /root/AAA/skills/forge-mcp-a2a-agentic
+- /root/AAA/skills/forge-mcp-gui
+- /root/AAA/skills/mcp-context-compression
+- /root/AAA/skills/mcp-edit-activation
+- /root/AAA/skills/mcp-organ-probe
+- /root/AAA/skills/mcp-sota-shopping-list
+- /root/AAA/skills/mcp-transport-fix
+- /root/AAA/skills/engineering/mcp-testing
+tombstones_total_unique_targets: 22
+tombstones_total_resolved_v3_1_1: 22
+tombstones_total_dead: 0
+provenance:
+  producer: 333-AGI
+  date: '2026-09-21'
+  mode: READ_ONLY
+  sha_anchors:
+  - target: engineering/mcp-ops/SKILL.md
+    sha256: de09f5faf0ef2319750bb4c1f26f4be066e276a45dc6977d873d79ed23f0c3dc
+  - target: engineering/mcp-testing/SKILL.md
+    sha256: ebe2ebdfa487f65e2d33be10935490de5cdcd4edf40aa3855f14be52bdbbd314
+    note: proven inode-consolidated with engineering/mcp-ops (sha ebe2ebdfa487 matches)
+verdict: KNOWN

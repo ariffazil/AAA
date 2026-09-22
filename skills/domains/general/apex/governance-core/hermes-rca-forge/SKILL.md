@@ -4,6 +4,8 @@ description: "Metabolize a recurring symptom's root cause, not store it."
 version: 1.0.0
 tags: [rca, root-cause, metabolization, forge, substrate]
 floors: [F1, F2, F4, F7, F13]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hermes RCA Forge (xyz)

@@ -3,6 +3,8 @@ name: deal-consolidation-intelligence
 description: "Use when analysing a rumoured merger or stake sale."
 version: 1.0.0
 tags: [deal, ma, consolidation, rumour-verification, void-analysis, valuation, sovereign-brief]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Deal & Consolidation Intelligence

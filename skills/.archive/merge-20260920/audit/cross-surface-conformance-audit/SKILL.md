@@ -20,6 +20,8 @@ triggers:
   - "capability truth"
   - "split brain"
   - "docs say X but the API says Y"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Cross-Surface Conformance Audit

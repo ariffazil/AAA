@@ -1,6 +1,8 @@
 ---
 name: forge-pdf-delivery
 description: Turn markdown into a real PDF and deliver via MEDIA:. Never claim an attachment that was not built and verified.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # forge-pdf-delivery
@@ -46,6 +48,16 @@ EOF
 Healthy text-and-figure pages land ~4–25 %. Under ~2 % is a split or empty page; a wide spread (0.3 % beside 24 %) is the signature of a layout break, not of intentional design. Over ~60 % is a full-bleed cover — fine on screen, but it eats toner and its gradients band on paper, so flag it if the deliverable is meant to be printed.
 6. **Copy to forge_work.** `cp output.pdf /root/AAA/forge_work/<date>-<slug>/<descriptive-name>.pdf` — durable location, not `/tmp`.
 7. **Deliver.** Include `MEDIA:/absolute/path/to/file.pdf` in your Telegram reply. Hermes auto-attaches as a document.
+
+## Carrying numbers in the deliverable — content gate (not layout)
+
+The five checks above prove the file renders. They do **not** prove the document says what you think. When the deliverable carries monetary figures, invoices, ledgers, settlements or splits of any kind:
+
+**One invoice per order.** A document that prints a prior settled payment alongside a new unpaid item, then subtracts one from the other to derive a "balance", manufactures a debt that did not exist in any contract. The recipient reads the resulting "balance due" as a claim. If a prior transaction belongs on the page at all, it sits in a separate EXCLUDED block with a status label (SETTLED / VOID / REFUNDED) and does not enter the arithmetic that decides what is owed. See `references/invoice-content-discipline.md` for the full rule set and the canonical "one order / one page" template.
+
+**Lock the source on the original receipt, not on whichever party spoke last.** When two people describe the same transaction differently, the temptation is to revise the document after each speech act. Hold the record on its first source (a receipt photograph, a logged transfer, a confirmed reply) until that source is contradicted by a higher-warrant observation. Surface disagreements inside the document ("party A states X; party B states Y") instead of re-rendering. A fresh-looking PDF built on an unverified record is the same defect as a stale figure presented as current.
+
+**Tag every line with its evidence class on the page itself.** When two readers can have read the same artifact and come away with different amounts, the artifact failed — not the readers. Print three classes inline, each with its own visual treatment: `VERIFIED` (printed on a receipt the user photographed), `REPORTED` (spoken by one of the parties), `DERIVED` (your arithmetic, every input labelled). Empty cells are the right answer for line items where no source exists — never a confident blank-style default.
 
 ## Pitfalls (read before authoring)
 

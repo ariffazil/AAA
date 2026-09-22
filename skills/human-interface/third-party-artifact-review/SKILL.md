@@ -14,6 +14,8 @@ triggers:
   - "artifact addressed to a third party"
   - "a letter I wrote for [name]"
 tags: [human-interface, artifact-review, provenance, delivery-state, rasa, third-party]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Third-Party Artifact Review

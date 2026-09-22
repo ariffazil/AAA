@@ -10,7 +10,8 @@ metadata:
   hermes:
     tags: [ASCII, Art, Banners, Creative, Unicode, Text-Art, pyfiglet, figlet, cowsay, boxes]
     related_skills: [excalidraw]
-
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # ASCII Art Skill

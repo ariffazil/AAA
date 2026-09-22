@@ -7,6 +7,8 @@ license: none
 metadata:
   tags: [video, token-plan, qwencloud, happyhorse, i2v, t2v]
   related_skills: [token-plan-video, mulerouter-media, video-prompt-engineering]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # QwenCloud Token Plan happyhorse Video API

@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F6]
 autonomy_tier: T1
 tags: [artifact-design, pdf, reportlab, resume, dossier, brief, logo, audience, hierarchy, density]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Human-Facing Artifact Design
@@ -74,6 +76,76 @@ Detect it by rasterising the built pages and computing dark-pixel share per page
 **A page count roughly double the number of designed blocks means every block is spanning two pages.** The usual cause is a container taller than the printable box, so the block breaks and its tail lands on the next page. Compare the container height against the `@page` box before touching content — the fix is geometry, and adding or trimming text will not find it.
 
 The fix is layout, not content: tighten the trailing block's top margin and line spacing so it joins the preceding page, and shorten its line lengths if that is what makes it fit. Do **not** delete the block, and do not pad it with filler to earn its page — filler on a closing page is more visible than the whitespace it replaced.
+
+### Recurring artifacts: separate the POOL from the PUBLISHED surface
+
+When an artifact is generated on a schedule — a daily card, a digest, a pulse, a dashboard — and it
+comes back rejected for being unreadable (`too chaos`, `signal only`, "I can't find anything"), the fix
+is **not** to delete content. Two different objects have been collapsed into one file:
+
+- **POOL** — every candidate the search produced, with sources, tiers and provenance. This is
+  RESEARCH. Keep all of it, in the file.
+- **PUBLISHED surface** — the handful of lines the reader actually scans. This is the SELECTION.
+
+A wide pool and a narrow published surface is the point: the pool proves the search was real, the
+surface proves the judgement was. Delete the pool instead and nothing downstream can tell whether the
+surface was chosen or merely left over.
+
+**Measure the narrowing; do not assert it.** Count the visible text nodes and the characters a reader
+must scan, before and after, and state both. A real case: **57 nodes / 5,973 chars → 16 nodes / 1,498
+chars**, with nothing removed a reader could act on. What went was scaffolding only the machine needed
+— category names, row numbers, the reader's name stamped on every row, a source line under each cell,
+decorative quotes, and a footer restating the structure the page already showed.
+
+**The published surface carries no machine scaffolding.** No tier or category labels, no row numbers,
+no per-line source strings, no structural footer. Provenance is recorded for audit and *never printed*
+— a source line under every item is the fastest way to make a card read as a log. If the artifact has
+a duality worth keeping (one subject, two readers), carry it with a colour bar or a position, not by
+stamping a name on each row.
+
+**Narrowing is where a reader gets dropped — gate it.** The first lines to vanish from a "signal only"
+pass are the ones whose subject is rarest in the day's source material, which may be the entire lane
+of one of the readers. So the narrowing gets its own refusal list: a minimum and maximum line count, a
+per-line length ceiling, no frozen counts written into prose, no private markers, no two lines about
+the same event, and — critically — **at least one line surviving for each named reader's standing
+interest**, plus a check that not every line belongs to one reader. Write the control that breaks each
+rule and confirm it actually FIRES before trusting the check.
+
+**A register rule that only warns is a debt, not a control.** If the generator flags machine
+vocabulary in a human-facing line but still ships the line, the register is only partly enforced —
+do not report it clean to the principal. Say which items still leak and that the check is advisory.
+
+**Two render styles must not share a filename.** When one generator can emit two layouts of the same
+period (a full grid and a narrow signal card), both share the same period label — so unless the
+filenames differ by style, the second render silently overwrites the first's stable output, which is
+the exact path a delivery contract names. Suffix by style, and refuse to render a style whose input
+section is missing rather than falling back to the other layout: an artifact that quietly renders
+something other than what was asked is lying about itself.
+
+### Recurring artifact shape — anchor on a weekly template, not a per-issue structure
+
+A weekly brief (Monday, Friday, end-of-month) shipped to the same reader or reader-pair becomes
+muscle memory after two or three issues. The reader learns the section order, knows where their
+"must-read this morning" line is, and the artifact does not need to re-justify itself. Encode the
+recurrence on the first issue:
+
+- **Lock the table of contents and section order from issue one.** A Monday market-and-policy brief
+  that opens with markets then energy then rates then PETRONAS then war then AI then a "what to do"
+  section will keep that order even when one week's news is dominated by an unexpected story —
+  the unexpected story fits the existing section, it does not generate a new one. A reader who
+  sees "your Monday brief has eight sections" stops scanning; a reader who sees "this brief
+  has nine sections this week and only three last week" does not.
+- **Mark the recurring vs the variable visibly.** A consistent small grey "WEEKLY" mark on the
+  section headers that are always there, and an un-marked bold heading for whatever *this* issue
+  changed. The reader learns to scan the un-marked headings first.
+- **The reader's "what do I do" section is the most stable of all.** It is the only section
+  guaranteed to be useful even when every other section is wrong. Write it as a numbered list of
+  actions that survive any news week, then this week append the issue-specific delta. The reader's
+  trust in the artifact sits on this section being dependable.
+- **Mid-build pivots are real, and the template is what absorbs them.** A reader may ask, mid-build,
+  "add more on PETRONAS" or "include the MSS chapter" — the answer is to fold the addition into an
+  existing section, not to invent a new one. The artifact's structure has to be loose enough to
+  accept a fifth or sixth paragraph inside an existing section without breaking the page geometry.
 
 ## 4. Care artifacts are not information transfer
 
@@ -235,6 +307,31 @@ Never soften a citation to "a study found" because the page would not load. Reso
 
 Build and refine a single output path; do not generate v2/v3/v4 side by side and ask the user to choose. Each intermediate is noise in their inbox. Send the artifact when it passes the checklist, then iterate if rejected, and offer to remove superseded drafts rather than leaving several near-identical files behind.
 
+**For visual-identity work the failure mode is louder.** A logo, avatar or mark that loops
+through eleven or six variants side-by-side is not iteration — the reader cannot tell which
+variant is your pick from the file list alone. Build a contact sheet at small sizes (40 and 28 px)
+so the choice is made on the evidence, name the one you're sending as the recommendation, ship the
+contact sheet as the supporting evidence, and stop. The reader comes back with "yes" or "no" and a
+reason — never with a list of files to pick from. A pick that splits a word (e.g. a five-letter
+brand name rendered as a two-line stack) is a fundamental typographic error, not a stylistic
+choice; if the only way to fit the word at small size is to break it, the fix is a narrower font,
+not a wider container. Measure the inner-area coverage as a fraction — a single-line word in a
+circular badge will measure around 7–8%; if it is above 15% the word is dominating the disc.
+
+**"Bagus. Belajar drpd kesilapan." is a checkback signal.** When the reader — after rejecting the
+artifact, after the redo, after you explained what you learned — says the artifact is good and to
+remember the lesson, that is the moment to capture the lesson, not later. The closed feedback loop
+is the only point at which the reader's correction is no longer being argued about and the rule
+itself can be sealed.
+
+**Skill-edit "success" is not the same as the bytes landing.** When this skill's own curve-of-fitting
+section was edited mid-session, `skill_manage` returned success and the agent reported the
+recording — but the file did not change. A downstream skill store had swept the SKILL.md while
+the symlink and the catalog survived, so reads via skill_view kept returning the old body. Before
+relying on any skill edit: read back the resolved path and grep for a distinctive phrase you just
+added; if the target directory holds only `liveness.json`, the SKILL.md was swept — restore it
+and re-issue the lesson, do not report it recorded.
+
 **Distinction — drafts iterate in place, delivered artifacts version.** The rule above governs
 *drafts*: several unshipped near-identical files are noise. It does not apply once an artifact has
 been delivered and the reader returns corrections. A corrected artifact gets a **new version plus a
@@ -258,6 +355,11 @@ has no way to tell the two states apart from the document alone.
 [ ] Technical artifact for a specialist reader: the discipline's own figures are present (map / cross-section / column), and every schematic element is labelled `schematic` / `indicative` in subtitle and caption (§1)
 [ ] Every page is dense — chars/page counted from the built PDF, not eyeballed (§3)
 [ ] No stranded near-empty final page — ink coverage measured per page (§3)
+[ ] Recurring/dense artifact: pool kept in the file, published surface narrowed — and the narrowing MEASURED (nodes/chars before and after), not asserted (§3)
+[ ] Every named reader still has a line surviving the narrowing; no surface serves only one reader (§3)
+[ ] Published surface carries no machine scaffolding — no category tags, row numbers, per-line source strings or structural footer (§3)
+[ ] Any machine-vocabulary check that only warns: reported as a debt, not claimed as enforced (§3)
+[ ] Two render styles of one period write different filenames, and a missing input section refuses rather than falling back to the other layout (§3)
 [ ] No number appears without a source and a date (§5)
 [ ] No borrowed-prestige vocabulary (quantum / entropy / thermodynamics) applied to an ordinary decision — the maths stands on its own, or the term is dropped (§5)
 [ ] A claim of predictive skill was tested blind and scored against its trivial baseline, with any sampling limitation stated on the artifact — or the claim is marked untested (§5)

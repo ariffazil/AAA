@@ -16,6 +16,8 @@ triggers:
   - "vet this review before we act"
   - "another agent audited my work"
 tags: [audit, verification, external-review, epistemic, intake]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Audit Intake Verification
