@@ -1,22 +1,26 @@
 #!/usr/bin/env python3
 """
-P0.3/P0.4 — Skill Mesh Population & Capability Tagging
-=======================================================
-Reads all SKILL.md files under /root/AAA/skills/, classifies each into
-a capability tier (fed-reasoning-heavy, fed-multimodal-vision, etc.),
-and indexes every skill into the skill_mesh memory class via the
+P0.3/P0.4 — Skill Mesh Population & Capability Tagging (FEDERATION)
+====================================================================
+Reads all SKILL.md files across the five federation roots (order =
+dedupe precedence, AAA is canonical), classifies each into a capability
+tier (fed-reasoning-heavy, fed-multimodal-vision, etc.), and indexes
+every unique skill into the skill_mesh memory class via the
 FederationMemory adapter. The arifOS kernel owns the substrate:
 collection lifecycle and embedding are kernel-side (alignment
 doctrine §1 — agents never touch the vector store directly).
 
-Also injects capability_tier + ecology_state metadata frontmatter into
-each SKILL.md file for future reference.
+SAFETY: inject_metadata() WRITES into SKILL.md files. By default it
+applies ONLY to files under the AAA root; pass --tag-all to force
+injection everywhere (mutates other organs' repos — use deliberately).
 
 Forged: 2026-08-10 by 333-AGI under F13 directive.
 Migrated 2026-09-12 to federation_memory_adapter (F13 SOVEREIGN
 directive — /root/AAA/governance/FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md).
+Federation-wide crawl + dry-run mode: 2026-09-22.
 """
 
+import argparse
 import os
 import re
 import sys
@@ -32,7 +36,15 @@ if str(_FEDERATION_DIR) not in sys.path:
 from federation_memory_adapter import FederationMemory
 
 # ── Config ────────────────────────────────────────────────────────
-SKILLS_ROOT = Path("/root/AAA/skills")
+# (organ, skills_root) — order = dedupe precedence, AAA is canonical.
+SKILL_ROOTS: list[tuple[str, Path]] = [
+    ("AAA", Path("/root/AAA/skills")),
+    ("arifOS", Path("/root/arifOS/skills")),
+    ("HERMES", Path("/root/HERMES/skills")),
+    ("A-FORGE", Path("/root/A-FORGE/skills")),
+    ("kimi-code", Path("/root/.kimi-code/skills")),
+]
+AAA_SKILLS_ROOT = SKILL_ROOTS[0][1]  # metadata injection write-scope (default)
 COLLECTION_CLASS = "skill_mesh"  # → arifOS_skill_mesh (memory_classes.yaml)
 MEMORY_TIER = "canon"
 PROGRESS_EVERY = 32  # print cadence (adapter stores one record per call)
@@ -237,39 +249,89 @@ def inject_metadata(filepath: Path, capability_tier: str, ecology_state: str = "
 
 # ── Main ────────────────────────────────────────────────────────────
 def main():
+    ap = argparse.ArgumentParser(description="Skill mesh populate (federation-wide)")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="parse + classify + dedupe + report only; no fm.store(), no metadata injection")
+    ap.add_argument("--tag-all", action="store_true",
+                    help="force capability metadata injection into ALL organs' SKILL.md "
+                         "(default: AAA root only — never mutate other organs' repos)")
+    args = ap.parse_args()
+
     print("🔍 Skill Mesh Population — P0.3/P0.4 (FederationMemory)")
-    print(f"   Skills root: {SKILLS_ROOT}")
+    print(f"   Skill roots: {len(SKILL_ROOTS)} organs: {', '.join(o for o, _ in SKILL_ROOTS)}")
     print(f"   Memory class: {COLLECTION_CLASS} (via federation_memory_adapter)")
+    if args.dry_run:
+        print("   Mode: DRY-RUN (no stores, no metadata injection)")
+
+    # ── Discover all SKILL.md files across federation roots ─────────
+    seen: dict[str, tuple[str, Path]] = {}  # normalized skill_id → (organ, path)
+    files_seen = 0
+    for organ, root in SKILL_ROOTS:
+        if not root.is_dir():
+            print(f"   ⚠ {organ}: skills root not found: {root} (skipped)")
+            continue
+        for f in sorted(root.rglob("SKILL.md")):
+            if "_retired" in str(f):
+                continue
+            files_seen += 1
+            skill_id = f.parent.name.lower()  # normalized dedupe key
+            if skill_id in seen:
+                continue  # first organ in priority order is canonical
+            seen[skill_id] = (organ, f)
+
+    organ_kept: dict[str, int] = {}
+    for organ, _ in seen.values():
+        organ_kept[organ] = organ_kept.get(organ, 0) + 1
+    print(f"   Found {files_seen} SKILL.md files (excluding _retired)")
+    print(f"   Union after dedupe by normalized skill_id: {len(seen)} unique skills "
+          f"({files_seen - len(seen)} duplicates skipped)")
+    print(f"   Per-organ kept: {json.dumps(organ_kept, sort_keys=True)}")
+
+    # ── Parse + classify once per unique skill ──────────────────────
+    records = []  # (organ, filepath, skill, tier)
+    tiers = {tier: 0 for tier in CAPABILITY_PATTERNS}
+    for _key, (organ, filepath) in seen.items():
+        skill = read_skill_md(filepath)
+        tier = classify_capability(skill["name"], skill["description"])
+        tiers[tier] += 1
+        records.append((organ, filepath, skill, tier))
+
+    if args.dry_run:
+        print(f"\n🏃 DRY-RUN complete: union={len(seen)} unique skills "
+              f"(files seen: {files_seen}, duplicates skipped: {files_seen - len(seen)})")
+        print(f"   Capability distribution: {json.dumps(tiers, indent=2)}")
+        return {
+            "dry_run": True,
+            "files_seen": files_seen,
+            "union_skills": len(seen),
+            "duplicates_skipped": files_seen - len(seen),
+            "organ_kept": organ_kept,
+            "capability_distribution": tiers,
+        }
 
     fm = FederationMemory(
         actor_id="aaa-skill-mesh-populate",
         session_id=os.getenv("ARIFOS_SESSION_ID", "system"),
     )
 
-    # ── Discover all SKILL.md files ─────────────────────────────────
-    skill_files = sorted(SKILLS_ROOT.rglob("SKILL.md"))
-    # Exclude _retired
-    skill_files = [f for f in skill_files if "_retired" not in str(f)]
-    print(f"   Found {len(skill_files)} SKILL.md files (excluding _retired)")
-
     # ── Parse, classify, store via adapter ──────────────────────────
     # Collection lifecycle and embedding are kernel-owned (alignment
     # doctrine §1); each skill becomes one fm.store receipt.
     tagged_count = 0
     stored_count = 0
+    failed_stores: list[str] = []
 
-    for filepath in skill_files:
-        skill = read_skill_md(filepath)
+    for organ, filepath, skill, tier in records:
         name = skill["name"]
         desc = skill["description"]
         skill_id = skill["skill_id"]
 
-        # Classify
-        tier = classify_capability(name, desc)
-
-        # Inject metadata into SKILL.md (P0.4)
-        if inject_metadata(filepath, tier):
-            tagged_count += 1
+        # Inject metadata into SKILL.md (P0.4) — WRITE-SCOPED to the AAA
+        # root by default; other organs' repos are never mutated unless
+        # --tag-all is passed explicitly.
+        if args.tag_all or filepath.is_relative_to(AAA_SKILLS_ROOT):
+            if inject_metadata(filepath, tier):
+                tagged_count += 1
 
         payload = {
             "skill_id": skill_id,
@@ -281,9 +343,10 @@ def main():
             "success_count": 0,
             "avg_latency_ms": 0.0,
             "filepath": str(filepath),
+            "source_organ": organ,
         }
 
-        fm.store(
+        result = fm.store(
             content=payload,
             tier=MEMORY_TIER,
             collection_class=COLLECTION_CLASS,
@@ -291,30 +354,48 @@ def main():
             source_type="skill_index",
             source_uri=str(filepath),
         )
-        stored_count += 1
+        # MCP error-results arrive as 200 + isError:true — do NOT count
+        # them as stored (no phantom receipts; F2 — probe before claim).
+        if isinstance(result, dict) and result.get("isError"):
+            failed_stores.append(f"{organ}:{skill_id}")
+            if len(failed_stores) <= 3:
+                err_text = ""
+                try:
+                    err_text = result["content"][0].get("text", "")[:120]
+                except (KeyError, IndexError, TypeError):
+                    pass
+                print(f"   ⚠ store FAILED {organ}:{skill_id} — {err_text}")
+        else:
+            stored_count += 1
 
-        if stored_count % PROGRESS_EVERY == 0:
-            print(f"   Stored {stored_count}/{len(skill_files)} skills...")
+        if stored_count % PROGRESS_EVERY == 0 and stored_count > 0:
+            print(f"   Stored {stored_count}/{len(records)} skills...")
+
+    if failed_stores:
+        print(f"\n❌ STORE FAILURES: {len(failed_stores)}/{len(records)} records were NOT stored "
+              f"(kernel/adapter contract mismatch — see adapter stats above).")
+        print(f"   First failures: {failed_stores[:10]}")
 
     # ── Verify via adapter stats ────────────────────────────────────
     stats = fm.stats(collection_class=COLLECTION_CLASS)
-    print(f"\n✅ DONE: {stored_count} skills stored via class '{COLLECTION_CLASS}'")
+    stats_is_error = isinstance(stats, dict) and stats.get("isError")
+    print(f"\n{'❌' if (failed_stores or stats_is_error) else '✅'} DONE: "
+          f"{stored_count}/{len(records)} skills stored via class '{COLLECTION_CLASS}'")
     print(f"   Adapter stats: {json.dumps(stats, default=str)[:300]}")
+    if stats_is_error:
+        print("   ⚠ adapter stats call itself FAILED — treat stored counts as unverified "
+              "until substrate witness (Qdrant points_count) confirms.")
     print(f"   Metadata injected into {tagged_count} SKILL.md files")
 
-    # ── Capability distribution ──────────────────────────────────────
-    tiers = {}
-    for tier in CAPABILITY_PATTERNS:
-        tiers[tier] = sum(
-            1
-            for f in skill_files
-            if classify_capability(*(read_skill_md(f)["name"], read_skill_md(f)["description"])) == tier
-        )
+    # ── Capability distribution (tallied during classify pass) ──────
     print(f"   Capability distribution: {json.dumps(tiers, indent=2)}")
 
     return {
         "skills_stored": stored_count,
+        "stores_failed": len(failed_stores),
         "skills_tagged": tagged_count,
+        "files_seen": files_seen,
+        "union_skills": len(records),
         "capability_distribution": tiers,
     }
 
