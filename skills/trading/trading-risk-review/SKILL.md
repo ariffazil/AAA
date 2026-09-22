@@ -11,6 +11,8 @@ triggers:
   - account / P&L screenshot shared
   - "how do I win at this"
   - "what % gain is this"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Trading Risk Review

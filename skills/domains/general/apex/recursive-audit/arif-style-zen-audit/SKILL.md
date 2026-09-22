@@ -14,6 +14,8 @@ metadata:
     - references/identity-inflation-rules.md
     - references/hermes-repo-entropy-pattern.md
     - references/context-geometry-audit.md
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arif-style-zen-audit

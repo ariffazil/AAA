@@ -4,6 +4,8 @@ canonical: skills/APEX-act/SKILL.md
 name: APEX ACT — Constitutional Reflex (Hermes ASI)
 skill_id: apex-act-hermes
 description: "Hermes ASI adapter for the APEX ACT reflex arc."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # APEX ACT — Hermes ASI Adapter

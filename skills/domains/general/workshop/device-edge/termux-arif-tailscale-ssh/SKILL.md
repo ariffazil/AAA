@@ -12,6 +12,8 @@ scar_origin: Bangang-Tailscale-attempt 2026-08-18 + Hermes copy-paste trash
 supersedes:
   - arif-device-mental-model (keep as pointer)
   - termux-agentic-bootstrap Arif-delivery rules (copy-paste-first is VOID for Arif)
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # termux-arif-tailscale-ssh

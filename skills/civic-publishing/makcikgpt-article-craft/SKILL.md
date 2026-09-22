@@ -1,6 +1,8 @@
 ---
 name: makcikgpt-article-craft
 description: Use when drafting a MakcikGPT article for the site.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # MakcikGPT Article Craft

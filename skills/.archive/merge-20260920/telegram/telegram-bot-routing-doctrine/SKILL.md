@@ -1,6 +1,8 @@
 ---
 name: telegram-bot-routing-doctrine
 description: arifOS Federation Telegram bot routing — 3 bots, 9 groups, P1-P3 doctrine, AAA guest rule, token sovereignty, channel ownership, identity contract
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Telegram Bot Routing Doctrine — arifOS Federation

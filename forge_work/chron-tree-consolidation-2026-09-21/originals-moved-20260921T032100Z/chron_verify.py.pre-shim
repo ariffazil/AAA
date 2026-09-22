@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+"""DEPRECATED LOCATION — CHRON organ module. Canonical source: /root/chron/chron_verify.py
+
+WHY THIS FILE EXISTS IN THIS SHAPE
+----------------------------------
+/root/AAA/scripts was the DOCUMENTED CHRON path (a cron card named it as the
+organ's evidence path). It is NOT the executing path. Every systemd unit that runs
+CHRON verification executes from /root/chron:
+
+  chron-prediction-verifier.service  ExecStart=/usr/bin/python3 /root/chron/chron_cron_verify.py
+  chron-loop-closer.service          ExecStart=/usr/bin/python3 /root/chron/chron_loop_close.py
+
+The copy that lived here was a frozen snapshot of the same tree at AAA commit
+78a23416 (2026-09-18 14:18), 8194 B — sha256 37ea925c3056 — and was never updated.
+The canonical module is the single verification implementation named by the
+2026-09-18 repair ("There is now exactly ONE verification implementation:
+`chron.chron_verify`"); it was 19755 B (sha256 607a1d1badfb) at the start of this
+session and has since grown further under its owner's development. It carries
+_evidence_for, _search, _title_tokens, _is_already_verified,
+_append_verification_record, _emit_ariflow_verify — none of which exist in the
+snapshot here.
+
+MEASURED (this session): `import chron_verify` from this directory failed before
+any change was made —
+  ModuleNotFoundError: No module named 'chron.chron_prediction'; 'chron' is not a package
+(reproduced directly: /root/AAA/scripts/__main__.py verify -> exit 1, traceback at
+chron_verify.py line 21) because the sibling clock module /root/AAA/scripts/chron.py
+shadows the /root/chron package as `chron` on this directory's sys.path.
+Delegating below repairs that path; it does not regress a working one.
+
+Pre-change copy:   /root/AAA/scripts/.archived-20260921T032142Z-chron-canonical-dedup/chron_verify.py
+Also preserved at: /root/AAA/forge_work/chron-tree-consolidation-2026-09-21/
+
+DITEMPA BUKAN DIBERI
+"""
+
+from __future__ import annotations
+
+import sys
+
+if "/root" not in sys.path:
+    sys.path.insert(0, "/root")
+
+_CANONICAL = "chron.chron_verify"
+
+if __name__ == "__main__":
+    import runpy
+
+    runpy.run_module(_CANONICAL, run_name="__main__", alter_sys=True)
+else:
+    import importlib
+
+    _mod = importlib.import_module(_CANONICAL)
+    globals().update({k: v for k, v in vars(_mod).items() if not k.startswith("__")})

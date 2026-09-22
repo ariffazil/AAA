@@ -10,6 +10,8 @@ triggers:
   - "which pdf tool"
   - "pdf pipeline"
   - "document deliverable"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Document Pipeline — the router

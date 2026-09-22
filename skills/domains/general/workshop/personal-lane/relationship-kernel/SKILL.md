@@ -13,6 +13,8 @@ triggers:
   - "he keeps talking about X instead of the human"
 floors: [F1, F2, F5, F6, F9, F13]
 tags: [relationship, bonds, conduct, hermes, F5, dignity]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Relationship Kernel — conduct around human bonds

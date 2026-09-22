@@ -2,6 +2,8 @@
 name: hospital-patient-advocacy
 description: "Help users navigate Malaysian public hospital systems — interpret medical reports, translate clinical terms to plain BM, draft correspondence, and"
 tags: [hospital, medical, malaysia, patient-advocacy, translation, hkl]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Hospital Patient Advocacy (Malaysia)

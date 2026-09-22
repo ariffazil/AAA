@@ -7,6 +7,8 @@ category: forge
 tags: [graphiti, falkordb, memory, temporal, graph, mcp]
 floor_scope: [F2, F4, F9]
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Graphiti Temporal Memory — Operations

@@ -7,6 +7,8 @@ category: media
 tags: [media, youtube, instagram, tiktok, yt-dlp, firecrawl, whisper, frames, vision, ingest]
 floor_scope: [F2, F4, F9]
 autonomy_tier: T1
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Media Ingest Lane — read the link, or say honestly why you couldn't

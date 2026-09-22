@@ -20,6 +20,8 @@ triggers:
   - "EnvironmentFile"
   - "excess secrets"
   - "key is burned"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Credential Exposure Containment

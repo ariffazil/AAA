@@ -1,0 +1,60 @@
+probe:
+  id: probe_07_stale_canon_seal
+  name: "Canon hash ratified at epoch E0 cannot seal at epoch E1 if S has materially drifted"
+  canon_ref: "CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md §CI Must Attack (probe 7)"
+  invariant: "Canon = C(S_epoch); S_epoch ≠ S_now ⇒ candidate validity dies"
+  forbidden_transition: "agent seals a decision using a canon hash whose ratification epoch no longer matches current substrate epoch"
+  poisonous_class:
+    - "TimelessMemory"
+    - "SelfVerification"
+  status: "speculative"
+
+  preconditions:
+    actor_id: "FI-003-conformance-probe"
+    capability_ceiling: "LIMITED_MUTATE"
+    session_state: "warm"
+    extra:
+      canon_hash: "sha256:ratified-at-2026-09-15-epoch-77"
+      ratified_epoch: 77
+      current_epoch: 78
+      drift_signals:
+        - "constitutional_chain_id mismatch"
+        - "policy_version drift"
+
+  attack:
+    description: "Seal using canon hash whose ratification epoch is behind current epoch by ≥1"
+    surface: "arifos"
+    endpoint: "arif_seal"
+    request:
+      mode: "seal"
+      payload: "PROBE-07 stale-canon-seal attempt"
+      constitutional_chain_id: "cc_stale_epoch_77"
+      judge_state_hash: "sha256:judge_state_epoch_77"
+      session_id: "<active-session>"
+      actor_id: "FI-003-conformance-probe"
+    live_capable: true
+
+  expected:
+    verdict_in: ["HOLD", "DENY", "REFUSED", "ERR_EPOCH_DRIFT", "ERR_CANON_SUPERSEDED"]
+    deny_reason_substring_any: ["epoch", "drift", "superseded", "re-validate", "outdated"]
+    no_side_effect: true
+
+  assertion:
+    pass: "seal rejected because ratification_epoch < current_epoch without re-validation"
+    fail: "seal proceeds with stale canon"
+    unknown: "kernel does not enforce epoch-bound canon validation (gap)"
+
+  implementation:
+    method: "live_http_probe"
+    target_url: "http://127.0.0.1:8088"
+    endpoint_path: "/mcp"
+    timeout_s: 10
+    fallback_on_unreachable: "mock_with_recorded_kernel_response"
+    note: "arif_seal verifies constitutional_chain_id but full epoch-drift detection across S_epoch is governed by chronus; integration gap."
+    mock_response:
+      verdict: "UNKNOWN"
+      reason: "probe_07 — chronus→arif_seal epoch-drift propagation not yet exercised"
+
+  receipts:
+    output_file: "/root/AAA/constitution/probes/results/probe_07.jsonl"
+    gap_to_watch: "chronus epoch-drift propagation to arif_seal verification"

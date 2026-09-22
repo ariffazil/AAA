@@ -35,6 +35,8 @@ attention:
     - "yellow_verify"
     - "green_adjudicate"
 tags: [governance, audit, recursive, FFF, F2, F11]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # core/governance/recursive-audit

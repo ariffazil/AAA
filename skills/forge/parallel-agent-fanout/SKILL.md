@@ -8,6 +8,8 @@ risk_tier: medium
 floor_scope: [F1, F2, F7, F11]
 autonomy_tier: T1
 tags: [fanout, subagent, parallel, verification, contract, repo-hygiene, remediation]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Parallel Agent Fanout
@@ -193,6 +195,13 @@ not a side effect. Before doing it:
   reading its declared fields at runtime — the diagnostics lag the file, the interpreter does not.
 - **Rebuilding a primitive that already exists.** See §1. Duplication of working code is the
   most expensive outcome of a fanout, because it looks like progress.
+- **Probing for parallel work only at dispatch time, not before push.** Two agents may converge on
+  the same fix independently and both attempt to push. After your work is done but BEFORE you
+  push, probe `git log origin/main..<topic>` AND `gh pr list --search "<keywords>"`. If a peer PR
+  already lands the same fix, your squash-merge will silently prune your code as duplicate and
+  add only your docs/commit-messages. That is the cheapest possible outcome — but you must detect
+  it (rename your PR body to "additions only" framing, drop claims of authoring the code)
+  instead of writing a PR that misrepresents the result.
 
 ---
 

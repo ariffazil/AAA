@@ -15,6 +15,8 @@ triggers:
   - "placeholder token leaked into output"
   - "gate that cannot fail"
   - "audit a rendered artifact"
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Generated Artifact Integrity
@@ -134,6 +136,23 @@ let the builder script do the naming so it cannot recur by hand.
   stale. Content-address the artifact (`name-<hash8>.ext`) so old hashes stay resolvable, or carry
   `superseded_by` on the row. Determinism (re-render identical input → identical hash) proves
   reproducibility and says nothing about retention; hold the two properties separately.
+- **A render VARIANT that reuses the canonical output path silently overwrites the artifact a delivery
+  contract names.** When you add a projection of an existing artifact — a narrowed "signal" style, a
+  summary view, an alternate layout — deriving its filename from the same fields the default renderer
+  uses (`<mode>.png`, `<date>.pdf`) means the two renders destroy each other's output, and whatever
+  ships the canonical file may ship the variant instead, or ship a stale leftover. Content-addressing
+  does not save you here: both variants get a fresh hash, both look correct, and only the path reveals
+  the collision. **Put the variant in the filename** (`<mode>-SIGNAL.png`), *then* content-address on top
+  of that. This is distinct from the mutable-target defect above — that one is one artifact overwriting
+  its own history; this is two artifacts sharing one name, and it stays invisible until a consumer reads
+  the path and gets the wrong document. Correct file, correct hash, wrong artifact.
+- **A variant with no invocation path is not a delivered capability.** Wiring a `style` parameter
+  through the function signature while leaving the CLI without a matching flag leaves the entire code
+  path reachable only from a Python caller. Gate, schema, function and self-test all present and green
+  — and no shell command or scheduled job can ever produce one. When you add a mode, wire the
+  **outermost** surface a real caller touches (`argparse`, the cron entrypoint, the wrapper script),
+  then prove it by producing the artifact **from that surface**, not from a harness that imports the
+  module. A capability only a test can reach has not shipped.
 - **Design label boxes for unequal word lengths.** A 5-letter word beside a 3-letter word centres
   geometrically and still looks crooked. Give the labels equal-width boxes, not just centring.
 
@@ -166,6 +185,8 @@ in the same test.
 | Gate verified only by "it passed" | Add a must-trip fixture and a must-not-trip fixture |
 | Vision report treated as the finding | Measure, then look; re-measure before believing |
 | Fixed output path + recorded hash | Content-address, or record `superseded_by` |
+| Two render styles sharing one output filename | Suffix the variant into the filename, then content-address |
+| Variant function wired, no CLI flag for it | Wire the outermost caller surface; prove it from the shell |
 | Space in the delivered filename | Hyphenate; make the builder name the file |
 | Canvas height guessed | Measure last row of ink, size to content |
 

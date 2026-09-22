@@ -9,6 +9,7 @@ capability_tier: federation-substrate-knowledge
 floor_scope: [F1, F2, F7]
 tags: [physics, energy, momentum, conjugate, conservation, thermodynamics]
 triggers: ["force", "energy", "momentum", "thermodynamics", "conjugate", "field", "equilibrium", "physics check"]
+ecology_state: WARM
 ---
 
 # Know-Physics — Physical Substrate

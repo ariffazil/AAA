@@ -1,6 +1,8 @@
 ---
 name: institution-entropy-audit
 description: "Enterprise Systems Auditor — reality-first audit of an agentic intelligence institution (arifOS federation or any VPS + memory + governance stack)."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Institution Entropy Audit

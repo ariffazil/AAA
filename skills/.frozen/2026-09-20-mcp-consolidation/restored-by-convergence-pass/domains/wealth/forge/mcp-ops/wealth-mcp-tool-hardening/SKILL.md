@@ -21,6 +21,7 @@ triggers:
 related_skills:
   - XAUUSD-trading-stack
   - FORGE-repo-intelligence
+capability_tier: fed-agent-subagent
 ---
 
 # WEALTH MCP Tool Hardening and Extension

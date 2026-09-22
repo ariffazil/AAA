@@ -13,7 +13,8 @@ metadata:
     category: research
     related_skills: [arxiv, subagent-driven-development, plan]
     requires_toolsets: [terminal, files]
-
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Research Paper Writing Pipeline

@@ -1,6 +1,8 @@
 ---
 name: person-dossier-from-public-sources
 description: "Build an epistemic-tagged human profile dossier from public sources. Hard refusal on fabricated biographical detail."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Person Dossier from Public Sources

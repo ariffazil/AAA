@@ -25,6 +25,8 @@ authority:
   execution: true
   mutation: readonly
   approval_gate: f13
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # Authority Reality Grounder
 

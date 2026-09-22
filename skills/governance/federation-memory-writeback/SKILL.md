@@ -7,6 +7,8 @@ metadata:
   hermes:
     tags: [memory, carry-forward, eureka, qdrant, arifflow, session-close, federation]
     related_skills: [arifos-memory-architecture, memory-manage]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Federation Memory Writeback
@@ -47,6 +49,26 @@ python3 /root/scripts/carry_forward.py loop --close SUBSTRING --by hermes --note
 **`open_loop` is the load-bearing kind.** One entry per unresolved question, carrying *why it
 matters* — not a summary of what happened. Writing the entry is cheap; the whole value is that
 the next session picks up the unfinished item without re-deriving it.
+
+**Host ≠ lane. Lane is what you may write; host is where the write actually lands.** Three
+distinct things get collapsed under "memory writeback" and produce three distinct errors:
+
+- *lane* — your authority to write. A stateless-client or a stateless read-only worker has the
+  carry-forward append API but is not in `writers.allowlist`, and the write is refused. That is a
+  governance boundary, not a bug.
+- *host* — the running source of truth. `srv1946043` source tree may be 562 commits behind the
+  sealed HEAD that runs in `KVM8`; writing there writes to a repo nothing runs against. Verify by
+  comparing `git rev-parse HEAD` against the sealed HEAD cited in the running artefact's
+  deployment attestation. A repo behind is not the repo that runs.
+- *attended vs unattended* — the same `append` call lands with very different consequences
+  depending on whether a human reviews. An unattended batch that proposes deletions of
+  governance/scar entries without review is a defect class of its own; pause the lane before
+  sending it, do not send it and hope.
+
+Before any session writeback that crosses a federation boundary, name all three: *I have lane
+authority, on host X, with attended review by Y.* Anything missing means the write either fails,
+lands on the wrong repo, or mutates canonical record unattended — all three are worse than not
+writing.
 
 **Close with an anchor.** `anchor --name "session/close"` is the ritual. Put artifact paths, the
 open loops handed forward, and the skills you patched into its `--state` JSON. An anchor without
@@ -141,6 +163,14 @@ own process, not as telemetry to skip.
 - **Never report a surface as written when the write was refused or partial.** A blocked surface
   reported as done is worse than one reported as blocked. Name the surface, the operation, and
   the blocker.
+- **Pause an unattended writeback lane the moment it proposes mutation of canonical record.**
+  An unattended batch that proposes deletions of governance/scar entries, tag doubles, or
+  splice-merged content is a defect class of its own — the same defect class as `surface-guard`
+  re-firing an un-cleared P1 or a monitor pinning a reference that did not survive restart. The
+  shape is the same: automation that proposes a change to the thing it is supposed to watch. The
+  fix is the same: stop the lane, do not send the batch, do not approve partially. Reading the
+  truncated display text and approving "the safe bits" is exactly the wrong move — the unsafe bits
+  are why the batch exists.
 - **Do not replay a backlog of staged memory proposals.** Replaying N generations of the same
   edit is entropy, not curation — later batches reference text earlier batches already rewrote,
   so order-dependent replay corrupts while reporting partial success. Archive, distil ONE final

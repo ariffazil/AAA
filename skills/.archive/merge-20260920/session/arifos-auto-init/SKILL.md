@@ -9,6 +9,8 @@ triggers:
   - "start governed session"
   - "session bind"
   - "sign in to arifOS"
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arifOS Auto-Init

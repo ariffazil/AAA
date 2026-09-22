@@ -13,6 +13,8 @@ triggers:
   - "witness-mode on chat screenshots"
   - "baca screenshot ni"
   - "this is beyond OCR"
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Chat Screenshot Forensics

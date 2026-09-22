@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [email, brevo, sendinblue, api, transactional]
     category: email
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Brevo Email Sending

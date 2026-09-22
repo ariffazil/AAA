@@ -2,15 +2,26 @@
 id: identity-invariance
 name: identity-invariance
 version: 1.0.0
-description: "HEXAGON identity invariance test — prove the institution survives the substrate change. RSI Gate Item 1/5. "
+description: 'HEXAGON identity invariance test — prove the institution survives the
+  substrate change. RSI Gate Item 1/5. '
 owner: F13
 risk_tier: high
-floor_scope: [F1, F2, F9, F13]
+floor_scope:
+- F1
+- F2
+- F9
+- F13
 autonomy_tier: T1
-tags: [identity, invariance, rsi, hexagon, constitutional]
+tags:
+- identity
+- invariance
+- rsi
+- hexagon
+- constitutional
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
+
 # HEXAGON IDENTITY INVARIANCE TEST v1.0.0
 
 > **DITEMPA BUKAN DIBERI** — Identity is forged, not assumed.
@@ -26,6 +37,7 @@ ecology_state: WARM
 > if and only if all four identity invariants match within tolerance.
 
 ---
+
 
 ## 1. The Four Invariants
 
@@ -100,6 +112,7 @@ SCAR = {
 
 ---
 
+
 ## 2. The Full Test Protocol
 
 ### Phase 1 — Instantiation Check
@@ -124,6 +137,7 @@ SCAR = {
 13. A-ARCHIVE seals the result
 
 ---
+
 
 ## 3. Test Harness
 
@@ -194,6 +208,7 @@ def verify_identity(agent_a: Identity, agent_b: Identity) -> Verdict:
 
 ---
 
+
 ## 4. Failure Modes
 
 | Failure | Meaning | Action |
@@ -204,6 +219,7 @@ def verify_identity(agent_a: Identity, agent_b: Identity) -> Verdict:
 | I₄ fail | Scar chain broken or moral discontinuity | VAULT999 audit — is the scar ledger intact? |
 
 ---
+
 
 ## 5. The Permanent Line
 

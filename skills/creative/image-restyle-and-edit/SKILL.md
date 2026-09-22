@@ -9,6 +9,8 @@ metadata:
   hermes:
     category: creative
     related: [image-gen-fallback-chain, minimax-image-gen, photorealistic-human-image-gen]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Image Restyle & Edit (img2img)

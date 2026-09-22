@@ -1,9 +1,13 @@
 # Model Registry Index — arifOS Federation
 
 > **Forged:** 2026-06-27 by FORGE (000Ω) per F13 SOVEREIGN directive
-> **Updated:** 2026-07-20 — AGENT_MODEL_MAP.json unified registry
+> **Updated:** 2026-09-22 — MiMo V2.6 registered across all writable registry surfaces (FI-008 stabilization pass)
 > **Authority:** F13 SOVEREIGN (Arif Fazil)
-> **CANONICAL SOURCE:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json` (28 probed models, 13 agents, 13 providers, 6 shadows, 2 scars, 4 fallback chains, 9 routing rules) · **Symlink:** `/root/.config/federation-models.json`
+> **CANONICAL SOURCE (SOT):** `/root/.config/federation-models.json` (identity/bindings/routing — includes MiMo V2.6 pro/flash/ultraspeed: models + 4 capability signatures + model_routes + pricing + effort.alt_models + vision_models). Live router `fed_router.py` reads this file.
+> **FROZEN historical snapshot:** `AGENT_MODEL_MAP.json` — `_meta.status = SUPERSEDED_BY_FEDERATION_MODELS_JSON` (FROZEN 2026-08-15, writes rejected; NOT a symlink of the SOT despite older notes below — the two files diverged). It carries **zero V2.6 entries by design**; do not treat its model list as live inventory. Probe tools defaulting to it (`auto_probe_models.py`, `cascade_drill.py`) accept `--registry` overrides.
+> **Modality SOT:** `CAPABILITIES.json` — V2.6 pro/flash/ultraspeed catalogued 2026-09-22 (uncatalogued→catalogued; existing 5 drifts untouched per Phase-3 HOLD). Audit: `python3 capabilities_audit.py`
+> **Provider hazards:** `xiaomi_mimo_shadow.yaml` v0.2.0 — +SHADOW-MIMO-011/012/013 (OBSERVED 2026-09-22: token-plan 429 cascade, docker bind-mount stale-config trap, probe-vs-live divergence)
+> **Gateway config apply:** ALWAYS use `/root/A-FORGE/scripts/apply-litellm-config.sh` (single-file docker bind-mount means raw edits are invisible until restart)
 > **Supersedes:** `FEDERATION_MODEL.json` (absorbed), scattered prose tables in INIT.md/TOOLS.md/AGENTS.md
 > **Soul/shadow profiles:** `/root/AAA/registries/models/{provider}_{soul,shadow}.yaml` (supplementary deep-dives)
 > **Model capabilities:** `/root/arifOS/arifosmcp/config/model_registry.json` (constitutional capability registry — referenced, not duplicated)

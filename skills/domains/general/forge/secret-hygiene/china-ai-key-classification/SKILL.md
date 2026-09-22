@@ -9,6 +9,8 @@ metadata:
     category: AGI
     tags: [api-keys, coding-plan, token-plan, qwen, minimax, china-ai, classification]
     related_skills: [qwencloud-mesh, mmx-mesh, qwencloud-cli]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # China AI Platform — API Key Classification

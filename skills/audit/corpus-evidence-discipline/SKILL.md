@@ -11,6 +11,8 @@ triggers:
   - a third-party review of an analysis needs checking before it is relayed
 floors: [F1, F2, F4, F5, F9]
 tags: [audit, evidence, corpus, verification, epistemic]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Corpus Evidence Discipline
@@ -125,6 +127,39 @@ gap to fill.
 Move any personal export out of `/tmp` into the working directory with `chmod 600` (dir `700`) before
 parsing. Keep the analysis at the same classification as its source, and never widen a private detail
 into an output another room can read.
+
+## Institutional register — measuring absence, not only presence
+
+The same zero-count discipline applies to published corporate, government and institutional
+statements, where the finding is usually **what the document never says**. Three tests, run over a
+corpus cached to disk so every count stays re-derivable:
+
+- **Actor test.** Per sentence, ask whether it names who *did* the thing. Count separately the
+  sentences carrying a first-person actor (`I`, `we`, `my`, `our`) and those carrying only a passive or
+  agentless verb. A corpus in which most sentences have no actor is a register where praise has an
+  owner and difficulty does not — difficulty arrives as "volatility", a weather word nobody is
+  accountable for.
+- **Absence test — the load-bearing one.** Count the words naming the affected humans (employee,
+  staff, worker, colleague, retrench, layoff, redundancy, accident, fatality) against the words praising
+  the institution. Report the ratio. **This is a negative claim and Rule 1 governs it**: list every
+  spelling and stem tested, run each pattern against a known positive in the same corpus to prove it can
+  match at all, and publish the pattern beside the zero. A zero over five documents is a statement about
+  those five documents, not about the institution — say which one you measured.
+- **Displacement test.** Where a metric moved the wrong way, read the clause attached to it. An adverse
+  figure carrying a benign cause ("the increase is due to a broader reporting scope") while a favourable
+  figure carries an actor ("we achieved a 72 % reduction") is the finding — and the sentence is
+  quotable, which an adjective about tone is not.
+
+**Separate mechanism from motive.** The measurable output is the register: which truths get the opening
+paragraphs and which get the appendix. Why the writer chose it is not in the corpus. The structural
+account — a mandated dual audience, a register that must pass review before release — is a HYPOTHESIS,
+and naming a villain is the one move that ends the analysis instead of advancing it. Report the pattern,
+offer the mechanism as a labelled hypothesis, and leave the interior UNKNOWN. An analysis that reaches
+"they are simply bad people" has stopped measuring.
+
+**Confirm the audience before hedging the document.** An instinct to write the deliverable defensively
+for an outside reader is wrong when the actual reader shares the institution — it costs the writing and
+protects nobody. Establish who will read it first, then write for that reader.
 
 ## Output discipline
 

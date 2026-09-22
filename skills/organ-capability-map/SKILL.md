@@ -1,6 +1,8 @@
 ---
 name: organ-capability-map
 description: "Master capability→organ routing map — every tool/lane (Google, Malaysia, MCP shopping list, wellness, media) assigned to WEALTH/GEOX/WELL/HERMES/AAA/A-FORGE/arifFlow with live/staged status."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Organ Capability Map (canonical pointer)

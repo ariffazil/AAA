@@ -2,6 +2,8 @@
 name: market-prediction-falsification
 description: Use when asked to predict a market. Falsify, then size.
 category: wealth
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Market Prediction Falsification

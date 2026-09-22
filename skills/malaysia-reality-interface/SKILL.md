@@ -1,6 +1,8 @@
 ---
 name: malaysia-reality-interface
 description: "Governed Malaysia data lanes for all organs — verified live endpoints (data.gov.my weather/catalogue, BNM), ring model (0-3), organ assignments (WEALTH/GEOX/WELL/HERMES/AAA), capability registry."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Malaysia Reality Interface (canonical pointer)

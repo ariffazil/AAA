@@ -1,6 +1,8 @@
 ---
 name: token-plan-tts
 description: "Generate speech audio via QwenCloud Token Plan TTS. Activates when user asks to speak text, generate audio, or convert text to voice."
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # Token Plan Text-to-Speech

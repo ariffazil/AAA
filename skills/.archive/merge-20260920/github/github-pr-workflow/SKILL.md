@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [GitHub, Pull-Requests, CI/CD, Git, Automation, Merge]
     related_skills: [github-auth, github-code-review]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GitHub Pull Request Workflow

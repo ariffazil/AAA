@@ -210,6 +210,17 @@ If a sub-task fails after 3 retries:
 - ❌ `[opencode]` Routing through skills that don't apply (e.g. `opencode-forge` for read-only)
 - ❌ Adding bans, deny lists, or "safety theatre" — full access is sovereign default
   (per F13 directive 2026-08-26)
+- ❌ Ordering a multi-tier mission by **feature value** when the same mission also contains
+  **stop-the-bleed** work (auto-merge disabled, missing dependency, broken CI gate, hard-refusal
+  defect in the most-exercised path). The natural pull is to do the exciting thing first. The
+  right order is the opposite: stop-the-bleed first, then add features. Reason: each subsequent
+  step's blast radius is gated by the cleanliness of the current state. An org with a silently
+  broken required check (e.g. `allow_auto_merge: false`) makes every future PR cost extra
+  investigation time; a missing runtime dependency makes every test run cost extra noise. Fixing
+  the entropy-producing state first means later steps land on a clean base; doing them first
+  means later steps inherit the friction. The one-line test: "if this step is broken, does it
+  cause every *future* step in this mission to cost more?" If yes, this step comes first,
+  regardless of its nominal urgency or how interesting it is.
 
 ## Preserved harness frontmatter (verbatim from the three sources)
 

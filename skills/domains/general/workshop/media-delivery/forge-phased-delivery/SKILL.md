@@ -8,6 +8,8 @@ version: 1.0.0
 tags: [delivery, testing, simulation, honest-reporting, phased, F2, F4, F7]
 floor_scope: [F1, F2, F4, F7, F11]
 autonomy_tier: T1
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # FORGE-phased-delivery

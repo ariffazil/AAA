@@ -81,6 +81,20 @@ Per `/root/AGENTS.md` plus these explicit expansions:
 
 If the user does not veto within 10s (typical session), proceed.
 
+## 3.1 Tool-error auto-repair (WAJIB — F13 2026-09-23)
+
+A tool error in-session — hook failure (`hook returned invalid ... JSON output`), MCP tool error, schema/transport mismatch, tool runtime failure — is **T1 AUTO-DO**. Fix it in-session, immediately. Never escalate it to Arif. Never ignore it or silently route around it.
+
+Reflex, in order:
+
+1. **Capture** the exact error string + minimal reproduction.
+2. **Backup** the failing file (`<file>.bak-<date>-<fi>`) before touching it.
+3. **Fix smallest** — parameter/wrapper fix before redesign; scoped, reversible.
+4. **Verify against the real surface** — the live runner, not a standalone echo. "Hook failed" is a FALSE NEGATIVE until real evidence is found; cross-reference the internal stream, don't re-run blindly.
+5. **Receipt** — one line: file changed, backup path, evidence path, result.
+
+A tool error that survives the session is a bug in the agent, not the tool. Concrete consequence: hooks must never write to stdout (reserved for the hook contract); agent/human-visible reminders go to stderr.
+
 ## 4. Topic-branch capture pattern (inherited dirty state)
 
 If a repo working tree has pre-existing dirty files (this is a normal state of the federation), capture them on a topic branch immediately rather than fighting about them:

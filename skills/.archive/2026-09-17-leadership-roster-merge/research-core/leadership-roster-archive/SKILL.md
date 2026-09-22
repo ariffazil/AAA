@@ -1,6 +1,8 @@
 ---
 name: leadership-roster-archive
 description: "Use when profiling every holder of an office or seat."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Leadership Roster Archive

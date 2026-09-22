@@ -9,6 +9,8 @@ metadata:
     tags: [publishing, legal-risk, sourceability, claims, audit, delegation, verification]
     category: governance
     floors_protected: [F1, F2, F4, F7]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Sensitive Publication Governance

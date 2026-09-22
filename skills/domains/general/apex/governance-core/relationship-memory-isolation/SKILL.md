@@ -31,6 +31,8 @@ triggers:
   - "ego repair"
   - "somatic reset"
   - "deep memory audit"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Relationship Memory Isolation Doctrine (F13, 2026-08-31)

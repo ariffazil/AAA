@@ -7,6 +7,8 @@ metadata:
   hermes:
     tags: [writing, readme, profile, human-voice, bahasa-melayu, personal-docs, ariffazil]
     category: creative
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Human-Voice Writing for Arif's Personal Docs

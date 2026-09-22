@@ -1,6 +1,8 @@
 ---
 name: telegram-group-bot-rollout
 description: Shipping a Telegram bot to a group? Verify round-trip first.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Telegram Group Bot Rollout — Round-Trip Integrity Doctrine

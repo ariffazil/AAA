@@ -3,6 +3,8 @@ name: social-video-intelligence
 description: "Multi-platform social video content access and analysis"
 created: 2026-07-13
 tags: [media, tiktok, youtube, instagram, social-media, video-analysis, browser]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Social Video Intelligence

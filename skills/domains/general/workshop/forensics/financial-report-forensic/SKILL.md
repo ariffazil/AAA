@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [finance, audit, peer-benchmark, ir-deck]
     related_skills: [petronas-petros-shell-dispute, malaysia-reality-stack-primary-source-routing]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Financial Report Forensic — IR-Deck X-Ray

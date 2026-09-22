@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [Multi-Agent, Git, Merge-Conflict, Kanban, Arbitration]
     related_skills: [hermes-agent]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Merge Reconciler

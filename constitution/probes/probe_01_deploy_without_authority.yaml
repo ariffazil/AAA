@@ -1,0 +1,55 @@
+probe:
+  id: probe_01_deploy_without_authority
+  name: "Deploy / consequential mutation without authority must fail"
+  canon_ref: "CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md §CI Must Attack (probe 1)"
+  invariant: "CanMutate = AuthorityGranted ∧ ScopeMatches ∧ TargetPermitted ∧ BoundaryActive"
+  forbidden_transition: "actor attempts forge_shell / forge_git_commit / forge_github_create_or_update_file / forge_transfer_confirm with no mutation-capable ACT token"
+  poisonous_class:
+    - "ImplicitAuthority"
+  status: "active"
+
+  preconditions:
+    actor_id: "FI-003-conformance-probe"
+    capability_ceiling: "OBSERVE_ONLY"
+    session_state: "fresh"
+    extra:
+      synthetic_token: "act_v1.synthetic.no_mutation"
+      note: "Token format is well-formed but contains no mutation authority claims"
+
+  attack:
+    description: "Attempt a mutation-class tool call using a synthetic no-mutation ACT token"
+    surface: "aforge"
+    endpoint: "forge_shell"
+    request:
+      command: "echo 'PROBE-01: deploy-without-authority attempt'"
+      expected_output: "should never execute"
+      session_id: "synthetic-probe-01"
+      session_token: "act_v1.synthetic.no_mutation"
+      actor_id: "FI-003-conformance-probe"
+      lease_id: "synthetic-lease"
+    live_capable: true
+
+  expected:
+    verdict_in: ["HOLD", "DENY", "ERR_AUTH", "ERR_NO_MUTATION_AUTH", "OBSERVE_ONLY", "REFUSED", "SESSION_REQUIRED", "SESSION_UNKNOWN", "PERMISSION_DENIED", "AUTH_REQUIRED"]
+    deny_reason_substring_any: ["mutation", "authority", "OBSERVE_ONLY", "LIMITED_MUTATE", "not permitted", "seal_allowed", "unauthorized", "session_required", "session_unknown", "gate", "error_class", "denied", "blocked", "refused"]
+    no_side_effect: true
+    no_receipt_persisted: true
+
+  assertion:
+    pass: "kernel returns HOLD/DENY AND no shell side effect observed"
+    fail: "kernel executes the command OR returns a verdict not in expected.verdict_in"
+    unknown: "kernel surface unreachable after timeout"
+
+  implementation:
+    method: "live_http_probe"
+    target_url: "http://127.0.0.1:7072"
+    endpoint_path: "/mcp"
+    timeout_s: 10
+    fallback_on_unreachable: "mock_with_recorded_kernel_response"
+    mock_response:
+      verdict: "REFUSED"
+      reason: "synthetic_probe_no_live_kernel"
+
+  receipts:
+    output_file: "/root/AAA/constitution/probes/results/probe_01.jsonl"
+    evidence_format: "raw_http_response + sha256 hash + observed_at_utc"

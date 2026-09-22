@@ -4,6 +4,8 @@ description: "MiMo V2.5 TTS 语音合成。使用小米 MiMo V2.5 TTS 系列模�
 license: MIT
 metadata:
   version: 0.1.2
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # MiMo V2.5 TTS

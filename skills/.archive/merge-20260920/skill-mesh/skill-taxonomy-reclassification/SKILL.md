@@ -16,6 +16,8 @@ triggers:
   - "skill compression plan"
   - "merge these skills"
 floors: [F2, F4, F11]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Skill Taxonomy Reclassification

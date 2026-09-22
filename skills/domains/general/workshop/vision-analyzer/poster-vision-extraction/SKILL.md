@@ -1,6 +1,8 @@
 ---
 name: poster-vision-extraction
 description: Use for poster/image text. Verify with vision, never guess.
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Poster / Image Text Extraction Protocol

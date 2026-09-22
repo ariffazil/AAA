@@ -3,6 +3,8 @@ name: entity-position-dossier
 description: "Use when asked what an entity holds in a province."
 version: 1.0.0
 tags: [intelligence, upstream, portfolio, asset-map, epistemic-tags, public-sources]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Entity Position Dossier

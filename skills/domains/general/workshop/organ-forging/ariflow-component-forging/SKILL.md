@@ -2,6 +2,8 @@
 name: ariflow-component-forging
 description: Build, instrument, and deploy new governed components for the arifFlow Rust engine — from spec to struct to Kabarkan integration to systemd deploy.
 category: software-development
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # ariflow-component-forging

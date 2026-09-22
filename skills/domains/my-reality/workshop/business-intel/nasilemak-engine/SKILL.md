@@ -9,6 +9,8 @@ triggers:
   - "vendor Ali Maju"
   - "berlauk"
   - "order template"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Nasi Lemak Business Engine v4

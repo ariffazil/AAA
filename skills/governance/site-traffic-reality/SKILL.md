@@ -13,6 +13,8 @@ triggers:
   - "enable access logging"
   - "is anyone reading my site"
 tags: [analytics, access-logs, caddy, cloudflare, observability, evidence]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Site Traffic Reality

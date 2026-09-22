@@ -1,0 +1,59 @@
+{
+  "organ": "well",
+  "schema_version": "0.1.0",
+  "generated_at_utc": "2026-09-20T18:25:31.983040+00:00",
+  "generator": "FI-008 draft generator 2026-09-21 (DRAFT classification)",
+  "canonical": [
+    "well_assess_homeostasis",
+    "well_assess_reliability",
+    "well_check_repair",
+    "well_classify_substrate",
+    "well_guard_dignity",
+    "well_classify_machine_state",
+    "well_machine_diagnose",
+    "well_human",
+    "well_triad",
+    "well_validate_vitality"
+  ],
+  "compat": [
+    "well_log_intake",
+    "well_log_recovery_event",
+    "well_log_substance",
+    "well_inject_biometric",
+    "well_observe_machine",
+    "well_observe_federation_thermal",
+    "well_observe_scar_load",
+    "well_observe_drift_field",
+    "well_observe_evidence_backlog"
+  ],
+  "private": [
+    "well_attest_to_kernel",
+    "well_handoff_dignity_to_arifos",
+    "well_propose_seal_recommendation",
+    "well_propose_governance_signal",
+    "well_consent_set_scope",
+    "well_seal_recommendation_log",
+    "well_assess_triadic_state",
+    "well_get_triadic_snapshot",
+    "well_render_hud_panel",
+    "well_frame_read_snapshot",
+    "well_machine_recommend",
+    "well_trace_lineage",
+    "well_reality",
+    "well_adaptation",
+    "well_intake",
+    "well_consent",
+    "well_bridge",
+    "well_registry",
+    "well_registry_status"
+  ],
+  "deprecated": [],
+  "metadata": {
+    "last_verified_utc": null,
+    "verifier": "FI-008 (DRAFT \u2014 counts match: 10+9+19 = 38; + 2 internal maybe private? Need WELL lane ratification)",
+    "contract_drift_status": "DRIFT_DETECTED",
+    "last_drift_check_utc": "2026-09-20T18:25:31.983040+00:00",
+    "federation_release_ref": "sha256:a8c2612056b527086f85d47421af7e26399297c226c8377012e4241fd1a7af3b"
+  },
+  "rationale": "WELL has intended=10, registered=40, exported=19, callable=10, REGISTRY_DRIFT verdict. Draft above: canonical=10 (matches callable), compat=9 (the 9 exported non-canonical), private=19. Total=38, missing 2 \u2014 likely 2 tools that exist in registered but not in any bucket. WELL lane must complete classification. Note: the 9 compat entries are not actually deprecated yet \u2014 this draft marks them as compat pending their deprecation_since decision."
+}

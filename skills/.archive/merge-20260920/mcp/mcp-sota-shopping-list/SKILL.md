@@ -1,6 +1,8 @@
 ---
 name: mcp-sota-shopping-list
 description: Reference for MCP server procurement decisions. Use when evaluating new MCP servers, comparing options, or planning capability expansion.
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # MCP SOTA Shopping List — 2026-09
