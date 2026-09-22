@@ -45,13 +45,11 @@ def generate_title(user_message: str) -> str:
     }
     
     try:
-        req = Request(FLAME_URL, data=json.dumps(payload).encode(), headers={
-            "Content-Type": "application/json"
-        })
-        resp = urlopen(req, timeout=15)
-        data = json.loads(resp.read())
-        title = data.get("content", "").strip().strip('"').strip("'")
-        return title if title else None
+        # FLAME :18901 retired 2026-09-04 (dead endpoint). Dead-lane request
+        # subtracted 2026-09-22 (F13 subtraction): no probe, no 15s timeout,
+        # no "FLAME error" stderr spam. Contract preserved — title generation
+        # returns None; caller fallback unchanged.
+        return None
     except Exception as e:
         print(f"FLAME error: {e}", file=sys.stderr)
         return None
