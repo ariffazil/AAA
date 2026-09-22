@@ -7,6 +7,8 @@ risk_tier: low
 floor_scope: [F2, F9, F11]
 autonomy_tier: T0
 tags: [epistemic, receipts, verification, self-contradiction, source-hygiene, arifos]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Audit Claim Discipline

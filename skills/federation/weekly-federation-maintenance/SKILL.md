@@ -5,6 +5,8 @@ risk_tier: low
 floor_scope: [F1, F2, F11]
 autonomy_tier: T1
 tags: [federation, maintenance, automation, cron, weekly]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Weekly Federation Maintenance

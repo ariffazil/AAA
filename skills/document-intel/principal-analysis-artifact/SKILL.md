@@ -15,6 +15,8 @@ triggers:
   - "write it up for me"
 floors: [F2, F4, F6, F7, F13]
 tags: [artifact, analysis, report, pdf, human-language, evidence, brief]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Principal Analysis Artifact
@@ -82,6 +84,13 @@ credible evidence that points the other way, the peers who look worse, the stren
   the same metric and both be correct. Say which source you used and on what basis.
 - **Unattributed precision is a liability.** A claim with exact counts and no named source is fabricated-metadata
   shape. Drop it or label it as your own estimate.
+- **Do not attribute a quote to a source you have not verified.** A widely-shared quote ("Laozi", "Marcus Aurelius",
+  "Einstein") that lives in quote aggregators is not necessarily in the attributed work. A common failure shape:
+  the quote feels right, fits the moment, gets dropped into a final artifact without checking the
+  primary text. Before any quote reaches a deliverable, verify in the primary text — exact wording AND
+  exact citation (book/verse/chapter). If the primary does not contain the quote, replace with one that
+  does, or attribute the line to its actual source (often a modern adaptation or aggregator). A wrong
+  attribution on a printed page is a quiet correction that erodes the rest of the document's standing.
 - **Do not compute a figure the documents do not state** and present it as theirs. Show your denominator.
 - **Mark your own canon `CONTESTED`** when a primary source disagrees with it, and say so in the artifact. Never
   quietly serve a stored number that the current document contradicts.
@@ -98,6 +107,49 @@ The artifact may be forwarded, printed, left on a desk, or read over a shoulder.
 - After delivering, name where a line about his own position could go and offer one candidate sentence. The
   timing of that disclosure is his.
 - This applies to third-party letters too, and there the full rule lives in `wisdom-letter-for-loved-ones`.
+
+## When the artifact will be forwarded
+
+He often commissions an artifact he intends to pass on — "untuk kawan-kawan", "boleh share". That changes two
+things and nothing else; the register stays human throughout.
+
+- **The evidence ladder travels with the document, translated into the reader's words.** Do not drop the labels —
+  a reader who cannot tell measured from forecast will read the whole thing as fact. Do not ship the machine set
+  either (`OBS/DER/INT/SPEC` fails the full-human-language rule the moment a non-agent reads it). Put a
+  plain-language legend near the top and tag in the reader's own language. A working BM set: **UKUR** (measured —
+  a named source, checkable) · **UNJUR** (an institution's forecast, explicitly not today's fact) · **ANDAI**
+  (the author's reading or assumption). Tell him to forward the legend with it: the dangerous thing in a crisis is
+  not a false number, it is a true number read as a forecast.
+- **The forwardable variant of the counter-case is a "what I do not know" table.** Every open question gets a
+  row and an honest status — "tak tahu", "belum", "that is a political decision". A forwardable brief without
+  one is propaganda even when every number in it is correct; this is the section that makes the rest credible.
+- **Give him one liftable sentence.** He asks for it ("bagi satu line aku boleh petik"). Close with a single line
+  that survives being screenshotted out of context — no antecedent, no qualifier — and offer it unrequested when
+  he has not asked.
+
+## Shape of a multi-crisis brief — the chain, not the list
+
+When the artifact covers many simultaneous crises — a "what does the world look like right now" ask, or a survival
+read — a well-sourced list of eleven items implies eleven separate problems. Reality is usually one machine with
+eleven faces, and the chain is the deliverable.
+
+- **Find the driver, then let each step name the next one's input.** Draw it visibly: a numbered chain block
+  (01 → 10) beats ten sections in sequence. A shape that worked — a shipping chokepoint closes; energy prices
+  rise; fertiliser feedstock rises; yields fall; a weather cycle arrives on top; food prices rise; inflation
+  rises; the central bank hikes; debt reprices; political decisions harden. Every link was already a sourced
+  fact; the value added was the arrows.
+- **Name the convergence window.** Where independent clocks land in the same quarter — a weather peak, a
+  market-rebalancing forecast, an institutional deadline — say so and give the quarter. It is the highest-value
+  sentence in the document, and it exists only in the chain view.
+- **Close on position, not prediction.** The usable output is where he stands inside the chain and which position
+  is his to choose.
+
+## Stamp the calendar from the clock, never from the date string
+
+Run `date` in the session that authors the artifact and copy the weekday and date **verbatim** into the cover. Do
+not derive the weekday from the date, and do not carry it from the draft. The stamp is written once and then
+trusted by every later reader, so an inferred weekday ships on a document nobody re-reads — and an artifact that
+misstates its own date discredits the numbers printed beside it.
 
 ## Length discipline
 
@@ -121,6 +173,10 @@ Follow `forge-pdf-delivery` for the pipeline (author → render → `file` check
   one. Do not fix it by trimming body text, and do not rationalise a footer alone on a page as design.
 - **Re-run the ink sweep after every layout edit.** Spacing changes shift ink between pages and can open a new
   near-empty page somewhere else.
+- **Do not prepend the secrets environment loader to a command that does not consume secrets.** Starting an
+  unrelated command with `set -a && source /root/.secrets/… && set +a` is matched by the constitutional pattern
+  gate, which refuses the whole call before anything executes. Load the environment only inside the command that
+  actually needs it; an HTML render or a `pdfinfo` check needs none.
 
 ## Pitfalls
 

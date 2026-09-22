@@ -8,6 +8,8 @@ metadata:
     category: creative
     requires: [mmx-cli]
     related: [mmx-h3-video, video-prompt-engineering, photorealistic-human-image-gen]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # AI Video Generation — Still-First, Verified, Honestly Labelled

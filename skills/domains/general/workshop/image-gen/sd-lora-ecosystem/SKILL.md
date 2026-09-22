@@ -7,6 +7,8 @@ metadata:
   hermes:
     category: creative
     related: [comfyui, photorealistic-human-image-gen]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # SD LoRA Ecosystem Guide

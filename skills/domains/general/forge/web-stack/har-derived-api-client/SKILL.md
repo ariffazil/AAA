@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [Browser, HAR, API, Reverse-Engineering, Playwright]
     category: web-development
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # HAR-Derived API Client

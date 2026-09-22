@@ -3,6 +3,8 @@ name: "openai-docs"
 description: "Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge—including 'you,' 'your,' 'this app,' or 'this coding agent'..."
 metadata:
   short-description: "Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, and self-knowledge; OpenAI APIs and ChatGPT Work. 'You'/'this app' means Codex only."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # OpenAI Docs

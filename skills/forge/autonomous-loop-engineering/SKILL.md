@@ -13,6 +13,8 @@ trigger_when:
   - staged_work_accumulating_unapplied
   - debugging_a_loop_that_re_runs_forever
 tags: [meta, loop, cron, unattended, rsi, verification, engineering]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Autonomous Loop Engineering
@@ -81,6 +83,52 @@ dry pass, never by reading the flag.
 Corollary — extraction jobs that append every cycle duplicate their own output.
 Fingerprint the artefact by its defining fields (not its timestamp) and skip ones
 already held, or N cycles produce N copies and inflate every downstream count.
+
+### A dedup guard must search the whole keyspace, not a window of it
+
+Fingerprinting correctly is not sufficient — the guard also has to look somewhere the
+fingerprint can still be found. A guard that scans only the last N lines of an
+append-only store is **correct on day one and silently wrong forever after**: as the
+store grows past N, a growing share of what it has already written falls outside the
+search window, and every run re-writes records that are already there.
+
+The defect is invisible because the guard still finds *recent* markers, so nothing
+errors and the quiet runs read healthy. It surfaces only when you count:
+
+```bash
+tot=$(grep -o '<MARKER_PATTERN>' "$LEDGER" | wc -l)
+uniq=$(grep -o '<MARKER_PATTERN>' "$LEDGER" | sort -u | wc -l)
+echo "occurrences=$tot unique=$uniq duplicates=$((tot-uniq))"
+```
+
+Measured: a guard reading `f.readlines()[-1000:]` over a 93,237-line ledger left
+**82.5%** of its 1,015 known markers outside the window — 73 duplicated IDs, 103 excess
+records. The tell is the *shape*: contiguous runs of one record per organ mean an entire
+pass re-sealed retroactively, not one item misfiring.
+
+Two consequences that change the fix:
+
+- **Size the guard against the key store, never against "recent".** Full scan, or an index
+  keyed by the fingerprint. If the store is unbounded, a window is not a performance choice
+  — it is a bug waiting for the file to grow.
+- **In an `chattr +a` ledger the excess records are permanent.** They cannot be deleted,
+  only superseded by a later append. Fix the guard *first*, then report the residue as an
+  open item; never report the duplication defect as closed while the residue stands.
+
+**Prove the fix against the OLD guard, not against a clean run.** A patched guard that
+skips everything looks identical whether it is correct or inert. Build a truth table over
+markers known to sit outside the old window:
+
+```python
+for marker in known_markers:
+    old = any(marker in l for l in windowed_lines)   # the old guard's search space
+    new = any(marker in l for l in all_lines)        # the fixed one
+    print(marker, old, new)   # old=False, new=True  ->  the old guard re-sealed here
+```
+
+`old=False, new=True` is the proof — each such marker is a duplicate the fixed guard will
+no longer write. Then run the job once and assert the store's line count is **unchanged**:
+a broken patch appends N fresh duplicates and the count moves.
 
 ---
 
@@ -352,20 +400,26 @@ afterwards.
 ❌ Reporting PENDING as success              → unfalsifiable and self-congratulatory.
 ❌ Gating a human-burden metric              → its optimum is to stop reporting.
 ❌ Classifier logic inline in a scan loop    → cannot be shown to fail; untestable.
-❌ Phase window width == cadence period     → sub-second jitter skips a phase; loop deadlocks.
-❌ Selector keyed on clock, gate on state   → two mechanisms disagree; the clock wins.
-❌ A cycle that seals empty and ignites one → the defect propagates to every future cycle.
+❌ Phase window width == cadence period      → sub-second jitter skips a phase; loop deadlocks.
+❌ Selector keyed on clock, gate on state    → two mechanisms disagree; the clock wins.
+❌ A cycle that seals empty and ignites one  → the defect propagates to every future cycle.
 ❌ Phase derived from elapsed time alone     → a missed run skips the work instead of retrying it.
 ❌ Retiring a duplicate without checking     → two writers each retire the other; net zero.
-❌ Trusting your own write as final state   → a concurrent writer moved it after you looked.
+❌ Trusting your own write as final state    → a concurrent writer moved it after you looked.
 ❌ Hardcoded chat id instead of origin       → routing claim that cannot follow the session.
 ❌ Citing a skill the job depends on unproven → silent improvise at the first unattended fire.
 ❌ A regression suite never wired to a sweep → it will not run on the edit that matters.
 ❌ A branch that absorbs every input         → decoration wearing a verdict.
-❌ Deltas only, no state snapshot           → quiet cycle and dead cycle are identical.
+❌ Deltas only, no state snapshot            → quiet cycle and dead cycle are identical.
 ❌ `except: pass` around a loop step         → DEGRADED silently reported as QUIET.
 ❌ A dry_run flag some step ignores          → rehearsal mutates what it meant to protect.
 ❌ Appending the same extraction each cycle  → N runs, N copies, inflated counts.
+❌ Dedup guard scanning a window of the store → correct until the store outgrows it.
+❌ Proving a guard fix by a clean run         → correct and inert look identical.
+❌ Unbounded store behind a bounded guard     → re-writes its own history as it grows.
+❌ Restraint-theatre language wrapping real mutation → "autonomous-but-restrained" plans that pass substitution-test reveal the decoration; the vocabulary of compliance cannot authorize the action it should prevent. Replace every governance keyword with "autonomous" — if the plan still says what it does, the keywords were cosmetic.
+❌ Goal-directive parsed as authority-grant  → "forge all to seal" is a goal; the agent must decompose into intent + authority-granted + execution-permitted. Goal ≠ Authority ≠ Permission to act on every path.
+❌ Chat-based sovereign override to bypass substrate refusal → the substrate is correctly refusing; honest state is "conceptually proposed, machine seal NOT ESTABLISHED", never fake a seal.
 ```
 
 ---

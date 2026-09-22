@@ -8,6 +8,8 @@ risk_tier: medium
 floor_scope: [F1, F2, F4, F6, F7, F8, F11, F13]
 autonomy_tier: T2
 trigger_when: constitutional_kernel_build, gate_chain_design, evaluator_independence, improvement_case_schema, rsi_kernel
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Constitutional Kernel Architecture

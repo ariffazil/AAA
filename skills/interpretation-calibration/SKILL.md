@@ -17,6 +17,8 @@ triggers:
   - "over-reading"
   - "am I amplifying"
   - "calibrate this reading"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Interpretation Calibration

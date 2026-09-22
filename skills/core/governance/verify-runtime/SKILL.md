@@ -31,6 +31,8 @@ attention:
     - "verification_fail"
     - "verification_hold"
 tags: [governance, verification, runtime, F7, F11]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # core/governance/verify-runtime

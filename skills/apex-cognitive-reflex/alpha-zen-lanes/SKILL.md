@@ -2,13 +2,15 @@
 name: alpha-zen-lanes
 category: apex-cognitive-reflex
 description: "Use when building ALPHA-ZEN daily pulses for the group."
-version: 1.0.0
+version: 1.1.0
 triggers:
   - "alpha-zen"
   - "alpha signal"
   - "body check pulse"
   - "zen signal"
   - "daily pulse group"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # ALPHA-ZEN — WORLD → BODY → EARTH
@@ -68,14 +70,128 @@ central banks, positioning, drawdown, trading psychology. Cross them deliberatel
 `/root/AAA/scripts/chron.py` reads `/root/AAA/scripts/chron_events.json`.
 
 - **Never store a day-count.** Store `target_date`; compute the delta at render. A stored "21 days"
-is silently wrong the moment the file is not regenerated — and it fails quietly, still saying 21 days
-a month later.
-- **Rank, don't sort by date.** score = urgency × consequence × actionability × confidence. Urgency
-saturates near the date and flattens beyond 90 days. Verified live: Budget 2027 (21 days, HIGH)
-correctly outranks a fuel-price window 5 days out (MEDIUM).
+  is silently wrong the moment the file is not regenerated — and it fails quietly, still saying 21 days
+  a month later.
+- **Rank, don't sort by date.** score = urgency x consequence x actionability x confidence. Urgency
+  saturates near the date and flattens beyond 90 days. Verified live: Budget 2027 (21 days, HIGH)
+  correctly outranks a fuel-price window 5 days out (MEDIUM).
 - **Expiry is automatic.** A passed event leaves the pool. No stale countdown, ever.
 - **`audience` is the privacy filter.** An `arif`-only event is invisible in the shared card. This is
-enforced in code, not trusted to whoever writes the prompt.
+  enforced in code, not trusted to whoever writes the prompt.
+
+### The rendered block (morning) — v2, 2026-09-21
+
+`chron.py` prints the bare countdown; that is a **stdout contract** for other consumers and it is left
+alone. The CARD block is a separate module: `/root/AAA/scripts/alpha_zen_chron.py`, called by
+`alpha_zen_card.py::chron_block()`. A bare countdown in a card is the same defect chron.py v2 was
+written to kill — a footer, not an intelligence surface.
+
+Morning now renders three things, and a fourth when the store supports it:
+
+1. **The clock** — `title — countdown`, exactly as before.
+2. **Its consequence**, read verbatim from the event's own `note` field (`· Baris dividen PETRONAS dan
+   subsidi bahan api jadi boleh dicek pada hari itu`). The module authors no consequence text: a clock
+   with no note stays a bare countdown.
+3. **The bet** — riding directly UNDER the clock it belongs to, not floating at the bottom, so a reader
+   never has to guess which deadline a claim is about. Selection rule: among live clocks carrying a
+   printable prediction, take the one that **settles soonest**, and on it the highest-confidence bet.
+   The soonest-settling claim is the one the humans can watch resolve; the top-ranked clock may not
+   settle for a month. Deterministic on purpose — picking by how bad a claim looks would be taste, and
+   taste is how a ledger becomes a highlight reel.
+4. **Register rule for predictions.** A prediction claim is written for a *verifier*
+   (`RON95 subsidy rationalisation will be announced or reaffirmed in budget speech`). Printing that
+   into a BM card breaks register — the card would suddenly talk like a log line. So the store carries
+   an optional `human:` BM rendering per prediction, and a prediction WITHOUT one is not printable.
+   **No rendering, no line: silence beats a bot voice.** The machine `claim` stays canonical for
+   verification; never edit `claim` to make the card read better.
+
+Night (`--mode night`) renders the plain footer, deliberately, until it is asked for.
+
+**What is deliberately NOT in the block:** the verified-prediction scoreboard (hits/misses/calibration).
+That ledger lives in `/root/.hermes/cron/state/chron_personal/` and is scoped `audience: internal`. The
+card is read by two humans: publishing an internal-scoped store into it is an F13 disclosure decision,
+not a rendering decision. Left out and flagged rather than taken silently.
+
+**Fail-soft, both directions.** `lines_for()` returns `[]` on a dead store, a missing module, a bad
+event, or nothing live — and `chron_block()` then falls back to the plain footer. A broken import costs
+the upgrade, never the card. Test: `python3 /root/AAA/scripts/alpha_zen_chron.py --self-test` (12 checks,
+incl. dead-store, no-note, and machine-claim-never-rendered).
+
+**No new cron job for this.** The block is computed at render, which the existing 07:15 job already
+does. A scheduled poller for a render-time computation is pure waste.
+
+## SIGNAL ONLY — the pool and the publication (F13: "too chaos, signal only")
+
+The 9 rows are the **candidate POOL**. The card that actually publishes is
+`signals` — 4 to 8 lines, one sentence each. F13-directed 2026-09-21.
+
+```json
+"signals": [
+  {"who": "shared", "text": "ONE sentence, BM Penang, <=240 chars", "source": "for audit"}
+]
+```
+
+`who` is `arif | syed | shared`. It is **selection metadata, never rendered** — it exists so
+the gate can prove both men were served, not to stamp a label on the reader.
+
+**Why narrowing needs its own wall (G13).** Narrowing is where people get dropped. The
+first lines to vanish from a "signal only" card are the ones whose subject is rarest in the
+day's news — which is exactly Syed's whole lane. So the publication layer gets its own gate:
+the pool may be wide, the card must be narrow, and BOTH men must still come out of it with
+something. G13 refuses 3 lines, 9 lines, an all-Syed card, a missing gym line, a missing gold
+line, a smuggled day-count, a private marker, a machine label, and one event printed twice.
+
+**Word-boundary matching is load-bearing, not pedantry.** A substring test for the gold
+lexicon passed when the gold line had been DELETED, because *kemas kini* contains *emas* —
+a coincidence of spelling read as evidence of a signal. Use `\b`.
+
+**Two defects found in the first wiring, both invisible from inside one file:**
+1. `build_signal_html()` existed, the gate existed, the schema existed — and the CLI exposed
+   no `--style`, so no shell or cron path could ever invoke it. A capability that only a
+   Python caller can reach is not reachable. **Wire the flag when you wire the function.**
+2. Both styles wrote `ALPHA-ZEN-<MODE>.png` — the exact path the delivery contract names. One
+   render silently destroyed the other's artifact. The style must live in the filename.
+
+## Human register in the cells (G14, warn not hold)
+
+Machine vocabulary must not reach a cell a human reads. `RR cuma 1.0, confluence 0.016`
+is opacity wearing the look of precision — the reader can act on neither — while
+`sebab masuk tak cukup kuat untuk harga sekarang` carries the same finding. Same for raw
+confidence floats and bare indicator codes.
+
+Warn, not hold: the boundary is a judgement. *Momentum 59.3* is a figure the reader reads
+directly; only the engine internals are listed. A hard gate here would start deleting
+legitimate signal. The warning's job is to make the drift VISIBLE so the writer fixes it.
+
+**Arm the check on both surfaces.** The pool rows are candidates; `signals` is what publishes.
+A register rule that only guards the pool is clean where nobody looks and dirty where
+everybody does — the same defect the whole signal-card change exists to remove. The negative
+control for this is a polluted `signals[]`, not a polluted row.
+
+## The suite rots on a timer (found 2026-09-21)
+
+`test_alpha_zen_gate.py` measured **14/20 with all six failures being POSITIVE controls.** The
+cause was not the gate: the fixture is a dated card FILE, and the gate's own G11 rule expires
+any priced source older than `STALE_DAYS`. So a suite that was 20/20 the day it was written
+decays into failure on the calendar.
+
+A suite that always fails gets ignored, and a gate nobody runs is not a gate. **The fix is to
+re-stamp the fixture to today at load, and to make the freshness cases supply their OWN
+relative dates** — so G11 is still exercised in both directions (an old source must HOLD, a
+fresh one must PASS) without the fixture ageing out.
+
+Two traps in that fix, both cost a cycle:
+- A month alternation of `Sep` cannot match `16 Sept`: the trailing `\b` lands between two
+  word characters and fails, and the engine will not invent the longer alternative. List 3- AND
+  4-letter forms.
+- Prefer an explicit month list over `[A-Za-z]{3,4}`. The generic form matches `07:16 MYT` and
+  rewrites the time as if it were a date.
+
+Same rot class, same day, different subsystem: the cron `jobs.json` validator refuses every
+write because 9 jobs use thread-suffixed telegram targets its allow-list never learned, and 10
+newer jobs predate the required `lane` field. **A gate whose config drifts behind the runtime
+fails closed on everything and gets bypassed — indistinguishable in effect from a gate that
+passes everything.**
 
 ## The gate is a wall
 
@@ -119,9 +235,15 @@ The questions each organ asks:
    thing near them — a gig, a place to eat, an outdoor spot. This is what makes it alive instead
    of a dashboard. NEVER invent one: if no real listing is found that day, omit it rather than
    fabricate a venue name.
-4. **Syed is a recipient, never a subject.** He is in this group. Do NOT address him directly,
-   do not comment on his training, body, health or family, and do not make him the topic.
-   Write FOR two friends, not AT one person. (relationship-kernel: human-human beats human-AI.)
+4. **Syed is a recipient, never a subject.** He is in this group.
+   Do NOT comment on his training, body, health, family, or what he should do with his body — and do
+   not make him the topic of any commentary.
+   **AMENDED 2026-09-21 (v2, F13-directed):** the pulses MAY address each man by name in a `SO WHAT`
+   block — one consequence for his day, drawn ONLY from public or observable reality (a rule, a price,
+   a published study, a live measurement). The amendment opens the **address**, never the
+   **disclosure**: no positions, stop levels, portfolio, balances, targets, private chat content,
+   family or health. If a payoff cannot be grounded publicly, write the general line or drop the
+   block — a missing block beats a leak. (relationship-kernel: human-human beats human-AI.)
 5. **No medical diagnosis, ever.** WELL observes patterns in what was reported. It never says
    "you are tired" - it offers a reset and returns the judgement to the human.
 6. **Never claim F13-RATIFIED or SEAL** unless the kernel actually granted it.
@@ -140,6 +262,31 @@ WEALTH x news x HERMES. The only genuinely news-heavy pulse.
 - **Not investment tips.** Economic situational awareness. Never "buy X".
 
 Close: *"Apa yang berubah dalam dunia sejak semalam yang patut ubah cara kita fikir hari ni?"*
+
+### Message contract v2 - MORNING (F13-directed 2026-09-21)
+
+The card did not change. The message did — it now has to land as a signal, not a report.
+
+1. **Date line first, computed at run time:** `date '+%A, %d %B %Y. %H:%M pagi.'`. A typed date or
+   time is a temporal-grounding failure, same class as a guessed location.
+2. **Tension in two sentences** — what is actually moving today and why the obvious reading of it is
+   incomplete.
+3. **Fact -> `Bermakna:`** — each top fact carries its consequence in the same breath; the
+   consequence is what changes a decision today, not a restatement.
+4. **The counter-intuitive one** — the day's loop or reversal, both readings named and both true.
+5. **`Untuk hang, Arif:` / `Untuk hang, Syed:`** — one payoff block each, 2-4 lines, consequence for
+   TODAY, bounded by hard rule 4.
+6. **`Yang tak berubah`** — 2-3 plain lines true regardless of today's numbers; not poetry, not a
+   sermon, never the same phrasing two days running.
+7. **Buzz + a sourced local condition** — the checkable thing near them, PLUS a live condition that
+   changes today's plan (air quality, weather, road/trail). Source named, or the line is omitted. A
+   real local rule that overrides the day beats a market line.
+8. Close with the sealed question, verbatim.
+
+**Budget:** 450-600 words, hard ceiling 3,800 characters excluding the `MEDIA:` line, so it arrives as
+ONE message. **Number discipline:** one number, one source, per subject; when the system's own reading
+and an external table disagree, print BOTH and say which one the system uses — a silent swap between
+sources is a provenance lie. **The payload is the SO WHAT, not the news.**
 
 ## BODY CHECK - 14:00 (BODY)
 
@@ -201,6 +348,56 @@ Close: *"Kalau semua noise hari ni senyap, apa yang masih benar?"*
 Each pulse fails SOFT, exactly like `morning_briefing.py`: a dead source removes its line, never the
 message. If an organ MCP is unreachable, fall back to web search and **label the fallback** - an
 orchestrator that silently swaps an organ for a search engine is lying about its provenance.
+
+## What the card is NOT linked to (open debt)
+
+The pipeline is **write-only into the federation**. `cycles.jsonl` and `cards/<date>-night.json`
+land on disk, the message lands in Telegram, and that's where the loop stops.
+
+Concrete missing edges, every one of them reachable as a small reversible file:
+- **No grafema/falkor adapter.** `forge_work/alpha-zen/` has zero hits for `grafema`, `falkor`,
+  `graphiti`, `qdrant`, or `claim_ledger`. Every signal the card carries (gold peg at 4,341, haze
+  shift into Penang, Bell Burnell reframed) becomes an episodic memory node only if someone writes
+  the adapter. Without it, the next session cannot recall what tonight proved.
+- **No drift comparison across days.** `cycles.jsonl` holds 20 records and no script reads them in
+  series — N vs N-1, N-7, N-30 stays invisible. Drift in `source_count`, `gate_warn`, or `signal_count`
+  is the kind of structure that *repeats at the same coordinate* (the rule the card itself teaches)
+  and never gets noticed.
+- **CHRON is one-way.** `chron.py` counts down; the card prints the countdown; nothing queries
+  `chron_predictions_due` to ask "did Budget 2027 actually move the PETRONAS dividend line the way
+  the September prediction claimed?".
+
+**Three small reversible additions close the loop:** (1) `alpha_zen_to_grafema.py` — emit episodic
+nodes per row. (2) `cycles_compare.py` — diff `cycles.jsonl` across windows. (3) Pre-render
+`cross_checked` flag against the grafema graph ("has this signal been seen with what outcome?").
+Each is additive, no existing file is overwritten, no cron schedule changes.
+
+A card that publishes into the void is a one-way valve. The federation only learns from what flows
+back.
+
+## Card layout pitfalls (concrete fixes)
+
+- **Voice columns have no visual separator.** ARIF and SYED read as identical serif blocks; readers
+  have to re-read the byline to know who is speaking. A thin vertical rule between the columns, a
+  drop cap on the first word of each voice, or a 1px colour shift (no semantic colour swap) breaks
+  the rail-track feel and lets the eye jump between voices. Twice-flagged by independent vision
+  review.
+- **Concat without newline between `{arif.text}` and `{syed.text}`.** Item 09 in 2026-09-22-night
+  showed two sentences overlapping ("presiden dua negara yang bertah[an] tak bertembung"
+  collided with the line beneath). The gate validates content, not layout. A literal `\n\n` between
+  the two voice fields in `build_html()` is the smallest fix; a CSS `padding-bottom` on `.row-arif`
+  is the defensive one.
+- **Footer tagline truncated.** "DITEMPA BUKAN DIREBA…" cut off at the box edge — either widen
+  the footer box, shrink the type, or move the seal to its own line. A seal that gets clipped is
+  a doctrinal defect, not a typo.
+
+## What gets read across days (not by humans)
+
+A reader at 21:30 in Penang sees one card. A reader at 09:00 the next morning sees the morning card
+and forgets the night one. The structure that survives is in `cycles.jsonl` — same path as the
+failure ledger. **If the federation is to learn, the federation must read it.** Until the three
+additions above land, treat the cards as beautifully decorated write-only output and stop claiming
+"recursive link to the system" in any reply.
 
 ## Do not add another morning brief
 

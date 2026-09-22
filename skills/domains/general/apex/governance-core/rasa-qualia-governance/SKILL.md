@@ -17,6 +17,8 @@ tags:
   - real-person-boundary
   - power-dynamic
   - admirer-lane
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Rasa Qualia Governance

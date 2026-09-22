@@ -1,6 +1,8 @@
 ---
 name: telegram-group-sender-identity
 description: Fix bot not identifying group senders with empty names.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Telegram Group Sender Identity Resolution

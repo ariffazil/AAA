@@ -11,6 +11,8 @@ triggers:
   - mulerouter
   - media generation
 related_skills: [minimax-cli, lightweight-image-generation, video-prompt-engineering]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # MuleRouter Media Generation

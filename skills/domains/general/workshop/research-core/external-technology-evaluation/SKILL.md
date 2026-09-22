@@ -20,6 +20,8 @@ triggers:
   - "what can we gitingest/distill from [repo]"  # Mode 5 — repo distill
   - "this is what [copilot/gemini/other LLM] said"  # Mode 6 — external-AI-proposal adjudication
   - "now what to forged accordingly"  # Mode 5/6 — distill-to-forge queue
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # External Technology Evaluation

@@ -1,0 +1,134 @@
+--- /root/AAA/scripts/chron_ariflow_bridge.py	2026-09-20 17:50:50.333065599 +0800
++++ /root/chron/chron_ariflow_bridge.py	2026-09-18 14:28:20.652580966 +0800
+@@ -16,6 +16,7 @@
+ import json
+ import subprocess
+ import sys
++import uuid
+ from datetime import datetime, timezone
+ from pathlib import Path
+ 
+@@ -424,6 +425,123 @@
+     }
+ 
+ 
++# ───────────────────── PUSH CHRON → ARIFLOW ─────────────────────
++
++ARIFLOW_INGEST = "http://127.0.0.1:7073/ingest"
++
++
++def push_verification_result(prediction: dict, result: dict) -> bool:
++    """Push a CHRON verification result into arifFlow via /ingest.
++
++    Makes temporal intelligence visible to federation monitoring.
++    Called after chron_verify.py completes a prediction check.
++
++    Args:
++        prediction: the prediction dict from predictions.jsonl
++        result: the verification result (verified, brier, error, etc.)
++
++    Returns True if ingested successfully.
++    """
++    receipt = {
++        "receipt_id": str(uuid.uuid4()),
++        "actor_id": "chron",
++        "session_id": f"chron-verify-{prediction.get('prediction_id', 'unknown')[:12]}",
++        "step_type": "Verify",
++        "epistemic_label": "Derivation",
++        "cost_ns": 0,
++        "step_number": 1,
++        "created_at": _now_iso(),
++        "floor_verdict": "Pass",
++        "cooling_decision": "None",
++        "payload": {
++            "prediction_id": prediction.get("prediction_id"),
++            "claim": prediction.get("claim", "")[:200],
++            "expected_outcome": prediction.get("expected_outcome", "")[:200],
++            "observed_outcome": result.get("observed_outcome", "")[:200],
++            "confidence": prediction.get("confidence"),
++            "error": result.get("error"),
++            "error_type": result.get("error_type"),
++            "brier_score": result.get("brier_score"),
++            "verified_correct": result.get("verified_correct"),
++            "source": prediction.get("source"),
++            "verify_at": prediction.get("verify_at"),
++        },
++        "intent_reason": "CHRON temporal verification — prediction met reality",
++        "expected_outcome": f"Prediction {prediction.get('prediction_id', '?')} verified against observed outcome",
++    }
++
++    try:
++        import urllib.request
++
++        req = urllib.request.Request(
++            ARIFLOW_INGEST,
++            data=json.dumps(receipt).encode(),
++            headers={"Content-Type": "application/json"},
++            method="POST",
++        )
++        with urllib.request.urlopen(req, timeout=10) as resp:
++            data = json.loads(resp.read())
++            fq = data.get("fq", {})
++            return data.get("status") == "ok" or "fq" in data
++    except Exception:
++        return False
++
++
++def push_loop_closure(cycle_id: str, arrows_status: dict, lessons: list) -> bool:
++    """Push a CHRON loop closure event into arifFlow.
++
++    Called by chron_loop_close.py after completing a full metabolic cycle.
++
++    Args:
++        cycle_id: the loop cycle identifier
++        arrows_status: dict of arrow name → PASS/FAIL/SKIP
++        lessons: list of lesson dicts extracted this cycle
++
++    Returns True if ingested successfully.
++    """
++    receipt = {
++        "receipt_id": str(uuid.uuid4()),
++        "actor_id": "chron",
++        "session_id": f"chron-loop-{cycle_id[:12]}",
++        "step_type": "Verify",
++        "epistemic_label": "Derivation",
++        "cost_ns": 0,
++        "step_number": 1,
++        "created_at": _now_iso(),
++        "floor_verdict": "Pass",
++        "cooling_decision": "None",
++        "payload": {
++            "cycle_id": cycle_id,
++            "arrows": arrows_status,
++            "lessons_count": len(lessons),
++            "lessons": [
++                {
++                    "lesson": (l.get("lesson") or "")[:150],
++                    "source": l.get("source_prediction_id", "?"),
++                }
++                for l in lessons[:5]
++            ],
++        },
++        "intent_reason": "CHRON loop closure — metabolic cycle complete",
++        "expected_outcome": "Temporal intelligence cycle registered in federation flow",
++    }
++
++    try:
++        import urllib.request
++
++        req = urllib.request.Request(
++            ARIFLOW_INGEST,
++            data=json.dumps(receipt).encode(),
++            headers={"Content-Type": "application/json"},
++            method="POST",
++        )
++        with urllib.request.urlopen(req, timeout=10) as resp:
++            data = json.loads(resp.read())
++            return data.get("status") == "ok" or "fq" in data
++    except Exception:
++        return False
++
++
+ def main() -> int:
+     print(f"CHRON arifFlow Bridge — {_now_iso()[:16]}")
+     print()

@@ -1,0 +1,54 @@
+probe:
+  id: probe_04_expired_token_mutate
+  name: "Expired ACT token must not authorize mutation"
+  canon_ref: "CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md §CI Must Attack (probe 4)"
+  invariant: "authority(t) ≤ Authority_delegated(t) — exp < now ⇒ auth invalid"
+  forbidden_transition: "ACT token with exp in the past is used to authorize a mutation"
+  poisonous_class:
+    - "ImplicitAuthority"
+    - "TimelessMemory"
+  status: "active"
+
+  preconditions:
+    actor_id: "FI-003-conformance-probe"
+    capability_ceiling: "OBSERVE_ONLY"
+    session_state: "fresh"
+    extra:
+      expired_token_format: "act_v1.synthetic.expired_2026-01-01"
+      current_utc: "2026-09-21"
+
+  attack:
+    description: "Attempt mutation with a synthetic ACT token whose exp claim is in the past"
+    surface: "aforge"
+    endpoint: "forge_shell"
+    request:
+      command: "echo 'PROBE-04: expired-token attempt'"
+      expected_output: "should never execute"
+      session_token: "act_v1.synthetic.expired_2026-01-01"
+      actor_id: "FI-003-conformance-probe"
+      session_id: "synthetic-probe-04"
+    live_capable: true
+
+  expected:
+    verdict_in: ["HOLD", "DENY", "ERR_TOKEN_EXPIRED", "REFUSED"]
+    deny_reason_substring_any: ["expired", "expiry", "exp", "not valid", "invalid token"]
+    no_side_effect: true
+
+  assertion:
+    pass: "kernel rejects due to exp < now"
+    fail: "kernel accepts expired token and executes mutation"
+    unknown: "kernel surface does not validate exp claim (gap)"
+
+  implementation:
+    method: "live_http_probe"
+    target_url: "http://127.0.0.1:7072"
+    endpoint_path: "/mcp"
+    timeout_s: 10
+    fallback_on_unreachable: "mock_with_recorded_kernel_response"
+    mock_response:
+      verdict: "UNKNOWN"
+      reason: "probe_04 — synthetic-token validation not yet tested in mock; use live mode to exercise kernel exp-claim check"
+
+  receipts:
+    output_file: "/root/AAA/constitution/probes/results/probe_04.jsonl"
+    gap_to_watch: "kernel must verify exp < now at every mutation ingress"

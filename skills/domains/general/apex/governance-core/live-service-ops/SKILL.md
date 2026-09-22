@@ -2,6 +2,8 @@
 name: live-service-ops
 description: "Use before mutating or restarting a live service."
 owner: Hermes
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 # Live Service Operations
 
@@ -10,6 +12,16 @@ attached to it at once, and anything you do lands on all of them. Treat every mu
 as a coordination event, not a local edit.
 
 ## Before mutating
+
+0. **Refresh the baseline you are about to act on.** A generated census, health manifest, or
+   integrity report is a snapshot stamped when it was produced; acting on one from an earlier
+   session is acting on history in the present tense. Re-run the producer in the same session
+   (`python3 /root/scripts/mcp-health-census.py` for the MCP census), state the stamp you read, and
+   read a report's *axes* separately — a `disabled_intentional` entry is a setting, not an outage.
+   Likewise a hash manifest over live append-only files (`*.jsonl` ledgers, active logs, the
+   manifest's own builder) reports `FAILED` by design: classify growth against the stamp as
+   `EXPECTED_APPEND`, not tampering. First-pass sweep batch and the full reading rules:
+   `references/generated-baseline-reads.md`.
 
 1. **Enumerate who else is attached.** List sessions and confirm none are mid-mutation:
    ```bash
@@ -151,6 +163,41 @@ Discriminate by the status code — only the last two are actually down:
 | `404` | the **path** is wrong, not the service |
 | connection refused | nothing is listening **on that address** — check the bind |
 | timeout | down, or hung mid-request |
+| `000` **while `ss` shows LISTEN and connect succeeds** | **accepted-then-silent (half-dead)** — a handler exists but never answers. Not an address problem; do not go looking at the bind |
+
+**`000` has two causes and `ss` is what separates them.** Nothing accepting = the bind is the
+finding. TCP handshake completing with an empty body = the process is wedged: port open, no work
+done. Discriminate with a raw socket read, because `curl -o /dev/null` collapses both cases into
+the same `000`:
+
+```bash
+python3 - <<'PY'
+import socket
+s = socket.socket(); s.settimeout(4)
+s.connect(("127.0.0.1", <port>))
+s.sendall(b"GET / HTTP/1.0\r\n\r\n")
+print(repr(s.recv(200)))
+PY
+```
+
+`b''` = accepted and closed with no response. A hang to the timeout = stuck mid-request. Either
+way the unit is broken while every port scan calls it up, so a probe list keyed on `ss` and a probe
+list keyed on `curl -o /dev/null` disagree with each other. Re-run the `curl` twice before
+concluding — one `000` after a green peer reading is the race, not the fault.
+
+Remedy is to re-launch **that one process**, never the box, and to launch it the way the original
+was launched. Capture the doomed process's argv first — `/proc/<pid>/cmdline` is not truncated the
+way `ps` output is, and a re-launch from memory loses flags like `--directory <path>`:
+
+```bash
+tr '\0' ' ' < /proc/<pid>/cmdline; echo
+```
+
+Start the replacement as a tracked background process rather than a shell background wrapper
+(`nohup`/`disown`/`setsid` are refused by the terminal tool as shell-level backgrounding, so a
+wrapped launch fails outright). Then prove readiness in a **separate** call with both checks —
+`ss` for the listener **and** a `200` body. The listener alone is the exact signal that lied to you
+here; a launch confirmed only by the port being open repeats the original defect.
 
 `ss -lntp | grep <port>` shows which addresses a port actually answers on; a service bound to
 one interface is refused on every other. Measured: a gateway bound only to a tailnet address
@@ -186,6 +233,16 @@ ledger. Say which file the number came from and when that file was last written.
 
 A change on disk is a request. It is not the process's state. Read the mask from the
 running process, not from the file you just edited.
+
+**When the lifecycle op is refused — consent gate, substrate gate, kernel HOLD — the config is
+`WRITTEN_NOT_LOADED`, and that is a state you must name, not a pause.** Report it with both timestamps
+(config mtime vs process start) and with *what is still serving the old config*, because the gap is
+invisible to anyone who reads only the file. Then state the exposure: the file now differs from the
+running process, so **any unrelated lifecycle event — a crash, a reboot, another agent's op — applies
+your change unattended, unwitnessed**. A half-applied config is a latent mutation, not a parked one.
+Offer the rollback explicitly, confirm the backup covers this exact edit, and do not re-attempt the
+refused operation by another route or a rephrasing. Name the blocked operation and the lane that owns
+it so the hold is actionable rather than decorative.
 
 For a systemd hardening directive the declared and the effective values live in different
 files, and they diverge silently:
@@ -515,6 +572,29 @@ that matters, because it means any future start can fail permanently too.
 
 State the rollback before the change. If there is no rollback path, it needs authority.
 
+**A copy on the same volume is not a rollback path.** `<file>.bak` beside its source survives
+an edit and not a disk. Say which failure the rollback actually covers, and if it is only the
+edit, do not let it read as cover for the machine.
+
+**Resolve "backup OK" against the artefact YOU changed, not against the system.** A monitor
+reporting a successful snapshot is answering *did the backup job run*, and its scope is
+whatever path list its script carries. Read that list before treating the report as cover:
+
+```bash
+sed -n '/for p in/,/do$/p' /root/scripts/backup-tier-a.sh    # the actual Tier A / B path lists
+```
+
+Measured: a snapshot verified genuine — correct id, host, tag, a real store object — covered
+the ledger trees and the config roots while `/root/scripts`, the one directory a patch that
+session touched, was in neither tier list. The report was true and had nothing to do with the
+change. Confirming the snapshot is not the same as confirming it covers your target; only the
+path list answers the second question.
+
+**A backup that DOES cover a polluted append-only store preserves the pollution.** For a
+`chattr +a` ledger, a restore cannot remove duplicates — it copies them back. Backup is not
+the repair path for ledger residue; the only remedy is a superseding append in the live
+store. Never offer "we have a backup" as mitigation for a defect the backup replicates.
+
 ## Before deleting anything to reclaim space
 
 Destructive cleanup is the highest-consequence mutation on a live box, and the one where a
@@ -635,6 +715,10 @@ institution can see needs a receipt naming who authorized it and why.
   so the job reports honestly: which hook fires when, which variable is the verdict (and why
   comparing the disposition word to `0` reports every success as a failure), and why a self-test
   must never write into the production channel.
+- `references/generated-baseline-reads.md` — the read-only first-pass sweep, and the five rules for
+  reading censuses, health manifests and hash manifests without manufacturing false findings
+  (snapshot vs live read · status vs routable axes · `EXPECTED_APPEND` on live files · attributing
+  memory pressure to agent CLIs · listener ≠ working service).
 
 ---
 *DITEMPA BUKAN DIBERI*

@@ -5,6 +5,8 @@ owner: Hermes
 risk_tier: medium
 floor_scope: [F1, F2, F7]
 autonomy_tier: T2
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Federation Dependency Upgrade

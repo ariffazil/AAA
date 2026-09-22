@@ -12,6 +12,8 @@ triggers:
   - user asks for PDF or voice note for someone else
   - user says "Masalah manusia" or "kawan aku" or "mak aku"
   - user relays a third-party request with minimal context
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 ## When to Use

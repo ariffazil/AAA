@@ -1,6 +1,8 @@
 ---
 name: goodnight-loop-discipline
 description: "Use when Arif says \"tidur\" / \"goodnight\"."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Goodnight Loop Discipline

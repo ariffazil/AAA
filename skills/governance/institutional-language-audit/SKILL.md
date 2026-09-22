@@ -7,6 +7,8 @@ category: governance
 tags: [language, governance, forensics, audit, corporate-speak, rhetoric]
 floors: [F2, F7, F9]
 autonomy_tier: T1
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Institutional Language Audit

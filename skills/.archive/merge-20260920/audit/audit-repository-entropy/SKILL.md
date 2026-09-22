@@ -2,6 +2,8 @@
 name: audit-repository-entropy
 description: "Read-only repository entropy audit — disciplined codebase investigation that classifies sampah sarap by evidence, not guesswork."
 argument-hint: ["<repo_id> [scope]", "example: A-FORGE --scope src,config,tools"]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # /audit.repository_entropy

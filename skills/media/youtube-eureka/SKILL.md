@@ -3,6 +3,8 @@ name: youtube-eureka
 description: "Extract high-density Eureka Insights, chronological breakdowns, and structured intelligence from any YouTube video. Uses multi-strategy transcript waterfall."
 version: 1.0.0
 tags: [youtube, extraction, insight, transcript, research]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # youtube-eureka — Autonomous YouTube Eureka Insight Extractor

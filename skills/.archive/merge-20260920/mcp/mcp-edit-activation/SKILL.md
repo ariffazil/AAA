@@ -11,6 +11,8 @@ triggers:
   - "reload an MCP server"
   - "gate change not taking effect"
 tags: [mcp, deployment, verification, ghost-capability]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MCP edit activation — a file edit is not a live fix

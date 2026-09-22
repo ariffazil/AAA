@@ -11,6 +11,8 @@ triggers:
   - "could <company> fail without warning"
   - "why didn't the indicator warn me"
   - "is this company safe to hold"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Market Collapse Forensics

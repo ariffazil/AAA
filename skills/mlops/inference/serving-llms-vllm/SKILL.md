@@ -9,7 +9,8 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [vLLM, Inference Serving, PagedAttention, Continuous Batching, High Throughput, Production, OpenAI API, Quantization, Tensor Parallelism]
-
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # vLLM - High-Performance LLM Serving

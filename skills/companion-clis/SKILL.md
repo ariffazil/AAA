@@ -7,6 +7,8 @@ metadata:
   author: runpod
   version: "1.1.2" # x-release-please-version
 license: Apache-2.0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Companion CLIs

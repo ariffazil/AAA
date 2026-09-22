@@ -99,6 +99,24 @@ Canonical script: `/var/www/html/deploy-vps.sh` (mirrored in repo root)
 | well | /var/www/html/well | sites/well.arif-fazil.com (llms.txt only) |
 | /oil /gas /gold (apex paths) | /var/www/html/{oil,gas,gold} | dist/{oil,gas,gold} — exclude live api/ + vendor/ |
 
+### Agentic Discovery Deployment (ARD v0.91 / Lighthouse 13.5)
+
+When deploying or auditing agentic discovery files, all 4 Lighthouse vectors must pass. See `references/agentic-discovery-deployment.md` for the full spec, Caddy patterns, and verification procedure.
+
+**Quick checklist (every organ deploy):**
+1. `/.well-known/ard.json` — ARD v0.91 manifest with domain-anchored URNs and representativeQueries.
+2. `/.well-known/ai-catalog.json` — identical content, v0.9 fallback for Lighthouse.
+3. `robots.txt` — `Agentmap:` directives pointing to both manifests.
+4. HTTP `Link` header — `rel="ard"` and `rel="ai-catalog"` via Caddy `tls_origin` snippet.
+5. HTML `<link>` tags in `<head>` — `rel="ard"` and `rel="ai-catalog"`.
+6. `Cache-Control: no-cache` on `robots.txt` handler — prevents Cloudflare stale cache (see pitfall below).
+
+**After deploy, verify origin directly (bypass Cloudflare):**
+```bash
+curl -sI --resolve "DOMAIN:443:72.62.71.199" https://DOMAIN/robots.txt | grep -i "agentmap\|cache-control"
+curl -s --resolve "DOMAIN:443:72.62.71.199" https://DOMAIN/.well-known/ard.json | head -5
+```
+
 ---
 
 ## OP 2 — AUDIT (full-crawl methodology)
@@ -133,7 +151,47 @@ diff -rq <snapshot-or-source>/ <live>/ | grep "^Only in"
 - **Dual-copy divergence** (e.g. `999/index.html` vs `public/999/index.html`): converge to one canonical, sync, commit. Both copies must carry both truths.
 - **Nested-dir restore error** (`cp -a src dst` when dst exists → `dst/src`): verify with `ls dst` after every restore; flatten with `cp -a dst/src/. dst/` then `mv dst/src quarantine/`.
 - **Never `rm -rf`** — F1 tripwire will (correctly) block. Quarantine: `mkdir -p /root/backups/quarantine-<date> && mv target quarantine-<date>/`.
+
+**Spawn coding agent for system-path mutations, do not retry from main agent.** The `patch` and `write_file` tools refuse paths under `/etc/`, `/var/`, and other root-owned trees — this is a hard refusal, not a recoverable error. When the OP 3 recipe requires editing `/etc/caddy/vhosts/*.conf`, `/etc/caddy/Caddyfile`, or other system files needing sudo, **delegate to a coding subagent in the first call**, not the third. Each retry from the main agent burns the user's tokens without making progress. Pass the exact diff template and the reload command (e.g. `sudo caddy validate --config /etc/caddy/Caddyfile && sudo systemctl reload caddy`) inside the delegation context. Verify with `curl` from the main agent after the subagent reports done.
+
+**Never declare a fix failed from `curl -sI` alone.** HTTP/2 framing often omits `Content-Length` on responses that DO carry a full body; `curl -sI` reports whatever fell into the small HEAD buffer and may show 20 bytes for a working 16 KB article. Always verify with a full body GET and a content signature (`curl -s URL -o /tmp/x && wc -c /tmp/x && grep -c <distinctive-phrase> /tmp/x`) before dispatching a debug subagent. A 200 with zero signature matches is the real silent failure mode; a low or zero `content-length` from HEAD alone is not.
+
 - **Caddy edits:** python exact-string patch → `caddy validate` → `systemctl reload` → verify affected URLs. Backup exists at `/etc/caddy/Caddyfile.bak.*`. Reload is T3-class: only under sovereign directive or incident repair with immediate verification.
+
+### Stale-slug / URL drift recovery (Caddy 301 redirect)
+
+When a deployed page has a wrong slug — wrong URL returns 200 but renders the SPA fallback ("Artikel Tidak Dijumpai"), right URL serves the real article — the surgical fix is a Caddy 301 redirect in `/etc/caddy/vhosts/arif-fazil.com.conf`. NOT a code revert. NOT a rebuild hoping the SPA falls back differently.
+
+Template (place near the existing legacy-redirect blocks):
+```
+# <date>: Stale-slug typo — <stale-slug> → <correct-slug>
+@<tag> path /world/makcikgpt/<stale-slug>
+handle @<tag> {
+	header Location https://arif-fazil.com/world/makcikgpt/<correct-slug>
+	respond "" 301
+}
+```
+
+Sequence: python `str.replace()` patch → `caddy validate --config /etc/caddy/Caddyfile` → `caddy reload --config /etc/caddy/Caddyfile` → `curl -sI` on the stale URL (must return `HTTP/2 301` with the right Location header) AND on the correct URL (must return `HTTP/2 200` with article signature present, not just SPA fallback).
+
+The user clicks the wrong URL → 301 → working URL → article. ~3 minutes total. Compare to: rebuild + rsync with a fresh slug = ~30 minutes plus the risk of breaking other articles.
+
+Verify by content, not by status code: `curl -s <correct-url> | grep -c <distinctive-word-from-the-article>`. A 200 with zero signature matches = the page is still serving the SPA fallback. Status-200 + content-wrong is the silent failure mode this recipe exists to catch.
+
+### Cloudflare cache stale after deploy
+
+New files deployed to origin (robots.txt, .well-known/*) may be served stale by Cloudflare for up to the TTL (typically 4 hours). Verify via direct origin access:
+
+```bash
+curl -s --resolve "DOMAIN:443:72.62.71.199" https://DOMAIN/robots.txt | grep -i agentmap
+```
+
+If origin is correct but live site is stale:
+1. Add `Cache-Control: no-cache, no-store, must-revalidate` to the Caddy handler for that file.
+2. Reload Caddy.
+3. Cloudflare will revalidate on next fetch. If instant purge is needed, use the Cloudflare dashboard (API token may lack `Cache Purge` permission).
+
+**Never hand-edit live tree to fix a cache issue.** Fix the Caddy config, not the served content.
 
 ---
 
@@ -190,6 +248,8 @@ GREEN: parsers, converters, disposable analysis. RED never self-grant: secrets, 
 - ❌ Status-200 audit without content grep — SPA soft-404 lies
 - ❌ `rm -rf` for cleanup — quarantine instead
 - ❌ Advertising 128 tools as intelligence — six missions + Canonical 8
+- ❌ Deploying .well-known/robots.txt without no-cache header — Cloudflare serves stale Agentmap directives for hours, all 4 Lighthouse vectors appear broken from CDN while origin is correct
+- ❌ Fixing CDN stale by hand-editing live tree instead of fixing Caddy config — the Caddy config IS the source of truth
 ---
 
 ## OP 8 — PREVIEW BATCHES FOR SOVEREIGN REVIEW (2026-09-18)

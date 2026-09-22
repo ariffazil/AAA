@@ -431,7 +431,7 @@
       ]
     }
   ],
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
   "signatures": [
     {

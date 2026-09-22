@@ -12,6 +12,8 @@ triggers:
   - "memory about me"
   - "eureka entry"
   - "external AI review"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Agent Finding Verification

@@ -1,6 +1,8 @@
 ---
 name: mobile-device-edge
 description: Bridge Hermes to Android Termux via FastAPI for camera/GPS.
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Mobile Device Edge — arifOS Sovereign Device Edge

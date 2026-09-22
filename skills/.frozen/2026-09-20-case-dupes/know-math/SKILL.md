@@ -9,6 +9,7 @@ capability_tier: federation-substrate-knowledge
 floor_scope: [F1, F2, F7]
 tags: [math, statistics, geometry, probability]
 triggers: ["how many", "count", "rate", "ratio", "distribution", "probability", "expected value"]
+ecology_state: WARM
 ---
 
 # Know-Math — Mathematical Substrate

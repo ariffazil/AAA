@@ -1,6 +1,8 @@
 ---
 name: WELL-3baik-log
 description: "Capture 3baik Telegram replies into the wellbeing joy log."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # 3 Baik Hari Ini — reply capture

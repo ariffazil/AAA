@@ -9,6 +9,8 @@ dependencies:
   skills: [asi-agentic-governance, seal-discipline]
   files: [/root/AAA/governance/SUBSTRATE_TAXONOMY_2026-09-18.md]
 floor_scope: [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # 🌐 Substrate Taxonomy — Anti-False-Green State Discipline

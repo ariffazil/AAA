@@ -8,6 +8,8 @@ triggers:
   - "briefing pdf with colors"
   - "dark themed pdf"
   - "intelligence briefing"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Civic Intelligence PDF Generation

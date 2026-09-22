@@ -10,6 +10,8 @@ metadata:
     tags: [github, gh, git, pull-requests, issues, code-review, repos, auth, ci]
     category: software-development
     related_skills: [codebase-inspection, requesting-code-review]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GitHub

@@ -5,6 +5,8 @@ version: 1.0.0
 owner: Hermes
 risk_tier: low
 tags: [compensation, salary, negotiation, evidence, research, labour-market]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Compensation Claim Grading

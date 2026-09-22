@@ -9,7 +9,8 @@ metadata:
   hermes:
     tags: [TouchDesigner, MCP, twozero, creative-coding, real-time-visuals, generative-art, audio-reactive, VJ, installation, GLSL]
     related_skills: [ascii-video, manim-video]
-
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # TouchDesigner Integration (twozero MCP)

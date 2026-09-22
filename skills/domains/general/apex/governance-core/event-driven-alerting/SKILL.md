@@ -2,6 +2,8 @@
 name: event-driven-alerting
 description: "Use when designing what a scheduled job or monitor reports."
 owner: Hermes
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # Event-Driven Alerting
 
@@ -68,6 +70,31 @@ available evidence of compliance, and the room fills with exactly the murmur the
 to remove. Give silent work a real sink the producer can write to — an append-only record, the same
 one the delta gate already uses — and name that sink in the producer's instructions, so silence is
 provable by the *absence* of a channel message rather than by a message about absence.
+
+**A write-only sink is not a sink — it is a slow leak. Ship the reader with it.** An append-only
+destination that nothing aggregates becomes a place where undeclared decisions accumulate invisibly.
+Measured: a proposal queue with no reader reached **18× the size of the store it was meant to edit**
+in three days — structurally inadmissible, since the target had a hard cap — while nothing expired
+and no record carried a terminal status. Every prior cleanup had filed records into a subdirectory,
+which the loader still read, so the queue regrew from the same source.
+
+Three requirements turn a sink into something that can stay quiet *and* stay honest:
+
+- **A reader that emits.** A `report` giving counts by reason and by lane, the oldest unreviewed
+  item, and one verdict line. Schedule it to fire only when the *distribution* changes, so the reader
+  is itself delta-gated and cannot become a second noisy channel.
+- **A terminal state per record.** `PROPOSED → {APPLIED | REJECTED | SUPERSEDED}`. Without it a
+  reader cannot separate an untouched backlog from an approved one, and the same record is
+  re-decided forever. A status field that is always `null` is the sink-side twin of an output stage
+  with no named terminal state.
+- **A retention rule.** Age out or collapse old records, and *count what was collapsed*. A sink with
+  no expiry converts "we are being quiet" into "we have stopped looking", and the two are
+  indistinguishable from outside.
+
+Verify the loader's recursion before trusting any cleanup: if it globs recursively, filing records
+into a subdirectory hides them from humans while leaving them fully visible to the machine — and the
+next session will "fix" the same backlog again. A reader nobody schedules is decoration: the
+sink-side version of the watchdog with no listener.
 
 ## Delta gate — the mechanism that makes it quiet
 

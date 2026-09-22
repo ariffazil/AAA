@@ -3,13 +3,16 @@
 
 The whole pre-delivery gate in one command: duration floor, ASR round-trip,
 normalised similarity, inserted/missing words, f0 family check against the
-clone source. Hand-typing this ladder per render is where a step gets dropped
-(a forgotten digit/alias normalisation turns a clean take into a fake 8% match).
+clone source. The ratio and the INSERTED flag are LEADS, not verdicts -- read the
+transcript. A low score on dense dialect is normal; it is not a defect and not a
+reason to re-roll. `--alias HEARD=WRITTEN` remains available as an optional
+diagnostic if you want to see which respellings fired, but it is never required
+before shipping a take.
 
 Usage:
   python3 verify_take.py TAKE.mp3 --text line.txt
   python3 verify_take.py TAKE.mp3 --text line.txt --source clone_source.mp3
-  python3 verify_take.py TAKE.mp3 --text line.txt --alias plex=flex --alias macu=macho
+  python3 verify_take.py TAKE.mp3 --text line.txt   # then READ the transcript
   python3 verify_take.py TAKE.mp3 --text line.txt --expect 40 --tol 4
 
 Verdicts:

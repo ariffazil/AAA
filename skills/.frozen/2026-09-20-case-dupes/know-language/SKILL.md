@@ -9,6 +9,7 @@ capability_tier: federation-substrate-knowledge
 floor_scope: [F1, F7]
 tags: [language, semantics, framing, code-switch, BM-English]
 triggers: ["word choice", "phrasing", "metaphor", "tone", "register", "shadow word"]
+ecology_state: WARM
 ---
 
 # Know-Language — Language Substrate

@@ -15,6 +15,8 @@ triggers:
   - "do we have analytics"
   - "site traffic numbers"
   - "can we measure readership"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Observability Completeness Audit

@@ -8,6 +8,8 @@ risk_tier: T2
 floor_scope: [F2, F6, F11]
 autonomy_tier: ANNOUNCE
 forged_from: SESSION-2026-08-21 (MyKad RM7.5b + Taufik KLCC + 33 Bayang Anwar)
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Civic & Shadow Editorial — arif-fazil.com

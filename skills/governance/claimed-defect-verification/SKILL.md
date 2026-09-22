@@ -5,6 +5,8 @@ version: 1.0.0
 owner: Hermes
 category: governance
 tags: [probe, defect, handshake, false-positive, attribution, verification]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Claimed Defect Verification
@@ -103,6 +105,84 @@ The cheap falsification: take the mechanism the previous report named and measur
 that is *named* while the measured evidence sits one field away (a timing value, a status code, a
 scope) is not a cause — it is a story attached to a symptom. Retract it **in the artifact that carries
 it**; a correction left in chat gets re-cited by the next reader.
+
+### Check 7 — is the reported defect about the object the probe actually measured?
+
+The probe can be healthy, complete its whole lifecycle, use the right name — and still be measuring
+something else entirely. Three instances of this single class surfaced in one machine sweep:
+
+| Reported | What the probe measured |
+|---|---|
+| service *X* is **dead** | a **different service's port**; the named service answered on its own port the entire time |
+| **no backup** | a boolean whose real meaning was *"no backup process is running this instant"* — the jobs were daily, so it read false ~21 h of every day |
+| job *Y* never runs | the file was **not executable** while the caller used the path directly — the job had never executed once since it was written |
+| ledger *L* is **missing** records it plainly has | the **taxonomy inside the ledger directory**. A seal store often holds several parallel logs (`outcomes.jsonl`, `SEALED_EVENTS.jsonl`, `seal_chain.jsonl`, `local_seals.jsonl`); grepping the wrong one returns a clean zero and manufactures absent work. Identify which log the *writer* appends to before the grep, then say which path you searched. |
+
+**Detection rule: when a defect has persisted a long time with no downstream consequence, suspect
+the reporter before the object.** A real outage produces complaints; a phantom produces only
+itself. This class **clusters** — finding one licenses a sweep for siblings across every port,
+boolean and scheduled path in the same refresh.
+
+**Verification: re-measure with the object's own instrument, never through the reporting surface.**
+
+- service identity — `ss -ltnp | grep :<port>`; `systemctl show <unit> -p ExecStart`; then `curl`
+  the object's own health path and check the body names *that* service
+- a token whose name is broader than its meaning — read the code that emits it, not the banner
+  text built from it
+- "the job never ran" — `ls -l` the exact path the caller executes, then `tail` that job's own log
+- an age or interval — read the counter's unit before subtracting
+  (`ExecMainStartTimestampMonotonic` is microsecond and monotonic, not epoch)
+
+**Fix the emitter, not the display.** Correcting the rendered line leaves the false signal
+regenerated for every other consumer. When the defect is a *token*, rename it to the state it
+actually knows (`backup ok 22h` / `backup STALE 30h`) instead of a boolean that flips on the wrong
+fact.
+
+### Check 8 — can the probe physically see the thing it is looking for?
+
+A probe can be healthy, complete its whole lifecycle, and measure the right object — and still
+report a false negative, because its **search space excludes the answer**. Before relaying a
+`0 findings` or an `absent` verdict, enumerate what the check actually looks at: which exact
+filenames, which directory prefixes, which glob depth. Then ask whether the object could
+legitimately live outside that space.
+
+| Reported | The probe's actual search space |
+|---|---|
+| "agent X has no identity file" | a hard-coded pair of filenames (`IDENTITY.md`, `agent-card.json`). X stored `identity.json` — a third accepted name — and its public card lived under an `_external/` directory the scan **skipped by an `_*` prefix rule**. X had identity in two places at once. |
+
+The generalisable rule: **a fixed filename list plus a skipped directory prefix manufactures
+absence.** Identity, config and manifest files routinely exist under several accepted names, and
+org/mirror subdirectories are exactly where the public copy lives. A probe that knows one naming
+convention and one layout will report every conforming object outside both as missing.
+
+**A false negative needs the same warrant as a false positive.** "I found N defects" and "I found
+zero" are both statements about the probe first. When a report's *only* red items turn out to be
+scan artifacts, the finding is not "no problems exist" — it is "this probe cannot see the objects
+it claims to check", and the count it printed is evidence in neither direction. A report whose
+defects are all phantom is as wrong as one whose clean bill is all phantom.
+
+### Check 9 — is the measured artefact the one the writer appends to?
+
+Distinct from Check 7 (wrong object) and from Check 3 (wrong denominator): here the surface named
+is *right* and the file behind it is *wrong*, because a subsystem keeps several parallel stores and
+the probe guessed which one matters.
+
+Observed: a health report printed `Seal chain: 267 entries, last seq=40` from a chain file that had
+not been written in four days — five consecutive daily reports carrying the identical line — while
+live seal activity was being recorded in a **different** file in the same vault, written that
+morning. The report was reading `seal_chain.jsonl`; the writing had moved to `SEALED_EVENTS.jsonl`.
+
+- **Find the writer's target before reading a quiet store as health.** `grep -rn '<store-name>'`
+  across the scripts and unit files, or read the writer's own `open(..., 'a')`.
+- **Two readings that resolve to the same concept can disagree, and the disagreement is the
+  finding** — never average them or pick the convenient one. Report both and name which the writer
+  appends to.
+- **A quiet store is not a healthy store.** Freeze and success are indistinguishable from the
+  reading side; only a freshness assertion separates them (see `background-monitor-design`).
+- **Leave the verdict open when the evidence supports both readings.** A store that may have been
+deliberately superseded (dead pointer) and a store whose writer may have broken are different
+diagnoses needing different repairs — say which readings fit, and that you could not distinguish
+  them, rather than picking the more dramatic one.
 
 ### Your own change is a suspect — and so is the claim that you caused it
 

@@ -8,6 +8,7 @@ risk_tier: high
 floor_scope: ['F1', 'F2', 'F4', 'F11', 'F13']
 autonomy_tier: T2
 ecology_state: WARM
+capability_tier: fed-agent-subagent
 ---
 # ⚒️ MCP Governance Wrapper — Deterministic Interception Architecture
 

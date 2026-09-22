@@ -18,6 +18,8 @@ triggers:
   - "!gold !nasilemak !body"
   - "MCP backend product"
   - "interface is telegram"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Telegram-MCP Product Line

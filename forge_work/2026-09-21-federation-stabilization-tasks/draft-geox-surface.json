@@ -1,0 +1,51 @@
+{
+  "organ": "geox",
+  "schema_version": "0.1.0",
+  "generated_at_utc": "2026-09-20T18:25:31.983040+00:00",
+  "generator": "FI-008 draft generator 2026-09-21",
+  "canonical": [
+    "geox_geomechanics",
+    "geox_glof",
+    "geox_paleobiodb_query",
+    "geox_well_ingest",
+    "geox_well_qc",
+    "geox_petrophysics",
+    "geox_seismic_ingest",
+    "geox_seismic_interpret",
+    "geox_basin",
+    "geox_prospect",
+    "geox_contrast_metabolize",
+    "geox_temporal",
+    "geox_map",
+    "geox_source",
+    "geox_spatial",
+    "geox_deep_time",
+    "geox_claim",
+    "geox_model",
+    "geox_well",
+    "geox_seismic_compute",
+    "geox_calibration_register_witness",
+    "geox_extract_display_proxy",
+    "geox_register_native_source",
+    "geox_extract_native_trace",
+    "geox_list_registered_sources"
+  ],
+  "compat": [],
+  "private": [],
+  "deprecated": [],
+  "metadata": {
+    "last_verified_utc": "2026-09-20T18:25:31.983040+00:00",
+    "verifier": "FI-008 (verified via tools/list 25 == 25; resources/list 53 covers all 24 ui:// URIs)",
+    "contract_drift_status": "CONSISTENT",
+    "last_drift_check_utc": "2026-09-20T18:25:31.983040+00:00",
+    "federation_release_ref": "sha256:a8c2612056b527086f85d47421af7e26399297c226c8377012e4241fd1a7af3b"
+  },
+  "rationale": "GEOX is the cleanest organ: 25 canonical tools, 24 are UI-bound, all ui:// URIs round-trip via resources/read. The catch-22 ('use geox_surface_status' itself not on surface) is a GEOX-internal RT1 guard that must read from THIS surface.json. DRAFT \u2014 GEOX team ratification required for full reachability zero invariant.",
+  "reachability_invariants": [
+    {
+      "trigger": "RT1 guard rejects tool call",
+      "must_resolve_to": "a tool in this file's canonical or compat array",
+      "rationale": "eliminate GEOX catch-22 (Reachability(capability)=0)"
+    }
+  ]
+}

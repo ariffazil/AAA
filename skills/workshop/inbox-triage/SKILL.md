@@ -11,6 +11,8 @@ metadata:
   hermes:
     tags: [mail, gmail, mailread, triage, inbox]
     related_skills: [email-outbound]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Inbox Triage — Reading Mail and Deciding What Needs the Human

@@ -1,6 +1,8 @@
 ---
 name: ped-hormone-advisory
 description: Use when asked about PEDs, TRT, peptides, or prep rules.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # PED & Hormone Advisory

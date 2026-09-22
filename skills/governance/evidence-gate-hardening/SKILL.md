@@ -15,6 +15,8 @@ triggers:
   - "a verdict tool that can be talked past"
   - "is this control real"
 tags: [governance, validation, evidence, audit, adversarial, gate, verification]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Evidence-Gate Hardening
@@ -148,6 +150,81 @@ resolver's scope grants the gate new reach over private data. Treat it as a sepa
   quoting the withdrawn figure.
 - **A malformed branch masking the logic.** Validate field and layer names through the same function
   you are testing, or an early return will hide the bug you are chasing.
+- **Substring matching is matching, not resolving.** An anchor lexicon tested with `k in text.lower()`
+  turns a coincidence of spelling into evidence of a signal: `"kemas kini"` contains `"emas"`, so
+  deleting the gold line still PASSED the gold-anchor rule. Match on word boundaries. This is the
+  false-positive twin of §4, and it is why a matcher that only ever says ACCEPT is as suspect as a
+  gate that only ever says PASS.
+- **Alternation order matters when a trailing `\b` follows.** `\b(?:...|Sep|...)\b` never matches
+  `"Sept"` — the boundary after `Sep` needs a non-word character and `t` is a word character. List the
+  longer form first (`Sept|Sep`), and after any pattern change confirm it still covers every input
+  spelling actually present in the corpus.
+- **A time-dependent rule makes its own fixtures decay.** A gate that expires dated sources will, on a
+  timer, start failing every positive control built from a dated fixture — measured 20/20 → 14/20 with
+  no one editing the file, every failure a control whose fixture had aged past the window. A suite that
+  always fails gets ignored, and a gate nobody runs is not a gate. Re-stamp fixture dates to "now" at
+  load, and let the freshness rule's own cases supply their OWN relative dates so it stays exercised in
+  both directions (an old source must HOLD, a fresh one must PASS). This is not the §5 "editing the
+  fixtures" defect: the fixture tests *structure*, and the rule keeps dedicated cases for its own
+  behaviour.
+- **An undefined name makes the gate fail closed for EVERY caller.** A reference to a constant nobody
+  defined leaves the module importing cleanly and raising `NameError` on every invocation — so the
+  symptom arrives as downstream breakage and reads as an input problem, not a gate problem. After any
+  edit to a gate file, **execute** it end-to-end (`python3 <gate>.py <control-input>` must print a
+  verdict, not a traceback). Import success is not correctness, and a sibling writer can leave a
+  half-applied edit that is syntactically valid and functionally dead.
+- **Anchors are layer-specific.** A topic word that is enough to classify a candidate (`kadar`, `risk`
+  → "this is about money") is not enough to prove a *published* line carries that lane for a reader.
+  Do not reuse one lexicon across a pool layer and a publication layer; prove the rule by confirming
+  that deleting the anchor line flips the verdict.
+- **A config-drift freeze is the fail-closed twin of a gate that accepts everything, and it is worse,
+  because its workaround becomes the norm.** A store-validating writer commonly validates the WHOLE
+  merged record set rather than the incoming change. One pre-existing field that the schema learned to
+  require *later* — or one value the runtime accepts and acts on but the gate's allow-list never
+  learned — therefore blocks **every** future write, not just that record. Measured shape: a validator
+  refusing 100% of patches across two mechanical classes (records using a delivery form that was
+  working fine, plus records predating a newly-required field), where the gate was the only component
+  actually failing.
+
+  **Why it outranks the individual errors:** with the sanctioned writer refusing every patch, each
+  subsequent change becomes a direct edit — which is precisely how the drift accumulated — and the
+  receipt chain that made changes reviewable stops existing while the changes keep landing. The
+  bypass is now the process of record and nothing records it. A gate that only ever rejects is
+  indistinguishable in effect from a gate that only ever passes: both get routed around, and the
+  routing-around is invisible in the audit trail.
+
+  **Classify by TYPE before concluding anything is broken.** Group the rejections rather than counting
+  them: all errors landing in one or two mechanical classes means the store is healthy and the gate's
+  *config* is stale — fix the config, do not edit the records. A long tail of unrelated errors means a
+  genuine audit. Also report how many records **do** conform; "19 errors" reads as a ruined store, the
+  same 19 against "20 of 36 conform" reads as a config lag.
+
+  **When a working value is rejected, the allow-list is the bug.** Match the gate's accepted set
+  against what the runtime actually accepts and delivers on — not against a fixed list compiled at
+  authoring time. Verify the rejection against live behaviour before believing it: a target the
+  system processes successfully every day is not an invalid target because a constant says so.
+
+  **Prefer a shape match to an exhaustive literal list.** A list of accepted values goes stale on a
+  *valid* input the moment the runtime grows a supported form — e.g. a scheduler that resolves both
+  `channel:<id>` and `channel:<id>:<thread>` will have a working thread-scoped record rejected by a
+  literal id list. Match the shape (a regex on the address grammar) plus a short explicit set for
+  genuine non-address routing tokens. Validate **per comma-separated element**, not on the whole
+  joined string: a multi-target value fails an exact-string test on the first legal combination
+  nobody anticipated.
+
+  **A required field nobody reads is not a control — grep for a consumer before backfilling it.**
+  When the fix is "the schema requires field X and old records lack it", check whether any code
+  reads X before you add it to twenty records. If none does — the runtime reads a neighbouring field
+  instead — then the backfill is **conformance, not correctness**: it unblocks the writer and changes
+  no behaviour. Do it for that reason, say so explicitly, and leave wire-or-drop to the owner.
+  Inventing a meaning for a field so the gate looks satisfied is worse than the gate being wrong,
+  because it converts a visible config gap into an invisible semantic one. Same test applies to any
+  field the gate demands: *who reads this, and what do they do differently because of it?*
+
+  **Never present a bypassed change as gate-approved.** If the sanctioned writer cannot be used, the
+  honest options are to fix its config (reversible, receipted) or to apply directly *and say so,
+  naming the rollback*. Reporting a direct edit as validator-applied is the transition lie: the
+  receipt will not exist, and the next reader will believe it does.
 
 ---
 
@@ -166,6 +243,14 @@ Then verify the claims of whoever wrote the fix yourself. A subagent's summary i
 the suites and the probe battery from your own shell, and compare the file hashes it quoted against
 the hashes on disk. Report `PRODUCED` / `TESTS-GREEN` / `DEPLOYED` / `BLOCKED_AT_GATE` as distinct
 states — a patch that is green but not running is not done.
+
+**Snapshot the baseline BEFORE you dispatch, or you cannot audit the result at all.** Take file
+hashes, repo `HEAD`s, and a copy of any store the work may touch *before* handing the task out. The
+reason is not bookkeeping: without a pre-state, the only account of what changed is the child's own
+report, and a report cannot be diffed. With one, "what did it actually change" is a recomputation
+rather than an act of trust — and it also catches the edit nobody mentioned. Snapshot into a
+separate drafts directory, not into the tree under work (a stray file left in a watched repo shows
+up as the child's own uncommitted change and confuses the audit).
 
 **Dispatch the fix and the audit separately.** One agent writes the change; a different one sweeps the
 same defect class read-only across the rest of the surface. An agent auditing its own fix finds what

@@ -2,6 +2,8 @@
 name: chokepoint-enforcement-audit
 description: "Use when a gate or chokepoint claims to enforce."
 owner: A-FORGE
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 # Chokepoint Enforcement Audit
 
@@ -124,3 +126,28 @@ is not tested.
   disagree, the weaker one is the one to trust until tested.
 - **Present tense is a claim, not a status.** "The boundary is enforced" is only
   true on the day the suite last returned a passing verdict.
+
+## A patch to a gate module without a process restart is a no-op
+
+Long-running processes that `import` the gate load it once at start and keep that copy in memory
+until the next boot. Editing the source on disk changes nothing until the process restarts.
+Measured shape: a dedup gate was patched to fix a window-basis bug (a one-line arithmetic change);
+the consumer worker was up for 45 hours and imported the pre-fix module 2 minutes before the patch
+landed; 111 identical P1 alerts were emitted over those 45 hours for one unchanged standing
+condition. None of the 112 events in the ledger carried the new dedup field that the patched code
+always writes — so the defect was visible in receipts that never got a chance to write.
+
+The order is **patch → restart → re-probe**, in that sequence, every time:
+
+1. Patch the source. Diff is meaningless without a reload.
+2. Restart the consumer (or signal it to re-import, if it supports it — most don't).
+4. Re-probe by triggering the same condition the gate was supposed to suppress. A receipt with the
+   new field, or a no-deliver response, is the only proof the patch is live.
+3. State the restart in the seal: which PID was retired, which PID is the new one, at what time. A
+   patch record without a restart receipt is a receipt for a file change, not for a behaviour change.
+
+For anti-storm gates specifically: the dedup field MUST be written on every emit, not only when
+notify=True. A receipt that omits the dedup verdict was produced by code that never ran the gate —
+and the gate is the only thing that prevents the next flood. State `delivery_health: SUPPRESSED`
+explicitly when notify is skipped, so the ledger shows the gate fired even though no Telegram
+message went out.

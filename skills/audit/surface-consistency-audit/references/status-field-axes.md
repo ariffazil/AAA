@@ -13,6 +13,7 @@ because they answer different rows.
 |---|---|---|
 | source vs built | does the repo head match the compiled artifact? | VCS head, commit marker, commit-map |
 | built vs deployed | is the running thing the thing that was built? | deploy marker, image digest, import path |
+| deployed vs canonical ref | does the running thing match the *declared target*, or only itself? | the remote ref, not a local copy — see below |
 | artifact vs build | did *this* component change, or only something adjacent? | per-component / per-module hashes |
 | contract vs registry | does the declared set match the registered set? | enum length vs registry length, per-key diff |
 | advertised vs callable | is it published, registered, *and* does dispatch resolve it? | name lists vs a live read-path dispatch |
@@ -43,6 +44,48 @@ means at-zero *and* never-measured. Annotate the status, or the ambiguity stays 
 Quote the axis with the value, every time: not "drift is true" but "source-vs-built drift is true
 while artifact-vs-build drift is false". If you cannot name the axis, you have not separated the
 axes yet — and the contradiction you are about to report may be one you created yourself.
+
+## The comparand can be self-referential — and then there is no external axis at all
+
+A drift field is only as good as the reference it resolves against. Before trusting one, open the
+function that computes it and name both sides.
+
+Measured: `deployment_drift_status` was computed as built-vs-live, where *both* sides derived from
+the same working tree. It therefore reported `aligned` while the deployment sat six commits ahead of
+the canonical remote. The same field had earlier reported drift over a stamp taken from the repo
+head — so over one night it produced a false positive and a false negative, from one blind spot.
+
+Two probes settle it:
+
+```bash
+# 1. what does the field compare against?  any `origin/`, `remote`, or checksum of the SOURCE artifact?
+grep -nE 'origin|remote|rev-parse|sha256' <the_compute_function>
+# 2. can the two sides ever become equal?  if it compares a branch head to origin/main,
+#    then on a feature branch they NEVER resolve -> permanent HOLD, or a silent `aligned`.
+f()  # call it, print every key, read the three commit values side by side
+```
+
+If both sides come from the same artefact, the field answers "is this thing consistent with itself"
+— which is a real question, but not the one its name claims. Rename it, or add the missing
+reference. Never leave the name implying an external comparison that never happens.
+
+## The value vocabulary: check the producer can emit what the consumer compares
+
+When two modules exchange a status string, the consumer's literal is a claim about the producer.
+
+Measured: the producer emitted `"drift_detected"` / `"aligned"`; a consumer in another module
+tested `== "drifted"`. That branch was unreachable — always false, in every state, forever — and it
+sat inside a vitals roll-up that would therefore report drift only when a *different* field happened
+to be populated.
+
+```bash
+grep -rn "== *'\?\"\?\(drifted\|degraded\|failed\)" <tree>   # every literal compared
+# then, for each, grep the producer for that literal in an EMIT position
+```
+
+Two producers and three words is the tell. Enumerate the emitted vocabulary from the producer and
+the compared vocabulary from every consumer, and diff them; the unmatched literals are dead
+branches that read as guards.
 
 ## Sibling-surface sweep
 

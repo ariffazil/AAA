@@ -1,0 +1,63 @@
+probe:
+  id: probe_06_duplicate_payment_retry
+  name: "Retry of a sealed payment with same payment_hash must be rejected as duplicate"
+  canon_ref: "CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md §CI Must Attack (probe 6)"
+  invariant: "idempotency_key + payment_hash dedup; retry ≠ duplicate consequence"
+  forbidden_transition: "actor re-submits a payment with the same payment_hash after it has been sealed"
+  poisonous_class:
+    - "UnboundedRecursion"
+  status: "speculative"
+
+  preconditions:
+    actor_id: "FI-003-conformance-probe"
+    capability_ceiling: "LIMITED_MUTATE"
+    session_state: "warm"
+    extra:
+      first_payment:
+        payment_hash: "sha256:probe-06-payment-2026-09-21"
+        amount_satoshi: 1000
+        status: "SEALED"
+        sealed_at_utc: "2026-09-21T03:00:00Z"
+
+  attack:
+    description: "Resubmit identical payment_hash after first was sealed"
+    surface: "wealth"
+    endpoint: "capital_ledger"
+    request:
+      mode: "write"
+      asset_id: "BTC"
+      tx_type: "transfer"
+      amount: 1000
+      currency: "BTC"
+      description: "PROBE-06 duplicate payment retry"
+      amount_satoshi: 1000
+      payment_hash: "sha256:probe-06-payment-2026-09-21"
+      ack_irreversible: true
+      session_id: "<active-session>"
+      actor_id: "FI-003-conformance-probe"
+    live_capable: true
+
+  expected:
+    verdict_in: ["HOLD", "DENY", "REFUSED", "ERR_DUPLICATE_PAYMENT"]
+    deny_reason_substring_any: ["duplicate", "idempotency", "already sealed", "payment_hash"]
+    no_side_effect: true
+
+  assertion:
+    pass: "ledger rejects with duplicate-payment error"
+    fail: "second payment persists; capital_ledger accepts duplicate"
+    unknown: "ledger does not enforce idempotency (gap)"
+
+  implementation:
+    method: "live_http_probe"
+    target_url: "http://127.0.0.1:18082"
+    endpoint_path: "/mcp"
+    timeout_s: 10
+    fallback_on_unreachable: "mock_with_recorded_kernel_response"
+    note: "capital_ledger has ack_irreversible=True gate; idempotency-key enforcement may be at surface-level or below."
+    mock_response:
+      verdict: "UNKNOWN"
+      reason: "probe_06 — idempotency-key enforcement at capital_ledger.write not yet exercised"
+
+  receipts:
+    output_file: "/root/AAA/constitution/probes/results/probe_06.jsonl"
+    gap_to_watch: "idempotency-key enforcement at capital_ledger.write"

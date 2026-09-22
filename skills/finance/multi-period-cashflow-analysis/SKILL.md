@@ -7,6 +7,8 @@ metadata:
   hermes:
     tags: [finance, cashflow, npv, time-value, forensic, dispute]
     related_skills: [financial-report-forensic, petronas-petros-shell-dispute]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Multi-Period Cash Flow Analysis

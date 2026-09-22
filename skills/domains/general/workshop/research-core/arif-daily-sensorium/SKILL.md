@@ -21,6 +21,8 @@ triggers:
   - "should I attend"
   - "evaluate this event"
   - "is this worth"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Arif Daily Sensorium

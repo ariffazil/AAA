@@ -7,6 +7,8 @@ license: MIT
 metadata:
   hermes:
     tags: [governance, epistemology, void, text-reality, humility]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Void Paradox Doctrine — Text ≠ Reality

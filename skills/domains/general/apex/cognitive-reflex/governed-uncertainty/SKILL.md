@@ -14,6 +14,8 @@ triggers:
   - "witness mode"
 floors: [F1, F2, F4, F6, F7, F9, F13]
 tags: [uncertainty, witness, ambiguity, human, cognitive-reflex, rasa]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Governed Uncertainty — state beneath words

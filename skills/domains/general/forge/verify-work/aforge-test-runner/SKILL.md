@@ -7,6 +7,8 @@ owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F11]
 autonomy_tier: T0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # A-FORGE Test Runner — Canonical Commands & Pitfalls

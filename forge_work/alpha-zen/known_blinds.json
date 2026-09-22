@@ -1,0 +1,28 @@
+{
+  "schema": "arifos.alpha_zen.known_blinds.v1",
+  "registered_at": "2026-09-22T21:30:00+08:00",
+  "registered_by": "hermes-edge-bridge",
+  "rationale": "Once-only registry of organs/surfaces whose absence is permanent, not transient. The card must cite this ID instead of writing 'fail-soft GEOX' every night.",
+  "blinds": [
+    {
+      "id": "blind.geox.atmosphere.v1",
+      "domain": "atmosphere / air-quality / haze",
+      "surface": "GEOX organ",
+      "tools_consulted": [
+        "mcp__geox__geox_deep_time",
+        "mcp__geox__geox_temporal",
+        "mcp__geox__geox_source",
+        "mcp__geox__geox_seismic_*",
+        "mcp__geox__geox_well*",
+        "mcp__geox__geox_basin",
+        "mcp__geox__geox_petrophysics"
+      ],
+      "finding": "ZERO tools registered for atmospheric / AQI / haze / wind. GEOX is Earth-only (geology, geophysics, geomechanics, paleontology).",
+      "fallback": "web search with explicit provenance (APIMS / DOE / NST / The Edge) labelled in source. Treat as REPORTED, not OBSERVED.",
+      "first_observed": "2026-09-22T21:26:27+08:00",
+      "first_card": "2026-09-22-night.json",
+      "do_not_reinvestigate_before": null,
+      "severity_if_missed": "low — fallback path proven across 5 nights (Sep 18-22)"
+    }
+  ]
+}

@@ -3,6 +3,8 @@ name: human-advisory-discipline
 description: "Use when advising a human on a real-world decision."
 version: 1.0.0
 license: MIT
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Human Advisory Discipline
@@ -300,6 +302,15 @@ wrong for this person, at this moment, under this constraint.
 - `references/sleep-and-recovery.md` — sleep architecture, sedative rebound, magnesium salt
   selection, OTC sedation. Load when the topic is sleep, fatigue or recovery.
 - `references/business-advisory-capital-constrained.md` — capital-constrained entrepreneurship advisory pattern.
+- `references/institutional-communication-patterns.md` — AI-generated workplace emails,
+  colleague-role assumption traps, MSS exit as communication reset, authorship
+  claim before departure, fused-framing (workplace grievance welded to unprovable
+  motive attribution), parasympathetic limit on late-hour decisions, vindication-evidence
+  retrieval from `/root/memory/evidence/` and `/root/memory/H5-scars/`, post-shadow-mode
+  analytic pivot, and vocabulary to avoid when the human attributes motive to others.
+  Load when analyzing internal emails, advising on response strategy to institutional
+  messages, or handling a late-hour complaint that fuses a real grievance with an
+  unprovable motive read.
 - `references/malaysian-employment-separation.md` — MSS/VSS separation offers and
   restructuring-driven career decisions: package-to-months conversion, statutory-minimum
   comparison, the LHDN exemption retraction trap, EPF void, the "is there a door" gate. Also

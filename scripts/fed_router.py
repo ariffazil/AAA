@@ -46,16 +46,71 @@ from fastmcp import FastMCP
 # ── Zen Priority Matrix ───────────────────────────────────────────────
 class RankGate:
     """Declarative priority adjustments — isolates reasoning from execution."""
-    VISION_MULEROUTER_BOOST = -2
-    VISION_NATIVE_BOOST = -1
+    # PHASE-5 ROUTING MINIMALISM (FED_STABILIZATION_MANDATE 2026-09-22):
+    # influence demoted where signal is legacy/stale/unknown. Nonzero = must
+    # justify existence by witnessed origin.
+    VISION_MULEROUTER_BOOST = 0   # VOID: unwitnessed provider preference (was -2)
+    VISION_NATIVE_BOOST = -1      # DERIVED: SOT vision_models membership (kept)
     NO_TELEMETRY = 1  # v3.3.1: was 2 — over-demoted every route while the telemetry loop
     # was unclosed. /report ingress now live (FED v3.3); light penalty until samples
     # accumulate. Revisit to 2 once median sample_count > 5 across live routes.
-    LOW_TELEMETRY = 1
-    LATENCY_DEGRADED = 3
-    BALANCE_SOFT_DEMOTE = 5
-    RATE_LIMITED = 8
-    BALANCE_HARD_DEMOTE = 10
+    LOW_TELEMETRY = 1              # DERIVED: telemetry-presence meta-signal (kept)
+    LATENCY_DEGRADED = 0           # PHASE-3 UNKNOWN: route_latency has NO timestamp — age
+    # unprovable => stale-or-not unknowable => fail-closed, influence demoted (was 3)
+    BALANCE_SOFT_DEMOTE = 0        # PHASE-3 UNKNOWN: providers.balance has no witness chain
+    # (mulerouter displayed $49.92/conf0.99 while chat 402 — witnessed false). Fail-closed (was 5)
+    RATE_LIMITED = 8               # WITNESSED: route_health status (kept)
+    BALANCE_HARD_DEMOTE = 0        # PHASE-3 UNKNOWN: same balance chain (was 10)
+    # ── FED Truth Layer v2 (F13 verdict 2026-09-22): Witness Decay + Scar Gravity
+    WITNESS_STALE = 2   # evidence 15-60 min old
+    WITNESS_AGING = 4   # evidence 1-24 h old — old truth is drift
+    SCAR_GRAVITY = 3.0  # max priority penalty when provider reliability -> 0
+    QUALITY_LOW = 3     # observed-answer quality < 0.6 (witness_class=quality)
+
+
+def _witness_freshness(ts: str | None) -> tuple[str, float]:
+    """Witness Decay: FRESH<=15m STALE<=60m AGING<=24h EXPIRED>24h."""
+    if not ts:
+        return "EXPIRED", float("inf")
+    try:
+        t = datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        if t.tzinfo is None:
+            t = t.replace(tzinfo=timezone.utc)
+    except ValueError:
+        return "EXPIRED", float("inf")
+    age_min = (datetime.now(timezone.utc) - t).total_seconds() / 60.0
+    if age_min <= 15:
+        return "FRESH", age_min
+    if age_min <= 60:
+        return "STALE", age_min
+    if age_min <= 1440:
+        return "AGING", age_min
+    return "EXPIRED", age_min
+
+
+_RELIABILITY_CACHE: dict | None = None
+_RELIABILITY_MTIME: float = -1.0
+
+
+def _provider_reliability(provider_id: str) -> float:
+    """Scar Gravity: providers remember consequences, not merely incidents.
+    Reads /root/.config/fed-provider-reliability.json (build_provider_reliability.py).
+    Neutral 1.0 when absent. Cached by mtime."""
+    global _RELIABILITY_CACHE, _RELIABILITY_MTIME
+    path = "/root/.config/fed-provider-reliability.json"
+    try:
+        mt = os.path.getmtime(path)
+        if _RELIABILITY_CACHE is None or mt != _RELIABILITY_MTIME:
+            with open(path, encoding="utf-8") as fh:
+                _RELIABILITY_CACHE = json.load(fh).get("providers", {})
+            _RELIABILITY_MTIME = mt
+    except Exception:
+        _RELIABILITY_CACHE = {}
+    prov = (_RELIABILITY_CACHE or {}).get(provider_id) or {}
+    try:
+        return float(prov.get("reliability", 1.0))
+    except (TypeError, ValueError):
+        return 1.0
 
 # ── Background Task Executor ──────────────────────────────────────────
 _FED_BACKGROUND_TASKS = ThreadPoolExecutor(max_workers=4, thread_name_prefix="fed_sidecar")
@@ -670,6 +725,17 @@ def fed_route_engine(
         health_status = health["status"] if health else "LIVE"
         health_flag = None
 
+        # ── FED Truth Layer v2: Witness Decay — old truth is drift ────
+        # Evidence ages: FRESH<=15m STALE<=60m AGING<=24h EXPIRED. A LIVE row
+        # whose witness expired is no longer a witnessed fact — demote.
+        _wt = (health or {}).get("witness_time") or (health or {}).get("last_checked")
+        _freshness, _fage = _witness_freshness(_wt)
+        if health_status == "LIVE" and _freshness == "EXPIRED":
+            health_status = "DEGRADED"
+            health_flag = "WITNESS_EXPIRED"
+        elif health_status == "LIVE" and _freshness in ("STALE", "AGING"):
+            health_flag = f"WITNESS_{_freshness}"
+
         if health_status in ("DEGRADED", "DEAD"):
             # LiteLLM cooldown: skip failing deployments entirely.
             # Zen 2026-08-13: "DEAD" added. Step 1 only filters DEAD via provider
@@ -697,6 +763,22 @@ def fed_route_engine(
             priority += RankGate.VISION_NATIVE_BOOST
         if health_flag == "RATE_LIMITED":
             priority += RankGate.RATE_LIMITED  # Heavy demotion — last resort
+        # ── FED Truth Layer v2: Witness freshness penalty + Scar Gravity ──
+        if health_flag == "WITNESS_STALE":
+            priority += RankGate.WITNESS_STALE
+        elif health_flag == "WITNESS_AGING":
+            priority += RankGate.WITNESS_AGING
+        _wscore = (health or {}).get("witness_score") if health else None
+        try:
+            if _wscore is not None and float(_wscore) < 0.6:
+                priority += RankGate.QUALITY_LOW
+                health_flag = health_flag or "QUALITY_LOW"
+        except (TypeError, ValueError):
+            pass
+        reliability = _provider_reliability(provider_id)
+        if reliability < 1.0:
+            # Scar Gravity: weight of remembered consequences scales the demotion.
+            priority += round(RankGate.SCAR_GRAVITY * (1.0 - reliability), 2)
 
         # ── Step 5: BALANCE GATE dual-track ──────────────────────────
         balance = bal["balance_usd"] if bal else None

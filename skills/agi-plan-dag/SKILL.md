@@ -45,6 +45,8 @@ floor_scope:
 - F4
 - F8
 - F11
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # arifos-plan-dag (O_Ω Orchestration Layer)

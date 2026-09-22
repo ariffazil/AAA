@@ -1,6 +1,8 @@
 ---
 name: financial-distress-data-lanes
 description: Use when pulling company distress data from filings.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Financial Distress Data Lanes
@@ -95,6 +97,29 @@ A third mode defeats both detectors: the asset changes hands legitimately. No
 default, no falsification, no number moves. When two parties can invoice for the
 same thing (PETRONAS vs Petros vs Shell MDS), the arithmetic stays valid and stops
 meaning anything. Detect it by reading contracts and jurisdiction, not ledgers.
+
+## Rule 9 — Separate the firm's survival from the shareholder's
+
+A distance-to-barrier score measures **the firm**. It says nothing about the person holding the
+share, and the two diverge completely: the company keeps trading while its equity holders are wiped
+out. State the model's scope in the artifact — *this scores the firm, not you* — or the reader hears
+a survival verdict about their own position.
+
+Two mechanisms do the damage, and both are invisible on a price chart drawn from adjusted history:
+
+- **Share-count change.** A consolidation or capital reduction rescales the price axis, so history
+  across the event is not comparable. A 20-to-1 consolidation turns a documented RM4.96 peak into
+  ~RM99 on a chart — both correct, describing different share counts. Before comparing prices across
+years, find the consolidation ratio and the capital-reduction event and state which share basis each
+  number sits on.
+- **Dilution.** Market capitalisation and price per share fall by *different* amounts, and the gap is
+  the dilution. A firm down ~97% by market cap whose share price is down ~99.7% got there by issuing:
+  rights issues, debt-to-equity conversions and rescue placements move the seat from the original
+  holder to the creditor. **Report both percentages side by side — the gap is the finding**, and it is
+  the part a reader still holding the old shares actually feels.
+
+A state rescue sharpens this rather than softening it: the rescuer becomes the substantial
+shareholder and the original holder is diluted toward zero while the firm survives as a going concern.
 
 ## Reporting
 

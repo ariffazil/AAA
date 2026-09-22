@@ -7,6 +7,8 @@ risk_tier: low
 floor_scope: [F1, F2, F11, F13]
 autonomy_tier: T1
 tags: [hermes, cron, jobs.json, validator, audit, federation-ops]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Hermes-Cron-Zen
@@ -209,6 +211,27 @@ scheduler catch-up fires all due jobs at once — expect a burst of runs; that i
 
 Full evidence trail (job IDs, prompt-recovery recipe, false-unreachable digest):
 `references/cron-healing-2026-08-14.md`.
+
+### `cronjob action=run prompt=...` — the transient override can silently vanish (2026-09-21)
+
+A one-off override passed to `cronjob(action='run', job_id=..., prompt='...')` is **not guaranteed to
+reach the agent.** Observed failure: the tool-call kwargs failed sanitisation
+(`agent.message_sanitization: Unrepairable tool_call arguments … replaced with empty object`; root
+error `cannot import name 'sanitize_outbound_kwargs' from 'agent.message_sanitization'`) and the run
+executed on the **stored** prompt alone. Proof method: the run record
+`/root/.hermes/cron/output/<job_id>/<ts>.md` holds the prompt the agent actually received — split it
+at `## Response` and count your override text in the `## Prompt` section. Hits only in the response
+section are the agent quoting itself; a zero in the prompt section means the override died in transit.
+
+**Consequence, and the rule:** the override is a convenience, never a guard. Do not test-fire a
+human-facing job and rely on `prompt=` to add "this is a dry run, do not post" — the guard may not
+arrive. Instead:
+- **Create a throwaway job** with `deliver: local` and the full test prompt, `action='run'` it, then
+  `action='remove'` it. The `deliver` field is what actually keeps the message off the wire.
+- **Snapshot the artifacts the real job writes** (`sha256sum`) before the test and re-check after, so
+  you can prove the live output was not overwritten.
+- `executions.db` records `source=direct` and `delivery_outcome=suppressed` for such a run — useful for
+  attributing why nothing was posted, but it is not a substitute for `deliver` being correct.
 
 ### Inference-path failures that LOOK like cron failures (2026-08-14)
 

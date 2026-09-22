@@ -2,6 +2,8 @@
 name: session-federation-discovery
 description: "Use when searching Hermes session history via MCP :18088."
 version: 1.0.0
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Session Federation Discovery

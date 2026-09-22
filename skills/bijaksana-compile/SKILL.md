@@ -1,6 +1,8 @@
 ---
 name: bijaksana-compile
 description: "When user asks to compile remaining work, lower entropy, or make future agents lebih arif dan bijaksana."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # ⌬ BIJAKSANA-Compile — Session Hygiene Compiler

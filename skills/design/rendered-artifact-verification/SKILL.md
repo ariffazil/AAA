@@ -5,6 +5,8 @@ version: 1.0.0
 owner: Hermes
 risk_tier: low
 tags: [verification, rendering, pdf, image, vision, measurement, qa]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Rendered Artifact Verification
@@ -53,7 +55,18 @@ judgement. The two failure modes are symmetric.
 ## What a vision model is and is not good for
 
 **Good:** is anything colliding, clipped, off-frame, blank; is the mark off-centre; is the composition
-lopsided; does the colour read at small size; is a requested element absent.
+lopsided; does the colour read at small size; is a requested element absent; how many distinct text
+blocks there are; which type sizes compete; what is redundant.
+
+**Diagnosing "this looks chaotic".** When the feedback is a vague complaint about crowding, do not
+guess and do not restyle blind — ask the vision model for a census, then verify it numerically: count
+the distinct text blocks and the size/style tiers, name which elements repeat (a column header stamped
+on every section is pure redundancy), and count how many small metadata lines sit inside the reading
+path. Then do the arithmetic on the real markup — `grep -c 'class="<x>"'` per class — and report the
+reduction as numbers (block count before/after, rendered height before/after) rather than as an
+opinion about tidiness. Prefer **moving** provenance out of the reading path over deleting it:
+collected source lines at the foot keep the artifact re-checkable, whereas removing them trades
+legibility for unverifiability.
 
 **Not good:** reading text. Given the same image three times, one model returned three different
 readings of a single word — one correct, one an entirely different word, one the correct word plus a
@@ -101,7 +114,30 @@ judgement they need to make is at consumption size, and the sheet is what gives 
 - Measuring contrast or coverage over the whole canvas. Chrome, borders and neighbours inflate the score; restrict the measurement to the region of interest.
 - Trusting a model's transcription of text, numbers or glyphs. Verify against the source string, the PDF text layer, or a conditional-render diff.
 - Adding a label or subtitle to a mark without re-running the small-size gate; the label takes vertical space from the primary element and both become unreadable.
+- **Diagnosing a layout defect from extracted text.** Text-layer extraction does not preserve reading
+  order on a table-heavy or multi-column PDF — it interleaves the columns and splits table cells into
+  fragments, so a cleanly typeset document reads as scrambled nonsense. Render the page to PNG and look
+  at it before reporting any layout defect. Use extraction for *content presence* only; the text layer
+  is not evidence about composition, and a document can be immaculate while its extraction is garbage.
+- **A structural/geometric vision finding is still a CLAIM — confirm it against the SOURCE before
+  fixing anything.** Measured: a vision audit of an HTML→PNG card reported two columns overlapping in
+  one row and a truncated footer seal. Reading the source disproved both — the columns were separate
+  `<div>`s inside a `border-right` rule with 18 px padding either side, and the footer string was
+  complete. "Geometric observations are a useful lead" is true about *where things are*; it is not a
+  licence to edit. For any reported collision, clip or cut-off, grep the CSS/markup for the property
+  that would have to be ABSENT for the defect to exist. A fix applied to a defect that does not exist
+  is strictly worse than the reported bug: it changes a working artifact and adds a change to review.
 - Declaring completion without re-measuring after the fix.
+- **A vision QA verdict contradicts itself across passes.** The same model, asked the same way,
+  returned `intentional and structural` for one variant and `the biggest issue` for the same tracking
+  three passes later. Its **geometric observations** are useful leads (off-centre, clipped, missing),
+  its **type verdicts** (this looks elegant, that's typographically forced) are opinion. Verify geometric
+  calls with pixel sampling; defer aesthetic calls to the user. Measure the work, do not vote on it.
+- **Shipping an oversize page-break-driven PDF.** A `<div class="page-break"></div>` after every section
+  looks clean in authoring but creates stragglers — sections that fall mid-page, leaving 1–2 orphan
+  lines on otherwise blank pages. Detect by rasterising at 50 dpi and flagging pages under ~3 % ink
+  coverage. Strip the page-break markers and let weasyprint flow; insert a break **only** where the page
+  must turn (cover, intro, back matter), not on every section.
 
 ## Support files
 

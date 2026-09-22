@@ -13,6 +13,8 @@ triggers:
   - "context window"
   - "hardening queue"
   - "hermes internal structure"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Hermes Runtime Audit

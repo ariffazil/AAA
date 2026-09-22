@@ -16,6 +16,8 @@ triggers:
   - "hermes send"
   - "outbound message"
   - "did it actually deliver"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Outbound Message Delivery

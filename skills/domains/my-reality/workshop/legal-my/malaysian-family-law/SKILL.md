@@ -3,6 +3,8 @@ name: malaysian-family-law
 description: "Syariah family law — nafkah, custody, divorce, MS2 forms."
 tags: [malaysia, syariah, family-law, nafkah, custody, divorce, BM, mahkamah]
 related_skills: [malaysian-tenancy-consumer-dispute]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Malaysian Syariah Family Law

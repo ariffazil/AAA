@@ -12,6 +12,8 @@ floor_scope:
 - F02
 - F11
 - F13
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Federation Node Reachability

@@ -15,6 +15,8 @@ triggers:
   - "does TA work"
   - "backtest proves"
   - "prove this technique works"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Predictive-Claim Falsification

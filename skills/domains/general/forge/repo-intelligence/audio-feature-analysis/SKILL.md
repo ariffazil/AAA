@@ -8,6 +8,8 @@ metadata:
     tags: [Audio, Music, Analysis, Chroma, Librosa, Features, Structure]
 prerequisites:
   python_packages: [numpy, scipy, librosa]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Audio Feature Analysis

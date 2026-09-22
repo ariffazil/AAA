@@ -7,6 +7,8 @@ metadata:
   hermes:
     tags: [music, audio, generation, somatic, scoring, cultural-manifold, nusantara]
     related_skills: [songwriting-and-ai-music, heartmula, minimax-cli, audiocraft-audio-generation]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Music Intelligence — Governed Generation + Somatic Scoring

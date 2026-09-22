@@ -17,6 +17,8 @@ triggers:
   - "before arif-bind"
   - "before naked-prior-audit"
 tags: [session-init, human-first, grounding, cold-start, carry-forward]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Session Init — Human First

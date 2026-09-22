@@ -4,6 +4,8 @@ description: "Use when fetching web content via A-FORGE forge_web_extract."
 version: 1.0.0
 owner: AAA
 tags: [web, forge, A-FORGE, MCP, temporal, extraction]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # forge-web-intelligence

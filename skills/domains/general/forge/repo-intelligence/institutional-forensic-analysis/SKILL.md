@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [forensic, institutional, case-building, governance, analysis]
     related_skills: [deep-research, text-forensics, document-intelligence]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Institutional Forensic Analysis

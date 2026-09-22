@@ -4,6 +4,8 @@ description: "Use when an agent claims X is built. Verify on disk."
 tags: [audit, verification, agent-claims]
 risk_tier: medium
 floor_scope: [F2, F9, F11]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agent Claim Verification

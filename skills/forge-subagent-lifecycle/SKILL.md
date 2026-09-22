@@ -2,6 +2,8 @@
 name: FORGE-subagent-lifecycle
 description: "USE WHEN: The **unified composition layer** for sub-agent orchestration."
 version: 0.0.0-untracked
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FORGE-subagent-lifecycle — Unified Sub-Agent Lifecycle Manager

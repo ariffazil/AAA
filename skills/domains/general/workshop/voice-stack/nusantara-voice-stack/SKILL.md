@@ -17,6 +17,8 @@ triggers:
   - Malaysian LLM or TTS landscape questions
   - prosody or emotional contour on edge-tts
   - MiniMax or MuleRouter TTS routing for Malay
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # Nusantara Voice Stack

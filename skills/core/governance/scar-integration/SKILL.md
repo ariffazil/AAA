@@ -32,6 +32,8 @@ attention:
     - "scar_severity"
     - "scar_remediation"
 tags: [governance, scar, wisdom, session, F2, F7, F11]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # core/governance/scar-integration
@@ -53,4 +55,4 @@ rm -rf skills/core/governance/scar-integration/
 
 **DITEMPA BUKAN DIBERI ⚒️**
 ## Absorbed references (Wave-2 merge completion)
-- `references/absorbed-wisdom-scar-session-audit.md` — content absorbed from the retired `wisdom-scar-session-audit` skill (Wave-2 merge 2026-09-16, recovered 2026-09-17)
+- `references/absorbed-wisdom-scar-session-audit.md` — content absorbed from the retired `wisdom-scar-session-audit` skill (Wave-2 merge 2026-09-16, recovered 2026-09-17). Living scar catalog: #1–#19. Latest additions are Scar #18 (Cross-Agent Artifact Verification, 2026-09-22) and Scar #19 (Person-Binding vs Pattern-Binding in Scar Records, 2026-09-22). Always read this file when the user says "capture wisdom scar", "what did we learn", "session failure audit", or when an institutional scar is being created.

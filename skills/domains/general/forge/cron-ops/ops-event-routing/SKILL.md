@@ -1,6 +1,8 @@
 ---
 name: ops-event-routing
 description: Use when routing cron or monitor output to a chat channel.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Ops Event Routing

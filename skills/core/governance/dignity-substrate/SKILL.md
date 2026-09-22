@@ -33,6 +33,8 @@ attention:
     - "sovereignty_assessment"
     - "cultural_lens_report"
 tags: [governance, dignity, sovereignty, cultural, F7, F9, F11]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # core/governance/dignity-substrate

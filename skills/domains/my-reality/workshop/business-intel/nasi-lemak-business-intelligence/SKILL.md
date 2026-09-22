@@ -13,6 +13,8 @@ triggers:
   - "telur mata"
   - "telur dadar"
   - "telur rebus"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Nasi Lemak Business Intelligence

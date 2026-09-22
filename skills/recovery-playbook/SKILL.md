@@ -52,6 +52,8 @@ triggers:
   - "bot-check"
   - "PO token"
   - "yt-dlp blocked on VPS/cloud/proxy IP"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Recovery Playbook — Six Failure Families, One Reflex

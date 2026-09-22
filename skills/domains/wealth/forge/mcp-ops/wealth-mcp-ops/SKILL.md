@@ -33,6 +33,7 @@ related_skills:
   - mcp-ops
   - XAUUSD-trading-stack
   - FORGE-repo-intelligence
+capability_tier: fed-agent-subagent
 ---
 
 # WEALTH MCP Operations — the organ-bounded MCP owner

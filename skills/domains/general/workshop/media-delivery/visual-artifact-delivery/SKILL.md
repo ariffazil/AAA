@@ -11,6 +11,8 @@ triggers:
   - user asks for "actual photo" of a real person
   - user sends an image / PDF / deck and asks for an audit, review or QA of it
   - another agent's deliverable needs independent verification before it goes out
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Visual Artifact Delivery
@@ -72,7 +74,9 @@ Pick by artifact shape, not by habit.
 | Artifact | Tool | Notes |
 |---|---|---|
 | Flat graphic, poster, chart, text overlaid on a photo | PIL (`PIL.ImageDraw`) | Fastest. Render 1280–1920 wide. DejaVu Sans Bold; confirm the font path exists first. Long strings never wrap and never raise — measure every one against its column width at build time (`references/pil-text-poster.md`). |
-| Multi-page document, tables, paged layout | `reportlab` | `SimpleDocTemplate` + flowables; tables via `Table` + `TableStyle`. |
+| Portrait-A4 analyst dossier, multi-section report with tables + pull-quotes | WeasyPrint (`HTML(filename='src.html').write_pdf(...)`) | **First choice for analyst-grade dossiers.** Handles CSS `@page` rules, `page-break-after`/`page-break-inside:avoid`, footer counters (`counter(page)`), and CSS Grid natively. No Chrome binary needed. Render pipeline: write single HTML+CSS file → `python3 -c "from weasyprint import HTML; HTML(filename='src.html').write_pdf('out.pdf')"` → verify with `pdfinfo`. WeasyPrint renders DejaVu fonts natively (no font install). **Pitfall:** WeasyPrint uses pango for text layout — complex SVG may not render; keep diagrams as CSS-styled HTML blocks (tables, chain diagrams, timelines with borders) rather than inline SVG. **Pitfall:** `@page:first` margin override works for cover pages. **Pitfall:** `tr { page-break-inside: avoid }` must be set or long table rows split across pages. |
+| Multi-page document, tables, paged layout | `reportlab` | `SimpleDocTemplate` + flowables; tables via `Table` + `TableStyle`. Best for generated data-driven reports where layout is computed. |
+| Document rendered to PDF via headless browser | Chrome headless (`--print-to-pdf`) | Use only when HTML has complex SVG or JS-rendered elements that WeasyPrint cannot handle. Requires `--print-to-pdf-no-header` to avoid leaked build paths. WeasyPrint is preferred for static content. |
 | Photographic scene, illustration, conceptual render | image-gen API (Pollinations `flux` is free and keyless; Gemini and others when configured) | Always label as a generated representation — see §4. |
 | Voice note | `text_to_speech` | Add `[[audio_as_voice]]` on its own line to land as a native voice bubble. |
 | Photoreal scene from a text prompt | MiniMax CLI (`mmx image generate` / `mmx video generate`) | Pass `--base-url https://api.minimax.io` on every media call — the CLI's default base URL is the chat path and media endpoints 404 without it. Give output size explicitly (`--width`/`--height`, 512–2048, multiples of 8); a 9:16 deliverable at 1152x2048 renders directly and does not need upscaling. Video `--download <path>` blocks until the task completes, so set a generous timeout. |

@@ -1,6 +1,8 @@
 ---
 name: telegram-bot-identity-and-group-routing
 description: "Verify bot + group + lane before any live Telegram test."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Telegram Bot Identity & Group Routing — Pre-Live-Test Gate

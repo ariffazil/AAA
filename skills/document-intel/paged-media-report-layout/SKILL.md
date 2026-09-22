@@ -3,6 +3,8 @@ name: paged-media-report-layout
 description: Use when building long multi-page HTML→PDF reports.
 version: 1.0.0
 tags: [pdf, layout, paged-media, weasyprint, qa, long-form-report]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Paged Media Report Layout
@@ -46,8 +48,23 @@ p  { orphans: 2; widows: 2; }
 3. **Ink coverage — the blank-page detector.** Run `scripts/ink_coverage_sweep.py out.pdf`. Counting pages is not enough; a page can be counted and still be empty.
 4. **Text layer per section.** `pdftotext -f N -l N out.pdf - | head` for the pages you care about, to confirm sections landed in order with nothing truncated, and that no heading sits alone at a page bottom.
 5. **Assets all present.** `pdfimages -list out.pdf` — the row count should match the number of embedded figures plus any repeated header art. A missing figure is invisible in every other check.
+6. **Reconcile every stated total against its own rows.** Any table with a summary row, any "N items"
+   in a heading, any running count must be recomputed from the rows actually rendered — never carried
+   from the draft. A hand-assembled total drifts as rows are edited, and it drifts **silently**: a
+   breakdown shipped summing to 245 beneath a stated total of 257 renders perfectly, passes every other
+   gate, and discredits the whole document the moment a reader adds the column up. Assert it in code
+   (`assert sum(rows) == stated`) before the render, and again after any row edit.
 
-Pass condition: every page above ~3 % ink coverage, no wide spread, and no page whose text layer is a heading only.
+7. **Sample pages through the vision lane when one is available.** `pdftoppm -png -r 85 -f N -l N out.pdf` for
+   three or four representative pages — the cover, one table-heavy page, one carrying a callout or a diagram
+   block — then inspect them with the vision lane. It is the only gate that sees a wrong weekday stamped on the
+   cover, a table row orphaned onto the next page leaving a blank cell behind it, or a callout whose text has run
+   past its own border. Treat every report as a **candidate**: confirm it against the authored HTML before
+   editing, then re-render and re-run gates 2–4.
+
+Pass condition: every page above ~3 % ink coverage, no wide spread, no page whose text layer is a
+heading only, every stated total equal to the sum of its own rows, and — where a vision lane ran — every
+defect it raised either fixed against the source or dismissed with a reason.
 
 ## Pitfalls
 
@@ -55,6 +72,7 @@ Pass condition: every page above ~3 % ink coverage, no wide spread, and no page 
 - **Matching page count is not evidence of good layout.** A document can hit its designed page count and still be half empty, because the forced breaks ate the slack. Only the ink sweep sees this.
 - **A wide coverage spread is the signature of a layout break, not of intentional design.** Under ~2 % is a split or empty page. Over ~60 % is a full-bleed cover — acceptable on screen, but it eats toner and gradients band on paper, so flag it if the deliverable is meant to be printed.
 - **Don't judge layout from screenshots when the active model has no vision lane.** The text layer plus the ink sweep is the reliable gate, and it is also cheaper than rendering and inspecting images.
+- **A vision read is authoritative on space and unreliable on characters.** It reliably catches an orphaned row, overflow past a box, and an element present in the HTML but absent from the page; it will also report a typo the source does not contain, because small low-contrast letterspaced type is easy to misread. Confirm every reported defect against the source before patching — otherwise you edit a correct word and leave the real defect standing.
 - **Fixed-size page/slide divs under a non-zero `@page` margin split into two pages each** on the browser-print path. If the deck is built from fixed-height blocks rather than flowing content, check that the block fits the printable box before blaming the engine.
 - **Re-render and re-run the gates after every layout edit.** A change to one section's length moves every break below it; a gate run before the last edit certifies a document that no longer exists.
 

@@ -1,0 +1,116 @@
+# OWNERSHIP_MAP — Skill Zen collapse queue (F13 directive 2026-09-16)
+# Law: AAA/instructions/skill-zen-collapse-doctrine.md
+# Mechanics: freeze to /root/AAA/skills/.frozen/<date>-<reason>/ (OUTSIDE mirror trees —
+# mesh sync prunes .archive inside synced trees; incident 2026-09-16) + alias stub → owner. Never delete.
+# Mesh: 522 canonical skills (/root/.agents/skills; .claude/.opencode are mirror views).
+# Target: 60–100 owners. Phases below; each phase = one session pass, bench = grep no orphan refs.
+
+meta:
+  date: 2026-09-16
+  canonical_tree: /root/.agents/skills
+  mirror_views: ["/root/.claude/skills", "/root/.opencode/skills"]
+  counted_skills: 522
+  counted_skill_md_files_all_views: 1597
+  multi_root_names: 477
+  target_owners: "60-100"
+
+phases:
+  P1_human_alignment:
+    status: DONE 2026-09-16
+    chain: RASA Doctrine -> Perspective/Privacy -> Reflect/Audit -> Human Clarification
+    owners:
+      - id: hermes-rasa-doctrine
+        path: /root/.agents/skills/domains/general/apex/governance-core/hermes-rasa-doctrine
+        owns: human-state epistemology (O/S/R/I/F/P/C, forbidden promotions, qualia, UNCREATED, CHANNEL_EXHAUSTED)
+      - id: audience-scoped-disclosure
+        path: /root/.opencode/skills/human-interface/audience-scoped-disclosure
+        owns: information flow (who may know/use/disclose; principal recognition; channel scope; privacy fiduciary)
+        absorbed: [sovereign-recognize]
+      - id: APEX-humility-godel
+        path: /root/.agents/skills/domains/general/apex/recursive-audit/APEX-humility-godel
+        owns: self-correction (falsification, alternatives, agent-shadow, narrative gravity, overclaim)
+        absorbed: [AGI-decisions-reflect]
+      - id: disclosure-advisory
+        path: /root/.opencode/skills/counseling/disclosure-advisory
+        owns: return-to-humans (how to ask, when NOT to ask, consent, non-manipulative clarification)
+        pending: "P1.5 body patch: RETURN-AUTHORITY + WHEN-NOT-TO-ASK modes"
+    partial_overlaps_referenced:
+      - arif-human-membrane-integration  # disclosure/privacy parts -> Owner 2; meaning-semantics stay local
+      - relationship-kernel              # conduct doctrine; distinct authority — KEEP
+      - human-meaning-membrane           # inference schema; cross-ref Owner 1, do not merge blindly
+
+  P2_verification_chain:
+    status: QUEUED
+    chain: VERIFY -> WITNESS -> SEAL
+    owners:
+      - id: VERIFY   # check source/evidence
+        absorbs: [audit-repo-reality, claim-receipt-discipline modes, agent-finding-verification, synthesis-verification-gate]
+      - id: WITNESS  # preserve provenance/history/contradiction
+        absorbs: [court/witness lane, FORGE-vault999-witness, reality-kernel-phase1-evidence-ledger, contradiction-preservation]
+      - id: SEAL     # canonicalize only when authority allows
+        absorbs: [audit-seal, aaa-doctrine-sealing, canon-doctrine-sealing, seal-discipline]
+    court_ledger_note: "vault-ledger reality checks -> VERIFY; memory-source verification -> WITNESS"
+
+  P3_mcp_tooling:
+    status: ACTIVE  # collapsed: 2026-09-19
+    chain: MCP Build + MCP Verify + MCP Operate
+    owners:
+      - id: MCP-Build   # owner: forge/fastmcp
+        absorbs: [generic mcp build/setup skills differing only by implementation detail]
+      - id: MCP-Verify  # owner: engineering/mcp-testing  # canonical-path
+        absorbs: [mcp-testing, mcp-smoke-test, mcp-probe, handshake/health checks, fingerprint/surface-audit modes, FORGE-mcp-testing, mcp-dual-era-transport]
+        absorbed_2026_09_19:  # phase: skill-zen-collapse Phase 2+3
+          - FORGE-mcp-testing    # 12-point conformance matrix → mcp-testing Section 4
+          - mcp-dual-era-transport  # era-mismatch doctrine → mcp-testing Section 5
+          - mcp-shopping-list-2026-09  # dated snapshot → superseded by mcp-sota-shopping-list
+        cross_references_added:
+          - mcp-transport-fix    # KEEP separate (SSE→streamable-http) — referenced from mcp-testing Related + negative triggers
+          - external-platform-mcp # KEEP separate (third-party wiring) — distinct concern from mcp-ops
+      - id: MCP-Operate # owner: engineering/mcp-ops  # canonical-path
+        absorbs: [external-platform-mcp, mcp-ecosystem-indexing, registry-publish modes]
+        patch_2026_09_19:  # phase: skill-zen-collapse Phase 3b
+          - negative_triggers_added_to_deflect_external_platform_wiring_queries
+
+  P4_research:
+    status: QUEUED
+    chain: search -> evidence -> synthesis
+    owners:
+      - id: SEARCH    # owner: search-web lane
+        absorbs: [sovereign-search modes, generic web-search variants]
+      - id: EVIDENCE  # owner: deep-research
+        absorbs: [news-research-briefing evidence pass, link-to-evidence, source triangulation]
+      - id: SYNTHESIS # owner: asi-summarize
+        absorbs: [generic summarize/intel-brief/document-intel variants unless output contract truly differs]
+    keep_separate: [tts-route-deep-research, intelligence-brief-forge]  # distinct output contracts
+
+  P5_domain_ops:
+    status: QUEUED
+    clusters:
+      - owner: forge/incident-response   # absorbs: ci-diagnose runtime-triage overlap, service-recovery modes
+      - owner: forge/telemetry           # absorbs: symlink-audit (as integrity-drift mode), observability checks
+      - owner: forge/federation-topology # absorbs: orchestrator/routing/organ-status variants
+      - owner: workshop/voice-stack      # absorbs: hermes-voice-config (as config mode), voice routing variants
+      - owner: workshop/telegram-ops     # absorbs: hermes-gateway-image-routing (as media-routing mode)
+      - owner: workshop/vision-analyzer  # absorbs: chat-screenshot-forensics (as evidence-inspection mode)
+      - owner: workshop/document-intel   # absorbs: civic-intelligence-pdf UNLESS its layout logic is unique (verify first)
+    rule: "mode-ize only where authority + side effects match; else keep"
+
+  P6_mesh_sweep:
+    status: QUEUED
+    action: "run skill-audit-methodology 3-loop over remaining ~400 names; produce owner/alias verdicts into this map"
+
+collapse_rule:
+  one_box: "same owner + same inputs + same authority + same kill conditions => one skill"
+  keep_if_differ: [authority_boundary, input_modality, safety_consent_boundary, side_effects, output_contract, failure_semantics, runtime_dependency]
+  collapse_if_only_differs: [prompt_wording, domain_label, tone_persona]
+
+anti_bloat_law: >
+  Before creating or preserving any skill, find the existing owner. If an owner exists,
+  patch the owner. New skill only when authority, side effects, or runtime contract
+  are genuinely different.
+
+phase_log:
+  - "2026-09-16 P1: quartet registered; sovereign-recognize + AGI-decisions-reflect frozen to /root/AAA/skills/.frozen/2026-09-16-skill-zen-quartet/ with alias stubs; APEX-humility-godel created; Owner 2 modes patched"
+  - "2026-09-16 INCIDENT: synced-tree .archive copy of sovereign-recognize pruned by mesh sync within minutes; original recovered from AAA-tree copy (domains/apex/); freeze location moved to /root/AAA/skills/.frozen/ — never freeze inside mirror trees"
+  - "2026-09-19 P3 mcp-tooling collapse (skill-zen-collapse): FORGE-mcp-testing conformance matrix → mcp-testing §4 (absorbed); mcp-dual-era-transport era-mismatch doctrine → mcp-testing §5 (absorbed); mcp-shopping-list-2026-09 dated snapshot → superseded by mcp-sota-shopping-list (Phases 6). mcp-transport-fix KEPT separate (SSE→streamable-http is a distinct concern from testing); external-platform-mcp KEPT separate (third-party platform wiring is its own operational domain per MCP-Operate). mcp-testing + mcp-ops gained negative_trigger fields to deflect cross-domain queries. Originating content frozen at /root/AAA/skills/.frozen/2026-09-19-mcp-collapse/ (Phase 2a). Alias stubs at all 4 mirror tree locations (Phase 2b). mcp-ecosystem-indexing v1.1.0 refreshed against canonical MCP 2026-07-28 spec + RFC 8414/8705 + MCP-Protocol-Version header (Phase 5). P3_mcp_tooling status: QUEUED → ACTIVE."
+  - "2026-09-19 SEAL owner (namespace collapse, ARIF order): canon-doctrine-sealing merged into aaa-doctrine-sealing (M1–M11); its 'append to canon/eureka-entries.jsonl' instruction was physically impossible (immutable target, EPERM even as root) and named the writable live feed a 'stray' — both halves corrected, one write target now stated. arifos-kernel-seal-ritual (kernel/VAULT999 mechanism) and seal-discipline (what a close-record may be CALLED) verified DISTINCT and kept separate. Bodies frozen at /root/AAA/skills-retired/2026-09-19-v2-doctrine-sealing/ with per-file digests."

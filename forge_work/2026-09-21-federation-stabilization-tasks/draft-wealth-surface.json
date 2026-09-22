@@ -1,0 +1,34 @@
+{
+  "organ": "wealth",
+  "schema_version": "0.1.0",
+  "generated_at_utc": "2026-09-20T18:25:31.983040+00:00",
+  "generator": "FI-008 draft generator 2026-09-21",
+  "canonical": [
+    "capital_primitive",
+    "capital_health",
+    "capital_diagnose",
+    "capital_market",
+    "capital_ledger",
+    "capital_registry",
+    "capital_claims",
+    "capital_entropy",
+    "wealth_judge_handoff",
+    "capital_indicator",
+    "capital_backtest",
+    "capital_entry_plan",
+    "capital_polix",
+    "capital_civx"
+  ],
+  "compat": [],
+  "private": [],
+  "deprecated": [],
+  "metadata": {
+    "last_verified_utc": null,
+    "verifier": "FI-008 (DRAFT \u2014 WEALTH schema/session parity still red)",
+    "contract_drift_status": "DRIFT_DETECTED",
+    "last_drift_check_utc": "2026-09-20T18:25:31.983040+00:00",
+    "federation_release_ref": "sha256:a8c2612056b527086f85d47421af7e26399297c226c8377012e4241fd1a7af3b"
+  },
+  "rationale": "WEALTH DRIFT: connector exposes mcp_health_check() anonymously but server requires session_id. This is the structural impossibility G2 must resolve. Per-organ draft above cannot promote to canonical until schema/session parity is fixed (see C-stream binary).",
+  "open_question": "Should mcp_health_check be moved to compat (with deprecation) and replaced with a session-required health_check? Or should server drop session requirement for that one tool?"
+}

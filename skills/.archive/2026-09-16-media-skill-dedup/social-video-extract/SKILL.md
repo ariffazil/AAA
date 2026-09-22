@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [Media, Video, Instagram, TikTok, yt-dlp]
     related_skills: [youtube-content]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Social Video Extraction (Instagram / TikTok / X)

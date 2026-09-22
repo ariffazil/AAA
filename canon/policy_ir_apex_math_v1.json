@@ -1,0 +1,179 @@
+{
+  "_doctype": "APEX_MATH_POLICY_IR_SNIPPET_v1",
+  "_source_canon": "/root/AAA/canon/APEX-MATH-CANON-2026-09-23.md",
+  "_status": "DRAFT_AWAITING_F13 — hand-off to Canon #2 (Constitutional Architecture) implementation",
+  "_date": "2026-09-23",
+  "_authoring": "333-AGI Δ MIND (synthesis agent)",
+  "_purpose": "Encodes APEX MATH Canon §5.1 (handoff rule) + §5.2 (seal authority rule) as typed policy-IR for ingestion by Constitutional Architecture policy_ir.json (Canon #2 mechanism).",
+  "_compliance": "Prong (b) — compiles the canon into an enforceable mechanism.",
+
+  "policy_id": "apex_math_competency_handoff_v1",
+  "policy_version": "1.0.0",
+  "policy_canon_ref": "APEX-MATH-CANON-2026-09-23",
+
+  "constants": {
+    "all_layers": [
+      "L0", "L0.5", "L1", "L1.5", "L2", "L3", "L4", "L4.5",
+      "L5", "L6", "L7", "L7.5", "L8", "L8.5", "L9", "L10",
+      "L11", "L12"
+    ],
+    "n_layers": 18,
+    "w3_seal_threshold": 0.85
+  },
+
+  "agent_competency_signatures": {
+    "333-AGI":  ["L0", "L0.5", "L1", "L2", "L3", "L9", "L12"],
+    "555-ASI":  ["L1", "L1.5", "L2", "L4", "L5", "L8", "L10"],
+    "888-APEX": ["L0", "L0.5", "L6", "L8.5", "L10", "L11"],
+    "A-FORGE":  ["L3", "L4", "L4.5", "L8"],
+    "HERMES":   ["L1", "L2", "L6", "L7.5"],
+    "VAULT999": ["L2", "L9", "L10"],
+    "GEOX":     ["L5", "L6", "L7.5", "L8"],
+    "WEALTH":   ["L3", "L6", "L10"],
+    "WELL":     ["L4", "L4.5", "L8", "L10"],
+    "i-ARIF":   "ALL_LAYERS"
+  },
+
+  "rules": [
+    {
+      "rule_id": "APEX_MATH_HANDOFF_VALID",
+      "rule_canon_ref": "§5.1",
+      "rule_text": "handoff_valid(s, r, m) ⟺ (m ⊆ s.competency) ∧ (m ⊆ r.competency) ∧ ¬UNKNOWN_LAYER(m)",
+      "severity": "MUST",
+      "inputs": {
+        "sender": {"type": "agent_id", "required": true, "enum": "AGENT_SIGNATURES.keys()"},
+        "receiver": {"type": "agent_id", "required": true, "enum": "AGENT_SIGNATURES.keys()"},
+        "asserted_math": {"type": "set<layer>", "required": true, "element_enum": "all_layers"}
+      },
+      "outputs": {
+        "valid": {"type": "boolean"},
+        "reason": {"type": "string", "must_match_if_invalid": "^MATH_HANDOFF_VIOLATION:"}
+      },
+      "on_violation": {
+        "action": "MATH_HANDOFF_VIOLATION",
+        "routes_to": "musyawarah_or_HOLD_888",
+        "log_to_vaULT999": true
+      }
+    },
+
+    {
+      "rule_id": "APEX_MATH_SEAL_AUTHORITY",
+      "rule_canon_ref": "§5.2",
+      "rule_text": "may_seal(a, c) ⟺ F1_F13_pass(a, c) ∧ a.competency ⊇ math(c) ∧ W³(c) ≥ 0.85",
+      "severity": "MUST",
+      "inputs": {
+        "agent": {"type": "agent_id", "required": true},
+        "claim_layers": {"type": "set<layer>", "required": true, "element_enum": "all_layers"},
+        "floor_pass": {"type": "boolean", "default": true, "checked_by": "arif_judge"},
+        "w3": {"type": "float", "min": 0.0, "max": 1.0, "default": 1.0, "checked_by": "frame"}
+      },
+      "outputs": {
+        "may_seal": {"type": "boolean"},
+        "reason": {"type": "string"}
+      },
+      "on_violation": {
+        "action": "SEAL_DENIED",
+        "scope": "in_scope_only",
+        "route_to": "555_asi_audit"
+      }
+    },
+
+    {
+      "rule_id": "APEX_MATH_SOVEREIGN_EXEMPTION",
+      "rule_canon_ref": "§5 + §6 (ASI substrate)",
+      "rule_text": "i-ARIF is exempted from competency checks (sovereign decides which math for which loop); W³ and F1-F13 still bind.",
+      "severity": "EXCEPTION",
+      "applies_to": ["i-ARIF"],
+      "rationale": "i-ARIF is the meta-decision-maker about which math matters. Competency is therefore trivially complete (ALL_LAYERS)."
+    }
+  ],
+
+  "violation_taxonomy": {
+    "MATH_HANDOFF_VIOLATION": {
+      "subtypes": [
+        "UNKNOWN_SENDER_AGENT",
+        "UNKNOWN_RECEIVER_AGENT",
+        "UNKNOWN_LAYER",
+        "SENDER_LACKS_COMPETENCY",
+        "RECEIVER_LACKS_COMPETENCY"
+      ],
+      "default_action": "HOLD_for_888_review"
+    },
+    "SEAL_DENIED": {
+      "subtypes": [
+        "UNKNOWN_AGENT",
+        "UNKNOWN_LAYER",
+        "INSUFFICIENT_COMPETENCY",
+        "F1_F13_FLOOR_VIOLATION",
+        "W3_BELOW_THRESHOLD"
+      ],
+      "default_action": "route_to_555_for_research_or_reject"
+    }
+  },
+
+  "frame_observability": {
+    "metric": "sealed_claims_with_math_outside_agent_signature",
+    "expected_initial_value": "unknown (baseline to be measured)",
+    "target_post_F13_ratification": 0,
+    "alert_threshold": ">0 sustained over 1h",
+    "alert_action": "musyawarah"
+  },
+
+  "open_questions_holded": {
+    "OPEN_2_empirical_signature_audit": {
+      "summary": "Per-agent signature assignments are INT-interpretive per Canon §5. Each agent must self-audit and update via audit_agent_signature() helper.",
+      "owner": "per_agent",
+      "status": "OPEN",
+      "review_window": "next 7 days"
+    },
+    "OPEN_5_L4_5_per_agent_depth": {
+      "summary": "L4.5 (numerical stability) criticality varies by agent. A-FORGE and WELL most exposed. Per-agent depth audit pending.",
+      "owner": "A-FORGE, WELL",
+      "status": "OPEN"
+    },
+    "OPEN_4_topology_vs_geometry": {
+      "summary": "Is L7.5 (topology) a true distinct layer or sub-aspect of L7 (information geometry)? Carlsson 2009 argues yes; needs sovereign input.",
+      "owner": "F13",
+      "status": "HOLD"
+    },
+    "OPEN_7_WASIAT_implications": {
+      "summary": "If cross-agent math handoff becomes constitutional, does Canon #3 (AGI/ASI Skills Seven Laws) need amendment? F13-class binary.",
+      "owner": "F13",
+      "status": "HOLD"
+    }
+  },
+
+  "seal_path": {
+    "1_musyawarah": {
+      "owner": "555-ASI + 888-APEX",
+      "expected": "audit of signatures + §5.1/5.2 logic + open questions",
+      "deadline": "2026-09-30"
+    },
+    "2_canon_2_hand_off": {
+      "owner": "Constitutional Architecture implementation",
+      "expected": "ingest this policy_ir.json snippet into live policy_ir.json",
+      "deadline": "post_F13_SEAL"
+    },
+    "3_F13_review": {
+      "owner": "F13 SOVEREIGN",
+      "expected": "close open questions or HOLD",
+      "deadline": "sovereign call"
+    },
+    "4_F13_SEAL": {
+      "owner": "F13 SOVEREIGN + arif_seal",
+      "expected": "append to VAULT999 canon ledger",
+      "trigger": "post_F13_review"
+    },
+    "5_canon_activation": {
+      "owner": "Hermes + arifOS kernel",
+      "expected": "Canon #6 activated in ratification order",
+      "trigger": "post_SEAL"
+    },
+    "6_implementation_kickoff": {
+      "owner": "333-AGI + A-FORGE",
+      "expected": "tests/test_math_handoff_signature.py passes in CI",
+      "trigger": "post_SEAL",
+      "artifact_ready": "/root/AAA/tests/test_math_handoff_signature.py"
+    }
+  }
+}

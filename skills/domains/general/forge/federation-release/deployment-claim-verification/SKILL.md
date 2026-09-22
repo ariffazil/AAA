@@ -34,6 +34,8 @@ triggers:
   - "audit this page"
   - "check the live proxies"
   - "narrative vs live"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Deployment Claim Verification

@@ -9,6 +9,8 @@ metadata:
     category: AGI
     tags: [minimax, mmx, meta-mesa, agi, asi, text, image, video, speech, music, vision, search, hailuo]
     related_skills: [mmx-cli, minimax-media, minimax-image-gen, minimax-voice-design-prompts, AGI-skill-unification]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # MiniMax AGI/ASI Meta-Mesa Skill

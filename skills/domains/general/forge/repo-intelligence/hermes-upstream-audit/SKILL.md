@@ -11,6 +11,8 @@ metadata:
   hermes:
     tags: [hermes, audit, upstream, feature-gap, config-review]
     related_skills: [federation-checkup, hermes-naked-prior-audit, federation-alignment-sweep]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Hermes Upstream Feature Audit

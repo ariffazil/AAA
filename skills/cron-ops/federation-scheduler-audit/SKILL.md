@@ -18,6 +18,8 @@ triggers:
   - "cron doctor says ok but the job never ran"
   - "job skipped its schedule"
   - "silent skip / schedule silently stopped firing"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Federation Scheduler Audit
@@ -745,6 +747,42 @@ green tick, and the green tick is exactly what the next audit cites as evidence.
 **Consequence for the report you write:** never relay a detector's label as a finding. Relay the
 operands, name which detector produced them, and say which of the six you actually read.
 
+## Step 3p — A configured job whose target cannot be executed
+
+Distinct from every failure above: the schedule is correct, the book is clean, the script exists — and
+cron cannot start it. Entries call an absolute path directly, and **there is no shell doing shebang
+resolution** on the far side: the file must carry the exec bit. A script written by a batch (editor,
+sync, scaffold, whole-directory copy) lands mode `644`, and every single run logs the same line into
+that job's own log:
+
+```
+/bin/sh: 1: /root/…/scripts/agent-cockpit/stuck_detector.py: Permission denied
+```
+
+Sweep every substrate for targets that are missing or not executable — strip the wrapper prefixes
+first, or every line looks broken:
+
+```bash
+crontab -l | grep -vE '^\s*#|^\s*$' | while IFS= read -r line; do
+  cmd=$(echo "$line" | sed -E 's/^[^ ]+ [^ ]+ [^ ]+ [^ ]+ [^ ]+ //; s#^/root/\.local/bin/[A-Za-z0-9_-]+ [A-Za-z0-9_-]+ && ##')
+  t=$(echo "$cmd" | sed -E 's#^(\.[^;]*; *|TZ=[^ ]+ *|cd [^ ]+ && *)+##' | awk '{print $1}')
+  case "$t" in /*) [ -e "$t" ] || echo "MISSING  $t"; [ -x "$t" ] || echo "NOT-EXEC $t";; esac
+done
+# /etc/cron.d: field 7 onward is the command (m h dom mon dow user cmd)
+grep -rhE '^[^#]' /etc/cron.d/ | awk '{print $7}' | sort -u
+```
+
+The log evidence here is the exact inverse of Step 3c: there the failure is silent because stderr was
+swallowed into a variable; here it is loud, in a file nobody reads. **Open the job's own log before
+calling a target healthy** — twenty identical permission errors is a job that has never once run,
+wearing a schedule's authority.
+
+The repair is `chmod +x`, which is not a crontab mutation: it restores the intent of an existing line
+and is reversible. Prove it by timestamp at the next slot, not by absence of fresh errors.
+
+**After any batch write into a directory cron executes from, re-sweep exec bits.** A whole-batch copy
+is precisely how a set of working monitors becomes a set of silent ones.
+
 ## Step 4 — Snapshot before any resume
 
 `cp jobs.json jobs.json.bak-<ts>` first. A resume batch is reversible only while the prior book
@@ -886,6 +924,9 @@ inside a 24h window — a migrated expression is rarely re-validated by whoever 
   capability graph in the fixed order DELETE→MERGE→CLARIFY→SIMPLIFY→STANDARDISE→REPAIR→ADD, and
   report the delta in nodes/duplicate paths/sources of truth, never a count of scripts touched
   (Step 3n).
+- **A job can be enabled, scheduled, and structurally unable to start.** A non-executable target is
+  neither a scheduler fault nor a script fault, and no book or doctor read reveals it — only `ls -l`
+  on the exact path the entry executes, plus the job's own log (Step 3p).
 
 ## Related
 

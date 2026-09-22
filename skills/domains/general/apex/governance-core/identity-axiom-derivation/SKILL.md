@@ -1,6 +1,8 @@
 ---
 name: identity-axiom-derivation
 description: Use when deriving minimal axioms from codebase evidence — extract the smallest set of invariants the code actually implies.
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Identity Axiom Derivation

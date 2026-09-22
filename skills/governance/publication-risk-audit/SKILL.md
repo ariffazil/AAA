@@ -10,6 +10,8 @@ metadata:
     category: governance
     related_skills: [makcikgpt-article-forging, civic-shadow-editorial, claim-receipt-discipline]
     floors_protected: [F1, F2, F4, F6, F13]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Publication Risk Audit

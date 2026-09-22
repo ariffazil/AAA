@@ -33,6 +33,8 @@ attention:
     - "drift_matrix"
     - "canonical_diff"
 tags: [federation, sync, catalog, multi-harness, F2, F4]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # core/federation/multi-harness-sync

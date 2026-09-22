@@ -38,6 +38,8 @@ attention:
     - "transport_classification"
     - "liveness_verdict"
 tags: [mcp, probe, smoke, health, schema, transport, runtime, F2, F4, F11]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # core/mcp/runtime-probe

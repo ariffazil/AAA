@@ -13,6 +13,8 @@ triggers:
   - "push this to the other machine"
   - "the file isn't here"
   - "already on disk"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Cross-Node Artifact Transfer

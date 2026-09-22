@@ -6,6 +6,8 @@ description: "Use when auditing CCC coding-agent transfer across hosts."
 owner: curator
 risk_tier: T1
 floor_scope: [F2, F4, F12]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # CCC Pool Multi-Host Audit — KVM8 ↔ KVM4

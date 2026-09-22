@@ -7,6 +7,8 @@ license: MIT
 hermes:
   tags: [nutrition, calories, food, dietary, usda-api, photo-analysis, peptide-research]
   related_skills: [web-access-fallbacks, AGI-multimodal-bridge]
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Food Nutrition Intelligence

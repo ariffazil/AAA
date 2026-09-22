@@ -1,6 +1,8 @@
 ---
 name: mimo-audio
 description: "FEDERATED Xiaomi MiMo v2.5 audio intelligence — TTS, ASR, voice design, voice clone (F13-gated)."
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # MiMo Audio — federated organ (AAA canonical, 2026-09-07)
@@ -27,6 +29,74 @@ Test phrase (all five lanes generated live, then transcribed by the **independen
 | `mimo-audio clone --sample <Malay ref>` | `Sini dekat si kecil. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ USABLE |
 | `edge-tts --voice ms-MY-YasminNeural` | `Sini. Dekat sikit. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ EXACT |
 | `edge-tts --voice ms-MY-OsmanNeural` | `Sini. Dekat sikit. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ EXACT |
+
+**RE-MEASURED 2026-09-21 — `clone` on BM is NOT reliably usable; treat it as the weakest lane.**
+Four `clone` takes of one short BM line, reference = a 44 s Malay speech sample, all four
+transcribed by the independent gate (`groq-stt`, `language=ms`):
+
+> TARGET: `Ni abang. Suara ni bukan suara abang. Suara ni MiMo. Hang dengar beza dia.`
+
+| take | independent Groq transcript | verdict |
+|---|---|---|
+| mimo01 | `Niyabang, sawani bukan serabang, sawani memu, andanggabisa dia.` | ❌ MANGLED |
+| mimo02 | `Ni albang. Suhra ni bukan suhra abang. Suhra ni memohangkan kompesar dia.` | ❌ MANGLED |
+| mimo03 | `Jadi Abang Sorani bukan Sorala Abang Sorani Mimo Angpungga Bersadiah` | ❌ MANGLED |
+| mimo04 | `Nii abang suranya bikuu suraa abang suranya mimo. Hungdaenggapbe sati ya.` | ❌ MANGLED |
+| control `edge-tts ms-MY-YasminNeural` | exact, every word | ✅ |
+| control `edge-tts ms-MY-OsmanNeural` | exact, every word | ✅ |
+
+**0 of 4 usable.** The earlier "clone is good, one word off" result (2026-09-15) did not hold here:
+on the same day, the same CLI, the same language, the BM clone lane flattened whole clauses into
+fused non-words — including a run that turned the sentence into unrelated Malay (`Jadi ... Angpungga
+Bersadiah`), i.e. the voicedesign failure mode appearing on the clone lane too. **Score the take
+before believing the lane label; the label is not the witness.**
+
+#### The verdict is per-LANGUAGE, not per-lane — and BM is one control away from being tested wrong
+
+`clone` has a `--style` flag (it is in `mimo-audio clone --help`; the style channel is the vendor's
+documented user-message field). The first BM sweep ran **without** it, which is not the lane's
+default configuration for a non-English target. Both configurations were then measured:
+
+| input | configuration | usable takes |
+|---|---|---|
+| BM line | no `--style` | **0 / 4** |
+| BM line | `--style "Bahasa Melayu, loghat utara, jelas dan natural."` | 0 / 1 nearest — `Ni abang. Suwara ni bukan Suwara abang. Suwara ni mimo.` (understandable, still off) |
+| BM line | `--style "Bahasa Melayu. Sebut setiap perkataan dengan jelas."` | **0 / 3** — 42.9% / 66.7% / 15.4% |
+| EN line | no `--style` | **3 / 3** usable — take 1 exact, take 2 one word off, take 3 one word off |
+
+**So: `clone` is good in English and unreliable in Malay.** The organ is not broken — HTTP 200,
+`credits: 0`, audio produced, timbre carried. The BM phonology is what does not hold. The style
+channel **helps but does not fix it**, and its effect is not monotone (a longer, more explicit
+instruction scored *worse* than the short one), so treat the direction as untested rather than solved.
+For BM delivery use `edge-tts` ms-MY or MiniMax `Indonesian_*`; keep MiMo `clone` for EN/ZH.
+
+**Lesson that outlives the numbers: a lane declared bad must name the configuration it was tested in.**
+"MiMo can't do BM" and "MiMo can't do BM with this style prompt" are different claims, and the first
+one costs the federation a working organ. When a CLI has a control the docs say is required for the
+target language, its absence is part of the test result — not a detail.
+
+#### The clone lane's real failure shape: right VOICE, wrong LANGUAGE
+
+Do not let "it sounds like him" close the question — measure it, then measure the words. Same run,
+same reference (a 44 s Malay speech sample), comparing each candidate against the source take:
+
+| lane | MFCC-cosine vs reference | Δf0 median | independent BM transcript |
+|---|---|---|---|
+| MiMo `clone` takes 01–04 | **0.9966 – 0.9979** | −11 to +9 Hz | all 4 mangled |
+| `edge-tts ms-MY` Osman | 0.8934 | +54 Hz | **exact** |
+| `edge-tts ms-MY` Yasmin | 0.9050 | +111 Hz | **exact** |
+
+A cosine ≈0.997 with Δf0 inside ±11 Hz **is** the same speaker — the clone carries timbre faithfully
+and the requester is right to say "the voice is the same". What it does not carry is the *phonology*:
+same voice, different language. The three lanes trade off the two properties and there is no free
+lunch — MiniMax (`abang-sado-live-v1`) is the only lane measured here that holds **both**.
+
+**Consequence for QC:** a timbre check alone will PASS a take whose words are destroyed, and a
+transcript check alone will PASS a take spoken in the wrong person's voice. On any clone lane run
+**both**, and never let the possessive reaction ("that's him") stand in for the transcript gate.
+
+**Credit note:** the whole sweep cost **0 credits** — the CLI receipt reports `credits: 0`,
+`label: TTS series free — limited window`. Four takes of MiMo audio do not move the Token Plan meter.
 | `mmx speech synthesize --voice Indonesian_BossyLeader` | `Sini. Dekat sikit. Jangan malu. Aku dah nampak kau dari tadi.` | ✅ EXACT |
 
 **Rules that follow, and they are binding:**

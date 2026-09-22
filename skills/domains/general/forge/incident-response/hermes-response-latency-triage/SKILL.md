@@ -17,6 +17,8 @@ triggers:
   - "agent takes minutes to respond"
   - "gateway laggy"
   - "response time high"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hermes Response-Latency Triage

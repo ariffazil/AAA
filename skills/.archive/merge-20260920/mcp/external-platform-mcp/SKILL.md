@@ -8,6 +8,8 @@ risk_tier: medium
 floor_scope: [F2, F8, F13]
 autonomy_tier: T1.5
 tags: [mcp, composio, social-media, oauth, integration, governance]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # External Platform Integration via MCP

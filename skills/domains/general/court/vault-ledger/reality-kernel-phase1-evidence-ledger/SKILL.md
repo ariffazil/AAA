@@ -10,6 +10,8 @@ related_skills: [claim-receipt-discipline, audit-seal, FORGE-vault999-witness]
 autonomy_tier: T0
 floor_scope: [F2, F9, F11, F13]
 risk_tier: low
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 ## When to Use

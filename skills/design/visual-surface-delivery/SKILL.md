@@ -1,6 +1,8 @@
 ---
 name: visual-surface-delivery
 description: "Use when building or previewing a web surface for review."
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Visual Surface Delivery

@@ -137,3 +137,6 @@ forge_work/**/cards/*.json
 forge_work/**/probe_reload_fix.py
 audits/linters/
 **/*.pre-demote-*.Z
+
+claim_ledger/claims.db
+canon/PETRONAS/qdrant_backup_*.json

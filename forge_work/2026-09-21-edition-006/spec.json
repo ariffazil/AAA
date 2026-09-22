@@ -1,0 +1,24 @@
+{
+  "edition": "EDITION-006",
+  "edition_date": "2026-09-21",
+  "title": "Executive Brief",
+  "subtitle": "Edition 006 - Monday 21 September 2026",
+  "template": "base-a4",
+  "theme": "light",
+  "source": "/root/AAA/forge_work/2026-09-21-edition-006/content.html",
+  "run_dir": "/root/AAA/forge_work/2026-09-21-edition-006",
+  "gates": {
+    "profile": "print-light",
+    "forbid_paths": true,
+    "cover_orphan_exempt": true
+  },
+  "stats": {
+    "new": 10,
+    "moved": 0,
+    "reopened": 0,
+    "still_open": 24,
+    "settled": 0,
+    "dropped": 4,
+    "items_total": 34
+  }
+}

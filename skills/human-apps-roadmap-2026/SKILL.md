@@ -1,6 +1,8 @@
 ---
 name: human-apps-roadmap-2026
 description: "Canonical ranked roadmap of human-benefit applications for Arif (briefing, WhatsApp assistant, email copilot, finance radar, health mirror, work copilot)."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Human-Benefit Apps Roadmap (canonical pointer)

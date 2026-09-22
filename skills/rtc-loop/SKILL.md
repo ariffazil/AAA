@@ -2,6 +2,8 @@
 name: rtc-loop
 description: "USE WHEN: ANY text-to-image / image-generation dispatch in the federation (every diffusion call); Before writing the generation prompt (SPEC + COMPILE steps); After generation returns (AUDIT step) — before anything is delivered to a human"
 version: 0.0.0-untracked
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # rtc-loop — Reality-Topography Compilation Loop

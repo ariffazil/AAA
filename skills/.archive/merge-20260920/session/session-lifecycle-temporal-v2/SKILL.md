@@ -9,6 +9,8 @@ risk_tier: low
 floor_scope: [F1, F6, F13]
 forged: 2026-09-20
 scar_origin: Missing temporal intelligence - Arif slept 6h, Hermes had no idea
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # session-lifecycle-temporal

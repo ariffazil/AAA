@@ -1,6 +1,8 @@
 ---
 name: public-column-publishing
 description: Use when writing a MakcikGPT/public column article.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Public Column Publishing

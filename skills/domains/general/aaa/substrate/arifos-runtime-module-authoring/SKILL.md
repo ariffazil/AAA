@@ -1,6 +1,8 @@
 ---
 name: arifos-runtime-module-authoring
 description: Create or patch arifOS kernel modules — conventions, freeze discipline, gate-file audits
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # arifOS Runtime Module Authoring

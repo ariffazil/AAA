@@ -24,6 +24,8 @@ triggers:
   - "verified and ready"
   - "substrate was down"
   - "measurement artifact"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Probe Evidence Integrity
@@ -185,6 +187,17 @@ Close with what the probe actually established:
   consecutive readings and compare like-with-like: if the warm readings are byte-identical, the
   flagged delta is measurement, not change. Suspect this whenever a change is reported at a regular
   interval by an automated prober that runs on its own schedule.
+
+- **A steady reading is not a live reading.** A monitor that reads from a file on disk (a seal
+  ledger, an audit log, a fingerprint snapshot) returns the last value written even when the file
+  stopped being appended to hours or days ago. The five identical daily reports prove nothing about
+  today — they are five identical reads of the same yesterday. **The fingerprint is the input
+  artifact's mtime vs current epoch, not a comparison between successive readings.** Record
+  `input_mtime`, `now - input_mtime`, and the count of records, and let the reader see that the
+  monitor's view is at least `Δt` stale. If `Δt` exceeds the staleness threshold for the claim you
+  want to make, the finding is `STALE` and loses decision force — the same as a service that has
+  not restarted but whose data feed has. Suspect this whenever the consumer reads an artifact, the
+  producer is a separate process, and the report does not state when the file was last touched.
 - **A file on disk is not a file being served.** Confirm the published path, not the authored copy.
   An artifact present under an authoring directory returned 404 on every candidate URL because that
   directory was never wired into the reverse proxy — so a finding of "the published copy is stale"
@@ -200,8 +213,37 @@ Close with what the probe actually established:
   schema; that is all it has shown. Call the operations that actually mutate state and read the
   refusal they return. Report the exposure and the enforcement separately, with the operation you
   attempted named for each.
+- **A file on disk is not a reachable artifact, and the gap between them is the finding.** "Shipped"
+  and "reachable by an outsider with no credentials" are two claims; audit them separately. Registry
+  records, advertised remote endpoints, `.well-known` discovery documents and the literal first
+  command in a quickstart are all surfaces a consumer touches, and each can be stale, stubbed, or
+  absent while the code behind it is fine. Recipe: `references/public-surface-probes.md`.
+- **A refusal probe without its control certifies nothing.** Refusal-only evidence reads as "nothing
+  works here" — an unrelated gate, a missing credential, or a malformed request all produce the same
+  refusal string. Always pair the negative probe with the accept path, or state explicitly that the
+  accept path is `UNVERIFIED`. Then read the refusal's **named** reason (and grep it in source) rather
+  than scoring the bare verdict.
+- **A counter in a document is a claim, and its numbers about your own system are the cheapest tell
+  that it was never measured.** Recount the objects it names — skills, tools, endpoints, organs, hosts —
+  from live sources before weighing any finding: a count off by an order of magnitude means nothing in
+  that document came from the target, so every finding is *shape-only* (a plausible class of problem) and
+  must be re-derived from the machine or dropped. Same class of tell: a document whose own sections
+  contradict each other (one section forbidding exactly what two others recommend) is boilerplate —
+  delete the remedy list wholesale instead of adjudicating it item by item.
+- **A negative read against the wrong store is a manufactured finding.** Absence is evidence
+  only when you searched where the record would actually be written. Resolve the path from the
+  *writer's own* declaration — its path constant, its config, the file it opens — never from
+  the name that sounds right. Measured: commit receipts sought in the seal-events ledger
+  returned zero hits for all seven organs, which reads as *the auto-seal never ran*; the
+  writer's real target was a different ledger in the same tree, where all seven were present
+  and correct. Name such a result a near-miss rather than a finding: a phantom defect consumes
+  the same attention as a real one and, once reported, discounts the probes that were right.
 
 ## Reference files
 
 - `references/mcp-probe-lifecycle.md` — MCP-specific recipe: lifecycle sequence, authenticated
   session probe, version-negotiation discriminator, fleet version matrix.
+- `references/public-surface-probes.md` — Unauthenticated probes of a platform's *public* surfaces:
+  registry records and cross-record drift, whether an advertised remote is a real protocol endpoint,
+  discovery documents, identity-enforcement probes (negative probe + positive control), and
+  reconciling the same count stated on several public surfaces.

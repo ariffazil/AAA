@@ -1,6 +1,8 @@
 ---
 name: institutional-leadership-lineage
 description: "Use when profiling every past leader of an institution."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Institutional Leadership Lineage

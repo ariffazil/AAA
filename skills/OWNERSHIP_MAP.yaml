@@ -52,24 +52,56 @@ phases:
     court_ledger_note: "vault-ledger reality checks -> VERIFY; memory-source verification -> WITNESS"
 
   P3_mcp_tooling:
-    status: ACTIVE  # collapsed: 2026-09-19
-    chain: MCP Build + MCP Verify + MCP Operate
-    owners:
-      - id: MCP-Build   # owner: forge/fastmcp
-        absorbs: [generic mcp build/setup skills differing only by implementation detail]
-      - id: MCP-Verify  # owner: engineering/mcp-testing  # canonical-path
-        absorbs: [mcp-testing, mcp-smoke-test, mcp-probe, handshake/health checks, fingerprint/surface-audit modes, FORGE-mcp-testing, mcp-dual-era-transport]
-        absorbed_2026_09_19:  # phase: skill-zen-collapse Phase 2+3
-          - FORGE-mcp-testing    # 12-point conformance matrix → mcp-testing Section 4
-          - mcp-dual-era-transport  # era-mismatch doctrine → mcp-testing Section 5
-          - mcp-shopping-list-2026-09  # dated snapshot → superseded by mcp-sota-shopping-list
-        cross_references_added:
-          - mcp-transport-fix    # KEEP separate (SSE→streamable-http) — referenced from mcp-testing Related + negative triggers
-          - external-platform-mcp # KEEP separate (third-party wiring) — distinct concern from mcp-ops
-      - id: MCP-Operate # owner: engineering/mcp-ops  # canonical-path
-        absorbs: [external-platform-mcp, mcp-ecosystem-indexing, registry-publish modes]
-        patch_2026_09_19:  # phase: skill-zen-collapse Phase 3b
-          - negative_triggers_added_to_deflect_external_platform_wiring_queries
+    status: ACTIVE  # canonical chain established 2026-09-19; v3.1.1 ratified 2026-09-21
+    chain: MCP Operate  # single canonical chain (was Build + Verify + Operate; Verify inode-collapsed into Operate 2026-09-21)
+    canonical_owner_path: /root/AAA/skills/engineering/mcp-ops
+    canonical_version: 3.1.1
+    canonical_sha256: de09f5faf0ef2319750bb4c1f26f4be066e276a45dc6977d873d79ed23f0c3dc
+    llms_txt_aligned: true   # accordant to https://modelcontextprotocol.io/llms.txt (9-stage workflow)
+    inode_collapse:          # MCP-Verify (engineering/mcp-testing) → MCP-Operate (engineering/mcp-ops), 2026-09-21
+      verified_by_sha: engineering/mcp-testing and engineering/mcp-ops SKILL.md share ebe2ebdfa487f65e2d33be10935490de5cdcd4edf40aa3855f14be52bdbbd314
+      tombstone_resolution: /root/AAA/skills/engineering/mcp-testing is a symlink to /root/AAA/skills/engineering/mcp-ops
+      cross_reference_retained:                 # the historical references are kept for forensic audit
+        - mcp-transport-fix  # SSE → Streamable-HTTP; absorbed as Stage 2e (sub of PROBE)
+        - external-platform-mcp  # third-party wiring; absorbed as Stage 3 (sub of BUILD)
+    historical_owners:
+      - id: MCP-Build
+        status: superseded
+        note: pre-2026-09-21 sub-chain; "generic mcp build/setup skills differing only by implementation detail" — pattern kept for documentation; no live skills in this lane in v3.1.1
+      - id: MCP-Verify
+        status: inode-absorbed
+        absorbed_into: MCP-Operate
+        absorbed_on: 2026-09-21
+        verified_at: .frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-testing  # sha match with engineering/mcp-ops/SKILL.md
+        absorbs_history: [mcp-testing, mcp-smoke-test, mcp-probe, handshake/health checks, fingerprint/surface-audit modes, FORGE-mcp-testing, mcp-dual-era-transport]
+        2026_09_19_absorptions:
+          - FORGE-mcp-testing     # 12-point conformance matrix → Stage 5b conformance era matrix
+          - mcp-dual-era-transport # era-mismatch doctrine → Stage 5c era coverage
+          - mcp-shopping-list-2026-09 # dated snapshot → superseded by mcp-sota-shopping-list
+      - id: MCP-Operate
+        status: ACTIVE
+        owner_path: /root/AAA/skills/engineering/mcp-ops
+        canonical_chapters:
+          - Stage 0 LEARN  (concepts, llms.txt accordant)
+          - Stage 1 DISCOVER  (registries, beacons, procurement sub-stage 1b)
+          - Stage 2 PROBE  (handshake 2a, four-numbers 2b, health 2c, edit-live 2d, transport-shape 2e)
+          - Stage 3 BUILD  (Server 3a, Apps 3b, Client 3c, Agent-Skills 3d, Wire 3e, BPF 3f, Compression 3g)
+          - Stage 4 SECURE  (OAuth-shape 4a, EAP 4b, M2M 4c, Baseline 4d, Federation 4e)
+          - Stage 5 TEST  (MCPJam, debugging, era conformance)
+          - Stage 6 EXTEND  (Apps 6a, Auth-ext 6b, Tasks 6c, Skills-over-MCP 6d)
+          - Stage 7 PUBLISH  (Registry 7a, Aggregators 7b, Versioning 7c, GH-Actions 7d, Auth-publish 7e)
+          - Stage 8 GOVERN  (SEPs 8a, WG/IG 8b, Lifecycle 8c, SDK-tiers 8d, Overlay 8e, Drift 8f, Lifeguard 8g, RETIRE 8h)
+        absorbs_history: [external-platform-mcp, mcp-ecosystem-indexing, registry-publish modes]
+    absorbed_2026_09_21:   # llms.txt alignment + 0-index renumber
+      - llms_txt_workflow: 9-stage accordant to https://modelcontextprotocol.io/llms.txt
+      - 0_index_renumber: per Arif SEAL (LEARN=0, DISCOVER=1, ... GOVERN=8; RETIRE=8h)
+      - procurement_anomaly_fixed: 1b procurement moved under DISCOVER (was wrongly under LEARN in v3.1.0)
+      - tombstone_census: "22/22 federation symlinks resolve to v3.1.1; 1 hermes-profile stale correctly skipped (hermes-internal scope)"
+      - frozen_chain:
+          v3.0.1: .frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.0.1  # sha ebe2ebdfa487
+          v3.1.0: .frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.1.0  # sha bfc0b9280086
+          v3.1.1: live at /root/AAA/skills/engineering/mcp-ops/SKILL.md  # sha de09f5faf0ef
+      - change_log: references/changelog-v3.1.1-renumber.md
 
   P4_research:
     status: QUEUED
@@ -114,3 +146,4 @@ phase_log:
   - "2026-09-16 INCIDENT: synced-tree .archive copy of sovereign-recognize pruned by mesh sync within minutes; original recovered from AAA-tree copy (domains/apex/); freeze location moved to /root/AAA/skills/.frozen/ — never freeze inside mirror trees"
   - "2026-09-19 P3 mcp-tooling collapse (skill-zen-collapse): FORGE-mcp-testing conformance matrix → mcp-testing §4 (absorbed); mcp-dual-era-transport era-mismatch doctrine → mcp-testing §5 (absorbed); mcp-shopping-list-2026-09 dated snapshot → superseded by mcp-sota-shopping-list (Phases 6). mcp-transport-fix KEPT separate (SSE→streamable-http is a distinct concern from testing); external-platform-mcp KEPT separate (third-party platform wiring is its own operational domain per MCP-Operate). mcp-testing + mcp-ops gained negative_trigger fields to deflect cross-domain queries. Originating content frozen at /root/AAA/skills/.frozen/2026-09-19-mcp-collapse/ (Phase 2a). Alias stubs at all 4 mirror tree locations (Phase 2b). mcp-ecosystem-indexing v1.1.0 refreshed against canonical MCP 2026-07-28 spec + RFC 8414/8705 + MCP-Protocol-Version header (Phase 5). P3_mcp_tooling status: QUEUED → ACTIVE."
   - "2026-09-19 SEAL owner (namespace collapse, ARIF order): canon-doctrine-sealing merged into aaa-doctrine-sealing (M1–M11); its 'append to canon/eureka-entries.jsonl' instruction was physically impossible (immutable target, EPERM even as root) and named the writable live feed a 'stray' — both halves corrected, one write target now stated. arifos-kernel-seal-ritual (kernel/VAULT999 mechanism) and seal-discipline (what a close-record may be CALLED) verified DISTINCT and kept separate. Bodies frozen at /root/AAA/skills-retired/2026-09-19-v2-doctrine-sealing/ with per-file digests."
+  - "2026-09-21 P3 mcp-tooling ratification (mcp-ops v3.1.1, llms.txt accordant + 0-index renumber): P3_mcp_tooling collapsed from 3-chain (Build+Verify+Operate) to 1-chain (MCP Operate); canonical engineering/mcp-testing inode-consolidated into engineering/mcp-ops at v3.1.1 (sha 3da5... → de09f5faf0ef after renumber; freeze chain .frozen/2026-09-21-llms-alignment/ preserves v3.0.1, v3.1.0, and absorbed mcp-testing body). mcp-transport-fix and external-platform-mcp formally re-classified as sub-stages under MCP-Operate (Stage 2e transport-shape; Stage 3 BUILD wiring). Cross-references retained for forensic audit per historical_owners.OWNERSHIP_MAP.yaml updated to single canonical chain."

@@ -14,6 +14,8 @@ triggers:
   - "reality infographic / anti-propaganda graphic"
   - "data visualisation poster"
   - "one-image explainer"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Infographic Generation

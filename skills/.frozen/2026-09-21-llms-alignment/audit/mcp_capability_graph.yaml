@@ -1,0 +1,179 @@
+# mcp_capability_graph.yaml
+# Phase-2 deliverable of the 6-phase Agentic Federation Closure Flow (per Arif, 2026-09-21).
+# Mission: cluster skills by constitutional capability.
+# Mode: READ ONLY. Source: live state 2026-09-21.
+
+date: '2026-09-21'
+scope: mcp
+mission_id: mcp-federation-capability-graph-v3.1.1
+producer: 333-AGI autonomous continuation
+rule: Capabilities are primary. Implementations are secondary. One capability cluster = one owner.
+method: cluster each absorbed skill by the mcp-ops v3.1.1 stage it serves
+capability_clusters:
+- id: mcp-learn
+  stage: 0
+  title: Learn MCP
+  llms_txt_anchor: getting-started/, architecture, server-concepts, client-concepts, versioning, sdks
+  absorbed_skills: []
+  notes: New stage in v3.1.0; no absorbed skills landed here (all pre-v3.1.0 skills were operational).
+- id: mcp-discover
+  stage: 1
+  title: Find MCP Servers
+  llms_txt_anchor: registry/about, registry/quickstart, discovery beacons, Skills extension
+  absorbed_skills:
+  - mcp-organ-probe (sub-stage 2a; *live inside PROBE per v3.1.0 but discoverer-like; cross-listed)
+  - mcp-ecosystem-indexing (sub-stage 1 + 3d)
+  - mcp-sota-shopping-list (sub-stage 1b)
+  sub_stages:
+    1b: Procurement — adoption check (mcp-sota-shopping-list)
+- id: mcp-probe
+  stage: 2
+  title: Probe MCP Server
+  llms_txt_anchor: develop/connect-local-servers, develop/connect-remote-servers, transports
+  absorbed_skills:
+  - mcp-organ-probe (2a handshake)
+  - mcp-edit-activation (2d edit-live)
+  - mcp-transport-fix (2e transport-shape)
+  sub_stages:
+    2a: Handshake
+    2b: Four numbers
+    2c: Health map
+    2d: Edit-live
+    2e: Transport-shape
+- id: mcp-build
+  stage: 3
+  title: Build MCP Server / Client / Apps
+  llms_txt_anchor: develop/build-server, develop/build-client, develop/build-with-agent-skills, client-best-practices, Apps
+  absorbed_skills:
+  - FORGE-fastmcp (3a Server)
+  - FORGE-mcp-gui (3b Apps)
+  - FORGE-mcp-a2a-agentic (3c Client)
+  - mcp-ecosystem-indexing (3d Agent-Skills)
+  - external-platform-mcp (3 wiring)
+  - telegram-mcp-product-line (3 telegram)
+  - mcp-context-compression (3g compression)
+  - forge-minimax-mcp-direct-invoke (3c direct)
+  - mcp-transport-fix (cross-cut 2e)
+  sub_stages:
+    3a: Server (Python, FastMCP)
+    3b: Apps (UI surfaces)
+    3c: Client (any harness)
+    3d: Agent-Skills (Skills extension)
+    3e: Wire to client (governed)
+    3f: Client best practices
+    3g: Schema compression
+- id: mcp-secure
+  stage: 4
+  title: Secure (OAuth 2.1 + PRM + EAP)
+  llms_txt_anchor: tutorials/security/authorization, security_best_practices, extensions/auth/*, EAP
+  absorbed_skills: []
+  sub_stages:
+    4a: OAuth shape (RFC 8414 + 9728)
+    4b: Enterprise-Managed Authorization (SEP-990)
+    4c: OAuth client credentials (M2M, SEP-1046)
+    4d: Security baseline
+    4e: Federation-specific (constitutional)
+  notes: NEW stage in v3.1.0; no absorbed skills — operational discipline was new territory.
+- id: mcp-test
+  stage: 5
+  title: Test (MCPJam + debugging + era)
+  llms_txt_anchor: tools/inspector/*, debugging, era conformance
+  absorbed_skills:
+  - FORGE-mcp-testing (inode-consolidated 2026-09-21, sha ebe2ebdfa487)
+  - mcp-testing (tombstone symlink)
+- id: mcp-extend
+  stage: 6
+  title: Extend (Apps, Auth-ext, Tasks, Skills-over-MCP)
+  llms_txt_anchor: extensions/*, Apps, Tasks, Skills
+  absorbed_skills:
+  - FORGE-mcp-gui (6a Apps)
+  - FORGE-mcp-a2a-agentic (6b Auth-ext composition)
+  sub_stages:
+    6a: Apps
+    6b: Auth-extensions
+    6c: Tasks
+    6d: Skills-over-MCP
+- id: mcp-publish
+  stage: 7
+  title: Publish (Registry + versioning + automation)
+  llms_txt_anchor: registry/* (about, quickstart, versioning, authentication, github-actions, moderation-policy, registry-aggregators,
+    terms-of-service)
+  absorbed_skills:
+  - forge-mcp-registry-publish (7a)
+  sub_stages:
+    7a: Registry (official)
+    7b: Aggregators
+    7c: Versioning
+    7d: GitHub Actions
+    7e: Authentication on publish
+- id: mcp-govern
+  stage: 8
+  title: Govern (SEPs + WG/IG + lifecycle + retire)
+  llms_txt_anchor: seps/*, community/governance, working-interest-groups, contributor-ladder, feature-lifecycle, sdk-tiers,
+    deprecated features
+  absorbed_skills:
+  - FORGE-mcp-lifeguard (8g recovery)
+  - FORGE-mcp-governance-wrapper (8e overlay)
+  - federation-mcp-drift-audit (8f drift)
+  sub_stages:
+    8a: SEPs
+    8b: WG/IG
+    8c: Feature lifecycle
+    8d: SDK tiers
+    8e: Governance overlay (4 mechanisms)
+    8f: Drift audit
+    8g: Lifeguard
+    8h: RETIRE
+cross_cluster_notes:
+- mcp-ecosystem-indexing straddles cluster 1 (Discover) and 3 (Build) as 1+3d — cross-listed because the same body serves
+  both "how to find MCP" and "how to build Agent Skills".
+- mcp-transport-fix serves cluster 2 (Probe, 2e) primarily but is also referenced from the production wiring path in cluster
+  3 — service note only.
+- telegram-mcp-product-line is a vendor-specific instance of cluster 3 (Build) — kept as a reference rather than treated as
+  its own capability.
+- external-platform-mcp covers third-party platform lane (3). Distinct enough to keep as its own absorbed reference under
+  cluster 3, not promoted to its own cluster.
+overlap_matrix:
+  description: capabilities that originally existed as duplicate names pre-v3.0.0, now collapsed
+  collapsed_pairs_or_groups:
+  - duplicate_capability: discovery_or_liveness_probe
+    original_names:
+    - mcp-organ-probe
+    - mcp-edit-activation
+    - core/mcp/runtime-probe
+    fate: mcp-organ-probe → mcp-ops Stage 2a; mcp-edit-activation → Stage 2d; core/mcp/runtime-probe kept separate (sibling)
+      per skill rules
+    evidence: Each had its own shoulder case for a different phase of "is this thing alive?" — runtime-probe (one-shot), organ-probe
+      (one-organ full lifecycle), edit-activation (post-edit verification). All three were distinct capabilities but with
+      overlapping mission framing.
+  - duplicate_capability: mcp_test_or_conformance
+    original_names:
+    - mcp-testing
+    - FORGE-mcp-testing
+    - mcp-dual-era-transport
+    - mcp-shopping-list-2026-09
+    fate: All into mcp-ops Stage 5; 4 layers (12-point matrix, era coverage, dual-era doctrine, dated shopping snapshot →
+      superseded)
+    evidence: Single capability (does-it-conform) with 4 entry paths. Collapsed to canonical mcp-ops Stage 5.
+  - duplicate_capability: mcp_ui_apps
+    original_names:
+    - FORGE-mcp-gui
+    - forge-mcp-gui
+    - forge-mcp-registry-publish
+    fate: MCP Apps UI → Stage 3b + 6a (peer); Registry publish → Stage 7a
+    evidence: Apps vs Registry are different capabilities. Both retained at sub-stage level.
+  - duplicate_capability: mcp_client_invoke
+    original_names:
+    - forge-minimax-mcp-direct-invoke
+    - mcporter CLI
+    - FORGE-mcp-a2a-agentic
+    fate: 'client_invoke covers all of: mcporter (CLI), MCP Apps UI (3b), A2A agentic dispatch (3c), Minimax direct (3c)'
+    evidence: Different invocation surfaces for different hosts; all consolidated under Stage 3 (BUILD) capability cluster.
+  - duplicate_capability: mcp_lifecycle_owner
+    original_names:
+    - FORGE-mcp-ops
+    - FORGE-mcp-federation-ops
+    - FORGE-mcp-lifeguard
+    fate: All into mcp-ops (this is the canonical skill) — Discover, Probe, Lifeguard all rolled into stages 1, 2, 8g
+    evidence: One canonical home. v3.0.0 already consolidated these; v3.1.0 keeps that direction.
+verdict: KNOWN

@@ -7,6 +7,8 @@ category: governance
 tags: [skills, hygiene, symlink, resolution, audit, curation]
 floors: [F1, F2, F4, F11]
 autonomy_tier: T1
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Skill Library Integrity

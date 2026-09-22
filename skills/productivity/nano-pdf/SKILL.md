@@ -10,6 +10,8 @@ metadata:
     tags: [PDF, Documents, Editing, NLP, Productivity]
     homepage: https://pypi.org/project/nano-pdf/
     related_skills: [pdf, ocr-and-documents]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # nano-pdf

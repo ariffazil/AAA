@@ -12,7 +12,10 @@ merged_from:
   - political-intelligence-briefing
   - news-research-briefing
 triggers:
-  # --- executive-intelligence-briefing ---
+  #
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+--- executive-intelligence-briefing ---
   - "news briefing"
   - "executive brief"
   - "weekly report"

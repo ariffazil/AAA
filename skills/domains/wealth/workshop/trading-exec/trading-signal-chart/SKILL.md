@@ -15,6 +15,8 @@ triggers:
   - "daily signal"
   - "buy sell signal"
   - "trading plan chart"
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Trading Signal Chart — PASSIVE NODE

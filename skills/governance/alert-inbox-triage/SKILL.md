@@ -14,6 +14,8 @@ triggers:
   - "triage this"
   - "what needs my attention"
   - "inbox sweep"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Alert Inbox Triage

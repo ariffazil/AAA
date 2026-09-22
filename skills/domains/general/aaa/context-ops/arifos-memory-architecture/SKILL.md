@@ -1,6 +1,8 @@
 ---
 name: arifos-memory-architecture
 description: "How memory flows across the arifOS federation — arif_memory (kernel L1–L6 governor), forge_memory (A-FORGE VAULT999 read), and HANG INGAT BALIK / PRL (precedent recall injected into reasoning)."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # arifOS Memory Architecture
@@ -74,6 +76,7 @@ Live 2026-08-13: collection arifos_precedent, point_count=255, tau=0.35,
 interrogate("deploy migration to prod") → PRL_MATCH, 3 constraints, L2_SYSTEM, ~21ms.
 
 ## Pitfalls / drift notes
+- **PATH DRIFT:** Dream Engine outputs exist at two paths — `/root/AAA/dream-engine/wisdom.md` (stale, 18 days old) and `/root/AAA/knowledge-graph/dream-engine/wisdom.md` (canonical, fresh). The old path is now a symlink. Always `stat` or `ls -la` before claiming a file's date. Path drift is a recurring federation pattern: docs point to archived locations while the real file moved. The 2026-09-12 normalization report fixed dream-engine skill references but missed the distiller output path.
 - **TAU DISCREPANCY:** prl_gate.py docstring says "τ ≥ 0.95" but the constant
   `PRL_TAU_THRESHOLD = 0.35` (vault_vectorizer.py:46) is what the gate import uses.
   Doc is stale; code value wins. Report the live value, flag the drift.

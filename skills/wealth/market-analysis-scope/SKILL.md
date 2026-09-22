@@ -4,6 +4,8 @@ description: "Use when analysing markets or charting assets."
 version: 1.0.0
 author: Hermes Agent
 tags: [market, analysis, technical-analysis, fundamentals, commodity, equity, collapse, forensics]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Market Analysis Scope

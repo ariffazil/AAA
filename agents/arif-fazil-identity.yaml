@@ -148,6 +148,16 @@ scars:
     note: "Institution outsourced AI thinking to vendor JV. Architect built sovereign arifOS."
     law: "When institutions outsource minds to vendors, architects build their own."
 
+  - id: 12
+    well: "Rightsizing PROPA / Tengku Taufik"
+    period: "2025–2026"
+    basin: "Enterprise"
+    type: "INSTITUTIONAL / PROPAGANDA SCAR"
+    verdict: "SEAL"
+    note: "Town hall PROPA + rightsizing announcement forced 13-year architect toward MSS. Without this scar, none of the others would have mattered — he wanted to stay."
+    law: "When the institution tells you survival means leaving, the institution has already failed itself."
+    scar_link: "SCAR_002 (MSS 2015-2016, ~1,000 erased) + SCAR_RIGHTSIZING (2025-2026) — history repeating"
+
 laws:
   - id: "LAW-01"
     text: "Truth that kills the asset is still the architect's duty."

@@ -14,6 +14,8 @@ triggers:
   - "how a company dies"
   - "delisted stock chart"
   - "give me chart for X"
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Financial History Charting

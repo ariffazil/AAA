@@ -11,6 +11,8 @@ metadata:
     homepage: https://www.openhue.io/cli
 prerequisites:
   commands: [openhue]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # OpenHue CLI

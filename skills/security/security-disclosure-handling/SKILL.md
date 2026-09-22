@@ -3,6 +3,8 @@ name: security-disclosure-handling
 description: Use when a vulnerability report arrives from outside.
 version: 1.0.0
 tags: [security, disclosure, cve, correspondence, vendor-acknowledgment]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Inbound Security Disclosure — Handling

@@ -2,6 +2,8 @@
 name: hermes-telegram-gateway-authorization
 version: 1.0.0
 description: "Use when Telegram users are denied despite configured lanes."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hermes Telegram Gateway Authorization

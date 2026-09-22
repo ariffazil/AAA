@@ -3,6 +3,8 @@ name: FORGE-t3a-binding-matrix
 description: "Close T3a authenticated session binding via falsifiable P0 matrix."
 version: 2026.07.17
 floors: [F1, F2, F7, F11, F13]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # FORGE — T3a Binding Matrix

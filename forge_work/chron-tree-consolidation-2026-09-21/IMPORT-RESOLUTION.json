@@ -1,0 +1,131 @@
+[
+  {
+    "entrypoint": "chron-loop-closer.service",
+    "entrypoint_file": "/root/chron/chron_loop_close.py",
+    "cwd": "/",
+    "PYTHONPATH": "/root",
+    "modules": [
+      {
+        "module": "chron",
+        "file": "/root/chron/__init__.py"
+      },
+      {
+        "module": "chron.chron_ariflow_bridge",
+        "file": "/root/chron/chron_ariflow_bridge.py"
+      },
+      {
+        "module": "chron.chron_episode",
+        "file": "/root/chron/chron_episode.py"
+      },
+      {
+        "module": "chron.chron_learn",
+        "file": "/root/chron/chron_learn.py"
+      },
+      {
+        "module": "chron.chron_prediction",
+        "file": "/root/chron/chron_prediction.py"
+      },
+      {
+        "module": "chron.chron_store",
+        "file": "/root/chron/chron_store.py"
+      },
+      {
+        "module": "chron.chron_verify",
+        "file": "/root/chron/chron_verify.py"
+      },
+      {
+        "module": "chron_loop_close",
+        "file": "/root/chron/chron_loop_close.py"
+      }
+    ],
+    "error": null
+  },
+  {
+    "entrypoint": "chron-loop-closer.service ExecStartPost",
+    "entrypoint_file": "/root/chron/chron_briefing.py",
+    "cwd": "/",
+    "PYTHONPATH": "/root",
+    "modules": [
+      {
+        "module": "chron_briefing",
+        "file": "/root/chron/chron_briefing.py"
+      }
+    ],
+    "error": null
+  },
+  {
+    "entrypoint": "chron-prediction-verifier.service",
+    "entrypoint_file": "/root/chron/chron_cron_verify.py",
+    "cwd": "/",
+    "PYTHONPATH": "/root",
+    "modules": [
+      {
+        "module": "chron",
+        "file": "/root/chron/__init__.py"
+      },
+      {
+        "module": "chron.chron_episode",
+        "file": "/root/chron/chron_episode.py"
+      },
+      {
+        "module": "chron.chron_prediction",
+        "file": "/root/chron/chron_prediction.py"
+      },
+      {
+        "module": "chron.chron_store",
+        "file": "/root/chron/chron_store.py"
+      },
+      {
+        "module": "chron.chron_verify",
+        "file": "/root/chron/chron_verify.py"
+      },
+      {
+        "module": "chron_cron_verify",
+        "file": "/root/chron/chron_cron_verify.py"
+      }
+    ],
+    "error": null
+  },
+  {
+    "entrypoint": "chron-task0-reconciliation.service",
+    "entrypoint_file": "/root/scripts/chron_personal/task0_reconciliation.py",
+    "cwd": "/",
+    "PYTHONPATH": null,
+    "modules": [],
+    "error": null
+  },
+  {
+    "entrypoint": "chron-mcp.service",
+    "entrypoint_file": "/root/chron/mcp_server.py",
+    "cwd": "/root/chron",
+    "PYTHONPATH": "/root",
+    "modules": [
+      {
+        "module": "chron",
+        "file": "/root/chron/__init__.py"
+      }
+    ],
+    "error": "ModuleNotFoundError: No module named 'fastmcp'"
+  },
+  {
+    "entrypoint": "crontab 30 15 * * *  /root/chron/verify_due.py",
+    "entrypoint_file": "/root/chron/verify_due.py",
+    "cwd": "/",
+    "PYTHONPATH": null,
+    "modules": [],
+    "error": null
+  },
+  {
+    "entrypoint": "ALPHA-ZEN card -> import chron (clock)",
+    "entrypoint_file": "/root/AAA/scripts/alpha_zen_chron.py",
+    "cwd": "/",
+    "PYTHONPATH": null,
+    "modules": [
+      {
+        "module": "chron",
+        "file": "/root/AAA/scripts/chron.py"
+      }
+    ],
+    "error": null
+  }
+]

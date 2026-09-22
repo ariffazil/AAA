@@ -25,6 +25,8 @@ metadata:
       - video-generation
     related_skills: [stable-diffusion]
     category: creative
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # ComfyUI
