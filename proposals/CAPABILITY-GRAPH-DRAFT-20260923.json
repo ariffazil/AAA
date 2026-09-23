@@ -1,0 +1,854 @@
+{
+  "generated": "2026-09-23",
+  "source_registry": "/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml",
+  "source_alias": "/root/AAA/skills/SKILL_ALIAS_TABLE.json (v1.1.0, SEALED_TABLE_AUDITED_RENAMED)",
+  "model": "capability (V3 layer/domain) -> skill (logical name) -> adapter (disk path, home=view)",
+  "summary": {
+    "capabilities": 16,
+    "skills_listed": 112,
+    "skills_in_alias": 93,
+    "skills_not_in_alias": 19,
+    "live_adapters": 36,
+    "dead_adapters": 56,
+    "tombstone_adapters": 1,
+    "non_tombstone_rows_not_in_v3": 41
+  },
+  "unreferenced_non_tombstone_skills": [
+    "AGI-claude-xml-structured-reasoning",
+    "AGI-codex-chain-of-thought",
+    "AGI-emd-decode",
+    "AGI-emd-metabolize",
+    "AGI-entropy-lock-prime",
+    "AGI-hermes-system-prompt-voice",
+    "AGI-prospect-maturation",
+    "AGI-sovereign-connector",
+    "APEX-quantum-eureka",
+    "ARCHIVE-vault-seal",
+    "ASI-cooling-ledger-rsi",
+    "ASI-knowledge-graph-query",
+    "ASI-knowledge-writeback",
+    "ASI-unified-memory",
+    "AUDIT-clarity-canon",
+    "AUDIT-post-seal-sweep",
+    "AUDIT-symbolic-collective-bias",
+    "AUDIT-symbolic-trust",
+    "CLAIM-receipt-v1",
+    "CLAIM-verification-gate",
+    "FORGE-context-compressor",
+    "FORGE-grok-profile",
+    "FORGE-init-intent-classify",
+    "FORGE-mcp-federation-ops",
+    "FORGE-phase-escalation",
+    "FORGE-route-least-power",
+    "FORGE-search",
+    "FORGE-seek",
+    "GEOX-artifact-rigor",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-verbs-forge-hands",
+    "MCP-transport-physics",
+    "SHADOW-diagnostic",
+    "WELL-boundary-sense",
+    "WELL-somatic-kernel",
+    "tri-witness",
+    "trinity-design-seam"
+  ],
+  "capabilities": {
+    "substrate": {
+      "load": "ALL agents, ALWAYS, FIRST",
+      "skills": [
+        {
+          "skill": "kernel-bind",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/substrate/kernel-bind",
+          "exists": true
+        },
+        {
+          "skill": "observe-ground",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/substrate/observe-ground",
+          "exists": true
+        },
+        {
+          "skill": "route-dispatch",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/substrate/route-dispatch",
+          "exists": true
+        },
+        {
+          "skill": "memory-manage",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/substrate/memory-manage",
+          "exists": true
+        },
+        {
+          "skill": "verify-gate",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/substrate/verify-gate",
+          "exists": true
+        },
+        {
+          "skill": "audit-seal",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/substrate/audit-seal",
+          "exists": true
+        },
+        {
+          "skill": "apx_init_substrate",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "substrate-taxonomy",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        }
+      ]
+    },
+    "knowledge": {
+      "load": "ALL agents, ALWAYS, AFTER substrate",
+      "skills": [
+        {
+          "skill": "know-physics",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/knowledge/know-physics",
+          "exists": true
+        },
+        {
+          "skill": "know-math",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/knowledge/know-math",
+          "exists": true
+        },
+        {
+          "skill": "know-language",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/knowledge/know-language",
+          "exists": true
+        },
+        {
+          "skill": "know-pragmatics",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        }
+      ]
+    },
+    "domain:geo": {
+      "skills": [
+        {
+          "skill": "geo-basin",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/geox-basin-engines",
+          "exists": false
+        },
+        {
+          "skill": "geo-constitution",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/geox-constitution",
+          "exists": false
+        },
+        {
+          "skill": "geo-petrophysics",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/geox-petrophysics-bounds",
+          "exists": false
+        },
+        {
+          "skill": "geo-writing",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/geox-scientific-writing",
+          "exists": false
+        },
+        {
+          "skill": "geo-well-tie",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/geox-well-tie-pipeline",
+          "exists": false
+        },
+        {
+          "skill": "geo-artifact-rigor",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/geological-artifact-rigor",
+          "exists": false
+        },
+        {
+          "skill": "geo-prospect",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/prospect-maturation-workflow",
+          "exists": false
+        }
+      ]
+    },
+    "domain:wealth": {
+      "skills": [
+        {
+          "skill": "wealth-reason",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/wealth-capital-reasoning",
+          "exists": false
+        },
+        {
+          "skill": "wealth-thermo",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/wealth-capital-thermodynamics",
+          "exists": false
+        },
+        {
+          "skill": "wealth-collapse",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/wealth-collapse-signature",
+          "exists": false
+        }
+      ]
+    },
+    "domain:well": {
+      "skills": [
+        {
+          "skill": "well-boundary",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/well-substrate-readiness",
+          "exists": false
+        },
+        {
+          "skill": "well-readiness",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/well-substrate-readiness",
+          "exists": false
+        }
+      ]
+    },
+    "domain:forge": {
+      "skills": [
+        {
+          "skill": "google-workspace-gws",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "youtube-extraction-datacenter-ip",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "mcp-shopping-list-2026-09",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "forge-exec",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+          "exists": false
+        },
+        {
+          "skill": "forge-verbs",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+          "exists": false
+        },
+        {
+          "skill": "forge-artifact-publisher",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-artifact-publisher",
+          "exists": true
+        },
+        {
+          "skill": "media-ingest-lane",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "mcp-context-compression",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "graphiti-temporal-memory-ops",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "provider-endpoint-migration",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        }
+      ]
+    },
+    "domain:dev": {
+      "skills": [
+        {
+          "skill": "dev-github",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/github",
+          "exists": true
+        },
+        {
+          "skill": "dev-ci-diagnose",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/github-ci-diagnose",
+          "exists": false
+        },
+        {
+          "skill": "dev-issue-triage",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/github-issue-triage",
+          "exists": false
+        },
+        {
+          "skill": "dev-pr-review",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/github-pr-review",
+          "exists": false
+        },
+        {
+          "skill": "dev-pr-governance",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/pr-review-governance",
+          "exists": false
+        },
+        {
+          "skill": "dev-wiki",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/code-wiki",
+          "exists": false
+        },
+        {
+          "skill": "dev-analysis",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/code-analysis-skills",
+          "exists": false
+        },
+        {
+          "skill": "dev-repo-audit",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/readme-truth-check",
+          "exists": false
+        },
+        {
+          "skill": "dev-web-builder",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-nextjs-mastery",
+          "exists": true
+        },
+        {
+          "skill": "dev-db-stack",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-postgres-schema-design",
+          "exists": true
+        },
+        {
+          "skill": "dev-fastapi",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-fastapi-api-builder",
+          "exists": true
+        },
+        {
+          "skill": "dev-did-identity",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-did-web-identity",
+          "exists": true
+        },
+        {
+          "skill": "dev-t3a-matrix",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-t3a-binding-matrix",
+          "exists": true
+        },
+        {
+          "skill": "dev-komda-law",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-komda-color-law",
+          "exists": true
+        },
+        {
+          "skill": "dev-sct-ingress",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-act-federation-ingress",
+          "exists": true
+        },
+        {
+          "skill": "dev-seal-close",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-seal-a-close",
+          "exists": true
+        },
+        {
+          "skill": "dev-jsonld",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-governance-jsonld",
+          "exists": true
+        }
+      ]
+    },
+    "domain:ops": {
+      "skills": [
+        {
+          "skill": "ops-docker",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/docker",
+          "exists": false
+        },
+        {
+          "skill": "ops-vps",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/vps-docker-ops",
+          "exists": false
+        },
+        {
+          "skill": "ops-mcp-builder",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/mcp-builder-doctrine",
+          "exists": false
+        },
+        {
+          "skill": "ops-mcp-probe",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/mcp-ops",
+          "exists": false
+        },
+        {
+          "skill": "ops-mcp-testing",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-testing",
+          "exists": true
+        },
+        {
+          "skill": "ops-infra",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/infra-guardian",
+          "exists": false
+        },
+        {
+          "skill": "ops-incident",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/incident-triage",
+          "exists": false
+        },
+        {
+          "skill": "ops-spatial",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/spatial-grounding",
+          "exists": false
+        },
+        {
+          "skill": "ops-health",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/verify-runtime",
+          "exists": false
+        },
+        {
+          "skill": "ops-mcp-lifeguard",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/mcp-lifeguard",
+          "exists": false
+        },
+        {
+          "skill": "ops-model-monitor",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/model-fallback-monitor",
+          "exists": false
+        },
+        {
+          "skill": "ops-google",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/google-workspace-cli",
+          "exists": false
+        },
+        {
+          "skill": "ops-transport",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/transport-physics-intelligence",
+          "exists": false
+        },
+        {
+          "skill": "ops-infra-crons",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-infra-crons",
+          "exists": true
+        },
+        {
+          "skill": "ops-compressor",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/forge-context-compressor",
+          "exists": true
+        },
+        {
+          "skill": "ops-compress",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/FORGE-context-compress",
+          "exists": false
+        },
+        {
+          "skill": "ops-data-compress",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/FORGE-data-compression",
+          "exists": false
+        },
+        {
+          "skill": "malaysia-reality-interface",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        }
+      ]
+    },
+    "domain:meta": {
+      "skills": [
+        {
+          "skill": "meta-skill-create",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/skill-creator",
+          "exists": false
+        },
+        {
+          "skill": "meta-skill-lint",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/skill-trigger-linter",
+          "exists": false
+        },
+        {
+          "skill": "meta-rsi",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/recursive-self-improvement",
+          "exists": false
+        },
+        {
+          "skill": "meta-rsi-audit",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/arifos-recursive-audit",
+          "exists": false
+        },
+        {
+          "skill": "meta-evals",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/arifos-evals",
+          "exists": false
+        },
+        {
+          "skill": "meta-plan",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/arifos-plan-dag",
+          "exists": false
+        },
+        {
+          "skill": "meta-atlas",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/meta-mesa-skill-atlas",
+          "exists": false
+        },
+        {
+          "skill": "meta-rsi-cool",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/cooling-ledger-rsi",
+          "exists": false
+        },
+        {
+          "skill": "meta-trust-map",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/symbolic-order-trust-architecture",
+          "exists": false
+        },
+        {
+          "skill": "meta-skill-unification",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/skill-unification",
+          "exists": false
+        },
+        {
+          "skill": "human-apps-roadmap-2026",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "organ-capability-map",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        }
+      ]
+    },
+    "domain:a2a": {
+      "skills": [
+        {
+          "skill": "a2a-onboard",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/agent-onboarding",
+          "exists": false
+        },
+        {
+          "skill": "a2a-kimi",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/kimi-code-aaa",
+          "exists": false
+        },
+        {
+          "skill": "a2a-sovereign",
+          "home": "aaa",
+          "status": "TOMBSTONED",
+          "path": "/root/AAA/skills/human-interface/audience-scoped-disclosure",
+          "exists": true
+        },
+        {
+          "skill": "a2a-spawn",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/subagent-spawn-template",
+          "exists": false
+        }
+      ]
+    },
+    "domain:sec": {
+      "skills": [
+        {
+          "skill": "sec-secrets",
+          "home": "opencode",
+          "status": "RESOLVED",
+          "path": "/root/.arifos/agents/opencode/skills/.profile-archive/secret-hygiene",
+          "exists": true
+        },
+        {
+          "skill": "sec-telegram",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/telegram-security-audit",
+          "exists": false
+        }
+      ]
+    },
+    "domain:research": {
+      "skills": [
+        {
+          "skill": "research-summarize",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/summarize-pro",
+          "exists": false
+        },
+        {
+          "skill": "research-search",
+          "home": "agents",
+          "status": "RESOLVED",
+          "path": "/root/.agents/skills/ask-search",
+          "exists": false
+        },
+        {
+          "skill": "research-deep",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/explorer-intelligence-architecture",
+          "exists": false
+        }
+      ]
+    },
+    "domain:domain": {
+      "skills": [
+        {
+          "skill": "domain-causal",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/causal555-pywhy",
+          "exists": false
+        },
+        {
+          "skill": "domain-delta-omega-psi",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/delta-omega-psi-multimodal-cognition",
+          "exists": true
+        },
+        {
+          "skill": "domain-wealth-claim",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/wealth-claim-state",
+          "exists": false
+        },
+        {
+          "skill": "domain-summarize",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/asi-summarize",
+          "exists": true
+        },
+        {
+          "skill": "domain-federation-hs",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/federation-connect-headscale",
+          "exists": true
+        },
+        {
+          "skill": "domain-release-attest",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/federation-release-attestation",
+          "exists": true
+        }
+      ]
+    },
+    "domain:constitutional": {
+      "skills": [
+        {
+          "skill": "apex-audit-coverage",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_audit_coverage_check",
+          "exists": true
+        },
+        {
+          "skill": "apex-authority-check",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_authority_check",
+          "exists": true
+        },
+        {
+          "skill": "apex-floor-check",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_floor_check",
+          "exists": true
+        },
+        {
+          "skill": "apex-reversibility",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_reversibility_test",
+          "exists": true
+        },
+        {
+          "skill": "apex-scope-check",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_scope_check",
+          "exists": true
+        },
+        {
+          "skill": "apex-tool-gate",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_tool_approval_gate",
+          "exists": true
+        },
+        {
+          "skill": "apex-verdict-hold",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_verdict_hold",
+          "exists": true
+        },
+        {
+          "skill": "apex-verdict-seal",
+          "home": "kimi",
+          "status": "RESOLVED",
+          "path": "/root/.kimi-code/skills/apex-gates/apex_verdict_seal",
+          "exists": true
+        },
+        {
+          "skill": "apex-quantum-eureka",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/apex-quantum-eureka",
+          "exists": false
+        }
+      ]
+    },
+    "domain:kernel": {
+      "skills": [
+        {
+          "skill": "kernel-eureka",
+          "home": "aaa",
+          "status": "RESOLVED",
+          "path": "/root/AAA/skills/quantum-eureka-doctrine",
+          "exists": false
+        },
+        {
+          "skill": "kernel-superposition",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        }
+      ]
+    },
+    "domain:hermes-media": {
+      "skills": [
+        {
+          "skill": "hermes-voice-config",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "tts-edge-fallback",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "hermes-text-to-speech",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "music-generation",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        },
+        {
+          "skill": "audio-analysis",
+          "adapter": "NOT_IN_ALIAS_TABLE"
+        }
+      ]
+    }
+  }
+}
