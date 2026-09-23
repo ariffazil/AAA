@@ -1,0 +1,582 @@
+{
+  "generated": "2026-09-22T23:42:06.837429Z",
+  "phase": "2-namefield-mapping",
+  "mode": "proposal-only / read-only",
+  "canonical_source": "/root/AAA/skills/SKILL_ALIAS_TABLE.json",
+  "retarget_count": 3,
+  "true_tombstone_count": 89,
+  "retargets": [
+    {
+      "v3_name": "ops-mcp-probe",
+      "target_disk_name": "mcp-ops",
+      "target_path": "/root/AAA/skills/capabilities/coding/mcp-ops",
+      "skill_md": "/root/AAA/skills/capabilities/coding/mcp-ops/SKILL.md",
+      "verdict": "RETARGET"
+    },
+    {
+      "v3_name": "ops-health",
+      "target_disk_name": "verify-runtime",
+      "target_path": "/root/AAA/skills/core/governance/verify-runtime",
+      "skill_md": "/root/AAA/skills/core/governance/verify-runtime/SKILL.md",
+      "verdict": "RETARGET"
+    },
+    {
+      "v3_name": "meta-skill-create",
+      "target_disk_name": "skill-creator",
+      "target_path": "/root/AAA/skills/domains/forge/skill-creator",
+      "skill_md": "/root/AAA/skills/domains/forge/skill-creator/SKILL.md",
+      "verdict": "RETARGET"
+    }
+  ],
+  "true_tombstones": [
+    {
+      "v3_name": "geo-basin",
+      "path": "/root/AAA/skills/geox-basin-engines",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "geo-constitution",
+      "path": "/root/AAA/skills/geox-constitution",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "geo-petrophysics",
+      "path": "/root/AAA/skills/geox-petrophysics-bounds",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "geo-writing",
+      "path": "/root/AAA/skills/geox-scientific-writing",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "geo-well-tie",
+      "path": "/root/AAA/skills/geox-well-tie-pipeline",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "geo-artifact-rigor",
+      "path": "/root/AAA/skills/geological-artifact-rigor",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "geo-prospect",
+      "path": "/root/AAA/skills/prospect-maturation-workflow",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "wealth-reason",
+      "path": "/root/AAA/skills/wealth-capital-reasoning",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "wealth-thermo",
+      "path": "/root/AAA/skills/wealth-capital-thermodynamics",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "wealth-collapse",
+      "path": "/root/AAA/skills/wealth-collapse-signature",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "well-boundary",
+      "path": "/root/AAA/skills/well-substrate-readiness",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "well-readiness",
+      "path": "/root/AAA/skills/well-substrate-readiness",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "forge-exec",
+      "path": "/root/AAA/skills/kernel-verbs-aforge-hands",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "forge-verbs",
+      "path": "/root/AAA/skills/kernel-verbs-aforge-hands",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "dev-ci-diagnose",
+      "path": "/root/AAA/skills/github-ci-diagnose",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "dev-issue-triage",
+      "path": "/root/AAA/skills/github-issue-triage",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "dev-pr-review",
+      "path": "/root/AAA/skills/github-pr-review",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "dev-pr-governance",
+      "path": "/root/AAA/skills/pr-review-governance",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "dev-wiki",
+      "path": "/root/AAA/skills/code-wiki",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "dev-analysis",
+      "path": "/root/AAA/skills/code-analysis-skills",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "dev-repo-audit",
+      "path": "/root/AAA/skills/readme-truth-check",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-docker",
+      "path": "/root/AAA/skills/docker",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-vps",
+      "path": "/root/AAA/skills/vps-docker-ops",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-mcp-builder",
+      "path": "/root/AAA/skills/mcp-builder-doctrine",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-infra",
+      "path": "/root/AAA/skills/infra-guardian",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-incident",
+      "path": "/root/AAA/skills/incident-triage",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-spatial",
+      "path": "/root/AAA/skills/spatial-grounding",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-mcp-lifeguard",
+      "path": "/root/AAA/skills/mcp-lifeguard",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-model-monitor",
+      "path": "/root/AAA/skills/model-fallback-monitor",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "apex-quantum-eureka",
+      "path": "/root/AAA/skills/apex-quantum-eureka",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-compress",
+      "path": "/root/AAA/skills/FORGE-context-compress",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-data-compress",
+      "path": "/root/AAA/skills/FORGE-data-compression",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "domain-causal",
+      "path": "/root/AAA/skills/causal555-pywhy",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "domain-wealth-claim",
+      "path": "/root/AAA/skills/wealth-claim-state",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-google",
+      "path": "/root/AAA/skills/google-workspace-cli",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ops-transport",
+      "path": "/root/AAA/skills/transport-physics-intelligence",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-skill-lint",
+      "path": "/root/AAA/skills/skill-trigger-linter",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-rsi",
+      "path": "/root/AAA/skills/recursive-self-improvement",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-rsi-audit",
+      "path": "/root/AAA/skills/arifos-recursive-audit",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-evals",
+      "path": "/root/AAA/skills/arifos-evals",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-plan",
+      "path": "/root/AAA/skills/arifos-plan-dag",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-atlas",
+      "path": "/root/AAA/skills/meta-mesa-skill-atlas",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-rsi-cool",
+      "path": "/root/AAA/skills/cooling-ledger-rsi",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-trust-map",
+      "path": "/root/AAA/skills/symbolic-order-trust-architecture",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "a2a-onboard",
+      "path": "/root/AAA/skills/agent-onboarding",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "a2a-kimi",
+      "path": "/root/AAA/skills/kimi-code-aaa",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "a2a-spawn",
+      "path": "/root/AAA/skills/subagent-spawn-template",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "sec-telegram",
+      "path": "/root/AAA/skills/telegram-security-audit",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "research-summarize",
+      "path": "/root/AAA/skills/summarize-pro",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "research-search",
+      "path": "/root/AAA/skills/ask-search",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "research-deep",
+      "path": "/root/AAA/skills/explorer-intelligence-architecture",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "kernel-eureka",
+      "path": "/root/AAA/skills/quantum-eureka-doctrine",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "meta-skill-unification",
+      "path": "/root/AAA/skills/skill-unification",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-sovereign-connector",
+      "path": "/root/AAA/skills/AGI-sovereign-connector",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-prospect-maturation",
+      "path": "/root/AAA/skills/AGI-prospect-maturation",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ASI-knowledge-writeback",
+      "path": "/root/AAA/skills/ASI-knowledge-writeback",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ASI-cooling-ledger-rsi",
+      "path": "/root/AAA/skills/ASI-cooling-ledger-rsi",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ASI-knowledge-graph-query",
+      "path": "/root/AAA/skills/ASI-knowledge-graph-query",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ASI-unified-memory",
+      "path": "/root/AAA/skills/ASI-unified-memory",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "FORGE-init-intent-classify",
+      "path": "/root/AAA/skills/FORGE-init-intent-classify",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "FORGE-phase-escalation",
+      "path": "/root/AAA/skills/FORGE-phase-escalation",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "FORGE-search",
+      "path": "/root/AAA/skills/FORGE-search",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "FORGE-seek",
+      "path": "/root/AAA/skills/FORGE-seek",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "ARCHIVE-vault-seal",
+      "path": "/root/AAA/skills/ARCHIVE-vault-seal",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AUDIT-clarity-canon",
+      "path": "/root/AAA/skills/AUDIT-clarity-canon",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AUDIT-post-seal-sweep",
+      "path": "/root/AAA/skills/AUDIT-post-seal-sweep",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AUDIT-symbolic-collective-bias",
+      "path": "/root/AAA/skills/AUDIT-symbolic-collective-bias",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AUDIT-symbolic-trust",
+      "path": "/root/AAA/skills/AUDIT-symbolic-trust",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "KERNEL-verbs-forge-hands",
+      "path": "/root/AAA/skills/KERNEL-verbs-forge-hands",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "KERNEL-reality-skills",
+      "path": "/root/AAA/skills/KERNEL-reality-skills",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "KERNEL-session-inhabit",
+      "path": "/root/AAA/skills/KERNEL-session-inhabit",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "KERNEL-sovereign-recognize",
+      "path": "/root/AAA/skills/KERNEL-sovereign-recognize",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "SHADOW-diagnostic",
+      "path": "/root/AAA/skills/SHADOW-diagnostic",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "MCP-transport-physics",
+      "path": "/root/AAA/skills/MCP-transport-physics",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "CLAIM-receipt-v1",
+      "path": "/root/AAA/skills/CLAIM-receipt-v1",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "CLAIM-verification-gate",
+      "path": "/root/AAA/skills/CLAIM-verification-gate",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "WELL-boundary-sense",
+      "path": "/root/AAA/skills/WELL-boundary-sense",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "WELL-somatic-kernel",
+      "path": "/root/AAA/skills/WELL-somatic-kernel",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "GEOX-artifact-rigor",
+      "path": "/root/AAA/skills/GEOX-artifact-rigor",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "KERNEL-qubit-substrate",
+      "path": "/root/AAA/skills/KERNEL-qubit-substrate",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-claude-xml-structured-reasoning",
+      "path": "/root/.kimi-code/skills/AGI-claude-xml-structured-reasoning",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-hermes-system-prompt-voice",
+      "path": "/root/.kimi-code/skills/AGI-hermes-system-prompt-voice",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-codex-chain-of-thought",
+      "path": "/root/.kimi-code/skills/AGI-codex-chain-of-thought",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-emd-decode",
+      "path": "/root/AAA/skills/AGI-emd-decode",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-emd-metabolize",
+      "path": "/root/AAA/skills/AGI-emd-metabolize",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "FORGE-grok-profile",
+      "path": "/root/.kimi-code/skills/FORGE-grok-profile",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "tri-witness",
+      "path": "/root/AAA/skills/AGI-explorer-intelligence",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "AGI-entropy-lock-prime",
+      "path": "/root/AAA/skills/AGI-entropy-lock-prime",
+      "reason": "no-disk-truth"
+    },
+    {
+      "v3_name": "trinity-design-seam",
+      "path": null,
+      "reason": "no-disk-truth"
+    }
+  ],
+  "others": {
+    "FLAG_REVIEW": [
+      {
+        "skill": "APEX-quantum-eureka",
+        "path": "/root/AAA/skills/apex-quantum-eureka"
+      },
+      {
+        "skill": "FORGE-route-least-power",
+        "path": "/root/AAA/skills/forge-route-least-power"
+      },
+      {
+        "skill": "KERNEL-trinity-33",
+        "path": "/root/AAA/skills/kernel-trinity-33"
+      },
+      {
+        "skill": "FORGE-context-compressor",
+        "path": "/root/AAA/skills/forge-context-compressor"
+      },
+      {
+        "skill": "FORGE-mcp-federation-ops",
+        "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops"
+      }
+    ],
+    "FLAG_PHANTOM": [
+      {
+        "skill": "apx_init_substrate",
+        "path": null
+      },
+      {
+        "skill": "hermes-text-to-speech",
+        "path": null
+      },
+      {
+        "skill": "kernel-superposition",
+        "path": null
+      },
+      {
+        "skill": "mcp-shopping-list-2026-09",
+        "path": null
+      }
+    ],
+    "CREATE_ROW": [
+      {
+        "skill": "audio-analysis",
+        "path": null
+      },
+      {
+        "skill": "google-workspace-gws",
+        "path": null
+      },
+      {
+        "skill": "graphiti-temporal-memory-ops",
+        "path": null
+      },
+      {
+        "skill": "hermes-voice-config",
+        "path": null
+      },
+      {
+        "skill": "human-apps-roadmap-2026",
+        "path": null
+      },
+      {
+        "skill": "know-pragmatics",
+        "path": null
+      },
+      {
+        "skill": "malaysia-reality-interface",
+        "path": null
+      },
+      {
+        "skill": "mcp-context-compression",
+        "path": null
+      },
+      {
+        "skill": "media-ingest-lane",
+        "path": null
+      },
+      {
+        "skill": "music-generation",
+        "path": null
+      },
+      {
+        "skill": "organ-capability-map",
+        "path": null
+      },
+      {
+        "skill": "provider-endpoint-migration",
+        "path": null
+      },
+      {
+        "skill": "substrate-taxonomy",
+        "path": null
+      },
+      {
+        "skill": "tts-edge-fallback",
+        "path": null
+      },
+      {
+        "skill": "youtube-extraction-datacenter-ip",
+        "path": null
+      }
+    ]
+  }
+}
