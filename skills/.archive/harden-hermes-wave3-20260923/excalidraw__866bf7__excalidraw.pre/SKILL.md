@@ -10,7 +10,8 @@ metadata:
   hermes:
     tags: [Excalidraw, Diagrams, Flowcharts, Architecture, Visualization, JSON]
     related_skills: []
-
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Excalidraw Diagram Skill

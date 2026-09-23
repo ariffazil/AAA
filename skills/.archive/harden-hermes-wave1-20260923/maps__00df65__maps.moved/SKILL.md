@@ -11,6 +11,8 @@ metadata:
     category: productivity
     requires_toolsets: [terminal]
     supersedes: [find-nearby]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Maps Skill

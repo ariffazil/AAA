@@ -6,6 +6,8 @@ description: "Probe Z.AI GLM coding plan health — models list, anthropic + ope
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F2, F4]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Z.AI Plan Probe

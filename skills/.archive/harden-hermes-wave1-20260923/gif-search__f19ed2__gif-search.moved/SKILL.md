@@ -11,6 +11,8 @@ prerequisites:
 metadata:
   hermes:
     tags: [GIF, Media, Search, Tenor, API]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # GIF Search (Tenor API)

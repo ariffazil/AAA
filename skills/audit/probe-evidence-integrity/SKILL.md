@@ -239,6 +239,26 @@ Close with what the probe actually established:
   and correct. Name such a result a near-miss rather than a finding: a phantom defect consumes
   the same attention as a real one and, once reported, discounts the probes that were right.
 
+- **Receipt-stated expiry dates are unverifiable in most AI provider surfaces.** A prior-session
+  receipt claiming "expires 09-29, ~305K remaining" for a free-tier model is a claim about
+  state at the moment that receipt was written. The provider's quota dashboard is usually
+  reachable only via authenticated browser session, not API; there is no machine-readable
+  endpoint that returns remaining quota + expiry for most free-tier models. Re-probing the
+  endpoint proves whether the model is still drawable; it does NOT prove the expiry or
+  remaining count stated in a prior receipt. Treat any pasted "X days remaining" or "expires
+  YYYY-MM-DD" claim as unverified when it comes from a prior receipt, and never let it become
+  the premise for a binary decision. Probe the live endpoint instead, then state what you
+  observed without inheriting the receipt's time-bound claim.
+
+- **A documented path shape is not the only path shape that works; probe each, do not inherit.**
+  Provider endpoints often accept two or more payload shapes for the same verb (e.g. Cohere
+  vs native, REST vs compatible-mode). A prior receipt may state "Cohere-shape OR native
+  both work" when in fact only one does — and the error from the rejected shape often masks
+  itself as a path/URL error rather than a payload-shape error, because the gateway sees the
+  wrong key first. Always issue a cheap probe with each candidate shape and compare HTTP
+  status AND response body shape before naming the working surface; never re-state a prior
+  receipt's claim about which shape works without a live re-confirm.
+
 ## Reference files
 
 - `references/mcp-probe-lifecycle.md` — MCP-specific recipe: lifecycle sequence, authenticated
@@ -247,3 +267,7 @@ Close with what the probe actually established:
   registry records and cross-record drift, whether an advertised remote is a real protocol endpoint,
   discovery documents, identity-enforcement probes (negative probe + positive control), and
   reconciling the same count stated on several public surfaces.
+- `references/ai-provider-endpoint-probes.md` — Probe recipe for AI provider endpoints
+  (embeddings, rerank, generation). Covers path-vs-payload shape disambiguation, dashboard-vs-
+  drawable capability checks, expiry-claim verification limits, and the shape of a probe matrix
+  that scales across candidate shapes without burning the free-tier quota.

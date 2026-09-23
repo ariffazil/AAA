@@ -13,6 +13,8 @@ metadata:
     related_skills: [scientific-manuscript-forge, geox-federation-mcp-driver, institutional-epistemic-sink-forensics, seven-zen-organs-enforcement, plan, requesting-code-review]
 source: hermes-only
 synthesized: 2026-08-08
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Submission Readiness Audit

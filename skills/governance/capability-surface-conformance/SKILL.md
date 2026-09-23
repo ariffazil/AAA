@@ -149,10 +149,21 @@ regardless of configuration). Concrete tell: an accessor with a falsy default
 (`os.environ.get("MODE", "SHADOW")`) is configuration; a gate that returns a refusal is a boundary.
 Never describe the first as the second.
 
-**A fix outside the causal path is not a fix.** After editing a file, confirm the scheduled or
-live entry point actually invokes *that file* before claiming the defect is closed. Repairing a
-dormant module changes nothing that runs. The check is the same CALLER proof, applied to your
-own work.
+- **A fix outside the causal path is not a fix.** After editing a file, confirm the scheduled or
+  live entry point actually invokes *that file* before claiming the defect is closed. Repairing a
+  dormant module changes nothing that runs. The check is the same CALLER proof, applied to your
+  own work.
+
+- **Two mechanisms declaring the same trigger is a doubled-fire, not defense in depth.** When
+  adding a new hook, nudge, plugin, or spec rule, search the existing runtime hook surfaces for
+  another component that already fires on the same trigger (event name + condition shape). Two
+  components firing on `pre_llm_call` for the same entity-name detection do not "both check" — they
+  both inject, doubling tokens and confusing downstream readers. **The probe is fast:** grep the
+  relevant plugin/spec directory for the trigger condition. **The split is by capability, not by
+  source:** keep the more specific owner (entity-name detection belongs in the named plugin, not
+  in a generic YAML rule), delete the duplicate from the less-specific surface, and leave the
+  trigger field unused rather than filled by a near-duplicate. Two paths to the same outcome are
+  a defect, not a hedge.
 
 **Family-level remedy:** give every control a **negative self-test** — disable its dependency,
 inject bad input, attempt the bypass, and require the output to change as its contract states. A
