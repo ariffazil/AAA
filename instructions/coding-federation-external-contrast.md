@@ -238,6 +238,21 @@ External flagged `opencode-ai/opencode` as the archived Go project. Probed live:
 
 The review is ~80% restatement of existing doctrine (authority envelope, transition discipline, no-self-authorization) by a model that never read the canon — independently convergent, which strengthens confidence in the architecture. The 20% delta: D1–D6 above. Adopt via T1/T2; the envelope/worktree pair (D1+D2) is the single highest-value change. Nothing here ratifies a new taxonomy or a second authority system — Canon #0 complexity gate: every new mechanism binds to ACT/lease/cc_id, never parallel to them.
 
+### 6. Hermes intake reconciliation (2026-09-23, probe AF-ALIGN-2026-09-23-001)
+
+Hermes's `/000 INIT` alignment probe adopted this same external spec and routed 6 "F13 binaries" to the sovereign. Dispositions — 5 of 6 were not binaries (HOW questions the machine answers via musyawarah; membrane):
+
+| Hermes question | Disposition (333-AGI, reversible default) |
+|---|---|
+| Q1 create `forge-agent` non-root user | STAGED/T3 fleet migration (register §3 holds it). Not piecemeal per-CLI. **The one genuine F13-class item.** |
+| Q2 worktree storage type | Plain dir `/root/work/worktrees/forge-<task-id>/` on existing FS. No bind mounts/RAM disks until write budgets prove need. |
+| Q3 network policy | Deny-by-default for coding cells (D3); egress via governed lanes only. Doctrine decided; config wiring staged. |
+| Q4 version lock | Pin 1.18.30 (probed, in §4) until register ratifies; upgrade via fi-qwen-upgrade pattern later. |
+| Q5 self-mod carve-out | `forge-hermes-self-evolution` is Hermes-owned and always was; FI agents propose-only per D4. No patch needed. |
+| Q6 MCP client vs A2A daemon | Not a decision: OpenCode **already is** an MCP client to A-FORGE/arifOS/GEOX/WEALTH/WELL (live: 333-AGI session tools). Standalone A2A-ingress daemon rejected per least-power. |
+
+**Corrections to Hermes's audit:** (a) live OpenCode config is `/root/.config/opencode/opencode.json` (`permission."*"=allow`, model `litellm-federation/forge-777`, 18 providers) — its offer to write `/root/.opencode/config.yaml` would have minted a ghost config the binary does not read; (b) its spec carried the same HARAM elements rejected in §3 (direct VAULT999 sink, `AWAIT_RELEASE`, statelessness, subagent denial) — one canon, one register; (c) receipt contract partially live: opencode emits commits + arifFlow `flow_ingest` receipts (e.g. `a4f21964`); full trace/diff-hash envelope is D1 staged.
+
 ---
 
 DITEMPA BUKAN DIBERI ⚒️
