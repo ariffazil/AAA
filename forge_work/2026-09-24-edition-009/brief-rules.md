@@ -6,5 +6,5 @@ A rule with a high count and no visible effect is a candidate for
 retirement.
 
 - **Buang naratif politik. Fokus pada OD1.**
-  - standing since 2026-09-18, scope `brief`, applied in 14 edition(s)
+  - standing since 2026-09-18, scope `brief`, applied in 15 edition(s)
   - heard as: "Buang naratif politik. Fokus pada OD1."

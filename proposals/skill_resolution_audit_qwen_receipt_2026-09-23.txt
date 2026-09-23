@@ -1,0 +1,69 @@
+skills with a SKILL.md: 587
+UNRESOLVABLE (name -> >1 distinct file): 8
+
+  claude
+    /root/.hermes/skills/apex_verdict_hold/claude/SKILL.md
+    /root/AAA/skills/apex_verdict_hold/claude/SKILL.md
+
+  google-workspace-gws
+    /root/.qwen/skills/google-workspace-gws/SKILL.md
+    /root/AAA/skills/google-workspace-gws/SKILL.md
+
+  hermes
+    /root/.hermes/skills/apex_verdict_hold/hermes/SKILL.md
+    /root/AAA/skills/apex_verdict_hold/hermes/SKILL.md
+
+  human-state-estimation
+    /root/.qwen/skills/human-state-estimation/SKILL.md
+    /root/AAA/skills/human-state-estimation/SKILL.md
+
+  institutional-epistemic-sink-forensics
+    /root/.config/opencode/skills/institutional-epistemic-sink-forensics/SKILL.md
+    /root/.hermes/skills/institutional-epistemic-sink-forensics/SKILL.md
+
+  malaysia-reality-interface
+    /root/.qwen/skills/malaysia-reality-interface/SKILL.md
+    /root/AAA/skills/malaysia-reality-interface/SKILL.md
+
+  organ-capability-map
+    /root/.qwen/skills/organ-capability-map/SKILL.md
+    /root/AAA/skills/organ-capability-map/SKILL.md
+
+  youtube-extraction-datacenter-ip
+    /root/.qwen/skills/youtube-extraction-datacenter-ip/SKILL.md
+    /root/.qwen/skills/youtube-extraction-datacenter-ip/youtube-extraction-datacenter-ip/SKILL.md
+
+DIR-BASENAME vs frontmatter name MISMATCH: 29
+    dir 'MY-REALITY-STACK' declares name 'Malaysia Reality Stack — Primary-Source Routing'  (/root/AAA/skills/MY-REALITY-STACK/SKILL.md)
+    dir 'aaa-audio-qualia-doctrine' declares name 'AAA-audio-qualia-doctrine'  (/root/AAA/skills/aaa-audio-qualia-doctrine/SKILL.md)
+    dir 'aaa-ocr-optical-compression' declares name 'AAA-OCR-optical-compression'  (/root/AAA/skills/aaa-ocr-optical-compression/SKILL.md)
+    dir 'agi-decisions-reflect' declares name 'AGI-decisions-reflect'  (/root/AAA/skills/agi-decisions-reflect/SKILL.md)
+    dir 'agi-multimodal-bridge' declares name 'AGI-multimodal-bridge'  (/root/AAA/skills/agi-multimodal-bridge/SKILL.md)
+    dir 'agi-plan-dag' declares name 'AGI-plan-dag'  (/root/AAA/skills/agi-plan-dag/SKILL.md)
+    dir 'arifos-eight-verb-canonical' declares name 'arifOS Eight-Verb Canonical Chain'  (/root/AAA/skills/arifos-eight-verb-canonical/SKILL.md)
+    dir 'claude' declares name 'arifOS ACT — Constitutional Reflex'  (/root/.hermes/skills/apex_verdict_hold/claude/SKILL.md)
+    dir 'claude' declares name 'arifOS ACT — Constitutional Reflex'  (/root/AAA/skills/apex_verdict_hold/claude/SKILL.md)
+    dir 'constitutional' declares name 'warga-constitutional'  (/root/AAA/skills/warga/constitutional/SKILL.md)
+    dir 'constitutional-kernel-architecture' declares name 'Constitutional Kernel Architecture'  (/root/AAA/skills/domains/general/apex/governance-core/constitutional-kernel-architecture/SKILL.md)
+    dir 'forge-cross-agent-handoff' declares name 'FORGE-cross-agent-handoff'  (/root/AAA/skills/forge-cross-agent-handoff/SKILL.md)
+    dir 'forge-ephemeral-genesis' declares name 'FORGE-ephemeral-genesis'  (/root/AAA/skills/forge-ephemeral-genesis/SKILL.md)
+    dir 'forge-issue-triage' declares name 'FORGE-issue-triage'  (/root/AAA/skills/forge-issue-triage/SKILL.md)
+    dir 'forge-lsp-pre-edit-gate' declares name 'FORGE-lsp-pre-edit-gate'  (/root/AAA/skills/forge-lsp-pre-edit-gate/SKILL.md)
+    dir 'forge-real-person-reference-photos' declares name 'Real-Person Reference Photos — Anti-Fabrication'  (/root/AAA/skills/domains/general/workshop/image-gen/forge-real-person-reference-photos/SKILL.md)
+    dir 'forge-seal-a-close' declares name 'FORGE-seal-a-close'  (/root/AAA/skills/forge-seal-a-close/SKILL.md)
+    dir 'forge-subagent-lifecycle' declares name 'FORGE-subagent-lifecycle'  (/root/AAA/skills/forge-subagent-lifecycle/SKILL.md)
+    dir 'forge-subagent-spawn' declares name 'FORGE-subagent-spawn'  (/root/AAA/skills/forge-subagent-spawn/SKILL.md)
+    dir 'forge-t3a-binding-matrix' declares name 'FORGE-t3a-binding-matrix'  (/root/AAA/skills/forge-t3a-binding-matrix/SKILL.md)
+    dir 'forge-vault999-witness' declares name 'FORGE-vault999-witness'  (/root/AAA/skills/forge-vault999-witness/SKILL.md)
+    dir 'forge-well-boundary-repair' declares name 'FORGE-well-boundary-repair'  (/root/AAA/skills/forge-well-boundary-repair/SKILL.md)
+    dir 'h3-video' declares name 'mmx-h3-video'  (/root/AAA/skills/domains/general/workshop/video-gen/h3-video/SKILL.md)
+    dir 'hermes' declares name 'APEX ACT — Constitutional Reflex (Hermes ASI)'  (/root/.hermes/skills/apex_verdict_hold/hermes/SKILL.md)
+    dir 'hermes' declares name 'APEX ACT — Constitutional Reflex (Hermes ASI)'  (/root/AAA/skills/apex_verdict_hold/hermes/SKILL.md)
+    dir 'official' declares name 'mimo-v2-5-tts'  (/root/AAA/skills/mimo-audio/references/official/SKILL.md)
+    dir 'reality-loop-operator' declares name 'Reality Loop - Autonomous 000 to 999 Recursive Improvement'  (/root/AAA/skills/reality-loop-operator/SKILL.md)
+    dir 'text-to-speech' declares name 'token-plan-tts'  (/root/AAA/skills/domains/general/workshop/voice-stack/text-to-speech/SKILL.md)
+    dir 'xauusd-trading' declares name 'XAUUSD-trading-stack'  (/root/AAA/skills/xauusd-trading/SKILL.md)
+
+FIX: keep ONE physical copy reachable per name inside a scanned root. Delete the stray REAL copy; keep the symlink. Never rename the skill to match a typo'd directory - the name is the trigger the agent matches on. Then prove the repair with a real skill_view(name=...); a file count proves nothing.
+
+FIX (mismatch): rename the DIRECTORY to the declared name - the directory name is the index key, so a wrong dir name makes the skill unreachable under its declared name and collides with the skill it is named after.

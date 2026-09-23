@@ -1,0 +1,602 @@
+{
+  "generated": "2026-09-22T23:44:58.991914+00:00",
+  "phase": "2c-curated-organ-native-mapping",
+  "mode": "proposal-only / read-only",
+  "curated_rule_count": 16,
+  "counts": {
+    "RETARGET_CURATED": 12,
+    "RETARGET": 0,
+    "FLAG_REVIEW": 0,
+    "TOMBSTONE": 104,
+    "other": 0
+  },
+  "results": {
+    "RETARGET_CURATED": [
+      {
+        "v3_name": "geo-basin",
+        "target_path": "/root/GEOX/skills/geox-basin-evaluation",
+        "target_disk_name": "geox-basin-evaluation"
+      },
+      {
+        "v3_name": "geo-constitution",
+        "target_path": "/root/GEOX/skills/geox-claim-falsification",
+        "target_disk_name": "geox-claim-falsification"
+      },
+      {
+        "v3_name": "geo-petrophysics",
+        "target_path": "/root/GEOX/skills/geox-basin-evaluation",
+        "target_disk_name": "geox-basin-evaluation"
+      },
+      {
+        "v3_name": "geo-writing",
+        "target_path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+        "target_disk_name": "aaa-pdf-voice-protocol"
+      },
+      {
+        "v3_name": "geo-well-tie",
+        "target_path": "/root/GEOX/skills/geox-well-log-qc",
+        "target_disk_name": "geox-well-log-qc"
+      },
+      {
+        "v3_name": "geo-artifact-rigor",
+        "target_path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+        "target_disk_name": "aaa-pdf-voice-protocol"
+      },
+      {
+        "v3_name": "geo-prospect",
+        "target_path": "/root/GEOX/skills/geox-prospect-evaluation",
+        "target_disk_name": "geox-prospect-evaluation"
+      },
+      {
+        "v3_name": "wealth-reason",
+        "target_path": "/root/WEALTH/skills/wealth-capital-primitives",
+        "target_disk_name": "wealth-capital-primitives"
+      },
+      {
+        "v3_name": "wealth-thermo",
+        "target_path": "/root/WEALTH/skills/wealth-runway-conservation",
+        "target_disk_name": "wealth-runway-conservation"
+      },
+      {
+        "v3_name": "wealth-collapse",
+        "target_path": "/root/WEALTH/skills/wealth-ledger-discipline",
+        "target_disk_name": "wealth-ledger-discipline"
+      },
+      {
+        "v3_name": "well-boundary",
+        "target_path": "/root/WELL/skills/well-substrate-readiness",
+        "target_disk_name": "well-substrate-readiness"
+      },
+      {
+        "v3_name": "well-readiness",
+        "target_path": "/root/WELL/skills/well-substrate-readiness",
+        "target_disk_name": "well-substrate-readiness"
+      }
+    ],
+    "RETARGET": [],
+    "FLAG_REVIEW": [],
+    "TOMBSTONE": [
+      {
+        "v3_name": "forge-exec",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "curated path missing: /root/AAA/skills/kernel-verbs-aforge-hands"
+      },
+      {
+        "v3_name": "forge-verbs",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "curated path missing: /root/AAA/skills/kernel-verbs-aforge-hands"
+      },
+      {
+        "v3_name": "dev-ci-diagnose",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "dev-issue-triage",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "dev-pr-review",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "dev-pr-governance",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "dev-wiki",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "dev-analysis",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "dev-repo-audit",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-docker",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-vps",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-mcp-builder",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-mcp-probe",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-infra",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-incident",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-spatial",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-health",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-mcp-lifeguard",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-model-monitor",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "apex-quantum-eureka",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-compress",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-data-compress",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "domain-causal",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "domain-wealth-claim",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-google",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ops-transport",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-skill-create",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-skill-lint",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-rsi",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-rsi-audit",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-evals",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-plan",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-atlas",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-rsi-cool",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-trust-map",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "a2a-onboard",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "a2a-kimi",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "a2a-spawn",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "sec-telegram",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "research-summarize",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "research-search",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "research-deep",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "kernel-eureka",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "meta-skill-unification",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-sovereign-connector",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-prospect-maturation",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ASI-knowledge-writeback",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ASI-cooling-ledger-rsi",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ASI-knowledge-graph-query",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ASI-unified-memory",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "APEX-quantum-eureka",
+        "orig_verdict": "FLAG_REVIEW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-init-intent-classify",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-phase-escalation",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-route-least-power",
+        "orig_verdict": "FLAG_REVIEW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-search",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-seek",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "ARCHIVE-vault-seal",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AUDIT-clarity-canon",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AUDIT-post-seal-sweep",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AUDIT-symbolic-collective-bias",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AUDIT-symbolic-trust",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "KERNEL-verbs-forge-hands",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "KERNEL-reality-skills",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "KERNEL-session-inhabit",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "KERNEL-sovereign-recognize",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "KERNEL-trinity-33",
+        "orig_verdict": "FLAG_REVIEW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "SHADOW-diagnostic",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "MCP-transport-physics",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "CLAIM-receipt-v1",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "CLAIM-verification-gate",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "WELL-boundary-sense",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "WELL-somatic-kernel",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "GEOX-artifact-rigor",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "KERNEL-qubit-substrate",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-claude-xml-structured-reasoning",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-hermes-system-prompt-voice",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-codex-chain-of-thought",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-emd-decode",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-emd-metabolize",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-grok-profile",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "tri-witness",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "AGI-entropy-lock-prime",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "trinity-design-seam",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-context-compressor",
+        "orig_verdict": "FLAG_REVIEW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "FORGE-mcp-federation-ops",
+        "orig_verdict": "FLAG_REVIEW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "apx_init_substrate",
+        "orig_verdict": "FLAG_PHANTOM",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "audio-analysis",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "google-workspace-gws",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "graphiti-temporal-memory-ops",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "hermes-text-to-speech",
+        "orig_verdict": "FLAG_PHANTOM",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "hermes-voice-config",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "human-apps-roadmap-2026",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "kernel-superposition",
+        "orig_verdict": "FLAG_PHANTOM",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "know-pragmatics",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "malaysia-reality-interface",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "mcp-context-compression",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "mcp-shopping-list-2026-09",
+        "orig_verdict": "FLAG_PHANTOM",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "media-ingest-lane",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "music-generation",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "organ-capability-map",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "provider-endpoint-migration",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "substrate-taxonomy",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "tts-edge-fallback",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      },
+      {
+        "v3_name": "youtube-extraction-datacenter-ip",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "no curated rule; keep prior verdict"
+      }
+    ],
+    "other": []
+  }
+}

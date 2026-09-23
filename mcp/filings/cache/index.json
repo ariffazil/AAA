@@ -1,8 +1,8 @@
 {
  "https://api.bnm.gov.my/public/base-rate": {
   "bytes": 5952,
-  "fetched_at_epoch": 1789484848.6877642,
-  "fetched_at_utc": "2026-09-15T15:07:28Z",
+  "fetched_at_epoch": 1790170869.082258,
+  "fetched_at_utc": "2026-09-23T13:41:09Z",
   "http_status": 200,
   "sha256": "f3678670fd5e8af538a1d8fda7da8123ad21838b54ccc4f1e0eb2b91f5de1a4f"
  },
@@ -15,15 +15,15 @@
  },
  "https://api.bnm.gov.my/public/opr": {
   "bytes": 144,
-  "fetched_at_epoch": 1789622555.2941422,
-  "fetched_at_utc": "2026-09-17T05:22:35Z",
+  "fetched_at_epoch": 1790170869.1910093,
+  "fetched_at_utc": "2026-09-23T13:41:09Z",
   "http_status": 200,
   "sha256": "bb7a2dc69bbd3ba33fc73cba24db65d981d8035cdb9f8101146acfa82a36c666"
  },
  "https://api.data.gov.my/data-catalogue?id=fuelprice&limit=1": {
   "bytes": 203,
-  "fetched_at_epoch": 1789484848.7967992,
-  "fetched_at_utc": "2026-09-15T15:07:29Z",
+  "fetched_at_epoch": 1790170869.283314,
+  "fetched_at_utc": "2026-09-23T13:41:09Z",
   "http_status": 200,
   "sha256": "6a4ac555395ec37409af951367d5a9c2625ac39d874bda908ce7d86b73c7db89"
  },
@@ -42,18 +42,18 @@
   "sha256": "dbbe4b3cc1a6bc08f3146f95b551a86534525573d1c017cea8a022e9db42f740"
  },
  "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json": {
-  "bytes": 3789099,
-  "fetched_at_epoch": 1789484847.2319689,
-  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "bytes": 300000,
+  "fetched_at_epoch": 1790170867.9268594,
+  "fetched_at_utc": "2026-09-23T13:41:08Z",
   "http_status": 200,
-  "sha256": "73a86c6aedc31f77cac2ea4df5f80f0b3bd7e6eb58bb4e01444fbedf3afb9c43"
+  "sha256": "3826b76f92367be50208b6a18305da07ae6e8c2551f195a406d757df9ce50367"
  },
  "https://data.sec.gov/submissions/CIK0000320193.json": {
-  "bytes": 164091,
-  "fetched_at_epoch": 1789484847.1137474,
-  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "bytes": 164033,
+  "fetched_at_epoch": 1790170867.6337879,
+  "fetched_at_utc": "2026-09-23T13:41:07Z",
   "http_status": 200,
-  "sha256": "cb90ffafc5b6f997b60aa109e07008223ad35abe896ec7918fd43652b4057329"
+  "sha256": "37b3434b1e0d75048c817f456978b89b8b04b211cbcadfafe8d93fe5715d12df"
  },
  "https://efts.sec.gov/LATEST/search-index?q=%22ExxonMobil%22+Malaysia+%22production+sharing+contract%22+Petronas": {
   "bytes": 59480,
@@ -98,11 +98,11 @@
   "sha256": "38fed2323f87f290eecf5098c9d07b83f982c19b24249ed95f546377b4ad905a"
  },
  "https://efts.sec.gov/LATEST/search-index?q=%22going+concern%22&forms=8-K": {
-  "bytes": 62038,
-  "fetched_at_epoch": 1789484848.2656205,
-  "fetched_at_utc": "2026-09-15T15:07:28Z",
+  "bytes": 62018,
+  "fetched_at_epoch": 1790170866.9759767,
+  "fetched_at_utc": "2026-09-23T13:41:07Z",
   "http_status": 200,
-  "sha256": "702c1693f52963001a1490ff15c42861385c48b34e6538986556be4ed1acf82f"
+  "sha256": "c076f6525eda038ed0bfff7ae1fa38bc995f0f28701f4820ff702f244c41f544"
  },
  "https://efts.sec.gov/LATEST/search-index?q=%22material+weakness%22&forms=10-K": {
   "bytes": 59157,
@@ -127,10 +127,10 @@
  },
  "https://www.bursamalaysia.com/api/v1/announcements/announcements?ann_type=company&per_page=1&page=1": {
   "bytes": 5834,
-  "fetched_at_epoch": 1789484849.167018,
-  "fetched_at_utc": "2026-09-15T15:07:29Z",
+  "fetched_at_epoch": 1790170869.968036,
+  "fetched_at_utc": "2026-09-23T13:41:10Z",
   "http_status": 403,
-  "sha256": "2d5ff59282e70310a2ec98737e94de1075f4fb3d77c18a9cccd2498993418497"
+  "sha256": "4f267cd12d6df21a9f10f8904d927279d21620e995881c8531ccf9b2cc6669cb"
  },
  "https://www.sec.gov/Archives/edgar/data/1002242/000117494726000417/form6k-35579_eni.htm": {
   "bytes": 272706,
@@ -168,10 +168,10 @@
   "sha256": "a7cf30b1d80fcca971a7bf60f0cb52165297abf78025906b4a1a91402c434e4e"
  },
  "https://www.sec.gov/files/company_tickers.json": {
-  "bytes": 797759,
-  "fetched_at_epoch": 1789484846.9454463,
-  "fetched_at_utc": "2026-09-15T15:07:27Z",
+  "bytes": 300000,
+  "fetched_at_epoch": 1790170868.4340484,
+  "fetched_at_utc": "2026-09-23T13:41:09Z",
   "http_status": 200,
-  "sha256": "82cd5fd9ccffda811b93ba76070460dd41429c02c00e726f83deb71f553c6cff"
+  "sha256": "5b9cf29edbf410ee364667d35f72d4b9712c20e6f74d246e62e2de190233effb"
  }
 }

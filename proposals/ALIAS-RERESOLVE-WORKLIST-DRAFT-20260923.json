@@ -1,0 +1,1177 @@
+{
+  "generated": "2026-09-23",
+  "mode": "PROPOSAL_ONLY (no mutation)",
+  "roots": {
+    "/root/GEOX/skills": "107 entries",
+    "/root/WELL/skills": "10 entries",
+    "/root/WEALTH/skills": "9 entries",
+    "/root/arifOS/skills": "246 entries",
+    "/root/HERMES/skills": "965 entries",
+    "/root/AAA/skills": "3876 entries",
+    "/root/.agents/skills": "3876 entries",
+    "/root/.kimi-code/skills": "494 entries",
+    "/root/.arifos/agents/opencode/skills": "260 entries",
+    "/root/.codex/skills": "22 entries",
+    "/root/.codex/skills-curated": "22 entries",
+    "/root/.forge/skills": "461 entries",
+    "/root/.grok/skills": "3876 entries"
+  },
+  "tally": {
+    "TOMBSTONE": 92,
+    "FLAG_REVIEW": 5,
+    "FLAG_PHANTOM": 4,
+    "CREATE_ROW": 15
+  },
+  "total_rows_proposed": 116,
+  "worklist": [
+    {
+      "skill": "geo-basin",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/geox-basin-engines",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "geo-constitution",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/geox-constitution",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "geo-petrophysics",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/geox-petrophysics-bounds",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "geo-writing",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/geox-scientific-writing",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "geo-well-tie",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/geox-well-tie-pipeline",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "geo-artifact-rigor",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/geological-artifact-rigor",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "geo-prospect",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/prospect-maturation-workflow",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "wealth-reason",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/wealth-capital-reasoning",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "wealth-thermo",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/wealth-capital-thermodynamics",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "wealth-collapse",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/wealth-collapse-signature",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "well-boundary",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/well-substrate-readiness",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "well-readiness",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/well-substrate-readiness",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "forge-exec",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "forge-verbs",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "dev-ci-diagnose",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/github-ci-diagnose",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "dev-issue-triage",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/github-issue-triage",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "dev-pr-review",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/github-pr-review",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "dev-pr-governance",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/pr-review-governance",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "dev-wiki",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/code-wiki",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "dev-analysis",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/code-analysis-skills",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "dev-repo-audit",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/readme-truth-check",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-docker",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/docker",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-vps",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/vps-docker-ops",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-mcp-builder",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/mcp-builder-doctrine",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-mcp-probe",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/mcp-ops",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-infra",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/infra-guardian",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-incident",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/incident-triage",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-spatial",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/spatial-grounding",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-health",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/verify-runtime",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-mcp-lifeguard",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/mcp-lifeguard",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-model-monitor",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/model-fallback-monitor",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "apex-quantum-eureka",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/apex-quantum-eureka",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-compress",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/FORGE-context-compress",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-data-compress",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/FORGE-data-compression",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "domain-causal",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/causal555-pywhy",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "domain-wealth-claim",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/wealth-claim-state",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-google",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/google-workspace-cli",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ops-transport",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/transport-physics-intelligence",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-skill-create",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/skill-creator",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-skill-lint",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/skill-trigger-linter",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-rsi",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/recursive-self-improvement",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-rsi-audit",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/arifos-recursive-audit",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-evals",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/arifos-evals",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-plan",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/arifos-plan-dag",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-atlas",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/meta-mesa-skill-atlas",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-rsi-cool",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/cooling-ledger-rsi",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-trust-map",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/symbolic-order-trust-architecture",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "a2a-onboard",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/agent-onboarding",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "a2a-kimi",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/kimi-code-aaa",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "a2a-spawn",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/subagent-spawn-template",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "sec-telegram",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/telegram-security-audit",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "research-summarize",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/summarize-pro",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "research-search",
+      "class": "dead_adapter",
+      "current_path": "/root/.agents/skills/ask-search",
+      "home": "agents",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "research-deep",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/explorer-intelligence-architecture",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "kernel-eureka",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/quantum-eureka-doctrine",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "meta-skill-unification",
+      "class": "dead_adapter",
+      "current_path": "/root/AAA/skills/skill-unification",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-sovereign-connector",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/AGI-sovereign-connector",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-prospect-maturation",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/AGI-prospect-maturation",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ASI-knowledge-writeback",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/ASI-knowledge-writeback",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ASI-cooling-ledger-rsi",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/ASI-cooling-ledger-rsi",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ASI-knowledge-graph-query",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/ASI-knowledge-graph-query",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ASI-unified-memory",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/ASI-unified-memory",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "APEX-quantum-eureka",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/apex-quantum-eureka",
+      "home": "opencode",
+      "found_locations": [
+        "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka",
+        "/root/AAA/skills/APEX-quantum-eureka",
+        "/root/AAA/skills/capabilities/planning/APEX-quantum-eureka",
+        "/root/AAA/skills/workflows/core/APEX-quantum-eureka",
+        "/root/.agents/skills/APEX-quantum-eureka",
+        "/root/.agents/skills/capabilities/planning/APEX-quantum-eureka",
+        "/root/.agents/skills/workflows/core/APEX-quantum-eureka",
+        "/root/.arifos/agents/opencode/skills/APEX-quantum-eureka",
+        "/root/.grok/skills/APEX-quantum-eureka",
+        "/root/.grok/skills/capabilities/planning/APEX-quantum-eureka",
+        "/root/.grok/skills/workflows/core/APEX-quantum-eureka"
+      ],
+      "recommended": "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka",
+      "verdict": "FLAG_REVIEW"
+    },
+    {
+      "skill": "FORGE-init-intent-classify",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/FORGE-init-intent-classify",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "FORGE-phase-escalation",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/FORGE-phase-escalation",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "FORGE-route-least-power",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/forge-route-least-power",
+      "home": "opencode",
+      "found_locations": [
+        "/root/HERMES/skills/FORGE-route-least-power",
+        "/root/.arifos/agents/opencode/skills/FORGE-route-least-power"
+      ],
+      "recommended": "/root/HERMES/skills/FORGE-route-least-power",
+      "verdict": "FLAG_REVIEW"
+    },
+    {
+      "skill": "FORGE-search",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/FORGE-search",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "FORGE-seek",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/FORGE-seek",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "ARCHIVE-vault-seal",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/ARCHIVE-vault-seal",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AUDIT-clarity-canon",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/AUDIT-clarity-canon",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AUDIT-post-seal-sweep",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/AUDIT-post-seal-sweep",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AUDIT-symbolic-collective-bias",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/AUDIT-symbolic-collective-bias",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AUDIT-symbolic-trust",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/AUDIT-symbolic-trust",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "KERNEL-verbs-forge-hands",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/KERNEL-verbs-forge-hands",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "KERNEL-reality-skills",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/KERNEL-reality-skills",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "KERNEL-session-inhabit",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/KERNEL-session-inhabit",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "KERNEL-sovereign-recognize",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/KERNEL-sovereign-recognize",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "KERNEL-trinity-33",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/kernel-trinity-33",
+      "home": "opencode",
+      "found_locations": [
+        "/root/HERMES/skills/domains/general/aaa/catalog-ops/KERNEL-trinity-33",
+        "/root/AAA/skills/KERNEL-trinity-33",
+        "/root/.agents/skills/KERNEL-trinity-33",
+        "/root/.arifos/agents/opencode/skills/KERNEL-trinity-33",
+        "/root/.grok/skills/KERNEL-trinity-33"
+      ],
+      "recommended": "/root/HERMES/skills/domains/general/aaa/catalog-ops/KERNEL-trinity-33",
+      "verdict": "FLAG_REVIEW"
+    },
+    {
+      "skill": "SHADOW-diagnostic",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/SHADOW-diagnostic",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "MCP-transport-physics",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/MCP-transport-physics",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "CLAIM-receipt-v1",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/CLAIM-receipt-v1",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "CLAIM-verification-gate",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/CLAIM-verification-gate",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "WELL-boundary-sense",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/WELL-boundary-sense",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "WELL-somatic-kernel",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/WELL-somatic-kernel",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "GEOX-artifact-rigor",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/GEOX-artifact-rigor",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "KERNEL-qubit-substrate",
+      "class": "orphan",
+      "current_path": "/root/.agents/skills/KERNEL-qubit-substrate",
+      "home": "opencode",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-claude-xml-structured-reasoning",
+      "class": "orphan",
+      "current_path": "/root/.kimi-code/skills/AGI-claude-xml-structured-reasoning",
+      "home": "kimi",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-hermes-system-prompt-voice",
+      "class": "orphan",
+      "current_path": "/root/.kimi-code/skills/AGI-hermes-system-prompt-voice",
+      "home": "kimi",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-codex-chain-of-thought",
+      "class": "orphan",
+      "current_path": "/root/.kimi-code/skills/AGI-codex-chain-of-thought",
+      "home": "kimi",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-emd-decode",
+      "class": "orphan",
+      "current_path": "/root/AAA/skills/AGI-emd-decode",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-emd-metabolize",
+      "class": "orphan",
+      "current_path": "/root/AAA/skills/AGI-emd-metabolize",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "FORGE-grok-profile",
+      "class": "orphan",
+      "current_path": "/root/.kimi-code/skills/FORGE-grok-profile",
+      "home": "kimi",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "tri-witness",
+      "class": "orphan",
+      "current_path": "/root/AAA/skills/AGI-explorer-intelligence",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "AGI-entropy-lock-prime",
+      "class": "orphan",
+      "current_path": "/root/AAA/skills/AGI-entropy-lock-prime",
+      "home": "aaa",
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "trinity-design-seam",
+      "class": "orphan",
+      "current_path": null,
+      "home": null,
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "TOMBSTONE"
+    },
+    {
+      "skill": "FORGE-context-compressor",
+      "class": "orphan",
+      "current_path": "/root/AAA/skills/forge-context-compressor",
+      "home": "aaa",
+      "found_locations": [
+        "/root/HERMES/skills/FORGE-context-compressor",
+        "/root/AAA/skills/FORGE-context-compressor",
+        "/root/.agents/skills/FORGE-context-compressor",
+        "/root/.arifos/agents/opencode/skills/FORGE-context-compressor",
+        "/root/.grok/skills/FORGE-context-compressor"
+      ],
+      "recommended": "/root/HERMES/skills/FORGE-context-compressor",
+      "verdict": "FLAG_REVIEW"
+    },
+    {
+      "skill": "FORGE-mcp-federation-ops",
+      "class": "orphan",
+      "current_path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops",
+      "home": "kimi",
+      "found_locations": [
+        "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops"
+      ],
+      "recommended": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops",
+      "verdict": "FLAG_REVIEW"
+    },
+    {
+      "skill": "apx_init_substrate",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "FLAG_PHANTOM"
+    },
+    {
+      "skill": "audio-analysis",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/domains/general/forge/repo-intelligence/audio-analysis",
+        "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-analysis",
+        "/root/.agents/skills/domains/general/forge/repo-intelligence/audio-analysis",
+        "/root/.grok/skills/domains/general/forge/repo-intelligence/audio-analysis"
+      ],
+      "recommended": "/root/HERMES/skills/domains/general/forge/repo-intelligence/audio-analysis",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "google-workspace-gws",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/google-workspace-gws",
+        "/root/AAA/skills/google-workspace-gws",
+        "/root/.agents/skills/google-workspace-gws",
+        "/root/.arifos/agents/opencode/skills/google-workspace-gws",
+        "/root/.grok/skills/google-workspace-gws"
+      ],
+      "recommended": "/root/HERMES/skills/google-workspace-gws",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "graphiti-temporal-memory-ops",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/graphiti-temporal-memory-ops",
+        "/root/AAA/skills/graphiti-temporal-memory-ops",
+        "/root/.agents/skills/graphiti-temporal-memory-ops",
+        "/root/.grok/skills/graphiti-temporal-memory-ops"
+      ],
+      "recommended": "/root/HERMES/skills/graphiti-temporal-memory-ops",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "hermes-text-to-speech",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "FLAG_PHANTOM"
+    },
+    {
+      "skill": "hermes-voice-config",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+        "/root/AAA/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+        "/root/.agents/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+        "/root/.grok/skills/domains/general/workshop/voice-stack/hermes-voice-config"
+      ],
+      "recommended": "/root/HERMES/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "human-apps-roadmap-2026",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/human-apps-roadmap-2026",
+        "/root/AAA/skills/human-apps-roadmap-2026",
+        "/root/.agents/skills/human-apps-roadmap-2026",
+        "/root/.arifos/agents/opencode/skills/human-apps-roadmap-2026",
+        "/root/.grok/skills/human-apps-roadmap-2026"
+      ],
+      "recommended": "/root/HERMES/skills/human-apps-roadmap-2026",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "kernel-superposition",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "FLAG_PHANTOM"
+    },
+    {
+      "skill": "know-pragmatics",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/know-pragmatics",
+        "/root/AAA/skills/knowledge/know-pragmatics",
+        "/root/.agents/skills/knowledge/know-pragmatics",
+        "/root/.grok/skills/knowledge/know-pragmatics"
+      ],
+      "recommended": "/root/HERMES/skills/know-pragmatics",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "malaysia-reality-interface",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/malaysia-reality-interface",
+        "/root/AAA/skills/malaysia-reality-interface",
+        "/root/.agents/skills/malaysia-reality-interface",
+        "/root/.arifos/agents/opencode/skills/malaysia-reality-interface",
+        "/root/.grok/skills/malaysia-reality-interface"
+      ],
+      "recommended": "/root/HERMES/skills/malaysia-reality-interface",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "mcp-context-compression",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/mcp-context-compression",
+        "/root/AAA/skills/mcp-context-compression",
+        "/root/.agents/skills/mcp-context-compression",
+        "/root/.arifos/agents/opencode/skills/mcp-context-compression",
+        "/root/.grok/skills/mcp-context-compression"
+      ],
+      "recommended": "/root/HERMES/skills/mcp-context-compression",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "mcp-shopping-list-2026-09",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [],
+      "recommended": null,
+      "verdict": "FLAG_PHANTOM"
+    },
+    {
+      "skill": "media-ingest-lane",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/media-ingest-lane",
+        "/root/AAA/skills/media-ingest-lane",
+        "/root/.agents/skills/media-ingest-lane",
+        "/root/.arifos/agents/opencode/skills/media-ingest-lane",
+        "/root/.grok/skills/media-ingest-lane"
+      ],
+      "recommended": "/root/HERMES/skills/media-ingest-lane",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "music-generation",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/domains/general/workshop/audio-emd/music-generation",
+        "/root/AAA/skills/domains/general/workshop/audio-emd/music-generation",
+        "/root/.agents/skills/domains/general/workshop/audio-emd/music-generation",
+        "/root/.grok/skills/domains/general/workshop/audio-emd/music-generation"
+      ],
+      "recommended": "/root/HERMES/skills/domains/general/workshop/audio-emd/music-generation",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "organ-capability-map",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/organ-capability-map",
+        "/root/AAA/skills/organ-capability-map",
+        "/root/.agents/skills/organ-capability-map",
+        "/root/.arifos/agents/opencode/skills/organ-capability-map",
+        "/root/.grok/skills/organ-capability-map"
+      ],
+      "recommended": "/root/HERMES/skills/organ-capability-map",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "provider-endpoint-migration",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/provider-endpoint-migration",
+        "/root/AAA/skills/provider-endpoint-migration",
+        "/root/.agents/skills/provider-endpoint-migration",
+        "/root/.grok/skills/provider-endpoint-migration"
+      ],
+      "recommended": "/root/HERMES/skills/provider-endpoint-migration",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "substrate-taxonomy",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/substrate-taxonomy",
+        "/root/AAA/skills/substrate-taxonomy",
+        "/root/.agents/skills/substrate-taxonomy",
+        "/root/.grok/skills/substrate-taxonomy"
+      ],
+      "recommended": "/root/HERMES/skills/substrate-taxonomy",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "tts-edge-fallback",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/domains/general/workshop/voice-stack/tts-edge-fallback"
+      ],
+      "recommended": "/root/HERMES/skills/domains/general/workshop/voice-stack/tts-edge-fallback",
+      "verdict": "CREATE_ROW"
+    },
+    {
+      "skill": "youtube-extraction-datacenter-ip",
+      "class": "no_alias",
+      "current_path": null,
+      "home": null,
+      "found_locations": [
+        "/root/HERMES/skills/youtube-extraction-datacenter-ip",
+        "/root/.arifos/agents/opencode/skills/youtube-extraction-datacenter-ip"
+      ],
+      "recommended": "/root/HERMES/skills/youtube-extraction-datacenter-ip",
+      "verdict": "CREATE_ROW"
+    }
+  ]
+}
