@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [Research, Arxiv, Papers, Academic, Science, API]
     related_skills: [ocr-and-documents]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # arXiv Research

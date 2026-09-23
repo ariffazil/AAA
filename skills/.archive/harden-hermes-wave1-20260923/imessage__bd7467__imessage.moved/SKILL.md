@@ -10,6 +10,8 @@ metadata:
     tags: [iMessage, SMS, messaging, macOS, Apple]
 prerequisites:
   commands: [imsg]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # iMessage

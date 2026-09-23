@@ -1,6 +1,8 @@
 ---
 name: arifos-federation-ops
 description: "Operate the arifOS federation kernel — session lifecycle (arif_init / SCT renewal), seal ritual (Lane A vs Lane B, Gödel lock), VAULT999 receipts, carry_forward, and topology-truth fixes (declared vs live port drift). Trigger: SCT_EXPIRED, 'F13 SEAL', seal blocked/HOLD, forge_vault or arif_seal failures, port in docs ≠ live port, ghost-port reports, carry_forward/VAULT999 management on the arifOS box."
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # arifOS Federation Ops
