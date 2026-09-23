@@ -17,3 +17,4 @@
 {"ts":"2026-09-20T16:07:15Z","event_id":"evt_20260921_0007_6aca5aaf","source":"rsi_exhale","severity":"P2","type":"STATE_CHANGED","hash":"6aca5aafbbc85083","host":"forge"}
 {"ts":"2026-09-22T16:07:14Z","event_id":"evt_20260923_0007_2b3177bc","source":"rsi_exhale","severity":"P0","type":"DETECTED","hash":"2b3177bcaefa4032","host":"forge"}
 {"ts":"2026-09-22T22:07:14Z","event_id":"evt_20260923_0607_c80395de","source":"rsi_exhale","severity":"P0","type":"DETECTED","hash":"c80395ded1320370","host":"forge"}
+{"ts":"2026-09-22T23:48:01Z","event_id":"evt_20260923_0748_3e355385","source":"federation_pulse","severity":"P1","type":"SEALED","hash":"3e3553850dbe0228","host":"forge"}
