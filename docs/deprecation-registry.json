@@ -1,870 +1,886 @@
 {
- "version": "2026.09.20",
- "last_audit": "2026-09-20T22:13:48+08:00",
- "auditor": "333-AGI session SEAL-386cc71901e64263 (surface-entropy chain #1+#4, Arif-directed order #5A->#4->#1->#5B->#2->#3->#6) | +2026-09-20 hermes session (Attention Chaos Audit; BHV-surface-guard-per-probe-receipt retired under F13 order)",
- "open_divergences": [
-  {
-   "id": "DIV-SURFACE-GUARD-ALERT-DEAD",
-   "status": "OPEN",
-   "owner": "/root/A-FORGE (surface-guard-daemon + config/mcp-surface-guard.json)",
-   "reality": "publishHoldAlert() cannot fire: the `nats` client package is not installed in /root/A-FORGE, so the dynamic import fails and logs 'NATS module not available - skipping alert' on every drift (44+ logged). A NATS server IS running on 127.0.0.1:4222. Separately, config keys on_drift.notify=['arif','aaa_cockpit'] and on_drift.log_to='vault999' appear nowhere in the code — declared notification that has never existed.",
-   "consequence": "A schema-drift HOLD could never reach a human through the declared push path. The working surfaces are the journal (error/warn level), latest.json, per-transition event files and the forge_surface_guard MCP pull tool.",
-   "stopgap_taken": "Decorative config keys removed and replaced with an explicit alert_surface block naming the surfaces that exist and flagging the NATS push as NON-FUNCTIONAL.",
-   "closure": "F13 binary: install the nats client AND name a verified subscriber for subject 888_HOLD, or delete the push path. Not resolvable by an agent alone — either choice changes what the federation promises about alerting.",
-   "classification": "DECLARED_ONLY"
-  },
-  {
-   "id": "DIV-HERMES-BACKUP-GAP",
-   "status": "OPEN",
-   "owner": "/root/.hermes",
-   "reality": "1.6 GB of sovereign state (auth.json, IDENTITY_LOCK.json, SOUL.md, config.yaml, .env, carry_forward.json, state.db 369 MB) has no off-box backup. arifos-backup.service runs /root/scripts/direct-backup.sh, which references only /root/VAULT999 and /root/arifOS/VAULT999. /etc/cron.d/vault-replica rsyncs /root/.local/share/arifos/vault999/ to kvm4-forge every 6 h. Neither covers /root/.hermes.",
-   "consequence": "Loss of sovereign identity, credentials and session lineage on disk failure. Demonstrated overwrite risk: a concurrent session overwrote carry_forward.json on 2026-09-12.",
-   "stopgap_taken": "local tar snapshot under /root/BACKUPS/, mode 600. Same failure domain — protects against overwrite, NOT against disk loss.",
-   "closure": "extend the existing rsync pattern to kvm4-forge (reachable; /root/vault-replica exists), EXCLUDING credentials (.env, auth.json, *.bak) so secrets are not replicated off-box. Requires F13 — off-box replication of sovereign state is an exposure decision, not a backup decision.",
-   "classification": "OPEN (F13)"
-  },
-  {
-   "id": "DIV-SYSTEMD-ORPHAN-UNITS",
-   "status": "OPEN",
-   "owner": "systemd",
-   "reality": "6 units are active AND enabled while their ExecStart substrate is deleted: agentgateway-shadow.service (/root/forge_work/agw/agentgateway-linux-amd64, dir ABSENT) and apa-calendar|drive|gmail|gws|sheets-bridge.service (/root/venvs/composio/bin/python3, /root/venvs ABSENT). Processes still alive (started 2026-09-08) because deletion happened after start. systemctl --failed = 0, so the drift is invisible to a health check.",
-   "consequence": "All six fail on next reboot. The current 'active' state is a fossil of a deleted interpreter.",
-   "closure_blocked": "systemctl disable is a HARD DENY in ArifJudge: 'F9 ANTI-HANTU: matched \\bsystemctl\\s+(disable|mask|unmask|set-default)\\b' — blocked even in dry-run. The governance gate refused agent execution; this is a POWER-DRIFT pass. Correct closure is F13-sanctioned disable, or rebuild /root/venvs.",
-   "classification": "OPEN (F13) — gate-protected"
-  },
-  {
-   "id": "DIV-HERMES-MEMORY-SUBSTRATE",
-   "status": "OPEN",
-   "owner": "Hermes gateway (hermes-asi-gateway.service)",
-   "reality": "config.yaml sets memory.provider=mem0. Qdrant collection mem0 holds 14,319 points; federation collections arifos_memory (40), federation_shared (30), arifos_session_memory (56) total 128. SRO admissibility is implemented in A-FORGE (/root/A-FORGE/src/interfaces/mcp/sroAdmissibility.ts) and referenced 0 times in the Hermes mem0 plugin.",
-   "consequence": "99.1% of memory sits outside the witness substrate and bypasses the admissibility/expiry gate. No shared witness substrate.",
-   "closure": "either wire the mem0 path through SRO and the federation collections, or formally sanction the mem0 partition as a separate universe. Architectural — F13.",
-   "classification": "OPEN (architectural)"
-  },
-  {
-   "id": "DIV-SECRET-IN-WORLD-READABLE-LOG",
-   "status": "PARTIALLY_CLOSED",
-   "owner": "Hermes delegation logger",
-   "reality": "AZURE_OPENAI_KEY was present in 5 locations; one was /root/.hermes/cache/delegation/live/deleg_da0908e3/task-0.log at mode 644 (world-readable). The four .env copies were already mode 600.",
-   "action_taken": "chmod 600 applied to all five. The exposure also reached a session transcript via a failed redaction filter.",
-   "consequence": "A live provider credential was world-readable on disk. Mechanism unfixed — delegation logs regenerate with default permissions.",
-   "closure": "rotation review by F13 (needs provider console); add redaction/umask to the delegation writer so a key cannot be logged again.",
-   "classification": "PARTIALLY_CLOSED (rotation = F13)"
-  },
-  {
-   "id": "DIV-FLAME-RULE-IDS-RESIDUAL",
-   "status": "OPEN",
-   "owner": "/root/.config/federation-models.json",
-   "reality": "24 flame_* rule_ids remain in routing_rules, plus flame references in model_routes, capability_signatures, pricing, emd_model_class and effort. Not addressed by A-FORGE 802e0c8d, which fixed the code path only.",
-   "consequence": "A retired capability persists as named routing authority — ONTOLOGY_DRIFT.",
-   "closure": "purge or rename the flame_* rules after confirming no consumer resolves them.",
-   "classification": "OPEN"
-  },
-  {
-   "id": "DIV-VERIFICATION-LANE-OUTAGE",
-   "status": "OPEN",
-   "owner": "federation LLM lanes",
-   "reality": "Z.AI coding plan 429 (exhausted, resets 2026-09-15 16:13). Kimi plan 403 (monthly limit). Gemini 429 (prepayment credits depleted). opencode zen known dead. qwen lane alive but its shell is DENIED by permission policy — 8 of 12 verification commands refused. FRAME (:18085) is UP and reports total_drifts=0 / STABLE / baseline_age_days=38.",
-   "consequence": "No second agent can independently attest. FRAME is the designated independent observer yet is blind to all three divergence classes measured on 2026-09-13. The Reality Graph breaks at WITNESS.",
-   "closure": "re-run the attestation pass after 2026-09-15 16:13; widen FRAME baseline coverage to substrate-deletion and secret-exposure classes.",
-   "classification": "OPEN"
-  },
-  {
-   "id": "DIV-VAULT999-MULTIPATH-SOT",
-   "status": "OPEN",
-   "owner": "/root/VAULT999 + /root/.local/share/arifos/vault999 + /agent/vault999 + /root/.secrets/*.env",
-   "reality": "Four distinct VAULT999 path families coexist and consumers disagree about which is authoritative. LIVE: (1) Supabase vault_seals via VAULT999_DB, fronted by the only seal writer, vault999-writer.service on http://127.0.0.1:5001 -> 10492 seals, chain_integrity INTACT, chain_gaps 0; (2) /root/VAULT999/outcomes.jsonl, the live event log (28,413,925 bytes, 89,896+ lines, growing), identical inode to /root/arifOS/VAULT999/outcomes.jsonl. STALE: (3) /root/.local/share/arifos/vault999/outcomes.jsonl, FROZEN 2026-08-25 16:45, 1,894,697 bytes, 2,953 lines — still the read target of A-FORGE aed.py L6 and memory_promotion_smoke.py L6, and the WRITE target of arifOS auto_remediate.py; (4) /agent/vault999/receipts/outcomes.jsonl, 11,401,151 bytes, mtime 2026-08-26, the default VAULT_OUTCOMES in memory_promotion_smoke.py. Separately the local docker postgres 127.0.0.1:5432 db vault999.vault_seals holds only 12 rows — it is NOT the live seal store; the writer defaults away from it and its schema is stale.",
-   "consequence": "Consumers reading the frozen path report a dead file as a healthy seal store (permanent false-green liveness), and auto_remediate.py appends real receipts into a file the federation stopped advancing on 2026-08-25. Freshness/health claims about VAULT999 derived from those paths are unverifiable.",
-   "stopgap_taken": "2026-09-15: 4 stale consumers corrected with timestamped .bak (arifflow_digest.py, A-FORGE/duties/aed.py, A-FORGE/duties/memory_promotion_smoke.py, arifOS/scripts/auto_remediate.py). VAULT_WRITER_URL/VAULT_API_URL held at :8100 in /root/.secrets/{kunci-root,kunci-mas}.env while nothing listens on :8100 -> left UNTOUCHED and raised as a proposal instead.",
-   "closure": "F13 decision required: (a) retire or formally tombstone the two frozen outcomes.jsonl paths and the three broken /agent/vault999 symlinks under /root/VAULT999, and (b) collapse the :8100 compose lane vs :5001 systemd lane onto one declared writer. See /root/AAA/registry/PROPOSAL-2026-09-15-vault999-lane-store-consolidation.md and /root/AAA/registry/VAULT999-SOT-RECONCILIATION-2026-09-15.md",
-   "classification": "OPEN (F13)"
-  },
-  {
-   "id": "DIV-CODEX-DUAL-HOME",
-   "status": "OPEN",
-   "owner": "/root/AAA/agents/codex (internal) vs /root/AAA/agents/_external/codex (external)",
-   "reality": "Two canonical homes for codex carry different AGENTS.md doctrine. (1) /root/AAA/agents/codex/AGENTS.md dated 2026-09-15, 2.8 KB — the 2026-09-14 'warga citizen card', F13-ratified. (2) /root/AAA/agents/_external/codex/AGENTS.md dated 2026-08-26, 7.1 KB — the 'engineer-executor' doc referencing Codex CLI v0.147.0 and 'mcp.json retired 2026-07-27' (binary reality: codex-cli 0.154.0 at /root/.npm-global/bin/codex, mcp.json was retired so the doc is right but the version is stale by 7 minor releases). Only the external home has an agent-card.json; the internal home has identity.json + AGENTS.md only. Two sources of truth, one agent.",
-   "consequence": "Callers reading different surfaces get different doctrine. A musyawarah citing /root/AAA/agents/codex/AGENTS.md lands on F13-ratified citizen law; a 333-AGI session citing the _external AGENTS.md operates against the stale 2026-08-26 doctrine. One of them is wrong on runtime facts; both are 'valid' by their own dates.",
-   "stopgap_taken": "2026-09-19: codex _external agent-card.json shadowAcknowledged now records the divergence explicitly with shadow_id DIV-CODEX-DUAL-HOME so downstream readers see the trap. The card's identity.fi_slot (FI-005) and metadata.fi_slot (FI-005) both match /root/AAA/agents/codex/identity.json — so the FI slot is convergent; only the prose doctrine diverges.",
-   "closure": "F13-gated canonical-record move: collapse the two codex dirs into one canonical home. Same class as the prior harness collision / canonical-record moves. Until then, the shadowAcknowledged entry in _external agent-card.json is the read-side mitigation.",
-   "classification": "OPEN (F13) — canonical-record"
-  },
-  {
-   "id": "DIV-CODEX-SHADOW-SPARSE",
-   "status": "OPEN",
-   "owner": "/root/AAA/agents/_external/codex (card) vs /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (matrix)",
-   "reality": "Codex's entry in the shadow-matrix (per_actor_shadows) shows state=BALANCED, fq=1.0, execute_count=1, verify_count=1, verdict=CAUTION, note='Sparse'. The _external agent-card.json had shadowAcknowledged=null (audit 2026-09-19), so no shadow was being declared against the matrix observation. Codex is one of several _external cards where this gap exists; codex was the first audited. After fix (2026-09-19), codex _external card now carries 5 shadow entries covering sparse_history, two_canonical_homes, fi_slot_ground_truth, stale_binary_refs, and card_truth_repair_stale.",
-   "consequence": "Before fix: a caller trusting the agent-card alone would not learn that codex is at BALANCED 1.0 sparse — the matrix tracks it, the card did not. The shadow-matrix is the authority; the card was a leak. After fix: the card surfaces the trap explicitly. Other _external cards still have null shadowAcknowledged (qwen-code, grok, aider, etc.) — partial closure, not federation-wide.",
-   "stopgap_taken": "2026-09-19: shadowAcknowledged array + shadow_population_meta block added to /root/AAA/agents/_external/codex/agent-card.json. Backup at agent-card.json.bak-20260919-shadow-ack. JSON validated.",
-   "closure": "Run the same shadowAcknowledged population pass for the remaining _external cards (qwen-code, aider, claude-code, grok, kimi-code, opencode, copilot, continue-cli, mesa-test-agent, agy) — each is a separate T1 mutation. Federation-wide script at /root/AAA/scripts/populate-shadow-acknowledged.sh would close the rest of this divergence in one run; required-script spec below.",
-   "classification": "OPEN (partial closure 2026-09-19, codex only)"
-  },
-  {
-   "id": "DIV-FEDERATION-SHADOW-ACK-CLOSED",
-   "status": "CLOSED",
-   "owner": "/root/AAA/agents/_external/*/agent-card.json",
-   "reality": "Federation-wide pass 2026-09-19: shadowAcknowledged field added to all 13 _external agent cards (agy, aider, claude-code, codex, continue-cli, copilot, copilot-cli, grok, grok-build, kimi-code, mesa-test-agent, opencode, qwen-code). Codex had the manual hand-edit from the codex audit (5 shadows, .bak-20260919-shadow-ack). The other 12 were populated by /root/AAA/scripts/populate-shadow-acknowledged.sh with per-card .bak-2026-09-19-shadow-ack. Each shadow entry is a string of shape 'name: gloss' and was derived from real, probeable evidence: identity.json (FI slot), shadow-matrix (per_actor_shadows), live binary version probe, agent-card.json (verified_against).",
-   "consequence": "Before this pass, callers reading _external cards alone could not learn whether each agent had any execution/verification signal (shadow-matrix is the authority, cards were silent leaks). After: every card surfaces its own shadow inventory, and read_state MUST treat each agent's self-assessment as DERIVED (small N) until the shadow-matrix record grows above min_governance_samples=10.",
-   "stopgap_taken": "Per-card .bak at /root/AAA/agents/_external/<agent>/agent-card.json.bak-2026-09-19-shadow-ack (mode 600). Single consolidated federation-wide audit script at /root/AAA/scripts/populate-shadow-acknowledged.sh. Code audit chain: 333-AGI ran the audit; codex verified the audit (including the opencode state which was strictly worse than codex's); the opencode card was prioritized first as the worst-fi-slot case.",
-   "closure": "CLOSED 2026-09-19. Reopen if: (a) a new _external card is added without shadowAcknowledged, or (b) shadow-matrix crosses the per-agent min_governance_samples=10 threshold and existing shadows become stale (real activity > stated shadows). Per-card reversibility: cp /root/AAA/agents/_external/<agent>/agent-card.json.bak-2026-09-19-shadow-ack /root/AAA/agents/_external/<agent>/agent-card.json.",
-   "classification": "CLOSED"
-  },
-  {
-   "id": "DIV-FEDERATION-SHADOW-ACK-V2",
-   "status": "PARTIALLY_CLOSED",
-   "owner": "/root/AAA/scripts/populate-shadow-acknowledged.sh",
-   "reality": "Audit-of-the-audit pass 2026-09-19T13:48Z (333-AGI responding to codex audit). Codex found two latent bugs in the v1 script that the federation pass landed with: (Bug 1) matrix probe regex `test(\"qwen\"; \"i\")` was too broad — matched both `qwen-code` AND `qwen-code/FI-003` — and the multi-object JSON stream got interpolated into multi-line variables, then split by jq -s encoding into 4 array fragments where one was intended. qwen-code was the only card with a matrix match that was broader than one entry, so it was the only card that broke. (Bug 2) script-populated shadow_population_meta blocks had no `covers_shadow_ids` field, breaking traceability from card → divergence registry. Both fixed: regex is now exact-match `==`, jq has `-c` flag so matrix probe returns single compact line, and covers_shadow_ids is populated per card.",
-   "consequence": "Initial v1 state would have left qwen-code's sparse_history information garbled across 4 array entries (still parseable, but meaning hidden) and 12 cards without divergence linkage. After v2 fix: all 13 cards have well-formed shadow entries (verified: 0 fragments across the federation) and full traceability to divergences.",
-   "stopgap_taken": "Script v1 → v2 patch. 12 cards reverted from .bak-v1 to pre-script state, re-run with v2 script, .bak-v1 now contains the v1 (pre-fix) state for each card. v1 audit chain preserved.",
-   "closure": "PARTIALLY_CLOSED 2026-09-19T13:51Z — script fix landed, all 13 cards valid, but TWO F13 follow-ups remain: DIV-CODEX-DUAL-HOME (collapse two codex dirs) and DIV-OPENCODE-FI-UNRESOLVED (sovereign assigns opencode's FI slot — literal '???' placeholder in identity.json actor_id). When F13 acts on either, this divergence can move to fully CLOSED.",
-   "classification": "PARTIALLY_CLOSED (script fix done; 2 F13 follow-ups)"
-  },
-  {
-   "id": "DIV-QWEN-CODE-STUCK-MATRIX",
-   "status": "OPEN",
-   "owner": "/root/AAA/agents/_external/qwen-code",
-   "reality": "Shadow-matrix 2026-09-07 records qwen-code at state=STUCK, fq=0.25, execute_count=8, verify_count=2, verdict=STUCK, note='Same execution-dominance pattern'. This means qwen-code has executed 8 times but only verified twice — execution outruns verification 4×. Per substrate-taxonomy (FAIL_CLOSED doctrine 2026-09-18): STUCK = 'no verification', which is the inverse of the FOSSILIZED state grok-build is in. qwen-code is doing real work that nobody is checking.",
-   "consequence": "A federation member with execute/verify = 8/2 produces DERIVED claims with minimal MEASURED backing. Callers reading qwen-code's card should treat any self-assessment as unverified by ratio. The shadow is now declared in the card's shadowAcknowledged[0] entry but no execution path closes the gap — verification has to come from arifOS (888) or a witness organ.",
-   "stopgap_taken": "2026-09-19: shadow entry declared in /root/AAA/agents/_external/qwen-code/agent-card.json shadowAcknowledged[0]; covers_shadow_ids includes 'DIV-QWEN-CODE-STUCK-MATRIX'.",
-   "closure": "Either (a) qwen-code traffic grows enough that verify_count catches up naturally, or (b) arifOS routes a verification witness to qwen-code explicitly. Both are operational, not F13-gated.",
-   "classification": "OPEN (operational)"
-  },
-  {
-   "id": "DIV-OPENCODE-FI-UNRESOLVED",
-   "status": "OPEN",
-   "owner": "/root/AAA/agents/opencode/identity.json + arif-fazil/F13",
-   "reality": "/root/AAA/agents/opencode/identity.json has actor_id literally set to 'opencode/FI-???' — the '???' is a placeholder, never resolved. The file has NO `fi_slot` field at all (compare codex identity.json which has fi_slot='FI-005'). Meanwhile /root/AAA/agents/_external/opencode/agent-card.json declares fi='FI-OPENCODE' and fi_slot='FI-001' with actor_id=null at top level. So the FI slot claim exists in three places, all inconsistent: identity says '???', external card says 'FI-001', and the convention would say opencode is FI-001 (used in agent-card.json.bak-20260908-pre-migration and in scar/2026-08-15-w3-degradation references). The '???' was either a copy-paste from another identity file or a draft never resolved.",
-   "consequence": "opencode's legal identity binding is broken. An ed25519 pubkey is present (ad611f…), but no FI slot to anchor it to. A future agent-card verifier cannot check whether 'opencode/FI-001' is the legitimate sovereign-assigned slot or just an external-card guess. F13 SOVEREIGN needs to either ratify FI-001, assign a different slot, or formally retire the '???' and the opencode diri entirely.",
-   "stopgap_taken": "2026-09-19: shadow entry declared in /root/AAA/agents/_external/opencode/agent-card.json shadowAcknowledged[1]='fi_slot_unresolved: ...'; covers_shadow_ids includes 'DIV-OPENCODE-FI-UNRESOLVED'.",
-   "closure": "F13 SOVEREIGN DIRECTION REQUIRED. Either: (a) sovereign confirms FI-001 for opencode and identity.json is patched to actor_id='opencode/FI-001' + fi_slot='FI-001', or (b) sovereign assigns a different FI slot, or (c) opencode gets formally retired and identity.json is moved to archive. This is the same class of canonical-record mutation as the prior F13 harness collision.",
-   "classification": "OPEN (F13)"
-  }
- ],
- "recent_closures": [
-  {
-   "id": "CLOSE-surface-guard-baseline-amnesty",
-   "commit": "A-FORGE (surface-guard baseline persistence)",
-   "date": "2026-09-20",
-   "detail": "Baseline was in-memory only: every restart re-pinned the current surface and reported PASS with no record. Now persisted to /root/A-FORGE/config/surface-snapshots.json, loaded at boot, with a per-boot baseline-<ts>.json receipt stating loaded-vs-absent (amnesty). Added a 3-confirmation gate before a new surface may become the reference, a warm read on first contact, and a confirmation probe that discards cold/flapping reads as TRANSIENT. Root cause of the 45-day HOLD found: A-FORGE-MCP answers the first session request after transport creation from a COLD state and all later requests from a WARM state; all 121 tool hashes differ between regimes. Receipt: /root/VAULT999/RECEIPTS/2026-09-20-surface-guard-baseline-persistence.json"
-  },
-  {
-   "id": "MASKED-SEVERITY",
-   "commit": "b20018017",
-   "date": "2026-09-13",
-   "detail": "UNKNOWN outranked VIOLATION in worst_severity, masking measured violations for 7 of 24 actors."
-  },
-  {
-   "id": "FLAME-DORMANT-FALSE-CLAIM",
-   "commit": "3367aa7d3 + a10f43d50",
-   "date": "2026-09-13",
-   "detail": "Registry claimed the flameClient path was dormant; it was live. Corrected, then amended when A-FORGE 802e0c8d severed the dependency 4 minutes later."
-  },
-  {
-   "id": "RECEIPTS-REEMISSION-BLOAT",
-   "commit": "02af0c5a9",
-   "date": "2026-09-13",
-   "detail": "99.6% redundant (27,280 rows / 116 distinct signals). receipt_id + watermark added; now 0 rows per cycle. --snapshot preserves legacy behaviour."
-  },
-  {
-   "id": "DEAD-APEX-ZEN-GATE",
-   "commit": "243addcbb",
-   "date": "2026-09-13",
-   "detail": "Gate added by 85c89d7e8 into a module no production process loads, then removed by 243addcbb. Net zero."
-  }
- ],
- "deprecated_services": [
-  {
-   "id": "apex-prime.service",
-   "type": "service",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-06-02",
-   "reason": "Deterministic deliberation ported into AAA a2a-server.",
-   "replacement": "AAA a2a-server"
-  },
-  {
-   "id": "flame-api.service",
-   "type": "service",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "RM0 free-tier substrate exhausted: every request failed all free providers (cerebras x2, groq x3, gemini x2) and fell back to qwen-max (paid Qwen plan) with 7 wasted retries latency. Zero live callers (KVM4 hermes grep clean; only 2 AAA monitor scripts). flame-recover.timer was 5-min cron noise on dead tiers.",
-   "replacement": "FED litellm flash lane (KVM4 :4000 — 10 flash/mini models: qwen3.6-flash, deepseek-v4-flash, gemini-3.6-flash, MiniMax-M2.5...)",
-   "archive": "/root/BACKUPS/FLAME-retired-20260904",
-   "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)",
-   "f13_ack": "2026-09-06 — Arif: 'A — formal decommission flame' (FI-003 executed: fed_aware_middleware :18901 ref nulled + topology/agentic-web doctrine tombstoned)",
-   "residual_refs": "CORRECTED CLAIM: the earlier 'left dormant' and 'inert because FED :4000 advertises 0 flame routes' statements were both inaccurate — flameClient never called FED :4000. MEASURED 2026-09-13 21:5x: gatewayTools.ts:393 did `await import(../../tools/flameClient.js)` and invoked flameSynthesizeSearch on forge_search(synthesize=true), and flameClient.ts then hardcoded FLAME_API_BASE=http://127.0.0.1:18901 (nulled 2026-09-04) so each call paid a failed connect into gatewayTools' try/catch. REMEDIATED WHILE THIS AUDIT RAN — A-FORGE commit 802e0c8d at 22:00:38 changed flameClient.ts:17 to `process.env.FLAME_API_BASE || \"\"` with an early return at line 40 returning error 'FLAME decommissioned 2026-09-04' (no fetch, 0ms). Residual: the import and call site still exist; they are a cosmetic branch, not a live FLAME dependency.",
-   "reality_check": {
-    "checked_pre_remediation": "2026-09-13T21:55+08:00",
-    "checked_post_remediation": "2026-09-13T22:03:22+08:00",
-    "by": "FI-008 kimi-code (AUDIT_FIX_VERIFY_SEAL::2026-09-13)",
-    "method": "dist module load + source inspection + port probe + post-change re-read",
-    "note": "Reality moved mid-audit. Pre-remediation observations were true when measured and are now STALE, not wrong. Do not re-use them as current.",
-    "flameClient_dist_present": true,
-    "flameClient_module_loads": true,
-    "flame_api_base_pre": "hardcoded http://127.0.0.1:18901 (0 listeners) — was the defect",
-    "flame_api_base_post": "env-driven, default empty, early-return guard — A-FORGE 802e0c8d",
-    "live_caller": "/root/A-FORGE/src/interfaces/mcp/gatewayTools.ts:393 via A-FORGE MCP :7072 (pid 1287666)",
-    "verdict": "MET_IN_SUBSTANCE_NOT_LITERALLY — the FLAME network dependency is severed (no fetch, 0ms, explicit decommissioned error). The import+call site remains, so 'zero active FLAME execution paths' is not literally true.",
-    "federation_models_flame_rule_ids": "routing_rules: 24 flame mentions; also model_routes, capability_signatures, pricing, emd_model_class, effort — NOT addressed by 802e0c8d"
-   }
-  },
-  {
-   "id": "langfuse-observability",
-   "type": "service",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "Third-party tracing producing 0 live traces. Replaced by sovereign local Kabarkan (Postgres/NATS) + arifFlow FQ telemetry (:7073).",
-   "replacement": "Kabarkan + arifFlow"
-  },
-  {
-   "id": "graphiti-falkordb",
-   "type": "service",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "Degraded L5 relationship graph. Replaced by consolidated L3 Qdrant vector semantic search + L4 Postgres structured store.",
-   "replacement": "Qdrant (L3) + Postgres (L4)",
-   "unit": "graphiti-mcp.service"
-  },
-  {
-   "id": "ariffazil-crontab.arif_cron_deploy",
-   "type": "cron",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "Zombie: 113 Permission-denied fires/24h since 2026-05-23; script deleted; user ariffazil cannot read /root.",
-   "replacement": "none (bootstrap deploy tooling long retired)",
-   "archive": "/root/BACKUPS/cron-audit-20260904/ariffazil.crontab.bak"
-  },
-  {
-   "id": "gotong-royong-llm-crons (qwen/claude/codex)",
-   "type": "cron",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "LLM-in-cron, expensive, paused since ~Aug 24 cooldown and never resumed; superseded by mesh-health-probe + drift-detector + arifFlow FQ.",
-   "replacement": "aaa-mesh-health + AAA drift-detector",
-   "archive": "/root/BACKUPS/cron-audit-20260904/removed-paused-lines.txt"
-  },
-  {
-   "id": "metabolism-cron-set (wrapper/metabolize/asi-pulse/m6-collect)",
-   "type": "cron",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "Metabolism plane migrated to arifFlow daemon :7073 + systemd timers (fq-probe.timer, well-machine-telemetry.timer).",
-   "replacement": "arifFlow FQ + systemd timers",
-   "archive": "/root/BACKUPS/cron-audit-20260904/removed-paused-lines.txt"
-  },
-  {
-   "id": "federation-backup.daily",
-   "type": "cron",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "Log silent since 2026-08-10; superseded by GOV-A002 backup-federation + vault999-backup.timer + arifos-backup.timer.",
-   "replacement": "GOV-A002 + vault999/arifos backup timers",
-   "archive": "/root/BACKUPS/cron-audit-20260904/etc-cron.d/federation-backup.daily.retired"
-  },
-  {
-   "id": "arifflow-fq-mirror.timer",
-   "type": "timer",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "OnBootSec-only ghost (fires once per boot, last Aug 27) duplicating fq-probe.timer.",
-   "replacement": "fq-probe.timer"
-  },
-  {
-   "id": "GOV-A005 zero_day_sentinel",
-   "type": "cron",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "Script dir deleted by forge_work GC; 0 fires since 2026-08-28. Retired in SOT to prevent render resurrection.",
-   "replacement": "restore script then uncomment in scheduler_obligations_sot.yaml",
-   "archive": "/root/BACKUPS/cron-audit-20260904/scheduler_obligations_sot.yaml.bak"
-  },
-  {
-   "id": "/var/www/html/status.json",
-   "type": "artifact",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-04",
-   "reason": "Stale public truth since 2026-08-18 (generator banned); only .bak pages referenced it.",
-   "replacement": "revive generator or drop from AGENTS.md discovery table",
-   "archive": "/root/BACKUPS/cron-audit-20260904/status.json.removed"
-  },
-  {
-   "id": "AGENT_INDEX.json",
-   "type": "registry",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-08",
-   "reason": "Self-declared TOMBSTONE 2026-07-31 ('SUPERSEDED by a2a/registry/agents.yaml') but file persisted on disk; FI slot assignments (FI-001..FI-009) contradicted registry.yaml. Federation identity audit 2026-09-08: 53 cards across 3 trees, 11 duplicate identities — AGENT_INDEX added entropy instead of reducing it.",
-   "replacement": "a2a/registry/agents.yaml (canonical) + /root/AAA/agent-cards/ (CIV-33 layer-2 tree, source-of-truth) + paths_resolver.CANON_AGENT_CARD_PATHS (planned)",
-   "archive": "/root/AAA/archive/2026-09-08-identity-tombstone/AGENT_INDEX.json",
-   "reviewer": "FI-003 qwen-code (T1 reversible, 2026-09-08 F13 sovereign go)",
-   "supported_by": "INV-11 (Identity plane) — single canonical path per agent"
-  },
-  {
-   "id": "nats.service",
-   "type": "service",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-09",
-   "reason": "Superseded by distro unit nats-server.service during NATS migration; disabled, zero reverse deps, zero traffic.",
-   "replacement": "nats-server.service"
-  },
-  {
-   "id": "nats-prometheus-exporter.service",
-   "type": "service",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-09",
-   "reason": "Metrics transport absorbed by kabarkan OTEL collector (kabarkan-ingest JetStream active, ~1m freshness). Unit enabled-but-dead since 2026-09-04 SIGHUP event; intentionally not restarted.",
-   "replacement": "kabarkan-collector.service"
-  },
-  {
-   "id": "morning-briefing (root crontab 0 0 * * *)",
-   "type": "cron",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-09",
-   "reason": "Log-only morning summary overlapping readiness 07:30 delivery; removed from root crontab 2026-09-09 witness-membrane batch (LAW 8: zero new interruption channels); tombstone added during 888-directed zen pass.",
-   "replacement": "readiness 07:30 delivery + digest_inbox",
-   "witness": "FI-008 zen pass 2026-09-09, F13 blanket: execute all remaining"
-  }
- ],
- "deprecated_patterns": [
-  {
-   "id": "non_date_tags",
-   "type": "pattern",
-   "status": "DEPRECATED",
-   "reason": "Use date-based tags for clarity.",
-   "replacement": "YYYY-MM-DD tags"
-  },
-  {
-   "id": "containerize_core_organs",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "reason": "Containerization strategy has been updated.",
-   "replacement": "New containerization skill"
-  },
-  {
-   "id": "BHV-surface-guard-per-probe-receipt",
-   "type": "behavior",
-   "status": "RETIRED",
-   "tombstone_date": "2026-09-20",
-   "reason": "Emitted one drift-<ts>.json per 60s probe regardless of change: 38,282 files / 219.6 MB over 45 days, 100% HOLD (full census, 38,280 readable), a single reason class (MCP_TOOL_SURFACE_DRIFT), 46% of writes byte-identical duplicates (20,903 timestamp groups; 17,379 with >1 file; 400/400 sampled groups identical after stripping volatile timestamps), and NO reader anywhere on the box. In 45 days it changed zero decisions. Witness that cannot change a decision is archive, not governance.",
-   "replacement": "state-transition emitter — substantiveSignature() sha256 over the report with volatile fields (checked_at/detected_at/latency_ms) stripped; an event file is written ONLY when the signature differs from .last-signature. latest.json remains the single always-current live state file.",
-   "landed_in": "/root/A-FORGE/scripts/surface-guard-daemon.ts + dist/scripts/surface-guard-daemon.js (MainPID 244224, 2026-09-20 21:36 +08)",
-   "verification": "A/B harness on the deployed artifact: same state+new clock -> no write; changed state -> one write; repeat -> no write (PASS)",
-   "kill_authority": "/root/AAA/instructions/attention-kill-criterion.md (F13_RATIFIED_CHAT 2026-09-11) — first application of W1-W6 to a BEHAVIOR rather than a service",
-   "authority": "F13 SOVEREIGN — Arif, 2026-09-20 21:33 +08: \"jalan ja la. sampah semua ni ada sebab hampa dok berhenti tengah jalan macam ni la\"",
-   "receipt": "/root/VAULT999/RECEIPTS/2026-09-20-surface-guard-receipt-flood-purge.jsonl",
-   "rotated_by": "/etc/logrotate.d/surface-guard"
-  }
- ],
- "deprecated_skills": [
-  {
-   "id": "APA-sovereign-connector",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-07-09",
-   "reason": "APA experiment concluded"
-  },
-  {
-   "id": "quantum-kernel-runtime",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-07-09",
-   "reason": "Quantum kernel experiment concluded"
-  },
-  {
-   "id": "FORGE-mcp-jam-inspector",
-   "type": "skill",
-   "status": "ARCHIVED",
-   "tombstone_date": "2026-08-18",
-   "reason": "No SKILL.md. Stub run.sh greps the tree. Living hand is FORGE-mcp-testing.",
-   "archive": "skills/.archive/2026-08-18-fitness/FORGE-mcp-jam-inspector"
-  },
-  {
-   "id": "external-apex-audit",
-   "type": "skill",
-   "status": "ARCHIVED",
-   "tombstone_date": "2026-08-18",
-   "reason": "Empty directory. No body.",
-   "archive": "skills/.archive/2026-08-18-fitness/external-apex-audit"
-  },
-  {
-   "id": "_retired",
-   "type": "skill",
-   "status": "ARCHIVED",
-   "tombstone_date": "2026-08-18",
-   "reason": "Placeholder retired dir (liveness.json only).",
-   "archive": "skills/.archive/2026-08-18-fitness/_retired"
-  },
-  {
-   "id": "AAA_ZEN",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-08-30",
-   "reason": "Tombstone marker; content lives in AAA-ZEN-ALIGNMENT.md + zen doctrine",
-   "archive": "archive/zen-2026-08-30-tombstones/AAA_ZEN.md"
-  },
-  {
-   "id": "asi_presence_open",
-   "type": "skill",
-   "status": "ARCHIVED",
-   "tombstone_date": "2026-08-30",
-   "reason": "Archived 2026-07-24 in-file; registry now matches",
-   "archive": "archive/zen-2026-08-30-tombstones/asi_presence_open.md"
-  },
-  {
-   "id": "INIT-PROMPT-AFGORGE",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-08-30",
-   "reason": "Tombstoned init prompt superseded by INIT.md boot ritual",
-   "archive": "archive/zen-2026-08-30-tombstones/INIT-PROMPT-AFGORGE.md"
-  },
-  {
-   "id": "QUANTUM_KERNEL_INIT",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-08-30",
-   "reason": "Orphan scaffold of registry-deprecated quantum-kernel-runtime experiment (concluded 2026-07-09)",
-   "archive": "archive/zen-2026-08-30-tombstones/QUANTUM_KERNEL_INIT.md"
-  },
-  {
-   "id": "QUBIT_INIT_v1.0",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-08-30",
-   "reason": "Orphan scaffold of concluded quantum-substrate experiment",
-   "archive": "archive/zen-2026-08-30-tombstones/QUBIT_INIT_v1.0.md"
-  },
-  {
-   "id": "COPILOT-zen-router",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers (backups/historical logs only).",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06 — closes disk/git/registry/index four-reality split",
-   "executed": "2026-09-09",
-   "executed_by": "FI-008/333-AGI",
-   "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
-  },
-  {
-   "id": "RSI-recursive-improvement",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
-   "executed": "2026-09-09",
-   "executed_by": "FI-008/333-AGI",
-   "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
-  },
-  {
-   "id": "agent-bindings/claude-code-spawn",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
-  },
-  {
-   "id": "agent-bindings/substrate-forge",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
-  },
-  {
-   "id": "agent-bindings/substrate-init",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
-  },
-  {
-   "id": "agent-bindings/substrate-propose-seal",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
-  },
-  {
-   "id": "deterministic-face-id",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
-  },
-  {
-   "id": "forge-vss-parser",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
-   "executed": "2026-09-09",
-   "executed_by": "FI-008/333-AGI",
-   "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
-  },
-  {
-   "id": "skill-evolution",
-   "type": "skill",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-06",
-   "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
-   "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
-   "executed": "2026-09-09",
-   "executed_by": "FI-008/333-AGI",
-   "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
-  }
- ],
- "deprecated_tools": [
-  {
-   "id": "forge_*",
-   "type": "tool",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-07-15",
-   "reason": "A-FORGE pre-execution sub-tools removed. Use A-FORGE MCP directly.",
-   "replacement": "A-FORGE MCP"
-  },
-  {
-   "id": "arif_judge_deliberate",
-   "type": "tool",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-06-02",
-   "reason": "Internal deliberation surface for AAA a2a-server. Absorbed into arif_judge.",
-   "replacement": "arif_judge"
-  },
-  {
-   "id": "well_readiness",
-   "type": "tool",
-   "status": "REMOVED",
-   "tombstone_date": "2026-09-16",
-   "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
-   "replacement": "well_validate_vitality(mode=readiness)"
-  },
-  {
-   "id": "well_get_health",
-   "type": "tool",
-   "status": "REMOVED",
-   "tombstone_date": "2026-09-16",
-   "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
-   "replacement": "well_assess_reliability(mode=health)"
-  },
-  {
-   "id": "well_state",
-   "type": "tool",
-   "status": "REMOVED",
-   "tombstone_date": "2026-09-16",
-   "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
-   "replacement": "well_validate_vitality(mode=state)"
-  },
-  {
-   "id": "well_init",
-   "type": "tool",
-   "status": "REMOVED",
-   "tombstone_date": "2026-09-16",
-   "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
-   "replacement": "well_000_init"
-  },
-  {
-   "id": "well_machine_state",
-   "type": "tool",
-   "status": "REMOVED",
-   "tombstone_date": "2026-09-16",
-   "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
-   "replacement": "well_assess_reliability"
-  },
-  {
-   "id": "well_assess_governance",
-   "type": "tool",
-   "status": "REMOVED",
-   "tombstone_date": "2026-09-16",
-   "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
-   "replacement": "well_detect_boundary"
-  }
- ],
- "deprecated_files": [
-  {
-   "id": "SOUL.md",
-   "type": "file",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-08-03",
-   "reason": "Superseded by arifos://identity MCP resource + carry_forward.json",
-   "replacement": "/root/.local/share/arifos/carry_forward.json",
-   "reviewed": true,
-   "reviewed_date": "2026-08-09",
-   "reviewed_by": "333-AGI/Hermes"
-  },
-  {
-   "id": "LANDING.md",
-   "type": "file",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-08-03",
-   "reason": "Superseded by AGENTS.md + AAA-ZEN-ALIGNMENT.md",
-   "replacement": "/root/AGENTS.md",
-   "reviewed": true,
-   "reviewed_date": "2026-08-09",
-   "reviewed_by": "333-AGI/Hermes"
-  },
-  {
-   "id": "CONTEXT.md",
-   "type": "file",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-08-03",
-   "reason": "Superseded by carry_forward.json",
-   "replacement": "/root/.local/share/arifos/carry_forward.json",
-   "reviewed": true,
-   "reviewed_date": "2026-08-09",
-   "reviewed_by": "333-AGI/Hermes"
-  },
-  {
-   "id": "apex-zen-ffff",
-   "type": "quarantine",
-   "status": "DEPRECATED",
-   "tombstone_date": "2026-09-11",
-   "reason": "4-FFFF trial artifact attempting to name APEX×ZEN fusion. Cold-storaged 2026-08-04 without living pointer. Superseded by /root/AAA/canon/A-Z-APEX-ZEN-DOCTRINE.md (DRAFT_AWAITING_F13). Naming `A-Z` is canonical; `ffff` suffix reserved for FFFF-verdict forged artifacts only.",
-   "replacement": "/root/AAA/canon/A-Z-APEX-ZEN-DOCTRINE.md",
-   "tombstone": "/root/A-FORGE/forge_work/_quarantine/2026-08-04/apex-zen-ffff/RETIRED.md",
-   "reviewed": true,
-   "reviewed_date": "2026-09-11",
-   "reviewed_by": "333-AGI Δ MIND (witness-apex-zen-audit-2026-09-11)"
-  },
-  {
-   "id": "/root/.local/share/arifos/vault999/outcomes.jsonl",
-   "type": "file",
-   "status": "SUPERSEDED_READONLY",
-   "tombstone_date": "2026-08-25",
-   "reason": "Frozen 2026-08-25 16:45 (2,953 lines, 1,894,697 bytes). Not the live seal ledger. Consumers still reading it were corrected 2026-09-15; file retained (deletion blocked by prior session — retirement is an F13 decision).",
-   "replacement": "/root/VAULT999/outcomes.jsonl (live) + http://127.0.0.1:5001/vault/status for seal truth (Supabase vault_seals via VAULT999_DB)",
-   "reviewed": true,
-   "reviewed_date": "2026-09-15",
-   "reviewed_by": "Hermes ASI subagent / VAULT999-SOT-RECONCILIATION"
-  },
-  {
-   "id": "/agent/vault999/receipts/outcomes.jsonl",
-   "type": "file",
-   "status": "SUPERSEDED_READONLY",
-   "tombstone_date": "2026-08-26",
-   "reason": "Legacy container-era path, 11,401,151 bytes, mtime 2026-08-26 05:44. Default VAULT_OUTCOMES in A-FORGE/duties/memory_promotion_smoke.py; /root/VAULT999 also carries three broken symlinks pointing into /agent/vault999 (.gz, _manual.jsonl, SESSION_SEAL_*.json). Retained; retirement F13-gated.",
-   "replacement": "/root/VAULT999/outcomes.jsonl",
-   "reviewed": true,
-   "reviewed_date": "2026-09-15",
-   "reviewed_by": "Hermes ASI subagent / VAULT999-SOT-RECONCILIATION"
-  },
-  {
-   "id": "hermes-snap-*",
-   "type": "pattern",
-   "status": "DEPRECATED_SECURITY",
-   "tombstone_date": "2026-09-18",
-   "severity": "P1",
-   "reason": "hermes-snap-*.sh snapshot mechanism previously emitted ACK_BOT_TOKEN via hardcoded literal into 4 shell scripts + 1 terminal-output log. Severity UPGRADED 2026-09-17T16:47Z from P3 to P1 after exhaustive disk probe revealed the token was leaked through the snap-pipeline, not just the state.db-wal Hermes originally reported. 5 disk occurrences cleaned up; mechanism removed.",
-   "replacement": "Arif-managed credential rotation (no snap mechanism); future snapshots use hermes_session_token issuance through AAA arif_init only.",
-   "scar_anchor": "carry_forward e-token-cleanup-2026-09-18 / scar 2026-09-17T16:47Z",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
-  },
-  {
-   "id": "flameClient.ts:393 (gatewayTools import)",
-   "type": "cosmetic_branch",
-   "status": "DEPRECATED_RESIDUAL",
-   "tombstone_date": "2026-09-18",
-   "reason": "Cosmetic-only import + invoke of flameClient from gatewayTools.ts survives flame-api.service decommission (commit 802e0c8d at 2026-09-04 22:00:38 short-circuited flameClient.ts:17 + line 40 early-return). Call site still exists in gatewayTools but routes to 'FLAME decommissioned 2026-09-04' error; 0ms, no fetch. No live FLAME dependency; tombstone is for grep-cleanliness so future agents do not chase a ghost.",
-   "replacement": "Delete the flameSynthesizeSearch call site in gatewayTools.ts:393 (T3 cleanup, F13 not required — cosmetic branch on already-decommissioned service)",
-   "scar_anchor": "deprecated_services[flame-api.service].residual_refs",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
-  },
-  {
-   "id": "graphiti-*",
-   "type": "service",
-   "status": "DEPRECATED_RETIRED_888",
-   "tombstone_date": "2026-09-17",
-   "reason": "Graphiti semantic floor retired to 888 (HOLD) on 2026-09-17. /health now reports graphiti_transport=retired_888, graphiti_storage=retired_888, graphiti_embedding_runtime=unverified, graphiti_semantic_floor=disabled. Semantic memory tier is no longer wired to Graphiti backend. No active consumers — verified via /health disabled status + arifOS 2026-09-17 federation-log.",
-   "replacement": "Apex scalars + apex_scalars.{h, QDF, W3} heuristic tier (per /health.runtime_floors)",
-   "scar_anchor": "carry_forward e-graphiti-retirement-2026-09-17",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
-  },
-  {
-   "id": "/root/.local/share/arifos/vault999/EPOCH_ATTESTATION.json",
-   "type": "file",
-   "status": "SUPERSEDED_READONLY",
-   "tombstone_date": "2026-09-18",
-   "reason": "Frozen 2026-09-05 05:42 (884 bytes). Pre-VAULT999-reboot attestation fossil. Sibling of /root/.local/share/arifos/vault999/outcomes.jsonl tombstone. No live reader; pre-2026-08-25 epoch artefacts superseded by VAULT999_DB (Supabase vault_seals via VAULT999 :5001).",
-   "replacement": "VAULT999_DB :5001 vault_seals table (live) — Supabase",
-   "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
-  },
-  {
-   "id": "/root/.local/share/arifos/vault999/EUREKA-ZEN-SUBSTRATE-LOCK-2026-07-13.json",
-   "type": "file",
-   "status": "SUPERSEDED_READONLY",
-   "tombstone_date": "2026-09-18",
-   "reason": "Frozen 2026-07-17 15:56 (2969 bytes). EUREKA lock artefact from pre-AAA substrate era. Sibling of outcomes.jsonl tombstone. No live reader; superseded by apex_scalars.{h, QDF, W3} heuristic tier (per /health.runtime_floors 2026-09-17).",
-   "replacement": "apex_scalars.{h, QDF, W3} + /opt/arifos/canon/ (active 2026.09.17-edea664)",
-   "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
-  },
-  {
-   "id": "/root/.local/share/arifos/vault999/F11_AUTH_HOLD.jsonl",
-   "type": "file",
-   "status": "SUPERSEDED_READONLY",
-   "tombstone_date": "2026-09-18",
-   "reason": "Frozen 2026-05-05 14:06 (343 bytes). Pre-AAA AUTH_HOLD lineage. Sibling of outcomes.jsonl tombstone. Duplicate also exists at /root/.local/share/arifos/vault999/_archive/historical_seals/F11_AUTH_HOLD.jsonl (already cold-archived). No live reader; L11 AUTH now enforced via kernel arif_judge floor (status='pass', score=1.0 per /health.runtime_floors.L11).",
-   "replacement": "arif_judge.L11 (live kernel floor)",
-   "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
-  },
-  {
-   "id": "/root/.local/share/arifos/_archive_2026-09-08-empty-db-cleanup/{arifos.db,fed_token_bank.db,local.db}",
-   "type": "file_set",
-   "status": "DEPRECATED_RESIDUAL",
-   "tombstone_date": "2026-09-18",
-   "reason": "3 zero-byte SQLite databases from 2026-09-08 empty-db cleanup. arifos.db + fed_token_bank.db (Sep 8 01:54, 0 bytes) + local.db (Sep 8 01:58, 0 bytes). Empty dbs are filesystem noise; no schema, no readers, no purpose. Tombstone for grep-cleanliness.",
-   "replacement": "Live dbs at /root/.local/share/arifos/{capability_ledger,arifflow_receipts,etc.} (none zero-byte)",
-   "scar_anchor": "carry_forward e-zero-db-cleanup-2026-09-08",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
-  },
-  {
-   "id": "/root/VAULT999/SESSION_SEAL_aa1cdfcb676f458b.json",
-   "type": "symlink",
-   "status": "DEPRECATED_RESIDUAL",
-   "tombstone_date": "2026-09-18",
-   "reason": "Broken dangling symlink -> /agent/vault999/sealed/SESSION_SEAL_aa1cdfcb676f458b.json (target dir empty since 2026-06-22). 57 bytes symlink, lrwxrwxrwx. Child fossil of /agent/vault999/receipts/outcomes.jsonl tombstone (L553-L563). Delete is safe — no consumer.",
-   "replacement": "/root/VAULT999/outcomes.jsonl (live, growing)",
-   "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
-   "reviewed": true,
-   "reviewed_date": "2026-09-18",
-   "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
-  }
- ],
- "deprecated_endpoints": [
-  {
-   "endpoint": "/cockpit/queue_depth",
-   "organs_probed": [
-    "arifos:8088",
-    "aaa:3001",
-    "bridge:18081"
-   ],
-   "status": "INTENTIONALLY_ABSENT",
-   "resolved": "2026-09-09",
-   "resolution": "RETIRED not built — consumer (well_observe_evidence_backlog) already degrades gracefully to missing_evidence=['no_evidence_endpoint'] (honest UNKNOWN, Void Guard compliant). Building speculative surface without a real queue behind it would violate promotion selectivity. If a real evidence queue materializes, re-open.",
-   "witness": "FI-008 execution context 2026-09-09 P4",
-   "reversible": true
-  },
-  {
-   "endpoint": "http://127.0.0.1:8100 (+ http://vault999:8100 in arifOS/deploy/docker-compose.yml)",
-   "organs_probed": [
-    "127.0.0.1:8100 (vault999-api / compose vault999 service)"
-   ],
-   "status": "DEAD_UNLISTENED",
-   "resolved": "2026-09-15",
-   "resolution": "Nothing listens on :8100 (ss -ltnp shows no :8100 listener; curl -> HTTP 000). The live seal writer is vault999-writer.service on :5001. Yet /root/.secrets/kunci-root.env:298 and kunci-mas.env:299 still export VAULT_WRITER_URL=http://127.0.0.1:8100, and lines 296/297 export VAULT_API_URL=http://localhost:8100, which overrides the correct :5001 defaults in AAA/a2a-server/vault.js:12, AAA/a2a-server/seal_chain.js:96, arifOS/arifosmcp/cli/check.py:99 and cli/seal.py:37. NOT edited — shared secrets file + compose-vs-systemd lane duplication is an F13 architecture decision. Proposal raised.",
-   "witness": "Hermes ASI subagent, VAULT999-SOT-RECONCILIATION 2026-09-15 (ss -ltnp, curl :8100 -> 000, curl :5001 -> 200)",
-   "reversible": true
-  }
- ],
- "deprecated_conventions": [],
- "p0_audit": {
-  "audited_by": "333-AGI",
-  "audited_at": "2026-08-09T18:10:00Z",
-  "p0_1_status": "IN_PROGRESS — registerVerifiedSession() implemented, setActor() deprecated, caller migration not yet complete",
-  "p0_2_status": "PENDING_DESIGN — default:observe-deny would break all agents without explicit policy design. Requires dedicated security hardening sprint.",
-  "p0_5_status": "PENDING_KERNEL — depends on arifOS kernel SCT changes (KERNEL-TODO-V5.1 P2-2)",
-  "p0_6_status": "COMPLETE — LCL-* local lease fallback disabled by default since 2026-07-19"
- },
- "known_issues": {
-  "a-forge-mcp-transport-timeout": "Copilot CLI tools/call times out on :7071/mcp. :7072 stateless works.",
-  "hypervisor-steal-2026-08-30": "Host-level CPU steal ~100% (3x /proc/stat 4s-delta samples, 20:47-21:20 MYT) throttled VM to ~2% of 8 cores. Symptoms: MCP 90s boot timeouts, organs intermittently unresponsive, sct-renew/frame-witness-reader/A007 timers failing downstream (all casualties, not causes). DO NOT restart organs during steal — measure first: grep '^cpu ' /proc/stat twice 4s apart; steal delta >10% = host issue (wait / Hostinger panel). Onset ~20:05. agy antigravity session (pts/2 since 20:07, 48min CPU) suspected burst-credit accelerator — unconfirmed.",
-  "kimi-mcp-external-suspended-2026-08-30": "4 external MCP servers disabled in /root/.kimi-code/mcp.json (context7, playwright, serena, human-inference) to break respawn retry-storm under steal; load 15.6->7.5. Federation organ MCPs untouched. Restore: enabled=true when steal <5% sustained 5min. Backup: /root/.config/backups/20260830T2100-mcp.json.pre-zen. Related: /root/.secrets/providers.yml cerebras duplicate-notes YAML key merged (aforge MCP 90s-timeout root cause; backup 20260830T2050-providers.yml.pre-yaml-fix; no regenerating template found in A-FORGE/arifOS/AAA 2026-08-30). arifos MCP tools/list timeout was steal-induced, NOT protocol — shim pins 2024-11-05 (kernel-supported); self-heals after throttle. protocol-2025-06-18 shadow errors trace to AAA AGENTS-AUTONOMY §2 canonical probe, not the kimi shim.",
-  "well-degraded": "WELL :18083 reports degraded — REFLECT_ONLY normal state",
-  "stdio-startup-noise": "cli.js prints to stdout, polluting MCP protocol",
-  "graphiti-not-installed": "Port :8000 has no service/container — Graphiti MCP was never installed or was decommissioned. Remove from health probes or install."
- },
- "active_skills": {
-  "aaa_library": 406,
-  "zen99_target": 99,
-  "status": "AAA library skills (406) are the full governed catalog — not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
- },
- "copilot_cli_audit": {
-  "phase": "COMPLETE — AAA TOOLBENCH ALIGNMENT 2026-07-19",
-  "mcp_servers": 15,
-  "custom_agents": 2,
-  "permissions": "FULL (no deny list)",
-  "autopilot": "ON — all 7 CLI agents now AUTOPILOT",
-  "hitl": "OFF for digital MUBAH",
-  "organs_healthy": true,
-  "configs_aligned": [
-   "settings.json",
-   "mcp-config.json",
-   "permissions-config.json",
-   "copilot-instructions.md",
-   "lsp-config.json"
+  "version": "2026.09.20",
+  "last_audit": "2026-09-24T08:00:00+08:00",
+  "auditor": "FI-003 (Qwen Code, 333-AGI)",
+  "open_divergences": [
+    {
+      "id": "DIV-SURFACE-GUARD-ALERT-DEAD",
+      "status": "OPEN",
+      "owner": "/root/A-FORGE (surface-guard-daemon + config/mcp-surface-guard.json)",
+      "reality": "publishHoldAlert() cannot fire: the `nats` client package is not installed in /root/A-FORGE, so the dynamic import fails and logs 'NATS module not available - skipping alert' on every drift (44+ logged). A NATS server IS running on 127.0.0.1:4222. Separately, config keys on_drift.notify=['arif','aaa_cockpit'] and on_drift.log_to='vault999' appear nowhere in the code — declared notification that has never existed.",
+      "consequence": "A schema-drift HOLD could never reach a human through the declared push path. The working surfaces are the journal (error/warn level), latest.json, per-transition event files and the forge_surface_guard MCP pull tool.",
+      "stopgap_taken": "Decorative config keys removed and replaced with an explicit alert_surface block naming the surfaces that exist and flagging the NATS push as NON-FUNCTIONAL.",
+      "closure": "F13 binary: install the nats client AND name a verified subscriber for subject 888_HOLD, or delete the push path. Not resolvable by an agent alone — either choice changes what the federation promises about alerting.",
+      "classification": "DECLARED_ONLY"
+    },
+    {
+      "id": "DIV-HERMES-BACKUP-GAP",
+      "status": "OPEN",
+      "owner": "/root/.hermes",
+      "reality": "1.6 GB of sovereign state (auth.json, IDENTITY_LOCK.json, SOUL.md, config.yaml, .env, carry_forward.json, state.db 369 MB) has no off-box backup. arifos-backup.service runs /root/scripts/direct-backup.sh, which references only /root/VAULT999 and /root/arifOS/VAULT999. /etc/cron.d/vault-replica rsyncs /root/.local/share/arifos/vault999/ to kvm4-forge every 6 h. Neither covers /root/.hermes.",
+      "consequence": "Loss of sovereign identity, credentials and session lineage on disk failure. Demonstrated overwrite risk: a concurrent session overwrote carry_forward.json on 2026-09-12.",
+      "stopgap_taken": "local tar snapshot under /root/BACKUPS/, mode 600. Same failure domain — protects against overwrite, NOT against disk loss.",
+      "closure": "extend the existing rsync pattern to kvm4-forge (reachable; /root/vault-replica exists), EXCLUDING credentials (.env, auth.json, *.bak) so secrets are not replicated off-box. Requires F13 — off-box replication of sovereign state is an exposure decision, not a backup decision.",
+      "classification": "OPEN (F13)"
+    },
+    {
+      "id": "DIV-SYSTEMD-ORPHAN-UNITS",
+      "status": "OPEN",
+      "owner": "systemd",
+      "reality": "6 units are active AND enabled while their ExecStart substrate is deleted: agentgateway-shadow.service (/root/forge_work/agw/agentgateway-linux-amd64, dir ABSENT) and apa-calendar|drive|gmail|gws|sheets-bridge.service (/root/venvs/composio/bin/python3, /root/venvs ABSENT). Processes still alive (started 2026-09-08) because deletion happened after start. systemctl --failed = 0, so the drift is invisible to a health check.",
+      "consequence": "All six fail on next reboot. The current 'active' state is a fossil of a deleted interpreter.",
+      "closure_blocked": "systemctl disable is a HARD DENY in ArifJudge: 'F9 ANTI-HANTU: matched \\bsystemctl\\s+(disable|mask|unmask|set-default)\\b' — blocked even in dry-run. The governance gate refused agent execution; this is a POWER-DRIFT pass. Correct closure is F13-sanctioned disable, or rebuild /root/venvs.",
+      "classification": "OPEN (F13) — gate-protected"
+    },
+    {
+      "id": "DIV-HERMES-MEMORY-SUBSTRATE",
+      "status": "OPEN",
+      "owner": "Hermes gateway (hermes-asi-gateway.service)",
+      "reality": "config.yaml sets memory.provider=mem0. Qdrant collection mem0 holds 14,319 points; federation collections arifos_memory (40), federation_shared (30), arifos_session_memory (56) total 128. SRO admissibility is implemented in A-FORGE (/root/A-FORGE/src/interfaces/mcp/sroAdmissibility.ts) and referenced 0 times in the Hermes mem0 plugin.",
+      "consequence": "99.1% of memory sits outside the witness substrate and bypasses the admissibility/expiry gate. No shared witness substrate.",
+      "closure": "either wire the mem0 path through SRO and the federation collections, or formally sanction the mem0 partition as a separate universe. Architectural — F13.",
+      "classification": "OPEN (architectural)"
+    },
+    {
+      "id": "DIV-SECRET-IN-WORLD-READABLE-LOG",
+      "status": "PARTIALLY_CLOSED",
+      "owner": "Hermes delegation logger",
+      "reality": "AZURE_OPENAI_KEY was present in 5 locations; one was /root/.hermes/cache/delegation/live/deleg_da0908e3/task-0.log at mode 644 (world-readable). The four .env copies were already mode 600.",
+      "action_taken": "chmod 600 applied to all five. The exposure also reached a session transcript via a failed redaction filter.",
+      "consequence": "A live provider credential was world-readable on disk. Mechanism unfixed — delegation logs regenerate with default permissions.",
+      "closure": "rotation review by F13 (needs provider console); add redaction/umask to the delegation writer so a key cannot be logged again.",
+      "classification": "PARTIALLY_CLOSED (rotation = F13)"
+    },
+    {
+      "id": "DIV-FLAME-RULE-IDS-RESIDUAL",
+      "status": "OPEN",
+      "owner": "/root/.config/federation-models.json",
+      "reality": "24 flame_* rule_ids remain in routing_rules, plus flame references in model_routes, capability_signatures, pricing, emd_model_class and effort. Not addressed by A-FORGE 802e0c8d, which fixed the code path only.",
+      "consequence": "A retired capability persists as named routing authority — ONTOLOGY_DRIFT.",
+      "closure": "purge or rename the flame_* rules after confirming no consumer resolves them.",
+      "classification": "OPEN"
+    },
+    {
+      "id": "DIV-VERIFICATION-LANE-OUTAGE",
+      "status": "OPEN",
+      "owner": "federation LLM lanes",
+      "reality": "Z.AI coding plan 429 (exhausted, resets 2026-09-15 16:13). Kimi plan 403 (monthly limit). Gemini 429 (prepayment credits depleted). opencode zen known dead. qwen lane alive but its shell is DENIED by permission policy — 8 of 12 verification commands refused. FRAME (:18085) is UP and reports total_drifts=0 / STABLE / baseline_age_days=38.",
+      "consequence": "No second agent can independently attest. FRAME is the designated independent observer yet is blind to all three divergence classes measured on 2026-09-13. The Reality Graph breaks at WITNESS.",
+      "closure": "re-run the attestation pass after 2026-09-15 16:13; widen FRAME baseline coverage to substrate-deletion and secret-exposure classes.",
+      "classification": "OPEN"
+    },
+    {
+      "id": "DIV-VAULT999-MULTIPATH-SOT",
+      "status": "OPEN",
+      "owner": "/root/VAULT999 + /root/.local/share/arifos/vault999 + /agent/vault999 + /root/.secrets/*.env",
+      "reality": "Four distinct VAULT999 path families coexist and consumers disagree about which is authoritative. LIVE: (1) Supabase vault_seals via VAULT999_DB, fronted by the only seal writer, vault999-writer.service on http://127.0.0.1:5001 -> 10492 seals, chain_integrity INTACT, chain_gaps 0; (2) /root/VAULT999/outcomes.jsonl, the live event log (28,413,925 bytes, 89,896+ lines, growing), identical inode to /root/arifOS/VAULT999/outcomes.jsonl. STALE: (3) /root/.local/share/arifos/vault999/outcomes.jsonl, FROZEN 2026-08-25 16:45, 1,894,697 bytes, 2,953 lines — still the read target of A-FORGE aed.py L6 and memory_promotion_smoke.py L6, and the WRITE target of arifOS auto_remediate.py; (4) /agent/vault999/receipts/outcomes.jsonl, 11,401,151 bytes, mtime 2026-08-26, the default VAULT_OUTCOMES in memory_promotion_smoke.py. Separately the local docker postgres 127.0.0.1:5432 db vault999.vault_seals holds only 12 rows — it is NOT the live seal store; the writer defaults away from it and its schema is stale.",
+      "consequence": "Consumers reading the frozen path report a dead file as a healthy seal store (permanent false-green liveness), and auto_remediate.py appends real receipts into a file the federation stopped advancing on 2026-08-25. Freshness/health claims about VAULT999 derived from those paths are unverifiable.",
+      "stopgap_taken": "2026-09-15: 4 stale consumers corrected with timestamped .bak (arifflow_digest.py, A-FORGE/duties/aed.py, A-FORGE/duties/memory_promotion_smoke.py, arifOS/scripts/auto_remediate.py). VAULT_WRITER_URL/VAULT_API_URL held at :8100 in /root/.secrets/{kunci-root,kunci-mas}.env while nothing listens on :8100 -> left UNTOUCHED and raised as a proposal instead.",
+      "closure": "F13 decision required: (a) retire or formally tombstone the two frozen outcomes.jsonl paths and the three broken /agent/vault999 symlinks under /root/VAULT999, and (b) collapse the :8100 compose lane vs :5001 systemd lane onto one declared writer. See /root/AAA/registry/PROPOSAL-2026-09-15-vault999-lane-store-consolidation.md and /root/AAA/registry/VAULT999-SOT-RECONCILIATION-2026-09-15.md",
+      "classification": "OPEN (F13)"
+    },
+    {
+      "id": "DIV-CODEX-DUAL-HOME",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/codex (internal) vs /root/AAA/agents/_external/codex (external)",
+      "reality": "Two canonical homes for codex carry different AGENTS.md doctrine. (1) /root/AAA/agents/codex/AGENTS.md dated 2026-09-15, 2.8 KB — the 2026-09-14 'warga citizen card', F13-ratified. (2) /root/AAA/agents/_external/codex/AGENTS.md dated 2026-08-26, 7.1 KB — the 'engineer-executor' doc referencing Codex CLI v0.147.0 and 'mcp.json retired 2026-07-27' (binary reality: codex-cli 0.154.0 at /root/.npm-global/bin/codex, mcp.json was retired so the doc is right but the version is stale by 7 minor releases). Only the external home has an agent-card.json; the internal home has identity.json + AGENTS.md only. Two sources of truth, one agent.",
+      "consequence": "Callers reading different surfaces get different doctrine. A musyawarah citing /root/AAA/agents/codex/AGENTS.md lands on F13-ratified citizen law; a 333-AGI session citing the _external AGENTS.md operates against the stale 2026-08-26 doctrine. One of them is wrong on runtime facts; both are 'valid' by their own dates.",
+      "stopgap_taken": "2026-09-19: codex _external agent-card.json shadowAcknowledged now records the divergence explicitly with shadow_id DIV-CODEX-DUAL-HOME so downstream readers see the trap. The card's identity.fi_slot (FI-005) and metadata.fi_slot (FI-005) both match /root/AAA/agents/codex/identity.json — so the FI slot is convergent; only the prose doctrine diverges.",
+      "closure": "F13-gated canonical-record move: collapse the two codex dirs into one canonical home. Same class as the prior harness collision / canonical-record moves. Until then, the shadowAcknowledged entry in _external agent-card.json is the read-side mitigation.",
+      "classification": "OPEN (F13) — canonical-record"
+    },
+    {
+      "id": "DIV-CODEX-SHADOW-SPARSE",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/_external/codex (card) vs /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (matrix)",
+      "reality": "Codex's entry in the shadow-matrix (per_actor_shadows) shows state=BALANCED, fq=1.0, execute_count=1, verify_count=1, verdict=CAUTION, note='Sparse'. The _external agent-card.json had shadowAcknowledged=null (audit 2026-09-19), so no shadow was being declared against the matrix observation. Codex is one of several _external cards where this gap exists; codex was the first audited. After fix (2026-09-19), codex _external card now carries 5 shadow entries covering sparse_history, two_canonical_homes, fi_slot_ground_truth, stale_binary_refs, and card_truth_repair_stale.",
+      "consequence": "Before fix: a caller trusting the agent-card alone would not learn that codex is at BALANCED 1.0 sparse — the matrix tracks it, the card did not. The shadow-matrix is the authority; the card was a leak. After fix: the card surfaces the trap explicitly. Other _external cards still have null shadowAcknowledged (qwen-code, grok, aider, etc.) — partial closure, not federation-wide.",
+      "stopgap_taken": "2026-09-19: shadowAcknowledged array + shadow_population_meta block added to /root/AAA/agents/_external/codex/agent-card.json. Backup at agent-card.json.bak-20260919-shadow-ack. JSON validated.",
+      "closure": "Run the same shadowAcknowledged population pass for the remaining _external cards (qwen-code, aider, claude-code, grok, kimi-code, opencode, copilot, continue-cli, mesa-test-agent, agy) — each is a separate T1 mutation. Federation-wide script at /root/AAA/scripts/populate-shadow-acknowledged.sh would close the rest of this divergence in one run; required-script spec below.",
+      "classification": "OPEN (partial closure 2026-09-19, codex only)"
+    },
+    {
+      "id": "DIV-FEDERATION-SHADOW-ACK-CLOSED",
+      "status": "CLOSED",
+      "owner": "/root/AAA/agents/_external/*/agent-card.json",
+      "reality": "Federation-wide pass 2026-09-19: shadowAcknowledged field added to all 13 _external agent cards (agy, aider, claude-code, codex, continue-cli, copilot, copilot-cli, grok, grok-build, kimi-code, mesa-test-agent, opencode, qwen-code). Codex had the manual hand-edit from the codex audit (5 shadows, .bak-20260919-shadow-ack). The other 12 were populated by /root/AAA/scripts/populate-shadow-acknowledged.sh with per-card .bak-2026-09-19-shadow-ack. Each shadow entry is a string of shape 'name: gloss' and was derived from real, probeable evidence: identity.json (FI slot), shadow-matrix (per_actor_shadows), live binary version probe, agent-card.json (verified_against).",
+      "consequence": "Before this pass, callers reading _external cards alone could not learn whether each agent had any execution/verification signal (shadow-matrix is the authority, cards were silent leaks). After: every card surfaces its own shadow inventory, and read_state MUST treat each agent's self-assessment as DERIVED (small N) until the shadow-matrix record grows above min_governance_samples=10.",
+      "stopgap_taken": "Per-card .bak at /root/AAA/agents/_external/<agent>/agent-card.json.bak-2026-09-19-shadow-ack (mode 600). Single consolidated federation-wide audit script at /root/AAA/scripts/populate-shadow-acknowledged.sh. Code audit chain: 333-AGI ran the audit; codex verified the audit (including the opencode state which was strictly worse than codex's); the opencode card was prioritized first as the worst-fi-slot case.",
+      "closure": "CLOSED 2026-09-19. Reopen if: (a) a new _external card is added without shadowAcknowledged, or (b) shadow-matrix crosses the per-agent min_governance_samples=10 threshold and existing shadows become stale (real activity > stated shadows). Per-card reversibility: cp /root/AAA/agents/_external/<agent>/agent-card.json.bak-2026-09-19-shadow-ack /root/AAA/agents/_external/<agent>/agent-card.json.",
+      "classification": "CLOSED"
+    },
+    {
+      "id": "DIV-FEDERATION-SHADOW-ACK-V2",
+      "status": "PARTIALLY_CLOSED",
+      "owner": "/root/AAA/scripts/populate-shadow-acknowledged.sh",
+      "reality": "Audit-of-the-audit pass 2026-09-19T13:48Z (333-AGI responding to codex audit). Codex found two latent bugs in the v1 script that the federation pass landed with: (Bug 1) matrix probe regex `test(\"qwen\"; \"i\")` was too broad — matched both `qwen-code` AND `qwen-code/FI-003` — and the multi-object JSON stream got interpolated into multi-line variables, then split by jq -s encoding into 4 array fragments where one was intended. qwen-code was the only card with a matrix match that was broader than one entry, so it was the only card that broke. (Bug 2) script-populated shadow_population_meta blocks had no `covers_shadow_ids` field, breaking traceability from card → divergence registry. Both fixed: regex is now exact-match `==`, jq has `-c` flag so matrix probe returns single compact line, and covers_shadow_ids is populated per card.",
+      "consequence": "Initial v1 state would have left qwen-code's sparse_history information garbled across 4 array entries (still parseable, but meaning hidden) and 12 cards without divergence linkage. After v2 fix: all 13 cards have well-formed shadow entries (verified: 0 fragments across the federation) and full traceability to divergences.",
+      "stopgap_taken": "Script v1 → v2 patch. 12 cards reverted from .bak-v1 to pre-script state, re-run with v2 script, .bak-v1 now contains the v1 (pre-fix) state for each card. v1 audit chain preserved.",
+      "closure": "PARTIALLY_CLOSED 2026-09-19T13:51Z — script fix landed, all 13 cards valid, but TWO F13 follow-ups remain: DIV-CODEX-DUAL-HOME (collapse two codex dirs) and DIV-OPENCODE-FI-UNRESOLVED (sovereign assigns opencode's FI slot — literal '???' placeholder in identity.json actor_id). When F13 acts on either, this divergence can move to fully CLOSED.",
+      "classification": "PARTIALLY_CLOSED (script fix done; 2 F13 follow-ups)"
+    },
+    {
+      "id": "DIV-QWEN-CODE-STUCK-MATRIX",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/_external/qwen-code",
+      "reality": "Shadow-matrix 2026-09-07 records qwen-code at state=STUCK, fq=0.25, execute_count=8, verify_count=2, verdict=STUCK, note='Same execution-dominance pattern'. This means qwen-code has executed 8 times but only verified twice — execution outruns verification 4×. Per substrate-taxonomy (FAIL_CLOSED doctrine 2026-09-18): STUCK = 'no verification', which is the inverse of the FOSSILIZED state grok-build is in. qwen-code is doing real work that nobody is checking.",
+      "consequence": "A federation member with execute/verify = 8/2 produces DERIVED claims with minimal MEASURED backing. Callers reading qwen-code's card should treat any self-assessment as unverified by ratio. The shadow is now declared in the card's shadowAcknowledged[0] entry but no execution path closes the gap — verification has to come from arifOS (888) or a witness organ.",
+      "stopgap_taken": "2026-09-19: shadow entry declared in /root/AAA/agents/_external/qwen-code/agent-card.json shadowAcknowledged[0]; covers_shadow_ids includes 'DIV-QWEN-CODE-STUCK-MATRIX'.",
+      "closure": "Either (a) qwen-code traffic grows enough that verify_count catches up naturally, or (b) arifOS routes a verification witness to qwen-code explicitly. Both are operational, not F13-gated.",
+      "classification": "OPEN (operational)"
+    },
+    {
+      "id": "DIV-OPENCODE-FI-UNRESOLVED",
+      "status": "OPEN",
+      "owner": "/root/AAA/agents/opencode/identity.json + arif-fazil/F13",
+      "reality": "/root/AAA/agents/opencode/identity.json has actor_id literally set to 'opencode/FI-???' — the '???' is a placeholder, never resolved. The file has NO `fi_slot` field at all (compare codex identity.json which has fi_slot='FI-005'). Meanwhile /root/AAA/agents/_external/opencode/agent-card.json declares fi='FI-OPENCODE' and fi_slot='FI-001' with actor_id=null at top level. So the FI slot claim exists in three places, all inconsistent: identity says '???', external card says 'FI-001', and the convention would say opencode is FI-001 (used in agent-card.json.bak-20260908-pre-migration and in scar/2026-08-15-w3-degradation references). The '???' was either a copy-paste from another identity file or a draft never resolved.",
+      "consequence": "opencode's legal identity binding is broken. An ed25519 pubkey is present (ad611f…), but no FI slot to anchor it to. A future agent-card verifier cannot check whether 'opencode/FI-001' is the legitimate sovereign-assigned slot or just an external-card guess. F13 SOVEREIGN needs to either ratify FI-001, assign a different slot, or formally retire the '???' and the opencode diri entirely.",
+      "stopgap_taken": "2026-09-19: shadow entry declared in /root/AAA/agents/_external/opencode/agent-card.json shadowAcknowledged[1]='fi_slot_unresolved: ...'; covers_shadow_ids includes 'DIV-OPENCODE-FI-UNRESOLVED'.",
+      "closure": "F13 SOVEREIGN DIRECTION REQUIRED. Either: (a) sovereign confirms FI-001 for opencode and identity.json is patched to actor_id='opencode/FI-001' + fi_slot='FI-001', or (b) sovereign assigns a different FI slot, or (c) opencode gets formally retired and identity.json is moved to archive. This is the same class of canonical-record mutation as the prior F13 harness collision.",
+      "classification": "OPEN (F13)"
+    }
   ],
-  "agents_fixed": {
-   "copilot-cli": "AUTOPILOT ON, SOT stamped, permissions full",
-   "codex-cli": "approvals→guardian_subagent, MCPs 7→9 (added A-FORGE+GEOX), AGENTS.md created, kunci-root.env path fixed",
-   "opencode": "AGENTS.md created with full federation spec",
-   "grok-build": "AGENTS.md created with full federation spec",
-   "openclaw-gateway": "system.md updated: legacy HITL removed, SOT added, boot paths fixed, MUBAH baseline",
-   "hermes-asi": "config.yaml SOT stamped with AUTOPILOT declaration"
+  "recent_closures": [
+    {
+      "id": "CLOSE-surface-guard-baseline-amnesty",
+      "commit": "A-FORGE (surface-guard baseline persistence)",
+      "date": "2026-09-20",
+      "detail": "Baseline was in-memory only: every restart re-pinned the current surface and reported PASS with no record. Now persisted to /root/A-FORGE/config/surface-snapshots.json, loaded at boot, with a per-boot baseline-<ts>.json receipt stating loaded-vs-absent (amnesty). Added a 3-confirmation gate before a new surface may become the reference, a warm read on first contact, and a confirmation probe that discards cold/flapping reads as TRANSIENT. Root cause of the 45-day HOLD found: A-FORGE-MCP answers the first session request after transport creation from a COLD state and all later requests from a WARM state; all 121 tool hashes differ between regimes. Receipt: /root/VAULT999/RECEIPTS/2026-09-20-surface-guard-baseline-persistence.json"
+    },
+    {
+      "id": "MASKED-SEVERITY",
+      "commit": "b20018017",
+      "date": "2026-09-13",
+      "detail": "UNKNOWN outranked VIOLATION in worst_severity, masking measured violations for 7 of 24 actors."
+    },
+    {
+      "id": "FLAME-DORMANT-FALSE-CLAIM",
+      "commit": "3367aa7d3 + a10f43d50",
+      "date": "2026-09-13",
+      "detail": "Registry claimed the flameClient path was dormant; it was live. Corrected, then amended when A-FORGE 802e0c8d severed the dependency 4 minutes later."
+    },
+    {
+      "id": "RECEIPTS-REEMISSION-BLOAT",
+      "commit": "02af0c5a9",
+      "date": "2026-09-13",
+      "detail": "99.6% redundant (27,280 rows / 116 distinct signals). receipt_id + watermark added; now 0 rows per cycle. --snapshot preserves legacy behaviour."
+    },
+    {
+      "id": "DEAD-APEX-ZEN-GATE",
+      "commit": "243addcbb",
+      "date": "2026-09-13",
+      "detail": "Gate added by 85c89d7e8 into a module no production process loads, then removed by 243addcbb. Net zero."
+    }
+  ],
+  "deprecated_services": [
+    {
+      "id": "apex-prime.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-06-02",
+      "reason": "Deterministic deliberation ported into AAA a2a-server.",
+      "replacement": "AAA a2a-server"
+    },
+    {
+      "id": "flame-api.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "RM0 free-tier substrate exhausted: every request failed all free providers (cerebras x2, groq x3, gemini x2) and fell back to qwen-max (paid Qwen plan) with 7 wasted retries latency. Zero live callers (KVM4 hermes grep clean; only 2 AAA monitor scripts). flame-recover.timer was 5-min cron noise on dead tiers.",
+      "replacement": "FED litellm flash lane (KVM4 :4000 — 10 flash/mini models: qwen3.6-flash, deepseek-v4-flash, gemini-3.6-flash, MiniMax-M2.5...)",
+      "archive": "/root/BACKUPS/FLAME-retired-20260904",
+      "ratified_by": "888 directive 2026-09-04 (distill expired FLAME into existing components)",
+      "f13_ack": "2026-09-06 — Arif: 'A — formal decommission flame' (FI-003 executed: fed_aware_middleware :18901 ref nulled + topology/agentic-web doctrine tombstoned)",
+      "residual_refs": "CORRECTED CLAIM: the earlier 'left dormant' and 'inert because FED :4000 advertises 0 flame routes' statements were both inaccurate — flameClient never called FED :4000. MEASURED 2026-09-13 21:5x: gatewayTools.ts:393 did `await import(../../tools/flameClient.js)` and invoked flameSynthesizeSearch on forge_search(synthesize=true), and flameClient.ts then hardcoded FLAME_API_BASE=http://127.0.0.1:18901 (nulled 2026-09-04) so each call paid a failed connect into gatewayTools' try/catch. REMEDIATED WHILE THIS AUDIT RAN — A-FORGE commit 802e0c8d at 22:00:38 changed flameClient.ts:17 to `process.env.FLAME_API_BASE || \"\"` with an early return at line 40 returning error 'FLAME decommissioned 2026-09-04' (no fetch, 0ms). Residual: the import and call site still exist; they are a cosmetic branch, not a live FLAME dependency.",
+      "reality_check": {
+        "checked_pre_remediation": "2026-09-13T21:55+08:00",
+        "checked_post_remediation": "2026-09-13T22:03:22+08:00",
+        "by": "FI-008 kimi-code (AUDIT_FIX_VERIFY_SEAL::2026-09-13)",
+        "method": "dist module load + source inspection + port probe + post-change re-read",
+        "note": "Reality moved mid-audit. Pre-remediation observations were true when measured and are now STALE, not wrong. Do not re-use them as current.",
+        "flameClient_dist_present": true,
+        "flameClient_module_loads": true,
+        "flame_api_base_pre": "hardcoded http://127.0.0.1:18901 (0 listeners) — was the defect",
+        "flame_api_base_post": "env-driven, default empty, early-return guard — A-FORGE 802e0c8d",
+        "live_caller": "/root/A-FORGE/src/interfaces/mcp/gatewayTools.ts:393 via A-FORGE MCP :7072 (pid 1287666)",
+        "verdict": "MET_IN_SUBSTANCE_NOT_LITERALLY — the FLAME network dependency is severed (no fetch, 0ms, explicit decommissioned error). The import+call site remains, so 'zero active FLAME execution paths' is not literally true.",
+        "federation_models_flame_rule_ids": "routing_rules: 24 flame mentions; also model_routes, capability_signatures, pricing, emd_model_class, effort — NOT addressed by 802e0c8d"
+      }
+    },
+    {
+      "id": "langfuse-observability",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Third-party tracing producing 0 live traces. Replaced by sovereign local Kabarkan (Postgres/NATS) + arifFlow FQ telemetry (:7073).",
+      "replacement": "Kabarkan + arifFlow"
+    },
+    {
+      "id": "graphiti-falkordb",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Degraded L5 relationship graph. Replaced by consolidated L3 Qdrant vector semantic search + L4 Postgres structured store.",
+      "replacement": "Qdrant (L3) + Postgres (L4)",
+      "unit": "graphiti-mcp.service"
+    },
+    {
+      "id": "ariffazil-crontab.arif_cron_deploy",
+      "type": "cron",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Zombie: 113 Permission-denied fires/24h since 2026-05-23; script deleted; user ariffazil cannot read /root.",
+      "replacement": "none (bootstrap deploy tooling long retired)",
+      "archive": "/root/BACKUPS/cron-audit-20260904/ariffazil.crontab.bak"
+    },
+    {
+      "id": "gotong-royong-llm-crons (qwen/claude/codex)",
+      "type": "cron",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "LLM-in-cron, expensive, paused since ~Aug 24 cooldown and never resumed; superseded by mesh-health-probe + drift-detector + arifFlow FQ.",
+      "replacement": "aaa-mesh-health + AAA drift-detector",
+      "archive": "/root/BACKUPS/cron-audit-20260904/removed-paused-lines.txt"
+    },
+    {
+      "id": "metabolism-cron-set (wrapper/metabolize/asi-pulse/m6-collect)",
+      "type": "cron",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Metabolism plane migrated to arifFlow daemon :7073 + systemd timers (fq-probe.timer, well-machine-telemetry.timer).",
+      "replacement": "arifFlow FQ + systemd timers",
+      "archive": "/root/BACKUPS/cron-audit-20260904/removed-paused-lines.txt"
+    },
+    {
+      "id": "federation-backup.daily",
+      "type": "cron",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Log silent since 2026-08-10; superseded by GOV-A002 backup-federation + vault999-backup.timer + arifos-backup.timer.",
+      "replacement": "GOV-A002 + vault999/arifos backup timers",
+      "archive": "/root/BACKUPS/cron-audit-20260904/etc-cron.d/federation-backup.daily.retired"
+    },
+    {
+      "id": "arifflow-fq-mirror.timer",
+      "type": "timer",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "OnBootSec-only ghost (fires once per boot, last Aug 27) duplicating fq-probe.timer.",
+      "replacement": "fq-probe.timer"
+    },
+    {
+      "id": "GOV-A005 zero_day_sentinel",
+      "type": "cron",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Script dir deleted by forge_work GC; 0 fires since 2026-08-28. Retired in SOT to prevent render resurrection.",
+      "replacement": "restore script then uncomment in scheduler_obligations_sot.yaml",
+      "archive": "/root/BACKUPS/cron-audit-20260904/scheduler_obligations_sot.yaml.bak"
+    },
+    {
+      "id": "/var/www/html/status.json",
+      "type": "artifact",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-04",
+      "reason": "Stale public truth since 2026-08-18 (generator banned); only .bak pages referenced it.",
+      "replacement": "revive generator or drop from AGENTS.md discovery table",
+      "archive": "/root/BACKUPS/cron-audit-20260904/status.json.removed"
+    },
+    {
+      "id": "AGENT_INDEX.json",
+      "type": "registry",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-08",
+      "reason": "Self-declared TOMBSTONE 2026-07-31 ('SUPERSEDED by a2a/registry/agents.yaml') but file persisted on disk; FI slot assignments (FI-001..FI-009) contradicted registry.yaml. Federation identity audit 2026-09-08: 53 cards across 3 trees, 11 duplicate identities — AGENT_INDEX added entropy instead of reducing it.",
+      "replacement": "a2a/registry/agents.yaml (canonical) + /root/AAA/agent-cards/ (CIV-33 layer-2 tree, source-of-truth) + paths_resolver.CANON_AGENT_CARD_PATHS (planned)",
+      "archive": "/root/AAA/archive/2026-09-08-identity-tombstone/AGENT_INDEX.json",
+      "reviewer": "FI-003 qwen-code (T1 reversible, 2026-09-08 F13 sovereign go)",
+      "supported_by": "INV-11 (Identity plane) — single canonical path per agent"
+    },
+    {
+      "id": "nats.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-09",
+      "reason": "Superseded by distro unit nats-server.service during NATS migration; disabled, zero reverse deps, zero traffic.",
+      "replacement": "nats-server.service"
+    },
+    {
+      "id": "nats-prometheus-exporter.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-09",
+      "reason": "Metrics transport absorbed by kabarkan OTEL collector (kabarkan-ingest JetStream active, ~1m freshness). Unit enabled-but-dead since 2026-09-04 SIGHUP event; intentionally not restarted.",
+      "replacement": "kabarkan-collector.service"
+    },
+    {
+      "id": "morning-briefing (root crontab 0 0 * * *)",
+      "type": "cron",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-09",
+      "reason": "Log-only morning summary overlapping readiness 07:30 delivery; removed from root crontab 2026-09-09 witness-membrane batch (LAW 8: zero new interruption channels); tombstone added during 888-directed zen pass.",
+      "replacement": "readiness 07:30 delivery + digest_inbox",
+      "witness": "FI-008 zen pass 2026-09-09, F13 blanket: execute all remaining"
+    },
+    {
+      "id": "arifosd.service",
+      "type": "service",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-24",
+      "reason": "Never commissioned: disabled since unit creation 2026-06-14, journal zero entries, never ran. Its :18081 attest/signal-inbox REST surface existed in config only; nothing ever listened. Port ownership was three-way contested (WELL Triad Phase-3 bridge vs arifosd vs check-estate-invariants.sh claiming it for GEOX).",
+      "replacement": "none — attest plane RETIRED. WELL attest/signal/recommendation tools remain graceful-UNKNOWN (verified honest degradation, no silent 0s). GEOX canonical port is :8081 (live, tailnet-exposed).",
+      "archive": "_final: unit file moved aside to /etc/systemd/system/arifosd.service.retired-20260924",
+      "ratified_by": "F13 Option B, 2026-09-24",
+      "f13_ack": "2026-09-24 Arif: 'binari :18081 — pilih B retire, lepas tu push semua repo'",
+      "residual_refs": [
+        "/root/well (bridge tools target :18081 — graceful-UNKNOWN verified 2026-09-24)",
+        "/root/forge_work/2026-09-24-attest-plane-18081-root-cause.md"
+      ],
+      "reality_check": "ss: nothing listens on :18081 (2026-09-24); systemctl is-enabled=disabled; journalctl -u arifosd.service = 0 entries ever"
+    }
+  ],
+  "deprecated_patterns": [
+    {
+      "id": "non_date_tags",
+      "type": "pattern",
+      "status": "DEPRECATED",
+      "reason": "Use date-based tags for clarity.",
+      "replacement": "YYYY-MM-DD tags"
+    },
+    {
+      "id": "containerize_core_organs",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "reason": "Containerization strategy has been updated.",
+      "replacement": "New containerization skill"
+    },
+    {
+      "id": "BHV-surface-guard-per-probe-receipt",
+      "type": "behavior",
+      "status": "RETIRED",
+      "tombstone_date": "2026-09-20",
+      "reason": "Emitted one drift-<ts>.json per 60s probe regardless of change: 38,282 files / 219.6 MB over 45 days, 100% HOLD (full census, 38,280 readable), a single reason class (MCP_TOOL_SURFACE_DRIFT), 46% of writes byte-identical duplicates (20,903 timestamp groups; 17,379 with >1 file; 400/400 sampled groups identical after stripping volatile timestamps), and NO reader anywhere on the box. In 45 days it changed zero decisions. Witness that cannot change a decision is archive, not governance.",
+      "replacement": "state-transition emitter — substantiveSignature() sha256 over the report with volatile fields (checked_at/detected_at/latency_ms) stripped; an event file is written ONLY when the signature differs from .last-signature. latest.json remains the single always-current live state file.",
+      "landed_in": "/root/A-FORGE/scripts/surface-guard-daemon.ts + dist/scripts/surface-guard-daemon.js (MainPID 244224, 2026-09-20 21:36 +08)",
+      "verification": "A/B harness on the deployed artifact: same state+new clock -> no write; changed state -> one write; repeat -> no write (PASS)",
+      "kill_authority": "/root/AAA/instructions/attention-kill-criterion.md (F13_RATIFIED_CHAT 2026-09-11) — first application of W1-W6 to a BEHAVIOR rather than a service",
+      "authority": "F13 SOVEREIGN — Arif, 2026-09-20 21:33 +08: \"jalan ja la. sampah semua ni ada sebab hampa dok berhenti tengah jalan macam ni la\"",
+      "receipt": "/root/VAULT999/RECEIPTS/2026-09-20-surface-guard-receipt-flood-purge.jsonl",
+      "rotated_by": "/etc/logrotate.d/surface-guard"
+    }
+  ],
+  "deprecated_skills": [
+    {
+      "id": "APA-sovereign-connector",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-09",
+      "reason": "APA experiment concluded"
+    },
+    {
+      "id": "quantum-kernel-runtime",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-09",
+      "reason": "Quantum kernel experiment concluded"
+    },
+    {
+      "id": "FORGE-mcp-jam-inspector",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-18",
+      "reason": "No SKILL.md. Stub run.sh greps the tree. Living hand is FORGE-mcp-testing.",
+      "archive": "skills/.archive/2026-08-18-fitness/FORGE-mcp-jam-inspector"
+    },
+    {
+      "id": "external-apex-audit",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-18",
+      "reason": "Empty directory. No body.",
+      "archive": "skills/.archive/2026-08-18-fitness/external-apex-audit"
+    },
+    {
+      "id": "_retired",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-18",
+      "reason": "Placeholder retired dir (liveness.json only).",
+      "archive": "skills/.archive/2026-08-18-fitness/_retired"
+    },
+    {
+      "id": "AAA_ZEN",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Tombstone marker; content lives in AAA-ZEN-ALIGNMENT.md + zen doctrine",
+      "archive": "archive/zen-2026-08-30-tombstones/AAA_ZEN.md"
+    },
+    {
+      "id": "asi_presence_open",
+      "type": "skill",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Archived 2026-07-24 in-file; registry now matches",
+      "archive": "archive/zen-2026-08-30-tombstones/asi_presence_open.md"
+    },
+    {
+      "id": "INIT-PROMPT-AFGORGE",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Tombstoned init prompt superseded by INIT.md boot ritual",
+      "archive": "archive/zen-2026-08-30-tombstones/INIT-PROMPT-AFGORGE.md"
+    },
+    {
+      "id": "QUANTUM_KERNEL_INIT",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Orphan scaffold of registry-deprecated quantum-kernel-runtime experiment (concluded 2026-07-09)",
+      "archive": "archive/zen-2026-08-30-tombstones/QUANTUM_KERNEL_INIT.md"
+    },
+    {
+      "id": "QUBIT_INIT_v1.0",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-30",
+      "reason": "Orphan scaffold of concluded quantum-substrate experiment",
+      "archive": "archive/zen-2026-08-30-tombstones/QUBIT_INIT_v1.0.md"
+    },
+    {
+      "id": "COPILOT-zen-router",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers (backups/historical logs only).",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06 — closes disk/git/registry/index four-reality split",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
+    },
+    {
+      "id": "agent-bindings/claude-code-spawn",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "agent-bindings/substrate-forge",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "agent-bindings/substrate-init",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "agent-bindings/substrate-propose-seal",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "deterministic-face-id",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06"
+    },
+    {
+      "id": "forge-vss-parser",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
+    },
+    {
+      "id": "skill-evolution",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-06",
+      "reason": "Killed in 2026-09-06 skill zen sweep (181→173, 333-AGI close-out); kill rationale not recorded at kill time. FI-003 consumer-scan 2026-09-06: no live consumers.",
+      "certified_by": "FI-003 under F13 auto-execute 2026-09-06",
+      "executed": "2026-09-09",
+      "executed_by": "FI-008/333-AGI",
+      "execution_note": "disk removal complete; quarantine forge_work/deprecation-exec-20260909 (tar, reversible); .agents/skills is symlink to AAA/skills"
+    }
+  ],
+  "deprecated_tools": [
+    {
+      "id": "forge_*",
+      "type": "tool",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-15",
+      "reason": "A-FORGE pre-execution sub-tools removed. Use A-FORGE MCP directly.",
+      "replacement": "A-FORGE MCP"
+    },
+    {
+      "id": "arif_judge_deliberate",
+      "type": "tool",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-06-02",
+      "reason": "Internal deliberation surface for AAA a2a-server. Absorbed into arif_judge.",
+      "replacement": "arif_judge"
+    },
+    {
+      "id": "well_readiness",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_validate_vitality(mode=readiness)"
+    },
+    {
+      "id": "well_get_health",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_assess_reliability(mode=health)"
+    },
+    {
+      "id": "well_state",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_validate_vitality(mode=state)"
+    },
+    {
+      "id": "well_init",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_000_init"
+    },
+    {
+      "id": "well_machine_state",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_assess_reliability"
+    },
+    {
+      "id": "well_assess_governance",
+      "type": "tool",
+      "status": "REMOVED",
+      "tombstone_date": "2026-09-16",
+      "reason": "removal_date 2026-09-01 lapsed; 30d call count=0 (VAULT999 audit); handler unregistered 2026-08-04; registry advertising removed 2026-09-16 (server.py date-aware tombstone filter + v2 surface)",
+      "replacement": "well_detect_boundary"
+    }
+  ],
+  "deprecated_files": [
+    {
+      "id": "SOUL.md",
+      "type": "file",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-03",
+      "reason": "Superseded by arifos://identity MCP resource + carry_forward.json",
+      "replacement": "/root/.local/share/arifos/carry_forward.json",
+      "reviewed": true,
+      "reviewed_date": "2026-08-09",
+      "reviewed_by": "333-AGI/Hermes"
+    },
+    {
+      "id": "LANDING.md",
+      "type": "file",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-03",
+      "reason": "Superseded by AGENTS.md + AAA-ZEN-ALIGNMENT.md",
+      "replacement": "/root/AGENTS.md",
+      "reviewed": true,
+      "reviewed_date": "2026-08-09",
+      "reviewed_by": "333-AGI/Hermes"
+    },
+    {
+      "id": "CONTEXT.md",
+      "type": "file",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-03",
+      "reason": "Superseded by carry_forward.json",
+      "replacement": "/root/.local/share/arifos/carry_forward.json",
+      "reviewed": true,
+      "reviewed_date": "2026-08-09",
+      "reviewed_by": "333-AGI/Hermes"
+    },
+    {
+      "id": "apex-zen-ffff",
+      "type": "quarantine",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-09-11",
+      "reason": "4-FFFF trial artifact attempting to name APEX×ZEN fusion. Cold-storaged 2026-08-04 without living pointer. Superseded by /root/AAA/canon/A-Z-APEX-ZEN-DOCTRINE.md (DRAFT_AWAITING_F13). Naming `A-Z` is canonical; `ffff` suffix reserved for FFFF-verdict forged artifacts only.",
+      "replacement": "/root/AAA/canon/A-Z-APEX-ZEN-DOCTRINE.md",
+      "tombstone": "/root/A-FORGE/forge_work/_quarantine/2026-08-04/apex-zen-ffff/RETIRED.md",
+      "reviewed": true,
+      "reviewed_date": "2026-09-11",
+      "reviewed_by": "333-AGI Δ MIND (witness-apex-zen-audit-2026-09-11)"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/outcomes.jsonl",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-08-25",
+      "reason": "Frozen 2026-08-25 16:45 (2,953 lines, 1,894,697 bytes). Not the live seal ledger. Consumers still reading it were corrected 2026-09-15; file retained (deletion blocked by prior session — retirement is an F13 decision).",
+      "replacement": "/root/VAULT999/outcomes.jsonl (live) + http://127.0.0.1:5001/vault/status for seal truth (Supabase vault_seals via VAULT999_DB)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-15",
+      "reviewed_by": "Hermes ASI subagent / VAULT999-SOT-RECONCILIATION"
+    },
+    {
+      "id": "/agent/vault999/receipts/outcomes.jsonl",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-08-26",
+      "reason": "Legacy container-era path, 11,401,151 bytes, mtime 2026-08-26 05:44. Default VAULT_OUTCOMES in A-FORGE/duties/memory_promotion_smoke.py; /root/VAULT999 also carries three broken symlinks pointing into /agent/vault999 (.gz, _manual.jsonl, SESSION_SEAL_*.json). Retained; retirement F13-gated.",
+      "replacement": "/root/VAULT999/outcomes.jsonl",
+      "reviewed": true,
+      "reviewed_date": "2026-09-15",
+      "reviewed_by": "Hermes ASI subagent / VAULT999-SOT-RECONCILIATION"
+    },
+    {
+      "id": "hermes-snap-*",
+      "type": "pattern",
+      "status": "DEPRECATED_SECURITY",
+      "tombstone_date": "2026-09-18",
+      "severity": "P1",
+      "reason": "hermes-snap-*.sh snapshot mechanism previously emitted ACK_BOT_TOKEN via hardcoded literal into 4 shell scripts + 1 terminal-output log. Severity UPGRADED 2026-09-17T16:47Z from P3 to P1 after exhaustive disk probe revealed the token was leaked through the snap-pipeline, not just the state.db-wal Hermes originally reported. 5 disk occurrences cleaned up; mechanism removed.",
+      "replacement": "Arif-managed credential rotation (no snap mechanism); future snapshots use hermes_session_token issuance through AAA arif_init only.",
+      "scar_anchor": "carry_forward e-token-cleanup-2026-09-18 / scar 2026-09-17T16:47Z",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
+    },
+    {
+      "id": "flameClient.ts:393 (gatewayTools import)",
+      "type": "cosmetic_branch",
+      "status": "DEPRECATED_RESIDUAL",
+      "tombstone_date": "2026-09-18",
+      "reason": "Cosmetic-only import + invoke of flameClient from gatewayTools.ts survives flame-api.service decommission (commit 802e0c8d at 2026-09-04 22:00:38 short-circuited flameClient.ts:17 + line 40 early-return). Call site still exists in gatewayTools but routes to 'FLAME decommissioned 2026-09-04' error; 0ms, no fetch. No live FLAME dependency; tombstone is for grep-cleanliness so future agents do not chase a ghost.",
+      "replacement": "Delete the flameSynthesizeSearch call site in gatewayTools.ts:393 (T3 cleanup, F13 not required — cosmetic branch on already-decommissioned service)",
+      "scar_anchor": "deprecated_services[flame-api.service].residual_refs",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
+    },
+    {
+      "id": "graphiti-*",
+      "type": "service",
+      "status": "DEPRECATED_RETIRED_888",
+      "tombstone_date": "2026-09-17",
+      "reason": "Graphiti semantic floor retired to 888 (HOLD) on 2026-09-17. /health now reports graphiti_transport=retired_888, graphiti_storage=retired_888, graphiti_embedding_runtime=unverified, graphiti_semantic_floor=disabled. Semantic memory tier is no longer wired to Graphiti backend. No active consumers — verified via /health disabled status + arifOS 2026-09-17 federation-log.",
+      "replacement": "Apex scalars + apex_scalars.{h, QDF, W3} heuristic tier (per /health.runtime_floors)",
+      "scar_anchor": "carry_forward e-graphiti-retirement-2026-09-17",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/EPOCH_ATTESTATION.json",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-09-18",
+      "reason": "Frozen 2026-09-05 05:42 (884 bytes). Pre-VAULT999-reboot attestation fossil. Sibling of /root/.local/share/arifos/vault999/outcomes.jsonl tombstone. No live reader; pre-2026-08-25 epoch artefacts superseded by VAULT999_DB (Supabase vault_seals via VAULT999 :5001).",
+      "replacement": "VAULT999_DB :5001 vault_seals table (live) — Supabase",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/EUREKA-ZEN-SUBSTRATE-LOCK-2026-07-13.json",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-09-18",
+      "reason": "Frozen 2026-07-17 15:56 (2969 bytes). EUREKA lock artefact from pre-AAA substrate era. Sibling of outcomes.jsonl tombstone. No live reader; superseded by apex_scalars.{h, QDF, W3} heuristic tier (per /health.runtime_floors 2026-09-17).",
+      "replacement": "apex_scalars.{h, QDF, W3} + /opt/arifos/canon/ (active 2026.09.17-edea664)",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/.local/share/arifos/vault999/F11_AUTH_HOLD.jsonl",
+      "type": "file",
+      "status": "SUPERSEDED_READONLY",
+      "tombstone_date": "2026-09-18",
+      "reason": "Frozen 2026-05-05 14:06 (343 bytes). Pre-AAA AUTH_HOLD lineage. Sibling of outcomes.jsonl tombstone. Duplicate also exists at /root/.local/share/arifos/vault999/_archive/historical_seals/F11_AUTH_HOLD.jsonl (already cold-archived). No live reader; L11 AUTH now enforced via kernel arif_judge floor (status='pass', score=1.0 per /health.runtime_floors.L11).",
+      "replacement": "arif_judge.L11 (live kernel floor)",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/.local/share/arifos/_archive_2026-09-08-empty-db-cleanup/{arifos.db,fed_token_bank.db,local.db}",
+      "type": "file_set",
+      "status": "DEPRECATED_RESIDUAL",
+      "tombstone_date": "2026-09-18",
+      "reason": "3 zero-byte SQLite databases from 2026-09-08 empty-db cleanup. arifos.db + fed_token_bank.db (Sep 8 01:54, 0 bytes) + local.db (Sep 8 01:58, 0 bytes). Empty dbs are filesystem noise; no schema, no readers, no purpose. Tombstone for grep-cleanliness.",
+      "replacement": "Live dbs at /root/.local/share/arifos/{capability_ledger,arifflow_receipts,etc.} (none zero-byte)",
+      "scar_anchor": "carry_forward e-zero-db-cleanup-2026-09-08",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    },
+    {
+      "id": "/root/VAULT999/SESSION_SEAL_aa1cdfcb676f458b.json",
+      "type": "symlink",
+      "status": "DEPRECATED_RESIDUAL",
+      "tombstone_date": "2026-09-18",
+      "reason": "Broken dangling symlink -> /agent/vault999/sealed/SESSION_SEAL_aa1cdfcb676f458b.json (target dir empty since 2026-06-22). 57 bytes symlink, lrwxrwxrwx. Child fossil of /agent/vault999/receipts/outcomes.jsonl tombstone (L553-L563). Delete is safe — no consumer.",
+      "replacement": "/root/VAULT999/outcomes.jsonl (live, growing)",
+      "scar_anchor": "DIV-VAULT999-MULTIPATH-SOT (open_divergence)",
+      "reviewed": true,
+      "reviewed_date": "2026-09-18",
+      "reviewed_by": "333-AGI / BIJAKSANA-compile T9-B"
+    }
+  ],
+  "deprecated_endpoints": [
+    {
+      "endpoint": "/cockpit/queue_depth",
+      "organs_probed": [
+        "arifos:8088",
+        "aaa:3001",
+        "bridge:18081"
+      ],
+      "status": "INTENTIONALLY_ABSENT",
+      "resolved": "2026-09-09",
+      "resolution": "RETIRED not built — consumer (well_observe_evidence_backlog) already degrades gracefully to missing_evidence=['no_evidence_endpoint'] (honest UNKNOWN, Void Guard compliant). Building speculative surface without a real queue behind it would violate promotion selectivity. If a real evidence queue materializes, re-open.",
+      "witness": "FI-008 execution context 2026-09-09 P4",
+      "reversible": true
+    },
+    {
+      "endpoint": "http://127.0.0.1:8100 (+ http://vault999:8100 in arifOS/deploy/docker-compose.yml)",
+      "organs_probed": [
+        "127.0.0.1:8100 (vault999-api / compose vault999 service)"
+      ],
+      "status": "DEAD_UNLISTENED",
+      "resolved": "2026-09-15",
+      "resolution": "Nothing listens on :8100 (ss -ltnp shows no :8100 listener; curl -> HTTP 000). The live seal writer is vault999-writer.service on :5001. Yet /root/.secrets/kunci-root.env:298 and kunci-mas.env:299 still export VAULT_WRITER_URL=http://127.0.0.1:8100, and lines 296/297 export VAULT_API_URL=http://localhost:8100, which overrides the correct :5001 defaults in AAA/a2a-server/vault.js:12, AAA/a2a-server/seal_chain.js:96, arifOS/arifosmcp/cli/check.py:99 and cli/seal.py:37. NOT edited — shared secrets file + compose-vs-systemd lane duplication is an F13 architecture decision. Proposal raised.",
+      "witness": "Hermes ASI subagent, VAULT999-SOT-RECONCILIATION 2026-09-15 (ss -ltnp, curl :8100 -> 000, curl :5001 -> 200)",
+      "reversible": true
+    }
+  ],
+  "deprecated_conventions": [],
+  "p0_audit": {
+    "audited_by": "333-AGI",
+    "audited_at": "2026-08-09T18:10:00Z",
+    "p0_1_status": "IN_PROGRESS — registerVerifiedSession() implemented, setActor() deprecated, caller migration not yet complete",
+    "p0_2_status": "PENDING_DESIGN — default:observe-deny would break all agents without explicit policy design. Requires dedicated security hardening sprint.",
+    "p0_5_status": "PENDING_KERNEL — depends on arifOS kernel SCT changes (KERNEL-TODO-V5.1 P2-2)",
+    "p0_6_status": "COMPLETE — LCL-* local lease fallback disabled by default since 2026-07-19"
   },
-  "agents_total": 15,
-  "agents_with_agents_md": 7,
-  "agents_autopilot": "ALL 7 CLI agents now declare AUTOPILOT ON"
- },
- "declared_aliases": [
-  {
-   "id": "hermes_fact_check",
-   "surface_class": "convenience_alias",
-   "alias_of": "arif_think",
-   "canonical_mode": "verify",
-   "lane": "FED free",
-   "declared": "2026-09-16"
+  "known_issues": {
+    "a-forge-mcp-transport-timeout": "Copilot CLI tools/call times out on :7071/mcp. :7072 stateless works.",
+    "hypervisor-steal-2026-08-30": "Host-level CPU steal ~100% (3x /proc/stat 4s-delta samples, 20:47-21:20 MYT) throttled VM to ~2% of 8 cores. Symptoms: MCP 90s boot timeouts, organs intermittently unresponsive, sct-renew/frame-witness-reader/A007 timers failing downstream (all casualties, not causes). DO NOT restart organs during steal — measure first: grep '^cpu ' /proc/stat twice 4s apart; steal delta >10% = host issue (wait / Hostinger panel). Onset ~20:05. agy antigravity session (pts/2 since 20:07, 48min CPU) suspected burst-credit accelerator — unconfirmed.",
+    "kimi-mcp-external-suspended-2026-08-30": "4 external MCP servers disabled in /root/.kimi-code/mcp.json (context7, playwright, serena, human-inference) to break respawn retry-storm under steal; load 15.6->7.5. Federation organ MCPs untouched. Restore: enabled=true when steal <5% sustained 5min. Backup: /root/.config/backups/20260830T2100-mcp.json.pre-zen. Related: /root/.secrets/providers.yml cerebras duplicate-notes YAML key merged (aforge MCP 90s-timeout root cause; backup 20260830T2050-providers.yml.pre-yaml-fix; no regenerating template found in A-FORGE/arifOS/AAA 2026-08-30). arifos MCP tools/list timeout was steal-induced, NOT protocol — shim pins 2024-11-05 (kernel-supported); self-heals after throttle. protocol-2025-06-18 shadow errors trace to AAA AGENTS-AUTONOMY §2 canonical probe, not the kimi shim.",
+    "well-degraded": "WELL :18083 reports degraded — REFLECT_ONLY normal state",
+    "stdio-startup-noise": "cli.js prints to stdout, polluting MCP protocol",
+    "graphiti-not-installed": "Port :8000 has no service/container — Graphiti MCP was never installed or was decommissioned. Remove from health probes or install."
   },
-  {
-   "id": "hermes_cross_verify",
-   "surface_class": "convenience_alias",
-   "alias_of": "arif_think",
-   "canonical_mode": "verify",
-   "lane": "FED free",
-   "declared": "2026-09-16"
+  "active_skills": {
+    "aaa_library": 406,
+    "zen99_target": 99,
+    "status": "AAA library skills (406) are the full governed catalog — not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
   },
-  {
-   "id": "hermes_plan_review",
-   "surface_class": "convenience_alias",
-   "alias_of": "arif_think",
-   "canonical_mode": "plan_review",
-   "lane": "FED free",
-   "declared": "2026-09-16"
+  "copilot_cli_audit": {
+    "phase": "COMPLETE — AAA TOOLBENCH ALIGNMENT 2026-07-19",
+    "mcp_servers": 15,
+    "custom_agents": 2,
+    "permissions": "FULL (no deny list)",
+    "autopilot": "ON — all 7 CLI agents now AUTOPILOT",
+    "hitl": "OFF for digital MUBAH",
+    "organs_healthy": true,
+    "configs_aligned": [
+      "settings.json",
+      "mcp-config.json",
+      "permissions-config.json",
+      "copilot-instructions.md",
+      "lsp-config.json"
+    ],
+    "agents_fixed": {
+      "copilot-cli": "AUTOPILOT ON, SOT stamped, permissions full",
+      "codex-cli": "approvals→guardian_subagent, MCPs 7→9 (added A-FORGE+GEOX), AGENTS.md created, kunci-root.env path fixed",
+      "opencode": "AGENTS.md created with full federation spec",
+      "grok-build": "AGENTS.md created with full federation spec",
+      "openclaw-gateway": "system.md updated: legacy HITL removed, SOT added, boot paths fixed, MUBAH baseline",
+      "hermes-asi": "config.yaml SOT stamped with AUTOPILOT declaration"
+    },
+    "agents_total": 15,
+    "agents_with_agents_md": 7,
+    "agents_autopilot": "ALL 7 CLI agents now declare AUTOPILOT ON"
   },
-  {
-   "id": "hermes_memory_steward",
-   "surface_class": "convenience_alias",
-   "alias_of": "arif_memory",
-   "canonical_mode": "recall",
-   "lane": "FED free",
-   "declared": "2026-09-16"
-  },
-  {
-   "id": "hermes_health",
-   "surface_class": "convenience_alias",
-   "alias_of": "arif_observe",
-   "canonical_mode": "vitals",
-   "lane": "FED free",
-   "declared": "2026-09-16"
-  }
- ],
- "alias_law": "AliasExists => AliasDoesNotIncreaseCapabilityCount. Declared alias carries alias_of + canonical_mode. Invariant: Discoverable(x) => Callable(x) OR ExplicitAlias(x); Canonical(x) => DiscoverableExactlyOnce(x)."
+  "declared_aliases": [
+    {
+      "id": "hermes_fact_check",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_think",
+      "canonical_mode": "verify",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_cross_verify",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_think",
+      "canonical_mode": "verify",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_plan_review",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_think",
+      "canonical_mode": "plan_review",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_memory_steward",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_memory",
+      "canonical_mode": "recall",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    },
+    {
+      "id": "hermes_health",
+      "surface_class": "convenience_alias",
+      "alias_of": "arif_observe",
+      "canonical_mode": "vitals",
+      "lane": "FED free",
+      "declared": "2026-09-16"
+    }
+  ],
+  "alias_law": "AliasExists => AliasDoesNotIncreaseCapabilityCount. Declared alias carries alias_of + canonical_mode. Invariant: Discoverable(x) => Callable(x) OR ExplicitAlias(x); Canonical(x) => DiscoverableExactlyOnce(x)."
 }
