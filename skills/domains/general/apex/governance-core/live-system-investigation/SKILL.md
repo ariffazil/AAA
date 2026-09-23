@@ -204,6 +204,28 @@ and reasons. `execution_state: BLOCKED` + `actor: anonymous` + `band: OBSERVE_ON
 "readiness probe unauthenticated", never as "service degraded" — and never quote a green
 `/health` next to a red `/ready` without saying which gate each one measures.
 
+### The loud-always class: an instrument that fires every tick may be working as designed
+
+Companion to the silent-zero class is the **always-loud** class. Drift watches, governance
+sweeps, constitutional guards — detectors that accumulate `failure_streak`, exit non-zero
+on every tick, and refuse to self-heal — are **intentionally loud**. They exist to force a
+human to look, not to auto-resolve. Killing them or patching the failure out converts a
+working accountability surface into a silent one.
+
+Before classifying a repeated alarm as a defect, read the script body for its own
+self-asserted design contract. The contract is almost always in the message the script
+prints on its way to exit 1 — a line like `delete the baseline to re-establish after review`
+or `until a human acknowledges`. If that contract is present, the workflow is:
+
+1. **Acknowledge** the finding (read the drift, verify it is real, not a re-fire of an old finding).
+2. **Reset the baseline** if the drift was benign (`rm <state-file>`; next tick establishes new baseline).
+3. **Patch the producer** if the drift is real but expected (write the source-of-truth
+   that should have been authoritative in the first place, so the watcher has nothing to
+   flag).
+
+Never do step 3 before step 1. Never do step 2 before step 1. And never replace a
+working loud watchdog with a quiet one to silence the noise — the noise is the point.
+
 ## Reporting shape
 
 - Lead with what is **verified** and the command that verified it.

@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [code-review, security, verification, quality, pre-commit, auto-fix]
     related_skills: [subagent-driven-development, plan, test-driven-development, github-code-review]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Pre-Commit Code Verification

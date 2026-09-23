@@ -11,6 +11,8 @@ metadata:
     related_skills: [github-repo-management]
 prerequisites:
   commands: [pygount]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Codebase Inspection with pygount

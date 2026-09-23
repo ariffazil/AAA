@@ -10,6 +10,8 @@ metadata:
     tags: [Reminders, tasks, todo, macOS, Apple]
 prerequisites:
   commands: [remindctl]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Apple Reminders

@@ -1,6 +1,8 @@
 ---
 name: wearable-health-bridge
 description: "Connect a closed-ecosystem fitness watch (Bluetooth-only, no app store — e.g. Honor/Huawei/Xiaomi budget watches) to Hermes/agent health data. Architecture: phone HONOR Health app → Health Connect → Health Sync bridge app → Google Drive CSV → rclone → parser → silent watchdog cron. Trigger: user wants fitness watch data (steps/HR/sleep/SpO2) flowing to the agent."
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Wearable → Agent Health Bridge

@@ -16,6 +16,8 @@ triggers:
   - landing page
   - dashboard design
   - website styled like
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Popular Web Designs

@@ -6,6 +6,8 @@ author: Hugging Face
 license: MIT
 tags: [huggingface, hf, models, datasets, hub, mlops]
 platforms: [linux, macos, windows]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hugging Face CLI (`hf`) Reference Guide

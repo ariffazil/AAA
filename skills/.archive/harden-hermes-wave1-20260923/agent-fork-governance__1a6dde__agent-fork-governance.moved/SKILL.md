@@ -1,6 +1,8 @@
 ---
 name: agent-fork-governance
 description: "Measure how far an installed/forked agent project (Hermes, OpenClaw, OpenCode, or any git-installed tool) has diverged from upstream, decide fork-vs-stock, and maintain the governance ledger (DIVERGENCE.md: snapshot, carried commits, refusal log, protected files, rebase discipline). Use when the user asks 'have I diverged from upstream X', 'should we fork Y', 'is my install behind upstream', or when the monthly fork-rebase / refusal-log review is due."
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Agent Fork Governance

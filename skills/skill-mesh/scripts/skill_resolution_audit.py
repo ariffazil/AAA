@@ -56,13 +56,18 @@ def scan(roots: list[str]) -> tuple[dict[str, dict], list[tuple[str, str, str]]]
                            if not d.startswith((".", "backup", "archive")) and "bak" not in d]
             if "SKILL.md" not in filenames:
                 continue
-            name = os.path.basename(dirpath)
+            folder = os.path.basename(dirpath)
             f = os.path.join(dirpath, "SKILL.md")
-            hits[name]["paths"].append(f)
-            hits[name]["reals"].add(os.path.realpath(f))
-            declared = frontmatter_name(f, name)
-            if declared != name:
-                mismatches.append((name, declared, f))
+            # ROUTING identity = frontmatter `name:`, folder only as fallback (rule 10).
+            # Keying collisions on the folder basename produced false positives: two
+            # different skills that merely live in a same-named dir (e.g. .../hermes/)
+            # were reported as one unresolvable name.
+            declared = frontmatter_name(f, folder)
+            key = declared
+            hits[key]["paths"].append(f)
+            hits[key]["reals"].add(os.path.realpath(f))
+            if declared != folder:
+                mismatches.append((folder, declared, f))
     return hits, mismatches
 
 
@@ -75,7 +80,9 @@ def report(hits: dict[str, dict], mismatches: list[tuple[str, str, str]]) -> int
         for p in sorted(collisions[name]["paths"]):
             print(f"    {p}")
     if mismatches:
-        print(f"\nDIR-BASENAME vs frontmatter name MISMATCH: {len(mismatches)}")
+        print(f"\nINFO  DIR-BASENAME vs frontmatter name MISMATCH: {len(mismatches)}"
+              f"  (benign for routing — frontmatter `name:` is present, so the folder"
+              f" is only the fallback)")
         for dirname, declared, f in sorted(mismatches):
             print(f"    dir '{dirname}' declares name '{declared}'  ({f})")
     if collisions:
@@ -84,10 +91,14 @@ def report(hits: dict[str, dict], mismatches: list[tuple[str, str, str]]) -> int
               " typo'd directory - the name is the trigger the agent matches on. Then prove"
               " the repair with a real skill_view(name=...); a file count proves nothing.")
     if mismatches:
-        print("\nFIX (mismatch): rename the DIRECTORY to the declared name - the directory name"
-              " is the index key, so a wrong dir name makes the skill unreachable under its"
-              " declared name and collides with the skill it is named after.")
-    return 1 if (collisions or mismatches) else 0
+        print("\nNOTE (mismatch): the directory name is NOT the routing key when a frontmatter"
+              " `name:` exists (frontmatter_name() falls back to the folder, so every reported"
+              " mismatch proves one is present). Cosmetic only — do NOT mass-rename: a path"
+              " dependency would break, and rule 16 requires a dependents sweep first.")
+    # FAIL only on a name that cannot resolve. Cosmetic folder/name drift is INFO
+    # (severity ladder rule 13) — conflating them under one exit code made a healthy
+    # library report EXIT=1 and stopped the real signal from being read.
+    return 1 if collisions else 0
 
 
 if __name__ == "__main__":

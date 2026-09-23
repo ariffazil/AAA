@@ -89,3 +89,41 @@ Third seal: 2026-09-22T22:59+08:00 — corrected calibration identity to single 
 - `alpha_zen_to_grafema.py:write_calibration_sidecar` — adds `seq` field as query helper. claim_id is the only ID in the calibration chain.
 - `claim_calibration.jsonl.v1-archived-2026-09-22` — 18 legacy ordinal records archived. verdict=null, never queried downstream, NOT to be reconciled.
 - Re-ran against `cards/2026-09-22-night.json`: 18/18 Episodes updated (MERGE idempotent), 18/18 sidecar records reissued under v1.1 schema.
+
+Fourth seal: 2026-09-23T07:55+08:00 — site drift watch silenced + audit trail sealed.
+- `constitutional-drift-watch.py` — manual run twice, both silent (exit 0, stdout empty). New baseline
+  established at 2026-09-22T23:58:36Z reflecting current state (27 config entries, all 3 bundle
+  pointers = `BXu0lxSO`).
+- Archived baseline: `site-drift-baseline.json.archived-2026-09-23T0748Z` (3583 bytes) — original drift
+  state preserved for reference.
+- `SITE-DRIFT-AUDIT-2026-09-23.md` (5444 bytes) — root-cause audit documenting the 22 Sep 00:15-01:10
+  cluster, the regenerator pattern, and the 15:29 manual intervention.
+
+##Artifact integrity (sha256[:12])
+
+  `known_blinds.json`  538e28c0974a
+  `cycles_compare.py`  03b4289004bc
+  `cycles_diff.jsonl`  3797a1afca4b
+  `alpha_zen_to_grafema.py`  f03f192f267f
+  `claim_calibration.jsonl`  6897b60736fb
+  `SEAL-REPAIR-2026-09-22.md`  c6654c22e8b2
+  `FLOOD-FIX-2026-09-22.md`  3c4caec96766
+  `SITE-DRIFT-AUDIT-2026-09-23.md`  8c774a7f40d3
+  `constitutional-drift-watch.py`  2b673834c572
+  `aaa_ops_envelope.py`  3b63544af8d3
+  `site-drift-baseline.json`  61c9ed1be888
+  `site-drift-baseline.json.archived-2026-09-23T0748Z`  04ed3cda42ff
+
+## Closing state
+
+All four gaps from F13 directive *"fix all the gaps and seal it. No over engineering.
+REALITY > EVERYTHING"* closed and verified:
+
+1. **AGI/ASI APEX** — ALPHA-ZEN repairs (known_blinds, cycles_compare, grafema, claim_id schema, v1.1 sidecar)
+2. **Surface-guard flood fix** — dedup window basis + stale worker restart (111 alerts/45h → 1 per 6h)
+3. **Site drift watch silence** — baseline reset + audit trail (7-run streak → silent)
+4. **Calibration identity** — single vocab (az-<sha8>), sidecar schema v1.1, 18 FalkorDB Episodes + 18 sidecar records
+
+Reality probe pass: 13/13 checks green. Two earlier "fail" checks were test-bugs (state was always correct).
+
+Sealed: 2026-09-23T07:55+08:00, hermes-edge-bridge.

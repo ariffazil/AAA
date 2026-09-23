@@ -1,6 +1,8 @@
 ---
 name: federation-runtime-forensics
 description: Verify self-reported agent audits and root-cause runtime failures on a multi-agent box (arifOS federation) — cross-check every CRITICAL finding against live probes before acting, trace Telegram delivery floods (Forbidden errors where the bot tries to message itself), discriminate zombie vs active processes, test webhook exposure, and reconcile token ledgers against provider reality. Use when another bot or subagent pastes an audit report, a Telegram bot spams delivery errors, a gateway has duplicate processes, or a model pool is reported dead or exhausted.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Federation Runtime Forensics

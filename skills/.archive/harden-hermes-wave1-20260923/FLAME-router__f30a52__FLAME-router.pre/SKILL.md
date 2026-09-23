@@ -15,6 +15,8 @@ floor_scope:
   - F4
   - F9
   - F13
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # 🔥 FLAME-router — Tool Lane vs Agent Lane Routing
 

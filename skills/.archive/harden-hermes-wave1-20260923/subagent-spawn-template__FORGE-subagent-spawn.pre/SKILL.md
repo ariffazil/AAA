@@ -8,6 +8,8 @@ risk_tier: medium
 floor_scope: [F1, F2, F11]
 autonomy_tier: T1
 tags: [subagent, spawn, contract, template]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Sub-Agent Spawn Template — OpenClaw

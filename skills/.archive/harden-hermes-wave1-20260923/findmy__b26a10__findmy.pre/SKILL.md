@@ -8,6 +8,8 @@ platforms: [macos]
 metadata:
   hermes:
     tags: [FindMy, AirTag, location, tracking, macOS, Apple]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Find My (Apple)

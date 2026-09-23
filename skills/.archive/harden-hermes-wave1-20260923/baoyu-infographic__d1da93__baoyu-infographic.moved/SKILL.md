@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [infographic, visual-summary, creative, image-generation]
     homepage: https://github.com/JimLiu/baoyu-skills#baoyu-infographic
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Infographic Generator

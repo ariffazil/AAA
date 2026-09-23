@@ -11,6 +11,8 @@ metadata:
     homepage: https://github.com/steipete/songsee
 prerequisites:
   commands: [songsee]
+capability_tier: fed-realtime-voice
+ecology_state: WARM
 ---
 
 # songsee

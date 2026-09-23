@@ -9,6 +9,11 @@ description: "Call the Qwen Token Plan text-to-image / image-edit models (qwen-i
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+id_alias: qwencloud-tokenplan-image
+sot_model_list: qwencloud-model-selector/references/model-list.md
+sot_index: qwencloud-model-selector/references/qwen-sot.md
+stamped: 2026-09-23
+stamp_reason: stamp-4-alias-link-tokenplan-to-qwencloud-sot
 ---
 
 Call the Qwen Token Plan multimodal-generation API to generate (or edit) an image.

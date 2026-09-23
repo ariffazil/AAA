@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [testing, tdd, development, quality, red-green-refactor]
     related_skills: [systematic-debugging, plan, subagent-driven-development]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Test-Driven Development (TDD)

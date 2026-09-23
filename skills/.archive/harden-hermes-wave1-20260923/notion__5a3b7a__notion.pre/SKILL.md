@@ -11,6 +11,8 @@ metadata:
   hermes:
     tags: [Notion, Productivity, Notes, Database, API, CLI, Workers]
     homepage: https://developers.notion.com
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Notion

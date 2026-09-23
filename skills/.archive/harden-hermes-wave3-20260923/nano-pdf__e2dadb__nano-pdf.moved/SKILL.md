@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [PDF, Documents, Editing, NLP, Productivity]
     homepage: https://pypi.org/project/nano-pdf/
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # nano-pdf
