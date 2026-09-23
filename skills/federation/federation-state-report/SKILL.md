@@ -1,12 +1,12 @@
 ---
 name: federation-state-report
-description: "Use when asked for the state of the machine or system."
+description: "Use when asked for the state of the machine or system, OR per-chat/per-user usage statistics from Telegram or other gateway surfaces."
 risk_tier: low
 floor_scope:
   - F2
   - F7
   - F11
-tags: [probe, federation, health, systemd, docker, mcp, state-report, narrative-vs-state]
+tags: [probe, federation, health, systemd, docker, mcp, state-report, narrative-vs-state, telegram-usage, state-db]
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
@@ -51,6 +51,11 @@ python3 -c "import json;d=json.load(open('/root/.hermes/cache/mcp_schema_cache.j
 ```
 
 Full battery, per-process swap attribution, and the diagnosis protocol: `references/intelligence-envelope.md`.
+
+Per-chat / per-user / per-model **usage statistics from `state.db`** (sessions, messages, cost
+ledger, activity heat, tool frequency) — the long-memory counterpart to the live gateway log:
+`references/telegram-usage-from-state-db.md`. Use when the question is "who's been using my
+bot / chat X / how much did the SADO group cost" rather than "is the stack alive".
 
 ## Coding-agent fleet (FI seats) — layer 5
 

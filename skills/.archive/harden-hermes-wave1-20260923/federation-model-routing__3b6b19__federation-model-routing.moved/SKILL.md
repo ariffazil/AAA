@@ -2,6 +2,8 @@
 name: federation-model-routing
 description: "Resolve model identity through proxy chains, diagnose context window gaps, and select the right model for each federation role. Use when the gateway reports wrong context limits, the model name doesn't match the real upstream, a proxy alias resolves to unexpected behavior, or model selection needs to match a role's requirements (SOUL=conversational, JUDGE=frontier reasoning, HANDS=coding)."
 tags: [model, routing, litellm, proxy, context-window, model-selection]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Federation Model Routing

@@ -13,6 +13,8 @@ triggers:
   - user mentions litigation, medical negligence, legal action
   - user asks for clarity questions or decision frameworks
   - user asks for voice note delivery
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Decision Advisory — How to Help Arif Advise Others

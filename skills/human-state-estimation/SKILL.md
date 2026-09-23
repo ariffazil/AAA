@@ -1,6 +1,6 @@
 ---
 name: human-state-estimation
-description: "Estimate human state State(t) = f(Energy, Attention, Optionality, Governance, Meaning, Witness), compute DesiredState(t+1), and select BestMinimalIntervention."
+description: "Estimate human state State(t) = f(Energy, Attention, Optionality, Governance, Meaning, Witness), compute DesiredState(t+1), and select BestMinimalIntervention. Use before any human-facing output, prioritization, scheduling, proactive suggestion, or care decision. Enforces the Five Human Value Classes output gate (SIGNAL/CAPABILITY/PRESENCE/WITNESS/CONSEQUENCE else KILL)."
 owner: AAA
 risk_tier: low
 host_compatibility:

@@ -44,6 +44,8 @@ floor_scope:
 - F4
 - F6
 - F7
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Nusantara Intelligence Substrate

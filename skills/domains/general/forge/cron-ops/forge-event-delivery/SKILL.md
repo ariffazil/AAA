@@ -131,6 +131,7 @@ No repeat unless state changes.
    message. If your source text is generated, the delta gate is only as stable as your
    generator.
 5. **Severity auto-classification is heuristic.** Override with explicit severity when keywords are wrong.
+6. **A watchdog that fires every tick is not broken — read its own self-asserted design contract first.** A class of detectors (drift watches, constitutional guards, governance sweeps) is *designed* to fail loudly until a human acknowledges the finding and resets the baseline. They accumulate `failure_streak` deliberately, exit non-zero on purpose, and refuse to self-heal so a human is forced to look. Before declaring the job broken, read the script body for its own acknowledgement of this behavior — usually a print line like `delete the baseline to re-establish after review`. If you find that contract, the cure is **manual ack + baseline reset** (`rm <state-file>` to let the next tick establish new baseline), not a script patch and not killing the job. Killing it converts a working accountability surface into a silent one; patching the failure out removes the very noise that brought the issue to you. Only treat as broken if the detector is firing for reasons **outside** its self-asserted contract (different drift than the one it claims to watch, stale dependencies, etc.).
 
 ## Files
 

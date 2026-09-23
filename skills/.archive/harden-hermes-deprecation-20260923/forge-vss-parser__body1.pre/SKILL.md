@@ -12,6 +12,8 @@ floor_scope:
   - F9
   - F11
 description: "USE WHEN: `forge-vss-parser` is the **VSS-1 Causal Scene Graph Parser** skill within arifOS / AAA. It functions as the entry gate for Verified Scene Synthesis (VSS). It converts unconstrained, natural language visual prompts into a strict, machine-readable **Assertion Ledger JSON**"
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # forge-vss-parser

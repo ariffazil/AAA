@@ -1,6 +1,8 @@
 ---
 name: hermes-model-config
 description: Diagnose and configure model selection, context length, fallback cascades, and provider routing for Hermes Agent — especially when models route through LiteLLM proxy and context detection fails. Use when context window is wrong, model resolution fails, fallback cascade needs tuning, or provider costs need optimization.
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Hermes Model Config

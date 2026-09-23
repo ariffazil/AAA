@@ -11,6 +11,8 @@ metadata:
     homepage: https://github.com/pimalaya/himalaya
 prerequisites:
   commands: [himalaya]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Himalaya Email CLI

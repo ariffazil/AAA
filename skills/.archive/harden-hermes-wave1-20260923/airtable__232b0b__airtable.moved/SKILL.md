@@ -12,6 +12,8 @@ metadata:
   hermes:
     tags: [Airtable, Productivity, Database, API]
     homepage: https://airtable.com/developers/web/api/introduction
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Airtable — Bases, Tables & Records

@@ -7,6 +7,8 @@ owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F3', 'F4', 'F7', 'F11']
 autonomy_tier: T2
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 # FORGE-visual-qa-w3
 

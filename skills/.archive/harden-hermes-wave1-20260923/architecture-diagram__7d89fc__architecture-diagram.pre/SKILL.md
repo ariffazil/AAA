@@ -10,6 +10,8 @@ metadata:
   hermes:
     tags: [architecture, diagrams, SVG, HTML, visualization, infrastructure, cloud]
     related_skills: [concept-diagrams, excalidraw]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Architecture Diagram Skill

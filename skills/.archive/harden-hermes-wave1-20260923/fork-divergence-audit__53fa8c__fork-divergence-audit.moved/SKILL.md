@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [Git, Fork, Upstream, Divergence, Governance, Ledger]
     related_skills: [github-repo-management, github-pr-workflow]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Fork Divergence Audit

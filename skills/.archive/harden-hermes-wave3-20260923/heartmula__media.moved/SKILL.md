@@ -7,6 +7,8 @@ metadata:
   hermes:
     tags: [music, audio, generation, ai, heartmula, heartcodec, lyrics, songs]
     related_skills: [audiocraft]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # HeartMuLa - Open-Source Music Generation

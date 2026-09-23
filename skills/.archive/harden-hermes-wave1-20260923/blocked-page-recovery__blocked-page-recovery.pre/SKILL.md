@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [Research, Archives, Wayback, Paywall, WAF, Fallback]
     related_skills: [grounded-citations]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Blocked-Page Recovery

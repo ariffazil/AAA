@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [code-review, cleanup, refactor, delegation, subagent, parallel, simplify]
     related_skills: [requesting-code-review, test-driven-development, plan]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Simplify Code — Parallel Review & Cleanup

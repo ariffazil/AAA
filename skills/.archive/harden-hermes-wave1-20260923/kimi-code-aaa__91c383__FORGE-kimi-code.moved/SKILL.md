@@ -52,6 +52,8 @@ floor_scope:
 - F8
 - F11
 - F13
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Kimi Code AAA Configuration

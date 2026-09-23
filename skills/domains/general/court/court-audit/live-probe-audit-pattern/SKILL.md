@@ -279,6 +279,8 @@ An external review of "what the agent said" samples one session from many. Match
 - Never commit to a count that disagrees with the census until proven otherwise — re-run with `-L`, with `-name` filter, against the census
 - **Vision-model audits can hallucinate bugs.** A vision report claiming "template overlap" or "truncated text" must be checked against the actual source (CSS, raw text, file size) before patching. "Fixing" a phantom bug is itself a defect — it adds entropy and pollutes the diff. Probe the source file the vision reported on; if the bug isn't there, log the false positive and move on.
 - **A log is not a memory.** A `cycles.jsonl` accumulating N records has no memory until someone computes `f(today, t-N)`. Without a comparator, drift across days goes un-noticed even when the writes are honest. Every append-only log that claims to feed a learning loop needs at least one query path; if no consumer is wired, the log is archaeology.
+
+- **A grep that excludes hidden/gitignored paths manufactures an absence claim.** A `search_files` (or `rg`/`grep`/`find`) run with default settings on a working tree that contains hidden directories (`.hermes/logs`, `.hermes/pastes`, `.git/objects`, `~/.cache/...`) will report zero matches for content that is actually present in those excluded trees — and the resulting "no record" verdict is the user's first read of the answer, not a second-order nuance. Treat every absence claim as null until the probe lists which surfaces it searched AND the writer could plausibly have written there. Specifically: before declaring a name, conversation, or fact "not present in the machine," probe (1) all hidden directories under the relevant root, (2) the paste / drop / cache / log folders the gateway actually writes to, and (3) any `.gitignored` paths the user might have authored privately. The probe that found nothing is not evidence of absence; it is evidence about the probe. The user has to nudge you to widen it — that is the reflex defect, not their instruction.
 - **Idempotent writes + stable content-hash IDs close recursive writes.** Use `MERGE` (graph) or `INSERT ... ON CONFLICT DO NOTHING` (SQL) keyed by `sha256(content)[:8]`. This makes re-emission non-destructive and lets later runs query earlier ones by ID without schema join keys.
 
 ## Common Drift Patterns (compressed)
@@ -310,3 +312,46 @@ An external review of "what the agent said" samples one session from many. Match
 Archived session archaeology and detailed worked examples in `references/`:
 - `references/archive-session-specific-audits.md` — Reader-dormancy, hash-chain, invariant-preservation, env-wiring, agent-card alignment, cross-witness session, autonomous deployment, code-edit receipt, cron telemetry, and unification receipt worked examples
 - `references/reality-first-gap-repair-receipt.md` — Receipt shape for sealing a multi-gap repair on a running cron/organ. Five-question format; anti-patterns.
+- `references/readiness-cockpit-receipt.md` — Hermes *self-readiness* pattern: when an audit target is the agent itself, swap narration for live probes + SHA-sealed JSON artifact + grounded verdict band.
+
+## Step 5 — Self-Readiness Cockpit (auditing the auditor)
+
+When the audit target is **the agent or system that will produce the audit reply**, the audit cannot rely on the agent's own summary. Two external advisors running against a startup banner will conclude the system is unproven; the agent must *replace narration with runtime evidence*. Pattern:
+
+1. **State the bounded scope first.** What you will NOT touch tonight (no banner replace, no MCP mutate, no token rotate, no A3 actions). The post-audit verdict cannot authorize scope that the audit itself excluded.
+2. **Probe live state, not config state.** For every surface declared available, hit the *probe endpoint* (`*_health`, `*_status`, `*_stats`, `*_registry_status`) and capture `{state, evidence_class, timestamp}`. Treat config-without-probe as **declared, not live**.
+3. **Distinguish banner, runtime, and intent.** A startup banner that shows "connecting" while `ps` shows the same daemon alive with weeks of uptime means the *banner lagged the runtime*. Report all three surfaces and label which one answered.
+4. **Seal the artifact before rendering.** Persist a JSON receipt to a known path (`/root/.hermes/state/readiness/readiness-<ts>.json`), `sha256sum` it, and print the hash in the human-facing summary. The hash is what makes the verdict re-derivable later.
+5. **State the verdict band explicitly.** Pick from {GREEN, AMBER-instrumented, AMBER-speculative, RED}; explain what would lift it. AMBER is a *disciplined state*, not a shame state — keep it that way by naming what evidence would move the needle.
+
+### Pitfalls specific to self-audit
+
+- **Multi-tool batch only works for connector tools.** Local tools (`terminal`, `patch`, `read_file`, etc.) and any mixed batch with both local and connector tools are **rejected at runtime**. Serialize local calls; batch only connectors when the target tool description confirms the batch is supported.
+- **A blocked-by-design probe is a passing finding.** If a Postgres MCP returns `DB_PASSWORD required`, that is the boundary enforcing correctly. Report state=`GATED-CORRECTLY` and evidence_class=`boundary_test`, not `DOWN`.
+- **Status fields can lie about enforcement.** A green `/health` does not prove enforcement (see `live-system-investigation` §"the inverse shape"). For governance claims, demand a deliberate negative test (`A3 action without F13 → must HOLD`); absence of the test is the gap, not absence of enforcement.
+- **Disabled ≠ defective, but disabled needs declared rationale.** Each disabled surface must carry owner, rationale, compensating control, risk-acceptance date, and re-enable runbook. Empty disabled surfaces are silent governance debt.
+- **AIMC counts are claims until re-derived.** When a system reports "MCPs live: 25/29", treat the numerator and denominator independently — re-derive both via probe, not via config file.
+- **Heuristic-uncalibrated is honest governance, not absence.** A `g`-dimension band like `PATHOLOGICAL h=0.47 PHASE_1_HEURISTIC_UNCALIBRATED` is the *audit instrument admitting it is not yet trustworthy* — that is the right shape for a probe that needs human review. Do not collapse it into PASS.
+
+### Verdict band discipline
+
+- **GREEN** only when both live probes AND gate tests (deliberate blocked A3) produce receipts in this session, AND TEVV has at least one full pass/fail baseline.
+- **AMBER-instrumented** when live probes confirm runtime activity but gate tests / TEVV remain pending. Acceptable overnight.
+- **AMBER-speculative** when only the banner or config answered. Treat as a "do not act on this" signal until instrumented.
+- **RED** when live probes return errors AND the boundary test fails. Immediate HOLD.
+
+A useful self-readiness cockpit:
+
+```text
+HERMES READINESS · <ts> +08
+Evidence mode: LIVE-PROBE / READ-ONLY · Core: <commit> (+N carried)
+Policy gateway: <kernel> · state=<ENFORCED|UNKNOWN>
+MCP mesh: <a>/<b> live · <c> disabled-intentional · <d> remaining
+Write authority: F13-BOUND · enforcement_evidence=<structural|live_test|p>
+Audit chain: <ledger state> · last_seal=<id>
+TEVV: corpus=<n> · executed=<n> · baseline=<UNKNOWN|READY>
+Verdict: <GREEN|AMBER-instrumented|AMBER-speculative|RED> · <one-line basis>
+Artifact: <path> · SHA-256: <hex>
+```
+
+The artifact path + SHA are the contract: future sessions can re-probe the same surfaces and re-derive the verdict without trusting this one.

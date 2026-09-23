@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [sketch, mockup, design, ui, prototype, html, variants, exploration, wireframe, comparison]
     related_skills: [spike, claude-design, popular-web-designs, excalidraw]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Sketch

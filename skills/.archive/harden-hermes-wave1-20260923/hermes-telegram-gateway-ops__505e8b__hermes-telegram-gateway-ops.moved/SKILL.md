@@ -1,6 +1,8 @@
 ---
 name: hermes-telegram-gateway-ops
 description: Diagnose and operate the Hermes Telegram gateway in a multi-bot federation — resolve which bot a gateway actually speaks as (identity truth), trace token/config/env injection sources, reconcile allowlists, send outbound replies via Bot API, and restart safely. Use when "the bot answered as the wrong identity", "config says X but runtime does Y", a Telegram user is silently blocked, a gateway has two processes, or a bot DM needs an outbound reply.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hermes Telegram Gateway Ops

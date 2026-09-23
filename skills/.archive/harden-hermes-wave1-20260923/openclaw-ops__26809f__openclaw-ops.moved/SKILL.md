@@ -1,6 +1,8 @@
 ---
 name: openclaw-ops
 description: Operate, diagnose, and integrate an OpenClaw installation — gateway health, chat channels, Telegram bot wiring, and chat-bridging. Use when the user asks "is OpenClaw up / down", "I want OpenClaw here/in this chat", OpenClaw stops responding on Telegram, or a new channel/account needs wiring. Federation-specific topology for Arif's arifOS stack lives in references/arifos-federation-map.md.
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # OpenClaw Operations

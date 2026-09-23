@@ -2,6 +2,8 @@
 
 > Source: https://www.qwencloud.com/models
 > Updated: 2026-04-03
+>
+> **Stamp 2026-09-23:** SoT candidate for Qwen family model decisions. Index page: [`qwen-sot.md`](qwen-sot.md). Supersedes prior per-skill catalog copies.
 
 ## Text Generation — Commercial
 

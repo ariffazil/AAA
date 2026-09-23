@@ -1,6 +1,8 @@
 ---
 name: anti-bot-web-extraction
 description: "Extract listing data (price, title, shop info) from bot-protected e-commerce sites like Shopee/Lazada from a datacenter IP. Covers the Googlebot-UA bypass, fallback renderers, bot-free search, person/firm identity research from public sites, and Wix File Share / JS-widget-gated content (case files, folders) via the visitor-token API flow. Trigger: any my.shp.ee / shopee.com.my / lazada.com.my product link, 'get me this product's price', or extracting data from a Wix widget-gated page (law firm case files, folder listings)."
+capability_tier: fed-multimodal-vision
+ecology_state: WARM
 ---
 
 # Anti-Bot Web Extraction (Shopee / Lazada / similar)

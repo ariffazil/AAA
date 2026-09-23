@@ -8,6 +8,8 @@ metadata:
   hermes:
     tags: [hermes, audit, configuration, health-check, diagnostics, inventory]
     related_skills: [hermes-agent, hermes-config, hermes-model-config]
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Hermes Installation Audit

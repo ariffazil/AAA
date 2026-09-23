@@ -1,6 +1,6 @@
 ---
 name: live-system-audit-discipline
-description: "Use when auditing a live system or reporting probe results."
+description: "Use when auditing a live system or reporting probe results, and when writing or reviewing a readiness / status cockpit across many surfaces. Forces evidence-class labelling on every line and the denominator beside every count."
 version: 1.0.0
 license: MIT
 capability_tier: fed-long-context
@@ -370,6 +370,52 @@ Rules that follow:
 honest callers while any caller who sets one environment variable passes through is security
 theatre, and worse than none: it teaches everyone the boundary exists. Mark it NOT WIRED, state the
 measured open paths, and hand the OS-level fix to the owner.
+
+## A readiness cockpit is a class of work — write it under a fixed evidence-class enum, never from topology alone
+
+The cockpit form is its own failure shape, distinct from a one-off live probe. A readiness report is a *summary* across many surfaces, and the recurrent defect is conflating **configured**, **probed**, **structural**, and **inferred** into a single status word — "live", "wired", "running", "enforced", "sealed". The fix is a standing four-class enum on every line, a denominator beside every count, and the discipline that the highest-priority finding is enumerated before any other action runs.
+
+### Procedure
+
+1. **Report every surface under one of these four classes — non-negotiable.**
+
+   | Evidence class | Meaning | Allowed to support |
+   |---|---|---|
+   | `live_probe` | You called the surface this session, this agent, returned a value | "Healthy / ready / down" claims at the moment of probe |
+   | `configuration` | Read from manifest, registry, config, generated list | "Configured" claims only — NOT runtime readiness |
+   | `structural` | Counted cycles, holds, formulas, baseline timestamps — telemetry | "Telemetry records X" claims only — NOT enforcement, NOT continuous uptime |
+   | `inferred` | Reasoned from absence, from another surface's reading, from package metadata | Nothing on its own — always paired with the reading that produced it |
+
+   Never state a property as if it were the next class up. "Configured 25/29" ≠ "live 25/29" ≠ "enforced 25/29". Each step up the ladder requires its own observation.
+
+2. **Always print the denominator beside the count.** When 13 of 29 surfaces were probed and 4 are intentionally disabled, the cockpit shows **13 / 29 live-probed · 4 disabled-intentional · 12 unprobed**, never "25 / 29 wired" or "25 / 29 healthy". A count without its denominator is an unattributed claim wearing evidence clothes — see "Every claim carries its method" above, this is its cockpit form.
+
+3. **A timestamp from a baseline file is not continuous uptime.** A baseline recorded on 2026-08-06 says "the baseline was established on that date", nothing more. Re-probe the live state with the live tool; the baseline gives provenance for the *reference*, not continuity for the *service*. State the probe date AND the baseline date when both appear, and treat any "9 weeks continuous" claim that derives only from the file mtime as a `structural` claim — not as `live_probe`.
+
+4. **A control-plane finding is the headline, not a numbered item.** When one surface reports a discrepancy that bypasses the governance layer (registry drift against expected surface count, an unusual-public-tool detected, an expected-public-tool absent), the cockpit prioritises that finding above any green-light summary. Green status does not net against red control-plane signals. Surface the drift as P0; resolve or contain before other audit work proceeds. Tempting to bury it because the rest of the system is healthy — that's exactly the failure pattern the cockpit exists to prevent.
+
+5. **"Sealed" applies to artifact integrity only.** The cocktail overcount surfaces it as a separate finding every time:
+   - `sha256 verified` is integrity evidence.
+   - `receipt persisted` is audit-trail evidence.
+   - `governance closure` is the sovereign act — distinct from both.
+
+   Distinguish them in the language; do not merge them into a single word. A cockpit that conflates the three manufactures the false impression that an authority has been exercised when it has only been recorded.
+
+### Pitfalls — both directions
+
+**P1 — collapsing evidence classes.** "F13 enforced" derived from a formula's 5066 cycles and 52,902 holds. Both are `structural` telemetry: the formula records holds, it does not prove it causes them. Holds could be zero-traffic default; cycles could be idle bookkeeping. To assert enforcement requires a `live_probe`: a deliberate A3 negative-control test returning denial-before-side-effect. Without that probe, "enforced" is an inferred claim and the verdict is `structural` (or `inferred`), not "live".
+
+   *Rule:* any readiness claim that uses the words *enforced, running, continuous, sealed, completed, ready, mature, stable* must carry an evidence class explicitly, and the strongest class available is the highest class the claim is allowed to support. "Enforced" requires `live_probe`; "telemetry exists" requires only `structural`. Pick the right one and print it.
+
+**P2 — over-restraint after a P1 correction.** Once a collapsing-defect is named, the reflex can flip to freezing all subsequent work and demanding F13 for things that are bounded A1 reads. Two distinct failure modes, opposite signs: under-claim earlier, over-restraint now.
+
+   *Rule:* when a claim warrants evidence of class X, the fix is not "do nothing", it is "issue the read at the highest safe class". Read-only metadata enumeration against authoritative sources (a registry resource, an `mcp://list-tools`, a generated manifest) is `live_probe` of class `A1`, not class `A3`. The bound between the two is the prohibition on invocation, dynamic discovery, and write-capable inspection — not the read itself. State the prohibition; do not extend it to ban the read.
+
+**P3 — frozen discovery with no escape path.** Rejecting every form of progress until Arif supervises produces an artifact with no path forward — and an audit feed that the operator has to handle at the wrong time of day. The correct move is to *separate* the read-only discovery from the F13-bound action: enumerate at A1, classify, then escalate only the dispositions that require invocation, write-capable inspection, or 888 HOLD. Discovery that needs F13-ratification is rarely the discovery itself; it is the classification or the disposition that follows.
+
+**P4 — control-plane drift buried under green summary.** When the rest of the cockpit reads healthy and there is one finding that hints at a bypass path, the impulse is to enumerate it alongside the others. Do not. The bypass-suspect finding is the headline. Order the artifact so the reader sees it before any "X of Y healthy" line.
+
+**P5 — adjudicate the audit, don't summarise it.** A readiness cockpit summarises the operator's obligations; it does not adjudicate them. State the findings, state the evidence class, state the next step that requires F13 / 888 HOLD — then stop. The sovereign closes; the cockpit reflects.
 
 ## A clean report is a claim about the instrument — audit the instrument's own state
 

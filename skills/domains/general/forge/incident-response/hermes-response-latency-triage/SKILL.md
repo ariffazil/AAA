@@ -95,6 +95,48 @@ Reclaiming a few MB is not a failure — it *proves the size is real content*. A
 
 **Destructive moves are the sovereign's call, not yours:** `sessions prune|delete|archive`, or rotating a bloated conversation. Present the session, its message count, and the trade-off; let them pull the trigger. The store IS their conversation history.
 
+## Step 3b — Voice Governor / output-loop overhead
+
+If the gateway's observed `time=` is healthy on technical probes (Step 4) but humans report
+"kekwat / slow / berat" on real replies, the cause is often the human-side output gate, not
+the model. The Voice Governor (`bridge-protocol` §STAGE 3) re-drafts replies that fail DITING
+6/6 — a first-draft failure can spend 3-5 seconds per re-draft loop, and the loop runs more
+than once on strict register. Layered with Voice Governor, `bridge-protocol` §STAGE 4 (the
+Presentation Firewall) is a second mechanical gate.
+
+**When the complaint comes from a third party, not the principal** ("Arif, abang sado Syed
+complain Hermes kekwat sekarang"), do NOT take the lay pipeline apart — the human is reporting
+the symptom, not asking for surgery. Identify the cause, propose bounded action, surface the
+F13 binary the user owns. Don't restart the gateway; don't re-rate-limit; don't switch models.
+
+**Diagnostic recipe** — proves the gate is the suspect, not the model:
+
+```bash
+# Compare fresh-arrival time= across the day, per chat
+grep "response ready" /root/HERMES/logs/gateway.log | tail -50
+# Look for chat_ids with rising time= on simple/casual exchanges
+# A DM reply to a one-line technical question that takes 30s+ is the signal.
+
+# Check memory pressure — cache hit rate falls as memory fills
+hermes memory status
+# 98%+ memory budget = context cache misses, every turn pays full prefill.
+```
+
+**Two bounded actions the agent owns (no F13 needed):**
+
+- Trim memory if >95% full — release cache pressure, lifts the cache-miss cost.
+- Add per-step timing log to the agent loop so the gate-cost is visible next time.
+
+**One F13 binary the user owns:** branch Voice Governor into strict/casual lanes (casual DM
+≤15s strict, technical/full-DITING), or keep strict everywhere. The technical-vs-casual split
+is a register policy, not an agent decision — propose it as ONE binary choice, never a menu.
+
+**Mechanism.** Voice Governor's "re-draft, never fallback" rule (`references/voice-governor.md`
+§1) is correct on register — it prevents AI-speak leaks — but the loop has a real cost. A casual
+BM reply that scores 4/5 DITING on first draft takes ~12s to re-draft to 6/6. Stack three drafts
+plus the Presentation Firewall pass plus prefill, and a "30-second reply" is what the human sees.
+The cost is real; the trade-off is real; the user decides the cut.
+
 ## Step 4 — Inference path
 
 Find the port the gateway actually uses — read the unit's drop-ins, do not assume:
@@ -156,6 +198,8 @@ Re-measure after each and report before/after. The proof is a fresh `response re
 - Rotating the user's conversation history without asking.
 - Restarting the gateway mid-turn and losing the reply.
 - Declaring victory from `systemctl is-active` instead of a fresh response-time sample.
+- Treating a third-party "Hermes kekwat" complaint as a request to dismantle the inference stack — the human reported a symptom; find the cause, propose bounded action, surface the F13 binary.
+- Diagnosing Voice Governor overhead as "the model is slow" — the model is fine; the re-draft loop on a 4/5 DITING first draft is the cost. Confirm via Step 3b before opening the inference path.
 
 ## References
 
