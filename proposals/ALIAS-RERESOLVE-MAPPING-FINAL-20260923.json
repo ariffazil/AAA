@@ -1,0 +1,1126 @@
+{
+  "generated": "2026-09-22T23:45:36.457128+00:00",
+  "phase": "2d-final-merged-proposal",
+  "mode": "proposal-only / read-only",
+  "counts": {
+    "RETARGET": 31,
+    "FLAG_REVIEW": 42,
+    "TOMBSTONE": 43,
+    "other": 0
+  },
+  "results": {
+    "RETARGET": [
+      {
+        "v3_name": "APEX-quantum-eureka",
+        "target_disk_name": "APEX-quantum-eureka",
+        "target_path": "/root/AAA/skills/APEX-quantum-eureka",
+        "score": 1.0,
+        "orig_verdict": "FLAG_REVIEW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "FORGE-context-compressor",
+        "target_disk_name": "forge-context-compressor",
+        "target_path": "/root/AAA/skills/forge-context-compressor",
+        "score": 0.95,
+        "orig_verdict": "FLAG_REVIEW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "FORGE-route-least-power",
+        "target_disk_name": "forge-route-least-power",
+        "target_path": "/root/AAA/skills/forge-route-least-power",
+        "score": 1.0,
+        "orig_verdict": "FLAG_REVIEW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "KERNEL-trinity-33",
+        "target_disk_name": "kernel-trinity-33",
+        "target_path": "/root/AAA/skills/kernel-trinity-33",
+        "score": 0.9,
+        "orig_verdict": "FLAG_REVIEW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "apex-quantum-eureka",
+        "target_disk_name": "APEX-quantum-eureka",
+        "target_path": "/root/AAA/skills/APEX-quantum-eureka",
+        "score": 0.95,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "audio-analysis",
+        "target_disk_name": "audio-analysis",
+        "target_path": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-analysis",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "geo-artifact-rigor",
+        "target_path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+        "target_disk_name": "aaa-pdf-voice-protocol",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "geo-basin",
+        "target_path": "/root/GEOX/skills/geox-basin-evaluation",
+        "target_disk_name": "geox-basin-evaluation",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "geo-constitution",
+        "target_path": "/root/GEOX/skills/geox-claim-falsification",
+        "target_disk_name": "geox-claim-falsification",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "geo-petrophysics",
+        "target_path": "/root/GEOX/skills/geox-basin-evaluation",
+        "target_disk_name": "geox-basin-evaluation",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "geo-prospect",
+        "target_path": "/root/GEOX/skills/geox-prospect-evaluation",
+        "target_disk_name": "geox-prospect-evaluation",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "geo-well-tie",
+        "target_path": "/root/GEOX/skills/geox-well-log-qc",
+        "target_disk_name": "geox-well-log-qc",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "geo-writing",
+        "target_path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+        "target_disk_name": "aaa-pdf-voice-protocol",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "google-workspace-gws",
+        "target_disk_name": "google-workspace-gws",
+        "target_path": "/root/AAA/skills/google-workspace-gws",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "graphiti-temporal-memory-ops",
+        "target_disk_name": "graphiti-temporal-memory-ops",
+        "target_path": "/root/AAA/skills/graphiti-temporal-memory-ops",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "hermes-text-to-speech",
+        "target_disk_name": "text-to-speech",
+        "target_path": "/root/AAA/skills/domains/general/workshop/voice-stack/text-to-speech",
+        "score": 0.715,
+        "orig_verdict": "FLAG_PHANTOM",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "hermes-voice-config",
+        "target_disk_name": "hermes-voice-config",
+        "target_path": "/root/AAA/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "human-apps-roadmap-2026",
+        "target_disk_name": "human-apps-roadmap-2026",
+        "target_path": "/root/AAA/skills/human-apps-roadmap-2026",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "know-pragmatics",
+        "target_disk_name": "know-pragmatics",
+        "target_path": "/root/AAA/skills/knowledge/know-pragmatics",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "malaysia-reality-interface",
+        "target_disk_name": "malaysia-reality-interface",
+        "target_path": "/root/AAA/skills/malaysia-reality-interface",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "media-ingest-lane",
+        "target_disk_name": "media-ingest-lane",
+        "target_path": "/root/AAA/skills/media-ingest-lane",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "music-generation",
+        "target_disk_name": "music-generation",
+        "target_path": "/root/AAA/skills/domains/general/workshop/audio-emd/music-generation",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "organ-capability-map",
+        "target_disk_name": "organ-capability-map",
+        "target_path": "/root/AAA/skills/organ-capability-map",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "provider-endpoint-migration",
+        "target_disk_name": "provider-endpoint-migration",
+        "target_path": "/root/AAA/skills/provider-endpoint-migration",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "research-deep",
+        "target_disk_name": "deep-research",
+        "target_path": "/root/AAA/skills/domains/general/workshop/search-web/deep-research",
+        "score": 0.785,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "substrate-taxonomy",
+        "target_disk_name": "substrate-taxonomy",
+        "target_path": "/root/AAA/skills/substrate-taxonomy",
+        "score": 1.0,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-high",
+        "confidence": "MEDIUM-HIGH"
+      },
+      {
+        "v3_name": "wealth-collapse",
+        "target_path": "/root/WEALTH/skills/wealth-ledger-discipline",
+        "target_disk_name": "wealth-ledger-discipline",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "wealth-reason",
+        "target_path": "/root/WEALTH/skills/wealth-capital-primitives",
+        "target_disk_name": "wealth-capital-primitives",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "wealth-thermo",
+        "target_path": "/root/WEALTH/skills/wealth-runway-conservation",
+        "target_disk_name": "wealth-runway-conservation",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "well-boundary",
+        "target_path": "/root/WELL/skills/well-substrate-readiness",
+        "target_disk_name": "well-substrate-readiness",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "well-readiness",
+        "target_path": "/root/WELL/skills/well-substrate-readiness",
+        "target_disk_name": "well-substrate-readiness",
+        "method": "curated-organ-native",
+        "confidence": "HIGH"
+      }
+    ],
+    "FLAG_REVIEW": [
+      {
+        "v3_name": "AGI-prospect-maturation",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "AGI-web-optimization",
+            "path": "/root/HERMES/skills/AGI-web-optimization",
+            "score": 0.467
+          },
+          {
+            "name": "AGI-skill-unification",
+            "path": "/root/HERMES/skills/AGI-skill-unification",
+            "score": 0.45
+          },
+          {
+            "name": "AGI-graph-engineering-patterns",
+            "path": "/root/AAA/skills/AGI-graph-engineering-patterns",
+            "score": 0.408
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "ASI-knowledge-writeback",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "ASI-agentic-architecture",
+            "path": "/root/HERMES/skills/ASI-agentic-architecture",
+            "score": 0.453
+          },
+          {
+            "name": "ASI-drift-watch",
+            "path": "/root/HERMES/skills/ASI-drift-watch",
+            "score": 0.442
+          },
+          {
+            "name": "ASI-fabrication-prevention",
+            "path": "/root/HERMES/skills/ASI-fabrication-prevention",
+            "score": 0.398
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "AUDIT-post-seal-sweep",
+        "target_disk_name": "audit-seal",
+        "target_path": "/root/AAA/skills/substrate/audit-seal",
+        "score": 0.544,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "CLAIM-receipt-v1",
+        "target_disk_name": "claim-receipt-discipline",
+        "target_path": "/root/AAA/skills/domains/general/court/court-audit/claim-receipt-discipline",
+        "score": 0.56,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "CLAIM-verification-gate",
+        "target_disk_name": "synthesis-verification-gate",
+        "target_path": "/root/AAA/skills/domains/general/court/court-audit/synthesis-verification-gate",
+        "score": 0.578,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "FORGE-grok-profile",
+        "target_disk_name": "FORGE-mcp-probe",
+        "target_path": "/root/.config/opencode/skills/FORGE-mcp-probe",
+        "score": 0.55,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "FORGE-init-intent-classify",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "FORGE-incident-triage",
+            "path": "/root/HERMES/skills/FORGE-incident-triage",
+            "score": 0.512
+          },
+          {
+            "name": "FORGE-skill-linter",
+            "path": "/root/HERMES/skills/FORGE-skill-linter",
+            "score": 0.497
+          },
+          {
+            "name": "FORGE-federation-manifest",
+            "path": "/root/AAA/skills/FORGE-federation-manifest",
+            "score": 0.451
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "FORGE-mcp-federation-ops",
+        "orig_verdict": "FLAG_REVIEW",
+        "candidates": [
+          {
+            "name": "FORGE-federation-manifest",
+            "path": "/root/AAA/skills/FORGE-federation-manifest",
+            "score": 0.72
+          },
+          {
+            "name": "FORGE-federation-orchestrator",
+            "path": "/root/HERMES/skills/FORGE-federation-orchestrator",
+            "score": 0.715
+          },
+          {
+            "name": "FORGE-mcp-probe",
+            "path": "/root/.config/opencode/skills/FORGE-mcp-probe",
+            "score": 0.619
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "FORGE-phase-escalation",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "FORGE-federation-manifest",
+            "path": "/root/AAA/skills/FORGE-federation-manifest",
+            "score": 0.516
+          },
+          {
+            "name": "FORGE-federation-orchestrator",
+            "path": "/root/HERMES/skills/FORGE-federation-orchestrator",
+            "score": 0.503
+          },
+          {
+            "name": "FORGE-vps-docker",
+            "path": "/root/HERMES/skills/FORGE-vps-docker",
+            "score": 0.492
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "FORGE-search",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "FORGE-vps-docker",
+            "path": "/root/HERMES/skills/FORGE-vps-docker",
+            "score": 0.568
+          },
+          {
+            "name": "FORGE-skill-linter",
+            "path": "/root/HERMES/skills/FORGE-skill-linter",
+            "score": 0.555
+          },
+          {
+            "name": "FORGE-federation-orchestrator",
+            "path": "/root/HERMES/skills/FORGE-federation-orchestrator",
+            "score": 0.536
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "FORGE-seek",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "FORGE-vps-docker",
+            "path": "/root/HERMES/skills/FORGE-vps-docker",
+            "score": 0.56
+          },
+          {
+            "name": "FORGE-skill-linter",
+            "path": "/root/HERMES/skills/FORGE-skill-linter",
+            "score": 0.546
+          },
+          {
+            "name": "FORGE-mcp-probe",
+            "path": "/root/.config/opencode/skills/FORGE-mcp-probe",
+            "score": 0.543
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "WELL-boundary-sense",
+        "target_disk_name": "forge-well-boundary-repair",
+        "target_path": "/root/AAA/skills/forge-well-boundary-repair",
+        "score": 0.5,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "WELL-somatic-kernel",
+        "target_disk_name": "WELL-3baik-log",
+        "target_path": "/root/AAA/skills/WELL-3baik-log",
+        "score": 0.459,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "a2a-spawn",
+        "target_disk_name": "a2a-task-delegator",
+        "target_path": "/root/AAA/skills/a2a-task-delegator",
+        "score": 0.458,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "dev-issue-triage",
+        "target_disk_name": "forge-issue-triage",
+        "target_path": "/root/AAA/skills/forge-issue-triage",
+        "score": 0.597,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "dev-pr-governance",
+        "target_disk_name": "pr-governance",
+        "target_path": "/root/AAA/skills/engineering/pr-governance",
+        "score": 0.643,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "forge-exec",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "forge-onboarding",
+            "path": "/root/AAA/skills/forge-onboarding",
+            "score": 0.555
+          },
+          {
+            "name": "forge-nextjs-mastery",
+            "path": "/root/AAA/skills/forge-nextjs-mastery",
+            "score": 0.555
+          },
+          {
+            "name": "forge-git-seal",
+            "path": "/root/AAA/skills/forge-git-seal",
+            "score": 0.55
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "forge-verbs",
+        "orig_verdict": "TOMBSTONE",
+        "candidates": [
+          {
+            "name": "forge-onboarding",
+            "path": "/root/AAA/skills/forge-onboarding",
+            "score": 0.572
+          },
+          {
+            "name": "forge-pdf-delivery",
+            "path": "/root/AAA/skills/domains/general/workshop/document-intel/forge-pdf-delivery",
+            "score": 0.561
+          },
+          {
+            "name": "forge-vision-densify",
+            "path": "/root/AAA/skills/forge-vision-densify",
+            "score": 0.549
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      },
+      {
+        "v3_name": "kernel-eureka",
+        "target_disk_name": "kernel-bind",
+        "target_path": "/root/AAA/skills/substrate/kernel-bind",
+        "score": 0.592,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "kernel-superposition",
+        "target_disk_name": "kernel-bind",
+        "target_path": "/root/AAA/skills/substrate/kernel-bind",
+        "score": 0.591,
+        "orig_verdict": "FLAG_PHANTOM",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "mcp-context-compression",
+        "target_disk_name": "mcp-ops",
+        "target_path": "/root/AAA/skills/engineering/mcp-ops",
+        "score": 0.465,
+        "orig_verdict": "CREATE_ROW",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-atlas",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.606,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-evals",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.638,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-plan",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.617,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-rsi",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.628,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-rsi-audit",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.558,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-rsi-cool",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.539,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-skill-create",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.537,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-skill-lint",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.525,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-skill-unification",
+        "target_disk_name": "AGI-skill-unification",
+        "target_path": "/root/HERMES/skills/AGI-skill-unification",
+        "score": 0.615,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "meta-trust-map",
+        "target_disk_name": "meta-mesa",
+        "target_path": "/root/AAA/skills/meta-mesa",
+        "score": 0.558,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-health",
+        "target_disk_name": "ops-event-routing",
+        "target_path": "/root/AAA/skills/domains/general/forge/cron-ops/ops-event-routing",
+        "score": 0.458,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-incident",
+        "target_disk_name": "ops-event-routing",
+        "target_path": "/root/AAA/skills/domains/general/forge/cron-ops/ops-event-routing",
+        "score": 0.47,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-infra",
+        "target_disk_name": "ops-event-routing",
+        "target_path": "/root/AAA/skills/domains/general/forge/cron-ops/ops-event-routing",
+        "score": 0.463,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-mcp-probe",
+        "target_disk_name": "FORGE-mcp-probe",
+        "target_path": "/root/.config/opencode/skills/FORGE-mcp-probe",
+        "score": 0.536,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-model-monitor",
+        "target_disk_name": "forge-model-monitor",
+        "target_path": "/root/AAA/skills/forge-model-monitor",
+        "score": 0.6,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-spatial",
+        "target_disk_name": "ops-event-routing",
+        "target_path": "/root/AAA/skills/domains/general/forge/cron-ops/ops-event-routing",
+        "score": 0.454,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-transport",
+        "target_disk_name": "ops-event-routing",
+        "target_path": "/root/AAA/skills/domains/general/forge/cron-ops/ops-event-routing",
+        "score": 0.465,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "ops-vps",
+        "target_disk_name": "vps-ops",
+        "target_path": "/root/AAA/skills/engineering/vps-ops",
+        "score": 0.629,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "research-search",
+        "target_disk_name": "research-paper-writing",
+        "target_path": "/root/AAA/skills/research/research-paper-writing",
+        "score": 0.603,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "research-summarize",
+        "target_disk_name": "research-paper-writing",
+        "target_path": "/root/AAA/skills/research/research-paper-writing",
+        "score": 0.555,
+        "orig_verdict": "TOMBSTONE",
+        "method": "semantic-mid",
+        "confidence": "MEDIUM",
+        "reason": "score 0.45-0.7, human verify"
+      },
+      {
+        "v3_name": "youtube-extraction-datacenter-ip",
+        "orig_verdict": "CREATE_ROW",
+        "candidates": [
+          {
+            "name": "youtube-eureka",
+            "path": "/root/AAA/skills/media/youtube-eureka",
+            "score": 0.493
+          },
+          {
+            "name": "youtube-video-info",
+            "path": "/root/AAA/skills/domains/general/workshop/video-gen/youtube-video-info",
+            "score": 0.477
+          },
+          {
+            "name": "poster-vision-extraction",
+            "path": "/root/AAA/skills/domains/general/workshop/vision-analyzer/poster-vision-extraction",
+            "score": 0.283
+          }
+        ],
+        "method": "tie",
+        "confidence": "LOW"
+      }
+    ],
+    "TOMBSTONE": [
+      {
+        "v3_name": "AGI-claude-xml-structured-reasoning",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.379 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AGI-codex-chain-of-thought",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.389 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AGI-emd-decode",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.424 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AGI-emd-metabolize",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.426 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AGI-entropy-lock-prime",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.412 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AGI-hermes-system-prompt-voice",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.414 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AGI-sovereign-connector",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.436 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ARCHIVE-vault-seal",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.346 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ASI-cooling-ledger-rsi",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.388 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ASI-knowledge-graph-query",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.418 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ASI-unified-memory",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.427 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AUDIT-clarity-canon",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.325 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AUDIT-symbolic-collective-bias",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.27 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "AUDIT-symbolic-trust",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.335 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "GEOX-artifact-rigor",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.341 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "KERNEL-qubit-substrate",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.375 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "KERNEL-reality-skills",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.38 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "KERNEL-session-inhabit",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.339 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "KERNEL-sovereign-recognize",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.321 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "KERNEL-verbs-forge-hands",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.321 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "MCP-transport-physics",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.357 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "SHADOW-diagnostic",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.391 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "a2a-kimi",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.44 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "a2a-onboard",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.449 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "apx_init_substrate",
+        "orig_verdict": "FLAG_PHANTOM",
+        "reason": "best score 0.398 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "dev-analysis",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.447 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "dev-ci-diagnose",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.367 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "dev-pr-review",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.4 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "dev-repo-audit",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.346 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "dev-wiki",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.143 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "domain-causal",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.261 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "domain-wealth-claim",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.3 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "mcp-shopping-list-2026-09",
+        "orig_verdict": "FLAG_PHANTOM",
+        "reason": "best score 0.415 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ops-compress",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.428 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ops-data-compress",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.424 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ops-docker",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.436 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ops-google",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.436 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ops-mcp-builder",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.442 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "ops-mcp-lifeguard",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.433 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "sec-telegram",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.417 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "tri-witness",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.351 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "trinity-design-seam",
+        "orig_verdict": "TOMBSTONE",
+        "reason": "best score 0.3 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      },
+      {
+        "v3_name": "tts-edge-fallback",
+        "orig_verdict": "CREATE_ROW",
+        "reason": "best score 0.403 < 0.45",
+        "method": "semantic-no-match",
+        "confidence": "HIGH"
+      }
+    ],
+    "other": []
+  }
+}

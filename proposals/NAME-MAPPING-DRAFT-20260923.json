@@ -1,0 +1,2770 @@
+{
+  "generated": "2026-09-23",
+  "mode": "PROPOSAL_ONLY",
+  "method": "v3_name -> related (semantic) -> disk (fuzzy), score=token-overlap+prefix",
+  "dead_adapters_total": 56,
+  "confidence": {
+    "high": [
+      {
+        "skill": "geo-artifact-rigor",
+        "via_related": "geological-artifact-rigor",
+        "disk": "geological-artifact-rigor",
+        "path": "/root/.arifos/agents/opencode/skills/geological-artifact-rigor",
+        "score": 100.0
+      },
+      {
+        "skill": "well-boundary",
+        "via_related": "well-substrate-readiness",
+        "disk": "well-substrate-readiness",
+        "path": "/root/WELL/skills/well-substrate-readiness",
+        "score": 100.0
+      },
+      {
+        "skill": "well-readiness",
+        "via_related": "well-substrate-readiness",
+        "disk": "well-substrate-readiness",
+        "path": "/root/WELL/skills/well-substrate-readiness",
+        "score": 100.0
+      },
+      {
+        "skill": "dev-repo-audit",
+        "via_related": "readme-truth-check",
+        "disk": "FORGE-readme-truth-check",
+        "path": "/root/.kimi-code/skills/FORGE-readme-truth-check",
+        "score": 82.5
+      },
+      {
+        "skill": "ops-docker",
+        "via_related": "docker",
+        "disk": "docker.sh",
+        "path": "/root/AAA/skills/qwencloud-deploy/templates/userdata/docker.sh",
+        "score": 95.0
+      },
+      {
+        "skill": "ops-vps",
+        "via_related": "vps-docker-ops",
+        "disk": "vps-docker",
+        "path": "/root/arifOS/skills/vps-docker",
+        "score": 80.0
+      },
+      {
+        "skill": "ops-mcp-builder",
+        "via_related": "mcp-federation-ops",
+        "disk": "FORGE-mcp-federation-ops",
+        "path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops",
+        "score": 82.5
+      },
+      {
+        "skill": "ops-mcp-probe",
+        "via_related": "mcp-ops",
+        "disk": "mcp-ops",
+        "path": "/root/HERMES/skills/domains/wealth/forge/mcp-ops",
+        "score": 100.0
+      },
+      {
+        "skill": "ops-infra",
+        "via_related": "infra-guardian",
+        "disk": "FORGE-infra-guardian",
+        "path": "/root/HERMES/skills/FORGE-infra-guardian",
+        "score": 80.0
+      },
+      {
+        "skill": "ops-incident",
+        "via_related": "incident-triage",
+        "disk": "FORGE-incident-triage",
+        "path": "/root/HERMES/skills/FORGE-incident-triage",
+        "score": 80.0
+      },
+      {
+        "skill": "ops-spatial",
+        "via_related": "spatial-grounding",
+        "disk": "forge-spatial-grounding",
+        "path": "/root/HERMES/skills/forge-spatial-grounding",
+        "score": 80.0
+      },
+      {
+        "skill": "ops-health",
+        "via_related": "verify-runtime",
+        "disk": "verify-runtime",
+        "path": "/root/HERMES/skills/core/governance/verify-runtime",
+        "score": 100.0
+      },
+      {
+        "skill": "ops-mcp-lifeguard",
+        "via_related": "mcp-lifeguard",
+        "disk": "FORGE-mcp-lifeguard",
+        "path": "/root/HERMES/skills/FORGE-mcp-lifeguard",
+        "score": 80.0
+      },
+      {
+        "skill": "apex-quantum-eureka",
+        "via_related": "APEX-quantum-eureka",
+        "disk": "APEX-quantum-eureka",
+        "path": "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka",
+        "score": 100.0
+      },
+      {
+        "skill": "ops-google",
+        "via_related": "google-workspace-cli",
+        "disk": "google-workspace",
+        "path": "/root/arifOS/skills/google-workspace",
+        "score": 80.0
+      },
+      {
+        "skill": "meta-skill-create",
+        "via_related": "skill-creator",
+        "disk": "skill-creator",
+        "path": "/root/HERMES/skills/domains/general/aaa/skill-mesh/skill-creator",
+        "score": 100.0
+      },
+      {
+        "skill": "meta-skill-unification",
+        "via_related": "skill-unification",
+        "disk": "skill-unification-receipt-audit-2026-08-21.md",
+        "path": "/root/AAA/skills/domains/general/court/court-audit/live-probe-audit-pattern/references/skill-unification-receipt-audit-2026-08-21.md",
+        "score": 87.5
+      }
+    ],
+    "medium": [
+      {
+        "skill": "geo-basin",
+        "via_related": "geox-basin-engines",
+        "disk": "geox-basin-evaluation",
+        "path": "/root/GEOX/skills/geox-basin-evaluation",
+        "score": 55.0
+      },
+      {
+        "skill": "geo-constitution",
+        "via_related": "geox-constitution",
+        "disk": "geox-grounding",
+        "path": "/root/HERMES/skills/geox-grounding",
+        "score": 40.0
+      },
+      {
+        "skill": "geo-well-tie",
+        "via_related": "geox-well-tie-pipeline",
+        "disk": "geox-well-log-qc",
+        "path": "/root/GEOX/skills/geox-well-log-qc",
+        "score": 40.0
+      },
+      {
+        "skill": "wealth-reason",
+        "via_related": "wealth-capital-reasoning",
+        "disk": "wealth-capital-primitives",
+        "path": "/root/WEALTH/skills/wealth-capital-primitives",
+        "score": 55.0
+      },
+      {
+        "skill": "wealth-thermo",
+        "via_related": "wealth-capital-thermodynamics",
+        "disk": "wealth-capital-primitives",
+        "path": "/root/WEALTH/skills/wealth-capital-primitives",
+        "score": 55.0
+      },
+      {
+        "skill": "dev-ci-diagnose",
+        "via_related": "github-ci-diagnose",
+        "disk": "forge-ci-diagnose",
+        "path": "/root/HERMES/skills/forge-ci-diagnose",
+        "score": 55.0
+      },
+      {
+        "skill": "dev-issue-triage",
+        "via_related": "github-issue-triage",
+        "disk": "FORGE-issue-triage",
+        "path": "/root/HERMES/skills/FORGE-issue-triage",
+        "score": 55.0
+      },
+      {
+        "skill": "dev-pr-review",
+        "via_related": "github-pr-review",
+        "disk": "github-pr-workflow",
+        "path": "/root/HERMES/skills/github-pr-workflow",
+        "score": 55.0
+      },
+      {
+        "skill": "dev-pr-governance",
+        "via_related": "pr-review-governance",
+        "disk": "pr-governance",
+        "path": "/root/HERMES/skills/domains/general/apex/governance-core/pr-governance",
+        "score": 60.0
+      },
+      {
+        "skill": "dev-wiki",
+        "via_related": "code-wiki",
+        "disk": "code-refactor",
+        "path": "/root/arifOS/skills/code-refactor",
+        "score": 40.0
+      },
+      {
+        "skill": "dev-analysis",
+        "via_related": "code-analysis-skills",
+        "disk": "forge-code-analysis",
+        "path": "/root/HERMES/skills/forge-code-analysis",
+        "score": 55.0
+      },
+      {
+        "skill": "ops-model-monitor",
+        "via_related": "model-fallback-monitor",
+        "disk": "FORGE-model-monitor",
+        "path": "/root/HERMES/skills/FORGE-model-monitor",
+        "score": 55.0
+      },
+      {
+        "skill": "ops-compress",
+        "via_related": "FORGE-context-compress",
+        "disk": "forge-context-compressor",
+        "path": "/root/HERMES/skills/forge-context-compressor",
+        "score": 75.0
+      },
+      {
+        "skill": "meta-skill-lint",
+        "via_related": "skill-trigger-linter",
+        "disk": "FORGE-skill-linter",
+        "path": "/root/HERMES/skills/FORGE-skill-linter",
+        "score": 55.0
+      },
+      {
+        "skill": "meta-rsi",
+        "via_related": "recursive-self-improvement",
+        "disk": "RSI-recursive-improvement",
+        "path": "/root/arifOS/skills/RSI-recursive-improvement",
+        "score": 55.0
+      },
+      {
+        "skill": "meta-rsi-audit",
+        "via_related": "arifos-recursive-audit",
+        "disk": "recursive-audit",
+        "path": "/root/HERMES/skills/domains/general/apex/recursive-audit",
+        "score": 60.0
+      },
+      {
+        "skill": "meta-evals",
+        "via_related": "arifos-evals",
+        "disk": "arifos-status",
+        "path": "/root/arifOS/skills/arifos-status",
+        "score": 40.0
+      },
+      {
+        "skill": "meta-plan",
+        "via_related": "arifos-plan-dag",
+        "disk": "AGI-plan-dag",
+        "path": "/root/HERMES/skills/domains/general/aaa/agentic-patterns/AGI-plan-dag",
+        "score": 55.0
+      },
+      {
+        "skill": "meta-atlas",
+        "via_related": "meta-mesa-skill-atlas",
+        "disk": "meta-mesa",
+        "path": "/root/HERMES/skills/meta-mesa",
+        "score": 65.0
+      },
+      {
+        "skill": "meta-rsi-cool",
+        "via_related": "cooling-ledger-rsi",
+        "disk": "SKILL_S11_cooling-ledger-manage.md",
+        "path": "/root/arifOS/skills/SKILL_S11_cooling-ledger-manage.md",
+        "score": 48.6
+      },
+      {
+        "skill": "a2a-onboard",
+        "via_related": "agent-onboarding",
+        "disk": "agent-foundation",
+        "path": "/root/arifOS/skills/agent-foundation",
+        "score": 40.0
+      },
+      {
+        "skill": "a2a-kimi",
+        "via_related": "kimi-code-aaa",
+        "disk": "forge-kimi-code",
+        "path": "/root/HERMES/skills/forge-kimi-code",
+        "score": 55.0
+      },
+      {
+        "skill": "a2a-spawn",
+        "via_related": "subagent-spawn-template",
+        "disk": "FORGE-subagent-spawn",
+        "path": "/root/HERMES/skills/FORGE-subagent-spawn",
+        "score": 55.0
+      },
+      {
+        "skill": "sec-telegram",
+        "via_related": "telegram-security-audit",
+        "disk": "security-audit",
+        "path": "/root/arifOS/skills/security-audit",
+        "score": 60.0
+      },
+      {
+        "skill": "research-summarize",
+        "via_related": "summarize-pro",
+        "disk": "ASI-summarize",
+        "path": "/root/HERMES/skills/ASI-summarize",
+        "score": 40.0
+      },
+      {
+        "skill": "research-search",
+        "via_related": "ask-search",
+        "disk": "memory-search",
+        "path": "/root/arifOS/skills/memory-search",
+        "score": 40.0
+      },
+      {
+        "skill": "research-deep",
+        "via_related": "explorer-intelligence-architecture",
+        "disk": "AGI-explorer-intelligence",
+        "path": "/root/.arifos/agents/opencode/skills/AGI-explorer-intelligence",
+        "score": 55.0
+      },
+      {
+        "skill": "kernel-eureka",
+        "via_related": "quantum-eureka-doctrine",
+        "disk": "APEX-quantum-eureka",
+        "path": "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka",
+        "score": 55.0
+      }
+    ],
+    "low": [
+      {
+        "skill": "geo-petrophysics",
+        "via_related": "geox-petrophysics-bounds",
+        "disk": "petrophysics.py",
+        "path": "/root/arifOS/skills/geox/petrophysics.py",
+        "score": 27.5
+      },
+      {
+        "skill": "geo-writing",
+        "via_related": "geox-scientific-writing",
+        "disk": "geox-grounding",
+        "path": "/root/HERMES/skills/geox-grounding",
+        "score": 27.5
+      },
+      {
+        "skill": "geo-prospect",
+        "via_related": "prospect-maturation-workflow",
+        "disk": "geox-prospect-evaluation",
+        "path": "/root/GEOX/skills/geox-prospect-evaluation",
+        "score": 26.0
+      },
+      {
+        "skill": "wealth-collapse",
+        "via_related": "wealth-collapse-signature",
+        "disk": "wealth-capital-primitives",
+        "path": "/root/WEALTH/skills/wealth-capital-primitives",
+        "score": 26.0
+      },
+      {
+        "skill": "forge-exec",
+        "via_related": null,
+        "disk": null,
+        "path": null,
+        "score": null
+      },
+      {
+        "skill": "forge-verbs",
+        "via_related": null,
+        "disk": null,
+        "path": null,
+        "score": null
+      },
+      {
+        "skill": "ops-data-compress",
+        "via_related": "FORGE-data-compression",
+        "disk": "forge-program",
+        "path": "/root/arifOS/skills/forge-program",
+        "score": 27.5
+      },
+      {
+        "skill": "domain-causal",
+        "via_related": null,
+        "disk": null,
+        "path": null,
+        "score": null
+      },
+      {
+        "skill": "domain-wealth-claim",
+        "via_related": "wealth-claim-state",
+        "disk": "agentic-state",
+        "path": "/root/HERMES/skills/agentic-state",
+        "score": 27.5
+      },
+      {
+        "skill": "ops-transport",
+        "via_related": "transport-physics-intelligence",
+        "disk": "temporal-intelligence",
+        "path": "/root/HERMES/skills/temporal-intelligence",
+        "score": 27.5
+      },
+      {
+        "skill": "meta-trust-map",
+        "via_related": null,
+        "disk": null,
+        "path": null,
+        "score": null
+      }
+    ]
+  },
+  "mapping": [
+    {
+      "skill": "geo-basin",
+      "related": [
+        "geox-basin-engines"
+      ],
+      "candidates": {
+        "geox-basin-engines": [
+          [
+            55.0,
+            "geox-basin-evaluation",
+            "/root/GEOX/skills/geox-basin-evaluation"
+          ],
+          [
+            52.0,
+            "geox-basin-claims-audit",
+            "/root/HERMES/skills/geo/geox-basin-claims-audit"
+          ],
+          [
+            27.5,
+            "geox-grounding",
+            "/root/HERMES/skills/geox-grounding"
+          ],
+          [
+            27.5,
+            "geox-intel",
+            "/root/HERMES/skills/domains/geo/workshop/geox-intel"
+          ],
+          [
+            27.5,
+            "engines.md",
+            "/root/AAA/skills/document-pipeline/references/engines.md"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "geox-basin-engines",
+      "best_disk": "geox-basin-evaluation",
+      "best_path": "/root/GEOX/skills/geox-basin-evaluation"
+    },
+    {
+      "skill": "geo-constitution",
+      "related": [
+        "geox-constitution"
+      ],
+      "candidates": {
+        "geox-constitution": [
+          [
+            40.0,
+            "geox-grounding",
+            "/root/HERMES/skills/geox-grounding"
+          ],
+          [
+            40.0,
+            "geox-intel",
+            "/root/HERMES/skills/domains/geo/workshop/geox-intel"
+          ],
+          [
+            37.5,
+            "geox-prospect-evaluation",
+            "/root/GEOX/skills/geox-prospect-evaluation"
+          ],
+          [
+            37.5,
+            "geox-claim-falsification",
+            "/root/GEOX/skills/geox-claim-falsification"
+          ],
+          [
+            37.5,
+            "geox-basin-evaluation",
+            "/root/GEOX/skills/geox-basin-evaluation"
+          ]
+        ]
+      },
+      "best_score": 40.0,
+      "best_related": "geox-constitution",
+      "best_disk": "geox-grounding",
+      "best_path": "/root/HERMES/skills/geox-grounding"
+    },
+    {
+      "skill": "geo-petrophysics",
+      "related": [
+        "geox-petrophysics-bounds"
+      ],
+      "candidates": {
+        "geox-petrophysics-bounds": [
+          [
+            27.5,
+            "petrophysics.py",
+            "/root/arifOS/skills/geox/petrophysics.py"
+          ],
+          [
+            27.5,
+            "geox-grounding",
+            "/root/HERMES/skills/geox-grounding"
+          ],
+          [
+            27.5,
+            "geox-intel",
+            "/root/HERMES/skills/domains/geo/workshop/geox-intel"
+          ],
+          [
+            26.0,
+            "geox-prospect-evaluation",
+            "/root/GEOX/skills/geox-prospect-evaluation"
+          ],
+          [
+            26.0,
+            "geox-claim-falsification",
+            "/root/GEOX/skills/geox-claim-falsification"
+          ]
+        ]
+      },
+      "best_score": 27.5,
+      "best_related": "geox-petrophysics-bounds",
+      "best_disk": "petrophysics.py",
+      "best_path": "/root/arifOS/skills/geox/petrophysics.py"
+    },
+    {
+      "skill": "geo-writing",
+      "related": [
+        "geox-scientific-writing"
+      ],
+      "candidates": {
+        "geox-scientific-writing": [
+          [
+            27.5,
+            "geox-grounding",
+            "/root/HERMES/skills/geox-grounding"
+          ],
+          [
+            27.5,
+            "geox-intel",
+            "/root/HERMES/skills/domains/geo/workshop/geox-intel"
+          ],
+          [
+            26.0,
+            "geox-prospect-evaluation",
+            "/root/GEOX/skills/geox-prospect-evaluation"
+          ],
+          [
+            26.0,
+            "geox-claim-falsification",
+            "/root/GEOX/skills/geox-claim-falsification"
+          ],
+          [
+            26.0,
+            "geox-basin-evaluation",
+            "/root/GEOX/skills/geox-basin-evaluation"
+          ]
+        ]
+      },
+      "best_score": 27.5,
+      "best_related": "geox-scientific-writing",
+      "best_disk": "geox-grounding",
+      "best_path": "/root/HERMES/skills/geox-grounding"
+    },
+    {
+      "skill": "geo-well-tie",
+      "related": [
+        "geox-well-tie-pipeline"
+      ],
+      "candidates": {
+        "geox-well-tie-pipeline": [
+          [
+            40.0,
+            "geox-well-log-qc",
+            "/root/GEOX/skills/geox-well-log-qc"
+          ]
+        ]
+      },
+      "best_score": 40.0,
+      "best_related": "geox-well-tie-pipeline",
+      "best_disk": "geox-well-log-qc",
+      "best_path": "/root/GEOX/skills/geox-well-log-qc"
+    },
+    {
+      "skill": "geo-artifact-rigor",
+      "related": [
+        "geological-artifact-rigor"
+      ],
+      "candidates": {
+        "geological-artifact-rigor": [
+          [
+            100.0,
+            "geological-artifact-rigor",
+            "/root/.arifos/agents/opencode/skills/geological-artifact-rigor"
+          ]
+        ]
+      },
+      "best_score": 100.0,
+      "best_related": "geological-artifact-rigor",
+      "best_disk": "geological-artifact-rigor",
+      "best_path": "/root/.arifos/agents/opencode/skills/geological-artifact-rigor"
+    },
+    {
+      "skill": "geo-prospect",
+      "related": [
+        "prospect-maturation-workflow"
+      ],
+      "candidates": {
+        "prospect-maturation-workflow": [
+          [
+            26.0,
+            "geox-prospect-evaluation",
+            "/root/GEOX/skills/geox-prospect-evaluation"
+          ],
+          [
+            26.0,
+            "prospect-risk.md",
+            "/root/GEOX/skills/subsurface/prospect-risk.md"
+          ],
+          [
+            26.0,
+            "github-pr-workflow",
+            "/root/HERMES/skills/github-pr-workflow"
+          ],
+          [
+            26.0,
+            "forge-workflow.md",
+            "/root/AAA/skills/arifos-external-council/references/forge-workflow.md"
+          ],
+          [
+            26.0,
+            "audit-workflow.md",
+            "/root/AAA/skills/arifos-external-council/references/audit-workflow.md"
+          ]
+        ]
+      },
+      "best_score": 26.0,
+      "best_related": "prospect-maturation-workflow",
+      "best_disk": "geox-prospect-evaluation",
+      "best_path": "/root/GEOX/skills/geox-prospect-evaluation"
+    },
+    {
+      "skill": "wealth-reason",
+      "related": [
+        "wealth-capital-reasoning"
+      ],
+      "candidates": {
+        "wealth-capital-reasoning": [
+          [
+            55.0,
+            "wealth-capital-primitives",
+            "/root/WEALTH/skills/wealth-capital-primitives"
+          ],
+          [
+            26.0,
+            "wealth-ledger-discipline",
+            "/root/WEALTH/skills/wealth-ledger-discipline"
+          ],
+          [
+            26.0,
+            "wealth-market-pulse",
+            "/root/WEALTH/skills/wealth-market-pulse"
+          ],
+          [
+            26.0,
+            "wealth-runway-conservation",
+            "/root/WEALTH/skills/wealth-runway-conservation"
+          ],
+          [
+            26.0,
+            "persona-triad-reasoning",
+            "/root/HERMES/skills/persona-triad-reasoning"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "wealth-capital-reasoning",
+      "best_disk": "wealth-capital-primitives",
+      "best_path": "/root/WEALTH/skills/wealth-capital-primitives"
+    },
+    {
+      "skill": "wealth-thermo",
+      "related": [
+        "wealth-capital-thermodynamics"
+      ],
+      "candidates": {
+        "wealth-capital-thermodynamics": [
+          [
+            55.0,
+            "wealth-capital-primitives",
+            "/root/WEALTH/skills/wealth-capital-primitives"
+          ],
+          [
+            26.0,
+            "wealth-ledger-discipline",
+            "/root/WEALTH/skills/wealth-ledger-discipline"
+          ],
+          [
+            26.0,
+            "wealth-market-pulse",
+            "/root/WEALTH/skills/wealth-market-pulse"
+          ],
+          [
+            26.0,
+            "wealth-runway-conservation",
+            "/root/WEALTH/skills/wealth-runway-conservation"
+          ],
+          [
+            26.0,
+            "wealth-mcp-testing",
+            "/root/HERMES/skills/domains/wealth/forge/mcp-ops/wealth-mcp-testing"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "wealth-capital-thermodynamics",
+      "best_disk": "wealth-capital-primitives",
+      "best_path": "/root/WEALTH/skills/wealth-capital-primitives"
+    },
+    {
+      "skill": "wealth-collapse",
+      "related": [
+        "wealth-collapse-signature"
+      ],
+      "candidates": {
+        "wealth-collapse-signature": [
+          [
+            26.0,
+            "wealth-capital-primitives",
+            "/root/WEALTH/skills/wealth-capital-primitives"
+          ],
+          [
+            26.0,
+            "wealth-ledger-discipline",
+            "/root/WEALTH/skills/wealth-ledger-discipline"
+          ],
+          [
+            26.0,
+            "wealth-market-pulse",
+            "/root/WEALTH/skills/wealth-market-pulse"
+          ],
+          [
+            26.0,
+            "wealth-runway-conservation",
+            "/root/WEALTH/skills/wealth-runway-conservation"
+          ],
+          [
+            26.0,
+            "market-collapse-forensics",
+            "/root/HERMES/skills/market-collapse-forensics"
+          ]
+        ]
+      },
+      "best_score": 26.0,
+      "best_related": "wealth-collapse-signature",
+      "best_disk": "wealth-capital-primitives",
+      "best_path": "/root/WEALTH/skills/wealth-capital-primitives"
+    },
+    {
+      "skill": "well-boundary",
+      "related": [
+        "well-substrate-readiness"
+      ],
+      "candidates": {
+        "well-substrate-readiness": [
+          [
+            100.0,
+            "well-substrate-readiness",
+            "/root/WELL/skills/well-substrate-readiness"
+          ]
+        ]
+      },
+      "best_score": 100.0,
+      "best_related": "well-substrate-readiness",
+      "best_disk": "well-substrate-readiness",
+      "best_path": "/root/WELL/skills/well-substrate-readiness"
+    },
+    {
+      "skill": "well-readiness",
+      "related": [
+        "well-substrate-readiness"
+      ],
+      "candidates": {
+        "well-substrate-readiness": [
+          [
+            100.0,
+            "well-substrate-readiness",
+            "/root/WELL/skills/well-substrate-readiness"
+          ]
+        ]
+      },
+      "best_score": 100.0,
+      "best_related": "well-substrate-readiness",
+      "best_disk": "well-substrate-readiness",
+      "best_path": "/root/WELL/skills/well-substrate-readiness"
+    },
+    {
+      "skill": "forge-exec",
+      "related": [
+        "kernel-verbs-aforge-hands"
+      ],
+      "candidates": {
+        "kernel-verbs-aforge-hands": []
+      },
+      "best_score": null,
+      "best_related": null,
+      "best_disk": null,
+      "best_path": null
+    },
+    {
+      "skill": "forge-verbs",
+      "related": [
+        "kernel-verbs-aforge-hands"
+      ],
+      "candidates": {
+        "kernel-verbs-aforge-hands": []
+      },
+      "best_score": null,
+      "best_related": null,
+      "best_disk": null,
+      "best_path": null
+    },
+    {
+      "skill": "dev-ci-diagnose",
+      "related": [
+        "github-ci-diagnose"
+      ],
+      "candidates": {
+        "github-ci-diagnose": [
+          [
+            55.0,
+            "forge-ci-diagnose",
+            "/root/HERMES/skills/forge-ci-diagnose"
+          ],
+          [
+            55.0,
+            "FORGE-ci-diagnose",
+            "/root/HERMES/skills/FORGE-ci-diagnose"
+          ],
+          [
+            52.0,
+            "FORGE-ci-diagnose.md",
+            "/root/AAA/skills/forge-repo-intelligence/references/FORGE-ci-diagnose.md"
+          ],
+          [
+            52.0,
+            "forge-ci-diagnose.md",
+            "/root/AAA/skills/forge-repo-intelligence/references/forge-ci-diagnose.md"
+          ],
+          [
+            27.5,
+            "github-auth",
+            "/root/HERMES/skills/github-auth"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "github-ci-diagnose",
+      "best_disk": "forge-ci-diagnose",
+      "best_path": "/root/HERMES/skills/forge-ci-diagnose"
+    },
+    {
+      "skill": "dev-issue-triage",
+      "related": [
+        "github-issue-triage"
+      ],
+      "candidates": {
+        "github-issue-triage": [
+          [
+            55.0,
+            "FORGE-issue-triage",
+            "/root/HERMES/skills/FORGE-issue-triage"
+          ],
+          [
+            55.0,
+            "forge-issue-triage",
+            "/root/HERMES/skills/forge-issue-triage"
+          ],
+          [
+            52.0,
+            "github-issue-to-pr",
+            "/root/HERMES/skills/github-issue-to-pr"
+          ],
+          [
+            50.0,
+            "github-issue-to-pr.md",
+            "/root/AAA/skills/github/github-ops/references/github-issue-to-pr.md"
+          ],
+          [
+            27.5,
+            "github-auth",
+            "/root/HERMES/skills/github-auth"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "github-issue-triage",
+      "best_disk": "FORGE-issue-triage",
+      "best_path": "/root/HERMES/skills/FORGE-issue-triage"
+    },
+    {
+      "skill": "dev-pr-review",
+      "related": [
+        "github-pr-review"
+      ],
+      "candidates": {
+        "github-pr-review": [
+          [
+            55.0,
+            "github-pr-workflow",
+            "/root/HERMES/skills/github-pr-workflow"
+          ],
+          [
+            55.0,
+            "github-code-review",
+            "/root/HERMES/skills/github-code-review"
+          ],
+          [
+            55.0,
+            "FORGE-pr-review",
+            "/root/.kimi-code/skills/FORGE-pr-review"
+          ],
+          [
+            52.0,
+            "github-issue-to-pr",
+            "/root/HERMES/skills/github-issue-to-pr"
+          ],
+          [
+            52.0,
+            "github-code-review.md",
+            "/root/AAA/skills/github/github-ops/references/github-code-review.md"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "github-pr-review",
+      "best_disk": "github-pr-workflow",
+      "best_path": "/root/HERMES/skills/github-pr-workflow"
+    },
+    {
+      "skill": "dev-pr-governance",
+      "related": [
+        "pr-review-governance",
+        "github-pr-review"
+      ],
+      "candidates": {
+        "pr-review-governance": [
+          [
+            60.0,
+            "pr-governance",
+            "/root/HERMES/skills/domains/general/apex/governance-core/pr-governance"
+          ],
+          [
+            55.0,
+            "FORGE-pr-governance",
+            "/root/HERMES/skills/FORGE-pr-governance"
+          ],
+          [
+            55.0,
+            "FORGE-pr-review",
+            "/root/.kimi-code/skills/FORGE-pr-review"
+          ],
+          [
+            48.6,
+            "pr-governance.DEPRECATED-2026-09-19",
+            "/root/AAA/skills/domains/forge/pr-governance.DEPRECATED-2026-09-19"
+          ],
+          [
+            27.5,
+            "constitutional-governance",
+            "/root/arifOS/skills/constitutional-governance"
+          ]
+        ],
+        "github-pr-review": [
+          [
+            55.0,
+            "github-pr-workflow",
+            "/root/HERMES/skills/github-pr-workflow"
+          ],
+          [
+            55.0,
+            "github-code-review",
+            "/root/HERMES/skills/github-code-review"
+          ],
+          [
+            55.0,
+            "FORGE-pr-review",
+            "/root/.kimi-code/skills/FORGE-pr-review"
+          ],
+          [
+            52.0,
+            "github-issue-to-pr",
+            "/root/HERMES/skills/github-issue-to-pr"
+          ],
+          [
+            52.0,
+            "github-code-review.md",
+            "/root/AAA/skills/github/github-ops/references/github-code-review.md"
+          ]
+        ]
+      },
+      "best_score": 60.0,
+      "best_related": "pr-review-governance",
+      "best_disk": "pr-governance",
+      "best_path": "/root/HERMES/skills/domains/general/apex/governance-core/pr-governance"
+    },
+    {
+      "skill": "dev-wiki",
+      "related": [
+        "code-wiki"
+      ],
+      "candidates": {
+        "code-wiki": [
+          [
+            40.0,
+            "code-refactor",
+            "/root/arifOS/skills/code-refactor"
+          ],
+          [
+            40.0,
+            "code-discipline",
+            "/root/HERMES/skills/domains/general/forge/code-discipline"
+          ],
+          [
+            40.0,
+            "code-review",
+            "/root/HERMES/skills/domains/general/forge/code-discipline/code-review"
+          ],
+          [
+            40.0,
+            "simplify-code",
+            "/root/.forge/skills/software-development/simplify-code"
+          ],
+          [
+            40.0,
+            "llm-wiki",
+            "/root/.forge/skills/research/llm-wiki"
+          ]
+        ]
+      },
+      "best_score": 40.0,
+      "best_related": "code-wiki",
+      "best_disk": "code-refactor",
+      "best_path": "/root/arifOS/skills/code-refactor"
+    },
+    {
+      "skill": "dev-analysis",
+      "related": [
+        "code-analysis-skills"
+      ],
+      "candidates": {
+        "code-analysis-skills": [
+          [
+            55.0,
+            "forge-code-analysis",
+            "/root/HERMES/skills/forge-code-analysis"
+          ],
+          [
+            55.0,
+            "FORGE-code-analysis",
+            "/root/HERMES/skills/FORGE-code-analysis"
+          ],
+          [
+            50.0,
+            "fabricated-code-analysis-claims.md",
+            "/root/AAA/skills/domains/general/court/court-audit/live-probe-audit-pattern/references/fabricated-code-analysis-claims.md"
+          ],
+          [
+            50.0,
+            "absorbed-FORGE-code-analysis.md",
+            "/root/AAA/skills/forge-code-analysis/references/absorbed-FORGE-code-analysis.md"
+          ],
+          [
+            27.5,
+            "code-refactor",
+            "/root/arifOS/skills/code-refactor"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "code-analysis-skills",
+      "best_disk": "forge-code-analysis",
+      "best_path": "/root/HERMES/skills/forge-code-analysis"
+    },
+    {
+      "skill": "dev-repo-audit",
+      "related": [
+        "readme-truth-check",
+        "arifos-recursive-audit"
+      ],
+      "candidates": {
+        "readme-truth-check": [
+          [
+            82.5,
+            "FORGE-readme-truth-check",
+            "/root/.kimi-code/skills/FORGE-readme-truth-check"
+          ],
+          [
+            27.5,
+            "constitutional-check",
+            "/root/arifOS/skills/constitutional-check"
+          ],
+          [
+            27.5,
+            "README.md",
+            "/root/arifOS/skills/README.md"
+          ],
+          [
+            27.5,
+            "check.py",
+            "/root/arifOS/skills/site-health-monitor/check.py"
+          ],
+          [
+            27.5,
+            "check-work",
+            "/root/.kimi-code/skills/check-work"
+          ]
+        ],
+        "arifos-recursive-audit": [
+          [
+            60.0,
+            "recursive-audit",
+            "/root/HERMES/skills/domains/general/apex/recursive-audit"
+          ],
+          [
+            60.0,
+            "AUDIT-recursive-audit",
+            "/root/.kimi-code/skills/skill-mesh/AUDIT-recursive-audit"
+          ],
+          [
+            55.0,
+            "AUDIT_ARIFOS.md",
+            "/root/.kimi-code/skills/skill-mesh/AUDIT-recursive-audit/AUDIT_ARIFOS.md"
+          ],
+          [
+            52.0,
+            "arifos-kernel-zen-audit",
+            "/root/HERMES/skills/domains/general/apex/recursive-audit/arifos-kernel-zen-audit"
+          ],
+          [
+            27.5,
+            "security-audit",
+            "/root/arifOS/skills/security-audit"
+          ]
+        ]
+      },
+      "best_score": 82.5,
+      "best_related": "readme-truth-check",
+      "best_disk": "FORGE-readme-truth-check",
+      "best_path": "/root/.kimi-code/skills/FORGE-readme-truth-check"
+    },
+    {
+      "skill": "ops-docker",
+      "related": [
+        "docker",
+        "vps-docker-ops",
+        "docker-entropy-ops",
+        "docker-thermodynamics"
+      ],
+      "candidates": {
+        "docker": [
+          [
+            95.0,
+            "docker.sh",
+            "/root/AAA/skills/qwencloud-deploy/templates/userdata/docker.sh"
+          ],
+          [
+            95.0,
+            "docker.md",
+            "/root/AAA/skills/runpod-usage/reference/docker.md"
+          ],
+          [
+            90.0,
+            "docker-setup.md",
+            "/root/AAA/skills/companion-clis/reference/docker-setup.md"
+          ],
+          [
+            87.5,
+            "docker-image-sync.sh",
+            "/root/AAA/skills/forge-infra-crons/docker-image-sync.sh"
+          ],
+          [
+            75.0,
+            "vps-docker",
+            "/root/arifOS/skills/vps-docker"
+          ]
+        ],
+        "vps-docker-ops": [
+          [
+            80.0,
+            "vps-docker",
+            "/root/arifOS/skills/vps-docker"
+          ],
+          [
+            60.0,
+            "vps-ops",
+            "/root/HERMES/skills/domains/general/forge/federation-topology/vps-ops"
+          ],
+          [
+            55.0,
+            "FORGE-vps-docker",
+            "/root/HERMES/skills/FORGE-vps-docker"
+          ],
+          [
+            27.5,
+            "openclaw-ops",
+            "/root/arifOS/skills/openclaw-ops"
+          ],
+          [
+            27.5,
+            "git-ops",
+            "/root/arifOS/skills/git-ops"
+          ]
+        ],
+        "docker-entropy-ops": [
+          [
+            55.0,
+            "FORGE-docker-entropy",
+            "/root/.kimi-code/skills/FORGE-docker-entropy"
+          ],
+          [
+            27.5,
+            "vps-docker",
+            "/root/arifOS/skills/vps-docker"
+          ],
+          [
+            27.5,
+            "openclaw-ops",
+            "/root/arifOS/skills/openclaw-ops"
+          ],
+          [
+            27.5,
+            "entropy-optimization",
+            "/root/arifOS/skills/entropy-optimization"
+          ],
+          [
+            27.5,
+            "git-ops",
+            "/root/arifOS/skills/git-ops"
+          ]
+        ],
+        "docker-thermodynamics": [
+          [
+            40.0,
+            "vps-docker",
+            "/root/arifOS/skills/vps-docker"
+          ],
+          [
+            40.0,
+            "docker.sh",
+            "/root/AAA/skills/qwencloud-deploy/templates/userdata/docker.sh"
+          ],
+          [
+            40.0,
+            "docker.md",
+            "/root/AAA/skills/runpod-usage/reference/docker.md"
+          ],
+          [
+            37.5,
+            "FORGE-vps-docker",
+            "/root/HERMES/skills/FORGE-vps-docker"
+          ],
+          [
+            37.5,
+            "docker-setup.md",
+            "/root/AAA/skills/companion-clis/reference/docker-setup.md"
+          ]
+        ]
+      },
+      "best_score": 95.0,
+      "best_related": "docker",
+      "best_disk": "docker.sh",
+      "best_path": "/root/AAA/skills/qwencloud-deploy/templates/userdata/docker.sh"
+    },
+    {
+      "skill": "ops-vps",
+      "related": [
+        "vps-docker-ops",
+        "vps-docker-runbook",
+        "spatial-grounding"
+      ],
+      "candidates": {
+        "vps-docker-ops": [
+          [
+            80.0,
+            "vps-docker",
+            "/root/arifOS/skills/vps-docker"
+          ],
+          [
+            60.0,
+            "vps-ops",
+            "/root/HERMES/skills/domains/general/forge/federation-topology/vps-ops"
+          ],
+          [
+            55.0,
+            "FORGE-vps-docker",
+            "/root/HERMES/skills/FORGE-vps-docker"
+          ],
+          [
+            27.5,
+            "openclaw-ops",
+            "/root/arifOS/skills/openclaw-ops"
+          ],
+          [
+            27.5,
+            "git-ops",
+            "/root/arifOS/skills/git-ops"
+          ]
+        ],
+        "vps-docker-runbook": [
+          [
+            80.0,
+            "vps-docker",
+            "/root/arifOS/skills/vps-docker"
+          ],
+          [
+            55.0,
+            "FORGE-vps-docker",
+            "/root/HERMES/skills/FORGE-vps-docker"
+          ],
+          [
+            55.0,
+            "FORGE-vps-runbook",
+            "/root/.kimi-code/skills/FORGE-vps-runbook"
+          ],
+          [
+            27.5,
+            "vps-monitor",
+            "/root/arifOS/skills/vps-monitor"
+          ],
+          [
+            27.5,
+            "vps-ops",
+            "/root/HERMES/skills/domains/general/forge/federation-topology/vps-ops"
+          ]
+        ],
+        "spatial-grounding": [
+          [
+            80.0,
+            "forge-spatial-grounding",
+            "/root/HERMES/skills/forge-spatial-grounding"
+          ],
+          [
+            80.0,
+            "FORGE-spatial-grounding",
+            "/root/HERMES/skills/FORGE-spatial-grounding"
+          ],
+          [
+            72.0,
+            "absorbed-FORGE-spatial-grounding.md",
+            "/root/AAA/skills/forge-spatial-grounding/references/absorbed-FORGE-spatial-grounding.md"
+          ],
+          [
+            40.0,
+            "geox-grounding",
+            "/root/HERMES/skills/geox-grounding"
+          ],
+          [
+            37.5,
+            "gate-grounding-audit",
+            "/root/HERMES/skills/gate-grounding-audit"
+          ]
+        ]
+      },
+      "best_score": 80.0,
+      "best_related": "vps-docker-ops",
+      "best_disk": "vps-docker",
+      "best_path": "/root/arifOS/skills/vps-docker"
+    },
+    {
+      "skill": "ops-mcp-builder",
+      "related": [
+        "mcp-builder-doctrine",
+        "mcp-zen-authoring",
+        "mcp-federation-ops"
+      ],
+      "candidates": {
+        "mcp-builder-doctrine": [
+          [
+            27.5,
+            "touchdesigner-mcp",
+            "/root/HERMES/skills/touchdesigner-mcp"
+          ],
+          [
+            27.5,
+            "runpod-mcp",
+            "/root/HERMES/skills/runpod-mcp"
+          ],
+          [
+            27.5,
+            "mcp-ops",
+            "/root/HERMES/skills/domains/wealth/forge/mcp-ops"
+          ],
+          [
+            27.5,
+            "mcp-testing",
+            "/root/HERMES/skills/domains/general/forge/mcp-ops/mcp-testing"
+          ],
+          [
+            27.5,
+            "forge-mcp",
+            "/root/.kimi-code/skills/forge-mcp"
+          ]
+        ],
+        "mcp-zen-authoring": [
+          [
+            52.0,
+            "mcp-server-zen.md",
+            "/root/AAA/skills/skill-mesh/references/skill-audit-methodology/mcp-server-zen.md"
+          ],
+          [
+            47.5,
+            "mcp-resource-zen-2026-07-28.md",
+            "/root/AAA/skills/domains/general/court/court-audit/live-probe-audit-pattern/references/mcp-resource-zen-2026-07-28.md"
+          ],
+          [
+            27.5,
+            "touchdesigner-mcp",
+            "/root/HERMES/skills/touchdesigner-mcp"
+          ],
+          [
+            27.5,
+            "runpod-mcp",
+            "/root/HERMES/skills/runpod-mcp"
+          ],
+          [
+            27.5,
+            "mcp-ops",
+            "/root/HERMES/skills/domains/wealth/forge/mcp-ops"
+          ]
+        ],
+        "mcp-federation-ops": [
+          [
+            82.5,
+            "FORGE-mcp-federation-ops",
+            "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops"
+          ],
+          [
+            60.0,
+            "mcp-ops",
+            "/root/HERMES/skills/domains/wealth/forge/mcp-ops"
+          ],
+          [
+            55.0,
+            "forge-mcp-ops",
+            "/root/HERMES/skills/forge-mcp-ops"
+          ],
+          [
+            55.0,
+            "FORGE-mcp-ops",
+            "/root/HERMES/skills/FORGE-mcp-ops"
+          ],
+          [
+            55.0,
+            "wealth-mcp-ops",
+            "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-ops"
+          ]
+        ]
+      },
+      "best_score": 82.5,
+      "best_related": "mcp-federation-ops",
+      "best_disk": "FORGE-mcp-federation-ops",
+      "best_path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops"
+    },
+    {
+      "skill": "ops-mcp-probe",
+      "related": [
+        "mcp-smoke-test",
+        "mcp-ops",
+        "mcp-smoke-test"
+      ],
+      "candidates": {
+        "mcp-smoke-test": [
+          [
+            82.5,
+            "FORGE-mcp-smoke-test",
+            "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-smoke-test"
+          ],
+          [
+            75.0,
+            "absorbed-FORGE-mcp-smoke-test.md",
+            "/root/AAA/skills/core/mcp/runtime-probe/references/absorbed-FORGE-mcp-smoke-test.md"
+          ],
+          [
+            27.5,
+            "touchdesigner-mcp",
+            "/root/HERMES/skills/touchdesigner-mcp"
+          ],
+          [
+            27.5,
+            "runpod-mcp",
+            "/root/HERMES/skills/runpod-mcp"
+          ],
+          [
+            27.5,
+            "mcp-ops",
+            "/root/HERMES/skills/domains/wealth/forge/mcp-ops"
+          ]
+        ],
+        "mcp-ops": [
+          [
+            100.0,
+            "mcp-ops",
+            "/root/HERMES/skills/domains/wealth/forge/mcp-ops"
+          ]
+        ]
+      },
+      "best_score": 100.0,
+      "best_related": "mcp-ops",
+      "best_disk": "mcp-ops",
+      "best_path": "/root/HERMES/skills/domains/wealth/forge/mcp-ops"
+    },
+    {
+      "skill": "ops-infra",
+      "related": [
+        "infra-guardian"
+      ],
+      "candidates": {
+        "infra-guardian": [
+          [
+            80.0,
+            "FORGE-infra-guardian",
+            "/root/HERMES/skills/FORGE-infra-guardian"
+          ],
+          [
+            80.0,
+            "forge-infra-guardian",
+            "/root/HERMES/skills/forge-infra-guardian"
+          ],
+          [
+            72.0,
+            "absorbed-FORGE-infra-guardian.md",
+            "/root/AAA/skills/forge-infra-guardian/references/absorbed-FORGE-infra-guardian.md"
+          ],
+          [
+            37.5,
+            "FORGE-infra-crons",
+            "/root/HERMES/skills/FORGE-infra-crons"
+          ],
+          [
+            37.5,
+            "forge-infra-crons",
+            "/root/HERMES/skills/forge-infra-crons"
+          ]
+        ]
+      },
+      "best_score": 80.0,
+      "best_related": "infra-guardian",
+      "best_disk": "FORGE-infra-guardian",
+      "best_path": "/root/HERMES/skills/FORGE-infra-guardian"
+    },
+    {
+      "skill": "ops-incident",
+      "related": [
+        "incident-triage",
+        "incident-escalation"
+      ],
+      "candidates": {
+        "incident-triage": [
+          [
+            80.0,
+            "FORGE-incident-triage",
+            "/root/HERMES/skills/FORGE-incident-triage"
+          ],
+          [
+            40.0,
+            "incident-response",
+            "/root/HERMES/skills/domains/well/forge/incident-response"
+          ],
+          [
+            40.0,
+            "mailbox-triage",
+            "/root/AAA/skills/human-interface/mailbox-triage"
+          ],
+          [
+            40.0,
+            "inbox-triage",
+            "/root/AAA/skills/workshop/inbox-triage"
+          ],
+          [
+            37.5,
+            "FORGE-issue-triage",
+            "/root/HERMES/skills/FORGE-issue-triage"
+          ]
+        ],
+        "incident-escalation": [
+          [
+            80.0,
+            "FORGE-incident-escalation",
+            "/root/.kimi-code/skills/FORGE-incident-escalation"
+          ],
+          [
+            40.0,
+            "incident-response",
+            "/root/HERMES/skills/domains/well/forge/incident-response"
+          ],
+          [
+            37.5,
+            "FORGE-incident-triage",
+            "/root/HERMES/skills/FORGE-incident-triage"
+          ],
+          [
+            37.5,
+            "escalation-trajectory-hold",
+            "/root/HERMES/skills/domains/general/court/court-audit/escalation-trajectory-hold"
+          ],
+          [
+            36.0,
+            "vault999-incident-recovery.md",
+            "/root/AAA/skills/domains/general/aaa/onboarding/a2a-agent-card-registration/references/vault999-incident-recovery.md"
+          ]
+        ]
+      },
+      "best_score": 80.0,
+      "best_related": "incident-triage",
+      "best_disk": "FORGE-incident-triage",
+      "best_path": "/root/HERMES/skills/FORGE-incident-triage"
+    },
+    {
+      "skill": "ops-spatial",
+      "related": [
+        "spatial-grounding"
+      ],
+      "candidates": {
+        "spatial-grounding": [
+          [
+            80.0,
+            "forge-spatial-grounding",
+            "/root/HERMES/skills/forge-spatial-grounding"
+          ],
+          [
+            80.0,
+            "FORGE-spatial-grounding",
+            "/root/HERMES/skills/FORGE-spatial-grounding"
+          ],
+          [
+            72.0,
+            "absorbed-FORGE-spatial-grounding.md",
+            "/root/AAA/skills/forge-spatial-grounding/references/absorbed-FORGE-spatial-grounding.md"
+          ],
+          [
+            40.0,
+            "geox-grounding",
+            "/root/HERMES/skills/geox-grounding"
+          ],
+          [
+            37.5,
+            "gate-grounding-audit",
+            "/root/HERMES/skills/gate-grounding-audit"
+          ]
+        ]
+      },
+      "best_score": 80.0,
+      "best_related": "spatial-grounding",
+      "best_disk": "forge-spatial-grounding",
+      "best_path": "/root/HERMES/skills/forge-spatial-grounding"
+    },
+    {
+      "skill": "ops-health",
+      "related": [
+        "verify-runtime",
+        "federation-orchestrator",
+        "mcp-lifeguard"
+      ],
+      "candidates": {
+        "verify-runtime": [
+          [
+            100.0,
+            "verify-runtime",
+            "/root/HERMES/skills/core/governance/verify-runtime"
+          ]
+        ],
+        "federation-orchestrator": [
+          [
+            80.0,
+            "FORGE-federation-orchestrator",
+            "/root/HERMES/skills/FORGE-federation-orchestrator"
+          ],
+          [
+            40.0,
+            "federation-topology",
+            "/root/HERMES/skills/federation-topology"
+          ],
+          [
+            40.0,
+            "federation-release",
+            "/root/HERMES/skills/domains/general/forge/federation-release"
+          ],
+          [
+            40.0,
+            "federation-health",
+            "/root/HERMES/skills/domains/general/forge/federation-topology/federation-health"
+          ],
+          [
+            40.0,
+            "kanban-orchestrator",
+            "/root/.forge/skills/devops/kanban-orchestrator"
+          ]
+        ],
+        "mcp-lifeguard": [
+          [
+            80.0,
+            "FORGE-mcp-lifeguard",
+            "/root/HERMES/skills/FORGE-mcp-lifeguard"
+          ],
+          [
+            75.0,
+            "absorbed-FORGE-mcp-lifeguard",
+            "/root/AAA/skills/engineering/mcp-ops/references/absorbed-FORGE-mcp-lifeguard"
+          ],
+          [
+            72.0,
+            "absorbed-FORGE-mcp-lifeguard.md",
+            "/root/AAA/skills/engineering/mcp-ops/references/absorbed-FORGE-mcp-lifeguard.md"
+          ],
+          [
+            40.0,
+            "touchdesigner-mcp",
+            "/root/HERMES/skills/touchdesigner-mcp"
+          ],
+          [
+            40.0,
+            "runpod-mcp",
+            "/root/HERMES/skills/runpod-mcp"
+          ]
+        ]
+      },
+      "best_score": 100.0,
+      "best_related": "verify-runtime",
+      "best_disk": "verify-runtime",
+      "best_path": "/root/HERMES/skills/core/governance/verify-runtime"
+    },
+    {
+      "skill": "ops-mcp-lifeguard",
+      "related": [
+        "mcp-lifeguard"
+      ],
+      "candidates": {
+        "mcp-lifeguard": [
+          [
+            80.0,
+            "FORGE-mcp-lifeguard",
+            "/root/HERMES/skills/FORGE-mcp-lifeguard"
+          ],
+          [
+            75.0,
+            "absorbed-FORGE-mcp-lifeguard",
+            "/root/AAA/skills/engineering/mcp-ops/references/absorbed-FORGE-mcp-lifeguard"
+          ],
+          [
+            72.0,
+            "absorbed-FORGE-mcp-lifeguard.md",
+            "/root/AAA/skills/engineering/mcp-ops/references/absorbed-FORGE-mcp-lifeguard.md"
+          ],
+          [
+            40.0,
+            "touchdesigner-mcp",
+            "/root/HERMES/skills/touchdesigner-mcp"
+          ],
+          [
+            40.0,
+            "runpod-mcp",
+            "/root/HERMES/skills/runpod-mcp"
+          ]
+        ]
+      },
+      "best_score": 80.0,
+      "best_related": "mcp-lifeguard",
+      "best_disk": "FORGE-mcp-lifeguard",
+      "best_path": "/root/HERMES/skills/FORGE-mcp-lifeguard"
+    },
+    {
+      "skill": "ops-model-monitor",
+      "related": [
+        "model-fallback-monitor"
+      ],
+      "candidates": {
+        "model-fallback-monitor": [
+          [
+            55.0,
+            "FORGE-model-monitor",
+            "/root/HERMES/skills/FORGE-model-monitor"
+          ],
+          [
+            55.0,
+            "forge-model-monitor",
+            "/root/HERMES/skills/forge-model-monitor"
+          ],
+          [
+            50.0,
+            "absorbed-FORGE-model-monitor.md",
+            "/root/AAA/skills/forge-model-monitor/references/absorbed-FORGE-model-monitor.md"
+          ],
+          [
+            27.5,
+            "vps-monitor",
+            "/root/arifOS/skills/vps-monitor"
+          ],
+          [
+            27.5,
+            "model-routing",
+            "/root/HERMES/skills/domains/general/forge/model-routing"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "model-fallback-monitor",
+      "best_disk": "FORGE-model-monitor",
+      "best_path": "/root/HERMES/skills/FORGE-model-monitor"
+    },
+    {
+      "skill": "apex-quantum-eureka",
+      "related": [
+        "APEX-quantum-eureka"
+      ],
+      "candidates": {
+        "APEX-quantum-eureka": [
+          [
+            100.0,
+            "APEX-quantum-eureka",
+            "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka"
+          ]
+        ]
+      },
+      "best_score": 100.0,
+      "best_related": "APEX-quantum-eureka",
+      "best_disk": "APEX-quantum-eureka",
+      "best_path": "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka"
+    },
+    {
+      "skill": "ops-compress",
+      "related": [
+        "FORGE-context-compress"
+      ],
+      "candidates": {
+        "FORGE-context-compress": [
+          [
+            75.0,
+            "forge-context-compressor",
+            "/root/HERMES/skills/forge-context-compressor"
+          ],
+          [
+            75.0,
+            "FORGE-context-compressor",
+            "/root/HERMES/skills/FORGE-context-compressor"
+          ],
+          [
+            50.0,
+            "absorbed-FORGE-context-compressor.md",
+            "/root/AAA/skills/forge-context-compressor/references/absorbed-FORGE-context-compressor.md"
+          ],
+          [
+            27.5,
+            "forge-program",
+            "/root/arifOS/skills/forge-program"
+          ],
+          [
+            27.5,
+            "forge-onboarding",
+            "/root/HERMES/skills/forge-onboarding"
+          ]
+        ]
+      },
+      "best_score": 75.0,
+      "best_related": "FORGE-context-compress",
+      "best_disk": "forge-context-compressor",
+      "best_path": "/root/HERMES/skills/forge-context-compressor"
+    },
+    {
+      "skill": "ops-data-compress",
+      "related": [
+        "FORGE-data-compression"
+      ],
+      "candidates": {
+        "FORGE-data-compression": [
+          [
+            27.5,
+            "forge-program",
+            "/root/arifOS/skills/forge-program"
+          ],
+          [
+            27.5,
+            "forge-onboarding",
+            "/root/HERMES/skills/forge-onboarding"
+          ],
+          [
+            27.5,
+            "FORGE-fastmcp",
+            "/root/HERMES/skills/FORGE-fastmcp"
+          ],
+          [
+            27.5,
+            "FORGE-onboarding",
+            "/root/HERMES/skills/FORGE-onboarding"
+          ],
+          [
+            27.5,
+            "data-stack",
+            "/root/HERMES/skills/domains/general/forge/data-stack"
+          ]
+        ]
+      },
+      "best_score": 27.5,
+      "best_related": "FORGE-data-compression",
+      "best_disk": "forge-program",
+      "best_path": "/root/arifOS/skills/forge-program"
+    },
+    {
+      "skill": "domain-causal",
+      "related": [
+        "causal555-pywhy"
+      ],
+      "candidates": {
+        "causal555-pywhy": []
+      },
+      "best_score": null,
+      "best_related": null,
+      "best_disk": null,
+      "best_path": null
+    },
+    {
+      "skill": "domain-wealth-claim",
+      "related": [
+        "wealth-claim-state"
+      ],
+      "candidates": {
+        "wealth-claim-state": [
+          [
+            27.5,
+            "agentic-state",
+            "/root/HERMES/skills/agentic-state"
+          ],
+          [
+            27.5,
+            ".curator_state",
+            "/root/HERMES/skills/.curator_state"
+          ],
+          [
+            26.0,
+            "geox-claim-falsification",
+            "/root/GEOX/skills/geox-claim-falsification"
+          ],
+          [
+            26.0,
+            "wealth-capital-primitives",
+            "/root/WEALTH/skills/wealth-capital-primitives"
+          ],
+          [
+            26.0,
+            "wealth-ledger-discipline",
+            "/root/WEALTH/skills/wealth-ledger-discipline"
+          ]
+        ]
+      },
+      "best_score": 27.5,
+      "best_related": "wealth-claim-state",
+      "best_disk": "agentic-state",
+      "best_path": "/root/HERMES/skills/agentic-state"
+    },
+    {
+      "skill": "ops-google",
+      "related": [
+        "google-workspace-cli"
+      ],
+      "candidates": {
+        "google-workspace-cli": [
+          [
+            80.0,
+            "google-workspace",
+            "/root/arifOS/skills/google-workspace"
+          ],
+          [
+            55.0,
+            "forge-google-workspace",
+            "/root/HERMES/skills/forge-google-workspace"
+          ],
+          [
+            55.0,
+            "google-workspace-gws",
+            "/root/HERMES/skills/google-workspace-gws"
+          ],
+          [
+            55.0,
+            "FORGE-google-workspace",
+            "/root/HERMES/skills/FORGE-google-workspace"
+          ],
+          [
+            50.0,
+            "absorbed-FORGE-google-workspace.md",
+            "/root/AAA/skills/forge-google-workspace/references/absorbed-FORGE-google-workspace.md"
+          ]
+        ]
+      },
+      "best_score": 80.0,
+      "best_related": "google-workspace-cli",
+      "best_disk": "google-workspace",
+      "best_path": "/root/arifOS/skills/google-workspace"
+    },
+    {
+      "skill": "ops-transport",
+      "related": [
+        "transport-physics-intelligence"
+      ],
+      "candidates": {
+        "transport-physics-intelligence": [
+          [
+            27.5,
+            "temporal-intelligence",
+            "/root/HERMES/skills/temporal-intelligence"
+          ],
+          [
+            27.5,
+            "mesh-transport",
+            "/root/HERMES/skills/domains/general/forge/mesh-transport"
+          ],
+          [
+            27.5,
+            "repo-intelligence",
+            "/root/HERMES/skills/domains/general/forge/repo-intelligence"
+          ],
+          [
+            27.5,
+            "music-intelligence",
+            "/root/HERMES/skills/domains/general/workshop/audio-emd/music-intelligence"
+          ],
+          [
+            27.5,
+            "know-physics",
+            "/root/AAA/skills/know-physics"
+          ]
+        ]
+      },
+      "best_score": 27.5,
+      "best_related": "transport-physics-intelligence",
+      "best_disk": "temporal-intelligence",
+      "best_path": "/root/HERMES/skills/temporal-intelligence"
+    },
+    {
+      "skill": "meta-skill-create",
+      "related": [
+        "skill-creator",
+        "create-skill"
+      ],
+      "candidates": {
+        "skill-creator": [
+          [
+            100.0,
+            "skill-creator",
+            "/root/HERMES/skills/domains/general/aaa/skill-mesh/skill-creator"
+          ]
+        ],
+        "create-skill": [
+          [
+            100.0,
+            "create-skill",
+            "/root/.kimi-code/skills/create-skill"
+          ]
+        ]
+      },
+      "best_score": 100.0,
+      "best_related": "skill-creator",
+      "best_disk": "skill-creator",
+      "best_path": "/root/HERMES/skills/domains/general/aaa/skill-mesh/skill-creator"
+    },
+    {
+      "skill": "meta-skill-lint",
+      "related": [
+        "skill-trigger-linter"
+      ],
+      "candidates": {
+        "skill-trigger-linter": [
+          [
+            55.0,
+            "FORGE-skill-linter",
+            "/root/HERMES/skills/FORGE-skill-linter"
+          ],
+          [
+            27.5,
+            "SKILL.md",
+            "/root/GEOX/skills/geox-prospect-evaluation/SKILL.md"
+          ],
+          [
+            27.5,
+            "skill-composer",
+            "/root/arifOS/skills/skill-composer"
+          ],
+          [
+            27.5,
+            "skill.yaml",
+            "/root/arifOS/skills/vps-docker/skill.yaml"
+          ],
+          [
+            27.5,
+            "skill-mesh",
+            "/root/HERMES/skills/skill-mesh"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "skill-trigger-linter",
+      "best_disk": "FORGE-skill-linter",
+      "best_path": "/root/HERMES/skills/FORGE-skill-linter"
+    },
+    {
+      "skill": "meta-rsi",
+      "related": [
+        "recursive-self-improvement",
+        "cooling-ledger-rsi"
+      ],
+      "candidates": {
+        "recursive-self-improvement": [
+          [
+            55.0,
+            "RSI-recursive-improvement",
+            "/root/arifOS/skills/RSI-recursive-improvement"
+          ],
+          [
+            27.5,
+            "recursive-audit",
+            "/root/HERMES/skills/domains/general/apex/recursive-audit"
+          ],
+          [
+            27.5,
+            "AUDIT-recursive-audit",
+            "/root/.kimi-code/skills/skill-mesh/AUDIT-recursive-audit"
+          ],
+          [
+            26.0,
+            "self-recurrence-guards",
+            "/root/HERMES/skills/domains/general/court/court-audit/self-recurrence-guards"
+          ],
+          [
+            25.0,
+            "forge-hermes-self-evolution",
+            "/root/HERMES/skills/forge-hermes-self-evolution"
+          ]
+        ],
+        "cooling-ledger-rsi": [
+          [
+            48.6,
+            "SKILL_S11_cooling-ledger-manage.md",
+            "/root/arifOS/skills/SKILL_S11_cooling-ledger-manage.md"
+          ],
+          [
+            27.5,
+            "vault-ledger",
+            "/root/HERMES/skills/domains/general/court/vault-ledger"
+          ],
+          [
+            26.0,
+            "wealth-ledger-discipline",
+            "/root/WEALTH/skills/wealth-ledger-discipline"
+          ],
+          [
+            26.0,
+            "RSI-recursive-improvement",
+            "/root/arifOS/skills/RSI-recursive-improvement"
+          ],
+          [
+            26.0,
+            "claim-ledger-integrity",
+            "/root/HERMES/skills/claim-ledger-integrity"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "recursive-self-improvement",
+      "best_disk": "RSI-recursive-improvement",
+      "best_path": "/root/arifOS/skills/RSI-recursive-improvement"
+    },
+    {
+      "skill": "meta-rsi-audit",
+      "related": [
+        "arifos-recursive-audit"
+      ],
+      "candidates": {
+        "arifos-recursive-audit": [
+          [
+            60.0,
+            "recursive-audit",
+            "/root/HERMES/skills/domains/general/apex/recursive-audit"
+          ],
+          [
+            60.0,
+            "AUDIT-recursive-audit",
+            "/root/.kimi-code/skills/skill-mesh/AUDIT-recursive-audit"
+          ],
+          [
+            55.0,
+            "AUDIT_ARIFOS.md",
+            "/root/.kimi-code/skills/skill-mesh/AUDIT-recursive-audit/AUDIT_ARIFOS.md"
+          ],
+          [
+            52.0,
+            "arifos-kernel-zen-audit",
+            "/root/HERMES/skills/domains/general/apex/recursive-audit/arifos-kernel-zen-audit"
+          ],
+          [
+            27.5,
+            "security-audit",
+            "/root/arifOS/skills/security-audit"
+          ]
+        ]
+      },
+      "best_score": 60.0,
+      "best_related": "arifos-recursive-audit",
+      "best_disk": "recursive-audit",
+      "best_path": "/root/HERMES/skills/domains/general/apex/recursive-audit"
+    },
+    {
+      "skill": "meta-evals",
+      "related": [
+        "arifos-evals"
+      ],
+      "candidates": {
+        "arifos-evals": [
+          [
+            40.0,
+            "arifos-status",
+            "/root/arifOS/skills/arifos-status"
+          ],
+          [
+            40.0,
+            "arifos-deploy",
+            "/root/arifOS/skills/arifos-deploy"
+          ],
+          [
+            40.0,
+            "langfuse-arifos",
+            "/root/arifOS/skills/langfuse-arifos"
+          ],
+          [
+            37.5,
+            "arifos-mcp-call",
+            "/root/arifOS/skills/arifos-mcp-call"
+          ],
+          [
+            37.5,
+            "arifos-evidence-policy",
+            "/root/HERMES/skills/arifos-evidence-policy"
+          ]
+        ]
+      },
+      "best_score": 40.0,
+      "best_related": "arifos-evals",
+      "best_disk": "arifos-status",
+      "best_path": "/root/arifOS/skills/arifos-status"
+    },
+    {
+      "skill": "meta-plan",
+      "related": [
+        "arifos-plan-dag"
+      ],
+      "candidates": {
+        "arifos-plan-dag": [
+          [
+            55.0,
+            "AGI-plan-dag",
+            "/root/HERMES/skills/domains/general/aaa/agentic-patterns/AGI-plan-dag"
+          ],
+          [
+            55.0,
+            "agi-plan-dag",
+            "/root/AAA/skills/agi-plan-dag"
+          ],
+          [
+            27.5,
+            "arifos-status",
+            "/root/arifOS/skills/arifos-status"
+          ],
+          [
+            27.5,
+            "arifos-deploy",
+            "/root/arifOS/skills/arifos-deploy"
+          ],
+          [
+            27.5,
+            "langfuse-arifos",
+            "/root/arifOS/skills/langfuse-arifos"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "arifos-plan-dag",
+      "best_disk": "AGI-plan-dag",
+      "best_path": "/root/HERMES/skills/domains/general/aaa/agentic-patterns/AGI-plan-dag"
+    },
+    {
+      "skill": "meta-atlas",
+      "related": [
+        "meta-mesa-skill-atlas"
+      ],
+      "candidates": {
+        "meta-mesa-skill-atlas": [
+          [
+            65.0,
+            "meta-mesa",
+            "/root/HERMES/skills/meta-mesa"
+          ],
+          [
+            42.0,
+            "claude-meta-mesa",
+            "/root/AAA/skills/claude-meta-mesa"
+          ],
+          [
+            42.0,
+            "qwen-meta-mesa",
+            "/root/AAA/skills/qwen-meta-mesa"
+          ],
+          [
+            42.0,
+            "opencode-meta-mesa",
+            "/root/AAA/skills/opencode-meta-mesa"
+          ],
+          [
+            42.0,
+            "AUDIT-skill-atlas",
+            "/root/.kimi-code/skills/skill-mesh/AUDIT-skill-atlas"
+          ]
+        ]
+      },
+      "best_score": 65.0,
+      "best_related": "meta-mesa-skill-atlas",
+      "best_disk": "meta-mesa",
+      "best_path": "/root/HERMES/skills/meta-mesa"
+    },
+    {
+      "skill": "meta-rsi-cool",
+      "related": [
+        "cooling-ledger-rsi"
+      ],
+      "candidates": {
+        "cooling-ledger-rsi": [
+          [
+            48.6,
+            "SKILL_S11_cooling-ledger-manage.md",
+            "/root/arifOS/skills/SKILL_S11_cooling-ledger-manage.md"
+          ],
+          [
+            27.5,
+            "vault-ledger",
+            "/root/HERMES/skills/domains/general/court/vault-ledger"
+          ],
+          [
+            26.0,
+            "wealth-ledger-discipline",
+            "/root/WEALTH/skills/wealth-ledger-discipline"
+          ],
+          [
+            26.0,
+            "RSI-recursive-improvement",
+            "/root/arifOS/skills/RSI-recursive-improvement"
+          ],
+          [
+            26.0,
+            "claim-ledger-integrity",
+            "/root/HERMES/skills/claim-ledger-integrity"
+          ]
+        ]
+      },
+      "best_score": 48.6,
+      "best_related": "cooling-ledger-rsi",
+      "best_disk": "SKILL_S11_cooling-ledger-manage.md",
+      "best_path": "/root/arifOS/skills/SKILL_S11_cooling-ledger-manage.md"
+    },
+    {
+      "skill": "meta-trust-map",
+      "related": [
+        "symbolic-order-trust-architecture"
+      ],
+      "candidates": {
+        "symbolic-order-trust-architecture": []
+      },
+      "best_score": null,
+      "best_related": null,
+      "best_disk": null,
+      "best_path": null
+    },
+    {
+      "skill": "a2a-onboard",
+      "related": [
+        "agent-onboarding"
+      ],
+      "candidates": {
+        "agent-onboarding": [
+          [
+            40.0,
+            "agent-foundation",
+            "/root/arifOS/skills/agent-foundation"
+          ],
+          [
+            40.0,
+            "forge-onboarding",
+            "/root/HERMES/skills/forge-onboarding"
+          ],
+          [
+            40.0,
+            "review-agent",
+            "/root/HERMES/skills/review-agent"
+          ],
+          [
+            40.0,
+            "FORGE-onboarding",
+            "/root/HERMES/skills/FORGE-onboarding"
+          ],
+          [
+            40.0,
+            "hermes-agent",
+            "/root/.forge/skills/autonomous-ai-agents/hermes-agent"
+          ]
+        ]
+      },
+      "best_score": 40.0,
+      "best_related": "agent-onboarding",
+      "best_disk": "agent-foundation",
+      "best_path": "/root/arifOS/skills/agent-foundation"
+    },
+    {
+      "skill": "a2a-kimi",
+      "related": [
+        "kimi-code-aaa"
+      ],
+      "candidates": {
+        "kimi-code-aaa": [
+          [
+            55.0,
+            "forge-kimi-code",
+            "/root/HERMES/skills/forge-kimi-code"
+          ],
+          [
+            55.0,
+            "FORGE-kimi-code",
+            "/root/HERMES/skills/FORGE-kimi-code"
+          ],
+          [
+            52.0,
+            "kimi-code-spawning.md",
+            "/root/AAA/skills/domains/general/aaa/onboarding/a2a-agent-card-registration/references/kimi-code-spawning.md"
+          ],
+          [
+            50.0,
+            "absorbed-FORGE-kimi-code.md",
+            "/root/AAA/skills/forge-kimi-code/references/absorbed-FORGE-kimi-code.md"
+          ],
+          [
+            27.5,
+            "code-refactor",
+            "/root/arifOS/skills/code-refactor"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "kimi-code-aaa",
+      "best_disk": "forge-kimi-code",
+      "best_path": "/root/HERMES/skills/forge-kimi-code"
+    },
+    {
+      "skill": "a2a-spawn",
+      "related": [
+        "subagent-spawn-template"
+      ],
+      "candidates": {
+        "subagent-spawn-template": [
+          [
+            55.0,
+            "FORGE-subagent-spawn",
+            "/root/HERMES/skills/FORGE-subagent-spawn"
+          ],
+          [
+            55.0,
+            "forge-subagent-spawn",
+            "/root/AAA/skills/forge-subagent-spawn"
+          ],
+          [
+            27.5,
+            "template.html",
+            "/root/.forge/skills/creative/architecture-diagram/templates/template.html"
+          ],
+          [
+            26.0,
+            "FORGE-subagent-lifecycle",
+            "/root/HERMES/skills/domains/general/aaa/subagent/FORGE-subagent-lifecycle"
+          ],
+          [
+            26.0,
+            "forge-subagent-lifecycle",
+            "/root/AAA/skills/forge-subagent-lifecycle"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "subagent-spawn-template",
+      "best_disk": "FORGE-subagent-spawn",
+      "best_path": "/root/HERMES/skills/FORGE-subagent-spawn"
+    },
+    {
+      "skill": "sec-telegram",
+      "related": [
+        "telegram-security-audit"
+      ],
+      "candidates": {
+        "telegram-security-audit": [
+          [
+            60.0,
+            "security-audit",
+            "/root/arifOS/skills/security-audit"
+          ],
+          [
+            55.0,
+            "forge-telegram-audit",
+            "/root/HERMES/skills/forge-telegram-audit"
+          ],
+          [
+            55.0,
+            "FORGE-telegram-audit",
+            "/root/HERMES/skills/FORGE-telegram-audit"
+          ],
+          [
+            52.0,
+            "forge-telegram-audit.md",
+            "/root/AAA/skills/telegram-ops/references/forge-telegram-audit.md"
+          ],
+          [
+            52.0,
+            "git-security-audit.sh",
+            "/root/AAA/skills/forge-infra-crons/git-security-audit.sh"
+          ]
+        ]
+      },
+      "best_score": 60.0,
+      "best_related": "telegram-security-audit",
+      "best_disk": "security-audit",
+      "best_path": "/root/arifOS/skills/security-audit"
+    },
+    {
+      "skill": "research-summarize",
+      "related": [
+        "summarize-pro"
+      ],
+      "candidates": {
+        "summarize-pro": [
+          [
+            40.0,
+            "ASI-summarize",
+            "/root/HERMES/skills/ASI-summarize"
+          ],
+          [
+            40.0,
+            "asi-summarize",
+            "/root/AAA/skills/asi-summarize"
+          ]
+        ]
+      },
+      "best_score": 40.0,
+      "best_related": "summarize-pro",
+      "best_disk": "ASI-summarize",
+      "best_path": "/root/HERMES/skills/ASI-summarize"
+    },
+    {
+      "skill": "research-search",
+      "related": [
+        "ask-search"
+      ],
+      "candidates": {
+        "ask-search": [
+          [
+            40.0,
+            "memory-search",
+            "/root/arifOS/skills/memory-search"
+          ],
+          [
+            40.0,
+            "web-search",
+            "/root/HERMES/skills/web-search"
+          ],
+          [
+            40.0,
+            "search-web",
+            "/root/HERMES/skills/domains/general/workshop/search-web"
+          ],
+          [
+            40.0,
+            "sovereign-search",
+            "/root/HERMES/skills/domains/general/workshop/search-web/sovereign-search"
+          ],
+          [
+            40.0,
+            "gif-search",
+            "/root/.forge/skills/media/gif-search"
+          ]
+        ]
+      },
+      "best_score": 40.0,
+      "best_related": "ask-search",
+      "best_disk": "memory-search",
+      "best_path": "/root/arifOS/skills/memory-search"
+    },
+    {
+      "skill": "research-deep",
+      "related": [
+        "explorer-intelligence-architecture",
+        "multi-discipline-critique"
+      ],
+      "candidates": {
+        "explorer-intelligence-architecture": [
+          [
+            55.0,
+            "AGI-explorer-intelligence",
+            "/root/.arifos/agents/opencode/skills/AGI-explorer-intelligence"
+          ],
+          [
+            27.5,
+            "temporal-intelligence",
+            "/root/HERMES/skills/temporal-intelligence"
+          ],
+          [
+            27.5,
+            "repo-intelligence",
+            "/root/HERMES/skills/domains/general/forge/repo-intelligence"
+          ],
+          [
+            27.5,
+            "music-intelligence",
+            "/root/HERMES/skills/domains/general/workshop/audio-emd/music-intelligence"
+          ],
+          [
+            27.5,
+            "person-intelligence",
+            "/root/AAA/skills/person-intelligence"
+          ]
+        ],
+        "multi-discipline-critique": [
+          [
+            27.5,
+            "verification-discipline",
+            "/root/HERMES/skills/verification-discipline"
+          ],
+          [
+            27.5,
+            "measurement-discipline",
+            "/root/HERMES/skills/measurement-discipline"
+          ],
+          [
+            27.5,
+            "seal-discipline",
+            "/root/HERMES/skills/seal-discipline"
+          ],
+          [
+            27.5,
+            "code-discipline",
+            "/root/HERMES/skills/domains/general/forge/code-discipline"
+          ],
+          [
+            27.5,
+            "SEAL-discipline",
+            "/root/.arifos/agents/opencode/skills/SEAL-discipline"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "explorer-intelligence-architecture",
+      "best_disk": "AGI-explorer-intelligence",
+      "best_path": "/root/.arifos/agents/opencode/skills/AGI-explorer-intelligence"
+    },
+    {
+      "skill": "kernel-eureka",
+      "related": [
+        "quantum-eureka-doctrine"
+      ],
+      "candidates": {
+        "quantum-eureka-doctrine": [
+          [
+            55.0,
+            "APEX-quantum-eureka",
+            "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka"
+          ],
+          [
+            27.5,
+            "youtube-eureka",
+            "/root/HERMES/skills/youtube-eureka"
+          ],
+          [
+            26.0,
+            "hermes-rasa-doctrine",
+            "/root/HERMES/skills/hermes-rasa-doctrine"
+          ],
+          [
+            26.0,
+            "void-paradox-doctrine",
+            "/root/HERMES/skills/domains/general/court/court-audit/void-paradox-doctrine"
+          ],
+          [
+            26.0,
+            "canon-doctrine-sealing",
+            "/root/HERMES/skills/governance-core/canon-doctrine-sealing"
+          ]
+        ]
+      },
+      "best_score": 55.0,
+      "best_related": "quantum-eureka-doctrine",
+      "best_disk": "APEX-quantum-eureka",
+      "best_path": "/root/HERMES/skills/domains/general/apex/recursive-audit/APEX-quantum-eureka"
+    },
+    {
+      "skill": "meta-skill-unification",
+      "related": [
+        "skill-unification",
+        "meta-mesa-skill-atlas"
+      ],
+      "candidates": {
+        "skill-unification": [
+          [
+            87.5,
+            "skill-unification-receipt-audit-2026-08-21.md",
+            "/root/AAA/skills/domains/general/court/court-audit/live-probe-audit-pattern/references/skill-unification-receipt-audit-2026-08-21.md"
+          ],
+          [
+            80.0,
+            "AGI-skill-unification",
+            "/root/HERMES/skills/AGI-skill-unification"
+          ],
+          [
+            40.0,
+            "SKILL.md",
+            "/root/GEOX/skills/geox-prospect-evaluation/SKILL.md"
+          ],
+          [
+            40.0,
+            "skill-composer",
+            "/root/arifOS/skills/skill-composer"
+          ],
+          [
+            40.0,
+            "skill.yaml",
+            "/root/arifOS/skills/vps-docker/skill.yaml"
+          ]
+        ],
+        "meta-mesa-skill-atlas": [
+          [
+            65.0,
+            "meta-mesa",
+            "/root/HERMES/skills/meta-mesa"
+          ],
+          [
+            42.0,
+            "claude-meta-mesa",
+            "/root/AAA/skills/claude-meta-mesa"
+          ],
+          [
+            42.0,
+            "qwen-meta-mesa",
+            "/root/AAA/skills/qwen-meta-mesa"
+          ],
+          [
+            42.0,
+            "opencode-meta-mesa",
+            "/root/AAA/skills/opencode-meta-mesa"
+          ],
+          [
+            42.0,
+            "AUDIT-skill-atlas",
+            "/root/.kimi-code/skills/skill-mesh/AUDIT-skill-atlas"
+          ]
+        ]
+      },
+      "best_score": 87.5,
+      "best_related": "skill-unification",
+      "best_disk": "skill-unification-receipt-audit-2026-08-21.md",
+      "best_path": "/root/AAA/skills/domains/general/court/court-audit/live-probe-audit-pattern/references/skill-unification-receipt-audit-2026-08-21.md"
+    }
+  ]
+}

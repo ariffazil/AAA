@@ -1,0 +1,8 @@
+skills with a SKILL.md: 26
+UNRESOLVABLE (name -> >1 distinct file): 0
+
+DIR-BASENAME vs frontmatter name MISMATCH: 2
+    dir 'claude' declares name 'arifOS ACT — Constitutional Reflex'  (/root/.hermes/skills/apex_verdict_hold/claude/SKILL.md)
+    dir 'hermes' declares name 'APEX ACT — Constitutional Reflex (Hermes ASI)'  (/root/.hermes/skills/apex_verdict_hold/hermes/SKILL.md)
+
+FIX (mismatch): rename the DIRECTORY to the declared name - the directory name is the index key, so a wrong dir name makes the skill unreachable under its declared name and collides with the skill it is named after.

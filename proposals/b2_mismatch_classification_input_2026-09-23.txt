@@ -1,0 +1,29 @@
+'MY-REALITY-STACK' -> 'Malaysia Reality Stack — Primary-Source Routing'  (9621B)  /root/AAA/skills/MY-REALITY-STACK/SKILL.md
+'aaa-audio-qualia-doctrine' -> 'AAA-audio-qualia-doctrine'  (14106B)  /root/AAA/skills/aaa-audio-qualia-doctrine/SKILL.md
+'aaa-ocr-optical-compression' -> 'AAA-OCR-optical-compression'  (4957B)  /root/AAA/skills/aaa-ocr-optical-compression/SKILL.md
+'agi-decisions-reflect' -> 'AGI-decisions-reflect'  (4784B)  /root/AAA/skills/agi-decisions-reflect/SKILL.md
+'agi-multimodal-bridge' -> 'AGI-multimodal-bridge'  (1988B)  /root/AAA/skills/agi-multimodal-bridge/SKILL.md
+'agi-plan-dag' -> 'AGI-plan-dag'  (5373B)  /root/AAA/skills/agi-plan-dag/SKILL.md
+'arifos-eight-verb-canonical' -> 'arifOS Eight-Verb Canonical Chain'  (1892B)  /root/AAA/skills/arifos-eight-verb-canonical/SKILL.md
+'claude' -> 'arifOS ACT — Constitutional Reflex'  (11128B)  /root/AAA/skills/apex_verdict_hold/claude/SKILL.md
+'constitutional' -> 'warga-constitutional'  (375B)  /root/AAA/skills/warga/constitutional/SKILL.md
+'constitutional-kernel-architecture' -> 'Constitutional Kernel Architecture'  (7693B)  /root/AAA/skills/domains/general/apex/governance-core/constitutional-kernel-architecture/SKILL.md
+'forge-cross-agent-handoff' -> 'FORGE-cross-agent-handoff'  (5091B)  /root/AAA/skills/forge-cross-agent-handoff/SKILL.md
+'forge-ephemeral-genesis' -> 'FORGE-ephemeral-genesis'  (7309B)  /root/AAA/skills/forge-ephemeral-genesis/SKILL.md
+'forge-issue-triage' -> 'FORGE-issue-triage'  (6481B)  /root/AAA/skills/forge-issue-triage/SKILL.md
+'forge-lsp-pre-edit-gate' -> 'FORGE-lsp-pre-edit-gate'  (5844B)  /root/AAA/skills/forge-lsp-pre-edit-gate/SKILL.md
+'forge-real-person-reference-photos' -> 'Real-Person Reference Photos — Anti-Fabrication'  (7498B)  /root/AAA/skills/domains/general/workshop/image-gen/forge-real-person-reference-photos/SKILL.md
+'forge-seal-a-close' -> 'FORGE-seal-a-close'  (2477B)  /root/AAA/skills/forge-seal-a-close/SKILL.md
+'forge-subagent-lifecycle' -> 'FORGE-subagent-lifecycle'  (10228B)  /root/AAA/skills/forge-subagent-lifecycle/SKILL.md
+'forge-subagent-spawn' -> 'FORGE-subagent-spawn'  (4565B)  /root/AAA/skills/forge-subagent-spawn/SKILL.md
+'forge-t3a-binding-matrix' -> 'FORGE-t3a-binding-matrix'  (3439B)  /root/AAA/skills/forge-t3a-binding-matrix/SKILL.md
+'forge-vault999-witness' -> 'FORGE-vault999-witness'  (3680B)  /root/AAA/skills/forge-vault999-witness/SKILL.md
+'forge-well-boundary-repair' -> 'FORGE-well-boundary-repair'  (792B)  /root/AAA/skills/forge-well-boundary-repair/SKILL.md
+'h3-video' -> 'mmx-h3-video'  (10297B)  /root/AAA/skills/domains/general/workshop/video-gen/h3-video/SKILL.md
+'hermes' -> 'APEX ACT — Constitutional Reflex (Hermes ASI)'  (1769B)  /root/AAA/skills/apex_verdict_hold/hermes/SKILL.md
+'official' -> 'mimo-v2-5-tts'  (19584B)  /root/AAA/skills/mimo-audio/references/official/SKILL.md
+'reality-loop-operator' -> 'Reality Loop - Autonomous 000 to 999 Recursive Improvement'  (8085B)  /root/AAA/skills/reality-loop-operator/SKILL.md
+'text-to-speech' -> 'token-plan-tts'  (3745B)  /root/AAA/skills/domains/general/workshop/voice-stack/text-to-speech/SKILL.md
+'xauusd-trading' -> 'XAUUSD-trading-stack'  (4897B)  /root/AAA/skills/xauusd-trading/SKILL.md
+
+TOTAL: 27
