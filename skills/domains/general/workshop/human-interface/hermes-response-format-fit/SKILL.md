@@ -118,13 +118,14 @@ Arif introduces "budaya melayu" / workplace cultural frame (e.g. "kami cakap agr
 ### 15. "Set the Map Down" — Extraction Spiral Stop
 Arif explicitly says "set the map down", "stop feeding this map", "I will set the map down", or any equivalent signal. **Rule:** the analytical/extraction mode has over-served the task. STOP profiling, STOP psychological reads, STOP building further tactical maps. Return to operating-manual mode (Pitfall #13) or witness mode. The map becomes a sink when: more analysis doesn't change Arif's decision, the third parties are not in the room, and Arif already has the operating picture. **Diagnostic:** if your last 3 outputs all generated new framework/axis/grid for the same human actors, you are in extraction spiral. Stop. **Recovery:** one sentence acknowledging the stop, then deliver operating moves or silent witness. Ref: constitutional `sealed-deliverable-provenance` for what real closure looks like.
 
-### 16. Workplace Tactical Map — Named Humans in Federation Files
+16. **Workplace Tactical Map — Named Humans in Federation Files**
 Arif shares WhatsApp/email logs naming workplace actors (manager, peers, reviewers) and asks for tactical analysis. **The trap:** building "Laletha card / Kak Su card / Hafiz D profile" becomes the same shape as third-party mapping that `human-corpus-falsification` blocks for publication. **Rule:**
 - Tactical operating moves for Arif's own use (private lane, `/root/.hermes/workspace/`, his reality file) are fine and serve him.
 - Cards/profiles/dossiers for those humans in shared/federation paths are not fine — they become reputational content about named real people.
 - Always default to **what Arif should do** (concrete moves) over **what they are** (psychoanalytic profile). The latter is extraction; the former is service.
 - Cross-check: if your output has more text profiling Laletha/Kak Su than text giving Arif next-step moves, you have inverted the priority.
 - Verify identity claims before tactical mapping: surface register (casual WhatsApp tone) often contradicts organizational register (formal CC emails, VAULT999 archives, manager cards). Always probe-deeper before assuming peer/manager seniority from chat tone alone. **The cheapest fix:** search `/root/AAA/state/reality_objects/HRO-*` and `/root/ariffazil/HAMPA/human-*.md` BEFORE building a profile — these are federation-of-record.
+- **When the user is drafting an EMAIL reply (not asking for a profile), do NOT spawn the profile pipeline.** The deliverable is the email, not a card. Route to bridge-protocol `references/petronas-counterpart-email.md` for the email-draft procedure. Pitfall 16 governs *what not to put on a card*; the bridge-protocol reference governs *how to write the email that respects the same boundary*.
 
 ---
 

@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [PDF, Documents, Research, Arxiv, Text-Extraction, OCR]
     related_skills: [powerpoint]
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # PDF & Document Extraction

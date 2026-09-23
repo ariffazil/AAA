@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "status": "SEALED_TABLE_AUDITED_RENAMED",
+  "version": "1.2.0",
+  "status": "SEALED_TABLE_AUDITED_RENAMED_RERESOLVED_20260923",
   "forged": "2026-07-12T18:03:25.902313+00:00",
   "canonical_catalog": "/root/AAA/skills",
   "doctrine_core": "/root/.agents/skills",
@@ -174,176 +174,176 @@
     {
       "v3_name": "geo-basin",
       "layer": "domain",
-      "primary_disk_name": "geox-basin-engines",
-      "primary_path": "/root/.agents/skills/geox-basin-engines",
-      "primary_resolved": "/root/.agents/skills/geox-basin-engines",
-      "primary_home": "agents",
+      "primary_disk_name": "geox-basin-evaluation",
+      "primary_path": "/root/GEOX/skills/geox-basin-evaluation",
+      "primary_resolved": "/root/GEOX/skills/geox-basin-evaluation",
+      "primary_home": "geox",
       "related": [
         {
-          "name": "geox-basin-engines",
-          "path": "/root/.agents/skills/geox-basin-engines",
-          "home": "agents"
+          "name": "geox-basin-evaluation",
+          "path": "/root/GEOX/skills/geox-basin-evaluation",
+          "home": "geox"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "geo-constitution",
       "layer": "domain",
-      "primary_disk_name": "geox-constitution",
-      "primary_path": "/root/.agents/skills/geox-constitution",
-      "primary_resolved": "/root/.agents/skills/geox-constitution",
-      "primary_home": "agents",
+      "primary_disk_name": "geox-claim-falsification",
+      "primary_path": "/root/GEOX/skills/geox-claim-falsification",
+      "primary_resolved": "/root/GEOX/skills/geox-claim-falsification",
+      "primary_home": "geox",
       "related": [
         {
-          "name": "geox-constitution",
-          "path": "/root/.agents/skills/geox-constitution",
-          "home": "agents"
+          "name": "geox-claim-falsification",
+          "path": "/root/GEOX/skills/geox-claim-falsification",
+          "home": "geox"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "geo-petrophysics",
       "layer": "domain",
-      "primary_disk_name": "geox-petrophysics-bounds",
-      "primary_path": "/root/.agents/skills/geox-petrophysics-bounds",
-      "primary_resolved": "/root/.agents/skills/geox-petrophysics-bounds",
-      "primary_home": "agents",
+      "primary_disk_name": "geox-basin-evaluation",
+      "primary_path": "/root/GEOX/skills/geox-basin-evaluation",
+      "primary_resolved": "/root/GEOX/skills/geox-basin-evaluation",
+      "primary_home": "geox",
       "related": [
         {
-          "name": "geox-petrophysics-bounds",
-          "path": "/root/.agents/skills/geox-petrophysics-bounds",
-          "home": "agents"
+          "name": "geox-basin-evaluation",
+          "path": "/root/GEOX/skills/geox-basin-evaluation",
+          "home": "geox"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "geo-writing",
       "layer": "domain",
-      "primary_disk_name": "geox-scientific-writing",
-      "primary_path": "/root/.agents/skills/geox-scientific-writing",
-      "primary_resolved": "/root/.agents/skills/geox-scientific-writing",
-      "primary_home": "agents",
+      "primary_disk_name": "aaa-pdf-voice-protocol",
+      "primary_path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+      "primary_resolved": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "geox-scientific-writing",
-          "path": "/root/.agents/skills/geox-scientific-writing",
-          "home": "agents"
+          "name": "aaa-pdf-voice-protocol",
+          "path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "geo-well-tie",
       "layer": "domain",
-      "primary_disk_name": "geox-well-tie-pipeline",
-      "primary_path": "/root/.agents/skills/geox-well-tie-pipeline",
-      "primary_resolved": "/root/.agents/skills/geox-well-tie-pipeline",
-      "primary_home": "agents",
+      "primary_disk_name": "geox-well-log-qc",
+      "primary_path": "/root/GEOX/skills/geox-well-log-qc",
+      "primary_resolved": "/root/GEOX/skills/geox-well-log-qc",
+      "primary_home": "geox",
       "related": [
         {
-          "name": "geox-well-tie-pipeline",
-          "path": "/root/.agents/skills/geox-well-tie-pipeline",
-          "home": "agents"
+          "name": "geox-well-log-qc",
+          "path": "/root/GEOX/skills/geox-well-log-qc",
+          "home": "geox"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "geo-artifact-rigor",
       "layer": "domain",
-      "primary_disk_name": "geological-artifact-rigor",
-      "primary_path": "/root/.agents/skills/geological-artifact-rigor",
-      "primary_resolved": "/root/.agents/skills/geological-artifact-rigor",
-      "primary_home": "agents",
+      "primary_disk_name": "aaa-pdf-voice-protocol",
+      "primary_path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+      "primary_resolved": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "geological-artifact-rigor",
-          "path": "/root/.agents/skills/geological-artifact-rigor",
-          "home": "agents"
+          "name": "aaa-pdf-voice-protocol",
+          "path": "/root/AAA/skills/domains/geo/aaa-pdf-voice-protocol",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false
+      "restored_live": true
     },
     {
       "v3_name": "geo-prospect",
       "layer": "domain",
-      "primary_disk_name": "prospect-maturation-workflow",
-      "primary_path": "/root/.agents/skills/prospect-maturation-workflow",
-      "primary_resolved": "/root/.agents/skills/prospect-maturation-workflow",
-      "primary_home": "agents",
+      "primary_disk_name": "geox-prospect-evaluation",
+      "primary_path": "/root/GEOX/skills/geox-prospect-evaluation",
+      "primary_resolved": "/root/GEOX/skills/geox-prospect-evaluation",
+      "primary_home": "geox",
       "related": [
         {
-          "name": "prospect-maturation-workflow",
-          "path": "/root/.agents/skills/prospect-maturation-workflow",
-          "home": "agents"
+          "name": "geox-prospect-evaluation",
+          "path": "/root/GEOX/skills/geox-prospect-evaluation",
+          "home": "geox"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "wealth-reason",
       "layer": "domain",
-      "primary_disk_name": "wealth-capital-reasoning",
-      "primary_path": "/root/.agents/skills/wealth-capital-reasoning",
-      "primary_resolved": "/root/.agents/skills/wealth-capital-reasoning",
-      "primary_home": "agents",
+      "primary_disk_name": "wealth-capital-primitives",
+      "primary_path": "/root/WEALTH/skills/wealth-capital-primitives",
+      "primary_resolved": "/root/WEALTH/skills/wealth-capital-primitives",
+      "primary_home": "wealth",
       "related": [
         {
-          "name": "wealth-capital-reasoning",
-          "path": "/root/.agents/skills/wealth-capital-reasoning",
-          "home": "agents"
+          "name": "wealth-capital-primitives",
+          "path": "/root/WEALTH/skills/wealth-capital-primitives",
+          "home": "wealth"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "wealth-thermo",
       "layer": "domain",
-      "primary_disk_name": "wealth-capital-thermodynamics",
-      "primary_path": "/root/.agents/skills/wealth-capital-thermodynamics",
-      "primary_resolved": "/root/.agents/skills/wealth-capital-thermodynamics",
-      "primary_home": "agents",
+      "primary_disk_name": "wealth-runway-conservation",
+      "primary_path": "/root/WEALTH/skills/wealth-runway-conservation",
+      "primary_resolved": "/root/WEALTH/skills/wealth-runway-conservation",
+      "primary_home": "wealth",
       "related": [
         {
-          "name": "wealth-capital-thermodynamics",
-          "path": "/root/.agents/skills/wealth-capital-thermodynamics",
-          "home": "agents"
+          "name": "wealth-runway-conservation",
+          "path": "/root/WEALTH/skills/wealth-runway-conservation",
+          "home": "wealth"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
       "restored_live": true,
       "path_stale": true,
@@ -352,20 +352,20 @@
     {
       "v3_name": "wealth-collapse",
       "layer": "domain",
-      "primary_disk_name": "wealth-collapse-signature",
-      "primary_path": "/root/.agents/skills/wealth-collapse-signature",
-      "primary_resolved": "/root/.agents/skills/wealth-collapse-signature",
-      "primary_home": "agents",
+      "primary_disk_name": "wealth-ledger-discipline",
+      "primary_path": "/root/WEALTH/skills/wealth-ledger-discipline",
+      "primary_resolved": "/root/WEALTH/skills/wealth-ledger-discipline",
+      "primary_home": "wealth",
       "related": [
         {
-          "name": "wealth-collapse-signature",
-          "path": "/root/.agents/skills/wealth-collapse-signature",
-          "home": "agents"
+          "name": "wealth-ledger-discipline",
+          "path": "/root/WEALTH/skills/wealth-ledger-discipline",
+          "home": "wealth"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -373,19 +373,19 @@
       "v3_name": "well-boundary",
       "layer": "domain",
       "primary_disk_name": "well-substrate-readiness",
-      "primary_path": "/root/.agents/skills/well-substrate-readiness",
-      "primary_resolved": "/root/.agents/skills/well-substrate-readiness",
-      "primary_home": "agents",
+      "primary_path": "/root/WELL/skills/well-substrate-readiness",
+      "primary_resolved": "/root/WELL/skills/well-substrate-readiness",
+      "primary_home": "well",
       "related": [
         {
           "name": "well-substrate-readiness",
-          "path": "/root/.agents/skills/well-substrate-readiness",
-          "home": "agents"
+          "path": "/root/WELL/skills/well-substrate-readiness",
+          "home": "well"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -393,19 +393,19 @@
       "v3_name": "well-readiness",
       "layer": "domain",
       "primary_disk_name": "well-substrate-readiness",
-      "primary_path": "/root/.agents/skills/well-substrate-readiness",
-      "primary_resolved": "/root/.agents/skills/well-substrate-readiness",
-      "primary_home": "agents",
+      "primary_path": "/root/WELL/skills/well-substrate-readiness",
+      "primary_resolved": "/root/WELL/skills/well-substrate-readiness",
+      "primary_home": "well",
       "related": [
         {
           "name": "well-substrate-readiness",
-          "path": "/root/.agents/skills/well-substrate-readiness",
-          "home": "agents"
+          "path": "/root/WELL/skills/well-substrate-readiness",
+          "home": "well"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -423,9 +423,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
-      "restored_live": true,
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -443,9 +443,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
-      "restored_live": true,
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -480,10 +480,10 @@
     {
       "v3_name": "dev-ci-diagnose",
       "layer": "domain",
-      "primary_disk_name": "github-ci-diagnose",
-      "primary_path": "/root/AAA/skills/github-ci-diagnose",
-      "primary_resolved": "/root/AAA/skills/github-ci-diagnose",
-      "primary_home": "aaa",
+      "primary_disk_name": "forge-ci-diagnose",
+      "primary_path": "/root/HERMES/skills/forge-ci-diagnose",
+      "primary_resolved": "/root/HERMES/skills/forge-ci-diagnose",
+      "primary_home": "hermes",
       "related": [
         {
           "name": "github-ci-diagnose",
@@ -491,8 +491,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -500,20 +500,20 @@
     {
       "v3_name": "dev-issue-triage",
       "layer": "domain",
-      "primary_disk_name": "github-issue-triage",
-      "primary_path": "/root/AAA/skills/github-issue-triage",
-      "primary_resolved": "/root/AAA/skills/github-issue-triage",
+      "primary_disk_name": "forge-issue-triage",
+      "primary_path": "/root/AAA/skills/forge-issue-triage",
+      "primary_resolved": "/root/AAA/skills/forge-issue-triage",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "github-issue-triage",
-          "path": "/root/AAA/skills/github-issue-triage",
+          "name": "forge-issue-triage",
+          "path": "/root/AAA/skills/forge-issue-triage",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -531,8 +531,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -540,25 +540,20 @@
     {
       "v3_name": "dev-pr-governance",
       "layer": "domain",
-      "primary_disk_name": "pr-review-governance",
-      "primary_path": "/root/AAA/skills/pr-review-governance",
-      "primary_resolved": "/root/AAA/skills/pr-review-governance",
+      "primary_disk_name": "pr-governance",
+      "primary_path": "/root/AAA/skills/engineering/pr-governance",
+      "primary_resolved": "/root/AAA/skills/engineering/pr-governance",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "pr-review-governance",
-          "path": "/root/AAA/skills/pr-review-governance",
-          "home": "aaa"
-        },
-        {
-          "name": "github-pr-review",
-          "path": "/root/AAA/skills/github-pr-review",
+          "name": "pr-governance",
+          "path": "/root/AAA/skills/engineering/pr-governance",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -576,8 +571,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -585,10 +580,10 @@
     {
       "v3_name": "dev-analysis",
       "layer": "domain",
-      "primary_disk_name": "code-analysis-skills",
-      "primary_path": "/root/AAA/skills/code-analysis-skills",
-      "primary_resolved": "/root/AAA/skills/code-analysis-skills",
-      "primary_home": "aaa",
+      "primary_disk_name": "forge-code-analysis",
+      "primary_path": "/root/HERMES/skills/forge-code-analysis",
+      "primary_resolved": "/root/HERMES/skills/forge-code-analysis",
+      "primary_home": "hermes",
       "related": [
         {
           "name": "code-analysis-skills",
@@ -596,8 +591,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -621,8 +616,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -656,8 +651,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -665,30 +660,20 @@
     {
       "v3_name": "ops-vps",
       "layer": "domain",
-      "primary_disk_name": "vps-docker-ops",
-      "primary_path": "/root/AAA/skills/vps-docker-ops",
-      "primary_resolved": "/root/AAA/skills/vps-docker-ops",
+      "primary_disk_name": "vps-ops",
+      "primary_path": "/root/AAA/skills/engineering/vps-ops",
+      "primary_resolved": "/root/AAA/skills/engineering/vps-ops",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "vps-docker-ops",
-          "path": "/root/AAA/skills/vps-docker-ops",
-          "home": "aaa"
-        },
-        {
-          "name": "vps-docker-runbook",
-          "path": "/root/AAA/skills/vps-docker-runbook",
-          "home": "aaa"
-        },
-        {
-          "name": "spatial-grounding",
-          "path": "/root/AAA/skills/spatial-grounding",
+          "name": "vps-ops",
+          "path": "/root/AAA/skills/engineering/vps-ops",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -716,8 +701,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -725,58 +710,49 @@
     {
       "v3_name": "ops-mcp-probe",
       "layer": "domain",
-      "primary_disk_name": "mcp-ops",
-      "primary_path": "/root/AAA/skills/mcp-ops",
-      "primary_resolved": "/root/AAA/skills/mcp-ops",
-      "primary_home": "aaa",
+      "primary_disk_name": "FORGE-mcp-probe",
+      "primary_path": "/root/.config/opencode/skills/FORGE-mcp-probe",
+      "primary_resolved": "/root/.config/opencode/skills/FORGE-mcp-probe",
+      "primary_home": "opencode",
       "related": [
         {
-          "name": "mcp-smoke-test",
-          "path": "/root/AAA/skills/mcp-smoke-test",
-          "home": "aaa"
-        },
-        {
-          "name": "mcp-ops",
-          "path": "/root/AAA/skills/mcp-ops",
-          "home": "aaa"
-        },
-        {
-          "name": "mcp-smoke-test",
-          "path": "/root/AAA/skills/mcp-smoke-test"
+          "name": "FORGE-mcp-probe",
+          "path": "/root/.config/opencode/skills/FORGE-mcp-probe",
+          "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_fixed": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "ops-infra",
       "layer": "domain",
-      "primary_disk_name": "infra-guardian",
-      "primary_path": "/root/AAA/skills/infra-guardian",
-      "primary_resolved": "/root/AAA/skills/infra-guardian",
+      "primary_disk_name": "forge-infra-guardian",
+      "primary_path": "/root/AAA/skills/forge-infra-guardian",
+      "primary_resolved": "/root/AAA/skills/forge-infra-guardian",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "infra-guardian",
-          "path": "/root/AAA/skills/infra-guardian",
+          "name": "forge-infra-guardian",
+          "path": "/root/AAA/skills/forge-infra-guardian",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "ops-incident",
       "layer": "domain",
-      "primary_disk_name": "incident-triage",
-      "primary_path": "/root/AAA/skills/incident-triage",
-      "primary_resolved": "/root/AAA/skills/incident-triage",
-      "primary_home": "aaa",
+      "primary_disk_name": "FORGE-incident-triage",
+      "primary_path": "/root/HERMES/skills/FORGE-incident-triage",
+      "primary_resolved": "/root/HERMES/skills/FORGE-incident-triage",
+      "primary_home": "hermes",
       "related": [
         {
           "name": "incident-triage",
@@ -789,8 +765,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -798,20 +774,20 @@
     {
       "v3_name": "ops-spatial",
       "layer": "domain",
-      "primary_disk_name": "spatial-grounding",
-      "primary_path": "/root/AAA/skills/spatial-grounding",
-      "primary_resolved": "/root/AAA/skills/spatial-grounding",
+      "primary_disk_name": "forge-spatial-grounding",
+      "primary_path": "/root/AAA/skills/forge-spatial-grounding",
+      "primary_resolved": "/root/AAA/skills/forge-spatial-grounding",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "spatial-grounding",
-          "path": "/root/AAA/skills/spatial-grounding",
+          "name": "forge-spatial-grounding",
+          "path": "/root/AAA/skills/forge-spatial-grounding",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -819,39 +795,29 @@
       "v3_name": "ops-health",
       "layer": "domain",
       "primary_disk_name": "verify-runtime",
-      "primary_path": "/root/AAA/skills/verify-runtime",
-      "primary_resolved": "/root/AAA/skills/verify-runtime",
+      "primary_path": "/root/AAA/skills/core/governance/verify-runtime",
+      "primary_resolved": "/root/AAA/skills/core/governance/verify-runtime",
       "primary_home": "aaa",
       "related": [
         {
           "name": "verify-runtime",
-          "path": "/root/AAA/skills/verify-runtime",
-          "home": "aaa"
-        },
-        {
-          "name": "federation-orchestrator",
-          "path": "/root/AAA/skills/federation-orchestrator",
-          "home": "aaa"
-        },
-        {
-          "name": "mcp-lifeguard",
-          "path": "/root/AAA/skills/mcp-lifeguard",
+          "path": "/root/AAA/skills/core/governance/verify-runtime",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "ops-mcp-lifeguard",
       "layer": "domain",
-      "primary_disk_name": "mcp-lifeguard",
-      "primary_path": "/root/AAA/skills/mcp-lifeguard",
-      "primary_resolved": "/root/AAA/skills/mcp-lifeguard",
-      "primary_home": "aaa",
+      "primary_disk_name": "FORGE-mcp-lifeguard",
+      "primary_path": "/root/HERMES/skills/FORGE-mcp-lifeguard",
+      "primary_resolved": "/root/HERMES/skills/FORGE-mcp-lifeguard",
+      "primary_home": "hermes",
       "related": [
         {
           "name": "mcp-lifeguard",
@@ -859,8 +825,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -887,20 +853,20 @@
     {
       "v3_name": "ops-model-monitor",
       "layer": "domain",
-      "primary_disk_name": "model-fallback-monitor",
-      "primary_path": "/root/AAA/skills/model-fallback-monitor",
-      "primary_resolved": "/root/AAA/skills/model-fallback-monitor",
+      "primary_disk_name": "forge-model-monitor",
+      "primary_path": "/root/AAA/skills/forge-model-monitor",
+      "primary_resolved": "/root/AAA/skills/forge-model-monitor",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "model-fallback-monitor",
-          "path": "/root/AAA/skills/model-fallback-monitor",
+          "name": "forge-model-monitor",
+          "path": "/root/AAA/skills/forge-model-monitor",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -1060,7 +1026,7 @@
       "v3_name": "apex-quantum-eureka",
       "layer": "domain",
       "primary_disk_name": "APEX-quantum-eureka",
-      "primary_path": "/root/AAA/skills/apex-quantum-eureka",
+      "primary_path": "/root/AAA/skills/APEX-quantum-eureka",
       "primary_resolved": "/root/AAA/skills/APEX-quantum-eureka",
       "primary_home": "aaa",
       "related": [
@@ -1070,9 +1036,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false
+      "restored_live": true
     },
     {
       "v3_name": "ops-compressor",
@@ -1095,10 +1061,10 @@
     {
       "v3_name": "ops-compress",
       "layer": "domain",
-      "primary_disk_name": "FORGE-context-compress",
-      "primary_path": "/root/AAA/skills/FORGE-context-compress",
-      "primary_resolved": "/root/AAA/skills/FORGE-context-compress",
-      "primary_home": "aaa",
+      "primary_disk_name": "forge-context-compressor",
+      "primary_path": "/root/HERMES/skills/forge-context-compressor",
+      "primary_resolved": "/root/HERMES/skills/forge-context-compressor",
+      "primary_home": "hermes",
       "related": [
         {
           "name": "FORGE-context-compress",
@@ -1106,8 +1072,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1126,8 +1092,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1326,8 +1292,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false
     },
     {
@@ -1362,8 +1328,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false
     },
     {
@@ -1447,10 +1413,10 @@
     {
       "v3_name": "ops-google",
       "layer": "domain",
-      "primary_disk_name": "google-workspace-cli",
-      "primary_path": "/root/AAA/skills/google-workspace-cli",
-      "primary_resolved": "/root/AAA/skills/google-workspace-cli",
-      "primary_home": "aaa",
+      "primary_disk_name": "google-workspace",
+      "primary_path": "/root/arifOS/skills/google-workspace",
+      "primary_resolved": "/root/arifOS/skills/google-workspace",
+      "primary_home": "arifos",
       "related": [
         {
           "name": "google-workspace-cli",
@@ -1458,8 +1424,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1478,8 +1444,8 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1488,87 +1454,77 @@
       "v3_name": "meta-skill-create",
       "layer": "domain",
       "primary_disk_name": "skill-creator",
-      "primary_path": "/root/AAA/skills/skill-creator",
-      "primary_resolved": "/root/AAA/skills/skill-creator",
+      "primary_path": "/root/AAA/skills/.system/skill-creator",
+      "primary_resolved": "/root/AAA/skills/.system/skill-creator",
       "primary_home": "aaa",
       "related": [
         {
           "name": "skill-creator",
-          "path": "/root/AAA/skills/skill-creator",
+          "path": "/root/AAA/skills/.system/skill-creator",
           "home": "aaa"
-        },
-        {
-          "name": "create-skill",
-          "path": "/root/.grok/skills/create-skill",
-          "home": "grok"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false
+      "restored_live": true
     },
     {
       "v3_name": "meta-skill-lint",
       "layer": "domain",
-      "primary_disk_name": "skill-trigger-linter",
-      "primary_path": "/root/AAA/skills/skill-trigger-linter",
-      "primary_resolved": "/root/AAA/skills/skill-trigger-linter",
+      "primary_disk_name": "skill-mesh",
+      "primary_path": "/root/AAA/skills/skill-mesh",
+      "primary_resolved": "/root/AAA/skills/skill-mesh",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "skill-trigger-linter",
-          "path": "/root/AAA/skills/skill-trigger-linter",
+          "name": "skill-mesh",
+          "path": "/root/AAA/skills/skill-mesh",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "meta-rsi",
       "layer": "domain",
-      "primary_disk_name": "recursive-self-improvement",
-      "primary_path": "/root/.agents/skills/recursive-self-improvement",
-      "primary_resolved": "/root/.agents/skills/recursive-self-improvement",
-      "primary_home": "agents",
+      "primary_disk_name": "rsi-federation-mesh",
+      "primary_path": "/root/AAA/skills/rsi-federation-mesh",
+      "primary_resolved": "/root/AAA/skills/rsi-federation-mesh",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "recursive-self-improvement",
-          "path": "/root/.agents/skills/recursive-self-improvement",
-          "home": "agents"
-        },
-        {
-          "name": "cooling-ledger-rsi",
-          "path": "/root/.agents/skills/cooling-ledger-rsi",
-          "home": "agents"
+          "name": "rsi-federation-mesh",
+          "path": "/root/AAA/skills/rsi-federation-mesh",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "meta-rsi-audit",
       "layer": "domain",
-      "primary_disk_name": "arifos-recursive-audit",
-      "primary_path": "/root/AAA/skills/arifos-recursive-audit",
-      "primary_resolved": "/root/AAA/skills/arifos-recursive-audit",
+      "primary_disk_name": "recursive-audit",
+      "primary_path": "/root/AAA/skills/core/governance/recursive-audit",
+      "primary_resolved": "/root/AAA/skills/core/governance/recursive-audit",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "arifos-recursive-audit",
-          "path": "/root/AAA/skills/arifos-recursive-audit",
+          "name": "recursive-audit",
+          "path": "/root/AAA/skills/core/governance/recursive-audit",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -1586,8 +1542,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1595,40 +1551,40 @@
     {
       "v3_name": "meta-plan",
       "layer": "domain",
-      "primary_disk_name": "arifos-plan-dag",
-      "primary_path": "/root/AAA/skills/arifos-plan-dag",
-      "primary_resolved": "/root/AAA/skills/arifos-plan-dag",
+      "primary_disk_name": "agi-plan-dag",
+      "primary_path": "/root/AAA/skills/agi-plan-dag",
+      "primary_resolved": "/root/AAA/skills/agi-plan-dag",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "arifos-plan-dag",
-          "path": "/root/AAA/skills/arifos-plan-dag",
+          "name": "agi-plan-dag",
+          "path": "/root/AAA/skills/agi-plan-dag",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "meta-atlas",
       "layer": "domain",
-      "primary_disk_name": "meta-mesa-skill-atlas",
-      "primary_path": "/root/AAA/skills/meta-mesa-skill-atlas",
-      "primary_resolved": "/root/AAA/skills/meta-mesa-skill-atlas",
+      "primary_disk_name": "meta-mesa",
+      "primary_path": "/root/AAA/skills/meta-mesa",
+      "primary_resolved": "/root/AAA/skills/meta-mesa",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "meta-mesa-skill-atlas",
-          "path": "/root/AAA/skills/meta-mesa-skill-atlas",
+          "name": "meta-mesa",
+          "path": "/root/AAA/skills/meta-mesa",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -1646,8 +1602,8 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1666,8 +1622,8 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1686,8 +1642,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1695,10 +1651,10 @@
     {
       "v3_name": "a2a-kimi",
       "layer": "domain",
-      "primary_disk_name": "kimi-code-aaa",
-      "primary_path": "/root/AAA/skills/kimi-code-aaa",
-      "primary_resolved": "/root/AAA/skills/kimi-code-aaa",
-      "primary_home": "aaa",
+      "primary_disk_name": "forge-kimi-code",
+      "primary_path": "/root/HERMES/skills/forge-kimi-code",
+      "primary_resolved": "/root/HERMES/skills/forge-kimi-code",
+      "primary_home": "hermes",
       "related": [
         {
           "name": "kimi-code-aaa",
@@ -1706,8 +1662,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1741,20 +1697,20 @@
     {
       "v3_name": "a2a-spawn",
       "layer": "domain",
-      "primary_disk_name": "subagent-spawn-template",
-      "primary_path": "/root/AAA/skills/subagent-spawn-template",
-      "primary_resolved": "/root/AAA/skills/subagent-spawn-template",
+      "primary_disk_name": "a2a-task-delegator",
+      "primary_path": "/root/AAA/skills/a2a-task-delegator",
+      "primary_resolved": "/root/AAA/skills/a2a-task-delegator",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "subagent-spawn-template",
-          "path": "/root/AAA/skills/subagent-spawn-template",
+          "name": "a2a-task-delegator",
+          "path": "/root/AAA/skills/a2a-task-delegator",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -1796,8 +1752,8 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1805,20 +1761,20 @@
     {
       "v3_name": "research-summarize",
       "layer": "domain",
-      "primary_disk_name": "summarize-pro",
-      "primary_path": "/root/AAA/skills/summarize-pro",
-      "primary_resolved": "/root/AAA/skills/summarize-pro",
+      "primary_disk_name": "asi-summarize",
+      "primary_path": "/root/AAA/skills/asi-summarize",
+      "primary_resolved": "/root/AAA/skills/asi-summarize",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "summarize-pro",
-          "path": "/root/AAA/skills/summarize-pro",
+          "name": "asi-summarize",
+          "path": "/root/AAA/skills/asi-summarize",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -1836,8 +1792,8 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -1845,70 +1801,60 @@
     {
       "v3_name": "research-deep",
       "layer": "domain",
-      "primary_disk_name": "explorer-intelligence-architecture",
-      "primary_path": "/root/AAA/skills/explorer-intelligence-architecture",
-      "primary_resolved": "/root/AAA/skills/explorer-intelligence-architecture",
+      "primary_disk_name": "deep-research",
+      "primary_path": "/root/AAA/skills/domains/general/workshop/search-web/deep-research",
+      "primary_resolved": "/root/AAA/skills/domains/general/workshop/search-web/deep-research",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "explorer-intelligence-architecture",
-          "path": "/root/AAA/skills/explorer-intelligence-architecture",
-          "home": "aaa"
-        },
-        {
-          "name": "multi-discipline-critique",
-          "path": "/root/AAA/skills/multi-discipline-critique",
+          "name": "deep-research",
+          "path": "/root/AAA/skills/domains/general/workshop/search-web/deep-research",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "kernel-eureka",
       "layer": "domain",
-      "primary_disk_name": "quantum-eureka-doctrine",
-      "primary_path": "/root/AAA/skills/quantum-eureka-doctrine",
-      "primary_resolved": "/root/AAA/skills/quantum-eureka-doctrine",
+      "primary_disk_name": "APEX-quantum-eureka",
+      "primary_path": "/root/AAA/skills/APEX-quantum-eureka",
+      "primary_resolved": "/root/AAA/skills/APEX-quantum-eureka",
       "primary_home": "aaa",
       "related": [
         {
-          "name": "quantum-eureka-doctrine",
-          "path": "/root/AAA/skills/quantum-eureka-doctrine",
+          "name": "APEX-quantum-eureka",
+          "path": "/root/AAA/skills/APEX-quantum-eureka",
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
     {
       "v3_name": "meta-skill-unification",
       "layer": "domain",
-      "primary_disk_name": "skill-unification",
-      "primary_path": "/root/AAA/skills/skill-unification",
-      "primary_resolved": "/root/AAA/skills/skill-unification",
-      "primary_home": "aaa",
+      "primary_disk_name": "AGI-skill-unification",
+      "primary_path": "/root/HERMES/skills/AGI-skill-unification",
+      "primary_resolved": "/root/HERMES/skills/AGI-skill-unification",
+      "primary_home": "hermes",
       "related": [
         {
-          "name": "skill-unification",
-          "path": "/root/AAA/skills/skill-unification",
-          "home": "aaa"
-        },
-        {
-          "name": "meta-mesa-skill-atlas",
-          "path": "/root/AAA/skills/meta-mesa-skill-atlas",
-          "home": "aaa"
+          "name": "AGI-skill-unification",
+          "path": "/root/HERMES/skills/AGI-skill-unification",
+          "home": "hermes"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
     },
@@ -1926,8 +1872,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "apa-sovereign-connector",
       "path_stale": true,
@@ -1947,8 +1893,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "prospect-maturation-workflow",
       "path_stale": true,
@@ -1968,8 +1914,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "asi-knowledge-writeback",
       "path_stale": true,
@@ -1989,8 +1935,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "cooling-ledger-rsi",
       "path_stale": true,
@@ -2010,8 +1956,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "knowledge-graph-query",
       "path_stale": true,
@@ -2031,8 +1977,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "unified-memory-federation",
       "path_stale": true,
@@ -2042,19 +1988,19 @@
       "v3_name": "APEX-quantum-eureka",
       "layer": "doctrine",
       "primary_disk_name": "APEX-quantum-eureka",
-      "primary_path": "/root/.agents/skills/apex-quantum-eureka",
-      "primary_resolved": "/root/.agents/skills/APEX-quantum-eureka",
-      "primary_home": "opencode",
+      "primary_path": "/root/AAA/skills/APEX-quantum-eureka",
+      "primary_resolved": "/root/AAA/skills/APEX-quantum-eureka",
+      "primary_home": "aaa",
       "related": [
         {
           "name": "APEX-quantum-eureka",
-          "path": "/root/.agents/skills/APEX-quantum-eureka",
-          "home": "opencode"
+          "path": "/root/AAA/skills/APEX-quantum-eureka",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "renamed_from": "quantum-eureka-doctrine"
     },
     {
@@ -2071,8 +2017,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "000-init-intent-classify",
       "path_stale": true,
@@ -2092,8 +2038,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "phase-escalation-discipline",
       "path_stale": true,
@@ -2102,20 +2048,20 @@
     {
       "v3_name": "FORGE-route-least-power",
       "layer": "doctrine",
-      "primary_disk_name": "FORGE-route-least-power",
-      "primary_path": "/root/.agents/skills/forge-route-least-power",
-      "primary_resolved": "/root/.agents/skills/FORGE-route-least-power",
-      "primary_home": "opencode",
+      "primary_disk_name": "forge-route-least-power",
+      "primary_path": "/root/AAA/skills/forge-route-least-power",
+      "primary_resolved": "/root/AAA/skills/forge-route-least-power",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "FORGE-route-least-power",
-          "path": "/root/.agents/skills/FORGE-route-least-power",
-          "home": "opencode"
+          "name": "forge-route-least-power",
+          "path": "/root/AAA/skills/forge-route-least-power",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "renamed_from": "route-least-power"
     },
     {
@@ -2132,8 +2078,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "ask-search",
       "path_stale": true,
@@ -2153,8 +2099,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "seek",
       "path_stale": true,
@@ -2174,8 +2120,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "999-vault-seal-immutable",
       "path_stale": true,
@@ -2195,8 +2141,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "clarity-canon-001",
       "path_stale": true,
@@ -2205,20 +2151,20 @@
     {
       "v3_name": "AUDIT-post-seal-sweep",
       "layer": "doctrine",
-      "primary_disk_name": "AUDIT-post-seal-sweep",
-      "primary_path": "/root/.agents/skills/AUDIT-post-seal-sweep",
-      "primary_resolved": "/root/.agents/skills/AUDIT-post-seal-sweep",
-      "primary_home": "opencode",
+      "primary_disk_name": "audit-seal",
+      "primary_path": "/root/AAA/skills/substrate/audit-seal",
+      "primary_resolved": "/root/AAA/skills/substrate/audit-seal",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "AUDIT-post-seal-sweep",
-          "path": "/root/.agents/skills/AUDIT-post-seal-sweep",
-          "home": "opencode"
+          "name": "audit-seal",
+          "path": "/root/AAA/skills/substrate/audit-seal",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "renamed_from": "post-seal-entropy-sweep",
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -2237,8 +2183,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "symbolic-order-collective-bias",
       "path_stale": true,
@@ -2258,8 +2204,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "symbolic-order-trust-architecture",
       "path_stale": true,
@@ -2279,8 +2225,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "kernel-verbs-aforge-hands",
       "path_stale": true,
@@ -2300,8 +2246,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "reality-skills",
       "path_stale": true,
@@ -2321,8 +2267,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "session-continuity-inhabit",
       "path_stale": true,
@@ -2342,8 +2288,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "sovereign-recognize",
       "path_stale": true,
@@ -2352,20 +2298,20 @@
     {
       "v3_name": "KERNEL-trinity-33",
       "layer": "doctrine",
-      "primary_disk_name": "KERNEL-trinity-33",
-      "primary_path": "/root/.agents/skills/kernel-trinity-33",
-      "primary_resolved": "/root/.agents/skills/KERNEL-trinity-33",
-      "primary_home": "opencode",
+      "primary_disk_name": "kernel-trinity-33",
+      "primary_path": "/root/AAA/skills/kernel-trinity-33",
+      "primary_resolved": "/root/AAA/skills/kernel-trinity-33",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "KERNEL-trinity-33",
-          "path": "/root/.agents/skills/KERNEL-trinity-33",
-          "home": "opencode"
+          "name": "kernel-trinity-33",
+          "path": "/root/AAA/skills/kernel-trinity-33",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "renamed_from": "trinity-33-canonical"
     },
     {
@@ -2382,8 +2328,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "shadow-diagnostic",
       "path_stale": true,
@@ -2403,8 +2349,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "transport-physics-intelligence",
       "path_stale": true,
@@ -2413,20 +2359,20 @@
     {
       "v3_name": "CLAIM-receipt-v1",
       "layer": "doctrine",
-      "primary_disk_name": "CLAIM-receipt-v1",
-      "primary_path": "/root/.agents/skills/CLAIM-receipt-v1",
-      "primary_resolved": "/root/.agents/skills/CLAIM-receipt-v1",
-      "primary_home": "opencode",
+      "primary_disk_name": "claim-receipt-discipline",
+      "primary_path": "/root/AAA/skills/domains/general/court/court-audit/claim-receipt-discipline",
+      "primary_resolved": "/root/AAA/skills/domains/general/court/court-audit/claim-receipt-discipline",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "CLAIM-receipt-v1",
-          "path": "/root/.agents/skills/CLAIM-receipt-v1",
-          "home": "opencode"
+          "name": "claim-receipt-discipline",
+          "path": "/root/AAA/skills/domains/general/court/court-audit/claim-receipt-discipline",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "renamed_from": "claim-receipt-v1",
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -2434,20 +2380,20 @@
     {
       "v3_name": "CLAIM-verification-gate",
       "layer": "doctrine",
-      "primary_disk_name": "CLAIM-verification-gate",
-      "primary_path": "/root/.agents/skills/CLAIM-verification-gate",
-      "primary_resolved": "/root/.agents/skills/CLAIM-verification-gate",
-      "primary_home": "opencode",
+      "primary_disk_name": "synthesis-verification-gate",
+      "primary_path": "/root/AAA/skills/domains/general/court/court-audit/synthesis-verification-gate",
+      "primary_resolved": "/root/AAA/skills/domains/general/court/court-audit/synthesis-verification-gate",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "CLAIM-verification-gate",
-          "path": "/root/.agents/skills/CLAIM-verification-gate",
-          "home": "opencode"
+          "name": "synthesis-verification-gate",
+          "path": "/root/AAA/skills/domains/general/court/court-audit/synthesis-verification-gate",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "renamed_from": "claim-verification-gate",
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -2455,20 +2401,20 @@
     {
       "v3_name": "WELL-boundary-sense",
       "layer": "doctrine",
-      "primary_disk_name": "WELL-boundary-sense",
-      "primary_path": "/root/.agents/skills/WELL-boundary-sense",
-      "primary_resolved": "/root/.agents/skills/WELL-boundary-sense",
-      "primary_home": "opencode",
+      "primary_disk_name": "forge-well-boundary-repair",
+      "primary_path": "/root/AAA/skills/forge-well-boundary-repair",
+      "primary_resolved": "/root/AAA/skills/forge-well-boundary-repair",
+      "primary_home": "aaa",
       "related": [
         {
-          "name": "WELL-boundary-sense",
-          "path": "/root/.agents/skills/WELL-boundary-sense",
-          "home": "opencode"
+          "name": "forge-well-boundary-repair",
+          "path": "/root/AAA/skills/forge-well-boundary-repair",
+          "home": "aaa"
         }
       ],
-      "status": "RESOLVED",
+      "status": "RETARGETED",
       "tombstone": false,
-      "restored_live": false,
+      "restored_live": true,
       "renamed_from": "boundary-sense-engine",
       "path_stale": true,
       "stale_flagged": "2026-09-08T08:38:44Z"
@@ -2487,8 +2433,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "somatic-kernel",
       "path_stale": true,
@@ -2508,8 +2454,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "geological-artifact-rigor",
       "path_stale": true,
@@ -2529,8 +2475,8 @@
           "home": "opencode"
         }
       ],
-      "status": "RESOLVED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "renamed_from": "\ud83d\udf02-qubit-substrate",
       "path_stale": true,
@@ -2898,8 +2844,8 @@
           "home": "aaa"
         }
       ],
-      "status": "FORGED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
@@ -2920,8 +2866,8 @@
           "home": "aaa"
         }
       ],
-      "status": "FORGED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
@@ -2942,8 +2888,8 @@
           "home": "aaa"
         }
       ],
-      "status": "FORGED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
@@ -2964,8 +2910,8 @@
           "home": "aaa"
         }
       ],
-      "status": "FORGED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
@@ -2987,8 +2933,8 @@
           "home": "aaa"
         }
       ],
-      "status": "FORGED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
@@ -3010,8 +2956,8 @@
           "home": "aaa"
         }
       ],
-      "status": "FORGED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
@@ -3033,9 +2979,9 @@
           "note": "spelling variant \u2014 see reverse_disk_to_v3.trinity-witness"
         }
       ],
-      "status": "ALIAS_RESOLVED",
-      "tombstone": false,
-      "restored_live": true,
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN audit fix (naming drift)"
     },
@@ -3053,8 +2999,8 @@
           "home": "aaa"
         }
       ],
-      "status": "FORGED",
-      "tombstone": false,
+      "status": "TOMBSTONED",
+      "tombstone": true,
       "restored_live": false,
       "forged_at": "2026-07-12T18:31:00Z",
       "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2 entropy lock",
@@ -3066,33 +3012,53 @@
       "v3_name": "trinity-design-seam",
       "v2_name": "AGI-trinity-design-seam",
       "disk_path": "/root/.agents/skills/AGI-trinity-design-seam",
-      "status": "active",
+      "status": "TOMBSTONED",
       "domain": "aaa",
       "owner": "AAA",
       "risk_tier": "medium",
       "description": "Trinity Design Seam v1.0 \u2014 two-plane design system for all ARIF sites.",
       "path_stale": true,
-      "stale_flagged": "2026-09-08T08:38:44Z"
+      "stale_flagged": "2026-09-08T08:38:44Z",
+      "tombstone": true,
+      "restored_live": false
     },
     {
       "v3_name": "FORGE-context-compressor",
-      "status": "tombstone",
+      "status": "RETARGETED",
       "primary_path": "/root/AAA/skills/forge-context-compressor",
-      "primary_resolved": "/root/AAA/skills/FORGE-context-compressor",
+      "primary_resolved": "/root/AAA/skills/forge-context-compressor",
       "note": "Merged into FORGE-context-compress 2026-08-01 \u2014 near-duplicate bodies consolidated",
-      "primary_disk_name": "FORGE-context-compressor",
+      "primary_disk_name": "forge-context-compressor",
       "primary_home": "aaa",
-      "path_fixed": "2026-09-08T08:38:44Z"
+      "path_fixed": "2026-09-08T08:38:44Z",
+      "related": [
+        {
+          "name": "forge-context-compressor",
+          "path": "/root/AAA/skills/forge-context-compressor",
+          "home": "aaa"
+        }
+      ],
+      "tombstone": false,
+      "restored_live": true
     },
     {
       "v3_name": "FORGE-mcp-federation-ops",
-      "status": "tombstone",
-      "primary_path": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops",
-      "primary_resolved": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-federation-ops",
+      "status": "RETARGETED",
+      "primary_path": "/root/AAA/skills/FORGE-federation-manifest",
+      "primary_resolved": "/root/AAA/skills/FORGE-federation-manifest",
       "note": "Merged into FORGE-mcp-ops 2026-08-01 \u2014 overlapping mcporter wrappers consolidated",
-      "primary_disk_name": "FORGE-mcp-federation-ops",
-      "primary_home": "kimi",
-      "path_fixed": "2026-09-08T08:38:44Z"
+      "primary_disk_name": "FORGE-federation-manifest",
+      "primary_home": "aaa",
+      "path_fixed": "2026-09-08T08:38:44Z",
+      "related": [
+        {
+          "name": "FORGE-federation-manifest",
+          "path": "/root/AAA/skills/FORGE-federation-manifest",
+          "home": "aaa"
+        }
+      ],
+      "tombstone": false,
+      "restored_live": true
     },
     {
       "v3_name": "forge-artifact-publisher",
@@ -3116,6 +3082,337 @@
       "status": "RESOLVED",
       "tombstone": false,
       "restored_live": false
+    },
+    {
+      "v3_name": "audio-analysis",
+      "layer": "unclassified",
+      "primary_disk_name": "audio-analysis",
+      "primary_path": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-analysis",
+      "primary_resolved": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-analysis",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "audio-analysis",
+          "path": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-analysis",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "google-workspace-gws",
+      "layer": "unclassified",
+      "primary_disk_name": "google-workspace-gws",
+      "primary_path": "/root/AAA/skills/google-workspace-gws",
+      "primary_resolved": "/root/AAA/skills/google-workspace-gws",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "google-workspace-gws",
+          "path": "/root/AAA/skills/google-workspace-gws",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "graphiti-temporal-memory-ops",
+      "layer": "unclassified",
+      "primary_disk_name": "graphiti-temporal-memory-ops",
+      "primary_path": "/root/AAA/skills/graphiti-temporal-memory-ops",
+      "primary_resolved": "/root/AAA/skills/graphiti-temporal-memory-ops",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "graphiti-temporal-memory-ops",
+          "path": "/root/AAA/skills/graphiti-temporal-memory-ops",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "hermes-text-to-speech",
+      "layer": "unclassified",
+      "primary_disk_name": "text-to-speech",
+      "primary_path": "/root/AAA/skills/domains/general/workshop/voice-stack/text-to-speech",
+      "primary_resolved": "/root/AAA/skills/domains/general/workshop/voice-stack/text-to-speech",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "text-to-speech",
+          "path": "/root/AAA/skills/domains/general/workshop/voice-stack/text-to-speech",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "hermes-voice-config",
+      "layer": "unclassified",
+      "primary_disk_name": "hermes-voice-config",
+      "primary_path": "/root/AAA/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+      "primary_resolved": "/root/AAA/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "hermes-voice-config",
+          "path": "/root/AAA/skills/domains/general/workshop/voice-stack/hermes-voice-config",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "human-apps-roadmap-2026",
+      "layer": "unclassified",
+      "primary_disk_name": "human-apps-roadmap-2026",
+      "primary_path": "/root/AAA/skills/human-apps-roadmap-2026",
+      "primary_resolved": "/root/AAA/skills/human-apps-roadmap-2026",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "human-apps-roadmap-2026",
+          "path": "/root/AAA/skills/human-apps-roadmap-2026",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "know-pragmatics",
+      "layer": "unclassified",
+      "primary_disk_name": "know-pragmatics",
+      "primary_path": "/root/AAA/skills/knowledge/know-pragmatics",
+      "primary_resolved": "/root/AAA/skills/knowledge/know-pragmatics",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "know-pragmatics",
+          "path": "/root/AAA/skills/knowledge/know-pragmatics",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "malaysia-reality-interface",
+      "layer": "unclassified",
+      "primary_disk_name": "malaysia-reality-interface",
+      "primary_path": "/root/AAA/skills/malaysia-reality-interface",
+      "primary_resolved": "/root/AAA/skills/malaysia-reality-interface",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "malaysia-reality-interface",
+          "path": "/root/AAA/skills/malaysia-reality-interface",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "media-ingest-lane",
+      "layer": "unclassified",
+      "primary_disk_name": "media-ingest-lane",
+      "primary_path": "/root/AAA/skills/media-ingest-lane",
+      "primary_resolved": "/root/AAA/skills/media-ingest-lane",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "media-ingest-lane",
+          "path": "/root/AAA/skills/media-ingest-lane",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "music-generation",
+      "layer": "unclassified",
+      "primary_disk_name": "music-generation",
+      "primary_path": "/root/AAA/skills/domains/general/workshop/audio-emd/music-generation",
+      "primary_resolved": "/root/AAA/skills/domains/general/workshop/audio-emd/music-generation",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "music-generation",
+          "path": "/root/AAA/skills/domains/general/workshop/audio-emd/music-generation",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "organ-capability-map",
+      "layer": "unclassified",
+      "primary_disk_name": "organ-capability-map",
+      "primary_path": "/root/AAA/skills/organ-capability-map",
+      "primary_resolved": "/root/AAA/skills/organ-capability-map",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "organ-capability-map",
+          "path": "/root/AAA/skills/organ-capability-map",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "provider-endpoint-migration",
+      "layer": "unclassified",
+      "primary_disk_name": "provider-endpoint-migration",
+      "primary_path": "/root/AAA/skills/provider-endpoint-migration",
+      "primary_resolved": "/root/AAA/skills/provider-endpoint-migration",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "provider-endpoint-migration",
+          "path": "/root/AAA/skills/provider-endpoint-migration",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "substrate-taxonomy",
+      "layer": "unclassified",
+      "primary_disk_name": "substrate-taxonomy",
+      "primary_path": "/root/AAA/skills/substrate-taxonomy",
+      "primary_resolved": "/root/AAA/skills/substrate-taxonomy",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "substrate-taxonomy",
+          "path": "/root/AAA/skills/substrate-taxonomy",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "youtube-extraction-datacenter-ip",
+      "layer": "unclassified",
+      "primary_disk_name": "youtube-eureka",
+      "primary_path": "/root/AAA/skills/media/youtube-eureka",
+      "primary_resolved": "/root/AAA/skills/media/youtube-eureka",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "youtube-eureka",
+          "path": "/root/AAA/skills/media/youtube-eureka",
+          "home": "aaa"
+        }
+      ],
+      "status": "RETARGETED",
+      "tombstone": false,
+      "restored_live": true,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "apx_init_substrate",
+      "layer": "unclassified",
+      "primary_disk_name": null,
+      "primary_path": null,
+      "primary_resolved": null,
+      "primary_home": null,
+      "related": [],
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "mcp-shopping-list-2026-09",
+      "layer": "unclassified",
+      "primary_disk_name": null,
+      "primary_path": null,
+      "primary_resolved": null,
+      "primary_home": null,
+      "related": [],
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "tts-edge-fallback",
+      "layer": "unclassified",
+      "primary_disk_name": null,
+      "primary_path": null,
+      "primary_resolved": null,
+      "primary_home": null,
+      "related": [],
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "kernel-superposition",
+      "layer": "unclassified",
+      "primary_disk_name": null,
+      "primary_path": null,
+      "primary_resolved": null,
+      "primary_home": null,
+      "related": [],
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
+      "created_by": "musyawarah-20260923"
+    },
+    {
+      "v3_name": "mcp-context-compression",
+      "layer": "unclassified",
+      "primary_disk_name": null,
+      "primary_path": null,
+      "primary_resolved": null,
+      "primary_home": null,
+      "related": [],
+      "status": "TOMBSTONED",
+      "tombstone": true,
+      "restored_live": false,
+      "created_by": "musyawarah-20260923"
     }
   ],
   "reverse_disk_to_v3": {
@@ -7452,5 +7749,23 @@
     "fixed_by_name": 16,
     "promoted_from_related": 1,
     "stale_flagged": 83
+  },
+  "rereshape_audit": {
+    "applied_at": "2026-09-23T00:57:40.170720+00:00",
+    "applied_by": "333-AGI (Class B, sovereign 'B A' directive)",
+    "musyawarah_peers": [
+      "333-AGI (Architect)",
+      "555-ASI (Auditor)",
+      "888-APEX (Constitutional Ruling, materialized by 333-AGI)"
+    ],
+    "retarget_count": 55,
+    "tombstone_count": 61,
+    "source_artifacts": [
+      "/root/AAA/proposals/ALIAS-RERESOLVE-MAPPING-FINAL-20260923.json",
+      "/root/AAA/proposals/ALIAS-MUSYAWARAH-CONSTITUTIONAL-RULING-20260923.md",
+      "/root/AAA/proposals/ALIAS-MUSYAWARAH-AUDITOR-POSITION-20260923.md",
+      "/root/AAA/proposals/ALIAS-MUSYAWARAH-ARCHITECT-POSITION-20260923.md"
+    ],
+    "backup": "/root/AAA/skills/SKILL_ALIAS_TABLE.backup-20260923-pre-reresolve.json"
   }
 }

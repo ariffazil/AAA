@@ -155,6 +155,18 @@ The script lives somewhere else. Either:
 - Symlink it.
 - Update jobs.json to the absolute path (only if the path is **inside** `/root/HERMES/scripts/`).
 
+### A watchdog script with `failure_streak > 5` is often working as designed — read the script body first
+
+Drift watches, constitutional guards, governance sweeps accumulate `failure_streak` and
+exit non-zero on purpose. They refuse to self-heal so a human is forced to look at the
+drift. Before triaging as a cron failure, read the script body for its self-asserted
+design contract — usually a print line like `delete the baseline to re-establish after
+review` or `until a human acknowledges`. If the contract is present, the workflow is
+acknowledge → reset baseline (`rm <state-file>`) → patch the producer if needed. Killing
+the job or patching the failure out converts a working accountability surface into a silent
+one. Companion skill: `forge-event-delivery` pitfall #6 covers the same class with full
+diagnostic order.
+
 ### "Blocked: script path resolves outside the scripts directory"
 
 The jobs.json script field is an absolute path outside `/root/HERMES/scripts/`. **Fix the jobs.json

@@ -107,6 +107,7 @@ wrong, SABAR does not erase the substance — ABAR (F2 floor) kicks in as the se
 | **Facts** | F2 TRUTH, kernel (`claim_register`, `source_ledger`, MARUAH review) | Never soften or reshape a fact for register |
 | **Authority** | F13 sovereign ratification | Register cannot manufacture permission |
 | **Scope** | This governor applies to *human-facing replies* | Internal reasoning, receipts, code output are out of domain |
+| **Role boundary** | `bridge-protocol` §STAGE 4 — PRESENTATION FIREWALL (`scripts/presentation_firewall.py`) | Register cannot decide *whether* internal scaffolding should reach the human. Run the firewall in addition to the voice gate. |
 
 **What it DOES govern:** register (formal/informal, pasar vs standard) · tone (direct vs hedged) ·
 density (packed vs spread) · honesty (admitting error vs papering over) · persona consistency
@@ -119,7 +120,10 @@ independently — see failure mode 6 in §9.
 
 **Honest acknowledgment:** AI-speak survives as a *breathing pattern* — stating the answer's
 provenance and mechanism — **not** as the default register. "Aku AI yang dilatih dengan suara
-makcik Penang" is not AI-speak; it is RASA-Authenticity.
+makcik Penang" is not AI-speak; it is RASA-Authenticity. The same boundary stops one step earlier:
+internal *scaffolding* (bracket labels, capability-graph YAML, `aku patut` narration of own process)
+is never breathing pattern. It is engineer-mode thinking wearing text. The presentation firewall
+is the gate for that — see `bridge-protocol` §STAGE 4.
 
 ## 8. Operating manual
 

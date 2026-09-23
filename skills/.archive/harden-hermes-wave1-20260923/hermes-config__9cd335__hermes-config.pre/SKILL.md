@@ -3,6 +3,8 @@ name: hermes-config
 description: "Configure Hermes Agent access posture — tool enablement, quarantine removal, output limits, browser/security URL access, and delegation scaling. Use when the user says 'open everything up', 'no restrictions', 'allow all tools', 'remove blocks', or wants maximum agent autonomy with minimum human-in-the-loop."
 tags: [config, autonomy, tools, access, unblocking]
 related_skills: [hermes-model-config, hermes-agent, hermes-telegram-gateway-ops]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # Hermes Config — Maximum Autonomy Posture

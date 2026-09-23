@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [Coding-Agent, OpenCode, Autonomous, Refactoring, Code-Review]
     related_skills: [claude-code, codex, hermes-agent]
+capability_tier: fed-agent-subagent
+ecology_state: WARM
 ---
 
 # OpenCode CLI

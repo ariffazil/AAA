@@ -192,7 +192,7 @@ one thing he has wanted to say to that person. Do not build it like a reflective
 
 - **One to two pages.** The reader is a working adult who will read it once. A four-to-six page
   wisdom piece is the wrong form here.
-- **Anchor on observed conduct, not adjectives.** There is no person-card and no shared family
+- **Anchor on observed conduct, not adjectives.** There is no person-card or shared family
   history to draw on, so the only usable material is conduct the writer personally witnessed,
   ideally repeated — how the person runs a meeting, how they treat people under pressure, what they
   do when someone is struggling. A named behaviour lands; "you are a great leader" does not.
@@ -209,6 +209,20 @@ one thing he has wanted to say to that person. Do not build it like a reflective
 - **When he hands over content as terse numbered fragments, fold them in — do not query them.**
   Mid-task shorthand is body copy he has already decided, not a spec to be clarified. Asking him to
   expand it spends the attention the artifact exists to protect.
+
+### Witness letters that record the sender as a human (farewell, exit, personal record)
+
+When the sovereign asks for an email or letter whose function is to record his voice as a human being — farewell, exit, MSS notice, witness statement, the document a person writes before they leave a system — three forces collide that the ordinary letter rules do not cover.
+
+1. **The gravity drifts toward verdict.** "Tespit, kamu dengar" / "trust pecah" / "sakit" / "tamat" reads as the sender judging the recipients. The ask is witness — *what I tried, what it cost, what I choose* — not verdict — *what they did wrong*. Verify the gravity by reading the asker's first message back: if he said "nak suara saya direkodkan", "nak mereka ingat saya manusia", or "I want people to know I'm human", the gravitas is EFFORT + AMANAH + KOS MANUSIA, never EMOSI + VERDICT. Restate the gravity in the first reply before forging.
+2. **The user's own draft is the BASE, not the critique target.** When the sender supplies his own paragraph (e.g. "Wei. Ini suara Arif. ... Saya memilih berundur tanpa dendam."), treat it as the baseline. Polish and harden it, do not replace it. The natural drift is to spawn V2/V3/V4/V5 with ever-elaborated variants — this is the failure shape. The sender's voice is the asset; iterations around it (subtle praise for a witness, paradox-of-defens, MSS context) are additions, not rewrites.
+3. **Defend across every reader, not just the named ones.** When the sender says "assume the whole company will read it", every reader optic must hold: each named recipient, every cc'd witness, the unintended leak audience. Encode the multiple pathways at the forge stage (a small table: named-1 → expected read; cc → expected read; company → expected read), not after the text is set. Implicit > explicit at every pathway — *biar reader sambung dots sendiri*. Subtle praise for a person the sender genuinely trusts (a GM who gave him real air time) is mandatory, not optional — the absence is the first thing a third reader notices and reads as one-sided.
+
+**Voice drift to watch for, in order of cost:** "trust pecah" → "sakit" → "mereka makan saya" → "tamat" → "dendam". Each is a step toward verdict; pull back at the first one. The closing line "Saya memilih berundur dengan maruah dan hati yang lapang. Bukan untuk mereka. Untuk diri saya sendiri." is the strongest witness form — it transfers agency to the sender without granting the recipient any moral claim.
+
+**Length discipline for witness letters.** 4–6 short paragraphs. Anything longer is a manifesto and reads as one. The paradox-of-defens ("the loop never finishes") and the technical spine ("seismic interpretation tidak pernah habis") are the carrier waves that let the witness land — they give the document authority to be brief because the long version would be unsendable.
+
+**Pitfall — sentimental close on the sender's behalf.** Do not close with "Saya sayang kamu semua" or "Terima kasih kerana membaca". The reader's feelings are not yours to author. The strongest closes are the verbs that close the action: "Saya memilih untuk berundur dengan maruah." That line names what the sender does, not what he feels; feelings are his, not the artifact's.
 
 ### When the goal is to reach a person, hand over the primary source
 
