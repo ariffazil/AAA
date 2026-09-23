@@ -148,6 +148,7 @@ def _match_condition(condition: dict[str, Any], context: dict[str, Any]) -> bool
       all_keywords: [list]  — match if ALL keywords present
       regex: str            — re.search against haystack
       tool_name: str|list   — exact match against tool_name
+      is_first_turn: bool   — match only on first turn (≤1 user message in context)
       message_count_min: int
       message_count_max: int
       any_of: [list]        — OR-combinator of sub-conditions
@@ -155,6 +156,7 @@ def _match_condition(condition: dict[str, Any], context: dict[str, Any]) -> bool
     haystack = str(context.get("haystack", "")).lower()
     tool_name = context.get("tool_name", "")
     messages = context.get("messages", [])
+    is_first_turn = bool(context.get("is_first_turn", False))
 
     if condition.get("always") is True:
         return True
@@ -174,6 +176,12 @@ def _match_condition(condition: dict[str, Any], context: dict[str, Any]) -> bool
         wanted = condition["tool_name"]
         wanted_set = {wanted} if isinstance(wanted, str) else set(wanted)
         if tool_name not in wanted_set:
+            return False
+        matched = True
+
+    if "is_first_turn" in condition:
+        wanted = bool(condition["is_first_turn"])
+        if is_first_turn != wanted:
             return False
         matched = True
 
@@ -321,11 +329,18 @@ def _apply_post_transforms(text: str, transforms: list[dict[str, Any]]) -> str:
 def process_pre_llm(payload: dict[str, Any], nudges: list[dict[str, Any]]) -> dict[str, Any]:
     messages = list(payload.get("messages", []))
     haystack = _build_haystack("pre_llm", payload)
+    # is_first_turn = only the system prompt + current user message in messages list
+    user_msg_count = sum(1 for m in messages if m.get("role") == "user")
+    is_first_turn = user_msg_count <= 1
     applied: list[str] = []
     injected_tokens = 0
 
     for nudge in sorted(nudges, key=lambda n: n["priority"]):
-        ctx = {"haystack": haystack, "messages": messages}
+        ctx = {
+            "haystack": haystack,
+            "messages": messages,
+            "is_first_turn": is_first_turn,
+        }
         try:
             if _match_condition(nudge["condition"], ctx):
                 text = nudge["text"].strip()
