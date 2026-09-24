@@ -714,4 +714,12 @@ events:
   outcome: null
   fq_gate: false
   cost: 0
+- id: receipt-reality-correlator
+  adapter: systemd
+  schedule: daily 07:45 Asia/Kuala_Lumpur
+  command: /root/scripts/receipt_reality_correlator.py
+  output: /var/lib/arifflow/receipt_reality_correlation.jsonl
+  outcome: null
+  fq_gate: false
+  cost: 0
 consequences: []
