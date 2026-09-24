@@ -97,6 +97,8 @@ EOF
 ### 1. Matplotlib can't wrap text
 Filled body text in matplotlib cards overflows silently. **Use HTML+CSS** for any infographic with body text. Reserve matplotlib for decorative numbers and external chart PNGs.
 
+**Same rule for any text at all.** A generative image model estimates glyphs and will misspell or invent them (observed: a wordmark rendered as `IRFANGLAW`). Render text deterministically — HTML/CSS via weasyprint or headless Chrome — and verify from the text layer (`pdftotext`), not from a vision check. Full routing rule: `workshop/document-intel/forge-pdf-delivery/SKILL.md` -> “Routing: text vs mood”.
+
 ### 2. CSS class colour selectors silently no-op on `.vf.X` patterns
 When child `<div>` is inside a flex parent, complex class selectors sometimes lose specificity. **Always inline the colour and width on the bar fill:**
 ```html
