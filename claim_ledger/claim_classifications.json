@@ -1,0 +1,247 @@
+{
+  "schema": "arifos.claim_classifications.v1",
+  "created_utc": "2026-09-24T16:43:03.315878Z",
+  "f13_ratified": true,
+  "ratification_ref": "F13 2026-09-25 — claim audit per source-type-promotion-gate",
+  "note": "Sidecar classification metadata. Active DB write lock held by PID 990885; do NOT inline-edit claims table. Use this map as authoritative overlay until MCP layer exposes source_type fields.",
+  "policy": {
+    "OBS->TOOL_OBSERVED": "promotable=true, lifecycle=ACTIVE",
+    "DER->AGENT_DERIVED": "promotable=false, lifecycle=CANDIDATE",
+    "INT->AGENT_INFERRED": "promotable=false, lifecycle=CANDIDATE",
+    "FIQH->AGENT_INFERRED": "promotable=false, lifecycle=CANDIDATE",
+    "VOID->UNVERIFIED": "promotable=false, lifecycle=CANDIDATE",
+    "SPEC->USER_RATIFIED": "promotable=true, lifecycle=ACTIVE"
+  },
+  "classifications": [
+    {
+      "seq": 3,
+      "claim_id": "2026-09-15-syed-mokhtar-bank-consolidation-c01",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315905Z"
+    },
+    {
+      "seq": 4,
+      "claim_id": "2026-09-15-syed-mokhtar-bank-consolidation-c02",
+      "claim_type": "DER",
+      "source_type_assigned": "AGENT_DERIVED",
+      "lifecycle_state_assigned": "CANDIDATE",
+      "promotable": false,
+      "classification_basis": "claim_type=DER mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315911Z"
+    },
+    {
+      "seq": 5,
+      "claim_id": "2026-09-15-syed-mokhtar-bank-consolidation-c03",
+      "claim_type": "VOID",
+      "source_type_assigned": "UNVERIFIED",
+      "lifecycle_state_assigned": "CANDIDATE",
+      "promotable": false,
+      "classification_basis": "claim_type=VOID mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315916Z"
+    },
+    {
+      "seq": 6,
+      "claim_id": "2026-09-15-syed-mokhtar-bank-consolidation-c04",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315919Z"
+    },
+    {
+      "seq": 7,
+      "claim_id": "2026-09-15-syed-mokhtar-bank-consolidation-c05",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315923Z"
+    },
+    {
+      "seq": 8,
+      "claim_id": "2026-09-15-bank-muamalat-authenticity-c01",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315930Z"
+    },
+    {
+      "seq": 9,
+      "claim_id": "2026-09-15-bank-muamalat-authenticity-c02",
+      "claim_type": "DER",
+      "source_type_assigned": "AGENT_DERIVED",
+      "lifecycle_state_assigned": "CANDIDATE",
+      "promotable": false,
+      "classification_basis": "claim_type=DER mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315934Z"
+    },
+    {
+      "seq": 10,
+      "claim_id": "2026-09-15-bank-muamalat-authenticity-c03",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315937Z"
+    },
+    {
+      "seq": 11,
+      "claim_id": "2026-09-15-bank-muamalat-authenticity-c04",
+      "claim_type": "INT",
+      "source_type_assigned": "AGENT_INFERRED",
+      "lifecycle_state_assigned": "CANDIDATE",
+      "promotable": false,
+      "classification_basis": "claim_type=INT mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315939Z"
+    },
+    {
+      "seq": 12,
+      "claim_id": "2026-09-15-bank-muamalat-authenticity-c05",
+      "claim_type": "FIQH",
+      "source_type_assigned": "AGENT_INFERRED",
+      "lifecycle_state_assigned": "CANDIDATE",
+      "promotable": false,
+      "classification_basis": "claim_type=FIQH mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315942Z"
+    },
+    {
+      "seq": 13,
+      "claim_id": "2026-09-15-syed-mokhtar-bank-consolidation-c05r1",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315945Z"
+    },
+    {
+      "seq": 21,
+      "claim_id": "clm-47aab3359c209d17",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315948Z"
+    },
+    {
+      "seq": 24,
+      "claim_id": "clm-bf9d77632b42e902",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315950Z"
+    },
+    {
+      "seq": 26,
+      "claim_id": "clm-899fd515275acf67",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315953Z"
+    },
+    {
+      "seq": 27,
+      "claim_id": "clm-01c59438b9d22cda",
+      "claim_type": "VOID",
+      "source_type_assigned": "UNVERIFIED",
+      "lifecycle_state_assigned": "CANDIDATE",
+      "promotable": false,
+      "classification_basis": "claim_type=VOID mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315956Z"
+    },
+    {
+      "seq": 30,
+      "claim_id": "clm-7ed1afb08ca51d54",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315958Z"
+    },
+    {
+      "seq": 32,
+      "claim_id": "clm-1080ea29c7cb85bc",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315960Z"
+    },
+    {
+      "seq": 34,
+      "claim_id": "clm-e3522968268c7444",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315963Z"
+    },
+    {
+      "seq": 35,
+      "claim_id": "clm-ee76407b85837b2c",
+      "claim_type": "DER",
+      "source_type_assigned": "AGENT_DERIVED",
+      "lifecycle_state_assigned": "CANDIDATE",
+      "promotable": false,
+      "classification_basis": "claim_type=DER mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315966Z"
+    },
+    {
+      "seq": 36,
+      "claim_id": "clm-dc695e84813c1b72",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315968Z"
+    },
+    {
+      "seq": 37,
+      "claim_id": "clm-8f38a8e476a1ea61",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315970Z"
+    },
+    {
+      "seq": 39,
+      "claim_id": "clm-bf1aa0e958c64075",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315972Z"
+    },
+    {
+      "seq": 41,
+      "claim_id": "clm-8813a337913c8bcd",
+      "claim_type": "OBS",
+      "source_type_assigned": "TOOL_OBSERVED",
+      "lifecycle_state_assigned": "ACTIVE",
+      "promotable": true,
+      "classification_basis": "claim_type=OBS mapped via policy table in source-type-promotion-gate.md",
+      "classified_utc": "2026-09-24T16:43:03.315975Z"
+    }
+  ]
+}
