@@ -1,125 +1,122 @@
 # =============================================================================
-# CONTRADICTION_LEDGER_SCHEMA.yaml — Epistemic Conflict Index with Half-Life Schema
+# CONTRADICTION_LEDGER_SCHEMA.yaml — Contradiction Economics & Pruning Schema
 # =============================================================================
-# Status: F13_RATIFIED_CHAT (2026-09-25)
-# Authority: F13 SOVEREIGN
-# Scope: Federation epistemic hygiene & paradox management
-# Prime Invariant: LAW #5 — "Stop verifying when additional verification cannot change a decision."
+# Status: DRAFT_AWAITING_F13
+# Authority: ARIF (Human Sovereign)
+# Reference: ARIFOS::SOVEREIGNTY_CRONS::SCHEMA_FIRST::v1
+# Mode: GOVERNANCE-FIRST
+# Constraints: DESIGN ONLY · NO RUNTIME MUTATION · NO CRON CREATION
 # =============================================================================
 
-version: "1.0.0"
-target: "contradiction-accumulator"
+schema_version: "1.0.0-draft"
+artifact_type: "governance_schema"
+status: "DRAFT_AWAITING_F13"
+target_evaluator: "contradiction-accumulator"
 
-principles:
-  anti_landfill: |
-    Not all contradictions matter equally. Accumulating unweighted contradictions
-    turns memory into an epistemic landfill. A contradiction between two unused
-    doctrines from 18 months ago carries zero reality consequence and must decay.
-  actionable_conflict: |
-    A contradiction is urgent ONLY if it blocks or distorts an active sovereign
-    decision or live physical consequence. Otherwise, it is assigned a half-life
-    and pruned if unreferenced.
+purpose: |
+  Manage contradiction attention economically.
+  Not all contradictions deserve pursuit.
+  Prevent epistemic landfills by attaching half-life decay to unacted tensions.
 
-scoring_formula:
-  definition: "Contradiction Severity = (Contradiction Score * Reality Cost) + (Attention Cost / Attention Ceiling)"
-  weights:
-    contradiction_score: "0.0 - 1.0 (degree of mutual exclusivity)"
-    reality_cost: "0.0 - 1.0 (financial, physical, or human risk if both are acted upon)"
-    attention_cost: "Minutes of agent deliberation wasted reconciling the conflict"
+law_5_grounding: |
+  Stop verifying when additional verification cannot change a decision.
+  Goal: Minimize entropy, not maximize investigations.
 
-decay_and_pruning:
-  default_half_life_days:
-    operational: 30
-    canonical_doctrine: 90
-    philosophical_paradox: 180
-  prune_rule: |
-    If active_decision_dependency is FALSE and age_days > (2 * half_life_days):
-      Transition status to 'DORMANT_VOID' and evict from active LLM reasoning context.
+contradiction_states:
+  OPEN:
+    description: "Newly recorded contradiction, awaiting initial appraisal."
+  ACTIVE:
+    description: "Actively affecting present reasoning or pending actions."
+  CONTESTED:
+    description: "Under active evidentiary challenge by opposing witnesses."
+  DORMANT:
+    description: "Temporarily inactive; no current decisions depend on it; preserved for future relevance."
+  RESOLVED:
+    description: "Synthesized or formally decided by legitimate authority."
+  SUPERSEDED:
+    description: "Replaced by a newer understanding or higher-order framework."
+
+auto_dormant_rule:
+  condition: |
+    (current_date - last_touched > half_life_days)
+    AND (attention_cost < attention_cost_threshold)
+    AND (decision_relevance < decision_relevance_threshold)
+  transition: "ACTIVE -> DORMANT"
+  rationale: |
+    Transition to DORMANT, NOT SUPERSEDED.
+    Dormant contradictions are not erased; they may later become relevant
+    when decisions touch their problem space again.
+
+priority_formula:
+  direction:
+    increase_with:
+      - "decision_relevance"
+      - "reality_cost"
+    decrease_with:
+      - "age_days"
+      - "attention_cost"
+  expression: |
+    priority_score = (decision_relevance * 0.5 + reality_cost * 0.5) / (1.0 + (age_days / half_life_days) + (attention_cost / 100.0))
 
 schema:
   type: object
   required:
     - contradiction_id
-    - timestamp
     - claim_a
     - claim_b
-    - mutual_exclusivity_proof
-    - contradiction_score
+    - claim_state_a
+    - claim_state_b
+    - attention_cost
     - reality_cost
-    - attention_cost_minutes
-    - active_decision_dependency
+    - last_touched
     - half_life_days
-    - lifecycle_state
+    - decision_relevance
+    - supporting_evidence
+    - contradiction_state
   properties:
     contradiction_id:
       type: string
       pattern: "^contra:[0-9]{8}:[a-z0-9_-]+$"
-    timestamp:
-      type: string
-      format: date-time
     claim_a:
-      type: object
-      required:
-        - claim_id
-        - source_path
-        - statement
-      properties:
-        claim_id:
-          type: string
-        source_path:
-          type: string
-        statement:
-          type: string
-    claim_b:
-      type: object
-      required:
-        - claim_id
-        - source_path
-        - statement
-      properties:
-        claim_id:
-          type: string
-        source_path:
-          type: string
-        statement:
-          type: string
-    mutual_exclusivity_proof:
       type: string
-      minLength: 20
-      description: "Formal proof explaining why Claim A and Claim B cannot be simultaneously true."
-    contradiction_score:
+      description: "Identifier or canonical statement of Claim A."
+    claim_b:
+      type: string
+      description: "Identifier or canonical statement of Claim B."
+    claim_state_a:
+      type: string
+      enum: ["CANDIDATE", "ACTIVE", "CONTESTED", "SUPERSEDED", "DORMANT", "DELIBERATELY_OPEN", "REVOKED", "FORGOTTEN"]
+    claim_state_b:
+      type: string
+      enum: ["CANDIDATE", "ACTIVE", "CONTESTED", "SUPERSEDED", "DORMANT", "DELIBERATELY_OPEN", "REVOKED", "FORGOTTEN"]
+    attention_cost:
       type: number
-      minimum: 0.0
-      maximum: 1.0
+      description: "Attention budget minutes expended by agents/human on this tension."
     reality_cost:
       type: number
       minimum: 0.0
       maximum: 1.0
-    attention_cost_minutes:
-      type: number
-      description: "Human and agent minutes spent cycling on this tension."
-    active_decision_dependency:
-      type: boolean
-      description: "True if any active F13 binary or organ roadmap item depends on resolving this."
-    affected_subgraph:
+      description: "Potential risk or consequence to physical/human reality if unresolved."
+    last_touched:
       type: string
-      description: "Domain or organ affected (e.g., WELL, GEOX, arifOS, HERMES)."
+      format: date-time
+      description: "Timestamp of last invocation or active deliberation."
     half_life_days:
       type: integer
-      default: 90
-    lifecycle_state:
+      default: 30
+      description: "Days before an unreferenced contradiction transitions to DORMANT."
+    decision_relevance:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: "Degree to which an active pending decision depends on this resolution."
+    supporting_evidence:
+      type: array
+      items:
+        type: string
+      description: "Pointers to evidence files, diffs, or witness statements."
+    contradiction_state:
       type: string
-      enum: ["ACTIVE_BLOCKING", "ACTIVE_OBSERVED", "COOLING_HELD", "DORMANT_VOID", "RESOLVED_SYNTHESIZED"]
-    resolution:
-      type: object
-      properties:
-        resolved_at:
-          type: string
-          format: date-time
-        reconciled_by:
-          type: string
-        resolution_strategy:
-          type: string
-          enum: ["SUPERSEDE_A", "SUPERSEDE_B", "DIALECTIC_SYNTHESIS", "VOID_BOTH", "F13_SOVEREIGN_VETO"]
-        crystallized_truth:
-          type: string
+      enum: ["OPEN", "ACTIVE", "CONTESTED", "DORMANT", "RESOLVED", "SUPERSEDED"]
+    resolution_notes:
+      type: string
