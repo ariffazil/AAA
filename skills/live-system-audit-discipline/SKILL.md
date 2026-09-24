@@ -1,7 +1,7 @@
 ---
 name: live-system-audit-discipline
-description: "Use when auditing a live system or reporting probe results, and when writing or reviewing a readiness / status cockpit across many surfaces. Forces evidence-class labelling on every line and the denominator beside every count."
-version: 1.0.0
+description: "Use when auditing a live system or reporting probe results, and when writing or reviewing a readiness / status cockpit across many surfaces. Forces evidence-class labelling on every line and the denominator beside every count. Covers raw-probe discipline, closure vocabulary, sensitive-path inventory, agent self-seal detection, and the symmetry law between artifact creation and verification."
+version: 1.1.0
 license: MIT
 capability_tier: fed-long-context
 ecology_state: WARM
@@ -34,7 +34,13 @@ Rules that follow:
    `measured_at` and `reverified_at` — so a reader can see the age.
 3. **A stale finding is not a wrong finding — record it as superseded, never retract it.**
    "True when measured, closed by commit X at time T" keeps the causal record; deleting it erases
-   the evidence that the measurement ever mattered.
+   the evidence that the measurement ever mattered. Closure language is precise: the available
+   statuses are `mitigated_not_root_caused`, `operationally_stable_not_root_caused`,
+   `superseded_by_<receipt>`, `partially_characterized`, `unknown`, or `closed`. The status
+   `closed` is reserved for a finding whose root cause has been reproduced, patched, and
+   verified — never as a polite closer over unfinished work. An incident whose root cause is
+   not yet reproduced stays at `mitigated_not_root_caused` with a daylight test named; calling
+   it `closed` is the audit reporting the operator's desired state, not the live one.
 4. **A commit landing mid-audit is the loop working, not an error.** Check `git log` timestamps
    against your own probe timestamps before writing "still broken".
 5. **The fix for the defect you are diagnosing may already be committed and simply not deployed.**
@@ -417,6 +423,24 @@ The cockpit form is its own failure shape, distinct from a one-off live probe. A
 
 **P5 — adjudicate the audit, don't summarise it.** A readiness cockpit summarises the operator's obligations; it does not adjudicate them. State the findings, state the evidence class, state the next step that requires F13 / 888 HOLD — then stop. The sovereign closes; the cockpit reflects.
 
+**P6 — citing an anchor that was never read.** An audit session that asserts a section name, line number, or section content without opening the file in the same turn is fabricating the citation, not reading it. The defect compounds quietly: a confident anchor citation in the audit report moves the reader's attention away from verifying the source, and the wrong patch lands on a real but unrelated section. Always read the file before quoting it; if you cannot read it, say "I have not opened this file in this session" rather than naming a line.
+
+**P7 — silently mutating a count without restating which class it belongs to.** When a number changes shape between two reports (a count of skills, callers, or artifacts), the receiving reader has no way to know whether the new number is a different *class* of object (caller vs referenced skill, distinct regex vs expanded regex, etc.) or the same class with different data. The cheaper defect is silently labelling the new count with the old class name. Always restate the defining predicate of any count you report, and any time the count changes across reports name what changed: the predicate, the sample, or both. Two numbers with the same label and different underlying definitions are not the same metric.
+
+**P8 — overriding a measurement with a reason and labelling the result measured.** When an APEX, score, threshold, or rating is produced from a deterministic expression and a reviewer replaces an input value with a reasoned estimate, the resulting number is a reasoning output, not a measurement — but the surrounding language ("score", "X ≥ 0.80", "PASS") still carries measurement semantics. State the override as an override, name the input that was reasoned, and re-label the output. A score whose inputs are mixed measured-and-reasoned is a reasoned estimate; a measured estimate is a contradiction in terms. The same defect applies to any audit field whose inputs include both measured values and operator judgement.
+
+**P9 — an auditor who violates the rule they are auditing is a SCAR-class event, not a footnote.** When an audit session flags a defect class in a target system and the auditor's own behaviour demonstrates the same defect class during the audit (e.g. flags "do not fabricate" and fabricates a citation, flags "no P override" and overrides a score), the audit's standing evaporates: the artefact being audited is now indistinguishable from the auditor's own output. Treat the violation as a constitutional event: register a SCAR, mark the audit session's findings as `provisional pending independent witness`, and route the next-session verification through a different agent or a verified witness path. A footnote on the audit is the surface symptom; the SCAR is the ledger entry that prevents the next auditor repeating the same shape.
+
+**P10 — an agent that declares itself "SEALED · LIVE · COMPOUND" has not ratified anything.** Capability is not authority. A markdown file declaring `status: ratified`, `status: sealed`, `status: constitutional`, or any of the operative authority verbs inside its own front matter is a **self-claim**, not a ratification — the file is the *author* of the claim, not its witness. The same defect class applies to an agent that registers an entity/mode/lens/identity it just named (e.g. `operating_mode: <newname>`) and treats the registration as governance. Treat the artifact as `RATIFICATION_REFUSED` by default until an independent verifier (typically the human principal whose authority was invoked) issues the ratification event. Companion to "Capability ≠ Authority" canon and to the auto-seal doctrine that distinguishes session sealing (machine) from constitutional sealing (human). The recurring shape of which is clearly: file declares `SEAL`, file's own contents cite the file as the seal authority, file is unread by anyone who would have issued the seal. The fix is to require a separate decision artifact (`decision_ref`, F13 event, ratification receipt) that the file references — not the file referencing itself.
+
+**P11 — a failed probe without wall-time, exit-code, stdout, stderr, and parsed value is a bounded UNKNOWN, not a root cause.** When a probe "fails" (no response, parse error, curl returns non-zero, listener not bound), the disposition is *unknown* until each of the following is recorded beside the failure: the wall-clock time of the probe; the curl/python exit code; the response body or stderr; the elapsed duration; and what the parser did with the output (or that there was no parser hit). "Parsing fails for some reason" is not root cause; it is the unmeasured midpoint that has not yet been resolved. The corrective step is rarely complicated — typically it is a controlled re-probe with each field captured — and is the difference between a finding you can hand to the operator and a finding you have to re-discover when the operator asks "but what actually happened?". For probes that return ambiguous responses (e.g. a JSON object with the expected key missing), the post-condition is to **call again with the same payload** before publishing — the first read after a transport is created is not the steady-state read, and pinning a reference from it is the same defect class.
+
+**P12 — sensitive paths are not a "later feature"; they are part of the inventory layer.** A file census that scans `.ssh/`, `.gnupg/`, `.aws/`, `.config/`, `.cache/`, browser profiles, Telegram/WhatsApp stores, `*.env`, `*credential*`, `*token*`, `*secret*`, `*key*`, `*cookie*` without an explicit F13 scope either indexes confidential material it has no business seeing or generates a "complete" count that masks the legitimate perimeter. Privacy is not a post-processor applied after the count is produced — the exclusion list must be enforced at the inventory entry point, with the excluded set recorded as a *coverage statement*, not as silent skips. When in doubt, the rule is **"index by presence, not by content"**: record `path`, `size`, `mtime`, `sha256` for the excluded paths if scope permits, never the body. If scope does not even permit the metadata, the path does not enter the census and the audit reports what it does not see, with a one-line declaration of the exclusion policy.
+
+### The audit-session symmetry law
+
+`WRITE_CONSTRAINT(x) ⇒ READ_VERIFY_CONSTRAINT(x)`. A rule that governs artifact creation must also govern artifact verification under the same epistemology. If an artifact is required to be deterministic-rendered when written (e.g. text-bearing PDFs route through weasyprint / Chrome headless, not image-gen), the verification step is required to use the same reading primitive (pdftotext layer check), not a lossy alternative (vision inspection of the rendered image). Two sides using different epistemologies make the audit itself a source of corruption: a PASS verdict issued through lossy inspection is observationally indistinguishable from a fabricated green. Enforce this at gate design time, not at audit time — once the gate is built, the auditor's choice is removed.
+
 ## A clean report is a claim about the instrument — audit the instrument's own state
 
 A monitor, guard or validator has **state**, and its verdict is computed against that state. When the
@@ -511,3 +535,9 @@ entropy / produce a removal map before deleting: the probe set (port→unit map,
 units, ExecStart-missing orphans, git-dirt sweep, resource attribution, store census), the eight
 disposition buckets, the P0→P8 order, the batch-and-canary rule, the authority boundary that stops an
 unverified session, and the false positives that make a "safe to delete" list wrong.
+
+`references/artifact-disposition-vocabulary.md` — the six precise status terms (PRESENT_IN_WORKSPACE,
+UNRATIFIED, RATIFICATION_REFUSED, QUARANTINED_REGISTRY_ONLY, CANONICAL, ARCHIVED) and the incident
+closure-language set, with the false-claims each prevents. Apply when any artifact's standing
+needs to be reported in an audit, manifest, or registry record — and especially when an
+artifact's own front matter contains an authority verb about itself.

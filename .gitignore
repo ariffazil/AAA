@@ -147,3 +147,5 @@ state/event-bridge/*.jsonl
 state/event-bridge/*.last_hash
 state/ops-fabric/**/*.json
 state/ops-fabric/**/*.jsonl
+memory/private/
+state/vectors/

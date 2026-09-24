@@ -188,6 +188,49 @@ output:
 
 Tool path: `forge_worktree` per repo → `forge_git_status` → `forge_git_log` → GitHub API for permissions.
 
+**Privacy boundary is part of the graph boundary, not a later feature.** A federation
+inventory that walks `/root` unfiltered will hash and index credentials, private keys,
+personal Telegram/WhatsApp caches, browser state, and `.env` files alongside canon. Once
+indexed, those SHA-256s and counts sit in a report that gets referenced and forwarded;
+reversing the disclosure is much harder than not collecting it. Apply the default exclusion
+list **before** the first `os.walk`:
+
+```yaml
+default_exclusions:
+  - "**/.git/**"            # repo secrets may exist in objects
+  - "**/.ssh/**"            # SSH private keys
+  - "**/.gnupg/**"          # GPG keys
+  - "**/.aws/**"            # cloud credentials
+  - "**/.config/**"         # token stores, service configs
+  - "**/node_modules/**"    # generated noise
+  - "**/__pycache__/**"     # generated noise
+  - "**/.cache/**"          # cache, may include conversation history
+  - "**/*.env"              # literal .env files
+  - "**/*credential*"       # filename match
+  - "**/*token*"
+  - "**/*secret*"
+  - "**/*key*"
+  - "**/*cookie*"
+  - "**/browser-profile/**"
+  - "**/Telegram/**"        # personal / family chats
+  - "**/WhatsApp/**"
+exceptions:
+  - explicit_F13_scope_required   # never widen without F13
+```
+
+Rules:
+
+- **Apply exclusions at the inventory walker, not at the report.** Removing sensitive rows
+  after the SHA-256 is already computed is "delete after read" — the bytes were touched.
+- **A file census can record count and path policy without reading sensitive contents.**
+  Hashing reads the bytes. Counting does not. Count, do not hash, anything in scope before
+  exclusions land.
+- **A previous unfiltered scan is not safe to republish.** If an earlier inventory walked
+  sensitive roots, do not re-emit its full hash table; report the scope, the counts, and
+  which roots should have been excluded, then propose a re-scan with the boundary in place.
+- **Expanding scope into `.ssh/.aws/.gnupg/` is exactly what should never happen
+  automatically.** Anyone wanting those counts must ask.
+
 ### `map` — Architecture and critical paths
 
 Orchestrates: `code-wiki`, `aaa-agent-invariants`

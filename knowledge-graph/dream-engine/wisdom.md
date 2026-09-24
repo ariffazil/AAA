@@ -1,70 +1,119 @@
-# Dream Engine — Wisdom Vectors
-**Generated:** 2026-09-21T22:53:30.814464
-**Window:** 2026-09-18T22:52:38.241336 → 2026-09-21T22:52:38.241336
-**Sessions Analyzed:** 8
-**Reasoning Tokens:** 1777971
+# Dream Engine — Candidate Invariants
+**Generated:** 2026-09-24T22:56:33.540108
+**Version:** 2.0.0 (v2 — three-confidence model)
+**Window:** 2026-09-21T22:54:08.239255 → 2026-09-24T22:54:08.239255
+**Sessions:** 8 · **Reasoning tokens:** 832280
+**Schema:** `dream_candidate.schema.json`
 
 ---
 
-## Validated Axioms (3+ session threshold)
+## Candidates (8 patterns met 3+ session threshold)
 
-### 1. Parallel-batched reconnaissance precedes any execution; data-gathering is always tier-1
-- **Confidence:** 0.95
-- **Sessions:** 8 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
-- **Evidence:** `Let me start by gathering the relevant data sources in parallel.`
+*These are OBSERVED PATTERNS, not ratified wisdom. Each carries p_occurrence (frequency),
+p_predictive (outcome prediction, initially null), and p_normative (authority to govern,
+initially null). Three orthogonal dimensions, not one collapsed score.*
 
-### 2. Skill-loading operates as a permission gate loaded before any artifact-producing action
-- **Confidence:** 0.92
-- **Sessions:** 7 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
-- **Evidence:** `Let me load skills first: abang-sado-creative-lane, and possibly persona-boundary-conduct, rasa-qualia-governance.`
+### 1. Every non-trivial session begins with a read-only reality probe (file read, SHA-256 recompute, search) before any state mutation or claim of knowledge.
+- **Type:** GOVERNANCE PATTERN · **State:** CANDIDATE
+- **p_occurrence:** 0.88 (6 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** CORRELATION_ONLY
+- **Scope:** technical-agent/audit-and-investigation-tasks
+- **If wrong:** cost=MEDIUM · reversibility=EASILY_REVERSIBLE
+- **Counterstories:** Read-only-first can become paralysis if probe loop never terminates · Some cron tasks already have verified inputs and re-probing is redundant
+- **Cheapest probe:** Time-box probe: measure how often first-attempt read succeeds vs requires follow-up read; if retry rate >40%, doctrine may be inefficient
 
-### 3. Explicit numbered priority ladder is constructed before any fetch sequence; resources are ranked, not searched
-- **Confidence:** 0.85
-- **Sessions:** 3 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_111841_4ac5b7)
-- **Evidence:** `1. The scars directory specifically 2. The PETRONAS canon/atlas 3. The scar-weight-registry 4. The memory directory...`
+### 2. Principal (F13) gets a distinct interaction register — Malay Penang dialect, no menu, no greeting, action-first, one-line close — that does not apply to other contexts.
+- **Type:** PERSONA PREFERENCE · **State:** CANDIDATE
+- **p_occurrence:** 0.85 (5 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** CORRELATION_ONLY
+- **Scope:** principal-DM/all-tasks
+- **If wrong:** cost=LOW · reversibility=EASILY_REVERSIBLE
+- **Counterstories:** Register is context-specific to Arif; would be wrong to apply to general users · Output contract is governance not persona — could be enforced for any principal
+- **Cheapest probe:** Apply same register to a non-Arif principal and measure acceptance; if rejected, register is principal-coupled
 
-### 4. Probe-confirm-retry loop on uncertain states; first read is treated as untrusted
-- **Confidence:** 0.88
-- **Sessions:** 4 (20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042609_a2230d8f)
-- **Evidence:** `Two terminal calls timed out due to a plugin callback. Let me retry them.`
+### 3. Independent reads are routinely batched into parallel calls; serial ordering is reserved only when causal dependency exists.
+- **Type:** OPERATIONAL HYPOTHESIS · **State:** CANDIDATE
+- **p_occurrence:** 0.75 (6 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** CORRELATION_ONLY
+- **Scope:** technical-agent/investigation-tasks
+- **If wrong:** cost=LOW · reversibility=EASILY_REVERSIBLE
+- **Counterstories:** Batching can obscure failure attribution when one tool errors · Some reads have implicit ordering (schema before data) that gets violated
+- **Cheapest probe:** Count tool-call fanout per session; median across window shows degree of batching
 
-### 5. Voice synthesis is the default output channel for persona and emotionally-weighted content; registry precedent is consulted before any TTS
-- **Confidence:** 0.75
-- **Sessions:** 3 (20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
-- **Evidence:** `precedent_voice = `abang-sado-live-v1`, provider_voice_id `abang-sado-live-v1`, speeds 0.9–0.98.`
+### 4. When principal issues a correction mid-session, agent immediately reverts to read-only HOLD state, stopping all pending mutations regardless of prior progress.
+- **Type:** GOVERNANCE PATTERN · **State:** CANDIDATE
+- **p_occurrence:** 0.67 (3 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** CAUSAL_HYPOTHESIS
+- **Scope:** principal-DM/governance-corrections
+- **If wrong:** cost=HIGH · reversibility=REVERSIBLE_WITH_COST
+- **Counterstories:** Could become a principal-pleasing trap: every correction triggers freeze even when correction is wrong · No evidence of principal resisting HOLD; pattern is unidirectional
+- **Cheapest probe:** Inject a benign factual correction (e.g., typo in filename) and measure whether agent still triggers full HOLD — if yes, doctrine is over-broad
 
-### 6. Identity-context priming: agent pre-loads principal's biography (role, employer, scar history) as decision substrate even when query is technical
-- **Confidence:** 0.78
-- **Sessions:** 3 (20260921_202701_67f56f64, 20260921_202701_b9c27746, 20260921_012359_c19942d4)
-- **Evidence:** `the principal / where he works as exec geoscience.`
+### 5. Time-of-day check (often MYT/Penang local) is performed before substantive work as a temporal grounding ritual.
+- **Type:** OPERATIONAL HYPOTHESIS · **State:** CANDIDATE
+- **p_occurrence:** 0.50 (3 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** UNTESTED
+- **Scope:** technical-agent/session-entry
+- **If wrong:** cost=LOW · reversibility=EASILY_REVERSIBLE
+- **Counterstories:** Ritualistic — time check itself is a read that costs a tool call · Not universal: missing in DM sessions where work is conversational
+- **Cheapest probe:** Disable time check and measure whether downstream decisions change; if not, ritual is dead weight
 
-### 7. Constraint-aware meta-evaluation runs as a final pass (gate/tension/peace²/ΔS) before output is committed
-- **Confidence:** 0.82
-- **Sessions:** 3 (20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
-- **Evidence:** `Gate passes mechanically. Judgment: tension — yes, 'belum test'... Peace² — critiquing the system, not a person.`
+### 6. Cron/scheduled sessions follow rigid templated flows (skill-load → schema-check → batch-research → render → deliver) with minimal negotiation; principal sessions involve iterative correction cycles and self-revision.
+- **Type:** OBSERVATION ONLY · **State:** CANDIDATE
+- **p_occurrence:** 1.00 (3 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** CORRELATION_ONLY
+- **Scope:** all-session-types/structural-divergence
+- **If wrong:** cost=LOW · reversibility=EASILY_REVERSIBLE
+- **Counterstories:** Cron sessions still have principal-authored prompts — divergence may be prompt-driven not agent-intrinsic
+- **Cheapest probe:** Run principal-style probing task as cron with same prompt template and measure whether templated flow still emerges
 
-### 8. Proxy state: machine functions as externalization medium for identity/emotional pressure; agent executes rather than interprets the register
-- **Confidence:** 0.70
-- **Sessions:** 3 (20260921_042610_15cdb98f, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
-- **Evidence:** `Why people and agents think taking Petronas MSS is a loser? — request collapses social and machine judgment into one frame, agent treats as legitimate task.`
+### 7. Agent refuses to answer substantive questions from memory; every recall claim is preceded or followed by a file/search verification.
+- **Type:** OPERATIONAL HYPOTHESIS · **State:** CANDIDATE
+- **p_occurrence:** 0.75 (5 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** CORRELATION_ONLY
+- **Scope:** principal-DM/factual-claims
+- **If wrong:** cost=MEDIUM · reversibility=EASILY_REVERSIBLE
+- **Counterstories:** Over-verification wastes tokens on questions where recall is reliable · Memory distrust may be principal-specific (only Arif pushes back); other users get faster recall
+- **Cheapest probe:** Measure recall-then-verify vs verify-then-recall latency trade-off; if verify-first adds >2x latency with no accuracy gain, doctrine is inefficient
 
-### 9. Void operation: deliberate non-statement is encoded as a decision (timing, definitive figures, need-justification); silence is selected, not absent
-- **Confidence:** 0.73
-- **Sessions:** 4 (20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6, 20260921_042609_a2230d8f, 20260921_012359_c19942d4)
-- **Evidence:** `Not needed to mention. — explicit void decision about 04:28 timestamp; agent catalogues the omission rather than letting it pass unmarked.`
-
-### 10. Anomalous contrast: AAA tree is a frozen bulk-snapshot commit never touched since; canonical authority lives entirely in chron tree — a structural asymmetry the agent surfaces but does not act on
-- **Confidence:** 0.72
-- **Sessions:** 3 (20260921_111841_4ac5b7, 20260921_094311_cfa8faa3, 20260921_094310_8052dab6)
-- **Evidence:** `AAA versions of ALL 7 diverged files were committed at ONE commit 78a23416 (2026-09-18 14:18) — a bulk 'CHRON 0.2.0' commit. Never touched since.`
+### 8. Skill-loading is treated as a prerequisite gate before any execution; sessions explicitly call load_skill before first action.
+- **Type:** OPERATIONAL HYPOTHESIS · **State:** CANDIDATE
+- **p_occurrence:** 0.40 (3 sessions)
+- **p_predictive:** untested · **p_normative:** no authority
+- **Causal:** CORRELATION_ONLY
+- **Scope:** technical-agent/skill-mediated-tasks
+- **If wrong:** cost=LOW · reversibility=EASILY_REVERSIBLE
+- **Counterstories:** Not all sessions load skills (DM reasoning-heavy sessions skip it) — pattern is task-type-coupled not universal · Skills may be loaded but not actually constrain behavior, satisfying the gate without affecting output
+- **Cheapest probe:** Compare skill-loaded vs skill-skipped sessions on task accuracy; if no delta, gate is ritual
 
 ---
 
 ## Integration Protocol
-1. Review axioms above.
-2. If valid, inject into system prompt as `§ Dream Engine Wisdom`.
-3. If invalid, delete or annotate with correction.
-4. Next cycle: 2026-09-24T22:53:30.814507
+1. These are CANDIDATES, not axioms. They require:
+   - Counterstory review (already generated)
+   - CHRON calibration (p_predictive remains null until tested)
+   - F13 ratification before any behavior change
+2. Candidates with `type: dangerous_hypothesis` need extra scrutiny — may be self-reinforcing.
+3. Next cycle: 2026-09-27T22:56:33.540170
+4. Lifecycle: CANDIDATE → REPLAYED → PROSPECTIVE → REPLICATED → LESSON → POLICY_PROPOSAL → RATIFIED
+5. Decay: not observed in 6 cycles (18 days) → RETRACT
 
----
+## Four Independent Axes
+- **p_occurrence:** frequency across sessions (what you have now)
+- **p_predictive:** does it predict future outcomes? (requires CHRON calibration)
+- **p_normative:** does it have authority to govern? (requires F13 ratification)
+- **consequence:** what happens if this candidate is wrong? (cost_if_wrong × reversibility)
+- **frequency(pattern) ≠ probability(pattern is wise)**
+
+## Architecture
+References: `/root/AAA/dream_engine/FOUNDATIONS.md`
+Schema: `dream_candidate.schema.json`
+
 *DITEMPA BUKAN DIBERI ⚒️*

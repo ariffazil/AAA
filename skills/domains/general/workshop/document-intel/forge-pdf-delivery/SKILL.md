@@ -69,6 +69,20 @@ The five checks above prove the file renders. They do **not** prove the document
 - **NEVER claim an attachment you did not build.** If a reply says "[PDF Attachment]" but no file was created and no `MEDIA:` path was included, that is fabrication — the user WILL call it out ("Tepek sini"). Recovery: build the real file via the pipeline above, deliver with `MEDIA:/abs/path.pdf`, and own the miss plainly in one line. The `file <path>` verify step exists precisely to gate this.
 - **Simple one-pagers can use reportlab directly** (`from reportlab.pdfgen import canvas`) when the content is headings + bullets, no markdown source needed. Still verify with `file output.pdf` → `PDF document` and still deliver via `MEDIA:` with a durable path (forge_work), not `/tmp`.
 
+## Text-Bearing Artifact Routing (F13 ratified 2026-09-24)
+
+The skill enforces one routing rule for any artifact where exact text matters:
+
+1. **Text-bearing artifact (logo, poster, dokumen, infografik, artifact gaya-chat)** → render deterministically. Use this pipeline (`weasyprint`, `google-chrome --headless`, `pandoc`, or `reportlab` as documented above). Never call a generative image model (`image-01`, `minimax-image-gen`, `qwen-image`, etc.) for an artifact whose value depends on the literal text it carries.
+2. **Generative image model** → only for content without text: mood, tekstur, cahaya, pemandangan. Treat any text the model emits as decorative, never authoritative.
+3. **Gate before claim:** when the deliverable carries text, verify via text-layer (`pdftotext -f N -l N <file>.pdf -`) not model eyes. If the text-layer check is missing or wrong, the artifact is not built — fix and re-render.
+
+Why: diffusion text-to-image reliably corrupts spelling, fabricates plausible-looking gibberish, and inserts phantom glyphs/watermarks. The class is structural, not a model/tune defect. Read-side `poster-vision-extraction` (SCAR 2026-08-27) already forbids fill-from-memory on visual reads; this rule is the write-side mirror.
+
+Scope: this routing rule does not change the engine, the toolchain, or any code path. It routes existing artifacts to the deterministic renderer that already shipped here. No new skill, no new MCP, no new API call.
+
+Companion reference: `domains/general/workshop/creative-design/civic-social-infographic/SKILL.md` — same routing applied to civic posters and infographics (HTML+CSS → Chrome headless → PNG, never image-gen).
+
 ## Companion pattern
 
 For live market data charts that get delivered the same way (PNG image via MEDIA:), see `forge-finance-chart-delivery` — same verify-then-deliver discipline, same forge_work destination convention.

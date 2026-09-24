@@ -83,8 +83,70 @@ file/code/system state, the receipt must follow in the **same response turn**.
 2. Live probe output: terminal/curl/SQL/MCP tool output quoted in reply
 3. Code execution: `execute_code` output attached
 
+**Raw-trace standard for any probe-based claim.** "Parsing fails for some reason" is not a
+root cause; it is a bounded UNKNOWN. Every probe that is referenced as evidence — for an
+incident, a watchdog, a service health check, a forensic — must show, in the same response:
+
+| Field | Why it matters |
+|---|---|
+| exact command | lets the reader reproduce, not just believe |
+| stdout | what the system actually said |
+| stderr | what the system warned / errored |
+| exit code | distinguishes transport failure from response-shape failure |
+| elapsed time | distinguishes cold-boot from hung-process from connection-refused |
+| parsed value | separates JSON parse failure from successful read of unexpected shape |
+
+Without all six, the claim "the probe shows X" reduces to a story about a probe. Story is not
+evidence.
+
 **Consequence:** Tag-without-receipt = soft F2 TRUTH violation. Detection → next reply must
 produce receipt or retag `[SPEC]`. Repeat across turns → F11 AUDIT escalation.
+
+## Artifact Disposition Vocabulary
+
+Capability ≠ Authority. Registry label ≠ File mutation. Six canonical status values for any
+artifact that touches constitutional substrate. Pick one and stick to it; mixing causes the
+two failures below.
+
+| Status | Meaning | May apply | Mutates file? |
+|---|---|---|---|
+| `PRESENT_IN_WORKSPACE` | File exists at a known path; nothing else claimed | Inventory tool / agent | No |
+| `UNRATIFIED` | Not approved as canonical / constitutional | Agent reports; F13 promotes | No |
+| `RATIFICATION_REFUSED` | Cannot be treated as ratified under current governing constraints; clause-level reasons attached | Agent issues reasons | No |
+| `QUARANTINED_REGISTRY_ONLY` | Registry record blocks promotion/use pending review; original file untouched | Agent applies within registry scope | No |
+| `CANONICAL` | Approved source of reusable system truth | F13 via canon-mutate workflow only | Yes — canonical write path |
+| `ARCHIVED` | Retained historical artifact, not active operating input | F13 or approved lifecycle workflow | Potentially |
+
+**Failure shape A — refusal described as holding.** "Hermes held the file" is wrong. Hermes
+**refused ratification** and applied a **registry-only quarantine**. The file was at its
+original path because of path / capability constraints, not because of any governance
+decision. Conflating the two collapses capability (where the file happens to be) into
+authority (whether it is canonical), which the rest of the federation relies on never
+happening.
+
+**Failure shape B — registry label described as file action.** A `QUARANTINED_REGISTRY_ONLY`
+record stands alongside the file; it does not move, copy, edit, or delete the original.
+Saying "the file was moved to /quarantine/" when only a registry record was created is the
+same defect as a fictional migration — it makes a label appear to do work it never did, and
+later auditors will not be able to reconcile filesystem state against the report.
+
+**Promotion gate fields** (always present on a quarantine/refusal record):
+
+```
+artifact_status:
+  storage: <one of six above>
+  canonical_status: UNRATIFIED | RATIFIED
+  ratification_disposition: <pending | refused | accepted>
+  promotion_gate: <clear | blocked_pending_review>
+  registry_status: <clear | quarantined_registry_only>
+  file_action: NONE | <describe>
+  original_integrity: <preserve | hash-locked: sha256:...>
+```
+
+**File action must be NONE** for any artifact whose disposition is one of the first five
+statuses. The only status that licenses a file action is `CANONICAL` (via canon-mutate) or
+`ARCHIVED` (via lifecycle workflow). Anything else, the file is at its original path with
+its original bytes; the registry record is the authoritative disposition.
 
 ---
 

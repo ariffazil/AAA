@@ -97,6 +97,9 @@ EOF
 ### 1. Matplotlib can't wrap text
 Filled body text in matplotlib cards overflows silently. **Use HTML+CSS** for any infographic with body text. Reserve matplotlib for decorative numbers and external chart PNGs.
 
+### 1b. Text-bearing artifact routing (F13 ratified 2026-09-24)
+Any infographic whose value depends on the literal text it carries (logos, posters, documents, chart labels, civic copy) **must render through the deterministic path this skill already documents** (HTML+CSS → `google-chrome --headless` → PNG, measure-crop, audit-tag every number). Generative image models (`image-01`, `minimax-image-gen`, `qwen-image`, etc.) are reserved for content without text: mood, tekstur, cahaya, pemandangan. The text a generative model emits is decorative, never authoritative — verify with text-layer tools (`pdftotext`, `pdftotext -layout`, or image-to-text OCR where the deliverable is PNG), not by visual inspection. This is the write-side mirror of `poster-vision-extraction` (SCAR 2026-08-27, read-side).
+
 ### 2. CSS class colour selectors silently no-op on `.vf.X` patterns
 When child `<div>` is inside a flex parent, complex class selectors sometimes lose specificity. **Always inline the colour and width on the bar fill:**
 ```html
