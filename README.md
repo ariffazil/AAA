@@ -15,14 +15,15 @@ public_ingress:
 
 attention_formula:
   P = (Impact × Urgency × EvidenceQuality × Novelty) / AttentionCost
-  EvidenceQuality = (1 - Uncertainty) × Reversibility
+  EvidenceQuality = (1 - Uncertainty)   # source + freshness + reproducibility + independent support ONLY
+  ActionRisk = f(Impact, Reversibility, BlastRadius)   # separate gate — NEVER folded into P
 
 hard_overrides:
   - authority_violation: P = ∞
   - security_breach:    P = ∞
   - deadline_expiry:    P = ∞
   - failed_invariant:   P = ∞
-  - irreversibility_floor: P ≥ 0.85
+  - action_risk_gate: Reversibility-blocked actions are surfaced to Arif regardless of P ranking (F13 2026-09-25: risk ≠ evidence quality; see AAA/blueprints/A-FORGE-UNKNOWN-OUTCOME-SPEC-v1.md §risk)
 
 organs_in_federation:
   arifOS:    authority plane     (irreducible: "May this action happen?")
@@ -147,7 +148,7 @@ Every UI projects from one machine-readable object — no dashboard code, no N d
 P = (Impact × Urgency × EvidenceQuality × Novelty) / AttentionCost
 ```
 
-where `EvidenceQuality = (1 - Uncertainty) × Reversibility`.
+where `EvidenceQuality = (1 - Uncertainty)` — evidence quality covers source, freshness, reproducibility, and independent support **only**. *(F13 2026-09-25: `Reversibility` is no longer folded into EvidenceQuality — it was double-counted here and in the floor override below. Reversibility now lives in the separate **ActionRisk** gate: a strongly-evidenced irreversible action still routes to Arif; evidence strength never manufactures reversibility.)*
 
 ### Hard overrides (force P = ∞, must-show)
 
@@ -157,7 +158,7 @@ where `EvidenceQuality = (1 - Uncertainty) × Reversibility`.
 | `security_breach` | Integrity compromised |
 | `deadline_expiry` | Temporal urgency hit zero |
 | `failed_invariant` | Canon-0 violation |
-| `irreversibility_floor` | P ≥ 0.85 (high floor, not ∞) for irreversible actions |
+| `action_risk_gate` | Reversibility-blocked action — surfaced to Arif regardless of P *(F13 2026-09-25: replaces double-counted `irreversibility_floor: P ≥ 0.85`)* |
 
 The system can say **"Don't show Arif this now"** — that is its most valuable capability.
 
