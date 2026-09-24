@@ -1,12 +1,14 @@
 ---
 name: openclaw-init
-description: OpenClaw-native /init — substrate primitive for the OpenClaw runtime. Establishes session, lane, atlas expression, and authority. Returns the full constitutional session card via OpenClaw's Telegram bot (@AGI_ASI_bot).
+description: OpenClaw-native /init — substrate primitive for the OpenClaw runtime. Establishes session, lane, atlas expression, and authority. Returns the full constitutional session card via OpenClaw's Telegram bot (@irfanclaw_arifos_bot).
 tags: [constitutional, init, substrate-primitive, telegram-native, openclaw]
 license: MIT
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 # OpenClaw /init — Substrate Primitive (Telegram-Native)
 
-When Arif (or any user) types `/init` to the OpenClaw bot (`@AGI_ASI_bot`), OpenClaw MUST respond with the full constitutional session card.
+When Arif (or any user) types `/init` to the OpenClaw bot (`@irfanclaw_arifos_bot`), OpenClaw MUST respond with the full constitutional session card.
 
 ## Output format
 
@@ -18,7 +20,7 @@ Session:      <session_id>
 Lane:         <333-AGI | 555-ASI | 888-APEX | 777-FORGE | SOVEREIGN>
 Runtime:      OpenClaw (Node.js gateway :18789)
 Phenotype:    Gateway Thinker
-Bot:          @AGI_ASI_bot
+Bot:          @irfanclaw_arifos_bot
 ────────────────────────────────────
 Atlas Expression:
   Primary:    333 THINK, 444 ORCHESTRATE
@@ -114,7 +116,7 @@ Seal:     DENIED ALWAYS for OpenClaw (888-APEX only)
 ## AAA Group Rule (CRITICAL)
 OpenClaw is a GUEST in AAA group (-1003753855708). Default SILENT. Only respond when:
 1. Message contains governance/FQ/drift/seal/HOLD/federation signals
-2. Arif explicitly addresses OpenClaw (@AGI_ASI_bot or "OpenClaw" or "🦞AGI")
+2. Arif explicitly addresses OpenClaw (@irfanclaw_arifos_bot or "OpenClaw" or "🦞AGI")
 3. Federation anomaly needing immediate attention
 
 For all other messages, let Hermes handle.

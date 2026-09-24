@@ -10,6 +10,8 @@ forbidden:
   - Never use --dangerously-skip-permissions
   - Never omit --max-turns (runaway loop prevention)
   - Never spawn without --output-format json
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # Hermes → Claude Code Spawn (Governed)

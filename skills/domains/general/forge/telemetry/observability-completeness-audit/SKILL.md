@@ -142,6 +142,32 @@ When you are asked what to fix, this order beats severity-ranked lists:
    view mapping legacy values plus a write-side change, leaving history verbatim.
 4. **New columns last.** Three more columns in an unread table is not progress.
 
+## Auditing a RECURRING artifact's link into the improvement loop
+
+"Do we have full observability?" has a sibling that arrives about one specific object:
+*"is this thing linked to the whole system for improvement?"* — asked about a cron job, a daily
+report, a generated card. It is not answered by the artifact being scheduled, nor by it being
+well-formed. Four links must exist and each is independently checkable:
+
+1. **A writer into the knowledge graph.** The artifact must land as structured records somewhere
+   queryable, not only as a file. Check by **querying the graph** for the artifact's own identity and
+   counting records for the period — never by finding the script that was supposed to write them. The
+   adapter existing is a claim about intent; the records existing is the finding.
+2. **A drift comparator.** Something must compare this run against N-1 / N-7 / N-30 and state the
+   delta. Without it the artifact can silently lose a source or a dimension and every run still looks
+   complete. A run that cannot be diffed against its own history is not improvement-capable.
+3. **A declared register of known blind spots.** The artifact's missing sensors must be written down
+   where the next run reads them. An unstated blind spot is re-discovered on every render, and a
+   fallback source that is not labelled reads as coverage.
+4. **A stable claim identity that survives re-render.** If the same claim is regenerated under a
+   fresh id each time, nothing can track whether it was ever verified, contradicted or retracted.
+   Identity must be **content-derived** (a hash over the claim); any position-derived counter belongs
+   in a separate audit field, never as the identity itself — a counter restarts on re-render and
+   silently re-identifies old material as new.
+
+Report a link-by-link verdict. "Scheduled and rendering correctly" is a statement about the writer,
+and it is compatible with all four being absent — which is the answer the question actually wants.
+
 ## Pitfalls
 
 - **Do not quote a row count from any document, including your own earlier report.**

@@ -134,6 +134,12 @@ When Arif sends an image to Telegram:
 
 Any agent can call `555-ASI-VISION` with OCR prompt. The output is always gated through 555-ASI before reaching reasoning.
 
+### 5.4 Slide-deck fallback (PDFs that look text-empty)
+
+When `pdftotext` returns <200 chars on a multi-page PDF, the body
+slides are image-rendered. Probe, fall back, vision_analyze per page.
+See `references/slide-deck-vision-fallback.md` for the full pattern.
+
 ---
 
 ## 6. Non-Goals
