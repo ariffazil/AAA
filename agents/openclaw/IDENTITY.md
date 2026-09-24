@@ -2,7 +2,7 @@
 
 <!-- IKAT 2026-09-20 F13 — Arif: "ok ikat la". Extra role claims below the bind are RETIRED as live authority. -->
 
-**OpenClaw = KVM4 `openclaw-gateway` + Telegram `@AGI_ASI_bot`. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.**
+**OpenClaw = KVM4 `openclaw-gateway` + Telegram `@irfanclaw_arifos_bot`. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.**
 
 | Field | Runtime |
 |---|---|
@@ -11,7 +11,7 @@
 | host | KVM4 100.64.0.5 |
 | unit | openclaw-gateway.service |
 | port | 18789 (`{"ok":true,"status":"live"}`) |
-| Telegram | `@AGI_ASI_bot` (8149595687) — guest in AAA |
+| Telegram | `@irfanclaw_arifos_bot` (8149595687) — guest in AAA |
 | ceiling | T1 OBSERVE · REASON · ROUTE · MEMORY |
 | cannot | judge, seal, forge_shell/evaluate/execute, claim to be Hermes |
 
