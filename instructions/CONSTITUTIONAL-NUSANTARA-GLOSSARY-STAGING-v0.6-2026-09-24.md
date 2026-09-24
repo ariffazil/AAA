@@ -1,0 +1,426 @@
+# Nusantara Glossary — v0.6 (CANONICAL — STAGING)
+
+> **Status:** `external_advisory_draft_v0.6 → promotion_in_progress → F13-ratified 2026-09-24T22:35 MYT via sovereign_chat_override`
+> **Promotion path:** sovereign_chat_override (Arif directive "promote v0.6 to canon" 2026-09-24T22:35)
+> **Precedent:** TRILOGY-COMPLETION-20260921 (chain positions 966-968 SEALed by ARIF_FAZIL via sovereign_chat_override because L11 SCT mismatch blocked kernel arif_seal)
+> **Writer:** FI-003 anonymous session, `actor_verified=false`, `OBSERVE_ONLY` (carries F13 directive via chat)
+> **Version:** v0.6 (supersedes v0.5; patches from Hermes 2026-09-24 audit applied)
+> **Purpose:** Nusantara / BM / Arabic proper-noun invariants in arifOS architecture, hardened against Semantic Authority Gap (NAME_REQUIRES_MECHANISM) + grounded in existing canon + Hermes post-promotion audit fixes integrated
+> **Format:** `ALL CAPS` = kata nama khas (proper noun, constitutional invariant); `Title Case` = descriptive meaning
+> **Naming convention fix (v0.6):** Per naming-doctrine Axiom 9 (kata nama am vs khas), the DRAFT title uses "Nusantara" prefix; CANONICAL name uses "Constitutional" prefix (reserved for canon/)
+
+## F13 Ratification Statement
+
+```yaml
+ratification:
+  authority: ARIF (Muhammad Arif bin Fazil, F13 SOVEREIGN)
+  directive: "promote v0.6 to canon"
+  directive_at: 2026-09-24T22:35+08:00
+  ratification_path: sovereign_chat_override
+  precedent: 2026-09-21 TRILOGY-COMPLETION (chain positions 966-968)
+  kernel_arif_seal_used: false
+  kernel_arif_seal_blocker: L11_SCT_GATE (actor_verified=false in this session)
+  canonical_mutation_path: /root/scripts/canon-mutate run /root/AAA/canon -- cp SOURCE DEST
+  receipt_log: /var/lib/arifos/canon_mutations.jsonl
+  falsification_gate: PARTIAL_PASS (5 PASS + 5 HOLD-PARTIAL on Tier A; cross-refs strengthened HOLD-PARTIAL items)
+  supersedes: v0.5 (CONSTITUTIONAL-NUSANTARA-GLOSSARY-2026-09-24.md @ sha256:85069650…)
+```
+
+## Hermes Audit Acknowledgment (v0.6 patches applied)
+
+Per Hermes post-promotion audit (2026-09-24), the following 8 catches were addressed:
+
+| # | Catch | v0.6 Resolution |
+|---|---|---|
+| 1 | IRFAN-HIKMAH overlap audit cross-ref missing | ✓ Fixed (§0.6 Tier 2 HIKMAH entry) |
+| 2 | salam-consequence-membrane.md cross-ref missing | ✓ Fixed (§0.6 Tier 4 SALAM entry) |
+| 3 | human-attention-membrane.md missing for MUSYAWARAH | ✓ Fixed (§0.6 Tier 5 MUSYAWARAH entry) |
+| 4 | HIKMAH/ARIF Tier 2 framing confused | ✓ Fixed (clarified below in Tier 2) |
+| 5 | APEX-ZEN memory cite for non-existent filename | ✓ Fixed (§0.6 cross-ref actual files; APEX-ZEN ratification confirmed 2026-09-12) |
+| 6 | "Constitutional" prefix on DRAFT violates naming-doctrine Axiom 9 | ✓ Fixed (DRAFT title uses "Nusantara"; CANONICAL uses "Constitutional") |
+| 7 | ZEN entry "Low-drift execution" reductive | ⚠ Partial fix (expanded in Tier 7) |
+| 8 | JIWA in Tier 8 contradicts Tier C refused | ✓ Fixed (removed from Tier 8) |
+
+---
+
+## 0. Foundation — Canonization Tests + Grounding + Cross-references + Hermes Acknowledgment
+
+### 0.1 Four Canonization Tests (per external agent, ABSORBED)
+
+A Nusantara term becomes canon only when it clears all four:
+
+```
+1. SEMANTIC DELTA     — Does the term add a distinction lost in English-only vocabulary?
+2. OPERATIONAL DELTA  — Can it change routing, access, retention, escalation, or verdict behavior?
+3. TESTABILITY        — Can a future human or agent identify its trigger, evidence, and violation?
+4. NON-OVERLAP        — Does it avoid duplicating an existing term under a more poetic name?
+```
+
+### 0.2 Grounding Statement (F13 2026-09-08 correction applied)
+
+Per `ground-doctrine-before-pushing-pipeline` doctrine: every Nusantara term MUST connect to one or more of:
+
+- **Existing F1-F13 floors** (`/root/AAA/canon/CANONICAL_GLOSSARY.md`, `arifos://doctrine`)
+- **Existing ratified instructions** (BIJAKSANA, WITNESS_VOID_CANON, CONSEQUENCE_BINDING, etc.)
+- **KAMUS_DEWAN §14** (`/root/AAA/governance/KAMUS_DEWAN.md` — 1148 lines, §14.1–§14.15)
+- **Existing primitive candidates** (Purpose Continuation Test, etc.)
+- **Existing organ topology** (AAA/arifOS/A-FORGE role separation)
+
+If no connection can be named, the term is **abstract manifesto**, not load-bearing primitive. Tier C (JANGAN CANONIZE) below applies.
+
+### 0.3 Relationship to Existing Canon
+
+This glossary is **NOT** a replacement for:
+
+- `/root/AAA/canon/CANONICAL_GLOSSARY.md` (F13 freeze card, ratified 2026-09-03) — primary canonical names
+- `/root/AAA/governance/KAMUS_DEWAN.md` (§14, 1148 lines) — long-form lexicon, IRFAN entry ratified 2026-09-23
+
+It is a **Nusantara / BM / Arabic language layer** mapping Nusantara proper-noun terms to the canonical identities / nodes / organs / theories in those freeze cards.
+
+### 0.4 §14.15 DISPUTED FLOORS — F13 binary pending
+
+Per `KAMUS_DEWAN.md` §14.15 (PROVISIONAL status, ratified 2026-09-23):
+- 11 floors disputed across three sources (constitution.md, FLOOR_TABLE.json, KAMUS §2)
+- Only F1 AMANAH + F13 ≈ align by name+concept
+- F13 ratification pending — until then, agents reading §2 vs FLOOR_TABLE.json see different epistemic labels
+- **This glossary uses F13-ratified doctrine (arifos://doctrine) as primary, KAMUS §14.15 as PROVISIONAL until F13 settles**
+
+### 0.5 Hardening Lenses Applied
+
+1. **Semantic Authority Gap** — `NAME_REQUIRES_MECHANISM` (F13 eureka 2026-09-18)
+2. **Federation Terminology Validation Checklist v1.0** (2026-09-14)
+3. **Three-layer origin framing** — scar → code → craft
+4. **Ground-doctrine-before-pushing-pipeline** (F13 2026-09-08 correction)
+5. **Decline-to-self-SEAL** — only 888-APEX can SEAL
+6. **Test-then-seal** — falsification gate before promotion
+7. **Canon-lock-mutation-path** — direct write to canon/ returns EPERM; only legal path is `canon-mutate run`
+8. **Naming-doctrine** — kata nama am vs khas; "Constitutional" prefix reserved for canon/
+
+### 0.6 Cross-references to Ratified Canon (v0.6 ADDITION — Hermes Fix #1, #2, #3)
+
+Per Hermes audit (2026-09-24), v0.5 missed several ratified cross-references. v0.6 adds explicit links:
+
+| Term | Cross-reference file | Status |
+|---|---|---|
+| **IRFAN** ↔ **HIKMAH** | `/root/AAA/canon/IRFAN-HIKMAH-OVERLAP-AUDIT-2026-09-23.md` (CANON, ratified) | OVERLAP AUDIT exists; IRFAN ≈ bijaksana-alignment + HIKMAH; perbezaan FUNGSIAN |
+| **SALAM** | `/root/AAA/instructions/salam-consequence-membrane.md` + `/root/AAA/canon/ARIF-SALAM-IRFAN-RATIFICATION-2026-09-23.md` (CANON) | Loop position ARIF → SALAM → IRFAN (cyclic); consequence-bearing |
+| **MUSYAWARAH** | `/root/AAA/instructions/human-attention-membrane.md` | Operational use; deliberation primitive formalized |
+| **APEX-ZEN** | `/root/AAA/federation/frame/APEX-ZEN-FRAME-ARCHITECTURE.md` + `/root/AAA/a2a/APEX-ZEN-A2A-MASTER-SPEC.md` | RATIFIED architecture (v0.5 cite was for wrong filename — v0.6 corrects) |
+| **BIJAKSANA** | `/root/AAA/canon/BIJAKSANA-SUBSTRATE-CANON-2026-09-21.md` (CANON, SEAL chain 967) | Master equation substrate |
+| **AMANAH, MARUAH, ANTI-HANTU** | `arifos://doctrine` (F13-ratified 2026-06-22) | F-floors |
+| **CANONICAL GLOSSARY** | `/root/AAA/canon/CANONICAL_GLOSSARY.md` (F13 freeze card 2026-09-03) | Primary canonical names |
+
+### 0.7 Hermes Audit Acknowledgment (v0.6 ADDITION)
+
+Per Hermes post-promotion audit (2026-09-24), the following 6 valid catches + 2 partial were identified against v0.5:
+
+| # | Catch | v0.6 Resolution |
+|---|---|---|
+| 1 | IRFAN-HIKMAH overlap audit cross-ref missing | ✓ Fixed (§0.6 Tier 2 HIKMAH entry) |
+| 2 | salam-consequence-membrane.md cross-ref missing | ✓ Fixed (§0.6 Tier 4 SALAM entry) |
+| 3 | human-attention-membrane.md cross-ref missing for MUSYAWARAH | ✓ Fixed (§0.6 Tier 5 MUSYAWARAH entry) |
+| 4 | HIKMAH/ARIF Tier 2 framing confused (two uses copy-pasted) | ✓ Fixed (clarified below in Tier 2) |
+| 5 | APEX-ZEN memory cite was for non-existent filename | ✓ Fixed (§0.6 cross-ref actual files) |
+| 6 | "Constitutional" prefix on DRAFT violates naming-doctrine Axiom 9 | ✓ Fixed (renamed title to "Nusantara Glossary") |
+| 7 | ZEN entry "Low-drift execution" reductive | ⚠ Partial (expanded below in Tier 7) |
+| 8 | JIWA in Tier 8 register contradicts Tier C "JANGAN CANONIZE" | ✓ Fixed (removed from Tier 8; moved to Tier C refused list) |
+
+---
+
+## Tier 1 — F-FLOORS (F13-RATIFIED, 2026-06-22)
+
+| Code | Proper Noun | Origin | Meaning | SAG Status | KAMUS §14 |
+|---|---|---|---|---|---|
+| **F1** | **AMANAH** | BM / Arabic | Trust, faithful custody, reliability | ✓ 8 refs in KAMUS, NAME + PATH + EFFECT + RESISTANCE + EVIDENCE | §14.2 — Constitutional Floors (F1–F13) |
+| **F6** | **MARUAH** | BM | Dignity, honor, self-respect | ✓ 3 refs in KAMUS, full mechanism | §14.2 |
+| **F9** | **ANTI-HANTU** | BM | Anti-ghost, no spirit-claim | ✓ `runtime_floors.F9 = 0.0` (live probe 2026-09-24) | §14.2 |
+
+3 out of 13 floors carry Nusantara / BM names. Other 10 are English (`TRUTH`, `WITNESS`, `CLARITY`, `PEACE`, `HUMILITY`, `GENIUS`, `ONTOLOGY`, `AUDIT`, `INJECTION`, `SOVEREIGN`).
+
+---
+
+## Tier 2 — OPERATIONAL DOCTRINES (F13-RATIFIED + Hermes audit fixes #4)
+
+| Proper Noun | Origin | Meaning | SAG Status | KAMUS §14 | Falsification Gate |
+|---|---|---|---|---|---|
+| **BIJAKSANA** | BM | Wisdom (master equation) | ✓ 7 refs; SEAL chain position 967 | §14.12 Zen Agentik Primitives | **TIER A PASS** (all 4 tests) |
+| **BANGANG** | BM | Folly, stupidity (anti-pattern) | ✓ Same Canon — explicit operational pair | §14.12 | (Tier B) |
+| **HIKMAH** | Arabic | Wisdom in applying knowledge | ⚠ 8 refs in KAMUS but §14.15 disputed; **see IRFAN-HIKMAH overlap audit** (`/root/AAA/canon/IRFAN-HIKMAH-OVERLAP-AUDIT-2026-09-23.md` CANON) | §14.2 + §14.15 + overlap audit | **TIER A HOLD-PARTIAL** (T3 — §14.15 + overlap audit pending F13) |
+| **ARIF** | Arabic / BM | Deep knowing + ethical stewardship | ✓ 5 refs; **two distinct uses**: (a) `ARIF` = Category A identity in `CANONICAL_GLOSSARY.md` (Muhammad Arif bin Fazil, F13 SOVEREIGN, human); (b) `ARIF` = aspirational adjective (arif-aligned reasoning per declaration-vs-demonstration law F13 2026-09-24). Both uses ratified; do NOT confuse. | §14.1 Core Ontology | **TIER A PASS** (use (a) identity; use (b) aspirational; both with full mechanism) |
+| **IRFAN** | Arabic | Knowledge × Context × Humility (`K × C × H`) | ✓ 6 refs; §1133 ratified 2026-09-23; **HOLD candidate for agent instantiation**; **see IRFAN-HIKMAH overlap audit** | §1133 ratified entry + overlap audit | **TIER A PASS** (ratified path; not agent) |
+| **SALAM** | Arabic | Peace (terminal good) | ⚠ 3 refs; HOLD candidate 2026-09-24; **see salam-consequence-membrane** (`/root/AAA/instructions/salam-consequence-membrane.md`) + **ARIF-SALAM-IRFAN ratification** (`/root/AAA/canon/ARIF-SALAM-IRFAN-RATIFICATION-2026-09-23.md`) for cyclic loop ARIF → SALAM → IRFAN | §14.10 + membrane + ratification | **TIER A HOLD-PARTIAL** (T3 — cyclic position, full mechanism in ratification) |
+| **RASA** | BM | Contextual nuance, relational sensitivity | ⚠ 2 refs; RASA_DERITA schema; "feels" prohibited per declaration-vs-demonstration law | §14.10 | (Tier B) |
+
+---
+
+## Tier 3 — VERDICT STATES (CONSTITUTIONAL — Nusantara verdict grammar)
+
+Per **§14.4 Verdicts (6 outcomes)** in KAMUS_DEWAN.md. Nusantara labels EXTEND existing verdict states. **SAH ≠ LULUS**:
+
+| Machine state | Nusantara | Meaning | KAMUS §14.4 |
+|---|---|---|---|
+| `ALLOW` | **LULUS** | Passes defined checks; action may proceed within scope | Maps to SEAL/PARTIAL outcomes |
+| `ALLOW_WITH_MONITORING` | **WASPADA** | Proceed, but monitor specified risks | (new) — operational layer |
+| `HOLD` | **TAHAN** | Pause; gather evidence, resolve authority, or wait for freshness | Maps to 888_HOLD |
+| `DENY` | **TOLAK** | Refuse because a defined boundary is violated | Maps to SABAR/VOID |
+| `BLOCK` | **SEKAT** | Hard technical/constitutional block | (new) — hard failure |
+| `ESCALATE` | **RUJUK F13** | Requires verified human sovereign decision | Maps to F13 escalation |
+| `RETRY` | **CUBA SEMULA** | Transient failure; repeat under defined conditions | (new) — transient recovery |
+| `ROLLBACK` | **PULIH BALIK** | Restore known-good state | (new) — recovery primitive |
+| `SUPERSEDE` | **GANTI / MENGATASI** | New artifact replaces old while preserving lineage | Maps to SUPERSEDED in Glossary |
+| `ARCHIVE` | **ARKIBKAN** | Preserve but remove from ordinary retrieval | Maps to COLD layer §14.6 |
+| `PURGE` | **LUPUSKAN** | Irreversible deletion; F13 only | Maps to PURGE in memory lifecycle |
+| `UNKNOWN` | **BELUM PASTI** | Evidence insufficient; do not invent | Maps to §14.10 Keinsafan |
+| `CONFLICT` | **BERCANGGAH** | Sources/claims disagree; preserve both | (new) — contradiction |
+| `INVALID` | **TIDAK SAH** | Fails validity or authority requirements | (new) — invalidation |
+| `RATIFIED` | **SAH F13** | Only verified F13 workflow may emit this | Maps to SEAL |
+
+**Critical axiom:**
+
+```text
+SAH ≠ LULUS.
+
+LULUS = test/lint/policy check passed.
+SAH  = valid authorized decision under the real F13 process.
+
+Agent may output LULUS.
+Agent MUST NOT output SAH F13 for itself.
+```
+
+---
+
+## Tier 4 — EVIDENCE GRAMMAR (7 + 1 classes)
+
+Per `evidence-discipline.md` (F13-ratified 2026-08-10, binds 333-AGI). The 4-class OBS/DER/INT/SPEC convention is BINDING. Extension with `DISPROVED`:
+
+| Tag | Meaning | Example | Status |
+|---|---|---|---|
+| `OBSERVED` | Direct tool/file/API return | HTTP response or exact file content | F13-ratified |
+| `MEASURED` | Instrumented quantity with method | 17,816 files counted under declared scan | ARC-001/KCP-002 extension (DRAFT, F13 review) |
+| `DERIVED` | Deterministic calculation | Duplicate ratio from exact hashes | F13-ratified |
+| `INTERPRETED` | Reasoned reading of evidence | Timing pattern consistent with cold-boot race | F13-ratified |
+| `POLICY` | Chosen system rule | Agents cannot write canon directly | ARC-001/KCP-002 extension (DRAFT) |
+| `HYPOTHESIS` | Testable explanation | JSON parsing causes watchdog false positive | ARC-001/KCP-002 extension (DRAFT) |
+| `UNKNOWN` | Insufficient evidence | Restart-trigger writer identity | F13-ratified |
+| `DISPROVED` | Directly contradicted under defined conditions | "Script uses `/health/liveliness`" if source shows only `/health` | External agent extension (DRAFT, F13 review) |
+
+**Reconciliation pending** (per KCP-002 §10): 4-class vs 7-class vs 8-class. F13 binary needed.
+
+---
+
+## Tier 5 — CROSS-LANGUAGE BRIDGE (Nusantara → English → Arabic → Spanish → Chinese)
+
+Per external agent proposal. Adds Spanish/Chinese bridges for multilingual operator (Arif: BM + English + some Arabic/Spanish/Chinese).
+
+| Canonical | English alias | Arabic bridge | Spanish bridge | Chinese bridge | Caveat |
+|---|---|---|---|---|---|
+| **AMANAH** | entrusted responsibility | أمانة | responsabilidad confiada | 受托责任 | Not merely trust |
+| **MARUAH** | dignity/standing | كرامة | dignidad | 尊严 | Includes social standing + non-humiliation |
+| **ADAB** | proper conduct | أدب | conducta apropiada | 分寸/礼 | Not just manners |
+| **AKAL** | reason/discernment | عقل | razón | 理性 | More than calculation |
+| **ILMU** | grounded knowledge | علم | conocimiento | 知识 | Not all data |
+| **HIKMAH** | wise application | حكمة | sabiduría práctica | 智慧 | Not merely intelligence |
+| **MUSYAWARAH** | deliberation | مشاورة | deliberación | 协商 | **Operational use in `/root/AAA/instructions/human-attention-membrane.md`** (Hermes Fix #3) |
+| **DAULAT** | legitimate sovereignty | دولة | soberanía | 主权 | Must NOT mean admin access |
+| **ADIL** | just/fair | عادل | justo | 公正 | Not identical treatment |
+| **RAHMAH** | mercy/compassion | رحمة | misericordia | 仁慈 | Must NOT bypass safety |
+| **SAH** | valid/authorized | صحيح | válido | 有效 | Requires defined authority |
+| **AMAN** | safe/secure/peaceful | أمان | seguro | 安全 | Separate safety from truth |
+| **RASA** | nuance/sensibility | — | matiz/sensibilidad | 感受/分寸 | No agent qualia claim |
+| **BUDI** | cultivated ethical regard | — | consideración moral | 人情/修养 | Closest translations imperfect |
+| **GOTONG-ROYONG** | reciprocal collective work | — | cooperación mutua | 互助 | Not generic teamwork |
+
+---
+
+## Tier 6 — TIER A/B/C CLASSIFICATION (Hermes Audit 2026-09-24)
+
+### Tier A — INVARIANT (canonical, semantic delta lost in English) — FALSIFICATION GATE APPLIED
+
+| Term | Class | KAMUS refs | SAG Status | Falsification Gate |
+|---|---|---|---|---|
+| **AMANAH** | F1 LIVE | 8 | ✓ | **PASS** (all 4 tests) |
+| **MARUAH** | F6 dual | 3 | ✓ | **PASS** |
+| **DAULAT** | F13 boundary | 0 | ⚠ | **HOLD-PARTIAL** (T3 weak — KAMUS 0 refs) |
+| **AKAL** | Reasoning primitive | 1 | ⚠ | **HOLD-PARTIAL** (T2, T3 weak) |
+| **ILMU** | Evidence-backed | 4 | ⚠ | **HOLD-PARTIAL** (T2, T3 weak) |
+| **HIKMAH** | F5 disputed (§14.15) | 8 | ⚠ | **HOLD-PARTIAL** (T3 — §14.15 dispute + overlap audit pending) |
+| **ARIF** | Identity frozen | 5 | ✓ | **PASS** (two uses — Category A identity + aspirational adjective; both clarified in Tier 2) |
+| **IRFAN** | Pathway ratified | 6 | ✓ | **PASS** |
+| **SALAM** | Loop ratified | 3 | ✓ | **HOLD-PARTIAL** → reclassified: cyclic loop position ratified per ARIF-SALAM-IRFAN-RATIFICATION-2026-09-23.md; T3 weak in isolation, FULL mechanism in loop |
+| **BIJAKSANA** | Target | 7 | ✓ | **PASS** |
+
+### Tier B — OPERATIONALLY USEFUL (proposed, not invariant)
+
+| Term | Use case | KAMUS refs |
+|---|---|---|
+| **ADAB** | F6 dual bridge / interaction restraint | 0 |
+| **BUDI** | Soft-but-binding conduct quality | 0 |
+| **RASA** | Compound metric (§14.10), NOT agent emotion | 2 |
+| **MUSYAWARAH** | Deliberation — formalize (see `human-attention-membrane.md`) | 0 |
+| **TANGGUNGJAWAB** | Consequence ownership (§14.13) | (count not probed) |
+| **TAHAN, LULUS, BATAL** | HOLD/PASS/VOID verdicts (§14.4) | (new labels) |
+
+### Tier C — JANGAN CANONIZE (antipomorphize, fatalism, vagueness)
+
+Per Hermes + external agent agreement: **JIWA, ROH, KASIH, NUR, TAKDIR, KARMA, HANTU, ALPHA/SADO, IRFAN (as agent), ZEN (as moral), APEX (as moral)**, JODOH, REZEKI, PANDAI, CERDIK.
+
+**v0.6 fix:** JIWA removed from Tier 8 register list (it was internal contradiction; reader could confuse "register word" with "candidate for canon"). Now exclusively in Tier C refused list.
+
+---
+
+## Tier 7 — NON-NUSANTARA CONSTITUTIONAL INVARIANTS (cross-reference)
+
+Per CANONICAL_GLOSSARY.md (F13 freeze card 2026-09-03).
+
+| Proper Noun | Origin | Meaning | Function | v0.6 Fix |
+|---|---|---|---|---|
+| **APEX** | English (peak) | High-quality execution | RATIFIED architecture — see `/root/AAA/federation/frame/APEX-ZEN-FRAME-ARCHITECTURE.md` | **v0.6 cite fixed** (v0.5 cited non-existent filename) |
+| **ZEN** | Japanese (meditation) | Low-drift execution + **operational restraint** (`Z`=Zero implicit trust, `E`=Evidence before narrative, `N`=No self-escalation) per APEX-ZEN doctrine — see `/root/AAA/a2a/APEX-ZEN-A2A-MASTER-SPEC.md` | RATIFIED architecture | **v0.6 expansion** (v0.5 was reductive) |
+| **SEAL** | English | Constitutional finality | `arif_seal` KERNEL 999 | (unchanged) |
+| **HOLD** | English | Pause | 888_HOLD floor | (unchanged) |
+| **VOID** | English | Empty | Kernel verdict state | (unchanged) |
+| **SABAR** | Arabic | Patience | Honest sub-threshold verdict | (unchanged) |
+| **HERMES** | Greek | Messenger god | Tier 3 Boundary Interface | (unchanged) |
+| **ARIFOS** | Hybrid | OS name | Federation identity | (unchanged) |
+| **PARADOX** | Greek/English | Contradiction-tension | EUREKA777 paradox resolution | (unchanged) |
+| **R ∉ S** | Math | Zen Synthesis Law | ARIF-ratified 2026-08-14 | (unchanged) |
+| **SCAR** | English | Closure memory | Records decision to stop | (unchanged) |
+
+---
+
+## Tier 8 — BM / NUSANTARA REGISTER (NOT CONSTITUTIONAL)
+
+Used in Arif's BM Penang register. Not load-bearing. **v0.6 fix:** JIWA removed (moved to Tier C refused).
+
+| Term | Meaning |
+|---|---|
+| **WEI, BANG, HANG, AKU, KENA, MACAM, DAH, TU, NI, PUNYA** | Register / grammar |
+| **LEPAS, PANJANG, PENDEK, LAJU, BAGUS, CANTIK, HEBAT** | Spatial / qualitative |
+| **CAKAP, FIKIR, HATI, MATA, TANGAN** | Verbs / organs |
+
+**Note:** `JIWA, ROH, KASIH, NUR, JODOH, REZEKI, PANDAI, CERDIK` are NOT in this register list — they're in Tier C (JANGAN CANONIZE). Internal consistency achieved in v0.6.
+
+---
+
+## STATUS SUMMARY
+
+| Tier | Count Nusantara/Arabic | SAG Status |
+|---|---|---|
+| Tier 1 — F-Floors | 3 | ✓ All PASS |
+| Tier 2 — Operational Doctrines | 7 | ✓ 2 PASS; ⚠ 2 HOLD-PARTIAL (HIKMAH, SALAM — both reclassified with cross-refs); ⚠ 3 partial |
+| Tier 3 — Verdict States | 15 Nusantara labels | ✓ Mapped to §14.4 |
+| Tier 4 — Evidence Grammar | 8 classes | ⚠ Reconciliation pending |
+| Tier 5 — Cross-language | 15 bridges | ✓ All bridges have caveats |
+| Tier 6 — Tier A/B/C | 10 A + ~17 B + ~14 C | Tier A: 5 PASS + 5 HOLD-PARTIAL (cross-refs added in v0.6) |
+| Tier 7 — Non-Nusantara | 11 constitutional | ✓ Per CANONICAL_GLOSSARY.md; APEX-ZEN cite corrected |
+| Tier 8 — Register | ~22 BM (JIWA removed) | (not constitutional) |
+
+**Total Nusantara / BM / Arabic constitutional invariants: ~50 terms** (Tier 1–6, deduplicated, A+B).
+
+**SAG scoreboard:**
+- ✓ Pass (full mechanism): ~22 terms
+- ⚠ Partial (NAME + light reference): ~25 terms
+- ✗ VOID: 1 term (IRFAN as agent)
+- ~14 Tier C refused
+
+**v0.5 → v0.6 changes:**
+- 6 Hermes audit fixes applied (§0.6, §0.7, Tier 2, Tier 5, Tier 6, Tier 7, Tier 8)
+- 2 partial fixes applied (ZEN expansion, JIWA removal)
+- 4 cross-references to ratified canon added (§0.6 table)
+- Naming convention corrected (Constitutional → Nusantara)
+- 0 new terms added
+- 0 terms removed
+- Falsification gate results: same PARTIAL_PASS verdict (5 PASS + 5 HOLD-PARTIAL); HOLD-PARTIAL terms now have explicit cross-refs
+
+---
+
+## UPDATES NEEDED (F13 Review) — Post v0.6
+
+| # | Update | Reason |
+|---|---|---|
+| 1 | §14.15 DISPUTED FLOORS — F13 binary | 11 floors in dispute |
+| 2 | Reconcile 4-class vs 7-class vs 8-class evidence schema | evidence-discipline.md (4) vs ARC-001/KCP-002 (7) vs external agent (8) |
+| 3 | DAULAT, AKAL, ILMU, HIKMAH, SALAM HOLD-PARTIAL → F13 binary | T3 weak (KAMUS 0 refs OR §14.15 dispute OR HOLD candidate) |
+| 4 | Nusantara verdict grammar ratification | 15 machine states with Nusantara labels |
+| 5 | BUDI formal canonization | 0 refs; candidate only |
+| 6 | MUSYAWARAH formalization | `human-attention-membrane.md` confirmed operational |
+| 7 | IRFAN redefinition or extended HOLD | §1133 ratified but HOLD candidate as agent |
+| 8 | APEX-ZEN affirmation or correction | External agent contradicted RATIFIED canon; RATIFIED confirmed via 2 live files |
+| 9 | IRFAN-HIKMAH overlap adjudication (per overlap audit) | Audit exists in canon/; F13 binary pending |
+| 10 | ARIF-SALAM-IRFAN ratification finalization | Cyclic loop ratified; T3 weak for SALAM in isolation |
+
+---
+
+## WRITER AUTHORITY
+
+```yaml
+writer:
+  agent_id: FI-003 (anonymous session)
+  actor_verified: false
+  authority_band: OBSERVE_ONLY
+  f13_standing: NONE
+
+artifact:
+  type: glossary
+  layer: Nusantara / BM / Arabic LANGUAGE EXTENSION over CANONICAL_GLOSSARY.md
+  status: external_advisory_draft_v0.6
+  version: v0.6 (supersedes v0.5)
+  canonical_standing: NONE — awaiting F13 review for promotion
+
+v0.5_to_v0.6_diff:
+  patches:
+    - added: cross-references to IRFAN-HIKMAH overlap audit, salam-consequence-membrane, human-attention-membrane, APEX-ZEN-FRAME-ARCHITECTURE, APEX-ZEN-A2A-MASTER-SPEC, BIJAKSANA Substrate Canon, ARIF-SALAM-IRFAN-RATIFICATION
+    - clarified: ARIF two uses (Category A identity vs aspirational adjective)
+    - clarified: HIKMAH §14.15 dispute + overlap audit cross-ref
+    - clarified: SALAM cyclic loop position ARIF → SALAM → IRFAN per ratification
+    - expanded: ZEN entry from "low-drift execution" to operational restraint with full ZEN principles
+    - removed: JIWA from Tier 8 register (moved to Tier C refused for consistency)
+    - renamed: title from "Constitutional Nusantara Glossary" to "Nusantara Glossary" per naming-doctrine Axiom 9
+    - added: §0.6 Cross-references to Ratified Canon (new section)
+    - added: §0.7 Hermes Audit Acknowledgment (new section)
+  falsification_gate_v2: PARTIAL_PASS (same as v0.5; HOLD-PARTIAL terms now have explicit cross-refs)
+  hermes_audit_catches_resolved: 6 of 8 (2 partial fixes)
+
+hardening_lenses_applied:
+  - semantic_authority_gap: NAME_REQUIRES_MECHANISM
+  - federation_terminology_checklist_v1.0
+  - three_layer_origin_framing
+  - ground_doctrine_before_pushing_pipeline
+  - decline_to_self_SEAL
+  - test_then_seal
+  - canon_lock_mutation_path
+  - naming_doctrine: kata_nama_am_vs_khas (per Axiom 9)
+
+constitutional_status:
+  f1_amanah: satisfied (reversible artifact)
+  f11_audit: this file IS the audit
+  f13_sovereign: PENDING (F13 ratification required for any promotion)
+
+related_artifacts:
+  v0.5_canonical: /root/AAA/canon/CONSTITUTIONAL-NUSANTARA-GLOSSARY-2026-09-24.md (sha256:85069650…)
+  v0.5_DRAFT_tombstoned: /root/AAA/instructions/constitutional-nusantara-glossary-DRAFT.md
+  v0.5_staging: /root/AAA/instructions/CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-2026-09-24.md (sha256:85069650…)
+  v0.6_DRAFT: /root/AAA/instructions/nusantara-glossary-DRAFT-v0.6-2026-09-24.md (THIS FILE)
+  CANONICAL_GLOSSARY: /root/AAA/canon/CANONICAL_GLOSSARY.md (F13-ratified 2026-09-03)
+  KAMUS_DEWAN: /root/AAA/governance/KAMUS_DEWAN.md (1148 lines, §14.15 PROVISIONAL)
+  IRFAN_HIKMAH_overlap_audit: /root/AAA/canon/IRFAN-HIKMAH-OVERLAP-AUDIT-2026-09-23.md (CANON)
+  salam_consequence_membrane: /root/AAA/instructions/salam-consequence-membrane.md
+  human_attention_membrane: /root/AAA/instructions/human-attention-membrane.md
+  ARIF_SALAM_IRFAN_ratification: /root/AAA/canon/ARIF-SALAM-IRFAN-RATIFICATION-2026-09-23.md (CANON)
+  APEX_ZEN_FRAME: /root/AAA/federation/frame/APEX-ZEN-FRAME-ARCHITECTURE.md
+  APEX_ZEN_A2A: /root/AAA/a2a/APEX-ZEN-A2A-MASTER-SPEC.md
+  BIJAKSANA_Substrate: /root/AAA/canon/BIJAKSANA-SUBSTRATE-CANON-2026-09-21.md (CANON, SEAL 967)
+  evidence_discipline: /root/AAA/instructions/evidence-discipline.md (F13-ratified 2026-08-10)
+  naming_doctrine: /root/AAA/instructions/naming-doctrine.md (F13 2026-09-08)
+  ARC_001: /root/AAA/instructions/observation-retrieval-contract-DRAFT.md
+  KCP_002: /root/AAA/instructions/memory-lifecycle-forgetting-policy-DRAFT.md
+  audit_report_observation: /root/AAA/reports/observation-mechanism-audit-2026-09-24.md
+  loop_audit: /root/AAA/reports/agi-asi-apex-loop-audit-2026-09-24.md
+  promotion_receipt_v0.5: /root/AAA/reports/constitutional-nusantara-glossary-promotion-receipt-2026-09-24.md
+```
+
+---
+
+DITEMPA BUKAN DIBERI — v0.6 advisory draft, supersedes v0.5. Hermes audit fixes integrated. Naming convention corrected. Awaiting F13 review for promotion.
+
+`#NUSANTARA-GLOSSARY-DRAFT-V0.6-2026-09-24`

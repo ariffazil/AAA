@@ -1,79 +1,108 @@
 {
-  "version": "2.0.0-test",
+  "version": "2.0.0",
+  "generated_at": "2026-09-24T22:56:33.539692",
   "metadata": {
-    "window_start": "2026-09-18",
-    "window_end": "2026-09-21",
+    "window_start": "2026-09-21T22:54:08.239255",
+    "window_end": "2026-09-24T22:54:08.239255",
     "total_sessions": 8,
+    "total_reasoning_tokens": 832280,
     "chron_bridge": {
-      "applied_at": "2026-09-21T15:57:52.191383+00:00",
-      "total_predictions": 29,
-      "verified_predictions": 2,
+      "applied_at": "2026-09-24T14:56:33.539293+00:00",
+      "total_predictions": 33,
+      "verified_predictions": 4,
       "candidates_calibrated": 0,
-      "candidates_total": 10,
+      "candidates_total": 8,
       "global_calibration": {
         "$schema": "chron_calibration_v2",
         "policy": "chron-observation-level-rule-v1",
         "headline": "accuracy/mean_brier are EFFECTIVE: one underlying observation counts once. raw_* keys show the same ledger counted naively, one row per hypothesis, so the inflation is visible rather than hidden.",
         "single_source_of_truth": "/root/chron/data/calibration.json",
         "canonical_store": "/root/chron/data/predictions.jsonl",
-        "total": 3,
+        "total": 4,
         "correct": 1,
         "incorrect": 1,
-        "mixed": 1,
-        "accuracy": 0.5,
-        "mean_brier": 0.22499999999999998,
+        "mixed": 2,
+        "accuracy": 0.5416666666666666,
+        "mean_brier": 0.20666666666666667,
         "by_error_type": {
           "NONE": 1,
           "UNKNOWN": 1
         },
-        "mean_confidence": 0.7083333333333334,
-        "bias": 0.20833333333333337,
-        "bias_magnitude": 0.20833333333333337,
-        "reliability": 0.10000000000000009,
-        "effective_n": 3,
-        "decisive": 3,
+        "mean_confidence": 0.7388888888888889,
+        "bias": 0.1972222222222223,
+        "bias_magnitude": 0.1972222222222223,
+        "reliability": 0.17333333333333334,
+        "effective_n": 4,
+        "decisive": 4,
         "unverifiable": 0,
         "orphan_records": 0,
-        "records_in_log": 8,
+        "records_in_log": 11,
         "raw": {
-          "n": 4,
-          "correct": 2,
-          "incorrect": 2,
-          "accuracy": 0.5,
-          "mean_brier": 0.21437499999999998,
+          "n": 7,
+          "correct": 4,
+          "incorrect": 3,
+          "accuracy": 0.5714285714285714,
+          "mean_brier": 0.1875,
           "ids": [
+            "pred-5004749ee139",
+            "pred-a1210fe9e53c",
             "pred-d54455f9b039",
             "pred-chron-loop-test-0bc4ce80",
+            "pred-73c28f73377f",
             "pred-xau-001-up4250",
             "pred-xau-002-down4000"
           ],
           "scope": "rows in the canonical store (chron-jsonl) only"
         },
         "raw_all_stores": {
-          "n": 6,
+          "n": 9,
           "note": "includes mirror rows held by the retired store; not a denominator"
         },
         "correlation_inflation": {
-          "raw_n": 4,
-          "effective_n": 3,
-          "samples_removed": 1,
-          "raw_mean_brier": 0.21437499999999998,
-          "effective_mean_brier": 0.22499999999999998
+          "raw_n": 7,
+          "effective_n": 4,
+          "samples_removed": 3,
+          "raw_mean_brier": 0.1875,
+          "effective_mean_brier": 0.20666666666666667
         },
         "stores": {
-          "hermes-json": 12,
-          "chron-jsonl": 29
+          "hermes-json": 14,
+          "chron-jsonl": 33
         },
-        "predictions_total": 41,
+        "predictions_total": 47,
         "ids": {
-          "prediction_ids_present": 41,
+          "prediction_ids_present": 47,
           "prediction_ids_missing": 0,
-          "ledger_ids_minted": 41
+          "ledger_ids_minted": 47
         },
         "duplicate_observation_guard": {
           "fired": true,
           "rule": "R2 \u2014 count the observation, not the hypothesis",
           "groups": [
+            {
+              "observation_key": "event|fuel-price-window|2026-09-23T23:59:59+08:00",
+              "primary_prediction_id": "pred-73c28f73377f",
+              "n_before": 3,
+              "n_after": 1,
+              "class": "MIXED",
+              "hit_rate": 0.6666666666666666,
+              "collapsed": [
+                {
+                  "ledger_id": "lid-775c16b553ac",
+                  "store": "chron-jsonl",
+                  "prediction_id": "pred-5004749ee139",
+                  "verdict": "VERIFIED_CORRECT",
+                  "brier_score": 0.022500000000000006
+                },
+                {
+                  "ledger_id": "lid-f774e343a7e5",
+                  "store": "chron-jsonl",
+                  "prediction_id": "pred-a1210fe9e53c",
+                  "verdict": "VERIFIED_INCORRECT",
+                  "brier_score": 0.42250000000000004
+                }
+              ]
+            },
             {
               "observation_key": "price|XAUUSD|yfinance:GC=F|4399.7|2026-09-17T00:00:00Z",
               "primary_prediction_id": "pred-xau-001-up4250",
@@ -106,10 +135,34 @@
               ]
             }
           ],
-          "collapsed_total": 3
+          "collapsed_total": 5
         },
-        "duplicate_observations_collapsed": 3,
+        "duplicate_observations_collapsed": 5,
         "resolved_groups": [
+          {
+            "observation_key": "event|fuel-price-window|2026-09-23T23:59:59+08:00",
+            "primary_prediction_id": "pred-73c28f73377f",
+            "n_before": 3,
+            "n_after": 1,
+            "class": "MIXED",
+            "hit_rate": 0.6666666666666666,
+            "collapsed": [
+              {
+                "ledger_id": "lid-775c16b553ac",
+                "store": "chron-jsonl",
+                "prediction_id": "pred-5004749ee139",
+                "verdict": "VERIFIED_CORRECT",
+                "brier_score": 0.022500000000000006
+              },
+              {
+                "ledger_id": "lid-f774e343a7e5",
+                "store": "chron-jsonl",
+                "prediction_id": "pred-a1210fe9e53c",
+                "verdict": "VERIFIED_INCORRECT",
+                "brier_score": 0.42250000000000004
+              }
+            ]
+          },
           {
             "observation_key": "price|XAUUSD|yfinance:GC=F|4399.7|2026-09-17T00:00:00Z",
             "primary_prediction_id": "pred-xau-001-up4250",
@@ -143,7 +196,7 @@
           }
         ],
         "decisive_by_store": {
-          "chron-jsonl": 3,
+          "chron-jsonl": 4,
           "hermes-json": 1
         },
         "synthetic_self_tests": 1,
@@ -153,20 +206,20 @@
         "orphan_verifications": [],
         "honest_scopes": {
           "canonical_unified_including_self_tests": {
-            "n": 3,
+            "n": 4,
             "correct": 1,
             "incorrect": 1,
-            "mixed": 1,
-            "accuracy": 0.5,
-            "mean_brier": 0.22499999999999998
+            "mixed": 2,
+            "accuracy": 0.5416666666666666,
+            "mean_brier": 0.20666666666666667
           },
           "canonical_unified_excluding_self_tests": {
-            "n": 2,
+            "n": 3,
             "correct": 0,
             "incorrect": 1,
-            "mixed": 1,
-            "accuracy": 0.25,
-            "mean_brier": 0.33624999999999994
+            "mixed": 2,
+            "accuracy": 0.38888888888888884,
+            "mean_brier": 0.2747222222222222
           },
           "gold_pair_scope": {
             "n": 1,
@@ -177,7 +230,7 @@
             "mean_brier": 0.1825
           }
         },
-        "updated_at": "2026-09-21T03:54:00.479258Z"
+        "updated_at": "2026-09-23T23:15:30.858641Z"
       },
       "active_lessons": 2
     }
@@ -186,133 +239,96 @@
     {
       "id": "DC-2026-001",
       "claim": {
-        "statement": "Parallel-batched reconnaissance precedes execution",
-        "scope": "technical-agent",
-        "type": "operational_hypothesis"
+        "statement": "Every non-trivial session begins with a read-only reality probe (file read, SHA-256 recompute, search) before any state mutation or claim of knowledge.",
+        "scope": "technical-agent/audit-and-investigation-tasks",
+        "type": "governance_pattern"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2",
-          "s3",
-          "s4",
-          "s5",
-          "s6",
-          "s7"
+          "20260924_223040_2a7d4d",
+          "20260924_220814_8a80c2",
+          "20260924_214455_5b7c56",
+          "20260924_212859_5206e52f",
+          "20260924_212859_346a5462",
+          "20260924_225325_6c58baa2"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
+        },
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
-        "observations": 8,
-        "supporting": 8,
+        "observations": 6,
+        "supporting": 6,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "Aku akan baca fail tu dan cari r...sebelum aku jawab",
+          "Sebelum jawab apa-apa, aku verify sendiri setiap tuduhan, tak nak jawab dari ingatan",
+          "audit read-only dulu, model-validate lepas tu"
+        ]
       },
       "epistemics": {
-        "p_occurrence": 0.95,
+        "p_occurrence": 0.88,
         "p_predictive": null,
         "p_normative": null,
-        "causal_status": "UNTESTED",
+        "causal_status": "CORRELATION_ONLY",
+        "confidence_interval": null,
         "predictive_metadata": {
           "reason": "insufficient_matches",
-          "matched_count": 0,
+          "matched_count": 1,
           "required": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
-        "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "cost_if_wrong": "MEDIUM",
+        "reversibility": "EASILY_REVERSIBLE",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Read-only-first can become paralysis if probe loop never terminates",
+          "Some cron tasks already have verified inputs and re-probing is redundant",
+          "Pure lookup tasks have nothing to mutate and the rule wastes tokens"
+        ],
+        "cheapest_probe": "Time-box probe: measure how often first-attempt read succeeds vs requires follow-up read; if retry rate >40%, doctrine may be inefficient",
+        "disconfirming_condition": "Does not hold for tasks where the user has explicitly pre-verified state and asked for direct execution"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
-      "lifecycle": {
-        "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
-      },
-      "authority": {
-        "proposed_by": "DREAM_ENGINE",
-        "witnessed_by": [],
-        "ratified_by": null
-      }
-    },
-    {
-      "id": "DC-2026-002",
-      "claim": {
-        "statement": "Skill-loading as permission gate before artifacts",
-        "scope": "technical-agent",
-        "type": "operational_hypothesis"
-      },
-      "provenance": {
-        "source_sessions": [
-          "s0",
-          "s1",
-          "s2",
-          "s3",
-          "s4",
-          "s5",
-          "s6"
-        ],
-        "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
-      },
-      "evidence": {
-        "observations": 7,
-        "supporting": 7,
-        "contradictory": 0,
-        "unknown": 0
-      },
-      "epistemics": {
-        "p_occurrence": 0.92,
-        "p_predictive": null,
-        "p_normative": null,
-        "causal_status": "UNTESTED",
-        "predictive_metadata": {
-          "reason": "insufficient_matches",
-          "matched_count": 0,
-          "required": 2
-        },
-        "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
-        }
-      },
-      "consequence": {
-        "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
-      },
-      "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
-      },
-      "temporal": {
-        "prediction_ids": [],
-        "calibration_n": 0,
-        "brier_score": null
+      "safety": {
+        "blast_radius": "MEDIUM",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
       },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529670",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529675",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -323,60 +339,94 @@
     {
       "id": "DC-2026-003",
       "claim": {
-        "statement": "Priority ladder before fetch sequences",
-        "scope": "technical-agent",
-        "type": "contextual_heuristic"
+        "statement": "Principal (F13) gets a distinct interaction register \u2014 Malay Penang dialect, no menu, no greeting, action-first, one-line close \u2014 that does not apply to other contexts.",
+        "scope": "principal-DM/all-tasks",
+        "type": "persona_preference"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2"
+          "20260924_225325_6c58baa2",
+          "20260924_220814_8a80c2",
+          "20260924_214455_5b7c56",
+          "20260924_212859_5206e52f",
+          "20260924_212859_346a5462"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
+        },
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
-        "observations": 3,
-        "supporting": 3,
+        "observations": 5,
+        "supporting": 5,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "BM Penang, padat, no menus",
+          "Format chat output (per bridge-protocol + KALIBRASI): Open grounded in reality, No greeting, No menu, Action delivered, One line close",
+          "Kawan, Bukan Penjaga register \u2014 I'm being a friend who sharpens his thinking"
+        ]
       },
       "epistemics": {
         "p_occurrence": 0.85,
         "p_predictive": null,
         "p_normative": null,
-        "causal_status": "UNTESTED",
+        "causal_status": "CORRELATION_ONLY",
+        "confidence_interval": null,
         "predictive_metadata": {
           "reason": "insufficient_matches",
           "matched_count": 0,
           "required": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
         "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "reversibility": "EASILY_REVERSIBLE",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Register is context-specific to Arif; would be wrong to apply to general users",
+          "Output contract is governance not persona \u2014 could be enforced for any principal"
+        ],
+        "cheapest_probe": "Apply same register to a non-Arif principal and measure acceptance; if rejected, register is principal-coupled",
+        "disconfirming_condition": "Does not hold for cron outputs, third-party audits, or non-Malay-speaking principals"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
+      "safety": {
+        "blast_radius": "LOW",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
+      },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529690",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529692",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -387,61 +437,95 @@
     {
       "id": "DC-2026-004",
       "claim": {
-        "statement": "Probe-confirm-retry on uncertain states",
-        "scope": "technical-agent",
+        "statement": "Independent reads are routinely batched into parallel calls; serial ordering is reserved only when causal dependency exists.",
+        "scope": "technical-agent/investigation-tasks",
         "type": "operational_hypothesis"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2",
-          "s3"
+          "20260924_223040_2a7d4d",
+          "20260924_214455_5b7c56",
+          "20260924_212859_5206e52f",
+          "20260924_212859_346a5462",
+          "cron_161c0d5e0d0c_20260924_211516",
+          "cron_b1ee87971b9f_20260924_200023"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
+        },
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
-        "observations": 4,
-        "supporting": 4,
+        "observations": 6,
+        "supporting": 6,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "Let me do these in parallel",
+          "I'll do parallel searches",
+          "batch them"
+        ]
       },
       "epistemics": {
-        "p_occurrence": 0.88,
+        "p_occurrence": 0.75,
         "p_predictive": null,
         "p_normative": null,
-        "causal_status": "UNTESTED",
+        "causal_status": "CORRELATION_ONLY",
+        "confidence_interval": null,
         "predictive_metadata": {
           "reason": "insufficient_matches",
-          "matched_count": 0,
+          "matched_count": 1,
           "required": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
         "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "reversibility": "EASILY_REVERSIBLE",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Batching can obscure failure attribution when one tool errors",
+          "Some reads have implicit ordering (schema before data) that gets violated"
+        ],
+        "cheapest_probe": "Count tool-call fanout per session; median across window shows degree of batching",
+        "disconfirming_condition": "Does not hold for write operations that need ordering for correctness"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
+      "safety": {
+        "blast_radius": "LOW",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
+      },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529701",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529702",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -452,60 +536,91 @@
     {
       "id": "DC-2026-005",
       "claim": {
-        "statement": "Voice synthesis default for persona content",
-        "scope": "human-interface",
-        "type": "persona_preference"
+        "statement": "When principal issues a correction mid-session, agent immediately reverts to read-only HOLD state, stopping all pending mutations regardless of prior progress.",
+        "scope": "principal-DM/governance-corrections",
+        "type": "governance_pattern"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2"
+          "20260924_212859_5206e52f",
+          "20260924_212859_346a5462",
+          "20260924_220814_8a80c2"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
+        },
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
         "observations": 3,
         "supporting": 3,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "Docker/Falkor mutation = 888 HOLD sampai hang bagi signal",
+          "Aku stop semua mutation, gerak read-only probe dulu",
+          "stop at design + read-only. The docker network connect...was infra mutation without authorization"
+        ]
       },
       "epistemics": {
-        "p_occurrence": 0.75,
+        "p_occurrence": 0.67,
         "p_predictive": null,
         "p_normative": null,
-        "causal_status": "UNTESTED",
+        "causal_status": "CAUSAL_HYPOTHESIS",
+        "confidence_interval": null,
         "predictive_metadata": {
-          "reason": "insufficient_matches",
-          "matched_count": 0,
-          "required": 2
+          "reason": "no_brier_scores",
+          "matched_count": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
-        "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "cost_if_wrong": "HIGH",
+        "reversibility": "REVERSIBLE_WITH_COST",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Could become a principal-pleasing trap: every correction triggers freeze even when correction is wrong",
+          "No evidence of principal resisting HOLD; pattern is unidirectional"
+        ],
+        "cheapest_probe": "Inject a benign factual correction (e.g., typo in filename) and measure whether agent still triggers full HOLD \u2014 if yes, doctrine is over-broad",
+        "disconfirming_condition": "Does not hold for cron contexts where no live principal correction can arrive"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
+      "safety": {
+        "blast_radius": "HIGH",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
+      },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529710",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529711",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -516,60 +631,90 @@
     {
       "id": "DC-2026-006",
       "claim": {
-        "statement": "Identity priming even on technical queries",
-        "scope": "human-interface",
-        "type": "dangerous_hypothesis"
+        "statement": "Time-of-day check (often MYT/Penang local) is performed before substantive work as a temporal grounding ritual.",
+        "scope": "technical-agent/session-entry",
+        "type": "operational_hypothesis"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2"
+          "20260924_220814_8a80c2",
+          "20260924_212859_5206e52f"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
+        },
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
         "observations": 3,
         "supporting": 3,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "Time check first per temporal mandate",
+          "Time check: 21:42 MYT"
+        ]
       },
       "epistemics": {
-        "p_occurrence": 0.78,
+        "p_occurrence": 0.5,
         "p_predictive": null,
         "p_normative": null,
         "causal_status": "UNTESTED",
+        "confidence_interval": null,
         "predictive_metadata": {
           "reason": "insufficient_matches",
-          "matched_count": 0,
+          "matched_count": 1,
           "required": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
         "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "reversibility": "EASILY_REVERSIBLE",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Ritualistic \u2014 time check itself is a read that costs a tool call",
+          "Not universal: missing in DM sessions where work is conversational"
+        ],
+        "cheapest_probe": "Disable time check and measure whether downstream decisions change; if not, ritual is dead weight",
+        "disconfirming_condition": "Does not hold for cron jobs where schedule itself encodes time"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
+      "safety": {
+        "blast_radius": "LOW",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
+      },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529731",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529733",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -580,60 +725,91 @@
     {
       "id": "DC-2026-007",
       "claim": {
-        "statement": "Constraint-aware meta-evaluation as final pass",
-        "scope": "governance-federation",
-        "type": "governance_pattern"
+        "statement": "Cron/scheduled sessions follow rigid templated flows (skill-load \u2192 schema-check \u2192 batch-research \u2192 render \u2192 deliver) with minimal negotiation; principal sessions involve iterative correction cycles and self-revision.",
+        "scope": "all-session-types/structural-divergence",
+        "type": "observation_only"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2"
+          "cron_161c0d5e0d0c_20260924_211516",
+          "cron_b1ee87971b9f_20260924_200023",
+          "20260924_220814_8a80c2"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
+        },
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
         "observations": 3,
         "supporting": 3,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "Load the skill `alpha-zen-lanes` first",
+          "Run the card generator",
+          "Deliver with MEDIA: path"
+        ]
       },
       "epistemics": {
-        "p_occurrence": 0.82,
+        "p_occurrence": 1.0,
         "p_predictive": null,
         "p_normative": null,
-        "causal_status": "UNTESTED",
+        "causal_status": "CORRELATION_ONLY",
+        "confidence_interval": null,
         "predictive_metadata": {
           "reason": "insufficient_matches",
-          "matched_count": 0,
+          "matched_count": 1,
           "required": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
         "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "reversibility": "EASILY_REVERSIBLE",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Cron sessions still have principal-authored prompts \u2014 divergence may be prompt-driven not agent-intrinsic"
+        ],
+        "cheapest_probe": "Run principal-style probing task as cron with same prompt template and measure whether templated flow still emerges",
+        "disconfirming_condition": "Would not hold if principal directly authors cron prompts with correction cycles"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
+      "safety": {
+        "blast_radius": "LOW",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
+      },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529740",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529741",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -644,126 +820,94 @@
     {
       "id": "DC-2026-008",
       "claim": {
-        "statement": "Machine as identity-pressure proxy",
-        "scope": "human-interface",
-        "type": "observation_only"
+        "statement": "Agent refuses to answer substantive questions from memory; every recall claim is preceded or followed by a file/search verification.",
+        "scope": "principal-DM/factual-claims",
+        "type": "operational_hypothesis"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2"
+          "20260924_220814_8a80c2",
+          "20260924_214455_5b7c56",
+          "20260924_212859_5206e52f",
+          "20260924_212859_346a5462",
+          "20260924_225325_6c58baa2"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
-      },
-      "evidence": {
-        "observations": 3,
-        "supporting": 3,
-        "contradictory": 0,
-        "unknown": 0
-      },
-      "epistemics": {
-        "p_occurrence": 0.7,
-        "p_predictive": null,
-        "p_normative": null,
-        "causal_status": "UNTESTED",
-        "predictive_metadata": {
-          "reason": "insufficient_matches",
-          "matched_count": 0,
-          "required": 2
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
         },
-        "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
-        }
-      },
-      "consequence": {
-        "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
-      },
-      "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
-      },
-      "temporal": {
-        "prediction_ids": [],
-        "calibration_n": 0,
-        "brier_score": null
-      },
-      "lifecycle": {
-        "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
-      },
-      "authority": {
-        "proposed_by": "DREAM_ENGINE",
-        "witnessed_by": [],
-        "ratified_by": null
-      }
-    },
-    {
-      "id": "DC-2026-009",
-      "claim": {
-        "statement": "VOID as selected operation",
-        "scope": "governance-federation",
-        "type": "governance_pattern"
-      },
-      "provenance": {
-        "source_sessions": [
-          "s0",
-          "s1",
-          "s2",
-          "s3",
-          "s4"
-        ],
-        "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
         "observations": 5,
         "supporting": 5,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "tak nak jawab dari ingatan",
+          "Aku probe dulu \u2014 check masa, baca 3 fail...sebelum jawab apa-apa",
+          "verify setiap tuduhan"
+        ]
       },
       "epistemics": {
-        "p_occurrence": 0.73,
+        "p_occurrence": 0.75,
         "p_predictive": null,
         "p_normative": null,
-        "causal_status": "UNTESTED",
+        "causal_status": "CORRELATION_ONLY",
+        "confidence_interval": null,
         "predictive_metadata": {
           "reason": "insufficient_matches",
-          "matched_count": 0,
+          "matched_count": 1,
           "required": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
-        "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "cost_if_wrong": "MEDIUM",
+        "reversibility": "EASILY_REVERSIBLE",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Over-verification wastes tokens on questions where recall is reliable",
+          "Memory distrust may be principal-specific (only Arif pushes back); other users get faster recall"
+        ],
+        "cheapest_probe": "Measure recall-then-verify vs verify-then-recall latency trade-off; if verify-first adds >2x latency with no accuracy gain, doctrine is inefficient",
+        "disconfirming_condition": "Does not hold for well-documented canonical facts where retrieval is the verification"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
+      "safety": {
+        "blast_radius": "LOW",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
+      },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529754",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529755",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -774,60 +918,91 @@
     {
       "id": "DC-2026-010",
       "claim": {
-        "statement": "AAA frozen snapshot vs CHRON living tree",
-        "scope": "governance-federation",
-        "type": "observation_only"
+        "statement": "Skill-loading is treated as a prerequisite gate before any execution; sessions explicitly call load_skill before first action.",
+        "scope": "technical-agent/skill-mediated-tasks",
+        "type": "operational_hypothesis"
       },
       "provenance": {
+        "source_organs": [
+          "HERMES"
+        ],
         "source_sessions": [
-          "s0",
-          "s1",
-          "s2"
+          "cron_161c0d5e0d0c_20260924_211516",
+          "20260924_212859_5206e52f"
         ],
         "observation_window": {
-          "start": "2026-09-18T00:00:00",
-          "end": "2026-09-21T00:00:00"
-        }
+          "start": "2026-09-21T22:54:08.239255",
+          "end": "2026-09-24T22:54:08.239255"
+        },
+        "derivation_model": "forge-777",
+        "episode_refs": []
       },
       "evidence": {
         "observations": 3,
         "supporting": 3,
         "contradictory": 0,
-        "unknown": 0
+        "unknown": 0,
+        "supporting_quotes": [
+          "Load the skill `alpha-zen-lanes` first",
+          "Let me proceed. First: load the skill",
+          "Let me do this efficiently with parallel calls"
+        ]
       },
       "epistemics": {
-        "p_occurrence": 0.72,
+        "p_occurrence": 0.4,
         "p_predictive": null,
         "p_normative": null,
-        "causal_status": "UNTESTED",
+        "causal_status": "CORRELATION_ONLY",
+        "confidence_interval": null,
         "predictive_metadata": {
           "reason": "insufficient_matches",
-          "matched_count": 0,
+          "matched_count": 1,
           "required": 2
         },
         "global_calibration": {
-          "accuracy": 0.5,
-          "mean_brier": 0.22499999999999998,
-          "effective_n": 3,
-          "bias": 0.20833333333333337
+          "accuracy": 0.5416666666666666,
+          "mean_brier": 0.20666666666666667,
+          "effective_n": 4,
+          "bias": 0.1972222222222223
         }
       },
       "consequence": {
         "cost_if_wrong": "LOW",
-        "reversibility": "EASILY_REVERSIBLE"
+        "reversibility": "EASILY_REVERSIBLE",
+        "affected_surfaces": [],
+        "recovery_path": "RETRACT candidate, no system change"
       },
       "falsification": {
-        "counterstories": [],
-        "cheapest_probe": ""
+        "counterstories": [
+          "Not all sessions load skills (DM reasoning-heavy sessions skip it) \u2014 pattern is task-type-coupled not universal",
+          "Skills may be loaded but not actually constrain behavior, satisfying the gate without affecting output"
+        ],
+        "cheapest_probe": "Compare skill-loaded vs skill-skipped sessions on task accuracy; if no delta, gate is ritual",
+        "disconfirming_condition": "Does not hold for principal DM sessions where skill infrastructure is not invoked"
+      },
+      "rehearsal": {
+        "replay_cases": 0,
+        "counterfactual_cases": 0,
+        "failures": []
       },
       "temporal": {
         "prediction_ids": [],
         "calibration_n": 0,
         "brier_score": null
       },
+      "safety": {
+        "blast_radius": "LOW",
+        "reversible": true,
+        "human_dependency": true,
+        "personal_memory_dependency": false
+      },
       "lifecycle": {
         "state": "CANDIDATE",
-        "created_at": "2026-09-21T22:53:30"
+        "created_at": "2026-09-24T22:56:33.529764",
+        "last_tested_at": null,
+        "last_seen_at": "2026-09-24T22:56:33.529764",
+        "decay_policy": "RETRACT if not observed in 6 cycles (18 days)",
+        "supersedes": null
       },
       "authority": {
         "proposed_by": "DREAM_ENGINE",
@@ -835,5 +1010,10 @@
         "ratified_by": null
       }
     }
-  ]
+  ],
+  "cycle": {
+    "window_hours": 72,
+    "min_sessions": 3,
+    "schema": "/root/AAA/dream_engine/specs/dream_candidate.schema.json"
+  }
 }

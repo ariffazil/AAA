@@ -57,11 +57,22 @@
     "minimax-mcp@0.0.19": {
       "pinned": "2026-08-25",
       "surface": "opencode minimax-mcp (uvx)"
+    },
+    "firecrawl-mcp": {
+      "version": "3.25.4",
+      "pinned_at": "2026-09-24T09:55:00Z",
+      "pinned_by": "333-AGI",
+      "source": "npm registry (npm view firecrawl-mcp version)",
+      "watch_paths": [
+        "/root/.qwen/settings.json"
+      ],
+      "reason": "SUPPLY-CHAIN GATE pre-commit block — pin pkg@x.y.z per gate-promotion.md E-2"
     }
   },
   "notes": [
     "Pins resolved live from registry.npmjs.org on 2026-08-25.",
     "Upgrade = edit pin here AND in the agent config in the same commit (gate verifies both).",
     "SLSA/attestation verification (gh attestation verify) applies where publishers ship attestations."
-  ]
+  ],
+  "updated_at": "2026-09-24T09:55:00Z"
 }
