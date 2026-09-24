@@ -746,4 +746,12 @@ events:
   outcome: null
   fq_gate: false
   cost: 0
+- id: chron-reality-impact-attestor
+  adapter: systemd
+  schedule: daily 09:45 Asia/Kuala_Lumpur
+  command: /root/scripts/chron_reality_impact_attestor.py
+  output: /var/lib/arifflow/chron_reality_impact.jsonl
+  outcome: null
+  fq_gate: false
+  cost: 0
 consequences: []

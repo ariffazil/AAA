@@ -95,6 +95,7 @@ Delta gate: posts only when content hash differs from last posted hash
 | contradiction-accumulator | daily 08:15 | Contradiction economics ledger — CHRON tensions → half-life dormancy + priority (blindspot #6, F13 2026-09-25) |
 | governance-hotspot-detector | daily 08:45 | Governance friction concentration — floor Holds / cooling Holds / RG-4 events by actor-organ-day (blindspot #5, F13 2026-09-25) |
 | governance-drift-batch | daily 09:15 | Slow-drift batch — #1 authority-drift (seal discipline + identity fragmentation) · #2 registry attestation · #7 SPOF index · #8 scar attestation (F13 2026-09-25) |
+| chron-reality-impact-attestor | daily 09:45 | CHRON reality-impact attestation wired to capability use (morning briefing consumes) — blindspot #9, F13 2026-09-25 |
 
 ## Event Log Location
 `/root/AAA/state/event-bridge/events.jsonl`
