@@ -118,6 +118,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - maturation-dynamics
 - meaning-consequence-vitality
 - memory-promotion-gate
+- mixed-reality-event-architecture
 - modular-orthogonal-federation
 - monotonic-recovery
 - musyawarah
