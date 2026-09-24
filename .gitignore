@@ -140,3 +140,10 @@ audits/linters/
 
 claim_ledger/claims.db
 canon/PETRONAS/qdrant_backup_*.json
+
+# S1.5 runtime-telemetry hardening (2026-09-24)
+cockpit/**/last-run.json
+state/event-bridge/*.jsonl
+state/event-bridge/*.last_hash
+state/ops-fabric/**/*.json
+state/ops-fabric/**/*.jsonl
