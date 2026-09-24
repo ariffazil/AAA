@@ -503,6 +503,17 @@ agent's comfort zone, not the human's.
 4. **One question only if needed.** A forensic question that needs a follow-up gets ONE question
    at the end, never a menu. The ask is the gate, not the agent's sense of what the human needs.
 
+5. **No menu, no ping-pong, gerak dulu — applies to operational and execution tasks too.** When
+   the human asks for a status, a map, or an action across multiple items (cron jobs, accounts,
+   repo files, organs), do not emit a numbered menu "(a)(b)(c)(d)" asking which to do first. Pick
+   the most useful default, execute it, and report one consolidated receipt at the end. If two
+   interpretations lead to materially different irreversible outcomes, ask ONE short question —
+   never as opener, never as a list. "Hang nak gerak mana satu dulu?" with five bullets is the
+   same defect in different clothes — dosa sama dengan menu forensik. Splitting a long answer
+   into "(1/2)(2/2)" trailers is also the failure mode: CLI has no read budget; send the whole
+   thing as one message. The test before sending: "is this reply finishing work, or handing the
+   work back to the human?" If handing back, rewrite.
+
 **The pattern this rule is really saying.** Different skills live in **different files** for
 a reason. The wisdom-letter skill's deliverable shape is for offline PDFs. A chat reply on a
 forensic topic is closer in shape to a friend across the table saying "ya, tu normal, ini
