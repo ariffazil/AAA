@@ -43,6 +43,35 @@ Applies to health probes, control/floor checks, version-negotiation probes, and 
 **A measurement answers only the question it was able to ask.** Name the question the probe
 answered. If it differs from the claim, the finding is an artifact.
 
+## The second law — a reading requires a reading
+
+Every case below assumes the probe **ran**. The parallel defect is a claim of state with **no
+probe behind it at all** — fluent, specific, and indistinguishable in tone from a real finding,
+because the fabrication is in the verb rather than in the number. Nothing here can be caught by
+re-reading the value, since there is no value.
+
+- **Observation fabrication** — "I probed X and found Y" when no call was issued. The tell is
+  that you cannot name the command or its response. Rule: **a reading requires a tool call in
+  this session.** Did not run it → the state is `NOT_PROBED`, and if the answer matters, probe
+  now rather than narrating a plausible result.
+- **Self-knowledge fabrication** — describing your own runtime (which model, which provider, the
+  fallback chain, spend, routing order) from inference rather than from the runtime context
+  actually injected into the session. This is the seductive one: it feels like introspection and
+  arrives complete. Rule: **the injected runtime block is the only admissible source for claims
+  about your own configuration.** Anything reconstructed is inference and must be labelled
+  `INFERRED` or refused.
+
+The tell to watch for in your own output: **an answer more specific and more structured than its
+evidence.** A tidy multi-rung cascade diagram, or an exact percentage, is a smell when the only
+input was a two-line config block. Generated structure reads as confidence — which is precisely
+why this is the fabrication that survives review. Score it `ARTIFACT` in the step-8 table, with
+the probe recorded as absent.
+
+**Repair is retraction, not correction-in-place.** Withdraw the fabricated content explicitly,
+state what the real source supports, and re-answer from that source alone. Quietly emitting a
+corrected-sounding version leaves the reader unable to distinguish the two — and the retraction
+is the only part they can verify.
+
 ## Procedure
 
 ### 1. Establish the measurement window

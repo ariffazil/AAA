@@ -73,6 +73,23 @@ hermes-id-zen add-group <GROUP_ID> --title "Nama Group"
 hermes-id-zen scan
 ```
 
+### Group-Driven Admission (F13 declares a third party for care)
+
+When the sovereign (Arif, F13) declares a third party inside a shared group as a care-target ("ni anak aku nak jaga"), admission requires **two coordinated writes** — `hermes-id-zen add-user` only handles the dm path:
+
+1. **`/root/.hermes/lanes/people.yaml`** — append a `people.<slug>` entry with:
+   - `display_name`, `dm_lanes: []` (zero — no DM until they message),
+   - one `identities` row with `kind: telegram_user_id`, `value: '<id>'`, `source: 'arif (F13 sovereign), YYYY-MM-DD'`, `observed: YYYY-MM-DD`,
+   - one `facts` row stating F13's relation (e.g. "kanak-kanak jaga Arif") with `scope: shared` so the lane card can carry it in shared rooms where that person appears. Default `scope: dm` blocks shared-room injection.
+2. **`/root/.hermes/config.yaml`** — append the id to `telegram.allowed_chats`. Without this, group messages from that id are ignored at the gateway.
+3. **Reload** — gateway restart from inside the process is blocked (SIGTERM propagates); Arif must `ssh vps` + `hermes gateway restart`, or schedule a one-shot delay.
+
+Pitfall: never write `identities` with `value: '<id>'` only — `kind` and `source` are required by the admission rule, and missing them fails the spec. Pitfall: setting `scope: dm` for a care-target keeps them invisible in the group where they live — set `scope: shared` if F13 wants group-aware persona.
+
+Pitfall: gateway checks `telegram.allowed_chats` BEFORE reading `lanes/people.yaml`. If F13 declares a new ID and you only patch `people.yaml`, the gateway still silently drops their messages. Always append to BOTH files in the same write — never split them across turns or sessions. After both writes, verify with `grep '<id>' /root/.hermes/config.yaml` before declaring admission complete.
+
+Pitfall: gateway restart from inside the running gateway process is blocked (SIGTERM propagates and kills the restart command). Two paths out: (1) Arif runs `hermes gateway restart` from a separate shell, or (2) schedule a one-shot `systemctl restart hermes-gateway.service` via `terminal(background=true)` so the parent session isn't the one calling restart. Never tell the user "restart done" if you couldn't actually issue the restart — check via `systemctl status` after the delay.
+
 ### What `hermes-id-zen add-user` does automatically:
 1. Appends `USER_ID` to `config.yaml` (`telegram.allowed_chats` & `free_response_chats`).
 2. Registers a typed lane entry in `lanes.yaml` with appropriate triggers and voice register.

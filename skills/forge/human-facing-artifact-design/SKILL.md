@@ -240,6 +240,10 @@ When the artifact is a personal reflection, life document, or wisdom piece — a
 
 **Pitfall:** Subagents asked to generate personal artifacts will default to describing their process or embedding system context if the prompt does not explicitly forbid it. The ban must be stated in the delegation prompt, not assumed.
 
+**Pitfall — when writing a message ON BEHALF of the sovereign to his manager, do not guess the honorific.** "Kak", "Lal", "Madam", "Puan", "Boss", a first name — the right one is a social fact only the sovereign knows, and the wrong one reads as flattery or distance. Before drafting: ask. "Macam mana hang panggil dia — Kak, Lal, Puan, atau nama?" A single line. The cost of asking is one turn. The cost of guessing wrong is a draft the sovereign has to rewrite before sending, and a relationship signal miscalibrated by the agent on the sovereign's behalf. The same rule applies to any third-party register the sovereign has not stated explicitly — tone (formal/casual), pronoun (aku/saya/hang), language (English/Bahasa), and ending greeting (Terima kasih/Salam/Takpe). Once stated, mirror it exactly; do not "improve" the sovereign's own register toward formal English.
+
+**Pitfall — vision-verify every visual artifact before sending.** AI image generators will quietly invent text overlays (often misspelled: "MASTORY" instead of "MASTERY") and other defects that the generator's own quality checks miss. **Always run `vision_analyze` on the rendered image before delivery**, with a prompt that asks specifically about: text overlays (quote them exactly), overlap with chart elements, anchor line positions vs. labelled prices, watermark artefacts, anatomy defects (extra limbs, duplicated body parts), and anything specifically labeled in the artifact's accompanying text. A defect caught before delivery is invisible to the human; a defect caught after delivery is the artifact's signature. If vision is not available in the current lane, defer the artifact and tell the human — do not claim a visual artifact is clean by looking at the prompt alone.
+
 ### Health, rehab and training artifacts addressed to a named person
 
 A document built for one person about their own body — a rehab timeline, a return-to-work plan, a training block — is a care artifact with an extra failure mode: it can be complete against the *previous version* and still be incomplete against the *person*.
@@ -269,6 +273,17 @@ A CV is read by a stranger deciding whether to spend money on the subject, and i
 ## 5. Probe before quoting any number
 
 Market, salary, price and status figures must come from a live probe in the same session, with source and date stated alongside the number. Reciting remembered figures is fabrication-adjacent and gets caught.
+
+**For invoices, receipts and any artifact that puts a number on a real person:** every line on a human-facing invoice carries a **provenance class label**. The label belongs on the artifact itself, not only in the agent's reasoning, because the document will be read by parties who were not in the session and have no other way to tell which numbers were observed and which were filled in.
+
+- `VERIFIED` — printed on a first-party document the human supplied (a bank receipt, an OCR'd invoice line, a screenshot of a transaction). Cite the document. **The agent did not generate this number.**
+- `REPORTED` — spoken or written by a named human in the conversation. Cite speaker + message. **The agent heard this number; the agent did not invent it.**
+- `DERIVED` — arithmetic on VERIFIED/REPORTED values (e.g. `PERLU DIBAYAR = TOTAL − SUDAH DIBAYAR`). Show the arithmetic inline. **The agent computed this number from sources.**
+- `UNKNOWN` — not established by any source. **Print empty, never invent.** A blank cell is the truthful answer.
+
+Any number without a class is fabrication. If the agent cannot classify it, it is `UNKNOWN`. The trap is merging records across transactions to "look complete" — a `BAKI PERLU DIBAYAR` line that adds a settled transaction's total to a new unpaid item's amount is the failure pattern: the human sees a number, assumes both parties agreed, and a fabricated debt sits on paper with the agent's signature on it. **One artifact = one transaction.** Two records → two documents, or two clearly separated sections with the prior balance marked `EXCLUDED` and `closed` rather than deducted.
+
+When the human supplies a receipt mid-conversation, **do not auto-promote** the receipt's amount to the invoice total if the receipt covers a different transaction (e.g. a currency-exchange receipt is not a peptide payment). Confirm before merging; default is "two artefacts, no merge".
 
 **Build the provenance manifest into the artifact itself, not only into your reasoning.** A number-bearing document can be refused at write time by the house write gate when its payload asserts a critical variable with no resolvable source — and the gate is satisfied by provenance, not by rewording. Beyond clearing the gate, an in-artifact `SOURCES` / `EVIDENCE MANIFEST` block mapping every load-bearing figure → URL → access timestamp is what makes the document re-checkable months later by a reader who was not in the session. A closing "figures from public reports" line does the opposite: it grants authority to every number in the artifact, including the unsourced ones, while reading as rigour.
 
@@ -397,6 +412,9 @@ has no way to tell the two states apart from the document alone.
 [ ] No stranded near-empty page, measured on the rendered pages (§3)
 [ ] Rendered pages actually LOOKED at, not just measured — composition defects (a top-heavy page, an unanchored footer, a stamp floating mid-page) are invisible to page counts and ink percentages (§3)
 [ ] One file sent, not several drafts (§6)
+[ ] Invoice/receipt artifact: every number carries a provenance class (VERIFIED / REPORTED / DERIVED / UNKNOWN) on the artifact itself, not only in agent reasoning (§5)
+[ ] Invoice/receipt artifact: one artifact = one transaction — prior settled transactions are marked `EXCLUDED`/`closed`, never deducted into a new balance (§5)
+[ ] Message-on-behalf draft: sovereign's honorific and register for the recipient confirmed (Kak / Lal / Puan / first name / formal / casual) before drafting, not assumed (§4)
 ```
 
 ## 8. Toolchain

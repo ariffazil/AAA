@@ -25,7 +25,7 @@ dependencies:
   - openclaw CLI
 examples:
 - "Gateway watchdog tripped: tail /var/log/arifOS-watchdog.log, run openclaw doctor, recover via openclaw restart"
-- "Bot @AGI_ASI_bot unreachable: probe /health on :18789, escalate to FORGE-telegram-audit if token suspected"
+- "Bot @irfanclaw_arifos_bot unreachable: probe /health on :18789, escalate to FORGE-telegram-audit if token suspected"
 - "A2A bridge disconnected: confirm openclaw health, restart only if health < OK, otherwise HOLD"
 tests:
 - "Health probe returns 200 within 8s after openclaw doctor"
@@ -39,7 +39,7 @@ ecology_state: WARM
 ---
 # OpenClaw — Edge Agent Bridge Operations
 
-**Operational triage for the federation edge.** OpenClaw is the Telegram-facing agent surface (`@AGI_ASI_bot`) and A2A bridge into the internal federation. This skill governs the **operational** surface — health, restart, watchdog, doctor — and explicitly **does not** cover security/token audit (which is `FORGE-telegram-audit`'s lane).
+**Operational triage for the federation edge.** OpenClaw is the Telegram-facing agent surface (`@irfanclaw_arifos_bot`) and A2A bridge into the internal federation. This skill governs the **operational** surface — health, restart, watchdog, doctor — and explicitly **does not** cover security/token audit (which is `FORGE-telegram-audit`'s lane).
 
 ## Overview
 
