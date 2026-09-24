@@ -95,6 +95,18 @@ WEAK_CLOSER: list[tuple[str, str]] = [
     (r"—\s*$|^-\s*$|\b(?:wallahualam|sekian,? terima kasih)\b", "trailing_self_ref",),
 ]
 
+# Structural-skill frame patterns that belong in offline deliverables (wisdom-letter,
+# briefing, multi-document-drafting), NOT in CONVERSE replies. When a chat reply carries
+# more than 2 hits it is the wrong artefact shape - the wisdom-letter template is bleeding
+# into the chat surface. The companion to this list is the forensic-topic cooldown in
+# bridge-protocol SKILL.md §STAGE 3.
+STRUCTURAL_FRAME: list[tuple[str, str]] = [
+    (r"(?m)^Layer\s+\d+\s*[—\-]", "structural_layer_frame"),
+    (r"(?m)^Bab\s+\d+\s*[—\-]", "structural_layer_frame_bm"),
+    (r"(?m)^Section\s+\d+\s*[—\-]", "structural_layer_frame_en"),
+    (r"(?m)^##\s+(?:Opening|Nasihat|Practical Steps|Closing)\s*$", "letter_header_template"),
+]
+
 HUMAN_LABEL_LEAK: list[tuple[str, str]] = [
     (r"\[\s*(?:OBS|DER|INT|SPEC|ACT|SILENT|HOLD|SEAL|WITNESS)\s*\]", "receipt_label"),
     (r"\[\s*\U0001F9BE\s*ACT\s*\]", "receipt_label"),
@@ -373,6 +385,28 @@ def check_register(text: str, r: Report) -> None:
     r.findings += find_bank(third, WEAK_CLOSER, "Gravity", "FLAG", shifted)
 
 
+def check_structural_frame(text: str, r: Report) -> None:
+    """Count `^Layer N —` / `^Bab N —` / `^Section N —` / letter-header patterns.
+
+    These belong in offline deliverables (wisdom-letter, multi-document-drafting), not in
+    CONVERSE chat replies. More than 2 hits = the structural-skill template is bleeding
+    into the chat surface; mechanical RE-DRAFT and let the human re-state or accept a
+    prose paragraph. One or two is fine (a single "Layer 1 / Layer 2" prose summary).
+    Quoted substrings (mention vs use) are still downgraded to INFO via find_bank's
+    quoted-spans handling. See bridge-protocol SKILL.md §STAGE 3 forensic cooldown.
+    """
+    quoted = _quoted_spans(text)
+    hits = find_bank(text, STRUCTURAL_FRAME, "Register", "WARN", quoted)
+    # Count live (non-quoted) hits; if > 2 it's a RE-DRAFT, not just a warning.
+    live_count = sum(f.count for f in hits if f.severity == "WARN")
+    if live_count > 2:
+        for f in hits:
+            if f.severity == "WARN":
+                f.severity = "FLAG"
+                f.suggestion = "strip the layer/letter-frame - write as prose paragraph"
+    r.findings += hits
+
+
 def mechanical_verdict(r: Report) -> str:
     flags = [f for f in r.findings if f.severity == "FLAG"]
     warns = [f for f in r.findings if f.severity == "WARN"]
@@ -478,8 +512,10 @@ def main(argv: list[str] | None = None) -> int:
         check_register(text, r)
         check_intimacy(text, r)
         check_gates(text, r)
+        check_structural_frame(text, r)
     else:
         check_gates(text, r)
+        check_structural_frame(text, r)
 
     if args.thermal:
         out = {"sabar_triggered": r.sabar_triggered, "reasons": r.sabar_reasons}

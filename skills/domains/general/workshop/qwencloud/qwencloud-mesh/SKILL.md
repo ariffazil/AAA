@@ -60,7 +60,7 @@ All Python scripts live under `/root/.agents/skills/`. These are the canonical e
 Each execution skill has reference docs. Load only when default script path fails or details needed:
 
 | Skill | References Dir |
-|---|---|
+|---|---|---|
 | qwencloud-text | `/root/.agents/skills/qwencloud-text/references/` |
 | qwencloud-vision | `/root/.agents/skills/qwencloud-vision/references/` |
 | qwencloud-image-generation | `/root/.agents/skills/qwencloud-image-generation/references/` |
@@ -69,6 +69,12 @@ Each execution skill has reference docs. Load only when default script path fail
 | qwencloud-model-selector | `/root/.agents/skills/qwencloud-model-selector/references/` |
 | qwencloud-ops-auth | `/root/.agents/skills/qwencloud-ops-auth/references/` |
 | qwencloud-usage | (CLI-based, no references dir) |
+
+### TTS Voice Clone Operations (CosyVoice / Qwen-Audio-TTS / Qwen-TTS)
+
+For voice clone enrollment and synthesis with the Singapore region (DashScope International), see:
+
+- `references/tts-voice-clone-ops.md` — enrollment hard constraints (prefix ≤10 chars, single-string `language_hints`), SDK-not-HTTP for synthesis, WSS cold-connect timeout patch, source normalization ffmpeg chain, speaker-identity verification via local ASR before enrollment, free quota rules, public hosting via `arif-fazil.com/_shared/`.
 
 ## Intent Classification & Routing
 
@@ -244,6 +250,9 @@ When a preferred model is exhausted, use this fallback:
 6. **DO** check quota BEFORE executing expensive operations (image gen, video, TTS).
 7. **DO** use `--format json` on CLI commands when parsing output programmatically.
 8. **DO** load the specific sub-skill SKILL.md when the default script path fails.
+9. **Voice clone enrollment — `prefix` ≤10 chars and `language_hints` is a single string.** `["ms","en"]` fails with `InvalidLanguageHints`. See `references/tts-voice-clone-ops.md` for the full constraint map.
+10. **Voice clone synthesis — use the `dashscope` Python SDK, never curl.** The Singapore / Token Plan synthesis endpoint returns `current user api does not support http call` on HTTP POST. WSS only.
+11. **Voice clone — verify the sample's speaker identity via local ASR before enrolling.** Volume alone does not distinguish speakers; `faster-whisper` over candidate windows is the gate.
 
 ## Relationship to Other Skills
 
