@@ -200,6 +200,55 @@ Follow `forge-pdf-delivery` for the pipeline (author → render → `file` check
   correction channel looks like from outside. An institution that looks unusually clean is a question, not an
   answer.
 
+## When the artifact is a literature-grade synthesis (long document, cross-domain, no commentary)
+
+Three signals tell you this is the shape: the principal asks for "literature grade", names multiple
+disciplines ("beyond biology... into physics"), or says "just for me to read" or "no need fancy visual".
+The shape that survives contact:
+
+1. **Plain text default. No visual flourish.** Letter-sized typesetting, serif body, generous margins,
+   no colour, no charts, no logos. The reader's eye does the work, not the page designer. Length is
+   measured in *pages he will actually read*, not words he will skim.
+2. **Draft markdown → principal verifies → convert to PDF.** Author the body as a markdown draft and
+   surface it for content review before rendering. A PDF the principal has not seen the content of is a
+   shape he cannot correct without re-rendering — that creates friction he will not pay, so he reads it
+   anyway and the analysis loses its claim on his attention.
+3. **Calibration table is mandatory, not optional.** Every claim carries a status tag in the prose —
+   empirical, theoretical, speculative, null-result, symbolic. A reader who cannot tell measured from
+   folklore at a glance is reading a document whose authority he cannot calibrate, and that authority
+   drains into the floor. The legend belongs near the top and travels with any forwarded variant.
+4. **Invariants-first lens, not feature catalogue.** When the principal asks for "invariants of X and Y",
+   the operative test is *does the same signature appear in ≥2 of {X, Y, an unstated third domain}?* If
+   yes → invariant candidate. If only one → variable, interesting but local. If zero → folklore, include
+   only because the principal asked and label accordingly. The lens is what makes the synthesis survive
+   cross-domain falsification; without it the document is a feature list and the principal will know.
+5. **No fabrication, ever.** Citation that cannot be found in primary source is removed. A peer-reviewed
+   claim with a real citation survives; a folkloristic claim labelled as such also survives; a
+   folkloristic claim labelled as science does not. The reader knows the difference and the agent's
+   credibility survives only as long as the labels do.
+6. **Close on the calibration, not on the conclusion.** A literature-grade synthesis ends with a section
+   on what it does NOT claim — null results, speculative claims, symbolic mappings. The principal's
+   working model is what survives this section. A synthesis without it is a contribution to a popular
+   narrative and is worth less than its page count.
+
+## When the deliverable's pipeline is fragile (token-budget, vision, multi-render)
+
+- **Token-limited reasoning that consumes the entire output budget.** When the model produces thinking
+  blocks larger than its output window, the agent emits nothing visible. Mitigation: split the work —
+  author one block, save it, then proceed to the next. Surface partial output for the principal to
+  acknowledge before extending, rather than accumulating an unbroken reasoning chain. Treat the
+  reasoning-budget failure as an instruction to **emit earlier**, not to keep thinking deeper.
+- **Vision-analyze loops that don't converge.** When a PDF re-render keeps producing the same defect
+  ("alpha mde" still in the image after the source code was corrected), the source-code fix has not
+  reached the rendered artifact. Verify by reading the rendered PDF text directly (`pdftotext`) — if
+  the source text is correct but the rendered image carries the defect, the renderer is caching or the
+  font is truncating. Switch to a font that does not truncate and re-render, then re-verify with
+  vision_analyze on a fresh page sample.
+- **Honest "I can't finish this turn" beats invisible stall.** When the budget is genuinely too tight
+  for a long artifact, say so explicitly and offer the markdown draft for content review. A stalled
+  agent reporting no output is harder to debug than an agent that returns a partial artifact with a
+  clear continuation marker.
+
 ## Quality check before delivering
 
 1. Could a reader who has never seen the federation tooling read this end to end without a glossary?

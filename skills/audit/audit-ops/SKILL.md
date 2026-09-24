@@ -138,6 +138,25 @@ and 11 for the steps.
 deliberately NOT merged into one body. The separator is the **shape of what the reviewer produced**,
 not its topic: concordant (5) → gate table (6) → doubtful-artifact prose (7).
 
+### Branch 8 sub-shape — Constitutional Doctrine Audit (governance, not artifact)
+
+When the pasted material is a **proposal to amend the constitution the agent itself operates
+under** (capability manifest, hard-stop list, decision-loop, sovereignty boundary), three rules
+override the standard artifact-grade procedure:
+
+1. **Doctrine has overlap with the auditor.** The agent audits a proposal that touches axioms the
+   auditor also claims to embody. Treat the overlap explicitly — name the axiom, state whether the
+   proposal extends or contradicts, and present that judgment **before** the per-claim bucket.
+   "Constitutional extension" ≠ "doctrinal alignment" — distinguish.
+2. **Buckets shift.** "Already exists" applies but extends: a doctrine proposal that names an axiom
+   the constitution already has is **PARTIAL-RATIFY**, not REFUTED — extend, do not reject.
+   "Missing" applies to constitutional floors (hard stops): a proposal that drops a floor is
+   `FOUND-MISSED-AND-OPPOSE`, regardless of how clean its other claims are.
+3. **The auditor proposes, the principal ratifies.** When the principal offers three refinements
+   and the auditor accepts two but pushes one (the "caveat pair"), the deliverable is a
+   **patch-with-amendments** artifact, not a verdict. Distinguish: PARTIAL-RATIFY-with-cavats vs
+   RATIFY vs REJECT. Each route has different downstream work.
+
 ### Step 2 — The universal first move, on every branch
 
 Before weighing a single finding: **name the artifact the report claims to be about, and probe that
@@ -353,6 +372,12 @@ in brackets tells you where the scar bites.
   is not counting its instances.
 - **Do not skip the reproducer step even if the scar pattern is obvious in code.** The number is the
   receipt and the question is "how bad is it?" Without the number the report is hollow.
+- **Self-audit conflicts-of-interest.** When the subject of the audit is doctrine the agent itself
+  claims to embody, the audit is not external — a probe of "does my constitution hold against this
+  proposal" is the constitution asking the proposal to validate it. Name the overlap explicitly and
+  re-frame the question: "does this proposal extend, contradict, or duplicate the constitution?"
+  Treat duplicates as PARTIAL-RATIFY (extend), not REFUTE (reject) — that distinction is the whole
+  reason constitutional reviews need a separate vocabulary.
 
 **Branch 9 — surfaces disagree**
 
@@ -413,6 +438,27 @@ in brackets tells you where the scar bites.
 - **Denial without verification, and premature patching without reproduction, are both wrong.** Each
   named scar is a falsifiable hypothesis: open the file, confirm the scar, report it as the lead
   finding, then patch — or cite line numbers proving it is not real.
+
+**Branch 8 — constitutional-amendment lifecycle (audit-ops specific)**
+
+- **Decision loops without first-class stop nodes spin forever.** A loop whose only terminal is
+  `execute → witness` collapses under insufficient evidence; the agent reports "done" when execution
+  ticks, not when reality matches projection. Every audit-proposed decision loop must list HOLD,
+  STOP, and ESCALATE as first-class branches — never as emergency afterthoughts.
+- **Witness-as-plane, not as tail step.** Witness is the reality plane that closes the loop, not a
+  final tick to record after the work. An audit that lists witness last in the step chain will be
+  implemented as a final tick by the agent; that collapses the transition chain into a Boolean and
+  is the same defect state-transition discipline exists to prevent.
+- **Three amendment classes, three ratification paths.** Cosmetic (wording, examples, ordering) →
+  BUILD lane may patch directly with verbal F13 approval. Structural (axiom change, loop change,
+  hard-stop adjustment) → fresh F13 ratification with full text review; old fragment archived, new
+  fragment numbered v(N+1). Constitutional (hard-stop removal, axiom deletion, sovereignty
+  transfer) → F13 explicit ratification + 7-day cool-off, then rebuild. Audit verdicts that
+  propose constitutional-level change without flagging the class are scope-creep by another name.
+- **The auditor's job ends in a verdict or amendable artifact, not a seal.** When the principal
+  ratifies a constitutional fragment, the agent stages the artifact, writes the seal-receipt, and
+  stops. Writing the word SEAL over a document without a chain is the defect this intake exists to
+  catch.
 
 ## REFERENCES
 
