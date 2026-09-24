@@ -162,6 +162,19 @@ If mismatch is severe (`f2_adherence < 0.70` OR residual_entropy == HIGH),
 the receipt flags issue post-generation. Disclosure follows the density
 band rules above.
 
+### Hard Gate (Text-Bearing Artifact Routing)
+
+**Trigger:** Artifact's value depends on the literal text it carries — logos, posters, infographics, branded documents, chat-style artifacts, anything where spelling or token-level fidelity matters. Detection rules:
+- User explicitly names words/strings that must appear (quoted text, brand names, IDs, legal language)
+- Output channel is text delivery: PDF, SVG, HTML, or any rendering where the user will read text in pixels
+- Identity / legal / financial artifacts where a single wrong character changes meaning
+
+**Action:** REFUSE the diffusion path. Route to a deterministic text renderer: `weasyprint`, `google-chrome --headless`, `pandoc`, `reportlab`, or hand-crafted SVG. Verify with a text-layer check (`pdftotext`, `strings`, or visual diff of source vs rendered text), NOT with vision interpretation.
+
+Why: diffusion text-to-image reliably corrupts spelling, fabricates plausible gibberish, and inserts phantom glyphs/watermarks. The defect is structural across the diffusion class — not a model or tune artifact, not fixable by more elaborate prompting. Treat the model's text output as decorative, never authoritative. The renderer's text-layer is the only ground truth.
+
+Companion rule (write-side mirror of `poster-vision-extraction` SCAR 2026-08-27's read-side prohibition on fill-from-memory): the write-side forbids render-text-via-diffusion. Without this mirror, an agent that respects read-side fidelity will still produce corrupt text on the write side — an asymmetry that the user sees as "AI doesn't read OR write correctly," when each half has its own discipline.
+
 ## Shadow Mode Deployment (F1 Reversibility)
 
 Initial deployment runs VLM Tri-Witness in **shadow mode**:

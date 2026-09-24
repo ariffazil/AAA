@@ -1,0 +1,1044 @@
+version: '2026-09-24'
+updated_at: '2026-09-24T09:28:39.272385+00:00'
+total_models: 125
+models:
+  cosyvoice-v3-plus:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 217 chars
+    remaining_percent: 97.83%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  cosyvoice-v3-flash:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr-mtl:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr-2025-11-07:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr-mtl-2025-08-25:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr-2025-08-25:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash-2026-02-10:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash-2025-09-08:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-voice-enrollment:
+    group: Audio
+    quota_total: 1K calls
+    consumed: 1 calls
+    remaining_percent: 99.9%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-vc-2026-01-22:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-vd-2026-01-26:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash-filetrans:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash-filetrans-2025-11-17:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-instruct-flash:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-instruct-flash-2026-01-26:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-flash:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-flash-2025-11-27:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-flash-2025-09-18:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-omni-30b-a3b-captioner:
+    group: Audio
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr-flash-2026-06-15:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-livetranslate-flash-realtime:
+    group: Audio
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-livetranslate-flash-realtime-2025-09-22:
+    group: Audio
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-flash-realtime:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-flash-realtime-2025-09-18:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash-realtime-2025-10-27:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash-realtime:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-vd-realtime-2025-12-16:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-flash-realtime-2025-11-27:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr-realtime:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  fun-asr-realtime-2025-11-07:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-vd-realtime-2025-12-16-calls:
+    group: Audio
+    quota_total: 10 calls
+    consumed: 0 calls
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-asr-flash-realtime-2026-02-10:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-instruct-flash-realtime-2026-01-22:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-vc-realtime-2026-01-15:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-vd-realtime-2026-01-15:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-tts-instruct-flash-realtime:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-livetranslate-flash-realtime:
+    group: Audio
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-livetranslate-flash-realtime-2026-05-19:
+    group: Audio
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-audio-3.0-realtime-plus:
+    group: Audio
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-11-04'
+    status: Active
+    auto_stop_enabled: true
+  qwen-audio-3.0-realtime-flash:
+    group: Audio
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-11-04'
+    status: Active
+    auto_stop_enabled: true
+  qwen-audio-3.0-asr-flash-filetrans:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-10-27'
+    status: Active
+    auto_stop_enabled: true
+  qwen-audio-3.0-asr-flash-streaming:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-10-27'
+    status: Active
+    auto_stop_enabled: true
+  qwen-audio-3.0-asr-flash:
+    group: Audio
+    quota_total: 36K seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-10-27'
+    status: Active
+    auto_stop_enabled: true
+  qwen-audio-3.0-tts-flash:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-10-13'
+    status: Active
+    auto_stop_enabled: true
+  qwen-audio-3.0-tts-plus:
+    group: Audio
+    quota_total: 10K chars
+    consumed: 0 chars
+    remaining_percent: 100%
+    expiration_date: '2026-10-13'
+    status: Active
+    auto_stop_enabled: true
+  wan2.6-t2v:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 25 seconds
+    remaining_percent: 50%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.5-t2v-preview:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.2-t2v-plus:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-t2v-plus:
+    group: Vision
+    quota_total: 200 seconds
+    consumed: 8 seconds
+    remaining_percent: 96%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-t2v-turbo:
+    group: Vision
+    quota_total: 200 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.6-i2v-flash:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 10 seconds
+    remaining_percent: 80%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.6-i2v:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.2-animate-move:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.2-animate-mix:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.5-i2v-preview:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.2-i2v-flash:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.2-i2v-plus:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-kf2v-plus:
+    group: Vision
+    quota_total: 200 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-i2v-turbo:
+    group: Vision
+    quota_total: 200 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-i2v-plus:
+    group: Vision
+    quota_total: 200 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.6-r2v-flash:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.6-r2v:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-image:
+    group: Vision
+    quota_total: 50 images
+    consumed: 15 images
+    remaining_percent: 70%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.6-image:
+    group: Vision
+    quota_total: 50 images
+    consumed: 29 images
+    remaining_percent: 42%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.5-i2i-preview:
+    group: Vision
+    quota_total: 50 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-2.0-pro:
+    group: Vision
+    quota_total: 100 images
+    consumed: 25 images
+    remaining_percent: 75%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-2.0-pro-2026-06-22:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-2.0-pro-2026-04-22:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-2.0-pro-2026-03-03:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-2.0:
+    group: Vision
+    quota_total: 100 images
+    consumed: 37 images
+    remaining_percent: 63%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-2.0-2026-03-03:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  z-image-turbo:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-edit-max:
+    group: Vision
+    quota_total: 100 images
+    consumed: 1 images
+    remaining_percent: 99%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-edit-max-2026-01-16:
+    group: Vision
+    quota_total: 100 images
+    consumed: 10 images
+    remaining_percent: 90%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-plus:
+    group: Vision
+    quota_total: 100 images
+    consumed: 24 images
+    remaining_percent: 76%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image:
+    group: Vision
+    quota_total: 100 images
+    consumed: 3 images
+    remaining_percent: 97%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-plus-2026-01-09:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-max:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-max-2025-12-30:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-edit-plus-2025-12-15:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-edit-plus-2025-10-30:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-edit-plus:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-edit:
+    group: Vision
+    quota_total: 100 images
+    consumed: 17 images
+    remaining_percent: 83%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.5-t2i-preview:
+    group: Vision
+    quota_total: 50 images
+    consumed: 1 images
+    remaining_percent: 98%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.2-t2i-plus:
+    group: Vision
+    quota_total: 100 images
+    consumed: 10 images
+    remaining_percent: 90%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.2-t2i-flash:
+    group: Vision
+    quota_total: 100 images
+    consumed: 5 images
+    remaining_percent: 95%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-t2i-plus:
+    group: Vision
+    quota_total: 200 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-t2i-turbo:
+    group: Vision
+    quota_total: 200 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.1-vace-plus:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  happyhorse-1.1-r2v:
+    group: Vision
+    quota_total: 10 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-i2v-2026-04-25:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 36 seconds
+    remaining_percent: 28%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  happyhorse-1.0-t2v:
+    group: Vision
+    quota_total: 10 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-videoedit:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  happyhorse-1.0-video-edit:
+    group: Vision
+    quota_total: 10 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  happyhorse-1.1-i2v:
+    group: Vision
+    quota_total: 10 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-t2v-2026-04-25:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-i2v:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 5 seconds
+    remaining_percent: 90%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-t2v:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 5 seconds
+    remaining_percent: 90%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  happyhorse-1.0-r2v:
+    group: Vision
+    quota_total: 10 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-r2v:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  happyhorse-1.0-i2v:
+    group: Vision
+    quota_total: 10 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-mt-image-2.0:
+    group: Vision
+    quota_total: 100 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-11-26'
+    status: Active
+    auto_stop_enabled: true
+  wan3.0-video-prime:
+    group: Vision
+    quota_total: 30 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-11-21'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-3.0-pro:
+    group: Vision
+    quota_total: 10 images
+    consumed: 8 images
+    remaining_percent: 20%
+    expiration_date: '2026-11-03'
+    status: Active
+    auto_stop_enabled: true
+  qwen-image-3.0:
+    group: Vision
+    quota_total: 10 images
+    consumed: 0 images
+    remaining_percent: 100%
+    expiration_date: '2026-11-03'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-t2v-2026-06-12:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 15 seconds
+    remaining_percent: 70%
+    expiration_date: '2026-09-30'
+    status: Active
+    auto_stop_enabled: true
+  wan2.7-r2v-2026-06-12:
+    group: Vision
+    quota_total: 50 seconds
+    consumed: 0 seconds
+    remaining_percent: 100%
+    expiration_date: '2026-09-30'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-plus:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 23 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-omni-flash-2025-09-15:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-omni-turbo:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-omni-turbo-2025-03-26:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen2.5-omni-7b:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-omni-flash-realtime:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3-omni-flash-realtime-2025-09-15:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-omni-turbo-realtime-2025-05-08:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen-omni-turbo-realtime:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-plus-realtime-2026-03-15:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-flash-2026-03-15:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-flash:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-flash-realtime:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 1.2K tokens
+    remaining_percent: 99.88%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-flash-realtime-2026-03-15:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-plus-2026-03-15:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  qwen3.5-omni-plus-realtime:
+    group: Multimodal
+    quota_total: 1M tokens
+    consumed: 0 tokens
+    remaining_percent: 100%
+    expiration_date: '2026-09-29'
+    status: Active
+    auto_stop_enabled: true
+  text-embedding-v3:
+    group: Unknown
+    quota_total: Unknown
+    consumed: 100%
+    remaining_percent: 0%
+    status: EXHAUSTED
+    exhausted_at: Mon, 21 Sep 2026 21:09:42 +0800 (CST)
+    exhaustion_email_id: 1a0c416327b2b848
+  text-embedding-v4:
+    group: Unknown
+    quota_total: Unknown
+    consumed: 100%
+    remaining_percent: 0%
+    status: EXHAUSTED
+    exhausted_at: Mon, 21 Sep 2026 20:52:46 +0800 (CST)
+    exhaustion_email_id: 1a0c406b03552cb8
+  wan2.6-t2i:
+    group: Unknown
+    quota_total: Unknown
+    consumed: 100%
+    remaining_percent: 0%
+    status: EXHAUSTED
+    exhausted_at: Fri, 18 Sep 2026 07:56:45 +0800 (CST)
+    exhaustion_email_id: 1a0b1cd24986b057
+  qwen3.8-max-0902:
+    group: Unknown
+    quota_total: Unknown
+    consumed: 100%
+    remaining_percent: 0%
+    status: EXHAUSTED
+    exhausted_at: Thu, 10 Sep 2026 14:38:43 +0800 (CST)
+    exhaustion_email_id: 1a08a0a487d7eb3c
+  qwen3-vl-235b-a22b-instruct:
+    group: Unknown
+    quota_total: Unknown
+    consumed: 100%
+    remaining_percent: 0%
+    status: EXHAUSTED
+    exhausted_at: Wed, 2 Sep 2026 17:33:42 +0800 (CST)
+    exhaustion_email_id: 1a06177a096e1869
