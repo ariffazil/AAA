@@ -39,7 +39,7 @@ actor_id: `openclaw`
 
 Known aliases:
 - OpenClaw
-- AGI_ASI_bot
+- irfanclaw_arifos_bot
 
 Identity authority:
 - Registry-derived
