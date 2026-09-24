@@ -45,11 +45,7 @@ def cmd_episodes(args):
     result = chron_episodes(function=function, limit=10)
     print(f"Episodes: {result['total']} total")
     for ep in result["episodes"]:
-        print(
-            f"  [{ep.get('episode_id', '?')[:30]}] "
-            f"fn={ep.get('function', '?')} "
-            f"vt={ep.get('valid_time', '?')[:16]}"
-        )
+        print(f"  [{ep.get('episode_id', '?')[:30]}] fn={ep.get('function', '?')} vt={ep.get('valid_time', '?')[:16]}")
     print(f"By function: {result['functions']}")
 
 
@@ -98,9 +94,7 @@ def cmd_learn(args):
         print(f"CHRON Learn — {len(lessons)} lessons extracted")
         for l in lessons:
             print(f"  [{l['lesson_id']}] {l['lesson'][:60]}")
-            print(
-                f"    recurrence: {l['recurrence']}  eligible: {l['promotion_eligible']}"
-            )
+            print(f"    recurrence: {l['recurrence']}  eligible: {l['promotion_eligible']}")
 
 
 def cmd_generate(args):
@@ -114,15 +108,39 @@ def cmd_generate(args):
 
 
 def cmd_calibration(args):
-    from chron_prediction import compute_calibration
+    """Honest-scope calibration (audit 2026-09-25 #3): effective sample,
+    synthetic tests separated, scope labels, updated_at — read from the
+    canonical calibration.json (stamped by the 07:00/07:15 writers)."""
+    import json
+    from pathlib import Path
 
-    cal = compute_calibration()
-    print("CHRON Calibration:")
-    print(f"  Total verified: {cal['total']}")
-    print(f"  Correct: {cal['correct']}")
-    print(f"  Accuracy: {cal['accuracy']}")
-    print(f"  Mean Brier: {cal['mean_brier']}")
-    print(f"  By error type: {cal['by_error_type']}")
+    p = Path("/root/chron/data/calibration.json")
+    try:
+        cal = json.loads(p.read_text())
+    except FileNotFoundError:
+        print("CHRON data not available: /root/chron/data/calibration.json not found.")
+        print("Run the 07:00/07:15 calibration writers first, or check CHRON installation.")
+        return
+    except json.JSONDecodeError as e:
+        print(f"CHRON calibration.json malformed: {e}")
+        return
+    scopes = cal.get("honest_scopes") or {}
+    print("CHRON Calibration (skop jujur):")
+    for key, label in (
+        ("canonical_unified_excluding_self_tests", "NYATA (tanpa ujian sintetik)"),
+        ("canonical_unified_including_self_tests", "GABUNGAN (termasuk sintetik)"),
+    ):
+        s = scopes.get(key) or {}
+        if not s:
+            continue
+        acc = s.get("accuracy")
+        acc_txt = f"{acc:.4f}" if isinstance(acc, (int, float)) else str(acc)
+        brier = s.get("mean_brier")
+        brier_txt = f"{brier:.4f}" if isinstance(brier, (int, float)) else str(brier)
+        print(f"  [{label}] n={s.get('n')}  betul={s.get('correct')}  ketepatan={acc_txt}  Brier={brier_txt}")
+    print(f"  sampel efektif: {cal.get('effective_n')}  ujian sintetik: {cal.get('synthetic_self_tests')}")
+    print(f"  dikemas kini: {cal.get('updated_at')}")
+    print(f"  by error type: {cal.get('by_error_type')}")
 
 
 def cmd_tools(args):
