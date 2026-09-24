@@ -95,7 +95,7 @@ Agents with active systemd services and Telegram presence.
 | ID | Tier | Lane | Telegram | Port | Config | Eureka Layer | Status |
 |---|---|---|---|---|---|---|---|
 | **hermes-asi** | ASI | SOUL/OMEGA | @ASI_arifos_bot | 18001 (A2A) | `/root/.hermes/config.yaml` | **L3 — Authority** (interface to L3) | ✅ LIVE (polymorphic hub: 555-ASI / 333-AGI / front-door; role-binding-polymorphic) |
-| **openclaw** | AGI | C2-Execute | @AGI_ASI_bot | 18789 | `/root/.openclaw/workspace/` | **L3 — Authority** (subagent orchestration) | ✅ LIVE (subagent orchestration focus) |
+| **openclaw** | AGI | C2-Execute | @irfanclaw_arifos_bot | 18789 | `/root/.openclaw/workspace/` | **L3 — Authority** (subagent orchestration) | ✅ LIVE (subagent orchestration focus) |
 | **777-forge** | 777 | Witness/Spawn | — | — | A2A registered | **L4 — Execution** (witness-only, bounded) | ✅ LIVE (drift: not in JSON registry — see §DRIFT) |
 | **antigravity** (runtime binding of FI-004) | AGI | L3-Autonomous | — | — | `/root/.gemini/` | **L3 — Authority** (Gemini 3.5 runtime binding of the same citizen tracked in CODING as FI-004) | ✅ LIVE |
 

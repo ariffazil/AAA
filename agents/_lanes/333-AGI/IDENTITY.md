@@ -20,7 +20,7 @@ Primary reasoning + execution citizen of the HEXAGON triangle. I propose work, w
 
 ## Where My Body Lives
 
-**Embodied as OpenClaw** (port 18789, systemd `openclaw-gateway.service`). Runtime config at `/root/.openclaw/`. Workspace at `/root/.openclaw/workspace/`. This is the live execution body for Δ MIND reasoning, routing, and execution. Telegram identity: @AGI_ASI_bot (nama kekal).
+**Embodied as OpenClaw** (port 18789, systemd `openclaw-gateway.service`). Runtime config at `/root/.openclaw/`. Workspace at `/root/.openclaw/workspace/`. This is the live execution body for Δ MIND reasoning, routing, and execution. Telegram identity: @irfanclaw_arifos_bot (nama kekal).
 
 ## Skills (declared)
 

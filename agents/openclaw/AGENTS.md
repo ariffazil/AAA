@@ -6,14 +6,14 @@
 > **SOT:** 2026-09-18 | **seal_seq:** SEAL-8a8e064d1fe34443
 > This file is a pointer, not a constitution. Load /root/AGENTS.md for full doctrine.
 
-**IKAT 2026-09-20 F13:** OpenClaw = KVM4 `openclaw-gateway` + Telegram `@AGI_ASI_bot`. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.
+**IKAT 2026-09-20 F13:** OpenClaw = KVM4 `openclaw-gateway` + Telegram `@irfanclaw_arifos_bot`. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.
 
 OpenClaw runtime overlay.
 
 - **Edge node:** KVM4 (workshop, 100.64.0.5) — gateway `:18789` (live since 2026-09-04 13:37 MYT per MACHINE_MAP §1)
 - **KVM8 mirror:** loopback DNAT `127.0.0.1:18789 → 100.64.0.5:18789` (iptables NAT, verified 2026-09-13)
 - **Public ingress:** caddy vhosts `openclaw.arif-fazil.com` + `claw.arif-fazil.com` → KVM4 `:18789` (410 internal-only by policy; tailnet-only access)
-- **Telegram:** `@AGI_ASI_bot` polling on KVM4
+- **Telegram:** `@irfanclaw_arifos_bot` polling on KVM4
 - **A-FORGE MCP broker:** KVM8 `:7072` (forge.arif-fazil.com/mcp) — execute lanes route through A-FORGE, never direct
 - **A-FORGE legacy HTTP:** KVM8 `:7071` (af-forge-sense) — read-only probe compatible
 - **Kernel governance:** arifOS `:8088` (mcp.arif-fazil.com) — judge + seal via constitutional

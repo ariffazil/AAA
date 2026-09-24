@@ -15,6 +15,6 @@
   "updated_at": "2026-09-20T13:56:00Z",
   "fingerprint": "aa1e1da7e3a0d01443ad36075b9182a8",
   "key_source": "ABSENT — /root/.openclaw/identity/device.json does not exist on KVM8. Pubkey retained from prior file; do not treat path as live.",
-  "identity_bind": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
+  "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
   "ikat": "2026-09-20 F13 — Arif: ok ikat la. Removed EXECUTE, FORGE, T2, HARNESS."
 }

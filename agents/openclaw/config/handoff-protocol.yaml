@@ -64,7 +64,7 @@ handoff_signals:
     hermes_action_post_judge: "Narrate verdict to group if relevant. Default HOLD if arif_judge unreachable."
 
 decision_tree:
-  - condition: "Message contains @AGI_ASI_bot or machine ops keywords"
+  - condition: "Message contains @irfanclaw_arifos_bot or machine ops keywords"
     routing: "Hermes stays silent → OpenClaw handles → OpenClaw may send EXEC_COMPLETE to Hermes"
   - condition: "Message contains @ASI_arifos_bot or human-life keywords"
     routing: "Hermes responds → Hermes may send EXEC_REQUEST to OpenClaw"
