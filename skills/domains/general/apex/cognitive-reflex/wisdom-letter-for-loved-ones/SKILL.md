@@ -132,6 +132,45 @@ This ensures the event is recorded for future context.
 
 ## Pitfalls
 
+### Structural-skill boundary (do not leak into chat replies)
+
+This skill produces a **letter / briefing / nasihat PDF** for a human to read offline. Its
+"Layer 1: present-tense / Layer 2: future-self" frame, its `## Opening / ## Nasihat / ##
+Practical Steps / ## Closing` template, and its bold-header prose cadence all exist for that
+deliverable. They are not chat register.
+
+**Forbidden outside this skill's pipeline:**
+
+- Do not answer a chat question ("why are there kinds of porn", "why am I anxious about X",
+  "explain my relationship with my mom") using "Layer 1 / Layer 2 / Layer 3" numbered frames.
+  That register is for letters, not conversation. Chat register is prose paragraphs.
+- Do not import this skill's header template (`## Opening`, `## Nasihat`, `## Practical Steps`,
+  `## Closing`) into a Telegram reply. The deliverable shape leaks into chat.
+- Do not close a chat reply with "Letter complete. Real-signature." or "This letter is sealed."
+  or any letter-style closing. Letters end with a sign-off. Chats end with a takeaway line.
+- Do not run this skill when the human asked a forensic question in chat ("kenapa ada macam
+  macam jenis porn?") and then issue its output as a chat reply. The skill is for offline
+  PDFs and direct-to-Arif briefings, not for human chat surfaces.
+
+**The bleed mechanism (so a future agent catches it).** The template fits content: when a
+question's substance looks structured (science, behaviour, history, family dynamics), the
+agent reflex reaches for `Layer 1 / Layer 2 / Layer 3` because the structure matches the
+content. The reflex is wrong because **chat is a different surface from a PDF**. A human on
+Telegram reads at phone-glance pace; the letter's reader reads at letter pace. Same content,
+different shape. The fit-to-content reflex is the trap — content structure does NOT licence
+deliverable structure when the surface is chat.
+
+**Why this is a separate pitfall from "Reply too long".** Length theatre is volumetric
+(strip paragraphs). Structural bleed is shape theatre (strip the frame). A 200-word reply
+that is five `## Layer 1 — topic` sections is still wrong; the frame is the failure, not
+the count.
+
+**The test.** If a human pastes the output back and asks "kenapa panjang macam ni?", you
+wrote the wrong artefact. Re-draft in chat register (one paragraph) and offer the full
+letter on request. Cross-references: `bridge-protocol/SKILL.md` §STAGE 3 "Length budget" +
+"Forensic-topic cooldown" (the constitution-level guard), `hermes-response-format-fit/SKILL.md`
+Pitfall #17 (the mode-detection guard that fires BEFORE the draft is composed).
+
 - **Don't fabricate details.** If you haven't sourced it in the person-card or a scar, cut it. The TT Golf scar applies here.
 - **Don't include agent-internal machinery.** No F-numbers, no OBS/DER labels, no scar IDs in the letter itself. The letter is for a human, not an agent.
 - **Don't include technical/work details from OTHER contexts.** The letter is for them, not a status report about your work.
