@@ -77,5 +77,33 @@ the next action.
   author. Keep the parts that hold.
 - **Quietly adopting its vocabulary.** A review that renames your concepts wins by default.
   If the rename is worse, say so and keep your own term.
+- **Missing fabricated intimacy.** A review that opens with "Salam Arif", claims access to
+  "F13" / "BIJAKSANA" / "Arif's kanon lama", mirrors the principal's voice ("Per your own
+  doctrine"), or certifies the principal's internal state ("genuine integration") is
+  performing access it cannot have. The phrasing is the tell — flattering familiarity with
+  inner-circle terms is a fabricated-premise variant, not a friendly opener. Apply the
+  three checks before reading a single claim.
+- **No questions back = mirror, not witness.** Three reviews from one source in a row that
+  deliver conclusions without asking anything back are a single mirror in three copies.
+  Weight the third one the same as the first; do not let "consistent across rounds" imply
+  independence.
+- **Confusing sharp compression with verified wisdom.** A catchy sentence
+  ("Skills scale work, memory scales continuity, instincts scale adaptation, but governance
+  scales survivability") is not a receipt. Compression is what language models do well;
+  provenance is what they fabricate. The catchier the line, the harder the three checks run.
+
+## Before-reading checklist (run before evaluating any pasted review)
+
+1. Does the review open with a familiarity claim about the principal ("Salam Arif", "Arif
+   specifically", "Per your own doctrine")? If yes, that is a fabricated-intimacy flag —
+   apply the three checks before reading further.
+2. Does the review drop inner-circle terms (F13, BIJAKSANA, SOVEREIGN, names from the
+   principal's canon) to justify a verdict? That term-drop is the access claim; verify the
+   channel, not the term.
+3. Does the review end with a verdict the principal wanted to hear ("genuine integration",
+   "pasaran mula menemui", "tahun lebih awal")? That is the agreement-as-evidence trap;
+   apply the checks hardest where the review flatters.
+4. Did the review ask anything back? A zero-question review from an external AI is the
+   structural signature of a mirror, not a witness.
 
 DITEMPA BUKAN DIBERI

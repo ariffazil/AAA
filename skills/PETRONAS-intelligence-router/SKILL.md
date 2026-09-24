@@ -2,6 +2,8 @@
 name: PETRONAS-intelligence-router
 description: "USE WHEN: Any query mentioning PETRONAS, Petronas, petronas, Petros, SEARAH, Gentari, Tengku Taufik, extraction ratio, PETRONAS Carigali, or Malaysian national oil company topics."
 version: 0.0.0-untracked
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # PETRONAS Intelligence Router

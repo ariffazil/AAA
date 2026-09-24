@@ -7,6 +7,8 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7, F12]
 description: "Web search + scrape + interact + parse + monitor + research via Firecrawl — used to extend AI coding tools (Claude Code, Codex, OpenCode, OpenClaw, Hermes) with real-time information retrieval. Activates when the user asks to look something up on the web, fetch a URL, interact with a page, parse a local document, monitor changes, or run research."
 autonomy_tier: T1
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 Web, doc, page-interaction, monitoring, and research capabilities via Firecrawl. RM0 (free quota) when used with a free-tier key; never consumes Token Plan Credits.

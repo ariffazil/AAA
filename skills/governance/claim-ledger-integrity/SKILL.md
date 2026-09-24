@@ -124,6 +124,37 @@ worse than none, because the ledger now looks maintained.
   records exist, the loop is counting its own deltas rather than store state, so a hollow
   cycle is indistinguishable from a quiet one. Name it; do not silently pass.
 
+### A "wired / live / working" claim from config alone is not a receipt
+
+Config declarations and runtime state are two separate surfaces. A claim that a Telegram bot is
+working in a group, derived from `config.yaml` lists of allowed_chats or `free_response_chats`,
+reads as a count of declared groups but says nothing about whether any inbound traffic has actually
+been processed. The same shape recurs across many surfaces — allowlists, lane triggers, dashboard
+toggles — wherever a UI panel writes intent and a daemon reads it.
+
+- **Probe the runtime, not the declaration.** `getChatMember` returning `status: member` is
+  evidence the bot is in the group; a config row with the chat_id is evidence someone wrote the
+  row. The first answer is "wired", the second is "declared". A failure class observed at
+  scale: config declares 23 chat_ids, runtime has zero sessions for all 23, agent reports
+  "wired" because the config is full.
+- **`chat not found` is a different failure class than token/auth failure.** When the bot is
+  not in the group yet (operator hasn't added it), the API returns `chat not found` on every
+  send. The token is fine, the route is fine, the lane is fine — the bot simply isn't a member.
+  Diagnose by `getChatMember` before assuming token, config or routing is the cause.
+- **A bot cannot add itself to a group.** Telegram forbids self-add; the operator must open
+  the group, find the bot by username, and tap Add. There is no API endpoint that does this.
+  When `chat not found` is the symptom, the repair is a human action on the Telegram client,
+  not a config patch — say so explicitly.
+- **`requireMention: false` is a config that can mislead.** It claims the bot wakes on every
+  message, but the bot must first be a group member for the API to deliver any message. A
+  config that says "wake on everything" with a membership that says "the bot is not in this
+  room" produces **silent sleep**, not full coverage. Membership and config are independent
+  surfaces; both must pass.
+- **Two observable states — report both, name which one moved.** A config patch that says
+  "wired" while `getChatMember` returns "not found" is two booleans; name them by surface, do
+  not collapse them into one verdict, and the next reader will not have to re-derive the
+  diagnosis from scratch.
+
 ## Proving a fix to a ledger reader
 
 Use an A/B causal test against production payloads — both code versions loaded as isolated

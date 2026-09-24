@@ -123,6 +123,12 @@ Suggested skills to author:
 - `WISDOM-reader` — read scars + carry_forward before claiming
 - `SEAL-discipline` — distinguish SEAL from RECEIPT
 
+**Outbound pointer — when Arif asks "apa kena buat hari ini":** the output of this
+skill is the substrate, but **the sovereign-facing filter** (top-2 F13 binaries,
+hide agent auto-work, no menus) lives in `sovereign-daily-brief`. After writing
+`/root/work/tasks.json`, hand the synthesis off — do not narrate the manifest
+back to Arif yourself.
+
 ### Rule 6 — Close with witnessed SABAR, not fake SEAL
 If metabolism is sub-threshold (G < 0.80, W3 < 0.75), do NOT claim SEAL. Close as SABAR — acknowledge the gap honestly. The kernel allows SABAR (seal.py line 61). SABAR is constitutional honesty.
 
@@ -280,6 +286,46 @@ left main's clone size untouched.
 
 **Probe each blob's ref-reachability before proposing a deletion.** Blob size is not
 where-ness.
+
+### Rule 3k — Reconcile seal_chain_head counts against the chain FILE (NEW — 2026-09-24)
+
+`hours_since_last_seal` is only half the heartbeat probe. The head declares
+`canonical_entries` + `historical_entries`; the file on disk has its own line count
+and its own `seq` shape. In this compile the head declared 57 canonical + 258
+historical (315) against a `seal_chain.jsonl` holding 267 lines, with `seq` present
+on only 223 of them and mixed types (203 int / 18 str / 44 absent) — while a
+first-pass parser silently reported 258 because `except: pass` swallowed its own
+counting bug.
+
+```bash
+# count lines, parses, seq presence and types — NEVER except:pass around a count
+python3 -c "..."   # tot / parsed / with_seq / int vs str / missing
+```
+
+If line counts ≠ head's declared counts (Δ must be explained: post-head appends,
+canonical-vs-historical split, or a second file), mark chain integrity
+**UNVERIFIED** in SHADOW — do not narrate "chain healthy" from the head alone.
+A parser that reports N must show its failure count beside it.
+
+### Rule 3l — File-effective ≠ runtime-effective: probe the RUNNING process (NEW — 2026-09-24)
+
+Two manifest claims passed disk verification and were still contradicted by the live
+session: `settings.json` held the correct `model:{name,...}` dict yet the running
+harness emitted the legacy-`model` warning, and `qwen --version` read 0.24.4 while
+the running process's own banner advertised 0.24.3→0.24.4. The upgrade/fix was real;
+the process predated it.
+
+After verifying any config write or install swap, probe the process that must
+*consume* it:
+
+```bash
+ps -o lstart= -p <pid>            # process start vs file mtime
+<binary> --version                # installed ≠ running (banner is the tell)
+```
+
+If `process_start < file_mtime`, the claim is **DONE_FILE_LAYER / EFFECTIVE_ON_RESTART**
+— never plain DONE. Live banners, stderr warnings, and the serving model are the
+witness; the file is only the declaration.
 
 ## Workflow (canonical)
 
