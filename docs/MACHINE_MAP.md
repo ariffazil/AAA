@@ -1,6 +1,6 @@
 # MACHINE MAP — arifOS Federation Three-Node SOT
 
-> Verified live 2026-09-03 by FI-003 (from KVM8). Re-probe before acting — this map ages.
+> Verified live 2026-09-24 by FI-009 / Antigravity (from KVM8). Re-probe before acting — this map ages.
 > Placement doctrine: `KVM4-WORKER/FED_PLACEMENT.md` (2026-09-02, F13 ratification pending):
 > **KVM8 = Truth (forge) · AAA = Interface (Cockpit) · KVM4 = Execution (workshop) · KVM2 = Witness — labels ratified 2026-09-04 F13**
 
@@ -75,6 +75,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | 2026-09-04 15:36 | FI-008 | CRON ROOT CAUSE SEALED: root crontab carried **literal `\r` TEXT** (58 occurrences — backslash-r characters, NOT CR bytes; every byte-tool was rendering text, python repr exposed it). Daemon dispatched poisoned command names → jobs FIRED but never STARTED (unsealed-counter, observatory, direct-backup, phoenix72 class). Fix: strip → 58→0, 70 lines intact. Proof fire 16:00. F13 gates executed: 1 ratify wrapper · 2 strip · 3 Gemini embedding exception Option 2 expiry 2026-10-04 · 4 sentinel disabled · 5 Zen Governor installed to edge workspace. Repo syncs A/B/C/D per audit packet. |
 | 2026-09-07 23:15 | FI-008 | TERMUX AGENTIC AUDIT + 3-NODE KEY SYNC: phone ed25519 fp `Mq01Ue…` — KVM8 entry was CORRUPT (1 char dropped → sshd-rejected line; fixed + `IDENTITY=arif` tagged) · KVM4 OK (parallel session 15:03Z) · KVM2 added 23:08. Dedup: byte-identical u0_a618 RSA ×1 removed. Login reality: phone rides OLD id_rsa (`HnD9YLpS…` — LIVE, do not prune). Banner myths cleared: "no backup"=false (vault999-backup.timer ran 03:47) · "well 100%"=transient triadic-snapshot 60s-timer spike · "duplicates 2"=hermes-health unowned (WATCH trigger). DISK 85% = real, watch. |
 | 2026-09-13 ~10:15Z | 333-AGI | OPENCLAW WATCHDOG VERIFIED + A5 CLOSURE: KVM4 watchdog alive (journalctl CRON firings 09:40–10:05Z; last alert 2026-09-11 16:05Z REPAIR_FAILED → 888_HOLD → Telegram msg 110069 in `/var/log/openclaw-watchdog.log`). KVM8: no watchdog units/cron — stale copy annotated + committed (25d99eec3). KVM8-side loopback DNAT documented (§1). Claim drift corrected: A5 was half-true (only KVM4 shim documented), A6 was NOT done as of this pass. |
+| 2026-09-24 11:30 | FI-009 / Antigravity | 3-NODE SOT AUDIT + REPO SYNC + ZERO DRIFT: KVM8 = 9/9 organs UP (WELL 3-way commit cf703be parity drift=false; Disk 65%, RAM 55%), repos synced to origin (WELL, GEOX, WEALTH, arifFlow, AAA). KVM4 = litellm :4000 UP ("I'm alive!"), openclaw-gateway :18789 LIVE (DeepSeek-v4-flash ~960ms), 5/5 docker containers healthy, 0 failed units, Disk 31%, RAM 59% avail. KVM2 = Wawa bot hermes-agent Up 9d continuous (no split-brain; hermes-asi-gateway disabled), caddy/ollama/saf-mcp live, 0 failed units, Disk 33%, RAM 82% avail. Blast radius minimal. |
 
 ## 5. Sovereign access — phone (Termux agentic node, "arifs-s24")
 
