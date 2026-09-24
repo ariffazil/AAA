@@ -1,7 +1,7 @@
 {
   "edition": "EDITION-009",
   "date": "2026-09-24",
-  "built_at": "2026-09-23T22:52:34Z",
+  "built_at": "2026-09-23T22:57:33Z",
   "stages": {
     "validate": {
       "ok": true,
@@ -40,8 +40,8 @@
       "ok": true,
       "artifact": "/root/AAA/forge_work/2026-09-24-edition-009/EDITION-009.pdf",
       "sidecar": "/root/AAA/forge_work/2026-09-24-edition-009/EDITION-009.sha256",
-      "artifact_sha256": "be9a14e08778bab83585bd3114879a93302b54aebf63fffab83807f486c9f76b",
-      "content_sha256": "30224c662b98ead4014994238c88bd33389ac31aa61a2968bd74756fba47de8f",
+      "artifact_sha256": "b40442770a364ea1ac47a12c2ed2f898274aca87e439000708ab0408ae236b44",
+      "content_sha256": "ec11a98a505fc37f1572408ea75b7e83c0ec95c423da6c08c0af06de5c115527",
       "gates_all_pass": true
     },
     "mirror": {
