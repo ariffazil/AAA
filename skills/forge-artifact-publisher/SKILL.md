@@ -390,6 +390,8 @@ curl -s -X POST "https://api.telegram.org/bot${ASI_ARIFOS_BOT_TOKEN}/sendDocumen
 | ❌ Base64 images > 1MB each | PDF becomes unwieldy | Resize images before embedding |
 | ❌ No page count verification | Blank pages or missing slides go unnoticed | Always `pdfinfo` after conversion |
 | ❌ Skip delivery confirmation | Artifact may fail to send | Check Telegram API response |
+| ❌ Pass local file path to `<img src=...>` in WeasyPrint HTML | Image silently not embedded, PDF comes out < 5KB with all-white pages | Always `data:image/png;base64,...` inline; verify post-render with `pdfinfo` (expect > 100KB) or `pdftotext` (expect non-empty). If PDF is < 5KB after WeasyPrint, suspect missing base64 — re-render with `base64.b64encode(open(p,'rb').read()).decode()` inline. |
+| ❌ Vision-verify the same page that the AI generated text for | Confirmation bias — defects are easier to spot when the rendering pipeline is separate from the content pipeline. After WeasyPrint emits the PNG via `pdftoppm -r 90`, run vision_analyze on a randomly-chosen page (not page 1, which is the cover, usually clean). Cover-pass is not artifact-pass. |
 
 ---
 
