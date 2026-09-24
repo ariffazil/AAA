@@ -91,6 +91,7 @@ Delta gate: posts only when content hash differs from last posted hash
 | trading_scan | — | Trading scan |
 | sro_expiry | 03:00 | SRO expiry check |
 | sro_calibration | Mon 04:00 | SRO calibration |
+| receipt-reality-correlator | daily 07:45 | Receipt↔reality gap record — claimed vs predicted vs verified vs observed (T0, F13 2026-09-25) |
 
 ## Event Log Location
 `/root/AAA/state/event-bridge/events.jsonl`
