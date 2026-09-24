@@ -56,6 +56,21 @@ whenever figures were reconstructed rather than fetched.
 
 ## Pitfalls
 
+- **When `plt.savefig()` produces corrupted PNG dimensions (e.g. width=285,643 px), the bytes write
+  successfully, the script exits 0, and downstream tools crash with `DecompressionBombError`.** The
+  root cause is usually a stale `*.mplstyle` in `~/.config/matplotlib/stylelib/` (e.g. `pyrolite.mplstyle`)
+  whose malformed directive (`legend.bbox_to_anchor : (1, 1)`) silently inflates the rendered width.
+  Switch to direct `Figure()` + `FigureCanvasAgg()` construction to bypass the pyplot state machine:
+  ```python
+  fig = Figure(figsize=(13, 8))
+  canvas = FigureCanvasAgg(fig)
+  ax = fig.add_axes([0.05, 0.05, 0.90, 0.85])
+  ax.plot([0, 1, 2], [0, 1, 4])
+  canvas.print_png(out)
+  ```
+  Then verify on-disk dimensions with `PIL.Image.open(out).size` before downstream use. Full recipe:
+  `references/matplotlib-direct-figure-pattern.md`.
+
 - **tz-aware pandas index vs naive `datetime` throws.** yfinance history on Bursa/KL tickers returns
   tz-aware (`datetime64[s, Asia/Kuala_Lumpur]`); comparing it to `datetime(...)` raises
   `Invalid comparison between dtype=datetime64[s, Asia/Kuala_Lumpur] and datetime`. Strip once at
