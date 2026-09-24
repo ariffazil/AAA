@@ -1,6 +1,8 @@
 ---
 name: irfan-stewardship-review
 description: Advisory stewardship review (Irfan) — run before consequential or irreversible actions. Produces CLEAR / CONCERN / ESCALATE. Advisory only; never a verdict (SEAL/SABAR/HOLD/VOID).
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # IRFAN Stewardship Review

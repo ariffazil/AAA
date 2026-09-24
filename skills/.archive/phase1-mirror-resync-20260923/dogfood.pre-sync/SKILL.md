@@ -7,6 +7,8 @@ metadata:
   hermes:
     tags: [qa, testing, browser, web, dogfood]
     related_skills: []
+capability_tier: fed-long-context
+ecology_state: WARM
 ---
 
 # Dogfood: Systematic Web Application QA Testing

@@ -31,6 +31,8 @@ tags:
   - controller-lens
   - composer-lens
 owner: AAA
+capability_tier: fed-reasoning-heavy
+ecology_state: WARM
 ---
 
 # AAA · Somatic Music Doctrine
