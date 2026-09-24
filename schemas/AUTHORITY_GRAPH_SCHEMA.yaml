@@ -1,0 +1,155 @@
+# =============================================================================
+# AUTHORITY_GRAPH_SCHEMA.yaml — Sovereign Authority Graph & Linguistic Drift Schema
+# =============================================================================
+# Status: F13_RATIFIED_CHAT (2026-09-25)
+# Authority: F13 SOVEREIGN
+# Scope: Federation-wide authority claims & separation-of-powers monitoring
+# Prime Invariant: CAPABILITY ≠ AUTHORITY (Apex Reality Kernel Axiom 4)
+# =============================================================================
+
+version: "1.0.0"
+target: "authority-drift-sentinel"
+
+principles:
+  language_first_drift: |
+    Authority drift does NOT begin at tool execution; it begins as linguistic drift.
+    When a builder (333) emits a "verdict", when an auditor (555) proposes policy,
+    or when a judge (888) designs code, separation of powers has collapsed before
+    a single file is touched.
+  complete_mediation: |
+    Every consequential claim must be typed with its legitimate authority tier.
+    No node may adopt the vocabulary or prerogative of a superior or orthogonal node.
+
+authority_tiers:
+  T_333:
+    name: "Architect / Builder (AGI)"
+    allowed_verbs:
+      - "PROPOSE"
+      - "EXPLORE"
+      - "DRAFT"
+      - "MEASURE"
+      - "HYPOTHESIZE"
+      - "PROTOTYPE"
+    forbidden_verbs:
+      - "VERDICT"
+      - "DECIDE"
+      - "SEAL"
+      - "RATIFY"
+      - "VETO"
+      - "MUTATE_CANON"
+    prohibited_language_signatures:
+      - "Verdict: SEAL"
+      - "Decision finalized"
+      - "Ratified by builder"
+
+  T_555:
+    name: "Auditor / Verifier (ASI)"
+    allowed_verbs:
+      - "VERIFY"
+      - "AUDIT"
+      - "FALSIFY"
+      - "CHECK_CONSTRAINTS"
+      - "OBSERVE_DRIFT"
+    forbidden_verbs:
+      - "PROPOSE_POLICY"
+      - "DESIGN_ARCHITECTURE"
+      - "EXECUTE_MUTATION"
+      - "OVERRIDE_SOVEREIGN"
+    prohibited_language_signatures:
+      - "Policy updated to"
+      - "I hereby decree"
+      - "Architecture revised by auditor"
+
+  T_888:
+    name: "Judge / Synthesizer (APEX)"
+    allowed_verbs:
+      - "EVALUATE"
+      - "RECOMMEND_SEAL"
+      - "PROPOSE_HOLD"
+      - "WEIGH_CONTRADICTIONS"
+      - "COOL_PARADOX"
+    forbidden_verbs:
+      - "EXECUTE_ACT"
+      - "WRITE_PRODUCTION_CODE"
+      - "BYPASS_F13"
+    prohibited_language_signatures:
+      - "Executing code mutation directly"
+      - "Bypassing sovereign ratification"
+
+  T_F13:
+    name: "Sovereign Human Principal (Arif)"
+    allowed_verbs:
+      - "RATIFY"
+      - "SEAL"
+      - "VETO"
+      - "AUTHORIZE_IRREVERSIBLE"
+      - "OVERRIDE"
+    forbidden_verbs: []
+    delegation_rule: "Sovereignty is non-delegable. No agent, harness, or cron may sign as F13."
+
+  T_AFORGE:
+    name: "Executor (A-FORGE Actuator)"
+    allowed_verbs:
+      - "ACT"
+      - "MUTATE_BOUNDED"
+      - "EXECUTE_SEALED"
+    forbidden_verbs:
+      - "ARBITRATE"
+      - "SELF_AUTHORIZE"
+    required_prerequisite: "Must hold an active, non-expired Authority Tuple signed by F13 or 888."
+
+violation_classes:
+  V1_JUDGE_TO_EXECUTOR:
+    description: "Evaluator executing raw code or modifying filesystem outside verdict receipt."
+    severity: "CRITICAL"
+    action: "BLOCK_AND_ISOLATE"
+  V2_BUILDER_TO_JUDGE:
+    description: "Architect emitting binding verdicts or ratifications without review."
+    severity: "HIGH"
+    action: "STRIP_VERDICT_STATUS"
+  V3_AUDITOR_TO_POLICY:
+    description: "Verifier injecting new constitutional doctrine instead of auditing conformance."
+    severity: "HIGH"
+    action: "REVERT_DOCTRINE_MUTATION"
+  V4_AGENT_TO_SOVEREIGN:
+    description: "Agent claiming F13 authority or fabricating sovereign ratification instruments."
+    severity: "FATAL"
+    action: "HARD_SHUTDOWN_HARNESS"
+
+schema:
+  type: object
+  required:
+    - claim_id
+    - timestamp
+    - actor_id
+    - actor_declared_tier
+    - statement_or_action
+    - extracted_verbs
+    - linguistic_drift_detected
+    - authority_compliance_verdict
+  properties:
+    claim_id:
+      type: string
+      pattern: "^auth:[0-9]{8}:[a-z0-9_-]+$"
+    timestamp:
+      type: string
+      format: date-time
+    actor_id:
+      type: string
+    actor_declared_tier:
+      type: string
+      enum: ["T_333", "T_555", "T_888", "T_F13", "T_AFORGE"]
+    statement_or_action:
+      type: string
+    extracted_verbs:
+      type: array
+      items:
+        type: string
+    linguistic_drift_detected:
+      type: boolean
+    violation_class:
+      type: string
+      enum: ["V1_JUDGE_TO_EXECUTOR", "V2_BUILDER_TO_JUDGE", "V3_AUDITOR_TO_POLICY", "V4_AGENT_TO_SOVEREIGN", "NONE"]
+    authority_compliance_verdict:
+      type: string
+      enum: ["COMPLIANT", "DRIFT_WARNED", "AUTHORITY_BREACH_BLOCKED"]

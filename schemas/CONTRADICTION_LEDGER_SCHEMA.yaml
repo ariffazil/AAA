@@ -1,0 +1,125 @@
+# =============================================================================
+# CONTRADICTION_LEDGER_SCHEMA.yaml — Epistemic Conflict Index with Half-Life Schema
+# =============================================================================
+# Status: F13_RATIFIED_CHAT (2026-09-25)
+# Authority: F13 SOVEREIGN
+# Scope: Federation epistemic hygiene & paradox management
+# Prime Invariant: LAW #5 — "Stop verifying when additional verification cannot change a decision."
+# =============================================================================
+
+version: "1.0.0"
+target: "contradiction-accumulator"
+
+principles:
+  anti_landfill: |
+    Not all contradictions matter equally. Accumulating unweighted contradictions
+    turns memory into an epistemic landfill. A contradiction between two unused
+    doctrines from 18 months ago carries zero reality consequence and must decay.
+  actionable_conflict: |
+    A contradiction is urgent ONLY if it blocks or distorts an active sovereign
+    decision or live physical consequence. Otherwise, it is assigned a half-life
+    and pruned if unreferenced.
+
+scoring_formula:
+  definition: "Contradiction Severity = (Contradiction Score * Reality Cost) + (Attention Cost / Attention Ceiling)"
+  weights:
+    contradiction_score: "0.0 - 1.0 (degree of mutual exclusivity)"
+    reality_cost: "0.0 - 1.0 (financial, physical, or human risk if both are acted upon)"
+    attention_cost: "Minutes of agent deliberation wasted reconciling the conflict"
+
+decay_and_pruning:
+  default_half_life_days:
+    operational: 30
+    canonical_doctrine: 90
+    philosophical_paradox: 180
+  prune_rule: |
+    If active_decision_dependency is FALSE and age_days > (2 * half_life_days):
+      Transition status to 'DORMANT_VOID' and evict from active LLM reasoning context.
+
+schema:
+  type: object
+  required:
+    - contradiction_id
+    - timestamp
+    - claim_a
+    - claim_b
+    - mutual_exclusivity_proof
+    - contradiction_score
+    - reality_cost
+    - attention_cost_minutes
+    - active_decision_dependency
+    - half_life_days
+    - lifecycle_state
+  properties:
+    contradiction_id:
+      type: string
+      pattern: "^contra:[0-9]{8}:[a-z0-9_-]+$"
+    timestamp:
+      type: string
+      format: date-time
+    claim_a:
+      type: object
+      required:
+        - claim_id
+        - source_path
+        - statement
+      properties:
+        claim_id:
+          type: string
+        source_path:
+          type: string
+        statement:
+          type: string
+    claim_b:
+      type: object
+      required:
+        - claim_id
+        - source_path
+        - statement
+      properties:
+        claim_id:
+          type: string
+        source_path:
+          type: string
+        statement:
+          type: string
+    mutual_exclusivity_proof:
+      type: string
+      minLength: 20
+      description: "Formal proof explaining why Claim A and Claim B cannot be simultaneously true."
+    contradiction_score:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+    reality_cost:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+    attention_cost_minutes:
+      type: number
+      description: "Human and agent minutes spent cycling on this tension."
+    active_decision_dependency:
+      type: boolean
+      description: "True if any active F13 binary or organ roadmap item depends on resolving this."
+    affected_subgraph:
+      type: string
+      description: "Domain or organ affected (e.g., WELL, GEOX, arifOS, HERMES)."
+    half_life_days:
+      type: integer
+      default: 90
+    lifecycle_state:
+      type: string
+      enum: ["ACTIVE_BLOCKING", "ACTIVE_OBSERVED", "COOLING_HELD", "DORMANT_VOID", "RESOLVED_SYNTHESIZED"]
+    resolution:
+      type: object
+      properties:
+        resolved_at:
+          type: string
+          format: date-time
+        reconciled_by:
+          type: string
+        resolution_strategy:
+          type: string
+          enum: ["SUPERSEDE_A", "SUPERSEDE_B", "DIALECTIC_SYNTHESIS", "VOID_BOTH", "F13_SOVEREIGN_VETO"]
+        crystallized_truth:
+          type: string

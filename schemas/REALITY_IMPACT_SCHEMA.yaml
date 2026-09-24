@@ -1,0 +1,120 @@
+# =============================================================================
+# REALITY_IMPACT_SCHEMA.yaml — Sovereign Reality Impact & Anti-Theatricality Schema
+# =============================================================================
+# Status: F13_RATIFIED_CHAT (2026-09-25)
+# Authority: F13 SOVEREIGN
+# Scope: Federation-wide consequence & reality verification
+# Prime Invariant: REALITY > EVERYTHING (Reality Kernel Axiom 1)
+# =============================================================================
+
+version: "1.0.0"
+target: "reality-impact-attestor / reality-debt-auditor"
+
+principles:
+  anti_theatricality: |
+    A system that produces 1,000 receipts, 50 commits, and 100 green health checks
+    without altering human reality or physical consequence is engaged in
+    THEATRICAL COGNITION. Auditing audits is zero reality production.
+  reality_over_receipt: |
+    A receipt is a claim about action. Reality is the observed change in state
+    that survives outside the computer. Receipt ≠ Reality.
+
+reality_classes:
+  R1:
+    name: "File Mutation"
+    description: "Code edits, documentation updates, git commits, configuration files."
+    weight: 0.05
+    theatrical_if_isolated: true
+  R2:
+    name: "System Mutation"
+    description: "Service restart, daemon reload, cron schedule change, port bind."
+    weight: 0.10
+    theatrical_if_isolated: true
+  R3:
+    name: "Capability Mutation"
+    description: "New verified skill loaded, new MCP tool exposed, autonomous loop closed."
+    weight: 0.25
+    theatrical_if_isolated: false
+  R4:
+    name: "Human Behavior Mutation"
+    description: "Human principal acted on advice, rested, made executive corporate move, avoided harm."
+    weight: 0.60
+    theatrical_if_isolated: false
+  R5:
+    name: "Real-World Physical / Financial Consequence"
+    description: "Financial gain/loss prevented, contractual signing, biological health recovery, physical safety."
+    weight: 1.00
+    theatrical_if_isolated: false
+
+evaluation_rules:
+  theatricality_gate:
+    condition: "all(impact.reality_class in ['R1', 'R2'] for impact in period.impacts)"
+    verdict: "THEATRICAL"
+    action: "FLAG_ENTROPY_LEAK"
+    penalty: "Zero reality credit awarded regardless of receipt volume or green telemetry."
+
+  reality_debt_formula:
+    definition: "Reality Debt = Attention Consumed (minutes) - (Weighted Reality Produced * Attention Multiplier)"
+    threshold_hold_days: 30
+    trigger: "If Reality Debt exhibits monotonic rise for 30 consecutive days -> Mandatory 888_HOLD on new tool creation."
+
+schema:
+  type: object
+  required:
+    - impact_id
+    - timestamp
+    - session_id
+    - reality_class
+    - description
+    - attention_consumed_minutes
+    - human_stakeholder
+    - independent_witness
+    - reality_delta
+  properties:
+    impact_id:
+      type: string
+      pattern: "^imp:[0-9]{8}:[a-z0-9_-]+$"
+    timestamp:
+      type: string
+      format: date-time
+    session_id:
+      type: string
+    reality_class:
+      type: string
+      enum: ["R1", "R2", "R3", "R4", "R5"]
+    description:
+      type: string
+      minLength: 10
+    attention_consumed_minutes:
+      type: number
+      description: "Human attention (W888) minutes consumed by Arif or stakeholders."
+    human_stakeholder:
+      type: string
+      description: "Human principal or counterpart affected (e.g., human:arif, human:syed)."
+    independent_witness:
+      type: object
+      required:
+        - witness_id
+        - witness_type
+        - verifiable_evidence_path
+      properties:
+        witness_id:
+          type: string
+        witness_type:
+          type: string
+          enum: ["external_sensor", "human_attestation", "financial_ledger", "third_party_receipt"]
+        verifiable_evidence_path:
+          type: string
+    reality_delta:
+      type: object
+      required:
+        - state_before
+        - state_after
+        - physical_or_human_proof
+      properties:
+        state_before:
+          type: string
+        state_after:
+          type: string
+        physical_or_human_proof:
+          type: string
