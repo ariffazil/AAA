@@ -1,120 +1,168 @@
 # =============================================================================
-# REALITY_IMPACT_SCHEMA.yaml — Sovereign Reality Impact & Anti-Theatricality Schema
+# REALITY_IMPACT_SCHEMA.yaml — Sovereign Reality Impact Measurement Schema
 # =============================================================================
-# Status: F13_RATIFIED_CHAT (2026-09-25)
-# Authority: F13 SOVEREIGN
-# Scope: Federation-wide consequence & reality verification
-# Prime Invariant: REALITY > EVERYTHING (Reality Kernel Axiom 1)
+# Status: DRAFT_AWAITING_F13
+# Authority: ARIF (Human Sovereign)
+# Reference: ARIFOS::SOVEREIGNTY_CRONS::SCHEMA_FIRST::v1
+# Mode: GOVERNANCE-FIRST
+# Constraints: DESIGN ONLY · NO RUNTIME MUTATION · NO CRON CREATION
 # =============================================================================
 
-version: "1.0.0"
-target: "reality-impact-attestor / reality-debt-auditor"
+schema_version: "1.0.0-draft"
+artifact_type: "governance_schema"
+status: "DRAFT_AWAITING_F13"
+target_evaluator: "reality-debt-auditor"
 
-principles:
-  anti_theatricality: |
-    A system that produces 1,000 receipts, 50 commits, and 100 green health checks
-    without altering human reality or physical consequence is engaged in
-    THEATRICAL COGNITION. Auditing audits is zero reality production.
-  reality_over_receipt: |
-    A receipt is a claim about action. Reality is the observed change in state
-    that survives outside the computer. Receipt ≠ Reality.
+purpose: |
+  Prevent audit-theatre.
+  Ensure Reality Impact is measured by witnessed consequences rather than receipt volume.
+  Enforce epistemic cost for claiming impact: Mutation ≠ Consequence.
+
+core_rule: |
+  Witness Count alone is insufficient.
+  Reality Class is mandatory.
 
 reality_classes:
   R1:
     name: "File Mutation"
-    description: "Code edits, documentation updates, git commits, configuration files."
-    weight: 0.05
-    theatrical_if_isolated: true
+    description: "File changed."
+    examples:
+      - "Markdown updated"
+      - "Config changed"
+      - "YAML rewritten"
+      - "Git commit created"
+    default_interpretation: "Theatrical possibility."
+    base_weight: 0.05
+    reality_producing: false
+
   R2:
-    name: "System Mutation"
-    description: "Service restart, daemon reload, cron schedule change, port bind."
-    weight: 0.10
-    theatrical_if_isolated: true
+    name: "System State Mutation"
+    description: "System state changed."
+    examples:
+      - "Service restarted"
+      - "Container deployed"
+      - "Cron installed"
+      - "Port bound"
+    default_interpretation: "Infrastructure consequence."
+    base_weight: 0.10
+    reality_producing: false
+
   R3:
-    name: "Capability Mutation"
-    description: "New verified skill loaded, new MCP tool exposed, autonomous loop closed."
-    weight: 0.25
-    theatrical_if_isolated: false
+    name: "Capability State Mutation"
+    description: "Capability state changed."
+    examples:
+      - "New capability became reachable"
+      - "Registry entry became executable"
+      - "Broken dependency repaired"
+      - "MCP tool exposed and verified"
+    default_interpretation: "Operational consequence."
+    base_weight: 0.25
+    reality_producing: false
+
   R4:
     name: "Human Behavior Mutation"
-    description: "Human principal acted on advice, rested, made executive corporate move, avoided harm."
-    weight: 0.60
-    theatrical_if_isolated: false
+    description: "Human behavior changed."
+    examples:
+      - "User workflow changed"
+      - "Governance process changed"
+      - "Decision path changed"
+      - "Human principal rested or acted on advice"
+    default_interpretation: "Human consequence."
+    base_weight: 0.60
+    reality_producing: true
+
   R5:
-    name: "Real-World Physical / Financial Consequence"
-    description: "Financial gain/loss prevented, contractual signing, biological health recovery, physical safety."
-    weight: 1.00
-    theatrical_if_isolated: false
+    name: "External Reality Mutation"
+    description: "External reality changed."
+    examples:
+      - "Cost avoided"
+      - "Revenue created"
+      - "Risk reduced"
+      - "Human relationship preserved"
+      - "Real-world mission advanced"
+    default_interpretation: "Reality consequence."
+    base_weight: 1.00
+    reality_producing: true
 
-evaluation_rules:
-  theatricality_gate:
-    condition: "all(impact.reality_class in ['R1', 'R2'] for impact in period.impacts)"
-    verdict: "THEATRICAL"
-    action: "FLAG_ENTROPY_LEAK"
-    penalty: "Zero reality credit awarded regardless of receipt volume or green telemetry."
-
-  reality_debt_formula:
-    definition: "Reality Debt = Attention Consumed (minutes) - (Weighted Reality Produced * Attention Multiplier)"
-    threshold_hold_days: 30
-    trigger: "If Reality Debt exhibits monotonic rise for 30 consecutive days -> Mandatory 888_HOLD on new tool creation."
+mandatory_verdict_rule:
+  condition: "all(record.reality_class in ['R1', 'R2'] for record in reporting_period)"
+  verdict: "THEATRICAL"
+  rule_text: |
+    If a reporting period produces only R1 and R2,
+    then system verdict: THEATRICAL,
+    regardless of receipt volume, green telemetry, or test pass rates.
 
 schema:
   type: object
   required:
-    - impact_id
+    - artifact_id
+    - capability_id
+    - actor
     - timestamp
-    - session_id
+    - consequence_description
     - reality_class
-    - description
-    - attention_consumed_minutes
-    - human_stakeholder
-    - independent_witness
-    - reality_delta
+    - witness_count
+    - witness_independence_score
+    - evidence_links
+    - claim_links
+    - reality_origin
+    - attribution_confidence
   properties:
-    impact_id:
+    artifact_id:
       type: string
       pattern: "^imp:[0-9]{8}:[a-z0-9_-]+$"
+      description: "Unique deterministic identifier for the witnessed impact."
+    capability_id:
+      type: string
+      description: "Identifier of the constitutional capability exercised."
+    actor:
+      type: string
+      description: "Actor who triggered or executed the action (e.g. arif, 333-agi, a-forge)."
     timestamp:
       type: string
       format: date-time
-    session_id:
+    consequence_description:
       type: string
+      minLength: 15
+      description: "Precise factual description of what changed outside the agent cognition."
     reality_class:
       type: string
       enum: ["R1", "R2", "R3", "R4", "R5"]
-    description:
-      type: string
-      minLength: 10
-    attention_consumed_minutes:
+    witness_count:
+      type: integer
+      minimum: 0
+      description: "Number of independent witness records capturing this event."
+    witness_independence_score:
       type: number
-      description: "Human attention (W888) minutes consumed by Arif or stakeholders."
-    human_stakeholder:
+      minimum: 0.0
+      maximum: 1.0
+      description: "Degree of observational, epistemic, and authority independence of witnesses."
+    evidence_links:
+      type: array
+      items:
+        type: string
+      description: "URIs, hashes, or file paths of immutable evidence."
+    claim_links:
+      type: array
+      items:
+        type: string
+      description: "Related claim IDs in the claim ledger."
+    reality_origin:
       type: string
-      description: "Human principal or counterpart affected (e.g., human:arif, human:syed)."
-    independent_witness:
-      type: object
-      required:
-        - witness_id
-        - witness_type
-        - verifiable_evidence_path
-      properties:
-        witness_id:
-          type: string
-        witness_type:
-          type: string
-          enum: ["external_sensor", "human_attestation", "financial_ledger", "third_party_receipt"]
-        verifiable_evidence_path:
-          type: string
-    reality_delta:
-      type: object
-      required:
-        - state_before
-        - state_after
-        - physical_or_human_proof
-      properties:
-        state_before:
-          type: string
-        state_after:
-          type: string
-        physical_or_human_proof:
-          type: string
+      enum:
+        - "human_action"
+        - "agent_action"
+        - "mixed"
+        - "external_environment"
+        - "unknown"
+      description: "Causal origin of the reality change to prevent unearned agent attribution."
+    attribution_confidence:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: "Confidence that the capability was the actual cause of the consequence."
+
+computed_fields:
+  reality_score:
+    formula: "base_weight[reality_class] * witness_independence_score * attribution_confidence"
+    guidance: "R1 = lowest (0.05), R5 = highest (1.00)"
