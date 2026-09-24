@@ -50,12 +50,29 @@ Every claim carries a tag. No exceptions.
 
 ## Render pipeline
 
-Use WeasyPrint for portrait-A4 governance dossiers. CSS @page rules for cover page (dark background, @page:first { margin:0 }). Pull-quote boxes as div.pull with dark background. Tagged evidence in table with tr { page-break-inside: avoid }. Timeline as CSS-styled div.timeline with border-left and dot markers. Analyst verdict as dark div.verdict box.
+**Default to a light palette.** White/near-white ground, dark text. Arif explicitly stated (2026-09-18, applies to every governance dossier since): *"I hate black dark background in pdf."* Dark decks are for screen; governance dossiers are for reading. **Do not ship a dark-theme governance cover or pull-quote box, even when the subject is institutional and serious.** This applies even to "forensic" dossiers on corporate misconduct — the topic is heavy, the document must not be.
 
-Example cover structure:
-<div class="cover" style="height:297mm;width:210mm;background:var(--ink);...">
-  <div class="stamp">FORENSIC ANALYSIS</div>
-  <h1>Title <em>Subtitle</em></h1>
+Working palette for a governance dossier (validated by vision inspection on SEARAH dossier 24 Sep 2026):
+
+| Role | Hex |
+|---|---|
+| Ground | `#efeae0` (warm bone) or `#ffffff` |
+| Body text | `#12100e` (≈16:1 contrast) |
+| Heading / table header | `#8c1818` deep brick — white text on it ≈9:1 |
+| Accent rule / stamp | `#a08540` antique brass |
+| Evidence tag | tinted badges — green=UKUR, amber=REPORTED, red=INFERENCE, blue=STATEMENT |
+| Zebra row | `#e7e0d2` (lighter than ground) |
+| Pull-quote / verdict box | `#f4eee2` cream interior with brick-red left rule. **NOT black/ink background.** |
+
+Use WeasyPrint for portrait-A4 governance dossiers. CSS `@page { size: A4; margin: 19mm 17mm 21mm 17mm }`. Cover page uses `@page:first { margin:0 }` so the cover bleeds edge-to-edge — but the cover *ground* is still light (e.g. `#efeae0` or `#1c1c1c` only when Arif has asked for dark, which he has not). Tagged evidence in table with `tr { page-break-inside: avoid }`. Timeline as CSS-styled div with border-left and dot markers. Analyst verdict box is a light cream block with a brick-red left rule (4px solid) — never a dark inverted box.
+
+Example cover structure (light palette):
+```html
+<div class="cover" style="height:297mm;width:210mm;background:#efeae0;color:#12100e;">
+  <div class="rule-top" style="height:2px;background:#8c1818;width:100%"></div>
+  <div class="stamp" style="border:1px solid #a08540;color:#a08540">FORENSIC ANALYSIS</div>
+  <h1 style="color:#12100e">Title <em style="color:#8c1818">Subtitle</em></h1>
   <div class="one">Executive thesis paragraph</div>
   <div class="byline">Documented by / Motto</div>
 </div>
+```

@@ -324,13 +324,61 @@ Contains per-provider API existence, BM support, benchmark data, sovereignty pat
 
 → `references/voice-clone-provider-update-2026-08-25.md` — Update with MiniMax MCP tool path, Qwen enrollment pitfalls, F5-TTS CPU benchmark, and Caddy hosting fix.
 
-## Pitfall: MiniMax voice_clone raw API always returns "invalid params"
+## Pitfall: MiniMax voice_clone endpoint has TWO failure modes (parameter bug vs tier unavailable)
 
-The raw curl `POST /v1/voice_clone` endpoint returns `status_code: 2013, "invalid params"` regardless of parameter structure (tested 2026-08-25 with every combination: with/without voice_id, model, language_boost, clone_prompt). The documented JSON structure in `AAA-voice-cloning-mimo-minimax` does not match the actual API contract.
+The raw `POST /v1/voice_clone` endpoint can fail two distinct ways that look identical from the call site but mean different things:
 
-**Working path:** Use the MCP tool `mcp__minimax_media__voice_clone` instead of raw API. Parameters: `voice_id` (string), `file` (path or URL), `text` (demo text), `output_directory`. The MCP server handles the correct API contract internally.
+| Status code | Status message | Meaning | Fix |
+|---|---|---|---|
+| 2061 | `"your current token plan not support model, voice_clone"` | Account tier does not include voice_clone at all | Upgrade plan, or use synthetic library voice instead |
+| 2013 | `"invalid params"` | Endpoint reachable, params wrong | Switch to MCP tool `mcp__minimax_media__voice_clone` (proven path 2026-08-25) |
 
-**Also:** `api.mxbai.chat` does NOT resolve (DNS failure). Correct base URL is `https://api.minimax.io/v1`.
+**Diagnostic step BEFORE assuming params are wrong:** if the response carries `status_code: 2061`, no parameter combination will succeed — the entire voice_clone feature is gated by the account plan. Switch to library voice immediately (e.g. `Indonesian_CaringMan`, `English_Trustworth_Man`) or escalate to F13 for plan upgrade decision.
+
+**Working path (proven 2026-08-25):** Use the MCP tool `mcp__minimax_media__voice_clone` instead of raw API. Parameters: `voice_id` (string), `file` (path or URL), `text` (demo text), `output_directory`. The MCP server handles the correct API contract internally. But: this only works when the underlying plan supports voice_clone (status 2061 means it does not).
+
+**Also:** `api.mxbai.chat` does NOT resolve (DNS failure). Correct base URL is `https://api.minimax.io/v1`. Endpoint: `POST /v1/voice_clone`.
+
+## Pitfall: Voice ID in config constant ≠ voice registered in actual voice registry
+
+When the user says "use voice X," verify X exists in a registry BEFORE calling mmx. There are **two parallel sources of truth** for voice IDs that look identical but mean different things:
+
+| Source | What it is | Example |
+|---|---|---|
+| `/root/.hermes/voice-clones.json` | Actual registered voice clones (file_id, source audio, voice_id) | `{"luqman-sado-v1": {"voice_id": "arif-buddy-v1", ...}}` |
+| `/root/.hermes/voice_filters.py` | Code constants — `SADO_LOCKED_VOICE_ID = "abang-sado-live-v1"` is a routing hint, not a registered voice |
+| `~/.hermes/config.yaml` `tts.providers.<name>` block | Per-provider config (which voice_id each provider uses by default) | `i-arif-sovereign: { voice_id: iarif-sovereign-v9 }` |
+| MiniMax server-side `mmx speech voices` | Library voices that can be called by name | `Indonesian_CaringMan`, `English_Trustworth_Man` |
+
+**Symptom of confusion:** User says "use abang-sado-live-v1." Code search finds it in `voice_filters.py` and config.yaml. You assume it's a real, callable voice. mmx call returns 404 or treats it as unknown.
+
+**Diagnostic before any mmx call:**
+
+```python
+import json, os
+# 1. Check actual clone registry
+with open("/root/.hermes/voice-clones.json") as f:
+    clones = json.load(f).get("clones", {})
+# 2. Check MiniMax library
+import subprocess
+mmx_voices = subprocess.run(["mmx","speech","voices"], capture_output=True, text=True).stdout
+# 3. Cross-check user-mentioned voice against both lists
+```
+
+If the voice ID is in `voice_filters.py` / config but NOT in either registry, it is a **routing constant** — code uses it to look up the actual registered voice at runtime. Tell the user this distinction before proceeding: "The voice you mentioned is registered as a routing ID, but the underlying registered voice is X. Want to use X?"
+
+## Pitfall: MiniMax voice library has NO native Bahasa Melayu voice — Indonesian library voices are the closest fallback
+
+`mmx speech voices` returns ~150 voices across languages but **no Malay voice exists**. Available options for BM-register content:
+
+| Voice | Register | Best for |
+|---|---|---|
+| `Indonesian_ReservedYoungMan` | young male, calm | introspective content |
+| `Indonesian_CaringMan` | mature male, warm | alpha male / abang sado register |
+| `Indonesian_ConfidentWoman` | mature female | female narrator |
+| `Indonesian_BossyLeader` | assertive | announcements |
+
+Indonesian and Malay share ~80% lexical similarity at the spoken level — listeners parse Indonesian voice as accented BM, not as foreign. For "BM Penang abang sado alpha male" register, `Indonesian_CaringMan` at speed 0.85-0.90 is the closest match. Don't waste cycles searching for a Malay voice that does not exist; pick Indonesian or escalate to voice_clone via F13 decision.
 
 ## Pitfall: Qwen CosyVoice enrollment — language_hints must be length 1
 

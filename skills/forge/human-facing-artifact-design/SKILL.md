@@ -244,6 +244,17 @@ When the artifact is a personal reflection, life document, or wisdom piece — a
 
 **Pitfall — vision-verify every visual artifact before sending.** AI image generators will quietly invent text overlays (often misspelled: "MASTORY" instead of "MASTERY") and other defects that the generator's own quality checks miss. **Always run `vision_analyze` on the rendered image before delivery**, with a prompt that asks specifically about: text overlays (quote them exactly), overlap with chart elements, anchor line positions vs. labelled prices, watermark artefacts, anatomy defects (extra limbs, duplicated body parts), and anything specifically labeled in the artifact's accompanying text. A defect caught before delivery is invisible to the human; a defect caught after delivery is the artifact's signature. If vision is not available in the current lane, defer the artifact and tell the human — do not claim a visual artifact is clean by looking at the prompt alone.
 
+### No max-caps in human-facing dossier prose
+
+For dossiers, briefings, void maps, fishy-findings inventories, and any other analyst output addressed to the human principal or intended to be forwarded to a journalist, the prose body is written in **ordinary sentence case**, not in uppercase. Title-case section markers (small caps in headers) are fine for layout; ALL-CAPS PROSE is not.
+
+- The principal has explicitly flagged "no max caps" as a standing preference for analyst output. Honour it on every dossier unless the user overrides for a specific artefact.
+- Allow exceptions only for: section labels in the header bar (e.g. `01 · EXECUTIVE SUMMARY`), status tags (`VERIFIED` / `REPORTED` / `UNKNOWN`), and short pull-quote callouts. Prose sentences run in normal case.
+- The same rule applies to the Malay-language equivalent: do not convert running Malay prose into uppercase, even for emphasis. Emphasis in Malay prose goes on the words themselves ("**Ini penting**"), not on the casing.
+- For IG Story and social-asset layouts, the same rule: header labels and tags in caps are fine for visual hierarchy; prose sentences (quotes, captions, body copy) stay in ordinary case.
+
+This rule does NOT override safety or audit-critical teletype such as `F13_SEAL`, `actor_verified=false`, or canonical seal headers — those are functional, not stylistic, and live in their own section above.
+
 ### Health, rehab and training artifacts addressed to a named person
 
 A document built for one person about their own body — a rehab timeline, a return-to-work plan, a training block — is a care artifact with an extra failure mode: it can be complete against the *previous version* and still be incomplete against the *person*.
