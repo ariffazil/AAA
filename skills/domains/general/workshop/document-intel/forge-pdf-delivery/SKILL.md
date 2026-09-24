@@ -13,6 +13,28 @@ Class-level skill. Trigger: the user wants a portable document, not a chat reply
 
 **A file with the `.pdf` extension is NOT a PDF.** Always confirm via `file <path>` that the output shows `PDF document, version 1.7` (or similar) before delivering. If `file` returns `Unicode text`, you wrote text with a wrong extension — fix the pipeline, don't ship.
 
+## Routing: text vs mood — pick the engine before you build
+
+Some deliverables are text and some are imagery, and one engine cannot do both well.
+
+- **Exact text matters** (wordmark, logo, poster, document, infographic, chat-style
+  artifact — anything a human reads letter-by-letter) -> **deterministic renderer**:
+  author HTML/CSS, render with weasyprint or headless Chrome. Glyphs are placed, not
+  guessed.
+- **No text** (mood, texture, light, scene, conceptual imagery) -> a generative image
+  model is fine; that is what it is good at. When the artifact needs BOTH, generate
+  the text-free background generatively and overlay the text deterministically — see
+  `image-gen/lightweight-image-generation/references/brand-motivational-poster-pattern.md`
+  and the text-bearing-prop rule in `image-gen/synthetic-human-media-pipeline/SKILL.md`.
+
+Why this is a rule and not a preference: a diffusion model draws pixels and estimates
+glyphs. Given any run of text it misspells it or invents something plausible (observed
+same session: `IRFANGLAW`, `arifeOS`, an unrequested watermark). A deterministic render
+of the same content: 0 misspellings.
+
+**Gate — verify from the text layer, not from a vision model's opinion.**
+`pdftotext out.pdf - | head` must show the exact strings. "Looks fine" is not evidence.
+
 ## Pipeline (use this exact order)
 
 1. **Author content as Markdown.** One source of truth. Use proper headings (`##`, `###`), pipe-table syntax, lists — pandoc/weasyprint render them well.
