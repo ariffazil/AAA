@@ -730,4 +730,12 @@ events:
   outcome: null
   fq_gate: false
   cost: 0
+- id: governance-hotspot-detector
+  adapter: systemd
+  schedule: daily 08:45 Asia/Kuala_Lumpur
+  command: /root/scripts/governance_hotspot_detector.py
+  output: /var/lib/arifflow/governance_hotspots.jsonl
+  outcome: null
+  fq_gate: false
+  cost: 0
 consequences: []
