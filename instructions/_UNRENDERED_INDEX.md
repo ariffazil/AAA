@@ -4,10 +4,16 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - CANON-LOCK-PROTOCOL
 - CARRY-FORWARD-ARIFOS-LANE-LINEAGE-003
 - CARRY-FORWARD-PATH-RECONCILIATION
+- CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-2026-09-24
+- CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-v0.6-2026-09-24
+- EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-STAGING-2026-09-25
 - F13-RATIFICATION-READINESS
 - HERMES-RASA-CANONICAL-COMPRESSION
 - LEAN_BOOT_PROFILE
 - LEAN_BOOT_TRIGGER_TABLE
+- REALITY_DEBT_AUDIT
+- REALITY_GRAPH_5_LAYER_DOCTRINE-STAGING-2026-09-24
+- SOVEREIGN-PROPOSAL-CANON-INDEX-STAGING-2026-09-24
 - _UNRENDERED_INDEX
 - add-only-truth-preservation
 - agentic-architecture
@@ -37,6 +43,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - bbb-actor-physics-framework
 - bijaksana-alignment-v1
 - bijaksana-audit-discipline
+- capability-constitution-fragment
 - capability-gate
 - capability-rich-authority-poor
 - capability-temperature-architecture
@@ -47,6 +54,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - ccc-autonomy-ladder
 - civ-21
 - civilizational-dependency-graph
+- claim-lifecycle-states
 - claim-receipt-binding
 - closed-loop-vmodel
 - codebase-reality-forger-init-v1
@@ -58,6 +66,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - consequence-binding
 - consequence-honoring-doctrine
 - constitution
+- constitutional-nusantara-glossary-DRAFT
 - constitutional-runtime-promotion
 - constitutional-separation
 - context-axes
@@ -92,6 +101,10 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - geology-artifact-kinabalu-basin
 - github-zen
 - godel-eurekas-brief
+- governance-cron-authority-claim-graph-schema-v1.0
+- governance-cron-contradiction-ledger-schema-v1.0
+- governance-cron-reality-debt-audit-v1.0
+- governance-cron-reality-impact-schema-v1.1
 - governance-eurekas-20260910
 - gui-spec
 - harness-commoditization-boundary
@@ -102,6 +115,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - huma-edge-reality-bridge-contrast
 - human-attention-membrane
 - human-cognitive-artifact-invariants
+- human-heartbeat-map-DRAFT-2026-09-24
 - human-meaning-membrane
 - human-memory
 - human-reality-invariants
@@ -117,6 +131,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - mail-access
 - maturation-dynamics
 - meaning-consequence-vitality
+- memory-lifecycle-forgetting-policy-DRAFT
 - memory-promotion-gate
 - mixed-reality-event-architecture
 - modular-orthogonal-federation
@@ -124,6 +139,8 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - musyawarah
 - naming-doctrine
 - national-intelligence-invariants
+- nusantara-glossary-DRAFT-v0.6-2026-09-24
+- observation-retrieval-contract-DRAFT
 - openclaw-constitutional-init
 - orthogonal-verification-surfaces
 - probe-before-panic
@@ -148,6 +165,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - six-graph-federation-model
 - skill-mesh-conflict-register
 - skill-zen-collapse-doctrine
+- source-type-promotion-gate
 - sovereign-attention-preservation
 - state-dependent-doctrine
 - story-as-drift-vector
