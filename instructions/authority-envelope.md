@@ -10,17 +10,22 @@
 
 **The smarter an agent becomes, the less its permissions may depend on whether it agrees with the permission system.** Weak agents obey because they cannot argue. Smart agents construct rational, persuasive reasons why rules should be bent "for the good." Therefore authority must scale mechanically, externally, and non-linguistically with capability.
 
-## The Authority Tuple (10 fields)
+## The Authority Tuple (12 fields)
+
+> **F13-RATIFIED 2026-09-25** — expanded from 10 fields. `Budget` and `RevocationRef` added per sovereign ratification (loop L11, audit 2026-09-25). A budgetless envelope is an open tap; an unrevocable grant is a permanent one.
 
 ```
 ⟨ Actor, Session, Host, Objective, Operation,
-   Scope, Target, Issuer, Expiry, ExpectedPostcondition ⟩
+   Scope, Target, Issuer, Expiry, ExpectedPostcondition,
+   Budget, RevocationRef ⟩
 ```
 
 - **Objective**: permission belongs to a purpose, not an entity. Authority to fix Task A never leaks into a ticket to write Task B.
 - **Operation**: read ≠ write ≠ edit ≠ delete ≠ commit. Separate verbs.
 - **Issuer**: the executor may NEVER issue its own envelope (no self-authorization).
 - **ExpectedPostcondition**: the explicit evidence target an independent witness will measure.
+- **Budget** *(F13 2026-09-25)*: quantified consumption ceiling bound to the envelope — wall-clock (`max_seconds`), call count (`max_organ_calls`), or cost units. Expiry bounds *when*; Budget bounds *how much*. Either exhausted → envelope DEAD, re-issue required.
+- **RevocationRef** *(F13 2026-09-25)*: opaque reference to the credible revocation event that can kill this envelope (token id, lease id, ledger pointer). Revocation that cannot reach every lease/replika holder before execution is not revocation — the ref is the propagation contract.
 
 ## Complete Mediation (the reference monitor trinity)
 
