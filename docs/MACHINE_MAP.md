@@ -10,15 +10,18 @@
 echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 ```
 
-| Fingerprint | Machine | Canonical name | Aliases (do not use as truth) |
-|---|---|---|---|
-| `forge` + 100.64.0.2 | KVM8 | **forge** | af-forge (legacy), vps, VPS-1325122, m1 |
-| `srv1946043` + 100.64.0.5 | KVM4 | **workshop** | kvm4-forge (ssh alias), forge-core (retired) |
-| `flow-edge` + 100.64.0.4 | KVM2 | **azwaos** | flow-edge, m2, wawa |
+> **SOVEREIGN NAMING DECREE (F13 Ratified 2026-09-24):**
+> Naming is the first act of creation. The canonical names across all prompts, configs, and commands are strictly **KVM8**, **KVM4**, and **KVM2**. All other names (forge, workshop, azwaos, etc.) are demoted to legacy hostname fingerprints.
+
+| Canonical Sovereign Name | Mesh IP | Role | Hostname Fingerprint | Legacy Aliases (DO NOT USE) |
+|---|---|---|---|---|
+| **KVM8** | `100.64.0.2` (Public: `72.62.71.199:22888`) | **Truth / Court / Organs** | `forge` | af-forge, vps, VPS-1325122, m1, court-core |
+| **KVM4** | `100.64.0.5` | **Execution / Workshop / AI Models** | `srv1946043` | workshop, kvm4-forge, forge-core |
+| **KVM2** | `100.64.0.4` | **Witness / Observer / Family Edge** | `flow-edge` | azwaos, m2, wawa |
 
 ## 1. What lives where
 
-| | KVM8 forge (truth) | KVM4 workshop (execution) | KVM2 witness |
+| | KVM8 (Truth) | KVM4 (Execution) | KVM2 (Witness) |
 |---|---|---|---|
 | Kernel (judge) | **:8088 — THE federation kernel** | — | arifosmcp FORK (Azwa lane, NOT the judge) |
 | Organs | AAA :3001 · A-FORGE :7071/7072 · GEOX :8081 · WEALTH :18082 · WELL :18083 · arifFlow :7073 · FRAME :18085 · **CHRON :18102** · VAULT999 · NATS · i-ARIF (no port — runs via FED chains; note **:18095 = apa-github-bridge, :18092 = apa-gemini-bridge** — corrected 2026-09-04 FI-008) | **OpenClaw edge :18789** (bind 100.64.0.5 — migrated from KVM8 2026-09-04 FI-008; caddy KVM8 vhosts claw/+openclaw.arif-fazil.com proxy here; KVM8 units removed; **no `openclaw` CLI on KVM8** (measured 2026-09-20); KVM8-side loopback DNAT 127.0.0.1:18789→100.64.0.5:18789 + MASQUERADE (verified live 2026-09-13, re-pin 2026-09-20 health 200). Cold archive paths claimed in older rows are ABSENT on KVM8. | arifflow-internal fork :7073 · fed-router :7074 |
@@ -76,6 +79,7 @@ echo "$(hostname) $(ip -4 addr show | grep -oE '100\.64\.0\.[0-9]+' | head -1)"
 | 2026-09-07 23:15 | FI-008 | TERMUX AGENTIC AUDIT + 3-NODE KEY SYNC: phone ed25519 fp `Mq01Ue…` — KVM8 entry was CORRUPT (1 char dropped → sshd-rejected line; fixed + `IDENTITY=arif` tagged) · KVM4 OK (parallel session 15:03Z) · KVM2 added 23:08. Dedup: byte-identical u0_a618 RSA ×1 removed. Login reality: phone rides OLD id_rsa (`HnD9YLpS…` — LIVE, do not prune). Banner myths cleared: "no backup"=false (vault999-backup.timer ran 03:47) · "well 100%"=transient triadic-snapshot 60s-timer spike · "duplicates 2"=hermes-health unowned (WATCH trigger). DISK 85% = real, watch. |
 | 2026-09-13 ~10:15Z | 333-AGI | OPENCLAW WATCHDOG VERIFIED + A5 CLOSURE: KVM4 watchdog alive (journalctl CRON firings 09:40–10:05Z; last alert 2026-09-11 16:05Z REPAIR_FAILED → 888_HOLD → Telegram msg 110069 in `/var/log/openclaw-watchdog.log`). KVM8: no watchdog units/cron — stale copy annotated + committed (25d99eec3). KVM8-side loopback DNAT documented (§1). Claim drift corrected: A5 was half-true (only KVM4 shim documented), A6 was NOT done as of this pass. |
 | 2026-09-24 11:30 | FI-009 / Antigravity | 3-NODE SOT AUDIT + REPO SYNC + ZERO DRIFT: KVM8 = 9/9 organs UP (WELL 3-way commit cf703be parity drift=false; Disk 65%, RAM 55%), repos synced to origin (WELL, GEOX, WEALTH, arifFlow, AAA). KVM4 = litellm :4000 UP ("I'm alive!"), openclaw-gateway :18789 LIVE (DeepSeek-v4-flash ~960ms), 5/5 docker containers healthy, 0 failed units, Disk 31%, RAM 59% avail. KVM2 = Wawa bot hermes-agent Up 9d continuous (no split-brain; hermes-asi-gateway disabled), caddy/ollama/saf-mcp live, 0 failed units, Disk 33%, RAM 82% avail. Blast radius minimal. |
+| 2026-09-24 11:46 | FI-009 / Antigravity | SOVEREIGN NAMING SWEEP (F13 DECREE): Canonical names permanently locked to KVM8, KVM4, and KVM2 across SOT, /etc/hosts, and SSH configs. Legacy aliases (forge, workshop, azwaos) demoted. |
 
 ## 5. Sovereign access — phone (Termux agentic node, "arifs-s24")
 
