@@ -93,6 +93,7 @@ Delta gate: posts only when content hash differs from last posted hash
 | sro_calibration | Mon 04:00 | SRO calibration |
 | receipt-reality-correlator | daily 07:45 | Receipt↔reality gap record — claimed vs predicted vs verified vs observed (T0, F13 2026-09-25) |
 | contradiction-accumulator | daily 08:15 | Contradiction economics ledger — CHRON tensions → half-life dormancy + priority (blindspot #6, F13 2026-09-25) |
+| governance-hotspot-detector | daily 08:45 | Governance friction concentration — floor Holds / cooling Holds / RG-4 events by actor-organ-day (blindspot #5, F13 2026-09-25) |
 
 ## Event Log Location
 `/root/AAA/state/event-bridge/events.jsonl`
