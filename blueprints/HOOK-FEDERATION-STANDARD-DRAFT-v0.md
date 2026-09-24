@@ -193,6 +193,8 @@ L02-L08 — preserved from §7.
 | APEX G envelope live | session `SEAL-db81b02eeec448a1` envelope: `act_claims.apex.{G,C_dark,W3,h}` — formula verbatim `B = (A·P·E·X)^(1/4)` invoked at every init via `arifOS.kernel.baseline` |
 | APEX T (Chronos/Kairos/Aion/Telos) status | grep `-E "Chronos\|Kairos\|Aion\|Telos"` on `/root/HERMES/SOUL.md` and `/root/AAA/canon/SOUL.md` → 0 hits ⇒ **PROPOSED, NOT canonical** (awaiting F13 ratification to Canon #2) |
 | arif_judge alert history (last call state) | `forge_shell_alert_history` 2026-09-24T23:08Z: `total_alerts: 0` ⇒ no shell-side ALERT/DENY/GATE stamp; last seal_chain seq 40 (Sep 16-17 era) ⇒ substantive L11–L14 implementation (L13 code) unverified by judge, consistent with HONESTY principle (claim ratification, not implementation seal) |
+| Kernel drift detected (2026-09-25 07:13 MYT) | `/root/arifOS` `:8088/health` `software_release` → source=`3a779938`, built=`87aa393`, deployed=`87aa393`, **drift=true**. Recurring stamp-lag pattern (source advances each commit; deploy lags last release). Not DOWN_CONFIRMED until multi-path corroborated. Awaiting T3 redeploy ack per F13. |
+| `Observation ≠ Total Reality` (epistemic scar) | `scar_1790291770436_f099cfe4` sealed 2026-09-24T23:16:10Z — observer/scope mismatch; DOWN_CONFIRMED requires ≥2 disjoint paths; **Observation ≠ Total Reality** joins the canonical law chain |
 
 ### Claim states (truth-valued, single-state per cell)
 
