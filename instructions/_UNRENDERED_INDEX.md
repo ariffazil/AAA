@@ -20,6 +20,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - anti-calhoun
 - anti-collapse-doctrine
 - anti-haram-behavior-canonical
+- anti-haram-behavior-canonical-human
 - anti-shadow-architecture
 - apex-rose-parallel
 - apex-swot-loop
@@ -138,6 +139,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - representation-layer-integrity
 - representation-reality-invariant
 - reversibility-as-information-test
+- salam-consequence-membrane
 - sanctuary-invariant
 - scar-engineering
 - shadow-as-expensive-reality
