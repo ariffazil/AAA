@@ -1,13 +1,8 @@
-# Edge Registry ↔ persons.yaml Connection Receipt (PROMOTED to canon/ via sovereign_chat_override)
+# Edge Registry ↔ persons.yaml Connection Receipt (Lane B Audit)
 
-> **Status:** F13_RATIFIED_CHAT 2026-09-25 — SUPERSEDED draft promoted to canon/ via sovereign_chat_override
-> **Promotion time:** 2026-09-25T00:12 MYT
-> **Canonical location:** `/root/AAA/canon/EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-2026-09-25.md` (sha256: `e7702c51833fcb22e6086d583810363f1637af5e5b0ee8ec3ed0f55dc6e15493`)
-> **Receipt log entry:** `trc-20260925-0010-fi003-edge-persons-promote` (receipt_id: `4ceaa7f2-4a62-4672-87cf-4ce0ddd0cd4f`, ts: 2026-09-24T16:12:21Z, exit: 0, lock_restored: true)
-> **DRAFT sha256 (this file):** `e7702c51833fcb22e6086d583810363f1637af5e5b0ee8ec3ed0f55dc6e15493`
-> **Original artifact:** Lane B connection receipt (`external_advisory_connection_receipt`)
+> **Status:** `external_advisory_connection_receipt` (Lane B autonomous, no F13 seal claimed)
 > **Writer:** FI-003 anonymous session, `actor_verified=false`, `OBSERVE_ONLY` (per F13 directive "link persons.yaml to edge registry")
-> **Original date:** 2026-09-25T00:10 MYT
+> **Date:** 2026-09-25T00:10 MYT
 
 ---
 
