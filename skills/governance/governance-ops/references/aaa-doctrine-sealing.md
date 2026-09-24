@@ -400,6 +400,7 @@ path):
 | `references/external-artifact-intake.md` | `aaa-doctrine-sealing` | auditing a pasted external AI artifact before any of it reaches canon |
 | `references/doctrine-coding-surfaces.md` | `canon-doctrine-sealing` | worked surface-by-surface recipe: fragment skeleton, membrane floor append, always-on line, eureka artifact + JSONL row, verification sweep, report shape |
 | `references/constitutional-compression-patterns.md` | 2026-09-20 session | Two proven compression patterns: Theory→Floor→Kernel→Invariant (69→13→1→1), and Intuition→Formalization (moral physics: constraint extraction → physics → math → code) |
+| `references/irreconcilable-artifact-scope-reduction.md` | 2026-09-24 session | When an artifact is too entangled with sealed-stance conflicts for the §9 four-outcome triage alone: partition into SALVAGE / REFRAME / DROP, stage sub-eurekas under `/root/.hermes/workspace/distillations-YYYY-MM-DD/` with `status: DISTILLATION_DRAFT` frontmatter, hold constitutional-class items for sovereign ratification. Workspace path ≠ canonical path; never clear immutable attribute to bypass `/root/AAA/canon/` lock |
 
 ---
 

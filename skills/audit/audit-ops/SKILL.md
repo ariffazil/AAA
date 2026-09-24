@@ -405,6 +405,36 @@ in brackets tells you where the scar bites.
 - `SOVEREIGN_TOKEN_THEATRE`: `Math.random` near token generation + approval/sovereign keywords +
   format-only validation downstream ⇒ CRITICAL auto-candidate.
 
+**Self-audit (auditing your own past audit)**
+
+- **Re-derive every concrete token before stating it.** A line number, a count, a section name, a
+  P-value, a hash — each one is a claim. Read the file, run the grep, count the rows. Memory is not
+  evidence; the file is. The rule that says "never fabricate quotes" applies to audit output too —
+  cite line numbers that exist, section names that exist, counts you ran the search for.
+- **Number swaps must declare the swap.** If a count changed because the class changed (regex literal
+  → caller enumeration → downstream skill), say so in the same sentence. A bare "23" that became "24"
+  without an explicit note is indistinguishable from a fabrication.
+- **A corrected P is a new measurement, not the old one relabeled.** When the reason for changing a
+  factor value is itself the argument for the new value, the score is unfalsifiable — the agent's
+  reasoning becomes the input it then scores. Recompute from observed side-effects, not from the
+  argument that the change is safe.
+- **Probe the target file's defenses before proposing to add one.** A rule already enforced by step 5,
+  5b, or 5c of the pipeline is not "absent" — it is "absent-from-your-current-section". Read the
+  pipeline top-to-bottom before locating a new rule; the existing defense often already does what
+  the proposal would do, and the fix is caller discoverability, not rule duplication. Per Canon #0,
+  governance complexity itself is haram: every new law must eliminate a demonstrated failure class,
+  compile into an enforceable mechanism, or materially improve a decision. Duplicate defense fails
+  the third test.
+- **Classify a proposed rule by its intent, then place it where that intent lives.** A "routing
+  decision" rule belongs in the routing-decision section, not in a "pitfalls" section whose
+  audience reads them after the failure already happened. Reading a fail-type label and assuming
+  "this is where warnings live" is a labelling trap; routing rules and pitfall warnings have
+  different reading moments and different reader mindsets.
+- **Stop and report when a proposed patch is duplicate defense.** Do not apply a patch that adds
+  the same gate the pipeline already enforces; raise the duplication to the principal with anchor
+  evidence (file + line range) and let them redirect. The cost of an unnecessary HOLD is lower than
+  the cost of hardened governance complexity.
+
 **Branch 11 — repo entropy**
 
 - **NEVER assert unobserved execution as fact.** "No receipt found" is evidence, not failure; "runs in
