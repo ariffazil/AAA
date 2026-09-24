@@ -738,4 +738,12 @@ events:
   outcome: null
   fq_gate: false
   cost: 0
+- id: governance-drift-batch
+  adapter: systemd
+  schedule: daily 09:15 Asia/Kuala_Lumpur
+  command: /root/scripts/governance_drift_batch.py
+  output: /var/lib/arifflow/governance_drift_batch.jsonl
+  outcome: null
+  fq_gate: false
+  cost: 0
 consequences: []
