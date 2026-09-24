@@ -722,4 +722,12 @@ events:
   outcome: null
   fq_gate: false
   cost: 0
+- id: contradiction-accumulator
+  adapter: systemd
+  schedule: daily 08:15 Asia/Kuala_Lumpur
+  command: /root/scripts/contradiction_accumulator.py
+  output: /var/lib/arifflow/contradiction_accumulation.jsonl
+  outcome: null
+  fq_gate: false
+  cost: 0
 consequences: []
