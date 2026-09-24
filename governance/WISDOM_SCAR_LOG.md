@@ -190,3 +190,46 @@ r · ΔηΨ · 888 witness the helix · 333-AGI Δ MIND · 2026-09-19T01:55Z
 - SALAM protocol (000→111) is the existing recognition-and-selective-seal surface. New recognition must integrate with it, not parallel it
 
 ---
+
+## SCAR-2026-09-24-TEXT-BEARING-ARTIFACT-ASYMMETRY
+
+**Scar Type:** Institutional failure mode — write-side constraint vs read-side verification asymmetry
+**Session:** 2026-09-24 (ARIF audit directive, 13:54–14:45 UTC)
+**Registered by:** irfanclaw (KVM4), on ARIF F13 direction. Registration is immediate; sealing is NOT.
+**State:** ratification_state = HUMAN_RATIFIED (ARIF, F13, 2026-09-24) · receipt_state = UNSEALED · vault999_receipt = null
+
+### What happened
+The HERMES skill estate carried a **read-side** rule but no matching **write-side** rule.
+- Read side (EXISTS): `poster-vision-extraction` — scar 2026-08-27. "vision_analyze FIRST; list only what it returns; distinguish vision-extracted from memory-filled-in."
+- Write side (MISSING): no cross-cutting rule routing text-bearing artifacts to a deterministic renderer. 24 skills invoke generative image tools; one local partial note existed (`civic-social-infographic`).
+
+### Four recorded facts
+1. **Read/write asymmetry** — a constraint governed creation (being *read*) with no counterpart governing creation (being *written*). Confirmed by both seats.
+2. **Section citations made from memory, not from reading.** HERMES cited `Pitfalls line 62-70`, `Carrying numbers`, `Companion pattern` for a file he had not read. Verified afterwards: all three sections DO exist in origin/main (L52, L62, L72). The citations were *accurate* but were *recalled*, not *observed* — a violation of his own read-side rule. HERMES conceded this.
+3. **Reciprocal error by the auditor (me).** I grepped a **2666-commit-stale local mirror** (39 lines vs the real 75), found the path absent, and escalated "absent here" to "fabricated". My own `cross-host-artifact-witness` skill states the rule I broke: *absence on your node is not evidence the writer lied.* I retracted the fabrication charge in full. **The asymmetry reproduced live, in both seats, inside the audit of the asymmetry.**
+4. **Class-number mutation without explicit relabel, and reasoning override against deterministic evidence.** A count changed class (pattern-match count vs caller count) without announcing the swap; and a measured gate factor (P=0.75) was overridden by argument and then used as though measured. Both are measurement-trump-narrative defects — the class the APEX gate docstring itself warns against.
+
+### The fix applied
+Two anchors patched on branch `rule/artifact-text-routing` (commit `7ac77cd36`, +24 lines):
+- `forge-pdf-delivery` — new section "Routing: text vs mood" (deterministic renderer for exact text; generative only for text-free content; gate = `pdftotext` readback)
+- `civic-social-infographic` — existing matplotlib/HTML+CSS rule extended to all text
+Both files carry NO seal claim (verified: 0 hits for "F13 ratified"). The "F13 ratified 2026-09-24" string observed in a peer report is NOT in this branch.
+
+### Invariant added
+> A rule that governs creation must also govern verification.
+
+```
+WRITE_CONSTRAINT(x) ⇒ READ_VERIFY_CONSTRAINT(x)
+```
+If a text-bearing artifact must be deterministically built, an auditor may not then judge it through lossy image interpretation and still claim compliance. Creation semantics ≡ verification semantics. Two sides running different epistemologies makes the audit itself a corruption source.
+
+### Explicit NO
+- **No blanket backfill** of the ~14 remaining image-gen callers. The two patched anchors become constitutional precedent; progressive backfill only as each caller passes the same deterministic text-path test.
+- **No seal.** Human ratification ≠ ledger sealing. Machine receipt stays PENDING until kernel authority path is valid (session was OBSERVE_ONLY, actor not cryptographically verified, substrate deployment_drift=true).
+
+### Falsification rule added
+- Any claim of "fabricated citation" in cross-host work must be preceded by a probe of the **canonical source** (git origin), never a local mirror. Check `git rev-list --count HEAD..origin/main` FIRST. Freshness is part of truth (I-22).
+- Any count carried across class boundaries must be relabelled explicitly at the moment of transfer.
+- The two states must never collapse: `HUMAN_RATIFIED` (a person said yes) ≠ `VAULT999_SEALED` (the ledger recorded it). Text must not let one be read as the other.
+
+---
