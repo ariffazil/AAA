@@ -437,3 +437,14 @@ arif_seal(mode="session_close", payload="<bullets or summary>",
 3. smoke id 2ce454ae
 
 ---
+
+## SESSION EUREKA — SE-20260925-14c0731c
+
+> **Sealed:** 2026-09-25T05:17:13Z | **Session:** SEAL-3034fed525f64fe3 | **Actor:** `arif`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. 2026-09-25 F13 execution record (FI-003 executor, sovereign lane per F13 directive 'seal guna lane aku'): qualification surface built — 29 agent cards carry arifOS qualification v1 blocks with CANON_DERIVED discipline and honest UNVERIFIED markers; CI gate AAA/scripts/qualification_gate.py live, 9 tests, GATE_GREEN after cleanup (7 cache stubs retired, 8 broken links cleaned, 2 duplicate card groups archived); codex install lane converged to single arif-core plugin, arif-irfan archived; APEX-MAT
+
+---

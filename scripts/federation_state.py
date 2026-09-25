@@ -45,6 +45,7 @@ ORGAN_ENDPOINTS = [
     {"id": "well",     "port": 18083, "role": "Vitality Mirror"},
     {"id": "arifflow", "port": 7073,  "role": "Metabolism"},
     {"id": "fed",      "port": 7074,  "role": "Model Router"},
+    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},
 ]
 
 # ── Probes ─────────────────────────────────────────────────────────────

@@ -72,20 +72,35 @@ def calibration_line() -> str | None:
 
     Reads the settled ledger; never recomputes it. Returns None on any failure,
     and None below MIN_DECISIVE — silence, not a hedged number.
+
+    SCOPE HONESTY (audit 2026-09-25 #3): the number shown is the REAL scope
+    (honest_scopes.canonical_unified_excluding_self_tests) — synthetic self
+    tests are counted separately, never blended in. Sample size, scope label
+    and updated_at travel with the number so nobody mistakes 3 observations
+    for a track record.
     """
     try:
         d = json.loads(CALIBRATION.read_text())
     except Exception:
         return None
-    n = d.get("decisive")
+    scopes = d.get("honest_scopes") or {}
+    real = scopes.get("canonical_unified_excluding_self_tests")
+    if not isinstance(real, dict):
+        return None
+    n = real.get("n")
     if not isinstance(n, int) or n < MIN_DECISIVE:
         return None
-    correct, acc, brier = d.get("correct"), d.get("accuracy"), d.get("mean_brier")
+    correct, acc, brier = real.get("correct"), real.get("accuracy"), real.get("mean_brier")
     if correct is None or acc is None:
         return None
-    line = f"ramalan: {n} taruhan dinilai — {correct} kena ({acc:.0%})"
+    syn = d.get("synthetic_self_tests")
+    syn_note = f" · {syn} ujian sintetik diasingkan" if isinstance(syn, int) and syn > 0 else ""
+    line = f"ramalan: {n} taruhan nyata dinilai — {correct} kena ({acc:.0%}){syn_note}"
     if isinstance(brier, (int, float)):
         line += f", Brier {brier:.2f} (rawak = 0.25)"
+    upd = d.get("updated_at")
+    if isinstance(upd, str):
+        line += f" · dikemas kini {upd[:10]}"
     if acc < 0.5:
         line += ". Kadar ini BURUK dari tekaan buta — trust dia kena turun, bukan naik."
     return line
