@@ -1,0 +1,39 @@
+{
+  "receipt_id": "rct-zen-sweep-2026-09-25T04:51:17Z",
+  "order": "F13 B-1 ya 2026-09-25",
+  "removed": [
+    "/root/.codex/plugins/cache/created-by-me-remote/dev-6a413aaa512c81918175cc4d017bfe70",
+    "/root/.codex/plugins/cache/workspace-directory/dev-6a131f215b348191a62a386a98b6818b",
+    "/root/.codex/plugins/cache/workspace-directory/dev-6a157a41507c8191a6b4b6ad9fda280f",
+    "/root/.codex/plugins/cache/workspace-directory/dev-6a15ba4c4b6081919fb1de3d05ae45ec",
+    "/root/.codex/plugins/cache/workspace-directory/dev-6a15bae0c57881919a2c7199cd5aa954",
+    "/root/.codex/plugins/cache/workspace-directory/dev-6a3a66bf0a94819199fa92d6a29644ea",
+    "/root/.codex/plugins/cache/workspace-directory/dev-6a413614a07c819185329eb7e57b1584",
+    "/root/AAA/skills/reality-router",
+    "/root/AAA/skills/alexandria-grounding",
+    "/root/AAA/skills/qwen-multimodal-substrate",
+    "/root/AAA/skills/alibaba-quota-sentinel",
+    "/root/AAA/skills/.archive/harden-hermes-wave1-20260923/linknode-aaa-hermes-FORGE-onboarding.old",
+    "/root/AAA/skills/.archive/frozen-20260920-case-dupes/FORGE-onboarding/claude",
+    "/root/AAA/skills/.archive/phase1-mirror-resync-20260923/agent-onboarding.moved/claude",
+    "/root/AAA/skills/.archive/phase1-mirror-resync-20260923/agent-onboarding.pre-sync/claude"
+  ],
+  "archived": [
+    {
+      "from": "/root/AAA/agent-cards/pillars/aforge/agent-card.json",
+      "to": "/root/AAA/agent-cards/.archive-20260925/pillars-aforge-agent-card.json",
+      "why": "duplicate of organs/aforge (same id+name+desc; organs card carries warga_binding FORGE-777)"
+    },
+    {
+      "from": "/root/AAA/agents/_external/grok/agent-card.json",
+      "to": "/root/AAA/agent-cards/.archive-20260925/grok-dir-agent-card.json",
+      "why": "duplicate of _external/grok-build (both Grok Build xAI harness; grok-build card richer: runtime detail)"
+    }
+  ],
+  "kept": [
+    "SAF stub (dev-6a203f, non-federation)",
+    "organs/aforge",
+    "_external/grok-build",
+    "dist/codex arif-core view"
+  ]
+}

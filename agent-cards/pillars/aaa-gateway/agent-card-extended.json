@@ -358,5 +358,43 @@
       "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
       "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify \u2192 FULL"
     }
-  ]
+  ],
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L2",
+        "L6"
+      ],
+      "source": "FI-003 derivation: intent routing: information theory, multi-agent game",
+      "claim_state": "UNVERIFIED"
+    },
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "abstention": {
+        "declared": true,
+        "evidence": "abstention/restraint marker present",
+        "claim_state": "MEASURED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  }
 }
