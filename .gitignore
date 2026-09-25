@@ -149,3 +149,9 @@ state/ops-fabric/**/*.json
 state/ops-fabric/**/*.jsonl
 memory/private/
 state/vectors/
+
+# runtime state — never tracked (checkout-blocker fix 2026-09-25)
+claim_ledger/*.db
+forge_work/brief-state.sqlite3
+forge_work/docforge-ledger.jsonl
+quarantine/
