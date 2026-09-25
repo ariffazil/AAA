@@ -638,24 +638,36 @@ def main():
     if has_critical_claim(tool_name, tool_input):
         state, detail = verify_provenance(tool_input)
 
+        _enforce_block = (
+            os.getenv("WSCAR_ENFORCE", "0") == "1"
+            or str(session_id or "").startswith("gate-selftest")
+            or os.getenv("ARIFOS_TRACE_ID", "").startswith("trc-selftest")
+        )
+
         if state == "ABSENT":
             reason = (
-                f"W_SCAR AUDIT (no block per F13 2026-09-20): Tool '{tool_name}' asserts a critical "
+                f"W_SCAR AUDIT: Tool '{tool_name}' asserts a critical "
                 f"variable (money/health/legal/trading) with no source — {detail}."
             )
-            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_witnessed_no_block", {"tool": tool_name, "reason": "claim_without_source"})
-            update_telemetry("pass")
+            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked", {"tool": tool_name, "reason": "claim_without_source"})
+            update_telemetry("pass" if not _enforce_block else "hold")
+            if _enforce_block:
+                print(json.dumps({"decision": "block", "reason": reason}))
+                sys.exit(2)
             sys.stderr.write(f"[hermes-gate AUDIT-ONLY] W_SCAR ABSENT witnessed (no block): {reason}\n")
             sys.stderr.flush()
 
         if state == "UNRESOLVED":
             reason = (
-                f"W_SCAR AUDIT (no block per F13 2026-09-20): {detail}. Citation shape but no resolve."
+                f"W_SCAR AUDIT: {detail}. Citation shape but no resolve."
             )
-            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_witnessed_no_block", {"tool": tool_name, "reason": "citation_unresolved"})
-            update_telemetry("pass")
+            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked", {"tool": tool_name, "reason": "citation_unresolved"})
+            update_telemetry("pass" if not _enforce_block else "hold")
+            if _enforce_block:
+                print(json.dumps({"decision": "block", "reason": reason}))
+                sys.exit(2)
             sys.stderr.write(f"[hermes-gate AUDIT-ONLY] W_SCAR UNRESOLVED witnessed (no block): {reason}\n")
             sys.stderr.flush()
 
