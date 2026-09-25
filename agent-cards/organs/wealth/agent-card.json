@@ -7,7 +7,7 @@
   "name": "WEALTH",
   "principal_agent": {
     "type": "agent",
-    "category": "Capital intelligence — ADVISORY_ONLY, compute never allocate",
+    "category": "Capital intelligence \u2014 ADVISORY_ONLY, compute never allocate",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -17,7 +17,7 @@
     "authority_level": "ADVISORY_ONLY",
     "citizenship_forged": "2026-05-17"
   },
-  "description": "Capital intelligence — NPV/IRR, markets, institutional stress, entropy, wisdom.",
+  "description": "Capital intelligence \u2014 NPV/IRR, markets, institutional stress, entropy, wisdom.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -277,5 +277,46 @@
     ],
     "vault": "VAULT999"
   },
-  "admissible": true
+  "admissible": true,
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L1",
+        "L1.5",
+        "L3",
+        "L6",
+        "L10"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (WEALTH)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: ADVISORY_ONLY",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  }
 }

@@ -678,5 +678,45 @@
   ],
   "_canonical_audit_2026_09_18": "333-AGI audit reconciled 10 drifts: KVM4 cutover, FI-017 alignment, port mapping, gateway URL, capabilities (OBSERVE/REASON/ROUTE/MEMORY T1). F13 pending: authority_ceiling reconciliation (IDENTITY.md GATEWAY vs kernel ROUTE_BRIDGE vs organs.yaml DISPLAY_ONLY).",
   "identity_bind": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
-  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la"
+  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la",
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:47Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L1",
+        "L2",
+        "L6",
+        "L7.5"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via id (HERMES)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": true,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": "epistemic label marker present in card",
+      "claim_state": "MEASURED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: T1",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  }
 }
