@@ -1,0 +1,91 @@
+{
+  "receipt_id": "FASA-B-C0-2026-09-25",
+  "actor": "FI-003 (Qwen Code, 333-AGI)",
+  "directive": "F13: 'jalankan Fasa B now' (2026-09-25)",
+  "constraints_in_force": [
+    "F13: 'Jangan merge patch sekarang' — commit/push diHOLD",
+    "F13: 'weiii no git my personal stuf!!!' — AAA git dibenarkan scoped read-only pada cards/genesis_card.yaml sahaja",
+    "Fasa A §L: laporan Fasa B mesti merujuk keputusan K1-K6 atau pilih tugas ortogon"
+  ],
+  "pilot_task": {
+    "id": "C0",
+    "name": "yaml-canary-repair",
+    "target": "/root/arifOS/cards/genesis_card.yaml line 33",
+    "orthogonality": "Tidak menyentuh mana-mana kontrak K1-K6 (namespace, tuple, UNKNOWN_OUTCOME, CHRON enum, formula AAA, linkgraph) — selamat dari kontrak yang masih dipertikaikan",
+    "chain": {
+      "propose": "Fasa B = satu tugas lengkap terbukti; C0 dipilih sebagai pilot (declaration awal sesi)",
+      "authority": "F13 directive 'jalankan Fasa B now' + constraint HOLD commit; sifar mutasi oleh FI-003",
+      "act": "probe verifikasi sahaja — tiada penulisan fail kod",
+      "witness": "3 sumber observasi berasingan: git object store (HEAD blob), PyYAML parser (working tree), git diff",
+      "consequence": "C0 status berubah: UNKNOWN → FIXED-UNCOMMITTED / COMMIT-READY"
+    }
+  },
+  "evidence": {
+    "head_broken": {
+      "command": "git -C /root/arifOS show HEAD:cards/genesis_card.yaml | yaml.safe_load",
+      "result": "yaml.parser.ParserError — 'expected <block end>, but found ,,' at line 33 col 28",
+      "head_line_33": "  wealth:{ state: \"HEALTHY\", port: 18082, role: \"COMPUTE_ONLY\" }",
+      "exit": 1
+    },
+    "working_tree_fixed": {
+      "result": "yaml.safe_load PASS (sebahagian sweep 10/10)",
+      "line_33": "  wealth: { state: \"HEALTHY\", port: 18082, role: \"COMPUTE_ONLY\" }"
+    },
+    "diff_exact": {
+      "command": "git -C /root/arifOS diff -- cards/genesis_card.yaml",
+      "hunk": "-  wealth:{ ... / +  wealth: { ...",
+      "scope": "1 baris sahaja — tiada perubahan lain dalam fail"
+    },
+    "mirrors": {
+      "AAA_canonical": "/root/AAA/cards/genesis_card.yaml — BERSIH di AAA repo (tiada dirty status; commits 93b26e39, 59d9d022) — SHA match dengan versi FIXED",
+      "A-FORGE_mirror": "/root/A-FORGE/cards/genesis_card.yaml — SHA match dengan versi FIXED",
+      "conclusion": "hanya salinan arifOS yang bermasalah di HEAD; salinan canonical AAA telah siap"
+    },
+    "yaml_sweep": "10/10 PASS (4 salinan genesis + 6 arifOS root: .pre-commit-config, kernel-sot, organ, risk_leash, smithery, tools_sot) — working tree"
+  },
+  "self_correction": {
+    "initial_claim": "P0 tak reproduce",
+    "correction": "separa benar — probe pertama menguji working tree sahaja; P0 NYATA pada HEAD (blob parse exit=1). Realiti: FIX sudah sedia (uncommitted), KOMIT tiada."
+  },
+  "semantic_collision_finding": {
+    "id": "X-1",
+    "finding": "genesis_card.yaml = DUA objek semantik berbeza dengan nama fail sama",
+    "a": "/root/arifOS/cards/genesis_card.yaml (45 baris) — 'Federation Genesis Card' minted FI-003 2026-08-28, card_tree claims canonical_root /root/AAA/cards/",
+    "b": "/root/AAA/registries/genesis/genesis_card.yaml (73 baris) — 'Genesis Surface Binding' did:web:arif-fazil.com, dimuat oleh arif_init (arifosmcp/runtime/tools.py:11826) dan vault.py:1165",
+    "risk": "semantic_authority_gap — Canonical(x) => DiscoverableExactlyOnce(x) dilanggar pada tahap nama"
+  },
+  "decision_requests": [
+    {
+      "id": "D-C0",
+      "to": "F13",
+      "question": "KOMIT C0 sekarang?",
+      "proposed_message": "fix(cards): repair YAML flow-mapping space in genesis_card.yaml (organs.wealth)",
+      "body": "HEAD parse-fail at line 33 (wealth:{ missing space after key). 1-line fix already in working tree. Mirrors (AAA canonical, A-FORGE) already fixed. Post-fix: 10/10 YAML sweep PASS. Per 'Jangan merge patch sekarang' — commit diHOLD sehingga arahan jelas.",
+      "default_if_no_answer": "HOLD berterusan",
+      "answer": "F13: 'komit sekarang' (2026-09-25 ~07:11 MYT) — DILAKSANAKAN"
+    },
+    {
+      "id": "D-X1",
+      "to": "888/F13",
+      "question": "Daftar collision X-1 sebagai keputusan K7 (rename/disambiguation genesis_card.yaml)?"
+    }
+  ],
+  "execution": {
+    "ordered_by": "F13: 'komit sekarang' (2026-09-25)",
+    "commit": "3a77993852ecbf6cc64c3139711fa56b93bb818c",
+    "branch": "deploy-20260923",
+    "scope": "1 file, 1 insertion(+), 1 deletion(-), NO push",
+    "after_evidence": "git show HEAD:cards/genesis_card.yaml | yaml.safe_load → HEAD PARSE OK",
+    "untouched": "16 dirty files in arifOS working tree left as-is (scoped staging)",
+    "new_known_drift": "source_commit=3a7799385 vs built_commit=87aa393 — deployment attestation drift (SOT-level, probe-labelled 'SOT drift, not code drift'). Clears on next build+deploy; itu tindakan berasingan yang perlukan arahan."
+  },
+  "external_claims_verification": {
+    "claim_geox_well_down": "FALSIFIED — frame_probe 10/10 healthy 0 down; aforge probe GEOX alive 59ms, WELL alive 19ms. 'Degraded' WELL = keadaan diisytiharkan sendiri (STALE_TEST_MOCK_120d), bukan outage.",
+    "claim_think_atlas_unknown_mode": "CORROBORATED (statik) — ThinkRequest mode enum = {critique, simulate}; 'atlas' hidup atas arifos_sense (contracts.py L211/L449). Dokumentasi awam mengiklankan atlas atas permukaan yang salah — kes E-5 class (declared ≠ exported).",
+    "lesson": "laporan luar boleh salah DAN betul serentak — setiap dakwaan difalsifikasi bersendirian"
+  },
+  "k1_k6_status": "Semua KEKAL TERBUKA — tiada keputusan diterima dalam sesi ini; C0 tidak membekukan mana-mana kontrak dipertikaikan",
+  "zero_mutations_by_fi003": true,
+  "sealed": false,
+  "note": "Resit ini BUKAN seal — ia bahan JUDGE untuk binari F13. DITEMPA BUKAN DIBERI"
+}
