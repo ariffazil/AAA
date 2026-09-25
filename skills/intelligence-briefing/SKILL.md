@@ -701,9 +701,9 @@ signal, not a trend") · no fabrication — if a drift log hasn't run since reco
 
 ## C.6 Data collection (read-only, no identity required; run in parallel)
 ```bash
-# Vault + seals + chain
-ls /root/VAULT999/SEAL-YYYY-MM-* 2>/dev/null
-grep -c "<week date range>" /root/VAULT999/seal_chain.jsonl
+# Vault + seals + chain (canonical vault999 dir — /root/VAULT999 is a legacy twin, 2026-09-25)
+ls /root/.local/share/arifos/vault999/SEAL-YYYY-MM-* 2>/dev/null
+grep -c "<week date range>" /root/.local/share/arifos/vault999/seal_chain.jsonl
 
 # Git activity per organ
 for org in /root/A-FORGE /root/AAA /root/WEALTH /root/WELL /root/GEOX; do

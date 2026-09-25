@@ -198,7 +198,7 @@ Never emit verdict without all five.
 
 - `/root/AAA/prompts/SEAL.md` lines 12-28 — canonical SEAL≠RECEIPT doctrine
 - `/root/arifOS/arifosmcp/runtime/kernel/seal.py` line 61 — kernel lock: verdict ∈ {SEAL, SABAR}
-- `/root/arifOS/VAULT999/seal_chain.jsonl` — constitutional truth source
+- `/root/.local/share/arifos/vault999/seal_chain.jsonl` — constitutional truth source (canonical, `ARIFOS_CANONICAL_VAULT_DIR`; the `/root/arifOS/VAULT999/seal_chain.jsonl` twin is legacy-closed — last line CHAIN_REDIRECT, 2026-09-25)
 - `/root/AAA/governance/BIJAKSANA-VOCABULARY-DISCIPLINE.md` — PATCH-001 (the doctrine)
 
 ## Iron Oath
