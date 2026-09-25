@@ -81,6 +81,83 @@ from federation_hook_engine import FederationHookEngine, RestrictionLevel
 
 
 # =========================================================================
+# STATE ISOLATION — added 2026-09-14
+#
+# `federation_hook_engine` hardcodes FIVE module-level constants pointing at
+# live production state:
+#
+#     CARRY_PATH             /root/.local/share/arifos/carry_forward.json
+#     SCARS_DIR              /root/AAA/scars
+#     ROLLBACK_JOURNAL_PATH  /root/.local/share/arifos/rollback_journal.jsonl
+#     SEALS_LEDGER_PATH      /root/.local/share/arifos/seal_receipts.jsonl
+#     TURN_MEMORY_PATH       /root/.local/share/arifos/turn_memory.json
+#
+# This suite drives the engine directly, so running it wrote into all of them.
+# Observed 2026-09-14:
+#
+#   · carry_forward.json accumulated synthetic sessions on every run —
+#     seal-1/s2 · full-lifecycle/full-sess · carry-test/carry-sess
+#     333-AGI/test-session-001 · audit-test/audit-sess · seal-1/s1
+#   · scars/candidates/ was REWRITTEN — a scar's subject, its "First
+#     Witnessed" timestamp and its occurrence count were each replaced by
+#     whatever the test run happened to emit.
+#
+# T17's `test_carry_forward_survives_seal` made this worse than a leak: it
+# hardcoded the production path and asserted the fixture was present there, so
+# it *only passed if production memory had been mutated*. That is a
+# behaviour-sink generator, not a test.
+#
+# `setUpModule` repoints all five constants at a throwaway directory. The tests
+# still prove seal → ledger → scar behaviour; they are simply no longer writing
+# to the real state.
+# =========================================================================
+
+_LIVE_STATE_PATHS = {
+    "CARRY_PATH": "/root/.local/share/arifos/carry_forward.json",
+    "SCARS_DIR": "/root/AAA/scars",
+    "ROLLBACK_JOURNAL_PATH": "/root/.local/share/arifos/rollback_journal.jsonl",
+    "SEALS_LEDGER_PATH": "/root/.local/share/arifos/seal_receipts.jsonl",
+    "TURN_MEMORY_PATH": "/root/.local/share/arifos/turn_memory.json",
+}
+
+_SANDBOX_PATCHES = []
+_SANDBOX_TMPDIR = None
+
+
+def setUpModule():  # noqa: N802 — xunit-style name, honoured by pytest and unittest
+    global _SANDBOX_PATCHES, _SANDBOX_TMPDIR
+    from unittest import mock
+
+    import federation_hook_engine as _fhe
+
+    _SANDBOX_TMPDIR = tempfile.TemporaryDirectory(prefix="hook-mesh-state-")
+    root = Path(_SANDBOX_TMPDIR.name)
+    (root / "scars").mkdir(parents=True, exist_ok=True)
+
+    _SANDBOX_PATCHES = [
+        mock.patch.object(_fhe, "CARRY_PATH", root / "carry_forward.json"),
+        mock.patch.object(_fhe, "SCARS_DIR", root / "scars"),
+        mock.patch.object(
+            _fhe, "ROLLBACK_JOURNAL_PATH", root / "rollback_journal.jsonl"
+        ),
+        mock.patch.object(_fhe, "SEALS_LEDGER_PATH", root / "seal_receipts.jsonl"),
+        mock.patch.object(_fhe, "TURN_MEMORY_PATH", root / "turn_memory.json"),
+    ]
+    for _p in _SANDBOX_PATCHES:
+        _p.start()
+
+
+def tearDownModule():  # noqa: N802
+    global _SANDBOX_PATCHES, _SANDBOX_TMPDIR
+    for _p in _SANDBOX_PATCHES:
+        _p.stop()
+    _SANDBOX_PATCHES = []
+    if _SANDBOX_TMPDIR is not None:
+        _SANDBOX_TMPDIR.cleanup()
+        _SANDBOX_TMPDIR = None
+
+
+# =========================================================================
 # T01 — Schema Validation
 # =========================================================================
 class TestT01_SchemaValidation(unittest.TestCase):
@@ -734,17 +811,25 @@ class TestT17_Rollback(unittest.TestCase):
         self.assertEqual(engine.current_restriction, RestrictionLevel.VOID)
 
     def test_carry_forward_survives_seal(self):
-        """Seal writes to carry_forward.json."""
+        """Seal writes to the carry-forward ledger — sandboxed by setUpModule."""
+        import federation_hook_engine as _fhe
+
         engine = FederationHookEngine(actor_id="carry-test", session_id="carry-sess")
         engine.seal(verdict="COMPLETED", completed_tasks=["t1"], open_loops=["l1"])
-        carry_path = Path("/root/.local/share/arifos/carry_forward.json")
-        if carry_path.exists():
-            with open(carry_path) as f:
-                data = json.load(f)
-            # Should contain our session
-            sessions = data.get("sessions", [])
-            found = any(s.get("session_id") == "carry-sess" for s in sessions)
-            self.assertTrue(found, "Carry-forward entry not found")
+
+        # setUpModule redirects this to a throwaway directory. Reading the
+        # patched path (not a hardcoded production path) is the whole point:
+        # the previous version asserted the fixture had reached PRODUCTION
+        # memory, so it passed only when the suite had polluted the ledger.
+        carry_path = _fhe.CARRY_PATH
+        self.assertTrue(
+            carry_path.exists(),
+            f"Seal did not write the carry-forward ledger at {carry_path}",
+        )
+        data = json.loads(carry_path.read_text(encoding="utf-8"))
+        sessions = data.get("sessions", [])
+        found = any(s.get("session_id") == "carry-sess" for s in sessions)
+        self.assertTrue(found, "Carry-forward entry not found")
 
 
 # =========================================================================
@@ -801,6 +886,37 @@ class TestT18_SecurityRegression(unittest.TestCase):
         ok, errs = validate_event(event)
         self.assertTrue(ok, f"Untrusted event should validate: {errs}")
         self.assertEqual(event["provenance"]["source_trust"], "untrusted")
+
+
+# =========================================================================
+# T19 — State Isolation Guard
+# =========================================================================
+def test_all_live_state_paths_are_sandboxed():
+    """This suite must never write to live production state.
+
+    Regression guard for the 2026-09-14 pollution. Running this module wrote
+    synthetic sessions into carry_forward.json (seal-1/s2, full-lifecycle/
+    full-sess, carry-test/carry-sess, 333-AGI/test-session-001, audit-test/
+    audit-sess, seal-1/s1) and REWROTE scar records under scars/candidates/,
+    replacing a scar's subject, "First Witnessed" timestamp and occurrence
+    count with whatever the test run happened to emit.
+
+    If setUpModule's patch is removed or weakened, this fails loudly instead of
+    silently resuming writes into production constitutional state.
+    """
+    import federation_hook_engine as _fhe
+
+    escaped = []
+    for attr, live_path in _LIVE_STATE_PATHS.items():
+        active = Path(getattr(_fhe, attr)).resolve()
+        if active == Path(live_path).resolve():
+            escaped.append(f"{attr} → {active}")
+
+    assert not escaped, (
+        "These engine constants still point at LIVE production state — this "
+        "suite will mutate real ledgers and scars when run:\n  "
+        + "\n  ".join(escaped)
+    )
 
 
 # =========================================================================
