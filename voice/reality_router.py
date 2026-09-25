@@ -38,7 +38,10 @@ WEALTH_SINK = Path("/root/WEALTH/state/capital_scars.jsonl")
 WELL_SINK = Path("/root/WELL/state/somatic_observations.jsonl")
 ATTENTION_SINK = Path("/root/AAA/state/attention_ledger.jsonl")
 VAULT999_SEALS = Path("/root/arifOS/VAULT999/local_seals.jsonl")
-VAULT999_SCARS = Path("/root/arifOS/VAULT999/scar")
+# Canonical VAULT999 scar store (kernel forge_scar_consult.py / judge.py use
+# the same dir). Legacy twin /root/arifOS/VAULT999/scar closed 2026-09-25
+# (twin-chain repair session II); new SCAR-*.json files land here.
+VAULT999_SCARS = Path("/root/.local/share/arifos/vault999/scars")
 
 # Ensure target directories exist
 for p in [GEOX_SINK.parent, WEALTH_SINK.parent, WELL_SINK.parent, ATTENTION_SINK.parent, VAULT999_SCARS]:
@@ -335,7 +338,8 @@ class RealityRouter:
             # Write to VAULT999 local seals
             append_jsonl(VAULT999_SEALS, seal_record)
             
-            # Write dedicated scar file in VAULT999/scar/
+            # Write dedicated scar file in canonical vault999/scars/
+            # (twin VAULT999/scar/ closed 2026-09-25 — files remain readable)
             scar_path = VAULT999_SCARS / f"{evt.scar.scar_id}.json"
             scar_path.write_text(json.dumps(seal_record, indent=2))
 
