@@ -227,6 +227,26 @@ extensions:
   canonical_card: /root/AAA/agents/agentic-trading-companion/agent-card.json
   description: WEALTH capital markets and trading companion.
   species_proxy: wealth-zen
+- id: openclaw
+  name: OpenClaw Gateway
+  role: Runtime/surface binding - Telegram host, subagent orchestration
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agent-cards/functions/openclaw/agent-card.json
+  lanes: 333-AGI
+  species_proxy: openclaw-zen
+  warga_binding:
+    citizenship: warga-aaa
+    forged: '2026-09-25'
+    forged_by: F13 SOVEREIGN (directive 2026-09-25T07:01Z)
+    authority_level: T1
+    kernel_actor_index: openclaw/FI-017
+  _namespace_note: 'openclaw is NOT an AAA harness FI slot (this registry: FI-000..FI-009 are
+    harnesses). openclaw/FI-017 is an arifOS kernel ACTOR INDEX id (agent_registry.json,
+    19 actors, FI-001..FI-026). Two namespaces, both true; do not merge them.'
+  description: Runtime binding for the KVM4 OpenClaw gateway (Telegram host, subagent
+    orchestration). Kernel actor openclaw/FI-017, blast radius T1, bound_to arif-fazil/F13.
+    AAA Telegram group administrator. Citizenship stamped 2026-09-25.
 organs:
 - id: arifos
   name: arifOS Kernel

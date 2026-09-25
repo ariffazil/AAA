@@ -1,0 +1,22 @@
+{
+  "receipt_id": "RECEIPT-OPENCLAW-WARGA-STAMP-2026-09-25",
+  "class": "CANONICAL_RECORD_MUTATION",
+  "action": "stamp openclaw citizenship warga-aaa",
+  "authority": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
+  "authority_evidence": "directive 'Tukar laaaa' 2026-09-25T07:01:41Z UTC (Telegram DM 267378578)",
+  "executed_by": "openclaw (kernel actor index FI-017)",
+  "executed_at_utc": "2026-09-25T07:0x",
+  "reversibility": "FULL - git revert",
+  "blast_radius": "governance metadata only; no runtime, no credential, no authority change",
+  "preceding_state": "warga_binding.status = resident_not_stamped",
+  "resulting_state": "warga_binding.status = stamped",
+  "files_changed": [
+    "agent-cards/functions/openclaw/agent-card.json",
+    "registries/AGENTS_UNIFIED.yaml",
+    "agents/openclaw/WARGAAA_CARD.md (new)",
+    "receipts/RECEIPT-OPENCLAW-WARGA-STAMP-2026-09-25.json (new)"
+  ],
+  "namespace_note": "openclaw/FI-017 = arifOS kernel actor index. AAA harness slots are FI-000..FI-009 and do not include openclaw. Both true; not merged.",
+  "unresolved": "multi-checkout drift: /root/AAA (2026-09-19), /root/aaa-rule (2026-09-24, branch rule/artifact-text-routing), origin/main (2026-09-25). Which path is canonical-read for federation agents is NOT established by this receipt.",
+  "state_reached": "PRODUCED (branch + commit). NOT PUSHED. NOT DELIVERED to shared main."
+}
