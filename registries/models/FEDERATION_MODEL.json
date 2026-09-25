@@ -58,12 +58,13 @@
     {
       "lane": "PLAN",
       "agent": "PLAN (Ω)",
-      "model": "Kimi K2.7 Code",
-      "provider": "Moonshot / bailian-token-plan",
-      "api_key_ref": "secrets::bailian",
-      "context": 256000,
+      "model": "Kimi K3",
+      "provider": "Moonshot (managed kimi-code lane)",
+      "api_key_ref": "oauth:kimi-code (managed, file storage)",
+      "context": 1048576,
       "status": "ACTIVE",
-      "soul_file": "kimi_soul.yaml"
+      "soul_file": "kimi_soul.yaml",
+      "model_correction_2026_09_25": "Was 'Kimi K2.7 Code' via bailian-token-plan (256k ctx). Sovereign directive '01' 2026-09-25 (binary 1 of 2: PLAN lane follows the fleet K3 sweep of 2026-07-24). K3 routes via Moonshot managed lane (api.kimi.com/coding/v1, OAuth file storage) — evidence: /root/.kimi-code/config.toml [models.\"kimi-code/k3\"]. Context 1M. Correction by FI-008."
     },
     {
       "lane": "SMALL",
@@ -91,6 +92,12 @@
       "name": "bailian-token-plan",
       "endpoint": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "models": ["GLM-5.2", "DeepSeek V4 Pro", "Kimi K2.7 Code", "Qwen 3.6 Flash"]
+    },
+    "moonshot": {
+      "name": "Moonshot (managed kimi-code lane)",
+      "endpoint": "https://api.kimi.com/coding/v1",
+      "models": ["Kimi K3"],
+      "note": "Added 2026-09-25 (FI-008, sovereign '01'): K3 for the PLAN lane routes via Moonshot managed OAuth (file storage), not bailian. Evidence: /root/.kimi-code/config.toml providers.\"managed:kimi-code\"."
     },
     "mimo-token-plan": {
       "name": "Xiaomi MiMo Token Plan (Singapore, Max monthly)",

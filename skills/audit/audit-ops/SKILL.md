@@ -8,10 +8,6 @@ floor_scope: [F1, F2, F4, F7, F9, F11, F13]
 autonomy_tier: T1
 description: "Use when a claim, audit, or review must be verified. Route by provenance and observable shape to one of 12 references, then probe."
 triggers:
-  #
-capability_tier: fed-long-context
-ecology_state: WARM
---- union of member triggers (55) — computed, not by eye ---
   - "audit this report"
   - "verify this claim"
   - "is this sealed"
@@ -81,6 +77,10 @@ ecology_state: WARM
   - "sampah sarap in a repo"
   - "distill this pasted AI analysis"
   - "pasted architecture or roadmap from another AI"
+  #
+capability_tier: fed-long-context
+ecology_state: WARM
+# --- union of member triggers (55) — computed, not by eye ---
 ---
 
 # audit-ops — verify a claim, an audit, or a review before anything acts on it
@@ -427,6 +427,18 @@ in brackets tells you where the scar bites.
 - `COMMENT_LIE`: a docstring or comment asserting verification the code does not perform.
 - `SOVEREIGN_TOKEN_THEATRE`: `Math.random` near token generation + approval/sovereign keywords +
   format-only validation downstream ⇒ CRITICAL auto-candidate.
+- **File changed ≠ behavior changed.** A `mtime` shift, a `git diff` hunk, or a `wc -l` delta is
+  evidence of *mutation*, not of *enforcement*. Distinguish three states per change: (a) `EDITED` —
+  bytes differ; (b) `LOADED` — the running process contains the new bytes (check via import path,
+  PID start time vs file mtime, hot-reload config); (c) `EXERCISED` — the new bytes have actually
+  taken effect on observable behavior. A patch in a file that the running process imports from a
+  different path (e.g. `/usr/local/lib/...` vs `/root/.hermes/...`) is `EDITED` and `LOADED=false` —
+  a restart or symlink fix is required before behavior can be claimed to have changed. Never classify a
+  change as "applied" or "enforced" on the basis of `mtime` alone; the gate is the live process.
+- **Probe behavior, not just file existence.** A claim that something "works now" needs the
+  same probe the original failure required — run the smallest reproducer that exercises the named
+  path and read the live state, not the file's contents. The new number is the receipt; the new
+  number without a reproducer is a confident absence, the defect class this branch exists to catch.
 
 **Self-audit (auditing your own past audit)**
 

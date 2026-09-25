@@ -120,7 +120,7 @@ WORKSPACE = Path("/root/.openclaw/workspace/bots/opencode-bot")
 ALLOWED_USER_IDS: set[int] = {
     267378578,  # Arif (F13 SOVEREIGN)
     8727562763,  # APEX / 000♎️ (@arifOS_bot, registered peer)
-    8149595687,  # OpenClaw🦞 / AGI (@AGI_ASI_bot, registered peer)
+    8149595687,  # OpenClaw🦞 / AGI (@irfanclaw_arifos_bot, registered peer)
     8410138119,  # ASI💃 / hermes-asi (@ASI_arifos_bot, registered peer) — added 2026-06-12 per F13 SOVEREIGN fix
 }
 # Backward-compat alias for any code that still references the old name.

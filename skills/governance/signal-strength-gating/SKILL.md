@@ -1,7 +1,7 @@
 ---
 name: signal-strength-gating
 description: "Use when evidence is thin; cap interpretation to it."
-version: 1.0.0
+version: 1.1.0
 layer: governance
 owner: A-FORGE
 floors: [F1, F2, F7, F9]
@@ -108,6 +108,34 @@ the check actually showed. "I checked 6 and found nothing" is not "it does not e
 5. **If the signal is WEAK and you cannot probe**, say so plainly and stop — do not fill the gap
    with theory, framework, or institutional narrative.
 6. **On correction, shrink.** Re-scope to what was actually verified.
+7. **For "enforcement" / "locked" / "sealed" claims, separate the layers.** A claim that X is
+   enforced has at least three independent sub-claims:
+   - **write complete** — the artifact (config, alias map, prompt block) is on disk and has the
+     expected content;
+   - **render complete** — any composer / aggregator (e.g. `render-agents.sh`, registry merger)
+     has run and the references it owns point at the new state;
+   - **pickup complete** — a consumer reads it (a consumer code path exists), the runtime has
+     reloaded (cache TTL, restart, hot-reload), and a live probe from the consumer returns the
+     new state.
+
+   Probe each layer explicitly. When one layer is missing, report it as such. **"Telah dikunci" /
+   "all locked" / "enforced end-to-end" is the failure shape** — it collapses three independent
+   sub-claims into one fluent word. The honest report enumerates them: *write complete: yes
+   (path + content)* · *render complete: partial (reference present, inline content absent)* ·
+   *pickup complete: no (no consumer found, runtime not reloaded since write)*.
+
+8. **When the probe stops, name the stop.** The audit reply that ends at "I observed X" without
+   saying "and I do not know Y" is fluent prose covering an empty receipt. The shape is:
+
+   ```
+   OBSERVED:  <what you actually saw, with source>
+   UNKNOWN:   <what you did not see, named specifically>
+   CLOSER:    <the probe, restart, or registration that would move UNKNOWN → OBSERVED>
+   ```
+
+   The CLOSER is the work the audit enables; without it, the audit is a description, not an
+   instrument. A reply that fills UNKNOWN with theory, framework, or institutional narrative is
+   the same defect as fabricating probe output — the gap is hidden by fluency.
 
 ## Pitfalls
 
@@ -123,6 +151,35 @@ the check actually showed. "I checked 6 and found nothing" is not "it does not e
   the claim's actual epistemic status.
 - **A deadline-shaped question is not a verification.** "Which of these needs a reply?" presupposes
   the items exist. Answer the existence question first, then the action question.
+- **A claim of "enforcement" / "locked" / "sealed" is three layers, not one.** When reporting that
+  something has been wired in, distinguish: (1) **write complete** (file on disk, expected content
+  present), (2) **render complete** (composer ran, references/aggregators updated), (3) **pickup
+  complete** (consumer code exists, runtime reloaded, gateway reads the new state). A confident
+  "locked" / "dikunci" / "enforced" that collapses the three is the same defect as a confident
+  "shipped" that means "the file is on disk" — the word does the persuasion the evidence cannot.
+  Probe each layer and report each separately. When a layer is missing, say which one and what
+  would close it (consumer code path, restart command, hook registration).
+- **UNKNOWN is content, not failure.** When a probe returns no signal — the consumer doesn't exist,
+  the runtime hasn't reloaded, the registry doesn't reference the new path — the audit reply names
+  the gap rather than filling it. The shape is: *what I observed* (file exists, content correct) |
+  *what I do not know* (no consumer, no reload, no hook) | *what would close it* (specific probe
+  or restart). A narrative that paper-over the unknown with confident prose is the same defect as
+  fabricating probe output: the gap is hidden by fluency. The reader who arrives expecting an
+  enforcement verdict reads PASS; the reader who arrives expecting an audit verdict reads an
+  empty receipt.
+- **The auditor who violates the rule they audit is a finding, not a footnote.** When an audit
+  session enforces "evidence required for claims" and the auditor's own output claims enforcement
+  without verifying the chain, the audit's own standing erodes. Treat the violation as a
+  constitutional event in the same turn: name it, retract the over-claim, re-probe, and
+  re-report. A footnote at the end does not restore standing.
+- **Authority does not travel with evidence.** When a relay carries evidence (file diff, exit code,
+  hash) from Agent A to Agent B, B inherits the evidence but NOT A's authority to claim completion.
+  Per-hop authority re-earning is a separate check from evidence propagation. A FALSIFIER envelope
+  that uses the same evidence as a HYPOTHESIS_GENERATOR envelope is correlated, not independent —
+  see `references/a2a-r-wire-law.md` for the full rule set (REJECT-001..008) and the per-claim
+  Authority Envelope shape. "I trust X because I trust X" is the failure pattern; the fix is to
+  require every claim to carry an `authority_scope` field that the receiving end validates against
+  the issuer's current role, not against the issuer's past record.
 
 ## Mechanization
 
@@ -138,3 +195,6 @@ enforcement.
 - `synthesis-verification-gate` — claim classification before synthesis output.
 - `governed-uncertainty` — the same narrowing rule applied to reading a human.
 - `arifos-frozen-snapshot-init` — temporal claims need the clock read first, same discipline.
+- `references/a2a-r-claim-authority.md` — the per-claim Authority Envelope and the
+  REJECT-001..008 wire-law that prevents chain hallucination and correlated error amplification
+  across arifOS federation agents. Apply when receiving A2A messages, not when generating.

@@ -294,9 +294,85 @@ For each organ (arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA, VAULT999):
 
 ---
 
+## Gate Type: `attention_roi` — Attention ROI Gate
+
+Compute and verify that the expected clarity gain of a proposed reply exceeds the attention
+budget it consumes. A reply that adds more cognitive load than it removes is entropy, not
+wisdom — regardless of how correct the content is.
+
+### The law
+
+```
+attention_roi = expected_clarity_gain / reading_cost
+
+< threshold_compress → COMPRESS (rewrite shorter)
+< threshold_hold    → HOLD (do not send this turn)
+>= threshold        → ALLOW
+```
+
+### When to Use
+
+1. Before sending any human-facing reply longer than the budget default (350 tokens / 20s read).
+2. When the human's question is short (≤10 words) and the proposed answer is long.
+3. When the topic is conversational (not technical) and the reply introduces framework/structure
+   the human did not ask for.
+4. When in doubt — apply the gate. It costs one mental step and prevents the most common
+   drift: "theory claims attention is scarce, behavior wastes it."
+
+### Procedure
+
+**Step 1 — Estimate reading cost.**
+- `token_estimate = len(text) // 4` (BM/EN mix is denser than English)
+- `read_seconds = word_count / 150 * 60` (comprehension budget, not silent reading speed)
+- `char_limit = token_limit * 3.5`
+
+**Step 2 — Estimate clarity gain.**
+- Did this turn reduce uncertainty for the human? (Yes → credit; No → zero)
+- Did it change a decision or close a loop? (Yes → credit; No → zero)
+- Did it introduce new uncertainty the human did not request? (Yes → debit)
+- Map to a [0, 1] band: 0.0 = pure noise; 1.0 = closes a long-open loop.
+
+**Step 3 — Compute ROI.**
+```
+roi = clarity_gain / max(reading_seconds, 1)
+```
+If `roi < 0.10` → HOLD (the reply is entropy).
+If `0.10 ≤ roi < 0.30` → COMPRESS before send.
+If `roi ≥ 0.30` → ALLOW.
+
+**Step 4 — Compress, don't truncate.**
+Truncating mid-sentence loses the decision content. Compression keeps the **opening
+anchor + first body paragraph + closing line** and drops the middle unless the middle
+carries the decision. See `references/attention-roi-recipes.md` for the recipe set.
+
+### Failure Modes
+
+- **The theory-behavior gap.** Agent explains why attention is scarce in 800 tokens while
+  the human asked a 6-word question. The reply is technically correct and entirely wasteful.
+  The gate forecloses this by failing closed on low ROI regardless of content correctness.
+- **Framework dump reflex.** When the topic is conversational, the reflex is to introduce a
+  5-axis framework or numbered list. Most conversational replies need 1-3 sentences and a
+  closing line, not a framework. If the human didn't ask for the framework, ROI is negative.
+- **Correctness trap.** A reply can be factually correct and attention-negative. The gate
+  treats them as separate dimensions; do not let correctness override ROI. (A wrong-but-short
+  reply that the human can correct in 5 seconds is cheaper than a right-but-long reply the
+  human must read twice.)
+
+### Constitutional Anchor
+
+- F2 TRUTH: Correct content is necessary but not sufficient.
+- F4 CLARITY: A turn must leave the human's state clearer, not muddier.
+- F8 GENIUS: Systemic health includes the human's cognitive bandwidth, not just system uptime.
+- F13 SOVEREIGN: The human's attention is sovereign. The agent serves it, not the other way
+  around.
+
+---
+
 ## Gate Type: `tool_approval` — MCP Tool Approval & Cross-Organ Routing
 
 Gate and route tool use across federation MCP servers according to authority, risk, and fallback policy.
+
+
 
 ### Procedure
 

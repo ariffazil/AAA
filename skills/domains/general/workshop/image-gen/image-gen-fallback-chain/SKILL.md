@@ -17,6 +17,8 @@ ecology_state: WARM
 # Image Generation Fallback Chain (under multi-provider outage)
 
 > v1.1.0 (2026-08-28): Added Qwen PAYG env-override recipe (`QWEN_PROVIDER=dashscope` + `DASHSCOPE_PAYG_API_KEY`), identity-swap honest verdict (F9: ~75% likeness, not pixel-perfect), and key-prefix cheatsheet. See `references/qwen-payg-image-recipe-2026-08-28.md`.
+>
+> v1.2.0 (2026-09-25): Added scientific-diagram text-label fallback rule (matplotlib programmatic rendering, not AI image generation). See `references/scientific-diagram-text-labels-2026-09-25.md`.
 
 ## When to Use
 

@@ -113,6 +113,10 @@ whenever figures were reconstructed rather than fetched.
 
 - **Vision-verify must request LAYOUT questions specifically, not generic description.** A chart's code cannot see its own layout. Auto-placed annotations stack on the title; the last label jams into the right frame; two callouts land on the same point. Ask the vision read directly: *"does any annotation overlap a title? is any label clipped at the edge? are the axes legible? are all column headers distinct with no overlapping text? is the bottom info panel fully visible?"* Generic "describe this chart" returns prose and misses the collision. Verified (2026-09-25) — three separate chart re-renders converged only after explicit layout-fragmentation questions were added to the vision prompt.
 
+- **Vision reads PNGs in image-native coordinates (origin top-left, Y increases downward), but matplotlib's default Y axis grows upward.** When you `ax.imshow()` a user-supplied photo and overlay `ax.text()` annotations, the two coordinate systems disagree silently — vision may report "title at bottom" when matplotlib says "title at top", because vision reports pixel positions, not data positions. Three viable fixes, pick one and stay consistent: (a) `ax.set_ylim(ylim_max, ylim_min)` to flip matplotlib's Y to match image coordinates; (b) place text at `y_pixel` directly where `y_pixel = 0..H` is image-native top-down, ignoring matplotlib's coordinate frame; (c) `ax.imshow(img, origin='lower')` but this visually flips the image — only viable when image orientation doesn't matter. The defect is silent in code: matplotlib draws the title at the data position you specified, and only the visual diff between data frame and image frame reveals it. Three re-renders converged on this in one pass (seismic annotation, 2026-09-25). Recipe for the full pattern: `references/image-overlay-annotation-pattern.md`.
+
+- **Seismic horizon overlay MUST follow real reflector geometry — never parallel-flat lines.** When overlaying interpretation markers on a seismic section, drawing horizon H1, H2, H3, H4 as equispaced flat horizontal lines parallel across the section is the BANGANG shape. Real seismic reflectors have variable spacing (intervals expand/compress across the section), wavy geometry (follow dip, structural curvature, facies change), and amplitude variation (bright/dim bands). The rules: (1) trace each horizon's actual reflector position from the image — variable spacing between successive horizons, NOT equal gaps; (2) wavy geometry that follows structural dip — if there's an anticline crest, the horizon curves up there; (3) no horizon should cross another — if geometry forces it, the model is wrong, not the data; (4) horizons deeper in section are typically more continuous (regional seal), shallower are more disrupted (tectonic overprint). Quick acceptance test: if H1/H2/H3/H4 look like railroad tracks — equally spaced, perfectly horizontal — the overlay is fake. V1 was rejected for this exact reason; V2 was accepted after spacing became depth-dependent. If a `geox_seismic_interpret` `classical_section` or `interpret_section` mode is available, prefer the GEOX candidate output over hand-drawn placeholder lines — GEOX runs K-DIP/K-THROW/K-DL gates so the proposed geometry is at least physics-plausible, while matplotlib hand-draw is just a graphic, not evidence.
+
 ## References
 
 - `references/matplotlib-direct-figure-pattern.md` — bypass the pyplot state machine
@@ -137,3 +141,16 @@ whenever figures were reconstructed rather than fetched.
   line (not natively supported), and clamped linear interpolation between
   supplied quantiles. Use when the deliverable is a live HTML page rather
   than a chart artifact.
+- `references/image-overlay-annotation-pattern.md` — overlaying interpretation
+  markers on a user-supplied photo (seismic sections, x-rays, chart screenshots,
+  mockups). The user is the domain expert; the overlay is a conversation
+  prompt, not a professional deliverable. Covers the matplotlib Y-flip trap
+  (vision reads image-native coordinates, matplotlib's default is inverted),
+  generic color/symbol convention, ellipse-dashed-for-interpretation,
+  mandatory disclaimer pattern, and the vision-verify checklist targeting
+  the specific failure modes of overlay-on-photo (annotation overflow, garbled
+  column headers, image covering annotations, hallucinated extra text).
+  Seismic-specific addendum covers horizon geometry (variable spacing +
+  structural curvature — railroad-track horizons rejected), GEOX
+  `classical_section` mode integration for actual structural picks, and the
+  vision-verify question that catches railroad-track horizons specifically.
