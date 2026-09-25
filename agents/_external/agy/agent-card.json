@@ -2,7 +2,7 @@
   "$schema": "arifOS/agent-card/v2.0.0",
   "id": "antigravity-cli",
   "name": "Antigravity CLI (agy)",
-  "description": "Google Antigravity terminal agent — CCC candidate worker. Google-hosted engine; hooks + MCP client + plan review native. F12 AUDIT 2026-08-24: HOLD pending F13 data-sharing ratification. Not installed.",
+  "description": "Google Antigravity terminal agent \u2014 CCC candidate worker. Google-hosted engine; hooks + MCP client + plan review native. F12 AUDIT 2026-08-24: HOLD pending F13 data-sharing ratification. Not installed.",
   "version": "2026.08.24",
   "url": "https://github.com/google-antigravity/antigravity-cli",
   "provider": {
@@ -34,15 +34,15 @@
     "can_judge": false,
     "can_self_authorize": false,
     "cannot_self_seal": true,
-    "status": "PROPOSED — HOLD pending F13 ratification of Google data-sharing terms",
+    "status": "PROPOSED \u2014 HOLD pending F13 ratification of Google data-sharing terms",
     "f12_audit": "/root/forge_work/2026-08-24-antigravity-f12/DECISION_PACKAGE.md",
     "glue_hooks_existing": [
-      "/root/AAA/scripts/antigravity-pre-judge.sh  (PreToolUse → arif_judge gate)",
-      "/root/AAA/scripts/antigravity-post-seal.sh  (PostToolUse → VAULT999 seal)",
+      "/root/AAA/scripts/antigravity-pre-judge.sh  (PreToolUse \u2192 arif_judge gate)",
+      "/root/AAA/scripts/antigravity-post-seal.sh  (PostToolUse \u2192 VAULT999 seal)",
       "/root/AAA/scripts/antigravity-autonomous.sh"
     ],
     "containment_profile_required": [
-      "install as non-root user (isolated home — deny /root/.secrets, VAULT999, SSH keys)",
+      "install as non-root user (isolated home \u2014 deny /root/.secrets, VAULT999, SSH keys)",
       "telemetry opt-out MANDATORY before first real session (default is ON)",
       "wrapper script enforcing env (pattern: /usr/local/bin/kimi)",
       "wire hooks to existing glue scripts before first autonomous run",
@@ -80,16 +80,16 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
     "lane": "333-AGI"
   },
   "shadowAcknowledged": [
-    "sparse_or_absent_matrix_record: agy is NOT in shadow-matrix per_actor_shadows — no execution/verification signal at all; all agy claims are DERIVED from docs, not MEASURED from runtime",
-    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit — read_state MUST treat agy self-assessment as DERIVED"
+    "sparse_or_absent_matrix_record: agy is NOT in shadow-matrix per_actor_shadows \u2014 no execution/verification signal at all; all agy claims are DERIVED from docs, not MEASURED from runtime",
+    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit \u2014 read_state MUST treat agy self-assessment as DERIVED"
   ],
   "shadow_population_meta": {
     "populated_at": "2026-09-19T13:48:00Z",
@@ -98,5 +98,40 @@
     "covers_shadow_ids": [
       "DIV-FEDERATION-SHADOW-ACK-CLOSED"
     ]
+  },
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": null,
+      "source": "no lane/id mapping \u2014 awaiting \u00a75 empirical audit",
+      "claim_state": "UNVERIFIED"
+    },
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: present",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
   }
 }
