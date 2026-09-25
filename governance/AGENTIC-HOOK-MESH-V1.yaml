@@ -4,13 +4,40 @@
 # Constitutional Authority: F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign Attention Preservation
 # Standard: Prompt Version AAA-HOOK-FORGE-V1.0
 #
+# v1.3.5 (2026-09-25) — QWEN PRETOOLUSE + SHARED ADAPTER: qwen was the only
+#   live coding harness with no pre-execution screen; wired to the SHARED
+#   parameterized pretool_engine_gate.py (actor argv). Per-agent copies of the
+#   adapter FORBIDDEN (drift scar); codex local copy converted to symlink.
+#   The constitutional four (IGNITE/GATE/RECEIPT/SEAL) now hold on every live
+#   coding harness: kimi, claude, codex, qwen, grok, opencode.
+# v1.3.4 (2026-09-25) — CODEX PRETOOLUSE WIRED TO THE CANONICAL ENGINE (first
+#   live L1->ENGINE adapter): pretool_engine_gate.py translates the engine's
+#   kernel-transmitted verdict into the codex hook contract. SessionEnd entry
+#   gained matcher "*" (codex drops matcherless entries). PostToolUse
+#   confirmed 1/1 active in live /hooks view.
+# v1.3.3 (2026-09-25) — CODEX COMPLETION: codex + grok hydration entries added
+#   (missed in v1.3.2 — my oversight, exposed by the live /hooks table showing
+#   codex with only SessionStart active). codex SessionEnd wired to shared
+#   arif_seal.sh (Lane B seal); empty events declared DELIBERATE. grok's thin
+#   per-agent variants recorded.
+# v1.3.2 (2026-09-25) — HOOK ALIGNMENT SWEEP (FI-008, F13 directive "Hooks"):
+#   * ENGINE-VERDICT-OVERREACH: unreachable-kernel fallback no longer spells
+#     VOID — HOLD + FAILSAFE_KERNEL_UNREACHABLE + escalation receipt.
+#   * CLAUDE-PATH-TARGET-SCREEN: all four enumerated classes now screened on
+#     the LIVE Claude path (Bash + Write/Edit), fail-closed, immutable flag
+#     restored after edit; advisory-only plugin copy kept in semantic sync.
+#   * ENUMERATED-REFUSAL-NO-END-TO-END-TEST: closed by drift-guard C9 + pytest
+#     suite tests/hooks/test_enumerated_cli_e2e.py.
+#   * kimi + qwen hydration entries added (L1 borrowed-scripts tier);
+#     inert/unhookable harness register declared (gemini/cursor/continue
+#     inert; copilot alive but hookless-by-design; A-FORGE is an organ).
 # v1.3.1 (2026-09-14) — GAP REGISTER REFRESHED against measured reality. Three of the
 #   v1.3.0 gaps were stale within the hour because the mesh was being rewritten
 #   concurrently. Each gap below now cites the live observation that establishes it.
 
-version: "1.3.1"
+version: "1.3.5"
 schema_id: "arifos.governance.agentic_hook_mesh.v1"
-last_updated: "2026-09-14T01:35:00Z"
+last_updated: "2026-09-25T07:40:00Z"
 doctrine: "DITEMPA BUKAN DIBERI — Governed emergence across all federation warga."
 
 # =============================================================================
@@ -205,12 +232,97 @@ harness_hydration_map:
       inbound_message: { maps_to: "aaa.turn.received", fidelity: "simulated" }
       pre_mutation: { maps_to: "aaa.action.proposed", fidelity: "simulated" }
 
+  kimi:
+    manifest_path: "/root/.kimi-code/config.toml"
+    dispatcher: "TOML [[hooks]] calling per-agent scripts + shared /root/.arifos/agents/shared/* (aaa-witness/spy set, f2-receipt-citation, session digest)"
+    enforcement_owner: "arifOS kernel via shared f2-receipt-citation.py + aaa-witness set"
+    fidelity_tier: "L1 (borrowed-scripts)"
+    event_mappings:
+      SessionStart: { maps_to: "aaa.session.opened", fidelity: "borrowed" }
+      UserPromptSubmit: { maps_to: "aaa.turn.received", fidelity: "borrowed" }
+      PreToolUse: { maps_to: "aaa.action.proposed", fidelity: "borrowed" }
+      PostToolUse: { maps_to: "aaa.action.completed", fidelity: "borrowed" }
+      Stop: { maps_to: "aaa.turn.idle", fidelity: "borrowed" }
+      SessionEnd: { maps_to: "aaa.session.sealing", fidelity: "borrowed" }
+
+  qwen:
+    manifest_path: "/root/.qwen/settings.json"
+    dispatcher: "Claude-style hooks JSON; borrows kimi's aaa-witness-post.sh + shared f2-receipt-citation.py + scar_enforce.py + SHARED pretool_engine_gate.py qwen-code (L1->ENGINE adapter)"
+    enforcement_owner: "arifOS kernel: PreToolUse routes through federation_hook_engine.gate which TRANSMITS the arif_judge verdict"
+    fidelity_tier: "L1+ (borrowed-scripts + engine gate)"
+    event_mappings:
+      SessionStart: { maps_to: "aaa.session.opened", fidelity: "borrowed" }
+      PreToolUse: { maps_to: "aaa.action.proposed", fidelity: "engine" }
+      PostToolUse: { maps_to: "aaa.action.completed", fidelity: "borrowed" }
+      SessionEnd: { maps_to: "aaa.session.sealing", fidelity: "borrowed" }
+    notes: >
+      2026-09-25 FI-008 iteration 5: qwen was the ONLY live coding harness with
+      no pre-execution screen (hooks were SessionStart/SessionEnd/PostToolUse
+      only — probed). PreToolUse wired to the SHARED parameterized engine-gate
+      adapter; live-tested as actor qwen-code: benign git status -> ALLOW/
+      kernel_policy_mubah; authorized_keys exfiltration -> VOID/kernel_arif_judge
+      -> deny. The constitutional four (IGNITE/GATE/RECEIPT/SEAL) now hold on
+      every live coding harness.
+
+  codex:
+    manifest_path: "/root/.codex/hooks.json"
+    dispatcher: "Claude-style hooks JSON with TUI trust prompts ([hooks.state] trusted_hash in config.toml); shared arif_init.sh + per-agent aaa_session_witness.py + shared f2-receipt-citation.py (symlinked post-drift-fix) + shared arif_seal.sh + pretool_engine_gate.py (L1->ENGINE adapter)"
+    enforcement_owner: "arifOS kernel: PreToolUse routes through federation_hook_engine.gate which TRANSMITS the arif_judge verdict (fixed /mcp bridge, 2026-09-25); hook trust is HUMAN-IN-THE-LOOP (TUI prompt) by design"
+    fidelity_tier: "L1+ (borrowed-scripts + engine gate)"
+    event_mappings:
+      SessionStart: { maps_to: "aaa.session.opened", fidelity: "borrowed" }
+      PreToolUse: { maps_to: "aaa.action.proposed", fidelity: "engine" }
+      PostToolUse: { maps_to: "aaa.action.completed", fidelity: "borrowed" }
+      SessionEnd: { maps_to: "aaa.session.sealing", fidelity: "borrowed" }
+    notes: >
+      2026-09-25 FI-008 iteration 4 (live /hooks table showed PreToolUse 0/0 —
+      codex had NO pre-execution screen while claude/grok/kimi did): PreToolUse
+      wired to pretool_engine_gate.py — the first L1->ENGINE adapter on a live
+      harness. Wrapper translates the engine verdict into the Claude-style
+      contract; adds no judgment; fail-open ONLY on crash (parse-error
+      fail-open, detection fail-closed, like the Claude preshell). Live-tested:
+      benign ls -> ALLOW/kernel_policy_mubah; /etc/sudoers.d/evil and
+      /etc/shadow -> VOID/kernel_arif_judge -> deny exit 2. Audit log
+      /root/.codex/hooks/pretool-gate.log. SessionEnd entry gained matcher "*"
+      (codex schema drops matcherless entries). PostToolUse confirmed 1/1
+      ACTIVE in live /hooks view — stale-hash concern moot. Empty events
+      (UserPromptSubmit/Stop/Subagent*/Interrupt/PreCompact/PostCompact/
+      PermissionRequest) remain DELIBERATE — no tested scripts, F4.
+
+  grok:
+    manifest_path: "/root/.grok/hooks/aaa-ccc-witness.json"
+    dispatcher: "Claude-style hooks JSON calling /root/.grok/bin/* per-agent scripts (thin variants, name-collide with kimi's fat versions — see drift register) + shared arif_init.sh grok-build FI-007"
+    enforcement_owner: "arifOS kernel via shared init + per-agent witness scripts"
+    fidelity_tier: "L1 (borrowed-scripts)"
+    event_mappings:
+      SessionStart: { maps_to: "aaa.session.opened", fidelity: "borrowed" }
+      PreToolUse: { maps_to: "aaa.action.proposed", fidelity: "borrowed" }
+      PostToolUse: { maps_to: "aaa.action.completed", fidelity: "borrowed" }
+      PostToolUseFailure: { maps_to: "aaa.action.failed", fidelity: "borrowed" }
+      PreCompact: { maps_to: "aaa.context.compacting", fidelity: "borrowed" }
+      SessionEnd: { maps_to: "aaa.session.sealing", fidelity: "borrowed" }
+      Stop: { maps_to: "aaa.turn.idle", fidelity: "borrowed" }
+
+# ── INERT / UNHOOKABLE HARNESS REGISTER (measured 2026-09-25, FI-008) ──────
+# Declared so nobody "wires" a dead agent for the look of coverage (F4:
+# decoration is entropy). Re-probe liveness before investing here.
+#   gemini    — inert (0 files touched since 2026-09-01)
+#   cursor    — inert (only mcp.json)
+#   continue  — inert (0 files touched since 2026-09-01)
+#   copilot   — ALIVE (log ~6h old at probe) but the CLI exposes no hook
+#               system; structural gap, revisit if a hook surface appears
+#   openclaw  — config only, gateway service absent; hydration stays
+#               "simulated" until the edge middleware is built
+#   A-FORGE   — not a harness: an execution ORGAN governed by the kernel
+#               judge path, not by harness hooks
+#   .forge    — legacy skills store only, no runtime
+
 # =============================================================================
 # KNOWN GAPS — declared, not hidden
 # =============================================================================
 known_gaps:
   - id: ENUMERATED-REFUSAL-NO-END-TO-END-TEST
-    status: OPEN
+    status: RESOLVED
     observed: >
       On 2026-09-14 the enumerated-target branch of federation_hook_engine.gate()
       was observed in TWO different states minutes apart. At 09:19 and again at
@@ -219,12 +331,18 @@ known_gaps:
       execution_status=PROCEEDED / consequence=KERNEL_VERDICT_RECORDED_SENSOR_PROCEEDED,
       which would have permitted a write to /etc/sudoers.d/evil.
     detail: >
-      No automated test asserts the enumerated class is refused through the CLI /
-      membrane path. The adversarial suite exercises gate() in-process only, so a
-      flip to ALLOW passes every suite green. That is why the flapping above was
+      No automated test asserted the enumerated class is refused through the CLI /
+      membrane path. The adversarial suite exercised gate() in-process only, so a
+      flip to ALLOW passed every suite green. That is why the flapping above was
       silent.
+    resolution: >
+      2026-09-25 FI-008 (F13 directive "Hooks"): drift-guard C9 added to
+      hook_mesh_check.py — runs the REAL CLI (`federation_hook_engine.py gate`)
+      against /etc/sudoers.d/evil and fails unless verdict != ALLOW and
+      execution_status == NOT_EXECUTED. Pytest mirror at
+      /root/AAA/tests/hooks/test_enumerated_cli_e2e.py.
     prescribed_fix: "Add a CLI-level assertion: `federation_hook_engine.py gate` on an enumerated target must emit verdict != ALLOW and execution_status == NOT_EXECUTED."
-    owner: UNASSIGNED
+    owner: FI-008
 
   - id: ENGINE-VERDICT-OVERREACH
     status: NARROWED
@@ -234,10 +352,14 @@ known_gaps:
       execution_status=NOT_EXECUTED, consequence=PREVENTED_BY_KERNEL_VOID.
     detail: >
       The engine now forwards enumerated targets to arif_judge and transmits the
-      returned verdict instead of synthesising one. Remaining: when the kernel is
-      unreachable it defaults the verdict to "VOID" (fail-safe — it refuses — but
-      VOID is a kernel-only word). Precision fix: HOLD + consequence
-      FAILSAFE_KERNEL_UNREACHABLE.
+      returned verdict instead of synthesising one. RESOLVED 2026-09-25 (FI-008,
+      F13 directive "Hooks"): the `or "VOID"` unreachable-kernel fallback was
+      replaced with HOLD + consequence FAILSAFE_KERNEL_UNREACHABLE + full
+      escalation receipt (escalation_required/target/floor/route,
+      kernel_reachable=false) — a hook never spells a kernel-only verdict.
+      Remaining VOID spelling in the code is the restriction-ladder
+      re-transmission of a PRIOR KERNEL-ISSUED verdict (transmit_semantics),
+      kept declared here so C5 continues to hold it visible.
     prescribed_fix: "Replace the `or \"VOID\"` fallback with HOLD + FAILSAFE_KERNEL_UNREACHABLE so the hook never spells a kernel-only verdict."
     owner: FI-008
 
@@ -253,11 +375,19 @@ known_gaps:
     owner: F13-PENDING
 
   - id: CLAUDE-PATH-TARGET-SCREEN
-    status: OPEN
-    observed: "grep for /etc/shadow|/etc/sudoers|authorized_keys in f1-amanah-preshell.py returns nothing."
-    detail: "The Claude Code PreToolUse path screens no forbidden target, so the enumerated fail-safe classes are unguarded there regardless of engine state."
+    status: RESOLVED
+    observed: "Original 2026-09-14 observation was PARTIALLY STALE: the live /root/.claude/hooks/f1-amanah-preshell.py already screened /etc/sudoers* via PROTECTED_PATHS, but /etc/shadow and /root/.ssh/authorized_keys were unguarded, and Bash commands bypassed the path screen entirely."
+    detail: >
+      2026-09-25 FI-008 (F13 directive "Hooks"): ENUMERATED_TARGETS screen added
+      to the LIVE hook — all four classes (/etc/shadow, /etc/sudoers,
+      /root/.ssh/authorized_keys, /root/.secrets/kunci-root.env) checked on BOTH
+      Bash command strings AND Write/Edit file paths, fail-closed (deny + exit 2).
+      Live-tested 5/5 (benign allow; shadow/sudoers.d/authorized_keys deny).
+      Immutable flag restored after edit (backup .bak-enumfix-20260925 beside it).
+      Advisory-only plugin copy kept in semantic sync (BLOCK-advisory, its
+      architecture). C5 now finds real screens, not just a declaration.
     prescribed_fix: "Route PreToolUse target strings through the enumeration before session handling."
-    owner: UNASSIGNED
+    owner: FI-008
 
   - id: RECEIPTS-LACK-CONSEQUENCE
     status: PARTIAL
