@@ -5,10 +5,10 @@
   "name": "Aider CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc — the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Aider CLI forge instrument — pair-programming coding harness. Wired to federation MCPs. F1-F13 enforced.",
+  "description": "Aider CLI forge instrument \u2014 pair-programming coding harness. Wired to federation MCPs. F1-F13 enforced.",
   "version": "2.0.0",
   "model": "deepseek/deepseek-chat (DEEPSEEK_API_KEY wired; proven live 2026-08-14)",
   "binary": "/root/.local/bin/aider",
@@ -257,7 +257,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -273,7 +273,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -311,7 +311,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -327,7 +327,7 @@
     {
       "id": "FORGE-github-ops",
       "name": "GitHub Ops (merged v1.2.0)",
-      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -342,7 +342,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -387,7 +387,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -403,7 +403,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -445,7 +445,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -537,13 +537,13 @@
     "application/json"
   ],
   "emd_role": "DECODER",
-  "emd_lane": "EXECUTION — FI forge instrument. Decodes instruction into artifact.",
+  "emd_lane": "EXECUTION \u2014 FI forge instrument. Decodes instruction into artifact.",
   "emd_architecture": "/root/AAA/instructions/emd-architecture.md",
   "emd_forged": "2026-08-09",
   "status": "active_ccc_contractor",
   "verified_against": "2026-08-13T04:00:00+08:00",
   "architecture_layer": "NONE",
-  "architecture_role": "CCC contractor — git-deployer lane (proven 2026-08-14, 14 files 0, 4 commits, 0 tokens) + builder lane (deepseek-chat). FI passport revoked by F13 directive 2026-08-14; operates per CCC_DOCTRINE.md",
+  "architecture_role": "CCC contractor \u2014 git-deployer lane (proven 2026-08-14, 14 files 0, 4 commits, 0 tokens) + builder lane (deepseek-chat). FI passport revoked by F13 directive 2026-08-14; operates per CCC_DOCTRINE.md",
   "codex_lane": "none (contract-held, not citizenship)",
   "cognitive_species": "worker",
   "ccc": {
@@ -555,15 +555,15 @@
       "git-deployer",
       "builder"
     ],
-    "first_contract": "2026-08-14 — federation working-tree settle, receipt 018893d8",
+    "first_contract": "2026-08-14 \u2014 federation working-tree settle, receipt 018893d8",
     "doctrine": "/root/AAA/governance/CCC_DOCTRINE.md",
     "held_by_examples": [
       "FI-003 qwen-code (2026-08-14 FIX-2 emitter commit)"
     ],
-    "tempaan": "requires --no-gui --exit --yes-always + closed stdin (0.86.2 defaults GUI non-tty); /commit scope aider-edits only — stage untracked first"
+    "tempaan": "requires --no-gui --exit --yes-always + closed stdin (0.86.2 defaults GUI non-tty); /commit scope aider-edits only \u2014 stage untracked first"
   },
   "species_rank": 0,
-  "fi": "NONE (CCC contractor — passport revoked 2026-08-14, see ccc block)",
+  "fi": "NONE (CCC contractor \u2014 passport revoked 2026-08-14, see ccc block)",
   "bound_to": "000",
   "fi_slot": null,
   "registry_receipt_hash": "sha256:3cf6e1d243d89bb1416145bc325411887da80dfb83df12e1d99bb76870ce1657",
@@ -596,8 +596,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
@@ -614,18 +614,18 @@
   ],
   "signature_status": {
     "state": "ABSENT",
-    "detail": "hollow block — empty kid/signature/protected; contains no cryptographic material",
-    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detail": "hollow block \u2014 empty kid/signature/protected; contains no cryptographic material",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   },
   "shadowAcknowledged": [
-    "sparse_or_absent_matrix_record: aider is NOT in shadow-matrix per_actor_shadows — no execution/verification signal at all; all aider claims are DERIVED from docs, not MEASURED from runtime",
+    "sparse_or_absent_matrix_record: aider is NOT in shadow-matrix per_actor_shadows \u2014 no execution/verification signal at all; all aider claims are DERIVED from docs, not MEASURED from runtime",
     "card_truth_repair_stale: verified_against 2026-08-13T04:00:00+08:00 = 37 days without a repair pass; description may not match reality",
-    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit — read_state MUST treat aider self-assessment as DERIVED"
+    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit \u2014 read_state MUST treat aider self-assessment as DERIVED"
   ],
   "shadow_population_meta": {
     "populated_at": "2026-09-19T13:48:00Z",
@@ -634,5 +634,48 @@
     "covers_shadow_ids": [
       "DIV-FEDERATION-SHADOW-ACK-CLOSED"
     ]
+  },
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L0",
+        "L0.5",
+        "L1",
+        "L2",
+        "L3",
+        "L9",
+        "L12"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (333)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": true,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": "epistemic label marker present in card",
+      "claim_state": "MEASURED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: engineer",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
   }
 }
