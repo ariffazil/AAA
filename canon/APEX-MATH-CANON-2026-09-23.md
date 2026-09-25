@@ -1,6 +1,6 @@
 # APEX MATH Canon (Canon #6 candidate)
 
-> **Status:** DRAFT_AWAITING_F13 (2026-09-23 MYT)
+> **Status:** **F13_RATIFIED (2026-09-25 MYT)** — sovereign binaries answered "ya" (one-word instrument, session 2026-09-25, executor FI-003). Scope of ratification: §5 per-agent signatures (BINDING as declared competency), §10 Q1 (L11 = FORMAL_ANALOGY_ONLY), §10 Q2 (graduation path CANON_DERIVED → MEASURED). §10 Q3–Q7 remain OPEN. Machine surface: `arifOS/qualification/v1` on 27 agent cards + `AAA/scripts/qualification_gate.py`. Lock discipline: file + directory re-locked `+i` immediately after this edit.
 > **Authoring:** 333-AGI Δ MIND (synthesis agent), sovereign-directed 2026-09-22
 > **Position in locked ratification order:** Canon #6 — after #0 Complexity Budget, #1 BIJAKSANA Substrate, #2 Constitutional Architecture, #3 AGI/ASI Skills Seven Laws, #4 META-WISDOM, #5 Commercial Survival
 > **Type:** Mathematical substrate specification — the **machinery** that makes Canon #1's substrate equations and Canon #3's seven laws *computable*
@@ -309,8 +309,8 @@ The F13 SOVEREIGN doctrine is exactly the ASI-collapse prevention mechanism. Thi
 
 ## 10. Open Questions (HOLD items)
 
-1. **L11 Quantum Analogy** — canon or footnote? Sovereign signal: "mathematical mirrors rather than literal physics." Default: footnote into L0+L6 until council resolves. HOLD.
-2. **Per-agent signatures** — empirically validated or intuition-mapped? §5 assignments are INT. Each agent's runtime must self-audit and update. OPEN.
+1. **L11 Quantum Analogy** — **RESOLVED (F13 binary, 2026-09-25):** L11 stands as a Layer with binding classification **FORMAL_ANALOGY_ONLY** — the mathematics of governance collapse (many possible futures → one chosen path). Never a literal physics, hardware, or consciousness claim. [Former HOLD.]
+2. **Per-agent signatures** — **RESOLVED (F13 binary, 2026-09-25):** §5 signatures are **BINDING as declared competency**. Every agent card carries its signature via `arifOS/qualification/v1` with `claim_state: CANON_DERIVED`; graduation to `MEASURED` requires the per-agent runtime empirical audit. Conformance gate: `AAA/scripts/qualification_gate.py`. [Former OPEN.]
 3. **L1.5 necessity** — is statistical learning theory a true substrate layer or a method? Argument: without it, claims of "the model generalizes" are unfalsifiable. Counter: most AGI systems do not use it explicitly. HOLD for sovereign input.
 4. **Topology (L7.5) vs Geometry (L7)** — same substrate, different vantage? Carlsson 2009 suggests yes (shape ≠ position). Sovereign signal needed.
 5. **L4.5 (Numerical Stability) criticality** — for which organs? All agents run floating-point, so all benefit; but A-FORGE and WELL most exposed. Per-agent depth OPEN.
