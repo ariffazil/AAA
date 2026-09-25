@@ -1,0 +1,54 @@
+{
+  "edition": "EDITION-010",
+  "date": "2026-09-25",
+  "built_at": "2026-09-24T22:15:09Z",
+  "engine": "weasyprint",
+  "engine_version": "69.0",
+  "template": "base-a4",
+  "profile": "print-light",
+  "content_sha256": "3232737f8976f45282d4d0582ab634c5c7b2c68f902910fb99c8ecba4b8683e1",
+  "artifact_sha256": "7e9f71130b8ec2d15f4282557a38065ce58b9d40e9616ad11cce1b3737b15f7b",
+  "artifact_bytes": 52668,
+  "artifact_file": "EDITION-010.pdf",
+  "artifact_path": "2026-09-25-edition-010/EDITION-010.pdf",
+  "sidecar": "EDITION-010.sha256",
+  "sidecar_verified": true,
+  "gates": [
+    {
+      "gate": "pdf_real",
+      "ok": true,
+      "detail": "real PDF, version 1.7"
+    },
+    {
+      "gate": "geometry",
+      "ok": true,
+      "detail": "7 pages, 595.276 x 841.89 pts (A4)"
+    },
+    {
+      "gate": "ink_present",
+      "ok": true,
+      "detail": "min ink 2.61%, median 10.48%, floor 0.05% \u2014 no blank page | pg-1:2.6% pg-2:8.4% pg-3:10.8% pg-4:11.3% pg-5:10.5% pg-6:9.1% pg-7:9.1%"
+    },
+    {
+      "gate": "theme_light",
+      "ok": true,
+      "detail": "max dark-area 4.6% (pg-4), limit 25% \u2014 no dark fill, bands are rules only"
+    },
+    {
+      "gate": "text_layer",
+      "ok": true,
+      "detail": "15435 chars extracted, no internal path, 0 required string(s) present"
+    },
+    {
+      "gate": "figures",
+      "ok": true,
+      "detail": "not asserted for this document"
+    }
+  ],
+  "gates_all_pass": true,
+  "chain_prev": "b40442770a364ea1ac47a12c2ed2f898274aca87e439000708ab0408ae236b44",
+  "chain_prev_edition": "EDITION-009",
+  "signature": "not_signed",
+  "signature_note": "no C2PA/X.509 signing identity on this lane; hashes only. Integrity is proven, authorship is not.",
+  "seal_class": "lane-level integrity seal \u2014 NOT an F13 seal and not a canonical record"
+}

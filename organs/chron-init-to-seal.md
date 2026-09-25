@@ -1,7 +1,7 @@
 # CHRON — Temporal Intelligence
 
 > **Authority:** COMPUTE_ONLY  
-> **Port:** (pending)  
+> **Port:** 127.0.0.1:18102 — `/mcp` (streamable HTTP; listener verified live 2026-09-25 via `ss` + probe: GET /mcp → 400 which is expected — POST required)  
 > **Domain:** event ordering, clock uncertainty, freshness policy, epoch lifecycle  
 > **APEX KERNEL:** REALITY > EVERYTHING
 
