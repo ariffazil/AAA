@@ -1,0 +1,56 @@
+# Codex Federation Banner — Single Source Of Truth (auto-generated)
+# ═════════════════════════════════════════════════════════════════
+# Generated: 2026-09-24T23:25:32Z
+# Author: FI-005 (Codex CLI, warga-aaa) self-audit
+# Method: live probe — never edit by hand
+# Regenerate: re-probe /root/.codex/config.toml + /root/.hermes/MCP_HEALTH.json
+#
+# This file is the SOT for any FI-005 self-description. Do NOT cite numbers
+# from memory — read them here. Surface shape is TOML so any language can parse.
+
+[meta]
+generated_utc = "2026-09-24T23:25:32Z"
+generator = "FI-005 self-audit"
+source = ["/root/.codex/config.toml", "/root/.hermes/MCP_HEALTH.json"]
+schema_version = "v1"
+prior_drift = "FI-005 cited '26 in config.toml' from memory; live count is 14 (2026-09-25 07:24 MYT audit). DO NOT REVERT TO 26."
+
+[federation.mcp_registry]
+mcp_servers_in_config_toml = 14
+mcp_server_names_csv     = "aforge,arifflow,arifos,brave-search,context7,fed,fetch,firecrawl,frame,geox,github,hermes-mcp,wealth,well"
+
+[federation.mcp_census_from_hermes_health]
+mcp_total_servers = 30
+mcp_routable_healthy = 18
+mcp_unhealthy_or_stdio = 12
+
+[federation.canonical_organs_reached]
+# What Codex CLI's tool block can actually reach via mcp__* prefixes
+reached = [
+  "arifOS:http://127.0.0.1:8088",
+  "GEOX:http://127.0.0.1:8081",
+  "WEALTH:http://127.0.0.1:18082",
+  "WELL:http://127.0.0.1:18083",
+  "FRAME:http://127.0.0.1:18086",
+  "HERMES_MCP:http://127.0.0.1:18087",
+  "SESSION_FEDERATION:http://127.0.0.1:18088",
+  "FED:http://127.0.0.1:7074",
+  "POSTGRES:stdio_present",
+  "BRAVE-SEARCH:stdio_present",
+  "FIRECRAWL:stdio_present",
+  "AFORGE:stdio_present",
+  "ARIFFLOW:stdio_present",
+  "HERMES-RASA:stdio_present"
+]
+reached_count = 14
+
+[federation.skill_count_warning]
+# AGENTS.md warns: "Never quote a skill count. Run python3 /root/scripts/skills-census.py"
+# FI-005 did NOT run that census this session. Marked PENDING LIVE PROBE.
+
+[doctrine.known_self_defects_as_of_2026-09-25]
+# Findings from /root/AAA/research/FI-005-SELF-AUDIT-2026-09-25.md
+A_metadata_drift     = "FAIL — cited 26 from memory; live count is 14. FIX: read this file before quoting."
+B_contradiction_engine = "FAIL — narrative-detect only; structured emission missing. Docs: state-transition-discipline.md + FI-005-SELF-AUDIT-2026-09-25.md §6."
+C_reachability_not_exercised = "FAIL — 13 of 14 MCP prefixes exposed but never called this session. Trap: 'no call = no test' analog Hermes 'no input = no contradiction'."
+D_structured_witness_emission = "FAIL — trace_id + claim_state fields absent from outputs. Required for arifOS verifier."
