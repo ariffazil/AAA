@@ -175,6 +175,14 @@ Why: diffusion text-to-image reliably corrupts spelling, fabricates plausible gi
 
 Companion rule (write-side mirror of `poster-vision-extraction` SCAR 2026-08-27's read-side prohibition on fill-from-memory): the write-side forbids render-text-via-diffusion. Without this mirror, an agent that respects read-side fidelity will still produce corrupt text on the write side — an asymmetry that the user sees as "AI doesn't read OR write correctly," when each half has its own discipline.
 
+### Scientific/Technical Diagram Sub-Rule
+
+The text-bearing rule extends specifically to **scientific and technical diagrams** — molecular structures, chemistry labels, electrical schematics, mathematical notation, anatomical diagrams, taxonomy trees. Diffusion models reliably fabricate plausible-but-wrong labels for these (e.g. "methanethol" instead of "methanethiol", wrong bond geometry, invented atom counts) even with explicit prompt instructions and multiple re-runs. The defect is structural, not a prompt-tuning artifact.
+
+When the user asks for a technical diagram with correct labels, the canonical fallback is **`matplotlib` with explicit atomic coordinates**: draw circles at fixed `(x,y)` positions, label each with a unicode subscript, draw bonds as line segments with known angles. This bypasses the diffusion class entirely and produces an artifact where every pixel is determined by code, not by a learned prior. A working recipe lives at `references/matplotlib-fallback-recipe.md`.
+
+**Verification after the matplotlib fallback:** before declaring success, run a vision pass on the rendered PNG asking the VLM to read back the labels. If labels are still wrong (e.g. matplotlib font fallback failed for unicode subscripts and rendered tofu boxes), **fix the code, not the prompt** — matplotlib is deterministic; if it produced garbage, the code is wrong, not the model.
+
 ## Shadow Mode Deployment (F1 Reversibility)
 
 Initial deployment runs VLM Tri-Witness in **shadow mode**:
@@ -313,6 +321,7 @@ NOT count toward the failure tally in Stage 2.
 | Heuristic expander | `AAA/skills/forge-vision-densify/recipes/densify.py` |
 | Shadow VLM tri-witness | `AAA/skills/forge-vision-densify/recipes/shadow_audit.py` |
 | VLM three-question contract | `AAA/skills/forge-vision-densify/references/vlm-audit-prompt.md` |
+| Matplotlib fallback recipe (technical diagrams) | `AAA/skills/forge-vision-densify/references/matplotlib-fallback-recipe.md` |
 | Audit log | `~/.local/share/arifos/density_audit.csv` |
 | Wiring target | `lightweight-image-generation` dispatch path |
 | Forge skill creator | `FORGE-skill-creator` |

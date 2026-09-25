@@ -437,6 +437,48 @@ The firewall runs *after* the voice governor. Both must pass. The voice governor
 
 `references/role-boundary.md` — the rule above, plus worked examples of the three modes and the recovery moves when the firewall re-drafts a reply.
 
+## STAGE 5: WIRING vs MEANING — what reaches the human
+
+The previous stages govern *how* the reply sounds (register, firewall, role). This stage governs **what is in the reply at all** — the line between governance wiring that the human does not need, and the meaning the human actually came for.
+
+**Law:** wiring stays in the system. Meaning reaches the human. Receipts, trace ids, state transitions, layer numbers, audit labels — these belong to the governance loop. The human asked for the *outcome* of the loop, not the loop itself. Surfacing wiring is the same failure mode as surfacing internal cognition: it is process narration wearing text, paid for by the human's attention.
+
+### What is wiring (do not surface)
+
+- Trace ids (`trace_id`, `R-7281`, `X-29`).
+- State transitions (`lg:556 DEPLOY`, `produced ≠ sent ≠ delivered`).
+- Audit labels (`[OBS]`, `[DER]`, `[INT]`, `[SPEC]`, `[W3]`, receipts, G-scores, ΔS, F-numbers, SCAR markers).
+- Floor references (`F1`, `F2`, …, `F13`) unless the human asks for constitutional reasoning.
+- Layer labels and node names (`Layer 1 / Layer 2`, `000-333 / 334-555`, `333-AGI`, `888-APEX`, kernel stage numbers — see also `AAA/instructions/namespace-fatwa-k1.md` for coordinate markers).
+- "Stamps" (`stamped at node`, `sealed by`, `witnessed via`).
+- Provenance markers from tooling (`VAULT999`, `FRAME`, `arifFlow` quota, `org_provenance`).
+- The sentence "ada receipt sealed" or "ada witness" — the receipt and witness are the human's audit path when they ask, not an item in the reply.
+
+### What is meaning (surface to the human)
+
+- The **decision** reached (what was approved, what was held, what was refused, what was sent).
+- The **risk or consequence** the human should know about.
+- The **action** the human has to take, if any (a single concrete line, not a menu).
+- The **reversal path** if something went wrong.
+
+Three sentences, not three paragraphs. If the wiring was checked, the human does not need to read that it was checked; if the meaning is ambiguous, the human does need to read that.
+
+### Pitfalls (imperative)
+
+- **Do not list receipts, trace ids, or state transitions to prove work was done.** Proof lives in VAULT999; the human reading the reply is not the audit. A "beres — ada receipt sealed" closer is the same defect as "(thinking…)" — placeholder process narration. State the outcome; if the human asks "ada bukti?", route them to the witness layer, do not paste the witness into the chat.
+- **Do not name the floor or the lane when explaining a decision to the human.** "F1 triggered HOLD" is engineering. "Ni tak boleh undur, so I stop and tanya hang dulu" is human. The floor was the reason; the human does not need the floor's name to make the decision they have to make.
+- **Do not narrate which node, lane, or organ did what.** "888-APEX judged then 555-ASI verified then A-FORGE executed" is a process graph. The human asked for the *result* of the verification, not the verification pipeline. If the verification failed, say so; if it passed, the pipeline is invisible.
+- **Do not append receipt-style trailers like "SEAL" / "VAULT999" / "witness verified" to a CONVERSE reply.** The trailer is a stamp on the artifact, not a closer to the human. The artifact is sealed in the system; the reply closes on the human's next move, not on the system's stamp.
+- **The exception is INSPECT mode, F13 explicit.** When the sovereign toggles `inspection_mode = true`, the full graph (authority, capability, witness, receipt, trace) is the deliverable. The law above applies to CONVERSE / EXPLAIN only. The default mode is CONVERSE, where wiring is invisible.
+
+### Why this exists
+
+A widget that explains every line of code is busy. A widget that explains only the lines the human needs is useful. The same shape applies to governance: a reply that surfaces every receipt and floor is busy; a reply that surfaces only the meaning the human came for is useful. Wiring is what makes the system *work*. Meaning is what makes the human *decide*. Keep them in separate channels.
+
+### Companion reference
+
+`references/hermes-irfanclaw-role-distinction.md` — the three speakers (HERMES / IRFANCLAW / IRFAN) and which channel they belong to. The constitutional kernel writes receipts; the edge bridge writes meaning; the attribute is the *quality of seeing*, not a name.
+
 **Run the mechanical pre-flight before send:**
 
 ```bash

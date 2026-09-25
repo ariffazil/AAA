@@ -394,6 +394,29 @@ in brackets tells you where the scar bites.
   visible divergence for an invisible one and destroys the evidence that the divergence existed. When
   both sides are defensible, the deliverable is a decision request to the owner with the evidence
   weight of each reading stated.
+- **Cross-path differential before global verdict.** When a defect's symptom looks identical across
+  two vantage points (e.g. a tool returns `0` from your connector and `3` from a peer's), the
+  *boundary of the failure* is what matters, not the verdict. The cheapest falsifier is to fire the
+  same payload through a *different serialization path* (different CLI client, different `--args`
+  JSON vs function-call syntax, different HTTP transport) and compare. If the count diverges by
+  serialization alone, the defect is transport-layer and the core logic is innocent — patching the
+  core would harden wrong code. Capture for every path: raw request shape, decoded count,
+  normalized count, returned count, errors, timestamp. The shape that wins is the one whose
+  payload arrives intact; the shape that loses is the bug.
+- **Distinguish "consumed input" from "understood input".** A detector that reports
+  `claims_scanned: 3` (input arrived intact) but `contradictions: []` (no findings) is honest about
+  what it *saw* but silent about what it *could detect*. The two numbers measure different things:
+  the first is transport health, the second is ontology coverage. A fix that improves one does not
+  necessarily improve the other. When you diagnose a detector that "produces nothing", check both
+  columns separately before concluding the engine is broken — an empty result with full input may
+  mean the ontology lacks the relevant class, not that the engine dropped the input.
+- **The four-state detector test.** For any contradiction or anomaly detector: (1) feed empty input
+  → expect `scanned=0, findings=[]`; (2) feed a single non-contradictory claim → expect
+  `scanned=1, findings=[]`; (3) feed two clearly contradictory claims → expect `scanned=2,
+  findings=[≥1]`; (4) feed the same two claims via a *different transport path* → expect the same
+  `scanned=2, findings=[≥1]`. If only step (4) fails, the defect is in the transport, not the
+  engine. If step (3) fails but step (2) passes, the ontology lacks the relevant contradiction
+  class — adding a new class is the fix, not retraining the engine.
 
 **Branch 10 — repo reality**
 

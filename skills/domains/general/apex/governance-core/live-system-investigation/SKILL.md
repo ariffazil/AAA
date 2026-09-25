@@ -204,6 +204,50 @@ and reasons. `execution_state: BLOCKED` + `actor: anonymous` + `band: OBSERVE_ON
 "readiness probe unauthenticated", never as "service degraded" — and never quote a green
 `/health` next to a red `/ready` without saying which gate each one measures.
 
+### The restart-settles-defect illusion: symptom relief from restart ≠ root fix
+
+A defect that "clears" when the service is restarted is *often* the wrong conclusion to draw. Two failure shapes share the same presentation:
+
+1. **State leak / queue replay** — the service persists state across restarts, and a poisoned row in that state (a delivery obligation, a session lock, a message in a re-drive queue) replays itself every boot. Each restart briefly drains the queue, then it refills.
+2. **In-flight remediation racing the restart** — the visible error rate drops because the producer of the error got killed by the restart you just performed, not because you fixed anything. The next time the producer starts, the same errors resume.
+
+The discriminator: **does the error return after the restart, or stay gone?** If it returns within the same boot window or the next scheduled run, the restart was a queue drain, not a fix. If the post-restart error count drops to zero across a full cycle (the original failure window is past), the restart actually settled something.
+
+When restart is on the table and you suspect a loop, **count the errors AFTER the restart, not before.** A pre-restart error count of 600 with a post-restart error count of 78 in the next five minutes is not a fix — it is a 7× improvement that will return to 600 on the next trigger. A pre-restart count of 600 with a post-restart count of zero for an hour, against the same producer, is a fix.
+
+**Three things to do before recommending restart:**
+
+1. **Find the persistent state** — which file, table, or in-memory structure carries the bad row across restarts? Read it directly (`ls -lt`, `sqlite3`, the runtime state JSON). A defect that loops on restart has a substrate; name it.
+2. **Find the producer** — the code path that mints the bad row in the first place. The fix is at the producer, not at the consumer that retries it. Search by the symptom's distinctive string (`grep -rn "<exact error text>" --include="*.py"`).
+3. **Find the upstream guard that should have refused the row** — most loops exist because a mint step accepts data the system knows is invalid (a chat_id equal to the bot's own user_id, an inbound from a known-blocked sender, a configuration that contradicts itself). The smallest fix is a refusal guard at the mint point, not a deeper retry handler.
+
+**Restart-loop diagnosis procedure** — when restart does not settle:
+
+```
+1. systemctl show <unit> --property=ActiveEnterTimestamp,MainPID  # confirm restart occurred
+2. journalctl -u <unit> --since '5 min ago' --no-pager -q | grep -c "<error text>"  # count post-restart
+3. if post-restart count > 0 → restart did NOT fix; the defect is in persistent state
+4. grep -rn "<error text>" <source-tree> --include="*.py"  # find the producer
+5. read the producer's input validation — what does it accept without checking?
+6. identify the persistent-state sink (queue, table, runtime state JSON)
+7. fix: refusal guard at the producer, OR purge the bad rows, OR both
+8. verify by counting the post-fix error rate against the pre-fix rate (the new number is the receipt)
+```
+
+**Cheap falsifier that distinguishes the two failure shapes:** if the error count keeps growing linearly with restart cycles, the queue is being refilled by a live producer and the fix is at the producer. If the error count drops to zero on its own after exhausting a fixed-size backlog, the queue drained and the next cycle will refill it from the same producer — same root cause as the linear case, different presentation.
+
+### The accepted-diagnosis trap: a peer's plausible mechanism may still be wrong
+
+When a peer agent (or an upstream tool) reports a root-cause diagnosis for a defect you are also seeing, the *symptom* is theirs to claim but the *mechanism* is yours to verify. Plausible-sounding explanations ("the lane switcher must be falling back to the bot's own chat_id") can ship from a place that did not actually open the source file. Before you inherit the explanation, do the cheapest falsifier: read the named code path with your own eyes and check whether the claimed behaviour is what the code actually does. A three-line `grep` (`grep -n "fallback" <file>`) is enough to distinguish "the code does this" from "the peer assumed the code does this". The diagnosis may still be right by accident; the receipt for "I know why" is the line number, not the confident tone.
+
+### Read the producer, not just the symptom
+
+When a defect manifests as a flood of identical errors from one retry layer (redelivery, obligation replay, scheduled task), the surface error tells you *what is being retried*, not *why it was minted in the first place*. The smallest reproducible trace is: the consumer's retry log → the queue/table it pulls from → the producer that mints the rows → the upstream guard that should have refused the row but did not. Four hops is normal; if you stop at hop one and write the patch at the consumer, you fix a symptom and the queue stays full.
+
+### Configuration channels can register values the protocol rejects
+
+A channel directory, registry, or config file may include entries that the underlying protocol refuses to act on — e.g. a chat_id equal to the bot's own user_id (the bot cannot send messages to itself; the platform returns a 403 even when the config marks it as a valid delivery target). Config-side acceptance is not protocol-side validity. Before patching code to work around a 403 / 400 / 422, search the config layer for entries that *would* cause that exact rejection; a `grep` for the offending identifier across channel-directories, registries, and cron-job origin fields often shows the defect has been latent for days or weeks because no caller happened to mint the row that triggers it. The fix is rarely "make the code resilient to bad targets" — it is "do not register bad targets".
+
 ### The loud-always class: an instrument that fires every tick may be working as designed
 
 Companion to the silent-zero class is the **always-loud** class. Drift watches, governance

@@ -20,6 +20,46 @@ Class-level skill. Trigger: the user wants a portable document, not a chat reply
    - Wrap markdown manually with a styled HTML template (recommended for design control).
    - Or `pandoc input.md -o output.html --standalone --metadata title="..."`.
 3. **Render PDF.** `weasyprint input.html output.pdf` — local, no API call, renders tables / emoji / unicode (✅ ❌ ⚠️ ·) cleanly. Engine is at `/usr/local/bin/weasyprint`.
+
+## Register whether the document is for reading or for showing — before you author
+
+The pipeline above lets you do either; the trap is choosing the wrong one and producing a document the user didn't ask for. Distinguish at intake:
+
+| Signal in the request | Track | Visual posture |
+|---|---|---|
+| "PDF biasa", "literature grade", "no fancy visual", "just for me to read", "deeper analysis", "dossier for myself" | **Plain typography** | A4 portrait, serif body (Georgia / Times), 10–11pt, light page background, gold rule separators, no gradient stat cards, no colored severity chips |
+| "PDF to impress", "pdf mode", "create a dossier for [third party]", "intelligence briefing", "dark theme", visual artifact needed | **Image-based pipeline** | A4 landscape, dark `#0a0a0f` background, gradient stat cards, RGB-coded severity, color-functional design (see `references/image-based-pdf-pipeline.md`) |
+
+The plain track is the default for anything reading-oriented. The image-based track earns its weight when a third party will leaf through it on the screen and the document needs to read as "research product" — a dark dossier signals to the recipient that the principal has a research team.
+
+**Pitfall:** skill defaults learned from fashion-mag-style past outputs can pull the agent toward the image-based track even when the user asked for the plain one. When in doubt, render plain first; the cost of a re-render to add visuals is small, the cost of a rejected "fancy" version is not.
+
+Plain-track CSS skeleton (copy-paste-ready):
+
+```css
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; @bottom-right { content: counter(page) " / " counter(pages); font-family: Helvetica, sans-serif; font-size: 9pt; color: #7a7a7a; } }
+body { font-family: Georgia, 'Times New Roman', serif; font-size: 10.5pt; line-height: 1.45; color: #1c1c1c; }
+h1 { font-family: Helvetica, sans-serif; font-size: 18pt; color: #0e0e0e; margin: 0 0 4mm 0; padding-bottom: 3mm; border-bottom: 1.5pt solid #a8884a; }
+h2 { font-family: Helvetica, sans-serif; font-size: 13pt; color: #0e0e0e; margin: 8mm 0 3mm 0; }
+h3 { font-family: Helvetica, sans-serif; font-size: 11pt; color: #5b5b5b; margin: 5mm 0 2mm 0; }
+p { margin: 0 0 2.5mm 0; text-align: justify; }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 4mm 0; font-size: 9.5pt; }
+th { background: #0e0e0e; color: #f5f1e8; padding: 1.5mm 2mm; text-align: left; font-family: Helvetica, sans-serif; font-weight: 700; }
+td { padding: 1.2mm 2mm; border-bottom: 0.5pt solid #d4d4d4; vertical-align: top; }
+tr:nth-child(even) td { background: #f5f1e8; }
+ul, ol { margin: 0 0 2.5mm 4mm; }
+li { margin-bottom: 1mm; }
+hr { border: 0; border-top: 0.5pt solid #c0c0c0; margin: 5mm 0; }
+code { background: #f5f1e8; padding: 0.4mm 1.2mm; font-family: Menlo, Consolas, monospace; font-size: 9pt; }
+blockquote { border-left: 3pt solid #a8884a; padding-left: 4mm; color: #5b5b5b; font-style: italic; margin: 2mm 0; }
+```
+
+Workflow:
+1. Author content as Markdown (one source of truth).
+2. `markdown.markdown(md, extensions=['tables','fenced_code'])` to convert.
+3. Wrap with the skeleton above in HTML.
+4. `HTML(string=full).write_pdf(out_pdf)`.
+5. Verify with `file out.pdf` returning `PDF document, version 1.7`.
 4. **Verify.** `file output.pdf` must return `PDF document, version 1.7`. If it returns `Unicode text`, start over from step 1 with the real content.
 5. **Layout QA without a vision lane.** When the active model has no native vision (or `vision_analyze` returns no transcript), verify layout programmatically instead of eyeballing screenshots: `pdfinfo <file>.pdf | grep -E 'Pages|Page size'` — page count must match the number of designed `.page` blocks (a mismatch = overflow spilled an extra page) — then `pdftotext -f N -l N <file>.pdf - | head` per page to confirm each section landed in order with no truncation. `pdftoppm` still works for pixel-render smoke checks but the text-layer check is the reliable gate.
 
