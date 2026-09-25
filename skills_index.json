@@ -13616,7 +13616,7 @@
       "dir": "/root/.kimi-code/skills/openclaw-init",
       "frontmatter": {
         "name": "openclaw-init",
-        "description": "OpenClaw-native /init — substrate primitive for the OpenClaw runtime. Establishes session, lane, atlas expression, and authority. Returns the full constitutional session card via OpenClaw's Telegram bot (@AGI_ASI_bot).",
+        "description": "OpenClaw-native /init — substrate primitive for the OpenClaw runtime. Establishes session, lane, atlas expression, and authority. Returns the full constitutional session card via OpenClaw's Telegram bot (@irfanclaw_arifos_bot).",
         "tags": "[constitutional, init, substrate-primitive, telegram-native, openclaw]",
         "license": "MIT"
       },

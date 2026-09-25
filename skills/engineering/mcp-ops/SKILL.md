@@ -14,7 +14,7 @@ aligned_to:
   - canonical MCP spec 2026-07-28 (stateless preferred) and 2025-11-25 (legacy handshake)
   - RFC 8414 (AS metadata) + RFC 8705 (PRM) + RFC 9728 (Protected Resource Metadata)
   - MCP-Protocol-Version header convention
-tags: [mcp, lifecycle, mcporter, fastmcp, probe, transport, wiring, conformance, mcpjam, governance, drift, compression, discovery, registry, apps, oauth, prm, sep, skills, build-with-agent-skills, fastmcp[tools], streamable-http, era-2026-07-28, era-2025-11-25]
+tags: ["mcp", "lifecycle", "mcporter", "fastmcp", "probe", "transport", "wiring", "conformance", "mcpjam", "governance", "drift", "compression", "discovery", "registry", "apps", "oauth", "prm", "sep", "skills", "build-with-agent-skills", "fastmcp[tools]", "streamable-http", "era-2026-07-28", "era-2025-11-25"]
 supersedes:
   - FORGE-mcp-ops
   - FORGE-mcp-federation-ops
@@ -115,10 +115,10 @@ triggers:
   - "MCP client build"
   - "MCP SDK"
 negative_triggers:
-  - "WEALTH MCP tools"            → wealth-mcp-ops (organ-bounded)
-  - "Runpod MCP"                   → runpod-mcp (platform lane)
-  - "TouchDesigner MCP"            → creative/touchdesigner-mcp (platform lane)
-  - "runtime MCP probe (one-shot)" → core/mcp/runtime-probe (focused instrument)
+  - "WEALTH MCP tools"  #            → wealth-mcp-ops (organ-bounded)
+  - "Runpod MCP"  #                   → runpod-mcp (platform lane)
+  - "TouchDesigner MCP"  #            → creative/touchdesigner-mcp (platform lane)
+  - "runtime MCP probe (one-shot)"  # → core/mcp/runtime-probe (focused instrument)
 ---
 
 # MCP Operations — one owner for the canonical MCP lifecycle

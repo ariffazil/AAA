@@ -2481,7 +2481,7 @@ skills:
     version: 0.0.0
     description: OpenClaw-native /init — substrate primitive for the OpenClaw runtime. Establishes
       session, lane, atlas expression, and authority. Returns the full constitutional session card
-      via OpenClaw's Telegram bot (@AGI_ASI_bot).
+      via OpenClaw's Telegram bot (@irfanclaw_arifos_bot).
     owner: AAA
     risk_tier: low
     status: active

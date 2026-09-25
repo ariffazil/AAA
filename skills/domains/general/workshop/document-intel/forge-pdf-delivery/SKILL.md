@@ -27,12 +27,14 @@ The pipeline above lets you do either; the trap is choosing the wrong one and pr
 
 | Signal in the request | Track | Visual posture |
 |---|---|---|
-| "PDF biasa", "literature grade", "no fancy visual", "just for me to read", "deeper analysis", "dossier for myself" | **Plain typography** | A4 portrait, serif body (Georgia / Times), 10–11pt, light page background, gold rule separators, no gradient stat cards, no colored severity chips |
+| "PDF biasa", "literature grade", "no fancy visual", "just for me to read", "deeper analysis", "dossier for myself", "Aku nak baca je", "no need fancy" | **Plain typography** | A4 portrait, serif body (Georgia / Times), 10–11pt, light page background, gold rule separators, no gradient stat cards, no colored severity chips |
 | "PDF to impress", "pdf mode", "create a dossier for [third party]", "intelligence briefing", "dark theme", visual artifact needed | **Image-based pipeline** | A4 landscape, dark `#0a0a0f` background, gradient stat cards, RGB-coded severity, color-functional design (see `references/image-based-pdf-pipeline.md`) |
 
 The plain track is the default for anything reading-oriented. The image-based track earns its weight when a third party will leaf through it on the screen and the document needs to read as "research product" — a dark dossier signals to the recipient that the principal has a research team.
 
-**Pitfall:** skill defaults learned from fashion-mag-style past outputs can pull the agent toward the image-based track even when the user asked for the plain one. When in doubt, render plain first; the cost of a re-render to add visuals is small, the cost of a rejected "fancy" version is not.
+**Pitfall:** skill defaults learned from fashion-mag-style past outputs can pull the agent toward the image-based track even when the user asked for the plain one. When in doubt, render plain first; the cost of a re-render to add visuals is small, the cost of a rejected "fancy" version is not. The user has been observed re-prompting with "No need fancy" after receiving an over-designed first pass — treat that re-prompt as a signal the plain track should have been picked at intake, not a refinement step.
+
+**The plain-track is a default, not a fallback.** A user who reads a lot of their own material wants the document to disappear as a container, not to be a designed artifact. Resist the temptation to add visual hierarchy markers, color-coded chips, gradient cards, or iconography to "make it look better" — the user is reading the words, not the design. The right test for "is this too designed?" is: if you removed all visuals and kept only text, would the document lose meaning? If no, the visuals are decoration.
 
 Plain-track CSS skeleton (copy-paste-ready):
 

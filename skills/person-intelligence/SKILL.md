@@ -10,10 +10,6 @@ merged_from:
   - public-profile-persona-mapping
 constitutional_floors: [F2, F4, F6, F7, F9, F13]
 triggers:
-  #
-capability_tier: fed-agent-subagent
-ecology_state: WARM
---- human-intelligence-gathering ---
   - "tell me about [person]"
   - "what does [person] want from me"
   - "profile [person]"
@@ -39,6 +35,10 @@ ecology_state: WARM
   - "bagi general laaaa"
   - sovereign sends an IG / TikTok / X screenshot and asks for persona analysis, Jungian shadow, or paradoxes
   - any request to read a public feed as evidence about the person behind it
+  #
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+# --- human-intelligence-gathering ---
 ---
 
 # Person Intelligence — Canonical Person/Dossier Lane

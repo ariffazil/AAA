@@ -75,6 +75,7 @@ defect it raised either fixed against the source or dismissed with a reason.
 - **A vision read is authoritative on space and unreliable on characters.** It reliably catches an orphaned row, overflow past a box, and an element present in the HTML but absent from the page; it will also report a typo the source does not contain, because small low-contrast letterspaced type is easy to misread. Confirm every reported defect against the source before patching — otherwise you edit a correct word and leave the real defect standing.
 - **Fixed-size page/slide divs under a non-zero `@page` margin split into two pages each** on the browser-print path. If the deck is built from fixed-height blocks rather than flowing content, check that the block fits the printable box before blaming the engine.
 - **Re-render and re-run the gates after every layout edit.** A change to one section's length moves every break below it; a gate run before the last edit certifies a document that no longer exists.
+- **Match the document to the reader's appetite, not to the content's length.** A user who responds "panjang aku pon x mau baca" to a 7-page brief wants the executive read, not the full argument. Ship the 1-page TLDR first, the long form behind a clear "full version" link. Two outputs from one source — same data, different densities. The dense version reads in 90 seconds; the long form lives behind a filename the reader opens only when they choose to.
 
 ## Proven
 

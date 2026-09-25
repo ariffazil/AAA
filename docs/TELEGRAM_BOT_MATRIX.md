@@ -16,7 +16,7 @@
 |-----|----------------|------|-------------|-------------|---------------|-------|----------|
 | **Hermes ASI** | `@ASI_arifos_bot` | Human bridge / NL encoder / gateway | `/telegram/webhook` | line 1022 | `:8444` | Hermes gateway (systemd) | Telegram Bot API → MCP |
 | **FORGE** | `@arifOS_bot` | Coding execution bridge | `/forge/webhook` | line 1018 | `:7071` | A-FORGE (systemd) | Telegram Bot API → forge_shell |
-| **OpenClaw AGI** | `@AGI_ASI_bot` | System ops / metabolizer / flow | `/telegram-webhook*` | line 2178 | `:8787` | OpenClaw gateway (systemd) | Telegram Bot API → A2A/flow |
+| **OpenClaw AGI** | `@irfanclaw_arifos_bot` | System ops / metabolizer / flow | `/telegram-webhook*` | line 2178 | `:8787` | OpenClaw gateway (systemd) | Telegram Bot API → A2A/flow |
 
 ## A2A Endpoints (Agent-to-Agent, NOT Telegram)
 
@@ -32,7 +32,7 @@
 |-----------------|-------------|----------|
 | DM `@ASI_arifos_bot` | Hermes ASI | General intent, research, Q&A, federation queries |
 | DM `@arifOS_bot` | FORGE | Code builds, deployments, debugging, git ops |
-| DM `@AGI_ASI_bot` | OpenClaw AGI | System status, federation health, flow monitoring |
+| DM `@irfanclaw_arifos_bot` | OpenClaw AGI | System status, federation health, flow monitoring |
 | Group (all 3) | Hermes is primary responder | Conversational — others react to explicit commands |
 
 ## Channel vs Protocol — The Iron Rule

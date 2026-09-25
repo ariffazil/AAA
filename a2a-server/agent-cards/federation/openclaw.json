@@ -4,7 +4,7 @@
   "protocolVersion": "1.2",
   "agentId": "openclaw",
   "name": "openclaw",
-  "description": "KVM4 Telegram guest @AGI_ASI_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
+  "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS Federation",
@@ -421,7 +421,7 @@
   "federation_metadata": {
     "fi": "FI-017",
     "runtime": "node",
-    "note": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
+    "note": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
     "source": "federation.yaml",
     "generated_by": "federation-a2a-sync.py",
     "host": "KVM4 (workshop, 100.64.0.5)",
@@ -824,6 +824,6 @@
     "quarantined": 48,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
-  "identity_bind": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
+  "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
   "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la"
 }

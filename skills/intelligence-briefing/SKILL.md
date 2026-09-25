@@ -12,10 +12,6 @@ merged_from:
   - political-intelligence-briefing
   - news-research-briefing
 triggers:
-  #
-capability_tier: fed-agent-subagent
-ecology_state: WARM
---- executive-intelligence-briefing ---
   - "news briefing"
   - "executive brief"
   - "weekly report"
@@ -90,6 +86,10 @@ ecology_state: WARM
   - "what do I need to know"
   - "tell me everything about"
   - "so what"
+  #
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+# --- executive-intelligence-briefing ---
 ---
 
 # Intelligence Briefing — Canonical Briefing Engine

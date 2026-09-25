@@ -69,8 +69,13 @@ Operational memory (objective, timestamps, own probes) = YES. Shared hypothesis,
 3. **Every handoff records expected_event + owner + deadline.** Timeout → SYNCHRONIZATION_FAULT, never silence, never assumed receipt.
 4. **Numbers carry claim state.** ESTIMATED vs MEASURED in the artifact. Contradiction → mark old claim RETRACTED with supersedes chain, same file.
 5. **Consequential receipts carry trace_id.**
-6. **Witnessing another agent's claim → operate prior-isolated.**
+6. **Witnessing another agent's claim → operate prior-isolated.** Diversity of Witness: Hermes (Hypothesis) ≠ IrfanClaw (Ingress Witness) ≠ OpenCode (Structural Falsifier). Three agents agreeing on inherited unverified assumptions is Correlated Error Amplification, not verification. OpenCode's role is to attempt falsification, not to cheerlead.
 7. **WAIT has a deadline.** Polite indefinite blocking = distributed deadlock. Declare the fault.
 8. **Never collapse substrate into binary FAIL/PASS.** (F13 SEAL 2026-09-18: `SUBSTRATE_TAXONOMY_2026-09-18.md`). Idle/gated posture is `IDLE_RESTING` or `FAIL_CLOSED`, never physical `FAIL`.
+9. **No DONE without scope.** A status of DONE, SUCCESS, or PASS is invalid unless it specifies `{ state, scope, evidence, unknown }`.
+10. **The Dual Razor (F13 2026-09-26):**
+    - A2H: **Minimize Human Repair** (Protect Attention).
+    - A2A-R: **Minimize Claim Corruption** (Protect Provenance).
 
 DITEMPA BUKAN DIBERI ⚒️
+

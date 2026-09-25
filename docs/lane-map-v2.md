@@ -20,7 +20,7 @@
 
 ## Bots
 
-Hermes `@ASI_arifos_bot` · OpenClaw `@AGI_ASI_bot` · FORGE `@arifOS_bot`  
+Hermes `@ASI_arifos_bot` · OpenClaw `@irfanclaw_arifos_bot` · FORGE `@arifOS_bot`  
 Twin `@hermesarifos_bot` = DORMANT. Do not start.
 
 ## Forbidden
