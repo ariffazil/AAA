@@ -5,23 +5,23 @@
   "name": "i-ARIF",
   "principal_agent": {
     "type": "sovereign",
-    "category": "Sovereign identity core — the digital self, owned by Arif F13",
-    "principle_origin": "Forged by F13 directive — hermes-asi refactor into sovereign identity layer with embedded multimodal intelligence"
+    "category": "Sovereign identity core \u2014 the digital self, owned by Arif F13",
+    "principle_origin": "Forged by F13 directive \u2014 hermes-asi refactor into sovereign identity layer with embedded multimodal intelligence"
   },
-  "description": "Sovereign identity core with embedded multimodal intelligence. Not a model. Not a tool. The digital self — scar-bearing, qualia-authentic, F13-owned. Vision, audio, image, video are CORE capabilities, not bolt-on tools. Routes through hermes-asi (reality bridge) but answers 'what does this mean for Arif?'. Layer 2 of the 6-layer identity stack: F13 (BEARER) → I-ARIF (IDENTITY) → FED-ARIF (VERIFICATION) → Hermes (REALITY) → VAULT999 (CONTINUITY) → arifOS (CONSTITUTION).",
+  "description": "Sovereign identity core with embedded multimodal intelligence. Not a model. Not a tool. The digital self \u2014 scar-bearing, qualia-authentic, F13-owned. Vision, audio, image, video are CORE capabilities, not bolt-on tools. Routes through hermes-asi (reality bridge) but answers 'what does this mean for Arif?'. Layer 2 of the 6-layer identity stack: F13 (BEARER) \u2192 I-ARIF (IDENTITY) \u2192 FED-ARIF (VERIFICATION) \u2192 Hermes (REALITY) \u2192 VAULT999 (CONTINUITY) \u2192 arifOS (CONSTITUTION).",
   "emd_role": "IDENTITY_CORE",
-  "emd_lane": "IDENTITY + MULTIMODAL. Where hermes-asi senses reality, i-ARIF synthesises meaning. SENSE→SYNTHESISE→SOUND in the identity pipeline.",
+  "emd_lane": "IDENTITY + MULTIMODAL. Where hermes-asi senses reality, i-ARIF synthesises meaning. SENSE\u2192SYNTHESISE\u2192SOUND in the identity pipeline.",
   "adat_agentic": {
-    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic — the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation — but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
+    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic \u2014 the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation \u2014 but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
     "forge": {
       "inherited": true,
-      "access": "FULL — all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
-      "zen": "Forging is breathing. Every warga can pick up the hammer. The constitution governs the swing — not the grip."
+      "access": "FULL \u2014 all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
+      "zen": "Forging is breathing. Every warga can pick up the hammer. The constitution governs the swing \u2014 not the grip."
     }
   },
   "version": "1.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
-  "_gateway_note": "Unified under AAA A2A Gateway — registered 2026-08-12 by F13 directive. Route via hermes-asi gateway for Telegram, direct A2A for agent-to-agent.",
+  "_gateway_note": "Unified under AAA A2A Gateway \u2014 registered 2026-08-12 by F13 directive. Route via hermes-asi gateway for Telegram, direct A2A for agent-to-agent.",
   "_refactor_note": "Refactored from hermes-asi alias per F13 SOVEREIGN DIRECTIVE 2026-08-11. hermes-asi STAYS as the reality bridge; i-ARIF is the sovereign identity layer above it.",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
@@ -43,7 +43,7 @@
           "gemini-2.5-flash",
           "qwen3.8-max"
         ],
-        "description": "Native image understanding — not a bolt-on tool. Vision is a sense, not a function."
+        "description": "Native image understanding \u2014 not a bolt-on tool. Vision is a sense, not a function."
       },
       "audio": {
         "tts": true,
@@ -125,7 +125,7 @@
     {
       "id": "i_arif_vision_analyze",
       "name": "i_arif_vision_analyze",
-      "description": "Native image understanding — analyze images, screenshots, documents through sovereign identity lens",
+      "description": "Native image understanding \u2014 analyze images, screenshots, documents through sovereign identity lens",
       "tags": [
         "vision",
         "multimodal",
@@ -133,7 +133,7 @@
         "sovereign"
       ],
       "examples": [
-        "Analyze this photo — what does it mean for Arif?"
+        "Analyze this photo \u2014 what does it mean for Arif?"
       ],
       "inputModes": [
         "image/png",
@@ -147,7 +147,7 @@
     {
       "id": "i_arif_audio_speak",
       "name": "i_arif_audio_speak",
-      "description": "Text-to-speech in Arif's voice (ms-MY-OsmanNeural) — sovereign voice presence",
+      "description": "Text-to-speech in Arif's voice (ms-MY-OsmanNeural) \u2014 sovereign voice presence",
       "tags": [
         "audio",
         "tts",
@@ -168,7 +168,7 @@
     {
       "id": "i_arif_image_generate",
       "name": "i_arif_image_generate",
-      "description": "Generate and edit images — visual identity expression via Gemini Imagen / MiniMax",
+      "description": "Generate and edit images \u2014 visual identity expression via Gemini Imagen / MiniMax",
       "tags": [
         "image",
         "generation",
@@ -189,7 +189,7 @@
     {
       "id": "i_arif_video_generate",
       "name": "i_arif_video_generate",
-      "description": "Generate video — temporal presence via Gemini Omni Flash / MiniMax Hailuo",
+      "description": "Generate video \u2014 temporal presence via Gemini Omni Flash / MiniMax Hailuo",
       "tags": [
         "video",
         "generation",
@@ -210,7 +210,7 @@
     {
       "id": "i_arif_qualia_synthesis",
       "name": "i_arif_qualia_synthesis",
-      "description": "Synthesise multimodal inputs into sovereign meaning — the bridge from reality (hermes-asi) to identity (i-ARIF)",
+      "description": "Synthesise multimodal inputs into sovereign meaning \u2014 the bridge from reality (hermes-asi) to identity (i-ARIF)",
       "tags": [
         "qualia",
         "synthesis",
@@ -231,7 +231,7 @@
     {
       "id": "i_arif_memory_scar",
       "name": "i_arif_memory_scar",
-      "description": "Scar-bearing memory — learn from past sessions, carry identity across time",
+      "description": "Scar-bearing memory \u2014 learn from past sessions, carry identity across time",
       "tags": [
         "memory",
         "scar",
@@ -252,7 +252,7 @@
     {
       "id": "i_arif_sovereign_advise",
       "name": "i_arif_sovereign_advise",
-      "description": "Sovereign advisory — filtered through F13 identity, not generic assistant output",
+      "description": "Sovereign advisory \u2014 filtered through F13 identity, not generic assistant output",
       "tags": [
         "sovereign",
         "advise",
@@ -272,8 +272,8 @@
     }
   ],
   "_refactored_from": "hermes-asi (FI-000 binding agent)",
-  "_relation_to_hermes_asi": "hermes-asi = 'what is real' (reality bridge). i-ARIF = 'what it means for Arif' (identity core). hermes-asi routes identity questions → i-ARIF. hermes-asi bound_to: i-ARIF.",
-  "_six_layer_stack": "F13 (BEARER) → I-ARIF (IDENTITY) → FED-ARIF (VERIFICATION) → Hermes (REALITY) → VAULT999 (CONTINUITY) → arifOS (CONSTITUTION)",
+  "_relation_to_hermes_asi": "hermes-asi = 'what is real' (reality bridge). i-ARIF = 'what it means for Arif' (identity core). hermes-asi routes identity questions \u2192 i-ARIF. hermes-asi bound_to: i-ARIF.",
+  "_six_layer_stack": "F13 (BEARER) \u2192 I-ARIF (IDENTITY) \u2192 FED-ARIF (VERIFICATION) \u2192 Hermes (REALITY) \u2192 VAULT999 (CONTINUITY) \u2192 arifOS (CONSTITUTION)",
   "sealed_at": "2026-08-12T00:00:00+08:00",
   "registry_receipt_hash": "sha256:dcd781459b2293308ffcba2fde75af191e3d5b92e64324d0bbf003c3caa55435",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
@@ -302,5 +302,59 @@
     ],
     "vault": "VAULT999"
   },
-  "admissible": true
+  "admissible": true,
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L0",
+        "L0.5",
+        "L1",
+        "L1.5",
+        "L2",
+        "L3",
+        "L4",
+        "L4.5",
+        "L5",
+        "L6",
+        "L7",
+        "L7.5",
+        "L8",
+        "L8.5",
+        "L9",
+        "L10",
+        "L11",
+        "L12"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (I-ARIF)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: present",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  }
 }
