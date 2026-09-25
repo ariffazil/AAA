@@ -311,6 +311,7 @@ An external review of "what the agent said" samples one session from many. Match
 
 Archived session archaeology and detailed worked examples in `references/`:
 - `references/archive-session-specific-audits.md` — Reader-dormancy, hash-chain, invariant-preservation, env-wiring, agent-card alignment, cross-witness session, autonomous deployment, code-edit receipt, cron telemetry, and unification receipt worked examples
+- `references/hermes-mcp-self-schema-drift-2026-09-25.md` — Three classes of single-surface MCP drift (resource description vs content, detector silent input loss, schema/validator mismatch) with the probe order that surfaces all three
 - `references/reality-first-gap-repair-receipt.md` — Receipt shape for sealing a multi-gap repair on a running cron/organ. Five-question format; anti-patterns.
 - `references/readiness-cockpit-receipt.md` — Hermes *self-readiness* pattern: when an audit target is the agent itself, swap narration for live probes + SHA-sealed JSON artifact + grounded verdict band.
 
@@ -327,6 +328,7 @@ When the audit target is **the agent or system that will produce the audit reply
 ### Pitfalls specific to self-audit
 
 - **Multi-tool batch only works for connector tools.** Local tools (`terminal`, `patch`, `read_file`, etc.) and any mixed batch with both local and connector tools are **rejected at runtime**. Serialize local calls; batch only connectors when the target tool description confirms the batch is supported.
+- **`tool_call` runtime behaves as one-entry-per-call even for connector-only batches.** When invoking MCP tools through the deferred `tool_call` interface, a batch of multiple `mcp__*` entries fails with `Local tools require one entry per tool_call; mixed and multi-local batches are not supported.` — even when every entry is a connector. The schema permits batching; the runtime does not honour it. Probe the connector tool description for batch support BEFORE serialising calls in a loop, or budget for one call per turn and surface the cost in the deliverable. Three retries with the same payload will not unstick it — split the batch.
 - **A blocked-by-design probe is a passing finding.** If a Postgres MCP returns `DB_PASSWORD required`, that is the boundary enforcing correctly. Report state=`GATED-CORRECTLY` and evidence_class=`boundary_test`, not `DOWN`.
 - **Status fields can lie about enforcement.** A green `/health` does not prove enforcement (see `live-system-investigation` §"the inverse shape"). For governance claims, demand a deliberate negative test (`A3 action without F13 → must HOLD`); absence of the test is the gap, not absence of enforcement.
 - **Disabled ≠ defective, but disabled needs declared rationale.** Each disabled surface must carry owner, rationale, compensating control, risk-acceptance date, and re-enable runbook. Empty disabled surfaces are silent governance debt.

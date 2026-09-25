@@ -185,6 +185,11 @@ MCP tool names are prefixed `chron_` — `chron_create_event`, `chron_generate_p
 `chron_store_stats`, `chron_temporal_briefing`, `chron_attention_debt`.
 JSON shapes for both stores: `references/event-and-prediction-schema.md`.
 
+**Time-dimensions vocabulary:** Chronos (sequential), Kairos (opportune), Aion (deep-time),
+Telos (terminal) — each maps onto a CHRON construct; do not collapse them. See
+`references/four-time-dimensions.md` for the lens and the four-check gate
+(`Chronos ∧ Kairos ∧ Aion ∧ Telos` → legitimate; any failing → HOLD).
+
 ## Pitfalls
 
 - **Run the CLI as a module from the repo root, with `PYTHONPATH` set.** The package imports itself

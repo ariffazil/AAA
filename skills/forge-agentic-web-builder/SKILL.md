@@ -252,7 +252,57 @@ GREEN: parsers, converters, disposable analysis. RED never self-grant: secrets, 
 - ❌ Fixing CDN stale by hand-editing live tree instead of fixing Caddy config — the Caddy config IS the source of truth
 ---
 
-## OP 8 — PREVIEW BATCHES FOR SOVEREIGN REVIEW (2026-09-18)
+## OP 9 — SURGICAL SPA PAGE UPDATE (no Caddy reload)
+
+When the change is a single React page inside the arif-fazil.com SPA (e.g. a commodity terminal, a markdown article renderer, a state-machine visualisation), do NOT run `make deploy`. Caddy is irrelevant — the page is JS-routed, not server-routed. Surgical patch path:
+
+**Source of truth:** `/root/arif-fazil.com/sites/arif-fazil.com/src/pages/<Page>.tsx`
+**Built shell:** `/root/arif-fazil.com/sites/arif-fazil.com/dist/index.html` + `dist/assets/`
+**Live webroot:** `/var/www/html/arif/index.html` + `assets/`
+**Caddy handler:** `@spa_routes` in `/etc/caddy/vhosts/arif-fazil.com.conf` line ~2313 — fallthrough to `/var/www/html/arif/index.html` for any SPA route (incl. `/world/economics/gold/`, `/oil/`, `/gas/`, `/klci/`).
+
+Sequence:
+
+1. **Backup before edit** — `cp -a src/pages/<Page>.tsx src/pages/<Page>.tsx.bak-<reason>` (skill-internal; not a git commit until verified).
+2. **Edit the .tsx** — the build will tree-shake unused symbols, so unused-variable warnings are noise; function-level errors block the build.
+3. **Build only the SPA** (skip `make deploy`, skip Caddy):
+   ```bash
+   cd /root/arif-fazil.com/sites/arif-fazil.com && npm run build
+   ```
+   The build prints the new chunk hash, e.g. `CommodityPage-BcuuLmdL.js`. Note it.
+4. **Sync to live webroot WITHOUT triggering Caddy reload:**
+   ```bash
+   rsync -av --update /root/arif-fazil.com/sites/arif-fazil.com/dist/index.html /var/www/html/arif/index.html
+   rsync -av --update --delete /root/arif-fazil.com/sites/arif-fazil.com/dist/assets/ /var/www/html/arif/assets/
+   ```
+   `--update` on `index.html` keeps other content untouched; `--delete` is safe on `assets/` because the directory is owned by the build (no orphan pages live there).
+5. **Verify by content signature, not by status code.** SPA soft-404 trap:
+   ```bash
+   curl -s https://arif-fazil.com/assets/<NewChunkHash>.js | grep -c '<distinctive-new-string>'
+   ```
+   A zero count means Cloudflare is serving a stale chunk or your build never landed. The new chunk hash must appear in the live assets.
+6. **Cloudflare caveat:** the SPA shell returns `cf-cache-status: DYNAMIC` but asset chunks may linger on the edge for the TTL (typically 4 hours). Verify by content signature, not by chunk filename appearance.
+
+**Why this beats `make deploy`:** no Caddy reload, no other pages touched, ~10-second cycle. A full `make deploy` reloads Caddy (T3 HOLD unless named) and triggers AAron-of-the-Cascade risk on unrelated handlers.
+
+### Patch-from-stale-page (the trap that costs 30 minutes)
+
+If you only update `/var/www/html/arif/assets/` and forget `/var/www/html/arif/index.html`, browsers cache the old SPA shell and the new chunk is never requested. **Always update both.** Verify both:
+```bash
+stat -c '%y %n' /var/www/html/arif/index.html /var/www/html/arif/assets/<NewChunkHash>.js
+```
+Both timestamps must be in this session.
+
+### Live-data commodity page pattern
+
+For pages that display live API data with static fallback (gold/oil/gas/klci/usdmyr):
+- Type the live API response (e.g. `TickerLive`, `ApexLive` in the React file).
+- Replace each hardcoded display value with `liveValue ?? staticFallback`.
+- Add `useEffect` with `setInterval(fetchLive, 60000)` and `clearInterval` cleanup on unmount.
+- Display a "last updated HH:MM:SS" timestamp + "AWAITING DATA" until the first fetch resolves.
+- Live fallback must be invisible: the page should look identical whether live or static until the live data arrives.
+
+Full recipe and idioms: see `references/live-data-commodity-pages.md`.
 
 When F13 asks for a visual change and wants to *see* it before any deploy:
 
