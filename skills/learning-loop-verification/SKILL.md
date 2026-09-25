@@ -37,6 +37,46 @@ Report closure **per hop**, not as one verdict. A pipeline that is producer-open
 consumer-broken and measurement-blind is not "50% working" — it is three separate
 findings with three separate owners.
 
+## The institutional loop, with the governance gate between consequence and adaptation
+
+When the subject is **institutional learning** (not just system logging), the loop has a
+governance gate between Consequence and Adaptation that is easy to skip. The full chain:
+
+```
+Reality → Witness → Consequence → Governance → Adaptation
+                       ↑                ↓            ↓
+                  scar_weight     governance_gate   institutional_intelligence
+                  threshold       (5 checks)
+```
+
+A consequence that becomes an adaptation **without** the governance gate is chaos, not
+learning — banks lose money (consequence) and repeat mistakes (no governance → no policy
+change → no adaptation). Audit verdict `LEARNED` requires the gate to have fired and passed.
+
+The five governance-gate checks, in this order:
+
+1. **warrant** — the adaptation request carries an explicit verifier
+   (`arifOS.judge` if `scar_weight >= 0.85`, else `self`)
+2. **scope** — adaptation scope ⊆ authority envelope (no out-of-scope mutation)
+3. **issuer** — adaptation issuer has authority to change policy in scope
+4. **effective** — `effective_from` is in the future (no retroactive history rewrite)
+5. **witness** — `witnessed_by` is non-empty (someone saw the change happen)
+
+A consequence with `scar_weight >= 0.6` and `must_trigger_adaptation = True` but a failed
+gate is recorded as **HOLD** — adaptation does NOT proceed, but the consequence is preserved
+for the next audit cycle. Silent drop is the failure mode the gate exists to prevent.
+
+When auditing a system that claims "we learned from X", the test is:
+
+1. Was there a Consequence record for X?
+2. Did it cross the governance gate (all 5 checks pass)?
+3. Was an AdaptationRecord written with `governance_gate_passed: True`?
+4. Does the AdaptationRecord reference the same trace_id as the Consequence?
+5. Is `effective: True` and verified by an independent witness chain?
+
+Five yes/no answers. Any "no" → loop not closed at the governance hop, regardless of how
+many Consequence or Adaptation records exist.
+
 ## The hops
 
 | # | Hop | Question | Receipt |
@@ -159,6 +199,16 @@ judgment, write-back — and the defect usually surfaces where you were not look
 - **Skill count is not capability.** Learning that only ever appends artifacts grows the
   surface without changing behaviour. Ask what the *next* decision does differently; with
   no answer, the loop recorded experience without compressing it.
+
+- **A probe that searches for a literal token misses patches that import the same functionality
+  under a different name.** When `grep` for `channel_aliases` (or any specific symbol) returns
+  zero hits but the live behavior clearly uses that capability, the patch may have arrived via
+  a nested import (`from gateway.channel_directory import _aliases_path, _load_json_dict`) rather
+  than a literal reference. The fix is to probe for the *behavior* — call the function and read
+  its output, or grep for the call signature with a wildcard — before declaring "the feature is
+  absent." A patch that is `EDITED` on disk but never matches the literal token in grep is the
+  same defect class as a `mtime` shift without behavior change: the file changed, the runtime
+  may not have, and the audit's "absent" verdict is a measurement error, not a finding.
 - **Check the closure ledger's own recency, not merely its existence.** Count the rows at
   each hop (decision → contract → mutation → observation) and take `max(timestamp)` per hop.
   An apparatus with rows whose newest is weeks old is a loop that stopped, and it is
@@ -204,7 +254,6 @@ judgment, write-back — and the defect usually surfaces where you were not look
 
 - **Every completed verification needs a terminal explanation.** A record that has reached the
   verified state must resolve to `LESSON_CREATED` *or* to an evidence-backed `NO_LESSON_REASON`
-  (`NO_MEANINGFUL_SURPRISE`, `BELOW_LEARNING_THRESHOLD`, `MISSING_REQUIRED_FIELDS`,
   `EXTRACTOR_NOT_INVOKED`, `POLICY_INTENTIONALLY_SUPPRESSED`, `OTHER_MEASURED_CAUSE`). Verified
   outcomes sitting beside zero lessons is an unexplained gap, not evidence the loop is young — "not
   mature yet" stops being a reason the moment a record is verified. The invariant to enforce is

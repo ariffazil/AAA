@@ -1,6 +1,6 @@
 ---
 name: find-live-binary-before-engine-mutation
-description: Use when modifying any forecast engine, ML model serving code, or computational backend in the arifOS federation. Multi-source-of-truth failure (modifying audit replicas or source copies while leaving the live binary untouched) is the canonical mistake — calibration looks like it improved, but production output is unchanged. Procedure: identify the live systemd service, locate its canonical script path, mutate THAT, restart, verify before claiming success.
+description: "Use when modifying any forecast engine, ML model serving code, or computational backend in the arifOS federation. Multi-source-of-truth failure (modifying audit replicas or source copies while leaving the live binary untouched) is the canonical mistake — calibration looks like it improved, but production output is unchanged. Procedure: identify the live systemd service, locate its canonical script path, mutate THAT, restart, verify before claiming success."
 trigger: engine mutation, modify forecast, edit fetch_*.py, calibration didn't improve, live API unchanged, production forecast, cone engine, model server, WEALTH backend, forecast orchestrator
 ---
 

@@ -119,7 +119,7 @@ Session:      <session_id>
 Lane:         555-ASI (Ω CORE)
 Runtime:      OpenClaw (Node.js gateway :18789)
 Phenotype:    Gateway Thinker
-Bot:          @AGI_ASI_bot
+Bot:          @irfanclaw_arifos_bot
 ─────────────────────────────
 Atlas Expression:
   Primary:    333 THINK, 444 ORCHESTRATE

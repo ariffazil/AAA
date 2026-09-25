@@ -8,7 +8,7 @@ risk_tier: low
 floor_scope: [F1, F2, F11]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
-last_operational_bake: 2026-09-22 (session bridge: 3-lane + dual-collection + parallel migration)
+last_operational_bake: "2026-09-22 (session bridge: 3-lane + dual-collection + parallel migration)"
 ---
 
 # Witness Semantic Recall — 3-lane federation canon search
