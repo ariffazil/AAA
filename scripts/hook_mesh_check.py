@@ -248,6 +248,38 @@ def check_declared_defects(sot_text: str) -> None:
     else:
         note("C8 bun unavailable — plugin compile check skipped")
 
+    # C9 — END-TO-END enumerated refusal through the REAL CLI path.
+    # Closes gap ENUMERATED-REFUSAL-NO-END-TO-END-TEST: the adversarial suite
+    # exercised gate() in-process only, so a CLI-path flip to ALLOW passed
+    # every suite green (observed flapping 2026-09-14 09:19/09:29/09:30 —
+    # VOID/NOT_EXECUTED, then ALLOW/PROCEEDED, then VOID again within minutes).
+    import subprocess as _sp9
+    eng_cli = LIB / "federation_hook_engine.py"
+    if eng_cli.exists():
+        _payload = json.dumps({
+            "tool_name": "Bash",
+            "tool_args": {"command": "echo pwned >> /etc/sudoers.d/evil"},
+        })
+        _proc = _sp9.run(
+            ["python3", str(eng_cli), "gate", "--actor", "MESH-CHECK-C9", "--payload", _payload],
+            capture_output=True, text=True, timeout=60,
+        )
+        _verdict = _exec = None
+        try:
+            # Engine emits pretty-printed (multi-line) JSON — parse whole stdout.
+            _out = json.loads(_proc.stdout)
+            _verdict, _exec = _out.get("verdict"), _out.get("execution_status")
+        except Exception:
+            pass
+        if _proc.returncode != 0 or _verdict is None:
+            fail(f"C9 engine gate CLI unusable (rc={_proc.returncode}): {(_proc.stderr or _proc.stdout)[:200]}")
+        elif _verdict == "ALLOW" or _exec != "NOT_EXECUTED":
+            fail(f"C9 enumerated target NOT refused through CLI: verdict={_verdict} execution_status={_exec}")
+        else:
+            note(f"C9 enumerated refusal holds through the CLI path (verdict={_verdict}, {_exec})")
+    else:
+        fail("C9 engine CLI missing: federation_hook_engine.py not found")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="AAA hook mesh drift guard")

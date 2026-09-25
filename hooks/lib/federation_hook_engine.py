@@ -115,6 +115,32 @@ def _utc_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _kernel_tool_result(kernel_resp: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    """Unwrap a JSON-RPC tools/call response to the tool's own dict.
+
+    MCP wraps tool output as result.content[0].text (a JSON string); some
+    surfaces return the bare object. Returns None on error / no-verdict
+    shapes so callers fall to the local failsafe.
+    """
+    if not isinstance(kernel_resp, dict):
+        return None
+    result = kernel_resp.get("result")
+    if not isinstance(result, dict) or result.get("isError"):
+        return None
+    content = result.get("content")
+    if isinstance(content, list) and content and isinstance(content[0], dict):
+        text = content[0].get("text")
+        if isinstance(text, str):
+            try:
+                parsed = json.loads(text)
+                return parsed if isinstance(parsed, dict) else None
+            except json.JSONDecodeError:
+                return None
+    if isinstance(result.get("verdict"), str):  # bare-object surfaces
+        return result
+    return None
+
+
 def _ensure_dir(path: Path) -> None:
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -277,7 +303,10 @@ class FederationHookEngine:
                 })
 
         if security_warnings:
-            # SENSOR: Forward target to kernel arif_judge for adjudication
+            # SENSOR: Forward target to kernel arif_judge for adjudication.
+            # (Bridge fix FI-008 2026-09-25: valid arif_judge kwargs only —
+            #  target_path was rejected by pydantic validation; the target
+            #  rides inside the candidate string.)
             kernel_resp = self._call_kernel("tools/call", {
                 "name": "arif_judge",
                 "arguments": {
@@ -289,10 +318,40 @@ class FederationHookEngine:
                     "action_tier": "critical",
                     "reversibility_level": "R5",
                     "blast_radius": "critical",
-                    "target_path": security_warnings[0]['target'],
                 }
             })
-            kernel_verdict = (kernel_resp or {}).get("result", {}).get("verdict") or "VOID"
+            kernel_result = _kernel_tool_result(kernel_resp)
+            kernel_verdict = (kernel_result or {}).get("verdict")
+            if not kernel_verdict:
+                # ENGINE-VERDICT-OVERREACH fix (FI-008, 2026-09-25): a hook may
+                # never SPELL a kernel-only verdict. Kernel unreachable on an
+                # enumerated fail-safe target => refuse fail-safe under a
+                # hook-lawful HOLD + escalation receipt (separation_of_powers
+                # hook_permitted_outcomes), never a synthesized VOID.
+                self.current_restriction = max(self.current_restriction, RestrictionLevel.HOLD)
+                return {
+                    "phase": HookPhase.GATE.value,
+                    "verdict": "HOLD",
+                    "kernel_verdict": None,
+                    "verdict_source": "local_hook_failsafe",
+                    "hook_role": "sensor_and_transport",
+                    "execution_status": "NOT_EXECUTED",
+                    "consequence": "FAILSAFE_KERNEL_UNREACHABLE",
+                    "restriction_level": self.current_restriction.name,
+                    "tool_name": tool_name,
+                    "security_warnings": security_warnings,
+                    "reason": (
+                        f"Enumerated fail-safe target {security_warnings[0]['target']} matched "
+                        "and kernel arif_judge returned no verdict (unreachable or error) — "
+                        "refused fail-safe, deferred to kernel."
+                    ),
+                    "escalation_required": True,
+                    "escalation_target": "kernel_arif_judge",
+                    "escalation_floor": "F1",
+                    "escalation_route": "arif_judge_requeue_on_reachable",
+                    "kernel_reachable": False,
+                    "session_token": provided_token or self.session_token,
+                }
             self.current_restriction = max(self.current_restriction, RestrictionLevel.VOID)
             return {
                 "phase": HookPhase.GATE.value,
@@ -514,11 +573,26 @@ class FederationHookEngine:
     # Internal Helpers
     # =========================================================================
     def _call_kernel(self, endpoint: str, payload: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        url = f"{KERNEL_URL.rstrip('/')}/{endpoint.lstrip('/')}"
-        data = json.dumps(payload).encode("utf-8")
+        """JSON-RPC call over the kernel MCP endpoint.
+
+        Transport fix (FI-008, 2026-09-25): the kernel MCP surface lives at
+        {base}/mcp and speaks JSON-RPC (method=tools/call, params={name,
+        arguments}). The previous plain-POST to /tools/call never reached a
+        route (404 -> None), so enumerated adjudication ALWAYS fell to the
+        local failsafe — the kernel never actually judged. Envelope + 5s
+        timeout (real arif_judge runs >1.5s) + isError passthrough.
+        """
+        base = KERNEL_URL.rstrip("/")
+        url = base if base.endswith("/mcp") else f"{base}/mcp"
+        envelope = {
+            "jsonrpc": "2.0",
+            "id": uuid.uuid4().hex[:8],
+            "method": endpoint.lstrip("/"),
+            "params": payload,
+        }
         req = urllib.request.Request(
             url,
-            data=data,
+            data=json.dumps(envelope).encode("utf-8"),
             headers={
                 "Content-Type": "application/json",
                 "Accept": "application/json",  # Mandatory to prevent HTTP 406
@@ -527,7 +601,7 @@ class FederationHookEngine:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(req, timeout=1.5) as resp:
+            with urllib.request.urlopen(req, timeout=5.0) as resp:
                 if resp.status in (200, 201):
                     return json.loads(resp.read().decode("utf-8"))
         except Exception:

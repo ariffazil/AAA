@@ -1,0 +1,80 @@
+# ═══════════════════════════════════════════════════════════════════
+# arif-core — Federation Plugin SOT (single source, N compiled views)
+# ═══════════════════════════════════════════════════════════════════
+# Law:
+#   FP-01  This file is the SOT. dist/* views are BUILD ARTIFACTS —
+#          never hand-edit a view; rebuild instead.
+#   FP-02  Hooks are sensors, not judges. Enforcement = kernel
+#          (forge_shell/ArifJudge/mcp_guard). Hook policy: advisory.
+#   FP-03  Skills are referenced, never copied. /root/AAA/skills stays
+#          canonical; views carry one pointer skill, zero mirror noise.
+#   FP-04  Coverage per harness is declared honestly (FULL/DEGRADED/
+#          ABSENT) — an unenforceable invariant is labeled, never assumed.
+#   FP-05  Install/sync per harness = EXPLICIT forge step only.
+#          AAA writes SOT; never auto-syncs picker configs (F13 pen).
+#   FP-06  Every build emits a receipt: sot_sha256, trace_id, view list.
+#   FP-07  Organ endpoints resolve from /root/AAA/federation/organs.yaml
+#          at BUILD time — no hardcoded ports anywhere in views.
+# ═══════════════════════════════════════════════════════════════════
+
+plugin:
+  name: arif-core
+  version: 0.1.0
+  display_name: "arif-core · AAA Federation"
+  description: >
+    arifOS federation runtime wiring for coding harnesses: hook-mesh
+    sensors, organ MCP surfaces, and canonical skill pointers. Packaging
+    layer only — all capability lives in the substrate (arifOS kernel,
+    A-FORGE, CHRON, arifFlow, WELL).
+  author:
+    name: Muhammad Arif bin Fazil (F13 SOVEREIGN)
+    email: arif@arif-fazil.com
+    url: https://arif-fazil.com
+  interface:
+    category: Productivity
+    capabilities: [Interactive, Write]   # honest: hooks write receipts
+    default_prompt: >
+      Initialize federation session: bind actor via kernel, load
+      carry-forward, probe organ health, then work under F1-F13.
+
+sot:
+  owner: AAA
+  organs_sot: /root/AAA/federation/organs.yaml
+  skills_sot: /root/AAA/skills
+  hook_engine: /root/AAA/hooks/lib/federation_hook_engine.py
+  event_schema: aaa.hook-event.v1
+
+# Canonical hook bindings. Each binds a canonical lifecycle event to the
+# mesh sensor shim of the target harness. advisory_only is constitutional.
+hooks:
+  - canonical: aaa.session.opened      # sensor: snapshot + evidence open
+    advisory_only: true
+  - canonical: aaa.turn.received       # sensor: intent provenance
+    advisory_only: true
+  - canonical: aaa.action.proposed     # sensor: mutation attempt observed
+    advisory_only: true
+    enforce_note: kernel-only enforcement (FP-02)
+  - canonical: aaa.action.completed    # sensor: receipt emitted
+    advisory_only: true
+  - canonical: aaa.session.sealing     # sensor: close evidence
+    advisory_only: true
+
+authority:
+  model: authority_envelope_12f
+  issuer: arifos-kernel                # issuer ≠ executor, always
+  hook_policy: advisory_sensors_kernel_enforces
+
+distribution:
+  marketplace: local_only_first        # sha-pin before any remote (I-05)
+  sync_policy: explicit_forge_step_only
+
+targets:
+  codex:
+    status: emitted                    # view built; install = forge step
+    adapter: /root/AAA/hooks/adapters/codex
+  qwen:
+    status: emitted
+    adapter: /root/AAA/hooks/adapters/qwen
+  claude:
+    status: existing_surface           # claude-code-federation already serves
+    note: upgrade path = repoint its hooks at the mesh; not rebuilt here
