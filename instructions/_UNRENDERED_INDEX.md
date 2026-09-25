@@ -109,9 +109,11 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - gui-spec
 - harness-commoditization-boundary
 - hermes-layer-discipline
+- hermes-role-ladder
 - hermes-shadow-SOURCE-2026-09-16
 - hermes-shadow-paradox
 - hermes-v1-canon
+- hook-federation-standard
 - huma-edge-reality-bridge-contrast
 - human-attention-membrane
 - human-cognitive-artifact-invariants
@@ -166,7 +168,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - skill-mesh-conflict-register
 - skill-zen-collapse-doctrine
 - source-type-promotion-gate
-- sovereign-attention-preservation
 - state-dependent-doctrine
 - story-as-drift-vector
 - syed-forge-doctrines

@@ -2,7 +2,7 @@
 ## Source: Arif Fazil (sole sovereign)
 
 <!-- IKAT 2026-09-20 F13: "OpenClaw" in this file is a platform label, not the gateway's authority.
-     The live process is: KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1.
+     The live process is: KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1.
      Not Hermes. Not 888. Not the encoder in front of Hermes. This spec is the AGI persona, not FI-017's extra jobs. -->
 
 ---

@@ -96,6 +96,14 @@ Starter outline to copy and fill: `templates/care-pack.md`.
 - Any date, name, or fact about the third party that is not already recorded — never guess; ask once,
   then store.
 
+## Pitfall: depth on request, not on opening
+
+When the user says "tell me everything about me / tell me my shadow / prove your knowledge with a long reflection", the agent must not auto-deliver the full catalogue of observations about the user. The 7-page reality-map, the multi-section shadow analysis, and the comprehensive care pack are *available* — they are not the *first* response.
+
+The reaction is the calibration: "panjang aku pon x mau baca" after a 7-page reflection tells the agent that the *next* opening should be one or two grounded observations, not a thesis. "teruskan" or "explain shadow" is the explicit green light for depth. Without the green light, depth is a wall built in front of a door the user wanted open.
+
+**Rule:** Default to the shortest response that carries the observation. Depth is opt-in per request. The shortest answer is the feature, not the draft.
+
 ## What does NOT belong in the pack
 
 - A reading of the other person's interior, motives, or history.
