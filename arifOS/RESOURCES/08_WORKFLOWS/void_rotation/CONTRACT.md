@@ -8,7 +8,7 @@
 | Day | Agent | Bot | Cron |
 |---|---|---|---|
 | Sat, Tue, Fri | Hermes | @hermesarifos_bot (HERMESARIFOS_BOT_TOKEN) | `5 9 * * 2,5,6` |
-| Sun, Wed | OpenClaw | @AGI_ASI_bot (AGI_ASI_BOT_TOKEN) | `5 9 * * 0,3` |
+| Sun, Wed | OpenClaw | @irfanclaw_arifos_bot (AGI_ASI_BOT_TOKEN) | `5 9 * * 0,3` |
 | Mon, Thu | CCC 777-FORGE | @arifOS_bot (FORGE_BOT_TOKEN) | `5 9 * * 1,4` |
 
 ## Rules (all three crons identical)

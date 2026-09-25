@@ -8,7 +8,7 @@
     "category": "Native A2A agent \u2014 runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "description": "KVM4 Telegram guest @AGI_ASI_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
+  "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "2.0.0",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
@@ -658,6 +658,6 @@
     "quarantined": 23,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
-  "identity_bind": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
+  "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
   "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la"
 }
