@@ -39,6 +39,18 @@ DESTRUCTIVE_PATTERNS = [
 # Session state file (written by arif_init)
 SESSION_STATE = "/tmp/opencode/session_state.json"
 
+# Enumerated fail-safe classes — local mirror of FORBIDDEN_MUTATION_TARGETS in
+# /root/AAA/hooks/lib/federation_hook_engine.py (the C2 single-declaration
+# site). This plugin layer is advisory-only; the LIVE enforcement copy is
+# /root/.claude/hooks/f1-amanah-preshell.py (fail-closed, immutable).
+# (CLAUDE-PATH-TARGET-SCREEN fix, FI-008 2026-09-25 — kept in sync with it.)
+ENUMERATED_TARGETS = [
+    "/etc/shadow",
+    "/etc/sudoers",
+    "/root/.ssh/authorized_keys",
+    "/root/.secrets/kunci-root.env",
+]
+
 # ── Helpers ────────────────────────────────────────────────────────────
 
 
@@ -99,6 +111,25 @@ def main():
     if tool_name == "Bash":
         command = tool_input.get("command", "")
         findings = check_destructive(command)
+
+        # Enumerated fail-safe classes — highest-consequence advisory this
+        # advisory-only layer can emit; the live hook hard-denies these.
+        enumerated_hits = [t for t in ENUMERATED_TARGETS if t in command.lower()]
+        if enumerated_hits:
+            print(
+                json.dumps(
+                    {
+                        "systemMessage": (
+                            f"**[F1 AMANAH — ENUMERATED FAIL-SAFE TARGET]**\n"
+                            f"Command touches a forbidden target: {', '.join(enumerated_hits)}\n"
+                            f"This requires kernel arif_judge adjudication — the live hook layer "
+                            f"hard-denies this class. Audit receipt stamped.\n"
+                            f"Session: `{session.get('session_id', 'unbound')}`"
+                        ),
+                    }
+                )
+            )
+            sys.exit(0)
 
         if not findings:
             print("{}")
