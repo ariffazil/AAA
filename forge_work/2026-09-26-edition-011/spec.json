@@ -1,0 +1,24 @@
+{
+  "edition": "EDITION-011",
+  "edition_date": "2026-09-26",
+  "title": "Executive Brief",
+  "subtitle": "Delta tracked edition \u00b7 9 new, 3 moved, 3 settled, 14 carrying over",
+  "template": "base-a4",
+  "theme": "light",
+  "source": "/root/AAA/forge_work/2026-09-26-edition-011/content.html",
+  "run_dir": "/root/AAA/forge_work/2026-09-26-edition-011",
+  "gates": {
+    "profile": "print-light",
+    "forbid_paths": true,
+    "cover_orphan_exempt": true
+  },
+  "stats": {
+    "new": 9,
+    "moved": 3,
+    "reopened": 0,
+    "still_open": 14,
+    "settled": 3,
+    "dropped": 0,
+    "items_total": 29
+  }
+}
