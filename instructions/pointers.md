@@ -84,4 +84,6 @@ Clerks do **not** curl `:7073` at init. Hero is the only thinker.
 | `100.64.0.2:6274` | MCPJam via Tailscale (Arif's Windows) |
 | `https://stateless.mcpjam.com/mcp` | Stateless MCP compliance server (protocol 2026-07-28) |
 
+| `/root/AAA/research/codex-banners/CODEX-FEDERATION-BANNER-SOT.toml` | **Codex self-description SOT** (F13 SAH 2026-09-25) — auto-generated probe artifact; never quote counts from memory, read/re-probe this file |
+
 **Skill mesh rule:** AAA is the catalog. Harnesses are views. Edit `/root/AAA/skills/`, run `skill-mesh-sync.sh --apply`. Kimi & hermes are copy-based — mirror manually after AAA changes.
