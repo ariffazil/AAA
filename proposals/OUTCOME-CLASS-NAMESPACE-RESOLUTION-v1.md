@@ -1,6 +1,9 @@
 # outcome_class Namespace Collision — Resolution Proposal v1
 
-> **Status:** PROPOSED_HELD_FOR_F13 (2026-09-25) · FI-003 (BUILD lane)
+> **Status:** F13_RATIFIED_CHAT (2026-09-25, SAH — "ya semua, jalan") · FI-003 (BUILD lane)
+> Rulings 1–4 are binding as of this SAH. Documentation adoption proceeds at each
+> surface's next natural edit; the bridge translation table (Ruling 4) is mandatory
+> if any join is ever built.
 > **Companion law:** FATWA K1 (`AAA/instructions/namespace-fatwa-k1.md`) — same pattern, new instance
 > **Origin:** 2026-09-25 morning session verification of L13 — flagged as F13 binary #5
 
