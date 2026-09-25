@@ -1,0 +1,188 @@
+{
+ "items": [
+  {
+   "item_id": "brent-hormuz-price",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "summary": "Brent settled near USD 103 on Wednesday 24 September, up 3.9 percent, snapping a five-session slide, and climbed further on Thursday to about USD 105 with an intraday high near 106.50. A fresh vessel attack in the strait and Washington diesel export-ban speculation did the lifting; WTI closed at USD 92.16. The premium that feeds the budget assumption and your exit timing is back, not fading.",
+   "source": "SunSirs market wrap 24 Sep 2026 (settlement figures); Iran International 24 Sep 2026 (Thursday quotes); Al Arabiya 24 Sep (traffic data). Three independent origins.",
+   "title": "Brent back above USD 103, near 105 on Thursday - the premium returns"
+  },
+  {
+   "item_id": "trump-iran-unga-price-driver",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "summary": "UNGA week ended with a channel restored between Washington and Tehran but no settlement: the US side calls it semi-negotiating, Iran ties any reopening to lifting the naval blockade on its ports and to control terms over the strait. CENTCOM reports 115 commercial vessels redirected as of 23 September while enforcing the Iran port blockade. Eighty countries signed a joint statement on 24 September demanding the strait reopen.",
+   "source": "Iran International 24 Sep 2026 (incl. CENTCOM count); CBS News (White House remark); The News International 24 Sep (80-country statement).",
+   "title": "UNGA week: channel restored, terms unresolved - 80 countries demand the strait reopen"
+  },
+  {
+   "item_id": "hormuz-reopening-plan",
+   "section": "SITUATION",
+   "claim_state": "CONTESTED",
+   "summary": "Traffic through the strait stayed below its 10-day average on 24 September; Bab el-Mandeb ran at 27 transits against a 26 average. The seven-day reopening offer remains unsigned and unexercised. Until an instrument, a boarding regime or a traffic recovery shows up, the reopening story stays contested.",
+   "source": "Al Arabiya shipping data 24 Sep 2026; no confirming instrument published as of this sweep.",
+   "title": "Strait traffic still below normal; the seven-day offer remains unexercised"
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "summary": "The wall moved. At case management on 24 September before Federal Court judge Rhodzariah Bujang, both sides asked for separate hearings and could not agree the sequence; a one-week hearing was fixed tentatively from 25 January 2027, with 1 October case management to settle order and preliminaries. Tentative and single-origin, so the wall stands - but a date now exists inside your OD1 window, three months before it.",
+   "source": "The Edge Malaysia 24 Sep 2026 (sole origin carrying the proceeding). Anti-thesis check: no other outlet contradicts or confirms; treated as tentative until the 1 Oct case management.",
+   "title": "WALL MOVED: tentative one-week hearing from 25 January 2027, sequence fixed 1 October"
+  },
+  {
+   "item_id": "petros-lng-jurisdiction",
+   "section": "WALL",
+   "claim_state": "CONTESTED",
+   "summary": "Whether Bintulu LNG sits with PETROS or PETRONAS is still unanswered in open sources. The 1 October case management is the next observable that could touch it.",
+   "source": "No filing or judgment found in this sweep; The Edge 24 Sep for the procedural calendar.",
+   "title": "WALL: Bintulu LNG jurisdiction still contested"
+  },
+  {
+   "item_id": "petronas-pda-petition-scope",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "summary": "The shape of the constitutional fight is public: PETRONAS questions Sarawak laws including the Oil Mining Ordinance 1958 and the 2023 greenhouse-gas ordinance; Sarawak challenges PDA 1974, the Continental Shelf Act 1966 and the Petroleum Mining Act 1966, and wants a preliminary ruling on the colonial-era boundary Order in Council. Issues narrowed to ten or eleven; the petitions are not consolidated.",
+   "source": "The Edge Malaysia 24 Sep 2026.",
+   "title": "The constitutional fight, now in shape: 10-11 issues, petitions not consolidated"
+  },
+  {
+   "item_id": "budget-2027-tabling",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "summary": "Fourteen days out. The pre-budget statement confirms tabling on 9 October; the economy minister says higher oil revenue will not cut development spending, and Bank Muamalat's chief economist puts a prudent oil assumption near USD 90 against the government's USD 74 under upward review. Subsidy design and the petroleum revenue line remain the two lines that reach households and the treasury.",
+   "source": "MOF pre-budget statement (mof.gov.my, 9 Oct confirmed); Newswav (economy minister); NST 15 Sep (economist view).",
+   "title": "Budget 2027 on 9 October - 14 days out; USD 90 assumption urged vs USD 74 official"
+  },
+  {
+   "item_id": "petroleum-revenue-projection",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "summary": "No new official number this sweep. The spread that matters: the government is reviewing upward from USD 74 toward about USD 80, while external houses already sit at USD 79-80 for 2027 on glut logic - the same logic the current premium is suppressing.",
+   "source": "22 Sep reporting carried forward; Goldman Sachs 12 Jun 2026 (2027 forecast USD 80); EIA June STEO reported near USD 79.",
+   "title": "The 2027 oil price spread: government reviewing up, forecasters already there on glut logic"
+  },
+  {
+   "item_id": "war-risk-insurance-lag",
+   "section": "VOID",
+   "claim_state": "MOVED",
+   "summary": "The mechanism went live again this week: a fresh strait attack plus prices back over USD 100 is exactly the exposure window where war-risk premiums and LNG freight reprice, weeks ahead of any settlement. If a deal lands, expect physical normalisation headlines first and the premium unwind only later.",
+   "source": "SunSirs / Iran International 24 Sep (attack, price); mechanism per standing register entry.",
+   "title": "War-risk window live again: fresh attack plus USD 100+ oil"
+  },
+  {
+   "item_id": "petrol-price-band-sept-2026",
+   "section": "RISK",
+   "claim_state": "MOVED",
+   "summary": "Today's band publishes at 5pm. With Brent up nearly 4 percent on Wednesday and near USD 105 on Thursday, expect the market band to step up again from last week's RM4.57 RON95 / RM5.05 RON97 / RM5.42 diesel. MOF has held the subsidised RON95 at RM1.99 under BUDI95 (300 litres a month) and said publicly it will keep it there.",
+   "source": "MOF press citation (RM1.99 maintained); paultan.org and data.gov.my weekly band; SunSirs 24 Sep for the move.",
+   "title": "Tonight's pump band: another step up likely; RM1.99 BUDI95 held"
+  },
+  {
+   "item_id": "haze-emergency-threshold",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "summary": "Sarawak readings turned back up on 23 September (Kanowit 244, Serian 201) and no fresher station table surfaced in this sweep - the public APIMS chart lags a day. During the mid-September wave Sungai Petani and Kulim hit the unhealthy band at 158 and 155. No active warning for the Kuala Muda area at time of writing.",
+   "source": "APIMS eqms.doe.gov.my; Malay Mail 16 Sep for the Kedah readings; sweep limitation stated rather than smoothed over.",
+   "title": "Haze: Sarawak readings turned up again; no active warning for Kuala Muda"
+  },
+  {
+   "item_id": "electricity-threshold-reversion",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "summary": "Ninety-seven days to the revert. The 800 kWh shield runs through December; on 1 January 2027, one month before OD1, usage between 600 and 800 kWh re-exposes to AFA, retail charge and SST. The generation-cost pressure behind it is unchanged.",
+   "source": "Carries from edition 009; no new statement this sweep.",
+   "title": "97 days to the 800-to-600 kWh revert on 1 January 2027"
+  },
+  {
+   "item_id": "coal-generation-cost",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "summary": "Coal at USD 148 per tonne, and the minister has tied it to the electricity bill. It feeds the AFA mechanism the current shield suspends; it matters again the day the shield reverts.",
+   "source": "Carries from edition 009; no new development.",
+   "title": "Coal at USD 148 a tonne feeds the bill mechanism the shield suspends"
+  },
+  {
+   "item_id": "epf-nomination-void",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "summary": "Standing item worth one minute before OD1: a change in marital status voids an existing EPF nomination, and in an exit year a lump sum can touch EPF. Check the nomination once, now, not after the money lands.",
+   "source": "KWSP nomination rules; carries from edition 009.",
+   "title": "Check the EPF nomination once, before OD1 - marital-status change voids it"
+  },
+  {
+   "item_id": "sarawak-election-clock",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "summary": "The state election is due by April 2027. The tentative late-January court hearing now sits inside the campaign window, so petroleum jurisdiction becomes campaign material at the same moment the court calendar touches it - movement, or noise, or both.",
+   "source": "Carries from edition 009; The Edge 24 Sep for the hearing window.",
+   "title": "Sarawak election clock: the late-January hearing now sits in campaign season"
+  },
+  {
+   "item_id": "own-od1-window",
+   "section": "OWN",
+   "claim_state": "MOVED",
+   "summary": "163 days to 7 March. What moved: the legal calendar landed inside your window - tentative hearing from 25 January, sequence fixed 1 October, budget 9 October - and the price environment firmed again this week. The falsifier stays on the record: every external 2027 forecast (Goldman USD 80, EIA about USD 79) is a glut number that needs Hormuz reopened to come true, so the decision variable is settlement terms, not the daily print. Nothing here requires action today; what the numbers now say is that the exit package is being negotiated into a firmer market than the one your package was quoted in.",
+   "source": "The Edge 24 Sep; SunSirs and Iran International 24 Sep; Goldman 12 Jun 2026; register arithmetic (25 Sep 2026 to 7 Mar 2027 = 163 days). Anti-thesis sweep run: Brent glut forecast 2027 - result: conflict registered, thesis holds only while the strait stays shut.",
+   "title": "OD1: 163 days - the legal calendar just landed inside your window"
+  },
+  {
+   "item_id": "ops-lane-status",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "summary": "Health at 06:00: arifOS 8088 green (13 floors active, deployment attestation aligned), FED 7074 green, FRAME 18085 green, GEOX and WEALTH green. One yellow: WELL 18083 reports degraded on commit drift between its source and deployed build - lane-side fix, nothing needed from you.",
+   "source": "Direct health probes at 06:00 MYT, 25 Sep 2026 (8088, 7074, 18085, 18083).",
+   "title": "OPS: one yellow - WELL commit drift; everything else green"
+  },
+  {
+   "item_id": "eureka-muonium-gravity",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "summary": "Physicists at ETH Zurich and the Paul Scherrer Institute built the coldest, brightest muonium beam yet - an exotic atom made of a positive muon (antimatter) plus an electron, alive about two microseconds. The muons are channelled through superfluid helium to cool the beam enough for a free-fall experiment: if muonium falls differently from ordinary matter, gravity treats antimatter differently and the equivalence principle cracks. No result yet - the tool now exists.",
+   "source": "Nature Physics, high-intensity superthermal muonium beam paper; ETH Zurich / PSI release coverage.",
+   "title": "The antimatter drop test just got its instrument - muonium, cooled in superfluid helium"
+  },
+  {
+   "item_id": "eureka-axon-pearls",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "summary": "Textbooks have drawn nerve fibres as smooth tubes for a century. High-pressure freezing, which preserves tissue in its living state instead of letting chemicals shrink it, shows unmyelinated axons are strings of roughly 200-nanometre pearls, and the pearls reshape with neural activity. The smooth tube was partly a preservation artifact; a basic picture of the brain just got corrected.",
+   "source": "Nature Neuroscience (Griswold et al, membrane mechanics and axonal morphology); ScienceDaily 15 Sep 2026.",
+   "title": "Your nerve fibres are pearls on a string - the smooth tube was a preservation artifact"
+  },
+  {
+   "item_id": "eureka-bepicolombo-mercury",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "summary": "BepiColombo, the Europe-Japan Mercury mission, cut its solar-electric propulsion module loose on 3 September after eight years of gravity-assist flying, and has begun final approach to orbit insertion in November 2026. Its two orbiters then split: one maps the planet, one studies its magnetic field - around a world where a single day lasts two Mercury years.",
+   "source": "ESA BepiColombo mission updates; Universe Today; mission timeline (arrival Nov 2026).",
+   "title": "BepiColombo cut its engine loose and begins the final descent to Mercury"
+  },
+  {
+   "item_id": "eureka-stellar-stream-hubble",
+   "section": "EUREKA",
+   "claim_state": "SETTLED",
+   "summary": "Printed in edition 009 on 24 September. Recorded, delivered, closed - no further tracking.",
+   "source": "Edition 009 of this brief.",
+   "title": "Printed in edition 009"
+  },
+  {
+   "item_id": "eureka-webb-water-sgra",
+   "section": "EUREKA",
+   "claim_state": "SETTLED",
+   "summary": "Printed in edition 009 on 24 September. Recorded, delivered, closed - no further tracking.",
+   "source": "Edition 009 of this brief.",
+   "title": "Printed in edition 009"
+  },
+  {
+   "item_id": "eureka-titanosaur-nesting-south",
+   "section": "EUREKA",
+   "claim_state": "SETTLED",
+   "summary": "Printed in edition 009 on 24 September. Recorded, delivered, closed - no further tracking.",
+   "source": "Edition 009 of this brief.",
+   "title": "Printed in edition 009"
+  }
+ ]
+}

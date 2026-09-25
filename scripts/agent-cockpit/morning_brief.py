@@ -46,7 +46,8 @@ def main():
     # Organs
     organs = {
         "arifOS":8088, "A-FORGE":7071, "GEOX":8081,
-        "WEALTH":18082, "WELL":18083, "arifFlow":7073, "AAA":3001, "FRAME":18085
+        "WEALTH":18082, "WELL":18083, "arifFlow":7073, "AAA":3001, "FRAME":18085,
+        "CHRON":18102
     }
     up, down = [], []
     for name, port in organs.items():
