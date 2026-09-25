@@ -67,8 +67,16 @@ notices for the same incident, and proposals that were never executed or approve
   by "did I already run today".
 - **Bridges are additive.** Deleting their schedule lines returns every producer to
   log-only behaviour with no producer change — keep rollback that cheap.
-- **A channel's own history is not proof of delivery.** Verify the send result, then write
-  the hash; otherwise a failed post is silently treated as published.
+- **A channel's own history is not proof of delivery.** Verify the send result, then write the
+  hash; otherwise a failed post is silently treated as published.
+- **`attach_to_session: true` is a second, hidden surface.** Cron output that injects into the
+  user's active session log — alongside direct prompts — reads as "interruption" even when the
+  cron delivered fine. The user sees `[response interrupted]` for their own killed direct reply,
+  then `Cronjob Response: ...` adjacent in time, and attributes the disruption to the cron. It
+  wasn't the cron; their own `/restart` killed the direct reply. Diagnostic: read `last_status`
+  and `failure_streak` first. If both are clean, the artefact is `attach_to_session`, not a cron
+  failure. Fix: `attach_to_session: false`. The cron keeps delivering to its `deliver` target
+  exactly as before; it stops appearing in the session log.
 
 ## Reference
 - `references/event-bus-routing.md` — event envelope, state machine, per-job inventory policy.
