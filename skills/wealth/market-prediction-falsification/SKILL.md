@@ -120,6 +120,135 @@ different questions. Do not referee it as a dispute.
 **Never present a post-hoc chart as a prediction.** A chart drawn after a collapse always shows a clean top.
 If the series was reconstructed or the window chosen after the fact, stamp that on its face.
 
+## Price-time physics — the actual invariant (state machine, not indicator pile)
+
+> Added 2026-09-25 after Arif rejected the indicator-pile framing in a deep-research session.
+> The corrections below replace any "this indicator says X" verdict that survives in this skill.
+
+The marginal executable demand curve meets insufficient immediately available liquidity at the current price.
+Every executed trade has a seller; what changes is the **marginal price to clear the next unit**. If offers
+deplete or cancel, buy orders walk the book upward. Same physics on the downside.
+
+```
+ΔP_{t,h} ≈ (Q_net_aggressive + Q_forced_hedge + Q_forced_liquidation
+            − Q_passive_absorption) / Λ_{t,h} + ε
+```
+
+where Λ is depth / liquidity elasticity. **Price impact ∝ signed urgency ÷ resilient liquidity** — NOT volume,
+NOT DOM imbalance. The actionable variable is how depth behaves under stress, not displayed depth alone.
+
+### Liquidity is not conserved
+
+Executable liquidity is **state-dependent willingness to quote**, not conserved material. Orders can cancel,
+hide, replenish, internalize, or shift across venues between snapshots. A static DOM image is weak evidence.
+The dynamic behaviour of depth under stress is the evidence.
+
+### The five-question loop (every bar close)
+
+```
+Q1  MACRO IMPULSE       — DXY, real yields, ETF/CB demand, geopolitical, risk repricing
+Q2  POSITIONING/FLOW    — COT percentile, options OI map, CTA trend proxy, dealer-gamma scenario
+Q3  LIQUIDITY RESILIENCE — spread percentile, replenishment, impact/volume ratio
+Q4  AUCTION ACCEPTANCE   — value-area location, anchored VWAP acceptance, retest behavior
+Q5  CALIBRATION HEALTH  — rolling Brier vs regime-conditional baseline
+```
+
+No signal may be emitted as a bare boolean. Every output carries `{state, regime, confidence, half_life,
+disambiguators}`.
+
+### Signal hierarchy (causal proximity × data integrity × regime fit × freshness)
+
+| Rank | Signal family | Allowed verdict |
+|------|---------------|-----------------|
+| 1 | Auction acceptance / market structure | Primary direction verdict |
+| 2 | Liquidity resilience | Continuation vs fragile-move classifier |
+| 3 | Macro impulse | Regime + directional bias |
+| 4 | Positioning / hedging flow | Amplification factor |
+| 5 | Volatility state | Strategy choice + stop geometry |
+| 6 | Bar / volume shape | Confirmation only, never primary |
+| 7 | Oscillator divergence | Low-weight early warning only |
+
+A slow indicator may NEVER veto a fast causal state transition without independent evidence.
+
+### State machine (mutually exclusive tags)
+
+| State | Operating mode |
+|-------|----------------|
+| `MARKET_INTEGRITY_FAIL` | `OBSERVE_ONLY` (feed dispersion / stale tick / abnormal cancel) |
+| `COMPRESSION` | `BRACKET_AND_WAIT` |
+| `COMPRESSION_TO_EXPANSION` | `PREP_TRIGGER` (requires six conditions, see below) |
+| `ESTABLISHED_TREND` | `TRAIL_AND_HOLD` |
+| `RANGE` | `ROTATION_ONLY` |
+| `EXHAUSTION` | `REDUCE_OR_REVERSE` |
+
+### Compression-to-expansion gate (six conditions, ALL required)
+
+A break bar is NOT a regime transition. A close outside the BB is NOT a transition. Required:
+
+1. Range escape (close outside structural edge).
+2. Acceptance (≥ 2 consecutive bar closes outside).
+3. Sustained signed flow in the breakout direction.
+4. Realized volatility expansion from compressed baseline.
+5. Macro / cross-asset does NOT contradict.
+6. Retest behavior (broken edge holds, or price re-enters and fails to reclaim).
+
+If any one fails → remain in `COMPRESSION`, do not chase the wick.
+
+### What dynamics mean (do not infer intent from flow)
+
+| Observed | Possibly means | NOT necessarily |
+|----------|---------------|-----------------|
+| Large buy volume, little upward move | Passive absorption OR two-sided auction | "Smart money accumulating" |
+| Modest buy volume, big upward move | Offer withdrawal (fragile) | "Strong demand" |
+| Visible bid imbalance, then cancellation | Spoofing / fragile display | Real institutional bid |
+| Spread widens, depth shrinks | Liquidity stress | Normal volatility expansion |
+| Price rises while signed flow weakens | Offer withdrawal | Healthy uptrend |
+
+**Rule:** order flow ≠ price impact. Two markets can produce identical volume signatures with opposite
+interpretation depending on liquidity resilience.
+
+### Smart-money framing is narrative-dangerous
+
+A large call-OI increase may mean customer upside bet, producer hedge, fund spread, dealer structured-product
+hedge, institution rolling position, market-maker block facilitation, or delta-neutral vol trade. Observed
+options flow ≠ directional institutional conviction until independently corroborated by trade initiation,
+subsequent OI, IV/skew movement, spot/futures response, expiry, strike location, and post-trade hedge
+behaviour. Same rule for dark-pool prints and COT positioning: commercials are hedging business risk, not
+necessarily "right." COT positions are measured Tuesday, released Friday — never a timing trigger.
+
+### Time-zone rule
+
+LBMA fix windows are 10:30 and 15:00 **London** time. London and New York shift relative to Malaysia
+during DST transitions. Agents MUST convert dynamically, not hard-code "16:00 MYT" or "21:00 MYT" session
+labels. Use exchange/calendar timestamps.
+
+### Calibration discipline (Brier is not portable)
+
+A model can be calibrated yet economically useless (e.g. 52% across the board after cost returns negative
+expectancy). Track four independent layers:
+
+- **Discrimination** — rank IC, AUC, top-decile lift
+- **Calibration** — reliability curve, Brier, log loss, ECE
+- **Economic edge** — net expectancy after pessimistic cost, profit factor, turnover-adjusted Sharpe
+- **Stability** — rolling metrics, regime-conditioned, live shadow monitoring
+
+Block execution when rolling out-of-sample **Brier Skill Score** is non-positive over a precommitted window.
+"Brier < 0.25" is NOT a universal threshold — depends on event base rate. A constant-base-rate forecast for a
+35%-prevalence event has Brier 0.2275 without doing any work.
+
+### Indicator-pile framing is rejected
+
+Do not output "RSI bearish", "BB squeeze bullish", "volume climax reversal", "Wyckoff spring", or
+"dealer-gamma gravity at strike X" as standalone verdicts. Same RSI reading in `COMPRESSION` vs
+`ESTABLISHED_TREND_DOWN` means opposite things. **Context > signal.** Pattern without state tag is noise.
+BB inside Keltner is a low-volatility envelope, NOT a Wyckoff spring. "3× volume = reversal" is FALSE as a
+universal rule — high volume can mark reversal, continuation, absorption, news repricing, or liquidation.
+The information is in the price response AFTER the volume, not the volume itself.
+
+Candle anatomy (body-to-wick, close position, body vs ATR) is CONFIRMATION, not cause. These are outcome
+summaries of the auction. Require auction acceptance and flow context before treating candle shape as a
+verdict.
+
 ## Quoting a forecasting system
 
 Before repeating any model's or oracle's accuracy, **read its own calibration and report it.** A system's
@@ -159,7 +288,45 @@ figure as prose — that trains the reader to skip the image. Full rule and buil
 - **An unknown threshold is not a passed threshold.** If the baseline cannot be computed, the test has not been
   run — do not present a score as if it were measured against something.
 - **Never let "the market is volatile" be the whole answer.** Volatility is the input to a range, and the range
-  is actionable: it is what tells the human their stop sits inside the noise.
+  is actionable: it tells the human their stop sits inside the noise.
+
+- **Indicator-pile framing is rejected (F13 2026-09-25).** Do not output "RSI bearish", "BB squeeze bullish",
+  "volume climax reversal", "Wyckoff spring", or "dealer-gamma gravity at strike X" as standalone verdicts.
+  Same indicator reading means opposite things in `COMPRESSION` vs `ESTABLISHED_TREND_DOWN`. Context > signal.
+  Every signal must carry `{state, regime, confidence, half_life, disambiguators}`.
+
+- **Brier < 0.25 is NOT a universal usability threshold (F13 2026-09-25).** A constant-base-rate forecast for a
+  35%-prevalence event has Brier 0.2275 without doing any work. Gate execution on **Brier Skill Score > 0**
+  over a precommitted rolling window, against a regime-conditional baseline. A calibrated model can still be
+  economically useless — track net expectancy after pessimistic cost independently.
+
+- **"Smart money" / institutional accumulation = narrative-dangerous (F13 2026-09-25).** A call-OI surge may
+  be producer hedge, dealer structured product, customer spread, or roll — not directional conviction. Same
+  for dark-pool prints and COT positioning. Never infer intent from a single trace.
+
+- **DOM imbalance alone is weak evidence (F13 2026-09-25).** Top-of-book imbalance is easily stale, cancelled,
+  or withdrawn. Require persistence across multiple bars, cancellation-adjusted depth, AND trade-execution
+  confirmation (impact/volume ratio). Spoofing is normal.
+
+- **Liquidity is state-dependent, not conserved (F13 2026-09-25).** A book showing 5,000 contracts at one
+  instant can have 4,500 cancelled before the next trade. The actionable variable is how depth behaves under
+  stress, not displayed depth.
+
+- **Price impact ∝ signed urgency ÷ resilient liquidity, NOT volume (F13 2026-09-25).** A market can rally on
+  modest volume if offers vanish (fragile upside), or stall despite massive buy volume if passive sellers
+  absorb. Order flow and price impact are separate physics.
+
+- **Fixed MYT session times are WRONG (F13 2026-09-25).** London (10:30 / 15:00) and NY open shift relative
+  to Malaysia across DST transitions. Convert dynamically from exchange/calendar timestamps. Never hard-code
+  "16:00 MYT" or "21:00 MYT".
+
+- **COT "commercials are right" is FALSE (F13 2026-09-25).** COT classifies by self-reported business purpose
+  (hedging vs speculative), not by who is directionally correct. Producer shorts may be prudent hedges while
+  believing spot rises. Use as weekly positioning regime, not timing trigger.
+
+- **Compression-to-expansion requires six conditions, all six (F13 2026-09-25).** A break bar is NOT a regime
+  transition. A close outside the BB is NOT a transition. Range escape + acceptance + sustained flow + RV
+  expansion + macro non-contradiction + retest behavior — drop any one and stay in `COMPRESSION`.
 
 ## Support files
 

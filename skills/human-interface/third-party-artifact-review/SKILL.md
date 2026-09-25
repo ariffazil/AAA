@@ -90,6 +90,19 @@ explicit permission not to reply. Two lines, in the sender's voice, sent by the 
 Name it and offer it. Do not alter, soften, or withhold the artifact behind the author's back — the
 artifact is theirs, and the decision to send is theirs.
 
+### 7. Witness-biography mode (one-sided) — when the artifact IS the biography
+
+When the user asks for a long-form document *about* an absent person (biography, memoir, portrait,
+"full Walter Isaacson style"), the request triggers three constraints that override ordinary completion-bias:
+
+**Constraint A — refuse to manufacture voice.** The absent person's words, reactions, feelings, and motives cannot be inferred into the document as fact. Treat them as a class that is *permitted only as tagged inference* (`[INFERENCE — flagged]`) or as transcribed direct quotes from a source the user has actually provided. No direct quotes from a source the agent does not have → no fabrication of any sentence purporting to be the absent person's interior.
+
+**Constraint B — structural truth is permitted.** What the agent *can* truthfully write about the absent person is restricted to: chronology (when sessions happened, what their titles were, what their message counts and token costs were); the user's own attested statements about the absent person; the user's own observations of the absent person's behaviour; pattern signals from the corpus (reach-out asymmetry, response brevity). These are metadata about the friendship, not the friend's interior.
+
+**Constraint C — explicit "what this is NOT" epilogue.** End the document with a section that names, in plain language, what the document does not contain: the absent person's words, their grievances, their consent, anything they would say if asked. The reader should not be able to mistake a one-sided witness account for a biography. Isaacson in constraint mode writes only what he can source; he does not invent to fill the empty spaces.
+
+If the user asks for "full" or "novel" and the corpus does not contain enough, name the gap, do not paper over it. Offer the alternatives that respect the constraint: a sender-authored letter (the user writes; the agent edits), a memoir of the user (the user's own life), a witness account from the user's mouth (the user answers the agent's questions, the agent curates), or the consent-based novel (wait until the absent person has consented and been interviewed).
+
 ## Pitfalls
 
 - **Don't predict the absent person's interior.** You cannot see them, they cannot correct you, and a
