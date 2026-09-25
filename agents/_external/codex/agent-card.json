@@ -591,24 +591,27 @@
     "card_truth_repair_summary": "Bumped CLI 0.136.0 to 0.147.0; model codex to forge-777; MCP 5 to 11 servers; removed mcp.json refs; deleted duplicate snake_case arrays; added AAA/FLAME organs; refreshed verified_against; hardened authority_boundary with Codex v0.134.0+ capabilities (profiles/hooks/agents/skills/granular-approval/otel); signature quarantined for re-issue"
   },
   "shadowAcknowledged": [
-    "sparse_history: shadow-matrix 2026-09-07 shows codex at BALANCED 1.0 with 1 execute / 1 verify — too little signal to diagnose a blind spot; truth-class for any codex claim stays DERIVED not MEASURED until traffic grows (DIV-CODEX-SHADOW-SPARSE)",
-    "two_canonical_homes: /root/AAA/agents/codex/AGENTS.md (2026-09-14, F13-ratified citizen card) and /root/AAA/agents/_external/codex/AGENTS.md (2026-08-26, engineer-executor doc, references Codex CLI v0.147.0) carry different doctrine — callers must check identity.json for canonical surface (DIV-CODEX-DUAL-HOME)",
-    "fi_slot_ground_truth: identity.json is the canonical FI slot (codex=FI-005, ed25519-bound to arif-fazil/F13); this card's warga_binding.fi_slot and metadata.fi_slot both carry FI-005 — but the schema's top-level fi/fi_slot fields are absent, not null; readers must NOT infer 'unassigned' from absent keys",
-    "stale_binary_refs: external AGENTS.md still cites Codex CLI v0.147.0 and 'mcp.json retired 2026-07-27' — actual binary at /root/.npm-global/bin/codex is 0.154.0 (audit 2026-09-19); treat the external AGENTS.md as archaeological for runtime version claims",
-    "card_truth_repair_stale: this card's last card_truth_repaired_at is 2026-08-26 — 24 days without a repair pass; CLI version field in description (v0.147.0) and binary reality (v0.154.0) have drifted apart"
+    "sparse_history: shadow-matrix 2026-09-07 shows codex at BALANCED 1.0 with 1 execute / 1 verify \u2014 too little signal to diagnose a blind spot; truth-class for any codex claim stays DERIVED not MEASURED until traffic grows (DIV-CODEX-SHADOW-SPARSE)",
+    "two_canonical_homes: /root/AAA/agents/codex/AGENTS.md (2026-09-14, F13-ratified citizen card) and /root/AAA/agents/_external/codex/AGENTS.md (2026-08-26, engineer-executor doc, references Codex CLI v0.147.0) carry different doctrine \u2014 callers must check identity.json for canonical surface (DIV-CODEX-DUAL-HOME)",
+    "fi_slot_ground_truth: identity.json is the canonical FI slot (codex=FI-005, ed25519-bound to arif-fazil/F13); this card's warga_binding.fi_slot and metadata.fi_slot both carry FI-005 \u2014 but the schema's top-level fi/fi_slot fields are absent, not null; readers must NOT infer 'unassigned' from absent keys",
+    "stale_binary_refs: external AGENTS.md still cites Codex CLI v0.147.0 and 'mcp.json retired 2026-07-27' \u2014 actual binary at /root/.npm-global/bin/codex is 0.154.0 (audit 2026-09-19); treat the external AGENTS.md as archaeological for runtime version claims",
+    "card_truth_repair_stale: this card's last card_truth_repaired_at is 2026-08-26 \u2014 24 days without a repair pass; CLI version field in description (v0.147.0) and binary reality (v0.154.0) have drifted apart"
   ],
   "shadow_population_meta": {
     "populated_at": "2026-09-19T12:54:00Z",
     "populated_by": "opencode (333-AGI) per codex audit + DIV-CODEX-SHADOW-SPARSE / DIV-CODEX-DUAL-HOME registration",
     "method": "Shadow items derived from: cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (per_actor_shadows[codex]), identity.json (FI-005), filesystem divergence scan (two AGENTS.md), deepresearch output (2026-09-19)",
-    "covers_shadow_ids": ["DIV-CODEX-SHADOW-SPARSE", "DIV-CODEX-DUAL-HOME"]
+    "covers_shadow_ids": [
+      "DIV-CODEX-SHADOW-SPARSE",
+      "DIV-CODEX-DUAL-HOME"
+    ]
   },
   "upgrade_history": [
     {
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) - Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) - Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -678,8 +681,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
@@ -698,12 +701,55 @@
   ],
   "signature_status": {
     "state": "ABSENT",
-    "detail": "hollow block — empty kid/signature/protected; contains no cryptographic material",
-    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detail": "hollow block \u2014 empty kid/signature/protected; contains no cryptographic material",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L0",
+        "L0.5",
+        "L1",
+        "L2",
+        "L3",
+        "L9",
+        "L12"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (333)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": true,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": "epistemic label marker present in card",
+      "claim_state": "MEASURED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: engineer",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
   }
 }
