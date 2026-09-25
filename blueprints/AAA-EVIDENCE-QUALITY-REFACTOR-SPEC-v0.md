@@ -1,6 +1,6 @@
 # AAA EvidenceQuality × ActionRisk — Refactor Spec v0
 
-> **Status:** SPEC_RATIFIED (text-level) on 2026-09-25 07:18 MYT. Awaiting F13 sovereign ratification to canon.
+> **Status:** F13_RATIFIED_CHAT (2026-09-25, SAH — "ya semua, jalan") · Canon-promoted (loop L12 closure). README formula amendment live since 2026-09-25 morning.
 > **Closes:** Loop L12 from `/root/AAA/blueprints/HOOK-FEDERATION-STANDARD-DRAFT-v0.md` §7.
 > **Source audit:** AAA EvidenceQuality formula `(1-Uncertainty) × Reversibility` + `irreversibility_floor: P ≥ 0.85` — same factor counted in two places.
 > **Author:** FI-005 (Codex CLI, warga-aaa).
