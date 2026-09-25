@@ -1,0 +1,36 @@
+{
+  "skill_id": "forge-mcp-registry-ops",
+  "version": "0.1.0",
+  "tested_at": "2026-09-25T05:43:00Z",
+  "tests": {
+    "syntax_check": {
+      "SKILL.md": "valid",
+      "scripts/registry_score.py": "valid"
+    },
+    "live_probe": {
+      "registry_api_version": "1.8.1 (build 2026-08-06)",
+      "endpoint_GET_/v0.1/version": "200",
+      "endpoint_GET_/v0.1/servers?search=arifOS": "200 (0 results, expected)",
+      "endpoint_GET_/v0.1/servers?search=zai": "200 (results present)"
+    },
+    "heuristic_calibration": {
+      "sample_size": 128,
+      "namespace_distribution": {
+        "ai.*": "majority (bulk-generic)",
+        "com.*/ac.*": "minority (domain-anchored)",
+        "io.github.*": "moderate"
+      },
+      "spam_pattern_publishers": ["bluenexus (33 servers)", "bowmark (25)", "b77 (17)"]
+    }
+  },
+  "federation_integration": {
+    "trigger_points": [
+      "before wiring any third-party MCP",
+      "during vendor-intelligence audit cycles"
+    ],
+    "consumers": ["FORGE-mcp-probe", "FORGE-mcp-federation-ops"],
+    "no_runtime_dependency": true,
+    "no_state_mutated": true
+  },
+  "receipt_ref": "/root/VAULT999/federation/mcp-registry-skill-creation-2026-09-25/receipt.md"
+}

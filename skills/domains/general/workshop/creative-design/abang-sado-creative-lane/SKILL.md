@@ -780,6 +780,14 @@ Full contrast + drift register: `/root/AAA/governance/ABANG-SADO-REGISTER-CONTRA
   hash field. `seal_to_vault999.py` is broken (`v2_epoch.py` no longer exports `read_v2_seals`), so
   this is a sovereign-chat seal, not a kernel seal — say so in the record.
 
+## Length preference — default SHORT, escalate to long only on request
+
+**Default render length is the persona line, not the audiobook.** A 21-word line at 0.9x speed renders in ~8 s and ships as one voice bubble. That is the unit the lane was built for. Long-form synthesis (prologue + chapter files + per-chapter + concatenated full audio) is a different workflow and the requester has to ask for it.
+
+**When the source is long, ask before committing to long-form synthesis.** A 5,500-word manuscript batch-rendered into 11 chapter files plus a 39-minute concatenated master is an hour of synthesis time and ~25 MB of audio. If the requester wanted a short message, they wanted a short message — a 39-min master sits on disk and never gets listened to. Procedure: read the source length, if it exceeds the persona-line norm (~50–150 words), ask: short persona line, single chapter, or full audiobook? Default to short and ship the line.
+
+**Anonymization rule for biographical content about the persona's human counterpart.** When the lane is asked to render or write biographical material that draws on the real human in the persona's life (their partner, their friend, the "lelaki pertama" in the dynamic), the default is pseudonymization. Replace proper names with positional labels (e.g., "lelaki pertama", "lelaki kedua", "abang sado", "adik"). Keep locations, employers, ages, and other non-name identifying detail when the requester explicitly asks for "my reality" / "real context" — the anonymization is on names, not on facts. The persona's own voice may stay in first person as "aku" when the biographical narrative is from their viewpoint; the people they are talking about become relational labels.
+
 ## Delivery (Telegram)
 
 - Image: `MEDIA:/abs/path.jpg` on its own line.

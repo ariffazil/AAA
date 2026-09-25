@@ -102,3 +102,38 @@ whenever figures were reconstructed rather than fetched.
 - **Matplotlib Rectangle import from pyplot is flagged by LSP but works at runtime.** Use `from matplotlib.patches import Rectangle` for clean code; `plt.Rectangle(...)` triggers type-checker warnings but runs fine.
 - **Geological cross-sections MUST invert Y-axis.** Surface at top, depth increasing downward. `ax.set_ylim(max_depth, -offset)` reverses the axis. If user says "terbalik" (reversed), this is the cause — check Y-axis direction first. Never use `plt.gca().invert_yaxis()` after `fill_between` — set ylim directly in the plotting code.
 - **When overlaying annotation lines (anchor lines, price markers, target zones) on a user-supplied chart, the price-to-y transform MUST be derived from the chart's own visible price ladder, not from a different data source.** A captured MT5/TradingView screenshot has its own price axis; if the live API quote (e.g. yfinance GC=F) is $20+ away from the chart's stated price, the chart's price ladder ticks (the labels printed on the right edge) are the ground truth for placement. Build `price_to_y(p)` from those ticks (top tick → y=1.0, bottom tick → y=0.0) and verify the lines land *on the labeled prices*, not at some offset you only spot-check. Vision-verify must specifically ask "are the anchor lines at the correct price levels on the chart?" — a generic "describe the image" prompt returns prose about the chart and misses the positional defect. The defect is silent in code: matplotlib happily draws the line where you told it to, and only the visual diff between chart label and overlay line reveals it.
+
+- **`fill_between` array-shape mismatch.** When `fill_between(x, p10, p90)` raises `ValueError: 'x' has size 24, but 'y1' has an unequal size of 25`, the cause is that the percentile computation produced one extra point than the candle count. If you compute percentiles over `n` Monte Carlo paths each of length `T` (so `arr.shape == (n, T+1)` because each path includes the starting price), then `arr[:, k]` has shape `(n,)`, giving percentile arrays of length `T+1`, but the x-axis `np.linspace(start, end, T+1)` is the right length — the mismatch comes from mixing them. Fix by aligning x to the percentile array length, or drop the starting point from the percentile series before plotting. Verified (2026-09-25).
+
+- **Right-edge percentile/label clipping despite `xlim` headroom.** Right-edge text annotations placed at `x = xlim_max - epsilon` still get clipped because matplotlib text rendering extends past the x-coordinate by the text width + bbox padding. Two fixes that survive: (a) explicitly use `ha='right'` AND wrap the text in `bbox=dict(facecolor='#1a1a1a', edgecolor='none', pad=1.5, alpha=0.9)` so a coloured background mask hides any overflow into the spine; (b) OR place labels INSIDE the plot area at `x = xlim_max - 4` (well inside the data zone). The bbox-mask approach is preferable when the chart already has a dense right edge and pulling the labels inward would collide with the fan-chart lines. Verified (2026-09-25).
+
+- **Multi-column header overlap in info panels.** When the bottom info panel needs N column headers (e.g. QUALITATIVE / QUANTITATIVE / QUANTUM / CHRON / PROTOCOL), placing them too close causes matplotlib text to render as garbled letter-collision ("PRADDICEOL"-style). Rule: each column header must occupy a non-overlapping x-range with **at least 1.5x the text width** of headroom. For 5 columns in a 0–54 x-space, use x-positions `[5, 16, 27, 38, 49]` (separation of 11 units, ~5x the typical 9pt header width). Then keep body content of each column strictly within that x-range — `ax.text(col_x[i] + 2, y, ...)` for left-aligned body, not the column header x-position itself. Verified (2026-09-25).
+
+- **Bottom info panel clipped at y=0.** When the bottom info panel is drawn with `FancyBboxPatch((x0, 0), width, height)` and the panel content extends below `y=0`, the bottom rows get clipped silently. Mitigation: set `ax.set_ylim(ylim_min, ylim_max)` with `ylim_min` BELOW 0 (e.g. `ylim(4150, 4400)` for a 4400–4150 vertical span) and place the panel at a y-coordinate well within the ylim range (e.g. `y0=4190` for a panel spanning 4190 to 4220). Vision-verify MUST specifically ask "is the bottom panel's bottom row visible (not clipped at y=0)?" — a generic "describe this image" misses this entirely because the panel still has a visible border, just without its bottom content. Verified (2026-09-25).
+
+- **Vision-verify must request LAYOUT questions specifically, not generic description.** A chart's code cannot see its own layout. Auto-placed annotations stack on the title; the last label jams into the right frame; two callouts land on the same point. Ask the vision read directly: *"does any annotation overlap a title? is any label clipped at the edge? are the axes legible? are all column headers distinct with no overlapping text? is the bottom info panel fully visible?"* Generic "describe this chart" returns prose and misses the collision. Verified (2026-09-25) — three separate chart re-renders converged only after explicit layout-fragmentation questions were added to the vision prompt.
+
+## References
+
+- `references/matplotlib-direct-figure-pattern.md` — bypass the pyplot state machine
+  with `Figure()` + `FigureCanvasAgg()` to dodge stale `*.mplstyle` corruption.
+- `references/gemini-api-image-generation.md` — Gemini image-gen recipe.
+- `references/wealth-mcp-tool-schemas.md` — verified schemas for the two
+  `mcp__wealth__capital_market` / `mcp__wealth__capital_indicator` MCP tools, plus
+  the call pattern that anchors Monte Carlo fan-chart inputs without triggering
+  argument-validation errors. Use whenever the deliverable depends on a live
+  WEALTH snapshot (gold 24H probability bands, multi-indicator panels).
+- `references/monte-carlo-fan-chart-pattern.md` — full recipe for the
+  quantitative 24H prediction fan chart: ATR-scaled GBM with EMA20 drift,
+  percentile bands (P10/P25/P50/P75/P90), 5-column intelligence panel layout,
+  and vision-verify checklist targeting the specific failure modes of this
+  layout. Use when the deliverable is a "WEALTH CHRON intelligence"-style
+  probability reading over a horizon (not a single-point price prediction).
+- `references/lightweight-charts-fan-overlay-pattern.md` — the web-widget
+  counterpart to the matplotlib variant above. For drawing a probability
+  fan directly on the lightweight-charts v4 widget extending past the last
+  candle (not a static PNG). Covers the 4-area-series band trick, native
+  setMarkers for endpoint labels, HTML overlay workaround for vertical time
+  line (not natively supported), and clamped linear interpolation between
+  supplied quantiles. Use when the deliverable is a live HTML page rather
+  than a chart artifact.

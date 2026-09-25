@@ -288,6 +288,64 @@ full cost.
   a repo edit reaches no user while every repo-side check reports the change as live. Serving
   mechanics: `deploy-drift-verification`.
 
+## The cross-path differential reality test
+
+A surface-consistency audit collapses to the wrong verdict when one observation path is treated as
+the world. Two observers on the same server, same tool, same payload, same minute — one reports the
+detector "broken" (e.g. `claims_scanned: 0`), the other reports it "working" (e.g. `claims_scanned:
+N`). Both readings are correct for their path. The mistake is generalising either to the system.
+
+**The law:** *Failure(observer, path, time) ≠ Failure(system)*. Widen the probe before judging the
+implementation.
+
+**The procedure when surfaces disagree:**
+
+1. **Enumerate reachable observation paths.** For an MCP tool, that means at minimum:
+   - The connector path currently in use (e.g. `mcp__server__tool` via the runtime's tool surface)
+   - A direct CLI / SDK path to the same server (e.g. `mcporter call <server> <tool> --args <json>`)
+   - Any ad-hoc HTTP/JSON-RPC endpoint if the server exposes one
+
+2. **For every path, capture:** path · client version · server version · raw payload shape · normalised
+   payload shape · server-reported metric (e.g. `claims_scanned`) · server-produced result · errors ·
+   timestamp. One observation per row, never per "impression".
+
+3. **Falsify the cheapest hypothesis first.** The most common cause is **transport-layer shape
+   mismatch**, not core implementation. The connector wraps a JSON array as a nested array
+   (`claims=[["a","b"]]` instead of `claims=["a","b"]`); the server validates `items: {type: string}`
+   and falls through to a zero-input branch; the tool returns `OK` with empty results. The detector
+   was never asked.
+
+4. **Decompose "capability" into the five independent states:** *implemented · registered ·
+   exported · reachable on this path · callable*. Each can fail independently. A tool can be
+   implemented and registered but unreachable on a specific path (the most common silent failure);
+   a tool can be reachable but produce a wrong-shaped response (the second most common). Conflating
+   these gives a verdict that is wrong in both directions.
+
+5. **Falsify the second hypothesis.** Once transport is exonerated, the residual is implementation
+   — but only on the path that actually exercises the implementation. A path that fails to deliver
+   input cannot test implementation. State explicitly which path's reading supports the
+   implementation verdict.
+
+6. **Preserve the distinction in the report.** "Detector broken at path A, working at path B" is a
+   complete and useful finding. "Detector broken" or "Detector fine" is a verdict that lost the
+   path.
+
+**Pitfalls:**
+
+- **One observer is not a verdict.** When the first read returns empty, the instinct is to declare
+  the tool dead. The second observer on a different transport may show `N`. Always widen before
+  closing.
+- **Consumed input ≠ understood output.** A detector that consumes all claims but returns
+  empty `contradictions: []` is not broken — it is honest about its output. The defect is in its
+  ontology (no NUMERIC_MISMATCH class), not its input pipeline. Distinguish "input lost" from
+  "input processed, ontology ceiling reached".
+- **Two correct readings on different axes are not a contradiction.** A detector can consume
+  input fine AND miss a class of contradiction — both readings true, both on different axes
+  (transport vs ontology). Do not force-reconcile.
+- **The path that "works" can also be the wrong tool.** A direct CLI that bypasses a wrapper can
+  pass payload through but skip a gate the wrapper enforces. The path that surfaces the bug is not
+  always the path to keep.
+
 ## Verdict contract
 
 Report per surface, with protocol and source:

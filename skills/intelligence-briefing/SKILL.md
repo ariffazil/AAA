@@ -410,9 +410,17 @@ a one-sentence synthesis.
 
 ## A.11 Principal preferences (carry forward)
 BM casual OK for section names, English for analysis · directness, no diplomatic hedging in
-critical segments · tersurat/tersirat mandatory · dedicated named entity segments · PDF must be
-visually designed, not a plain text dump · cognitive flow positive → negative → hidden · colour
-functional · weasyprint preferred over Chrome headless.
+critical segments · tersurat/tersirat mandatory · dedicated named entity segments · **PDF
+track depends on the recipient**: when the principal asks for a PDF "for me to read" or
+"literature grade" or "no fancy visual", default to plain typography (Georgia/Times, light
+background, gold rule separators — see `forge-pdf-delivery` plain-track CSS). The image-based
+dark-theme track is reserved for dossiers built to be shown to a third party — that's where
+colour-functional design earns its weight · cognitive flow positive → negative → hidden ·
+weasyprint preferred over Chrome headless.
+
+**Disambiguation rule:** "PDF to read" / "PDF biasa" / "literature grade" → plain track.
+"Create a dossier" / "pdf mode" / "briefing for [named third party]" / no clarification →
+image-based track is the safer default.
 
 ---
 

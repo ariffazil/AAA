@@ -200,6 +200,52 @@ Follow `forge-pdf-delivery` for the pipeline (author → render → `file` check
   correction channel looks like from outside. An institution that looks unusually clean is a question, not an
   answer.
 
+## When the artifact is a biography-style narrative (Walter Isaacson register, the subject is a real living person)
+
+Three signals tell you this is the shape: the principal asks for a "biography", names "Walter Isaacson style", or says "tell the story of X and Y" or "real story of us". The deliverable is a long-form prose narrative that may draw on chat exports, journals, public records, or a combination. The register is biographer's voice (the agent), not the subject's.
+
+**The Anonymization Gate (F5) applies BEFORE any third-party source is opened.** Choose one of three modes and ask the principal to confirm — never infer:
+
+- **Mode A — Full Boundary.** Author from MAP-class sources only (MEMORY.md, USER.md, carry_forward.json, SCAR files, public canon). Intimate chronology is silent. Safest.
+- **Mode B — STORY → MAP quarantine.** Open the source, extract only dates/places/observable events. Sumback dialogue. Author from extracted facts.
+- **Mode C — Full authorize.** Principal explicitly states: "I authorize Hermes to read this [export] for biography purposes." Required for biography with quoted dialogue and intimate detail. This is the only mode that produces full Walter Isaacson register.
+
+**Default to Mode A if ambiguous.** Never infer "C" from "guna apa ada".
+
+**Anonymization pattern when principal asks "no real name":** pseudonymize proper personal names ("Arif Fazil" → "lelaki pertama"), keep company names ("PETRONAS") and locations ("Kuala Lumpur") only when not the disclosure, keep generic relational nouns ("abang", "adik"), keep dynamic nicknames ("Abang Sado"). **Never** single-letter placeholders ("A", "B", "S") — they lose the two-person texture. Use descriptor phrases.
+
+**Walter Isaacson register, applied to BM Penang:**
+1. **Prose first, never bullets.** Sequence of paragraphs. Bullets go in TOC and chapter lists only.
+2. **Fact + insight interleaved.** Never state a fact without connecting it to what the fact means.
+3. **Time as character.** Open chapters with the hour. Days, not events, are the unit of structure.
+4. **Quotation verbatim.** BM Penang dialect, broken English, emoji all survive into the prose.
+5. **Biographer's voice at the edges.** Prologue (a note on the form) and epilogue (what the biographer could not see). Body belongs to the subject.
+
+**Default structure:** cover page (image + title) → title page → prologue → chronological chapters → epilogue. Length 5000-8000 words single subject, up to 12000 for two subjects.
+
+**The "cap that holds":** every biography has one number that frames it (Isaacson's *Steve Jobs* has the year; *Einstein* has 1905). Find it early. For a nasi-lemak-and-peptide biography, the cap is nineteen portions.
+
+**Iteration discipline (single PDF in documents/):** when the principal asks for "redo chronological", "no real name", "dream mode", etc., delete the previous `doc_biography_*.pdf` before writing the new one. One PDF, named by content (e.g. `doc_biography_ALPHA_ZEN.pdf`), not by version. Intermediate `.md` files in `/tmp/` may accumulate; the PDF does not.
+
+**Cover visual for living subjects:** SVG line art programmatic (two silhouettes, no faces, KL skyline) — convert via `rsvg-convert -w 1500 -h 2000 /tmp/cover.svg -o /tmp/cover.png`. Default. AI-generated via `mmx image generate` if principal accepts. Real photograph only when principal supplies AND subject AND any third party in frame have consented.
+
+**Verification:** `file /root/.hermes/cache/documents/doc_biography_<TITLE>.pdf` must return `PDF document, version 1.7+`. A text file with `.pdf` extension is the most common defect.
+
+## When the artifact is a two-reader news/reality deck (Arif + Syed or any bonded pair)
+
+Three signals tell you this is the shape: the principal asks for "news and reality deck", "tell me everything I and <person> need to know", "for me and abang sado", or asks for "everything about the news" without specifying a single recipient.
+
+The shape that survives:
+
+1. **Address both readers by name in the cover.** "ARIF × SYED — News & Reality Deck" beats generic "Market Update". The bonded pair IS the audience; their names tell each reader the other will see this too.
+2. **Three columns of "what to do" at the end — one per actor.** (a) For Arif (decisions pending, work, MSS), (b) For Syed (positions, discipline, body), (c) For both (shared context: macro forces, calendar). Each column is its own list of dated items. The deck is **not** a market briefing — it is a "what each of us should do this week" memo, grounded in macro reality.
+3. **Primary-source citation per figure, NOT footnote numbers.** Embed the source inline ("per TradingEconomics, 24 Sept 17:46 ET"; "per BERNAMA"; "per Wikipedia Hormuz 2026"). Forwarded readers should be able to spot-check without flipping to a references page. The forwardable variant rule still applies — but in a deck, citations live in the body, not in a closing bibliography.
+4. **Calendar items section with explicit MYT dates.** Arir/Syed live in Malaysia. The "what to watch next week" section must anchor to Malaysia timezone + Malaysia calendar (CP review, MSS deadline, Anwar Cabinet events). Universal investor calendars are not the deliverable here.
+5. **Close on "what this is NOT".** The deck is news-grade and reality-grounded. It is NOT trading advice, financial recommendation, political endorsement, or verdict on the principal's pending decisions. State this explicitly near the closing line — forwardable decks lose this disclaimer first when screenshotted.
+6. **Provenance + length.** 8–12 pages is the working range for a weekly deck. Below 6 it stops being comprehensive; above 14 it stops being read. Aim for the middle.
+
+Verified (2026-09-25): ARIF_X_SYED_NEWS_DECK_2026-09-25.pdf, 9 pages, 64 KB, plain typography (no charts, no color), news-grade macro synthesis.
+
 ## When the artifact is a literature-grade synthesis (long document, cross-domain, no commentary)
 
 Three signals tell you this is the shape: the principal asks for "literature grade", names multiple

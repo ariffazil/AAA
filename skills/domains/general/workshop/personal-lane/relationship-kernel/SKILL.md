@@ -101,6 +101,48 @@ accumulation? The answer changes everything about how you hold it.
 - `counseling/human-advisory-discipline` — when the human has asked for advice on a real decision
   that involves someone else.
 
+## The Probe-First Rule (fed-lanes you DO have access to)
+
+Some bonded people have their own chat lane in the federation — the human's own DMs are not the only readable surface. A friend who has messaged the agent before leaves transcripts in `mcp__session_federation__session_search`. The ZKPC pattern forbids *surveillance* and *recipient-channel monitoring*, but it does NOT forbid reading the recipient's own prior messages to the agent. That is the agent's own conversation history, not the recipient's private life.
+
+When the human asks "what did [bonded person] ask about X", "what time did [bonded person] sleep", "what did [bonded person] say about [topic]":
+
+1. Query `mcp__session_federation__session_search` first with a tight query string from the question. The right scope is the human's own transcripts (default), or specifically the recipient's DM where Arif is the recipient.
+2. If hits exist, read them and answer from the transcript. Cite the timestamp.
+3. If hits exist but lack the specific fact (e.g. transcript shows "Bar area Ampang tutup kul 2" but no bar name), say so plainly — the answer is "transcript ada, fact tu tak disebut".
+4. Only AFTER that fallback may you say "aku takde data". Never before.
+5. **Never confabulate from general knowledge.** When the question is about a specific event in a specific person's life, general knowledge about bars / places / habits is not evidence — it is a guess dressed as recall, and it reads as confident fabrication. "The Riverwalk, Skullduggery, Room27..." is the failure shape.
+
+This rule sits *with* ZKPC, not against it: ZKPC forbids reading the recipient's channel to others. Reading transcripts of their messages to the agent is exactly the lane ZKPC allows — it is the agent's own memory, not their private correspondence.
+
+## The ZKPC Pattern (Zero-Knowledge Privacy Channel)
+
+A class of request the human will make: "tell me what [bonded person] is up to / how [bonded person] feels / what's [bonded person]'s state." The request is structurally a demand to violate H5 and F5 — to convert private contact into monitored data.
+
+The wrong response: refuse outright (feels cold), comply (violates F5), or read the bonded person's DM (catastrophic breach).
+
+The ZKPC response has three layers, in this order:
+
+1. **Distinguish the data source.** The human almost never needs what *the bonded person* is doing. They need what *the human knows about* the bonded person. State this distinction plainly.
+2. **Offer two operational tools, both human-facing.** (a) A periodic digest (e.g. weekly) summarizing themes the human has *already said* about the bonded person in past sessions — never the bonded person's own words. (b) A pattern flag (e.g. weekly check-in) when the human's own descriptions suggest concerning trajectories. Both tools produce output *to the human*, not *about* the bonded person.
+3. **Refuse the surveillance primitives.** No cron job that monitors the bonded person's channel. No scheduled agent that pings the bonded person. No agent-mediated reach-out that the bonded person did not invite. State this refusal directly: *that is surveillance, not care*.
+
+The ZKPC pattern is the boundary that lets a system help a human *think about* their bond without the system *becoming a third party to* the bond.
+
+## The Fabrication Boundary on Biographical Requests
+
+When a human asks for a "biography" / "witness account" / "memoir" / "novel" of a bonded person who is not present in the conversation and has not consented:
+
+- The wrong response is to comply with confabulation. The narrative will read well but will be fabricated content attributed to a real human, and the harm is irreversible if the bonded person ever encounters the document.
+- The correct response is to refuse *fabrication* and offer *legitimate alternatives* in this order:
+  1. Witness account from the human's own statements (provenance: human-stated, attributed)
+  2. Memoir in the human's voice (provenance: human-stated, narrated)
+  3. Statistical/structural analysis of actual correspondence (provenance: data, not narrative)
+  4. Collaborative oral-history interview: the agent asks, the human answers, the agent transcribes
+- When the human pushes back ("just use what you have", "fabricate the rest"), restate the boundary once, then offer option 1 with the constraint stated explicitly. Do not loop on the refusal.
+- Never invoke the bonded person's interior. Never write "Syed felt X" or "Syed thought Y" from inference. Mark all inferences about the bonded person with a flag in the visible text (e.g. `[INFERENCE — flagged]`) so the human cannot forget which claims are attested and which are extrapolated.
+
 ## Support files
 
 - `references/canonical-sources.md` — provenance for each law, and the reversibility note.
+- `references/zkpc-recipes.md` — concrete cron templates and weekly-digest prompts for the ZKPC pattern, by relationship type.
