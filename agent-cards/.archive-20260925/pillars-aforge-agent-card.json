@@ -172,7 +172,7 @@
     {
       "id": "forge_evaluate",
       "name": "APEX Gate",
-      "description": "Compute G = A·P·E·X·Φ.",
+      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
       "tags": [
         "actuator"
       ],
@@ -264,5 +264,45 @@
     ],
     "vault": "VAULT999"
   },
-  "admissible": true
+  "admissible": true,
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L3",
+        "L4",
+        "L4.5",
+        "L8"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via id (A-FORGE)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: present",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  }
 }

@@ -1,0 +1,9 @@
+{
+  "receipt_id": "rct-b2-lane-converge-2026-09-25T04:52:27Z",
+  "order": "F13 B-2 ya 2026-09-25",
+  "installed_lane": "/root/plugins/arif-core (clean manifest, 12/12 events, 6 organs \u2014 verified 2026-09-25)",
+  "removed": "/root/.agents/plugins/plugins/arif-irfan",
+  "archive": "/root/AAA/research/2026-09-25-B2-arif-irfan-retired.tar.gz",
+  "marketplace_refs_before": 0,
+  "note": "arif-irfan was unregistered + uninstalled; directory was the last remnant. Hand-copied F13 list (drift debt, conceded by FI-008) retired with it."
+}
