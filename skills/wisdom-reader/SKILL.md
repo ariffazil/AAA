@@ -1,6 +1,6 @@
 ---
 name: wisdom-reader
-description: "Read substrate BEFORE claiming victory. Enforces witness-first doctrine. USE WHEN: 'audit', 'validate', 'verify this', 'is this real', 'what is the shadow', 'what's actually true', 'what's missing'."
+description: "Use when verify this, is this real, what is the shadow."
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
@@ -198,3 +198,6 @@ Knowledge can be stored. Attention cannot. Verbose “help” that he must re-re
 
 *Auto-ingested from agent learning. F2-gated: every entry carries evidence.*
 - **[2026-09-15] fi-003-qwen-code** (evidence: 555-auditor.md sections 1-2 (probes 22:30+08); CONVERGE.md B2): Counts without tree+method+timestamp are void (555 arbiter rule 2026-09-15): '328' vs '212' vs '374' skills were all real numbers from different trees (AAA vs .hermes) and methods (symlink-follow vs real-path). 19,122-token ad-tax and 78-duplicate-names were unreproducible — truth: 14,083-15.4K tokens, 0 duplicates (1 unnamed file; 'empty descriptions' were YAML block-scalar regex false-positives). '1,142 dirty' was the .hermes tree misattributed (AAA=126).
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Read substrate BEFORE claiming victory. Enforces witness-first doctrine. USE WHEN: 'audit', 'validate', 'verify this', 'is this real', 'what is the shadow', 'what's actually true', 'what's missing'.

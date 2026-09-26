@@ -2,7 +2,7 @@
 id: FORGE-mcp-probe
 name: FORGE-mcp-probe
 version: 1.0.0
-description: 'Probe any MCP server (local or HTTPS) using MCPJam CLI or SDK. Discover protocol version, tool/resource/prompt surface, OAuth conformance, and stateless transport (2026-07-28) support. Use this skill whenever an MCP server endpoint needs to be verified — whether it is the federation organs, a public HTTPS MCP server, or a third-party vendor endpoint.'
+description: "Probe MCP servers live: test tools, ping, verify transport."
 owner: AAA
 risk_tier: low
 autonomy_tier: T1

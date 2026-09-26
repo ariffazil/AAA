@@ -3,7 +3,7 @@ name: openclaw
 id: openclaw
 version: 1.0.0
 risk_tier: medium
-description: 'OpenClaw edge agent bridge — operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface). USE WHEN: "openclaw unhealthy", "gateway down", "edge bot not responding", "a2a bridge disconnected", "watchdog tripped", "openclaw doctor", "openclaw restart". NOT for token/security audit — use FORGE-telegram-audit.'
+description: "Use when openclaw unhealthy, gateway down."
 owner: A-FORGE
 floor_scope:
 - F1
@@ -227,3 +227,5 @@ One-paragraph outcome.
 *Forged 2026-08-06 by kimi-code/FI-008 (warga-aaa) under sovereign override on `Sweep AAA 71 / Autogen OpenClaw SKILL` directive. T2 autonomy tier per `openclaw restart` service-impacting nature.*
 
 *DITEMPA BUKAN DIBERI ⚒️*
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** OpenClaw edge agent bridge — operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface). USE WHEN: "openclaw unhealthy", "gateway down", "edge bot not responding", "a2a bridge disconnected", "watchdog tripped", "openclaw doctor", "openclaw restart". NOT for token/security audit — use FORGE-telegram-audit.

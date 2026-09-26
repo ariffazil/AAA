@@ -1,6 +1,6 @@
 ---
 name: codebase-reality
-description: "CLI-first evidence contract for federated code intelligence — revision-pinned repo dossiers, purpose-specific subgraphs, boundary gates, and reality reconciliation across intended/static/observed/verified/unknown."
+description: "Map repo static vs verified code reality via CLI evidence."
 argument-hint: ["<mode> <repo> [args]", "modes: repo|map|symbol|flow|impact|architecture|before_change"]
 capability_tier: fed-multimodal-vision
 ecology_state: WARM

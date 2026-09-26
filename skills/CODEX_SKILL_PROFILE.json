@@ -21,60 +21,221 @@
     "apex": "constitutional contrast and verdict; judges but does not build"
   },
   "skills": [
-    {"name":"kernel-bind","axis":"substrate"},
-    {"name":"observe-ground","axis":"substrate"},
-    {"name":"route-dispatch","axis":"substrate"},
-    {"name":"memory-manage","axis":"substrate"},
-    {"name":"verify-gate","axis":"substrate"},
-    {"name":"audit-seal","axis":"substrate"},
-    {"name":"know-physics","axis":"knowledge"},
-    {"name":"know-math","axis":"knowledge"},
-    {"name":"know-language","axis":"knowledge"},
-    {"name":"FORGE-github","axis":"code"},
-    {"name":"FORGE-ci-diagnose","axis":"code"},
-    {"name":"FORGE-issue-triage","axis":"code"},
-    {"name":"FORGE-pr-review","axis":"code"},
-    {"name":"FORGE-pr-governance","axis":"code"},
-    {"name":"FORGE-code-wiki","axis":"code"},
-    {"name":"FORGE-code-analysis","axis":"code"},
-    {"name":"FORGE-readme-truth-check","axis":"code"},
-    {"name":"KERNEL-verbs-forge-hands","axis":"code"},
-    {"name":"FORGE-docker","axis":"ops"},
-    {"name":"FORGE-vps-docker","axis":"ops"},
-    {"name":"KERNEL-mcp-builder","axis":"ops"},
-    {"name":"FORGE-mcp-smoke-test","axis":"ops"},
-    {"name":"FORGE-infra-guardian","axis":"ops"},
-    {"name":"FORGE-incident-triage","axis":"ops"},
-    {"name":"FORGE-spatial-grounding","axis":"ops"},
-    {"name":"FORGE-verify-runtime","axis":"ops"},
-    {"name":"FORGE-mcp-lifeguard","axis":"ops"},
-    {"name":"FORGE-model-monitor","axis":"ops"},
-    {"name":"FORGE-google-workspace","axis":"ops"},
-    {"name":"MCP-transport-physics","axis":"ops"},
-    {"name":"FORGE-skill-creator","axis":"meta"},
-    {"name":"FORGE-skill-linter","axis":"meta"},
-    {"name":"RSI-recursive-improvement","axis":"meta"},
-    {"name":"AUDIT-recursive-audit","axis":"meta"},
-    {"name":"ASI-evals","axis":"meta"},
-    {"name":"AGI-plan-dag","axis":"meta"},
-    {"name":"AUDIT-skill-atlas","axis":"meta"},
-    {"name":"ASI-cooling-ledger-rsi","axis":"meta"},
-    {"name":"AUDIT-symbolic-trust","axis":"meta"},
-    {"name":"AGI-skill-unification","axis":"meta"},
-    {"name":"FORGE-onboarding","axis":"a2a"},
-    {"name":"FORGE-kimi-code","axis":"a2a"},
-    {"name":"KERNEL-sovereign-recognize","axis":"a2a"},
-    {"name":"FORGE-subagent-spawn","axis":"a2a"},
-    {"name":"AGI-cross-agent-handoff","axis":"a2a"},
-    {"name":"APEX-quantum-eureka","axis":"agi"},
-    {"name":"KERNEL-quantum-runtime","axis":"agi"},
-    {"name":"AGI-codex-chain-of-thought","axis":"agi"},
-    {"name":"ASI-agent-invariants","axis":"asi"},
-    {"name":"ASI-agentic-architecture","axis":"asi"},
-    {"name":"arifos-constitutional-judge","axis":"apex"},
-    {"name":"arifos-constitutional-judge","axis":"apex"},
-    {"name":"arifos-constitutional-judge","axis":"apex"},
-    {"name":"arifos-constitutional-judge","axis":"apex"},
-    {"name":"KERNEL-trinity-33","axis":"apex"}
+    {
+      "name": "kernel-bind",
+      "axis": "substrate"
+    },
+    {
+      "name": "observe-ground",
+      "axis": "substrate"
+    },
+    {
+      "name": "route-dispatch",
+      "axis": "substrate"
+    },
+    {
+      "name": "memory-manage",
+      "axis": "substrate"
+    },
+    {
+      "name": "verify-gate",
+      "axis": "substrate"
+    },
+    {
+      "name": "audit-seal",
+      "axis": "substrate"
+    },
+    {
+      "name": "know-physics",
+      "axis": "knowledge"
+    },
+    {
+      "name": "know-math",
+      "axis": "knowledge"
+    },
+    {
+      "name": "know-language",
+      "axis": "knowledge"
+    },
+    {
+      "name": "FORGE-github",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-ci-diagnose",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-issue-triage",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-pr-review",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-pr-governance",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-code-wiki",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-code-analysis",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-readme-truth-check",
+      "axis": "code"
+    },
+    {
+      "name": "KERNEL-verbs-forge-hands",
+      "axis": "code"
+    },
+    {
+      "name": "FORGE-docker",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-vps-docker",
+      "axis": "ops"
+    },
+    {
+      "name": "KERNEL-mcp-builder",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-mcp-smoke-test",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-infra-guardian",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-incident-triage",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-spatial-grounding",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-verify-runtime",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-mcp-lifeguard",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-model-monitor",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-google-workspace",
+      "axis": "ops"
+    },
+    {
+      "name": "MCP-transport-physics",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-skill-creator",
+      "axis": "meta"
+    },
+    {
+      "name": "FORGE-skill-linter",
+      "axis": "meta"
+    },
+    {
+      "name": "RSI-recursive-improvement",
+      "axis": "meta"
+    },
+    {
+      "name": "AUDIT-recursive-audit",
+      "axis": "meta"
+    },
+    {
+      "name": "ASI-evals",
+      "axis": "meta"
+    },
+    {
+      "name": "AGI-plan-dag",
+      "axis": "meta"
+    },
+    {
+      "name": "AUDIT-skill-atlas",
+      "axis": "meta"
+    },
+    {
+      "name": "ASI-cooling-ledger-rsi",
+      "axis": "meta"
+    },
+    {
+      "name": "AUDIT-symbolic-trust",
+      "axis": "meta"
+    },
+    {
+      "name": "AGI-skill-unification",
+      "axis": "meta"
+    },
+    {
+      "name": "FORGE-onboarding",
+      "axis": "a2a"
+    },
+    {
+      "name": "FORGE-kimi-code",
+      "axis": "a2a"
+    },
+    {
+      "name": "KERNEL-sovereign-recognize",
+      "axis": "a2a"
+    },
+    {
+      "name": "FORGE-subagent-spawn",
+      "axis": "a2a"
+    },
+    {
+      "name": "AGI-cross-agent-handoff",
+      "axis": "a2a"
+    },
+    {
+      "name": "APEX-quantum-eureka",
+      "axis": "agi"
+    },
+    {
+      "name": "KERNEL-quantum-runtime",
+      "axis": "agi"
+    },
+    {
+      "name": "AGI-codex-chain-of-thought",
+      "axis": "agi"
+    },
+    {
+      "name": "ASI-agent-invariants",
+      "axis": "asi"
+    },
+    {
+      "name": "ASI-agentic-architecture",
+      "axis": "asi"
+    },
+    {
+      "name": "arifos-constitutional-judge",
+      "axis": "apex"
+    },
+    {
+      "name": "KERNEL-trinity-33",
+      "axis": "apex"
+    },
+    {
+      "name": "aaa-musyawarah-execution",
+      "axis": "a2a"
+    },
+    {
+      "name": "FORGE-musyawarah-gotong",
+      "axis": "a2a"
+    }
   ]
 }

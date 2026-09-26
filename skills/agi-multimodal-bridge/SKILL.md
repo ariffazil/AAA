@@ -2,13 +2,7 @@
 name: AGI-multimodal-bridge
 id: agi-multimodal-bridge
 risk_tier: low
-description: 'Multi-modal reasoning bridge — unifies text, image, tabular data, and
-  geospatial evidence into a single reasoning chain. Routes visual analysis through
-  GEOX vision pipeline, tabular data through WEALTH compute, and text through standard
-  LLM reasoning. USE WHEN: "analyze this image + data", "combine visual and textual
-  evidence", "multi-modal prospect evaluation".
-
-  '
+description: "Use when \"analyze this image + data\", tabular and geo."
 version: 1.0.0
 tags:
 - multimodal
@@ -52,3 +46,6 @@ Real-world evidence is multi-modal: seismic images, well logs (tabular), geologi
 - F2 TRUTH: Each modality processed with appropriate fidelity bounds.
 - F4 CLARITY: Fused output must be clearer than any single modality.
 - F8 GENIUS: Cross-modal synthesis must produce insight > sum of parts.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Multi-modal reasoning bridge — unifies text, image, tabular data, and geospatial evidence into a single reasoning chain. Routes visual analysis through GEOX vision pipeline, tabular data through WEALTH compute, and text through standard LLM reasoning. USE WHEN: "analyze this image + data", "combine visual and textual evidence", "multi-modal prospect evaluation".

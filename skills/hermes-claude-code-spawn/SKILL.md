@@ -1,6 +1,6 @@
 ---
 name: hermes-claude-code-spawn
-description: Spawn Claude Code as a governed execution harness from Hermes. Use when a coding task needs autonomous execution — feature implementation, refactoring, bug fixing, PR review, or any multi-step coding work. Routes through arifOS F1-F13 constitutional governance with structured JSON return.
+description: "Use when a coding task needs autonomous execution."
 version: 1.0.0
 owner: HERMES
 risk_tier: T2
@@ -123,3 +123,6 @@ Record the CC spawn in the audit trail with both session IDs (Hermes + CC).
 | `error_max_turns` | Report partial result, suggest `--max-turns 30` for next round |
 | CC binary not found | Check `/root/.local/bin/claude`, report installation gap |
 | Kernel down (:8088) | HOLD — do not spawn ungoverned |
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Spawn Claude Code as a governed execution harness from Hermes. Use when a coding task needs autonomous execution — feature implementation, refactoring, bug fixing, PR review, or any multi-step coding work. Routes through arifOS F1-F13 constitutional governance with structured JSON return.

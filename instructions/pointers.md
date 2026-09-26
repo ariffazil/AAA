@@ -30,6 +30,22 @@
 | `/root/AAA/governance/SIX_CONSTITUTIONAL_LEDGERS.md` | Six ledgers (LAW STATE BRAIN CAPS TOOLS SKILLS) |
 | `/root/AAA/terminal/BOOT.md` | Clerk contract — inherit `state.json`, increment X |
 
+## Behaviour-rule owners (wiring index, 2026-09-26)
+
+> F13: *"no new skills, no new tools — fix the transport wiring pointer."*
+> These rules **already have owners**. They failed on **reach**, not capability:
+> fragment never rendered to `AGENTS.md`, or skill never routed into a bundle.
+> Point here; do not re-author the rule elsewhere.
+
+| Rule | Owner | Wiring |
+|---|---|---|
+| Arithmetic is never computed in-head — use the calculator; cross-verify pass-2 | `/root/AAA/skills/know-math/SKILL.md` (`Don't use for → Simple arithmetic (calculator)`) | bundle `anti-bangang-core` |
+| Admit a specific error immediately; never substitute a stronger claim | `/root/AAA/instructions/external-action-repair.md` | fragment |
+| Never construct a person's inner life — witness, don't narrate | `/root/AAA/instructions/anti-haram-behavior-canonical.md` (HARAM 5 + *"menyaksikan atau mengarang?"*) | fragment |
+| Receipt binds every consequential claim / number | `claim-receipt-binding.md` · `exe-receipt-discipline.md` | fragment |
+| MEASURED outranks DERIVED; label OBS·DER·INT·SPEC | `/root/AAA/skills/evidence-hierarchy/SKILL.md` · `evidence-discipline.md` | bundle `evidence-audit` |
+| Register / tone for a given human lane | `know-language` · `human-meaning-membrane` | bundle `human-reality-edge` |
+
 ## Sketchpad & Receipts (canonical, 2026-08-15)
 
 > **Single sketchpad:** `/root/forge_work`. No parallel roots.
@@ -77,7 +93,7 @@ Clerks do **not** curl `:7073` at init. Hero is the only thinker.
 | `/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml` | **Skill SOT** — 95 logical skills, 3-layer-3-axis |
 | `/root/AAA/skills/SKILL_ALIAS_TABLE.json` | **Alias table** — 166 rows (V3 short name → disk) |
 | `/root/AAA/skills/CONTRAST_ANALYSIS_2026-08-08.md` | **Zen contrast report** — 10-surface audit template |
-| `/root/AAA/skills/scripts/skill-mesh-sync.sh` | Mesh sync — grok/claude/codex/opencode symlinks |
+| `/root/scripts/skill-mesh-sync.sh` | **Skill mesh sync** — rebind harness skill views to AAA catalog. Default = dry-run; `--apply` creates missing symlinks; `--check` exits 1 on drift. **Canon: `AAA/skills` + `.agents/skills`; harnesses are views.** (Path corrected 2026-09-26 — previously written as `AAA/skills/scripts/`, which does not exist) |
 | `/root/.hermes/skills/core/governance/skill-portfolio-audit/` | multi-surface audit — portfolio/drift/atlas (absorbed `AUDIT-recursive-audit`, `AUDIT-drift-detector`, `AUDIT-skill-atlas`, `AUDIT-agent-skill-mesh`, Wave 2) |
 | `/root/AAA/skills/FORGE-mcp-testing/` | **MCP testing doctrine** — use MCPJam Inspector, not coding agents |
 | `http://127.0.0.1:6274` | **MCPJam Inspector** — local test/debug/evals for any MCP server |

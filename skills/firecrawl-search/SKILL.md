@@ -1,6 +1,6 @@
 ---
 name: firecrawl-search
-description: Find web sources with query-relevant page excerpts and optional full-page content, and discover workflows, data APIs, and indexes. Use for web research or finding structured records, listings, transcripts, and datasets. Supports semantic tool discovery, domain matching, and progressive catalogue browsing.
+description: "Use for web research or finding structured records."
 allowed-tools:
   - Bash(firecrawl *)
   - Bash(npx firecrawl-cli *)
@@ -136,3 +136,6 @@ fi
 - [firecrawl-developer-index](../firecrawl-developer-index/SKILL.md) — issues, merged PRs, READMEs, and docs
 - [firecrawl-research-index](../firecrawl-research-index/SKILL.md) — published papers, not `search --categories research`
 - [firecrawl-build-search](https://github.com/firecrawl/skills/tree/main/skills/build/firecrawl-build-search) — building search into an app instead of running it here
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Find web sources with query-relevant page excerpts and optional full-page content, and discover workflows, data APIs, and indexes. Use for web research or finding structured records, listings, transcripts, and datasets. Supports semantic tool discovery, domain matching, and progressive catalogue browsing.

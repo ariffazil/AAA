@@ -1,6 +1,6 @@
 ---
 name: geox-voice-reality-ingest
-description: "GEOX Voice Reality Ingestion — penukar suara manusia jadi entiti realiti GEOX yang boleh dicari. BUKAN chatbot suara. DECODE (ASR, bakar kuota PAYG percuma) -> KATEGORI GUARD (F6/F13 sempadan) -> METABOLIZE (claim struktur + falsification_path) -> SINK (GEOX claim ledger + scar + resit). USE WHEN: 'voice note jadi pengetahuan GEOX', 'rekod CP review', 'scar dari suara', 'sejarah lisan telaga', 'oral history', 'transkrip jadi claim', 'kuota ASR Qwen', 'GEOX witness recorder', 'cognitive offload suara'. NOT untuk: TTS, voice clone, atau content peribadi/relationship (route ke relationship-memory-isolation)."
+description: "Convert voice notes to searchable GEOX subsurface knowledge."
 version: 1.0.0
 author: 333-AGI for ARIF
 forged: 2026-09-24
@@ -152,3 +152,6 @@ result = ingest_file(Path(audio_path), kind="voice_note")
 Atau: `python3 /root/GEOX/voice/hooks/telegram_voice_hook.py <fail_audio>`
 
 DITEMPA BUKAN DIBERI ⚒️
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** GEOX Voice Reality Ingestion — penukar suara manusia jadi entiti realiti GEOX yang boleh dicari. BUKAN chatbot suara. DECODE (ASR, bakar kuota PAYG percuma) -> KATEGORI GUARD (F6/F13 sempadan) -> METABOLIZE (claim struktur + falsification_path) -> SINK (GEOX claim ledger + scar + resit). USE WHEN: 'voice note jadi pengetahuan GEOX', 'rekod CP review', 'scar dari suara', 'sejarah lisan telaga', 'oral history', 'transkrip jadi claim', 'kuota ASR Qwen', 'GEOX witness recorder', 'cognitive offload suara'. NOT untuk: TTS, voice clone, atau content peribadi/relationship (route ke relationship-memory-isolation).

@@ -1,6 +1,6 @@
 ---
 name: malaysia-reality-interface
-description: "Governed Malaysia data lanes for all organs — verified live endpoints (data.gov.my weather/catalogue, BNM), ring model (0-3), organ assignments (WEALTH/GEOX/WELL/HERMES/AAA), capability registry. Use when \"malaysia data\", \"BNM\", \"OPR\", \"MYR\", \"malaysian weather warning\", \"DOSM statistics\", \"MyGDX\", \"MyInvois\", \"duitnow\", \"geospatial malaysia\", \"malaysia open api\"."
+description: "Fetch verified Malaysia macro, policy, energy, company data."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
@@ -39,3 +39,6 @@ Provenance before prose · freshness labels LIVE/RECENT/HISTORICAL/UNKNOWN · no
 ## Staged (organ code-level, restart-gated — T2)
 
 New MCP tools per organ (e.g. `wealth_malaysia_bnm`, `geox_mygdi_metadata`, `well_hazard_context`) are specified in `/root/docs/malaysia-reality-interface.md` §6 as packages `mcp-malaysia-open/geo/governed`. Skills+CLI first; build MCP only when 3+ agents share the need (context-tax law).
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Governed Malaysia data lanes for all organs — verified live endpoints (data.gov.my weather/catalogue, BNM), ring model (0-3), organ assignments (WEALTH/GEOX/WELL/HERMES/AAA), capability registry. Use when "malaysia data", "BNM", "OPR", "MYR", "malaysian weather warning", "DOSM statistics", "MyGDX", "MyInvois", "duitnow", "geospatial malaysia", "malaysia open api".

@@ -5,7 +5,7 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: knowledge
-description: "All human interface is linguistic. Meaning ≠ syntax. Pragmatics > semantics > syntax. The gap between said and meant is where governance lives. Language substrate — how words carry weight, ambiguity, and shadow."
+description: "Model language pragmatics, context gaps, and human intent."
 owner: F13 SOVEREIGN
 status: active
 three_axis: true

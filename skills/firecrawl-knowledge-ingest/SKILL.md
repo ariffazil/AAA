@@ -1,6 +1,6 @@
 ---
 name: firecrawl-knowledge-ingest
-description: Ingest public or authenticated knowledge bases and docs portals with Firecrawl browser. Use for JS-heavy docs, login-gated portals, paginated help centers, support knowledge bases, or structured JSON/markdown extraction from documentation sites.
+description: "Use for JS-heavy docs, login-gated portals."
 license: ISC
 metadata:
   author: firecrawl
@@ -72,3 +72,6 @@ Use `source`, `url`, `extractedAt`, `totalArticles`, and `sections[]` with artic
 - Strip nav chrome, headers, and footers.
 - Track extraction progress and page failures.
 - Respect authentication boundaries.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Ingest public or authenticated knowledge bases and docs portals with Firecrawl browser. Use for JS-heavy docs, login-gated portals, paginated help centers, support knowledge bases, or structured JSON/markdown extraction from documentation sites.

@@ -395,6 +395,7 @@ If any one still references the old state, you are a "saksi palsu" — false wit
 - `references/tts-provider-lane-map.md` — every endpoint, key prefix, HTTP result, quota semantic, dated
 - `references/tts-lane-updates-2026-08-18.md` — mmx base-url fix, Qwen no-Malay discovery, seat quota flavours
 - `references/malaysia-ai-landscape-2026-08.md` — Mesolitica/ILMU/SEA-LION/Sahabat-AI/datasets knowledge bank
+- `references/voice-alias-pattern-2026-09-26.md` — Personal-voice-alias registry pattern: short principal-chosen handle ("SS", "warm-bossy") resolves to a canonical voice artifact in `/root/.hermes/cache/aliases/<handle>.json` without embedding the underlying voice name in shared metadata. Use when principal wants a memorable shortcut for a preferred voice.
 - `references/iarif-lane-separation-2026-08-18.md` — three-lane voice architecture (i-ARIF sovereign / MakcikGPT sibling / Sado lock), Penang phonetic rewrite layer, V5 F5-TTS staging with GPU gate, voice_id PENDING truth discipline. NEW 2026-08-18.
 - `references/stt-quality-verification-2026-08-18.md` — Groq Whisper STT as TTS quality falsification gate, curl template, pitfalls
 - `references/tts-landscape-all-plans-2026-08-18.md` — Complete TTS provider comparison across all Token Plans (MiniMax, Qwen, edge-tts, voice cloning). Proven 2026-08-18.

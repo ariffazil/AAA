@@ -3,10 +3,7 @@ name: FORGE-telemetry-watchdog
 id: forge-telemetry-watchdog
 owner: A-FORGE
 floor_scope: [F1, F2, F4, F7]
-description: >
-  Monitor organ telemetry freshness across the federation. Checks state.json age,
-  biometric data staleness, and watchdog cron health. USE WHEN: "check telemetry",
-  "WELL state stale", "vitality unknown", "watchdog status", "biometric freshness".
+description: "Check state.json freshness, watchdog crons, WELL telemetry."
 version: 2026.07.19
 floors: [F2, F4]
 risk_tier: low
@@ -55,3 +52,7 @@ When state.json shows `"truth_status": "INSUFFICIENT_DATA"` and `"telemetry_conf
 - The `state.test.json` file contains quarantined test data
 
 **SOT:** 2026-07-19 · **seal_seq:** 4
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Monitor organ telemetry freshness across the federation. Checks state.json age, biometric data staleness, and watchdog cron health. USE WHEN: "check telemetry", "WELL state stale", "vitality unknown", "watchdog status", "biometric freshness".
+

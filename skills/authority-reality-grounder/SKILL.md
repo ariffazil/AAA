@@ -1,6 +1,6 @@
 ---
 name: authority-reality-grounder
-description: "Anti-Shadow architecture validator."
+description: "Detect shadow architecture and audit authority boundaries."
 owner: AAA
 risk_tier: critical
 floor_scope:

@@ -3,7 +3,7 @@ name: forge-infra-guardian
 id: forge-infra-guardian
 version: 1.0.0
 risk_tier: low
-description: "Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry, DNS parity, tunnel status, and Cloudflare tunnel exposure. USE WHEN: \"check SSL\", \"Caddy config valid\", \"tunnel status\", \"DNS parity\", \"SSL expiry\", \"infra health\", \"Cloudflare check\"."
+description: "Audit Caddy proxy, Cloudflare SSL expiry, and DNS parity."
 owner: A-FORGE
 floor_scope:
 - F1
@@ -79,3 +79,6 @@ dig +short mcp.arif-fazil.com A
 - geox.arif-fazil.com → GEOX MCP
 - mcp.arif-fazil.com → arifOS MCP
 - openclaw.arif-fazil.com → OpenClaw gateway
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry, DNS parity, tunnel status, and Cloudflare tunnel exposure. USE WHEN: "check SSL", "Caddy config valid", "tunnel status", "DNS parity", "SSL expiry", "infra health", "Cloudflare check".

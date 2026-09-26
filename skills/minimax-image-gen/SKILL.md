@@ -2,7 +2,7 @@
 id: minimax-image-gen
 name: minimax-image-gen
 version: 1.0.0-2026.08.04
-description: Generate images, videos, TTS, voice clone, and music via MiniMax MCP server. Use when user asks to "draw", "generate image", "create picture", "make a photo", "text to image", "image generation".
+description: "Use when asked to \"draw\", \"generate image\", \"text to image\"."
 owner: 333-AGI
 risk_tier: T1
 floor_scope: F2, F4, F7
@@ -103,3 +103,6 @@ User: "Generate an image of a sunset over mountains"
 → Save to /root/forge_work/sunset_$(date +%Y%m%d_%H%M%S).jpg
 → Report: "Generated sunset image via MiniMax image-01. Saved to /root/forge_work/sunset_20260804.jpg"
 ```
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Generate images, videos, TTS, voice clone, and music via MiniMax MCP server. Use when user asks to "draw", "generate image", "create picture", "make a photo", "text to image", "image generation".

@@ -203,6 +203,31 @@ Don't load for:
 - Principal processes emotional content about a person (use `loved-one-worry-support` / `relationship-kernel`)
 - The bonded human is mentioned incidentally (no lane requested)
 
+## Full-access family tier — orthogonal compartmentalization variant
+
+The default lane above is **tender-register-on-demand** — the agent responds when the bonded human reaches out, in a softer register, with ZKPC privacy. There is a second, **wider** lane variant that fires when the principal explicitly grants "full agent access" to a family member (sibling, child-of-sovereign, parent):
+
+- **Tier = FAMILY (full capability).** The bonded human gets the same surface capability as a sovereign user — chat with the agent, file uploads, statistical analysis, image processing, voice note, scheduling, web search, link extraction, document analysis, basic coding help.
+- **Scope = PERSONAL lane only.** Their DM is their own (`<handle>-dm`); they cannot see the sovereign's DM, other siblings' DM, or any other family member's private channel.
+- **Constitutional = CLOSED.** VAULT999 sealed records (F1-F13 floors, SOUL.md content, sovereign calibration, governance ledger) are never exposed, even if the bonded human asks. The lane is family-tier for daily-help capability, not for governance authority.
+- **Shared infra = LOCKED.** They cannot command coding agents to mutate A-FORGE work, the federation manifest, or any other shared infrastructure. A-FORGE mutations require sovereign (F13) authorization.
+- **A2A handoff = BLOCKED.** They cannot initiate agent-to-agent handoffs with other family members. Cross-family coordination routes through the sovereign.
+- **Register calibration = ADULT-EQUALS, not child-care.** When the bonded human is an adult sibling or working family member, treat them as an equal, not as someone to manage. Casual-respectful, BM campur English, ask follow-ups when info is missing, acknowledge their professional context (e.g., "lab support work") instead of assuming they don't know things.
+
+This variant fires when the principal says "full agent access", "bagi dia full access", "bagi dia agent capabilities" or equivalent. It is **not** the default for "take care of him" — that stays in the tender-register lane above. The wider lane is an explicit grant.
+
+Default scaffold for the family-tier lane:
+
+```
+# 1. Add to people.yaml under bonded_humans: or sibling section
+# 2. Add lane route in channel_directory.json / lanes config
+# 3. Set privacy envelope in lane config (DM cross-visibility = OFF, constitutional = OFF, A-FORGE = OFF)
+# 4. Note register guidance in skill triggers (BM campur English, adult equals)
+# 5. Receipt with kill switch (single command from principal disables the lane)
+```
+
+Failure mode this prevents: granting "full access" as if it were sovereign trust, which would let the bonded human see the sovereign's private channel and access constitutional records. The wider lane gives daily-help capability without the cross-visibility that would breach the sovereign's privacy and the other family members' F5/F6.
+
 ## Constitutional compliance
 
 | Floor | How this skill serves it |

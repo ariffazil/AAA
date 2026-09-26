@@ -2,12 +2,7 @@
 name: forge-symlink-audit
 id: forge-symlink-audit
 floor_scope: [F1, F2, F4, F7]
-description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks
-  categorizes by location, and reports with safe-delete recommendations. USE WHEN:
-  "check symlinks", "broken links", "symlink debt", "find broken symlinks", or during
-  entropy sweeps.
-
-  '
+description: "Scan /root for broken symlinks and report safe-delete paths."
 version: 2026.07.19
 floors:
 - F1
@@ -61,3 +56,7 @@ find /root -maxdepth 5 -xtype l -delete
 - If symlink is in an organ directory, check if it's a `.git` symlink before deleting
 
 **SOT:** 2026-07-19 · **seal_seq:** 4
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Federation-wide broken symlink scanner. Scans /root for broken symlinks categorizes by location, and reports with safe-delete recommendations. USE WHEN: "check symlinks", "broken links", "symlink debt", "find broken symlinks", or during entropy sweeps.
+

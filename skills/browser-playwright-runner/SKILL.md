@@ -1,6 +1,6 @@
 ---
 name: browser-playwright-runner
-description: "Automated headless browser testing, end-to-end UI verification, full-page screenshot capture, visual regression checks, and client-side DOM assertions via Playwright. "
+description: "Run automated headless browser tests and full-page captures."
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
 ---

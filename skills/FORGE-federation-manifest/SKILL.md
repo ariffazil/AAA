@@ -2,7 +2,7 @@
 id: FORGE-federation-manifest
 name: FORGE-federation-manifest
 version: 2.0.0-2026.09.17
-description: "Federation topology manifest — arifOS organ registry, inter-organ contracts, MCP protocol conformance, and deployment attestation state. The machine-readable source of truth for federation topology."
+description: "Inspect organ topology, MCP contracts, and attestation."
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F4', 'F8', 'F11', 'F13']

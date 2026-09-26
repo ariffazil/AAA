@@ -2,7 +2,7 @@
 name: github-ops
 id: github-ops
 version: 2.0.0
-description: "Use when doing GitHub work — auth, repos, issues, PRs, review, CI, merge. One flow routes to the exact reference."
+description: "Manage GitHub issues, PRs, CI workflows, and commit signing."
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F11]

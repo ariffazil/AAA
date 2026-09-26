@@ -1,6 +1,6 @@
 ---
 name: AAA-somatic-engine-catalog
-description: "Registry of parametrically-controllable music engines for arifOS Somatic Music Intelligence. NOT a beat-maker catalog (composer lens handles that) — this is the Dispensary for engines that accept BPM/key/texture/density parameters and emit streaming audio. MiniMax T2A Music (music-2.6/3.0) primary; local sovereign alternatives (AudioGen/MusicGen) for F13 territory. i-ARIF vocal melodic: HARD DENY across all engines."
+description: "Select parametrically controllable music synthesis engines."
 version: 1.0.0
 author: kimi-code (FI-008) for ARIF
 forged: 2026-08-18

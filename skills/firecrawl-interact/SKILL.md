@@ -1,7 +1,6 @@
 ---
 name: firecrawl-interact
-description: |
-  Drive a live browser on a scraped page: click, fill forms, log in, paginate, infinite-scroll. Use when content requires interaction or a scrape failed or returned incomplete content.
+description: "Use when content needs interaction or a scrape failed."
 allowed-tools:
   - Bash(firecrawl *)
   - Bash(npx firecrawl-cli *)
@@ -70,3 +69,6 @@ firecrawl scrape "https://app.example.com" --profile my-app --no-save-changes
 - [firecrawl-search](../firecrawl-search/SKILL.md) — use `search` for web searches
 - [firecrawl-agent](../firecrawl-agent/SKILL.md) — AI-powered extraction (less manual control)
 - [firecrawl-build-interact](https://github.com/firecrawl/skills/tree/main/skills/build/firecrawl-build-interact) — building interact into an app instead of running it here
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Drive a live browser on a scraped page: click, fill forms, log in, paginate, infinite-scroll. Use when content requires interaction or a scrape failed or returned incomplete content.

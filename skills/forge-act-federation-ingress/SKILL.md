@@ -4,7 +4,7 @@ id: forge-act-federation-ingress
 owner: A-FORGE
 risk_tier: low
 floor_scope: [F1, F2, F4, F7]
-description: "Wire, verify, and operate federation Arif's Capability Tokens (ACT; formerly Session Capability Tokens / SCT - see Rename lineage below) across arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA). Use when: ACT gate (SCT gate), session_token, federation_act (federation_sct), ACT_AMBIGUOUS (SCT_AMBIGUOUS), tool_authority, FORGE_SCT_REQUIRE_MUTATE, 65-case matrix, decision event. Also covers ChatGPT App OAuth 2.1 resource-server alignment (RFC 9728 PRM, canonical resource identity, per-tool securitySchemes) as the EXTERNAL host ingress path alongside the INTERNAL ACT path."
+description: "Verify, mint, and debug Arif Capability Tokens (ACT/SCT)."
 version: 2026.09.04
 floors: [F1, F2, F11, F12, F13]
 autonomy_tier: T1
@@ -150,3 +150,6 @@ Threading rules:
 - Mix canonical resource identities across endpoint / PRM / OAuth param / audience check  
 - Expose `geox.seal` to ChatGPT v1 under any alias or wildcard scope  
 - Accept ACT on the external path, or OAuth bearer on the internal path  
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Wire, verify, and operate federation Arif's Capability Tokens (ACT; formerly Session Capability Tokens / SCT - see Rename lineage below) across arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA). Use when: ACT gate (SCT gate), session_token, federation_act (federation_sct), ACT_AMBIGUOUS (SCT_AMBIGUOUS), tool_authority, FORGE_SCT_REQUIRE_MUTATE, 65-case matrix, decision event. Also covers ChatGPT App OAuth 2.1 resource-server alignment (RFC 9728 PRM, canonical resource identity, per-tool securitySchemes) as the EXTERNAL host ingress path alongside the INTERNAL ACT path.

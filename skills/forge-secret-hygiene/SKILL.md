@@ -3,10 +3,7 @@ name: forge-secret-hygiene
 id: forge-secret-hygiene
 version: 1.0.0
 risk_tier: low
-description: 'Audit env.local, SOPS .env, and config files for plaintext secret leaks
-  key age, missing rotation dates, and overlong-lived credentials. USE WHEN: "secret
-  audit", "key age", "rotate secrets", "credential hygiene", "API key check", "env
-  audit", "secret leak scan".'
+description: "Scan env files and configs for leaked keys and old secrets."
 owner: A-FORGE
 floor_scope:
 - F1
@@ -118,3 +115,6 @@ cd /root/AAA && git log --oneline -1 2>/dev/null
    - Telegram history
    - Dockerfiles (use --build-arg or secrets)
 ```
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Audit env.local, SOPS .env, and config files for plaintext secret leaks key age, missing rotation dates, and overlong-lived credentials. USE WHEN: "secret audit", "key age", "rotate secrets", "credential hygiene", "API key check", "env audit", "secret leak scan".
