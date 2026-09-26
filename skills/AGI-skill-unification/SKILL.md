@@ -1,7 +1,7 @@
 ---
 name: AGI-skill-unification
 id: agi-skill-unification
-description: "Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table (V3 short→disk), mesh-sync, BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving dual names, rebinding harness skills, or before claiming skill inventory complete."
+description: "Use when unifying skill catalogs across agent harnesses."
 version: 1.0.1
 owner: AAA / F13 SOVEREIGN
 risk_tier: low
@@ -114,3 +114,6 @@ ROOT AGENT → live source probes + optional bounded independent audits
 ## Companion
 
 Load **`AUDIT-skill-atlas`** for routing and gap detection. This skill is the ops contract for unity.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table (V3 short→disk), mesh-sync, BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving dual names, rebinding harness skills, or before claiming skill inventory complete.

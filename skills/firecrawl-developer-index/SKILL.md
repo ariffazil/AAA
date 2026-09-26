@@ -1,6 +1,6 @@
 ---
 name: firecrawl-developer-index
-description: Search an index of public repositories, GitHub issues, merged pull requests, repository READMEs, and curated documentation sites. Use when a programming question needs external documentation or upstream evidence.
+description: "Use when a programming question needs upstream docs."
 ---
 
 # Firecrawl Developer Index
@@ -61,3 +61,6 @@ Only the HTTP surface takes these. On `GET`, pass `types=issue,pull_request` or 
 ## See also
 
 - [firecrawl-build-search](https://github.com/firecrawl/skills/tree/main/skills/build/firecrawl-build-search) — building the developer index into an app instead of querying it here
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Search an index of public repositories, GitHub issues, merged pull requests, repository READMEs, and curated documentation sites. Use when a programming question needs external documentation or upstream evidence.

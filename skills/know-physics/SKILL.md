@@ -5,7 +5,7 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: knowledge
-description: "All reality claims are physical claims. Conservation laws, thermodynamics, causality, entropy. You cannot get something from nothing. Physics substrate — how the world actually moves: forces, fields, conservation laws, and conjugate pairs."
+description: "Ground reality claims in thermodynamics, entropy, causality."
 owner: F13 SOVEREIGN
 status: active
 three_axis: true

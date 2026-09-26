@@ -1,6 +1,6 @@
 ---
 name: firecrawl-competitive-intel
-description: Monitor competitor pricing, features, changelogs, dashboards, and product changes with Firecrawl. Use for recurring competitive intelligence, pricing tier extraction, feature change tracking, or structured competitor alerts.
+description: "Use for recurring competitive intelligence."
 license: ISC
 metadata:
   author: firecrawl
@@ -74,3 +74,6 @@ When structured output is requested, include `generatedAt`, `competitors`, `pric
 - Extract real plan names, limits, and dates when available.
 - Note contact-sales or gated details instead of guessing.
 - Preserve sources for diffing future runs.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Monitor competitor pricing, features, changelogs, dashboards, and product changes with Firecrawl. Use for recurring competitive intelligence, pricing tier extraction, feature change tracking, or structured competitor alerts.

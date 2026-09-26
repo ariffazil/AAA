@@ -1,6 +1,6 @@
 ---
 name: firecrawl-company-directories
-description: Extract structured company lists from directories with Firecrawl. Use for scraping YC, Crunchbase, Product Hunt, G2, startup directories, category directories, or custom company databases into JSON, CSV, CRM-ready lists, or research tables.
+description: "Use for scraping YC, Crunchbase, Product Hunt, G2."
 license: ISC
 metadata:
   author: firecrawl
@@ -74,3 +74,6 @@ Use `source`, `filters`, `extractedAt`, `totalResults`, and `companies[]` with `
 - Deduplicate companies.
 - Track pagination progress.
 - Note rate limits, login walls, or CAPTCHA blocks.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Extract structured company lists from directories with Firecrawl. Use for scraping YC, Crunchbase, Product Hunt, G2, startup directories, category directories, or custom company databases into JSON, CSV, CRM-ready lists, or research tables.
