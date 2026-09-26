@@ -1,6 +1,6 @@
 ---
 name: forge-komda-color-law
-description: "Komda Color Law lint — enforces SOVEREIGN_DECREES §04 (territory color families). Use when generating, editing, or auditing any visual artifact (HTML/SVG/CSS) that claims a federation territory (arifos / geox / wealth / well / aaa). Foreign-family color in territory DOM = violation per F13 SOVEREIGN doctrine (2026-08-01)."
+description: "Lint visual assets against Komda territory color families."
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
 ---
@@ -105,3 +105,6 @@ Currently `--warn-only` at deploy time. To promote to gate:
 - ❌ **Don't** add bridges without §04.x appendix (reverses F9 ANTIHANTU bridge ratification).
 
 *DITEMPA BUKAN DIBERI* — the law is forged, not given.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Komda Color Law lint — enforces SOVEREIGN_DECREES §04 (territory color families). Use when generating, editing, or auditing any visual artifact (HTML/SVG/CSS) that claims a federation territory (arifos / geox / wealth / well / aaa). Foreign-family color in territory DOM = violation per F13 SOVEREIGN doctrine (2026-08-01).

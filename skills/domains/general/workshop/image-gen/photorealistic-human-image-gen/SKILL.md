@@ -1,6 +1,6 @@
 ---
 name: photorealistic-human-image-gen
-description: "Photorealistic human image generation via MiniMax image-01 — camera anchoring, cultural props, lighting mood control, power dynamics, and erotic framing without NSFW triggers."
+description: "Use when generating photorealistic human images."
 version: 1.0.0
 tags: [minimax, image-generation, photorealism, human-photography, camera-anchors, cultural-props, lighting]
 metadata:
@@ -229,3 +229,6 @@ natural body proportions, no AI artifacts,
 ---
 
 *Forged: 2026-08-01 · From 8-iteration Abang Sado session · DITEMPA BUKAN DIBERI*
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Photorealistic human image generation via MiniMax image-01 — camera anchoring, cultural props, lighting mood control, power dynamics, and erotic framing without NSFW triggers.

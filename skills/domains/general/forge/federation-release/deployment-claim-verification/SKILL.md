@@ -1,12 +1,6 @@
 ---
 name: deployment-claim-verification
-description: |
-  Verify deployment reports and feature claims against live system state and source data.
-  Cross-reference claimed counts, route availability, redirect behavior, and data integrity
-  against actual source files, live HTTP responses, and build artifacts. Catches inflated
-  numbers, phantom features, and routing misrepresentations before they become scars.
-  Use when Arif shares a deployment report and says "audit this", "verify these claims",
-  "is this real", "check the numbers", or presents a status table with counts to validate.
+description: "Use when audit this, verify these claims."
 triggers:
   - "audit this deployment"
   - "verify these claims"
@@ -348,3 +342,12 @@ See `references/mcp-contract-drift-audit-fix.md` for the full 6-phase pipeline w
 - `references/config-vault-chain-verification.md` — Config/vault-chain claim verification: masked vault inspection, mtime forensics (did the change land?), live provider-seat probing (models-list ≠ quota access), registry repair verification (seats.yaml per-entity cross-check), stale-audit detection, gateway restart pattern, and the kunci-mas SOT→flat→read vault chain layout. Proven on Qwen Token Plan seat-wiring chaos 2026-08-01.
 - `references/substrate-verification-pattern.md` — Deployment verification: `substrate_gate` is the receipt, not `substrate`. Two fields, different code paths — one proves the deploy took, the other is finer-grained health that may not be on the probe surface. Proven on arifOS 2026-08-02 deployment.
 - `references/gemini-multimodal-transport-audit.md` — Worked example: 3-report audit series where all reports claimed "multimodal harmonization complete" but only the config prune was real; transport layer (Omni/Veo/Lyria/TTS via openai_chat) returned 400/404/500. Recipe for distinguishing config-layer-OK from transport-layer-BROKEN with stable error signature table. Proven 2026-08-26.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Verify deployment reports and feature claims against live system state and source data.
+Cross-reference claimed counts, route availability, redirect behavior, and data integrity
+against actual source files, live HTTP responses, and build artifacts. Catches inflated
+numbers, phantom features, and routing misrepresentations before they become scars.
+Use when Arif shares a deployment report and says "audit this", "verify these claims",
+"is this real", "check the numbers", or presents a status table with counts to validate.
+

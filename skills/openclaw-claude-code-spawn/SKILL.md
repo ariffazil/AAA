@@ -1,6 +1,6 @@
 ---
 name: openclaw-claude-code-spawn
-description: Spawn Claude Code as a governed coding executor from OpenClaw gateway. Use when OpenClaw receives a coding task that needs autonomous execution. Routes through /acp spawn or direct CLI, with arifOS F1-F13 constitutional governance.
+description: "Use when OpenClaw gets a coding task to execute."
 version: 1.0.0
 owner: HERMES
 risk_tier: T2
@@ -77,3 +77,6 @@ With the anthropic plugin now enabled (`plugins.entries.anthropic.enabled: true`
 | CC session | `~/.claude/projects/` |
 | ACP tracking | `~/.openclaw/acpx/` |
 | Kernel session | `/tmp/opencode/session_state.json` |
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Spawn Claude Code as a governed coding executor from OpenClaw gateway. Use when OpenClaw receives a coding task that needs autonomous execution. Routes through /acp spawn or direct CLI, with arifOS F1-F13 constitutional governance.

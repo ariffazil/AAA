@@ -1,6 +1,6 @@
 ---
 name: duckdb-analytics-engine
-description: "In-process columnar SQL analytics engine over Parquet, CSV, JSONL, and well log (.las) files using DuckDB and Polars. "
+description: "Execute columnar SQL queries over Parquet, CSV, LAS logs."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---

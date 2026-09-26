@@ -5,7 +5,7 @@ version: 1.0.0
 owner: AAA
 risk_tier: medium
 floor_scope: [F1, F2, F4, F7]
-description: "Call Qwen Token Plan video models on the Personal allowlist (happyhorse-1.1-t2v / i2v / r2v). Activate for text-to-video, image-to-video, or reference-to-video on Token Plan."
+description: "Use for text-to-video, image-to-video, reference-to-video."
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
@@ -57,3 +57,6 @@ curl -s -X POST "https://token-plan.ap-southeast-1.maas.aliyuncs.com/api/v1/serv
 - MiniMax `generate_video` is a different hand (`minimax-media`).
 - Docs: https://docs.qwencloud.com/developer-guides/getting-started/video-models
   Allowlist: https://docs.qwencloud.com/token-plan/personal/token-plan-personal-overview
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Call Qwen Token Plan video models on the Personal allowlist (happyhorse-1.1-t2v / i2v / r2v). Activate for text-to-video, image-to-video, or reference-to-video on Token Plan.

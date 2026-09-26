@@ -3,7 +3,7 @@ id: pr-review-governance
 name: FORGE-pr-governance
 autonomy_tier: T1
 version: 1.1.0
-description: High-level governance layer for pull request review across the federation
+description: "Audit PR signers, duties separation, and F1-F13 compliance."
   Ensures separation of duties, required signers, and constitutional compliance before
   merge. This is the **policy layer** that decides who must approve. The **checklist**
   lives in `github-pr-review`; do not duplicate it here.

@@ -2,7 +2,7 @@
 id: fi-qwen-upgrade
 name: fi-qwen-upgrade
 version: 1.0.0
-description: "Atomic-swap upgrade of the Qwen Code release install (SHA256-verified, rollback-preserved). Use when Arif says 'upgrade qwen', 'qwen update', 'new qwen version', or when `qwen update` refuses with a misleading git-clone message."
+description: "Use when Arif says 'upgrade qwen' or qwen update fails."
 owner: 333-AGI
 risk_tier: medium
 floor_scope: [F1, F2, F11]
@@ -27,3 +27,6 @@ Qwen Code at /root is a release tarball install at `/root/.local/lib/qwen-code/`
 ## Rollback
 
 `mv /root/.local/lib/qwen-code.old.OLD /root/.local/lib/qwen-code`. The running session keeps the old binary in memory; next launch gets the new one. Never delete the `.old` tree same-day.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Atomic-swap upgrade of the Qwen Code release install (SHA256-verified, rollback-preserved). Use when Arif says 'upgrade qwen', 'qwen update', 'new qwen version', or when `qwen update` refuses with a misleading git-clone message.

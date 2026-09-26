@@ -3,10 +3,7 @@ name: create-skill
 id: create-skill
 version: 1.0.0
 risk_tier: low
-description: 'Interactively create a new Grok skill (SKILL.md + optional scripts/references).
-  Use when the user wants to create a skill, scaffold a skill, or runs /create-skill.
-
-  '
+description: "Use when the user wants to create a skill, scaffold a skill."
 metadata:
   short-description: Create a new Grok skill
 owner: AAA
@@ -91,3 +88,6 @@ Also write any supporting files (scripts, references) using the same create meth
 - Prefer referencing existing CLI tools over writing custom scripts.
 - Do NOT skip creating the directory. The file will fail to save without it.
 - Always use absolute paths when creating files to avoid writing to the wrong location.
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Interactively create a new Grok skill (SKILL.md + optional scripts/references). Use when the user wants to create a skill, scaffold a skill, or runs /create-skill.
+

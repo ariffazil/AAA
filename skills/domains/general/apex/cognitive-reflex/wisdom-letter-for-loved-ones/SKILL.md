@@ -132,6 +132,41 @@ This ensures the event is recorded for future context.
 
 ## Pitfalls
 
+### Probe source documents BEFORE drafting — the v1/v2/v3/v4 trap
+
+When the request is grounded in real-world data (a syllabus, a policy document, a regulation, a personal file), **read the source file before authoring**, not after the first draft has been rejected. The pattern that produces four versions of the same artifact is the same each time:
+
+- v1 was authored from inference ("based on the curriculum I see, here's a guide")
+- v2 was authored after the user attached the actual policy doc that contradicts v1
+- v3 was authored after v2's scope was wrong (timing, urgency, audience size)
+- v4 finally matched
+
+**The fix is at intake, not at iteration.** When the request lands, list every artifact attached or named (PDFs, chat exports, screenshots, voice notes) and read the load-bearing ones first. A letter about "a track selection happening in Sem I, 2026/2027" is grounded in a specific policy document; if that document is in the conversation, its contents override every guess the agent would otherwise make. Three PDFs in, the marginal cost of reading them is one extra `pdftotext` call; the cost of four wrong drafts is the user's full attention budget.
+
+**If the user attaches a follow-up document mid-letter** (a second PDF after the first draft is sent, a clarification that contradicts an earlier assumption), treat that document as the **canonical version** and rebuild from it — even if v1 was already approved. The first version is wrong by definition once the source it ignored is in evidence.
+
+### Gender, identity and scope-of-disclosure — what the requester said is the only contract
+
+The requester decides what goes into the letter. The agent decides none of it.
+
+- **Never infer gender, sexuality, marital status, religious identity, health condition, immigration status or family relationship from memory or from indirect signals in earlier messages.** If the letter needs to mention the subject's identity, the requester has to have stated it explicitly in the present session. Inference from prior context ("the user mentioned gender discrimination, so the subject is female") is the failure pattern — the inference can be wrong on a fact the user knows and the agent does not, and a letter addressed to the wrong gender or the wrong identity is irrecoverable.
+- **If the subject's identity has not been stated, ASK or use neutral framing.** A one-line clarification ("untuk subject ni — gender apa, atau aku tulis neutral?") costs one turn. A wrong-gender letter sent to a parent costs the recipient's trust in every letter that follows.
+- **Out-of-scope disclosure is the requester's call.** When memory contains details the requester has not surfaced for THIS letter (sexuality, mental health history, family conflict, financial distress), the default is: those details are NOT in the letter unless the requester says so. The agent's job is to be useful within the scope the requester set, not to surface everything it knows about the subject. A wisdom letter to a parent about workplace stress does not become a coming-out letter just because the agent has that context in memory — the requester chooses when, and to whom, identity is disclosed.
+- **High-stakes topics raise the bar.** When the letter touches family conflict, identity disclosure, terminal illness, abuse, divorce, addiction or suicidal ideation, the no-fabrication rule from §"Pitfalls" below is enforced strictly: every claim must trace to a verified fact the requester has stated or to the source documents in evidence. If the requester has not stated something and the source document does not say it, it does not enter the letter. The temptation to fill in sensitive detail from inference is strongest exactly where the cost of being wrong is highest.
+
+### Match intake depth to decision urgency
+
+A "pick one of three options" decision does not warrant a five-question introspective intake. When the user is asking "what should X take?" and X must decide soon, the agent's job is to give a decision frame, not a personality assessment. Use the lighter intake:
+
+- For a near-term binary/tertiary choice (track, role, course): ask **one tiebreaker question** the user can answer in a sentence ("what does X actually enjoy doing — even badly?"), give the recommended pick, and offer the deeper self-reflection questions only on request.
+- For a long-horizon life question (career change, leaving a relationship, large capital move): the deeper intake is appropriate, but cap it at three questions and state why each one matters.
+
+The failure shape is "5 introspective questions + wait for answers + 4 versions of the answer" when one tiebreaker and a recommendation would have closed the loop in two turns.
+
+### Treat any explicit time anchor from the user as overriding inference
+
+When the user states a date, a timeline or a phase ("masuk tahun 2 lAAAAA", "the deadline is Friday", "I leave next month"), treat it as the canonical timeline and rebuild any earlier artifact that was scoped to a different one. Casual form ("lAAAA", "today la", "ASAP") is not less authoritative than formal form — the user often signals "I'm correcting your prior assumption" by lowering register. The default is: the user's latest stated fact wins, even if it contradicts an inference the agent made from earlier context.
+
 ### Structural-skill boundary (do not leak into chat replies)
 
 This skill produces a **letter / briefing / nasihat PDF** for a human to read offline. Its
@@ -177,7 +212,39 @@ Pitfall #17 (the mode-detection guard that fires BEFORE the draft is composed).
 - **Don't lecture.** A loved one doesn't need a course. They need to be seen.
 - **Don't be longer than 8 pages.** A 12-page wisdom letter is a thesis. 4-6 pages is the sweet spot.
 - **Don't invent future milestones that contradict their trajectory.** If they just lost their job, don't write "you're now a VP." Write something plausible from where they stand.
-- **Don't use the future-self device if the person is in acute crisis.** It requires a baseline of hope to land. In acute distress, the present-tense letter alone is enough.
+### Don't use the future-self device if the person is in acute crisis. It requires a baseline of hope to land. In acute distress, the present-tense letter alone is enough.
+
+### Match the requested register, especially "wawabot fail" sensitivity
+
+When Arif specifies a register ("wawabot language", "full full Azwa language", "BM Gen Z rojak + Manglish, not formal Melayu"), the register IS the deliverable. Formal BM is the wrong artifact even if the wisdom is right. Failure shapes to refuse:
+
+- **Translating rojak into formal BM "to make it cleaner"** — strips the voice that the recipient will recognize
+- **Defaulting to letter/register of the v1 Nabilah session** (warm, formal) when the recipient is younger and reads Manglish
+- **Hedging on Manglish contractions** ("nak" → "hendak", "dah" → "sudah", "tu" → "itu") because they "look informal"
+
+The lever: when Arif names the register explicitly and references a prior agent failure ("wawabot fail this time"), the prior failure is the spec — match the named-gen failure mode, not the prior success mode.
+
+### The "tersirat" instruction is a first-class signal
+
+When Arif encodes an instruction with "tersirat only" / "don't mention it" / "encoded" markers, the letter carries a *visible layer* and an *encoded layer*. The encoded layer must:
+
+- Be present in the letter (else the instruction is unmet)
+- Not be obvious at first read (else it isn't encoded)
+- NOT contradict or undermine the visible layer
+
+Pattern recognition:
+- "rumah aku kat One South" + "hang boleh stay kat situ anytime" + "Tapi Arif pesan jangan sebut terlampau depan" = encode availability without begging
+- Vague third-person references ("Dia tengah stress tu") + name-resolution later in the letter ("'Dia' tu Syed") = encode without stating at the top
+
+### The "it's ok to take time" frame
+
+When Arif asks for tips on a high-pressure decision (rental, move-in, exam, application, deadline) and explicitly frames the request as "why it's ok to take time to find a good home," the letter's central thesis must be **permission-to-slow**, not optimization-for-speed. Decoration to avoid:
+
+- "Quick checklist" framing that rushes the reader
+- Efficiency language ("in 48 hours…") that mirrors the same pressure the thesis is dismantling
+- Generic "believe in yourself" closings that don't lend support to the actual decision to slow down
+
+The frame is: pressure is real and constructed; backup options exist; the deadline is a start-date, not a do-or-die; the recipient has time even when it doesn't feel like it.
 - **Don't make the future letter a prediction.** Frame it as "a letter you could write to yourself" not "this is what will happen." The distinction matters for people who've had predictions broken.
 - **Proofread for foreign-language bleed.** Check the final text for accidental non-Malay/English characters before rendering.
 

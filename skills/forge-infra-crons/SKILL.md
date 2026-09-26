@@ -1,6 +1,6 @@
 ---
 name: forge-infra-crons
-description: "Infrastructure cron job management — schedule, audit, and govern VPS cron entries. Read-only observation of root crontab, /etc/crontab, and /etc/cron.d. F1 AMANAH: never mutate crontabs without 888_HOLD."
+description: "Audit root and etc crontab entries without mutating state."
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM

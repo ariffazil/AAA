@@ -2,7 +2,7 @@
 id: FLAME-router
 name: FLAME-router
 version: "2026.07.25"
-description: >
+description: "Route inference between stateless FLAME and governed agents."
   Classify inference work into the stateless FLAME tool lane or the governed
   constitutional agent lane, with Arif-ratified division of labor (2026-07-24)
   and L3 Task-Routing doctrine (2026-07-25).

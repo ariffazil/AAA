@@ -1,6 +1,6 @@
 ---
 name: firecrawl-website-design-clone
-description: Extract any website's design system into an agent-ready DESIGN.md using Firecrawl scrape evidence. Use when the user wants colors, fonts, spacing, components, layout patterns, or brand/UI guidance from a website so AI agents can create new websites, clone a look, or build pages inspired by that design.
+description: "Use when the user wants colors, fonts, spacing, components."
 license: ISC
 metadata:
   author: firecrawl
@@ -142,3 +142,6 @@ If the user asks to implement, first produce or update `DESIGN.md`, then use it 
 - Distinguish observed facts from inferred approximations.
 - Keep the output compact enough that another agent can paste it into context and build from it.
 - Preserve source URLs and scrape artifacts for review.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Extract any website's design system into an agent-ready DESIGN.md using Firecrawl scrape evidence. Use when the user wants colors, fonts, spacing, components, layout patterns, or brand/UI guidance from a website so AI agents can create new websites, clone a look, or build pages inspired by that design.

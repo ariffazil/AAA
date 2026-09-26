@@ -1,6 +1,6 @@
 ---
 name: firecrawl-shop
-description: Research products across the web with Firecrawl and produce a shopping recommendation or cart-ready summary. Use when the user wants to compare products, find the best option, evaluate reviews, respect budget/preferences, or shop with a saved browser session.
+description: "Use when the user wants to compare products."
 license: ISC
 metadata:
   author: firecrawl
@@ -66,3 +66,6 @@ sites: [preferred sites]
 - Be specific with model numbers, prices, and sellers.
 - Do not purchase or check out without explicit approval.
 - Note affiliate, sponsored, or unreliable sources when visible.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Research products across the web with Firecrawl and produce a shopping recommendation or cart-ready summary. Use when the user wants to compare products, find the best option, evaluate reviews, respect budget/preferences, or shop with a saved browser session.

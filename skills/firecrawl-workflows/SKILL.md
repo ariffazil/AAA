@@ -1,6 +1,6 @@
 ---
 name: firecrawl-workflows
-description: Run outcome-focused Firecrawl workflows that produce deliverables such as research reports, literature reviews over published papers, SEO audits, QA reports, lead lists, knowledge bases, website design systems, and other structured web-data artifacts. Use when the user wants Firecrawl to complete a business, marketing, product, or creative workflow rather than merely scrape a page or integrate API calls into code.
+description: "Use when Firecrawl must complete a business workflow."
 license: ISC
 metadata:
   author: firecrawl
@@ -82,3 +82,6 @@ Every workflow should return:
 - automation inputs for reruns
 
 For authoring new workflow skills, see [workflow-authoring.md](references/workflow-authoring.md).
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Run outcome-focused Firecrawl workflows that produce deliverables such as research reports, literature reviews over published papers, SEO audits, QA reports, lead lists, knowledge bases, website design systems, and other structured web-data artifacts. Use when the user wants Firecrawl to complete a business, marketing, product, or creative workflow rather than merely scrape a page or integrate API calls into code.

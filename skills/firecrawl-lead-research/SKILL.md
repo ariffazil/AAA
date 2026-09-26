@@ -1,6 +1,6 @@
 ---
 name: firecrawl-lead-research
-description: Produce pre-meeting lead intelligence briefs with Firecrawl. Use when the user needs company research, person research, recent news, talking points, pain points, or outreach preparation before a sales call, partnership meeting, investor conversation, or customer interview.
+description: "Use when the user needs company research, person research."
 license: ISC
 metadata:
   author: firecrawl
@@ -81,3 +81,6 @@ context: [meeting context]
 - Keep it concise and useful before a meeting.
 - Do not fabricate personal details.
 - Clearly separate facts from inferred pain points.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Produce pre-meeting lead intelligence briefs with Firecrawl. Use when the user needs company research, person research, recent news, talking points, pain points, or outreach preparation before a sales call, partnership meeting, investor conversation, or customer interview.

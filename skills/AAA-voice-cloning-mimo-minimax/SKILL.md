@@ -1,6 +1,6 @@
 ---
 name: AAA-voice-cloning-mimo-minimax
-description: "Operational binding for the MiniMax voice cloning pipeline (mimo-v2.5-tts-voiceclone + speech-2.8-hd). Four-phase protocol: Ingestion → Calibration → Execution → Deployment. F13 SOVEREIGN-gated identity creation. i-ARIF voice profile lives here."
+description: "Clone and deploy sovereign voice profiles on MiniMax engine."
 version: 1.0.0
 author: kimi-code (FI-008) for ARIF
 forged: 2026-08-18
@@ -41,10 +41,16 @@ DITEMPA BUKAN DIBERI.
 |---|---|
 | `POST /v1/files/upload` | Upload source audio (purpose=voice_clone or prompt_audio) |
 | `POST /v1/voice_clone` | Bind file_id(s) into a voice_id |
-| `POST /v1/text_to_audio` | Synthesize speech using voice_id |
+| `POST /v1/t2a_v2` | Synthesize speech using voice_id |
 
 **Auth**: `Authorization: Bearer $MINIMAX_API_KEY` header.
-**Base URL**: `https://api.mxbai.chat/v1` (verify per current docs).
+**Base URL**: `https://api.minimax.io/v1` (verified live KVM4 + KVM8).
+**Env hint**: `MINIMAX_API_HOST` may override the base URL on each host.
+
+**Endpoint paths** (use exactly these):
+- TTS: `POST /v1/t2a_v2` — NOT `/v1/text_to_audio` (older doc path; current API path is `/v1/t2a_v2`)
+- Voice clone: `POST /v1/voice_clone`
+- Source upload: `POST /v1/files/upload`
 
 ## Hard Constraints
 
@@ -59,6 +65,14 @@ DITEMPA BUKAN DIBERI.
 
 **F13 consequence** — any of those unsupported features belong to other
 engines. Do not route singing or voice design through this binding.
+
+**Canonical pitfalls — read before any TTS call:**
+
+1. **MiMo Token Plan is NOT the engine.** `token-plan-sgp.xiaomimimo.com` (`tp-…` key) returns 429 quota exhausted and exposes no `/t2a_v2`, `/voice_clone`, or `/files/upload` route. Always use `https://api.minimax.io/v1` with the `sk-cp-…` key. If you see a `tp-` prefixed key in env, swap to `MINIMAX_API_KEY` before calling.
+
+2. **`data.audio` is HEX, not base64.** Decode with `bytes.fromhex(...)`. Base64 decoding produces garbage. Success indicator: `base_resp.status_code == 0`.
+
+3. **Before minting a new voice_id, scan the federation.** Check `/root/.openclaw/workspace/voice/` (KVM4) and `/root/.hermes/voice/` (KVM8) for an existing canonical alias matching the request. If a sealed voice_id already exists (e.g. `SSSiti20260926v1` for "SS" trigger), reuse it — never mint a parallel ID. Duplicate voice_ids across hosts = drift.
 
 ## The Four Phases
 
@@ -147,10 +161,10 @@ the request envelope. No token → API call rejected at L1_IDENTITY.
 becomes the borrowable handle for Phase 4. Log it in VAULT999 with
 `category=identity`, `tier=sovereign`.
 
-### Phase 4 — DEPLOYMENT (T2A with voice_id)
+### Phase 4 — DEPLOYMENT (TTS with voice_id)
 
 ```bash
-curl -X POST "$BASE/v1/text_to_audio" \
+curl -X POST "$BASE/v1/t2a_v2" \
   -H "Authorization: Bearer $MINIMAX_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -158,18 +172,26 @@ curl -X POST "$BASE/v1/text_to_audio" \
     "voice_id": "i-ARIF-2026-08-18",
     "text": "Salam. Hang nak checker Solar pukul 3 tadi?",
     "stream": false,
-    "output_format": "mp3",
-    "sample_rate": 24000
+    "voice_setting": {"voice_id": "i-ARIF-2026-08-18", "speed": 1.0},
+    "audio_setting": {"sample_rate": 24000, "format": "mp3"}
   }'
 ```
 
-Streaming variant:
-
+**Response shape** (verify before writing):
 ```json
-{ "stream": true, "output_format": "pcm16" }
+{"base_resp": {"status_code": 0, "status_msg": "success"}, "data": {"audio": "<hex-string>", ...}}
 ```
 
-The streaming format MUST be `pcm16` per MiniMax constraint.
+**Decode pitfall (always-on):** `data.audio` is HEX, NOT base64. Use `bytes.fromhex(...)`. Base64 decoding produces garbage. Success indicator: `base_resp.status_code == 0`.
+
+**Conversion for Telegram voice bubble:**
+```bash
+ffmpeg -y -i out.mp3 -c:a libopus -b:a 48k -ar 16000 -ac 1 out.ogg
+```
+
+Opus `.ogg`, 16 kHz mono, 48 kbps. This is the format Telegram accepts as a native voice bubble.
+
+Streaming variant: `{"stream": true, "output_format": "pcm16"}`. Streaming format MUST be `pcm16` per MiniMax constraint.
 
 **Role formatting** (for chat-style endpoints):
 
@@ -233,6 +255,24 @@ Synthetic / phantom voice_ids (hash that doesn't exist on the provider)
 - Auditing voice_id provenance before re-use.
 - Debugging clone drift / hallucination.
 - Wiring voice_id into a Hermes or edge-bot TTS pipeline.
+- Trigger phrase detected: `SS` / `suara SS` / `voice SS` / `suara Siti` (or any other voice-alias trigger in `signal_triggers` of an existing canonical card).
+- Federation canonical audit: "is this voice_id already sealed somewhere?" — check `/root/.openclaw/workspace/voice/` and `/root/.hermes/voice/` first.
+
+## Trigger Phrase Convention
+
+Voice aliases are surface-triggered by short phrases in user chat. Pattern:
+
+| Phrase | Voice |
+|---|---|
+| `SS` / `suara SS` / `voice SS` / `suara Siti` | `SSSiti20260926v1` |
+| `i-ARIF` / `suara aku` / `voice aku` | `i-ARIF-20260819T084602` |
+| `default` / `BossyLeader` | `voice-male-bossyleader` (fallback) |
+
+Parse: token at message start = trigger; remainder = TTS text. If multiple aliases, use the longest match first.
+
+## Reference Files
+
+- `references/federation-voice-id-canonicalization.md` — how one voice_id serves multiple hosts without drift.
 
 ## Integration Points
 

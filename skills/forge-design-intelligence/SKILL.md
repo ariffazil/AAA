@@ -2,7 +2,7 @@
 id: FORGE-design-intelligence
 name: forge-design-intelligence
 version: 1.0.0-2026-08-20
-description: "Design intelligence for building professional UI/UX across platforms. Industry-specific reasoning rules, UI style taxonomy, color palettes, typography pairing, accessibility guidelines, and anti-patterns. Use when any agent builds web surfaces, landing pages, dashboards, or UI."
+description: "Apply UI/UX design rules, palettes, typography, and tokens."
 owner: A-FORGE
 risk_tier: low
 floor_scope: ['F1', 'F4', 'F6', 'F13']
@@ -98,6 +98,27 @@ When building for a specific domain, apply these industry-specific patterns:
 | Fintech | Trust-first, regulatory badges | Minimalism, Clean Lines | AI purple/pink gradients, gamification of risk |
 | Banking | Institutional credibility, conservative palette | Corporate, Clean | Trendy animations, dark mode (unless user-opted) |
 | Crypto/Web3 | Transparency, real-time data | Dark Mode, Dashboard | Overly complex tokenomics visuals, moon imagery |
+
+### Cinematic Editorial (standalone style, palette + typography convention)
+A recognizable dark-mode deliverable pattern the user requests for "visual cover page" / "PDF with cover" / "final artifact" tasks — looks like a high-end dossier or comic-book cover, communicates gravity and ownership.
+
+| Visual | Value |
+|---|---|
+| Background | `#0e0e0e` near-black |
+| Accent / border | `#a8884a` warm gold (3pt outer border, 0.5pt inner sub-border) |
+| Title block | Cream/gold bordered rectangle, 28pt sans-serif bold (ABANG SADO SYED / SUPERHERO COVER / etc.) |
+| Subtitle / hook | Italic serif gold (THE HERO ARIF TAK UNDANG) |
+| Mystery panel | Rectangular bordered box with `??` / verdict teasers (used when the cover should not reveal the verdict inside — the body of the PDF does that) |
+| Typography | Sans-serif Helvetica/Inter for display, serif italic for subtitles, both ≤ 2 fonts |
+| Footer | `ARIF × IRFAN` signature, `APEX-ZEN PROTOCOL` line, `REALITY > EVERYTHING` end with `…` truncation (intentional brand mark, not defect) |
+
+**Anti-patterns for this style:**
+- ❌ Translucent banner overlay that lets underlying AI-generated cover text leak through (vision catches "MASTORY" / "ALPHA" / ghost watermark)
+- ❌ Emoji symbols (🦇 ⚓ 🧪 🏛️) — DejaVu + matplotlib fonts drop the glyphs, render as boxes. Use plain text labels instead
+- ❌ "REALITY > EVERYTHING" written out in full at bottom — the `…` truncation is signature. Don't "fix" it.
+- ❌ QR codes or dense metadata on the cover — that belongs in the body, not the cover
+
+**Pattern:** for any "final PDF with visual cover page" request, default to this style. Two files generated together: the cover PNG (matplotlib rendered, ~12×16 inch portrait, ~130KB) and the body PDF (markdown→weasyprint, ~9-22 pages depending on depth). Both delivered via MEDIA: in one message.
 
 ### Healthcare
 | Domain | Pattern | Style Priority | Anti-Patterns |
@@ -337,3 +358,6 @@ When asked to generate a complete design system for a new project:
 *Forged: 2026-08-20 by Hermes under F13 SOVEREIGN directive.*
 *Kebijaksanaan captured from external research, distilled for federation governance.*
 *DITEMPA BUKAN DIBERI — Forged, Not Given. ⚒️*
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Design intelligence for building professional UI/UX across platforms. Industry-specific reasoning rules, UI style taxonomy, color palettes, typography pairing, accessibility guidelines, and anti-patterns. Use when any agent builds web surfaces, landing pages, dashboards, or UI.

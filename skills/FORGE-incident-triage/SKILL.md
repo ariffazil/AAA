@@ -3,7 +3,7 @@ id: incident-triage
 name: FORGE-incident-triage
 autonomy_tier: T1
 version: 2.0.0
-description: "Use when incident occurs — 6-step response playbook with structured logging, backoff/circuit-breaker. Use when incident occurs — 6-step response playbook with structured logging, backoff/circuit-breaker. Six-step incident response playbook with structured logging, backoff/circuit-breaker for restart loops, and verification-as-terminal-state. Lower machine entropy."
+description: "Execute 6-step incident response for outages and breaches."
 owner: AAA
 risk_tier: critical
 knowledge_basis:
@@ -424,3 +424,6 @@ WAJIB 7 is **T3 (F13 ratification required)**. Doctrine documentation is T1.
 ---
 
 *Skill version 1.0.0 — AAA Skill Library*
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Use when incident occurs — 6-step response playbook with structured logging, backoff/circuit-breaker. Use when incident occurs — 6-step response playbook with structured logging, backoff/circuit-breaker. Six-step incident response playbook with structured logging, backoff/circuit-breaker for restart loops, and verification-as-terminal-state. Lower machine entropy.

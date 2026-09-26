@@ -1,6 +1,6 @@
 ---
 name: AAA-tts-engine-catalog
-description: "TTS engine registry for the arifOS federation. ChatTTS (qualitative conversational), F5-TTS / E2-TTS (zero-shot flow matching), Fish Speech (audio language model), MiniMax speech-2.8-hd (HD commercial), Edge / Mulberry (free fallback). Trade-off matrix, F13 governance, and routing rules. Single source of truth for which engine to use when."
+description: "Select TTS engines across MiniMax, MiMo, and Qwen lanes."
 version: 1.0.0
 author: kimi-code (FI-008) for ARIF
 forged: 2026-08-18
@@ -252,3 +252,5 @@ Per `AAA-audio-emd-pipeline` Phase 3:
 ---
 
 *Catalog forged 2026-08-18. F2 evidence: derived from open-source papers (ChatTTS, F5-TTS, E2-TTS, Fish Speech) + MiniMax technical spec + Edge TTS documentation. F7 confidence cap applies to all qualitative claims.*
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** TTS engine registry for the arifOS federation. ChatTTS (qualitative conversational), F5-TTS / E2-TTS (zero-shot flow matching), Fish Speech (audio language model), MiniMax speech-2.8-hd (HD commercial), Edge / Mulberry (free fallback). Trade-off matrix, F13 governance, and routing rules. Single source of truth for which engine to use when.

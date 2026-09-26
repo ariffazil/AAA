@@ -1,6 +1,6 @@
 ---
 name: organ-capability-map
-description: "Master capability→organ routing map — every tool/lane (Google, Malaysia, MCP shopping list, wellness, media) assigned to WEALTH/GEOX/WELL/HERMES/AAA/A-FORGE/arifFlow with live/staged status. Use when \"which organ owns X\", \"route capability\", \"add tool to organ\", \"capability home\", \"distillation map\"."
+description: "Use when which organ owns X, route capability."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
@@ -30,3 +30,6 @@ New capabilities register WHERE they belong — never floating.
 A capability is "wired" only with three artifacts: (1) skill in all homes, (2) row in distillation map, (3) AAA registry row if Ring ≥2.
 Sequencing: Morning Briefing → wellness bundle → WhatsApp sandbox → BNM-native → Ring 2/3 behind policy+888.
 Sleep-as-joy (S1-S4) owned by WELL+HERMES: briefing opens with sleep joy-line (BM), same-bedtime streak, Menu Suka micro-joy picker, "3 baik hari ini" on digest, nature-120 prompts. Receipt e31958cd. Zero new MCPs.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Master capability→organ routing map — every tool/lane (Google, Malaysia, MCP shopping list, wellness, media) assigned to WEALTH/GEOX/WELL/HERMES/AAA/A-FORGE/arifFlow with live/staged status. Use when "which organ owns X", "route capability", "add tool to organ", "capability home", "distillation map".

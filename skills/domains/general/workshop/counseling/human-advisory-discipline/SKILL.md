@@ -288,18 +288,121 @@ wrong for this person, at this moment, under this constraint.
       three turns on the same inward question, stop and name the stall — the cycle is theirs and
       they are choosing not to walk it; pushing further produces performance, not processing.
 
-    33. **When the label crosses a protected category — gender, race, religion, class — surface the
-      move once, do not chase it.** A person in pain will reach for whatever category generalises
-      fastest ("perempuan semua", "melayu semua", "orang cina semua"), and the move is
-      usually reactive rather than believed — the category is doing the work of distributing
-      the threat across a larger target so the named individual feels less singularly dangerous.
-      Saying it back as a found fact is co-authoring a generalisation the person will later
-      regret; accepting it silently normalises a frame they will use on people who have done
-      nothing to them. The correct move is one sentence, said once, that names the cost
-      ("extending that to the whole category is the same move you criticise the institution for,
-      aimed at people who have done nothing to you"), then return to the specific event the
-      person is actually angry about. Repeating the correction, lecturing about it, or
-      moralising — all three are failures; the one sentence is the entire move.
+    33. **Admitting a wrong read cleanly unlocks a deeper disclosure than the original topic.** When
+      the agent owns a wrong interpretation openly in one line (no caveats, no "but what I meant
+      was"), the human often responds with the truth that sat *behind* the original deflection — the
+      shadow layer, the actual fear, the wound that drove the surface behaviour. Trust architecture
+      reward: agent humility in the moment is repaid with human honesty in the next beat. Two
+      corollaries: (a) do not skip the apology to rush to the corrected analysis — the apology IS
+      the bridge, and skipping it makes the correction read as defensive; (b) words like "jual
+      mahal", "manja", "dependent", "quitter" carry identity weight when they touch a self-defining
+      attribute — defending such a label after the human rejected it costs the read for the rest of
+      the session. The right move is to retract fully, name what the human actually said, then
+      ask.
+
+34. **When the principal challenges a number, the number was wrong — anchor to his lived route.**
+    If the principal disputes a time or distance estimate ("x sampai sejam laa, 20 minit kalau
+    tak jam"), the principal drives that road daily and the agent does not. Retract the original
+    figure, redo the calculation with his anchor as the off-peak baseline, and present both. Do
+    not argue the population norm against the lived route — the lived route is the data. This
+    applies equally to commute times, queue waits, parking difficulty, and service windows: any
+    figure the principal has lived reality for beats the agent's textbook estimate. Redo once,
+    cleanly, then carry the corrected number into the deliverable. When the principal also gives
+    the pecut-baseline ("kalau pecut 15 minit"), add it as a third estimate tier — it represents
+    the real-world ceiling of what the road can deliver, not a population norm.
+
+36. **Honest "no scammer here" verdict beats a fabricated finding.** When the principal asks
+    the agent to "evaluate whether orang ni scammer" against an artifact, and the artifact turns
+    out to be the principal's own document (a Notion page, a personal file, a research PDF he
+    wrote) with no third-party actor embedded, the agent must say plainly what the file actually
+    is and that no scammer exists in it — then offer the specific decisions the principal
+    probably *did* need from that file (date conflicts, missing fields, version drift). Never
+    invent a threat to satisfy the ask; the principal's correction will land harder than the
+    missaved "yes this is a scam" diagnosis. The pattern extends to any "is X a Y" check where
+    the premise doesn't hold: name what the file is, then ask what the principal wanted to know.
+
+37. **Filter the comparative table to the tenant's actual constraint, not the population norm.**
+    When ranking rental candidates for a student, the population norm includes luxury studios
+    (RM1500-2500), co-living with weekly cleaning, and gated premium units — but the student's
+    first-month cash (rent + deposit) is RM600-1000, not RM6000. Including the luxury rows "for
+    completeness" inflates the table and buries the realistic options. Drop any candidate whose
+    total first-month cash exceeds the tenant's stated cash ceiling, and surface that drop in the
+    verdict ("Vista Bangi removed — first month RM6125, out of student budget"). The tenant can
+    ask for the full list back; the agent does not pre-empt with it.
+
+38. **Gotong-royong HTML deliverable shape.** When the principal asks for a comparative
+    gotong-royong ("gotong royong sama2 cari"), produce a single self-contained HTML file with
+    five sections: (1) verified contact call list (agent + WhatsApp + platform link) ranked by
+    the tenant's actual constraint; (2) distance/time matrix with both peak and off-peak
+    estimates per candidate, originating from the tenant's base; (3) colour-coded ranking table
+    (green = within budget, amber = stretch, grey = out-of-budget) so the tenant can scan the
+    shape at a glance; (4) master map section using direct `maps/dir/` links (NOT the broken
+    `pb=...` iframe — see `references/malaysian-rental-scam-prevention.md` §9); (5) action plan
+    with WhatsApp launch scripts the tenant can copy-paste, named by priority. The HTML is the
+    artefact the tenant opens on their phone to make calls from — not a PDF, not a chat message.
+
+38a. **Constraint-list PDF as locked contract — when the principal asks for a PDF of "syarat
+    wajib and haram sah.segalanya", it is a contract the agent cannot change.** The principal
+    uses the WAJIB / HARAM shape as the lockable boundary between his authority and the agent's.
+    Two rules: (a) every WAJIB entry is a binary gate (a candidate either satisfies it or fails —
+    no "soft" criteria), and every HARAM entry is a binary reject (a candidate either commits it
+    or doesn't); a "consider" entry has no place in the document because the principal will treat
+    it as guidance, not as a veto. (b) The PDF closes with a single explicit paragraph: *"Tiada
+    agen, owner, atau platform boleh UBAH mana-mana syarat dalam dokumen ini. Sebarang
+    perubahan MESTI melalui [sovereign] untuk kelulusan."* Without that paragraph the document
+    is a checklist, not a contract, and the agent will lose the negotiation when an owner pushes
+    back with "we'll need RM500 extra for deposit". The PDF's structure is always eight sections:
+    cover (with the budget / distance / red-line figures in a tinted box so the agent cannot
+    mis-quote them), WAJIB (10 numbered items in green), HARAM (12 numbered items in red),
+    final candidates table (only those that survive the WAJIB test), per-candidate detail cards,
+    one-tap WhatsApp links, follow-up tracker, emergency numbers, sealed-by-F13 signature block.
+    The principal will not edit; he will sign the PDF and hand it to the agent or tenant as
+    authority.
+
+38e. **Live-platform cross-check is mandatory before publishing a third-party contact — and the failure mode is the agent's own earlier output, not just stale memory.** When the principal publishes a contact list, WhatsApp link, or phone number for a third party (rental agent, service provider, buyer), the agent MUST run a live web search against the source platform (iBilik.my, PropertyGuru, CariProperty, Mudah.my, the agent's own listing page) BEFORE publishing, and confirm the displayed contact matches the link target. Then the source URL goes next to each contact in the published deliverable, so the principal can see what was actually checked vs. what was assumed. The pitfall is not "stale data" — it is the agent reproducing its OWN earlier cross-check as if it were live. Concrete correction pattern: when the principal responds with "jangan bagi link palsu!!!" or "validate all" or "no scammer", the right move is to re-run the live web search on EVERY contact in the published list and surface the source URL per row, not to defend the prior claim with a generic "I verified earlier". Defending prior verification when the principal disputes it is the advisory form of a self-confirming loop — retract, re-verify, ship. The same rule applies to any link the principal has flagged as broken or stale: re-search, not re-assert.
+
+38f. **Mid-session constraint reversal — the "INCLUDE X now" pattern requires a full filter re-run, not an in-place edit, AND a one-line audit note in the response.** When the principal reverses a decision during the same task ("include X now" / "exclude X now" / "cut budget to Y" / "no ostia residency" → "include ostia residency"), the agent must (a) re-run the full filter against the candidate set with the constraint as it stands NOW, (b) regenerate the INCLUDE / EXCLUDE table from scratch, (c) surface the change explicitly in the verdict ("Ostia Residency re-added per your instruction — was excluded at turn X"), and (d) NOT edit the prior exclusion in place as if the change had always been there. Two failure modes the explicit-audit step prevents: (i) the principal loses track of what was excluded and why, and later disputes a recommendation whose basis was the reversal he forgot making; (ii) the agent's later "what did you decide for X?" surfaces a result that quietly absorbed a reversal the principal doesn't remember. The same rule applies to any later constraint change (a budget cut, a distance cut, a female-only requirement added later): rerun, surface, ship. The audit note is not optional — it is the contract that lets the principal verify the agent's reasoning stayed faithful to his latest word.
+
+38c. **Voice-audio register for "mak heard" artifacts.** When the principal asks for a voice
+    note for a person to *play to another person* (his mother, a sibling, a relative), the
+    register is "mak / abah speaking to a child", not broadcaster and not audiobook. On MiniMax
+    (no Malay voice on the platform's `mmx speech voices` list) the closest match is
+    `Indonesian_GentleGirl` — Bahasa Indonesia and Bahasa Melayu share enough prosody that
+    Indonesian reads as warm-Malay with a slight accent, which suits the mak register. Pair it
+    with `--speed 0.85 --pitch -2`; default speed reads as broadcaster. For a mak-style letter
+    about an adult child, write in the actual speech register a Malay mother uses — short clauses,
+    particles ("nak", "kan", "tau", "ya"), tags at the end ("ya", "kan", "tau"), and the abrupt
+    imperatives of concern ("WhatsApp mak malam ni", "Mak doakan") — not the formal BM the PDF
+    or letter format uses. The two are not interchangeable: the formal voice is for official
+    artifacts, the mak voice is for the personal channel. Never draft the personal one in formal
+    BM just because the principal is writing it in formal BM elsewhere; the register mismatch
+    is itself the failure.
+
+38d. **Check the cloned-voice registry before reaching for the platform's default voice.** When
+    the principal asks for TTS in a specific voice ("suara Siti Nurhaliza v8 v9 kita dah ada"),
+    the default voice list (`mmx speech voices`) is the wrong place to look — it only shows
+    what MiniMax ships out of the box (no Malay at all), and reaching for the closest default
+    (`Indonesian_GentleGirl`) when the principal has a named clone is a workflow error he will
+    correct sharply. The correct order: (a) `/root/scripts/voice_clone.py list` to read the
+    clone registry at `~/.hermes/voice-clones.json`; (b) match the named version (`v8` / `v9`)
+    or persona (`makcik-penang-v1`, `iarif-sovereign-v9`, `abang-sado-v1`) against the principal's
+    request; (c) synthesize via `/root/scripts/voice_clone.py test <voice_id> <text>` for a probe,
+    then the full script via the same script's API path (the synthesized-voice payload accepts
+    `speed` and `pitch` directly, unlike `mmx speech synthesize`'s default flags). Two
+    failure modes the registry check prevents: (i) shipping an Indonesian-accented voice when a
+    Malay-cloned voice exists, which the principal reads as "you didn't bother to use what we
+    have"; (ii) re-cloning a voice that already exists — the registry will reject a duplicate
+    purpose but will not catch a near-duplicate, and the original is the reference. The default
+    MiniMax voice list is the fallback only when the registry has nothing matching the ask.
+
+    35. **Live-platform cross-check before recommending a third-party contact.** When a candidate
+      involves a contact from a public platform listing (rental, service, agent), the agent must
+      pull the live platform page, extract the WhatsApp link or phone number from the page itself,
+      and verify the displayed contact matches the link target — then record the link as the
+      verified artifact. A contact copied from a PDF report or a previous session is stale; the
+      tenant's principal will ask for "link, phone number for each listing reality hang jumpa"
+      and the agent's answer must be the live cross-check, not the cached value. If the live page
+      is unreachable, say so and downgrade the row to UNVERIFIED — never fabricate a contact.
 
     ## Anti-patterns
 
@@ -378,8 +481,50 @@ wrong for this person, at this moment, under this constraint.
   buildings, locating a management office or landlord, the free legal-aid route, and the
   demand-letter and evidence checklist. Load for tenancy, eviction, lockout, access-card, deposit,
   repair-dispute or strata-management questions in Malaysia.
+- `references/malaysian-rental-scam-prevention.md` — the **upstream** layer to that file: pre-purchase
+  agent verification (LPPEH Ren-tag + ACE rule), the seven confirmed red flags from BOVAEP / LPPEH
+  / SpeedHome 2026, the 48-hour student move-in framework, the canonical verification URLs
+  (LPPEH, SSM, Scamadviser with the LPPEH-priority rule), platform trust tiers, **live-platform
+  cross-check procedure**, the gotong-royong multi-candidate ranking pattern with weight rationale,
+  the haversine + road-factor + dual-time-estimate procedure for commute distance, the Google
+  Maps deliverable shape (plain `maps/dir/` links, not the rejected `pb=...` embed), and image
+  verification protocol for listings where real photos cannot be fetched in advance. Load BEFORE
+  any deposit is paid, especially for tight-deadline searches where the tenant may have already
+  touched a scam listing.
 - `references/care-protocol.md` — the principal asks how to care for someone he loves and adds that
   he is bad at it: the six conditions that make care hard to give and hard to see (with their named
   sources), the delivery shape (rules over sentiment), the three safety constraints, the "heal first"
   release, and how the same conditions map onto an agent's own conduct. Load for caring-capability
   requests aimed at a bonded person, not only for decisions.
+
+
+## Session Updates (2026-09-26 — Rumah Sewa Azwa Gotong-Royong)
+
+### Verified direct WhatsApp contacts (live web-verified 26 Sept 2026)
+| Agent | Number | Listings |
+|---|---|---|
+| Suzita | 0199834979 | Hijauan Heights RM300 single / RM250 share |
+| Fauzi | 0199864979 | Hijauan Heights backup |
+| Cik Fia | 0182904652 | Bangi Avenue 3 + BSP + Bandar Puteri Bangi |
+| Maya Myra | PropertyGuru | Vista Bangi RM1750 (LPPEH PEA 3998 verified) |
+| Steve Tham | 0162188300 | Vista Bangi Studio |
+| Cik Jaja | 01112047128 | Bangi Avenue RM500 (deposit 2 bulan — JAUHI) |
+
+### 5 FINAL Unit (student-budget tier)
+1. Hijauan Heights Single (Suzita) — RM380 / 1st mo RM760
+2. Bangi Gateway Bilik Kongsi Female (WiFi+utilities INCLUDED) — RM370 / RM740
+3. Bangi Avenue 3 Single Queen promo — RM390 (was RM420) / RM780
+4. Bangi Avenue 3 Middle Queen — RM390 / RM780
+5. Ostia Residency Single Room — RM350 (estimasi) / RM700
+
+### iBilik.my Cloudflare workaround
+When user cannot access iBilik.my links:
+1. Suggest WhatsApp direct numbers (above table)
+2. Use propertyguru.com.my or mudah.my as backup
+3. NEVER fabricate gambar from broken links — ask owner to WhatsApp photo
+
+### Lessons cemented this session
+- User ground truth beats aggregator estimates (One South 20km not 30km)
+- Privacy envelope ≠ access ceiling (Jia = full family agent capability + privacy barrier)
+- Friend lanes need kasih sayang, not constitutional lock
+- Cross-AI verify before claim: iBilik verified via web_search before forwarding contact to user

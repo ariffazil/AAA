@@ -3,7 +3,7 @@ name: FORGE-federation-orchestrator
 id: forge-federation-orchestrator
 version: 1.0.0
 risk_tier: low
-description: "Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health probes (Observed Port Map), container drift detection, restart count monitoring. USE WHEN: \"federation status\", \"restart dead container\", \"container health\", \"docker drift\", \"service down\", \"probe MCP\", \"health check federation\". Runs on af-forge (VPS) — native docker and curl required."
+description: "Manage federation Docker Compose services, deploys, status."
 owner: A-FORGE
 floor_scope:
 - F1
@@ -117,3 +117,6 @@ done
 | vaultwarden | 8080 | Security | MEDIUM |
 | agent-zero | — | AAA | HIGH |
 | forge-notifier | — | Notification | MEDIUM |
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health probes (Observed Port Map), container drift detection, restart count monitoring. USE WHEN: "federation status", "restart dead container", "container health", "docker drift", "service down", "probe MCP", "health check federation". Runs on af-forge (VPS) — native docker and curl required.

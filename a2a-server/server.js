@@ -610,8 +610,11 @@ async function openOpenClawGatewayConnection(timeoutMs = 15000) {
               platform: process.platform,
               mode: 'backend',
             },
-            role: 'operator',
-            scopes: ['operator.admin'],
+            // X11 fix (2026-09-26): grant is auth-derived — operator role receives
+            // scopes=[] (senderIsOwner → [admin], else []). The gateway password we
+            // hold is the owner credential; admin alone does not imply write.
+            role: 'owner',
+            scopes: ['operator.admin', 'operator.read', 'operator.write'],
             auth: {
               password: OPENCLAW_GATEWAY_PASSWORD,
             },
@@ -2058,6 +2061,10 @@ function extractText(message) {
 // === EXECUTE TASK ===
 // params may contain { skill: 'agent-dispatch' } for explicit A2A skill routing
 async function executeTask(taskId, contextId, message, targetAgent, params) {
+  // X11 fix (2026-09-26): the hermes-asi block below posts to :18086, which has
+  // served FRAME (frame_mcp_fastmcp.py) since 2026-09-19 — wrong organ, silent
+  // misdelivery. Canonical Hermes lane = the OpenClaw route used for 'hermes'.
+  if (targetAgent === 'hermes-asi') targetAgent = 'hermes';
   let task = await taskStore.get(taskId);
   if (!task) return;
 

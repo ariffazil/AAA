@@ -1,6 +1,6 @@
 ---
 name: firecrawl-dashboard-reporting
-description: Pull metrics from analytics dashboards and internal web tools with Firecrawl browser. Use when the user needs dashboard reporting, cross-platform metric summaries, authenticated analytics extraction, date-range reports, or structured metrics from web dashboards.
+description: "Use when the user needs dashboard reporting."
 license: ISC
 metadata:
   author: firecrawl
@@ -73,3 +73,6 @@ Use `reportedAt`, `dateRange`, `dashboards[]`, `metrics[]`, `tables[]`, `exports
 - Extract actual numbers, not just chart labels.
 - Note when a chart cannot be read precisely.
 - Preserve date ranges and source URLs.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Pull metrics from analytics dashboards and internal web tools with Firecrawl browser. Use when the user needs dashboard reporting, cross-platform metric summaries, authenticated analytics extraction, date-range reports, or structured metrics from web dashboards.

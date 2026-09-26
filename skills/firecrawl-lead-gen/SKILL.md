@@ -1,6 +1,6 @@
 ---
 name: firecrawl-lead-gen
-description: Generate structured lead lists from prospect databases and web directories with Firecrawl browser. Use for finding prospects by role, company type, industry, stage, location, technologies, or other criteria and exporting CRM-ready JSON or CSV.
+description: "Use for finding prospects by role, company type, industry."
 license: ISC
 metadata:
   author: firecrawl
@@ -70,3 +70,6 @@ output: [json/csv/markdown]
 - Note masked, unavailable, or paywalled fields.
 - Deduplicate leads.
 - Do not bypass CAPTCHAs or access controls.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Generate structured lead lists from prospect databases and web directories with Firecrawl browser. Use for finding prospects by role, company type, industry, stage, location, technologies, or other criteria and exporting CRM-ready JSON or CSV.

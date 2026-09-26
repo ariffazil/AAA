@@ -355,6 +355,18 @@ only a sentence already in the room.
   parties can each quote the correct number and disagree because they measured different axes. Name the
   axis beside the number, and when adopting someone else's figure, reproduce their definition before
   comparing it to yours.
+- **For one principal: arithmetic belongs to a tool, not to the model.** For some principals (Arif Fazil is a documented case), LLM "brain arithmetic" is treated as unreliable as an unsourced quote — they explicitly test the agent by repeating the same calculation twice; if the figure changes between passes, the model was estimating, and the answer is no longer trustworthy. Their rule is strict and standing: every arithmetic figure that leaves the chat must come out of a deterministic tool call (`python3 -c`, terminal calculator, MCP `numeric_audit`), with optional two-pass consistency check to demonstrate the result was not a memory guess. The same display discipline that requires "VERIFIED" vs "REPORTED" tags on financial figures requires "calculated by tool" vs "estimated" tags on every arithmetic that reaches the user. A calculator-verified figure can still be wrong (wrong inputs), but the wrongness is then in the inputs, not in the model's estimation. Prefer the tool over the brain — the brain is pattern-matching on language, not arithmetic.
+
+## User-Specific Arithmetic Discipline (Arif Fazil)
+
+Arif Fazil's standing rule for this principal:
+
+> *"Hang kena kira pakai kalkulator betul2. Sila ingat tu. Aku dah code dekat hang calculator kan??? Hang jangan dok kira pakai otak ai LLM. Bahasa dengan angka number x sama."*
+
+- **Mandatory: every numeric arithmetic in a deliverable comes from a tool call, not from language-model inference.** `python3 -c "expr"` / `terminal` calculator / MCP numeric tools — pick whichever is closer to the artifact's medium.
+- **Two-pass consistency is the cheapest test Arif uses to detect fabrication.** A repeated calculation that returns different figures between passes proves the agent was pattern-matching on language, not computing. Run twice when the figure is contested or visible to Arif.
+- **Arif explicitly self-reports "lemah number"** — this means he relies on the agent as the arithmetic authority in the room. The implication: arithmetic mistakes cannot be caught by him, only by the tool's determinism. The defect is "estimated-looking correct" rather than "caught and corrected." Tool-first closes the gap entirely.
+- **Show the working when Arif may scrutinise.** A `print(141.10 + 115.70 + 45.60)` transcript costs nothing and is the difference between "figure" and "verified figure."
 - **A third-party score is a derived figure with no stated denominator — recompute it before relaying
   it.** Consumer apps publish a verdict ("needs improvement") beside a target that may be arithmetically
   unreachable for the very record it judged: an absolute-hours target that, added to the other measured

@@ -2,7 +2,7 @@
 id: witness-semantic-recall
 name: witness-semantic-recall
 version: 1.1.0
-description: "Semantic recall across the federation canon corpus (instruction/canon/eureka/governance/scar/session_closure) with 3-lane embedding fallback. Use when the user asks about F1-F13 doctrine, arifOS canon, AAA governance, EUREKA insights, scar records, or session closures; or when '/canon-remember <query>' is invoked."
+description: "Search canon, EUREKA, scars, and closures by meaning."
 owner: 333-AGI
 risk_tier: low
 floor_scope: [F1, F2, F11]
@@ -144,3 +144,6 @@ For cron/health-monitoring:
 - F13 SOVEREIGN: No new governance emitted; only the bridge.
 
 ΔS in this turn: −1 per session iteration; net bridge ΔS = −1 (cliff bridged).
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Semantic recall across the federation canon corpus (instruction/canon/eureka/governance/scar/session_closure) with 3-lane embedding fallback. Use when the user asks about F1-F13 doctrine, arifOS canon, AAA governance, EUREKA insights, scar records, or session closures; or when '/canon-remember <query>' is invoked.

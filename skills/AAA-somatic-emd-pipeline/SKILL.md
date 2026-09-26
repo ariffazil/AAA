@@ -1,6 +1,6 @@
 ---
 name: AAA-somatic-emd-pipeline
-description: "Three-phase reflex arc for Somatic Music Intelligence in arifOS. Decode from voice-cadence somatic_proxy (WPM, pitch_mean, hesitation_ms, RMS variance) — NOT WELL until sensors ready. Metabolize adds music_intent packet field (role|BPM|density|max_seconds|kill_on_barge_in). Encode routes to parametrically-controllable music engines (MiniMax T2A Music primary). Three-layer maturity enforced: Layer 1 voice-cadence only, Layer 2 adds WELL when live, Layer 3 = F13."
+description: "Execute somatic audio reflex arc: ASR to LLM to music TTS."
 version: 1.0.0
 author: kimi-code (FI-008) for ARIF
 forged: 2026-08-18
