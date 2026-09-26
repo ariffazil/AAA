@@ -3,7 +3,7 @@
 > **Status:** F13_RATIFIED_DOCTRINE (2026-09-20)
 > **Origin:** F13 deep research session — Rose-APEX maturation + live system probe
 > **Eureka:** `EUREKA-2026-09-20-ROSE-APEX-MATURATION` (W³ as X(t) dial)
-> **Companions:** apex-rose-parallel.md · maturation-dynamics.md · CHRON-V2-BARRIER-DOCTRINE · 056_TRI_WITNESS_SPECIFICATION · PHOENIX-72
+> **Companions:** apex-rose-parallel.md · maturation-dynamics.md · CHRON-V2-BARRIER-DOCTRINE · 056_TRI_WITNESS_SPECIFICATION · PHOENIX-72-COOLING-DOCTRINE-2026-09-26.md
 > **Kernel anchor:** F2 (truth) · F3 (witness) · F7 (humility) · F8 (metabolism)
 > **Motto:** DITEMPA BUKAN DIBERI ⚒️
 

@@ -87,7 +87,7 @@ The threshold is not a timer. It is one turn of a **recursive metabolism** whose
 
 | Gap | State | Owner |
 |---|---|---|
-| `COOLING_RECEIPT` spec is **PROPOSED** — MEASURE stage exists on paper, not in VAULT999 ingress | Spec checklist unimplemented since 2026-07-13 | arifOS vault lane (T3 — needs F13 ack) |
+| `COOLING_RECEIPT` **ingress gate LIVE** (2026-09-26, F13 "ship it"): INV-C5 self_deploy REJECT + classifier bridge + ingress stamp, 27/27 tests, live negative probe zero-append. Remaining: A-FORGE post-exec hook wiring, arif_judge ack path, Supabase table | §9 checklist (4/9 shipped, receipt in spec) | arifOS vault lane (wiring items) |
 | CHRON `lessons_total=2`, `blind_lesson_share=1.0` — LEARN stage is thin | Loop runs, lessons barely extracted | CHRON loop |
 | Theory tier table (`000_ARCHITECTURE.md`: 0h/42h/72h/168h) ≠ code tiers (`cooldown_engine`: 24/72/168/720) | 42h has no code counterpart; 720h missing from theory | theory-doc reconciliation pass |
 | `ARIFFLOWKERNELCANON.md` (distillation #15 target) never existed | **Superseded by this document** | closed here |
@@ -99,7 +99,7 @@ The threshold is not a timer. It is one turn of a **recursive metabolism** whose
 2. `grep COOLDOWN_DEFAULT_HOURS arifosmcp/core/cooldown_engine.py` → must read `72`.
 3. `systemctl cat arif-dream.timer` → must read `OnUnitActiveSec=72h`.
 4. A COOLING entry past t₀+72h with `psi_utility ≤ 0` → must VOID, never SEAL.
-5. A loop cycle that seals something without a post-seal observation inside its τ window → violates invariant 1 (currently *expected to fail* until COOLING_RECEIPT ships — see §5).
+5. A loop cycle that seals something without a post-seal observation inside its τ window → violates invariant 1 (MEASURE ingress shipped 2026-09-26 — the gate CAN now land receipts; emission wiring still OPEN, see §5).
 
 ## 7. Compression
 

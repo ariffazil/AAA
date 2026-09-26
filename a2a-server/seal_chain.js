@@ -669,11 +669,40 @@ async function writeSeal(payload, opts = {}) {
   let coolingVal = null;
   if (eventType === 'cooling.receipt') {
     coolingVal = validateCooling(payload, opts);
+    // ── Spec §4 FAIL-CLOSED (2026-09-26): REJECT before the write lock —
+    // no head read, no hash, no append, no remote mirror. Throw propagates:
+    // CLI → main().catch → exit 1 → A-FORGE execSync → tool error;
+    // server.js → .catch(err => console.error) — never crashes the process.
+    if (coolingVal.rejected) {
+      throw new Error(
+        'COOLING_RECEIPT_REJECTED at ingress: ' +
+        coolingVal.violations
+          .filter((v) => v.severity === 'REJECT')
+          .map((v) => `${v.invariant}: ${v.detail}`)
+          .join('; ')
+      );
+    }
     if (coolingVal.downgraded) {
       // Merge cooling violations into invariants violations
       if (!invariants.violations) invariants.violations = [];
       invariants.violations.push(...coolingVal.violations);
       if (!invariants.downgraded) invariants.downgraded = true;
+    }
+    // ── Spec §4 creation-time constraint, enforced at ingress: a cooling
+    // receipt that survived validation lands with an EXPLICIT
+    // governance.self_deploy=false (absent → stamped BEFORE hashing, so the
+    // stamp is covered by this_hash; emitters that predate the field get the
+    // safe default instead of a silent absence). self_deploy=true was thrown
+    // above — this code cannot overwrite a declaration.
+    const stampedGov =
+      payload.governance || (payload.payload && payload.payload.governance);
+    if (stampedGov && typeof stampedGov === 'object') {
+      if (stampedGov.self_deploy === undefined) stampedGov.self_deploy = false;
+    } else if (
+      payload.governance == null &&
+      !(payload.payload && payload.payload.governance)
+    ) {
+      payload.governance = { self_deploy: false };
     }
   }
 
@@ -876,10 +905,40 @@ function validateCooling(payload, opts = {}) {
     });
   }
 
+  // INV-C5 (COOLING_RECEIPT_SPEC_v1 §4 — ingress gate, 2026-09-26):
+  // governance.self_deploy MUST be false. Any other value (true, "true",
+  // numbers, malformed governance) is REJECT-class: writeSeal throws BEFORE
+  // any ledger work — no append, no head write, no mirror. Absence is not a
+  // violation: writeSeal stamps an explicit false before hashing (normalize,
+  // don't trust). This closes the spec §4 gap that let self_deploy:true
+  // pass validation clean (proven by red-phase test before this fix).
+  const selfGov =
+    payload.governance ||
+    (payload.payload && payload.payload.governance) ||
+    undefined;
+  if (selfGov !== undefined && selfGov !== null && typeof selfGov !== 'object') {
+    violations.push({
+      invariant: 'INV-C5_SELF_DEPLOY',
+      severity: 'REJECT',
+      detail: `COOLING governance must be an object, got ${typeof selfGov} (${JSON.stringify(selfGov)})`,
+    });
+  } else if (
+    selfGov &&
+    selfGov.self_deploy !== undefined &&
+    selfGov.self_deploy !== false
+  ) {
+    violations.push({
+      invariant: 'INV-C5_SELF_DEPLOY',
+      severity: 'REJECT',
+      detail: `COOLING receipt declares governance.self_deploy=${JSON.stringify(selfGov.self_deploy)} — spec §4 forbids self-deploy; ingress REJECTS (no append)`,
+    });
+  }
+
   return {
     valid: violations.length === 0,
     violations,
     downgraded: violations.length > 0,
+    rejected: violations.some((v) => v.severity === 'REJECT'),
   };
 }
 
@@ -887,6 +946,12 @@ function validateCooling(payload, opts = {}) {
 // G2/EUREKA: cooling.receipt added 2026-07-13 as first-class VAULT999 type
 
 function classifyEventType(payload) {
+  // COOLING_RECEIPT spec §9 registration (2026-09-26): emitters may declare
+  // `event_type` directly (A-FORGE coolingVerbs crafts event_type and NO
+  // `action` field). Without this bridge, live cooling receipts classified
+  // as a2a.general and validateCooling never ran on the emission path —
+  // proven by red-phase test (14 failures) before this fix landed.
+  if (payload && payload.event_type === 'cooling.receipt') return 'cooling.receipt';
   const action = (payload.action || '').toLowerCase();
   if (action.startsWith('a2a.')) return 'a2a.dispatch';
   if (action === 'cooling.receipt' || action.includes('cooling.receipt')) return 'cooling.receipt';

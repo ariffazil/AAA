@@ -252,15 +252,17 @@ C_dark < 0.30 ✅ — No shadow behavior in the cooling design.
 
 ## 9. Implementation Checklist
 
-- [ ] Register COOLING_RECEIPT as a valid VAULT999 envelope type
-- [ ] Add `governance.self_deploy: false` constraint to VAULT999 ingress gate
+- [x] Register COOLING_RECEIPT as a valid VAULT999 envelope type — **SHIPPED 2026-09-26** (F13 "ship it"): `seal_chain.js classifyEventType` bridges declared `event_type` → `cooling.receipt`; the live A-FORGE envelope shape (no `action` field) previously misclassified as `a2a.general`, so `validateCooling` never ran on the emission path (red-phase test proved it: 14 failures).
+- [x] Add `governance.self_deploy: false` constraint to VAULT999 ingress gate — **SHIPPED 2026-09-26**: INV-C5_SELF_DEPLOY, severity REJECT — `writeSeal` throws BEFORE lock/head/append/mirror (spec §4 "rejects"); absent field is stamped `false` pre-hash (normalize, don't trust). Live negative probe: exit 1, both real chains byte-count unchanged (269/4).
 - [ ] Wire COOLING_RECEIPT creation into A-FORGE post-execution hook
 - [ ] Wire COOLING_RECEIPT routing into arif_judge acknowledgment path
 - [ ] Add `governance_path` field to arif_judge input schema
 - [ ] Create cooling_ledger_entries table in Supabase (if not exists)
-- [ ] Test: cooling receipt cannot self-deploy
-- [ ] Test: cooling receipt routes correctly through governance
+- [x] Test: cooling receipt cannot self-deploy — **SHIPPED 2026-09-26**: `a2a-server/tests/cooling-self-deploy.test.js` §2 (INV-C5 unit: `true`/`'true'`/nested/malformed → rejected; `false`/absent → accepted) + §4 (writeSeal throws, error names INV-C5, ledger line count unchanged). 27/27 pass.
+- [x] Test: cooling receipt routes correctly through governance — **SHIPPED 2026-09-26**: test §3 (INV-C4 fires on judge_required:false + 888_HOLD) + §5 (governance_path preserved on landed entry) + §7 (INV-C1 downgrade semantics preserved) + §8 (non-cooling path regression).
 - [ ] Seal: epoch transition with VAULT999 chain continuity
+
+**Shipment receipt (2026-09-26):** F13 order "ship it" · gate = `/root/AAA/a2a-server/seal_chain.js` (single cooling ingress, A-FORGE execSync target) · tests: red 14 → green 27/27 · live probes: negative (exit 1, zero append) + positive E2E (exact A-FORGE CLI shape, `cooling_validated: true`, chain verify ok) · no service restart required (execSync spawns fresh node per write; server.js in-process paths never emit cooling). Remaining checklist items are wiring work — separate dispatch.
 
 ---
 
