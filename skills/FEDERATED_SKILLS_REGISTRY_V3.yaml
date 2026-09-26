@@ -1,5 +1,6 @@
 version: 3
-last_updated: '2026-09-16T09:30:00+08:00'
+x5_reconcile_utc: '2026-09-26T23:34:40Z'
+last_updated: '2026-09-26T23:34:40Z'
 canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
@@ -206,7 +207,7 @@ agent_profiles:
     role: forge_instrument
     class: CODING/FI
     agent_card: /root/AAA/a2a-server/agent-cards/harnesses/kimi-code.json
-    skill_index: /root/.arifos/agents/kimi/skills/SKILL_INDEX.md
+    skill_index: /root/.kimi-code/skills/SKILL_INDEX.md  # X5 reconcile: original advertised /root/.arifos/agents/kimi/skills/SKILL_INDEX.md was GHOST; canonical = .kimi-code
     notes: Focused forge instrument. 12 MCPs, 12 hooks, 11 permission gates. K3 via --model kimi-code/k3.
       Aligned 2026-07-18.
   opencode:
@@ -359,10 +360,35 @@ alias_reconciliation:
     /root/AAA/skills/.archive/alias-tables-20260918/SUPERSEDED-MANIFEST.json
 reduction_from_original: 124 -> 64 logical registry entries; alias rows are a separate mapping/history
   dimension
-unification_atlas: /root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
-alias_table: /root/AAA/skills/SKILL_ALIAS_TABLE.json
-alias_table_md: /root/A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md
-hermes_bridge: /root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md
-mesh_sync: /root/AAA/skills/scripts/skill-mesh-sync.sh
+# Provenance pointers (X5 reconcile 2026-09-26T23:34:40Z): historical — original artifacts forged 2026-07-12,
+# superseded by current canonical paths. Listed for audit; do NOT resolve.
+unification_atlas:
+  path: /root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
+  historical: true
+  canonical_replacement: /root/AAA/skills/AAA_AGENTS_REGISTRY.json.md
+  forged: 2026-07-12
+  status_note: Original atlas archived; current 3-agent alignment lives in TOOLBENCH_3WAY_CONTRAST.md
+alias_table:
+  path: /root/AAA/skills/SKILL_ALIAS_TABLE.json
+  historical: false
+  resolves: true
+alias_table_md:
+  path: /root/A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md
+  historical: true
+  canonical_replacement: /root/AAA/skills/SKILL_ALIAS_TABLE.json
+  forged: 2026-07-12
+  status_note: Markdown form superseded by JSON canonical; 11 historical copies in .archive/alias-tables-20260918
+hermes_bridge:
+  path: /root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md
+  historical: true
+  canonical_replacement: /root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
+  forged: 2026-07-12
+  status_note: Bridge doc superseded by V3 registry itself
+mesh_sync:
+  path: /root/AAA/skills/scripts/skill-mesh-sync.sh
+  historical: true
+  canonical_replacement: /root/scripts/skills-census.py (machine-derived, not hand-edited)
+  forged: 2026-07-12
+  status_note: Manual sync script superseded by skills-census.py (per V3 disk_reconciliation.method)
 last_harness_sync_note: '2026-07-18: 3-agent alignment pass (kimi FI-008, opencode warga-AGI, claude FI-002).
   Contrast doc at TOOLBENCH_3WAY_CONTRAST.md. Registry profiles updated with full spec.'
