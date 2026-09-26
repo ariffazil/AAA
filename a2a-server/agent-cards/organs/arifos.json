@@ -1,10 +1,10 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
+  "schemaVersion": "2.3.0",
+  "protocolVersion": "1.0",
   "agentId": "arifos",
   "name": "arifOS Kernel",
-  "description": "Constitutional kernel — F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
+  "description": "Constitutional kernel \u2014 F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -72,7 +72,7 @@
     {
       "id": "arif_observe",
       "name": "Observe Reality",
-      "description": "Sense evidence — search, fetch, vitals. 111_SENSE.",
+      "description": "Sense evidence \u2014 search, fetch, vitals. 111_SENSE.",
       "tags": [
         "kernel"
       ],
@@ -242,5 +242,7 @@
     "after": 0,
     "quarantined": 12,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "5bf4d70c2e03293e9671ce4ef88e01b790c8e2ea098d5d47cfead12e3df67e30"
 }

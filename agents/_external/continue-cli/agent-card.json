@@ -17,7 +17,7 @@
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/continue-cli",
   "provider": {
     "organization": "arifOS Federation",
@@ -546,7 +546,7 @@
   "emd_forged": "2026-08-09",
   "fi": "FI-CONTINUE",
   "bound_to": "333-AGI",
-  "registry_receipt_hash": "sha256:fb9fad141520aece273b65c9407206e23d239702797e3e6684c7dcc0d8859122",
+  "registry_receipt_hash": "011dd021783358249818998153cd063c0d439ad118530b837ab6a31a69b442b9",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -656,5 +656,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }

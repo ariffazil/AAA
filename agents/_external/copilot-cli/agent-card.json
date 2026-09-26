@@ -15,7 +15,7 @@
   "tier": "FI-006",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/copilot-cli",
   "provider": {
     "organization": "arifOS Federation",
@@ -314,7 +314,7 @@
   "fi": "FI-006",
   "bound_to": "333-AGI",
   "fi_slot": "FI-006",
-  "registry_receipt_hash": "sha256:4c3f8902fa848fa786156e0dff89474c5d5f27444f4a016d868dff2f0318388b",
+  "registry_receipt_hash": "cd08367712c68097a281d15ecc9710cf564dd1cb3486724c9b1ddbd953fef095",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -405,5 +405,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }

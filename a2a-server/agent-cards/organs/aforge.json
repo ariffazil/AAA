@@ -1,7 +1,7 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
+  "schemaVersion": "2.3.0",
+  "protocolVersion": "1.0",
   "agentId": "a-forge-mcp",
   "name": "A-FORGE Execution Shell",
   "description": "Governed execution actuator. Hands, not law. Build, deploy, orchestrate, document, git.",
@@ -192,7 +192,7 @@
     {
       "id": "forge_evaluate",
       "name": "APEX Gate",
-      "description": "Compute G = A·P·E·X·Φ.",
+      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
       "tags": [
         "actuator"
       ],
@@ -242,5 +242,7 @@
     "after": 0,
     "quarantined": 12,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "531fa39381f4c7bff91c0d774ead795c7afd3bd89f911f98297314334234a6e1"
 }
