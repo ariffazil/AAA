@@ -121,9 +121,8 @@ async function main() {
   const result = await a2aCall('tasks/send', {
     id: taskId,
     sessionId: sessionId,
-    targetAgent: targetAgent,
-    // executeTask's target comes from params.agent_id || params.metadata.targetAgent —
-    // a top-level targetAgent alone falls through to local processing (X11 fix 2026-09-26).
+    // Canonical: params.agent_id. metadata?.targetAgent is a fallback at server.js:5073/5271;
+    // top-level targetAgent is not read on POST /a2a.
     agent_id: targetAgent,
     metadata: { targetAgent: targetAgent },
     message: {
