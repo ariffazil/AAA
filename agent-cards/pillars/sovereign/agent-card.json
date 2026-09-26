@@ -5,7 +5,7 @@
   "name": "Muhammad Arif bin Fazil",
   "description": "F13 SOVEREIGN \u2014 absolute veto holder, 888_JUDGE, human architect of arifOS Federation. This card is the cryptographic anchor for autonomous sovereign identity verification. All federation authority derives from this identity. Not an agent \u2014 a human sovereign whose identity is cryptographically verifiable through did:web:arif-fazil.com.",
   "version": "2026.07.12-SEALED",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "class": "SOVEREIGN",
   "lane": "F13",
   "human": true,
@@ -99,7 +99,7 @@
     "streaming": false,
     "pushNotifications": false
   },
-  "registry_receipt_hash": "sha256:c32bdfe87bc97dc47ef833b6b98eee47bc62bf89b079734687964743a6c09f00",
+  "registry_receipt_hash": "8cafb856e4d6d6de91d1a17004224583ef06aadff58314ab43edb240f20ec5c8",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -161,5 +161,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "SOVEREIGN"
 }

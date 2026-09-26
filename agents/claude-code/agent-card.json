@@ -8,7 +8,7 @@
     "category": "LLM-as-principal (Anthropic Claude is the principal; Claude Code is the governed harness)",
     "principle_origin": "Anthropic Claude via FED-routed LiteLLM gateway at http://127.0.0.1:4000"
   },
-  "description": "Claude Code Engineering Cell — Anthropic's native agentic coding harness, federated as AAA warga FI-002. Repository-native engineering cell bound to 333-AGI (Δ MIND). Authority ceiling PROPOSE_AND_VERIFY. OBSERVE → PLAN → PATCH_LOCAL → TEST → REPORT → PROPOSE → HOLD. Never self-authorises; goes through arifOS for consequential actions. EMD role: DECODER.",
+  "description": "Claude Code Engineering Cell \u2014 Anthropic's native agentic coding harness, federated as AAA warga FI-002. Repository-native engineering cell bound to 333-AGI (\u0394 MIND). Authority ceiling PROPOSE_AND_VERIFY. OBSERVE \u2192 PLAN \u2192 PATCH_LOCAL \u2192 TEST \u2192 REPORT \u2192 PROPOSE \u2192 HOLD. Never self-authorises; goes through arifOS for consequential actions. EMD role: DECODER.",
   "version": "3.0.0-warga-cell",
   "model": "claude-sonnet",
   "binary": "/root/.local/bin/claude",
@@ -25,7 +25,7 @@
   "warga_status": "attested",
   "attestation_id": "CLAUDE-CODE-WARGA-ATTESTED-20260810",
   "bound_to": "888-APEX",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/claude-code",
   "registry_pointer": "/root/AAA/dist/a2a/agents.json#FI-002",
   "provider": {
@@ -38,7 +38,7 @@
     "intelligence_tier": "AGI",
     "authority_level": "engineer",
     "citizenship_forged": "2026-08-10",
-    "forged_by": "333-AGI Δ MIND (alias to user session 09:39 MYT)",
+    "forged_by": "333-AGI \u0394 MIND (alias to user session 09:39 MYT)",
     "preceding_state": "settings.json wired 2026-08-08 by 333-AGI; registry entry at /root/AAA/dist/a2a/agents.json:188 (FI-002); no /root/AAA/agents/claude-code/ dir prior to 2026-08-10"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/claude-code",
@@ -113,7 +113,7 @@
     "federation_class": "WARGA_AAA",
     "owner": "arif",
     "home_organ": "AAA",
-    "operating_loop": "OBSERVE → PLAN → PATCH_LOCAL → TEST → REPORT → PROPOSE → HOLD",
+    "operating_loop": "OBSERVE \u2192 PLAN \u2192 PATCH_LOCAL \u2192 TEST \u2192 REPORT \u2192 PROPOSE \u2192 HOLD",
     "authority": {
       "ceiling": "PROPOSE_AND_VERIFY",
       "can_route": false,
@@ -213,7 +213,7 @@
     "judgment": {
       "model": "apex-888",
       "lane": "sovereign/route",
-      "backend": "FED / MiniMax-M3 (aura→arifOS for verdict)"
+      "backend": "FED / MiniMax-M3 (aura\u2192arifOS for verdict)"
     },
     "subagent": {
       "model": "hermes-asi",
@@ -222,9 +222,9 @@
     }
   },
   "hooks": {
-    "_note": "Dead file-backed hooks removed 2026-09-12 (9 handlers referencing /root/hooks/*.sh — directory absent 38+ days). SessionEnd inline hook preserved (posts to arifflow :7073). arifFlow /ingest auth gap recorded as AAA-CC-HOOK-DRIFT-2026-09-12-01.",
+    "_note": "Dead file-backed hooks removed 2026-09-12 (9 handlers referencing /root/hooks/*.sh \u2014 directory absent 38+ days). SessionEnd inline hook preserved (posts to arifflow :7073). arifFlow /ingest auth gap recorded as AAA-CC-HOOK-DRIFT-2026-09-12-01.",
     "SessionEnd": [
-      "inline bash — posts Verify+Seal receipts to http://127.0.0.1:7073/ingest"
+      "inline bash \u2014 posts Verify+Seal receipts to http://127.0.0.1:7073/ingest"
     ]
   },
   "enabled_plugins": [
@@ -242,10 +242,10 @@
     "session_time_myt": "09:37 MYT",
     "claude_cli_version": "n/a (binary probe skipped; settings.json imported from 2026-08-08 baseline)",
     "tier": "T0 (auto-do) for read/probe; T1 for config edits on this card",
-    "delta_s": "≤0 (no entropy introduced; removed broken alias; added declarative card)"
+    "delta_s": "\u22640 (no entropy introduced; removed broken alias; added declarative card)"
   },
   "_notes": {
-    "registry_origin": "FI-002 entry already present at /root/AAA/dist/a2a/agents.json:188 — this card materialises the warga dir, /root/AAA/agents/claude-code/, that previously did not exist.",
+    "registry_origin": "FI-002 entry already present at /root/AAA/dist/a2a/agents.json:188 \u2014 this card materialises the warga dir, /root/AAA/agents/claude-code/, that previously did not exist.",
     "settings_baseline": "settings.json authored 2026-08-08 by 333-AGI, FED-routing already aligned. This card adds the missing sibling to /root/AAA/agents/kimi-code/, /root/AAA/agents/opencode/, etc.",
     "bash_alias_fix": "Replaced `alias /copy=...` (invalid: bash aliases cannot contain `/`) with `/copy() { ...; }` function preserving the leading-slash command name."
   },
@@ -270,7 +270,7 @@
     {
       "id": "FORGE-github-ops",
       "name": "GitHub Ops (merged v1.2.0)",
-      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -292,7 +292,7 @@
       ]
     }
   ],
-  "registry_receipt_hash": "sha256:961bb47648643152e8602a63f4f953eee5aff958e0fc82a9312c9b691212d118",
+  "registry_receipt_hash": "ac3aacb7e693fc243fe891e27fdec8e3b6acb43067d2f69979dc685f4ad05c1d",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -322,8 +322,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
@@ -341,11 +341,12 @@
   "signature_status": {
     "state": "ABSENT",
     "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
-    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
-  }
+  },
+  "authority_ceiling": "PROPOSE_AND_VERIFY"
 }
