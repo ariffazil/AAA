@@ -39,12 +39,12 @@
 
 | Rule | Owner | Wiring |
 |---|---|---|
-| Arithmetic is never computed in-head — use the calculator; cross-verify pass-2 | `/root/AAA/skills/know-math/SKILL.md` (`Don't use for → Simple arithmetic (calculator)`) | bundle `anti-bangang-core` |
+| Arithmetic is never computed in-head — use the calculator; cross-verify pass-2 | `/root/AAA/skills/know-math/SKILL.md` (`Don't use for → Simple arithmetic (calculator)`) | skill · registry V3 |
 | Admit a specific error immediately; never substitute a stronger claim | `/root/AAA/instructions/external-action-repair.md` | fragment |
 | Never construct a person's inner life — witness, don't narrate | `/root/AAA/instructions/anti-haram-behavior-canonical.md` (HARAM 5 + *"menyaksikan atau mengarang?"*) | fragment |
 | Receipt binds every consequential claim / number | `claim-receipt-binding.md` · `exe-receipt-discipline.md` | fragment |
-| MEASURED outranks DERIVED; label OBS·DER·INT·SPEC | `/root/AAA/skills/evidence-hierarchy/SKILL.md` · `evidence-discipline.md` | bundle `evidence-audit` |
-| Register / tone for a given human lane | `know-language` · `human-meaning-membrane` | bundle `human-reality-edge` |
+| MEASURED outranks DERIVED; label OBS·DER·INT·SPEC | `/root/AAA/skills/evidence-hierarchy/SKILL.md` · `evidence-discipline.md` | skill · registry V3 |
+| Register / tone for a given human lane | `know-language` · `human-meaning-membrane` | skill · registry V3 |
 
 ## Sketchpad & Receipts (canonical, 2026-08-15)
 

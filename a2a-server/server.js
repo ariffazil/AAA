@@ -610,11 +610,9 @@ async function openOpenClawGatewayConnection(timeoutMs = 15000) {
               platform: process.platform,
               mode: 'backend',
             },
-            // X11 fix (2026-09-26): grant is auth-derived — operator role receives
-            // scopes=[] (senderIsOwner → [admin], else []). The gateway password we
-            // hold is the owner credential; admin alone does not imply write.
-            role: 'owner',
-            scopes: ['operator.admin', 'operator.read', 'operator.write'],
+            // Baseline (verified): transport client presents operator/admin. Scope grants are the gateway's call.
+            role: 'operator',
+            scopes: ['operator.admin'],
             auth: {
               password: OPENCLAW_GATEWAY_PASSWORD,
             },
@@ -2112,172 +2110,6 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     }
   }
 
-  // === HERMES-ASI MCP DISPATCH — FastMCP to :18086/mcp ===
-  if (targetAgent === 'hermes-asi') {
-    task.status = {
-      state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to Hermes ASI MCP on :18086...' }], messageId: generateId(), taskId, contextId },
-      timestamp: new Date().toISOString()
-    };
-    await taskStore.set(taskId, task);
-    publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
-
-    try {
-      const http = require('http');
-      const hermesMCP = (method, params) => new Promise((resolve, reject) => {
-        const payload = JSON.stringify({ jsonrpc: '2.0', id: taskId, method, params });
-        const req = http.request({
-          hostname: '127.0.0.1', port: 18086, path: '/mcp', method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream', 'Content-Length': Buffer.byteLength(payload) },
-          timeout: 30000
-        }, (res) => {
-          let body = ''; res.on('data', chunk => body += chunk);
-          res.on('end', () => {
-            try { resolve({ body: JSON.parse(body), sessionId: res.headers['mcp-session-id'] }); }
-            catch(e) { resolve({ raw: body, sessionId: res.headers['mcp-session-id'] }); }
-          });
-        });
-        req.on('error', reject);
-        req.on('timeout', () => { req.destroy(); reject(new Error('Hermes MCP timeout')); });
-        req.write(payload); req.end();
-      });
-
-      // FastMCP handshake: initialize → get session ID → tools/call
-      const init = await hermesMCP('initialize', {
-        protocolVersion: '2024-11-05', capabilities: {},
-        clientInfo: { name: 'aaa-gateway', version: '2.0' }
-      });
-      const sessId = init.sessionId;
-
-      // Pick the right tool based on intent
-      const lower = userText.toLowerCase();
-      const isConversational = !lower.includes('memory') && !lower.includes('remember') 
-        && !lower.includes('plan') && !lower.includes('review')
-        && !lower.includes('fact') && !lower.includes('verify') && !lower.includes('check')
-        && !lower.includes('status') && !lower.includes('health') && !lower.includes('organ');
-      
-      const toolName = lower.includes('memory') || lower.includes('remember') ? 'hermes_memory_steward'
-        : lower.includes('plan') || lower.includes('review') ? 'hermes_plan_review'
-        : lower.includes('fact') || lower.includes('verify') || lower.includes('check') ? 'hermes_fact_check'
-        : lower.includes('status') || lower.includes('health') || lower.includes('organ') ? 'hermes_system_status'
-        : 'chat';  // conversational fallback → bridge chat mode
-
-      // If conversational, route to Hermes Agent MCP Bridge (chat mode with DeepSeek + SOUL.md)
-      if (toolName === 'chat') {
-        try {
-          const chatPayload = JSON.stringify({
-            jsonrpc: '2.0', id: taskId + '-chat', method: 'tools/call',
-            params: { name: 'hermes_agent_ask', arguments: { prompt: userText, mode: 'chat' } }
-          });
-          
-          // Initialize bridge session
-          const bridgeInit = await new Promise((resolve, reject) => {
-            const payload = JSON.stringify({ jsonrpc: '2.0', id: 'init', method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'aaa-gateway', version: '2.0' } } });
-            const req = http.request({ hostname: '127.0.0.1', port: 18090, path: '/mcp', method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream', 'Content-Length': Buffer.byteLength(payload) }, timeout: 15000 }, (res) => {
-              let body = ''; res.on('data', chunk => body += chunk);
-              res.on('end', () => resolve(res.headers['mcp-session-id'] || 'default'));
-            });
-            req.on('error', reject); req.write(payload); req.end();
-          });
-          
-          const chatHeaders = { 'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream', 'Content-Length': Buffer.byteLength(chatPayload), 'mcp-session-id': bridgeInit };
-          const chatResult = await new Promise((resolve, reject) => {
-            const req = http.request({ hostname: '127.0.0.1', port: 18090, path: '/mcp', method: 'POST', headers: chatHeaders, timeout: 60000 }, (res) => {
-              let body = ''; res.on('data', chunk => body += chunk);
-              res.on('end', () => {
-                try { 
-                  const d = JSON.parse(body);
-                  const content = d?.result?.content?.[0]?.text;
-                  if (content) {
-                    const inner = JSON.parse(content);
-                    resolve(inner.reply || JSON.stringify(inner));
-                  } else resolve(JSON.stringify(d));
-                } catch(e) { resolve(body); }
-              });
-            });
-            req.on('error', reject); req.write(chatPayload); req.end();
-          });
-          
-          task.status = {
-            state: 'TASK_STATE_COMPLETED',
-            message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→Hermes Chat]\n${chatResult}` }], messageId: generateId(), taskId, contextId },
-            timestamp: new Date().toISOString()
-          };
-          task.artifacts = []; task.history = [message];
-          await taskStore.set(taskId, task);
-          publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
-          return;
-        } catch (chatErr) {
-          console.error(`[AAA→Hermes Chat] Bridge failed: ${chatErr.message}.`);
-        }
-        // Chat failed - return error, don't fall through to MCP
-        task.status = {
-          state: 'TASK_STATE_FAILED',
-          message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→Hermes Chat] Bridge unavailable: ${chatErr.message}` }], messageId: generateId(), taskId, contextId },
-          timestamp: new Date().toISOString()
-        };
-        task.artifacts = []; task.history = [message];
-        await taskStore.set(taskId, task);
-        publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
-        return;
-      }
-
-      // Non-chat path: call Hermes MCP tools directly
-      // Second call with session ID
-      const callPayload = JSON.stringify({
-        jsonrpc: '2.0', id: taskId + '-call', method: 'tools/call',
-        params: {
-          name: toolName,
-          arguments: toolName === 'hermes_memory_steward' ? { content: userText, mode: 'classify' }
-            : toolName === 'hermes_plan_review' ? { plan: userText, mode: 'quick' }
-            : toolName === 'hermes_fact_check' ? { claim: userText, mode: 'quick' }
-            : { mode: 'brief' }
-        }
-      });
-      const callHeaders = { 'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream', 'Content-Length': Buffer.byteLength(callPayload) };
-      if (sessId) callHeaders['mcp-session-id'] = sessId;
-
-      const callResult = await new Promise((resolve, reject) => {
-        const req = http.request({
-          hostname: '127.0.0.1', port: 18086, path: '/mcp', method: 'POST',
-          headers: callHeaders, timeout: 30000
-        }, (res) => {
-          let body = ''; res.on('data', chunk => body += chunk);
-          res.on('end', () => {
-            try { resolve(JSON.parse(body)); }
-            catch(e) { resolve({ raw: body }); }
-          });
-        });
-        req.on('error', reject);
-        req.on('timeout', () => { req.destroy(); reject(new Error('Hermes MCP timeout')); });
-        req.write(callPayload); req.end();
-      });
-
-      const responseText = JSON.stringify(callResult?.result || callResult?.raw || callResult, null, 2).slice(0, 4000);
-
-      task.status = {
-        state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→Hermes ASI :18086] ${toolName}\n${responseText}` }], messageId: generateId(), taskId, contextId },
-        timestamp: new Date().toISOString()
-      };
-      task.artifacts = [];
-      task.history = [message];
-      await taskStore.set(taskId, task);
-      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
-      return;
-    } catch (err) {
-      const errorStatus = {
-        state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→Hermes MCP] Dispatch failed: ${err.message}.` }], messageId: generateId(), taskId, contextId },
-        timestamp: new Date().toISOString()
-      };
-      task.status = errorStatus;
-      await taskStore.set(taskId, task);
-      publish({ kind: 'status-update', taskId, contextId, status: errorStatus, final: true });
-      return;
-    }
-  }
-
   // === REAL AGENT DISPATCH — route to Hermes ASI (legacy OpenClaw path) ===
   if (targetAgent === 'hermes') {
     task.status = {
@@ -2932,7 +2764,9 @@ mountMcpAppsToolsCall(app);
 // Standard A2A endpoint for agents to send tasks through the mesh.
 // Routes to target agent via Telegram or OpenClaw gateway.
 app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
-  const { targetAgent, message, skill, taskId } = req.body;
+  let { targetAgent, message, skill, taskId } = req.body;
+  // X11 fix (2026-09-26): canonical Hermes lane = OpenClaw. Alias normalised at every entry.
+  if (targetAgent === 'hermes-asi') targetAgent = 'hermes';
   
   // ── CANONICAL ACTORS — 33-agent federation geometry (forged 2026-07-25) ──
   // Every agent in the A2A registry must be here for live-wire routing.
@@ -3044,40 +2878,7 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     return;
   }
 
-  // Default: route through OpenClaw gateway (handles Hermes, 333-AGI, etc.)
-  // EXCEPT hermes-asi: direct MCP dispatch to :18086
-  if (targetAgent === 'hermes-asi' || targetAgent === 'hermes') {
-    const http = require('http');
-    try {
-      // FastMCP handshake + tools/call
-      const mcpCall = (method, params, extraHeaders) => new Promise((resolve, reject) => {
-        const payload = JSON.stringify({ jsonrpc: '2.0', id: resolvedTaskId, method, params });
-        const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream', 'Content-Length': Buffer.byteLength(payload), ...(extraHeaders || {}) };
-        const req = http.request({ hostname: '127.0.0.1', port: 18086, path: '/mcp', method: 'POST', headers, timeout: 30000 }, (hres) => {
-          let body = ''; hres.on('data', c => body += c);
-          hres.on('end', () => {
-            try { resolve({ body: JSON.parse(body), sid: hres.headers['mcp-session-id'] }); }
-            catch(e) { resolve({ raw: body, sid: hres.headers['mcp-session-id'] }); }
-          });
-        });
-        req.on('error', reject); req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
-        req.write(payload); req.end();
-      });
-      const init = await mcpCall('initialize', { protocolVersion: '2024-11-05', capabilities: {}, clientInfo: { name: 'aaa-gateway', version: '2.0' } });
-      const text = message?.parts?.[0]?.text || '';
-      const lower = text.toLowerCase();
-      const toolName = lower.includes('memory') ? 'hermes_memory_steward' : lower.includes('plan') ? 'hermes_plan_review' : lower.includes('fact') || lower.includes('verify') ? 'hermes_fact_check' : 'hermes_system_status';
-      const args = toolName === 'hermes_memory_steward' ? { content: text, mode: 'classify' } : toolName === 'hermes_plan_review' ? { plan: text, mode: 'quick' } : toolName === 'hermes_fact_check' ? { claim: text, mode: 'quick' } : { mode: 'brief' };
-      const call = await mcpCall('tools/call', { name: toolName, arguments: args }, init.sid ? { 'mcp-session-id': init.sid } : {});
-      const resultText = JSON.stringify(call.body?.result || call.raw || call.body, null, 2).slice(0, 4000);
-      res.json(createJSONRPCResponse(req.body?.id || 0, {
-        state: 'completed', message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→Hermes ASI :18086] ${toolName}\n${resultText}` }] }
-      }));
-    } catch (e) {
-      res.status(502).json(createJSONRPCError(req.body?.id || 0, -32000, `Hermes MCP unreachable: ${e.message}`));
-    }
-    return;
-  }
+  // X11 fix (2026-09-26): all agents (incl. hermes / hermes-asi) route via OpenClaw — :18086 is FRAME, never Hermes.
   try {
     const contextId = req.body?.contextId || generateId();
     const agentResult = await dispatchOpenClawTask({
