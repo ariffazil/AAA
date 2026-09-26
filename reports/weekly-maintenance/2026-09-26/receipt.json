@@ -1,0 +1,196 @@
+{
+  "epoch": "2026-09-26T20:00:22.223112+08:00",
+  "host": "forge",
+  "phases": {
+    "identity": [
+      {
+        "phase": "identity",
+        "id": "I1",
+        "sev": "OK",
+        "title": "host=forge kernel=6.17.0-41-generic uptime=up 3 weeks, 3 days, 11 hours, 52 minutes",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "identity",
+        "id": "I2",
+        "sev": "OK",
+        "title": "No dead interpreter paths",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "scheduler": [
+      {
+        "phase": "scheduler",
+        "id": "S1",
+        "sev": "OK",
+        "title": "18 total, 7 enabled, 11 disabled",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "scheduler",
+        "id": "S3",
+        "sev": "P0",
+        "title": "1 enabled ZERO executions",
+        "evidence": "seal-integrity-sweep-script",
+        "note": ""
+      },
+      {
+        "phase": "scheduler",
+        "id": "S4",
+        "sev": "P1",
+        "title": "3 FAILED",
+        "evidence": "VPS Backup, \ud83d\udf02 Site drift watch \u2014 Caddy config + bundle pointer, gate-integrity-check",
+        "note": ""
+      },
+      {
+        "phase": "scheduler",
+        "id": "S6",
+        "sev": "P2",
+        "title": "11 disabled unlabelled",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "memory": [
+      {
+        "phase": "memory",
+        "id": "M1",
+        "sev": "P1",
+        "title": "state.db: 1023MB, 1636 sessions, 154801 msgs",
+        "evidence": "",
+        "note": "Compaction recommended"
+      },
+      {
+        "phase": "memory",
+        "id": "M2",
+        "sev": "P2",
+        "title": "Cache: 1019MB",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "prompt": [
+      {
+        "phase": "prompt",
+        "id": "P1",
+        "sev": "OK",
+        "title": "Prompt: 0.0KB skills=0.0KB",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "prompt",
+        "id": "P2",
+        "sev": "OK",
+        "title": "Skills: 15",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "prompt",
+        "id": "P3",
+        "sev": "P1",
+        "title": "Snapshot: 565.0KB",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "tools": [
+      {
+        "phase": "tools",
+        "id": "T1",
+        "sev": "OK",
+        "title": "All 6 MCP ports up",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "tools",
+        "id": "T2",
+        "sev": "OK",
+        "title": "All organs healthy",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "tools",
+        "id": "T3",
+        "sev": "OK",
+        "title": "All critical units OK",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "backups": [
+      {
+        "phase": "backups",
+        "id": "B-vault999",
+        "sev": "OK",
+        "title": "vault999: 0.0fd old",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "backups",
+        "id": "B-arifos",
+        "sev": "P2",
+        "title": "arifos dir missing",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "clis": [
+      {
+        "phase": "clis",
+        "id": "C1",
+        "sev": "P1",
+        "title": "1 missing",
+        "evidence": "antigravity",
+        "note": ""
+      },
+      {
+        "phase": "clis",
+        "id": "C2",
+        "sev": "OK",
+        "title": "8 CLIs: qwen, kimi, opencode, codex, claude, agy, gemini, hermes",
+        "evidence": "",
+        "note": ""
+      }
+    ],
+    "agents": [
+      {
+        "phase": "agents",
+        "id": "A1",
+        "sev": "P1",
+        "title": "F13: f13-packet-2026-W38-3.md (10.7d)",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "agents",
+        "id": "A2",
+        "sev": "P1",
+        "title": "TREE777 exists but NOT installed",
+        "evidence": "",
+        "note": ""
+      },
+      {
+        "phase": "agents",
+        "id": "A3",
+        "sev": "OK",
+        "title": "CHRON: 10 events, 12 preds",
+        "evidence": "",
+        "note": ""
+      }
+    ]
+  },
+  "summary": {
+    "P0": 1,
+    "P1": 6,
+    "P2": 3,
+    "OK": 11
+  }
+}
