@@ -345,6 +345,20 @@ implementation.
 - **The path that "works" can also be the wrong tool.** A direct CLI that bypasses a wrapper can
   pass payload through but skip a gate the wrapper enforces. The path that surfaces the bug is not
   always the path to keep.
+- **A vantage dispute between sovereign and runtime is not a contradiction — it is a host-identity
+  gap.** When the principal probes one filesystem and the agent probes another, both reads can be
+  internally consistent yet mutually contradictory (Arif sees `/root/.local/share/arifos/` empty;
+  agent sees 322KB / 202 entries, mtime 30 minutes old). Three diagnostic moves before picking a
+  winner: (1) print hostname / uname / mount on the agent side and ask the principal for theirs —
+  same name, different host is the most common cause; (2) resolve both paths through `readlink -f`
+  and compare inodes, since a symlink chain can make two paths resolve to one store on the agent
+  side and to nothing on the principal's side; (3) check whether the principal is in an
+  audit/defensive posture and intentionally inflated a number — agreement with the principal's
+  data is not falsifiable when their data is the hypothesis under test. **Rule: until the two
+  vantages are identified, every mutation the agent performs edits the agent's snapshot, not the
+  principal's — and "fixed" reads as silent loss on the principal's side.** Default to a decision
+  request naming both readings and asking which vantage is the live one; do not collapse to a single
+  winner without that answer.
 
 ## Verdict contract
 

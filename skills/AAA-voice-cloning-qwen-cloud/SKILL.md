@@ -1,6 +1,6 @@
 ---
 name: AAA-voice-cloning-qwen-cloud
-description: "Operational binding for Qwen Cloud voice cloning (qwen-voice-enrollment, voice-enrollment) across Qwen-TTS, Qwen-Omni, CosyVoice, and Qwen-Audio-TTS. Hard constraints: target_model lock-in, 10–20 s sample window, URL vs Base64 ingestion split. Alternative to MiniMax binding when low latency or zero-shot instant enrollment matters."
+description: "Clone voice profiles and calibrate TTS on Qwen Cloud."
 version: 1.0.0
 author: kimi-code (FI-008) for ARIF
 forged: 2026-08-18

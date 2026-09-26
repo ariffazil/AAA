@@ -5,7 +5,7 @@ risk_tier: low
 floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: knowledge
-description: "All computation is mathematical. Uncertainty is quantified. Optimization has structure. Proof has rules. Numbers don't lie but models can. Math substrate — how to count what matters, prove the claim, and avoid the lie."
+description: "Compute arithmetic, statistics, and probability models."
 owner: F13 SOVEREIGN
 status: active
 three_axis: true
@@ -23,6 +23,7 @@ capability_tier: federation-substrate-knowledge
 # know-math
 
 > **Purpose:** All computation is mathematical. Uncertainty is quantified. Optimization has structure. Proof has rules. Numbers don't lie but models can.
+> **Full description (moved out of frontmatter 2026-09-26, 60-char index law):** Math substrate — how to count what matters, prove the claim, and avoid the lie.
 
 ## Axis 1: Invariants
 
@@ -87,3 +88,14 @@ Math is not computation. Math is **what you choose to count**, **what you choose
 - Simple arithmetic (calculator)
 - Token counting (string split)
 - Unit conversion (use a tool)
+
+## Arithmetic verification — the two-pass rule
+
+A single calculator invocation is not verification; it is the same arithmetic run once. LLM brain + python tool can both produce the same wrong number from the same wrong inputs without disagreeing. Independence comes from running the operation twice **with no shared state** — separate subprocess, separate interpreter, separate scratch.
+
+- **Never emit a consequential number from a single python call.** Run it twice in isolated subprocesses and compare. If pass-1 ≠ pass-2, suppress the result and report the disagreement; the disagreement is the only fact the reader can act on.
+- **Never trust `compute_pass1 == compute_pass2` as proof of correctness** — both passes share your model and your tool, so a model-level error is correlated across passes. Pair two-pass verification with a known value (`expected=...`) when one exists, or with a hand-checked independent computation (e.g. `re.sub` against a different regex, or a closed-form by-hand value).
+- **For business/financial P&L especially**: include a 3-way verify — pass-1, pass-2, and a hand-computed expected total — because the cost of being wrong is a real number someone else spends.
+- **Receiving a correction from a user** is itself a two-pass event. Compare the user's claimed value against your pass-1 and pass-2. If your passes agree but the user disagrees, your passes are correlated error — **the user is the third witness**, not the bug to be argued away.
+
+Pattern (Python): `subprocess.run([sys.executable, "-c", code], capture_output=True)` twice, compare JSON-decoded stdout with tolerance for float drift. Receipt to VAULT999 with `{label, p1, p2, diff, ts}` so the audit trail can verify which calculation produced which figure.

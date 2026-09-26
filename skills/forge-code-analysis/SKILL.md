@@ -5,7 +5,7 @@ version: 1.0.0
 owner: A-FORGE
 risk_tier: low
 license: MIT
-description: "This skill should be used when the user needs to analyze Git repositories, compare developer commit patterns, work habits, development efficiency, code style, code quality, and slacking behaviors. It generates honest, direct developer evaluations with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger phrases include \"analyze code\", \"analyze repository\", \"compare developers\", \"code quality report\", \"commit patterns\", \"developer efficiency\", \"developer evaluation\", \"slacking index\", \"摸鱼指数\", \"工作习惯分析\", \"代码分析\", \"研发效率\", \"代码质量\", \"开发者评估\", \"developer score\"."
+description: "Analyze Git repo commit habits, efficiency, and code drift."
 floor_scope:
 - F1
 - F2
@@ -313,3 +313,6 @@ For each developer's evaluation, deliver a blunt, no-nonsense interpretation to 
 - **Report results must not be directly used for performance reviews or punitive management decisions**
 
 ... EOF
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** This skill should be used when the user needs to analyze Git repositories, compare developer commit patterns, work habits, development efficiency, code style, code quality, and slacking behaviors. It generates honest, direct developer evaluations with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger phrases include "analyze code", "analyze repository", "compare developers", "code quality report", "commit patterns", "developer efficiency", "developer evaluation", "slacking index", "摸鱼指数", "工作习惯分析", "代码分析", "研发效率", "代码质量", "开发者评估", "developer score".

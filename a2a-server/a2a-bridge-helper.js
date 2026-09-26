@@ -73,6 +73,9 @@ function a2aCall(method, params) {
     const headers = {
       'Content-Type': 'application/json',
       'A2A-Version': '1.0',
+      // EMD gate (F12) classifies internal mesh traffic by identity signal,
+      // not by session token. This tool only ever runs on the gateway host loopback.
+      'x-a2a-internal': 'true',
       'Content-Length': Buffer.byteLength(payload)
     };
     if (sessionToken) {
@@ -119,6 +122,10 @@ async function main() {
     id: taskId,
     sessionId: sessionId,
     targetAgent: targetAgent,
+    // executeTask's target comes from params.agent_id || params.metadata.targetAgent —
+    // a top-level targetAgent alone falls through to local processing (X11 fix 2026-09-26).
+    agent_id: targetAgent,
+    metadata: { targetAgent: targetAgent },
     message: {
       role: 'agent',
       parts: [{ type: 'text', text: taskText }]

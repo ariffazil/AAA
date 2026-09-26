@@ -1,6 +1,6 @@
 ---
 name: firecrawl-demo-walkthrough
-description: Walk through a product's key flows with Firecrawl browser and produce a structured UX/product walkthrough. Use for signup, onboarding, pricing, docs, dashboard, product demo prep, UX teardown, and first-run experience analysis.
+description: "Use for signup, onboarding, pricing, docs, dashboard."
 license: ISC
 metadata:
   author: firecrawl
@@ -75,3 +75,6 @@ focus: [full/signup/pricing/docs/dashboard]
 - Be specific about screens, CTAs, forms, and transitions.
 - Separate observation from opinion.
 - Preserve every page visited.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Walk through a product's key flows with Firecrawl browser and produce a structured UX/product walkthrough. Use for signup, onboarding, pricing, docs, dashboard, product demo prep, UX teardown, and first-run experience analysis.
