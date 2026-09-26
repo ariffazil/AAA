@@ -32,6 +32,9 @@ triggers, the "who pays if wrong" test), load
 `references/numerical-claim-discipline.md`. It is the portable contract every artifact
 producing session should run against.
 
+For UGL/gray-market pharmacy and research-peptide verification when a user pastes a product
+URL, see `references/ugl-peptide-verification.md` — five-point audit shape.
+
 ---
 
 ## The layer that rots is the number layer, and it rots silently
@@ -356,6 +359,43 @@ only a sentence already in the room.
   axis beside the number, and when adopting someone else's figure, reproduce their definition before
   comparing it to yours.
 - **For one principal: arithmetic belongs to a tool, not to the model.** For some principals (Arif Fazil is a documented case), LLM "brain arithmetic" is treated as unreliable as an unsourced quote — they explicitly test the agent by repeating the same calculation twice; if the figure changes between passes, the model was estimating, and the answer is no longer trustworthy. Their rule is strict and standing: every arithmetic figure that leaves the chat must come out of a deterministic tool call (`python3 -c`, terminal calculator, MCP `numeric_audit`), with optional two-pass consistency check to demonstrate the result was not a memory guess. The same display discipline that requires "VERIFIED" vs "REPORTED" tags on financial figures requires "calculated by tool" vs "estimated" tags on every arithmetic that reaches the user. A calculator-verified figure can still be wrong (wrong inputs), but the wrongness is then in the inputs, not in the model's estimation. Prefer the tool over the brain — the brain is pattern-matching on language, not arithmetic.
+
+## Food-business cost-tally pattern (Arif Fazil, recurring)
+
+A principal running a small food operation (nasi lemak, kuih, nasi campur, etc.) often produces
+order sheets inline and asks for back-of-envelope math against the same dataset:
+
+- per-line item counts and types (telur rebus / mata / dadar / berlauk)
+- per-premises tally across 5-10 named outlets, each with their own pickup window
+- rolled-up totals with adjustments: x% unsold (wastage), commission to a partner (cook or packer),
+  pack changes ("plastic kuning 1", cash terms, "asing tray ye kak" for separately-packed items)
+
+Pitfalls when calculating these for this principal:
+
+- **Separate "separuh" (half-boiled) from "penuh" (fully-boiled) before multiplying.** A line marked
+  `telur rebus separuh` is a different SKU even when written like a normal boiled-egg line. If the
+  bottom line folds both into one total, the cook's packing instruction is lost, and the wastage
+  rate against the wrong cohort is wrong by definition.
+- **Cash-term lines are still order lines, not separately-paid.** "5 cash term" means "5 bungkus on
+  cash, account after"; it does not mean "outside the order". Include them in tallies and totals,
+  mark them separately in any pack list.
+- **"Asing tray" / separate-tray instructions are packing instructions, not order lines.** They
+  often ride attached to an item already counted. Recounting them as a separate line double-counts.
+  Notes attached = strip before summing.
+- **A single principal may run 5-8 premises with morning pickup windows staggered by 15-30
+  minutes; preserve the (premises, time-window) tuple in any pack list or route output.** A flat
+  sum across premises loses the route order and forces a manual re-sort.
+- **Wastage percentages vs multiplier are inverse-label trap.** "20% × abis" can be read as "20%
+  of unsold deducted" (which is a multiplier ON the 20% figure, not on the gross) or as "20%
+  wasted → 80% sold". Always name the operation: "*sell-through rate* × *unit price*".
+- **Make the assumption explicit before multiplying anything.** "Assuming 85% sell-through, 15%
+  wastage" produces a different figure than "85% sold". When the principal sends repeated
+  re-asks of the same dataset with slightly different percentage inputs, treat each as a scenario
+  input, not a contradiction — show both honestly.
+- **Per-premises × share-of-revenue is a different calculation than per-premises × flat-%**. When
+  a partner (cook, packing helper, makcik) is paid a share of revenue, "20% of the day's gross"
+  is one shape and "20% of each premises' gross" is another. Ask which the principal means before
+  yielding a number; the resulting payout can swing hundreds of ringgit per week.
 
 ## User-Specific Arithmetic Discipline (Arif Fazil)
 
