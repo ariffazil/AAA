@@ -155,3 +155,6 @@ claim_ledger/*.db
 forge_work/brief-state.sqlite3
 forge_work/docforge-ledger.jsonl
 quarantine/
+
+# editor backup debris (.eo01bak) — 42 committed 2026-09-26 in 25deadcd
+*.eo01bak
