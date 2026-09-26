@@ -1,5 +1,8 @@
 {
- "schema": "arifos.skills_index.v2",
+ "schema": {
+  "version": "arifos.skills_index.v2",
+  "sk12_label_fix_utc": "2026-09-26T23:37:59Z"
+ },
  "generator": "skill-index-generator.py",
  "root": "/root/AAA/skills",
  "single_writer": true,
@@ -25,7 +28,7 @@
    "3": 59
   },
   "with_owner": 292,
-  "with_authority": 257
+  "with_risk_tier": 257
  },
  "harnesses": [
   "claude",
