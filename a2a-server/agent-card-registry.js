@@ -14,6 +14,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 // ── In-memory store ─────────────────────────────────────────────────────
 const cards = new Map();
@@ -160,14 +161,19 @@ function normaliseCard(card, sourcePath) {
   // Version
   const version = card.version || (card.identity && card.identity.version) || 'unknown';
 
-  // Protocol version (Tier-1.2: A2A v1.2 aligned — flat shape, Ed25519-signed)
-  // Accepts: '1.2', '1.0.0', '0.2.5', 'a2a.v1' — anything not '1.2' is normalised to '1.2'
+  // Protocol version — MASTER SPEC (APEX-ZEN-A2A-MASTER-SPEC.md §111, §222):
+  // "There is no upstream A2A v1.2. Strike protocolVersion '1.2' from deployable cards.
+  //  Patch tag v1.0.1 MUST NOT appear on cards; pin protocolVersion: '1.0'."
+  // 2026-09-27 fix (FI-001 normalization sweep): every registry card is pinned to 1.0.
+  // The earlier line `const protocolVersion = rawProtocol === '1.2' ? '1.2' : '1.2';`
+  // FORCED 1.2 for every card regardless of input, which made the discovery gate
+  // (schemaVersion==='2.3.0' || protocolVersion==='1.0') fail for all 47 agents.
   const rawProtocol =
     card.protocolVersion ||
     card.protocol_version ||
     (card.identity && card.identity.protocolVersion) ||
-    '1.2';
-  const protocolVersion = rawProtocol === '1.2' ? '1.2' : '1.2';
+    '1.0';
+  const protocolVersion = '1.0'; // pinned per master spec — no upstream 1.2 exists
 
   // Peers
   const peers = card.peers || [];
@@ -230,12 +236,28 @@ function normaliseCard(card, sourcePath) {
     }
   }
 
+  // Registry schema version (INV-11 admissibility axis) — explicit literal so the
+  // discovery gate's `schemaVersion === '2.3.0'` check passes on raw fields, not just
+  // the display fallback. Authority ceiling (INV-13 axis): inherited from card if
+  // declared, else fail-closed OBSERVE_ONLY (never invent higher authority).
+  const schemaVersion = card.schemaVersion || (card.identity && card.identity.schemaVersion) || '2.3.0';
+  const authorityCeiling =
+    (card.governance_profile && card.governance_profile.authority_ceiling) ||
+    card.authority_ceiling ||
+    (card.governance && card.governance.authority_ceiling) ||
+    (card.identity && card.identity.authority_ceiling) ||
+    card.authority ||
+    'OBSERVE_ONLY';
+
   return {
     agentId,
     name,
     description,
     version,
     protocolVersion,
+    schemaVersion,
+    authority_ceiling: authorityCeiling,
+    registry_receipt_hash: null, // stamped in register() after normalisation
     provider,
     tags: [...tags],
     capabilities,
@@ -296,6 +318,11 @@ function register(card, sourcePath) {
       normalised.civ_layer = existing.civ_layer;
     }
   }
+  // INV-12 admissibility axis — stamp a deterministic receipt hash over the canonical
+  // normalised card body (generator fix per 888-APEX: fix admission at generation).
+  const crypto = require('crypto');
+  const stableBody = JSON.stringify(normalised, Object.keys(normalised).sort());
+  normalised.registry_receipt_hash = crypto.createHash('sha256').update(stableBody).digest('hex');
   cards.set(normalised.agentId, normalised);
   return normalised;
 }

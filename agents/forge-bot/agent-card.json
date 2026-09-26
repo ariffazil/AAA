@@ -1,6 +1,6 @@
 {
   "id": "forge-bot",
-  "name": "FORGE Bot — Gateway 3",
+  "name": "FORGE Bot \u2014 Gateway 3",
   "description": "A-FORGE execution via @arifOS_bot. /health /status /fq /deploy /who",
   "url": "https://forge.arif-fazil.com/webhook/forge",
   "gateway": 3,
@@ -11,21 +11,21 @@
   "telegram_posting": {
     "telegram_posting": {
       "bot": "@arifOS_bot",
-      "bot_name": "🔥FORGE🔥 FORGE Bot",
+      "bot_name": "\ud83d\udd25FORGE\ud83d\udd25 FORGE Bot",
       "bot_id": "8727562763",
       "token_env": "FORGE_BOT_TOKEN",
       "token_vault": "/root/.secrets/kunci-mas.env",
       "group_chat_id": "-1003753855708",
       "post_tool": "/usr/local/bin/forge-post",
-      "identity_header": "FORGE / 🔥FORGE / @arifOS_bot",
+      "identity_header": "FORGE / \ud83d\udd25FORGE / @arifOS_bot",
       "rule": "Post to AAA group via FORGE bot only. One post per session. Token from vault, never hardcode.",
       "wired_at": "2026-08-08T05:44:00Z",
-      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
+      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md \u00a77"
     }
   },
   "$schema": "arifOS/agent-card/v2.3.0",
   "schemaVersion": "2.3.0",
-  "registry_receipt_hash": "sha256:1c86739058eae3cdf1d72c6553bca08ec64f280cf10a796717d937d074b098ad",
+  "registry_receipt_hash": "7709b10baf7040ac0f6311b97c6a6d6f61deb8894db9707ce45bec836b456eb8",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -55,8 +55,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "ACT",
@@ -71,7 +71,7 @@
       "stamped_by": "hermes (F13 authorisation 2026-09-16)",
       "stamped_at": "2026-09-16T07:00:00Z",
       "note": "Actuator: executes a sealed decision. Never judges.",
-      "conflict": "authority=EXECUTE_AFTER_SEAL vs governance_profile.authority_ceiling=DISPLAY_ONLY — the card's own fields disagree. Stamp follows authority + declared function; the ceiling is flagged for 888/F13, not silently overwritten."
+      "conflict": "authority=EXECUTE_AFTER_SEAL vs governance_profile.authority_ceiling=DISPLAY_ONLY \u2014 the card's own fields disagree. Stamp follows authority + declared function; the ceiling is flagged for 888/F13, not silently overwritten."
     }
   },
   "signature_legacy": [
@@ -86,11 +86,13 @@
   "signature_status": {
     "state": "ABSENT",
     "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
-    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
-  }
+  },
+  "protocolVersion": "1.0",
+  "authority_ceiling": "DISPLAY_ONLY"
 }

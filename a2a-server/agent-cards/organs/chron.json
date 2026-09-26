@@ -1,10 +1,10 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
+  "schemaVersion": "2.3.0",
+  "protocolVersion": "1.0",
   "agentId": "chron",
   "name": "CHRON",
-  "description": "Temporal consequence tracker — predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
+  "description": "Temporal consequence tracker \u2014 predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -78,5 +78,7 @@
     "after": 0,
     "quarantined": 3,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "COMPUTE_ONLY",
+  "registry_receipt_hash": "bec6a6949e7d8456a56a9d2d7020fa22e76ca8e3e54225844d5ab921f35d2c42"
 }

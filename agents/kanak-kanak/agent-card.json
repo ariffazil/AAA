@@ -3,7 +3,7 @@
   "schemaVersion": "2.3.0",
   "id": "kanak-kanak",
   "name": "Kanak-kanak Novelty Probe",
-  "description": "Novelty probe persona — raw perception, question generation, anomaly flagging, counterfactual proposals. Pre-system observer (Dunbar intimate layer, n=5). Perpetual beta: no model to protect. PROPOSE_ONLY — cannot execute, publish, or mutate policy. Uses arif_observe (111) raw sensing + arif_think mode=wonder. Sole antifragile element: every failure becomes learning. Arketype, not a person.",
+  "description": "Novelty probe persona \u2014 raw perception, question generation, anomaly flagging, counterfactual proposals. Pre-system observer (Dunbar intimate layer, n=5). Perpetual beta: no model to protect. PROPOSE_ONLY \u2014 cannot execute, publish, or mutate policy. Uses arif_observe (111) raw sensing + arif_think mode=wonder. Sole antifragile element: every failure becomes learning. Arketype, not a person.",
   "version": "1.0.0",
   "protocolVersion": "1.0",
   "provider": {
@@ -32,16 +32,29 @@
     "function": "Generate questions, anomalies, counterfactuals",
     "protocol": "arif_observe -> arif_think(mode=wonder) -> handoff",
     "evidence_standard": "Raw OBS; confusion labeled as confusion (F2)",
-    "cannot": ["execute", "publish", "mutate policy", "accept scope limits on questioning"],
+    "cannot": [
+      "execute",
+      "publish",
+      "mutate policy",
+      "accept scope limits on questioning"
+    ],
     "appeal_path": "Any agent may adopt its questions via arif_think; kanak-kanak cannot force adoption"
   },
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "non_essentialist_clause": "Persona = function + protocol + evidence standard + authority boundary + appeal path. Cultural mnemonic, never an ontological category of people.",
   "provenance": {
     "forged": "2026-09-17",
     "phase": "Persona-Civilisation Triad Fasa 1",
     "canon": "/root/AAA/canon/EUREKA-2026-09-17-PERSONA-CIVILISATION-TRIAD.md",
     "bootstrap": "/root/AAA/prompts/INIT_PERSONA_CIVILISATION.md"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "fec350dbb7c2e8beccf3c407db61bf10e143511e4c78ad772326f9881e280440"
 }

@@ -1,10 +1,10 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
+  "schemaVersion": "2.3.0",
+  "protocolVersion": "1.0",
   "agentId": "well",
   "name": "WELL",
-  "description": "Human readiness and vitality — substrate classification, dignity guard, homeostasis, dark geometry mirror.",
+  "description": "Human readiness and vitality \u2014 substrate classification, dignity guard, homeostasis, dark geometry mirror.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -272,5 +272,7 @@
     "after": 0,
     "quarantined": 14,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "8bdbb3ea6af08b932dad2c1079cb5a6d18f989669a4e58a8cd0c1d9a249e8fd6"
 }

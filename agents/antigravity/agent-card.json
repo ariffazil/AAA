@@ -7,7 +7,7 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Google Antigravity CLI (agy) — AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
+  "description": "Google Antigravity CLI (agy) \u2014 AI-first development platform. Connected to 6 MCP servers including 5 federation organs. YOLO/AFK autonomy with F1-F13 gates.",
   "version": "1.0.11",
   "model": "Gemini 3.5 Flash (High)",
   "binary": "/root/.local/bin/agy",
@@ -173,7 +173,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
+      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -211,7 +211,7 @@
     },
     {
       "id": "APEX-humility-lock",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
@@ -323,7 +323,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
     "transport": "http",
@@ -362,7 +362,7 @@
       "from_version": "1.0.10",
       "to_version": "1.0.11",
       "upgraded_at": "2026-08-21T14:00:00Z",
-      "upgraded_by": "Kimi Code (FI-008) — F13 gemini↔agy merge execution",
+      "upgraded_by": "Kimi Code (FI-008) \u2014 F13 gemini\u2194agy merge execution",
       "changes": [
         "FI-010 gemini-cli superseded into this lane (cards archived)",
         "legacy agy alias cards archived",
@@ -371,7 +371,7 @@
     }
   ],
   "schemaVersion": "2.3.0",
-  "registry_receipt_hash": "sha256:2bee73363c167341c19df7f30441acb4f151d5e0f998af926a53b7c0ba85c75a",
+  "registry_receipt_hash": "85b5040833809766d7f330ac993f8dfa32e063c0434c1c9606c0e34dcb951e03",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -386,8 +386,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "ACT",
@@ -402,7 +402,7 @@
       "stamped_by": "hermes (F13 authorisation 2026-09-16)",
       "stamped_at": "2026-09-16T07:00:00Z",
       "note": "Stamp follows the card's own role + ceiling declarations.",
-      "conflict": "Collision: _external/agy/agent-card.json describes the SAME Google Antigravity CLI as lane 333-AGI / capability BUILD. Two cards, two stamps, one tool. Needs a single SOT — flagged for 888/F13."
+      "conflict": "Collision: _external/agy/agent-card.json describes the SAME Google Antigravity CLI as lane 333-AGI / capability BUILD. Two cards, two stamps, one tool. Needs a single SOT \u2014 flagged for 888/F13."
     }
   },
   "signature_legacy": [
@@ -417,11 +417,12 @@
   "signature_status": {
     "state": "ABSENT",
     "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
-    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
-  }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }

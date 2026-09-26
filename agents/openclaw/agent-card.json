@@ -10,7 +10,7 @@
   },
   "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "2.0.0",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
   "provider": {
     "organization": "arifOS Federation",
@@ -758,7 +758,7 @@
     "godel_lock_acknowledgment": "My encoding of human intent is a compression. What I encode is not what the human said \u2014 it is what I understood. The compression itself may filter reality.",
     "canon": "/root/AAA/canon/CIV-21.md"
   },
-  "registry_receipt_hash": "sha256:80f29d25e14360f068d83f4e585f29789bc23ec684b37ef0300550d6094e773c",
+  "registry_receipt_hash": "4241270c6441f9c16e6c5e32fd7a5941e053fc94fd9ba95ed2d3835ad2c0c33c",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -820,5 +820,6 @@
   "_canonical_audit_2026_09_18": "333-AGI audit found this third card missed in initial sweep. Reconciled with canonical pointer to avoid split-SOT confusion.",
   "canonical_marker_2026_09_18": "co-located identity card; federation-mesh canonical = agent-cards/functions/openclaw/agent-card.json",
   "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
-  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la"
+  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la",
+  "authority_ceiling": "T1"
 }

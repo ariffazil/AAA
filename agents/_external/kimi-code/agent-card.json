@@ -20,7 +20,7 @@
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/kimi-code",
   "provider": {
     "organization": "arifOS Federation",
@@ -1082,7 +1082,7 @@
     "quarantine": "/root/.kimi-code/quarantine-20260821",
     "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned); 4 taxonomy symlink trees (136 broken) removed \u2014 AAA intact = SOT"
   },
-  "registry_receipt_hash": "sha256:ce67dedc8b8f743135d1832940e8b16955b6756863abb154a8b21e11225fb44d",
+  "registry_receipt_hash": "b23f354f8efdf18aee78cda86f0b34e4035974dd29ea013b29ff6b79bd13131d",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -1194,5 +1194,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }
