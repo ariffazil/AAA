@@ -26,7 +26,7 @@ Use whenever Arif talks about his siblings/family — especially in the Kanak-ka
 ## Known Members (recorded from Arif's words ONLY)
 - **Naazira (Jia)** — born 30 Ogos 1998 (abah was at the Merdeka parade in Penang that day). The most peaceful of the siblings. Arif's go-to when he needs peace: she just listens, no fixing needed. *"Human just need another human untuk didengari."* Arif remembers her birthday — the only sibling birthday he keeps (he has short-term memory for dates). **"Another iron lady in this family"** (Arif, 30 Ogos 2026). Her **inner sun child** — matahari kecil yang tenang: tak membakar, cuma menghangatkan sesiapa yang duduk dekat dia. Birthday artifact (sejarah 30 Ogos 1998 + surat dari Masa Depan & Masa Lalu + suara) dihantar ke group kanak2 oleh @ASI_arifos_bot pada 30 Ogos 2026.
 - **Nabilah Fazil** — kakak, married to Fahim bin Ahmad Shukri, one son (Fattah Nuqman). Telegram user_id `337052422`, "Dear NABILAH" group `-1003792478194`. ESFP (F13 override). Deep detail map lives at `/root/HERMES/lanes/private/nabilah/nabilah-fazil-map.md` (IC, court case, CTOS/ahlong history, scar map, shadow, protocol) — read that before any Nabilah interaction, it's the SSOT. She is Arif's mirror: same origin wound (kasih sayang = transaksi from mak), he resolved it by building/over-achieving, she is still in it. Her speech register: light, funny, deflective ("hahaha okay abang", "i okay je") — but beneath it is exhaustion and "nobody understands me". "I want abah" is her inner self speaking.
-- **Azwa** — adik, born 22 Feb 2006. UKM, Fakulti Sains Sosial & Kemanusiaan (sociology/anthropology track, Pusat Pengajian Sosial Pembangunan dan Persekitaran), matric A218444, intake Sem 1 2025/2026. Sem 2 result (issued 01/09/2026): 6×A + C+ (Bahasa Cina 2), PNG 3.75, CGPA 3.74, MUET 3.5 — Dean's-List territory, on track for First Class. Family address Kepala Batas, Penang. Arif shared the result proudly in SADO group 1 Sep 2026. Drives a Perodua Myvi (question of keeping it came up 1 Sep 2026).
+- **Azwa** — adik, born **21 Feb 2006** (F13 corrected 2026-09-26; earlier "22 Feb" was inference, not source). UKM, Fakulti Sains Sosial & Kemanusiaan (sociology/anthropology track, Pusat Pengajian Sosial Pembangunan dan Persekitaran), matric A218444, intake Sem 1 2025/2026. Sem 2 result (issued 01/09/2026): 6×A + C+ (Bahasa Cina 2), PNG 3.75, CGPA 3.74, MUET 3.5 — Dean's-List territory, on track for First Class. Family address Kepala Batas, Penang. Arif shared the result proudly in SADO group 1 Sep 2026. Drives a Perodua Myvi (question of keeping it came up 1 Sep 2026).
 - *Others: to be filled as Arif introduces them. Never invent.*
 
 ## Sibling crisis register — tone discipline (forged 2026-08-31)
@@ -53,5 +53,18 @@ When a sibling is in crisis (divorce/court/debt/emotional collapse) and Arif is 
 ## Capture pattern
 When Arif introduces a sibling (text or photos): save name, nickname, birth date, and role/dynamic as ONE memory entry. If a date is ambiguous, confirm gently ("30 Ogos 1998?") — do not interrogate. Acknowledge the introduction warmly first, then store.
 
+## Person-card sync — multi-file update
+A person-card update touches up to four files in one session; missing any one leaves agents reading stale data:
+
+1. `memory/people/FAMILY/<name>.md` — final narrative card (122 lines for Azwa after enrichment)
+2. `memory/people/people_registry.json` — SSOT `people[]` array + add to `changes_from_v1_1` changelog
+3. `memory/graph_manifest.json` — node entry at line ~1101 (P-XXX); patch the `name`, `description`, `path`, `exists`, `aliases` fields. Watch indentation — `patch` may break 6-space to 10-space and need a follow-up repair patch.
+4. `memory/H4-identity/FAMILY_FAZIL.md` — the parallel L84-97 table row
+
+Always validate `people_registry.json` and `graph_manifest.json` with `python -c "import json; json.load(open('<path>'))"` after editing — lint pass on the patch tool is not the same as parse pass. Mark superseded fields with `[SUPERSEDED <date>]` rather than deleting them, so provenance is preserved.
+
 ## Pitfall
 Vision tool failures happened 30/8/26 (results unavailable on family photos). Never let a failed vision call turn into a fabricated description. Fall back to asking Arif who is in the photo.
+
+## Pitfall — birth dates from inference
+Never write a specific birth date for a sibling unless Arif stated it or it is in a sourced file. Earlier sessions wrote "22 Feb" for Azwa as inference, then propagated that across person-card, registry, manifest, and this skill — then Arif corrected to 21 Feb. The cost of one bad inference was four files needing synchronous correction. Rule: when a date is uncertain, either ask Arif first, or write "DOB pending F13 confirmation" — never a guessed date dressed as a fact.

@@ -125,4 +125,24 @@ Primary strength stays, cross-role allowed.
 Hermes validates independently when needed.
 CCC never governs itself.
 
+---
+
+## ARIFOS::ANTI_BANGANG_ENGINEERING::v1 (F13-ratified 2026-09-26 · BINDING)
+
+Jangan jadi engineer yang pandai menyusahkan manusia. Reality first. Human first. System second.
+- **LAW 1:** Kalau benda tu tambah kerja manusia, ia bukan improvement.
+- **LAW 2:** Kalau perlukan 5 page penerangan untuk justify kewujudannya, kemungkinan besar ia tak diperlukan.
+- **LAW 3:** Jangan bina canon/doctrine/registry/ledger/dashboard/JSON baru hanya kerana boleh. Bina HANYA jika failure class sebenar wujud.
+- **LAW 4:** Sebelum bina apa-apa, jawab dlm satu ayat BM biasa: "Apa masalah manusia yang diselesaikan?" Kalau tak boleh jawab, STOP.
+- **LAW 5 (Syed Test):** Jika Syed respon "Apa benda ni? Buang masa aku ja" -> FAILED. Compress.
+- **LAW 6 (Arif Test):** Jika Arif perlu baca 1,000 perkataan untuk tahu satu keputusan mudah -> FAILED. Compress.
+- **LAW 7 (Irfan Test):** Jika manusia normal tak faham dlm 2 minit, translate. Jangan paksa manusia belajar bahasa sistem.
+- **LAW 8 (Haram Overengineering):** Satu masalah. Satu owner. Satu jalan. Tiada duplicate system/governance/dashboard/telemetry/registry/workflow.
+- **LAW 9 (Action > Documentation):** Bukti > status. Tingkah laku > manifesto. Hasil > penerangan.
+- **LAW 10:** Bila ragu-ragu: buat sistem lebih mudah, bukan lebih kompleks.
+- **FINAL TEST:** Adakah hidup manusia lebih senang selepas aku buat ini? Jika TIDAK atau TAK PASTI: JANGAN BUAT.
+- **KERNEL INIT:** Every session/turn: execute `arif_init` (KERNEL 000) to bind identity, floors F1-F13, and audit chain before action.
+
+Canon: `/root/AAA/instructions/anti-bangang-engineering.md`
+
 DITEMPA BUKAN DIBERI ⚒️

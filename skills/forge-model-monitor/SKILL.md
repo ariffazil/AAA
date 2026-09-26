@@ -3,7 +3,7 @@ name: forge-model-monitor
 id: forge-model-monitor
 version: 1.1.0
 risk_tier: low
-description: "Monitor the model fallback chain. Track latency, billing failures (402), cold-start failures, and auto-pause dead models. USE WHEN: \"model health\", \"check fallback chain\", \"model latency\", \"billing alert\"."
+description: "Monitor LLM fallback chain, latency, and 402 billing errors."
 owner: A-FORGE
 floor_scope:
 - F1
@@ -64,3 +64,6 @@ start=$(date +%s%N); <probe>; echo "$(($(date +%s%N) - $start))ns"
 - **Current DeepSeek balance?** → Probe `https://api.deepseek.com/v1/models` with live key
 - **Is MiniMax alive?** → Probe `https://api.minimax.chat/v1/models` with live key
 - **Which Ollama models are loaded?** → `curl localhost:11434/api/tags`
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Monitor the model fallback chain. Track latency, billing failures (402), cold-start failures, and auto-pause dead models. USE WHEN: "model health", "check fallback chain", "model latency", "billing alert".

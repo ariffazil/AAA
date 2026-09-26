@@ -1,21 +1,6 @@
 ---
 name: firecrawl-deep-research
-description: |
-  Produce an intensive, cited analytical report: executive summary, multi-angle
-  findings, contrarian views, open questions, and full sources. Use only when the
-  user needs rigorous synthesis of a complex topic (scientific, technical, policy,
-  or market-analytical) that cannot be answered with a short search, and wants
-  a formal written report, not a recommendation list.
-
-  Do not use for product picks, top-N lists, quick lookups, or routine "find out
-  about X" tasks. If the request does not clearly need this kind of report, do
-  not use this skill.
-
-  Do not use for a literature review over published papers. This skill collects
-  evidence from the open web. A request for the literature on a biomedical,
-  clinical, life-science, or other scientific topic — papers, studies, trials,
-  preprints — belongs to firecrawl-research-papers, which queries Firecrawl's
-  paper index (PubMed, bioRxiv, medRxiv, arXiv) instead of searching websites.
+description: "Use for an intensive, cited analytical report with sources."
 license: ISC
 metadata:
   author: firecrawl
@@ -142,3 +127,6 @@ output: [markdown/json/brief]
 - Prefer primary sources when available.
 - Flag uncertainty and conflicting evidence.
 - Synthesize instead of listing scrape summaries.
+
+
+> **Full description (pre-EO-01 intent-first pass, preserved):** Produce an intensive, cited analytical report: executive summary, multi-angle findings, contrarian views, open questions, and full sources. Use only when the user needs rigorous synthesis of a complex topic (scientific, technical, policy, or market-analytical) that cannot be answered with a short search, and wants a formal written report, not a recommendation list. Do not use for product picks, top-N lists, quick lookups, or routine "find out about X" tasks. If the request does not clearly need this kind of report, do not use this skill. Do not use for a literature review over published papers. This skill collects evidence from the open web. A request for the literature on a biomedical, clinical, life-science, or other scientific topic — papers, studies, trials, preprints — belongs to firecrawl-research-papers, which queries Firecrawl's paper index (PubMed, bioRxiv, medRxiv, arXiv) instead of searching websites.

@@ -2,7 +2,7 @@
 id: vps-docker-ops
 name: FORGE-vps-docker
 version: 2.0.0
-description: "Use when running VPS Docker operations — pinned versions, restart discipline, health checks, compose governance. Runbook for VPS Docker operations — pinned versions, restart discipline, health checks, compose governance. Lower machine entropy."
+description: "Manage VPS Docker containers: versions, restarts, compose."
 owner: AAA
 risk_tier: medium
 floor_scope: [F1, F2, F4, F8]

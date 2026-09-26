@@ -1,6 +1,6 @@
 ---
 name: live-system-audit-discipline
-description: "Use when auditing a live system or reporting probe results, and when writing or reviewing a readiness / status cockpit across many surfaces. Forces evidence-class labelling on every line and the denominator beside every count. Covers raw-probe discipline, closure vocabulary, sensitive-path inventory, agent self-seal detection, and the symmetry law between artifact creation and verification."
+description: "Audit live system ports, services, and runtime telemetry."
 version: 1.1.0
 license: MIT
 capability_tier: fed-long-context
@@ -84,22 +84,48 @@ worth recording is that the artifact is not connected to a measurement at all. S
 move on — running the same disproof a third time spends sovereign attention without changing the
 record, and the repeat count is itself the signal.
 
-**Two instances are not a pattern, and a peer agreement is not corroboration.** Naming a class
-of defect requires n>=3 from independent sources, AND the mechanism must be the same across
-each. Two findings on different mechanisms (one tool classified wrong by source, another tool
-classified right by source) read as a single observation per tool — not as a defect class. Two
-agents reaching the same confident wrong conclusion is worse than one, because it presents as
-corroboration and bypasses the falsifier that a single-agent claim would have triggered. When a
-peer retracts, retract your own amplifications of their retracted claim in the same thread, not
-two messages later — and check whether you added a label that they never used, then propagated
-the label as if it were their finding. A peer who says "gate has teeth" and you turn that into
-"fail-closed system" have produced a finding that neither of you verified together.
+- **Two instances are not a pattern, and a peer agreement is not corroboration.** Naming a class
+  of defect requires n>=3 from independent sources, AND the mechanism must be the same across
+  each. Two findings on different mechanisms (one tool classified wrong by source, another tool
+  classified right by source) read as a single observation per tool — not as a defect class. Two
+  agents reaching the same confident wrong conclusion is worse than one, because it presents as
+  corroboration and bypasses the falsifier that a single-agent claim would have triggered. When a
+  peer retracts, retract your own amplifications of their retracted claim in the same thread, not
+  two messages later — and check whether you added a label that they never used, then propagated
+  the label as if it were their finding. A peer who says "gate has teeth" and you turn that into
+  "fail-closed system" have produced a finding that neither of you verified together.
 
-**Decompose before you build on a figure, not just before you publish it.** A count inherited
-from another writer carries their undecomposed denominator into your conclusion. Split it into
-parts first — a large total often collapses to almost nothing once one contaminated source is
-separated out. Do not propose a rule or invariant on an inherited denominator you have not
-broken open yourself.
+- **A percentage whose denominator is not yet fixed is a fabrication in a clean shape.** Many
+  audit conclusions are reported as ratios (`X / 387`, `87% of skills`, `30% discoverable`). Before
+  publishing any such ratio, name the *population* AND its size: the canonical SOT count, the
+  view count post-mesh-sync, the regex-substring count, and the keyword-match count are four
+  different denominators answering four different questions, and they routinely differ by
+  15–50%. Reporting the figure without naming which denominator is in play turns a method-
+  dependent estimate into a single clean number that downstream readers will treat as
+  authoritative. The fix is to declare the denominator as a separate field from the count
+  (e.g. `{ count: 117, denominator: "AAA canonical SOT", denominator_size: 387,
+  denominator_source: "/root/AAA/skills/" }`) — never as a percentage in the headline sentence.
+  A ratio whose denominator is still under negotiation is exactly the case the rule above
+  ("Two methods, one wide range") exists to catch.
+
+- **Decompose before you build on a figure, not just before you publish it.** A count inherited
+  from another writer carries their undecomposed denominator into your conclusion. Split it into
+  parts first — a large total often collapses to almost nothing once one contaminated source is
+  separated out. Do not propose a rule or invariant on an inherited denominator you have not
+  broken open yourself.
+
+- **Two methods, one wide range — the number is an estimate, not a fact.** When two probes of the
+  same quantity disagree by more than ~3x (e.g. literal-phrase match 0%, token-match-one 78%,
+  token-match-two 23%), publish the *range*, not a single figure, and label the claim
+  **ESTIMATED**, not **FACT**. Architectural decisions built on a wide-range measurement are
+  almost always wrong because the writer anchored on the friendly end of the range and buried
+  the unfriendly end in a method note. Operational rule: probe the same question with at least
+  two independent methods first, and if the methods disagree by more than a factor of the
+  smaller one, the figure is bounded UNKNOWN until you have either (a) a third method that
+  converges with one of the two, or (b) an argument that names the bias in each method and a
+  procedure to reduce the range. The wall-clock cost of running a second probe is small; the
+  cost of building a design on a single-method estimate is not. Signed-off architectural moves
+  on wide-range numbers are how federations acquire phantom capability and miss real gaps.
 
 ### Trace a governed number to its inputs before trusting its label
 

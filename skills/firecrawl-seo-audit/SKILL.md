@@ -1,6 +1,6 @@
 ---
 name: firecrawl-seo-audit
-description: Audit a website's SEO with Firecrawl. Use when the user asks for an SEO audit, metadata and heading review, sitemap/site-structure analysis, keyword opportunities, competitor SERP comparison, or prioritized search optimization recommendations.
+description: "Audit website SEO metadata, headings, sitemaps, SERP rank."
 license: ISC
 metadata:
   author: firecrawl
