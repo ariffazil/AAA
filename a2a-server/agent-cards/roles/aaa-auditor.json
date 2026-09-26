@@ -146,7 +146,7 @@
   ],
   "rsi_doctrine": "RSI-recursive-improvement",
   "protocolVersion": "1.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "securitySchemes": {
     "bearer": {
       "scheme": "bearer",
@@ -175,7 +175,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "_quarantined_skills": [
     {
       "id": "AUDIT-evaluate-delegation",
@@ -376,5 +376,7 @@
     "after": 0,
     "quarantined": 6,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "d160dea84a77257def0e635605cf1e7c8f9282798b11baeb4de80977ba4c5eba"
 }

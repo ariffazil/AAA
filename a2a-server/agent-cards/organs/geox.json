@@ -1,10 +1,10 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
+  "schemaVersion": "2.3.0",
+  "protocolVersion": "1.0",
   "agentId": "geox",
   "name": "GEOX",
-  "description": "Earth intelligence — basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
+  "description": "Earth intelligence \u2014 basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -542,5 +542,7 @@
     "after": 0,
     "quarantined": 32,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "a86b4398fbeed5a89fc622c26ff4a8712ee509e69ef5b22812abe66a5a4a25a6"
 }

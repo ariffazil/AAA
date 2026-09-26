@@ -1,7 +1,7 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "agentId": "arifos",
   "name": "arifOS Kernel",
   "description": "Constitutional kernel \u2014 F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
@@ -148,7 +148,7 @@
     "text/plain",
     "application/json"
   ],
-  "registry_receipt_hash": "sha256:ccb0ee08dda957bf13bf9d9bac4d55e347bbcda92d790f14737cfe7a05d679a3",
+  "registry_receipt_hash": "d9deb6e4998a4dc344110e52ad3fa6b37f827af8070cd7234341852c657c4694",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -216,5 +216,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "JUDGE_ONLY"
 }
