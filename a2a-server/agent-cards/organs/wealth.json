@@ -1,10 +1,10 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
+  "schemaVersion": "2.3.0",
+  "protocolVersion": "1.0",
   "agentId": "wealth",
   "name": "WEALTH",
-  "description": "Capital intelligence — NPV/IRR, markets, institutional stress, entropy, wisdom.",
+  "description": "Capital intelligence \u2014 NPV/IRR, markets, institutional stress, entropy, wisdom.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -242,5 +242,7 @@
     "after": 0,
     "quarantined": 12,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "ed1893b2850fe33b95fdc5273f60132cf57fcf500f234ec027a1a99451718bb4"
 }

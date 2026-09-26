@@ -1002,7 +1002,7 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "registry_receipt_hash": "sha256:WARGA_DERIVED_FROM_ORGANS",
+  "registry_receipt_hash": "f9973bd36ebe1ad348062799647ecab85fa8797fd176a94d1118f86788be3c45",
   "registry_snapshot_at": "2026-07-16T19:56:24.156331+00:00",
   "admissible": true,
   "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces \u2014 organ cards carry primary registry Receipt hash.",
@@ -1133,5 +1133,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "JUDGE_VERDICT"
 }

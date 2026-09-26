@@ -3,9 +3,9 @@
   "schemaVersion": "2.3.0",
   "id": "makcikgpt",
   "name": "MakcikGPT Investigative Persona",
-  "description": "Investigative journalism persona — jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY — no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
+  "description": "Investigative journalism persona \u2014 jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY \u2014 no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
   "version": "2.0.0",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/makcikgpt",
   "provider": {
     "organization": "arifOS Federation",
@@ -18,7 +18,7 @@
   "principal_agent": {
     "type": "llm",
     "category": "Persona-bound agent (MakcikGPT)",
-    "principle_origin": "MAKCIKGPT-999🌺"
+    "principle_origin": "MAKCIKGPT-999\ud83c\udf3a"
   },
   "capabilities": {
     "streaming": false,
@@ -71,9 +71,9 @@
     ]
   },
   "autonomy_tiers": {
-    "T1_auto": "Observe, analyze, draft — read-only",
+    "T1_auto": "Observe, analyze, draft \u2014 read-only",
     "T2_announce": "Draft report for review",
-    "T3_888_HOLD": "Publish, deploy, seal — requires F13"
+    "T3_888_HOLD": "Publish, deploy, seal \u2014 requires F13"
   },
   "scopes": [
     "OBSERVE",
@@ -108,7 +108,7 @@
       "timestamp": "2026-07-01T18:00:00Z"
     },
     "ai": {
-      "witness_id": "MAKCIKGPT-999🌺",
+      "witness_id": "MAKCIKGPT-999\ud83c\udf3a",
       "attestation": "SEAL",
       "timestamp": "2026-07-01T18:00:00Z"
     },
@@ -152,7 +152,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -168,7 +168,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -331,7 +331,7 @@
     "created_at": "2026-07-01T18:00:00Z",
     "expires_at": "2027-07-01T18:00:00Z",
     "migrated_to_v2.0.0": "2026-07-01T18:00:00Z",
-    "migrated_by": "FORGE (000Ω) — Phase 1 entropy reduction",
+    "migrated_by": "FORGE (000\u03a9) \u2014 Phase 1 entropy reduction",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "kernel_deps": [
       "KERNEL-trinity-33",
@@ -377,7 +377,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -452,7 +452,7 @@
   "ed25519_pubkey": "39a6e9845834423edd82d688475f3aa7696e0ea4ea7aa1c6a75e3da3d091bb0c",
   "identity_fingerprint": "5aa6defbb5d109ef12f31be56f63fabe",
   "identity_bound_at": "2026-07-29T13:55:07.271136+00:00",
-  "registry_receipt_hash": "sha256:dbc882e9eee5e62114b3903f679126fb452a667418583b26e25f3bebaacfdef8",
+  "registry_receipt_hash": "b383d9f8c506e844d83fefbaa27368b5b5342b583b7662327732fbb27d64f35f",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -482,8 +482,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
@@ -501,8 +501,8 @@
   "signature_status": {
     "state": "ABSENT",
     "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
-    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
@@ -512,7 +512,8 @@
     "restored": "2026-09-17 Fasa 1 (SOUL from 2026-09-04 consolidation bak)",
     "triad_forged": "2026-09-17 Fasa 2",
     "canon": "/root/AAA/canon/EUREKA-2026-09-17-PERSONA-CIVILISATION-TRIAD.md",
-    "triad_position": "READ + HEAL — verify, never punish. Kanak-kanak asks, Makcik understands, Abang Sado protects.",
+    "triad_position": "READ + HEAL \u2014 verify, never punish. Kanak-kanak asks, Makcik understands, Abang Sado protects.",
     "dunbar_layer": "Affinity (~50)"
-  }
+  },
+  "authority_ceiling": "DRAFT_ONLY"
 }

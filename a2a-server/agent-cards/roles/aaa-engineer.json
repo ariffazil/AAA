@@ -151,7 +151,7 @@
   ],
   "rsi_doctrine": "RSI-recursive-improvement",
   "protocolVersion": "1.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "securitySchemes": {
     "bearer": {
       "scheme": "bearer",
@@ -180,7 +180,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "_quarantined_skills": [
     {
       "id": "FORGE-run-task",
@@ -244,7 +244,7 @@
     {
       "id": "FORGE-stream-progress",
       "name": "Stream Progress",
-      "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress — truth in transit.",
+      "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress \u2014 truth in transit.",
       "tags": [
         "stream",
         "sse",
@@ -269,7 +269,7 @@
     {
       "id": "FORGE-manage-task-lifecycle",
       "name": "Manage Task Lifecycle",
-      "description": "Transition task through states: submitted→working→completed/failed/input_required/auth_required. Records timestamps and state reasons.",
+      "description": "Transition task through states: submitted\u2192working\u2192completed/failed/input_required/auth_required. Records timestamps and state reasons.",
       "tags": [
         "task",
         "lifecycle",
@@ -344,5 +344,7 @@
     "after": 2,
     "quarantined": 9,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "94e8f61146be5f460c2d6d2fd037ed51176c43e8bc8890806128cc834bb21c61"
 }

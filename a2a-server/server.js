@@ -3041,7 +3041,9 @@ app.get('/health', async (req, res) => {
     },
     federation_geometry: {
       status: 'enabled',
-      subjects: 0,
+      // G9 fix 2026-09-27: subjects was hardcoded 0 while the A2A registry held 47
+      // agents — two "how many agents" surfaces disagreed. Derive from the live registry.
+      subjects: (() => { try { return AgentCardRegistry.getAll().length; } catch { return 0; } })(),
       ledger_events: chain.seq || 0,
       witness_oracle: 'active',
     },
@@ -4668,13 +4670,31 @@ app.get('/a2a/goal/:goal_id', async (req, res) => {
 app.post('/a2a', jsonRpcValidate, async (req, res) => {
   const { id, method, params } = req.jsonrpc;
   
+  // ── A2A v1.0 PascalCase method aliases (G5 collapse — 2026-09-27) ─────
+  // Official v1.0 wire verbs are PascalCase (spec §5.3/§9.1). These alias onto
+  // the established slash handlers below so both v1.0 (SendMessage/GetTask/…)
+  // and v0.3 legacy (message/send, tasks/get, …) work from one dispatcher.
+  const METHOD_ALIAS = {
+    SendMessage: 'message/send',
+    SendStreamingMessage: 'tasks/sendSubscribe',
+    GetTask: 'tasks/get',
+    ListTasks: 'tasks/list',
+    CancelTask: 'tasks/cancel',
+    GetAgentCard: 'agent/getCard',
+    GetExtendedAgentCard: 'agent/getCard',
+    SubscribeToTask: 'tasks/subscribe',
+    Send: 'message/send',
+    Ping: 'tasks/list', // health probe — cheap list
+  };
+  const resolvedMethod = METHOD_ALIAS[method] || method;
+  
   // ── EMD metadata (injected by emdValidationGate for external payloads) ──
   const emd = req.emd || null;
   const isExternal = emd?.source?.external || false;
   const authorityOverride = emd?.authorityOverride || null;
   
   try {
-    switch (method) {
+    switch (resolvedMethod) {
       
       // ── agent/getCard — public card discovery ─────────────────────
       case 'agent/getCard':
@@ -4845,7 +4865,14 @@ app.get('/.well-known/agent-card-extended.json', authMiddleware, (req, res) => {
 });
 
 // === JSON-RPC METHOD ROUTER (A2A v1.0.0 Section 9.4) ===
-// Single endpoint that routes by JSON-RPC method name
+// [G5 COLLAPSED 2026-09-27] The duplicate /a2a JSON-RPC handler below is DEAD CODE:
+// Express matches the FIRST app.post('/a2a') registered (see main dispatcher above,
+// ~L4668) and that handler never calls next(), so this second registration was never
+// reached. It also used the legacy v0.3 slash-verb switch (message/send, tasks/get…).
+// The live dispatcher now carries A2A v1.0 PascalCase aliases (SendMessage, GetTask,
+// ListTasks, CancelTask, GetAgentCard, SubscribeToTask) mapped onto the same handlers.
+// Body retained below as an inert reference + rollback anchor; NOT registered.
+/*
 app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) => {
   const { id, method, params } = req.jsonrpc;
 
@@ -4970,6 +4997,7 @@ const dispatchTarget = params.agent_id || params.metadata?.targetAgent || null;
       res.status(400).json(createJSONRPCError(id, ERROR_CODES.METHOD_NOT_FOUND, `Method '${method}' not found`));
   }
 });
+*/
 
 // ── SDK JSON-RPC Handler — spec-compliant A2A methods at /a2a/sdk/jsonrpc ──
 // Mounts the SDK's jsonRpcHandler which provides standard tasks/send, tasks/get,

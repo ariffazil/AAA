@@ -50,7 +50,7 @@
     ]
   },
   "schemaVersion": "2.3.0",
-  "registry_receipt_hash": "sha256:5c8bfbc2f4558e2d8682201ac2a4729c5ea5c02749fce823b00169537c071b97",
+  "registry_receipt_hash": "a5df33238b3115805044ca0f09d1f8b701fe4d2e0a2fe59b250720337d499920",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -133,5 +133,7 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "protocolVersion": "1.0",
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }

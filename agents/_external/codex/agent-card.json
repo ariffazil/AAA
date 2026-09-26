@@ -651,7 +651,7 @@
     "AAA :3001 healthy (identity_hash redacted by F1 guard)",
     "FLAME :18901 healthy (RM0-TOOLS-FREELOOP)"
   ],
-  "registry_receipt_hash": "sha256:734e97454b6c2e933580a3cf4bef6fbac61d97416d7c22440b865aa1c19d3a68",
+  "registry_receipt_hash": "686a41ec27513907d37ef3ed6d4523a94036b864a59cfb07e6247f027312df1c",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -751,5 +751,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }

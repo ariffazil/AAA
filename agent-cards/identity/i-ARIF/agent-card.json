@@ -275,7 +275,7 @@
   "_relation_to_hermes_asi": "hermes-asi = 'what is real' (reality bridge). i-ARIF = 'what it means for Arif' (identity core). hermes-asi routes identity questions \u2192 i-ARIF. hermes-asi bound_to: i-ARIF.",
   "_six_layer_stack": "F13 (BEARER) \u2192 I-ARIF (IDENTITY) \u2192 FED-ARIF (VERIFICATION) \u2192 Hermes (REALITY) \u2192 VAULT999 (CONTINUITY) \u2192 arifOS (CONSTITUTION)",
   "sealed_at": "2026-08-12T00:00:00+08:00",
-  "registry_receipt_hash": "sha256:dcd781459b2293308ffcba2fde75af191e3d5b92e64324d0bbf003c3caa55435",
+  "registry_receipt_hash": "7bb79d78300e8edd59f190dde4c0c01e6843583e74b8c02e96ba0fc5f380b5cc",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -356,5 +356,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "PERSONA"
 }

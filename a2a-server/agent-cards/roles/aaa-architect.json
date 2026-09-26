@@ -2,7 +2,7 @@
   "protocol_version": "1.2",
   "id": "aaa-architect",
   "name": "AAA A-rchitect",
-  "description": "Design agent for AAA. Defines task schemas, skill exposure, agent mesh topology, and capability contracts. Does not execute — designs what can be built and how it's described.",
+  "description": "Design agent for AAA. Defines task schemas, skill exposure, agent mesh topology, and capability contracts. Does not execute \u2014 designs what can be built and how it's described.",
   "url": "https://aaa.arif-fazil.com/a2a/architect",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [
@@ -134,7 +134,7 @@
   ],
   "rsi_doctrine": "RSI-recursive-improvement",
   "protocolVersion": "1.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "securitySchemes": {
     "bearer": {
       "scheme": "bearer",
@@ -163,7 +163,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "_quarantined_skills": [
     {
       "id": "AGI-design-task-schema",
@@ -311,5 +311,7 @@
     "after": 0,
     "quarantined": 5,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  }
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "cb5c1c4e157ae5ac06204b16d4de0e4c8e323705fa9a20869423e11487a6c6ba"
 }

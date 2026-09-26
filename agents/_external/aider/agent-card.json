@@ -15,7 +15,7 @@
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/aider",
   "provider": {
     "organization": "arifOS Federation",
@@ -566,7 +566,7 @@
   "fi": "NONE (CCC contractor \u2014 passport revoked 2026-08-14, see ccc block)",
   "bound_to": "000",
   "fi_slot": null,
-  "registry_receipt_hash": "sha256:3cf6e1d243d89bb1416145bc325411887da80dfb83df12e1d99bb76870ce1657",
+  "registry_receipt_hash": "ddcdfa1e95507c2e6c7d067cc4d85eddafe1494ccd14f06ce8c386e292556a04",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -677,5 +677,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }

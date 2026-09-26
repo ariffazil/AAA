@@ -2,7 +2,7 @@
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
   "id": "geox-mcp",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "agentId": "geox",
   "name": "GEOX",
   "principal_agent": {
@@ -530,7 +530,7 @@
     "text/plain",
     "application/json"
   ],
-  "registry_receipt_hash": "sha256:2d7adebde4cd16de5cdd22057406d31169fbbc12996ffa936ca039400a919dc1",
+  "registry_receipt_hash": "263fd962cf0b642d5f5ca1f664027250c6ae1dbd7b3d12a399327186dafa92e7",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -599,5 +599,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "COMPUTE_ONLY"
 }

@@ -38,14 +38,18 @@ function createDiscoveryRouter() {
     const all = AgentCardRegistry.getAll();
     const includeInadmissible = req.query.include_inadmissible === 'true';
 
-    // Compute INV-11/12/13 metadata
+    // Compute INV-11/12/13 metadata — ONE predicate for count and display (G2 fix:
+    // previously the count used schema/hash/auth but display used `c.admissible !== false`,
+    // so a card could show admissible:true while the aggregate said 0 admissible.
     const admissible = [];
     const inadmissible = [];
+    const admissibilityById = new Map();
     for (const c of all) {
       const schemaOk = c.schemaVersion === '2.3.0' || c.protocolVersion === '1.0';
       const hashOk = Boolean(c.registry_receipt_hash);
       const authOk = Boolean((c.governance_profile && c.governance_profile.authority_ceiling) || c.authority_ceiling || c.authority);
       const isAdmissible = c.admissible !== false && (schemaOk || hashOk || authOk);
+      admissibilityById.set(c.agentId, isAdmissible);
 
       if (isAdmissible) {
         admissible.push(c);
@@ -62,7 +66,7 @@ function createDiscoveryRouter() {
       protocolVersion: c.protocolVersion,
       schemaVersion: c.schemaVersion || '2.3.0',
       authority_ceiling: (c.governance_profile && c.governance_profile.authority_ceiling) || c.authority_ceiling || c.authority || 'OBSERVE_ONLY',
-      admissible: c.admissible !== false,
+      admissible: admissibilityById.get(c.agentId) === true,
       provider: c.provider,
       tags: c.tags,
       capabilities: c.capabilities,
@@ -79,6 +83,7 @@ function createDiscoveryRouter() {
       },
       // Constitutional physics — arifOS federation
       class: c.class,
+      registry_receipt_hash: c.registry_receipt_hash || null,
       species: c.species,
       species_proxy: c.species_proxy,
       bound_to: c.bound_to,

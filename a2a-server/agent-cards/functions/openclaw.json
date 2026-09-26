@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "openclaw",
   "name": "OpenClaw Gateway",
   "principal_agent": {
@@ -10,7 +10,7 @@
   },
   "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "2.0.0",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
   "provider": {
     "organization": "arifOS Federation",
@@ -659,5 +659,7 @@
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
   "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
-  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la"
+  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la",
+  "authority_ceiling": "OBSERVE_ONLY",
+  "registry_receipt_hash": "ace06e29a9bbe9353d5ce4c1af36745907c393d5aa46d8047b74015996a86674"
 }

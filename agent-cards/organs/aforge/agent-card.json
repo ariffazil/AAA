@@ -2,7 +2,7 @@
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
   "id": "a-forge-mcp",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "agentId": "a-forge-mcp",
   "name": "A-FORGE Execution Shell",
   "principal_agent": {
@@ -250,7 +250,7 @@
     "text/plain",
     "application/json"
   ],
-  "registry_receipt_hash": "sha256:3c02062e87d8a37e7ab9b63fa36d5e8255b7e1b0dc627c31731206a5cdbe42e6",
+  "registry_receipt_hash": "e579cec971adfaf40c79d03d985a7a9cd253323bbd54d686c447426bd528d84a",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -317,5 +317,6 @@
       },
       "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }
