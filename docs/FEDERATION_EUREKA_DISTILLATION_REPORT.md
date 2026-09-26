@@ -139,6 +139,7 @@
 | **Target** | Cooling ledger spec / `ARIFLOWKERNELCANON.md` — add Phoenix-72 cooling threshold |
 | **Plane** | FLOW (cooling) |
 | **Verdict** | **SEAL** — formalize 72h threshold in cooling doctrine |
+| **Status** | ✅ **EXECUTED 2026-09-26** (F13 order) — canonized as `AAA/canon/PHOENIX-72-COOLING-DOCTRINE-2026-09-26.md` via canon-mutate (receipt `33a3feab`, trace `trc-phx72-cooling-20260926`, lock_restored=true). `ARIFFLOWKERNELCANON.md` never existed — superseded by the new canon doc, which also formalizes the recursive cool→gate→measure→learn→heal→adjust loop with live enforcement inventory. |
 
 ### 16. The AAA Triad (Abstraction · Attestation · Abduction)
 | Field | Value |
