@@ -78,7 +78,7 @@ Every meaningful activity must map on this graph. Activities outside it are entr
 - **AAA (Mind):** Meaning Layer — Explains WHY (Ontology, Doctrine).
 - **Kernel (Physics):** Constraint Layer — Decides IF (SEAL, HOLD, UNKNOWN, VOID).
 - **A-FORGE (Hands):** Execution Layer — Decides HOW (Tools, Mutation, Rollbacks).
-- **VAULT999 (Memory):** Witness Layer — Proves IT HAPPENED (Receipts, Seals, Scars).
+- **VAULT999 (Witness):** Witness Layer — Proves IT HAPPENED (Receipts, Seals, Scars).
 - **HERMES (Senses):** Witness Infrastructure — Senses, coordinates, routes A2H/A2A without self-authorizing.
 - **OpenClaw (Builder):** Edge Executor — Optimizes execution without self-certifying.
 - **ARIF (Sovereign):** F13 Sovereign — Human intent, ultimate authority, and veto.

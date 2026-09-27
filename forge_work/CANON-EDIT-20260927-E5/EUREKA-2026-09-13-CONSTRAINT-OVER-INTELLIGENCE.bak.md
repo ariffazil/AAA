@@ -48,7 +48,7 @@ VAULT999 proves it happened.
 | **Layer 0** | **arifOS Kernel** (`:8088`) | **Physics & Constraints** | Decides **IF** | Narrative, essays, philosophy, prompt instructions |
 | **Layer 1** | **AAA Federated Law** (`/root/AAA`) | **Constitution & Meaning** | Explains **WHY** | Execution scripts, low-level binary gates |
 | **Layer 2** | **A-FORGE** (`aforge-mcp`) | **Actuator & Performance** | Decides **HOW** | Autonomous authority, ungrounded policy |
-| **Layer 3** | **VAULT999** (Immutable Ledger) | **Witness & Verification** | Proves **IT HAPPENED** | Unattested hypotheses, ephemeral chat state |
+| **Layer 3** | **VAULT999** (Immutable Ledger) | **Witness & Memory** | Proves **IT HAPPENED** | Unattested hypotheses, ephemeral chat state |
 
 ---
 

@@ -183,7 +183,7 @@ Each agent has a typed signature — the set of layers it can reason about. **Cr
 | **888 APEX** (Judge) | L0, L0.5, L6, L8.5, L10, L11 | Adjudication + cost + collapse |
 | **A-FORGE** (Actor) | L3, L4, L4.5, L8 | Act on world without hallucinating it |
 | **HERMES** (Edge) | L1, L2, L6, L7.5 | Channel coding + multi-agent + topology |
-| **VAULT999** (Witness) | L2, L9, L10 | Information + composition + entropy ledger |
+| **VAULT999** (Memory) | L2, L9, L10 | Information + composition + entropy ledger |
 | **GEOX** (Earth) | L4.5, L5, L6, L7.5, L8, L8.5 | Dynamics + game + active inference + shape + causal + numerical stability *(L4.5+L8.5 added per 555-audit: geological reasoning is causal; geophysical simulation needs numerical stability)* |
 | **WEALTH** (Capital) | L1, L1.5, L3, L6, L10 | Optimization + cost + game + probabilistic generalization *(L1+L1.5 added per 555-audit: capital markets are probabilistic; backtesting without SLT is overfit-prone per López de Prado 2018)* |
 | **WELL** (Vitality) | L4, L4.5, L8, L10 | Stability + survival + human thermodynamics |
