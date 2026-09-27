@@ -58,6 +58,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - claim-receipt-binding
 - closed-loop-vmodel
 - codebase-reality-forger-init-v1
+- codex-boot-platform-specific
 - coding-federation-external-contrast
 - cognitive-cost-transfer-eurekas
 - compute-attention-invariant
@@ -159,6 +160,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - representation-layer-integrity
 - representation-reality-invariant
 - reversibility-as-information-test
+- runtime-tools-py-containment-contract
 - salam-consequence-membrane
 - sanctuary-invariant
 - scar-engineering
