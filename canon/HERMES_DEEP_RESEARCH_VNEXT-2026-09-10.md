@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # HERMES Deep Research vNext
 
 **Sealed:** 2026-09-10

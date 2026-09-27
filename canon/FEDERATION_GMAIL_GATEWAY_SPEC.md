@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL
+
 # Federation Google Workspace Gateway — Specification
 
 > **Status:** ACTIVE (2026-09-20, second iteration) — supersedes both the draft

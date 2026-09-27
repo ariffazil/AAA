@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # Edge Registry ↔ persons.yaml Connection Receipt (Lane B Audit)
 
 > **Status:** `external_advisory_connection_receipt` (Lane B autonomous, no F13 seal claimed)

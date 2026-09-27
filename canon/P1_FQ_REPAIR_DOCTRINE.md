@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # P1 — FQ→Repair Doctrine
 
 > **Homeostatic wrapper around the W1 pipeline.**

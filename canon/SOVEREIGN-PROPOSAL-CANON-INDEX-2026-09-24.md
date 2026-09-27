@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # SOVEREIGN Proposal — Canon Index (Lane B Audit, No Promotion)
 
 > **Status:** `external_advisory_index` — INDEX only, NO new artifacts per `terminal-guard-before-creation`

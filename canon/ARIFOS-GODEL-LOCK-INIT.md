@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # ARIFOS::GODEL_LOCK::INIT — Agent Boot Screen
 
 > **Status:** F13 SOVEREIGN DIRECT (2026-09-20, session close)

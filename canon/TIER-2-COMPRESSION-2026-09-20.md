@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # TIER-2 COMPRESSION — The Single Invariant
 
 > **Status:** SEALED WITH VOID (2026-09-20 05:10 MYT)

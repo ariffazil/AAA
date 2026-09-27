@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # W1 — Scar → Skill Wire
 
 > **DITEMPA BUKAN DIBERI** — Forged 2026-08-13 under F13 SOVEREIGN directive

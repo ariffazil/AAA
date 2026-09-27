@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL
+
 # APEX::FEDERATION_ALIGNMENT::v1 — Reality-Constrained Decision Architecture
 
 > **Reference:** `REFERENCE: APEX::FEDERATION_ALIGNMENT::2026-09-13`  

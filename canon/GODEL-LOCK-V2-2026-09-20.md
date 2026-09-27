@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # GÖDEL LOCK V2 — Hardening Patch & Shadow Test
 
 > **Status:** F13 SEALED (2026-09-20 04:20 MYT)

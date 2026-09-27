@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # EUREKA — Reality-Bound Authority (R-BAP) — 2026-09-07
 
 > **Session:** Telegram DM Arif ↔ Hermes (i-ARIF)

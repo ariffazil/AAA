@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # APEX-ZEN RUNTIME PROMPT vNext
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-20) — sovereign verdict in session: *"VERDICT: SEAL"*. Same class as other sovereign-chat seals; `arif_seal` signing lane not used.

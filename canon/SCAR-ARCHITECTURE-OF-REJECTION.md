@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # SCAR: The Architecture of Rejection
 
 > **Forged:** 2025-07-05 by ARIF FAZIL (F13 SOVEREIGN)

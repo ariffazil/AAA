@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # RG-7 / RG-8 STATE PROBE — 2026-09-19
 
 > **Status:** STATE PROBE (witness-only, additive). No canon mutation.

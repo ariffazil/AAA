@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # PHOENIX-72 Cooling Doctrine — The 72-Hour Threshold
 
 > **Status:** F13_ORDER (2026-09-26) — sovereign directive: *"formalize the 72h threshold in cooling doctrine"* + *"reality impact improvement that recursively improve and self heal the entire system, always learning"*

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # CIV-21 — The Complete Gödel-Locked Eurekas
 
 > **Forged:** 2026-08-10 · Session SEAL-395c646ad6c04540

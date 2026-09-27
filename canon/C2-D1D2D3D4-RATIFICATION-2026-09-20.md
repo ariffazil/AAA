@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # C2 D1-D4 Batch Ratification (2026-09-20)
 
 F13 SOVEREIGN 'execute all' directive applied.

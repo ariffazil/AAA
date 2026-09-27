@@ -1,3 +1,5 @@
+Status: ACTIVE_SCHEMA
+
 {
   "emitted_at": "2026-09-12T01:49:41+08:00",
   "emitted_by": "experience-metabolism.compute_surface_verification",

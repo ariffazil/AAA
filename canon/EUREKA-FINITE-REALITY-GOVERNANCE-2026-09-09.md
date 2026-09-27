@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA::FINITE_REALITY_GOVERNANCE — The Final Governor
 
 > **Class:** Meta-structural — constitutional operating conditions

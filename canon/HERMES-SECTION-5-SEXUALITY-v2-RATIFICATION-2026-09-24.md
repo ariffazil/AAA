@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 ---
 title: "HERMES SECTION 5 v2 RATIFICATION — Sexuality Recalibrated"
 version: "v1.0"

@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # ZK-PC v0.1.1
 ## Zero-Knowledge Provenance Cryptography
 ### Witnessed Governance Authorization System

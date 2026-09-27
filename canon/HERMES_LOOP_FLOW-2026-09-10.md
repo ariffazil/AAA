@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL
+
 # Hermes Loop Flow Architecture
 
 **Forged:** 2026-09-10

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # Sovereign Reality Object (SRO) — Extension to Witness Object v1
 
 > **Status:** DRAFT — extends WITNESS_OBJECT_SPEC_v1 (SEAL 2026-09-10)

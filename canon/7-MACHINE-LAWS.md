@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # 7 MACHINE LAWS — Canon Fragment
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-21)

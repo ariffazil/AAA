@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA — Human Reality Invariants (10 Eurekas)
 **Date:** 2026-09-08
 **Source:** Arif F13 sovereign chat session — verdict **SEAL (Conceptual)**, directive "execute all this"

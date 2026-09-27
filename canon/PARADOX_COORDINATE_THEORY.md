@@ -1,10 +1,13 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # PARADOX_COORDINATE THEORY
 
-> **Status:** Canonical synthesis (DER — derived from 6 independent frameworks)
+> **Status:** Canonical synthesis (INT — heuristic construct, convergent across Schwartz, Yalom, Big Five, Jung and Relational Dialectics; not derived from any one of them)
 > **Provenance:** Arif Fazil (F13 SOVEREIGN) + 333-AGI cross-domain research
 > **Date:** 2026-09-05
-> **Evidence level:** DER (cross-validated against Schwartz, Yalom, Big Five, Enneagram, Jung, Relational Dialectics)
-> **Confidence:** 0.82
+> **Evidence level:** INT — heuristic construct, not an empirical finding. Convergent with Schwartz, Yalom, Big Five, Jung and Relational Dialectics (each carrying a different axis count); the Enneagram is excluded as validation evidence for lack of psychometric and cross-cultural-invariance support. The nine axes are retained as an arifOS instrument.
+> **Re-tag:** Re-tagged 2026-09-28 under F13 order "Sah — re-tag, keep the axes", after independent citation audit. Evidence basis: PLOS ONE 2026;21:e0338521 (Sheppard, Bizumic, Christensen, Monaghan), PMC12758732 — "Although no instruments demonstrated evidence of full cross-cultural scalar invariance…"; the 9-axis count is retained as an arifOS instrument, not as a finding about humanity.
+> **Confidence:** 0.60
 
 ---
 
@@ -126,7 +129,7 @@ Entropy: Stability = identity entropy suppression. Transformation = identity ent
 Jung's individuation = surviving transformation without disintegration.
 ```
 
-**Source:** Jung (individuation process), Enneagram (integration/disintegration arrows), Schwartz (Tradition ↔ Stimulation)
+**Source:** Jung (individuation process), Schwartz (Tradition ↔ Stimulation). *Heritage, not evidence:* the Enneagram integration/disintegration arrows were removed from this attribution 2026-09-28 — Hook et al. 2021 (doi:10.1002/jclp.23097) review 104 samples and find "little research supporting secondary aspects of Enneagram theory, such as wings and intertype movement," which is precisely the machinery this axis borrowed.
 
 ---
 
@@ -145,7 +148,7 @@ Entropy: Competence = entropy reduction through mastery. Vulnerability = entropy
 ```
 
 **Source:** Novel axis — derived from Syed/Arif relationship analysis. Not directly mapped to existing frameworks, but converges with:
-- Enneagram Type 3 (Achiever: competence-as-identity) ↔ Type 4 (Individualist: vulnerability-as-identity)
+- *[illustrative vocabulary only, not convergent evidence]* Enneagram Type 3 (Achiever: competence-as-identity) ↔ Type 4 (Individualist: vulnerability-as-identity)
 - Big Five (Agreeableness as vulnerability-tolerance, Conscientiousness as competence-orientation)
 - Brené Brown's vulnerability research
 
@@ -356,8 +359,8 @@ WELL's role: monitor whether a person is:
 2. Yalom, I. (1980). Existential Psychotherapy.
 3. Jung, C.G. (1921). Psychological Types. (Enantiodromia, Shadow, Tension of Opposites)
 4. Baxter, L.A. & Montgomery, B.M. (1996). Relational Dialectics.
-5. Big Five / OCEAN — Costa & McCrae (1992), cross-cultural validation.
-6. Enneagram — Naranjo (1994), Riso & Hudson (1999).
+5. Big Five / OCEAN — Costa & McCrae (1992). Configural and metric invariance supported; mean-level cross-cultural comparison not licensed by the data.
+6. Enneagram — Naranjo (1994), Riso & Hudson (1999). **Not validation evidence.** See Hook, Hall, Davis, Van Tongeren & Conner (2021), *J Clin Psychol* 77(4):865-883, doi:10.1002/jclp.23097: across 104 independent samples, factor-analytic work "has typically found fewer than nine factors, and no work has used clustering techniques to derive the nine types." No cross-cultural invariance study exists.
 7. Arif-333 AGI cross-domain synthesis (2026-09-05).
 
 ---

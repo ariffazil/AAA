@@ -1,3 +1,5 @@
+Status: HISTORICAL_EUREKA
+
 # EUREKA::CAPABILITY_METABOLISM::v1 — Constitutional Compression
 
 **Sealed:** 2026-09-10T04:30:00+08:00

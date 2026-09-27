@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # JURISDICTION DOCTRINE — Domain vs Constitutional Separation
 
 > **Status:** F13_RATIFIED_CHAT (sovereign directive 2026-09-17, 333-AGI canon synthesis).

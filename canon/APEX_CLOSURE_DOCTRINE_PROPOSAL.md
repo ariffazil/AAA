@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL
+
 # APEX CLOSURE DOCTRINE — PROPOSAL
 
 > **Forged:** 2026-09-04, session with Arif (F13 SOVEREIGN)

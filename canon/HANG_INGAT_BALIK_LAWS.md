@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # HANG INGAT BALIK — The Five Laws of Reality-Listening
 
 > DRAFT · canonisation pending F13 SOVEREIGN seal · 2026-08-14

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # EUREKA — Institutional State: The Civilizational Stack
 **Date:** 2026-09-08 (00:3x MYT)
 **Source:** Arif F13 sovereign articulation, refining FI-008's self→society chain ("what you're circling is bigger than Dunbar")
