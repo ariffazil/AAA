@@ -7,6 +7,8 @@ risk_tier: low
 tags: [verification, rendering, pdf, image, vision, measurement, qa]
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Rendered Artifact Verification

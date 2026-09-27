@@ -19,6 +19,8 @@ triggers:
   - "calibrate this reading"
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes (arifOS federation)
+authority_of: AAA
 ---
 
 # Interpretation Calibration

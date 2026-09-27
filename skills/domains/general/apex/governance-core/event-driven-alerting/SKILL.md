@@ -4,6 +4,8 @@ description: "Use when designing what a scheduled job or monitor reports."
 owner: Hermes
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 # Event-Driven Alerting
 

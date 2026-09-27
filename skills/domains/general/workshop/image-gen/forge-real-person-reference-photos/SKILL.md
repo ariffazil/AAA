@@ -19,6 +19,8 @@ f13_directive: >
   This skill is structurally binding. Any T2I dispatch labeled or implied
   as a specific named real person MUST first pass through the Wikimedia
   Commons route. The pipe cannot compile a fabricated-person payload.
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Real-Person Reference Photos — Anti-Fabrication

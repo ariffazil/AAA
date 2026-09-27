@@ -19,6 +19,8 @@ triggers:
   - "agent claims it is built"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Agent Tool Verification

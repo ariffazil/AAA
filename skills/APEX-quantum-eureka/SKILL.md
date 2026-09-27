@@ -36,6 +36,8 @@ version_lock:
   artifact_hash: pending
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+authority_of: AAA
 ---
 
 # SKILL: quantum-eureka-doctrine

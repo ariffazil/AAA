@@ -15,6 +15,8 @@ autonomy_tier: T1
 always_load: true
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE · 333-AGI
+authority_of: AAA
 ---
 
 # LSP PRE-EDIT GATE — Witness Observability for AGI Substrate

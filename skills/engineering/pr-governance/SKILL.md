@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F4, F7, F9, F11, F13]
 tags: [pr, review, governance, checklist, precommit, github, merge, separation-of-duties, conformance]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # PR Governance — Full PR Lifecycle

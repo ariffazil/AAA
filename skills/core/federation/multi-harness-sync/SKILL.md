@@ -35,6 +35,8 @@ attention:
 tags: [federation, sync, catalog, multi-harness, F2, F4]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # core/federation/multi-harness-sync

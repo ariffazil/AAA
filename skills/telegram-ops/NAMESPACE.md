@@ -1,5 +1,7 @@
 # NAMESPACE: telegram-ops
 
+**owner:** AAA  <!-- SK7: derived from dir_name=telegram-ops, default=AAA, added 2026-09-26T23:53:33Z -->
+
 > **Updated 2026-09-20 (F13 skill-merge) — this directory is now the UMBRELLA, not a namespace.**
 > The skill `telegram-ops` lives here: `SKILL.md` + `references/`.
 > Previous marker (2026-09-19) declared this a namespace holding `outbound-message-delivery`;

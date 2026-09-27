@@ -15,6 +15,8 @@ floors: [F2, F5, F6, F9, F11, F13]
 tags: [biography, narrative, nonfiction, walter-isaacson, pdf, anonymization, real-person, story]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Walter Isaacson-Style Biography Artifact

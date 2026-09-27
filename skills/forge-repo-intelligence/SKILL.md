@@ -42,6 +42,8 @@ triggers:
 tags: [repo, intelligence, audit, ci, read-only, federation]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 <!-- wave1-merge:FLOW:BEGIN -->
 # forge-repo-intelligence — repository intelligence controller (read-only lane)

@@ -36,6 +36,8 @@ tests:
 - Independent nodes must be parallelizable — forced serialization fails
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Graph Engineering Patterns — 12 Canonical Shapes

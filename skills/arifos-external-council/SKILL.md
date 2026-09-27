@@ -6,6 +6,8 @@ source: hermes-only
 synthesized: 2026-08-08
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # arifOS External Council

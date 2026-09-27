@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F4, F7, F9, F10, F11]
 tags: [security, static-analysis, ruff, pyright, pytest, semgrep, readme, truth-check, audit]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Security Audit — Static Analysis & README Truth Check

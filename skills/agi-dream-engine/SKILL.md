@@ -56,6 +56,8 @@ floor_scope:
 - F7
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Agentic Dream Engine — Federation Memory Consolidation

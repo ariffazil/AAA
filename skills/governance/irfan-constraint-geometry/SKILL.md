@@ -9,6 +9,8 @@ autonomy_tier: T1
 tags: [governance, integrity, restraint, cognate-audit, hikmah]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13
+authority_of: F13 SOVEREIGN
 ---
 
 # Irfan — Constraint Geometry for the Action Space

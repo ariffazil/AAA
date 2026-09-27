@@ -119,6 +119,8 @@ negative_triggers:
   - "Runpod MCP"  #                   → runpod-mcp (platform lane)
   - "TouchDesigner MCP"  #            → creative/touchdesigner-mcp (platform lane)
   - "runtime MCP probe (one-shot)"  # → core/mcp/runtime-probe (focused instrument)
+owned_by: AAA
+authority_of: AAA
 ---
 
 # MCP Operations — one owner for the canonical MCP lifecycle

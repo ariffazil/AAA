@@ -37,6 +37,8 @@ triggers:
   - "doctrine says it enforces"
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes (arifOS federation)
+authority_of: AAA
 ---
 
 # Capability Surface Conformance

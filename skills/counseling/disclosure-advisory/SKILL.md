@@ -16,6 +16,8 @@ floors: [F1, F2, F5, F6, F9]
 tags: [counseling, disclosure, bonds, conduct, confidentiality]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Disclosure Advisory — "should the other person know?"

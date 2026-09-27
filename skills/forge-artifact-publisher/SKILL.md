@@ -22,6 +22,8 @@ dependencies:
 forged: 2026-09-15
 apex-zen: 2026-09-15
 session: FI-003 Kinabalu Basin visual pack session
+owned_by: F13 SOVEREIGN — Muhammad Arif bin Fazil
+authority_of: AAA
 ---
 # FORGE ARTIFACT PUBLISHER — EMD Output Reflex Arc
 

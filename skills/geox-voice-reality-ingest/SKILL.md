@@ -10,6 +10,8 @@ tags: [geox, voice, asr, reality-capture, scar, claim, emd, knowledge-graph, sab
 owner: GEOX
 capability_tier: fed-long-context
 ecology_state: HOT
+owned_by: GEOX
+authority_of: GEOX
 ---
 
 # GEOX · Voice Reality Ingestion

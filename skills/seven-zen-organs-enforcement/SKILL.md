@@ -18,6 +18,8 @@ source: hermes-only
 synthesized: 2026-08-08
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Seven Zen Organs — Constitutional Enforcement

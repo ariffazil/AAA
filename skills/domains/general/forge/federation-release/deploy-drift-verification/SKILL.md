@@ -18,6 +18,8 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # Deploy-Drift Verification — did the fix actually reach runtime?
 

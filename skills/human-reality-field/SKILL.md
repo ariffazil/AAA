@@ -17,6 +17,8 @@ triggers:
 tags: [human, memory, forces, witness, authority, field, falsifiability, hermes, F13]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13
+authority_of: F13 SOVEREIGN
 ---
 
 # Human Reality Field — Representing a Human as Living Forces

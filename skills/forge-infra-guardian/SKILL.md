@@ -15,6 +15,8 @@ floor_scope:
 autonomy_tier: T0
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 > **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
 > directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-infra-guardian`) is now an alias

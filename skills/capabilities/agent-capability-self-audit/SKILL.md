@@ -9,6 +9,8 @@ floor_scope: [F02, F04, F07, F09, F11]
 autonomy_tier: T0 (read-only audit)
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: Hermes ASI
+authority_of: AAA
 ---
 # Agent Capability Self-Audit
 

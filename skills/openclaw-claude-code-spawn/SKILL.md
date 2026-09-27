@@ -11,6 +11,8 @@ forbidden:
   - Never spawn without constitutional context
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: HERMES
+authority_of: AAA
 ---
 
 # OpenClaw → Claude Code Spawn (Governed)

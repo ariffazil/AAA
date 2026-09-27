@@ -29,6 +29,8 @@ trigger_phrases:
 dependencies:
   skills:
     - FORGE-tailwind-tokens
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 > **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
 > directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-design-intelligence`) is now an alias

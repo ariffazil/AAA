@@ -17,6 +17,8 @@ triggers:
 tags: [positioning, monetisation, market, offer-design, distribution, pricing, github, governance]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (arifOS federation)
+authority_of: AAA
 ---
 
 # Venture Positioning & Offer Design

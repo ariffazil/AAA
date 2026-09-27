@@ -9,6 +9,8 @@ floors: [F2, F4, F11]
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Symbol Namespace Integrity

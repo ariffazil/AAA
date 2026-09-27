@@ -59,6 +59,8 @@ canonical_siblings:
 - github-issues           # OpenCode-scope: monitoring shell
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # GitHub PR Governance Review

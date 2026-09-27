@@ -1,5 +1,7 @@
 # NAMESPACE: devops
 
+**owner:** AAA  <!-- SK7: derived from dir_name=devops, default=AAA, added 2026-09-26T23:53:33Z -->
+
 > **Marker file** (added 2026-09-19, Fasa 1 skill hygiene).
 > This directory is a *namespace*, not a skill.
 > Skills live in the subdirectories listed below.
