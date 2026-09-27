@@ -38,6 +38,8 @@ tests:
 - "Confirm OAuth flow is enabled or absent on a given server"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 SCOPE: probing ANY endpoint (incl. external/unknown) for protocol version, surface discovery, stateless-transport conformance. For our own organs quick health use FORGE-mcp-smoke-test; for inspector methodology use FORGE-mcp-testing.

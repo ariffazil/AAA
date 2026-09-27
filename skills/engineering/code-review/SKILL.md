@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F4, F7, F11]
 tags: [code-review, maintainability, quality, abstraction, refactoring, structural]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Strict Code Quality Review

@@ -71,6 +71,8 @@ triggers:
   - "Use when web_search refuses a query. Reword and retry."
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # web-ops — one ladder from "I need the web" to "the extraction failed, here is what I do next"

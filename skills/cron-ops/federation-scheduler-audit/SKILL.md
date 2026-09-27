@@ -20,6 +20,8 @@ triggers:
   - "silent skip / schedule silently stopped firing"
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes (curator-managed)
+authority_of: AAA
 ---
 
 # Federation Scheduler Audit

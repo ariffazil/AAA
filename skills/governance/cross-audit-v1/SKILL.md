@@ -14,6 +14,8 @@ triggers:
   - "the user asks 'is this real / can I trust this'"
 audience: [hermes, all-harnesses, F13-bound]
 capability_tier: meta-mesa
+owned_by: F13 (ratified)
+authority_of: AAA
 ---
 
 # Cross-Audit v1 — Verification Protocol for Pasted External Agent Output

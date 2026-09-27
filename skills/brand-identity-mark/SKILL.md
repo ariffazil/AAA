@@ -7,6 +7,8 @@ risk_tier: low
 tags: [logo, monogram, wordmark, badge, agent-identity, brand, svg, heraldic, image-gen]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Brand Identity Mark — Hand-Crafted Path

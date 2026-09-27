@@ -51,6 +51,8 @@ floor_scope:
 - F13
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Composio Social Intelligence

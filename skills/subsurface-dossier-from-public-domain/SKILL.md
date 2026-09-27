@@ -9,6 +9,8 @@ description: "Build subsurface deliverables from public-domain sources."
 autonomy_tier: T1
 ecology_state: WARM
 capability_tier: fed-agent-subagent
+owned_by: GEOX (arifOS)
+authority_of: AAA
 ---
 
 # Subsurface Dossier from Public Domain

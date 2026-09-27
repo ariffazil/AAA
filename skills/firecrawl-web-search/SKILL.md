@@ -9,6 +9,8 @@ description: "Web search + scrape + interact + parse + monitor + research via Fi
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 Web, doc, page-interaction, monitoring, and research capabilities via Firecrawl. RM0 (free quota) when used with a free-tier key; never consumes Token Plan Credits.

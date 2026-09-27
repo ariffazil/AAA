@@ -11,6 +11,8 @@ organ_domain: arifos
 forged: 2026-09-04
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # arifOS Eight-Verb Canonical Chain
 

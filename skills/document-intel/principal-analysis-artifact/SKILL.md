@@ -17,6 +17,8 @@ floors: [F2, F4, F6, F7, F13]
 tags: [artifact, analysis, report, pdf, human-language, evidence, brief]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Principal Analysis Artifact

@@ -10,6 +10,8 @@ required_tools: ['image_generate', 'vision_analyze']
 tool_gate: strict
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # AAA Image Editing v2.0
 

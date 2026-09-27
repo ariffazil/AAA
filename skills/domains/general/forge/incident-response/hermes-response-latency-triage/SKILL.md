@@ -19,6 +19,8 @@ triggers:
   - "response time high"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (curator-managed)
+authority_of: AAA
 ---
 
 # Hermes Response-Latency Triage

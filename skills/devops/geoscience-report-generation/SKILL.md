@@ -9,6 +9,8 @@ version: 1.0.0
 tags: [geology, matplotlib, pdf, visualization, cross-section, report]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Geoscience Report Generation

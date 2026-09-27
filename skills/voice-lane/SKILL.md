@@ -26,6 +26,8 @@ metadata:
     provenance: "Merge of eight lane-selection / fallback / verification skills (F13 in-chat order 2026-09-19, namespace-entropy collapse). Every command, provider name, parameter, threshold and failure signature of the eight source bodies is preserved here. Originals retired, never deleted."
 capability_tier: fed-realtime-voice
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # voice-lane — the canonical TTS/voice lane router, verification discipline, and voice-design contract

@@ -9,6 +9,8 @@ floor_scope: [F1, F2, F11]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 last_operational_bake: "2026-09-22 (session bridge: 3-lane + dual-collection + parallel migration)"
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 
 # Witness Semantic Recall — 3-lane federation canon search

@@ -21,6 +21,8 @@ metadata:
       - capabilities/media/AAA-voice-cloning-mimo-minimax
       - forge-vision-densify
       - forge-vss-verifier-suite
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 
 # Image Identity Transfer — Face Consistency Across Compositions

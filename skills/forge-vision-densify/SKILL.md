@@ -34,6 +34,8 @@ constitutional_doctrine: |
   receipt contract is governance. This is not teaching the agent to be wise; it
   is building a pipe that cannot leak. The system must physically fail to
   compile the output if the constraints are not met.
+owned_by: AAA
+authority_of: AAA
 ---
 # forge-vision-densify
 

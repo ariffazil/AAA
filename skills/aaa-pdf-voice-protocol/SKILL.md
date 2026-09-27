@@ -15,6 +15,8 @@ floor_scope:
   - F11
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # ⚒️ AAA PDF Voice Protocol — arifOS Federation
 

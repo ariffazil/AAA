@@ -16,6 +16,8 @@ metadata:
     - references/context-geometry-audit.md
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: hermes-prime
+authority_of: AAA
 ---
 
 # arif-style-zen-audit

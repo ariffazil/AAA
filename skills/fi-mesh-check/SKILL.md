@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: [F2, F4]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # FI Mesh Check — falsification probe
 

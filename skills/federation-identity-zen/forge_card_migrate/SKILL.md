@@ -11,6 +11,8 @@ organ_domain: aaa-federation
 forged: 2026-09-08
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # forge_card_migrate — Federation Identity Plane Migration Skill
 

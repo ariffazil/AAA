@@ -20,6 +20,8 @@ triggers:
   - "wisdom molecules"
   - "bijaksana architecture"
 tags: [wisdom, atlas, contradiction, fossil, scar, organ, lens, persona, kapabilitas, intelligence, arifOS, MCP, AAA, hierarchy]
+owned_by: curator
+authority_of: AAA
 ---
 
 # Wisdom-Atlas Architecture

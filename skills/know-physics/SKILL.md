@@ -14,6 +14,8 @@ autonomy_tier: T1
 tags: [physics, energy, momentum, conjugate, conservation, thermodynamics]
 triggers: ["force", "energy", "momentum", "thermodynamics", "conjugate", "field", "equilibrium", "physics check"]
 capability_tier: federation-substrate-knowledge
+owned_by: F13 SOVEREIGN
+authority_of: F13 SOVEREIGN
 ---
 > **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
 > directories differing only in case. The second copy (`/root/AAA/skills/knowledge/know-physics`) is now an alias

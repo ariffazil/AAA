@@ -11,6 +11,8 @@ organ_domain: aaa
 forged: 2026-09-04
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # AAA Musyawarah Execution Runtime
 

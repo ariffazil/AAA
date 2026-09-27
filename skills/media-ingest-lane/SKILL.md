@@ -9,6 +9,8 @@ floor_scope: [F2, F4, F9]
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Media Ingest Lane — read the link, or say honestly why you couldn't

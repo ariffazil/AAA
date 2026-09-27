@@ -22,6 +22,8 @@ dependencies:
   skills: [deep-research, web-extraction-fallbacks, hermes-rasa]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: curator-managed
+authority_of: AAA
 ---
 
 # Futures / Forecast Briefing

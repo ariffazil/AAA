@@ -16,6 +16,8 @@ triggers:
   - "should I elaborate"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # Signal-Strength Gating

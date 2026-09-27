@@ -14,6 +14,8 @@ axis_version: 1.0.0
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13 SOVEREIGN
+authority_of: F13 SOVEREIGN
 ---
 
 # route-dispatch

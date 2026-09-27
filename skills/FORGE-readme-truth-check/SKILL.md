@@ -46,6 +46,8 @@ floor_scope:
 - F11
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # README Truth Check

@@ -9,6 +9,8 @@ description: "Control plane router for GEOX agentic Earth-reasoning stack."
 autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: GEOX
+authority_of: GEOX
 ---
 
 # GEOX Production Cockpit (Control Plane Router)

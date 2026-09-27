@@ -36,6 +36,8 @@ version_lock:
   artifact_hash: pending
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # OpenClaw — Edge Agent Bridge Operations
 

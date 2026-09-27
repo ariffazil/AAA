@@ -34,6 +34,8 @@ attention:
 tags: [governance, scar, wisdom, session, F2, F7, F11]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # core/governance/scar-integration

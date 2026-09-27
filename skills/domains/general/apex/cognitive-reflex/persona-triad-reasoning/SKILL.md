@@ -18,6 +18,8 @@ floors: [F2, F6, F9, F13]
 tags: [persona, triad, cognitive-reflex, civilisation, dunbar, reasoning]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Persona-Triad Reasoning — the cognitive lens

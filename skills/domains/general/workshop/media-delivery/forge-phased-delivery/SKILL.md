@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F4, F7, F11]
 autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # FORGE-phased-delivery

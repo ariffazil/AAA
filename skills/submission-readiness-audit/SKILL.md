@@ -15,6 +15,8 @@ source: hermes-only
 synthesized: 2026-08-08
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Submission Readiness Audit

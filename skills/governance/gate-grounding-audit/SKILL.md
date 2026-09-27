@@ -16,6 +16,8 @@ triggers:
 tags: [governance, audit, gate, evidence, controls]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Gate Grounding Audit — presence is not evidence
