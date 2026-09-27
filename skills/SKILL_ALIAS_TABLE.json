@@ -7370,7 +7370,7 @@
       "renamed_at": "2026-09-14T16:22:42.909548+00:00"
     }
   ],
-  "last_updated": "2026-09-14T16:22:42.909548+00:00",
+  "last_updated": "2026-09-27T10:26:24.739688+00:00",
   "archived_dirs": [
     {
       "name": "aaa-agent-invariants",
@@ -7803,9 +7803,953 @@
       "quarantined_to": "ARCHIVE-chaos-quarantine/well-boundary-repair",
       "reason": "duplicated-by-prefixed-version",
       "archived_at": "2026-07-12T18:22:52.340203+00:00"
+    },
+    {
+      "dir": "telegram-group-sender-identity",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/telegram-group-sender-identity /root/AAA/skills/telegram-group-sender-identity"
+    },
+    {
+      "dir": "forge-telegram-audit",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-telegram-audit /root/AAA/skills/forge-telegram-audit"
+    },
+    {
+      "dir": "relay-echo-loop-handling",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/relay-echo-loop-handling /root/AAA/skills/relay-echo-loop-handling"
+    },
+    {
+      "dir": "telegram-userbot-telethon",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/telegram-userbot-telethon /root/AAA/skills/telegram-userbot-telethon"
+    },
+    {
+      "dir": "telegram-bot-identity-and-group-routing",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/telegram-bot-identity-and-group-routing /root/AAA/skills/telegram-bot-identity-and-group-routing"
+    },
+    {
+      "dir": "telegram-bot-routing-doctrine",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/telegram-bot-routing-doctrine /root/AAA/skills/telegram-bot-routing-doctrine"
+    },
+    {
+      "dir": "telegram-conversation-history-extraction",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/telegram-conversation-history-extraction /root/AAA/skills/telegram-conversation-history-extraction"
+    },
+    {
+      "dir": "outbound-message-delivery",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/outbound-message-delivery /root/AAA/skills/outbound-message-delivery"
+    },
+    {
+      "dir": "hermes-lane-switch-routing",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/hermes-lane-switch-routing /root/AAA/skills/hermes-lane-switch-routing"
+    },
+    {
+      "dir": "telegram-group-bot-rollout",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/telegram-group-bot-rollout /root/AAA/skills/telegram-group-bot-rollout"
+    },
+    {
+      "dir": "hermes-telegram-gateway-authorization",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/hermes-telegram-gateway-authorization /root/AAA/skills/hermes-telegram-gateway-authorization"
+    },
+    {
+      "dir": "hermes-telegram-stack-zen",
+      "canonical": "telegram-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/hermes-telegram-stack-zen /root/AAA/skills/hermes-telegram-stack-zen"
+    },
+    {
+      "dir": "aaa-skill-governor-runtime",
+      "canonical": "skill-mesh",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/aaa-skill-governor-runtime /root/AAA/skills/aaa-skill-governor-runtime"
+    },
+    {
+      "dir": "skill-audit-methodology",
+      "canonical": "skill-mesh",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/skill-audit-methodology /root/AAA/skills/skill-audit-methodology"
+    },
+    {
+      "dir": "skills-cold-storage-ops",
+      "canonical": "skill-mesh",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/skills-cold-storage-ops /root/AAA/skills/skills-cold-storage-ops"
+    },
+    {
+      "dir": "skill-taxonomy-reclassification",
+      "canonical": "skill-mesh",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/skill-taxonomy-reclassification /root/AAA/skills/skill-taxonomy-reclassification"
+    },
+    {
+      "dir": "skill-library-integrity",
+      "canonical": "skill-mesh",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/skill-library-integrity /root/AAA/skills/skill-library-integrity"
+    },
+    {
+      "dir": "audit-falsification-discipline",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/audit-falsification-discipline /root/AAA/skills/audit-falsification-discipline"
+    },
+    {
+      "dir": "third-party-audit-intake",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/third-party-audit-intake /root/AAA/skills/third-party-audit-intake"
+    },
+    {
+      "dir": "agent-claim-verification",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/agent-claim-verification /root/AAA/skills/agent-claim-verification"
+    },
+    {
+      "dir": "audit-intake-verification",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/audit-intake-verification /root/AAA/skills/audit-intake-verification"
+    },
+    {
+      "dir": "audit-repo-reality",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/audit-repo-reality /root/AAA/skills/audit-repo-reality"
+    },
+    {
+      "dir": "pasted-review-falsification",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/pasted-review-falsification /root/AAA/skills/pasted-review-falsification"
+    },
+    {
+      "dir": "cross-surface-conformance-audit",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/cross-surface-conformance-audit /root/AAA/skills/cross-surface-conformance-audit"
+    },
+    {
+      "dir": "audit-repository-entropy",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/audit-repository-entropy /root/AAA/skills/audit-repository-entropy"
+    },
+    {
+      "dir": "agent-finding-verification",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/agent-finding-verification /root/AAA/skills/agent-finding-verification"
+    },
+    {
+      "dir": "inherited-claim-audit",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/inherited-claim-audit /root/AAA/skills/inherited-claim-audit"
+    },
+    {
+      "dir": "cross-ai-analysis-distillation",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/cross-ai-analysis-distillation /root/AAA/skills/cross-ai-analysis-distillation"
+    },
+    {
+      "dir": "external-review-intake",
+      "canonical": "audit-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/external-review-intake /root/AAA/skills/external-review-intake"
+    },
+    {
+      "dir": "image-analyzer-vision",
+      "canonical": "\"image-analyzer-vision\"",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/image-analyzer-vision /root/AAA/skills/image-analyzer-vision"
+    },
+    {
+      "dir": "web-search",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/web-search /root/AAA/skills/web-search"
+    },
+    {
+      "dir": "agi-web-optimization",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/agi-web-optimization /root/AAA/skills/agi-web-optimization"
+    },
+    {
+      "dir": "forge-web-intelligence",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-web-intelligence /root/AAA/skills/forge-web-intelligence"
+    },
+    {
+      "dir": "web-scrape",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/web-scrape /root/AAA/skills/web-scrape"
+    },
+    {
+      "dir": "web-extraction-fallbacks",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/web-extraction-fallbacks /root/AAA/skills/web-extraction-fallbacks"
+    },
+    {
+      "dir": "hermes-research-substrate",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/hermes-research-substrate /root/AAA/skills/hermes-research-substrate"
+    },
+    {
+      "dir": "link-to-evidence",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/link-to-evidence /root/AAA/skills/link-to-evidence"
+    },
+    {
+      "dir": "web-search-query-gate-recovery",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/web-search-query-gate-recovery /root/AAA/skills/web-search-query-gate-recovery"
+    },
+    {
+      "dir": "sovereign-search",
+      "canonical": "web-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/sovereign-search /root/AAA/skills/sovereign-search"
+    },
+    {
+      "dir": "FORGE-onboarding",
+      "canonical": "forge-onboarding",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-onboarding /root/AAA/skills/FORGE-onboarding"
+    },
+    {
+      "dir": "claude-meta-mesa",
+      "canonical": "meta-mesa",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/claude-meta-mesa /root/AAA/skills/claude-meta-mesa"
+    },
+    {
+      "dir": "qwen-meta-mesa",
+      "canonical": "meta-mesa",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/qwen-meta-mesa /root/AAA/skills/qwen-meta-mesa"
+    },
+    {
+      "dir": "opencode-meta-mesa",
+      "canonical": "meta-mesa",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/opencode-meta-mesa /root/AAA/skills/opencode-meta-mesa"
+    },
+    {
+      "dir": "hermes-naked-prior-audit",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/hermes-naked-prior-audit /root/AAA/skills/hermes-naked-prior-audit"
+    },
+    {
+      "dir": "session-lifecycle-temporal-v2",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/session-lifecycle-temporal-v2 /root/AAA/skills/session-lifecycle-temporal-v2"
+    },
+    {
+      "dir": "session-lifecycle-temporal",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/session-lifecycle-temporal /root/AAA/skills/session-lifecycle-temporal"
+    },
+    {
+      "dir": "arifos-auto-init",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/arifos-auto-init /root/AAA/skills/arifos-auto-init"
+    },
+    {
+      "dir": "arifos-frozen-snapshot-init",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/arifos-frozen-snapshot-init /root/AAA/skills/arifos-frozen-snapshot-init"
+    },
+    {
+      "dir": "session-librarian",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/session-librarian /root/AAA/skills/session-librarian"
+    },
+    {
+      "dir": "session-federation-discovery",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/session-federation-discovery /root/AAA/skills/session-federation-discovery"
+    },
+    {
+      "dir": "session-init-human-first",
+      "canonical": "session-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/session-init-human-first /root/AAA/skills/session-init-human-first"
+    },
+    {
+      "dir": "agi-decisions-reflect",
+      "canonical": "AGI-decisions-reflect",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/agi-decisions-reflect /root/AAA/skills/agi-decisions-reflect"
+    },
+    {
+      "dir": "forge-well-boundary-repair",
+      "canonical": "FORGE-well-boundary-repair",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-well-boundary-repair /root/AAA/skills/forge-well-boundary-repair"
+    },
+    {
+      "dir": "FORGE-google-workspace",
+      "canonical": "forge-google-workspace",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-google-workspace /root/AAA/skills/FORGE-google-workspace"
+    },
+    {
+      "dir": "governance-audit",
+      "canonical": "governance-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/governance-audit /root/AAA/skills/governance-audit"
+    },
+    {
+      "dir": "forge-governance-jsonld",
+      "canonical": "governance-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-governance-jsonld /root/AAA/skills/forge-governance-jsonld"
+    },
+    {
+      "dir": "aaa-doctrine-sealing",
+      "canonical": "governance-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/aaa-doctrine-sealing /root/AAA/skills/aaa-doctrine-sealing"
+    },
+    {
+      "dir": "forge-governance-analysis",
+      "canonical": "governance-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-governance-analysis /root/AAA/skills/forge-governance-analysis"
+    },
+    {
+      "dir": "forge-execution-governance",
+      "canonical": "governance-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-execution-governance /root/AAA/skills/forge-execution-governance"
+    },
+    {
+      "dir": "governance-benchmark-authoring",
+      "canonical": "governance-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/governance-benchmark-authoring /root/AAA/skills/governance-benchmark-authoring"
+    },
+    {
+      "dir": "FORGE-act-federation-ingress",
+      "canonical": "forge-act-federation-ingress",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-act-federation-ingress /root/AAA/skills/FORGE-act-federation-ingress"
+    },
+    {
+      "dir": "FORGE-sct-federation-ingress",
+      "canonical": "forge-act-federation-ingress",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-sct-federation-ingress /root/AAA/skills/FORGE-sct-federation-ingress"
+    },
+    {
+      "dir": "aaa-ocr-optical-compression",
+      "canonical": "AAA-OCR-optical-compression",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/aaa-ocr-optical-compression /root/AAA/skills/aaa-ocr-optical-compression"
+    },
+    {
+      "dir": "forge-github-ops",
+      "canonical": "github-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-github-ops /root/AAA/skills/forge-github-ops"
+    },
+    {
+      "dir": "agi-plan-dag",
+      "canonical": "AGI-plan-dag",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/agi-plan-dag /root/AAA/skills/agi-plan-dag"
+    },
+    {
+      "dir": "FORGE-react-spa-discipline",
+      "canonical": "forge-react-spa-discipline",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-react-spa-discipline /root/AAA/skills/FORGE-react-spa-discipline"
+    },
+    {
+      "dir": "FORGE-spatial-grounding",
+      "canonical": "forge-spatial-grounding",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-spatial-grounding /root/AAA/skills/FORGE-spatial-grounding"
+    },
+    {
+      "dir": "FORGE-redis-qdrant-integration",
+      "canonical": "forge-redis-qdrant-integration",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-redis-qdrant-integration /root/AAA/skills/FORGE-redis-qdrant-integration"
+    },
+    {
+      "dir": "reality-loop-operator",
+      "canonical": "\"Reality",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/reality-loop-operator /root/AAA/skills/reality-loop-operator"
+    },
+    {
+      "dir": "forge-ci-diagnose",
+      "canonical": "forge-repo-intelligence",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-ci-diagnose /root/AAA/skills/forge-ci-diagnose"
+    },
+    {
+      "dir": "FORGE-repo-intelligence",
+      "canonical": "forge-repo-intelligence",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-repo-intelligence /root/AAA/skills/FORGE-repo-intelligence"
+    },
+    {
+      "dir": "forge-cross-repo-doc-zen",
+      "canonical": "forge-repo-intelligence",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-cross-repo-doc-zen /root/AAA/skills/forge-cross-repo-doc-zen"
+    },
+    {
+      "dir": "firecrawl-web-search",
+      "canonical": "\"firecrawl-web-search\"",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/firecrawl-web-search /root/AAA/skills/firecrawl-web-search"
+    },
+    {
+      "dir": "FORGE-musyawarah-gotong",
+      "canonical": "forge-musyawarah-gotong",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-musyawarah-gotong /root/AAA/skills/FORGE-musyawarah-gotong"
+    },
+    {
+      "dir": "FORGE-postgres-schema-design",
+      "canonical": "forge-postgres-schema-design",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-postgres-schema-design /root/AAA/skills/FORGE-postgres-schema-design"
+    },
+    {
+      "dir": "token-plan-speech",
+      "canonical": "\"token-plan-speech\"",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/token-plan-speech /root/AAA/skills/token-plan-speech"
+    },
+    {
+      "dir": "forge-issue-triage",
+      "canonical": "FORGE-issue-triage",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-issue-triage /root/AAA/skills/forge-issue-triage"
+    },
+    {
+      "dir": "FORGE-design-intelligence",
+      "canonical": "forge-design-intelligence",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-design-intelligence /root/AAA/skills/FORGE-design-intelligence"
+    },
+    {
+      "dir": "FORGE-fastapi-api-builder",
+      "canonical": "forge-fastapi-api-builder",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-fastapi-api-builder /root/AAA/skills/FORGE-fastapi-api-builder"
+    },
+    {
+      "dir": "FORGE-did-web-identity",
+      "canonical": "forge-did-web-identity",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-did-web-identity /root/AAA/skills/FORGE-did-web-identity"
+    },
+    {
+      "dir": "token-plan-video",
+      "canonical": "\"token-plan-video\"",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/token-plan-video /root/AAA/skills/token-plan-video"
+    },
+    {
+      "dir": "MY-REALITY-STACK",
+      "canonical": "Malaysia",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/MY-REALITY-STACK /root/AAA/skills/MY-REALITY-STACK"
+    },
+    {
+      "dir": "my-reality-stack",
+      "canonical": "Malaysia",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/my-reality-stack /root/AAA/skills/my-reality-stack"
+    },
+    {
+      "dir": "FORGE-context-compressor",
+      "canonical": "forge-context-compressor",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-context-compressor /root/AAA/skills/FORGE-context-compressor"
+    },
+    {
+      "dir": "FORGE-infra-crons",
+      "canonical": "forge-infra-crons",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-infra-crons /root/AAA/skills/FORGE-infra-crons"
+    },
+    {
+      "dir": "mcp-organ-probe",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/mcp-organ-probe /root/AAA/skills/mcp-organ-probe"
+    },
+    {
+      "dir": "mcp-transport-fix",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/mcp-transport-fix /root/AAA/skills/mcp-transport-fix"
+    },
+    {
+      "dir": "mcp-context-compression",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/mcp-context-compression /root/AAA/skills/mcp-context-compression"
+    },
+    {
+      "dir": "mcp-sota-shopping-list",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/mcp-sota-shopping-list /root/AAA/skills/mcp-sota-shopping-list"
+    },
+    {
+      "dir": "forge-mcp-gui",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-mcp-gui /root/AAA/skills/forge-mcp-gui"
+    },
+    {
+      "dir": "forge-mcp-a2a-agentic",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-mcp-a2a-agentic /root/AAA/skills/forge-mcp-a2a-agentic"
+    },
+    {
+      "dir": "forge-fastmcp",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-fastmcp /root/AAA/skills/forge-fastmcp"
+    },
+    {
+      "dir": "mcp-edit-activation",
+      "canonical": "mcp-ops",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/mcp-edit-activation /root/AAA/skills/mcp-edit-activation"
+    },
+    {
+      "dir": "forge-subagent-spawn",
+      "canonical": "FORGE-subagent-spawn",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-subagent-spawn /root/AAA/skills/forge-subagent-spawn"
+    },
+    {
+      "dir": "forge-cross-agent-handoff",
+      "canonical": "FORGE-cross-agent-handoff",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-cross-agent-handoff /root/AAA/skills/forge-cross-agent-handoff"
+    },
+    {
+      "dir": "FORGE-kimi-code",
+      "canonical": "forge-kimi-code",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-kimi-code /root/AAA/skills/FORGE-kimi-code"
+    },
+    {
+      "dir": "trinity-33-canonical",
+      "canonical": "kernel-trinity-33",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/trinity-33-canonical /root/AAA/skills/trinity-33-canonical"
+    },
+    {
+      "dir": "KERNEL-trinity-33",
+      "canonical": "kernel-trinity-33",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/KERNEL-trinity-33 /root/AAA/skills/KERNEL-trinity-33"
+    },
+    {
+      "dir": "FORGE-nextjs-mastery",
+      "canonical": "forge-nextjs-mastery",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-nextjs-mastery /root/AAA/skills/FORGE-nextjs-mastery"
+    },
+    {
+      "dir": "HERMES-opencode-protocol",
+      "canonical": "hermes-opencode-protocol",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/HERMES-opencode-protocol /root/AAA/skills/HERMES-opencode-protocol"
+    },
+    {
+      "dir": "forge-vault999-witness",
+      "canonical": "FORGE-vault999-witness",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-vault999-witness /root/AAA/skills/forge-vault999-witness"
+    },
+    {
+      "dir": "forge-subagent-lifecycle",
+      "canonical": "FORGE-subagent-lifecycle",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-subagent-lifecycle /root/AAA/skills/forge-subagent-lifecycle"
+    },
+    {
+      "dir": "FORGE-infra-guardian",
+      "canonical": "forge-infra-guardian",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-infra-guardian /root/AAA/skills/FORGE-infra-guardian"
+    },
+    {
+      "dir": "FORGE-tailwind-tokens",
+      "canonical": "forge-tailwind-tokens",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-tailwind-tokens /root/AAA/skills/FORGE-tailwind-tokens"
+    },
+    {
+      "dir": "FORGE-esm-require-guard",
+      "canonical": "forge-esm-require-guard",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-esm-require-guard /root/AAA/skills/FORGE-esm-require-guard"
+    },
+    {
+      "dir": "forge-lsp-pre-edit-gate",
+      "canonical": "FORGE-lsp-pre-edit-gate",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-lsp-pre-edit-gate /root/AAA/skills/forge-lsp-pre-edit-gate"
+    },
+    {
+      "dir": "agi-multimodal-bridge",
+      "canonical": "AGI-multimodal-bridge",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/agi-multimodal-bridge /root/AAA/skills/agi-multimodal-bridge"
+    },
+    {
+      "dir": "aaa-audio-qualia-doctrine",
+      "canonical": "AAA-audio-qualia-doctrine",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/aaa-audio-qualia-doctrine /root/AAA/skills/aaa-audio-qualia-doctrine"
+    },
+    {
+      "dir": "FORGE-code-analysis",
+      "canonical": "forge-code-analysis",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-code-analysis /root/AAA/skills/FORGE-code-analysis"
+    },
+    {
+      "dir": "token-plan-image",
+      "canonical": "\"token-plan-image\"",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/token-plan-image /root/AAA/skills/token-plan-image"
+    },
+    {
+      "dir": "forge-ephemeral-genesis",
+      "canonical": "FORGE-ephemeral-genesis",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-ephemeral-genesis /root/AAA/skills/forge-ephemeral-genesis"
+    },
+    {
+      "dir": "qwen-harness-tools",
+      "canonical": "\"qwen-harness-tools\"",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/qwen-harness-tools /root/AAA/skills/qwen-harness-tools"
+    },
+    {
+      "dir": "FORGE-model-monitor",
+      "canonical": "forge-model-monitor",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-model-monitor /root/AAA/skills/FORGE-model-monitor"
+    },
+    {
+      "dir": "arifos-eight-verb-canonical",
+      "canonical": "arifOS",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/arifos-eight-verb-canonical /root/AAA/skills/arifos-eight-verb-canonical"
+    },
+    {
+      "dir": "xauusd-trading",
+      "canonical": "XAUUSD-trading-stack",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/xauusd-trading /root/AAA/skills/xauusd-trading"
+    },
+    {
+      "dir": "forge-seal-a-close",
+      "canonical": "FORGE-seal-a-close",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-seal-a-close /root/AAA/skills/forge-seal-a-close"
+    },
+    {
+      "dir": "FORGE-komda-color-law",
+      "canonical": "forge-komda-color-law",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/FORGE-komda-color-law /root/AAA/skills/FORGE-komda-color-law"
+    },
+    {
+      "dir": "forge-t3a-binding-matrix",
+      "canonical": "FORGE-t3a-binding-matrix",
+      "tombstoned_at": "2026-09-27T10:26:24.739688+00:00",
+      "reason": "directory-name vs frontmatter-name mismatch (L3 lint)",
+      "reversible": true,
+      "rejoin_command": "mv /root/AAA/skills/.archive/forge-t3a-binding-matrix /root/AAA/skills/forge-t3a-binding-matrix"
     }
   ],
-  "tombstone_count": 29,
+  "tombstone_count": 190,
   "cicd-docker-deploy": "FORGE-cicd-docker-deploy",
   "did-web-identity": "FORGE-did-web-identity",
   "fastapi-api-builder": "FORGE-fastapi-api-builder",
@@ -7891,5 +8835,15 @@
     "alias_truly_dead": 47,
     "alias_rescued_4p": 1,
     "alias_archive_only": 8
-  }
+  },
+  "l3_tombstone_runs": [
+    {
+      "at": "2026-09-27T10:26:24.739688+00:00",
+      "authored_by": "FI-005/forge-777 per Arif endorse",
+      "mismatches_detected": 118,
+      "mismatches_added": 118,
+      "already_present": 0,
+      "approach": "deprecate-and-tombstone (reversible)"
+    }
+  ]
 }
