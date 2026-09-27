@@ -1,4 +1,8 @@
 Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+apex_zen_role: WITNESS
+related_apex_zen: APEX-ZEN-CANONICAL-COMPRESSION.md
+related_kernels: APEX-REALITY-KERNEL.md, APEX-STABILIZATION-DIRECTIVE-2026-09-20.md, ZEN_INIT_CANONICAL.md
+classification_note: Research proposal for next-generation arif_init; ten-gate architecture replacing 9 modes; complements APEX-ZEN init chain with reality-first gates.
 
 # arif_init v2 — AGI Substrate Kernel Architecture
 

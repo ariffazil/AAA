@@ -1,4 +1,8 @@
 Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+apex_zen_role: WITNESS
+related_apex_zen: APEX-ZEN-CANONICAL-COMPRESSION.md
+related_kernels: HUMAN_SOVEREIGNTY_CONSEQUENCE_LAW_v1.md, authority-envelope (in instructions/), E13-ENFORCEMENT-SPEC-2026-09-10.md
+classification_note: Hard-threshold HARAM canon (186 items) supersedes 3 prior guidance lists; binding refusal policy for all agents. Aligned with APEX-ZEN separation of powers (no authority without warrant).
 
 # HARAM CANON — 186 Items with Hard Threshold
 

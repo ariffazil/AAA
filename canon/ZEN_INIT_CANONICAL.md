@@ -1,4 +1,8 @@
 Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+apex_zen_role: WITNESS
+related_apex_zen: APEX-ZEN-CANONICAL-COMPRESSION.md
+related_kernels: APEX-STABILIZATION-DIRECTIVE-2026-09-20.md, ARIF_INIT_V2_AGI_SUBSTRATE_KERNEL.md, authority-envelope (in instructions/)
+classification_note: Living operating contract for coding agents inside arifOS; non-negotiable safety rules + musyawarah adat; aligns APEX-ZEN chain (BUILD→VERIFY→JUDGE→SEAL→ACT→WITNESS).
 
 # arifOS — ZEN INIT / CONSTITUTIONAL CODING OPERATING CONTRACT
 # Principal: Arif

@@ -1,4 +1,8 @@
 Status: ACTIVE_CANONICAL — RATIFIED
+apex_zen_role: WITNESS
+related_apex_zen: APEX-ZEN-CANONICAL-COMPRESSION.md
+related_kernels: HERMES_RASA_DOCTRINE.md, EUREKA-SESSION-2026-09-24-HERMES-HUMAN-BRIDGE.md, HERMES_SHADOW_DOCTRINE.md
+classification_note: T2 proposal for HERMES witness-mode policy modules; complements HERMES_RASA with mechanized response-time constraints.
 
 # HERMES HARDEN v1 — Witness-Mode Posture Discipline
 
