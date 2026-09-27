@@ -308,7 +308,7 @@ If any → 0, then `AgencyQuality → 0`. Federation design must hold all five n
 | Required card fields | ✅ | `.well-known/agent-card.json` |
 | JSON-RPC transport at `/a2a/` with `A2A-Version: 1.0` | ✅ | [a2a/](./a2a/) |
 | Protocol binding declaration | ✅ | `protocolBinding: JSONRPC` (note: A2A itself supports JSON-RPC, gRPC, HTTP+JSON) |
-| Authenticated extended card | ✅ | `capabilities.authenticated_extended_card: true` |
+| Authenticated extended card | live surface differs | 2026-09-27 probe of `:3001/a2a/`: methods are `agent/getCard`, `agent/listSkills`, `tasks/send`, `tasks/get`, `tasks/cancel`. `agent/getAuthenticatedExtendedCard` is not served. |
 | Agent metadata card | ✅ | `.well-known/agent.json` |
 | Protocol conformance evidence | ✅ | [`PROTOCOL_CONFORMANCE.md`](./PROTOCOL_CONFORMANCE.md) |
 
@@ -329,6 +329,37 @@ If any → 0, then `AgencyQuality → 0`. Federation design must hold all five n
 | Categories (live) | derived from skill catalog | live |
 
 Hardcoded counts rot. Live counts do not.
+
+## Statics and dynamics
+
+Static facts change only when the role changes. Dynamic facts are whatever the port says at probe time. A README that copies a dynamic fact becomes an archive defending itself.
+
+| Kind | Holds still | Does not hold still |
+|---|---|---|
+| Static | Who decides. Which organ owns which question. Receipts are history, memory is a change in later behavior. Trust permits reuse of a fresh witness. Trust is not a score and not a zero-knowledge proof. | — |
+| Dynamic | Re-probe before repeating | Health, commit, queue depth, memory-store size, FQ |
+
+Invariant: **reality beats the file.** If this page and a live `/health` disagree, the port wins and this page gets corrected.
+
+Observed 2026-09-27T00:52Z, not a standing score:
+
+| Surface | Probe |
+|---|---|
+| AAA `:3001` | healthy. A2A card and `agent/getCard` answer. |
+| arifOS `:8088` | healthy. 13 floors. |
+| A-FORGE `:7072` | healthy. |
+| arifFlow `:7073` | up. Diagnosis `HEURISTIC_ADVISORY`. The word `OPTIMAL` in the payload is a legacy label. |
+| FED router `:7074` | healthy. Advisory only. |
+| Model proxy `:4000` | liveliness answers. This is not the FED router. |
+| GEOX `:8081` | process healthy. Kernel verdict `HOLD`. |
+| WEALTH `:18082` | healthy. |
+| WELL `:18083` | answers `degraded`. Telemetry not verified. Floors not violated. |
+| FRAME `:18085` | ok. |
+| CHRON `:18102` | ok. |
+| HERMES `:18087` | healthy. Relay only. |
+| kabarkan `:18902` | reports healthy and `consumer_missing` at the same time. |
+| FLAME `:18901` | no answer. |
+| Work ledger | `/root/work/tasks.json` is the queue. `/root/work/ledger.jsonl` is absent. |
 
 ---
 
@@ -383,6 +414,7 @@ docker compose up -d
 
 # Verify
 curl http://localhost:3001/health
+curl http://localhost:7074/health
 curl http://localhost:4000/health/liveliness
 
 # Generate a sample AttentionPacket
