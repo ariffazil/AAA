@@ -19,7 +19,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.2",
+      "protocolVersion": "1.0",
       "url": "https://aaa.arif-fazil.com/a2a"
     }
   ],
@@ -192,7 +192,7 @@
     {
       "id": "forge_evaluate",
       "name": "APEX Gate",
-      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
+      "description": "Compute G = A·P·E·X·Φ.",
       "tags": [
         "actuator"
       ],

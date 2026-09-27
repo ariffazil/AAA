@@ -4,7 +4,7 @@
   "protocolVersion": "1.0",
   "agentId": "wealth",
   "name": "WEALTH",
-  "description": "Capital intelligence \u2014 NPV/IRR, markets, institutional stress, entropy, wisdom.",
+  "description": "Capital intelligence — NPV/IRR, markets, institutional stress, entropy, wisdom.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -19,7 +19,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.2",
+      "protocolVersion": "1.0",
       "url": "https://aaa.arif-fazil.com/a2a"
     }
   ],

@@ -4,7 +4,7 @@
   "protocolVersion": "1.0",
   "agentId": "arifos",
   "name": "arifOS Kernel",
-  "description": "Constitutional kernel \u2014 F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
+  "description": "Constitutional kernel — F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -19,7 +19,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.2",
+      "protocolVersion": "1.0",
       "url": "https://aaa.arif-fazil.com/a2a"
     }
   ],
@@ -72,7 +72,7 @@
     {
       "id": "arif_observe",
       "name": "Observe Reality",
-      "description": "Sense evidence \u2014 search, fetch, vitals. 111_SENSE.",
+      "description": "Sense evidence — search, fetch, vitals. 111_SENSE.",
       "tags": [
         "kernel"
       ],
