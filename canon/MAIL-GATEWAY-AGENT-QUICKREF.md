@@ -1,3 +1,5 @@
+Status: UNCLASSIFIED — PENDING_F13_REVIEW
+
 # Mail Gateway — Agent Quick Reference
 
 > **For:** any warga (HERMES, OpenCode, Qwen, Kimi, Claude, Codex, cron scripts)

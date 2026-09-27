@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA::ACTIVATION_INERTIA::2026-09-08
 
 > **"Doktrin siap, skrip ditulis, tetapi sensor/bouncers tidak digantung pada saraf hidup."**  

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # HERMES HARDEN v1 — Witness-Mode Posture Discipline
 
 > **Status:** T2 PROPOSAL (F13 ratification gate)

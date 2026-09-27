@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # MEMORY ENGINEERING SPEC — v0.9 (DRAFT, UNSEALED)
 
 **Companion technical appendix to:** *The Witness Operating System* (WOS v1.0, internal preprint, 16 pp.)

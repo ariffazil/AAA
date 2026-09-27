@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA::VERIFICATION_GRADIENT — Witness Everything, Verify Contrast, Judge Exceptions
 
 > **Forged:** 2026-09-07 (second seal of the day) · Arif refinement of GOVERNANCE_DUNBAR

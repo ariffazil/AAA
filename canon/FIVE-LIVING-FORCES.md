@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # FIVE LIVING FORCES — Constitutional Vocabulary
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-25, sovereign binary "promosi kanun Five Living Forces")

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # Gödel Lock & Strange Loop — arifOS Kernel Witness
 
 *Stage: 000 — INIT*

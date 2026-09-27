@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # WITNESS_SUBSTRATE_V1 — Ontological Constitution
 
 **Sealed:** 2026-09-10

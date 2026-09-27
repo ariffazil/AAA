@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # AGI SUBSTRATE: 33 Core Eurekas
 
 > **Status:** F13 SEALED (2026-09-20 03:27 MYT)

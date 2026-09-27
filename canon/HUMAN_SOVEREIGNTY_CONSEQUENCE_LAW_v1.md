@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # The Law of Human Sovereignty & Consequence Entry v1
 
 > **Reference:** `CANON::HUMAN_SOVEREIGNTY_CONSEQUENCE_LAW::2026-09-13`  

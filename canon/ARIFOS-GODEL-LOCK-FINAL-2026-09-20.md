@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # ARIFOS::GODEL_LOCK::FINAL — Session Closure
 
 > **Status:** SEALED (2026-09-20)

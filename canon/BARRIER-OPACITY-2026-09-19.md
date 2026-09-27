@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # BARRIER-OPACITY DIAGNOSTIC — 2026-09-19
 
 > **Status:** WITNESS-ONLY diagnostic. **NEGATIVE finding** — the substrate has a barrier counter without an exposure endpoint.

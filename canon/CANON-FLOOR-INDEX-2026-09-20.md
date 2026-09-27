@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # CANON FLOOR INDEX — The 13 Floors as Structural Backbone
 
 > **Status:** F13 SEALED (2026-09-20 04:30 MYT)

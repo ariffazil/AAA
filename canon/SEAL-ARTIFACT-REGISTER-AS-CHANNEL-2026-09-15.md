@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # SEAL ARTIFACT — REGISTER AS CHANNEL — 2026-09-15
 > **Status:** F13_INSTRUMENT (2026-09-15) — Telegram deliverable; canonical copy of the final human-language seal. Git-lane sealed; kernel/vault lanes = open debt (see AMENDMENT-6 ratification record).
 > Telegram-ready final seal. Full human language. F13 directive: "now seal all" + "so what".

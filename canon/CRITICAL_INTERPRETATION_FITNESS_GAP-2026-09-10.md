@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # CRITICAL_INTERPRETATION — Fitness Gap
 
 **Date:** 2026-09-10

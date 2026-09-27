@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # arifOS — HERMES ASI & OPENCLAW AGI FEDERATION ROLE CONTRACT
 # Ref: CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT
 # Canon: F1 (Amanah) · F2 (Truth) · F3 (Tri-Witness) · F4 (Clarity - ΔS ≤ 0) · F13 (Sovereign Veto)

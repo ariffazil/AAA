@@ -1,3 +1,5 @@
+Status: UNCLASSIFIED — PENDING_F13_REVIEW
+
 # Contradiction Ledger — Living Document
 
 > **Created:** 2026-09-04 | **Source:** APEX ART probe of VPS state

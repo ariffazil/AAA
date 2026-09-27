@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # F13 VERDICT — MEMORY PROMOTION GATE (write_approval)
 
 > **Status:** F13_RATIFIED_CHAT — 2026-09-15, ARIF DM ("Ok seal")

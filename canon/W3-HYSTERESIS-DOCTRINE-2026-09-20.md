@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # W³ Hysteresis Doctrine — Tri-Witness Governance Bands
 
 > **Status:** F13_RATIFIED_DOCTRINE (2026-09-20)

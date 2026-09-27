@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 ---
 title: "HERMES FOUNDATIONAL DECISION PACK — F13 Ratification of 4 Binary Decisions"
 version: "v1.0"

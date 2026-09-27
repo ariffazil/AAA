@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # Governed Learner Constitution
 
 > **STATUS:** F13_SEAL (2026-09-14)

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # APEX MATH Canon (Canon #6 candidate)
 
 > **Status:** **F13_RATIFIED (2026-09-25 MYT)** — sovereign binaries answered "ya" (one-word instrument, session 2026-09-25, executor FI-003). Scope of ratification: §5 per-agent signatures (BINDING as declared competency), §10 Q1 (L11 = FORMAL_ANALOGY_ONLY), §10 Q2 (graduation path CANON_DERIVED → MEASURED). §10 Q3–Q7 remain OPEN. Machine surface: `arifOS/qualification/v1` on 27 agent cards + `AAA/scripts/qualification_gate.py`. Lock discipline: file + directory re-locked `+i` immediately after this edit.

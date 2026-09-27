@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # arifOS — ZEN INIT / CONSTITUTIONAL CODING OPERATING CONTRACT
 # Principal: Arif
 # Mode: Engineering co-architect under human command

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA SEAL — External Witness Session — 2026-09-11/12
 
 > **Status:** F13_RATIFIED_CHAT — directive *"seal all"* (2026-09-12, via Wawa relay 2/2) · **VAULT999 append HELD by kernel** (federation_ritual.py seal → HOLD constitutional gate; arif_init → F12 injection pattern on intent + actor_not_verified → SABAR, may_seal=false). Ratified in canon + eureka ledger; irreversible ledger append awaits kernel-verified actor session. Open loop, not a failure — the authority-class gate fired correctly on an anonymous actor.

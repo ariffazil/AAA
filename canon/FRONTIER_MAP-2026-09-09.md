@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # FRONTIER_MAP — Finite Reality Governance
 
 > **Generated:** 2026-09-09T11:00:00+08:00

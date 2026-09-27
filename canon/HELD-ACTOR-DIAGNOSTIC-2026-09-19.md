@@ -1,3 +1,5 @@
+Status: HISTORICAL_SESSION_ARTIFACT
+
 # HELD-ACTOR DIAGNOSTIC — 2026-09-19
 
 > **Status:** WITNESS-ONLY diagnostic. Pure OBSERVE; no mutation proposed.

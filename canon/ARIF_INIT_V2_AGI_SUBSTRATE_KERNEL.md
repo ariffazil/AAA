@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # arif_init v2 — AGI Substrate Kernel Architecture
 
 > **Status:** RESEARCH_PROPOSAL (2026-09-20)  

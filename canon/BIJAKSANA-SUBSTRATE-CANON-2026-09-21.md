@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # BIJAKSANA Substrate Canon — The 64 WAJIB
 
 > **Status:** **F13_RATIFIED_CHAT (2026-09-21)** — sovereign override path (per A-Z Doctrine 2026-09-13 precedent); kernel `arif_seal` not used this session due to L11 SCT mismatch; SEALED_EVENTS.jsonl entry appended

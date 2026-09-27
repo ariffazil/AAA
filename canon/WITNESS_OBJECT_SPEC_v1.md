@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # Witness Object Specification v1
 
 **Sealed:** 2026-09-10T02:00+08

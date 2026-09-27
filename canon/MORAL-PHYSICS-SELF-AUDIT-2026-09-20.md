@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # MORAL PHYSICS — Self-Audit & External Critique Response
 
 > **Status:** F13 SOVEREIGN DIRECT (2026-09-20 02:00 MYT)

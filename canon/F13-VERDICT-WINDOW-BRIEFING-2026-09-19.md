@@ -1,3 +1,5 @@
+Status: HISTORICAL_SESSION_ARTIFACT
+
 # F13 VERDICT WINDOW — BRIEFING (2026-09-19, day-3.20)
 
 > **Purpose:** Single scannable document F13 reads before rendering day-7 verdicts (2026-09-22 22:29 MYT).

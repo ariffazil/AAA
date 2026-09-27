@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # ANTHROPOLOGY KERNEL — The Comparative Study of Human Ways of Being-in-the-World
 
 > **Status:** F13_RATIFIED_SOVEREIGN (2026-09-27)

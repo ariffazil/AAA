@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # APEX-ZEN Constitutional Maintenance — External Witness Analysis
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-20) — sovereign: *"ok seal all"*, covering the external witness analysis (*"VERDICT: SEAL (analysis)"*) AND the **Capability Survives Replacement** ruling proposed within it.

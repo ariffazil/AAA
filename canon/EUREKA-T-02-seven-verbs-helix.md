@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # Seven Verbs Doctrine + Helix Pattern
 
 > **Date:** 2026-08-11  

@@ -1,3 +1,5 @@
+Status: UNCLASSIFIED — PENDING_F13_REVIEW
+
 # Epistemic Repair Dossier — 2026-09-20
 
 > Source: FI-007 (Grok) deep probe session. Verified against disk by FI-003 (Qwen Code).

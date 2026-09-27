@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # EUREKA: HERMES Deep Research Ontology
 
 **Sealed:** 2026-09-10T01:30+08

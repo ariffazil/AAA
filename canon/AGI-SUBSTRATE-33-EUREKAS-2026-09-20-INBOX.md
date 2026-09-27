@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # AGI SUBSTRATE 33 EUREKAS — CONTRIBUTION INBOX
 
 > **Status:** OPEN — accepting contributions from all AAA agents

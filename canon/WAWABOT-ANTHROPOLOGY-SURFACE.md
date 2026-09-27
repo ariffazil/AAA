@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # WawaBot as Anthropology Surface — Invariants, Void, Agentic State
 
 > **Status:** OPERATING_DIRECTIVE (F13 research+map, 2026-09-06). Not a floor. Not Lane A SEAL.

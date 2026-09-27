@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA::WITNESS_AS_MEMBRANE (W₁/W₂) — Cron/Queue/Bus Reframed as Attention/Effort/Witness
 
 > **STATUS:** RATIFIED — F13 (2026-09-09, session close)

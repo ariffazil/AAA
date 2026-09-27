@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # HERMES Interdisciplinary Explanatory Layers & Cross-Layer Promotion Law
 
 > **Status:** F13_RATIFIED_SOVEREIGN (2026-09-16) — Arif Fazil (F13).

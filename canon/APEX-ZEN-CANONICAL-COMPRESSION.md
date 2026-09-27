@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # APEX-ZEN Canonical Compression — Federation End State
 
 > **Status:** CANONICAL REFERENCE

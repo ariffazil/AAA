@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # APEX Reality Graph Memory Migration v1 — Three Consequence Domains
 
 > **Reference:** `APEX::REALITY_GRAPH_MEMORY_MIGRATION::2026-09-13`  
