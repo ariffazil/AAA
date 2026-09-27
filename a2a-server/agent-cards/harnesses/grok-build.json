@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "grok-build",
   "name": "Grok Build 4.3 (xAI TUI)",
   "principal_agent": {
