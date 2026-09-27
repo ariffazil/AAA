@@ -1,4 +1,8 @@
 Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+apex_zen_role: WITNESS
+related_apex_zen: APEX-ZEN-CANONICAL-COMPRESSION.md
+related_kernels: APEX-REALITY-KERNEL.md, GODEL_LOCK.md
+classification_note: Sovereign directive specifying stability law REALITY>MODEL>MEMORY>LANGUAGE and chaos minimization; aligns APEX-ZEN separation of powers at the federation-control-loop layer.
 
 # APEX STABILIZATION DIRECTIVE
 
