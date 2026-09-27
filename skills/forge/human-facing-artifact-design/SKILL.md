@@ -246,7 +246,31 @@ When the artifact is a personal reflection, life document, or wisdom piece — a
 
 **Pitfall — vision-verify every visual artifact before sending.** AI image generators will quietly invent text overlays (often misspelled: "MASTORY" instead of "MASTERY") and other defects that the generator's own quality checks miss. **Always run `vision_analyze` on the rendered image before delivery**, with a prompt that asks specifically about: text overlays (quote them exactly), overlap with chart elements, anchor line positions vs. labelled prices, watermark artefacts, anatomy defects (extra limbs, duplicated body parts), and anything specifically labeled in the artifact's accompanying text. A defect caught before delivery is invisible to the human; a defect caught after delivery is the artifact's signature. If vision is not available in the current lane, defer the artifact and tell the human — do not claim a visual artifact is clean by looking at the prompt alone.
 
-### No max-caps in human-facing dossier prose
+### Claim inflation in external-facing PDFs — the seven repair patterns
+
+A premium PDF aimed at a third party (founder thesis, marketing deck, briefing for an investor or government audience) fails on claim content before it fails on layout. Seven phrase-level patterns read as guarantees that the document cannot back; each has a one-paragraph repair. Pre-screen every external PDF with the grep at the end of this section before declaring it shippable.
+
+1. **"Missing Layer" / "the X itself" / "category creator"** — reads as "alone in the quadrant". Repair: "A proposed integration layer; benefits and limits stated below." Always name at least one named competitor or comparable stack in the same sentence.
+2. **"No notion of" / "has no way to" / "no architectural distinction"** — category-wide dismissal. Even when the pattern is real, alternatives usually cover parts of it. Repair: "Default deployments have no notion of X; configured alternatives (e.g. Cedar policies) can supply it. [ARIF] makes it the default, not the opt-in."
+3. **"Secondary cost never incurred" / "eliminates" / "prevents downstream"** — guarantees about residual outcomes. Repair: "Reduces the expected cost of [X]. It does not make it zero: verification lowers expected harm, residual risk remains — and some harms, once released, cannot be recovered, only prevented."
+4. **"Primary operating metric"** — declares a metric that competes with several others. Repair: "one operating signal — alongside [prevention rate, containment, recurrence frequency]." For systems that act on the world, pair recovery with a total-loss accounting: `total loss = irreversible harm + ∫ harm rate(t)dt + recovery cost + human operating burden`.
+5. **"Eight stages, no skipping"** — formal sequence that ignores efficient reuse. Repair: "Eight invariants, never skipped. When evidence from an earlier step is still fresh, it may be reused without redundant work — reuse is a property of verified evidence, not a shortcut around verification."
+6. **"Could not be wrong" / "Built by someone who"** — infallibility framing. Repair: position as a discipline learned *because* of the field's history of being wrong ("Built by someone who learned to lose arguments with reality"; "You learn to hold your own beliefs lightly").
+7. **"Authority may invalidate any cache"** — sounds like authority decides truth. Repair: "Reality outranks memory: evidence from the world can revise a stored belief. Authority may invalidate the cache that stored the belief — it does not, by that act, make the belief true or false. Invalidating a cache is a permission to re-verify, not a verdict on the underlying claim."
+
+**Named comparison table — mandatory for any external PDF that competes on a category.** For an external artifact positioning itself against an existing category ("ARIF is the only X", "missing layer"), name ≥3 named competitors in a comparison table, each with what it actually provides and what is not its concern by design. Real competitors for an AI-reality framework: Open Policy Agent (separated policy + decision logs), Cedar (principal-action-resource authorization), Temporal (durable execution + replay), LangGraph (persistent state + pause/resume), OpenAI Agents SDK (tool approval + resumable state), Claude Code sandbox (filesystem + network isolation, vendor-reported 84% reduction in permission prompts), Azure AI Search (metadata filters including dates). Any one of those as the table's named comparison forces the rest of the document to be defensible; a table whose cells say "—" or "the category itself" is missing the comparison, not the competitor.
+
+**Sub-page numbering trap.** A section spanning two pages with the same eyebrow ("10 · Six Core Innovations") produces "11 → 10 → 15 → 12"-style visual reorderings when readers scan only the eyebrow. Repair: rename the second page from "10 · Six Core Innovations — Dissent" to "10 · Innovation: Dissent" so it reads as continuation, not as a new section that broke the ordering.
+
+**Pre-ship grep** — run before declaring an external PDF done:
+
+```bash
+grep -inE "category itself|alone in|never being incurred|secondary cost|could not be wrong|primary operating metric|no notion of|no skipping slogan|the X itself"
+```
+
+Every match needs either: (a) repair to one of the patterns above, (b) an explicit caveat in the surrounding paragraph, or (c) removal. The grep is a cheap pre-screen; vision verification of the rendered PDF catches the cases the grep misses (font-size mismatch, claim-vs-evidence ledger absent, missing competitor names).
+
+The failure shape these patterns defend against is claim inflation: a presentation convincing enough that readers mistake aspirations for verified guarantees. The reviewer for an external PDF is the same posture as the reviewer for a financial claim — re-read every "alone in" and "category itself" with the eye of someone checking a number, and the document survives the third-party read.
 
 For dossiers, briefings, void maps, fishy-findings inventories, and any other analyst output addressed to the human principal or intended to be forwarded to a journalist, the prose body is written in **ordinary sentence case**, not in uppercase. Title-case section markers (small caps in headers) are fine for layout; ALL-CAPS PROSE is not.
 
