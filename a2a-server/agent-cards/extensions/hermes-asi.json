@@ -98,7 +98,7 @@
     "KERNEL-mcp-builder"
   ],
   "rsi_doctrine": "RSI-recursive-improvement",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
   "securitySchemes": {
     "bearer": {

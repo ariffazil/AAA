@@ -5,8 +5,9 @@ Converts federation agent cards to A2A JSON format and places them
 in the a2a-server registry directory. Does NOT replace existing rich cards
 (charter, species, genome) — supplements with MCP surface data.
 
-Reads: /root/AAA/federation/agents/<name>/agent.yaml
+Reads:  /root/AAA/federation/agents/<name>/agent.yaml
 Writes: /root/AAA/a2a-server/agent-cards/federation/<name>.json
+X11:     emits url + endpoints against AAA gateway :3001/a2a/<name> (2026-09-27)
 """
 import yaml
 import json
@@ -19,9 +20,9 @@ A2A_TARGET = Path("/root/AAA/a2a-server/agent-cards/federation")
 def convert(fed_card):
     """Convert federation YAML card → A2A JSON card."""
     a2a = {
-        "$schema": "arifOS/agent-card/v2.2.0",
-        "schemaVersion": "2.2.0",
-        "protocolVersion": "1.2",
+        "$schema": "arifOS/agent-card/v2.3.0",
+        "schemaVersion": "2.3.0",
+        "protocolVersion": "1.0",
         "agentId": fed_card["name"],
         "name": fed_card["name"],
         "description": fed_card.get("description", ""),
@@ -65,6 +66,19 @@ def convert(fed_card):
             "note": fed_card.get("note", ""),
             "source": "federation.yaml",
             "generated_by": "federation-a2a-sync.py"
+        },
+        # X11 fix (2026-09-27): url + endpoints previously absent; consumers
+        # could not resolve agents to a reachable HTTP path. Now emitted
+        # against the AAA A2A gateway at :3001, which is the federation
+        # surface every dispatch reaches. Federation agents are model-family
+        # harnesses (not long-running daemons), so the gateway relay IS
+        # the canonical endpoint.
+        "url": f"http://127.0.0.1:3001/a2a/{fed_card['name']}",
+        "endpoints": {
+            "baseUrl": f"http://127.0.0.1:3001/a2a/{fed_card['name']}",
+            "cardUrl": f"http://127.0.0.1:3001/a2a/agents/{fed_card['name']}",
+            "healthUrl": "http://127.0.0.1:3001/health",
+            "mcpUrl": f"http://127.0.0.1:3001/a2a/{fed_card['name']}/mcp"
         }
     }
     return a2a
