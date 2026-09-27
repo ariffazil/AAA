@@ -15,6 +15,8 @@ canonical_siblings:
   - parallel-agent-fanout
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # PR Portfolio Sweep — Bijaksana Tertib

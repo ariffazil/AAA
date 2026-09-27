@@ -16,6 +16,8 @@ tags: [care, bonds, human-interface, relationship, conduct, witness]
 related_skills: [governed-uncertainty, bridge-protocol, relationship-kernel, human-advisory-discipline]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Human Care Coaching

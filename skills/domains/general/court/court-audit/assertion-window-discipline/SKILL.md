@@ -4,6 +4,8 @@ description: "Use when about to assert absence or unknowability."
 owner: Hermes
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 # Assertion Window Discipline
 

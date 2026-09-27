@@ -6,6 +6,8 @@ version: 1.0.0-2026.09.22
 owner: curator
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # DashScope Video Generation

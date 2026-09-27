@@ -21,6 +21,8 @@ cites:
   - openai/codex: OpenAI-flavour coding worker
   - MoonshotAI/kimi-code: media-input specialist
   - cli/cli (gh): GitHub operations (F13-gated for writes)
+owned_by: Hermes-Prime (333-AGI orchestration layer)
+authority_of: AAA
 ---
 # Hermes Coding Gateway — Governed Multi-CLI Coding Fabric
 

@@ -34,6 +34,8 @@ outputs:
   - sealed_trade_receipts (VAULT999)
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: A-FORGE (execution) / WEALTH (intelligence) / arifOS (governance)
+authority_of: AAA
 ---
 
 # XAUUSD Trading Stack — Federation Skill

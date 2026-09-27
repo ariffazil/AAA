@@ -8,6 +8,8 @@ floor_scope: [F1, F2, F10]
 capability_tier: fed-long-context
 ecology_state: WARM
 tags: [audio, asr, mms-1b, ctc, tri-witness, falsification, hallucination-proof, penang-bm]
+owned_by: AAA
+authority_of: AAA
 ---
 
 # MMS-1b — CTC Sovereign Witness (Tri-Witness Validation, third seat)

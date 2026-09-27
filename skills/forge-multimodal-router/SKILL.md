@@ -37,6 +37,8 @@ forged: 2026-08-20
 forged_by: FI-003 (Qwen Code)
 f13_directive: "make sure my hermes agent telegram ASI_arifos_bot know how to use this"
 constitutional_floor: F11 AUDIT — every routing decision logged to VAULT999 receipts
+owned_by: AAA
+authority_of: AAA
 ---
 # forge-multimodal-router
 

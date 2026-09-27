@@ -4,6 +4,8 @@ description: 'Delta-gated cron output delivery. P0-P3 severity routing.'
 owner: AAA
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # FORGE Event Delivery
 

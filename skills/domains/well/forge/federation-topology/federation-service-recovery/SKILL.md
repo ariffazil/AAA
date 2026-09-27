@@ -24,6 +24,8 @@ floor_scope: [F1, F2, F4, F9, F11]
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Federation Service Recovery

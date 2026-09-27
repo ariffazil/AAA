@@ -37,6 +37,8 @@ attention:
 tags: [governance, audit, recursive, FFF, F2, F11]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # core/governance/recursive-audit

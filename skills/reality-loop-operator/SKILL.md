@@ -10,6 +10,8 @@ autonomy_tier: T1
 trigger_when: complex_multi_phase_work, session_start_with_open_loops, diminishing_returns_detected
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 
 # Reality Loop Operator — Autonomous 000→999

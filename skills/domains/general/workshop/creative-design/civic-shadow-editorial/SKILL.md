@@ -10,6 +10,8 @@ autonomy_tier: ANNOUNCE
 forged_from: SESSION-2026-08-21 (MyKad RM7.5b + Taufik KLCC + 33 Bayang Anwar)
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: FORGE (000Ω)
+authority_of: AAA
 ---
 
 # Civic & Shadow Editorial — arif-fazil.com

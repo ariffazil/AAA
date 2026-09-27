@@ -4,6 +4,8 @@ description: "Use on /000 INIT Hermes federation audits (A-I sections)."
 owner: arifOS
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: arifOS
+authority_of: arifOS
 ---
 
 # Hermes Federation Audit (the /000 INIT class)

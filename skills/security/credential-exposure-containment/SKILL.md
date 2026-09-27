@@ -22,6 +22,8 @@ triggers:
   - "key is burned"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (arifOS federation)
+authority_of: AAA
 ---
 
 # Credential Exposure Containment

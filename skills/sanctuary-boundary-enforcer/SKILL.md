@@ -30,6 +30,8 @@ authority:
   approval_gate: f13
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # Sanctuary Boundary Enforcer
 

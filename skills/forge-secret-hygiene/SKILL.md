@@ -15,6 +15,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # Secret Hygiene
 

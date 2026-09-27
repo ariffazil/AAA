@@ -14,6 +14,8 @@ trigger_when:
   - "user asks what a video is, or sends a video link for discussion"
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 
 # YouTube Video Info — VPS-Safe Lane

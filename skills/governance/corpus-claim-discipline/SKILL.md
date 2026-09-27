@@ -34,6 +34,8 @@ support_files:
   - scripts/corpus_probe.py
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Corpus Claim Discipline

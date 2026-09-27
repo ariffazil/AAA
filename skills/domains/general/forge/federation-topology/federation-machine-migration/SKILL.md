@@ -17,6 +17,8 @@ triggers:
   - "prepare for handover"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (curator-managed)
+authority_of: AAA
 ---
 
 # Federation Machine Migration — Readiness, Zen-Close, Verification

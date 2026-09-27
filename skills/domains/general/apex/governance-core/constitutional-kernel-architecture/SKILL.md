@@ -10,6 +10,8 @@ autonomy_tier: T2
 trigger_when: constitutional_kernel_build, gate_chain_design, evaluator_independence, improvement_case_schema, rsi_kernel
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Constitutional Kernel Architecture

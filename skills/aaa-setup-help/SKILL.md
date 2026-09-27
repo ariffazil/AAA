@@ -19,6 +19,8 @@ trigger_when:
 tags: [setup, guided, step-by-step, human-in-loop, onboarding]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # AAA-setup-help — Guided Setup with Progress Tracking
 

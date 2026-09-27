@@ -7,6 +7,8 @@ risk_tier: low
 tags: [compensation, salary, negotiation, evidence, research, labour-market]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Compensation Claim Grading

@@ -38,6 +38,8 @@ triggers:
   - "thermodynamic"
   - "docker prune"
   - "resource pressure"
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # Federation Health

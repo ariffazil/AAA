@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F3, F4, F8, F11]
 tags: [litellm, proxy, federation, fed, context-window, rate-limit, triage, systemd, ipv4]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # LiteLLM Proxy Triage

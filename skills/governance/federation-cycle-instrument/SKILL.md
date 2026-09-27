@@ -10,6 +10,8 @@ autonomy_tier: T1
 tags: [asabiyyah, measurement, enforcement-coverage, doctrine-decay, ibnu-khaldun, instrument]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Federation Cycle Instrument (asabiyyah)

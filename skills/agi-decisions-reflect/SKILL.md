@@ -22,6 +22,8 @@ trigger_when:
 tags: [decisions, reflection, uncertainty, review, meta-cognition]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 
 # AGI-decisions-reflect — Lightweight Decision Uncertainty Surfacing

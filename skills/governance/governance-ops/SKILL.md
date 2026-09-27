@@ -107,6 +107,8 @@ triggers:
 description: "Use when asking whether a control is real. Route a governance question to the one reference that answers it — control enforcement, service governance, the F1–F13 constitution, canon sealing, JSON-LD ontology, governance benchmarks, or an institution's board."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # governance-ops — one entry point for every governance question

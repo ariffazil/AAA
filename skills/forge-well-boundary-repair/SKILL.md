@@ -6,6 +6,8 @@ description: 'Repair WELL organ boundary violations — fix substrate readiness 
 owner: A-FORGE
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # FORGE-well-boundary-repair
 

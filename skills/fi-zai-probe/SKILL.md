@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: [F2, F4]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # Z.AI Plan Probe
 

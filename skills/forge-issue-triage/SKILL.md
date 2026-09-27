@@ -62,6 +62,8 @@ canonical_siblings:
 - secret-safety-scan      # if issue smells like secret exposure
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # GitHub Issue Triage

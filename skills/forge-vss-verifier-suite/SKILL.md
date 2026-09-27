@@ -31,6 +31,8 @@ required_tools:
   - vision_analyze
   - mcp__arifos__arif_judge
 tool_gate: strict
+owned_by: 555-ASI
+authority_of: 555-ASI
 ---
 # forge-vss-verifier-suite · VSS-2
 
