@@ -35,6 +35,8 @@ trigger_phrases:
   - load skill
   - route to skill
   - skill activation
+owned_by: AAA
+authority_of: AAA
 ---
 
 # 🎯 ZEN ROUTER — The Meta-Mesa

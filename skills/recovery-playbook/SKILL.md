@@ -54,6 +54,8 @@ triggers:
   - "yt-dlp blocked on VPS/cloud/proxy IP"
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Recovery Playbook — Six Failure Families, One Reflex

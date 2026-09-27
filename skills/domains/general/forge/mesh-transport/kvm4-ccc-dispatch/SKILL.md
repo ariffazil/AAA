@@ -9,6 +9,8 @@ floor_scope: [F1, F2, F4]
 autonomy_tier: T1
 capability_tier: coding-fabric-gateway
 ecology_state: WARM
+owned_by: Hermes-Prime
+authority_of: AAA
 ---
 
 # KVM4 CCC Worker Dispatch

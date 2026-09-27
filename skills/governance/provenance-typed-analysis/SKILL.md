@@ -17,6 +17,8 @@ tags: [provenance, analysis, epistemic, delivery, claims, retraction]
 related_skills: [synthesis-verification-gate, claim-receipt-discipline, auditable-numeric-artifacts, governed-uncertainty]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Provenance-Typed Analysis

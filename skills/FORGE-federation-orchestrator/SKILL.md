@@ -14,6 +14,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # Federation Orchestrator
 

@@ -19,6 +19,8 @@ sources:
   - arifOS constitutional pipeline (000→111→333→666→888→999)
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+authority_of: AAA
 ---
 # FORGE DOCUMENT INTELLIGENCE — EMD Stack Skill
 

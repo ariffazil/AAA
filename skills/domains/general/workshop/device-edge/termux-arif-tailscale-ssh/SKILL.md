@@ -14,6 +14,8 @@ supersedes:
   - termux-agentic-bootstrap Arif-delivery rules (copy-paste-first is VOID for Arif)
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13 SOVEREIGN
+authority_of: F13 SOVEREIGN
 ---
 
 # termux-arif-tailscale-ssh

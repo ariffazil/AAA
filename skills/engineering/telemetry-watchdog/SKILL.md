@@ -20,6 +20,8 @@ triggers:
   - "state.json age"
   - "organ telemetry"
   - "telemetry watchdog"
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # 📡 Telemetry Watchdog

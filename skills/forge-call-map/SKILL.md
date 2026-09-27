@@ -15,6 +15,8 @@ triggers:
   - session boot / init when dispatching to another agent
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # FORGE-call-map
 

@@ -16,6 +16,8 @@ triggers:
 tags: [audit, source-grounding, corpus, defamation, provenance, publishing]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Insider-Exposure Inventory

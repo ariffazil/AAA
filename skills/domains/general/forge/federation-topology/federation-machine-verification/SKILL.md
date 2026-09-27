@@ -13,6 +13,8 @@ floor_scope:
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 tags: [spatial, verification, multi-machine, federation, identity, anti-fabrication]
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Federation Machine Verification

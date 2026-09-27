@@ -42,6 +42,8 @@ triggers:
 tags: [github, git, gh-cli, ops, runbook, authentication, repositories, issues, pull-requests, code-review]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # github-ops — ONE routing surface for every GitHub action in the federation

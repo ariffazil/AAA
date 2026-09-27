@@ -9,6 +9,8 @@ floor_scope: ['F1', 'F2', 'F11', 'F13']
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 > **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
 > directories differing only in case. The second copy (`/root/.hermes/skills/FORGE-did-web-identity`) is now an alias

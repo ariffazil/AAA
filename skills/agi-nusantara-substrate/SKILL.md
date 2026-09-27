@@ -46,6 +46,8 @@ floor_scope:
 - F7
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # Nusantara Intelligence Substrate
 

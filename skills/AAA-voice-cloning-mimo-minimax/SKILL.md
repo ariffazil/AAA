@@ -25,6 +25,8 @@ tags:
 owner: AAA
 capability_tier: fed-realtime-voice
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # AAA · Voice Cloning — MiniMax (mimo-v2.5-tts-voiceclone)

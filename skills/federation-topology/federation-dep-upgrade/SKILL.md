@@ -7,6 +7,8 @@ floor_scope: [F1, F2, F7]
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Federation Dependency Upgrade

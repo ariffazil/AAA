@@ -14,6 +14,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # AAA-OCR — Optical Compression Pipeline

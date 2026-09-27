@@ -115,6 +115,8 @@ triggers:
 # of the 8 folded skills; generic one-word tags live here rather than in `triggers:` to avoid over-firing)
 tags: [skill-creator, skill-linter, create-skill, bootstrap, lint, trigger, package, drift, audit, registry, manifest, binding, architecture, federation, skill-binding, federated, F2, F11, meta, skill-atlas, gap-detection, routing, inventory, multi-harness, mesh, sync, version, divergence, unification, alias, skills, hygiene, symlink, resolution, curation]
 retired_names: [AUDIT-skill-atlas, AUDIT-agent-skill-mesh, AUDIT-drift-detector, skill-portfolio-audit]
+owned_by: AAA
+authority_of: AAA
 ---
 
 # skill-mesh — one umbrella for every skill about skills

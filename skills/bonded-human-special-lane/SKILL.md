@@ -8,6 +8,8 @@ floors: [F1, F5, F6, F9, F13]
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13
+authority_of: F13 SOVEREIGN
 ---
 
 # Bonded-human-special-lane

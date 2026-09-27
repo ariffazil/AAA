@@ -24,6 +24,8 @@ trigger_phrases:
   - upgrade arif-fazil.com
   - agent skills for the site
   - MCP tiers for web
+owned_by: AAA
+authority_of: AAA
 ---
 # Agentic-web delivery fabric
 

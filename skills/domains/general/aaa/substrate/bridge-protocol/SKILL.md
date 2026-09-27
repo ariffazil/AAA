@@ -42,6 +42,8 @@ triggers:
 tags: [bridge, human-interface, output-contract, voice-governor, diting, sabar, register, rasa, uncertainty, witness, layers, membrane]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13
+authority_of: F13 SOVEREIGN
 ---
 
 # Bridge Protocol — ASI-Grade Human Reality Bridge

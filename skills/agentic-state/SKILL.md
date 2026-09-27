@@ -24,6 +24,8 @@ metadata:
   layer: meta-mesa
   tier: state
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 ## What I do

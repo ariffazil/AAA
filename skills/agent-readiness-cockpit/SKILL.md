@@ -20,6 +20,8 @@ triggers:
   - "readiness report"
   - "what's actually running"
   - "self-assessment"
+owned_by: Hermes (arifOS federation)
+authority_of: AAA
 ---
 
 # Agent Readiness Cockpit

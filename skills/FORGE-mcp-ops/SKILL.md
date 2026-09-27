@@ -10,6 +10,8 @@ autonomy_tier: T1
 tags: [mcp, cli, mcporter, ops, debugging]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # mcporter — Universal MCP CLI (avAILABLE at /usr/bin/mcporter v0.9.0)

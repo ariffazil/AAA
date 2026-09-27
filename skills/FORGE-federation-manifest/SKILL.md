@@ -22,6 +22,8 @@ triggers:
 tags: [federation, topology, manifest, mcp, protocol, deployment, attestation]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # Federation Manifest — arifOS Topology (v2.0)

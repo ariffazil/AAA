@@ -9,6 +9,8 @@ description: "Documents Qwen Token Plan Harness tools (web search, code interpre
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 Qwen Token Plan **Harness tools** are built into supported models. The model invokes them automatically based on the question — no extra configuration, billed per successful invocation from Token Plan Credits.
 

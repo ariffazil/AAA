@@ -14,6 +14,8 @@ sot_model_list: qwencloud-model-selector/references/model-list.md
 sot_index: qwencloud-model-selector/references/qwen-sot.md
 stamped: 2026-09-23
 stamp_reason: stamp-4-alias-link-tokenplan-to-qwencloud-sot
+owned_by: AAA
+authority_of: AAA
 ---
 
 Generate video on **Qwen Token Plan** only. Capability SOT: `CAPABILITIES.json` (`video_out`).

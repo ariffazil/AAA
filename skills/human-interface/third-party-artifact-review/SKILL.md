@@ -16,6 +16,8 @@ triggers:
 tags: [human-interface, artifact-review, provenance, delivery-state, rasa, third-party]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Third-Party Artifact Review

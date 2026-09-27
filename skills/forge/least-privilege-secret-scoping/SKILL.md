@@ -21,6 +21,8 @@ triggers:
   - "/proc/environ dumped"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (curator-managed)
+authority_of: AAA
 ---
 
 # Least-Privilege Secret Scoping

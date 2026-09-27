@@ -10,6 +10,8 @@ autonomy_tier: T1
 tags: [geology, petroleum-system, source-rock, thermal-maturity, prospectivity, frontier, basin]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (curator-managed)
+authority_of: AAA
 ---
 
 # Basin Charge Screening

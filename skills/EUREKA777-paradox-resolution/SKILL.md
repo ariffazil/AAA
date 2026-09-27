@@ -32,6 +32,8 @@ version_lock:
   schema_version: "1"
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+authority_of: AAA
 ---
 
 # 💡 EUREKA777 — Paradox Resolution & Cooling Engine

@@ -8,6 +8,8 @@ owner: F13 SOVEREIGN — Muhammad Arif
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13 SOVEREIGN — Muhammad Arif
+authority_of: AAA
 ---
 
 # Hermes · Skills-Mesh · Browser Convergence — Snapshot 2026-08-13

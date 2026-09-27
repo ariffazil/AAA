@@ -15,6 +15,8 @@ trigger_when:
 tags: [meta, triage, approvals, memory, governance, hygiene]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Staged Write Triage

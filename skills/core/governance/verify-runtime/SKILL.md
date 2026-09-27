@@ -33,6 +33,8 @@ attention:
 tags: [governance, verification, runtime, F7, F11]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # core/governance/verify-runtime

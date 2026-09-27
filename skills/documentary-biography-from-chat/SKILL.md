@@ -19,6 +19,8 @@ triggers:
   - "portrait dari perbualan"
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: I.F. (federation agent, KVM8)
+authority_of: AAA
 ---
 
 # Documentary Biography from Chat Export

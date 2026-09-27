@@ -11,6 +11,8 @@ forged: 2026-09-06
 status: active
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # wawabot-anthropology-surface
 

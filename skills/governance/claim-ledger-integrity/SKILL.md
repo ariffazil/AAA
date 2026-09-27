@@ -17,6 +17,8 @@ triggers:
   - "retract a verification"
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Claim Ledger Integrity

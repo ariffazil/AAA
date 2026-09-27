@@ -10,6 +10,8 @@ floor_scope: [F1, F7]
 tags: [pragmatics, reversibility, effort-value, practice-vs-theory]
 triggers: ["pragmatic", "in practice", "actually works", "cheapest", "reversible", "good enough", "effort vs value"]
 ecology_state: WARM
+owned_by: AAA/knowledge
+authority_of: AAA
 ---
 
 # Know-Pragmatics — Practical Substrate

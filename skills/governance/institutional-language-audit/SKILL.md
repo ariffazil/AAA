@@ -9,6 +9,8 @@ floors: [F2, F7, F9]
 autonomy_tier: T1
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Institutional Language Audit

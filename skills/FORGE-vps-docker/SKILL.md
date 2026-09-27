@@ -10,6 +10,8 @@ autonomy_tier: T2
 tags: [docker, vps, runbook, ops, compose, entropy]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # VPS Docker Operations — Production Discipline
