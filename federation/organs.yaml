@@ -577,6 +577,7 @@ components:
       - inference_execution
     notes:
       - answers WHERE to call; does not call; not an organ
+      - "2026-09-27 probe: FED router is :7074. The model proxy that answers I'm alive is :4000 (haproxy). Do not call :4000 by the name FED."
 
   - id: flame
     class: ADVISORY
