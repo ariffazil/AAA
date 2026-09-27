@@ -17,10 +17,15 @@ VOICE_ID="${3:-${IARIF_VOICE_ID:-iarif-sovereign-v9}}"
 # V8 checkpoint id (i-ARIF-20260819T084602) is refused here, not passed upstream.
 VOICE_ID="$(python3 - "$VOICE_ID" <<'PYREG'
 import sys, json
-vid = sys.argv[1]
+vid = sys.argv[1].strip()
 r = json.load(open("/root/AAA/audio/voice-registry.json"))
-canon = r.get("aliases", {}).get(vid, vid)
-v = r.get("voices", {}).get(canon)
+aliases = {k.casefold(): val for k, val in r.get("aliases", {}).items()}
+voices = r.get("voices", {})
+canon = aliases.get(vid.casefold(), vid)
+if canon not in voices:
+    folded = {k.casefold(): k for k in voices}
+    canon = folded.get(canon.casefold(), canon)
+v = voices.get(canon)
 if v is None:
     sys.stderr.write(f"UNKNOWN voice id {vid} (canonical {canon}) — not in registry\n")
     sys.exit(1)
