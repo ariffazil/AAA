@@ -16,6 +16,8 @@ triggers:
   - "profile the running system"
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes ASI (persona-system)
+authority_of: AAA
 ---
 
 # Live Pipeline Trace Audit

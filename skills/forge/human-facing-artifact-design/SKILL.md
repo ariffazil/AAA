@@ -10,6 +10,8 @@ autonomy_tier: T1
 tags: [artifact-design, pdf, reportlab, resume, dossier, brief, logo, audience, hierarchy, density]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: Hermes (curator-managed)
+authority_of: AAA
 ---
 
 # Human-Facing Artifact Design

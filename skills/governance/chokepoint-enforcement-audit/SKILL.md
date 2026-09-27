@@ -4,6 +4,8 @@ description: "Use when a gate or chokepoint claims to enforce."
 owner: A-FORGE
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # Chokepoint Enforcement Audit
 

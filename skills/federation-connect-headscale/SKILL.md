@@ -9,6 +9,8 @@ floor_scope: ['F1', 'F12', 'F13']
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # 🌐 Federation Connect — Headscale Sovereign Mesh
 

@@ -62,6 +62,8 @@ floor_scope:
 - F13
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Incident Triage — Lower Entropy Response

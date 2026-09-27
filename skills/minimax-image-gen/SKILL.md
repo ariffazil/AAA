@@ -9,6 +9,8 @@ floor_scope: F2, F4, F7
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: 333-AGI
+authority_of: 333-AGI
 ---
 # MiniMax Image Generation
 

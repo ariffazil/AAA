@@ -17,6 +17,8 @@ triggers:
 tags: [forge, federation, hook, plugin, nudge, capability-split, interference-test, transcript-replay]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # FORGE Hook Mutation Closure

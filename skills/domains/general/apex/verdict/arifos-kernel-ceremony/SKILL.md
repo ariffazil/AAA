@@ -7,6 +7,8 @@ risk_tier: high
 floor_scope: [F1, F2, F4, F11, F13]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # arifOS Kernel Ceremony — init → judge → seal (via MCP)

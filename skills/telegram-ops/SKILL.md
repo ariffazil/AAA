@@ -102,6 +102,8 @@ triggers:
   - "no name in group telegram"
   - "telegram delivery receipt"
 description: "Use when any Telegram bot, group, lane or chat history task arises. One door: routes by observable to the exact reference."
+owned_by: AAA/telegram-ops
+authority_of: AAA
 ---
 
 # telegram-ops — one door for every Telegram task in the arifOS federation

@@ -26,6 +26,8 @@ ecology_state: WARM
 required_tools: ['arif_observe', 'forge_fetch']
 tool_gate: permissive
 
+owned_by: 555-ASI
+authority_of: 555-ASI
 ---
 # Drift Watch — Probe-Based (v1.1.0)
 

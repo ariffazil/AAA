@@ -9,6 +9,8 @@ description: "Adds visual understanding to text-only Token Plan models (glm-5, g
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 For text-only Token Plan models, use this skill to gain visual understanding by delegating to a vision-capable model (`qwen3.7-plus`, `qwen3.6-plus`, `qwen3.5-plus`, `kimi-k2.5`, `qwen3.8-max`).

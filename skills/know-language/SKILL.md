@@ -14,6 +14,8 @@ autonomy_tier: T1
 tags: [language, semantics, framing, code-switch, BM-English]
 triggers: ["word choice", "phrasing", "metaphor", "tone", "register", "shadow word"]
 capability_tier: federation-substrate-knowledge
+owned_by: F13 SOVEREIGN
+authority_of: F13 SOVEREIGN
 ---
 > **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
 > directories differing only in case. The second copy (`/root/AAA/skills/knowledge/know-language`) is now an alias

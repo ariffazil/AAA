@@ -9,6 +9,8 @@ version: 1.1.0
 autonomy_tier: T1
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # skill-creator (O_Ψ Verification Layer)
 

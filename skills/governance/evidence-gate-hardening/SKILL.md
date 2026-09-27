@@ -17,6 +17,8 @@ triggers:
 tags: [governance, validation, evidence, audit, adversarial, gate, verification]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13
+authority_of: F13 SOVEREIGN
 ---
 
 # Evidence-Gate Hardening

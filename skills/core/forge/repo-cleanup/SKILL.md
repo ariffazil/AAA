@@ -40,6 +40,8 @@ attention:
 tags: [symlink, secret, hygiene, repo, cleanup, F1, F2, F4, F7]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # core/forge/repo-cleanup

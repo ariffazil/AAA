@@ -16,6 +16,8 @@ triggers:
   - "MCP discovery"
   - "MCP vendor vetting"
   - "MCP supply chain"
+owned_by: AAA
+authority_of: AAA
 ---
 
 # FORGE-mcp-registry-ops — Vendor Intelligence Gate

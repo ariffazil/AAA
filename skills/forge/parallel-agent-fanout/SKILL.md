@@ -10,6 +10,8 @@ autonomy_tier: T1
 tags: [fanout, subagent, parallel, verification, contract, repo-hygiene, remediation]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (curator-managed)
+authority_of: AAA
 ---
 
 # Parallel Agent Fanout

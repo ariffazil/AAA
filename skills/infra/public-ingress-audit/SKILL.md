@@ -8,6 +8,8 @@ autonomy_tier: OBSERVE_ONLY
 forged_from: unacknowledged proxy ingress change surfaced by a config drift watcher
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: HERMES (ASI bridge)
+authority_of: AAA
 ---
 
 # Public Ingress Audit

@@ -17,6 +17,8 @@ ecology_state: WARM
 required_tools: ['arif_observe', 'arif_think']
 tool_gate: strict
 
+owned_by: F13 SOVEREIGN
+authority_of: F13 SOVEREIGN
 ---
 
 # observe-ground

@@ -26,6 +26,8 @@ triggers:
   - "measurement artifact"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes (arifOS federation)
+authority_of: AAA
 ---
 
 # Probe Evidence Integrity

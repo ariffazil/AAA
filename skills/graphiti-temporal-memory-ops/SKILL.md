@@ -9,6 +9,8 @@ floor_scope: [F2, F4, F9]
 autonomy_tier: T1
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Graphiti Temporal Memory — Operations

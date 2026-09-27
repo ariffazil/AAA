@@ -33,6 +33,8 @@ tags:
 owner: AAA
 capability_tier: fed-realtime-voice
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # AAA · Somatic EMD Pipeline

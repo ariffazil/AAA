@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F3, F4, F6, F11, F13]
 tags: [incident, triage, escalation, response, restart-loop, circuit-breaker, postmortem, severity]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Incident Response — Full Lifecycle

@@ -7,6 +7,8 @@ category: governance
 tags: [probe, defect, handshake, false-positive, attribution, verification]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Claimed Defect Verification

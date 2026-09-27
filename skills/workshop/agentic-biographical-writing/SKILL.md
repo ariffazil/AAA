@@ -18,6 +18,8 @@ triggers:
 tags: [biography, memoir, witness, long-form, novel, nonfiction, F5, fabrication-boundary]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: F13
+authority_of: F13 SOVEREIGN
 ---
 
 # Agentic Biographical Writing

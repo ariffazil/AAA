@@ -8,6 +8,8 @@ description: Use when claiming, attributing, or timing events. 5 guards.
 floor_scope: [F2, F7, F9]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: 888-APEX
+authority_of: 888-APEX
 ---
 
 # SELF-RECURRENCE-GUARDS

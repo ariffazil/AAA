@@ -34,6 +34,8 @@ forged: 2026-08-26
 forged_by: 333-AGI (Antigravity)
 f13_directive: "Shadow GPU handles heavy generation and human needs asynchronously; VPS remains lean and governed."
 constitutional_floor: F13 SOVEREIGN — total privacy isolation for human needs; F1 AMANAH — no unmetered or surprise drift
+owned_by: AAA
+authority_of: AAA
 ---
 # AAA-shadow-mode — Sovereign Shadow Multimodal Compute
 

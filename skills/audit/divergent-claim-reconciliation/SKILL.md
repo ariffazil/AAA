@@ -4,6 +4,8 @@ description: "Reconcile observers who disagree about system state."
 owner: Hermes
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 
 # Divergent Claim Reconciliation

@@ -25,6 +25,8 @@ tags:
 owner: AAA
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # AAA · ASR — GLM-2512 Ingestion Layer

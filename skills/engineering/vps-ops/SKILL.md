@@ -13,6 +13,8 @@ floor_scope: [F1, F2, F3, F4, F8]
 tags: [docker, vps, runbook, ops, compose, entropy, fleet, container]
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # VPS Operations — Docker Compose Runbook & Fleet Entropy

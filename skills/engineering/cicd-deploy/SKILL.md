@@ -12,6 +12,8 @@ floor_scope: [F1, F2, F4, F11, F12, F13]
 tags: [cicd, docker, deploy, github-actions, pipeline, build, rollback]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 
 # CI/CD + Docker Deploy — Forge Pipeline

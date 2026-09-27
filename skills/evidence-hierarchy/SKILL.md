@@ -9,6 +9,8 @@ owner: F13 SOVEREIGN
 status: active
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13 SOVEREIGN
+authority_of: F13 SOVEREIGN
 ---
 
 # evidence-hierarchy

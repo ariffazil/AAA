@@ -18,6 +18,8 @@ trigger_when:
 tags: [temporal, carry-forward, session, telegram, human-state, chron]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Temporal Intelligence Bridge

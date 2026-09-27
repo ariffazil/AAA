@@ -12,6 +12,8 @@ forged: 2026-07-12
 updated: 2026-07-15
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA / F13 SOVEREIGN
+authority_of: AAA
 ---
 
 # Skill Unification — AAA Catalog × Harness Views

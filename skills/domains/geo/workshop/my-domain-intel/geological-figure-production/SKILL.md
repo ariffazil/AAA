@@ -22,6 +22,8 @@ dependencies:
 tags: [geological, figures, matplotlib, vision-QA, session-workflow]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: GEOX
+authority_of: GEOX
 ---
 
 # Geological Figure Production — Vision-Driven Pipeline

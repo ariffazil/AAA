@@ -15,6 +15,8 @@ floor_scope:
 autonomy_tier: T2
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: HERMES
+authority_of: AAA
 ---
 
 # Secret Exposure Containment

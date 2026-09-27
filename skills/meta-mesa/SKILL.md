@@ -23,6 +23,8 @@ merged_from:
   - /root/AAA/skills/claude-meta-mesa
   - /root/AAA/skills/opencode-meta-mesa
   - /root/AAA/skills/qwen-meta-mesa
+owned_by: AAA
+authority_of: AAA
 ---
 
 # META-MESA — Canonical Meta-Router

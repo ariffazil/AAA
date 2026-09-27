@@ -8,6 +8,8 @@ autonomy_tier: T1
 tags: [design, typography, composition, frontend, preview, visual-fidelity]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: HERMES
+authority_of: AAA
 ---
 
 # Web Surface Design Fidelity

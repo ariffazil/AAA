@@ -14,6 +14,8 @@ autonomy_tier: T1
 tags: [math, statistics, geometry, probability]
 triggers: ["how many", "count", "rate", "ratio", "distribution", "probability", "expected value"]
 capability_tier: federation-substrate-knowledge
+owned_by: F13 SOVEREIGN
+authority_of: F13 SOVEREIGN
 ---
 > **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
 > directories differing only in case. The second copy (`/root/AAA/skills/knowledge/know-math`) is now an alias

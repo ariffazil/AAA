@@ -9,6 +9,8 @@ floor_scope: ['F1', 'F2', 'F11', 'F13']
 autonomy_tier: T2
 capability_tier: fed-long-context
 ecology_state: WARM
+owned_by: A-FORGE
+authority_of: A-FORGE
 ---
 # ⚒️ VAULT999 Witness — Immutable Ledger Integration
 

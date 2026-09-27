@@ -7,6 +7,8 @@ floor_scope: [F2, F4, F7, F13]
 autonomy_tier: T0
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: curator
+authority_of: AAA
 ---
 
 # Sovereign Theoretical Directive

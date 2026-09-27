@@ -22,6 +22,8 @@ floor_scope:
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # Imagine
 

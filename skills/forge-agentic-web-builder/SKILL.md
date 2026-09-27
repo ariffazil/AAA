@@ -10,6 +10,8 @@ autonomy_tier: ANNOUNCE
 forged_from: INCIDENT-2026-07-23 + MISSIONS-ZEN-2026-07-30
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: FORGE (000Ω)
+authority_of: AAA
 ---
 # 🌐 FORGE — Agentic Web Builder
 

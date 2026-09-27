@@ -81,6 +81,8 @@ triggers:
 capability_tier: fed-long-context
 ecology_state: WARM
 # --- union of member triggers (55) — computed, not by eye ---
+owned_by: F13 SOVEREIGN (Arif) — forged by AAA
+authority_of: AAA
 ---
 
 # audit-ops — verify a claim, an audit, or a review before anything acts on it

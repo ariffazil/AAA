@@ -4,6 +4,8 @@ description: "Use when probing a running system to diagnose or attribute."
 owner: Hermes
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: Hermes
+authority_of: AAA
 ---
 # Live-System Investigation
 

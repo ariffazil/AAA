@@ -35,6 +35,8 @@ attention:
 tags: [governance, dignity, sovereignty, cultural, F7, F9, F11]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # core/governance/dignity-substrate

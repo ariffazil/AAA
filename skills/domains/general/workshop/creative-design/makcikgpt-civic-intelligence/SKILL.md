@@ -8,6 +8,8 @@ risk_tier: low
 floor_scope: ['F2', 'F6', 'F7']
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+owned_by: AAA/Hermes
+authority_of: AAA
 ---
 
 # MakcikGPT — Civic Intelligence Authoring

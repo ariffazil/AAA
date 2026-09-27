@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F4, F11, F13]
 tags: [litellm, federation, fed, fallback-chain, model-routing, provider-health, config]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # FED Model Chain Editing

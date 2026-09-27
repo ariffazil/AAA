@@ -28,6 +28,8 @@ version_lock:
   artifact_hash: pending
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+authority_of: AAA
 ---
 > **Case-duplicate collapse (2026-09-20).** This skill was stored twice as two real
 > directories differing only in case. The second copy (`/root/.hermes/skills/domains/general/aaa/catalog-ops/KERNEL-trinity-33`) is now an alias

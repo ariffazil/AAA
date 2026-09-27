@@ -9,6 +9,8 @@ floor_scope: [F1, F2, F6, F9, F11, F13]
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Human Recognition Architecture

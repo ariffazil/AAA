@@ -28,6 +28,8 @@ floor_scope: [F2, F4, F9, F12]
 autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 # Hermes Gateway Image Routing
 

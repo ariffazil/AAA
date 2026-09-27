@@ -10,6 +10,8 @@ floor_scope: [F1, F2, F4, F7, F11]
 tags: [verification, terminal-state, check-work, self-verify, health, drift, smoke-test]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
 ---
 
 # Verify Work — Verification Is the Terminal State
