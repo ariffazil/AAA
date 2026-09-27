@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "kvm4-ccc-pool",
   "name": "KVM4 CCC Worker Pool",
   "principal_agent": {
