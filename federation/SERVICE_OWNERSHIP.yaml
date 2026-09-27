@@ -6,6 +6,8 @@
 # CONSUMERS: /run/arifos inventory clerk (unowned_count) should read this file;
 #             `now` pane, entropy sweeps, and incident triage reference it.
 # LAW: OS-BASE = Ubuntu platform, NOT federation entropy — never audit as organ drift.
+# AMENDED: 2026-09-27 — arifflow-mcp.service was the sole unowned-running
+#             signal keeping /run/arifos/reality.json in WATCH.
 # AMENDED: 2026-09-21 stabilize (Hermes) — registered 9 running-but-unregistered units:
 #             aaa-ops-bus-worker, chron-mcp, mailgw-broker, apa-telegram-bridge, minimax-relay,
 #             minimax-media-mcp, graphiti-mcp, ollama, hermesarifos-bot. Clears reality.json
@@ -166,6 +168,9 @@ federation_services:
   arifFlow:
   - unit: arifflow.service
     role: arifFLOW — Federation Metabolism Plane (Rust daemon, 7073)
+    repo: /root/arifFlow
+  - unit: arifflow-mcp.service
+    role: arifFlow FastMCP — HTTP transport for the metabolism plane
     repo: /root/arifFlow
   arifFlow (Kabarkan):
   - unit: kabarkan-collector.service
