@@ -164,8 +164,11 @@ def read_declared_holds():
         try:
             for ln in p.read_text(encoding="utf-8").splitlines():
                 s = ln.strip()
-                if s and not s.startswith("#"):
-                    holds.append(s)
+                if not s or s.startswith("#") or s.startswith("[musyawarah-sentinel"):
+                    continue
+                holds.append(s)
+                if len(holds) >= 8:
+                    return holds
         except Exception:
             pass
         break
@@ -347,11 +350,19 @@ def observe():
         mode = "HOLD"
         mode_label = "GOVERNANCE-FIRST"
 
+    reasons = k.get("degraded_reasons") or []
+    kernel_note = ""
+    if isinstance(reasons, list) and reasons and isinstance(reasons[0], dict):
+        kernel_note = str(reasons[0].get("explanation") or "")[:160]
+
     if fq_v == "FOSSILIZED" or (isinstance(verify, int) and isinstance(execute, int) and verify > execute):
         loop_now = "555 VERIFY dominates · 777 FORGE starved"
         loop_hot = "555"
+    elif mode == "HOLD":
+        loop_now = "gate HOLD · machine may still be SAFE · no constitutional seal"
+        loop_hot = "888"
     else:
-        loop_now = "flow toward 777 FORGE → 999 SEAL"
+        loop_now = "flow toward 777 FORGE"
         loop_hot = "777"
 
     law = read_txt("todays-law.txt") or read_txt("law.txt", "Opportunity Debt = Verify − Execute")
@@ -375,6 +386,7 @@ def observe():
         "mode": mode,
         "mode_label": mode_label,
         "kernel": kernel_st,
+        "kernel_note": kernel_note,
         "floors": floors,
         "vault": vault,
         "thermo_verdict": thermo.get("verdict") or "",
@@ -704,7 +716,7 @@ def render_rich(state):
     loop_text.append(state.get("loop_now") or "", style="yellow" if not fq_ok else "green")
     loop_text.append("\n\n")
     loop_text.append("RULE  ", style="bold")
-    loop_text.append("NO SEAL → NO EXECUTION", style="bold white")
+    loop_text.append("gate HOLD is not a machine lock", style="bold white")
     loop_text.append("\n\n")
     loop_text.append("MISSION  ", style="bold")
     loop_text.append(state.get("mission") or "", style="dim")
@@ -852,7 +864,7 @@ def render_ansi(state):
     print()
     print(f"  {BLD}LOOP{RST}     {state.get('loop') or ''}")
     print(f"  {BLD}NOW{RST}      {c(YLW if not fq_ok else GRN, state.get('loop_now') or '')}")
-    print(f"  {BLD}RULE{RST}     {BLD}NO SEAL → NO EXECUTION{RST}")
+    print(f"  {BLD}RULE{RST}     {BLD}gate HOLD is not a machine lock{RST}")
     print(f"  {BLD}MISSION{RST}  {state.get('mission') or ''}")
 
     # Broadcast + Law
