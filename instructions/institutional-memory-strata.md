@@ -22,7 +22,7 @@ Ini **institutional memory**, bukan model memory. Model = mangkin (catalyst), bu
 | Stratum | Isi | Mati bila | Mod |
 |---|---|---|---|
 | **S0 Context Memory** | Context window | Session habis | Chat |
-| **S1 Repository Memory** | SOUL.md, AGENTS.md, IDENTITY, DOCTRINE, skills, receipts, `carry_forward.json` | Repo dipadam | **Reconstruction** |
+| **S1 Repository Memory** | SOUL.md, AGENTS.md, IDENTITY, DOCTRINE, skills, `carry_forward.json`. Resit yang tersimpan di sini ialah bukti, bukan memori. | Repo dipadam | **Reconstruction** |
 | **S2 Witness Memory** | VAULT999, ledgers, seals | Tidak — immutable | **Attestation** |
 | **S3 Semantic Recall** | `arif_memory` L1–L6 / `forge_memory` atas Qdrant (live) | Vector store dipadam | **Recall** |
 
@@ -39,13 +39,19 @@ Blank slate pada empty clone adalah EXPECTED. Fix = substrate, bukan model.
 Strata di atas memberitahu di mana sesuatu disimpan. Ia tidak menukar resit menjadi memori.
 
 ```text
-Receipt    = bukti sejarah
-Memory     = perubahan tingkah laku yang dipelihara
-Scar       = akibat yang dimampatkan
-Constraint = parut yang dikuatkuasa
+Receipts prove history.
+Memory preserves behavioral change.
+Scars compress consequence.
+Trust permits reuse of witnessed verification.
+Reality may invalidate any memory.
+A witness label without a probe is more dangerous than an honest hypothesis.
 ```
 
-Resit yang duduk di S1 atau S2 kekal bukti. Ia menjadi memori hanya bila ia mengubah tindakan seterusnya. Kalau tidak, ia arkib yang kebetulan tersimpan dalam substrat memori. Trust membenarkan semakan yang sudah disaksikan diguna semula selagi saksi masih segar. Trust bukan cache, dan trust bukan bukti sifar-pengetahuan.
+Tersimpan bukan diingati. Diingati bukan dipelajari. Dipelajari hanya bila tingkah laku akan datang berubah. Resit di S1 atau S2 kekal bukti sehingga ia mengubah tindakan seterusnya. Kalau tidak, ia arkib.
+
+Trust membenarkan semakan yang sudah disaksikan diguna semula selagi saksi masih segar. Cache ialah cara guna semula itu. Trust bukan cache, dan trust bukan bukti sifar-pengetahuan. Saksi yang basi membatalkan guna semula. Saksi yang dibantah realiti memaksa kiraan semula.
+
+Kalau memori tidak boleh dicabar, ia sudah jadi kuasa. Kalau kuasa tidak boleh dibatalkan, ia dogma. Kembali kepada realiti yang disaksikan.
 
 ## Witnessed Corrections (live probe 2026-09-11)
 
