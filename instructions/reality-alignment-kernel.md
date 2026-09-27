@@ -47,7 +47,7 @@ Before acting on any retrieved fact:
 
 1. **Is the source still live?** Probe health endpoint, check SRO expiry.
 2. **Has the fact been superseded?** Query supersession index.
-3. **Is the fact within its domain TTL?** Market data: 1h. Health: 5min. Doctrine: 7d. Geological: ∞.
+3. **Is the fact within its domain TTL?** Ikut jadual di bawah sahaja.
 
 If any answer is NO → re-ground via observation before acting.
 If source unreachable → label action as STALE_UNVERIFIED, proceed with caution.
@@ -56,7 +56,7 @@ If source unreachable → label action as STALE_UNVERIFIED, proceed with caution
 
 | Fact Type | TTL | Rationale |
 |-----------|-----|-----------|
-| Constitutional (F1-F13) | ∞ | Sovereign-ratified |
+| Constitutional (F1-F13) | tiada jam | Batal bila realiti membantah dan manusia merekodkannya. Bukan luput kalendar. |
 | Organ health | 60s | Changes with every probe |
 | Market price | 5min | High-frequency |
 | Geological formation | ∞ | Physical reality |
@@ -74,7 +74,7 @@ If source unreachable → label action as STALE_UNVERIFIED, proceed with caution
 Trust = Witness_Freshness × Governance_Correctness × Capability_Survivability
 ```
 
-If any term → 0, Trust → 0. Reality Alignment is the federation's immune system for epistemic decay.
+Jika mana-mana sebutan jadi 0, pintu tutup. Ini gerbang, bukan skor. Kesegaran saksi (A8, A9) ialah syarat untuk guna semula semakan lama. Persamaan ini bukan cache, dan bukan bukti sifar-pengetahuan.
 
 ## MANDATORY REASONING LOOP
 
