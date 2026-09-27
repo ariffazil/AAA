@@ -265,6 +265,24 @@ The union of every member's scars, specificity preserved. This is the part a sum
   reply fires; `free_response_chats` is what lets it fire.
 - **Two-lane minimum for any two-human group.** The lane is selected by sender `user_id`, not
   chat_id — with one lane, only that person gets rich replies.
+- **Family/inner-circle group access = a five-step reality probe, not a config check.** When the
+  ask is "ensure everyone in this group can access me", the answer is NOT "all_chats: true". The
+  five probes, in order: (1) `getChat` for `chat_id` + member count + perms; (2) `getMe` to
+  resolve the bot's own `user_id`; (3) `getChatAdministrators` to see who is admin and whether
+  the bot has "has access to messages" (Telegram-side admin permission); (4) `getChatMember`
+  **per known lane-card ID** — confirm each human in the lane card is actually a member and that
+  their Telegram handle matches the registered username; (5) read the active profile's
+  `config.yaml` for `allowed_chats` + `free_response_chats` to confirm the chat_id is in BOTH,
+  and `require_mention` is `false` for free-response to fire. Only after all five pass may the
+  agent say "everyone in this group can interact with me" — anything less is a "wiring declared
+  but never witnessed" report. Family lane policy (F5 privacy, no-federation-memory,
+  listen-first) is **conduct**, not config: confirm the human agrees to this access before
+  declaring it granted, even when config-side allowlists already cover the group.
+- **`getChatAdministrators` returns admins only, not the member list.** To map a family/group
+  roster to live Telegram handles, run `getChatMember?user_id=<known_id>` for **each** ID in the
+  lane card — not `getChatAdministrators`. The latter returns just owner + admins; the rest of
+  the room is invisible to it. A group with one admin (the bot) and four regular members will
+  look like a one-member group through the wrong lens.
 - **A human is often already in the group.** `getChatMember` first; bots cannot force-add users.
 - **The gateway self-restart kill:** restarting the service that hosts your session exits your
   shell (-15), loses the turn, and can leave the unit in `deactivating` for ~20 min while it
