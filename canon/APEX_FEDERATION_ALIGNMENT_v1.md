@@ -144,7 +144,7 @@ Activities outside this graph are considered entropy until proven otherwise.
 | **AAA** | Meaning Layer | **Mind** | Explain Why | Ontology, Doctrine, Interpretation |
 | **Kernel** | Constraint Layer | **Physics** | Decide If | SEAL, HOLD, UNKNOWN, VOID, PARTIAL |
 | **A-FORGE** | Execution Layer | **Hands** | Decide How | Tools, Mutation, Automation, Execution |
-| **VAULT999** | Witness Layer | **Memory** | Prove It Happened | Receipts, Seals, Scars, Attestations |
+| **VAULT999** | Witness Layer | **Witness** | Prove It Happened | Receipts, Seals, Scars, Attestations |
 | **HERMES** | Sensing / Witness Infrastructure | **Senses** | Maximize observation & witness quality; preserve contradictions | Routes, Alerts, Cross-agent coordination |
 | **OpenClaw** | Edge Builder | **Builder** | Optimize execution; never self-authorize; never bypass gates | Verified builds, Edge automation |
 | **ARIF** | Sovereign (F13) | **Sovereign** | Final human authority; absolute veto | Ratification, Direction, Policy |

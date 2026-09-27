@@ -34,18 +34,32 @@ Blank slate pada empty clone adalah EXPECTED. Fix = substrate, bukan model.
 
 **Axis note:** Ini paksi *substrate-persistence* — jangan campur dengan `MEMORY_ENGINEERING_SPEC_v2` functional Layers 1–5 atau L1–L6 operational tiers. Tiga paksi berbeza.
 
+## Resit bukan memori (2026-09-27)
+
+Strata di atas memberitahu di mana sesuatu disimpan. Ia tidak menukar resit menjadi memori.
+
+```text
+Receipt    = bukti sejarah
+Memory     = perubahan tingkah laku yang dipelihara
+Scar       = akibat yang dimampatkan
+Constraint = parut yang dikuatkuasa
+```
+
+Resit yang duduk di S1 atau S2 kekal bukti. Ia menjadi memori hanya bila ia mengubah tindakan seterusnya. Kalau tidak, ia arkib yang kebetulan tersimpan dalam substrat memori. Trust membenarkan semakan yang sudah disaksikan diguna semula selagi saksi masih segar. Trust bukan cache, dan trust bukan bukti sifar-pengetahuan.
+
 ## Witnessed Corrections (live probe 2026-09-11)
 
 Claim luaran yang SALAH terhadap kanon sendiri:
 
 1. **`"Hermes semantic recall = arif_memory only"`** — SALAH. *(CORRECTED 2026-09-11 ~12:3x MYT — pembetulan F2 selepas live probe; claim asal di bawah ternyata Registry menyamar sebagai Witness.)*
-   - **Witnessed:** `/root/.hermes/config.yaml` L33-34 → `memory: provider: mem0` (live provider line, bukan remnant). Qdrant collection `mem0` = **11,277 points** — terbesar dalam federation (7.7× `petronas_knowledge` 1,460; **114×** `arifos_memory` 99). Read + write path exercised in-session: 4× `mem0_search` (score 0.72–0.87) + **8× `mem0_delete` semua success**. Remnant tidak boleh terima write.
+   - **Witnessed 2026-09-11:** `/root/.hermes/config.yaml` L33-34 → `memory: provider: mem0` (live provider line, bukan remnant). Ketika itu Qdrant `mem0` = 11,277 points dan `arifos_memory` = 99. Read + write path exercised in-session: 4× `mem0_search` (score 0.72–0.87) + **8× `mem0_delete` semua success**. Remnant tidak boleh terima write.
+   - **Disemak semula 2026-09-27T00:32:19Z:** `mem0` = 14,507 points. `arifos_memory` = 1,196 points. Kedua-dua stor masih hidup. Angka 11,277 dan 99 di atas adalah sejarah.
    - **Mem0 ialah S3 backend Hermes yang HIDUP.** `ARCHITECTURE_BLUEPRINT_3NODE.md` rejection (*"middleman on a deeper stack"*) = **intent (Registry)**, bukan **runtime (Witness)**. Gap antara dua itu = unbuilt work, bukan settled fact.
    - **Evidence:** `/root/AAA/reports/memory-strata-mem0-contradiction-audit-2026-09-11.md` (W1–W4).
    - **Falsifiable dalam 2 command:** `grep -A2 '^memory:' /root/.hermes/config.yaml` · `curl -s 127.0.0.1:6333/collections/mem0 | grep -o '"points_count":[0-9]*'`
 2. **"Claude/Kimi/Codex tiada carry-forward"** — SALAH. `carry_forward.json` = convention federation, ditulis closing agent tak kira harness (witnessed: modified hari ini). Tetapi ia S1 reconstruction, bukan S3 recall — point asal survive, label salah.
 
-**OPEN LOOP (belum settle — F13 decide):** Mem0 (Hermes S3, 11k points) dan `arif_memory`/`forge_memory` (federation S3, 99 points) ialah **dua semantic store selari tanpa reconciliation path**. Pilih: (a) converge ke satu backend, atau (b) declare Mem0 Hermes-private dan berhenti panggil `arif_memory` canonical untuk Hermes. Selagi terbuka, setiap agent yang baca fragment ini akan dapat gambaran salah tentang di mana memory Hermes sebenarnya hidup.
+**Dua stor, satu peraturan (2026-09-27):** `mem0` (Hermes, 14,507 points) dan `arifos_memory` (1,196 points) masih dua stor selari. Ejen menamakan stor yang dia baca. Jangan gabungkan keduanya dalam ayat. Jangan panggil salah satu daripadanya sebagai satu-satunya memori. Menggabungkan backend ialah perubahan arah, dan ia belum diperintahkan.
 
 **Meta-lesson (scar, bukan cerita):** Claim #1 asalnya di-ratify dengan label *"applied after live probe (F2 — witnessed, bukan narrated)"* padahal probe tidak pernah dijalankan terhadapnya. **Label F2 yang tidak disokong probe lebih bahaya daripada Registry yang jujur — sebab ia membawa baju Witness.** Ujian: jangan terima label epistemic; tanya *"probe mana yang hasilkan ayat ini?"*
 
@@ -58,9 +72,9 @@ S3 semantic recall:          terbuka kepada SEMUA agent MCP-wired
 ```
 
 Beza Hermes vs coding agents = **akses DAN reflex default** *(dibetulkan 2026-09-11: asalnya claim "bukan akses" — itu derived dari premis salah bahawa Mem0 rejected; lihat Correction #1)*:
-- **Akses:** Hermes ada S3 sendiri yang hidup (`mem0`, 11,277 points, read+write exercised). Coding agents wired ke `arif_memory`/`forge_memory` (99 points) — store berbeza, hampir kosong relatif.
+- **Akses:** Hermes ada S3 sendiri yang hidup (`mem0`, 14,507 points pada 2026-09-27T00:32:19Z). Coding agents wired ke `arif_memory` / `forge_memory` (`arifos_memory` 1,196 points, masa yang sama). Dua stor. Nama stor yang dibaca.
 - **Reflex:** Hermes recall by design (gateway routing melalui memory). Coding agents reconstruct by default (murah, deterministic); recall atas demand.
-- **Implikasi:** matrix ini perlu re-derive selepas OPEN LOOP di atas settle — selagi dua store selari, "beza Hermes vs coding agents" belum boleh disebut sebagai satu paksi tunggal.
+- **Implikasi:** beza Hermes dan ejen kod ialah akses dan reflex, bukan satu stor yang sama. Menggabungkan backend belum diperintahkan.
 
 ```text
 Hermes remembers.
