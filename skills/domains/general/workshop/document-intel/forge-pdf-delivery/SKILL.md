@@ -103,6 +103,32 @@ The five checks above prove the file renders. They do **not** prove the document
 
 **Tag every line with its evidence class on the page itself.** When two readers can have read the same artifact and come away with different amounts, the artifact failed — not the readers. Print three classes inline, each with its own visual treatment: `VERIFIED` (printed on a receipt the user photographed), `REPORTED` (spoken by one of the parties), `DERIVED` (your arithmetic, every input labelled). Empty cells are the right answer for line items where no source exists — never a confident blank-style default.
 
+## Claim inflation in marketing/positioning docs — the 7 patterns that read as guarantees
+
+When a premium PDF makes founder/marketing claims, these 7 phrases tend to inflate implemented behaviour into proof. Cross-audit reviewers spot all of them; auditors and enterprise buyers spot more. Pre-screen every claim with this checklist before declaring a PDF ready for external distribution:
+
+1. **"Missing Layer" / "the X itself" / "category creator"** — overclaim: read as "alone in the quadrant". Repair: "A proposed integration layer; benefits and limits stated below." Always name at least one named competitor or comparable stack in the same sentence.
+2. **"No notion of" / "has no way to" / "no architectural distinction"** — category-wide dismissal. Even when the pattern is real, alternatives usually cover parts of it. Repair: "Default deployments have no notion of X; configured alternatives (e.g. Cedar policies) can supply it. [ARIF] makes it the default, not the opt-in."
+3. **"Secondary cost never incurred" / "eliminates" / "prevents downstream"** — guarantees about residual outcomes. Repair: "Reduces the expected cost of [X]. It does not make it zero: verification lowers expected harm; residual risk remains — and some harms, once released, cannot be recovered, only prevented."
+4. **"Primary operating metric"** — declares a metric that competes with several others. Repair: "one operating signal — alongside [prevention rate, containment time, recurrence frequency]." For systems that act on the world: pair recovery with a total-loss accounting: `total loss = irreversible harm + ∫ harm rate(t)dt + recovery cost + human operating burden`.
+5. **"Eight stages, no skipping"** — formal sequence that ignores efficient reuse. Repair: "Eight invariants, never skipped. When evidence from an earlier step is still fresh, it may be reused without redundant work — reuse is a property of verified evidence, not a shortcut around verification."
+6. **"Could not be wrong" / "Built by someone who"** — infallibility framing. Repair: position as a discipline learned *because* of the field's history of being wrong ("Built by someone who learned to lose arguments with reality" / "You learn to hold your own beliefs lightly").
+7. **"Authority may invalidate any cache"** — sounds like authority decides truth. Repair: "Reality outranks memory: evidence from the world can revise a stored belief. Authority may invalidate the cache that stored the belief — it does not, by that act, make the belief true or false. Invalidating a cache is a permission to re-verify, not a verdict on the underlying claim."
+
+For any external PDF: name ≥3 competitors by name + 1 line on their actual capability; if the table cell says "—" or "category itself", the comparison is missing, not the competitor. Repair the table — every "ARIF is the only one" cell becomes "ARIF claims X; closest named comparison is Y, which covers Z."
+
+**Sub-page numbering trap.** A section spanning 2 pages with the same eyebrow ("10 · Six Core Innovations") creates "11 → 10 → 15 → 12"-style visual reorderings when readers scan only the eyebrow. Repair: rename the second page from "10 · Six Core Innovations — Dissent" to "10 · Innovation: Dissent" so it reads as continuation, not as a new section that broke the ordering.
+
+When building a designed multi-page PDF with fixed-height page divs on a dark theme (`.page { width:210mm; height:297mm; background:#0a1226 }`), three defects pass silently:
+
+1. **Fixed-height overflow.** A base font-size bump (9.5pt → 10.5pt) silently pushes the last paragraph of a page onto an extra page. Page count rises (24 → 26) with no error and no warning. Detect per page: `pdftotext -f N -l N file.pdf - | tr -s ' \n' ' ' | wc -c` — a designed page carries 600–1700 chars, a spill page carries < 300. Fix with a `.tight` page-modifier class (smaller figure width, tighter margins) applied only to the offending pages; do not shrink the type globally.
+2. **Ink-coverage sweeps are useless here.** Every page of a dark full-bleed theme reads ~98% regardless of content, so the blank-page detector cannot distinguish a full page from a spill page. Use the per-page char count instead.
+3. **Matplotlib diagrams: `transform=ax.transAxes` + `set_aspect('equal')` = all text silently vanishes.** The PNG renders with background and shapes intact but zero text (combined with `bbox_inches='tight'` the canvas also balloons — a 12×7in figure saved at 18275×7866 px). Fix: drop `set_aspect('equal')` for infographic figures and place ALL text and patches in DATA coords matching `set_xlim`/`set_ylim`; save WITHOUT `bbox_inches='tight'`. Gate every figure: `(np.array(Image.open(f).convert('RGB')).mean(axis=2) > 200).sum()` must exceed zero.
+
+**Vision QA cannot read small text.** A 2400×1400 PNG fed straight to `vision_analyze` comes back as "no text at all" / "empty frame". Downscale first (`PIL.Image.thumbnail((1600,1600))` then save) and verify the downscaled copy; confirm the text layer independently via the bright-pixel count or `pdftotext`.
+
+**Dark-theme CSS that renders correctly under WeasyPrint:** `@page { size:A4; margin:0 }`, `html,body { background:#0a1226 }`, each page a fixed `210mm × 297mm` block with `page-break-after: always` and its own padding. A full-width footer band (`.pg { position:absolute; bottom:0; left:0; right:0; border-top:1px solid var(--border); padding:3.5mm 16mm }` with a `::before` content string for the document mark and the page number right-aligned) removes the "content floating in the top third" look that vision QA flags on every sparse page. Palette that reads premium: bg `#0a1226`, panel `#121a33`, accent gold `#e6b954`, text `#f5f7ff`, dim `#9aa5bf`.
+
 ## Pitfalls (read before authoring)
 
 - **Pandoc CANNOT read PDFs.** `pandoc file.pdf -o out.html` errors with "Unknown input format pdf". The reverse direction (md → html → pdf) is the only valid flow.
