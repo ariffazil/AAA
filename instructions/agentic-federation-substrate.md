@@ -13,7 +13,7 @@
 | :--- | :--- | :--- |
 | **CLI** | Actuator substrate | Language → Reality |
 | **A2A** | Coordination substrate | State → State (ΔS ≤ 0) |
-| **Witness** (VAULT999 + arifFlow) | Accountability substrate | Memory is immutable |
+| **Witness** (VAULT999 + arifFlow) | Accountability substrate | Receipts immutable, tamper-evident |
 | **Governance** (arifOS kernel) | Authority substrate | F1–F13 floors, no self-approval |
 | **Sovereign** (F13 ARIF) | Legitimacy substrate | Final veto, decides which reality is worth pursuing |
 

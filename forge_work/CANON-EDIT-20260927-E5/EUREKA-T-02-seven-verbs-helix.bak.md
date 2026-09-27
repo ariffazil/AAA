@@ -23,7 +23,7 @@ Every organ in the federation has exactly ONE verb. Authority is the verb. Confu
 | **Route** | FED | 7074 | ADVISORY | "Which brain should answer?" | Execute, judge, register, measure |
 | **Execute** | A-FORGE | 7071/7072 | CORE·EXECUTE | "Apply the bounded mutation." | Judge, register, measure, verify |
 | **Judge** | arifOS | 8088 | CORE·KERNEL | "Is this constitutional?" | Execute, register, measure, verify |
-| **Append** | VAULT999 | filesystem | WITNESS | "Persist the receipt immutably." | Reinterpret, rewrite silently |
+| **Append** | VAULT999 | filesystem | MEMORY | "Persist the receipt immutably." | Reinterpret, rewrite silently |
 | **Measure** | FRAME | 18085 | CORE | "Has behavior drifted?" | Execute, judge, register, verify |
 | **Metabolize** | arifFlow | 7073 | METABOLISM | "How fast are we going?" | Execute, judge, register |
 

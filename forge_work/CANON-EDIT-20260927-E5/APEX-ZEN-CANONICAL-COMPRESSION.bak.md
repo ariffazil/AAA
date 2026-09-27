@@ -42,7 +42,7 @@ DITEMPA BUKAN DIBERI.
 | JUDGE | APEX (888) | Judgment | Verdict + coordination. Never re-does work. |
 | SEAL | Human (F13) | Sovereignty | Only Arif. Only human. Only authority. |
 | ACT | A-FORGE | Execution | Execute sealed decision. Never judges. |
-| WITNESS | VAULT999 | Witness | Immutable append-only record. Never judges, never executes. |
+| WITNESS | VAULT999 | Memory | Immutable append-only record. Never judges, never executes. |
 
 ## Separation of Powers
 
