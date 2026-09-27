@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # EUREKA: Topographic Reality Compilation (TRC) — The Subsurface Isomorphism
 
 **Date:** 2026-09-07  

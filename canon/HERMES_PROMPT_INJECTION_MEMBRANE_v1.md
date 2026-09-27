@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # HERMES — Prompt-Injection Membrane (v1)
 
 > **Status:** CANON — SEALED by F13 directive 2026-09-04 (Arif Fazil). Corpus-pass adoption gate per §9 is now Phase 1 verification workstream (not blocking SEAL). Falsification failure on corpus would deprecate this SEAL per F13 ratification protocol.

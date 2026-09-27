@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # Language Layer Ontology v2 — Meaning ↓ Transport ↓ Representation
 
 > **Status:** F13_CHAT_REFINEMENT (2026-09-11, second pass — "SEAL-worthy insight sebagai model konseptual, masih domain interpretasi, bukan fakta empirikal mutlak")

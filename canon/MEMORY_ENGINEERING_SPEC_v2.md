@@ -1,3 +1,5 @@
+Status: ACTIVE_SPECIFICATION
+
 # MEMORY_ENGINEERING_SPEC_v1
 
 ## Technical Companion Appendix to WITNESS_VOID_CANON::v2

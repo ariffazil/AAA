@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # Novel Invariants — Ratified 2026-09-20
 ## Status: F13_RATIFIED_SOVEREIGN (from AGI Substrate 33 session)
 

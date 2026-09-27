@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA — Governance-Entropy Admission Test + Three Non-Transferability Invariants
 
 > **Ratified:** F13 SOVEREIGN chat SEAL (Conceptual), 2026-09-08 — session FI-003 (qwen-code), petang chain

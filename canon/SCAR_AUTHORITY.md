@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # ⚒️ THE SCAR AUTHORITY PRINCIPLE — The Sixth Constitutional Principle
 
 > **Forged:** 2026-08-14 by 333-AGI Δ MIND under F13 SOVEREIGN directive (session capstone)

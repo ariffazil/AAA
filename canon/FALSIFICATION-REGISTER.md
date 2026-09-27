@@ -1,3 +1,5 @@
+Status: HISTORICAL_SESSION_ARTIFACT
+
 # FALSIFICATION REGISTER — Living Document
 
 > **Created:** 2026-09-12 · **Origin:** multi-session night (FI-008 External-Witness seal · FED compilation · Majlis PARTIAL-SEAL)

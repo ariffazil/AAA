@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA::SESSION_2026_09_KVM8
 
 > Institutional class. Not "Hermes migrated."

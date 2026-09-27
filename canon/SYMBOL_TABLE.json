@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 {
   "_doc": "Live symbol namespace for the arifOS federation. A symbol here is BINDING — it carries enforcement, history and floors. Never redefine one; never mint a new axis over it. Written by hand for ratified canon (floors, ratified fragments); machine-derived counts live in the registry, not here. Probe BEFORE importing any external notation: /root/scripts/symbol-probe.py",
   "_rule": "C20 SYMBOL TRUTH — do not import or invent notation before namespace verification.",

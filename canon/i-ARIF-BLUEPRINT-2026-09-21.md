@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 <!-- SOT-MANIFEST
 title:           i-ARIF Blueprint v1 — Governed State Processor
 status:          DRAFT_AWAITING_F13

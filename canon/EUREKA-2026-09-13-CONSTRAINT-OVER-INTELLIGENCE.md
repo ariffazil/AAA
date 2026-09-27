@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA::CONSTRAINT_OVER_INTELLIGENCE::v1 — The Four-Layer Architecture & Universal Law
 
 > **Date:** 2026-09-13T21:35:00+08:00  

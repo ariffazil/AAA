@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # IRFAN Ready-by-Subuh Report — 2026-09-23
 **Generated:** 04:13 MYT Wednesday 23 September 2026 (subuh target 05:54 MYT)
 **Mode:** Hermes autonomous (Irfan-compliant) — F13 ratification scope

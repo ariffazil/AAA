@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # arif_init v2 — Contrast Analysis + Implementation Plan
 
 > **Status:** IMPLEMENTATION_SPEC (2026-09-20)  

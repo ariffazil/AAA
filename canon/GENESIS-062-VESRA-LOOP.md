@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # GENESIS/062 — VESRA Loop: arifOS as Governed Evolutionary System
 
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil, 888)

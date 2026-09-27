@@ -1,3 +1,5 @@
+Status: HISTORICAL_EUREKA
+
 # Perplexity contrast → current federation (2026-09-13)
 
 Perplexity is right that **receipts ≠ platform**, KVM2 is not yet an independent court, Merkle root is missing, and adding MCP/servers is entropy.

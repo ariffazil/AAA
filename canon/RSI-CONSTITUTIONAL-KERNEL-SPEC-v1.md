@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # RSI Constitutional Kernel — Specification v1
 
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil)

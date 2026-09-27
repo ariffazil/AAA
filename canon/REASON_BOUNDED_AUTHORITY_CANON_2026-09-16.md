@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # Canon: Reason Freely · Act Boundedly · Witness Independently · Close Causally
 
 > **Status:** RATIFIED & CANONIZED (2026-09-16)  

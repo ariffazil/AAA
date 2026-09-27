@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # GENESIS/063 — Substrate Intelligence: V-S-R as Cross-Domain Invariant
 
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil, 888)

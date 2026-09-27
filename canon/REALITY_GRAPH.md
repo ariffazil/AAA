@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # REALITY GRAPH — YANG ARIF (Sovereign Primitive)
 
 > **Status:** v2.3 — layer map RG-0..RG-9 + verdict (witnessed) (§8). Ladder (2026-09-13):

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # HERMES — Off-Node Backup Procedure (v1)
 
 > **Status:** CANON — SEALED by F13 directive 2026-09-04 (Arif Fazil)

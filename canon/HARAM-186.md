@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # HARAM CANON — 186 Items with Hard Threshold
 
 > **Status:** CANON (F13 ratification pending — this turn)

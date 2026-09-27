@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # QMG AGENTIC MEMORY — Quality, Musyawarah, Governance
 ## AAA/canon/QMG_AGENTIC_MEMORY.md
 

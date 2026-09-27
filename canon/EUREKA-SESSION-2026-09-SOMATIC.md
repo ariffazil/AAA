@@ -1,3 +1,5 @@
+Status: HISTORICAL_EUREKA
+
 # EUREKA — Somatic Intelligence Governance Audit
 **Date**: 2026-09-04
 **Source**: Arif governance audit (SEAL-018b0da3249d4395)

@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # Supersession Chain, Expiry, and Calibration — Memory Architecture Extension
 
 > **Status:** DRAFT — extends MEMORY_ENGINEERING_SPEC_v2

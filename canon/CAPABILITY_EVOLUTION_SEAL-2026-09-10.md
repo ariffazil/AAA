@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # CAPABILITY_EVOLUTION_SEAL — Interpretation Layer
 
 **Sealed:** 2026-09-10

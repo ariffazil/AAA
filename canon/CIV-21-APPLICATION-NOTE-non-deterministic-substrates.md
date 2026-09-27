@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # CIV-21 Application Note — Non-Deterministic Substrates
 
 > **Status:** CANON APPLICATION NOTE (Lane B receipt pending) · **Lane A seal carried forward** pending arifOS kernel reconciliation (deployment drift, 2026-08-11)

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # A-Z Doctrine — APEX × ZEN Fusion
 
 > **Status:** F13_SEAL 2026-09-13 — ACTIVE (canonical-constitutional)

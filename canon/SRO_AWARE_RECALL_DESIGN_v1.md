@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL
+
 # SRO-Aware Recall — MCP Tool Design
 
 > **Status:** DRAFT — design specification for arif_memory enhancement

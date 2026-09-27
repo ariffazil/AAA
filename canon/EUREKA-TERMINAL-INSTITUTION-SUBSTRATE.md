@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA: Governed Recursive Institutional Substrate (L0 — L20)
 
 > **Ratified by:** F13 SOVEREIGN (Arif Fazil)  

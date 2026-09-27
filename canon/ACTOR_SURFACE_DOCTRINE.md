@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # AAA RUNTIME GEOMETRY — Actor / Surface Doctrine
 
 > **STATUS:** RATIFIED v1.1 by F13 SOVEREIGN, 2026-08-15 ("zen AAA")

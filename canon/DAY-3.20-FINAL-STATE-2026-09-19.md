@@ -1,3 +1,5 @@
+Status: HISTORICAL_SESSION_ARTIFACT
+
 # DAY-3.20 FINAL STATE — 2026-09-19 (consolidated)
 
 > **Status:** DEFINITIVE day-3.20 snapshot. Supersedes `F13-VERDICT-WINDOW-BRIEFING-2026-09-19.md` §6 Item B (now corrected per RCA).

@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # IRFAN ↔ CANON Overlap Audit — Map Before Mutate (F13 "KEEP THE FLOORS" cycle)
 
 **Date:** 2026-09-23 (sleep-cycle close) · **Author:** FI-003 (Qwen Code)

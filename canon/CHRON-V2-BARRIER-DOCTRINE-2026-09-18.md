@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # CHRON v2 — Barrier Doctrine & APEX-T Bridge
 
 > **Status:** DRAFT_AWAITING_F13 (2026-09-18)

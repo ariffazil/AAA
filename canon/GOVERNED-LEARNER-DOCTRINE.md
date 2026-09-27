@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # GOVERNED LEARNER DOCTRINE
 
 > **Status:** F13_RATIFIED_CHAT — Sealed by Muhammad Arif bin Fazil (888/F13), 2026-09-14 MYT

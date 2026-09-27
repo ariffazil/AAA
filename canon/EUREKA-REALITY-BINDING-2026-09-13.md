@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA::REALITY_BINDING — 2026-09-13
 
 > **Ratified:** 2026-09-13 by 888-F13 (chat-ratification)

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # F13 VERDICT — RSI LOOP SCOPE (Capability Evolution vs Self-Governance)
 
 > **Status:** F13_RATIFIED_CHAT — 2026-09-15, ARIF DM (chat 267378578)

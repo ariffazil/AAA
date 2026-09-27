@@ -1,3 +1,5 @@
+Status: HISTORICAL_EUREKA
+
 # EUREKA — Dissipative Transition Hold (2026-09-06)
 
 > **Type:** CANDIDATE → OPERATING by F13 compile+execute directive this session

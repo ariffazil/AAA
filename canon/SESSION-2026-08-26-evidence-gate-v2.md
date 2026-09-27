@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # SESSION RECEIPT — 2026-08-26
 ## Evidence Gate v2 + Volatility Features + Reddit/Malaysia Monitoring
 

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
+
 # Triple Backtest: Holocaust · Enron · 1MDB
 ## arifOS Audit Architecture as Collapse Prevention
 

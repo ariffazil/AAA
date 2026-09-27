@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # F13 VERDICT WINDOW — Day-3.20 Wire Capture (2026-09-19)
 
 > **Status:** WIRE CAPTURE (witness-only, additive). Auto-EXECUTION-QUEUE #8 (R1 kickoff + R2 fill).

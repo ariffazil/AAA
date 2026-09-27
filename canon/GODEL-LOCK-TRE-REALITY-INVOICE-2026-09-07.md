@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # GÖDEL LOCK: Topographic Reality Engine & The Reality Invoice
 
 > **Date:** 2026-09-07  

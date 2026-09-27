@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # Reality Graph 5-Layer Doctrine (DRAFT)
 
 > **Status:** `external_advisory_doctrine_draft` — awaits F13 ratification via sovereign_chat_override

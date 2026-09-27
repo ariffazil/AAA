@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # META-WISDOM Canon (Canon #4) — The 6 Meta-Gates + WAJIB Extension
 
 > **Status:** DRAFT_AWAITING_F13 (2026-09-21)

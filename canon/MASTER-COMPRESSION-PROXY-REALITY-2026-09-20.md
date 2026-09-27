@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # MASTER-COMPRESSION-PROXY-REALITY (DRAFT)
 
 **Status:** DRAFT — pending 555 verify → 888 judge → F13 seal

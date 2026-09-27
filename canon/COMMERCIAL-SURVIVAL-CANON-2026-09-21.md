@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 ---
 canon_id: "5"
 canon_name: "Commercial Survival Doctrine"

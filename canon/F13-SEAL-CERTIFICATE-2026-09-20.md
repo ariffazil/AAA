@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # F13-SEAL-CERTIFICATE-2026-09-20 (Lane B — observation receipt)
 
 **Status:** DRAFT — pending Lane B RECEIPT to VAULT999

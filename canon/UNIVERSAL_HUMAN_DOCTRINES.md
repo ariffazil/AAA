@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # Universal Human Doctrines — Federation Canon
 
 > **Status:** [INSTALLED — F13 SOVEREIGN DIRECT] · 2026-09-08T04:08 MYT
@@ -27,23 +29,31 @@ This canon distills **7 universal doctrines** about human-agent interaction. Eac
 
 **Pattern:** Humans operate in a 9-axis paradox space. Each axis is a mutually-generating tension pair (Yang/Yin). Identity = stable dance pattern across all 9 axes simultaneously.
 
-**Why universal:** Cross-culturally validated by Schwartz (10 values), Yalom (4 ultimate concerns), Big Five (5 traits), Enneagram (9 types), Jung (enantiodromia), Relational Dialectics (3 core tensions).
+**Why it is a heuristic, not a law:** The 9 axes are arifOS's own instrument. They are *convergent* with Schwartz (10 values), Yalom (4 ultimate concerns), Big Five (5 traits), Jung (enantiodromia) and Relational Dialectics (3 core tensions) — note that every one of those counts differs from 9, so together they evidence that humans run on tension-pairs, not that there are nine of them. The Enneagram (9 types) is removed from this clause as validation evidence: it is the only cited source whose count is 9, and its own psychometric literature declines to produce that number — across 104 independent samples, factor-analytic work "has typically found fewer than nine factors, and no work has used clustering techniques to derive the nine types" (Hook, Hall, Davis, Van Tongeren & Conner, 2021, *J Clin Psychol* 77:865-883, doi:10.1002/jclp.23097). No cross-cultural invariance study of the Enneagram exists. Per Register Law (register-as-channel.md:167), a population-level pattern may never be shortcut to an individual verdict — this doctrine licenses pattern questions about a person, never conclusions about one.
 
 **Federation gain:** Pattern-recognition for any human interaction. Already canonical (PARADOX_COORDINATE_THEORY.md, EUREKA-HUMAN-REALITY-INVARIANTS-2026-09-08).
 
-**Tags:** OBS + DER · Confidence: 0.95 (cross-validated)
+**Tags:** INT (heuristic) · Confidence: 0.60 (structure convergent; axis count declined by the one framework that supplies it)
+
+**Amendment:** Re-tagged 2026-09-28 under F13 order "Sah — re-tag, keep the axes", after independent citation audit. Evidence basis: PLOS ONE 2026;21:e0338521 (Sheppard, Bizumic, Christensen, Monaghan), PMC12758732 — "Although no instruments demonstrated evidence of full cross-cultural scalar invariance…"; the 9-axis count is retained as an arifOS instrument, not as a finding about humanity.
 
 ---
 
 ### Doctrine #2 — Somatic Intelligence Doctrine
 
-**Pattern:** Body-based communication for humans who overthink. Nervous system regulation, vagal tone, polyvagal theory — universal human physiological patterns.
+**Pattern:** Body state participates in emotion regulation, and slow-breath / interoceptive practice changes reported state. Body-based communication is therefore useful for humans who overthink.
 
-**Why universal:** Physiology is universal. Applies to any human in distress, freeze, or overthinking state.
+**Why it is a heuristic, not a law:** Polyvagal theory is **named-heritage, not warrant**. Its distinctive claims — the myelination phylogeny, the dorsal/ventral behavioural dichotomy, neuroception — are the target of a 39-author published evaluation: *"the PVT is untenable, because it is not defensible based on existing neurophysiological and evolutionary evidence"* (Grossman et al. 2026, *Clin Neuropsychiatry* 23:100-112, doi:10.36131/cnfioritieditore20260110); comparative refutation at Taylor et al. 2022 (doi:10.1016/j.biopsycho.2022.108382); RSA-as-vagal-tone charged as a category mistake at Grossman 2023 (doi:10.1016/j.biopsycho.2023.108589). Porges' 2026 reply contests the critics' reconstruction, not the data (doi:10.36131/cnfioritieditore20260111). The doctrine stands without PVT: intervention effects pre-post g = 0.81 / vs-control g = 0.83 but only 24 studies, N = 484, authors requesting better controls (Goessl et al. 2017, doi:10.1017/S0033291717001003); ~5 min/day cyclic sighing outperformed mindfulness in RCT (Balban et al. 2023, doi:10.1016/j.xcrm.2022.100895); mechanism available without PVT architecture (Shaffer, Feldman Barrett & Quigley 2023, doi:10.1016/j.biopsycho.2023.108626). Undisputed anatomy: nucleus ambiguus supplies myelinated respiration-phased cardiac efferents, and the NTS converges visceral **and somatic** afferents (Neuhuber & Berthoud 2022, doi:10.1016/j.biopsycho.2022.108425). The **trait** claim is small: cardiac vagal control ↔ self-regulation r = **0.09**, 123 studies, N = 14,347 (Holzman & Bridgett 2017, doi:10.1016/j.neubiorev.2016.12.032).
 
-**Federation gain:** Pattern for agent interaction with humans in physiological distress. Recognize somatic signals before verbal ones.
+**Why "universal" is not established:** no cross-cultural invariance study or multi-national norming of vagal indices exists in the indexes searched. Universality is asserted, not tested — §16 audit question 2 records **UNKNOWN**, not YES.
 
-**Tags:** OBS + INT · Confidence: 0.85
+**Federation gain:** Pattern for agent interaction with humans in physiological distress. Take the direction (body state is not downstream of cognition); do not take the magnitude.
+
+**Temporal claim — `SPEC`:** *"Recognize somatic signals before verbal ones"* is the operative instruction and **no source tests temporal priority**. Retained as a working posture, tagged per F2.
+
+**Tags:** INT (heuristic) + SPEC (priority claim) · Confidence: 0.50 (intervention moderate but small-literature; trait r = 0.09; universality untested; PVT warrant refuted)
+
+**Amendment:** Tier 3 audit closeout 2026-09-28, F13 order "Sah — close out all three". Supersedes the §17.1 self-assessment *"Somatic Intelligence has strong biological grounding"* (:289), which the primary literature does not support.
 
 ---
 

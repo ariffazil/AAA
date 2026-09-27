@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 ---
 artifact_id: "move_1_canon_5_2026-09-21"
 name: "F1-F13 ↔ OWASP Agentic Top 10 ↔ NIST CSF 2.0 — Crosswalk"

@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # Reality Binding Architecture — Authority → Physics
 
 > **Status:** DRAFT — pending F13 ratification

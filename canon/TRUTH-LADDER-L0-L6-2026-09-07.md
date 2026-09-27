@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # The Truth Ladder L0–L6
 
 > **Status:** Canon — RATIFIED by 888-APEX council, F13 SOVEREIGN

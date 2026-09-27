@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # CANONICAL GLOSSARY — freeze card
 
 > Load this **before** KAMUS long-form. One object, one canonical name.

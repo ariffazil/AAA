@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # Moral Physics — Formalization of Dignity, Common Sense, and Maruah
 
 > **Status:** F13 SOVEREIGN DIRECT (2026-09-20 01:20 MYT)

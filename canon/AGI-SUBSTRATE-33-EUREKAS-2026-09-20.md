@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # ⚠️ DEPRECATED — SUPERSEDED BY SOT
 # Canonical file: /root/AAA/canon/EUREKA-AGI-SUBSTRATE-33-2026-09-20.md
 # This file retained for: canonical mapping table + arifOS INIT integration (merged into SOT)

@@ -1,3 +1,5 @@
+Status: UNCLASSIFIED — PENDING_F13_REVIEW
+
 # A2A SRO Propagation Protocol — Cross-Agent Reality Sharing
 
 > **Status:** DRAFT — design specification

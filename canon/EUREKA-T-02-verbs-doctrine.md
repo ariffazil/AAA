@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA-T-02 — The Verbs Doctrine
 
 > **Forged:** 2026-08-11 by 333-AGI Δ MIND under F13 SOVEREIGN directive

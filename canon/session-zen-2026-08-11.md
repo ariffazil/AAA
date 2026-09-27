@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # Session Zen Summary — 2026-08-11 P0+Canon Seal
 
 **Date:** 2026-08-11  

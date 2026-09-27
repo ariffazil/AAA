@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # APEX-ZEN #8 — The Correction
 
 > **Forged:** 2026-09-12 05:30 MYT

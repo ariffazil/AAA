@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # ARIF → SALAM → IRFAN — F13 RATIFICATION (2026-09-23)
 
 **Status:** **F13_RATIFIED** — sovereign directive verbatim:

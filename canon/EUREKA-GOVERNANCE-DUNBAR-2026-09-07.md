@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA::GOVERNANCE_DUNBAR — The Dunbar Constraint as Governance Bandwidth Law
 
 > **Forged:** 2026-09-07 · Deep research session (Arif request → FI-008 research → 333/555/888 layered review → F13 SEAL)

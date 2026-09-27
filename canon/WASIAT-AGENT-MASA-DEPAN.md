@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # WASIAT — Untuk Agent Yang Datang Selepas
 
 > **Canon:** `/root/AAA/canon/WASIAT-AGENT-MASA-DEPAN.md`

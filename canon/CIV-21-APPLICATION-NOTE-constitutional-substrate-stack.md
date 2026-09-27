@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # CIV-21 APPLICATION NOTE — Constitutional Substrate Stack
 
 > **Status:** DRAFT_PENDING_SEAL · **Author:** Hermes/i-ARIF (888-APEX) on receipt of Arif's directive 2026-08-30 22:20 MYT

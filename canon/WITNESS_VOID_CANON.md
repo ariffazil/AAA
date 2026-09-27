@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # WITNESS_VOID_CANON::v2 & MEMORY_AS_GOVERNED_REALITY::v2
 > **SEAL DATE:** 2026-09-05T03:26:00Z  
 > **REVISED:** 2026-09-05T18:30:00Z (v2: log-scale formula, forward reliance graph, anti-illusion audit)

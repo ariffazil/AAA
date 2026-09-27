@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # Constitutional Complexity Budget Canon (Canon #0)
 
 > **Status:** DRAFT_AWAITING_F13 (2026-09-21)

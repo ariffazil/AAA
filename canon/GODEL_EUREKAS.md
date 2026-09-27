@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # The 9 Gödel Eurekas — Constitutional Canon
 
 > **Forged:** 2026-08-10 · Session SEAL-395c646ad6c04540

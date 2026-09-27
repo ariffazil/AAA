@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA::CAPABILITY_DISCOVERY_OUTRUNS_DECAY — Governance of Living vs Decayed Realities
 
 > **Sealed:** 2026-09-12T01:05:00+08:00  

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # WAWABOT — Scar–Trust–Meaning Organ
 
 > **Canon:** v1 | **Encoded:** 8d14b0c28 | **Status:** Operating axiom. Not SEAL. Not floor table. F13 decides.

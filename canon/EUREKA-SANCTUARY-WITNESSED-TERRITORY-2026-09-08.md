@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # EUREKA — Sanctuary as Witnessed Territory (The Anti-Mother Doctrine)
 **Date:** 2026-09-08 (~01:0x MYT)
 **Source:** Arif F13 sovereign articulation — third articulation of the 2026-09-07/08 night chain

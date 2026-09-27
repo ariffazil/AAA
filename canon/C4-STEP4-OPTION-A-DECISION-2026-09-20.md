@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # C4 STEP4 Option A Decision (2026-09-20)
 
 F13 SOVEREIGN 'execute all' directive applied.

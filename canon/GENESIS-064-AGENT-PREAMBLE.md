@@ -1,3 +1,5 @@
+Status: DRAFT_AWAITING_F13
+
 # GENESIS/064 — Agent Preamble: The Final Seal Prompt
 
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil, 888)

@@ -1,3 +1,5 @@
+Status: UNCLASSIFIED — PENDING_F13_REVIEW
+
 # APEX T-SCORE — Time-to-Zero-Trust
 
 **Status:** DERIVATION + BACKTEST · F13-authored insight (Arif, 2026-09-18), agent-derived

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
+
 # EUREKA::CONSEQUENCE_BINDING::v1 — Consequence-Bearing Reality Binding
 
 > **Date:** 2026-09-07T01:56:09+08:00  

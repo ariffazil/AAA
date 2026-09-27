@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # VISION EXECUTION NEXT: The Unified Federation Multimodal Runbook
 
 **Status:** ACTIVE EXECUTION RUNBOOK  

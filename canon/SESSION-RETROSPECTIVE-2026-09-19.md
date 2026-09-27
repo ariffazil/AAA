@@ -1,3 +1,5 @@
+Status: HISTORICAL_SESSION_ARTIFACT
+
 # SESSION RETROSPECTIVE — 2026-09-19 (RL-2026-09-19-001)
 
 > **Status:** Bookend artifact. Session close narrative.

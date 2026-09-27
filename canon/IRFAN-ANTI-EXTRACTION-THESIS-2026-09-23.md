@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # IRFAN — The Anti-Extraction Thesis (2026-09-23)
 
 **Status:** **F13_RATIFIED_CHAT — 2026-09-23** (sovereign in-band instrument,

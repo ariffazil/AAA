@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # HERMES RASA: Runtime Doctrine for Human Reality, Qualia Boundaries, Relationship Alignment and Agentic Restraint
 
 > **Status:** F13_RATIFIED_SOVEREIGN (2026-09-16) — Arif Fazil (F13).

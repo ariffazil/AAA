@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED
+
 # Reality & Consequence Objects Specification v1 (WRO, HRO, MRO, CRO)
 
 > **Reference:** `SPEC::REALITY_CONSEQUENCE_OBJECTS::2026-09-13`  

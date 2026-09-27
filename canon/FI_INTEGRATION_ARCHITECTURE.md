@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — SEALED
+
 # FI Integration Architecture — Single-Page Canon
 
 > **Forged:** 2026-08-11 by 333-AGI Δ MIND

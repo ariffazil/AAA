@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — RATIFIED
+
 # Nusantara Glossary — v0.6 (CANONICAL — STAGING)
 
 > **Status:** `external_advisory_draft_v0.6 → promotion_in_progress → F13-ratified 2026-09-24T22:35 MYT via sovereign_chat_override`
