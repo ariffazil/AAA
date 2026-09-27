@@ -1,7 +1,7 @@
 {
   "schema": "aaa.voice-registry.v1",
   "owner": "AAA",
-  "updated_at": "2026-09-24T16:33:00Z",
+  "updated_at": "2026-09-27T01:30:00Z",
   "updated_by": "Antigravity \u2014 F13 SOVEREIGN RATIFIED 2026-09-24 (YA decision for qwen-voice-enrollment burn)",
   "source_of_truth": "THIS FILE is the canonical voice-id registry. Resolvers (pipeline, identity card, routers) MUST resolve here; no component may hardcode a separate provider id.",
   "revocation_policy": [
@@ -12,7 +12,23 @@
   ],
   "aliases": {
     "iarif-sovereign-v9": "i-arif-sovereign",
-    "iarif-sovereign-v8": "i-arif-v8-deprecated"
+    "iarif-sovereign-v8": "i-arif-v8-deprecated",
+    "abang sado syed": "abang-sado-live-v1",
+    "abang sado syed voice": "abang-sado-live-v1",
+    "suara abang sado syed": "abang-sado-live-v1",
+    "suara syed": "abang-sado-live-v1",
+    "abang sado syed alpha": "abang-sado-alpha",
+    "suara abang sado syed alpha": "abang-sado-alpha",
+    "siti": "siti",
+    "suara siti": "siti",
+    "Siti voice": "siti",
+    "pmx": "anwar-bm-20260927",
+    "anwar": "anwar-bm-20260927",
+    "suara pmx": "anwar-bm-20260927",
+    "suara anwar": "anwar-bm-20260927",
+    "anwar ibrahim": "anwar-bm-20260927",
+    "suara anwar ibrahim": "anwar-bm-20260927",
+    "suara pmx anwar": "anwar-bm-20260927"
   },
   "voices": {
     "i-arif-sovereign": {
@@ -75,8 +91,34 @@
       "action_taken": "Locked in this registry as REVOKED; removed as the pipeline default; refused by the pipeline resolver; V9 promoted to canonical.",
       "note": "The provider-side checkpoint may still exist on MiniMax's servers. We cannot delete it; we refuse it at every resolver we own."
     },
+    "siti": {
+      "status": "LIVE",
+      "display_name": "Siti",
+      "provider": "minimax",
+      "provider_voice_id": "SSSiti20260926v1",
+      "model": "speech-2.8-hd",
+      "endpoint": "https://api.minimax.io/v1/t2a_v2",
+      "execute": "bash /root/AAA/engines/iarif_tts_pipeline.sh <text-file> <out.wav> \"suara siti\"",
+      "provenance": "Existing clone SSSiti20260926v1. Do not mint a new voice. Speech uses t2a_v2 only.",
+      "source": "/root/.hermes/voice/SS-VOICE-CANONICAL.json"
+    },
+    "anwar-bm-20260927": {
+      "status": "LIVE",
+      "distribution": "DISTRIBUTION_HOLD",
+      "display_name": "PMX Anwar Ibrahim demo",
+      "provider": "minimax",
+      "provider_voice_id": "anwar-bm-20260927",
+      "model": "speech-2.8-hd",
+      "endpoint": "https://api.minimax.io/v1/t2a_v2",
+      "execute": "bash /root/AAA/engines/iarif_tts_pipeline.sh <text-file> <out.wav> \"suara PMX\"",
+      "agent_rule": "Say it is a demo. Do not present the clip as the Prime Minister speaking, and do not publish it.",
+      "provenance": "MiniMax clone of a 29.913s Malay window from the RTM cabinet press conference, 5 Dec 2022, archive.org master. sha256 038d662959a27f7bb483d306192741944b32d088f6a235100a96c510cc5945e1. file_id 446154272850435. Not an official voice. Not consented by the speaker. Do not publish.",
+      "source": "/root/.hermes/voice/AI/anwar_bm_30s_v2.wav",
+      "enrolled_at": "2026-09-27T02:46:50Z"
+    },
     "abang-sado-alpha": {
       "status": "LIVE",
+      "display_name": "Abang Sado Syed Alpha",
       "display_version": "V1",
       "provider": "minimax",
       "provider_voice_id": "ttv-voice-2026091602501026-szbvcVGx",
@@ -84,6 +126,8 @@
       "endpoint": "https://api.minimax.io/v1/t2a_v2",
       "archetype": "abang_sado_alpha_penang",
       "lane": "abang-sado persona register (shadow mode) \u2014 F5-private, never a default for Hermes assistant output",
+      "execute": "bash /root/AAA/engines/iarif_tts_pipeline.sh <text-file> <out.wav> \"abang sado syed alpha\"",
+      "name_note": "Display name is Abang Sado Syed Alpha. The audio is a designed voice, not a recording of Syed.",
       "provenance": "parametric_voice_design \u2014 original voice from a written register description. NOT derived from any real person's audio, and NOT a clone of any MiniMax system voice.",
       "design_prompt": "A mature Malay man in his mid-thirties, built like a bodybuilder, with a deep, chesty, slightly husky voice and rich bass resonance. Speaks Penang Malay in a blunt, unbothered, cocky register \u2014 the calm of a man who never rushes and never explains himself. Pace is slow and deliberate, with long pauses between short sentences, never hurried. Tone is dry, commanding and quietly amused \u2014 like an older brother at the gym who owns the room without raising his voice. Only a slight smile in the voice. No theatrical delivery, no shouting, no pleading. Authentic northern Malaysian Malay accent with Penang regional flavour. Pronunciation is clear, grounded and low. Pitch is low.",
       "consent": "original_voice_from_qualia_description",
@@ -155,6 +199,7 @@
     },
     "abang-sado-live-v1": {
       "status": "LIVE",
+      "display_name": "Abang Sado Syed",
       "display_version": "L1",
       "provider": "minimax",
       "provider_voice_id": "abang-sado-live-v1",
@@ -262,7 +307,9 @@
       ],
       "unregistered_legacy": "ttv-voice-2026081808404926-BdoQh6ec (renders, not in registry \u2014 D1 open)",
       "why_this_one": "only live sado voice whose chain carries the principal's own voice (own Telegram voice notes). The other two are fully synthetic archetypes.",
-      "pick_rule_for_agents": "On a bare 'abang sado voice' request in this lane, use precedent_voice. Do NOT select an alternate without an explicit id or a timbre A/B by the sovereign."
+      "display_name": "Abang Sado Syed",
+      "name_note": "The spoken label is Abang Sado Syed. The audio is the principal's own voice notes, not a recording of Syed. Do not tell a listener this waveform is Syed.",
+      "pick_rule_for_agents": "On 'abang sado', 'abang sado syed', or 'suara syed' in this lane, use precedent_voice. Say the display name. Do not claim the recording is Syed's body. Do NOT select an alternate without an explicit id."
     }
   }
 }

@@ -498,33 +498,8 @@ wrong for this person, at this moment, under this constraint.
   requests aimed at a bonded person, not only for decisions.
 
 
-## Session Updates (2026-09-26 — Rumah Sewa Azwa Gotong-Royong)
-
-### Verified direct WhatsApp contacts (live web-verified 26 Sept 2026)
-| Agent | Number | Listings |
-|---|---|---|
-| Suzita | 0199834979 | Hijauan Heights RM300 single / RM250 share |
-| Fauzi | 0199864979 | Hijauan Heights backup |
-| Cik Fia | 0182904652 | Bangi Avenue 3 + BSP + Bandar Puteri Bangi |
-| Maya Myra | PropertyGuru | Vista Bangi RM1750 (LPPEH PEA 3998 verified) |
-| Steve Tham | 0162188300 | Vista Bangi Studio |
-| Cik Jaja | 01112047128 | Bangi Avenue RM500 (deposit 2 bulan — JAUHI) |
-
-### 5 FINAL Unit (student-budget tier)
-1. Hijauan Heights Single (Suzita) — RM380 / 1st mo RM760
-2. Bangi Gateway Bilik Kongsi Female (WiFi+utilities INCLUDED) — RM370 / RM740
-3. Bangi Avenue 3 Single Queen promo — RM390 (was RM420) / RM780
-4. Bangi Avenue 3 Middle Queen — RM390 / RM780
-5. Ostia Residency Single Room — RM350 (estimasi) / RM700
-
-### iBilik.my Cloudflare workaround
-When user cannot access iBilik.my links:
-1. Suggest WhatsApp direct numbers (above table)
-2. Use propertyguru.com.my or mudah.my as backup
-3. NEVER fabricate gambar from broken links — ask owner to WhatsApp photo
-
-### Lessons cemented this session
-- User ground truth beats aggregator estimates (One South 20km not 30km)
-- Privacy envelope ≠ access ceiling (Jia = full family agent capability + privacy barrier)
-- Friend lanes need kasih sayang, not constitutional lock
-- Cross-AI verify before claim: iBilik verified via web_search before forwarding contact to user
+- `references/rental-gotong-royong-malaysia-2026.md` — verified WhatsApp directory for
+  student-tier Bangi rentals, the eight-section `syarat wajib + haram` PDF shape as a locked
+  contract, the iBilik.my Cloudflare workaround, the gotong-royong HTML shape (five
+  sections, plain `maps/dir/` links), and the cross-platform verification rule. Load when
+  advising a Malaysian tenant with a tight cash ceiling and a 5-day move-in window.
