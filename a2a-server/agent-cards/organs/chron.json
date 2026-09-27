@@ -4,7 +4,7 @@
   "protocolVersion": "1.0",
   "agentId": "chron",
   "name": "CHRON",
-  "description": "Temporal consequence tracker \u2014 predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
+  "description": "Temporal consequence tracker — predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -19,7 +19,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.2",
+      "protocolVersion": "1.0",
       "url": "https://aaa.arif-fazil.com/a2a"
     },
     {

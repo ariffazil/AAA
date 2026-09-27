@@ -20,7 +20,7 @@
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/kimi-code",
   "provider": {
     "organization": "arifOS Federation",

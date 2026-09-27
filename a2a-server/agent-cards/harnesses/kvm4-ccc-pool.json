@@ -20,7 +20,7 @@
   "trinity": "worker pool — Context-Compute-Code contract (CCC_DOCTRINE.md)",
   "attestation_id": "KVM4-CCC-ATTESTED-20260902",
   "bound_to": "888-APEX (judgment) / A-FORGE (execution gate)",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/kvm4-ccc-pool",
   "provider": {
     "organization": "arifOS Federation",

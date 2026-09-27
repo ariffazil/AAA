@@ -2,9 +2,9 @@
   "$schema": "arifOS/agent-card/v2.3.0",
   "schemaVersion": "2.3.0",
   "protocolVersion": "1.0",
-  "agentId": "opencode",
-  "name": "opencode",
-  "description": "opencode \u2014 Heavy execution agent \u2014 code, infrastructure, all domains",
+  "agentId": "agy",
+  "name": "agy",
+  "description": "agy \u2014 Evidence gathering \u2014 web, docs, code analysis",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS Federation",
@@ -613,15 +613,6 @@
         "execute"
       ]
     },
-    "arifflow": {
-      "port": 7073,
-      "tier": "organ",
-      "surface": "internal",
-      "capability": [
-        "flow",
-        "metabolism"
-      ]
-    },
     "arifos": {
       "port": 8088,
       "tier": "organ",
@@ -639,36 +630,12 @@
         "web_search"
       ]
     },
-    "capability_index": {
-      "port": null,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "code_index"
-      ]
-    },
     "context7": {
       "port": null,
       "tier": "extra",
       "surface": "private",
       "capability": [
         "docs"
-      ]
-    },
-    "delegation_ledger": {
-      "port": 18801,
-      "tier": "extra",
-      "surface": "internal",
-      "capability": [
-        "delegation"
-      ]
-    },
-    "fed": {
-      "port": 7074,
-      "tier": "extra",
-      "surface": "internal",
-      "capability": [
-        "delegation"
       ]
     },
     "firecrawl": {
@@ -703,60 +670,12 @@
         "code_repo"
       ]
     },
-    "graphiti": {
-      "port": 8000,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "knowledge_graph"
-      ]
-    },
-    "hermes_agent": {
-      "port": 18090,
-      "tier": "extra",
-      "surface": "internal",
-      "capability": [
-        "delegation"
-      ]
-    },
-    "hostinger_vps": {
-      "port": null,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "vps"
-      ]
-    },
-    "mage": {
-      "port": null,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "media"
-      ]
-    },
-    "megamemory": {
-      "port": null,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "memory"
-      ]
-    },
     "meyhem": {
       "port": null,
       "tier": "extra",
       "surface": "private",
       "capability": [
         "web_search"
-      ]
-    },
-    "minimax_media": {
-      "port": 18100,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "media"
       ]
     },
     "minimax_search": {
@@ -773,46 +692,6 @@
       "surface": "private",
       "capability": [
         "docs"
-      ]
-    },
-    "openrouter": {
-      "port": null,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "delegation"
-      ]
-    },
-    "qdrant": {
-      "port": 6333,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "memory"
-      ]
-    },
-    "repomapper": {
-      "port": null,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "code_index"
-      ]
-    },
-    "supabase": {
-      "port": null,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "data"
-      ]
-    },
-    "tree777": {
-      "port": 18077,
-      "tier": "extra",
-      "surface": "private",
-      "capability": [
-        "knowledge_graph"
       ]
     },
     "wealth": {
@@ -864,41 +743,32 @@
       ]
     }
   },
-  "role": "builder",
+  "role": "researcher",
   "grant": [
     "capital",
-    "code_index",
     "code_repo",
-    "data",
-    "delegation",
     "docs",
     "earth",
     "execute",
-    "flow",
     "human",
     "judge",
-    "knowledge_graph",
     "law",
-    "media",
-    "memory",
-    "metabolism",
     "vision",
-    "vps",
     "web_scrape",
     "web_search"
   ],
   "federation_metadata": {
-    "fi": "FI-001",
-    "runtime": "node",
-    "note": "Primary coding harness. Also expresses 333-AGI identity.",
+    "fi": "FI-004",
+    "runtime": "gemini",
+    "note": "Antigravity CLI / Gemini",
     "source": "federation.yaml",
     "generated_by": "federation-a2a-sync.py"
   },
-  "url": "http://127.0.0.1:3001/a2a/opencode",
+  "url": "http://127.0.0.1:3001/a2a/agy",
   "endpoints": {
-    "baseUrl": "http://127.0.0.1:3001/a2a/opencode",
-    "cardUrl": "http://127.0.0.1:3001/a2a/agents/opencode",
+    "baseUrl": "http://127.0.0.1:3001/a2a/agy",
+    "cardUrl": "http://127.0.0.1:3001/a2a/agents/agy",
     "healthUrl": "http://127.0.0.1:3001/health",
-    "mcpUrl": "http://127.0.0.1:3001/a2a/opencode/mcp"
+    "mcpUrl": "http://127.0.0.1:3001/a2a/agy/mcp"
   }
 }

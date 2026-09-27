@@ -25,7 +25,7 @@
   "warga_status": "attested",
   "attestation_id": "CLAUDE-CODE-WARGA-ATTESTED-20260810",
   "bound_to": "888-APEX",
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/claude-code",
   "registry_pointer": "/root/AAA/dist/a2a/agents.json#FI-002",
   "provider": {
