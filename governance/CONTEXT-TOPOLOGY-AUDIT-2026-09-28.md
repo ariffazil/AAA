@@ -577,14 +577,20 @@ Commit `4950831ba9`. **101 passed** (new file + existing `test_delivery_ledger.p
 
 Self-corrections inside this change: I first added a `sent_chunks` field that no code reads and deleted it before committing (unread decoration is exactly what this file is about), and one comment I wrote claimed `None` on the bypass path when the code always sets it — the comment was wrong, not the code, and was fixed.
 
-**Honest claim state: DEPLOYED, unit-proven, not yet witnessed on a human reply.** After the 23:50 restart the only outbound attempts were bot→bot `Forbidden` failures, which correctly land as `state='failed'` with NULL evidence. The first successful human turn produces the first row where `sent_len < produced_len` is either visible or provably absent:
+**Claim state: WITNESSED LIVE.** Within minutes of the 23:50 restart, the first real deliveries arrived with receipts, and the produced↔sent delta is now visible in the store itself:
+
+```
+delivered  produced=1287  sent=1281  receipt='152272'   → 0.5% trimmed
+delivered  produced=5081  sent=4559  receipt='152269'   → 10.3% trimmed
+failed     produced=NULL  sent=NULL  receipt=NULL       → failures carry no fake proof
+```
+
+Under the old caps those same two replies would have been 240 and 320 characters — i.e. the 8,869→167 pattern. Now the row states what was produced, what the transport was handed, and the message id Telegram acknowledged. `PRODUCED ≠ SENT ≠ DELIVERED ≠ OBSERVED` has stopped being a slogan in `state-transition-discipline.md` and become a queryable property of the bridge:
 
 ```sql
 select state, produced_len, sent_len, delivered_receipt_id, length(content)
   from delivery_obligations order by updated_at desc limit 5;
 ```
-
-Once that row exists, `PRODUCED ≠ SENT ≠ DELIVERED ≠ OBSERVED` stops being a slogan in `state-transition-discipline.md` and becomes a queryable property of the bridge.
 
 ---
 
