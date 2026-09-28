@@ -622,14 +622,6 @@
         "judge"
       ]
     },
-    "delegation_ledger": {
-      "port": 18801,
-      "tier": "extra",
-      "surface": "internal",
-      "capability": [
-        "delegation"
-      ]
-    },
     "fed": {
       "port": 7074,
       "tier": "extra",
