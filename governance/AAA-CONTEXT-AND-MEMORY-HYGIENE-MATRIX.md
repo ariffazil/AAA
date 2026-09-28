@@ -8,6 +8,7 @@ related: AAA-MODEL-INIT-CANONICAL.v1.md §"Memory and context"
 # AAA Context and Memory Hygiene Matrix
 
 > **Status:** DRAFT_PROPOSAL — framework + E8/E9 classes; deep measurement requires read-only probes.
+> **SUPERSEDED FOR MEASUREMENT 2026-09-28** by `CONTEXT-TOPOLOGY-AUDIT-2026-09-28.md` (trace `fi003-context-topology-20260928`). The estimates below are kept as dated record — do not cite them as live. The recommendations here were correct and unexecuted for 14 days; the estate grew from the ~200 KB estimated here to a measured 2.1 MB fragment store and a 58,007 B spine. That history is the finding, not a footnote.
 
 ---
 

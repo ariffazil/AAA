@@ -1,0 +1,1 @@
+/root/arifOS/VAULT999/scar/SCAR-STORE-REDIRECT.md

@@ -33,14 +33,12 @@ try:
     import pandas as pd
     import pyarrow as pa
     import pyarrow.parquet as pq
-
     HAS_PYARROW = True
 except ImportError:
     HAS_PYARROW = False
 
 try:
     from PIL import Image
-
     HAS_PIL = True
 except ImportError:
     HAS_PIL = False
@@ -51,11 +49,9 @@ CACHE_DIR = STATE_VECTORS_DIR / "cache"
 GEOX_ATLAS_FILE = STATE_VECTORS_DIR / "geox_visual_atlas.parquet"
 CANON_SKILLS_FILE = STATE_VECTORS_DIR / "canon_skills_index.parquet"
 RERANK_BENCH_FILE = STATE_VECTORS_DIR / "rerank_golden_bench.parquet"
-AAA_ARTIFACTS_FILE = STATE_VECTORS_DIR / "aaa_artifacts_atlas.parquet"
 
 # Ensure directories exist
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
-
 
 # ── Auth & Config ──────────────────────────────────────────────────
 def load_api_key() -> str:
@@ -72,22 +68,16 @@ def load_api_key() -> str:
                 if line.startswith("export ") and "=" in line:
                     k, v = line[7:].split("=", 1)
                     v = v.strip("\"'")
-                    if k in (
-                        "DASHSCOPE_API_KEY",
-                        "QWEN_PAYG_API_KEY",
-                    ) and not v.startswith("${"):
+                    if k in ("DASHSCOPE_API_KEY", "QWEN_PAYG_API_KEY") and not v.startswith("${"):
                         return v
     raise RuntimeError("No valid DASHSCOPE_API_KEY or QWEN_PAYG_API_KEY found.")
-
 
 # ── Cache Utilities ────────────────────────────────────────────────
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
-
 def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
 
 def get_cached_vector(cache_key: str) -> Optional[np.ndarray]:
     p = CACHE_DIR / f"{cache_key}.npy"
@@ -98,25 +88,19 @@ def get_cached_vector(cache_key: str) -> Optional[np.ndarray]:
             return None
     return None
 
-
 def save_cached_vector(cache_key: str, vector: np.ndarray):
     p = CACHE_DIR / f"{cache_key}.npy"
     np.save(p, vector)
 
-
 # ── API Calls ──────────────────────────────────────────────────────
 def get_http_headers() -> Dict[str, str]:
     import requests
-
     return {
         "Authorization": f"Bearer {load_api_key()}",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
     }
 
-
-def embed_text(
-    texts: List[str], model: str = "qwen3.7-text-embedding"
-) -> List[np.ndarray]:
+def embed_text(texts: List[str], model: str = "qwen3.7-text-embedding") -> List[np.ndarray]:
     """Embeds texts using dense text embedding with disk caching."""
     import requests
 
@@ -138,19 +122,17 @@ def embed_text(
         # DashScope text embedding batch limit: max 25 texts per call
         batch_size = 20
         for b_start in range(0, len(uncached_texts), batch_size):
-            b_texts = uncached_texts[b_start : b_start + batch_size]
-            b_indices = uncached_indices[b_start : b_start + batch_size]
-
-            resp = requests.post(
-                url,
-                headers=get_http_headers(),
-                json={"model": model, "input": {"texts": b_texts}},
-                timeout=30,
-            )
-
+            b_texts = uncached_texts[b_start:b_start+batch_size]
+            b_indices = uncached_indices[b_start:b_start+batch_size]
+            
+            resp = requests.post(url, headers=get_http_headers(), json={
+                "model": model,
+                "input": {"texts": b_texts}
+            }, timeout=30)
+            
             if resp.status_code != 200:
                 raise RuntimeError(f"Text embed error {resp.status_code}: {resp.text}")
-
+            
             embs = resp.json()["output"]["embeddings"]
             for idx, e in zip(b_indices, embs):
                 vec = np.array(e["embedding"], dtype=np.float32)
@@ -160,10 +142,7 @@ def embed_text(
 
     return results
 
-
-def embed_vision(
-    items: List[Dict[str, Any]], model: str = "tongyi-embedding-vision-plus"
-) -> List[np.ndarray]:
+def embed_vision(items: List[Dict[str, Any]], model: str = "tongyi-embedding-vision-plus") -> List[np.ndarray]:
     """
     Embeds multimodal items (either {'text': '...'} or {'image': 'path_or_url'}).
     Uses disk caching to prevent duplicate token usage.
@@ -196,13 +175,12 @@ def embed_vision(
                     # Optimize large images before base64 encode if > 4MB
                     if HAS_PIL and len(img_bytes) > 3 * 1024 * 1024:
                         from io import BytesIO
-
                         img = Image.open(BytesIO(img_bytes))
                         img.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
                         out_io = BytesIO()
                         img.save(out_io, format="JPEG", quality=85)
                         img_bytes = out_io.getvalue()
-
+                    
                     b64_str = base64.b64encode(img_bytes).decode("utf-8")
                     data_uri = f"data:image/jpeg;base64,{b64_str}"
                     uncached_indices.append(i)
@@ -222,21 +200,17 @@ def embed_vision(
         # Send in small chunks of 4 items
         chunk_size = 4
         for c_start in range(0, len(contents_payload), chunk_size):
-            chunk_contents = contents_payload[c_start : c_start + chunk_size]
-            chunk_indices = uncached_indices[c_start : c_start + chunk_size]
-
-            resp = requests.post(
-                url,
-                headers=get_http_headers(),
-                json={"model": model, "input": {"contents": chunk_contents}},
-                timeout=45,
-            )
-
+            chunk_contents = contents_payload[c_start:c_start+chunk_size]
+            chunk_indices = uncached_indices[c_start:c_start+chunk_size]
+            
+            resp = requests.post(url, headers=get_http_headers(), json={
+                "model": model,
+                "input": {"contents": chunk_contents}
+            }, timeout=45)
+            
             if resp.status_code != 200:
-                raise RuntimeError(
-                    f"Vision embed error {resp.status_code}: {resp.text}"
-                )
-
+                raise RuntimeError(f"Vision embed error {resp.status_code}: {resp.text}")
+            
             embs = resp.json()["output"]["embeddings"]
             for idx, e in zip(chunk_indices, embs):
                 vec = np.array(e["embedding"], dtype=np.float32)
@@ -255,24 +229,20 @@ def embed_vision(
 
     return results
 
-
-def rerank(
-    query: str, documents: List[str], model: str = "qwen3-rerank"
-) -> List[Dict[str, Any]]:
+def rerank(query: str, documents: List[str], model: str = "qwen3-rerank") -> List[Dict[str, Any]]:
     """Scores documents against query using neural cross-encoder."""
     import requests
-
     url = "https://dashscope-intl.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank"
-    resp = requests.post(
-        url,
-        headers=get_http_headers(),
-        json={"model": model, "input": {"query": query, "documents": documents}},
-        timeout=30,
-    )
+    resp = requests.post(url, headers=get_http_headers(), json={
+        "model": model,
+        "input": {
+            "query": query,
+            "documents": documents
+        }
+    }, timeout=30)
     if resp.status_code != 200:
         raise RuntimeError(f"Rerank error {resp.status_code}: {resp.text}")
     return resp.json()["output"]["results"]
-
 
 # ── Indexing Pipelines ─────────────────────────────────────────────
 def index_geox_visuals():
@@ -288,7 +258,7 @@ def index_geox_visuals():
         Path("/root/GEOX/data"),
         Path("/root/GEOX/outputs"),
         Path("/root/GEOX/docs"),
-        Path("/root/GEOX/forge_work"),
+        Path("/root/GEOX/forge_work")
     ]
 
     for p_dir in priority_dirs:
@@ -297,11 +267,7 @@ def index_geox_visuals():
                 if p.suffix.lower() in valid_exts and p.is_file():
                     sz = p.stat().st_size
                     # Filter out tiny logos/textures < 5KB
-                    if (
-                        sz > 5120
-                        and "node_modules" not in str(p)
-                        and "cesium" not in str(p)
-                    ):
+                    if sz > 5120 and "node_modules" not in str(p) and "cesium" not in str(p):
                         image_paths.append(p)
 
     # Root GEOX diagrams
@@ -334,23 +300,20 @@ def index_geox_visuals():
     vectors = embed_vision(items_to_embed, model="tongyi-embedding-vision-plus")
 
     for (p, cat), vec in zip(valid_paths, vectors):
-        records.append(
-            {
-                "path": str(p),
-                "filename": p.name,
-                "category": cat,
-                "size_bytes": p.stat().st_size,
-                "dim": len(vec),
-                "vector": vec.tolist(),
-            }
-        )
+        records.append({
+            "path": str(p),
+            "filename": p.name,
+            "category": cat,
+            "size_bytes": p.stat().st_size,
+            "dim": len(vec),
+            "vector": vec.tolist()
+        })
 
     # Save to Parquet
     df = pd.DataFrame(records)
     table = pa.Table.from_pandas(df)
     pq.write_table(table, GEOX_ATLAS_FILE)
     print(f"  [SUCCESS] Wrote {len(records)} visual embeddings to {GEOX_ATLAS_FILE}!")
-
 
 def index_canon_and_skills():
     """Scans and dense-embeds canonical doctrine and federation skills."""
@@ -370,9 +333,12 @@ def index_canon_and_skills():
                 preview = content[:1500].strip()
                 embed_text_repr = f"Canon: {title}\nContent: {preview}"
                 texts_to_embed.append(embed_text_repr)
-                meta_list.append(
-                    {"id": p.name, "type": "canon", "path": str(p), "title": title}
-                )
+                meta_list.append({
+                    "id": p.name,
+                    "type": "canon",
+                    "path": str(p),
+                    "title": title
+                })
             except Exception:
                 pass
 
@@ -380,7 +346,7 @@ def index_canon_and_skills():
     skill_roots = [
         Path("/root/AAA/skills"),
         Path("/root/arifOS/skills"),
-        Path("/root/HERMES/skills"),
+        Path("/root/HERMES/skills")
     ]
     seen_skills = set()
     for s_root in skill_roots:
@@ -395,47 +361,36 @@ def index_canon_and_skills():
                     preview = c[:1200].strip()
                     embed_repr = f"Skill: {skill_id}\n{preview}"
                     texts_to_embed.append(embed_repr)
-                    meta_list.append(
-                        {
-                            "id": skill_id,
-                            "type": "skill",
-                            "path": str(p),
-                            "title": skill_id,
-                        }
-                    )
-                    if (
-                        len(meta_list) >= 150
-                    ):  # Cap to high-priority skills to conserve text quota
+                    meta_list.append({
+                        "id": skill_id,
+                        "type": "skill",
+                        "path": str(p),
+                        "title": skill_id
+                    })
+                    if len(meta_list) >= 150: # Cap to high-priority skills to conserve text quota
                         break
                 except Exception:
                     pass
         if len(meta_list) >= 150:
             break
 
-    print(
-        f"  Embedding {len(texts_to_embed)} canon & skill documents (qwen3.7-text-embedding)..."
-    )
+    print(f"  Embedding {len(texts_to_embed)} canon & skill documents (qwen3.7-text-embedding)...")
     vectors = embed_text(texts_to_embed, model="qwen3.7-text-embedding")
 
     for meta, vec in zip(meta_list, vectors):
-        records.append(
-            {
-                "id": meta["id"],
-                "type": meta["type"],
-                "path": meta["path"],
-                "title": meta["title"],
-                "dim": len(vec),
-                "vector": vec.tolist(),
-            }
-        )
+        records.append({
+            "id": meta["id"],
+            "type": meta["type"],
+            "path": meta["path"],
+            "title": meta["title"],
+            "dim": len(vec),
+            "vector": vec.tolist()
+        })
 
     df = pd.DataFrame(records)
     table = pa.Table.from_pandas(df)
     pq.write_table(table, CANON_SKILLS_FILE)
-    print(
-        f"  [SUCCESS] Wrote {len(records)} canon & skill embeddings to {CANON_SKILLS_FILE}!"
-    )
-
+    print(f"  [SUCCESS] Wrote {len(records)} canon & skill embeddings to {CANON_SKILLS_FILE}!")
 
 # ── Local Search Methods ───────────────────────────────────────────
 def search_geox_visuals(query: str, top_k: int = 5):
@@ -466,7 +421,6 @@ def search_geox_visuals(query: str, top_k: int = 5):
         print(f"         Path: {row['path']}")
     return top_df
 
-
 def search_canon(query: str, top_k: int = 5):
     """Searches Canon & Skills via text cosine similarity + optional rerank."""
     if not CANON_SKILLS_FILE.exists():
@@ -489,99 +443,21 @@ def search_canon(query: str, top_k: int = 5):
     top_df = df.sort_values(by="similarity", ascending=False).head(top_k * 2)
 
     # Cross-encoder Rerank top candidates for surgical precision
-    cand_texts = [
-        f"{r['title']}: {Path(r['path']).read_text(encoding='utf-8')[:300]}"
-        for _, r in top_df.iterrows()
-    ]
+    cand_texts = [f"{r['title']}: {Path(r['path']).read_text(encoding='utf-8')[:300]}" for _, r in top_df.iterrows()]
     rr_res = rerank(query, cand_texts)
 
     ranked_indices = [item["index"] for item in rr_res]
     relevance_scores = [item["relevance_score"] for item in rr_res]
 
-    print(
-        f"\n=== Canon & Skill Search (2-Stage Vector + Qwen3 Rerank) for: '{query}' ==="
-    )
+    print(f"\n=== Canon & Skill Search (2-Stage Vector + Qwen3 Rerank) for: '{query}' ===")
     top_candidates = top_df.iloc[ranked_indices].copy()
     top_candidates["rerank_score"] = relevance_scores
 
     for idx, row in top_candidates.head(top_k).iterrows():
-        print(
-            f"  [Rerank: {row['rerank_score']:.4f} | Cosine: {row['similarity']:.4f}] {row['id']} ({row['type']})"
-        )
+        print(f"  [Rerank: {row['rerank_score']:.4f} | Cosine: {row['similarity']:.4f}] {row['id']} ({row['type']})")
         print(f"         Path: {row['path']}")
 
     return top_candidates.head(top_k)
-
-
-# ── Pipeline 3: AAA Artifacts Atlas (2026-09-28, free-quota harvest) ──
-def index_aaa_artifacts():
-    """Embeds human-facing AAA deliverables (forge_work + artifacts) into a durable
-    vision-searchable atlas. Converts expiring tongyi-embedding-vision free quota
-    into permanent offline vectors. Incremental via SHA256 disk cache."""
-    print(">>> [PIPELINE 3] Indexing AAA Artifacts Visual Atlas...")
-    valid_exts = {".png", ".jpg", ".jpeg"}
-    skip = ("node_modules", "cache", "/tmp", ".git", "/archive/", "fixture")
-    image_paths = []
-    for p_dir in [Path("/root/AAA/forge_work"), Path("/root/AAA/artifacts")]:
-        if p_dir.exists():
-            for p in p_dir.rglob("*"):
-                if (
-                    p.suffix.lower() in valid_exts
-                    and p.is_file()
-                    and p.stat().st_size > 5120
-                ):
-                    sp = str(p).lower()
-                    if not any(x in sp for x in skip):
-                        image_paths.append(p)
-    image_paths = sorted(set(image_paths))
-    print(f"  Found {len(image_paths)} AAA artifact visuals.")
-    if not image_paths:
-        return
-    vectors = embed_vision(
-        [{"image": str(p)} for p in image_paths], model="tongyi-embedding-vision-plus"
-    )
-    records = []
-    for p, vec in zip(image_paths, vectors):
-        rel = p.relative_to(Path("/root/AAA")).parts
-        cat = rel[1] if len(rel) > 2 else rel[0]
-        records.append(
-            {
-                "path": str(p),
-                "filename": p.name,
-                "category": cat,
-                "size_bytes": p.stat().st_size,
-                "dim": len(vec),
-                "vector": vec.tolist(),
-            }
-        )
-    pq.write_table(pa.Table.from_pandas(pd.DataFrame(records)), AAA_ARTIFACTS_FILE)
-    print(
-        f"  [SUCCESS] Wrote {len(records)} artifact embeddings to {AAA_ARTIFACTS_FILE}!"
-    )
-
-
-def search_artifacts(query: str, top_k: int = 5):
-    """Natural-language search over AAA human-facing artifacts (cross-modal cosine)."""
-    if not AAA_ARTIFACTS_FILE.exists():
-        print("AAA artifacts atlas not found. Run index-artifacts first.")
-        return None
-    df = pq.read_table(AAA_ARTIFACTS_FILE).to_pandas()
-    q_vec = embed_vision([{"text": query}], model="tongyi-embedding-vision-plus")[0]
-    q_norm = np.linalg.norm(q_vec) + 1e-8
-    df["similarity"] = [
-        float(
-            np.dot(q_vec, np.array(v, dtype=np.float32))
-            / (q_norm * (np.linalg.norm(v) + 1e-8))
-        )
-        for v in df["vector"]
-    ]
-    top_df = df.sort_values(by="similarity", ascending=False).head(top_k)
-    print(f"\n=== AAA Artifact Search for: '{query}' ===")
-    for _, row in top_df.iterrows():
-        print(f"  [{row['similarity']:.4f}] {row['filename']} ({row['category']})")
-        print(f"         Path: {row['path']}")
-    return top_df
-
 
 # ── CLI Interface ──────────────────────────────────────────────────
 if __name__ == "__main__":
@@ -593,34 +469,16 @@ if __name__ == "__main__":
     if cmd == "index-all":
         index_geox_visuals()
         index_canon_and_skills()
-        index_aaa_artifacts()
     elif cmd == "index-geox":
         index_geox_visuals()
     elif cmd == "index-canon":
         index_canon_and_skills()
-    elif cmd == "index-artifacts":
-        index_aaa_artifacts()
     elif cmd == "search-geox":
-        q = (
-            " ".join(sys.argv[2:])
-            if len(sys.argv) > 2
-            else "seismic interpretation fault reflection"
-        )
+        q = " ".join(sys.argv[2:]) if len(sys.argv) > 2 else "seismic interpretation fault reflection"
         search_geox_visuals(q)
     elif cmd == "search-canon":
-        q = (
-            " ".join(sys.argv[2:])
-            if len(sys.argv) > 2
-            else "sovereign human attention membrane"
-        )
+        q = " ".join(sys.argv[2:]) if len(sys.argv) > 2 else "sovereign human attention membrane"
         search_canon(q)
-    elif cmd == "search-artifacts":
-        q = (
-            " ".join(sys.argv[2:])
-            if len(sys.argv) > 2
-            else "morning signal infographic"
-        )
-        search_artifacts(q)
     else:
         print(f"Unknown command: {cmd}")
         print(__doc__)

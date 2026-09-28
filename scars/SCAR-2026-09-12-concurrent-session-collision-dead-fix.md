@@ -1,0 +1,1 @@
+/root/.hermes/scars/drafts/SCAR-2026-09-12-concurrent-session-collision-dead-fix.md

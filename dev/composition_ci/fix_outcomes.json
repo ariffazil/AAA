@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0-lane-b",
+  "kind": "FixOutcomes",
+  "authority_class": "OBSERVE_ONLY",
+  "lane": "B",
+  "verdict": "RECEIPT_NOT_SEAL",
+  "do_not_treat_as_seal": true,
+  "Fix_1_evidence_param": {
+    "present": true,
+    "params": [
+      "query",
+      "reasoning_mode",
+      "evidence"
+    ],
+    "verdict": "PASS"
+  },
+  "Fix_2_route_mode_refs": {
+    "remaining_in_python": 0,
+    "refs": [],
+    "verdict": "PASS"
+  },
+  "Fix_3_mutation_set": {
+    "present": true,
+    "has_set": true,
+    "has_bypass": true,
+    "verdict": "PASS"
+  },
+  "Fix_4_witness_state": {
+    "apex_witness_state_returns": true,
+    "witness_state_in_finalize": true,
+    "default_status": "SOLO_UNVERIFIED",
+    "verdict": "PASS"
+  },
+  "Fix_5_envelope_size": {
+    "canonical_bytes": 610,
+    "legacy_bytes_estimated": 1806,
+    "reduction_pct": 66.2,
+    "verdict": "PASS"
+  }
+}
