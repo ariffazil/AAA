@@ -558,4 +558,34 @@ Flaps continued after the kill — 2 external `Stopping…` in the following 10 
 
 ---
 
+## 21. LEDGER CLOSED — a delivery row now carries proof
+
+**F13 order (23:44 MYT):** *"tutup ledger delivered tu"*. This was §15 fix #2 and the last open lever of the audit.
+
+The defect: `delivery_obligations` stored the **produced** text and flipped `state='delivered'` with no evidence of anything leaving the process, while the shape boundary trimmed bytes downstream. Measured on the live store before the change: **447 rows claim `delivered`, 0 carry evidence, 0 carry a transport receipt.** That is why 84.9% loss slept unnoticed for hours — the ledger was not merely silent, it answered *"delivered"*.
+
+| Change | File |
+|---|---|
+| `+ produced_len`, `+ sent_len`, `+ delivered_receipt_id`, same additive-migration idiom as `adapter_profile`. Pre-existing rows stay **NULL = UNKNOWN**, never 0; history is not rewritten | `gateway/delivery_ledger.py` |
+| `_update_state(..., evidence=)` writes state **and** evidence in **one** UPDATE — a two-statement version would leave a window where the row claims delivery without proof, i.e. the same defect in a new shape | `gateway/delivery_ledger.py` |
+| `+ produced_len`, `+ sent_len` carried from transport to ledger | `SendResult` in `gateway/platforms/base.py` |
+| Stamps what the caller handed in vs what the boundary emitted, at the single text-send exit and on the stripped-to-empty path | `plugins/platforms/telegram/adapter.py` |
+| Passes the evidence plus `result.message_id` into `mark_delivered` | `base.py:_finalize_delivery_obligation` |
+| 7-case falsifier incl. a guard that `finalize` still passes all three keywords, and one that **rejects an unread field** | `tests/gateway/test_delivery_ledger_evidence.py` |
+
+Commit `4950831ba9`. **101 passed** (new file + existing `test_delivery_ledger.py` state machine/claiming/retention + SCAR-008 guard + `test_completion_delivery.py`) — the signature change on `mark_delivered`/`_update_state` broke nothing.
+
+Self-corrections inside this change: I first added a `sent_chunks` field that no code reads and deleted it before committing (unread decoration is exactly what this file is about), and one comment I wrote claimed `None` on the bypass path when the code always sets it — the comment was wrong, not the code, and was fixed.
+
+**Honest claim state: DEPLOYED, unit-proven, not yet witnessed on a human reply.** After the 23:50 restart the only outbound attempts were bot→bot `Forbidden` failures, which correctly land as `state='failed'` with NULL evidence. The first successful human turn produces the first row where `sent_len < produced_len` is either visible or provably absent:
+
+```sql
+select state, produced_len, sent_len, delivered_receipt_id, length(content)
+  from delivery_obligations order by updated_at desc limit 5;
+```
+
+Once that row exists, `PRODUCED ≠ SENT ≠ DELIVERED ≠ OBSERVED` stops being a slogan in `state-transition-discipline.md` and becomes a queryable property of the bridge.
+
+---
+
 *Verdict authority: 888-APEX. Seal authority: F13 (human). This file is a BUILD-lane measurement, not a ratification. `CAPABILITY ≠ AUTHORITY`.*
