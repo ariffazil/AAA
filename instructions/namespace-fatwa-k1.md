@@ -29,12 +29,12 @@ A bare numeral `000–999` is **ambiguous by default** and is a naming violation
 | B-1 | JUDGE=666 vs JUDGE=888 | **RESOLVED** — coordinate mismatch; both sources stand in their coordinates |
 | B-2 | 555 memory vs VERIFY | **RESOLVED** — same law |
 | B-3 | 999 SEAL vs ABANDON | **RESOLVED by `linkgraph-namespace.md`** (L14, 2026-09-25) — `lg:999` carries ABANDON_SEAL/COMMITMENT/VOID_LOCK sub-labels |
-| B-4 | `agent_geometry.py` "canonical for 666/888/999" residue | **OPEN follow-through** — code cleanup owned by arifOS; not a doctrine change |
+| B-4 | `agent_geometry.py` "canonical for 666/888/999" residue | **CLOSED 2026-09-29** — labels fixed (666 judge; 666/777/999 stage set) under F13 SAH batch |
 
 ## Open follow-throughs (not settled by this fatwa)
 
-- **L13 UNKNOWN_OUTCOME:** spec ratified (`AAA/blueprints/A-FORGE-UNKNOWN-OUTCOME-SPEC-v1.md`); implementation in A-FORGE code still OPEN (grep: 0 matches as of 2026-09-25).
-- **X-1:** `genesis_card.yaml` dual meaning (card family vs runtime surface binding) — OPEN, K7 candidate.
-- **B-4 residue:** `agent_geometry.py` stale numeral references — OPEN.
+- **L13 UNKNOWN_OUTCOME:** **CLOSED 2026-09-29** — implemented in A-FORGE `8b44cd74` (2026-09-25, ancestor of main; OutcomeClass enum + reconcile() in executor/types.ts, reconcile.ts, forge.ts, index.ts, arifFlowBridge.ts). The "grep: 0 matches" note was a same-day pre-commit snapshot.
+- **X-1:** **RESOLVED (F13 SAH 2026-09-29)** — card declared card-family `IDENTITY_AUTHORITY_GENESIS`; organ state fields = frozen mint-time snapshot, never runtime binding (runtime truth = live probes + organs.yaml). Card ratified; canonical + 2 mirrors synced.
+- **B-4 residue:** **CLOSED 2026-09-29** — `agent_geometry.py` fixed under F13 SAH batch (arifOS commit 2026-09-29).
 
 DITEMPA BUKAN DIBERI ⚒️
