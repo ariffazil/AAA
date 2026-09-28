@@ -219,6 +219,18 @@ merged into one green.
   while the deployment sits several commits behind the canonical reference. Ask what the *reference*
   is; if the answer is "the other half of itself", the field cannot see the drift its name promises.
   Either add a comparison against the canonical reference or rename the field to what it measures.
+- **Match the runtime registry, not the assumption.** A gate that decides by set/enum membership
+  (e.g. `LANE_CEILING = {"sado", "sado-dm", "banter", "homie"}` clamping outbound shape by lane)
+  silently no-ops when the actual registry uses different names (`syed_sado`, `sembang_room`).
+  Two failure shapes: (1) the set is hand-rolled from assumed names and never matches a single
+  real entry — the gate passes every test suite yet enforces nothing in production; (2) the set is
+  one entry that happens to match but the next lane added drifts again. **Rule:** before declaring a
+  name-based gate live, read the live registry (YAML / config / DB row) and either (a) populate the
+  set from the registry at module load with `frozenset(real_names)` and a mtime-based re-read, or
+  (b) match a structural pattern the registry actually follows (e.g. shared-room suffix
+  `_sado` / `_group` / `_room` is the convention), and never trust a hand-typed set without
+  diffing it against the registry. A test that exercises one hand-rolled name and reports PASS is
+  not evidence the gate holds for the live registry.
 
 ## What the probe licenses
 
