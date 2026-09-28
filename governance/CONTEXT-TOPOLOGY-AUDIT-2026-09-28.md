@@ -534,4 +534,28 @@ Flaps continued after the kill — 2 external `Stopping…` in the following 10 
 
 ---
 
+## 20. PERIODIC ENFORCER — built by extending the live timer, not adding one
+
+**F13 order (23:26 MYT):** *"bina timer T5b tu."*
+**What was built instead of a new timer:** nothing new was scheduled. `hermes-liveness.timer` already fires every **5 min** (`OnUnitActiveSec=5min`, `AccuracySec=30s`, deliberately no `Persistent=`), its service runs exactly `/root/scripts/hermes-liveness-probe.sh`, and that probe already carries the two properties this check needs: **never sends a message** (a message creates an agent turn — tokens, memory writes, sovereign spam) and **never restarts** (2026-08-15 restart-storm scar). Extending the instrument that exists beats duplicating it (LAW 8: satu masalah, satu owner, satu jalan).
+
+| Piece | Path | Role |
+|---|---|---|
+| Single implementation | `/root/scripts/poller-uniqueness.py` | verdict: `PASS` / `STARTUP_OVERLAP` / `DUPLICATE_POLLER_CAPABLE` / `DUPLICATE_POLLER_RUNNING`; reads no secret, prints none; kills nothing |
+| Cadence | `hermes-liveness-probe.sh` (commit `b5dcfd0`) | `poller=` field on the log line + **own failure class** with transition-only ALERT/RESOLVED latch (`/run/hermes-liveness.poller`), mirroring the existing lane-plane pattern |
+| Boot gate | `boot_anti_duplicate_check.sh` (`39a7b61`) | now *calls* the same module — the inline copy I wrote an hour earlier was itself a second implementation of one rule |
+| Falsifier | `/root/scripts/test_poller_uniqueness.py` | 5 cases, no pytest needed, **ALL-GREEN** |
+
+**Why the probe had been blind:** it did `pgrep -f 'hermes_cli.main gateway' | head -1` — one pid, silently chosen — so a rival poller looked like a healthy bridge. Ownership is now decided by **Telegram socket holders**, not pid count, because the engine calls `setproctitle()` and a pgrep-only check reported `running_gateways=0` while the bridge was serving.
+
+**Two bugs the tests caught while being written** — both real, both mine:
+1. `out.count("pid=11")` also matched `pid=111`, which would have *invented* duplicate verdicts. Fixed to count the comma-terminated `pid=N,`.
+2. My fixture emitted one `ss` line per pid instead of one per socket — the module was right, the test was wrong. Recorded as such rather than quietly loosened.
+
+**Third rival caught during this work:** a second gateway in `session-47196.scope` (parent `-bash` 2244980, started 23:22:12) holding **18 Telegram sockets** with an **invalid token** — it could not answer as our bot, but it contended the instance lock and drove the SIGTERM flap. Removed under the 23:12 ownership order; verdict returned to `PASS`, one holder, 27 sockets, canonical pid matches `gateway_state.json`.
+
+**Proof it is wired:** the scheduled run at `2026-09-28T15:32:37Z` (23:32:37 MYT) — a systemd-timer execution, not a manual invocation — logged `… lanes=OK poller=PASS`. The peer terminal that keeps launching foreground `hermes gateway run` (sessions 46939/47196/47335 family, still open) is now detected within five minutes instead of at the next boot.
+
+---
+
 *Verdict authority: 888-APEX. Seal authority: F13 (human). This file is a BUILD-lane measurement, not a ratification. `CAPABILITY ≠ AUTHORITY`.*
