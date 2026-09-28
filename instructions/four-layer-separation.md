@@ -75,3 +75,18 @@ Scars govern adaptation.
 Adaptation returns to reality.
 ```
 
+
+
+---
+
+## 6. FRAME Cycle Rule — Observer/Mutator Separation (F6 · F13_RATIFIED 2026-09-29)
+
+> **Provenance:** e-da75fb17 (Hermes flag, elevated) · F13 'SAH' 2026-09-29 · gates D1=0-B execution.
+
+```text
+FRAME observes → FRAME reports → arifOS judges → A-FORGE mutates.
+```
+
+- **No organ may both observe AND mutate the same object in one cycle.** FRAME-as-writer-of-state in the same cycle as FRAME-as-reader = separation-of-powers break.
+- **Alert→write paths must pass `arif_judge` before any state change.**
+- FRAME output remains evidence, never a verdict (standing FRAME law); this rule adds the cycle constraint on top.
