@@ -486,10 +486,11 @@
       "cloud_act_exposed": false,
       "status": "live",
       "live_models_probed": [
-        "deepseek-v4-pro",
-        "deepseek-v4-flash"
+        "deepseek-flash",
+        "deepseek-v4-pro"
       ],
-      "last_verified": "2026-07-20",
+      "last_verified": "2026-09-28",
+      "canonicalization_note": "2026-09-28 (333-AGI DS-fix): /models serves ONLY deepseek-flash (V4.1-Flash) + deepseek-v4-pro. deepseek-v4-flash / deepseek-v4-flash-vision-exp retired upstream (still served via vendor compat). Balance $19.99 USD; chat canary 200 (PONG).",
       "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
       "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was 18.53) removed. Use FED :7074 for live balance -- never trust cached registry.",
       "balance_checked_note": "See FED :7074 for last probe timestamp"
@@ -1306,6 +1307,7 @@
       },
       "status": "LIVE",
       "trust_tier": 2,
+      "retirement_note": "LEGACY NAME — retired upstream 2026-09-10 (DeepSeek changelog). Vendor still accepts it and serves via DeepSeek-V4.1-Flash at Flash price; federation litellm keeps a compat group. CANONICAL successor: deepseek/deepseek-flash. Updated 2026-09-28 (333-AGI).",
       "suitable_for": [
         "fast_inference",
         "cost_sensitive_tasks",
@@ -1367,6 +1369,82 @@
         "value_leader_rank": 3,
         "note": "#1 on OpenRouter 10.5T tokens/wk"
       }
+    },
+    {
+      "model_key": "deepseek/deepseek-flash",
+      "model_family": "DeepSeek V4.1",
+      "model_variant": "flash",
+      "provider_ref": "deepseek",
+      "also_available_via": [
+        "qwen-token-plan",
+        "qwen-token-plan-individual",
+        "dashscope-payg"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 131072,
+      "max_output_tokens_note": "FED OPERATIONAL GUARD CAP — DeepSeek provider maximum is 393216 (384K). Do not downgrade the provider figure when describing capability.",
+      "architecture": {
+        "type": "Mixture-of-Experts (MoE)",
+        "note": "V4.1-Flash (released 2026-09-10) — smallest model of the new DeepSeek architecture family. Native multimodal visual understanding. Succeeds retired V4-Flash and V4-Flash-Vision-Exp."
+      },
+      "capabilities": [
+        "reasoning",
+        "tool_call",
+        "code",
+        "plan",
+        "agentic",
+        "analyze",
+        "vision",
+        "multimodal_agent"
+      ],
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "cost_per_1m_input": 0.3,
+      "cost_per_1m_output": 1.2,
+      "cost_notes": "Official 2026-09-28 (peak cache-miss; off-peak = half): $0.30/$1.20 per MTok; cache hit $0.006/$0.003. Source: api-docs.deepseek.com/quick_start/pricing.",
+      "rate_limits": {
+        "rpm": null,
+        "tpm": null,
+        "concurrency": 2500
+      },
+      "hyperparameters": {
+        "temperature_default": 1.0,
+        "top_p_default": 0.95,
+        "thinking_mode_supported": true,
+        "thinking_mode_overrides_hyperparams": true
+      },
+      "status": "LIVE",
+      "trust_tier": 2,
+      "suitable_for": [
+        "fast_inference",
+        "cost_sensitive_tasks",
+        "ops_monitoring",
+        "simple_queries",
+        "kernel_llm_path",
+        "vision_tasks",
+        "multimodal_agent"
+      ],
+      "not_recommended_for": [
+        "constitutional_verdicts_without_witness",
+        "irreversible_seal_decisions"
+      ],
+      "constitutional_roles": [
+        "111_OBSERVE",
+        "444_ROUTE",
+        "555_MEMORY",
+        "777_FORGE"
+      ],
+      "constitutional_roles_forbidden": [
+        "666_JUDGE",
+        "999_SEAL"
+      ],
+      "identity_verified": true,
+      "censorship_profile": null,
+      "live_evidence": "2026-09-28 direct chat canary 200 (PONG); /models serves deepseek-flash; balance $19.99 USD",
+      "last_verified": "2026-09-28",
+      "ingest_note": "Registered 2026-09-28 (333-AGI DeepSeek canonicalization pass) — canonical V4.1-Flash entry; legacy deepseek/deepseek-v4-flash entry kept for compat callers."
     },
     {
       "model_key": "minimax/MiniMax-M3",

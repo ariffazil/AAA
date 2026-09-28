@@ -229,7 +229,7 @@
         },
         {
           "rank": 3,
-          "model": "deepseek-v4-flash",
+          "model": "deepseek-flash",
           "provider_pool": [
             "deepseek",
             "qwen-token-plan"

@@ -17,9 +17,9 @@ providers:
       - id: deepseek-v4-pro
         tier: heavy
         role: 333-AGI primary
-      - id: deepseek-v4-flash
+      - id: deepseek-flash
         tier: cheap
-        role: ops/monitoring
+        role: ops/monitoring (canonical V4.1; replaced v4-flash 2026-09-28)
 
   # ============================================================
   # POOL B — 888-APEX PRIMARY + MiniMax media
@@ -316,7 +316,7 @@ agent_model_bindings:
   555-ASI:
     primary: qwen-token-plan/qwen3.6-flash
     pool: D (qwen-token-plan)
-    fallback: [dashscope-payg/qwen3.8-max, qwen-token-plan-individual/qwen3.6-flash, deepseek/deepseek-v4-flash, ollama]
+    fallback: [dashscope-payg/qwen3.8-max, qwen-token-plan-individual/qwen3.6-flash, deepseek/deepseek-flash, ollama]
 
   555-ASI-VISION:
     primary: dashscope-payg/qwen-vl-max

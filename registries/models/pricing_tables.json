@@ -1,12 +1,16 @@
 {
   "deepseek": {
     "deepseek/deepseek-v4-pro": {
-      "input_per_1M": 0.435,
-      "output_per_1M": 0.87
+      "input_per_1M": 1.32,
+      "output_per_1M": 3.96
+    },
+    "deepseek/deepseek-flash": {
+      "input_per_1M": 0.3,
+      "output_per_1M": 1.2
     },
     "deepseek/deepseek-v4-flash": {
-      "input_per_1M": 0.14,
-      "output_per_1M": 0.28
+      "input_per_1M": 0.3,
+      "output_per_1M": 1.2
     }
   },
   "minimax": {
