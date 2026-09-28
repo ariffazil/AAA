@@ -567,3 +567,29 @@ UNRATIFIED, RATIFICATION_REFUSED, QUARANTINED_REGISTRY_ONLY, CANONICAL, ARCHIVED
 closure-language set, with the false-claims each prevents. Apply when any artifact's standing
 needs to be reported in an audit, manifest, or registry record — and especially when an
 artifact's own front matter contains an authority verb about itself.
+
+## On-disk patch is not loaded patch — verify the live install before claiming a fix is live
+
+A patch that writes to disk is **not** the patch that runs. Two consequences follow:
+
+1. **Python modules are loaded into the process heap at boot.** Editing a `.py` file does not
+   change what already-loaded processes execute. Patch lands on disk → restart required before
+   it is live. Detect: `ls -la <file>.py` mtime newer than the running process `start_time` from
+   `ps -o pid,start`.
+2. **There are usually TWO copies of runtime source** — the live install at `/usr/local/lib/...`
+   and a working/upstream clone at `/tmp/...` or `/root/.../upstream`. Patching the clone does
+   not patch the live install. Detect: compare mtime of the two copies, then `grep -n
+   <unique_marker> /usr/local/lib/<live>` vs the clone to verify which one the live install
+   actually carries. Live install = whichever copy is referenced by the running process.
+
+A static audit that confirms the patch is "on disk in the clone" is reading a different surface
+from the one executing. Always:
+
+- Identify which file the running process actually loaded (`/proc/<pid>/maps` → resolved path)
+- Verify the patch marker is in THAT file, not its clone.
+- If marker is missing from the live install but present in the clone: patch lands on a tomb.
+  Re-patch the live install + restart, never assume the patch took.
+
+This compounds with the rule above: a "fixed and shipped" report that points at the clone file
+is the same defect class as a stale finding — the report reads true against the audit target but
+describes a build that does not run.

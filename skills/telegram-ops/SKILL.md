@@ -259,8 +259,20 @@ The union of every member's scars, specificity preserved. This is the part a sum
 ### Wiring & rollout
 - **Config declaration ≠ runtime evidence.** 23 chat IDs can be declared in `config.yaml` while
   `state.db` holds zero routing rows for all 23.
+- **Patch landed ≠ runtime reachable.** Editing `/tmp/hermes-upstream/...` (the dev clone)
+  changes the file on disk, but the running hermes-agent process imports from the installed
+  package tree at `/usr/local/lib/hermes-agent/...`. Verify reachability with `sha256sum` on
+  both trees AND on the live import path (`open(<module>.__file__).read()` from inside the
+  running process, or `lsof -p <pid>` for the open adapter file). Without that, "wired" is
+  theatre — tests pass on the dev tree, real traffic uses the unpatched installed tree.
 - **The "live gateway" assumption is wrong by default** — check `systemctl is-active` before
   assuming any Telegram routing exists; another profile or another node may own the surface.
+- **Boundary enforcement at one surface is not enforcement at all surfaces.** A `mode_shape`
+  trimmer wired into `TelegramAdapter.send()` catches bot outbound. The chat-assistant reply
+  surface (CLI / chat UI) is a *separate* outbound path and must be gated by a `post_llm_call`
+  hook that returns `{"response": shaped}` so the runtime replaces the LLM output downstream.
+  Pick the surface the human actually reads from, then prove that surface is gated; "the
+  bot gateway has a trimmer" is irrelevant if the leak surfaces in the chat UI instead.
 - **`lanes.yaml` persona mapping ≠ gateway auto-reply.** The lane controls tone/memory when a
   reply fires; `free_response_chats` is what lets it fire.
 - **Two-lane minimum for any two-human group.** The lane is selected by sender `user_id`, not

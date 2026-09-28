@@ -103,6 +103,12 @@ Mode 5's procedure is the two `*-ci-diagnose` references, not the mode stub belo
     and `git push origin main` from it is not a delivery. Verify the remote ref itself
     (`gh api repos/<org>/<repo>/commits/<sha>`) rather than trusting the push output — it prints
     `Everything up-to-date` in states where nothing was pushed.
+11. **On-disk patch is not loaded patch — there are TWO copies of runtime source.** Many federations
+    carry both a live install (e.g. `/usr/local/lib/...`) AND a working/upstream clone
+    (e.g. `/tmp/.../upstream`). Patching the clone does not patch the live install. Before claiming
+    a fix is live: identify which file the running process actually loaded (`/proc/<pid>/maps`),
+    verify the patch marker is in THAT file, not its clone. Patch lands → restart required. Companion
+    pitfall to the same rule in `live-system-audit-discipline`.
 
 ## CONTRADICTION — kept, not averaged
 

@@ -339,6 +339,17 @@ tr '\0' '\n' < /proc/$pid/environ | cut -d= -f1 | sort        # NAMES ONLY — s
 systemctl show <unit> -p EnvironmentFiles                      # which file supplies them
 ```
 
+**`EnvironmentFile=` is NOT a shell script — it is a literal KEY=VALUE parser.** systemd reads each line as `name=value` and never performs shell expansion; `${VAR}` and `$VAR` reach the process as the literal four- or five-character string. A line that *works perfectly* when `source`d in bash (e.g. `export HERMES_TELEGRAM_BOT_TOKEN="${ASI_BOT_TOKEN}"`) silently breaks the moment systemd loads it: the running process sees the literal `${ASI_BOT_TOKEN}` as its token value, every downstream API call receives a non-token, and the symptom looks like "the bot is alive but doesn't answer". Compare the *file* with the *process* before assuming the env file is correct:
+
+```bash
+grep -E '^(ASI_BOT_TOKEN|HERMES_TELEGRAM_BOT_TOKEN)\b' /root/.secrets/kunci-mas.flat.env
+tr '\0' '\n' < /proc/$(systemctl show hermes-asi-gateway -p MainPID --value)/environ \
+  | grep -E '^(ASI_BOT_TOKEN|HERMES_TELEGRAM_BOT_TOKEN)='
+```
+
+A line that looks like a literal `${...}` in the process's environment is the diagnosis — fix is to inline the value or to put the alias through a generator script (a `make vault-generate` step that expands, never a flat `.env` typed by hand). Same defect also affects `systemctl set-environment` and `ExecStart=` lines; only a real shell (`/bin/sh -c "..."`) interpolates.
+```
+
 **Never grep the `KEY=VALUE` lines and redact afterwards.** A line-level pattern matches the whole
 line, so a **value** that happens to contain the pattern token selects that line — and `grep` has
 already written the value down the pipe before any `sed` runs. Measured: a filter for the substrings
