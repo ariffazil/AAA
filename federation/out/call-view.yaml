@@ -29,7 +29,6 @@ role_call:
     - brave
     - capability_index
     - context7
-    - delegation_ledger
     - fed
     - firecrawl
     - gemini_docs
@@ -99,7 +98,6 @@ role_call:
     server:
     - aforge
     - arifos
-    - delegation_ledger
     - fed
     - geox
     - graphiti
@@ -123,7 +121,6 @@ role_call:
     - aforge
     - arifos
     - brave
-    - delegation_ledger
     - fed
     - geox
     - hermes_agent

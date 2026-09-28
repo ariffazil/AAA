@@ -18,11 +18,7 @@
   "delegation": [
     "fed",
     "hermes_agent",
-    "delegation_ledger",
     "openrouter"
-  ],
-  "design": [
-    "design_intelligence"
   ],
   "docs": [
     "context7",

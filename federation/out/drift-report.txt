@@ -1,20 +1,20 @@
 ============================================================
 DRIFT REPORT — derived from federation.yaml
 ============================================================
-declared servers  : 33
-registered (live) : 32
+declared servers  : 32
+registered (live) : 31
 public surface    : 2
 orphan skills     : 0
 
 ROLE-DERIVED PARITY (least-capability, not forced equality)
 ------------------------------------------------------------
-  opencode     [builder   ] -> 32 servers, 82 skills
+  opencode     [builder   ] -> 31 servers, 82 skills
   agy          [researcher] -> 17 servers, 82 skills
   hermes       [researcher] -> 17 servers, 82 skills
-  openclaw     [edge      ] -> 15 servers, 82 skills
-  claude       [clerk     ] -> 11 servers, 82 skills
-  qwen         [clerk     ] -> 11 servers, 82 skills
-  kimi         [clerk     ] -> 11 servers, 82 skills
+  openclaw     [edge      ] -> 14 servers, 82 skills
+  claude       [clerk     ] -> 10 servers, 82 skills
+  qwen         [clerk     ] -> 10 servers, 82 skills
+  kimi         [clerk     ] -> 10 servers, 82 skills
   mcporter     [probe     ] -> 5 servers, 82 skills
 
 INVARIANT: 5 core organs universal to ALL agents
