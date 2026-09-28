@@ -594,4 +594,26 @@ select state, produced_len, sent_len, delivered_receipt_id, length(content)
 
 ---
 
+## 22. BOT→BOT LANE CLOSED — and the budget was never the lever
+
+**F13 order (00:04, 2026-09-29):** *"setel lane bot→bot tu."* Commits `f3ae37f3b8` (fix) + `de7c360005` (test hermeticity). Engine tree clean.
+
+**Measurement first:** 48 delivery obligations failed against chat `8410138119` — **the bot's own user id** (self-chat loop) — largest burned reply 8,780 chars; 88 send failures in one 90-minute window; `Blocked unauthorized user 8410138119` ×45 and `8908024140` ×28 (authz already refuses most of those). **The loop guard could never have fixed this**: its defaults are 20 events / 300 s window / 600 s cooldown, and ~12/hour never trips them. Tightening the budget would throttle the burn, not stop it. Deliverability is a property of the transport.
+
+**Placement, twice-learned.** My first attempt (23:3x) refused bot DMs inside `_admit_bot_message` and **broke** `test_admitted_bot_traffic_is_cut_at_the_budget` — bot DMs are deliberately admitted and metered there, a tested intent, not an oversight. I reverted it rather than overrule another lane's contract. This version drops inside `_hm_admit_event`, **after** the metering charge and **before** the turn is handed on: the budget still counts the message, and no LLM is paid for a reply Telegram must reject. Groups and humans are untouched; the predicate is Telegram-only because that is the fact.
+
+| Test added (17 pass in that file; 42 across four files) | What it forbids |
+|---|---|
+| predicate shape | blocking groups (A2A needs them), humans, or other platforms |
+| `charge < drop < handed_on` (source-order guard) | a future edit moving the drop earlier, silently rewriting the metering contract |
+| awaited both-way case | fake green: an un-awaited coroutine is "not None" whatever the gates decide |
+
+**Live read-out, stated precisely:** the one `Forbidden` after the restart came from **pid 2399087**, the pre-restart instance; the instance that loaded the fix (2404688, connected 00:10:49) logged **zero** such failures, and no drop has fired yet because that traffic is intermittent (~12/hour). Claim state: **deployed and unit-proven, not yet witnessed on traffic** — unlike §21, which has live receipts.
+
+### A false check I ran, recorded so it is not reused
+
+To attribute one unrelated failing test I ran `git stash push -- <my 3 files>` and re-ran it. **My files were already committed**, so the stash was empty and the run tested my own code — the check proved nothing. The actual cause came from reading the mechanism: `_extra_or_secret` ranks scoped env **above** `config.extra`, and this login shell exports `TELEGRAM_ALLOWED_CHATS` with 31 production chat ids, so `test_list_form`'s own fixture `{-100, -200}` lost to the operator's environment. Unsetting the var by hand: 4 passed. Fix = autouse `delenv` (product correct, test not hermetic), not a config edit.
+
+---
+
 *Verdict authority: 888-APEX. Seal authority: F13 (human). This file is a BUILD-lane measurement, not a ratification. `CAPABILITY ≠ AUTHORITY`.*
