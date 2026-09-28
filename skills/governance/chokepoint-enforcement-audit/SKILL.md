@@ -153,3 +153,57 @@ notify=True. A receipt that omits the dedup verdict was produced by code that ne
 and the gate is the only thing that prevents the next flood. State `delivery_health: SUPPRESSED`
 explicitly when notify is skipped, so the ledger shows the gate fired even though no Telegram
 message went out.
+
+## A gate is only as strong as the chain that feeds it
+
+Adding a parameter to the boundary function is the cheap half. The expensive half is
+whoever populates that parameter upstream — and whether that populator resolves the
+right thing at the right time. A gate that takes `(mode, content, lane)` but receives
+`lane=None` because no caller wires it is the same defect as a guard that's not on PATH.
+
+Measure the full chain, not just the gate function:
+
+1. **Identify what the gate needs** that the caller cannot infer alone — e.g. lane,
+   audience, blast radius. If the caller cannot compute it from its inputs, the gate
+   needs an upstream resolver.
+2. **Trace the populate chain backwards from the gate.** Every hop that *could*
+   populate the field but does not is a leak. Grep for the assignment; grep for the
+   field name on the source dataclass; grep for `getattr(source, "<field>", None)`
+   patterns — a getattr-with-default returning the default is the smoking gun for a
+   missing populator.
+3. **Decide where the resolution belongs.** Three options: (a) the caller populates
+   before calling the gate; (b) the gate calls its own resolver; (c) a dedicated
+   populator sits between them. Pick by separation of concerns — gates that load
+   registries they should not know about violate single responsibility; populators
+   that touch the boundary's output violate direction of dependency.
+4. **Add the populator, then re-probe.** A passing test that calls the gate directly
+   with all parameters filled proves nothing about the chain. The test must walk
+   the real call path with realistic inputs and confirm the parameter arrives.
+5. **Defense in depth is honest only if the layers are independent.** If the gate
+   and the populator share a registry, share a cache, or share an import path, a
+   single broken import breaks both — you have one gate wearing two hats. Make each
+   layer fail closed on its own and verify the failure modes differ.
+
+Measured shape: a Telegram mode-shape boundary was patched to accept a `lane`
+parameter and clamp output to `light` shape when the lane was in a shared/banter
+ceiling set. The boundary's own tests passed (4/4 scenarios). But no code path
+populated the lane metadata — `source.lane` did not exist on the dataclass, and
+`getattr(source, "lane", None)` returned `None` everywhere the boundary was called.
+The gate's clamp never fired in production despite the boundary being "enforced."
+Probe-first audit caught it; a test that called `apply_mode_shape` directly with
+`lane="sado"` would have shipped the broken gate as "verified."
+
+## Audit checklist for a wired gate
+
+When auditing any gate that takes a context-derived parameter (lane, role, scope,
+blast radius, audience), confirm each link in the chain explicitly:
+
+- [ ] The parameter is declared on the gate's signature.
+- [ ] The parameter is read in the gate body and acted upon (not silently dropped).
+- [ ] A populator upstream fills the parameter from a real source.
+- [ ] The populator runs on every call path, not just the test path.
+- [ ] The populator's source-of-truth is live (not cached past a config reload).
+- [ ] The populator fails closed — unknown input → deny, not default-allow.
+- [ ] End-to-end: trigger the realistic input, confirm the parameter arrived at the gate.
+- [ ] End-to-end: trigger the realistic DENIED input, confirm the gate's deny path
+      was reached and emitted a receipt.
