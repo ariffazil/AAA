@@ -524,6 +524,7 @@
   "key_aliases": {
     "deepseek/deepseek-v4-pro": "deepseek-v4-pro",
     "deepseek/deepseek-v4-flash": "deepseek-v4-flash",
+    "deepseek/deepseek-flash": "deepseek-flash",
     "mimo/mimo-v2.5-pro": "mimo-v2.5-pro",
     "mimo/mimo-v2.5-pro-ultraspeed": "mimo-v2.5-pro-ultraspeed",
     "glm/glm-5.2": "glm-5.2",
