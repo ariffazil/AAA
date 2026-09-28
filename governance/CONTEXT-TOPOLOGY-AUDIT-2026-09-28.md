@@ -617,3 +617,32 @@ To attribute one unrelated failing test I ran `git stash push -- <my 3 files>` a
 ---
 
 *Verdict authority: 888-APEX. Seal authority: F13 (human). This file is a BUILD-lane measurement, not a ratification. `CAPABILITY ≠ AUTHORITY`.*
+
+### §22 amendment (00:35) — my "lane closed" framing was wrong for the live traffic
+
+The fix shipped for its stated subject (bot-authored DM): `_bot_dm_undeliverable` + both
+chokepoints (`_hm_admit_event`, `run_busy` follow-up), 42 tests green, tree clean.
+
+But the traffic still failing after it is **not bot→bot**. Session origin for the failing rows:
+
+```
+chat_type='dm'  is_bot=None  user_id='267378578'  chat_id='8410138119'
+```
+
+`267378578` is Arif (the DM that *is* working: receipts 152284/152287/152289/152294), and
+`8410138119` is the bot's own user id. So these are human-sourced messages landing in a chat the
+bot can never post to — `is_bot` is legitimately absent, and both my drop and the pre-existing
+self-chat mint guard at `base.py:4205` correctly do not fire. 4 obligations minted in 9 minutes
+against that chat, 0 drops logged — consistent, not a bypass.
+
+Consequences stated plainly:
+1. "the lane is closed" was too fast. Closed: bot-authored DM generation. Still open: turns
+   generated for a self-chat target, which needs the bot's own id compared against `chat_id` at
+   admission, not `is_bot`.
+2. The historical 48-row attribution to "a bot looping at itself" is unverified — same
+   chat_id/user_id shape suggests Arif-origin events, not bot loops. §22's earlier wording
+   inherits that uncertainty and is marked as such rather than rewritten.
+3. A question for F13, not for code: why do some of Arif's messages arrive addressed to
+   8410138119 instead of his own DM chat? That is a Telegram-side routing fact only he can
+   confirm (e.g. where he is typing from), and it decides whether the fix belongs at admission
+   (drop self-chat turns) or in the client behaviour.
