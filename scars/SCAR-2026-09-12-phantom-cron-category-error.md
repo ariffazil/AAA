@@ -1,0 +1,1 @@
+/root/.hermes/scars/drafts/SCAR-2026-09-12-phantom-cron-category-error.md

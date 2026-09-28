@@ -1,0 +1,1 @@
+/root/forge_work/eureka-20260924-hermes-bridge/EUREKA-SESSION-2026-09-24-HERMES-HUMAN-BRIDGE.md
