@@ -1,0 +1,1 @@
+/root/arifOS/vault/scars/SCAR-2026-09-04-002-federation-silent-swap-closed.md

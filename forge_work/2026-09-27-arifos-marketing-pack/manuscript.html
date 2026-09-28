@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ARIF — Reality Intelligence Framework</title>
+<style>
+@page { size: A4; margin: 0; }
+html, body { margin: 0; padding: 0; background: #0a1226; }
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #0a1226;
+  --panel: #121a33;
+  --panel2: #1a2342;
+  --gold: #e6b954;
+  --gold-dim: #a8884a;
+  --teal: #4dc4c4;
+  --red: #e86565;
+  --amber: #f0a04a;
+  --white: #f5f7ff;
+  --dim: #9aa5bf;
+  --border: #2a3658;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: var(--bg);
+  color: var(--white);
+  padding: 17mm 16mm 20mm 16mm;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+  font-family: 'DejaVu Sans', sans-serif;
+}
+.page:last-child { page-break-after: auto; }
+
+/* ─── Typography ─── */
+.eyebrow {
+  font-size: 7.5pt; letter-spacing: 2.6pt; text-transform: uppercase;
+  color: var(--gold); font-weight: bold; margin: 0 0 3mm 0;
+}
+h1 { font-size: 28pt; line-height: 1.16; margin: 0 0 5mm 0; color: var(--white); font-weight: bold; }
+h2 { font-size: 19pt; line-height: 1.2; margin: 0 0 4mm 0; color: var(--white); font-weight: bold; }
+h3 { font-size: 12.5pt; margin: 0 0 2mm 0; color: var(--gold); font-weight: bold; }
+p { font-size: 10.5pt; line-height: 1.62; margin: 0 0 4mm 0; color: var(--white); }
+p.lead { font-size: 12.5pt; line-height: 1.6; color: var(--dim); }
+.dim { color: var(--dim); }
+.gold { color: var(--gold); }
+.teal { color: var(--teal); }
+.red { color: var(--red); }
+.amber { color: var(--amber); }
+strong { color: var(--white); }
+.small { font-size: 9.5pt; }
+
+/* ─── Rules ─── */
+.rule { height: 1px; background: var(--border); margin: 3mm 0 4mm 0; }
+.rule-gold { height: 2px; background: var(--gold); width: 18mm; margin: 3mm 0 4mm 0; }
+
+/* ─── Footer band ─── */
+.pg {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  border-top: 1px solid var(--border);
+  padding: 3.5mm 16mm 4mm 16mm;
+  font-size: 7pt; color: var(--dim); letter-spacing: 1.4pt;
+  text-align: right; text-transform: uppercase;
+}
+.pg::before {
+  content: "ARIF · REALITY INTELLIGENCE FRAMEWORK";
+  float: left; letter-spacing: 1.2pt;
+}
+
+/* ─── Figure ─── */
+.fig { width: 100%; margin: 3mm 0 2mm 0; }
+.fig img { width: 100%; display: block; }
+.cap { font-size: 7.5pt; color: var(--dim); font-style: italic; margin-top: 2mm; }
+
+/* ─── Component: panel ─── */
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 3px; padding: 5mm 5mm; margin: 0 0 5mm 0; }
+.panel-gold { border: 1.5px solid var(--gold); }
+.panel h3 { font-size: 11.5pt; }
+.panel-teal { border: 1px solid var(--teal); }
+.panel-red { border: 1px solid var(--red); }
+
+/* ─── Component: statement ─── */
+.statement {
+  background: var(--panel2); border-left: 3px solid var(--gold);
+  padding: 5mm 5.5mm; margin: 5mm 0;
+}
+.statement p { font-size: 13pt; margin: 0; line-height: 1.5; }
+.statement .attr { font-size: 8pt; color: var(--dim); margin-top: 2mm; }
+
+/* ─── Component: metric row ─── */
+.metrics { display: flex; gap: 3mm; margin: 4mm 0; }
+.metric { flex: 1; background: var(--panel); border: 1px solid var(--border); border-radius: 3px; padding: 3.5mm; }
+.metric .k { font-size: 7pt; letter-spacing: 1.4pt; text-transform: uppercase; color: var(--dim); margin-bottom: 1.5mm; }
+.metric .v { font-size: 14.5pt; font-weight: bold; color: var(--gold); }
+.metric .d { font-size: 8pt; color: var(--dim); margin-top: 1mm; }
+
+/* ─── Component: two-column ─── */
+.cols { display: flex; gap: 5mm; }
+.col { flex: 1; }
+
+/* ─── Component: numbered list ─── */
+ol.numbered { counter-reset: item; list-style: none; padding: 0; margin: 0; }
+ol.numbered > li {
+  counter-increment: item; position: relative; padding-left: 9mm;
+  margin-bottom: 4.5mm; font-size: 10.5pt; line-height: 1.55;
+}
+ol.numbered > li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute; left: 0; top: 0;
+  font-size: 9.5pt; font-weight: bold; color: var(--gold);
+}
+ol.numbered > li b { display: block; color: var(--white); font-size: 11pt; margin-bottom: 1.2mm; }
+
+/* ─── Component: table ─── */
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 4mm 0; }
+th {
+  background: var(--panel2); color: var(--gold); font-size: 8.5pt; text-transform: uppercase;
+  letter-spacing: 0.9pt; text-align: left; padding: 3.2mm 3mm; border-bottom: 1.5px solid var(--gold);
+}
+td {
+  font-size: 10pt; padding: 3.2mm 3mm; border-bottom: 1px solid var(--border);
+  color: var(--white); vertical-align: top; line-height: 1.5;
+}
+tr:nth-child(even) td { background: rgba(18, 26, 51, 0.5); }
+td.gold { color: var(--gold); font-weight: bold; }
+td.dim { color: var(--dim); }
+
+/* ─── Component: callout ─── */
+.callout { background: var(--panel2); border: 1px solid var(--border); border-radius: 3px; padding: 4mm; margin: 3.5mm 0; }
+.callout .label { font-size: 7pt; letter-spacing: 1.5pt; text-transform: uppercase; color: var(--gold); margin-bottom: 2mm; font-weight: bold; }
+
+/* ─── Cover ─── */
+.cover { padding: 0; }
+.cover-inner {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  padding: 42mm 20mm 20mm 20mm;
+  display: flex; flex-direction: column;
+}
+.cover-eyebrow { font-size: 8.5pt; letter-spacing: 4pt; text-transform: uppercase; color: var(--gold); font-weight: bold; }
+.cover-title { font-size: 54pt; line-height: 1.0; font-weight: bold; color: var(--white); margin: 8mm 0 0 0; letter-spacing: -0.5pt; }
+.cover-title .gold { color: var(--gold); }
+.cover-sub { font-size: 14pt; line-height: 1.4; color: var(--dim); margin: 7mm 0 0 0; max-width: 150mm; }
+.cover-rule { height: 3px; width: 40mm; background: var(--gold); margin: 10mm 0; }
+.cover-meta { font-size: 9pt; color: var(--dim); line-height: 1.7; margin-top: auto; }
+.cover-meta b { color: var(--white); }
+.cover-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  border-top: 1px solid var(--border); padding: 6mm 20mm;
+  display: flex; justify-content: space-between;
+  font-size: 8pt; color: var(--dim); letter-spacing: 0.8pt;
+}
+
+/* ─── TOC ─── */
+.toc-item { display: flex; align-items: baseline; margin-bottom: 2.6mm; font-size: 9.5pt; }
+.toc-num { color: var(--gold); font-weight: bold; width: 10mm; flex-shrink: 0; }
+.toc-title { color: var(--white); }
+.toc-dots { flex: 1; border-bottom: 1px dotted var(--border); margin: 0 3mm; transform: translateY(-1mm); }
+
+/* ─── Tight page (overflow control) ─── */
+.tight .fig { margin: 2mm 0 1.5mm 0; }
+.tight .fig img { width: 92%; margin: 0 auto; }
+.tight p { margin-bottom: 2.6mm; }
+.tight p.lead { font-size: 11.5pt; margin-bottom: 3mm; }
+.tight h1 { font-size: 26pt; margin-bottom: 3.5mm; }
+.tight .statement { margin: 3mm 0; padding: 4mm 5mm; }
+.tight .cols { margin-bottom: 0; }
+/* ─── Compact table (dense comparison / appendix) ─── */
+.compact td, .compact th { padding: 2.2mm 3mm; font-size: 9pt; line-height: 1.45; }
+/* ─── Section divider ─── */
+.divider-num { font-size: 60pt; font-weight: bold; color: var(--panel2); line-height: 1; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ 1 · COVER ══════════════ -->
+<div class="page cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">A New Category For AI</div>
+    <div class="cover-title">Reality<br><span class="gold">Intelligence</span></div>
+    <div class="cover-sub">ARIF is the framework. arifOS is the operating system. Together they keep intelligence aligned with changing reality — through verification, consequence, authority, recovery, and adaptation.</div>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">
+      <b>ARIF</b> — the framework<br>
+      <b>arifOS</b> — the operating system<br>
+      Prepared for enterprise, government, and sovereign AI programs
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <span>EXECUTIVE BRIEFING</span>
+    <span>2026</span>
+  </div>
+</div>
+
+<!-- ══════════════ 2 · TOC ══════════════ -->
+<div class="page">
+  <div class="eyebrow">Contents</div>
+  <h1>What this document covers</h1>
+  <div class="rule-gold"></div>
+  <p class="lead" style="margin-bottom:6mm;">A structured introduction to Reality Intelligence, the framework behind it, and the operating system that implements it.</p>
+
+  <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">Executive Summary</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">The AI Industry Problem</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">The Birth of Reality Intelligence</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">What Is ARIF</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">What Is arifOS</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Core Architecture</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Competitive Landscape</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">08</span><span class="toc-title">Why Existing Approaches Fail</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">09</span><span class="toc-title">The Reality Intelligence Difference</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">10</span><span class="toc-title">Six Core Innovations</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">11</span><span class="toc-title">The Moat</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">12</span><span class="toc-title">Enterprise Use Cases</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">13</span><span class="toc-title">Government &amp; Sovereign AI</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">14</span><span class="toc-title">Multi-Agent Governance</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">15</span><span class="toc-title">Recovery Intelligence</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">16</span><span class="toc-title">Future Vision</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">17</span><span class="toc-title">Founder Perspective</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">18</span><span class="toc-title">Closing Thesis</span><span class="toc-dots"></span></div>
+  <div class="toc-item"><span class="toc-num">19</span><span class="toc-title">Claim-to-Evidence Status (Appendix)</span><span class="toc-dots"></span></div>
+
+  <div class="panel" style="margin-top:12mm;">
+    <div class="label" style="font-size:7pt;letter-spacing:1.5pt;text-transform:uppercase;color:var(--gold);font-weight:bold;margin-bottom:2mm;">A note on this document</div>
+    <p class="small dim" style="margin:0;">This is a positioning and framework document, not a product specification. It describes a category and an architecture. Every major capability statement carries an evidence status in the appendix (§19): implemented, tested internally, or independently verified — and nothing is claimed beyond its stated status. <b>Revision B · 2026-09-27.</b></p>
+  </div>
+  <div class="pg">02</div>
+</div>
+
+<!-- ══════════════ 3 · EXECUTIVE SUMMARY ══════════════ -->
+<div class="page">
+  <div class="eyebrow">01 &nbsp;·&nbsp; Executive Summary</div>
+  <h1>The next frontier is not more intelligence.</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Every major AI investment of the past three years has gone into making models more capable. Comparatively little has gone into making them <span class="gold">harder to detach from reality</span>. That is the gap Reality Intelligence addresses.</p>
+
+  <div class="statement">
+    <p>Most AI systems optimize knowledge. ARIF optimizes <b>reality alignment</b>.</p>
+    <div class="attr">The central thesis</div>
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <h3>What ARIF is</h3>
+      <p class="small">A framework for building intelligence systems that continuously discover, verify, adapt to, and remain aligned with reality. It defines the principles — not a specific product.</p>
+    </div>
+    <div class="col">
+      <h3>What arifOS is</h3>
+      <p class="small">The governance runtime that implements ARIF — an operating-system layer for agentic intelligence (not a device OS). Governed memory, reality verification, authority routing, consequence tracking, and continuous adaptation.</p>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <h2>Three shifts that define the category</h2>
+
+  <table>
+    <tr><th style="width:38%;">Conventional AI</th><th>Reality Intelligence</th></tr>
+    <tr><td class="dim">Asks: "What do I know?"</td><td class="gold">Asks: "What should be verified next?"</td></tr>
+    <tr><td class="dim">Retrieves stored memory</td><td class="gold">Navigates present reality</td></tr>
+    <tr><td class="dim">Learns from data</td><td class="gold">Learns from consequence</td></tr>
+  </table>
+
+  <div class="metrics">
+    <div class="metric"><div class="k">Category</div><div class="v">Reality<br>Intelligence</div><div class="d">A governance and reality substrate</div></div>
+    <div class="metric"><div class="k">Position</div><div class="v">Proposed<br>Layer</div><div class="d">Between capability and deployment</div></div>
+    <div class="metric"><div class="k">Moat</div><div class="v">Earned,<br>not bought</div><div class="d">Scars, consequence, verification</div></div>
+  </div>
+
+  <div class="callout">
+    <div class="label">Why it matters now</div>
+    <p class="small" style="margin:0;">Agentic systems are moving from demonstration to production. The moment an AI system takes consequential action — spending money, moving data, making commitments — the questions change. Not "how capable is it?" but "what does it verify, who authorizes it, and what happens when it is wrong?" Reality Intelligence answers those questions structurally, not by policy.</p>
+  </div>
+  <div class="pg">03</div>
+</div>
+
+<!-- ══════════════ 4 · THE PROBLEM ══════════════ -->
+<div class="page tight">
+  <div class="eyebrow">02 &nbsp;·&nbsp; The AI Industry Problem</div>
+  <h1>Seven ways current AI fails in production</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">These are not edge cases. They are structural properties of systems that answer from stored knowledge rather than verified reality. Each has caused measurable damage in deployed environments.</p>
+
+  <div class="fig">
+    <img src="figs/fig03_seven_failures.png" alt="Seven failure modes of current AI">
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <h3>Failures of grounding</h3>
+      <p class="small"><b>Hallucination</b> — confident fabrication with no connection to verifiable fact. <b>Memory poisoning</b> — false data ingested once, then treated as truth indefinitely. Both stem from the same root: no distinction between what was stored and what is true.</p>
+    </div>
+    <div class="col">
+      <h3>Failures of control</h3>
+      <p class="small"><b>Tool sprawl</b> — capability added without governance. <b>Agent drift</b> — goals diverging from intent over time. <b>Governance failures</b> — authority collapsing exactly when consequence is highest. Capability is expanding faster than the structures that bound it.</p>
+    </div>
+  </div>
+
+  <div class="statement">
+    <p>Current systems answer from model weights, retrieval, and generated reasoning. None of the three can distinguish a confident claim from a verified one.</p>
+  </div>
+
+  <p>The industry's response so far has been to make models bigger, retrieval better, and prompts more elaborate. That improves the <i>quality</i> of answers. It does not add the one property that matters for consequential action: <strong>a structural relationship between what the system believes and what is actually true right now.</strong></p>
+  <div class="pg">04</div>
+</div>
+
+<!-- ══════════════ 5 · BIRTH OF REALITY INTELLIGENCE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">03 &nbsp;·&nbsp; The Birth of Reality Intelligence</div>
+  <h1>From knowledge systems to reality systems</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">The shift is not a better model. It is a different question asked at every step of the loop.</p>
+
+  <div class="fig">
+    <img src="figs/fig01_cover_reality_vs_knowledge.png" alt="Knowledge systems versus reality intelligence">
+  </div>
+
+  <p>Knowledge systems — the dominant paradigm — treat intelligence as a retrieval problem. Build a large enough store of patterns, retrieve the right one, generate an answer. This works while the stakes are low and the environment is stable. It breaks when the answer must be <em>true now</em>, not merely plausible from what was learned before.</p>
+
+  <p>Reality Intelligence treats intelligence as a navigation problem. The system does not ask what it remembers. It asks what must be verified next, probes the world for evidence, checks whether it has the authority to act, and tracks the consequence of having acted.</p>
+
+  <div class="callout">
+    <div class="label">The framing</div>
+    <p style="margin:0;">Traditional AI <span class="dim">retrieves memories</span>. Reality Intelligence <span class="gold">navigates reality</span>. The difference is not speed or scale — it is what the system is oriented toward.</p>
+  </div>
+
+  <p class="small dim">This is why the category matters beyond a single product. Every agentic system eventually faces the same fork: keep answering from memory, or build the machinery to verify. Reality Intelligence is the name for the second path, and the discipline of taking it seriously.</p>
+  <div class="pg">05</div>
+</div>
+
+<!-- ══════════════ 6 · WHAT IS ARIF ══════════════ -->
+<div class="page">
+  <div class="eyebrow">04 &nbsp;·&nbsp; What Is ARIF</div>
+  <h1>A framework for intelligence aligned with reality</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">ARIF — the Reality Intelligence Framework — defines the principles an intelligence system must hold to remain aligned with changing reality. It is a specification of behaviour, not a product.</p>
+
+  <h3 style="margin-top:5mm;">The framework rests on five principles</h3>
+  <ol class="numbered">
+    <li><b>Reality constrains every model.</b> No model, memory, plan, or previous answer is protected from contradictory evidence. When reality disagrees with the map, the map changes.</li>
+    <li><b>Evidence requires provenance.</b> Every claim carries its origin — observed, measured, reported, remembered, inferred, or predicted. These classes are never silently converted into one another.</li>
+    <li><b>Uncertainty must survive computation.</b> "Unknown" is a valid and necessary output. Confidence is not truth. Consensus is not truth. Prediction is not outcome.</li>
+    <li><b>Capability is not authority.</b> Being able to do something is categorically separate from being permitted to do it. The two are governed independently.</li>
+    <li><b>Outcome outranks intention.</b> After acting, the system observes what actually changed. It never certifies success merely because an action ran.</li>
+  </ol>
+
+  <div class="rule"></div>
+
+  <p>These principles are not philosophy for its own sake. Each maps to a concrete architectural requirement — provenance becomes a typed evidence layer; the authority principle becomes a separate permission system; outcome-over-intention becomes consequence tracking with receipts.</p>
+
+  <div class="statement">
+    <p>ARIF is the discipline. arifOS is the machine that enforces it.</p>
+  </div>
+  <div class="pg">06</div>
+</div>
+
+<!-- ══════════════ 7 · WHAT IS ARIFOS ══════════════ -->
+<div class="page">
+  <div class="eyebrow">05 &nbsp;·&nbsp; What Is arifOS</div>
+  <h1>The operating system for reality intelligence</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">arifOS is a governance and reality substrate for agentic intelligence — an operating-system layer (a governance runtime, not a device OS) that sits between AI capability and real-world deployment. It enforces the ARIF principles on the consequential actions that pass through it; coverage of execution paths is treated as a measured engineering property, not an assumed one.</p>
+
+  <h3 style="margin-top:5mm;">Five subsystems</h3>
+
+  <table>
+    <tr><th style="width:32%;">Subsystem</th><th>Function</th></tr>
+    <tr><td class="gold">Governed memory</td><td>Knowledge carries provenance and a validity state. Memory can be revised or retired when reality contradicts it.</td></tr>
+    <tr><td class="gold">Reality verification</td><td>Live evidence probes replace assumptions. Independent verification precedes consequential action.</td></tr>
+    <tr><td class="gold">Authority routing</td><td>Permission is granted separately from capability, scoped to a specific objective, and expires.</td></tr>
+    <tr><td class="gold">Consequence tracking</td><td>Every action produces a receipt. Outcomes are observed and fed back, not assumed.</td></tr>
+    <tr><td class="gold">Continuous adaptation</td><td>Beliefs update from real outcomes. Correction latency is measured as a first-class operating metric — alongside prevention, containment, and recurrence.</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="label">What arifOS is not</div>
+    <p class="small" style="margin:0;">It is not a language model. It is not a vector store or a retrieval system. It is not an agent orchestration platform in the conventional sense. It is the layer that governs how any of those are permitted to act — and the layer that holds them to what actually happened.</p>
+  </div>
+
+  <p>This means arifOS is model-agnostic and vendor-neutral by design. It governs capability rather than implementing it. The intelligence can come from any model; the reality discipline is what arifOS supplies.</p>
+  <div class="pg">07</div>
+</div>
+
+<!-- ══════════════ 8 · CORE ARCHITECTURE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">06 &nbsp;·&nbsp; Core Architecture</div>
+  <h1>Reality navigation: eight stages, no skipped invariants</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">The core loop of arifOS is a fixed sequence of invariants. Each stage's output feeds the next. Invariants are never skipped — while evidence that is still fresh may be reused without redundant work. Reuse is a property of verified evidence, not a shortcut around verification.</p>
+
+  <div class="fig">
+    <img src="figs/fig02_navigation_architecture.png" alt="Reality navigation eight stages">
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <h3>Before action</h3>
+      <p class="small">The question is stated. The observation itself is checked for permission — even looking can carry authority requirements. Reality is probed for evidence proportionate to consequence. Authority is checked for this specific act; constraints are checked against known failure boundaries; verification confirms independently. Immediately before committing a consequential effect, authorization is revalidated against the action as it will actually execute.</p>
+    </div>
+    <div class="col">
+      <h3>After action</h3>
+      <p class="small">The action is the smallest reversible step available. Its consequence is receipted — what actually changed. Adaptation folds the outcome back into memory, which may then be revised by reality rather than defending itself against it.</p>
+    </div>
+  </div>
+
+  <div class="statement">
+    <p>Memory serves reality. Reality does not serve memory.</p>
+    <div class="attr">The invariant the architecture enforces</div>
+  </div>
+  <div class="pg">08</div>
+</div>
+
+<!-- ══════════════ 9 · TRADITIONAL VS REALITY ══════════════ -->
+<div class="page">
+  <div class="eyebrow">06 &nbsp;·&nbsp; Core Architecture</div>
+  <h1>Two loops, one difference that matters</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Side by side, the two paradigms process the same request. Only one of them has a step where reality can disagree with the system before it acts.</p>
+
+  <div class="fig">
+    <img src="figs/fig05_traditional_vs_reality.png" alt="Traditional AI loop versus reality intelligence loop">
+  </div>
+
+  <p>The conventional loop is shorter and cheaper per call. It retrieves, generates, answers. The reality loop costs more at each step — it probes, verifies, checks authority — but it produces an action that can be defended: <em>here is the evidence, here is the permission, here is the receipt.</em></p>
+
+  <div class="callout">
+    <div class="label">The economics</div>
+    <p class="small" style="margin:0;">The extra cost of verification is paid once per action. The cost of an unverified consequential action — regulatory, financial, reputational — is paid indefinitely. Reality Intelligence reduces the expected cost of the second kind. It does not make it zero: verification lowers expected harm, residual risk remains — and some harms, once released, cannot be recovered, only prevented.</p>
+  </div>
+  <div class="pg">09</div>
+</div>
+
+<!-- ══════════════ 10 · COMPETITIVE LANDSCAPE ══════════════ -->
+<div class="page tight">
+  <div class="eyebrow">07 &nbsp;·&nbsp; Competitive Landscape</div>
+  <h1>Where existing categories sit</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Every current category solves part of the problem — and several, combined, cover much of it. The closest alternatives to arifOS are usually combinations of established components: a policy engine (Open Policy Agent), authorization (Cedar), durable workflows (Temporal), agent SDK approvals, sandboxed harnesses. Each supplies part of the discipline. None joins the full loop — evidence, authority, consequence, correction — around one objective.</p>
+
+  <div class="fig" style="width:58%; margin:2mm auto 1mm auto;">
+    <img src="figs/fig04_quadrant_landscape.png" alt="Competitive landscape: capability versus reality alignment">
+  </div>
+
+  <table class="compact">
+    <tr><th style="width:26%;">Named comparison</th><th style="width:37%;">What it provides</th><th>What is not its concern by design</th></tr>
+    <tr><td>Policy engines <span class="dim">(Open Policy Agent)</span></td><td class="dim">Separated policy decisions, structured decision logs</td><td>Whether the evidence behind a decision is valid — or whether the outcome matched intent</td></tr>
+    <tr><td>Authorization <span class="dim">(Cedar)</span></td><td class="dim">Principal–action–resource authorization with context</td><td>Evidence provenance, consequence tracking, correction after the fact</td></tr>
+    <tr><td>Durable workflows <span class="dim">(Temporal)</span></td><td class="dim">Crash-safe execution, replay, workflow recovery</td><td>Detecting a wrong belief behind a successful run; restoring external state</td></tr>
+    <tr><td>Agent SDKs &amp; sandboxes</td><td class="dim">Tool-path controls, approval UX, reduced prompt burden</td><td>A shared, cross-vendor record of evidence and consequence</td></tr>
+    <tr><td class="gold">ARIF / arifOS</td><td class="gold">The joined loop: evidence · authority · consequence · correction around one objective</td><td class="gold">Superiority over a well-configured combination is unproven — a pilot must measure it (§19).</td></tr>
+  </table>
+  <div class="pg">10</div>
+</div>
+
+<!-- ══════════════ 11 · WHY EXISTING APPROACHES FAIL ══════════════ -->
+<div class="page">
+  <div class="eyebrow">08 &nbsp;·&nbsp; Why Existing Approaches Fail</div>
+  <h1>Three structural gaps</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">The failures are not implementation defects that better engineering will fix. They are consequences of the paradigm each approach was built on.</p>
+
+  <ol class="numbered" style="margin-top:5mm;">
+    <li><b>Knowledge has no expiry.</b> A retrieval system returns a fact from two years ago with the same confidence as one confirmed this morning. Nothing in the default architecture distinguishes them — freshness filtering, where it exists, is added on top, not built into the semantics of belief. Reality Intelligence gives every stored claim a validity state and a freshness contract — memory that ages, and that can be retired.</li>
+    <li><b>Capability is granted wholesale.</b> Give an agent a credential and that access usually travels with it — everywhere the credential reaches, for every purpose, until someone revokes it wholesale. Default deployments have no notion of "permission for this objective, for this window"; scoped authorization engines (e.g. Cedar-style policies) can supply it when configured. Reality Intelligence separates capability from authority, scopes permission to an objective, and expires it as a default rather than an opt-in.</li>
+    <li><b>Action has no receipt.</b> Systems report that they ran. They rarely report what changed, whether it was correct, or whether the change can be reversed. Reality Intelligence ties every consequential action to an observed outcome and a reversibility path.</li>
+  </ol>
+
+  <div class="statement">
+    <p>The pattern is the structural problem, not the engineering of any single product. A system with no built-in channel through which contradictory evidence can revise a stored belief will drift from truth at the speed of its own error rate.</p>
+  </div>
+
+  <p class="small dim">A system that cannot be corrected by evidence will drift from truth at the speed of its own error rate — and it will do so with full confidence, because nothing in its architecture was designed to tell it otherwise.</p>
+  <div class="pg">11</div>
+</div>
+
+<!-- ══════════════ 12 · THE DIFFERENCE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">09 &nbsp;·&nbsp; The Reality Intelligence Difference</div>
+  <h1>What changes when reality leads</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">The difference is not a feature. It is a reordering of priorities — reality first, memory second, narrative third, optimisation last.</p>
+
+  <table>
+    <tr><th style="width:30%;">Dimension</th><th style="width:35%;">Conventional AI</th><th>Reality Intelligence</th></tr>
+    <tr><td>Orientation</td><td class="dim">Toward knowledge</td><td class="gold">Toward present reality</td></tr>
+    <tr><td>Memory</td><td class="dim">Accumulates, defends itself</td><td class="gold">Ages, can be invalidated</td></tr>
+    <tr><td>Authority</td><td class="dim">Bundled with capability</td><td class="gold">Separate, scoped, expiring</td></tr>
+    <tr><td>Learning signal</td><td class="dim">More data</td><td class="gold">Real consequence</td></tr>
+    <tr><td>Success measure</td><td class="dim">Answer quality</td><td class="gold">Correction speed &amp; recurrence</td></tr>
+    <tr><td>Conflict</td><td class="dim">Averaged away</td><td class="gold">Preserved until reality decides</td></tr>
+    <tr><td>Failure mode</td><td class="dim">Confident and wrong, indefinitely</td><td class="gold">Detected, receipted, corrected</td></tr>
+  </table>
+
+  <div class="statement">
+    <p>Most AI systems attempt to become smarter. ARIF attempts to become harder to detach from reality.</p>
+  </div>
+  <div class="pg">12</div>
+</div>
+
+<!-- ══════════════ 13 · SIX INNOVATIONS ══════════════ -->
+<div class="page">
+  <div class="eyebrow">10 &nbsp;·&nbsp; Six Core Innovations</div>
+  <h1>Six integrated design commitments</h1>
+  <div class="rule-gold"></div>
+
+  <p class="small dim" style="margin-bottom:3mm;">We do not claim to have invented each mechanism separately — several derive from established ideas. We commit to the integration, and to testing it where reality can disagree.</p>
+
+  <div class="cols">
+    <div class="col">
+      <div class="panel panel-gold" style="min-height:52mm;">
+        <h3>01 · Reality Navigation</h3>
+        <p class="small">Not memory-first. Reality-first. Every loop begins by asking what must be verified, not what is remembered. The architecture is ordered around evidence acquisition rather than retrieval.</p>
+      </div>
+      <div class="panel panel-gold" style="min-height:52mm;">
+        <h3>03 · Recovery Intelligence</h3>
+        <p class="small">Correction speed matters — after prevention. The system is measured by how fast it converges on truth after being wrong, and by how rarely the same failure recurs.</p>
+      </div>
+      <div class="panel panel-gold" style="min-height:52mm;">
+        <h3>05 · Authority-Aware Intelligence</h3>
+        <p class="small">Capability is separated from authority as a first-class architectural boundary. A system that can do something is not thereby permitted to do it, and the permission is separately governed.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="panel panel-gold" style="min-height:52mm;">
+        <h3>02 · Consequence-Bearing Memory</h3>
+        <p class="small">Learning tied to real outcomes, not transcript accumulation. What the system stores is weighted by what actually happened as a result — not merely by what was said.</p>
+      </div>
+      <div class="panel panel-gold" style="min-height:52mm;">
+        <h3>04 · Dissent Infrastructure</h3>
+        <p class="small">Systems preserve contradiction long enough for reality to resolve it. Independent observers are kept epistemically separate so their agreement means something when it arrives.</p>
+      </div>
+      <div class="panel panel-gold" style="min-height:52mm;">
+        <h3>06 · Memory Capture Defense</h3>
+        <p class="small">Reality may invalidate any memory. No cached belief becomes permanent authority. Trust permits reuse of verification — it never converts verification into an unexamined assumption.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pg">13</div>
+</div>
+
+<!-- ══════════════ 14 · DISSENT INFRASTRUCTURE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">10 &nbsp;·&nbsp; Innovation: Dissent Infrastructure</div>
+  <h1>Why contradiction is an asset</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">When several agents share the same assumptions, their agreement is not evidence. It is correlated error wearing the costume of consensus.</p>
+
+  <div class="fig">
+    <img src="figs/fig08_dissent_infrastructure.png" alt="Dissent infrastructure: three independent observers">
+  </div>
+
+  <p>arifOS keeps independent observers epistemically separate. One proposes a path. Another verifies independently. A third actively attempts to falsify. Their conclusions are kept isolated until they reach the point where reality can adjudicate — so that when they do agree, the agreement carries information rather than merely reflecting a shared starting point.</p>
+
+  <div class="statement">
+    <p>Consensus accelerates execution. Dissent preserves reality.</p>
+  </div>
+
+  <p class="small dim">This structure matters most where the cost of being wrong is highest. A system that has designed its own agreement as a checkbox has designed away its ability to detect its own errors.</p>
+  <div class="pg">14</div>
+</div>
+
+<!-- ══════════════ 15 · THE MOAT ══════════════ -->
+<div class="page">
+  <div class="eyebrow">11 &nbsp;·&nbsp; The Moat</div>
+  <h1>What cannot be downloaded</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">The moat is deliberately not model weights, not a vendor relationship, not retrieval infrastructure, not vector databases. Every one of those is purchasable by anyone with a budget. The moat is what has to be <span class="gold">earned through operation</span> — and kept only while it demonstrably pays.</p>
+
+  <div class="fig">
+    <img src="figs/fig06_moat_components.png" alt="Six components of the reality moat">
+  </div>
+
+  <div class="callout">
+    <div class="label">Why this moat compounds</div>
+    <p class="small" style="margin:0;">Four assets accrue through operation: failure histories, verification infrastructure, authority integrations, and domain expertise. They are hard to copy quickly — but hard to copy is not the same as valuable. The test is an ablation: remove the accumulated lessons and re-run comparable tasks. If outcomes do not improve, the archive was storage, not advantage. Each asset is kept only while it demonstrably pays.</p>
+  </div>
+  <div class="pg">15</div>
+</div>
+
+<!-- ══════════════ 15 · MEMORY CAPTURE DEFENSE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">11 &nbsp;·&nbsp; The Moat: Consequence-Bearing Memory</div>
+  <h1>Memory that can be wrong, and knows it</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">The single most dangerous property of a knowledge system is a memory that defends itself. Once stored belief becomes authority, the system has stopped learning.</p>
+
+  <div class="fig">
+    <img src="figs/fig07_memory_capture_defense.png" alt="Memory capture defense timeline">
+  </div>
+
+  <p>In arifOS, every stored claim carries a validity state and a freshness contract — defined per claim type: a stable geological observation and a revocable permission do not age under the same rule. A verified fact is not permanent — it is valid until reality says otherwise. When new evidence contradicts a stored belief, the belief is revised or retired rather than defended, and the correction propagates to decisions derived from it.</p>
+
+  <div class="statement">
+    <p>Trust permits cached verification. Trust is not a score. Trust decays when witness freshness decays.</p>
+  </div>
+
+  <p class="small dim">This is the defense against memory capture — the failure mode where a system's own accumulated beliefs become the authority it refuses to question. The rule is absolute: reality outranks memory. Authority may invalidate a cache of verification; it cannot make a claim true or false by decree.</p>
+  <div class="pg">16</div>
+</div>
+
+<!-- ══════════════ 18 · ENTERPRISE USE CASES ══════════════ -->
+<div class="page">
+  <div class="eyebrow">12 &nbsp;·&nbsp; Enterprise Use Cases</div>
+  <h1>Where this pays for itself</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Reality Intelligence earns its place wherever an AI system takes consequential action inside a regulated, audited, or high-cost-of-error environment.</p>
+
+  <table>
+    <tr><th style="width:30%;">Domain</th><th>What Reality Intelligence changes</th></tr>
+    <tr><td class="gold">Regulated operations</td><td class="dim">Every agent action carries evidence, permission, and a receipt — an audit trail built by construction, not reconstructed after the fact.</td></tr>
+    <tr><td class="gold">Financial workflows</td><td class="dim">Transactions verify against live state before execution; authority is scoped to a limit and expires; outcomes are reconciled against intent.</td></tr>
+    <tr><td class="gold">Critical infrastructure</td><td class="dim">Actions are reversible by default, with verification gate-keeping anything irreversible and consequence tracking on every change.</td></tr>
+    <tr><td class="gold">Knowledge-heavy decisions</td><td class="dim">Stored beliefs age and can be retired, so decisions are not made on stale facts presented as current.</td></tr>
+    <tr><td class="gold">Multi-vendor AI estates</td><td class="dim">Model-agnostic by design — the reality discipline applies uniformly across any set of underlying models.</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="label">The enterprise question it answers</div>
+    <p style="margin:0;">Not "is the AI smart enough?" but <span class="gold">"can we defend what it did?"</span> — with evidence, permission, and consequence, every time.</p>
+  </div>
+  <div class="pg">17</div>
+</div>
+
+<!-- ══════════════ 19 · GOVERNMENT & SOVEREIGN ══════════════ -->
+<div class="page">
+  <div class="eyebrow">13 &nbsp;·&nbsp; Government &amp; Sovereign AI</div>
+  <h1>Reality alignment as a national property</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Sovereign AI programs tend to focus on model ownership. The harder question is whether the system can be held accountable to observable reality — and whether that discipline is owned, or rented from a foreign vendor.</p>
+
+  <div class="cols">
+    <div class="col">
+      <h3>Sovereignty of discipline</h3>
+      <p class="small">Models can be licensed. The governance layer — the rules a system follows before it acts, and the receipts it leaves behind — is the part that must be owned outright. Reality Intelligence is designed to be that layer: portable, inspectable, and independent of any single model vendor.</p>
+      <h3 style="margin-top:5mm;">Accountability by architecture</h3>
+      <p class="small">Public-sector AI must be defensible to oversight. Authority routing and consequence tracking produce that defensibility structurally — every action attributable, every permission traceable, every outcome recorded. Records alone are not legitimacy: decisions must be contestable and correctable, and wrongful denials measured alongside unsafe approvals.</p>
+    </div>
+    <div class="col">
+      <h3>National-scale verification</h3>
+      <p class="small">Where AI touches citizens — benefits, health, security, infrastructure — the requirement is not just accuracy but verifiability. A system that can lose an argument with reality is a system that can be audited.</p>
+      <h3 style="margin-top:5mm;">Continuity across administrations</h3>
+      <p class="small">Scars and consequence history compound across time. Institutional memory of what went wrong, and what boundary prevents its recurrence, survives changes in personnel and vendor.</p>
+    </div>
+  </div>
+
+  <div class="statement">
+    <p>The missing layer between AI capability and real-world deployment is, in the public sector, also the missing layer between adoption and legitimacy.</p>
+  </div>
+  <div class="pg">18</div>
+</div>
+
+<!-- ══════════════ 20 · MULTI-AGENT GOVERNANCE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">14 &nbsp;·&nbsp; Multi-Agent Governance</div>
+  <h1>When many agents act, who is responsible?</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Organisations are deploying fleets of agents, not single assistants. The governance question changes entirely: not whether one agent behaves, but whether a system of agents can be held to a single accountable standard.</p>
+
+  <h3 style="margin-top:5mm;">Four governance properties arifOS enforces</h3>
+  <ol class="numbered">
+    <li><b>Identity before capability.</b> Every agent carries a verifiable identity before it is granted any action rights. Anonymous capability is not permitted.</li>
+    <li><b>Bounded authority per agent.</b> Each agent's permission is scoped to its objective and its role — no agent inherits authority from another's grant.</li>
+    <li><b>Separated verification.</b> Agents observing one another operate with isolated priors and evidence paths, so their agreement reflects independent input where possible. Isolation is designed and audited — and its limits are stated, because independence is never total.</li>
+    <li><b>Causal attribution.</b> Every action in the fleet traces to an objective, a trace lineage, and an authorising grant. Attribution completeness is measured as coverage against tests — not asserted as absolute.</li>
+  </ol>
+
+  <div class="callout">
+    <div class="label">The failure this prevents</div>
+    <p class="small" style="margin:0;">Agent fleets fail in a specific way: responsibility dissolves. No single agent is accountable, so no failure is owned, so nothing gets corrected. Reality Intelligence keeps the causal chain intact across the entire fleet — which is what makes a fleet governable at all.</p>
+  </div>
+  <div class="pg">19</div>
+</div>
+
+<!-- ══════════════ 20 · RECOVERY INTELLIGENCE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">15 &nbsp;·&nbsp; Recovery Intelligence</div>
+  <h1>Four responsibilities: prevent, contain, recover, learn</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Correction speed is measured — and so are prevention, containment, and recurrence. A system that errs ten times more often because it corrects twice as fast has not improved.</p>
+
+  <div class="fig">
+    <img src="figs/fig09_recovery_loop.png" alt="Recovery intelligence loop">
+  </div>
+
+  <p>arifOS treats correction as one of four responsibilities: <b>prevent</b> the damaging mistake, <b>contain</b> it before it spreads, <b>recover</b> what was affected, and <b>learn</b> so it does not recur. Belief-correction latency and restoration time are first-class metrics — but correction never outranks irreversible harm: some losses cannot be corrected, only prevented. The honest accounting: <i>total loss = irreversible harm + ongoing harm over time + recovery cost + human oversight burden</i>.</p>
+
+  <div class="metrics">
+    <div class="metric"><div class="k">Measured</div><div class="v">Time to<br>correction</div><div class="d">Median and p95, not mean</div></div>
+    <div class="metric"><div class="k">Tracked</div><div class="v">Containment<br>&amp; recurrence</div><div class="d">Before crediting recovery</div></div>
+    <div class="metric"><div class="k">Preserved</div><div class="v">Learning<br>from outcome</div><div class="d">Not from assertion</div></div>
+  </div>
+  <div class="pg">20</div>
+</div>
+
+<!-- ══════════════ 21 · FUTURE VISION ══════════════ -->
+<div class="page">
+  <div class="eyebrow">16 &nbsp;·&nbsp; Future Vision</div>
+  <h1>The layer that determines whether any of it works</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">The industry is investing enormously in the two bottom layers of the stack — compute, models, retrieval, tooling. Comparatively little is invested in the layer that determines whether the intelligence built on top of them can be trusted to act.</p>
+
+  <div class="fig">
+    <img src="figs/fig10_strategic_layer_stack.png" alt="The missing layer: reality intelligence between capability and deployment">
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <h3>Where this goes next</h3>
+      <p class="small">As agentic systems move into consequential domains — finance, infrastructure, public services, defence — the requirement for reality governance becomes non-optional. The category grows with the deployment, not in parallel to it.</p>
+    </div>
+    <div class="col">
+      <h3>Why the layer compounds</h3>
+      <p class="small">Each deployment adds scars, verification infrastructure, and consequence history. The more environments a reality substrate has operated in, the more situations its governance can anticipate — and the harder it is to displace with a fresh entrant.</p>
+    </div>
+  </div>
+
+  <div class="statement">
+    <p>Not another model. Not another chatbot. Not another agent platform. A governance and reality substrate for agentic intelligence.</p>
+  </div>
+  <div class="pg">21</div>
+</div>
+
+<!-- ══════════════ 22 · FOUNDER PERSPECTIVE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">17 &nbsp;·&nbsp; Founder Perspective</div>
+  <h1>Built by someone who learned to lose arguments with reality</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">For thirteen years I worked in a field where a confident answer that turned out to be wrong cost real money, real time, and real credibility. Geoscience does not reward eloquence. It rewards being right about what is actually there.</p>
+
+  <p>That discipline is where this framework began. In subsurface work you learn quickly that the map is not the territory, that a model is a hypothesis and not a fact, and that the only thing that settles a disagreement is evidence from the ground. You learn to hold your own beliefs lightly and to distrust anyone — including yourself — who defends a position instead of testing it.</p>
+
+  <p>When I started building with AI, I found the opposite instinct everywhere. Systems that were impressively articulate and structurally incapable of losing an argument with reality. Confident memory that never aged. Capability granted without permission. Actions with no receipt. Everything I had spent a career learning to avoid, rebuilt into software at scale.</p>
+
+  <div class="statement">
+    <p>I did not set out to build an AI framework. I set out to hold AI to the standard my own profession had already taught me: <span class="gold">verify before you act, and let reality be the thing that wins.</span></p>
+  </div>
+
+  <p>The result is ARIF and arifOS — a framework and an operating system for intelligence that stays aligned with changing reality. It is not a claim to be more intelligent than the models it governs. It is a commitment that whatever intelligence is applied will remain accountable to what is true, what is permitted, and what actually happened.</p>
+
+  <p class="small dim" style="margin-top:6mm;">— Muhammad Arif bin Fazil</p>
+  <div class="pg">22</div>
+</div>
+
+<!-- ══════════════ 23 · CLOSING THESIS ══════════════ -->
+<div class="page">
+  <div class="eyebrow">18 &nbsp;·&nbsp; Closing Thesis</div>
+  <h1 style="margin-top:20mm;">Reality Intelligence</h1>
+  <div class="cover-rule" style="margin:8mm 0 10mm 0;"></div>
+
+  <p class="lead" style="font-size:13pt;line-height:1.6;max-width:150mm;">A new category focused on keeping intelligence aligned with changing reality — through verification, consequence, authority, recovery, and adaptation.</p>
+
+  <div style="margin-top:20mm;">
+    <p class="dim" style="font-size:11pt;">Not a claim of greater intelligence.</p>
+    <p class="dim" style="font-size:11pt;">Not a claim of consciousness, or general capability, or autonomy.</p>
+    <p class="gold" style="font-size:11pt;">A claim about alignment worth testing: that intelligence which can be corrected by reality is worth more than intelligence which merely sounds right. The test of that claim is the pilot programme described in §19.</p>
+  </div>
+
+  <div class="statement" style="margin-top:18mm;">
+    <p style="font-size:15pt;line-height:1.5;">The next frontier is not more intelligence. The next frontier is intelligence that remains aligned with reality.</p>
+  </div>
+  <div class="pg">23</div>
+</div>
+
+<!-- ══════════════ 24 · APPENDIX — CLAIM-TO-EVIDENCE ══════════════ -->
+<div class="page">
+  <div class="eyebrow">19 &nbsp;·&nbsp; Appendix</div>
+  <h1>Claim-to-evidence status</h1>
+  <div class="rule-gold"></div>
+
+  <p class="lead">Each major capability statement in this document, classified by what currently exists — not by what is intended. Revision B · 2026-09-27.</p>
+
+  <table class="compact">
+    <tr><th style="width:26%;">Principle</th><th style="width:24%;">Implemented</th><th style="width:24%;">Tested</th><th>Independently verified</th></tr>
+    <tr><td class="gold">Reality constrains the model</td><td class="dim">Memory invalidation, freshness contracts, retraction paths</td><td class="dim">Operational corrections exercised in live use</td><td class="dim">Not yet — internal evidence only</td></tr>
+    <tr><td class="gold">Evidence requires provenance</td><td class="dim">Typed evidence layers, receipt chain, tamper-evident ledger</td><td class="dim">Chain verification, receipt replay tests</td><td class="dim">Not yet</td></tr>
+    <tr><td class="gold">Uncertainty survives computation</td><td class="dim">UNKNOWN states, confidence caps, UNMEASURED fields surfaced</td><td class="dim">Kernel refuses to fill unknowns; holds on missing evidence</td><td class="dim">Not yet</td></tr>
+    <tr><td class="gold">Capability &ne; authority</td><td class="dim">Separate authority bands, scoped permissions, fail-closed gates</td><td class="dim">Bypass, expiry, replay, revocation and outage tests — in progress</td><td class="dim">Not yet</td></tr>
+    <tr><td class="gold">Outcome outranks intention</td><td class="dim">Action receipts, postcondition checks, consequence tracking</td><td class="dim">Partial — completion-evidence gap acknowledged (unknown-outcome class)</td><td class="dim">Not yet</td></tr>
+  </table>
+
+  <div class="callout">
+    <div class="label">What this appendix does not claim</div>
+    <p class="small" style="margin:0;">No row above is independently verified; third-party verification is the next milestone, not an achievement. <b>Enforcement coverage</b> — the fraction of consequential execution paths that traverse the governance gate — is a measured engineering target, not a proven property; paths outside the gate are inventoried and closed as a tracked program. <b>Attention saved, harm reduced, and cost per outcome</b> are hypotheses with proposed measurements, not results. Where this document cannot classify a claim, it does not make it.</p>
+  </div>
+  <div class="pg">24</div>
+</div>
+
+<!-- ══════════════ 25 · BACK COVER ══════════════ -->
+<div class="page cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">ARIF &nbsp;·&nbsp; arifOS</div>
+    <div class="cover-title" style="font-size:40pt;margin-top:12mm;">Reality<br><span class="gold">Intelligence</span></div>
+    <div class="cover-rule" style="margin:12mm 0;"></div>
+
+    <div style="max-width:130mm;">
+      <p class="dim" style="font-size:11pt;line-height:1.6;">A framework for building intelligence systems that continuously discover, verify, adapt to, and remain aligned with reality.</p>
+    </div>
+
+    <div style="margin-top:auto;">
+      <div class="cover-meta" style="margin-top:0;">
+        <b>ARIF</b> — The Reality Intelligence Framework<br>
+        <b>arifOS</b> — The Reality Intelligence Operating System<br>
+        <br>
+        Enterprise &nbsp;·&nbsp; Government &nbsp;·&nbsp; Sovereign AI &nbsp;·&nbsp; Technical Architecture
+      </div>
+      <div class="cover-rule" style="margin:10mm 0 6mm 0;width:25mm;"></div>
+      <p class="small dim" style="margin:0;">This document describes a category and an architecture. Capability statements carry an evidence status (§19): implemented, tested, or independently verified — nothing is claimed beyond its class.</p>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <span>REALITY FIRST</span>
+    <span>2026</span>
+  </div>
+</div>
+
+</body>
+</html>

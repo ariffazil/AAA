@@ -73,20 +73,6 @@ hermes-id-zen add-group <GROUP_ID> --title "Nama Group"
 hermes-id-zen scan
 ```
 
-### Output-Boundary Verification (when shape leak is suspected)
-
-When a user reports the wrong register in a lane (e.g. "SADO reply jadi panjang berjela / ada menu / ada closing ritual"), the leak is almost never where it looks. Trace the chain in this order — each layer is a candidate; patch only the layer the evidence names.
-
-1. **Rule layer** — `/root/.hermes/lanes/context-governor.md`. Confirm the mode constraint table (light / witness / analyst / coach) and the hard-ban list (ABCD menus, decoder frames, closing ritual, boot sig) are present and unchanged.
-2. **Enforcer layer** — `/root/.hermes/hermes_mcp/_nope_detector.py`. Confirm the three regex (`_OPTION_MENU`, `_DECODER_HEADER`, `_CLOSING_RITUAL`) exist AND that `_enforce_mode_shape` actually strips them on the production path. Two enforcers (_nope_detector and _send_boundary) exist — distinguish which one fires on outbound.
-3. **Gateway metadata chain** — `/usr/local/lib/hermes-agent/gateway/platforms/base.py::_thread_metadata_for_source`. Confirm `metadata["hermes_mode"]` is populated. Then check `/usr/local/lib/hermes-agent/gateway/run_turn.py` Patch C — it is the only populate site for `source.mode`. If mode_metadata arrives as `None` at the adapter, the leak is in the populate chain, not in the enforcer.
-4. **Adapter enforcement** — `/tmp/hermes-upstream/plugins/platforms/telegram/adapter.py` (or installed equivalent). Confirm `apply_mode_shape` is called with non-bypass mode, and that `IMPORT_FAILED` tuples REFUSE send instead of falling through. If the adapter logs `mode_shape trimmed ... violations=[]`, the enforcer ran but found nothing — the leak is upstream.
-5. **Classifier** — `/root/.hermes/hermes_mcp/_conversation_mode.py::classify_mode`. Last layer, not first. Read only after layers 1–4 are verified.
-
-Pitfall: never accept a confident diagnosis without verifying the evidence — the chain has been patched at multiple scars (SCAR-2026-09-28-001/004/005) and stale hypotheses from earlier sessions still circulate. Pitfall: `metadata["hermes_mode"] != "bypass"` is the adapter's opt-out gate — if a user complaint includes "I set mode manually and it still leaked", check that override path first.
-
-Pitfall: `_send_boundary.apply_mode_shape` returns `DEFAULT_MODE = "light"` (NOT analyst) on any invalid/None mode — earlier scar transcripts that cite `DEFAULT_MODE = "analyst"` are stale. Always grep `^DEFAULT_MODE =` on the live file before quoting the default.
-
 ### Group-Driven Admission (F13 declares a third party for care)
 
 When the sovereign (Arif, F13) declares a third party inside a shared group as a care-target ("ni anak aku nak jaga"), admission requires **two coordinated writes** — `hermes-id-zen add-user` only handles the dm path:
