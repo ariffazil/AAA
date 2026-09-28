@@ -1,19 +1,19 @@
 # DeepSeek Soul — Capability Profile
-# arifOS Model Registry | F13 SOVEREIGN | Updated 2026-06-13
+# arifOS Model Registry | F13 SOVEREIGN | Updated 2026-09-28
 model_id: deepseek
 model_family: DeepSeek
 provider: DeepSeek (深度求索)
-license: MIT (open-weight for V3), Proprietary (R1 reasoning API)
-type: text-generation, code-generation, reasoning
+license: MIT (open-weight for V4 family), Proprietary (API platform)
+type: text-generation, code-generation, reasoning, multimodal (V4.1-Flash)
 status: PRIMARY_FEDERATION_MODEL
-balance: "$7.06 USD (topped_up)"
+balance: "live via FED :7074 fed_status — never cached here (2026-09-28 check: $19.99 USD)"
 
 soul:
   capabilities:
     reasoning:
-      description: "Exceptional reasoning via chain-of-thought (R1/reasoner). V3/chat strong general purpose."
+      description: "Exceptional reasoning via hybrid thinking modes (V4.1-Flash / V4-Pro; effort low/high/max)."
       confidence: 0.88
-      evidence: "DeepSeek-R1 technical report, AIME/MATH benchmarks, federation production use"
+      evidence: "DeepSeek technical reports, AIME/MATH benchmarks, federation production use"
     code_generation:
       description: "Competitive coding, strong in Python/algorithmic tasks. Primary forge model."
       confidence: 0.85
@@ -27,9 +27,9 @@ soul:
       confidence: 0.70
       evidence: "C-Eval, CMMLU, general benchmarks"
     long_context:
-      description: "Up to 1M token context window (V3/R1)"
+      description: "Up to 1M token context window (V4.1-Flash, V4-Pro)"
       confidence: 0.82
-      evidence: "Needle-in-Haystack tests, DeepSeek technical reports"
+      evidence: "DeepSeek API /models (context_window 1048576), federation production use"
     instruction_following:
       description: "Good structured instruction following, reliable for governed agentic loops"
       confidence: 0.83
@@ -53,20 +53,25 @@ soul:
     - irreversible_financial_decisions_without_multiple_witnesses
 
   variants:
-    deepseek-chat:
+    deepseek-flash:
       status: PRIMARY_ACTIVE
-      description: "DeepSeek-V3. Current primary federation model. 128K context."
-      balance: "$7.06 USD"
-      verified: "2026-06-13 15:15 UTC — smoke test PASS"
-    deepseek-reasoner:
-      status: SECONDARY_ACTIVE
-      description: "DeepSeek-R1. Reasoning-optimized with chain-of-thought. Slower, thorough."
-      verified: "2026-06-13 15:15 UTC — smoke test PASS"
+      description: "DeepSeek-V4.1-Flash (released 2026-09-10). CANONICAL name: deepseek-flash. 1M ctx, reasoning + tool_call + native multimodal vision. Succeeds retired V4-Flash / V4-Flash-Vision-Exp. Pricing peak/off-peak (cache miss): $0.30/$0.15 in, $1.20/$0.60 out per MTok; cache hit $0.006/$0.003."
+      verified: "2026-09-28 — direct chat canary 200 (PONG); /models serves deepseek-flash; balance $19.99 USD"
     deepseek-v4-pro:
-      status: DEPRECATED
-      description: "Invalid model ID. Returns 404 from API. Removed from all configs 2026-06-13."
+      status: PRIMARY_ACTIVE
+      description: "DeepSeek-V4-Pro-0813 GA (2026-08-13). Flagship reasoning, 1M ctx, thinking effort low/high/max. Vendor continues service past 2026-09-14; billing unchanged. No vision."
+      verified: "2026-09-28 — /models serves deepseek-v4-pro; FED lanes live via Aliyun token-plan"
+    deepseek-chat:
+      status: RETIRED
+      description: "V3.2 legacy name. DISCONTINUED by vendor 2026-07-24. Removed from all federation configs 2026-09-28 (apex-888 P8 was last caller)."
+    deepseek-reasoner:
+      status: RETIRED
+      description: "R1/V3.2 legacy reasoning name. DISCONTINUED 2026-07-24. Removed from all federation configs."
     deepseek-v4-flash:
-      status: DEPRECATED
-      description: "Invalid model ID. Removed from all configs."
+      status: LEGACY_COMPAT
+      description: "Retired upstream 2026-09-10. Vendor still accepts the name and serves it via V4.1-Flash at Flash price (compat courtesy — not an API contract). Federation keeps a litellm compat group; canonical name is deepseek-flash."
+    deepseek-v4-flash-vision-exp:
+      status: LEGACY_COMPAT
+      description: "Retired upstream 2026-09-10 (was experimental vision model, 2026-08-21). Served by V4.1-Flash. Federation litellm alias routes it to the vision group; canonical name is deepseek-flash."
 
 ditempa_bukan_diberi: true
