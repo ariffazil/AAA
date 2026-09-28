@@ -114,12 +114,6 @@ server:
     surface: internal
     status: live
     capability: [delegation]
-  delegation_ledger:
-    port: 18801
-    tier: extra
-    surface: internal
-    status: live
-    capability: [delegation]
   megamemory:
     tier: extra
     surface: private
