@@ -43,11 +43,24 @@ GEOX/WEALTH/WELL → geox_*/capital_*/well_* compute-only, never mutate
 
 ## 4. MCP servers — Free lane
 
-| Server | Port | Use when |
-|---|---|---|
-| **hermes** (FLAME) | 18901 | `hermes_fact_check`, `hermes_epistemic_check`, `hermes_plan_review`, `hermes_memory_steward`, `hermes_cross_verify`, `hermes_health` — FREE, RM0, stateless |
+> **[CONVERGED 2026-09-29 FI-003 · referential-integrity audit item #4]** This section
+> previously read `hermes (FLAME) | 18901 | hermes_fact_check, hermes_epistemic_check,
+> hermes_plan_review, hermes_memory_steward, hermes_cross_verify, hermes_health`.
+> Every element of that row was false: FLAME is RETIRED (organs.yaml `status: RETIRED
+> 2026-09-04`, `resolvable: false`; no socket, no process, no artifact on disk — measured),
+> and **none of those six tool names exist** in the live HERMES registry. One organ, two
+> names, one of them dead, six ghost tools. §1 of this same file already said FLAME was
+> retired — the file contradicted itself.
 
-**Route FED flash lane first. All hermes_* are free via FED :4000. Never burn governed tokens for what FED does for free.
+| Server | Port | Tools (live, measured 2026-09-29) |
+|---|---|---|
+| **hermes-mcp** | **18087** | 14 total: `hermes_registry_status`, `hermes_claim_validate`, `hermes_perspective_scope`, `hermes_qualia_boundary`, `hermes_contradiction_scan`, `hermes_counterstory_test`, `hermes_uncreated_classify`, `hermes_handoff_package`, `hermes_moral_physics`, `hermes_institutional_decay`, `hermes_reality_grounding` (11 canonical) + `hermes_retrieve` (infrastructure) + `hermes_makcik_render` (voice gate) + `hermes_witness_signal` (gated). Authority `RELAY_ONLY`, `execution_authorized: false`. |
+| **FED router** | 7074 (MCP) / 4000 (litellm via haproxy) | `fed_route`, `fed_classify`, `fed_status`, `fed_probe`, `fed_contrast`, `fed_health`, `fed_report_latency`. `ADVISORY_ONLY` — never judges, never hard-blocks. |
+
+Route FED flash lane first for free inference. HERMES :18087 is the meaning-integrity lane
+(claim validation, perspective/qualia boundaries, contradiction scan) — it is not a
+free-inference proxy and does not do fact-checking by name. Note `/health` on :4000 is not
+served; probe `/health/liveliness` instead.
 
 ## 5. MCP servers — Research & data
 
@@ -165,7 +178,17 @@ If a server is DOWN, proceed read-only on live servers. Don't assume dead server
 
 **Rule:** the model string in `opencode.json` MUST match the provider's `/v1/models` listing. Validate at config-load time.
 
-**Common ghosts (DO NOT use):** `fed/fast`, `fed/reasoning-heavy` (only valid for `fed` provider at :4010, which is NOT in enabled_providers — use `litellm-federation/agi-333` instead).
+**Common ghosts (DO NOT use):** none currently — but the previous text of this section was
+itself a ghost. **[CONVERGED 2026-09-29 FI-003 · audit item #12-of-DOMAIN]** It claimed
+`fed/fast` and `fed/reasoning-heavy` were invalid because the `fed` provider is "NOT in
+enabled_providers". Measured: `opencode.json → .provider.fed` **exists and is declared**,
+with five models (`fast`, `multimodal`, `reasoning-heavy`, `reasoning-standard`, `vision`)
+over `@ai-sdk/openai-compatible`, and `:4010 fed-aware-middleware` is **alive** and lists
+those same capability ids. The instruction ("prefer `litellm-federation/agi-333`") may
+still be right; the stated *reason* was false. Correct reason: the provider's own name
+field declares it `optional, not default (disabled in picker)` — declared but not
+selectable by default. A correct rule justified by a false premise is still a referential
+defect, because the next agent verifies the premise, finds it wrong, and discards the rule.
 
 **Canonical SOT for provider names:** FED DB. Config and FED are views.
 
