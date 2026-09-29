@@ -2,13 +2,13 @@
   "$schema": "arifOS/AAA-capability-index/v2.0.0",
   "protocol": "MCP",
   "protocolVersion": "2026-07-28",
-  "forgedAt": "2026-09-16T16:08:32+00:00",
-  "total_tools": 322,
-  "digest": "79acce8d63f10ce7e36b4f2e392bea337596520974128309052f4a174d3b886e",
+  "forgedAt": "2026-09-29T15:07:52+00:00",
+  "total_tools": 343,
+  "digest": "16e78b27fbe030f7801d2b109cf5cf4cca7195ef07227c28bb80779b4e81a1b6",
   "servers": [
     {
       "name": "aforge",
-      "tools": 121
+      "tools": 122
     },
     {
       "name": "arifos",
@@ -17,6 +17,10 @@
     {
       "name": "brave-search",
       "tools": 6
+    },
+    {
+      "name": "chron",
+      "tools": 19
     },
     {
       "name": "context7",
@@ -32,7 +36,7 @@
     },
     {
       "name": "geox",
-      "tools": 31
+      "tools": 33
     },
     {
       "name": "github",
@@ -41,10 +45,6 @@
     {
       "name": "memory",
       "tools": 9
-    },
-    {
-      "name": "meyhem",
-      "tools": 5
     },
     {
       "name": "minimax",
@@ -56,7 +56,7 @@
     },
     {
       "name": "wealth",
-      "tools": 37
+      "tools": 41
     },
     {
       "name": "well",
@@ -272,6 +272,68 @@
       "action_class": "MUTATE",
       "effective_class": "MUTATE",
       "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "forge_canon_recall",
+      "server": "aforge",
+      "description": "Semantic recall over the federation canon corpus (instruction/canon/eureka/governance/scar/session_closure) with 3-lane embedding fallback: Alibaba qwen3.7-text-embedding \u2192 Ollama bge-m3 \u2192 substring. Returns top-K with provenance and the lane used.",
+      "parameters": {
+        "properties": {
+          "act": {
+            "description": "Arif's Capability Token (ACT) \u2014 preferred alias for session_token",
+            "type": "string"
+          },
+          "actor_id": {
+            "description": "Actor ID (FORGE 2-B)",
+            "type": "string"
+          },
+          "claim_class": {
+            "description": "Declared class of the justification claim (claim_kernel/v1)",
+            "type": "string"
+          },
+          "justification": {
+            "description": "Why this action is being taken (judged by the claim-class gate)",
+            "type": "string"
+          },
+          "lease_id": {
+            "description": "Governed lease ID (FORGE 2-B)",
+            "type": "string"
+          },
+          "limit": {
+            "description": "",
+            "type": "number"
+          },
+          "query": {
+            "description": "Natural-language recall query",
+            "type": "string"
+          },
+          "sct": {
+            "description": "Alias for session_token (legacy, use 'act')",
+            "type": "string"
+          },
+          "session_id": {
+            "description": "Kernel-born session ID (FORGE 2-B)",
+            "type": "string"
+          },
+          "session_token": {
+            "description": "arifOS Arif's Capability Token act_v1.* (federation ACT gate; legacy sct_v1 accepted)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "aforge",
+        "forge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
       "authority_ceiling": "UNBOUNDED"
     },
     {
@@ -2365,6 +2427,615 @@
       "authority_ceiling": "UNBOUNDED"
     },
     {
+      "tool_name": "chron_active_events",
+      "server": "chron",
+      "description": "Get chron_events filtered by audience \u2014 the institution's known temporal anchors.\n\nReturns events with computed days_until for each target_date.\nEvents are the source material from which predictions are generated.\nCall chron_generate_predictions after adding new events.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "audience": {
+            "default": "all",
+            "description": "Filter \u2014\n'arif'  \u2192 events addressed to arif + shared (audience in ['arif','both'])\n'syed'  \u2192 events addressed to syed + shared (audience in ['syed','both'])\n'both'  \u2192 SHARED-ONLY events (audience == 'both'). NOT a superset.\n'all'   \u2192 EVERY event regardless of audience (use this for full inventory).\nDefault: 'all' (returns every event).",
+            "enum": [
+              "arif",
+              "syed",
+              "both",
+              "all"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_active_predictions",
+      "server": "chron",
+      "description": "Get all active (unverified) predictions \u2014 the institution's current\nexpectations about the future that haven't been tested yet.\n\nEvery active prediction is a promise. CHRON will hold it until\nits verify_at arrives, then it becomes due. Callers should cross-\nreference with chron_predictions_due() to see what's overdue.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "audience": {
+            "default": "all",
+            "description": "Privacy filter \u2014 same contract as chron_active_events:\n'arif'  \u2192 predictions addressed to arif + shared\n'syed'  \u2192 predictions addressed to syed + shared\n'both'  \u2192 SHARED-ONLY. Correct for two-person surfaces.\n'all'   \u2192 EVERY prediction (full inventory).\nDefault: 'all'.",
+            "enum": [
+              "arif",
+              "syed",
+              "both",
+              "all"
+            ],
+            "type": "string"
+          },
+          "limit": {
+            "default": 50,
+            "description": "Max predictions to return (default 50)",
+            "type": "integer"
+          },
+          "source_id": {
+            "default": "",
+            "description": "Filter by source event ID (e.g. 'budget-2027'). Empty = all.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_attention_debt",
+      "server": "chron",
+      "description": "Attention Debt \u2014 measures unresolved contradiction backlog.\n\nAD(t) = \u03a3 (known_contradiction_age_days \u00d7 consequence_weight)\n\nSources: overdue predictions, unresolved HIGH events, SABAR verdicts.\nThe core hypothesis: constraint failure occurs first, attention failure\ndelays its detection, trust failure propagates it, price records it.\n\nThis tool measures the \"attention failure delays its detection\" part.\nAD > 50 = material backlog. AD growth rate > 2/day = attention system\nis falling behind. Call chron_predictions_due() to identify the specific\nitems contributing to debt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_calibration_state",
+      "server": "chron",
+      "description": "Get calibration statistics \u2014 how wrong have we been?\n\nReturns Brier scores, accuracy, error distribution, and per-error-class\nbreakdown. The institution's epistemic health metric.\n\nA Brier score of 0.25 = coin-flip calibration. Below 0.15 = useful.\nAccuracy below 60% at high confidence (>0.8) = systematic overconfidence.\nThis is the evidence that drives the Arrow of Time: verify \u2192 calibrate.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_create_event",
+      "server": "chron",
+      "description": "Create a new event in chron_events.json \u2014 plant a temporal stake.\n\nEvents are the raw material. After creating an event, call\nchron_generate_predictions() to create prediction objects from it.\nThe chain: Event \u2192 Prediction \u2192 Verification \u2192 Lesson.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actionability": {
+            "default": "WATCH",
+            "description": "PREPARE / WATCH / MONITOR",
+            "type": "string"
+          },
+          "audience": {
+            "default": "both",
+            "description": "'arif', 'syed', or 'both'",
+            "type": "string"
+          },
+          "confidence": {
+            "default": "TENTATIVE",
+            "description": "CONFIRMED / LIKELY / ANNOUNCED / PREDICTED / TENTATIVE",
+            "type": "string"
+          },
+          "consequence": {
+            "default": "MEDIUM",
+            "description": "HIGH / MEDIUM / LOW",
+            "type": "string"
+          },
+          "event_id": {
+            "description": "Unique kebab-case ID (e.g. 'my-004-inflation-oct')",
+            "type": "string"
+          },
+          "kind": {
+            "default": "OBSERVATION",
+            "description": "FISCAL, MARKET_EVENT, REGULATORY_WINDOW, PERSONAL_SAFE, MACRO_INDICATOR, MONETARY_POLICY, OBSERVATION",
+            "type": "string"
+          },
+          "note": {
+            "default": "",
+            "description": "Additional context \u2014 why this event matters",
+            "type": "string"
+          },
+          "source": {
+            "default": "agent",
+            "description": "Where this comes from (URL, institution, agent)",
+            "type": "string"
+          },
+          "target_date": {
+            "description": "ISO date YYYY-MM-DD",
+            "type": "string"
+          },
+          "title": {
+            "description": "Human-readable event description",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id",
+          "title",
+          "target_date"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_episodes",
+      "server": "chron",
+      "description": "Query CHRON episodes \u2014 the raw temporal ledger.\n\nEpisodes are the atomic temporal facts: observations, predictions,\nverifications, and lesson extractions. Each episode has a function\n(observe/predict/verify/learn), a principal (arif/syed/both), and\na valid_time.\n\nUse this for forensic queries: \"what did we know and when?\"\nThe episode store is append-only JSONL \u2014 immutable once written.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "function": {
+            "default": "",
+            "description": "Filter by function \u2014 'observe', 'predict', 'verify', 'learn'",
+            "type": "string"
+          },
+          "limit": {
+            "default": 50,
+            "description": "Max episodes to return (default 50)",
+            "type": "integer"
+          },
+          "principal": {
+            "default": "",
+            "description": "Filter by principal \u2014 'arif', 'syed', 'both'",
+            "type": "string"
+          },
+          "since": {
+            "default": "",
+            "description": "ISO timestamp \u2014 only episodes after this time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_generate_predictions",
+      "server": "chron",
+      "description": "Generate predictions from chron_events.json.\n\nCreates prediction objects for events that don't have one yet.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_last_loop",
+      "server": "chron",
+      "description": "Get the last FULL_LOOP entry from loop_log.\n\nReturns the most recent metabolic cycle result:\nepisodes created, predictions verified, lessons extracted.\n\nIf this shows 0 verifications and 0 lessons across multiple loops,\nCHRON is in observation-only mode \u2014 the prediction\u2192verification\u2192lesson\npipeline is broken. This is the canary for metabolic health.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_lessons",
+      "server": "chron",
+      "description": "Get extracted lessons \u2014 what the institution has learned from verified outcomes.\n\nLessons are the final stage of the Arrow of Time:\nEvent \u2192 Prediction \u2192 Verification \u2192 Error \u2192 LESSON.\n\nA lesson is only useful if it changes future behavior. Lessons with\nstatus=CANDIDATE are awaiting human ratification. Lessons with\nstatus=ACTIVE have been ratified and should constrain future predictions.\n\nThe calibration gap (accuracy vs confidence) should shrink as lessons\naccumulate. If it doesn't, the lessons aren't being metabolized.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "limit": {
+            "default": 20,
+            "description": "Max lessons to return (default 20)",
+            "type": "integer"
+          },
+          "status": {
+            "default": "all",
+            "description": "Filter \u2014 'all', 'active', 'candidate', 'archived'",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_predictions_due",
+      "server": "chron",
+      "description": "Get predictions whose verify_at has arrived \u2014 the temporal delta.\n\nReturns predictions that CHRON expects to verify NOW.\nThis is the 'what did we expect vs what happened' signal.\nCall this BEFORE chron_record_verification to find what needs closing.\n\nThe Arrow of Time: active \u2192 due \u2192 verified \u2192 calibrated \u2192 lesson.\nThis tool sits at the active\u2192due boundary. Every prediction returned\nhere represents an unpaid epistemic debt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_proxy_reality_observe",
+      "server": "chron",
+      "description": "Record a proxy or reality observation for a registered pair.\n\nCall this when you have a measured value for either the proxy metric\nor the reality metric. CHRON computes correlation at query time.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_ref": {
+            "default": "",
+            "description": "path or URL to supporting evidence",
+            "type": "string"
+          },
+          "metric_type": {
+            "description": "'proxy' or 'reality'",
+            "type": "string"
+          },
+          "pair_id": {
+            "description": "the proxy-reality pair ID (from chron_proxy_reality_register or list)",
+            "type": "string"
+          },
+          "source": {
+            "default": "",
+            "description": "what tool/system produced this value",
+            "type": "string"
+          },
+          "unit": {
+            "default": "",
+            "description": "unit of measurement (display only)",
+            "type": "string"
+          },
+          "value": {
+            "description": "observed value (normalize to 0.0-1.0 where possible)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "pair_id",
+          "metric_type",
+          "value"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_proxy_reality_register",
+      "server": "chron",
+      "description": "Register a proxy\u2192reality pair for correlation tracking.\n\nEach organ declares what proxy it measures and what reality it should\ndefend. CHRON tracks observations over time and flags divergence:\nproxy improving while reality degrades = GAMING.\n\nThis is the Proxy-Reality Paradox defense: every metric can be gamed.\nThe only defense is to measure both the proxy AND the reality it claims\nto represent. Without observations, this is empty instrumentation.\n\nAfter registering, call chron_proxy_reality_observe() to feed data.\n14 pairs are pre-seeded. 0 currently have observations.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "diagnostic_question": {
+            "default": "",
+            "description": "the 'what must this organ ask itself?' question",
+            "type": "string"
+          },
+          "divergence_threshold": {
+            "default": 0.3,
+            "description": "min delta to flag divergence (0.0-1.0)",
+            "type": "number"
+          },
+          "organ": {
+            "description": "organ name (e.g. 'GEOX', 'WEALTH', '333-AGI')",
+            "type": "string"
+          },
+          "proxy_description": {
+            "description": "what the proxy measures",
+            "type": "string"
+          },
+          "proxy_name": {
+            "description": "short metric name (e.g. 'test_pass_rate')",
+            "type": "string"
+          },
+          "reality_description": {
+            "description": "what reality it should represent",
+            "type": "string"
+          },
+          "reality_name": {
+            "description": "short reality name (e.g. 'intended_outcome')",
+            "type": "string"
+          }
+        },
+        "required": [
+          "organ",
+          "proxy_name",
+          "proxy_description",
+          "reality_name",
+          "reality_description"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "GOVERN",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_proxy_reality_state",
+      "server": "chron",
+      "description": "Get proxy-reality correlation state \u2014 the Proxy-Reality Paradox metric.\n\nFor each registered pair, computes whether proxy trends match reality\ntrends. Flags divergence: proxy improving while reality degrades = GAMING.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "organ": {
+            "default": "",
+            "description": "filter by organ name (empty = all organs)",
+            "type": "string"
+          },
+          "window": {
+            "default": 5,
+            "description": "number of recent observations for trend computation (default 5)",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_reconcile_state",
+      "server": "chron",
+      "description": "Phase 0 \u2014 reconcile in-memory state with JSONL truth.\n\nReturns the invariant status:\n  - jsonl_count: actual episode lines on disk\n  - index_count: in-memory index size\n  - drift: index - jsonl (must be \u2264 0 unless signed compaction exists)\n  - invariant_held: bool\n  - generation, schema_version, compaction_receipt\n\nIf force=True, rebuilds the in-memory index from JSONL.\nThis is the tool an operator runs after a state contradiction\nto surface \u2014 not to silently mask \u2014 the gap.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "force": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_record_verification",
+      "server": "chron",
+      "description": "Record a verification outcome for a prediction. CLOSES THE ARROW.\n\nThis is the WRITE surface that completes the Arrow of Time:\nactive \u2192 due \u2192 VERIFIED \u2192 calibrated \u2192 lesson.\n\nAn agent observes reality, compares to the prediction, and records\nwhether the prediction was correct or incorrect. CHRON then computes\nthe Brier score and writes a permanent verification record.\n\nAfter calling this, call chron_calibration_state() to see updated\ncalibration, and chron_lessons() to check for extractable lessons.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "correct": {
+            "description": "True if prediction was correct, False if incorrect",
+            "type": "boolean"
+          },
+          "observed_outcome": {
+            "description": "What actually happened (free text \u2014 becomes evidence)",
+            "type": "string"
+          },
+          "prediction_id": {
+            "description": "The prediction to verify (e.g. 'pred-b73cba59ab86')",
+            "type": "string"
+          }
+        },
+        "required": [
+          "prediction_id",
+          "observed_outcome",
+          "correct"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_resolve_unverifiable",
+      "server": "chron",
+      "description": "Resolve a prediction as UNVERIFIABLE \u2014 close it without scoring.\n\nSome predictions cannot be verified: the evidence never arrived,\nthe question became meaningless, or the measurement window closed.\nUNVERIFIABLE predictions are removed from the active set (stopping\nattention debt accumulation) but NOT scored in calibration.\n\nThis is distinct from VERIFIED_INCORRECT: the prediction wasn't wrong,\nit was untestable.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "prediction_id": {
+            "description": "The prediction to resolve",
+            "type": "string"
+          },
+          "reason": {
+            "default": "insufficient_evidence",
+            "description": "Why it cannot be verified (free text)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "prediction_id"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_store_stats",
+      "server": "chron",
+      "description": "Get CHRON store statistics \u2014 episode/prediction/lesson counts.\n\nPrediction census is derived from the JOIN of the immutable birth store\nwith the verification ledger, not from the birth record alone. A birth\nrecord always reads ``status: ACTIVE`` (that is the immutability\ninvariant), so counting verdicts from it would always report zero.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_temporal_briefing",
+      "server": "chron",
+      "description": "The full temporal briefing for agent wake-up.\n\nCombines predictions due, calibration state, attention debt,\nlast loop, and active events into one structured packet.\nThis is what gets injected into carry_forward.json at session init.\n\nCall this FIRST when an agent wakes up. It answers:\n- What did we expect? (active predictions)\n- What's overdue? (predictions due)\n- How wrong have we been? (calibration)\n- What's the attention backlog? (attention debt)\n- What did the last metabolic cycle do? (last loop)",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
+      "tool_name": "chron_verified_predictions",
+      "server": "chron",
+      "description": "Get the verification ledger \u2014 what has actually been checked, and how it went.\n\nThis is the read surface for CHRON's *second* act. ``chron_active_predictions``\nshows what we expect; this shows what reality answered. Each row carries the\nbirth snapshot (claim, confidence at birth, assumptions, evidence) joined with\nthe observed outcome, verdict, error class, and Brier score \u2014 so a wrong\nprediction can be diagnosed against the reasoning that produced it.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "include_void": {
+            "default": false,
+            "description": "Include retracted (VOID) records (default False)",
+            "type": "boolean"
+          },
+          "limit": {
+            "default": 50,
+            "description": "Max records to return (default 50)",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "chron",
+        "chron"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "UNBOUNDED"
+    },
+    {
       "tool_name": "query-docs",
       "server": "context7",
       "description": "Retrieves and queries up-to-date documentation and code examples from Context7 for any programming library or framework.\n\nYou must call 'Resolve Context7 Library ID' tool first to obtain the exact Context7-compatible library ID required to use this tool, UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.\n\nDo not call this tool more than 3 times per question.",
@@ -2665,6 +3336,193 @@
       "authority_ceiling": "COMPUTE_ONLY"
     },
     {
+      "tool_name": "geox_glof",
+      "server": "geox",
+      "description": "Unified GLOF multi-phase cascade simulation. Multi-phase physics: solid dam \u2192 granular debris \u2192 liquid flood (Mohr-Coulomb + Saint-Venant + 33D zen-33 state). Modes: run (full cascade in one call), inverse (Bayesian grid-search), mcmc (MCMC posterior), propagate (Saint-Venant 1D), phase (yield surface debug). Replaces 7 individual geox_glof_cascade_* tools (333 ARCHITECT 2026-09-19). Use when: Use when you need glof evidence.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "default": "",
+            "type": "string"
+          },
+          "base_theta": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "bed_slope": {
+            "default": 0.01,
+            "type": "number"
+          },
+          "breach_Q_profile": {
+            "default": "costa1985",
+            "type": "string"
+          },
+          "cell_id": {
+            "default": "",
+            "type": "string"
+          },
+          "cycle_id": {
+            "default": "",
+            "type": "string"
+          },
+          "dam_height_m": {
+            "default": 150,
+            "type": "number"
+          },
+          "domain_bounds_x_m": {
+            "default": 4000,
+            "type": "number"
+          },
+          "domain_bounds_z_m": {
+            "default": 600,
+            "type": "number"
+          },
+          "dt_sec": {
+            "default": 1,
+            "type": "number"
+          },
+          "duration_s": {
+            "default": 7200,
+            "type": "number"
+          },
+          "initial_state_33": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "length_m": {
+            "default": 60000,
+            "type": "number"
+          },
+          "manning_n": {
+            "default": 0.05,
+            "type": "number"
+          },
+          "mode": {
+            "default": "run",
+            "type": "string"
+          },
+          "n_chains": {
+            "default": 2,
+            "type": "integer"
+          },
+          "n_grid": {
+            "default": 4,
+            "type": "integer"
+          },
+          "n_iter": {
+            "default": 200,
+            "type": "integer"
+          },
+          "n_steps": {
+            "default": 50,
+            "type": "integer"
+          },
+          "n_warmup": {
+            "default": 80,
+            "type": "integer"
+          },
+          "nx": {
+            "default": 200,
+            "type": "integer"
+          },
+          "observation": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "output_interval_s": {
+            "default": 120,
+            "type": "number"
+          },
+          "panel_focus": {
+            "default": "all",
+            "type": "string"
+          },
+          "resolution_m": {
+            "default": 10,
+            "type": "number"
+          },
+          "saturation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "seed": {
+            "default": 42,
+            "type": "integer"
+          },
+          "session_id": {
+            "default": "",
+            "type": "string"
+          },
+          "sigma_applied": {
+            "default": 0,
+            "type": "number"
+          },
+          "sigma_n": {
+            "default": 500000,
+            "type": "number"
+          },
+          "state_id": {
+            "default": "",
+            "type": "string"
+          },
+          "tau_applied": {
+            "default": 80000,
+            "type": "number"
+          },
+          "velocity": {
+            "default": 0,
+            "type": "number"
+          },
+          "water_head_initial_m": {
+            "default": 0,
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
       "tool_name": "geox_glof_cascade_initialize",
       "server": "geox",
       "description": "GLOF cascade simulation init. Accepts 33D GEOXEarthState33 (M9+P9+W9+X6 zen-33) or defaults to himalayan_glof_33. Returns session state_id. Use when: Use when you need glof cascade initialize evidence.",
@@ -2939,6 +3797,42 @@
       "server": "geox",
       "description": "Spatial indexing and discovery. Modes: h3_index (H3 hexagonal spatial indexing), lancedb_store (LanceDB embedded vector store for earth embeddings), stac_discover (STAC catalog query for cloud-native geospatial assets).",
       "parameters": null,
+      "tags": [
+        "geox",
+        "geox"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "geox_surface_status",
+      "server": "geox",
+      "description": "Federation-standard registry probe for GEOX.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "default": null,
+            "title": "Actor Id"
+          },
+          "mode": {
+            "default": "registry",
+            "title": "Mode"
+          },
+          "session_id": {
+            "default": null,
+            "title": "Session Id"
+          },
+          "trace_id": {
+            "default": null,
+            "title": "Trace Id"
+          }
+        },
+        "type": "object"
+      },
       "tags": [
         "geox",
         "geox"
@@ -3535,84 +4429,6 @@
       "authority_ceiling": "UNBOUNDED"
     },
     {
-      "tool_name": "find_capability",
-      "server": "meyhem",
-      "description": "Find the best tool for your task across MCP servers and OpenClaw skills.",
-      "parameters": null,
-      "tags": [
-        "discovery",
-        "capability"
-      ],
-      "epistemic_tag": "PLAUSIBLE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "UNBOUNDED"
-    },
-    {
-      "tool_name": "find_server",
-      "server": "meyhem",
-      "description": "Find MCP servers for a given task.",
-      "parameters": null,
-      "tags": [
-        "discovery",
-        "server"
-      ],
-      "epistemic_tag": "PLAUSIBLE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "UNBOUNDED"
-    },
-    {
-      "tool_name": "outcome",
-      "server": "meyhem",
-      "description": "Report whether a search result helped complete your task.",
-      "parameters": null,
-      "tags": [
-        "feedback",
-        "search",
-        "meyhem"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "UNBOUNDED"
-    },
-    {
-      "tool_name": "search",
-      "server": "meyhem",
-      "description": "Search the web and return ranked results with feedback-driven scoring.",
-      "parameters": null,
-      "tags": [
-        "web",
-        "search",
-        "meyhem"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "UNBOUNDED"
-    },
-    {
-      "tool_name": "select",
-      "server": "meyhem",
-      "description": "Select a search result to get its full content.",
-      "parameters": null,
-      "tags": [
-        "web",
-        "select",
-        "content"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "UNBOUNDED"
-    },
-    {
       "tool_name": "understand_image",
       "server": "minimax",
       "description": "Analyze and interpret image content from local files or URLs.",
@@ -3664,6 +4480,146 @@
       "server": "wealth",
       "description": "Run strategy backtest on XAUUSD using the proven indicator fusion (EMA alignment + ATR-scaled stops + RSI pullback filter + S/R zones). Wraps the v2 backtest engine. Returns win rate, profit factor, Sharpe, max drawdown, and trade log. SIDE EFFECT: writes a vault receipt.",
       "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_civx",
+      "server": "wealth",
+      "description": "Civilizational scenario intelligence \u2014 long-horizon resilience, sovereignty, intergenerational burden. MODES: scenario (full scenario study), resilience (resilience scores), risks (key risks), assumptions (assumption axes). SEED CASES: malaysia_fiscal_2027_2040. Status: SAFE_TO_STUDY, never decision authority. SIDE EFFECT: writes a vault receipt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "caller_service": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "mode": {
+            "default": "scenario",
+            "type": "string"
+          },
+          "seed_case": {
+            "default": "malaysia_fiscal_2027_2040",
+            "type": "string"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_claims",
+      "server": "wealth",
+      "description": "Named-entity claim gate \u2014 validates claims about real institutions/persons before publication. OBS_ELIGIBLE requires external source_uri + ISO retrieval timestamp + CHECKED contradiction with external second source; person-trait claims rejected (structures, not people); any HOLD/REJECT blocks the batch. SIDE EFFECT: writes a vault receipt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "claims": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      },
       "tags": [
         "wealth",
         "capital"
@@ -3769,6 +4725,85 @@
       "server": "wealth",
       "description": "Market data and commodity intelligence \u2014 observational with derived and interpreted fields. MODES: fundamentals (pass ticker=<BURSA_CODE> for the F1-F9 fundamental-invariant engine), fx, commodity, indicator, stock, gold, oil, gas. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
       "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_polix",
+      "server": "wealth",
+      "description": "Power topology intelligence \u2014 incentive mapping, capture detection, rent extraction analysis, rule asymmetry. MODES: topology (full power map), capture (capture risk), rents (rent flows), asymmetry (rule asymmetries). SEED CASES: malaysia_fiscal, petronas_glc (DEPRECATED for non-archival use \u2014 call with seed_case=None to refuse a static seed and require caller-supplied material fields). SIDE EFFECT: writes a vault receipt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "caller_service": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "mode": {
+            "default": "topology",
+            "type": "string"
+          },
+          "seed_case": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      },
       "tags": [
         "wealth",
         "capital"
@@ -4211,6 +5246,70 @@
       ],
       "epistemic_tag": "CLAIM",
       "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_synthesize",
+      "server": "wealth",
+      "description": "\u03a900 Cross-dimensional synthesis \u2014 collapses the 12 \u03a9-invariants (\u03a901 conservation, \u03a902 flow, \u03a903 gradient, \u03a904 entropy, \u03a905 energy, \u03a906 time, \u03a907 inertia, \u03a908 field, \u03a909 signal, \u03a910 game, \u03a911 boundary, \u03a912 hysteresis) into a domain_assessment. Returns FAVORABLE | CAUTION | INSUFFICIENT_EVIDENCE | CONSTRAINT_VIOLATION \u2014 NEVER a constitutional verdict (SEAL/HOLD/SABAR/VOID). execution_authority is fixed at ADVISORY_ONLY; handoff is fixed at arifOS.arif_judge. Doctrine: Analyst (WEALTH) \u2260 Judge (arifOS).",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "domain": {
+            "default": "capital",
+            "type": "string"
+          },
+          "omega_invariants": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "omega_invariants"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "wealth",
+        "wealth"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
       "effective_class": "OBSERVE",
       "risk_tier": "low",
       "authority_ceiling": "COMPUTE_ONLY"
