@@ -202,6 +202,25 @@ set -a && source /root/.secrets/kunci-mas.env && set +a
 **5-R Protocol:** READ → RESOLVE → RECONCILE → RESTART → REPORT.
 **Iron Rule:** only edit `kunci-mas.env`. Never set secret files `> mode 600`.
 
+> **[MEASURED 2026-09-29 FI-003 · referential-integrity audit item #9 — CORRECTED, security-relevant]**
+> The Iron Rule above assumes one store. There are **two divergent regular files**:
+> `/root/.secrets/INDEX.md` declares `kunci-mas.env ──── SYMLINK → kunci-root.env (old name)`
+> and calls `kunci-root.env` "THE GOLDEN KEY — 285 keys". On disk **neither is a symlink**:
+> both are regular files, same mtime (2026-09-28 22:22:09), different content
+> (33,431 B vs 34,217 B; `cmp` = differ). Key-name census (names only, no values read):
+> `kunci-mas.env` 310 keys · `kunci-root.env` 323 keys · **1 key only in mas** (`ACK_BOT_TOKEN`) ·
+> **14 keys only in root** (`ANTHROPIC_API_KEY`, `COPILOT_API_KEY`, `SMITHERY_API_KEY`,
+> `FIRECRAWL_WEBHOOK_SECRET`, `ASI_ARIFOS_BOT_TOKEN`, `REDIS_FED_PASSWORD`, `ARIFOS_REDIS_URL`,
+> `OLLAMA_HOST`, `ARIFOS_HIB_OLLAMA_{URL,READ_TIMEOUT_S,POOL_TIMEOUT_S,CONNECT_TIMEOUT_S}`).
+> Consumers are split: 3 systemd units source `kunci-root.env`, 2 source `kunci-mas.env`;
+> agent docs split the same way (this file → mas; kimi-code/agy/777-forge → root).
+> **Consequence:** a key added to one store is invisible to everything sourcing the other —
+> a live, measurable cause of "tool inexplicably unauthorized". INDEX.md's own count (285) is
+> also stale against the measured 323. **Do not merge or overwrite either file**: this is the
+> golden key store, the merge direction is an F13 binary, and an overwrite is not reversible
+> from anything on disk. Until F13 rules, treat a missing credential as *possibly present in the
+> other file* before declaring it absent (probe-before-panic applies to secrets too).
+
 ## 12. Toporgans (canonical → `/root/AAA/federation/organs.yaml`)
 
 | Organ | Port | Authority ceiling |

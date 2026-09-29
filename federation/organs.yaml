@@ -21,6 +21,27 @@ truth_rule: live_health_beats_file
 #   DATA        — data-plane service (Docker/local)
 #   ADVISORY    — recommendation only (models, routes)
 
+# ── component_resolution (2026-09-29 FI-003 · referential-integrity audit item #13) ──
+# 10 of 35 components carry no port, no mcp_port and no source_path. Blank fields made
+# "no address by design" indistinguishable from "address not yet recorded", so a consumer
+# could not tell a legitimately non-network entity from an incomplete registry row.
+# Resolution order for consumers: endpoint (port/mcp_port) -> unit (systemd) -> path -> none.
+component_resolution:
+  by_unit:            # resolvable through systemd, not through a socket
+    - opencode
+    - surface-guard
+    - caddy
+    - apa-email-bridge
+    - apa-calendar-bridge
+    - apa-github-bridge
+    - apa-telegram-bridge
+  by_path:            # resolvable through a filesystem location
+    - vault999          # /root/VAULT999 + arifOS vault dir
+  non_network:        # no socket and no unit by design — identity/projection entities
+    - i-arif            # sovereign identity lane, not a service
+    - arif-fazil-com    # public projection, served via caddy
+  unresolvable:       # measured dead; retained as history only
+    - flame
 components:
 
   # ── CORE ORGANS ──────────────────────────────────────────────────
@@ -37,7 +58,7 @@ components:
     unit: arifos.service
     public_mcp: https://arifos.arif-fazil.com/mcp
     default_branch: main
-    runtime: python-3.12
+    runtime: python-3.13  # MEASURED 2026-09-29: /opt/arifos/current/venv = 3.13.7 (audit item #11); was declared 3.12
     live_probe_2026_07_30:
       status: healthy
       tools_public: 8
@@ -96,10 +117,16 @@ components:
       - research_intelligence
     public_tools:
       - forge_search
-      - forge_research
       - forge_fetch
+      - forge_web_extract
       - forge_browser_navigate
-      - forge_explore
+      # [CONVERGED 2026-09-29 FI-003 · referential-integrity audit item #2]
+      # Removed forge_research + forge_explore. forge_surface_audit reports
+      # forge_research deprecated:true and absent from the live registry (122
+      # tools); forge_explore is absent entirely. The machine SOT advertised two
+      # uncallable tools to every consumer of public_tools
+      # (scripts/validate_tool_sot.sh, registries/reconcile/forge_surface_reconcile.py).
+      # forge_web_extract substituted — live and callable.
     a2a_intent_routing:
       EXPLORE: "A-FORGE (:7072 / stdio) is primary organ for web exploration and deep multi-source research. Agents hitting epistemic walls must delegate search to A-FORGE via A2A."
       ACT: "A-FORGE (:7071 / :7072) is primary organ for governed engineering execution."
@@ -249,7 +276,7 @@ components:
     unit: wealth-organ.service
     public_mcp: https://wealth.arif-fazil.com/mcp
     default_branch: main
-    runtime: python-3.12
+    runtime: python-3.13  # MEASURED 2026-09-29: /root/WEALTH/.venv = 3.13.14 (audit item #11); was declared 3.12
     live_probe_2026_07_30:
       status: healthy
       tools_public: 14
@@ -327,9 +354,10 @@ components:
     authority_ceiling: OBSERVE_ONLY
     port: 18084
     unit: signal-organ.service
-    source_path: /root/SIGNAL
-    runtime_path: /opt/signal/app
-    runtime: python-3.12
+    source_path: null  # MEASURED 2026-09-29 (audit item #12): /root/SIGNAL does not exist on KVM8; no git checkout of this organ on this host
+    source_status: NO_CHECKOUT_ON_HOST  # declared, not blank — "no address" is a fact, not a gap
+    runtime_path: /opt/signal/app  # deployed tree (pyproject.toml + signal_organ/), not a git repo
+    runtime: python-3.13  # MEASURED 2026-09-29: /opt/signal/venv = 3.13.7; was declared 3.12
     mcp_port: 18084
     public_mcp: null
     owned_domains:
@@ -379,7 +407,7 @@ components:
     unit: frame-organ.service
     source_path: /root/AAA/federation/frame/  # 2026-08-26: relocated from /root/FRAME — identity preserved (service unit, port, package name unchanged)
     runtime_path: /opt/frame/app
-    runtime: python-3.12
+    runtime: python-3.13  # MEASURED 2026-09-29: /opt/frame/venv = 3.13.7 (audit item #11); was declared 3.12
     public_mcp: null
     migration_doc: /root/AAA/federation/AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md  # 2026-08-26: Sprint 1 declaration
     identity_preserved:  # F1 AMANAH: identity ≠ location
@@ -442,7 +470,7 @@ components:
     mcp_port: 18102
     unit: chron-mcp.service
     public_mcp: https://chron.arif-fazil.com/mcp
-    runtime: python-3.12-fastmcp
+    runtime: python-3.13-fastmcp  # MEASURED 2026-09-29: chron-mcp.service ExecStart = /opt/arifos/current/venv/bin/python3 (3.13.7), WorkingDirectory=/root/chron (audit item #11); was declared 3.12
     live_probe_2026_09_18:
       status: healthy
       tools: 8
@@ -488,7 +516,7 @@ components:
     port: 18100
     unit: minimax-media-mcp.service
     source_path: /opt/minimax-mcp-media
-    runtime: python-3.12-fastmcp
+    runtime: python-3.12-fastmcp  # UNVERIFIED 2026-09-29 (audit item #11): service active + listening on 127.0.0.1:18100, but no venv python3 resolvable under source_path and /health silent — declared value left as-is rather than guessed
     mcp_port: 18100
     public_mcp: null
     upstream_provider: MiniMax Cloud API (api.minimax.io)
@@ -584,9 +612,10 @@ components:
     display_name: FLAME
     role: rm0_free_inference_mesh
     authority_ceiling: ADVISORY_WORKER
-    port: 18901
-    unit: flame-api.service
-    status: DEPRECATED 2026-09-04
+    port: 18901  # NOT LISTENING — measured 2026-09-29: no socket, no process, no artifact on disk
+    resolvable: false  # [audit item #3] a retired component must not present as addressable
+    unit: flame-api.service  # unit absent from systemctl list-units
+    status: "RETIRED 2026-09-04 (previously DEPRECATED)"
     deprecation:
       reason: RM0 free-tier exhausted — all free providers fail per-request; fallback burned paid qwen-max with 7 wasted retries. Zero live callers.
       replacement: FED litellm flash lane (KVM4 :4000)
@@ -736,11 +765,11 @@ components:
     class: DATA
     port: 6380
     role: graph
-  # [STALE-SOT 2026-09-04 FI-008 PATCH-003: unit 'graphiti-mcp' disabled/not-found at live probe; entry tombstoned — see LOOP2_ZEN_AUDIT R2/R3/R4]
-#  - id: graphiti-mcp
-#    class: DATA
-#    port: 8000
-#    role: knowledge_graph_mcp
+  # [CONVERGED 2026-09-29 FI-003: 2026-09-04 tombstone superseded by witnessed runtime — service revived 2026-09-21: systemd graphiti-mcp.service active/running, container healthy at 127.0.0.1:18412->container:8000, 8 requests in last 72h, cited by WELL reality v1 sources. Registry converged to runtime (RECOVERY_REALITY_CACHE: live reality wins). Old port claim 8000 was container-internal, never host-bound.]
+  - id: graphiti-mcp
+    class: DATA
+    port: 18412
+    role: knowledge_graph_mcp
   - id: minio
     class: DATA
     port: 9000
@@ -840,7 +869,7 @@ port_observability:
     - {port: 4222, service: "NATS client", binding: "127.0.0.1"}
     - {port: 8222, service: "NATS monitoring", binding: "127.0.0.1"}
     - {port: 7777, service: "NATS prom-exporter", binding: "127.0.0.1", note: "added 2026-08-06 (B2)"}
-    - {port: 8000, service: "Graphiti MCP", binding: "127.0.0.1"}
+    - {port: 18412, service: "Graphiti MCP", binding: "127.0.0.1", note: "converged 2026-09-29 FI-003: host port is 18412; 8000 is container-internal"}
     - {port: 8083, service: "Headscale", binding: "127.0.0.1"}
     - {port: 6274, service: "MCPJam inspector", binding: "127.0.0.1"}
     - {port: 6277, service: "MCPJam proxy", binding: "127.0.0.1"}
