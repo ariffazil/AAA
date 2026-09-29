@@ -1,6 +1,34 @@
 {
   "version": "1.1.0-POINTER",
   "superseded_by": "FEDERATED_SKILLS_REGISTRY_V3.yaml (v3, 2026-08-11)",
-  "note": "THIS FILE IS A POINTER. The canonical federation-wide skill registry is /root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml (v3). FEDERATION_SKILL_PROFILE.json (v2.0.0) was superseded and its canonical path is no longer present on disk — the live SOT is the V3 YAML registry. Load FEDERATED_SKILLS_REGISTRY_V3.yaml for the full registry (213 disk skills, 3-layer-3-axis architecture).",
-  "canonical": "/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml"
+  "note": "THIS FILE IS A POINTER. The canonical federation-wide skill registry is /root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml (v3). FEDERATION_SKILL_PROFILE.json (v2.0.0) was superseded and its canonical path is no longer present on disk — the live SOT is the V3 YAML registry. [2026-09-29 FI-003 · referential-integrity audit item #5] The previous revision of this note asserted '213 disk skills'. RETRACTED: no method was recorded for that number, and it contradicted four other counts of the same phrase. All six surviving numbers may be true — they measure different populations. The lie was calling all of them 'skill count'. See skill_counts_denominators below; do not restate any of them as a bare total.",
+  "canonical": "/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml",
+  "skill_counts_denominators": {
+    "_measured_utc": "2026-09-29T14:0x Z (333-AGI/FI-003) + skills-census.py refresh 2026-09-29T08:37:02+00:00",
+    "_rule": "Every count names its population and its method. A number without a denominator is not a measurement.",
+    "registered_logical_skills": 95,
+    "registered_logical_skills_method": "FEDERATED_SKILLS_REGISTRY_V3.yaml total_skills / logical_registry_count — logical entries, NOT files on disk",
+    "profile_declared_213": null,
+    "profile_declared_213_method": "RETRACTED 2026-09-29 — prior prose claim in this file; no method recorded; unreproducible",
+    "physical_disk_skills": 684,
+    "canonical_skills": 902,
+    "viewed_skills": 884,
+    "loadable_skills": 860,
+    "whole_mesh_skills": 751,
+    "census_method": "skills-census.py --write (machine-derived, disk_reconciliation block, verdict WARN)",
+    "hot_skill_md_files": 990,
+    "hot_skill_md_files_method": "find -L over /root/AAA/skills + /root/.config/opencode/skills, -name SKILL.md, excluding .archive/ and .frozen/",
+    "hot_distinct_skill_names": 854,
+    "names_with_multiple_physical_copies": 129,
+    "redundant_copies": 180,
+    "worst_collisions": {
+      "telegram-direct-delivery": 13,
+      "hermes-lane-admission": 13,
+      "_note": "all 13 copies byte-identical (md5 ddf494d618f13e77abc5cf2ddcfd234f); the harness surfaces exactly one, chosen silently — N11 'never silently guess' violated by structure"
+    },
+    "cold_skill_md_files": 422,
+    "cold_skill_md_files_method": "same find, restricted to .archive/ and .frozen/ — still surfaced as available_skills by the harness (ghost capability class)",
+    "physical_total_aaa_tree": 1355,
+    "symlink_warning": "/root/.opencode/skills, /root/.agents/skills and /root/.claude/skills are ALL symlinks to /root/AAA/skills (one tree, three names). Any tool that does not pass -L measures ZERO skills — a phantom-absence generator. audit item #8."
+  }
 }
