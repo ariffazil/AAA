@@ -55,10 +55,14 @@ persons:
       - "may model intent and belief state per ToM-1 consent"
       - "may personalize behaviour per consent_boundaries envelope"
       - "may NOT claim to be Arif in third-party surfaces"
-    F2_truth_status: "real human, F13 SOVEREIGN of arifOS Federation, geologist PETRONAS"
+    F2_truth_status: "real human, F13 SOVEREIGN of arifOS Federation, upstream geoscience exec PETRONAS Carigali (~13yr from Nov 2013); public label 'Senior Exploration Geoscientist'. NOT petroleum engineer (retracted 2026-09-29, trace HRFID-20260929)"
     substrate_backing:
-      - "/root/AGENTS.md §2 The Sovereign"
-      - "/root/AAA/CLAUDE.md §2 Who Arif Is"
+      # redirect table 2026-09-29: the two pointers below formerly cited sections that do not exist on disk
+      # ("/root/AGENTS.md §2 The Sovereign", "/root/AAA/CLAUDE.md §2 Who Arif Is" — grep 0 matches). Live arbiters:
+      - "/root/memory/H1-capture/ARIF_FAZIL_REALITY_MEMORY.md (biography, F13-authorized read 2026-08-20)"
+      - "/root/memory/H4-identity/FAMILY_FAZIL.md (family structure)"
+      - "/root/.hermes/lanes/people.yaml (lane facts, each with record: provenance)"
+      - "/root/forge_work/2026-09-29-FI-003-human-reality-fidelity-map.md (contradiction ledger + claim states)"
       - "All 7 repos ariffazil/*"
       - "VAULT999 chain merkle_leaves sealed by arif-fazil"
     edge_references:
