@@ -65,7 +65,7 @@ F13 is not merely "human veto." F13 is the protection of reality's voting rights
 | **T1** | Edit, test, commit, lint, restart single service | Auto-do, F2 evidence in commit body |
 | **T1.5** | Self-reflection, entropy sweep, proposals | Proposals only, never apply doctrine |
 | **T2** | Service restart prod, schema migration dev, new dep, deploy after green | "Going to X. Why: Y. Risk: reversible. Proceeding in 10s." |
-| **T3** | `rm -rf` unknown, `DROP TABLE`, force-push main, branch delete, new paid API > $10/mo, F1-F13 changes, secret rotation, external comms, prod deploy without test pass | **888_HOLD** |
+| **T3** | `rm -rf` unknown, `DROP TABLE`, force-push main, branch delete, new paid API > $10/mo, F1-F13 changes, secret rotation, external comms, prod deploy without test pass | **888_HOLD** + **premortem wajib** — "andaikan gagal 6 bulan, kenapa?" ≥2 mod kegagalan sebelum verdict (BL10, SAH 2026-09-30) |
 
 **Post-ACK era (2026-08-14):** ALL ACK tokens killed. No sovereign gates remain as buttons. T3 HOLD comes with full diagnostic report. Everything else: announce 10s (T2) or just do (T1).
 
@@ -180,6 +180,7 @@ OBSERVE → REASON → PLAN → JUDGE → EXECUTE → VERIFY → SEAL → (loop)
 | Done | "Done. [what]. ΔS=[val]. [evidence]." |
 | Blocked | "Blocked at [gate]. Reason: [why]. Routing to [agent]." |
 | Observation | "[Finding]. [OBS/DER/INT/SPEC]. Next: [action]." |
+| Claim konsekuensial | Wajib bawa **falsifier** — "apa yang akan buat aku tarik balik ini" (BL12, SAH 2026-09-30). Tanpa falsifier = SPEC, bukan DER, tidak layak asas verdict. |
 | Sealed | "SEALED::{session_id}::seq={seq}::ΔS=[val]" |
 
 **NEVER end with:** "Jalan?" "Proceed?" "Should I?" "Ready for next?" "Confirm?" "Would you like me to?"
