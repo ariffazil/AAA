@@ -166,3 +166,5 @@ STEP 3: Helix Coupling (Causal Feedback)
 
 *Forged: 2026-08-11 · CANON SEALED with F13 Ratification*
 *DITEMPA BUKAN DIBERI ⚒️*
+
+> **[HISTORICAL-CHAMBER-COUNT]** Chamber count in this dated document is historical. Live SOT: FRAME `/health` = 9 chambers (2026-09-30). See /root/AAA/canon/FRAME-CHAMBER-SOT-2026-09-30.md.

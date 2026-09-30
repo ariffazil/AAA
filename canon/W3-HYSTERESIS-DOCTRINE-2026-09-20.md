@@ -151,9 +151,9 @@ FRAME is the **independent observer** — it provides the External witness compo
 2. **Authority independence:** FRAME cannot issue verdicts — its output is evidence, never judgment
 3. **Observational independence:** FRAME measures external artifacts (ports, endpoints, response times) — never reads the executor's success log
 
-FRAME's 8 chambers (baseline, probe, compare, trend, alert, report, rsi_verify, rejection) each contribute to the Ext witness score. If FRAME is down or degraded → Ext drops → W³ drops → HOLD.
+FRAME's 9 chambers (baseline, probe, compare, trend, alert, report, rsi_verify, rejection, witness) each contribute to the Ext witness score. If FRAME is down or degraded → Ext drops → W³ drops → HOLD.
 
-**Current state (2026-09-20):** FRAME is UP (all 8 chambers active, 10 organs baselined). Other agents incorrectly reported FRAME down — this is itself a witness integrity issue (claims without probes).
+**Current state (2026-09-20):** FRAME is UP (all chambers active, 10 organs baselined) [count as of 2026-09-20: 8; live SOT 2026-09-30: 9 — see FRAME-CHAMBER-SOT-2026-09-30.md]. Other agents incorrectly reported FRAME down — this is itself a witness integrity issue (claims without probes).
 
 ### Integration with PHOENIX-72
 

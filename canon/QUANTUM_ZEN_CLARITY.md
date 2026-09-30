@@ -33,7 +33,7 @@ Status: ACTIVE_CANONICAL — STATUS_UNVERIFIED
 | :8081 | GEOX | 127.0.0.1 | python3 | ✅ active (geox-mcp.service) |
 | :18082 | WEALTH | 127.0.0.1 | python3 | ✅ active |
 | :18083 | WELL | 127.0.0.1 | python3 | ✅ active |
-| :18085 | FRAME (observer) | 127.0.0.1 | python | ✅ ok, 7/7 chambers |
+| :18085 | FRAME (observer) | 127.0.0.1 | python | ✅ ok, 9/9 chambers [live SOT 2026-09-30] |
 | :4000 | LiteLLM (HAProxy) | 0.0.0.0 | haproxy | ✅ "I'm alive!" |
 | :4010 | FED 413-clamp middleware | 127.0.0.1 | python3 | ✅ active |
 | :7074 | FED intent classifier | 0.0.0.0 | python3 | ✅ active |
@@ -204,7 +204,7 @@ See `/root/AAA/docs/deprecation-registry.json` for full registry.
 | AGENTS.md | ✅ SEAL | Rendered 2026-09-04T15:34:52Z, 22 fragments |
 | Kernel :8088 | ✅ SEAL | healthy, 13/13 floors, vault999 healthy |
 | LiteLLM :4000 | ✅ SEAL | "I'm alive!" via HAProxy |
-| FRAME :18085 | ✅ SEAL | ok, 7/7 chambers active |
+| FRAME :18085 | ✅ SEAL | ok, 9/9 chambers [live SOT 2026-09-30] active |
 | WELL Git | ✅ SEAL | Clean after commit |
 | Broken Symlinks | ✅ SEAL | Removed |
 | Orphan Files | ✅ SEAL | Quarantined |
