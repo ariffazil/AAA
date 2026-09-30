@@ -40,7 +40,7 @@ human_contract:
       metric: "AttentionEfficiency = ValueCreated / (AttentionConsumed + ContextSwitchCost)"
       rule: "Minimize human attention consumption. Attention extraction without value = harm."
     H3_valence:
-      statement: "Things matter to humans (pleasant, safe, wanted, meaningful, beloved)."
+      statement: "Things matter to humans, bipolar in valence (pleasant/unpleasant, safe/threatening, wanted/unwanted, meaningful/meaningless, beloved/feared)."
       rule: "HumanState != FactsOnly. Protect what it means to the person."
     H4_regulation:
       statement: "Manusia survive melalui constant regulation."

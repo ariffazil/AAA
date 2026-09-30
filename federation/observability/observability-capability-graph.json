@@ -20,7 +20,9 @@
         "CHAMBER_4_TREND",
         "CHAMBER_5_ALERT",
         "CHAMBER_6_REPORT",
-        "CHAMBER_7_RSI_VERIFY"
+        "CHAMBER_7_RSI_VERIFY",
+        "CHAMBER_8_REJECTION",
+        "CHAMBER_9_WITNESS"
       ],
       "live_capabilities": [
         "BASELINE_VERIFIED",

@@ -118,7 +118,7 @@ Five of five pairs disagree. Runtime failed its own self-test. **MAP ≠ TERRITO
 
 ### Self-correction
 
-Earlier narrative in this session framed FRAME as "offline." Empirical probe shows FRAME organ alive on `:18085` (all 8 chambers active). The `:1805` port is unallocated, never was FRAME. Separation #6 (independent witness) is operationally HOLD, not broken. The substrate drift is independent of FRAME state.
+Earlier narrative in this session framed FRAME as "offline." Empirical probe shows FRAME organ alive on `:18085` (all chambers active [historical count: 8; live SOT 2026-09-30: 9 — FRAME-CHAMBER-SOT-2026-09-30.md]). The `:1805` port is unallocated, never was FRAME. Separation #6 (independent witness) is operationally HOLD, not broken. The substrate drift is independent of FRAME state.
 
 ### The recursion the doctrine implies
 
