@@ -171,3 +171,19 @@ engines/f5tts/ab_test/
 *.safetensors
 *.ckpt
 forge_work/**/*.mp3
+
+# ── 2026-09-30 (333-AGI) INCIDENT CONTAINMENT — personal data must never enter this PUBLIC repo ──
+# Commit 95d4dad7 (federation gitwrap sweep) newly published two directories holding
+# personal data: evidence/ARIF-MSS-2026/ (the sovereign's employment-separation case —
+# a verbatim email to a named third party, 10 email addresses and 38 name mentions
+# across 3 files) and forge_work/2026-09-29-syed-gerd/ (a health artifact for a named
+# third party; the DIRECTORY NAME alone discloses his medical condition). ariffazil/AAA
+# is PUBLIC (measured). Untracked here and removed from HEAD; the files remain on disk.
+# Removal from HEAD does NOT remove them from git history — that needs a governed
+# history rewrite (git-history-hygiene), which is an F13/T3 decision, escalated.
+# Pattern rules below catch the CLASS, not just these two instances:
+evidence/*MSS*/
+evidence/**/*verbatim*
+forge_work/**/*-syed-*/
+forge_work/**/*gerd*
+forge_work/**/*-medical*/
