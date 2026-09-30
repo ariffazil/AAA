@@ -1,0 +1,26 @@
+{
+  "applied_at": "2026-09-30T15:05:00+08:00",
+  "applied_by": "333-AGI (FI-001) under user directive 'tell me whether these MCPs aligned, why disabled'",
+  "config": "/root/.config/opencode/opencode.json",
+  "flipped_enabled": [
+    "qdrant"
+  ],
+  "added": [],
+  "launcher_fixes": [],
+  "timeout_bumps": [
+    "codebase-memory → 180000ms",
+    "hostinger-vps → 60000ms",
+    "serena → 60000ms"
+  ],
+  "left_disabled_genuinely_broken": [
+    "semgrep (no Pro Engine license)",
+    "repomapper (venv missing)",
+    "supabase (npx path)",
+    "megamemory@1.6.2 (npx path)",
+    "minimax-mcp (uvx path)",
+    "delegation-ledger (port 18801 down)",
+    "mapbox-devkit (MAPBOX_TOKEN missing)",
+    "openrouter (OPENROUTER_API_KEY missing)"
+  ],
+  "rationale": "Verified via direct launch probe BEFORE flipping. Each fix has receipt trail."
+}
