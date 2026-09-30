@@ -1,0 +1,473 @@
+{
+  "applied_at": "2026-09-30T07:16:47.690204+00:00",
+  "applied_by": "333-AGI (FI-001) under user directive 'align all AAA agents'",
+  "files_total": 60,
+  "applied": [
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/aaa-cockpit.json",
+      "id": "aaa-cockpit",
+      "tier": "COCKPIT",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/agy.json",
+      "id": "agy",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "STORE",
+      "cognitiveRing": "store"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/claude.json",
+      "id": "claude",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/hermes.json",
+      "id": "hermes",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "STORE",
+      "cognitiveRing": "store"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/kimi.json",
+      "id": "kimi",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/mcporter.json",
+      "id": "mcporter",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/openclaw.json",
+      "id": "openclaw",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/opencode.json",
+      "id": "opencode",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/federation/qwen.json",
+      "id": "qwen",
+      "tier": "FEDERATION",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/forge/fi-001-opencode.json",
+      "id": "opencode",
+      "tier": "FI",
+      "class": "AGI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/forge/forge-bot.json",
+      "id": "forge-bot",
+      "tier": "FI",
+      "class": "executor",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/functions/openclaw.json",
+      "id": "openclaw",
+      "tier": "FUNCTION",
+      "class": "Warga",
+      "capability": "ACT",
+      "cognitiveRing": "executor"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/aider.json",
+      "id": "aider",
+      "tier": "Warga",
+      "class": "CODING/CCC-ONLY",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/antigravity.json",
+      "id": "antigravity",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/claude-code.json",
+      "id": "claude-code",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/codex.json",
+      "id": "codex",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/continue-cli.json",
+      "id": "continue-cli",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/copilot.json",
+      "id": "copilot",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/grok-build.json",
+      "id": "grok-build",
+      "tier": "Warga",
+      "class": "HARNESS",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/kimi-code.json",
+      "id": "kimi-code",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/kvm4-ccc-pool.json",
+      "id": "kvm4-ccc-pool",
+      "tier": "Warga",
+      "class": "CODING",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/openclaw.json",
+      "id": "openclaw",
+      "tier": "Warga",
+      "class": "Warga",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/opencode.json",
+      "id": "opencode",
+      "tier": "Warga",
+      "class": "AGI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/harnesses/qwen-code.json",
+      "id": "qwen-code",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/identity/333-AGI.json",
+      "id": "333-AGI",
+      "tier": "IDENTITY",
+      "class": "Warga",
+      "capability": "WITNESS",
+      "cognitiveRing": "unassigned"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/identity/555-ASI.json",
+      "id": "555-ASI",
+      "tier": "IDENTITY",
+      "class": "Warga",
+      "capability": "REMEMBER",
+      "cognitiveRing": "archivist"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/identity/888-APEX.json",
+      "id": "888-APEX",
+      "tier": "IDENTITY",
+      "class": "Warga",
+      "capability": "JUDGE",
+      "cognitiveRing": "judicator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/identity/i-ARIF.json",
+      "id": "i-ARIF",
+      "tier": "IDENTITY",
+      "class": "Warga",
+      "capability": "WITNESS",
+      "cognitiveRing": "unassigned"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/identity/i-AZWA.json",
+      "id": "i-AZWA",
+      "tier": "IDENTITY",
+      "class": "Warga",
+      "capability": "WITNESS",
+      "cognitiveRing": "unassigned"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/organs/aforge.json",
+      "id": "aforge",
+      "tier": "ORGAN",
+      "class": "Warga",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/organs/arifos.json",
+      "id": "arifos",
+      "tier": "ORGAN",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/organs/chron.json",
+      "id": "chron",
+      "tier": "ORGAN",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/organs/geox.json",
+      "id": "geox",
+      "tier": "ORGAN",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/organs/wealth.json",
+      "id": "wealth",
+      "tier": "ORGAN",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/organs/well.json",
+      "id": "well",
+      "tier": "ORGAN",
+      "class": "Warga",
+      "capability": "OBSERVE",
+      "cognitiveRing": "observer"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/roles/aaa-architect.json",
+      "id": "aaa-architect",
+      "tier": "ROLE",
+      "class": "Warga",
+      "capability": "VERIFY",
+      "cognitiveRing": "auditor"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/roles/aaa-auditor.json",
+      "id": "aaa-auditor",
+      "tier": "ROLE",
+      "class": "Warga",
+      "capability": "VERIFY",
+      "cognitiveRing": "auditor"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/roles/aaa-engineer.json",
+      "id": "aaa-engineer",
+      "tier": "ROLE",
+      "class": "Warga",
+      "capability": "VERIFY",
+      "cognitiveRing": "auditor"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/roles/aaa-gateway.json",
+      "id": "aaa-gateway",
+      "tier": "ROLE",
+      "class": "Warga",
+      "capability": "VERIFY",
+      "cognitiveRing": "auditor"
+    },
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/roles/hermes-ops.json",
+      "id": "hermes-ops",
+      "tier": "ROLE",
+      "class": "Warga",
+      "capability": "ACT",
+      "cognitiveRing": "executor"
+    },
+    {
+      "path": "/root/AAA/agents/555-ASI-VISION/agent-card.json",
+      "id": "555-ASI-VISION",
+      "tier": "Warga",
+      "class": "SENSORY_GATE",
+      "capability": "REMEMBER",
+      "cognitiveRing": "archivist"
+    },
+    {
+      "path": "/root/AAA/agents/abang-sado/agent-card.json",
+      "id": "abang-sado",
+      "tier": "Warga",
+      "class": "executor",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/agent-zero/agent-card.json",
+      "id": "agent-zero",
+      "tier": "Warga",
+      "class": "Warga",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/agentic-trading-companion/agent-card.json",
+      "id": "agentic-trading-companion",
+      "tier": "Warga",
+      "class": "governed-executor",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/antigravity/agent-card.json",
+      "id": "antigravity",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/claude-code/agent-card.json",
+      "id": "claude-code",
+      "tier": "Warga",
+      "class": "WARGA_AAA_REPOSITORY_NATIVE_ENGINEERING_CELL",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/decisions/agent-card.json",
+      "id": "decisions",
+      "tier": "Warga",
+      "class": "Warga",
+      "capability": "VERIFY",
+      "cognitiveRing": "auditor"
+    },
+    {
+      "path": "/root/AAA/agents/forge-bot/agent-card.json",
+      "id": "forge-bot",
+      "tier": "Warga",
+      "class": "Warga",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/hermes/agent-card.json",
+      "id": "hermes",
+      "tier": "Warga",
+      "class": "Warga",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/hermes-asi/agent-card.json",
+      "id": "hermes-asi",
+      "tier": "Warga",
+      "class": "AAA-Core",
+      "capability": "REMEMBER",
+      "cognitiveRing": "archivist"
+    },
+    {
+      "path": "/root/AAA/agents/hermesarifos-bot/agent-card.json",
+      "id": "hermesarifos-bot",
+      "tier": "Warga",
+      "class": "Warga",
+      "capability": "ACT",
+      "cognitiveRing": "executor"
+    },
+    {
+      "path": "/root/AAA/agents/kanak-kanak/agent-card.json",
+      "id": "kanak-kanak",
+      "tier": "Warga",
+      "class": "novelty-probe",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/kimi-code/agent-card.json",
+      "id": "kimi-code",
+      "tier": "Warga",
+      "class": "CODING/FI",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/main/agent-card.json",
+      "id": "arifOS_bot",
+      "tier": "Warga",
+      "class": "AAA-Core",
+      "capability": "ACT",
+      "cognitiveRing": "executor"
+    },
+    {
+      "path": "/root/AAA/agents/prospect-maturation/agent-card.json",
+      "id": "PROSPECT-MATURATION",
+      "tier": "Warga",
+      "class": "C2",
+      "capability": "BUILD",
+      "cognitiveRing": "generator"
+    },
+    {
+      "path": "/root/AAA/agents/skill-auditor/agent-card.json",
+      "id": "skill-auditor",
+      "tier": "Warga",
+      "class": "Warga",
+      "capability": "VERIFY",
+      "cognitiveRing": "auditor"
+    }
+  ],
+  "skipped": [
+    {
+      "path": "/root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json",
+      "reason": "already aligned"
+    },
+    {
+      "path": "/root/AAA/agents/makcikgpt/agent-card.json",
+      "reason": "already aligned"
+    },
+    {
+      "path": "/root/AAA/agents/openclaw/agent-card.json",
+      "reason": "already aligned"
+    },
+    {
+      "path": "/root/AAA/agents/opencode/agent-card.json",
+      "reason": "already aligned"
+    }
+  ]
+}

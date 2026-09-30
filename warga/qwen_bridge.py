@@ -214,10 +214,12 @@ def _emit_ariflow(
     in arifFlow override_log.jsonl handles the fail-open path).
     """
     try:
-        import urllib.request
-        import urllib.error
+        import http.client
+        from urllib.parse import urlparse
 
-        _ = urllib.request  # silence LSP unbound warning; explicit module import
+        parsed = urlparse(ARIFLOW_URL)
+        host = parsed.hostname or "127.0.0.1"
+        port = parsed.port or (443 if parsed.scheme == "https" else 80)
 
         body = json.dumps(
             {
@@ -235,18 +237,14 @@ def _emit_ariflow(
                 **({"intent_reason": intent_reason} if intent_reason else {}),
             }
         ).encode("utf-8")
-        req = urllib.request.Request(
-            ARIFLOW_URL,
-            data=body,
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        urllib.request.urlopen(req, timeout=2).read()
-    except urllib.error.HTTPError as e:
-        # 400 = schema mismatch — surfaced to stderr for diagnosis.
-        # Receipts are still on disk; arifFlow is observability, not the source of truth.
-        sys.stderr.write(f"arifFlow ingest HTTP {e.code}: {e.reason} step_type={step_type} body={body[:300]!r}\n")
+        conn = http.client.HTTPConnection(host, port, timeout=2)
+        conn.request("POST", "/ingest", body=body, headers={"Content-Type": "application/json"})
+        resp = conn.getresponse()
+        resp.read()
+        conn.close()
     except Exception as e:
+        # Receipts are still on disk; arifFlow is observability, not the source of truth.
+        sys.stderr.write(f"arifFlow ingest ERROR: {type(e).__name__}: {e}\n")
         sys.stderr.write(f"arifFlow ingest ERROR: {e!r} step_type={step_type}\n")
 
 

@@ -683,5 +683,17 @@
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
   "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
-  "ikat": "2026-09-20 F13 — Arif: ok ikat la"
+  "ikat": "2026-09-20 F13 — Arif: ok ikat la",
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "BUILD",
+    "lane": "openclaw",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "Warga",
+    "auto_aligned_class": "Warga"
+  }
 }

@@ -4,7 +4,7 @@
   "protocolVersion": "1.0",
   "agentId": "openclaw",
   "name": "openclaw",
-  "description": "openclaw \u2014 Telegram/surface bridge \u2014 media-capable",
+  "description": "openclaw — Telegram/surface bridge — media-capable",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS Federation",
@@ -744,5 +744,40 @@
     "cardUrl": "http://127.0.0.1:3001/a2a/agents/openclaw",
     "healthUrl": "http://127.0.0.1:3001/health",
     "mcpUrl": "http://127.0.0.1:3001/a2a/openclaw/mcp"
+  },
+  "apexMasterSeal": {
+    "cognitiveRing": "observer",
+    "thermodynamicRole": "metabolic",
+    "ringPlacement": "pipeline",
+    "parallelism": "pipeline",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "pipeline",
+      "parallelism": "pipeline",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=FEDERATION, class=Warga"
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "OBSERVE",
+    "lane": "openclaw",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "FEDERATION",
+    "auto_aligned_class": "Warga"
   }
 }

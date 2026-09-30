@@ -3,7 +3,7 @@
   "schemaVersion": "2.3.0",
   "id": "aaa-gateway",
   "name": "AAA A2A Gateway",
-  "description": "Federation A2A Gateway \u2014 central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
+  "description": "Federation A2A Gateway — central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
   "version": "2026.07.02",
   "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com",
@@ -174,10 +174,10 @@
     "vault": "VAULT999"
   },
   "metadata": {
-    "doctrine": "DITEMPA BUKAN DIBERI \u2014 Control is forged, not given.",
+    "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given.",
     "created": "2026-07-02T04:50:00Z",
-    "created_by": "FORGE (000\u03a9) \u2014 A2A Gateway pattern",
-    "rationale": "Copilot A2A analysis \u2014 blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
+    "created_by": "FORGE (000Ω) — A2A Gateway pattern",
+    "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
     "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
     "kernel_deps": [
       "KERNEL-trinity-33",
@@ -224,12 +224,12 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
   "_quarantined_skills": [
     {
       "id": "FORGE-route-task",
       "name": "Task Routing",
-      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task \u2192 matches skill \u2192 routes to organ \u2192 streams result.",
+      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task → matches skill → routes to organ → streams result.",
       "tags": [
         "routing",
         "gateway",
@@ -332,5 +332,40 @@
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
   "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "a79ec7efe7f0aa451ec54a10efb358def1d40b8ed12372bf57ea80dc87fde369"
+  "registry_receipt_hash": "a79ec7efe7f0aa451ec54a10efb358def1d40b8ed12372bf57ea80dc87fde369",
+  "apexMasterSeal": {
+    "cognitiveRing": "auditor",
+    "thermodynamicRole": "inner",
+    "ringPlacement": "single-threaded",
+    "parallelism": "single-threaded",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "single-threaded",
+      "parallelism": "single-threaded",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=ROLE, class=Warga"
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "VERIFY",
+    "lane": "aaa-gateway",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "ROLE",
+    "auto_aligned_class": "Warga"
+  }
 }
