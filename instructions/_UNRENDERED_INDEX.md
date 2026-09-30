@@ -62,6 +62,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - claim-receipt-binding
 - closed-loop-vmodel
 - codebase-reality-forger-init-v1
+- codex-boot-platform-specific
 - coding-federation-external-contrast
 - cognitive-cost-transfer-eurekas
 - compute-attention-invariant
@@ -73,6 +74,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - constitutional-nusantara-glossary-DRAFT
 - constitutional-runtime-promotion
 - constitutional-separation
+- consumer-endpoint-witness
 - context-axes
 - cost-of-translation
 - cultural-evolution-doctrine
@@ -145,6 +147,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - modular-orthogonal-federation
 - monotonic-recovery
 - musyawarah
+- namespace-fatwa-k2-symbol-settlement
 - naming-doctrine
 - national-intelligence-invariants
 - nusantara-glossary-DRAFT-v0.6-2026-09-24
@@ -186,6 +189,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - triad-perspective-consequence-persistence
 - universal-agent-relationship-constitution
 - universe-bootstrap
+- valence-loss-asymmetry
 - vault999-writer-discipline
 - wawabot-anthropology
 - witness-cost-gradient
