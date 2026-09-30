@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "purpose": "STAGED delta for re-signing Kimi Code FI-008 agent-card.json. Apply ONLY when air-gapped sovereign.pem is mounted. Kimi signature is currently VALID (2026-08-21) so the staged patch must be applied + re-signed atomically to avoid a stale-signature window.",
+    "applied_at": null,
+    "applied_by": null,
+    "actions": [
+      {
+        "op": "set",
+        "path": "/apexMasterSeal/cognitiveRing",
+        "old_value": "unassigned",
+        "new_value": "generator",
+        "reason": "Kimi executes (forge instrument) — generator ring is the correct topological role"
+      },
+      {
+        "op": "set",
+        "path": "/apexMasterSeal/thermodynamicRole",
+        "old_value": "neutral",
+        "new_value": "entropy_source",
+        "reason": "Kimi writes code, makes new things — entropy_source is the correct thermodynamic role"
+      },
+      {
+        "op": "set",
+        "path": "/apexMasterSeal/hassabisInversion/ringPlacement",
+        "old_value": "none",
+        "new_value": "outer",
+        "reason": "Kimi is a forge instrument acting on environment (file/code/system) — outer ring"
+      },
+      {
+        "op": "set",
+        "path": "/apexMasterSeal/hassabisInversion/parallelism",
+        "old_value": "none",
+        "new_value": "multi-model",
+        "reason": "Sub-agent model pool with 5 models is multi-model by design"
+      },
+      {
+        "op": "set",
+        "path": "/apexMasterSeal/hassabisInversion/shadowAcknowledged",
+        "old_value": [],
+        "new_value": [
+          "thermal_dispersion: 12 hooks fire on every event class — must not flood FQ",
+          "false_diversity: cheap explore + frontier reason pool must NOT average into single signal",
+          "shadow_registered: SHADOW-KC-002 receipt_theater — receipt:output ratio must be audit-only, not primary output"
+        ],
+        "reason": "Kimi's 12-hook YOLO architecture produces measurable shadow patterns; register them on the apex-zen seal"
+      },
+      {
+        "op": "add",
+        "path": "/apex_zen",
+        "value": {
+          "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+          "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+          "invariant": "CAPABILITY ≠ AUTHORITY",
+          "doctrine": "Govern capabilities, not implementations.",
+          "motto": "DITEMPA BUKAN DIBERI",
+          "capability": "FORGE",
+          "lane": "333-AGI",
+          "hook_count": 12,
+          "hook_inventory_dup_ref": "anti_bangang_architecture.hook_inventory",
+          "yolo_directive": "F13 2026-08-13: YOLO stays. Governed via hooks, not permission prompts.",
+          "fi_slot": "FI-008"
+        },
+        "reason": "Mirror OpenCode's apex_zen block; Kimi is missing this canonical anchor"
+      },
+      {
+        "op": "add",
+        "path": "/model_routes/subagent_pool/poly_bridge_integration",
+        "value": {
+          "enabled": false,
+          "proposed_by": "333-AGI 2026-09-30",
+          "rationale": "Qwen bridge at /root/AAA/warga/qwen_bridge.py (Tier-1, in progress) exposes 6-model poly-bridge. Kimi's 5-model subagent pool can route to it for cost-arbitrage.",
+          "requires": "Qwen bridge Tier-1 ship + 7-day clean run + F13 ratification"
+        }
+      },
+      {
+        "op": "set",
+        "path": "/upgrade_history/-1",
+        "old_value": null,
+        "new": {
+          "from_version": "2.5.0",
+          "to_version": "2.5.1",
+          "upgraded_at": "2026-09-30T04:00:00Z",
+          "upgraded_by": "Kimi Code (FI-008) — apex-zen ring assignment + cross-warga bridge staging",
+          "changes": [
+            "apexMasterSeal: cognitiveRing unassigned → generator; thermodynamicRole neutral → entropy_source; ringPlacement none → outer; parallelism none → multi-model",
+            "apexMasterSeal.hassabisInversion.shadowAcknowledged: [] → 3 entries (thermal_dispersion, false_diversity, SHADOW-KC-002)",
+            "apex_zen block added (governance_chain, invariant, capability=FORGE, lane=333-AGI, hook_count=12)",
+            "model_routes.subagent_pool.poly_bridge_integration: staging record for Qwen bridge integration"
+          ]
+        }
+      }
+    ]
+  }
+}

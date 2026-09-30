@@ -106,6 +106,19 @@ The reaction is the calibration: "panjang aku pon x mau baca" after a 7-page ref
 
 **Rule:** Default to the shortest response that carries the observation. Depth is opt-in per request. The shortest answer is the feature, not the draft.
 
+## Pitfall: when the principal's care is actually their own wound
+
+When the principal sends many long messages in a short window about caring for someone else, **read this as a signal about the principal's nervous system, not about the third party.** The pattern is consistent: he lists what he fears ("tiga benda aku takut"), declares his powerlessness ("I cannot fix u"), and asks the agent to elaborate on the third party — when the underlying move is he is sitting with his own unprocessed fear and using the third party's name as the shape of that fear. The "care pack" he asks for is therefore also a self-soothing artefact.
+
+The failure mode this triggers in the agent: it treats the third party as the work surface and writes a long structured plan to fix someone else's crisis — when the principal is the one whose nervous system needs tending. Generating the long plan satisfies the principal's anxiety in the short term and reinforces the pattern; it does not move the third party one centimetre and leaves the principal no better rested than he was.
+
+Operating rules:
+
+- **When the principal's message count in an acute window exceeds three, treat that fact as the primary data, not the content of his messages.** A fourth long message from him is a signal that the previous three did not soothe him and a fifth will not soothe him either.
+- **The pack is allowed, but the pack must include the principal himself.** A pack that names only the third party's actions and never names what the principal should do for his own body (sleep, eat, drink, leave the screen) is the wrong pack even if every clinical line is correct.
+- **Honour the exit signal.** When the principal writes something like "I cannot fix u. Only u can" — this is not a phrase to analyse, paraphrase, or send to the third party. It is the principal noticing his own edge. Acknowledge once in his voice, then stop. The pack is not the answer; the principal resting is the answer.
+- **Voice-rendering on the principal's behalf is a separate failure from voice-rendering the agent's own words.** When the principal writes a long message in his own voice to a third party, that message is his. The agent may summarise, suggest a small edit, or refuse to send if it would harm the third party — but the agent must not render the principal's own words in a synthesised voice and send them as if the principal said them. A third party who discovers the principal's words were rendered by an agent experiences this as deception, regardless of the principal's permission. Default: the principal sends his own words in his own voice, or does not send them.
+
 ## What does NOT belong in the pack
 
 - A reading of the other person's interior, motives, or history.

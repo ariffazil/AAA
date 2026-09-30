@@ -1,0 +1,70 @@
+{
+  "captured_at": "2026-09-30T12:04:00+08:00",
+  "captured_by": "333-AGI (FI-001) — arifOS session SEAL-56244492390e4a7b",
+  "purpose": "Live organ probe snapshot — references for re-signing agent-card.json bodies. NOT a substitute for the card body; safe to publish without invalidating signatures.",
+  "opencode_fi001_runtime": {
+    "binary": "/root/.npm-global/bin/opencode",
+    "binary_version": "1.18.30",
+    "card_version": "2.0.0-trinity",
+    "card_last_updated_card_field": "2026-07-29",
+    "card_signature_status": "ABSENT",
+    "card_pubkey": "2e9919ef24f7f843fae6d6e940ab9dd54d4e642358527c4e6db8a8534b481d19",
+    "card_pubkey_locator": "air-gapped at /mnt/usb/sovereign.pem",
+    "running_pids": [1687498, 1766753],
+    "trinity_agents": ["333-AGI", "555-ASI", "555-ASI-VISION", "888-APEX", "dispatch"],
+    "plugins_loaded": [
+      "aaa-autonomy.ts",
+      "aaa-dispatch.ts",
+      "arifos-kernel-bridge.ts",
+      "arifos-turn-rsi.ts",
+      "arifos-federation-manifest-compiler.ts",
+      "arifos-compaction-rsi.ts",
+      "sycophancy-detector.ts",
+      "hermes-nudge-injector.ts"
+    ],
+    "model_routing_primary": "deepseek-v4-pro",
+    "model_pool_status": "single-primary; no rotation"
+  },
+  "kimi_fi008_runtime": {
+    "binary": "/root/.kimi-code/bin/kimi",
+    "binary_version": "0.41.0",
+    "card_version": "2.5.0",
+    "card_last_updated_card_field": "2026-08-21",
+    "card_signature_status": "VALID",
+    "card_signature_did": "did:arif:aaa",
+    "card_signature_type": "Ed25519Signature2020",
+    "running_pid": 1735476,
+    "hooks_wired": 12,
+    "mcp_wired": 12,
+    "yolo_mode": "preserved per F13 directive 2026-08-13",
+    "model_pool_count": 5,
+    "fq_self_reported": 2.29,
+    "fq_self_risk": "analysis paralysis (verify > execute)"
+  },
+  "live_organ_health_now": {
+    "arifos": {"verdict": "HOLD", "floors": 13, "drift": false, "runtime_id": null},
+    "aforge": {"status": "healthy", "tools_loaded": 122},
+    "aforge_7072": {"status": "healthy", "tools_loaded": null},
+    "geox": {"status": "healthy"},
+    "wealth": {"status": "healthy"},
+    "well": {"status": "degraded"},
+    "arifflow": {"verdict": null, "legacy_verdict": "OPTIMAL", "scalar_fq": 1.11, "execute_count": 44, "verify_count": 49, "actor_count": 8, "metric_version": "qg.v0.3.1-vector"},
+    "aaa": {"status": "healthy"}
+  },
+  "constitutional_floors_active": 13,
+  "vault999_receipts_count": 1000,
+  "ariflow_actor_fq_breakdown": {
+    "333-agi": {"verdict": "OPTIMAL", "fq": 1.0, "execute": 4, "verify": 4, "diagnosis": "BALANCED"},
+    "333-agi/memory-helix": {"verdict": "UNKNOWN", "diagnosis": "EXECUTION DOMINANCE", "execute": 1, "verify": 0},
+    "a-forge": {"verdict": "OPTIMAL", "fq": 1.078, "execute": 127, "verify": 137, "diagnosis": "BALANCED"},
+    "grok-build": {"verdict": "FLOWING", "diagnosis": "VERIFICATION DOMINANCE", "verify": 23},
+    "hermes-asi": {"verdict": "STUCK", "fq": 0.29, "execute": 24, "verify": 7, "diagnosis": "BALANCED"},
+    "p0-metabolize": {"verdict": "CAUTION", "diagnosis": "VERIFICATION DOMINANCE", "verify": 1},
+    "qwen-code": {"verdict": "FLOWING", "fq": 0.6, "execute": 5, "verify": 3, "diagnosis": "BALANCED"},
+    "reexamine": {"verdict": "CAUTION", "diagnosis": "VERIFICATION DOMINANCE", "verify": 1}
+  },
+  "delta_vs_card_snapshots": {
+    "opencode": "card claims 1.18.9 + 23 MCP + FQ 99.0 (deprecated); live = 1.18.30 + 8 plugins + FQ 1.11 (vector constellation). WELL was degraded 2026-08-14, still degraded now.",
+    "kimi": "card claims FQ 2.29 self-flagged analysis-paralysis; live actor FQ for fi008 not in vector constellation — must use shadow registry FQ."
+  }
+}

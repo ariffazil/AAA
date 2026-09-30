@@ -1,0 +1,79 @@
+# SKILL-ESTATE.yaml — The Estate Declaration (the missing law)
+# Status: DRAFT_AWAITING_F13 (2026-09-29). Instrument built and proven in dry-run.
+# Reversal: delete this file. Nothing depends on it until an agent reads it.
+
+version: 1
+owner: "arifOS Federation"
+authority: "F13 (archive/restore are reversible; deletion never happens here)"
+
+law:
+  - "An artifact without an owner, a retention rule and a declared writer is sediment, not architecture."
+  - "Nothing in the sovereign corpus is ever deleted. Cold means moved, sealed, restorable."
+  - "Every transition is reversible by one command, with a snapshot and an append-only ledger."
+  - "Sensor beats seniority. Usage and reference evidence decide, never age or file size."
+  - "Absence from the sensor is NOT zero use. Unmeasured is reported as UNKNOWN."
+
+roots:
+  - path: "/root/.hermes/skills"
+    owner: "HERMES (default profile)"
+    writer: "hermes, curator, agent"
+    curated_by: "upstream-curator"
+  - path: "/root/AAA/skills"
+    owner: "AAA Federation"
+    writer: "aaa-agents, forge, hermes"
+    curated_by: "sovereign"
+    evidence: "PROVEN 2026-09-29 — upstream curator refuses: lives in skills.external_dirs and is read-only to the curator"
+  - path: "/usr/local/lib/hermes-agent/skills"
+    owner: "upstream install tree"
+    writer: "installer"
+    indexed: false
+    evidence: "loader reads SKILLS_DIR + skills.external_dirs only; 294 SKILL.md here are unreachable copies"
+    retention: "delete-on-upgrade"
+
+retirement:
+  stale_after_days: 14
+  archive_after_days: 30
+  sensor: "/root/.hermes/skills/.usage.json"
+  sensor_validation: "2026-09-29 — 398 of 400 known-loaded skills had usage>0; 0 false zeros; covers both roots (558 AAA keys)"
+  action: "move to <root>/.archive/<UTC-date>/ — never delete"
+  reversal: "skill-estate.py restore <name>"
+  requires_all:
+    - "sensor_use_count == 0 and sensor_view_count == 0"
+    - "no inbound reference in cron / AGENTS / SOUL / any skill file"
+    - "not pinned"
+    - "not in protected_domains"
+  caveat: "135 live skills have no usage row at all — UNKNOWN, never unused. A null sensor is not a measurement."
+
+protected_domains:
+  - "domains/general/apex"
+  - "domains/general/court"
+  - "domains/general/aaa"
+  - "domains/well"
+  - "domains/wealth"
+  - "domains/geo"
+  - "domains/my-reality"
+  - "_lanes"
+
+pinned: []
+
+selection_surface:
+  description_max_chars: 60
+  measured_over_budget: 275
+  measured_index: "name 15,037B + description 60,277B + path 23,843B = 99,187B = 24,796 tok/turn"
+  reclaim_if_capped: "21,659B = 5,414 tok/turn, zero skills lost"
+  rule: "A description states the TRIGGER (when to load me), never the procedure. Procedure belongs in the body, which costs nothing until loaded."
+  alarm: "index_tokens_per_used_capability — alarm on growth, never on an absolute number. Upstream's 3k budget assumes ~90 skills and one agent; 708 is this federation's real surface."
+
+routing:
+  doctrine: "One corpus, many declared views. A seat sees the slice its work needs."
+  evidence_2026_09_29:
+    telegram: { skills: 293, index_tok: 7126 }
+    cli: { skills: 177, index_tok: 4281 }
+    subagent: { skills: 99, index_tok: 2066 }
+    cron: { skills: 8, index_tok: 249 }
+  note: "Upstream has no tier between indexed-and-loadable and disabled-and-refused. Until it does, routing is a real visibility decision per seat, never a free diet. Do not build a view mechanism until a seat can name the capability it is missing."
+
+inheritance:
+  mechanism: "upstream profile distribution (git repo: SOUL + config + skills + cron + mcp.json)"
+  why: "A new AAA seat should be born with the constitution, not rebuild it. Six plugins, five gateway hooks and this corpus are already the product."
+  status: "STAGED, not published"

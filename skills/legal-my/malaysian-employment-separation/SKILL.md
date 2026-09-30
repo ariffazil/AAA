@@ -197,6 +197,43 @@ Then hand back four numbers plus a runway — gross, exempt slice, taxable remai
 `scripts/exit_package_calc.py` for the arithmetic instead of re-deriving the tax bands by hand each
 session.
 
+## The aspiration form inside a placement exercise — a record, not a lever
+
+When a rightsizing / talent-placement exercise issues a "career aspiration" form, treat it as what it
+is: an administrative record, not a negotiation. It cannot deliver money, title or terms. It can only
+fix what was registered — and it is read by the same people who read everything else the person wrote.
+
+- **Never select an open-ended commitment option.** Placement forms often offer "to remain and support
+  the transition until OD1, and beyond where required". That is an undated commitment; if the free-text
+  field says the person intends to exit, the radio option is the operative one and the free text reads
+  as noise. Read every option's trailing clause before ticking.
+- **The human channel and the process channel must not contradict each other.** If a personal letter has
+already gone to a GM, the form is read by the same humans. A form written in inflated corporate
+register against a plain, personal letter makes the letter read as the story and the form as the fact —
+and the form wins.
+- **A vague ask is not an ask.** "I would welcome an early conversation" is absorbed. "A 30-minute
+conversation with my line leader and HR within the next two weeks" gets answered. Small, dated, and
+addressed to a person; categories receive nothing.
+- **Name the level.** "A higher position" gets a vague answer. A named level can be granted or refused.
+"At least X" invites "not now".
+- **A form carries one story well.** "I want to grow here" plus "I want to exit", with no condition
+linking them, is incoherent — and the reader resolves incoherence toward the cheapest actionable
+option, which is the exit. A coherent two-sided position is a preference plus its condition: first
+preference A; if A is unavailable, B.
+- **Every attractive skill listed is an argument for retaining the person** — and retention is what
+blocks a separation. If the intended outcome is the exit, do not sell capability in the form.
+- **Keep tax, exit dates, completed-year counts and package arithmetic out of the form.** They belong in
+a written request to HR once the scheme's terms are in hand. Raising them early only teaches the
+employer which dates to avoid.
+- **When the formula is still unknown, hold the re-employment question.** Asking whether a scheme
+"expressly or impliedly provides for re-employment" is value-critical, but asking it before terms are
+issued can prompt the employer to draft the clause it did not have. Ask eligibility and terms first;
+ask the re-employment question when the terms come back and before anything is signed.
+- **Rewriting assistants strip conditions.** A tool that "improves the wording" raises the register and
+drops the specific ask, the named level and the personal considerations. Diff the text after any
+external rewrite before submitting.
+- **Never state or imply an offer to resign** in a form whose options determine entitlement.
+
 ## When the question is social, not arithmetical
 
 "Will people think I'm a loser for taking this?" is a different question from "what is it worth?"

@@ -8,6 +8,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-v0.6-2026-09-24
 - EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-STAGING-2026-09-25
 - F13-RATIFICATION-READINESS
+- HANDOFF_2026-09-29_HERMES_AUDIT
 - HERMES-RASA-CANONICAL-COMPRESSION
 - LEAN_BOOT_PROFILE
 - LEAN_BOOT_TRIGGER_TABLE
@@ -28,6 +29,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - anti-haram-behavior-canonical
 - anti-haram-behavior-canonical-human
 - anti-shadow-architecture
+- apex-parity-doctrine-v1
 - apex-rose-parallel
 - apex-swot-loop
 - apex-zen-breath-loop
@@ -40,6 +42,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - autonomous-execution-seal
 - autonomous-substrate-kernel
 - autonomy
+- base-doctrine-longform
 - bbb-actor-physics-framework
 - bijaksana-alignment-v1
 - bijaksana-audit-discipline
@@ -52,13 +55,13 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - causal-ingestion
 - cbi-doctrine-family-bridge
 - ccc-autonomy-ladder
+- channel-prompt-authoring
 - civ-21
 - civilizational-dependency-graph
 - claim-lifecycle-states
 - claim-receipt-binding
 - closed-loop-vmodel
 - codebase-reality-forger-init-v1
-- codex-boot-platform-specific
 - coding-federation-external-contrast
 - cognitive-cost-transfer-eurekas
 - compute-attention-invariant
@@ -109,6 +112,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - governance-eurekas-20260910
 - gui-spec
 - harness-commoditization-boundary
+- hermes-identity-directive
 - hermes-layer-discipline
 - hermes-role-ladder
 - hermes-shadow-SOURCE-2026-09-16
@@ -116,12 +120,13 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - hermes-v1-canon
 - hook-federation-standard
 - huma-edge-reality-bridge-contrast
-- human-attention-membrane
 - human-cognitive-artifact-invariants
 - human-heartbeat-map-DRAFT-2026-09-24
 - human-meaning-membrane
 - human-memory
 - human-reality-invariants
+- human-substrate
+- human-substrate-exclusions-PROPOSAL
 - human-zero-visibility-invariant
 - identity-continuity
 - institutional-memory-strata
@@ -160,11 +165,11 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - representation-layer-integrity
 - representation-reality-invariant
 - reversibility-as-information-test
-- runtime-tools-py-containment-contract
 - salam-consequence-membrane
 - sanctuary-invariant
 - scar-engineering
 - shadow-as-expensive-reality
+- shadow-authority-doctrine
 - shadow-paradoxes-13
 - six-graph-federation-model
 - skill-mesh-conflict-register
@@ -185,6 +190,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - wawabot-anthropology
 - witness-cost-gradient
 - witness-maintenance
+- witness-theory-system-design
 - witness-zen-doctrine
 - witnessed-territory
 - world-model-daemon-spec

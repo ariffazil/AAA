@@ -1,0 +1,8 @@
+{
+  "skill_id": "forge-context-compressor",
+  "agent": "hermes-rsi-loop",
+  "lesson": "TRUNCATION_LOSS observed 1x \u2014 impact=evidence_loss. First surface: session:tool:execute_code \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session:tool:execute_code\", \"excerpt\": \"1 CONTAMINATED    engine emitted tokens absent from the input text\\\\n22:  2 TRUNCATED       duration below floor (render silently cut short)\\\\n23:  3 ERROR           could not verify (no key, ASR failed) \u2014 reported, never guessed\\\\n182:        report[\\\\\\\"verdict\\\\\\\"] = \\\\\\\"ERROR\\\\\\\"\\\\n185:        return 3\\\\n200:\"}]",
+  "atom_id": "ATOM-8b424010e2aa",
+  "verified_by": "hermes-rsi-verifier"
+}
