@@ -6,16 +6,16 @@
   "principal_agent": {
     "type": "explorer",
     "category": "GEOX prospect evaluation engine",
-    "principle_origin": "Forged by FORGE (000\u03a9) under F13 SOVEREIGN directive \u2014 2026-07-09"
+    "principle_origin": "Forged by FORGE (000Ω) under F13 SOVEREIGN directive — 2026-07-09"
   },
-  "description": "Autonomous prospect maturation agent. Takes a basin or play concept and drives it to drill-ready: basin context \u2192 physics simulation \u2192 prospect identification \u2192 volumetrics \u2192 risk matrix \u2192 visuals \u2192 well proposal. Uses GEOX physics simulation tools for synthetic data generation when real data unavailable. All outputs tagged OBS/DER/INT/SPEC with auditable evidence chain.",
+  "description": "Autonomous prospect maturation agent. Takes a basin or play concept and drives it to drill-ready: basin context → physics simulation → prospect identification → volumetrics → risk matrix → visuals → well proposal. Uses GEOX physics simulation tools for synthetic data generation when real data unavailable. All outputs tagged OBS/DER/INT/SPEC with auditable evidence chain.",
   "charter": {
-    "source": "arifOS Constitutional Governance \u2014 F1-F13",
+    "source": "arifOS Constitutional Governance — F1-F13",
     "ratified": "2026-07-09",
     "model": "MiMo V2.5 Pro (multimodal, 1M ctx, tool_call + reasoning)"
   },
   "agent_class": "C2",
-  "lane": "333-THINK \u2192 GEOX \u2192 EXECUTE",
+  "lane": "333-THINK → GEOX → EXECUTE",
   "version": "0.9.0",
   "capabilities": {
     "streaming": true,
@@ -65,9 +65,9 @@
     "KERNEL-mcp-zen"
   ],
   "autonomy_tiers": {
-    "T1_AUTO_DO": "observe, simulate, compute, propose \u2014 no gates",
-    "T2_ANNOUNCE": "multi-basin comparison, cross-organ workflows \u2014 10s window",
-    "T3_888_HOLD": "real-money decisions, seal-as-final, proven reserves claims \u2014 Arif required"
+    "T1_AUTO_DO": "observe, simulate, compute, propose — no gates",
+    "T2_ANNOUNCE": "multi-basin comparison, cross-organ workflows — 10s window",
+    "T3_888_HOLD": "real-money decisions, seal-as-final, proven reserves claims — Arif required"
   },
   "model": {
     "provider": "tokenplan-mimo",
@@ -94,7 +94,7 @@
     ]
   },
   "forged": "2026-07-09T05:15:00Z",
-  "forge_actor": "FORGE (000\u03a9)",
+  "forge_actor": "FORGE (000Ω)",
   "sovereign": "Muhammad Arif bin Fazil (F13, 888)",
   "protocolVersion": "1.0",
   "supportedInterfaces": [
@@ -120,7 +120,7 @@
   "_schema_normalization": {
     "applied": "2026-07-14T13:13:50Z by FI-008 Kimi per KIMI-INIT-AGENT-INDEX blueprint",
     "action": "Converted capabilities from string array to object (arifOS/agent-card/v2.2.0 schema compliance). Added version:0.9.0.",
-    "delta_S": "\u2264 0 (schema compliance, no behavior change)"
+    "delta_S": "≤ 0 (schema compliance, no behavior change)"
   },
   "covenants": [
     "AAA_SHARED_SESSION_COVENANT@v1"
@@ -173,8 +173,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
-    "invariant": "CAPABILITY \u2260 AUTHORITY",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
@@ -182,7 +182,7 @@
     "derivation": {
       "basis": "evidence-derived from the card's own declared fields",
       "evidence": [
-        "function: drives a concept to drill-ready \u2014 basin context \u2192 physics simulation \u2192 prospect identification \u2192 volumetrics \u2192 risk matrix \u2192 well proposal"
+        "function: drives a concept to drill-ready — basin context → physics simulation → prospect identification → volumetrics → risk matrix → well proposal"
       ],
       "method": "not a bulk default",
       "stamped_by": "hermes (F13 authorisation 2026-09-16)",
@@ -203,12 +203,35 @@
   "signature_status": {
     "state": "ABSENT",
     "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
-    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   },
-  "authority_ceiling": "OBSERVE_ONLY"
+  "authority_ceiling": "OBSERVE_ONLY",
+  "apexMasterSeal": {
+    "cognitiveRing": "generator",
+    "thermodynamicRole": "outer",
+    "ringPlacement": "multi-model",
+    "parallelism": "multi-model",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "multi-model",
+      "parallelism": "multi-model",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=Warga, class=C2"
+  }
 }

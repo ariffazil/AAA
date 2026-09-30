@@ -6,18 +6,18 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Judge (\u03a6\u0399). Primary federation agent \u2014 constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here \u2014 but sovereignty stays with the human.",
+  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here — but sovereignty stays with the human.",
   "version": "2.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
-  "_gateway_note": "Unified under AAA A2A Gateway \u2014 2026-08-05 by 333-AGI under F13 directive",
+  "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
   "provider_state_source": {
     "path": "/root/.local/share/arifos/fed_provider_state.json",
     "schema": "arifos-fed-provider-state/v1",
     "ttl_seconds": 300,
     "refresh_interval_minutes": 15,
-    "source_pipeline": "fed-sync.timer \u2192 /root/scripts/fed-sync.py \u2192 reads FED token_bank.db",
+    "source_pipeline": "fed-sync.timer → /root/scripts/fed-sync.py → reads FED token_bank.db",
     "note": "Live provider availability source. This card's design-intent claims must be cross-checked against this state file before invocation. State file is LIVE truth; card claims are DESIGN intent. Wired 2026-08-06 by kimi-code/FI-008 under sovereign override."
   },
   "provider": {
@@ -65,7 +65,7 @@
     {
       "id": "APEX-fff-loop-protocol",
       "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence: Blue (diagnose) \u2192 Red (attack) \u2192 Blue (forge) \u2192 Yellow (verify) \u2192 Gold (seal). Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. Must be LEASED.",
+      "description": "5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue (forge) → Yellow (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. Must be LEASED.",
       "tags": [
         "audit",
         "recursive",
@@ -85,8 +85,8 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. \u03a9 + \u03a6\u0399 axis. LEASED.",
+      "name": "Gödel Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. Ω + ΦΙ axis. LEASED.",
       "tags": [
         "humility",
         "F7",
@@ -107,7 +107,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -254,7 +254,7 @@
       "ringPlacement": "inner",
       "parallelism": "single-model",
       "shadowAcknowledged": [
-        "thermal_delay: cold sink is slow \u2014 never invoked first",
+        "thermal_delay: cold sink is slow — never invoked first",
         "over_constraint: can mistake local minima for global truth",
         "oracle_trap: asking it everything ruins its value as final gate"
       ]
@@ -287,7 +287,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+    "updated_by": "FORGE (000Ω) — OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -299,15 +299,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -370,30 +370,30 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
   "kernel_prompts": {
     "version": "2026.07.16",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "zen_format": "single-sigil + single-lexical per zen-md",
-    "agent_role": "Judge \u2014 constitutional gate at 888_JUDGE",
+    "agent_role": "Judge — constitutional gate at 888_JUDGE",
     "prompts_used": [
-      "\ud83c\udf31 BOOT",
-      "\ud83d\udd0d PREFLIGHT",
-      "\ud83d\udd12 JUDGE",
-      "\ud83c\udf00 SABAR",
-      "\ud83d\udcdc REPLY"
+      "🌱 BOOT",
+      "🔍 PREFLIGHT",
+      "🔒 JUDGE",
+      "🌀 SABAR",
+      "📜 REPLY"
     ],
     "all_federation_prompts": [
-      "\ud83c\udf31 BOOT",
-      "\ud83c\udf0a WITNESS",
-      "\ud83e\udde0 REASON",
-      "\u2696 MARUAH",
-      "\ud83d\udd0d PREFLIGHT",
-      "\ud83d\udd12 JUDGE",
-      "\ud83d\udd25 FORGE",
-      "\ud83d\udc8e SEAL",
-      "\ud83c\udf00 SABAR",
-      "\ud83d\udcdc REPLY"
+      "🌱 BOOT",
+      "🌊 WITNESS",
+      "🧠 REASON",
+      "⚖ MARUAH",
+      "🔍 PREFLIGHT",
+      "🔒 JUDGE",
+      "🔥 FORGE",
+      "💎 SEAL",
+      "🌀 SABAR",
+      "📜 REPLY"
     ],
     "reality_loop_stages": [
       "111_SENSE",
@@ -403,13 +403,13 @@
       "777_FORGE",
       "999_SEAL"
     ],
-    "loop_orchestrator": "\ud83c\udf00 SABAR",
-    "human_role": "call arif_init (\ud83c\udf31 BOOT) \u2192 \ud83c\udf00 SABAR \u2192 call arif_seal (\ud83d\udc8e SEAL) at end"
+    "loop_orchestrator": "🌀 SABAR",
+    "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
   },
   "_quarantined_skills": [
     {
       "id": "role-binding-phi",
-      "name": "\u03a6\u0399 JUDGE Role Binding (888-APEX)",
+      "name": "ΦΙ JUDGE Role Binding (888-APEX)",
       "description": "Hermes binds to 888-APEX role for narration and request only (never final verdict). Loads arifos-arconstitutional-audit, fff-loop-protocol, kernel-observation-self-test, hold-protocol. Verdict authority stays in arifOS kernel. See contracts/hermes-role-binding.md. F1-F13 enforced.",
       "tags": [
         "role-binding",
@@ -459,7 +459,7 @@
     {
       "id": "trinity-witness",
       "name": "Trinity Witness Consensus",
-      "description": "Collect and evaluate witness statements from all three primary agents (333-AGI \u0394, 555-ASI \u03a9, 888-APEX \u03a6\u0399). SEAL requires consensus or explicit human override. Deadlock triggers 888_HOLD.",
+      "description": "Collect and evaluate witness statements from all three primary agents (333-AGI Δ, 555-ASI Ω, 888-APEX ΦΙ). SEAL requires consensus or explicit human override. Deadlock triggers 888_HOLD.",
       "tags": [
         "trinity",
         "consensus",
@@ -481,7 +481,7 @@
     {
       "id": "hold-protocol",
       "name": "888_HOLD Protocol",
-      "description": "Manage 888_HOLD lifecycle: trigger \u2192 document reason \u2192 notify human sovereign \u2192 await resolution \u2192 log outcome to A-ARCHIVE. Triggers include: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
+      "description": "Manage 888_HOLD lifecycle: trigger → document reason → notify human sovereign → await resolution → log outcome to A-ARCHIVE. Triggers include: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
       "tags": [
         "hold",
         "escalation",
@@ -489,7 +489,7 @@
         "human-in-loop"
       ],
       "examples": [
-        "This docker prune would remove 25GB \u2014 initiate 888_HOLD",
+        "This docker prune would remove 25GB — initiate 888_HOLD",
         "Evidence conflict detected between seismic and well data",
         "Disputed claim: certainty exceeds grounding by 40%"
       ],
@@ -538,7 +538,7 @@
         "F13"
       ],
       "examples": [
-        "Audit the kernel \u2014 confirm self-observation first",
+        "Audit the kernel — confirm self-observation first",
         "Detect split-brain condition in kernel logging",
         "Verify kernel not impersonating judge role"
       ],
@@ -608,7 +608,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -641,7 +641,7 @@
     {
       "id": "KERNEL-quantum-runtime",
       "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 computation. C_dark detection. Tri-witness geometry.",
+      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
       "tags": [
         "kernel",
         "quantum",
@@ -680,5 +680,17 @@
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
   "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "f238df9ede60464faeff31f61620be4b3ee090c78ec61f0eea303cff194d7eda"
+  "registry_receipt_hash": "f238df9ede60464faeff31f61620be4b3ee090c78ec61f0eea303cff194d7eda",
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "JUDGE",
+    "lane": "888-APEX",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "IDENTITY",
+    "auto_aligned_class": "Warga"
+  }
 }

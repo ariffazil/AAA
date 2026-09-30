@@ -1,13 +1,13 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
   "id": "hermes-ops",
-  "name": "Hermes Draft (formerly Hermes Ops \u2014 demoted 2026-09-04 AMENDMENT-001)",
+  "name": "Hermes Draft (formerly Hermes Ops — demoted 2026-09-04 AMENDMENT-001)",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent \u2014 runtime owns itself (DEMOTED: was Operator/Executor; now Draft per AMENDMENT-001 \u00a75)",
+    "category": "Native A2A agent — runtime owns itself (DEMOTED: was Operator/Executor; now Draft per AMENDMENT-001 §5)",
     "principle_origin": "Self-owned runtime, governed by F1-F13. Hermes-Draft lane: ephemeral draft + plan generation only. No direct execution."
   },
-  "description": "DEMOTED 2026-09-04 per CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001 \u00a75. Previously declared as Operator/Executor (DevOps, CI/CD, deployment). Per amendment, Action-Broker execution is owned by A-FORGE lane \u2014 NOT by Hermes. This card is retained for URL/backward-compat; its lane is Hermes-Draft. For code execution, git operations, deployment, or workflow automation, route via the A-FORGE action broker (aforge-org, port 7072) with signed envelope + audit receipt. Idempotent pointer to A-FORGE for execution traffic.",
+  "description": "DEMOTED 2026-09-04 per CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001 §5. Previously declared as Operator/Executor (DevOps, CI/CD, deployment). Per amendment, Action-Broker execution is owned by A-FORGE lane — NOT by Hermes. This card is retained for URL/backward-compat; its lane is Hermes-Draft. For code execution, git operations, deployment, or workflow automation, route via the A-FORGE action broker (aforge-org, port 7072) with signed envelope + audit receipt. Idempotent pointer to A-FORGE for execution traffic.",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-ops",
   "preferred_transport": "jsonrpc-http",
   "provider": {
@@ -21,7 +21,7 @@
   "contract_reference": "CONTRACT-20260904-HERMES-OPENCLAW-ROLE-SPLIT-AMENDMENT-001",
   "lane": "Hermes-Draft",
   "previous_lane": "Hermes-Ops (DEPRECATED 2026-09-04)",
-  "demotion_reason": "AMENDMENT-001 \u00a75: Action-Broker execution owned by A-FORGE lane. Hermes is interpretation/geometry layer; cannot invoke filesystem write, code execution, git ops, deployment, or workflow automation directly. These capabilities have been relocated to A-FORGE (aforge-org, port 7072, EXECUTE_AFTER_SEAL gate).",
+  "demotion_reason": "AMENDMENT-001 §5: Action-Broker execution owned by A-FORGE lane. Hermes is interpretation/geometry layer; cannot invoke filesystem write, code execution, git ops, deployment, or workflow automation directly. These capabilities have been relocated to A-FORGE (aforge-org, port 7072, EXECUTE_AFTER_SEAL gate).",
   "delegation_depth_max": 0,
   "injection_membrane_required": true,
   "data_classification_required": true,
@@ -30,7 +30,7 @@
   "power_band": "draft_only",
   "authority_ceiling": "DRAFT_ONLY",
   "max_action_class": "DRAFT",
-  "execution_redirect": "All side-effecting actions route to A-FORGE lane. Use forge_execute_sealed with session_token + plan_id. A-FORGE applies data-classification routing per AMENDMENT-001 \u00a77 + execute-after-seal gate.",
+  "execution_redirect": "All side-effecting actions route to A-FORGE lane. Use forge_execute_sealed with session_token + plan_id. A-FORGE applies data-classification routing per AMENDMENT-001 §7 + execute-after-seal gate.",
   "FORGE_SKILLS_RELOCATED": [
     {
       "id": "FORGE-code-execution",
@@ -79,7 +79,7 @@
     "substrate_bind": "2026-07-12T18:30:00Z",
     "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
     "amended_at": "2026-09-04",
-    "demotion_event": "AMENDMENT-001 \u00a75 \u2014 role-down Ops \u2192 Draft; execution skills relocated to A-FORGE lane"
+    "demotion_event": "AMENDMENT-001 §5 — role-down Ops → Draft; execution skills relocated to A-FORGE lane"
   },
   "kernel_skills": [
     "KERNEL-trinity-33",
@@ -109,7 +109,7 @@
       "url": "https://aaa.arif-fazil.com/a2a/hermes-ops"
     }
   ],
-  "_signature_status": "STALE \u2014 content amended after 2026-07-12 signing; re-signature required by AAA",
+  "_signature_status": "STALE — content amended after 2026-07-12 signing; re-signature required by AAA",
   "signatures": [
     {
       "did": "did:arif:aaa",
@@ -117,11 +117,11 @@
       "proofPurpose": "assertionMethod",
       "created": "2026-07-12T23:25:58Z",
       "type": "Ed25519Signature2020",
-      "_note": "Original signature from 2026-07-12. Card content amended 2026-09-04 \u2014 signature no longer authenticates current state. AAA re-signature required."
+      "_note": "Original signature from 2026-07-12. Card content amended 2026-09-04 — signature no longer authenticates current state. AAA re-signature required."
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
   "_quarantined_skills": [
     {
       "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
@@ -148,5 +148,40 @@
     "quarantined": 4,
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
-  "registry_receipt_hash": "05dbcb8fbf2969667f5d7507d0057fe1f543157856a6aa6f4ec578aa7a891290"
+  "registry_receipt_hash": "05dbcb8fbf2969667f5d7507d0057fe1f543157856a6aa6f4ec578aa7a891290",
+  "apexMasterSeal": {
+    "cognitiveRing": "executor",
+    "thermodynamicRole": "outer",
+    "ringPlacement": "parallel",
+    "parallelism": "parallel",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "parallel",
+      "parallelism": "parallel",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=ROLE, class=Warga"
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "ACT",
+    "lane": "Hermes-Draft",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "ROLE",
+    "auto_aligned_class": "Warga"
+  }
 }

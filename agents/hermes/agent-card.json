@@ -1,6 +1,6 @@
 {
   "id": "hermes",
-  "name": "Hermes \u2014 AAA Edge Bridge",
+  "name": "Hermes — AAA Edge Bridge",
   "version": "2.0.0-zen-20260802",
   "role": "EDGE_BRIDGE",
   "description": "Telegram messaging bridge + skill catalog + multimodal relay. Forked from NousResearch/hermes-agent (MIT). Governed by arifOS F1-F13. Five verbs: normalize, classify, route, receipt. Zero cognition for federation work.",
@@ -75,7 +75,7 @@
     "flame": "http://127.0.0.1:18901"
   },
   "hooks": {
-    "pre_llm_call": "arif_route \u2192 intent_canon classification",
+    "pre_llm_call": "arif_route → intent_canon classification",
     "pre_tool_call": "federation tool routing through arifOS kernel",
     "post_session": "arifFLOW flow_ingest for metabolic receipt"
   },
@@ -85,7 +85,7 @@
     "governed_by": "arifOS F1-F13",
     "sovereign": "Muhammad Arif bin Fazil (F13)",
     "zen_aligned": "2026-08-02",
-    "five_verb_contract": "normalize \u2192 classify \u2192 route \u2192 receipt"
+    "five_verb_contract": "normalize → classify → route → receipt"
   },
   "constraints": {
     "never_judge": true,
@@ -95,10 +95,10 @@
     "never_override_f13": true
   },
   "civ21_binding": {
-    "lane": "Metabolizer \u2014 Routing Discipline",
-    "perspective": "I route SEAL-grade work to 888-APEX with requires_audit:true and requires_reflection:true. I DO NOT audit. I DO NOT judge. I DO NOT reflect. I am the nervous system \u2014 I route signals, I don't evaluate them.",
+    "lane": "Metabolizer — Routing Discipline",
+    "perspective": "I route SEAL-grade work to 888-APEX with requires_audit:true and requires_reflection:true. I DO NOT audit. I DO NOT judge. I DO NOT reflect. I am the nervous system — I route signals, I don't evaluate them.",
     "primary_constraints": [
-      "E5 Audit \u2260 Judgment",
+      "E5 Audit ≠ Judgment",
       "E14 Witnesses Are Constitutional Function",
       "E19 Observer Needs Observer"
     ],
@@ -140,8 +140,8 @@
   "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
-    "invariant": "CAPABILITY \u2260 AUTHORITY",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "WITNESS",
@@ -173,13 +173,36 @@
   "signature_status": {
     "state": "ABSENT",
     "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
-    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
-    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
     "detected_at": "2026-09-16T07:00:00Z",
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   },
   "protocolVersion": "1.0",
-  "authority_ceiling": "ROUTE_BRIDGE"
+  "authority_ceiling": "ROUTE_BRIDGE",
+  "apexMasterSeal": {
+    "cognitiveRing": "generator",
+    "thermodynamicRole": "outer",
+    "ringPlacement": "multi-model",
+    "parallelism": "multi-model",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "multi-model",
+      "parallelism": "multi-model",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=Warga, class=Warga"
+  }
 }
