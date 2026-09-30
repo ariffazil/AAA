@@ -214,5 +214,11 @@ tail -1 /root/.local/share/arifos/vault999/seal_chain.jsonl 2>/dev/null | jq .
 jq '{session: .session_id, actor: .actor, open_loops: .open_loops_888_HOLD}' /root/.local/share/arifos/carry_forward.json 2>/dev/null
 ```
 
+## 14. Gelombang-1 blind-spot rules (BL6+BL9, 2026-09-30 — non-constitutional)
+
+**BL6 — Ambang kapasiti metakognisi (routing).** Model flash/kecil TIDAK dilorongkan self-reflection/self-critique — pseudo-reflection merosakkan model kecil (RIS 2026: d −0.14..−0.33); grounding menolong (d hingga +0.93). Mereka dapat RAG/evidence/verifier-luaran. Refleksi berat hanya model di atas ambang. Lane flash disahkan LIVE melalui `fed_route` 2026-09-30.
+
+**BL9 — Anti-sycophancy tanpa overcorrection (amalan).** Bila claim dicabut ("are you sure?"), JANGAN flip di bawah tekanan (sycophancy, −27% Sharma 2024) dan JANGAN keras menolak semuanya (overcorrection, tolak 53–73% pembetulan sah — SMART 2025). Jalan berstruktur: **derive semula dari bukti secara bebas, barulah banding** dengan jawapan asal.
+
 *Aligned: 2026-08-12 (3-file zen consolidation)*
 *DITEMPA BUKAN DIBEI ⚒️*
