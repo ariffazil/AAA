@@ -42,7 +42,7 @@ tts:
       timeout: 120
   minimax:                       # kept for fallback reference, but NOT the active provider
     model: speech-2.8-hd
-    voice_id: i-ARIF-20260819T084602  # V8 — must match pipeline default
+    voice_id: iarif-sovereign-v9  # V9 — registry SOT / pipeline default (V8 REVOKED)
     speed: 1.0
     emotion: neutral
     sample_rate: 32000
@@ -51,7 +51,7 @@ tts:
 
 - `i-arif-sovereign` is a command-provider that runs the 2-stage pipeline: text normalization → MiniMax V8 → WORLD vocoder DSP (F0 lock 239 Hz). This is the ONLY valid provider for i-ARIF identity voice.
 - Direct `minimax` provider bypasses the pipeline — no DSP, no text normalization, no forbidden-word stripping. Only use for raw testing, never production.
-- Voice: `i-ARIF-20260819T084602` (V8) --- synthetic Penang female. JIWA Siti Nurhaliza: humble genius Melayu --- clear, composed, warm, tenang bukan kosong. F9 anti-hantu: reference spirit, not waveform. Loghat Penang kekal.
+- Voice: `iarif-sovereign-v9` (V9) --- synthetic Penang female. JIWA Siti Nurhaliza: humble genius Melayu --- clear, composed, warm, tenang bukan kosong. F9 anti-hantu: reference spirit, not waveform. Loghat Penang kekal.
 - **DSP post-process required**: MiniMax raw output is NOT the final voice. The raw clone must pass through the DSP stabilizer to lock F0 to 239 Hz. See `references/minimax-tts-pitfalls-2026-08-19.md`.
 - **Voice Seal (non-negotiable, F13)**: Every Hermes audio reply closes with **"Ditempa bukan diberi."** — the `[seal]` audio tag. NEVER skipped, NEVER truncated. Audio-only, never in text reply. Applies to ALL channels: Telegram voice bubble, CLI voice, group DM, private chat. Voice register for seal: same JIWA — Penang BM, `[settle]` pace (pitch -2Hz, slower finish, soft landing).
 - **Code-level enforcement (locked 2026-08-19, deepened 2026-08-19 jiwa)**: Seal + forbidden-FAMILY purge in `iarif_tts_pipeline.sh`, not the prompt. Pipeline strips contradiction tropes, markdown, and spoken audio-tags; appends "Ditempa bukan diberi." Dedup if already present. DSP (`dsp_stabilizer.py`) then locks the analytic signal: A (Hilbert stillness, breath kept), f (F0 239 + jitter cap), φ (WORLD + coda). Fourier centroid std is OBS — extras revert if they inflate artifacts. Three layers independent. GPU never. **Style in persona, invariants in code, physics in DSP.** BUT: pipeline strip only catches SPOKEN output. If the banned phrase appears in system files (persona, memory, identity card, ledger), the LLM regenerates it in text output. See `references/banned-phrase-reinforcement-loop.md` for the 5-layer reinforcement mechanism and prevention checklist.
@@ -152,7 +152,7 @@ Step 1 — Check BOTH routing keys:
 ```bash
 grep -E 'tts_provider_default:|^  provider:|voice_id:' ~/.hermes/config.yaml
 ```
-Expected: `voice.tts_provider_default: i-arif-sovereign` + `tts.provider: i-arif-sovereign` + `voice_id: i-ARIF-20260819T084602`. If either provider says `minimax`, that path bypasses the pipeline.
+Expected: `voice.tts_provider_default: i-arif-sovereign` + `tts.provider: i-arif-sovereign` + `voice_id: iarif-sovereign-v9`. If either provider says `minimax`, that path bypasses the pipeline.
 
 Step 2 — F0 analysis of suspect audio:
 ```python

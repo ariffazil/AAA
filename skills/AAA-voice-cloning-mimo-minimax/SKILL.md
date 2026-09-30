@@ -110,6 +110,21 @@ curl -X POST "$BASE/v1/files/upload" \
 - Clipping (peaks > -1 dBFS)
 - Multiple speakers / overlapping voices
 
+**Source format pre-condition — re-encode before upload if needed.**
+`/v1/files/upload` accepts MP3 / M4A / WAV but rejects other containers
+(ogg/opus, flac, webm) with `invalid file purpose` — the error is
+misleading; the container is the problem, not the purpose field.
+Re-encode any non-listed container to 16 kHz mono WAV PCM before
+upload:
+
+```bash
+ffmpeg -y -i <input> -ar 16000 -ac 1 -f wav <output>.wav
+```
+
+The 16 kHz mono target is the minimum the model needs; stereo / 44.1 kHz
+is accepted and slightly slower to upload. Anything below 8 s sample
+duration will be rejected by `voice_clone` even after successful upload.
+
 ### Phase 2 — CALIBRATION (Prompt Audio Upload, optional)
 
 Use this phase when you want emotional *color* on top of identity.
@@ -267,7 +282,7 @@ Voice aliases are surface-triggered by short phrases in user chat. Pattern:
 | Phrase | Voice |
 |---|---|
 | `SS` / `suara SS` / `voice SS` / `suara Siti` | `SSSiti20260926v1` |
-| `i-ARIF` / `suara aku` / `voice aku` | `i-ARIF-20260819T084602` |
+| `i-ARIF` / `suara aku` / `voice aku` | `iarif-sovereign-v9` (V8 REVOKED 2026-09-14) |
 | `default` / `BossyLeader` | `voice-male-bossyleader` (fallback) |
 
 Parse: token at message start = trigger; remainder = TTS text. If multiple aliases, use the longest match first.

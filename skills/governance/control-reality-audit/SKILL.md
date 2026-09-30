@@ -321,3 +321,4 @@ For a federation-sized sweep, fan out one read-only subagent per surface with a 
 
 - `references/self-referential-gates.md` — the evidence-loss trap: mechanism, bisect recipe, register-vs-evidence rule.
 - `references/batch-audit-brief.md` — reusable read-only subagent brief for sweeping many control surfaces.
+- `references/prompt-text-authority-audit.md` — extends the taxonomy to prompt-text transformers (plugins / middleware / hooks that inject bytes into the system prompt). Adds bytes-per-block measurement, REAL / ADVISORY / THEATRE / DEAD-CODE / REDUNDANT classification, and the announcement-vs-execution gap pattern.

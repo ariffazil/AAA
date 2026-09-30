@@ -448,3 +448,14 @@ arif_seal(mode="session_close", payload="<bullets or summary>",
 1. 2026-09-25 F13 execution record (FI-003 executor, sovereign lane per F13 directive 'seal guna lane aku'): qualification surface built — 29 agent cards carry arifOS qualification v1 blocks with CANON_DERIVED discipline and honest UNVERIFIED markers; CI gate AAA/scripts/qualification_gate.py live, 9 tests, GATE_GREEN after cleanup (7 cache stubs retired, 8 broken links cleaned, 2 duplicate card groups archived); codex install lane converged to single arif-core plugin, arif-irfan archived; APEX-MAT
 
 ---
+
+## SESSION EUREKA — SE-20260930-c4468687
+
+> **Sealed:** 2026-09-30T00:57:42Z | **Session:** SEAL-568ac36c89254bcb | **Actor:** `arif`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. FI-003 KVM8+WELL session receipt v2. MEASURED: swap 8.7Gi->0; /tmp 3.6->1.6G; journal 1.9G->418M; backups 409->176; WELL sovereign datum 89.8 FRESH. RETRACTIONS(R3): nothing-fabricated/false; all-reversible/false (rm+prune+vacuum irreversible on derivative data); HUD-fed/false (decoy render). INCIDENTS: consent wipe by injector rebuild-not-merge -> restored 8 scopes; FIX A triadic-snapshot WELL_STATE_PATH env -> auto tick WATCH 89.8/consent_intact TRUE/REDUCE_LOAD; FIX B injector merge semantics
+
+---

@@ -9,6 +9,9 @@
 # arifOS Gateway watchdog — runs inside OpenClaw cron agent
 # Action-based. Silent on healthy. Telegram only on recovery or 888_HOLD.
 # Uses curl direct to gateway /health (shell HTTP, no model call).
+# (2026-09-29) SUPERSEDED: the gateway's owner is systemd on KVM4. Stop/start via
+# `systemctl stop|start openclaw-gateway`. See /root/AAA/skills/openclaw/SKILL.md §Step 4.
+# Original (stale) note kept below for provenance only:
 # Correct restart: openclaw restart (not systemctl)
 
 TELEGRAM_TOKEN="${ASI_ARIFOS_BOT_TOKEN:-}"

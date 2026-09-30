@@ -1,0 +1,8 @@
+{
+  "skill_id": "forge-context-compressor",
+  "agent": "hermes-rsi-loop",
+  "lesson": "TRUNCATION_LOSS observed 1x \u2014 impact=evidence_loss. First surface: session:tool:patch \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session:tool:patch\", \"excerpt\": \"ode() + payload + f\\\\\\\"\\\\\\\\r\\\\\\\\n--{boundary}--\\\\\\\\r\\\\\\\\n\\\\\\\".encode()\\\\n-    req = urllib.request.Request(\\\\n-        GROQ_URL, data=head + tail,\\\\n-        headers={\\\\\\\"Authorization\\\\\\\": f\\\\\\\"Bearer {key}\\\\\\\",\\\\n-                 \\\\\\\"Content-Type\\\\\\\": f\\\\\\\"multipart/form-data; boundary={boundary}\\\\\\\"})\\\\n-    with urllib.request\"}]",
+  "atom_id": "ATOM-5c5388db994a",
+  "verified_by": "hermes-rsi-verifier"
+}

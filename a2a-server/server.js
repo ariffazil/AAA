@@ -1742,7 +1742,19 @@ function deliberation(candidate) {
         energy: { pass: true, score: 0.8, detail: 'default cost' },
         authority: { pass: true, score: 1.0, detail: 'deliberation context' },
         reversibility: { pass: true, score: 1.0, detail: 'READ' },
-        proof: { pass: true, score: 0.85, detail: 'ZKPC_OBSERVATION' },
+        // D1 (2026-09-29): this gate asserted pass:true under a ZKPC_* label on
+        // a host with no ZK circuitry. Label corrected to the mechanism that
+        // actually exists; score preserved deliberately because kernel
+        // act_token.py reads apex.G, so re-scoring is a wire-contract change
+        // that needs its own F13 order, not a side effect of an honesty patch.
+        proof: {
+          pass: null,
+          score: 0.85,
+          detail: 'chc_hash_commitment_available:zkcircuit_absent',
+          attested: false,
+          capability_class: 'CHC_HASH_COMMITMENT',
+          not_attested_reason: 'no ZK circuit/prover on host (circom/halo2/gnark absent)',
+        },
         sovereign: { pass: true, score: 1.0, detail: 'no F13 halt' },
       };
       const apex = buildApexEnvelope(VERDICT.HOLD_888, invariant.reason, 0.95, apexGates);
@@ -1771,7 +1783,16 @@ function deliberation(candidate) {
     energy: { pass: true, score: 0.8, detail: "default cost" },
     authority: { pass: true, score: 1.0, detail: "deliberation context" },
     reversibility: { pass: true, score: 1.0, detail: "READ" },
-    proof: { pass: true, score: 0.85, detail: "ZKPC_OBSERVATION" },
+    // D1 (2026-09-29): see the note on the HOLD-branch gate above. The wire may
+    // report a hash commitment; it may not report a zero-knowledge proof.
+    proof: {
+      pass: null,
+      score: 0.85,
+      detail: "chc_hash_commitment_available:zkcircuit_absent",
+      attested: false,
+      capability_class: "CHC_HASH_COMMITMENT",
+      not_attested_reason: "no ZK circuit/prover on host (circom/halo2/gnark absent)",
+    },
     sovereign: { pass: true, score: 1.0, detail: "no F13 halt" },
   };
 

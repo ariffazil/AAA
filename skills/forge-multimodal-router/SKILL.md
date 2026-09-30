@@ -124,7 +124,7 @@ If SOT doesn't have a matching entry → STOP. Do NOT fallback to agent card or 
 | TTS (default Malaysian) | `edge-tts/ms-MY-YasminNeural` | Edge (free) | No quota |
 | TTS (multilingual) | `dashscope/qwen-audio-3.0-tts-flash` | DashScope PAYG | Free quota eligible |
 | TTS (realtime full-duplex) | `dashscope/qwen-audio-3.0-realtime-plus` | DashScope PAYG | Aug 2026 |
-| TTS (sovereign i-ARIF) | `minimax/speech-2.8-hd` | MiniMax | voice_id `i-ARIF-20260819T084602` |
+| TTS (sovereign i-ARIF) | `minimax/speech-2.8-hd` | MiniMax | voice_id `iarif-sovereign-v9` |
 | TTS (Penang-Besi dialect) | `mimo/mimo-v2.5-tts-voicedesign` | MiMo Token Plan | See nusantara-acoustic-infrastructure |
 | TTS (voice clone) | `dashscope/voice-enrollment` | DashScope PAYG | + qwen-voice-design |
 | DSP analysis | `local/librosa` | Local | See media/audio-analysis |

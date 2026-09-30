@@ -1,0 +1,18 @@
+{
+  "name": "write-set-asymmetry-v0-production-intent",
+  "handled_rights": ["WRITE_FILE", "TRUNCATE", "REMOVE_FILE", "REMOVE_DIR",
+                     "MAKE_REG", "MAKE_DIR", "MAKE_SYM", "REFER"],
+  "allow_write": [],
+  "protected": [
+    "/root/AAA/instructions",
+    "/root/AAA/governance/constitution",
+    "/root/AAA/IDENTITY",
+    "/root/AAA/agents",
+    "/root/AAA/audio/voice-registry.json",
+    "/root/.hermes/sovereign",
+    "/root/.hermes/skills/.curator_state",
+    "/root/.hermes/skills/.curator_ledger.jsonl",
+    "/root/VAULT999"
+  ],
+  "note": "PRODUCTION-INTENT, NOT APPLIED. allow_write is intentionally empty until Phase 2 canary enumerates each agent's legitimate write roots (work trees, logs, caches). A lock applied with the wrong allow-list will silently brick the agent, so allow_write must be derived per-agent from the live filesystem before this policy goes live."
+}

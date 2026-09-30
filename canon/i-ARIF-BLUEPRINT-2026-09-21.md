@@ -1,9 +1,12 @@
-Status: DRAFT_AWAITING_F13
+Status: F13_RATIFIED_CHAT
 
 <!-- SOT-MANIFEST
 title:           i-ARIF Blueprint v1 — Governed State Processor
-status:          DRAFT_AWAITING_F13
-seal_id:         null  (no seal — ratification ceremony required)
+status:          F13_RATIFIED_CHAT
+seal_id:         IARIF-BLUEPRINT-v1-20260929-RATIFIED  (sovereign-chat signal; ceremonial seal deferred)
+ratified_at:     2026-09-29 22:42 MYT
+ratified_by:     "Arif (F13 sovereign, chat directive 'runtime ratify kunci A-Z')"
+ratification_basis: "AUDIT-IARIF-CONTRACT-2026-09-29.md · INCIDENT-IARIF-AUTH-2026-09-29.md · compression artifact (continuity-contract reframe) · 8-day unratified-hang resolved"
 witness_path:    /root/AAA/reports/i-ARIF-blueprint-witness-2026-09-21.md
 epoch:           F004-CANONICAL-2026-07-17
 provenance:

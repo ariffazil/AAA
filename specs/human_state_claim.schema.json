@@ -1,0 +1,357 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://AAA/specs/human_state_claim.schema.json",
+  "title": "HumanStateClaim — admissibility contract for any assertion of a human's state",
+  "status": "PROPOSED_AWAITING_F13",
+  "trace_id": "trc-20260929-fi003-human9-ratification",
+  "version": "0.1.0",
+  "description": "Companion to /root/AAA/instructions/human-substrate-exclusions-PROPOSAL.md. Adds NO new positive state variables: it constrains WHAT MAY BE ASSERTED and REQUIRES DECLARING WHAT WAS NOT MEASURED. Parent doctrine: HUMAN-9 (F13_RATIFIED_CHAT 2026-09-29, AAA efdcaa8e, VAULT999 rcpt-afa7207241b746e2) — read-only, unmodified. Derived-exclusion rationale: an excluded variable does not vanish, it returns as an un-auditable default (GEOX PHYSICS.9: state.py:25 has 15 fields while a constitutional lock bans them, and parameters.py:65 re-imports Cp as cp=850.0 with no provenance and no error bar). The human twin is WELL /var/lib/well/state.json well_score=88.4 served with freshness=EXPIRED, and WELL/server.py:9231-9236 manufacturing energy_level from two hardcoded 5s. Enforcement is EXCLUSION not FLOORING (precedent: /root/WELL/tests/test_triad_phase4_exclusion.py).",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "subject_ref",
+    "assertion",
+    "evidence_class",
+    "target_set",
+    "target_set_source",
+    "not_measured",
+    "freshness",
+    "irreducible_opacity",
+    "trace_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Stable identifier so a superseded claim can be retracted rather than silently overwritten (state-transition-discipline: ESTIMATED -> MEASURED -> CROSS_VALIDATED -> RETRACTED|SUPERSEDED)."
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 3,
+      "description": "The human this claim is ABOUT. Never inferred from the speaker (rasa-claim-envelope.subject_ref). A claim about person B written while talking to person A must name B."
+    },
+    "assertion": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 2000,
+      "description": "The proposition, in words. minLength 8 is deliberate: it rejects a bare number transcribed as the whole claim (88.4, 5.0), which is the human analogue of cp=850.0."
+    },
+    "evidence_class": {
+      "enum": [
+        "OBS",
+        "REPORTED",
+        "INFERRED"
+      ],
+      "description": "K2. Mapped onto existing vocabularies, NOT a new one: SKILL.md OBS/REPORTED/INFERRED = rasa-provenance O | S+R | I = rasa-claim-envelope OBSERVED | REPORTED | INFERRED = WELL evidence_label OBS | (none) | INT. WELL's DER (derived) is intentionally NOT admissible here: a value derived from a hardcoded default is inference that has washed its hands of itself (server.py:9231-9236)."
+    },
+    "reporter": {
+      "enum": [
+        "subject",
+        "other"
+      ],
+      "description": "Required when evidence_class == REPORTED. Preserves the rasa-provenance S (self) vs R (reported-by-other) distinction instead of collapsing it. Commandment #5: self-report has privileged authority over that person's own experience, so 'aku penat' is admissible and is NOT excluded by this schema."
+    },
+    "target_set": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "K1. The variables this claim actually observes/asserts. A small witness is legitimate ONLY if it names its target (Montanari, Duan, Aguirre & Motter, PNAS 119(1):e2113750119, DOI 10.1073/pnas.2113750119 — verified via Crossref 2026-09-29: accurate estimation of target variables with minimal sensing). Omitting or emptying target_set is the defect: an unnamed target silently becomes 'the whole person'.",
+      "items": {
+        "type": "string",
+        "not": {
+          "enum": [
+            "well_score",
+            "vps",
+            "vitality_peace_score",
+            "energy_level",
+            "energy_estimate",
+            "mood",
+            "willpower",
+            "productivity",
+            "engagement",
+            "deep_engagement",
+            "commitment",
+            "focus",
+            "clarity",
+            "decision_fatigue",
+            "subjective_load",
+            "duty_load",
+            "capacity",
+            "motivation",
+            "obedience",
+            "happiness",
+            "moral_worth",
+            "sentiment",
+            "personality"
+          ]
+        },
+        "description": "Derived exclusion list X1-X10 (proposal section 2.3). These are constitutive RESPONSES named by H1 EMBODIMENT (Tubuh mengubah: energy, pain, sleep, arousal, hunger, illness...), H3 VALENCE, H4 REGULATION and the WELL charter (vps_compute.py:7 NOT health, happiness, productivity, obedience, or moral worth), and are therefore forbidden as asserted state. They remain fully admissible as evidence_refs: the ban is on conclusions, not on measurements. cp=850.0 is legal as a measured input; it is a lie as a silent default."
+      }
+    },
+    "target_set_source": {
+      "enum": [
+        "AAA/skills/human-state-estimation/SKILL.md#state-axes-6",
+        "AAA/instructions/human-reality-invariants.md#I9-5axis",
+        "AAA/instructions/human-reality-invariants.md#I10-6axis",
+        "AAA/canon/PARADOX_COORDINATE_THEORY.md#nine-paradox-axes",
+        "AAA/instructions/human-substrate.md#human-9",
+        "WELL/contracts/schemas/canonical/well-schemas.json#human-state",
+        "subject_named_in_own_words"
+      ],
+      "description": "Every target set must name which EXISTING layer owns it — no claim may introduce a new coordinate system (anti-bangang Law 8). Both the 5-axis and 6-axis variants are offered as distinct values: line 51 (I9) and line 55 (I10) of human-reality-invariants.md contradict each other and Attention is the floating variable. This schema preserves the contradiction rather than resolving it; choosing a canonical axis count is 888-APEX judge + F13 seal work, not builder work."
+    },
+    "value_source": {
+      "enum": [
+        "measured",
+        "self_report",
+        "observer_report",
+        "inference",
+        "hardcoded_default"
+      ],
+      "description": "Where the number came from. hardcoded_default is the class that GEOX's cp=850.0 and WELL's energy_level=5 belong to. Allowed to be declared honestly; triggers default_provenance below."
+    },
+    "default_provenance": {
+      "type": "object",
+      "required": [
+        "origin",
+        "error_bar"
+      ],
+      "additionalProperties": false,
+      "description": "Required when value_source == hardcoded_default. GEOX parameters.py:65 shows why both are needed: the docstring DID carry a provenance (typical sedimentary) yet the value was applied to every lithology with no error bar, so nothing downstream could tell a claim from a guess. An origin without an error bar is a story, not a bound.",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "minLength": 8,
+          "description": "Which file:line or convention supplies this constant, e.g. WELL/server.py:9236 default sleep quality_score=5."
+        },
+        "error_bar": {
+          "type": "string",
+          "minLength": 3,
+          "description": "Uncertainty bound, e.g. 'unknown', 'not measured on this subject', '+/-5 on a 0-10 self-scale'. 'unknown' is a valid and expected answer; silence is not."
+        }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Pointers to what was actually seen, heard or computed. Required when evidence_class == OBS. Response quantities (mood, energy_level, clarity, engagement) live HERE as evidence — never in target_set."
+    },
+    "not_measured": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      },
+      "description": "K4. What is absent from this claim's target set. Required and non-empty: this is the clause all nine inventoried layers lack. Void Guard: 'No data' is not 'all clear', it is 'cannot witness'. Absence must be written down, never filled in. A claim that measured one thing must state the rest is unmeasured, which is what makes a small witness honest instead of totalistic."
+    },
+    "coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Declared fraction of the intended target set actually covered. Absence lowers coverage and confidence; it must never lower a floor-derived score (test_triad_phase4_exclusion: an expired plane winning min() is a veto wearing a measurement's clothes)."
+    },
+    "freshness": {
+      "type": "object",
+      "required": [
+        "observed_at",
+        "age_hours",
+        "ttl_hours",
+        "expired"
+      ],
+      "additionalProperties": false,
+      "description": "K3. TTL bands borrowed from rasa-claim-envelope.expiry_or_revalidation_at (feelings 72h, relational/psych 720h, traits 8760h) — not re-invented. Live defect this rejects: /var/lib/well/state.json carries well_score=88.4 with freshness='EXPIRED' and last_successful_read 2026-09-15 while still emitting verdicts.",
+      "properties": {
+        "observed_at": {
+          "type": "string",
+          "minLength": 10,
+          "description": "ISO-8601, UTC."
+        },
+        "age_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "ttl_hours": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "expired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "expired_handling": {
+      "enum": [
+        "EXCLUDED_FROM_MIN",
+        "LOGGED_NOT_SERVED",
+        "REFRESHED"
+      ],
+      "description": "Required when freshness.expired == true. There is no FLOORED option: flooring an expired reading (attempted and reverted at WELL 2026-09-28) makes the veto permanent. Exclusion is the only admissible posture for stale absence."
+    },
+    "irreducible_opacity": {
+      "type": "object",
+      "required": [
+        "remainder_present",
+        "statement"
+      ],
+      "additionalProperties": false,
+      "description": "K5. H9 IRREDUCIBILITY as structure, not sentiment: M(H) != H, epsilon_model > 0 always. remainder_present is const true — no claim may assert that nothing of the person remains unmodelled. Mechanical form of Law #0 (a person is always larger than the evidence available about them) and of the final prohibition (never make a human smaller merely because the model has become better at predicting them). Binds to human-substrate.md AAA MEMORY DOCTRINE personhood.unknown_remainder: preserved.",
+      "properties": {
+        "remainder_present": {
+          "const": true
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 10,
+          "description": "What remains unmodelled about THIS person right now, in words."
+        },
+        "unmodelled_influences_U_t": {
+          "type": "string",
+          "description": "Optional U_t slot from X_t = Phi(K_H, O_t, W_t, H_t, R_t, B_t, U_t). Naming U_t is not a claim that reality is random."
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.9,
+      "description": "Cap 0.9 inherited from human-state-estimation Non-negotiable 1 and rasa-claim-envelope — an agent may never report certainty about another mind."
+    },
+    "contradicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Preserved conflicts, never auto-resolved (human-substrate.md: Contradiction != Pathology; rasa-claim-envelope contradicts)."
+    },
+    "supersedes": {
+      "type": "string",
+      "description": "Revision without historical erasure. The older claim becomes RETRACTED and must not keep being served as live evidence."
+    },
+    "trace_id": {
+      "type": "string",
+      "pattern": "^trc-",
+      "description": "K6. A receipt without trace_id is an event-pile entry, not a causal-ledger entry. Standing defect at time of writing: 30 of 43 trace-stamped canonical seal-chain entries have empty trace_id."
+    },
+    "admissible_as_current_state": {
+      "type": "boolean",
+      "description": "Set false when the claim is retained for audit but must not be presented as the person's current state. The schema cannot compute staleness, so the producer declares it and the reader is denied the excuse of surprise."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_class": {
+            "const": "REPORTED"
+          }
+        },
+        "required": [
+          "evidence_class"
+        ]
+      },
+      "then": {
+        "required": [
+          "reporter"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_class": {
+            "const": "OBS"
+          }
+        },
+        "required": [
+          "evidence_class"
+        ]
+      },
+      "then": {
+        "required": [
+          "evidence_refs"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "value_source": {
+            "const": "hardcoded_default"
+          }
+        },
+        "required": [
+          "value_source"
+        ]
+      },
+      "then": {
+        "required": [
+          "default_provenance"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "freshness": {
+            "type": "object",
+            "properties": {
+              "expired": {
+                "const": true
+              }
+            },
+            "required": [
+              "expired"
+            ]
+          }
+        },
+        "required": [
+          "freshness"
+        ]
+      },
+      "then": {
+        "required": [
+          "expired_handling"
+        ]
+      }
+    }
+  ],
+  "x_doctrine_bindings": {
+    "law": "/root/AAA/instructions/human-substrate.md (HUMAN-9, F13_RATIFIED_CHAT 2026-09-29, READ-ONLY)",
+    "coordinates": "/root/AAA/skills/human-state-estimation/SKILL.md (6-axis, READ-ONLY)",
+    "character": "/root/AAA/canon/PARADOX_COORDINATE_THEORY.md (9 paradox axes, READ-ONLY)",
+    "predecessor_claim_schemas": [
+      "/root/AAA/instructions/rasa-provenance.schema.json (DRAFT_AWAITING_F13)",
+      "/root/AAA/instructions/rasa-claim-envelope.schema.json (DRAFT_AWAITING_F13)"
+    ],
+    "substrate_reader": "/root/WELL/contracts/schemas/canonical/well-schemas.json#human-state (14 properties, additionalProperties ABSENT — this schema is the lock WELL lacks, not a replacement)",
+    "exclusion_precedent": "/root/WELL/tests/test_triad_phase4_exclusion.py (EXCLUSION not FLOORING)",
+    "failure_class_source": "GEOX PHYSICS.9 constitutional lock enforced nowhere; banned Cp returned as cp=850.0 default",
+    "not_yet_wired": "No runtime reads this schema. EnforcementCoverage = 0 until a write-point gate is installed by A-FORGE under an F13 decision."
+  },
+  "x_external_grounding": [
+    {
+      "claim": "Internal states are only accessible through a blanket; OBS/REPORTED/INFERRED are fail-able classes, not moods of prose.",
+      "source": "Kirchhoff M, Parr T, Palacios E, Friston K, Kiverstein J. The Markov blankets of life: autonomy, active inference and the free energy principle. J R Soc Interface 2018;15(138):20170792.",
+      "doi": "10.1098/rsif.2017.0792",
+      "verification": "Crossref HTTP 200 on 2026-09-29; title, authors, volume and article number confirmed. NOTE: relayed in the task brief as 'Friston et al.' — Friston is the 4th author; corrected here."
+    },
+    {
+      "claim": "A minimal witness is legitimate only if it names its target subset; target state estimation is the stated problem of the paper.",
+      "source": "Montanari AN, Duan C, Aguirre LA, Motter AE. Functional observability and target state estimation in large-scale networks. PNAS 2022;119(1):e2113750119.",
+      "doi": "10.1073/pnas.2113750119",
+      "verification": "Crossref HTTP 200 on 2026-09-29; title, authors, volume, article number and the 'target variables with minimal sensing' significance statement confirmed. NOTE: relayed as 'Menara et al.' — author attribution corrected here. The specific ratios 8-16% (full) vs 0.17-0.24% (functional) are REPORTED, NOT VERIFIED against the paper body, and are marked UNKNOWN."
+    },
+    {
+      "claim": "An arbitrary invariant count is not justified by counting degrees of freedom; therefore HUMAN-9 is law (normative), not measurement (empirical).",
+      "source": "State postulate, classical thermodynamics (N = reversible work modes + 1; Callen / Cengel & Boles).",
+      "doi": null,
+      "verification": "REPORTED from standard-textbook knowledge; not read from a primary source this session; no DOI. Used only as a negative argument against number-worship."
+    }
+  ]
+}

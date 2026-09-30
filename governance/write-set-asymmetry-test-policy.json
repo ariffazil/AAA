@@ -1,0 +1,8 @@
+{
+  "name": "write-set-asymmetry-v0-test",
+  "handled_rights": ["WRITE_FILE", "TRUNCATE", "REMOVE_FILE", "REMOVE_DIR",
+                     "MAKE_REG", "MAKE_DIR", "MAKE_SYM", "REFER"],
+  "allow_write": ["/tmp/landlock-scratch-work"],
+  "protected": ["/tmp/landlock-scratch-protected"],
+  "note": "Scratch test policy — proves the mechanism. Do NOT apply to live agents; see write-set-asymmetry-policy.json for the production-intent policy."
+}

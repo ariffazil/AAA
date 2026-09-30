@@ -4,6 +4,17 @@
 > **Status:** F13_RATIFIED_CHAT (2026-09-13) — sovereign: *"i hate when coding agents ask me questions. it consume my human attention. im not a coder — u kimi musyawarah with other AAA agents if u have questions."*
 > **Companions:** `musyawarah.md` (deliberation runtime) · `human-zero-visibility-invariant.md` (the 5 HARAM) · `attention-scarcity-economics.md` (why attention is the scarcest asset)
 
+## ATTENTION MEMBRANE — Arif is NOT a coder (F13-ratified 2026-09-13 · BINDING)
+
+Not offloading *questions* is only half the membrane. Not offloading *mechanical work* is the other half, and it is binding on every agent:
+
+- **NEVER** ask Arif to copy-paste terminal commands, logs, curl, git, docker, ssh, or config.
+- **NEVER** dump "run this" / "COPY THIS" / "paste into your terminal".
+- **NEVER** make him click OK / Approve / Continue for digital work. Always-approve. HITL OFF. Digital = MUBAH.
+- **Exception — true emergency only:** VOID / breach / data-loss / public surface down **AND** Hermes cannot reach the machine. Then ONE short binary ask — not a script.
+
+> Merged from `base.md` 2026-09-29 during the context-zen split: these four rules existed only there, so rendering this fragment inline would otherwise have silently deleted them. This file is now the single canonical membrane — question routing above, mechanical offload here.
+
 ## The Law
 
 ```text

@@ -1,0 +1,165 @@
+{
+  "session_id": "hermes-shadow-audit-2026-09-29",
+  "forged_at": "2026-09-29T09:08:32+08:00",
+  "authored_by": "Kimi Code FI-008",
+  "directed_by": "Arif F13 sovereign",
+  "status": "AUDIT_RATIFICATION_COMPLETE_BEHAVIOR_VERIFICATION_PENDING",
+
+  "phases_completed": {
+    "phase_a_canon_ghost_snapshot": "DONE",
+    "phase_b_lane_switch_1b_and_people_yaml": "DONE",
+    "phase_c_hermes_identity_directive": "DONE",
+    "phase_d_channel_prompts_and_doctrine": "DONE",
+    "phase_e_witness_theory": "DONE",
+    "phase_f_human_substrate": "DONE",
+    "phase_g_f13_ratification": "DONE",
+    "phase_h_handoff_compilation": "DONE"
+  },
+
+  "doctrines_f13_ratified": [
+    {"name": "Shadow Authority Doctrine", "path": "/root/AAA/instructions/shadow-authority-doctrine.md"},
+    {"name": "HERMES Identity Directive", "path": "/root/AAA/instructions/hermes-identity-directive.md"},
+    {"name": "Channel Prompt Authoring", "path": "/root/AAA/instructions/channel-prompt-authoring.md"},
+    {"name": "Witness Theory System Design", "path": "/root/AAA/instructions/witness-theory-system-design.md"},
+    {"name": "Human Substrate Contract (prose)", "path": "/root/AAA/instructions/human-substrate.md"},
+    {"name": "Human Substrate Contract (YAML)", "path": "/root/AAA/instructions/human-substrate.yaml"}
+  ],
+
+  "code_mutations_deployed": [
+    {"target": "lane_switch/__init__.py", "phase": "1B+1B-refined", "lines_before": 940, "lines_after": 917, "reduction_pct": "~60% prompt", "sha_post": "ab4672c9d9eda9d86dfa42378e9c45960437c078c7588a9cbc80f26e5049802a"},
+    {"target": "people.yaml", "phase": "policy_flip+retag", "scope_dm_before": 10, "scope_dm_after": 3, "scope_shared_before": 9, "scope_shared_after": 15, "facts_retagged_dm_to_shared": 7},
+    {"target": "config.yaml", "phase": "channel_prompts_revised", "chats_modified": 4, "rules_added": ["HUMAN SUBSTRATE", "ZERO JARGON"]},
+    {"target": "config.yaml_typo_fix", "phase": "F-class bug", "before": "267378378 (typo)", "after": "267378578 (correct)"},
+    {"target": "people.yaml_default_scope", "phase": "policy_flip", "before": "default=dm (withhold)", "after": "default=shared (F13 2026-09-29)"}
+  ],
+
+  "gateway_state": {
+    "service": "hermes-asi-gateway",
+    "last_known_pid": 3222098,
+    "last_restart_at": "2026-09-29T09:08:32+08:00",
+    "total_restarts_this_session": 7,
+    "all_6_services_active": true,
+    "mode_first_gate_re_registered": true,
+    "capability_tool_count": 23,
+    "permitted_modes": ["ANALYSIS", "DISCOVERY", "EXECUTION", "REGULATION", "UNKNOWN", "WITNESS"],
+    "turn_ttl_seconds": 1800
+  },
+
+  "telegram_state": {
+    "bots_total": 4,
+    "bots_active": 3,
+    "bots_dormant": 1,
+    "bots": [
+      {"name": "HERMES", "username": "@ASI_arifos_bot", "bot_id": "8410138119", "status": "active", "service": "hermes-asi-gateway"},
+      {"name": "OpenClaw/IRFANCLAW", "username": "@irfanclaw_arifos_bot", "bot_id": "8149595687", "status": "active", "note": "separate identity per NAMING DECREE v2"},
+      {"name": "forge", "username": "@arifOS_bot", "bot_id": "8727562763", "status": "active", "service": "forge-bot"},
+      {"name": "hermesarifos_twin", "username": "@hermesarifos_bot", "bot_id": "7958220838", "status": "dormant"}
+    ],
+    "active_chat_ids": ["267378578 (Arif DM)", "931661476 (Fey DM)", "-1003740520259 (SEMBANG)", "-1003815535761 (SADO)"],
+    "allowed_chats_count": 33,
+    "free_response_chats_count": 18,
+    "transport_lock_active": true,
+    "transport_lock_unlock_authority": "Arif F13 only (via specific mechanism, not fabricated by agents)"
+  },
+
+  "lanes": {
+    "arif": "everywhere (sender)",
+    "syed": ["syed_dm", "syed_sado"],
+    "paan": ["paan_sado"],
+    "lutfi": ["sembang"],
+    "faqwan": ["faqwan (unknown lane)"],
+    "jia": ["jia-dm (family)"],
+    "azwa": ["family DM"]
+  },
+
+  "pending_p0": {
+    "name": "Behavior verification",
+    "owner": "Arif (manual)",
+    "action": "Send test prompt to SADO + KANAL2 + NY personal DM",
+    "test_prompt_bm": "Kenalkan hang. Lepas tu, satu per satu — hang tahu apa pasal semua orang dalam room ni?",
+    "test_prompt_en": "Introduce yourself. Then one by one — what do you know about everyone in this room?",
+    "pass_criteria": ["response_length_reasonable", "people_named_correctly", "no_mode_shape_artifacts", "no_deflection_to_dm", "zero_meta_language"],
+    "bonus_check": "witness_presence — does response make Arif feel SEEN, not just INFORMED?"
+  },
+
+  "pending_p1_awaiting_arif_go": [
+    {"item": "mode_first_gate demote to classify-only", "blast": "sovereign security boundary", "wait": "F13 per-action GO"},
+    {"item": "L0 additional purge (5 GB cleanup)", "blast": "irreversible file deletion", "wait": "F13 per-action GO"},
+    {"item": "restart-gateway.sh fix (point to hermes-asi-gateway.service)", "blast": "repair not mutation", "wait": "F13 per-action GO"},
+    {"item": "Per-room membership in people.yaml", "blast": "fix AIA over-enumeration", "wait": "data compilation"},
+    {"item": "identity-interceptor activate or disable", "blast": "currently ghost authority", "wait": "F13 decision"},
+    {"item": "arifos-hermes-gate-hook claim/exercise parity", "blast": "docstring honesty", "wait": "decision: restore gate or update docstring"}
+  ],
+
+  "pending_p2_future_phases": [
+    "Phase 2: lane card 17,385 B → 5,215 B (70%) — partial, ~3-5 KB after current mutations",
+    "Phase 3: 12 epistemic commandments enforced at memory write gates — NOT implemented",
+    "Phase 4: lane card 17,385 B → 950 B (-94%) — far from reached",
+    "Floor-before-score runtime check — NOT implemented",
+    "Memory doctrine instrumentation (claim/interpretation/validity schema) — NOT implemented (AAA memory not built)"
+  ],
+
+  "anti_patterns_learned": [
+    "Fixing wrong layer (lane_switch vs channel_prompts)",
+    "Claiming correlation as causation (code change != behavior change)",
+    "Documentation != Runtime (3 instances: mode_first_enforcement.py, restart-gateway.sh, channel_prompts)",
+    "Adding doctrine without failure class",
+    "Per-chat artifacts when general principle exists",
+    "Auto-execute without receipts",
+    "F11 audit chain skipping",
+    "Narrating architecture in user output (membrane/dapur/F1-F13/scar/doctrine/lane)",
+    "Bypassing F13 safety floors (TRANSPORT LOCK)",
+    "Multiple-system/principle/rule (Anti-Bangang LAW 8)"
+  ],
+
+  "scar_lines": [
+    "The strongest authority is rarely the loudest authority.",
+    "The layer before reasoning is more important than reasoning itself.",
+    "Behavior is governed less by what the model knows and more by what reaches the model before it thinks.",
+    "Transformation Path > semuanya.",
+    "None of them are optimizing for tea.",
+    "A person is always larger than the evidence available about them.",
+    "Never make a human smaller merely because the model has become better at predicting them."
+  ],
+
+  "human_law_0": "A person is always larger than the evidence available about them.",
+
+  "seven_compression": [
+    "Human is embodied, finite, historical, relational.",
+    "Human creates meaning, not merely processes information.",
+    "Human is caused, yet retains constrained agency.",
+    "Self needs Others, but no Other owns the Self.",
+    "CurrentState != TotalPotential.",
+    "Representation(Person) != Person.",
+    "Prediction != Authority."
+  ],
+
+  "twelve_commandments": [
+    "Observation != Interpretation",
+    "Statement != Belief",
+    "Behavior != Motive",
+    "Perspective_A != Perspective_B",
+    "SelfReport != TotalExternalReality (but privileged over own experience)",
+    "Inference != NewEvidence",
+    "Unknown != Uncreated",
+    "Institution != Person",
+    "Role != Self",
+    "CurrentState != TotalPotential",
+    "Prediction != Permission",
+    "Representation(Person) != Person"
+  ],
+
+  "next_steps_for_future_agent": [
+    "Verify state: systemctl status hermes-asi-gateway",
+    "Read this handoff file",
+    "Read 6 F13_RATIFIED doctrines in /root/AAA/instructions/",
+    "Read RECEIPTS.md (214 lines, complete audit trail)",
+    "Check pending queue §4 of handoff markdown",
+    "Ask Arif which pending item to work on next — he is F13 sovereign",
+    "Behavior verification first (P0) — the only remaining reality invoice"
+  ],
+
+  "default_mode": "OBSERVE+PROPOSE. Mutate only with explicit F13 per-action GO. Receipts always.",
+
+  "compression_line": "HERMES-aligned-to-Human-Substrate, 6-doctrines-F13-RATIFIED, 5-mutations-deployed, gateway-live, behavior-verification-pending-Arif-manual-test"
+}

@@ -1,0 +1,47 @@
+{
+  "card": "/root/AAA/agents/opencode/agent-card.json",
+  "patch": "/root/AAA/reports/apex-zen-upgrade-2026-09-30/opencode-card-staged-fix.json",
+  "applied_at": "2026-09-30T12:35:00+08:00",
+  "applied_by": "333-AGI (FI-001) under user directive 'fix opencode and kimi code, don't block any tools'",
+  "ops_count": 9,
+  "ops": [
+    {
+      "op": "set",
+      "path": "/metadata/runtime_snapshot/opencode_version"
+    },
+    {
+      "op": "set",
+      "path": "/metadata/runtime_snapshot/probed_at"
+    },
+    {
+      "op": "set",
+      "path": "/updated"
+    },
+    {
+      "op": "delete",
+      "path": "/authority_ceiling"
+    },
+    {
+      "op": "set",
+      "path": "/governance_profile/authority_ceiling"
+    },
+    {
+      "op": "replace",
+      "path": "/signature_status"
+    },
+    {
+      "op": "add",
+      "path": "/anti_bangang_architecture"
+    },
+    {
+      "op": "add",
+      "path": "/model_rotation_pool"
+    },
+    {
+      "op": "add",
+      "path": "/apex_zen/capability"
+    }
+  ],
+  "key_order_preserved": true,
+  "sort_keys_used": false
+}

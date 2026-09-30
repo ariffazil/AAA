@@ -1,6 +1,6 @@
 {
   "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
-  "_updated": "2026-09-23",
+  "_updated": "2026-09-30",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
@@ -270,6 +270,71 @@
       "consequence": "HIGH",
       "actionability": "WATCH",
       "note": "PREDICATE: envelope passes (AuthorityGranted AND ScopeMatches AND TargetPermitted AND BoundaryActive) AND a strictly narrower alternative existed AND no current floor measures necessity (code-level OBS: no necessity/minimum-power term in the formula; least-power doctrine = invariant+skill at ROUTING only). DETECTED-BY: review question 'why the cannon when the needle works?' (CONCERN-class advisory per governance/IRFAN-REVIEW-SCHEMA-v1 C1-C3; review NEVER blocks \u2014 anti-de-facto-floor rule). FALSIFIER (=> redundant): zero such cases across >=30 envelope-passing actions in window, OR an existing mechanism flags them first. PROMOTION RULE: repeated passing-failures catches => primitive candidate. Note: runtime plan-comparison detector = Phase-1 code cycle, SEPARATELY ordered (not yet authorized); this event tracks the temporal commitment. claim_state=HYPOTHESIS (TENTATIVE). Sealed refs: thesis 80378697, map 31b8066e, receipt e-0729e64f."
+    },
+    {
+      "id": "mss-interest-registered-2026-09-29",
+      "title": "Arif ticked 'register interest in MSS' on the PETRONAS Career Aspiration form \u2014 fasa menunggu (2+ tahun) ditutup",
+      "target_date": "2026-09-29",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "PERSONAL_SAFE",
+      "source": "sovereign 2026-09-29 \u2014 borang Career Aspiration (Talent Placement) dihantar; prepared answer set /root/forge_work/2026-09-29-career-form-answers/; record /root/AAA/evidence/ARIF-MSS-2026/form-submission-2026-09-29.md",
+      "confidence": "CONFIRMED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "Lebih 2 tahun menunggu pintu ini. Niat sudah didaftarkan; keluar rasmi masih melalui myCareerX. JANGAN baca sebagai MSS diterima \u2014 ini penutup fasa MENUNGGU, bukan penutup fasa keluar. Outcome masih terbuka dan masih perlu dipantau."
+    },
+    {
+      "id": "mss-conversation-window-2026-10-13",
+      "title": "Tetingkap 2 minggu: perbualan line leader + HR diminta dalam borang. Diam selepas ini = jawapan.",
+      "target_date": "2026-10-13",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "PERSONAL_SAFE",
+      "source": "Medan 7 borang Career Aspiration, dihantar 2026-09-29: minta perbualan 30 minit dengan line leader + HR dalam dua minggu",
+      "confidence": "LIKELY",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "Kalau tiada perbualan menjelang tarikh ini, itu jawapan dia sendiri \u2014 bukan sebab untuk bertanya lagi. Langkah seterusnya: surat bertulis kepada HR (draf sedia di /root/forge_work/2026-09-29-career-form-answers/HR-NOTE-DRAFT.md), kemudian pendaftaran rasmi myCareerX."
+    },
+    {
+      "id": "drift-reconcile-unblock-test-2026-10-02",
+      "title": "FALSIFICATION TEST (888 HOLD point): after ONE kernel reconcile redeploy, (1) /health drift_detected clears AND (2) replay of FI-008 judge case (session SEAL-f70bf5356a444cb5, trace trc-5dcea65d1a08) no longer fails-closed on drift. If replay still HELD, 'single reconcile resolves the loops' is REFUTED and the batch must be split.",
+      "target_date": "2026-10-02",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "both",
+      "kind": "OBSERVATION",
+      "source": "FI-003-2026-09-29-BELUM-SELESAI-R6 \u00b7 888-APEX PARTIAL verdict HOLD point",
+      "confidence": "TENTATIVE",
+      "consequence": "HIGH",
+      "actionability": "WATCH",
+      "note": "Preregistered before execution. Known non-implication: gate-exemption patch, F-A/F-B receipt stamps, law.py except fix are NOT yet written \u2014 they ride the same redeploy only if forged first. Reconcile alone provably unblocks kernel mutation writes (measured blocker), nothing more."
+    },
+    {
+      "id": "syed-reality-map-2026-09-29",
+      "title": "Syed reality-map produced: multi-timeframe model (day/week/season) + structural cause of night reflux identified",
+      "target_date": "2026-09-29",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "syed",
+      "kind": "OBSERVATION",
+      "source": "arifOS hermes/edge-bridge-KVM8 + /root/memory/people/SYED/*",
+      "confidence": "CONFIRMED",
+      "consequence": "MEDIUM",
+      "actionability": "PREPARE",
+      "note": "Built after Syed told the agent he was tired of being handed schedules he never agreed to. Root finding: his heaviest calorie load lands under 3h before sleep because gym is 8pm and the day starts 4:45am \u2014 the reflux mechanism is structural to his timetable, not a discipline failure. Design rule going forward: never issue lists to Syed; re-sequence his existing timetable instead."
+    },
+    {
+      "id": "syed-nasilemak-run-2026-09-30",
+      "title": "Nasi lemak delivery run executed 05:18-07:08 (37.2 km, 1h50m) despite a sleepless night",
+      "target_date": "2026-09-30",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "syed",
+      "kind": "OBSERVATION",
+      "source": "Syed's own GPS tracker screenshots, relayed by Arif",
+      "confidence": "CONFIRMED",
+      "consequence": "MEDIUM",
+      "actionability": "MONITOR",
+      "note": "Tracker-verified morning run: 05:18-07:08 MYT, 37.2 km, 1h50m, avg 20.2 km/h, 5.0 L, start/end Neu Suites. Run executed after a night of no sleep due to gas. Distance exceeds the 28 km map estimate \u2014 the map understates the real route. Logged at /root/memory/people/SYED/nasi-lemak-ops-log.md. Follow-up to watch: sleep quality the night before vs whether the run happens next morning."
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

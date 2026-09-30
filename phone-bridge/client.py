@@ -66,7 +66,7 @@ def _generate_approval_id(endpoint: str, ttl_seconds: int = APPROVAL_TTL_SECONDS
 
 def health() -> dict:
     """Check bridge availability."""
-    r = requests.get(f"{BASE_URL}/v1/health", timeout=5)
+    r = requests.get(f"{BASE_URL}/health", timeout=5)
     r.raise_for_status()
     return r.json()
 
@@ -191,7 +191,7 @@ def get_sensors_snapshot() -> dict:
 def vibrate(duration_ms: int = 300) -> dict:
     """Vibrate the phone."""
     r = requests.post(
-        f"{BASE_URL}/v1/vibrate",
+        f"{BASE_URL}/v1/haptics/vibrate",
         headers={"Authorization": f"Bearer {BRIDGE_TOKEN}"},
         timeout=5,
     )
