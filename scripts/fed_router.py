@@ -43,29 +43,55 @@ from typing import Optional
 
 from fastmcp import FastMCP
 
+
 # ── Zen Priority Matrix ───────────────────────────────────────────────
+# ── BL12 calibration gate helper (F13 SAH 2026-09-30) ─────────────────────
+_CALIB_FILE = "/root/chron/data/calibration_per_actor.json"
+_CALIB_CACHE = {"t": 0.0, "adv": {}}
+
+
+def _bl12_agent_penalty(agent_id: str) -> float:
+    """REDUCE_WEIGHT advisory -> priority penalty (15pts) on all routes for that
+    actor until calibration recovers to |bias|<=0.08. F7: n<8 never punished.
+    Advisory source: bl02_calibration_curves.py (routing_advisory_bl12).
+    DORMANT by design — zero effect until data trips the threshold."""
+    now = time.time()
+    if now - _CALIB_CACHE["t"] > 300:
+        try:
+            with open(_CALIB_FILE, encoding="utf-8") as fh:
+                _d = json.load(fh)
+            _CALIB_CACHE["adv"] = {
+                a: str(c.get("routing_advisory_bl12", "")) for a, c in (_d.get("per_actor") or {}).items()
+            }
+        except Exception:
+            _CALIB_CACHE["adv"] = {}
+        _CALIB_CACHE["t"] = now
+    return 15.0 if _CALIB_CACHE["adv"].get(agent_id, "").startswith("REDUCE_WEIGHT") else 0.0
+
+
 class RankGate:
     """Declarative priority adjustments — isolates reasoning from execution."""
+
     # PHASE-5 ROUTING MINIMALISM (FED_STABILIZATION_MANDATE 2026-09-22):
     # influence demoted where signal is legacy/stale/unknown. Nonzero = must
     # justify existence by witnessed origin.
-    VISION_MULEROUTER_BOOST = 0   # VOID: unwitnessed provider preference (was -2)
-    VISION_NATIVE_BOOST = -1      # DERIVED: SOT vision_models membership (kept)
+    VISION_MULEROUTER_BOOST = 0  # VOID: unwitnessed provider preference (was -2)
+    VISION_NATIVE_BOOST = -1  # DERIVED: SOT vision_models membership (kept)
     NO_TELEMETRY = 1  # v3.3.1: was 2 — over-demoted every route while the telemetry loop
     # was unclosed. /report ingress now live (FED v3.3); light penalty until samples
     # accumulate. Revisit to 2 once median sample_count > 5 across live routes.
-    LOW_TELEMETRY = 1              # DERIVED: telemetry-presence meta-signal (kept)
-    LATENCY_DEGRADED = 0           # PHASE-3 UNKNOWN: route_latency has NO timestamp — age
+    LOW_TELEMETRY = 1  # DERIVED: telemetry-presence meta-signal (kept)
+    LATENCY_DEGRADED = 0  # PHASE-3 UNKNOWN: route_latency has NO timestamp — age
     # unprovable => stale-or-not unknowable => fail-closed, influence demoted (was 3)
-    BALANCE_SOFT_DEMOTE = 0        # PHASE-3 UNKNOWN: providers.balance has no witness chain
+    BALANCE_SOFT_DEMOTE = 0  # PHASE-3 UNKNOWN: providers.balance has no witness chain
     # (mulerouter displayed $49.92/conf0.99 while chat 402 — witnessed false). Fail-closed (was 5)
-    RATE_LIMITED = 8               # WITNESSED: route_health status (kept)
-    BALANCE_HARD_DEMOTE = 0        # PHASE-3 UNKNOWN: same balance chain (was 10)
+    RATE_LIMITED = 8  # WITNESSED: route_health status (kept)
+    BALANCE_HARD_DEMOTE = 0  # PHASE-3 UNKNOWN: same balance chain (was 10)
     # ── FED Truth Layer v2 (F13 verdict 2026-09-22): Witness Decay + Scar Gravity
-    WITNESS_STALE = 2   # evidence 15-60 min old
-    WITNESS_AGING = 4   # evidence 1-24 h old — old truth is drift
+    WITNESS_STALE = 2  # evidence 15-60 min old
+    WITNESS_AGING = 4  # evidence 1-24 h old — old truth is drift
     SCAR_GRAVITY = 3.0  # max priority penalty when provider reliability -> 0
-    QUALITY_LOW = 3     # observed-answer quality < 0.6 (witness_class=quality)
+    QUALITY_LOW = 3  # observed-answer quality < 0.6 (witness_class=quality)
 
 
 def _witness_freshness(ts: str | None) -> tuple[str, float]:
@@ -112,11 +138,13 @@ def _provider_reliability(provider_id: str) -> float:
     except (TypeError, ValueError):
         return 1.0
 
+
 # ── Background Task Executor ──────────────────────────────────────────
 _FED_BACKGROUND_TASKS = ThreadPoolExecutor(max_workers=4, thread_name_prefix="fed_sidecar")
 
 # ── Graceful Shutdown Handler ─────────────────────────────────────────
 _shutdown = False
+
 
 def _graceful_exit(signum, frame):
     global _shutdown
@@ -125,8 +153,10 @@ def _graceful_exit(signum, frame):
     _FED_BACKGROUND_TASKS.shutdown(wait=False, cancel_futures=True)
     sys.exit(0)
 
+
 signal.signal(signal.SIGTERM, _graceful_exit)
 signal.signal(signal.SIGINT, _graceful_exit)
+
 
 # ── ETCSOVG Harness Metadata (arxiv 2605.23950) ──────────────────────
 def _build_hcsvog(
@@ -153,28 +183,35 @@ def _build_hcsvog(
     hcsvog["h_fingerprint"] = hashlib.sha256(canonical.encode()).hexdigest()[:8]
     return hcsvog
 
+
 # ── JIT Intent Retrieval (P1.5) ────────────────────────────────────
 # Lazily import intent_retriever to avoid loading sentence-transformers at boot.
 _intent_retriever = None
+
 
 def _get_intent_retriever():
     global _intent_retriever
     if _intent_retriever is None:
         try:
             from intent_retriever import build_jit_context as _build
+
             _intent_retriever = _build
         except ImportError:
             _intent_retriever = False  # Sentinel: failed to load
     return _intent_retriever if _intent_retriever is not False else None
 
+
 # ── A2A Trace Propagation (P1.7) ────────────────────────────────────
 try:
     from trace_propagation import make_trace_headers
+
     _trace_enabled = True
 except ImportError:
     _trace_enabled = False
+
     def make_trace_headers(*args, **kwargs):
         return {}
+
 
 # ── Config ───────────────────────────────────────────────────────────────
 FED_STATE_DB = Path("/root/.local/share/arifos/token_bank.db")
@@ -194,9 +231,16 @@ FED_PORT = 7074
 FED_SOT_PATH = Path("/root/.config/federation-models.json")
 
 _SOT_REQUIRED = (
-    "pricing", "pricing_default", "model_routes", "capability_signatures",
-    "emd_model_class", "emd_neutral_cap", "agent_default_operation",
-    "vision_models", "constitutional_allowed", "effort",
+    "pricing",
+    "pricing_default",
+    "model_routes",
+    "capability_signatures",
+    "emd_model_class",
+    "emd_neutral_cap",
+    "agent_default_operation",
+    "vision_models",
+    "constitutional_allowed",
+    "effort",
 )
 _SOT_REQUIRED_PRICING = ("deepseek", "mulerouter", "tokenrouter", "kimi-moonshot", "flame")
 _SOT_REQUIRED_EFFORT = ("model_map", "alt_models", "cost_multiplier", "reasoning_passes")
@@ -249,9 +293,10 @@ QWEN_TEAM_PRICING = _SOT["pricing"]["qwen-token-plan-team"]
 # Replaces duplicated inline dicts that existed in both _estimate_cost and
 # _estimate_cost_per_1k functions — preventing asymmetric drift between them.
 
+
 def _get_pricing_table(provider_id: str) -> dict:
     """Return the pricing dictionary for a given provider ID.
-    
+
     Zen 3.2: Consolidated from twin inline dicts into single function.
     Returns empty dict for unknown providers (fallback handled by caller).
     """
@@ -263,7 +308,7 @@ def _get_pricing_table(provider_id: str) -> dict:
         "kimi-moonshot": KIMI_PRICING,
         "qwen-token-plan-team": QWEN_TEAM_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
-        "bailian-token-plan": DEEPSEEK_PRICING,           # Bailian also similar
+        "bailian-token-plan": DEEPSEEK_PRICING,  # Bailian also similar
     }.get(provider_id, {})
 
 
@@ -281,12 +326,15 @@ def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
         "output_per_1m_usd": pricing["output"],
     }
 
+
 mcp = FastMCP("FED — Federation Router")
+
 
 @mcp.custom_route("/health", methods=["GET"])
 async def fed_health(_request):
     """Organ probe surface — ADVISORY_ONLY. Never judges or mutates."""
     from starlette.responses import JSONResponse
+
     return JSONResponse(
         {
             "status": "healthy",
@@ -296,7 +344,15 @@ async def fed_health(_request):
             "mcp": "/mcp",
             "class": "route_advisor",
             "ceiling": "never judges, never hard-blocks",
-            "tools": ["fed_route", "fed_classify", "fed_status", "fed_probe", "fed_contrast", "fed_health", "fed_report_latency"],
+            "tools": [
+                "fed_route",
+                "fed_classify",
+                "fed_status",
+                "fed_probe",
+                "fed_contrast",
+                "fed_health",
+                "fed_report_latency",
+            ],
         }
     )
 
@@ -356,10 +412,7 @@ async def fed_route_http(_request):
         _cls = classify_capability(_task) if _task else None
         if (
             _cls
-            and (
-                _cls["confidence"] >= 0.90
-                or (_cls["capability"] == "vision" and _cls["confidence"] >= 0.75)
-            )
+            and (_cls["confidence"] >= 0.90 or (_cls["capability"] == "vision" and _cls["confidence"] >= 0.75))
             and not _model.startswith("fed-")
             and not body.get("effort_level")
         ):
@@ -387,6 +440,7 @@ async def fed_route_http(_request):
 # ── DB helpers (READ-ONLY for balances) ──────────────────────────────────
 # Zen 3.2: All SQLite connections wrapped in `with` for deterministic teardown.
 # Eliminates connection leak vectors if an exception occurs before .close().
+
 
 def read_provider_balance(provider_id: str) -> dict | None:
     """Read from providers table in token_bank.db. Returns dict with balance_usd, confidence_score, track_type."""
@@ -543,26 +597,87 @@ def get_capability_meta(capability: str) -> dict | None:
 # FED never reads identity content (separation of powers, FED spec v0.2–v0.4).
 CAPABILITY_CLASS_PATTERNS = {
     "vision": [
-        "gambar", "gmbr", "foto", "photo", "image", "screenshot", "screen shot",
-        "lukis", "visual", "ocr", "scan ", "camera", "render",
+        "gambar",
+        "gmbr",
+        "foto",
+        "photo",
+        "image",
+        "screenshot",
+        "screen shot",
+        "lukis",
+        "visual",
+        "ocr",
+        "scan ",
+        "camera",
+        "render",
     ],
     "coding": [
-        "debug", "python", "javascript", "typescript", "code", "kod", "coding",
-        "stack trace", "traceback", "compile", "refactor", "unit test", "sql",
-        "git ", "regex", "api endpoint",
+        "debug",
+        "python",
+        "javascript",
+        "typescript",
+        "code",
+        "kod",
+        "coding",
+        "stack trace",
+        "traceback",
+        "compile",
+        "refactor",
+        "unit test",
+        "sql",
+        "git ",
+        "regex",
+        "api endpoint",
     ],
     "long_context": [
-        "summarize", "rumusan", "ringkas", "long document", "pages", "halaman",
-        "pdf", "transcript", "whole file", "entire log", "long thread", "200 page",
+        "summarize",
+        "rumusan",
+        "ringkas",
+        "long document",
+        "pages",
+        "halaman",
+        "pdf",
+        "transcript",
+        "whole file",
+        "entire log",
+        "long thread",
+        "200 page",
     ],
     "reasoning": [
-        "assignment", "tugasan", "homework", "explain", "terangkan", "analyze",
-        "analisis", "essay", "compare", "argument", "derive", "prove", "study",
-        "belajar", "exam", "kuiz", "why does", "evaluate", "implication",
+        "assignment",
+        "tugasan",
+        "homework",
+        "explain",
+        "terangkan",
+        "analyze",
+        "analisis",
+        "essay",
+        "compare",
+        "argument",
+        "derive",
+        "prove",
+        "study",
+        "belajar",
+        "exam",
+        "kuiz",
+        "why does",
+        "evaluate",
+        "implication",
     ],
     "action": [
-        "search", "cari ", "google", "browse", "run ", "execute", "fetch",
-        "scrape", "deploy", "restart", "cron", "send message", "book ",
+        "search",
+        "cari ",
+        "google",
+        "browse",
+        "run ",
+        "execute",
+        "fetch",
+        "scrape",
+        "deploy",
+        "restart",
+        "cron",
+        "send message",
+        "book ",
     ],
 }
 CAPABILITY_CLASS_SIGNATURE = {
@@ -755,7 +870,7 @@ def fed_route_engine(
 
         # ── Step 2: RANK — priority score (lower = better) ───────────
         priority = route["priority"]
-        
+
         # Zen 3.2: Use RankGate constants instead of magic numbers
         if modality == "vision" and provider_id == "mulerouter":
             priority += RankGate.VISION_MULEROUTER_BOOST  # Boost MuleRouter for vision (4 VL models)
@@ -879,6 +994,19 @@ def fed_route_engine(
     # Sort by priority (ascending)
     ranked.sort(key=lambda r: r["priority"])
 
+    # ── BL12 calibration gate (F13 SAH 2026-09-30): prosthetic skin in the game ──
+    # REDUCE_WEIGHT advisory (from /root/chron/data/calibration_per_actor.json,
+    # emitted by bl02_calibration_curves.py) applies a priority penalty to ALL
+    # routes for that actor until its calibration curve recovers to |bias|<=0.08.
+    # DORMANT by design: F7 forbids punishing n<8; no advisory -> zero effect.
+    _bl12_pen = _bl12_agent_penalty(agent_id)
+    if _bl12_pen > 0:
+        for r in ranked:
+            r["priority"] -= _bl12_pen
+            r.setdefault("reason", "")
+            r["reason"] = (r["reason"] + "; " if r["reason"] else "") + "BL12_CALIBRATION_CAP"
+        ranked.sort(key=lambda r: r["priority"])
+
     # Assign ranks
     for i, r in enumerate(ranked[:3]):
         r["rank"] = i + 1
@@ -918,6 +1046,7 @@ def _build_reason(route, balance_flag, latency_flag, health_flag, tier):
 
 
 # ── MCP Tools ────────────────────────────────────────────────────────────
+
 
 @mcp.tool()
 def fed_route(
@@ -1036,6 +1165,7 @@ def fed_route(
     # First call loads sentence-transformers (~7s), subsequent calls <10ms.
     jit_context = None
     if task and len(task) > 5:
+
         def _run_jit():
             nonlocal jit_context
             build_jit = _get_intent_retriever()
@@ -1044,6 +1174,7 @@ def fed_route(
                     jit_context = build_jit(task)
                 except Exception:
                     pass
+
         _FED_BACKGROUND_TASKS.submit(_run_jit)
 
     # ── A2A Trace Propagation (P1.7) ────────────────────────────────
@@ -1167,9 +1298,7 @@ def fed_probe() -> dict:
     with sqlite3.connect(str(FED_STATE_DB)) as conn:
         conn.row_factory = sqlite3.Row
         providers = conn.execute("SELECT COUNT(*) AS n FROM providers").fetchone()["n"]
-        health_rows = conn.execute(
-            "SELECT status, COUNT(*) AS n FROM route_health GROUP BY status"
-        ).fetchall()
+        health_rows = conn.execute("SELECT status, COUNT(*) AS n FROM route_health GROUP BY status").fetchall()
     return {
         "gateways": gateways,
         "db_providers": providers,
@@ -1280,7 +1409,7 @@ def fed_report_latency(
         { recorded: true, p50_ms: ..., sample_count: ... }
     """
     now = datetime.now(timezone.utc).isoformat()
-    
+
     with sqlite3.connect(str(FED_STATE_DB)) as conn:
         conn.row_factory = sqlite3.Row
 
@@ -1361,8 +1490,18 @@ if __name__ == "__main__":
     print(f"🔀 FED Router v3.3 (Zen-Optimized + Capability Classifier) starting on :{FED_PORT}")
     print(f"   State DB: {FED_STATE_DB}")
     print(f"   Invariants: state-isolation, constitutional-hard-gate, dual-track-bypass")
-    print(f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice, fed-conversational, fed-coding")
-    print(f"   v3.3 changes: task→capability classifier (BenchDrift), probe-row health fallback (corpse fix), fed_classify verb, /report telemetry ingress, notes hard-marker filter")
+    print(
+        f"   Capabilities: fed-reasoning-heavy, fed-multimodal-vision, fed-long-context, fed-agent-subagent, fed-realtime-voice, fed-conversational, fed-coding"
+    )
+    print(
+        f"   v3.3 changes: task→capability classifier (BenchDrift), probe-row health fallback (corpse fix), fed_classify verb, /report telemetry ingress, notes hard-marker filter"
+    )
     print(f"   Zen Changes: DRY pricing, with(DB), RankGate matrix, ThreadPoolExecutor, SIGTERM guard")
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=FED_PORT, uvicorn_config={"ws": "websockets"}, json_response=True)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=FED_PORT,
+        uvicorn_config={"ws": "websockets"},
+        json_response=True,
+    )
