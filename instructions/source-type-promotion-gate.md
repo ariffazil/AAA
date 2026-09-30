@@ -50,6 +50,24 @@ kaitan:
   - /root/AAA/instructions/human-memory-compartmentalization.md (F13_RATIFIED 2026-09-18)
   - SCAR-2026-09-25-001 (ChatGPT deep research review: source-type inequality)
 
+---
+
+## Tri-label mapping (added 2026-09-30 · F13 order "aku sahkan semuanya" · ONE taxonomy)
+
+External tri-label vocabularies (e.g. from AI feedback reviews: "USER-STATED / DERIVED /
+INVENTED") are a **view** of this canon's taxonomy, never a second taxonomy. Mapping:
+
+| External tri-label | Canonical source_type | Note |
+|---|---|---|
+| USER-STATED | `USER_STATED` | Same class. |
+| DERIVED | `AGENT_INFERRED` | Computed/inferred from observations; NON_PROMOTABLE without hukum 4 (a/b/c). |
+| INVENTED | — (no class exists) | Fabrication is a violation (F2 → VOID), not a source type. Hukum 1–3 exist precisely to prevent laundering INVENTED → AGENT_INFERRED → canonical. |
+
+Canonical-only classes with no external counterpart: `AGENT_HYPOTHESIS` (weaker than inference),
+`USER_RATIFIED` (the promotion target). **Rule:** human-plane writing may use any label set that
+maps to this table; storage and enforcement use ONLY the canonical taxonomy. Owner of the
+taxonomy: this file. Companion: `/root/AAA/instructions/consumer-endpoint-witness.md`.
+
 written_by: irfanclaw
 authorized_by: Arif (F13 SOVEREIGN)
 authorized_at: 2026-09-25T00:36:00+08:00
