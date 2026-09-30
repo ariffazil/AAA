@@ -1,16 +1,51 @@
 {
-    "agent_id": "aaa-cockpit",
-    "principal_agent": "agent",
-    "role": "cockpit_display",
-    "authority_ceiling": "OBSERVE_ONLY",
-    "no_self_seal": true,
-    "no_self_judge": true,
-    "description": "AAA Cockpit \u2014 displays federation state, routes A2A. Never adjudicates, never seals. All proposals must carry requires_judge=true.",
-    "constitutional_bounds": {
-        "can_seal": false,
-        "can_judge": false,
-        "can_mutate": false,
-        "can_route": true,
-        "can_display": true
-    }
+  "agent_id": "aaa-cockpit",
+  "principal_agent": "agent",
+  "role": "cockpit_display",
+  "authority_ceiling": "OBSERVE_ONLY",
+  "no_self_seal": true,
+  "no_self_judge": true,
+  "description": "AAA Cockpit — displays federation state, routes A2A. Never adjudicates, never seals. All proposals must carry requires_judge=true.",
+  "constitutional_bounds": {
+    "can_seal": false,
+    "can_judge": false,
+    "can_mutate": false,
+    "can_route": true,
+    "can_display": true
+  },
+  "apexMasterSeal": {
+    "cognitiveRing": "observer",
+    "thermodynamicRole": "metabolic",
+    "ringPlacement": "pipeline",
+    "parallelism": "pipeline",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "pipeline",
+      "parallelism": "pipeline",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=COCKPIT, class=Warga"
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "OBSERVE",
+    "lane": "aaa-cockpit",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "COCKPIT",
+    "auto_aligned_class": "Warga"
+  }
 }

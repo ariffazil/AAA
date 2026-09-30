@@ -180,7 +180,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
   "_quarantined_skills": [
     {
       "id": "FORGE-run-task",
@@ -244,7 +244,7 @@
     {
       "id": "FORGE-stream-progress",
       "name": "Stream Progress",
-      "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress \u2014 truth in transit.",
+      "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress — truth in transit.",
       "tags": [
         "stream",
         "sse",
@@ -269,7 +269,7 @@
     {
       "id": "FORGE-manage-task-lifecycle",
       "name": "Manage Task Lifecycle",
-      "description": "Transition task through states: submitted\u2192working\u2192completed/failed/input_required/auth_required. Records timestamps and state reasons.",
+      "description": "Transition task through states: submitted→working→completed/failed/input_required/auth_required. Records timestamps and state reasons.",
       "tags": [
         "task",
         "lifecycle",
@@ -346,5 +346,40 @@
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
   "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "94e8f61146be5f460c2d6d2fd037ed51176c43e8bc8890806128cc834bb21c61"
+  "registry_receipt_hash": "94e8f61146be5f460c2d6d2fd037ed51176c43e8bc8890806128cc834bb21c61",
+  "apexMasterSeal": {
+    "cognitiveRing": "auditor",
+    "thermodynamicRole": "inner",
+    "ringPlacement": "single-threaded",
+    "parallelism": "single-threaded",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "single-threaded",
+      "parallelism": "single-threaded",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=ROLE, class=Warga"
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "VERIFY",
+    "lane": "AGI",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "ROLE",
+    "auto_aligned_class": "Warga"
+  }
 }

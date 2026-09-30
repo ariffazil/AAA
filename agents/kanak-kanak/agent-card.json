@@ -3,7 +3,7 @@
   "schemaVersion": "2.3.0",
   "id": "kanak-kanak",
   "name": "Kanak-kanak Novelty Probe",
-  "description": "Novelty probe persona \u2014 raw perception, question generation, anomaly flagging, counterfactual proposals. Pre-system observer (Dunbar intimate layer, n=5). Perpetual beta: no model to protect. PROPOSE_ONLY \u2014 cannot execute, publish, or mutate policy. Uses arif_observe (111) raw sensing + arif_think mode=wonder. Sole antifragile element: every failure becomes learning. Arketype, not a person.",
+  "description": "Novelty probe persona — raw perception, question generation, anomaly flagging, counterfactual proposals. Pre-system observer (Dunbar intimate layer, n=5). Perpetual beta: no model to protect. PROPOSE_ONLY — cannot execute, publish, or mutate policy. Uses arif_observe (111) raw sensing + arif_think mode=wonder. Sole antifragile element: every failure becomes learning. Arketype, not a person.",
   "version": "1.0.0",
   "protocolVersion": "1.0",
   "provider": {
@@ -56,5 +56,40 @@
     "bootstrap": "/root/AAA/prompts/INIT_PERSONA_CIVILISATION.md"
   },
   "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "fec350dbb7c2e8beccf3c407db61bf10e143511e4c78ad772326f9881e280440"
+  "registry_receipt_hash": "fec350dbb7c2e8beccf3c407db61bf10e143511e4c78ad772326f9881e280440",
+  "apexMasterSeal": {
+    "cognitiveRing": "generator",
+    "thermodynamicRole": "outer",
+    "ringPlacement": "multi-model",
+    "parallelism": "multi-model",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "multi-model",
+      "parallelism": "multi-model",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=Warga, class=novelty-probe"
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "BUILD",
+    "lane": "kanak-kanak",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "Warga",
+    "auto_aligned_class": "novelty-probe"
+  }
 }

@@ -806,6 +806,66 @@ components:
     unit: caddy.service
     role: ingress_membrane
 
+  # [F13_RATIFIED 2026-09-30 TI-003: Qwen Code as DATA-class organ]
+  #   - 333-AGI Δ MIND (FI-001) authored upgrade path in
+  #     /root/AAA/reports/apex-zen-upgrade-2026-09-30/MCP-FINAL-ALIGNMENT.md
+  #   - FI-008 (Kimi Code) implemented Tier-1 bridge at /root/AAA/warga/qwen_bridge.py
+  #   - F13 SOVEREIGN ratified ("ratify") at 2026-09-30T15:21+08:00
+  #   - Capability ≠ Authority: surface gained, authority stays 555_COMPUTE_ONLY
+  #   - Tier-2 FastMCP wrap + opencode.json stdio launcher queued within 7 days
+  #   - Reversible: delete this entry + bridge file + reports/ artifact
+  #   - See: /root/AAA/reports/apex-zen-upgrade-2026-09-30/QWEN-TI-003-RATIFICATION-F13.md
+  - id: qwen
+    class: DATA
+    display_name: Qwen Code
+    fi: TI-003
+    role: coding_agent_bridge
+    authority_ceiling: COMPUTE_ONLY
+    domain_law: CODING_LAW
+    port: 4357
+    unit: null  # file-bridge Tier-1; Tier-2 will add systemd unit
+    public_mcp: null  # Tier-2 will add /mcp
+    default_branch: null
+    runtime: node-22
+    source_path: /root/AAA/warga
+    runtime_path: null  # qwen lives at /root/.local/lib/qwen-code (npm global)
+    live_probe_2026_09_30:
+      status: healthy
+      bridge_file: /root/AAA/warga/qwen_bridge.py
+      bridge_log: /root/VAULT999/warga/qwen-bridge/2026-09-30.jsonl
+      fq_status: FLOWING  # released from HOLD after arifFlow ingest path fixed
+    owned_domains:
+      - code_generation
+      - code_review
+      - refactoring
+      - test_automation
+      - repository_navigation
+    forbidden_domains:
+      - constitutional_judgment
+      - capital_allocation
+      - human_diagnosis
+      - capital_investment_authority
+    receive_only_from:
+      - arifos  # arif_judge gates
+      - opencode  # engineering execution calls
+    companions:
+      - id: qwen-code-cli
+        class: SUPPORT
+        runtime_path: /root/.local/lib/qwen-code
+        unit: null  # invoked via acpx, not direct systemd
+        role: coding_agent_runtime
+      - id: acpx
+        class: SUPPORT
+        runtime_path: /root/.npm-global/bin/acpx
+        role: agent_client_protocol_bridge
+    notes:
+      - "Tier-1: qwen_bridge.py wraps acpx→qwen JSON-RPC. Logs to JSONL + arifFlow."
+      - "Tier-2 (queued): FastMCP server exposing qwen_call/qwen_health/qwen_receipts/qwen_cost_cap."
+      - "Tier-3 (queued): opencode.json + Kimi mcp.json stdio entry."
+      - "CAPABILITY ≠ AUTHORITY enforced: 555_COMPUTE_ONLY ceiling matches GEOX/WEALTH."
+      - "F13 ratification artifact: /root/AAA/reports/apex-zen-upgrade-2026-09-30/QWEN-TI-003-RATIFICATION-F13.md"
+      - "Bridge tests: /root/AAA/warga/test_qwen_bridge.py (14/14 pass) + /root/AAA/warga/qwen_bridge_test.py (external parallel suite)."
+
   # ── IDENTITY ORGAN (promoted 2026-08-12) ─────────────────────────
   - id: i-arif
     class: IDENTITY
@@ -931,3 +991,4 @@ links:
   agents_doctrine: /root/AGENTS.md
   mcp_ops: /root/AAA/docs/MCP_FEDERATION_ZEN.md
   runbook: /root/RUNBOOK.md
+

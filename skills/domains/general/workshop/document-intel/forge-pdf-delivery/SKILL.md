@@ -169,3 +169,41 @@ For live market data charts that get delivered the same way (PNG image via MEDIA
 For PDF + multi-image infographic bundles (timeline + checklist + chart), see `references/infographic-image-companion.md` — matplotlib pipeline proven for Malaysian biohacking/competition guides.
 
 For image-based magazine-style PDFs (custom layout per page, dark themes, callout boxes, code-switching typography), see `references/image-based-pdf-pipeline.md`. Read it before attempting multi-page visual PDFs — the pitfalls there (matplotlib text truncation, AI cover text artifacts, unicode glyph missing, vision-only verification) cost several re-renders each time.
+
+## Hybrid cover pattern — one custom PNG cover + plain markdown body
+
+Most PDFs need a designed cover only on page 1, then flow prose for the rest. Don't render the whole document per-page through matplotlib for this — that is the image-based pipeline's job and it is overkill. Use the **hybrid**: one hand-drawn or generated PNG as cover, the body as normal markdown.
+
+Recipe:
+```python
+import base64
+from weasyprint import HTML
+
+img_b64 = base64.b64encode(open('cover.png','rb').read()).decode()
+body_html = open('body.html').read()          # already pandoc-rendered from markdown
+
+cover_div = f'<div style="page-break-after: always;"><img src="data:image/png;base64,{img_b64}" style="width:100%; height:auto; display:block;"></div>'
+
+# Strip duplicate title/subtitle from body (cover carries them)
+import re
+body_html = re.sub(r'<h1[^>]*id="<slug>"[^>]*>.*?</h1>', '', body_html, flags=re.DOTALL)
+
+full = body_html.replace('<body>', '<body>' + cover_div, 1)
+HTML(string=full).write_pdf('out.pdf')
+```
+
+When the cover is custom-drawn (pycairo / cairo / matplotlib for mood backgrounds), the body stays readable flowing text. The cover carries the genre/mood (Gotham, noir, makcik, etc.), the body carries the content.
+
+**Verify the body header is actually stripped** before declaring done: `pdftotext -f 2 -l 2 out.pdf - | head` should NOT contain the title text (which lives only in the cover image, not as searchable text). A duplicated title reads as a layout error and breaks the visual register.
+
+## Writing-about-an-unnamed-person = record against them
+
+When the user requests an article that names a *relationship role* but no *person* ("apa yang perempuan x faham", "what X is doing to me", "what my friend thinks"), pause and ask the "who?" question — once, plainly, before drafting. The article, if produced from inference, becomes a record against a real person by role-proxy, not an article about a pattern. Three failure shapes:
+
+1. **The user cannot later retract the record.** A draft about "perempuan yang tidak difaham" cannot be unmade by saying "I meant someone else" — the role-name and the inferred traits are durable.
+2. **The receiver can decode it.** If the user shows it to anyone, the receiver will resolve the role-name to the person they suspect. The author has been writing in public while believing they are writing in private.
+3. **It is the user's pattern, not the article's job, to be precise.** When the user gives a role with no person, the missing name is the missing piece — not the topic. Either ask once for the name (and offer to write the article against an anonymised archetype if they prefer), or, if they push the user to "buat ja" (just do it), the hybrid's job is to write about patterns and refuse to depict specific people.
+
+The "buat ja" reply is a stop-asking signal, not a permission-to-write-against-an-unspecified-person signal. Resolve it by: (a) producing the article at the archetype level (no faces, no names, no role-proxy), and (b) flagging in the delivery message that the document is about a pattern, not a person, so the user can decide whether to attach a name to it before showing anyone.
+
+The same rule applies to **cover figures** for the hybrid cover pattern. A cover figure with two visible persons — gendered, posed, named by body language — is a depiction, not an archetype. Use silhouettes without faces when the article is about an unnamed relationship role, so the cover cannot be decoded back to a real person by anyone who saw the user with that person.

@@ -244,5 +244,40 @@
     "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
   "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "ed1893b2850fe33b95fdc5273f60132cf57fcf500f234ec027a1a99451718bb4"
+  "registry_receipt_hash": "ed1893b2850fe33b95fdc5273f60132cf57fcf500f234ec027a1a99451718bb4",
+  "apexMasterSeal": {
+    "cognitiveRing": "observer",
+    "thermodynamicRole": "metabolic",
+    "ringPlacement": "pipeline",
+    "parallelism": "pipeline",
+    "shadowAcknowledged": [],
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "pipeline",
+      "parallelism": "pipeline",
+      "shadowAcknowledged": []
+    },
+    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
+    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_by": "333-AGI (FI-001) under user directive",
+    "auto_aligned_reason": "synthesized from tier=ORGAN, class=Warga"
+  },
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
+    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "OBSERVE",
+    "lane": "wealth",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "ORGAN",
+    "auto_aligned_class": "Warga"
+  }
 }

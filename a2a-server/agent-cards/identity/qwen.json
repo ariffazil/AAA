@@ -1,0 +1,90 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.3.0",
+  "id": "qwen",
+  "name": "Qwen Code (TI-003)",
+  "principal_agent": {
+    "type": "tool_integration",
+    "category": "Coding agent bridge (acpx→qwen-code JSON-RPC → FastMCP)",
+    "principle_origin": "Forged by 333-AGI Δ MIND — Tier-2/3 upgrade path ratified by F13 SOVEREIGN on 2026-09-30 (chain #971)"
+  },
+  "description": "Qwen Code CLI v0.24.6 wrapped as a first-class DATA-class organ of the AAA federation. Exposes 4 MCP tools (qwen_call, qwen_health, qwen_receipts, qwen_cost_cap) over stdio. Authority ceiling: 555_COMPUTE_ONLY. Tier A identity preserved via the shared _tier_a_envelope.sh sourced by the launcher.",
+  "charter": {
+    "source": "F13_RATIFIED 2026-09-30 (SEALED_EVENTS #971)",
+    "tier_designation": "TI-003",
+    "class": "DATA",
+    "authority_ceiling": "COMPUTE_ONLY",
+    "port": 4357,
+    "fi": "TI-003",
+    "floor_alignment": {
+      "F01_AMANAH": "Every call reversible. Bridge file deleted = total rollback. Qwen-Code CLI is a stateless subprocess per call.",
+      "F02_TRUTH": "All outputs labeled by classify_event() — OBS / DER / INT / SPEC. agent_thought_chunk redacted by default (F11 default).",
+      "F11_CONSENT": "thought_stream consent required to emit agent_thought_chunk; biometric.full / financial.full auto-denied by compile_policy().",
+      "F13_SOVEREIGN": "Arif holds final veto. Ratification artifact: /root/AAA/reports/apex-zen-upgrade-2026-09-30/QWEN-TI-003-RATIFICATION-F13.md."
+    },
+    "capability_surface": {
+      "qwen_call": "invoke qwen via acpx, lease-gated (scope × reversibility × ttl × max_turns)",
+      "qwen_health": "liveness check — acpx + qwen + log_dir writable",
+      "qwen_receipts": "fetch last N pre_call receipts from JSONL (default 10, max 100)",
+      "qwen_cost_cap": "set/inspect per-call + per-day USD cost caps (in-memory)"
+    },
+    "reversibility": "TIER-1 file-bridge: rollback = delete /root/AAA/warga/qwen_bridge.py + /root/AAA/warga/qwen_mcp_server.py + launcher + opencode/kimi entries. TIER-2/3 wrap: delete fastmcp server + stdio launcher + entries. organs.yaml entry: remove the qwen block.",
+    "rationale_for_555_computer_only": "Qwen is a coding agent. It executes code-generation actions (C1/C2 output classes from FEDERATION_ORGANISM_DOCTRINE v1 2026-09-17). It must NEVER judge constitutional verdicts (888/APEX reserved), NEVER allocate capital, NEVER diagnose humans. The 555 ceiling mirrors GEOX/WEALTH — observe + analyze, never seal.",
+    "note": "Qwen is a tool-integrated organ (TI-###) — not a principal agent. The identity agent (i-ARIF) and the constitutional judge (888-APEX) remain the only paths to verdict. Qwen can propose; only arif_judge gates seal."
+  },
+  "version": "1.0.0",
+  "url": "stdio://qwen-ti-003",
+  "transport": "stdio",
+  "fastmcp_server": "/root/AAA/warga/qwen_mcp_server.py",
+  "launcher_kimi": "/root/.arifos/agents/kimi/mcp-launchers/qwen.sh",
+  "bridge_tier1": "/root/AAA/warga/qwen_bridge.py",
+  "log_path": "/root/VAULT999/warga/qwen-bridge/",
+  "ratification_artifact": "/root/AAA/reports/apex-zen-upgrade-2026-09-30/QWEN-TI-003-RATIFICATION-F13.md",
+  "sealed_event_chain_position": 971,
+  "sovereign_authorization": "ARIF (explicit verbal ratification, 2026-09-30 chat 'ratify')",
+  "sovereign_override": true,
+  "ratification_path": "sovereign_chat_override",
+  "ratification_precedent": "A-Z-APEX-ZEN-DOCTRINE 2026-09-13 + TRILOGY-COMPLETION-20260921 + COMPOSITION-CONTINUITY-v1-20260927 + QWEN-TI-003-F13-RATIFICATION-2026-09-30 (chain #971)",
+  "kernel_arif_seal_used": false,
+  "kernel_arif_seal_blocker": "L11 SCT mismatch (actor_verified=false, this session OBSERVE_ONLY → LIMITED_MUTATE)",
+  "human_authorized_by": "ARIF",
+  "authorization_method": "explicit_sovereign_chat_mandate",
+  "architect": "333-AGI Δ MIND (FI-001), session SEAL-56244492390e4a7b",
+  "implementer_tier1_bridge": "FI-008 (Kimi Code), session SEAL-031ea2c31cb04934",
+  "implementer_tier2_fastmcp": "FI-008 (Kimi Code), session SEAL-031ea2c31cb04934",
+  "monitoring_window_start": "2026-09-30T15:08Z",
+  "monitoring_window_end": "2026-10-07T15:08Z",
+  "tier2_promotion_gate_doc": "/root/AAA/warga/MONITORING-PLAN.md",
+  "owned_domains": [
+    "code_generation",
+    "code_review",
+    "refactoring",
+    "test_automation",
+    "repository_navigation"
+  ],
+  "forbidden_domains": [
+    "constitutional_judgment",
+    "capital_allocation",
+    "human_diagnosis",
+    "capital_investment_authority"
+  ],
+  "receive_only_from": [
+    "arifos",
+    "opencode"
+  ],
+  "monitoring_signals": {
+    "call_volume_per_day": "wc -l /root/VAULT999/warga/qwen-bridge/*.jsonl | filter kind=pre_call",
+    "scope_distribution": "all calls expected OBSERVE_ONLY by default",
+    "f11_enforcement": "dropped_thought_chunks > 0 per call (Qwen always streams thoughts)",
+    "failure_rate": "rc != 0 in post_call should be < 5%",
+    "hash_chain_integrity": "pre_hash → post_hash chain must be unbroken",
+    "external_callers": "ps -eo args | grep qwen_bridge — must be known agents only"
+  },
+  "notes": [
+    "TIER-1 bridge is the file-based wrapper at /root/AAA/warga/qwen_bridge.py — currently in use; logs to /root/VAULT999/warga/qwen-bridge/ and arifFlow :7073/ingest.",
+    "TIER-2 FastMCP wrap exposes 4 tools over stdio. Reversible: delete the .py file + launcher + entries.",
+    "TIER-3 registration as DATA-class organ in organs.yaml is DONE at ratification (id=qwen, fi=TI-003, port=4357, class=DATA, authority_ceiling=COMPUTE_ONLY).",
+    "The TI-003 designation is direction-of-record. Future code + canon references may rely on it. To revoke, delete the organs.yaml entry + bridge file + reports artifact; the SEALED_EVENTS entry remains as historical record.",
+    "DITEMPA BUKAN DIBERI ⚒️ — Capability survives replacement."
+  ]
+}
