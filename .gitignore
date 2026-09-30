@@ -158,3 +158,16 @@ quarantine/
 
 # editor backup debris (.eo01bak) — 42 committed 2026-09-26 in 25deadcd
 *.eo01bak
+
+# ── 2026-09-30 (333-AGI): model weights and generated media are artifacts, not source ──
+# A blind `git add -A` on this tree would have committed 7.6 GB of F5-TTS model
+# weights (engines/f5tts/checkpoints/*.pt) into git history permanently — eviction
+# afterwards is a separate governed act (git-history-hygiene), not a revert.
+# Generated voice renders are delivered as media and belong in backups, not history.
+engines/f5tts/checkpoints/
+engines/f5tts/ab_test/
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+forge_work/**/*.mp3

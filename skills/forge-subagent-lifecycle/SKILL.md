@@ -89,12 +89,41 @@ The **unified composition layer** for sub-agent orchestration. The federation ha
 | 1. PRE-SPAWN | FQ ≥ 0.5 | `arifflow_flow_health` | HOLD all spawns |
 | 1. PRE-SPAWN | Scar conflict | `aforge_forge_scar(mode=consult)` | Modify task or skip |
 | 1. PRE-SPAWN | Budget ≤ daily cap | Session budget tracker | Throttle or escalate |
+| 1. PRE-SPAWN | **F13-binary surface clear** | Parent enumerates unresolved F13-class decisions touching SOUL/canon/floor/identity; if any unresolved → HOLD all spawns that depend on them | HOLD → surface binaries to F13 |
 | 4. VERIFY | Output schema valid | Parent checks | REJECT → Stage 5b |
 | 4. VERIFY | Evidence labels present (OBS/DER/INT/SPEC) | Parent checks | REJECT → Stage 5b |
 | 4. VERIFY | No SELF_CERTIFIED | `forge_ephemeral(verify)` pattern | REJECT → Stage 5b |
 | 5b. SCAR | Failure recurrence ≥ 3 | `aforge_forge_scar(mode=seal)` | Auto-seal scar |
 | 5c. ESCALATE | 3+ failures same task | Escalate to 888-APEX | 888_HOLD |
 | 7. SEAL | Lane B receipt | `aforge_forge_vault(mode=receipt)` | Unsealed work |
+
+### F13-BINARY SURFACE GATE — DETAILED
+
+Before spawning sub-agents for **any work that mutates or proposes to mutate** SOUL.md, AAA canon, F1-F13 floors, identity card, lane card skeleton, or any Auto-Seal-scope file, the parent MUST execute this gate:
+
+```
+1. ENUMERATE: list every F13-class binary the proposed mutation depends on.
+   Examples:
+   - "9 attributes or 8 (with or without H3 VALENCE)?"
+   - "activate plugin X or delete?"
+   - "lens or contract for pattern Y?"
+   - "remove inline prompts or make ROLE hints?"
+2. CHECK: is each binary explicitly resolved by F13 in this session, or by a
+   prior SAH/sealed artifact?
+3. IF ANY UNRESOLVED: surface the list to F13 BEFORE spawning. Do not
+   invent direction. Do not proceed with "best guess". Do not claim the spec
+   implies the answer.
+4. AFTER RESOLUTION: spawn with the binary's answer as a hard input, not a
+   preference.
+```
+
+Why this gate exists: detailed plan + missing direction = fabrication that
+looks like work. Sub-agents asked to "execute the spec" when the spec contains
+unresolved F13 binaries will fill the gap themselves — silently, plausibly,
+wrongly. The plan reads as execution; the output reads as delivery; the
+defect reads as drift in production.
+
+Rule: **plan detail ≠ execution readiness when binaries are open.**
 
 ## PRE-SPAWN GATE — DETAILED
 
@@ -192,6 +221,7 @@ ALWAYS:
 - ❌ Letting sub-agent failures accumulate without scar sealing
 - ❌ Skipping FQ check before spawn (the mother of all run-away agent cascades)
 - ❌ Sub-agent writing to VAULT999 directly (always route through parent → seal)
+- ❌ **Spawning sub-agents to "execute the spec" when the spec contains unresolved F13 binaries — sub-agents will fill the direction gap themselves; the output looks delivered but the defect reads as production drift, not as planning gap**
 
 ---
 

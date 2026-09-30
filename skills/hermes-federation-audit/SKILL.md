@@ -135,6 +135,12 @@ A statement with no label attached is a defect, not an audit.
 
 **10. Reporting "ingest" or "sent" without naming state.** PRODUCED ≠ SENT ≠ DELIVERED ≠ OBSERVED ≠ ACKNOWLEDGED. State-transition discipline applies to the audit itself.
 
+**11. Treating `frame_probe` TCP timeout as "organ down."** A short probe timeout against a healthy organ that responded slowly once reads as DOWN; the flap repeats because the underlying latency is unchanged. Confirm with a follow-up probe that allows the organ's *known-good* latency (≥2× typical healthy latency) before declaring an outage. Cross-check with the well-organ thermal reading — `WATCH/OPTIMAL` on the same organ means the TCP read returned data, just slower than frame_probe's deadline. The artifact is a probe, not a measurement.
+
+**12. Treating an optimistic `sent=true` receipt as delivery.** A delivery surface can return a structurally-valid receipt (JSON body with `event_id`, `kabarkan_hash`, `reason: Routed to ...`) while the message never reaches the recipient. The receipt is generated before the wire write is acknowledged, or it tracks the routing hop only, not the terminal leg. Trust the recipient surface, not the receipt: trigger a uniquely-tokenised probe and grep for that token on the recipient channel. A receipt without a recipient-side match is a queue claim, not a delivery.
+
+**13. Reading two apex-scalar reports as contradictory when they are orthogonal.** `arifFlow` reports a *pathology* verdict at the vector constellation level (e.g. `g-band PATHOLOGICAL PRIMARY=GOVERNANCE_COLLAPSE`) while `AAA` reports healthy scalars at the per-axis level (e.g. `G=0.875, W3=0.879`). The reports measure different scopes — the constellation vs the axis — and both can be true simultaneously. State the scope of each report before classifying as drift. Pattern: report that flags `PHASE_1_HEURISTIC_UNCALIBRATED` is the instrument admitting it is not yet trustworthy, which is honest governance, not absence of governance. Don't collapse two scoped reports into one contradiction.
+
 ## Output format
 
 Plain text with the section headers `A.` through `I.` as the user typed them. Tables are allowed inside sections — they are the spec, not decoration. No opening greeting, no closing moral, no "let me know if..." footer.

@@ -472,6 +472,35 @@ down", and never let the daemon's health stand in for the CLI's — the two answ
   that reports a window it does not have is not lying, it has a shadow — and shadows that live inside a
   self-report are worse than bugs, because they get reported *as* truth.
 
+### 8. The skill estate — sensor present, actuator absent (measured 2026-09-29)
+
+When auditing the skill catalogue, run `python3 /root/scripts/skill-estate.py sense|lint|plan` first.
+It reads both roots, the real usage sensor, and inbound references. Facts that cost a full session to
+re-derive:
+
+- **The upstream curator CANNOT manage `skills.external_dirs` roots.** Measured refusal:
+  `curator: '<name>' lives in skills.external_dirs and is read-only to the curator`.
+  On this box that means `/root/AAA/skills` (the AAA corpus, **96% of the injected index**) has a live
+  usage sensor but no actuator, while `curator status` reads green managing a handful of local skills.
+  `hermes curator adopt --all-unmanaged` is **interactive** — pipe `y` or it aborts silently.
+- **`hermes curator status` green ≠ anything is being maintained.** Read the *managed* count, never the
+  ENABLED line. Six runs, "auto: no changes", 0 transitions ever, is the signature of a machine pointed
+  at nothing.
+- **The index is a SELECTION surface, not a specification store.** Cost = name + description + path.
+  Composition measured: name 15k B · description 60k B · path 24k B = ~24,865 tok/turn. Deep nested
+  paths are ~24% of the cost for zero selection value.
+- **Do not trim a description before checking the body.** Of 8 worst offenders sampled, 6 carried
+  information (scar IDs, concept names) that existed ONLY in the description. The correct transform is
+  relocate-then-shorten, and auto-shortening a "Use when …" clause produces ellipsis fragments that
+  select *worse* than the full sentence. Description trimming is an authoring queue, not a script.
+- **Absence from `.usage.json` is not zero use.** 134 live skills had no row at all. Report UNKNOWN.
+  Also expect ghost rows: 914 usage keys for 708 live skills, 337 matching any live name — the telemetry
+  joins to the library at ~63%, which alone explains why nothing transitions.
+- **Parking cold MCP servers saves ~0 prompt tokens** (the deferred listing is capped by
+  `listing_max_tokens`, default 4000). Claim it as a governance win — fewer phantom surfaces — never as
+  a token win. Check exact-token references (`mcp__<server>__`) before parking, and never park a server
+  named by canon (chron, frame, fed, hermes-mcp) or you create the §4e doctrine/reality split yourself.
+
 ## Pitfalls
 
 - **Don't rank findings by severity before probing substance.** A directory with 27 files and a directory

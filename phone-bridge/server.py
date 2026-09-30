@@ -138,6 +138,18 @@ class Bridge(BaseHTTPRequestHandler):
             run(["termux-vibrate", "-d", "300"])
             self._send_json(200, {"ok": True}); return
 
+        if p == "/v1/toast":
+            try:
+                n = int(self.headers.get("Content-Length", 0) or 0)
+                body = json.loads(self.rfile.read(n) or b"{}") if n else {}
+            except Exception:
+                body = {}
+            msg = str(body.get("message") or "")[:200]
+            if not msg:
+                self._send_json(400, {"error": "message_required"}); return
+            run(["termux-toast", msg])
+            self._send_json(200, {"ok": True}); return
+
         self._send_json(404, {"error": "no_route", "path": p})
 
     def do_GET(self):

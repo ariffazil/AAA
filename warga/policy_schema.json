@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arifos.local/schemas/qwen-bridge-permission-policy.v1.json",
+  "title": "Qwen Bridge Permission Policy (Tier-1)",
+  "description": "Maps an arifOS lease.scope to an acpx --permission-policy JSON file. Consumed by qwen_bridge.compile_policy(). Tier-1 only — does not yet encode SABAR cooling, F11 consent gates, or thought-stream redaction (Tier-2/3).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["autoApprove", "autoDeny", "defaultAction", "schema_version"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "qwen-bridge.policy.v1",
+      "description": "Pinned schema version. Bump on breaking change."
+    },
+    "autoApprove": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "ACP tool names auto-approved. Maps to AAA F2 OBSERVE_ONLY reads (read_file, grep, glob) by default.",
+      "default": []
+    },
+    "autoDeny": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "ACP tool names denied. For F11-denied scopes, list everything. For reversible tiers, list only blast-bearing tools (write_file, edit, bash).",
+      "default": []
+    },
+    "defaultAction": {
+      "type": "string",
+      "enum": ["approve", "deny", "escalate"],
+      "description": "What to do when a tool is neither auto-approved nor auto-denied. 'escalate' = prompt caller (this is the F2 fail-closed default)."
+    },
+    "maxTurns": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 500,
+      "description": "Bound on agentic turns per session. Maps from lease.max_turns."
+    },
+    "ttlSeconds": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 28800,
+      "description": "Idle TTL for queue owner. 0 = keep alive forever (NOT recommended). Maps from lease.ttl_seconds."
+    },
+    "thoughtStreamAllowed": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, agent_thought_chunk events are emitted to the log. If false (default F2 fail-closed), thoughts are dropped to prevent reasoning leakage. Maps from lease.consent.thought_stream."
+    },
+    "reasoningClass": {
+      "type": "string",
+      "enum": ["OBS", "DER", "INT", "SPEC", "AUTO"],
+      "default": "AUTO",
+      "description": "Truth-class tag the bridge applies to all Qwen outputs by default. AUTO = bridge infers from content shape (text → INT, file path → OBS)."
+    },
+    "bridgeFloor": {
+      "type": "string",
+      "enum": ["OBSERVE_ONLY", "STANDARD", "ELEVATED"],
+      "default": "OBSERVE_ONLY",
+      "description": "Minimum arifOS floor this policy respects. Used by compile_policy() to widen autoApprove/autoDeny as needed."
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "qwen-bridge.policy.v1",
+      "autoApprove": ["read_file", "grep", "glob"],
+      "autoDeny": ["write_file", "edit", "bash"],
+      "defaultAction": "escalate",
+      "maxTurns": 10,
+      "ttlSeconds": 600,
+      "thoughtStreamAllowed": false,
+      "reasoningClass": "AUTO",
+      "bridgeFloor": "OBSERVE_ONLY"
+    }
+  ]
+}

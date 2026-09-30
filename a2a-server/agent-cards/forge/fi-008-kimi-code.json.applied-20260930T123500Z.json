@@ -1,0 +1,43 @@
+{
+  "card": "/root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json",
+  "patch": "/root/AAA/reports/apex-zen-upgrade-2026-09-30/kimi-card-staged-fix.json",
+  "applied_at": "2026-09-30T12:35:00+08:00",
+  "applied_by": "333-AGI (FI-001) under user directive 'fix opencode and kimi code, don't block any tools'",
+  "ops_count": 8,
+  "ops": [
+    {
+      "op": "set",
+      "path": "/apexMasterSeal/cognitiveRing"
+    },
+    {
+      "op": "set",
+      "path": "/apexMasterSeal/thermodynamicRole"
+    },
+    {
+      "op": "set",
+      "path": "/apexMasterSeal/hassabisInversion/ringPlacement"
+    },
+    {
+      "op": "set",
+      "path": "/apexMasterSeal/hassabisInversion/parallelism"
+    },
+    {
+      "op": "set",
+      "path": "/apexMasterSeal/hassabisInversion/shadowAcknowledged"
+    },
+    {
+      "op": "add",
+      "path": "/apex_zen"
+    },
+    {
+      "op": "add",
+      "path": "/model_routes/subagent_pool/poly_bridge_integration"
+    },
+    {
+      "op": "set",
+      "path": "/upgrade_history/-1"
+    }
+  ],
+  "key_order_preserved": true,
+  "sort_keys_used": false
+}
