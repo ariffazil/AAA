@@ -1,6 +1,6 @@
 ---
 name: consumer-endpoint-witness
-status: F13_RATIFIED_ORDER (2026-09-30) — sovereign: "aku sahkan semuanya" (five-mission order)
+status: F13_RATIFIED_ORDER (2026-09-30) — sovereign phrase 'aku sahkan semuanya' on the five-mission order
 spectrum: 000-999 (verification discipline, all lanes)
 floors: F1, F2, F4, F11
 companion: state-transition-discipline.md · source-type-promotion-gate.md · probe-before-panic.md
