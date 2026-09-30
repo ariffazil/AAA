@@ -204,3 +204,5 @@ If any step fails, **T0 still works**. The substrate never goes dark.
 
 **Ω₀ ≈ 0.04. Confidence: 0.90.**
 **DITEMPA BUKAN DIBERI. ⚒️**
+
+> **[HISTORICAL-CHAMBER-COUNT]** Chamber count in this dated document is historical. Live SOT: FRAME `/health` = 9 chambers (2026-09-30). See /root/AAA/canon/FRAME-CHAMBER-SOT-2026-09-30.md.
