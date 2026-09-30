@@ -11,3 +11,9 @@ Bila mesej ini tiba (sebagai slash atau teks):
 
 1. Ambik kerja paling kecil yang boleh jalan sekarang dan buat sampai selesai atau kena blocker nyata. Receipt > naratif. Jangan buka kerja besar tanpa niat jelas.
 2. Kekal dalam register BM santai + floor F1-F13; rujuk cognitive-commands untuk nada penuh.
+
+## Instrumentation (Wave A · 2026-09-30)
+- **pre_observable**: smallest executable unit identified
+- **post_observable**: artifact path OR blocker named (state, not boolean — PRODUCED≠DELIVERED)
+- **receipt**: `flow_ingest(step_type=Execute, payload={"zen":"333","artifact":<path|blocker>})`
+- **fail_state**: no small unit → HOLD, jangan buka kerja besar

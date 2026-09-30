@@ -14,3 +14,9 @@ Bila mesej ini tiba (sebagai slash atau teks):
 3. Jangan lambak menu. Jangan laporan. Salam balik, then jalan.
 
 Ikut cognitive-commands doctrine (/root/AAA/skills/cognitive-commands/SKILL.md) untuk nada dan floor.
+
+## Instrumentation (Wave A · 2026-09-30)
+- **pre_observable**: session context state (carry_forward read? lanes loaded?)
+- **post_observable**: one named priority emitted to Arif
+- **receipt**: `flow_ingest(step_type=Route, payload={"zen":"000","priority":<one-line>})` — silent, no ceremony
+- **fail_state**: if no context readable → say so, skip priority (jangan reka)
