@@ -1291,6 +1291,24 @@ Arif asks for personal analysis ("tell me about my life", "evaluate my position"
     once, in one line, then refuse. After two clarifying answers the gate is HOLD, not
     a softer reframe.
 
+24. **Numbered signals → probe each item before composing the essay.** When the user sends
+    a list of items to verify ("sini N so-what aku, cek dengan real", "N things aku nak
+    tanya", "audit these N points"), the next reply is *not* an N-paragraph essay
+    structured to match. The defect pattern: the agent reads the numbered list,
+    composes an N-paragraph response that mirrors the list structure, and emits it
+    before checking any of the items. Each paragraph is confident prose that the agent
+    would retract in the next turn after one probe. **Mechanism:** the user's list
+    sets a *frame* the agent wants to satisfy; satisfying it on assumption produces
+    confident wrong prose with no tool calls behind it. **Rule:** probe each item in
+    the list before composing the reply. If the agent can probe only M < N items in
+    one turn, say so at the top ("aku check M dulu, N-M kena tunggu sebab X") and only
+    answer the probed items — do not fill the unprobed slots with confident prose. When
+    the user explicitly invites length ("panjang pun boleh", "essay"), the probe gate
+    runs *before* length is granted; the long answer still needs each claim grounded.
+    Distinct from pitfall #23 (probe-then-confess when user just corrected) — here
+    the user is *forward-feeding* items, and the defect is over-elaboration, not
+    emotional ordering.
+
 ---
 
 ## Do Not Use When
