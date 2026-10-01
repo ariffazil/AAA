@@ -361,6 +361,19 @@
       "consequence": "MEDIUM",
       "actionability": "PREPARE",
       "note": "Audit findings (N=1062): plugin heuristic produces UNKNOWN at 99.7% rate. Engine intent canon (Patch C at commit 1243fccbd7) is authoritative but plugin overwrites it for gate decisions. Wire overlay to call arif_route first, fall back to heuristic on timeout/error. KNOWN SCAR acknowledged in plugin docstring 2026-10-01."
+    },
+    {
+      "id": "falsif-verdict-field-divergence-20261015",
+      "title": "Falsification: verdict_field divergence in arif_judge (kernel intercept SEAL vs judge postcondition HOLD)",
+      "target_date": "2026-10-15",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "both",
+      "kind": "OBSERVATION",
+      "source": "carry_forward e-falsif-verdict-field-divergence-20261001 (split from drift-recon-unblock-test per F13 2026-10-01)",
+      "confidence": "TENTATIVE",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "Root suspicion: kernel_intercept.affordance.purpose=\"Tool purpose not yet declared in constitutional contract\" \u2014 missing affordance contract is the epistemic gap. Owner: FI-008. Stop: reproducer + named root cause + fix sketch (do NOT auto-implement, kernel contract = F13-class)."
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

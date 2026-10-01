@@ -109,6 +109,27 @@ print('last_status:', collections.Counter(str(j.get('last_status')) for j in job
 PY
 ```
 
+### 5a. Config edits — the sanctioned path
+
+`/root/.hermes/config.yaml` is **read-only** to `patch` and `write_file` — the harness refuses with
+`Agent cannot modify security-sensitive configuration. Edit ~/.hermes/config.yaml directly or use
+'hermes config' instead.` Per-key mutation MUST go through the CLI:
+
+```bash
+hermes config set <dotted.key.path> <value>     # canonical: cron.preflight, gateway.delivery_ledger, ...
+hermes config get <dotted.key.path>             # verify it landed
+grep -A 4 "^<key>:" /root/.hermes/config.yaml   # belt-and-suspenders: confirm the block is well-formed
+```
+
+The CLI runs the configured/loaded split for every line, so a key written via this path is auditable
+in `gateway.log` and shows up at next boot. Direct edits to the file appear in the diff but never
+reach the live process until the next gateway restart, and the harness's own diff tooling treats
+them as suspect. Any batch of N config changes is therefore N separate CLI calls plus one
+verification read; bundling into a single `hermes config` invocation is not supported.
+
+Probe a fix with the same shape you used to mutate: never trust the loader before re-reading both
+sides.
+
 ## 6. Directory sprawl
 
 ```bash
