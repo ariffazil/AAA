@@ -26,7 +26,7 @@
 | `/root/AAA/names/INDEX.md` | **Naming index** — all 20 named entities, witness status, compression anchors |
 | `/root/scripts/render-agents.sh` | **Fragment composer** — generates AGENTS.md + adapter files |
 | `/root/scripts/doctor.sh` | **Federation health dashboard** — unified probe |
-| `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` | **Plane SOT** — 10 roles · 6 SOTs · metabolism. `FLOW_GRAPH` not minted |
+| `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` | **Plane SOT** — 10 roles · 6 SOTs · metabolism. `FLOW_GRAPH` minted 2026-10-02 (SAH, topology); metabolism graph queued |
 | `/root/AAA/governance/SIX_CONSTITUTIONAL_LEDGERS.md` | Six ledgers (LAW STATE BRAIN CAPS TOOLS SKILLS) |
 | `/root/AAA/terminal/BOOT.md` | Clerk contract — inherit `state.json`, increment X |
 

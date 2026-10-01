@@ -14,7 +14,7 @@ MODELS         ← /root/.config/federation-models.json
 TASK
 ```
 
-TOOLS.json and SKILLS.json are not minted. `FLOW_GRAPH.json` is not minted (Phase 7 queued). Do not invent them.
+TOOLS.json and SKILLS.json are not minted. `FLOW_GRAPH.json` (topology view) IS minted 2026-10-02 (F13 SAH) at `/root/arifFlow/FLOW_GRAPH.json`; its metabolism-derived graph is still queued. Do not invent the queued ones.
 Until they exist: existing `SKILL.md` files are recipes; MCP/API surfaces are hands. Model is chosen last.
 
 ## Clerk, not archaeologist
