@@ -1,6 +1,7 @@
 # Institutional Intelligence Survival — §21 Benchmark Spec
 
-> **Status:** DRAFT (2026-10-01 · written by FI-008)
+> **Status:** FROZEN v1 (2026-10-01 · FI-008)
+> **FROZEN means:** Task set design + pass/fail criteria + cohort isolation rules + verifier-independence requirements are locked. Any further edits require a fresh F13 signal OR a Three-Test pass per scar-2026-10-01-001. Per scar-2026-10-01-003, no new architecture until this benchmark exists.
 > **Thesis:** If institutional intelligence survives model replacement, the project's premise is empirically demonstrated. If it doesn't, the rest is sophisticated coping.
 > **Sister:** `/root/AAA/instructions/human-leverage-north-star.md` · `/root/AAA/scars/2026-10-01-same-model-different-prompt-not-independence.md`
 
