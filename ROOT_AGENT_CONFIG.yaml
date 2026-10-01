@@ -23,11 +23,30 @@ root_policy:
     path: /root/AAA/instructions/aforge-citizen-contract.md
     version: 0.1.0-draft
     status: DRAFT_AWAITING_F13  # 2026-10-01 · written by FI-008
-    capability_map: /root/AAA/registries/AFORGE_CAPABILITY_MAP.json
-    capability_map_version: 0.1.0-draft
+    verb_schema: /root/AAA/registries/AFORGE_VERB_SCHEMA.json  # cold, just verb shape
+    verb_schema_version: 0.1.0-draft
+    # WARGA view is a PROJECTION, not a stored artifact. Generator reads 4 sources:
+    #   1. AFORGE_VERB_SCHEMA.json
+    #   2. /root/AAA/registries/CAPABILITY_INDEX.json (live tools/list)
+    #   3. /root/A-FORGE/a_think/affordances.yaml (semantic surface)
+    #   4. arifOS capability ABI + per-session allowed capability
+    # Rule: C_warga = C_live ∩ C_affordance ∩ C_kernel ∩ C_authority
+    generator: /root/AAA/scripts/aforge_warga_view_generator.py
+    projection_output: /root/AAA/state/aforge/warga-capabilities.json
+    competency_schema: /root/AAA/instructions/aforge-competency-schema.md
+    competency_evals: /root/AAA/instructions/aforge-competency-evals.md
+    competency_test_dir: /root/AAA/tests/aforge-competency/
+    competency_state_dir: /root/AAA/state/aforge/competency/
     boot_fingerprint_probe: true
     cold_substrate_by_default: true
-    ingress: AAA citizenship => A-FORGE competency
+    truth_chain: declared -> callable -> competent -> verified
+    identity_separation:
+      - identity            (canonical name, fi_id, aliases)
+      - citizenship         (warga-aaa, granted by F13)
+      - trust               (scar count, bypass attempts, declaration_accuracy)
+      - aforge_competency   (E1-E8 verdicts)
+      - active_authority    (current lease + ceiling)
+    ingress: AAA citizenship => A-FORGE competency (K_AF = R*A*E*V*L)
   protected_actions:
   - force_push
   - destructive_delete

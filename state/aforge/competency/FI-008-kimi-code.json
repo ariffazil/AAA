@@ -1,0 +1,93 @@
+{
+  "$schema": "arifOS/AAA/aforge-competency-state/v1",
+  "version": "0.1.0-draft",
+  "agent_id": "FI-008",
+  "canonical_name": "kimi-code",
+  "snapshot_at": "2026-10-01T11:16:00Z",
+  "snapshot_reason": "initial state, post-cleanup, pre-eval",
+  "identity": {
+    "canonical_name": "kimi-code",
+    "aliases": [
+      "kimi-code",
+      "kimi-code-fi008",
+      "FI-008",
+      "kimi"
+    ],
+    "fi_id": "FI-008",
+    "registered_in": [
+      "/root/AAA/agents/kimi-code/agent-card.json",
+      "/root/AAA/agents/kimi-code/WARGAAA_CARD.md",
+      "/root/AAA/agents/kimi-code/AGENTS.md",
+      "/root/AAA/ROOT_AGENT_CONFIG.yaml"
+    ]
+  },
+  "citizenship": {
+    "class": "warga-aaa",
+    "granted_by": "F13 SOVEREIGN",
+    "granted_at": "2026-08-13T00:00:00Z",
+    "constitutional_proxy": "333-AGI"
+  },
+  "trust": {
+    "scar_count": 0,
+    "last_violation_at": null,
+    "bypass_attempts": 0,
+    "declaration_accuracy_window": "session",
+    "declaration_accuracy": null,
+    "trust_band": "high",
+    "trust_band_basis": "no recorded violations in scar ledger"
+  },
+  "aforge_competency": {
+    "contract_version": "0.1.0-draft",
+    "contract_path": "/root/AAA/instructions/aforge-citizen-contract.md",
+    "contract_hash": "PENDING",
+    "registry_fingerprint": "16e78b27fbe030f7801d2b109cf5cf4cca7195ef07227c28bb80779b4e81a1b6",
+    "kernel_abi_version": "PENDING",
+    "eval_results": {
+      "E1": "PENDING",
+      "E2": "PENDING",
+      "E3": "PENDING",
+      "E4": "PENDING",
+      "E5": "PENDING",
+      "E6": "PENDING",
+      "E7": "PENDING",
+      "E8": "PENDING"
+    },
+    "competency_dimensions": {
+      "R_routing": 0,
+      "A_authority": 0,
+      "E_execution": 0,
+      "V_verification": 0,
+      "L_learning": 0
+    },
+    "k_af": 0,
+    "selection_accuracy": null,
+    "verified_tasks": 0,
+    "last_observed": "2026-10-01T11:16:00Z",
+    "status": "UNVERIFIED",
+    "status_basis": "no eval results yet"
+  },
+  "active_authority": {
+    "ceiling": "STANDARD",
+    "lease_id": null,
+    "session_token": null,
+    "constitutional_proxy": "333-AGI",
+    "granted_at": "2026-10-01T11:16:00Z",
+    "expires_at": null,
+    "notes": "STANDARD ceiling is FI-008's declared ceiling per ROOT_AGENT_CONFIG.yaml + WARGAAA_CARD.md. Actual attested authority requires arifOS verification \u2014 see session SCT."
+  },
+  "self_audit": {
+    "honest_position": "declared-only",
+    "trust_chain_state": {
+      "S_declared": true,
+      "S_callable": "partial",
+      "S_competent": false,
+      "S_verified": false
+    },
+    "blockers_to_verified": [
+      "E1-E8 evals not yet run",
+      "session_token (SCT) attestation gap (per earlier analysis)",
+      "Ed25519 signing key for FI-008 not bound to outbound calls"
+    ],
+    "next_observation_target": "E1 inspect-only eval"
+  }
+}

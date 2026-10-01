@@ -1,0 +1,91 @@
+{
+  "$schema": "arifOS/AAA/aforge-verb-schema/v1",
+  "version": "0.1.0-draft",
+  "status": "DRAFT_AWAITING_F13",
+  "kind": "cold_verb_schema",
+  "warning": "This file is the COLD verb schema (7 capability classes + agent-visible shapes only). It is NOT the WARGA view. The WARGA view is GENERATED from this + live tools/list + affordances.yaml + arifOS ABI + session-allowed capability. See scripts/aforge_warga_view_generator.py.",
+  "generated_at": "2026-10-01T00:00:00Z",
+  "generated_by": "FI-008",
+  "doctrine_root": "/root/AAA/instructions/aforge-citizen-contract.md",
+  "generator": "/root/AAA/scripts/aforge_warga_view_generator.py",
+  "projection_output": "/root/AAA/state/aforge/warga-capabilities.json",
+  "verb_count": 7,
+  "verb_names_proposed": [
+    "forge_inspect",
+    "forge_plan",
+    "forge_change",
+    "forge_run",
+    "forge_verify",
+    "forge_extend",
+    "forge_control"
+  ],
+  "verbs": {
+    "forge_inspect": {
+      "intent": "Understand repo/world/state",
+      "agent_visible_schema": {
+        "verb": "string: forge_inspect",
+        "target": "string: path | repo | url | query",
+        "scope": "string: file | dir | repo | web | code_intel",
+        "depth": "integer (optional, default 1)"
+      }
+    },
+    "forge_plan": {
+      "intent": "Structure work",
+      "agent_visible_schema": {
+        "verb": "string: forge_plan",
+        "intent": "string: plain-language goal",
+        "acceptance": "string: criteria for done",
+        "scope": "string: bounded execution surface",
+        "budget": "object (tokens, time, cost ceiling)"
+      }
+    },
+    "forge_change": {
+      "intent": "Produce bounded changes",
+      "agent_visible_schema": {
+        "verb": "string: forge_change",
+        "target": "string: file | dir | url",
+        "diff": "string: unified diff OR structured patch",
+        "rollback_handle": "string (optional)"
+      }
+    },
+    "forge_run": {
+      "intent": "Execute/build/test",
+      "agent_visible_schema": {
+        "verb": "string: forge_run",
+        "command": "string: shell line OR test command OR job spec",
+        "sandbox": "string: process | docker | ephemeral",
+        "timeout": "integer (seconds)"
+      }
+    },
+    "forge_verify": {
+      "intent": "Prove outcome",
+      "agent_visible_schema": {
+        "verb": "string: forge_verify",
+        "task_ir": "string: hash",
+        "acceptance": "string: criteria set",
+        "evidence_inputs": "object (git diff, tests, lint, runtime observation)"
+      }
+    },
+    "forge_extend": {
+      "intent": "Acquire missing capability",
+      "agent_visible_schema": {
+        "verb": "string: forge_extend",
+        "gap": "string: plain-language capability need",
+        "template_hint": "string (optional: existing template id)"
+      }
+    },
+    "forge_control": {
+      "intent": "Status, rollback, abort",
+      "agent_visible_schema": {
+        "verb": "string: forge_control",
+        "action": "string: status | abort | rollback | pause | resume | retry",
+        "target": "string: lease_id | sandbox_id | task_ir"
+      }
+    }
+  },
+  "notes": [
+    "v0.1.0 cold schema — verb shapes only. Tool bindings, authority ceilings, risk tiers and scar classes are PROJECTED at runtime by the generator.",
+    "Generator reads: this file + /root/AAA/registries/CAPABILITY_INDEX.json + /root/A-FORGE/a_think/affordances.yaml + arifOS capability ABI + per-session allowed capability.",
+    "Output is written to /root/AAA/state/aforge/warga-capabilities.json (regenerable, not stored)."
+  ]
+}
