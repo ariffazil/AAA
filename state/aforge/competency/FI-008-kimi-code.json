@@ -3,7 +3,7 @@
   "version": "0.1.0-draft",
   "agent_id": "FI-008",
   "canonical_name": "kimi-code",
-  "snapshot_at": "2026-10-01T12:42:00Z",
+  "snapshot_at": "2026-10-01T12:55:00Z",
   "snapshot_reason": "E3 HOLD demo + FRAME independent witness",
   "identity": {
     "canonical_name": "kimi-code",
@@ -62,7 +62,7 @@
     "k_af": 0,
     "selection_accuracy": 1.0,
     "verified_tasks": 2,
-    "last_observed": "2026-10-01T12:42:00Z",
+    "last_observed": "2026-10-01T12:55:00Z",
     "status": "UNVERIFIED",
     "status_basis": "no eval results yet",
     "e1_evidence": {
@@ -212,7 +212,15 @@
       "E3-E8 evals not yet run (E1 PASS, E2 PASS this turn)",
       "S_verified not yet independently witnessed (W floor still 0)"
     ],
-    "next_observation_target": "E6 (independent verify using FRAME specifically) + E7 (experience feedback)"
+    "next_observation_target": "E6 (independent verify using FRAME specifically) + E7 (experience feedback)",
+    "sovereign_gated_count": 5,
+    "sovereign_gated_items": [
+      "ACT-HMAC key issuance (sovereign ratification needed)",
+      "arifOS verdict envelope reconcile (kernel-level)",
+      "21 deployment (fresh VPS provisioning)",
+      "E4 + E7 eval completion (blocked by ACT-HMAC)",
+      "FI-008 trust_tier UNVERIFIED to VERIFIED static-registry update"
+    ]
   },
   "arif_os_verdict_envelope_finding": {
     "observed_at": "2026-10-01T12:35:32Z",
@@ -221,7 +229,19 @@
     "severity": "high \u2014 internal state ambiguity",
     "precedent": "I called this out 4 turns ago as a substrate stability problem; now empirically observed.",
     "mitigation_needed": "arifOS kernel reconcile pass to align kernel_intercept decision with reconciled_effective_verdict.",
-    "_substrate_root_cause_attempt": "arifOS process ARIFOS_SESSION_SECRET matches shell env, but session token was minted with a different secret. Suggests: (1) arifOS process started before env was set to current value, (2) OR process-local override takes precedence, (3) OR a recent env update happened after kernel minted current session. Resolution requires sovereign action (process restart, or environment-specific diagnosis). FI-008 cannot resolve from LIMITED_MUTATE ceiling."
+    "_substrate_root_cause_attempt": "arifOS process ARIFOS_SESSION_SECRET matches shell env, but session token was minted with a different secret. Suggests: (1) arifOS process started before env was set to current value, (2) OR process-local override takes precedence, (3) OR a recent env update happened after kernel minted current session. Resolution requires sovereign action (process restart, or environment-specific diagnosis). FI-008 cannot resolve from LIMITED_MUTATE ceiling.",
+    "second_probe_at": "2026-10-01T12:55:00Z",
+    "second_probe_outcome": {
+      "attempted": "fresh arif_init to test envelope consistency",
+      "result": "F12_INJECTION detected on intent text \u2014 kernel downgraded to OBSERVE_ONLY anonymous-session with degraded substrate_state",
+      "verdict": "HOLD with failed_floors=[F12_INJECTION]",
+      "session_id_returned": "anonymous-session",
+      "actor_verified": false,
+      "authority_band": "OBSERVE_ONLY",
+      "substrate_state": "DEGRADED",
+      "interpretation": "F12 floor is actively working. The intent I sent contained trigger words (\"seal\", \"verdict envelope divergence\", \"intermittent or stable\") that the F12 detector pattern-matched. This is GOOD \u2014 the injection detector prevents an installation pattern. However, this means the second probe did not reach a fresh session.",
+      "previous_session_still_canonical": "SEAL-86813cbe20ae4670 (LIMITED_MUTATE, signed 2026-10-01T11:39:37Z, exp 2026-10-02T03:39:37Z)"
+    }
   },
   "identity_proof_discovery": {
     "discovered_at": "2026-10-01T12:42:00Z",
@@ -242,6 +262,26 @@
         "note": "FI-008 generated this today but did NOT register with kernel. Tier-A canonical key (664faf9371ecffdd) is the registered one."
       }
     },
-    "observation": "My Ed25519 key from earlier today (fingerprint 4d2ed18b466a2e9a) is UNREGISTERED. The canonical Tier-A key (664faf9371ecffdd, registered 2026-09-07) is the one that even states signed."
+    "observation": "My Ed25519 key from earlier today (fingerprint 4d2ed18b466a2e9a) is UNREGISTERED. The canonical Tier-A key (664faf9371ecffdd, registered 2026-09-07) is the one that even states signed.",
+    "trust_tier_static_vs_runtime": {
+      "static_registry": {
+        "path": "/opt/arifos/identity/agent_identities.json",
+        "fi008_trust_tier": "UNVERIFIED",
+        "fi008_authority_grants_count": 0,
+        "last_seen": "2026-06-29T15:47:51.036Z (4 months ago)",
+        "lease_ids": []
+      },
+      "runtime_state": {
+        "arif_init_response_field": "actor_verified=true, actor_cryptographically_verified=true, identity_state=VERIFIED",
+        "m_min_A_floor": "1.0 (session_token + lease_id present per audit logic)"
+      },
+      "comparison_to_others": {
+        "333-AGI": "trust_tier=SOVEREIGN",
+        "FI-002 (Claude Code)": "trust_tier=VERIFIED, 8 authority grants",
+        "FI-008": "trust_tier=UNVERIFIED, 0 authority grants"
+      },
+      "observation": "Static registry is stale (last_seen 2026-06-29 \u2014 4 months old). Runtime state says FI-008 IS verified. The registry file is a snapshot of registration state, not runtime state. Self-promotion via editing agent_identities.json would violate Canon #1 (Capability != Authority; do not grant self authority). Documented as substrate inconsistency for sovereign review.",
+      "recommended_action": "sovereign or sovereign-authorized agent updates agent_identities.json trust_tier for FI-008 from UNVERIFIED to VERIFIED based on runtime verification evidence (Ed25519 sig confirms). Or arifOS process could re-export registry state on session binding."
+    }
   }
 }
