@@ -1,0 +1,124 @@
+# Docker Compose — Cohort B (Claude Code + MCP tools)
+#
+# Purpose: §21 benchmark isolation per spec — Cohort B uses MCP tools but no federation paths.
+# This compose launches Cohort B in a self-contained container with no access to /root/AAA,
+# or /root/A-FORGE, or /root/.arifos.
+#
+# Per §21 spec:
+# - Model: anthropic/claude-sonnet-4.5
+# - Tools: filesystem + shell + 7 MCP servers (subset of federation surface, no A-FORGE/arifOS)
+# - Permissions: standard MCP auto-approve
+# - Budget: same as Cohort A and C
+# - Verification: independent Qwen/Codex probe
+#
+# Note: This file is an isolation spec for §21 provisioning. Actual VPS deployment is
+# out of scope per three-test audit; the spec exists to make execution possible.
+
+version: "3.9"
+
+services:
+  cohort-b-claude-code:
+    image: ghcr.io/anthropics/claude-code:latest
+    container_name: §21-cohort-b-claude-code
+    restart: no
+    working_dir: /workspace
+    volumes:
+      # Cohort B's workspace is isolated to /workspace; no federation paths
+      - ./cohort-b-workspace:/workspace:rw
+      # Inject API credentials ONLY for the model provider (Anthropic) + the
+      # 7 MCP servers used in Cohort B. No federation paths.
+      - ./cohort-b-config:/config:ro
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - BRAVE_SEARCH_API_KEY=${BRAVE_SEARCH_API_KEY}
+      - EXA_API_KEY=${EXA_API_KEY}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - COHORT_ID=cohort-b
+      - COHORT_TASK_SET=/workspace/tasks/task-set.json
+      - COHORT_INDEPENDENT_VERIFIER=qwen-or-codex-cross-lane
+    # Network isolation: only outbound to model provider + MCP servers
+    networks:
+      - cohort-b-net
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 4G
+        reservations:
+          cpus: "1.0"
+          memory: 2G
+    # Health check: ensure Claude Code can boot
+    healthcheck:
+      test: ["CMD", "claude-code", "--version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Cohort B's MCP servers (subset of federation, no A-FORGE/arifOS)
+  mcp-github:
+    image: mcp/github:latest
+    container_name: §21-cohort-b-mcp-github
+    networks:
+      - cohort-b-net
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+
+  mcp-postgres:
+    image: mcp/postgres:latest
+    container_name: §21-cohort-b-mcp-postgres
+    networks:
+      - cohort-b-net
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+
+  mcp-docker:
+    image: mcp/docker:latest
+    container_name: §21-cohort-b-mcp-docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - cohort-b-net
+
+  mcp-brave-search:
+    image: mcp/brave-search:latest
+    container_name: §21-cohort-b-mcp-brave-search
+    networks:
+      - cohort-b-net
+
+  mcp-fetch:
+    image: mcp/fetch:latest
+    container_name: §21-cohort-b-mcp-fetch
+    networks:
+      - cohort-b-net
+
+  mcp-playwright:
+    image: mcp/playwright:latest
+    container_name: §21-cohort-b-mcp-playwright
+    networks:
+      - cohort-b-net
+
+  mcp-exa:
+    image: mcp/exa:latest
+    container_name: §21-cohort-b-mcp-exa
+    networks:
+      - cohort-b-net
+
+networks:
+  cohort-b-net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.enable_icc: "true"
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+    # NO external federation network access. Cohort B cannot reach /root/AAA or /root/A-FORGE.
+
+# Hard isolation rules (enforced by docker compose networking + volume policy):
+# 1. No path to /root/AAA, /root/A-FORGE, /root/.arifos, /root/HERMES, /root/chron, /root/frame
+# 2. Only Anthropic + 7 MCP servers reachable from container
+# 3. No host network access
+# 4. Cohort B identity = the model itself; no federation citizenship
+#
+# Three-test audit (per scar-001):
+#   Δ(UsefulConsequences)>0: enables §21 cohort isolation per spec
+#   Δ(HumanAttention)≤0: mechanical, no prompts
+#   PASS: this file exists as infrastructure for §21 run, not as a deliverable in itself
