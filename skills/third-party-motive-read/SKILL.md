@@ -74,6 +74,51 @@ person:
 - **Repetition of the same reassurance is not failure.** When the sovereign has already said the
   right thing once and the third party still circles back, the answer is not a new argument — it is
   the same assurance, said again, plainly.
+- **Operational anxiety needs operational certainty, not words.** When the bonded person's stress is
+  about the sovereign's exit (MSS deadline, OD1, job change, money, daily routine), the cure is
+  *visibility of the plan*, not reassurance sentences. When the sovereign narrates the exit with
+  clear markers (date filed, due date, runway, next steps), the third party's anxiety drops because
+  uncertainty — not affection — was the trigger. Telling him to "say nice words" while the plan is
+  unspoken leaves the actual lever unturned. The skill that applies, of course, when the sovereign
+  asks the agent to draft his exit-plan narration is `human-care-coaching`; this lane only reads
+  the bond, it does not author the sovereign's voice.
+
+## The dual-hypothesis question (the one the "never itemise" rule doesn't cover)
+
+The sovereign sometimes asks two opposing framings at once: *"Am I too much with him? Or is he
+just scared of my exit?"* The right shape is **both, not either** — these are not competing
+diagnoses, they are the same hypothesis at two layers (his behaviour vs his motive). Pitfall:
+treating the "or" as exclusive and picking one. Even when the first reading is the load-bearing
+one, the second still colours it. Collapse pattern (one or two lines, no menu):
+
+```
+"Bukan hang yang terlebih — Syed yang takut hilang hang.
+Tapi keduadua boleh benar: hang memang terlebih, dan Syed memang takut."
+```
+
+Rule: when the sovereign offers two framings joined by *"atau / or / maybe"*, do NOT rank them or
+pick one. Show how both can be true and which layer each one operates at (behaviour vs motive).
+The earlier rule "never itemise" governs menus the agent composes; this governs menus the
+sovereign composes — same shape, opposite authorship, opposite fix.
+
+## How to verify before answering (probe order)
+
+Before delivering either a life-transition read or a dual-hypothesis collapse, run the probe order
+that turns speculation into observation. Without this, the read is the agent narrating the bond
+from its own habits:
+
+1. **Session history for the bonded person** — name/alias across recent sessions, last 48h.
+   Quote only what is on record; mark the rest OBSERVED vs INFERRED.
+2. **People.yaml register** — stable facts (job, sector, recurring dates, relationship role).
+   Read-only, not editable.
+3. **Lane-shadow / private lane map** — INFERENCE rows only, flagged as inference not observation
+   (see loved-one-worry-support pitfall 12).
+4. **WhatsApp / chat export in workspace** — read tail of most recent file, mark the timestamp gap
+   between export date and now (a stale export is observation at a past date, not present state).
+
+Empty after the four probes = literal answer, not hidden model. Two competing explanations with
+falsification triggers are still warranted when at least one probe returned evidence; four empty
+probes means the closed-door witness mode applies (loved-one-worry-support rule 3).
 
 ## Bounds that do not move
 
@@ -82,6 +127,31 @@ person:
   messages *to the agent* (their channel to others stays private).
 - No unsolicited label about a real person. Inference carries its uncertainty tag, always.
 - These rules govern *how* to answer. F1–F13 floors and the relationship canons own *whether*.
+
+## Pitfalls
+
+1. **Treating the sovereign's dual-hypothesis question as exclusive.** When he asks *"am I too
+   much, or is he scared?"*, the answer is "both" at different layers (behaviour vs motive), not
+   "one of them." Picking one collapses a structural read into a flat choice the sovereign did
+   not actually offer.
+2. **Suggesting reassurance-words when the lever is operational certainty.** When the bonded
+   person's stress tracks the sovereign's exit (job, money, routine), the cure is the sovereign
+   *narrating* the plan with markers (date filed, deadline, runway), not saying "aku ada" louder.
+   Without the next audit the read calcifies into "just be nice to him" — which is a different
+   problem entirely.
+3. **Delivering a motive read without running the four-probe order.** When the read leans on
+   pattern-matching without checking session history / people.yaml / lane-shadow / chat-export,
+   the agent is narrating its own habit, not the bond. Empty-after-four-probes is the witness
+   mode trigger; two-empty-probes is still two-empty-probes — do not paper over the gap with a
+   confident model.
+4. **Treating WhatsApp export freshness as present state.** A chat-export file dated months ago
+   is observation at that date, not now. A "pattern of replies" inferred from a stale export has a
+   timestamp gap that must be named before any present-tense read.
+5. **Reassurance-as-fabric ≠ certainty-as-ok.** "Aku sayang hang" said to attachment anxiety about
+   the sovereign's exit lands softer than "borang dah hantar 29/9, due 30/9, OD1 Mac 2027, aku
+   ada 5 bulan buffer" — because the second gives the third party something to hold against the
+   imagined worst case. The sovereign's feelings are real; the third party's worry is operational;
+   operational worries respond to operational certainty.
 
 ## Siblings
 

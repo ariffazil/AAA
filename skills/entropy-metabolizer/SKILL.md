@@ -16,6 +16,28 @@ ecology_state: WARM
 
 ---
 
+## ⚠️ DOCTRINAL SCOPE LIMITATION (SEAL 2026-09-30)
+
+This skill in its current form is a **filesystem janitor with governance-aware gates**, not the constitutional capability that AAA doctrine (`entropy-metabolism-doctrine-sealed-2026-09-30`) describes.
+
+**It measures:** Storage entropy (E1), partial capability ambiguity (E4), partial authority ambiguity (E5).
+**It does NOT measure:** Knowledge (E2), Attention (E3), Governance (E6), Runtime (E7), Reality (E8).
+
+**Its success metric is MB reclaimed + files deleted, not future decision cost reduced.**
+
+Until the 8-dimension pricing schema and the DISCOVER→CLASSIFY→VERIFY→PRICE→JUDGE→METABOLIZE→WITNESS→RE-MEASURE pipeline are operationalised, treat this skill as:
+
+- **SAFE** for gitignored debris (.bak, build/, __pycache__)
+- **CONSERVATIVE** for tracked candidates (holds by default)
+- **NOT-AUTHORITATIVE** on governance/authority/attention entropy
+
+For governance-class entropy questions, escalate to 888-APEX with the artifact name — not through this skill.
+
+See `/root/.claude/projects/-root/memory/entropy-metabolism-doctrine-sealed-2026-09-30.md` for canonical doctrine.
+
+
+---
+
 ## Input
 
 Accepts either:

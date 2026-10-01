@@ -363,6 +363,90 @@ When `no_agent=True`:
 | Schedule a new cron primitive | T3 | depends on backend |
 | Change Hermes cron runner source | T3 + F13 | requires diagnostic + F13 sign-off |
 
+## Cron-mutation tiering for off-hours sessions (no-F13 window)
+
+A scheduled patch session (late night, weekend, sovereign asleep) must split work into
+four buckets and refuse to mutate anything outside Tier 0+1. The decision belongs to the
+sovereign, never to the agent running alone — but the agent must surface the tiering so the
+choice is binary, not a menu.
+
+| Tier | Examples | When | Authority |
+|---|---|---|---|
+| **0 — Reality** | disk cleanup, log restart, restart a dead daemon | Anytime | Agent self-execute |
+| **1 — Reversible patch** | math normalization, throttle scripts, log path fix | Anytime | Agent self-execute; receipted |
+| **2 — Architecture** | delete 11 OFF jobs, convert LLM→script, coalesce digests | F13 SAH only | Surface patch, wait for "go" |
+| **3 — Constitutional surface** | new cron primitives, manifest regen, watchdog baseline reset | F13 SAH + audit | Don't touch without explicit order |
+
+**Hard rule:** a stable state (5/7 ok, 0 module error, gateway alive) is the asset.
+A Tier 2/3 patch that risks reversing the stable state is a net loss even when
+technically correct. The patch can wait until the sovereign is fresh. **ΔS ≤ 0 across
+the whole night is the success criterion, not "how many patches landed."**
+
+Concretely: patch only when (a) Tier 0/1, (b) full backup exists at
+`/root/forge_work/cron-patches-<date>/night/`, (c) F13 is unreachable OR has signed off.
+Three yeses → execute. Two yeses → HOLD.
+
+## Watchdog fail-by-design triage (do not patch what is working)
+
+A watchdog that has been failing N consecutive runs is *usually* working as designed —
+it deliberately stays loud so a human reads the drift. Before "fixing" it:
+
+1. **Read the script's docstring or header comment.** Most watchdogs print a self-asserted
+   contract: "until a human acknowledges", "delete the baseline to re-establish", "refuse
+   to self-heal".
+2. **Check the failure evidence.** Is the drift real (changed hashes, missing artifacts,
+   foreign manifest lapuk)? If yes, the watchdog is correctly distinguishing "clean" from
+   "unknown" and must stay loud.
+3. **Classify the failure class:**
+   - `REAL_BUG` (broken producer) → fix the producer, leave watchdog
+   - `REAL_DRIFT_DETECTED` (federation actually changed) → F13 SAH: reset baseline
+   - `DESIGNED_NOISE` (drift detector emits on every config edit) → leave it
+   - `PROBE_MISDIAGNOSIS` (e.g. probing vault999 via kernel :8088) → fix the probe path
+4. **If unsure, do not patch.** A silent watchdog is a worse failure than a loud one.
+
+**Symptom:** "5 runs in a row", "23 runs in a row" in a cron failure message is *evidence
+the watchdog is working*, not evidence it should be deleted. Patch the producer or
+escalate to F13 for baseline reset — never just turn the noise off.
+
+## Telegram content-hash throttle (cron-deliver.sh pattern)
+
+When cron jobs repeatedly emit near-identical Telegram messages (e.g. recurring watchdog
+ACKs, repeated well_auto_keepalive with no state change), the channel becomes pure
+entropy — signal density approaches zero while message count climbs. Throttle at the
+delivery script, not the job:
+
+- Compute `sha256(msg)[:16]` per outbound message
+- Maintain a TSV log `/root/WELL/state/cron_throttle.jsonl` (chat_id, hash, epoch, status)
+- Before send: if `(chat_id, hash)` exists in log AND last send < 3600s ago → SUPPRESSED,
+  write a SUPPRESSED receipt line, exit 0
+- Else: send, write SENT line
+- Bypass: `THROTTLE_DISABLE=1` env var per call
+
+**Effect:** identical content within an hour collapses to one Telegram delivery, distinct
+hashes still pass through, ΔS_telegram drops 3.32→~0.5 bits/h (about 85% entropy
+reduction). Audit trail is preserved because SUPPRESSED receipts still land in the log.
+
+**When NOT to throttle:** any job whose semantic value IS the repetition (heartbeat
+probes, liveness signals). Throttle only noise-class jobs: status pings, repeated WARN
+summaries, fallback retries.
+
+## Capability-metric denormalization pitfall
+
+Any cron that reports "regression" or "growth" rates across capability atoms MUST
+normalize by the atom-count denominator. Raw numerator-only counts produce
+false-positive "+5500% regression" headlines whenever the federation adds new atoms
+(growth looks like regression because the denominator grew).
+
+**Rule:** every metric of the form `count(thing)` over time → normalize to
+`rate(t) = count(thing) / total_capability_atoms(t)`. Three-band classification:
+- rate < 0.05  → `BASELINE_NOISE` (skip)
+- 0.05 ≤ rate < 0.50 → `NORMAL` (report rate only)
+- rate ≥ 0.50  → `REGRESSION` (alert)
+
+Before adding any new "growth" metric, prove the denominator is constant or apply
+normalization. A 100x numerator rise paired with a 100x denominator rise is zero growth,
+not 100x growth — the message body must say so.
+
 ## Three-system awareness (2026-08-15)
 
 Hermes cron is NOT the only cron system. Three run in parallel:

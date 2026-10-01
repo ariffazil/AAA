@@ -629,6 +629,10 @@ curl -s -m 25 -X POST "https://www.youtube.com/youtubei/v1/player?key=«redacted
 
 **Do not hand-roll this first.** The composed lane lives in the `media-ingest` MCP (`media_ingest_url`, systemd `mcp-media-ingest`, code `/root/.hermes/tools/media_ingest/media_ingest.py`), which already walks the ladder below and returns an honest `truth_state` + `content_read` + `transcript_state`. Use it; fall back to the raw commands here only when debugging it.
 
+**Transcript-only path (1 credit).** When the task is "extract / analyze / summarize a YouTube video" and you do NOT need frames, audio, or video bytes, call Firecrawl directly with `formats:["markdown"]` — 1 credit vs ~5 for `formats:["video"]`. The `markdown` field carries the full auto-generated transcript block when captions exist, plus `metadata.title / channel / duration / uploadDate / viewCount`. Confirmed working on KVM8 with the Pursuit of Wonder game-theory video (17:47, 2.43M views) when `youtube-transcript-api`, `yt-dlp`, and `youtube_ingest.py` all returned IP-blocked / missing-module failures. **Do NOT pay for `formats:["video"]` if a transcript + metadata is all you need.**
+
+**After the transcript lands — apply the contract.** The transcript by itself is data, not intelligence. Once Firecrawl (or `media_ingest_url`) returns `content_read`, apply the **11-part Eureka contract** from the `youtube-eureka` skill (Executive Summary → Timeline → Key Insights → WSU Matrix → Truth Audit → Operational Blueprint → Verbatim Quotes → Resources → Speaker Map → Caveats → Classification). The contract is what turns a transcript blob into a verdict a human can act on; never emit the transcript raw.
+
 1. **Firecrawl media — the working lane:**
    ```bash
    curl -s -X POST "https://api.firecrawl.dev/v2/scrape" \
