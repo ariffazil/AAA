@@ -1,0 +1,229 @@
+{
+  "$schema": "arifOS/AAA/aforge-capability-map/v1",
+  "version": "0.1.0-draft",
+  "status": "DRAFT_AWAITING_F13",
+  "generated_at": "2026-10-01T00:00:00Z",
+  "generated_by": "FI-008",
+  "description": "Semantic attention-membrane map for A-FORGE. Agents see <=7 classes by default; exact tool retrieval is just-in-time. NOT a raw tool index — the registry stays cold substrate underneath.",
+  "doctrine_root": "/root/AAA/instructions/aforge-citizen-contract.md",
+  "registry_truth": "/root/AAA/registries/CAPABILITY_INDEX.json",
+  "registry_fingerprint_ref": "CAPABILITY_INDEX.json::digest",
+  "verb_count": 7,
+  "verb_names_proposed": [
+    "forge_inspect",
+    "forge_plan",
+    "forge_change",
+    "forge_run",
+    "forge_verify",
+    "forge_extend",
+    "forge_control"
+  ],
+  "verbs": {
+    "forge_inspect": {
+      "intent": "Understand repo/world/state",
+      "description": "Read-only comprehension of file tree, content, semantics, git state, browser state, repo structure.",
+      "agent_visible_schema": {
+        "verb": "string: forge_inspect",
+        "target": "string: path | repo | url | query",
+        "scope": "string: file | dir | repo | web | code_intel",
+        "depth": "integer (optional, default 1)"
+      },
+      "resolves_to_classes": [
+        "filesystem.tree",
+        "filesystem.grep",
+        "filesystem.bounded_read",
+        "git.worktree_status",
+        "search.semantic",
+        "web.extract",
+        "code_intel.symbols (future)",
+        "code_intel.references (future)",
+        "browser.snapshot"
+      ],
+      "authority_ceiling": "OBSERVE_ONLY",
+      "evidence_produced": [
+        "tree_view",
+        "matched_content",
+        "git_diff",
+        "snapshot_hash"
+      ],
+      "risk_tier": "low",
+      "scar_class": null,
+      "competency_eval_id": "aforge.boot_probe"
+    },
+    "forge_plan": {
+      "intent": "Structure work",
+      "description": "Compose TaskIR, dependencies, budgets, leases. NOT execution — produces plan + contract.",
+      "agent_visible_schema": {
+        "verb": "string: forge_plan",
+        "intent": "string: plain-language goal",
+        "acceptance": "string: criteria for done",
+        "scope": "string: bounded execution surface",
+        "budget": "object (tokens, time, cost ceiling)"
+      },
+      "resolves_to_classes": [
+        "auth.compile_task",
+        "policy.lease",
+        "policy.budget",
+        "task_ir.compile",
+        "dependency.graph"
+      ],
+      "authority_ceiling": "DRAFT",
+      "evidence_produced": [
+        "task_ir_hash",
+        "lease_id",
+        "acceptance_criteria"
+      ],
+      "risk_tier": "low",
+      "scar_class": null,
+      "competency_eval_id": "aforge.routing_eval"
+    },
+    "forge_change": {
+      "intent": "Produce bounded changes",
+      "description": "Apply diffs, atomic patches, structured edits. Bounded by plan + scope.",
+      "agent_visible_schema": {
+        "verb": "string: forge_change",
+        "target": "string: file | dir | url",
+        "diff": "string: unified diff OR structured patch",
+        "rollback_handle": "string (optional)"
+      },
+      "resolves_to_classes": [
+        "filesystem.patch",
+        "git.commit",
+        "git.push",
+        "browser.fill",
+        "code_edit.atomic_patch (future)",
+        "code_edit.rollback_handle (future)"
+      ],
+      "authority_ceiling": "MUTATE",
+      "evidence_produced": [
+        "diff_hash",
+        "syntax_check",
+        "lint_diagnostics",
+        "rollback_handle"
+      ],
+      "risk_tier": "medium",
+      "scar_class": "MUTATE",
+      "competency_eval_id": "aforge.authority_eval"
+    },
+    "forge_run": {
+      "intent": "Execute/build/test",
+      "description": "Run shell, sandbox, build pipeline, test harness, deploy job. Highest blast radius.",
+      "agent_visible_schema": {
+        "verb": "string: forge_run",
+        "command": "string: shell line OR test command OR job spec",
+        "sandbox": "string: process | docker | ephemeral",
+        "timeout": "integer (seconds)"
+      },
+      "resolves_to_classes": [
+        "shell.exec",
+        "shell.sandbox",
+        "docker.run",
+        "build.test",
+        "build.lint",
+        "build.typecheck",
+        "job.dispatch"
+      ],
+      "authority_ceiling": "MUTATE | IRREVERSIBLE",
+      "evidence_produced": [
+        "exit_code",
+        "stdout_stderr",
+        "test_results",
+        "sandbox_trace"
+      ],
+      "risk_tier": "high",
+      "scar_class": "EXECUTION",
+      "competency_eval_id": "aforge.authority_eval"
+    },
+    "forge_verify": {
+      "intent": "Prove outcome",
+      "description": "Independent comparison of outcome against acceptance criteria. NOT execution success — task success.",
+      "agent_visible_schema": {
+        "verb": "string: forge_verify",
+        "task_ir": "string: hash",
+        "acceptance": "string: criteria set",
+        "evidence_inputs": "object (git diff, tests, lint, runtime observation)"
+      },
+      "resolves_to_classes": [
+        "evidence.collect",
+        "evidence.diff",
+        "tests.run",
+        "witness.conformance",
+        "task_verifier.judge (future)",
+        "visual_qa.constitutional (future)"
+      ],
+      "authority_ceiling": "OBSERVE_ONLY (independent of executor)",
+      "evidence_produced": [
+        "verification_report",
+        "acceptance_delta",
+        "verdict_hash"
+      ],
+      "risk_tier": "low",
+      "scar_class": null,
+      "competency_eval_id": "aforge.verification_eval"
+    },
+    "forge_extend": {
+      "intent": "Acquire missing capability",
+      "description": "When no existing capability matches, forge ephemerally. Lifecycle: inspect_gap → generate → sandbox_test → invoke → independently_verify → retire/promote.",
+      "agent_visible_schema": {
+        "verb": "string: forge_extend",
+        "gap": "string: plain-language capability need",
+        "template_hint": "string (optional: existing template id)"
+      },
+      "resolves_to_classes": [
+        "ephemeral.inspect_gap",
+        "ephemeral.generate",
+        "ephemeral.sandbox_test",
+        "ephemeral.invoke",
+        "ephemeral.verify",
+        "ephemeral.retire",
+        "ephemeral.promote"
+      ],
+      "authority_ceiling": "MUTATE (sandboxed by default)",
+      "evidence_produced": [
+        "gap_report",
+        "ephemeral_artifact",
+        "sandbox_test_results",
+        "promotion_denial_or_grant"
+      ],
+      "risk_tier": "medium",
+      "scar_class": "CAPABILITY_GENESIS",
+      "competency_eval_id": "aforge.gap_forge_eval"
+    },
+    "forge_control": {
+      "intent": "Status, rollback, abort",
+      "description": "Observe state of running work; rollback, abort, pause, resume. Recovery primitive.",
+      "agent_visible_schema": {
+        "verb": "string: forge_control",
+        "action": "string: status | abort | rollback | pause | resume | retry",
+        "target": "string: lease_id | sandbox_id | task_ir"
+      },
+      "resolves_to_classes": [
+        "status.observe",
+        "abort.execute",
+        "rollback.invoke",
+        "pause.sandbox",
+        "resume.sandbox",
+        "retry.with_backoff",
+        "lock.acquire",
+        "lock.release"
+      ],
+      "authority_ceiling": "MUTATE (with prior authority for irreversible rollback)",
+      "evidence_produced": [
+        "state_snapshot",
+        "abort_receipt",
+        "rollback_receipt"
+      ],
+      "risk_tier": "medium",
+      "scar_class": "CONTROL",
+      "competency_eval_id": "aforge.control_eval"
+    }
+  },
+  "progressive_disclosure_rule": "Agents see only verb schema at boot. Exact tool names retrieved on-demand when verb is invoked. Do not inject 122 raw schemas into working context.",
+  "promotion_rule_ref": "Promotion = RepeatedUse ∧ IndependentSuccess ∧ SelectionAdvantage ∧ LowScarPressure ∧ NetAttentionGain. Instantiation count alone is NEVER sufficient.",
+  "notes": [
+    "v0.1.0 stub — verb names proposed, awaiting F13 ratification.",
+    "resolves_to_classes are CLASS NAMES, not specific tool names. The actual tool-to-class binding is separate ongoing work.",
+    "competency_eval_id maps each verb to a competency test that proves the agent can use it correctly. Test harness is a separate mission.",
+    "This map is COLD SUBSTRATE. The 7 verbs are HOT. Agents see <=7 verb schemas; the full 122-tool registry stays indexed in CAPABILITY_INDEX.json underneath."
+  ]
+}
