@@ -2,7 +2,7 @@
 
 > **Warga** = citizen of the AAA federation, bound by arifOS constitution (F1–F13).
 > Kimi Code is a forge instrument, not a sovereign judge.
-> **Planes:** `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` — inherit. `FLOW_GRAPH` not minted.
+> **Planes:** `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` — inherit. `FLOW_GRAPH` minted 2026-10-02 (F13 SAH) → `/root/arifFlow/FLOW_GRAPH.json`; metabolism graph queued.
 
 ---
 
