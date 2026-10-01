@@ -1,0 +1,93 @@
+# Hermes Display Patch — 2026-10-01 (F13 review before apply)
+# Target: /root/.hermes/installs/76f6e7e5145b5f39/environments/{e48120b6aa2247579b41c4bb7efa443e,5e1fd6d35e1b42478ce8d27e9b63f3dd,8e13091f1d534c729751dc65d8abc2f3}/workspace/agent/insights.py
+# Files affected: 3 (byte-symmetric, sha256[:16]=8878822bd245ee07 pre-patch)
+# Touches: display labels + visibility footer. NO logic change. NO arithmetic change.
+#
+# Patches:
+# 1. "Active time" -> "Total session time" (CLI L502, Gateway L562)
+#    Reason: total_hours is sum-of-durations (495.7 days aggregated), not concurrency.
+#    Misleading label reads like wall-time concurrency. New label names the aggregation.
+#
+# 2. Cost visibility footer (#patch-2026-10-01)
+#    Reason: $0.72 reads as flat bill when 1888/2060 sessions have no pricing data.
+#    Footer shows unknown/total ratio + percent so the gap is visible, not hidden.
+#    Does NOT change arithmetic — only emits a warning string under existing data.
+#
+# Apply: `git apply hermes-display-patch-2026-10-01.diff` from install dir.
+# Restart: hermes service restart required after apply (gateway reads insights.py).
+# Risk: label-only + footer-only. No control-flow, no arithmetic, no schema.
+#
+# Decision (F13): ____________  (SAH □□ / TUNGGU □□ / UBAH □□)
+
+--- insights.py (current)
++++ insights.py (patched)
+@@ -499,13 +499,17 @@
+             f"  Total tokens:      {o['total_tokens']:,}",
+
+         ]
+
+         if o["total_hours"] > 0:
+
+-            lines.append(f"  Active time:       ~{format_duration_compact(o['total_hours'] * 3600):<11}  Avg session:     ~{format_duration_compact(o['avg_session_duration'])}")
+
++            lines.append(f"  Total session time:~{format_duration_compact(o['total_hours'] * 3600):<11}  Avg session:     ~{format_duration_compact(o['avg_session_duration'])}")
+
+         lines += [f"  Avg msgs/session:  {o['avg_messages_per_session']:.1f}", ""]
+
+         # Cost buckets: show included/unknown sessions instead of collapsing to $0.
+
+         cost_lines = self._cost_lines(o, ("  Estimated:          {}", "  Included:           {} session(s) (subscription — no provider invoice)",
+
+                                           "  Unknown:            {} session(s) (no pricing data)"))
+
+         if cost_lines:
+
+             lines += self._section("💰 Cost") + cost_lines + [""]
+
++        # Visibility: surface unknown-pricing ratio so $0.72 is not read as a flat bill (#patch-2026-10-01).
+
++        if o.get("unknown_cost_sessions", 0) > 0 and o.get("total_sessions", 0) > 0:
+
++            pct = round(100 * o["unknown_cost_sessions"] / o["total_sessions"], 1)
+
++            lines.append(f"  ⚠ {o['unknown_cost_sessions']}/{o['total_sessions']} sessions ({pct}%) excluded from cost — no pricing data")
+
+         if report["models"]:
+
+             lines += self._section("🤖 Models Used") + [f"  {'Model':<30} {'Sessions':>8} {'Tokens':>12}"]
+
+             lines += [f"  {m['model'][:28]:<30} {m['sessions']:>8} {m['total_tokens']:>12,}" for m in report["models"]] + [""]
+
+@@ -559,11 +563,15 @@
+             f"**Tokens:** {o['total_tokens']:,} (in: {o['total_input_tokens']:,} / out: {o['total_output_tokens']:,})",
+
+         ]
+
+         if o["total_hours"] > 0:
+
+-            lines.append(f"**Active time:** ~{format_duration_compact(o['total_hours'] * 3600)} | **Avg session:** ~{format_duration_compact(o['avg_session_duration'])}")
+
++            lines.append(f"**Total session time:** ~{format_duration_compact(o['total_hours'] * 3600)} | **Avg session:** ~{format_duration_compact(o['avg_session_duration'])}")
+
+         lines.append("")
+
+         cost_parts = self._cost_lines(o, ("{} estimated", "{} included (subscription)", "{} unknown"))
+
+         if cost_parts:
+
+             lines += [f"**Cost:** {' | '.join(cost_parts)}", ""]
+
++        # Visibility: surface unknown-pricing ratio so $0.72 is not read as a flat bill (#patch-2026-10-01).
+
++        if o.get("unknown_cost_sessions", 0) > 0 and o.get("total_sessions", 0) > 0:
+
++            pct = round(100 * o["unknown_cost_sessions"] / o["total_sessions"], 1)
+
++            lines.append(f"⚠ {o['unknown_cost_sessions']}/{o['total_sessions']} sessions ({pct}%) excluded — no pricing data")
+
+         if report["models"]:
+
+             lines += ["**🤖 Models:**"] + [f"  {m['model'][:25]} — {m['sessions']} sessions, {m['total_tokens']:,} tokens" for m in report["models"][:5]] + [""]
+
+         if len(report["platforms"]) > 1:
+

@@ -501,6 +501,81 @@ re-derive:
   a token win. Check exact-token references (`mcp__<server>__`) before parking, and never park a server
   named by canon (chron, frame, fed, hermes-mcp) or you create the §4e doctrine/reality split yourself.
 
+## 9. Mutating runtime code — install dir is constitution-class
+
+Editing files under `/root/.hermes/installs/<sha>/environments/<env>/workspace/` is **not the same
+class of edit as editing `/root/AAA/...`** — these files ARE the live harness, and a wrong write takes
+down CLI / Telegram gateway until restart. The `git apply` form is the right instrument; direct
+`patch` or `write_file` against the install tree is the wrong one.
+
+### Procedure (display-class edits as the worked example)
+
+```bash
+# 1. Locate every environment that needs the same patch.
+ls /root/.hermes/installs/                          # one entry per install; one install can host many envs
+ls /root/.hermes/installs/<install-sha>/environments/   # the envs inside
+
+# 2. Sha-check each target file before patching. Single-env installs are byte-identical with the same
+#    upstream version; if they all hash the same, one patch applies to all.
+for env in /root/.hermes/installs/<install-sha>/environments/*/workspace; do
+  sha256sum "$env/agent/insights.py"
+done
+# All identical (sha256[:16] same for every env) → one diff, multi-apply.
+# Any mismatch → the envs have diverged; investigate before applying the same patch.
+
+# 3. Stage a .diff in /root/AAA/forge_work/ and stop. Do NOT write to install dir yet.
+#    Header documents the target paths, the pre-patch sha, the patches, the apply-command sequence,
+#    and the restart procedure. Header ends with an F13 decision line.
+```
+
+Build the diff with `difflib.unified_diff` over the original vs patched string, written to
+`/root/AAA/forge_work/hermes-display-patch-YYYY-MM-DD.diff` (or topical filename). Header convention:
+
+```
+# Hermes Display Patch — YYYY-MM-DD (F13 review before apply)
+# Target: /root/.hermes/installs/<install>/environments/{<env1>,<env2>}/workspace/<path>
+# Files affected: N (byte-symmetric, sha256[:16]=<X> pre-patch)
+# Touches: <list>. NO logic change. NO arithmetic change.
+# Apply: <exact command block, looped over envs>
+# Restart: <exact restart command>
+# Decision (F13): ____________  (SAH □□ / TUNGGU □□ / UBAH □□)
+```
+
+### Pitfalls specific to install-dir mutation
+
+- **One install can host many environments.** `/root/.hermes/installs/<install-sha>/environments/<env>/workspace/`
+  is the canonical shape; the install sha is the directory, the env id is the subdir. A patch to
+  `<env>/agent/<file>.py` only affects that env's process unless other envs hash-identical. **Verify
+  the cross-env hash before assuming "one file, one apply" reaches every gateway.**
+- **A patch that touches display strings is reversible.** A patch that touches `client_lifecycle.py`,
+  `prompt_builder.py`, `compression_facade.py`, or the system-prompt construction path is NOT —
+  these are part of the prompt cache invariant and a wrong write breaks alternation, cache hits, or
+  the role list itself. The patch's blast radius is determined by which file under
+  `agent/` it touches, not by how short it looks in the diff.
+- **Constitution-class mutations require F13 SAH even for display edits.** The auto-seal doctrine
+  (§"Auto-Seal — Mesin Seal, Manusia Cakap 'Sah'") covers session-close sealing, not
+  install-dir editing. Two constants: `duit · mutasi tak-boleh-undur · rekod kanonik · arah rekod`
+  remain F13 binaries; install-dir editing is mutasi-irreversible (a wrong write takes down a live
+  gateway). Default action is **stage diff + report + wait for SAH**, not write-and-pray.
+- **Restart the service after the apply, in the same patch loop.** The gateway reads code at startup;
+  a patch that lands without a restart is invisible to the running process. Restart one process, not
+  all of them — `systemctl restart hermes-gateway` (or whatever the unit is) reaches the gateway
+  daemon; CLI sessions and cron jobs are separate processes and pick up the new code on next start.
+- **Before declaring success, re-read the patched file** and re-run `git apply --check` (or
+  equivalent) on a fresh diff. The audit only sees the patch landed when the file's hash has changed
+  and the changed bytes match the diff hunks. A patch that "applied" but didn't shift the hash is a
+  hash that did not move.
+- **Never patch `/root/.hermes/config.yaml` through `patch` / `write_file`.** The harness refuses
+  these with `Agent cannot modify security-sensitive configuration`. Go through `hermes config set`
+  per key (§5a of the probe cookbook). The file in install-dir is harness code; the file in
+  `/root/.hermes/config.yaml` is the live profile config — they are different edits with different
+  sanctioned paths.
+- **Declare the patch's blast radius in the diff header**, even when it's display-class. A 6-line
+  label edit, a 12-line footer edit, and a 30-line logic edit look the same in the diff stat but
+  have very different blast radii. Name the file, the function/method, the visible output, and
+  what an end-user would notice if the patch went wrong. The reviewer needs that to decide SAH /
+  TUNGGU / UBAH without re-reading the source.
+
 ## Pitfalls
 
 - **Don't rank findings by severity before probing substance.** A directory with 27 files and a directory
