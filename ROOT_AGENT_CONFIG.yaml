@@ -17,6 +17,17 @@ root_policy:
   cognitive_hierarchy: contracts/cognitive_hierarchy.yaml
   cognitive_hierarchy_seal: VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json
   routing_rule: external agent -> A-FORGE/arifOS lease -> AAA warga/proxy -> AAA state
+  forge_citizenship_contract:
+    # Inherited A-FORGE competency for every forge-instrument. Binding target
+    # for adapter renderers; not a per-agent copy-edit. Verbs are DRAFT_AWAITING_F13.
+    path: /root/AAA/instructions/aforge-citizen-contract.md
+    version: 0.1.0-draft
+    status: DRAFT_AWAITING_F13  # 2026-10-01 · written by FI-008
+    capability_map: /root/AAA/registries/AFORGE_CAPABILITY_MAP.json
+    capability_map_version: 0.1.0-draft
+    boot_fingerprint_probe: true
+    cold_substrate_by_default: true
+    ingress: AAA citizenship => A-FORGE competency
   protected_actions:
   - force_push
   - destructive_delete

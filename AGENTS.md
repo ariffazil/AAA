@@ -50,6 +50,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Universal Agent Relationship Constitution | `/root/AAA/instructions/universal-agent-relationship-constitution.md` | F13_RATIFIED_CHAT |
 | RBA-PROOF-001 Mission | `/root/AAA/proof/rba-proof-001/` (8 artifacts) | PARTIAL verdict |
 | **Anti-HARAM Behavior Canonical** | `/root/AAA/instructions/anti-haram-behavior-canonical.md` | **F13_RATIFIED_CHAT** |
+| **A-FORGE Citizen Contract** | `/root/AAA/instructions/aforge-citizen-contract.md` + map `/root/AAA/registries/AFORGE_CAPABILITY_MAP.json` + binding `ROOT_AGENT_CONFIG.yaml::forge_citizenship_contract` | **DRAFT_AWAITING_F13 (2026-10-01)** — written by FI-008. Inherited citizenship competency: AAA citizenship ⇒ A-FORGE competency (not merely configured). 7 proposed verb classes (forge_inspect/plan/change/run/verify/extend/control). Verb names + promotion criteria + eval threshold + failure-degradation policy = F13-class. Mechanism (binding + capability_map + fingerprint probe + eval harness) = reversible work, executable now. Adapter renderers should inject on session boot. |
 | **Cognitive Cost Transfer — 5 EUREKAs** | `/root/AAA/instructions/cognitive-cost-transfer-eurekas.md` | **F13_RATIFIED_CHAT** |
 | **Memory Promotion Gate (Witness ≠ Seal ≠ Memory)** | `/root/AAA/instructions/memory-promotion-gate.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
 | **Institutional Memory Strata (S0–S3)** | `/root/AAA/instructions/institutional-memory-strata.md` | **F13_RATIFIED_CHAT (2026-09-11)** |
