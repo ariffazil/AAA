@@ -45,6 +45,6 @@ arifFLOW sits **under** execution. It is the membrane, not a pillar.
 | handover.log | clerk death certificates (telemetry/) |
 | arifFLOW | metabolism of consequences |
 
-`FLOW_GRAPH` / `EVOLUTION_GRAPH` is **not minted**. Architect lock 2026-08-18: Phase 7 doctrine SEALED, implementation **queued +30d**. Live edges = `receipts.jsonl`.
+`FLOW_GRAPH` (topology view) is **MINTED** 2026-10-02 (F13 SAH) at `/root/arifFlow/FLOW_GRAPH.json`. `EVOLUTION_GRAPH` and the metabolism-derived graph remain queued; the 2026-08-18 architect lock was lifted for the topology view only. Live edges = `receipts.jsonl`.
 
 Hermes discovers → reports → dies. The institution learns. Option C if Hermes writes ledgers = VOID.
