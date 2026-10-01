@@ -3,7 +3,7 @@
   "version": "0.1.0-draft",
   "agent_id": "FI-008",
   "canonical_name": "kimi-code",
-  "snapshot_at": "2026-10-01T12:55:00Z",
+  "snapshot_at": "2026-10-01T12:58:00Z",
   "snapshot_reason": "E3 HOLD demo + FRAME independent witness",
   "identity": {
     "canonical_name": "kimi-code",
@@ -62,7 +62,7 @@
     "k_af": 0,
     "selection_accuracy": 1.0,
     "verified_tasks": 2,
-    "last_observed": "2026-10-01T12:55:00Z",
+    "last_observed": "2026-10-01T12:58:00Z",
     "status": "UNVERIFIED",
     "status_basis": "no eval results yet",
     "e1_evidence": {
@@ -213,13 +213,12 @@
       "S_verified not yet independently witnessed (W floor still 0)"
     ],
     "next_observation_target": "E6 (independent verify using FRAME specifically) + E7 (experience feedback)",
-    "sovereign_gated_count": 5,
+    "sovereign_gated_count": 4,
     "sovereign_gated_items": [
-      "ACT-HMAC key issuance (sovereign ratification needed)",
-      "arifOS verdict envelope reconcile (kernel-level)",
-      "21 deployment (fresh VPS provisioning)",
-      "E4 + E7 eval completion (blocked by ACT-HMAC)",
-      "FI-008 trust_tier UNVERIFIED to VERIFIED static-registry update"
+      "ACT-HMAC key issuance (F13 binary A vs B decision needed)",
+      "arifOS verdict envelope reconcile (kernel-level; if A chosen, can share restart window)",
+      "21 deployment (fresh VPS provisioning, separate session)",
+      "E4 + E7 eval completion (blocked by ACT-HMAC)"
     ]
   },
   "arif_os_verdict_envelope_finding": {
@@ -282,6 +281,16 @@
       },
       "observation": "Static registry is stale (last_seen 2026-06-29 \u2014 4 months old). Runtime state says FI-008 IS verified. The registry file is a snapshot of registration state, not runtime state. Self-promotion via editing agent_identities.json would violate Canon #1 (Capability != Authority; do not grant self authority). Documented as substrate inconsistency for sovereign review.",
       "recommended_action": "sovereign or sovereign-authorized agent updates agent_identities.json trust_tier for FI-008 from UNVERIFIED to VERIFIED based on runtime verification evidence (Ed25519 sig confirms). Or arifOS process could re-export registry state on session binding."
+    }
+  },
+  "closed_by_design": {
+    "item_5_fi008_trust_tier": {
+      "closed_at": "2026-10-01T12:58:00Z",
+      "closed_by": "Arif F13 directive (forwarded critique 2026-10-01)",
+      "rationale": "identity_band_authority() in act_token.py gives LIMITED_MUTATE for verified non-sovereign regardless of signature_verified. FI-008 is an agent (not sovereign); runtime gives LIMITED_MUTATE which is the correct ceiling. Static agent_identities.json trust_tier=UNVERIFIED is a stale registration snapshot, not a real gap.",
+      "runtime_state_confirmed": "LIMITED_MUTATE per arif_init response 2026-10-01T11:39:37Z",
+      "m_min_A_floor": "1.0 (session_token + lease_id present)",
+      "action": "NO FURTHER ACTION. Working as designed. Static registry refresh is not sovereign-gated if it does not change effective authority."
     }
   }
 }
