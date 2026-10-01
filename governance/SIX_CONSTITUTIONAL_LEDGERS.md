@@ -36,7 +36,7 @@ Runtime inherits reality (Agent consumes minted ledgers).
 
 Plane topology, metabolism cycle, and phase calendar (3C now → 8 at +45d):  
 `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
-`FLOW_GRAPH.json` is **not minted**. Phase 7 is queued. Do not invent it.
+`FLOW_GRAPH.json` (topology view) is **MINTED** 2026-10-02 (F13 SAH) at `/root/arifFlow/FLOW_GRAPH.json`. Phase 7's metabolism-derived graph remains queued — do not invent that one.
 
 ---
 

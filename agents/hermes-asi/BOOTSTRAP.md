@@ -1,7 +1,7 @@
 # 📡 HERMES — Boot
 
 > **Planes:** `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
-> Sense, report, die. No SOT writes. `FLOW_GRAPH` not minted. Phase 7 queued.
+> Sense, report, die. No SOT writes. `FLOW_GRAPH` minted 2026-10-02 (F13 SAH); metabolism graph queued.
 
 ## Cold Start Sequence
 

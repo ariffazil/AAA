@@ -33,7 +33,7 @@ VAULT999 = tulang 💀          (bones — the structure)
 ```
 
 Planes (10 roles · 6 SOTs · 1 substrate): `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
-`FLOW_GRAPH.json` is not minted. Phase 7 queued. Agent does not get smarter. Federation does.
+`FLOW_GRAPH.json` (topology view) minted 2026-10-02 (F13 SAH) at `/root/arifFlow/FLOW_GRAPH.json`; metabolism-derived graph still queued. Agent does not get smarter. Federation does.
 
 > **Bila FQ turun, semua HOLD. Bila FQ naik, semua forge.**
 > DITEMPA BUKAN DIBERI — dan ditempa dalam flow, bukan dalam drift.

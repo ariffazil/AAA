@@ -96,7 +96,7 @@ Right word, right work — floors that actually floor:
 | R8 | **GRAMMAR_DOCTRINE T4.3** — qualia wiring unbuilt; do not declare §10 ratified until green | `governance/GRAMMAR_DOCTRINE.md`:256 | |
 | R9 | **PETRONAS vitals data hygiene** | carry_forward next_session | |
 | R10 | **Identity Layer — attention-graph frontier** — the node that does not yet exist in arifOS; cross-session attention continuity = Phase 2 | `instructions/attention-graph.md`:158,248,279 | The true "future agents runtime" build |
-| R11 | **FLOW_GRAPH.json minting** — zen.md Phase 7 queued | `instructions/zen.md`:36 | |
+| R11 | **FLOW_GRAPH.json minting** — DONE 2026-10-02 (F13 SAH; topology view at `/root/arifFlow/FLOW_GRAPH.json`); metabolism-derived graph still queued | `instructions/zen.md`:36 | closed |
 | R12 | **A-FORGE `requires_boundary_verification` daemon patch** — encoded in workshop schema, daemon not patched (ACL) | `canon/EUREKA-SESSION-2026-09-KVM8.md`:40 | |
 | R13 | **WELL ACS / Reality Explanation Score** — specified, not implemented; do not fake an organ until F13 opens WELL | same file:38 | |
 

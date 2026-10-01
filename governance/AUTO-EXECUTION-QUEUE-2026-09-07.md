@@ -16,6 +16,6 @@
 | 9 | **RBA Phase 1** T09–T16 (G10 first; counterparty registry G2 organ; G8 multi-KPI) | AAA/A-FORGE | none (shadow) | RBA-PROOF artifacts |
 | 10 | **Others' dirty repos**: arifOS (`apex_collapse_trigger.py`), GEOX (2 files) — authors or next session | git | none | clean trees |
 | 11 | **i-AZWA**: kernel↔card reconciliation (18 sections ↔ card fields) + Azwa F13 seal gate | AAA cards | F13-Azwa (her lane) | `sealed_at` non-null |
-| 12 | **Long arc**: Meaning/Identity Layer (attention-graph §12b Phase 3), FLOW_GRAPH.json (zen Phase 7), APEX.lean sorries, G-score pathology loop | per map R-layer | per map | per map |
+| 12 | **Long arc**: Meaning/Identity Layer (attention-graph §12b Phase 3), ~~FLOW_GRAPH.json (zen Phase 7)~~ DONE 2026-10-02 (SAH, topology view), APEX.lean sorries, G-score pathology loop | per map R-layer | per map | per map |
 
 *Ratified doctrine set: REFLEX-VS-COURT · FED-EUREKA-DISTILLATION · ZEN-CARD (+ map, unsealed reference). F13 chat directive 2026-09-07. DITEMPA BUKAN DIBERI.*

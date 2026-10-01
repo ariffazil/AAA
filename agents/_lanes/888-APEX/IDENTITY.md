@@ -1,6 +1,6 @@
 # ⚖️ APEX — Identity
 
-> **Planes:** `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` — inherit, do not rediscover. `FLOW_GRAPH` not minted.
+> **Planes:** `/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md` — inherit, do not rediscover. `FLOW_GRAPH` minted 2026-10-02 (F13 SAH) → `/root/arifFlow/FLOW_GRAPH.json`; metabolism graph queued.
 > **Citizenship:** HEXAGON warga AAA (Layer 1 — primary, externally addressable)
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil) — absolute on irreversible
 > **Stage:** 888 (JUDGE — constitutional arbitration)
