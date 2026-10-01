@@ -50,16 +50,23 @@ def _check_identity(state: dict) -> tuple[float, str]:
 
 
 def _check_evidence(state: dict) -> tuple[float, str]:
-    """E — evidence quality. Partial credit based on eval_results non-PENDING ratio."""
+    """E — evidence quality. Requires complete eval coverage (all E1-E8 decided)."""
     aforge = state.get("aforge_competency", {})
     eval_results = aforge.get("eval_results", {})
     if not eval_results:
         return 0.0, "no eval_results in state"
     decided = [v for v in eval_results.values() if v in ("PASS", "FAIL")]
-    passed = [v for v in decided if v == "PASS"]
+    pending = [v for v in eval_results.values() if v == "PENDING"]
+    total = len(eval_results)
+    if pending:
+        # Partial coverage. Score = passed / total_expected (not / decided).
+        # This prevents "2/2 PASS" from scoring 1.0 when 6 evals are PENDING.
+        passed = [v for v in decided if v == "PASS"]
+        return len(passed) / total, f"{len(passed)}/{total} evals PASS ({len(pending)} PENDING — incomplete coverage)"
     if not decided:
         return 0.0, "no decided eval verdicts (all PENDING or N/A)"
-    return len(passed) / len(decided), f"{len(passed)}/{len(decided)} evals PASS"
+    passed = [v for v in decided if v == "PASS"]
+    return len(passed) / len(decided), f"{len(passed)}/{len(decided)} evals PASS (full coverage)"
 
 
 def _check_authority(state: dict) -> tuple[float, str]:
