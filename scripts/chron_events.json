@@ -1,6 +1,6 @@
 {
   "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
-  "_updated": "2026-09-30",
+  "_updated": "2026-10-01",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
@@ -335,6 +335,32 @@
       "consequence": "MEDIUM",
       "actionability": "MONITOR",
       "note": "Tracker-verified morning run: 05:18-07:08 MYT, 37.2 km, 1h50m, avg 20.2 km/h, 5.0 L, start/end Neu Suites. Run executed after a night of no sleep due to gas. Distance exceeds the 28 km map estimate \u2014 the map understates the real route. Logged at /root/memory/people/SYED/nasi-lemak-ops-log.md. Follow-up to watch: sleep quality the night before vs whether the run happens next morning."
+    },
+    {
+      "id": "sabah-collapse-model-test-2027q1",
+      "title": "Sabah collapse-model falsification window: predictions from trf_clm_5/6 \u2014 (1) first trough-axis well/basalt search finds NO <10 Ma basalt or magnetic lineation; (2) extension rate decreases distally from shelf-slope break (restoration test); (3) Rotan-1 DSG tops confirm SRU cand-A (NN11/NN10 boundary) vs cand-B (base NN10A) \u2014 decides SENJA age; (4) heat-flow/Curie under trough shows no axial anomaly",
+      "target_date": "2027-03-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003 T8 (kinabalu project close-out 2026-09-30)",
+      "confidence": "PREDICTED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "If (1) fails \u2014 basalt/lineation found \u2014 gravitational-collapse model is challenged and spreading-center revives. If (3) picks cand-B, SRU is inside NN10 and REDUP/SENJA ladder re-ties. Registry: /opt/geox nw_borneo_collision_system + sabah_trough trf_clm_5/6. Trace trace-5b295ce212f74cbf."
+    },
+    {
+      "id": "hermes-overlay-arif-route-wire-2026-10-01",
+      "title": "F13 binary pending: Wire mode_first_gate overlay to arif_route intent_canon (port 8088) as primary classifier, heuristic as degraded fallback",
+      "target_date": "2026-10-15",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "REGULATORY_WINDOW",
+      "source": "FI-008 audit 2026-10-01 /root/AAA/audit/hermes-md-telegram-2026-10-01",
+      "confidence": "TENTATIVE",
+      "consequence": "MEDIUM",
+      "actionability": "PREPARE",
+      "note": "Audit findings (N=1062): plugin heuristic produces UNKNOWN at 99.7% rate. Engine intent canon (Patch C at commit 1243fccbd7) is authoritative but plugin overwrites it for gate decisions. Wire overlay to call arif_route first, fall back to heuristic on timeout/error. KNOWN SCAR acknowledged in plugin docstring 2026-10-01."
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

@@ -48,6 +48,35 @@ def _recurrence(store: dict) -> dict:
     return dict(sorted(counts.items(), key=lambda kv: -kv[1]))
 
 
+def _recurrence_normalized(store: dict) -> dict:
+    """Recurrence normalized by total atom count.
+
+    Bug-fix 2026-09-30 (cron-research): raw recurrence inflated as the federation
+    added more capability atoms, producing false-positive "+5500% regression"
+    headlines. The numerator (failure_surfacing) rose BECAUSE the denominator
+    (atom_count) grew, not because anything regressed. The normalized ratio
+    surfaces real rate changes while hiding natural growth.
+
+    Formula: rate(pattern) = sum(frequency for pattern) / len(store)
+    Floor:   rate < 0.05  = baseline noise (skip)
+    Ceiling: rate > 0.50  = real regression (alert)
+    """
+    if not store:
+        return {}
+    total = len(store)
+    raw = _recurrence(store)
+    return {
+        k: {
+            "count": v,
+            "rate": round(v / total, 4),
+            "band": "REGRESSION" if v / total > 0.50
+                    else "BASELINE_NOISE" if v / total < 0.05
+                    else "NORMAL"
+        }
+        for k, v in raw.items()
+    }
+
+
 def run(window_days: int = 7, dry_run: bool = False) -> dict:
     """One cycle. Holds the state lock — two writers against one state is how
     baselines get silently moved and a consequence verdict gets invalidated."""
@@ -198,6 +227,7 @@ def _run_locked(window_days: int, dry_run: bool) -> dict:
         "measurement": meas,
         "consequence": {"summary": cons, "rows": cons_rows},
         "recurrence": _recurrence(store),
+        "recurrence_normalized": _recurrence_normalized(store),
         "capability_graph": {
             "nodes": len(g["nodes"]),
             "median_fitness": ranking["median_fitness"],
@@ -342,6 +372,20 @@ def human_summary(out: dict) -> str:
     if r["recurrence"]:
         top = list(r["recurrence"].items())[:4]
         lines.append("  recurrence: " + ", ".join(f"{k}={v}" for k, v in top))
+    # Normalized bands — show REGRESSION only, suppress BASELINE_NOISE.
+    # Patch 2026-09-30 (cron-research): kill false-positive "+5500%" headlines
+    # by surfacing rate (count/atom_total) instead of raw counts.
+    norm = r.get("recurrence_normalized") or {}
+    if norm:
+        regression = [(k, v) for k, v in norm.items() if v.get("band") == "REGRESSION"]
+        if regression:
+            lines.append("  recurrence_normalized (REGRESSION band only):")
+            for k, v in regression[:4]:
+                lines.append(f"    {k}: rate={v['rate']:.4f}  count={v['count']}")
+        else:
+            top_normal = list(norm.items())[:3]
+            lines.append("  recurrence_normalized: " +
+                         ", ".join(f"{k}={v['rate']:.3f}({v['band']})" for k, v in top_normal))
     return "\n".join(lines)
 
 

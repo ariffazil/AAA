@@ -47,26 +47,66 @@ from fastmcp import FastMCP
 # ── Zen Priority Matrix ───────────────────────────────────────────────
 # ── BL12 calibration gate helper (F13 SAH 2026-09-30) ─────────────────────
 _CALIB_FILE = "/root/chron/data/calibration_per_actor.json"
-_CALIB_CACHE = {"t": 0.0, "adv": {}}
+_CALIB_CACHE = {"t": 0.0, "idx": {}, "rows": 0, "matched": 0, "penalized": 0,
+                "unmatched": 0, "error": None}
+
+
+def _actor_key(raw) -> str:
+    """Comparison key only — never surfaced as an identity.
+
+    Case-folded, hyphen-stable, lane-root rolled up so producer and consumer share ONE
+    vocabulary. Closes two real defects: routing receives '333-AGI' while the producer
+    emits '333-agi' (exact-dict lookup failed on CASE ALONE), and a lane sub-vehicle like
+    '333-AGI/FI-003' must count as its lane root, not as a stranger. Mirrors
+    chron_attribution._normalize/_lane_root; that module is the durable owner once branch
+    c37ec4d reaches master.
+    """
+    s = ("" if raw is None else str(raw)).strip().lower().replace("_", "-").replace("\u2013", "-")
+    return s.split("/")[0] if "/" in s else s
 
 
 def _bl12_agent_penalty(agent_id: str) -> float:
     """REDUCE_WEIGHT advisory -> priority penalty (15pts) on all routes for that
     actor until calibration recovers to |bias|<=0.08. F7: n<8 never punished.
     Advisory source: bl02_calibration_curves.py (routing_advisory_bl12).
-    DORMANT by design — zero effect until data trips the threshold."""
+
+    Fires only when BOTH hold: (1) the producer emitted REDUCE_WEIGHT from MEASURED
+    confidence at n>=8, and (2) the incoming agent_id resolves to that actor's declared
+    routing keys. An unroutable row (the UNATTRIBUTED bucket) is unreachable by
+    construction. Before 2026-10-01 this compared raw producer keys against raw caller ids
+    in two disjoint namespaces, so it could not fire for any actor — "DORMANT by design"
+    was a keyspace defect, and the silence read as health. The counters below keep
+    'known actor, no penalty' distinguishable from 'the vocabularies still do not meet'.
+    """
     now = time.time()
     if now - _CALIB_CACHE["t"] > 300:
         try:
             with open(_CALIB_FILE, encoding="utf-8") as fh:
                 _d = json.load(fh)
-            _CALIB_CACHE["adv"] = {
-                a: str(c.get("routing_advisory_bl12", "")) for a, c in (_d.get("per_actor") or {}).items()
-            }
-        except Exception:
-            _CALIB_CACHE["adv"] = {}
+            idx = {}
+            for actor, c in (_d.get("per_actor") or {}).items():
+                if not isinstance(c, dict) or not c.get("routable", True):
+                    continue
+                adv = str(c.get("routing_advisory_bl12") or "")
+                for k in list(c.get("routing_keys") or []) + [actor]:
+                    idx.setdefault(_actor_key(k), adv)
+            _CALIB_CACHE["idx"] = idx
+            _CALIB_CACHE["rows"] = len(idx)
+            _CALIB_CACHE["error"] = None
+        except Exception as e:
+            _CALIB_CACHE["idx"] = {}
+            _CALIB_CACHE["rows"] = 0
+            _CALIB_CACHE["error"] = type(e).__name__
         _CALIB_CACHE["t"] = now
-    return 15.0 if _CALIB_CACHE["adv"].get(agent_id, "").startswith("REDUCE_WEIGHT") else 0.0
+    key = _actor_key(agent_id)
+    if key in _CALIB_CACHE["idx"]:
+        _CALIB_CACHE["matched"] += 1
+        if _CALIB_CACHE["idx"][key].startswith("REDUCE_WEIGHT"):
+            _CALIB_CACHE["penalized"] += 1
+            return 15.0
+        return 0.0
+    _CALIB_CACHE["unmatched"] += 1
+    return 0.0
 
 
 class RankGate:
@@ -344,6 +384,17 @@ async def fed_health(_request):
             "mcp": "/mcp",
             "class": "route_advisor",
             "ceiling": "never judges, never hard-blocks",
+            "bl12": {
+                "routing_keys_known": _CALIB_CACHE["rows"],
+                "lookups_matched": _CALIB_CACHE["matched"],
+                "penalties_applied": _CALIB_CACHE["penalized"],
+                "lookups_unmatched": _CALIB_CACHE["unmatched"],
+                "load_error": _CALIB_CACHE["error"],
+                "state": (
+                    "ERROR" if _CALIB_CACHE["error"] else
+                    ("VOCABULARY_GAP" if _CALIB_CACHE["rows"] == 0 else "ARMED")
+                ),
+            },
             "tools": [
                 "fed_route",
                 "fed_classify",
