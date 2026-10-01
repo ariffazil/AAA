@@ -187,3 +187,17 @@ evidence/**/*verbatim*
 forge_work/**/*-syed-*/
 forge_work/**/*gerd*
 forge_work/**/*-medical*/
+
+# Identity/credential quarantine (private keys never tracked)
+/IDENTITY/keys/.quarantine-*/
+/IDENTITY/keys/*/qwen-code_*
+
+# Skill scaffold output (rebuildable from source)
+skills/entropy-metabolizer/output/
+skills/entropy-metabolizer/examples/
+skills/entropy-metabolizer/protocols/
+skills/entropy-metabolizer/templates/
+
+# AAA scratch + tests artifacts
+scratch/
+tests/test_bl12_keyspace.py
