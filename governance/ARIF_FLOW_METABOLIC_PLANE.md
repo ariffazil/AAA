@@ -6,7 +6,7 @@
 > **Anchor:** handover.log grok seal — `FLOW_GRAPH not minted`
 > **Core Axiom:** *"The final role of arifFLOW is not to run the agents. It is to remember the consequences of running them."*
 
-This file is the plane SOT. `ORGAN.md` + `organs.yaml` remain the organ map. Do not invent a third map. Do not mint `FLOW_GRAPH.json`.
+This file is the plane SOT. `ORGAN.md` + `organs.yaml` remain the organ map. Do not invent a third map. The 2026-08-18 "do not mint FLOW_GRAPH.json" lock was **LIFTED by F13 SAH 2026-10-02**: topology+flow view minted at `/root/arifFlow/FLOW_GRAPH.json` (sha256 19373e1a0dde…). The metabolism-derived graph remains queued below.
 
 ---
 
@@ -50,7 +50,7 @@ Live stream: `/var/lib/arifflow/receipts.jsonl`
 Health truth for hero/doctor: `GET :7073/health` (`vector.diagnosis`).  
 Clerks consume `state.json`. Do not curl FLOW at init.
 
-`FLOW_GRAPH` / `EVOLUTION_GRAPH` — **queued Phase 7. Not minted. Do not invent the file.**
+`FLOW_GRAPH` — **MINTED 2026-10-02 (F13 SAH)** at `/root/arifFlow/FLOW_GRAPH.json`: topology+flow view measured from organs.yaml + code sweep + first-party probes; provenance inside the file. `EVOLUTION_GRAPH` — still queued, not minted. Boot cards quoting "FLOW_GRAPH not minted" are superseded by this line.
 
 ---
 
@@ -84,7 +84,7 @@ Agent does not get smarter. Federation gets smarter.
 | +7d | **4A** | `TOOLS.json` forge (quarantine draft ready) | F13 ratification |
 | +14d | **5A** | `SKILLS.json` forge (recipes + requires_*) | F13 |
 | +21d | **6** | Harness patches (SessionStart consults 6 SOTs) | F13 |
-| +30d | **7** | Knowledge graph begins (JSONL → FLOW_GRAPH) | **QUEUED — do not mint** |
+| +30d | **7** | Knowledge graph begins (JSONL → FLOW_GRAPH) | **TOPOLOGY MINTED 2026-10-02 (F13 SAH)** → `/root/arifFlow/FLOW_GRAPH.json`; JSONL→edges metabolism graph still queued |
 | +45d | **8** | First Proposal Clerk (PR only, halt at 888) | F13 |
 
 ### Closed
@@ -93,7 +93,7 @@ Agent does not get smarter. Federation gets smarter.
 
 ### F13 remaining — do not freelance
 
-A. Phase 4A mint · B. Phase 5A SKILLS.json · C. Phase 6 harness patches · D. Phase 7 FLOW_GRAPH · E. Phase 8 Proposal Clerk
+A. Phase 4A mint · B. Phase 5A SKILLS.json · C. Phase 6 harness patches · D. ~~Phase 7 FLOW_GRAPH~~ **DONE 2026-10-02 (SAH)** · E. Phase 8 Proposal Clerk
 
 Option C (agent writes ledgers) = VOID. Option B only.
 

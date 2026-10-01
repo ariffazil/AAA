@@ -344,7 +344,7 @@ components:
       - routes/checkpoints/witnesses; never judges; never executes
       - plane SOT: /root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md
       - live edges: /var/lib/arifflow/receipts.jsonl
-      - FLOW_GRAPH.json not minted — Phase 7 queued (architect lock 2026-08-18)
+      - FLOW_GRAPH.json MINTED 2026-10-02 (F13 SAH) at /root/arifFlow/FLOW_GRAPH.json — topology+flow view; architect lock 2026-08-18 lifted; metabolism-derived graph (receipts -> edges) still queued
 
   - id: signal
     class: CORE
