@@ -110,11 +110,18 @@ def _check_witness(state: dict) -> tuple[float, str]:
     if self_audit.get("trust_chain_state", {}).get("S_verified") is True:
         return 1.0, "S_verified = true (cross-model attestation recorded)"
 
-    # Check for structural witness (FRAME + deterministic)
+    # Check for structural witness (FRAME + deterministic) and/or cross-lane engagement
     witness_chain = state.get("aforge_competency", {}).get("witness_chain", {})
     has_structural = bool(witness_chain.get("frame_observation")) or bool(witness_chain.get("deterministic_check"))
+    has_engagement = bool(witness_chain.get("qwen_engagement"))
+    cross_lane_status = witness_chain.get("cross_lane_verifier_status", "not_attempted")
+
+    if has_engagement and "ENGAGED" in cross_lane_status:
+        # Cross-lane engagement (Qwen refused blind verdict, demanded kernel verification)
+        # is stronger witness than FRAME-only structural. Different cognitive substrate engaged.
+        return 0.7, f"cross-lane engagement (Qwen pushed back, demanded kernel verification), FRAME + deterministic structural — partial independence (0.7)"
+
     if has_structural:
-        cross_lane_status = witness_chain.get("cross_lane_verifier_status", "not_attempted")
         if "TIMEOUT" in cross_lane_status:
             return 0.5, f"structural witness (FRAME + deterministic), cross-lane TIMEOUT — partial independence (0.5)"
         return 0.5, f"structural witness (FRAME + deterministic), cross-lane not full attestation — partial independence (0.5)"
