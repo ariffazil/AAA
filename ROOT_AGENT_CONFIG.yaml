@@ -37,6 +37,9 @@ root_policy:
     competency_evals: /root/AAA/instructions/aforge-competency-evals.md
     competency_test_dir: /root/AAA/tests/aforge-competency/
     competency_state_dir: /root/AAA/state/aforge/competency/
+    m_min_audit: /root/AAA/scripts/m_min_audit.py
+    m_min_metric: "(I · E · A · C · W · T)^(1/6) — weakest-link geometric mean"
+    m_min_routing: arif_judge  # any claim of M_min > 0 must be backed by per-dimension floor audit
     boot_fingerprint_probe: true
     cold_substrate_by_default: true
     truth_chain: declared -> callable -> competent -> verified
@@ -47,6 +50,15 @@ root_policy:
       - aforge_competency   (E1-E8 verdicts)
       - active_authority    (current lease + ceiling)
     ingress: AAA citizenship => A-FORGE competency (K_AF = R*A*E*V*L)
+    north_star:
+      metric: HumanLeverage = UsefulConsequences / HumanAttention
+      path: /root/AAA/instructions/human-leverage-north-star.md
+      above_all_others: true
+      gating_experiment: /root/AAA/forge_work/benchmarks/institutional-intelligence-survival-§21.md
+    binding_scars_2026_10_01:
+      - /root/AAA/scars/2026-10-01-complexity-must-not-exceed-leverage.md
+      - /root/AAA/scars/2026-10-01-same-model-different-prompt-not-independence.md
+      - /root/AAA/scars/2026-10-01-agent-turn-vs-institution-optimization.md
   protected_actions:
   - force_push
   - destructive_delete
