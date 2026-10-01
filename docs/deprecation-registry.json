@@ -337,6 +337,16 @@
         "/root/forge_work/2026-09-24-attest-plane-18081-root-cause.md"
       ],
       "reality_check": "ss: nothing listens on :18081 (2026-09-24); systemctl is-enabled=disabled; journalctl -u arifosd.service = 0 entries ever"
+    },
+    {
+      "id": "federation-models.json:providers/bailian-token-plan",
+      "type": "service",
+      "status": "SUPERSEDED_DUPLICATE",
+      "tombstone_date": "2026-10-01",
+      "reason": "Duplicate Qwen token-plan provider entry (same secrets::QWEN_API_KEY seat as qwen-token-plan) left on legacy host token-plan.ap-southeast-1.maas.aliyuncs.com. Canonical provider qwen-token-plan (token-plan.maas.qwencloudapi.com) superseded it during the 2026-10-01 host migration; all 9 routing references (5 models, qwen-code glm-5.2 A/B fallback, 3 model_routes rungs) repointed. Entry retained in SOT as tombstone with endpoint_url_legacy provenance.",
+      "superseded_by": "federation-models.json:providers/qwen-token-plan",
+      "registered_by": "FI-003",
+      "evidence": "live probe 2026-10-01: arifOS-seat /models HTTP 200 (26 ids) on canonical host; SOT validation 0 live-legacy endpoints, 0 tombstone references"
     }
   ],
   "deprecated_patterns": [
