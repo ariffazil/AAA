@@ -58,6 +58,14 @@ The MCP stack already IS the persona civilisational apparatus. This lens makes i
 3. **Shadow = cost of strength, not failure.** Run scaffold §4 shadow check before trusting any single lens (Keras Hati / Kawal via Kepedulian / Hancur tanpa Faham Nilai).
 4. **Always ask the missing-persona question (§8):** what can't this triad see?
 
+## Pitfalls (live, learned)
+
+5. **Triad is not the floor — the substrate is.** A triad probe that describes only the three cognitive functions, without mapping each to an arifOS verb (111/333/444/555/666/777/888/999) and a live MCP surface, is descriptive, not operational. The sovereign almost always asks next: "relate to AGI/ASI/APEX" or "where does this live in HERMES MCP". Default to producing both mappings in the same response — persona function → verb → organ → live tool. The MCP surface map in this skill is the cheat sheet. Pitfall: emitting "triad lens says X" without the substrate binding, then getting asked to repeat the same probe once the substrate is named.
+
+6. **888 Judge is not a persona gap — it is F13 territory.** A reader who notices "Judge" missing from the cognitive cycle will ask where it sits. The correct answer is: 888 lives above the triad as sovereign authority, not inside the persona function set. Steward of Interdependence (E13) is **not a fourth persona** — it is the federation stack `Observe → Verify → Deliberate → Authorise → Execute → Audit → Remember`. Resist the urge to invent a "4th persona" name when the answer is a protocol that already exists.
+
+7. **EUREKA-2026-09-17 has more than the triad.** E8 lists 12 triads, E11 maps Ostrom, E13 names the System Seer gap. When the sovereign says "tell me everything about the triad", they often mean the canonical triad AND the supporting 12-triad taxonomy AND the missing-persona question. Probe at least E8 and E13 before declaring the answer complete. Pitfall: stopping at E2 (the triad table) and missing the wider civilisational apparatus that gives the triad its force.
+
 ## Atlas333 persona crosswalk (E5 extension)
 
 Persona strength↔shadow pairs as paradox-axis tension vectors — consumable by `arifosmcp/resources/atlas333.py` via persona tags, no code changes needed:
