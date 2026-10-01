@@ -788,3 +788,40 @@ carry honest caveats rather than clean passes: Component 6 (scar-pressure retire
 in canary/register, not the ephemeral engine → PARTIAL sub-claim) and Component 7 (the "one graph" principle
 is verified and code-realized, but the spec document is past its self-declared valid_until by 69 days and
 cites one phantom audit path). No component was CLAIMED-BUT-NOT-FOUND.
+
+---
+
+## ADDENDUM — 2026-10-01 19:41 — attestation correction (F2 TRUTH)
+
+My §Hand-back attestation originally stated "git status confirmed A-FORGE tree clean before and after."
+On a final re-check that statement is NO LONGER ACCURATE and I correct it here rather than leave a
+misleading seal.
+
+OBSERVED (OBS): `git -C /root/A-FORGE status --porcelain` now reports ONE modified file:
+`M src/interfaces/mcp/policyTools.ts` (mtime 2026-10-01 19:40:35, +43/−22 lines). The diff is tagged
+in-code "S1 (F13 SAH 2026-10-01)" and rewrites `isExternalClient()` to require a VERIFIED credential
+instead of an asserted session_id/lease_id string — a session-gate trust fix.
+
+ATTRIBUTION (DER, high confidence): this modification is NOT from Lane 555c.
+  - I used Edit/Write on ZERO A-FORGE files. My only writes to A-FORGE paths were `grep` reads.
+  - The change landed at 19:40:35, the same minute I wrote my receipt, and is signed by a different
+    actor/lane ("S1 F13 SAH"). A concurrent writer is active on /root/A-FORGE main (corroborated by the
+    HEAD advance 237a7999→1af2ef9a I already logged in §10).
+  - policyTools.ts is NOT one of my eight verified components. It appears in my receipt only once, as a
+    listed consumer of affordances.yaml in Component 1's cross-check — I never hashed or verified it.
+
+VERIFIED-FILE INTEGRITY (OBS): all eight component files remain CLEAN and hash-STABLE across this event:
+  - affordances.yaml            cbe99c455e7c... (unchanged)
+  - experienceTraceTools.ts     dbba337fc774... (unchanged)
+  - EphemeralGenesis.ts         cf5fe9327b14... (unchanged)
+  - (and KERNEL_CAPABILITY_ABI.md, capability_registry.json, prompts.ts, ephemeralTools.ts,
+     AFORGE_TOOL_AUDIT_2026-09-15.md, CAPABILITY_GRAPH_v1.md, CAPABILITY_INDEX.json — none dirty.)
+  `git status --porcelain` on all eight paths returns EMPTY.
+
+CORRECTED ATTESTATION: No production artifact was mutated BY THIS LANE. The only file written by 555c is
+this receipt. A concurrent, separately-signed writer (S1/F13 SAH) modified an UNRELATED A-FORGE file
+(policyTools.ts) during my probe window; that change is not mine, does not touch any verified component,
+and is flagged here for the operator and for Lane 333b reconciliation. My verdicts (8/8 VERIFIED-ON-DISK)
+are unaffected — the eight files they rest on are byte-identical before and after the event.
+
+Receipt sha256 (post-addendum): see hand-back; recompute after this append.

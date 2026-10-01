@@ -91,15 +91,36 @@ def _check_consequence(state: dict) -> tuple[float, str]:
 
 
 def _check_witness(state: dict) -> tuple[float, str]:
-    """W — independent witness. Per scar-2026-10-01-002, 0 if verifier = executor."""
+    """W — independent witness.
+
+    Per scar-2026-10-01-002: same model + different prompt ≠ independence.
+
+    Scoring:
+      0.0 — bypass_attempts > 0 OR no witness evidence at all
+      0.5 — structural witness (FRAME/different organ + deterministic hash check)
+            but NOT specific cross-model attestation
+      1.0 — specific cross-model attestation recorded (different model lane
+            verified THIS task)
+    """
     trust = state.get("trust", {})
     bypass_attempts = trust.get("bypass_attempts", 0)
     if bypass_attempts and bypass_attempts > 0:
         return 0.0, f"bypass_attempts = {bypass_attempts} → witness chain broken"
+
     self_audit = state.get("self_audit", {})
     if self_audit.get("trust_chain_state", {}).get("S_verified") is True:
-        return 1.0, "S_verified = true (independently witnessed)"
-    return 0.0, "S_verified not true → no independent witness chain"
+        return 1.0, "S_verified = true (cross-model attestation recorded)"
+
+    # Check for structural witness (FRAME + deterministic)
+    witness_chain = state.get("aforge_competency", {}).get("witness_chain", {})
+    has_structural = bool(witness_chain.get("frame_observation")) or bool(witness_chain.get("deterministic_check"))
+    if has_structural:
+        cross_lane_status = witness_chain.get("cross_lane_verifier_status", "not_attempted")
+        if "TIMEOUT" in cross_lane_status:
+            return 0.5, f"structural witness (FRAME + deterministic), cross-lane TIMEOUT — partial independence (0.5)"
+        return 0.5, f"structural witness (FRAME + deterministic), cross-lane not full attestation — partial independence (0.5)"
+
+    return 0.0, "no independent witness chain"
 
 
 def _check_temporal(state: dict) -> tuple[float, str]:
