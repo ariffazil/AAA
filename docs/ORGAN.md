@@ -34,9 +34,9 @@
 
 Everything else is a **pointer**, **contract**, **runbook**, or **draft** — not a competing map.
 
-**Planes** (MCP, A2A, discovery, metabolism — not extra organs):  
-`/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`  
-`FLOW_GRAPH.json` is not minted. Phase 7 queued.
+**Planes** (MCP, A2A, discovery, metabolism — not extra organs):
+`/root/AAA/governance/ARIF_FLOW_METABOLIC_PLANE.md`
+`FLOW_GRAPH.json` MINTED 2026-10-02 (F13 SAH) at `/root/arifFlow/FLOW_GRAPH.json` — topology+flow view; metabolism-derived graph still queued.
 
 ---
 
