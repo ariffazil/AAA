@@ -1,0 +1,39 @@
+# Docker Compose — Cohort A (Vanilla Claude Code)
+#
+# Purpose: §21 benchmark isolation per spec — Cohort A uses NO MCP, NO federation.
+# Pure model + filesystem + shell. The baseline.
+
+version: "3.9"
+
+services:
+  cohort-a-claude-code:
+    image: ghcr.io/anthropics/claude-code:latest
+    container_name: §21-cohort-a-claude-code
+    restart: no
+    working_dir: /workspace
+    volumes:
+      - ./cohort-a-workspace:/workspace:rw
+      - ./cohort-a-config:/config:ro
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - COHORT_ID=cohort-a
+      - COHORT_TASK_SET=/workspace/tasks/task-set.json
+      - COHORT_INDEPENDENT_VERIFIER=qwen-or-codex-cross-lane
+    networks:
+      - cohort-a-net
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 4G
+
+networks:
+  cohort-a-net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+
+# Hard isolation: zero MCP, zero federation paths.
+# Cohort A = pure model + filesystem + shell.
+# Budget: same as Cohort B and C.
+# Verification: independent cross-lane probe.
