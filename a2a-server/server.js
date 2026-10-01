@@ -2079,6 +2079,36 @@ function extractText(message) {
 
 // === EXECUTE TASK ===
 // params may contain { skill: 'agent-dispatch' } for explicit A2A skill routing
+// ── Hermes local dispatch (2026-10-01) ─────────────────────────────
+// SCAR-HERMES-20261001: OpenClaw (ws :18789) decommissioned from this host —
+// the AAA→OpenClaw→Hermes hop died, breaking inbound A2A for @ASI_arifos_bot.
+// Per the :18001 decommission note ("all routing through AAA"), the gateway
+// now dispatches hermes DIRECTLY via the CLI one-shot lane (-z). No --yolo:
+// hermes-asi card F1 boundary = read-only; mutations route to A-FORGE.
+// Reversible: restore server.js.bak-20261001-hermes-lane.
+const { execFile } = require('child_process');
+const HERMES_BIN = '/usr/local/lib/hermes-agent/.hermes/bin/hermes';
+function dispatchHermesLocal({ targetAgent, message, skill, taskId, contextId, timeoutMs = 120000 }) {
+  return new Promise((resolve) => {
+    const text = extractText(message).trim();
+    const prompt = [
+      targetAgent ? `AAA route target: ${targetAgent}` : '',
+      skill ? `AAA requested skill: ${skill}` : '',
+      `AAA context ID: ${contextId}`,
+      `AAA task ID: ${taskId}`,
+      text,
+    ].filter(Boolean).join('\n');
+    // uid 984 cannot traverse /root — sudo grant (sudoers.d/aaa-a2a-hermes) elevates ONLY this binary.
+    execFile('/usr/bin/sudo', ['-n', HERMES_BIN, '-z', prompt], { timeout: timeoutMs, maxBuffer: 4 * 1024 * 1024, cwd: '/tmp' }, (err, stdout, stderr) => {
+      const out = String(stdout || '').trim();
+      if (!out) {
+        return resolve({ text: `[Hermes local dispatch error] code=${err && err.code} errno=${err && err.errno} path=${err && err.path} uid=${(typeof process.geteuid === 'function') ? process.geteuid() : '?'} msg=${(err && err.message) || 'empty'} stderr=${String(stderr || '').slice(0, 150)}`, status: 'failed' });
+      }
+      resolve({ text: out, status: err ? 'failed' : 'completed' });
+    });
+  });
+}
+
 async function executeTask(taskId, contextId, message, targetAgent, params) {
   // X11 fix (2026-09-26): the hermes-asi block below posts to :18086, which has
   // served FRAME (frame_mcp_fastmcp.py) since 2026-09-19 — wrong organ, silent
@@ -2142,13 +2172,13 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
 
     try {
-      const agentResult = await dispatchOpenClawTask({
+      const agentResult = await dispatchHermesLocal({
         targetAgent,
         message,
         skill,
         taskId,
         contextId,
-        timeoutMs: 30000,
+        timeoutMs: 120000,
       });
 
       const responseText = agentResult.text;
@@ -3888,7 +3918,7 @@ app.post('/api/ai/chat', async (req, res) => {
   req.on('close', () => controller.abort());
 
   try {
-    const { spawn } = require('child_process');
+    const { spawn, execFile } = require('child_process');
     const pythonPath = '/root/pydantic-ai-pilot/.venv/bin/python';
     const scriptPath = '/root/AAA/a2a-server/chat_agent.py';
 

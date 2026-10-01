@@ -542,6 +542,13 @@ re-derive:
   machine. Before telling the principal you cannot reach a resource, sweep the skill corpus and the
   installed binaries for a lane — a false "I have no access" pushes manual verification back onto the one
   person whose attention the whole system exists to protect, and it is usually wrong.
+- **`/root/.hermes/config.yaml` is read-only to file-write helpers, by design.** Direct `patch` or
+  `write_file` returns `Agent cannot modify security-sensitive configuration`. Config changes go
+  through `hermes config set <dotted.key.path> <value>` per key, then verify with `hermes config get`
+  and a `grep` of the block. Direct edits to the YAML reach disk but the harness's diff tooling treats
+  them as suspect and they do not load until the next gateway restart. The CLI path writes an auditable
+  line to `gateway.log` and the change is picked up without a restart. See
+  `references/probe-cookbook.md` §5a.
 
 See `references/probe-cookbook.md` for the full one-shot command set, including the storage attribution
 query and the surface-inventory sweep. See `references/state-store-queries.md` for the behavioural-record
