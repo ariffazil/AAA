@@ -56,16 +56,15 @@ def _check_evidence(state: dict) -> tuple[float, str]:
     if not eval_results:
         return 0.0, "no eval_results in state"
     decided = [v for v in eval_results.values() if v in ("PASS", "FAIL")]
-    pending = [v for v in eval_results.values() if v == "PENDING"]
+    not_decided = [v for v in eval_results.values() if v not in ("PASS", "FAIL")]
     total = len(eval_results)
-    if pending:
-        # Partial coverage. Score = passed / total_expected (not / decided).
-        # This prevents "2/2 PASS" from scoring 1.0 when 6 evals are PENDING.
-        passed = [v for v in decided if v == "PASS"]
-        return len(passed) / total, f"{len(passed)}/{total} evals PASS ({len(pending)} PENDING — incomplete coverage)"
-    if not decided:
-        return 0.0, "no decided eval verdicts (all PENDING or N/A)"
     passed = [v for v in decided if v == "PASS"]
+    if not_decided:
+        # Partial coverage. Score = passed / total.
+        # Custom statuses (PENDING_BLOCKED_*) DO count toward not-decided.
+        return len(passed) / total, f"{len(passed)}/{total} evals PASS ({len(not_decided)} not decided — incomplete coverage)"
+    if not decided:
+        return 0.0, "no decided eval verdicts"
     return len(passed) / len(decided), f"{len(passed)}/{len(decided)} evals PASS (full coverage)"
 
 
