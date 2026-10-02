@@ -11,6 +11,7 @@ against a header contract of >= 1.0.
 """
 
 import importlib.util
+import sys
 from pathlib import Path
 
 _SPEC = importlib.util.spec_from_file_location(
@@ -19,6 +20,7 @@ _SPEC = importlib.util.spec_from_file_location(
 )
 assert _SPEC is not None and _SPEC.loader is not None
 ap = importlib.util.module_from_spec(_SPEC)
+sys.modules.setdefault("attention_plane", ap)  # @dataclass resolves cls.__module__ via sys.modules
 _SPEC.loader.exec_module(ap)
 
 
