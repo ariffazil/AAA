@@ -12,7 +12,7 @@ Pipeline (per F13 2026-09-21):
 AAA does NOT:
   - Judge (that's arifOS)
   - Execute (that's A-FORGE)
-  - Witness (that's FRAME / VAULT999 / arifFlow)
+  - Witness (that's FRAME / VAULT999; arifFlow is metabolism, not witness)
   - Decide truth (that's HERMES / FRAME)
 
 AAA DOES:
@@ -60,6 +60,7 @@ ATTENTION_LEDGER = Path("/root/AAA/attention/ledger.jsonl")
 
 # ── Enums ───────────────────────────────────────────────────────────
 
+
 class AttentionClass(str, Enum):
     """The kind of attention the packet is requesting."""
 
@@ -93,6 +94,7 @@ class Override(str, Enum):
 
 # ── AttentionPacket dataclass ───────────────────────────────────────
 
+
 @dataclass
 class AttentionPacket:
     """Canonical machine-readable attention object (16 fields).
@@ -113,10 +115,10 @@ class AttentionPacket:
     deadline: str | None = None  # ISO 8601 or None
 
     # Multi-axis scoring (used by formula)
-    impact: float = 0.5             # 0.0–1.0
-    urgency: float = 0.5            # 0.0–1.0
-    uncertainty: float = 0.5        # 0.0–1.0 (higher = less certain)
-    reversibility: float = 0.5     # 0.0–1.0 (higher = more reversible)
+    impact: float = 0.5  # 0.0–1.0
+    urgency: float = 0.5  # 0.0–1.0
+    uncertainty: float = 0.5  # 0.0–1.0 (higher = less certain)
+    reversibility: float = 0.5  # 0.0–1.0 (higher = more reversible)
 
     # Evidence (HERMES contract)
     epistemic_state: EpistemicState = EpistemicState.OBSERVED
@@ -170,6 +172,7 @@ class AttentionPacket:
 
 # ── Priority formula ───────────────────────────────────────────────
 
+
 def _clamp(v: float, lo: float = 0.0, hi: float = 1.0) -> float:
     return max(lo, min(hi, v))
 
@@ -189,7 +192,8 @@ def compute_priority(
     Formula:
         P = (Impact × Urgency × EvidenceQuality × Novelty) / AttentionCost
 
-    EvidenceQuality = (1 - Uncertainty) × Reversibility
+    EvidenceQuality = (1 - Uncertainty)   # F13 2026-09-25: source+freshness+support ONLY
+    ActionRisk = f(reversibility, blast radius) — separate gate, NEVER folded into P
 
     Hard overrides (force P = ∞ for must-show):
       - authority_violation, security_breach, deadline_expiry,
@@ -200,17 +204,17 @@ def compute_priority(
     """
     applied: list[str] = []
 
-    # F1 AMANAH — attention_cost cannot be zero (would yield ∞)
-    cost = max(attention_cost, 0.01)
+    # F1 AMANAH — attention_cost ≥ 1.0 (module header contract; the 0.01 clamp was drift)
+    cost = max(attention_cost, 1.0)
 
-    evidence_quality = (1.0 - _clamp(uncertainty)) * _clamp(reversibility)
+    # PR-1 ATTENTION-TRUTH (2026-10-02, 333-AGI): EvidenceQuality excludes Reversibility.
+    # Reversibility belongs to ActionRisk (irreversibility_floor override / human surfacing),
+    # never to evidence strength — a well-evidenced irreversible action keeps high evidence
+    # quality AND still routes to the human via the ActionRisk gate. Aligns runtime with
+    # README L151 F13 ruling of 2026-09-25 (reversibility was double-counted).
+    evidence_quality = 1.0 - _clamp(uncertainty)
 
-    numerator = (
-        _clamp(impact)
-        * _clamp(urgency)
-        * _clamp(evidence_quality)
-        * _clamp(novelty)
-    )
+    numerator = _clamp(impact) * _clamp(urgency) * _clamp(evidence_quality) * _clamp(novelty)
 
     p = numerator / cost
 
@@ -234,6 +238,7 @@ def compute_priority(
 
 
 # ── CHRON integration ──────────────────────────────────────────────
+
 
 def fetch_chron_attention_debt() -> dict[str, Any]:
     """Pull CHRON's temporal urgency inputs via MCP.
@@ -261,10 +266,18 @@ def fetch_chron_attention_debt() -> dict[str, Any]:
         # Initialize CHRON MCP session
         init_req = urllib.request.Request(
             f"{CHRON_URL}/mcp",
-            data=json.dumps({"jsonrpc": "2.0", "id": 1, "method": "initialize",
-                              "params": {"protocolVersion": "2025-06-18",
-                                         "capabilities": {},
-                                         "clientInfo": {"name": "attention_plane", "version": "1.0"}}}).encode(),
+            data=json.dumps(
+                {
+                    "jsonrpc": "2.0",
+                    "id": 1,
+                    "method": "initialize",
+                    "params": {
+                        "protocolVersion": "2025-06-18",
+                        "capabilities": {},
+                        "clientInfo": {"name": "attention_plane", "version": "1.0"},
+                    },
+                }
+            ).encode(),
             headers={"Content-Type": "application/json", "Accept": "application/json, text/event-stream"},
             method="POST",
         )
@@ -275,10 +288,19 @@ def fetch_chron_attention_debt() -> dict[str, Any]:
         # Call chron_temporal_briefing — the canonical temporal context source
         call_req = urllib.request.Request(
             f"{CHRON_URL}/mcp",
-            data=json.dumps({"jsonrpc": "2.0", "id": 2, "method": "tools/call",
-                              "params": {"name": "chron_temporal_briefing", "arguments": {}}}).encode(),
-            headers={"Content-Type": "application/json", "Accept": "application/json, text/event-stream",
-                      "Mcp-Session-Id": sid},
+            data=json.dumps(
+                {
+                    "jsonrpc": "2.0",
+                    "id": 2,
+                    "method": "tools/call",
+                    "params": {"name": "chron_temporal_briefing", "arguments": {}},
+                }
+            ).encode(),
+            headers={
+                "Content-Type": "application/json",
+                "Accept": "application/json, text/event-stream",
+                "Mcp-Session-Id": sid,
+            },
             method="POST",
         )
         with urllib.request.urlopen(call_req, timeout=5) as resp:
@@ -316,6 +338,7 @@ def fetch_chron_attention_debt() -> dict[str, Any]:
 
 # ── HERMES integration ─────────────────────────────────────────────
 
+
 def fetch_hermes_evidence(subject: str) -> dict[str, Any]:
     """Pull HERMES's claim/provenance/contradiction metadata via MCP.
 
@@ -341,6 +364,7 @@ def fetch_hermes_evidence(subject: str) -> dict[str, Any]:
     try:
         # Import the deterministic classifier directly (already deployed)
         import sys as _sys
+
         hermes_path = "/root/HERMES/mcp/hermes-rasa"
         if hermes_path not in _sys.path:
             _sys.path.insert(0, hermes_path)
@@ -356,14 +380,20 @@ def fetch_hermes_evidence(subject: str) -> dict[str, Any]:
         if cls.principal_type == PrincipalType.PERSON:
             out["epistemic_state"] = "OBSERVED"  # humans are observed entities
         elif cls.principal_type in {
-            PrincipalType.AI_ORGAN, PrincipalType.SYSTEM,
-            PrincipalType.INSTITUTION, PrincipalType.LEGISLATURE,
-            PrincipalType.CORPORATION, PrincipalType.STATE, PrincipalType.CITY,
+            PrincipalType.AI_ORGAN,
+            PrincipalType.SYSTEM,
+            PrincipalType.INSTITUTION,
+            PrincipalType.LEGISLATURE,
+            PrincipalType.CORPORATION,
+            PrincipalType.STATE,
+            PrincipalType.CITY,
         }:
             out["epistemic_state"] = "DERIVED"  # structural entity
         elif cls.principal_type in {
-            PrincipalType.TIME, PrincipalType.DATE,
-            PrincipalType.EVENT, PrincipalType.DOCUMENT,
+            PrincipalType.TIME,
+            PrincipalType.DATE,
+            PrincipalType.EVENT,
+            PrincipalType.DOCUMENT,
         }:
             out["epistemic_state"] = "INTERPRETED"  # temporal/event = contextual
         elif cls.principal_type == PrincipalType.UNKNOWN:
@@ -376,6 +406,7 @@ def fetch_hermes_evidence(subject: str) -> dict[str, Any]:
 
 
 # ── Build AttentionPacket from inputs ──────────────────────────────
+
 
 def build_packet(
     subject: str,
@@ -478,6 +509,7 @@ def write_to_ledger(packet: AttentionPacket) -> None:
 
 # ── CLI ──────────────────────────────────────────────────────────────
 
+
 def _check(label, ok, detail=""):
     glyph = "✓" if ok else "✗"
     line = f"  {glyph} {label}"
@@ -496,7 +528,10 @@ def main() -> int:
 
     # Test 1: priority formula — high-impact + novel → high priority
     p, ov = compute_priority(
-        impact=0.9, urgency=0.8, uncertainty=0.1, reversibility=0.9,
+        impact=0.9,
+        urgency=0.8,
+        uncertainty=0.1,
+        reversibility=0.9,
         novelty=0.9,  # novel = high
         attention_cost=1.0,
     )
@@ -506,9 +541,45 @@ def main() -> int:
         f"P={p:.3f}",
     )
 
+    # Test 1b: PR-1 ATTENTION-TRUTH — evidence/risk separation.
+    # Well-evidenced irreversible action: evidence quality must stay HIGH.
+    # (Old formula scored this 0.000 because reversibility=0.0 zeroed the product,
+    #  burying strong evidence under an unrelated risk dimension.)
+    p_irr, _ = compute_priority(
+        impact=0.9,
+        urgency=0.8,
+        uncertainty=0.1,
+        reversibility=0.0,
+        novelty=0.9,
+        attention_cost=1.0,
+    )
+    all_ok &= _check(
+        "separation: irreversible + well-evidenced keeps high priority via evidence",
+        p_irr > 0.5,
+        f"P={p_irr:.3f} (old formula: 0.000)",
+    )
+    # And the risk side is carried by the ActionRisk gate, not by evidence decay:
+    p_irr_floor, ov_fl = compute_priority(
+        impact=0.1,
+        urgency=0.1,
+        uncertainty=0.1,
+        reversibility=0.0,
+        novelty=0.1,
+        attention_cost=1.0,
+        overrides=[Override.IRREVERSIBILITY_FLOOR.value],
+    )
+    all_ok &= _check(
+        "separation: ActionRisk floor surfaces irreversible regardless of priority",
+        p_irr_floor >= 0.85,
+        f"P={p_irr_floor:.3f} overrides={ov_fl}",
+    )
+
     # Test 2: override forces ∞
     p, ov = compute_priority(
-        impact=0.1, urgency=0.1, uncertainty=0.9, reversibility=0.1,
+        impact=0.1,
+        urgency=0.1,
+        uncertainty=0.9,
+        reversibility=0.1,
         attention_cost=1.0,
         overrides=[Override.AUTHORITY_VIOLATION.value],
     )
@@ -520,7 +591,10 @@ def main() -> int:
 
     # Test 3: irreversibility_floor
     p, ov = compute_priority(
-        impact=0.1, urgency=0.1, uncertainty=0.5, reversibility=0.0,
+        impact=0.1,
+        urgency=0.1,
+        uncertainty=0.5,
+        reversibility=0.0,
         attention_cost=1.0,
         overrides=[Override.IRREVERSIBILITY_FLOOR.value],
     )
@@ -539,11 +613,24 @@ def main() -> int:
     )
     d = pkt.to_dict()
     expected_fields = {
-        "subject", "attention_class", "priority", "why_now", "deadline",
-        "impact", "urgency", "uncertainty", "reversibility",
-        "epistemic_state", "source_count", "contradictions",
-        "temporal", "recommended_organ", "required_authority", "execution_required",
-        "overrides", "evidence_basis",
+        "subject",
+        "attention_class",
+        "priority",
+        "why_now",
+        "deadline",
+        "impact",
+        "urgency",
+        "uncertainty",
+        "reversibility",
+        "epistemic_state",
+        "source_count",
+        "contradictions",
+        "temporal",
+        "recommended_organ",
+        "required_authority",
+        "execution_required",
+        "overrides",
+        "evidence_basis",
     }
     all_ok &= _check(
         f"AttentionPacket has all 16+ canonical fields",
@@ -563,8 +650,12 @@ def main() -> int:
     pkt2 = build_packet(
         subject="WEALTH surface drift",
         why_now="HIGH schema drift detected",
-        impact=0.9, urgency=0.8, uncertainty=0.2, reversibility=0.9,
-        consume_chron=True, consume_hermes=True,
+        impact=0.9,
+        urgency=0.8,
+        uncertainty=0.2,
+        reversibility=0.9,
+        consume_chron=True,
+        consume_hermes=True,
     )
     print(f"\n  Sample packet:")
     for k, v in pkt2.to_dict().items():
