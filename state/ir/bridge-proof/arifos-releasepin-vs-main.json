@@ -1,0 +1,31 @@
+{
+  "applied_to": [
+    "arifOS deployment identity"
+  ],
+  "bridge_id": "bp-arifos-releasepin-vs-main-2026-10-02T043541Z",
+  "claim_a": {
+    "source": "/opt/arifos/releases/release-manifest.json (deployed release pin)",
+    "type": "git_sha",
+    "value": "800eb0ae055eae05e51a871b4f0b8e1d84de826c"
+  },
+  "claim_b": {
+    "source": "/opt/arifos git HEAD (main)",
+    "type": "git_sha",
+    "value": "5c1eb902392a5f72e02cf169691b85a2ec8562e2"
+  },
+  "comparability": "COMPARABLE",
+  "decided_at": "2026-10-02T04:35:41Z",
+  "decided_by": "kimi-code/FI-008",
+  "probe_state": "SUCCESS",
+  "relation": "DERIVED_FROM",
+  "supersedes": null,
+  "verification_state": "WITNESSED",
+  "witness_evidence_refs": [
+    "git merge-base --is-ancestor 800eb0a HEAD -> true (1 commit ahead: benign release flow, NOT drift)"
+  ],
+  "witness_method": {
+    "kind": "invocation",
+    "method": "git merge-base --is-ancestor + importlib.metadata + release-manifest read, all read-only",
+    "read_only": true
+  }
+}

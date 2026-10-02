@@ -58,4 +58,39 @@ arifOS itself exhibited the paradox the same day: deployment drift was detected 
 
 Not another benchmark, context window, guardrail stack, or constitution document. A **reality-coupled intelligence institution** — a governed epistemic institution, not a bigger neural network.
 
+## v2 — Optimization–Reality Paradox (sovereign refinement, same day ~12:30 MYT)
+
+Formal chain: **R → P → O → π** (reality → proxy → objective → policy). P ≠ R always — language, rewards, constitutions, benchmarks, ratings, sensors are finite representations. Stronger optimizers exploit the gap: `O↑ while R↓`.
+
+**Risk heuristic:** `Risk ∝ Capability × ProxyError × Autonomy × Irreversibility` — capability amplifies alignment error, never shrinks it.
+
+**Weak Supervisor Paradox:** verifying a stronger system may require approaching its understanding; AI-judge chains regress (`who evaluates B?`). AI judge ≠ truth oracle.
+
+**The ten invariants** (minimum AGI/ASI substrate):
+1. Representation ≠ reality — OBSERVED/DERIVED/INFERRED/SPECULATIVE/UNKNOWN carried on every claim.
+2. Prediction precedes consequential action.
+3. Outcome verification is independent (executor ≠ sole witness).
+4. Capability ≠ authority.
+5. Authority expires (scoped by actor/action/time/budget/reversibility/revocation).
+6. Evaluation itself is evaluated (meta-calibration against downstream reality).
+7. Unknown ≠ safe (missing evidence is not a green status).
+8. Irreversibility scales evidence + witness + authority requirements.
+9. Human sovereignty is plural and legitimate ("human feedback" ≠ whoever supplied the reward model).
+10. Errors must alter future behavior — recorded-but-ignored failure is merely logging.
+
+**Nine-line compression:** LLM: Language≠Reality · RAG: Retrieval≠Truth · Benchmark: Score≠Capability · Guardrail: Compliance≠Alignment · Agent: Completion≠Consequence · Human: Preference≠LegitimateValue · AGI: Intelligence≠Wisdom · ASI: Capability≠Authority · Alignment: Constitution≠LivedReality.
+
+**Ordering law: REALITY > REPRESENTATION > OPTIMIZATION. Never reversed.**
+
+### Live exhibits (2 Okt 2026, same day)
+
+- **First real GAMING catch:** CHRON pair `pr-a-forge-7de4c8b3` — receipt_chain proxy ↑1.0 vs measured state-change ↓0.123 → `correlation_state=GAMING` (n=2; divergence real, verdict premature — HERMES correctly held the thesis at low confidence pending discriminating tests).
+- **Same word ≠ same measurement:** arifOS seals release pin 800eb0a (source==built==deployed), repo main is 1 commit ahead (benign release flow — 800eb0a is ancestor), A-FORGE's verifier reads "DRIFT" from wheel-metadata basis (plain-dir install, dist-info under normalized name `arifos` v2026.9.6). Three bases, one word. Filed: `state/ir/bridge-proof/` (Track C.1 first live instance).
+- **Authority version:** WEALTH reachable ≠ WEALTH authorized (session-bound authorization; unverified actor identity → held).
+- **Substrate version:** 9/9 services green ≠ system readiness (swap pressure). Human click ≠ informed consent.
+
+### The missing breakthrough
+
+Not a smarter model — a **self-correcting epistemic/governance metabolism**: models may act, but cannot manufacture their own truth, witnesses, authority, success criteria, or absolution. Separation of epistemic powers, coupled by prediction → reality → correction.
+
 DITEMPA BUKAN DIBERI ⚒️
