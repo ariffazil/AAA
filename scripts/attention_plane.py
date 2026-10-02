@@ -9,6 +9,11 @@ Identity:
 Pipeline (per F13 2026-09-21):
     Reality → HERMES (meaning) → CHRON (temporal) → AAA (attention) → arifOS/Human
 
+PR-3 ONE-DOOR (2026-10-02): HERMES and CHRON are consumed only through
+AAA-owned adapters (adapters/meaning_adapter.py, adapters/
+temporal_adapter.py) over HTTP/MCP. No organ filesystem paths, no
+sys.path reach-ins, no organ python imports. Fail closed (F1).
+
 AAA does NOT:
   - Judge (that's arifOS)
   - Execute (that's A-FORGE)
@@ -44,12 +49,22 @@ import json
 import math
 import os
 import sys
-import urllib.error
-import urllib.request
 from dataclasses import asdict, dataclass, field
 from enum import Enum
 from pathlib import Path
 from typing import Any
+
+# ── AAA package bootstrap (PR-3 ONE-DOOR) ────────────────────────────
+# The script lives in scripts/; put the AAA repo root on sys.path so it can
+# import AAA's own adapter package. This is AAA's own boundary — not an
+# organ reach-in. Organs are consumed ONLY via the adapters below.
+
+_AAA_ROOT = Path(__file__).resolve().parents[1]
+if str(_AAA_ROOT) not in sys.path:
+    sys.path.insert(0, str(_AAA_ROOT))
+
+from adapters.meaning_adapter import MeaningAdapter  # noqa: E402
+from adapters.temporal_adapter import TemporalAdapter  # noqa: E402
 
 # ── Configuration ───────────────────────────────────────────────────
 
@@ -241,98 +256,47 @@ def compute_priority(
 
 
 def fetch_chron_attention_debt() -> dict[str, Any]:
-    """Pull CHRON's temporal urgency inputs via MCP.
+    """Pull CHRON's temporal urgency inputs via TemporalAdapter (PR-3 ONE-DOOR).
 
     CHRON is the canonical source for:
       - attention_debt (how much owed attention has accumulated)
       - active predictions (count + due-soon flag)
       - next_verify_at (next calibration deadline)
       - calibration summary (mean Brier, accuracy)
+      - learning-closure gap (many episodes + zero actionable lessons)
 
-    Live probe (2026-09-21) confirms CHRON briefing shape:
-        {"predictions_due": [...], "calibration": {...},
-         "attention_debt": {"total_ad": 0, ...}, "last_loop": {...}}
+    PR-3 ONE-DOOR (2026-10-02): the MCP session/HTTP plumbing moved into
+    adapters/temporal_adapter.py. This function reshapes the adapter
+    briefing into the backward-compatible keys existing callers/tests rely
+    on, plus the enriched PR-3 fields.
+
+    Live probe (2026-10-02) confirms CHRON MCP tool shapes:
+        chron_temporal_briefing / chron_predictions_due /
+        chron_store_stats / chron_lessons; GET /health as fallback.
     """
+    brief = TemporalAdapter(base_url=CHRON_URL).briefing()
+    available = bool(brief.get("available"))
+    due_count = int(brief.get("prediction_due_count") or 0)
+    last_loop = brief.get("last_loop") or {}
     out: dict[str, Any] = {
-        "available": False,
-        "attention_debt": 0.0,
-        "prediction_due": False,
-        "predictions_due_count": 0,
-        "next_verify_at": None,
-        "source": "unavailable",
+        # ── backward-compatible keys (P2-2026-09-21 contract) ──
+        "available": available,
+        "attention_debt": float(brief.get("attention_debt") or 0.0) if available else 0.0,
+        "prediction_due": available and due_count > 0,
+        "predictions_due_count": due_count if available else 0,
+        "next_verify_at": brief.get("next_verify_at"),
+        "source": brief.get("source", "unavailable"),
+        # ── PR-3 ONE-DOOR enrichment ──
+        "predictions_due": brief.get("prediction_due") or [],
+        "verification_backlog": brief.get("verification_backlog"),
+        "unclassified_outcomes": brief.get("unclassified_outcomes"),
+        "actionable_lessons": brief.get("actionable_lessons"),
+        "calibration_health": brief.get("calibration_health"),
+        "learning_closure_gap": brief.get("learning_closure_gap"),
+        "degradation": brief.get("degradation"),
     }
-    sid: str | None = None
-    try:
-        # Initialize CHRON MCP session
-        init_req = urllib.request.Request(
-            f"{CHRON_URL}/mcp",
-            data=json.dumps(
-                {
-                    "jsonrpc": "2.0",
-                    "id": 1,
-                    "method": "initialize",
-                    "params": {
-                        "protocolVersion": "2025-06-18",
-                        "capabilities": {},
-                        "clientInfo": {"name": "attention_plane", "version": "1.0"},
-                    },
-                }
-            ).encode(),
-            headers={"Content-Type": "application/json", "Accept": "application/json, text/event-stream"},
-            method="POST",
-        )
-        with urllib.request.urlopen(init_req, timeout=5) as resp:
-            sid = resp.headers.get("mcp-session-id")
-        if not sid:
-            return out
-        # Call chron_temporal_briefing — the canonical temporal context source
-        call_req = urllib.request.Request(
-            f"{CHRON_URL}/mcp",
-            data=json.dumps(
-                {
-                    "jsonrpc": "2.0",
-                    "id": 2,
-                    "method": "tools/call",
-                    "params": {"name": "chron_temporal_briefing", "arguments": {}},
-                }
-            ).encode(),
-            headers={
-                "Content-Type": "application/json",
-                "Accept": "application/json, text/event-stream",
-                "Mcp-Session-Id": sid,
-            },
-            method="POST",
-        )
-        with urllib.request.urlopen(call_req, timeout=5) as resp:
-            raw_text = resp.read().decode()
-        # CHRON returns SSE format — extract from data: line
-        body: dict[str, Any] = {}
-        for line in raw_text.split("\n"):
-            if line.startswith("data: "):
-                body = json.loads(line[6:])
-                break
-        if not body:
-            body = json.loads(raw_text)
-        text = body.get("result", {}).get("content", [{}])[0].get("text", "")
-        if not text:
-            return out
-        payload = json.loads(text)
-        out["available"] = True
-        out["source"] = "chron:chron_temporal_briefing"
-        # attention_debt is a dict with total_ad field
-        if isinstance(payload.get("attention_debt"), dict):
-            out["attention_debt"] = float(payload["attention_debt"].get("total_ad", 0))
-        else:
-            out["attention_debt"] = float(payload.get("attention_debt", 0))
-        # predictions_due is an array
-        out["predictions_due_count"] = len(payload.get("predictions_due") or [])
-        out["prediction_due"] = out["predictions_due_count"] > 0
-        # last_loop provides staleness
-        last_loop = payload.get("last_loop") or {}
+    if last_loop.get("timestamp"):
         out["last_loop_timestamp"] = last_loop.get("timestamp")
-        return out
-    except Exception:
-        return out
     return out
 
 
@@ -340,17 +304,30 @@ def fetch_chron_attention_debt() -> dict[str, Any]:
 
 
 def fetch_hermes_evidence(subject: str) -> dict[str, Any]:
-    """Pull HERMES's claim/provenance/contradiction metadata via MCP.
+    """Pull HERMES's meaning metadata via MeaningAdapter (PR-3 ONE-DOOR).
 
     HERMES is the canonical source for:
-      - claim certainty / epistemic tag
-      - principal type (PERSON, AI_ORGAN, INSTITUTION, …)
-      - contradictions (count of conflicting claims on the subject)
-      - unknowns (claims deferred due to insufficient evidence)
+      - principal type (what the subject IS, per HERMES's typing)
+      - epistemic tag mapped from that typing
 
-    Live probe (2026-09-21) confirms HERMES exposes principal_type_classifier
-    at /root/HERMES/mcp/hermes-rasa/principal_type_classifier.py and
-    hermes_claim tools.
+    PR-3 ONE-DOOR (2026-10-02): the sys.path insertion into HERMES's
+    local classifier module directory and the direct
+    principal_type_classifier import are GONE. AAA now sees only what
+    HERMES actually serves behind its MCP door:
+    hermes_perspective_scope, whose principal typing is the coarse
+    5-type contract (PERSON | INSTITUTION | COLLECTIVE | SYSTEM |
+    UNDEFINED).
+
+    Known granularity gap, recorded not papered over (F2): the legacy
+    deterministic 15-class classifier (POLITICAL_PARTY, AI_ORGAN, …) is
+    not exposed behind any door. Canary delta: "DAP" now types PERSON
+    (was POLITICAL_PARTY via the old smuggled import); "WEALTH" now
+    types UNDEFINED (was AI_ORGAN). The fix belongs on the HERMES side
+    (expose the fine classifier as an MCP tool); AAA must not reach
+    around the door to recover it.
+
+    Live probe (2026-10-02) confirms HERMES :18087 /health healthy and
+    15 MCP tools including hermes_perspective_scope.
     """
     out: dict[str, Any] = {
         "available": False,
@@ -359,50 +336,51 @@ def fetch_hermes_evidence(subject: str) -> dict[str, Any]:
         "source_count": 0,
         "contradictions": 0,
         "source": "unavailable",
+        "degradation": None,
     }
-    sid: str | None = None
-    try:
-        # Import the deterministic classifier directly (already deployed)
-        import sys as _sys
-
-        hermes_path = "/root/HERMES/mcp/hermes-rasa"
-        if hermes_path not in _sys.path:
-            _sys.path.insert(0, hermes_path)
-        from principal_type_classifier import classify_principal_type, PrincipalType
-
-        cls = classify_principal_type(subject)
-        out["available"] = True
-        out["principal_type"] = cls.principal_type.value
-        out["matched_rule"] = cls.matched_rule
-        out["confidence"] = cls.confidence
-        out["source"] = "hermes:principal_type_classifier"
-        # Map principal_type → epistemic_state (HEURISTIC)
-        if cls.principal_type == PrincipalType.PERSON:
-            out["epistemic_state"] = "OBSERVED"  # humans are observed entities
-        elif cls.principal_type in {
-            PrincipalType.AI_ORGAN,
-            PrincipalType.SYSTEM,
-            PrincipalType.INSTITUTION,
-            PrincipalType.LEGISLATURE,
-            PrincipalType.CORPORATION,
-            PrincipalType.STATE,
-            PrincipalType.CITY,
-        }:
-            out["epistemic_state"] = "DERIVED"  # structural entity
-        elif cls.principal_type in {
-            PrincipalType.TIME,
-            PrincipalType.DATE,
-            PrincipalType.EVENT,
-            PrincipalType.DOCUMENT,
-        }:
-            out["epistemic_state"] = "INTERPRETED"  # temporal/event = contextual
-        elif cls.principal_type == PrincipalType.UNKNOWN:
-            out["epistemic_state"] = "MISSING"
-        out["source_count"] = 1  # classifier is one source
+    cls = MeaningAdapter(base_url=HERMES_URL).classify(subject)
+    out["degradation"] = cls.get("degradation")
+    if not cls.get("available"):
         return out
-    except Exception:
-        return out
+
+    principal_type = cls.get("principal_type") or "UNDEFINED"
+    out["available"] = True
+    out["principal_type"] = principal_type
+    out["confidence"] = cls.get("confidence")
+    out["source"] = cls.get("source", "unavailable")
+    out["epistemic_state"] = _epistemic_for_principal(principal_type)
+    out["source_count"] = 1  # one door, one classification source
     return out
+
+
+# Principal typing → epistemic state. Coarse 5-type door contract first;
+# legacy 15-class values tolerated so a future HERMES door upgrade maps
+# without editing this file. Unknown/UNDEFINED → MISSING (F6: safe default).
+_PERSONAL_TYPES = {"PERSON"}
+_STRUCTURAL_TYPES = {
+    "INSTITUTION",
+    "COLLECTIVE",
+    "SYSTEM",
+    # legacy fine-grained values (not served by the door today)
+    "AI_ORGAN",
+    "LEGISLATURE",
+    "CORPORATION",
+    "STATE",
+    "CITY",
+    "POLITICAL_PARTY",
+    "COALITION",
+}
+_TEMPORAL_TYPES = {"TIME", "DATE", "EVENT", "DOCUMENT"}
+
+
+def _epistemic_for_principal(principal_type: str) -> str:
+    if principal_type in _PERSONAL_TYPES:
+        return "OBSERVED"  # humans are observed entities
+    if principal_type in _STRUCTURAL_TYPES:
+        return "DERIVED"  # structural entity
+    if principal_type in _TEMPORAL_TYPES:
+        return "INTERPRETED"  # temporal/event = contextual
+    return "MISSING"  # UNDEFINED / unseen value → fail-closed default
 
 
 # ── Build AttentionPacket from inputs ──────────────────────────────
