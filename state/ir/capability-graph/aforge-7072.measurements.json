@@ -1,0 +1,112 @@
+{
+  "bridge_proofs": [],
+  "measurements": [
+    {
+      "baseline": {
+        "expected_range": "122",
+        "previous_value": 122,
+        "trend_window": "2026-10-01..2026-10-02"
+      },
+      "does_not_imply": [
+        "a listed tool does NOT imply invocation succeeds",
+        "tool count does NOT imply capability quality",
+        "schema presence does NOT imply behavioral correctness"
+      ],
+      "evidence_refs": [
+        "method: tools/list over stateless JSON-RPC"
+      ],
+      "freshness_class": "FRESH",
+      "measurement_method": {
+        "calibration": null,
+        "probe_type": "active",
+        "tool": "emit_capability_graph.py (JSON-RPC over streamable HTTP)",
+        "tool_version": "1.0.0"
+      },
+      "metric": "exported_tool_count",
+      "observed_at": "2026-10-02T03:07:16Z",
+      "referent": "a-forge-mcp-gateway:7072",
+      "scope": {
+        "kind": "endpoint",
+        "ref": "a-forge-mcp-gateway:7072",
+        "region": null,
+        "window": null
+      },
+      "unit": "tools",
+      "value": 122,
+      "witness_refs": [
+        "kimi-code/FI-008 session probes (read-only)"
+      ]
+    },
+    {
+      "baseline": {
+        "expected_range": "sample size",
+        "previous_value": null,
+        "trend_window": null
+      },
+      "does_not_imply": [
+        "name resolution does NOT imply the tool executes",
+        "schema availability does NOT imply authority to invoke"
+      ],
+      "evidence_refs": [
+        "method: tools/call get_tool_schema over 15 sampled names"
+      ],
+      "freshness_class": "FRESH",
+      "measurement_method": {
+        "calibration": null,
+        "probe_type": "active",
+        "tool": "emit_capability_graph.py (JSON-RPC over streamable HTTP)",
+        "tool_version": "1.0.0"
+      },
+      "metric": "dispatch_resolved_sample",
+      "observed_at": "2026-10-02T03:07:16Z",
+      "referent": "get_tool_schema dispatch over deterministic sample",
+      "scope": {
+        "kind": "endpoint",
+        "ref": "get_tool_schema dispatch over deterministic sample",
+        "region": null,
+        "window": null
+      },
+      "unit": "tools",
+      "value": 15,
+      "witness_refs": [
+        "kimi-code/FI-008 session probes (read-only)"
+      ]
+    },
+    {
+      "baseline": {
+        "expected_range": "0-1",
+        "previous_value": null,
+        "trend_window": null
+      },
+      "does_not_imply": [
+        "classification derives from self-declared descriptions, NOT from behavioral testing",
+        "mutating classification does NOT imply the tool was executed"
+      ],
+      "evidence_refs": [
+        "method: description suffix classification (ACTUATOR \u00b7 lane \u00b7 CLASS)"
+      ],
+      "freshness_class": "FRESH",
+      "measurement_method": {
+        "calibration": null,
+        "probe_type": "active",
+        "tool": "emit_capability_graph.py (JSON-RPC over streamable HTTP)",
+        "tool_version": "1.0.0"
+      },
+      "metric": "mutating_share",
+      "observed_at": "2026-10-02T03:07:16Z",
+      "referent": "MUTATE-class share of the live surface",
+      "scope": {
+        "kind": "endpoint",
+        "ref": "MUTATE-class share of the live surface",
+        "region": null,
+        "window": null
+      },
+      "unit": "ratio",
+      "value": 0.1721,
+      "witness_refs": [
+        "kimi-code/FI-008 session probes (read-only)"
+      ]
+    }
+  ],
+  "packet": "aforge-7072.json"
+}
