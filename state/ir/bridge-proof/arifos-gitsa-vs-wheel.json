@@ -1,0 +1,36 @@
+{
+  "applied_to": [
+    "A-FORGE forge_runtime_verify strict mode"
+  ],
+  "bridge_id": "bp-arifos-gitsa-vs-wheel-2026-10-02T043658Z",
+  "claim_a": {
+    "source": "arif_init software_release attestation (release pin)",
+    "type": "git_sha",
+    "value": "800eb0a"
+  },
+  "claim_b": {
+    "source": "site-packages inspection",
+    "type": "pep440",
+    "value": "2026.9.6 (dist-info under normalized name 'arifos'; plain-dir install, no arifosmcp metadata)"
+  },
+  "comparability": "TYPE_MISMATCH",
+  "decided_at": "2026-10-02T04:36:58Z",
+  "decided_by": "kimi-code/FI-008",
+  "probe_state": "SUCCESS",
+  "relation": "PACKAGED_AS",
+  "supersedes": null,
+  "type_mismatch_resolution": {
+    "resolution": "git_sha and pep440 measure different objects; the installed distribution is the packaging OF the pinned release (800eb0a, ancestor of main by 1 benign commit). A-FORGE forge_runtime_verify emitting DRIFT on this pair is a category error (MIGRATION.md Track C.1). Named and explained; bridge stays UNRESOLVED until the emitter stops producing DRIFT on type-mismatched pairs."
+  },
+  "verification_state": "UNRESOLVED",
+  "witness_evidence_refs": [
+    "importlib.metadata PackageNotFoundError for 'arifosmcp'",
+    "site-packages/arifos-1!2026.9.6.dist-info present",
+    "git merge-base: 800eb0a is ancestor of HEAD (1 commit)"
+  ],
+  "witness_method": {
+    "kind": "invocation",
+    "method": "importlib.metadata + site-packages inspection + release-manifest + git merge-base, all read-only",
+    "read_only": true
+  }
+}
