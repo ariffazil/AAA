@@ -1,0 +1,48 @@
+{
+  "does_not_imply": [
+    "this is NOT R_t (three of five terms absent)",
+    "no baseline exists \u2014 first observation, not a trend",
+    "AD=0 does not mean safe; it means the known debt was metabolized",
+    "GAMING at n=2 is a divergence signal, not a verdict"
+  ],
+  "formula_under_test": "R_t = G_t * W_t * C_t * exp(-AD_t) * exp(-Delta_proxy_t)",
+  "fragment_product": null,
+  "fragment_product_note": "deliberately None \u2014 three absent terms make any product fiction (v4 doctrine)",
+  "next_sensors_needed": [
+    "tau_repair (correction latency per failure class)",
+    "witness coherence (FRAME-bound)",
+    "session-scope G measurement"
+  ],
+  "observed_at": "2026-10-02T04:41:12Z",
+  "schema": "aaa.apex.viability-fragment.v0",
+  "status": "HYPOTHESIS_INSTRUMENTATION \u2014 sovereign \u211b_t synthesis under test, NOT ratified, NOT a collapse score",
+  "terms": {
+    "AD_t": {
+      "note": "0.48 this morning; one HIGH item metabolized in-session; growth -2.59/day",
+      "sensor": "chron_attention_debt",
+      "unit": "debt-weighted-days",
+      "value": 0.0
+    },
+    "C_t": {
+      "note": "no tau_repair instrument; one datapoint: drift-reconcile falsification item born 2026-09-29T14:05Z, resolved 2026-10-02T03:53Z -> ~2.6d",
+      "status": "UNMEASURED",
+      "value": null
+    },
+    "Delta_proxy_t": {
+      "note": "pr-a-forge-7de4c8b3 GAMING, n=2 \u2014 divergence real, verdict premature",
+      "sensor": "chron_proxy_reality_state",
+      "unit": "abs divergence, latest pair",
+      "value": 0.877
+    },
+    "G_t": {
+      "note": "rolling baseline 0.4181 is federation-wide; session scalar UNMEASURED \u2014 never promoted",
+      "status": "UNKNOWN",
+      "value": null
+    },
+    "W_t": {
+      "note": "no independent-witness coherence sensor wired",
+      "status": "UNMEASURED",
+      "value": null
+    }
+  }
+}
