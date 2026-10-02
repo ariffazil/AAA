@@ -1,0 +1,30 @@
+{
+  "adapter_version": "1.0.0",
+  "funnel": {
+    "learn": 3,
+    "learn_per_verify": 0.273,
+    "observe": 109007,
+    "predict": 27,
+    "predict_per_1000_observe": 0.248,
+    "verify": 11,
+    "verify_per_predict": 0.407
+  },
+  "learning_closure_gap": {
+    "actionable_lessons": 0,
+    "episodes_total": 109048,
+    "gap": true,
+    "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
+    "unclassified_outcomes": 4
+  },
+  "lesson_health": {
+    "active": 0,
+    "blind": 0,
+    "total": 2
+  },
+  "next_verify_at": "2026-10-09T23:59:59+08:00",
+  "swept_at": "2026-10-02T03:44:10Z",
+  "verification_debt": {
+    "count": 0,
+    "items": []
+  }
+}
