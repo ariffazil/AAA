@@ -93,4 +93,32 @@ Formal chain: **R → P → O → π** (reality → proxy → objective → poli
 
 Not a smarter model — a **self-correcting epistemic/governance metabolism**: models may act, but cannot manufacture their own truth, witnesses, authority, success criteria, or absolution. Separation of epistemic powers, coupled by prediction → reality → correction.
 
+## v3 — The Epistemic Telescope (sovereign refinement, 2 Okt 2026)
+
+**Not an Oracle. Not a time machine.** A governed machine for learning the shape of futures:
+
+```
+Past + Present → Model → Possible Futures → Probabilities
+Prediction → Wait → Reality → Verification → Calibration → Better Prediction
+```
+
+**What CHRON-class architecture gives that ordinary LLM use lacks: consequences across time become evidence.** After enough cycles the system contains compressed information from previously-predicted futures that became past realities — "I have seen this shape of future forming before." That is the telescope sensation. No information travels backward; `Future_t → Past_{t+1} → Wisdom_{t+1}`.
+
+**The forecast→intervention boundary (agentic predictions are not passive):** a predicted server failure, repaired, never occurs. The prediction caused its own falsification. Therefore verifications MUST distinguish:
+
+| Class | Meaning |
+|---|---|
+| FORECAST | `P(Y\|X)` — passive, world untouched |
+| INTERVENTION | `P(Y\|do(X))` — the prediction or its handling changed the trajectory |
+| COUNTERFACTUAL | what would have happened absent action |
+| OBSERVED OUTCOME | what reality actually did |
+
+`P(Y|X) ≠ P(Y|do(X))` — temporal intelligence merges into causal intelligence here. Recording an intervention-prevented outcome as "wrong" is an epistemic error, not calibration.
+
+**The dangerous boundary — never `Prediction → Truth`:** the legal chain is `Prediction → Probability → Falsifiable claim → Reality → Score`. A fake Oracle says "this will happen"; people then rearrange reality around confident predictions. A disciplined temporal intelligence says: "given evidence E_t, P(Future_i|E_t)=x, and here is what would falsify me."
+
+**The correct objective is not to know the future. It is to become progressively less surprised by reality** — and to carry the scar of each disagreement into the next decision. That is where prediction becomes wisdom.
+
+*Verification note (binding on chron-verify-sweep):* when a due prediction's non-occurrence traces to an intervention (repair, policy change, human action), classify as INTERVENTION-CAUSED, not INCORRECT. First real window: Belanjawan 2027, 9–10 Okt 2026.
+
 DITEMPA BUKAN DIBERI ⚒️
