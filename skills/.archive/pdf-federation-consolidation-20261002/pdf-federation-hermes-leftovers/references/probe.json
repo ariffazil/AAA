@@ -1,0 +1,363 @@
+{
+  "probed_at": "2026-10-02T00:36:27.494928+00:00",
+  "host": "forge",
+  "python": "3.14.7",
+  "n_skills_listed": 13,
+  "n_distinct_real": 13,
+  "states": {
+    "PRESENT": 0,
+    "LOADABLE": 10,
+    "EXECUTABLE": 3,
+    "PROVEN": 0,
+    "UNVERIFIED": 0
+  },
+  "skills": {
+    "forge-pdf-delivery": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/domains/general/workshop/document-intel/forge-pdf-delivery",
+      "real": "/root/AAA/skills/domains/general/workshop/document-intel/forge-pdf-delivery",
+      "symlink": true,
+      "n_files": 4,
+      "bytes": 47748,
+      "skillmd_lines": 210,
+      "skillmd_path": "/root/.hermes/skills/domains/general/workshop/document-intel/forge-pdf-delivery/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": true,
+      "state": "LOADABLE",
+      "mtime": "2026-10-02T00:20:14.038441+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": [
+          "references/browser-print-layout-gate.md",
+          "references/image-based-pdf-pipeline.md",
+          "references/infographic-image-companion.md"
+        ]
+      },
+      "aliases": []
+    },
+    "scientific-pdf-generation": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/domains/general/workshop/document-intel/scientific-pdf-generation",
+      "real": "/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation",
+      "symlink": true,
+      "n_files": 40,
+      "bytes": 354003,
+      "skillmd_lines": 879,
+      "skillmd_path": "/root/.hermes/skills/domains/general/workshop/document-intel/scientific-pdf-generation/SKILL.md",
+      "has_scripts": false,
+      "has_templates": true,
+      "has_references": true,
+      "state": "EXECUTABLE",
+      "mtime": "2026-09-24T05:58:56.560267+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [
+          "templates/geological_dossier.py",
+          "templates/gold_signal_chart.py",
+          "templates/narrative_biography_a5.py",
+          "templates/scientific_report.py",
+          "templates/sell_side_analyst_report.py",
+          "templates/trading_signal_chart.py"
+        ],
+        "references": [
+          "references/analytics-briefing-pattern.md",
+          "references/animation-video-explainer.md",
+          "references/business-receipt-pdf.md",
+          "references/business-receipt-template.md",
+          "references/contrast-marketing-deck.md",
+          "references/dark-theme-css-components.md",
+          "references/dark-theme-html-template.md",
+          "references/deepwater-sabah-geology.md",
+          "references/figure-dark-theme-patterns.md",
+          "references/figure-white-theme-patterns.md",
+          "references/financial-trading-signal-charts.md",
+          "references/gemini-tech-briefing-manuscript.html",
+          "references/gempy-bridge-verified-path.md",
+          "references/geographic-basemap-real-coastline.md",
+          "references/geological-artifact-figures.md",
+          "references/geological-dossier-figures.md",
+          "references/geological-figure-recipes.md",
+          "references/geological-real-basemap.md",
+          "references/geox-federation-wireup.md",
+          "references/governed-geospatial-figures.md",
+          "references/institutional-financial-deep-dive.md",
+          "references/isaacson-biography-pattern.md",
+          "references/mode-b-marketing-deck.md",
+          "references/multi-figure-thematic-wisdom-pattern.md",
+          "references/narrative-storytelling-dossier.md",
+          "references/physics-driven-geological-figures.md",
+          "references/psm-dossier-workflow.md",
+          "references/sell-side-analyst-style.md",
+          "references/tectono-stratigraphic-panels.md",
+          "references/telegram-native-product-proposal.md",
+          "references/trading-signal-chart-patterns.md",
+          "references/trading-signal-charts.md",
+          "references/vision-qa-checklist.md"
+        ]
+      },
+      "aliases": []
+    },
+    "civic-intelligence-pdf": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/domains/general/workshop/document-intel/civic-intelligence-pdf",
+      "real": "/root/AAA/skills/domains/general/workshop/document-intel/civic-intelligence-pdf",
+      "symlink": true,
+      "n_files": 3,
+      "bytes": 58453,
+      "skillmd_lines": 493,
+      "skillmd_path": "/root/.hermes/skills/domains/general/workshop/document-intel/civic-intelligence-pdf/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": true,
+      "state": "LOADABLE",
+      "mtime": "2026-09-24T05:58:56.559267+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": [
+          "references/proven-template.html",
+          "references/sample_content.json"
+        ]
+      },
+      "aliases": []
+    },
+    "open-slide-integration": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/domains/general/workshop/document-intel/open-slide-integration",
+      "real": "/root/AAA/skills/domains/general/workshop/document-intel/open-slide-integration",
+      "symlink": true,
+      "n_files": 1,
+      "bytes": 8544,
+      "skillmd_lines": 184,
+      "skillmd_path": "/root/.hermes/skills/domains/general/workshop/document-intel/open-slide-integration/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": false,
+      "state": "LOADABLE",
+      "mtime": "2026-09-24T05:58:56.560267+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": []
+      },
+      "aliases": []
+    },
+    "powerpoint": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/domains/general/workshop/document-intel/powerpoint",
+      "real": "/root/.hermes/skills/domains/general/workshop/document-intel/powerpoint",
+      "symlink": false,
+      "n_files": 1,
+      "bytes": 10305,
+      "skillmd_lines": 289,
+      "skillmd_path": "/root/.hermes/skills/domains/general/workshop/document-intel/powerpoint/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": false,
+      "state": "LOADABLE",
+      "mtime": "2026-09-14T07:20:53.335396+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": []
+      },
+      "aliases": []
+    },
+    "medical-document-interp": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/domains/general/workshop/document-intel/medical-document-interpretation",
+      "real": "/root/AAA/skills/domains/general/workshop/document-intel/medical-document-interpretation",
+      "symlink": true,
+      "n_files": 3,
+      "bytes": 16956,
+      "skillmd_lines": 244,
+      "skillmd_path": "/root/.hermes/skills/domains/general/workshop/document-intel/medical-document-interpretation/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": true,
+      "state": "LOADABLE",
+      "mtime": "2026-09-24T05:58:56.560267+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": [
+          "references/forwardable-recap-template.md",
+          "references/hkl-logistics.md"
+        ]
+      },
+      "aliases": []
+    },
+    "trading-signal-chart": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/domains/wealth/workshop/trading-exec/trading-signal-chart",
+      "real": "/root/AAA/skills/domains/wealth/workshop/trading-exec/trading-signal-chart",
+      "symlink": true,
+      "n_files": 16,
+      "bytes": 89245,
+      "skillmd_lines": 387,
+      "skillmd_path": "/root/.hermes/skills/domains/wealth/workshop/trading-exec/trading-signal-chart/SKILL.md",
+      "has_scripts": false,
+      "has_templates": true,
+      "has_references": true,
+      "state": "EXECUTABLE",
+      "mtime": "2026-09-24T05:58:56.580267+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [
+          "templates/gold_casual_chart.py",
+          "templates/gold_live_weekly_pdf.py",
+          "templates/gold_signal_chart.py",
+          "templates/xauusd_signal_pdf.py"
+        ],
+        "references": [
+          "references/canvas-pdf-wrapping.md",
+          "references/casual-chart-mode.md",
+          "references/cron-chart-alert-delivery.md",
+          "references/gold-api-internal-data-shape.md",
+          "references/gold-dashboard-architecture.md",
+          "references/indicator-calculations.md",
+          "references/multi-timeframe-structure.md",
+          "references/red-news-impact.md",
+          "references/tradingview-lightweight-charts-webapp.md",
+          "references/visual-first-pdf-recap.md",
+          "references/voice-note-transcription.md"
+        ]
+      },
+      "aliases": []
+    },
+    "ocr-and-documents": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/ocr-and-documents",
+      "real": "/root/AAA/skills/productivity/ocr-and-documents",
+      "symlink": true,
+      "n_files": 2,
+      "bytes": 5985,
+      "skillmd_lines": 177,
+      "skillmd_path": "/root/.hermes/skills/ocr-and-documents/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": false,
+      "state": "LOADABLE",
+      "mtime": "2026-09-24T05:58:56.647267+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": []
+      },
+      "aliases": []
+    },
+    "aaa-pdf-voice-protocol": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/aaa-pdf-voice-protocol",
+      "real": "/root/AAA/skills/aaa-pdf-voice-protocol",
+      "symlink": true,
+      "n_files": 3,
+      "bytes": 8947,
+      "skillmd_lines": 103,
+      "skillmd_path": "/root/.hermes/skills/aaa-pdf-voice-protocol/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": false,
+      "state": "LOADABLE",
+      "mtime": "2026-09-26T23:53:34.122310+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": []
+      },
+      "aliases": []
+    },
+    "forge-artifact-publisher": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/forge-artifact-publisher",
+      "real": "/root/AAA/skills/forge-artifact-publisher",
+      "symlink": true,
+      "n_files": 4,
+      "bytes": 40372,
+      "skillmd_lines": 635,
+      "skillmd_path": "/root/.hermes/skills/forge-artifact-publisher/SKILL.md",
+      "has_scripts": true,
+      "has_templates": false,
+      "has_references": false,
+      "state": "EXECUTABLE",
+      "mtime": "2026-09-26T23:53:34.082660+00:00",
+      "assets": {
+        "scripts": [
+          "scripts/build_slides.py"
+        ],
+        "templates": [],
+        "references": []
+      },
+      "aliases": []
+    },
+    "forge-document-intel": {
+      "present": true,
+      "exposed": "/root/.hermes/skills/forge-document-intelligence",
+      "real": "/root/AAA/skills/forge-document-intelligence",
+      "symlink": true,
+      "n_files": 2,
+      "bytes": 25658,
+      "skillmd_lines": 457,
+      "skillmd_path": "/root/.hermes/skills/forge-document-intelligence/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": false,
+      "state": "LOADABLE",
+      "mtime": "2026-09-26T23:53:33.881268+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": []
+      },
+      "aliases": []
+    },
+    "aaa-ocr-optical-compress": {
+      "present": true,
+      "exposed": "/root/AAA/skills/aaa-ocr-optical-compression",
+      "real": "/root/AAA/skills/aaa-ocr-optical-compression",
+      "symlink": false,
+      "n_files": 3,
+      "bytes": 7811,
+      "skillmd_lines": 169,
+      "skillmd_path": "/root/AAA/skills/aaa-ocr-optical-compression/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": true,
+      "state": "LOADABLE",
+      "mtime": "2026-09-28T09:29:29.016273+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": [
+          "references/slide-deck-vision-fallback.md"
+        ]
+      },
+      "aliases": []
+    },
+    "pdf-productivity": {
+      "present": true,
+      "exposed": "/root/.hermes/profiles/aaa-hermes/skills/productivity/pdf",
+      "real": "/root/.hermes/profiles/aaa-hermes/skills/productivity/pdf",
+      "symlink": false,
+      "n_files": 4,
+      "bytes": 34697,
+      "skillmd_lines": 122,
+      "skillmd_path": "/root/.hermes/profiles/aaa-hermes/skills/productivity/pdf/SKILL.md",
+      "has_scripts": false,
+      "has_templates": false,
+      "has_references": true,
+      "state": "LOADABLE",
+      "mtime": "2026-08-13T03:07:13.785019+00:00",
+      "assets": {
+        "scripts": [],
+        "templates": [],
+        "references": [
+          "references/forms.md"
+        ]
+      },
+      "aliases": []
+    }
+  }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Executive Brief</title>
+<style>
+/* ── STRUCTURE (this file) ─────────────────────────────────────────────────
+   Page geometry, margin boxes, and the layout skeleton. Colour and type live
+   in the theme, so one template serves every theme. */
+@page {
+  size: A4;
+  margin: 16mm 14mm 15mm 14mm;
+  @bottom-left  { content: "Executive Brief"; font-size: 7pt; color: #7a8590; }
+  @bottom-right { content: "EDITION-013 · " counter(page) " / " counter(pages);
+                  font-size: 7pt; color: #7a8590; }
+}
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; }
+h1 { font-size: 19pt; margin: 0 0 3mm 0; line-height: 1.15; }
+h2 { font-size: 12pt; margin: 7mm 0 2mm 0; padding-bottom: 1.4mm;
+     border-bottom: 1px solid var(--rule); page-break-after: avoid; }
+h3 { font-size: 10pt; margin: 4mm 0 1.5mm 0; page-break-after: avoid; }
+p, li { font-size: 9.2pt; line-height: 1.5; margin: 0 0 2.2mm 0; }
+ul, ol { margin: 0 0 2.5mm 5mm; padding: 0; }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 4mm 0; font-size: 8.4pt; }
+th { text-align: left; padding: 1.6mm 2mm; font-size: 7.8pt; font-weight: 700;
+     border-bottom: 1.6px solid var(--rule-strong); }
+td { padding: 1.5mm 2mm; border-bottom: 1px solid var(--rule-faint); vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--zebra); }
+h2, h3, tr { page-break-inside: avoid; }
+.cover { page-break-after: always; }
+.cover-rule { height: 3px; width: 34mm; background: var(--accent); margin: 0 0 6mm 0; }
+.subtitle { font-size: 11pt; color: var(--muted); margin: 0 0 14mm 0; }
+.meta { font-size: 8.2pt; color: var(--muted); line-height: 1.7; }
+.stats { display: flex; gap: 3mm; margin: 6mm 0; }
+.stat { flex: 1; border-top: 3px solid var(--accent); padding: 2mm 2.2mm;
+        background: var(--panel); }
+.stat .n { font-size: 13pt; font-weight: 700; color: var(--accent-ink); }
+.stat .l { font-size: 7.4pt; color: var(--muted); line-height: 1.35; }
+.box { padding: 2.6mm 3mm; margin: 3mm 0; border-left: 4px solid var(--accent); }
+.box.key    { background: var(--panel); }
+.box.warn   { background: var(--warn-bg); border-left-color: var(--warn); }
+.box.open   { background: var(--open-bg); border-left-color: var(--open); }
+.box.claim  { background: var(--claim-bg); border-left-color: var(--claim); }
+.kv { font-family: var(--mono); font-size: 7.2pt; background: var(--panel);
+      padding: 2.6mm; line-height: 1.6; word-break: break-all;
+      border: 1px solid var(--rule-faint); border-left: 3px solid var(--accent); }
+.tag { display: inline-block; font-size: 6.8pt; font-weight: 700; padding: 0.3mm 1.4mm;
+       border-radius: 2px; border: 1px solid; }
+.small { font-size: 7.8pt; color: var(--muted); }
+.nobreak { page-break-inside: avoid; }
+
+/* ── THEME ──────────────────────────────────────────────────────────────── */
+/* docforge theme: light  (DEFAULT)
+   Light background throughout. Accent appears as RULES and TINTS, never as a
+   filled dark block — a filled header costs toner and bands on paper.
+   Passes gate profile `print-light`.
+   Contrast: body #1d2733 on #ffffff = 14.1:1 (AAA at any size). */
+:root {
+  --accent:       #1b7f79;
+  --accent-ink:   #14605b;
+  --rule:         #c9d3dc;
+  --rule-strong:  #0d2b45;
+  --rule-faint:   #e3e8ee;
+  --zebra:        #f7f9fb;
+  --panel:        #f7f9fb;
+  --muted:        #5a6673;
+  --warn:         #b4432f;  --warn-bg:  #fdf2f0;
+  --open:         #b06a12;  --open-bg:  #fdf7ec;
+  --claim:        #4a5765;  --claim-bg: #f0f2f5;
+  --mono: "DejaVu Sans Mono", monospace;
+}
+body { font-family: "DejaVu Sans", "Liberation Sans", sans-serif; color: #1d2733; background: #ffffff; }
+h1, h2, h3 { color: #0d2b45; }
+.t-doc  { background: #eef6f5; color: #14605b; border-color: #9fcac6; }
+.t-wire { background: #f0f2f5; color: #3d4956; border-color: #bfc7d0; }
+.t-open { background: #fdf2f0; color: #9c3a29; border-color: #e2b3a9; }
+.t-own  { background: #fdf7ec; color: #a86713; border-color: #e6cfa4; }
+
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover-rule"></div>
+  <h1>Executive Brief</h1>
+  <div class="subtitle">Delta tracked edition · 2 new, 7 moved, 2 settled, 8 carrying over, 9 dropped without resolution</div>
+  <div class="meta">
+    Edition <strong>EDITION-013</strong><br>
+    2026-10-02<br>
+    Built by the docforge lane · integrity seal applied
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="n">2</div><div class="l">New items</div></div>
+    <div class="stat"><div class="n">8</div><div class="l">Carrying over</div></div>
+    <div class="stat"><div class="n">7</div><div class="l">Changed state</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">Settled / terminal</div></div>
+  </div>
+  <div class="kv" style="margin-top:8mm">
+    content_sha256 &nbsp;7208fb87fd86aef682cd7b8343324b9ab98ebbc01adb5cb94833f6157154e0ef<br>
+    artifact_sha256 delivered in EDITION-013.sha256 &mdash; a file cannot embed its own hash<br>
+    signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not_signed (hashes only;
+    authorship is not proven by a hash)
+  </div>
+  <div class="small" style="margin-top:3mm">
+    The content hash above covers the canonical source of this document and was
+    computed before it was injected, so it is checkable from the page. The
+    artifact hash covers the rendered file's bytes and therefore cannot appear
+    inside it — it ships in the sidecar, in <code>sha256sum -c</code> format.
+    Neither hash says anything about whether the contents are true.
+  </div>
+</section>
+
+<h2>0 &middot; What Changed Since Yesterday</h2><p class='small'>Compared against <strong>EDITION-011</strong>. 2 new, 7 moved, 2 settled, 8 carrying over, 9 dropped without resolution</p><h3>Changed state <span class='small'>(7)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>The 1954 boundaries order becomes the front door to the whole dispute</td><td>WALL</td><td>CONTESTED</td><td><strong>MOVED</strong></td></tr><tr><td>WALL MOVED but unresolved: the oil assumption - press says about USD 90, the banks say 64 to 75</td><td>WALL</td><td>NEW</td><td><strong>MOVED</strong></td></tr><tr><td>91 days until the household threshold drops back to 600 kWh</td><td>RISK</td><td>OPEN</td><td><strong>MOVED</strong></td></tr><tr><td>The hearing now sits inside the election window - for certain</td><td>RISK</td><td>OPEN</td><td><strong>MOVED</strong></td></tr><tr><td>RM 1.8 billion of installation work carries forward - no new movement</td><td>SITUATION</td><td>NEW</td><td><strong>OPEN</strong></td></tr><tr><td>Carried: the boron that bends and conducts</td><td>EUREKA</td><td>NEW</td><td><strong>OPEN</strong></td></tr><tr><td>Carried: two unnamed snails from Montenegro</td><td>EUREKA</td><td>NEW</td><td><strong>OPEN</strong></td></tr></tbody></table><h3>New today <span class='small'>(2)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>Two meteor showers this month - one from Halley's own dust</td><td>EUREKA</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>Paint that gets colder than the air around it</td><td>EUREKA</td><td>&mdash;</td><td><strong>NEW</strong></td></tr></tbody></table><h3>Settled <span class='small'>(2)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>WALL SETTLED: the court fixed it - five days, 25-29 January</td><td>SITUATION</td><td>MOVED</td><td><strong>SETTLED</strong></td></tr><tr><td>The Harvest Moon and Saturn pairing has passed - settled as seen</td><td>EUREKA</td><td>NEW</td><td><strong>SETTLED</strong></td></tr></tbody></table><div class='box warn'><strong>Dropped without resolution (9)</strong> — these were live yesterday and are absent today, which is <em>not</em> the same as resolved. They are listed rather than silently retired.</div><h3>Dropped <span class='small'>(9)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>The seven-day timetable is now on paper - a phased US-Iran deal to reopen Hormuz</td><td>SITUATION</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>PETRONAS and Sarawak each want their petition heard first - the court will decide the sequence</td><td>SITUATION</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>Every USD 1 on Brent is worth about RM 300 million - and the 2027 forecasts point the other way</td><td>SITUATION</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>A new LNG carrier joins the PETRONAS fleet - Puteri Kelantan, delivered 24 September</td><td>SITUATION</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>War-risk cover now prices a Hormuz passage at about USD 10 million for a supertanker</td><td>VOID</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>Nobody told you the way car loans are priced changed in June</td><td>VOID</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>Still open: AI-generated intimate images already fall inside the criminal definition</td><td>VOID</td><td>&mdash;</td><td><strong>OPEN</strong></td></tr><tr><td>The subsidy bill: about RM 40 billion at these prices, against RM 49 billion budgeted for everything</td><td>RISK</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>Still open: coal at USD 148 a tonne is the input the shield is currently absorbing</td><td>RISK</td><td>&mdash;</td><td><strong>OPEN</strong></td></tr></tbody></table><p class='small'>Carrying over unchanged: <strong>8</strong> item(s). Not repeated in full — see the open-items register.</p><h2>0.1 &middot; Standing Instructions</h2><p class='small'>Derived from your own comments on earlier editions. Each shows the words it came from. A rule you no longer want can be retired; it is listed here so it cannot operate invisibly.</p><table><thead><tr><th>Instruction</th><th>Standing since</th><th>Editions</th></tr></thead><tbody><tr><td><strong>Buang naratif politik. Fokus pada OD1.</strong><br><span class='small'>heard as: &ldquo;Buang naratif politik. Fokus pada OD1.&rdquo;</span></td><td>2026-09-18</td><td>27</td></tr></tbody></table><h2>Situation</h2><h3>WALL SETTLED: the court fixed it - five days, 25-29 January <span class='tag t-doc'>SETTLED</span></h3><div class='box key'>Justice Rhodzariah Bujang fixed five hearing days, 25 to 29 January 2027, for the Petronas and Sarawak petitions. Written submissions are due 11 January, replies 18 January, case management 12 January. The petitions are heard separately, in the order filed - Petronas first (filed 10 Jan, leave granted 16 March). Both sides will ask the Chief Justice for an enlarged nine- or eleven-member panel. The anti-thesis search for a postponement returned nothing: this date is fixed on the record.<div class='small' style='margin-top:2mm'>Source: Bernama via Malay Mail 1 Oct 2026; FMT/Star/Borneo Post 24 Sep 2026 for the separate-hearings posture. W=2 (Bernama-wire + FMT reporting)</div></div><h3>Budget 2027: seven days out <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Budget 2027 is tabled Friday 9 October, confirmed in the Finance Ministry's pre-budget statement. The Economy Minister has already said higher oil prices will not cut development spending. What matters for you is the assumption underneath that sentence, and that lands on the day.<div class='small' style='margin-top:2mm'>Source: MOF pre-budget statement (mof.gov.my); Newswav/Economy Minister remarks. W=2 (primary + press)</div></div><h3>Brent eased to about USD 97 with the strait still shut <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Brent fell to USD 96.76 on 1 October, down 1.3 percent on the day but up over 50 percent year on year. A Hormuz tracker records the strait as effectively closed to commercial shipping as of 1 October - day 214 - with one transit on 27 September against a normal of about 85 a day. The market is holding a risk premium on a waterway that is not moving.<div class='small' style='margin-top:2mm'>Source: TradingEconomics Brent CFD reading 1 Oct 2026 (W=1, market data); straits.live transit tracker (W=1, tracker); premium-level context per Wikipedia crisis timeline</div></div><h3>Hormuz: the reopening is still a promise, not a schedule <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Foreign Minister Araghchi said on 25 September that reopening depends on the United States. Since then: no transit recovery, no compliance milestone met. The seven-day phased timetable recorded in the last edition has gained no visible execution. Keep treating the premium as structural until tankers actually sail.<div class='small' style='margin-top:2mm'>Source: Wikipedia crisis timeline citing Araghchi 25 Sep; straits.live tracker 1 Oct; chronological lock holds (statement precedes today's still-closed status)</div></div><h3>New pump band: BUDI95 holds at RM 1.99, open-market prices slip a few sen <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>For 1-7 October: RON95 under BUDI95 stays RM 1.99. The unsubsidised RON95 is RM 4.52 (down 5 sen), RON97 RM 5.00 (down 5 sen), diesel RM 5.27 (down 15 sen) in the Peninsula. The state is still paying RM 2.53 a litre - 56 percent of the pump price - on every subsidised litre. The subsidy arithmetic enters Budget 2027 in seven days.<div class='small' style='margin-top:2mm'>Source: paultan.org weekly band 1-7 Oct; Time News citing subsidy per litre. W=2</div></div><h3>RM 1.8 billion of installation work carries forward - no new movement <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>The Vantris/Carigali and PTTEP installation awards, with execution running into 2027, saw no new development this week. Still the closest thing to a demand signal for the drilling and installation market you work in.<div class='small' style='margin-top:2mm'>Source: No new release found in sweep 2 Oct; original award reporting carried from earlier edition</div></div><h2>Wall</h2><h3>The 1954 boundaries order becomes the front door to the whole dispute <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Sarawak will file, within 14 days of 1 October, a preliminary challenge to the validity of the Sarawak (Alteration of Boundaries) Order in Council 1954 - the instrument that fixed its territorial waters. Petronas argues the issue needs no preliminary hearing and belongs inside the main petition. The hearing panel, not this judge, will decide. This is the jurisdictional question that shadows the Bintulu LNG contest, now with its own court date.<div class='small' style='margin-top:2mm'>Source: Malay Mail/Bernama 1 Oct 2026 (Rule 23 application, Federal Court Rules 1995); Sarawak petition of 23 Feb seeking to void PDA 1974, Continental Shelf Act 1966 and Petroleum Mining Act 1966 as applied to Sarawak</div></div><h3>WALL MOVED but unresolved: the oil assumption - press says about USD 90, the banks say 64 to 75 <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>New Straits Times reported 10 September that Government will likely assume around USD 90 a barrel for 2027, given the Middle East. The banks forecast the opposite direction: EIA sees Brent averaging USD 74 in 2027, JPMorgan cut its call to USD 64, ABN AMRO ends 2027 at USD 70. At roughly RM 300 million of revenue per dollar of Brent, the gap between the budget assumption and the street forecast is measured in billions. The official number stays UNRESOLVED until budget day - the press figure is an estimate, not a filing.<div class='small' style='margin-top:2mm'>Source: NST 10 Sep 2026 (press estimate); EIA Short-Term Energy Outlook; JPMorgan note via Reuters-reported coverage; ABN AMRO research. Official assumption: not published. Claim on the RM 300m sensitivity carried from earlier edition, still OPEN</div></div><h2>Eureka</h2><h3>The Harvest Moon and Saturn pairing has passed - settled as seen <span class='tag t-doc'>SETTLED</span></h3><div class='box key'>The 26 September pairing came and went. Retired from the register with a clean settlement: the event date elapsed.<div class='small' style='margin-top:2mm'>Source: Date elapsed</div></div><h3>Two meteor showers this month - one from Halley's own dust <span class='tag t-doc'>NEW</span></h3><div class='box key'>The Draconids peak 8-9 October, usually a quiet handful per hour, shed by comet 21P/Giacobini-Zinner. The Orionids peak 21-22 October, up to 20 an hour, from dust trail of comet 1P/Halley - the same comet that visits every 76 years. You are sleeping under its litter. Both peak nights have a waxing-to-new moon window, which favours Kedah skies.<div class='small' style='margin-top:2mm'>Source: timeanddate.com October 2026 sky guide; Natural History Museum and EarthSky shower calendars</div></div><h3>Paint that gets colder than the air around it <span class='tag t-doc'>NEW</span></h3><div class='box key'>Passive radiative cooling materials made the World Economic Forum's top-ten emerging technologies of 2026: engineered surfaces that dump heat straight to deep space through the atmospheric infrared window and come to rest below ambient temperature, using zero electricity. For a hot, grid-stressed country it reads like science fiction with a paint roller.<div class='small' style='margin-top:2mm'>Source: WEF/SOCI Top 10 Emerging Technologies 2026 report listing</div></div><h3>Carried: the boron that bends and conducts <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Still checkable, still strange - a boron form that behaves like a metal wire and a plastic strip at once. No new development; left open on the register.<div class='small' style='margin-top:2mm'>Source: Carried from EDITION-012</div></div><h3>Carried: two unnamed snails from Montenegro <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Unchanged from last edition; the register keeps them open rather than letting silence look like resolution.<div class='small' style='margin-top:2mm'>Source: Carried from EDITION-012</div></div><h2>Risk</h2><h3>91 days until the household threshold drops back to 600 kWh <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>The threshold reverts on 1 January. Above 600 kWh a month, the adjusted fuel cost mechanism starts biting the household bill again. Coal at around USD 148 a tonne remains the input being absorbed. Ninety-one days is one school holiday and one budget away.<div class='small' style='margin-top:2mm'>Source: Carried item; day count from 2026-10-02; coal input per earlier edition ledger, still OPEN</div></div><h3>Haze: Kedah still clear - the weather risk this week is thunderstorms, not smoke <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>No haze deterioration found for Kedah; the Sarawak unhealthy readings from last week stand with no new spread reported. The active warning is the monsoon-transition kind: thunderstorms, heavy rain and strong winds across KL and ten states on 1 October. Nothing that touches the family.<div class='small' style='margin-top:2mm'>Source: MetMalaysia warning 1 Oct via Malay Mail; no new API warnings surfaced in sweep. W=1 (MetMalaysia primary)</div></div><h3>The hearing now sits inside the election window - for certain <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>The Sarawak assembly dissolves no later than 14 February 2027; the premier can go earlier, with talk of a poll before December. The 25-29 January hearing therefore sits inside a campaign season either way - the state's counsel walks into court as a candidate, not just a litigant. That shapes tone and settlement appetite more than it shapes the law.<div class='small' style='margin-top:2mm'>Source: Sarawak constitution auto-dissolution 14 Feb 2027 (Wikipedia/assembly term); hearing dates 1 Oct court order; no election date announced (UKAS)</div></div><h2>Own</h2><h3>OD1: 150 days - and the legal calendar is now officially inside it <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Two live legal clocks now sit inside your decision window. The Federal Court hearing runs 25-29 January, and the Budget lands 9 October. The window itself did not change: 150 days to 1 March 2027. What changed this week is that the January dates stopped being an estimate and became a court order.<div class='small' style='margin-top:2mm'>Source: Days computed from 2026-10-02; hearing dates per Federal Court direction hearing 1 Oct (Bernama via Malay Mail)</div></div><h3>Still open: check the EPF nomination once before OD1 <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Unchanged and still the cheapest insurance you own. Nomination lapses and scheme changes took effect from January 2026; a stale nomination sends savings into intestacy. One check, one sitting.<div class='small' style='margin-top:2mm'>Source: EPF policy enhancements effective 1 Jan 2026 (KWSP announcement); carried item, unchanged</div></div><h3>OPS: kernel green, fed green, WELL yellow on the same self-report <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>arifOS kernel :8088 healthy, all 13 floors active, no drift. FED :7074 healthy, advisory only. WELL :18083 reports degraded for the same reason as last edition - it wants human state input and has none; it is reporting an absence, not a fault. Nothing in OPS needs you today. The void sweep found nothing consequential enough to ship: everything real this week already sits in the sections above.<div class='small' style='margin-top:2mm'>Source: Health endpoints probed 2026-10-02 06:05 MYT; WELL owner_summary YELLOW: sovereign_state_unknown</div></div>
+
+</body>
+</html>

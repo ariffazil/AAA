@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/worldline.v1.schema.json",
+  "title": "Worldline v1",
+  "description": "Typed primitive for organ/agent state vector S_t = [R, R_dot, B, M, P, C, A, V, U]. Each organ emits a worldline snapshot at observed_at; CHRON computes epsilon_t = S_{t+1} - Ŝ_{t+1} and feeds PHOENIX-72 for cooling. Replaces scalar 'healthy' verdicts with a typed vector that distinguishes observation, trajectory, belief, memory, prediction, commitment, authority, vitality, and uncertainty as separate dimensions. R6 readiness test (recursive improvement) requires at least one observed E_{n+1} < E_n via this primitive.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "worldline_id",
+    "subject_ref",
+    "producer_organ",
+    "observed_at",
+    "dimensions",
+    "snapshot_id"
+  ],
+  "properties": {
+    "worldline_id": { "type": "string", "format": "uuid" },
+    "subject_ref": {
+      "type": "string",
+      "description": "Opaque reference to the agent/organ/subject this worldline describes."
+    },
+    "producer_organ": {
+      "type": "string",
+      "enum": ["arifOS", "A-FORGE", "HERMES", "GEOX", "WEALTH", "WELL", "CHRON", "FRAME", "arifFLOW", "AAA", "EXTERNAL", "UNKNOWN"],
+      "description": "Which organ measured and emitted this worldline."
+    },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of the canonicalized worldline payload. Immutable handle."
+    },
+    "previous_snapshot_id": {
+      "type": ["string", "null"],
+      "description": "Prior snapshot on this worldline. Null if first."
+    },
+    "dimensions": {
+      "type": "object",
+      "required": ["R", "R_dot", "B", "M", "P", "C", "A", "V", "U"],
+      "description": "Nine-dimension state vector. Each dimension is itself a typed measurement, not a scalar.",
+      "properties": {
+        "R": {
+          "type": "object",
+          "description": "Observed reality — what is currently the case (state estimate, measured now).",
+          "$ref": "measurement.v1.schema.json"
+        },
+        "R_dot": {
+          "type": "object",
+          "description": "Trajectory — derivative of R over recent window. Carries direction, not magnitude alone.",
+          "properties": {
+            "delta": { "type": "object", "description": "Typed delta (metric/value/unit/scope/window)." },
+            "acceleration": { "type": ["number", "null"], "description": "Optional second derivative (curvature)." },
+            "window": { "type": "string", "description": "Window over which delta was computed." }
+          }
+        },
+        "B": {
+          "type": "object",
+          "description": "Beliefs — what the subject holds as currently true, distinct from observation.",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "claim": { "type": "string" },
+                  "epistemic_class": {
+                    "type": "string",
+                    "enum": ["OBSERVED", "DERIVED", "REPORTED", "REMEMBERED", "INFERRED", "PREDICTED", "NORMATIVE", "CONTESTED", "UNKNOWN", "GENERATED"]
+                  },
+                  "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+                  "evidence_refs": { "type": "array", "items": { "type": "string" } },
+                  "supersedes": { "type": ["string", "null"] },
+                  "held_since": { "type": "string", "format": "date-time" }
+                }
+              }
+            },
+            "active_count": { "type": "integer" }
+          }
+        },
+        "M": {
+          "type": "object",
+          "description": "Durable memory — references to sealed lessons, scars, recipes, identities.",
+          "properties": {
+            "active_lessons": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Refs to currently-held durable lessons."
+            },
+            "sealed_lessons": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "voided_lessons": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "P": {
+          "type": "object",
+          "description": "Predictions — explicit forecasts with prediction_id so CHRON can later compute epsilon_t.",
+          "properties": {
+            "active": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "prediction_id": { "type": "string", "format": "uuid" },
+                  "claim": { "type": "string" },
+                  "expected_at": { "type": "string", "format": "date-time" },
+                  "verify_method": { "type": "string" },
+                  "calibrated_confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+                }
+              }
+            },
+            "due_count": { "type": "integer" },
+            "past_count": { "type": "integer" }
+          }
+        },
+        "C": {
+          "type": "object",
+          "description": "Commitments — what the subject has publicly/operationally promised.",
+          "properties": {
+            "outstanding": { "type": "array", "items": { "type": "string" } },
+            "fulfilled": { "type": "array", "items": { "type": "string" } },
+            "broken": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "A": {
+          "type": "object",
+          "description": "Authority — what this subject may mutate, not what it can access.",
+          "properties": {
+            "granted_scopes": { "type": "array", "items": { "type": "string" } },
+            "expiry": { "type": ["string", "null"], "format": "date-time" },
+            "boundary_active": { "type": "boolean" },
+            "tier": { "type": "string", "enum": ["AKSES", "HANTAR", "MUTASI", "DEPLOY", "NONE"] }
+          }
+        },
+        "V": {
+          "type": "object",
+          "description": "Vitality / resources — substrate health (machine, human, network, budget).",
+          "$ref": "measurement.v1.schema.json"
+        },
+        "U": {
+          "type": "object",
+          "description": "Uncertainty — what is not known about the subject's own state.",
+          "properties": {
+            "known_unknowns": { "type": "array", "items": { "type": "string" } },
+            "epistemic_entropy": { "type": ["number", "null"], "minimum": 0 },
+            "measurement_gaps": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "epsilon": {
+      "type": "object",
+      "description": "Computed by CHRON after this snapshot's horizon expires: epsilon_t = S_{t+1} - Ŝ_{t+1}. Null at emission time; populated by CHRON upon verification.",
+      "properties": {
+        "predicted_snapshot_id": { "type": ["string", "null"] },
+        "actual_snapshot_id": { "type": ["string", "null"] },
+        "per_dimension_delta": {
+          "type": "object",
+          "description": "Per-dimension error vector. If error reduced vs prior prediction, mark dimension as IMPROVING.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "delta": { "type": "number" },
+              "direction": { "type": "string", "enum": ["IMPROVING", "STABLE", "DEGRADING", "DIVERGED"] },
+              "bridge_proof_ref": { "type": "string", "description": "bridge-proof.v1 witnessing this comparison." }
+            }
+          }
+        },
+        "E_n_plus_1_less_than_E_n": {
+          "type": ["boolean", "null"],
+          "description": "R6 readiness test. True if any dimension's directional error decreased from prior prediction."
+        }
+      }
+    },
+    "witness_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Independent witness implementations that have inspected this snapshot."
+    },
+    "compiled_at": { "type": "string", "format": "date-time" },
+    "compiled_by": { "type": "string" }
+  }
+}

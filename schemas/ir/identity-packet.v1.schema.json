@@ -1,0 +1,90 @@
+{
+ "$id": "identity-packet",
+ "title": "IdentityPacket \u2014 what exactly is this thing?",
+ "type": "object",
+ "required": [
+  "subject_type",
+  "identities",
+  "equivalence_evidence",
+  "unresolved_relations",
+  "identity_state",
+  "observed_at"
+ ],
+ "properties": {
+  "subject_type": {
+   "type": "string"
+  },
+  "identities": {
+   "type": "object",
+   "description": "key -> {scheme,value}; scheme enum: git_sha|pep440|filesystem_path|container_digest|schema_epoch|custom",
+   "additionalProperties": {
+    "type": "object",
+    "properties": {
+     "scheme": {
+      "type": "string"
+     },
+     "value": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "scheme",
+     "value"
+    ]
+   }
+  },
+  "equivalence_evidence": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "relation",
+     "from",
+     "to",
+     "evidence_ref"
+    ],
+    "properties": {
+     "relation": {
+      "enum": [
+       "DERIVED_FROM",
+       "PACKAGED_AS",
+       "LOADED_FROM",
+       "SAME_AS"
+      ]
+     },
+     "from": {
+      "type": "string"
+     },
+     "to": {
+      "type": "string"
+     },
+     "evidence_ref": {
+      "type": "string"
+     },
+     "measured_at": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "unresolved_relations": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "identity_state": {
+   "enum": [
+    "CONSISTENT",
+    "DRIFT",
+    "AMBIGUOUS_LENS_CONFLICT",
+    "UNMEASURED"
+   ],
+   "description": "MATCH/DRIFT verdicts are FORBIDDEN until every claimed edge has measured equivalence evidence"
+  },
+  "observed_at": {
+   "type": "string"
+  }
+ },
+ "additionalProperties": false
+}

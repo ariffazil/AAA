@@ -1,0 +1,41 @@
+{
+ "$id": "result-packet",
+ "title": "ResultPacket \u2014 what actually happened?",
+ "type": "object",
+ "required": [
+  "task_ir_hash",
+  "outcome",
+  "evidence_refs",
+  "observed_at"
+ ],
+ "properties": {
+  "task_ir_hash": {
+   "type": "string"
+  },
+  "outcome": {
+   "type": "string"
+  },
+  "evidence_refs": {
+   "type": "array"
+  },
+  "cost": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "duration_ms": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "witness_refs": {
+   "type": "array"
+  },
+  "observed_at": {
+   "type": "string"
+  }
+ },
+ "additionalProperties": false
+}

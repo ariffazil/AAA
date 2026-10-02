@@ -1,0 +1,2 @@
+{"ts":"2026-10-01T23:49:57Z","session":"blue-test","event":"Stop","verdict":"BLOCK","reason":"no_strong_handle","claim_without_handle":true,"weak_words_only":false}
+{"ts":"2026-10-01T23:49:57Z","session":"blue-test","event":"Stop","verdict":"ALLOW","reason":"strong_handle","weak_only":false}

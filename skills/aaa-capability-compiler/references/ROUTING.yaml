@@ -1,0 +1,11 @@
+# ROUTING — compiler-level registry of family manifests
+# Rule: one human job family → one canonical front door.
+families:
+  pdf:                families/pdf.yaml                 # PROVEN
+  evidence:           families/evidence.yaml            # ALIAS_PENDING_MERGE
+  session:            families/session.yaml             # ALIAS_PENDING_MERGE
+  federation-runtime: families/federation-runtime.yaml  # ALIAS_PENDING_MERGE
+aliases: references/ALIASES.yaml
+proofs:  references/PROOFS.jsonl
+state:   references/CAPABILITY_STATE.json
+add_family: "copy families/pdf.yaml as template; register here; probe before maturity flags"

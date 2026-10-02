@@ -1,0 +1,127 @@
+{
+  "schema": "execution-path-next-v1",
+  "generated_at": "2026-10-01T22:00:00Z",
+  "purpose": "Auto-chart next executable step for whoever next reads this. No menus. No questions.",
+  "sovereign_law": "Fresh-Agent Law #1: one canonical machine representation per concept; HUD is projection of contract, not source of authority.",
+  "current_state": {
+    "hud_state_hash": "see /root/AAA/cockpit/hud-state.json::integrity_hash",
+    "ecw_report_hash": "see /root/AAA/cockpit/ecw-report.json::integrity_hash",
+    "last_action": "Wired HUD panel [7] ECW + added live verdict-token extraction",
+    "branch_main": true,
+    "lane": "B autonomous"
+  },
+  "next_steps": [
+    {
+      "step": 1,
+      "name": "ECW authority probe",
+      "action": "probe each MCP with proper auth envelope (arif_init → arif_observe → arif_judge)",
+      "mutates": "/root/AAA/cockpit/ecw-report.json",
+      "f13_class": "OBSERVE_only",
+      "blocks_if": "arif_init handshake fails — HOLD and log",
+      "deliverable": "AUTHORITY_DRIFT count populated in ecw-report.json",
+      "reversible": true,
+      "sovereign_signal_required": false
+    },
+    {
+      "step": 2,
+      "name": "Persist execution-path-next.json",
+      "action": "Write this schema to /root/AAA/cockpit/execution-path-next.json on every agent exit",
+      "mutates": "/root/AAA/cockpit/execution-path-next.json",
+      "f13_class": "OBSERVE_only",
+      "blocks_if": "none",
+      "deliverable": "schema present, ready for next agent",
+      "reversible": true,
+      "sovereign_signal_required": false
+    },
+    {
+      "step": 3,
+      "name": "HUD renderer reads execution-path-next",
+      "action": "display-hud.sh emits panel [8] EXECUTION_PATH_NEXT with first 3 next_steps",
+      "mutates": "/root/AAA/cockpit/display-hud.sh",
+      "f13_class": "OBSERVE_only",
+      "blocks_if": "execution-path-next.json missing → show HELD",
+      "deliverable": "fresh agent sees next path on shell login",
+      "reversible": true,
+      "sovereign_signal_required": false
+    },
+    {
+      "step": 4,
+      "name": "Line 246 phantom fix (BL02 source)",
+      "action": "Replace hardcoded 'chron_attribution.py (branch c37ec4d, not on master — uncoupled)' with git rev-parse + merge-base query",
+      "mutates": "/root/scripts/bl02_calibration_curves.py line 246",
+      "f13_class": "canonical_record",
+      "blocks_if": "sovereign_signal_required = true",
+      "deliverable": "durable_alias_owner derived from git, not string",
+      "reversible": true,
+      "sovereign_signal_required": true
+    },
+    {
+      "step": 5,
+      "name": "fed_router.py:61 stale claim fix",
+      "action": "Same fix pattern as step 4 — query git instead of hardcoded string",
+      "mutates": "/root/AAA/federation/agents/fed_router.py",
+      "f13_class": "canonical_record",
+      "blocks_if": "concurrent-write race on /root/AAA — agent lain tengah mutate cockpit/HUD. HOLD until cockpit race resolved.",
+      "deliverable": "stale claim removed from fed_router",
+      "reversible": true,
+      "sovereign_signal_required": true
+    },
+    {
+      "step": 6,
+      "name": "chron_attribution.py canonical resolution",
+      "action": "Architectural call — /root/chron vs /root/chron-push-mirror — sovereign decides which is canonical",
+      "mutates": "/root/chron or /root/chron-push-mirror (one or the other)",
+      "f13_class": "canonical_record",
+      "blocks_if": "none — pure decision",
+      "deliverable": "TWIN_SOURCES → 0 (or 1 if both kept with role distinction)",
+      "reversible": true,
+      "sovereign_signal_required": true
+    },
+    {
+      "step": 8,
+      "name": "arifOS deploy md5 identity CONTRADICTION",
+      "action": "Reconcile or HOLD OPEN arifOS deployed package md5 (05155ef9cc38) vs source (03b6f579848f). Forge runtime verify says MATCH at SHA, but content-level md5 differs. Two observers, two legitimate readings. Sovereign decides.",
+      "mutates": "/opt/arifos/current/venv/.../site-packages/arifos/__init__.py (only if R2 RECONCILED)",
+      "f13_class": "external_ports + canonical_record + constitutional_kernel",
+      "blocks_if": "kernel authority is constitutional; /opt blast radius is large",
+      "deliverable": "Three flavors — R1 HOLD OPEN with CONTRADICTION logged; R2 RECONCILED with annotation; R3 ISOLATE to KVM8 lattice",
+      "reversible": true,
+      "sovereign_signal_required": true
+    },
+    {
+      "step": 7,
+      "name": "BL02 cron schedule",
+      "action": "Add /etc/cron.d/bl02-failclosed to run periodically, only after routable_actors > 0",
+      "mutates": "/etc/cron.d/bl02-failclosed",
+      "f13_class": "external_ports + direction_change (cron = autonomous schedule)",
+      "blocks_if": "routable_actors = 0 — cron must NOT run fail-closed zero-output artifact forever",
+      "deliverable": "scheduled refresh, FRESH age for bl02 panel",
+      "reversible": true,
+      "sovereign_signal_required": true
+    }
+  ],
+  "invariants": {
+    "L1_vocabulary": "arifOS CANONICAL_VERDICTS = {OBSERVE_ONLY, SEAL, SABAR, VOID, HOLD, 888_HOLD}; legacy map identity-preserving",
+    "L2_identity": "i-arif non-network, sovereign identity.toml mode 600, forbidden_self_names enforced",
+    "L3_authority": "Capability != Authority; F13-class = money/irreversible/canonical/external/direction → HOLD",
+    "L4_path": "canonical != scratch != sealed; Source != Runtime; concurrent-write lease scope checked",
+    "L5_contract": "DeclaredState = ObservedState = InterpretedState = EnforcedState; 6-class drift taxonomy",
+    "L6_concurrency": "integrity_hash = SHA256(canonical body); FRESH<60s / WARM<5min / STALE>5min / TAMPER exit=3"
+  },
+  "held_for_sovereign": [
+    "Concurrent-write protection on /root/AAA/cockpit/ (multi-agent race)",
+    "Authority contract schema (P0#1 sovereign queue)",
+    "Vocabulary convergence probe live (P0#2)",
+    "Path authority map full tuple (P0#3)",
+    "Reality-of-execution attestation (P0#4)",
+    "Scar/degradation specificity (P1#7)",
+    "BL02 attribution convergence before cron (P1#8)"
+  ],
+  "do_not_ask_sovereign_for": [
+    "Which order to execute non-F11-reversible items",
+    "Which panel to display first",
+    "Whether to use bash or jq",
+    "File naming, schema structure, library choice",
+    "Any reversible Lane B work"
+  ]
+}

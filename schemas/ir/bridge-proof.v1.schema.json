@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/bridge-proof.v1.schema.json",
+  "title": "BridgeProof v1",
+  "description": "Typed primitive for equivalence claims between two representations. Implements NO EQUIVALENCE WITHOUT A BRIDGE PROOF: A ≡ B iff Bridge(A,B)=WITNESSED. Four independent axes: relation (ontological claim), comparability (whether comparison is meaningful), verification_state (witness result), probe_state (probe procedural health). Each axis must be emitted separately. EQUIVALENT_TO requires COMPARABLE ∧ WITNESSED ∧ non-empty evidence_refs. TYPE_MISMATCH is NOT divergence. ProbeFailure is NOT relation REFUTED. Compatible(A,B) = SameType(A,B) OR WitnessedBridge(A,B).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bridge_id",
+    "claim_a",
+    "claim_b",
+    "relation",
+    "comparability",
+    "verification_state",
+    "probe_state",
+    "witness_method",
+    "decided_at"
+  ],
+  "properties": {
+    "bridge_id": { "type": "string", "format": "uuid" },
+    "claim_a": {
+      "type": "object",
+      "required": ["value", "type"],
+      "description": "First representation under test.",
+      "properties": {
+        "value": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["git_sha", "git_tag", "pep440", "filesystem_path", "url", "uuid", "name", "phone", "email", "app_store_id", "play_store_id", "doi", "sha256", "sha1", "md5", "container_id", "process_pid", "semver", "urn", "metric", "status_string", "tool_name", "claim_text", "identity", "unknown"]
+        },
+        "scheme_detail": { "type": ["string", "null"] },
+        "identity_packet_ref": { "type": ["string", "null"] }
+      }
+    },
+    "claim_b": {
+      "type": "object",
+      "required": ["value", "type"],
+      "description": "Second representation under test.",
+      "properties": {
+        "value": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["git_sha", "git_tag", "pep440", "filesystem_path", "url", "uuid", "name", "phone", "email", "app_store_id", "play_store_id", "doi", "sha256", "sha1", "md5", "container_id", "process_pid", "semver", "urn", "metric", "status_string", "tool_name", "claim_text", "identity", "unknown"]
+        },
+        "scheme_detail": { "type": ["string", "null"] },
+        "identity_packet_ref": { "type": ["string", "null"] }
+      }
+    },
+    "relation": {
+      "type": "string",
+      "enum": ["EQUIVALENT_TO", "DIVERGES_FROM", "DERIVED_FROM", "ALIAS_OF", "PACKAGED_AS", "LOADED_FROM", "SUPPORTS", "SUPERSEDES"],
+      "description": "Ontological relation under test. NEVER carries TYPE_MISMATCH or UNDETERMINED — those belong to comparability."
+    },
+    "comparability": {
+      "type": "string",
+      "enum": ["COMPARABLE", "TYPE_MISMATCH", "INCOMMENSURABLE", "UNMEASURED", "INSUFFICIENT_EVIDENCE"],
+      "description": "Whether the two representations can be compared on the same axis. COMPARABLE = same type OR WitnessedBridge exists. TYPE_MISMATCH = types differ and no bridge. INCOMMENSURABLE = no known bridge can map them. UNMEASURED = probe has not run. INSUFFICIENT_EVIDENCE = probe ran but evidence insufficient."
+    },
+    "verification_state": {
+      "type": "string",
+      "enum": ["WITNESSED", "REFUTED", "UNRESOLVED"],
+      "description": "What the witness actually concluded. WITNESSED = evidence supports relation. REFUTED = evidence contradicts relation. UNRESOLVED = insufficient evidence either way."
+    },
+    "probe_state": {
+      "type": "string",
+      "enum": ["SUCCESS", "ERROR", "UNREACHABLE", "NOT_RUN"],
+      "description": "Procedural health of the measurement. ERROR/UNREACHABLE/NOT_RUN must NEVER auto-promote to REFUTED — probe failure is not refutation."
+    },
+    "type_mismatch_resolution": {
+      "type": ["object", "null"],
+      "description": "If types differ, attempt normalization through known scheme bridges (e.g. pep440_to_git_sha_via_BUILDINFO). Null if no bridge attempted.",
+      "properties": {
+        "bridge_name": { "type": "string", "description": "Named bridge (e.g. pep440_to_git_sha_via_BUILDINFO)." },
+        "bridge_artifact_ref": { "type": "string", "description": "Artifact backing the bridge (BUILDINFO, SBOM, wheel metadata, etc.)" },
+        "normalized_a": { "type": "string" },
+        "normalized_b": { "type": "string" },
+        "comparable_after_resolution": { "type": "boolean" }
+      }
+    },
+    "witness_method": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["retrieval", "invocation", "entailment", "lineage", "computation", "witness", "structural", "unknown"]
+        },
+        "tool": { "type": ["string", "null"] },
+        "procedure_ref": { "type": ["string", "null"] }
+      }
+    },
+    "witness_evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Raw evidence backing the witness. Empty array forces verification_state=UNRESOLVED."
+    },
+    "applied_to": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Where this BridgeProof has been applied (RuntimePacket drift fields, CapabilityGraph callable set, worldline epsilon, etc.)"
+    },
+    "supersedes": { "type": ["string", "null"], "description": "Prior BridgeProof id, if this updates a previous one." },
+    "decided_at": { "type": "string", "format": "date-time" },
+    "decided_by": { "type": "string", "description": "BridgeCompiler / IdentityCompiler instance." }
+  },
+  "allOf": [
+    {
+      "description": "HARD INVARIANT 1: EQUIVALENT_TO requires COMPARABLE ∧ WITNESSED ∧ non-empty evidence.",
+      "if": {
+        "properties": { "relation": { "const": "EQUIVALENT_TO" } },
+        "required": ["relation"]
+      },
+      "then": {
+        "properties": {
+          "comparability": { "const": "COMPARABLE" },
+          "verification_state": { "const": "WITNESSED" }
+        }
+      }
+    },
+    {
+      "description": "HARD INVARIANT 2: Probe failure cannot masquerade as REFUTED.",
+      "if": {
+        "properties": { "probe_state": { "enum": ["ERROR", "UNREACHABLE", "NOT_RUN"] } },
+        "required": ["probe_state"]
+      },
+      "then": {
+        "properties": {
+          "verification_state": { "enum": ["UNRESOLVED", "REFUTED"], "description": "If probe_state ∈ {ERROR, UNREACHABLE, NOT_RUN}, verification_state MUST be UNRESOLVED. REFUTED is forbidden because no measurement happened." }
+        }
+      }
+    },
+    {
+      "description": "HARD INVARIANT 3: Empty witness_evidence_refs forces UNRESOLVED.",
+      "if": {
+        "properties": { "witness_evidence_refs": { "type": "array", "maxItems": 0 } },
+        "required": ["witness_evidence_refs"]
+      },
+      "then": {
+        "properties": {
+          "verification_state": { "const": "UNRESOLVED" }
+        }
+      }
+    },
+    {
+      "description": "HARD INVARIANT 4: TYPE_MISMATCH ≠ DIVERGES_FROM.",
+      "if": {
+        "properties": { "comparability": { "const": "TYPE_MISMATCH" } },
+        "required": ["comparability"]
+      },
+      "then": {
+        "properties": {
+          "relation": { "not": { "const": "DIVERGES_FROM" } },
+          "verification_state": { "const": "UNRESOLVED" }
+        }
+      }
+    }
+  ]
+}

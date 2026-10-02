@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/task-ir.v1.schema.json",
+  "title": "TaskIR v1",
+  "description": "Immutable typed intermediate representation for any task intent. Once compiled, the task_ir_hash is the canonical handle. Promoted from forge_compile_task contract. Acceptance criteria, non-goals, prohibited actions and reversibility are mandatory fields — the compiler must state them, not the human.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "intent", "acceptance_criteria", "risk_class", "authority_required", "reversibility", "task_ir_hash", "compiled_at"],
+  "properties": {
+    "task_id": { "type": "string", "format": "uuid" },
+    "parent_task_id": { "type": ["string", "null"], "format": "uuid" },
+    "intent": { "type": "string", "minLength": 1, "description": "Single-sentence intent." },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "What must be true for the task to be considered done."
+    },
+    "non_goals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What is explicitly out of scope."
+    },
+    "risk_class": {
+      "type": "string",
+      "enum": ["READ", "WRITE", "DEPLOY", "IRREVERSIBLE", "F13_BINARY"],
+      "description": "Highest consequence class encountered."
+    },
+    "candidate_files": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Files the compiler considers in scope."
+    },
+    "excluded_files": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Files explicitly out of scope."
+    },
+    "invariants": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Constraints that must hold throughout execution."
+    },
+    "prohibited_actions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Actions that the executor is forbidden from taking."
+    },
+    "verification": {
+      "type": "object",
+      "description": "How the task's output will be falsified.",
+      "properties": {
+        "method": { "type": "string" },
+        "acceptance": { "type": "array", "items": { "type": "string" } },
+        "evidence_required": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "tokens": { "type": "integer" },
+        "wallclock_seconds": { "type": "integer" },
+        "tool_calls": { "type": "integer" }
+      }
+    },
+    "authority_required": {
+      "type": "string",
+      "enum": ["OBSERVE", "HANTAR", "MUTASI", "DEPLOY"],
+      "description": "Per three-tier Capability ≠ Authority doctrine (AUDIT-PATCH-001, 2026-10-01)."
+    },
+    "reversibility": {
+      "type": "boolean",
+      "description": "Whether a rollback path exists at the chosen risk_class."
+    },
+    "task_ir_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of the canonicalized TaskIR. Immutable handle."
+    },
+    "compiled_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "compiled_by": { "type": "string" }
+  }
+}

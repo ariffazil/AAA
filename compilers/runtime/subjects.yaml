@@ -1,0 +1,15 @@
+arifos:
+  service_regex: "arifos.service"
+  import_probe: ["/opt/arifos/current/venv/bin/python", "-c", "import arifosmcp; print(arifosmcp.__file__)"]
+  repos: []
+  port: 8088
+aforge:
+  service_regex: "aforge"
+  import_probe: null
+  repos: ["/root/A-FORGE"]
+  port: 7072
+frame:
+  service_regex: "frame-(mcp|organ)"
+  import_probe: null
+  repos: ["/root/FRAME", "/opt/frame"]
+  port: null

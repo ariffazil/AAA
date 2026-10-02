@@ -1,0 +1,61 @@
+{
+ "$id": "evidence-packet",
+ "title": "EvidencePacket \u2014 what was observed and how?",
+ "type": "object",
+ "required": [
+  "claim",
+  "probes",
+  "verification",
+  "observed_at"
+ ],
+ "properties": {
+  "claim": {
+   "type": "string"
+  },
+  "probes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "cmd",
+     "ok",
+     "output_ref"
+    ],
+    "properties": {
+     "cmd": {
+      "type": "string"
+     },
+     "ok": {
+      "type": "boolean"
+     },
+     "output_ref": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "counter_evidence": {
+   "type": "array"
+  },
+  "contradiction_class": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "verification": {
+   "type": "object"
+  },
+  "verdict_ref": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "note": "888 judgment ref \u2014 the packet carries evidence, NEVER its own verdict"
+  },
+  "observed_at": {
+   "type": "string"
+  }
+ },
+ "additionalProperties": false
+}

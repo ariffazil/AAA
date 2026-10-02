@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/context-packet.v1.schema.json",
+  "title": "ContextPacket v1",
+  "description": "Compiled context view for an in-flight task. Temporary, not memory-truth. Excludes irrelevant receipts/scars; surfaces contested ones. Has token budget and freshness envelope. ContextCompiler consumes TaskIR + actor + mission and emits this.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["context_id", "task_ir_hash", "compiled_at", "token_budget"],
+  "properties": {
+    "context_id": { "type": "string", "format": "uuid" },
+    "task_ir_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "current_truth": { "type": "array", "items": { "type": "string" }, "description": "Ref to canonical TruthPackets active for this task." },
+    "historical_truth": { "type": "array", "items": { "type": "string" } },
+    "relevant_scars": { "type": "array", "items": { "type": "string" }, "description": "Procedural scars relevant to the task." },
+    "relevant_receipts": { "type": "array", "items": { "type": "string" } },
+    "task_context": { "type": "array", "items": { "type": "string" }, "description": "Direct context for the task itself." },
+    "excluded_context": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What was explicitly excluded and why."
+    },
+    "contested_memory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ref": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      },
+      "description": "Memory entries with conflict signals (RECORDED vs OBSERVED, multiple agents disagreeing)."
+    },
+    "freshness": {
+      "type": "object",
+      "description": "Freshness envelope per TruthPacket.",
+      "additionalProperties": { "type": "string", "enum": ["FRESH", "WARM", "STALE"] }
+    },
+    "provenance": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Provenance trail for the context assembly itself."
+    },
+    "token_budget": { "type": "integer", "minimum": 0 },
+    "compiled_at": { "type": "string", "format": "date-time" },
+    "compiled_by": { "type": "string" },
+    "supersedes": { "type": ["string", "null"] }
+  }
+}

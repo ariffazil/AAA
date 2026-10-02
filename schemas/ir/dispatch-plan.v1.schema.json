@@ -1,0 +1,57 @@
+{
+ "$id": "dispatch-plan",
+ "title": "DispatchPlan \u2014 who/what executes which node?",
+ "type": "object",
+ "required": [
+  "lane",
+  "agent",
+  "tools_allowed",
+  "fallback_chain",
+  "verification_agent"
+ ],
+ "properties": {
+  "lane": {
+   "type": "string"
+  },
+  "model": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "agent": {
+   "type": "string"
+  },
+  "context_budget": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "output_budget": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "tools_allowed": {
+   "type": "array"
+  },
+  "tools_forbidden": {
+   "type": "array"
+  },
+  "fallback_chain": {
+   "type": "array"
+  },
+  "verification_agent": {
+   "type": "string"
+  },
+  "task_ir_hash": {
+   "type": [
+    "string",
+    "null"
+   ]
+  }
+ },
+ "additionalProperties": false
+}

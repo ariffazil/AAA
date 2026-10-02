@@ -1,0 +1,103 @@
+{
+  "$id": "runtime-packet.schema.json",
+  "title": "RuntimePacket",
+  "type": "object",
+  "required": [
+    "subject",
+    "observed_at",
+    "source_identity",
+    "build_identity",
+    "deployed_identity",
+    "process_identity",
+    "import_origin",
+    "service_state",
+    "callable_surface",
+    "drift",
+    "measurement_identity",
+    "unknowns"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "source_identity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "build_identity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "deployed_identity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "process_identity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "import_origin": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "service_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "callable_surface": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "behavior": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "drift": {
+      "type": "object",
+      "properties": {
+        "classification": {
+          "enum": [
+            "CONVERGED",
+            "DRIFT",
+            "UNMEASURED",
+            "PARTIAL"
+          ]
+        },
+        "pairs_compared": {
+          "type": "array"
+        },
+        "details": {
+          "type": "array"
+        }
+      }
+    },
+    "measurement_identity": {
+      "type": "object",
+      "description": "commands actually executed + raw outputs"
+    },
+    "unknowns": {
+      "type": "array",
+      "description": "honest UNKNOWN list \u2014 never guessed"
+    }
+  },
+  "additionalProperties": false
+}
