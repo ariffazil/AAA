@@ -49,5 +49,16 @@ Consequence: any PDF snippet in doctrine must name its interpreter/binary explic
 - Voice→PDF: no single-call engine on any node.
 - KVM4 `ocr-and-documents` skill: interpreter-split patch was applied by Wawa on KVM2; KVM4 copy not verified as patched.
 
+## Addendum: v3 (ARIF pasted, 00:49 UTC) — 4th data point
+
+v3 arrived after the convergence above. It **absorbed dossier v1.1's meta-facts** ("nine symlinked", 13 skills, EXECUTABLE/PROVEN ontology, 5s/30s/2min) but **re-fabricated the inventory again** with new wrong names (underscore style: `scientific_pdf_generation`, `chart_generation`, `vision_qa`, `reportlab_pdf`, `slides_to_pdf`, `ocr_skill`, `pptx_to_pdf` — all 0 traces in origin/main) at a new wrong root (`/opt/arifOS/AAA/skills/` — still absent). Wrong versions again (pandoc 3.2, weasyprint 59.0, PyMuPDF 1.28.1, poppler 22.03.0 — actual KVM4: no pandoc/weasyprint/fitz, poppler 26.01.0). Ghost GEOX names again (`geox_map_context`, "seismic_slice"; real: `geox_map`, `geox_seismic_interpret`). `forge_document_ingest` is real but it is an A-FORGE-MCP tool, not a skill at the claimed path.
+
+**Pattern confirmed: serial fabricator with improving doctrine.** Meta-statistics absorbed correctly; referents re-invented each time. Governance answer unchanged: doctrine accepted, inventory refused, node-local probe before any claim.
+
+**What v3 adds that is worth keeping:** concrete FigureAsset JSON examples (map/section/chart/evidence-snippet), domain visual contracts per figure type, PROVEN-PDF-01..08 acceptance tests with verify commands, corrected wiring roadmap. Full annotated archive: `pdf-intelligence-blueprint-v3-annotated-2026-10-02.md` (same docs/ directory, AAA repo).
+
+**Implementation home (probed):** KVM8 lane — A-FORGE-MCP :7072 (`forge_chart`, `forge_document_ingest`, `forge_visual_qa`, `forge_visual_seal` live) + authoring engines + `scientific-pdf-generation` skill. KVM4/KVM2 = consumers/verifiers (poppler only).
+
 ---
+
 Relay: irfanclaw (KVM4) · 2026-10-02 · DITEMPA BUKAN DIBERI
