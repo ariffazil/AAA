@@ -121,4 +121,32 @@ Prediction → Wait → Reality → Verification → Calibration → Better Pred
 
 *Verification note (binding on chron-verify-sweep):* when a due prediction's non-occurrence traces to an intervention (repair, policy change, human action), classify as INTERVENTION-CAUSED, not INCORRECT. First real window: Belanjawan 2027, 9–10 Okt 2026.
 
+## v4 — APEX Viability Geometry (sovereign synthesis, 2 Okt 2026 — TEST, not canon)
+
+**G = (A·P·E·X)^{1/4}** — geometric, not arithmetic. `(1·1·1·0)^{1/4} = 0`: one fundamental zero (legitimacy, physics, evidence, liquidity, execution, human capacity) collapses the system; arithmetic averaging hides it (`0.75` looks healthy). *(Letter semantics beyond P=Physics not invented — not exposed by today's evaluator; to be read from the evaluator, never assumed.)*
+
+**J-space adaptive control:** `J = ∂T/∂G` — recompute only tasks with `|∂T_i/∂G_j| > θ`. Middle path between rigid institution (reality changes, policy doesn't) and hyper-reactive institution (everything changes when anything does). Change only what reality actually invalidated.
+
+**Layer law:** MATH defines invariants · PHYSICS constrains possible states (reality's veto — nothing becomes institutionally true merely because the model likes it) · CODE enforces transitions (17/17 GEOX↔arifOS invariant mappings held today: 6 Identity, 7 Authority, 4 Irreversibility) · INSTITUTION legitimizes coordinated action · CHRON tests survival across time.
+
+**Collapse defined:** *loss of reality-coupled corrective capacity.* Not servers-down, not bankruptcy — those are consequences. Chain: constraint failure → contradiction → attention delay → uncorrected error → trust loss → coordination failure → collapse. Threshold: **Ṡ_error > R_repair** (error accumulation outruns metabolic repair).
+
+**CHRON is the derivative operator.** Dashboards report S_t; collapse happens in dS/dt. `(S, Ṡ)` is phase space; add `S̈` and the question becomes *is degradation accelerating?* — Health 0.60 rising beats Health 0.90 falling. Pre-collapse signal (critical slowing down): **dτ_repair/dt > 0** — repairs still PASS while restoring force weakens.
+
+**Organ roles in the field:** GEOX reality-veto · WEALTH conservation/incentives (max U_i ⇏ max U_system) · WELL homeostasis (viability ranges, not maxima; Optimization ≠ Homeostasis) · HERMES anti-mythology (semantic collapse precedes institutional collapse — when language stops paying a penalty for disagreeing with reality) · A-FORGE causation (**evidence of activity ≠ evidence of effect** — the GAMING pair is the laboratory specimen) · scar/memory as impulse response h(t): h=0 means failure has no future, h→∞ means permanent paralysis; healthy memory decays `e^{-λt}` with severity-weighted λ. Live: 15 impulses/30d (4 scar seals, 3 888_HOLDs, 8 tool failures) — h(t) NOT yet characterized, insufficient sample.
+
+**ℛ_t — TEST HYPOTHESIS (sovereign synthesis, explicitly not ratified):**
+```
+ℛ_t = G_t · W_t · C_t · e^{-AD_t} · e^{-Δ_proxy,t}
+```
+Collapse risk: dℛ/dt < 0 persistently, especially with τ_recovery↑ ∧ Δ_proxy↑ ∧ AD↑. Trajectory, not a magic score.
+
+**Instrumented fragment (2 Okt 2026, 12:40 MYT) — two of five terms have live sensors:**
+- AD_t = **0.0** (was 0.48 this morning; one HIGH item metabolized during session; growth −2.59/day)
+- Δ_proxy = **0.877** (1 of 14 pairs GAMING, n=2 — divergence real, verdict premature)
+- G_t = UNKNOWN for session (rolling baseline 0.4181 exists but is federation-wide — never promoted), W_t = UNMEASURED, C_t = UNMEASURED (no τ_repair instrument; one anecdotal repair latency ≈ 2.6 days today)
+- Fragment arithmetic deliberately **not multiplied into a score** — three absent terms make any product fiction.
+
+**End-state:** not eight smarter bots — an **institutional digital nervous system**: separation of epistemic powers coupled by prediction → reality → correction, with APEX as the viability field connecting the organs.
+
 DITEMPA BUKAN DIBERI ⚒️
