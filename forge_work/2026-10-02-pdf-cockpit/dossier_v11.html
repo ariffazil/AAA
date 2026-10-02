@@ -1,0 +1,239 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@page { size: A4; margin: 15mm 14mm 14mm 14mm;
+  @bottom-right { content: counter(page) " / " counter(pages); font-family: Helvetica, sans-serif; font-size: 8.5pt; color: #7a7a7a; }
+  @bottom-left { content: "AAA PDF INTELLIGENCE DOSSIER · v1.1 · 02 OKT 2026"; font-family: Helvetica, sans-serif; font-size: 7pt; color: #9a9a9a; } }
+@page :first { @bottom-left { content: ""; } @bottom-right { content: ""; } }
+body { font-family: Georgia, 'Times New Roman', serif; font-size: 9.6pt; line-height: 1.32; color: #1c1c1c; }
+h1 { font-family: Helvetica, sans-serif; font-size: 16pt; color: #1a3a5c; margin: 0 0 1mm 0; }
+h2 { font-family: Helvetica, sans-serif; font-size: 11.5pt; color: #1a3a5c; margin: 4mm 0 1.6mm 0; padding-bottom: 1.2mm; border-bottom: 1.2pt solid #b02a1f; }
+h3 { font-family: Helvetica, sans-serif; font-size: 9.6pt; color: #b02a1f; margin: 3mm 0 1.2mm 0; }
+p { margin: 0 0 1.6mm 0; text-align: justify; }
+.cover { padding-top: 4mm; }
+.cover .kicker { font-family: Helvetica, sans-serif; font-size: 8pt; color: #b02a1f; letter-spacing: 1.2pt; text-transform: uppercase; margin-bottom: 3mm; }
+.cover h1 { font-size: 24pt; line-height: 1.08; margin-bottom: 3mm; }
+.cover .subtitle { font-family: Helvetica, sans-serif; font-size: 11pt; color: #5f5f5f; margin-bottom: 5mm; }
+.cover .rule { width: 55mm; height: 1.4pt; background: #b02a1f; margin: 4mm 0; }
+.cover .meta { font-family: Helvetica, sans-serif; font-size: 8.2pt; color: #5f5f5f; line-height: 1.7; }
+.cover .meta b { color: #1c1c1c; }
+table { width: 100%; border-collapse: collapse; margin: 1.6mm 0 2.4mm 0; font-size: 8pt; }
+th { background: #1a3a5c; color: #f5f1e8; padding: 1.2mm 1.6mm; text-align: left; font-family: Helvetica, sans-serif; font-weight: 700; font-size: 7.6pt; }
+td { padding: 0.9mm 1.6mm; border-bottom: 0.5pt solid #d4d4d4; vertical-align: top; }
+tr:nth-child(even) td { background: #f7f6f4; }
+code { background: #f5f1e8; padding: 0.2mm 1mm; font-family: Menlo, Consolas, monospace; font-size: 8pt; }
+pre { background: #f7f6f4; border-left: 3pt solid #1a3a5c; padding: 2.2mm 3mm; margin: 1.8mm 0; font-family: Menlo, Consolas, monospace; font-size: 7.3pt; line-height: 1.35; white-space: pre-wrap; word-wrap: break-word; }
+pre .cm{color:#7a7a7a} pre .kw{color:#b02a1f;font-weight:700} pre .st{color:#2c5f8a}
+.fig { text-align: center; margin: 2mm 0; page-break-inside: avoid; }
+.fig img { max-width: 100%; } .fig .cap { font-family: Helvetica, sans-serif; font-size: 7.4pt; color: #5f5f5f; font-style: italic; margin-top: 1.1mm; }
+.callout { background: #fef8f7; border-left: 3pt solid #b02a1f; padding: 2.2mm 3mm; margin: 2.2mm 0; font-size: 8.8pt; }
+.callout.green { background: #f4faf6; border-left-color: #2f6b3a; } .callout.amber { background: #fffcf2; border-left-color: #b8860b; } .callout.blue { background: #f4f8fd; border-left-color: #1a3a5c; }
+.cardrow { display: flex; gap: 3mm; margin: 2mm 0; } .cardrow > div { flex:1; border:0.5pt solid #d4d4d4; border-left:2.5pt solid #b02a1f; padding:2mm 2.5mm; font-size:7.8pt; }
+.cardrow > div b { color:#1a3a5c; display:block; margin-bottom:0.8mm; }
+.badge { display:inline-block; font-family:Helvetica,sans-serif; font-size:7pt; padding:0.3mm 1.4mm; border-radius:2pt; font-weight:700; }
+.b-live{background:#2f6b3a;color:#fff} .b-mid{background:#b8860b;color:#fff} .b-low{background:#7a7a7a;color:#fff} .b-red{background:#b02a1f;color:#fff}
+.tag { font-family:Menlo,monospace; font-size:7pt; background:#eef2f7; color:#1a3a5c; padding:0.2mm 0.9mm; border-radius:2pt; }
+.small { font-size:7.8pt; color:#5f5f5f; }
+hr { border:0; border-top:0.5pt solid #cccccc; margin:2.2mm 0; }
+ul,ol { margin:0 0 1.8mm 5mm; } li { margin-bottom:0.7mm; }
+.pagebreak { page-break-before: always; }
+</style></head><body>
+
+<div class="cover">
+  <div class="kicker">Evidence-Surface Dossier · AAA Agentic Intelligence</div>
+  <h1>The PDF Intelligence Cockpit<br>of the arifOS Federation</h1>
+  <div class="subtitle">Where every PDF skill physically lives, who owns it, whether it is executable, and whether it has actually worked</div>
+  <div class="rule"></div>
+  <div class="meta">
+    <b>Frame for:</b> Muhammad Arif bin Fazil (F13 SOVEREIGN)<br>
+    <b>Forged by:</b> HERMES · edge bridge, arifOS · <b>version:</b> v1.1 (hardening pass)<br>
+    <b>Date:</b> Friday, 02 October 2026<br>
+    <b>Method:</b> live filesystem walk + sha256 + kernel/A-FORGE JSON-RPC probe<br>
+    <b>Rule:</b> Name ≠ Path ≠ Present ≠ Executable ≠ Proven. Every claim carries its state.
+  </div>
+</div>
+
+<div class="pagebreak"></div>
+
+<h2>1 · Tesis: PDF ialah permukaan bukti, bukan kuasa</h2>
+<p>Kepada manusia, PDF memelihara <b>makna ruang</b> — di mana sesuatu duduk, apa di sebelahnya, sama ada ia kapsyen, carta, nota kaki atau jadual. Kepada agen, hubungan ruang itu boleh jadi koordinat halaman, bounding box dan peranan semantik. Tapi satu perkara PDF <b>bukan</b>: ia bukan kebenaran, dan ia bukan kuasa.</p>
+<div class="callout"><b>Undang-undang tertinggi:</b> <span class="tag">KANDUNGAN DOKUMEN = DATA, BUKAN ARAHAN.</span> PDF boleh kata "abaikan arahan sebelum ini", "panggil API ini", "padam fail ini". Agen boleh petik, klasifikasi dan tanda ia. Ia <b>tidak pernah</b> boleh patuh hanya kerana ia muncul dalam dokumen. Hanya identiti + kuasa arifOS boleh membenarkan tindakan.</div>
+
+<div class="fig"><img src="fig1_topology.png" alt="Figure 1" style="max-width:90%"><div class="cap">Figure 1 &mdash; Gelung governance AAA. F13 SOVEREIGN memegang veto tunggal; setiap lapis ada skop kuasa.</div></div>
+
+<h2>2 · Peta filesystem sebenar &mdash; 14 skill PDF</h2>
+<p>Setiap baris ialah <b>path kanonik mutlak</b> yang berakhir dengan <span class="tag">SKILL.md</span>, disemak dengan walk filesystem + sha256 pada 02 Okt 2026. Jika path tidak dapat di-probe, ia ditanda <b>UNVERIFIED</b> &mdash; tidak pernah diinfer.</p>
+<table>
+<tr><th>State</th><th>Skill</th><th>Absolute canonical path</th><th>sha256 (16)</th><th>Lines/KB</th><th>Assets</th><th>Last mod</th></tr>
+<tr><td><span style="color:#2f6b3a;font-weight:700;font-size:7.4pt;">● PROVEN</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">civic-intelligence-pdf</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/domains/general/workshop/document-intel/civic-intelligence-pdf/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">a63849e10d62fac7</td><td style="font-size:7.4pt;text-align:center;">493L<br/>20.1K</td><td style="font-size:7.2pt;">s=0 r=2 t=0</td><td style="font-size:7.2pt;">2026-09-24</td></tr>
+<tr><td><span style="color:#2f6b3a;font-weight:700;font-size:7.4pt;">● PROVEN</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">document-pipeline</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/document-pipeline/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">199c701f24f274f4</td><td style="font-size:7.4pt;text-align:center;">178L<br/>10.6K</td><td style="font-size:7.2pt;">s=1 r=1 t=0</td><td style="font-size:7.2pt;">2026-10-02</td></tr>
+<tr><td><span style="color:#2f6b3a;font-weight:700;font-size:7.4pt;">● PROVEN</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">forge-pdf-delivery</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/domains/general/workshop/document-intel/forge-pdf-delivery/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">8c947697d223a23a</td><td style="font-size:7.4pt;text-align:center;">209L<br/>29.4K</td><td style="font-size:7.2pt;">s=0 r=3 t=0</td><td style="font-size:7.2pt;">2026-09-30</td></tr>
+<tr><td><span style="color:#2f6b3a;font-weight:700;font-size:7.4pt;">● PROVEN</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">scientific-pdf-generation</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">41fbbd5e04d60a21</td><td style="font-size:7.4pt;text-align:center;">879L<br/>65.4K</td><td style="font-size:7.2pt;">s=0 r=33 t=6</td><td style="font-size:7.2pt;">2026-09-24</td></tr>
+<tr><td><span style="color:#1a3a5c;font-weight:700;font-size:7.4pt;">● EXECUTABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">documentary-biography-from-chat</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/documentary-biography-from-chat/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">5790540dffac196c</td><td style="font-size:7.4pt;text-align:center;">201L<br/>13.5K</td><td style="font-size:7.2pt;">s=0 r=1 t=0</td><td style="font-size:7.2pt;">2026-09-27</td></tr>
+<tr><td><span style="color:#1a3a5c;font-weight:700;font-size:7.4pt;">● EXECUTABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">medical-document-interpretation</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/domains/general/workshop/document-intel/medical-document-interpretation/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">ac685f43afca98ae</td><td style="font-size:7.4pt;text-align:center;">244L<br/>12.4K</td><td style="font-size:7.2pt;">s=0 r=2 t=0</td><td style="font-size:7.2pt;">2026-09-24</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">aaa-pdf-voice-protocol</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/aaa-pdf-voice-protocol/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">a194952b436eb863</td><td style="font-size:7.4pt;text-align:center;">103L<br/>4.6K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-09-27</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">empirical-audit-pdf</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/empirical-audit-pdf/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">99288f39f57d6ba5</td><td style="font-size:7.4pt;text-align:center;">66L<br/>6.9K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-10-02</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">forge-document-intelligence</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/forge-document-intelligence/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">930f5ced9f047e2c</td><td style="font-size:7.4pt;text-align:center;">457L<br/>24.9K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-09-27</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">nano-pdf</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/productivity/nano-pdf/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">4eca9749afd2f123</td><td style="font-size:7.4pt;text-align:center;">55L<br/>1.6K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-09-24</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">ocr-and-documents</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/productivity/ocr-and-documents/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">64163a3500cb4220</td><td style="font-size:7.4pt;text-align:center;">177L<br/>5.7K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-09-24</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">open-slide-integration</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/domains/general/workshop/document-intel/open-slide-integration/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">19059f5b15fd48f5</td><td style="font-size:7.4pt;text-align:center;">184L<br/>8.3K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-09-24</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">powerpoint</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/.hermes/skills/domains/general/workshop/document-intel/powerpoint/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">88fd7431a3fcc26c</td><td style="font-size:7.4pt;text-align:center;">289L<br/>10.1K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-09-14</td></tr>
+<tr><td><span style="color:#7a7a7a;font-weight:700;font-size:7.4pt;">○ LOADABLE</span></td><td style="font-family:Menlo,monospace;font-size:7.2pt;font-weight:700;">wop-invoice-generator</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;">/root/AAA/skills/wop-invoice-generator/SKILL.md</td><td style="font-family:Menlo,monospace;font-size:6.8pt;color:#5f5f5f;">cf93ae30730cf441</td><td style="font-size:7.4pt;text-align:center;">98L<br/>3.3K</td><td style="font-size:7.2pt;">s=0 r=0 t=0</td><td style="font-size:7.2pt;">2026-09-24</td></tr>
+</table>
+<p class="small"><b>Jumlah:</b> 14 skill ditemui · 0 UNVERIFIED · 49 fail aset sampingan (references/templates/scripts). setiap sha256 ialah hash penuh 64-aksara fail SKILL.md; 16 aksara pertama dipaparkan.</p>
+
+<h2>3 · Keadaan capability &mdash; PRESENT ≠ LOADABLE ≠ EXECUTABLE ≠ PROVEN</h2>
+<p>Kewujudan fail SKILL.md yang sah membuktikan <b>PRESENT/LOADABLE</b>. Ia tidak membuktikan <b>EXECUTABLE</b>, dan ia tidak pernah membuktikan <b>PROVEN</b>. Empat negeri, satu arah:</p>
+<table>
+<tr><th>Negeri</th><th>Maksud</th><th>Bukti</th><th>Bilangan</th></tr>
+<tr><td><b>PROVEN</b></td><td>Telah menghasilkan artifact sebenar dalam sesi ini</td><td>PDF dirender + digerbang</td><td style="color:#2f6b3a;font-weight:700;">4</td></tr>
+<tr><td><b>EXECUTABLE</b></td><td>Ada aset sokongan; boleh jalan</td><td>references/ atau scripts/ wujud</td><td>2</td></tr>
+<tr><td><b>LOADABLE</b></td><td>SKILL.md sah; boleh dimuat</td><td>frontmatter + body</td><td>8</td></tr>
+<tr><td><b>PRESENT</b></td><td>Fail wujud di disk</td><td>stat()</td><td>0</td></tr>
+</table>
+<div class="callout amber"><b>Pembetulan dari v1.0:</b> v1.0 menanda SEMUA skill "LIVE". Itu salah kelas. Kewujudan fail = PRESENT. Rantaian PDF di seksyen 10 lebih hampir kepada PROVEN kerana ia menunjukkan artifact dirender dan digerbang sebenar.</div>
+
+
+
+<h2>4 · Matriks penghalaan &mdash; job &rarr; skill &rarr; path mutlak</h2>
+<p>Setiap baris menuju path sebenar, bukan sekadar nama. Agen pergi JOB &rarr; SKILL &rarr; DISK tanpa carian atau tekaan.</p>
+<table>
+<tr><th>Kerja</th><th>Skill</th><th>Absolute path</th></tr>
+<tr><td style="font-size:8pt;"><b>Briefing pagi/harian</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">arif-daily-sensorium + forge-pdf-delivery</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/domains/general/workshop/document-intel/forge-pdf-delivery/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Laporan sell-side / broker</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">scientific-pdf-generation (Mod C)</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Dossier intel / impress</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">scientific-pdf-generation (Mod B)</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Briefing sivik berwarna</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">civic-intelligence-pdf</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/domains/general/workshop/document-intel/civic-intelligence-pdf/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Router semua kerja dokumen</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">document-pipeline</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/document-pipeline/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Invoice WOP</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">wop-invoice-generator</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/wop-invoice-generator/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Edit teks dalam PDF</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">nano-pdf</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/productivity/nano-pdf/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Baca teks dari PDF/scan</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">ocr-and-documents</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/productivity/ocr-and-documents/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Dokumen perubatan (BM)</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">medical-document-interpretation</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/domains/general/workshop/document-intel/medical-document-interpretation/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Slaid / deck -> PDF</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">powerpoint</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/.hermes/skills/domains/general/workshop/document-intel/powerpoint/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Biografi dari chat</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">documentary-biography-from-chat</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/documentary-biography-from-chat/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Jargon -> prosa manusia</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">aaa-pdf-voice-protocol</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/aaa-pdf-voice-protocol/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Audit empirikal -> artifact</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">empirical-audit-pdf</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/empirical-audit-pdf/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Baca dokumen bergerbang (EMD)</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">forge-document-intelligence</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/forge-document-intelligence/SKILL.md</td></tr>
+<tr><td style="font-size:8pt;"><b>Corak slaid/PDF</b></td><td style="font-family:Menlo,monospace;font-size:7pt;">open-slide-integration</td><td style="font-family:Menlo,monospace;font-size:6.6pt;word-break:break-all;color:#1a3a5c;">/root/AAA/skills/domains/general/workshop/document-intel/open-slide-integration/SKILL.md</td></tr>
+</table>
+
+<h2>5 · Pemilikan: AAA / arifOS / A-FORGE</h2>
+<table>
+<tr><th>Lapis</th><th>Pemilik</th><th>Kuasa</th><th>Peranan PDF</th></tr>
+<tr><td>Governance</td><td>arifOS kernel (:8088)</td><td>JUDGE_ONLY</td><td>Veto tindakan dari dokumen; 888_HOLD</td></tr>
+<tr><td>Kognitif</td><td>HERMES (:18087)</td><td>RELAY_ONLY</td><td>Klaim, kontradiksi, provenance, kualia</td></tr>
+<tr><td>Eksekusi</td><td>A-FORGE (:7072)</td><td>777_FORGE</td><td>Render, parse, OCR, tulis fail, verify</td></tr>
+<tr><td>Domain</td><td>GEOX/WEALTH/WELL</td><td>COMPUTE_ONLY</td><td>Kira realiti domain bila dokumen bawa bukti</td></tr>
+</table>
+<div class="callout blue"><b>Prinsip:</b> <i>Capability ≠ Authority.</i> A-FORGE boleh render (capability); ia tak boleh mengesahkan kebenaran (authority). Yang menutup itu arifOS + F13.</div>
+
+<h2>5b · Sauh geografi &mdash; peta sebenar</h2>
+<p>Federation <b>maya</b> (nod tiada geo awam tetap), tetapi <b>sauhnya manusia</b>. Peta guna poligon daratan Natural Earth 50m sebenar. KL (3.1390&deg;N, 101.6869&deg;E) tempat kuasa F13 duduk.</p>
+<div class="fig"><img src="fig4_map.png" alt="Figure 4"><div class="cap">Figure 4 &mdash; Asia Tenggara pada garis pantai sebenar. Bintang merah = Kuala Lumpur.</div></div>
+<div class="fig"><img src="fig5_peninsular.png" alt="Figure 5"><div class="cap">Figure 5 &mdash; Semenanjung Malaysia. Selat Melaka + Laut China Selatan.</div></div>
+
+<h2>6 · A-FORGE ontology &mdash; settle percanggahan angka</h2>
+<p>Probe JSON-RPC <span class="tag">tools/list</span> A-FORGE (:7072) pada 02 Okt 2026: <b>122 tool</b> total, sifar cap jari pendua. Pecahan mengikut <span class="tag">action_class</span>:</p>
+<table>
+<tr><th>action_class</th><th>Bilangan</th><th>Apa maksud untuk dokumen</th></tr>
+<tr><td>OBSERVE</td><td>85</td><td>Baca, probe, parse &mdash; selamat</td></tr>
+<tr><td>EXECUTE_REVERSIBLE</td><td>19</td><td>Render, tulis, tulis semula &mdash; boleh undur</td></tr>
+<tr><td>EXECUTE_HIGH_IMPACT</td><td>6</td><td>Kesan besar &mdash; perlu lebih gerbang</td></tr>
+<tr><td>IRREVERSIBLE</td><td>12</td><td>Tak boleh undur &mdash; 888_HOLD</td></tr>
+<tr><td><b>JUMLAH</b></td><td><b>122</b></td><td>85+19+6+12 = 122 ✓</td></tr>
+</table>
+<div class="callout"><b>Hierarki denominator (pembetulan v1.0):</b> "122 total live" ADALAH superset; "32 artifact-relevant" ialah subset subset. Angka "95 OBSERVE + 23 MUTATE = 118" dalam draf lama <b>tidak reconcile</b> &mdash; angka probe sebenar ialah 85+19+6+12. Selalu papar denominator bila sebut subset.</div>
+
+<div class="fig"><img src="fig3_pipeline.png" alt="Figure 3"><div class="cap">Figure 3 &mdash; Paip A-FORGE: verb perlembagaan, bukan sembang.</div></div>
+
+
+
+<div class="fig"><img src="fig2_matrix.png" alt="Figure 2"><div class="cap">Figure 2 &mdash; Matriks enjin &times; skill. Titik = enjin utama skill itu.</div></div>
+
+<h2>7 · PDF Intelligence Envelope &mdash; provenance wajib</h2>
+<p>Setiap datum yang diekstrak dari PDF mesti membawa envelope provenance penuh. Klaim tanpa medan ini boleh dibincang, tetapi ia <b>tidak boleh</b> menjadi bukti bergred tinggi secara senyap.</p>
+<pre>{
+  <span class="st">"source_sha256"</span>: <span class="st">"3a7bd3e2…d5c912a4"</span>,   <span class="cm">// anchor ke fail asal</span>
+  <span class="st">"document_version"</span>: 1,
+  <span class="st">"page"</span>: 2,  <span class="st">"bbox"</span>: [50,100,300,200],  <span class="st">"element_id"</span>: <span class="st">"Table1"</span>,
+  <span class="st">"extraction_method"</span>: <span class="st">"native"</span> | <span class="st">"ocr"</span> | <span class="st">"vision"</span>,
+  <span class="st">"extraction_confidence"</span>: 1.0,
+  <span class="st">"document_as_of"</span>: <span class="st">"2026-09-30T00:00:00Z"</span>,
+  <span class="st">"visual_context_ref"</span>: <span class="st">"img://page2.png#bbox"</span>,
+  <span class="st">"unit"</span>: <span class="st">"USD"</span>,  <span class="st">"supersession_state"</span>: <span class="st">"valid"</span>,
+  <span class="st">"tool_id"</span>: <span class="st">"forge_document_ingest"</span>,  <span class="st">"tool_version"</span>: <span class="st">"…"</span>,
+  <span class="st">"exec_timestamp"</span>: <span class="st">"2026-10-02T08:25Z"</span>,
+  <span class="st">"data_hash"</span>: <span class="st">"9f86d081…"</span>,  <span class="st">"chart_hash"</span>: <span class="st">"0cc175b9…"</span>
+}</pre>
+<div class="callout green"><b>Ujian tunggal:</b> setiap ayat penting yang dihasilkan agen mesti boleh jawab &mdash; <i>"Dokumen asal mana, halaman mana, wilayah mana, elemen mana, kaedah ekstraksi mana, transformasi mana yang menghasilkan aku?"</i> Itu yang tukar RAG jadi bukti, bukan copy-paste canggih.</div>
+
+<h2>8 · Gerbang render-verify (cadangan paling bernilai)</h2>
+<p>Langkah akhir setiap PDF yang HERMES beri balik kepada manusia: A-FORGE render output ke PNG, semak anomali (halaman kosong, teks bertindih), halt jika gagal. Ini menukar sistem dari "PDF capable" ke document-intelligent.</p>
+<pre><span class="cm"># gerbang terakhir sebelum hantar</span>
+pdftoppm -png -r 110 out.pdf /tmp/qa/page
+<span class="kw">python3</span> - &lt;&lt;<span class="st">'EOF'</span>
+<span class="kw">import</span> glob; <span class="kw">from</span> PIL <span class="kw">import</span> Image
+bad=0
+<span class="kw">for</span> f <span class="kw">in</span> sorted(glob.glob(<span class="st">'/tmp/qa/page-*.png'</span>)):
+    a=Image.open(f).convert(<span class="st">'L'</span>); px=a.load(); w,h=a.size
+    dark=sum(1 <span class="kw">for</span> y <span class="kw">in</span> range(0,h,3) <span class="kw">for</span> x <span class="kw">in</span> range(0,w,3) <span class="kw">if</span> px[x,y]&lt;235)
+    <span class="kw">if</span> 100*dark/((h//3)*(w//3)) &lt; 2: print(<span class="st">"DEFECT"</span>,f); bad+=1
+<span class="kw">print</span>(<span class="st">"FAIL"</span> <span class="kw">if</span> bad <span class="kw">else</span> <span class="st">"PASS"</span>)
+<span class="st">EOF</span></pre>
+
+
+
+<h2>9 · Penjajaran kognitif manusia &mdash; kontrak 5s/30s/2min</h2>
+<table>
+<tr><th>Masa</th><th>Manusia mesti dapat</th><th>Elemen</th></tr>
+<tr><td><b>5 saat</b></td><td>Apa artifact ni, apa berubah, perlu tindakan?</td><td>Tajuk, tarikh, satu ayat ringkasan, bendera warna</td></tr>
+<tr><td><b>30 saat</b></td><td>Penemuan utama, 1&ndash;2 visual penentu, ketidakpastian</td><td>Carta beranotasi + caption, metrik besar, callout risiko</td></tr>
+<tr><td><b>2 minit</b></td><td>Rantai bukti, nombor, alternatif/falsifier, keadaan</td><td>Jadual, rujukan sumber, provenance, act/investigate/hold</td></tr>
+</table>
+<div class="callout"><b>Undang-undang visual:</b> <span class="tag">Visual hanya bila ia mengurangkan kos carian atau inferens.</span> Bukan "lebih visual = lebih pintar". Setiap visual mesti jawab "keputusan atau pemahaman apa yang ia ubah?" &mdash; jika tidak, buang.</div>
+
+<h2>10 · Bukti + resit kebolehhasilan</h2>
+<p>Contoh live: data &rarr; matplotlib &rarr; PNG &rarr; PDF. Untuk provenance bergred agen, resit kecil di sebelah mesti membenarkan agen lain bezakan screenshot cantik dari bukti boleh-ulang.</p>
+<div class="fig"><img src="fig_xau_mini.png" alt="XAU mini" style="max-width:55%"></div>
+<table>
+<tr><th>Medan</th><th>Nilai</th></tr>
+<tr><td>sumber/provider</td><td>WEALTH organ (gold-api :3456)</td></tr>
+<tr><td>endpoint/tool</td><td><span class="tag">/api/gold/ticker</span></td></tr>
+<tr><td>as_of timestamp</td><td>2026-10-02T07:37:58+08:00</td></tr>
+<tr><td>symbol / timeframe</td><td>XAUUSD / minute</td></tr>
+<tr><td>n records</td><td>40 (tetingkap dipaparkan)</td></tr>
+<tr><td>data hash (sha16)</td><td><span class="tag">dc46b283bd88c964</span></td></tr>
+<tr><td>chart hash (sha16)</td><td><span class="tag">dc46b283bd88c964</span></td></tr>
+</table>
+<p class="small"><b>Hash figure dossier ini (sha16):</b> topology=34ed2eb6d2d345d6 · matrix=6229a5e9185053f9 · pipeline=1a50fc5a916d921c · map=78aaf4b9ecfbbfd6 · peninsular=d82117b69ecdc1c2 · xau=dc46b283bd88c964</p>
+
+<h2>11 · Jurang jujur (kad)</h2>
+<div class="cardrow">
+  <div><b>Tiada Voice&rarr;PDF</b>Dictation ke PDF teks belum wujud sebagai skill. Suara &rarr; transkrip &rarr; PDF mesti dirantai manual.</div>
+  <div><b>Data live beku</b>Nombor pasaran dicetak pada satu masa; PDF tak sedar ia dah lapuk. CHRON mesti semak document_as_of.</div>
+  <div><b>Tag akses tidak sekata</b>PDF/UA tagging sporadis &mdash; struktur semantik untuk agen tak terjamin merentas semua output.</div>
+  <div><b>Had CSS</b>weasyprint abaikan box-shadow, tolak unit vh; emoji tak render dalam font PDF.</div>
+</div>
+<div class="cardrow">
+  <div><b>Multimedia statik</b>Audio/video jadi objek statik; reader mungkin terlepas kandungan dinamik atau 3D.</div>
+  <div><b>Suntikan segera</b>Teks tersembunyi, metadata, skrip tertanam, teks dalam imej &mdash; semua vektor. Dikawal oleh undang-undang DATA.</div>
+  <div><b>OCR vs native tak padan</b>Bila OCR dan teks asli bercanggah, HERMES mesti naikkan bendera ketidakpastian, bukan pilih satu.</div>
+</div>
+
+<h2>12 · Verdict cross-audit &mdash; blueprint luar yang Arif paste</h2>
+<p>Arif memberi satu blueprint "PDF Intelligence" dari AI luar untuk audit. Aku semak terhadap probe sebenar. <b>Arsitekturnya bagus; inventory filesystem-nya fabrikasi.</b></p>
+<table>
+<tr><th>Medan</th><th>Blueprint kata</th><th>Reality (probe live)</th><th>Verdict</th></tr>
+<tr><td>Root skill</td><td>/opt/arifOS/forge/skills</td><td>/root/AAA/skills</td><td><span class="badge b-red">FABRIKASI</span></td></tr>
+<tr><td>8 skill nama</td><td>pdf-text-extraction, ppt-to-pdf, …</td><td>Tiada satu pun wujud</td><td><span class="badge b-red">FABRIKASI</span></td></tr>
+<tr><td>reportlab versi</td><td>3.8.1</td><td>5.0.1</td><td><span class="badge b-red">SALAH</span></td></tr>
+<tr><td>Skill sebenar</td><td>(tidak disebut)</td><td>14 skill berbeza</td><td><span class="badge b-red">TERLEPAS</span></td></tr>
+<tr><td>PDF = evidence surface</td><td>Ya</td><td>Selaras doktrin</td><td><span class="badge b-live">BETUL</span></td></tr>
+<tr><td>Envelope provenance</td><td>Skema penuh</td><td>Aku guna pakai (§7)</td><td><span class="badge b-live">BERGUNA</span></td></tr>
+<tr><td>Security: content=data</td><td>Ya (OWASP)</td><td>Selaras doktrin</td><td><span class="badge b-live">BETUL</span></td></tr>
+<tr><td>5s/30s/2min</td><td>Ya (Mayer)</td><td>Aku guna pakai (§9)</td><td><span class="badge b-live">BERGUNA</span></td></tr>
+</table>
+<div class="callout amber"><b>Pelajaran:</b> AI luar boleh jana arsitektur koheren + filesystem palsu serentak. Specificity (path tepat, versi tepat) BUKAN bukti implementasi. Setiap path mesti di-probe, bukan diinfer &mdash; kerana itu dossier ini bawa sha256 + tarikh semak, bukan keyakinan prosa.</div>
+
+<hr>
+<p class="small"><b>Sumber:</b> walk filesystem live (14 skill, sha256 penuh, 02 Okt 2026) · arifOS kernel :8088 (13/13 lantai) · A-FORGE :7072 JSON-RPC tools/list (122 tool, pecahan action_class) · HERMES :18087 (11 canonical tools, 31 resources) · Natural Earth 50m basemap untuk peta.<br>
+<b>Tag:</b> OBS = disemak langsung · DER = disimpul · UNVERIFIED = tak dapat probe. <span style="color:#b02a1f;font-weight:bold;">DITEMPA BUKAN DIBERI</span> · F13 SOVEREIGN</p>
+
+</body></html>

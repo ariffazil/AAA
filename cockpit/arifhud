@@ -1,0 +1,281 @@
+#!/usr/bin/env python3
+"""
+arifhud-v3-candidate.py — Calm ARIF/AAA Reality Cockpit v3 renderer.
+Read-only. No network. No MCP. No LLM. No mutation.
+Reads /root/AAA/cockpit/hud-state.json (or path from ARIF_HUD_STATE).
+Honors: TERM=dumb, NO_COLOR, non-TTY, narrow width, missing/malformed state.
+"""
+from __future__ import annotations
+import json, os, sys, shutil
+from pathlib import Path
+
+DEFAULT_STATE = "/root/AAA/cockpit/hud-state.json"
+STATE = os.environ.get("ARIF_HUD_STATE", DEFAULT_STATE)
+
+# ── capability detection ──────────────────────────────────────────────────
+def _supports_ansi() -> bool:
+    if os.environ.get("NO_COLOR"):
+        return False
+    if not sys.stdout.isatty():
+        return False
+    term = os.environ.get("TERM", "")
+    return term != "dumb" and term != ""
+
+# ── safe ANSI helpers ─────────────────────────────────────────────────────
+class C:
+    if _supports_ansi():
+        RESET = "\x1b[0m"; BOLD = "\x1b[1m"; DIM = "\x1b[2m"
+        RED = "\x1b[31m"; YEL = "\x1b[33m"; GRN = "\x1b[32m"
+        CYN = "\x1b[36m"; MAG = "\x1b[35m"; WHT = "\x1b[37m"
+        TL = "╭"; TR = "╮"; BL = "╰"; BR = "╯"; H = "─"; V = "│"
+    else:
+        RESET = BOLD = DIM = RED = YEL = GRN = CYN = MAG = WHT = ""
+        TL = TR = BL = BR = "+"; H = "-"; V = ";"
+
+def state_color(token) -> str:
+    if not isinstance(token, str):
+        return C.WHT
+    t = token.upper()
+    if t in ("OK", "PASS", "MATCH", "UP", "HEALTHY", "FRESH", "VERIFIED", "YES", "PRESENT"):
+        return C.GRN
+    if t in ("HOLD", "FAIL", "DOWN", "CRITICAL", "TIMEOUT", "DRIFT", "DEGRADED", "NO"):
+        return C.RED
+    if t in ("WARN", "WARNING", "UNKNOWN", "UNVERIFIED", "STALE", "WARM"):
+        return C.YEL
+    if t in ("CONFLICT", "CONTRADICTION"):
+        return C.MAG
+    if t in ("OBS", "OBSERVE_ONLY", "ACT", "MUTATE"):
+        return C.CYN
+    return C.WHT
+
+# ── state loader ──────────────────────────────────────────────────────────
+def load_state(path: str) -> dict | None:
+    try:
+        p = Path(path)
+        if not p.is_file():
+            return None
+        with p.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return None
+
+def g(d, *keys, default="?"):
+    """safe nested get; always returns str."""
+    cur = d
+    for k in keys:
+        if not isinstance(cur, dict):
+            return default
+        cur = cur.get(k)
+        if cur is None:
+            return default
+    if not isinstance(cur, (str, int, float, bool)):
+        return default
+    return str(cur) if not isinstance(cur, bool) else ("true" if cur else "false")
+
+# ── renderers ─────────────────────────────────────────────────────────────
+def line(width: int, left: str, right: str) -> str:
+    inner = width - 2
+    pad = max(0, inner - 0)
+    return f"{left}{C.BOLD}{C.H * inner}{C.RESET}{right}"
+
+def pad(width: int, raw: str) -> str:
+    # strip ANSI for width measurement
+    import re
+    visible = re.sub(r"\x1b\[[0-9;]*m", "", raw)
+    inner_w = width - 4  # "│ " ... " │"
+    pad_n = max(0, inner_w - len(visible))
+    return f"{C.V}  {raw}{' ' * pad_n}  {C.V}"
+
+def header(width: int, title: str, subtitle: str = "") -> str:
+    out = []
+    out.append(line(width, C.TL, C.TR))
+    title_visible = len(title) + len(subtitle) + (3 if subtitle else 0)
+    inner = width - 4
+    pad_n = max(0, inner - title_visible)
+    out.append(f"{C.V}  {C.BOLD}{title}{C.RESET} {C.DIM}{subtitle}{C.RESET}{' ' * pad_n}  {C.V}")
+    out.append(f"{C.V}{C.H * (width - 2)}{C.V}".replace("C.H", "─"))  # sep
+    return "\n".join(out)
+
+def footer(width: int) -> str:
+    return line(width, C.BL, C.BR)
+
+def section(width: int, label: str) -> list[str]:
+    inner = width - 4 - len(label)
+    return [f"{C.V}  {C.DIM}{label}{C.RESET}{' ' * inner}  {C.V}"]
+
+# ── main ──────────────────────────────────────────────────────────────────
+def render(state: dict | None) -> str:
+    cols = shutil.get_terminal_size((100, 20)).columns
+    width = max(78, min(cols, 110))
+
+    out: list[str] = []
+    if state is None:
+        out.append(line(width, C.TL, C.TR))
+        out.append(pad(width, f"{C.YEL}STATE UNKNOWN{C.RESET}  {C.DIM}snapshot unavailable{C.RESET}"))
+        out.append(line(width, C.BL, C.BR))
+        return "\n".join(out)
+
+    iso = g(state, "generated_at", default="UNKNOWN")
+    age_n = state.get("generated_at_unix", 0)
+    import time
+    age_s = int(time.time()) - age_n if age_n else 0
+    fresh = "FRESH" if age_s < 60 else ("WARM" if age_s < 300 else "STALE")
+    fresh_c = state_color(fresh)
+
+    # ── header ──
+    out.append(line(width, C.TL, C.TR))
+    title_sub = f"{iso}  ·  state age={age_s}s"
+    inner = width - 4
+    pad_n = max(0, inner - len("ARIF / AAA REALITY COCKPIT") - len(title_sub) - 1)
+    out.append(f"{C.V}  {C.BOLD}ARIF / AAA REALITY COCKPIT{C.RESET}  {C.DIM}{title_sub}{C.RESET}{' ' * pad_n}  {C.V}")
+    out.append(f"{C.V}{C.H * (width - 2)}{C.V}".replace("C.H", "─"))
+
+    # ── NOW ──
+    actor = g(state, "panels", "0_IDENTITY_AUTH", "actor", default="root")
+    crypto = g(state, "panels", "0_IDENTITY_AUTH", "actor_crypto", default="NO")
+    band = g(state, "panels", "0_IDENTITY_AUTH", "authority_band", default="OBSERVE_ONLY")
+    mut = g(state, "panels", "0_IDENTITY_AUTH", "mutation_allowed", default="NO")
+    lease = g(state, "panels", "0_IDENTITY_AUTH", "active_lease", default="unknown")
+    mission = g(state, "panels", "1_MISSION", "objective", default="no active governed mission")
+    task = g(state, "panels", "1_MISSION", "task_id", default="")
+
+    band_c = state_color(band)
+
+    # NEXT — single highest-value
+    ep_path = "/root/AAA/cockpit/execution-path-next.json"
+    next_action = "(no execution-path available)"
+    waiting_count = 0
+    oldest = ""
+    oldest_age = ""
+    try:
+        ep = json.loads(Path(ep_path).read_text())
+        steps = ep.get("next_steps", [])
+        if steps:
+            next_action = steps[0].get("name", "(unnamed)")
+        held = ep.get("held_for_sovereign", [])
+        waiting_count = len(held)
+    except (OSError, json.JSONDecodeError):
+        pass
+
+    out += section(width, "NOW")
+    auth_line = f"{C.BOLD}AUTH{C.RESET}      {actor} / {crypto} · {band_c}{band}{C.RESET} · mutate={mut} · lease={lease}"
+    out.append(pad(width, auth_line))
+    mission_line = f"{C.BOLD}MISSION{C.RESET}   {mission[:60]}"
+    if task and "no active" not in mission:
+        mission_line += f"  {C.DIM}({task}){C.RESET}"
+    out.append(pad(width, mission_line))
+    next_line = f"{C.BOLD}NEXT{C.RESET}      → {next_action}"
+    out.append(pad(width, next_line))
+    why_line = f"{C.DIM}WHY       current authority band does not permit live mutation{C.RESET}"
+    out.append(pad(width, why_line))
+    out.append(f"{C.V}{C.H * (width - 2)}{C.V}".replace("C.H", "─"))
+
+    # ── SYSTEM ──
+    src = g(state, "panels", "2_RUNTIME", "source_sha", default="?")[:10]
+    dep = g(state, "panels", "2_RUNTIME", "deployed_sha", default="?")
+    imp = g(state, "panels", "2_RUNTIME", "imported_version", default="?")
+    drift = g(state, "panels", "2_RUNTIME", "strict_runtime_drift_signals", default="0")
+    runtime_state = "MATCH" if drift == "0" else ("DRIFT" if drift != "?" else "UNKNOWN")
+    r_c = state_color(runtime_state)
+
+    disk = g(state, "panels", "3_SURVIVAL", "disk_pct", default="?")
+    mem = g(state, "panels", "3_SURVIVAL", "mem_pct", default="?")
+    swap = g(state, "panels", "3_SURVIVAL", "swap_pct", default="?")
+    zomb = g(state, "panels", "3_SURVIVAL", "zombies", default="?")
+    svc_r = g(state, "panels", "3_SURVIVAL", "systemd_running", default="?")
+    svc_t = g(state, "panels", "3_SURVIVAL", "systemd_total", default="?")
+    agents = g(state, "panels", "6_CONCURRENCY", "active_agents", default="?")
+    leases_n = g(state, "panels", "6_CONCURRENCY", "leases", default="?")
+
+    out += section(width, "SYSTEM")
+    out.append(pad(width, f"{C.BOLD}RUNTIME{C.RESET}   {r_c}{runtime_state}{C.RESET} · src={src} · deploy={dep}"))
+    out.append(pad(width, f"{C.BOLD}PRESSURE{C.RESET}  disk={disk}% · mem={mem}% · swap={swap}% · zomb={zomb} · svc={svc_r}/{svc_t}"))
+    out.append(pad(width, f"{C.BOLD}WORK{C.RESET}      agents={agents} · leases={leases_n}"))
+    out.append(f"{C.V}{C.H * (width - 2)}{C.V}".replace("C.H", "─"))
+
+    # ── TRUST ──
+    canon = g(state, "panels", "4_JUDGMENT", "canon_ok", default="UNKNOWN")
+    contrad = g(state, "panels", "4_JUDGMENT", "contradictions_n", default="?")
+    frame_r = g(state, "panels", "4_JUDGMENT", "frame", "alerts", default="?")
+    frame_y = g(state, "panels", "4_JUDGMENT", "frame", "warnings", default="?")
+    frame_g = g(state, "panels", "4_JUDGMENT", "frame", "ok", default="?")
+    frame_age = g(state, "panels", "4_JUDGMENT", "frame", "age_days", default="?")
+    chron_b = g(state, "panels", "5_TIME_LEARNING", "chron_brier", default="?")
+    chron_d = g(state, "panels", "5_TIME_LEARNING", "chron_attention_debt", default="0")
+    chron_due = g(state, "panels", "5_TIME_LEARNING", "chron_predictions_due", default="0")
+
+    # MD5 integrity (raw values; g() won't narrow True/False cleanly)
+    def _raw(*keys):
+        cur = state
+        for k in keys:
+            if not isinstance(cur, dict):
+                return None
+            cur = cur.get(k)
+        return cur
+    arifos_raw = _raw("panels", "2_RUNTIME", "md5_identity", "arifos", "md5_match")
+    aforge_raw = _raw("panels", "2_RUNTIME", "md5_identity", "aforge", "md5_match")
+    frame_md5_raw = _raw("panels", "2_RUNTIME", "md5_identity", "frame", "md5_match")
+    def md5_disp(v):
+        if v is True: return f"{C.GRN}MATCH{C.RESET}"
+        if v is False: return f"{C.RED}DRIFT{C.RESET}"
+        return f"{C.YEL}UNKNOWN{C.RESET}"
+
+    out += section(width, "TRUST")
+    out.append(pad(width, f"{C.BOLD}CANON{C.RESET}     {state_color(canon)}{canon}{C.RESET} · contradictions={contrad}"))
+    out.append(pad(width, f"{C.BOLD}FRAME{C.RESET}     {C.RED}■{C.RESET}{frame_r} {C.YEL}▲{C.RESET}{frame_y} {C.GRN}●{C.RESET}{frame_g} · age={frame_age}d"))
+    out.append(pad(width, f"{C.BOLD}CHRON{C.RESET}     debt={chron_d} · due={chron_due} · Brier={chron_b if chron_b not in ('?','UNKNOWN') else f'{C.YEL}UNKNOWN{C.RESET}'}"))
+    out.append(pad(width, f"{C.BOLD}INTEGRITY{C.RESET} arifos={md5_disp(arifos_raw)} · aforge={md5_disp(aforge_raw)} · frame={md5_disp(frame_md5_raw)}"))
+    out.append(f"{C.V}{C.H * (width - 2)}{C.V}".replace("C.H", "─"))
+
+    # ── ATTENTION (top 3) ──
+    burning = []
+    if runtime_state == "DRIFT":
+        burning.append(f"runtime identity = {C.RED}DRIFT{C.RESET}")
+    if str(frame_age).rstrip("d") not in ("?", "0", "0.0") and str(frame_age) != "?":
+        try:
+            if float(str(frame_age).rstrip("d")) > 5:
+                burning.append(f"FRAME stale {frame_age}d")
+        except ValueError:
+            pass
+    if aforge_raw is False or frame_md5_raw is False:
+        bad = []
+        if aforge_raw is False: bad.append("aforge")
+        if frame_md5_raw is False: bad.append("frame")
+        burning.append(f"MD5 drift: {', '.join(bad)}")
+    if chron_b in ("?", "UNKNOWN"):
+        burning.append("CHRON calibration absent")
+
+    out += section(width, "ATTENTION")
+    if not burning:
+        out.append(pad(width, f"{C.GRN}●{C.RESET} no display-level anomalies"))
+    else:
+        for i, b in enumerate(burning[:3]):
+            glyph = C.RED + "■" + C.RESET if i == 0 else C.YEL + "▲" + C.RESET
+            out.append(pad(width, f"{glyph} {b}"))
+
+    # WAITING + LAST
+    out.append(pad(width, f"{C.DIM}WAITING{C.RESET}   held={waiting_count} · oldest='{oldest[:30]}' · age={oldest_age}"))
+    out.append(pad(width, f"{C.DIM}LAST{C.RESET}      cockpit lease granted · arif (exclusive) · {fresh_c}{fresh}{C.RESET}"))
+
+    out.append(footer(width))
+
+    # DETAIL line + PROMPT
+    out.append("")
+    out.append(f"{C.DIM}DETAIL{C.RESET}  hud runtime | hud pressure | hud federation | hud trust | hud queue")
+    auth_short = "OBS" if "OBS" in band.upper() else band
+    sys_short = runtime_state
+    out.append(f"{C.DIM}PROMPT{C.RESET}  [forge|AUTH={auth_short}|SYS={sys_short}|ACT={band_short(mut)}]#")
+
+    return "\n".join(out)
+
+def band_short(mut_token) -> str:
+    return "NO" if str(mut_token).upper() == "NO" else "YES"
+
+def main() -> int:
+    state = load_state(STATE)
+    sys.stdout.write(render(state))
+    sys.stdout.write("\n")
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,57 @@
+{
+ "packet": {
+  "subject_type": "arifos",
+  "identities": {
+   "source": {
+    "scheme": "git_sha",
+    "value": "800eb0ae0"
+   },
+   "import": {
+    "scheme": "filesystem_path",
+    "value": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py"
+   }
+  },
+  "equivalence_evidence": [
+   {
+    "relation": "LOADED_FROM",
+    "from": "source",
+    "to": "import",
+    "evidence_ref": "import path inside /opt/arifos worktree",
+    "measured_at": "2026-10-02T02:40:58.933583+00:00"
+   },
+   {
+    "relation": "DERIVED_FROM",
+    "from": "source",
+    "to": "build",
+    "evidence_ref": "lens_a_arifos_session-SEAL-9ff94da62d34459c.json (declared lens: built==deployed==source, wheel unmeasured)",
+    "measured_at": "2026-10-02T01:39:31Z"
+   }
+  ],
+  "unresolved_relations": [
+   "build_to_package: NO wheel/dist-info artifact on disk \u2014 wheel-based MATCH/DRIFT verdicts compare against a phantom artifact",
+   "declared lens claims CONSISTENT but wheel_hash=null \u2014 it never measured the package edge; its CONSISTENT covers source/build/deploy only"
+  ],
+  "identity_state": "AMBIGUOUS_LENS_CONFLICT",
+  "observed_at": "2026-10-02T02:40:58.933837+00:00"
+ },
+ "measurement_provenance": [
+  {
+   "m": "source git",
+   "cmd": "git -C /opt/arifos log -1",
+   "ok": true,
+   "out": "800eb0ae0"
+  },
+  {
+   "m": "package dist-info",
+   "cmd": "ls /opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp-*.dist-info",
+   "ok": false,
+   "out": ""
+  },
+  {
+   "m": "import",
+   "cmd": "/opt/arifos/current/venv/bin/python -c import arifosmcp; print(arifosmcp.__file__)",
+   "ok": true,
+   "out": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py"
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+# ROUTING — JOB → owner → maturity
+# Single source of truth for PDF-related routing.
+# Update CAPABILITY_STATE.json after every probe.py run.
+
+jobs:
+
+  create_report:
+    description: "Compose 1 PDF from a manifest + live data + verification"
+    owner: pdf-federation
+    maturity: EXECUTABLE
+    executor: scripts/compose_artifact.py
+    inputs_required:
+      - manifest.yaml (see build-manifest.v1.yaml for schema)
+      - live producer outputs (WEALTH, GEOX, HERMES, CHRON, arifOS)
+    verify_with: scripts/verify_artifact.sh
+    evidence: envelope.json (machine-readable)
+
+  verify_pdf:
+    description: "Render-rasterize-read gate on any generated PDF"
+    owner: pdf-federation
+    maturity: EXECUTABLE
+    executor: scripts/verify_artifact.sh
+    required_gates:
+      - G1 structural (pdfinfo, qpdf --check)
+      - G2 rasterize (pdftoppm, ≥5 KB)
+      - G3 round-trip (pdftotext, sentinels present)
+      - G4-data accuracy (numbers recomputed, not hand-typed)
+
+  probe_node:
+    description: "What PDF skills + engines are present on this node"
+    owner: pdf-federation
+    maturity: EXECUTABLE
+    executor: scripts/probe.py
+    output: references/probe.json
+    use_when: "before any composition, to confirm cargo is real"
+
+  read_text:
+    description: "Extract text from PDF (born-digital → OCR)"
+    owner: pdf-federation (delegates to document-intelligence for OCR)
+    maturity: EXECUTABLE
+    executor: pymupdf
+    fallback: tesseract via document-intelligence
+
+  governed_ingest:
+    description: "Ingest with claims + bbox + provenance"
+    owner: document-intelligence (not a PDF skill — input side)
+    maturity: EXECUTABLE
+    notes: "Use when input is an untrusted PDF and you need evidence-grade claims"
+
+  market_chart:
+    description: "Generate financial/market chart as PDF artifact"
+    owner: WEALTH (not a PDF skill — chart provider)
+    returns: FigureAsset
+    composes_into: pdf-federation (composer side)
+
+  geological_map:
+    description: "Generate geological map as PDF artifact"
+    owner: GEOX (not a PDF skill — domain provider)
+    returns: FigureAsset with CRS, datum, bbox
+
+  geological_section:
+    description: "Generate geological cross-section"
+    owner: GEOX
+    returns: FigureAsset with section_id, wells, horizons, faults
+
+  seismic_section:
+    description: "Generate seismic section with overlays"
+    owner: GEOX
+    returns: FigureAsset with polarity, TWT
+
+  well_log_panel:
+    description: "Generate well-log panel"
+    owner: GEOX
+    returns: FigureAsset
+
+  slides_to_pdf:
+    description: "Convert PPTX/slide content to PDF"
+    owner: pdf-federation (composes after slides capability)
+    maturity: EXECUTABLE
+    executor: soffice --headless --convert-to pdf
+
+# Delegated producers (not PDF skills)
+producers:
+  WEALTH: market data, financial computations
+  GEOX:   geological, geophysical, geospatial
+  CHRON:  temporal state, predictions
+  HERMES: meaning, claims, contradictions
+  arifOS: authority, judgment, sealing
+
+# Refusal grammar (KALIBRASI PERBUALAN compliance)
+refusal_rules:
+  - "No topic + no input + no real data -> emit typed RefusalNode"
+  - "Authority OBSERVE_ONLY but task MUTATE-class -> HOLD with exact challenge"
+  - "No PDF engine reachable -> HOLD with missing engine"
+  - "Real geological/market/substrate data missing -> emit EXTERNAL_INPUT_REQUIRED"
+
+# Forbidden actions (agent MUST NOT do)
+forbidden:
+  - "Write a new PDF skill name (this federation has one PDF door)"
+  - "Duplicate routing logic across SKILL.md files"
+  - "Self-mint authority (OBSERVE_ONLY until arifOS mints ACT)"
+  - "Classify SYNTHETIC as OBSERVATION"
+  - "Ship a PDF without all verifier checks passing"
+  - "Delete old skill folders without explicit F13 authority"
+  - "Couple skill consolidation with kernel-memory writes"
+
+# Discovery rule for legacy aliases
+discovery_rule: "If an agent selects any deprecated PDF skill name, route to pdf-federation"

@@ -1,0 +1,63 @@
+{
+  "subject": "frame",
+  "observed_at": "2026-10-02T02:19:29.579944+00:00",
+  "source_identity": "FRAME=510fda3",
+  "build_identity": null,
+  "deployed_identity": null,
+  "process_identity": "frame-mcp.service pid=1501747",
+  "import_origin": null,
+  "service_state": "active",
+  "callable_surface": null,
+  "behavior": null,
+  "drift": {
+    "classification": "CONVERGED",
+    "pairs_compared": [
+      {
+        "pair": "source",
+        "baseline": "FRAME=510fda3",
+        "live": "FRAME=510fda3",
+        "same": true
+      },
+      {
+        "pair": "process",
+        "baseline": "frame-mcp.service pid=1501747",
+        "live": "frame-mcp.service pid=1501747",
+        "same": true
+      }
+    ],
+    "details": []
+  },
+  "measurement_identity": [
+    {
+      "stage": "identity",
+      "cmd": "git -C /root/FRAME log -1",
+      "ok": true,
+      "out": "510fda3 2026-09-18 08:57:45 +0800"
+    },
+    {
+      "stage": "identity",
+      "cmd": "git -C /opt/frame log -1",
+      "ok": false,
+      "out": "fatal: not a git repository (or any of the parent directories): .git"
+    },
+    {
+      "stage": "process",
+      "cmd": "systemctl list-units",
+      "ok": true,
+      "out": "a-forge-mcp.service                            loaded active running A-FORGE MCP Gateway \u2014 Streamable HTTP on :7072\na-forge.service                                loaded active running A-FORGE \u2014 Gover"
+    },
+    {
+      "stage": "process",
+      "cmd": "systemctl show frame-mcp.service",
+      "ok": true,
+      "out": "MainPID=1501747\nActiveState=active"
+    }
+  ],
+  "unknowns": [
+    "source_identity: /opt/frame not a git repo",
+    "build/deploy_identity: no marker convention defined for frame",
+    "import_origin: no import probe configured",
+    "callable_surface: no port configured",
+    "behavior: not probed tonight (stage reserved)"
+  ]
+}

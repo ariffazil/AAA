@@ -1,0 +1,34 @@
+# FAMILY: pdf — proven consolidation 2026-10-02 (13 skills → 1 door)
+family: pdf
+canonical_owner: /root/AAA/skills/pdf-federation
+status: PROVEN
+jobs:
+  compose_pdf:
+    triggers: [compose, "build pdf", "make a pdf", report, "briefing pdf", dossier, "generate pdf", artifact]
+    executor: pdf-federation/scripts/compose_artifact.py + references/build-manifest.v1.yaml
+    verify: pdf-federation/scripts/pdf_verify.sh
+    maturity: EXECUTABLE
+    authority: "compose only — arifOS seals"
+  verify_pdf:
+    triggers: ["verify pdf", "check pdf", gate, sentinels, "prove pdf"]
+    executor: pdf-federation/scripts/pdf_verify.sh
+    maturity: PROVEN
+  probe_pdf_env:
+    triggers: ["probe pdf", "pdf engines", "pdf capability", fitness]
+    executor: pdf-federation/scripts/probe_manifest.sh
+    maturity: PROVEN
+  quick_md_pdf:
+    triggers: ["markdown to pdf", "md to pdf", "convert markdown"]
+    executor: pdf-federation/scripts/md_to_pdf.sh
+    maturity: PROVEN
+  slides_pdf:
+    triggers: [slides, "pptx to pdf", deck]
+    executor: pdf-federation/scripts/build_slides.py / soffice --headless --convert-to pdf
+    maturity: EXECUTABLE
+adapters:
+  read_text: ocr-and-documents (PyMuPDF first, tesseract ladder)
+  governed_ingest: forge-document-intelligence (untrusted input, evidence-grade claims)
+  edit_existing: nano-pdf
+refusals:
+  - no real data → RefusalNode, never synthetic
+  - engine MISSING at probe → HOLD naming engine

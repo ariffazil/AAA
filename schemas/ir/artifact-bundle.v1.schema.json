@@ -1,0 +1,35 @@
+{
+ "$id": "artifact-bundle",
+ "title": "ArtifactBundle \u2014 the human-consumable product",
+ "type": "object",
+ "required": [
+  "artifact_refs",
+  "manifest_ref",
+  "verification_receipts",
+  "provenance"
+ ],
+ "properties": {
+  "artifact_refs": {
+   "type": "array"
+  },
+  "manifest_ref": {
+   "type": "string"
+  },
+  "verification_receipts": {
+   "type": "array"
+  },
+  "delivery_targets": {
+   "type": "array"
+  },
+  "provenance": {
+   "type": "array"
+  },
+  "sha256": {
+   "type": [
+    "string",
+    "null"
+   ]
+  }
+ },
+ "additionalProperties": false
+}

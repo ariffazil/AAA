@@ -1,0 +1,72 @@
+{
+ "$id": "capability-graph",
+ "title": "CapabilityGraph \u2014 what can actually be done NOW?",
+ "type": "object",
+ "required": [
+  "server",
+  "declared",
+  "exported",
+  "callable",
+  "status",
+  "freshness",
+  "observed_at"
+ ],
+ "properties": {
+  "server": {
+   "type": "string"
+  },
+  "transport": {
+   "type": "string"
+  },
+  "declared": {
+   "type": "array"
+  },
+  "advertised": {
+   "type": "array"
+  },
+  "exported": {
+   "type": "array"
+  },
+  "callable": {
+   "type": "array"
+  },
+  "phantom_tools": {
+   "type": "integer"
+  },
+  "alias_conflicts": {
+   "type": "integer"
+  },
+  "schema_hash": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "probe_identity": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "status": {
+   "enum": [
+    "REGISTRY_PASS",
+    "REGISTRY_DRIFT",
+    "UNREACHABLE",
+    "TIMEOUT"
+   ]
+  },
+  "freshness": {
+   "enum": [
+    "FRESH",
+    "WARM",
+    "STALE"
+   ]
+  },
+  "observed_at": {
+   "type": "string"
+  }
+ },
+ "additionalProperties": false,
+ "note": "status TIMEOUT/UNREACHABLE is a typed capability state \u2014 never silently 'broken'"
+}

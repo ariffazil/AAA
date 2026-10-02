@@ -1,0 +1,20 @@
+# NODE ABI — the one small node language every compiler speaks. Binding.
+# Rule: compilers coordinate organs; compilers never BECOME organs.
+node:
+  type: evidence | figure | table | artifact | action | prediction | receipt
+  producer: HERMES | CHRON | GEOX | WEALTH | WELL | A-FORGE | AAA | COMPILER
+  truth_class: OBS | DER | INT | SPEC | UNKNOWN     # UNKNOWN is a value, never a guess
+  observed_at: ISO-8601 UTC                          # measured time, not narrative time
+  freshness: FRESH | WARM | STALE                    # FRESH <=15min, WARM <=24h, else STALE
+  provenance: [measured-command or probe receipt]    # required — a node without provenance is VOID
+  authority_required: OBSERVE | MUTATE | DEPLOY
+  reversible: true|false
+  inputs: [...]
+  outputs: [...]
+  evidence_refs: [...]
+  verification: {method, acceptance}
+  consumer: ...
+invariants:
+  - A node's truth_class may never exceed its provenance (OBS needs a live measurement).
+  - Compilers emit nodes; they never self-authorize (888) or rewrite history (999).
+  - UNKNOWN recorded beats plausible fabricated.

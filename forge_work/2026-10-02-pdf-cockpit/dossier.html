@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+  size: A4; margin: 16mm 15mm 15mm 15mm;
+  @bottom-right { content: counter(page) " / " counter(pages); font-family: Helvetica, sans-serif; font-size: 8.5pt; color: #7a7a7a; }
+  @bottom-left { content: "AAA AGENTIC INTELLIGENCE · PDF SKILLS DOSSIER · 02 OKT 2026"; font-family: Helvetica, sans-serif; font-size: 7pt; color: #9a9a9a; }
+}
+@page :first { @bottom-left { content: ""; } @bottom-right { content: ""; } }
+body { font-family: Georgia, 'Times New Roman', serif; font-size: 9.8pt; line-height: 1.31; color: #1c1c1c; }
+h1 { font-family: Helvetica, sans-serif; font-size: 16pt; color: #1a3a5c; margin: 0 0 1mm 0; }
+h2 { font-family: Helvetica, sans-serif; font-size: 12pt; color: #1a3a5c; margin: 4mm 0 1.6mm 0; padding-bottom: 1.3mm; border-bottom: 1.2pt solid #b02a1f; }
+h3 { font-family: Helvetica, sans-serif; font-size: 10pt; color: #b02a1f; margin: 3.5mm 0 1.3mm 0; }
+h4 { font-family: Helvetica, sans-serif; font-size: 9pt; color: #444; margin: 2.5mm 0 1mm 0; }
+p { margin: 0 0 1.8mm 0; text-align: justify; }
+.cover { padding-top: 5mm; }
+.cover .kicker { font-family: Helvetica, sans-serif; font-size: 8pt; color: #b02a1f; letter-spacing: 1.2pt; text-transform: uppercase; margin-bottom: 3mm; }
+.cover h1 { font-size: 25pt; color: #1a3a5c; line-height: 1.08; margin-bottom: 3mm; }
+.cover .subtitle { font-family: Helvetica, sans-serif; font-size: 11.5pt; color: #5f5f5f; margin-bottom: 5mm; }
+.cover .rule { width: 55mm; height: 1.4pt; background: #b02a1f; margin: 4mm 0; }
+.cover .meta { font-family: Helvetica, sans-serif; font-size: 8.3pt; color: #5f5f5f; line-height: 1.7; }
+.cover .meta b { color: #1c1c1c; }
+table { width: 100%; border-collapse: collapse; margin: 1.6mm 0 2.4mm 0; font-size: 8.2pt; }
+th { background: #1a3a5c; color: #f5f1e8; padding: 1.2mm 1.8mm; text-align: left; font-family: Helvetica, sans-serif; font-weight: 700; font-size: 7.9pt; }
+td { padding: 0.9mm 1.8mm; border-bottom: 0.5pt solid #d4d4d4; vertical-align: top; }
+tr:nth-child(even) td { background: #f7f6f4; }
+code { background: #f5f1e8; padding: 0.2mm 1mm; font-family: Menlo, Consolas, monospace; font-size: 8.2pt; }
+pre { background: #f7f6f4; border-left: 3pt solid #1a3a5c; padding: 2.4mm 3.5mm; margin: 2mm 0; font-family: Menlo, Consolas, monospace; font-size: 7.6pt; line-height: 1.38; white-space: pre-wrap; word-wrap: break-word; }
+pre .cm { color: #7a7a7a; } pre .kw { color: #b02a1f; font-weight: 700; } pre .st { color: #2c5f8a; }
+.fig { text-align: center; margin: 2mm 0; page-break-inside: avoid; }
+.fig img { max-width: 100%; }
+.fig .cap { font-family: Helvetica, sans-serif; font-size: 7.6pt; color: #5f5f5f; font-style: italic; margin-top: 1.2mm; }
+.callout { background: #fef8f7; border-left: 3pt solid #b02a1f; padding: 2.5mm 3.5mm; margin: 2.5mm 0; font-size: 9pt; }
+.callout.green { background: #f4faf6; border-left-color: #2f6b3a; }
+.callout.amber { background: #fffcf2; border-left-color: #b8860b; }
+.callout.blue { background: #f4f8fd; border-left-color: #1a3a5c; }
+.two-col { display: flex; gap: 5mm; }
+.two-col > div { flex: 1; }
+.badge { display: inline-block; font-family: Helvetica, sans-serif; font-size: 7pt; padding: 0.3mm 1.5mm; border-radius: 2pt; font-weight: 700; }
+.b-live { background: #2f6b3a; color: #fff; } .b-mid { background: #b8860b; color: #fff; } .b-low { background: #7a7a7a; color: #fff; }
+.tag { font-family: Menlo, monospace; font-size: 7.2pt; background: #eef2f7; color: #1a3a5c; padding: 0.2mm 0.9mm; border-radius: 2pt; }
+.small { font-size: 8pt; color: #5f5f5f; }
+hr { border: 0; border-top: 0.5pt solid #cccccc; margin: 2.5mm 0; }
+ul, ol { margin: 0 0 2mm 5mm; } li { margin-bottom: 0.8mm; }
+.pagebreak { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="kicker">Capability Dossier · AAA Agentic Intelligence</div>
+  <h1>The PDF Skills of the<br>arifOS Federation</h1>
+  <div class="subtitle">How AAA agents, the arifOS kernel, and A-FORGE actuators turn intent into a human artifact</div>
+  <div class="rule"></div>
+  <div class="meta">
+    <b>Frame for:</b> Muhammad Arif bin Fazil (F13 SOVEREIGN)<br>
+    <b>Forged by:</b> HERMES · edge bridge, arifOS<br>
+    <b>Date:</b> Friday, 02 October 2026 · 08:07 MYT<br>
+    <b>Scope:</b> 14 PDF/document skills · arifOS kernel (13 floors) · A-FORGE (122 tools)<br>
+    <b>Method:</b> live probe (kernel :8088, A-FORGE :7072, engine self-test) + skill-body read<br>
+    <b>Evidence:</b> OBS = probed now · DER = inferred from skill bodies
+  </div>
+</div>
+
+<div class="pagebreak"></div>
+
+<!-- 1 — WHY -->
+<h2>1 · Kenapa skill PDF ini penting</h2>
+<p>Dokumen adalah <b>satu-satunya output yang boleh keluar dari sistem dan hidup di tangan manusia</b>. Chat hilang; nota suara hilang; dashboard perlu dibuka. Tetapi PDF yang dicetak, dihantar kepada seorang doktor, diletak atas meja mesyuarat, atau di-email kepada kerajaan &mdash; itu <b>kekal</b>. Ia artifact yang membawa keputusan keluar dari mesin ke dunia.</p>
+<p>Itulah sebabnya skill PDF bukan kemudahan. Ia <b>jambatan terakhir</b> antara kecerdasan dan akibat. Jika jambatan itu retak &mdash; angka salah dicetak, halaman kosong, teks terpotong &mdash; seluruh rantaian governance dari kernel ke forge berakhir dengan satu dokumen yang menipu pembacanya.</p>
+
+<div class="callout blue">
+<b>Masalah manusia yang diselesaikan:</b> Arif tak perlu tahu 14 skill wujud. Dia sebut hasil yang dia nak &mdash; briefing, dossier, invoice, tafsiran perubatan &mdash; dan jambatan ini menghantar artifact yang betul, bersumber, dan boleh dipercayai. Perhatian dia kekal untuk keputusan, bukan untuk plumbing.
+</div>
+
+<h3>Kenapa ia pecah tanpa peta</h3>
+<ul>
+<li><b>14 skill, 5 enjin, tiada penghala.</b> Setiap kerja dokumen mula dari sifar dan lupa gerbang berbeza.</li>
+<li><b>Gerbang bergantung pada ingatan.</b> Yang di-skip ialah tepat pada edisi tergesa yang paling perlu ia.</li>
+<li><b>Prosa bukan bukti.</b> Dossier teks-sahaja gagal menunjukkan keupayaan; ia mesti tunjuk carta, sisipan kod, jadual data &mdash; dalam dirinya sendiri.</li>
+</ul>
+
+<!-- 2 — TOPOLOGY -->
+<h2>2 · Topologi AAA &mdash; siapa buat apa</h2>
+<p>Tujuh lapis governance, satu veto. Hermes bukan nod dalam gelung &mdash; ia <b>jambatan tepi</b> (edge bridge): muka manusia. Kerja sebenar berlaku dalam gelung.</p>
+
+<div class="fig">
+  <img src="fig1_topology.png" alt="Figure 1" style="max-width:88%">
+  <div class="cap">Figure 1 &mdash; Gelung governance AAA. F13 SOVEREIGN memegang veto tunggal; setiap lapis ada skop kuasa tersendiri.</div>
+</div>
+
+<table>
+<tr><th>Lapis</th><th>Lane</th><th>Kuasa</th><th>Peranan dalam kerja PDF</th></tr>
+<tr><td>F13 SOVEREIGN</td><td>Arif (manusia)</td><td>Veto muktamad</td><td>Sahkan mutasi constitution; terima artifact</td></tr>
+<tr><td>333-AGI</td><td>Research / general</td><td>OBSERVE_ONLY</td><td>Kumpul sumber, draf isi</td></tr>
+<tr><td>555-ASI</td><td>Causal / structural</td><td>sovereign-delegate</td><td>Taakul, petakan, halang drift</td></tr>
+<tr><td>888-APEX</td><td>Adjudicative</td><td>adjudicator</td><td>Hakim: SEAL / HOLD / VOID</td></tr>
+<tr><td>999 WITNESS</td><td>VAULT999</td><td>seal-only</td><td>Segel artifact + hash provenance</td></tr>
+<tr><td>A-FORGE</td><td>777 FORGE</td><td>777_FORGE (exec)</td><td>Jalankan render, tulis fail</td></tr>
+</table>
+
+<div class="callout amber">
+<b>Prinsip:</b> <i>Capability ≠ Authority.</i> A-FORGE boleh render PDF (capability); ia tidak boleh mengesahkan kebenaran isinya (authority). Yang menutup itu 888-APEX + F13.
+</div>
+
+<!-- 2b — REAL MAP -->
+<h2>2b · Sauh geografi federation &mdash; peta sebenar</h2>
+<p>Federation ini <b>maya</b> (nod KVM8/KVM4/KVM2 tiada geografi awam tetap), tetapi <b>sahunya manusia</b>. Peta ini guna poligon daratan Natural Earth 50m yang sebenar &mdash; bukan lukisan skematik. Kuala Lumpur (3.1390°N, 101.6869°E) ialah tempat kuasa F13 benar-benar duduk.</p>
+
+<div class="fig">
+  <img src="fig4_map.png" alt="Figure 4">
+  <div class="cap">Figure 4 &mdash; Asia Tenggara pada garis pantai sebenar. Bintang merah = Kuala Lumpur, sauh F13 SOVEREIGN. Rujukan bandar pada koordinat sebenar.</div>
+</div>
+
+<div class="fig">
+  <img src="fig5_peninsular.png" alt="Figure 5">
+  <div class="cap">Figure 5 &mdash; Semenanjung Malaysia. Selat Melaka di kiri, Laut China Selatan di kanan &mdash; kedua-duanya koridor tenaga dalam profil domain sensorium.</div>
+</div>
+
+<p class="small">Real basemap: Natural Earth 50m land polygons (nvkelso/natural-earth-vector), render matplotlib. Koordinat bandar = WGS-84 sebenar. Nod cloud ditanda sebagai virtual &mdash; tiada koordinat direka.</p>
+
+
+<!-- 3 — KERNEL FLOORS -->
+<h2>3 · arifOS kernel &mdash; 13 lantai, disemak langsung</h2>
+<p>Kernel di <span class="tag">:8088</span> sihat: <b>13/13 lantai aktif</b>, VAULT999 sihat, runtime padan build (<span class="tag">800eb0a</span>). Setiap lantai punya kesan terus pada dokumen.</p>
+
+<table>
+<tr><th>Lantai</th><th>Nama</th><th>Kesan pada dokumen</th></tr>
+<tr><td>F1</td><td>AMANAH</td><td>Ingestion read-only; fail asal tak diubah</td></tr>
+<tr><td>F2</td><td>TRUTH</td><td>Setiap angka bersumber; takda fabrikasi</td></tr>
+<tr><td>F4</td><td>CLARITY</td><td>ΔS ≤ 0 &mdash; dokumen susut kekeliruan</td></tr>
+<tr><td>F6</td><td>MARUAH</td><td>Dokumen peribadi dijaga maruah</td></tr>
+<tr><td>F9</td><td>ANTI-HANTU</td><td>Corak sahaja, bukan atribusi niat</td></tr>
+<tr><td>F11</td><td>AUDIT</td><td>Setiap ekstraksi tinggal hash + jejak bbox</td></tr>
+<tr><td>F13</td><td>SOVEREIGN</td><td>888_HOLD sebelum klaim masuk VAULT999</td></tr>
+</table>
+
+<div class="callout">
+<b>Gerbang 888_HOLD:</b> Klaim yang berasal dari dokumen (OCR) tidak masuk VAULT999 tanpa lulus gerbang. Arif yang tentukan kebolehpercayaan data OCR &mdash; bukan saluran paip.
+</div>
+
+<!-- 4 — A-FORGE -->
+<h2>4 · A-FORGE actuators &mdash; tangan yang menulis</h2>
+<p>A-FORGE di <span class="tag">:7072</span> sihat: <b>122 tools</b>, 87 stateless, ceiling <span class="tag">777_FORGE</span>. Ini actuator yang mengubah niat jadi artifact fizikal.</p>
+
+<div class="fig">
+  <img src="fig3_pipeline.png" alt="Figure 3">
+  <div class="cap">Figure 3 &mdash; Paip A-FORGE. Verb = tindakan perlembagaan, bukan sembang. Setiap hop ada pemilik.</div>
+</div>
+
+<table>
+<tr><th>Resource (A-FORGE MCP)</th><th>Guna untuk dokumen</th></tr>
+<tr><td><span class="tag">forge://execution/receipts/recent</span></td><td>Resit render terakhir</td></tr>
+<tr><td><span class="tag">forge://execution/manifests</span></td><td>Manifest artifact</td></tr>
+<tr><td><span class="tag">forge://vault/records</span></td><td>Rekod bersegeh VAULT999</td></tr>
+<tr><td><span class="tag">forge://governance/floors</span></td><td>Status 13 lantai semasa</td></tr>
+<tr><td><span class="tag">forge://execution/leases/status</span></td><td>Lease eksekusi aktif</td></tr>
+</table>
+
+
+<!-- 5 — SKILLS -->
+<h2>5 · 14 skill PDF &mdash; peta penuh</h2>
+<table>
+<tr><th>Skill</th><th>Peranan</th><th>Enjin</th><th>Status</th></tr>
+<tr><td><b>document-pipeline</b></td><td>ROUTER &mdash; pintu masuk semua kerja dokumen</td><td>semua 5</td><td><span class="badge b-live">LIVE</span></td></tr>
+<tr><td><b>forge-pdf-delivery</b></td><td>Paip md&rarr;HTML&rarr;PDF + gerbang</td><td>weasyprint</td><td><span class="badge b-live">LIVE</span></td></tr>
+<tr><td><b>scientific-pdf-generation</b></td><td>5 mod: akademik/dossier/sell-side/trading/biografi</td><td>weasy+reportlab</td><td><span class="badge b-live">LIVE</span></td></tr>
+<tr><td><b>civic-intelligence-pdf</b></td><td>Briefing berwarna, 60-saat scan</td><td>weasyprint</td><td><span class="badge b-live">LIVE</span></td></tr>
+<tr><td><b>wop-invoice-generator</b></td><td>Invoice satu muka WOP Sdn Bhd</td><td>weasyprint</td><td><span class="badge b-mid">MID</span></td></tr>
+<tr><td><b>nano-pdf</b></td><td>Edit teks dalam PDF sedia ada</td><td>nano-pdf CLI</td><td><span class="badge b-low">LOW</span></td></tr>
+<tr><td><b>ocr-and-documents</b></td><td>Baca teks dari PDF/scan</td><td>pymupdf|marker</td><td><span class="badge b-mid">MID</span></td></tr>
+<tr><td><b>forge-document-intelligence</b></td><td>EMD: VLM&rarr;gerbang 555-ASI-VISION</td><td>VLM+gate</td><td><span class="badge b-live">LIVE</span></td></tr>
+<tr><td><b>medical-document-interpretation</b></td><td>Tafsir dokumen perubatan MS ke BM</td><td>vision_analyze</td><td><span class="badge b-mid">MID</span></td></tr>
+<tr><td><b>aaa-pdf-voice-protocol</b></td><td>Jargon dalaman &rarr; prosa manusia</td><td>translator</td><td><span class="badge b-mid">MID</span></td></tr>
+<tr><td><b>powerpoint</b></td><td>Buat/baca .pptx &rarr; PDF</td><td>python-pptx</td><td><span class="badge b-mid">MID</span></td></tr>
+<tr><td><b>open-slide-integration</b></td><td>Corak penulisan slaid/PDF</td><td>React/Vite</td><td><span class="badge b-low">LOW</span></td></tr>
+<tr><td><b>documentary-biography-from-chat</b></td><td>Biografi/dokumentari dari log chat</td><td>weasyprint</td><td><span class="badge b-mid">MID</span></td></tr>
+<tr><td><b>empirical-audit-pdf</b></td><td>Audit empirikal &rarr; artifact</td><td>weasyprint</td><td><span class="badge b-mid">MID</span></td></tr>
+</table>
+
+<div class="fig">
+  <img src="fig2_matrix.png" alt="Figure 2">
+  <div class="cap">Figure 2 &mdash; Matriks enjin × skill. Titik = enjin utama skill itu. document-pipeline menyentuh semua; kebanyakan skill satu-enjin.</div>
+</div>
+
+
+<!-- 6 — CODE -->
+<h2>6 · Rantai kerja &mdash; 3 sisipan kod</h2>
+
+<h3>a) Intent &rarr; render (AAA + A-FORGE)</h3>
+<pre><span class="cm"># 1. arifOS: buka sesi + pilih mode (kernel :8088)</span>
+arif_init(mode=<span class="st">"build"</span>, actor_id=<span class="st">"hermes-asi"</span>, requested_authority=<span class="st">"OBSERVE_ONLY"</span>)
+
+<span class="cm"># 2. AAA: tulis isi + render (weasyprint CLI, bukan import — venv tak ada)</span>
+<span class="kw">$</span> weasyprint dossier.html dossier.pdf
+
+<span class="cm"># 3. A-FORGE: terbitkan artifact + resit</span>
+aforge_invoke_tool(tool_name=<span class="st">"forge_artifact_publish"</span>,
+    tool_input={<span class="st">"path"</span>: <span class="st">"/root/AAA/forge_work/.../dossier.pdf"</span>})
+
+<span class="cm"># 4. Kernel: segel selepas 888_HOLD lulus</span>
+arif_seal(trace_id=<span class="st">"PDF-DOSSIER-2026-10-02"</span>, verdict=<span class="st">"SEAL"</span>)  <span class="cm"># F13 authority needed</span></pre>
+
+<h3>b) Gerbang pra-hantar (7 semakan)</h3>
+<pre><span class="cm"># wajib: PDF sebenar, bilangan muka, sapu dakwat, lapisan teks, bocor laluan</span>
+file out.pdf                              <span class="cm"># mesti "PDF document"</span>
+pdfinfo out.pdf | grep -E <span class="st">'Pages|Page size'</span> <span class="cm"># muka == design</span>
+pdftotext out.pdf - | grep -c <span class="st">'file://'</span>     <span class="cm"># mesti 0</span>
+pdftoppm -png -r 110 out.pdf /tmp/qa/page   <span class="cm"># sapu dakwat tiap muka</span></pre>
+
+<h3>c) EMD &mdash; baca dokumen, jangan percaya buta</h3>
+<pre><span class="cm"># teks dari piksel = tak dipercayai sehingga melalui gerbang</span>
+aaa_ocr doc.pdf --engine qwen25_vl --financial
+  <span class="cm"># → 555-ASI-VISION gate (F12 suntikan + F9 anti-hantu + F2 kebenaran)</span>
+  <span class="cm"># → kontrak OBS · DER · KEYAKINAN · F9 · F12</span>
+  <span class="cm"># → 333-AGI taakul pada teks bergerbang SAHAJA</span></pre>
+
+<div class="callout blue">
+<b>Prinsip:</b> <i>You pay for OCR once. You pay for bad OCR forever.</i> OCR bersih tapi salah digit lebih bahaya dari OCR kotor &mdash; sebab governance mempercayai output bersih.
+</div>
+
+
+<!-- 7 — HARDEN -->
+<h2>7 · Pengerasan &mdash; apa yang diperbaik</h2>
+<p>Ini bukan skill baru. Ini kerja mengeras ke atas yang sedia ada (Anti-Bangang LAW 8: satu masalah, satu owner, satu jalan).</p>
+
+<table>
+<tr><th>Jurang (OBS)</th><th>Kesan</th><th>Harden</th></tr>
+<tr><td>weasyprint import gagal dalam venv</td><td>Skrip Python gagal senyap</td><td>Piawai: weasyprint melalui CLI; atau chromium/typst/reportlab</td></tr>
+<tr><td>docforge di <span class="tag">/root/AAA/scripts</span></td><td>Tak import dari mana-mana</td><td>Dokumentasi laluan + alias <span class="tag">pdfbuild</span></td></tr>
+<tr><td>Forced page-break = muka kosong</td><td>11 muka jadi 8 muka</td><td>Simpan 1 break (kulit); biar enjin paginate</td></tr>
+<tr><td>Dossier prosa-sahaja</td><td>Gagal buktikan keupayaan</td><td>Figure 1 per 2–3 muka; 1 jadual per seksyen; 1 blok kod per klaim</td></tr>
+<tr><td>Track dark vs plain tak dipaksa</td><td>Re-prompt "no need fancy"</td><td>Plain = DEFAULT (Arif: "I hate black dark background")</td></tr>
+</table>
+
+<div class="callout green">
+<b>Sudah kuat &mdash; jangan sentuh:</b> gerbang EMD (forge-document-intelligence) · track plain (forge-pdf-delivery CSS) · 5 mod sci-pdf (pilih ikut audience).
+</div>
+
+<!-- 8 — REFERENCE -->
+<h2>8 · Frame rujukan &mdash; kerja apa &rarr; jalan apa</h2>
+<table>
+<tr><th>Kalau Arif minta…</th><th>Skill</th><th>Enjin</th></tr>
+<tr><td>Briefing pagi / harian</td><td>arif-daily-sensorium + forge-pdf-delivery</td><td>weasyprint</td></tr>
+<tr><td>Laporan sell-side / petro</td><td>scientific-pdf-generation Mod C</td><td>weasy + matplotlib</td></tr>
+<tr><td>Dossier intel / impress</td><td>scientific-pdf-generation Mod B</td><td>reportlab / weasy</td></tr>
+<tr><td>Briefing sivik berwarna</td><td>civic-intelligence-pdf</td><td>weasyprint</td></tr>
+<tr><td>Invoice</td><td>wop-invoice-generator</td><td>weasyprint</td></tr>
+<tr><td>Edit / baca PDF</td><td>nano-pdf / ocr-and-documents</td><td>nano-pdf / pymupdf</td></tr>
+<tr><td>Dokumen perubatan</td><td>medical-document-interpretation</td><td>vision_analyze</td></tr>
+<tr><td>Slaid / deck</td><td>powerpoint</td><td>python-pptx &rarr; soffice</td></tr>
+<tr><td>Biografi dari chat</td><td>documentary-biography-from-chat</td><td>weasyprint</td></tr>
+</table>
+
+<h3>Skop 4-soalan (sebelum tulis kod)</h3>
+<ol>
+<li><b>Mod</b> &mdash; akademik / dossier / sell-side / trading / biografi</li>
+<li><b>Bilangan muka</b> &mdash; 5&ndash;10 pendek / 11&ndash;20 standard / 21&ndash;30 dalam</li>
+<li><b>Bilangan figure</b> &mdash; 0&ndash;3 ringan / 4&ndash;8 standard / 9+ berat</li>
+<li><b>Ketegasan epistemik</b> &mdash; santai / standard / ketat (setiap klaim bersumber)</li>
+</ol>
+
+<div class="callout">
+<b>Ujian tunggal:</b> Dokumen dinyatakan SIAP hanya bila artifact berjalan menepati janji. Exit code bersih bukan bukti. Header <span class="tag">%PDF-</span>, bilangan muka, dan sapu dakwat adalah bukti.
+</div>
+
+<hr>
+<p class="small"><b>Sumber:</b> probing langsung &mdash; arifOS kernel :8088 (13/13 lantai, commit 800eb0a) · A-FORGE :7072 (122 tools, ceiling 777_FORGE) · body 14 skill (dibaca 02 Okt 2026) · agent-cards 333/555/888 · docforge cli.py · engine self-test.<br>
+<b>Tag epistemik:</b> OBS = disemak langsung; DER = disimpul dari body skill.<br>
+<b>Metrik:</b> HumanLeverage = Kegunaan / Perhatian Manusia. Dossier ini berguna hanya jika ia mengurangkan soalan "yang mana satu?".<br>
+<span style="color:#b02a1f; font-weight:bold;">DITEMPA BUKAN DIBERI</span> · F13 SOVEREIGN</p>
+
+</body>
+</html>

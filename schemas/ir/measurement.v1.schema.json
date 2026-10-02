@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/measurement.v1.schema.json",
+  "title": "Measurement v1",
+  "description": "Typed primitive for any measurement. Replaces naked status strings ('healthy', 'ok', 'true', 'degraded') with a typed tuple carrying metric, unit, scope, referent, method, baseline, observed_at, and explicit does_not_imply. Liveness ≠ availability ≠ integrity ≠ governance ≠ readiness ≠ outcome. Without Measurement, 'healthy' is epistemically useless.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metric", "value", "unit", "scope", "referent", "measurement_method", "observed_at"],
+  "properties": {
+    "metric": {
+      "type": "string",
+      "description": "What is being measured (tcp_connect, http_2xx, swap_used_pct, package_version, etc.)"
+    },
+    "value": {
+      "description": "Measured value. Boolean/number/string per metric.",
+      "oneOf": [
+        { "type": "boolean" },
+        { "type": "number" },
+        { "type": "string" }
+      ]
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measure (ms, %, bytes, count, status_code). Empty string for booleans."
+    },
+    "scope": {
+      "type": "object",
+      "description": "Bounding scope of the measurement.",
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["host", "port", "process", "service", "organ", "agent", "dataset", "ledger", "endpoint", "substrate", "global", "unknown"] },
+        "ref": { "type": "string" },
+        "region": { "type": ["string", "null"], "description": "ISO 3166 or vendor region (e.g. MY, US-East-1)" },
+        "window": { "type": ["string", "null"], "description": "Time window the measurement applies to." }
+      }
+    },
+    "referent": {
+      "type": "string",
+      "description": "Canonical entity the measurement is about (subject identity)."
+    },
+    "measurement_method": {
+      "type": "object",
+      "required": ["tool", "probe_type"],
+      "properties": {
+        "tool": { "type": "string", "description": "Probe / sensor / tool identity." },
+        "probe_type": {
+          "type": "string",
+          "enum": ["synthetic", "passive", "active", "derived", "self_reported", "external_reported", "computed", "unknown"]
+        },
+        "tool_version": { "type": ["string", "null"] },
+        "calibration": { "type": ["string", "null"], "description": "Calibration procedure reference." }
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "description": "What 'normal' looks like for this metric. Allows framing observed value as relative.",
+      "properties": {
+        "expected_range": { "type": ["string", "null"], "description": "e.g. '0-100', '>=99%', '!=0'" },
+        "previous_value": { "description": "Last measured value (typed)" },
+        "trend_window": { "type": ["string", "null"] }
+      }
+    },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "does_not_imply": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "MANDATORY for high-signal scope. Explicit list of what this measurement does NOT entail. e.g. tcp_connect=true does NOT imply application usable, MCP call succeeds, data fresh, governance healthy."
+    },
+    "freshness_class": {
+      "type": "string",
+      "enum": ["FRESH", "WARM", "STALE", "FUTURE", "OVERDUE", "SUPERSEDED", "UNVERIFIED"]
+    },
+    "witness_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Independent witness implementations."
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

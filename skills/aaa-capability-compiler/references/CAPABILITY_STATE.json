@@ -1,0 +1,37 @@
+{
+  "probed_at": "2026-10-02T02:20:00+00:00",
+  "host": "forge",
+  "probed_by": "FI-008 session SEAL-9ff94da62d34459c",
+  "compiler": {
+    "route_capability.py": {
+      "flag": "PROVEN",
+      "date": "2026-10-02",
+      "evidence": "5 live route tests: pdf compose, finding alias, session resume, sct\u2192ACT, unknown-domain refusal (correct); PROOFS.jsonl"
+    }
+  },
+  "families": {
+    "pdf": {
+      "state": "PROVEN",
+      "note": "physical consolidation done + end-to-end verified"
+    },
+    "evidence": {
+      "state": "SEEDED_ROUTED",
+      "note": "interim door agent-claim-verification; cluster merge pending"
+    },
+    "session": {
+      "state": "SEEDED",
+      "note": "v2 canonical, v1 archived"
+    },
+    "federation-runtime": {
+      "state": "SEEDED",
+      "note": "ACT canonical, SCT archived"
+    }
+  },
+  "dedupes_20261002": {
+    "agent-finding-verification": "ARCHIVED (identical twin)",
+    "session-lifecycle-temporal v1": "ARCHIVED (identical to v2)",
+    "FORGE-sct-federation-ingress": "ARCHIVED (identical; ACT canonical)",
+    "shadow-paradox-13 collision": "ALREADY symlink alias \u2014 no action",
+    "FLAME-router + FLAME-operator": "RETIRED (lane decommissioned 2026-09-04, A-FORGE README)"
+  }
+}

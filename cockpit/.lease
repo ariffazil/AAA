@@ -1,0 +1,42 @@
+{
+  "schema": "cockpit-lease-v1",
+  "granted_at": "2026-10-02T00:21:42Z",
+  "granted_at_unix": 1790899302,
+  "granted_by": "arif",
+  "ratification_evidence": "session 2026-10-02 — sovereign word 'sah' issued after explicit per-word yes-signal pathway (full: holder=arif, scope=cockpit, duration=this session, revoke=arif, rule=exclusive); forge command issued immediately after",
+  "path_scope": "/root/AAA/cockpit/",
+  "path_scope_excludes": [
+    "/root/AAA/VAULT999/",
+    "/root/AAA/cockpit/receipts/"
+  ],
+  "holder": "arif",
+  "authority_band_at_grant": "OBSERVE_ONLY",
+  "duration": {
+    "kind": "session",
+    "session_id": "2026-10-02-forge-777-cockpit-unblock",
+    "expires_at": "session-close-or-revoke",
+    "auto_renew": false
+  },
+  "concurrent_write_rule": {
+    "mode": "exclusive",
+    "meaning": "Only the holder may write under this lease. Other writers are HOLD-blocked. Holder must SHA-pin every write to /root/AAA/cockpit/.write-pins before recovery."
+  },
+  "revoke": {
+    "authority": "arif",
+    "command": "rm /root/AAA/cockpit/.lease",
+    "word_form": "any session turn starting with revoke followed by lease",
+    "irreversible": false
+  },
+  "mutation_class": "F13:canonical_record",
+  "f1_amahah": {
+    "sovereign_signal_required": true,
+    "signal_granted": true,
+    "signal_form": "single word 'sah' from sovereign",
+    "signal_timestamp": "2026-10-02T00:21:42Z",
+    "witness": "this lease file itself; ratification recorded in cockpit receipts after recovery."
+  },
+  "concurrent_runs_prohibited": [
+    "/root/.placeholder-write-detector-while-forge-busy"
+  ],
+  "integrity_hash": "be5631b057ad7432d144549ccd7557f9de0a5ae2223426b50ccf04fc01115e35"
+}

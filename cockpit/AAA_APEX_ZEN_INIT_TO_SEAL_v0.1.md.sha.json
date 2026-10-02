@@ -1,0 +1,28 @@
+{
+  "sha256": "7fc8e1d9f65926e9e424fabb44b64236109823e1c873f54bf178dfb6a5b7dbc0",
+  "bytes": 14179,
+  "path": "/root/AAA/cockpit/AAA_APEX_ZEN_INIT_TO_SEAL_v0.1.md",
+  "version": "v0.1.1",
+  "status": "RATIFIED_SOVEREIGN_ORDER_2026-10-02",
+  "drafted_by": "hermes/fi-001 (SEAL-913321f109d64554)",
+  "corrected_by": "333-AGI 555-VERIFY audit (anchors D1-D3) + concurrent v0.1.1 application",
+  "ratified_by": "333-AGI recorder (SEAL-49679b39acb24ad3)",
+  "sovereign_provenance": {
+    "order": "now ffff qqqq apex-zen all. forge to seal",
+    "channel": "sovereign terminal session, in-band to 333-AGI",
+    "token_family": "F13 override (seal it / proceed / go)",
+    "received_utc": "2026-10-01T23:24:00Z (approx)"
+  },
+  "judge_trace": {
+    "trace_id": "trc-ecec7350bce5",
+    "constitutional_chain_id": "cc_cc1c85e5fa30f8d7a1f15f4c17e28e0ad87f8f51",
+    "judge_state_hash": "sha256:b230504ecc70489b0bebf5a31a445f7f237642679ae96f08b2406c92472c77ae",
+    "floor_passed": true,
+    "intercept_decision": "ALLOW",
+    "effective_verdict": "HOLD-by-reconciliation-defect (NONCANONICAL_VERDICT_TOKEN ALLOW->SEAL) — fail-closed honored, defect documented"
+  },
+  "enforcement": "OFF — shadow-wire phase remains next",
+  "rollback": "restore .sha.json.bak-preratify-20261002 or .bak-forgedstamp-20261002; sovereign denial in-channel voids ratification",
+  "recorded_utc": "2026-10-01T23:27:49Z",
+  "final_state_note": "post-ratification-edit hash (status line + footer addendum by recorder)"
+}

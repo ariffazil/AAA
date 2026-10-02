@@ -1,0 +1,49 @@
+{
+  "pdf-federation": {
+    "state": "EXECUTABLE",
+    "owner": "F13 SOVEREIGN",
+    "probed_via": "scripts/probe.py"
+  },
+  "compose_artifact.py": {
+    "state": "EXECUTABLE",
+    "src": "forge-artifact-publisher/scripts/"
+  },
+  "verify_artifact.sh": {
+    "state": "EXECUTABLE",
+    "src": "scripts/verify_artifact.sh"
+  },
+  "probe.py": {
+    "state": "EXECUTABLE",
+    "src": "pdf-realmap/scripts/probe.py"
+  },
+  "build-manifest.v1.yaml": {
+    "state": "ACCEPTED",
+    "sections": 17
+  },
+  "ROUTING.yaml": {
+    "state": "ACCEPTED",
+    "jobs": 11
+  },
+  "PDF_OPERATIONS.md": {
+    "state": "ACCEPTED",
+    "lines": "~215"
+  },
+  "HERMES_PDF_INTELLIGENCE.md": {
+    "state": "ABSORBED",
+    "sha256_source": "87208163af121d1f2c2a0540a6d76f4a4cc241fbaf561f366335c8fcdd7d140a"
+  },
+  "deprecated_aliases": {
+    "hermes-pdf-intelligence": "merged into HERMES_PDF_INTELLIGENCE.md",
+    "forge-artifact-publisher": "merged into compose_artifact.py + build-manifest.v1.yaml",
+    "pdf-realmap": "merged into probe.py",
+    "forge-pdf-delivery": "absorbed \u2014 wrapper delivery only",
+    "scientific-pdf-generation": "absorbed \u2014 Mode A/B/C/D/E patterns as references",
+    "civic-intelligence-pdf": "absorbed \u2014 template, not separate capability",
+    "open-slide-integration": "absorbed \u2014 concept only",
+    "powerpoint": "absorbed \u2014 one soffice invocation",
+    "ocr-and-documents": "absorbed \u2014 pymupdf-first, OCR ladder",
+    "aaa-pdf-voice-protocol": "absorbed \u2014 10-line note",
+    "empirical-audit-pdf": "absorbed \u2014 same probe job",
+    "pdf-productivity": "absorbed \u2014 low-level merge/split only"
+  }
+}

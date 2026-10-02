@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/release-link-gate.v1.schema.json",
+  "title": "ReleaseLinkGate v1",
+  "description": "External reference release policy. emitted_URL must be in observed_URLs set. Every external URL in any artifact, reply, or packet must satisfy Release(Link,Claim) = Observed ∧ Reachable ∧ IdentityMatch ∧ Supports. RegionMatch is mandatory for App Store / Play Store / geo-dependent sources. Status ladder: UNOBSERVED → OBSERVED+DEAD → OBSERVED+WRONG_ENTITY → CORRECT+CANDIDATE → CORRECT+SUPPORTED. See AAA-IR/MIGRATION.md law 9.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["url", "claim", "status", "release_decision", "decided_at"],
+  "properties": {
+    "url": { "type": "string", "format": "uri" },
+    "claim": { "type": "string", "description": "What the link is being used to support." },
+    "expected_entity": {
+      "type": "object",
+      "description": "What the link is supposed to point to.",
+      "properties": {
+        "title": { "type": "string" },
+        "publisher": { "type": "string" },
+        "developer": { "type": "string" },
+        "region": { "type": "string" },
+        "kind": { "type": "string", "enum": ["app", "paper", "repo", "doc", "service", "person", "place", "unknown"] }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "required": ["observed", "reachable", "identity_match", "supports_claim"],
+      "properties": {
+        "observed": { "type": "boolean", "description": "URL was observed in tool evidence (retrieved, fetched, searched)." },
+        "reachable": { "type": "boolean", "description": "Live probe returned 2xx or canonical redirect." },
+        "identity_match": { "type": "boolean", "description": "Title/publisher/developer match expected_entity." },
+        "region_match": { "type": ["boolean", "null"], "description": "Region of URL matches expected_entity.region." },
+        "supports_claim": { "type": "boolean", "description": "Page content supports the claim being made (can be minimal if claim is just 'the link')." }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["UNOBSERVED", "OBSERVED_DEAD", "OBSERVED_WRONG_ENTITY", "CANDIDATE", "SUPPORTED"],
+      "description": "Ladder position."
+    },
+    "release_decision": {
+      "type": "string",
+      "enum": ["RELEASE", "SUPPRESS", "REJECT"],
+      "description": "RELEASE = all four checks pass. SUPPRESS = dead/unreachable. REJECT = wrong entity or unsupported claim."
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Probe / fetch / search results backing the decision."
+    },
+    "decided_at": { "type": "string", "format": "date-time" },
+    "decided_by": { "type": "string", "description": "Verifier that ran the gate." }
+  }
+}

@@ -1,0 +1,12 @@
+--- a/.kimi-code/config.toml	2026-10-02 07:21:43.388013167 +0800
++++ b/.kimi-code/config.toml	2026-10-02 07:49:05.498398504 +0800
+@@ -1432,3 +1432,9 @@
+ command = "python3 /root/.arifos/agents/shared/f2-receipt-citation.py"
+ timeout = 5
+ 
++
++[[hooks]]
++event = "UserPromptSubmit"
++matcher = ""
++command = "python3 /root/.kimi-code/hooks/q_collapse_anchor.py"
++timeout = 5

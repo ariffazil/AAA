@@ -1,0 +1,87 @@
+--- a/.kimi-code/hooks/q_collapse_anchor.py	2026-10-02 07:28:13.187715047 +0800
++++ b/.kimi-code/hooks/q_collapse_anchor.py	2026-10-02 07:48:57.499342829 +0800
+@@ -2,11 +2,13 @@
+ """
+ q_collapse_anchor.py — Kimi hook that wires AAA_APEX_ZEN_INIT_TO_SEAL v0.1.
+ 
+-Per sovereign 2026-10-02. Contract sha 339c9dcf.
++Per sovereign 2026-10-02. Contract sha: computed at runtime from source-of-truth
++(RED-09: hardcoded sha stamps go stale/forge the moment another writer rewrites the doc).
+ Status: DRAFT_AWAITING_F13 (peer-revert 2026-10-02T23:18 by 333-AGI per F3 — ratification reverts without proper F13 workflow).
+ F1 AMANAH: read-only injection, no authority claim.
+ Reversible: rm this file to uninstall.
+ """
++import hashlib
+ import json
+ import os
+ import sys
+@@ -17,7 +19,7 @@
+ REPLAY_PATH = Path("/root/AAA/cockpit/q-collapse-replay.json")
+ EXEC_PATH = Path("/root/AAA/cockpit/execution-path-next.json")
+ LIFECYCLE_PATH = Path("/root/AAA/cockpit/AAAAgentLifecycle_v0.1.py")
+-STATUS = "DRAFT_AWAITING_F13"
++STATUS = "DRAFT_AWAITING_F13"  # historical only — runtime status is MIRRORED from the doc (RED-03: hooks must not assert ratification)
+ 
+ DOCTRINE_DIGEST = """[AAA_APEX_ZEN_INIT_TO_SEAL v0.1 — DRAFT_AWAITING_F13 (sha 339c9dcf)]
+ - Universal rule: many possibilities inside machine → one bounded consequence outside
+@@ -32,6 +34,38 @@
+ """
+ 
+ 
++def _source_meta() -> tuple[str, str]:
++    """Mirror (never assert) the source-of-truth: real sha256[:8] + the doc's own status line.
++
++    RED-03/RED-09 lesson: hardcoded sha/status stamps go stale or forge the moment
++    the doc is rewritten by another writer. Read them live; degrade honestly.
++    """
++    try:
++        raw = DOCTRINE_PATH.read_bytes()
++        sha8 = hashlib.sha256(raw).hexdigest()[:8]
++        for line in raw.decode("utf-8", "replace").splitlines():
++            if line.startswith("> **Status:**"):
++                return sha8, line.replace("> **Status:**", "").strip()
++        return sha8, "STATUS_LINE_NOT_FOUND"
++    except OSError:
++        return "UNAVAILABLE", "SOURCE_UNAVAILABLE"
++
++
++def _doctrine_digest() -> str:
++    sha8, status = _source_meta()
++    return f"""[AAA_APEX_ZEN_INIT_TO_SEAL v0.1 — {status} (sha {sha8})]
++- Universal rule: many possibilities inside machine → one bounded consequence outside
++- 5 interception points: SESSION_START, PRE_REASON, PRE_CONSEQUENCE, POST_CONSEQUENCE, SESSION_END
++- 15-stage lifecycle: BOOT/INIT/INTENT/DISCOVERY/SENSE/MEANING/REASON/COLLAPSE/ROUTE/AUTH/FORGE/VERIFY/JUDGE/CONSEQUENCE/SEAL
++- ARIF → SALAM → IRFAN → EUREKA → VAULT999
++- APEX G_local ≠ G_APEX (P = Physics, frozen F13 2026-07-28)
++- Reality Coherence: D ≠ E ≠ C ≠ R ≠ W
++- MachineResolvable ⇒ DoNotExternalize
++- Source-of-truth: /root/AAA/cockpit/AAA_APEX_ZEN_INIT_TO_SEAL_v0.1.md (sha {sha8})
++- Lifecycle: /root/AAA/cockpit/AAAAgentLifecycle_v0.1.py
++"""
++
++
+ def main():
+     """Hook entrypoint: read state from stdin (kimi convention), append doctrine."""
+     try:
+@@ -39,16 +73,17 @@
+     except json.JSONDecodeError:
+         event = {}
+ 
+-    event_type = event.get("type", "unknown")
++    # Accept both the legacy "type" schema and Kimi's hook_event_name schema (RED-05)
++    event_type = event.get("type") or event.get("hook_event_name") or "unknown"
+ 
+     # Inject doctrine as context only when prompt-submit or first turn
+-    if event_type in ("prompt-submit", "first-turn", "user-prompt-submit"):
++    if event_type in ("prompt-submit", "first-turn", "user-prompt-submit", "UserPromptSubmit"):
+         out = dict(event)
+         out.setdefault("context", {})
+-        out["context"]["aaa_apex_zen_anchor"] = DOCTRINE_DIGEST
++        out["context"]["aaa_apex_zen_anchor"] = _doctrine_digest()
+         out["context"]["aaa_doctrine_source"] = str(DOCTRINE_PATH)
+         out["context"]["aaa_lifecycle_source"] = str(LIFECYCLE_PATH)
+-        out["context"]["aaa_ratified"] = STATUS
++        out["context"]["aaa_anchor_status"] = _source_meta()[1]  # mirrored from doc, never asserted by this hook
+         sys.stdout.write(json.dumps(out))
+         return 0
+ 

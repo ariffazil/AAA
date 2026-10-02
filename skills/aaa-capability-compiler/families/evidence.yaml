@@ -1,0 +1,27 @@
+# FAMILY: evidence — seeded 2026-10-02; physical merge (audit cluster → evidence-federation) pending
+family: evidence
+canonical_owner: /root/AAA/skills/agent-claim-verification
+status: ALIAS_PENDING_MERGE
+jobs:
+  verify_claim:
+    triggers: ["verify claim", "validate claim", "claim check", "hermes claim"]
+    executor: "agent-claim-verification/SKILL.md protocol; live tool: mcp hermes_claim_validate"
+    maturity: PRESENT
+  verify_finding:
+    triggers: ["verify finding", "finding check", "agent finding", finding]
+    executor: agent-claim-verification (identical twin agent-finding-verification archived 2026-10-02)
+    maturity: PRESENT
+  audit_repo:
+    triggers: ["audit repo", "repo reality", "repository entropy", "audit codebase", audit]
+    executor: audit-repo-reality / audit-repository-entropy (unmerged cluster members)
+    maturity: PRESENT
+  falsify_paste:
+    triggers: ["pasted review", falsify, "review claim"]
+    executor: pasted-review-falsification / audit-falsification-discipline (unmerged cluster)
+    maturity: PRESENT
+aliases_note: >
+  Per F13 roadmap this cluster absorbs: agent-claim-verification, agent-finding-verification,
+  audit-falsification-discipline, audit-intake-verification, audit-repo-reality,
+  audit-repository-entropy, cross-surface-conformance-audit, external-review-intake,
+  inherited-claim-audit, pasted-review-falsification, third-party-audit-intake.
+  Until merged, route jobs to the named member skill; do NOT create new audit skills.

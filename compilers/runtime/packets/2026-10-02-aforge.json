@@ -1,0 +1,67 @@
+{
+  "subject": "aforge",
+  "observed_at": "2026-10-02T02:19:29.491334+00:00",
+  "source_identity": "A-FORGE=cb5cc186",
+  "build_identity": null,
+  "deployed_identity": null,
+  "process_identity": "aforge-heartbeat.service pid=2909658",
+  "import_origin": null,
+  "service_state": "active",
+  "callable_surface": "http://127.0.0.1:7072/health -> 200",
+  "behavior": null,
+  "drift": {
+    "classification": "CONVERGED",
+    "pairs_compared": [
+      {
+        "pair": "source",
+        "baseline": "A-FORGE=cb5cc186",
+        "live": "A-FORGE=cb5cc186",
+        "same": true
+      },
+      {
+        "pair": "surface",
+        "baseline": "http://127.0.0.1:7072/health -> 200",
+        "live": "http://127.0.0.1:7072/health -> 200",
+        "same": true
+      },
+      {
+        "pair": "process",
+        "baseline": "aforge-heartbeat.service pid=2909658",
+        "live": "aforge-heartbeat.service pid=2909658",
+        "same": true
+      }
+    ],
+    "details": []
+  },
+  "measurement_identity": [
+    {
+      "stage": "identity",
+      "cmd": "git -C /root/A-FORGE log -1",
+      "ok": true,
+      "out": "cb5cc186 2026-10-02 07:06:17 +0800"
+    },
+    {
+      "stage": "process",
+      "cmd": "systemctl list-units",
+      "ok": true,
+      "out": "a-forge-mcp.service                            loaded active running A-FORGE MCP Gateway \u2014 Streamable HTTP on :7072\na-forge.service                                loaded active running A-FORGE \u2014 Gover"
+    },
+    {
+      "stage": "process",
+      "cmd": "systemctl show aforge-heartbeat.service",
+      "ok": true,
+      "out": "MainPID=2909658\nActiveState=active"
+    },
+    {
+      "stage": "surface",
+      "cmd": "curl :7072/health",
+      "ok": true,
+      "out": "200"
+    }
+  ],
+  "unknowns": [
+    "build/deploy_identity: no marker convention defined for aforge",
+    "import_origin: no import probe configured",
+    "behavior: not probed tonight (stage reserved)"
+  ]
+}

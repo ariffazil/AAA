@@ -1,0 +1,73 @@
+{
+  "subject": "arifos",
+  "observed_at": "2026-10-02T02:19:27.001218+00:00",
+  "source_identity": null,
+  "build_identity": null,
+  "deployed_identity": null,
+  "process_identity": "arifos.service pid=2910464",
+  "import_origin": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py",
+  "service_state": "active",
+  "callable_surface": "http://127.0.0.1:8088/health -> 200",
+  "behavior": null,
+  "drift": {
+    "classification": "CONVERGED",
+    "pairs_compared": [
+      {
+        "pair": "import",
+        "baseline": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifos",
+        "live": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifos",
+        "same": true
+      },
+      {
+        "pair": "surface",
+        "baseline": "http://127.0.0.1:8088/health -> 200",
+        "live": "http://127.0.0.1:8088/health -> 200",
+        "same": true
+      },
+      {
+        "pair": "process",
+        "baseline": "arifos.service pid=2910464",
+        "live": "arifos.service pid=2910464",
+        "same": true
+      }
+    ],
+    "details": []
+  },
+  "measurement_identity": [
+    {
+      "stage": "deploy",
+      "cmd": "cat /opt/arifos/canon-release.json",
+      "ok": false,
+      "out": "cat: /opt/arifos/canon-release.json: No such file or directory (os error 2)"
+    },
+    {
+      "stage": "process",
+      "cmd": "systemctl list-units",
+      "ok": true,
+      "out": "a-forge-mcp.service                            loaded active running A-FORGE MCP Gateway \u2014 Streamable HTTP on :7072\na-forge.service                                loaded active running A-FORGE \u2014 Gover"
+    },
+    {
+      "stage": "process",
+      "cmd": "systemctl show arifos.service",
+      "ok": true,
+      "out": "MainPID=2910464\nActiveState=active"
+    },
+    {
+      "stage": "import",
+      "cmd": "/opt/arifos/current/venv/bin/python -c import arifosmcp; print(arifosmcp.__file__)",
+      "ok": true,
+      "out": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py"
+    },
+    {
+      "stage": "surface",
+      "cmd": "curl :8088/health",
+      "ok": true,
+      "out": "200"
+    }
+  ],
+  "unknowns": [
+    "source_identity: no repos configured for subject",
+    "deployed_identity: no release marker file content",
+    "behavior: not probed tonight (stage reserved)"
+  ]
+}

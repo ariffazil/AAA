@@ -1,0 +1,19 @@
+# FAMILY: federation-runtime — SCT archived 2026-10-02, ACT canonical (per live A-FORGE contracts)
+family: federation-runtime
+canonical_owner: /root/AAA/skills/FORGE-act-federation-ingress
+status: ALIAS_PENDING_MERGE
+jobs:
+  ingress_act:
+    triggers: [ingress, act, "act token", "forge ingress", dispatch]
+    executor: FORGE-act-federation-ingress/SKILL.md
+    maturity: PRESENT
+  a2a_task:
+    triggers: [a2a, "agent to agent", "task delegation", fanout]
+    executor: forge-mcp-a2a-agentic / a2a-task-delegator (unmerged cluster)
+    maturity: PRESENT
+  lane_route:
+    triggers: [route, "lane switch", "signal routing", "operational signal"]
+    executor: route-dispatch / hermes-lane-switch-routing / operational-signal-routing (unmerged cluster)
+    maturity: PRESENT
+refusals:
+  - mutation beyond OBSERVE class → arifOS judge → A-FORGE, never self-minted

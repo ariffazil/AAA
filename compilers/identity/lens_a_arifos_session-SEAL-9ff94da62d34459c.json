@@ -1,0 +1,10 @@
+{
+  "lens": "declared/release-manifest",
+  "provenance": "arif_init response, session SEAL-9ff94da62d34459c, 2026-10-02T01:39:31Z, field software_release",
+  "source_commit": "800eb0ae055eae05e51a871b4f0b8e1d84de826c",
+  "built_commit": "800eb0a",
+  "deployed_commit": "800eb0ae055eae05e51a871b4f0b8e1d84de826c",
+  "wheel_hash": null,
+  "drift": false,
+  "observed_at": "2026-10-02T01:39:31Z"
+}

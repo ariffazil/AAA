@@ -1,0 +1,212 @@
+{
+  "envelope_id": "compiler-20261002T014957Z",
+  "created_at": "2026-10-02T01:49:56.510133+00:00",
+  "created_on": "forge",
+  "artifact_path": "/root/AAA/forge_work/2026-10-02-reality-edge/reality-edge.pdf",
+  "renderer": "reportlab",
+  "replay_mode": false,
+  "artifact_sha256": "e48a756b6ea1f7deae71c139e24b6b8c1830f59261c00d77486474f596894c36",
+  "authority_state": "OBSERVE_ONLY",
+  "sections": [
+    {
+      "index": 0,
+      "type": "cover",
+      "producer": "HERMES"
+    },
+    {
+      "index": 1,
+      "type": "toc",
+      "producer": "A-FORGE"
+    },
+    {
+      "index": 2,
+      "type": "reality_dashboard",
+      "producer": "HERMES"
+    },
+    {
+      "index": 3,
+      "type": "live_chart",
+      "producer": "WEALTH"
+    },
+    {
+      "index": 4,
+      "type": "analytics",
+      "producer": "WEALTH"
+    },
+    {
+      "index": 5,
+      "type": "system_topology",
+      "producer": "A-FORGE"
+    },
+    {
+      "index": 6,
+      "type": "map",
+      "producer": "GEOX"
+    },
+    {
+      "index": 7,
+      "type": "image_evidence",
+      "producer": "HERMES"
+    },
+    {
+      "index": 8,
+      "type": "geological_section",
+      "producer": "GEOX"
+    },
+    {
+      "index": 9,
+      "type": "well_log",
+      "producer": "GEOX"
+    },
+    {
+      "index": 10,
+      "type": "claim_evidence_map",
+      "producer": "HERMES"
+    },
+    {
+      "index": 11,
+      "type": "contradictions",
+      "producer": "HERMES"
+    },
+    {
+      "index": 12,
+      "type": "temporal_view",
+      "producer": "CHRON"
+    },
+    {
+      "index": 13,
+      "type": "authority_view",
+      "producer": "arifOS"
+    },
+    {
+      "index": 14,
+      "type": "substrate_view",
+      "producer": "WELL"
+    },
+    {
+      "index": 15,
+      "type": "hash_receipts",
+      "producer": "A-FORGE"
+    },
+    {
+      "index": 16,
+      "type": "honest_gaps",
+      "producer": "HERMES"
+    },
+    {
+      "index": 17,
+      "type": "next_actions",
+      "producer": "HERMES"
+    },
+    {
+      "index": 18,
+      "type": "appendix_envelope",
+      "producer": "A-FORGE"
+    }
+  ],
+  "figure_hashes": {
+    "fig_live_chart": "070837e9b3221c7efe5cb19246be4121ab9b8c31656a01506acb80cff5254262",
+    "fig_heatmap": "38514f40fae83b9e3c81f193db1e3f4657cc5d4fc1b56ebe5f22a8d930e2d53c",
+    "fig_topology": "12df65c6e0a8a6caf823ed80def8df25b47cffccebee0b35aefc500115fae00d",
+    "fig_geosection": "fb46f18ca8a74bfd5bc51d1cebe0174bfe5eeb6979f8f15777d4a4701417b51c",
+    "fig_map_real": "fb8b288bcc6e5421858a2d73e1a01c96403243c8a517a8fd5f9a74dc940c5304",
+    "fig_image_evidence": "c16ac99a71f7fdbb4ff0eda684314b105eef44f2c492b039cfb75270c46d77ed"
+  },
+  "producer_results": [
+    {
+      "index": 0,
+      "producer": "HERMES",
+      "kind": "none"
+    },
+    {
+      "index": 1,
+      "producer": "A-FORGE",
+      "kind": "none"
+    },
+    {
+      "index": 2,
+      "producer": "HERMES",
+      "kind": "dashboard"
+    },
+    {
+      "index": 3,
+      "producer": "WEALTH",
+      "kind": "figure_path"
+    },
+    {
+      "index": 4,
+      "producer": "WEALTH",
+      "kind": "figure_path"
+    },
+    {
+      "index": 5,
+      "producer": "A-FORGE",
+      "kind": "figure_path"
+    },
+    {
+      "index": 6,
+      "producer": "GEOX",
+      "kind": "figure_path"
+    },
+    {
+      "index": 7,
+      "producer": "HERMES",
+      "kind": "figure_path"
+    },
+    {
+      "index": 8,
+      "producer": "GEOX",
+      "kind": "figure_path"
+    },
+    {
+      "index": 9,
+      "producer": "GEOX",
+      "kind": "figure_path"
+    },
+    {
+      "index": 10,
+      "producer": "HERMES",
+      "kind": "table"
+    },
+    {
+      "index": 11,
+      "producer": "HERMES",
+      "kind": "list"
+    },
+    {
+      "index": 12,
+      "producer": "CHRON",
+      "kind": "temporal"
+    },
+    {
+      "index": 13,
+      "producer": "arifOS",
+      "kind": "authority_matrix"
+    },
+    {
+      "index": 14,
+      "producer": "WELL",
+      "kind": "substrate"
+    },
+    {
+      "index": 15,
+      "producer": "A-FORGE",
+      "kind": "table"
+    },
+    {
+      "index": 16,
+      "producer": "HERMES",
+      "kind": "list"
+    },
+    {
+      "index": 17,
+      "producer": "HERMES",
+      "kind": "list"
+    },
+    {
+      "index": 18,
+      "producer": "A-FORGE",
+      "kind": "json"
+    }
+  ]
+}

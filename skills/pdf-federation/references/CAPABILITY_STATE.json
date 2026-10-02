@@ -1,0 +1,89 @@
+{
+  "probed_at": "2026-10-02T02:05:00+00:00",
+  "host": "forge",
+  "probed_by": "FI-008 session SEAL-9ff94da62d34459c",
+  "flag_definitions": {
+    "PRESENT": "binary/lib probed on node",
+    "EXECUTABLE": "compiles + dry-runs clean",
+    "PROVEN": "executed end-to-end on this node with passing gates"
+  },
+  "engines": {
+    "pandoc": "3.1.11.1 PRESENT",
+    "weasyprint": "70.0 PRESENT",
+    "qpdf": "12.2.0 PRESENT",
+    "xelatex": "TL2025 PRESENT",
+    "soffice": "25.8.7.3 PRESENT",
+    "tesseract": "5.5.0 PRESENT",
+    "pymupdf": "PRESENT",
+    "chromium": "MISSING -> google-chrome 153 PRESENT (route there)",
+    "wkhtmltopdf": "absent; FORBIDDEN regardless (archived upstream, CVE-2022-35583 CVSS 9.8)"
+  },
+  "components": {
+    "scripts/probe_manifest.sh": {
+      "flag": "PROVEN",
+      "date": "2026-10-02",
+      "evidence": "probe_manifest.txt"
+    },
+    "scripts/md_to_pdf.sh": {
+      "flag": "PROVEN",
+      "date": "2026-10-02",
+      "evidence": "/tmp/pdf-fed-proof/proof.pdf"
+    },
+    "scripts/pdf_verify.sh": {
+      "flag": "PROVEN",
+      "date": "2026-10-02",
+      "evidence": "G1+G2+G3+G4-hash PASS on proof.pdf, hash 6489928a5ec90e1e"
+    },
+    "scripts/compose_artifact.py": {
+      "flag": "EXECUTABLE",
+      "date": "2026-10-02",
+      "evidence": "py_compile OK; manifest schema references/build-manifest.v1.yaml"
+    },
+    "scripts/build_slides.py": {
+      "flag": "EXECUTABLE",
+      "date": "2026-10-02",
+      "evidence": "py_compile OK"
+    },
+    "scripts/run_acceptance_matrix.py": {
+      "flag": "EXECUTABLE",
+      "date": "2026-10-02",
+      "evidence": "py_compile OK"
+    },
+    "scripts/deliver_telegram.sh": {
+      "flag": "PRESENT",
+      "date": "2026-10-02",
+      "evidence": "bash -n OK; needs HERMES .env at runtime"
+    },
+    "scripts/artifact_egress.py": {
+      "flag": "EXECUTABLE",
+      "date": "2026-10-02",
+      "evidence": "py_compile OK"
+    },
+    "scripts/real_data_producer.py": {
+      "flag": "EXECUTABLE",
+      "date": "2026-10-02",
+      "evidence": "py_compile OK"
+    },
+    "scripts/mcp_client.py": {
+      "flag": "EXECUTABLE",
+      "date": "2026-10-02",
+      "evidence": "py_compile OK"
+    }
+  },
+  "routing": {
+    "SKILL.md table": "single-source routing",
+    "ROUTING.yaml": "machine-readable jobs",
+    "refresh": "bash scripts/probe_manifest.sh; update this file with dates"
+  },
+  "reconciliation_20261002": {
+    "event": "concurrent worker filed SOVEREIGN_HOLD claiming composer BROKEN (artifact_egress absent) and 1/13 aliases",
+    "canonical_node_truth": {
+      "composer": "NOT BROKEN \u2014 compose_artifact.py py_compile OK, `from artifact_egress import` resolves (scripts/artifact_egress.py present, 16571B, import smoke OK), --help runs",
+      "worker_hash_match": "worker's own listed hash ef6cf002540ccdfe == canonical \u2014 they verified the same file, then ran it from a copy without the module (archive/sandbox view)",
+      "references_extra_files": "HERMES_PDF_INTELLIGENCE.md/_archive_*/probe.json exist ONLY in .archive/.../pdf-federation-hermes-leftovers/ \u2014 canonical references/ stays single-file PDF_OPERATIONS.md (hash 7321117851a1f90d unchanged)",
+      "aliases": "live layer = 10 deprecation stubs (do_not_select) + 16 compiler ALIASES entries; worker's DEPRECATED_ALIAS.md landed in the archive copy \u2014 redundant, not harmful",
+      "verifier": "PROVEN end-to-end 2026-10-02 (proof.pdf G1+G2+G3+G4-hash PASS)"
+    },
+    "verdict": "SOVEREIGN_HOLD LIFTABLE \u2014 no broken state on canonical node; nothing reverted, nothing deleted"
+  }
+}
