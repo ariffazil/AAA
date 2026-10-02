@@ -1,6 +1,6 @@
 {
   "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
-  "_updated": "2026-10-01",
+  "_updated": "2026-10-02",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
@@ -374,6 +374,58 @@
       "consequence": "MEDIUM",
       "actionability": "WATCH",
       "note": "Root suspicion: kernel_intercept.affordance.purpose=\"Tool purpose not yet declared in constitutional contract\" \u2014 missing affordance contract is the epistemic gap. Owner: FI-008. Stop: reproducer + named root cause + fix sketch (do NOT auto-implement, kernel contract = F13-class)."
+    },
+    {
+      "id": "apex-zen-e2e-redbluegold-20261002",
+      "title": "AAA_APEX_ZEN_INIT_TO_SEAL E2E verdict: NOT READY (11 RED findings, 888 HOLD, hook unwired, auth-verdict decoupled)",
+      "target_date": "2026-10-02",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "kimi-code/FI-008 mission SEAL-e4afa0df3ca94a2c",
+      "confidence": "CONFIRMED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "E2E verification of AAA_APEX_ZEN_INIT_TO_SEAL: pipeline GATES hold (000/888/999/777-clamp) but the hook layer does not execute in Kimi (unregistered), authority verification does not gate verdicts (fabricated token accepted), 555 adjudication degraded (LLM cascade template fallback), receipts had integrity defects. Blue staged minimal shadow-wire repair (9 artifacts, 0 production writes); 888=HOLD; candidate preserved at /root/AAA/cockpit/red-blue-gold-20261002/staging/. Unattributed concurrent writer re-stamped canonical doc to RATIFIED mid-mission without lock/lease."
+    },
+    {
+      "id": "chron-fnprobe-333agi-20261002",
+      "title": "CHRON functional probe 333-AGI: this event is recorded in the CHRON episode store (trivial mechanical claim \u2014 synthetic audit probe)",
+      "target_date": "2026-10-01",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "333-AGI functional probe (sovereign audit 2026-10-02)",
+      "confidence": "CONFIRMED",
+      "consequence": "LOW",
+      "actionability": "MONITOR",
+      "note": "Synthetic end-to-end Arrow test ordered by sovereign audit 2026-10-02: create \u2192 predict \u2192 due \u2192 verify \u2192 calibrate \u2192 reconcile. Claim is trivially mechanical (event existence), NOT organic forecasting skill. Audit flag: does synthetic-self-test detection (honest_scopes / synthetic_self_test_ids) catch a non-'chron_loop_closure_test' source? If not, exclusion heuristic is brittle \u2014 finding for next-path."
+    },
+    {
+      "id": "chron-fnprobe2-333agi-20261002",
+      "title": "CHRON episode store holds at least 110000 episodes as of 2026-10-01",
+      "target_date": "2026-10-01",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "333-AGI functional probe (sovereign audit 2026-10-02)",
+      "confidence": "TENTATIVE",
+      "consequence": "LOW",
+      "actionability": "MONITOR",
+      "note": "Synthetic Arrow machinery probe #2 (sovereign audit 2026-10-02): exercise generate\u2192due\u2192verify\u2192calibrate\u2192reconcile path. Predecessor chron-fnprobe-333agi-20261002 got generated=0 because CONFIRMED events correctly yield no prediction. This claim is already measured (OBS 110,332 episodes at 2026-10-02T02:40Z) \u2014 administrative self-test class, exclude from organic forecasting calibration."
+    },
+    {
+      "id": "chron-fnprobe3-333agi-20261002",
+      "title": "CHRON episode store holds at least 110000 episodes as of 2026-10-02",
+      "target_date": "2026-10-02",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "333-AGI functional probe (sovereign audit 2026-10-02)",
+      "confidence": "TENTATIVE",
+      "consequence": "LOW",
+      "actionability": "MONITOR",
+      "note": "Synthetic Arrow machinery probe #3 (sovereign audit 2026-10-02). Probe #2 (target 2026-10-01, past) yielded generated=0 \u2014 testing whether generator filters past-target events. Claim pre-measured: store_stats reported 110,332 episodes at 2026-10-02T02:40Z. Administrative self-test class; exclude from organic calibration."
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

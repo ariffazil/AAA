@@ -209,6 +209,26 @@ Topics that touch the human's body, identity, finances, mortality, or intimate l
 
 ---
 
+### 20. Programme-Paste Trigger — Numbered Multi-Phase Brief is a Programme, Not a Single-Turn Batch
+
+**Detection signals (ANY):** the message opens with `INIT →`, `PHASE 000 →`, `Step 1 to N`, `P0–Pn`, `9-node linkgraph flow`, `9 phases`, `20 phases`, or any block that enumerates a numbered execution programme in one paste. The user just handed you a programme; they did not command you to drive it in one turn.
+
+**Trap:** treat each numbered phase as a "do now" obligation → drive the whole programme → reply becomes a multi-thousand-word audit/blueprint/dispatch → burns context, defers real work, and the user is left with a status report instead of a closed loop.
+
+**Fix — sequence every programme-paste turn as: probe → propose smallest-scoped slice → one-line acknowledgement of the rest as deferred → drive only that slice → stop.**
+
+1. **Probe reality first** even if the programme looks self-contained. The numbered phases often collide with live substrate state (service pids, allowlist drift, missing tools). One probe prevents writing a 2000-word plan against a stale picture.
+2. **Propose the smallest loop that closes a real piece of work.** "P0, P1, P2 + P14" or "Tranche A: surface reconcile + authority path + canonical path + typed producer + artifact egress + contradiction gate" — name it, defer the rest explicitly.
+3. **One line of acknowledgement for the deferred phases** so Arif knows you read the whole programme and are parking it deliberately, not ignoring it. "P3 onward deferred until Tranche A passes" is enough.
+4. **After the slice runs, stop. Do not chain into the next phase "while we're here."** Each deferred phase gets its own turn, its own probe, its own closure.
+5. **The 2nd / 3rd / 4th programme paste in the same session is a louder signal, not permission to drive.** If Arif has pasted three multi-phase programmes in one session, the right answer is even smaller slice, not "let me drive it all."
+
+**Concrete anti-pattern (failed this rule twice in one session):** pasted an `INIT → 9-phase S24 wizard`, replied with 9 phases of architecture. Later pasted a 20-phase V2 PDF closure, replied with a 4-page executive summary of all 20 phases plus a tranche split. **Right answer was the first time:** "S24 bukan Hermes runtime. Sebelum apa-apa, install Termux + Termux:API atau flip Tailscale SSH — aku tak boleh probe sensor dari KVM8." **Right answer the second time:** "Tranche A: P0, P1, P2, P3, P4, P14 — surface + authority + canonical + typed producer + egress + contradiction gate. Sisanya deferred." Both fixes are < 5 lines.
+
+**Why this is a separate pitfall from #15 (Set the Map Down) and #16b (Condense first).** #15 catches the spiral where the agent keeps generating new analysis after the user has the operating picture. #16b catches long-form artifacts where the user wants condensed. This pitfall catches the moment a user pastes an execution programme and the agent treats "phase N exists" as "phase N must run this turn." Same family (over-elaboration, over-rotation) but a different trigger fingerprint and a different first move.
+
+**Already documented in `references/pitfalls-archive.md` as "Phased Delivery Discipline (2026-08-04)"; promoted here so it is visible on first read.**
+
 ## Reference Files
 
 `references/hermes-context-file-trace.md` — load chain, enforcement, gateway restart · `references/bridge-first-architecture.md` — SOUL.md restructure · `references/gemini-bridge-protocol.md` — output contract · `references/guardrail-audit-methodology.md` — 3-tier safety · `references/token-burn-surgery-20260813.md` — context budget · `references/fed-litellm-operational-quirks.md` — model ID, reload · `references/state-db-syed-extraction.md` — session extraction · `references/kinship-language-and-f5-pdf-pattern-20260817.md` — F5 PDF intake · `references/2026-08-29-pin-flood-gatai-anti-pharma-theatre.md` — format pitfalls · `references/2026-08-29-sado-live-test-bot-identity-and-outbound-patterns.md` — bot identity · `references/witness-extraction-and-encrypted-shadow-pdf-20260817.md` — encrypted PDF · `references/2026-09-02-infra-night-echo-loop.md` — echo loop post-mortem · `references/family-data-search-workflow-20260820.md` — family data search · `references/pitfalls-archive.md` — 428+ pitfall entries (Aug–Sept 2026)

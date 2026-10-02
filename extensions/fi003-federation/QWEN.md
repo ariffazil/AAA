@@ -15,11 +15,12 @@ SOT: `/root/AAA/docs/MACHINE_MAP.md`. Fingerprint yourself first: `echo "$(hostn
 
 | Port | Surface |
 |---|---|
-| :4000 | FED front door — KVM8 HAProxy → KVM4 litellm (docker, tailnet-bound `100.64.0.5:4000`). Health check: `/health/liveliness` ONLY (`/health` falsely returns 000) |
+| :4000 | FED front door — KVM8 HAProxy → **local** litellm (docker via litellm-federation.service drop-in, `127.0.0.1:4013` primary); KVM4 `100.64.0.5:4000` = backup only. Health check: `/health/liveliness` ONLY (`/health` falsely returns 000) |
 | :4010 | fed-aware-middleware (strips web_search/store for Codex; preserves /v1/responses path — fixed 2026-08-21) |
 | :7074 | FED MCP (route advisor, token_bank) |
 | :8088 | arifOS kernel (constitutional) |
-| :18095 | i-ARIF synthesis (Seal B engine) |
+| :18095 | apa-github-bridge (A-FORGE `forge_github` `/execute`) |
+| :18101 | i-ARIF synthesis (Seal B engine, `iarif-synthesis.service`, fed:i-arif cascade) |
 | :18102 | **CHRON** — temporal consequence tracker (prediction/verify/calibrate/learn). MCP surface: `chron_predictions_due`, `chron_calibration_state`, `chron_last_loop`, `chron_active_events`, `chron_active_predictions`, `chron_store_stats`, `chron_temporal_briefing`, `chron_generate_predictions`. Source: `/root/chron/` |
 | HERMES | Telegram poller `@ASI_arifos_bot` — `~/.hermes` on KVM8, no TCP listener, connects to :8088 + :4000 (Tier 3 boundary interface, not a core organ) |
 
@@ -33,7 +34,7 @@ SOT: `/root/AAA/docs/MACHINE_MAP.md`. Fingerprint yourself first: `echo "$(hostn
 ## Seal B/C quick map
 
 - **Seal C (live):** `arif_memory` single-writer CQRS — labor writes → proposal buffer `~/.local/share/arifos/memory_proposals/`, i-ARIF drains via `mode=consolidate`. Writer allowlist: `ARIF_MEMORY_WRITERS` env.
-- **Seal B (engine live):** `POST :18095/synthesize` — synthesis via fed:i-arif cascade, `typing_required` at >3s; bypass needs durable receipt. Gateway wire-in spec: `/root/forge_work/2026-08-21-FI-003-seal-b-c-implementation.md`.
+- **Seal B (engine live):** `POST :18101/synthesize` — synthesis via fed:i-arif cascade, `typing_required` at >3s; bypass needs durable receipt. Port moved off :18095 (held by apa-github-bridge; hardcoded collision) on 2026-10-02 via `IARIF_PORT` env. Gateway wire-in spec: `/root/forge_work/2026-08-21-FI-003-seal-b-c-implementation.md`.
 
 ## APEX-ZEN alignment (canonical 2026-09-16)
 

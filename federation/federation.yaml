@@ -108,12 +108,9 @@ server:
     surface: private
     status: live
     capability: [code_index]
-  hermes_agent:
-    port: 18090
-    tier: extra
-    surface: internal
-    status: live
-    capability: [delegation]
+  # hermes_agent: REMOVED 2026-10-02 — port 18090 deprecated, no listener.
+  #              See receipts/RECEIPT_PORT_MAP_CLEANUP_2026-10-02.md.
+  #              Hermes delegation now routes through A-FORGE :7072 / arifOS :8088.
   megamemory:
     tier: extra
     surface: private
