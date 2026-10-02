@@ -1,4 +1,11 @@
 version: 1
+# PR-2 FEDERATION-SOT (2026-10-02): static institutional truth now lives in
+# federation/components.yaml (identity/class/role) + federation/capabilities.yaml
+# (semantic routing). This file keeps its dynamic pointers (organ_peers, ports,
+# statuses) until a later migration decouples them — the validator at
+# scripts/validate-root-agent-config.mjs still couples to them, so they are NOT
+# removed in this PR. Runtime observations: federation/runtime-state.json (generated).
+federation_canonical_source: federation/components.yaml
 status: active
 last_forged: '2026-07-19T23:16:43Z'
 owner: Muhammad Arif bin Fazil
