@@ -160,6 +160,19 @@ misstates its own date discredits the numbers printed beside it.
 - Letter to a person: **2–3 pages**.
 - A one-page executive summary as a separate lead is usually better than compressing the body.
 
+## When the principal enforces a 4-layer calibration loop
+
+The principal applies four checks during the build, not after. This is his working method, not a one-off; expect it on every deep-analysis ask and design for it from the first response:
+
+1. **Scope calibration.** He states an exact page count ("10 muka exact", not "10-20") or an exact deliverable shape ("1-page quick version please"). Treat the number as a contract, not a target — when he says 10 and the natural render is 12, compress by tightening prose and trimming tables, do not pad to 12 and rationalise.
+2. **Language calibration.** He says "yang aku faham", "BM Penang casual", "plain language". The render is full human language in his register (BM Penang, direct, no flattery, no jargon), not academic register. If the natural render is English-academic, the language calibration has not landed yet — rewrite. The `forge-pdf-delivery` plain-track CSS skeleton is the right base; the register comes from the prose, not the stylesheet.
+3. **Truth calibration.** He cross-audits by pasting an independent source (a dossier, a primary document, a transcript) and asking "does this match?" Independent verification is how he trusts the artifact. Cite the source in the artifact itself in the reader's own register — for him, prose attribution ("the dossier states", "the report shows"); for a forwarded variant, plain-language legend (UKUR / UNJUR / ANDAI). Tag inferences as inferences; do not let them wear the clothing of measurement.
+4. **Self calibration.** He asks "so what have u gain" or "judge yourself" mid-build. Treat the question as a forcing function for honest reflection — not for a polished self-portrait. The deliverable that survives him is the one where the agent has already named its own over-elaboration, naming gaps, and provenance limits before he asks.
+
+**Operating consequence:** the agent that ignores any one of the four layers produces an artifact that gets re-prompted, re-scoped, or re-built at the cost of the principal's attention budget. Run all four on the first response, not after correction.
+
+**Anti-bangang test before declaring done:** if the agent wrote four long turns before the principal asked "so what u gain", the calibration loop failed on the first turn. The fix is not a better final turn — the fix is to ask "dah cukup ke?" within turn 2 on the next artifact.
+
 ## Build, verify, deliver
 
 Follow `forge-pdf-delivery` for the pipeline (author → render → `file` check → page-count and ink sweep →
