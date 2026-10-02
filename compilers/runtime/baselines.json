@@ -1,0 +1,23 @@
+{
+  "arifos": {
+    "source": null,
+    "import": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py",
+    "surface": "http://127.0.0.1:8088/health -> 200",
+    "process": "arifos.service pid=2910464",
+    "stamped_at": "2026-10-02T02:19:21.508981+00:00"
+  },
+  "aforge": {
+    "source": "A-FORGE=cb5cc186",
+    "import": null,
+    "surface": "http://127.0.0.1:7072/health -> 200",
+    "process": "aforge-heartbeat.service pid=2909658",
+    "stamped_at": "2026-10-02T02:19:24.170089+00:00"
+  },
+  "frame": {
+    "source": "FRAME=510fda3",
+    "import": null,
+    "surface": null,
+    "process": "frame-mcp.service pid=1501747",
+    "stamped_at": "2026-10-02T02:19:24.269344+00:00"
+  }
+}

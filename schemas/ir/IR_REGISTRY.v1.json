@@ -1,0 +1,113 @@
+{
+ "registry": "AAA-IR",
+ "version": "v1",
+ "frozen": "NOT_FROZEN",
+ "status": "CANDIDATE_ABI",
+ "candidate_abi_at": "2026-10-02",
+ "candidate_abi_by": "FI-008 session seal + session-2026-10-02-1038 (post CHRON probe)",
+ "note": "SCHEMA_REGISTRY.json (generated 2026-06-04) predates the runtime IRs; this registry is the CANDIDATE machine-enforced ABI layer. Promotion to FROZEN requires: schemas validate, refs resolve, existing canon reconciles, fixtures pass, A2A round-trip tests pass, no semantic duplicate exists, GitHub diff independently reviewed. Until then, status is DRAFT_LOCAL/CANDIDATE_ABI (Truth Kernel: seal preserves record, does not manufacture maturity). Concurrent-worker schemas (task-ir/context-packet/release-link-gate) reconciled 2026-10-02 — one contract, one file.",
+ "contracts": {
+  "IdentityPacket": {
+   "file": "identity-packet.v1.schema.json",
+   "question": "what exactly is this thing?",
+   "compiler": "/root/AAA/compilers/identity/compiler.py",
+   "status": "PROVEN"
+  },
+  "CapabilityGraph": {
+   "file": "capability-graph.v1.schema.json",
+   "question": "what can actually be done now?",
+   "status": "SCHEMA_ONLY"
+  },
+  "TaskIR": {
+   "file": "task-ir.v1.schema.json",
+   "question": "what exactly is being requested?",
+   "status": "PROMOTED",
+   "note": "superset contract incl. task_id/compiled_by/parent_task_id \u2014 promoted from forge_compile_task; duplicate taskir.v1 (FI-008) removed same hour",
+   "compiler": "A-FORGE forge_compile_task (mechanical nucleus exists)"
+  },
+  "AuthorityEnvelope": {
+   "file": "authority-envelope.v1.schema.json",
+   "question": "what may this actor do?",
+   "status": "SCHEMA_ONLY",
+   "note": "canonical action tuple; compiler never self-mints"
+  },
+  "RuntimePacket": {
+   "file": "runtime-packet.v1.schema.json",
+   "question": "what is actually running?",
+   "compiler": "/root/AAA/compilers/runtime/compiler.py",
+   "status": "PROVEN"
+  },
+  "EvidencePacket": {
+   "file": "evidence-packet.v1.schema.json",
+   "question": "what was observed and how?",
+   "status": "SCHEMA_ONLY",
+   "note": "carries evidence, never its own verdict"
+  },
+  "TemporalPacket": {
+   "file": "temporal-packet.v1.schema.json",
+   "question": "when is this claim valid?",
+   "status": "SCHEMA_ONLY"
+  },
+  "DispatchPlan": {
+   "file": "dispatch-plan.v1.schema.json",
+   "question": "who/what executes which node?",
+   "status": "SCHEMA_ONLY"
+  },
+  "ResultPacket": {
+   "file": "result-packet.v1.schema.json",
+   "question": "what actually happened?",
+   "status": "SCHEMA_ONLY"
+  },
+  "ArtifactBundle": {
+   "file": "artifact-bundle.v1.schema.json",
+   "question": "the human-consumable product",
+   "status": "ACTIVE_VIA",
+   "door": "/root/AAA/skills/pdf-federation"
+  },
+  "ContextPacket": {
+   "file": "context-packet.v1.schema.json",
+   "question": "what context matters?",
+   "status": "SCHEMA_ONLY"
+  },
+  "ReleaseLinkGate": {
+   "file": "release-link-gate.v1.schema.json",
+   "question": "is this release linked to reality?",
+   "status": "SCHEMA_ONLY"
+  },
+  "Measurement": {
+   "file": "measurement.v1.schema.json",
+   "question": "what exactly was measured, by whom, against what baseline, and what does it NOT imply?",
+   "status": "SCHEMA_ONLY",
+   "added_by": "session-2026-10-02-1038 (CARIF, post CHRON probe)",
+   "note": "replaces naked status strings with typed tuple; does_not_imply is mandatory for high-signal scopes"
+  },
+  "BridgeProof": {
+   "file": "bridge-proof.v1.schema.json",
+   "question": "is A equivalent to B?",
+   "status": "CANDIDATE_ABI",
+   "added_by": "session-2026-10-02-1038 (CARIF, post CHRON probe)",
+   "note": "FOUR-AXIS revision: relation (8 ontological) + comparability (5) + verification_state (3) + probe_state (4). HARD INVARIANTS: EQUIVALENT_TO requires COMPARABLE+WITNESSED+non-empty evidence. ProbeFailure != REFUTED. TYPE_MISMATCH != DIVERGES_FROM. Supersedes implicit string comparison that produced today's false-positive deployment alarms."
+  },
+  "Worldline": {
+   "file": "worldline.v1.schema.json",
+   "question": "what is the nine-dimension state vector of an organ/agent right now, and how did the last prediction's epsilon evolve?",
+   "status": "SCHEMA_ONLY",
+   "added_by": "session-2026-10-02-1038 (CARIF, post CHRON probe)",
+   "note": "S_t = [R, R_dot, B, M, P, C, A, V, U]; epsilon computed by CHRON; E_{n+1} < E_n is the R6 readiness test"
+  }
+ },
+ "laws": [
+  "CapabilityIndex (declared, repo) != CapabilityGraph (declared+registered+exported+reachable+callable+authorized+observed_at+runtime_identity+drift)",
+  "MATCH/DRIFT forbidden until every claimed equivalence edge carries measured evidence",
+  "Behavior_old ~= Behavior_compiled REQUIRED before legacy tombstone",
+  "Identity != Capability != Authority != Dispatch != Execution != Evidence != Judgment != Seal",
+  "NO EQUIVALENCE WITHOUT A BRIDGE PROOF: A == B iff Bridge(A,B)=WITNESSED (added 2026-10-02)",
+  "Same status word != same measured reality: liveness != availability != integrity != governance != readiness != outcome (added 2026-10-02)",
+  "No naked status string may be emitted; every measurement carries metric/unit/scope/referent/method/baseline/observed_at/does_not_imply (added 2026-10-02)",
+  "Type(A) == Type(B) is mandatory before any comparison; false-type comparison is silent drift fabrication (added 2026-10-02)",
+  "Emitted URL must be in observed_URLs set; renderer refuses hyperlink outside tool evidence (added 2026-10-02)",
+  "EPISTEMIC STATE MUST NOT UPGRADE ACROSS AN AGENT HOP WITHOUT NEW EVIDENCE (added 2026-10-02)",
+ "BridgeProof must obey its own law: relation != comparability != verification_state != probe_state. ProbeFailure != RelationRefuted. TYPE_MISMATCH != DIVERGES_FROM (added 2026-10-02)",
+ "Status DRAFT_LOCAL/CANDIDATE_ABI; promotion to FROZEN requires reconciliation matrix, validator suite, A2A round-trip, GitHub diff review (added 2026-10-02)"
+ ]
+}

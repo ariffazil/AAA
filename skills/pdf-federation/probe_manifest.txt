@@ -1,0 +1,26 @@
+=== HERMES PDF PROBE — 2026-10-02 02:02:00 UTC ===
+host: Linux 6.17.0-41-generic x86_64
+--- binaries ---
+PRESENT  pandoc  pandoc 3.1.11.1
+PRESENT  weasyprint  WeasyPrint version 70.0
+PRESENT  pdftotext  pdftotext version 25.03.0
+PRESENT  pdftoppm  pdftoppm version 25.03.0
+PRESENT  pdfinfo  pdfinfo version 25.03.0
+PRESENT  qpdf  qpdf version 12.2.0
+PRESENT  soffice  LibreOffice 25.8.7.3 580(Build:3)
+MISSING  chromium
+PRESENT  google-chrome  Google Chrome 153.0.8010.36 
+MISSING  wkhtmltopdf
+PRESENT  xelatex  XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)
+PRESENT  tesseract  tesseract 5.5.0
+PRESENT  mutool  mutool version 1.25.1
+PRESENT  gs  10.05.0
+--- python libraries ---
+PRESENT  py:reportlab  5.0.1
+PRESENT  py:pymupdf  None
+PRESENT  py:pypdf  6.18.0
+PRESENT  py:pdfplumber  0.11.10
+PRESENT  py:pdfminer.six  20260107
+PRESENT  py:matplotlib  3.11.1
+PRESENT  py:weasyprint  70.0
+PROBE COMPLETE — treat MISSING as VOID, treat wkhtmltopdf as FORBIDDEN

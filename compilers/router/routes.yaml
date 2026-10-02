@@ -1,0 +1,85 @@
+fabric_root: /root/AAA/compilers
+router_of_record: router/job-types.yaml
+compilers:
+  artifact:
+    status: ACTIVE_VIA
+    door: /root/AAA/skills/pdf-federation
+    profiles:
+    - civic
+    - scientific
+    - slides
+  runtime:
+    status: ACTIVE
+    entry: runtime/compiler.py
+    schema: runtime/runtime-packet.schema.json
+    proven: 2026-10-02 (arifos+aforge live packets)
+  research:
+    status: PLANNED
+    note: profiles own domain questions; compiler owns method; HERMES supplies claim
+      nodes
+  task:
+    status: PLANNED
+    note: 'nucleus exists in A-FORGE: forge_compile_task/auth_pipeline/dispatch_lane/collect_evidence/seal_run'
+  release:
+    status: PLANNED
+    note: 'separate from runtime diagnostics: candidate→build→package→deploy→witness'
+  evidence:
+    status: PARTIAL
+    note: CLAIM→EvidencePacket→JudgeDocket; EvidenceCompiler != Judge (888 stays arifOS)
+  capability:
+    status: PARTIAL
+    note: 'CapabilityGraph: declared vs exported vs callable; provoked by WELL advertised-but-rejected
+      finding'
+  media:
+    status: PLANNED
+    manifests:
+    - image
+    - video
+    - audio
+    - voice
+  context:
+    status: PLANNED
+    note: ContextPacket != MemoryTruth; temporary compiled view
+  dispatch:
+    status: PLANNED
+    note: TaskIR+budget+capability → DispatchPlan over forge_dispatch_lane/forge_parallel
+  event:
+    status: PLANNED
+    note: EventCompiler != CHRON (who receives vs what-happened)
+  delivery:
+    status: PLANNED
+    note: DeliveryIntent typed input; channel adapters; forge_send_confirm is the
+      F13 boundary
+  identity:
+    status: ACTIVE
+    entry: identity/compiler.py
+    schema: schemas/ir/identity-packet.v1.schema.json
+    proven: '2026-10-02 (arifos packet: phantom-artifact discovery, AMBIGUOUS_LENS_CONFLICT)'
+  temporal:
+    status: SCHEMA_FROZEN
+    entry: consumer of CHRON primitive (no scheduler, no judge)
+    schema: schemas/ir/temporal-packet.v1.schema.json
+    readiness_gates:
+      R1_mcp: PASS
+      R2_temporal_truth: PASS
+      R3_falsification: PASS
+      R4_calibration: EARLY (n~10)
+      R5_learning: PARTIAL
+      R6_adaptation: UNPROVEN
+    note: readiness criterion E_{n+1}<E_n with causal lineage; four powers stay separate
+p0_sequence:
+- identity
+- capability
+- task
+- runtime
+- evidence
+- temporal
+above_substrate:
+- research
+- context
+- artifact
+- release
+- delivery
+- media
+- dispatch
+- event

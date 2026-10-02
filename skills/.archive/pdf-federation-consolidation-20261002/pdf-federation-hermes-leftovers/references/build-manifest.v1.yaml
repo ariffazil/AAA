@@ -1,0 +1,205 @@
+# ARTIFACT BUILD MANIFEST — v1.0
+# ============================================================
+# ONE machine-readable manifest that drives one governed PDF.
+# Producers supply CONTRACTS (FigureAsset / ClaimEnvelope), NOT PDFs.
+# A-FORGE compiles. HERMES evaluates claims. arifOS gates authority.
+#
+# Contract owner: pdf-realmap + forge-artifact-publisher skills
+# Rule: Organ output ≠ PDF. Organ output = a typed node.
+# Composition = compile(manifest) → one PDF + one envelope
+# ============================================================
+
+artifact:
+  id: "reality-edge-{{DATE}}"
+  title: "AAA Human Reality Edge Bridge"
+  subtitle: "What is real, what is not, what can be done — in one governed artifact"
+  output_path: "/root/AAA/forge_work/{{DATE}}-reality-edge/reality-edge.pdf"
+  envelope_path: "/root/AAA/forge_work/{{DATE}}-reality-edge/envelope.json"
+  authority_state: "OBSERVE_ONLY"       # producers may not self-seal
+  theme: "light-dossier"                 # >2 pages ⇒ light (lesson: dark is glance-only)
+
+sections:
+  # --- Each section names a type + a producer. The composer knows how to render each type. ---
+  - type: cover
+    title: "HUMAN REALITY EDGE BRIDGE"
+    producer: HERMES
+    fields: [current_state, what_changed, attention_needed]
+
+  - type: toc
+    producer: A-FORGE
+    styles:
+      level_0: { size: 8.5, bold: true, color: gold }
+      level_1: { size: 7.2, color: text }
+
+  - type: reality_dashboard
+    producer: HERMES
+    sources: [WEALTH:gold, arifOS:kernel, A-FORGE:registry]
+    columns: [signal, value, source, as_of, epistemic_class]
+
+  - type: live_chart
+    producer: WEALTH
+    figure_asset_id: "fig-live-chart"
+    caption: "XAUUSD H1 · 200-bar window · live at render time"
+    truth_class: OBSERVATION
+    required_fields: [data_hash, render_hash, as_of, source]
+
+  - type: analytics
+    producer: WEALTH
+    figure_asset_id: "fig-hourly-heatmap"
+    caption: "XAUUSD average % change per hour-of-day"
+    truth_class: COMPUTATION
+
+  - type: system_topology
+    producer: A-FORGE
+    figure_asset_id: "fig-topology"
+    caption: "Canonical skill paths + maturity states"
+    note: "9 symlinks point to /root/AAA/skills/"
+
+  - type: map
+    producer: GEOX
+    figure_asset_id: "fig-map-real"
+    truth_class: CONTEXT
+    required_fields: [crs, extent, source_sha256]
+    refusal_rule: "do NOT label CONTEXT map as 'geological map'"
+
+  - type: image_evidence
+    producer: HERMES
+    figure_asset_id: "fig-image-evidence"
+    required_fields: [source_path, sha256, dimensions]
+
+  - type: geological_section
+    producer: GEOX
+    figure_asset_id: "fig-geosection-synth"
+    truth_class: SYNTHETIC               # explicitly labelled
+    data_hash: null
+    data_hash_absent_reason: "rendered from documented server-side defaults; no independent dataset"
+    note: "A figure with no data hash is a REAL receipt of synthetic status, not a gap to fill."
+
+  - type: well_log
+    producer: GEOX
+    figure_asset_id: "fig-welllog-real"
+    truth_class: OBSERVATION             # REAL measured data (Volve 15/9-19)
+    required_fields: [source_sha256, data_hash, render_hash, depth_reference]
+    note: "Real Equinor Volve LAS. The GEOX-ingest write path is SOVEREIGN_HOLD; the read+render path is OBSERVE_ONLY."
+
+  - type: claim_evidence_map
+    producer: HERMES
+    columns: [claim, evidence, class, confidence]
+
+  - type: contradictions
+    producer: HERMES
+    rule: "show contradictions, do not smooth"
+
+  - type: temporal_view
+    producer: CHRON
+    classes: [CURRENT, STALE, SUPERSEDED, PREDICTED, UNRESOLVED]
+    graceful_absence: "if CHRON unreachable, emit section marked UNVERIFIED"
+
+  - type: authority_view
+    producer: arifOS
+    matrix: [organ, observe, compute, recommend, execute, used_for]
+
+  - type: substrate_view
+    producer: WELL
+    rule: "advisory readiness only — never SEAL/HOLD"
+
+  - type: hash_receipts
+    producer: A-FORGE
+    sources: [all_figure_hashes, all_data_hashes, artifact_sha256]
+
+  - type: honest_gaps
+    producer: HERMES
+    rule: "list what was NOT demonstrated; never fabricate to fill"
+
+  - type: next_actions
+    producer: HERMES
+    rule: "decision-relevant only; no options to admire"
+
+  - type: appendix_envelope
+    producer: A-FORGE
+    format: json
+    embed_in_pdf: true
+
+assets:
+  contract: "FigureAsset/v0"              # /root/.hermes/drafts/figure-asset.v0.schema.json
+  types_supported: [CHART, MAP, GEOLOGICAL_SECTION, ARCHITECTURE_DIAGRAM, IMAGE, EVIDENCE_CROP]
+
+evidence:
+  contract: "RealityEvidenceEnvelope/v1"
+  fields:
+    - source_id
+    - source_uri_or_path
+    - source_sha256
+    - source_type
+    - source_owner
+    - acquired_at
+    - observed_at
+    - tool_id
+    - tool_version
+    - execution_timestamp
+    - page
+    - bbox
+    - element_id
+    - extraction_method
+    - extraction_confidence
+    - unit
+    - coordinate_system
+    - temporal_validity
+    - supersession_state
+    - security_state
+    - claim_ids
+    - figure_ids
+    - transformation_history
+    - authority_state
+    - verification_state
+    - receipt_hash
+
+verification:
+  render_all_pages: true                  # render every page to PNG, inspect
+  visual_qa: true                         # forge_visual_qa or fallback (screenshot + linter)
+  semantic_qa: true                       # every claim has a class; every figure has provenance
+  provenance_roundtrip: true              # recompute every hash; must match
+  hash_all: true                          # artifact, each figure, each source
+  acceptance:
+    - "file <path> reports 'PDF document'"
+    - "pdfinfo page count == manifest section count (roughly)"
+    - "bookmarks > 10"
+    - "pdftotext produces readable text for text sections"
+    - "every figure caption carries a SHA prefix"
+    - "no section claims PROVEN without a receipt"
+
+compositor:
+  primary: "reportlab"                    # deterministic, programmatic control
+  fallback: "weasyprint"                  # HTML/CSS-driven layout
+  figures: "matplotlib"                   # chart/map rendering
+  no_new_tool: true                       # workflow only — no new MCP tool
+  uses_skills:
+    - forge-artifact-publisher
+    - scientific-pdf-generation
+    - pdf-realmap
+
+# ============================================================
+# COMPOSITOR CONTRACT (what compose_artifact.py guarantees)
+# ============================================================
+# 1. Reads this manifest, resolves every {{DATE}} token.
+# 2. For each section:
+#    - cover           → cover page with fields + live values
+#    - toc             → clickable outline from reportlab TableOfContents
+#    - reality_dashboard → table from sources (probed live, not baked)
+#    - live_chart / analytics / map / geosection / topology / image_evidence
+#         → embed figure PNG; caption built from FigureAsset fields
+#    - claim_evidence_map → table (producer HERMES supplies rows)
+#    - contradictions → list (producer HERMES supplies; composer does NOT smooth)
+#    - temporal_view → table with graceful absence if producer unreachable
+#    - authority_view → matrix
+#    - hash_receipts → auto-computed from figure + data hashes
+#    - honest_gaps → list
+#    - next_actions → list
+#    - appendix_envelope → JSON in <pre>
+# 3. Runs verification block; aborts with non-zero if acceptance fails.
+# 4. Writes: {output_path}.pdf + {envelope_path}.json
+#
+# NON-GOALS:
+# - Does NOT generate figures (that is a producer's job).
+# - Does NOT invent missing data (renders "UNVERIFIED" or "SYNTHETIC").
+# - Does NOT seal (arifOS seals, human authorizes).

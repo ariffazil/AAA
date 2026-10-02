@@ -1,0 +1,19 @@
+# FAMILY: session — v1 archived 2026-10-02, v2 canonical
+family: session
+canonical_owner: /root/AAA/skills/session-lifecycle-temporal-v2
+status: ALIAS_PENDING_MERGE
+jobs:
+  session_init:
+    triggers: [init, "session start", boot, salam, kernel bind]
+    executor: session-lifecycle-temporal-v2 (also arifos-auto-init, kernel-bind for kernel ceremony)
+    maturity: PRESENT
+  session_resume:
+    triggers: [resume, "carry forward", "continue session"]
+    executor: session-lifecycle-temporal-v2
+    maturity: PRESENT
+  session_discover:
+    triggers: [discover, "federation discovery", librarian, "find session"]
+    executor: session-federation-discovery / session-librarian (unmerged cluster)
+    maturity: PRESENT
+adapters:
+  temporal_truth: CHRON (consume only — never absorb temporal intelligence into this family)

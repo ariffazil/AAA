@@ -1,0 +1,501 @@
+{
+  "schema": "ecw-report-v1",
+  "generated_at": "2026-10-01T22:42:50.800884+00:00",
+  "sovereign_invariant": "DeclaredState = ObservedState = InterpretedState = EnforcedState",
+  "drift_taxonomy": [
+    "SURFACE_DRIFT",
+    "SCHEMA_DRIFT",
+    "SEMANTIC_DRIFT",
+    "AUTHORITY_DRIFT",
+    "BEHAVIOR_DRIFT",
+    "TRANSPORT_FAILURE"
+  ],
+  "mcp_probes": [
+    {
+      "name": "arifOS",
+      "port": 8088,
+      "reachable": true,
+      "latency_ms": 1.9,
+      "surface": {
+        "url": "http://127.0.0.1:8088/.well-known/mcp/server.json",
+        "declared_tools": 8,
+        "tool_names": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_memory",
+          "arif_judge",
+          "arif_forge",
+          "arif_seal"
+        ]
+      },
+      "live_verdict_tokens": [
+        "HOLD",
+        "OBSERVE_ONLY",
+        "SABAR",
+        "SEAL",
+        "VOID"
+      ],
+      "live_verdict_source": ".well-known/mcp/server.json",
+      "vocabulary_audit": {
+        "canonical_hits": [
+          "HOLD",
+          "OBSERVE_ONLY",
+          "SABAR",
+          "SEAL",
+          "VOID"
+        ],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "PASS",
+        "schema": "UNKNOWN",
+        "semantic": "PASS",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": []
+    },
+    {
+      "name": "A-FORGE",
+      "port": 7072,
+      "reachable": true,
+      "latency_ms": 0.5,
+      "surface": {
+        "url": "http://127.0.0.1:7072/mcp",
+        "declared_tools": 122,
+        "tool_names": [
+          "forge_session_init",
+          "forge_health_check",
+          "forge_heart_critique",
+          "forge_check_governance",
+          "forge_execute",
+          "forge_judge_proxy",
+          "forge_transfer_confirm",
+          "forge_send_confirm",
+          "forge_vault",
+          "forge_wealth",
+          "forge_docsgpt",
+          "forge_journalctl",
+          "forge_well",
+          "forge_kernel",
+          "forge_hf_import",
+          "forge_chart",
+          "forge_probe",
+          "forge_scan",
+          "forge_filesystem",
+          "forge_postgres",
+          "forge_memory",
+          "forge_canon_recall",
+          "forge_git",
+          "forge_github",
+          "forge_docker",
+          "forge_fetch",
+          "forge_agent",
+          "forge_lease",
+          "forge_registry_status",
+          "forge_fingerprint_check",
+          "forge_shell",
+          "forge_shell_dryrun",
+          "forge_shell_status",
+          "forge_shell_ledger",
+          "forge_shell_alert_history",
+          "forge_wm_stats",
+          "forge_wm_gaps",
+          "forge_wm_quality",
+          "forge_experience_trace",
+          "forge_experience_query",
+          "forge_skill_select_query",
+          "forge_job",
+          "forge_status",
+          "forge_abort",
+          "forge_vps_ports",
+          "forge_vps_services",
+          "forge_vps_cron",
+          "forge_security_drift_scan",
+          "forge_verify_timeline",
+          "forge_skill"
+        ],
+        "method": "json-rpc"
+      },
+      "live_verdict_tokens": [
+        "888_HOLD",
+        "ALLOW",
+        "BLOCKED",
+        "FAIL",
+        "HOLD",
+        "PASS",
+        "SABAR",
+        "SEAL",
+        "UNKNOWN",
+        "VOID"
+      ],
+      "live_verdict_source": "tools/list",
+      "vocabulary_audit": {
+        "canonical_hits": [
+          "888_HOLD",
+          "HOLD",
+          "SABAR",
+          "SEAL",
+          "VOID"
+        ],
+        "legacy_hits": [
+          "ALLOW\u2192SEAL",
+          "BLOCKED\u2192VOID",
+          "FAIL\u2192VOID",
+          "PASS\u2192SEAL",
+          "UNKNOWN\u2192HOLD"
+        ],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "PASS",
+        "schema": "UNKNOWN",
+        "semantic": "PASS",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": []
+    },
+    {
+      "name": "AAA",
+      "port": 7073,
+      "reachable": true,
+      "latency_ms": 0.2,
+      "surface": {
+        "declared_tools": 0,
+        "tool_names": [],
+        "error": "HTTPError",
+        "attempted": [
+          "server.json",
+          "/tools",
+          "json-rpc /mcp"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    },
+    {
+      "name": "FED",
+      "port": 7071,
+      "reachable": true,
+      "latency_ms": 0.1,
+      "surface": {
+        "declared_tools": 0,
+        "tool_names": [],
+        "error": "HTTPError",
+        "attempted": [
+          "server.json",
+          "/tools",
+          "json-rpc /mcp"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    },
+    {
+      "name": "CHRON",
+      "port": 7074,
+      "reachable": true,
+      "latency_ms": 0.5,
+      "surface": {
+        "declared_tools": 0,
+        "tool_names": [],
+        "error": "HTTPError",
+        "attempted": [
+          "server.json",
+          "/tools",
+          "json-rpc /mcp"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    },
+    {
+      "name": "FRAME",
+      "port": 18085,
+      "reachable": true,
+      "latency_ms": 0.1,
+      "surface": {
+        "declared_tools": 0,
+        "tool_names": [],
+        "error": "HTTPError",
+        "attempted": [
+          "server.json",
+          "/tools",
+          "json-rpc /mcp"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    },
+    {
+      "name": "arifFlow",
+      "port": 18082,
+      "reachable": true,
+      "latency_ms": 0.1,
+      "surface": {
+        "url": "http://127.0.0.1:18082/tools",
+        "declared_tools": 15,
+        "tool_names": [
+          "capital_primitive",
+          "capital_health",
+          "capital_diagnose",
+          "capital_market",
+          "capital_ledger",
+          "capital_registry",
+          "capital_claims",
+          "capital_entropy",
+          "wealth_judge_handoff",
+          "capital_indicator",
+          "capital_backtest",
+          "capital_entry_plan",
+          "wealth_synthesize",
+          "capital_polix",
+          "capital_civx"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "PASS",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": []
+    },
+    {
+      "name": "GEOX",
+      "port": 18412,
+      "reachable": true,
+      "latency_ms": 0.2,
+      "surface": {
+        "declared_tools": 0,
+        "tool_names": [],
+        "error": "HTTPError",
+        "attempted": [
+          "server.json",
+          "/tools",
+          "json-rpc /mcp"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    },
+    {
+      "name": "federation-gw",
+      "port": 18083,
+      "reachable": true,
+      "latency_ms": 0.1,
+      "surface": {
+        "url": "http://127.0.0.1:18083/.well-known/mcp/server.json",
+        "declared_tools": 0,
+        "tool_names": []
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    },
+    {
+      "name": "fed-router",
+      "port": 18084,
+      "reachable": true,
+      "latency_ms": 0.1,
+      "surface": {
+        "declared_tools": 0,
+        "tool_names": [],
+        "error": "HTTPError",
+        "attempted": [
+          "server.json",
+          "/tools",
+          "json-rpc /mcp"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    },
+    {
+      "name": "tailnet-gw",
+      "port": 18100,
+      "reachable": true,
+      "latency_ms": 0.1,
+      "surface": {
+        "declared_tools": 0,
+        "tool_names": [],
+        "error": "HTTPError",
+        "attempted": [
+          "server.json",
+          "/tools",
+          "json-rpc /mcp"
+        ]
+      },
+      "live_verdict_tokens": [],
+      "live_verdict_source": "none-found",
+      "vocabulary_audit": {
+        "canonical_hits": [],
+        "legacy_hits": [],
+        "unknown_tokens": [],
+        "semantic_drift": false
+      },
+      "six_state": {
+        "transport": "PASS",
+        "surface": "FAIL",
+        "schema": "UNKNOWN",
+        "semantic": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "behavior": "UNKNOWN"
+      },
+      "drift_hits": [
+        "SURFACE_DRIFT"
+      ]
+    }
+  ],
+  "summary": {
+    "total_probed": 11,
+    "transport_up": 11,
+    "surface_declared": 3,
+    "semantic_clean": 2,
+    "drift_classes_hit": {
+      "SURFACE_DRIFT": 8,
+      "SCHEMA_DRIFT": 0,
+      "SEMANTIC_DRIFT": 0,
+      "AUTHORITY_DRIFT": 0,
+      "BEHAVIOR_DRIFT": 0,
+      "TRANSPORT_FAILURE": 0
+    }
+  },
+  "integrity_hash": "82531ba0b29ae7d11acd8ab8bac60cddbcf4559f67bc5ef9653acabe5576896b"
+}

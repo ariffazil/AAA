@@ -1,0 +1,50 @@
+{
+ "$id": "authority-envelope",
+ "title": "AuthorityEnvelope \u2014 what may this actor do to it?",
+ "type": "object",
+ "required": [
+  "actor",
+  "verb",
+  "target",
+  "authority",
+  "verdict"
+ ],
+ "properties": {
+  "actor": {
+   "type": "string"
+  },
+  "verb": {
+   "type": "string"
+  },
+  "target": {
+   "type": "string"
+  },
+  "scope": {
+   "type": "string"
+  },
+  "authority": {
+   "type": "string"
+  },
+  "time": {
+   "type": "string"
+  },
+  "budget": {
+   "type": "object"
+  },
+  "provenance": {
+   "type": "array"
+  },
+  "consequence": {
+   "type": "string"
+  },
+  "verdict": {
+   "enum": [
+    "ALLOW",
+    "HOLD",
+    "DENY"
+   ]
+  }
+ },
+ "additionalProperties": false,
+ "note": "the canonical action tuple a=(actor,verb,target,scope,authority,time,budget,provenance,consequence); P(a,S)->{ALLOW,HOLD,DENY}. Compiler NEVER self-mints."
+}

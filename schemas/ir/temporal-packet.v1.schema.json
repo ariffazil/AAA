@@ -1,0 +1,77 @@
+{
+ "$id": "temporal-packet",
+ "title": "TemporalPacket \u2014 when is this claim valid?",
+ "type": "object",
+ "required": [
+  "subject_ref",
+  "observed_at",
+  "freshness_class",
+  "temporal_state"
+ ],
+ "properties": {
+  "subject_ref": {
+   "type": "string"
+  },
+  "observed_at": {
+   "type": "string"
+  },
+  "valid_from": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "valid_until": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "freshness_class": {
+   "enum": [
+    "FRESH",
+    "WARM",
+    "STALE"
+   ]
+  },
+  "expected_at": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "verify_at": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "supersedes": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "superseded_by": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "temporal_state": {
+   "enum": [
+    "CURRENT",
+    "STALE",
+    "FUTURE",
+    "OVERDUE",
+    "SUPERSEDED",
+    "UNVERIFIED"
+   ]
+  },
+  "temporal_evidence_refs": {
+   "type": "array"
+  }
+ },
+ "additionalProperties": false,
+ "note": "CHRON remains prediction\u2192time\u2192observation\u2192calibration witness; the packet is a consumed primitive, CHRON never becomes a scheduler"
+}

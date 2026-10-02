@@ -1,0 +1,71 @@
+FLAME-operator:
+  action: RETIRED 2026-10-02 — same decommission evidence
+  archive: .archive/capability-compiler-consolidation-20261002/FLAME-operator
+  canonical: null
+  do_not_select: true
+FLAME-router:
+  action: RETIRED 2026-10-02 — lane decommissioned 2026-09-04 per /root/A-FORGE/README.md
+  archive: .archive/capability-compiler-consolidation-20261002/FLAME-router
+  canonical: null
+  do_not_select: true
+FORGE-sct-federation-ingress:
+  action: ARCHIVED 2026-10-02 (byte-identical; ACT preferred per live A-FORGE contracts,
+    SCT legacy-compatible)
+  archive: .archive/capability-compiler-consolidation-20261002/FORGE-sct-federation-ingress
+  canonical: FORGE-act-federation-ingress
+  do_not_select: true
+agent-finding-verification:
+  action: ARCHIVED 2026-10-02 (trees byte-identical, diff empty)
+  archive: .archive/capability-compiler-consolidation-20261002/agent-finding-verification
+  canonical: agent-claim-verification
+  do_not_select: true
+civic-intelligence-pdf:
+  action: DEPRECATED STUB 2026-10-02
+  canonical: pdf-federation
+  do_not_select: true
+document-pipeline:
+  action: DEPRECATED STUB 2026-10-02 (competing router retired)
+  canonical: pdf-federation
+  do_not_select: true
+empirical-audit-pdf:
+  action: DEPRECATED STUB 2026-10-02 (rule in PDF_OPERATIONS.md §4)
+  canonical: pdf-federation
+  do_not_select: true
+forge-artifact-publisher:
+  action: DEPRECATED STUB 2026-10-02 (scripts absorbed)
+  canonical: pdf-federation
+  do_not_select: true
+forge-pdf-delivery:
+  action: DEPRECATED STUB 2026-10-02
+  canonical: pdf-federation
+  do_not_select: true
+governed-artifact-composition:
+  action: DEPRECATED STUB 2026-10-02
+  canonical: pdf-federation
+  do_not_select: true
+hermes-pdf-intelligence:
+  action: DEPRECATED STUB 2026-10-02 (knowledge absorbed into references/PDF_OPERATIONS.md)
+  canonical: pdf-federation
+  do_not_select: true
+open-slide-integration:
+  action: DEPRECATED STUB 2026-10-02
+  canonical: pdf-federation
+  do_not_select: true
+pdf-realmap:
+  action: DEPRECATED STUB 2026-10-02
+  canonical: pdf-federation
+  do_not_select: true
+scientific-pdf-generation:
+  action: DEPRECATED STUB 2026-10-02
+  canonical: pdf-federation
+  do_not_select: true
+session-lifecycle-temporal:
+  action: ARCHIVED 2026-10-02 (v1 identical to v2; v2 supersedes)
+  archive: .archive/capability-compiler-consolidation-20261002/session-lifecycle-temporal-v1
+  canonical: session-lifecycle-temporal-v2
+  do_not_select: true
+shadow-paradox-13:
+  action: ALREADY_ALIASED (top-level name is a symlink to the domain real path — verified
+    2026-10-02)
+  canonical: domains/general/apex/cognitive-reflex/shadow-paradox-13
+  do_not_select: true

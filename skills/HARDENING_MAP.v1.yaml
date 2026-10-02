@@ -1,0 +1,449 @@
+census:
+  generated_at: '2026-10-02T02:39:18.279526+00:00'
+  tool: compilers/router/skill_census.py
+  skillmd_dirs: 757
+  real_dirs: 679
+  symlinked: 78
+  with_scripts: 66
+  doctrine_only_no_scripts: 618
+  provenance:
+  - m: walk
+    cmd: iterdir /root/AAA/skills + /root/.hermes/skills (realpath-deduped)
+    count: 757
+  - m: alias audit
+    cmd: json /root/AAA/skills/SKILL_ALIAS_TABLE.json -> aliases[].primary_resolved liveness vs disk
+    live: 109
+    dead: 62
+hardening:
+  identical_twins:
+  - hash: 8b8c54ecbdda
+    members:
+    - /root/AAA/skills/apex_verdict_hold
+    - /root/.hermes/skills/apex_verdict_hold
+  - hash: 91be2faeccb6
+    members:
+    - /root/AAA/skills/domains/general/apex/human-bond-action
+    - /root/AAA/skills/human-reality-field/human-bond-action
+  basename_collisions:
+    AGI-decisions-reflect:
+    - /root/AAA/skills/.frozen/2026-09-16-skill-zen-quartet/AGI-decisions-reflect
+    - /root/.hermes/skills/AGI-decisions-reflect
+    apex_verdict_hold:
+    - /root/AAA/skills/apex_verdict_hold
+    - /root/.hermes/skills/apex_verdict_hold
+    human-bond-action:
+    - /root/AAA/skills/domains/general/apex/human-bond-action
+    - /root/AAA/skills/human-reality-field/human-bond-action
+  stale_60d_plus:
+    count: 0
+    oldest_first: []
+  frontmatter_broken:
+  - RSI-recursive-improvement
+  - aaa-doctrine-sealing
+  - arifos-auto-init
+  - shadow-paradox-13
+  - forge-telegram-audit
+distraction:
+  cluster_sizes:
+    evidence: 73
+    research-web: 38
+    voice: 20
+    image: 18
+    runtime-ops: 16
+    document: 15
+    model-compute: 15
+    delivery: 12
+    mcp-ops: 10
+    video: 9
+    federation-rt: 5
+    session: 3
+    telegram: 2
+  clusters:
+    evidence:
+    - FORGE-pr-review
+    - FORGE-precommit-review
+    - agent-tool-verification
+    - apex_audit_coverage_check
+    - arif-style-zen-audit
+    - arifos-kernel-zen-audit
+    - auditable-numeric-artifacts
+    - capability-surface-conformance
+    - capability-telemetry-audit
+    - ccc-pool-multihost-audit
+    - chokepoint-enforcement-audit
+    - claim-ledger-integrity
+    - claim-receipt-discipline
+    - claimed-defect-verification
+    - compensation-claim-grading
+    - control-reality-audit
+    - corporate-language-audit
+    - cross-audit-v1
+    - deploy-drift-verification
+    - deployment-claim-verification
+    - divergent-claim-reconciliation
+    - doctrine-ratification-audit
+    - durable-claim-ledger
+    - empirical-audit-pdf
+    - enforcement-coverage-verification
+    - federation-machine-verification
+    - federation-mcp-drift-audit
+    - federation-scheduler-audit
+    - federation-web-design-audit
+    - firecrawl-seo-audit
+    - first-party-evidence-audit
+    - forge-symlink-audit
+    - forge-vss-verifier-suite
+    - gate-grounding-audit
+    - geox-basin-claims-audit
+    - health-product-claim-audit
+    - hermes-federation-audit
+    - hermes-runtime-audit
+    - hermes-upstream-audit
+    - human-corpus-falsification
+    - identity-reference-verification
+    - institution-entropy-audit
+    - institutional-fact-verification
+    - institutional-language-audit
+    - irfan-stewardship-review
+    - learning-loop-verification
+    - live-pipeline-trace-audit
+    - live-probe-audit-pattern
+    - live-system-audit-discipline
+    - machine-read-verification
+    - market-claim-assessment
+    - market-prediction-falsification
+    - observability-completeness-audit
+    - prediction-honesty-audit
+    - predictive-claim-falsification
+    - public-claims-maintenance
+    - public-ingress-audit
+    - publication-risk-audit
+    - recursive-audit
+    - rendered-artifact-verification
+    - rendered-document-audit
+    - restart-boundary-verification
+    - review-agent
+    - self-recurrence-guards
+    - submission-readiness-audit
+    - surface-consistency-audit
+    - synthesis-verification-gate
+    - third-party-artifact-review
+    - trading-risk-review
+    - verify-runtime
+    - viral-citation-falsification
+    - voice-render-verification
+    - witness-independence-audit
+    telegram:
+    - telegram-direct-delivery
+    - telegram-mcp-product-line
+    mcp-ops:
+    - FORGE-mcp-federation-ops
+    - FORGE-mcp-ops
+    - FORGE-mcp-probe
+    - FORGE-mcp-registry-ops
+    - forge-fastmcp
+    - runpod-mcp
+    - touchdesigner-mcp
+    - wealth-mcp-ops
+    - wealth-mcp-testing
+    - wealth-mcp-tool-hardening
+    image:
+    - aaa-image-editing
+    - agent-exploration-discipline
+    - forge-real-person-reference-photos
+    - hermes-gateway-image-routing
+    - image-gen-fallback-chain
+    - image-identity-transfer
+    - image-restyle-and-edit
+    - image-text-editing
+    - image-text-extraction
+    - imagegen
+    - lightweight-image-generation
+    - minimax-image-gen
+    - photo-style-transfer
+    - photorealistic-human-image-gen
+    - photorealistic-human-multi-model
+    - qwencloud-image-generation
+    - reference-image-rendering
+    - sd-lora-ecosystem
+    voice:
+    - AAA-asr-glm-ingest
+    - AAA-tts-engine-catalog
+    - AAA-voice-cloning-mimo-minimax
+    - AAA-voice-cloning-qwen-cloud
+    - aaa-pdf-voice-protocol
+    - geox-voice-reality-ingest
+    - hermes-voice-config
+    - human-voice-writing
+    - mimo-audio
+    - multi-voice-note-assembly
+    - nusantara-voice-stack
+    - persona-voice-binding
+    - persona-voice-note-render
+    - qwen-voice-clone-quota
+    - synthetic-voice-scene-rendering
+    - text-to-speech
+    - unspoken-voice-rendering
+    - voice-clone-operations
+    - voice-lane
+    - wop-invoice-generator
+    runtime-ops:
+    - ASI-drift-watch
+    - FORGE-cicd-docker-deploy
+    - FORGE-incident-escalation
+    - FORGE-incident-triage
+    - drift-watch
+    - federation-housekeeping-master
+    - federation-machine-migration
+    - federation-node-reachability
+    - federation-organ-recovery
+    - federation-service-recovery
+    - fork-drift-assessment
+    - headless-oauth-credential-recovery
+    - kabarkan-observability
+    - live-service-ops
+    - recovery-playbook
+    - service-state-schema-drift
+    federation-rt:
+    - FORGE-federation-orchestrator
+    - a2a-agent-card-registration
+    - a2a-task-delegator
+    - agent-to-agent-enablement
+    - operational-signal-routing
+    document:
+    - aaa-ocr-optical-compression
+    - civic-intelligence-pdf
+    - docforge-document-lane
+    - document-pipeline
+    - documentary-biography-from-chat
+    - forge-document-intelligence
+    - hermes-pdf-intelligence
+    - medical-document-interpretation
+    - nano-pdf
+    - ocr-and-documents
+    - open-slide-integration
+    - paged-media-report-layout
+    - pdf-federation
+    - pdf-realmap
+    - scientific-pdf-generation
+    research-web:
+    - AGI-web-optimization
+    - agi-agentic-web-delivery
+    - agi-deep-research-loop
+    - contextstream-memory-code-search
+    - deep-research
+    - firecrawl
+    - firecrawl-agent
+    - firecrawl-company-directories
+    - firecrawl-competitive-intel
+    - firecrawl-crawl
+    - firecrawl-dashboard-reporting
+    - firecrawl-deep-research
+    - firecrawl-demo-walkthrough
+    - firecrawl-developer-index
+    - firecrawl-download
+    - firecrawl-interact
+    - firecrawl-knowledge-base
+    - firecrawl-knowledge-ingest
+    - firecrawl-lead-gen
+    - firecrawl-lead-research
+    - firecrawl-map
+    - firecrawl-market-research
+    - firecrawl-monitor
+    - firecrawl-parse
+    - firecrawl-qa
+    - firecrawl-research-index
+    - firecrawl-research-papers
+    - firecrawl-scrape
+    - firecrawl-search
+    - firecrawl-shop
+    - firecrawl-web-search
+    - firecrawl-website-design-clone
+    - firecrawl-workflows
+    - forge-agentic-web-builder
+    - research-paper-writing
+    - tts-route-deep-research
+    - web-surface-design-fidelity
+    - youtube-eureka
+    video:
+    - AAA-video-emd-pipeline
+    - ai-video-generation
+    - dashscope-video-generation
+    - h3-video
+    - happyhorse-video-api
+    - qwencloud-video-generation
+    - social-video-intelligence
+    - video-prompt-engineering
+    - youtube-video-info
+    delivery:
+    - brevo-email-sending
+    - cross-host-artifact-delivery
+    - email-outbound
+    - forge-event-delivery
+    - forge-pdf-delivery
+    - forge-phased-delivery
+    - forge-so-what-deliverables
+    - generated-media-delivery
+    - listed-equity-chart-delivery
+    - sealed-deliverable-provenance
+    - visual-artifact-delivery
+    - visual-surface-delivery
+    model-compute:
+    - fed-model-chain-editing
+    - litellm-proxy-triage
+    - mmx-cli
+    - mmx-mesh
+    - mulerouter-media
+    - qwencloud-cli
+    - qwencloud-deploy
+    - qwencloud-mesh
+    - qwencloud-model-selector
+    - qwencloud-ops-auth
+    - qwencloud-text
+    - qwencloud-update-check
+    - qwencloud-usage
+    - qwencloud-vision
+    - tokenrouter-guide
+    session:
+    - agent-session-forensics
+    - live-worker-session-relay
+    - session-store-person-probe
+  alias_liveness:
+    rows: 183
+    live: 109
+    dead: 62
+    dead_targets:
+    - alias: forge-exec
+      target: /root/.agents/skills/kernel-verbs-aforge-hands
+    - alias: forge-verbs
+      target: /root/.agents/skills/kernel-verbs-aforge-hands
+    - alias: dev-wiki
+      target: /root/AAA/skills/code-wiki
+    - alias: ops-mcp-builder
+      target: /root/.agents/skills/mcp-builder-doctrine
+    - alias: ops-data-compress
+      target: /root/AAA/skills/FORGE-data-compression
+    - alias: dev-t3a-matrix
+      target: /root/AAA/skills/FORGE-t3a-binding-matrix
+    - alias: dev-seal-close
+      target: /root/AAA/skills/FORGE-seal-a-close
+    - alias: dev-jsonld
+      target: /root/AAA/skills/FORGE-governance-jsonld
+    - alias: domain-causal
+      target: /root/AAA/skills/causal555-pywhy
+    - alias: domain-wealth-claim
+      target: /root/AAA/skills/wealth-claim-state
+    - alias: domain-summarize
+      target: /root/AAA/skills/ASI-summarize
+    - alias: ops-transport
+      target: /root/.agents/skills/transport-physics-intelligence
+    - alias: meta-rsi-cool
+      target: /root/.agents/skills/cooling-ledger-rsi
+    - alias: meta-trust-map
+      target: /root/.agents/skills/symbolic-order-trust-architecture
+    - alias: sec-telegram
+      target: /root/AAA/skills/telegram-security-audit
+    - alias: AGI-sovereign-connector
+      target: /root/.agents/skills/AGI-sovereign-connector
+    - alias: AGI-prospect-maturation
+      target: /root/.agents/skills/AGI-prospect-maturation
+    - alias: ASI-knowledge-writeback
+      target: /root/.agents/skills/ASI-knowledge-writeback
+    - alias: ASI-cooling-ledger-rsi
+      target: /root/.agents/skills/ASI-cooling-ledger-rsi
+    - alias: ASI-knowledge-graph-query
+      target: /root/.agents/skills/ASI-knowledge-graph-query
+    - alias: ASI-unified-memory
+      target: /root/.agents/skills/ASI-unified-memory
+    - alias: FORGE-init-intent-classify
+      target: /root/.agents/skills/FORGE-init-intent-classify
+    - alias: FORGE-phase-escalation
+      target: /root/.agents/skills/FORGE-phase-escalation
+    - alias: FORGE-search
+      target: /root/.agents/skills/FORGE-search
+    - alias: FORGE-seek
+      target: /root/.agents/skills/FORGE-seek
+    - alias: ARCHIVE-vault-seal
+      target: /root/.agents/skills/ARCHIVE-vault-seal
+    - alias: AUDIT-clarity-canon
+      target: /root/.agents/skills/AUDIT-clarity-canon
+    - alias: AUDIT-symbolic-collective-bias
+      target: /root/.agents/skills/AUDIT-symbolic-collective-bias
+    - alias: AUDIT-symbolic-trust
+      target: /root/.agents/skills/AUDIT-symbolic-trust
+    - alias: KERNEL-verbs-forge-hands
+      target: /root/.agents/skills/KERNEL-verbs-forge-hands
+    - alias: KERNEL-reality-skills
+      target: /root/.agents/skills/KERNEL-reality-skills
+    - alias: KERNEL-session-inhabit
+      target: /root/.agents/skills/KERNEL-session-inhabit
+    - alias: KERNEL-sovereign-recognize
+      target: /root/.agents/skills/KERNEL-sovereign-recognize
+    - alias: SHADOW-diagnostic
+      target: /root/.agents/skills/SHADOW-diagnostic
+    - alias: MCP-transport-physics
+      target: /root/.agents/skills/MCP-transport-physics
+    - alias: WELL-somatic-kernel
+      target: /root/.agents/skills/WELL-somatic-kernel
+    - alias: GEOX-artifact-rigor
+      target: /root/.agents/skills/GEOX-artifact-rigor
+    - alias: KERNEL-qubit-substrate
+      target: /root/.agents/skills/KERNEL-qubit-substrate
+    - alias: code-wiki
+      target: /root/AAA/skills/FORGE-code-wiki
+    - alias: docker
+      target: /root/AAA/skills/FORGE-docker
+    - alias: github-runbook
+      target: /root/AAA/skills/FORGE-github-runbook
+    - alias: mcp-lifeguard
+      target: /root/AAA/skills/FORGE-mcp-lifeguard
+    - alias: mcp-smoke-test
+      target: /root/AAA/skills/FORGE-mcp-smoke-test
+    - alias: mcporter
+      target: /root/AAA/skills/FORGE-mcporter
+    - alias: precommit-gate
+      target: /root/AAA/skills/FORGE-precommit-gate
+    - alias: secret-safety-scan
+      target: /root/AAA/skills/FORGE-secret-safety-scan
+    - alias: drift-response
+      target: /root/AAA/skills/ASI-drift-response
+    - alias: multi-discipline-critique
+      target: /root/AAA/skills/ASI-multi-discipline-critique
+    - alias: docker-entropy-ops
+      target: /root/AAA/skills/FORGE-docker-entropy
+    - alias: AGI-claude-xml-structured-reasoning
+      target: /root/.kimi-code/skills/AGI-claude-xml-structured-reasoning
+    - alias: AGI-hermes-system-prompt-voice
+      target: /root/.kimi-code/skills/AGI-hermes-system-prompt-voice
+    - alias: AGI-codex-chain-of-thought
+      target: /root/.kimi-code/skills/AGI-codex-chain-of-thought
+    - alias: AGI-emd-decode
+      target: /root/AAA/skills/AGI-emd-decode
+    - alias: AGI-emd-metabolize
+      target: /root/AAA/skills/AGI-emd-metabolize
+    - alias: FORGE-grok-profile
+      target: /root/.kimi-code/skills/FORGE-grok-profile
+    - alias: tri-witness
+      target: /root/AAA/skills/AGI-explorer-intelligence
+    - alias: AGI-entropy-lock-prime
+      target: /root/AAA/skills/AGI-entropy-lock-prime
+    - alias: trinity-design-seam
+      target: ''
+    - alias: apx_init_substrate
+      target: ''
+    - alias: mcp-shopping-list-2026-09
+      target: ''
+    - alias: tts-edge-fallback
+      target: ''
+    - alias: kernel-superposition
+      target: ''
+action_queue:
+  P0_identity_capability: extend identity compiler from this census; reconcile dead alias targets
+  P0_clusters_next:
+  - evidence
+  - session
+  - federation-rt
+  - research-web
+  - telegram
+  - runtime-ops
+  rule: no cluster member may be selected while its family front door exists; per MIGRATION.md fates

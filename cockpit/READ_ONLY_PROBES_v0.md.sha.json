@@ -1,0 +1,16 @@
+{
+  "sha256": "4bebae9f81d72d6fcadb88ae0be91b190bcf7360daeb1c6255731dca5074a030",
+  "path": "/root/AAA/cockpit/READ_ONLY_PROBES_v0.md",
+  "bytes": 13493,
+  "session_id": "SEAL-75bf91d1ac734b58",
+  "actor": "hermes/fi-001",
+  "created_utc": "2026-10-01T22:59:04.163366+00:00",
+  "status": "DRAFT_AWAITING_F13_RATIFICATION",
+  "probes": 5,
+  "scope": "lane_B_read_only",
+  "prior_evidence_anchored": [
+    "RECEIPT_SMOKE_WRITE_BENIGN_2026-10-02.md",
+    "sovereign_audit_2_2026-10-01T22:41Z"
+  ],
+  "next_action": "await sovereign \"SAH\" or pushback before execution"
+}

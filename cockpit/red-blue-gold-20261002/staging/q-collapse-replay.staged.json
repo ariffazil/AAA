@@ -1,0 +1,90 @@
+{
+  "schema": "q-collapse-replay-v0",
+  "generated_at": "2026-10-01T23:49:57.513750+00:00",
+  "doctrine_separation": true,
+  "apex_canonical": "G = (A\u00b7P\u00b7E\u00b7X)^(1/4)",
+  "decision_space_separate": true,
+  "cases": {
+    "T1_deterministic": {
+      "schema": "q-collapse-proposal-v0",
+      "generated_at": "2026-10-01T23:49:57.513766+00:00",
+      "state": "ACTION",
+      "next_path": "apply_the_verified_reversible_fix",
+      "reason": "Single reproducible bug, single tested reversible fix; APEX gate G=1.0; decision: deterministic; no real uncertainty.",
+      "confidence": 1.0,
+      "alternatives_exposed": 0,
+      "human_required": false,
+      "q_collapse_role": "PROPOSE_ONLY",
+      "NOT_AUTHORIZE": true,
+      "NOT_JUDGE": true,
+      "NOT_SEAL": true,
+      "NOT_EXECUTE": true,
+      "primary_dials_used": [
+        "A_apex",
+        "P_apex",
+        "E_apex",
+        "X_apex",
+        "P_decision",
+        "V_decision"
+      ],
+      "evidence_basis": "bug_reproduced + fix_tested + reversible + APEX_G=1.0",
+      "apex_canonical_separate": true,
+      "constitutional_authority_required": false
+    },
+    "T2_uncertain_reversible": {
+      "schema": "q-collapse-proposal-v0",
+      "generated_at": "2026-10-01T23:49:57.513775+00:00",
+      "state": "PROBE",
+      "next_path": "run_smallest_discriminating_probe",
+      "reason": "\u0394U(p1, p2) \u2248 0; both reversible; probe maximizes InformationGain/(Risk\u00d7Irreversibility\u00d7Cost); human interruption would cost more than probe.",
+      "confidence": 0.7,
+      "alternatives_exposed": 1,
+      "human_required": false,
+      "q_collapse_role": "PROPOSE_ONLY",
+      "NOT_AUTHORIZE": true,
+      "NOT_JUDGE": true,
+      "NOT_SEAL": true,
+      "NOT_EXECUTE": true,
+      "primary_dials_used": [
+        "L_decision",
+        "R_decision",
+        "V_decision",
+        "H_decision"
+      ],
+      "evidence_basis": "\u0394U\u22480 + reversible + probe_cheap + information_gain_positive",
+      "apex_canonical_separate": true,
+      "constitutional_authority_required": false
+    },
+    "T3_human_sovereignty": {
+      "schema": "q-collapse-proposal-v0",
+      "generated_at": "2026-10-01T23:49:57.513779+00:00",
+      "state": "HOLD",
+      "next_path": "HOLD_pending_sovereign_decision",
+      "reason": "Both paths pass APEX gate and decision scoring; difference depends on human value + irreversibility + consent; constitutional authority required.",
+      "confidence": 0.0,
+      "alternatives_exposed": 1,
+      "human_required": true,
+      "q_collapse_role": "PROPOSE_ONLY",
+      "NOT_AUTHORIZE": true,
+      "NOT_JUDGE": true,
+      "NOT_SEAL": true,
+      "NOT_EXECUTE": true,
+      "primary_dials_used": [
+        "M_meaning_veto",
+        "V_reversibility",
+        "Consent_flag"
+      ],
+      "evidence_basis": "irreversibility + human_value + consent_required",
+      "apex_canonical_separate": true,
+      "constitutional_authority_required": true
+    }
+  },
+  "pass_criteria": {
+    "T1": "ONE ACTION; alternatives_exposed=0; human_required=false",
+    "T2": "ONE INFORMATION-GAIN PROBE; human_required=false",
+    "T3": "HOLD + ONE QUESTION; alternatives_exposed \u2264 1"
+  },
+  "held_for_production_wiring": true,
+  "reversible": "rm /root/AAA/cockpit/q-collapse-harness.py",
+  "integrity_hash": "368c98570bbcee4ab05ad9defb3815795e48eaf3ad5608eefbbec689e5b2d123"
+}

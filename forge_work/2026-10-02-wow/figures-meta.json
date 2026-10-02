@@ -1,0 +1,37 @@
+{
+  "peninsular": {
+    "sha": "ea8fe7baeaf311f0",
+    "bytes": 58759,
+    "bbox": [
+      99.5,
+      1.0,
+      107.0,
+      7.0
+    ],
+    "tool": "geox_map.render_preview",
+    "crs": "EPSG:4326",
+    "theme": null,
+    "layer_count": null,
+    "data_mode": "derived",
+    "governance": "HOLD",
+    "verification": "PENDING",
+    "scene_id": "scene_c6a37b6548e1",
+    "witness_ready": false
+  },
+  "sabah": {
+    "sha": "e88de64f8dac4074",
+    "bytes": 56766,
+    "bbox": [
+      114.0,
+      3.0,
+      120.0,
+      8.5
+    ],
+    "tool": "geox_map.render_preview",
+    "crs": "EPSG:4326",
+    "theme": null,
+    "layer_count": null,
+    "governance": "HOLD",
+    "verification": "PENDING"
+  }
+}

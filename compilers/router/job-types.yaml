@@ -1,0 +1,132 @@
+jobs:
+  identity_resolve:
+    compiler: identity
+    producers:
+    - git+site-packages+release-manifest
+    output: IdentityPacket
+    status: ACTIVE
+    door: /root/AAA/compilers/identity/compiler.py
+    note: 'PROVEN 2026-10-02: phantom-artifact discovery — no dist-info for arifosmcp;
+      wheel-based DRIFT verdicts measured a nonexistent artifact; AMBIGUOUS_LENS_CONFLICT
+      emitted instead of false MATCH/DRIFT'
+    triggers:
+    - identity
+    - which build
+    - what commit
+    - drift
+    - source identity
+    - deployed identity
+    - package version
+    - why is deployed
+  research:
+    compiler: research
+    producers:
+    - web+HERMES+domain-organ
+    output: EvidenceGraph
+    status: PLANNED
+  artifact_report:
+    compiler: artifact
+    producers:
+    - pdf-federation/GEOX/WEALTH/HERMES
+    output: ArtifactBundle
+    status: ACTIVE
+    door: /root/AAA/skills/pdf-federation
+    note: pdf-federation IS the artifact compiler first incarnation (manifest→compose→verify→receipt)
+  media_generate:
+    compiler: media
+    producers:
+    - provider-adapters
+    output: MediaBundle
+    status: PLANNED
+  fix_code_system:
+    compiler: task+runtime
+    producers:
+    - A-FORGE
+    output: TaskIR+RuntimePacket
+    status: PARTIAL
+    note: runtime PROVEN 2026-10-02; task-compiler pending
+    triggers:
+    - drift
+    - runtime
+    - packet
+    - source identity
+    - deployed identity
+    - import origin
+    - differs from source
+    - different from source
+    - why is deployed
+  deploy:
+    compiler: release
+    producers:
+    - A-FORGE
+    output: ReleasePacket
+    status: PLANNED
+    triggers:
+    - deploy
+    - release
+    - rollout
+    - ship
+    - restart
+  verify_claim:
+    compiler: evidence
+    producers:
+    - probes+witness
+    output: EvidencePacket
+    status: PARTIAL
+    note: interim door agent-claim-verification; EvidencePacket pending
+    triggers:
+    - verify claim
+    - verify a claim
+    - evidence
+    - falsify
+  what_tool_exists:
+    compiler: capability
+    producers:
+    - MCP-registries
+    output: CapabilityGraph
+    status: PARTIAL
+    note: WELL 10/10/10/10 REGISTRY_PASS = positive reference impl; GEOX RT1 incident
+      recorded (advertised geox_system_registry_status rejected; canonical tool not
+      on connector surface); WEALTH timeouts are typed UNREACHABLE/TIMEOUT, never
+      silently 'broken'; graph builder pending
+    triggers:
+    - what tool
+    - which tool
+    - capability
+    - callable
+    - tool exists
+  what_context:
+    compiler: context
+    producers:
+    - memory+scars
+    output: ContextPacket
+    status: PLANNED
+  who_executes:
+    compiler: dispatch
+    producers:
+    - AAA/A-FORGE
+    output: DispatchPlan
+    status: PLANNED
+  who_notified:
+    compiler: event+delivery
+    producers:
+    - AAA
+    output: DeliveryPlan
+    status: PLANNED
+  temporal_check:
+    compiler: temporal
+    producers:
+    - CHRON-consumed
+    output: TemporalPacket
+    status: PLANNED
+    note: schema frozen in schemas/ir/; CHRON stays witness, never scheduler
+boundaries:
+- arifOS kernel verbs (init/observe/think/route/memory/judge/forge/seal)
+- HERMES canonical meaning tools
+- CHRON prediction/verification ledger (temporal truth)
+- WELL readiness primitives
+- GEOX / WEALTH domain computation
+- A-FORGE mutation primitives
+- independent verifier + FRAME/witness (compiler cannot verify itself; producer cannot
+  be sole witness)
+- 888 JUDGE · 999 VAULT
