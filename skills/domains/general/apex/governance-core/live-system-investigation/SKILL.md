@@ -246,6 +246,23 @@ When a peer agent (or an upstream tool) reports a root-cause diagnosis for a def
 
 When a defect manifests as a flood of identical errors from one retry layer (redelivery, obligation replay, scheduled task), the surface error tells you *what is being retried*, not *why it was minted in the first place*. The smallest reproducible trace is: the consumer's retry log → the queue/table it pulls from → the producer that mints the rows → the upstream guard that should have refused the row but did not. Four hops is normal; if you stop at hop one and write the patch at the consumer, you fix a symptom and the queue stays full.
 
+### Cosmetic-display fixes that do not change reality — surface-aligned ≠ substrate-aligned
+
+A renderer fix (a HUD line, a status string, a colour or label) that *surfaces* an existing data field is not the same as a fix that *changes* the underlying state. The HUD goes from red-but-unseen to red-but-seen; the substrate is still red. The trap is real when an audit is closed on the renderer patch alone:
+
+- The visible severity number drops (e.g. `?` → `UNKNOWN`, hidden drift count → visible drift count), and the patch is sealed as if it were a fix.
+- The underlying contradiction is still present in the state file and was present before the patch.
+- A future operator who reads the "sealed" receipt assumes the root cause is gone; the substrate tells them otherwise on the next independent probe.
+
+**Discriminator: did the underlying producer field change?** Read the producer's emitted JSON/structured output before and after the patch. If the field value is unchanged, the patch is a display fix, not a state fix — seal it as `cosmetic`, not as `root-cause-resolved`. The receiving audit should call this out before any "done" verdict.
+
+**The two failure shapes the patch disguises:**
+
+1. **Pre-existing contradiction now visible** — `aforge=DRIFT, frame=DRIFT` was true before the renderer added the line and remains true after. The patch decreases *ignorance*, not severity; the contradiction's contribution to the next inference is the same.
+2. **Field-name drift finally read at the right path** — the data was always emitted, the renderer was reading `<wrong>`, the patch re-keys to `<right>`. The state was always red; only the renderer was previously blind. The fix here is at the renderer (cosmetic), but the receipt must say "renderer aligned with existing producer truth", not "defect resolved".
+
+The test: *after the patch, run the same probe that originally found the issue.* If the underlying state field returns the same value it did before the patch, the patch did not reduce the severity — it reduced the surprise. Re-state the issue as still-open at the right under that probe's return value.
+
 ### Configuration channels can register values the protocol rejects
 
 A channel directory, registry, or config file may include entries that the underlying protocol refuses to act on — e.g. a chat_id equal to the bot's own user_id (the bot cannot send messages to itself; the platform returns a 403 even when the config marks it as a valid delivery target). Config-side acceptance is not protocol-side validity. Before patching code to work around a 403 / 400 / 422, search the config layer for entries that *would* cause that exact rejection; a `grep` for the offending identifier across channel-directories, registries, and cron-job origin fields often shows the defect has been latent for days or weeks because no caller happened to mint the row that triggers it. The fix is rarely "make the code resilient to bad targets" — it is "do not register bad targets".

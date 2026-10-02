@@ -17,6 +17,10 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - SOVEREIGN-PROPOSAL-CANON-INDEX-STAGING-2026-09-24
 - _UNRENDERED_INDEX
 - add-only-truth-preservation
+- aforge-citizen-contract
+- aforge-citizen-contract-333b-DRAFT
+- aforge-competency-evals
+- aforge-competency-schema
 - agentic-architecture
 - agentic-federation-substrate
 - agentic-kernel-asi-doctrine
@@ -124,6 +128,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - huma-edge-reality-bridge-contrast
 - human-cognitive-artifact-invariants
 - human-heartbeat-map-DRAFT-2026-09-24
+- human-leverage-north-star
 - human-meaning-membrane
 - human-memory
 - human-reality-invariants
@@ -192,6 +197,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - valence-loss-asymmetry
 - vault999-writer-discipline
 - wawabot-anthropology
+- well-use
 - witness-cost-gradient
 - witness-maintenance
 - witness-theory-system-design

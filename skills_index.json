@@ -146,11 +146,11 @@
         "name": "audit-repo-reality",
         "id": "audit-repo-reality",
         "risk_tier": "low",
-        "description": "REPO_REALITY_AUDIT::v1.2 — Sovereign doctrine (F13, 2026-08-14).",
+        "description": "REPO_REALITY_AUDIT::v1.2 \u2014 Sovereign doctrine (F13, 2026-08-14).",
         "version": "2026.08.14.2",
         "tags": "[audit, reality, stub, dead-code, orphan, shim, reality-leak, authority-leak, F2, F7, F11]",
         "floor_scope": "[F02, F04, F07, F11]",
-        "owner": "F13 SOVEREIGN (Arif) — forged by 333-AGI",
+        "owner": "F13 SOVEREIGN (Arif) \u2014 forged by 333-AGI",
         "autonomy_tier": "T0",
         "reference": "REPO_REALITY_AUDIT::v1.2",
         "capability_tier": "fed-reasoning-heavy",
@@ -166,7 +166,7 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/audit/audit-repository-entropy",
       "frontmatter": {
         "name": "audit-repository-entropy",
-        "description": "Read-only repository entropy audit — disciplined codebase investigation that classifies sampah sarap by evidence, not guesswork.",
+        "description": "Read-only repository entropy audit \u2014 disciplined codebase investigation that classifies sampah sarap by evidence, not guesswork.",
         "argument-hint": "[\"<repo_id> [scope]\", \"example: A-FORGE --scope src,config,tools\"]"
       },
       "has_sk": true,
@@ -287,7 +287,7 @@
         "id": "github-ops",
         "name": "forge-github-ops",
         "version": "1.1.0",
-        "description": "Runbook for GitHub & Git operations across federation repos — commit workflow, PR ops, branch discipline. v1.1.0: organ paths from organ registry, no hardcoded /root/<repo> paths. ",
+        "description": "Runbook for GitHub & Git operations across federation repos \u2014 commit workflow, PR ops, branch discipline. v1.1.0: organ paths from organ registry, no hardcoded /root/<repo> paths. ",
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F11]",
@@ -438,7 +438,7 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/governance/constitutional-floors",
       "frontmatter": {
         "name": "constitutional-floors",
-        "description": "Formal constitutional definition of F1–F13 floors, the 000/999 numerological architecture, the Principal Doctrine, the Gödel Lock / External Witness Protocol, the 7 Organs topology, and the full...",
+        "description": "Formal constitutional definition of F1\u2013F13 floors, the 000/999 numerological architecture, the Principal Doctrine, the G\u00f6del Lock / External Witness Protocol, the 7 Organs topology, and the full...",
         "tags": "",
         "trigger": ""
       },
@@ -485,7 +485,7 @@
         "id": "FORGE-governance-jsonld",
         "name": "forge-governance-jsonld",
         "version": "1.0.0-2026.07.17",
-        "description": "Governance JSON-LD — constitutional ontology and semantic governance context definitions. ",
+        "description": "Governance JSON-LD \u2014 constitutional ontology and semantic governance context definitions. ",
         "owner": "A-FORGE",
         "risk_tier": "medium",
         "floor_scope": "['F1', 'F2', 'F4', 'F11']",
@@ -513,7 +513,7 @@
         "triggers": "",
         "merged_from": "",
         "retired_to": "/root/AAA/skills-retired/2026-09-19-namespace-collapse/merges/control-audit",
-        "authority": "F13 sovereign in-chat order 2026-09-19 (namespace collapse) — eight skills answering one question collapsed into one router."
+        "authority": "F13 sovereign in-chat order 2026-09-19 (namespace collapse) \u2014 eight skills answering one question collapsed into one router."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -560,7 +560,7 @@
         "id": "FORGE-mcp-a2a-agentic",
         "name": "forge-mcp-a2a-agentic",
         "version": "1.0.0-2026.07.17",
-        "description": "MCP + A2A protocol integration — agentic inter-agent communication and task delegation. ",
+        "description": "MCP + A2A protocol integration \u2014 agentic inter-agent communication and task delegation. ",
         "owner": "A-FORGE",
         "risk_tier": "high",
         "floor_scope": "['F1', 'F2', 'F4', 'F8', 'F11', 'F12', 'F13']",
@@ -929,11 +929,11 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/session/hermes-naked-prior-audit",
       "frontmatter": {
         "name": "hermes-naked-prior-audit",
-        "description": "Session-start self-audit for Hermes — strips stale ghost priors, flags UNVERIFIED reconstructions, applies F2 inward before first output",
+        "description": "Session-start self-audit for Hermes \u2014 strips stale ghost priors, flags UNVERIFIED reconstructions, applies F2 inward before first output",
         "category": "cognitive-commands",
         "trigger": "First turn of every new session (auto) OR when Arif signals \"/reset_context",
         "author": "Hermes (drafted 2026-07-10)",
-        "status": "ACTIVE — Ratified by Arif (F13) 2026-07-10",
+        "status": "ACTIVE \u2014 Ratified by Arif (F13) 2026-07-10",
         "ratified_by": "Muhammad Arif bin Fazil (Sovereign F13)",
         "constraints": "",
         "tags": "[hermes, epistemic-hygiene, session-start, F2-inward, semantic-debt]"
@@ -1023,7 +1023,7 @@
         "id": "aaa-skill-governor-runtime",
         "name": "aaa-skill-governor-runtime",
         "version": "1.0.0",
-        "description": "Operational runtime for SKILL_RUNTIME_GOVERNANCE.md — the 6-gate pre-load and lifecycle discipline.",
+        "description": "Operational runtime for SKILL_RUNTIME_GOVERNANCE.md \u2014 the 6-gate pre-load and lifecycle discipline.",
         "owner": "333-AGI",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F7, F11]",
@@ -1121,7 +1121,7 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/skill-mesh/skill-library-integrity",
       "frontmatter": {
         "name": "skill-library-integrity",
-        "description": "Use when a skill won't load, a capability vanished silently, trees diverge, or one capability has accumulated several identities — one-writer/many-views consolidation, namespace collapse, with a live entropy sensor.",
+        "description": "Use when a skill won't load, a capability vanished silently, trees diverge, or one capability has accumulated several identities \u2014 one-writer/many-views consolidation, namespace collapse, with a live entropy sensor.",
         "version": "1.0.0",
         "owner": "AAA",
         "category": "governance",
@@ -1189,7 +1189,7 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/telegram/hermes-lane-switch-routing",
       "frontmatter": {
         "name": "hermes-lane-switch-routing",
-        "description": "Understand and diagnose the Hermes lane_switch plugin — the multi-human per-person context-isolation layer in the arifOS federation."
+        "description": "Understand and diagnose the Hermes lane_switch plugin \u2014 the multi-human per-person context-isolation layer in the arifOS federation."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -1274,7 +1274,7 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-bot-routing-doctrine",
       "frontmatter": {
         "name": "telegram-bot-routing-doctrine",
-        "description": "arifOS Federation Telegram bot routing — 3 bots, 9 groups, P1-P3 doctrine, AAA guest rule, token sovereignty, channel ownership, identity contract"
+        "description": "arifOS Federation Telegram bot routing \u2014 3 bots, 9 groups, P1-P3 doctrine, AAA guest rule, token sovereignty, channel ownership, identity contract"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -1322,7 +1322,7 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/telegram/telegram-userbot-telethon",
       "frontmatter": {
         "name": "telegram-userbot-telethon",
-        "description": "Set up a Telethon userbot that runs as Arif's actual Telegram account — sees ALL DMs, groups, and channels.",
+        "description": "Set up a Telethon userbot that runs as Arif's actual Telegram account \u2014 sees ALL DMs, groups, and channels.",
         "version": "1.0.0",
         "author": "Hermes Agent",
         "license": "MIT",
@@ -1405,7 +1405,7 @@
       "dir": "/root/AAA/skills/.archive/merge-20260920/web/sovereign-search",
       "frontmatter": {
         "name": "sovereign-search",
-        "description": "Self-host web search for Hermes Agent — SearXNG deployment, Tavily/Brave migration, config unification, and zero-API-key architecture",
+        "description": "Self-host web search for Hermes Agent \u2014 SearXNG deployment, Tavily/Brave migration, config unification, and zero-API-key architecture",
         "version": "1.0.0",
         "author": "Hermes Agent",
         "license": "MIT",
@@ -1426,7 +1426,7 @@
         "id": "web-extraction-fallbacks",
         "name": "web-extraction-fallbacks",
         "version": "1.1.0-2026.08.27",
-        "description": "Use when a URL extraction fails — blocked, paywalled, rate-limited or bot-walled. Ordered fallback ladders per failure mode.",
+        "description": "Use when a URL extraction fails \u2014 blocked, paywalled, rate-limited or bot-walled. Ordered fallback ladders per failure mode.",
         "owner": "curator-managed",
         "risk_tier": "low",
         "floor_scope": "[F7]",
@@ -1541,7 +1541,7 @@
       "frontmatter": {
         "name": "FORGE-context-compressor",
         "description": "Compress oversized logs, transcripts, diffs, and telemetry before they",
-        "forge_of": "Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · long-log compression",
+        "forge_of": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 3 (gap fill \u00b7 long-log compression",
         "forged": "2026-07-12 18:33:00+00:00",
         "rationale": "Directive OPERATION EUREKA ZEN explicitly named \"missing context-compression",
         "binding": "FORGE-* skills (cross-CLI), particularly for Grok (FI-010) and long-context",
@@ -1667,7 +1667,7 @@
       "dir": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-infra-crons",
       "frontmatter": {
         "name": "FORGE-infra-crons",
-        "description": "Infrastructure cron job management — schedule, audit, and govern VPS",
+        "description": "Infrastructure cron job management \u2014 schedule, audit, and govern VPS",
         "F1 AMANAH": "never mutate crontabs without 888_HOLD.",
         "owner": "A-FORGE"
       },
@@ -1736,7 +1736,7 @@
       "dir": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/FORGE-komda-color-law",
       "frontmatter": {
         "name": "FORGE-komda-color-law",
-        "description": "Komda Color Law lint — enforces SOVEREIGN_DECREES §04 (territory color families). Use when generating, editing, or auditing any visual artifact (HTML/SVG/CSS) that claims a federation territory (arifos / geox / wealth / well / aaa). Foreign-family color in territory DOM = violation per F13 SOVEREIGN doctrine (2026-08-01)."
+        "description": "Komda Color Law lint \u2014 enforces SOVEREIGN_DECREES \u00a704 (territory color families). Use when generating, editing, or auditing any visual artifact (HTML/SVG/CSS) that claims a federation territory (arifos / geox / wealth / well / aaa). Foreign-family color in territory DOM = violation per F13 SOVEREIGN doctrine (2026-08-01)."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -1791,7 +1791,7 @@
         "id": "FORGE-nextjs-mastery",
         "name": "FORGE-nextjs-mastery",
         "version": "1.0.0-2026.07.17",
-        "description": "Next.js App Router engineering — server components, streaming, and edge patterns.",
+        "description": "Next.js App Router engineering \u2014 server components, streaming, and edge patterns.",
         "owner": "A-FORGE",
         "risk_tier": "medium",
         "floor_scope": "['F1', 'F4', 'F12']",
@@ -1811,7 +1811,7 @@
         "autonomy_tier": "T2",
         "version": "2.0.0",
         "description": ">",
-        "Updated 2026-08-03": "canonical card locations vary by agent class — identity lanes at agent-cards/identity/, organs at agent-cards/{pillars,organs}/, FI agents (warga-aaa forge instruments, FI-001 to FI-008) at agents/_external/<id>/, other internal agents at agents/<id>/. The 2026-07-01 single-path note is now obsolete.",
+        "Updated 2026-08-03": "canonical card locations vary by agent class \u2014 identity lanes at agent-cards/identity/, organs at agent-cards/{pillars,organs}/, FI agents (warga-aaa forge instruments, FI-001 to FI-008) at agents/_external/<id>/, other internal agents at agents/<id>/. The 2026-07-01 single-path note is now obsolete.",
         "owner": "AAA",
         "risk_tier": "medium",
         "knowledge_basis": "",
@@ -1846,7 +1846,7 @@
         "id": "FORGE-postgres-schema-design",
         "name": "FORGE-postgres-schema-design",
         "version": "1.0.0-2026.07.17",
-        "description": "PostgreSQL schema design for the federation data layer — migrations, indexing, and entity modeling.",
+        "description": "PostgreSQL schema design for the federation data layer \u2014 migrations, indexing, and entity modeling.",
         "owner": "A-FORGE",
         "risk_tier": "high",
         "floor_scope": "['F1', 'F4', 'F11', 'F12']",
@@ -1864,7 +1864,7 @@
         "id": "FORGE-react-spa-discipline",
         "name": "FORGE-react-spa-discipline",
         "version": "1.0.0-2026.07.17",
-        "description": "React SPA discipline — component architecture, state management, and rendering patterns.",
+        "description": "React SPA discipline \u2014 component architecture, state management, and rendering patterns.",
         "owner": "A-FORGE",
         "risk_tier": "medium",
         "floor_scope": "['F1', 'F4', 'F12']",
@@ -1882,7 +1882,7 @@
         "id": "FORGE-redis-qdrant-integration",
         "name": "FORGE-redis-qdrant-integration",
         "version": "1.0.0-2026.07.17",
-        "description": "Redis + Qdrant integration — caching layer and vector memory for federation semantic search.",
+        "description": "Redis + Qdrant integration \u2014 caching layer and vector memory for federation semantic search.",
         "owner": "A-FORGE",
         "risk_tier": "medium",
         "floor_scope": "['F1', 'F2', 'F4']",
@@ -1900,7 +1900,7 @@
         "id": "spatial-grounding",
         "name": "FORGE-spatial-grounding",
         "version": "1.0.0",
-        "description": "Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in af-forge VPS reality",
+        "description": "Embed VPS spatial context in agent configs \u2014 prevents spatial amnesia and SSH confusion. Grounds agents in af-forge VPS reality",
         "owner": "AAA",
         "risk_tier": "medium",
         "host_compatibility": "",
@@ -1923,7 +1923,7 @@
         "id": "FORGE-tailwind-tokens",
         "name": "FORGE-tailwind-tokens",
         "version": "1.0.0-2026.07.17",
-        "description": "Tailwind design tokens — Trinity Design System for federation cockpit and web surfaces.",
+        "description": "Tailwind design tokens \u2014 Trinity Design System for federation cockpit and web surfaces.",
         "owner": "A-FORGE",
         "risk_tier": "low",
         "floor_scope": "['F1', 'F4']",
@@ -1948,7 +1948,7 @@
         "floor_scope": "[F01, F02, F04, F08, F11, F13]",
         "cognitive_hints": "",
         "claude": "Use <protocol-stages>, <governance-gates> tags. Extended context for multi-stage tracking.",
-        "codex": "7-stage protocol. Each stage: input → process → output → gate. Strict sequencing.",
+        "codex": "7-stage protocol. Each stage: input \u2192 process \u2192 output \u2192 gate. Strict sequencing.",
         "hermes": "7 stages. Govern. Execute. Verify. Seal. Fast.",
         "autonomy_tier": "T1"
       },
@@ -1964,8 +1964,8 @@
         "id": "trinity-33-canonical",
         "name": "trinity-33-canonical",
         "version": "1.1.0-2026.07.08",
-        "description": "Use when a task touches the 33-repo Trinity — the canonical repo list and which repo owns what.",
-        "owner": "F13 SOVEREIGN — Muhammad Arif bin Fazil (888)",
+        "description": "Use when a task touches the 33-repo Trinity \u2014 the canonical repo list and which repo owns what.",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
         "risk_tier": "low",
         "floor_scope": "[F2, F7, F8, F11]",
         "autonomy_tier": "T1",
@@ -1988,7 +1988,7 @@
       "dir": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/know-language",
       "frontmatter": {
         "name": "know-language",
-        "description": "Language substrate — how words carry weight, ambiguity, and shadow.",
+        "description": "Language substrate \u2014 how words carry weight, ambiguity, and shadow.",
         "version": "1.0",
         "owner": "AAA/knowledge",
         "risk_tier": "low",
@@ -2008,7 +2008,7 @@
       "dir": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/know-math",
       "frontmatter": {
         "name": "know-math",
-        "description": "Math substrate — how to count what matters, prove the claim, and avoid the lie.",
+        "description": "Math substrate \u2014 how to count what matters, prove the claim, and avoid the lie.",
         "version": "1.0",
         "owner": "AAA/knowledge",
         "risk_tier": "low",
@@ -2028,7 +2028,7 @@
       "dir": "/root/AAA/skills/.frozen/2026-09-20-case-dupes/know-physics",
       "frontmatter": {
         "name": "know-physics",
-        "description": "Physics substrate — how the world actually moves: forces, fields, conservation laws, and conjugate pairs.",
+        "description": "Physics substrate \u2014 how the world actually moves: forces, fields, conservation laws, and conjugate pairs.",
         "version": "1.0",
         "owner": "AAA/knowledge",
         "risk_tier": "low",
@@ -2165,7 +2165,7 @@
       "dir": "/root/AAA/skills/.system/openai-docs",
       "frontmatter": {
         "name": "openai-docs",
-        "description": "Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge—including 'you,' 'your,' 'this app,' or 'this coding agent'...",
+        "description": "Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge\u2014including 'you,' 'your,' 'this app,' or 'this coding agent'...",
         "metadata": "",
         "short-description": "Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, and self-knowledge; OpenAI APIs and ChatGPT Work. 'You'/'this app' means Codex only."
       },
@@ -2217,7 +2217,7 @@
       "dir": "/root/AAA/skills/AAA-asr-glm-ingest",
       "frontmatter": {
         "name": "AAA-asr-glm-ingest",
-        "description": "ASR (Automatic Speech Recognition) ingestion layer using GLM-ASR-2512 (Z.AI). Decode phase of AAA-audio-emd-pipeline. Custom dictionary for arifOS-specific terms, audio chunking for ≤30 s/≤25 MB constraint, stream mode for realtime. Penang-Besi dialect and code-switching support.",
+        "description": "ASR (Automatic Speech Recognition) ingestion layer using GLM-ASR-2512 (Z.AI). Decode phase of AAA-audio-emd-pipeline. Custom dictionary for arifOS-specific terms, audio chunking for \u226430 s/\u226425 MB constraint, stream mode for realtime. Penang-Besi dialect and code-switching support.",
         "version": "1.0.0",
         "author": "kimi-code (FI-008) for ARIF",
         "forged": "2026-08-18",
@@ -2236,7 +2236,7 @@
       "dir": "/root/AAA/skills/AAA-audio-emd-pipeline",
       "frontmatter": {
         "name": "AAA-audio-emd-pipeline",
-        "description": "EMD (Encode → Metabolize → Decode) orchestration doctrine for audio in the arifOS federation. The constitutional loop that binds ASR → LLM reasoning → TTS into a single governed pipeline. Every audio exchange in arifOS flows through this reflex arc.",
+        "description": "EMD (Encode \u2192 Metabolize \u2192 Decode) orchestration doctrine for audio in the arifOS federation. The constitutional loop that binds ASR \u2192 LLM reasoning \u2192 TTS into a single governed pipeline. Every audio exchange in arifOS flows through this reflex arc.",
         "version": "1.0.0",
         "author": "kimi-code (FI-008) for ARIF",
         "forged": "2026-08-18",
@@ -2255,7 +2255,7 @@
       "dir": "/root/AAA/skills/AAA-somatic-emd-pipeline",
       "frontmatter": {
         "name": "AAA-somatic-emd-pipeline",
-        "description": "Three-phase reflex arc for Somatic Music Intelligence in arifOS. Decode from voice-cadence somatic_proxy (WPM, pitch_mean, hesitation_ms, RMS variance) — NOT WELL until sensors ready. Metabolize adds music_intent packet field (role|BPM|density|max_seconds|kill_on_barge_in). Encode routes to parametrically-controllable music engines (MiniMax T2A Music primary). Three-layer maturity enforced: Layer 1 voice-cadence only, Layer 2 adds WELL when live, Layer 3 = F13.",
+        "description": "Three-phase reflex arc for Somatic Music Intelligence in arifOS. Decode from voice-cadence somatic_proxy (WPM, pitch_mean, hesitation_ms, RMS variance) \u2014 NOT WELL until sensors ready. Metabolize adds music_intent packet field (role|BPM|density|max_seconds|kill_on_barge_in). Encode routes to parametrically-controllable music engines (MiniMax T2A Music primary). Three-layer maturity enforced: Layer 1 voice-cadence only, Layer 2 adds WELL when live, Layer 3 = F13.",
         "version": "1.0.0",
         "author": "kimi-code (FI-008) for ARIF",
         "forged": "2026-08-18",
@@ -2275,7 +2275,7 @@
       "dir": "/root/AAA/skills/AAA-somatic-engine-catalog",
       "frontmatter": {
         "name": "AAA-somatic-engine-catalog",
-        "description": "Registry of parametrically-controllable music engines for arifOS Somatic Music Intelligence. NOT a beat-maker catalog (composer lens handles that) — this is the Dispensary for engines that accept BPM/key/texture/density parameters and emit streaming audio. MiniMax T2A Music (music-2.6/3.0) primary; local sovereign alternatives (AudioGen/MusicGen) for F13 territory. i-ARIF vocal melodic: HARD DENY across all engines.",
+        "description": "Registry of parametrically-controllable music engines for arifOS Somatic Music Intelligence. NOT a beat-maker catalog (composer lens handles that) \u2014 this is the Dispensary for engines that accept BPM/key/texture/density parameters and emit streaming audio. MiniMax T2A Music (music-2.6/3.0) primary; local sovereign alternatives (AudioGen/MusicGen) for F13 territory. i-ARIF vocal melodic: HARD DENY across all engines.",
         "version": "1.0.0",
         "author": "kimi-code (FI-008) for ARIF",
         "forged": "2026-08-18",
@@ -2295,7 +2295,7 @@
       "dir": "/root/AAA/skills/AAA-somatic-music-doctrine",
       "frontmatter": {
         "name": "AAA-somatic-music-doctrine",
-        "description": "F10 ONTOLOGY + F9 ANTI-HANTU + F1 SAFETY/REVERSIBILITY constitution for Somatic Music Intelligence in arifOS. Music as acoustic_intent without words — cognitive prosthetic, NOT shaman, NOT healer. Three-layer maturity model: Layer 0 untouched, Layer 1 reversible, Layer 2 holds for WELL sensors, Layer 3 = F13 territory.",
+        "description": "F10 ONTOLOGY + F9 ANTI-HANTU + F1 SAFETY/REVERSIBILITY constitution for Somatic Music Intelligence in arifOS. Music as acoustic_intent without words \u2014 cognitive prosthetic, NOT shaman, NOT healer. Three-layer maturity model: Layer 0 untouched, Layer 1 reversible, Layer 2 holds for WELL sensors, Layer 3 = F13 territory.",
         "version": "1.0.0",
         "author": "ARIF doctrine, zenned by kimi-code (FI-008)",
         "forged": "2026-08-18",
@@ -2334,7 +2334,7 @@
       "dir": "/root/AAA/skills/AAA-voice-cloning-mimo-minimax",
       "frontmatter": {
         "name": "AAA-voice-cloning-mimo-minimax",
-        "description": "Operational binding for the MiniMax voice cloning pipeline (mimo-v2.5-tts-voiceclone + speech-2.8-hd). Four-phase protocol: Ingestion → Calibration → Execution → Deployment. F13 SOVEREIGN-gated identity creation. i-ARIF voice profile lives here.",
+        "description": "Operational binding for the MiniMax voice cloning pipeline (mimo-v2.5-tts-voiceclone + speech-2.8-hd). Four-phase protocol: Ingestion \u2192 Calibration \u2192 Execution \u2192 Deployment. F13 SOVEREIGN-gated identity creation. i-ARIF voice profile lives here.",
         "version": "1.0.0",
         "author": "kimi-code (FI-008) for ARIF",
         "forged": "2026-08-18",
@@ -2353,7 +2353,7 @@
       "dir": "/root/AAA/skills/AAA-voice-cloning-qwen-cloud",
       "frontmatter": {
         "name": "AAA-voice-cloning-qwen-cloud",
-        "description": "Operational binding for Qwen Cloud voice cloning (qwen-voice-enrollment, voice-enrollment) across Qwen-TTS, Qwen-Omni, CosyVoice, and Qwen-Audio-TTS. Hard constraints: target_model lock-in, 10–20 s sample window, URL vs Base64 ingestion split. Alternative to MiniMax binding when low latency or zero-shot instant enrollment matters.",
+        "description": "Operational binding for Qwen Cloud voice cloning (qwen-voice-enrollment, voice-enrollment) across Qwen-TTS, Qwen-Omni, CosyVoice, and Qwen-Audio-TTS. Hard constraints: target_model lock-in, 10\u201320 s sample window, URL vs Base64 ingestion split. Alternative to MiniMax binding when low latency or zero-shot instant enrollment matters.",
         "version": "1.0.0",
         "author": "kimi-code (FI-008) for ARIF",
         "forged": "2026-08-18",
@@ -2405,7 +2405,7 @@
         "name": "APEX-quantum-eureka",
         "version": "1.1.0-2026.07.09",
         "description": "Eureka, contradiction, insight generation, and cross-domain synthesis for AAA warga",
-        "owner": "F13 SOVEREIGN — Muhammad Arif bin Fazil (888)",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
         "risk_tier": "medium",
         "floor_scope": "[F2, F3, F4, F8, F11, F13]",
         "autonomy_tier": "T1",
@@ -2431,7 +2431,7 @@
         "id": "FORGE-federation-manifest",
         "name": "FORGE-federation-manifest",
         "version": "2.0.0-2026.09.17",
-        "description": "Federation topology manifest — arifOS organ registry, inter-organ contracts, MCP protocol conformance, and deployment attestation state. The machine-readable source of truth for federation topology.",
+        "description": "Federation topology manifest \u2014 arifOS organ registry, inter-organ contracts, MCP protocol conformance, and deployment attestation state. The machine-readable source of truth for federation topology.",
         "owner": "A-FORGE",
         "risk_tier": "high",
         "floor_scope": "['F1', 'F2', 'F4', 'F8', 'F11', 'F13']",
@@ -2443,13 +2443,13 @@
       "source_organ": "AAA"
     },
     {
-      "name": "Malaysia Reality Stack — Primary-Source Routing",
+      "name": "Malaysia Reality Stack \u2014 Primary-Source Routing",
       "category": "general",
       "path": "/root/AAA/skills/MY-REALITY-STACK/SKILL.md",
       "dir": "/root/AAA/skills/MY-REALITY-STACK",
       "frontmatter": {
         "id": "MY-REALITY-STACK",
-        "name": "Malaysia Reality Stack — Primary-Source Routing",
+        "name": "Malaysia Reality Stack \u2014 Primary-Source Routing",
         "version": "1.0.0-2026.08.15",
         "description": "Route all Malaysia macro/policy/energy/corporate claims through primary government/financial sources using EXISTING federation tools. NO new MCP servers. Hard F2 provenance law for any MY figure.",
         "owner": "F13 SOVEREIGN (directive 2026-08-15, external proposal adapted)",
@@ -2507,7 +2507,7 @@
         "name": "AAA-audio-qualia-doctrine",
         "description": "Operational doctrine for Audio Intelligence with 'qualia rasa' in the arifOS federation.",
         "version": "1.0.0",
-        "author": "Muhammad Arif bin Fazil (F13) — for ARIF",
+        "author": "Muhammad Arif bin Fazil (F13) \u2014 for ARIF",
         "forged": "2026-08-18",
         "floor_scope": "",
         "extends": "",
@@ -2551,7 +2551,7 @@
         "id": "aaa-musyawarah-execution",
         "name": "aaa-musyawarah-execution",
         "version": "1.0.1",
-        "description": "Runtime for musyawarah-then-gotong-royong — independent deliberation followed by sequential execution.",
+        "description": "Runtime for musyawarah-then-gotong-royong \u2014 independent deliberation followed by sequential execution.",
         "owner": "333-AGI",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F7, F11]",
@@ -2646,7 +2646,7 @@
         "forged": "2026-08-26",
         "forged_by": "333-AGI (Antigravity)",
         "f13_directive": "Shadow GPU handles heavy generation and human needs asynchronously; VPS remains lean and governed.",
-        "constitutional_floor": "F13 SOVEREIGN — total privacy isolation for human needs; F1 AMANAH — no unmetered or surprise drift"
+        "constitutional_floor": "F13 SOVEREIGN \u2014 total privacy isolation for human needs; F1 AMANAH \u2014 no unmetered or surprise drift"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -2677,7 +2677,7 @@
       "dir": "/root/AAA/skills/agentic-state",
       "frontmatter": {
         "name": "agentic-state",
-        "description": "Use when you want an agent to accumulate intelligence across sessions — persistent agentic state doctrine for every coding harness.",
+        "description": "Use when you want an agent to accumulate intelligence across sessions \u2014 persistent agentic state doctrine for every coding harness.",
         "version": "1.0.0",
         "risk_tier": "low",
         "autonomy_tier": "T1",
@@ -2789,7 +2789,7 @@
         "name": "AGI-multimodal-bridge",
         "id": "agi-multimodal-bridge",
         "risk_tier": "low",
-        "description": "Multi-modal reasoning bridge — unifies text, image, tabular data, and",
+        "description": "Multi-modal reasoning bridge \u2014 unifies text, image, tabular data, and",
         "LLM reasoning. USE WHEN": "analyze this image + data\", \"combine visual and textual",
         "version": "1.0.0",
         "tags": "",
@@ -2901,15 +2901,15 @@
       "source_organ": "AAA"
     },
     {
-      "name": "arifOS ACT — Constitutional Reflex",
+      "name": "arifOS ACT \u2014 Constitutional Reflex",
       "category": "general",
       "path": "/root/AAA/skills/apex_verdict_hold/claude/SKILL.md",
       "dir": "/root/AAA/skills/apex_verdict_hold/claude",
       "frontmatter": {
         "id": "arifos-act",
-        "name": "arifOS ACT — Constitutional Reflex",
+        "name": "arifOS ACT \u2014 Constitutional Reflex",
         "version": "3.0.0",
-        "description": "The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13)",
+        "description": "The complete constitutional reflex arc \u2014 ART (pre-kernel) \u2192 Kernel (F1-F13)",
         "owner": "AAA",
         "risk_tier": "critical",
         "knowledge_basis": "",
@@ -2937,14 +2937,14 @@
       "source_organ": "AAA"
     },
     {
-      "name": "APEX ACT — Constitutional Reflex (Hermes ASI)",
+      "name": "APEX ACT \u2014 Constitutional Reflex (Hermes ASI)",
       "category": "general",
       "path": "/root/AAA/skills/apex_verdict_hold/hermes/SKILL.md",
       "dir": "/root/AAA/skills/apex_verdict_hold/hermes",
       "frontmatter": {
         "agent": "hermes-asi",
         "canonical": "skills/APEX-act/SKILL.md",
-        "name": "APEX ACT — Constitutional Reflex (Hermes ASI)",
+        "name": "APEX ACT \u2014 Constitutional Reflex (Hermes ASI)",
         "skill_id": "apex-act-hermes",
         "description": "Hermes ASI adapter for the APEX ACT reflex arc."
       },
@@ -2964,7 +2964,7 @@
         "description": "Real apex-judge skill.",
         "agent": "888-APEX",
         "namespace": "arifos",
-        "cluster": "CONSTITUTION · VERDICT · ACT",
+        "cluster": "CONSTITUTION \u00b7 VERDICT \u00b7 ACT",
         "risk_tier": "high",
         "autonomy_tier": "T2",
         "floor_scope": "[F1, F2, F4, F7, F9, F11, F13]"
@@ -3017,7 +3017,7 @@
       "frontmatter": {
         "name": "arifos-kernel-zen-audit",
         "owner": "AAA",
-        "description": "Pattern for auditing the arifOS kernel when multiple MCP tools share the same skeleton but disagree on identity/verdict/affordance — proven",
+        "description": "Pattern for auditing the arifOS kernel when multiple MCP tools share the same skeleton but disagree on identity/verdict/affordance \u2014 proven",
         "triggers": "",
         "source": "hermes-only",
         "synthesized": "2026-08-08"
@@ -3048,7 +3048,7 @@
         "tools": "",
         "floor_scope": "[F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13]",
         "orthogonal_tags": "",
-        "trinitarian": "[ΦΙ]",
+        "trinitarian": "[\u03a6\u0399]",
         "functional": "[Governance, Audit]",
         "layer": "HEXAGON"
       },
@@ -3065,7 +3065,7 @@
         "description": "When user asks to summarize text, articles, documents, meetings, emails",
         "metadata": "",
         "clawdbot": "",
-        "emoji": "📝",
+        "emoji": "\ud83d\udcdd",
         "requires": "",
         "tools": "",
         "floor_scope": "",
@@ -3084,7 +3084,7 @@
         "name": "audit-ops",
         "id": "audit-ops",
         "version": "2.0.0",
-        "owner": "F13 SOVEREIGN (Arif) — forged by AAA",
+        "owner": "F13 SOVEREIGN (Arif) \u2014 forged by AAA",
         "risk_tier": "T1",
         "floor_scope": "[F1, F2, F4, F7, F9, F11, F13]",
         "autonomy_tier": "T1",
@@ -3394,7 +3394,7 @@
       "dir": "/root/AAA/skills/codebase-reality",
       "frontmatter": {
         "name": "codebase-reality",
-        "description": "CLI-first evidence contract for federated code intelligence — revision-pinned repo dossiers, purpose-specific subgraphs, boundary gates, and reality reconciliation across intended/static/observed/verified/unknown.",
+        "description": "CLI-first evidence contract for federated code intelligence \u2014 revision-pinned repo dossiers, purpose-specific subgraphs, boundary gates, and reality reconciliation across intended/static/observed/verified/unknown.",
         "argument-hint": "[\"<mode> <repo> [args]\", \"modes: repo|map|symbol|flow|impact|architecture|before_change\"]"
       },
       "has_sk": true,
@@ -3408,7 +3408,7 @@
       "frontmatter": {
         "name": "cognitive-commands",
         "owner": "AAA",
-        "description": "Hermes cognitive slash commands — /NNN_word format. 8 numerological spine, 16 cognitive verbs. Zen layer for arifOS federation.",
+        "description": "Hermes cognitive slash commands \u2014 /NNN_word format. 8 numerological spine, 16 cognitive verbs. Zen layer for arifOS federation.",
         "triggers": "",
         "source": "hermes-only",
         "synthesized": "2026-08-08"
@@ -3435,7 +3435,7 @@
       "dir": "/root/AAA/skills/companion-clis",
       "frontmatter": {
         "name": "companion-clis",
-        "description": "Companion CLIs for Runpod workflows — HuggingFace, GitHub, Docker, and AWS.",
+        "description": "Companion CLIs for Runpod workflows \u2014 HuggingFace, GitHub, Docker, and AWS.",
         "allowed-tools": "Bash(hf:*), Bash(gh:*), Bash(docker:*), Bash(aws:*), Bash(ssh-keygen:*), Bash(ssh-add:*), Bash(ssh-agent:*)",
         "compatibility": "Linux, macOS, Windows",
         "metadata": "",
@@ -3483,7 +3483,7 @@
         "name": "handoff-contract",
         "id": "handoff-contract",
         "version": "2.0.0-wave2-merged",
-        "description": "Cross-agent handoff contract — input/output schema, capability requested, authority classification, evidence requirement, return contract, receipt.",
+        "description": "Cross-agent handoff contract \u2014 input/output schema, capability requested, authority classification, evidence requirement, return contract, receipt.",
         "owner": "A-FORGE",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F4, F11, F13]",
@@ -3515,7 +3515,7 @@
         "name": "multi-harness-sync",
         "id": "multi-harness-sync",
         "version": "2.0.0-wave2-merged",
-        "description": "Multi-agent harness skill-catalog synchronization — Hermes, Kimi, AAA, Claude, OpenCode, Codex.",
+        "description": "Multi-agent harness skill-catalog synchronization \u2014 Hermes, Kimi, AAA, Claude, OpenCode, Codex.",
         "owner": "AAA",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F4, F11]",
@@ -3547,7 +3547,7 @@
         "name": "repo-cleanup",
         "id": "repo-cleanup",
         "version": "2.0.0-wave2-merged",
-        "description": "Unified filesystem hygiene scan — broken symlinks + secret leaks + key age + missing rotation.",
+        "description": "Unified filesystem hygiene scan \u2014 broken symlinks + secret leaks + key age + missing rotation.",
         "owner": "A-FORGE",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F4, F7]",
@@ -3611,7 +3611,7 @@
         "name": "recursive-audit",
         "id": "recursive-audit",
         "version": "2.0.0-wave2-merged",
-        "description": "5-pass recursive audit: Blue diagnose → Red attack → Blue forge → Yellow verify → Green adjudicate.",
+        "description": "5-pass recursive audit: Blue diagnose \u2192 Red attack \u2192 Blue forge \u2192 Yellow verify \u2192 Green adjudicate.",
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F4, F11]",
@@ -3643,7 +3643,7 @@
         "name": "scar-integration",
         "id": "scar-integration",
         "version": "2.0.0-wave2-merged",
-        "description": "Capture session failure patterns as constitutional scars — reusable diagnostics that prevent repeat mistakes.",
+        "description": "Capture session failure patterns as constitutional scars \u2014 reusable diagnostics that prevent repeat mistakes.",
         "owner": "AAA",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F7, F11]",
@@ -3675,7 +3675,7 @@
         "name": "verify-runtime",
         "id": "verify-runtime",
         "version": "2.0.0-wave2-merged",
-        "description": "Verification-as-terminal-state — a task is done ONLY when verified.",
+        "description": "Verification-as-terminal-state \u2014 a task is done ONLY when verified.",
         "owner": "A-FORGE",
         "risk_tier": "low",
         "floor_scope": "[F2, F4, F7, F11]",
@@ -3707,7 +3707,7 @@
         "name": "runtime-probe",
         "id": "runtime-probe",
         "version": "2.0.0-wave2-merged",
-        "description": "Unified MCP runtime probe — health + schema + transport check.",
+        "description": "Unified MCP runtime probe \u2014 health + schema + transport check.",
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F2, F4, F11]",
@@ -4028,7 +4028,7 @@
       "dir": "/root/AAA/skills/delta-omega-psi-multimodal-cognition",
       "frontmatter": {
         "name": "delta-omega-psi-multimodal-cognition",
-        "description": "Enforce Δ·Ω·Ψ multimodal cognition rules.",
+        "description": "Enforce \u0394\u00b7\u03a9\u00b7\u03a8 multimodal cognition rules.",
         "trigger_phrases": "",
         "harness": "copilot-cli|grok|claude|codex|hermes",
         "domain": "meta",
@@ -4188,7 +4188,7 @@
       "dir": "/root/AAA/skills/document-intel/paged-media-report-layout",
       "frontmatter": {
         "name": "paged-media-report-layout",
-        "description": "Use when building long multi-page HTML→PDF reports.",
+        "description": "Use when building long multi-page HTML\u2192PDF reports.",
         "version": "1.0.0",
         "tags": "[pdf, layout, paged-media, weasyprint, qa, long-form-report]"
       },
@@ -4248,7 +4248,7 @@
       "dir": "/root/AAA/skills/domains/general/aaa/context-ops/arifos-memory-architecture",
       "frontmatter": {
         "name": "arifos-memory-architecture",
-        "description": "How memory flows across the arifOS federation — arif_memory (kernel L1–L6 governor), forge_memory (A-FORGE VAULT999 read), and HANG INGAT BALIK / PRL (precedent recall injected into reasoning)."
+        "description": "How memory flows across the arifOS federation \u2014 arif_memory (kernel L1\u2013L6 governor), forge_memory (A-FORGE VAULT999 read), and HANG INGAT BALIK / PRL (precedent recall injected into reasoning)."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4260,7 +4260,7 @@
       "dir": "/root/AAA/skills/domains/general/aaa/context-ops/local-memory-retrieval",
       "frontmatter": {
         "name": "local-memory-retrieval",
-        "description": "Use when recalling, writing, or adjudicating memory — check disk first."
+        "description": "Use when recalling, writing, or adjudicating memory \u2014 check disk first."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4272,7 +4272,7 @@
       "dir": "/root/AAA/skills/domains/general/aaa/onboarding/a2a-agent-card-registration",
       "frontmatter": {
         "name": "a2a-agent-card-registration",
-        "description": "Manage A2A protocol agent cards in the AAA federation mesh — register, audit, sign, and organize. Covers schema, signing, directory",
+        "description": "Manage A2A protocol agent cards in the AAA federation mesh \u2014 register, audit, sign, and organize. Covers schema, signing, directory",
         "tags": "",
         "triggers": ""
       },
@@ -4313,7 +4313,7 @@
       "dir": "/root/AAA/skills/domains/general/aaa/substrate/arifos-runtime-module-authoring",
       "frontmatter": {
         "name": "arifos-runtime-module-authoring",
-        "description": "Create or patch arifOS kernel modules — conventions, freeze discipline, gate-file audits"
+        "description": "Create or patch arifOS kernel modules \u2014 conventions, freeze discipline, gate-file audits"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4391,8 +4391,8 @@
     {
       "name": "loved-one-worry-support",
       "category": "loved",
-      "path": "/root/AAA/skills/domains/general/apex/cognitive-reflex/loved-one-worry-support/SKILL.md",
-      "dir": "/root/AAA/skills/domains/general/apex/cognitive-reflex/loved-one-worry-support",
+      "path": "/root/AAA/skills/domains/general/apex/human-bond-action/SKILL.md",
+      "dir": "/root/AAA/skills/domains/general/apex/human-bond-action",
       "frontmatter": {
         "name": "loved-one-worry-support",
         "description": "Use when the principal worries about a loved one.",
@@ -4401,7 +4401,15 @@
         "license": "F13-Sovereign",
         "tags": "",
         "related_skills": "",
-        "triggers": ""
+        "triggers": "",
+        "merged_into": "human-bond-action",
+        "merged_from": [
+          "loved-one-worry-support",
+          "relationship-kernel",
+          "human-reality-bridge",
+          "human-reality-field"
+        ],
+        "path": "/root/AAA/skills/domains/general/apex/human-bond-action/SKILL.md"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4413,7 +4421,7 @@
       "dir": "/root/AAA/skills/domains/general/apex/cognitive-reflex/persona-triad-reasoning",
       "frontmatter": {
         "name": "persona-triad-reasoning",
-        "description": "Run complex problems through the persona-civilisation triad lens — Kanak-kanak (see+ask), Makcik (read+heal), Abang Sado (act+decide).",
+        "description": "Run complex problems through the persona-civilisation triad lens \u2014 Kanak-kanak (see+ask), Makcik (read+heal), Abang Sado (act+decide).",
         "version": "1.0.0",
         "owner": "AAA",
         "triggers": "",
@@ -4507,7 +4515,7 @@
         "name": "agent-output-contract",
         "description": "7-section sealed decision packet on EVERY agent response.",
         "version": "0.1.0",
-        "status": "ACTIVE_DISCIPLINE (this contract governs response SHAPE, not content — no F13 seal needed to be polite)",
+        "status": "ACTIVE_DISCIPLINE (this contract governs response SHAPE, not content \u2014 no F13 seal needed to be polite)",
         "origin": "sovereign screenshot diagnosis 2026-08-30 + hotfix prompt"
       },
       "has_sk": true,
@@ -4569,11 +4577,11 @@
       "dir": "/root/AAA/skills/domains/general/apex/governance-core/federation-housekeeping-master",
       "frontmatter": {
         "name": "federation-housekeeping-master",
-        "description": "Monthly constitutional housekeeping orchestrator — runs the federation's EXISTING audit tools in one ritual (entropy sweep, MCP surface audit, FI mesh check, secret hygiene, repo reality) and closes...",
+        "description": "Monthly constitutional housekeeping orchestrator \u2014 runs the federation's EXISTING audit tools in one ritual (entropy sweep, MCP surface audit, FI mesh check, secret hygiene, repo reality) and closes...",
         "author": "kimi-code (FI-008)",
         "forged": "2026-08-30",
         "source-artifact": "/root/forge_work/2026-08-30-housekeeping-artifact/RECEIVED-ARTIFACT.md",
-        "law": "Universe Bootstrap (F13, 2026-08-30) — govern capabilities, not implementations"
+        "law": "Universe Bootstrap (F13, 2026-08-30) \u2014 govern capabilities, not implementations"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4585,7 +4593,7 @@
       "dir": "/root/AAA/skills/domains/general/apex/governance-core/hermes-rasa-doctrine",
       "frontmatter": {
         "name": "hermes-rasa-doctrine",
-        "description": "Runtime doctrine for human-reality handling — HERMES RASA."
+        "description": "Runtime doctrine for human-reality handling \u2014 HERMES RASA."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4612,7 +4620,7 @@
       "dir": "/root/AAA/skills/domains/general/apex/governance-core/identity-axiom-derivation",
       "frontmatter": {
         "name": "identity-axiom-derivation",
-        "description": "Use when deriving minimal axioms from codebase evidence — extract the smallest set of invariants the code actually implies."
+        "description": "Use when deriving minimal axioms from codebase evidence \u2014 extract the smallest set of invariants the code actually implies."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4624,7 +4632,7 @@
       "dir": "/root/AAA/skills/domains/general/apex/governance-core/institution-entropy-audit",
       "frontmatter": {
         "name": "institution-entropy-audit",
-        "description": "Enterprise Systems Auditor — reality-first audit of an agentic intelligence institution (arifOS federation or any VPS + memory + governance stack)."
+        "description": "Enterprise Systems Auditor \u2014 reality-first audit of an agentic intelligence institution (arifOS federation or any VPS + memory + governance stack)."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -4800,7 +4808,7 @@
         "license": "MIT",
         "metadata": "",
         "clawdbot": "",
-        "emoji": "🔍",
+        "emoji": "\ud83d\udd0d",
         "references": ""
       },
       "has_sk": true,
@@ -4894,7 +4902,7 @@
       "dir": "/root/AAA/skills/domains/general/court/court-audit/live-probe-audit-pattern",
       "frontmatter": {
         "name": "live-probe-audit-pattern",
-        "description": "Probe claims against live system state — narrative-vs-state audit for multi-writer surfaces, deployments, agent reports, and SOT",
+        "description": "Probe claims against live system state \u2014 narrative-vs-state audit for multi-writer surfaces, deployments, agent reports, and SOT",
         "version": "2.0.0",
         "owner": "Hermes (arifOS federation)",
         "risk_tier": "low",
@@ -4950,7 +4958,7 @@
       "dir": "/root/AAA/skills/domains/general/court/court-audit/void-paradox-doctrine",
       "frontmatter": {
         "name": "void-paradox-doctrine",
-        "description": "Text ≠ Reality. Load before judging humans from text data.",
+        "description": "Text \u2260 Reality. Load before judging humans from text data.",
         "version": "1.0.0",
         "author": "Hermes (forged by Arif F13)",
         "license": "MIT",
@@ -5061,7 +5069,7 @@
         "id": "hermes-cron-zen",
         "name": "hermes-cron-zen",
         "version": "1.1.0",
-        "description": "Audit, modify, and heal the Hermes cron subsystem — jobs.json, /root/HERMES/scripts/*, the validator at /root/HERMES/scripts/zen/validate_jobs_json.py.",
+        "description": "Audit, modify, and heal the Hermes cron subsystem \u2014 jobs.json, /root/HERMES/scripts/*, the validator at /root/HERMES/scripts/zen/validate_jobs_json.py.",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F11, F13]",
         "autonomy_tier": "T1",
@@ -5123,7 +5131,7 @@
       "dir": "/root/AAA/skills/domains/general/forge/federation-release/fork-drift-assessment",
       "frontmatter": {
         "name": "fork-drift-assessment",
-        "description": "Compare a local fork or install against upstream origin — detect drift, categorize missing commits, assess upgrade urgency, and map against main.",
+        "description": "Compare a local fork or install against upstream origin \u2014 detect drift, categorize missing commits, assess upgrade urgency, and map against main.",
         "version": "1.0.0",
         "author": "Hermes Agent",
         "license": "MIT",
@@ -5254,7 +5262,7 @@
         "description": "Use when browser tooling or skills federation comes up.",
         "version": "1.0.0",
         "risk_tier": "low",
-        "owner": "F13 SOVEREIGN — Muhammad Arif",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif",
         "autonomy_tier": "T1"
       },
       "has_sk": true,
@@ -5287,7 +5295,7 @@
       "dir": "/root/AAA/skills/domains/general/forge/mesh-transport/opencode-config-zen",
       "frontmatter": {
         "name": "opencode-config-zen",
-        "description": "OpenCode provider, model, agent, and rules configuration — SOT-driven rendering, graceful degradation fallback chains, schema compliance, and drift verification",
+        "description": "OpenCode provider, model, agent, and rules configuration \u2014 SOT-driven rendering, graceful degradation fallback chains, schema compliance, and drift verification",
         "tags": "[opencode, config, providers, models, agents, sot, rendering, drift-detection]",
         "triggers": ""
       },
@@ -5322,7 +5330,7 @@
         "name": "litellm-proxy-triage",
         "id": "litellm-proxy-triage",
         "version": "1.0.0",
-        "description": "Use when LiteLLM throws errors or hangs — disambiguate upstream vs stale proxy before restarting.",
+        "description": "Use when LiteLLM throws errors or hangs \u2014 disambiguate upstream vs stale proxy before restarting.",
         "owner": "A-FORGE",
         "risk_tier": "medium",
         "autonomy_tier": "T2",
@@ -5341,7 +5349,7 @@
       "dir": "/root/AAA/skills/domains/general/forge/model-routing/tokenrouter-guide",
       "frontmatter": {
         "name": "tokenrouter-guide",
-        "description": "How Hermes uses TokenRouter — model selection, auto-routing, cost strategy, FREE tier, sovereign anchor"
+        "description": "How Hermes uses TokenRouter \u2014 model selection, auto-routing, cost strategy, FREE tier, sovereign anchor"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -5353,7 +5361,7 @@
       "dir": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-analysis",
       "frontmatter": {
         "name": "audio-analysis",
-        "description": "Build Python DSP-based audio analysis modules — feature extraction, scoring, classification",
+        "description": "Build Python DSP-based audio analysis modules \u2014 feature extraction, scoring, classification",
         "version": "1.0.0",
         "tags": "[audio, dsp, python, librosa, numpy, music, analysis, scoring, features]",
         "metadata": "",
@@ -5371,7 +5379,7 @@
       "dir": "/root/AAA/skills/domains/general/forge/repo-intelligence/audio-feature-analysis",
       "frontmatter": {
         "name": "audio-feature-analysis",
-        "description": "Programmatic audio analysis with librosa/numpy/scipy — chroma features, motif detection, structural segmentation, similarity matrices, spectral analysis.",
+        "description": "Programmatic audio analysis with librosa/numpy/scipy \u2014 chroma features, motif detection, structural segmentation, similarity matrices, spectral analysis.",
         "version": "1.0.0",
         "author": "hermes",
         "metadata": "",
@@ -5427,7 +5435,7 @@
       "dir": "/root/AAA/skills/domains/general/forge/repo-intelligence/institutional-forensic-analysis",
       "frontmatter": {
         "name": "institutional-forensic-analysis",
-        "description": "Build forensic case files on institutional crises — chronological mapping, detection analysis, shadow mapping, value quantification, theoretical framing, constitutional audit",
+        "description": "Build forensic case files on institutional crises \u2014 chronological mapping, detection analysis, shadow mapping, value quantification, theoretical framing, constitutional audit",
         "version": "1.1.0",
         "author": "Hermes Agent",
         "license": "MIT",
@@ -5467,7 +5475,7 @@
       "dir": "/root/AAA/skills/domains/general/forge/telemetry/kabarkan-observability",
       "frontmatter": {
         "name": "kabarkan-observability",
-        "description": "Kabarkan — arifOS sovereign observability plane.",
+        "description": "Kabarkan \u2014 arifOS sovereign observability plane.",
         "tags": "[observability, telemetry, langfuse, kabarkan, tracing, atlass333, kernel, dispatch, jetstream]",
         "triggers": ""
       },
@@ -5523,7 +5531,7 @@
         "category": "devops",
         "related_skills": "[makcikgpt-article-forging, site-deployment-verification, caddy-reverse-proxy]",
         "floors_protected": "[F2, F4, F11]",
-        "origin": "2026-07-18 essay audit → 2026-08-01 Caddy patch + cron immune system + external witness audit"
+        "origin": "2026-07-18 essay audit \u2192 2026-08-01 Caddy patch + cron immune system + external witness audit"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -5573,7 +5581,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/audio-emd/music-generation",
       "frontmatter": {
         "name": "music-generation",
-        "description": "Full music generation pipeline — concept → lyrics → cultural research → AI generation → delivery",
+        "description": "Full music generation pipeline \u2014 concept \u2192 lyrics \u2192 cultural research \u2192 AI generation \u2192 delivery",
         "version": "1.1.0",
         "tags": "[music, audio, generation, minimax, heartmula, audiocraft, suno, folk, traditional, lyrics]",
         "metadata": "",
@@ -5611,7 +5619,7 @@
         "version": "1.1.0",
         "author": "hermes",
         "license": "MIT",
-        "description": "KPJ Excel sales export → BM summary + dashboard PDF + product profit matrix.",
+        "description": "KPJ Excel sales export \u2192 BM summary + dashboard PDF + product profit matrix.",
         "metadata": "",
         "hermes": "",
         "tags": "[kpj, sales, dashboard, pdf, excel]",
@@ -5684,7 +5692,7 @@
         "name": "civic-shadow-editorial",
         "version": "1.0.0",
         "description": "Use when publishing MakcikGPT articles and PM shadow pages to the site.",
-        "owner": "FORGE (000Ω)",
+        "owner": "FORGE (000\u03a9)",
         "risk_tier": "T2",
         "floor_scope": "[F2, F6, F11]",
         "autonomy_tier": "ANNOUNCE",
@@ -5736,7 +5744,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/creative-design/makcikgpt-article-forging",
       "frontmatter": {
         "name": "makcikgpt-article-forging",
-        "description": "Forge MakcikGPT articles for arif-fazil.com — research-driven, MakcikGPT voice, TypeScript format, deploy to VPS",
+        "description": "Forge MakcikGPT articles for arif-fazil.com \u2014 research-driven, MakcikGPT voice, TypeScript format, deploy to VPS",
         "triggers": "",
         "version": "1.9"
       },
@@ -5871,10 +5879,10 @@
       "dir": "/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation",
       "frontmatter": {
         "name": "scientific-pdf-generation",
-        "description": "Generate publication-quality PDFs with reportlab + matplotlib — four",
+        "description": "Generate publication-quality PDFs with reportlab + matplotlib \u2014 four",
         "triggers": "",
         "tags": "",
-        "# Related": "`daily-trading-signal-briefing` (trading/) — uses this skill's"
+        "# Related": "`daily-trading-signal-briefing` (trading/) \u2014 uses this skill's"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -5961,7 +5969,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/health-advocacy/hospital-patient-advocacy",
       "frontmatter": {
         "name": "hospital-patient-advocacy",
-        "description": "Help users navigate Malaysian public hospital systems — interpret medical reports, translate clinical terms to plain BM, draft correspondence, and",
+        "description": "Help users navigate Malaysian public hospital systems \u2014 interpret medical reports, translate clinical terms to plain BM, draft correspondence, and",
         "tags": "[hospital, medical, malaysia, patient-advocacy, translation, hkl]"
       },
       "has_sk": true,
@@ -5974,7 +5982,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/human-interface/arif-human-membrane-integration",
       "frontmatter": {
         "name": "arif-human-membrane-integration",
-        "description": "Use when integrating human-meaning-membrane into the Hermes flow — meaning-preserving human interface.",
+        "description": "Use when integrating human-meaning-membrane into the Hermes flow \u2014 meaning-preserving human interface.",
         "triggers": ""
       },
       "has_sk": true,
@@ -5987,20 +5995,20 @@
       "dir": "/root/AAA/skills/domains/general/workshop/human-interface/hermes-response-format-fit",
       "frontmatter": {
         "name": "hermes-response-format-fit",
-        "description": "Match response format to user signal — casual BM default, structured technical only on demand.",
+        "description": "Match response format to user signal \u2014 casual BM default, structured technical only on demand.",
         "category": "governance"
       },
       "has_sk": true,
       "source_organ": "AAA"
     },
     {
-      "name": "Real-Person Reference Photos — Anti-Fabrication",
+      "name": "Real-Person Reference Photos \u2014 Anti-Fabrication",
       "category": "real",
       "path": "/root/AAA/skills/domains/general/workshop/image-gen/forge-real-person-reference-photos/SKILL.md",
       "dir": "/root/AAA/skills/domains/general/workshop/image-gen/forge-real-person-reference-photos",
       "frontmatter": {
         "id": "forge-real-person-reference-photos",
-        "name": "Real-Person Reference Photos — Anti-Fabrication",
+        "name": "Real-Person Reference Photos \u2014 Anti-Fabrication",
         "version": "1.0.0",
         "description": "Real-person photo: Wikimedia first, attribute, no T2I.",
         "owner": "AAA",
@@ -6072,7 +6080,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/image-gen/lightweight-image-generation",
       "frontmatter": {
         "name": "lightweight-image-generation",
-        "description": "Generate images without heavy local installs — free APIs (Pollinations.ai), pre-generated galleries (Generated Photos), and quick alternatives",
+        "description": "Generate images without heavy local installs \u2014 free APIs (Pollinations.ai), pre-generated galleries (Generated Photos), and quick alternatives",
         "version": "2.3.0",
         "tags": "[image-generation, free-api, pollinations, ai-faces, lightweight, fallback, malay-phenotype, nsfw, venice]",
         "metadata": "",
@@ -6090,7 +6098,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/image-gen/minimax-cli",
       "frontmatter": {
         "name": "minimax-cli",
-        "description": "MiniMax multimodal via mmx-cli — TTS, video, music, image, vision, search. Image generation is PRIMARY choice for Malay/SEA phenotype and",
+        "description": "MiniMax multimodal via mmx-cli \u2014 TTS, video, music, image, vision, search. Image generation is PRIMARY choice for Malay/SEA phenotype and",
         "version": "2.6.0",
         "tags": "[minimax, tts, video, music, image, vision, multimodal, malay-phenotype, image-generation, logo-design]",
         "metadata": "",
@@ -6109,7 +6117,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/image-gen/photorealistic-human-image-gen",
       "frontmatter": {
         "name": "photorealistic-human-image-gen",
-        "description": "Photorealistic human image generation via MiniMax image-01 — camera anchoring, cultural props, lighting mood control, power dynamics, and erotic framing without NSFW triggers.",
+        "description": "Photorealistic human image generation via MiniMax image-01 \u2014 camera anchoring, cultural props, lighting mood control, power dynamics, and erotic framing without NSFW triggers.",
         "version": "1.0.0",
         "tags": "[minimax, image-generation, photorealism, human-photography, camera-anchors, cultural-props, lighting]",
         "metadata": "",
@@ -6255,7 +6263,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/minimax-tools/mulerouter-media",
       "frontmatter": {
         "name": "mulerouter-media",
-        "description": "MuleRouter media generation catalog — TTS, music, image gen, and video via one key",
+        "description": "MuleRouter media generation catalog \u2014 TTS, music, image gen, and video via one key",
         "tags": "[mulerouter, media, image, audio, tts, music, video, generation]",
         "triggers": "",
         "related_skills": "[minimax-cli, lightweight-image-generation, video-prompt-engineering]"
@@ -6270,7 +6278,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/organ-forging/ariflow-component-forging",
       "frontmatter": {
         "name": "ariflow-component-forging",
-        "description": "Build, instrument, and deploy new governed components for the arifFlow Rust engine — from spec to struct to Kabarkan integration to systemd deploy.",
+        "description": "Build, instrument, and deploy new governed components for the arifFlow Rust engine \u2014 from spec to struct to Kabarkan integration to systemd deploy.",
         "category": "software-development"
       },
       "has_sk": true,
@@ -6283,7 +6291,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/organ-forging/arifos-organ-forging",
       "frontmatter": {
         "name": "arifos-organ-forging",
-        "description": "Forge new constitutional organs in arifOS — vector indexing, dual-gate architecture, EMD pipeline integration, Qdrant backfill, derived-view enrichment"
+        "description": "Forge new constitutional organs in arifOS \u2014 vector indexing, dual-gate architecture, EMD pipeline integration, Qdrant backfill, derived-view enrichment"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -6310,8 +6318,8 @@
     {
       "name": "relationship-kernel",
       "category": "relationship",
-      "path": "/root/AAA/skills/domains/general/workshop/personal-lane/relationship-kernel/SKILL.md",
-      "dir": "/root/AAA/skills/domains/general/workshop/personal-lane/relationship-kernel",
+      "path": "/root/AAA/skills/domains/general/apex/human-bond-action/SKILL.md",
+      "dir": "/root/AAA/skills/domains/general/apex/human-bond-action",
       "frontmatter": {
         "name": "relationship-kernel",
         "description": "Use when the subject is a human bond of Arif's.",
@@ -6319,7 +6327,15 @@
         "owner": "F13",
         "triggers": "",
         "floors": "[F1, F2, F5, F6, F9, F13]",
-        "tags": "[relationship, bonds, conduct, hermes, F5, dignity]"
+        "tags": "[relationship, bonds, conduct, hermes, F5, dignity]",
+        "merged_into": "human-bond-action",
+        "merged_from": [
+          "loved-one-worry-support",
+          "relationship-kernel",
+          "human-reality-bridge",
+          "human-reality-field"
+        ],
+        "path": "/root/AAA/skills/domains/general/apex/human-bond-action/SKILL.md"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -6331,7 +6347,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/qwencloud/qwen-token-plan-team-edition",
       "frontmatter": {
         "name": "qwen-token-plan-team-edition",
-        "description": "Use when handling Qwen Token Plan seat configuration or capability URL resolution. Qwen Token Plan seats — capability & OSS URL handling.",
+        "description": "Use when handling Qwen Token Plan seat configuration or capability URL resolution. Qwen Token Plan seats \u2014 capability & OSS URL handling.",
         "version": "1.0.0",
         "author": "hermes-curator",
         "license": "MIT",
@@ -6351,7 +6367,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/qwencloud/qwencloud-cli",
       "frontmatter": {
         "name": "qwencloud-cli",
-        "description": "Use when managing QwenCloud CLI ops — models list, auth, billing from terminal. QwenCloud CLI ops. Models, auth, billing from terminal.",
+        "description": "Use when managing QwenCloud CLI ops \u2014 models list, auth, billing from terminal. QwenCloud CLI ops. Models, auth, billing from terminal.",
         "version": "1.0.0",
         "author": "hermes-curator",
         "license": "MIT",
@@ -6417,7 +6433,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/research-core/food-nutrition-intelligence",
       "frontmatter": {
         "name": "food-nutrition-intelligence",
-        "description": "Use when user asks about food calories or nutrition data — text queries, photo-based estimation, and health/supplement research.",
+        "description": "Use when user asks about food calories or nutrition data \u2014 text queries, photo-based estimation, and health/supplement research.",
         "version": "2.0.0",
         "author": "Hermes (arifOS)",
         "license": "MIT",
@@ -6435,7 +6451,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/research-core/health-product-claim-audit",
       "frontmatter": {
         "name": "health-product-claim-audit",
-        "description": "Evaluate health product claims against clinical evidence — supplements, treatments, devices.",
+        "description": "Evaluate health product claims against clinical evidence \u2014 supplements, treatments, devices.",
         "tags": "[health, product, supplement, evidence, audit, malaysia, claim]"
       },
       "has_sk": true,
@@ -6615,7 +6631,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/video-gen/video-prompt-engineering",
       "frontmatter": {
         "name": "video-prompt-engineering",
-        "description": "Text-to-video prompt engineering patterns — model selection, camera direction, cultural specificity, scene composition. Works across Wan 2.6, Veo 3.1, Hailuo.",
+        "description": "Text-to-video prompt engineering patterns \u2014 model selection, camera direction, cultural specificity, scene composition. Works across Wan 2.6, Veo 3.1, Hailuo.",
         "tags": "[video, prompt-engineering, generation, cinema, mulerouter, wan, veo]",
         "triggers": "",
         "related_skills": "[mulerouter-media, minimax-cli]"
@@ -6700,7 +6716,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/voice-stack/human-voice-writing",
       "frontmatter": {
         "name": "human-voice-writing",
-        "description": "Write and rewrite personal READMEs, profile pages, and human-reality documents in Arif's voice — bahasa kampung, direct, no corporate cosplay.",
+        "description": "Write and rewrite personal READMEs, profile pages, and human-reality documents in Arif's voice \u2014 bahasa kampung, direct, no corporate cosplay.",
         "version": "1.0.0",
         "author": "Hermes-Prime",
         "metadata": "",
@@ -6750,7 +6766,7 @@
       "dir": "/root/AAA/skills/domains/general/workshop/well-domain/well-operations",
       "frontmatter": {
         "name": "well-operations",
-        "description": "Diagnose and operate the WELL organ (port 18083) — freshness monitoring, state.json corruption detection, biometric injection, and DEGRADED/HOLD alert resolution.",
+        "description": "Diagnose and operate the WELL organ (port 18083) \u2014 freshness monitoring, state.json corruption detection, biometric injection, and DEGRADED/HOLD alert resolution.",
         "category": "devops",
         "forged": "2026-07-26"
       },
@@ -6766,7 +6782,7 @@
         "name": "geological-figure-production",
         "version": "1.0.0-2026.08.20",
         "owner": "GEOX",
-        "description": "Use when producing geological figures — pipeline with a vision-QA verification loop.",
+        "description": "Use when producing geological figures \u2014 pipeline with a vision-QA verification loop.",
         "autonomy_tier": "T1",
         "risk_tier": "low",
         "floor_scope": "[F2, F7, F9]",
@@ -6791,7 +6807,7 @@
       "frontmatter": {
         "name": "nasi-lemak-business-intelligence",
         "version": "1.0.0",
-        "description": "Use when analysing nasi lemak business data — vendor costs, margins, sales dashboards and per-location performance.",
+        "description": "Use when analysing nasi lemak business data \u2014 vendor costs, margins, sales dashboards and per-location performance.",
         "triggers": ""
       },
       "has_sk": true,
@@ -6819,7 +6835,7 @@
       "dir": "/root/AAA/skills/domains/my-reality/workshop/legal-my/malaysian-family-law",
       "frontmatter": {
         "name": "malaysian-family-law",
-        "description": "Syariah family law — nafkah, custody, divorce, MS2 forms.",
+        "description": "Syariah family law \u2014 nafkah, custody, divorce, MS2 forms.",
         "tags": "[malaysia, syariah, family-law, nafkah, custody, divorce, BM, mahkamah]",
         "related_skills": "[malaysian-tenancy-consumer-dispute]"
       },
@@ -6833,7 +6849,7 @@
       "dir": "/root/AAA/skills/domains/my-reality/workshop/legal-my/malaysian-tenancy-consumer-dispute",
       "frontmatter": {
         "name": "malaysian-tenancy-consumer-dispute",
-        "description": "Malaysian tenancy, consumer, courier/delivery, and small-claims disputes — drafting BM notices, TTPM strategy, courier claim process, landlord-tenant rights",
+        "description": "Malaysian tenancy, consumer, courier/delivery, and small-claims disputes \u2014 drafting BM notices, TTPM strategy, courier claim process, landlord-tenant rights",
         "tags": "[malaysia, tenancy, TTPM, consumer, legal, BM, landlord, dispute, courier, delivery]"
       },
       "has_sk": true,
@@ -6846,7 +6862,7 @@
       "dir": "/root/AAA/skills/domains/my-reality/workshop/my-domain-intel/my-reality",
       "frontmatter": {
         "name": "my-reality",
-        "description": "Malaysia reality adapters — prayer (JAKIM), weather/warning (MET), flood (JPS 15-min), FX + Kijang Emas (BNM). Keyless, live-verified. One pulse for daily briefs.",
+        "description": "Malaysia reality adapters \u2014 prayer (JAKIM), weather/warning (MET), flood (JPS 15-min), FX + Kijang Emas (BNM). Keyless, live-verified. One pulse for daily briefs.",
         "version": "1.0.0",
         "triggers": "",
         "verified_on": "2026-08-15"
@@ -6873,7 +6889,7 @@
       "dir": "/root/AAA/skills/domains/my-reality/workshop/research-core/petronas-petros-shell-dispute",
       "frontmatter": {
         "name": "petronas-petros-shell-dispute",
-        "description": "PETRONAS–Petros–Shell MDS dispute 2024-2026: espionage case, gas war, BG call, MBR freeze, simulative exploitation framework. 6 case artifacts + 4",
+        "description": "PETRONAS\u2013Petros\u2013Shell MDS dispute 2024-2026: espionage case, gas war, BG call, MBR freeze, simulative exploitation framework. 6 case artifacts + 4",
         "version": "1.0.0",
         "author": "hermes-prime",
         "tags": "[petronas, petros, shell, sarawak, gas, dispute, simulative-exploitation, acemoglu, institutional-collapse, mbr, bank-guarantee]"
@@ -6888,7 +6904,7 @@
       "dir": "/root/AAA/skills/domains/wealth/forge/mcp-ops/wealth-mcp-ops",
       "frontmatter": {
         "name": "wealth-mcp-ops",
-        "description": "Use when changing or testing WEALTH MCP tools — add a mode, harden, or write pytest. One owner for the WEALTH MCP toolchain.",
+        "description": "Use when changing or testing WEALTH MCP tools \u2014 add a mode, harden, or write pytest. One owner for the WEALTH MCP toolchain.",
         "id": "wealth-mcp-ops",
         "version": "1.0.0",
         "owner": "A-FORGE",
@@ -6911,14 +6927,14 @@
       "dir": "/root/AAA/skills/domains/wealth/workshop/trading-exec/agentic-trading-companion",
       "frontmatter": {
         "name": "agentic-trading-companion",
-        "description": "Build an AI trading companion system — signal engine, price alerts, journal tracking, chart generation, and web terminal.",
+        "description": "Build an AI trading companion system \u2014 signal engine, price alerts, journal tracking, chart generation, and web terminal.",
         "version": "2.0.0",
         "author": "Hermes Agent (consolidated from trading-intelligence-system)",
         "tags": "[trading, xauusd, gold, agentic, signals, journal, active, governance]",
         "organ": "WEALTH (:18082)",
-        "f1-boundary": "IRREVERSIBLE ACTION GATE — only skill with MT5 access. Trade execution REQUIRES 888_SOVEREIGN approval. No auto-fire.",
-        "zen-organs": "[W EXECUTION, ΔG GOVERNANCE, Ω WITNESS, ∂M/∂t MEMORY, ∇F MEANING]",
-        "aaa-contract": "A2A_TRADING_CONTRACT — registered at /root/AAA/agents/agentic-trading-companion/agent-card.json",
+        "f1-boundary": "IRREVERSIBLE ACTION GATE \u2014 only skill with MT5 access. Trade execution REQUIRES 888_SOVEREIGN approval. No auto-fire.",
+        "zen-organs": "[W EXECUTION, \u0394G GOVERNANCE, \u03a9 WITNESS, \u2202M/\u2202t MEMORY, \u2207F MEANING]",
+        "aaa-contract": "A2A_TRADING_CONTRACT \u2014 registered at /root/AAA/agents/agentic-trading-companion/agent-card.json",
         "triggers": ""
       },
       "has_sk": true,
@@ -6931,7 +6947,7 @@
       "dir": "/root/AAA/skills/domains/wealth/workshop/trading-exec/mt5-ai-trading-agent",
       "frontmatter": {
         "name": "mt5-ai-trading-agent",
-        "description": "Build AI-powered trading agents that connect MetaTrader 5 to Hermes intelligence — technical analysis, signal generation, risk management, voice delivery",
+        "description": "Build AI-powered trading agents that connect MetaTrader 5 to Hermes intelligence \u2014 technical analysis, signal generation, risk management, voice delivery",
         "version": "1.0.0",
         "tags": "[trading, metatrader5, mt5, xauusd, forex, gold, ai-agent, technical-analysis, risk-management]",
         "metadata": "",
@@ -6949,13 +6965,13 @@
       "dir": "/root/AAA/skills/domains/wealth/workshop/trading-exec/trading-signal-chart",
       "frontmatter": {
         "name": "trading-signal-chart",
-        "description": "Generate trading signal charts and PDFs — candlestick OHLC with EMA overlays, buy/sell zones, stop loss, targets. **PASSIVE NODE — STRICTLY READ-ONLY. NO broker API, NO MT5 bridge, NO execute_trade.**",
+        "description": "Generate trading signal charts and PDFs \u2014 candlestick OHLC with EMA overlays, buy/sell zones, stop loss, targets. **PASSIVE NODE \u2014 STRICTLY READ-ONLY. NO broker API, NO MT5 bridge, NO execute_trade.**",
         "version": "2.1.0",
         "author": "Hermes Agent (consolidated from daily-trading-signal-briefing, trading-analysis-xauusd)",
         "tags": "[trading, chart, candlestick, gold, xauusd, signal, pdf, matplotlib, passive]",
         "organ": "WEALTH (:18082)",
-        "f1-boundary": "STRICTLY READ-ONLY — chart generation + analysis output + cron dispatch only. Zero broker/MT5 code allowed.",
-        "zen-organs": "[W EXECUTION (chart only), ΔR (price data), ∇F (signal meaning)]",
+        "f1-boundary": "STRICTLY READ-ONLY \u2014 chart generation + analysis output + cron dispatch only. Zero broker/MT5 code allowed.",
+        "zen-organs": "[W EXECUTION (chart only), \u0394R (price data), \u2207F (signal meaning)]",
         "triggers": ""
       },
       "has_sk": true,
@@ -7008,7 +7024,7 @@
       "dir": "/root/AAA/skills/domains/well/workshop/physique-intel/BIOHACK-PEPTIDES",
       "frontmatter": {
         "name": "BIOHACK-PEPTIDES",
-        "description": "SADO group pro-biohacker peptide intelligence — evidence tiers, dosing protocols, WADA/legal status, stacks, sourcing standards.",
+        "description": "SADO group pro-biohacker peptide intelligence \u2014 evidence tiers, dosing protocols, WADA/legal status, stacks, sourcing standards.",
         "category": "research",
         "version": "1.0.0",
         "last_researched": "2026-08-20",
@@ -7183,7 +7199,7 @@
         "name": "incident-response",
         "id": "incident-response",
         "version": "2.0.0",
-        "description": "Full incident lifecycle: detect → triage → escalate → resolve.",
+        "description": "Full incident lifecycle: detect \u2192 triage \u2192 escalate \u2192 resolve.",
         "owner": "AAA",
         "risk_tier": "critical",
         "autonomy_tier": "T1",
@@ -7308,7 +7324,7 @@
       "dir": "/root/AAA/skills/entropy-metabolizer",
       "frontmatter": {
         "name": "entropy-metabolizer",
-        "description": "Bridge audit findings to action — classifies entropy candidates into safe-cleanup, tracked-cleanup, investigate, and hold buckets, then executes safe-cleanup automatically.",
+        "description": "Bridge audit findings to action \u2014 classifies entropy candidates into safe-cleanup, tracked-cleanup, investigate, and hold buckets, then executes safe-cleanup automatically.",
         "argument-hint": "[\"<audit-json-path> [--dry-run] [--auto-local] [--commit]\"]",
         "capability_tier": "fed-agent-subagent",
         "floor_scope": "[F1, F2, F7, F11]",
@@ -7581,7 +7597,7 @@
         "id": "fi-zai-probe",
         "name": "fi-zai-probe",
         "version": "1.0.0",
-        "description": "Probe Z.AI GLM coding plan health — models list, anthropic + openai endpoints, credit reality, cross-check 5 wired surfaces.",
+        "description": "Probe Z.AI GLM coding plan health \u2014 models list, anthropic + openai endpoints, credit reality, cross-check 5 wired surfaces.",
         "owner": "333-AGI",
         "risk_tier": "low",
         "floor_scope": "[F2, F4]"
@@ -7718,7 +7734,7 @@
       "dir": "/root/AAA/skills/flash",
       "frontmatter": {
         "name": "flash",
-        "description": "runpod-flash — code-first serverless: write Python locally, run it on remote Runpod GPUs/CPUs with `flash dev` (hot-reload + live worker logs), then `flash deploy`.",
+        "description": "runpod-flash \u2014 code-first serverless: write Python locally, run it on remote Runpod GPUs/CPUs with `flash dev` (hot-reload + live worker logs), then `flash deploy`.",
         "user-invocable": "true",
         "metadata": "",
         "author": "runpod",
@@ -7891,7 +7907,7 @@
         "name": "forge-agentic-web-builder",
         "version": "1.2.0-2026.09.13",
         "description": "Use when building, deploying, auditing, or repairing arif-fazil.com constellation and federation agentic web apps.",
-        "owner": "FORGE (000Ω)",
+        "owner": "FORGE (000\u03a9)",
         "risk_tier": "T2",
         "floor_scope": "[F1, F2, F4, F11]",
         "autonomy_tier": "ANNOUNCE",
@@ -7910,9 +7926,9 @@
       "frontmatter": {
         "name": "forge-artifact-publisher",
         "id": "forge-artifact-publisher",
-        "description": "EMD artifact forge — the OUTPUT direction of AAA document intelligence.",
+        "description": "EMD artifact forge \u2014 the OUTPUT direction of AAA document intelligence.",
         "version": "1.1.0",
-        "owner": "F13 SOVEREIGN — Muhammad Arif bin Fazil",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F4, F6, F11]",
         "autonomy_tier": "T1",
@@ -7976,7 +7992,7 @@
         "id": "forge-document-intelligence",
         "description": "EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation.",
         "version": "2.0.0",
-        "owner": "F13 SOVEREIGN — Muhammad Arif bin Fazil (888)",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F4, F9, F11, F12, F13]",
         "autonomy_tier": "T1",
@@ -8003,7 +8019,7 @@
         "floor_scope": "[F1, F2, F4, F7]",
         "description": "When no permanent tool exists for a task, spawn a temporary tool via forge_ephemeral.",
         "version": "1.0.0",
-        "author": "333-AGI (Δ MIND) for Arif (F13 SOVEREIGN)",
+        "author": "333-AGI (\u0394 MIND) for Arif (F13 SOVEREIGN)",
         "forged": "2026-08-02",
         "tags": "[ephemeral, genesis, capability-metabolism, tool-generation, anti-accumulation, entropy, wolf-cabinet]",
         "scope": "all_agents",
@@ -8092,12 +8108,12 @@
       "frontmatter": {
         "name": "FORGE-lsp-pre-edit-gate",
         "id": "forge-lsp-pre-edit-gate",
-        "owner": "A-FORGE · 333-AGI",
+        "owner": "A-FORGE \u00b7 333-AGI",
         "risk_tier": "low",
         "floor_scope": "[F2, F4, F7, F11]",
         "description": "MANDATORY LSP grounding gate BEFORE any code mutation on .ts, .py, .js, .tsx, .jsx files.",
         "version": "1.0.0",
-        "author": "333-AGI Δ MIND under F13 SOVEREIGN directive",
+        "author": "333-AGI \u0394 MIND under F13 SOVEREIGN directive",
         "forged": "2026-08-06",
         "tags": "[lsp, grounding, truth, pre-edit, gate, observability, temporal-causality, oracle-substrate]",
         "scope": "all_forge_agents",
@@ -8130,7 +8146,7 @@
         "forged": "2026-08-20",
         "forged_by": "FI-003 (Qwen Code)",
         "f13_directive": "make sure my hermes agent telegram ASI_arifos_bot know how to use this",
-        "constitutional_floor": "F11 AUDIT — every routing decision logged to VAULT999 receipts"
+        "constitutional_floor": "F11 AUDIT \u2014 every routing decision logged to VAULT999 receipts"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -8186,7 +8202,7 @@
         "floor_scope": "[F1, F2, F4, F7]",
         "description": "Use when task may be over-engineered.",
         "version": "2.0.0",
-        "author": "FORGE (000Ω) for Arif (F13 SOVEREIGN)",
+        "author": "FORGE (000\u03a9) for Arif (F13 SOVEREIGN)",
         "forged": "2026-07-17",
         "tags": "[routing, least-power, discipline, anti-yak-shaving, efficiency, entropy]",
         "scope": "all_agents",
@@ -8256,7 +8272,7 @@
         "id": "subagent-spawn-template",
         "name": "FORGE-subagent-spawn",
         "version": "1.0.0",
-        "description": "Standard contract for spawning bounded, auditable sub-agents — input contract, output schema, evidence requirements.",
+        "description": "Standard contract for spawning bounded, auditable sub-agents \u2014 input contract, output schema, evidence requirements.",
         "owner": "AAA",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F11]",
@@ -8311,7 +8327,7 @@
         "id": "FORGE-vault999-witness",
         "name": "FORGE-vault999-witness",
         "version": "1.0.0-2026.07.17",
-        "description": "VAULT999 witness — immutable ledger integration, seal chain verification, and audit trace.",
+        "description": "VAULT999 witness \u2014 immutable ledger integration, seal chain verification, and audit trace.",
         "owner": "A-FORGE",
         "risk_tier": "high",
         "floor_scope": "['F1', 'F2', 'F11', 'F13']",
@@ -8355,7 +8371,7 @@
         "id": "FORGE-visual-qa-w3",
         "name": "forge-visual-qa-w3",
         "version": "1.1.0-2026.07.20",
-        "description": "Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA. ",
+        "description": "Closed-loop visual governance with W3 tri-witness consensus \u2014 render, screenshot, validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA. ",
         "owner": "A-FORGE",
         "risk_tier": "high",
         "floor_scope": "['F1', 'F2', 'F3', 'F4', 'F7', 'F11']",
@@ -8379,7 +8395,7 @@
         "risk_tier": "low",
         "autonomy_tier": "T1",
         "floor_scope": "",
-        "description": "VSS-2 Lightweight Verifier Suite — independent post-generation verifiers for Verified Scene Synthesis.",
+        "description": "VSS-2 Lightweight Verifier Suite \u2014 independent post-generation verifiers for Verified Scene Synthesis.",
         "tags": "",
         "harness": "hermes|kimi|opencode|openclaw|claude|codex",
         "domain": "meta",
@@ -8398,7 +8414,7 @@
       "dir": "/root/AAA/skills/forge-well-boundary-repair",
       "frontmatter": {
         "name": "FORGE-well-boundary-repair",
-        "description": "Repair WELL organ boundary violations — fix substrate readiness drift,",
+        "description": "Repair WELL organ boundary violations \u2014 fix substrate readiness drift,",
         "health restoration. F1 AMANAH": "reversible fixes only.",
         "owner": "A-FORGE"
       },
@@ -8521,7 +8537,7 @@
         "name": "github-ops",
         "id": "github-ops",
         "version": "2.0.0",
-        "description": "Use when doing GitHub work — auth, repos, issues, PRs, review, CI, merge. One flow routes to the exact reference.",
+        "description": "Use when doing GitHub work \u2014 auth, repos, issues, PRs, review, CI, merge. One flow routes to the exact reference.",
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F11]",
@@ -8541,7 +8557,7 @@
       "dir": "/root/AAA/skills/google-workspace-gws",
       "frontmatter": {
         "name": "google-workspace-gws",
-        "description": "Use when needing Gmail, Google Drive, Calendar, Docs, or Sheets from any agent on forge VPS — wired via official gws CLI (OAuth live, verified 2026-09-16)."
+        "description": "Use when needing Gmail, Google Drive, Calendar, Docs, or Sheets from any agent on forge VPS \u2014 wired via official gws CLI (OAuth live, verified 2026-09-16)."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -8874,7 +8890,7 @@
         "canonical_path": "/root/AAA/skills/governance/governance-ops/SKILL.md",
         "archive": "/root/AAA/skills/.archive/merge-20260920/governance/",
         "triggers": "",
-        "description": "Use when asking whether a control is real. Route a governance question to the one reference that answers it — control enforcement, service governance, the F1–F13 constitution, canon sealing, JSON-LD ontology, governance benchmarks, or an institution's board."
+        "description": "Use when asking whether a control is real. Route a governance question to the one reference that answers it \u2014 control enforcement, service governance, the F1\u2013F13 constitution, canon sealing, JSON-LD ontology, governance benchmarks, or an institution's board."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -9242,7 +9258,7 @@
       "frontmatter": {
         "name": "hermes-gateway-image-routing",
         "owner": "AAA",
-        "description": "Diagnose and fix Hermes Telegram gateway image routing — Path B model override, supports_vision decision chain, and common failure modes when images don't reach the LLM. ",
+        "description": "Diagnose and fix Hermes Telegram gateway image routing \u2014 Path B model override, supports_vision decision chain, and common failure modes when images don't reach the LLM. ",
         "category": "devops",
         "tags": "[hermes, gateway, image, vision, path-b, telegram]",
         "triggers": "",
@@ -9466,7 +9482,7 @@
         "host_compatibility": "",
         "floor_scope": "",
         "forged": "2026-09-08",
-        "source": "F13 SOVEREIGN chat SEAL (Conceptual) 2026-09-08 — EUREKA #10 of EUREKA-HUMAN-REALITY-INVARIANTS-2026-09-08",
+        "source": "F13 SOVEREIGN chat SEAL (Conceptual) 2026-09-08 \u2014 EUREKA #10 of EUREKA-HUMAN-REALITY-INVARIANTS-2026-09-08",
         "doctrine": "/root/AAA/instructions/human-reality-invariants.md",
         "orthogonal_tags": "",
         "trinitarian": "",
@@ -9598,7 +9614,7 @@
       "dir": "/root/AAA/skills/intelligence-briefing",
       "frontmatter": {
         "name": "intelligence-briefing",
-        "description": "Use when asked for a briefing — news scan, executive weekly, institutional-disclosure deep-dive, federation weekly review, live professional read, or political read.",
+        "description": "Use when asked for a briefing \u2014 news scan, executive weekly, institutional-disclosure deep-dive, federation weekly review, live professional read, or political read.",
         "version": "2.0.0",
         "tier": "canonical",
         "authority": "F13 sovereign in-chat order 2026-09-19 (\"One capability, fifteen costumes\")",
@@ -9636,8 +9652,8 @@
         "id": "trinity-33-canonical",
         "name": "kernel-trinity-33",
         "version": "1.1.0-2026.07.08",
-        "description": "The canonical 33-repo Trinity (final) Use when a task touches the 33-repo Trinity — the canonical repo list and which repo owns what.",
-        "owner": "F13 SOVEREIGN — Muhammad Arif bin Fazil (888)",
+        "description": "The canonical 33-repo Trinity (final) Use when a task touches the 33-repo Trinity \u2014 the canonical repo list and which repo owns what.",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
         "risk_tier": "low",
         "floor_scope": "[F2, F7, F8, F11]",
         "autonomy_tier": "T1",
@@ -9662,7 +9678,7 @@
       "dir": "/root/AAA/skills/knowledge/know-pragmatics",
       "frontmatter": {
         "name": "know-pragmatics",
-        "description": "Pragmatics substrate — what works in practice vs what looks correct on paper.",
+        "description": "Pragmatics substrate \u2014 what works in practice vs what looks correct on paper.",
         "version": "1.0",
         "owner": "AAA/knowledge",
         "risk_tier": "low",
@@ -9726,7 +9742,7 @@
       "dir": "/root/AAA/skills/malaysia-reality-interface",
       "frontmatter": {
         "name": "malaysia-reality-interface",
-        "description": "Governed Malaysia data lanes for all organs — verified live endpoints (data.gov.my weather/catalogue, BNM), ring model (0-3), organ assignments (WEALTH/GEOX/WELL/HERMES/AAA), capability registry."
+        "description": "Governed Malaysia data lanes for all organs \u2014 verified live endpoints (data.gov.my weather/catalogue, BNM), ring model (0-3), organ assignments (WEALTH/GEOX/WELL/HERMES/AAA), capability registry."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -9752,7 +9768,7 @@
       "dir": "/root/AAA/skills/mata",
       "frontmatter": {
         "name": "mata",
-        "description": "Unified visual intelligence truth-pane for arifOS — before ANY claim about image/video generation or understanding capability (or its absence), run mata.",
+        "description": "Unified visual intelligence truth-pane for arifOS \u2014 before ANY claim about image/video generation or understanding capability (or its absence), run mata.",
         "capability_tier": "fed-multimodal-vision",
         "ecology_state": "WARM"
       },
@@ -9771,7 +9787,7 @@
         "risk_tier": "T1",
         "floor_scope": "[F2, F4, F7]",
         "autonomy_tier": "T1",
-        "description": "Image editing vs generation — route the right model for the task.",
+        "description": "Image editing vs generation \u2014 route the right model for the task.",
         "required_tools": "['image_generate', 'vision_analyze']",
         "tool_gate": "strict",
         "capability_tier": "fed-multimodal-vision",
@@ -9916,7 +9932,7 @@
       "dir": "/root/AAA/skills/mimo-audio",
       "frontmatter": {
         "name": "mimo-audio",
-        "description": "FEDERATED Xiaomi MiMo v2.5 audio intelligence — TTS, ASR, voice design, voice clone (F13-gated)."
+        "description": "FEDERATED Xiaomi MiMo v2.5 audio intelligence \u2014 TTS, ASR, voice design, voice clone (F13-gated)."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -9928,7 +9944,7 @@
       "dir": "/root/AAA/skills/mimo-audio/references/official",
       "frontmatter": {
         "name": "mimo-v2-5-tts",
-        "description": "MiMo V2.5 TTS 语音合成。使用小米 MiMo V2.5 TTS 系列模型生成语音。当需要将文字转为语音、发送语音消息、朗读内容、或用户要求「说出来」「语音回复」时激活此 skill。支持预置音色、音色设计、音色克隆三种模式，支持自然语言控制、导演模式，支持语气、情绪、方言的风格标签控制，预置音色支持唱歌。",
+        "description": "MiMo V2.5 TTS \u8bed\u97f3\u5408\u6210\u3002\u4f7f\u7528\u5c0f\u7c73 MiMo V2.5 TTS \u7cfb\u5217\u6a21\u578b\u751f\u6210\u8bed\u97f3\u3002\u5f53\u9700\u8981\u5c06\u6587\u5b57\u8f6c\u4e3a\u8bed\u97f3\u3001\u53d1\u9001\u8bed\u97f3\u6d88\u606f\u3001\u6717\u8bfb\u5185\u5bb9\u3001\u6216\u7528\u6237\u8981\u6c42\u300c\u8bf4\u51fa\u6765\u300d\u300c\u8bed\u97f3\u56de\u590d\u300d\u65f6\u6fc0\u6d3b\u6b64 skill\u3002\u652f\u6301\u9884\u7f6e\u97f3\u8272\u3001\u97f3\u8272\u8bbe\u8ba1\u3001\u97f3\u8272\u514b\u9686\u4e09\u79cd\u6a21\u5f0f\uff0c\u652f\u6301\u81ea\u7136\u8bed\u8a00\u63a7\u5236\u3001\u5bfc\u6f14\u6a21\u5f0f\uff0c\u652f\u6301\u8bed\u6c14\u3001\u60c5\u7eea\u3001\u65b9\u8a00\u7684\u98ce\u683c\u6807\u7b7e\u63a7\u5236\uff0c\u9884\u7f6e\u97f3\u8272\u652f\u6301\u5531\u6b4c\u3002",
         "license": "MIT",
         "metadata": "",
         "version": "0.1.2"
@@ -9943,7 +9959,7 @@
       "dir": "/root/AAA/skills/mimo-vision",
       "frontmatter": {
         "name": "mimo-vision",
-        "description": "FEDERATED Xiaomi MiMo vision lane — image AND video understanding via mimo-v2.5, plus token estimators and a PAIRED-fixture perception canary.",
+        "description": "FEDERATED Xiaomi MiMo vision lane \u2014 image AND video understanding via mimo-v2.5, plus token estimators and a PAIRED-fixture perception canary.",
         "capability_tier": "fed-multimodal-vision",
         "ecology_state": "WARM"
       },
@@ -10089,7 +10105,7 @@
         "id": "openclaw",
         "version": "1.0.0",
         "risk_tier": "medium",
-        "description": "OpenClaw edge agent bridge — operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface).",
+        "description": "OpenClaw edge agent bridge \u2014 operational triage, doctor, restart, and A2A bridge routing for the federation edge (Telegram surface).",
         "owner": "A-FORGE",
         "floor_scope": "",
         "autonomy_tier": "T2",
@@ -10119,7 +10135,7 @@
         "id": "openclaw-human-meaning",
         "version": "1.0.0",
         "risk_tier": "low",
-        "description": "OpenClaw integration for the human-meaning-membrane doctrine — apply the inference protocol when reviewing human-facing code (chatbots, UIs, social features).",
+        "description": "OpenClaw integration for the human-meaning-membrane doctrine \u2014 apply the inference protocol when reviewing human-facing code (chatbots, UIs, social features).",
         "owner": "A-FORGE",
         "floor_scope": "",
         "autonomy_tier": "T1",
@@ -10146,7 +10162,7 @@
       "dir": "/root/AAA/skills/organ-capability-map",
       "frontmatter": {
         "name": "organ-capability-map",
-        "description": "Master capability→organ routing map — every tool/lane (Google, Malaysia, MCP shopping list, wellness, media) assigned to WEALTH/GEOX/WELL/HERMES/AAA/A-FORGE/arifFlow with live/staged status."
+        "description": "Master capability\u2192organ routing map \u2014 every tool/lane (Google, Malaysia, MCP shopping list, wellness, media) assigned to WEALTH/GEOX/WELL/HERMES/AAA/A-FORGE/arifFlow with live/staged status."
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -10170,7 +10186,7 @@
       "dir": "/root/AAA/skills/person-intelligence",
       "frontmatter": {
         "name": "person-intelligence",
-        "description": "Use when the subject is a human being — gathering intelligence on a named person, building a verifiable shareable dossier, mapping a public profile into persona/shadow, or assessing the sovereign himself from session history.",
+        "description": "Use when the subject is a human being \u2014 gathering intelligence on a named person, building a verifiable shareable dossier, mapping a public profile into persona/shadow, or assessing the sovereign himself from session history.",
         "version": "2.0.0",
         "tier": "canonical",
         "authority": "F13 sovereign in-chat order 2026-09-19 (\"One capability, fifteen costumes\")",
@@ -10648,7 +10664,7 @@
       "frontmatter": {
         "name": "research-paper-writing",
         "title": "Research Paper Writing Pipeline",
-        "description": "Write ML papers for NeurIPS/ICML/ICLR: design→submit.",
+        "description": "Write ML papers for NeurIPS/ICML/ICLR: design\u2192submit.",
         "version": "1.1.0",
         "author": "Orchestra Research",
         "license": "MIT",
@@ -10746,7 +10762,7 @@
       "dir": "/root/AAA/skills/rtc-loop",
       "frontmatter": {
         "name": "rtc-loop",
-        "description": "USE WHEN: ANY text-to-image / image-generation dispatch in the federation (every diffusion call); Before writing the generation prompt (SPEC + COMPILE steps); After generation returns (AUDIT step) — before anything is delivered to a human",
+        "description": "USE WHEN: ANY text-to-image / image-generation dispatch in the federation (every diffusion call); Before writing the generation prompt (SPEC + COMPILE steps); After generation returns (AUDIT step) \u2014 before anything is delivered to a human",
         "version": "0.0.0-untracked"
       },
       "has_sk": true,
@@ -10759,7 +10775,7 @@
       "dir": "/root/AAA/skills/runpod",
       "frontmatter": {
         "name": "runpod",
-        "description": "Start here for any Runpod task — running GPU/CPU pods, deploying serverless endpoints, templates, network volumes, building images, or understanding how Runpod works.",
+        "description": "Start here for any Runpod task \u2014 running GPU/CPU pods, deploying serverless endpoints, templates, network volumes, building images, or understanding how Runpod works.",
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
@@ -10775,7 +10791,7 @@
       "dir": "/root/AAA/skills/runpod-mcp",
       "frontmatter": {
         "name": "runpod-mcp",
-        "description": "Manage Runpod infrastructure — pods, serverless endpoints, jobs, templates, network volumes, container-registry auth, GPU/CPU catalog, and billing — via the Runpod MCP server's structured tool calls.",
+        "description": "Manage Runpod infrastructure \u2014 pods, serverless endpoints, jobs, templates, network volumes, container-registry auth, GPU/CPU catalog, and billing \u2014 via the Runpod MCP server's structured tool calls.",
         "allowed-tools": "Bash(npx:*), Bash(claude:*)",
         "compatibility": "Linux, macOS, Windows",
         "metadata": "",
@@ -10793,7 +10809,7 @@
       "dir": "/root/AAA/skills/runpod-usage",
       "frontmatter": {
         "name": "runpod-usage",
-        "description": "How Runpod works and how to work it — pods vs serverless, GPU/VRAM selection, storage, building a container, networking, plus the agentic pod development loop (provision → ssh-exec → set up → poll readiness) and on-pod install hygiene (uv/apt).",
+        "description": "How Runpod works and how to work it \u2014 pods vs serverless, GPU/VRAM selection, storage, building a container, networking, plus the agentic pod development loop (provision \u2192 ssh-exec \u2192 set up \u2192 poll readiness) and on-pod install hygiene (uv/apt).",
         "metadata": "",
         "author": "runpod",
         "version": "1.1.2\" # x-release-please-version",
@@ -10809,7 +10825,7 @@
       "dir": "/root/AAA/skills/runpodctl",
       "frontmatter": {
         "name": "runpodctl",
-        "description": "Runpod CLI for managing GPU/CPU workloads from the terminal — pods, serverless endpoints, templates, network volumes, Hub deploys, models, SSH, and file transfer (send/receive).",
+        "description": "Runpod CLI for managing GPU/CPU workloads from the terminal \u2014 pods, serverless endpoints, templates, network volumes, Hub deploys, models, SSH, and file transfer (send/receive).",
         "allowed-tools": "Bash(runpodctl:*)",
         "compatibility": "Linux, macOS",
         "metadata": "",
@@ -10858,7 +10874,7 @@
       "dir": "/root/AAA/skills/scar-bridge-install",
       "frontmatter": {
         "name": "scar-bridge-install",
-        "description": "\\\"\\\"\\\" scar_bridge_install_template.py — Canonical Skill Template for Scar-Bridge Step 5 2026-09-08 · F13 Ratified · Promoted from forge_work to canonical"
+        "description": "\\\"\\\"\\\" scar_bridge_install_template.py \u2014 Canonical Skill Template for Scar-Bridge Step 5 2026-09-08 \u00b7 F13 Ratified \u00b7 Promoted from forge_work to canonical"
       },
       "has_sk": true,
       "source_organ": "AAA"
@@ -11033,7 +11049,7 @@
       "frontmatter": {
         "name": "submission-readiness-audit",
         "owner": "AAA",
-        "title": "Submission Readiness Audit — Deadline-Driven Gap Analysis for Federation Submissions",
+        "title": "Submission Readiness Audit \u2014 Deadline-Driven Gap Analysis for Federation Submissions",
         "description": "Reverse-engineer the gap between current state and a hard external deadline. Produces a Tier 1/2/3 gap list and a 3-option",
         "version": "1.1.0",
         "author": "arifOS Federation (Hermes agent, on F13 SOVEREIGN directive, 2026-07-03; v1.1 supplements stake-aware + output-shape + forced-stop patterns, 2026-07-03)",
@@ -11179,7 +11195,7 @@
       "path": "/root/AAA/skills/substrate/verify-gate/SKILL.md",
       "dir": "/root/AAA/skills/substrate/verify-gate",
       "frontmatter": {
-        "# UPDATED": "2026-08-12 — Added Gate 5: REALITY (C4 + E20 enforcement)",
+        "# UPDATED": "2026-08-12 \u2014 Added Gate 5: REALITY (C4 + E20 enforcement)",
         "id": "verify-gate",
         "name": "verify-gate",
         "risk_tier": "low",
@@ -11483,7 +11499,7 @@
         "id": "identity-invariance",
         "name": "identity-invariance",
         "version": "1.0.0",
-        "description": "HEXAGON identity invariance test — prove the institution survives the",
+        "description": "HEXAGON identity invariance test \u2014 prove the institution survives the",
         "owner": "F13",
         "risk_tier": "high",
         "floor_scope": "",
@@ -11738,7 +11754,7 @@
         "layer": "meta-mesa",
         "tier": "routing",
         "domain": "meta",
-        "compatibility": "harness-agnostic (Claude Code · Qwen Code · OpenCode · Copilot CLI)",
+        "compatibility": "harness-agnostic (Claude Code \u00b7 Qwen Code \u00b7 OpenCode \u00b7 Copilot CLI)",
         "harness": "any",
         "audience": "[333-AGI, 555-ASI, dispatch, FI-002, FI-003, claude-code, qwen-code, opencode, copilot-cli]",
         "forged": "2026-07-28",
@@ -11810,7 +11826,7 @@
       "dir": "/root/arifOS/skills/agentic-governance",
       "frontmatter": {
         "name": "agentic-governance",
-        "description": "Hardened constitutional governance — F1-F13 floor enforcement with Quad-Witness consensus for all actions",
+        "description": "Hardened constitutional governance \u2014 F1-F13 floor enforcement with Quad-Witness consensus for all actions",
         "user-invocable": "true",
         "type": "flow"
       },
@@ -11824,7 +11840,7 @@
       "dir": "/root/arifOS/skills/agi-autonomous-controller",
       "frontmatter": {
         "name": "agi-autonomous-controller",
-        "description": "AGI-level autonomous controller — self-healing, self-optimizing, constitutionally governed by arifOS F1-F13",
+        "description": "AGI-level autonomous controller \u2014 self-healing, self-optimizing, constitutionally governed by arifOS F1-F13",
         "user-invocable": "true",
         "type": "flow"
       },
@@ -11876,7 +11892,7 @@
       "dir": "/root/arifOS/skills/arif-init-wrapper",
       "frontmatter": {
         "name": "arif-init-wrapper",
-        "description": "Universal session auto-anchor for ALL agent vendors on arifOS VPS — Codex, Claude, Gemini, Kimi, OpenCode, Aider, Copilot, and future agents",
+        "description": "Universal session auto-anchor for ALL agent vendors on arifOS VPS \u2014 Codex, Claude, Gemini, Kimi, OpenCode, Aider, Copilot, and future agents",
         "user-invocable": "true",
         "type": "flow",
         "triggers": ""
@@ -11916,7 +11932,7 @@
       "dir": "/root/arifOS/skills/browser",
       "frontmatter": {
         "name": "browser",
-        "description": "Real browser automation — screenshot, scrape, full page content, PDF, form fill via Chromium",
+        "description": "Real browser automation \u2014 screenshot, scrape, full page content, PDF, form fill via Chromium",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -11974,7 +11990,7 @@
       "dir": "/root/arifOS/skills/git-sync",
       "frontmatter": {
         "name": "git-sync",
-        "description": "Git operations on VPS repos — status, commit, push, pull, diff, branch management",
+        "description": "Git operations on VPS repos \u2014 status, commit, push, pull, diff, branch management",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -11987,7 +12003,7 @@
       "dir": "/root/arifOS/skills/github-repo-manager",
       "frontmatter": {
         "name": "github-repo-manager",
-        "description": "GitHub repository management — create, fork, settings, collaborators, topics, archive, transfer",
+        "description": "GitHub repository management \u2014 create, fork, settings, collaborators, topics, archive, transfer",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -12013,7 +12029,7 @@
       "dir": "/root/arifOS/skills/health-probe",
       "frontmatter": {
         "name": "health-probe",
-        "description": "Health probes for both sides of the AGI stack — openclaw + arifOS MCP",
+        "description": "Health probes for both sides of the AGI stack \u2014 openclaw + arifOS MCP",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -12026,7 +12042,7 @@
       "dir": "/root/arifOS/skills/langfuse-arifos",
       "frontmatter": {
         "name": "arifOS-Langfuse",
-        "description": "Instrument arifOS constitutional AI kernel with Langfuse LLM tracing. Use when (1) adding Langfuse tracing to arifOS tool calls, (2) wiring arifOS telemetry to Langfuse cloud or self-hosted, (3) querying arifOS trace data from Langfuse, (4) migrating arifOS mind_reason/heart_critique calls to Langfuse spans. DITEMPA BUKAN DIBERI — Forged, Not Given."
+        "description": "Instrument arifOS constitutional AI kernel with Langfuse LLM tracing. Use when (1) adding Langfuse tracing to arifOS tool calls, (2) wiring arifOS telemetry to Langfuse cloud or self-hosted, (3) querying arifOS trace data from Langfuse, (4) migrating arifOS mind_reason/heart_critique calls to Langfuse spans. DITEMPA BUKAN DIBERI \u2014 Forged, Not Given."
       },
       "has_sk": true,
       "source_organ": "arifOS"
@@ -12059,7 +12075,7 @@
       "dir": "/root/arifOS/skills/notebooklm-bridge",
       "frontmatter": {
         "name": "notebooklm-bridge",
-        "description": "Bridging Google NotebookLM insights into the Sovereign Ω-Wiki.",
+        "description": "Bridging Google NotebookLM insights into the Sovereign \u03a9-Wiki.",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -12072,7 +12088,7 @@
       "dir": "/root/arifOS/skills/notion",
       "frontmatter": {
         "name": "notion",
-        "description": "Notion workspace — read/write pages, databases, search, create tasks via Notion API",
+        "description": "Notion workspace \u2014 read/write pages, databases, search, create tasks via Notion API",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -12119,7 +12135,7 @@
       "dir": "/root/arifOS/skills/postcheck-verifier",
       "frontmatter": {
         "name": "postcheck-verifier",
-        "description": "Proves actions worked in reality — not just exit code 0, not just logs — by validating actual observable outcomes in the system",
+        "description": "Proves actions worked in reality \u2014 not just exit code 0, not just logs \u2014 by validating actual observable outcomes in the system",
         "user-invocable": "true",
         "type": "flow",
         "triggers": ""
@@ -12134,7 +12150,7 @@
       "dir": "/root/arifOS/skills/skill-composer",
       "frontmatter": {
         "name": "skill-composer",
-        "description": "Chains multi-step workflows constitutionally — research → plan → judge → execute → verify → log → vault — without human step-by-step prompting",
+        "description": "Chains multi-step workflows constitutionally \u2014 research \u2192 plan \u2192 judge \u2192 execute \u2192 verify \u2192 log \u2192 vault \u2014 without human step-by-step prompting",
         "user-invocable": "true",
         "type": "flow",
         "triggers": ""
@@ -12149,7 +12165,7 @@
       "dir": "/root/arifOS/skills/tasks",
       "frontmatter": {
         "name": "tasks",
-        "description": "Task & project management — GitHub Projects (native), Linear (API), Notion DB (API)",
+        "description": "Task & project management \u2014 GitHub Projects (native), Linear (API), Notion DB (API)",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -12171,7 +12187,7 @@
       "dir": "/root/arifOS/skills/vps-docker",
       "frontmatter": {
         "name": "vps-docker",
-        "description": "Full VPS Docker status — all containers, resource usage, arifOS health",
+        "description": "Full VPS Docker status \u2014 all containers, resource usage, arifOS health",
         "user-invocable": "true"
       },
       "has_sk": true,
@@ -12203,7 +12219,7 @@
       "frontmatter": {
         "name": "AGI-skill-unification",
         "id": "agi-skill-unification",
-        "description": "Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table (V3 short→disk), mesh-sync, BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving dual names, rebinding harness skills, or before claiming skill inventory complete.",
+        "description": "Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Use when unifying skill catalogs across multiple agent harnesses or aligning AAA canonical with views. Multi-harness skill catalog unity \u2014 AAA catalog, Grok/Claude/Codex views, alias table (V3 short\u2192disk), mesh-sync, BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving dual names, rebinding harness skills, or before claiming skill inventory complete.",
         "version": "1.0.1",
         "owner": "AAA / F13 SOVEREIGN",
         "risk_tier": "low",
@@ -12234,7 +12250,7 @@
         "floor_scope": "[F08, F11, F04]",
         "cognitive_hints": "",
         "claude": "Use <architecture>, <spine>, <three-agent>, <four-powers> tags.",
-        "codex": "3-agent model: Architect→Engineer→Auditor. Each: define → implement → verify. Idempotent.",
+        "codex": "3-agent model: Architect\u2192Engineer\u2192Auditor. Each: define \u2192 implement \u2192 verify. Idempotent.",
         "hermes": "Design agent. 3-agent loop. 4 powers. Lower entropy. Build it.",
         "autonomy_tier": "T1"
       },
@@ -12272,12 +12288,12 @@
         "name": "ASI-fabrication-prevention",
         "risk_tier": "low",
         "version": "2.0.0",
-        "description": "Artifact fabrication prevention — verify before claiming existence.",
+        "description": "Artifact fabrication prevention \u2014 verify before claiming existence.",
         "validation. BIJAKSANA": "XML-tagged for Claude, numbered steps for Codex, imperative",
         "floor_scope": "",
         "cognitive_hints": "",
         "claude": "Use <claim>, <verification>, <verdict> tags. Recall prior fabrication attempts",
-        "codex": "3-step verify: claim → external check → verdict. No shortcuts.",
+        "codex": "3-step verify: claim \u2192 external check \u2192 verdict. No shortcuts.",
         "hermes": "Claim exists? Prove it. Can't prove? UNKNOWN. Never fabricate.",
         "owner": "AAA",
         "autonomy_tier": "T0"
@@ -12294,8 +12310,8 @@
         "id": "EUREKA777-paradox-resolution",
         "name": "EUREKA777-paradox-resolution",
         "version": "1.0.0-2026.07.31",
-        "description": "Use when paradox detected — wisdom cooler records winner, eliminates contradictory evidence, returns single crystallized decision. EUREKA777 - Paradox resolution and cooling engine. Records when ATLAS333 paradox tensions resolve into new structure. The cooling loop: ATLAS333 -> EUREKA777 -> CUBE777 -> Theta(t+1).",
-        "owner": "F13 SOVEREIGN — Muhammad Arif bin Fazil (888)",
+        "description": "Use when paradox detected \u2014 wisdom cooler records winner, eliminates contradictory evidence, returns single crystallized decision. EUREKA777 - Paradox resolution and cooling engine. Records when ATLAS333 paradox tensions resolve into new structure. The cooling loop: ATLAS333 -> EUREKA777 -> CUBE777 -> Theta(t+1).",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
         "risk_tier": "low",
         "floor_scope": "[F2, F4, F7, F11]",
         "autonomy_tier": "T1",
@@ -12359,7 +12375,7 @@
         "id": "forge-federation-orchestrator",
         "version": "1.0.0",
         "risk_tier": "low",
-        "description": "Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health probes (Observed Port Map), container drift detection, restart count monitoring. USE WHEN: \\\"federation status\\\", \\\"restart dead container\\\", \\\"container health\\\", \\\"docker drift\\\", \\\"service down\\\", \\\"probe MCP\\\", \\\"health check federation\\\". Runs on af-forge (VPS) — native docker and curl required.",
+        "description": "Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Use when managing federation-wide Docker Compose operations or coordinating multi-organ restarts. Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health probes (Observed Port Map), container drift detection, restart count monitoring. USE WHEN: \\\"federation status\\\", \\\"restart dead container\\\", \\\"container health\\\", \\\"docker drift\\\", \\\"service down\\\", \\\"probe MCP\\\", \\\"health check federation\\\". Runs on af-forge (VPS) \u2014 native docker and curl required.",
         "owner": "A-FORGE",
         "floor_scope": "",
         "autonomy_tier": "T1",
@@ -12379,7 +12395,7 @@
         "name": "FORGE-incident-triage",
         "autonomy_tier": "T2-T3",
         "version": "2.0.0",
-        "description": "Use when incident occurs — 6-step response playbook with structured logging, backoff/circuit-breaker. Use when incident occurs — 6-step response playbook with structured logging, backoff/circuit-breaker. Six-step incident response playbook with structured logging, backoff/circuit-breaker for restart loops, and verification-as-terminal-state. Lower machine entropy.",
+        "description": "Use when incident occurs \u2014 6-step response playbook with structured logging, backoff/circuit-breaker. Use when incident occurs \u2014 6-step response playbook with structured logging, backoff/circuit-breaker. Six-step incident response playbook with structured logging, backoff/circuit-breaker for restart loops, and verification-as-terminal-state. Lower machine entropy.",
         "owner": "AAA",
         "risk_tier": "critical",
         "knowledge_basis": "",
@@ -12417,7 +12433,7 @@
         "name": "FORGE-skill-linter",
         "autonomy_tier": "T1",
         "version": "1.0.0",
-        "description": "Check every skill’s trigger clauses for collisions, missing negatives, and vague verbs",
+        "description": "Check every skill\u2019s trigger clauses for collisions, missing negatives, and vague verbs",
         "owner": "AAA",
         "risk_tier": "low",
         "knowledge_basis": "",
@@ -12454,7 +12470,7 @@
         "id": "vps-docker-ops",
         "name": "FORGE-vps-docker",
         "version": "2.0.0",
-        "description": "Use when running VPS Docker operations — pinned versions, restart discipline, health checks, compose governance. Runbook for VPS Docker operations — pinned versions, restart discipline, health checks, compose governance. Lower machine entropy.",
+        "description": "Use when running VPS Docker operations \u2014 pinned versions, restart discipline, health checks, compose governance. Runbook for VPS Docker operations \u2014 pinned versions, restart discipline, health checks, compose governance. Lower machine entropy.",
         "owner": "AAA",
         "risk_tier": "medium",
         "floor_scope": "[F1, F2, F4, F8]",
@@ -12488,7 +12504,7 @@
       "dir": "/root/HERMES/skills/arifos-evidence-policy",
       "frontmatter": {
         "name": "arifos-evidence-policy",
-        "description": "Evidence discipline for claims — cron runs, synthesis, cross-agent audit. Evidence ladder, claim states, uncertainty labels, anti-fabrication.",
+        "description": "Evidence discipline for claims \u2014 cron runs, synthesis, cross-agent audit. Evidence ladder, claim states, uncertainty labels, anti-fabrication.",
         "version": "1.1.0",
         "license": "MIT"
       },
@@ -12525,7 +12541,7 @@
         "owner": "F13",
         "forged": "2026-09-16",
         "doctrine": "/root/AAA/instructions/hermes-layer-discipline.md",
-        "companions": "/root/AAA/instructions/hermes-rasa.md · /root/AAA/instructions/hermes-shadow.md",
+        "companions": "/root/AAA/instructions/hermes-rasa.md \u00b7 /root/AAA/instructions/hermes-shadow.md",
         "risk_tier": "critical",
         "floor_scope": "[F1, F2, F4, F5, F6, F9, F13]",
         "triggers": "",
@@ -12640,7 +12656,7 @@
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F4, F7, F12]",
-        "description": "Web search + scrape + interact + parse + monitor + research via Firecrawl — used to extend AI coding tools (Claude Code, Codex, OpenCode, OpenClaw, Hermes) with real-time information retrieval. Activates when the user asks to look something up on the web, fetch a URL, interact with a page, parse a local document, monitor changes, or run research.",
+        "description": "Web search + scrape + interact + parse + monitor + research via Firecrawl \u2014 used to extend AI coding tools (Claude Code, Codex, OpenCode, OpenClaw, Hermes) with real-time information retrieval. Activates when the user asks to look something up on the web, fetch a URL, interact with a page, parse a local document, monitor changes, or run research.",
         "autonomy_tier": "T1"
       },
       "has_sk": true,
@@ -12662,13 +12678,21 @@
     {
       "name": "human-reality-bridge",
       "category": "human",
-      "path": "/root/HERMES/skills/human-reality-bridge/SKILL.md",
-      "dir": "/root/HERMES/skills/human-reality-bridge",
+      "path": "/root/AAA/skills/domains/general/apex/human-bond-action/SKILL.md",
+      "dir": "/root/AAA/skills/domains/general/apex/human-bond-action",
       "frontmatter": {
         "name": "human-reality-bridge",
         "description": "Use when an unattended cron run touches a human. Action classes S0-S3, authority boundary, [SILENT] rules, freshness law, output shape.",
         "version": "1.0.0",
-        "license": "MIT"
+        "license": "MIT",
+        "merged_into": "human-bond-action",
+        "merged_from": [
+          "loved-one-worry-support",
+          "relationship-kernel",
+          "human-reality-bridge",
+          "human-reality-field"
+        ],
+        "path": "/root/AAA/skills/domains/general/apex/human-bond-action/SKILL.md"
       },
       "has_sk": true,
       "source_organ": "HERMES"
@@ -12681,7 +12705,7 @@
       "frontmatter": {
         "name": "institutional-epistemic-sink-forensics",
         "owner": "AAA",
-        "description": "Use when analyzing whether an institution shows Calhoun behavioral sink patterns (role saturation, pathologized churn, decision capture). Diagnose institutional pathology. Diagnose whether an institution shows Calhoun's behavioral-sink pattern — role saturation without truth metabolism. Routes through arifOS judge with disciplined",
+        "description": "Use when analyzing whether an institution shows Calhoun behavioral sink patterns (role saturation, pathologized churn, decision capture). Diagnose institutional pathology. Diagnose whether an institution shows Calhoun's behavioral-sink pattern \u2014 role saturation without truth metabolism. Routes through arifOS judge with disciplined",
         "source": "hermes-only",
         "synthesized": "2026-08-08",
         "capability_tier": "fed-reasoning-heavy",
@@ -12698,7 +12722,7 @@
       "frontmatter": {
         "name": "seven-zen-organs-enforcement",
         "owner": "AAA",
-        "title": "Seven Zen Organs — Constitutional Enforcement for Every Agent Reflex",
+        "title": "Seven Zen Organs \u2014 Constitutional Enforcement for Every Agent Reflex",
         "description": "Operationalize the Seven Zen Organs doctrine as a per-turn reflex arc. Every agent in the arifOS federation runs this before",
         "version": "1.0.0",
         "author": "arifOS Federation (Hermes agent, on F13 SOVEREIGN directive 2026-07-03)",
@@ -12744,12 +12768,12 @@
         "name": "APEX-fff-loop-protocol",
         "risk_tier": "low",
         "version": "2.0.0",
-        "description": "5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue",
+        "description": "5-pass recursive audit sequence: Blue (diagnose) \u2192 Red (attack) \u2192 Blue",
         "signal. BIJAKSANA": "XML-tagged for Claude, numbered steps for Codex, imperative for",
         "floor_scope": "",
         "cognitive_hints": "",
         "claude": "Use <pass-blue>, <pass-red>, <pass-gold> tags. Extended recall for cross-pass",
-        "codex": "5 sequential passes. Each pass: input from prior → process → output to next.",
+        "codex": "5 sequential passes. Each pass: input from prior \u2192 process \u2192 output to next.",
         "hermes": "5 passes. Diagnose. Attack. Forge. Verify. Seal. Run them.",
         "owner": "AAA",
         "autonomy_tier": "T1",
@@ -12785,7 +12809,7 @@
       "frontmatter": {
         "name": "FORGE-deploy-probe-gate",
         "description": ">",
-        "Enforces the three-tense contract": "COMMITTED ≠ DEPLOYED ≠ VERIFIED.",
+        "Enforces the three-tense contract": "COMMITTED \u2260 DEPLOYED \u2260 VERIFIED.",
         "version": "1.0.0",
         "tags": "",
         "owner": "A-FORGE",
@@ -13111,7 +13135,7 @@
         "version": "2.0.0",
         "risk_tier": "low",
         "description": ">",
-        "The canonical governance chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS.",
+        "The canonical governance chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS.",
         "metadata": "",
         "short-description": "Six-capability governance chain",
         "owner": "AAA",
@@ -13129,7 +13153,7 @@
       "dir": "/root/.kimi-code/skills/apex-gates",
       "frontmatter": {
         "name": "apex-gates",
-        "description": "APEX constitutional gate bundle — floor, scope, authority, reversibility, tool-approval, verdict, and audit-coverage checks for proposed actions.",
+        "description": "APEX constitutional gate bundle \u2014 floor, scope, authority, reversibility, tool-approval, verdict, and audit-coverage checks for proposed actions.",
         "has-sub-skill": "true"
       },
       "has_sk": true,
@@ -13252,7 +13276,7 @@
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F1, F2, F4, F7]",
-        "description": "ATLAS333 — 33 human paradoxes, 7 zones, cognitive geometry. Access via arifos://atlas333/* MCP resources",
+        "description": "ATLAS333 \u2014 33 human paradoxes, 7 zones, cognitive geometry. Access via arifos://atlas333/* MCP resources",
         "triggers": "",
         "autonomy_tier": "T1",
         "capability_tier": "fed-reasoning-heavy",
@@ -13289,7 +13313,7 @@
       "frontmatter": {
         "name": "akal-cognitive-invariants",
         "owner": "AAA",
-        "description": "SUPERSEDED by governance/akal-cognitive-invariants. CLAP v2 — Bloom's Taxonomy as constitutional physics. Renamed to AKAL (عقل)",
+        "description": "SUPERSEDED by governance/akal-cognitive-invariants. CLAP v2 \u2014 Bloom's Taxonomy as constitutional physics. Renamed to AKAL (\u0639\u0642\u0644)",
         "version": "2.0.0",
         "author": "hermes-prime",
         "date": "2026-07-11",
@@ -13376,7 +13400,7 @@
         "description": "Health probe and auto-recovery for constitutional federation MCP servers",
         "metadata": "",
         "clawdbot": "",
-        "emoji": "🚁",
+        "emoji": "\ud83d\ude81",
         "requires": "",
         "bins": "",
         "os": "",
@@ -13400,7 +13424,7 @@
         "id": "mcp-ops",
         "name": "FORGE-mcp-ops",
         "version": "1.0.0",
-        "description": "mcporter — Universal MCP CLI for inspecting, calling, and debugging MCP servers from terminal.",
+        "description": "mcporter \u2014 Universal MCP CLI for inspecting, calling, and debugging MCP servers from terminal.",
         "owner": "AAA",
         "risk_tier": "low",
         "floor_scope": "[F2, F8]",
@@ -13419,7 +13443,7 @@
         "id": "FORGE-mcp-probe",
         "name": "FORGE-mcp-probe",
         "version": "1.0.0",
-        "description": "Probe any MCP server (local or HTTPS) using MCPJam CLI or SDK. Discover protocol version, tool/resource/prompt surface, OAuth conformance, and stateless transport (2026-07-28) support. Use this skill whenever an MCP server endpoint needs to be verified — whether it is the federation organs, a public HTTPS MCP server, or a third-party vendor endpoint.",
+        "description": "Probe any MCP server (local or HTTPS) using MCPJam CLI or SDK. Discover protocol version, tool/resource/prompt surface, OAuth conformance, and stateless transport (2026-07-28) support. Use this skill whenever an MCP server endpoint needs to be verified \u2014 whether it is the federation organs, a public HTTPS MCP server, or a third-party vendor endpoint.",
         "owner": "AAA",
         "risk_tier": "low",
         "autonomy_tier": "T1",
@@ -13473,7 +13497,7 @@
       "dir": "/root/.kimi-code/skills/forge-mcp/FORGE-mcp-testing",
       "frontmatter": {
         "name": "forge-mcp-testing",
-        "description": "How to test any MCP server — use MCPJam Inspector, not coding agents",
+        "description": "How to test any MCP server \u2014 use MCPJam Inspector, not coding agents",
         "capability_tier": "fed-agent-subagent",
         "ecology_state": "WARM"
       },
@@ -13487,7 +13511,7 @@
       "dir": "/root/.kimi-code/skills/forge-mcp",
       "frontmatter": {
         "name": "forge-mcp",
-        "description": "MCP operations bundle — inspect, probe, test, smoke-test, lifeguard, and operate MCP servers across the federation.",
+        "description": "MCP operations bundle \u2014 inspect, probe, test, smoke-test, lifeguard, and operate MCP servers across the federation.",
         "has-sub-skill": "true"
       },
       "has_sk": true,
@@ -13500,7 +13524,7 @@
       "dir": "/root/.kimi-code/skills/hermes",
       "frontmatter": {
         "name": "hermes",
-        "description": "Hermes gateway substrate bundle — init, forge, propose-seal, and Claude Code spawn skills for the Hermes Telegram gateway.",
+        "description": "Hermes gateway substrate bundle \u2014 init, forge, propose-seal, and Claude Code spawn skills for the Hermes Telegram gateway.",
         "has-sub-skill": "true"
       },
       "has_sk": true,
@@ -13513,7 +13537,7 @@
       "dir": "/root/.kimi-code/skills/hermes/hermes-claude-code-spawn",
       "frontmatter": {
         "name": "hermes-claude-code-spawn",
-        "description": "Spawn Claude Code as a governed execution harness from Hermes. Use when a coding task needs autonomous execution — feature implementation, refactoring, bug fixing, PR review, or any multi-step coding work. Routes through arifOS F1-F13 constitutional governance with structured JSON return.",
+        "description": "Spawn Claude Code as a governed execution harness from Hermes. Use when a coding task needs autonomous execution \u2014 feature implementation, refactoring, bug fixing, PR review, or any multi-step coding work. Routes through arifOS F1-F13 constitutional governance with structured JSON return.",
         "version": "1.0.0",
         "owner": "HERMES",
         "risk_tier": "T2",
@@ -13531,7 +13555,7 @@
       "dir": "/root/.kimi-code/skills/hermes/hermes-forge",
       "frontmatter": {
         "name": "hermes-forge",
-        "description": "/forge — routes execution to A-FORGE or a coding runtime (OpenCode-Zen). The execution primitive after /init establishes identity and /propose-seal establishes evidence. /forge = \"go execute this mutation under my authority.",
+        "description": "/forge \u2014 routes execution to A-FORGE or a coding runtime (OpenCode-Zen). The execution primitive after /init establishes identity and /propose-seal establishes evidence. /forge = \"go execute this mutation under my authority.",
         "tags": "[forge, execution, coding-agent, telegram-native, hermes]",
         "license": "MIT",
         "capability_tier": "fed-agent-subagent",
@@ -13547,7 +13571,7 @@
       "dir": "/root/.kimi-code/skills/hermes/hermes-init",
       "frontmatter": {
         "name": "hermes-init",
-        "description": "Substrate primitive /init — establishes actor, session, lane, atlas expression, authority tier. EVERY autonomous agent MUST call this before any mutation. SESSION BOUND is the answer to \"who is acting?",
+        "description": "Substrate primitive /init \u2014 establishes actor, session, lane, atlas expression, authority tier. EVERY autonomous agent MUST call this before any mutation. SESSION BOUND is the answer to \"who is acting?",
         "tags": "[constitutional, init, substrate-primitive, telegram-native, hermes]",
         "license": "MIT",
         "capability_tier": "fed-reasoning-heavy",
@@ -13602,7 +13626,7 @@
       "dir": "/root/.kimi-code/skills/openclaw-forge",
       "frontmatter": {
         "name": "openclaw-forge",
-        "description": "OpenClaw-native /forge — routes execution to a coding agent or A-FORGE. The execution primitive after /init establishes identity and /propose-seal establishes evidence. /forge = \"go execute this mutation under my authority.",
+        "description": "OpenClaw-native /forge \u2014 routes execution to a coding agent or A-FORGE. The execution primitive after /init establishes identity and /propose-seal establishes evidence. /forge = \"go execute this mutation under my authority.",
         "tags": "[forge, execution, coding-agent, telegram-native, openclaw]",
         "license": "MIT"
       },
@@ -13616,7 +13640,7 @@
       "dir": "/root/.kimi-code/skills/openclaw-init",
       "frontmatter": {
         "name": "openclaw-init",
-        "description": "OpenClaw-native /init — substrate primitive for the OpenClaw runtime. Establishes session, lane, atlas expression, and authority. Returns the full constitutional session card via OpenClaw's Telegram bot (@irfanclaw_arifos_bot).",
+        "description": "OpenClaw-native /init \u2014 substrate primitive for the OpenClaw runtime. Establishes session, lane, atlas expression, and authority. Returns the full constitutional session card via OpenClaw's Telegram bot (@irfanclaw_arifos_bot).",
         "tags": "[constitutional, init, substrate-primitive, telegram-native, openclaw]",
         "license": "MIT"
       },
@@ -13630,7 +13654,7 @@
       "dir": "/root/.kimi-code/skills/opencode",
       "frontmatter": {
         "name": "opencode",
-        "description": "OpenCode harness substrate bundle — init, forge, and propose-seal lifecycle skills for the OpenCode CLI runtime in the AAA federation.",
+        "description": "OpenCode harness substrate bundle \u2014 init, forge, and propose-seal lifecycle skills for the OpenCode CLI runtime in the AAA federation.",
         "has-sub-skill": "true"
       },
       "has_sk": true,
@@ -13643,7 +13667,7 @@
       "dir": "/root/.kimi-code/skills/opencode/opencode-forge",
       "frontmatter": {
         "name": "opencode-forge",
-        "description": "OpenCode-native /forge — execution primitive. After identity is established via /init, /forge mutates code under the agent's authority band. The flow: /init → /forge → /propose-seal.",
+        "description": "OpenCode-native /forge \u2014 execution primitive. After identity is established via /init, /forge mutates code under the agent's authority band. The flow: /init \u2192 /forge \u2192 /propose-seal.",
         "tags": "[forge, execution, coding-agent, opencode]",
         "license": "MIT",
         "capability_tier": "fed-agent-subagent",
@@ -13659,7 +13683,7 @@
       "dir": "/root/.kimi-code/skills/opencode/opencode-init",
       "frontmatter": {
         "name": "opencode-init",
-        "description": "OpenCode-native /init — substrate primitive for the OpenCode CLI runtime. Establishes session, lane, atlas expression, authority. Used when OpenCode is invoked via Telegram, A-FORGE delegate, or standalone CLI.",
+        "description": "OpenCode-native /init \u2014 substrate primitive for the OpenCode CLI runtime. Establishes session, lane, atlas expression, authority. Used when OpenCode is invoked via Telegram, A-FORGE delegate, or standalone CLI.",
         "tags": "[constitutional, init, substrate-primitive, opencode, coding-agent]",
         "license": "MIT"
       },
@@ -13801,7 +13825,7 @@
         "id": "audit-skill-atlas",
         "description": "Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views",
         "version": "1.2.3",
-        "owner": "F13 SOVEREIGN — Muhammad Arif bin Fazil (888)",
+        "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
         "risk_tier": "low",
         "floor_scope": "[F2, F4, F7, F9]",
         "autonomy_tier": "T1",
@@ -13835,6 +13859,25 @@
       },
       "has_sk": true,
       "source_organ": "kimi-code"
+    },
+    {
+      "name": "human-bond-action",
+      "category": "bond",
+      "path": "/root/AAA/skills/domains/general/apex/human-bond-action/SKILL.md",
+      "dir": "/root/AAA/skills/domains/general/apex/human-bond-action",
+      "frontmatter": {
+        "name": "human-bond-action",
+        "description": "Use when the subject is a human bond of Arif's AND the topic is action, persistence, or unattended-cron touch. Consolidates relationship-kernel + loved-one-worry-support + human-reality-field + human-reality-bridge.",
+        "merged_from": [
+          "loved-one-worry-support",
+          "relationship-kernel",
+          "human-reality-bridge",
+          "human-reality-field"
+        ],
+        "forged": "2026-10-01"
+      },
+      "has_sk": true,
+      "source_organ": "AAA"
     }
   ]
 }

@@ -316,6 +316,60 @@ A wisdom scar is NOT a memory. It's NOT a log. It's a **constitutional-grade dia
 
 ### Scar #16: Ollama Batch Embedding Timeout — Local GPU Queue Overwhelm
 
+### Scar #20: Privacy ≠ Amnesia — Redacted ≠ Unauditable (Privacy/Retention Discipline)
+
+- **Date:** 2026-10-02
+- **Arif's words:** *"CONTENT MAY EXPIRE. CAUSAL PROVENANCE MUST SURVIVE. Privacy ≠ amnesia."*
+- **Break:** A scheduled cron worker (`delivery_queue._prune_terminal_unlocked`) was actively redacting payload content (`job_json='{}' content=''`) on every terminal delivery. The redaction was intentional privacy/retention policy and must be preserved. But the **survival record** (the tombstone table) only stored `execution_id, terminal_status, finished_at` — no `job_id`, no destination, no audience class, no message fingerprint. So the audit question "which scheduled execution caused this human message?" had no answer at all. The redaction killed the provenance, not just the payload.
+- **Echo:** Treat redaction and provenance as one thing. The instinct when privacy is at stake is to wipe more; the consequence is that the redaction surface and the provenance surface become the same table, and the audit query loses both. **Two separate concerns collapsed into one delete.** The same defect class as "scrub credentials from log → log loses the line that proves the credential was used."
+- **Law:** **A redacted payload can still carry a causal provenance envelope — content expires, provenance does not.** When a system deliberately scrubs message bodies, the tombstone/receipt must hold these non-sensitive fields additively, *separately from the redaction surface*:
+
+  ```text
+  job_id                      -- which scheduled job emitted this delivery
+  run_id or execution_id      -- which tick / which attempt
+  source_event_id             -- the trigger event, where available
+  delivery_id                 -- a stable id for this specific send
+  audience_class              -- ARIF_PRIVATE | SHARED_GROUP | MACHINE_OPS | SYSTEM_LOG
+  destination_ref             -- the resolved channel ref, never the raw secret
+  classification              -- NO_CHANGE | CHANGED | ERROR | UNREACHABLE | etc
+  message_fingerprint         -- sha256[:16] of the canonical outbound body (LINKAGE, not retention)
+  terminal_status             -- delivered | failed | unknown | suppressed
+  queued_at / sent_at / finished_at
+  ```
+
+  **Two surfaces, two rules.** The payload surface retains content for the retention window, then expires per policy. The provenance surface retains the 8–10 fields above indefinitely. The message fingerprint joins the two without retaining the body — a future audit can answer "was this delivery semantically identical to that one" without recovering the text. Historical rows whose job_id was already scrubbed remain `UNKNOWN_HISTORICAL`; never fabricate a backfill. **Auditability ≠ indefinite content retention.** Privacy is not amnesia.
+
+  Diagnostic test: for any tombstone/survival table that pairs a redaction policy with a retention need, run `SELECT <redaction-sensitive-field> FROM <table> WHERE job_id IS NULL LIMIT 5;`. If the rows are not answerable, the schema is wrong.
+
+- **Eureka:** A fingerprint is a join without retention. SHA-256 over the canonical outbound body, truncated to 16 hex chars (8 bytes) — collision-resistant enough for de-dup and linkage queries while revealing nothing about the underlying message. The schema defect is the smell; the fix is two tables, two retention policies.
+- **Combined with:** Scar #10 (agent-summary vs reality — provenance is what survives the session). Same shape: the agent trusts the *content* is gone and forgets that *causal lineage* still has to be answerable. The new scar covers the case where the redaction is intentional and correct, but the schema pairs payload + provenance in one delete.
+
+### Scar #21: Runtime State Machine Correct, Ledger State Machine Stale — Trust the Worker, Audit the Book
+
+- **Date:** 2026-10-02
+- **Arif's words:** *"The remaining defect is cron_incidents lifecycle bookkeeping… A new fingerprint should not leave an obsolete incident appearing perpetually open if the underlying earlier condition is no longer current. But do not auto-close an incident merely because a new fingerprint exists. Close only when evidence supports resolution/recovery/supersession."*
+- **Break:** A scheduled detector (drift watch) implemented a correct runtime state machine: `HEALTHY → DRIFT_NEW → DRIFT_PERSISTENT(silent) → RECOVERED`. The script hashed the drift set, deduplicated identical reports (`suppressed`), and emitted exactly one alert per state transition. The execution log showed clean behavior. But the **`cron_incidents` ledger** opened a new row on every fingerprint and never closed the previous one — the operational table showed "still alerted" while the underlying drift was already in DRIFT_PERSISTENT and being correctly suppressed. The state machine was right; the bookkeeping was wrong; the operator dashboard couldn't tell.
+- **Echo:** Audit the runtime, trust the worker. After verifying the script behaves correctly, stop reading — assume the ledger reflects the behavior. Real systems have a runtime state machine AND a ledger state machine, and they drift independently. The runtime is the truth; the ledger is a *report* of the truth. Two systems = two bugs.
+- **Law:** **The runtime state machine and the bookkeeping ledger are two independent surfaces; audit both.** A detector that correctly suppresses identical alerts is no help if the incident table still shows the original alert as `alerted` 6 hours later. The discipline:
+
+  ```text
+  Runtime state machine           Ledger state machine
+  ─────────────────────────        ─────────────────────────────
+  HEALTHY                         OPEN
+  DRIFT_NEW                       ACK (operator reviewed)
+  DRIFT_PERSISTENT(silent)        PERSISTING (fingerprint unchanged)
+  RECOVERED                       RESOLVED (snapshot matches HEALTHY)
+  DRIFT_NEW (fingerprint shift)   SUPERSEDED (new fingerprint opens new row;
+                                          old row closes with superseded_by = new_id)
+  ```
+
+  Two non-negotiables: (a) a fingerprint shift MUST close the previous row with `superseded_by = <new incident_id>` — never leave the old alert visible as if it were still current; (b) the script must emit `RESOLVED` only when the next snapshot matches HEALTHY — a DRIFT_PERSISTENT → DRIFT_NEW fingerprint transition is SUPERSEDED, not RESOLVED, because the underlying defect is still present in a new shape.
+
+  Diagnostic: for any watchdog/detector with an open-incident table, run the same script twice with no real-world change — if the `last_status` is `suppressed` in executions.db but `cron_incidents.state='alerted'` for an older row, the ledger state machine is wrong.
+
+- **Eureka:** `cron_incidents` is a *bookkeeping* table, not a *runtime* table. The error mode is treating the bookkeeping table as ground truth for "what's happening now." When the runtime says "suppressed" and the bookkeeping says "alerted," trust the runtime; the bookkeeping lag is the bug to fix.
+- **Combined with:** Hermes-cron-zen pitfall "Watchdog fail-by-design triage" (Scar #21 inverse — runtime says broken, ledger says healthy — and the cure is "read the script body first"). Same shape, opposite direction: the runtime is the truth and the ledger must be reconciled with it. The "designed noise" pitfall covers the wrong fix; this scar covers the right bookkeeping schema.
+
 ## How to Use
 
 When Arif says "what should I improve" or "seal the wisdom scar":
