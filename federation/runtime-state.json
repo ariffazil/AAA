@@ -1,0 +1,151 @@
+{
+  "_generated": true,
+  "generated_at": "2026-10-02T03:22:58Z",
+  "generator": "scripts/generate_runtime_state.py v1 (FI-008 \u00b7 PR-2 FEDERATION-SOT)",
+  "probe_table_source": "scripts/generate_runtime_state.py PROBE_TABLE (executable config)",
+  "port_discovery": "/root/.kimi-code/mcp.json",
+  "note": "Runtime observations only \u2014 static identity lives in federation/components.yaml. Static identity != runtime health. Reachability observations do not imply service health, correctness, or authority (does_not_imply; cf. schemas/ir/MIGRATION.md invariant 7).",
+  "does_not_imply": "REACHABLE != healthy != correct != authorized; UNREACHABLE != dead (probe may have timed out).",
+  "observations": [
+    {
+      "component": "HERMES",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:18087/mcp",
+      "source_age_seconds": 0.018,
+      "confidence": 0.9,
+      "probe_method": "GET (timeout 4s) + MCP initialize POST",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "/root/.kimi-code/mcp.json#hermes"
+      }
+    },
+    {
+      "component": "CHRON",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:18102/mcp",
+      "source_age_seconds": 0.003,
+      "confidence": 0.9,
+      "probe_method": "GET (timeout 4s) + MCP initialize POST",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "/root/.kimi-code/mcp.json#chron"
+      }
+    },
+    {
+      "component": "GEOX",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:8081/mcp",
+      "source_age_seconds": 0.005,
+      "confidence": 0.9,
+      "probe_method": "GET (timeout 4s) + MCP initialize POST",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "/root/.kimi-code/mcp.json#geox"
+      }
+    },
+    {
+      "component": "A-FORGE",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:7072/mcp",
+      "source_age_seconds": 0.002,
+      "confidence": 0.95,
+      "probe_method": "GET (timeout 4s)",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "probe-table default"
+      }
+    },
+    {
+      "component": "arifFlow",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:7073/health",
+      "source_age_seconds": 0.002,
+      "confidence": 0.95,
+      "probe_method": "GET (timeout 4s)",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "probe-table default"
+      }
+    },
+    {
+      "component": "arifOS",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:8088/health",
+      "source_age_seconds": 0.004,
+      "confidence": 0.95,
+      "probe_method": "GET (timeout 4s)",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "probe-table default"
+      }
+    },
+    {
+      "component": "WEALTH",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:18082/mcp",
+      "source_age_seconds": 0.003,
+      "confidence": 0.9,
+      "probe_method": "GET (timeout 4s) + MCP initialize POST",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "/root/.kimi-code/mcp.json#wealth"
+      }
+    },
+    {
+      "component": "WELL",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:18083/mcp",
+      "source_age_seconds": 0.003,
+      "confidence": 0.9,
+      "probe_method": "GET (timeout 4s) + MCP initialize POST",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "/root/.kimi-code/mcp.json#well"
+      }
+    },
+    {
+      "component": "FRAME",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:18086/mcp",
+      "source_age_seconds": 0.006,
+      "confidence": 0.9,
+      "probe_method": "GET (timeout 4s) + MCP initialize POST",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "/root/.kimi-code/mcp.json#frame"
+      }
+    },
+    {
+      "component": "FED",
+      "dimension": "http_reachability",
+      "state": "REACHABLE",
+      "observed_at": "2026-10-02T03:22:58Z",
+      "source": "http://127.0.0.1:7074/mcp",
+      "source_age_seconds": 0.003,
+      "confidence": 0.9,
+      "probe_method": "GET (timeout 4s) + MCP initialize POST",
+      "failure_reason": null,
+      "detail": {
+        "port_source": "/root/.kimi-code/mcp.json#fed"
+      }
+    }
+  ]
+}

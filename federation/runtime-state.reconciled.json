@@ -1,0 +1,159 @@
+{
+  "reconciled_at": "2026-10-02T03:23:05Z",
+  "reconciler": "scripts/state_reconciler.py v1 (FI-008 \u00b7 PR-2 FEDERATION-SOT)",
+  "input": "federation/runtime-state.json",
+  "summary": {
+    "CONCLUSION": 10,
+    "CONTRADICTION": 0,
+    "STALE": 0,
+    "ADVERTISED_NOT_ACCEPTED": 0,
+    "ADVERTISED_VS_RUNTIME_MATCHED": 0,
+    "TOOL_SURFACE_UNMEASURED": 0,
+    "UNKNOWN_TOOL_NAME": 0,
+    "observations": 10,
+    "components": 10
+  },
+  "note": "Reconciliation, not verification: ObservedState_A ?= ObservedState_B. Every finding is dimension-scoped; no component-level single verdict exists in this shape.",
+  "entries": [
+    {
+      "kind": "CONCLUSION",
+      "component": "A-FORGE",
+      "dimension": "http_reachability",
+      "conclusion": "A_FORGE_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:7072/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "CHRON",
+      "dimension": "http_reachability",
+      "conclusion": "CHRON_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:18102/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "FED",
+      "dimension": "http_reachability",
+      "conclusion": "FED_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:7074/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "FRAME",
+      "dimension": "http_reachability",
+      "conclusion": "FRAME_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:18086/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "GEOX",
+      "dimension": "http_reachability",
+      "conclusion": "GEOX_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:8081/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "HERMES",
+      "dimension": "http_reachability",
+      "conclusion": "HERMES_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:18087/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "WEALTH",
+      "dimension": "http_reachability",
+      "conclusion": "WEALTH_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:18082/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "WELL",
+      "dimension": "http_reachability",
+      "conclusion": "WELL_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:18083/mcp"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "arifFlow",
+      "dimension": "http_reachability",
+      "conclusion": "ARIFFLOW_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:7073/health"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    },
+    {
+      "kind": "CONCLUSION",
+      "component": "arifOS",
+      "dimension": "http_reachability",
+      "conclusion": "ARIFOS_HTTP_REACHABILITY_REACHABLE",
+      "sources": [
+        "http://127.0.0.1:8088/health"
+      ],
+      "detail": {
+        "state": "REACHABLE",
+        "observation_count": 1,
+        "failure_reasons": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+# federation/components.yaml — STATIC institutional truth (PR-2 FEDERATION-SOT)
+#
+# This file answers: WHAT IS each federation component, and WHAT CLASS of thing is it?
+# It deliberately contains NO runtime state of any kind.
+# Static identity != runtime health.
+#
+# Runtime observations (what was reachable, when, by which probe, with what failure)
+# are GENERATED into federation/runtime-state.json by scripts/generate_runtime_state.py
+# and reconciled by scripts/state_reconciler.py. Never hand-edit runtime-state.json.
+#
+# Class vocabulary (closed set):
+#   authority  — constitutional kernel + judge (floors, verdicts)
+#   attention  — attention plane / single state (scarce asset)
+#   execution  — governed actuator (the only lane that mutates production state)
+#   meaning    — semantic boundary (claims, contradiction, meaning integrity)
+#   temporal   — temporal boundary (events, predictions, calibration)
+#   domain     — evidence organs (discipline-grounded observations, advisory)
+#   witness    — independent observer (evidence, never verdicts)
+#   ledger     — immutable history (append-only records)
+#   metabolism — flow quotient / receipts (verify-vs-execute ratio)
+#   provider   — model routing (which model answers which lane)
+
+schema: aaa.components.v1
+updated: '2026-10-02'
+maintainer: AAA Compilation Fabric (PR-2 FEDERATION-SOT)
+separation_rule: >-
+  Identity and class belong here. Reachability, freshness, and failure reasons belong
+  only in federation/runtime-state.json. A component being listed here implies
+  nothing about whether any endpoint answers right now.
+
+components:
+  - id: arifOS
+    class: authority
+    role: >-
+      Constitutional kernel — binds actor identity and floors F1–F13, arbitrates
+      candidate actions (SEAL/HOLD/SABAR/VOID), and owns governed memory tiers.
+    canonical_ref: canon/CONSTITUTIONAL-ARCHITECTURE-CANON-2026-09-21.md
+
+  - id: AAA
+    class: attention
+    role: >-
+      Attention plane — the single institutional state: what is known, what is
+      open, what deserves the sovereign's next minute. Attention is the scarce
+      asset AAA exists to protect.
+    canonical_ref: README.md#useful-agency-equation
+
+  - id: A-FORGE
+    class: execution
+    role: >-
+      Governed actuator — the only lane permitted to mutate production state,
+      under kernel session and lease. Execution without a seal verdict is refused.
+    canonical_ref: instructions/aforge-citizen-contract.md
+
+  - id: HERMES
+    class: meaning
+    role: >-
+      Semantic boundary — validates claims, scopes perspectives, bounds qualia,
+      detects contradictions, and preserves meaning integrity across agent hops.
+    canonical_ref: instructions/hermes-identity-directive.md
+
+  - id: CHRON
+    class: temporal
+    role: >-
+      Temporal boundary — plants events, tracks predictions to verification,
+      computes calibration, and prices attention debt. Temporal discipline is
+      irreversible.
+    canonical_ref: federation/organs.yaml#chron
+
+  - id: GEOX
+    class: domain
+    role: >-
+      Earth-intelligence evidence organ — basins, seismic, wells, petrophysics,
+      claim lifecycle. Evidence only; never the decision authority.
+    canonical_ref: federation/organs.yaml#geox
+
+  - id: WEALTH
+    class: domain
+    role: >-
+      Capital-intelligence evidence organ — markets, fiscal health, institutional
+      entropy, power topology. Computes and measures; never allocates.
+    canonical_ref: federation/organs.yaml#wealth
+
+  - id: WELL
+    class: domain
+    role: >-
+      Vitality evidence organ — human and machine readiness, homeostasis,
+      reliability, dignity boundaries. Reflect only; never diagnoses a person.
+    canonical_ref: federation/organs.yaml#well
+
+  - id: FRAME
+    class: witness
+    role: >-
+      Independent observer — federation probes, drift, and trend. Output is
+      evidence, never a verdict.
+    canonical_ref: federation/organs.yaml#frame
+
+  - id: VAULT999
+    class: ledger
+    role: >-
+      Immutable history — append-only sealed records. Accepted entries can never
+      be edited or removed; there is no unseal.
+    canonical_ref: federation/organs.yaml#vault999
+
+  - id: arifFlow
+    class: metabolism
+    role: >-
+      Flow metabolism — receipts and flow quotient over recent steps: is the
+      institution verifying at the rate it executes?
+    canonical_ref: federation/organs.yaml#arifflow
+
+  - id: FED
+    class: provider
+    role: >-
+      Model routing — answers which model at which provider should serve a lane,
+      from the federation model catalog. Advisory routing; never authority.
+    canonical_ref: federation/organs.yaml#fed

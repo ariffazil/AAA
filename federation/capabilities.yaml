@@ -1,0 +1,79 @@
+# federation/capabilities.yaml — semantic capability catalog (PR-2 FEDERATION-SOT)
+#
+# This file answers: WHAT CAN a fresh agent resolve, WITHOUT knowing endpoints or tool names?
+# A capability is named by meaning, bound to a component (ids match federation/components.yaml),
+# and carries the arif_route intent string a caller would use to reach it.
+#
+# Static identity != runtime health: whether the component currently answers is a
+# runtime observation (federation/runtime-state.json), never a fact about this file.
+
+schema: aaa.capabilities.v1
+updated: '2026-10-02'
+maintainer: AAA Compilation Fabric (PR-2 FEDERATION-SOT)
+component_source: federation/components.yaml
+resolution_rule: >-
+  Resolve capability -> component -> route via arif_route with the intent string.
+  A resolved capability still requires a runtime check before it is depended upon.
+
+capabilities:
+  - name: meaning
+    intent: >-
+      Interpret and preserve human meaning: validate claims, scope perspectives,
+      bound inference about a person, detect contradictions, test counterstories.
+    component: HERMES
+    route: arif_route
+    route_handle: >-
+      arif_route intent="interpret this claim — validate it, scope its perspectives,
+      scan for contradiction"
+
+  - name: temporal
+    intent: >-
+      Anchor institutional truth in time: temporal briefings, predictions due for
+      verification, calibration state, attention debt.
+    component: CHRON
+    route: arif_route
+    route_handle: >-
+      arif_route intent="temporal briefing — what was predicted, what is due,
+      how calibrated are we"
+
+  - name: geology
+    intent: >-
+      Earth-science evidence: basins, seismic interpretation, wells, petrophysics,
+      source rock, prospect screening, claim lifecycle.
+    component: GEOX
+    route: arif_route
+    route_handle: arif_route intent="interpret this seismic section / gather basin evidence"
+
+  - name: capital
+    intent: >-
+      Capital and institutional evidence: market data, fiscal health, company
+      distress, institutional entropy, power topology.
+    component: WEALTH
+    route: arif_route
+    route_handle: >-
+      arif_route intent="assess capital and institutional evidence — markets,
+      fiscal health, entropy"
+
+  - name: vitality
+    intent: >-
+      Vitality and readiness evidence: human homeostasis, machine reliability,
+      repair integrity, dignity boundaries.
+    component: WELL
+    route: arif_route
+    route_handle: arif_route intent="assess vitality and readiness — human or machine"
+
+  - name: execution
+    intent: >-
+      Governed mutation of production state: apply a judged, sealed work order
+      through the only authorized actuator.
+    component: A-FORGE
+    route: arif_route
+    route_handle: arif_route intent="execute this sealed work order under lease"
+
+  - name: governance
+    intent: >-
+      Constitutional arbitration: bind identity and floors F1–F13, judge candidate
+      actions (SEAL/HOLD/SABAR/VOID), recall governed memory, seal permanent records.
+    component: arifOS
+    route: arif_route
+    route_handle: arif_route intent="judge this candidate action against the constitutional floors"
