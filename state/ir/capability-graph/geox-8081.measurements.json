@@ -1,0 +1,187 @@
+{
+  "bridge_proofs": [
+    {
+      "applied_to": [
+        "geox:8081"
+      ],
+      "bridge_id": "bp-geox-configdecl-vs-live-2026-10-02T030716Z",
+      "claim_a": {
+        "source": "mcp.json 2026-08-30 audit + STAB-2026-09-16 census",
+        "type": "metric",
+        "value": "27"
+      },
+      "claim_b": {
+        "source": "geox:8081 live tools/list 2026-10-02 (organ self-registry agrees: 26)",
+        "type": "metric",
+        "value": "26"
+      },
+      "comparability": "COMPARABLE",
+      "decided_at": "2026-10-02T03:07:16Z",
+      "decided_by": "kimi-code/FI-008",
+      "probe_state": "SUCCESS",
+      "relation": "DIVERGES_FROM",
+      "supersedes": null,
+      "verification_state": "WITNESSED",
+      "witness_evidence_refs": [
+        "geox_surface_status evidence_receipt sha256:2866847f123db44c2968dbbd69eca0f113a0afa37d34a6c4d84d6acf36e77c4b",
+        "consolidation record: geox_glof replaced geox_glof_cascade_* family (333 ARCHITECT 2026-09-19)"
+      ],
+      "witness_method": {
+        "kind": "invocation",
+        "method": "JSON-RPC initialize handshake + tools/list + geox_surface_status(mode=registry)",
+        "read_only": true
+      }
+    }
+  ],
+  "gate_B2": {
+    "config_declared": 27,
+    "dispatch_coverage": "2/26 (lower bound)",
+    "gap": 1,
+    "gate": "gap >= 1",
+    "live_exported": 26,
+    "satisfied": true
+  },
+  "measurements": [
+    {
+      "baseline": {
+        "expected_range": "26-27",
+        "previous_value": 27,
+        "trend_window": "2026-08-30..2026-10-02"
+      },
+      "does_not_imply": [
+        "a listed tool does NOT imply invocation succeeds",
+        "session-gated exposure does NOT imply the REST surface matches"
+      ],
+      "evidence_refs": [
+        "method: tools/list after initialize handshake"
+      ],
+      "freshness_class": "FRESH",
+      "measurement_method": {
+        "calibration": null,
+        "probe_type": "active",
+        "tool": "emit_capability_graph.py (JSON-RPC over streamable HTTP)",
+        "tool_version": "1.0.0"
+      },
+      "metric": "exported_tool_count",
+      "observed_at": "2026-10-02T03:07:16Z",
+      "referent": "geox:8081",
+      "scope": {
+        "kind": "endpoint",
+        "ref": "geox:8081",
+        "region": null,
+        "window": null
+      },
+      "unit": "tools",
+      "value": 26,
+      "witness_refs": [
+        "kimi-code/FI-008 session probes (read-only)"
+      ]
+    },
+    {
+      "baseline": {
+        "expected_range": "0",
+        "previous_value": 0,
+        "trend_window": "2026-09-16..2026-10-02"
+      },
+      "does_not_imply": [
+        "a gap of 1 proves surface drift but does NOT identify which side is wrong without the consolidation record",
+        "the identity of the removed tool is not resolvable from the live surface alone"
+      ],
+      "evidence_refs": [
+        "method: config/audit count minus live tools/list count"
+      ],
+      "freshness_class": "FRESH",
+      "measurement_method": {
+        "calibration": null,
+        "probe_type": "active",
+        "tool": "emit_capability_graph.py (JSON-RPC over streamable HTTP)",
+        "tool_version": "1.0.0"
+      },
+      "metric": "config_declared_vs_live_gap",
+      "observed_at": "2026-10-02T03:07:16Z",
+      "referent": "config declaration (27) vs live exported surface (this probe)",
+      "scope": {
+        "kind": "endpoint",
+        "ref": "config declaration (27) vs live exported surface (this probe)",
+        "region": null,
+        "window": null
+      },
+      "unit": "tools",
+      "value": 1,
+      "witness_refs": [
+        "kimi-code/FI-008 session probes (read-only)"
+      ]
+    },
+    {
+      "baseline": {
+        "expected_range": "0-1",
+        "previous_value": null,
+        "trend_window": null
+      },
+      "does_not_imply": [
+        "NOT_RUN on the other 24 tools means coverage is a LOWER BOUND, not the full callable truth",
+        "ProbeFailure != RelationRefuted (invariant 11)",
+        "mutating or heavy tools were never executed by design"
+      ],
+      "evidence_refs": [
+        "method: tools/call on read-only tools only (geox_surface_status, geox_list_registered_sources)"
+      ],
+      "freshness_class": "FRESH",
+      "measurement_method": {
+        "calibration": null,
+        "probe_type": "active",
+        "tool": "emit_capability_graph.py (JSON-RPC over streamable HTTP)",
+        "tool_version": "1.0.0"
+      },
+      "metric": "dispatch_coverage",
+      "observed_at": "2026-10-02T03:07:16Z",
+      "referent": "tools dispatch-proven by execution / tools exported",
+      "scope": {
+        "kind": "endpoint",
+        "ref": "tools dispatch-proven by execution / tools exported",
+        "region": null,
+        "window": null
+      },
+      "unit": "ratio",
+      "value": 0.0769,
+      "witness_refs": [
+        "kimi-code/FI-008 session probes (read-only)"
+      ]
+    },
+    {
+      "baseline": {
+        "expected_range": "26",
+        "previous_value": 26,
+        "trend_window": "2026-08-30..2026-10-02"
+      },
+      "does_not_imply": [
+        "self-attestation is not independent verification (scar-2026-10-01-002)"
+      ],
+      "evidence_refs": [
+        "method: organ's own federation registry probe"
+      ],
+      "freshness_class": "FRESH",
+      "measurement_method": {
+        "calibration": null,
+        "probe_type": "active",
+        "tool": "emit_capability_graph.py (JSON-RPC over streamable HTTP)",
+        "tool_version": "1.0.0"
+      },
+      "metric": "organ_self_registry_count",
+      "observed_at": "2026-10-02T03:07:16Z",
+      "referent": "geox_surface_status(mode=registry).canonical_tools",
+      "scope": {
+        "kind": "endpoint",
+        "ref": "geox_surface_status(mode=registry).canonical_tools",
+        "region": null,
+        "window": null
+      },
+      "unit": "tools",
+      "value": 26,
+      "witness_refs": [
+        "kimi-code/FI-008 session probes (read-only)"
+      ]
+    }
+  ],
+  "packet": "geox-8081.json"
+}
