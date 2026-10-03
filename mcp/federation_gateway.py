@@ -199,13 +199,16 @@ async def _discover_org(org_name: str, org_config: dict[str, str]) -> None:
         log.warning(f"  ✗ {org_name}: {e}")
 
 
+GATEWAY_VERSION = "2026.09.18"
+
+
 @gateway.tool()
 def federation_status() -> dict[str, Any]:
     """Federation gateway status — connected organs, tool/resource counts."""
     connected = sum(1 for s in _organ_status.values() if s.get("status") == "connected")
     return {
         "gateway": "arifos-federation-gateway",
-        "version": "2026.09.18",
+        "version": GATEWAY_VERSION,
         "connected_organs": connected,
         "total_organs": len(ORGS),
         "total_tools": len(_registered_tools),
@@ -214,6 +217,34 @@ def federation_status() -> dict[str, Any]:
         "tool_sample": _registered_tools[:15],
         "ui_resources": [r for r in _registered_resources if r.startswith("ui://")],
     }
+
+
+@gateway.custom_route("/health", methods=["GET"])
+async def _health_route(request):
+    """Plain-HTTP liveness / contract / capability surface.
+
+    The gateway only exposed /mcp, so the observatory's organ probe — which reads
+    /health and maps version->contract, tools_loaded->capability,
+    identity_hash->identity — found nothing on :3003 and rendered the gateway
+    ABSENT / UNREACHABLE while it was serving the aggregated federation surface.
+    Counts are read from the same live registries federation_status() reports, so
+    this route cannot drift from the MCP surface it describes.
+    """
+    from starlette.responses import JSONResponse
+
+    connected = sum(1 for s in _organ_status.values() if s.get("status") == "connected")
+    return JSONResponse(
+        {
+            "status": "healthy" if connected else "degraded",
+            "service": "arifos-federation-gateway",
+            "version": GATEWAY_VERSION,
+            "tools_loaded": len(_registered_tools),
+            "tool_count": len(_registered_tools),
+            "resources_loaded": len(_registered_resources),
+            "connected_organs": connected,
+            "total_organs": len(ORGS),
+        }
+    )
 
 
 async def _bootstrap() -> None:
