@@ -1,0 +1,90 @@
+{
+  "n_queries": 50,
+  "n_per_stratum": 10,
+  "strata": [
+    "semantic_factual",
+    "relationship_path",
+    "temporal_current_vs_old",
+    "contradiction_provenance",
+    "operational_agent"
+  ],
+  "configs": {
+    "A_baseline": {
+      "avg_n_final": 8.74,
+      "avg_cost_ms": 109.22,
+      "p95_cost_ms": 138
+    },
+    "B_vector_only": {
+      "avg_n_final": 8.74,
+      "avg_cost_ms": 104.6
+    },
+    "C_hybrid": {
+      "avg_n_final": 8.82,
+      "avg_cost_ms": 95.64,
+      "p95_cost_ms": 125,
+      "total_rejected": 0,
+      "avg_falkor_admitted": 0.0,
+      "avg_qdrant_admitted": 8.82
+    }
+  },
+  "graph_marginal_utility": {
+    "overall_gmu": 1.0,
+    "by_category": {
+      "semantic_factual": {
+        "queries": 10,
+        "falkor_contributed": 10,
+        "category_gmu": 1.0
+      },
+      "relationship_path": {
+        "queries": 10,
+        "falkor_contributed": 10,
+        "category_gmu": 1.0
+      },
+      "temporal_current_vs_old": {
+        "queries": 10,
+        "falkor_contributed": 10,
+        "category_gmu": 1.0
+      },
+      "contradiction_provenance": {
+        "queries": 10,
+        "falkor_contributed": 10,
+        "category_gmu": 1.0
+      },
+      "operational_agent": {
+        "queries": 10,
+        "falkor_contributed": 10,
+        "category_gmu": 1.0
+      }
+    }
+  },
+  "per_category_final_counts": {
+    "semantic_factual": {
+      "A_avg": 9.4,
+      "B_avg": 9.4,
+      "C_avg": 9.4
+    },
+    "relationship_path": {
+      "A_avg": 8.2,
+      "B_avg": 8.2,
+      "C_avg": 8.2
+    },
+    "temporal_current_vs_old": {
+      "A_avg": 9.3,
+      "B_avg": 9.3,
+      "C_avg": 9.4
+    },
+    "contradiction_provenance": {
+      "A_avg": 8.3,
+      "B_avg": 8.3,
+      "C_avg": 8.4
+    },
+    "operational_agent": {
+      "A_avg": 8.5,
+      "B_avg": 8.5,
+      "C_avg": 8.7
+    }
+  },
+  "verdict": [
+    "PROMOTE-CANDIDATE: all gates pass; F13 wire justified"
+  ]
+}

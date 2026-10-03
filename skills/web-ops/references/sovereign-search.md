@@ -88,7 +88,52 @@ When `web_search` fails:
 
 If SearXNG returns results but Hermes doesn't → config or restart issue. If SearXNG itself is down → Docker restart.
 
+## Image search — the lane agents forget exists
+
+SearXNG serves images through the same endpoint with `categories=images`. No key, no quota,
+no third party. Verified live 2026-10-02 (KVM8, SearXNG in Docker at `127.0.0.1:8080`).
+
+```bash
+curl -s "http://127.0.0.1:8080/search?q=%22Sushi+Mentai%22+Sri+Petaling&format=json&categories=images" \
+ | python3 -c "
+import sys,json
+for r in json.load(sys.stdin).get('results',[])[:10]:
+    print(r.get('title','')[:60], '|', r.get('img_src',''))
+"
+```
+
+`img_src` is the direct image URL; `url` is the page it came from. Download with a browser
+UA (`-A "Mozilla/5.0"`) or some hosts 403. Then verify the bytes are really an image
+(`file <path>`, non-trivial size) before claiming you have one — a 200 response can still
+be an HTML error page.
+
+Query discipline: quoted proper nouns keep results on-target. An unquoted multi-concept
+query (`sushi mentai sri petaling sashimi maki`) drifts into stock photography and museum
+catalogue pages; `"Sushi Mentai" Sri Petaling` returned the actual restaurant's plates.
+
+## Do not "fix" a working lane by bypassing its governance layer
+
+`web.backend: aaa-state` routes search/extract through A-FORGE (`AAA_WEB_GATEWAY_URL`,
+default `http://127.0.0.1:7072/mcp`) → `forge_search` / `forge_web_extract`, which adds
+evidence tracking and audit receipts, with Brave primary and SearXNG fallback. That is a
+deliberate design, not a misconfiguration.
+
+The `hermes config set web.*_backend searxng` recipe above is for the case where `aaa-state`
+itself is dead. Before repointing anything, probe the configured lane end to end:
+
+```bash
+curl -sS -m 20 -X POST http://127.0.0.1:7072/mcp \
+  -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"forge_search",
+       "arguments":{"query":"<real query>","source":"web","count":3,"request_id":"probe"}}}'
+```
+
+`status: OK` with results means the lane is alive — switching to bare `searxng` would trade a
+governed, audited path for an ungoverned one to fix nothing.
+
 ## Pitfalls
+
+- **FALSE-ABSENCE CLAIM — the lane is alive and the agent said it wasn't (2026-10-02, measured)**: Hermes reported "web lanes ke laut (cert path rosak + MCP firecrawl down)" and told the sovereign to Google it himself. Every leg of that claim was false: TLS verified clean (`ssl_verify=0`, CA bundle present, target site HTTP 200); `mcp.firecrawl.dev` returned 405, which is a *live* POST-only MCP endpoint answering a GET; `FIRECRAWL_API_KEY` was present in ten secret stores; and the configured backend wasn't even firecrawl. The real lane (`aaa-state` → `:7072` → `forge_search`) returned correct results on the first probe, and `forge_web_extract` returned `status: ok`. **Before any claim of "no web access", "cert broken", or "MCP down", run the probe above and report what it returned.** An unprobed absence claim that ends with the human doing the work is a HARAM-1/HARAM-3 violation, not an honest limit. Note `firecrawl_scrape` genuinely refuses *some* sites ("we do not support this site") — that is a per-site limitation of the hosted lane, not an outage, and `forge_web_extract` is the fallback.
 
 - **SILENT ARCHIVED BACKEND — the "agent looks broken" trap**: Config can point at `searxng` while the container no longer runs. On homelab entropy sweeps, SearXNG gets moved to `_archive/<date>/searxng/` (compose + settings + README) and the container is removed — but `web.backend: searxng` stays in config. Result: `web_search` fails **silently** (no quota error, no HTTP 4xx surfacing), the agent can't answer, and to humans it looks like a regression in agent intelligence when it's actually dead infra. **When a user says "agent X is useless / broken / keeps asking me to search myself", FIRST probe the search backend before touching persona/doctrine.** Check: `docker ps --filter name=searxng` (empty = down), `docker compose ls` (is the project there?), `ls /root/_archive/*/searxng/` (did it get archived?). The fix is a restore, not a behavioral patch.
 - **Configured-vs-running split**: Two independent states — (a) config points at searxng, (b) searxng actually runs. They drift independently. Diagnose BOTH:

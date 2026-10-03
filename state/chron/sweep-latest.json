@@ -21,8 +21,8 @@
     "blind": 0,
     "total": 2
   },
-  "next_verify_at": "2026-10-09T23:59:59+08:00",
-  "swept_at": "2026-10-02T03:44:10Z",
+  "next_verify_at": "2026-10-05T23:59:59+08:00",
+  "swept_at": "2026-10-02T22:23:01Z",
   "verification_debt": {
     "count": 0,
     "items": []

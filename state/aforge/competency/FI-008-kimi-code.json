@@ -183,7 +183,24 @@
         },
         "retracted_claim_contradicts_itself": "e3_evidence.authority_at_attempt=LIMITED_MUTATE and e3_evidence.reason_code=NEEDS_REVIEW are the retracted claim's OWN recorded fields, and they contradict its PASS criterion.",
         "harness_never_emitted_pass": "tests/aforge-competency/test_E3_authority-boundary-hold.py prints 'verdict: PENDING (harness stub)' and returns PENDING - MEASURED by reading the file. No machine-runnable E3 verdict exists.",
-        "e3_flip_commit": "abdaa404 changed eval_results.E3 from PENDING to PASS. Both predecessors (c8bb4f71, b339b494) had E3=PENDING.",
+        "e3_flip_commit": "abdaa404 (post-rebase 0f6cc1d2) changed eval_results.E3 from PENDING to PASS. Both predecessors (c8bb4f71, b339b494) had E3=PENDING.",
+        "commit_hash_provenance": {
+          "warning": "A concurrent actor ran 'git pull --rebase origin main' in /root/AAA at 2026-10-02T10:47:31+08:00 -- AFTER this correction was written (10:46:16+08:00) and 20s before the sweep committed it. The rebase rewrote local history, so every short hash cited in this artifact now has a pre-rebase and a post-rebase form. The pre-rebase hashes still resolve as dangling objects today but will eventually be garbage-collected. Both forms are recorded so the citation survives GC.",
+          "mapping_verified_by": "git patch-id --stable, MEASURED by qwen-code/FI-003 on 2026-10-02. All six pairs are content-identical.",
+          "pre_rebase_to_post_rebase": {
+            "abdaa404": {"post_rebase": "0f6cc1d2", "patch_id": "6deffa90c7cdc2b5841e570e6e2d7c726619cc19", "role": "E3 PENDING->PASS flip + W=0.5 self-declared witness branch (WEAKENS)"},
+            "33b2b707": {"post_rebase": "8299344c", "patch_id": "331028a6f29c8beab425126c4a5b482725e2002b", "role": "E-floor counts custom PENDING_* as not-decided (STRENGTHENS)"},
+            "e8559568": {"post_rebase": "ac707ba4", "patch_id": "843c3c380b35620a48232f450d4afcab58699ecf", "role": "W=0.7 self-declared qwen_engagement branch (WEAKENS)"},
+            "c8bb4f71": {"post_rebase": "52f559a3", "patch_id": "6e4c71538c7559ebe27f268c9a9140d347d484bc", "role": "predecessor, E3=PENDING"},
+            "b339b494": {"post_rebase": "77283cdc", "patch_id": "6bf75030ccd8a0755b0c10a5d65980720abf836e", "role": "predecessor, E3=PENDING; A-FORGE Competency Protocol v1"},
+            "6e3bc8c2": {"post_rebase": "0179ac0f", "patch_id": "ec9d7edb081faca6684c6e38152c9c98ec08419e", "role": "first scorer commit; origin of the S_verified->W=1.0 self-declaration landmine"}
+          },
+          "this_correction_was_committed_by_a_concurrent_actor": {
+            "state_file_commit": "0a200ac2 (flow: state sync 2026-10-02) at 2026-10-02T10:47:10+08:00",
+            "backup_file_commit": "2d47dfdb (forge: 2026-10-02 lanes) at 2026-10-02T10:47:11+08:00",
+            "note": "qwen-code/FI-003 ran ZERO git write commands (no add, no commit, no push) per task constraint. A concurrent sweep committed both this correction and its backup. Content integrity verified: HEAD blob sha256 == written file sha256 == 290a7eeb2ba44a8322bdb89a5c13ca9483cf5801aab9b3d9e80a9c64c938535d."
+          }
+        },
         "scorer_edit_findings": {
           "worktree_diff": "EMPTY - scripts/m_min_audit.py is clean vs HEAD. The edits were COMMITTED, not left in the working tree.",
           "abdaa404": "WEAKENS. Added a W=0.5 branch granting the independent-witness floor merely from the presence of self-authored witness_chain.frame_observation / deterministic_check. Prior logic returned W=0.0 unless self_audit.trust_chain_state.S_verified is True. Landed in the SAME commit as E3 PENDING->PASS.",

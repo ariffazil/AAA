@@ -352,6 +352,7 @@ or refuse to narrate ("aku tak nampak").
 
 | Anti-pattern | What to do |
 |---|---|
+| **Open-ended motive search on demand** | Sovereign says "cari motif" with no anchor. Do not run a sprawling search. Return the coordinates first: who, what event, what period, what decision. Without anchors, the search fabricates a motive to match whatever it finds. The motive is the heaviest claim you can make about a person; the warrant for it is the anchor. Anchor first, search second, motive last. |
 | Tag without receipt | Retag `[SPEC]`, or produce the receipt |
 | Cite path without line block | Always include path:lines+block |
 | Inventory claim + same-path negation | Cross-check negation words; resolve before emitting |
