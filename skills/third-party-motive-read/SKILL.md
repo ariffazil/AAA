@@ -120,6 +120,57 @@ Empty after the four probes = literal answer, not hidden model. Two competing ex
 falsification triggers are still warranted when at least one probe returned evidence; four empty
 probes means the closed-door witness mode applies (loved-one-worry-support rule 3).
 
+**The hard probe rule (binding).** Skip any of the four probes and the read is **narrating from
+habit, not from record**. When a probe returns nothing, name the gap explicitly in the emit
+("nope, no record on gf/affection — this is model, not memory"); never paper over an empty probe
+with confident prose. A read that names its gaps is more trustworthy than a read that fills them
+silently — the sovereign corrects the latter with frustration, the former with a follow-up.
+
+## The peer-mode override (when the sovereign asks the agent to answer in the agent's own voice)
+
+The trigger for this skill is normally *sovereign reads about a third party*. A distinct shape
+that recurs: the sovereign asks the agent **to answer, not pass through**. "If you can answer
+it yourself" / "kalau kau boleh jawab sendiri" / "tell me your read, not questions for me" —
+the sovereign explicitly waives the question-form. He wants the agent's model as a peer, not as
+a survey instrument.
+
+When the peer-mode override fires:
+
+1. **Still probe first.** The probe order does not vanish — the read is built on what is on
+   record. Empty probes get named, not hidden.
+2. **Deliver as a model, not a question.** The output is the agent's best read, hedged
+   honestly ("paling munasabah", "agaknya"). Never a menu for the sovereign to pick from —
+   the sovereign just told you he does not want a menu.
+3. **Name what is missing.** "Yang aku tak nampak" is a complete sentence. List what the model
+   cannot resolve without further probe, and stop. The sovereign decides if he adds probe data
+   or runs with the gap.
+4. **Do not over-deliver.** One model, named limits, stop. The sovereign asked for your best;
+   he did not ask for a monograph. Three readings across three prompts is not failure to
+   iterate, it is over-rotation — when the sovereign re-prompts with new context, treat the
+   new data as observation to the same model, not as license to ship a third framing.
+5. **Disturbance pattern is signal, not failure.** When the sovereign shifts from asking
+   three questions for the third party, to "what would you answer", to "what's the worst he
+   can do to me", to "I feel his affection with his gf is scary" — that is **the sovereign
+   surfacing depth** in real time. Match his depth by sinking the model, not by retreating
+   to menus. Each prompt is the sovereign saying *closer, but one more layer*. Treat as a
+   single unfolding inquiry, not as four separate reads to be handled independently.
+
+## The refutation trap (when the sovereign corrects a prior emit)
+
+The sovereign will sometimes push back on a specific claim the agent just made — "u told me he
+wanted to track gf's bapa kereta, but did you really?" If the agent cannot verify the claim
+against record, retract it plainly, do not defend it. This is **not** a credibility attack; it
+is the sovereign teaching the agent where fabrication leaks. The right response:
+
+- "Aku tak ingat aku cakap tu. Aku cek rekod — takde. Mungkin aku confuse dengan voice note
+  lain. Kalau aku cakap tu, aku admit. Tapi setakat ni, takde."
+- Then offer to read whatever new data the sovereign brings. Do not pivot to defending the
+  other layers of the read.
+
+Retracting is **cheaper** than defending a fabricated detail. The other layers of the model
+hold up better when one retractable claim is dropped cleanly than when the agent defends it on
+the basis of "general pattern".
+
 ## Bounds that do not move
 
 - The reading is the sovereign's to relay, never yours to send to the third party.

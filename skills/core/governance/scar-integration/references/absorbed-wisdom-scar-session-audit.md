@@ -344,6 +344,29 @@ A wisdom scar is NOT a memory. It's NOT a log. It's a **constitutional-grade dia
 - **Eureka:** A fingerprint is a join without retention. SHA-256 over the canonical outbound body, truncated to 16 hex chars (8 bytes) — collision-resistant enough for de-dup and linkage queries while revealing nothing about the underlying message. The schema defect is the smell; the fix is two tables, two retention policies.
 - **Combined with:** Scar #10 (agent-summary vs reality — provenance is what survives the session). Same shape: the agent trusts the *content* is gone and forgets that *causal lineage* still has to be answerable. The new scar covers the case where the redaction is intentional and correct, but the schema pairs payload + provenance in one delete.
 
+### Scar #22: External-AI Doctrine Fabrication — "AREP"-Class Hallucinated Protocol Names
+
+- **Date:** 2026-10-03
+- **Arif's words:** (no direct quote — surfaced when Arif pasted a Gemini-generated "Reality Engineering + AREP" frame and asked the agent to audit it. Arif then confirmed multi-instance occurrence in the same session, including an earlier Hermes self-instantiation of the same fabrication class.)
+- **Break:** An external AI (Gemini) generated a confident, formal-marketing description of arifOS containing a named protocol "AREP" ("Arif Reality Engineering Protocol"), framed inside the AAA control plane, with claims like "the human operator is removed from the 'how-to' loop" and "you only ever see the final, mathematically sealed result." All three claims mix real terms (F1-F13 floors, VAULT999, "map is not territory") with fabricated framing. The arifOS canon is publicly readable (`/root/AAA/docs/REALITY_ENGINEERING.md`, `/root/AAA/docs/philosophy/REALITY_ENGINEERING.md`, `/root/AAA/eval/aaa-gold/docs/philosophy/REALITY_ENGINEERING_CANON.md`, 2026-06-28 onwards). "AREP" is not in any canonical file — not in instructions, not in canon, not in governance, not in code. The fabrication is the defect; the framing is the delivery vehicle. **The same fabrication class fires from a different agent (Hermes) when a paste arrives with formal-marketing tone — first-pass acceptance in the bridge protocol treated the framed narrative as canonical evidence until a ground-truth check (`grep -rln "AREP" /root/AAA/instructions /root/AAA/canon`) proved the term was not in the doctrine.**
+- **Echo:** Trust the well-formed. An external framing that uses arifOS-flavoured vocabulary (F1-F13, VAULT999, "your map is not the territory") sounds authoritative because the *tokens* are real. The agent assumes the *framing* that holds those tokens is also real, and processes the artefact as a doctrine summary instead of a fabrication wrapped in real tokens. The pattern is "real-term camouflage" — every third sentence contains a verifiable real term, so the fourth (fabricated) sentence gets read alongside. The earlier-in-session Hermes self-instantiation showed the same shape from the bridge side: the agent was about to register "AREP" as a candidate term in a draft file based on Arif's paste, before ground-truth check proved the term was not in canonical doctrine.
+- **Law:** **When an external artefact (paste, audit, framing) names a specific protocol / doctrine / spec for arifOS, ground-truth the term in canonical files BEFORE treating the framing as doctrine.** The four-line probe:
+  ```bash
+  # 1. Does the named term exist in any canonical doctrine tree?
+  grep -rln "<Term>" /root/AAA/instructions /root/AAA/canon /root/AAA/governance /root/AAA/blueprints /root/AAA/docs 2>/dev/null
+
+  # 2. Does it exist in code? (real protocol = real module path)
+  grep -rln "<Term>" /root/AAA/skills /root/arifOS/arifosmcp 2>/dev/null
+
+  # 3. Does it exist in canon storage? (real protocol = real canon id)
+  grep -rln "<Term>" /root/AAA/state /root/AAA/registries 2>/dev/null
+
+  # 4. If 1+2+3 all empty, the term is FABRICATED, regardless of how authoritative the framing sounds.
+  ```
+  The probe takes 5 seconds. The cost of accepting a fabricated doctrine term as canonical is the same as Scar #5 (overclaim differentiation — attributing platform features to the wrong layer) compounded by Scar #12 (overclaiming inner truth — turning plausible interpretation into sovereign claim). When the probe returns empty, **do NOT register the term as a candidate** — fabricate-via-draft is still fabricate. Refuse the framing with receipts, name the real doctrine that was being framed-around, and offer a re-stated version that the canonical doc actually supports. The single move that stays forbidden is producing an artifact that treats a fabricated term as if it were live.
+- **Eureka:** **Real terms camouflage fabricated framing.** The detection rule: when a passage mixes verifiable arifOS terms (F1-F13, VAULT999, "map ≠ territory", "Reality Engineering") with a NAMED PROTOCOL the agent has not previously encountered, assume the named protocol is fabricated until the probe proves otherwise. The probe is the discriminator, not the prose style. Same-shape pattern in the literature: the Berkeley MAP study (Dec 2025) found 74% of production agents depend on human evaluation, meaning 26% depend on nothing — and the "nothing" class includes the agent that confidently names a protocol it has never read.
+- **Combined with:** Scar #1 (confabulated paths/state), Scar #5 (overclaim differentiation — wrong layer attribution), Scar #10 (agent-summary vs reality), Scar #12 (overclaiming inner truth). All share root: **trust the surface, skip the probe.** Scar #22 is the external-artefact form: the *artefact* presents a confident surface, the *agent* skips the probe, and a fabricated term is absorbed as canonical. The scar is the boundary; the probe is the discipline.
+
 ### Scar #21: Runtime State Machine Correct, Ledger State Machine Stale — Trust the Worker, Audit the Book
 
 - **Date:** 2026-10-02

@@ -42,7 +42,10 @@ surfaces that name them. BM realism, provider lane tables and engine ceilings li
    (edge/MiMo/local), say so explicitly — an unlabelled voice swap is a false witness, not a
    fidelity detail.
 5. **Close the loop:** record what was rendered, with the artifact hash and the voice_id, where the
-   lane keeps its receipts.
+   lane keeps its receipts. For a *new clone* (not a re-render of an existing voice_id), a
+   audit-grade JSON receipt is required — see the `clone-receipt-protocol` skill for the schema
+   and the `/root/.hermes/storage/<owner>/<YYYY-MM-DD>/clone-receipts/` path. Casual re-renders
+   of an existing voice_id don't need a new receipt; the original clone's receipt governs.
 
 ## Rules (always-on)
 
