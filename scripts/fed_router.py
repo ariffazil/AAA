@@ -464,6 +464,7 @@ async def fed_route_http(_request):
         if (
             _cls
             and (_cls["confidence"] >= 0.90 or (_cls["capability"] == "vision" and _cls["confidence"] >= 0.75))
+            and _cls["capability"] not in AUTO_APPLY_EXEMPT_CLASSES
             and not _model.startswith("fed-")
             and not body.get("effort_level")
         ):
@@ -730,6 +731,40 @@ CAPABILITY_CLASS_PATTERNS = {
         "send message",
         "book ",
     ],
+    # geoscience (2026-10-03 audit): earth-science evidence terms. This class is
+    # AUTO_APPLY_EXEMPT — geoscience tasks are ORGAN work (GEOX via arif_route),
+    # not a model-lane swap; FED reports the class as data.
+    "geoscience": [
+        "seismic",
+        "basin",
+        "petrophysic",
+        "well log",
+        "wellbore",
+        "wellhead",
+        "prospect",
+        "geolog",
+        "subsurface",
+        "stratigraph",
+        "reservoir",
+        "geomechanic",
+        "segy",
+        "isopach",
+        "paleobio",
+        "biostrat",
+        "kerogen",
+        "porosity",
+        "permeability",
+        "geohazard",
+        "glof",
+        "macrostrat",
+        "chronostrat",
+        "litholog",
+        "geoscience",
+        "source rock",
+        "play fairway",
+        "gamma ray",
+        "sonic log",
+    ],
 }
 CAPABILITY_CLASS_SIGNATURE = {
     "vision": "fed-multimodal-vision",
@@ -738,7 +773,15 @@ CAPABILITY_CLASS_SIGNATURE = {
     "reasoning": "fed-reasoning-heavy",
     "action": "fed-agent-subagent",
     "conversation": "fed-conversational",
+    # Advisory lane — see AUTO_APPLY_EXEMPT_CLASSES (no LiteLLM model alias;
+    # geoscience work is organ-routed to GEOX, not model-swapped).
+    "geoscience": "fed-geoscience",
 }
+
+# Classes that classify but NEVER auto-swap the model (2026-10-03 audit).
+# fed_route auto-apply assumes the signature is a routable LiteLLM alias;
+# fed-geoscience is not one — it is an organ-engagement signal.
+AUTO_APPLY_EXEMPT_CLASSES = {"geoscience"}
 
 
 def classify_capability(task: str) -> dict:
@@ -1152,6 +1195,7 @@ def fed_route(
             classification["confidence"] >= 0.90
             or (classification["capability"] == "vision" and classification["confidence"] >= 0.75)
         )
+        and classification["capability"] not in AUTO_APPLY_EXEMPT_CLASSES
         and not model.startswith("fed-")
         and not effort_level
     ):

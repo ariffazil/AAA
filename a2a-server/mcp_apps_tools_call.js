@@ -61,13 +61,14 @@ const OBSERVE_ALLOWLIST = new Set([
   'capital_wisdom',
 ]);
 
-/** Explicit mutate / seal — always HOLD from UI path */
+/** Explicit mutate / seal — always HOLD from UI path.
+ *  2026-10-03 audit: dead names removed (geox_well_desk_publish, geox_claim_create,
+ *  geox_claim_seal, geox_segy_export_tool — none exist on the live surface).
+ *  The unified geox_claim (mode-dependent mutation) and geox_glof (MUTATE-class)
+ *  are now guarded mode/class-aware inside classifyTool — this closes the guard
+ *  hole where geox_claim(mode=seal) matched neither the denylist nor MUTATE_NAME_RE. */
 const MUTATE_DENYLIST = new Set([
-  'geox_well_desk_publish',
   'geox_well_ingest',
-  'geox_claim_create',
-  'geox_claim_seal',
-  'geox_segy_export_tool',
 ]);
 
 const MUTATE_NAME_RE =
@@ -204,7 +205,19 @@ function invalidateSession(organKey) {
   sessions.delete(organKey);
 }
 
-function classifyTool(toolName) {
+/** geox_claim unified engine: mutation is mode-dependent (canonical surface:
+ * LIMITED_MUTATE). Read-flavored modes stay UI-allowed; mutating or unknown
+ * modes HOLD. Closes the 2026-10-03 audit guard hole where geox_claim(mode=seal)
+ * matched neither the denylist nor MUTATE_NAME_RE. */
+const GEOX_CLAIM_OBSERVE_MODES = new Set([
+  'validate',
+  'scan',
+  'discover',
+  'abduct',
+  'contradict',
+]);
+
+function classifyTool(toolName, args) {
   if (!toolName || typeof toolName !== 'string') {
     return { action: 'hold', reason: 'missing tool name' };
   }
@@ -212,6 +225,26 @@ function classifyTool(toolName) {
     return {
       action: 'hold',
       reason: `tool ${toolName} is mutate/seal — requires arifOS lease/gate (not UI OBSERVE)`,
+    };
+  }
+  // Unified claim engine — mode-aware gate (args absent => default HOLD, least privilege)
+  if (toolName === 'geox_claim') {
+    const mode = String(
+      (args && (args.mode || (args.arguments && args.arguments.mode))) || ''
+    ).toLowerCase();
+    if (GEOX_CLAIM_OBSERVE_MODES.has(mode)) {
+      return { action: 'observe', reason: `geox_claim mode=${mode} is read-flavored` };
+    }
+    return {
+      action: 'hold',
+      reason: `geox_claim mode=${mode || 'unknown'} is mutating/unproven — HOLD for arifOS`,
+    };
+  }
+  // Unified GLOF cascade — MUTATE-class on canonical surface
+  if (toolName === 'geox_glof') {
+    return {
+      action: 'hold',
+      reason: 'geox_glof is MUTATE-class — requires arifOS lease/gate (not UI OBSERVE)',
     };
   }
   if (OBSERVE_ALLOWLIST.has(toolName)) {
@@ -260,7 +293,7 @@ async function handleToolsCall(input = {}) {
   const timeoutMs = input.timeoutMs || 20000;
 
   const started = Date.now();
-  const classif = classifyTool(toolName);
+  const classif = classifyTool(toolName, args);
 
   const organKey =
     resolveOrgan(appId, input.organ) || organFromTool(toolName) || 'geox';
