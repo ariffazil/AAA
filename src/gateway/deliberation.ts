@@ -62,6 +62,8 @@ export interface DeliberationResult {
   acRisk?: number;
   /** Paradox anchor IDs that fired during deliberation */
   activeAnchors?: string[];
+  /** Detailed paradox anchor objects */
+  anchorDetails?: ParadoxAnchor[];
   /** Which cycle of deliberation this is (0 = first attempt) */
   retryCycle?: number;
   /**

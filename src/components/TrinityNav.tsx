@@ -1,4 +1,12 @@
-const FEDERATION_LINKS = [
+interface FederationLink {
+  label: string;
+  href: string;
+  icon: string;
+  active?: boolean;
+  dot?: string;
+}
+
+const FEDERATION_LINKS: FederationLink[] = [
   { label: 'arif-fazil.com', href: 'https://arif-fazil.com/', icon: '🏛️' },
   { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com/', icon: 'Δ', active: true },
   { label: 'Observatory', href: 'https://arifos.arif-fazil.com/', icon: 'Ω' },

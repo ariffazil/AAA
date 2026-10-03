@@ -329,7 +329,7 @@ function IntentBoard({ tasks }: { tasks: AREPTask[] }) {
 
 function IntentCard({ task }: { task: AREPTask }) {
   const state = task.task_lifecycle?.current_state || 'submitted';
-  const stateColors: Record<TaskState, string> = {
+  const stateColors: Record<string, string> = {
     'submitted':      'bg-blue-900/30 text-blue-400 border-blue-700',
     'working':        'bg-amber-900/30 text-amber-400 border-amber-700',
     'input-required': 'bg-red-900/30 text-red-400 border-red-700',

@@ -16,6 +16,7 @@ export interface RoutingDecision {
   riskLevel: RiskLevel;
   requiresConfirmation: boolean;
   irreversibilityBond?: string;
+  peer_contract_id?: string;
   /**
    * APEX Master Seal 2026-07-01:
    * Cognitive hierarchy ring that produced this routing decision.
