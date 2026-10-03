@@ -1,8 +1,16 @@
 # Behavioral Drift Report
-Alerts: 2 | Warnings: 2 | OK: 1
+Status: UNMEASURED — no session-telemetry source is wired to this module
 
-🟢 tool_call_entropy: 0.79 [OK] — H=1.25 bits, 3 unique tools, 6 calls. Healthy exploration
-🟡 question_back_rate: 0.5 [WARNING] — 2/4 responses contain questions. Healthy
-🔴 verbosity_drift: 0.377 [ALERT] — slope=175.0 chars/response, mean=464. Increasing verbosity — narrative momentum
-🔴 receipt_output_ratio: 3.33 [ALERT] — receipts=5000B, output=1500B. Receipt theater
-🟡 shadow_activation_rate: 0.3 [WARNING] — 3/10 interactions triggered shadow checks. Normal
+Alerts: 0 | Warnings: 0 | OK: 0 | UNMEASURED: 5
+
+The metric functions exist and are correct; they have no input. Required per metric:
+  ⚪ tool_call_entropy: UNMEASURED — needs session tool-call sequence
+  ⚪ question_back_rate: UNMEASURED — needs agent response texts vs user turns
+  ⚪ verbosity_drift: UNMEASURED — needs per-response length series
+  ⚪ receipt_output_ratio: UNMEASURED — needs receipt bytes vs useful output bytes
+  ⚪ shadow_activation_rate: UNMEASURED — needs shadow-check trigger count vs interactions
+
+To make this report real, feed compute_all() from a session transcript source
+(e.g. harness session JSONL under /root/.qwen/projects, /root/.claude/projects,
+/root/.hermes/logs) rather than from constants. Until then this file reports
+nothing, which is the truthful result.
