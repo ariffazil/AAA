@@ -1,7 +1,7 @@
 ---
 name: kvm8-media-lane-fallbacks
 description: "Use when an ASR, vision, PDF or TTS lane fails on KVM8."
-version: 1.1.0
+version: 1.2.0
 tags: [media, asr, vision, pdf, tts, fallback, kvm8]
 ---
 
@@ -39,9 +39,33 @@ When a media lane returns an auth/quota error, do not conclude "no capability" �
 
 ## TTS (voice notes)
 
-- **Siti (`SSSiti20260926v1`) from KVM8:** `python3 /root/.hermes/cache/scratch/siti_call.py script.txt out.mp3` — MiniMax `speech-2.8-hd`, `language_boost=Malay`, audio returns as **hex** (`bytes.fromhex`), not base64.
-- Deliver as a native voice bubble with `MEDIA:/abs/path.mp3` **plus** `[[audio_as_voice]]` on its own line; several `MEDIA:` lines in one reply do work (PDF document + voice bubble together).
+- **Siti (`SSSiti20260926v1`) from KVM8:** `python3 /root/.hermes/cache/scratch/siti_call.py script.txt out.mp3` — MiniMax `speech-2.8-hd`, audio returns as **hex** (`bytes.fromhex`), not base64.
+- Do **not** send `language_boost` to `POST /v1/t2a_v2` — `2013 invalid params: language_boost` is rejected. The current spec only accepts `voice_setting` and `audio_setting`; drop the field, not "set it to a different code". The MiniMax `speech-2.8-hd` model already infers language from the text.
+- Source `MINIMAX_API_KEY` from `/root/.secrets/kunci-root.env`. `/root/.openclaw/.env` may exist but be empty (`key len=0`) — do not trust it; if `os.environ.get('MINIMAX_API_KEY')` returns 0-length, you read the wrong file. Working pattern:
+  ```python
+  for line in open("/root/.secrets/kunci-root.env"):
+      if "=" in line and not line.startswith("#") and not line.startswith("export "):
+          k, v = line.split("=", 1)
+          os.environ[k.strip()] = v.strip().strip('"').strip("'")
+  ```
+- Deliver as a native voice bubble with `MEDIA:/abs/path.mp3` **plus** `[[audio_as_voice]]` on their own line; several `MEDIA:` lines in one reply do work (PDF document + voice bubble together).
 - Verify every render by round-tripping it back through Groq ASR and diffing against the script — catches truncation, stutter and dropped paragraphs before a human hears it.
+
+### TTS engine ladder (when one engine dies, walk this)
+
+A TTS request that succeeds on engine A today may return a quota/auth error tomorrow. Don't conclude "no TTS" — fall through. Each entry was probed live; treat error codes as signals to move on, not retry.
+
+| Engine | Endpoint | Model | Response | Failure → next |
+|---|---|---|---|---|
+| **MiniMax** (paid, primary) | `https://api.minimax.io/v1/t2a_v2` | `speech-2.8-hd` | `data.audio` is **hex** (`bytes.fromhex`) | `1008 insufficient balance` / `2056 quota_exceeded` → DashScope |
+| **DashScope Singapore** (free tier, can exhaust) | `https://dashscope-intl.aliyuncs.com/api/v1/services/audio/tts/generation` | `cosyvoice-v3-plus` | `output.audio.data` is **base64** | `403 AllocationQuota.FreeTierOnly` → DashScope China/Bailian |
+| **DashScope China / Bailian** (different key, can auth-fail) | `https://dashscope.aliyuncs.com/api/v1/services/audio/tts/generation` | `cosyvoice-v3-plus` | base64 | `401 InvalidApiKey` → local F5-TTS lane below |
+
+Cross-engine gotchas when falling through:
+
+- The voice_id registered on engine A is **not** valid on engine B. Falling back to DashScope with `SSSiti20260926v1` returns "voice not found" — re-clone the source sample on the fallback engine, or pick a built-in voice.
+- Auth header shape is identical (`Authorization: Bearer $KEY`) but the request body schema differs: MiniMax uses `voice_setting.voice_id`; DashScope uses `parameters.voice` with the `---` suffix (`cosyvoice-v3-plus-pmxreal-...---`). Copy-paste between engines fails silently.
+- A 401 on DashScope China is almost always "wrong key for this region" — the `DASHSCOPE_API_KEY` env var in `/root/.secrets/kunci-root.env` is the **Singapore** key (prefix `sk-ws-H...`), not a China/Bailian key. Don't loop on Bailian; jump to F5-TTS.
 
 ## Local F5-TTS (offline clone, CPU)
 
