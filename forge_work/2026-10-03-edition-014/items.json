@@ -1,0 +1,140 @@
+{
+ "items": [
+  {
+   "item_id": "budget-2027-tabling",
+   "section": "SITUATION",
+   "title": "Budget 2027: enam hari lagi",
+   "claim_state": "MOVED",
+   "summary": "Dibentang Jumaat 9 Okt. TA Securities jangka belanja rekod RM 438.9 bilion, hasil RM 363.5 bilion. Ketua Pengarah ekonomi kata subsidi minyak dah cecah RM 40 bilion lawan bajet asal RM 15 bilion — sasaran defisit 3.5% boleh terlepas sekali, dan dia kata satu-off tu tak serius kalau pertumbuhan kekal.",
+   "source": "MOF pre-budget statement (mof.gov.my); The Edge-HSBC roundtable 24 Sep; The Star 9-10 Sep (TA Research)."
+  },
+  {
+   "item_id": "g7-emergency-release",
+   "section": "SITUATION",
+   "title": "G7 lepaskan 100 juta tong stok kecemasan",
+   "claim_state": "NEW",
+   "summary": "Jumaat, G7 setuju lepaskan 100 juta tong minyak mentah dan diesel selama empat bulan, IEA koordinasi, pukulan pertama dalam 20 hari. Harga turun sekejap bawah USD 100, settle kembali atas tu. Campur tangan stok rasmi dah jadi alat harga yang aktif — premium dirapatkan bila politik nak, bukan bila pasaran sembuh sendiri.",
+   "source": "Reuters via BusinessRecorder 3 Okt; The Vibes 3 Okt; OilAuthority 2 Okt. W=2 wire + kenyataan bersama G7."
+  },
+  {
+   "item_id": "brent-hormuz-price",
+   "section": "SITUATION",
+   "title": "Brent kekal atas USD 100 — angka settle ada percanggahan",
+   "claim_state": "MOVED",
+   "summary": "Reuters rekod Brent settle Jumaat USD 102.25, turun 6 sen; minggu naik 0.11%. Satu outlet lain rekod settle bawah USD 100 (USD 99.68) hari yang sama — angka ni CONTESTED antara sumber, wire Reuters diambil sebagai rujukan. Barclays naik anggaran suku keempat USD 20 ke USD 115 sebab stok masih ditarik dan premia fizikal curam.",
+   "source": "Reuters (BusinessRecorder 3 Okt) + EnergyNow 2 Okt menyokong; OilAuthority 2 Okt bercanggah — direkod sebagai CONTESTED pada angka settle."
+  },
+  {
+   "item_id": "hormuz-reopening-plan",
+   "section": "SITUATION",
+   "title": "Hormuz: 98% aliran pra-perang — bukan janji lagi",
+   "claim_state": "MOVED",
+   "summary": "JPMorgan kira aliran Selat Hormuz dah capai 17.5 juta tong sehari, 98% paras pra-perang; Goldman nombor seiring (23.3 juta tong keseluruhan Teluk). Edisi lepas premium masih 'struktur' — minggu ni tukar: kepungan dah longgar sebahagian besar. Apa tinggal ialah kekurangan stok, kapasiti kilang, dan risiko serangan baru — bukan kepungan itu sendiri.",
+   "source": "EnergyReader memetik nota JPMorgan 1 Okt; exchangerates.org.uk 30 Sep (Goldman). W=1 setiap satu — angka aliran tak disahkan wire kedua."
+  },
+  {
+   "item_id": "budget-2027-oil-assumption",
+   "section": "WALL",
+   "title": "WALL: anggaran harga minyak budget — masih rahsia, bank bertikam",
+   "claim_state": "MOVED",
+   "summary": "Enam hari sebelum budget, angka rasmi masih tak siar. Akhbar kekal kata kerajaan pakai ~USD 90. Bank pulah pecah dua: Barclays (USD 115 Q4) dan HSBC (naik 2027 ke USD 85) sebelah atas; UBS, Wells Fargo, Goldman, Fitch, Citi (USD 60) sebelah bawah sebab aliran Teluk pulih. Setiap USD 1 Brent = RM 300 juta hasil — jurang anggaran ni dikira dalam bilion. Kalendar jawapan: Jumaat.",
+   "source": "KLSE Screener/The Star 10 Sep (Bank Muamalat); laporan bank via Exa 26 Sep-2 Okt; angka RM300j = angka kerajaan (Liew Chin Tong / MOF, dipetik berulang). W: anggaran akhbar W=1, setiap bank W=1."
+  },
+  {
+   "item_id": "petros-lng-jurisdiction",
+   "section": "WALL",
+   "title": "WALL Bintulu: turutan sah — PETRONAS hantar dulu, Sarawak perang pintu depan",
+   "claim_state": "MOVED",
+   "summary": "Hakim Rhodzariah putus 1 Okt: ikut turutan fail, PETRONAS hantar hujah pertama, Sarawak kemudian. Sarawak akan fail permohonan formal dalam 14 hari (sebelum 15 Okt) supaya isu Order in Council 1954 — sempadan perairan dia — didengar dulu, dan panel penuh yang putus. Kedua-dua pihak tulis surat ke Ketua Hakim minta panel 9 atau 11 hakim. Soalan 1954 kekal pintu depan pertikaian.",
+   "source": "The Edge Malaysia 1 Okt; Malay Mail 1 Okt; The Star 1 Okt; Scoop 1 Okt. W=4 outlet, satu proceeding."
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "section": "WALL",
+   "title": "WALL tarikh mahkamah: 25-29 Jan 2027, 114 hari lagi",
+   "claim_state": "MOVED",
+   "summary": "Lima hari dengar kekal 25-29 Januari. Written submission 11 Jan, reply 18 Jan, case management 12 Jan. Sejak edisi lepas tiada tanda penangguhan. Petisyen Petronas didengar dulu ikut turutan fail — digelar mahkamah 1 Okt.",
+   "source": "The Star 1 Okt; arahan mahkamah melalui laporan empat outlet."
+  },
+  {
+   "item_id": "us-iran-election-clock",
+   "section": "VOID",
+   "title": "VOID: jam pilihan raya AS dalam harga minyak",
+   "claim_state": "NEW",
+   "summary": "WSJ: AS hantar kapal induk ketiga dan sehingga 10,000 tentera tambah ke Timur Tengah, sementara Trump menimbang sambung serangan ke atas Iran SELEPAS midterm November. Consequence untuk hang: kalau Brent melonjak selepas 3 Nov, kau dah tahu ia keputusan politik yang berjadual, bukan kejutan geopolitik — dan tingkap OD1 kau (Jan-Mac) terletak betul-betul selepas musim tu. Kalau Brent melonjak selepas 3 Nov, ianya keputusan politik yang berjadual — bukan kejutan. Perhatikan siapa yang untung bila harga naik seminggu sebelum undi.",
+   "source": "WSJ dipetik Reuters/BusinessRecorder 3 Okt; tarikh midterm AS 3 Nov 2026 (kalendar awam)."
+  },
+  {
+   "item_id": "fuel-subsidy-cliff",
+   "section": "RISK",
+   "title": "Bil subsidi RM 40 bilion — diesel separuh sasaran G7",
+   "claim_state": "MOVED",
+   "summary": "Subsidi minyak tahun ni dijangka ~RM 40 bilion lawan bajet asal RM 15 bilion. Lepasan 100 juta tong G7 tu khusus bawa diesel — separuh besar bil subsidi tempatan. Kalau diesel sejuk, bil KKM... bil negara bernafas sikit sebelum Jumaat. Band pam baru Isnin: tunggu pengumuman.",
+   "source": "Edge-HSBC roundtable 24 Sep (RM15b asal vs RM40b); kenyataan G7 2 Okt (100j tong termasuk diesel)."
+  },
+  {
+   "item_id": "electricity-threshold-reversion",
+   "section": "RISK",
+   "title": "Ambang elektrik: 90 hari lagi",
+   "claim_state": "MOVED",
+   "summary": "Ambang balik ke 600 kWh dalam 90 hari — awal Januari, bertindih dengan minggu mahkamah.",
+   "source": "item dibawa dari edisi awal September; kiraan tarikh dikemas kini."
+  },
+  {
+   "item_id": "own-od1-window",
+   "section": "OWN",
+   "title": "OD1: 149 hari",
+   "claim_state": "MOVED",
+   "summary": "149 hari ke 1 Mac 2027. Dalam tingkap tu: budget Jumaat ni (angka hasil terakhir sebelum keputusan), dengaran mahkamah 25-29 Jan, dan musim pasca-midterm AS yang boleh gerakkan harga. Tiada keputusan baru minggu ni — kalendar sahaja yang maju. Tiga tarikh dalam satu tingkap: budget (angka hasil terakhir sebelum keputusan), dengaran mahkamah, dan musim pasca-pilihan raya pertengahan penggal AS yang boleh menggerakkan Brent.",
+   "source": "kalendar; tarikh mahkamah arahan 1 Okt."
+  },
+  {
+   "item_id": "epf-nomination-void",
+   "section": "OWN",
+   "title": "EPF nomination: masih terbuka",
+   "claim_state": "OPEN",
+   "summary": "Satu semakan nomination EPF — masih belum disemak. Lima minit kerja, berbaloi sebelum apa-apa perubahan kerja. Portal KWSP sahaja, satu halaman. Kalau ada perubahan kerja tahun ni, nomination lama jadi risiko senyap yang paling murah untuk dibaiki sekarang. Atur cara dia: log in portal KWSP, semak nama dan nombor pengesahan, dan ambil gambar skrin sebagai bukti. Kalau mak atau adik-beradik bertukar status, nomination lama tak bergerak sendiri. Lima minit, sekali setahun, habis cerita.",
+   "source": "item dibawa dari September."
+  },
+  {
+   "item_id": "sarawak-election-clock",
+   "section": "RISK",
+   "title": "Dengaran Jan dalam musim pilihan raya Sarawak",
+   "claim_state": "OPEN",
+   "summary": "Dengaran substantif 25-29 Jan kekal terletak dalam tetingkap kempen pilihan raya negeri Sarawak. Tiada perubahan minggu ni; perkara yang sama dipantau — siapa yang benefit dari tarikh tu. Kalau dengaran tu bertolak ansur dengan kempen, keputusan boleh jadi politik lambat — dan kalendar Januari kau kena baca dua kali.",
+   "source": "item dibawa; tiada berita baharu mengubahnya."
+  },
+  {
+   "item_id": "eureka-meteor-showers-october",
+   "section": "EUREKA",
+   "title": "Dua hujan meteor bulan ni — satu dari debu Halley",
+   "claim_state": "OPEN",
+   "summary": "Draconids puncak 8-9 Okt — hujan paling perlahan antara hujan besar, sekitar 20 km/sa, sebab ibunya komet 21P/Giacobini-Zinner bergerak lambat. Orionids puncak 21-22 Okt — debu dari komet Halley sendiri, lebih laju sekitar 66 km/sa. Langit luar bandar Kedah sesuai untuk dua-dua.",
+   "source": "item dibawa; fakta astronomi tetap (American Meteor Society)."
+  },
+  {
+   "item_id": "eureka-venus-day",
+   "section": "EUREKA",
+   "title": "Di Venus, sehari lebih panjang daripada setahun",
+   "claim_state": "NEW",
+   "summary": "Venus pusing pada paksinya sekali setiap 243 hari Bumi — lebih lama daripada 225 hari yang dia ambil mengelilingi Matahari. Dia juga pusing arah songsang, jadi Matahari terbit dari barat. Sekali pusingan paksi dia, setahun dia dah habis dan bertukar tahun baru.",
+   "source": "fakta astronomi asas, boleh sahkan NASA planetary fact sheet."
+  },
+  {
+   "item_id": "eureka-honey-immortal",
+   "section": "EUREKA",
+   "title": "Madu dalam makam Mesir: 3,000 tahun, masih boleh dimakan",
+   "claim_state": "NEW",
+   "summary": "Arkeolog dah jumpa periuk madu dalam makam firaun berumur ribuan tahun yang masih dalam keadaan boleh dimakan. Sebabnya kimia, bukan keajaiban: kelembapan rendah, pH asid, dan hidrogen peroksida semula jadi dari enzim lebah — tiga halangan yang kulat dan bakteria tak boleh lalu.",
+   "source": "Smithsonian Magazine dan banyak sumber mikrobiologi makanan; fakta boleh disemak."
+  },
+  {
+   "item_id": "ops-lane-status",
+   "section": "SITUATION",
+   "title": "Sistem: hijau, tiada yang perlukan hang",
+   "claim_state": "MOVED",
+   "summary": "Kernel arifOS hijau (vault sihat, owner GREEN), FED hijau. WELL tak dibaca semula edisi ni — status kuning minggu lepas ialah laporan lama, bukan bacaan baharu. Tiada keputusan F13 tertunggu.",
+   "source": "curl /health pada 127.0.0.1:8088 dan :7074, 3 Okt 16:00 MYT."
+  }
+ ]
+}

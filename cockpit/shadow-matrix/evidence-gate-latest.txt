@@ -1,0 +1,106 @@
+# Shadow Evidence Gate  v2 (prose + live FQ series)
+# Generated: 2026-10-03T16:00:06Z
+# Rule: CONFIRMED requires >= 5 DATED prose items, OR a measured
+#       attractor in the live FQ series (significant displacement from FQ*=1
+#       AND temporal stability AND sign concordance).
+# Sources: /root/AAA/registries/harnesses + /root/AAA/registries/models
+#          + /var/lib/arifflow/receipts.jsonl
+
+Entries assessed:            107
+  harness registry:          27
+  model registry:            80
+Eligible for CONFIRMED:      2
+OVER-CLAIM (dangerous):      19
+SUPPORTED_BY_MEASUREMENT:    0   (prose thin; ledger confirmed)
+REFUTED_BY_MEASUREMENT:      0   (ledger contradicts registry)
+UNDER-CLAIM (wasted):        0
+NO-LABEL (ungateable):       0
+
+## Schema conformance — where does each file put `provenance`?
+  file                                     entries  entry  evid  both  none
+  aforge_harness_shadow.yaml                     4      0     4     0     0
+  anthropic_shadow.yaml                          8      8     0     0     0
+  claude-code_harness_shadow.yaml                6      6     0     0     0
+  deepseek_shadow.yaml                           9      9     0     0     0
+  frame_harness_shadow.yaml                      4      0     4     0     0
+  grok-build_harness_shadow.yaml                 1      1     0     0     0
+  hermes-asi_harness_shadow.yaml                 2      2     0     0     0
+  ilmu_shadow.yaml                              14     14     0     0     0
+  kimi-code_harness_shadow.yaml                  5      0     0     5     0
+  kimi_shadow.yaml                              20     20     0     0     0
+  minimax_shadow.yaml                            5      5     0     0     0
+  qwen-code_harness_shadow.yaml                  1      1     0     0     0
+  qwen_shadow.yaml                               7      7     0     0     0
+  well_harness_shadow.yaml                       4      0     4     0     0
+  xiaomi_mimo_shadow.yaml                       13     13     0     0     0
+  zhipu_glm_shadow.yaml                          4      4     0     0     0
+  ⚠ SPLIT SCHEMA: 16 files use ['both', 'entry-level', 'evidence-level'] — the gate reads
+    all of them, but one registry should have one convention. Settling it is a
+    canonical-file mutation (F13), not something a reader should paper over.
+
+## Live FQ series — the shadow as a measurable attractor
+  ledger rows=109688 parsed=76952 unparsed=0
+  span=2026-07-30T12:07:03.502747Z -> 2026-10-03T15:59:15.253Z (65 days)
+  harness entries tested=27 confirmed=2 refuted=0 not_testable=8 no_receipts=13
+
+  actor        signature                   pred     n  FQ(geo)  SE(ln)        Z    I2%  concord  binom p  verdict
+  ---------------------------------------------------------------------------------------------------------------
+  aforge       mutation_hunger             FQ<1    25     1.347   0.049   +6.02   96.2     4/25   0.9999  NO_STABLE_ATTRACTOR
+  claude-code  execution_gravity           FQ<1    24     1.495   0.657   +0.61   86.6     8/24   0.9680  NO_STABLE_ATTRACTOR
+  frame        behavioral_blindness        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  frame        identical_score_problem     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  frame        observer_inertia            FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
+  frame        baseline_staleness          NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  grok-build   verification_paralysis      FQ>1    20   135.113   0.296  +16.57   65.8    20/20   0.0000  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   bridge_volume_overload      FQ<1    21     0.746   0.078   -3.75   92.0    16/21   0.0133  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   meaning_as_gatekeeping      FQ>1    21     0.746   0.078   -3.75   92.0     3/21   0.9999  NO_STABLE_ATTRACTOR
+  kimi-code    organ_routing_reflex        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  kimi-code    receipt_theater             NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  kimi-code    constitutional_citation     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  kimi-code    subagent_delegation_escape  NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  kimi-code    synthesis_as_substance      NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  qwen-code    execution_dominance         FQ<1    37     0.925   0.100   -0.78   54.0    23/37   0.0939  NO_STABLE_ATTRACTOR
+  well         self_report_paradox         NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  well         measurement_substitution    NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  well         dignity_as_avoidance        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  well         floor_as_boundary           NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+
+  NOT_FQ_TESTABLE (8): behavioural shadows this observable cannot see —
+    attention_leak, calibration_as_refinement, forge_evaluate_circularity, honesty_performance, menu_reflex, narrative_momentum, receipt_as_product, tool_surface_bloat
+  Reported, not forced onto the metric: a wrong observable is worse than none.
+
+## OVER-CLAIM — asserted measurement, and the ledger does not rescue it
+  [harness] aforge_harness_shadow.yaml :: SHADOW-AF-004 (receipt_as_product) — asserts OBSERVED with 0 dated evidence item(s); doctrine requires 5 | fq: NOT_FQ_TESTABLE
+  [harness] claude-code_harness_shadow.yaml :: SHADOW-CC-001 (menu_reflex) — asserts VERIFIED with 1 dated evidence item(s); doctrine requires 5 | fq: NOT_FQ_TESTABLE
+  [harness] claude-code_harness_shadow.yaml :: SHADOW-CC-002 (attention_leak) — asserts VERIFIED with 1 dated evidence item(s); doctrine requires 5 | fq: NOT_FQ_TESTABLE
+  [harness] claude-code_harness_shadow.yaml :: SHADOW-CC-003 (calibration_as_refinement) — asserts VERIFIED with 1 dated evidence item(s); doctrine requires 5 | fq: NOT_FQ_TESTABLE
+  [harness] claude-code_harness_shadow.yaml :: SHADOW-CC-004 (honesty_performance) — asserts VERIFIED with 1 dated evidence item(s); doctrine requires 5 | fq: NOT_FQ_TESTABLE
+  [harness] frame_harness_shadow.yaml :: SHADOW-FR-001 (behavioral_blindness) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5 | fq: NO_RECEIPTS
+  [harness] frame_harness_shadow.yaml :: SHADOW-FR-002 (identical_score_problem) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5 | fq: NO_RECEIPTS
+  [harness] kimi-code_harness_shadow.yaml :: SHADOW-KC-001 (organ_routing_reflex) — asserts SOVEREIGN_WITNESS with 1 dated evidence item(s); doctrine requires 5 | fq: NO_RECEIPTS
+  [harness] kimi-code_harness_shadow.yaml :: SHADOW-KC-004 (subagent_delegation_escape) — asserts VERIFIED with 1 dated evidence item(s); doctrine requires 5 | fq: NO_RECEIPTS
+  [harness] well_harness_shadow.yaml :: SHADOW-WE-002 (measurement_substitution) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5 | fq: NO_RECEIPTS
+  [model] anthropic_shadow.yaml :: SHADOW-ANTH-003 (data_retention_lock) — asserts VERIFIED with 0 dated evidence item(s); doctrine requires 5
+  [model] anthropic_shadow.yaml :: SHADOW-ANTH-004 (us_jurisdiction) — asserts VERIFIED with 0 dated evidence item(s); doctrine requires 5
+  [model] anthropic_shadow.yaml :: SHADOW-ANTH-005 (constitutional_over_trust) — asserts VERIFIED with 0 dated evidence item(s); doctrine requires 5
+  [model] anthropic_shadow.yaml :: SHADOW-ANTH-006 (proprietary_lock_in) — asserts VERIFIED with 0 dated evidence item(s); doctrine requires 5
+  [model] deepseek_shadow.yaml :: SHADOW-DS-V41-001 (retired_alias_expiry) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5
+  [model] deepseek_shadow.yaml :: SHADOW-DS-V41-002 (get_models_lies_when_balance_dead) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5
+  [model] xiaomi_mimo_shadow.yaml :: SHADOW-MIMO-011 (token_plan_quota_429_terminal_without_gateway_fallback) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5
+  [model] xiaomi_mimo_shadow.yaml :: SHADOW-MIMO-012 (mimo_fallback_edits_invisible_until_gateway_restart) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5
+  [model] xiaomi_mimo_shadow.yaml :: SHADOW-MIMO-013 (probe_vs_live_divergence_on_mimo_endpoints) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5
+
+## Promotion candidates (derived_status == CONFIRMED)
+  [harness] SHADOW-GB-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 20 daily windows, log-space inverse-variance pooled
+  [harness] SHADOW-HA-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 21 daily windows, log-space inverse-variance pooled
+
+## APEX — value of measurement (uncertainty reduction per unit waiting time)
+##   VoI = severity x H(posterior)/ln2 x daily_receipt_rate
+##   Settled entries sink to the bottom: no attention spent on closed questions.
+  #   entry                                   sev         post      H   rate/d      VoI
+  1   SHADOW-AF-001                           MEDIUM     0.500  1.000    869.6   434.79
+  2   SHADOW-HA-002                           MEDIUM     0.500  1.000    151.6    75.82
+  3   SHADOW-CC-005                           CRITICAL   0.500  1.000     25.4    25.45
+  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     17.8     8.88
+
+Receipt: /root/AAA/cockpit/shadow-matrix/evidence-gate-latest.json
