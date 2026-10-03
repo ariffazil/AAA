@@ -203,3 +203,4 @@ scratch/
 tests/test_bl12_keyspace.py
 __pycache__/
 .distraction-archive-*/
+eval/aaa-gold/
