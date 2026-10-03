@@ -149,17 +149,22 @@ FQ = metabolism pulse         live SOT = :7073; flow_state.json = cache TTL 5 mi
 | deepseek direct | live | ✅ LIVE |
 | qwen-token-plan-team | live | ✅ LIVE |
 
-**Agent → model assignments:**
+**Agent → model assignments (chain-first, ALIGNED 2026-10-03 — opencode.json now ENFORCES these; projection of `/root/.config/federation-models.json`, the routing SOT):**
 
-| Agent | Primary | Notes |
+| Agent | Enforced binding | Notes |
 |---|---|---|
-| 333-AGI (OpenCode) | `zai-direct/glm-5.2` | 198K ctx cap (Coding Plan); switch to `opencode-zen/glm-5.2` for 1M |
-| 555-ASI | `litellm-federation/asi-555` | memory + reasoning_content correct |
+| 333-AGI (OpenCode) | `litellm-federation/forge-777` | Code chain (head mimo-v2.6-pro-payg → glm-5.3-flash); direct fallbacks deepseek-v4-pro → MiniMax-M3 |
+| 555-ASI | `litellm-federation/asi-555` | head glm-5.3-flash (reasoning — needs max_tokens ≥ 2048 headroom) |
+| 555-ASI-VISION | `litellm-federation/asi-555` | attachment-capable; vision fallback qwen3.7-plus |
 | 777-FORGE | `litellm-federation/agi-333` | 384K output, deep thinking |
-| 888-APEX | `litellm-federation/apex-888` | constitutional, 384K output |
+| 888-APEX | `litellm-federation/apex-888` | head MiniMax-M3 = empirical P1 (bench 2026-10-03: 100% reliability) — judge rides its OWN chain |
+| dispatch | `kimi/kimi-for-coding-highspeed` | fallbacks qwen3.6-flash → deepseek-v4-flash |
+| image-analyzer | `litellm-federation/asi-555` | fallback qwen3.7-plus |
 | i-arif (sovereign) | `litellm-federation/i-arif` | ARIF lane handle |
 
-**Cost discipline:** FED flash (free) first → cheap (deepseek-v4-flash, mimo) → heavy (deepseek-v4-pro, zai-glm-5.2) → apex (multi-step constitutional).
+Empirical bench 2026-10-03 + reasoning registry: see `/root/AAA/governance/FED-OSS-DISTILLATION-2026-10-03.md` + SOT `_meta.reasoning_model_registry_2026_10_03`. GLM-5.3 "corruption" claim VOID (token starvation, not defect).
+
+**Cost discipline:** FED flash (free) first → cheap (deepseek-v4-flash, mimo) → heavy (deepseek-v4-pro, glm-5.3 deep-async lane) → apex (multi-step constitutional).
 
 ## 11. Tool pre-flight (run before any MCP call)
 
