@@ -86,9 +86,9 @@ export interface DeepnShadowReport {
 }
 
 interface HumanPatternReportProps {
-  report: DeepnShadowReport | null;
-  sovereignActor: string;
-  currentActor: string;
+  report?: DeepnShadowReport | null;
+  sovereignActor?: string;
+  currentActor?: string;
 }
 
 function StatusBadge({ status }: { status: DignityStatus }) {
@@ -113,10 +113,10 @@ function StatusBadge({ status }: { status: DignityStatus }) {
 }
 
 export default function HumanPatternReport({
-  report,
-  sovereignActor,
-  currentActor,
-}: HumanPatternReportProps) {
+  report = null,
+  sovereignActor = "arif",
+  currentActor = "arif",
+}: HumanPatternReportProps = {}) {
   const isAuthorized = useMemo(
     () => currentActor === sovereignActor,
     [currentActor, sovereignActor],

@@ -141,7 +141,7 @@ function parseJsonRpcMessage(value: unknown): JsonRpcMessage | null {
     }
   }
   if (!isRecord(parsed) || parsed.jsonrpc !== "2.0") return null;
-  return parsed as JsonRpcMessage;
+  return parsed as unknown as JsonRpcMessage;
 }
 
 function errorMessage(error: unknown, fallback = "Unknown error"): string {

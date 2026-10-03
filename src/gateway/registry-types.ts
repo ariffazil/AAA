@@ -169,8 +169,6 @@ export interface ConformanceArtifact {
   };
 }
 
-export type { ConformanceArtifactV1 };
-
 // ── Canonical Organ Declarations ──────────────────────────────────────────
 
 export const CANONICAL_ORGANS: OrganIdentity[] = [

@@ -34,8 +34,8 @@ function getA2ADiscoveryContract() {
     },
     protocol: {
       name: 'A2A',
-      version: card.protocol_version,
-      preferred_transport: card.preferred_transport || 'jsonrpc-https',
+      version: (card as any).protocol_version || card.supportedInterfaces?.[0]?.protocolVersion || '1.0.0',
+      preferred_transport: (card as any).preferred_transport || 'jsonrpc-https',
     },
     policy: {
       default_mode: policy.default_mode,
@@ -290,7 +290,7 @@ class AAAGatewayExecutor {
           timestamp: new Date().toISOString()
         },
         metadata: {
-          ...result.proof,
+          ...(typeof result.proof === 'object' && result.proof !== null ? result.proof : {}),
           riskLevel: result.riskLevel,
           irreversibilityBond: result.irreversibilityBond
         }
@@ -396,7 +396,7 @@ function buildCspFromManifest(manifest: McpAppManifest): string {
 }
 
 app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
-  const appId = req.params.app_id;
+  const appId = String(req.params.app_id);
 
   if (!isSafeAppId(appId)) {
     return res.status(400).json({ error: "invalid_app_id" });
@@ -551,7 +551,7 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
   // ── Session D: Registry Conformance (fail-closed) ───────────────────────
   // Runtime-derived registry — live tools/list, not static declarations.
   // Separates 5 dimensions: liveness, transport, registry, readiness, mutation.
-  let cachedConformance: import('./registry-validator.js').ConformanceArtifact | null = null;
+  let cachedConformance: import('./registry-types.js').ConformanceArtifact | import('./registry-types.js').ConformanceArtifactV1 | null = null;
   let conformanceCachedAt = 0;
   const CONFORMANCE_CACHE_TTL_MS = 30_000; // 30s
 
@@ -722,7 +722,7 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
   // ── Message Ingress (Critical Trust Boundary) ───────────────────────────
   mainRouter.post('/message/send', async (req: Request, res: Response) => {
     const body = req.body as JSONRPCRequest;
-    const params = body.params as MessageSendParams;
+    const params = body.params as unknown as MessageSendParams;
     const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
     const contextId = params.contextId || generateId();
 
