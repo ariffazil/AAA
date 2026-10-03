@@ -209,6 +209,71 @@ Topics that touch the human's body, identity, finances, mortality, or intimate l
 
 ---
 
+### 18c. Atmospheric vs Analytical Turn-Shape Pivot
+
+The principal's turn shape can pivot from analytical to atmospheric within
+the same task — the surface word "soalan" can mean either. The agent's reflex
+is NOT to default to analytical (policy, evidence, structured reply) when the
+principal is asking for atmospheric reach (something the principal can
+imagine, or that lands at the body / senses / emotional register).
+
+**Two turn shapes the principal can switch between mid-task:**
+
+| Shape | Trigger phrases (any) | What the principal wants |
+|---|---|---|
+| **Analytical** | "audit", "eviden", "soal", "data", "kebenaran hakiki", "verify", "proceed" | A finding the principal can defend with evidence |
+| **Atmospheric** | "rasa", "suasana", "sound real", "feel like", "give it life", "shortcut", "real" (without qualifier), "Akma boleh jawab ya atau tidak" | A line or sentence the principal can imagine / repeat / use at impact |
+
+**The trap:** the principal says "3 soalan untuk dapat kebenaran hakiki"
+(analytical), then follows with "Akma boleh jawab ya atau tidak",
+"rasa manusia", "suasana" (atmospheric). The agent stays analytical
+throughout — produces correct evidence-backed soalan, but misses the
+principal's actual ask, which is "I want to *feel* how this reaches Akma,
+not the math behind it."
+
+**Rule:**
+
+1. **Detect turn-shape from the most recent 1-2 principal messages**, not
+   from the first message of the session. The shape can pivot mid-task.
+2. **Analytical shape:** structured reply, evidence bands, policy-grade
+   reasoning, named sources, [OBS]/[REP] provenance visible to principal.
+3. **Atmospheric shape:** single sharp sentence the principal can imagine,
+   sensory language when fitting, no tables, no footnotes, no menus, no
+   "alternative A/B/C". The line IS the deliverable.
+4. **When pivot detected mid-task**, the *next* turn switches shape. The
+   *current* artefact can stay as-is — the principal will tell you if they
+   wanted both. Do not retroactively rewrite the previous analytical
+   artefact into atmospheric unless explicitly asked.
+5. **Re-pivot signal:** if the principal re-pivots back to analytical
+   ("OK but I need it as PDF", "give me the receipts"), restore analytical
+   register for that turn. Pivot is bidirectional.
+
+**Why this is a separate pitfall from #18 (Forensic Mode) and #18b (RASA Mode).**
+#18b is about RASA register (sensory, tersirat, hashtag) for social-media
+output. #18 is about forensic-topic shape (sex, money, body, death) which
+is its own fourth mode regardless of analytical/atmosphical. This pitfall
+is about *mode-switching mid-task* — the principal's turn shape pivots,
+and the agent must follow. Same family of "register discipline" pitfalls,
+but different trigger fingerprint (pivot signals vs static signals).
+
+**Mechanical pre-flight for an atmospheric turn:** `wc -w draft` — if > 100
+words on atmospheric pivot, RE-DRAFT. `grep -cE '^## |^---|^\*\*[A-Z]' draft`
+— if > 1 hit, RE-DRAFT. Atmospheric reply is short by design, even when
+sitting under analytical input.
+
+**Worked example from session 2026-10-03.** Principal asked "3 soalan
+untuk dapat kebenaran hakiki" (analytical) → agent produced 3 evidence-
+backed policy questions about electricity tariff + gas supply (correct
+analytical output). Principal then pivoted: "Akma boleh jawab ya atau
+tidak", "rasa manusia", "suasana", "Buat ja bagi sampai rasa" (atmospheric).
+Agent stayed analytical — re-asked about PMX voice, listed 4 alternative
+voices. The atmospheric ask was: "give me something Akma can imagine
+herself saying, that lands at impact when she hears it." The right
+atmospheric reply was a single sharp sentence in BM casual that Akma
+could repeat to a friend. Analytical was correct for the first turn;
+atmospheric was correct for the pivot. Missing the pivot cost the
+session two turns of repeat-push frustration.
+
 ### 20. Programme-Paste Trigger — Numbered Multi-Phase Brief is a Programme, Not a Single-Turn Batch
 
 **Detection signals (ANY):** the message opens with `INIT →`, `PHASE 000 →`, `Step 1 to N`, `P0–Pn`, `9-node linkgraph flow`, `9 phases`, `20 phases`, or any block that enumerates a numbered execution programme in one paste. The user just handed you a programme; they did not command you to drive it in one turn.
