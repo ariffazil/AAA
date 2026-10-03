@@ -5,13 +5,13 @@
   "name": "Qwen Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Qwen/MiniMax bridge — the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Qwen/MiniMax bridge \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
-  "description": "Qwen Code CLI forge instrument — lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
+  "description": "Qwen Code CLI forge instrument \u2014 lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
   "version": "2.1.0",
   "qwen_version": "0.23.0",
-  "_card_synced": "2026-09-05 by FI-008 — updated to Qwen Code 0.23.0 release install",
+  "_card_synced": "2026-09-05 by FI-008 \u2014 updated to Qwen Code 0.23.0 release install",
   "model": "qwen / MiniMax-M3 bridge",
   "binary": "/root/.local/bin/qwen",
   "config": "/root/.qwen/settings.json",
@@ -118,15 +118,32 @@
         "tool_count": 35,
         "tools": [
           "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
+          "geox_calibration_register_witness",
           "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_contrast_metabolize",
+          "geox_deep_time",
+          "geox_extract_display_proxy",
+          "geox_extract_native_trace",
+          "geox_geomechanics",
+          "geox_glof",
+          "geox_list_registered_sources",
+          "geox_map",
+          "geox_model",
+          "geox_observe",
+          "geox_paleobiodb_query",
+          "geox_petrophysics",
+          "geox_prospect",
+          "geox_register_native_source",
+          "geox_seismic_compute",
+          "geox_seismic_ingest",
+          "geox_seismic_interpret",
+          "geox_source",
+          "geox_spatial",
+          "geox_surface_status",
+          "geox_temporal",
+          "geox_well",
+          "geox_well_ingest",
+          "geox_well_qc"
         ],
         "key_lanes": [
           "earth",
@@ -247,7 +264,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. F2, F9 enforced.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. F2, F9 enforced.",
       "tags": [
         "fabrication",
         "F2",
@@ -293,7 +310,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -335,7 +352,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -416,7 +433,7 @@
   "_model_sot": "/root/.config/federation-models.json",
   "kvm4_routing": {
     "dispatch": "ccc-remote qwen (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
-    "status": "LOST-IN-REBUILD — reinstall queued (KVM8 court copy unaffected)",
+    "status": "LOST-IN-REBUILD \u2014 reinstall queued (KVM8 court copy unaffected)",
     "member_of": "kvm4-ccc-pool",
     "updated": "2026-09-03T16:25+08:00"
   },
@@ -514,7 +531,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -539,8 +556,8 @@
   },
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
