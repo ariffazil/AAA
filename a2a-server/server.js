@@ -303,6 +303,9 @@ let redisClient = null;  // early declaration for federatedMemory bootstrap and 
 // Hermes A2A bridge (port 18001) decommissioned — all routing through AAA.
 const HERMES_A2A_URL = process.env.HERMES_A2A_URL || '';  // removed — route direct via Telegram
 const OPENCLAW_GATEWAY_URL = process.env.OPENCLAW_GATEWAY_URL || 'ws://127.0.0.1:18789';
+// A2A HTTPS surface (2026-10-02 333-AGI): gateway serves self-signed TLS on 18789,
+// A2A JSON-RPC at /a2a/v1 with Bearer peer token. Peer token in A2A_OPENCLAW_TOKEN.
+const OPENCLAW_A2A_URL = process.env.OPENCLAW_A2A_URL || 'https://100.64.0.5:18789/a2a/v1';
 const OPENCLAW_GATEWAY_PASSWORD =
   process.env.OPENCLAW_GATEWAY_PASSWORD || readEnvFileValue('/root/.openclaw/.env', 'OPENCLAW_GATEWAY_PASSWORD') || '';
 const OPENCLAW_AGENT_ID = process.env.OPENCLAW_AGENT_ID || 'main';
@@ -693,8 +696,35 @@ async function openOpenClawGatewayConnection(timeoutMs = 15000) {
   });
 }
 
+function a2aHttpsPostJson(url, bodyObj, token) {
+  return new Promise((resolve, reject) => {
+    const https = require('https');
+    const data = JSON.stringify(bodyObj);
+    const u = new URL(url);
+    const req = https.request({
+      hostname: u.hostname, port: u.port, path: u.pathname, method: 'POST',
+      rejectUnauthorized: false, // OpenClaw gateway TLS is self-signed (CN=openclaw-gateway)
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(data),
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+    }, (res) => {
+      let buf = '';
+      res.on('data', (c) => { buf += c; });
+      res.on('end', () => {
+        try { resolve({ status: res.statusCode, body: JSON.parse(buf) }); }
+        catch { resolve({ status: res.statusCode, body: {} }); }
+      });
+    });
+    req.on('error', reject);
+    req.setTimeout(120000, () => req.destroy(new Error('a2a request timeout')));
+    req.write(data);
+    req.end();
+  });
+}
+
 async function dispatchOpenClawTask({ targetAgent, message, skill, taskId, contextId, timeoutMs = 60000 }) {
-  const connection = await openOpenClawGatewayConnection(Math.min(timeoutMs, 15000));
   const sessionKey = createOpenClawSessionKey(taskId);
   const text = extractText(message).trim();
   const prompt = [
@@ -705,6 +735,54 @@ async function dispatchOpenClawTask({ targetAgent, message, skill, taskId, conte
     text,
   ].filter(Boolean).join('\n');
 
+  // A2A-first (2026-10-02 333-AGI): gateway serves HTTPS A2A at /a2a/v1 message/send
+  // with Bearer peer token. Legacy ws path cannot complete (18789 is TLS, not RFC6455).
+  const A2A_TOKEN = process.env.A2A_OPENCLAW_TOKEN || '';
+  if (OPENCLAW_A2A_URL && A2A_TOKEN) {
+    try {
+      const a2a = await a2aHttpsPostJson(OPENCLAW_A2A_URL, {
+        jsonrpc: '2.0', id: 'aaa-' + String(taskId).slice(-8),
+        method: 'message/send',
+        params: { message: { role: 'user', parts: [{ type: 'text', text: prompt }] } },
+      }, A2A_TOKEN);
+      const atask = a2a.body?.result?.task;
+      if (a2a.status === 200 && atask) {
+        const artifactParts = (atask.artifacts && atask.artifacts[0] && atask.artifacts[0].parts) || [];
+        const a2aText = artifactParts.map((p) => p.text || '').filter(Boolean).join('\n') || atask.error || 'OpenClaw A2A completed without text.';
+        return {
+          runId: atask.id,
+          sessionKey: atask.contextId || sessionKey,
+          status: atask.status?.state === 'TASK_STATE_COMPLETED' ? 'completed' : 'working',
+          text: a2aText,
+          error: null,
+        };
+      }
+      // non-200 or missing task: log it; retry once on 429 (per-minute peer limiter)
+      console.error('[openclaw] A2A no-task resolved status=' + a2a.status + ' body=' + JSON.stringify(a2a.body).slice(0, 160));
+      if (a2a.status === 429) {
+        await new Promise((r) => setTimeout(r, 3000));
+        const retry = await a2aHttpsPostJson(OPENCLAW_A2A_URL, {
+          jsonrpc: '2.0', id: 'aaa-' + String(taskId).slice(-8) + '-r',
+          method: 'message/send',
+          params: { message: { role: 'user', parts: [{ type: 'text', text: prompt }] } },
+        }, A2A_TOKEN);
+        const rtask = retry.body?.result?.task;
+        if (retry.status === 200 && rtask) {
+          const rParts = (rtask.artifacts && rtask.artifacts[0] && rtask.artifacts[0].parts) || [];
+          const rText = rParts.map((p) => p.text || '').filter(Boolean).join('\n') || rtask.error || 'OpenClaw A2A completed without text.';
+          return { runId: rtask.id, sessionKey: rtask.contextId || sessionKey, status: rtask.status?.state === 'TASK_STATE_COMPLETED' ? 'completed' : 'working', text: rText, error: null };
+        }
+        console.error('[openclaw] A2A retry no-task status=' + retry.status);
+      }
+    } catch (e) {
+      console.error('[openclaw] A2A path failed, falling back to ws:', e && e.message);
+    }
+  } else {
+    console.error('[openclaw] A2A path skipped (url=%s token=%s)', !!OPENCLAW_A2A_URL, !!A2A_TOKEN);
+  }
+  console.error('[openclaw] using gateway-protocol path (A2A did not return)');
+
+  const connection = await openOpenClawGatewayConnection(Math.min(timeoutMs, 15000));
   try {
     const agent = await connection.request('agent', {
       agentId: OPENCLAW_AGENT_ID,
@@ -2605,7 +2683,8 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
       { id: '555-ASI',   name: '555-ASI',   url: 'https://arifos.arif-fazil.com/a2a/555-ASI',   registered: true, role: 'federation', tier: 'primary', class: 'ASI',           ring: '❤️ HEART', stage: '555', organ_host: 'arifOS+ WELL' },
       { id: '888-APEX',  name: '888-APEX',  url: 'https://arifos.arif-fazil.com/a2a/888-APEX',  registered: true, role: 'federation', tier: 'primary', class: 'APEX',          ring: '⚖️ JUDGE', stage: '888', organ_host: 'arifOS' },
       { id: 'antigravity', name: 'antigravity', url: 'https://aaa.arif-fazil.com/a2a/antigravity',   registered: true, role: 'federation', tier: 'coding',  class: 'CODING',        ring: 'Ψ BODY',  stage: 'CODING', organ_host: 'Local Terminal' },
-      { id: 'openclaw',    name: 'OpenClaw',  url: 'https://aaa.arif-fazil.com/a2a/openclaw',         registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: 'Δ MIND',  stage: '333', organ_host: 'A-FORGE+ AAA' }
+      { id: 'openclaw',    name: 'OpenClaw',  url: 'https://aaa.arif-fazil.com/a2a/openclaw',         registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: 'Δ MIND',  stage: '333', organ_host: 'A-FORGE+ AAA' },
+      { id: 'hermes',      name: 'HERMES',    url: 'https://aaa.arif-fazil.com/a2a/hermes',           registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: '🕊️ SOUL', stage: 'MEANING', organ_host: 'arifOS+ WELL' }
     ],
     // DEPRECATED AGENTS (COLLAPSED 2026-07-15):
     //   - A-AUDIT  → absorbed into arifOS constitutional audit (arif_judge, arif_seal, arif_memory)

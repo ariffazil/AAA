@@ -167,6 +167,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - reality-bound-authority
 - reality-compression
 - reality-first
+- reality-gap-residual-doctrine-DRAFT-2026-10-02
 - reclassification-gate
 - register-as-channel
 - registry-witness-governance

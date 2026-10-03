@@ -108,24 +108,45 @@ done
 
 ---
 
-### Track C — BridgeProof semantic (P0.5, F13 dialis)
+### Track C — BridgeProof semantic (PARTIALLY COMPLETE 2026-10-02)
 
-**Goal:** Every equivalence claim is bridged before being emitted.
+**Goal:** Every equivalence claim is bridged before being emitted; canonical ratifications are honored; mutating tools are excluded from capability proof.
 
-**Adoption:**
-1. **Stop** A-FORGE's `forge_runtime_verify(strict=true)` from emitting DRIFT
-   when `Type(A)=git_sha` and `Type(B)=pep440`. Replace with
-   `BridgeProof(conclusion=TYPE_MISMATCH)` plus optional
-   `type_mismatch_resolution` if BUILDINFO/SBOM is available.
-2. **Stop** the CapabilityGraph from declaring MATCH between declared/exported/reachable
-   without a per-tool BridgeProof (`invocation` witness kind, witness_evidence_refs
-   populated with probe outputs).
-3. **Add** to every organ's health surface a typed vector per Measurement, with
-   `does_not_imply` populated for the top-3 common confusions
-   (e.g. `tcp_connect=true` does NOT imply `MCP call succeeds`, `data fresh`, `governance healthy`).
+**Sub-track C.1 — BridgeProof four-axis (DONE 2026-10-02):**
+- ✅ Replaced single-enum relation with four independent axes: `relation` (ontological), `comparability` (meaningfulness), `verification_state` (witness result), `probe_state` (procedural health).
+- ✅ Hard invariants: EQUIVALENT_TO requires COMPARABLE ∧ WITNESSED. ProbeFailure ≠ REFUTED. TYPE_MISMATCH ≠ DIVERGES_FROM. Empty evidence → UNRESOLVED.
+- ✅ `Comparable(A,B) = SameType(A,B) ∨ WitnessedBridge(A,B)` — heterogeneous types comparable through witnessed bridge function.
 
-**Gate for Track C → next track:** federation tests show that
-`Forge's last 30-day false-positive DRIFT count < 1/week`.
+**Sub-track C.2 — Canonical ratification reconciliation (DONE 2026-10-02):**
+- ✅ AuthorityEnvelope restored to 12-field tuple: Actor, Session, Host, Objective, Operation, Scope, Target, Issuer, Expiry, ExpectedPostcondition, Budget, RevocationRef (per instructions/authority-envelope.md, ratified 25 Sep). Added `bridge_proof_refs` for identity verification.
+- ✅ ReleaseLinkGate hardened: added required `observed_at`, `canonical_url`, `retrieval_method`, `verifier_identity`, `content_source_identity_hash`. JSON Schema if/then enforces `region_match` mandatory for app/paper kinds. Removed unexplained "(Karim et al)" attribution.
+- ✅ CapabilityGraph expanded from 4 layers to 7: declared → registered → exported → reachable → contract_valid → safely_probeable → observed_callable. New `mutating_tools[]` set identifies MUTASI/DEPLOY tools EXCLUDED from observed_callable via HARD INVARIANT (capability proof cannot create consequences while measuring truth).
+
+**Sub-track C.3 — Reconciliation outputs (DONE 2026-10-02):**
+- ✅ `/root/AAA/schemas/ir/RECONCILIATION.md` — 7-canon survey; 17-row reconciliation matrix; 4 semantic-duplication resolutions detected and rejected; 7 C.3 follow-ups documented.
+- ✅ `/root/AAA/schemas/ir/DEPENDENCIES.md` — schema DAG; 8 cross-schema `$ref` instances verified; co-location rule documented.
+- ✅ `/root/AAA/schemas/ir/EPISTEMIC_TAXONOMY.md` — canonical 5-class taxonomy from `lib/reality_graph.py`; 11-row "want to write X → use Y" mapping; new-class addition protocol documented.
+- ✅ `/root/AAA/schemas/ir/VALIDATOR_PLAN.md` — 7 validators; gold + adversarial fixture catalog; CI integration blueprint.
+
+**Sub-track C.4 — Deferred until C.4 prerequisites (Auth C.3 follow-ups):**
+- ❌ Add `contradiction_index` field to Worldline.epsilon (RECONC row 14)
+- ❌ Add `n_eff` derived field to EvidencePacket (RECONC row 15)
+- ❌ Add `warrant_score` derived field (RECONC row 17)
+- ❌ Define RealityAssertion.freshness → TemporalPacket.freshness_class mapping (RECONC row 5)
+- ❌ Define TaskIR → TaskEnvelope adapter (RECONC row 10)
+- ❌ Add `content_sha256` registry to IR_REGISTRY.v1 (Detection pattern in RECONCILIATION)
+- ❌ Update PeerFederationContract → AuthorityEnvelope adapter (RECONC row 9)
+- ❌ Define EpistemicMembrane schema (when added) per HHMM E12 13-field list (RECONC row 8)
+- ❌ Fixture authoring per VALIDATOR_PLAN.md
+- ❌ GitHub diff independent review
+
+**C.3 gate before FROZEN status:
+1. All $ref cross-schema dependencies validate
+3. Reconciliation matrix produced against existing canon (representation-reality-invariant.md, truth-kernel.md, lib/reality_graph.py, a2a-v1.0.schema.json, peer-federation-contract.schema.json, task-envelope.schema.json, specs/HHMM/INIT-SPEC-v0.1.md)
+4. Validator + fixture suite passes
+5. A2A round-trip test passes
+6. No semantic duplicate exists
+7. GitHub diff independently reviewed
 
 ---
 

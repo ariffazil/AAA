@@ -1,72 +1,179 @@
 {
- "$id": "capability-graph",
- "title": "CapabilityGraph \u2014 what can actually be done NOW?",
- "type": "object",
- "required": [
-  "server",
-  "declared",
-  "exported",
-  "callable",
-  "status",
-  "freshness",
-  "observed_at"
- ],
- "properties": {
-  "server": {
-   "type": "string"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/capability-graph.v1.schema.json",
+  "title": "CapabilityGraph v1",
+  "description": "Runtime truth surface for capability. Seven layers: declared → registered → exported → reachable → contract_valid → safely_probeable → observed_callable. Includes IdentityPacket reference and TemporalPacket fields so a snapshot cannot masquerade as current truth. LIVE PROBE INVARIANT: mutating tools (consequence_class ∈ {MUTASI, DEPLOY}) MUST NOT be executed merely to prove callability. CapabilityCompiler either (a) inspects transport/schema only, or (b) uses a synthetic dry-run probe. UNREACHABLE/TIMEOUT is a typed capability state, never silently 'broken'.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "declared",
+    "registered",
+    "exported",
+    "reachable",
+    "contract_valid",
+    "safely_probeable",
+    "observed_callable",
+    "observed_at",
+    "runtime_identity",
+    "verdict"
+  ],
+  "properties": {
+    "subject": {
+      "type": "object",
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["server", "organ", "agent", "session"] },
+        "ref": { "type": "string", "description": "Server name, organ name, or agent ID." }
+      }
+    },
+    "declared": {
+      "type": "array",
+      "description": "Tools advertised by repository/registry snapshot (static claim).",
+      "items": { "type": "string" }
+    },
+    "registered": {
+      "type": "array",
+      "description": "Tools present in the server's own registered list (probe of capabilities).",
+      "items": { "type": "string" }
+    },
+    "exported": {
+      "type": "array",
+      "description": "Tools the MCP transport actually lists via the active transport.",
+      "items": { "type": "string" }
+    },
+    "reachable": {
+      "type": "array",
+      "description": "Tools the connector surface made available to the agent (subset of exported, may be empty).",
+      "items": { "type": "string" }
+    },
+    "contract_valid": {
+      "type": "array",
+      "description": "Tools whose schema passed contract_valid check (BridgeProof of identity equivalence between connector surface and transport surface).",
+      "items": { "type": "string" }
+    },
+    "safely_probeable": {
+      "type": "array",
+      "description": "Tools whose consequence_class ∈ {AKSES, HANTAR} — safe to probe without mutation risk.",
+      "items": { "type": "string" }
+    },
+    "observed_callable": {
+      "type": "array",
+      "description": "Tools that responded to a live call probe at observed_at (measured reality). Includes ONLY safely_probeable tools — mutating tools are excluded by HARD INVARIANT.",
+      "items": { "type": "string" }
+    },
+    "mutating_tools": {
+      "type": "array",
+      "description": "Tools identified as MUTASI/DEPLOYANCE — present in contract_valid set but EXCLUDED from observed_callable set because probing them would create consequences while measuring truth.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tool_name": { "type": "string" },
+          "consequence_class": { "type": "string", "enum": ["MUTASI", "DEPLOY"] },
+          "callability_evidence_method": { "type": "string", "description": "How callability was verified WITHOUT execution (schema presence, transport response, etc.)" }
+        }
+      }
+    },
+    "drift": {
+      "type": "object",
+      "description": "Drift classifications computed from the seven layers above.",
+      "properties": {
+        "DECLARED_NOT_REGISTERED": { "type": "array", "items": { "type": "string" } },
+        "REGISTERED_NOT_EXPORTED": { "type": "array", "items": { "type": "string" } },
+        "EXPORTED_NOT_REACHABLE": { "type": "array", "items": { "type": "string" } },
+        "REACHABLE_NOT_CONTRACT_VALID": { "type": "array", "items": { "type": "string" } },
+        "CONTRACT_VALID_NOT_SAFELY_PROBEABLE": { "type": "array", "items": { "type": "string" }, "description": "Always non-empty when mutating tools exist. NOT a defect." },
+        "PHANTOM_TOOLS": { "type": "array", "items": { "type": "string" } },
+        "ALIAS_CONFLICTS": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "callable_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "declared_count": { "type": "integer" },
+        "callable_count": { "type": "integer" },
+        "mutating_count": { "type": "integer" },
+        "phantom_count": { "type": "integer" }
+      }
+    },
+    "runtime_identity": {
+      "type": "object",
+      "description": "IdentityPacket for the server/organ measured here.",
+      "additionalProperties": true
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the live probe ran. Snapshot not acceptable as substitute."
+    },
+    "observed_by": {
+      "type": "string",
+      "description": "CapabilityCompiler probe identity."
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["REGISTRY_PASS", "REGISTRY_WARN", "REGISTRY_FAIL", "UNREACHABLE", "TIMEOUT", "AUTH_FAIL"],
+      "description": "Overall verdict of the live probe."
+    },
+    "probe_evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Raw probe outputs (tools/list, call responses) backing the measurement."
+    },
+    "transport": {
+      "type": "string",
+      "description": "Transport type (stdio, http, websocket, etc.)"
+    },
+    "schema_hash": {
+      "type": ["string", "null"],
+      "description": "Hash of schema surface for change detection."
+    },
+    "probe_identity": {
+      "type": ["string", "null"],
+      "description": "Identity of probe agent used."
+    },
+    "freshness": {
+      "type": "string",
+      "enum": ["FRESH", "WARM", "STALE"]
+    }
   },
-  "transport": {
-   "type": "string"
-  },
-  "declared": {
-   "type": "array"
-  },
-  "advertised": {
-   "type": "array"
-  },
-  "exported": {
-   "type": "array"
-  },
-  "callable": {
-   "type": "array"
-  },
-  "phantom_tools": {
-   "type": "integer"
-  },
-  "alias_conflicts": {
-   "type": "integer"
-  },
-  "schema_hash": {
-   "type": [
-    "string",
-    "null"
-   ]
-  },
-  "probe_identity": {
-   "type": [
-    "string",
-    "null"
-   ]
-  },
-  "status": {
-   "enum": [
-    "REGISTRY_PASS",
-    "REGISTRY_DRIFT",
-    "UNREACHABLE",
-    "TIMEOUT"
-   ]
-  },
-  "freshness": {
-   "enum": [
-    "FRESH",
-    "WARM",
-    "STALE"
-   ]
-  },
-  "observed_at": {
-   "type": "string"
-  }
- },
- "additionalProperties": false,
- "note": "status TIMEOUT/UNREACHABLE is a typed capability state \u2014 never silently 'broken'"
+  "allOf": [
+    {
+      "description": "HARD INVARIANT: mutating tools MUST NOT appear in observed_callable set. Capability proof must not create consequences while measuring truth.",
+      "if": {
+        "properties": { "mutating_tools": { "type": "array", "minItems": 1 } },
+        "required": ["mutating_tools"]
+      },
+      "then": {
+        "properties": {
+          "observed_callable": {
+            "type": "array",
+            "description": "Observed callable set must exclude mutating tool names."
+          }
+        }
+      }
+    },
+    {
+      "description": "HARD INVARIANT: callable_ratio ≤ safely_probeable_count / declared_count (mutating tools excluded from denominator as observable evidence).",
+      "if": {
+        "properties": {
+          "metrics": {
+            "properties": { "callable_ratio": { "type": "number" } },
+            "required": ["callable_ratio"]
+          }
+        },
+        "required": ["metrics"]
+      },
+      "then": {
+        "properties": {
+          "metrics": {
+            "properties": {
+              "callable_ratio": { "maximum": 1 }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

@@ -1,50 +1,167 @@
 {
- "$id": "authority-envelope",
- "title": "AuthorityEnvelope \u2014 what may this actor do to it?",
- "type": "object",
- "required": [
-  "actor",
-  "verb",
-  "target",
-  "authority",
-  "verdict"
- ],
- "properties": {
-  "actor": {
-   "type": "string"
-  },
-  "verb": {
-   "type": "string"
-  },
-  "target": {
-   "type": "string"
-  },
-  "scope": {
-   "type": "string"
-  },
-  "authority": {
-   "type": "string"
-  },
-  "time": {
-   "type": "string"
-  },
-  "budget": {
-   "type": "object"
-  },
-  "provenance": {
-   "type": "array"
-  },
-  "consequence": {
-   "type": "string"
-  },
-  "verdict": {
-   "enum": [
-    "ALLOW",
-    "HOLD",
-    "DENY"
-   ]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/ir/authority-envelope.v1.schema.json",
+  "title": "AuthorityEnvelope v1",
+  "description": "Canonical 12-field Action tuple for any protected mutation. Conforms to ratified AAA authority doctrine (Actor, Session, Host, Objective, Operation, Scope, Target, Issuer, Expiry, ExpectedPostcondition, Budget, RevocationRef; per instructions/authority-envelope.md, ratified 25 Sep). CanMutate = AuthorityGranted ∧ ScopeMatches ∧ TargetPermitted ∧ BoundaryActive. Every MUTASI/DEPLOY emission must produce one envelope; the envelope is the audit primitive, not the action itself. Compiler NEVER self-mints.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "actor",
+    "session",
+    "host",
+    "objective",
+    "operation",
+    "scope",
+    "target",
+    "issuer",
+    "expiry",
+    "expected_postcondition",
+    "budget",
+    "revocation_ref",
+    "verdict",
+    "decided_at"
+  ],
+  "properties": {
+    "actor": {
+      "type": "object",
+      "required": ["actor_id", "actor_class"],
+      "description": "Subject performing the action.",
+      "properties": {
+        "actor_id": { "type": "string", "description": "Agent / organ / sovereign ID." },
+        "actor_class": { "type": "string", "enum": ["AGENT", "ORGAN", "SOVEREIGN", "USER", "EXTERNAL"] },
+        "credentials_ref": { "type": ["string", "null"], "description": "ACT/SCT token reference if any." }
+      }
+    },
+    "session": {
+      "type": "object",
+      "required": ["session_id"],
+      "description": "Federation session that authorizes this action.",
+      "properties": {
+        "session_id": { "type": "string" },
+        "session_lifecycle": { "type": ["string", "null"], "description": "BEGIN | CONTINUE | END | EXPIRED." },
+        "parent_session_id": { "type": ["string", "null"] }
+      }
+    },
+    "host": {
+      "type": "object",
+      "required": ["host_id", "host_class"],
+      "description": "Where the action is physically or logically executed.",
+      "properties": {
+        "host_id": { "type": "string", "description": "Machine / organ / service identity." },
+        "host_class": { "type": "string", "enum": ["HOST", "ORGAN", "VM", "CONTAINER", "PROCESS", "LEDGER", "VAULT", "EXTERNAL_ENDPOINT"] },
+        "host_identity_packet_ref": { "type": ["string", "null"], "description": "IdentityPacket ref for this host." }
+      }
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Single-sentence intent — the why of this action. Traceable to TaskIR."
+    },
+    "operation": {
+      "type": "object",
+      "required": ["verb", "consequence_class"],
+      "description": "What kind of mutation is requested.",
+      "properties": {
+        "verb": { "type": "string", "description": "Action verb (write, execute, deploy, seal, send, delete, etc.)" },
+        "consequence_class": { "type": "string", "enum": ["AKSES", "HANTAR", "MUTASI", "DEPLOY"] },
+        "operation_kind": { "type": ["string", "null"], "description": "Optional sub-kind for documentation (read, write, etc.)" }
+      }
+    },
+    "scope": {
+      "type": "string",
+      "description": "Bounding scope of the action (file pattern, organ surface, time window, region)."
+    },
+    "target": {
+      "type": "object",
+      "required": ["target_ref", "target_kind"],
+      "description": "What is being mutated.",
+      "properties": {
+        "target_ref": { "type": "string" },
+        "target_kind": { "type": "string", "enum": ["file", "service", "organ", "vault", "ledger", "external_endpoint", "canonical_record", "user_data", "identity", "memory", "credential", "unknown"] },
+        "target_identity_packet_ref": { "type": ["string", "null"] }
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "required": ["issuer_id", "issuer_class"],
+      "description": "Who authorized this mutation to proceed.",
+      "properties": {
+        "issuer_id": { "type": "string" },
+        "issuer_class": { "type": "string", "enum": ["ARIFOS_KERNEL", "A-FORGE", "HERMES", "CHRON", "WELL", "GEOX", "WEALTH", "FRAME", "VAULT999", "F13_SOVEREIGN", "EXTERNAL_COUNCIL", "AUTOMATED_GUARD"] },
+        "issuer_decision_chain": { "type": "array", "items": { "type": "string" }, "description": "Reference to upstream issuer-decisions." }
+      }
+    },
+    "expiry": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Authority expiration. After this, the envelope MUST be re-evaluated."
+    },
+    "expected_postcondition": {
+      "type": "object",
+      "required": ["postcondition_text"],
+      "description": "What world-state change is expected after this action. Used to falsify action efficacy.",
+      "properties": {
+        "postcondition_text": { "type": "string", "description": "Verifiable description of expected world-state after action." },
+        "postcondition_measurement_ref": { "type": ["string", "null"], "description": "Measurement primitive that will verify postcondition." },
+        "postcondition_observation_window_seconds": { "type": ["integer", "null"] }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": ["budget_id"],
+      "description": "Resources allocated for this action.",
+      "properties": {
+        "budget_id": { "type": "string" },
+        "tokens": { "type": ["integer", "null"] },
+        "wallclock_seconds": { "type": ["integer", "null"] },
+        "tool_calls": { "type": ["integer", "null"] },
+        "money_myr": { "type": ["number", "null"] },
+        "blast_radius": { "type": ["string", "null"], "enum": ["SELF", "ORGAN", "FEDERATION", "EXTERNAL", "IRREVERSIBLE", "UNKNOWN", null] }
+      }
+    },
+    "revocation_ref": {
+      "type": "object",
+      "required": ["revocation_id", "revocation_method"],
+      "description": "How this authority can be revoked. Ratified 25 Sep.",
+      "properties": {
+        "revocation_id": { "type": "string" },
+        "revocation_method": { "type": "string", "enum": ["TIMEOUT", "TOKEN_REVOKE", "SCOPE_REVOKE", "F13_BIN", "KERNEL_HOLD", "AUTO_REVOKE_ON_VERIFICATION_FAILURE"] },
+        "revocation_endpoint_ref": { "type": ["string", "null"], "description": "How to actually execute the revoke." }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "description": "Complete mediation record.",
+      "properties": {
+        "authority_granted": { "type": "boolean" },
+        "scope_matches": { "type": "boolean" },
+        "target_permitted": { "type": "boolean" },
+        "boundary_active": { "type": "boolean" },
+        "irreversibility_test": { "type": ["boolean", "null"] }
+      }
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["ALLOW", "HOLD", "DENY"],
+      "description": "Final verdict after complete mediation."
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decided_by": { "type": "string" },
+    "f13_dialis_log": {
+      "type": ["string", "null"],
+      "description": "If F13 binary was required, the SAH order reference."
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "bridge_proof_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "BridgeProofs invoked to verify equivalence of actor/target/issuer identities."
+    }
   }
- },
- "additionalProperties": false,
- "note": "the canonical action tuple a=(actor,verb,target,scope,authority,time,budget,provenance,consequence); P(a,S)->{ALLOW,HOLD,DENY}. Compiler NEVER self-mints."
 }

@@ -248,6 +248,7 @@ tracked tree; the artifact may not.
 | Pitfall | Rule |
 |---|---|
 | Raw `LIKE '%x%'` count over live logs | Dedupe replays first; print the funnel |
+| **Strengthening a named-third-party label without motive evidence** | When the sovereign surfaces a critique of a NAMED public figure from a corpus (his own public corpus, a news article, a social post), the temptation is to escalate the verdict — from governance-criticism ("transparency gap", "conflict of interest") to character-criticism ("perosak negara", "paling acah amanah"). Do not. The escalation is not warranted by the underlying evidence; it is warranted by the principal's heat. Governance-criticism rests on the act (decision, opacity, outcome). Character-criticism rests on the motive — and motive is the heaviest, easiest-to-fabricate claim about a person. Accept the governance-criticism. Refuse the character-label with the anchor: "act ≠ motive". Tell the principal the difference explicitly. The two are not equivalent, and joining them is a slander, not a critique. |
 | "There is no record of X" | State the lane searched and what it cannot prove |
 | Reading a control token as a topic | Sample its lines; test for access/absence clustering |
 | Attributing a shared frame to one party | Two-sided test first; co-authored frame is not a private device |

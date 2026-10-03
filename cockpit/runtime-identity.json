@@ -1,22 +1,22 @@
 {
   "schema": "runtime-identity-v1",
-  "generated_at": "2026-10-01T22:42:45.118789+00:00",
+  "generated_at": "2026-10-03T04:05:23.127079+00:00",
   "sovereign_law": "Source \u2260 build \u2260 deployed \u2260 imported runtime; all four identities must be measurable; drift surfaced as CONTRADICTION",
   "organs": {
     "arifos": {
       "source_path": "/root/arifOS",
       "runtime_path": "/opt/arifos/app",
-      "source_sha": "800eb0ae0",
+      "source_sha": "dd6183d63",
       "source_file_sha": "5a98075d4827",
-      "runtime_file_sha": "5a98075d4827",
-      "pkg_version": "import-error:ModuleNotFoundError",
+      "runtime_file_sha": "no-runtime-dir",
+      "pkg_version": "1!2026.9.6",
       "pkg_version_note": "semantic, not hash-equal to source_sha (different question)",
       "drift_signals": []
     },
     "aforge": {
       "source_path": "/root/A-FORGE",
       "runtime_path": "/opt/a-forge",
-      "source_sha": "c1255a61",
+      "source_sha": "4b8ab1cc",
       "source_file_sha": "e6ae31b0b04c",
       "runtime_file_sha": "no-py",
       "pkg_version": "import-error:ModuleNotFoundError",
@@ -26,7 +26,7 @@
     "frame": {
       "source_path": "/root/AAA/federation/frame",
       "runtime_path": "/opt/frame/app",
-      "source_sha": "64945ded",
+      "source_sha": "0d89f741",
       "source_file_sha": "66d12e7c41e6",
       "runtime_file_sha": "644728d2381e",
       "pkg_version": "import-error:ModuleNotFoundError",
@@ -45,7 +45,7 @@
         "drift_signals": [
           "source_file_sha != runtime_file_sha"
         ],
-        "source_sha": "64945ded",
+        "source_sha": "0d89f741",
         "pkg_version": "import-error:ModuleNotFoundError",
         "note": "HASH-equivalence only; pkg_version is semantic, not drift"
       }
@@ -71,5 +71,5 @@
       "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"
     }
   },
-  "integrity_hash": "4f150e1320412870693ac6a64a9e1374be4e336f2634ec0778fbb569ffdd4d62"
+  "integrity_hash": "0764e08570752e16aacadc6b99b1fdf79354e6d2e8bba31e685b91282a72df68"
 }
