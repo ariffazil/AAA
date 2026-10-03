@@ -1,12 +1,12 @@
 ---
 name: agy-scar-hardening
-description: "Operating hardening doctrine for Antigravity CLI (FI-009 / agy) derived from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007)."
+description: "Operating hardening doctrine for Antigravity CLI (FI-004 canonical / agy) derived from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007)."
 trigger: always_on
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
-# AGY Scar Hardening — FI-009 Operating Laws
+# AGY Scar Hardening — FI-004 Operating Laws
 
 > Every law below was forged from a real failure. Confidence ≥ 0.82.
 
