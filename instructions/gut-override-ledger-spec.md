@@ -6,6 +6,8 @@
 > **Operational gate:** Code work held until arifOS edge wired (per KIMI/OPENCODE relay paste_15_000137 — open identity_hash outranks calibration instrument). Doctrine file SEAL-ready; implementation sequenced behind security gate.
 >
 > **AMENDMENT (FI-008 audit, 2026-10-04):** `gut_read` must be the human's **verbatim words** (quoted) or empty. Agent-synthesized gut-reads are forbidden in this table — per `bridge-protocol` rule 8, the stated reason is data, the inferred reason is fabrication. A GOL row with a fabricated gut_read would launder the exact R-FILTER defect this doctrine exists to catch. Schema unchanged; provenance constraint only.
+>
+> **AMENDMENT 2 (FI-008, 2026-10-04):** durable rows (anything leaving local scratch — CHRON data dir, repo, receipts) must pass a **third-party privacy pass**: named third parties (supervisors, family, community leads) are recorded as role labels (`supervisor`, `sibling`, `community_lead`), never by name. The sovereign's own verbatim words stay verbatim. Third parties are not data we own.
 
 ---
 
