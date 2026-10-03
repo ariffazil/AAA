@@ -884,6 +884,10 @@ components:
     live_probe_2026_08_12:
       status: active
       note: "Identity layer — no standalone process. Runs via litellm FED chain :4000. 13 model chains registered."
+    live_probe_2026_10_03:  # 333-AGI SEAL-1233ff7266744510 (F13 directive: map FED + align warga)
+      status: active_restored
+      evidence: "model=i-arif via KVM8 :4000 → 'Invalid model name' (OBS 10:52 MYT): 8 deployments accidentally dropped by A-FORGE bulk checkpoint bc98843d (2026-09-30). Restored verbatim from bc98843d^ (A-FORGE 6a05314f) + canonical deepseek-v4-pro fallback group added (b4670f33) + retry_policy alignment (4b8ab1cc). Applied live via controlled restart 11:01 MYT (25s window). Regression: i-arif PONG 3036ms finish=stop; /v1/models 2/2; apex-888/asi-555/forge-777/hermes-asi all PONG; 0 config errors. KVM4 backup retained the lane throughout. No live breakage had occurred: HERMES runtime rides hermes-asi + direct model names + i-arif-sovereign AUDIO provider (OBS /root/.hermes/config.yaml), never model=i-arif."
+      chain_state: "8 deployments: qwen3.8-max (o2) · mimo-v2.6-pro-payg (o2) · qwen3.8-max (o3) · gemini-3.6-flash (o4) · MiniMax-M3 (o6) · glm-5.3-flash (o7) · deepseek-flash (o90 vision rung) · mimo-v2.5 (o91). All 10 referenced env keys present in container (names-only check)."
     owned_domains:
       - identity_core
       - qualia_synthesis
