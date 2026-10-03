@@ -20,6 +20,10 @@ Say plainly that direction is not knowable from here, then give the range and wh
 
 ## Procedure
 
+**Step 0 — pre-fail on sovereign / named-human subjects (2026-10-03).**
+
+Before any directional forecast about a sovereign, a leader, a named private individual, or a relationship between two named humans, the prediction must carry a `rationality_filter_class` tag (from the CHRON R-FILTER schema bump) or the model must refuse. Rationale: see `/root/AAA/instructions/rationality-filter-doctrine.md` — the corpus systematically underrepresents this class of decision. Synthesising a motive or numerical prediction without the tag launders the apparatus bias into the answer. When in doubt, refuse with the volatility envelope — the human can still choose a direction, but the model's confidence is bounded by the data boundary, not by its surface fluency.
+
 **Step 1 — check the engine's calibration before quoting it.**
 
 Hit the organ/service health endpoint and read the calibration block (`verified`, `accuracy`, `brier`). If `verified == 0` or accuracy is ~0, the engine has no demonstrated skill: label it `HYPOTHESIS_ONLY` and say so in the reply. A signal tool answering `verdict: SABAR` with RR < 1.5 and confluence ~0 is telling you there is no setup — report that as the answer, not as something to reason past.
