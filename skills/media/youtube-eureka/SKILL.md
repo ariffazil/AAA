@@ -23,21 +23,26 @@ ecology_state: WARM
 ## Strategy waterfall (auto-tries until one works)
 
 > **SCAR-HERMES-VIDEO-001 (2026-09-15):** NEVER give up after 1 attempt. Try ALL methods.
+> **SCAR-HERMES-VIDEO-002 (2026-10-03):** Do NOT hand-roll the lanes below. S0 **is** the
+> waterfall — it composes every live lane (SerpApi captions → Firecrawl media → Groq STT)
+> with truth labels and caching. On 2026-10-03 a session hand-rolled S1→S5 first and burned
+> ~4 minutes on lanes that were verified dead the same day, then mislabeled its own success.
 
 | # | Method | How | Speed | Coverage |
 |---|--------|-----|-------|----------|
-| **S1** | `youtube-transcript-api` v1.2.4 | `YouTubeTranscriptApi().fetch(video_id)` | ~3s | Popular + short videos; blocked on cloud IPs |
-| **S2** | `yt-dlp --write-auto-sub` | Parses TTML/json3 subtitle files | ~8s | Works when S1 blocked; same bot-check risk |
-| **S3** | `yt-dlp` audio download + `whisper tiny` | Downloads .m4a + transcribes locally | 10–60s+ | **works on any video** (slow but reliable) |
-| **S4** | cookies at `/root/.secrets/yt-cookies.txt` | Auto-injected into S1/S2/S3; no separate step | varies | Last resort; uses user's browser session cookies |
-| **S5** | Firecrawl MCP (`firecrawl_scrape`) | Proxy network, bypasses IP block | ~10s | Full transcript + metadata + chapters |
+| **S0** | **`media_ingest_url` MCP — or shell: `/root/scripts/yt-context.sh URL`** | Governed lane ladder: SerpApi captions → Firecrawl media → Groq STT → frames/vision. `text_only=True` (the shell default) for transcript-only work; results cached. Trust its `truth_state` + `transcript_state` — and note: `transcript` non-empty means you HAVE the transcript even if some probe lane failed. | ~10s text / ~4min full | **PRIMARY. Verified 2026-10-03: SerpApi lane returned 191 segments in 7.3s on a fully bot-flagged video** (`/root/forge_work/media_ingest/2026-10-03/youtube-7f5fc403/`). |
+| **S1** | ~~`youtube-transcript-api`~~ | DEAD on this IP (bot-check). Re-verified 2026-10-03. | — | do not use first |
+| **S2** | ~~`yt-dlp --write-auto-sub`~~ | DEAD on this IP: ALL player clients (`tv`, `web_embedded`, `android_vr`, `tv_downgraded`, `web_creator`, `mweb`) + raw InnerTube POST return `LOGIN_REQUIRED`. Re-verified 2026-10-03. | — | do not use first |
+| **S3** | audio + whisper | Only via S0's composed STT lane, never hand-rolled (yt-dlp cannot even fetch audio from this IP). | — | fallback inside S0 |
+| **S4** | cookies at `/root/.secrets/yt-cookies.txt` | Ineffective as-is: that file holds ANONYMOUS consent cookies only (no login SID) — proven 2026-10-03. Real cookies = throwaway Google account, last resort, ban risk. | varies | last resort |
+| **S5** | Firecrawl MCP markdown | Metadata + description ONLY — the transcript block no longer renders on the watch page (verified 2026-10-03 on `Oz7GXguhCfA`). Fine for metadata; never for transcripts. | ~2s | metadata, not transcript |
 | **S6** | Exa MCP semantic search | Finds content ABOUT the video | ~5s | Related content, not exact transcript |
 | **S7** | ZAI Web Search | Broad search for video content | ~5s | Related content |
 | **S8** | Gemini AI (`forge_gemini`) | AI describes from URL | ~10s | May not have real-time access |
 
-**Automated fallback script:** `python3 /root/.hermes/profiles/aaa-hermes/skills/media/youtube-content/scripts/youtube_ingest.py "URL"`
+**Automated fallback script:** `python3 /root/.hermes/profiles/aaa-hermes/skills/media/youtube-content/scripts/youtube_ingest.py "URL"` (legacy; S0 supersedes it)
 
-**Key reality from this VPS:** S1 and S2 are blocked for most videos (YouTube bot-check on cloud IPs). S3 works but is slow. S5 (Firecrawl) is the fastest reliable path when S1/S2 fail — but Firecrawl must be running.
+**Key reality from this VPS (re-verified 2026-10-03):** the VPS IP is flagged request-level — every local extraction route dies at YouTube's player API. S0 is the only transcript path; its egress is SerpApi/Firecrawl, not this IP. `youtube.com/oembed` always works for metadata-only. Metadata without any lane: `curl -sL "https://www.youtube.com/oembed?url=https://youtu.be/ID&format=json"`.
 
 **FAILURE PROTOCOL:** If ALL S1-S8 fail, you MUST:
 1. Tell user: "YouTube blocked server-side extraction."
