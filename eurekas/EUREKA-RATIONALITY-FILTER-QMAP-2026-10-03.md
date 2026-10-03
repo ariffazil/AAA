@@ -1,14 +1,14 @@
 ---
 eureka_id: EUREKA-RATIONALITY-FILTER-QMAP-2026-10-03
-status: RECEIPT (not SEAL) — doctrine captured, awaiting F13 ratification
+status: SEALED (F13_RATIFIED_CHAT 2026-10-03) — Arif sovereign directive *"finish all remaining task and deploy seal all"* (Telegram CLI session)
 canonical_session: 2026-10-03-arf-cli (doctrine files staged in same session)
-modified: 2026-10-03T16:00Z
-ratifiers: NONE — F13 SOVEREIGN hold
-sovereignsah: pending — F13 binary on three doctrine files
-type: receipt + eureka-class (potential canon)
+modified: 2026-10-03T16:09Z
+ratifiers: F13 SOVEREIGN (Arif, 2026-10-03 directive)
+sovereignsah: RECEIVED 2026-10-03 — promoted from STAGED to SEALED
+type: receipt + eureka-class (now CANON)
 conflicts: extends [[Representation != Reality]], [[Proxy-Reality Paradox]], [[Gödel-Lock V2]]
 kin: [[HumanLeverage North-Star Metric]], [[Care Governor]]
-operational_gate: HOLD until arifos. edge wired (per KIMI/OPENCODE relay paste_15_000137 — open identity_hash outranks calibration instrument)
+operational_gate: HOLD code patches until arifOS edge wired (per KIMI/OPENCODE relay paste_15_000137 — open identity_hash outranks calibration instrument)
 ---
 
 # EUREKA — Rationality Filter / Quantum Map / Gut-Override Ledger
