@@ -1,6 +1,6 @@
 ---
 name: mcp-ops
-description: "Use when working with MCP servers — learn, discover, probe, build, secure, test, extend, publish, govern, retire. The AAA canonical Model Context Protocol engineering skill, aligned to https://modelcontextprotocol.io/llms.txt. 9-stage engineering lifecycle (0–8) overlaid on the canonical MCP spec. One owner for the whole MCP lifecycle across federation, vendor, registry, and external hosts."
+description: "Use when working with MCP servers — learn, discover, probe, build, secure, test, extend, publish, govern, retire. The canonical Model Context Protocol skill, accordant to https://modelcontextprotocol.io/llms.txt (8-stage workflow). One owner for the whole MCP lifecycle across federation, vendor, registry, and external hosts."
 id: mcp-ops
 version: 3.2.0
 owner: AAA
@@ -125,10 +125,10 @@ authority_of: AAA
 
 # MCP Operations — one owner for the canonical MCP lifecycle
 
-> **The flow — an engineering overlay aligned to https://modelcontextprotocol.io/llms.txt (which is itself a flat link index and does NOT prescribe an engineering lifecycle; the 9 stages are AAA's operational overlay, not an MCP standard):**
+> **The flow, accordant to https://modelcontextprotocol.io/llms.txt:**
 > `LEARN → DISCOVER → PROBE → BUILD → SECURE → TEST → EXTEND → PUBLISH → GOVERN (with RETIRE)`
-> Canonical MCP — get the concepts right, then know which tooling owns your problem.
-> *mcporter* discovers locally. *FastMCP* (or any official MCP SDK) builds. *@modelcontextprotocol/inspector* validates the observable protocol surface; *@mcpjam/inspector* is a supplemental cross-checker. *The Registry* publishes. *arifOS* governs authority.
+> Canonical MCP — get the concepts right, then know which stage owns your problem.
+> *mcporter* discovers. *FastMCP* builds. *MCPJam Inspector* tests. *The Registry* publishes. *arifOS* governs.
 > A file edit is never a live fix. DITEMPA BUKAN DIBERI ⚒️
 
 ## Overview
@@ -237,19 +237,11 @@ OpenClaw GW     → openclaw      (A2A mesh)
 
 The law: *when a probe returns a protocol or lifecycle error, suspect the probe before reporting the target as broken.* Most "organ X is broken" findings are probe-method artifacts.
 
-### 2a — Era gate first, then probe
+### 2a — The handshake (3-step lifecycle, both eras)
 
-> **Proclaim the era before the probe.** The MCP `2026-07-28` spec **retired** the `initialize`/`initialized` exchange and the `Mcp-Session-Id` header (SEP-2575). There is no spec-level `lifecycle.md` for the stateless era — the older `basic/lifecycle.md` is legacy only. The official `2026-07-28` restructure puts the page set under `patterns/` (MRTR, Subscriptions, Cancellation, Progress) and `transports/`.
+Streamable-HTTP MCP answers only after the lifecycle. A raw `curl` that skips it gets a protocol error, and that error **is correct server behaviour**.
 
-**Era selection rule:**
-
-```
-If server advertises MCP-Protocol-Version: 2026-07-28  → STATELESS path
-If server advertises 2025-11-25 / 2025-06-18         → LEGACY handshake path
-If unknown                                            → try STATELESS first (preferred), fall back on protocol error
-```
-
-**Legacy era (`2025-11-25`)** — handshake is mandatory:
+**Legacy era (`2025-11-25`)**:
 
 ```
 1. POST initialize                 → capture `Mcp-Session-Id` from the RESPONSE HEADER
@@ -257,15 +249,14 @@ If unknown                                            → try STATELESS first (p
 3. POST tools/list | resources/list | tools/call → real data
 ```
 
-**Stateless era (`2026-07-28`)** — preferred; no handshake required:
+**Stateless era (`2026-07-28`)** (preferred):
 
 ```
-1. (optional) POST server/discover → tool/resource/prompt catalog
-2. POST tools/call (or tools/invoke) → directly, no session header
+1. POST server/discover           → tool/resource/prompt catalog
+2. POST tools/invoke (or call)     → directly, no session header
    • `MCP-Protocol-Version: 2026-07-28` header (NOT in `params`)
    • `Mcp-Method: <method>` header for routing
    • per-request `_meta.io.modelcontextprotocol/*` envelope keys
-   • `server/discover` is OPTIONAL — clients may skip straight to `tools/call`
 ```
 
 **Universal curl invariants** on every call:
@@ -275,13 +266,13 @@ Content-Type: application/json
 Accept: application/json, text/event-stream
 ```
 
-**The three misreadings (verbatim) — era-scoped:**
+**The three misreadings (verbatim):**
 
-| Raw probe returned | What it actually is | What it is NOT | Era scope |
-|---|---|---|---|
-| `SESSION_MISSING: Mcp-Session-Id header required` | server asking for documented handshake | an unsatisfiable contract | **legacy era only** (`2025-11-25` / older; the stateless `2026-07-28` era retired this header) |
-| `Missing session ID` / `tools/call rejected until client sends notifications/initialized` | step 2 never sent | a runtime guard | **legacy era** (mandatory step in handshake flow) |
-| `Unknown tool: '<name>'` | name never advertised | advertised-but-unreachable | both eras (a tool the server never registered; client fabricated the call) |
+| Raw probe returned | What it actually is | What it is NOT |
+|---|---|---|
+| `SESSION_MISSING: Mcp-Session-Id header required` | server asking for documented handshake | an unsatisfiable contract |
+| `Missing session ID` / `tools/call rejected until client sends notifications/initialized` | step 2 never sent | a runtime guard |
+| `Unknown tool: '<name>'` | name never advertised | advertised-but-unreachable |
 
 Deep dive: `references/absorbed-mcp-organ-probe.md` (+ `layer-drop-diagnosis.md`).
 
@@ -351,73 +342,14 @@ Deep dive: `references/absorbed-mcp-transport-fix.md`.
 
 **Forbidden Actions**: reporting an organ broken from a single un-handshaked probe. Reporting a successful health check as authorization to act beyond observer class.
 
-### 2f — Surface-truth falsification recipe (NEW 2026-10-03, T-007 from compile)
-
-When an external review (human, LLM, or agent) claims a connector **declares** tools it **does not serve**, run the 4-line probe before accepting or rejecting the claim:
-
-```bash
-# 1. Enumerate the advertised surface (canonical)
-mcporter list <server> --schema | grep -E "^  function " | awk '{print $2}' | sed 's/(.*//' | sort -u > /tmp/declared.txt
-
-# 2. Test each claimed "broken" tool by direct call
-mcporter call <server> <claimed_tool_name> 2>&1 | head -5
-# expected: either "Unknown tool: '<name>'" (correct kernel behaviour — name not advertised)
-# or a normal response (claim confirmed)
-
-# 3. Cross-era probe (don't trust a single era's behavior)
-curl -s -X POST http://host:port/mcp -H "MCP-Protocol-Version: 2026-07-28" -H "Mcp-Method: tools/list" -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
-
-# 4. Emit a falsification RECEIPT (this is the doctrine-anchored artefact)
-```
-
-If the claimed tool name is absent from `declared.txt` AND direct call returns "Unknown tool" with a proper error envelope, the claim is **falsified**. Emit a RECEIPT at `/root/AAA/cockpit/receipts/RECEIPT_<SERVER>_FABRICATION_FALSIFIED_<DATE>.md` documenting:
-
-- The external review's claimed names (verbatim)
-- The canonical enumeration (proving absence)
-- The direct call result (proving "Unknown tool" is correct kernel behaviour, not a defect)
-- The source of the falsification (which witness, which tool, which session)
-
-**Doctrine anchor:** `RECEIPT_ARIFOS_MCP_SURFACE_VERIFICATION_2026-10-03.md` (which carries round 1 falsification evidence for `arif_mind_reason`, `arif_kernel_route`, `arif_judge_deliberate`) and `RECEIPT_CHATGPT_FABRICATION_ROUND_2_FALSIFIED_2026-10-03.md` (round 2 falsification for `arif_organ_consensus`, `arif_vault_seal`). Both ChatGPT fabrication rounds in a single session were falsified by this 4-line probe. **Declared == callable is the contract; surface-truth falsification is the audit mechanism.**
-
-### 2h — 3-layer namespace enumeration (NEW 2026-10-03, T-007-extended from external review)
-
-When verifying whether a tool name is "fabricated", check **three layers**:
-
-```bash
-# Layer 1: EXPOSED surface — live MCP connector tool list (what `mcporter list` returns)
-mcporter list <server> --schema | grep -E "^  function <server>_"
-
-# Layer 2: CANONICAL SUPERSET — upstream llms.txt or schema (may include hidden verbs)
-cat <server>/llms.txt 2>/dev/null | grep -i "<name>"
-cat <server>/kernel-sot.yaml | grep "<name>:"
-
-# Layer 3: INTERNAL PAYLOAD LEAKS — strings emitted in observable response bodies
-mcporter call <server> <advertised_tool> 2>&1 | grep -oE "[a-z]+_[a-z_]+" | sort -u
-```
-
-**Classification rules:**
-- Name absent from all 3 layers → **fabrication** (caller invented the name)
-- Name absent from layer 1, present in layer 2 → **hidden-by-design** (canonical verb, gated behind different protocol — not a valid diagnostic tool call against live MCP)
-- Name absent from layers 1-2, present in layer 3 → **internal implementation string** (kernel hygiene leak — different defect class, not fabrication)
-- Name present in layer 1 → **callable** (the standard probe)
-
-Doctrine anchor: `RECEIPT_NAMESPACE_CONFLATION_FINDING_2026-10-03.md` — the canonical superset of arifOS is 25 verbs (8 exposed + 13 hidden + 4 internal). Names like `arif_judge_deliberate` and `arif_organ_consensus` exist in `arifOS/llms.txt` but are HIDDEN from the live MCP connector. The earlier "fabrication" classification of these was over-broad; the proper classification is **hidden-by-design**.
-
-This 3-layer enumeration closes the gate that ChatGPT's external review exposed: probing only the live connector (layer 1) is necessary but not sufficient for surface-truth falsification.
-
-
 ## Stage 3 — BUILD  (server, client, agent skills, Apps)
 
 ### 3a — Server (Python, FastMCP)
 
 ```bash
-# FastMCP 4 is current line (latest: 4.0.10, 2026-09-25). Supports 2026-07-28 stateless + per-connection legacy negotiation.
-# FastMCP 3.4.x (legacy 3.4.7 line) remains supported by FastMCP 4 servers via per-connection negotiation — do not remove 3.4.x skills yet.
-uv add "fastmcp[tasks]>=4,<5"                    # preferred (modern, can speak both eras)
-pip install --break-system-packages "fastmcp[tasks]>=4,<5"   # system-wide
-# OR pin the legacy line if a downstream consumer still requires it:
-#   uv add "fastmcp[tasks]==3.4.7"
-fastmcp --version                                # record actual installed version in the canary receipt
+uv add "fastmcp[tasks]==3.4.2"                  # in federation repo
+pip install --break-system-packages "fastmcp[tasks]==3.4.2"   # system-wide
+fastmcp --version                               # expect 3.4.2
 fastmcp scaffold --template api_wrapper --name "My API" --output ./my_server.py
 fastmcp inspect my_server.py:mcp                # ALWAYS before wiring a client
 fastmcp list my_server.py:mcp --json
@@ -559,9 +491,9 @@ For MCP servers we PUBLISH, F11 AUDIT requires:
 
 **Forbidden Actions**: storing secrets in `SKILL.md` or any client wire config; using `Authorization: Bearer <long-lived>` without rotation; skipping client registration metadata.
 
-## Stage 5 — TEST  (Inspector, debugging, era conformance)
+## Stage 5 — TEST  (MCPJam, debugging, era conformance)
 
-Iron rule: **MCP servers are tested with `@modelcontextprotocol/inspector` (the official package) for conformance and `@mcpjam/inspector` as a supplemental cross-checker — never with coding agents.** Coding agents build MCP servers; inspectors test them.
+Iron rule: **MCP servers are tested with MCPJam Inspector, not coding agents.** Coding agents build MCP servers; MCPJam tests them.
 
 | Situation | Use |
 |---|---|
@@ -571,20 +503,15 @@ Iron rule: **MCP servers are tested with `@modelcontextprotocol/inspector` (the 
 | CI gating on PRs | Probe (SDK) or Inspector evals |
 
 ```bash
-# Normative conformance anchor (per Stage 5 iron rule)
-npx @modelcontextprotocol/inspector@latest http://127.0.0.1:8088/mcp   # probe one endpoint
-npx @modelcontextprotocol/inspector@latest doctor http://127.0.0.1:8088/mcp   # smoke + capability report
-npx @modelcontextprotocol/inspector@latest oauth --version 2025-11-25 http://127.0.0.1:8088/mcp
+npx @mcpjam/inspector@latest http://127.0.0.1:8088/mcp                 # probe one endpoint
+npx @mcpjam/inspector@latest doctor http://127.0.0.1:8088/mcp          # smoke + capability report
+npx @mcpjam/inspector@latest oauth --version 2025-11-25 http://127.0.0.1:8088/mcp
 docker run -p 127.0.0.1:6274:6274 mcpjam/mcp-inspector                 # air-gap, 127.0.0.1 only
-
-# Supplemental cross-checker (use to corroborate; do not substitute for the official one)
-# npx @mcpjam/inspector@latest http://127.0.0.1:8088/mcp               # cross-check only
-# npx @mcpjam/inspector@latest doctor http://127.0.0.1:8088/mcp
 
 # federation sweep
 for port in 8088 7071 7072 8081 18082 18083 3001; do
   echo "=== :$port ==="
-  npx @modelcontextprotocol/inspector@latest doctor "http://127.0.0.1:$port/mcp" 2>&1 | head -30
+  npx @mcpjam/inspector@latest doctor "http://127.0.0.1:$port/mcp" 2>&1 | head -30
 done
 ```
 
@@ -607,7 +534,7 @@ MCP-Session-Id M required   (optional in legacy, ABSENT in stateless)
 
 Deep dive: `references/absorbed-mcp-testing.md` (full conformance matrix + SEP-2567 stateless doctrine).
 
-**Allowed Tools**: `npx @modelcontextprotocol/inspector@latest` (normative conformance anchor — official MCP inspector package, v2 line); `npx @mcpjam/inspector@latest` (supplemental cross-checker only); `firecrawl_firecrawl_scrape` for any URL probe; `docker`.
+**Allowed Tools**: `npx @mcpjam/inspector@latest`; `firecrawl_firecrawl_scrape` for any URL probe; `docker`.
 
 **Forbidden Actions**: reporting conformance from a CI log without an era-specific evidence row in the receipt.
 
@@ -772,8 +699,7 @@ Deep dive: `references/absorbed-FORGE-mcp-lifeguard.md` (alert conditions), `ref
 |---|---|
 | `fastmcp` CLI | Scaffold, inspect, list, call, run FastMCP servers (Stage 3) |
 | `mcporter` CLI | Discover and call servers; daemon, auth, config, codegen (Stage 1/3/4) |
-| `npx @modelcontextprotocol/inspector` | Normative conformance anchor (Stage 5 — official inspector package, v2 line latest) |
-| `npx @mcpjam/inspector` | Supplemental cross-checker (Stage 5 — NOT the normative anchor; use to corroborate official probe) |
+| `npx @mcpjam/inspector` | Conformance probe, doctor, OAuth check, era matrix (Stage 5) |
 | `curl` / `python3 -m json.tool` | Health probes, raw JSON-RPC checks (Stage 2, all probes) |
 | `uv` / `pip` | Install FastMCP in repo or system context (Stage 3) |
 | `gh` CLI | GitHub OAuth scoped to federation namespace (Stage 7) |
@@ -867,10 +793,8 @@ Deep dive: `references/absorbed-FORGE-mcp-lifeguard.md` (alert conditions), `ref
 * v2.1.0 — pre-merge snapshot (preserved in `references/pre-merge-mcp-ops-v2.1.0.md`).
 * v3.0.0 (2026-09-20) — 19 names absorbed, structured under 6 stages (DISCOVER → PROBE → INTEGRATE → TEST → GOVERN → RETIRE), 32 reference docs.
 * v3.0.1 (2026-09-20, second pass) — trigger list completed to full declared union of 14 assigned MCP members (36 triggers added), `mcp-sota-shopping-list` folded in as Stage 1b, all 14 member names archived to `.archive/merge-20260920/mcp/` and left resolving as tombstones.
-* **v3.1.0 (2026-09-21)** — llms.txt alignment: 9-stage workflow (LEARN → PROBE → BUILD → SECURE → TEST → EXTEND → PUBLISH → GOVERN-RETIRE), 4 new stage references (Learn, Secure, Extend, Publish), canonical body absorbs `mcp-testing` content (Stage 5), `mcp-testing` directory now resolved via symlink to mcp-ops. Frozen v3.0.0/v3.0.1 in `.frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.0.1`. **Note (T-004 honest amendment 2026-10-03):** the v3.0.0/v3.0.1 frozen baselines at that path are NOT preserved on disk; this changelog entry is historical record, not a verifiable revert target.
+* **v3.1.0 (2026-09-21)** — llms.txt alignment: 9-stage workflow (LEARN → PROBE → BUILD → SECURE → TEST → EXTEND → PUBLISH → GOVERN-RETIRE), 4 new stage references (Learn, Secure, Extend, Publish), canonical body absorbs `mcp-testing` content (Stage 5), `mcp-testing` directory now resolved via symlink to mcp-ops. Frozen v3.0.0/v3.0.1 in `.frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.0.1`.
 
-* **v3.1.1 (2026-09-21)** — 0-index renumber (per Arif SEAL): all stages N → N−1 (LEARN=0, DISCOVER=1, PROBE=2, BUILD=3, SECURE=4, TEST=5, EXTEND=6, PUBLISH=7, GOVERN=8; RETIRE = 8h sub-section inside GOVERN). Procurement sub-stage correctly re-parented from LEARN to DISCOVER (latent anomaly fix). Body length and supersedes list unchanged. v3.1.0 frozen body now preserved at `.frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.1.0`. **Note (T-004 honest amendment 2026-10-03):** the v3.1.0 frozen baseline at that path is NOT preserved on disk; this changelog entry is historical record, not a verifiable revert target. v3.2.0's frozen baseline at `.frozen/2026-10-03-2026-era-alignment/` IS preserved and proven-restore (see T-001 in RECEIPT_TRI_WITNESS_CONVERGENCE_2026-10-03.md).
-
-* **v3.2.0 (2026-10-03)** — 2026-07-28 era alignment. Patches (real): (P1) frontmatter description corrected to "9-stage engineering lifecycle overlaid on the canonical MCP spec" and masthead attribution corrected from "accordant to llms.txt" to "engineering overlay aligned to llms.txt (which itself is a flat link index and does NOT prescribe an engineering lifecycle)"; (P2) masthead clarifies `@modelcontextprotocol/inspector` is the normative conformance anchor and `@mcpjam/inspector` is supplemental; (P3) Stage 2a now opens with an explicit era gate (stateless preferred; legacy only when server advertises legacy protocol); **(P3-b) NOTE** the initial changelog claimed "the misreadings table is annotated with era scope" — that was an overclaim; the misreadings table NOW carries an explicit "Era scope" column (live L280-284) with annotations "legacy era only", "legacy era", "both eras" on the three entries (was a hard-coded prose footnote that the 333-AGI re-classification caught as not actually present at table level; now it IS); P5 was rewritten and the Stage 5 commands + Allowed Tools table AND the inline Stage 5 grant line (live ~L583) updated to use `@modelcontextprotocol/inspector` as the runnable primary (defect 2 from the 333-AGI reasoning witness — the iron rule text was rewritten while the commands still invoked MCPJam); (P4) Stage 3a FastMCP pin moved from `==3.4.2` to `>=4,<5` (with 3.4.7 legacy alt) — reflects FastMCP 4.0.10 current line and the `2026-07-28` per-connection negotiation capability; **(P6) honest version artifact:** frontmatter `version:` was already `3.2.0` from a prior un-patched bump; the v3.1.1 baseline body is preserved at `.frozen/2026-10-03-2026-era-alignment/SKILL.md.from.forge-fastmcp-v3.1.1` (45,568 bytes, SHA256 `091ffcfaf3126f59af4280ad716e0043323b040cc147a0df8a416c28b7a811ae`). Sources cross-checked: modelcontextprotocol.io/llms.txt (no prescribed engineering lifecycle — flat link index), MCP 2026-07-28 spec post (SEP-2575 handshake retirement; `server/discover` is optional), gofastmcp.com/changelog (FastMCP 4.0.10 dated 2026-09-25), github.com/modelcontextprotocol/inspector (official package, v2 line). A2A complements MCP (a2a-protocol.org). mcp-ui implements the MCP Apps standard; spec owner is `modelcontextprotocol/ext-apps`. Real-time binary state at patch time: `fastmcp 3.4.3` binary symlink + `fastmcp 4.0.4` in active env — dual-version state confirmed on this box. **Tri-witness convergence (333-AGI reasoning + 555-ASI sensory + arifOS kernel) run post-patch — see receipts `RECEIPT_TRI_WITNESS_CONVERGENCE_2026-10-03.md` and `RECEIPT_FORGE-FASTMCP_V3_2_0_FINAL_2026-10-03.md` for the corrected verdict.**
+* **v3.1.1 (2026-09-21)** — 0-index renumber (per Arif SEAL): all stages N → N−1 (LEARN=0, DISCOVER=1, PROBE=2, BUILD=3, SECURE=4, TEST=5, EXTEND=6, PUBLISH=7, GOVERN=8; RETIRE = 8h sub-section inside GOVERN). Procurement sub-stage correctly re-parented from LEARN to DISCOVER (latent anomaly fix). Body length and supersedes list unchanged. v3.1.0 frozen body now preserved at `.frozen/2026-09-21-llms-alignment/SKILL.md.from.mcp-ops-v3.1.0`.
 
 *AAA Skill Library — DITEMPA BUKAN DIBERI ⚒️*
