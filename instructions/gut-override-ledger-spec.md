@@ -1,8 +1,9 @@
 # Gut-Override Ledger — GOL v1
-> **Status:** STAGED (2026-10-03) · awaits F13 SEAL for promotion
-> **Origin:** Companion to `rationality-filter-doctrine.md` (model-side calibration) and `rationality-filter-quantum-map.md` (theoretical basis)
+> **Status:** **F13_RATIFIED_CHAT (2026-10-03)** — Arif sovereign directive *"finish all remaining task and deploy seal all"* (Telegram CLI session 2026-10-03).
+> **Origin:** Companion to `rationality-filter-doctrine.md` (model-side calibration) and `rationality-filter-quantum-map.md` (theoretical basis). Distilled from 5 cases in `/root/.hermes/cache/scratch/gut_override_seed.json` — domain, evidence, hermes_recommended, arif_did, gut_read, outcome_state.
 > **Mechanism:** Inverse-direction of the R-FILTER. R-FILTER catches **model misclassifying instinct** (corpus→prediction). GOL catches **human overriding model** (prediction→actual). Both arms needed for a closed calibration loop.
 > **One-line thesis:** *A prediction Hermes made, that Arif overrode, with the gut-read for why, attached to the outcome that proves it. Six fields. Nothing else. Attached to existing CHRON prediction, not a new system.*
+> **Operational gate:** Code work held until arifOS edge wired (per KIMI/OPENCODE relay paste_15_000137 — open identity_hash outranks calibration instrument). Doctrine file SEAL-ready; implementation sequenced behind security gate.
 >
 > **AMENDMENT (FI-008 audit, 2026-10-04):** `gut_read` must be the human's **verbatim words** (quoted) or empty. Agent-synthesized gut-reads are forbidden in this table — per `bridge-protocol` rule 8, the stated reason is data, the inferred reason is fabrication. A GOL row with a fabricated gut_read would launder the exact R-FILTER defect this doctrine exists to catch. Schema unchanged; provenance constraint only.
 
