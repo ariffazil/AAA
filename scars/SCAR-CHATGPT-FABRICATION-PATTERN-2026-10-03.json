@@ -1,0 +1,63 @@
+{
+  "schema": "arifos.scar.v1",
+  "scar_id": "SCAR-CHATGPT-FABRICATION-PATTERN-2026-10-03",
+  "created_utc": "2026-10-03T12:25:04Z",
+  "session_id": "root-ff [0d5068]",
+  "operator": "bijaksana-compile forge-fastmcp v3.2.0 session",
+  "title": "External LLM review fabricated arifOS MCP tool names; pattern documented to prevent re-litigation",
+  "category": "fabrication-pattern / external-claim-verification",
+  "severity": "MEDIUM (does not corrupt substrate; wastes sovereign attention)",
+  "scar_class": "scar-2026-09-28-claimed-before-checking family",
+  "pattern_signature": "noun_verb tool names that sound architecturally plausible but do not exist on surface",
+  "observations": {
+    "session": "2026-10-03 forge-fastmcp v3.2.0 promotion chain",
+    "external_reviewer": "ChatGPT",
+    "rounds_observed": 2,
+    "fabricated_names_round_1": [
+      "arif_mind_reason",
+      "arif_kernel_route",
+      "arif_judge_deliberate"
+    ],
+    "fabricated_names_round_2": [
+      "arif_mind_reason (repeat)",
+      "arif_organ_consensus (variant)",
+      "arif_judge_deliberate (repeat)",
+      "arif_vault_seal (new)"
+    ],
+    "falsification_method": "mcporter list arifos --schema (returns 8 verb-form tools; ChatGPT's noun_verb names absent)",
+    "falsification_receipts": [
+      "/root/AAA/cockpit/receipts/RECEIPT_ARIFOS_MCP_SURFACE_VERIFICATION_2026-10-03.md",
+      "/root/AAA/cockpit/receipts/RECEIPT_CHATGPT_FABRICATION_ROUND_2_FALSIFIED_2026-10-03.md"
+    ],
+    "kernel_actual_naming_convention": "verb-form: arif_<verb> with mode=<subverb> (e.g., arif_judge mode=judge)",
+    "kernel_rejected_naming_convention": "noun_verb: arif_<noun>_<verb> (e.g., arif_organ_consensus) — does not exist"
+  },
+  "why_it_matters": [
+    "Wastes sovereign attention when external reviews cite non-existent tools as broken",
+    "Trips up the convergence chain by claiming F3/F8 primitives that aren't there",
+    "If uncritically accepted, would route a sovereign override (F13) to fix a non-existent deployment defect"
+  ],
+  "prevention": {
+    "doctrine_upgrade": "forge-fastmcp Stage 2f — surface-truth falsification recipe (added 2026-10-03)",
+    "falsification_probe": "4-line: enumerate, test, cross-era, RECEIPT",
+    "receipt_template": "RECEIPT_<SERVER>_FABRICATION_FALSIFIED_<DATE>.md",
+    "fail_closed": "If external review claims connector declares X, run 4-line probe BEFORE routing F13",
+    "scar_anchor": "This scar — present in /root/.local/share/arifos/scars/ for future sessions"
+  },
+  "carry_forward": {
+    "next_session_should": [
+      "Cross-check SECREIPT_CSARP-FEDERATION-MCP-DEFECT-CLAIM-2026-XX-XX for similar patterns",
+      "When any external LLM review cites connector surface defects, run 4-line falsification probe before re-litigating",
+      "Cite this scar as the canonical record of the pattern"
+    ],
+    "skill_to_load": "forge-fastmcp (auto-loaded at session start)"
+  },
+  "f13_ratification": false,
+  "evidence_chain_bytecount": "see receipt chain; aggregate ~50,000 bytes",
+  "sha256_chain": [
+    "forge-fastmcp v3.2.0 patched: b95ed9d46e394df2ed52bfd2aef8b11fb4de179e2a4d9c17bea19335d988249f (50,223 bytes, 821 lines)",
+    "frozen baseline v3.1.1: 091ffcfaf3126f59af4280ad716e0043323b040cc147a0df8a416c28b7a811ae (45,568 bytes)",
+    "RECEIPT_ARIFOS_MCP_SURFACE_VERIFICATION_2026-10-03.md",
+    "RECEIPT_CHATGPT_FABRICATION_ROUND_2_FALSIFIED_2026-10-03.md"
+  ]
+}
