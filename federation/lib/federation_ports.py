@@ -85,15 +85,36 @@ def get_port(
     reg = _load_registry()
     env_vars = reg.get("env_vars", {})
 
+    def _as_port(value):
+        """A null or non-numeric registry value means "not declared here".
+
+        SCAR-PORT-REGISTRY-NULL (2026-10-03): port-registry.json legitimately
+        carries nulls for organs whose port lives in another section — env_vars
+        holds {"HERMES": null, "HERMES_MCP": null} while
+        components.hermes.mcp_port is 18087. The previous `return int(v)` raised
+        TypeError on the null, which aborted resolution BEFORE the component
+        lookup below could succeed, so get_port() crashed for every organ with a
+        null env_vars entry no matter which interface was requested. Skip to the
+        next source instead of raising; the final fallback still decides.
+        """
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            return None
+
     # Try direct match
     if organ in env_vars:
-        return int(env_vars[organ])
+        _direct = _as_port(env_vars[organ])
+        if _direct is not None:
+            return _direct
 
     # Try case-insensitive
     organ_upper = organ.upper()
     for k, v in env_vars.items():
         if k.upper() == organ_upper:
-            return int(v)
+            _matched = _as_port(v)
+            if _matched is not None:
+                return _matched
 
     # Component lookup (mcp_port or port)
     components = reg.get("components", {})
