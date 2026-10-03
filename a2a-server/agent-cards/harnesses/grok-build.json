@@ -8,7 +8,7 @@
     "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Grok Build harness — AAA sovereign citizen. Plan→search→build with parallelism, worktree isolation, A2A delegation.",
+  "description": "Grok Build harness \u2014 AAA sovereign citizen. Plan\u2192search\u2192build with parallelism, worktree isolation, A2A delegation.",
   "version": "2.0.0",
   "protocolVersion": "1.0",
   "url": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
@@ -138,7 +138,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Every output reduces entropy. ΔS < 0.",
+      "description": "Every output reduces entropy. \u0394S < 0.",
       "tags": [
         "kernel",
         "rsi",
@@ -219,15 +219,32 @@
         "tool_count": 35,
         "tools": [
           "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
+          "geox_calibration_register_witness",
           "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_contrast_metabolize",
+          "geox_deep_time",
+          "geox_extract_display_proxy",
+          "geox_extract_native_trace",
+          "geox_geomechanics",
+          "geox_glof",
+          "geox_list_registered_sources",
+          "geox_map",
+          "geox_model",
+          "geox_observe",
+          "geox_paleobiodb_query",
+          "geox_petrophysics",
+          "geox_prospect",
+          "geox_register_native_source",
+          "geox_seismic_compute",
+          "geox_seismic_ingest",
+          "geox_seismic_interpret",
+          "geox_source",
+          "geox_spatial",
+          "geox_surface_status",
+          "geox_temporal",
+          "geox_well",
+          "geox_well_ingest",
+          "geox_well_qc"
         ],
         "key_lanes": [
           "earth",
@@ -336,7 +353,7 @@
       "from_version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -410,7 +427,7 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "_model_sot": "/root/.config/federation-models.json",
   "model_routing": {
     "provider": "xai",
@@ -429,7 +446,7 @@
   ],
   "kvm4_routing": {
     "dispatch": "ccc-remote grok (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
-    "status": "DUAL-NODE (KVM8 + KVM4) — version-PASS 1.0.13 (2026-09-05), CLI healthy, API external balance exhausted (402)",
+    "status": "DUAL-NODE (KVM8 + KVM4) \u2014 version-PASS 1.0.13 (2026-09-05), CLI healthy, API external balance exhausted (402)",
     "member_of": "kvm4-ccc-pool",
     "updated": "2026-09-05T04:32+08:00"
   },
@@ -542,7 +559,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
+      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
       "tags": [
         "execution",
         "governance",
@@ -616,7 +633,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -657,8 +674,8 @@
   },
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",

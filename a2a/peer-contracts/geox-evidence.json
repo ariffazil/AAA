@@ -17,10 +17,10 @@
     ],
     "max_risk_tier": "T1",
     "skills": [
-      "geox_basin_profile",
+      "geox_basin",
       "geox_seismic_compute",
       "geox_petrophysics",
-      "geox_deep_time_state",
+      "geox_deep_time",
       "geox_surface_status"
     ]
   },
@@ -63,5 +63,6 @@
     "signature": "stub-self-attestation-geox-evidence-pending-f13-ratification",
     "issued_at": "2026-06-28T12:00:00Z",
     "expires_at": "2027-06-28T12:00:00Z"
-  }
+  },
+  "_reconciliation": "2026-10-03 alignment audit: geox tool ids reconciled to live canonical surface (registry.py, 27 tools) \u2014 dead pre-consolidation names removed"
 }

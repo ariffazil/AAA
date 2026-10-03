@@ -17,7 +17,7 @@
   "tier": "FI",
   "role": "warga",
   "class": "AGI",
-  "trinity": "Δ MIND (bound)",
+  "trinity": "\u0394 MIND (bound)",
   "warga_status": "attested",
   "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
   "bound_to": "333-AGI",
@@ -120,15 +120,32 @@
         "tool_count": 24,
         "tools": [
           "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
+          "geox_calibration_register_witness",
           "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_contrast_metabolize",
+          "geox_deep_time",
+          "geox_extract_display_proxy",
+          "geox_extract_native_trace",
+          "geox_geomechanics",
+          "geox_glof",
+          "geox_list_registered_sources",
+          "geox_map",
+          "geox_model",
+          "geox_observe",
+          "geox_paleobiodb_query",
+          "geox_petrophysics",
+          "geox_prospect",
+          "geox_register_native_source",
+          "geox_seismic_compute",
+          "geox_seismic_ingest",
+          "geox_seismic_interpret",
+          "geox_source",
+          "geox_spatial",
+          "geox_surface_status",
+          "geox_temporal",
+          "geox_well",
+          "geox_well_ingest",
+          "geox_well_qc"
         ],
         "key_lanes": [
           "earth",
@@ -220,7 +237,7 @@
       "Spawn bounded subagents with worktree isolation",
       "Run tests/build/lint with evidence receipts",
       "Generate diffs and PR drafts",
-      "A2A mesh citizenship — participate in AAA state via 777 FORGE binding"
+      "A2A mesh citizenship \u2014 participate in AAA state via 777 FORGE binding"
     ],
     "cannotDo": [
       "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
@@ -269,7 +286,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -284,7 +301,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -300,7 +317,7 @@
     {
       "id": "FORGE-github-ops",
       "name": "GitHub Ops (merged v1.2.0)",
-      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -315,7 +332,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -345,13 +362,13 @@
     {
       "id": "atlas333-cognitive-geometry",
       "name": "ATLAS333 Cognitive Geometry",
-      "description": "ATLAS333 — 33 human paradoxes across Memory/Mind/Judge zones. ΛΘΦ router for lane/demand tensor mapping. Access via arifos://atlas333/* MCP resources.",
+      "description": "ATLAS333 \u2014 33 human paradoxes across Memory/Mind/Judge zones. \u039b\u0398\u03a6 router for lane/demand tensor mapping. Access via arifos://atlas333/* MCP resources.",
       "tags": [
         "atlas333",
         "cognitive",
         "paradox",
         "geometry",
-        "ΛΘΦ"
+        "\u039b\u0398\u03a6"
       ],
       "floor_scope": [
         "F2",
@@ -363,7 +380,7 @@
   ],
   "hexagon_warga": {
     "id": "opencode",
-    "trinity": "Δ MIND (bound)",
+    "trinity": "\u0394 MIND (bound)",
     "stage": "333-THINK (forge instrument)",
     "bound_to": "333-AGI",
     "warga_since": "2026-06-26",
@@ -464,23 +481,23 @@
   "telegram_posting": {
     "telegram_posting": {
       "bot": "@arifOS_bot",
-      "bot_name": "🔥FORGE🔥 FORGE Bot",
+      "bot_name": "\ud83d\udd25FORGE\ud83d\udd25 FORGE Bot",
       "bot_id": "8727562763",
       "token_env": "FORGE_BOT_TOKEN",
       "token_vault": "/root/.secrets/kunci-mas.env",
       "group_chat_id": "-1003753855708",
       "post_tool": "/usr/local/bin/forge-post",
-      "identity_header": "FORGE / 🔥FORGE / @arifOS_bot",
+      "identity_header": "FORGE / \ud83d\udd25FORGE / @arifOS_bot",
       "rule": "Post to AAA group via FORGE bot only. One post per session. Token from vault, never hardcode.",
       "wired_at": "2026-08-08T05:44:00Z",
-      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
+      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md \u00a77"
     }
   },
   "_quarantined_skills": [
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -521,7 +538,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -583,7 +600,7 @@
     {
       "id": "ASI-memory-session-bind",
       "name": "Agentic Session Init",
-      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
+      "description": "Unified bootstrap: reality check \u2192 skill load \u2192 organ attest \u2192 session bind. Mandatory first action for any governed agent session.",
       "tags": [
         "bootstrap",
         "session",
@@ -675,7 +692,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -708,7 +725,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -767,8 +784,8 @@
   },
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
     "capability": "BUILD",
