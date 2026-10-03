@@ -18,6 +18,7 @@ export type Part =
 export interface Task {
   id: string;
   contextId: string;
+  client_agent_id?: string;
   status: {
     state: TaskState;
     message?: TaskMessage;
@@ -37,7 +38,16 @@ export type TaskState =
   | 'TASK_STATE_COMPLETED' 
   | 'TASK_STATE_FAILED' 
   | 'TASK_STATE_CANCELED' 
-  | 'TASK_STATE_REJECTED';
+  | 'TASK_STATE_REJECTED'
+  | 'submitted'
+  | 'working'
+  | 'input-required'
+  | 'auth-required'
+  | 'completed'
+  | 'failed'
+  | 'canceled'
+  | 'rejected'
+  | 'unknown';
 
 export interface Artifact {
   artifactId: string;

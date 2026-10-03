@@ -86,8 +86,8 @@ async function ensureWakeStream(nc: NatsConnection): Promise<void> {
   await jsm.streams.add({
     name: WAKE_STREAM,
     subjects: [`${WAKE_SUBJECT_PREFIX}.>`],
-    storage: 'file',
-    retention: 'limits',
+    storage: 'file' as any,
+    retention: 'limits' as any,
     max_age: WAKE_RETENTION_DAYS * 24 * 60 * 60 * 1_000_000_000, // nanoseconds
     max_msgs: -1,
     max_bytes: -1,

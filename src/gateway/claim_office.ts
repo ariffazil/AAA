@@ -96,7 +96,7 @@ export class ClaimOffice {
           trace_id: `claim-denied-${workId}`,
           organ: 'AAA',
           capability: 'claim_work',
-          stage: 'EXECUTE',
+          stage: '010_FORGE',
           params_summary: `DENIED: ${workId} already claimed by ${existing.agent_id}`,
         });
 
@@ -137,7 +137,7 @@ export class ClaimOffice {
         trace_id: `claim-${workId}`,
         organ: 'AAA',
         capability: 'claim_work',
-        stage: 'EXECUTE',
+        stage: '010_FORGE',
         params_summary: `CLAIMED: ${workId} by ${agentId} (ttl=${ttlSec}s)`,
       });
       this.bus.emitOperationComplete(op.op_id, true);
@@ -185,7 +185,7 @@ export class ClaimOffice {
         trace_id: `release-${workId}`,
         organ: 'AAA',
         capability: 'release_claim',
-        stage: 'EXECUTE',
+        stage: '010_FORGE',
         params_summary: `RELEASED: ${workId} by ${agentId}`,
       });
       this.bus.emitOperationComplete(op.op_id, true);
