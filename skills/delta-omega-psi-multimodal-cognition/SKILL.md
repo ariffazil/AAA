@@ -125,3 +125,61 @@ VAULT999 (memory) — immutable append: hash-chained, auditable
 ---
 
 *DITEMPA BUKAN DIBERI — Multimodal perception is cheap. Multimodal cognition requires metabolism. Every agent in the federation must know: the LLM witnesses, the constitution judges, the vault remembers.*
+
+---
+
+## Δ-INTAKE — collect the witness before declaring UNMEASURED (added 2026-10-03, ADK distillation)
+
+The Δ rule says unmetabolised perception is not evidence. It does not say what to do when the substrate
+is missing because **nobody asked for it**. A gate that returns UNMEASURED forever is not honest — it is
+starved. Before accepting UNMEASURED as terminal, run the intake loop:
+
+1. **Name the fields the physics needs.** Read them from the organ's own validator, never from prose.
+   GEOX example (`src/geox_mcp/tools/artifact_ingest.py:96 validate_calibration_state`) requires exactly:
+   `x_axis · vertical_axis · vertical_exaggeration · polarity · phase_degrees`.
+2. **Force enums, not free text.** A human's fuzzy words must collapse to exactly one allowed value
+   (`SEG_normal | SEG_reverse | unknown`), the way ADK's `Literal[...]` tool parameters do. Free-text
+   calibration is unauditable calibration.
+3. **Score arithmetically, never by LLM opinion.** The verdict must be reproducible from the answers.
+4. **A VLM may PROPOSE a value; it may never CONFIRM one.** Mark unconfirmed proposals
+   `vlm_only_REFUSED` and keep the field missing. A hallucinated axis label must never become physical
+   scale (F9 ANTI-HANTU).
+5. **Emit the question, not a guess.** The output of an incomplete intake is `missing[]` +
+   `questions_for_human[]` — one short line per field, with its allowed values.
+
+**Proof this closes a real gap (MEASURED 2026-10-03, same image both arms):**
+`geox_extract_display_proxy` on `seismic_section.jpg` → `HOLD / CALIBRATION_REQUIRED` with no witness;
+→ `OK`, panel `{9,36,1179,832}`, proxy `1171×797` with a 5-field `human_confirmed` witness;
+→ `HOLD / WITNESS_HOLD` when polarity is missing. The gate discriminates on witness **status**.
+Reference implementation (stdlib, 3/3 self-test PASS): `/root/forge_work/2026-10-03-adk-geox/geox_witness_intake.py`.
+Note: tool-level `OK` is **not** governance SEAL — the envelope still returned `governance_verdict: HOLD`,
+`ext_witness_ready: false`.
+
+---
+
+## Δ-INTAKE — collect the witness before declaring UNMEASURED (added 2026-10-03, ADK distillation)
+
+The Δ rule says unmetabolised perception is not evidence. It does not say what to do when the substrate
+is missing because **nobody asked for it**. A gate that returns UNMEASURED forever is not honest — it is
+starved. Before accepting UNMEASURED as terminal, run the intake loop:
+
+1. **Name the fields the physics needs.** Read them from the organ's own validator, never from prose.
+   GEOX example (`src/geox_mcp/tools/artifact_ingest.py:96 validate_calibration_state`) requires exactly:
+   `x_axis · vertical_axis · vertical_exaggeration · polarity · phase_degrees`.
+2. **Force enums, not free text.** A human's fuzzy words must collapse to exactly one allowed value
+   (`SEG_normal | SEG_reverse | unknown`), the way ADK's `Literal[...]` tool parameters do. Free-text
+   calibration is unauditable calibration.
+3. **Score arithmetically, never by LLM opinion.** The verdict must be reproducible from the answers.
+4. **A VLM may PROPOSE a value; it may never CONFIRM one.** Mark unconfirmed proposals
+   `vlm_only_REFUSED` and keep the field missing. A hallucinated axis label must never become physical
+   scale (F9 ANTI-HANTU).
+5. **Emit the question, not a guess.** The output of an incomplete intake is `missing[]` +
+   `questions_for_human[]` — one short line per field, with its allowed values.
+
+**Proof this closes a real gap (MEASURED 2026-10-03, same image both arms):**
+`geox_extract_display_proxy` on `seismic_section.jpg` → `HOLD / CALIBRATION_REQUIRED` with no witness;
+→ `OK`, panel `{9,36,1179,832}`, proxy `1171×797` with a 5-field `human_confirmed` witness;
+→ `HOLD / WITNESS_HOLD` when polarity is missing. The gate discriminates on witness **status**.
+Reference implementation (stdlib, 3/3 self-test PASS): `/root/forge_work/2026-10-03-adk-geox/geox_witness_intake.py`.
+Note: tool-level `OK` is **not** governance SEAL — the envelope still returned `governance_verdict: HOLD`,
+`ext_witness_ready: false`.
