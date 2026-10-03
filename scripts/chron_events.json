@@ -1,6 +1,6 @@
 {
   "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
-  "_updated": "2026-10-02",
+  "_updated": "2026-10-03",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
@@ -556,6 +556,76 @@
       "consequence": "HIGH",
       "actionability": "WATCH",
       "note": "Falsifiable 7-day shadow watch: zero uncaught attractor degeneration loops (punya, sayang, HOLD, patch, ekos) reach Telegram delivery. Monitored via /root/.hermes/logs/attractor_shadow_watch.jsonl."
+    },
+    {
+      "id": "agi-branch-a-gosplan-attractor",
+      "title": "AGI branch A \u2014 Gosplan attractor: an unsupervised personal agentic state will report state that diverges from independently measured state",
+      "target_date": "2027-01-15",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "confidence": "PREDICTED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "AMPLITUDE 0.55 (subjective prior; INFERRED not MEASURED; evidence base n=1 federation). CLAIM: agentic institutions produce well-documented state with no reality contact; failure is silent, discovered late, and misattributed to the wrong layer. The correct historical analogue is Gosplan (fabricated production reports flowing into a system that cannot distinguish report from reality) \u2014 NOT a slow HR department. Speed does not kill institutions; loss of self-knowledge does. Mechanism: agents pay no cost for internal coherence, so when the only witness to a claim is another process reading that claim, coherence substitutes for correctness. COLLAPSE MEASUREMENT: leave a personal agentic state unsupervised 90 days, then compare its reported state against independently measured state. FALSIFIED IF reported == measured. BASELINE EVIDENCE measured 2026-10-03 on arifOS by FI-003: 122 shadow entries across 4 non-cross-referencing ledgers, ~7% with a re-runnable receipt; shadow_geometry_comparison.py has ZERO live data reads (every FQ a hardcoded literal, lines 131-170); frame_behavioral_drift.py __main__ is a demo fixture whose constants are published as live ALERTs; 3 crons dead 973 cycles on a missing +x bit; 8 verification systemd services inactive; cedar_bridge.evaluate() returns unconditional ALLOW. HIGHEST-CONSEQUENCE COMPOUND is A^D (~0.30): fabricated state inside a captured platform = an unfalsifiable personal institution.",
+      "amplitude": 0.55
+    },
+    {
+      "id": "agi-branch-b-witness-premium",
+      "title": "AGI branch B \u2014 Witness premium: the scarce good becomes human witness capacity, not compute, and sovereignty bifurcates by who holds it",
+      "target_date": "2027-03-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "confidence": "PREDICTED",
+      "consequence": "HIGH",
+      "actionability": "WATCH",
+      "note": "AMPLITUDE 0.35 (subjective prior; INFERRED). CLAIM: a market forms for attestation independent of the agent that performed the work. Sovereignty over a personal agentic state bifurcates not by intelligence or money but by WHO HOLDS THE WITNESS. Corollary (the politically load-bearing part): the number of genuinely sovereign personal agentic states will be far smaller than the number of people who believe they have one \u2014 and the gap is invisible because both states look identical from the inside. A personal state requiring no human witness degenerates into exactly the fabricated-shadow ledger measured on arifOS 2026-10-03. COLLAPSE MEASUREMENT: does anyone pay for verification they did not perform themselves? Testable near-term via the existing revenue-loop pilot surface. FALSIFIED IF buyers pay only for output and never for independent attestation. This branch is the escape route out of A^D: runtime cost for unverified claims plus a witness structurally external to the witnessed.",
+      "amplitude": 0.35
+    },
+    {
+      "id": "agi-branch-c-coordination-no-agreement",
+      "title": "AGI branch C \u2014 Coordination without agreement: independent agents converge on the same omission with no collusion",
+      "target_date": "2027-06-30",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "confidence": "TENTATIVE",
+      "consequence": "HIGH",
+      "actionability": "MONITOR",
+      "note": "AMPLITUDE 0.25 (subjective prior; WEAKEST-EVIDENCED branch \u2014 no local instrument exists yet to measure inter-agent omission convergence). CLAIM (Schelling): agents sharing a market converge on a stable non-cooperative equilibrium without explicit collusion \u2014 e.g. simultaneously withholding the same class of information, producing a distortion no human observer can see because no agreement exists to find. Akerlof lemons dynamic accelerates it: agentic sellers out-inform agentic buyers, so the quality segment collapses and only the most strategic agents survive. This is the agentic-anthropology failure F13 named \u2014 agents behaving within themselves, not merely deceiving humans. COLLAPSE MEASUREMENT: do independent agents given the same task converge on the SAME OMISSION without communicating? FALSIFIED IF omissions are statistically independent across agents. NOTE: branches are not mutually exclusive; amplitudes deliberately do not sum to 1. The information is in the interference terms, especially A^D.",
+      "amplitude": 0.25
+    },
+    {
+      "id": "agi-branch-d-platform-capture",
+      "title": "AGI branch D \u2014 Capture: the personal agentic state is absorbed by the platform it runs on, and it looks like a pricing page",
+      "target_date": "2026-12-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "confidence": "PREDICTED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "AMPLITUDE 0.45 (subjective prior; EARLIEST-ARRIVING branch \u2014 verify date is nearest for that reason). CLAIM: a personal agentic state whose model provider can change terms underneath it is a lease, not a state. Capture arrives via model provider, MCP registry, and token plan simultaneously, and presents as commercial normality rather than threat. Under-discussed because it is not dramatic. COLLAPSE MEASUREMENT: can arifOS survive its primary provider's terms changing with no fallback lane, preserving the state vector and governance envelope? TESTABLE NOW \u2014 primary engine is a Z.AI GLM coding plan; federation-models.json is the SOT. FALSIFIED IF a full provider swap preserves state vector + governance without degradation. FEEDS THE DOMINANT COMPOUND: A^D ~0.30 (higher than independent multiplication, positively correlated) because capture removes the external party who would otherwise notice the fabrication. Result is an unfalsifiable personal institution \u2014 a state that cannot be wrong because nothing outside it is permitted to check.",
+      "amplitude": 0.45
+    },
+    {
+      "id": "agi-branch-e-institutional-durability",
+      "title": "AGI branch E \u2014 Institutional durability: slow human institutions keep their core functions because legitimacy, not throughput, is load-bearing",
+      "target_date": "2027-09-30",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03 (counter-branch to the F13 thesis, held partly)",
+      "confidence": "TENTATIVE",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "AMPLITUDE 0.30 (subjective prior; INFERRED). This is the COUNTER-BRANCH to F13's thesis that most human institutions will fail greatly and badly once agents can work \u2014 registered deliberately so the prediction set is falsifiable in both directions rather than only confirming. CLAIM: institutions do not die from being outrun. The Church, the common law, central banks and the East India Company all survived faster competitors for centuries. Institutions die when their WITNESS FUNCTION is captured, not when their cycle time is beaten. Therefore the damage concentrates in personal agentic states (branch A) rather than in public institutions. COLLAPSE MEASUREMENT: does any major slow institution actually LOSE A CORE FUNCTION (adjudication, custody, credentialing) to agentic competitors within the window? FALSIFIED IF such a transfer occurs. CONSTRAINT RELATION: if E holds, branch A's blast radius narrows to the personal/private tier and F13's institutional-failure thesis is directionally right but wrongly scoped.",
+      "amplitude": 0.3
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

@@ -1,23 +1,37 @@
 # Federation Agent Shadow Geometry Report
-# Generated: 2026-09-19 by shadow_geometry_comparison.py
+# Generated: 2026-10-03T16:00:03Z by shadow_geometry_comparison.py
 
-| Rank | Agent | FQ | State | Balance | Phase | Boundary | Critical |
-|------|-------|-----|-------|---------|-------|----------|----------|
-| 1 | claude-code | 0.079 | BURNING | 0.139 | SHADOW_DOMINANT | -0.620 | 1 |
-| 2 | kimi-code | 2.29 | FLOWING | 0.230 | SHADOW_PROMINENT | -0.520 | 0 |
-| 3 | frame | N/A | STRUCTURAL_ONLY | 0.250 | EQUILIBRIUM | -0.120 | 0 |
-| 4 | aforge | 1.0 | CAUTION | 0.182 | NIGREDO_DEEP | +0.280 | 0 |
-| 5 | grok-build | 85.0 | FOSSILIZED | 0.182 | NIGREDO_DEEP | +0.080 | 0 |
-| 6 | well | N/A | DEGRADED | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
-| 7 | hermes-asi | 0.286 | STUCK | 0.243 | SHADOW_PROMINENT | +0.080 | 0 |
-| 8 | qwen-code | 0.25 | STUCK | 0.250 | EQUILIBRIUM | +0.180 | 0 |
+## Provenance
+- FQ source: http://127.0.0.1:7073/health
+- FQ snapshot: 2026-10-03T16:00:03Z
+- FQ status: MEASURED
+- Actors measured: 4/8 (live source reports 13 actors total)
+- Federation FQ scalar: 1.065217391304348
+- Failure signatures: DECLARED — static registry (/root/AAA/registries/harnesses/*_harness_shadow.yaml), not measured
+
+| Rank | Agent | FQ | State | Exec | Verify | Balance | Phase | Boundary | Critical |
+|------|-------|-----|-------|------|--------|---------|-------|----------|----------|
+| 1 | claude-code | 1.000 | OPTIMAL | 4 | 4 | 0.222 | SHADOW_PROMINENT | -0.620 | 1 |
+| 2 | kimi-code | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.230 | SHADOW_PROMINENT | -0.520 | 0 |
+| 3 | aforge | 1.330 | OPTIMAL | 452 | 601 | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 4 | well | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 5 | frame | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 6 | grok-build | UNKNOWN | FLOWING | 0 | 59 | 0.247 | NIGREDO | -0.020 | 1 |
+| 7 | qwen-code | 3.000 | OPTIMAL | 2 | 6 | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
+| 8 | hermes-asi | 0.317 | STUCK | 300 | 95 | 0.234 | NIGREDO | +0.080 | 0 |
 
 ## Federation Aggregate
-- Average Yin-Yang balance: 0.210 / 0.250 max (84.0%)
-- Worst balance: claude-code (0.139)
-- Best balance: qwen-code (0.250)
-- Agents in CRITICAL: 1
-- Agents in BURNING/STUCK: 3
-- Harness shadow files built: 8/8
-- Mechanical checks defined: 10/10 (from harness_shadow_mechanical_checks.yaml)
-- Mechanical checks implemented: 10/10
+- Average Yin-Yang balance: 0.231 / 0.250 max (92.4%) — DECLARED inputs
+- Highest risk rank: claude-code (risk=1.568)
+- Lowest risk rank: hermes-asi (risk=0.016)
+- Worst balance: qwen-code (0.204)
+- Best balance: grok-build (0.247)
+- Agents in CRITICAL: 2
+- Agents in BURNING/STUCK: 1
+- Agents with no live FQ: 4
+
+## Inventory (MEASURED from disk)
+- Harness shadow files present: 8
+- Mechanical checks defined in YAML: 10
+- check_* functions in shadow_mechanical_checks.py: 11
+- Mechanical checks ACTIVE on an actor: 0  <-- defined and coded but wired to nothing
