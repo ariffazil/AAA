@@ -66,14 +66,22 @@ served; probe `/health/liveliness` instead.
 
 | Server | Key tools | Use when |
 |---|---|---|
-| brave-search | `brave_web_search`, `brave_news_search` | Fast web + news |
-| perplexity | `perplexity_search`, `perplexity_research` | Multi-source grounded research |
-| sequential-thinking | `step_by_step_plan`, `analyze_problem` | Structured multi-step reasoning |
+| firecrawl | `firecrawl_search`, `firecrawl_scrape`, `firecrawl_crawl`, `firecrawl_agent`, `firecrawl_research_*` | Premium web research, structured extraction, paper index |
+| free-search | `search`, `fetch`, `fetch_batch`, `research`, `cache_search` | Keyless multi-engine search + reading (default lane) |
 | context7 | `resolve-library-id`, `query-docs` | Up-to-date library docs |
-| fetch | `fetch_readable`, `fetch_markdown`, `fetch_youtube_transcript` | URL extraction |
-| exa | `web_search_exa`, `web_fetch_exa` | Semantic web search |
-| postgres / supabase / qdrant / sqlite | query + schema | Direct data access |
-| megamemory | concept graph | Knowledge graph |
+| deepwiki | `ask_wiki_question`, `read_wiki_structure` | GitHub repo Q&A |
+| graphiti | `add_memory`, `search_nodes`, `search_memory_facts` | Temporal knowledge graph (bi-temporal facts) |
+| qdrant | `qdrant_collections_list`, `qdrant_search`, `qdrant_count` | Vector similarity search |
+| codebase-memory | `search_graph`, `query_graph`, `trace_path` | Code knowledge graph, impact analysis |
+| serena | `find_symbol`, `search_for_pattern`, symbol edits | LSP-grade code intelligence |
+| native `websearch` / `webfetch` | built-in | Quick search / URL→markdown |
+
+> **[ALIGNED 2026-10-03 · hot-surface trim]** The previous table listed brave-search, perplexity,
+> sequential-thinking, fetch, exa, megamemory, postgres/sqlite — none were mounted (ghost rows).
+> Reality-census of `opencode.json .mcp` replaced them. Disabled lanes (enabled:false, reversible):
+> web-search-prime · web-reader · zread · megamemory · openrouter · minimax-mcp (dupe of minimax) ·
+> mapbox-devkit · delegation-ledger (:18801 DEAD — probed) · repomapper · semgrep.
+> Backup: `opencode.json.bak-align-20261003T040602Z`. Hot servers 34 → 24.
 
 ## 6. MCP servers — Infrastructure
 

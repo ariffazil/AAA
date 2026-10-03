@@ -29,6 +29,7 @@
     "cold_skill_md_files": 422,
     "cold_skill_md_files_method": "same find, restricted to .archive/ and .frozen/ — still surfaced as available_skills by the harness (ghost capability class)",
     "physical_total_aaa_tree": 1355,
-    "symlink_warning": "/root/.opencode/skills, /root/.agents/skills and /root/.claude/skills are ALL symlinks to /root/AAA/skills (one tree, three names). Any tool that does not pass -L measures ZERO skills — a phantom-absence generator. audit item #8."
+    "symlink_warning": "/root/.opencode/skills, /root/.agents/skills and /root/.claude/skills are ALL symlinks to /root/AAA/skills (one tree, three names). Any tool that does not pass -L measures ZERO skills — a phantom-absence generator. audit item #8.",
+    "cold_relocated_20261003": "2026-10-03 alignment: /root/AAA/skills/.archive + .frozen MOVED OUT of hot mesh to /root/AAA/skills-cold/ — ~422 ghost SKILL.md no longer surfaced as available_skills. Thaw = move back. 4th config tree (/root/.config/opencode/skills) folded: 41 identical symlink-dupes deleted, 13 unique organ-lane links relocated to canon, stale mmx-cli archive-link removed (mesh 2026-09-24 copy canonical). Backup: /root/.config/opencode/_skills-config-tree.bak-20261003T040641Z.tgz"
   }
 }
