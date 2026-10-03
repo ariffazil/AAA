@@ -2,21 +2,23 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aaa.arif-fazil.com/schemas/ir/release-link-gate.v1.schema.json",
   "title": "ReleaseLinkGate v1",
-  "description": "External reference release policy. emitted_URL must be in observed_URLs set. Every external URL in any artifact, reply, or packet must satisfy Release(Link,Claim) = Observed ∧ Reachable ∧ IdentityMatch ∧ Supports. RegionMatch is mandatory for App Store / Play Store / geo-dependent sources. Status ladder: UNOBSERVED → OBSERVED+DEAD → OBSERVED+WRONG_ENTITY → CORRECT+CANDIDATE → CORRECT+SUPPORTED. See AAA-IR/MIGRATION.md law 9.",
+  "description": "External reference release policy. emitted_URL must be in observed_URLs set. Every external URL in any artifact, reply, or packet must satisfy Release(Link,Claim) = Observed ∧ Reachable ∧ IdentityMatch ∧ Supports. RegionMatch is mandatory for App Store / Play Store / geo-dependent sources (enforced via JSON Schema if/then on expected_entity.kind). Status ladder: UNOBSERVED → OBSERVED+DEAD → OBSERVED+WRONG_ENTITY → CORRECT+CANDIDATE → CORRECT+SUPPORTED. See AAA-IR/MIGRATION.md law 9.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["url", "claim", "status", "release_decision", "decided_at"],
+  "required": ["url", "claim", "expected_entity", "checks", "status", "release_decision", "observed_at", "canonical_url", "retrieval_method", "decided_at", "verifier_identity"],
   "properties": {
-    "url": { "type": "string", "format": "uri" },
+    "url": { "type": "string", "format": "uri", "description": "The URL under test." },
+    "canonical_url": { "type": "string", "format": "uri", "description": "URL after redirect-following (the actual canonical resource). May differ from `url`." },
     "claim": { "type": "string", "description": "What the link is being used to support." },
     "expected_entity": {
       "type": "object",
+      "required": ["title", "kind"],
       "description": "What the link is supposed to point to.",
       "properties": {
         "title": { "type": "string" },
         "publisher": { "type": "string" },
         "developer": { "type": "string" },
-        "region": { "type": "string" },
+        "region": { "type": ["string", "null"], "description": "ISO 3166 or vendor region. MANDATORY for region-dependent kinds." },
         "kind": { "type": "string", "enum": ["app", "paper", "repo", "doc", "service", "person", "place", "unknown"] }
       }
     },
@@ -27,7 +29,7 @@
         "observed": { "type": "boolean", "description": "URL was observed in tool evidence (retrieved, fetched, searched)." },
         "reachable": { "type": "boolean", "description": "Live probe returned 2xx or canonical redirect." },
         "identity_match": { "type": "boolean", "description": "Title/publisher/developer match expected_entity." },
-        "region_match": { "type": ["boolean", "null"], "description": "Region of URL matches expected_entity.region." },
+        "region_match": { "type": ["boolean", "null"], "description": "Region of URL matches expected_entity.region. Mandatory for app/paper kind." },
         "supports_claim": { "type": "boolean", "description": "Page content supports the claim being made (can be minimal if claim is just 'the link')." }
       }
     },
@@ -41,12 +43,94 @@
       "enum": ["RELEASE", "SUPPRESS", "REJECT"],
       "description": "RELEASE = all four checks pass. SUPPRESS = dead/unreachable. REJECT = wrong entity or unsupported claim."
     },
+    "retrieval_method": {
+      "type": "object",
+      "required": ["tool", "probe_type"],
+      "description": "How the URL was retrieved.",
+      "properties": {
+        "tool": { "type": "string", "description": "Tool identity (web_search, web_extract, browser, etc.)" },
+        "probe_type": { "type": "string", "enum": ["synthetic", "passive", "active", "derived", "self_reported", "external_reported", "unknown"] },
+        "retrieval_response_status": { "type": ["integer", "null"], "description": "HTTP status code returned by the URL probe." },
+        "redirect_chain": { "type": "array", "items": { "type": "string", "format": "uri" }, "description": "Full redirect chain if applicable." },
+        "retrieval_latency_ms": { "type": ["integer", "null"] }
+      }
+    },
+    "content_source_identity_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of canonical content (after redirect + normalization). Allows evidence that two releases cite identical content."
+    },
+    "verifier_identity": {
+      "type": "object",
+      "required": ["verifier_class", "verifier_id"],
+      "description": "Who vouched for the gate decision.",
+      "properties": {
+        "verifier_id": { "type": "string", "description": "Agent / organ / tool identity." },
+        "verifier_class": { "type": "string", "enum": ["ARIFOS_KERNEL", "A-FORGE", "HERMES", "CHRON", "WELL", "GEOX", "WEALTH", "FRAME", "VAULT999", "EXTERNAL_COUNCIL", "HUMAN_F13", "AUTOMATED_GUARD"] }
+      }
+    },
+    "observed_at": { "type": "string", "format": "date-time", "description": "When the URL was first observed in tool evidence." },
+    "verified_at": { "type": ["string", "null"], "format": "date-time", "description": "When the gate was last re-verified. Null if single-shot verification." },
     "evidence_refs": {
       "type": "array",
       "items": { "type": "string" },
       "description": "Probe / fetch / search results backing the decision."
     },
     "decided_at": { "type": "string", "format": "date-time" },
-    "decided_by": { "type": "string", "description": "Verifier that ran the gate." }
-  }
+    "decided_by": { "type": "string", "description": "Internal helper. Should match verifier_identity.verifier_id." }
+  },
+  "allOf": [
+    {
+      "description": "HARD INVARIANT 1: Region-dependent sources MUST carry region_match verdict. App Store / Play Store / paper repository kinds cannot be RELEASED with region_match=null.",
+      "if": {
+        "properties": {
+          "expected_entity": { "properties": { "kind": { "enum": ["app", "paper"] } }, "required": ["kind"] }
+        },
+        "required": ["expected_entity"]
+      },
+      "then": {
+        "properties": {
+          "checks": {
+            "properties": {
+              "region_match": { "type": "boolean", "description": "Mandatory for app/paper kinds. Null forbidden." }
+            },
+            "required": ["region_match"]
+          }
+        }
+      }
+    },
+    {
+      "description": "HARD INVARIANT 2: RELEASE requires all checks pass.",
+      "if": {
+        "properties": { "release_decision": { "const": "RELEASE" } },
+        "required": ["release_decision"]
+      },
+      "then": {
+        "properties": {
+          "checks": {
+            "required": ["observed", "reachable", "identity_match", "supports_claim"],
+            "properties": {
+              "observed": { "const": true },
+              "reachable": { "const": true },
+              "identity_match": { "const": true },
+              "supports_claim": { "const": true }
+            }
+          },
+          "status": { "const": "SUPPORTED" }
+        }
+      }
+    },
+    {
+      "description": "HARD INVARIANT 3: status ladder is monotonic. UNOBSERVED < OBSERVED_DEAD < OBSERVED_WRONG_ENTITY < CANDIDATE < SUPPORTED. SUPPRESS forbidden for status=SUPPORTED.",
+      "if": {
+        "properties": { "status": { "const": "SUPPORTED" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "release_decision": { "const": "RELEASE" }
+        }
+      }
+    }
+  ]
 }

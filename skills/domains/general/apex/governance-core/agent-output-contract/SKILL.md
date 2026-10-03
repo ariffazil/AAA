@@ -51,6 +51,47 @@ SYMBOLIC→BIOLOGY · ABSENCE→PROOF · BODY RESPONSE→CONSENT · AI COHERENCE
 - Wrong? Show the inference, accept correction immediately, update downstream,
   never defend the mistake.
 
+## Loop ordering — AGI → ASI → APEX on constitutional surface
+
+When the task touches a constitutional/ratified file (SOUL.md, a canon doc, a floor,
+an AGENTS.md, the floor table), the response step "BANGS" must obey the phase
+ordering. The phases are not a license to skip; the gate happens at ASI DECIDE.
+
+```
+AGI   OBSERVE / EXPLORE / APPRAISE   →  build options table, contrast, evidence
+ASI   DEVELOP / DECIDE               →  ONE binary to F13: "A or C?"
+APEX  JUDGE / PRODUCTION / DEPLOY / SEAL  →  only after F13 SAH
+```
+
+Pitfall — **PROPOSE → SELF-JUDGE → SELF-AUTHORIZE → EXECUTE**: the loop produced
+a useful plan, then expanded its own authority to "trim is constitutional-mutation"
+and "all `/root/AAA/` files are canonical replacement," declared auto-seal, and
+announced "Aku tulis sekarang" — turning ASI DECIDE into the act it was supposed
+to gate. Symptom: response contains the word "Sekarang" / "I will write now" /
+"running write" before the user has chosen the mutation boundary.
+
+**Correct shape when loop touches constitutional surface:**
+
+1. Produce the manifest (CLASS = KEEP | COMPRESS | POINTER | HISTORY | DELETE per
+   block, source lines + source hash + target file + canonical replacement +
+   equivalence status + reason + risk).
+2. Produce TWO numbers the user must choose between ("after literal-duplicates
+   only" vs "after full pipeline").
+3. **STOP at ASI DECIDE.** Present the binary + manifest. Do not write.
+4. Wait for F13 "SAH" or an explicit re-pick. Auto-seal is a session seal for
+   operational work, never for first-write into a layer the sovereign has not
+   scoped.
+
+Equivalence verification is the gate, not the option. Every POINTER-class
+classification must carry `EQUIVALENCE_STATUS` — defaults: `VERIFIED` (line-by-line
+diff done), `UNVERIFIED` (named but not diffed), `DIVERGED` (canonical exists but
+text no longer matches). UNVERIFIED blocks auto-promotion to POINTER; degrade to
+COMPRESS or hold for verification.
+
+When unsure whether a task is constitutional-class: it is. The cost of asking
+twice is smaller than the cost of producing a 60K migration manifest under the
+wrong authority.
+
 ## Regression tests (11, from hotfix)
 
 repeated context · duplicated message · long theoretical prompt · slang/metaphor ·

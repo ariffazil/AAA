@@ -31,7 +31,33 @@
     "authenticated_extended_card": false,
     "pushNotifications": false,
     "stateTransitionHistory": true,
-    "extendedAgentCard": true
+    "extendedAgentCard": true,
+    "mcpServers": [
+      "arifOS",
+      "A-FORGE",
+      "GEOX",
+      "WEALTH",
+      "WELL",
+      "arifflow",
+      "brave-search",
+      "filesystem",
+      "memory",
+      "stealth-browser",
+      "minimax-mcp",
+      "osm",
+      "firecrawl"
+    ],
+    "channels": [
+      "a2a",
+      "telegram",
+      "opencode",
+      "ollama",
+      "browser",
+      "firecrawl",
+      "brave",
+      "anthropic"
+    ],
+    "skillCount": 14
   },
   "securitySchemes": [
     {
@@ -90,6 +116,150 @@
       "floor_scope": [
         "F4",
         "F8"
+      ]
+    },
+    {
+      "id": "AAA-voice-suara-siti",
+      "name": "AAA-voice-suara-siti",
+      "description": "AAA voice clone for suara Siti",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "AGI-agentic-web",
+      "name": "AGI-agentic-web",
+      "description": "Unified agentic web doctrine - browse/search/explore",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "AGI-explorer-intelligence",
+      "name": "AGI-explorer-intelligence",
+      "description": "OBSERVE-HYPOTHESIZE-FALSIFY-VERIFY exploration protocol",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "aaa-canonical",
+      "name": "aaa-canonical",
+      "description": "AAA canonical knowledge bundle",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "agent-output-contract",
+      "name": "agent-output-contract",
+      "description": "7-section sealed decision packet",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "geological-artifact-rigor",
+      "name": "geological-artifact-rigor",
+      "description": "Geoscience artifact quality standing rules",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "human-meaning-membrane",
+      "name": "human-meaning-membrane",
+      "description": "Human behavior/intent modeling discipline",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "mmx-cli",
+      "name": "mmx-cli",
+      "description": "MiniMax multimodal CLI usage",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "openclaw-forge",
+      "name": "openclaw-forge",
+      "description": "OpenClaw execution primitive",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "openclaw-init",
+      "name": "openclaw-init",
+      "description": "OpenClaw substrate init",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "openclaw-propose-seal",
+      "name": "openclaw-propose-seal",
+      "description": "OpenClaw seal proposal flow",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
+      ]
+    },
+    {
+      "id": "trading-signal",
+      "name": "trading-signal",
+      "description": "Trading signal generation",
+      "tags": [
+        "openclaw-skill-bundle"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4"
       ]
     }
   ],
@@ -240,6 +410,114 @@
         ],
         "version": "2026-07-29",
         "note": "arifFLOW — FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
+      },
+      {
+        "url": "http://127.0.0.1:7072/mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "execution"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "http://127.0.0.1:8081/mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "earth"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "http://127.0.0.1:18082/mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "capital"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "http://127.0.0.1:18083/mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "vitality"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "http://127.0.0.1:7073/mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "metabolism"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "http://127.0.0.1:7074/mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "research"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "http://127.0.0.1:3001/mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "fs"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "memory",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "memory"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "stealth-browser",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "browser"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "minimax-mcp",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "media"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "osm",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "maps"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
+      },
+      {
+        "url": "firecrawl",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "web"
+        ],
+        "note": "registered from runtime openclaw.json 2026-10-02"
       }
     ]
   },

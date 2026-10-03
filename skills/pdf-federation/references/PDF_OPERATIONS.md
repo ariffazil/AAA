@@ -80,6 +80,47 @@ HOLD gold / SELL red + target price). Mode B intelligence dossier: dark palette
 
 Every analytical PDF carries an explicit **Caveats line IN the artifact** — sidecar notes are not enough.
 
+### 2.5 B2B invoice composition (vendor → client)
+
+Recurring pattern from catering / supply / service contracts. Composition rules that protect both sides at audit:
+
+**Pre-render math verification.** When the user provides both line items AND a stated grand total,
+recompute sum-of-line-items in Python first. If they match, proceed. If they mismatch, STOP and
+ask the human — the mismatch is a real-world arithmetic error that belongs in their hands, not
+silently "fixed" by editing one side.
+
+**Daily or batch subtotals stay inside the main table.** Use `<tr class="day-total">` after each
+batch — repeating header + grouped rows + subtotal line. These belong inside `<tbody>` and repeat
+naturally as the page breaks.
+
+**Grand total lives OUTSIDE `<tfoot>`.** weasyprint repeats `<tfoot>` on every page break, so a
+grand total placed there will print on every page of a multi-page invoice. Move it to a separate
+table block placed AFTER the closing `</table>` of the main table. Use a heavier top+bottom border
+so it visually reads as the closing figure. Verify with `pdfinfo out.pdf | grep Pages` then visually
+check first vs last page — same grand total on every page = bug, fix and re-render.
+
+**Complimentary items: itemise at RM0.00 with a `(Complimentary)` suffix.** Never omit them —
+the audit trail (delivery receipt, kitchen record) needs every line that left the kitchen. Suffix
+the description: `Creampuff (Complimentary)`. Unit price and line amount both `RM0.00`.
+
+**MOQ vs actual consumption: declare both.** When a supply contract bills at a Minimum Order
+Quantity (e.g. hot coffee MOQ 400 pax/month at RM3.90) but actual consumption is lower (e.g.
+387 pax), append a transparency note in the description: `(Actual consumption 387 pax; MOQ 400
+pax billed — 13 pax unused)`. This prevents the client asking the same thing and getting a
+suspicious-looking zero-difference.
+
+**Instalment schedule as a separate sub-table.** When invoice carries payment milestones, render
+them as a table AFTER the totals row with columns `Milestone / Percentage / Amount / Due Period`
+plus a `tfoot` Total row. The grand total table lives BEFORE the schedule; the schedule lives
+BEFORE the payment info box. Never inline milestone amounts into the main line-item table.
+
+**Date format.** Spell out dates for invoices (`1 September 2026`), not `1.09.2026` or `1/9/2026`.
+Account payable systems parse both but humans do not — invoices live at the human edge.
+
+**Number convention.** `YYYYMMDD-NNN` (e.g. `20260930-001`) is the working format for sequential
+monthly invoicing — sortable, dedup-able, audit-friendly. Use `-001`, `-002` for the same day's
+second invoice.
+
 ## 3. Verify — no PDF ships without gates
 
 `bash scripts/pdf_verify.sh out.pdf "headline claim" "key sentinel"`

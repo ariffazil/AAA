@@ -139,6 +139,73 @@ silently supplies them.
 - **Count of surfaces reached is part of the result.** N surfaces probed, M divergent, and the
   list of surfaces you did not reach.
 
+## Cross-node fresh-first discipline (vantage staleness)
+
+A surface's "current state" is a function of the vantage the reader holds and when they last
+fetched. Cross-node claims decay unless the reader declares the probe timestamp and a fresh
+fetch was performed in the same audit window. The defect class is "address on stale map":
+two agents each read the right file at the right path, but at different times, and report
+incompatible states that are both individually true.
+
+- **Stale remote-tracking ref.** `git rev-parse origin/main` returns the *remote-tracking
+  ref*, not the live origin. Without `git fetch`, the ref is whatever the local repo last saw.
+  A "KVM4 ahead 26 / behind 2838" claim sourced from the local ref is a local-side reading; an
+  origin-side claim must follow `git fetch origin` in the same audit window. A peer
+  relay of a number is *not* a fresh fetch — re-derive, do not relay.
+- **Stale schema path.** The same JSON can be addressed two ways (`d.get('key')` vs
+  `d['nested']['key']`). When a writer adds a nested schema and a reader still uses the
+  flat path, the reader sees a phantom absence. The fix is not "fabrication" — the data
+  exists; the reader's schema is the wrong address. Probe the write path before declaring
+  the field empty.
+- **Probe-without-fetch = address on stale map.** Whether git remote-tracking, JSON schema
+  path, or runtime config — every cross-node / cross-schema claim must declare (a) the
+  vantage (host, path, checkout state) and (b) the probe timestamp + freshness action
+  (`git fetch origin` within the last N minutes). Without both, the claim auto-decays to
+  "based on last known state" and is not citable as a present-tense finding.
+- **Per-node identity, not global identity.** Config files diverge across nodes by design:
+  opencode.json on KVM4 hash ≠ KVM8 hash because node-specific overrides, runtime paths, and
+  credentials differ. A hash pin is per-vantage; cross-node hash equality is not a property
+  to claim. Audit integrity requires **per-node pin + schema comparison**, not "file X has
+  hash Y" treated as a global fact.
+
+## Receipt / reference ID type declaration
+
+Reports that cite "the receipt", "the commit", or "the session" without specifying the
+identifier type (git hash, FQ receipt UUID, session ID, OTel trace id) are unprovable
+without first-class evidence. The cross-auditor must restate the claim or downgrade to
+UNKNOWN — never accept a bare 8-char prefix and infer the type.
+
+- **Git commit hash.** 40 hex chars (prefix allowed). Verifiable by `git -C <repo> log` or
+  `git cat-file -t <sha>`. Pushed = appears in `git log origin/<branch>`. Local-only =
+  appears in `git log` but `git rev-list --left-right --count origin/main...main`
+  returns non-zero on at least one side.
+- **FQ receipt ID.** UUID 8-char prefix, arifFlow runtime, JSONL-backed. Verifiable by
+  `grep <full-uuid> /var/lib/arifflow/receipts.jsonl`. KVM-local; no cross-node
+  sync. Receipt chain parent links are in `parent_receipt_ids` / `parent_receipt_hashes`
+  fields — same shape, different namespace.
+- **Session ID.** Free-form string. Verifiable by `carry_forward.json` grep, or
+  `session_search` lookup. Per-runtime, may differ across harnesses.
+- **OTel / trace id.** Standard hex. Verifiable by telemetry backend.
+- **UNKNOWN by default.** If the report does not declare the type, downgrade the claim
+  to UNKNOWN — not PASS. Two reviewers who pass an untyped ID have passed the same
+  unverified text; that is an echo, not independent confirmation.
+
+## Local committed vs pushed (git-specific)
+
+"Committed" and "pushed" are two distinct transitions. A local commit that exists in the
+working tree but is not on `origin/<branch>` is *not* reachable by a peer audit. Reports
+that say "pushed" without `git ls-remote origin <branch>` confirmation are
+overclaim — default to "committed locally" until remote-side evidence is in hand.
+
+- `git log --oneline -1` proves local HEAD only.
+- `git fetch origin && git rev-parse origin/<branch>` is the minimum to claim "matches
+  origin".
+- `git rev-list --left-right --count origin/main...main` is the divergence readout —
+  `0\t0` means synced, anything else means at least one side has unpushed work or
+  stale remote-tracking.
+- "PONG" or "PONG observed" is **not** push evidence — the local daemon can respond
+  before the remote is updated.
+
 ## Reporting contract
 
 - Grid of `entity | surface | value | verdict` — no prose substitute for the table.

@@ -156,3 +156,14 @@ reachable (HOLD naming the missing engine) · geological/market/substrate data m
 4. **Trust lives outside the file** — hash → Merkle → VAULT999 → RFC 3161; redaction = removal, never overlay.
 5. **First-Screen Contract** — 79% scan, ~10s verdict, 4±1 chunks: page 1 = BLUF + ≤4 chunks.
 6. **Dark theme only for ≤2-page glanceables** — light default for longer reads and print.
+7. **`<tfoot>` repeats per page break** — weasyprint renders table footers (and `<thead>`) on every
+   page that breaks the table. A grand total inside `<tfoot>` will print on every page of a
+   multi-page invoice or report. For invoices: move the grand total out of `<tfoot>` into a
+   separate table block placed AFTER the closing `</table>`. Daily subtotals stay inside the
+   main table (one per group); only the running grand total moves outside. Verify with
+   `pdfinfo out.pdf | grep Pages` then visually check first vs last page — same-number grand
+   total on every page = bug.
+8. **Verify the stated grand total before render** — when the user provides both line items
+   AND a stated grand total, recompute sum-of-line-items in Python and diff against their
+   stated figure. Mismatch = STOP and ask. Never silently "fix" by editing one side; the
+   mismatch is a real-world error that belongs in front of the human.

@@ -201,7 +201,7 @@ The single dangerous compression: when `arif_judge` both rules on actions AND au
 |------|-------|
 | Bot | 🔥FORGE🔥 `@arifOS_bot` |
 | Bot ID | `8727562763` |
-| Token | `8727562763:AAGJKmvV6BoMUL11QaDQzGzwp1M3pTGRSks` — **source** `/root/.secrets/kunci-mas.env` → `FORGE_BOT_TOKEN` |
+| Token | 🔒 **never inline** — resolve at runtime from `/root/.secrets/kunci-mas.flat.env` → `FORGE_BOT_TOKEN` (mode 600) |
 | Group | `-1003753855708` (AAA supergroup, forum) |
 | Generic thread | none (general post OK: msg 47874/47877/47881) |
 | Topic threads | use Hermes channel_directory; Telegram `message_thread_id` differs (resolve per-topic) |

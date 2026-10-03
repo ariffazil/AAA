@@ -23,7 +23,7 @@ AAA is the cockpit, identity, and A2A (Agent-to-Agent) authority layer of the ar
 | GEOX | 8081 | Earth intelligence |
 | WEALTH | 18082 | Capital intelligence |
 | WELL | 18083 | Vitality guard (REFLECT_ONLY) |
-| HERMES | 8644 | Multi-modal bridge + Telegram relay |
+| HERMES | 18087/18420/18089 | Meaning-integrity MCP + RASA + A2A (v0.21.5 engine) |
 
 ## Tech Stack
 

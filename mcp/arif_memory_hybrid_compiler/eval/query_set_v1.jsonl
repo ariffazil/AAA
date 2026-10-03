@@ -1,0 +1,50 @@
+{"qid": "sem_01", "category": "semantic_factual", "query": "Bijaksana vocabulary discipline"}
+{"qid": "sem_02", "category": "semantic_factual", "query": "arifOS constitutional floor F1 F13"}
+{"qid": "sem_03", "category": "semantic_factual", "query": "auto-seal doctrine session close"}
+{"qid": "sem_04", "category": "semantic_factual", "query": "provenance class O S R I F P C"}
+{"qid": "sem_05", "category": "semantic_factual", "query": "human memory compartment STORY MAP POLICY"}
+{"qid": "sem_06", "category": "semantic_factual", "query": "RRF reciprocal rank fusion formula"}
+{"qid": "sem_07", "category": "semantic_factual", "query": "W3 tri-witness consensus geometric mean"}
+{"qid": "sem_08", "category": "semantic_factual", "query": "telemetry watchdog state.json freshness"}
+{"qid": "sem_09", "category": "semantic_factual", "query": "vault999 seal chain hash prev"}
+{"qid": "sem_10", "category": "semantic_factual", "query": "memory admissibility SRO missing"}
+{"qid": "rel_01", "category": "relationship_path", "query": "agent to agent enablement transport"}
+{"qid": "rel_02", "category": "relationship_path", "query": "human bond action principal grant"}
+{"qid": "rel_03", "category": "relationship_path", "query": "federation manifest topology organ"}
+{"qid": "rel_04", "category": "relationship_path", "query": "arifOS routing intent_canon mode_first"}
+{"qid": "rel_05", "category": "relationship_path", "query": "codex to opencode spawn protocol"}
+{"qid": "rel_06", "category": "relationship_path", "query": "agent card migration schema federation"}
+{"qid": "rel_07", "category": "relationship_path", "query": "graph tier gate l5 constitutional"}
+{"qid": "rel_08", "category": "relationship_path", "query": "langgraph hermes asi integration"}
+{"qid": "rel_09", "category": "relationship_path", "query": "fastmcp python server framework"}
+{"qid": "rel_10", "category": "relationship_path", "query": "qdrant falkordb hybrid graphrag"}
+{"qid": "tem_01", "category": "temporal_current_vs_old", "query": "carry forward latest session 2026-10-03"}
+{"qid": "tem_02", "category": "temporal_current_vs_old", "query": "arifhud cockpit live state today"}
+{"qid": "tem_03", "category": "temporal_current_vs_old", "query": "audit receipt sealed 2026-10"}
+{"qid": "tem_04", "category": "temporal_current_vs_old", "query": "FI-003 recent commits AAA repo"}
+{"qid": "tem_05", "category": "temporal_current_vs_old", "query": "FI-005 last carry forward entries"}
+{"qid": "tem_06", "category": "temporal_current_vs_old", "query": "observatory drift artifact aligned"}
+{"qid": "tem_07", "category": "temporal_current_vs_old", "query": "stability cooldown swap file2 added"}
+{"qid": "tem_08", "category": "temporal_current_vs_old", "query": "honcho pause email instance 7 days"}
+{"qid": "tem_09", "category": "temporal_current_vs_old", "query": "memory architecture latest 5 plane"}
+{"qid": "tem_10", "category": "temporal_current_vs_old", "query": "federation audit 2026-10 SOT"}
+{"qid": "con_01", "category": "contradiction_provenance", "query": "phantom capability declared not installed"}
+{"qid": "con_02", "category": "contradiction_provenance", "query": "MD5 drift aforge frame detector bug"}
+{"qid": "con_03", "category": "contradiction_provenance", "query": "claimed unavailable but live probe shows 200"}
+{"qid": "con_04", "category": "contradiction_provenance", "query": "runtime identity drift source build deployed"}
+{"qid": "con_05", "category": "contradiction_provenance", "query": "memory quorum reconciliation handoff"}
+{"qid": "con_06", "category": "contradiction_provenance", "query": "site traffic reality governance public claim"}
+{"qid": "con_07", "category": "contradiction_provenance", "query": "witness independence audit ledger row"}
+{"qid": "con_08", "category": "contradiction_provenance", "query": "F2 receipt citation truth provenance"}
+{"qid": "con_09", "category": "contradiction_provenance", "query": "scar elevation require 3 reaffirmations"}
+{"qid": "con_10", "category": "contradiction_provenance", "query": "VPS security drift scan rogue container"}
+{"qid": "ope_01", "category": "operational_agent", "query": "MCP server health doctor federation"}
+{"qid": "ope_02", "category": "operational_agent", "query": "AAASovereign cockpit attention desk"}
+{"qid": "ope_03", "category": "operational_agent", "query": "credential exposure containment secret"}
+{"qid": "ope_04", "category": "operational_agent", "query": "Caddy reload site drift baseline"}
+{"qid": "ope_05", "category": "operational_agent", "query": "swap memory pressure reclaim"}
+{"qid": "ope_06", "category": "operational_agent", "query": "codex CLI prompt arif session"}
+{"qid": "ope_07", "category": "operational_agent", "query": "Hermes telegram group chat"}
+{"qid": "ope_08", "category": "operational_agent", "query": "Wealth capital runway budget"}
+{"qid": "ope_09", "category": "operational_agent", "query": "GEOX basin claims audit"}
+{"qid": "ope_10", "category": "operational_agent", "query": "carry forward F13 ratification pending"}

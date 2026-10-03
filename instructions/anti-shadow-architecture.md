@@ -229,3 +229,51 @@ Detection: evidence gathered AFTER intent declared = extractive signal. (GENESIS
 ```
 
 DITEMPA BUKAN DIBERI — 999 SEAL ALIVE
+
+---
+
+## ADDENDUM 2026-10-02 — Self-Model Residual: field evidence (FI-008, post-incident HERMES collapse)
+
+**Invariant (proposed canonical name):** `SELF-MODEL RESIDUAL = Observed System − System's Declared Model of Itself`. "Agent Shadow" = persistent latent behavioral attractor that is (1) recurrent, (2) behaviorally consequential, (3) absent from the declared model, (4) survives rival explanations, (5) causes proxy↔reality divergence. Repetition alone ≠ shadow. Candidate failure mode: **Narrative Dominance Attractor** (self-generated explanatory continuation ↑ while externally grounded task progress ↓) — SENSOR, not verdict, until CHRON longitudinal + counterstories defeated.
+
+**Field instances measured 2026-10-02 (all OBSERVED, one machine-day):**
+1. `FEDERATED_SKILLS_REGISTRY_V3` disk_reconciliation: canonical 945 vs physical 719 · loadable 886 · dup 20/8 groups · broken symlinks 4 → verdict FAIL (witness `a343e1b2`, 02:37Z)
+2. LiteLLM route table: 15 providers declared; live probe caught mistral probe = PAYMENT_REQUIRED (advertised ≠ callable)
+3. GEOX connector advertises `geox_contradiction_registry_status` + `geox_system_registry_status`; live RT1 guard rejects both as non-canonical surface
+4. HERMES docs/surface claims vs live toolset mismatch (13≠8 class); HERMES self-classified as PERSON in claim envelope (representation ≠ substrate)
+5. WEALTH probe timeout during health sweep ("healthy service" ≠ responsive substrate)
+6. HERMES collapse session: 3 repetition-attractor events (sayang/HOLD-flood/ekos) — pre-brake; self-diagnosis attractor (middleware/echo-bug theory) during degradation; memory/USER char limits silently blocked 4+ writes (declared capacity ≠ effective capacity)
+
+**Countermeasures already standing (no new architecture):** reality-claim-gate narrative flags (351/75 refusals, 2026-10-02) · sampling penalties on all hermes-default rungs (13:57Z) · `relay-echo-loop-break.md` RED-posture brake · LAW-8 duplicate audit (PASS, dup=0) · CHRON proxy↔reality pair tracking (pair registered 2026-10-02; longitudinal from today).
+
+**Rule unchanged:** residual is measured, never adjudicated by the agent that exhibits it (scar-2026-10-01-002: same-model self-verification excluded). arifOS adjudicates only when residual becomes consequential (HOLD/constrain/permit-repair). Doctrine above is NOT modified by this addendum; instrumentation lives in CHRON + existing gates.
+
+### ADDENDUM-2 (2026-10-02 evening) — tightened terms + parent class (auditor convergence)
+
+- **REALITY GAP** = parent class: `R_g = ‖Observed System − Declared System‖`. Self-Model Residual is one subclass. Detector stack as residuals: DRIFT=Task · SHADOW=Evidence · BANGANG=Novelty · ECHO=Source · SELF-MODEL=Reality.
+- **Shadow := Persistent Behavioral Residual** (Behavior − Declared Model, recurring) — replaces "latent attractor" (unmeasurable). Persistence test: survives counterstory, perturbation, restart, new context.
+- **Sign convention (governance-bearing, do not drop the sign):**
+  - `Declared > Observed` = **OVERCLAIM** → failure class: trust erosion (registry 945>719, docs≠live, advertised≠callable) → 888 remedy: reduce trust/authority.
+  - `Observed > Declared` = **UNDECLARED POWER** → failure class: danger (shadow paths, undeclared mutation surfaces, degenerate curator writing canon) → 888 remedy: constrain permission first (W0 operator-veto priority).
+  - Both directions observed 2026-10-02. Magnitude without sign conflates two opposite remedies.
+- First instrumented instance: CHRON pair `pr-fed-registry-e87e95a6` (945 declared vs 886 loadable, residual 59 = OVERCLAIM direction, 6.2%).
+
+### ADDENDUM-3 (2026-10-02 night) — canonical formulation, supersedes ADDENDUM-2 wording (auditor-converged; F13 ratification pending)
+
+**Primitive:** `REALITY GAP: R_g(t) = ‖e_t‖`, signed residual `e_t = O_t − D_t` (Observed − Declared; magnitude non-negative; sign selects remedy — Declared>Observed OVERCLAIM → reduce trust; Observed>Declared UNDECLARED POWER → constrain permission, W0 priority).
+
+**Hierarchy:** Prediction · Capability · Task · Evidence · Source · Proxy · Self-Model residuals — all subclasses of Reality Gap.
+
+**Temporal operator:** `Shadow(R_i) = 1 iff R_i > τ ∧ recurrence ≥ k independent windows ∧ perturbation-survival (restart, context reset, alternative prompt, counterstory, independent instrument) ∧ consequence > c`. Shadow is a PROPERTY over any residual family (Capability Shadow, Narrative Shadow, Execution Shadow, Governance Shadow, Self-Model Shadow) — NOT a sibling detector. Evidence Residual is excluded from shadowhood: it dissolves when evidence arrives; a shadow survives the opportunity to correct.
+
+**L-stack:** L0 Reality → L1 Declaration/Model → L2 Residual → L3 Class → L4 Temporal (transient/recurring/persistent/worsening/cooling) → L5 Consequence (harmless/noisy/task-degrading/governance-relevant/dangerous) → L6 Adjudication (observe→falsify→perturb→witness; HOLD/repair only when justified).
+
+**Invariant:** `Residual ≠ Failure` — residual starts inquiry (counterstories: measurement artifact, selection bias, confound, multiple causation, narrative selection); it never closes it. Machine ontology uses residual names (Novelty Residual); human-cockpit labels ("Bangang") stay cockpit-side. Measurement first, label later.
+
+**Five-line doctrine:** Reality precedes model. A model may describe reality but cannot substitute for it. The measurable distance between observation and declaration is a Reality Gap. When the declaration concerns the system itself, the gap is a Self-Model Residual. A residual earns "Shadow" only when it persists across independent observation and perturbation and produces consequence.
+
+**Intelligence invariant (with first-class anti-gaming guard):** `Intelligence ∝ −d/dt‖Reality − Model‖` — valid ONLY when reduction comes from reality-alignment, never metric gaming. Live proof the guard is needed: CHRON A-FORGE pair `receipt_chain ↑ / system_state_change ↓ = GAMING` (proof of action ≠ proof of effect); AAA `dashboard flat / organ down = FAILING`. The proxy↔reality layer exists precisely to prevent improving the dashboard while the world worsens.
+
+**Live residuals observed 2026-10-02 (found by this doctrine's lenses):** A-FORGE surface audit "clean" vs GEOX/WEALTH/WELL/arifOS `DECLARED_SELF_ONLY` (self-consistent ≠ externally verified) · A-FORGE world-model: forge_git gap surprise=1.0, prediction-gap=0.667, zero feedback · HERMES parser classifies "Reality"/"Self"/"Shadow" as PERSON (representation ≠ ontology — testable gap).
+
+**Falsification boundary (arif_judge HOLD trc-a3d9e0ab7a59, 2026-10-02 night):** this addendum remains CANDIDATE doctrine. Rollback = `git revert` of ADDENDUM-1/2/3 in this file. Falsification = any one of the 6 field instances shown to be measurement artifact (wrong instrument, stale read, or selection artifact) ⇒ doctrine reverts to pre-addendum state and the residual re-enters inquiry. Seal to VAULT999 deferred until: (1) evidence formally ingested via arif_observe chain, (2) actor_signature available (F13 identity-key issuance), (3) sovereign SAH on this exact text (chat "seal all" 2026-10-02 night logged as intent, not ratification). Post-brake repetition event 2026-10-02 ~23:5x (surface breaker caught, partial discarded) logged as residual for the 72h CHRON watch — penalties necessary, not sufficient; surface breaker bridged.

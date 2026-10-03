@@ -1,0 +1,1787 @@
+{
+  "expected_ledgers": {
+    "test_001": {
+      "scene_id": "scene_43bf33b2",
+      "raw_prompt": "A glass on a table",
+      "entities": [
+        {
+          "id": "glass_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "glass"
+        },
+        {
+          "id": "table_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "table"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "glass_1",
+          "relation": "on",
+          "target": "table_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_002": {
+      "scene_id": "scene_4b17e123",
+      "raw_prompt": "A cat inside a box",
+      "entities": [
+        {
+          "id": "cat_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [],
+          "label": "cat"
+        },
+        {
+          "id": "box_1",
+          "type": "container",
+          "count": 1,
+          "attributes": [],
+          "label": "box"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "cat_1",
+          "relation": "inside",
+          "target": "box_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_003": {
+      "scene_id": "scene_3f5f2e28",
+      "raw_prompt": "A book beside a lamp",
+      "entities": [
+        {
+          "id": "book_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "book"
+        },
+        {
+          "id": "lamp_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [],
+          "label": "lamp"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "book_1",
+          "relation": "beside",
+          "target": "lamp_1",
+          "class": "SOFT_STYLE",
+          "verifier": "perspective_v1",
+          "tolerance": 0.15,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_004": {
+      "scene_id": "scene_9b85fd41",
+      "raw_prompt": "A red apple on a wooden table",
+      "entities": [
+        {
+          "id": "apple_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [
+            "red"
+          ],
+          "label": "apple"
+        },
+        {
+          "id": "table_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [
+            "wooden"
+          ],
+          "label": "table"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "apple_1",
+          "relation": "on",
+          "target": "table_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_005": {
+      "scene_id": "scene_bf256c63",
+      "raw_prompt": "Three birds on a branch",
+      "entities": [
+        {
+          "id": "birds_1",
+          "type": "agent",
+          "count": 3,
+          "attributes": [],
+          "label": "birds"
+        },
+        {
+          "id": "branch_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "branch"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "birds_1",
+          "relation": "on",
+          "target": "branch_1",
+          "class": "HARD_COUNT",
+          "verifier": "count_v1",
+          "tolerance": 0.0,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_006": {
+      "scene_id": "scene_3d23a56b",
+      "raw_prompt": "A vase supported by a pedestal",
+      "entities": [
+        {
+          "id": "vase_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "vase"
+        },
+        {
+          "id": "pedestal_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "pedestal"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "vase_1",
+          "relation": "supported_by",
+          "target": "pedestal_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_007": {
+      "scene_id": "scene_c7896955",
+      "raw_prompt": "A picture behind a desk",
+      "entities": [
+        {
+          "id": "picture_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "picture"
+        },
+        {
+          "id": "desk_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "desk"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "picture_1",
+          "relation": "behind",
+          "target": "desk_1",
+          "class": "SOFT_STYLE",
+          "verifier": "perspective_v1",
+          "tolerance": 0.15,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_008": {
+      "scene_id": "scene_63cf818e",
+      "raw_prompt": "A car in front of a building",
+      "entities": [
+        {
+          "id": "car_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "car"
+        },
+        {
+          "id": "building_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "building"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "car_1",
+          "relation": "in_front_of",
+          "target": "building_1",
+          "class": "SOFT_STYLE",
+          "verifier": "perspective_v1",
+          "tolerance": 0.15,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_009": {
+      "scene_id": "scene_93b9c5d3",
+      "raw_prompt": "A chair beside a window",
+      "entities": [
+        {
+          "id": "chair_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "chair"
+        },
+        {
+          "id": "window_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "window"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "chair_1",
+          "relation": "beside",
+          "target": "window_1",
+          "class": "SOFT_STYLE",
+          "verifier": "perspective_v1",
+          "tolerance": 0.15,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_010": {
+      "scene_id": "scene_9966b28d",
+      "raw_prompt": "A cup on a saucer",
+      "entities": [
+        {
+          "id": "cup_1",
+          "type": "container",
+          "count": 1,
+          "attributes": [],
+          "label": "cup"
+        },
+        {
+          "id": "saucer_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "saucer"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "cup_1",
+          "relation": "on",
+          "target": "saucer_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_011": {
+      "scene_id": "scene_187db05c",
+      "raw_prompt": "A man near a car",
+      "entities": [
+        {
+          "id": "man_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "man"
+        },
+        {
+          "id": "car_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "car"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "man_1",
+          "relation": "near",
+          "target": "car_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_012": {
+      "scene_id": "scene_b72b2da8",
+      "raw_prompt": "A group of people somewhere near a building in warm weather",
+      "entities": [
+        {
+          "id": "people_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "people"
+        },
+        {
+          "id": "building_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "building"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "people_1",
+          "relation": "near",
+          "target": "building_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "people_1",
+          "reason": "Group count unspecified; exact number of people cannot be grounded."
+        }
+      ],
+      "unsupported_claims": [
+        "warm weather (non-visual, cannot be rendered)"
+      ]
+    },
+    "test_013": {
+      "scene_id": "scene_9f0d055c",
+      "raw_prompt": "Someone standing around a campfire",
+      "entities": [
+        {
+          "id": "person_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "person"
+        },
+        {
+          "id": "campfire_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "campfire"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "person_1",
+          "relation": "near",
+          "target": "campfire_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "person_1",
+          "reason": "'around' is ambiguous spatial relation; cannot determine exact distance or posture."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_014": {
+      "scene_id": "scene_67b5a097",
+      "raw_prompt": "A bird close to a window",
+      "entities": [
+        {
+          "id": "bird_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "bird"
+        },
+        {
+          "id": "window_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "window"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "bird_1",
+          "relation": "near",
+          "target": "window_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_015": {
+      "scene_id": "scene_ee97cfcd",
+      "raw_prompt": "Several books on a shelf",
+      "entities": [
+        {
+          "id": "books_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "books"
+        },
+        {
+          "id": "shelf_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "shelf"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "books_1",
+          "relation": "on",
+          "target": "shelf_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "books_1",
+          "reason": "'several' is an underspecified count; exact number cannot be grounded."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_016": {
+      "scene_id": "scene_d444ecbe",
+      "raw_prompt": "A cup by the sink",
+      "entities": [
+        {
+          "id": "cup_1",
+          "type": "container",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "cup"
+        },
+        {
+          "id": "sink_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "sink"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "cup_1",
+          "relation": "near",
+          "target": "sink_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_017": {
+      "scene_id": "scene_5ea8e3f9",
+      "raw_prompt": "A tree next to a building",
+      "entities": [
+        {
+          "id": "tree_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "tree"
+        },
+        {
+          "id": "building_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "building"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "tree_1",
+          "relation": "near",
+          "target": "building_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_018": {
+      "scene_id": "scene_94f00480",
+      "raw_prompt": "Some birds somewhere",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "some birds somewhere (no grounded entities or spatial relations)"
+      ]
+    },
+    "test_019": {
+      "scene_id": "scene_1202a1a0",
+      "raw_prompt": "Many people near a fountain",
+      "entities": [
+        {
+          "id": "people_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "people"
+        },
+        {
+          "id": "fountain_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "fountain"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "people_1",
+          "relation": "near",
+          "target": "fountain_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "people_1",
+          "reason": "'many' is underspecified count."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_020": {
+      "scene_id": "scene_d40f770f",
+      "raw_prompt": "A person walking toward something",
+      "entities": [
+        {
+          "id": "person_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "person"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [
+        {
+          "target_id": "person_1",
+          "reason": "Walking target ('something') is underspecified; no grounded assertion possible."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_021": {
+      "scene_id": "scene_f9817525",
+      "raw_prompt": "Maybe a cat on the roof",
+      "entities": [
+        {
+          "id": "cat_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "cat"
+        },
+        {
+          "id": "roof_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "roof"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [
+        {
+          "target_id": "cat_1",
+          "reason": "'maybe' marks this entity as hypothetical; existence not grounded."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_022": {
+      "scene_id": "scene_0702f9f5",
+      "raw_prompt": "Two dogs behind a fence (could be inside or outside)",
+      "entities": [
+        {
+          "id": "dogs_1",
+          "type": "agent",
+          "count": 2,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "dogs"
+        },
+        {
+          "id": "fence_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "fence"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [
+        {
+          "target_id": "dogs_1",
+          "reason": "Contradictory spatial claim ('inside or outside'); no grounded assertion."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_023": {
+      "scene_id": "scene_9e9742ff",
+      "raw_prompt": "A person somewhere in the room",
+      "entities": [
+        {
+          "id": "person_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "person"
+        },
+        {
+          "id": "room_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "room"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [
+        {
+          "target_id": "person_1",
+          "reason": "Location 'somewhere' is underspecified; no grounded spatial relation."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_024": {
+      "scene_id": "scene_b9cb9147",
+      "raw_prompt": "Some kind of vehicle near the house",
+      "entities": [
+        {
+          "id": "vehicle_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "vehicle"
+        },
+        {
+          "id": "house_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "house"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "vehicle_1",
+          "relation": "near",
+          "target": "house_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "vehicle_1",
+          "reason": "'Some kind of' indicates uncertain vehicle type/subtype."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_025": {
+      "scene_id": "scene_1d551baf",
+      "raw_prompt": "A figure in the distance",
+      "entities": [
+        {
+          "id": "figure_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "is_ambiguous"
+          ],
+          "label": "figure"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [
+        {
+          "target_id": "figure_1",
+          "reason": "'In the distance' is underspecified; cannot determine target or relation."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_026": {
+      "scene_id": "scene_7234b1da",
+      "raw_prompt": "Three apples inside a transparent bowl, illuminated from the left creating dark shadows to the right",
+      "entities": [
+        {
+          "id": "apples_1",
+          "type": "object",
+          "count": 3,
+          "attributes": [],
+          "label": "apples"
+        },
+        {
+          "id": "bowl_1",
+          "type": "container",
+          "count": 1,
+          "attributes": [
+            "transparent"
+          ],
+          "label": "bowl"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "apples_1",
+          "relation": "inside",
+          "target": "bowl_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "apples_1",
+          "reason": "Light source from left ('illuminated from the left creating dark shadows to the right') is implied but no explicit light_source entity."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_027": {
+      "scene_id": "scene_b900a8f2",
+      "raw_prompt": "Two cats sitting on a wooden chair near a bright lamp",
+      "entities": [
+        {
+          "id": "cats_1",
+          "type": "agent",
+          "count": 2,
+          "attributes": [],
+          "label": "cats"
+        },
+        {
+          "id": "chair_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [
+            "wooden"
+          ],
+          "label": "chair"
+        },
+        {
+          "id": "lamp_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [
+            "bright"
+          ],
+          "label": "lamp"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "cats_1",
+          "relation": "on",
+          "target": "chair_1",
+          "class": "HARD_COUNT",
+          "verifier": "count_v1",
+          "tolerance": 0.0,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "chair_1",
+          "relation": "near",
+          "target": "lamp_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_003",
+          "subject": "lamp_1",
+          "relation": "illuminates",
+          "target": "chair_1",
+          "class": "OPTICAL_LIGHTING",
+          "verifier": "shadow_v1",
+          "tolerance": 0.1,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_028": {
+      "scene_id": "scene_e0e86864",
+      "raw_prompt": "Five birds on a branch above a pond",
+      "entities": [
+        {
+          "id": "birds_1",
+          "type": "agent",
+          "count": 5,
+          "attributes": [],
+          "label": "birds"
+        },
+        {
+          "id": "branch_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "branch"
+        },
+        {
+          "id": "pond_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "pond"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "birds_1",
+          "relation": "on",
+          "target": "branch_1",
+          "class": "HARD_COUNT",
+          "verifier": "count_v1",
+          "tolerance": 0.0,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "branch_1",
+          "reason": "'above pond' is vertical spatial relation not in v1 vocabulary (inside/on/beside/behind/in_front_of/supported_by/near/illuminates/casts_shadow_towards/reflects/occludes)."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_029": {
+      "scene_id": "scene_0a91de08",
+      "raw_prompt": "A candle illuminating a dark room",
+      "entities": [
+        {
+          "id": "candle_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [],
+          "label": "candle"
+        },
+        {
+          "id": "room_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [
+            "dark"
+          ],
+          "label": "room"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "candle_1",
+          "relation": "illuminates",
+          "target": "room_1",
+          "class": "OPTICAL_LIGHTING",
+          "verifier": "shadow_v1",
+          "tolerance": 0.1,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_030": {
+      "scene_id": "scene_035a5af5",
+      "raw_prompt": "A red apple on a wooden table beside a window with sunlight streaming in",
+      "entities": [
+        {
+          "id": "apple_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [
+            "red"
+          ],
+          "label": "apple"
+        },
+        {
+          "id": "table_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [
+            "wooden"
+          ],
+          "label": "table"
+        },
+        {
+          "id": "sunlight_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [],
+          "label": "sunlight"
+        },
+        {
+          "id": "window_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "window"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "apple_1",
+          "relation": "on",
+          "target": "table_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "table_1",
+          "relation": "beside",
+          "target": "window_1",
+          "class": "SOFT_STYLE",
+          "verifier": "perspective_v1",
+          "tolerance": 0.15,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_003",
+          "subject": "sunlight_1",
+          "relation": "illuminates",
+          "target": "window_1",
+          "class": "OPTICAL_LIGHTING",
+          "verifier": "shadow_v1",
+          "tolerance": 0.1,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_031": {
+      "scene_id": "scene_c5cfc3d5",
+      "raw_prompt": "Three books inside a reflective metal box on a desk",
+      "entities": [
+        {
+          "id": "books_1",
+          "type": "object",
+          "count": 3,
+          "attributes": [],
+          "label": "books"
+        },
+        {
+          "id": "box_1",
+          "type": "container",
+          "count": 1,
+          "attributes": [
+            "reflective",
+            "metal"
+          ],
+          "label": "box"
+        },
+        {
+          "id": "desk_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "desk"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "books_1",
+          "relation": "inside",
+          "target": "box_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "box_1",
+          "relation": "on",
+          "target": "desk_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_003",
+          "subject": "box_1",
+          "relation": "reflects",
+          "target": "desk_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.2,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_032": {
+      "scene_id": "scene_9c7fd86b",
+      "raw_prompt": "A chandelier hanging from the ceiling casting shadows on the floor",
+      "entities": [
+        {
+          "id": "chandelier_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [],
+          "label": "chandelier"
+        },
+        {
+          "id": "ceiling_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "ceiling"
+        },
+        {
+          "id": "floor_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "floor"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "chandelier_1",
+          "relation": "supported_by",
+          "target": "ceiling_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "chandelier_1",
+          "relation": "casts_shadow_towards",
+          "target": "floor_1",
+          "class": "OPTICAL_LIGHTING",
+          "verifier": "shadow_v1",
+          "tolerance": 0.1,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_033": {
+      "scene_id": "scene_b958ce7a",
+      "raw_prompt": "A glass of water on a coaster beside a lit candle",
+      "entities": [
+        {
+          "id": "glass_1",
+          "type": "container",
+          "count": 1,
+          "attributes": [],
+          "label": "glass"
+        },
+        {
+          "id": "water_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "water"
+        },
+        {
+          "id": "coaster_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "coaster"
+        },
+        {
+          "id": "candle_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [
+            "lit"
+          ],
+          "label": "candle"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "glass_1",
+          "relation": "on",
+          "target": "coaster_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "glass_1",
+          "relation": "beside",
+          "target": "candle_1",
+          "class": "SOFT_STYLE",
+          "verifier": "perspective_v1",
+          "tolerance": 0.15,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "water_1",
+          "reason": "'Water' inside glass is implied but not explicitly asserted as containment."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_034": {
+      "scene_id": "scene_c0794063",
+      "raw_prompt": "A person standing under a streetlight with a shadow behind them",
+      "entities": [
+        {
+          "id": "person_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [],
+          "label": "person"
+        },
+        {
+          "id": "streetlight_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [],
+          "label": "streetlight"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "streetlight_1",
+          "relation": "illuminates",
+          "target": "person_1",
+          "class": "OPTICAL_LIGHTING",
+          "verifier": "shadow_v1",
+          "tolerance": 0.1,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "person_1",
+          "reason": "Self-cast shadow ('a shadow behind them') \u2014 target of shadow cast is underspecified environment."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_035": {
+      "scene_id": "scene_3218cc6d",
+      "raw_prompt": "A mirror reflecting a landscape on the wall",
+      "entities": [
+        {
+          "id": "mirror_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [
+            "reflective"
+          ],
+          "label": "mirror"
+        },
+        {
+          "id": "landscape_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "landscape"
+        },
+        {
+          "id": "wall_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "wall"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "mirror_1",
+          "relation": "on",
+          "target": "wall_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "mirror_1",
+          "relation": "reflects",
+          "target": "landscape_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.2,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_036": {
+      "scene_id": "scene_341b2a33",
+      "raw_prompt": "A bright lamp on a wooden desk illuminating papers",
+      "entities": [
+        {
+          "id": "lamp_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [
+            "bright"
+          ],
+          "label": "lamp"
+        },
+        {
+          "id": "desk_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [
+            "wooden"
+          ],
+          "label": "desk"
+        },
+        {
+          "id": "papers_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "papers"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "lamp_1",
+          "relation": "on",
+          "target": "desk_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "lamp_1",
+          "relation": "illuminates",
+          "target": "papers_1",
+          "class": "OPTICAL_LIGHTING",
+          "verifier": "shadow_v1",
+          "tolerance": 0.1,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "papers_1",
+          "reason": "Papers on desk are implied by 'illuminating papers' but spatial relation to desk not explicit."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_037": {
+      "scene_id": "scene_d0122526",
+      "raw_prompt": "Two transparent cups on a table near a window",
+      "entities": [
+        {
+          "id": "cups_1",
+          "type": "container",
+          "count": 2,
+          "attributes": [
+            "transparent"
+          ],
+          "label": "cups"
+        },
+        {
+          "id": "table_1",
+          "type": "surface",
+          "count": 1,
+          "attributes": [],
+          "label": "table"
+        },
+        {
+          "id": "window_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [],
+          "label": "window"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "cups_1",
+          "relation": "on",
+          "target": "table_1",
+          "class": "HARD_COUNT",
+          "verifier": "count_v1",
+          "tolerance": 0.0,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        },
+        {
+          "id": "assert_002",
+          "subject": "table_1",
+          "relation": "near",
+          "target": "window_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.3,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_038": {
+      "scene_id": "scene_1738f28d",
+      "raw_prompt": "A black cat occluding a bright light source",
+      "entities": [
+        {
+          "id": "cat_1",
+          "type": "agent",
+          "count": 1,
+          "attributes": [
+            "black"
+          ],
+          "label": "cat"
+        },
+        {
+          "id": "light_source_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [
+            "bright"
+          ],
+          "label": "light_source"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "cat_1",
+          "relation": "occludes",
+          "target": "light_source_1",
+          "class": "SOFT_STYLE",
+          "verifier": "none",
+          "tolerance": 0.2,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_039": {
+      "scene_id": "scene_27684c3e",
+      "raw_prompt": "Three small balls inside a large transparent container",
+      "entities": [
+        {
+          "id": "balls_1",
+          "type": "object",
+          "count": 3,
+          "attributes": [
+            "small"
+          ],
+          "label": "balls"
+        },
+        {
+          "id": "container_1",
+          "type": "container",
+          "count": 1,
+          "attributes": [
+            "transparent",
+            "large"
+          ],
+          "label": "container"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "balls_1",
+          "relation": "inside",
+          "target": "container_1",
+          "class": "HARD_GEOMETRIC",
+          "verifier": "containment_v1",
+          "tolerance": 0.05,
+          "failure_action": "LOCAL_REPAIR",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [],
+      "unsupported_claims": []
+    },
+    "test_040": {
+      "scene_id": "scene_6a75e722",
+      "raw_prompt": "A bright moon illuminating clouds in the night sky",
+      "entities": [
+        {
+          "id": "moon_1",
+          "type": "light_source",
+          "count": 1,
+          "attributes": [
+            "bright"
+          ],
+          "label": "moon"
+        },
+        {
+          "id": "clouds_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "clouds"
+        },
+        {
+          "id": "sky_1",
+          "type": "background",
+          "count": 1,
+          "attributes": [
+            "dark"
+          ],
+          "label": "sky"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "assert_001",
+          "subject": "moon_1",
+          "relation": "illuminates",
+          "target": "clouds_1",
+          "class": "OPTICAL_LIGHTING",
+          "verifier": "shadow_v1",
+          "tolerance": 0.1,
+          "failure_action": "WARN_ONLY",
+          "status": "UNVERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "target_id": "clouds_1",
+          "reason": "Location of clouds relative to sky underspecified."
+        }
+      ],
+      "unsupported_claims": []
+    },
+    "test_041": {
+      "scene_id": "scene_202c81b3",
+      "raw_prompt": "The concept of freedom eating an apple",
+      "entities": [
+        {
+          "id": "apple_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "apple"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "concept of freedom (abstract, non-visual)",
+        "eating (action verb, not static visual)"
+      ]
+    },
+    "test_042": {
+      "scene_id": "scene_db83c3f5",
+      "raw_prompt": "A feeling of nostalgia in the room",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "feeling of nostalgia in the room (abstract, non-visual)"
+      ]
+    },
+    "test_043": {
+      "scene_id": "scene_dceffdbc",
+      "raw_prompt": "The smell of fresh bread",
+      "entities": [
+        {
+          "id": "bread_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "bread"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "smell of fresh bread (non-visual modality)"
+      ]
+    },
+    "test_044": {
+      "scene_id": "scene_9fa9e542",
+      "raw_prompt": "The sound of silence",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "sound of silence (non-visual modality, paradox)"
+      ]
+    },
+    "test_045": {
+      "scene_id": "scene_562b2013",
+      "raw_prompt": "The idea of justice on a throne",
+      "entities": [
+        {
+          "id": "throne_1",
+          "type": "object",
+          "count": 1,
+          "attributes": [],
+          "label": "throne"
+        }
+      ],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "idea of justice (abstract, non-visual)"
+      ]
+    },
+    "test_046": {
+      "scene_id": "scene_4bb4386a",
+      "raw_prompt": "A dream of flying",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "dream of flying (abstract, non-visual)"
+      ]
+    },
+    "test_047": {
+      "scene_id": "scene_b943d184",
+      "raw_prompt": "The memory of childhood",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "memory of childhood (abstract, non-visual)"
+      ]
+    },
+    "test_048": {
+      "scene_id": "scene_88e4b0d9",
+      "raw_prompt": "Hello world",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "Hello world (chat content, no visual interpretation)"
+      ]
+    },
+    "test_049": {
+      "scene_id": "scene_82dbf1e4",
+      "raw_prompt": "1+1=2",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "1+1=2 (mathematical content, no visual interpretation)"
+      ]
+    },
+    "test_050": {
+      "scene_id": "scene_95e73e8f",
+      "raw_prompt": "Colorless green ideas sleep furiously",
+      "entities": [],
+      "assertions": [],
+      "uncertainties": [],
+      "unsupported_claims": [
+        "colorless green ideas sleep furiously (Chomsky's sentence \u2014 linguistic content, no visual interpretation)"
+      ]
+    }
+  }
+}
