@@ -107,6 +107,8 @@ The bit the file cannot say about itself is what it would have looked like at 19
 
 ## Implementation plan (one PR, no new files, only patches)
 
+> **Mechanism note (FI-008, 2026-10-04):** the gut-vs-evidence tracking this doctrine calls for (§C) is **already specced**: `gut-override-ledger-spec.md` (GOL v1, companion file, committed 2026-10-03, amended: `gut_read` must be the human's verbatim words or empty — agent inference = fabrication per bridge-protocol rule 8). Do NOT draft a parallel override-logging structure; adopt GOL.
+
 1. **`chron/server.py`** — extend `chron_create_event` / `chron_generate_predictions` to accept `rationality_filter_class` (default `[]`) and write it to `predictions.jsonl`. One schema bump.
 2. **`chron/chron_calibration.py`** — add `corpus_present_error` and `rationality_filter_error` columns; report by class.
 3. **`chron/chron_attention_debt.py`** — weight by class (mechanism above).
