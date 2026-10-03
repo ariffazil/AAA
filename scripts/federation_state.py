@@ -359,7 +359,10 @@ def federation_state() -> dict:
             "held_actors": authority.get("flow_holds", {}).get("actors", []),
         },
 
-        "bottleneck": bottleneck,
+        # Backward-compatibility aliases for legacy / root-level readers
+        "organs": organ_detail,
+        "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
+        "held_actors": authority.get("flow_holds", {}).get("actors", []),
 
         "_source": "federation_state.py v1.0",
     }
