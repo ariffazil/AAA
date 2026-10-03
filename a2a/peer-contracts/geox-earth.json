@@ -63,11 +63,12 @@
     ],
     "max_risk_tier": "MEDIUM",
     "skills": [
-      "geox_basin_profile",
-      "geox_sequence",
+      "geox_basin",
+      "geox_model",
       "geox_evidence",
       "geox_subsurface_model",
       "geox_vision"
     ]
-  }
+  },
+  "_reconciliation": "2026-10-03 alignment audit: dead geox tool names mapped to live canonical surface equivalents"
 }
