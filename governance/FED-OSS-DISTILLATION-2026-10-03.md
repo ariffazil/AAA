@@ -2,7 +2,7 @@
 
 > **Author:** 333-AGI (FI-001) under F13 directive "map FED reality + make sure all warga have the correct FED model + deep research external OSS to distill".
 > **Session:** SEAL-1233ff7266744510
-> **Status:** DRAFT_RECEIPT (2026-10-03) — operational distillation receipt; not doctrine, no F13 instrument claimed. Applied: additive config/SOT. Staged: gateway-restart-class patches (§3).
+> **Status:** DRAFT_RECEIPT (2026-10-03) — operational distillation receipt; not doctrine, no F13 instrument claimed. Applied live: config/SOT alignment + i-arif restore + retry patch (restart receipt §3, 11:01 MYT).
 > **Precedent:** FED-EUREKA-DISTILLATION-2026-09-07.md · TOMBSTONE law: routing SOT = /root/.config/federation-models.json (never fed_signatures.yaml)
 
 ## 1. FED reality map (live-probed 2026-10-03 10:27-10:45 MYT)
@@ -56,10 +56,10 @@ Backups: `opencode.json.bak-fedalign-20261003T023940Z`, `federation-models.json.
 
 **APPLIED now (additive, no restart):** `_meta.reasoning_model_registry_2026_10_03` in federation-models.json — machine-readable headroom law sealing the bench failure class: `min_max_tokens` per reasoning model, `reasoning_content` parse contract, and the rule *content=='' ∧ finish_reason=='length' ∧ registry-model ⇒ TOKEN STARVATION, not corruption — raise tokens before any demotion claim.*
 
-**STAGED (needs litellm-federation restart — held under F1 Amanah: gateway is load-bearing for HERMES/i-arif; benefit marginal vs 10-30s outage + KVM4 stale-config failover risk). Apply at next natural restart window:**
+**APPLIED LIVE (restart window 2026-10-03 11:01 MYT, 25s, controlled T2):**
 
 ```yaml
-# /root/A-FORGE/litellm-config.yaml → router_settings (exact patch)
+# /root/A-FORGE/litellm-config.yaml → router_settings (commit 4b8ab1cc — NOW LIVE)
 router_settings:
   num_retries: 3            # was 1 — contradicted declared fallback discipline ("retry 3x backoff")
   retry_policy:
@@ -67,17 +67,22 @@ router_settings:
     RateLimitErrorRetries: 3
     AuthenticationErrorRetries: 1   # don't hammer dead keys
     NotFoundErrorRetries: 0         # never retry a 404
+    ContentPolicyViolationErrorRetries: 2
+    InternalServerErrorRetries: 3
     DefaultRetries: 2
   # optional Phase-1.5: enable_tag_filtering: true + tag_routing_prefix: "route:"
   #   → per-warga deployment steering without touching cascade integers
 ```
 
+**P1 REPAIR — i-arif sovereign lane (found during this audit, restored live):**
+`model=i-arif` returned "Invalid model name" on KVM8 primary (OBS 10:52 MYT) — 8 deployments accidentally dropped by bulk checkpoint `bc98843d` (2026-09-30), leaving organs.yaml + router fallbacks dangling. Restored verbatim from `bc98843d^` (A-FORGE `6a05314f`), canonical `deepseek-v4-pro` group added to repair forge-builder/forge-economy dangling fallback targets (`b4670f33`). All 10 env keys present. Post-restart regression: **i-arif PONG 3036ms finish=stop; /v1/models 2/2; apex-888 1485ms · asi-555 4567ms · forge-777 3128ms · hermes-asi 1665ms — all finish=stop; 0 config errors.** No live breakage had occurred (HERMES rides hermes-asi + direct names + i-arif-sovereign AUDIO provider — OBS /root/.hermes/config.yaml). Benign residual: `gemini-2.5-flash` fallback source is KVM4-only lane (never fires on KVM8; kept for config lineage).
+
 ## 4. Open items (declared, not hidden)
 
-1. **Vision passthrough** on asi-555 chain: untested with a real image (DER, not OBS). Next 555-ASI-VISION task must verify or fall back to qwen3.7-plus per SOT chain.
-2. **forge-777 order-1 (mimo-v2.6-pro-payg)** served MiniMax-M3 on probe — normal failover or standing mimo failure? UNBENCHED; registry placeholder set. One probe run will tell (fed_report_latency has no mimo-v2.6 samples).
-3. **KVM4 litellm config parity** with KVM8 :4013 — assumed stale (passive backup since 2026-09-15 swap). If KVM8 litellm dies, failover lands on possibly-old cascades. Sync check = 15-min task, queued.
-4. **Staged retry patch** above — apply at next gateway restart.
+1. ~~Vision passthrough on asi-555~~ **CLOSED (OBS 10:47 MYT):** 1×1 red PNG through asi-555 → "Maroon", finish=stop. 555-ASI-VISION + image-analyzer bindings fully verified.
+2. **forge-777 order-1 (mimo-v2.6-pro-payg)** consistently served via MiniMax-M3 failover (2 probes) — normal cooldown or standing mimo failure? UNBENCHED; one probe run will tell (no mimo-v2.6 samples in route_latency).
+3. **KVM4 litellm = divergent FORK, not stale copy (MEASURED):** 10 KVM4-only groups (gemini-*/mistral/codestral/fed-audio-asr/tts/i-arif-era lanes) vs 14 KVM8-only (forge-* subagents, mimo-v2.6 family, hermes-default, deepseek-flash, MiniMax-M3.1). **Blind sync in either direction breaks a node's locals.** Union review with per-node env validation = scoped next-window task; backup node only matters if primary dies (primary healthy).
+4. ~~Staged retry patch~~ **APPLIED LIVE (commit 4b8ab1cc, restart receipt above).**
 5. **Firecrawl credits low** (vendor notice during research) — top-up is F13 money-class; flagged, not acted.
 
 ## 5. Kill criterion for this artifact
