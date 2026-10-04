@@ -1,0 +1,337 @@
+<!--
+  Doctrine Page Template — arif-fazil.com/words/doctrine/
+  Forged 2026-08-10. Reusable pattern for constitutional/governance document pages.
+  
+  Design principles:
+  1. Section by type (Hard/Soft/Derived) with colored headers
+  2. Card structure: number → name → badge → essence → explanation
+  3. F13 highlighted as capstone
+  4. Content-first, zero JS
+  5. 5-lane nav synced with site
+-->
+
+<!DOCTYPE html>
+<html lang="en" data-ring="MIND" data-plane="narrative">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITLE_HERE | arif-fazil.com</title>
+  <meta name="description" content="DESCRIPTION_HERE">
+  <link rel="canonical" href="https://arif-fazil.com/words/doctrine/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0A0B0D">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,700,800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="/_shared/design-system/tokens.css">
+  <link rel="stylesheet" href="/_shared/design-system/hub-words.css">
+
+  <style>
+    :root {
+      --hard: #D4536B;
+      --soft: #D49D53;
+      --derived: #6BCF8B;
+      --gold: #D4A853;
+      --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-display: 'Cabinet Grotesk', Georgia, serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+    }
+
+    /* --- Section headers --- */
+    .d-section { margin: 2.5rem 0 0.5rem; }
+    .d-section:first-of-type { margin-top: 2rem; }
+    .d-section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #1E232A;
+    }
+    .d-section-head h2 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #7A7670;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0;
+    }
+    .d-pill {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2em 0.55em;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    .d-pill.hard { background: rgba(212,83,107,0.12); color: var(--hard); }
+    .d-pill.soft { background: rgba(212,157,83,0.12); color: var(--soft); }
+    .d-pill.derived { background: rgba(107,207,139,0.12); color: var(--derived); }
+
+    /* --- Floor cards --- */
+    .d-card {
+      background: #111318;
+      border: 1px solid #1E232A;
+      border-left: 4px solid var(--hard);
+      border-radius: 8px;
+      padding: 1.15rem 1.35rem;
+      margin: 0.65rem 0;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .d-card:hover { background: #161820; border-color: #2A2E3A; }
+    .d-card.soft { border-left-color: var(--soft); }
+    .d-card.derived { border-left-color: var(--derived); }
+
+    .d-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+    .d-num {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 2.2rem;
+    }
+    .d-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #EDEAE2;
+    }
+    .d-badge {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.12em 0.45em;
+      border: 1px solid currentColor;
+      border-radius: 3px;
+      margin-left: 0.25rem;
+    }
+    .d-badge.hard { color: var(--hard); }
+    .d-badge.soft { color: var(--soft); }
+    .d-badge.derived { color: var(--derived); }
+
+    .d-essence {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #D8D4CC;
+      margin: 0.55rem 0 0.15rem;
+      line-height: 1.4;
+    }
+    .d-explain {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: #7A7670;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* --- Intro & quote --- */
+    .d-intro {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: #A09D96;
+      line-height: 1.65;
+      margin: 0 0 1.5rem;
+      max-width: 40rem;
+    }
+    .d-intro strong { color: #EDEAE2; font-weight: 600; }
+
+    .d-quote {
+      border-left: 3px solid var(--gold);
+      padding: 0.65rem 1.15rem;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #D8D4CC;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      background: rgba(212,168,83,0.03);
+      border-radius: 0 6px 6px 0;
+      max-width: 40rem;
+    }
+    .d-quote cite {
+      display: block;
+      margin-top: 0.4rem;
+      font-style: normal;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #6A665E;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* --- Legend --- */
+    .d-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0.6rem 0.85rem;
+      background: #111318;
+      border: 1px solid #1E232A;
+      border-radius: 6px;
+      margin: 1.25rem 0 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+    }
+    .d-legend-item { display: flex; align-items: center; gap: 0.35rem; color: #8A8578; }
+    .d-legend-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; }
+    .d-legend-dot.hard { background: var(--hard); }
+    .d-legend-dot.soft { background: var(--soft); }
+    .d-legend-dot.derived { background: var(--derived); }
+
+    /* --- Footer --- */
+    .d-footer {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #1E232A;
+    }
+    .d-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+    }
+    .d-footer-links a {
+      color: #6A665E;
+      text-decoration: none;
+      border-bottom: 1px dotted #2A2E3A;
+      transition: color 0.15s;
+    }
+    .d-footer-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .d-source {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: #4A4840;
+      margin-top: 0.85rem;
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 640px) {
+      .d-card { padding: 0.95rem 1.05rem; }
+      .d-num { font-size: 1.1rem; min-width: 1.8rem; }
+      .d-name { font-size: 1rem; }
+      .d-essence { font-size: 0.92rem; }
+    }
+  </style>
+</head>
+<body class="fam-words-hub">
+<div class="frame">
+
+  <!-- 5-lane nav (MUST use current nav, not old 7-item) -->
+  <nav class="nav" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/earth">Earth</a>
+    <a href="/words" class="here">Words</a>
+    <a href="/world">World</a>
+    <a href="/work">Work</a>
+  </nav>
+
+  <p class="meta">Words › Doctrine</p>
+  <h1>TITLE_HERE.</h1>
+  <p class="subtitle" style="font-size:1.05rem;color:#A09D96;margin:0 0 1.5rem;max-width:38rem;line-height:1.55;font-family:var(--font-display)">
+    SUBTITLE_HERE
+  </p>
+
+  <p class="d-intro">
+    INTRO_PARAGRAPH_HERE
+  </p>
+
+  <blockquote class="d-quote">
+    "QUOTE_HERE"
+    <cite>— ATTRIBUTION</cite>
+  </blockquote>
+
+  <div class="d-legend">
+    <div class="d-legend-item"><span class="d-legend-dot hard"></span> HARD — VOID on violation</div>
+    <div class="d-legend-item"><span class="d-legend-dot soft"></span> SOFT — CAUTION or HOLD</div>
+    <div class="d-legend-item"><span class="d-legend-dot derived"></span> DERIVED — score-based gate</div>
+  </div>
+
+  <!-- HARD FLOORS -->
+  <div class="d-section">
+    <div class="d-section-head">
+      <h2>Hard Floors</h2>
+      <span class="d-pill hard">VOID on violation</span>
+    </div>
+
+    <div class="d-card">
+      <div class="d-head">
+        <span class="d-num">FN</span>
+        <span class="d-name">NAME</span>
+        <span class="d-badge hard">HARD</span>
+      </div>
+      <div class="d-essence">ESSENCE_ONE_LINER</div>
+      <div class="d-explain">HUMAN_EXPLANATION</div>
+    </div>
+
+    <!-- Repeat for each hard floor -->
+  </div>
+
+  <!-- SOFT FLOORS -->
+  <div class="d-section">
+    <div class="d-section-head">
+      <h2>Soft Floors</h2>
+      <span class="d-pill soft">CAUTION or HOLD</span>
+    </div>
+
+    <div class="d-card soft">
+      <div class="d-head">
+        <span class="d-num">FN</span>
+        <span class="d-name">NAME</span>
+        <span class="d-badge soft">SOFT</span>
+      </div>
+      <div class="d-essence">ESSENCE_ONE_LINER</div>
+      <div class="d-explain">HUMAN_EXPLANATION</div>
+    </div>
+  </div>
+
+  <!-- DERIVED FLOORS -->
+  <div class="d-section">
+    <div class="d-section-head">
+      <h2>Derived Floors</h2>
+      <span class="d-pill derived">Score-based gate</span>
+    </div>
+
+    <div class="d-card derived">
+      <div class="d-head">
+        <span class="d-num">FN</span>
+        <span class="d-name">NAME</span>
+        <span class="d-badge derived">DERIVED</span>
+      </div>
+      <div class="d-essence">ESSENCE_ONE_LINER</div>
+      <div class="d-explain">HUMAN_EXPLANATION</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="d-footer">
+    <div class="d-footer-links">
+      <a href="/words/constitution/">Full Canon →</a>
+      <a href="/floors.json">/floors.json</a>
+      <a href="https://github.com/ariffazil/arifOS">GitHub</a>
+      <a href="https://mcp.arif-fazil.com/mcp">MCP</a>
+    </div>
+    <div class="d-source">
+      Source of truth: PATH_TO_SOT<br>
+      Ditempa bukan diberi — Forged, not given.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

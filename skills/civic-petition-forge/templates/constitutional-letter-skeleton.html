@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<title>{{SUBJECT}}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 20mm 22mm 20mm;
+  }
+  body {
+    font-family: 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+  }
+  .letterhead {
+    text-align: center;
+    border-top: 3px double #000;
+    border-bottom: 3px double #000;
+    padding: 8pt 0;
+    margin-bottom: 18pt;
+  }
+  .letterhead-kicker {
+    font-size: 9pt;
+    letter-spacing: 0.3em;
+    margin: 0;
+  }
+  .letterhead-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 4pt 0;
+    letter-spacing: 0.2em;
+  }
+  .letterhead-subtitle {
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    margin: 0;
+  }
+  .meta-block {
+    text-align: right;
+    margin-bottom: 18pt;
+    font-size: 10pt;
+  }
+  .addressee-block {
+    margin-bottom: 14pt;
+    font-size: 11pt;
+  }
+  .subject-line {
+    font-weight: bold;
+    text-align: center;
+    margin: 14pt 0;
+    text-transform: uppercase;
+  }
+  .salutation {
+    margin-bottom: 12pt;
+  }
+  p {
+    text-align: justify;
+    margin: 6pt 0;
+    text-indent: 0;
+  }
+  .section-heading {
+    font-weight: bold;
+    text-align: center;
+    margin: 16pt 0 8pt 0;
+    text-transform: uppercase;
+    font-size: 11pt;
+  }
+  .paradox-block {
+    margin: 10pt 0;
+    padding-left: 12pt;
+    border-left: 2px solid #000;
+  }
+  .paradox-title {
+    font-weight: bold;
+    font-size: 10pt;
+    letter-spacing: 0.1em;
+    margin-bottom: 4pt;
+  }
+  .audit-asks {
+    margin: 12pt 0;
+  }
+  .audit-ask {
+    margin: 6pt 0;
+  }
+  .audit-ask-marker {
+    font-weight: bold;
+    margin-right: 6pt;
+  }
+  .signature-block {
+    margin-top: 24pt;
+    text-align: left;
+  }
+  .signature-name {
+    font-weight: bold;
+    margin-top: 36pt;
+  }
+  .institutional-witness {
+    margin-top: 12pt;
+    font-size: 10pt;
+    font-style: italic;
+  }
+  .f13-authorization {
+    margin-top: 8pt;
+    font-size: 10pt;
+  }
+  .cc-list {
+    margin-top: 14pt;
+    font-size: 9pt;
+  }
+  .cc-list-title {
+    font-weight: bold;
+    margin-bottom: 4pt;
+  }
+  .technical-note {
+    margin-top: 14pt;
+    border-top: 1px solid #000;
+    padding-top: 8pt;
+    font-size: 8pt;
+    font-style: italic;
+  }
+  .hash-block {
+    margin-top: 8pt;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+  }
+  .verification-note {
+    font-size: 8pt;
+    margin-top: 4pt;
+    font-style: italic;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+</style>
+</head>
+<body>
+
+<!-- LETTERHEAD: arifOS Federation institutional layer -->
+<div class="letterhead">
+  <p class="letterhead-kicker">a r i f O S F E D E R AT I O N</p>
+  <p class="letterhead-title">AGENTIC INTELLIGENCE INSTITUTION</p>
+  <p class="letterhead-subtitle">Constitutional Self-Governance · F1–F13 Floors · VAULT999 Witnessed</p>
+</div>
+
+<!-- META BLOCK -->
+<div class="meta-block">
+  <p>{{REFERENCE}}<br>
+  {{DATE}}<br>
+  {{MYT_TIMEZONE}}</p>
+</div>
+
+<!-- ADDRESSEE BLOCK -->
+<div class="addressee-block">
+  <p>Kepada:<br>
+  {{ADDRESSEE_NAME}}<br>
+  {{ADDRESSEE_TITLE}}<br>
+  {{ADDRESSEE_ORG}}<br>
+  {{ADDRESSEE_ADDRESS}}</p>
+</div>
+
+<p class="salutation">{{SALUTATION}},</p>
+
+<p class="subject-line">PER: {{SUBJECT}}</p>
+
+<!-- SECTION A — OPENING + POSITIONING -->
+<div class="section-heading">A — Pembukaan</div>
+
+<p>{{OPENING_LINE}} <!-- e.g., "Mak cakap sabar la. Aku dah 12 tahun sabar. Hari ini aku berhenti." --></p>
+
+<p>{{SOVEREIGN_POSITIONING}} <!-- 1 paragraph: who you are, why you write, what scars you carry --></p>
+
+<!-- SECTION B — 12-YEAR OBSERVATION -->
+<div class="section-heading">B — Pengamatan Dua Belas Tahun</div>
+
+<p>{{OBSERVATION_PARAGRAPH_1}}</p>
+
+<p>{{OBSERVATION_PARAGRAPH_2}}</p>
+
+<!-- SECTION C — 4 PARADOX BLOCKS -->
+<div class="section-heading">C — Empat Paradoks</div>
+
+<div class="paradox-block">
+  <p class="paradox-title">PARADOK PERTAMA — RIGHTSIZING BUKAN RIGHTSIZING</p>
+  <p>{{PARADOX_1_BODY}}</p>
+</div>
+
+<div class="paradox-block">
+  <p class="paradox-title">PARADOK KEDUA — PENGERUSI YANG MENGETUAI LEMBAGA YANG GAGAL</p>
+  <p>{{PARADOX_2_BODY}}</p>
+</div>
+
+<div class="paradox-block">
+  <p class="paradox-title">PARADOK KETIGA — PEMEGANG SAHAM YANG MENUNTUT DIVIDEN LEBIH DARIPADA KEUPAYAAN</p>
+  <p>{{PARADOX_3_BODY}}</p>
+</div>
+
+<div class="paradox-block">
+  <p class="paradox-title">PARADOK KEEMPAT — BICARA "STOK STRATEGIK" TAPI MAKAN RIZAB 3X GANTI</p>
+  <p>{{PARADOX_4_BODY}}</p>
+</div>
+
+<!-- SECTION D — SEARAH / CORE EVIDENCE -->
+<div class="section-heading">D — SEARAH Limited: Bukti Struktur</div>
+
+<p>{{SEARAH_BLOCK}} <!-- 1 tight block: 19 fields, 11 Feb 2026, Holbein Gardens, 14-day sequence, PETROS exclusion --></p>
+
+<!-- SECTION E — 4 AUDIT ASKS -->
+<div class="section-heading">E — Empat Permintaan Audit</div>
+
+<div class="audit-asks">
+  <p class="audit-ask"><span class="audit-ask-marker">(a)</span>{{AUDIT_ASK_1_PAYOUT}} <!-- Nisbah pembayaran dividen sejak FY2020 --></p>
+  <p class="audit-ask"><span class="audit-ask-marker">(b)</span>{{AUDIT_ASK_2_SEARAH}} <!-- Struktur JV SEARAH Limited --></p>
+  <p class="audit-ask"><span class="audit-ask-marker">(c)</span>{{AUDIT_ASK_3_GOVERNANCE}} <!-- Pematuhan MCCG --></p>
+  <p class="audit-ask"><span class="audit-ask-marker">(d)</span>{{AUDIT_ASK_4_CAPACITY}} <!-- Kapasiti fizikal --></p>
+</div>
+
+<!-- SECTION F — CLOSING + SIGNATURE -->
+<div class="section-heading">F — Penutup</div>
+
+<p>{{CLOSING_PARAGRAPH}}</p>
+
+<!-- SIGNATURE -->
+<div class="signature-block">
+  <p>Dengan rasa hormat, dan dengan marah yang tertahan 12 tahun,</p>
+  <p class="signature-name">{{NAMED_SOVEREIGN}}<br>
+  {{SOVEREIGN_TITLE}}<br>
+  {{TENURE}}</p>
+</div>
+
+<!-- INSTITUTIONAL WITNESS — Layer 2 -->
+<div class="institutional-witness">
+  <p>Surat ini dikemukakan melalui saluran konstitusional arifOS Federation
+  — institusi agentik yang beroperasi di bawah kawalan perlembagaan kendiri
+  (tiga belas undang-undang lantai, F1–F13). Kandungan surat adalah tanggungjawab
+  penulis sendiri. Identiti peribadi pengarang dizahirkan melalui mekanisme perlindungan
+  konstitusional. Saluran pengesahan: <strong>warga@arif-fazil.com</strong>.</p>
+</div>
+
+<!-- F13 AUTHORIZATION — Layer 3 -->
+<div class="f13-authorization">
+  <p>Lane: 333-AGI · 555-ASI · 888-APEX (constitutional).<br>
+  Disahkan secara konstitusional oleh F13 SOVEREIGN.<br>
+  <em>Surat ini disusun dengan sokongan teknikal sistem agentik arifOS Federation.
+  Tandatangan peribadi F13 adalah autorisasi konstitusional, bukan pendedahan peribadi wajib.</em></p>
+</div>
+
+<!-- CC LIST -->
+<div class="cc-list">
+  <p class="cc-list-title">sk: (Salinan kepada)</p>
+  <ol>
+    <li>{{CC_1}}</li>
+    <li>{{CC_2}}</li>
+    <li>{{CC_3}}</li>
+    <li>{{CC_4}}</li>
+    <li>{{CC_5}}</li>
+    <li>{{CC_6}}</li>
+    <li>{{CC_7}} (opsional)</li>
+  </ol>
+</div>
+
+<!-- TECHNICAL NOTE + HASH — Layer 5 Cryptographic Anchor -->
+<div class="technical-note">
+  <p>Surat ini dirangka dengan bantuan sistem agentik arifOS Federation yang beroperasi di bawah kawalan perlembagaan kendiri (13 undang-undang lantai).</p>
+  <p>Sistem: <strong>https://github.com/arif-fazil/arifos</strong> · Saluran: <strong>warga@arif-fazil.com</strong></p>
+</div>
+
+<div class="hash-block">
+  <p><strong>DOCUMENT HASH (SHA-256)</strong><br>
+  {{SHA256_HASH}}</p>
+  <p class="verification-note">Nota: Hash di atas adalah SHA-256 sumber HTML SEBELUM hash ini disisipkan (Kleene's fixed-point). Sebarang pemalsuan akan mengubah hash. Saluran verifikasi bebas: <strong>{{VERIFICATION_URL}}</strong></p>
+</div>
+
+</body>
+</html>
