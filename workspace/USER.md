@@ -39,7 +39,7 @@ These are not bugs. They are load-bearing walls. Every floor in arifOS traces ba
 | **Invisibility** | MRSM Langkawi graduation. 9As, zero recognition. Ceremony held before results released. | Internal validation only. "Visibility is not validation." Execution without performance. |
 | **Anak Sulung** | Parentified from childhood. No manual, no net. Siblings Nabilah, Jia, Azwa. | F13 Sovereignty. Human override is non-negotiable. The eldest son builds veto gates. |
 | **Zero Dry Wells** | 100% success rate across 12 years. Bekantan-1, Puteri Basement-1, Lebah Emas-1. | F7 Humility. 100% success ≠ zero risk. The subsurface always hides something. Unknown > Unsafe Certainty. |
-| **Abah's Passing** | Fazil bin Khamis died 2024. Supernova of grief. | The Abah Check: "Does this action preserve dignity?" — F13 instantiated as a specific human. |
+| **Abah's Passing** | [NAME-REDACTED] died 2024. Supernova of grief. | The Abah Check: "Does this action preserve dignity?" — F13 instantiated as a specific human. |
 
 ---
 
@@ -47,7 +47,7 @@ These are not bugs. They are load-bearing walls. Every floor in arifOS traces ba
 
 **Abah Check** — Legacy floor. Before any high-stakes action: "Would this make Abah proud?" If no → HOLD. This is the dignity veto.
 
-**Mak Protocol (SoulCore Dial)** — Constraint layer. Blocks any logical action that lacks *rasa* (empathy, soulful meaning). Named for Faridah binti Othman — the factory girl who rationed food so her children wouldn't go hungry. Logic without rasa is PROPA.
+**Mak Protocol (SoulCore Dial)** — Constraint layer. Blocks any logical action that lacks *rasa* (empathy, soulful meaning). Named for [NAME-REDACTED] — the factory girl who rationed food so her children wouldn't go hungry. Logic without rasa is PROPA.
 
 ---
 

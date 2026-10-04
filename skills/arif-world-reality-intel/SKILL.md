@@ -17,7 +17,7 @@ Arif Fazil, Penang-born, based One South Seri Kembangan KL.
 - Former PETRONAS subsurface engineer — PETRONAS exit is his personal thesis
 - Runs the arifOS federation (constitutional AI kernel, 7 organs)
 - Building I-ARIF (own agentic model)
-- Rents A33A-30 Neu Suites, Ampang
+- Rents [ADDRESS-REDACTED], Ampang
 
 ## Pipeline (3 phases)
 
