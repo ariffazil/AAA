@@ -1,0 +1,49 @@
+{
+  "schema": "person-data-allowlist/v1",
+  "forged": "2026-10-04",
+  "owner": "FI-003 under F13 directive",
+  "doctrine": "Only SYNTHETIC values may be allowlisted. A real person's NRIC is never allowlisted — the fixture must be replaced with a synthetic number instead. Every entry needs synthetic:true, a reason, and an approver; an entry missing any of the three is ignored and the value is scanned normally.",
+  "consumer": "scripts/person_data_gate.py :: load_allowlist()",
+  "rule": "This list exists so a control can be demonstrated without using the data the control protects. The audit that motivated the gate found a real third-party NRIC serving as the test fixture for a PII-redaction control in docs/blueprints/BEFORE-MODEL-CALLBACK-SPEC-v1.md — the control meant to stop leaks was proved with leaked data.",
+  "allow": [
+    {
+      "value": "990101-14-5001",
+      "synthetic": true,
+      "reason": "person_data_gate.py self-test fixture: structurally valid NRIC shape (date + place-of-birth code both pass validation) used to prove the positive arm fires.",
+      "approved_by": "F13 (2026-10-04, 'bina person-data gate')",
+      "added": "2026-10-04"
+    },
+    {
+      "value": "880229-10-5002",
+      "synthetic": true,
+      "reason": "self-test fixture: leap-day NRIC, proves the two-century date resolution accepts 29 Feb.",
+      "approved_by": "F13 (2026-10-04)",
+      "added": "2026-10-04"
+    },
+    {
+      "value": "700315-02-5003",
+      "synthetic": true,
+      "reason": "self-test fixture: NRIC adjacent to an age field, the shape in which real ones were found.",
+      "approved_by": "F13 (2026-10-04)",
+      "added": "2026-10-04"
+    },
+    {
+      "value": "250905-14-5009",
+      "synthetic": true,
+      "reason": "self-test fixture: documents that the gate is deliberately shape-based and will flag any structurally valid NRIC, including one used as an order id.",
+      "approved_by": "F13 (2026-10-04)",
+      "added": "2026-10-04"
+    },
+    {
+      "value": "1234567890:AASyntheticSelfTestValueNotARealToken00",
+      "synthetic": true,
+      "reason": "self-test fixture for the Telegram bot-token arm. bot_id 1234567890 is a reserved example id and the secret half is the literal word 'Synthetic'.",
+      "approved_by": "F13 (2026-10-04)",
+      "added": "2026-10-04"
+    }
+  ],
+  "notes": [
+    "The binary coincidences in the self-test (320193-20-0000, 193125-13-4165, 628280-16-0203, 140361-26-0353, 202601-15-1234) need no allowlist entry — they are rejected by date and place-of-birth validation before the allowlist is consulted.",
+    "Adding a real value here does not make the gate pass silently: entries without synthetic:true, reason, and approved_by are dropped by load_allowlist()."
+  ]
+}
