@@ -50,9 +50,11 @@
       "pinned": "2026-08-25",
       "surface": "opencode free-search (uvx/PyPI)"
     },
-    "minimax-coding-plan-mcp@0.1.2": {
-      "pinned": "2026-08-25",
-      "surface": "claude MiniMax + kimi (npx) + hermes (uvx@0.0.5)"
+    "minimax-coding-plan-mcp@0.0.5": {
+      "pinned": "2026-10-04",
+      "surface": "claude MiniMax (uvx/PyPI) + opencode minimax (bare PATH exec of uv tool v0.0.4)",
+      "corrected_from": "minimax-coding-plan-mcp@0.1.2 (pinned 2026-08-25)",
+      "why": "PyPI publishes only 0.0.1..0.0.5; 0.1.2 exists on npm, not PyPI. The old key named an npm version under the uvx runner, so the claude lane could never resolve — uv failed with 'there is no version of minimax-coding-plan-mcp==0.1.2' and the MCP server never started, while opencode mcp-registry.yaml declared minimax state: ACTIVE. Corrected 2026-10-04 to PyPI-latest 0.0.5 and verified live over stdio: initialize OK, tools/list = web_search + understand_image. kimi and hermes carry no minimax runner entry (/root/.kimi/mcp.json absent; HERMES config.yaml has none), so the previous surface note 'kimi (npx) + hermes (uvx@0.0.5)' described configs that do not exist."
     },
     "minimax-mcp@0.0.19": {
       "pinned": "2026-08-25",

@@ -607,4 +607,82 @@ PRE-COMMIT HARD GATES: PASSED — 53/53 checks clean
 Health after commit: hermes 5/5 active · 0 failed units · site/kernel/FED 200/200/200 ·
 `supply_chain_gate.py --all` PASS rc=0 · disk 311 G used / 77 G avail / 81%.
 
+---
+
+## 11. ADDENDUM 4 — the two uvx entries probed; §10.3 CORRECTED (F13: "probe the two uvx entries")
+
+### 11.1 §10.3 was wrong and is retracted here
+
+§10.3 warned that `uvx pkg@x.y.z` "uses the other runner's syntax" and "may not resolve at
+runtime". **Measured on uv 0.11.8, that is false** — uv accepts both forms:
+
+```
+uvx minimax-mcp@0.0.19              -> RESOLVED 0.0.19
+uvx minimax-mcp==0.0.19             -> RESOLVED 0.0.19
+uvx free-search-mcp@0.9.2           -> RESOLVED 0.9.2
+uvx minimax-coding-plan-mcp@0.0.5   -> RESOLVED 0.0.5
+```
+
+The WARN therefore fired 3× per commit against healthy config. Removed in `97fcda17`
+(`ACCEPTED_FOR_RUNNER`); a warning that cries wolf on legitimate loads trains the reader to
+ignore the real one — the same failure mode commit `1983c89eb3` removed from the skill guard.
+
+### 11.2 The real defect was a runner/index mismatch, not syntax
+
+| surface | spec | runner / index | state |
+|---|---|---|---|
+| Claude `/mcpServers/MiniMax` | `minimax-coding-plan-mcp@0.1.2` | `uvx` → **PyPI** | **DEAD** — PyPI has only 0.0.1…0.0.5 |
+| OpenCode `/mcp/minimax` | `minimax-coding-plan-mcp` (bare) | PATH exec → `uv tool` **v0.0.4** | ALIVE, `enabled: true` |
+| OpenCode `/mcp/minimax-mcp` | `minimax-mcp@0.0.19` | `uvx` → PyPI | resolves, but `enabled: false` |
+| OpenCode `/mcp/free-search` | `--with selectolax==0.4.9 free-search-mcp@0.9.2` | `uvx` → PyPI | ALIVE, both versions exist |
+
+`0.1.2` is not a typo — **it exists on npm** (`registry.npmjs.org/minimax-coding-plan-mcp`
+latest = 0.1.2). The Claude entry paired an npm version number with the PyPI runner, so uv
+answered *"there is no version of minimax-coding-plan-mcp==0.1.2"* and the server never started.
+The registry's own note — `claude MiniMax + kimi (npx) + hermes (uvx@0.0.5)` — already recorded
+0.0.5 as the working uvx version, and named kimi/hermes surfaces that do not exist
+(`/root/.kimi/mcp.json` absent, `HERMES/config.yaml` has no minimax runner).
+
+`MINIMAX_API_KEY` was never the cause: set in the shell env, len 125.
+
+### 11.3 Fixed to 0.0.5 (F13 authorized) and verified live
+
+`/root/.claude/settings.json` carries the **immutable attribute** and is the only one of the four
+picker configs that does — "F13 holds the pen" enforced at the filesystem level. Lifted under a
+`trap`-guarded restore, edited as a single-occurrence text replacement (no JSON round-trip):
+
+```
+diff: 1 line, byte size 20462 -> 20462 (identical), JSON re-parses
+immutable flag after: ----i---------e-------  (RESTORED, verified)
+backup: /root/.claude/settings.json.bak-20261004-minimax-pin-fix (20462 B, mode 600)
+```
+
+**End-to-end stdio handshake against the fixed pin:**
+
+```
+initialize  OK  serverInfo={name:'Minimax'}  protocol=2024-11-05
+tools/list  OK  2 tools: web_search, understand_image
+```
+
+That matches what `mcp-registry.yaml` claims for the lane, so `minimax: state: ACTIVE` is no
+longer contradicted. `-y` is an npx-ism passed through to the server; verified harmless (the
+handshake succeeds with and without it).
+
+### 11.4 Gate blind spot this probe exposed — fixed in `97fcda17`
+
+`tokens_from_command` skipped every flag's argument uniformly, so for the real shape
+`uvx --with DEP PKG` it verified DEP and **never looked at PKG**:
+
+```
+uvx --with selectolax==0.4.9 TOTALLY-UNPINNED-PKG   -> gate said PASS
+```
+
+`--from PKG CMD` was inverted the same way (PKG skipped, CMD checked). Split into `SPEC_FLAGS`
+(argument is a spec → verify) and `VALUE_FLAGS` (argument is a value → skip), returning every
+spec. Both holes now BLOCK; 13-case matrix re-verified.
+
+Still out of this gate's scope by design: a spec can be exactly pinned and name a version that
+does not exist. Adding a registry-existence check would put a network call in every commit —
+a design decision, not a bug fix. That is how `@0.1.2` survived since 2026-08-25.
+
 DITEMPA BUKAN DIBERI ⚒️
