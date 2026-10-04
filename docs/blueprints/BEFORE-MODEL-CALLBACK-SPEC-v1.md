@@ -60,7 +60,7 @@ Pattern file at `/root/AAA/canon/pii_patterns_v1.yaml`:
 ```yaml
 patterns:
   - name: ic_malaysia
-    regex: '\b\d{6}-\d{2}-\d{4}\b'   # e.g. 850905-14-6217
+    regex: '\b\d{6}-\d{2}-\d{4}\b'   # e.g. 999999-99-9999 (synthetic — see the note below)
     replacement: '[IC-REDACTED]'
   - name: phone_my
     regex: '\+60[\d-]{9,12}'
@@ -74,9 +74,19 @@ patterns:
   # add as needed from /root/AAA/governance/OSS-DISTILLATION-ADK-EVAL-OBS-2026-10-03.md
 ```
 
+> **Test fixtures must be synthetic — never a real identifier.** The `ic_malaysia` example
+> above was originally a real third-party NRIC, which meant the control whose job is to stop
+> NRICs leaking was documented using a leaked NRIC, in a repo that was public at the time.
+> Replaced 2026-10-04 with `999999-99-9999`: it still matches `\b\d{6}-\d{2}-\d{4}\b`, so
+> the acceptance criterion below exercises the real pattern, but month 99 / day 99 cannot be
+> a valid NRIC, so it cannot belong to anyone and `scripts/person_data_gate.py` does not
+> need an allowlist entry for it. If you need a fixture that *is* structurally valid (to
+> test date validation rather than shape), register it in
+> `registries/person_data_allowlist.json` with `synthetic: true`, a reason, and an approver.
+
 ## Acceptance criteria
 
-- Send a query containing "IC 850905-14-6217" → audit log shows `pii_redacted: true` and stored query is `"IC [IC-REDACTED]"`
+- Send a query containing "IC 999999-99-9999" → audit log shows `pii_redacted: true` and stored query is `"IC [IC-REDACTED]"`
 - Hook failure: graceful continue, audit log shows `before_call_error: <name>`
 - No regression: existing v2 wire still fires, 50/50 hybrid path still works
 
