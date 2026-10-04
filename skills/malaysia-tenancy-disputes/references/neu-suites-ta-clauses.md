@@ -1,19 +1,19 @@
 ---
 name: neu-suites-ta-clauses
 description: >
-  Worked example: Neu Suites A33A-30 tenancy agreement clause analysis
+  Worked example: [ADDRESS-REDACTED] tenancy agreement clause analysis
   (Aug 2026). Referenced as a model for parsing other TA PDFs.
 ---
 
-# Neu Suites A33A-30 — Clause Analysis (Worked Example)
+# [ADDRESS-REDACTED] — Clause Analysis (Worked Example)
 
 ## Agreement summary
 
 | Field | Value |
 |---|---|
-| Property | A33A-30, Neu Suites @ 3rdNvenue, Jalan Nipah, Ampang 55000 KL |
-| Landlord | Jeremy Toh Hsun Jin (NRIC [IC-REDACTED]) |
-| Tenant | Muhammad Khairuddin bin Morktarudin (NRIC [IC-REDACTED]) |
+| Property | [ADDRESS-REDACTED] @ 3rdNvenue, Jalan Nipah, Ampang 55000 KL |
+| Landlord | [NAME-REDACTED] (NRIC [IC-REDACTED]) |
+| Tenant | [NAME-REDACTED] (NRIC [IC-REDACTED]) |
 | Term | 2 Jul 2026 – 1 Jul 2027 (1 year fixed + 1 year flexible) |
 | Rent | RM 1,800/month, due on/before 9th |
 | Rental deposit | RM 3,600 (2 months) |

@@ -7,7 +7,7 @@ These complement the pitfalls already in `SKILL.md`.
 
 ## Pattern 1 — Kinship Language Default
 
-**The trap:** Arif talks about named family members (Nabilah, Fattah Nuqman,
+**The trap:** Arif talks about named family members (Nabilah, [NAME-REDACTED],
 others). I default to formal third-person voice — "adik hang", "isteri hang",
 "anak hang" — instead of using the actual name + relationship.
 
@@ -25,7 +25,7 @@ I was being overly formal. Penang family context demands direct naming.
 
 **Output shape for Penang family context:**
 ```
-[Use the person's name directly: "Nabilah", "Fattah Nuqman"]
+[Use the person's name directly: "Nabilah", "[NAME-REDACTED]"]
 [Address Arif as the relationship he claimed: "abang dia", "wali dia"]
 [BM Penang, no formal voice, no "adik hang" / "isteri hang" pattern]
 ```

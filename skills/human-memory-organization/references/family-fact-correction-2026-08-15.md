@@ -24,7 +24,7 @@
    - Registry re-parsed via python json → P-013 relation + P-014 work_location correct
    - End state verified consistent; only then reported "rekod dah selari".
 
-6. **Identity join already made:** azwa-fazil.md carries "Full name: Azwa Safrina binti Fazil (confirmed by ARIF 2026-08-15, Telegram 'Kanak-kanak')" — joining P-015 (family) with P-007 Wawa (telegram_network, node srv1642546). Cross-reference both entries; do not duplicate the human.
+6. **Identity join already made:** azwa-fazil.md carries "Full name: [NAME-REDACTED] (confirmed by ARIF 2026-08-15, Telegram 'Kanak-kanak')" — joining P-015 (family) with P-007 Wawa (telegram_network, node srv1642546). Cross-reference both entries; do not duplicate the human.
 
 ## Generalized rules (also in SKILL.md)
 

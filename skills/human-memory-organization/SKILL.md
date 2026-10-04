@@ -311,7 +311,7 @@ Every human catalogued belongs to exactly one category:
 | Category | Examples | Agent rule |
 |---|---|---|
 | **sovereign** (P-001) | ARIF | Full H-axis, all surfaces |
-| **family_parents** (P-002, P-003) | Fazil Sr., Faridah binti Othman | Doctrine authors — referenced via Mak/Abah protocols |
+| **family_parents** (P-002, P-003) | Fazil Sr., [NAME-REDACTED] | Doctrine authors — referenced via Mak/Abah protocols |
 | **family_siblings** (P-013–P-015) | Nabilah, Naazira, Azwa | F5 — never mention by name in output |
 | **family_extended** (P-016) | Fahim | F5 inferred — verify relationship |
 | **family_minor** (P-017) | Fattah | F5 absolute — never in any output |

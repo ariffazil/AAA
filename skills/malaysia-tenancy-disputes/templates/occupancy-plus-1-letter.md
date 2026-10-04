@@ -126,15 +126,15 @@ The written consent protects BOTH parties. Pasangan bukan nama dalam agreement =
 
 ---
 
-## Worked example: Syed's Neu Suites A33A-30
+## Worked example: Syed's [ADDRESS-REDACTED]
 
 When applying this template to Syed Khairuddin (Abang Sado):
 
 | Field | Value |
 |---|---|
-| Tenant | Muhammad Khairuddin bin Morktarudin ([IC-REDACTED]) |
-| Landlord | Jeremy Toh Hsun Jin ([IC-REDACTED]) |
-| Unit | A33A-30, Neu Suites @ 3rdNvenue |
+| Tenant | [NAME-REDACTED] ([IC-REDACTED]) |
+| Landlord | [NAME-REDACTED] ([IC-REDACTED]) |
+| Unit | [ADDRESS-REDACTED] @ 3rdNvenue |
 | Term | 2 Jul 2026 – 1 Jul 2027 |
 | Rent | RM 1,800/month |
 | Deposits at risk | RM 3,600 (rental) + RM 900 (utility) + RM 200 (access card) = **RM 4,700** |

@@ -25,4 +25,4 @@ Proven strategy for when landlord breaches — tenant has paid partial or full d
 
 ## Source
 
-Session 2026-07-20: Muhammad Khairuddin bin Mortarudin vs Jeremy Toh (Neu Suites tenancy dispute). Deposit RM 1,800 (half of RM 3,600). Strategy: stay + use deposit as August rent + exit end of August + threaten TTPM for utility deposit RM 900.
+Session 2026-07-20: [NAME-REDACTED] vs [NAME-REDACTED] (Neu Suites tenancy dispute). Deposit RM 1,800 (half of RM 3,600). Strategy: stay + use deposit as August rent + exit end of August + threaten TTPM for utility deposit RM 900.

@@ -35,8 +35,8 @@
 5. HAMPA — PETRONAS colleague profiles
 
 ## Key Family Facts (F13 sovereign)
-- Father: Fazil bin Khamis (deceased March 2024)
-- Mother: Faridah binti Othman (twin, given to grandmother)
+- Father: [NAME-REDACTED] (deceased March 2024)
+- Mother: [NAME-REDACTED] (twin, given to grandmother)
 - Arif: eldest (anak sulung), born 1990-05-22
 - Nabilah: second child, teacher, divorced Fahim Feb 2026
 - Jia (Naazira): third child, works Penang

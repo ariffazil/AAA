@@ -3,11 +3,11 @@
 ## Source: Session 2026-08-20, 01:41-02:28 MYT (updated same night 21:00-22:00)
 
 ## Family Unit
-- **Faridah binti Othman** (Mak) — twin Fauziah, given to grandmother. "Dual mother figures, name-switching." Gadis kilang FTZ. Widow since March 2024.
-- **Fazil bin Khamis** (Abah) — Pembantu Tadbir Rendah MPPP. Died 2 Mar 2024, sepsis. "Supernova of grief."
+- **[NAME-REDACTED]** (Mak) — twin Fauziah, given to grandmother. "Dual mother figures, name-switching." Gadis kilang FTZ. Widow since March 2024.
+- **[NAME-REDACTED]** (Abah) — Pembantu Tadbir Rendah MPPP. Died 2 Mar 2024, sepsis. "Supernova of grief."
 - **Muhammad Arif bin Fazil** — sulung, only son, gay. Family anchor/firewall.
-- **Nabilah binti Fazil** — teacher (KPM since ~Apr 2026), divorced Fahim Jul 2026. Son Fattah Nuqman. Emotional communicator (586 messages in Family kita, but deeply expressive when present).
-- **Jia/Naazira binti Fazil** — gentle sanctuary, silent pillar. 4,300+ messages, mostly "hehe."
+- **[NAME-REDACTED]** — teacher (KPM since ~Apr 2026), divorced Fahim Jul 2026. Son [NAME-REDACTED]. Emotional communicator (586 messages in Family kita, but deeply expressive when present).
+- **Jia/[NAME-REDACTED]** — gentle sanctuary, silent pillar. 4,300+ messages, mostly "hehe."
 - **Azwa binti Fazil** — bongsu, entered UKM Sep 2025. Joy Amplifier.
 
 ## Key Dynamics
