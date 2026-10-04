@@ -137,7 +137,7 @@
       },
       {
         "name": "MiniMax",
-        "command": "uvx minimax-coding-plan-mcp",
+        "command": "uvx minimax-coding-plan-mcp@0.0.5",
         "class": "lane-2-search"
       }
     ],
