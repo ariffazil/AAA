@@ -539,4 +539,72 @@ skills          188 promoted into AAA SOT storage + all 3 indexes regenerated
    the remaining unique value is `state.db` 978 MB (live copy is 264 KB), `verification_evidence.db`,
    `auth.json`, and 149 session files. Prune the snapshot, archive it compressed, or keep as-is?
 
+---
+
+## 10. ADDENDUM 3 — gate fixed, promotion committed (F13: "fix the gate then commit")
+
+**§9.5 and §9.8(1) are resolved. §9.8(2) is still open.**
+
+### 10.1 The real defect was narrower than reported in §9.5
+
+The gate is a **structural scanner**: it walks parsed JSON/YAML for `command: npx|uvx` and takes
+the first non-flag arg as the package spec. It scans **both** runners with **one** npm-only
+pattern:
+
+```python
+PINNED = re.compile(r"^(@[^/@\s]+/)?[^@\s]+@\d+\.\d+")   # npm: pkg@x.y.z
+```
+
+`uvx` takes **PEP 508** specs, so `uvx selectolax==0.4.9` — an exact, reproducible pin — was
+reported "unpinned" and blocked every commit in the repo.
+
+### 10.2 Fix: separate the two concerns the gate had conflated
+
+```
+BLOCK — no exact version present (bare, <, >=, ~=, @latest, @^range).  Teeth unchanged.
+WARN  — exact version present but in the other runner's syntax.        Reported, not blocking.
+```
+
+Rationale for WARN-not-BLOCK: pinning is this gate's contract; runner-syntax validity is a
+different defect class and blocking on it would have required editing two **picker configs**,
+which doctrine reserves to F13.
+
+### 10.3 Both arms verified (14 cases)
+
+```
+MUST PASS  5/5   uvx selectolax==0.4.9 · uvx requests[socks]==2.31.0 · npx firecrawl-mcp@3.25.4
+                 npx @modelcontextprotocol/server@1.2.3 · uvx minimax-mcp@0.0.19 (+WARN)
+MUST BLOCK 9/9   uvx selectolax · uvx selectolax<1.0 · uvx selectolax>=0.4 · uvx selectolax~=0.4
+                 npx firecrawl-mcp · npx pkg@latest · npx pkg@^1.2.0 · npx pkg · uvx pkg@latest
+REAL       --all: 7 watched configs, 13 pins registered, PASS rc=0
+```
+
+The WARN arm surfaced two entries the old npm-only pattern **silently accepted** —
+`uvx minimax-mcp@0.0.19` (`/root/.config/opencode/opencode.json`) and
+`uvx minimax-coding-plan-mcp@0.1.2` (`/root/.claude/settings.json`). Both are cross-syntax
+under `uvx` and may not resolve at runtime. **Left untouched** — picker configs, F13 holds the pen.
+Worth a separate look; it is a possible live-lane defect, not a gate issue.
+
+### 10.4 Commit landed
+
+```
+ea82319f  feat(skills): promote 188 orphan skills into AAA SOT + make the
+          supply-chain gate runner-aware
+984 files changed, 166,495 insertions(+), 15,215 deletions(-)
+PRE-COMMIT HARD GATES: PASSED — 53/53 checks clean
+```
+
+- `--no-verify` **not** used; both inherited defects were repaired so the LSP/SCAR-001 gates
+  pass on merit
+- 188/188 skills tracked at HEAD · gate script + this report committed
+- witness dir **not** committed (gitignored, per §9.1)
+- foreign paths in the commit: **0**
+- other lanes' work untouched: `ASI-drift-watch` and `media-ingest-lane` still dirty/untracked
+  as they were (63 entries remain, none staged by me)
+- **NOT pushed** — AAA is 4 commits ahead of `https://github.com/ariffazil/AAA.git`; pushing
+  was not authorized and that repo's visibility was not probed
+
+Health after commit: hermes 5/5 active · 0 failed units · site/kernel/FED 200/200/200 ·
+`supply_chain_gate.py --all` PASS rc=0 · disk 311 G used / 77 G avail / 81%.
+
 DITEMPA BUKAN DIBERI ⚒️
