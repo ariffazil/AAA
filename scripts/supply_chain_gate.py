@@ -16,13 +16,24 @@ import sys
 from pathlib import Path
 
 REGISTRY = Path("/root/AAA/registries/supply_chain_pins.json")
-# Pin syntax is runner-specific: npm uses pkg@x.y.z, uv/PEP 508 uses pkg==x.y.z.
-# A single npm-only pattern reported exactly-pinned uvx specs as unpinned.
+# Two exact-pin syntaxes are in use: npm's pkg@x.y.z and PEP 508's pkg==x.y.z.
+# The original single npm-only pattern reported exactly-pinned uvx specs as unpinned,
+# which blocked every commit in the repo. Both now count as pinned; a syntax the runner
+# cannot resolve is reported as a warning, because that is a runtime defect, not a
+# supply-chain one.
 PINNED_NPM = re.compile(r"^(@[^/@\s]+/)?[^@\s=]+@\d+\.\d+")
 PINNED_PEP508 = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*(\[[^\]]+\])?==\d+\.\d+")
-NATIVE_FOR_RUNNER = {"npx": PINNED_NPM, "uvx": PINNED_PEP508}
+# Which exact-pin syntaxes each runner actually resolves. Measured on uv 0.11.8:
+# `uvx pkg@x.y.z` and `uvx pkg==x.y.z` BOTH resolve, so uvx accepts either and
+# warning on `@` there would be a false alarm on every commit. npm resolves only `@`.
+ACCEPTED_FOR_RUNNER = {"npx": (PINNED_NPM,), "uvx": (PINNED_NPM, PINNED_PEP508)}
 RUNNERS = {"npx", "uvx"}
-FLAGS_WITH_ARG = {"-p", "--package", "--from", "--registry", "--timeout"}
+# Flags whose argument IS a package spec, so it must be pinned too.
+SPEC_FLAGS = {"-p", "--package", "--from", "--with"}
+# Flags whose argument is a plain value — skip the flag and its argument.
+VALUE_FLAGS = {"--registry", "--timeout"}
+# These supply the runnable spec, so a later positional is program argv, not a package.
+PRIMARY_SUPPLIED_BY_FLAG = {"--from", "-p", "--package"}
 
 
 def is_pinned(token: str) -> bool:
@@ -43,26 +54,45 @@ def load_registry() -> dict:
 
 
 def tokens_from_command(cmd, args):
-    """Given runner name + args list, return the package spec token(s) to verify.
+    """Return EVERY package-spec token in a runner invocation.
 
-    Only the FIRST non-flag token is the package spec; later tokens are program
-    arguments (connection strings, project refs) and are ignored.
+    Covers the three real shapes:
+      uvx PKG [argv...]            -> [PKG]
+      uvx --with DEP PKG [argv...] -> [DEP, PKG]      (both are installs; both must be pinned)
+      uvx --from PKG CMD [argv...] -> [PKG]           (CMD is argv, not a package)
+    Everything after the primary spec is a program argument (connection string,
+    project ref) and is ignored.
+
+    The previous version skipped the argument of every flag uniformly, so with
+    `--with DEP PKG` it returned DEP and never looked at PKG — an unpinned primary
+    package passed the gate. `--from PKG` was skipped outright for the same reason.
     """
     args = args if isinstance(args, list) else ([args] if args else [])
-    skip_next = False
-    for a in args:
-        if skip_next:
-            skip_next = False
-            continue
+    specs = []
+    primary_taken = False
+    i = 0
+    while i < len(args):
+        a = args[i]
         if not isinstance(a, str):
+            i += 1
             continue
-        if a in FLAGS_WITH_ARG:
-            skip_next = True
+        if a in SPEC_FLAGS:
+            if i + 1 < len(args) and isinstance(args[i + 1], str) and args[i + 1]:
+                specs.append(args[i + 1])
+                if a in PRIMARY_SUPPLIED_BY_FLAG:
+                    primary_taken = True
+            i += 2
+            continue
+        if a in VALUE_FLAGS:
+            i += 2
             continue
         if a.startswith("-") or "://" in a:
+            i += 1
             continue
-        return [a]
-    return []
+        if not primary_taken:
+            specs.append(a)
+        break  # the first positional ends the spec region
+    return specs
 
 
 def walk(node, violations, warnings, path):
@@ -84,11 +114,11 @@ def walk(node, violations, warnings, path):
             runner = cmd[0]
             args = cmd[1:]
         if runner is not None:
-            native = NATIVE_FOR_RUNNER[runner]
+            accepted = ACCEPTED_FOR_RUNNER[runner]
             for t in tokens_from_command(runner, args):
                 if not is_pinned(t):
                     violations.append((path, runner, t))
-                elif not native.match(t):
+                elif not any(p.match(t) for p in accepted):
                     warnings.append((path, runner, t))
         for v in node.values():
             walk(v, violations, warnings, path)
@@ -140,9 +170,10 @@ def main() -> None:
 
     for p, runner, token in sorted(set(warnings)):
         want = "pkg@x.y.z" if runner == "npx" else "pkg==x.y.z"
-        print(f"SUPPLY-CHAIN GATE [WARN]: '{token}' under {runner} in {p} is exactly pinned but in the "
-              f"other runner's syntax ({runner} expects {want}). Not blocking — pinning is this gate's "
-              f"contract, runner-syntax validity is not.", file=sys.stderr)
+        print(f"SUPPLY-CHAIN GATE [WARN]: '{token}' under {runner} in {p} carries an exact version but in a "
+              f"syntax {runner} does not resolve ({runner} wants {want}) — that install will likely fail at "
+              f"runtime. Not blocking: pinning is this gate's contract, runner-syntax validity is not.",
+              file=sys.stderr)
 
     if violations:
         for p, runner, token in sorted(set(violations)):
