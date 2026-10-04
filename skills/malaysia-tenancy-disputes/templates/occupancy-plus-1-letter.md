@@ -132,8 +132,8 @@ When applying this template to Syed Khairuddin (Abang Sado):
 
 | Field | Value |
 |---|---|
-| Tenant | Muhammad Khairuddin bin Morktarudin (850905-14-6217) |
-| Landlord | Jeremy Toh Hsun Jin (931222-10-5955) |
+| Tenant | Muhammad Khairuddin bin Morktarudin ([IC-REDACTED]) |
+| Landlord | Jeremy Toh Hsun Jin ([IC-REDACTED]) |
 | Unit | A33A-30, Neu Suites @ 3rdNvenue |
 | Term | 2 Jul 2026 – 1 Jul 2027 |
 | Rent | RM 1,800/month |

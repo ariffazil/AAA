@@ -40,8 +40,8 @@ Source PDF: `/root/.hermes/lanes/private/nabilah/kes-nafkah-anak-2026-08-17.pdf`
 - `vision_analyze` with the prompt above returned the full BORANG MS2 saman + PERNYATAAN TUNTUTAN contents:
   - Case: Nabilah binti Fazil v. Fahim bin Ahmad Shukri, Kes Mal No. 2008-040-0633
   - Court: Mahkamah Rendah Syariah Seberang Perai Utara, Pulau Pinang
-  - Plaintiff IC: 941108-07-5114, address No. 17 Jalan Seri Indah, Taman Seri Indah, 13200 Kepala Batas, P.Pinang
-  - Defendant IC: 941119-02-6027, address No. 56 Kampung Banggol Leban, Bongor, 09100 Baling, Kedah Darul Aman
+  - Plaintiff IC: [IC-REDACTED], address No. 17 Jalan Seri Indah, Taman Seri Indah, 13200 Kepala Batas, P.Pinang
+  - Defendant IC: [IC-REDACTED], address No. 56 Kampung Banggol Leban, Bongor, 09100 Baling, Kedah Darul Aman
   - Marriage: 09/09/2022, Masjid Ibadurrahman Seri Gerdang, 13200 Kepala Batas, P.Pinang
   - Wali at akad: Fazil bin Khamis (Arif's late father)
   - Child: Fattah Nuqman bin Fahim, age 3

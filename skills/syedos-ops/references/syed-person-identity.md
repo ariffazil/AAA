@@ -64,7 +64,7 @@ First-message protocol:
 
 Arif corrected me three times before I got it right:
 
-1. **Patient is ROSNANI BT MAT ISA** (real name, not hospital typo) — IC `580105-02-5564`, age 67
+1. **Patient is ROSNANI BT MAT ISA** (real name, not hospital typo) — IC `[IC-REDACTED]`, age 67
 2. **ROSNANI is Mak KHAIRUDDIN** — Khairuddin is Syed's **adik** (younger brother). Not Syed's direct mother.
 3. **"Mama Salleh" is Khairuddin's EX-WIFE** (cerai masa COVID). She exited the family in COVID era. The reason she doesn't help isn't refusal — it's structural divorce. Don't assume she's still in the picture; she isn't.
 
@@ -75,7 +75,7 @@ Arif corrected me three times before I got it right:
 | Field | Value |
 |---|---|
 | Patient name | ROSNANI BT MAT ISA (real name, not hospital error) |
-| IC | 580105-02-5564 |
+| IC | [IC-REDACTED] |
 | Age | 67 (born 1958) |
 | Relation to Syed | Mak Khairuddin (Khairuddin is Syed's adik; Rosnani is Syed's mother-in-family, not direct mother) |
 | Relation to Arif | Tante (Arif's sibling's mother — family by extension) |

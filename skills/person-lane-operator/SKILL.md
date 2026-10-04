@@ -323,7 +323,7 @@ files were clean. Keep beliefs in social-graph.yaml group-safe pointers
 specifics in the DM memory file only.
 
 **Two leak types found and fixed in Syed split (2026-08-09):**
-1. **IC number in family table** — `580105-02-5564` appeared in the Mak row of
+1. **IC number in family table** — `[IC-REDACTED]` appeared in the Mak row of
    the group file. Fix: replace with "full IC/medical: DM lane only".
 2. **Medical open-questions** — "CBD follow-up surgery dah buat ke belum" and
    "Nama betul mak atas IC" leaked surgical context into the group file. Fix:
@@ -366,8 +366,8 @@ When serving a persona whose life includes housing/tenancy (e.g., Syed Khairuddi
 | Field | Example (Syed) |
 |---|---|
 | Unit | A33A-30, Neu Suites @ 3rdNvenue, Ampang 55000 |
-| Landlord | Jeremy Toh Hsun Jin (931222-10-5955) |
-| Tenant | Muhammad Khairuddin bin Morktarudin (850905-14-6217) — same as persona |
+| Landlord | Jeremy Toh Hsun Jin ([IC-REDACTED]) |
+| Tenant | Muhammad Khairuddin bin Morktarudin ([IC-REDACTED]) — same as persona |
 | Term | 2 Jul 2026 – 1 Jul 2027 |
 | Monthly rent | RM 1,800 |
 | Deposits at risk | RM 4,700 (rental 3,600 + utility 900 + access card 200) |
