@@ -16,9 +16,19 @@ import sys
 from pathlib import Path
 
 REGISTRY = Path("/root/AAA/registries/supply_chain_pins.json")
-PINNED = re.compile(r"^(@[^/@\s]+/)?[^@\s]+@\d+\.\d+")
+# Pin syntax is runner-specific: npm uses pkg@x.y.z, uv/PEP 508 uses pkg==x.y.z.
+# A single npm-only pattern reported exactly-pinned uvx specs as unpinned.
+PINNED_NPM = re.compile(r"^(@[^/@\s]+/)?[^@\s=]+@\d+\.\d+")
+PINNED_PEP508 = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*(\[[^\]]+\])?==\d+\.\d+")
+NATIVE_FOR_RUNNER = {"npx": PINNED_NPM, "uvx": PINNED_PEP508}
 RUNNERS = {"npx", "uvx"}
 FLAGS_WITH_ARG = {"-p", "--package", "--from", "--registry", "--timeout"}
+
+
+def is_pinned(token: str) -> bool:
+    """This gate's contract is 'an exact version is present' (supply-chain risk).
+    Either exact-pin syntax satisfies it; a floating/range/bare spec does not."""
+    return bool(PINNED_NPM.match(token) or PINNED_PEP508.match(token))
 
 
 def load_registry() -> dict:
@@ -55,24 +65,36 @@ def tokens_from_command(cmd, args):
     return []
 
 
-def walk(node, violations, path):
-    """Walk parsed JSON/YAML: find runner invocations however nested."""
+def walk(node, violations, warnings, path):
+    """Walk parsed JSON/YAML: find runner invocations however nested.
+
+    violations = floating/range/bare specs (supply-chain risk) -> block.
+    warnings   = exact version present but in the other runner's syntax -> report only,
+                 because this gate owns pinning, not runner-syntax validity.
+    """
     if isinstance(node, dict):
         cmd = node.get("command")
+        runner = None
+        args = None
         if isinstance(cmd, str) and (cmd in RUNNERS or Path(cmd).name in RUNNERS):
-            for t in tokens_from_command(cmd, node.get("args")):
-                if not PINNED.match(t):
-                    violations.append((path, t))
+            runner = cmd if cmd in RUNNERS else Path(cmd).name
+            args = node.get("args")
         # opencode style: "command": ["npx", "-y", "pkg"]
         elif isinstance(cmd, list) and cmd and isinstance(cmd[0], str) and (cmd[0] in RUNNERS):
-            for t in tokens_from_command(cmd[0], cmd[1:]):
-                if not PINNED.match(t):
-                    violations.append((path, t))
+            runner = cmd[0]
+            args = cmd[1:]
+        if runner is not None:
+            native = NATIVE_FOR_RUNNER[runner]
+            for t in tokens_from_command(runner, args):
+                if not is_pinned(t):
+                    violations.append((path, runner, t))
+                elif not native.match(t):
+                    warnings.append((path, runner, t))
         for v in node.values():
-            walk(v, violations, path)
+            walk(v, violations, warnings, path)
     elif isinstance(node, list):
         for v in node:
-            walk(v, violations, path)
+            walk(v, violations, warnings, path)
 
 
 def parse(path: str):
@@ -99,6 +121,7 @@ def main() -> None:
         sys.exit(2)
 
     violations = []
+    warnings = []
     for p in paths:
         f = Path(p)
         if not f.is_file():
@@ -107,7 +130,7 @@ def main() -> None:
             data = parse(p)
             if data is None:
                 continue
-            walk(data, violations, p)
+            walk(data, violations, warnings, p)
         except (OSError, json.JSONDecodeError) as exc:
             print(f"SUPPLY-CHAIN GATE [FAIL-CLOSED]: unreadable {p}: {exc}", file=sys.stderr)
             sys.exit(1)
@@ -115,9 +138,16 @@ def main() -> None:
             print(f"SUPPLY-CHAIN GATE [FAIL-CLOSED]: unparseable {p}: {exc}", file=sys.stderr)
             sys.exit(1)
 
+    for p, runner, token in sorted(set(warnings)):
+        want = "pkg@x.y.z" if runner == "npx" else "pkg==x.y.z"
+        print(f"SUPPLY-CHAIN GATE [WARN]: '{token}' under {runner} in {p} is exactly pinned but in the "
+              f"other runner's syntax ({runner} expects {want}). Not blocking — pinning is this gate's "
+              f"contract, runner-syntax validity is not.", file=sys.stderr)
+
     if violations:
-        for p, token in sorted(set(violations)):
-            print(f"SUPPLY-CHAIN GATE [BLOCK]: unpinned install '{token}' in {p} — pin it (pkg@x.y.z) and register in {REGISTRY}", file=sys.stderr)
+        for p, runner, token in sorted(set(violations)):
+            hint = "pkg@x.y.z" if runner == "npx" else "pkg==x.y.z"
+            print(f"SUPPLY-CHAIN GATE [BLOCK]: unpinned {runner} install '{token}' in {p} — pin it ({hint}) and register in {REGISTRY}", file=sys.stderr)
         sys.exit(1)
     print(f"SUPPLY-CHAIN GATE [PASS]: {len(paths)} watched config(s), all external installs pinned ({len(reg.get('pins', {}))} pins registered)")
 

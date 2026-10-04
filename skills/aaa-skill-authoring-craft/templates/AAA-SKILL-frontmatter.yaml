@@ -1,0 +1,96 @@
+---
+# AAA-catalog SKILL.md frontmatter template.
+# Copy this block to the top of your new SKILL.md, then fill in the fields.
+# CRITICAL: any prose field containing ":" MUST be wrapped in double quotes.
+# Validate with: python3 -c "import yaml; yaml.safe_load(open('SKILL.md').read().split('---')[1])"
+
+# --- Required fields (validator-enforced) ---
+id: my-skill-id                              # AAA slug, lowercase + hyphens, ≤64 chars
+name: "My Skill — Human Readable Title"      # Quoted if it contains punctuation
+description: "One-line description. ALWAYS quote this if it contains a colon. Trigger-focused: 'Use when ...' for triggers, but a detailed description is allowed since the validator only checks length."
+version: 1.0.0                                # semver
+
+# --- AAA convention (not validator-enforced, but every peer has it) ---
+owner: 333-AGI                                # who owns the skill
+risk_tier: low                                # low / medium / high / critical
+floor_scope: [F2, F4, F7, F11]                # which F-floors this skill obeys
+autonomy_tier: T1                             # T0 / T1 / T2 / T3
+forged: 2026-08-08                            # ISO date
+forged_by: 333-AGI                            # which agent forged it
+
+# --- Trigger list (AAA convention, used by router) ---
+trigger_when:
+  - session_start
+  - session_end
+  - phase_boundary
+  - explicit_user_request
+
+# --- Tags (searchable) ---
+tags: [meta, audit, governance]
+
+# --- Body MUST follow after a blank line, starting with # Title ---
+---
+
+# My Skill — Title
+
+> **Doctrine:** (one-line doctrine; AAA convention)
+> **SOT:** (source-of-truth path)
+> **Script:** (path to executable, if any)
+> **Ledger:** (where output is written, if any)
+
+## What This Skill Is
+
+Two paragraphs max. What and why.
+
+## USE WHEN
+
+1. Trigger condition 1
+2. Trigger condition 2
+3. Trigger condition 3
+
+## DO NOT USE WHEN
+
+1. Counter-trigger 1
+2. Counter-trigger 2
+3. Counter-trigger 3
+
+## §1. CROSS-REFERENCES
+
+| # | Skill | Role | When to Load |
+|---|-------|------|--------------|
+| 1 | `my-skill` (v1.0.0) | This skill | — |
+| 2 | `upstream-skill` (vX.Y.Z) | What we depend on | At session start |
+| 3 | `downstream-skill` (vX.Y.Z) | What consumes our output | After this skill's output |
+
+## §2. ANTI-PATTERNS
+
+- ❌ Don't do this
+- ❌ Don't do that either
+
+## §3. FLOOR ALIGNMENT
+
+| Floor | Obligation |
+|-------|-----------|
+| F1 AMANAH | (how this skill upholds reversibility) |
+| F2 TRUTH | (how this skill ensures honest output) |
+| ... | ... |
+
+## §4. INTEGRATION POINTS
+
+| Trigger Point | What This Skill Does |
+|---------------|---------------------|
+| ... | ... |
+
+## §5. EXAMPLES
+
+### Example 1
+
+```yaml
+# concrete scenario
+```
+
+## §6. CHANGELOG
+
+| Version | Date | Change |
+|---------|------|--------|
+| 1.0.0 | YYYY-MM-DD | Initial forge. |

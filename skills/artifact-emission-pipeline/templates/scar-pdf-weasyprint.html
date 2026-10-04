@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+  Template: Scar-document PDF (A4 landscape, dark amber-scar palette)
+  Use: A reflection/essay-grade artifact delivered as fixed witness object
+  Source: "The Cost of a Forgotten Well" — forged 2026-08-13
+  Render: weasyprint output.html output.pdf
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0D1117;
+    --surface: #161B22;
+    --oil: #D4A574;
+    --scar: #C44545;
+    --bone: #8B949E;
+    --text: #E6EDF3;
+    --textDim: #8B949E;
+    --line: #30363D;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .slide {
+    width: 297mm; height: 210mm;
+    padding: 20mm 25mm;
+    page-break-after: always;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top accent line */
+  .slide::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--oil);
+  }
+
+  /* Footer — HUMAN-READABLE, never use internal sigils */
+  .slide::after {
+    content: "NOT EVERYTHING SHOULD BE CLOSED";
+    position: absolute;
+    bottom: 10mm; right: 25mm;
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 7pt;
+    color: var(--textDim);
+    letter-spacing: 1px;
+  }
+
+  .slide-num {
+    position: absolute;
+    bottom: 10mm; left: 25mm;
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 7pt;
+    color: var(--textDim);
+  }
+
+  /* Cover with background image */
+  .cover {
+    background-image: linear-gradient(rgba(13,17,23,0.65), rgba(13,17,23,0.95)), url('cover-image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30mm;
+  }
+  .cover h1 {
+    font-size: 38pt;
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    margin-bottom: 8mm;
+  }
+
+  /* Label pattern */
+  .label {
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 10pt;
+    color: var(--oil);
+    letter-spacing: 3px;
+    margin-bottom: 8mm;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0;
+  }
+  table th, table td {
+    border: 1px solid var(--line);
+    padding: 3mm 4mm;
+    vertical-align: middle;
+  }
+  table th {
+    background: var(--surface);
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 9pt;
+    color: var(--textDim);
+  }
+
+  /* Message pattern */
+  .message {
+    font-size: 13pt;
+    font-style: italic;
+    line-height: 1.5;
+    margin-top: auto;
+    padding-top: 8mm;
+  }
+  .message.oil { color: var(--oil); }
+
+  /* Scar line */
+  hr.scar-line {
+    width: 80%;
+    height: 1px;
+    border: none;
+    border-top: 1.5px dashed var(--scar);
+    margin: 6mm 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1: COVER — with framing sentence ═══ -->
+<div class="slide cover">
+  <p style="font-size: 10pt; font-style: italic; color: var(--bone); margin-bottom: 6mm; max-width: 70%;">
+    This is not an incident report. It is a reflection on how institutions remember outcomes while individuals remember consequences.
+  </p>
+  <h1>YOUR TITLE HERE</h1>
+  <hr class="scar-line">
+  <p class="message">Subtitle line one<br>Subtitle line two.</p>
+  <span class="slide-num">1 / N</span>
+</div>
+
+<!-- ═══ SLIDE 2: CONTENT ═══ -->
+<div class="slide">
+  <div class="label">SECTION LABEL</div>
+  <table>
+    <tr><th>Item</th><th style="text-align:center">Count</th></tr>
+    <tr><td>Row 1</td><td style="text-align:center">9</td></tr>
+  </table>
+  <p class="message">Bottom message line.</p>
+  <span class="slide-num">2 / N</span>
+</div>
+
+</body>
+</html>

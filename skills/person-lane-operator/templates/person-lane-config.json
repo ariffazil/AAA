@@ -1,0 +1,51 @@
+{
+  "lane_id": "{{person_slug}}",
+  "display_name": "{{person_nickname}}",
+  "version": "1.0.0",
+  "created": "{{date}}",
+
+  "triggers": {
+    "telegram_user_ids": ["{{tg_user_id}}"],
+    "telegram_chat_ids": ["{{tg_chat_id}}"],
+    "telegram_usernames": ["{{tg_username}}"]
+  },
+
+  "load_on_session_start": {
+    "memory_files": [
+      "$HERMES_HOME/memories/MEMORY-{{person_slug}}.md",
+      "$HERMES_HOME/memories/USER-{{person_slug}}.md",
+      "$HERMES_HOME/memories/SOUL-{{person_slug}}.md"
+    ],
+    "skills": ["{{skill_path}}"],
+    "canonical_refs": [
+      "/root/{{person_slug}}/identity/DOSSIER.md",
+      "/root/{{person_slug}}/health/TIMELINE.md"
+    ]
+  },
+
+  "voice": {
+    "register": "{{BM Pasar / BM Intelek / EN}}",
+    "tts_voice": "ms-MY-OsmanNeural",
+    "tts_provider": "edge",
+    "tone": "direct / soft / strategic",
+    "language": "ms"
+  },
+
+  "doctrines": {
+    "no_lecture": true,
+    "no_execution": true,
+    "confirm_before_advice": true
+  },
+
+  "memory_lanes": {
+    "redis_keys_prefix": "user:{{person_slug}}:",
+    "qdrant_collection": "arifos_memory",
+    "qdrant_filter": {"subject": "{{person_slug}}"},
+    "pg_table": "memory_store",
+    "pg_filter_tags": ["{{person_slug}}"]
+  },
+
+  "fallback_to_main": {
+    "if_id_not_in_triggers": true
+  }
+}
