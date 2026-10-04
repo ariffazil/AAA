@@ -28,6 +28,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - agi-asi-skills-fundamentals
 - agi-grade-authority-kernel-invariants
 - amodei-corpus-agent-lessons
+- anti-behavior-sink
 - anti-calhoun
 - anti-collapse-doctrine
 - anti-haram-behavior-canonical
@@ -117,6 +118,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - governance-cron-reality-impact-schema-v1.1
 - governance-eurekas-20260910
 - gui-spec
+- gut-override-ledger-spec
 - harness-commoditization-boundary
 - hermes-identity-directive
 - hermes-layer-discipline
@@ -163,6 +165,8 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - prompting-attention-allocation
 - protocol-layers-doctrine
 - proxy-reality-paradox
+- rationality-filter-doctrine
+- rationality-filter-quantum-map
 - reality-alignment-kernel
 - reality-bound-authority
 - reality-compression
@@ -180,6 +184,8 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - shadow-as-expensive-reality
 - shadow-authority-doctrine
 - shadow-paradoxes-13
+- shebtoc-p0-witness-capture-layer
+- shebtoc-p2-mutation-protocol
 - six-graph-federation-model
 - skill-mesh-conflict-register
 - skill-zen-collapse-doctrine
@@ -198,6 +204,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - valence-loss-asymmetry
 - vault999-writer-discipline
 - wawabot-anthropology
+- wealth-pages-build-doctrine
 - well-use
 - witness-cost-gradient
 - witness-maintenance
