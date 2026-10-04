@@ -9,7 +9,7 @@
 |---|---|
 | Person | Syed Khairuddin Morktarudin (aka Abang Sado) |
 | TG | @rico_ricaldo_33 · ID 1042200555 |
-| IC | 850905-14-6217 |
+| IC | [IC-REDACTED] |
 | Domain | XAUUSD trading + sambal brand + mak caregiver + tenancy + casual life |
 | Voice register | BM Pasar, masculine, direct |
 | Operator | Arif (TG 267378578) |
@@ -67,7 +67,7 @@
 
 4. **Wrong-name-on-transfer-letter** — ROSNANI appeared on a hospital diagnostic letter but was the wrong name. Patient's actual name not yet confirmed. → Always verify IC/nama on every medical document.
 
-5. **A33A-30 Neu Suites is Syed's unit** — memory initially recorded this as Arif's address. Syed is the tenant (IC 850905-14-6217), Jeremy Toh is landlord. → Don't copy operator address to person dossier without verifying tenancy agreement.
+5. **A33A-30 Neu Suites is Syed's unit** — memory initially recorded this as Arif's address. Syed is the tenant (IC [IC-REDACTED]), Jeremy Toh is landlord. → Don't copy operator address to person dossier without verifying tenancy agreement.
 
 6. **"TPUM" shorthand** — Syed used "TPUM" (Tanya Pasal Umah) and "plus 1 abaiakan" (ignore plus 1). The lane must recognize Malaysian slang abbreviations and route to the right fixture without asking for clarification. "TPUM" → load tenant-status fixture. "plus 1" → occupancy consent discussion.
 
