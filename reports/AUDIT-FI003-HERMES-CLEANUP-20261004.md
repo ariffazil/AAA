@@ -685,4 +685,90 @@ Still out of this gate's scope by design: a spec can be exactly pinned and name 
 does not exist. Adding a registry-existence check would put a network call in every commit —
 a design decision, not a bug fix. That is how `@0.1.2` survived since 2026-08-25.
 
+---
+
+## 12. ADDENDUM 5 — the snapshot was deleted by another lane; §9.8(2) CORRECTED
+
+**F13 instruction "prune profiles/aaa-hermes" could not be executed: the target no longer exists.**
+
+### 12.1 What happened
+
+`/root/hermes_work/pristine-full` — the entire 3.2 G tree, not just `profiles/` — was removed
+at **~13:22:44** (`/root/hermes_work` mtime). `/root/hermes_work` is now 29 M.
+
+Attribution, stated no further than the evidence supports:
+
+- My own `rm -rf` inventory for this session (extracted from the transcript) contains **no**
+  command targeting `pristine-full`. The only relative delete was `rm -rf venv node_modules`
+  with cwd inside it — two named dirs.
+- HERMES hook receipts (`hermes_hook_receipts.jsonl`, 57,004 lines): **0** entries mentioning
+  `pristine`/`hermes_work`, **0** delete-shaped receipts in the 13:15–13:35 window.
+- Kimi Code session `2d965301-4c37-4d8b-a79b-70e199ad39c1` contains 80 entries mentioning the
+  path, including `rm -rf /root/hermes_work/pristine-full? Irreversible` and
+  `rm -rf /root/hermes_work/pristine-full && AFTER=$(df --out…`. These are
+  `context.append_loop_event` / `agent.message.appended` records — **deliberation text, not
+  execution receipts**. No tool field, no exit code. **Execution is not proven.**
+- No archive of any kind was created in 13:00–13:35 (`find -newermt` for tar/zip/zst and for
+  any >100 M file): nothing was backed up before the removal.
+
+Concurrent-lane hazard, materialized: I was preserving while another lane was removing. My
+earlier decision to leave the 188 promoted skills **unstaged** protected them from a
+`git clean`, but nothing protected the source tree.
+
+### 12.2 §9.8(2) was misleading — corrected here
+
+I wrote that the snapshot held `verification_evidence.db` and `auth.json` with "live: ABSENT",
+and `state.db 978 MB` against a "live copy of 264 KB". **I had compared against
+`/root/.hermes/profiles/aaa-hermes/` — a thin per-profile directory — not the hermes root.**
+
+| file | my §9.8(2) claim | actual at `/root/.hermes/` |
+|---|---|---|
+| `auth.json` | "live: ABSENT" | **EXISTS, 5,782 B** |
+| `verification_evidence.db` | "live: ABSENT" | **EXISTS, 94,208 B** |
+| `state.db` | "live: 270,336 B (3,793× smaller)" | **1,265 MB** |
+| `sessions/` | "live: 0 files" | **127 files, 81 M** |
+| `logs/`, `cron/`, `memories/` | not checked | 148 f/55 M · 681 f/44 M · 20 f/176 K |
+
+The HOLD recommendation was still procedurally right — irreversible deletion of unverified-unique
+data should not proceed on a scoped comparison. But the *stated justification* overstated the
+snapshot's uniqueness by roughly three orders of magnitude, and that framing is what made the
+tree look worth 1.2 G of disk.
+
+### 12.3 Measured loss: close to zero
+
+The decisive test is whether the Sept-10 point-in-time data survives elsewhere. It does:
+
+```
+oldest record in state.db — identical across all three copies: 2026-09-04 12:57:25
+  /root/.hermes/state.db                        1,265 MB   newest 2026-10-04 13:50:21
+  _archive/…/pre-shadow-audit-2026-09-29        1,084 MB   newest 2026-09-29 08:25:36
+  backup_attractor_fix_20261002/state.db.bak    1,202 MB   newest 2026-10-02 20:18:01
+
+messages 2026-09-01..09-10 : LIVE 30,679   09-29 snapshot 30,679   (identical)
+total messages             : LIVE 187,767
+```
+
+The deleted `state.db` (978 MB, dated 2026-09-10) was an **earlier point on the same lineage**;
+the live DB is a temporal superset of it. Row-level agreement on the Sept-01..10 window
+confirms nothing from that period was lost.
+
+| asset | status |
+|---|---|
+| 188 unique skills | **RECOVERED** — committed `ea82319f` + tar `B7` (189 SKILL.md) |
+| 9 commits / 8 branches | **RECOVERED** — pushed `carry-pristine/*` + bundle `B3` |
+| 9 stash tracked-diffs | **RECOVERED** — patches `B6` (stash objects lost in §9.3, disclosed) |
+| Sept-01..10 message history | **NOT LOST** — 30,679 rows live in `/root/.hermes/state.db` |
+| `config.yaml.bak*` (10 files) | **LOST** — token already redacted; live `config.yaml` (19,581 B) intact |
+| Sept-10 as a distinct snapshot | **LOST** — the point-in-time freeze itself, not its data |
+
+### 12.4 Outcome
+
+The space the instruction sought is already reclaimed: `/root/hermes_work` 6.4 G → **29 M**,
+`/` 77 G → **80 G** avail. Nothing further to prune; no action taken on a nonexistent target.
+
+**Process defect worth fixing, not fixed here:** two lanes operated on the same tree with no
+claim/lease. The federation has `forge_lock` and a mutation witness layer; neither was taken
+for this work. A preservation pass and a deletion pass running concurrently on one directory
+will eventually lose something that matters — this time the data happened to be duplicated.
+
 DITEMPA BUKAN DIBERI ⚒️
