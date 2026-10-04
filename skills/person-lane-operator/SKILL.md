@@ -344,7 +344,7 @@ the DM lane (aliff)". Condition names live ONLY in the DM file. Then the
 privacy probe becomes: CPPS appears in DM card = True, appears in group card
 = 0 hits (clean airgap, no false-positive guardrail noise).
 
-> **ROSNANI BT MAT ISA** — observed Aug 2026. Wrong patient name on diagnostic letter during hospital transfer between HKL and another facility.
+> **[NAME-REDACTED]** — observed Aug 2026. Wrong patient name on diagnostic letter during hospital transfer between HKL and another facility.
 
 **Before any transfer or new admission, the caregiver MUST:**
 1. Get full discharge summary + operation notes — copy, photo, phone backup
@@ -356,7 +356,7 @@ This is F13-level (silent, can cause wrong treatment). Codify in the person's me
 
 ## Cross-class signal: persona IS the tenant (Syed-as-renter)
 
-When serving a persona whose life includes housing/tenancy (e.g., Syed Khairuddin at Neu Suites A33A-30 — see pitfall #5 in `references/syed-full-deployment.md`), the persona's housing decisions intersect with **two other skills**:
+When serving a persona whose life includes housing/tenancy (e.g., Syed Khairuddin at [ADDRESS-REDACTED] — see pitfall #5 in `references/syed-full-deployment.md`), the persona's housing decisions intersect with **two other skills**:
 
 1. `malaysia-tenancy-disputes` — landlord repair/replacement disputes, deposit forfeiture, plus-1 occupancy consent, TTPM escalation
 2. `malaysia-tenancy-agreement` — agreement clause parsing, red-flag clauses, who pays for what
@@ -365,9 +365,9 @@ When serving a persona whose life includes housing/tenancy (e.g., Syed Khairuddi
 
 | Field | Example (Syed) |
 |---|---|
-| Unit | A33A-30, Neu Suites @ 3rdNvenue, Ampang 55000 |
-| Landlord | Jeremy Toh Hsun Jin ([IC-REDACTED]) |
-| Tenant | Muhammad Khairuddin bin Morktarudin ([IC-REDACTED]) — same as persona |
+| Unit | [ADDRESS-REDACTED] @ 3rdNvenue, Ampang 55000 |
+| Landlord | [NAME-REDACTED] ([IC-REDACTED]) |
+| Tenant | [NAME-REDACTED] ([IC-REDACTED]) — same as persona |
 | Term | 2 Jul 2026 – 1 Jul 2027 |
 | Monthly rent | RM 1,800 |
 | Deposits at risk | RM 4,700 (rental 3,600 + utility 900 + access card 200) |
@@ -886,8 +886,8 @@ When the operator shares deep personal research about a 3rd party (psychology, s
 - `references/supplement-biohacking-qa.md` — peptide/supplement Q&A patterns, identity tracking trap, photo commenting rules
 - `references/multi-user-federation-a-b-modes.md` — Mode A/B design (one agent serves all → per-human agents via profile distributions), Person Register schema, verified Hermes multiplexer mechanics, Mode A implementation sequence
 - `references/person-register-v2-leak-fix.md` — register v2 schema (privacy_policy, facts attribution, wrong_able), the injected-memory leak found & gated (scar-origin, SADO profile), register-driven lane_switch verified test vectors
-- `references/syed-full-deployment.md` — worked example: 7-layer wiring for Syed (includes pitfall #5: A33A-30 is Syed's unit, not Arif's)
-- `references/syed-tenant-status.md` — cross-link fixture: Syed's Neu Suites A33A-30 tenancy (active AC dispute; deposits at risk RM 4,700) — load when persona talks housing
+- `references/syed-full-deployment.md` — worked example: 7-layer wiring for Syed (includes pitfall #5: [ADDRESS-REDACTED] is Syed's unit, not Arif's)
+- `references/syed-tenant-status.md` — cross-link fixture: Syed's [ADDRESS-REDACTED] tenancy (active AC dispute; deposits at risk RM 4,700) — load when persona talks housing
 - `references/group-chat-topic-handling.md` — political content, document sensitivity, analysis engagement, tone calibration for group settings
 - `references/helix-memory-vps-live-state-2026-08-12.md` — double-helix memory architecture: actual filesystem state (H1-H6, L1-L6, scar ledgers, gaps, scan pattern for self-knowledge questions)
 - `references/session-archive-introspection.md` — SQLite queries against state.db for sovereign scope/cost questions ("what's archived?", "who burns tokens?"): archive map, per-chat dumps, group sender-attribution via `[Name user_id]` tags, empty-token_count fallback to length proxy, count-before-judging relationship dynamics

@@ -11,7 +11,7 @@ User (Arif, at KL Sentral before the night train to Penang): "Now digest everyth
 
 ## What was delivered instead
 - Plain statement: bot never added to that group; Bot API cannot back-fetch history. Offer: add @ASI_arifOS_bot (visibility starts at add-time) or forward/attach the content. Do NOT improvise a substitute group.
-- Case digest from the lane PDF: Kes Mal No 2008-040-0633, Mahkamah Rendah Syariah Seberang Perai Utara; Nabilah (plaintif) v Fahim bin Ahmad Shukri; nafkah anak; peguam syarie Tuan Shazril Khairy; anak Fattah Nuqman (3).
+- Case digest from the lane PDF: Kes Mal No 2008-040-0633, Mahkamah Rendah Syariah Seberang Perai Utara; Nabilah (plaintif) v [NAME-REDACTED]; nafkah anak; peguam syarie Tuan Shazril Khairy; anak [NAME-REDACTED] (3).
 
 ## Traps hit
 - `pdftotext` returned ~7 chars on the scanned image PDF → pdftoppm + vision path. But BEFORE re-OCRing: `session_search` found a sibling lane (same session lineage, model agi-333) had already run `pdftoppm -png -r 80` + `vision_analyze` on the same file minutes earlier — reused its transcription.

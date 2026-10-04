@@ -19,7 +19,7 @@ description: >-
 > future session treats Syed as a callsign or persona instead of Arif's friend,
 > that is an F2 violation. See `references/syed-person-identity.md` for the
 > full person profile, business (nasi lemak brand), communication style, and
-> current caregiver situation (Mak Khairuddin / ROSNANI BT MAT ISA — post-ERCP
+> current caregiver situation (Mak Khairuddin / [NAME-REDACTED] — post-ERCP
 > laparotomy, now recovering at homestay). Arif corrected this on 2026-08-07:
 > "Wei abang sado Syed tu manusia betul la."
 

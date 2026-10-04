@@ -31,20 +31,20 @@ pdftoppm -png -r 80 -f 1 -l N /path/to/court-doc.pdf /tmp/court-pg
 
 Why this prompt: Malaysian court docs follow a tight form (Borang MS2, Borang MS3, etc.). Asking for verbatim + key field preservation gives the VLM concrete extraction targets. Don't ask for "all text in markdown" — the tables are easier to verify as plain text fields.
 
-## Worked example — Nabilah binti Fazil nafkah anak case
+## Worked example — [NAME-REDACTED] nafkah anak case
 
 Source PDF: `/root/.hermes/lanes/private/nabilah/kes-nafkah-anak-2026-08-17.pdf`
 - `pdfinfo` Producer: `iOS Version 26.5 (Build 23F77) Quartz PDFContext` — confirmed scanned
 - `pdftotext` returned nothing
 - `pdftoppm -png -r 80 -f 1 -l 4` rendered 4 PNG pages
 - `vision_analyze` with the prompt above returned the full BORANG MS2 saman + PERNYATAAN TUNTUTAN contents:
-  - Case: Nabilah binti Fazil v. Fahim bin Ahmad Shukri, Kes Mal No. 2008-040-0633
+  - Case: [NAME-REDACTED] v. [NAME-REDACTED], Kes Mal No. 2008-040-0633
   - Court: Mahkamah Rendah Syariah Seberang Perai Utara, Pulau Pinang
-  - Plaintiff IC: [IC-REDACTED], address No. 17 Jalan Seri Indah, Taman Seri Indah, 13200 Kepala Batas, P.Pinang
-  - Defendant IC: [IC-REDACTED], address No. 56 Kampung Banggol Leban, Bongor, 09100 Baling, Kedah Darul Aman
+  - Plaintiff IC: [IC-REDACTED], address [ADDRESS-REDACTED]
+  - Defendant IC: [IC-REDACTED], address [ADDRESS-REDACTED]
   - Marriage: 09/09/2022, Masjid Ibadurrahman Seri Gerdang, 13200 Kepala Batas, P.Pinang
-  - Wali at akad: Fazil bin Khamis (Arif's late father)
-  - Child: Fattah Nuqman bin Fahim, age 3
+  - Wali at akad: [NAME-REDACTED] (Arif's late father)
+  - Child: [NAME-REDACTED], age 3
   - Peguam: Tuan Shazril Khairy bin HJ Mustafa @ Shazril Khairy Mustapha & Associates
   - Peguam address: No. 2109-A Tingkat 1, Wisma Speaik Abdullah Fahim, 13200 Kepala Batas, Seberang Perai Utara, P.Pinang
   - Tarikh saman: 27 haribulan 7 / 2026 (signature date; case filed earlier)

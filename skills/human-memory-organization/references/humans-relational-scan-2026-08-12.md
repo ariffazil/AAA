@@ -34,7 +34,7 @@ If this returns > 1 file, read each one before declaring "no humans in H4". The 
 
 Scar files at `/root/memory/H5-scars/SCAR_*.md` reference humans. Some are institutional archetypes (P-008–P-011). Some are named persons (P-012 = Ahmad Faisal Bakar — only named institutional figure).
 
-The Reality Legacy PDF (`ARIF_FAZIL_REALITY_LEGACY.pdf`) at `/root/memory/H4-identity/` carries the most detailed named-institutional analysis (Shadow Profile of Bakar) + the parents' real names (Faridah binti Othman, Fazil Sr.) + 4 professional scars.
+The Reality Legacy PDF (`ARIF_FAZIL_REALITY_LEGACY.pdf`) at `/root/memory/H4-identity/` carries the most detailed named-institutional analysis (Shadow Profile of Bakar) + the parents' real names ([NAME-REDACTED], Fazil Sr.) + 4 professional scars.
 
 **Detection:**
 ```bash
@@ -64,7 +64,7 @@ Round 1 (Lane config + scar witnesses):
 
 Round 2 (Reality Legacy PDF + doctrine origin):
   + 1 named institutional person (Ahmad Faisal Bakar)
-  + parents' real names confirmed (Faridah binti Othman, Fazil bin Khamis)
+  + parents' real names confirmed ([NAME-REDACTED], [NAME-REDACTED])
   = 12 (refined, not added — but Bakar was the new addition)
 
 Round 3 (WhatsApp forward in H4-identity):

@@ -216,7 +216,7 @@ Worked example (census table, silence-window lane-shift, scam-vs-real MdI bankru
 
 Private lane directories hold artifacts about a person that are NOT messages — scanned court documents, biographical notes, family maps. Examples seen this session:
 
-- `/root/.hermes/lanes/private/nabilah/kes-nafkah-anak-2026-08-17.pdf` — scanned Malaysian Syariah nafkah anak case (Nabilah binti Fazil v. Fahim bin Ahmad Shukri)
+- `/root/.hermes/lanes/private/nabilah/kes-nafkah-anak-2026-08-17.pdf` — scanned Malaysian Syariah nafkah anak case ([NAME-REDACTED] v. [NAME-REDACTED])
 - `/root/.hermes/lanes/private/family-fazil-faridah.md` — biographical map
 - `/root/.hermes/lanes/private/arif-sibling-constellation.md` — relationship map
 
