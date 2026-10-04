@@ -8,8 +8,8 @@
 | Field | Value |
 |---|---|
 | Unit | A33A-30, Neu Suites @ 3rdNvenue, Jalan Nipah, Ampang 55000 |
-| Landlord | Jeremy Toh Hsun Jin (NRIC 931222-10-5955) |
-| Tenant | Muhammad Khairuddin bin Morktarudin (NRIC 850905-14-6217) — SAME as persona |
+| Landlord | Jeremy Toh Hsun Jin (NRIC [IC-REDACTED]) |
+| Tenant | Muhammad Khairuddin bin Morktarudin (NRIC [IC-REDACTED]) — SAME as persona |
 | Term | 2 Jul 2026 – 1 Jul 2027 (1 year fixed + 1 year flexible) |
 | Monthly rent | RM 1,800, due on/before 9th |
 | Deposits at risk | RM 4,700 total (rental RM3,600 + utility RM900 + access card RM200) |
