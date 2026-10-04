@@ -1,0 +1,130 @@
+<!--
+  LIVE SLIDER MODEL — reusable skeleton (ExxonMobil-toolkit style)
+  Home: arif-fazil-site-ops · calibrated 2026-08-06 (PETRONAS subsidy-paradox engine)
+  Use for: any financial sensitivity / scenario surface on arif-fazil.com or other
+  live pages. Arif: "why u do so many static graph?? Baked that into the model slider."
+  Rules:
+    1. COPY this file, edit CONFIG + MATH only. Never ship static PNG charts for a data page.
+    2. If the page already has a scenario/fan engine, READ ITS CONSTANTS (SENS, caps,
+       floors) — hand-rolled sensitivities produce nonsense magnitudes.
+    3. Crossover binary search MUST endpoint-check (see crossFn) or it prints a
+       misleading edge value when the answer is "always in deficit".
+    4. Verify in a real browser: python3 -m http.server <port> → browser_navigate →
+       browser_console (dispatch input events on sliders, assert readout math) →
+       browser_vision (canvas renders, no clipped labels). Kill server after.
+-->
+
+<style>
+/* Dark-theme tokens matching arif-fazil /propa/ economics.css */
+:root{--ink:#d8d2c4;--dim:#8a8378;--faint:#5a554d;--surface3:#16181f;--line:#2a2a3a;
+      --accent:#4aa8ff;--seal:#31c48d;--sabar:#e3b341;--hold:#f0506e;--void:#dc2626;
+      --mono:'IBM Plex Mono',monospace}
+.model-panel{margin:16px 0;padding:20px 22px;border:1px solid var(--line);border-radius:10px;
+  background:rgba(192,57,43,.025);font-family:var(--mono)}
+.model-panel .mp-title{font-size:18px;font-weight:700;color:var(--ink);display:flex;
+  align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 6px}
+.model-panel .mp-sub{margin:0 0 14px;font-size:13px;color:var(--dim);line-height:1.6;max-width:84ch}
+.state-badge{padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;
+  letter-spacing:.06em;display:inline-block}
+.state-badge.A{background:rgba(39,174,96,.15);color:#27ae60;border:1px solid #27ae60}
+.state-badge.B{background:rgba(227,179,65,.15);color:#e3b341;border:1px solid #e3b341}
+.state-badge.C{background:rgba(192,57,43,.18);color:#c0392b;border:1px solid #c0392b}
+.slider-row{display:grid;gap:12px;margin:14px 0 12px}
+.slider-row.cols-2{grid-template-columns:1fr 1fr}
+.slider-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+.slider-row label{font-size:11px;color:var(--dim);display:block}
+.slider-row b{color:var(--ink);font-weight:700}
+.slider-row select{background:var(--surface3);color:var(--ink);border:1px solid var(--line);
+  border-radius:4px;padding:2px 6px;font-size:11px;margin-left:6px}
+.ro-grid{display:grid;gap:10px;margin:14px 0 12px}
+.ro-grid.c4{grid-template-columns:repeat(4,1fr)}
+.ro-grid.c5{grid-template-columns:repeat(5,1fr)}
+.ro{padding:12px 10px;background:var(--surface3);border:1px solid var(--line);
+  border-radius:6px;text-align:center}
+.ro .lbl{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;
+  margin-bottom:4px;line-height:1.2}
+.ro .val{font-size:17px;font-weight:700;color:var(--ink);line-height:1.1}
+.ro .val.pos{color:#27ae60}
+.ro .val.neg{color:#c0392b}
+.model-canvas{width:100%;max-width:1040px;height:280px;display:block;margin:14px auto 0;
+  background:rgba(0,0,0,.04);border-radius:6px}
+.mp-foot{margin-top:12px;font-size:10px;color:var(--faint);line-height:1.6}
+@media (max-width:768px){.slider-row.cols-2,.slider-row.cols-3{grid-template-columns:1fr}
+  .ro-grid.c4,.ro-grid.c5{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<section class="model-panel" id="live-model" data-version="<page>-live-model">
+  <div class="mp-title">
+    <span>LIVE MODEL TITLE</span>
+    <span class="state-badge" id="state-badge">loading…</span>
+  </div>
+  <p class="mp-sub">One-sentence explanation of the model. Drag the sliders — everything
+    recomputes live. Cross-link to the coupled surface.</p>
+
+  <div class="slider-row cols-2">
+    <div>
+      <label>Driver A · <b id="a-v">—</b></label>
+      <input type="range" id="a" min="0" max="100" step="1" value="50" style="width:100%">
+    </div>
+    <div>
+      <label>Regime · <b id="r-v">—</b>
+        <select id="r">
+          <option value="R1">Regime 1</option>
+          <option value="R2">Regime 2</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="ro-grid c4">
+    <div class="ro"><div class="lbl">Readout 1</div><div class="val" id="ro1">–</div></div>
+    <div class="ro"><div class="lbl">Readout 2</div><div class="val" id="ro2">–</div></div>
+    <div class="ro"><div class="lbl">Net</div><div class="val" id="ro-net">–</div></div>
+    <div class="ro"><div class="lbl">State</div><div class="val" id="ro-state">–</div></div>
+  </div>
+
+  <canvas class="model-canvas" id="model-canvas" width="1040" height="280"></canvas>
+
+  <div class="mp-foot">[OBS] source · [DER] model formula · [INT] state assignment. F2 evidence, F11 audit.</div>
+</section>
+
+<script>
+(function(){
+  // ═══ CONFIG — edit these from the SOURCE OF TRUTH (never invent sensitivities) ═══
+  const BASE = { value: 100 };            // e.g. PAT 45.4 RM B
+  const SENS = { a: 1.0 };                // RM B per unit of driver A
+  const CAP_PCT = 0.60;                   // payout cap (e.g. AMEND-2026-08-03-001)
+  const FLOOR = 20.0;                     // policy floor (e.g. MoF dividend floor)
+  const REGIMES = { R1: 1.99, R2: 1.88 }; // regime constants (e.g. subsidy caps)
+
+  // ═══ MATH — formulas (keep identical across coupled pages) ═══
+  const driverOf = A => Math.max(0, BASE.value + (A - 50) * SENS.a);
+  const payoutOf = V => Math.max(FLOOR, V * CAP_PCT);
+  const costOf = (A, R) => Math.max(0, A * 0.05 - REGIMES[R]) * 38e9 / 1e9;
+  const netOf = (A, R) => payoutOf(driverOf(A)) - costOf(A, R);
+  const stateOf = (A, R) => { const c = costOf(A,R), p = payoutOf(driverOf(A));
+    return c > p ? "C" : c > p * 0.7 ? "B" : "A"; };
+
+  // ═══ ENDPOINT-CHECKED CROSSOVER — never raw binary search ═══
+  function crossFn(R){
+    if (netOf(MIN, R) <= 0) return "<" + MIN;
+    if (netOf(MAX, R) >= 0) return ">" + MAX;
+    let lo = MIN, hi = MAX;
+    for (let i = 0; i < 30; i++){ const m = (lo + hi) / 2; netOf(m, R) > 0 ? lo = m : hi = m; }
+    return Math.round(lo);
+  }
+
+  // ═══ DOM bindings + draw (copy the draw() pattern from the calibrated engine:
+  // zones as translucent fills, curves via <canvas>, current-value dots, legend) ═══
+  const $a = document.getElementById('a'), $r = document.getElementById('r');
+  function update(){
+    const A = +$a.value, R = $r.value;
+    document.getElementById('a-v').textContent = A;
+    document.getElementById('r-v').textContent = R;
+    // ... write readouts, set .pos/.neg classes, update state badge, call draw(A, R)
+  }
+  $a.addEventListener('input', update);
+  $r.addEventListener('change', update);
+  update();
+})();
+</script>

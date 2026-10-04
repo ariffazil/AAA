@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Family showcase artifact</title>
+<!-- Family-showcase register starter — warm palette, chat mockup, zero JS.
+     Proven 2026-08-15 (Nabilah teacher pack). Pair with build_charts.py + gemini cover. -->
+<style>
+  @page { size: A4; margin: 14mm 14mm 20mm 14mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "DejaVu Sans", Helvetica, sans-serif; color: #3d3229;
+         margin: 0; background: #fdf6ec; font-size: 10.5pt; line-height: 1.55; }
+  /* cover: coral gradient + AI illustration floated right */
+  .cover { background: linear-gradient(160deg, #e8613c 0%, #d94f2b 60%, #b23a1d 100%);
+           border-radius: 14mm; padding: 16mm 14mm 14mm; color: #fff; page-break-inside: avoid; }
+  .cover img { width: 62mm; border-radius: 6mm; float: right; margin-left: 6mm;
+               box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+  .cover h1 { font-size: 30pt; margin: 2mm 0; line-height: 1.1; }
+  .cover h2 { font-size: 13pt; font-weight: normal; margin: 0 0 8mm; opacity: 0.95; }
+  .kicker { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 999px;
+            padding: 1.5mm 5mm; font-size: 9pt; letter-spacing: 1px; margin-bottom: 5mm; }
+  .cover p.meta { font-size: 9.5pt; opacity: 0.9; margin: 1mm 0; }
+  h2.sec { font-size: 15pt; color: #e8613c; margin: 9mm 0 3mm; page-break-after: avoid; }
+  .kpis { display: flex; gap: 3mm; margin: 5mm 0; }
+  .kpi { flex: 1; background: #fff; border: 0.6mm solid #e8613c22; border-radius: 4mm;
+         padding: 4mm 3mm; text-align: center; page-break-inside: avoid; }
+  .kpi .v { font-size: 16pt; font-weight: bold; color: #e8613c; white-space: nowrap; }
+  .kpi .l { font-size: 7.5pt; color: #6b5d52; margin-top: 1mm; }
+  .chart { text-align: center; margin: 4mm 0; page-break-inside: avoid; }
+  .chart img { width: 100%; border-radius: 3mm; }
+  .caption { font-size: 8.5pt; color: #6b5d52; text-align: center; margin-top: 1.5mm; }
+  .box { background: #fff; border-left: 1.8mm solid #2a9d8f; border-radius: 2mm;
+         padding: 4mm 5mm; margin: 4mm 0; page-break-inside: avoid; }
+  .box.coral { border-left-color: #e8613c; }
+  .box.gold { border-left-color: #e9b44c; }
+  .box .t { font-weight: bold; margin-bottom: 1.5mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 3mm 0; }
+  th { background: #3d3229; color: #fdf6ec; padding: 2.2mm 3mm; text-align: left; font-size: 9pt; }
+  td { padding: 2.2mm 3mm; border-bottom: 0.3mm solid #e0d5c8; vertical-align: top; }
+  tr:nth-child(even) td { background: #ffffff; }
+  /* chat mockup — plain divs, renders in WeasyPrint, no JS */
+  .msgs { background: #ffffff; border-radius: 4mm; padding: 5mm; margin: 3mm 0; page-break-inside: avoid; }
+  .wa { max-width: 78%; padding: 2.5mm 4mm; border-radius: 3mm; margin: 2mm 0; font-size: 9.5pt; }
+  .wa.user { background: #dcf8c6; margin-left: auto; border-bottom-right-radius: 0.5mm; }
+  .wa.bot { background: #eef3f4; border-bottom-left-radius: 0.5mm; }
+  .wa .who { font-size: 7pt; color: #8a7d6f; margin-bottom: 0.5mm; }
+  .foot { margin-top: 8mm; padding-top: 3mm; border-top: 0.4mm solid #e0d5c8;
+          font-size: 8.5pt; color: #6b5d52; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <img src="cover.png" alt="ilustrasi">
+  <span class="kicker">DIBINA OLEH EJEN AI · TARIKH</span>
+  <h1>Tajuk untuk si penerima</h1>
+  <h2>Satu baris janji yang manusia faham — bukan spec.</h2>
+  <p class="meta">Baris sokongan 1.</p>
+  <p class="meta">Baris sokongan 2 — dari siapa.</p>
+</div>
+
+<!-- KPI hero row: human units only (count, seconds, RM0, 24/7). No tokens, no governance vocab. -->
+<div class="kpis">
+  <div class="kpi"><div class="v">7</div><div class="l">kemahiran sedia guna</div></div>
+  <div class="kpi"><div class="v">&lt;60s</div><div class="l">masa balas</div></div>
+  <div class="kpi"><div class="v">RM0</div><div class="l">kos untuk penerima</div></div>
+  <div class="kpi"><div class="v">24/7</div><div class="l">tak tidur</div></div>
+</div>
+
+<!-- The demo scene — mandatory: family buys demonstrated use, not lists -->
+<h2 class="sec">Contoh betul-betul — macam mana rasa guna dia:</h2>
+<div class="msgs">
+  <div class="wa user"><div class="who">Penerima · 10:32 malam</div>taip permintaan sebenar di sini, BM rojak pun boleh</div>
+  <div class="wa bot"><div class="who">Hermes · 10:32 malam</div>balasan bot yang menunjukkan hasil + pilihan seterusnya</div>
+  <div class="wa user"><div class="who">Penerima · 10:33 malam</div>reaksi manusia</div>
+  <div class="wa bot"><div class="who">Hermes · 10:35 malam</div>siap + hasil diserahkan 📎</div>
+</div>
+
+<!-- Command table: Taip apa / Dapat apa / Masa -->
+<table>
+  <tr><th>Taip apa</th><th>Dapat apa</th><th>Masa</th></tr>
+  <tr><td>"contoh arahan"</td><td>hasil + format</td><td>~1 minit</td></tr>
+</table>
+
+<!-- Honest-limits box — builds trust with expert readers -->
+<div class="box">
+  <div class="t">Jujur pasal had:</div>
+  Bot tak tahu konteks lokal penerima. Draft dia pantas, keputusan akhir tetap milik manusia.
+</div>
+
+<div class="foot">Dibina oleh Hermes — ejen AI arifOS · atas arahan sovereign · tarikh</div>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<title>SURAT TERBUKA — [TITLE]</title>
+<style>
+@page {
+  size: A4;
+  margin: 25mm 28mm 30mm 28mm;
+  @bottom-center {
+    content: "Halaman " counter(page) " / " counter(pages);
+    font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif;
+    font-size: 8pt; color: #888;
+  }
+  @bottom-right {
+    content: "[DOC TITLE] | [DATE]";
+    font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif;
+    font-size: 7pt; color: #aaa;
+  }
+}
+@page :first { margin-top: 0; @bottom-center { content: none; } @bottom-right { content: none; } }
+
+:root { --navy: #0e1a2b; --gold: #c9a227; --red: #c0392b; --grey: #f4f4f4; --mid-grey: #666; }
+
+body {
+  font-family: 'Liberation Serif', 'DejaVu Serif', Georgia, serif;
+  font-size: 11pt; line-height: 1.75; color: #1a1a1a;
+}
+
+/* ── COVER PAGE ──────────────────────────────────────── */
+.cover {
+  background: linear-gradient(135deg, var(--navy) 0%, #162d50 100%);
+  color: white; padding: 50mm 35mm 40mm 35mm;
+  margin: -25mm -28mm 0 -28mm; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 297mm;
+}
+.cover .kicker {
+  font-family: 'DejaVu Sans', sans-serif; font-size: 9pt;
+  text-transform: uppercase; letter-spacing: 4pt; color: var(--gold); margin-bottom: 20px;
+}
+.cover h1 { font-size: 28pt; font-weight: bold; line-height: 1.2; margin-bottom: 15px; color: white; border: none; padding: 0; text-align: left; }
+.cover .subtitle { font-size: 13pt; color: #ccc; line-height: 1.5; margin-bottom: 30px; max-width: 85%; }
+.cover .meta-line {
+  font-family: 'DejaVu Sans', sans-serif; font-size: 9pt; color: #999;
+  border-top: 1px solid rgba(255,255,255,0.15); padding-top: 15px; margin-top: auto;
+}
+.cover .meta-line strong { color: var(--gold); }
+.cover .seal {
+  display: inline-block; border: 2px solid var(--gold); padding: 6px 18px;
+  font-family: 'DejaVu Sans', sans-serif; font-size: 8pt; text-transform: uppercase;
+  letter-spacing: 3pt; color: var(--gold); margin-top: 15px;
+}
+
+/* ── BODY ────────────────────────────────────────────── */
+.letter-header { text-align: right; margin-bottom: 25px; font-size: 10pt; color: var(--mid-grey); }
+.letter-header strong { color: var(--navy); }
+.to-line { font-weight: bold; font-size: 11pt; color: var(--navy); margin: 20px 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+
+h2.section {
+  font-family: 'DejaVu Sans', sans-serif; font-size: 14pt; font-weight: bold; color: var(--navy);
+  margin-top: 30px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid var(--gold);
+  page-break-after: avoid;
+}
+h3.sub { font-size: 12pt; font-weight: bold; color: #333; margin-top: 20px; margin-bottom: 8px; page-break-after: avoid; }
+
+p { margin: 8px 0; text-align: justify; }
+p strong { color: var(--navy); }
+
+/* ── PULL QUOTE ──────────────────────────────────────── */
+.pullquote {
+  background: var(--grey); border-left: 4px solid var(--gold);
+  padding: 14px 18px; margin: 18px 0; font-style: italic; color: var(--mid-grey);
+  font-size: 10.5pt; line-height: 1.65; page-break-inside: avoid;
+}
+.pullquote strong { color: var(--red); font-style: normal; }
+
+/* ── CALLOUT BOXES ───────────────────────────────────── */
+.callout-red { background: #fdf2f2; border-left: 4px solid var(--red); padding: 12px 16px; margin: 16px 0; font-size: 10.5pt; page-break-inside: avoid; }
+.callout-red .big-num { font-family: 'DejaVu Sans', sans-serif; font-size: 20pt; font-weight: bold; color: var(--red); display: block; margin-bottom: 4px; }
+.callout-red .label { font-size: 9pt; color: var(--mid-grey); text-transform: uppercase; letter-spacing: 1pt; }
+
+.callout-gold { background: #fef9e7; border-left: 4px solid var(--gold); padding: 12px 16px; margin: 16px 0; font-size: 10.5pt; page-break-inside: avoid; }
+
+/* ── KPI CARDS ───────────────────────────────────────── */
+.kpi-row { display: flex; gap: 10px; margin: 18px 0; page-break-inside: avoid; }
+.kpi-card { flex: 1; background: white; border: 1px solid #ddd; border-top: 3px solid var(--red); padding: 12px 10px; text-align: center; }
+.kpi-card .num { font-family: 'DejaVu Sans', sans-serif; font-size: 18pt; font-weight: bold; color: var(--red); display: block; }
+.kpi-card .unit { font-size: 8pt; color: var(--mid-grey); text-transform: uppercase; letter-spacing: 0.5pt; display: block; margin-top: 2px; }
+.kpi-card.gold { border-top-color: var(--gold); }
+.kpi-card.gold .num { color: var(--gold); }
+
+/* ── TABLE ───────────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 9.5pt; page-break-inside: avoid; }
+th { background: var(--navy); color: white; padding: 8px 10px; text-align: left; font-family: 'DejaVu Sans', sans-serif; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.5pt; }
+td { padding: 8px 10px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+tr:nth-child(even) td { background: #fafafa; }
+td:last-child { color: var(--red); font-weight: bold; }
+
+ul { margin: 10px 0 10px 20px; }
+li { margin: 4px 0; }
+hr.divider { border: none; border-top: 1px solid #ddd; margin: 25px 0; }
+
+.signature { margin-top: 40px; text-align: right; font-size: 10.5pt; }
+.signature .line { display: block; margin: 25px 0 5px 0; border-top: 1px solid #999; width: 200px; margin-left: auto; }
+
+.page-break { page-break-before: always; }
+.avoid-break { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="kicker">Surat Terbuka / Open Letter</div>
+  <h1>[MAIN HEADLINE]</h1>
+  <div class="subtitle">[One-sentence summary of the letter's purpose]</div>
+  <div class="meta-line"><strong>[DATE]</strong> · [Source attribution line]</div>
+  <div class="seal">RAKYAT BERSUARA</div>
+</div>
+
+<!-- ═══ BODY ═══ -->
+<div class="body-content">
+
+<div class="letter-header">
+  <strong>Kepada:</strong> [Recipient]<br>
+  <strong>Daripada:</strong> [Sender]<br>
+  <strong>Tarikh:</strong> [Date]
+</div>
+
+<div class="to-line">[SALUTATION]</div>
+
+<p>[Opening paragraph]</p>
+
+<hr class="divider">
+
+<!-- ─── SECTIONS ─── -->
+<h2 class="section">[SECTION TITLE]</h2>
+<p>[Body text with <strong>bold emphasis</strong>]</p>
+
+<!-- KPI cards for key metrics -->
+<div class="kpi-row">
+  <div class="kpi-card"><span class="num">[NUMBER]</span><span class="unit">[LABEL]</span></div>
+  <div class="kpi-card gold"><span class="num">[NUMBER]</span><span class="unit">[LABEL]</span></div>
+</div>
+
+<!-- Pull quotes for powerful lines -->
+<div class="pullquote">"[Powerful quote with <strong>key emphasis</strong>]"</div>
+
+<!-- Callout boxes for demands/findings -->
+<div class="callout-red">
+  <span class="label">[CATEGORY]</span>
+  <span class="big-num">[BIG NUMBER]</span>
+  [Context sentence]
+</div>
+
+<div class="callout-gold">
+  <strong>[Demand N]:</strong> [Title]<br>
+  [Description]
+</div>
+
+<!-- Tables for data comparisons -->
+<table>
+  <tr><th>[COL1]</th><th>[COL2]</th><th>[COL3]</th></tr>
+  <tr><td>[Data]</td><td>[Data]</td><td>[Implication]</td></tr>
+</table>
+
+<hr class="divider">
+
+<!-- ═══ SIGNATURE ═══ -->
+<div class="signature">
+  Yang benar,<br><br>
+  <span class="line"></span>
+  <strong>[Name/Title]</strong><br>
+  <em>[Closing line]</em>
+</div>
+
+</div>
+</body>
+</html>
