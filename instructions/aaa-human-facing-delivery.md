@@ -1,6 +1,6 @@
 # AAA Human-Facing Delivery — Standing Rule
 
-> **Status:** DRAFT_AWAITING_F13 (2026-10-06 · mission AUTH_RUNTIME_REALITY_001)
+> **Status:** F13_RATIFIED_SOVEREIGN (2026-10-06 · sovereign quote "sah and cal" — Arif bin Fazil)
 > **Sovereign chat:** `267378578` (Telegram DM, F13)
 > **Canonical:** this file. Patch `/root/.hermes/config.yaml::aaa_human_facing_routing` per Appendix A.
 

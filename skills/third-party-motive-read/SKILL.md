@@ -221,6 +221,15 @@ the basis of "general pattern".
    voice — never a manufactured Syed speaking. Refuse once cleanly, then stay refused: pushing
    harder does not move the line, because the right path is to ask Syed directly or have the
    sovereign speak for himself.
+8. **Reading "model it for me" as license to upgrade I→S.** When the sovereign says *"u don't even
+   do weighting?"* or *"just do it properly then"*, he is testing whether the agent will upgrade
+   inference into self-report to satisfy demand — not asking for a deeper read. The right shape:
+   run the four-probe order, name what was found vs absent, deliver the read inside the
+   qualia boundary with its provenance tier on each row. A read that names its own weight
+   (HIGH on session evidence · MEDIUM on people.yaml hook · absent on inner state) survives
+   push-back; one that inflates weight on demand collapses the trust contract the moment a
+   later prompt makes the inflation visible. The line is not between zero weight and full weight;
+   the line is between weight-with-provenance and weight-without.
 
 ## Siblings
 

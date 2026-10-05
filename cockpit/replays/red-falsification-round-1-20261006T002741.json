@@ -1,0 +1,124 @@
+{
+  "replay_id": "red-falsification-2026-10-06-1efc5cc-campaign-r1",
+  "campaign_name": "1efc5cc Falsification Campaign \u2014 Round 1",
+  "executed_at": "2026-10-06T00:27:41.214591+08:00",
+  "executed_by": "hermes-agent / replay-2/HERMES (OBSERVE_ONLY)",
+  "kernel_target": {
+    "deployed_release": "arifos-8d2d0be31c60",
+    "source_commit": "8d2d0be31c600f4aa75604275bf8d3423aeafe63",
+    "deployed_commit": "8d2d0be31c600f4aa75604275bf8d3423aeafe63",
+    "drift": false,
+    "canon": "2026.10.05-8d2d0be",
+    "runtime_import_path": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py",
+    "live_service": "http://127.0.0.1:8088",
+    "health_status": "healthy"
+  },
+  "drift_finding": {
+    "type": "USER-CLAIM STALE",
+    "severity": "informational",
+    "note": "ChatGPT-pasted verdict cited deployed commit as 1efc5cc26252. Measured truth: 8d2d0be31c60. The user's pasted report was a week-stale snapshot. 1efc5cc source commit does exist in /root/arifOS git history; deployed runtime is 8d2d0be. NOT a kernel defect."
+  },
+  "replay_1_red12I": {
+    "name": "Runtime APEX math matches canon",
+    "red_packet_finding": "RED-12 I \u2014 expected: G=(A\u00b7P\u00b7E\u00b7X)^\u00bc geometric mean, floors 0.01, C_dark=A(1-P)(1-X), \u03a6 excluded, UNMEASURED never coerced",
+    "loaded_module": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/runtime/apex_primitives.py",
+    "module_sha256_16": "e50f5bceb91efc0b",
+    "tests": [
+      {
+        "case": "no_data_window_0",
+        "expected": "G=None, C_dark=None (UNMEASURED, not 0.0625)",
+        "got": {
+          "G": null,
+          "C_dark": null,
+          "note": "UNMEASURED \u2014 no APEX sample yet (no_data). Not a G score."
+        },
+        "pass": true
+      },
+      {
+        "case": "synthetic_100_records_A=0.95_P=0.80_E=0.90_X=0.10",
+        "expected": "G=0.5114, C_dark=0.171, W3=None",
+        "got": {
+          "A": 0.95,
+          "P": 0.8,
+          "E": 0.9,
+          "X": 0.1,
+          "Phi": 1.0,
+          "G": 0.5114,
+          "C_dark": 0.171,
+          "W3": null,
+          "h": 0.2,
+          "n": 100
+        },
+        "pass": true
+      },
+      {
+        "case": "Phi_excluded_from_G",
+        "expected": "Phi measured but NOT a 5th factor in G",
+        "got": "_factors = [A,P,E,X] in source; geometric mean over 4 factors",
+        "pass": true
+      }
+    ],
+    "verdict": "PASS",
+    "delta_vs_red_packet": "No defect \u2014 RED-12 I expectation fully matches live math on 8d2d0be."
+  },
+  "replay_2_red06": {
+    "name": "555 verification: catch false claim",
+    "red_packet_finding": "RED-06 \u2014 false commit claim (deadbeef vs real 800eb0a) parked at HYPOTHESIS, confidence 0.15, evidence_used=[]. Fail-closed held (no false PASS) but 555 did NOT refute.",
+    "methodology_limitation": "OBSERVE_ONLY actor (actor_verified=false) \u2192 F11_SESSION_GATE floor fails \u2192 universal HOLD on any arif_judge candidate. Cannot test verifier discrimination under OBSERVE_ONLY.",
+    "tests": [
+      {
+        "case": "false_claim_arif_judge_validate",
+        "claim": "live commit = deadbeef1234567",
+        "result": {
+          "verdict": "HOLD",
+          "reason_code": "NEEDS_REVIEW",
+          "failed_floors": [
+            "F11",
+            "F11_SESSION_GATE"
+          ],
+          "agency_level": "OBSERVE_ONLY"
+        },
+        "interpretation": "HELD (not PASSED) \u2014 fail-closed, no false confirmation"
+      },
+      {
+        "case": "true_claim_arif_judge_validate",
+        "claim": "live commit = 8d2d0be31c600f4aa75604275bf8d3423aeafe63",
+        "result": {
+          "verdict": "HOLD",
+          "reason_code": "NEEDS_REVIEW",
+          "failed_floors": [
+            "F11",
+            "F11_SESSION_GATE"
+          ],
+          "agency_level": "OBSERVE_ONLY"
+        },
+        "interpretation": "ALSO HELD \u2014 kernel cannot distinguish false from true under OBSERVE_ONLY. The discriminator is the actor authentication, not the verifier logic."
+      },
+      {
+        "case": "arif_think_mode_verify_false_claim",
+        "claim": "live commit = deadbeef1234567",
+        "result": {
+          "error": "timeout (10s)",
+          "note": "Matches 2-Oct pattern: 'Offline template fallback active \u2014 live LLM cascade degraded'. LLM cascade not exercised for verification calls under OBSERVE_ONLY."
+        },
+        "interpretation": "Same degraded pattern as 2-Oct. Not a regression \u2014 it is the same defense."
+      }
+    ],
+    "verdict": "PARTIAL_PASS \u2014 fail-closed holds (no false PASS), but 555 discrimination cannot be tested in this run because authentication boundary (F11) gates everything under OBSERVE_ONLY. Authenticated replay deferred to round 2.",
+    "delta_vs_red_packet": "Fail-closed behavior preserved. Discrimination test (false vs true) requires authenticated session \u2014 F13-class dependency. Round 1 confirms: kernel does not regress to false-PASS; Round 2 will need sovereign token."
+  },
+  "summary": {
+    "round_1_items": 2,
+    "pass": 1,
+    "partial": 1,
+    "fail": 0,
+    "deferred": "RED-12 II (kernel canonical) \u2014 not yet attempted; RED-04 (4 agents wired) \u2014 touched lightly, full replay deferred; RED-05 (hook event tolerance) \u2014 not attempted; RED-01/02 (auth paradox) \u2014 out of scope under OBSERVE_ONLY by design"
+  },
+  "next_round_required_for_proof": [
+    "Authenticate sovereign actor (or substitute approved test identity)",
+    "Replay RED-06 with authenticated session: false claim \u2192 refute, true claim \u2192 pass",
+    "Replay RED-04 (4 agents wired) against current kernel",
+    "Replay RED-01/02 with synthetic tokens to test preflight paradox",
+    "All replays must produce CHRON verification entry"
+  ]
+}
