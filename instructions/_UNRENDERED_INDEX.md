@@ -28,7 +28,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - agi-asi-skills-fundamentals
 - agi-grade-authority-kernel-invariants
 - amodei-corpus-agent-lessons
-- anti-behavior-sink
 - anti-calhoun
 - anti-collapse-doctrine
 - anti-haram-behavior-canonical
@@ -99,6 +98,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - experience-metabolism-reflex
 - experience-surface
 - external-action-repair
+- fact-dignity-doctrine
 - federation-invariants
 - federation-orthogonality
 - federation-orthogonality-future-state
@@ -204,7 +204,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - valence-loss-asymmetry
 - vault999-writer-discipline
 - wawabot-anthropology
-- wealth-pages-build-doctrine
 - well-use
 - witness-cost-gradient
 - witness-maintenance
