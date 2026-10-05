@@ -462,10 +462,10 @@ To confirm LiteLLM falls back to tier N when tiers 1..N-1 fail, without taking r
 ```bash
 cp /root/.secrets/kunci-mas.flat.env /tmp/kunci-bak-$(date +%s).flat.env
 
-# Sabotage primary tiers
-sed -i 's|^export MIMO_API_KEY=.*|export MIMO_API_KEY="sk-FAKE-mimo-broken-1234567890"|' \
+# Sabotage primary tiers (deliberately invalid placeholder keys)
+sed -i 's|^export MIMO_API_KEY=.*|export MIMO_API_KEY="<INVALID_MIMO_API_KEY>"|' \
   /root/.secrets/kunci-mas.flat.env
-sed -i 's|^export DEEPSEEK_API_KEY=.*|export DEEPSEEK_API_KEY="sk-FAKE-deepseek-broken"|' \
+sed -i 's|^export DEEPSEEK_API_KEY=.*|export DEEPSEEK_API_KEY="<INVALID_DEEPSEEK_API_KEY>"|' \
   /root/.secrets/kunci-mas.flat.env
 
 systemctl restart litellm-federation.service && sleep 8
