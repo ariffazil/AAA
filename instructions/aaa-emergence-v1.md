@@ -1,6 +1,6 @@
 # AAA Emergence Ignition Contract v1
 
-> **Status:** DRAFT_AWAITING_F13 (2026-10-06 · mission AUTH_RUNTIME_REALITY_001)
+> **Status:** F13_RATIFIED_SOVEREIGN (2026-10-06 · sovereign quote "sah and cal" — Arif bin Fazil)
 > **Origin:** AAA EMERGENCE MODE v1 (paste from external auditor) — sealed conceptual, embodied as standing instruction
 > **Canonical:** this file. Per-agent AGENTS.md may reference, may not redefine.
 > **Sister:** `/root/AAA/instructions/arifos-institutional-emergence-doctrine.md` (narrative layer)

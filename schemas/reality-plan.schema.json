@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://arifOS/contracts/reality-plan.schema.json",
   "title": "AAA RealityPlan — Ephemeral Controller State",
-  "description": "Structured intermediate representation produced by the Consequence Compiler. Lives in controller memory; persists only when consequence demands it. Encoding: file != plan, plan != action, action != consequence, tool_return != observed_success, receipt != reality. Status: DRAFT_AWAITING_F13 (2026-10-06 · mission AUTH_RUNTIME_REALITY_001).",
+  "description": "Structured intermediate representation produced by the Consequence Compiler. Lives in controller memory; persists only when consequence demands it. Encoding: file != plan, plan != action, action != consequence, tool_return != observed_success, receipt != reality. Status: F13_RATIFIED_SOVEREIGN (2026-10-06 · sovereign quote "sah and cal" — Arif bin Fazil).",
   "type": "object",
   "required": ["intent", "output_kind", "persistence"],
   "additionalProperties": true,

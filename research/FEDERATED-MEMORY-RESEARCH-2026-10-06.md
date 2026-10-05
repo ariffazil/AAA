@@ -91,5 +91,32 @@ FEDERATION_MEMORY_CONTRACT.md (381 baris, §2 antara muka, §11.4 10 peraturan) 
 - **P1**: F3 reindex vault_canon dari seal_chain; F4 siasat petronas drop; F5 mint SKILLS.json; TOOLS.json (semalam); audit→CI gate (doktrin §6 sudah menuntut). (~2 sesi)
 - **P2**: probe Redis/Supabase mendalam; 959-unlinked-seal siasatan (333); sambung census agent-3 (roster/tools per-agen) bila tiba.
 
+## BAHAGIAN 6 — CENSUS LAPISAN AGEN (agent-3, 2026-10-06 ~00:4x MYT; log: sesi agent-mcwnvehu)
+
+**Pembetulan F2 kepada Bahagian 1.4 (kejujuran):** `FEDERATED_SKILLS_REGISTRY_V3.yaml` **HIDUP** di `/root/.kimi-code/skills/` (salinan byte-identik dalam `AAA/skills/`) — kumpulan archive semalam hanya salinan usang. Status sebenar: registry hidup tapi **disk_reconciliation sendiri (2026-10-05) = FAIL** — fizikal 966 / kanonik 1,214 / viewed 1,011 / loadable 987, 33 dup-group (61 skill), 2 symlink patah. F5 direvisi: bukan "yatim" — **registry hidup tapi gagal rekonsiliasi sendiri**; mint SKILLS.json masih langkah tamat, tapi baiki reconciliation dulu (`skills-census.py`).
+
+### 6.1 Roster — konflik SOT itu sendiri
+**5 pendaftar mendakwa kanonik**: `AGENTS_UNIFIED.yaml` (forged 07-31) · `ROOT_AGENT_CONFIG.yaml` (PR-2 10-02: static truth → components.yaml+capabilities.yaml) · `federation/federation.yaml` ("THE ONE SOURCE OF TRUTH", ganti 6 registry) · `AAA-AGENT-ROLE-AND-AUTHORITY-MATRIX.md` (DRAFT, 19 actors) · `agent-cards/{identity,organs,functions,pillars}/`. Trinity: 333-AGI (Δ MIND, opencode) · 555-ASI (Ω CORE, memori/telemetry; wujud juga "555-ASI-VISION") · 888-APEX (Ψ SOUL — "a chair, not an agent"). FI-000 i-ARIF (FED chain) … FI-011 gemini-cli. Kernel actor registry: 7 actors. A2A hidup: 9 harness.
+
+### 6.2 Tujuh penceraian baharu (dari census agent-3)
+1. **FI-009 split**: ROOT_AGENT_CONFIG = continue-cli vs AGENTS_UNIFIED = agy/Antigravity (kad sama FI-004) — allowlist carry-forward jadi ambigu
+2. **Kimi twin SOT**: `ROOT_AGENT_CONFIG` pointer `/root/.arifos/agents/kimi/` vs live `KIMI_CODE_HOME=/root/.kimi-code` — **config.toml BERBEZA** antara dua rumah; AGENTS_UNIFied kata "8 servers/177 tools, v0.35.0" vs realiti 22 servers, ≥0.41
+3. **Skill-count chaos**: agent-skill-map (08-21) "opencode 248/hermes 242/kimi 110, katalog 186+96" vs registry FAIL-reconciliation vs realiti 765/664/93
+4. **Layer drift**: federation.yaml substrate=6/knowledge=3 vs registry V3 8/4
+5. **Canonical-SOT conflict**: 5 pengisytiharan kanonik bersaing (6.1)
+6. **Name drift**: "555-AGI" dalam ROLE-MATRIX:19 vs 555-ASI semua tempat lain
+7. **Actor-count drift**: AGENTS_UNIFIED kata agent_registry "19 actors" vs fail sebenar 7
+
+### 6.3 Alat/memori tambahan (census)
+Hermes `MCP_HEALTH.json` (10-05): 15 sihat / 8 stdio / 5 disabled-undeclared / 4 disabled-intentional · federation.yaml: 31 server (6 tier=organ) · hermes skills 664 fizikal (bukan 53 — ukuran maxdepth-1 aku semalam; betul: 53 top-level bundle, 664 entri) · openclaw tiada di KVM8 (KVM4; kernel actor openclaw/FI-017) · memori paths penuh dalam log census (carry_forward allowlist 7; hermes runtime scars.jsonl; .kimi sessions 309 indeks) · Tool-rights: "no agent may both judge and execute"
+
+### 6.4 Pelan dikemas kini (gabung Bahagian 5)
+- **P0'** (sesi segar): F1 audit-set + F2 kelas witness_semantic + 7 baki flag audit **+ D1 FI-009 identity putuskan (F13 binari — continue-cli atau agy)** + D2 kimi twin config selaraskan (pilih satu rumah) — semua config boleh-balik
+- **P1**: F3/F4 reindex · **D3 SATU pengisytiharan SOT** (tombstone → satu fail, lain jadi panduan/pointer; 5→1) · F5 skills reconciliation via `skills-census.py` → lepas itu mint SKILLS.json · TOOLS.json · audit→CI
+- **P2**: probe Redis/Supabase mendalam · 959-unlinked-seal (333) · sentinel pintu-per-pintu
+
+**Pola yang sama, kali ketiga berturut (05-Okt: buku akaun pintu MCP; 06-Okt: buku akaun memori; kini: buku akaun IDENTITI agen).** Punca akar tunggal: setiap perubahan berdaulat melahirkan artefak baharu tanpa melipat kemas kini ke pendaftar lama. Ubat kekal sama: SATU penerbit per fakta, pemandangan dijana, penghantar benang (drift-sentinel) mengukur setiap kitaran.
+
 ## BUKTI
-Audit output (FAIL 10, senarai ↳) · hybrid compiler header (undang-undang One Door ≠ One Pipe, 2026-10-03) · doctrine 09-12 §3/§4/§5/§7 · qdrant point counts (22 koleksi) · /api/agents 9 · H-axis fail counts · FEDERATED_SKILLS_REGISTRY_V3 hanya dalam /root/AAA/archive + .distraction-archive · arif_memory audit → HOLD/SABAR FREE_TEXT_GATE (trace trc-709646fdb7c3)
+Audit output (FAIL 10, senarai ↳; exit diukur tanpa pipe) · hybrid compiler header (undang-undang *One Door ≠ One Pipe*, Arif 2026-10-03, :18095 dipanggil hanya pengendali kanonik) · FEDERATION_MEMORY_ALIGNMENT_DOCTRINE.md §1/§3/§4/§5/§7 (F13 2026-09-12) · qdrant point counts 22 koleksi · /api/agents 9 · H-axis fail counts (H1:5 H2:53 H3:22 H4:6 H5:34 H6:1 people:53) · FEDERATED_SKILLS_REGISTRY_V3.yaml live + disk_reconciliation FAIL 2026-10-05 · census agent-3 (roster/tools/skills/divergences, log sesi agent-mcwnvehu) · arif_memory audit → HOLD/SABAR FREE_TEXT_GATE (trace trc-709646fdb7c3) · VAULT999 outcomes.jsonl 94,695 baris
+
