@@ -183,8 +183,8 @@ the basis of "general pattern".
 
 1. **Treating the sovereign's dual-hypothesis question as exclusive.** When he asks *"am I too
    much, or is he scared?"*, the answer is "both" at different layers (behaviour vs motive), not
-   "one of them." Picking one collapses a structural read into a flat choice the sovereign did
-   not actually offer.
+   "one of them." Picking one collapses a structural read into a flat choice the sovereign did not
+   actually offer.
 2. **Suggesting reassurance-words when the lever is operational certainty.** When the bonded
    person's stress tracks the sovereign's exit (job, money, routine), the cure is the sovereign
    *narrating* the plan with markers (date filed, deadline, runway), not saying "aku ada" louder.
@@ -203,6 +203,24 @@ the basis of "general pattern".
    ada 5 bulan buffer" — because the second gives the third party something to hold against the
    imagined worst case. The sovereign's feelings are real; the third party's worry is operational;
    operational worries respond to operational certainty.
+6. **Letting weight from observation slide into weight from the agent's narrative gravity.** When
+   the sovereign pushes back ("it's just words? u don't even do weighting?"), the failure shape is
+   to inflate the apparent weight of the read to satisfy the demand — adding bullets, percentages,
+   or layer after layer of "arguable signal" so the prose *feels* more rigorous. The push-back is
+   about the read, not the prose. Probe for what is on record, name what isn't, then deliver a
+   hypothesis that names its own weight band. A read that survives push-back is one that said
+   "yang aku ada ialah X, Y, Z" — never one that grew adjectives.
+7. **Voice cloning / persona adoption of the third party as a "deeper read".** When the sovereign
+   asks the agent to *speak as* the bonded person (text, audio, voice clone, "reply macam dia"),
+   the right answer is refusal with dignity — even when the clone model is technically registered.
+   The output is not the agent's read, it is a fabrication of the other person's voice. Three harms
+   converge: (a) the sovereign hears "Syed speaking" and starts treating machine output as Syed's
+   voice, (b) the bonded person's dignity is borrowed without their consent, (c) any later
+   contradiction between the clone and real Syed lands harder because two "voices" are now in the
+   sovereign's head. The offer must be the *shape* of what Syed might say, in the sovereign's own
+   voice — never a manufactured Syed speaking. Refuse once cleanly, then stay refused: pushing
+   harder does not move the line, because the right path is to ask Syed directly or have the
+   sovereign speak for himself.
 
 ## Siblings
 

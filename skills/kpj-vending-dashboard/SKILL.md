@@ -70,6 +70,14 @@ Two report types:
 | 5 | Payment Method Split (3 horizontal bar charts) |
 | 6 | Per-Site Summary Table (includes GP, Margin columns) |
 
+### Combined report page 1 — layout decision (3 sites vs 4 sites)
+
+For **3 sites**: `1x3 vertical strip` works. Each site gets a column with site-name band on top + 6 tiles stacked vertically. Tile size ~225pt wide × 130pt tall — fits 14pt values + 10pt labels.
+
+For **4 sites**: `1x4 vertical strip` is the **only** layout that works. Tile width drops to ~205pt; drop value font to 12-14pt and label to 8-10pt.
+
+`2x2 grid` for 4 sites is **broken** — each tile becomes ~145pt × 75pt, which is too small for readable fonts. Izzu flagged this as "Very confusing" and "stupid". Reject `2x2` for 4 sites immediately.
+
 ## Generation procedure
 
 ### Single-site
@@ -127,10 +135,13 @@ Aliases must match **exactly**. `MILO` ≠ `Milo`. After every alias update, gre
 - **Exclude test transactions** — known example: `'自动售货机'` (Chinese for "vending machine") in KPJT. Map via alias to `EXCLUDE_TEST_ENTRY` and skip the row.
 - **Daily revenue table** has columns: Date | Revenue (RM) | Transactions | Avg / TX
 - **Top/Bottom hours** — Top 5 + Bottom 5 hours, side by side
-- **Combined reports need 6 KPI tiles per site** (not 4) so GP and Margin are visible. Layout: **1x4 vertical strips** (each site as one column, 6 tiles stacked), NOT 2x2 — the 2x2 grid becomes unreadable because each tile is too narrow for the font.
-- **Combined report title simplification**: Izzu strips redundant words until only "Combined" remains. Default to `"<Month> <Year> · Combined"`; do not include site-name list in the title.
-- **Bold site labels, thick dark-blue borders**: site-section header band uses 14pt bold, dark-blue 2.5pt border, light-blue background. KPI tiles get 1.8pt dark-blue borders on white — separates each site's columns visually.
-- **2x2 grid fails for 4 sites** — only use vertical strip layout for 4+ sites.
+- **Combined reports need 6 KPI tiles per site** (not 4) so GP and Margin are visible.
+- **3-site combined layout**: `1x3 vertical strip` — each site = one column, site-name band on top, 6 tiles stacked. Tile ~225pt × 130pt — fits 14pt values + 10pt labels. 2x2 grid wastes space (one empty corner).
+- **4-site combined layout**: `1x4 vertical strip` ONLY. `2x2` fails because each tile is 145pt×75pt — fonts unreadable, Izzu flagged as "stupid". Drop to 12-14pt values + 8-10pt labels at 4-strip width.
+- **Site-name band in combined reports**: 18pt bold, dark-blue (#1a3a5c) 2.5pt border, light-blue (#d0d9e6) background. Sits 0.045 height, just above tiles (y=0.92, tiles start y=0.87).
+- **Combined report title**: default to `"<Month> <Year> · Combined"`. Do NOT include site name list in the title (Izzu stripped the `(KPJAP + KPJD + KPJR + KPJT)` part).
+- **Outer box border** around each site group in combined: use `fig.add_artist(Rectangle(..., transform=fig.transFigure, zorder=10))` at FIGURE level, not axes level (axes Rectangle gets clipped).
+- **Site label shortening**: Izzu renames long names to short forms. "KPJ Ampang Puteri" → "KPJ Ampang". Apply renames literally; it just means changing the `name` field.
 
 ## Date handling (real bug I hit twice)
 
@@ -147,7 +158,13 @@ Aliases must match **exactly**. `MILO` ≠ `Milo`. After every alias update, gre
 - **f-string with literal `\n` breaks Python syntax** when injected via patch. Use a separate variable: `label = f"text\n{margin}"`. Bit me during 4-site combined generation.
 - **`vision_analyze` may return 404 in this environment** with error "models/hermes-default is not found for API version v1main". Fall back to `pdftotext -layout` extract for verification, then `pdftoppm -r 100 <pdf> <prefix> -png -f 1 -l 1` + `read_file` of the generated PNG path to inspect layout when vision is needed.
 - **Combined reports with 4 KPI tiles per site overlap visually.** Always use 6 tiles in 2x3 grid so GP and Margin show. Visual separation between site groups needs explicit `y_top - s_idx * 0.32` (not 0.30) spacing.
-- **Per-site GP values in combined reports come from the LATEST individual site report.** If you re-run a single site after generating the combined, the combined is stale — re-run the combined too. Izzu notices mismatches.
+- **2x2 grid for 4-site combined is broken** — tiles become 145pt×75pt, fonts unreadable. Izzu flagged as "Very confusing"/"stupid". Use `1x4 vertical strip` only.
+- **For 3-site combined**, `1x3 vertical strip` works (each site = one column, 6 tiles stacked, font 14pt). 2x2 with 3 sites is too wide and has empty corner.
+- **Site label font size** in combined reports: 14pt minimum (10pt got rejected as "hard to read"). 18pt is the sweet spot.
+- **Outer box border** around each site group must be drawn at FIGURE level (`fig.add_artist(Rectangle(..., transform=fig.transFigure, zorder=10))`), NOT axes level — axes-level Rectangle gets clipped by the axes boundary and breaks the border line.
+- **Footer position** in combined reports: y < 0.04 risks overlap with bottom row of tiles. Use y=0.005-0.02.
+- **Combined report GP values are hardcoded** — they come from previous single-site reports. If rates change in those reports after, the combined report is stale. Re-run individual sites first.
+- **`weasyprint` yes, `wkhtmltopdf` no.** wkhtmltopdf is NOT installed. Use `weasyprint file.html out.pdf` for HTML→PDF, and matplotlib `PdfPages` for chart dashboards.
 
 ## Validation (run after every regeneration)
 
