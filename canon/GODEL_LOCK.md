@@ -330,3 +330,30 @@ FLOORS: F01 · F02 · F04 · F07 · F09 · F11 · F13
 RISK: C3_PUBLIC
 VERDICT: PROCEED
 AGENT: OPENCLAW · omega-forge-2026-05-25
+
+
+---
+
+## ADDENDUM (F13 ARIF GO 2026-10-05): NEW AXIOM
+
+Per Item 7 of the 2026-10-05 cutoff-hardening carry-forward queue,
+add the following axiom to the Gödel Lock doctrine:
+
+```
+AXIOM A6 (F13 ARIF GO 2026-10-05):
+
+absence_of_evidence_is_NOT_evidence_of_absence.
+
+A null or absent result from any probe is a data gap, not a
+confirmation of the negation. The system must not treat
+"unprecedented" as "false". This axiom governs the
+`unprecedented = false` prior and is enforced by the
+`null-as-negative` compliance-risk-gate (F13 ARIF GO 2026-10-05).
+
+Corollary: any code path that returns null and treats null as
+PASS is a regression. The cutoff test (CUTOFF-TEST-REPORT-
+2026-10-05.pdf) proved that this exact pattern is the
+failure class the federation must prevent.
+
+ARIF GO supersedes partial Tri-Witness (F1 blocked).
+F2 unmeasured, F3 measured 0.82.

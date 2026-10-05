@@ -74,7 +74,8 @@ These pages exist in **multiple disk copies**; patching the wrong one wastes a s
 1. `curl -sIL "https://arif-fazil.com/gold/?cb=$(date +%s)" | grep -iE 'location|last-mod'` — follow redirects to the real URL.
 2. `grep -n "world/economics\|@static_dirs\|redir /gold" /etc/caddy/Caddyfile` — find the route.
 3. `find /var/www/html -name index.html -exec grep -l '<known-stale-string>' {} \;` — find EVERY copy containing the stale text.
-4. Patch the file Caddy actually serves, then `cp` to sibling copies.
+4. **Sibling-writer check before mutation.** Run `ps aux | grep -iE "kimi|opencode|openclaw|claude" | grep -v grep` and `stat -c '%y' <target-file>`. If another worker is alive AND the target file's mtime is within the last 30 minutes, another agent is staging a draft — read the file fresh and fold their content rather than overwrite. Concurrent writers on the same page are a known pattern (kimi/opencode can write `public/.../index.html` and leave it un-deployed for hours).
+5. Patch the file Caddy actually serves, then `cp` to sibling copies.
 
 ### Known layout (2026-08)
 - `/gold/` → 308 → `/world/economics/gold/` → served by `@static_dirs` from **`/var/www/html/arif/world/economics/gold/index.html`** (same for oil, gas, klci, usdmyr).
