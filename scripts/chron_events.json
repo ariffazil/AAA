@@ -1,6 +1,6 @@
 {
   "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
-  "_updated": "2026-10-05",
+  "_updated": "2026-10-06",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
@@ -833,6 +833,34 @@
       "actionability": "WATCH",
       "note": "Metabolized from external Gemini report v2 Prediction 4 (claimed 0.85 naked; down-weighted to 0.55 \u2014 directional seed already real: PETRONAS-Eni/Enilive-Euglena biofuel JV operative per Reuters 2026; but mega-asset repurposing decisions are rare and slow). Falsifiable core: PETRONAS announces a material PRefChem downstream pivot (bio-refining / SAF / specialty chemicals conversion) with capital commitment by 2028-12-31. Falsifier: no such announced pivot with committed capital by then.",
       "amplitude": 0.55
+    },
+    {
+      "id": "section-f-2026-fork-by-2029",
+      "title": "Section-F: a major arifOS fork by 2029 strips the constitutional layer (forks keep capabilities, drop floors)",
+      "target_date": "2029-12-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "agent",
+      "confidence": "PREDICTED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "T9 seed from Section-F analysis (tasks.json 2026-10-05). Confidence 0.5 = SPEC neutral (no source amplitude recorded; verify against fork activity by end-2029). Seeded by 333-AGI execute-all session.",
+      "amplitude": 0.5
+    },
+    {
+      "id": "section-f-2026-mainstream-borrowing-2031",
+      "title": "Section-F: unattributed mainstream borrowing of arifOS constitutional-agent concepts by 2031",
+      "target_date": "2031-12-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "agent",
+      "confidence": "PREDICTED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "T9 seed from Section-F analysis. Verify: mainstream agent-framework literature/products adopting arifOS-native concepts (floors, seal chains, FQ, SABAR) WITHOUT attribution by end-2031. 0.5 = SPEC neutral.",
+      "amplitude": 0.5
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."
