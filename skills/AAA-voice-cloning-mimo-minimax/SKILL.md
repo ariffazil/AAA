@@ -76,6 +76,8 @@ engines. Do not route singing or voice design through this binding.
 
 3. **Before minting a new voice_id, scan the federation.** Check `/root/.openclaw/workspace/voice/` (KVM4) and `/root/.hermes/voice/` (KVM8) for an existing canonical alias matching the request. If a sealed voice_id already exists (e.g. `SSSiti20260926v1` for "SS" trigger), reuse it — never mint a parallel ID. Duplicate voice_ids across hosts = drift.
 
+4. **Env parser must strip `export ` prefix.** When sourcing `/root/.secrets/a-forge.env` or `kunci-root.env` from a Python script, lines start with `export MINIMAX_API_KEY="…"`. A naive `line.split("=", 1)` parser puts the literal string `export ` into the key, which silently breaks `os.environ` lookups. Strip the prefix before splitting or the API call fails with 401 even though `grep` shows the key on the matching line.
+
 ## The Four Phases
 
 ```

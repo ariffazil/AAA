@@ -15,12 +15,16 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - REALITY_DEBT_AUDIT
 - REALITY_GRAPH_5_LAYER_DOCTRINE-STAGING-2026-09-24
 - SOVEREIGN-PROPOSAL-CANON-INDEX-STAGING-2026-09-24
+- T2-counter-rule-patch
+- T3-enum-diffs
 - _UNRENDERED_INDEX
+- aaa-init-to-seal
 - add-only-truth-preservation
 - aforge-citizen-contract
 - aforge-citizen-contract-333b-DRAFT
 - aforge-competency-evals
 - aforge-competency-schema
+- agentic-anthropology
 - agentic-architecture
 - agentic-federation-substrate
 - agentic-kernel-asi-doctrine
@@ -80,6 +84,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - constitutional-separation
 - consumer-endpoint-witness
 - context-axes
+- correction-ledger-convention
 - cost-of-translation
 - cultural-evolution-doctrine
 - data-authority-hierarchy

@@ -861,6 +861,62 @@
       "actionability": "WATCH",
       "note": "T9 seed from Section-F analysis. Verify: mainstream agent-framework literature/products adopting arifOS-native concepts (floors, seal chains, FQ, SABAR) WITHOUT attribution by end-2031. 0.5 = SPEC neutral.",
       "amplitude": 0.5
+    },
+    {
+      "id": "replay-r1-red12i-pass",
+      "title": "RED-12 I APEX math PASS on 8d2d0be",
+      "target_date": "2026-10-06",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "replay_round_1",
+      "confidence": "CONFIRMED",
+      "consequence": "HIGH",
+      "actionability": "WATCH",
+      "note": "Falsification round 1 \u2014 RED-12 I expected math fully matches deployed apex_primitives.py on 8d2d0be. No defect. See /root/AAA/cockpit/replays/red-falsification-round-1-20261006T002741.json",
+      "amplitude": 0.99
+    },
+    {
+      "id": "replay-r1-red06-partial",
+      "title": "RED-06 555 false-claim discrimination PARTIAL \u2014 auth boundary",
+      "target_date": "2026-10-06",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "replay_round_1",
+      "confidence": "CONFIRMED",
+      "consequence": "MEDIUM",
+      "actionability": "WATCH",
+      "note": "Fail-closed holds (no false PASS), discrimination test deferred to round 2 requiring F13 sovereign token. See /root/AAA/cockpit/replays/red-falsification-round-1-20261006T002741.json",
+      "amplitude": 0.5
+    },
+    {
+      "id": "rank1-mcp-surface-discovery",
+      "title": "Rank 1 MCP surface reconstruction complete \u2014 11/11 organs, 3 advertised-missing, 2 schema-drift classes",
+      "target_date": "2026-10-06",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "replay_rank1",
+      "confidence": "CONFIRMED",
+      "consequence": "HIGH",
+      "actionability": "WATCH",
+      "note": "All 11 organs probed, full evidence packet at /root/AAA/cockpit/replays/mcp-surface-discovery-20261006T004345.json (sha256:39d4c0e8dae5b418). No irreversible writes. Ready for rank 2 F13 harness.",
+      "amplitude": 1.0
+    },
+    {
+      "id": "runtime-truth-mission-readiness",
+      "title": "ARIFOS_RUNTIME_TRUTH_20261006 mission: ready for F13 promotion binary",
+      "target_date": "2026-10-06",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "mission_runtime_truth",
+      "confidence": "CONFIRMED",
+      "consequence": "HIGH",
+      "actionability": "PREPARE",
+      "note": "5 ahead commits safe (no fail-closed weakening, regression 6/6 PASS). Unstaged build.py = intentional_required. uv lock --check FAIL (downstream of self-version bump). GitHub-recoverability FAIL (local-only). 6 F13 binaries required for promotion. See /root/AAA/cockpit/replays/arifos-runtime-truth-20261006-20261006T005327.json (sha256:8c4deb6180cb4498). No writes executed.",
+      "amplitude": 0.95
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

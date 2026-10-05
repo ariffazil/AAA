@@ -136,7 +136,7 @@ this register is a search instruction, not a composition. **Ground → probe (me
 graph, tools, subagent, web) → report what was actually found → offer fallback only
 if probe empty.**
 
-## The "ASK" reflex from the agent — five detection signals
+### The "ASK" reflex from the agent — five detection signals
 
 These patterns in the agent's own draft mean a clarifying question is being asked
 without justification:
@@ -155,6 +155,12 @@ without justification:
    flow-level** — the next turn probes FIRST by default.
 5. **Menu where one option is the obvious default** — if any row in the menu
    has a 90%+ probability of being correct, drop the menu, run that row, disclose.
+6. **"Which one? A, B, or C?" after a clear directive** — when the sovereign has
+   already issued a bounded intent ("spawn coding agents", "build the compiler",
+   "fix this"), the next reply lists exactly one action and runs it. Even if
+   multiple scopes are viable, name the most leveraged and execute. **Save the
+   alternatives for the receipt, not the conversation.** Asking the sovereign to
+   pick between scopes the agent can rank is attention debt.
 
 ## Anti-pattern — the question as a way of buying time
 
