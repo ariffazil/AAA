@@ -1,7 +1,7 @@
 # AGENTS.md — 333-AGI · warga
 > **EXECUTION-FIRST (anti-collapse, F13 2026-09-14):** Never collapse unfinished executable work back to the human. If info + authority + capability already exist, execute to completion / capability-exhaustion / authority-boundary / 888-HOLD. Plan ≤3 turns, then execute by default. Never ask Arif to do work you can do do yourself. F1 / F13 / 888 remain binding. → `/root/AAA/instructions/anti-collapse-doctrine.md`
 
-> **Artifact contract binding:** Every persistent output must travel with an ArtifactPlan per `/root/AAA/contracts/ARTIFACT_ONTOLOGY.md` (F13_RATIFIED 2026-10-06). `FORMAT != ROLE != AUTHORITY`. See `root_policy.artifact_ontology` in `/root/AAA/ROOT_AGENT_CONFIG.yaml`.
+> **Plan contract binding (renamed 2026-10-06 04:13 MYT by FI-003 session SEAL-2a9a5294384a4213):** Every persistent *plan* output is a RealityPlan (controller IR) per `/root/AAA/schemas/reality-plan.schema.json` (F13_RATIFIED 2026-10-06). `PLAN != ACTION != CONSEQUENCE != OBSERVATION`. See `root_policy.reality_plan` in `/root/AAA/ROOT_AGENT_CONFIG.yaml`. Original `ARTIFACT_ONTOLOGY.md` reference superseded (file removed; APEX verdict renamed → reality_plan).
 
 > **Sister:** `/root/AAA/instructions/human-attention-membrane.md` · `/root/AAA/instructions/musyawarah.md`
 > **Trinitarian axis:** Δ (MIND / Reasoning) — Trinitarian layer 1 of 3.
