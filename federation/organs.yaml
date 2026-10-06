@@ -332,6 +332,7 @@ components:
   - id: arifflow
     class: METABOLISM
     display_name: arifFLOW
+    source_path: /root/arifFlow  # 2026-10-07: was absent, so this constitutional organ could not be presence-verified
     role: federation_metabolism
     authority_ceiling: METABOLIZE_ONLY
     port: 7073
