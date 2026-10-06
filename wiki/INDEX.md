@@ -10,7 +10,7 @@ confidence: high
 # AAA Wiki — Federation Knowledge Base Index
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-10-06 | Total entries: 145
+> Last updated: 2026-10-06 | Total entries: 149
 
 > **MCP Server:** `tree777://index` — use the tree777 MCP server for programmatic access with `wiki_search` and `wiki_read` tools.
 
