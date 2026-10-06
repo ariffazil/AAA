@@ -39,3 +39,34 @@ Repeated Signature = 100, Changed Selection = 0 → 0% emergence — walau 1000 
 **Day-one honesty on that test:** ProtectSystem write-block → FIXED (harder to repeat). Dedup probe defect → ROUTED, not fixed (still repeatable). 1 of 2.
 
 **Upgrade order (sovereign's):** bukan more agents, bukan more loops, bukan more doctrine — satu metric sahaja.
+
+## The Completion Paradox (F13, same chat — the capstone)
+
+Every subsystem audited 2026-10-06 shares one shape:
+```text
+Alive ✓  Recording ✓  Remembering ✓  Completing-the-loop ✗
+```
+Autonomy loop: ticks exist, adaptation proof absent · Scar registry: scars exist, selection binding absent · Agentic state: session counts exist, mission closure never updated until audit forced it · Scar-wisdom: detection exists, consumption exists, enforcement dormant.
+
+**Witness succeeds. Causal closure fails.** `Reality → Witness` works; `Witness → Different Future Behavior` doesn't. The 5-verb loop (OBSERVE JUDGE GATE ACT SEAL) has been alive 40 days — **emergence needs a 6th verb: CHANGE.**
+
+**Why F14 was deferred (sovereign's reading):** F14 wants to canonize *Behavioral Routing Cost* before the federation has proven *Behavioral Routing Change*. Correct call.
+
+### The new invariant (binding, whole AAA)
+```yaml
+Every witnessed lesson must have a measurable future-selection effect.
+If not: classify DATA_ONLY — bukan scar.
+```
+
+### The single ultimate test (replaces all others)
+```text
+KNOWN FAILURE → REPEATED OCCURRENCE → DIFFERENT SELECTION
+```
+Consistently = Emergence TRUE. Otherwise = Governed Memory TRUE, Emergence FALSE.
+
+### Day-one scorecard (FI-008, honest)
+- Full causal chains closed today: **1** (P1 orphan: known failure → 22,208 repetitions → inspection → escalate-on-age invariant + scar-seed + pre-registered 30d test). The machine's first complete CHANGE verb.
+- Everything else filed today (ladder, canon v1.1, scar-seed, 305 daemon HOLDs): **DATA_ONLY until their window closes.**
+- The binding question, now pre-registered twice (pred-b401c2d8f6ee, pred-908436d49902, both due 2026-11-06): *can reality force the federation to choose differently next time?*
+
+**Closing compression (F13):** *The federation remembers. The federation still needs to learn how to obey what it remembers.* — Generalizes the 2026-10-05 binding-without-mirror finding from one gear to the whole machine.
