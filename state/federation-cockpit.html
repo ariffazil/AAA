@@ -259,18 +259,24 @@ function render(data) {
   deskHoldsCount.textContent = `${auth.holds || 0} holds aktif`;
   deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'OPTIMAL'})`;
 
+  // F13 SAH 2026-10-06: holds = decision-ledger ONLY (true F13 binaries).
+  // Metabolic lane flags (auth.flow_holds) are bookkeeping — surfaced below as info, never as F13 attention.
   if (auth.holds > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
     deskBadge.textContent = 'PERHATIAN DIPERLUKAN';
     deskTitle.textContent = `${auth.holds} Tindakan Menunggu Keputusan Arif`;
-    deskDesc.innerHTML = `Terdapat operasi berisiko (F13 Sovereign Binary) yang sengaja ditahan oleh enjin autoriti untuk persetujuan Arif.<br><strong>Tertahan:</strong> ${(auth.held_actors || []).join(', ') || 'Operasi mutasi'}`;
+    const oldestIntent = auth.oldest_hold && auth.oldest_hold.intent ? ` — ${auth.oldest_hold.intent}` : '';
+    deskDesc.innerHTML = `Terdapat operasi berisiko (F13 Sovereign Binary) yang sengaja ditahan oleh enjin autoriti untuk persetujuan Arif${oldestIntent}`;
   } else {
     deskCard.className = 'desk-card all-clear';
     deskBadge.className = 'desk-badge badge-ok';
     deskBadge.textContent = 'Peti Masuk Perhatian: KOSONG';
     deskTitle.textContent = 'Semua Tenang & Lancar (Zero Attention Leak)';
-    deskDesc.textContent = 'Tiada keputusan berisiko tinggi atau sekatan yang memerlukan campur tangan Arif hari ini. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan perlembagaan F1-F13.';
+    const fh = auth.flow_holds || { count: 0, actors: [] };
+    deskDesc.innerHTML = fh.count > 0
+      ? `Tiada keputusan berisiko tinggi yang memerlukan campur tangan Arif. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan F1-F13.<br><span style="color:var(--muted)">Lane metabolik tertahan (auto-release, bukan F13): ${fh.actors.join(', ')}</span>`
+      : 'Tiada keputusan berisiko tinggi atau sekatan yang memerlukan campur tangan Arif hari ini. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan perlembagaan F1-F13.';
   }
 
   // 2. Organs

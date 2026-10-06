@@ -37,18 +37,19 @@ OUTPUT_JSON = Path("/root/AAA/state/federation_state.json")
 
 PROBE_TIMEOUT = 8  # seconds per endpoint (cold-start safe)
 ORGAN_ENDPOINTS = [
-    {"id": "arifos",   "port": 8088,  "role": "Kernel"},
-    {"id": "a-forge",  "port": 7071,  "role": "Execution"},
-    {"id": "aaa",      "port": 3001,  "role": "Control Plane"},
-    {"id": "geox",     "port": 8081,  "role": "Earth Intelligence"},
-    {"id": "wealth",   "port": 18082, "role": "Capital Intelligence"},
-    {"id": "well",     "port": 18083, "role": "Vitality Mirror"},
-    {"id": "arifflow", "port": 7073,  "role": "Metabolism"},
-    {"id": "fed",      "port": 7074,  "role": "Model Router"},
-    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},
+    {"id": "arifos", "port": 8088, "role": "Kernel"},
+    {"id": "a-forge", "port": 7071, "role": "Execution"},
+    {"id": "aaa", "port": 3001, "role": "Control Plane"},
+    {"id": "geox", "port": 8081, "role": "Earth Intelligence"},
+    {"id": "wealth", "port": 18082, "role": "Capital Intelligence"},
+    {"id": "well", "port": 18083, "role": "Vitality Mirror"},
+    {"id": "arifflow", "port": 7073, "role": "Metabolism"},
+    {"id": "fed", "port": 7074, "role": "Model Router"},
+    {"id": "chron", "port": 18102, "role": "Temporal Intelligence"},
 ]
 
 # ── Probes ─────────────────────────────────────────────────────────────
+
 
 def probe_health(port: int) -> dict:
     """Probe a single organ. Returns {healthy, latency_ms, data, failure_reason}."""
@@ -61,16 +62,41 @@ def probe_health(port: int) -> dict:
             body = json.loads(resp.read().decode())
             return {"healthy": resp.status == 200, "latency_ms": ms, "data": body, "failure_reason": None}
     except HTTPError as e:
-        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": f"HTTP {e.code}"}
+        return {
+            "healthy": False,
+            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
+            "data": {},
+            "failure_reason": f"HTTP {e.code}",
+        }
     except URLError as e:
-        reason = str(e.reason) if hasattr(e, 'reason') else str(e)
+        reason = str(e.reason) if hasattr(e, "reason") else str(e)
         if "Connection refused" in reason or "ECONNREFUSED" in reason:
-            return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": "service_down"}
+            return {
+                "healthy": False,
+                "latency_ms": round((time.monotonic() - t0) * 1000, 1),
+                "data": {},
+                "failure_reason": "service_down",
+            }
         elif "timed out" in reason.lower() or "timeout" in reason.lower():
-            return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": "timeout"}
-        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": reason[:80]}
+            return {
+                "healthy": False,
+                "latency_ms": round((time.monotonic() - t0) * 1000, 1),
+                "data": {},
+                "failure_reason": "timeout",
+            }
+        return {
+            "healthy": False,
+            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
+            "data": {},
+            "failure_reason": reason[:80],
+        }
     except Exception as e:
-        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": str(e)[:80]}
+        return {
+            "healthy": False,
+            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
+            "data": {},
+            "failure_reason": str(e)[:80],
+        }
 
 
 def probe_all_organs() -> list[dict]:
@@ -78,14 +104,16 @@ def probe_all_organs() -> list[dict]:
     results = []
     for organ in ORGAN_ENDPOINTS:
         p = probe_health(organ["port"])
-        results.append({
-            "id": organ["id"],
-            "role": organ["role"],
-            "port": organ["port"],
-            "healthy": p["healthy"],
-            "latency_ms": p["latency_ms"],
-            "failure_reason": p["failure_reason"],
-        })
+        results.append(
+            {
+                "id": organ["id"],
+                "role": organ["role"],
+                "port": organ["port"],
+                "healthy": p["healthy"],
+                "latency_ms": p["latency_ms"],
+                "failure_reason": p["failure_reason"],
+            }
+        )
     return results
 
 
@@ -199,7 +227,9 @@ def probe_authority_state() -> dict:
         "oldest_hold": {
             "age_hours": oldest_hold_hours,
             "intent": oldest_hold_intent,
-        } if holds and holds > 0 else None,
+        }
+        if holds and holds > 0
+        else None,
         "flow_holds": {
             "count": len(held_actors),
             "actors": held_actors,
@@ -239,7 +269,9 @@ def compute_bottleneck(organs: list[dict], authority: dict, fq: dict) -> dict:
             "impact_flows": 0,
         }
 
-    holds = (ledger_holds or 0) + (flow_held_count or 0)
+    # F13 SAH 2026-10-06: AUTHORITY bottleneck = decision-ledger holds only.
+    # Flow-only holds are metabolic (auto-release) — not a sovereign bottleneck.
+    holds = ledger_holds or 0
     if holds > 0:
         oldest = authority.get("oldest_hold", {})
         return {
@@ -291,6 +323,7 @@ def derive_health_verdict(organs: list[dict]) -> str:
 
 # ── Helpers ────────────────────────────────────────────────────────────
 
+
 def _safe_add(*vals):
     """Sum optional numeric values. Returns None if no numeric value present."""
     nums = [v for v in vals if isinstance(v, (int, float))]
@@ -298,6 +331,7 @@ def _safe_add(*vals):
 
 
 # ── Main ───────────────────────────────────────────────────────────────
+
 
 def federation_state() -> dict:
     """Build the canonical federation state object."""
@@ -333,14 +367,12 @@ def federation_state() -> dict:
         "version": 1,
         "generated_at": now,
         "probe_ms": round((time.monotonic() - t0) * 1000, 1),
-
         "federation": {
             "status": health,
             "organs_alive": alive,
             "organs_total": total,
             "organs": organ_detail,
         },
-
         "metabolism": {
             "verdict": fq.get("verdict", "UNKNOWN"),
             "quotient": fq.get("quotient"),
@@ -351,19 +383,29 @@ def federation_state() -> dict:
             "throttled_count": fq.get("throttled_count", 0),
             "stuck_actors": fq.get("stuck_actors", []),
         },
-
+        # F13 SOVEREIGN 2026-10-06 "SAH" — semantic split (was: _safe_add merge).
+        # authority.holds = decision-ledger HOLD entries ONLY (true F13 binaries).
+        # Metabolic arifFlow lane flags live in authority.flow_holds — they are
+        # bookkeeping (auto-release on next Verify receipt per arifFlow main.rs),
+        # NOT operations awaiting Arif. Rendering them as F13 binaries manufactured
+        # phantom sovereign decisions (333-agi / memory-helix / codex-startup, 2026-10-06).
         "authority": {
-            "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
+            "holds": authority.get("decision_ledger", {}).get("holds"),  # None = UNKNOWN if ledger unavailable
             "seals": authority.get("decision_ledger", {}).get("seals"),  # None = UNKNOWN if ledger unavailable
             "oldest_hold": authority.get("oldest_hold"),
+            "flow_holds": {
+                "count": authority.get("flow_holds", {}).get("count", 0),
+                "actors": authority.get("flow_holds", {}).get("actors", []),
+                "class": "metabolic",
+                "note": "arifFlow lane FQ flags; auto-release on Verify receipt; not F13 decisions",
+            },
+            # Legacy alias (metabolic) — kept for old readers; do NOT use for F13 panels
             "held_actors": authority.get("flow_holds", {}).get("actors", []),
         },
-
         # Backward-compatibility aliases for legacy / root-level readers
         "organs": organ_detail,
-        "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
+        "holds": authority.get("decision_ledger", {}).get("holds"),
         "held_actors": authority.get("flow_holds", {}).get("actors", []),
-
         "_source": "federation_state.py v1.0",
     }
 
