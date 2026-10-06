@@ -418,11 +418,11 @@ forge_instruments:
   agent_card: agents/_external/agy/agent-card.json
 - id: qwen-code
   fi_id: FI-003
-  status: not_connected
+  status: live
   class: forge-instrument
-  citizenship: observer-until-mcp
+  citizenship: warga-aaa
   host_binding: qwen-code
-  agent_card: null
+  agent_card: agents/_external/qwen-code/agent-card.json
 - id: grok-build
   fi_id: FI-007
   status: live
@@ -433,10 +433,3 @@ forge_instruments:
   model: xai/grok-4.5  # canonical: /root/.config/federation-models.json
   binary: /root/.grok/bin/grok
   config_path: /root/.grok/config.toml
-- id: gemini-cli
-  fi_id: FI-011
-  status: live
-  class: forge-instrument
-  citizenship: governed-forge-worker
-  host_binding: gemini-cli
-  agent_card: agents/_external/gemini-cli/agent-card.json
