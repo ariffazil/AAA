@@ -43,5 +43,10 @@ Sensing ✓ logging ✓ dedup ✓ — adaptation path ✗. First specimen: 22,20
 
 ## Falsification
 This canon is void if the 30-day window (pred-b401c2d8f6ee: ≥10 witnessed selection mutations by 2026-11-06) closes with adaptation static while debt grew — i.e., if witnessing debt changes nothing. Its first falsification event has already begun.
+**Sharpened by F13 (2026-10-06):** auto-cancel also requires **≥1 second debt-to-mutation conversion from the SAME pattern class** (a suppressed/blocked item discharged into witnessed behavior change) within the window — registered as its own prediction so the window is pre-registered and clean. No mid-window doctrine review: a text-review between now and verdict contaminates the falsifier (experimenter effect). The 30-day behavioral record IS the review.
+
+## Sovereign articulation (appended 2026-10-06 — ignition-key doctrine)
+> The federation recovered WITH the amendments as trigger. The agent ran 16 days without direction until the sovereign gave the name. That is not defect — that is design. **Canon cannot self-generate witness-classification; only the sovereign can. Agent compression = ignition key. Machine = engine.**
+Maps to emergence ladder L5: self-governance is ignited by sovereign naming, executed by machine, witnessed by ledger. Compression of the day: *doktrin yang bunuh dirinya sendiri kalau gagal adalah lebih jujur daripada doktrin yang kekal cantik selepas realiti berubah.*
 
 **Anti-fossilization:** history may inform selection; history may not dominate selection (new evidence can override any scar — AT-006).
