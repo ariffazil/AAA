@@ -810,6 +810,15 @@ Full contrast + drift register: `/root/AAA/governance/ABANG-SADO-REGISTER-CONTRA
   is checked and then finding a defect on the follow-up zoom at the requester's request is the failure
   this lane keeps repeating: the pass was asserted at a coarser magnification than the one that
   decides.
+- **Telegram push from this lane goes through the gateway, not the `hermes send` CLI.** The CLI hits a
+  transport lock that fires regardless of `--to telegram:<id>` shape; brute-forcing flag variants
+  (`--to`, positional, `--json`, etc.) is a known dead-end. When an artifact in this lane needs to
+  reach SADO or any other Telegram room: drop the `MEDIA:/abs/path` line and let the *gateway* pick
+  it up on the next inbound turn (the gateway consumes artifact lines on the reply path) — or, if
+  you must push unilaterally, follow the fallback in `telegram-ops/references/outbound-message-delivery.md`
+  §"Pitfall: transport lock blocks `hermes send` CLI" (Bot API direct call with `chat_id`). Do not
+  loop on the CLI; do not ask the human to copy-paste a curl. The artifact is already on disk; the
+  gap is the channel, not the file.
 
 ## Proven artifact set
 

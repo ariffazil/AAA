@@ -69,4 +69,10 @@ The QC script (`tts_roundtrip_qc.sh`) keeps false-firing on the tail of these ta
 
 TENDERNESS engine requests stay inside shadow mode and the principal's own lane. The voice lane is the principal's own clone (no consent question), the visual lane (if asked) is the unnamed-archetype from-behind framing from `abang-sado-creative-lane`. No real named third party at any point. No escalation into explicit content — the engine's payoff IS the answer, and a line that needs explicitness to land is a line that has been routed to the wrong engine.
 
+## Why this engine exists (polyvagal basis)
+
+TENDERNESS is not "softer DENIAL." It is a different nervous-system demand. Tender asks register on the listener's side as ventral vagal hunger (co-regulation request) — the body asks for safety-through-presence, not safety-through-dominance. The cocky engine satisfies sympathetic activation (the protector is competent, the threat is handled); the tender engine satisfies ventral vagal (the protector is here, the next moment is held). Routing a tender ask through DENIAL phrasing produces a take that the listener's NS reads as distance — the words are right, the timbre is wrong. The body hears the gap.
+
+Operational rule: when the ask carries permission ("boleh x", "boleh tak", "ok x"), the engine is TENDERNESS. Pick the voice first (clone, not parametric), then write the line. Voice-first prevents the cocky-engine-bleed regression this skill's mistake pattern documents.
+
 DITEMPA BUKAN DIBERI ⚒️
