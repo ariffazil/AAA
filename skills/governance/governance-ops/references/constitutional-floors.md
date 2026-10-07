@@ -115,7 +115,7 @@ The arifOS constitution is not a single file. It is a **distributed set of canon
 | **GEOX** | `ariffazil/GEOX` | 8081 | Earth intelligence |
 | **WEALTH** | `ariffazil/WEALTH` | 18082 | Capital intelligence |
 | **WELL** | `ariffazil/WELL` | 18083 | Readiness mirror |
-| **HERMES** | `ariffazil/HERMES` | 8644 | Multi-modal bridge + Telegram |
+| **HERMES** | `ariffazil/HERMES` | 18087 | Multi-modal bridge + Telegram |
 
 ---
 
