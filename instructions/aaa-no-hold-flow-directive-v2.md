@@ -281,10 +281,10 @@ This directive is an **anti-pattern correction** (against "HOLD as default"). Pe
 
 ---
 
-## 13 · §SELECTION_AXIOM_v1 — Correctness-First Ranking (DRAFT)
+## §SELECTION_AXIOM_v1 — Correctness-First Ranking (F13_RATIFIED, 2026-10-07)
 
-**Status:** DRAFT (pending F13 SAH) · 2026-10-07 · correctness-first ranking axiom from MemoHarness arXiv:2607.14159
-**Binding:** NONE YET — pending one-word F13 "SAH". Reversible by edit or silence.
+**Status:** F13_RATIFIED_CANON · 2026-10-07 · correctness-first ranking axiom from MemoHarness arXiv:2607.14159. SAH ALL THREE.
+**Binding:** ACTIVE per F13 SAH ALL THREE 2026-10-07. Operative from this stamp forward.
 **Scope:** Selection ranking when multiple valid actions exist. Does NOT change HOLD cost (10), EXECUTE cost (1), or any F1–F13 floor above. Adds a ranking layer to the resolution step, not a new floor.
 **Companions:** APEX REALITY KERNEL Prime Invariant 9 · F1–F13 floors (unchanged) · `scar-binding-doctrine` (this axiom feeds `consult_scar()` ordering).
 

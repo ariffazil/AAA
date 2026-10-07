@@ -83,9 +83,9 @@ DITEMPA BUKAN DIBERI ⚒️
 
 ## §HARNESS_DIMENSIONS_v1 — 6-Dimensional Decomposition of the Harness State
 
-> **Status:** DRAFT (pending F13 SAH) · 2026-10-07 · derived from MemoHarness arXiv:2607.14159
+> **Status:** F13_RATIFIED_CANON · 2026-10-07 · SAH ALL THREE · derived from MemoHarness arXiv:2607.14159
 > **Scope:** extension, not amendment. The 6-tuple `ARS(T) = ⟨S, L, Φ, C, K, I⟩` (F13_SEAL 2026-10-04) is preserved verbatim. This section only maps the harness axes of MemoHarness onto the existing ARS coordinates as named axioms.
-> **Authority:** DRAFT — DITEMPA BUKAN DIBERI awaits F13 ratification. Until "SAH" lands, treat as advisory scaffold, not canon.
+> **Authority:** F13_RATIFIED 2026-10-07. SAH ALL THREE lands; this section is now canon, not scaffold.
 
 ### 1. The six dimensions
 
@@ -129,4 +129,4 @@ When the sign appears, HOLD per `asi-substrate-invariants.md` #1 (Epistemic Asym
 
 ---
 
-*DRAFT · 2026-10-07 · FI-008 subagent under F13 chat direction · pending F13 SAH*
+*DRAFT · 2026-10-07 · FI-008 subagent under F13 chat direction · F13_RATIFIED 2026-10-07*
