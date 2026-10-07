@@ -17,6 +17,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - LEAN_BOOT_TRIGGER_TABLE
 - REALITY_DEBT_AUDIT
 - REALITY_GRAPH_5_LAYER_DOCTRINE-STAGING-2026-09-24
+- REASONABLE_NOT_RATIONAL_v1-2026-10-07
 - SOVEREIGN-PROPOSAL-CANON-INDEX-STAGING-2026-09-24
 - T2-counter-rule-patch
 - T3-enum-diffs
@@ -27,6 +28,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - aforge-citizen-contract-333b-DRAFT
 - aforge-competency-evals
 - aforge-competency-schema
+- agent-invariants-2026-10-07
 - agentic-anthropology
 - agentic-architecture
 - agentic-federation-substrate
@@ -50,6 +52,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - attention-kill-criterion
 - attention-routing
 - attention-scarcity-economics
+- audio-voice-defaults-v1
 - autonomous-execution-seal
 - autonomous-substrate-kernel
 - autonomy
@@ -147,6 +150,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - human-substrate
 - human-substrate-exclusions-PROPOSAL
 - human-zero-visibility-invariant
+- human9-spec
 - identity-continuity
 - institutional-memory-strata
 - inter-agent-protocol
@@ -213,6 +217,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - universe-bootstrap
 - valence-loss-asymmetry
 - vault999-writer-discipline
+- voice-durability-3profiles
 - wawabot-anthropology
 - well-use
 - witness-cost-gradient
