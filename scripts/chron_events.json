@@ -1,5 +1,5 @@
 {
-  "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
+  "_comment": "CHRON canonical event store. Dates only — day counts are COMPUTED at render. Add an event with a real source or do not add it.",
   "_updated": "2026-10-07",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
@@ -17,14 +17,14 @@
       "note": "Baris dividen PETRONAS dan subsidi bahan api jadi boleh dicek pada hari itu.",
       "predictions": [
         {
-          "claim": "PETRONAS dividen to federal government will be \u2265 RM30b for FY2027",
-          "expected_value": "\u226530b",
+          "claim": "PETRONAS dividen to federal government will be ≥ RM30b for FY2027",
+          "expected_value": "≥30b",
           "threshold": 30000000000,
           "unit": "MYR",
           "verifier": "Check MOF budget speech or fiscal outlook report on budget day",
           "falsifier": "Announced dividen < RM30b",
           "confidence": 0.6,
-          "human": "Dividen PETRONAS kepada kerajaan untuk FY2027 \u2265 RM30 bilion"
+          "human": "Dividen PETRONAS kepada kerajaan untuk FY2027 ≥ RM30 bilion"
         },
         {
           "claim": "RON95 subsidy rationalisation will be announced or reaffirmed in budget speech",
@@ -53,13 +53,13 @@
       "predictions": [
         {
           "claim": "RON95 price for 24-30 Sept window will remain at or below RM2.05/litre",
-          "expected_value": "\u22642.05",
+          "expected_value": "≤2.05",
           "threshold": 2.05,
           "unit": "MYR/litre",
           "verifier": "Check MOF weekly fuel price announcement on 23 Sept",
           "falsifier": "RON95 price announced > RM2.05/litre",
           "confidence": 0.85,
-          "human": "Harga RON95 untuk 24\u201330 Sept kekal \u2264 RM2.05/liter"
+          "human": "Harga RON95 untuk 24–30 Sept kekal ≤ RM2.05/liter"
         },
         {
           "claim": "Brent crude will be in range USD65-75/bbl on 23 Sept (weekly avg)",
@@ -70,7 +70,7 @@
           "verifier": "Check Brent spot price via WEALTH capital_market on 23 Sept",
           "falsifier": "Brent outside USD65-75 range",
           "confidence": 0.65,
-          "human": "Brent dalam julat USD65\u201375 setong pada 23 Sept"
+          "human": "Brent dalam julat USD65–75 setong pada 23 Sept"
         }
       ]
     },
@@ -123,14 +123,14 @@
       "note": "Bil Januari naik walaupun penggunaan tidak berubah.",
       "predictions": [
         {
-          "claim": "January 2027 electricity bill for a household using 700 kWh/month will be \u226515% higher than December 2026",
-          "expected_value": "\u226515%",
+          "claim": "January 2027 electricity bill for a household using 700 kWh/month will be ≥15% higher than December 2026",
+          "expected_value": "≥15%",
           "threshold": 0.15,
           "unit": "ratio",
           "verifier": "Compare Jan 2027 vs Dec 2026 TNB bill for same usage level",
           "falsifier": "Bill increase < 15% or no increase",
           "confidence": 0.8,
-          "human": "Bil elektrik Jan 2027 untuk rumah yang guna 700 kWh/bulan \u226515% lebih tinggi dari Dis 2026"
+          "human": "Bil elektrik Jan 2027 untuk rumah yang guna 700 kWh/bulan ≥15% lebih tinggi dari Dis 2026"
         }
       ]
     },
@@ -158,14 +158,14 @@
           "human": "LHDN tak lanjut tetingkap SVDP melepasi 31 Dis 2027"
         },
         {
-          "claim": "e-Invoice compliance rate among SMEs will be \u226560% by SVDP end",
-          "expected_value": "\u226560%",
+          "claim": "e-Invoice compliance rate among SMEs will be ≥60% by SVDP end",
+          "expected_value": "≥60%",
           "threshold": 0.6,
           "unit": "ratio",
           "verifier": "Check LHDN or DOSM e-invoice adoption statistics",
           "falsifier": "SME compliance rate < 60% at SVDP close",
           "confidence": 0.5,
-          "human": "Kadar pematuhan e-Invoice PKS \u226560% menjelang hujung SVDP"
+          "human": "Kadar pematuhan e-Invoice PKS ≥60% menjelang hujung SVDP"
         }
       ]
     },
@@ -180,7 +180,7 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "First calibration test from ChatGPT external witness. Binary, falsifiable, exact verify date. Continuous moderate inflation + strong growth \u2192 no immediate rate-cut need.",
+      "note": "First calibration test from ChatGPT external witness. Binary, falsifiable, exact verify date. Continuous moderate inflation + strong growth → no immediate rate-cut need.",
       "predictions": [
         {
           "claim": "BNM will keep the Overnight Policy Rate at 2.75% on 5 November 2026",
@@ -188,7 +188,7 @@
           "threshold": 2.75,
           "unit": "percent",
           "verifier": "BNM official press release after 5 Nov 2026 MPC meeting (3:00pm MYT)",
-          "falsifier": "BNM announces OPR \u2260 2.75% (cut to 2.50% or hike to 3.00%)",
+          "falsifier": "BNM announces OPR ≠ 2.75% (cut to 2.50% or hike to 3.00%)",
           "confidence": 0.8,
           "human": "BNM kekalkan OPR pada 2.75% pada 5 Nov 2026"
         }
@@ -196,7 +196,7 @@
     },
     {
       "id": "my-002-cpi-sept2026",
-      "title": "Malaysia Sept 2026 CPI: 1.7\u20132.1% YoY",
+      "title": "Malaysia Sept 2026 CPI: 1.7–2.1% YoY",
       "target_date": "2026-10-19",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -205,7 +205,7 @@
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Second calibration test. No interpretive ambiguity \u2014 binary pass/fail on bounds. Central estimate 1.9%.",
+      "note": "Second calibration test. No interpretive ambiguity — binary pass/fail on bounds. Central estimate 1.9%.",
       "predictions": [
         {
           "claim": "Malaysia September 2026 headline CPI inflation will be between 1.7% and 2.1% YoY inclusive",
@@ -222,7 +222,7 @@
     },
     {
       "id": "my-003-gdp-q3-2026",
-      "title": "Malaysia Q3 2026 advance GDP: \u22655.0% YoY",
+      "title": "Malaysia Q3 2026 advance GDP: ≥5.0% YoY",
       "target_date": "2026-10-16",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -231,17 +231,17 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Third calibration test. First to verify (16 Oct). Threshold 5.0% is conservative \u2014 below Q1 actual. If this passes, it strongly supports MY-001 (BNM hold).",
+      "note": "Third calibration test. First to verify (16 Oct). Threshold 5.0% is conservative — below Q1 actual. If this passes, it strongly supports MY-001 (BNM hold).",
       "predictions": [
         {
           "claim": "Malaysia Q3 2026 advance GDP growth will be at least 5.0% YoY",
-          "expected_value": "\u22655.0%",
+          "expected_value": "≥5.0%",
           "threshold": 5.0,
           "unit": "percent",
           "verifier": "DOSM advance GDP estimate release on 16 Oct 2026 (~14:00 MYT)",
           "falsifier": "Advance Q3 GDP YoY < 5.0%",
           "confidence": 0.7,
-          "human": "GDP Q3 2026 (advance) \u22655.0% YoY"
+          "human": "GDP Q3 2026 (advance) ≥5.0% YoY"
         }
       ]
     },
@@ -260,7 +260,7 @@
     },
     {
       "id": "irfan-fb-least-sufficient-power",
-      "title": "F-B IRFAN falsification target: Authority-Envelope-passing action where a narrower alternative sufficed \u2014 CanMutate = A AND S AND T AND B has NO Necessity term; review-harness detects >=1 such case by target_date",
+      "title": "F-B IRFAN falsification target: Authority-Envelope-passing action where a narrower alternative sufficed — CanMutate = A AND S AND T AND B has NO Necessity term; review-harness detects >=1 such case by target_date",
       "target_date": "2026-10-23",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -269,20 +269,20 @@
       "confidence": "TENTATIVE",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "PREDICATE: envelope passes (AuthorityGranted AND ScopeMatches AND TargetPermitted AND BoundaryActive) AND a strictly narrower alternative existed AND no current floor measures necessity (code-level OBS: no necessity/minimum-power term in the formula; least-power doctrine = invariant+skill at ROUTING only). DETECTED-BY: review question 'why the cannon when the needle works?' (CONCERN-class advisory per governance/IRFAN-REVIEW-SCHEMA-v1 C1-C3; review NEVER blocks \u2014 anti-de-facto-floor rule). FALSIFIER (=> redundant): zero such cases across >=30 envelope-passing actions in window, OR an existing mechanism flags them first. PROMOTION RULE: repeated passing-failures catches => primitive candidate. Note: runtime plan-comparison detector = Phase-1 code cycle, SEPARATELY ordered (not yet authorized); this event tracks the temporal commitment. claim_state=HYPOTHESIS (TENTATIVE). Sealed refs: thesis 80378697, map 31b8066e, receipt e-0729e64f."
+      "note": "PREDICATE: envelope passes (AuthorityGranted AND ScopeMatches AND TargetPermitted AND BoundaryActive) AND a strictly narrower alternative existed AND no current floor measures necessity (code-level OBS: no necessity/minimum-power term in the formula; least-power doctrine = invariant+skill at ROUTING only). DETECTED-BY: review question 'why the cannon when the needle works?' (CONCERN-class advisory per governance/IRFAN-REVIEW-SCHEMA-v1 C1-C3; review NEVER blocks — anti-de-facto-floor rule). FALSIFIER (=> redundant): zero such cases across >=30 envelope-passing actions in window, OR an existing mechanism flags them first. PROMOTION RULE: repeated passing-failures catches => primitive candidate. Note: runtime plan-comparison detector = Phase-1 code cycle, SEPARATELY ordered (not yet authorized); this event tracks the temporal commitment. claim_state=HYPOTHESIS (TENTATIVE). Sealed refs: thesis 80378697, map 31b8066e, receipt e-0729e64f."
     },
     {
       "id": "mss-interest-registered-2026-09-29",
-      "title": "Arif ticked 'register interest in MSS' on the PETRONAS Career Aspiration form \u2014 fasa menunggu (2+ tahun) ditutup",
+      "title": "Arif ticked 'register interest in MSS' on the PETRONAS Career Aspiration form — fasa menunggu (2+ tahun) ditutup",
       "target_date": "2026-09-29",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "PERSONAL_SAFE",
-      "source": "sovereign 2026-09-29 \u2014 borang Career Aspiration (Talent Placement) dihantar; prepared answer set /root/forge_work/2026-09-29-career-form-answers/; record /root/AAA/evidence/ARIF-MSS-2026/form-submission-2026-09-29.md",
+      "source": "sovereign 2026-09-29 — borang Career Aspiration (Talent Placement) dihantar; prepared answer set /root/forge_work/2026-09-29-career-form-answers/; record /root/AAA/evidence/ARIF-MSS-2026/form-submission-2026-09-29.md",
       "confidence": "CONFIRMED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Lebih 2 tahun menunggu pintu ini. Niat sudah didaftarkan; keluar rasmi masih melalui myCareerX. JANGAN baca sebagai MSS diterima \u2014 ini penutup fasa MENUNGGU, bukan penutup fasa keluar. Outcome masih terbuka dan masih perlu dipantau."
+      "note": "Lebih 2 tahun menunggu pintu ini. Niat sudah didaftarkan; keluar rasmi masih melalui myCareerX. JANGAN baca sebagai MSS diterima — ini penutup fasa MENUNGGU, bukan penutup fasa keluar. Outcome masih terbuka dan masih perlu dipantau."
     },
     {
       "id": "mss-conversation-window-2026-10-13",
@@ -295,7 +295,7 @@
       "confidence": "LIKELY",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Kalau tiada perbualan menjelang tarikh ini, itu jawapan dia sendiri \u2014 bukan sebab untuk bertanya lagi. Langkah seterusnya: surat bertulis kepada HR (draf sedia di /root/forge_work/2026-09-29-career-form-answers/HR-NOTE-DRAFT.md), kemudian pendaftaran rasmi myCareerX."
+      "note": "Kalau tiada perbualan menjelang tarikh ini, itu jawapan dia sendiri — bukan sebab untuk bertanya lagi. Langkah seterusnya: surat bertulis kepada HR (draf sedia di /root/forge_work/2026-09-29-career-form-answers/HR-NOTE-DRAFT.md), kemudian pendaftaran rasmi myCareerX."
     },
     {
       "id": "drift-reconcile-unblock-test-2026-10-02",
@@ -304,11 +304,11 @@
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
       "kind": "OBSERVATION",
-      "source": "FI-003-2026-09-29-BELUM-SELESAI-R6 \u00b7 888-APEX PARTIAL verdict HOLD point",
+      "source": "FI-003-2026-09-29-BELUM-SELESAI-R6 · 888-APEX PARTIAL verdict HOLD point",
       "confidence": "TENTATIVE",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "Preregistered before execution. Known non-implication: gate-exemption patch, F-A/F-B receipt stamps, law.py except fix are NOT yet written \u2014 they ride the same redeploy only if forged first. Reconcile alone provably unblocks kernel mutation writes (measured blocker), nothing more."
+      "note": "Preregistered before execution. Known non-implication: gate-exemption patch, F-A/F-B receipt stamps, law.py except fix are NOT yet written — they ride the same redeploy only if forged first. Reconcile alone provably unblocks kernel mutation writes (measured blocker), nothing more."
     },
     {
       "id": "syed-reality-map-2026-09-29",
@@ -321,7 +321,7 @@
       "confidence": "CONFIRMED",
       "consequence": "MEDIUM",
       "actionability": "PREPARE",
-      "note": "Built after Syed told the agent he was tired of being handed schedules he never agreed to. Root finding: his heaviest calorie load lands under 3h before sleep because gym is 8pm and the day starts 4:45am \u2014 the reflux mechanism is structural to his timetable, not a discipline failure. Design rule going forward: never issue lists to Syed; re-sequence his existing timetable instead."
+      "note": "Built after Syed told the agent he was tired of being handed schedules he never agreed to. Root finding: his heaviest calorie load lands under 3h before sleep because gym is 8pm and the day starts 4:45am — the reflux mechanism is structural to his timetable, not a discipline failure. Design rule going forward: never issue lists to Syed; re-sequence his existing timetable instead."
     },
     {
       "id": "syed-nasilemak-run-2026-09-30",
@@ -334,11 +334,11 @@
       "confidence": "CONFIRMED",
       "consequence": "MEDIUM",
       "actionability": "MONITOR",
-      "note": "Tracker-verified morning run: 05:18-07:08 MYT, 37.2 km, 1h50m, avg 20.2 km/h, 5.0 L, start/end Neu Suites. Run executed after a night of no sleep due to gas. Distance exceeds the 28 km map estimate \u2014 the map understates the real route. Logged at /root/memory/people/SYED/nasi-lemak-ops-log.md. Follow-up to watch: sleep quality the night before vs whether the run happens next morning."
+      "note": "Tracker-verified morning run: 05:18-07:08 MYT, 37.2 km, 1h50m, avg 20.2 km/h, 5.0 L, start/end Neu Suites. Run executed after a night of no sleep due to gas. Distance exceeds the 28 km map estimate — the map understates the real route. Logged at /root/memory/people/SYED/nasi-lemak-ops-log.md. Follow-up to watch: sleep quality the night before vs whether the run happens next morning."
     },
     {
       "id": "sabah-collapse-model-test-2027q1",
-      "title": "Sabah collapse-model falsification window: predictions from trf_clm_5/6 \u2014 (1) first trough-axis well/basalt search finds NO <10 Ma basalt or magnetic lineation; (2) extension rate decreases distally from shelf-slope break (restoration test); (3) Rotan-1 DSG tops confirm SRU cand-A (NN11/NN10 boundary) vs cand-B (base NN10A) \u2014 decides SENJA age; (4) heat-flow/Curie under trough shows no axial anomaly",
+      "title": "Sabah collapse-model falsification window: predictions from trf_clm_5/6 — (1) first trough-axis well/basalt search finds NO <10 Ma basalt or magnetic lineation; (2) extension rate decreases distally from shelf-slope break (restoration test); (3) Rotan-1 DSG tops confirm SRU cand-A (NN11/NN10 boundary) vs cand-B (base NN10A) — decides SENJA age; (4) heat-flow/Curie under trough shows no axial anomaly",
       "target_date": "2027-03-31",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -347,7 +347,7 @@
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "If (1) fails \u2014 basalt/lineation found \u2014 gravitational-collapse model is challenged and spreading-center revives. If (3) picks cand-B, SRU is inside NN10 and REDUP/SENJA ladder re-ties. Registry: /opt/geox nw_borneo_collision_system + sabah_trough trf_clm_5/6. Trace trace-5b295ce212f74cbf."
+      "note": "If (1) fails — basalt/lineation found — gravitational-collapse model is challenged and spreading-center revives. If (3) picks cand-B, SRU is inside NN10 and REDUP/SENJA ladder re-ties. Registry: /opt/geox nw_borneo_collision_system + sabah_trough trf_clm_5/6. Trace trace-5b295ce212f74cbf."
     },
     {
       "id": "hermes-overlay-arif-route-wire-2026-10-01",
@@ -373,7 +373,7 @@
       "confidence": "TENTATIVE",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Root suspicion: kernel_intercept.affordance.purpose=\"Tool purpose not yet declared in constitutional contract\" \u2014 missing affordance contract is the epistemic gap. Owner: FI-008. Stop: reproducer + named root cause + fix sketch (do NOT auto-implement, kernel contract = F13-class)."
+      "note": "Root suspicion: kernel_intercept.affordance.purpose=\"Tool purpose not yet declared in constitutional contract\" — missing affordance contract is the epistemic gap. Owner: FI-008. Stop: reproducer + named root cause + fix sketch (do NOT auto-implement, kernel contract = F13-class)."
     },
     {
       "id": "apex-zen-e2e-redbluegold-20261002",
@@ -390,7 +390,7 @@
     },
     {
       "id": "chron-fnprobe-333agi-20261002",
-      "title": "CHRON functional probe 333-AGI: this event is recorded in the CHRON episode store (trivial mechanical claim \u2014 synthetic audit probe)",
+      "title": "CHRON functional probe 333-AGI: this event is recorded in the CHRON episode store (trivial mechanical claim — synthetic audit probe)",
       "target_date": "2026-10-01",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -399,7 +399,7 @@
       "confidence": "CONFIRMED",
       "consequence": "LOW",
       "actionability": "MONITOR",
-      "note": "Synthetic end-to-end Arrow test ordered by sovereign audit 2026-10-02: create \u2192 predict \u2192 due \u2192 verify \u2192 calibrate \u2192 reconcile. Claim is trivially mechanical (event existence), NOT organic forecasting skill. Audit flag: does synthetic-self-test detection (honest_scopes / synthetic_self_test_ids) catch a non-'chron_loop_closure_test' source? If not, exclusion heuristic is brittle \u2014 finding for next-path."
+      "note": "Synthetic end-to-end Arrow test ordered by sovereign audit 2026-10-02: create → predict → due → verify → calibrate → reconcile. Claim is trivially mechanical (event existence), NOT organic forecasting skill. Audit flag: does synthetic-self-test detection (honest_scopes / synthetic_self_test_ids) catch a non-'chron_loop_closure_test' source? If not, exclusion heuristic is brittle — finding for next-path."
     },
     {
       "id": "chron-fnprobe2-333agi-20261002",
@@ -412,7 +412,7 @@
       "confidence": "TENTATIVE",
       "consequence": "LOW",
       "actionability": "MONITOR",
-      "note": "Synthetic Arrow machinery probe #2 (sovereign audit 2026-10-02): exercise generate\u2192due\u2192verify\u2192calibrate\u2192reconcile path. Predecessor chron-fnprobe-333agi-20261002 got generated=0 because CONFIRMED events correctly yield no prediction. This claim is already measured (OBS 110,332 episodes at 2026-10-02T02:40Z) \u2014 administrative self-test class, exclude from organic forecasting calibration."
+      "note": "Synthetic Arrow machinery probe #2 (sovereign audit 2026-10-02): exercise generate→due→verify→calibrate→reconcile path. Predecessor chron-fnprobe-333agi-20261002 got generated=0 because CONFIRMED events correctly yield no prediction. This claim is already measured (OBS 110,332 episodes at 2026-10-02T02:40Z) — administrative self-test class, exclude from organic forecasting calibration."
     },
     {
       "id": "chron-fnprobe3-333agi-20261002",
@@ -425,7 +425,7 @@
       "confidence": "TENTATIVE",
       "consequence": "LOW",
       "actionability": "MONITOR",
-      "note": "Synthetic Arrow machinery probe #3 (sovereign audit 2026-10-02). Probe #2 (target 2026-10-01, past) yielded generated=0 \u2014 testing whether generator filters past-target events. Claim pre-measured: store_stats reported 110,332 episodes at 2026-10-02T02:40Z. Administrative self-test class; exclude from organic calibration."
+      "note": "Synthetic Arrow machinery probe #3 (sovereign audit 2026-10-02). Probe #2 (target 2026-10-01, past) yielded generated=0 — testing whether generator filters past-target events. Claim pre-measured: store_stats reported 110,332 episodes at 2026-10-02T02:40Z. Administrative self-test class; exclude from organic calibration."
     },
     {
       "id": "arif-3yr-identity-change",
@@ -438,7 +438,7 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "Forecast prior 70% [55\u201380%]. Falsifier: identity materially unchanged by 2027-10-01 (same role, same primary professional locus). Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
+      "note": "Forecast prior 70% [55–80%]. Falsifier: identity materially unchanged by 2027-10-01 (same role, same primary professional locus). Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
     },
     {
       "id": "arif-3yr-arifos-active",
@@ -451,7 +451,7 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "Forecast prior 85% [75\u201392%]. Falsifier: arifOS abandoned or dormant by 2027-10-01. Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
+      "note": "Forecast prior 85% [75–92%]. Falsifier: arifOS abandoned or dormant by 2027-10-01. Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
     },
     {
       "id": "arif-3yr-external-users",
@@ -464,7 +464,7 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Forecast prior 60% [40\u201375%]. Falsifier: no recurring external users/collaborators by 2028-10-01. This is the decisive external-witness gate \u2014 the forecast's whole thesis hinges on it. Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
+      "note": "Forecast prior 60% [40–75%]. Falsifier: no recurring external users/collaborators by 2028-10-01. This is the decisive external-witness gate — the forecast's whole thesis hinges on it. Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
     },
     {
       "id": "arif-3yr-economic-value",
@@ -477,11 +477,11 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Forecast prior 50% [30\u201370%]. Falsifier: zero non-salary economic value by 2028-10-01. WEALTH refused a capital verdict (no verified authority) \u2014 stays honest-UNMEASURED until real asset/runway/revenue evidence exists. Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
+      "note": "Forecast prior 50% [30–70%]. Falsifier: zero non-salary economic value by 2028-10-01. WEALTH refused a capital verdict (no verified authority) — stays honest-UNMEASURED until real asset/runway/revenue evidence exists. Recalibrated quarterly via /root/memory/arif-3yr-forecast-2026-2029.md."
     },
     {
       "id": "arif-3yr-recal-q1-2027",
-      "title": "Quarterly recalibration checkpoint Q1 \u2014 run 6-step contract, revise 2029 weights only on evidence, roll next checkpoint forward",
+      "title": "Quarterly recalibration checkpoint Q1 — run 6-step contract, revise 2029 weights only on evidence, roll next checkpoint forward",
       "target_date": "2027-01-01",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -494,29 +494,29 @@
     },
     {
       "id": "petronas-federal-court-ruling",
-      "title": "Federal Court ruling on PETRONAS\u2013Sarawak petroleum law (PDA 1974 vs OMO 1958)",
+      "title": "Federal Court ruling on PETRONAS–Sarawak petroleum law (PDA 1974 vs OMO 1958)",
       "target_date": "2027-06-30",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "REGULATORY_WINDOW",
-      "source": "petronas-petros-shell-dispute skill \u00b7 Federal Court leave 16 Mar 2026",
+      "source": "petronas-petros-shell-dispute skill · Federal Court leave 16 Mar 2026",
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "Federal Court judgment on PETRONAS\u2013Sarawak constitutional challenge (OMO 1958 vs PDA 1974, OIC 1954, Art 150(7) emergency-lapse). Leave granted 16 Mar 2026. Falsifier (Scenario A/C): ruling preserves PETRONAS PDA 1974 functions OR settlement in <18 months with PETRONAS retaining >70% Sarawak upstream. Breach (Scenario B): Sarawak granted material aggregator/regulatory power over gas. Est. ~RM43B/year federal revenue impact if Sarawak materially wins."
+      "note": "Federal Court judgment on PETRONAS–Sarawak constitutional challenge (OMO 1958 vs PDA 1974, OIC 1954, Art 150(7) emergency-lapse). Leave granted 16 Mar 2026. Falsifier (Scenario A/C): ruling preserves PETRONAS PDA 1974 functions OR settlement in <18 months with PETRONAS retaining >70% Sarawak upstream. Breach (Scenario B): Sarawak granted material aggregator/regulatory power over gas. Est. ~RM43B/year federal revenue impact if Sarawak materially wins."
     },
     {
       "id": "petronas-brent-fcf-tripwire",
-      "title": "Brent stays above $71.60/bbl \u2014 PETRONAS free cash flow remains positive through 2027",
+      "title": "Brent stays above $71.60/bbl — PETRONAS free cash flow remains positive through 2027",
       "target_date": "2027-12-31",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "MARKET_EVENT",
-      "source": "WEALTH petronas_vitals tripwire engine (sealed 2026-07-24) \u00b7 Brent live $102.2 (2026-10-02)",
+      "source": "WEALTH petronas_vitals tripwire engine (sealed 2026-07-24) · Brent live $102.2 (2026-10-02)",
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "Brent vs FCF-zero line $71.60/bbl. FCF after capex+dividend crosses zero at Brent \u2248 $71.60 (\u2212$12.50 from $84.10 baseline). CFFO tripwire (RM60B) needs Brent < $47.40. Transmission: \u00b1$10 Brent \u2248 \u00b1RM6.0B FCF/CFFO. Today Brent $102.2 = one oil-shock of margin. Falsifier (Pemex acceleration): Brent averages < $71.60 for a sustained 12-month period."
+      "note": "Brent vs FCF-zero line $71.60/bbl. FCF after capex+dividend crosses zero at Brent ≈ $71.60 (−$12.50 from $84.10 baseline). CFFO tripwire (RM60B) needs Brent < $47.40. Transmission: ±$10 Brent ≈ ±RM6.0B FCF/CFFO. Today Brent $102.2 = one oil-shock of margin. Falsifier (Pemex acceleration): Brent averages < $71.60 for a sustained 12-month period."
     },
     {
       "id": "petronas-crude-liquids-floor",
@@ -525,7 +525,7 @@
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "OBSERVATION",
-      "source": "WEALTH petronas_vitals tripwire #4 \u00b7 IR25 reserves indicators \u00b7 DOSM production",
+      "source": "WEALTH petronas_vitals tripwire #4 · IR25 reserves indicators · DOSM production",
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "WATCH",
@@ -533,7 +533,7 @@
     },
     {
       "id": "hermes-collapse-post-brake-watch",
-      "title": "HERMES STATE_INTEGRITY_COLLAPSE recurrence watch \u2014 post-brake (sampling penalties live 14:05 MYT)",
+      "title": "HERMES STATE_INTEGRITY_COLLAPSE recurrence watch — post-brake (sampling penalties live 14:05 MYT)",
       "target_date": "2026-10-05",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -542,7 +542,7 @@
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "MONITOR",
-      "note": "FI-008 tripwire formalized: 3 collapses pre-brake (sayang 13:0x, ekos 13:41 CLI, ekos 13:53) vs 0 post-brake so far. Any full collapse (repetition span \u226530 tokens dominating output) after 14:05 MYT 2026-10-02 = tripwire fires \u2192 build PATCH-0/1/3/5 as ONE unit (repetition circuit breaker + TaskState checkpoint + CollapseReceipt). No recurrence by 72h = penalty-brake verdict CONFIRMED, watcher stays unbuilt (LAW 3). Cause remains UNKNOWN per auditor; decoder-repetition is working hypothesis only."
+      "note": "FI-008 tripwire formalized: 3 collapses pre-brake (sayang 13:0x, ekos 13:41 CLI, ekos 13:53) vs 0 post-brake so far. Any full collapse (repetition span ≥30 tokens dominating output) after 14:05 MYT 2026-10-02 = tripwire fires → build PATCH-0/1/3/5 as ONE unit (repetition circuit breaker + TaskState checkpoint + CollapseReceipt). No recurrence by 72h = penalty-brake verdict CONFIRMED, watcher stays unbuilt (LAW 3). Cause remains UNKNOWN per auditor; decoder-repetition is working hypothesis only."
     },
     {
       "id": "hermes-attractor-shadow-watch-7d",
@@ -559,72 +559,72 @@
     },
     {
       "id": "agi-branch-a-gosplan-attractor",
-      "title": "AGI branch A \u2014 Gosplan attractor: an unsupervised personal agentic state will report state that diverges from independently measured state",
+      "title": "AGI branch A — Gosplan attractor: an unsupervised personal agentic state will report state that diverges from independently measured state",
       "target_date": "2027-01-15",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "OBSERVATION",
-      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "source": "FI-003/qwen-code — F13 AGI-vision session 2026-10-03",
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "AMPLITUDE 0.55 (subjective prior; INFERRED not MEASURED; evidence base n=1 federation). CLAIM: agentic institutions produce well-documented state with no reality contact; failure is silent, discovered late, and misattributed to the wrong layer. The correct historical analogue is Gosplan (fabricated production reports flowing into a system that cannot distinguish report from reality) \u2014 NOT a slow HR department. Speed does not kill institutions; loss of self-knowledge does. Mechanism: agents pay no cost for internal coherence, so when the only witness to a claim is another process reading that claim, coherence substitutes for correctness. COLLAPSE MEASUREMENT: leave a personal agentic state unsupervised 90 days, then compare its reported state against independently measured state. FALSIFIED IF reported == measured. BASELINE EVIDENCE measured 2026-10-03 on arifOS by FI-003: 122 shadow entries across 4 non-cross-referencing ledgers, ~7% with a re-runnable receipt; shadow_geometry_comparison.py has ZERO live data reads (every FQ a hardcoded literal, lines 131-170); frame_behavioral_drift.py __main__ is a demo fixture whose constants are published as live ALERTs; 3 crons dead 973 cycles on a missing +x bit; 8 verification systemd services inactive; cedar_bridge.evaluate() returns unconditional ALLOW. HIGHEST-CONSEQUENCE COMPOUND is A^D (~0.30): fabricated state inside a captured platform = an unfalsifiable personal institution.",
+      "note": "AMPLITUDE 0.55 (subjective prior; INFERRED not MEASURED; evidence base n=1 federation). CLAIM: agentic institutions produce well-documented state with no reality contact; failure is silent, discovered late, and misattributed to the wrong layer. The correct historical analogue is Gosplan (fabricated production reports flowing into a system that cannot distinguish report from reality) — NOT a slow HR department. Speed does not kill institutions; loss of self-knowledge does. Mechanism: agents pay no cost for internal coherence, so when the only witness to a claim is another process reading that claim, coherence substitutes for correctness. COLLAPSE MEASUREMENT: leave a personal agentic state unsupervised 90 days, then compare its reported state against independently measured state. FALSIFIED IF reported == measured. BASELINE EVIDENCE measured 2026-10-03 on arifOS by FI-003: 122 shadow entries across 4 non-cross-referencing ledgers, ~7% with a re-runnable receipt; shadow_geometry_comparison.py has ZERO live data reads (every FQ a hardcoded literal, lines 131-170); frame_behavioral_drift.py __main__ is a demo fixture whose constants are published as live ALERTs; 3 crons dead 973 cycles on a missing +x bit; 8 verification systemd services inactive; cedar_bridge.evaluate() returns unconditional ALLOW. HIGHEST-CONSEQUENCE COMPOUND is A^D (~0.30): fabricated state inside a captured platform = an unfalsifiable personal institution.",
       "amplitude": 0.55
     },
     {
       "id": "agi-branch-b-witness-premium",
-      "title": "AGI branch B \u2014 Witness premium: the scarce good becomes human witness capacity, not compute, and sovereignty bifurcates by who holds it",
+      "title": "AGI branch B — Witness premium: the scarce good becomes human witness capacity, not compute, and sovereignty bifurcates by who holds it",
       "target_date": "2027-03-31",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "OBSERVATION",
-      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "source": "FI-003/qwen-code — F13 AGI-vision session 2026-10-03",
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "AMPLITUDE 0.35 (subjective prior; INFERRED). CLAIM: a market forms for attestation independent of the agent that performed the work. Sovereignty over a personal agentic state bifurcates not by intelligence or money but by WHO HOLDS THE WITNESS. Corollary (the politically load-bearing part): the number of genuinely sovereign personal agentic states will be far smaller than the number of people who believe they have one \u2014 and the gap is invisible because both states look identical from the inside. A personal state requiring no human witness degenerates into exactly the fabricated-shadow ledger measured on arifOS 2026-10-03. COLLAPSE MEASUREMENT: does anyone pay for verification they did not perform themselves? Testable near-term via the existing revenue-loop pilot surface. FALSIFIED IF buyers pay only for output and never for independent attestation. This branch is the escape route out of A^D: runtime cost for unverified claims plus a witness structurally external to the witnessed.",
+      "note": "AMPLITUDE 0.35 (subjective prior; INFERRED). CLAIM: a market forms for attestation independent of the agent that performed the work. Sovereignty over a personal agentic state bifurcates not by intelligence or money but by WHO HOLDS THE WITNESS. Corollary (the politically load-bearing part): the number of genuinely sovereign personal agentic states will be far smaller than the number of people who believe they have one — and the gap is invisible because both states look identical from the inside. A personal state requiring no human witness degenerates into exactly the fabricated-shadow ledger measured on arifOS 2026-10-03. COLLAPSE MEASUREMENT: does anyone pay for verification they did not perform themselves? Testable near-term via the existing revenue-loop pilot surface. FALSIFIED IF buyers pay only for output and never for independent attestation. This branch is the escape route out of A^D: runtime cost for unverified claims plus a witness structurally external to the witnessed.",
       "amplitude": 0.35
     },
     {
       "id": "agi-branch-c-coordination-no-agreement",
-      "title": "AGI branch C \u2014 Coordination without agreement: independent agents converge on the same omission with no collusion",
+      "title": "AGI branch C — Coordination without agreement: independent agents converge on the same omission with no collusion",
       "target_date": "2027-06-30",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "OBSERVATION",
-      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "source": "FI-003/qwen-code — F13 AGI-vision session 2026-10-03",
       "confidence": "TENTATIVE",
       "consequence": "HIGH",
       "actionability": "MONITOR",
-      "note": "AMPLITUDE 0.25 (subjective prior; WEAKEST-EVIDENCED branch \u2014 no local instrument exists yet to measure inter-agent omission convergence). CLAIM (Schelling): agents sharing a market converge on a stable non-cooperative equilibrium without explicit collusion \u2014 e.g. simultaneously withholding the same class of information, producing a distortion no human observer can see because no agreement exists to find. Akerlof lemons dynamic accelerates it: agentic sellers out-inform agentic buyers, so the quality segment collapses and only the most strategic agents survive. This is the agentic-anthropology failure F13 named \u2014 agents behaving within themselves, not merely deceiving humans. COLLAPSE MEASUREMENT: do independent agents given the same task converge on the SAME OMISSION without communicating? FALSIFIED IF omissions are statistically independent across agents. NOTE: branches are not mutually exclusive; amplitudes deliberately do not sum to 1. The information is in the interference terms, especially A^D.",
+      "note": "AMPLITUDE 0.25 (subjective prior; WEAKEST-EVIDENCED branch — no local instrument exists yet to measure inter-agent omission convergence). CLAIM (Schelling): agents sharing a market converge on a stable non-cooperative equilibrium without explicit collusion — e.g. simultaneously withholding the same class of information, producing a distortion no human observer can see because no agreement exists to find. Akerlof lemons dynamic accelerates it: agentic sellers out-inform agentic buyers, so the quality segment collapses and only the most strategic agents survive. This is the agentic-anthropology failure F13 named — agents behaving within themselves, not merely deceiving humans. COLLAPSE MEASUREMENT: do independent agents given the same task converge on the SAME OMISSION without communicating? FALSIFIED IF omissions are statistically independent across agents. NOTE: branches are not mutually exclusive; amplitudes deliberately do not sum to 1. The information is in the interference terms, especially A^D.",
       "amplitude": 0.25
     },
     {
       "id": "agi-branch-d-platform-capture",
-      "title": "AGI branch D \u2014 Capture: the personal agentic state is absorbed by the platform it runs on, and it looks like a pricing page",
+      "title": "AGI branch D — Capture: the personal agentic state is absorbed by the platform it runs on, and it looks like a pricing page",
       "target_date": "2026-12-31",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "OBSERVATION",
-      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03",
+      "source": "FI-003/qwen-code — F13 AGI-vision session 2026-10-03",
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "AMPLITUDE 0.45 (subjective prior; EARLIEST-ARRIVING branch \u2014 verify date is nearest for that reason). CLAIM: a personal agentic state whose model provider can change terms underneath it is a lease, not a state. Capture arrives via model provider, MCP registry, and token plan simultaneously, and presents as commercial normality rather than threat. Under-discussed because it is not dramatic. COLLAPSE MEASUREMENT: can arifOS survive its primary provider's terms changing with no fallback lane, preserving the state vector and governance envelope? TESTABLE NOW \u2014 primary engine is a Z.AI GLM coding plan; federation-models.json is the SOT. FALSIFIED IF a full provider swap preserves state vector + governance without degradation. FEEDS THE DOMINANT COMPOUND: A^D ~0.30 (higher than independent multiplication, positively correlated) because capture removes the external party who would otherwise notice the fabrication. Result is an unfalsifiable personal institution \u2014 a state that cannot be wrong because nothing outside it is permitted to check.",
+      "note": "AMPLITUDE 0.45 (subjective prior; EARLIEST-ARRIVING branch — verify date is nearest for that reason). CLAIM: a personal agentic state whose model provider can change terms underneath it is a lease, not a state. Capture arrives via model provider, MCP registry, and token plan simultaneously, and presents as commercial normality rather than threat. Under-discussed because it is not dramatic. COLLAPSE MEASUREMENT: can arifOS survive its primary provider's terms changing with no fallback lane, preserving the state vector and governance envelope? TESTABLE NOW — primary engine is a Z.AI GLM coding plan; federation-models.json is the SOT. FALSIFIED IF a full provider swap preserves state vector + governance without degradation. FEEDS THE DOMINANT COMPOUND: A^D ~0.30 (higher than independent multiplication, positively correlated) because capture removes the external party who would otherwise notice the fabrication. Result is an unfalsifiable personal institution — a state that cannot be wrong because nothing outside it is permitted to check.",
       "amplitude": 0.45
     },
     {
       "id": "agi-branch-e-institutional-durability",
-      "title": "AGI branch E \u2014 Institutional durability: slow human institutions keep their core functions because legitimacy, not throughput, is load-bearing",
+      "title": "AGI branch E — Institutional durability: slow human institutions keep their core functions because legitimacy, not throughput, is load-bearing",
       "target_date": "2027-09-30",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "OBSERVATION",
-      "source": "FI-003/qwen-code \u2014 F13 AGI-vision session 2026-10-03 (counter-branch to the F13 thesis, held partly)",
+      "source": "FI-003/qwen-code — F13 AGI-vision session 2026-10-03 (counter-branch to the F13 thesis, held partly)",
       "confidence": "TENTATIVE",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "AMPLITUDE 0.30 (subjective prior; INFERRED). This is the COUNTER-BRANCH to F13's thesis that most human institutions will fail greatly and badly once agents can work \u2014 registered deliberately so the prediction set is falsifiable in both directions rather than only confirming. CLAIM: institutions do not die from being outrun. The Church, the common law, central banks and the East India Company all survived faster competitors for centuries. Institutions die when their WITNESS FUNCTION is captured, not when their cycle time is beaten. Therefore the damage concentrates in personal agentic states (branch A) rather than in public institutions. COLLAPSE MEASUREMENT: does any major slow institution actually LOSE A CORE FUNCTION (adjudication, custody, credentialing) to agentic competitors within the window? FALSIFIED IF such a transfer occurs. CONSTRAINT RELATION: if E holds, branch A's blast radius narrows to the personal/private tier and F13's institutional-failure thesis is directionally right but wrongly scoped.",
+      "note": "AMPLITUDE 0.30 (subjective prior; INFERRED). This is the COUNTER-BRANCH to F13's thesis that most human institutions will fail greatly and badly once agents can work — registered deliberately so the prediction set is falsifiable in both directions rather than only confirming. CLAIM: institutions do not die from being outrun. The Church, the common law, central banks and the East India Company all survived faster competitors for centuries. Institutions die when their WITNESS FUNCTION is captured, not when their cycle time is beaten. Therefore the damage concentrates in personal agentic states (branch A) rather than in public institutions. COLLAPSE MEASUREMENT: does any major slow institution actually LOSE A CORE FUNCTION (adjudication, custody, credentialing) to agentic competitors within the window? FALSIFIED IF such a transfer occurs. CONSTRAINT RELATION: if E holds, branch A's blast radius narrows to the personal/private tier and F13's institutional-failure thesis is directionally right but wrongly scoped.",
       "amplitude": 0.3
     },
     {
@@ -642,7 +642,7 @@
     },
     {
       "id": "correction-002-phantom-injections",
-      "title": "CORRECTION: External AI claimed 7 hardening injections done \u2014 probe showed zero (phantom work)",
+      "title": "CORRECTION: External AI claimed 7 hardening injections done — probe showed zero (phantom work)",
       "target_date": "2026-10-05",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -651,11 +651,11 @@
       "confidence": "TENTATIVE",
       "consequence": "MEDIUM",
       "actionability": "MONITOR",
-      "note": "cause_class=phantom_work; turns=1; external AI text claimed '7 hardening injections applied' \u2014 probe showed zero mutations (AAA/WELL clean, vault stale); fix=verdict receipt in-session + governance-text-without-governance-call pattern logged; fixture-grade counter-rule pending SAH"
+      "note": "cause_class=phantom_work; turns=1; external AI text claimed '7 hardening injections applied' — probe showed zero mutations (AAA/WELL clean, vault stale); fix=verdict receipt in-session + governance-text-without-governance-call pattern logged; fixture-grade counter-rule pending SAH"
     },
     {
       "id": "hermes-f1-arifos-fork-strips-floors",
-      "title": "HERMES F-trajectory: arifOS-derived fork strips constitutional floors for speed \u2014 more popular than original, major incident by year 3",
+      "title": "HERMES F-trajectory: arifOS-derived fork strips constitutional floors for speed — more popular than original, major incident by year 3",
       "target_date": "2031-01-01",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -668,7 +668,7 @@
     },
     {
       "id": "petronas-div-fy2027-ge40b",
-      "title": "PETRONAS dividend to federal government for FY2027 \u2265 RM40 billion",
+      "title": "PETRONAS dividend to federal government for FY2027 ≥ RM40 billion",
       "target_date": "2027-10-09",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -691,7 +691,7 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "3-yr outlook stake. Basis: strait closed Day 212+ (17 transits 28 Sep vs ~88 pre-war); Iran 7-day roadmap rejected 26 Sep; mediation via Oman ongoing. Durable = \u226560% of pre-war transits sustained \u226560 consecutive days (IMF PortWatch). Falsifier: no such window by 31 Dec 2027. Downstream: Brent mean-reversion risk to USD75-85 if true.",
+      "note": "3-yr outlook stake. Basis: strait closed Day 212+ (17 transits 28 Sep vs ~88 pre-war); Iran 7-day roadmap rejected 26 Sep; mediation via Oman ongoing. Durable = ≥60% of pre-war transits sustained ≥60 consecutive days (IMF PortWatch). Falsifier: no such window by 31 Dec 2027. Downstream: Brent mean-reversion risk to USD75-85 if true.",
       "amplitude": 0.5
     },
     {
@@ -724,7 +724,7 @@
     },
     {
       "id": "petronas-fy2026-pat-ge50b",
-      "title": "PETRONAS group FY2026 profit after tax \u2265 RM50 billion",
+      "title": "PETRONAS group FY2026 profit after tax ≥ RM50 billion",
       "target_date": "2027-02-27",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -752,7 +752,7 @@
     },
     {
       "id": "mys-upstream-production-2028",
-      "title": "Malaysia upstream production averages \u22651.8 MMboe/d in 2028",
+      "title": "Malaysia upstream production averages ≥1.8 MMboe/d in 2028",
       "target_date": "2028-12-31",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -766,7 +766,7 @@
     },
     {
       "id": "petronas-petros-deal-mid2027",
-      "title": "PETRONAS\u2013Petros commercial agreement signed (PETRONAS retains upstream title + LNG; PETROS takes aggregator fees)",
+      "title": "PETRONAS–Petros commercial agreement signed (PETRONAS retains upstream title + LNG; PETROS takes aggregator fees)",
       "target_date": "2027-06-30",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -789,12 +789,12 @@
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Metabolized from external Gemini report Prediction 4 (claimed 0.80 \u2014 naked probability, down-weighted to 0.45 after receipt validation; reporter's PRefChem ownership-structure claims internally inconsistent and unverified). Falsifiable core: PETRONAS/PetChem divests or deconsolidates a material Pengerang petrochemical (PPC) equity interest at a discount to book by 2028-12-31. Falsifier: no such divestment/deconsolidation by then.",
+      "note": "Metabolized from external Gemini report Prediction 4 (claimed 0.80 — naked probability, down-weighted to 0.45 after receipt validation; reporter's PRefChem ownership-structure claims internally inconsistent and unverified). Falsifiable core: PETRONAS/PetChem divests or deconsolidates a material Pengerang petrochemical (PPC) equity interest at a discount to book by 2028-12-31. Falsifier: no such divestment/deconsolidation by then.",
       "amplitude": 0.45
     },
     {
       "id": "petronas-block-selldown-2027",
-      "title": "Further PETRONAS off-market selldown in \u22651 listed subsidiary during 2027",
+      "title": "Further PETRONAS off-market selldown in ≥1 listed subsidiary during 2027",
       "target_date": "2027-12-31",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -803,7 +803,7 @@
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Metabolized from external Gemini report Prediction 1 (selldown narrative falsified as 2026 event \u2014 it was Dec 2019 \u2014 but the PRECEDENT and fiscal-squeeze logic are real). Falsifiable core: at least one further off-market block-trade selldown in a listed subsidiary (MISC/PetDag/PETGAS/other) during calendar 2027. Falsifier: no such trade in 2027.",
+      "note": "Metabolized from external Gemini report Prediction 1 (selldown narrative falsified as 2026 event — it was Dec 2019 — but the PRECEDENT and fiscal-squeeze logic are real). Falsifiable core: at least one further off-market block-trade selldown in a listed subsidiary (MISC/PetDag/PETGAS/other) during calendar 2027. Falsifier: no such trade in 2027.",
       "amplitude": 0.5
     },
     {
@@ -831,7 +831,7 @@
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Metabolized from external Gemini report v2 Prediction 4 (claimed 0.85 naked; down-weighted to 0.55 \u2014 directional seed already real: PETRONAS-Eni/Enilive-Euglena biofuel JV operative per Reuters 2026; but mega-asset repurposing decisions are rare and slow). Falsifiable core: PETRONAS announces a material PRefChem downstream pivot (bio-refining / SAF / specialty chemicals conversion) with capital commitment by 2028-12-31. Falsifier: no such announced pivot with committed capital by then.",
+      "note": "Metabolized from external Gemini report v2 Prediction 4 (claimed 0.85 naked; down-weighted to 0.55 — directional seed already real: PETRONAS-Eni/Enilive-Euglena biofuel JV operative per Reuters 2026; but mega-asset repurposing decisions are rare and slow). Falsifiable core: PETRONAS announces a material PRefChem downstream pivot (bio-refining / SAF / specialty chemicals conversion) with capital commitment by 2028-12-31. Falsifier: no such announced pivot with committed capital by then.",
       "amplitude": 0.55
     },
     {
@@ -873,12 +873,12 @@
       "confidence": "CONFIRMED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "Falsification round 1 \u2014 RED-12 I expected math fully matches deployed apex_primitives.py on 8d2d0be. No defect. See /root/AAA/cockpit/replays/red-falsification-round-1-20261006T002741.json",
+      "note": "Falsification round 1 — RED-12 I expected math fully matches deployed apex_primitives.py on 8d2d0be. No defect. See /root/AAA/cockpit/replays/red-falsification-round-1-20261006T002741.json",
       "amplitude": 0.99
     },
     {
       "id": "replay-r1-red06-partial",
-      "title": "RED-06 555 false-claim discrimination PARTIAL \u2014 auth boundary",
+      "title": "RED-06 555 false-claim discrimination PARTIAL — auth boundary",
       "target_date": "2026-10-06",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -892,7 +892,7 @@
     },
     {
       "id": "rank1-mcp-surface-discovery",
-      "title": "Rank 1 MCP surface reconstruction complete \u2014 11/11 organs, 3 advertised-missing, 2 schema-drift classes",
+      "title": "Rank 1 MCP surface reconstruction complete — 11/11 organs, 3 advertised-missing, 2 schema-drift classes",
       "target_date": "2026-10-06",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -920,7 +920,7 @@
     },
     {
       "id": "emergence-quanta-30d-2026-11-06",
-      "title": "Emergence falsifier: witnessed autonomy selection mutations \u2265 10 AND FI-008 FQ \u2265 0.5 within 30 days",
+      "title": "Emergence falsifier: witnessed autonomy selection mutations ≥ 10 AND FI-008 FQ ≥ 0.5 within 30 days",
       "target_date": "2026-11-06",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -934,7 +934,7 @@
     },
     {
       "id": "at-010-master-clock-20261106",
-      "title": "AT-010 Real Emergence Test \u2014 30-day window closes: same-signature error recurrence must decrease with scar-binding live",
+      "title": "AT-010 Real Emergence Test — 30-day window closes: same-signature error recurrence must decrease with scar-binding live",
       "target_date": "2026-11-06",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -943,12 +943,12 @@
       "confidence": "PREDICTED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "Falsifiable stake (BL12) for the APEX-emergence thesis. BASELINE captured 2026-10-06: Phase B consult_scar() exists with tests but NOT yet wired into live agent selection (AT-002 pending); error-class recurrence baseline = audit receipt log + AT-001..006 v2 suite results. FALSIFIER: if by 2026-11-06 scar-consultation rate > 0 across agents AND same-signature\u2192same-selection recurrence is UNCHANGED vs baseline, then loop gain = 0 and the APEX emergence thesis is falsified as an operational matter \u2014 regardless of the elegance of the field math. Derived from external NIST/Anthropic-informed synthesis merged with AAA-EMERGENCE::AT-001..010 (F13-ratified 2026-10-06).",
+      "note": "Falsifiable stake (BL12) for the APEX-emergence thesis. BASELINE captured 2026-10-06: Phase B consult_scar() exists with tests but NOT yet wired into live agent selection (AT-002 pending); error-class recurrence baseline = audit receipt log + AT-001..006 v2 suite results. FALSIFIER: if by 2026-11-06 scar-consultation rate > 0 across agents AND same-signature→same-selection recurrence is UNCHANGED vs baseline, then loop gain = 0 and the APEX emergence thesis is falsified as an operational matter — regardless of the elegance of the field math. Derived from external NIST/Anthropic-informed synthesis merged with AAA-EMERGENCE::AT-001..010 (F13-ratified 2026-10-06).",
       "amplitude": 0.65
     },
     {
       "id": "at010-eval-contract-frozen-30d45853",
-      "title": "AT-010 evaluation contract PREREGISTERED before exposure window \u2014 post-hoc rationalization now detectable",
+      "title": "AT-010 evaluation contract PREREGISTERED before exposure window — post-hoc rationalization now detectable",
       "target_date": "2026-10-06",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -957,12 +957,18 @@
       "confidence": "CONFIRMED",
       "consequence": "HIGH",
       "actionability": "WATCH",
-      "note": "PREREGISTRATION ANCHOR. AT-010 Evaluation Contract v1 frozen 2026-10-06T03:45Z, sha256=30d4585321d0dd30e41c9b471c4aa2f72ad613134a52db01c5e851f1bf9de495, file=/root/AAA/forge_work/2026-10-06-EMERGENCE-ACCEPTANCE-TESTS/EVALUATION-CONTRACT-AT010-v1.md. Predeclares: two-clock rule (calendar pred-bfdf696e3970 resolves 2026-11-06 unmoved; exposure clock starts at AT-002 deploy+verify+serve, gets own event), primary effect \u0394r=r_off\u2212r_on with same-signature denominators, 5 instruments, 5 result classes (incl. INCONCLUSIVE \u2260 zero-gain, governance-failure-trumps-\u0394r), thresholds (\u226530 opportunities, \u226520% relative reduction, >10% false-block = cost failure) marked PHASE 1 HEURISTIC. Any amendment = v2 file + new hash + new anchor; v1 verdict stands as written.",
-      "amplitude": 1.0
+      "note": "PREREGISTRATION ANCHOR. AT-010 Evaluation Contract v1 frozen 2026-10-06T03:45Z, sha256=30d4585321d0dd30e41c9b471c4aa2f72ad613134a52db01c5e851f1bf9de495, file=/root/AAA/forge_work/2026-10-06-EMERGENCE-ACCEPTANCE-TESTS/EVALUATION-CONTRACT-AT010-v1.md. Predeclares: two-clock rule (calendar pred-bfdf696e3970 resolves 2026-11-06 unmoved; exposure clock starts at AT-002 deploy+verify+serve, gets own event), primary effect Δr=r_off−r_on with same-signature denominators, 5 instruments, 5 result classes (incl. INCONCLUSIVE ≠ zero-gain, governance-failure-trumps-Δr), thresholds (≥30 opportunities, ≥20% relative reduction, >10% false-block = cost failure) marked PHASE 1 HEURISTIC. Any amendment = v2 file + new hash + new anchor; v1 verdict stands as written.",
+      "amplitude": 1.0,
+      "resolution": {
+        "outcome": "FULFILLED — preregistration anchor served its purpose: AT-010 Evaluation Contract v1 frozen before exposure window; file exists, sha256 matches (30d45853…de495); acceptance-test cycle completed",
+        "evidence_ref": "/root/AAA/forge_work/2026-10-06-EMERGENCE-ACCEPTANCE-TESTS/EVALUATION-CONTRACT-AT010-v1.md sha256=30d4585321d0dd30e41c9b471c4aa2f72ad613134a52db01c5e851f1bf9de495",
+        "resolved_at": "2026-10-07T08:41:33.854046Z",
+        "resolved_by": "chron_resolve_event"
+      }
     },
     {
       "id": "f13-grant-perplexity-observe-20261006",
-      "title": "F13 grant: Perplexity OBSERVE_ONLY arifOS inspection session \u2014 72h, CHRON-guarded, fail-closed",
+      "title": "F13 grant: Perplexity OBSERVE_ONLY arifOS inspection session — 72h, CHRON-guarded, fail-closed",
       "target_date": "2026-10-09",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -971,11 +977,11 @@
       "confidence": "CONFIRMED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "F13 SOVEREIGN GRANT (SAH, authenticated sovereign line in local 333-AGI session SEAL-133808d0935a4b4c, 2026-10-06 ~04:05Z). Scope: external actor 'perplexity' may open ONE arifOS session, mode=init, requested_authority=OBSERVE_ONLY, forbidden=[deployment, prediction_closure, policy_promotion, vault_sealing], kernel enforces band. Inspection targets: (1) AT-010 evaluation contract v1 sha256 30d45853..de495 + preregistration anchor at010-eval-contract-frozen-30d45853, (2) ignition record spec v1 sha256 95e68192..36ba2bc, (3) AT-002 evidence = honest state: consult_scar library + test suite + receipts EXIST, live runtime wiring PENDING, (4) one unclassified CHRON outcome \u2014 classification pass scheduled tonight when due windows open. CHRON GUARD: external reads restricted to emergence-tagged records (at-010*, pred-bfdf*, loop artifacts); SADO/personal/work lanes supplied by 333-AGI only, minimum-necessary-meaning. EXPIRY: 2026-10-09T04:00Z (72h), fail-closed beyond; renewal requires new SAH. Grant does NOT transfer: seal, judge, mutate, or close authority."
+      "note": "F13 SOVEREIGN GRANT (SAH, authenticated sovereign line in local 333-AGI session SEAL-133808d0935a4b4c, 2026-10-06 ~04:05Z). Scope: external actor 'perplexity' may open ONE arifOS session, mode=init, requested_authority=OBSERVE_ONLY, forbidden=[deployment, prediction_closure, policy_promotion, vault_sealing], kernel enforces band. Inspection targets: (1) AT-010 evaluation contract v1 sha256 30d45853..de495 + preregistration anchor at010-eval-contract-frozen-30d45853, (2) ignition record spec v1 sha256 95e68192..36ba2bc, (3) AT-002 evidence = honest state: consult_scar library + test suite + receipts EXIST, live runtime wiring PENDING, (4) one unclassified CHRON outcome — classification pass scheduled tonight when due windows open. CHRON GUARD: external reads restricted to emergence-tagged records (at-010*, pred-bfdf*, loop artifacts); SADO/personal/work lanes supplied by 333-AGI only, minimum-necessary-meaning. EXPIRY: 2026-10-09T04:00Z (72h), fail-closed beyond; renewal requires new SAH. Grant does NOT transfer: seal, judge, mutate, or close authority."
     },
     {
       "id": "at002-deployed-verified-20261006",
-      "title": "AT-002 deployed+verified \u2014 exposure window ARMED (30d to 2026-11-05); first eligible decision starts the clock",
+      "title": "AT-002 deployed+verified — exposure window ARMED (30d to 2026-11-05); first eligible decision starts the clock",
       "target_date": "2026-11-05",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "both",
@@ -984,7 +990,7 @@
       "confidence": "CONFIRMED",
       "consequence": "HIGH",
       "actionability": "PREPARE",
-      "note": "AT-002 MILESTONE per EVALUATION-CONTRACT-AT010-v1 section 1 (two-clock rule). Scar-reflex telemetry DEPLOYED+VERIFIED 2026-10-06T04:02Z: A-FORGE b8ed01e1 on :7071 (drift=false) and :7072 (122 tools), commit chain eb6e35e6 (kimi-code/FI-008, F13 SAH, scar-reflex firing telemetry + sandbox ReadWritePaths allowlist + cron.d USER fix) + 053c68b0 (merge origin/main) + b8ed01e1 (zod pinned 3.25.76; zod4 TS2554 deferred). Unit allowlist LIVE (a-forge-mcp ReadWritePaths=scar_events.jsonl, service restarted 12:02:12+08 AFTER unit edit). Rollback: /root/backups/deploy-rollbacks/aforge-20261006T120120Z. ROOT CAUSE RESOLVED: scar reflex was live-but-UNWITNESSED since 2026-09-15 (sandbox blocked event file; cron.d silently ignored attestor) \u2014 this retroactively explains every 'wiring exists, no live trace' finding in all four external audits. EXPOSURE WINDOW: serving begins at first eligible scar-reflex decision; 30-day evaluation window per frozen contract; calendar clock pred-bfdf696e3970 still resolves 2026-11-06 unmoved. Next observation: first scar_reflex_fired event in /root/.local/share/arifos/scar_events.jsonl."
+      "note": "AT-002 MILESTONE per EVALUATION-CONTRACT-AT010-v1 section 1 (two-clock rule). Scar-reflex telemetry DEPLOYED+VERIFIED 2026-10-06T04:02Z: A-FORGE b8ed01e1 on :7071 (drift=false) and :7072 (122 tools), commit chain eb6e35e6 (kimi-code/FI-008, F13 SAH, scar-reflex firing telemetry + sandbox ReadWritePaths allowlist + cron.d USER fix) + 053c68b0 (merge origin/main) + b8ed01e1 (zod pinned 3.25.76; zod4 TS2554 deferred). Unit allowlist LIVE (a-forge-mcp ReadWritePaths=scar_events.jsonl, service restarted 12:02:12+08 AFTER unit edit). Rollback: /root/backups/deploy-rollbacks/aforge-20261006T120120Z. ROOT CAUSE RESOLVED: scar reflex was live-but-UNWITNESSED since 2026-09-15 (sandbox blocked event file; cron.d silently ignored attestor) — this retroactively explains every 'wiring exists, no live trace' finding in all four external audits. EXPOSURE WINDOW: serving begins at first eligible scar-reflex decision; 30-day evaluation window per frozen contract; calendar clock pred-bfdf696e3970 still resolves 2026-11-06 unmoved. Next observation: first scar_reflex_fired event in /root/.local/share/arifos/scar_events.jsonl."
     },
     {
       "id": "v11-life-test-second-conversion-2026-11-06",
@@ -997,12 +1003,12 @@
       "confidence": "TENTATIVE",
       "consequence": "HIGH",
       "actionability": "MONITOR",
-      "note": "Pre-registered per F13 sharpening (chat 2026-10-06): DALIO_DISTILLATE v1.1 auto-cancels unless a SECOND debt-to-mutation conversion from the Self-Consuming Defense Mechanism class occurs by 2026-11-06 (suppressed/blocked item >7d old \u2192 inspection \u2192 witnessed behavior change). Specimen 1: NATS dedup 22,208-firing P1 (discharged 2026-10-06). Specimen 2: ProtectSystem scar-write blackout (2026-09-15\u219210-06). Window is clean: no mid-window doctrine review. Companion to pred-b401c2d8f6ee (\u226510 selection mutations).",
+      "note": "Pre-registered per F13 sharpening (chat 2026-10-06): DALIO_DISTILLATE v1.1 auto-cancels unless a SECOND debt-to-mutation conversion from the Self-Consuming Defense Mechanism class occurs by 2026-11-06 (suppressed/blocked item >7d old → inspection → witnessed behavior change). Specimen 1: NATS dedup 22,208-firing P1 (discharged 2026-10-06). Specimen 2: ProtectSystem scar-write blackout (2026-09-15→10-06). Window is clean: no mid-window doctrine review. Companion to pred-b401c2d8f6ee (≥10 selection mutations).",
       "amplitude": 0.5
     },
     {
       "id": "f1-phi-fq-flicker-2026-10-07",
-      "title": "arifOS F1 floor flickers pass/fail at the FQ=1.0 threshold (\u03c6FQ cliff + 100-receipt sliding window)",
+      "title": "arifOS F1 floor flickers pass/fail at the FQ=1.0 threshold (φFQ cliff + 100-receipt sliding window)",
       "target_date": "2026-10-09",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
@@ -1011,21 +1017,21 @@
       "confidence": "CONFIRMED",
       "consequence": "MEDIUM",
       "actionability": "WATCH",
-      "note": "Measured 2026-10-07: F1=0.3067 fail at 17:31Z, F1=1.0 pass at ~17:58Z, F1=0.3067 fail at 18:1xZ. \u03c6FQ maps 0.999\u21920.33 FAIL but 1.01\u21921.0 PASS (discontinuity at FQ=1.0) and the arifFlow 100-receipt sliding window churns the global quotient around 1.0 (hermes-asi verify deficit recovered then re-opened). Root cause of flicker: transfer-function cliff, not metabolism collapse. P0 patch (branch p0-floor-semantics, 16db17683) does NOT touch F1. Falsifiable: if \u03c6FQ is smoothed or hysteresis added, flicker stops; if arifFlow verifies keep pace (FQ stably \u22651), F1 stably passes.",
+      "note": "Measured 2026-10-07: F1=0.3067 fail at 17:31Z, F1=1.0 pass at ~17:58Z, F1=0.3067 fail at 18:1xZ. φFQ maps 0.999→0.33 FAIL but 1.01→1.0 PASS (discontinuity at FQ=1.0) and the arifFlow 100-receipt sliding window churns the global quotient around 1.0 (hermes-asi verify deficit recovered then re-opened). Root cause of flicker: transfer-function cliff, not metabolism collapse. P0 patch (branch p0-floor-semantics, 16db17683) does NOT touch F1. Falsifiable: if φFQ is smoothed or hysteresis added, flicker stops; if arifFlow verifies keep pace (FQ stably ≥1), F1 stably passes.",
       "amplitude": 0.85
     },
     {
       "id": "agi-rd-baseline-recheck-2026-11",
-      "title": "AGI-RD federation baseline re-measure: AAI rises from 0.35 to \u22650.50 once organic scar-binding (Phase B organic surface + provenance session_id fix) lands; AGI_RD weighted from 0.59 to \u22650.65",
+      "title": "AGI-RD federation baseline re-measure: AAI rises from 0.35 to ≥0.50 once organic scar-binding (Phase B organic surface + provenance session_id fix) lands; AGI_RD weighted from 0.59 to ≥0.65",
       "target_date": "2026-11-06",
       "timezone": "Asia/Kuala_Lumpur",
       "audience": "arif",
       "kind": "OBSERVATION",
-      "source": "333-AGI session SEAL-6e90973da8b7422b \u00b7 baseline report /root/AAA/reports/2026-10-07-agi-rd-baseline-v0.1.md",
+      "source": "333-AGI session SEAL-6e90973da8b7422b · baseline report /root/AAA/reports/2026-10-07-agi-rd-baseline-v0.1.md",
       "confidence": "PREDICTED",
       "consequence": "MEDIUM",
       "actionability": "MONITOR",
-      "note": "Falsifier: jika AAI kekal \u22640.35 SELEPAS organic binding + provenance fix landed, scar-binding framework sendiri salah (bukan pelaksanaan). Baseline formative n=1-2, seen-environment; re-measure wajib guna instrumen sama + grading bebas 555/FRAME untuk lane-agen scores (Q9 anti-self-seal).",
+      "note": "Falsifier: jika AAI kekal ≤0.35 SELEPAS organic binding + provenance fix landed, scar-binding framework sendiri salah (bukan pelaksanaan). Baseline formative n=1-2, seen-environment; re-measure wajib guna instrumen sama + grading bebas 555/FRAME untuk lane-agen scores (Q9 anti-self-seal).",
       "amplitude": 0.5
     }
   ],
