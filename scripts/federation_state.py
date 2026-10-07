@@ -147,9 +147,9 @@ def probe_flow_health() -> dict:
     stuck_actors = [aid for aid, a in per_actor.items() if a["verdict"] == "STUCK"]
 
     return {
-        "verdict": fq.get("verdict", "UNKNOWN"),
+        "verdict": fq.get("verdict") or fq.get("legacy_verdict") or "UNKNOWN",
         "quotient": fq.get("quotient"),
-        "diagnosis": fq.get("diagnosis", ""),
+        "diagnosis": fq.get("diagnosis") or fq.get("legacy_diagnosis") or "",
         "execute_count": fq.get("execute_count", 0),
         "verify_count": fq.get("verify_count", 0),
         "held_count": held_count,
@@ -374,9 +374,9 @@ def federation_state() -> dict:
             "organs": organ_detail,
         },
         "metabolism": {
-            "verdict": fq.get("verdict", "UNKNOWN"),
+            "verdict": fq.get("verdict") or fq.get("legacy_verdict") or "UNKNOWN",
             "quotient": fq.get("quotient"),
-            "diagnosis": fq.get("diagnosis", ""),
+            "diagnosis": fq.get("diagnosis") or fq.get("legacy_diagnosis") or "",
             "execute_count": fq.get("execute_count", 0),
             "verify_count": fq.get("verify_count", 0),
             "held_count": fq.get("held_count", 0),
