@@ -3,7 +3,7 @@ spec_id: REALITY-CLOSURE-PROTOCOL
 version: v0.1-DRAFT
 date: 2026-10-07
 author: 333-AGI (opencode), F13 directive "finish off all remaining tasks"
-status: DRAFT — awaiting F13 binary (loop #1 + loop #5 consolidated)
+status: RATIFIED_IMPLEMENTED — F13 "aku sahkan semuanya" 2026-10-07; chron_resolve_event implemented + at010 discharged (AD 4.09→0)
 origin: at010-eval-contract-frozen AD=3.99 structural debt (Hermes session 2026-10-07) + E-28092026 falsifier §4 methodology corrections
 ---
 

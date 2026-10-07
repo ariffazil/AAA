@@ -207,9 +207,9 @@ Each phase requires one imperative change:
 
 ---
 
-## 7 · Test-time scar consultation (DRAFT, pending F13 SAH)
+## 7 · Test-time scar consultation (F13_RATIFIED, 2026-10-07)
 
-**Status:** DRAFT (pending F13 SAH) · 2026-10-07 · codifying MemoHarness Phase B test-time adaptation rule into arifOS scar doctrine.
+**Status:** F13_RATIFIED_CANON · 2026-10-07 · codifying MemoHarness Phase B test-time adaptation rule into arifOS scar doctrine. SAH ALL THREE.
 
 ### 7.1 The rule (axiom)
 
