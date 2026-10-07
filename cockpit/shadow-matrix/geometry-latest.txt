@@ -1,24 +1,24 @@
 # Federation Agent Shadow Geometry Report
-# Generated: 2026-10-05T16:00:03Z by shadow_geometry_comparison.py
+# Generated: 2026-10-07T04:00:04Z by shadow_geometry_comparison.py
 
 ## Provenance
 - FQ source: http://127.0.0.1:7073/health
-- FQ snapshot: 2026-10-05T16:00:03Z
+- FQ snapshot: 2026-10-07T04:00:04Z
 - FQ status: MEASURED
-- Actors measured: 1/8 (live source reports 4 actors total)
-- Federation FQ scalar: 0.7777777777777778
+- Actors measured: 4/8 (live source reports 18 actors total)
+- Federation FQ scalar: 1.425
 - Failure signatures: DECLARED — static registry (/root/AAA/registries/harnesses/*_harness_shadow.yaml), not measured
 
 | Rank | Agent | FQ | State | Exec | Verify | Balance | Phase | Boundary | Critical |
 |------|-------|-----|-------|------|--------|---------|-------|----------|----------|
-| 1 | claude-code | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.222 | SHADOW_PROMINENT | -0.620 | 1 |
+| 1 | claude-code | 1.000 | CAUTION | 1 | 1 | 0.222 | SHADOW_PROMINENT | -0.620 | 1 |
 | 2 | kimi-code | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.230 | SHADOW_PROMINENT | -0.520 | 0 |
-| 3 | aforge | 1.000 | OPTIMAL | 2 | 2 | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 3 | aforge | 1.112 | OPTIMAL | 686 | 763 | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
 | 4 | well | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
 | 5 | frame | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
-| 6 | grok-build | UNKNOWN | CAUTION | 0 | 1 | 0.247 | NIGREDO | -0.020 | 1 |
-| 7 | qwen-code | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
-| 8 | hermes-asi | UNKNOWN | UNKNOWN | 2 | 0 | 0.234 | NIGREDO | +0.080 | 0 |
+| 6 | grok-build | UNKNOWN | FLOWING | 0 | 118 | 0.247 | NIGREDO | -0.020 | 1 |
+| 7 | qwen-code | 0.333 | STUCK | 6 | 2 | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
+| 8 | hermes-asi | 0.326 | STUCK | 230 | 75 | 0.234 | NIGREDO | +0.080 | 0 |
 
 ## Federation Aggregate
 - Average Yin-Yang balance: 0.231 / 0.250 max (92.4%) — DECLARED inputs
@@ -27,8 +27,8 @@
 - Worst balance: qwen-code (0.204)
 - Best balance: grok-build (0.247)
 - Agents in CRITICAL: 2
-- Agents in BURNING/STUCK: 0
-- Agents with no live FQ: 7
+- Agents in BURNING/STUCK: 2
+- Agents with no live FQ: 4
 
 ## Inventory (MEASURED from disk)
 - Harness shadow files present: 8

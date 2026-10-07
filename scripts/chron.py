@@ -174,10 +174,23 @@ def fmt(days: int) -> str:
 
 
 def render(who: str | None = None, n: int = 3) -> str:
+    """Render the top-N ranked events. Components are NEVER collapsed into
+    a single number — consequence, actionability, and the two score parts
+    travel together so a reader can audit the ranking, not just accept it.
+    """
     evs = active(load(), who=who)
     if not evs:
         return "Tiada tarikh berhampiran disimpan."
-    lines = [f"{e['title']} — {fmt(e['days'])}" for e in evs[:n]]
+    lines = []
+    for e in evs[:n]:
+        # score decomposition: parts survive the combination
+        # so a reader can see WHY this row outranked another at the same days
+        parts = (
+            f"{e['consequence']:6}/{e['actionability']:7}"
+            f" · truth={e['truth_score']:.2f} urg={e['urgency_score']:.2f}"
+            f" → {e['score']:.2f}"
+        )
+        lines.append(f"{e['title']} — {fmt(e['days'])}  [{parts}]")
     return "\n".join(lines)
 
 

@@ -1,0 +1,46 @@
+### POST-COMMIT STATE
+da0a20af5d245c606911bac6e2d403c920242955
+da0a20af5d245c606911bac6e2d403c920242955 2026-10-06 11:48:42 +0800 fix(earth-witness): render HOLD envelope on /api/observe 502 instead of 'no JSON' BM copy
+ M apps/well-desk/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp
+
+### ahead/behind remote
+0	1
+### fetch
+From https://github.com/ariffazil/GEOX
+   f043b761..8c992509  main       -> origin/main
+ * [new tag]           v2026.10.04 -> v2026.10.04
+ * [new tag]           v2026.10.05 -> v2026.10.05
+
+### pre-push ahead/behind
+13	1
+
+### push origin main
+To https://github.com/ariffazil/GEOX.git
+ ! [rejected]          main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/ariffazil/GEOX.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+### remote SHA vs local SHA
+local : da0a20af5d245c606911bac6e2d403c920242955
+remote: 8c992509cc3b9e725419f5eb1d74ac36f075fe3b
+
+### remote log -1
+8c992509cc3b9e725419f5eb1d74ac36f075fe3b 2026-10-05 17:34:05 +0800 chore(deps)(deps): bump the mcp-stack group across 1 directory with 2 updates (#199)
+
+### /opt/geox status (dirty tree should still have 5 unrelated entries)
+ M apps/well-desk/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp

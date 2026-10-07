@@ -1,0 +1,4 @@
+MainPID=3484484
+ExecStart={ path=/opt/geox-chat-venv/bin/python ; argv[]=/opt/geox-chat-venv/bin/python -m uvicorn chat.server:app --host 127.0.0.1 --port 8765 ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+Environment=GEOX_MCP_URL=http://127.0.0.1:8081/mcp EARTH_WITNESS_DAILY_BUDGET=200 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/opt/geox/src
+WorkingDirectory=/opt/geox

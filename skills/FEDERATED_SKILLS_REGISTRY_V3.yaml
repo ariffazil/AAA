@@ -5,20 +5,20 @@ canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
 disk_reconciliation:
-  refreshed: '2026-10-05T20:37:02+00:00'
+  refreshed: '2026-10-07T02:37:03+00:00'
   method: 'skills-census.py --write — machine-derived, do not hand-edit; NOT on a schedule, refresh by running the tool'
-  physical_disk_skills: 966
-  canonical_skills: 1214
-  viewed_skills: 1011
-  loadable_skills: 987
-  overlay_skills: 'codex=1, continue=0, gemini=12, kimi=25, opencode=0, qwen=39'
-  whole_mesh_skills: 1043
-  duplicate_identity_groups: 33
-  duplicate_identity_skills: 61
+  physical_disk_skills: 969
+  canonical_skills: 1216
+  viewed_skills: 962
+  loadable_skills: 939
+  overlay_skills: 'codex=1, continue=0, gemini=12, kimi=25, opencode=0, qwen=40'
+  whole_mesh_skills: 1047
+  duplicate_identity_groups: 34
+  duplicate_identity_skills: 62
   shells: 4
-  diverged: 1
+  diverged: 0
   broken_symlinks: 2
-  witness_hash: 4d945a2322eb4d6f
+  witness_hash: b55f8ebdef559937
   verdict: FAIL
 layers:
   substrate:
@@ -44,7 +44,10 @@ layers:
     - know-pragmatics
     load: ALL agents, ALWAYS, AFTER substrate
   domain:
-    count: 183
+    # count reconciled 2026-10-06 (FI-008): MUST equal names listed below.
+    # Was 183 (stale claim > listed 100). Census block above is the physical-mesh truth;
+    # this count is the logical-registry truth. Drift between them = defect, not headroom.
+    count: 102
     load: Per-agent, per-task, on demand
     domains:
       geo:
@@ -155,6 +158,12 @@ layers:
       kernel:
       - kernel-eureka
       - kernel-superposition
+      hermes-core:
+      # Forged 2026-10-06 — the HERMES 15-tool / 13-family surface finally has mesh
+      # coverage (was zero; agents could not discover HERMES capabilities by skill).
+      - hermes-meaning-integrity
+      # F13-sealed 2026-09-25 session-alignment skill, exposed from /root/.hermes orphan 2026-10-06.
+      - hermes-align
       hermes-media:
       - hermes-voice-config
       - tts-edge-fallback
@@ -328,19 +337,21 @@ agent_profiles:
     notes: Aider AI pair programming. FI passport revoked by F13 2026-08-14 — operates as CCC contractor
       (git-deployer proven, builder lane via deepseek-chat). No native MCP — works via aider's built-in
       tool system. Requires --no-gui --exit --yes-always in non-tty. See CCC_DOCTRINE.md.
-total_skills: 95
-logical_registry_count: 95
+# Reconciled 2026-10-06 (FI-008): 8 substrate + 4 knowledge + 102 domain names listed
+# above. Previous 95 predates the hermes-core group and never matched the listed names.
+total_skills: 114
+logical_registry_count: 114
 # Alias-table figures re-measured against /root/AAA/skills/SKILL_ALIAS_TABLE.json
-# on 2026-09-18 (afpass-W2). Field semantics preserved: total / non-tombstone / tombstone.
-# The previous triple (133, 104, 29) was internally inconsistent AND stale: 104+29=133
-# while the table already held 164 rows.
-alias_table_rows: 164
-active_alias_rows: 133
-tombstone_alias_rows: 31
+# on 2026-10-06 (FI-008, skills-alignment mission). Field semantics preserved:
+# total / non-tombstone / tombstone. The 2026-09-25 MESH_REPAIR healed the organ-home
+# moves that the 2026-09-18 reconciliation sized (91 dead then, 1 dead now).
+alias_table_rows: 183
+active_alias_rows: 105
+tombstone_alias_rows: 78
 # The defect signal: how many non-tombstone rows actually resolve to a body on disk.
 # status="RESOLVED" is a claim in the row; these two numbers are the measurement.
-alias_rows_resolvable: 42
-alias_rows_dead: 91
+alias_rows_resolvable: 104
+alias_rows_dead: 1
 alias_reconciliation:
   refreshed: '2026-09-18'
   by: afpass-W2

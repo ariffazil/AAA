@@ -78,3 +78,55 @@ One line that survives any future audit:
 > **ARS(T) = ⟨S, L, Φ, C, K, I⟩ · ΔK ≤ 0 · witness the transition.**
 
 DITEMPA BUKAN DIBERI ⚒️
+
+---
+
+## §HARNESS_DIMENSIONS_v1 — 6-Dimensional Decomposition of the Harness State
+
+> **Status:** DRAFT (pending F13 SAH) · 2026-10-07 · derived from MemoHarness arXiv:2607.14159
+> **Scope:** extension, not amendment. The 6-tuple `ARS(T) = ⟨S, L, Φ, C, K, I⟩` (F13_SEAL 2026-10-04) is preserved verbatim. This section only maps the harness axes of MemoHarness onto the existing ARS coordinates as named axioms.
+> **Authority:** DRAFT — DITEMPA BUKAN DIBERI awaits F13 ratification. Until "SAH" lands, treat as advisory scaffold, not canon.
+
+### 1. The six dimensions
+
+Each axis below is a named axiom; the arrow maps it onto the corresponding axis of the existing ARS 6-tuple. No new coordinates are introduced.
+
+| Dim | Harness axis | Maps to ARS coord | Definition |
+|---|---|---|---|
+| **D1** | **Context** — the information channel/source | **Φ** (phase / mutation policy) | What information the agent sees at runtime. The input surface that selects which mutation policy (greenfield / brownfield / mature / catastrophic) currently applies. |
+| **D2** | **Tool** — the action surface | **C** (class) | What actions the agent may attempt. Maps to the `story / map / policy` privacy boundary: tools are class-bound (a policy-class tool cannot be silently reclassified to map). |
+| **D3** | **Generation** — the model + decoding regime | **K** (consequence) | Which provider + decoding parameters produce the candidate next state. The K-axis tax of every generation event (attention_cost, reversibility, blast_radius, recipients) sits here. |
+| **D4** | **Orchestration** — multi-step coordination | **S** (substrate) | Where the multi-step state physically lives across the persistence strata (ephemeral / reconstructed / attested / recalled). Orchestration = the substrate router. |
+| **D5** | **Memory** — persistence across calls | **I** (identity) | The identity-bearing trail that survives across invocations. Maps to `signed_actor + witness_link + chain + scope`: memory without I is anecdote, not record. |
+| **D6** | **Output** — the emitted shape | **L** (lifecycle) | What shape is sent out and where it sits on the declared / active / contested / superseded / dormant / open / revoked / forgotten lifecycle. Output position is lifecycle position. |
+
+### 2. Out-of-scope boundary (binding, do not drift)
+
+**arifOS does NOT implement MemoHarness Phase A** — the training-time harness search over a labeled corpus that optimises a reward scorer on harness configurations.
+
+arifOS is a *runtime harness*. Its harness state is **sovereign-curated** under the F13 SAH loop (sovereign sets the axis boundaries; the runtime executes reversibly within them). It is not search-derived; it is not reward-scored; it is not optimised offline against a labelled dataset. Treating these two regimes as the same thing is a **category error** — MemoHarness Phase A lives in the training plane, arifOS lives in the runtime plane. The harness state is constitutional, not a search artefact. Confabulating the two breaks the F13 sovereignty floor (`ΔΦ ⊄ {catastrophic → *}` without sovereign sign).
+
+### 3. Falsification clause
+
+If an arifOS subsystem begins to introduce offline harness-search loops, reward scorers over harness configurations, or labelled-corpus harness optimisation **without explicit F13 ratification of that mechanism**, this boundary has been violated. The sign of the violation is concrete and probeable:
+
+- a new harness tuner whose objective is a scalar reward over labelled harness states;
+- an offline harness-selection loop that runs without a per-step F13 SAH;
+- any D3 (Generation) axis whose provider set is mutated by an optimiser rather than by sovereign sign.
+
+When the sign appears, HOLD per `asi-substrate-invariants.md` #1 (Epistemic Asymmetry) and escalate. This is not drift; it is constitutional breach.
+
+### 4. Provenance
+
+- **Source paper:** MemoHarness, arXiv:2607.14159 — 6-dimensional decomposition of the harness state (Context, Tool, Generation, Orchestration, Memory, Output).
+- **Chat session:** F13 chat, 2026-10-07 — direction to map the 6 harness axes onto the existing ARS 6-tuple rather than introduce a competing formalism.
+- **Existing canon:** `/root/AAA/canon/AGENTIC-RUNTIME-STATE.md` — the F13_SEAL 2026-10-04 6-tuple `⟨S, L, Φ, C, K, I⟩` and its transition law `ΔK ≤ 0`. This section is an extension of §1–§7, not a replacement.
+- **Companions (read alongside, do not duplicate):** `apex-geometry-substrate` · `asi-substrate-invariants` · `scar-binding-doctrine` · `AGENTIC-FLOW-ARCHITECTURE-2026-10-05`.
+
+### 5. Compression (one line, survives any audit)
+
+> **MemoHarness gives 6 axes; ARS already gives 6 coords. The mapping is `D1→Φ, D2→C, D3→K, D4→S, D5→I, D6→L`. Phase A (training-time search) is constitutionally out of scope.**
+
+---
+
+*DRAFT · 2026-10-07 · FI-008 subagent under F13 chat direction · pending F13 SAH*
