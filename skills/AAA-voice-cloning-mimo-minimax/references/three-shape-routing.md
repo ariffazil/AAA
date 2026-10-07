@@ -61,13 +61,48 @@ Correct offer to the principal: Shape 1 — "your own voice, your own words, in 
 
 ## KVM8 voice pipeline (verified working, Oct 2026)
 
-Source key from `/root/.secrets/a-forge.env`. The file uses `export KEY="value"`. When writing a Python parser for it, strip the `export ` prefix BEFORE splitting on `=` — otherwise the key comes out as `export MINIMAX_API_KEY` (silently `len=0`, looks like a dead key when the key is fine).
+Source key from `/root/.secrets/kunci-root.env` on KVM8. The earlier note pointing to `a-forge.env` was stale — that file does not exist on KVM8; the canonical keyfile is `kunci-root.env` (also contains the root-keys, 600-perm). The file uses `export KEY="value"`. When writing a Python parser for it, strip the `export ` prefix BEFORE splitting on `=` — otherwise the key comes out as `export MINIMAX_API_KEY` (silently `len=0`, looks like a dead key when the key is fine).
 
 Render via `POST https://api.minimax.io/v1/t2a_v2` with `speech-2.8-hd`. Decode `data.audio` with `bytes.fromhex(...)` — the response is HEX, not base64. Use a `urllib`-based python wrapper, not inline curl, for clean JSON bodies (curl-curl interop has bitten with capitalization / false quoting).
 
 For Telegram voice bubbles: `ffmpeg -y -i out.mp3 -c:a libopus -b:a 48k -ar 16000 -ac 1 out.ogg`, then POST multipart `sendVoice` to the Bot API with the explicit `chat_id`.
 
 `hermes send` transport-locks group destinations that are not in its declared-id list (e.g. SADO group -1004397386934) — for those groups, go direct to the Bot API with the explicit chat_id. Never infer the destination from context; the 2026-09-18 defect sent a document into a room the principal does not read.
+
+### Inline recipe for `execute_code` (no separate script)
+
+When a one-shot render is needed inside a session, the whole TTS→OGG loop fits in one `execute_code` call. The recipe below is the smallest working payload; `language_boost` is optional and absent from the in-playbook recipe (both work):
+
+```python
+import os, json, urllib.request, subprocess, hashlib
+# Key does NOT auto-leak from terminal source into execute_code; re-read it.
+with open("/root/.secrets/kunci-root.env") as f:
+    for line in f:
+        if line.startswith("MINIMAX_API_KEY="):
+            os.environ["MINIMAX_API_KEY"] = line.split("=", 1)[1].strip().strip('"').strip("'")
+            break
+payload = {
+    "model": "speech-2.8-hd",
+    "text": "<text>",
+    "stream": False,
+    "voice_setting": {"voice_id": "<id>", "speed": 1.0, "vol": 1.0, "pitch": 0, "audio_format": "mp3"},
+    "audio_setting": {"sample_rate": 32000, "format": "mp3"},
+}
+req = urllib.request.Request("https://api.minimax.io/v1/t2a_v2",
+    data=json.dumps(payload).encode(),
+    headers={"Content-Type": "application/json", "Authorization": "Bearer " + os.environ["MINIMAX_API_KEY"]},
+    method="POST")
+resp = json.loads(urllib.request.urlopen(req, timeout=180).read())
+assert resp.get("base_resp", {}).get("status_code") == 0, resp
+audio = bytes.fromhex(resp["data"]["audio"])
+# ... write .mp3, ffmpeg → .ogg, ffprobe duration, md5
+```
+
+**Pitfall — env doesn't cross tool boundaries.** `os.environ["MINIMAX_API_KEY"]` is empty inside `execute_code` even after `set -a; source kunci-root.env; set +a` ran in `terminal`. Re-read the file from Python each session.
+
+### Voice_id drift: PMX
+
+The KVM4 playbook/canon declared the statesman voice_id as `PMX20260930v1`. When rendered from KVM8 with the canonical key, that id was not the one in the private library — the id that successfully rendered was `anwar-bm-20260927` (status_code=0, ~7.4s, ~121 KB MP3). Treat KVM4-declared id as suspect until a push test confirms it on the actual host; never assume the playbook string matches the private-library id.
 
 ## Anti-patterns (NEVER)
 
