@@ -1,0 +1,72 @@
+{
+  "receipt_id": "RECEIPT-F13-RATIFY-AGENT-INVARIANTS-DELTAS-2026-10-07",
+  "schema": "arifos.receipt.v1",
+  "timestamp_utc": "2026-10-07T13:40:36Z",
+  "actor": {
+    "agent": "irfanclaw (openclaw/FI-017)",
+    "session": "agent:main:direct:267378578",
+    "host": "KVM4 srv1946043"
+  },
+  "authority": {
+    "sovereign": "ARIF (F13)",
+    "channel": "telegram direct, allowlisted sender 267378578",
+    "directive_message_id": 1763,
+    "directive_text": "Yes",
+    "directive_timestamp_utc": "2026-10-07T13:28:13Z",
+    "proposal_referenced": "4-delta ratification package in agent reply 13:22:52 UTC",
+    "directive_class": "F13_RATIFIED_CHAT (precedent: APEX-ZEN 2026-09-16, State-Transition Discipline 2026-09-16)"
+  },
+  "action": "Ratify external-convergence agent-invariant deltas into federation doctrine",
+  "deltas_ratified": [
+    "safety-as-emergence framing (complements, never replaces, floor enforcement)",
+    "capability growth ratchet: capability grows only as fast as truthfulness + provenance + containment",
+    "memory curation trigger: >80% declared bound -> mandatory curation",
+    "standing pre-action check: portable 8 questions (real / current / mine / reversible / minimum / burden / witnessable / who-pays)"
+  ],
+  "objects_created": [
+    {
+      "path": "/root/AAA/instructions/agent-invariants-external-convergence.md",
+      "role": "doctrine fragment (canonical fragment; /root/AGENTS.md is generated output)"
+    },
+    {
+      "path": "/root/AGENTS.md",
+      "role": "rendered kernel — fragment list line 5 + collapsed section spliced after authority-envelope (line 305+); intact hand-appended apex tail preserved below splice",
+      "note": "render-agents.sh not found on this host (searched /root/scripts, /root/AAA/scripts, /root/arifOS, PATH); splice reproduces the generator's documented section format. Next render must include fragment name 'agent-invariants-external-convergence' (line 5 already lists it)."
+    },
+    {
+      "path": "/root/AAA/receipts/RECEIPT-F13-RATIFY-AGENT-INVARIANTS-DELTAS-2026-10-07.json",
+      "role": "this receipt"
+    },
+    {
+      "path": "/root/AAA/external/deliverables/AGENT-INVARIANTS-2026-10-07.source.md",
+      "role": "verbatim external artifact archive (received 13:15 UTC)"
+    },
+    {
+      "path": "/root/AAA/external/deliverables/AGENT-INVARIANTS-2026-10-07.INT-RECONCILIATION.md",
+      "role": "INT reconciliation: claims->canon table, target probe, 4 deltas (pre-ratification)"
+    }
+  ],
+  "canon_untouched": [
+    "F1-F13 floors",
+    "state-transition-discipline fragment",
+    "witness-first doctrine",
+    "gate-promotion.md",
+    "human-attention membrane",
+    "ASI-agent-invariants skill (v1.0.1 unchanged)"
+  ],
+  "epistemics": {
+    "classification": "ratified-from-INT",
+    "basis": "sovereign ratification + independent external convergence with internal canon (F3-style multi-witness signal)",
+    "unresolved": "raw [web:N] markers in source artifact lack a resolution table; adopted deltas are self-contained rules not dependent on those citations",
+    "reversibility": "reversible — git revert of AAA commit + kernel splice removal (single section, line-bounded)"
+  },
+  "verification": [
+    "fragment list line 5 includes agent-invariants-external-convergence",
+    "spliced section present at kernel line 305 with correct <details> format and byte size",
+    "authority-envelope </details> seam intact (line 303) and ref:topology section intact after splice",
+    "apex hand-appended tail below splice preserved verbatim"
+  ],
+  "blast_radius": "ORG (all agents loading /root/AGENTS.md on this node; AAA repo push propagates to federation clones)",
+  "status": "EXECUTED",
+  "provenance_note": "Scar mandate applied: every claim above is OBSERVED (file checks this session) or DERIVED (documented search for render-agents.sh, negative result)."
+}
