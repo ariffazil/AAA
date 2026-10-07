@@ -73,3 +73,34 @@ carries `DRAFT_AWAITING_F13` and its startup injection is provisional.
   five disciplines are execution preconditions; they were injected into agents
   that could not execute. **Restore `arif_think` before treating any acceptance
   result here as competence evidence.**
+
+**Re-measurement 2026-10-08 00:10 MYT (FI-003 / qwen-code, session
+`SEAL-8331b4e816244557`).** FI-008's observation above is preserved, not
+overwritten — both were OBSERVED, at their own times. Four of this fragment's
+premises did not survive re-probe:
+
+- **`arif_think` is live.** `mode=reason` returned substantive reasoning:
+  `confidence.overall 0.85`, `confidence_reasoning 0.45`, `confidence_evidence 0.03`,
+  `confidence_provenance INFERRED`, `what_is_supported: []`, **5 `[UNGROUNDED]`
+  refusals**, 5 `what_remains_unknown`. It declined to accept the questioner's own
+  premises as established — the exact discipline this fragment mandates, demonstrated
+  by the organ reported offline. The call still returned `effective_verdict: HOLD`,
+  but from `substrate_state: DEGRADED` via `verdict_monotonicity: OBSERVE_ONLY →
+  RETAK (sub-signal floor dominates aggregate)` — **not** a reasoning failure.
+  Do not read that HOLD as `arif_think` being broken.
+- **The draft queue is 60, not "the other 9"** (`grep -l DRAFT_AWAITING_F13
+  instructions/*.md` = 60 files).
+- **`not_established` already exists** — `_build_rasa_envelope()` at
+  `/root/HERMES/hermes_mcp/_envelope.py:903-935`, declared `_schemas.py:120`. Scope:
+  it fires on the RASA / human-meaning path and is non-empty by construction (fallback
+  string: *"motive and interior states are never established by this claim"*). It is
+  **not** emitted on general data retrievals, so this fragment's "on every pull" is
+  unenforced today for non-human-subject pulls. Closing that is **additive** — the
+  field is already in the schema, so no new schema is required.
+- **Gate substitution.** The Acceptance Protocol is blocked by neither Zotero (absent —
+  never installed) nor `arif_think` (live). The binding blocker is the **recall hop**:
+  `arif_memory mode=recall` returns a full envelope with zero documents while Qdrant
+  `arifos_memory` holds 1,216 green points and direct `/points/scroll` returns real
+  payloads. `mode=audit`, the verb that would expose tier counts, is itself refused by
+  `FREE_TEXT_GATE`. Stored ≠ retrievable ≠ unmetabolized: the doctrine in this fragment
+  *is* metabolized into the startup prompt; what fails is semantic recall.
