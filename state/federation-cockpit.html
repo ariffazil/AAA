@@ -257,7 +257,7 @@ function render(data) {
   const deskFqSummary = document.getElementById('desk-fq-summary');
 
   deskHoldsCount.textContent = `${auth.holds || 0} holds aktif`;
-  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'OPTIMAL'})`;
+  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'UNKNOWN'})`;
 
   // F13 SAH 2026-10-06: holds = decision-ledger ONLY (true F13 binaries).
   // Metabolic lane flags (auth.flow_holds) are bookkeeping — surfaced below as info, never as F13 attention.
@@ -289,9 +289,9 @@ function render(data) {
   if (organsHtml) document.getElementById('organs-list').innerHTML = organsHtml;
 
   // 3. Metabolism
-  document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'OPTIMAL';
+  document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'UNKNOWN';
   document.getElementById('fq-val').textContent = meta.quotient != null ? meta.quotient.toFixed(2) : '--';
-  document.getElementById('fq-diag').textContent = meta.diagnosis || 'Mengalir lancar';
+  document.getElementById('fq-diag').textContent = meta.diagnosis || 'UNKNOWN — diagnosis tidak tersedia';
   document.getElementById('fq-counts').textContent = `${meta.verify_count || 0} sah / ${meta.execute_count || 0} laksana`;
   document.getElementById('fq-stuck').textContent = `${meta.held_count || 0} tertahan / ${meta.throttled_count || 0} ditapis`;
 
