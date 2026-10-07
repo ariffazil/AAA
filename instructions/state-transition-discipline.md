@@ -79,3 +79,20 @@ Operational memory (objective, timestamps, own probes) = YES. Shared hypothesis,
 
 DITEMPA BUKAN DIBERI ⚒️
 
+
+## ACTION-STATE LATTICE + EXECUTED_NOT_SEALED (musyawarah-converged 2026-10-07 · PENDING F13 register)
+
+> Tiga suara bebas (333-AGI, HERMES, wartawan luar) + dua insiden disaksi (FED patch
+> diratifikasi lewat; A2A `completed` tanpa verdict pada lifecycle) tiba pada objek sama.
+
+1. **Action lattice** (setiap tindakan operasi membawa SATU state, tak boleh runtuh jadi
+   satu ayat menenangkan):
+   `PROPOSED → PENDING_APPROVAL → AUTHORIZED → EXECUTING → EXECUTED → FAILED | ROLLED_BACK | BLOCKED`
+2. **EXECUTED_NOT_SEALED** ialah state dunia-sebenar yang wajib kelihatan:
+   `Transport completed. Governance pending.` — bukan kegagalan, bukan kejayaan; ia
+   hutang attestation yang bernama, berumur, berpemilik.
+3. **Three-plane boundary** (compression musyawarah):
+   `A2A menjawab "Did it run?" · AAA menjawab "Should it count?" · F13 menjawab "Should it proceed?"`
+4. Hanya 888 melintaskan `EXECUTED → SEAL | PARTIAL | HOLD | VOID`.
+
+Sumber: musyawarah B′ 2026-10-07, resit `D-20261007-<hash>` dalam decision_ledger.
