@@ -20,6 +20,7 @@ For session-start probes, action-tier expansions, conflict resolution, and the a
 | Fragment | Path | Status |
 |---|---|---|
 | *(2026-10-01 snapshot: 60 rows. Status mix — `F13_RATIFIED_CHAT`: 32 · `CANONICAL`/`F13_SEAL`: 9 · `LIVE`/`ACTIVE`: 2 · `PARTIAL`/`ACCOMPANIES-SEAL`/`RESEARCH_RATIFIED_F13_CHAT`: 3 · `DRAFT_AWAITING_F13`: 9 · `DRAFT` (vari): 6 · `MISSING_SOURCE` rows: 0 — stripped today. See below.)* | | |
+| Shared Epistemic Foundation | `/root/AAA/instructions/epistemic-foundation.md` | DRAFT_AWAITING_F13 |
 | BIJAKSANA Audit Discipline | `/root/AAA/instructions/bijaksana-audit-discipline.md` | DRAFT_AWAITING_F13 |
 | Reality-Bound Authority Doctrine | `/root/AAA/instructions/reality-bound-authority.md` | DRAFT_AWAITING_F13 |
 | Anti-Shadow Architecture | `/root/AAA/instructions/anti-shadow-architecture.md` | DRAFT_AWAITING_F13 |
