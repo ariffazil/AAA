@@ -36,24 +36,29 @@ OUTPUT_JSON = Path("/root/AAA/state/federation_state.json")
 # ── Config ─────────────────────────────────────────────────────────────
 
 PROBE_TIMEOUT = 8  # seconds per endpoint (cold-start safe)
+# host-map patch (STAGED 2026-10-08, irfanclaw/FI-017, Arif-authorized "stage boleh-undur"):
+# organs verified LIVE via tailnet probe from kvm4-forge (100.64.0.5) at 2026-10-08 06:30-07:15 UTC:
+#   arifos:8088, geox:8081, well:18083 -> 100.64.0.2 (af-forge) all /health 200
+#   chron:18102 -> mesh-silent from .5/.4; KVM8 (=af-forge .2) on-host snapshot 15:25 MYT: chron ALIVE -> loopback-bound, 127.0.0.1 CORRECT for generator host
+#   a-forge/fed/aaa/wealth/arifflow -> reached by generator host (kokpit reads them UP) -> unchanged
+# revert: git checkout -- scripts/federation_state.py
 ORGAN_ENDPOINTS = [
-    {"id": "arifos", "port": 8088, "role": "Kernel"},
-    {"id": "a-forge", "port": 7071, "role": "Execution"},
-    {"id": "aaa", "port": 3001, "role": "Control Plane"},
-    {"id": "geox", "port": 8081, "role": "Earth Intelligence"},
-    {"id": "wealth", "port": 18082, "role": "Capital Intelligence"},
-    {"id": "well", "port": 18083, "role": "Vitality Mirror"},
-    {"id": "arifflow", "port": 7073, "role": "Metabolism"},
-    {"id": "fed", "port": 7074, "role": "Model Router"},
-    {"id": "chron", "port": 18102, "role": "Temporal Intelligence"},
+    {"id": "arifos",   "port": 8088,  "role": "Kernel",                "host": "100.64.0.2"},
+    {"id": "a-forge",  "port": 7071,  "role": "Execution"},  # mesh-silent; likely loopback-only by design (KVM8 on-host 9/9 alive per snapshot 2026-10-08)
+    {"id": "aaa",      "port": 3001,  "role": "Control Plane"},
+    {"id": "geox",     "port": 8081,  "role": "Earth Intelligence",    "host": "100.64.0.2"},
+    {"id": "wealth",   "port": 18082, "role": "Capital Intelligence"},
+    {"id": "well",     "port": 18083, "role": "Vitality Mirror",       "host": "100.64.0.2"},
+    {"id": "arifflow", "port": 7073,  "role": "Metabolism"},
+    {"id": "fed",      "port": 7074,  "role": "Model Router"},  # mesh-silent; loopback-only by design (fed-router pattern, cf. KVM2)
+    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},  # loopback-bound on host (mesh-silent; alive on-host per KVM8 snapshot) â generator probes via 127.0.0.1 correctly
 ]
 
 # ── Probes ─────────────────────────────────────────────────────────────
 
-
-def probe_health(port: int) -> dict:
+def probe_health(port: int, host: str = "127.0.0.1") -> dict:
     """Probe a single organ. Returns {healthy, latency_ms, data, failure_reason}."""
-    url = f"http://127.0.0.1:{port}/health"
+    url = f"http://{host}:{port}/health"
     t0 = time.monotonic()
     try:
         req = Request(url, headers={"User-Agent": "federation-state/1.0"})
@@ -62,58 +67,32 @@ def probe_health(port: int) -> dict:
             body = json.loads(resp.read().decode())
             return {"healthy": resp.status == 200, "latency_ms": ms, "data": body, "failure_reason": None}
     except HTTPError as e:
-        return {
-            "healthy": False,
-            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-            "data": {},
-            "failure_reason": f"HTTP {e.code}",
-        }
+        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": f"HTTP {e.code}"}
     except URLError as e:
-        reason = str(e.reason) if hasattr(e, "reason") else str(e)
+        reason = str(e.reason) if hasattr(e, 'reason') else str(e)
         if "Connection refused" in reason or "ECONNREFUSED" in reason:
-            return {
-                "healthy": False,
-                "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-                "data": {},
-                "failure_reason": "service_down",
-            }
+            return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": "service_down"}
         elif "timed out" in reason.lower() or "timeout" in reason.lower():
-            return {
-                "healthy": False,
-                "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-                "data": {},
-                "failure_reason": "timeout",
-            }
-        return {
-            "healthy": False,
-            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-            "data": {},
-            "failure_reason": reason[:80],
-        }
+            return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": "timeout"}
+        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": reason[:80]}
     except Exception as e:
-        return {
-            "healthy": False,
-            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-            "data": {},
-            "failure_reason": str(e)[:80],
-        }
+        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": str(e)[:80]}
 
 
 def probe_all_organs() -> list[dict]:
     """Probe all organs and return list of organ states."""
     results = []
     for organ in ORGAN_ENDPOINTS:
-        p = probe_health(organ["port"])
-        results.append(
-            {
-                "id": organ["id"],
-                "role": organ["role"],
-                "port": organ["port"],
-                "healthy": p["healthy"],
-                "latency_ms": p["latency_ms"],
-                "failure_reason": p["failure_reason"],
-            }
-        )
+        p = probe_health(organ["port"], organ.get("host", "127.0.0.1"))
+        results.append({
+            "id": organ["id"],
+            "role": organ["role"],
+            "port": organ["port"],
+            "host": organ.get("host", "127.0.0.1"),
+            "healthy": p["healthy"],
+            "latency_ms": p["latency_ms"],
+            "failure_reason": p["failure_reason"],
+        })
     return results
 
 
@@ -147,9 +126,9 @@ def probe_flow_health() -> dict:
     stuck_actors = [aid for aid, a in per_actor.items() if a["verdict"] == "STUCK"]
 
     return {
-        "verdict": fq.get("verdict") or fq.get("legacy_verdict") or "UNKNOWN",
+        "verdict": fq.get("verdict", "UNKNOWN"),
         "quotient": fq.get("quotient"),
-        "diagnosis": fq.get("diagnosis") or fq.get("legacy_diagnosis") or "",
+        "diagnosis": fq.get("diagnosis", ""),
         "execute_count": fq.get("execute_count", 0),
         "verify_count": fq.get("verify_count", 0),
         "held_count": held_count,
@@ -227,9 +206,7 @@ def probe_authority_state() -> dict:
         "oldest_hold": {
             "age_hours": oldest_hold_hours,
             "intent": oldest_hold_intent,
-        }
-        if holds and holds > 0
-        else None,
+        } if holds and holds > 0 else None,
         "flow_holds": {
             "count": len(held_actors),
             "actors": held_actors,
@@ -269,9 +246,7 @@ def compute_bottleneck(organs: list[dict], authority: dict, fq: dict) -> dict:
             "impact_flows": 0,
         }
 
-    # F13 SAH 2026-10-06: AUTHORITY bottleneck = decision-ledger holds only.
-    # Flow-only holds are metabolic (auto-release) — not a sovereign bottleneck.
-    holds = ledger_holds or 0
+    holds = (ledger_holds or 0) + (flow_held_count or 0)
     if holds > 0:
         oldest = authority.get("oldest_hold", {})
         return {
@@ -323,7 +298,6 @@ def derive_health_verdict(organs: list[dict]) -> str:
 
 # ── Helpers ────────────────────────────────────────────────────────────
 
-
 def _safe_add(*vals):
     """Sum optional numeric values. Returns None if no numeric value present."""
     nums = [v for v in vals if isinstance(v, (int, float))]
@@ -331,7 +305,6 @@ def _safe_add(*vals):
 
 
 # ── Main ───────────────────────────────────────────────────────────────
-
 
 def federation_state() -> dict:
     """Build the canonical federation state object."""
@@ -367,45 +340,37 @@ def federation_state() -> dict:
         "version": 1,
         "generated_at": now,
         "probe_ms": round((time.monotonic() - t0) * 1000, 1),
+
         "federation": {
             "status": health,
             "organs_alive": alive,
             "organs_total": total,
             "organs": organ_detail,
         },
+
         "metabolism": {
-            "verdict": fq.get("verdict") or fq.get("legacy_verdict") or "UNKNOWN",
+            "verdict": fq.get("verdict", "UNKNOWN"),
             "quotient": fq.get("quotient"),
-            "diagnosis": fq.get("diagnosis") or fq.get("legacy_diagnosis") or "",
+            "diagnosis": fq.get("diagnosis", ""),
             "execute_count": fq.get("execute_count", 0),
             "verify_count": fq.get("verify_count", 0),
             "held_count": fq.get("held_count", 0),
             "throttled_count": fq.get("throttled_count", 0),
             "stuck_actors": fq.get("stuck_actors", []),
         },
-        # F13 SOVEREIGN 2026-10-06 "SAH" — semantic split (was: _safe_add merge).
-        # authority.holds = decision-ledger HOLD entries ONLY (true F13 binaries).
-        # Metabolic arifFlow lane flags live in authority.flow_holds — they are
-        # bookkeeping (auto-release on next Verify receipt per arifFlow main.rs),
-        # NOT operations awaiting Arif. Rendering them as F13 binaries manufactured
-        # phantom sovereign decisions (333-agi / memory-helix / codex-startup, 2026-10-06).
+
         "authority": {
-            "holds": authority.get("decision_ledger", {}).get("holds"),  # None = UNKNOWN if ledger unavailable
+            "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
             "seals": authority.get("decision_ledger", {}).get("seals"),  # None = UNKNOWN if ledger unavailable
             "oldest_hold": authority.get("oldest_hold"),
-            "flow_holds": {
-                "count": authority.get("flow_holds", {}).get("count", 0),
-                "actors": authority.get("flow_holds", {}).get("actors", []),
-                "class": "metabolic",
-                "note": "arifFlow lane FQ flags; auto-release on Verify receipt; not F13 decisions",
-            },
-            # Legacy alias (metabolic) — kept for old readers; do NOT use for F13 panels
             "held_actors": authority.get("flow_holds", {}).get("actors", []),
         },
+
         # Backward-compatibility aliases for legacy / root-level readers
         "organs": organ_detail,
-        "holds": authority.get("decision_ledger", {}).get("holds"),
+        "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
         "held_actors": authority.get("flow_holds", {}).get("actors", []),
+
         "_source": "federation_state.py v1.0",
     }
 
