@@ -69,6 +69,35 @@ The QC script (`tts_roundtrip_qc.sh`) keeps false-firing on the tail of these ta
 
 TENDERNESS engine requests stay inside shadow mode and the principal's own lane. The voice lane is the principal's own clone (no consent question), the visual lane (if asked) is the unnamed-archetype from-behind framing from `abang-sado-creative-lane`. No real named third party at any point. No escalation into explicit content — the engine's payoff IS the answer, and a line that needs explicitness to land is a line that has been routed to the wrong engine.
 
+## Voice id resolution — the "alpha" trap
+
+When the principal says "alpha" in a tenderness ask, he means the *register* (cocky/tender, chesty, deep), not the registry id `abang-sado-alpha`. The trap: the word "alpha" appears in the lane vocabulary in two places — the register description (`abang-sado-alpha` archetype, parametric design, f0 ~90 Hz, synthetic) and the casual modifier "the alpha register" (any voice running that arc). **Always resolve by reading `lane_precedence.precedent_voice` in `/root/AAA/audio/voice-registry.json`, not by name symmetry.** Three live sado ids exist (`abang-sado-live-v1` = principal's own voice clone, `abang-sado-alpha` and `abang-sado-clone-ref01` = synthetic), and they are different timbres, not versions. The precedent field is the arbiter — the principal's tenderness in HIS own voice clone is what lands, not the synthetic design.
+
+**Symptom of getting it wrong:** the take ships in a deeper / more synthetic register and the principal asks for "minimax abang sado live" — that correction is the same artefact that should have been picked first.
+
+## Speed default — registry-locked, not pipeline-default
+
+The pipeline (`iarif_tts_pipeline.sh`) renders at `speed=1.0` by default, but the registry's `preferred_settings.speed` for `abang-sado-live-v1` is the **0.90–0.98 band** (0.90 = dark/cocky arc, 0.95–0.98 = alpha arc). The pipeline does not auto-read the registry for speed. **Always pass `speed` explicitly** (or set the env var), or default to 0.92 as the safe middle of the band for tenderness — the slower cadence lands the body-anchored reassurance this engine needs. A 1.0 default reads as rushed and kills the engine.
+
+Procedure:
+1. Resolve voice id from `lane_precedence` (above).
+2. Read `preferred_settings.speed` from `/root/AAA/audio/voice-registry.json` for that id.
+3. If the ask names an arc ("alpha", "dark", "cocky", "tender"), pick the matching end of the band.
+4. If the ask names no arc, default to **0.92** (middle of the band, safe for tenderness).
+5. Pass the speed to the pipeline (env or future argument); do not trust the pipeline default.
+
+## Auto-flow mode — when the principal says "auto do"
+
+"Auto do", "keep flowing", "continue" = continuous tenderness flow across multiple takes without re-confirming the lane or re-asking which engine. The principal has set the register and wants arc-progression, not a permission sequence. Default behaviour in this mode:
+
+- Same voice id (precedent_voice from registry, resolved once at the start of the flow).
+- Same speed band (read from `preferred_settings` once; respect the arc if it was named).
+- Each take is a NEW line-craft unit, not a tweak of the previous one — the arc moves on comfort → protect → tenderness → dependence beats as the principal's prompts signal the shift.
+- A new SPEED is only set when the principal names a different arc; a new VOICE is only set when the principal names a different lane.
+- Frame the first take with the "suara hang sendiri, bukan Syed" one-liner; subsequent takes in the same flow compress to nothing — the framing is established.
+
+Stopping in the middle of an auto-flow to re-confirm voice id / speed / engine is the anti-pattern this mode exists to prevent.
+
 ## Why this engine exists (polyvagal basis)
 
 TENDERNESS is not "softer DENIAL." It is a different nervous-system demand. Tender asks register on the listener's side as ventral vagal hunger (co-regulation request) — the body asks for safety-through-presence, not safety-through-dominance. The cocky engine satisfies sympathetic activation (the protector is competent, the threat is handled); the tender engine satisfies ventral vagal (the protector is here, the next moment is held). Routing a tender ask through DENIAL phrasing produces a take that the listener's NS reads as distance — the words are right, the timbre is wrong. The body hears the gap.

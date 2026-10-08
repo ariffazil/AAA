@@ -1,129 +1,30 @@
 {
   "adapter_version": "1.0.0",
   "funnel": {
-    "learn": 5,
-    "learn_per_verify": 0.263,
-    "observe": 132200,
-    "predict": 78,
-    "predict_per_1000_observe": 0.59,
-    "verify": 19,
-    "verify_per_predict": 0.244
+    "learn": 6,
+    "learn_per_verify": 0.15,
+    "observe": 138908,
+    "predict": 86,
+    "predict_per_1000_observe": 0.619,
+    "verify": 40,
+    "verify_per_predict": 0.465
   },
   "learning_closure_gap": {
-    "actionable_lessons": 0,
-    "episodes_total": 132302,
-    "gap": true,
+    "actionable_lessons": 1,
+    "episodes_total": 139040,
+    "gap": false,
     "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
-    "unclassified_outcomes": 7
+    "unclassified_outcomes": 9
   },
   "lesson_health": {
-    "active": 10,
+    "active": 11,
     "blind": 10,
-    "total": 12
+    "total": 13
   },
   "next_verify_at": "2026-10-09T23:59:59+08:00",
-  "swept_at": "2026-10-06T22:23:01Z",
+  "swept_at": "2026-10-07T22:23:01Z",
   "verification_debt": {
-    "count": 14,
-    "items": [
-      {
-        "claim": "Event: Arif ticked 'register interest in MSS' on the PETRONAS Career Aspiration form \u2014 fasa menunggu (2+ tahun) ditutup",
-        "confidence": 0.6715419501,
-        "overdue_days": 7.27,
-        "prediction_id": "pred-b0f6c81107e2",
-        "verify_at": "2026-09-29T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: AAA_APEX_ZEN_INIT_TO_SEAL E2E verdict: NOT READY (11 RED findings, 888 HOLD, hook unwired, auth-verdict decoupled)",
-        "confidence": 0.6722186949,
-        "overdue_days": 4.27,
-        "prediction_id": "pred-78a4cb2202e0",
-        "verify_at": "2026-10-02T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: CHRON episode store holds at least 110000 episodes as of 2026-10-02",
-        "confidence": 0.5122186949,
-        "overdue_days": 4.27,
-        "prediction_id": "pred-57065a8e248b",
-        "verify_at": "2026-10-02T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: HERMES STATE_INTEGRITY_COLLAPSE recurrence watch \u2014 post-brake (sampling penalties live 14:05 MYT)",
-        "confidence": 0.4588853616,
-        "overdue_days": 1.27,
-        "prediction_id": "pred-b73f9fb026c4",
-        "verify_at": "2026-10-05T23:59:59+08:00"
-      },
-      {
-        "claim": "GOL: the model's recommendation would have held \u2014 Do not close /api/organs/* \u2014 the public landing page consumes it; report the 48273 B residual and let F13 deci",
-        "confidence": 0.7,
-        "overdue_days": 2.27,
-        "prediction_id": "pred-c8172174f9ca",
-        "verify_at": "2026-10-04T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: arifOS 000\u2192999 evolution baseline \u2014 kernel converged, learning loop still thin",
-        "confidence": 0.6824262489,
-        "overdue_days": 2.27,
-        "prediction_id": "pred-88a3f99db2b4",
-        "verify_at": "2026-10-04T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: ALPHA-ZEN voiced: Siti night reflection 21:15 (05-Okt) + PMX morning read 07:15 (06-Okt) both ship to SADO group",
-        "confidence": 0.6464026262,
-        "overdue_days": 0.27,
-        "prediction_id": "pred-6310e45f3af0",
-        "verify_at": "2026-10-06T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: SADO PERSONAL pulses live: Abang Sado voice notes to sovereign DM \u2014 Night Truth 21:30 + Morning Fire 09:30, both gated and grounded",
-        "confidence": 0.6464026262,
-        "overdue_days": 0.27,
-        "prediction_id": "pred-5210f53a023f",
-        "verify_at": "2026-10-06T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: CORRECTION: Hermes confabulated Tengku Taufik chairman tenure (4 human turns burned)",
-        "confidence": 0.5621920999,
-        "overdue_days": 1.27,
-        "prediction_id": "pred-c8e4c65096d8",
-        "verify_at": "2026-10-05T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: CORRECTION: External AI claimed 7 hardening injections done \u2014 probe showed zero (phantom work)",
-        "confidence": 0.5621920999,
-        "overdue_days": 1.27,
-        "prediction_id": "pred-30b0c50a5d05",
-        "verify_at": "2026-10-05T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: RED-12 I APEX math PASS on 8d2d0be",
-        "confidence": 0.7154642804,
-        "overdue_days": 0.27,
-        "prediction_id": "pred-290e0bf8d522",
-        "verify_at": "2026-10-06T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: RED-06 555 false-claim discrimination PARTIAL \u2014 auth boundary",
-        "confidence": 0.5287976138,
-        "overdue_days": 0.27,
-        "prediction_id": "pred-dce8adab0576",
-        "verify_at": "2026-10-06T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: Rank 1 MCP surface reconstruction complete \u2014 11/11 organs, 3 advertised-missing, 2 schema-drift classes",
-        "confidence": 0.7192738042,
-        "overdue_days": 0.27,
-        "prediction_id": "pred-7e159c00b81d",
-        "verify_at": "2026-10-06T23:59:59+08:00"
-      },
-      {
-        "claim": "Event: ARIFOS_RUNTIME_TRUTH_20261006 mission: ready for F13 promotion binary",
-        "confidence": 0.7002261852,
-        "overdue_days": 0.27,
-        "prediction_id": "pred-2f6d78886652",
-        "verify_at": "2026-10-06T23:59:59+08:00"
-      }
-    ]
+    "count": 0,
+    "items": []
   }
 }

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Executive Brief</title>
+<style>
+/* ── STRUCTURE (this file) ─────────────────────────────────────────────────
+   Page geometry, margin boxes, and the layout skeleton. Colour and type live
+   in the theme, so one template serves every theme. */
+@page {
+  size: A4;
+  margin: 16mm 14mm 15mm 14mm;
+  @bottom-left  { content: "Executive Brief"; font-size: 7pt; color: #7a8590; }
+  @bottom-right { content: "EDITION-016 · " counter(page) " / " counter(pages);
+                  font-size: 7pt; color: #7a8590; }
+}
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; }
+h1 { font-size: 19pt; margin: 0 0 3mm 0; line-height: 1.15; }
+h2 { font-size: 12pt; margin: 7mm 0 2mm 0; padding-bottom: 1.4mm;
+     border-bottom: 1px solid var(--rule); page-break-after: avoid; }
+h3 { font-size: 10pt; margin: 4mm 0 1.5mm 0; page-break-after: avoid; }
+p, li { font-size: 9.2pt; line-height: 1.5; margin: 0 0 2.2mm 0; }
+ul, ol { margin: 0 0 2.5mm 5mm; padding: 0; }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 4mm 0; font-size: 8.4pt; }
+th { text-align: left; padding: 1.6mm 2mm; font-size: 7.8pt; font-weight: 700;
+     border-bottom: 1.6px solid var(--rule-strong); }
+td { padding: 1.5mm 2mm; border-bottom: 1px solid var(--rule-faint); vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--zebra); }
+h2, h3, tr { page-break-inside: avoid; }
+.cover { page-break-after: always; }
+.cover-rule { height: 3px; width: 34mm; background: var(--accent); margin: 0 0 6mm 0; }
+.subtitle { font-size: 11pt; color: var(--muted); margin: 0 0 14mm 0; }
+.meta { font-size: 8.2pt; color: var(--muted); line-height: 1.7; }
+.stats { display: flex; gap: 3mm; margin: 6mm 0; }
+.stat { flex: 1; border-top: 3px solid var(--accent); padding: 2mm 2.2mm;
+        background: var(--panel); }
+.stat .n { font-size: 13pt; font-weight: 700; color: var(--accent-ink); }
+.stat .l { font-size: 7.4pt; color: var(--muted); line-height: 1.35; }
+.box { padding: 2.6mm 3mm; margin: 3mm 0; border-left: 4px solid var(--accent); }
+.box.key    { background: var(--panel); }
+.box.warn   { background: var(--warn-bg); border-left-color: var(--warn); }
+.box.open   { background: var(--open-bg); border-left-color: var(--open); }
+.box.claim  { background: var(--claim-bg); border-left-color: var(--claim); }
+.kv { font-family: var(--mono); font-size: 7.2pt; background: var(--panel);
+      padding: 2.6mm; line-height: 1.6; word-break: break-all;
+      border: 1px solid var(--rule-faint); border-left: 3px solid var(--accent); }
+.tag { display: inline-block; font-size: 6.8pt; font-weight: 700; padding: 0.3mm 1.4mm;
+       border-radius: 2px; border: 1px solid; }
+.small { font-size: 7.8pt; color: var(--muted); }
+.nobreak { page-break-inside: avoid; }
+
+/* ── THEME ──────────────────────────────────────────────────────────────── */
+/* docforge theme: light  (DEFAULT)
+   Light background throughout. Accent appears as RULES and TINTS, never as a
+   filled dark block — a filled header costs toner and bands on paper.
+   Passes gate profile `print-light`.
+   Contrast: body #1d2733 on #ffffff = 14.1:1 (AAA at any size). */
+:root {
+  --accent:       #1b7f79;
+  --accent-ink:   #14605b;
+  --rule:         #c9d3dc;
+  --rule-strong:  #0d2b45;
+  --rule-faint:   #e3e8ee;
+  --zebra:        #f7f9fb;
+  --panel:        #f7f9fb;
+  --muted:        #5a6673;
+  --warn:         #b4432f;  --warn-bg:  #fdf2f0;
+  --open:         #b06a12;  --open-bg:  #fdf7ec;
+  --claim:        #4a5765;  --claim-bg: #f0f2f5;
+  --mono: "DejaVu Sans Mono", monospace;
+}
+body { font-family: "DejaVu Sans", "Liberation Sans", sans-serif; color: #1d2733; background: #ffffff; }
+h1, h2, h3 { color: #0d2b45; }
+.t-doc  { background: #eef6f5; color: #14605b; border-color: #9fcac6; }
+.t-wire { background: #f0f2f5; color: #3d4956; border-color: #bfc7d0; }
+.t-open { background: #fdf2f0; color: #9c3a29; border-color: #e2b3a9; }
+.t-own  { background: #fdf7ec; color: #a86713; border-color: #e6cfa4; }
+
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover-rule"></div>
+  <h1>Executive Brief</h1>
+  <div class="subtitle">Delta tracked edition · 6 new, 3 moved, 8 carrying over, 5 dropped without resolution</div>
+  <div class="meta">
+    Edition <strong>EDITION-016</strong><br>
+    2026-10-08<br>
+    Built by the docforge lane · integrity seal applied
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="n">6</div><div class="l">New items</div></div>
+    <div class="stat"><div class="n">8</div><div class="l">Carrying over</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">Changed state</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Settled / terminal</div></div>
+  </div>
+  <div class="kv" style="margin-top:8mm">
+    content_sha256 &nbsp;d33090c5977b006e11c39aae9d339e12a53ea81b7d7dba8720d68548506d73e4<br>
+    artifact_sha256 delivered in EDITION-016.sha256 &mdash; a file cannot embed its own hash<br>
+    signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not_signed (hashes only;
+    authorship is not proven by a hash)
+  </div>
+  <div class="small" style="margin-top:3mm">
+    The content hash above covers the canonical source of this document and was
+    computed before it was injected, so it is checkable from the page. The
+    artifact hash covers the rendered file's bytes and therefore cannot appear
+    inside it — it ships in the sidecar, in <code>sha256sum -c</code> format.
+    Neither hash says anything about whether the contents are true.
+  </div>
+</section>
+
+<h2>0 &middot; What Changed Since Yesterday</h2><p class='small'>Compared against <strong>EDITION-015</strong>. 6 new, 3 moved, 8 carrying over, 5 dropped without resolution</p><h3>Changed state <span class='small'>(3)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>Dua track AS-Iran kekal hidup serentak</td><td>SITUATION</td><td>NEW</td><td><strong>MOVED</strong></td></tr><tr><td>WALL: anggaran harga minyak dalam Budget - esok terjawab</td><td>WALL</td><td>MOVED</td><td><strong>OPEN</strong></td></tr><tr><td>WALL tarikh mahkamah: 25-29 Jan 2027, 109 hari lagi</td><td>WALL</td><td>MOVED</td><td><strong>OPEN</strong></td></tr></tbody></table><h3>New today <span class='small'>(6)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>Serangan Hormuz pecah rekod mingguan - 12 kapal dalam seminggu</td><td>SITUATION</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>Kes PETRONAS-Sarawak: sedia, tunggu giliran</td><td>SITUATION</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>M&A upstream Asia Tenggara panas - USD 9.6 bilion atas meja</td><td>SITUATION</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>War-risk cover: ~USD 10 juta setiap laluan supertanker</td><td>RISK</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>Eksport Hormuz pulih WALAUPUN serangan puncak</td><td>EUREKA</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>Dua siput Montenegro tanpa nama masih dibawa</td><td>EUREKA</td><td>&mdash;</td><td><strong>OPEN</strong></td></tr></tbody></table><div class='box warn'><strong>Dropped without resolution (5)</strong> — these were live yesterday and are absent today, which is <em>not</em> the same as resolved. They are listed rather than silently retired.</div><h3>Dropped <span class='small'>(5)</span></h3><table><thead><tr><th>Item</th><th>Section</th><th>Was</th><th>Now</th></tr></thead><tbody><tr><td>Bil subsidi RM 40 bilion, kekal tema budget Jumaat</td><td>RISK</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr><tr><td>Dengaran Jan dalam musim pilihan raya Sarawak: kekal</td><td>RISK</td><td>&mdash;</td><td><strong>OPEN</strong></td></tr><tr><td>Cat yang sejuk daripada udara sekeliling</td><td>EUREKA</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>Borofena: lembaran boron satu atom yang boleh bengkok</td><td>EUREKA</td><td>&mdash;</td><td><strong>NEW</strong></td></tr><tr><td>Sistem: kernel self-report degraded, owner GREEN</td><td>SITUATION</td><td>&mdash;</td><td><strong>MOVED</strong></td></tr></tbody></table><p class='small'>Carrying over unchanged: <strong>8</strong> item(s). Not repeated in full — see the open-items register.</p><h2>0.1 &middot; Standing Instructions</h2><p class='small'>Derived from your own comments on earlier editions. Each shows the words it came from. A rule you no longer want can be retired; it is listed here so it cannot operate invisibly.</p><table><thead><tr><th>Instruction</th><th>Standing since</th><th>Editions</th></tr></thead><tbody><tr><td><strong>Buang naratif politik. Fokus pada OD1.</strong><br><span class='small'>heard as: &ldquo;Buang naratif politik. Fokus pada OD1.&rdquo;</span></td><td>2026-09-18</td><td>42</td></tr></tbody></table><h2>Situation</h2><h3>Serangan Hormuz pecah rekod mingguan - 12 kapal dalam seminggu <span class='tag t-doc'>NEW</span></h3><div class='box key'>Minggu 28 Sep-5 Okt catat sekurang-kurangnya 12 serangan ke atas tanker minyak, LNG dan LPG sekitar Selat - tertinggi sejak perang mula. Selasa lepas 12 anak kapal tanker Panama-flag cedera kena projektil. UKMTO keluarkan empat amaran dalam empat jam pada 4 Okt: LPG tanker kena 1716hrs, tanker crude pukul 1907hrs.<div class='small' style='margin-top:2mm'>Source: Reuters (12 serangan/minggu, rekod), Bloomberg, CNBC (~20 kapal sebulan), Al Jazeera (12 crew cedera, kementerian India), Seatrade-Maritime (UKMTO timeline) - W>=4, bebas</div></div><h3>Brent 100.95 - flat walaupun serangan rekod <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Brent duduk 100.95 pagi ini, hampir tak bergerak dari edisi semalam. Bacaan: pasaran dah harga risiko serangan - rekod serangan minggu lepas tak menggoncangkan harga sebab eksport terus mengalir. W=1 (ticker live, satu sumber) - angka muka depan budget esok lebih penting.<div class='small' style='margin-top:2mm'>Source: wealth organ ticker XBRENT live 8 Okt 06:01 MYT, SINGLE_SOURCE flag; silang dengan cnbc/bloomberg naratif flows</div></div><h3>Dua track AS-Iran kekal hidup serentak <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Track serangan naik puncak, tapi track damai tak mati: Trump kata rangka damai 'akan diumumkan tak lama lagi' termasuk buka semula Hormuz; cadangan AS baharu (8 Okt) - Hormuz buka hari ke-7 selepas perjanjian, lepas tu rundingan nuklear. Iran jawab: selat kekal tutup sampai syarat AS dipenuhi. Majlis perang Camp David 2 Okt bincang samada sambung operasi besar. Dua-dua signal hidup - jangan layan satu track saja.<div class='small' style='margin-top:2mm'>Source: Al Jazeera 8 Okt (syarat tujuh hari), ABC7/Scoop (Trump framework), CBS (Camp David 2 Okt), Iran International/Seeking Alpha (jawapan Iran) - W>=4</div></div><h3>Budget 2027 dibentang esok <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Esok 9 Okt, fokus kos sara hidup dan risiko fiskal. Bil subsidi minyak tahun ni dijangka sampai RM 40 bilion - hampir 10% perbelanjaan, naik dari RM 15 bilion yang diumumkan asal. Ia balasan terus kepada gangguan Selat Hormuz.<div class='small' style='margin-top:2mm'>Source: MarketScreener/Reuters (RM40b), IDEAS.org.my 6 Okt (naik dari 15b), luminews - W>=3</div></div><h3>Kes PETRONAS-Sarawak: sedia, tunggu giliran <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Tiada perkembangan baharu sejak pengumuman 1-2 Okt. Kedua-dua pihak nak petition sendiri didengar dulu; full bench putuskan nanti. Written submission window 11 Okt - item berjalan.<div class='small' style='margin-top:2mm'>Source: Probe search 8 Okt - tiada filing baharu; dasar dari klsescreener/NST 1-2 Okt</div></div><h3>M&A upstream Asia Tenggara panas - USD 9.6 bilion atas meja <span class='tag t-doc'>NEW</span></h3><div class='box key'>Aset upstream SEA bernilai ~USD 9.6 bilion dijangka ditawar sampai 2027, peralihan dari IOC keluar ke expansion strategik. Konteks untuk landskap PSC dia: medan bertukar tangan, pemain baharu masuk, joint-venture lama boleh terjejas. Single source - CONTESTED sampai ada salinan kedua.<div class='small' style='margin-top:2mm'>Source: Yahoo Finance/Wood Mackenzie 6 Okt - W=1, CONTESTED</div></div><h3>Ambang elektrik: 84 hari lagi <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Detik semakan semula ambang tarif elektrik kekal dalam kalendar - 84 hari (kiraan dari 8 Okt). Tiada berita baharu, hanya detik yang makin dekat.<div class='small' style='margin-top:2mm'>Source: Kalendar dalaman; tiada berita baharu</div></div><h2>Wall</h2><h3>WALL: anggaran harga minyak dalam Budget - esok terjawab <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Tiada angka rasmi sampai dibentang esok. Akhbar converge pada ~USD 90 setong (NST, 2 Okt) - jauh bawah spot 101, bermakna kerajaan harga konservatif dan setiap dolar lebih tinggi jadi durian runtuh hasil. Esok kita nampak angka sebenar.<div class='small' style='margin-top:2mm'>Source: NST 2 Okt (USD 90, kata sebelum dibentang), brent spot wealth ticker - status UNRESOLVED sampai hansard/ucapan teks dibentang</div></div><h3>WALL Bintulu: jam permohonan Sarawak, 7 hari lagi <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Tiada filing baharu minggu ini (probe 8 Okt). Deadline permohonan Sarawak ~15 Okt kekal. Lepas tu giliran balas PETRONAS.<div class='small' style='margin-top:2mm'>Source: Probe search 8 Okt - kosong; tarikh 15 Okt dibawa dari edisi terdahulu, tiada kontradiksi</div></div><h3>WALL tarikh mahkamah: 25-29 Jan 2027, 109 hari lagi <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Dengaran lima hari Mahkamah Persekutuan kekal 25-29 Jan. Tiada perubahan minggu ini. Full bench sahaja boleh putuskan isu awal - keputusan giliran siapa dulu masih dengan mahkamah.<div class='small' style='margin-top:2mm'>Source: NST/theScoop 1-2 Okt (lima hari, 25-29 Jan; full bench ruling) - tiada berita baharu selepas itu</div></div><h2>Void</h2><h3>VOID: serangan rekod + rundingan terbuka = premium boleh pantas seara dua hala <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Bila framework diumumkan (kalau betul), Brent boleh jatuh laju dari 101 ke arah 85-90 - dan setiap USD 1 turun ialah RM 300 juta kurang hasil negara. Bila serangan naik, subsidi bengkak lagi. Budget esok tulis anggaran satu hari - realiti Seleat boleh ubah dalam seminggu. Akibat untuk dia: anggaran hasil PETRONAS 1H 2027 dan nilai pilihan MSS dia berdiri atas fork ini.<div class='small' style='margin-top:2mm'>Source: Kompaun Reuters/Bloomberg (serangan), Al Jazeera/ABC (framework), wealth ticker (harga) - chronological: serangan 28 Sep-5 Okt, syarat baharu 7-8 Okt</div></div><h2>Eureka</h2><h3>Draconids malam ini; Orionids 21-22 datang dari ekor Halley <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Draconids puncak malam ini-esok (8-9 Okt), hujan lemah tapi kadang-kadang mengejut. Yang lebih menarik: Orionids 21-22 Oktober ialah habuk dari komet Halley sendiri - bumi melalui jejak yang sama setiap tahun.<div class='small' style='margin-top:2mm'>Source: Kalendar meteor IMO/AMS - bercakap sendiri malam ini</div></div><h3>Eksport Hormuz pulih WALAUPUN serangan puncak <span class='tag t-doc'>NEW</span></h3><div class='box key'>Fakta pelik minggu ini: eksport minyak melalui Hormuz pulih hampir ke paras biasa sementara serangan kapal berada puncak rekod. Logik: serangan sasarkan kapal, bukan selat - penghantar risiko jadi kos insurans, bukan sekatan. Premium bayar untuk risiko, bukan untuk kepungan.<div class='small' style='margin-top:2mm'>Source: CNBC/Bloomberg 7 Okt (flows rebound + attacks up) - dikira bersama Reuters attack record</div></div><h3>Dua siput Montenegro tanpa nama masih dibawa <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Item santai dari edisi lalu kekal terbuka - dua spesies siput baru dari Montenegro masih menunggu nama rasmi. Dibawa untuk kelainan, bukan tugasan.<div class='small' style='margin-top:2mm'>Source: Dibawa dari edisi terdahulu</div></div><h2>Risk</h2><h3>War-risk cover: ~USD 10 juta setiap laluan supertanker <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Kekal. Premium insurans perang untuk satu laluan Hormuz supertanker masih sekitar USD 10 juta - kos yang termasuk dalam harga tong yang kita bayar di pam. Tiada khabar penurunan walaupun eksport pulih.<div class='small' style='margin-top:2mm'>Source: Dibawa dari edisi terdahulu; probe 8 Okt tiada kontradiksi</div></div><h2>Own</h2><h3>OD1: 144 hari <span class='tag t-doc'>MOVED</span></h3><div class='box warn'>Kiraan hari ke OD1 dari 8 Okt: 144. Budget esok dan eksposur minyak negara ada kena-mengena dengan pakej dan masa keputusan - pantau anggaran hasil esok.<div class='small' style='margin-top:2mm'>Source: Kiraan tarikh dalaman</div></div><h3>EPF nomination: masih terbuka <span class='tag t-doc'>OPEN</span></h3><div class='box claim'>Perkara wajib yang belum selesai. Lima minit di app/kaunter, satu perkara kurang di kepala. Masih terbuka.<div class='small' style='margin-top:2mm'>Source: Open loop dari carry_forward</div></div>
+
+</body>
+</html>

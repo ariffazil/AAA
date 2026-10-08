@@ -1,5 +1,5 @@
 # Shadow Evidence Gate  v2 (prose + live FQ series)
-# Generated: 2026-10-07T04:00:09Z
+# Generated: 2026-10-08T04:01:09Z
 # Rule: CONFIRMED requires >= 5 DATED prose items, OR a measured
 #       attractor in the live FQ series (significant displacement from FQ*=1
 #       AND temporal stability AND sign concordance).
@@ -39,27 +39,27 @@ NO-LABEL (ungateable):       0
     canonical-file mutation (F13), not something a reader should paper over.
 
 ## Live FQ series — the shadow as a measurable attractor
-  ledger rows=129270 parsed=93215 unparsed=0
-  span=2026-07-30T12:07:03.502747Z -> 2026-10-07T04:00:07.927Z (68 days)
+  ledger rows=135747 parsed=98887 unparsed=0
+  span=2026-07-30T12:07:03.502747Z -> 2026-10-08T04:00:27.369Z (69 days)
   harness entries tested=27 confirmed=2 refuted=0 not_testable=8 no_receipts=13
 
   actor        signature                   pred     n  FQ(geo)  SE(ln)        Z    I2%  concord  binom p  verdict
   ---------------------------------------------------------------------------------------------------------------
-  aforge       mutation_hunger             FQ<1    29     1.302   0.041   +6.44   95.6     4/29   1.0000  NO_STABLE_ATTRACTOR
+  aforge       mutation_hunger             FQ<1    30     1.301   0.039   +6.75   95.5     4/30   1.0000  NO_STABLE_ATTRACTOR
   claude-code  execution_gravity           FQ<1    26     1.865   0.623   +1.00   86.0     8/26   0.9855  NO_STABLE_ATTRACTOR
   frame        behavioral_blindness        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        identical_score_problem     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        observer_inertia            FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        baseline_staleness          NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  grok-build   verification_paralysis      FQ>1    24   113.252   0.248  +19.10   62.4    24/24   0.0000  CONFIRMED_DIRECTION_HETEROGENEOUS
-  hermes-asi   bridge_volume_overload      FQ<1    25     0.705   0.070   -4.96   92.2    20/25   0.0020  CONFIRMED_DIRECTION_HETEROGENEOUS
-  hermes-asi   meaning_as_gatekeeping      FQ>1    25     0.705   0.070   -4.96   92.2     3/25   1.0000  NO_STABLE_ATTRACTOR
+  grok-build   verification_paralysis      FQ>1    25   118.319   0.247  +19.31   62.4    25/25   0.0000  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   bridge_volume_overload      FQ<1    26     0.702   0.067   -5.25   92.0    21/26   0.0013  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   meaning_as_gatekeeping      FQ>1    26     0.702   0.067   -5.25   92.0     3/26   1.0000  NO_STABLE_ATTRACTOR
   kimi-code    organ_routing_reflex        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    receipt_theater             NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    constitutional_citation     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    subagent_delegation_escape  NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    synthesis_as_substance      NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  qwen-code    execution_dominance         FQ<1    41     0.923   0.092   -0.86   50.6    27/41   0.0298  CONCORDANT_WEAK_EFFECT
+  qwen-code    execution_dominance         FQ<1    41     0.927   0.090   -0.84   50.3    27/41   0.0298  CONCORDANT_WEAK_EFFECT
   well         self_report_paradox         NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         measurement_substitution    NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         dignity_as_avoidance        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
@@ -91,16 +91,16 @@ NO-LABEL (ungateable):       0
   [model] xiaomi_mimo_shadow.yaml :: SHADOW-MIMO-013 (probe_vs_live_divergence_on_mimo_endpoints) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5
 
 ## Promotion candidates (derived_status == CONFIRMED)
-  [harness] SHADOW-GB-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 24 daily windows, log-space inverse-variance pooled
-  [harness] SHADOW-HA-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 25 daily windows, log-space inverse-variance pooled
+  [harness] SHADOW-GB-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 25 daily windows, log-space inverse-variance pooled
+  [harness] SHADOW-HA-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 26 daily windows, log-space inverse-variance pooled
 
 ## APEX — value of measurement (uncertainty reduction per unit waiting time)
 ##   VoI = severity x H(posterior)/ln2 x daily_receipt_rate
 ##   Settled entries sink to the bottom: no attention spent on closed questions.
   #   entry                                   sev         post      H   rate/d      VoI
-  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   1014.8   507.38
-  2   SHADOW-HA-002                           MEDIUM     0.500  1.000    181.8    90.92
-  3   SHADOW-CC-005                           CRITICAL   0.500  1.000     24.7    24.72
-  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     18.3     9.15
+  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   1066.7   533.34
+  2   SHADOW-HA-002                           MEDIUM     0.500  1.000    189.8    94.91
+  3   SHADOW-CC-005                           CRITICAL   0.500  1.000     24.4    24.41
+  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     18.5     9.23
 
 Receipt: /root/AAA/cockpit/shadow-matrix/evidence-gate-latest.json

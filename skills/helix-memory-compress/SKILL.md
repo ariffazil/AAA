@@ -21,9 +21,12 @@ related_skills:
 
 ## When to trigger
 
-- `memory(action='add')` returns rejected or usage ≥85%
+- `memory(action='add')` returns rejected or usage ≥85% — **proactive compression**
+- Usage ≥95% — **urgent compression; consolidate first, then save the new lesson in the same atomic batch**
 - User says "zen memory", "compress", "memory penuh", "clean memory"
 - Session start shows bloated MEMORY.md or USER.md
+
+**Rule: the new lesson is more important than the memory budget, but the memory budget is more important than the new lesson's wording.** Compress an existing entry by 100 chars to make room for 100 chars of new scar-tied content. Never delete a scar to make room. Never skip the save because "memory penuh" — both operations land in one atomic batch.
 
 ## The helix model
 
