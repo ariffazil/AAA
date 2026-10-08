@@ -11,6 +11,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - F13-RATIFICATION-READINESS
 - HANDOFF_2026-09-29_HERMES_AUDIT
 - HERMES-RASA-CANONICAL-COMPRESSION
+- HERMES_2.0_NOTIFICATION_SPEC
 - HUMAN-REALITY-EDGE-BRIDGE-REFACTOR-v0.1
 - L5-Graphiti-Deprecation-2026-10-07
 - LEAN_BOOT_PROFILE
@@ -22,7 +23,10 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - T2-counter-rule-patch
 - T3-enum-diffs
 - _UNRENDERED_INDEX
+- aaa-edition-render-contract-v1
+- aaa-human-facing-delivery
 - aaa-init-to-seal
+- aaa-no-hold-flow-directive-v1
 - add-only-truth-preservation
 - aforge-citizen-contract
 - aforge-citizen-contract-333b-DRAFT
@@ -47,6 +51,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - apex-swot-loop
 - apex-zen-breath-loop
 - arifos-institutional-emergence-doctrine
+- attention-as-reality-continuity
 - attention-graph
 - attention-init-boundary
 - attention-kill-criterion
@@ -98,6 +103,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - dissipative-transition
 - doctrine-admission-gate
 - dunbar-constraint
+- economics-as-witness
 - ecosystem-expansion
 - emd-architecture
 - emergence-maturation-ladder
@@ -117,11 +123,13 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - federation-orthogonality-future-state
 - federation-orthogonality-invariant-floor-mapping
 - federation-personality-taxonomy-2026-09-11
+- four-layer-separation
 - fsl-f13-non-substitution-boundary
 - functional-spec-binding-path
 - functional-spec-canonical-ontology
 - functional-spec-vaul999-anchoring
 - gate-promotion
+- gelombang-2-blindspot-laws
 - geology-artifact-kinabalu-basin
 - github-zen
 - godel-eurekas-brief
@@ -146,6 +154,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - human-leverage-north-star
 - human-meaning-membrane
 - human-memory
+- human-memory-compartmentalization
 - human-reality-invariants
 - human-substrate
 - human-substrate-exclusions-PROPOSAL
@@ -159,6 +168,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - kernel-hardening-eurekas
 - knowledge-ingestion-schema
 - law-of-binding
+- linkgraph-namespace
 - mail-access
 - maturation-dynamics
 - meaning-consequence-vitality
@@ -210,6 +220,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - temporal-grounding-doctrine
 - temporal-intelligence-doctrine
 - testimony-gate
+- three-consequence-domains
 - three-plane-architecture
 - trauma-theorem
 - triad-perspective-consequence-persistence
