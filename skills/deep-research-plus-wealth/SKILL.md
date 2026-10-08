@@ -181,6 +181,89 @@ Cost of getting it wrong: a meta-analysis of the audit without a verification le
 worthless to Arif. He reads the verification table, not the prose. Bullet items must
 reference the exact live command that proved or disproved them.
 
+## When Arif Pastes an External Audit of Your Own Session
+
+Distinct from auditing siblings (above) — here the audit is OF YOU, delivered as a chat paste. The instinct is to defend, agree without grounding, or pivot to the next task. All three fail.
+
+**Procedure:**
+1. **Acknowledge each finding separately** with the verb pattern: "fair / true / I missed that / partially agree / disagree because X". Do not bundle into a single paragraph of acknowledgment — the user reads the row-level mapping, not the prose.
+2. **Classify the defect** (in your own work, not the auditor's taxonomy) into one of:
+   - L1 — symptom→verdict shortcut ("X rosak" without raw evidence)
+   - L2 — misread of a documented constraint (tool capability vs workaround)
+   - L3 — missing coverage / stopping-rule without criteria
+   - L4 — receipt-less action or unverified retry
+   State which L each finding maps to, briefly. This is your self-audit ledger, not theatre.
+3. **Distinguish "in my lane" from "not in my lane."** Production config drift, model transport integrity, MCP federation health, A-FORGE actuator auth, service restart — these are upstream of mouth. Acknowledge and route; do not claim authority to fix.
+4. **Default L0 memory save** (defect pattern + remedy) WITHOUT asking the user. The user will compress to "consolidate, save as one compact entry" if needed — but the act of asking "should I save this?" is itself a friction pattern (CLARIFICATION TOLERANCE = zero).
+5. **Cluster F13 binaries by risk**, then ask ONE short binary per cluster. Never batch "all of B/C/D/E" into one approval — that is menu-dump at the audit-response layer, same defect class as the original audit found.
+6. **State enforcement status honestly** — "operating rule only, not fully enforced until Phase 0 validates" — not "fully fixed". The audit found a discipline gap; saving the lesson is not the same as closing the gap.
+
+**Pitfall: defense-via-classification.** A clean L1/L2/L3/L4 grid can become a way to *reframe* the failure rather than own it. Write the acknowledgment in plain BM first, then attach the grid as a ledger. The grid is a record; the prose is the receipt.
+
+**Pitfall: routing the lesson to the wrong target.** Mouth saves its own operational memory; engineering lane saves config/transporter/MCP work. Do not let mouth save "need to pin web.search_backend" — that is upstream work and gets lost if the mouth session ends.
+
+**Pitfall: turning one approved action into four "while we're at it" follow-ons.** The user approved *A* (memory save). A/B/C/D/E are five more, not one. Each gets its own binary.
+
+## Research Session Discipline — Terminal States & Evidence Ledger
+
+A research session is not "done when the answer feels done." It is done when one of four terminal statuses can be honestly emitted, with an evidence ledger that a future session can re-probe.
+
+**State machine (apply to every deep-research turn, not just the headline brief):**
+
+```
+SCOPE → PLAN_AXES → SEARCH → EXTRACT → EVIDENCE_LEDGER
+      → GAP_ANALYSIS → COUNTEREVIDENCE → SYNTHESIS → VERIFY → DELIVER
+```
+
+Each transition emits a receipt: inputs, provider, URLs, evidence hashes, errors, cost, duration, next state. Synthesis is GATED by the prior five — never by the model's confidence.
+
+**Terminal statuses (mandatory, exactly one per session):**
+
+- **COMPLETE** — all material axes covered, key claims cross-checked against ≥2 independent sources, citation verification passed, counterevidence searched.
+- **PARTIAL** — useful evidence exists, named gaps remain, list them explicitly. The user reads the gap list, not the prose.
+- **BLOCKED** — retrieval, authorization, or provider failure prevents a defensible answer. Name the failure class (provider quality / dispatch drift / tool-call transport / agent policy).
+- **REFUSED** — request violates a policy, legal, or safety boundary. Not "I don't want to."
+
+**Pitfall: "Aku ada cukup" as a stopping rule.** The model finishing its evidence search is not the user accepting the answer. Always emit one of the four statuses. The 4-class taxonomy is the *receipt*, not the *feeling*.
+
+**Pitfall: collapsing symptom to verdict.** "Web search is broken" without raw evidence is L1 — same defect class the audit caught this session. State the constraint, distinguish 4 root classes, then propose the smallest reversible probe. "Search returned unrelated results" is a probe-able observation; "search is broken" is a verdict.
+
+**Pitfall: 1 round = enough.** A single `web_search` call rarely covers a research axis. Plan axes first (≥3 typical), execute parallel where the tool allows, sequence where the tool doesn't. Single-round coverage is a self-deception pattern, not a coverage claim.
+
+**Pitfall: documented constraint vs improvisation.** `web_search` documented as single-query. `web_extract` accepts ≤5 URLs. `execute_code` is the designed orchestration path for 3+ tool calls. State the constraint, then use the designed path. Do not label a documented constraint as a tool defect because the first attempt returned noise.
+
+**Pitfall: synthesis-from-incomplete-retrieval.** If the search returned unrelated results, the next step is *not* "synthesize from the one good result and proceed." It is "declare PARTIAL, name the gap, ask the user whether to retry with a different query shape or proceed with the partial base." The synthesis step does not absorb retrieval failures; it consumes their output.
+
+**Tool-specific fallbacks (commit to memory as standing rule, not per-session discovery):**
+
+| Tool | Documented constraint | Designed workaround |
+|---|---|---|
+| `web_search` (hermes `hermes_tools.web_search`) | single-query per call | `execute_code` loop for 3+ queries; alternate providers (exa / firecrawl / brave) via separate `tool_call` |
+| `web_extract` (hermes `hermes_tools.web_extract`) | ≤5 URLs per call | `execute_code` loop for 6+ URLs |
+| `mcp__exa__web_search_exa` (connector) | tool_call rejects multiple connector entries in one batch | one `tool_call` per search; use `execute_code` wrapper for loops |
+| `mcp__brave_search__brave_web_search` | tool_call rejects multiple connector entries in one batch | one `tool_call` per search |
+| `mcp__zai_search__web_search_prime` | first-result trap on commercial-intent queries | rephrase with quoted institution + year anchor; drop `content_size=high` if drift persists |
+| PDF generation | default `pandoc -o out.pdf` produces duplicate title when H1 is also document title | keep H1 in source; let pandoc use the YAML `title:` field for the header |
+| PDF delivery via MEDIA: | first attempt may not land; gateway may swallow the path | verify (path/size/magic/hash) before retry; on retry failure, switch route (re-attach with `MEDIA:` re-emit, or save to `~/.hermes/cron/output/` and send via `local` delivery), never repeat the same directive without a state change |
+
+**Counterevidence is mandatory, not optional.** For any non-trivial claim (especially a Big-Four-style empirical claim, a "men want/need" generalization, a market forecast, an attribution), the search plan must include at least one query shaped to DISCONFIRM the headline. A clean confirmation set with no disconfirmation probe is F2 risk.
+
+**Evidence ledger shape (compact, write once at session close):**
+
+```
+research_ledger:
+  axes_planned: N
+  axes_covered: M (with N-M named as gaps)
+  sources_total: K
+  sources_independent: ≥2 for each headline claim
+  counterevidence_probed: yes/no
+  terminal_status: COMPLETE | PARTIAL | BLOCKED | REFUSED
+  falsifiers_named: list
+  open_questions: list
+```
+
+**The synthetic-essay variant carries this too.** When the ask is a reflective-essay (per the variant above), the same state machine applies but EXTRACT and COUNTEREVIDENCE shapes differ — sources are philosophical/textual, not empirical. Counterevidence there = opposing schools of thought, not opposing datasets.
+
 ## Rendering Doctrine — Human Language, Frameworks Invisible
 
 The 7 layers and any named frameworks (Acemoglu, Calhoun, Gödel/Hofstadter, Ostrom, "strange loops", "principal-agent voids") are **thinking scaffolding**. They inform the analysis; they must NOT appear in the deliverable unless Arif explicitly asks for them by name. Verified correction 2026-08-06 (PETRONAS collapse brief): Arif said *"I want full human language and focus on PETRONAS. No need to mention mouse godel lock etc"* after the framing pass named frameworks. Lesson: propose the frame once at kickoff, drop it on first pushback, never re-introduce. The "7-layer" label may appear on the cover badge only — not in chapter prose.
