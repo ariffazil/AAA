@@ -1,0 +1,1 @@
+2026-10-08T07:4xZ ingest | gist-ingest-2026-10-08: llm-wiki pattern (ADOPT-CONVENTION) + autoresearch loop contract (ADOPT-GOVERNANCE) + HELLO qualia case (REPORTED-ONLY); sources: karpathy gists 442a6bf5+fb64880b + autoresearch repo; native absorption by 333-AGI, session SEAL-b117b112a28d411d; F13 pending: public gist modernization

@@ -1,6 +1,6 @@
 ---
 name: federated-patch-seal
-description: Full lifecycle of a multi-agent MCP tool-bug fix in the arifOS federation — probe → identify → delegate to coding agent → peer audit (OpenClaw) → re-delegate or manual completion → deploy → live verify → seal. Use when a bug is found in a federation organ's MCP tool, needs fixing, and must be sealed to VAULT999. Covers the coding-agent routing rule (opencode primary, Kimi/codex/claude-code secondary), the peer audit gate, and the seal ceremony failure modes.
+description: Full lifecycle of a multi-agent MCP tool-bug fix in the arifOS federation — probe → identify → delegate to coding agent → peer audit (OpenClaw) → re-delegate or manual completion → deploy → live verify → seal. Use when a bug is found in a federation organ's MCP tool, needs fixing, and must be sealed to VAULT999. Covers the coding-agent routing rule (opencode primary, Kimi/codex/claude-code secondary), the peer audit gate, the F2/F9 limitation-fidelity invariant for handoff/transfer functions (never synthesize certainty, never silently drop limitations), the test-bypass pattern for heavy package __init__, and the seal ceremony failure modes.
 tags: [forge, federation, seal, patch, multi-agent, opencode, audit]
 ---
 
@@ -27,6 +27,10 @@ tags: [forge, federation, seal, patch, multi-agent, opencode, audit]
 ```
 
 **Critical rule:** Re-probe after any claim about what a tool returned. Memory of output = stale. Wire = truth.
+
+**Limitation-fidelity invariant (F2/F9).** A patch that touches a handoff/transfer function must preserve ALL upstream limitation fields verbatim. The defect class: a function synthesizes a "validated" or "trusted" string from the *presence* of certain fields (e.g. `claim_id` + `verdict`) without checking whether upstream actually validated. Concretely: input carries `epistemic_state=UNKNOWN`, `evidence_status=UNSUPPORTED`, `confidence=0.2`, but the function rewrites `uncertainty="HERMES-validated (PASS)"` and silently drops the four limitation fields. The destination organ sees "validated" and trusts; the source said "unknown". F2/F9 law: may compress evidence, must not increase certainty, expand permission, or remove a limitation. Fix: forward every limitation field verbatim if present; if absent, record the absence in a `dropped[]` array with the field name (law: never silently dropped). Never synthesize certainty strings.
+
+**Test-bypass for heavy package __init__.** When the unit-test target file lives under a package whose `__init__.py` imports heavy deps that the test env does not have (e.g. `hermes_mcp/__init__.py` imports `fastmcp`), do NOT try to fix the test env. Load the target file directly with `importlib.util.spec_from_file_location`, attach a synthetic module entry to `sys.modules`, and stub the cross-module imports the file expects (`scan_injection`, `INSTITUTIONS`, `INTERIOR_STATES`, `_hits`). The unit test exercises the patched function in isolation; the live wire probe (Stage 6) exercises it through the full stack. Both passing = patch landed. Do not let "can't import the package" become a reason to skip unit tests for a file that is reachable by direct path.
 
 ### Stage 2: CLASSIFY — what tier is the fix?
 | Tier | Scope | Agent |
@@ -84,6 +88,8 @@ Run the same probe from Stage 1 against the deployed code. Assert the exact fiel
 - `coverage.ratio` moved from 0.0 to >0.0 (F1 type bug)
 - `shadow` field present in result when `shadow=True` (F2)
 - `kappa_r` varies between call modes (F3 — was constant before)
+
+**Patch falsifier discipline.** The falsifier for a handoff/transfer patch is not a generic round-trip test — it is the EXACT input shape from the original bug report (verbatim), re-run against the live system. If the bug was "claim with verdict=PASS but epistemic_state=UNKNOWN came out as uncertainty='HERMES-validated (PASS)'", the falsifier is THAT claim, with those field values, sent to the live MCP. The post-patch output must show: `epistemic_state` preserved, limitation fields forwarded verbatim, no synthesized certainty string, absence recorded in `dropped[]`. Unit tests prove the function in isolation; the live probe proves the wire. Both are required.
 
 **Unit tests are necessary but not sufficient.** Live wire verification is the SOVEREIGN_VERIFY discipline.
 
@@ -183,6 +189,5 @@ The federation may dispatch two coding agents (you + a sibling) to the same repo
 
 ## References
 
-## References
-
 - `references/wea-seal-2026-08-08.md` — full session transcript: 4-bug lifecycle from probe → OpenClaw audit → Kimi patch → opencode hit → manual completion → deploy → seal, including the exact `forge_vault` call shape and the `-32042` elicitation gate.
+- `references/handoff-falsifier-recipe.md` — reusable recipe for the F2/F9 limitation-fidelity invariant: the exact falsifier input shape, the in-isolation test pattern via `importlib.util.spec_from_file_location`, the live-wire MCP session handshake, and the structural fix. Load when patching any handoff, transfer, or cross-organ evidence-routing function.
