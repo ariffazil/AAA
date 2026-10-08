@@ -1,0 +1,130 @@
+{
+  "audit_id": "hermes-mcp-stability-audit",
+  "timestamp_utc": "2026-10-06T03:43:06Z",
+  "scope": "arif-fazil.com site + HERMES MCP + federation organs",
+  "verifier": "HERMES audit probe (MCP 2025-11-25)",
+  "result": {
+    "site_health": "healthy",
+    "site_pages_200": ["/", "/about", "/words", "/words/doctrine", "/makcikgpt", "/sitemap.xml", "/robots.txt", "/llms.txt", "/arifos/"],
+    "well_known_surfaces": ["mcp.json", "agent.json", "identity.json", "did.json", "ard.json", "ai-catalog.json", "webmcp.json", "policy.json"],
+    "hermes_mcp": {
+      "status": "healthy",
+      "version": "2026.09.25.1",
+      "authority": "RELAY_ONLY",
+      "execution_authorized": false,
+      "tools_total": 15,
+      "resources_total": 31,
+      "prompts_total": 10,
+      "tools_all_callable": true,
+      "resources_all_serve": true,
+      "prompts_register": 10,
+      "latency_p95_50_call_ms": 90,
+      "latency_avg_ms": 65.8,
+      "concurrency_5_sessions": "stable, all returned sessions",
+      "consistency_5_calls": "deterministic verdicts, deterministic claim_id (hash)"
+    },
+    "federation_organs": {
+      "arifos": "healthy",
+      "geox": "degraded (kernel_verdict=HOLD, 27 tools)",
+      "wealth": "healthy (15 tools, working_tree=DIRTY, semantic_gate=fail_closed)",
+      "well": "degraded",
+      "mcp_kernel": "healthy",
+      "aaa": "healthy",
+      "organs_alive": "6/6"
+    }
+  },
+  "defects": [
+    {
+      "id": "DEFECT-2026-10-06-HERMES-001",
+      "severity": "HIGH",
+      "tool": "hermes_retrieve",
+      "test": "31/31 calls return contents: []",
+      "cross_test": "same URIs via direct MCP resources/read return 100% with content",
+      "root_cause_hypothesis": "Tool wrapper does not forward resource contents on success path",
+      "fix_path": "Delegate hermes_retrieve to MCP resources/read handler",
+      "blast_radius": "low",
+      "reversibility": "high"
+    },
+    {
+      "id": "DEFECT-2026-10-06-HERMES-002",
+      "severity": "MEDIUM",
+      "tool": "hermes_scar_wisdom",
+      "test": "10/10 distinct queries return scar_count=0",
+      "diagnosis_needed": "scar file mount vs keyword matcher threshold",
+      "fix_path": "Step 1: confirm scar files mounted in runtime image. Step 2: trace matcher. Step 3: fix whichever is wrong.",
+      "blast_radius": "medium",
+      "reversibility": "high"
+    },
+    {
+      "id": "DEFECT-2026-10-06-HERMES-003",
+      "severity": "LOW",
+      "endpoint": "mcp.arif-fazil.com/mcp",
+      "test": "initialize response: 200 bytes=3126, NO mcp-session-id header",
+      "impact": "Stateless-only behavior inconsistent with MCP2025-11-25 standard",
+      "fix_path": "Either emit session-id on initialize OR document endpoint as stateless in .well-known/mcp.json",
+      "blast_radius": "low",
+      "reversibility": "high"
+    },
+    {
+      "id": "DEFECT-2026-10-06-HERMES-004",
+      "severity": "LOW",
+      "endpoints": [
+        "https://hermes.arif-fazil.com/api/health",
+        "https://hermes.arif-fazil.com/api/tools",
+        "https://hermes.arif-fazil.com/registry",
+        "https://hermes.arif-fazil.com/openapi.json",
+        "https://hermes.arif-fazil.com/docs",
+        "https://hermes.arif-fazil.com/.well-known/mcp.json",
+        "https://hermes.arif-fazil.com/.well-known/agent.json"
+      ],
+      "test": "All return 200 with 0-byte body",
+      "impact": "Spurious 200s hide real defects; agents may report 'OK' incorrectly",
+      "fix_path": "Either implement with real content, or return 404 fail-closed",
+      "blast_radius": "low",
+      "reversibility": "high"
+    }
+  ],
+  "external_paste_distillation": {
+    "source": "external AI review of arifOS",
+    "received_via": "user paste, post-audit",
+    "5_eurekas": [
+      "EUREKA-1: Trust ≠ capability → CONFIRMED in HERMES (RELAY_ONLY verified)",
+      "EUREKA-2: State > agent → CONFIRMED except mcp.arif-fazil.com session-id gap (DEFECT-003)",
+      "EUREKA-3: Scar ≠ memory → CONFIRMED defect (DEFECT-002) — empty scar library prevents empirical closure of adaptive loop",
+      "EUREKA-4: AGI is wrong target → out of HERMES scope, no claim made",
+      "EUREKA-5: Safety/liveness duality → confirmed but scar-wisdom scar-side is dead"
+    ],
+    "paste_verdict_rubric_match": {
+      "State model STRONG": "match",
+      "Trust model STRONG": "match",
+      "Governance model STRONG": "match",
+      "Safety/liveness STRONG": "partial (liveness gap in scar)",
+      "Capability taxonomy STRONG": "match",
+      "Agent definition STRONG": "match",
+      "Consciousness CORRECTLY HELD": "match",
+      "Emergence PARTIAL": "match — scar library empty prevents empirical proof",
+      "Empirical validation PARTIAL": "match — 50-call stress test insufficient for long-window validation",
+      "AGI NOT YET ESTABLISHED": "match — never claimed in HERMES outputs"
+    }
+  },
+  "apex_decision": {
+    "loop": "333-AGI → 555-ASI → 888-APEX",
+    "options_scored": {
+      "A_hermes_retrieve": {"UR": 2, "BR": 1, "HA": 1, "DR": 1, "APEX_X": 0.67},
+      "B_scar_library":    {"UR": 3, "BR": 2, "HA": 2, "DR": 2, "APEX_X": 0.50},
+      "C_both":            {"UR": 5, "BR": 3, "HA": 3, "DR": 3, "APEX_X": 0.56},
+      "D_save_close":      {"UR": 0, "BR": 0, "HA": 0, "DR": 0, "APEX_X": 0.00}
+    },
+    "rank": ["A_hermes_retrieve", "C_both", "B_scar_library", "D_save_close"],
+    "verdict": "SEQUENTIAL A first, then B with root-cause probe. C rejected (doubles deploy risk for +0.04 APEX.X over A). D rejected (LAW 9 violation).",
+    "rationale": "Stop-the-bleed first. A has clear fix path (delegate to working resources/read). B needs diagnosis (mount vs matcher) before deploy. Anti-Bangang LAW 8 = one problem, one owner, one path.",
+    "F13_sovereignty": "Pending F13 binary; audit is advisory evidence per F13-RATIFIED-CHAT"
+  },
+  "constitutional_floors_checked": {
+    "F2_truth": "PASS — all defects probed live, not asserted",
+    "F8_governance": "PASS — all proposed fixes reversible via deploy rollback",
+    "F9_anti_hantu": "PASS — no impersonation, no private state claims",
+    "F11_auditability": "PASS — audit receipt saved, artifact path included",
+    "F13_sovereignty": "PASS — audit advisory only; F13 binary required for execution"
+  }
+}

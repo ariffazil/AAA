@@ -1,5 +1,9 @@
 # Canonical pointers
 
+> **Class:** POINTER, not doctrine (Anti-Bangang LAW 3). This file is an index of
+> where canon lives — it declares nothing of its own and is not itself canon.
+> Truth for any linked artifact is the artifact, never this table.
+
 | Where | What |
 |---|---|
 | `/root/CLAUDE.md` | AAA-grade executor doctrine (EUREKA 6-plane, binding) |

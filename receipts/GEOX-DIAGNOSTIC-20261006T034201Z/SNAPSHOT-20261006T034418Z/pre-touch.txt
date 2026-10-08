@@ -1,0 +1,266 @@
+### HEAD (pre-touch)
+f043b761e3b11002a2ef1f1c229147af63de7465
+f043b761e3b11002a2ef1f1c229147af63de7465 2026-10-03 17:49:09 +0800 fix(chat): bounded-memory prune of rate/session state dicts (hardening GAP close)
+
+### git status --porcelain (pre-touch)
+ M apps/well-desk/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp
+
+### git stash create (pre-touch)
+d53dc38fe101f1191030fd0f5894e93f0e6d40ae
+
+### git diff (uncommitted, pre-touch)
+ apps/well-desk/index.html        | 30 +++++++++-----
+ src/geox_mcp/organ_governance.py | 16 +++++++
+ src/geox_mcp/server.py           | 90 +++++++++++++++++++++++++++++++++++++++-
+ src/geox_mcp/tool_tiers.py       | 40 ------------------
+ 4 files changed, 124 insertions(+), 52 deletions(-)
+
+### git diff (unstaged, pre-touch)
+diff --git a/apps/well-desk/index.html b/apps/well-desk/index.html
+index 86878b26..b2eefe8a 100644
+--- a/apps/well-desk/index.html
++++ b/apps/well-desk/index.html
+@@ -904,27 +904,35 @@
+       });
+ 
+       function publishImageToServer(base64Data, metadata) {
++        // 2026-10-05 FI-008 truth repair: geox_well_desk_publish is NOT on the
++        // live canonical 27 surface — the old call was rejected by RT1_GUARD and
++        // the success copy overclaimed "sealed on VAULT999" (GEOX never seals).
++        // Honest path: register desk state via the LIVE geox_well surface;
++        // the rendered panel stays a local export; immutable publishing runs
++        // through arifOS with authority — never from this page.
++        const dl = document.createElement('a');
++        dl.href = 'data:image/png;base64,' + base64Data;
++        dl.download = (metadata.well_id || 'welldesk') + '-panel.png';
++        document.body.appendChild(dl); dl.click(); dl.remove();
+         if (window.WELLDESK_MCP_BRIDGE && typeof window.WELLDESK_MCP_BRIDGE.requestTool === 'function') {
+-          showPublishBanner("Submitting tool call geox_well_desk_publish...");
+-          window.WELLDESK_MCP_BRIDGE.requestTool('geox_well_desk_publish', {
++          showPublishBanner("Panel exported locally. Registering desk state via geox_well·desk (governed surface)...");
++          window.WELLDESK_MCP_BRIDGE.requestTool('geox_well', {
++            mode: 'desk',
+             well_id: metadata.well_id,
+-            image_base64: base64Data,
+-            metadata: metadata
++            interpret: false
+           }).then(function(res) {
+             const sc = res?.structuredContent || res || {};
+             const payload = sc.result || sc;
+-            if (payload.ok) {
+-              showPublishBanner(`Success! Image sealed on VAULT999. Token: ${payload.seal_token}`);
++            if (payload && !payload.isError) {
++              showPublishBanner("Desk state registered via governed surface. Immutable sealing (if needed) runs through arifOS — this page exports evidence only.");
+             } else {
+-              showPublishBanner(`Error from server: ${payload.message || 'unknown'}`, true);
++              showPublishBanner(`Governed surface replied: ${(payload && (payload.message || 'rejected')) || 'unknown'} — local export stands.`, true);
+             }
+           }).catch(function(err) {
+-            showPublishBanner(`RPC error: ${err.message || String(err)}`, true);
++            showPublishBanner(`RPC error: ${err.message || String(err)} — local export stands.`, true);
+           });
+         } else {
+-          showPublishBanner("Standalone Mode: No MCP Bridge. PNG generated successfully (see console).");
+-          console.log("[WellDesk] Metadata:", metadata);
+-          console.log("[WellDesk] base64 (first 100 chars):", base64Data.slice(0, 100));
++          showPublishBanner("Standalone Mode: No MCP Bridge. Panel exported locally (PNG download).");
+         }
+       }
+ 
+diff --git a/src/geox_mcp/organ_governance.py b/src/geox_mcp/organ_governance.py
+index 5336f969..bc7fdf2c 100644
+--- a/src/geox_mcp/organ_governance.py
++++ b/src/geox_mcp/organ_governance.py
+@@ -444,6 +444,10 @@ MUTATION_TOOLS: set[str] = {
+     "geox_claim",  # mode=seal writes immutable claims
+     "geox_prospect",  # mode=seal writes sealed evaluations
+     "geox_subsection_model",  # model building mutates workspace state
++    # 2026-10-05 FI-008 red-team: registering tools ARE writes — the registry
++    # rows persist. Were unmapped → default C1 (proceeded anonymously).
++    "geox_register_native_source",  # writes SEG-Y source registry
++    "geox_calibration_register_witness",  # writes calibration witness registry
+ }
+ 
+ # Authority rank ordering (from session_enforcement.AUTHORITY_LEVELS)
+@@ -1106,6 +1110,18 @@ async def check_governance(
+         elif mode == "seal":
+             risk_tier = RiskTier.IRREVERSIBLE
+ 
++    # D6 (2026-10-05 FI-008 red-team): geox_spatial is mode-dispatched —
++    # lancedb_store mutates the embedded store (create/drop/insert tables);
++    # h3/stac/query modes are pure compute and stay anonymous per the
++    # 27-tool public doctrine. Canary test proved ungated lancedb_store
++    # executed anonymously (blocked only by lancedb being uninstalled).
++    if tool_name == "geox_spatial" and arguments:
++        effective = arguments
++        if isinstance(arguments.get("arguments"), dict):
++            effective = arguments["arguments"]
++        if str(effective.get("mode") or "").lower() == "lancedb_store":
++            risk_tier = RiskTier.C2_EXECUTE
++
+     # ═══ STEP 2: IDENTITY PROPAGATION (P0.1 — lane-aware) ══════════
+     id_verdict, id_error = _check_identity_propagation(tool_name, session_id, actor_id, arguments)
+     if id_verdict == "HOLD":
+diff --git a/src/geox_mcp/server.py b/src/geox_mcp/server.py
+index edbd3dda..88036312 100644
+--- a/src/geox_mcp/server.py
++++ b/src/geox_mcp/server.py
+@@ -2833,9 +2833,96 @@ class McpProtocolVersionMiddleware(BaseHTTPMiddleware):
+                 },
+                 status_code=400,
+             )
++
++        # === F13 SAH 2026-10-05: 2026-07-28 G0.7 RATCHET (SEP-2567) ===
++        # When client declares protocolVersion=2026-07-28, the Mcp-Method header
++        # is REQUIRED on POST (fail-closed). GET discovery passes through.
++        if version == "2026-07-28" and request.method == "POST":
++            mcp_method = request.headers.get("mcp-method")
++            if not mcp_method:
++                logger.warning(
++                    "G0_7_RATCHET: 2026-07-28 POST without Mcp-Method header from %s",
++                    request.client.host if request.client else "?",
++                )
++                return JSONResponse(
++                    {
++                        "jsonrpc": "2.0",
++                        "error": {
++                            "code": -32020,
++                            "message": "HeaderMismatch: Mcp-Method header is required on MCP 2026-07-28 requests (G0.7 ratchet, fail-closed)",
++                        },
++                    },
++                    status_code=400,
++                )
++
+         return await call_next(request)
+ 
+ 
++# === F13 SAH 2026-10-05: 2026-07-28 cacheable list (SEP-2549) ===
++# Augment tools/list responses with cacheScope + ttlMs + resultType so clients
++# can cache the tool catalog per the new spec. GEOX tool catalog changes only
++# on registry updates — 5-min private TTL is correct.
++class _CacheableListResponseMiddleware(BaseHTTPMiddleware):
++    """Augment tools/list responses with cacheScope + ttlMs per MCP 2026-07-28 SEP-2549.
++
++    Federation consistency. cacheScope=private (per-host), ttlMs=300000 (5 min).
++    """
++
++    async def dispatch(self, request: Request, call_next):
++        if request.method != "POST" or not request.url.path.startswith("/mcp"):
++            return await call_next(request)
++
++        # Peek body to detect tools/list
++        body = await request.body()
++        try:
++            req_data = json.loads(body)
++        except Exception:
++            return await call_next(request)
++
++        if req_data.get("method") != "tools/list":
++            return await call_next(request)
++
++        # Replay the body for downstream (BaseHTTPMiddleware consumed it)
++        async def replay_receive():
++            return {"type": "http.request", "body": body, "more_body": False}
++
++        request._receive = replay_receive
++
++        response = await call_next(request)
++
++        # Read + augment response body
++        try:
++            chunks = []
++            async for chunk in response.body_iterator:
++                chunks.append(chunk if isinstance(chunk, bytes) else chunk.encode())
++            full_body = b"".join(chunks)
++        except Exception:
++            return response
++
++        try:
++            data = json.loads(full_body)
++            result = data.get("result")
++            if isinstance(result, dict) and "tools" in result and "cacheScope" not in result:
++                result["cacheScope"] = "private"
++                result["ttlMs"] = 300000
++                result["resultType"] = "complete"
++                new_body = json.dumps(data).encode("utf-8")
++                new_resp = JSONResponse(
++                    content=json.loads(new_body),
++                    status_code=response.status_code,
++                )
++                for k, v in response.headers.items():
++                    if k.lower() not in ("content-length", "content-type"):
++                        new_resp.headers[k] = v
++                new_resp.headers["content-length"] = str(len(new_body))
++                logger.debug("CACHEABLE_LIST: augmented tools/list with cacheScope=private ttlMs=300000")
++                return new_resp
++        except Exception as e:
++            logger.debug("CACHEABLE_LIST: response augmentation skipped: %s", e)
++
++        return response
++
++
+ # ═══════════════════════════════════════════════════════════════════════════════
+ # HEALTH & STATUS HANDLERS
+ # ═══════════════════════════════════════════════════════════════════════════════
+@@ -3996,7 +4083,8 @@ def create_app():
+     # MCP spec compliance middlewares — outermost to innermost:
+     #   OriginValidation → McpAuth → McpProtocolVersion → EarthAnchor → SlashRewrite → routes
+     app.add_middleware(McpLifecycleMiddleware)  # Phase A1: init → initialized → tools/call
+-    app.add_middleware(McpProtocolVersionMiddleware)  # MCP spec §Transport: version header
++    app.add_middleware(McpProtocolVersionMiddleware)  # MCP spec §Transport: version header (incl. G0.7 ratchet)
++    app.add_middleware(_CacheableListResponseMiddleware)  # 2026-07-28 cacheable list (SEP-2549)
+     app.add_middleware(McpAuthMiddleware)  # MCP spec §Security: Bearer token
+     app.add_middleware(OriginValidationMiddleware)  # SEP-2243: DNS rebinding guard
+     # D7 ACCEPT-NEGOTIATION (2026-08-01): outermost — intercept GET /mcp*
+diff --git a/src/geox_mcp/tool_tiers.py b/src/geox_mcp/tool_tiers.py
+deleted file mode 100644
+index 9159791f..00000000
+--- a/src/geox_mcp/tool_tiers.py
++++ /dev/null
+@@ -1,40 +0,0 @@
+-"""Tool tier classification — by what the call TOUCHES, not by organ name."""
+-
+-TOOL_TIERS = {
+-    # Anon: pure functions, caller-supplied inputs only
+-    "anon": {
+-        "geox_temporal",
+-        "geox_source",
+-        "geox_seismic_compute",
+-        "geox_geomechanics",
+-        "geox_basin",
+-        "geox_deep_time",
+-        "geox_map",
+-        "geox_spatial",
+-        "geox_model",
+-        "geox_prospect",
+-    },
+-    # Session: server-held artifacts, workspace state
+-    "session": {
+-        "geox_workspace",
+-        "geox_well",
+-        "geox_well_qc",
+-        "geox_petrophysics",  # stateless modes are anon, but tool is session
+-        "geox_seismic_interpret",  # reads existing interpretations
+-    },
+-    # Verified: ingest, mutations, seal, vault writes
+-    "verified": {
+-        "geox_well_ingest",  # write mode
+-        "geox_claim",  # seal mode
+-        "geox_seismic_ingest",  # write mode
+-    },
+-}
+-
+-
+-def get_tool_tier(tool_name: str) -> str:
+-    """Returns 'anon', 'session', or 'verified' for a given tool."""
+-    if tool_name in TOOL_TIERS["verified"]:
+-        return "verified"
+-    if tool_name in TOOL_TIERS["session"]:
+-        return "session"
+-    return "anon"  # default to anon for unknown tools

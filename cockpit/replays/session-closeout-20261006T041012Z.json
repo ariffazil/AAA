@@ -1,0 +1,71 @@
+{
+  "audit_id": "session-closeout-2026-10-06T04",
+  "timestamp_utc": "2026-10-06T04:10:12Z",
+  "session": "hermes-mcp-stability-audit + cleanup",
+  "result": "SEALED",
+  "verdict": "GREEN - all defects resolved or documented",
+  "actions_taken": [
+    {
+      "id": "audit-v1",
+      "what": "Initial audit identified 4 defects (DEFECT-001..004)",
+      "artifact": "/root/AAA/cockpit/replays/hermes-mcp-stability-audit-20261006T034306.json"
+    },
+    {
+      "id": "audit-v2",
+      "what": "Re-verified with raw output: DEFECT-001 + DEFECT-002 were false positives",
+      "artifact": "/root/AAA/cockpit/replays/hermes-mcp-stability-audit-20261006T034345.json"
+    },
+    {
+      "id": "agi-asi-apex-loop",
+      "what": "Decision artifact: A first (APEX.X=0.67), then B with root cause",
+      "artifact": "/root/AAA/cockpit/replays/agi-asi-apex-fix-decision-20261006T034345.json"
+    },
+    {
+      "id": "external-paste-distillation",
+      "what": "Reflected 320-line external AI review; mapped 5 EUREKAs to HERMES",
+      "verdict": "Paste verdict rubric matches live audit verdict"
+    },
+    {
+      "id": "DEFECT-004-fix-caddy",
+      "what": "Added explicit 404 handlers in /etc/caddy/vhosts/hermes.arif-fazil.com.conf",
+      "live_verified": "All 7 routes return 404 with JSON body",
+      "snapshot": "/root/infra/caddy/snapshots/Caddyfile.20261006T120931Z",
+      "commit": "3e34950",
+      "branch": "main (local-only)"
+    },
+    {
+      "id": "DEFECT-003-fix-doc",
+      "what": "Documented stateless mode in /var/www/html/.well-known/mcp.json",
+      "live_verified": "GET returns transport.session_mode=stateless",
+      "commit": "bb05c66",
+      "branch": "site/harden",
+      "push_verified": "ls-remote origin/site/harden = bb05c669994d38dad07afc27a2f8a708d49d72b9"
+    }
+  ],
+  "constitutional_floors_checked": {
+    "F2_truth": "PASS - false positives re-verified with raw output",
+    "F8_governance": "PASS - fixes reversible via deploy rollback",
+    "F9_anti_hantu": "PASS - no impersonation",
+    "F11_auditability": "PASS - 4 receipts saved",
+    "F13_sovereignty": "PASS - audit advisory; F13 binary respected"
+  },
+  "remaining_open_items": [
+    {
+      "id": "DEFECT-003-stateless-fix",
+      "what": "Optionally add session-id emission to mcp.arif-fazil.com/mcp for full spec compliance",
+      "priority": "LOW"
+    }
+  ],
+  "gitwrap_summary": {
+    "arif-fazil.com": {
+      "commit": "bb05c66",
+      "branch": "site/harden",
+      "push_status": "verified via ls-remote"
+    },
+    "infra/caddy": {
+      "commit": "3e34950",
+      "branch": "main (local-only, no remote)",
+      "snapshot": "snapshots/Caddyfile.20261006T120931Z"
+    }
+  }
+}
