@@ -1,0 +1,29 @@
+# /etc/systemd/system/earth-witness-chat.service
+[Unit]
+Description=GEOX Earth Witness Chat proxy (Gate 6 Class-B — ARIF APPROVE 2026-10-03)
+After=network.target geox-mcp.service
+
+[Service]
+Type=simple
+User=geox-chat
+Group=geox-chat
+WorkingDirectory=/opt/geox
+ExecStart=/opt/geox-chat-venv/bin/python -m uvicorn chat.server:app --host 127.0.0.1 --port 8765
+Environment=GEOX_MCP_URL=http://127.0.0.1:8081/mcp
+Environment=EARTH_WITNESS_DAILY_BUDGET=200
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+# EARTH_WITNESS_MCP_TOKEN set via credentials dir if the organ enables auth
+Environment=PYTHONPATH=/opt/geox/src
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+ReadWritePaths=
+MemoryMax=512M
+CPUQuota=50%
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

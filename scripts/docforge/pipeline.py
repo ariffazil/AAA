@@ -23,6 +23,15 @@ THE ITEM SOURCE IS INJECTED, NOT HARDCODED
   serve a Malaysia brief, a WEALTH brief, and a GEOX brief without forking —
   and it is why the intelligence work can improve without touching the
   rendering, gating, sealing, or dispatch path.
+
+THE ONE EXCEPTION, AND WHY IT IS AN EXCEPTION
+  docforge.sections computes four sections — MODEL_CHANGE, PREDICTION_LINEAGE,
+  SURVIVORS_AND_NEWCOMERS, LEARNING_RECEIPT + CALIBRATION_WITNESS — directly out
+  of the CHRON and AAA stores on every build. They are NOT injectable, and an
+  item that claims one of those section names is a schema violation. Injection is
+  right for judgement and wrong for arithmetic: the live /999/ page served
+  "0.088" against an SOT of 0.14881943646798773 because a number was authored
+  instead of read. AAA::EDITION_RENDER_CONTRACT::v1.3 Peraturan Sifar #4.
 """
 from __future__ import annotations
 
@@ -50,7 +59,7 @@ def validate_items(items: list[dict]) -> list[str]:
     Reporting one error at a time turns a 20-item producer bug into 20 build
     cycles. All of them at once is one edit.
     """
-    from .state import CLAIM_STATES, SECTIONS
+    from .state import CLAIM_STATES, COMPUTED_SECTIONS, SECTIONS
     problems: list[str] = []
     seen: set[str] = set()
     for i, it in enumerate(items):
@@ -69,7 +78,12 @@ def validate_items(items: list[dict]) -> list[str]:
                                 "this, so a collision merges two claims into one")
             seen.add(iid)
         sec = it.get("section")
-        if sec and sec not in SECTIONS:
+        if sec and sec in COMPUTED_SECTIONS:
+            problems.append(
+                f"{where}: section {sec!r} is COMPUTED from SOT at render time "
+                "(AAA::EDITION_RENDER_CONTRACT::v1.3) — an agent-authored item may "
+                "not claim it. A typed number is how '0.088' reached a live page.")
+        elif sec and sec not in SECTIONS:
             problems.append(f"{where}: section {sec!r} not in {SECTIONS}")
         st = (it.get("claim_state") or "").upper()
         if st and st not in CLAIM_STATES:
@@ -230,12 +244,32 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
         "ok": True, "standing_rules": len(fb.active()),
         "rules_file": str(rules_path),
     }
+
+    # 3b. the contract's four COMPUTED sections (AAA::EDITION_RENDER_CONTRACT::v1.3,
+    # F13 SAH 2026-10-08). Read out of the stores HERE, by code, on this build —
+    # never injected by the prompt that authors the items above. They are placed
+    # before the authored register so a reader meets the measured state before the
+    # narrative about it, and their numbers are armed as g_sot_truth assertions
+    # below so the gate chain checks the built PDF against the same SOT.
+    from . import sections as sectionsmod
+    computed = sectionsmod.compute_sections(today=date)
+    receipt["stages"]["computed_sections"] = {
+        "ok": not computed.errors,
+        "errors": computed.errors,
+        "assertions_armed": len(computed.assertions),
+        "must_contain": computed.must_contain,
+        "snapshot": computed.snapshot,
+    }
+    (run_dir / f"{edition}.sections-snapshot.json").write_text(
+        json.dumps(computed.snapshot, indent=2))
+
     # No hard page-break between the front matter and the register. A forced
     # break after a short Standing Instructions block leaves a near-empty page
     # on its own, which the ink_present gate correctly refuses as an orphan
     # (EDITION-008 refusal, 2026-09-23). Let content flow decide the break.
     body = (render_delta_html(delta, prev_edition)
             + render_rules_html(fb)
+            + computed.html
             + render_items_html(items))
     src = run_dir / "content.html"
     src.write_text(body)
@@ -247,7 +281,13 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
         "template": template, "theme": theme, "source": str(src),
         "run_dir": str(run_dir),
         "gates": {"profile": "print-light", "forbid_paths": True,
-                  "cover_orphan_exempt": True},
+                  "cover_orphan_exempt": True,
+                  # ARM THE GATE. g_sot_truth is opt-in: with no assertions it
+                  # passes by saying nothing was claimed, so an unarmed build is
+                  # a build with no truth check at all. These come from the same
+                  # live read that produced the HTML, through the same formatter.
+                  "sot_assertions": computed.assertions,
+                  "must_contain": computed.must_contain},
         "stats": {
             "new": len(delta.new), "moved": len(delta.moved),
             "reopened": len(delta.reopened), "still_open": len(delta.still_open),

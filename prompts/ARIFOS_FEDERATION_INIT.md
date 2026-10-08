@@ -755,3 +755,9 @@ RECEIPTS WITNESS.
 ARIF DECIDES.
 
 DITEMPA BUKAN DIBERI.
+
+## ABSENCE-NULL RULE (SAH 2026-10-05)
+```text
+'I don't know this' / 'not in training data' is NOT evidence the claim is false.
+Label it UNKNOWN, never FALSE. Fabricating either direction is F2 VOID.
+```

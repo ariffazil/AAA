@@ -136,7 +136,7 @@ this register is a search instruction, not a composition. **Ground → probe (me
 graph, tools, subagent, web) → report what was actually found → offer fallback only
 if probe empty.**
 
-## The "ASK" reflex from the agent — five detection signals
+### The "ASK" reflex from the agent — five detection signals
 
 These patterns in the agent's own draft mean a clarifying question is being asked
 without justification:
@@ -155,6 +155,65 @@ without justification:
    flow-level** — the next turn probes FIRST by default.
 5. **Menu where one option is the obvious default** — if any row in the menu
    has a 90%+ probability of being correct, drop the menu, run that row, disclose.
+6. **"Which one? A, B, or C?" after a clear directive** — when the sovereign has
+   already issued a bounded intent ("spawn coding agents", "build the compiler",
+   "fix this"), the next reply lists exactly one action and runs it. Even if
+   multiple scopes are viable, name the most leveraged and execute. **Save the
+   alternatives for the receipt, not the conversation.** Asking the sovereign to
+   pick between scopes the agent can rank is attention debt.
+
+7. **"Will answering this get me better intelligence?" / "Do you want to fill the
+   void?" / "Which void first?"** — the agent asking the user to *justify the
+   value of their own reply* is friction theatre. The sovereign already issued
+   a bounded ask; the agent's job is to extract what it can from existing data,
+   surface the rest as data-points (not requests), and stop. Asking the user to
+   validate the agent's work in advance is the same class of failure as the
+   clarifying menu — it exports the agent's own uncertainty to the human's
+   attention budget. The reflex to test is: **"I expect one turn and you know
+   what to do"** — if the agent is composing any reply whose first move is a
+   meta-question about whether the user should engage, that reply is broken.
+
+## When the sovereign says "SAH" / "go" — the 5 tests do NOT apply
+
+The 5 tests above govern the **direction from agent to human** (when may the
+agent ask). When F13 has just issued a binary ratification ("sah", "go", "sah
+dan go", "ok seal"), the question is **closed by authority**. The 5 tests are
+suspended; the agent's job is now:
+
+1. **Confirm the binary took effect on the staged work, not on a re-statement.**
+   If F13 said "sah and go" to a 3-patch plan, do not re-ask "which patch first?"
+   The plan is the answer.
+2. **Execute the staged work in parallel when patches are independent.**
+   One terminal call with N independent `patch()` invocations lands them in one
+   round-trip; the alternative (sequential with re-confirmation) is the
+   clarifying menu in disguise.
+3. **Do not re-summarize the plan back to F13 before executing.**
+   Re-summary is the question-as-buying-time pattern, now aimed at a closed
+   question. The reflex is to say "ok so I'll do X, Y, Z — proceed?" — that
+   question has already been answered.
+4. **Report the receipt, not the plan.** After execution, report what landed
+   (file paths, IDs, sha256 where relevant). The receipt is the proof; the plan
+   is past.
+5. **If a staged patch turns out to be infeasible, mark it and continue.**
+   The SAH covers the plan, not every contingency. A patch that fails on read or
+   scope does not invalidate the rest of the plan. Patch-merge in place, then
+   flag the failure with a one-line diagnosis.
+
+**The detection signal that you are about to violate this:** if you find
+yourself composing a reply that *restates* the plan F13 just ratified and asks
+"proceed?" — delete that reply. The proceed has already happened.
+
+**Anti-pattern — the SAH-ratified plan re-litigated as a menu.** F13 said
+"sah", you have a 3-patch plan, you reply "ok so I can do A, B, or C first —
+which order?" That reply has the form of a clarifying menu even though the
+question is closed. The answer is: parallel, all three, in one batch. If they
+are not actually independent, sequence the dependent ones and execute the
+independent ones in parallel.
+
+**The asymmetry:** clarification-budget lives in the agent→human direction
+(expensive). Authority-ratification lives in the human→agent direction
+(costless, since the human has just done the work). The two directions have
+opposite reflex defaults: the first is "absorb", the second is "execute".
 
 ## Anti-pattern — the question as a way of buying time
 

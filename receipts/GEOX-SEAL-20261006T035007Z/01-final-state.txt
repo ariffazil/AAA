@@ -1,0 +1,62 @@
+=== FINAL STATE — /opt/geox ===
+HEAD       : 3c2d4dc1ab5f3ccf9c1ef257756b52b98bee689b
+HEAD msg   : Merge remote-tracking branch 'origin/main'
+HEAD date  : 2026-10-06 11:49:37 +0800
+
+git log --oneline -5
+3c2d4dc1 Merge remote-tracking branch 'origin/main'
+da0a20af fix(earth-witness): render HOLD envelope on /api/observe 502 instead of 'no JSON' BM copy
+8c992509 chore(deps)(deps): bump the mcp-stack group across 1 directory with 2 updates (#199)
+7c98c000 chore(deps)(deps): bump plotly from 6.9.0 to 7.1.0 (#194)
+858fc099 chore(deps)(deps): bump mcp from 1.29.0 to 2.2.0 (#203)
+
+origin/main HEAD : 3c2d4dc1ab5f3ccf9c1ef257756b52b98bee689b
+local main HEAD  : 3c2d4dc1ab5f3ccf9c1ef257756b52b98bee689b
+ahead/behind     : 0	0
+
+=== service state (live) ===
+active
+MainPID=4182188
+ActiveEnterTimestamp=Tue 2026-10-06 11:45:40 +08
+
+=== last live T1-T6 probes (verbatim from FINAL receipt) ===
+T1 400 → {"detail":"image upload required"}
+T2 415 → {"detail":"only jpg, png, webp, pdf allowed"}
+T3 413 → {"detail":"file exceeds 10 MB limit"}
+T4 429 → HOLD envelope (request_id, retry_after_ms, health_url)
+T5 served HTML contains function renderHold — confirmed
+T6 /health responsive — status=degraded kernel=HOLD tools_loaded=27 surface_ok=True
+
+=== receipts this session ===
+/root/AAA/receipts/GEOX-SEAL-20261006T035007Z:
+total 4
+-rw-r--r-- 1 root root 1283 Oct  6 11:50 01-final-state.txt
+
+/root/AAA/receipts/GEOX-PUSH-20261006T034937Z:
+total 16
+-rw-r--r-- 1 root root  971 Oct  6 11:49 push-result.txt
+-rw-r--r-- 1 root root 2318 Oct  6 11:49 merge-pre.txt
+-rw-r--r-- 1 root root  238 Oct  6 11:49 merge-result.txt
+-rw-r--r-- 1 root root  187 Oct  6 11:49 STATUS-PRE.txt
+
+/root/AAA/receipts/GEOX-PUSH-20261006T034842Z:
+total 12
+-rw-r--r-- 1 root root 1687 Oct  6 11:48 post-commit.txt
+-rw-r--r-- 1 root root 4766 Oct  6 11:48 pre-commit.txt
+
+/root/AAA/receipts/GEOX-FINAL-20261006T034737Z:
+total 16
+-rw-r--r-- 1 root root 3334 Oct  6 11:47 housekeeping.txt
+-rw-r--r-- 1 root root 1078 Oct  6 11:47 TEST.txt
+
+=== carry-forward F13 binaries (parked, NOT auto-routed) ===
+F13-1: Content-Length RuntimeError on POST /mcp (5,602/day in uvicorn httptools_impl.py:552)
+       Live, ongoing; does NOT block user observe flow.
+F13-2: Cloudflare plan tier / 524 ceiling — unverified, no host reach.
+F13-3: /opt/geox dirty tree — 5 uncommitted entries (1 deletion: tool_tiers.py).
+       Untouched by this session; bundle snapshot at /root/AAA/receipts/GEOX-DIAGNOSTIC-20261006T034201Z/SNAPSHOT-20261006T034418Z/opt-geox-uncommitted.bundle still verified-restorable.
+F13-4: /opt/geox ↔ /root/GEOX divergence — resolved by F13-5 if you choose to consolidate trees.
+F13-5: Should /root/GEOX be the canonical source-of-truth? Currently both trees exist;
+       this session's commit lives on /opt/geox only.
+F13-6: GitHub Dependabot — 72 vulnerabilities on default branch (3 critical, 25 high).
+       Not introduced by this session; pre-existing. Pre-commit gates surfaced but did not block.
