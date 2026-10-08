@@ -74,6 +74,8 @@ Before handing any payload to ACT, APA enforces:
 | **GitHub** | 18095 | REST API | `apa-github-bridge.service` | No |
 | **Telegram** | 18096 | Bot API | `apa-telegram-bridge.service` | **Yes — F13 veto lane** |
 
+> **STALE (2026-10-04):** §3 lists the original 4-bridge design. Live count is **8 active + 1 inactive** — email (18093), gemini (18092), telegram (18096), gws (18098), gmail (18097), drive (18099), calendar (18094), sheets (18075). `apa-github-bridge` is `inactive/dead` on 18095 since 2026-10-03 14:15 MYT. Per Grok brief at `/root/AAA/inbox/COMPOSIO-APA-2026-10-04.md`. `apa_version` field returns `"2.0"` live, not `"1.0"`. STATE.md is SOT.
+
 All bridges return `apa_version: "1.0"` in `/health`. All bind `127.0.0.1` only.
 
 ---
