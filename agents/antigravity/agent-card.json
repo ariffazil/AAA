@@ -1,5 +1,5 @@
 {
-  "$schema": "arifOS/agent-card/v2.1.0",
+  "$schema": "arifOS/agent-card/v2.3.0",
   "id": "antigravity",
   "name": "Antigravity CLI (Google agy)",
   "principal_agent": {

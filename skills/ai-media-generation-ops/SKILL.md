@@ -463,10 +463,62 @@ There is **no second Malay male voice** in edge-tts. The voice persona is fixed/
 
 | Route | Voices | Status (2026-08-13) |
 |---|---|---|
-| edge-tts | Osman / Yasmin only (free) | ✅ default |
+| edge-tts | `ms-MY-OsmanNeural` (MALE — Penang register, F13-critic default) / `ms-MY-YasminNeural` (FEMALE) | ✅ default |
 | MiniMax 2.8 HD via MuleRouter | large catalog + cloning, clearer BM | ⚠️ needs balance (was negative) |
 | Qwen TTS `longxiaochun` | several | ⚠️ Token-Plan quota exhausted |
 | MiMo / ElevenLabs / Gemini / XAI / Mistral | many + voice design | needs API key |
+
+**Persona-voice coherence (F13-audit lesson, 2026-10-07):** Match the TTS
+voice gender/age to the script's subject gender/age. A hyper-masculine
+protector script delivered by a female TTS voice breaks semantic immersion
+(F9 anti-hantu boundary). Default heuristic when no explicit voice is
+specified: read the script's subject; if subject is unambiguously male,
+use `ms-MY-OsmanNeural`; if female, `ms-MY-YasminNeural`; if ambiguous,
+ask. `i-ARIF V9 sovereign voice` is male and lives on MiniMax
+`speech-2.6-hd` with `male-qn-qingse` voice_id — use that for any
+sovereign-voice lane. Verified end-to-end 2026-10-07: T2I sado + edge-tts
+`ms-MY-OsmanNeural` (Rate +2%, Pitch -4Hz) + 9:16 Ken Burns + ASS subs →
+1.5MB MP4 sent to Telegram.
+
+### SOT-driven model selection (federation_route.py, added 2026-10-07)
+
+Hardcoding `gemini-3-pro-image` or `wan2.7-image-pro` in a script
+silently rots when the lane goes 402/429. The canonical router is
+`/root/.hermes/skills/_lib/federation_route.py` — its `route(capability, ...)`
+function reads `/root/.config/federation-models.json` (FED SOT) and returns
+the best live candidate. `invoke(capability, payload, probe_first=True)`
+adds runtime HTTP probing to demote stale SOT entries. Use this instead of
+naming models in skill bodies. RCR (Release Change Ratio) = 1 SOT edit
+per model release, not N skill rewrites.
+
+**Known SOT_GAP_NOTES (verify before relying on these SOT entries):**
+- `dashscope-free-quota/wan3.0-video-prime` says LIVE per wire_receipt
+  2026-10-01, but actual probe returns 404 on current QWEN_HERMES key —
+  the receipt was on a rotated-out key. Use `probe_first=True` or pick
+  a different lane until the SOT is patched.
+- All `gemini/gemini-*-image` and `gemini/veo-*` models: SOT says ACTIVE
+  per `models_get` HTTP 200, but image/video inference returns 402
+  prepay credits exhausted. Provider liveness ≠ inference credit.
+- `mimo/mimo-v2.5-tts`: 429 quota exhausted on Token Plan, 402 balance
+  on PAYG. Real TTS winner tonight was `minimax/speech-2.6-hd` via
+  `/v1/t2a_v2` endpoint (hex-audio response, decode + save).
+- `dashscope-payg/qwen-image-2.0` says UNREACHABLE_403_PENDING_PAYMENT,
+  but the model is actually live on the Token Plan free-quota lane
+  with `qwen-image-2.0` returning HTTP 200 + 1.5MB image. SOT
+  provider_ref prefix is wrong; use `live_probe` to demote the 403
+  entry and pick the correct prefix.
+
+**Local backends (Tier 0 — run before any cloud call, no quota cost):**
+- `edge-tts` (always available, male Nusantara `ms-MY-OsmanNeural` is
+  the routing layer's local TTS default — 60KB MP3, 10s, 24kHz verified
+  2026-10-07). Use `federation_route.edge_tts(text, voice='ms-MY-OsmanNeural',
+  rate='+2%', pitch='-4Hz', output_path=...)`.
+- Ollama on `http://100.64.0.5:11434` (live, 6ms). Local chat / routing-logic
+  LLM. NO multimodal generation (CPU-only, no GPU).
+- ComfyUI / XTTSv2 / Wan2.1 / CogVideoX: **NOT deployed** on this box
+  (no GPU, no weights on disk). Catalog `federation_route.local_backends()`
+  for status. Acquisition is a separate 2-4-week curator project once
+  a GPU host (RunPod A100 / HIB) is approved.
 
 **Qwen TTS is WebSocket-ONLY (dashscope SDK), NOT HTTP REST.** The REST path
 `{base}/compatible-mode/v1/audio/speech` returns **404**. Use:

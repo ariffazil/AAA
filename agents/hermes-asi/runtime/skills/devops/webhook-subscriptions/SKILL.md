@@ -35,7 +35,7 @@ platforms:
     enabled: true
     extra:
       host: "0.0.0.0"
-      port: 8644
+      port: ${WEBHOOK_PORT}
       secret: "generate-a-strong-secret-here"
 ```
 
@@ -43,7 +43,7 @@ platforms:
 Add to `~/.hermes/.env`:
 ```bash
 WEBHOOK_ENABLED=true
-WEBHOOK_PORT=8644
+WEBHOOK_PORT=<set-your-port>
 WEBHOOK_SECRET=generate-a-strong-secret-here
 ```
 
@@ -56,7 +56,7 @@ systemctl --user restart hermes-gateway
 
 Verify it's running:
 ```bash
-curl http://localhost:8644/health
+curl http://localhost:${WEBHOOK_PORT}/health
 ```
 
 ## Commands
@@ -197,7 +197,7 @@ Requires `--deliver` to be a real target (telegram, discord, slack, github_comme
 If webhooks aren't working:
 
 1. **Is the gateway running?** Check with `systemctl --user status hermes-gateway` or `ps aux | grep gateway`
-2. **Is the webhook server listening?** `curl http://localhost:8644/health` should return `{"status": "ok"}`
+2. **Is the webhook server listening?** `curl http://localhost:${WEBHOOK_PORT}/health` should return `{"status": "ok"}`
 3. **Check gateway logs:** `grep webhook ~/.hermes/logs/gateway.log | tail -20`
 4. **Signature mismatch?** Verify the secret in your service matches the one from `hermes webhook list`. GitHub sends `X-Hub-Signature-256`, GitLab sends `X-Gitlab-Token`.
 5. **Firewall/NAT?** The webhook URL must be reachable from the service. For local development, use a tunnel (ngrok, cloudflared).
