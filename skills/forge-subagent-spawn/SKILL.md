@@ -127,5 +127,37 @@ OpenClaw spawns sub-agents via `sessions_spawn`. The template fields map:
 | `output_schema` | Included in `task` string as "Return ONLY valid JSON matching schema: ..." |
 | `autonomy_band` | Enforced by E7 in arifOS kernel |
 
+## Pitfalls
+
+- **Treat silent zero-result as a failure, not a quiet success.** When `delegate_task` returns no
+  transcript, no commit, no output file by `time_budget_minutes`, the sub-agent died silently — not
+  finished cleanly. Recover with an in-context branch+commit probe (`git log <branch> --oneline`,
+  `git diff main..<branch> --stat`); if the work landed, claim it; if empty, take over directly.
+  "Nothing returned" ≠ "all good" — verify the filesystem, not the runtime's exit.
+
+- **Multi-imperative ask = parallel, not sequential.** When a user message contains two or more
+  imperatives ("Spawn Y, then exercise Z" / "do A and show me C"), do NOT invent a confirmation gate
+  between them. Both are part of the same ask — execute them in the same turn. Treating them as a
+  pipeline (do A, then ask "OK now?", then do B) burns user attention and signals a comprehension
+  failure.
+
+- **Partial names + confident date slots fabricate, not remember.** When the user names a person by
+  partial identifier (surname only, surname + role, no organisation) and the turn requires a tenure
+  or date claim, do not populate the slot from parametric memory. Probe-first via `zai_search`
+  before rendering any number. If the probe returns zero hits, label the candidate `UNVERIFIED` and
+  ask the user for the full identifier — do not paper over with a plausible-looking date.
+
+## Recovery Checklist (silent-drop)
+
+1. `delegate_task` returns empty / no transcript / not in active children list.
+3. Do not retry the same sub-agent spawn — same inputs, same defect.
+4. `git log <branch> --oneline` — does the work exist on the named branch?
+5. `git diff main..<branch> --stat` — has anything actually changed?
+6. `git status --short` in the target workdir — any uncommitted work?
+7. If yes on any of 4-6: claim the landed work and report "subagent surfaced via prior commit".
+8. If no on all of 4-6: take over in-context. Read the wiring points the sub-agent would have
+   read, write the patch yourself, commit Arif-author.
+9. Report what the runtime says ("subagent silent-drop recovered via in-context") — not "all good".
+
 ## F2 Note
 This template does not enforce constraints programmatically — it's a contract for human + agent behavior. The arifOS kernel enforces autonomy bands via E7. OpenClaw enforces via constitutional discipline.

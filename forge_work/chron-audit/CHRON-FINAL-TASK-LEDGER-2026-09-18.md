@@ -270,3 +270,60 @@ Same pattern: GEOX ≠ GEOX MCP · WELL ≠ WELL MCP · WEALTH ≠ WEALTH MCP ·
 ---
 
 DITEMPA BUKAN DIBERI ⚒️
+
+
+---
+
+## 13. RECONCILIATION NOTE (2026-10-06, FI-008 probe, A2-refine)
+
+Per Pintu A refine on 2026-10-06, the live state of the prediction store was probed
+and found to differ from the 2026-09-18 ledger snapshot. The ledger is preserved as the
+design intent; the live counts below are the reality.
+
+| Task | Ledger claim (2026-09-18) | Live measurement (2026-10-06) | Verdict |
+|------|---------------------------|-------------------------------|---------|
+| T1 observe | PARTIAL — ranking engine alive, change detection not formalized | unchanged | ack |
+| T2 prioritize | ALIVE | active()=46 (arif) / 16 (shared) | ack |
+| T3 predict | **UNBUILT** | `predictions.jsonl` = 88 rows; ACTIVE=59 · VERIFIED=4 · CORRECT=1 · SUPERSEDED=3 · UNBOUND=18 · VOIDED_SECTION_12=3 | **ALIVE** — ledger stale |
+| T4 verify | UNBUILT, gated on T3 | 4 VERIFIED predictions exist (brier recorded) | **PARTIAL** — verify cycle runs, T5 still UNBUILT |
+| T5 learn | UNBUILT, gated on T4 | 4 lessons in `lessons.jsonl` — but all are placeholders (see A3-reconcile below) | **UNBUILT** — placeholder-only |
+| Calibration | none | total=17 correct=11 accuracy=0.716 brier=0.183 | ALIVE |
+
+**Decision items still open:**
+- D1 GO/HOLD binary — **deferred**: with T3 already ALIVE and 17 verified predictions, the
+  hypothesis-on-paper state described in §6 (Maturity Assessment) no longer matches reality.
+  Re-classify: CHRON is a partially-built temporal intelligence substrate, not a hypothesis.
+  Decision needed: continue building T4/T5, or freeze scope at T1-T3 + calibration.
+- D2 first prediction — **superseded by 88 already-issued predictions**. The "smallest
+  meaningful next step" (§7) was executed at scale, not as a single artefact.
+- D3 cron naming — untouched, deferred.
+
+**DITEMPA BUKAN DIBERI ⚒️**
+
+
+---
+
+## 14. PINTU B CLOSURE — T3→T4 EXECUTED (2026-10-06 08:57 MYT)
+
+Following Pintu A refinement, Pintu B was executed in the same session:
+1. Built `/root/AAA/scripts/chron_verify_cycle.py` (~360 lines, script mode, no new dependencies)
+2. Probed live market state via WEALTH MCP (capital_market, mode=commodity/fx)
+3. Ran the cycle. 23 predictions DUE; 4 scored, 19 left for follow-up:
+   - pred-a1210fe9e53c (Brent 65-75): INCORRECT, brier 0.4225
+   - pred-d54455f9b039 (systemd ExecStart): INCORRECT, brier 0.4900
+   - pred-oil-001-up75 (WTI > 70): CORRECT, brier 0.1225
+   - pred-usmyr-001-down (USDMYR < 4.40): CORRECT, brier 0.0784
+4. Updated prediction statuses (4 ACTIVE → VERIFIED/INCORRECT)
+5. Appended 4 new lessons to `lessons.jsonl` (with prediction_id + brier + evidence)
+6. Appended 23 entries to `verification_log.jsonl`
+7. Wrote F13-class proposal `/root/AAA/cockpit/proposals/CHRON-VERIFY-CYCLE-CRON-2026-10-06.md`
+   for the cron binary (A/B/C/D/E options listed).
+
+**T3→T4 CLOSED**: predictions now verify against live state. Calibration data accumulates
+with every cycle run. T5 (lesson formation) is now endogenously driven by T4 verdicts.
+
+**NOT closed**: T5 scar formation (lessons emitted, but the agent doesn't yet
+auto-promote verified patterns into scar_weight or policy changes). D1 GO/HOLD
+decision still open. D2 superseded by 88 live predictions. D3 cron naming untouched.
+
+DITEMPA BUKAN DIBERI ⚒️
