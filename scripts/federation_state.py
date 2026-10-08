@@ -39,19 +39,19 @@ PROBE_TIMEOUT = 8  # seconds per endpoint (cold-start safe)
 # host-map patch (STAGED 2026-10-08, irfanclaw/FI-017, Arif-authorized "stage boleh-undur"):
 # organs verified LIVE via tailnet probe from kvm4-forge (100.64.0.5) at 2026-10-08 06:30-07:15 UTC:
 #   arifos:8088, geox:8081, well:18083 -> 100.64.0.2 (af-forge) all /health 200
-#   chron:18102 -> DEAD at .2/.4/.5 -> host UNKNOWN, engine owner to confirm (kept 127.0.0.1, flagged)
+#   chron:18102 -> mesh-silent from .5/.4; KVM8 (=af-forge .2) on-host snapshot 15:25 MYT: chron ALIVE -> loopback-bound, 127.0.0.1 CORRECT for generator host
 #   a-forge/fed/aaa/wealth/arifflow -> reached by generator host (kokpit reads them UP) -> unchanged
 # revert: git checkout -- scripts/federation_state.py
 ORGAN_ENDPOINTS = [
     {"id": "arifos",   "port": 8088,  "role": "Kernel",                "host": "100.64.0.2"},
-    {"id": "a-forge",  "port": 7071,  "role": "Execution"},
+    {"id": "a-forge",  "port": 7071,  "role": "Execution"},  # mesh-silent; likely loopback-only by design (KVM8 on-host 9/9 alive per snapshot 2026-10-08)
     {"id": "aaa",      "port": 3001,  "role": "Control Plane"},
     {"id": "geox",     "port": 8081,  "role": "Earth Intelligence",    "host": "100.64.0.2"},
     {"id": "wealth",   "port": 18082, "role": "Capital Intelligence"},
     {"id": "well",     "port": 18083, "role": "Vitality Mirror",       "host": "100.64.0.2"},
     {"id": "arifflow", "port": 7073,  "role": "Metabolism"},
-    {"id": "fed",      "port": 7074,  "role": "Model Router"},
-    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},  # host UNKNOWN — dead at af-forge/azwaos/kvm4 (2026-10-08 probe); owner: engine ops
+    {"id": "fed",      "port": 7074,  "role": "Model Router"},  # mesh-silent; loopback-only by design (fed-router pattern, cf. KVM2)
+    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},  # loopback-bound on host (mesh-silent; alive on-host per KVM8 snapshot) â generator probes via 127.0.0.1 correctly
 ]
 
 # ── Probes ─────────────────────────────────────────────────────────────
