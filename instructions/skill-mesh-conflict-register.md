@@ -93,3 +93,15 @@ This is a **layerless count** — conflating the design layer (12 audited) with 
 **What IS confirmed good in the v1.1 canon:** the etymology overclaim I patched (Rasa "never split"/qualia "residue") was folded into §"v1.1 Corrections"; the SEP-sourced Lewis 1929 attribution checks out; the dual law (`ActivateCapabilityMinimally` / `RetainHumanDataMinimally`), the `ε_qualia` logical-not-scalar guard, `ProfileCompleteness=forbidden`, and `Signal ≠ Diagnosis / Priority ≠ Authority` are sound and need no change.
 
 DITEMPA BUKAN DIBERI ⚒️
+
+---
+
+## ENTRY-2026-10-09 · FORGE-mcp-ops ≡ forge-mcp-a2a-agentic (identical content, two folders)
+
+**Found by:** opencode/FI-001 (KVM4, sovereign recursive-upgrade session) · content sha256 match on SKILL.md.
+**State:** `DUPLICATE_CONTENT_TWO_FOLDERS` — `/root/AAA/skills/FORGE-mcp-ops/SKILL.md` and `/root/AAA/skills/forge-mcp-a2a-agentic/SKILL.md` are byte-identical. Deployments resolve either folder to the same content (proven: KVM4 installed surface `mcp-ops` matches both hashes).
+**Risk:** one-writer/many-views — a future edit to one folder silently forks the skill; namespace ambiguity (which is canonical?).
+**Ruling requested (F13/AAA owner):** collapse to ONE folder (suggestion: keep `FORGE-mcp-ops`, absorb a2a-agentic naming into aliases) — deletion is canonical-library mutation, not taken unilaterally.
+**Interim:** no edit to either folder until ruled. Deployments unaffected (content identical).
+
+DITEMPA BUKAN DIBERI ⚒️
