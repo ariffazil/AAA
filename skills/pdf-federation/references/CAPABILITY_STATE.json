@@ -1,5 +1,5 @@
 {
-  "probed_at": "2026-10-02T02:05:00+00:00",
+  "probed_at": "2026-10-09T13:15:00+00:00",
   "host": "forge",
   "probed_by": "FI-008 session SEAL-9ff94da62d34459c",
   "flag_definitions": {
@@ -16,7 +16,8 @@
     "tesseract": "5.5.0 PRESENT",
     "pymupdf": "PRESENT",
     "chromium": "MISSING -> google-chrome 153 PRESENT (route there)",
-    "wkhtmltopdf": "absent; FORBIDDEN regardless (archived upstream, CVE-2022-35583 CVSS 9.8)"
+    "wkhtmltopdf": "absent; FORBIDDEN regardless (archived upstream, CVE-2022-35583 CVSS 9.8)",
+    "typst": "0.15.1 PRESENT — PROVEN slide lane 2026-10-09 (KVM4: compile 0.106s measured, 16:9 841.89x473.563pt, G1+G3 pass; do not list Arial in font stack)"
   },
   "components": {
     "scripts/probe_manifest.sh": {
@@ -78,12 +79,19 @@
   "reconciliation_20261002": {
     "event": "concurrent worker filed SOVEREIGN_HOLD claiming composer BROKEN (artifact_egress absent) and 1/13 aliases",
     "canonical_node_truth": {
-      "composer": "NOT BROKEN \u2014 compose_artifact.py py_compile OK, `from artifact_egress import` resolves (scripts/artifact_egress.py present, 16571B, import smoke OK), --help runs",
-      "worker_hash_match": "worker's own listed hash ef6cf002540ccdfe == canonical \u2014 they verified the same file, then ran it from a copy without the module (archive/sandbox view)",
-      "references_extra_files": "HERMES_PDF_INTELLIGENCE.md/_archive_*/probe.json exist ONLY in .archive/.../pdf-federation-hermes-leftovers/ \u2014 canonical references/ stays single-file PDF_OPERATIONS.md (hash 7321117851a1f90d unchanged)",
-      "aliases": "live layer = 10 deprecation stubs (do_not_select) + 16 compiler ALIASES entries; worker's DEPRECATED_ALIAS.md landed in the archive copy \u2014 redundant, not harmful",
+      "composer": "NOT BROKEN — compose_artifact.py py_compile OK, `from artifact_egress import` resolves (scripts/artifact_egress.py present, 16571B, import smoke OK), --help runs",
+      "worker_hash_match": "worker's own listed hash ef6cf002540ccdfe == canonical — they verified the same file, then ran it from a copy without the module (archive/sandbox view)",
+      "references_extra_files": "HERMES_PDF_INTELLIGENCE.md/_archive_*/probe.json exist ONLY in .archive/.../pdf-federation-hermes-leftovers/ — canonical references/ stays single-file PDF_OPERATIONS.md (hash 7321117851a1f90d unchanged)",
+      "aliases": "live layer = 10 deprecation stubs (do_not_select) + 16 compiler ALIASES entries; worker's DEPRECATED_ALIAS.md landed in the archive copy — redundant, not harmful",
       "verifier": "PROVEN end-to-end 2026-10-02 (proof.pdf G1+G2+G3+G4-hash PASS)"
     },
-    "verdict": "SOVEREIGN_HOLD LIFTABLE \u2014 no broken state on canonical node; nothing reverted, nothing deleted"
+    "verdict": "SOVEREIGN_HOLD LIFTABLE — no broken state on canonical node; nothing reverted, nothing deleted"
+  },
+  "typst_lane_20261009": {
+    "event": "typst wired into routing as native slide-deck lane (external proposal cross-audited; Typst claim CARVED OUT, parallel-skill architecture DISCARDED)",
+    "probe": "typst 0.15.1 at /usr/local/bin/typst",
+    "proof": "/tmp/typst_probe/test_deck.pdf — 1 page, 841.89x473.563pt, sentinels SADO+cardiac found, compile 0.106s",
+    "template": "/root/.hermes/skills/media/pdf-design-replication/templates/base_slide.typ",
+    "defect_fixed": "Arial in font stack -> unknown-family warning; removed from template"
   }
 }
