@@ -105,3 +105,13 @@ DITEMPA BUKAN DIBERI ⚒️
 **Interim:** no edit to either folder until ruled. Deployments unaffected (content identical).
 
 DITEMPA BUKAN DIBERI ⚒️
+
+## ENTRY-2026-10-09b · 2 broken skill symlinks on KVM4 installed surface (corpse class)
+
+**Found by:** opencode/FI-001 content-hash audit · `file` confirmed broken.
+- `~/.claude/skills/aaa-agent-invariants -> /root/AAA/skills/ASI-agent-invariants` — target nonexistent anywhere in library (canonical doctrine lives at `AAA/instructions/agent-invariants-external-convergence.md`; AGENTS.md pointer also stale on this path).
+- `~/.claude/skills/sovereign-recognize -> /root/AAA/skills/reflective/sovereign-recognize` — target quarantined 2026-09-19 (`.quarantine-redundancy-2026-09-19/`); symlink missed in that sweep.
+**Action:** symlinks removed from installed surface (ghost-capability signal, F9/F10). No capability lost: invariants doctrine reaches agents via AGENTS.md; sovereign-recognize was ruled redundant.
+**Follow-up for owner:** AGENTS.md fragment `agent-invariants-external-convergence.md` cites `/root/AAA/skills/ASI-agent-invariants/SKILL.md` as canonical home — path is dead; retarget or restore.
+
+DITEMPA BUKAN DIBERI ⚒️
