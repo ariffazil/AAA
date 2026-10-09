@@ -9,7 +9,7 @@ echo "=== HERMES PDF PROBE — $(date -u '+%Y-%m-%d %H:%M:%S UTC') ==="
 echo "host: $(uname -srm)"
 echo "--- binaries ---"
 
-BINARIES="pandoc weasyprint pdftotext pdftoppm pdfinfo qpdf soffice chromium google-chrome wkhtmltopdf xelatex tesseract mutool gs"
+BINARIES="pandoc weasyprint pdftotext pdftoppm pdfinfo qpdf soffice chromium google-chrome wkhtmltopdf xelatex tesseract mutool gs typst"
 
 for b in $BINARIES; do
   path=$(command -v "$b" 2>/dev/null || true)
