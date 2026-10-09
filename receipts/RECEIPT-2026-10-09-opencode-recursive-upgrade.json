@@ -1,0 +1,19 @@
+{
+  "receipt_id": "RECEIPT-2026-10-09-opencode-recursive-upgrade",
+  "actor": "opencode/FI-001",
+  "host": "KVM4 (srv1946043)",
+  "objective": "Sovereign directive: recursive autonomous self-upgrade (Arif F13, 2026-10-09)",
+  "trace_id": "selfupgrade-20261009-FI001",
+  "transitions": [
+    {"what": "MCP wired", "state": "PRODUCED", "evidence": "/root/.config/opencode/opencode.json mcp.arifos-kernel -> http://100.64.0.2:8088/mcp ; backup opencode.json.bak-swot-20261009 ; MCP initialize handshake VERIFIED live (ARIFOS MCP kanon-2026.10.09+ed156a9, tools/prompts/resources caps)", "effective": "next opencode session restart"},
+    {"what": "Identity reconciled", "state": "OBSERVED-CANONICAL", "from": "opencode/FI-???", "to": "opencode/FI-001", "basis": "/root/AAA/registry/canonical_identity.json fi_slot=FI-001 status=active", "evidence": "/root/AAA/agents/opencode/identity.json + applied-backup convention"},
+    {"what": "Skill mesh synced", "state": "MEASURED", "before": "15/19 content-synced, 2 stale-pairs, 1 installed duplicate, 2 broken symlinks", "after": "19/19 SKILL.md content-synced byte-exact vs /root/AAA/skills", "synced": ["aaa-agentic-governance<-asi-agentic-governance v4.0.0", "AGI-agentic-web", "AGI-explorer-intelligence", "federation-orchestrator<-FORGE-federation-orchestrator", "incident-triage<-FORGE-incident-triage", "recursive-self-improvement<-RSI-federation-mesh", "skill-creator<-FORGE-skill-creator", "renamed: verify-runtime->FORGE-verify-runtime", "renamed: mcp-smoke-test->FORGE-mcp-smoke-test", "renamed: well-substrate-readiness->WELL-substrate-readiness"]},
+    {"what": "Duplicate collapsed", "state": "EXECUTED", "detail": "installed agentic-web == AGI-agentic-web ; removed, backup /root/.local/state/skill-backup-20261009/agentic-web-dup"},
+    {"what": "Library promotion", "state": "COMMITTED", "commit": "ba2a0523", "detail": "4 KVM4-local originals promoted: FORGE-verify-runtime, FORGE-mcp-smoke-test, WELL-substrate-readiness, AAA-voice-suara-siti; library 739->743"},
+    {"what": "Duplicate registered (not collapsed)", "state": "ESCALATED-TO-OWNER", "detail": "FORGE-mcp-ops == forge-mcp-a2a-agentic byte-identical in AAA library; collapse ruling deferred (canonical mutation)"},
+    {"what": "Corpse links removed", "state": "EXECUTED+COMMITTED", "commit": "345ad90c", "detail": "aaa-agent-invariants (dead target) + sovereign-recognize (quarantined 2026-09-19) symlinks removed; owner follow-up: stale canonical path in AGENTS.md fragment"}
+  ],
+  "backups": ["/root/.config/opencode/opencode.json.bak-swot-20261009", "/root/.local/state/skill-backup-20261009/", "/root/AAA/agents/opencode/*.applied-*.json", "git history AAA ba2a0523 345ad90c"],
+  "falsifier": "Receipt withdrawn if: MCP handshake fails on next session restart; any installed SKILL.md hash diverges from library at next audit; identity.json actor_id reverted without reconciliation record.",
+  "unresolved": ["FI-number also stale in any OTHER surfaces claiming FI-???", "hermes mirror drift (federation-wide, from mirror_or_duplicate.py sample)", "kernel MCP tool-catalog exercise deferred to next session (requires opencode restart)"]
+}
