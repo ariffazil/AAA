@@ -1,24 +1,24 @@
 # Federation Agent Shadow Geometry Report
-# Generated: 2026-10-10T04:25:01Z by shadow_geometry_comparison.py
+# Generated: 2026-10-10T10:25:02Z by shadow_geometry_comparison.py
 
 ## Provenance
 - FQ source: http://127.0.0.1:7073/health
-- FQ snapshot: 2026-10-10T04:25:01Z
+- FQ snapshot: 2026-10-10T10:25:02Z
 - FQ status: MEASURED
-- Actors measured: 2/8 (live source reports 12 actors total)
-- Federation FQ scalar: 1.0869565217391304
+- Actors measured: 3/8 (live source reports 10 actors total)
+- Federation FQ scalar: 1.3902439024390243
 - Failure signatures: DECLARED — static registry (/root/AAA/registries/harnesses/*_harness_shadow.yaml), not measured
 
 | Rank | Agent | FQ | State | Exec | Verify | Balance | Phase | Boundary | Critical |
 |------|-------|-----|-------|------|--------|---------|-------|----------|----------|
 | 1 | claude-code | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.222 | SHADOW_PROMINENT | -0.620 | 1 |
 | 2 | kimi-code | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.230 | SHADOW_PROMINENT | -0.520 | 0 |
-| 3 | aforge | 1.086 | OPTIMAL | 58 | 63 | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 3 | aforge | 1.288 | OPTIMAL | 59 | 76 | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
 | 4 | well | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
 | 5 | frame | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
-| 6 | grok-build | UNKNOWN | FLOWING | 0 | 10 | 0.247 | NIGREDO | -0.020 | 1 |
-| 7 | qwen-code | UNKNOWN | UNKNOWN | 1 | 0 | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
-| 8 | hermes-asi | 0.412 | STUCK | 17 | 7 | 0.234 | NIGREDO | +0.080 | 0 |
+| 6 | grok-build | UNKNOWN | FLOWING | 0 | 7 | 0.247 | NIGREDO | -0.020 | 1 |
+| 7 | qwen-code | 0.333 | CAUTION | 3 | 1 | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
+| 8 | hermes-asi | 0.364 | STUCK | 22 | 8 | 0.234 | NIGREDO | +0.080 | 0 |
 
 ## Federation Aggregate
 - Average Yin-Yang balance: 0.231 / 0.250 max (92.4%) — DECLARED inputs
@@ -28,7 +28,7 @@
 - Best balance: grok-build (0.247)
 - Agents in CRITICAL: 2
 - Agents in BURNING/STUCK: 1
-- Agents with no live FQ: 6
+- Agents with no live FQ: 5
 
 ## Inventory (MEASURED from disk)
 - Harness shadow files present: 8

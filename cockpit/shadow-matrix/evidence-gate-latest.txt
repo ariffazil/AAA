@@ -1,5 +1,5 @@
 # Shadow Evidence Gate  v2 (prose + live FQ series)
-# Generated: 2026-10-10T04:25:03Z
+# Generated: 2026-10-10T10:25:03Z
 # Rule: CONFIRMED requires >= 5 DATED prose items, OR a measured
 #       attractor in the live FQ series (significant displacement from FQ*=1
 #       AND temporal stability AND sign concordance).
@@ -39,27 +39,27 @@ NO-LABEL (ungateable):       0
     canonical-file mutation (F13), not something a reader should paper over.
 
 ## Live FQ series — the shadow as a measurable attractor
-  ledger rows=146510 parsed=107957 unparsed=1
-  span=2026-07-30T12:07:03.502747Z -> 2026-10-10T04:24:36.567Z (71 days)
+  ledger rows=147952 parsed=109116 unparsed=1
+  span=2026-07-30T12:07:03.502747Z -> 2026-10-10T10:24:53.078Z (71 days)
   harness entries tested=27 confirmed=2 refuted=0 not_testable=8 no_receipts=13
 
   actor        signature                   pred     n  FQ(geo)  SE(ln)        Z    I2%  concord  binom p  verdict
   ---------------------------------------------------------------------------------------------------------------
-  aforge       mutation_hunger             FQ<1    32     1.276   0.036   +6.71   95.3     4/32   1.0000  NO_STABLE_ATTRACTOR
+  aforge       mutation_hunger             FQ<1    32     1.277   0.036   +6.77   95.3     4/32   1.0000  NO_STABLE_ATTRACTOR
   claude-code  execution_gravity           FQ<1    26     1.865   0.623   +1.00   86.0     8/26   0.9855  NO_STABLE_ATTRACTOR
   frame        behavioral_blindness        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        identical_score_problem     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        observer_inertia            FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        baseline_staleness          NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  grok-build   verification_paralysis      FQ>1    27   128.705   0.246  +19.76   62.4    27/27   0.0000  CONFIRMED_DIRECTION_HETEROGENEOUS
-  hermes-asi   bridge_volume_overload      FQ<1    28     0.707   0.062   -5.57   91.9    23/28   0.0005  CONFIRMED_DIRECTION_HETEROGENEOUS
-  hermes-asi   meaning_as_gatekeeping      FQ>1    28     0.707   0.062   -5.57   91.9     3/28   1.0000  NO_STABLE_ATTRACTOR
+  grok-build   verification_paralysis      FQ>1    27   126.135   0.242  +19.98   62.4    27/27   0.0000  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   bridge_volume_overload      FQ<1    28     0.705   0.062   -5.64   91.9    23/28   0.0005  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   meaning_as_gatekeeping      FQ>1    28     0.705   0.062   -5.64   91.9     3/28   1.0000  NO_STABLE_ATTRACTOR
   kimi-code    organ_routing_reflex        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    receipt_theater             NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    constitutional_citation     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    subagent_delegation_escape  NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    synthesis_as_substance      NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  qwen-code    execution_dominance         FQ<1    42     0.912   0.089   -1.04   50.8    28/42   0.0218  CONCORDANT_WEAK_EFFECT
+  qwen-code    execution_dominance         FQ<1    43     0.893   0.090   -1.26   51.8    29/43   0.0158  CONCORDANT_WEAK_EFFECT
   well         self_report_paradox         NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         measurement_substitution    NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         dignity_as_avoidance        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
@@ -98,9 +98,9 @@ NO-LABEL (ungateable):       0
 ##   VoI = severity x H(posterior)/ln2 x daily_receipt_rate
 ##   Settled entries sink to the bottom: no attention spent on closed questions.
   #   entry                                   sev         post      H   rate/d      VoI
-  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   1129.2   564.60
-  2   SHADOW-HA-002                           MEDIUM     0.500  1.000    209.9   104.96
+  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   1141.3   570.64
+  2   SHADOW-HA-002                           MEDIUM     0.500  1.000    212.8   106.37
   3   SHADOW-CC-005                           CRITICAL   0.500  1.000     23.8    23.76
-  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     18.4     9.18
+  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     18.6     9.31
 
 Receipt: /root/AAA/cockpit/shadow-matrix/evidence-gate-latest.json
