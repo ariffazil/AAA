@@ -1,0 +1,24 @@
+{
+  "state_type": "AAA.WEALTH.ECONOMIC_STATE.v1",
+  "as_of": "2026-10-09T00:00:00+08:00",
+  "scope": {"country": "MYS", "currency": "MYR", "horizon_months": [3]},
+  "model_set": ["dalio_debt_cycle_v1"],
+  "observations": [],
+  "derived": [],
+  "hypotheses": [],
+  "contradictions": [],
+  "missing_evidence": ["all observation series pending ingest"],
+  "regime": {"label": "UNKNOWN", "probabilities": {}, "persistence": null, "change_points": []},
+  "sector_state": {
+    "households": {"debt_to_income": null, "debt_service_ratio": null, "balance_sheet_state": "NOT_OBSERVED", "notes": ""},
+    "nonfinancial_corporates": {"debt_to_income": null, "debt_service_ratio": null, "balance_sheet_state": "NOT_OBSERVED", "notes": ""},
+    "banks": {"debt_to_income": null, "debt_service_ratio": null, "balance_sheet_state": "NOT_OBSERVED", "notes": ""},
+    "federal_government": {"debt_to_income": null, "debt_service_ratio": null, "balance_sheet_state": "NOT_OBSERVED", "notes": ""},
+    "external": {"debt_to_income": null, "debt_service_ratio": null, "balance_sheet_state": "NOT_OBSERVED", "notes": ""}
+  },
+  "flows": {"credit_impulse": null, "income_growth": null, "debt_service": null, "productivity": null, "inflation_channels": {}},
+  "distribution": {"weakest_stakeholders": [], "maruah_risks": []},
+  "attention": {"priority": 0.0, "reasons": ["cold start"], "expires_at": null},
+  "authority": {"ceiling": "555_COMPUTE_ONLY", "execution_authorized": false},
+  "provenance": {"trace_id": "trc-dalio-phaseA-coldstart", "source_hashes": [], "model_versions": ["dalio_debt_cycle_v1@1.0.0"]}
+}

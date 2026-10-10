@@ -1,3 +1,4 @@
+<!-- SUPERSEDED 2026-10-05 → see /root/AAA/canon/AGENTIC-FLOW-ARCHITECTURE-2026-10-05.md (F13 ratified unified canon 2026-10-05). Pointer kept per doctrine (no delete). -->
 Status: ACTIVE_CANONICAL — F13_RATIFIED
 
 # EUREKA SEAL — External Witness Session — 2026-09-11/12

@@ -1,3 +1,4 @@
+<!-- SUPERSEDED 2026-10-05 → see /root/AAA/canon/AGENTIC-FLOW-ARCHITECTURE-2026-10-05.md (F13 ratified unified canon 2026-10-05). Pointer kept per doctrine (no delete). -->
 # EUREKA::METABOLISM_LAYER — 7 Canonical Eurekas
 **Origin:** parallel 333-lane session (claude-code/FI-002 subagent), F13 invocation "333", 2026-09-30
 **Staged + disk-verified by:** 333-AGI (SEAL-f07410e57acf4d37)
