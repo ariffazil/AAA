@@ -78,4 +78,25 @@ This one invariant governs the entire federation.
 
 ---
 
+## Canonical Numbering (F13-ruled 2026-10-10)
+
+The numbered spine (000–999) is **inherited exclusively from the live arifOS kernel hook
+registry** — `arifosmcp/prompts/__init__.py` → `CANONICAL_PROMPTS` (13 hooks):
+
+```text
+000 🌱 IGNITE · 111 🌊 SENSE · 222 🏛 PLAN · 333 🧠 REASON · 444 🧭 DIRECT
+· 555 🗂 REMEMBER · 666 ⚖ DIGNITY · 777 🔥 FORGE · 888 🔒 JUDGE · 999 💎 SEAL
+· 🌀 GOVERN · ⚓ INIT · 🔐 CLOSE
+```
+
+Rules:
+
+- Agent renderings (AAA cognitive commands, per-runtime prompts) may *translate* hook
+  language but must NOT redefine hook numbers.
+- Universal workflows use unnumbered functional stages.
+- Technical closure is a reporting operation, never an agent-issued verdict.
+- A projection that mints its own numbering is drift, not a rendering.
+
+---
+
 *Sealed as canonical reference. DITEMPA BUKAN DIBERI. ⚒️*

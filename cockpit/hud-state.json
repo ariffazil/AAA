@@ -1,1 +1,173 @@
-{"schema":"hud-state-v3-root-contract","generated_at":"","generated_at_unix":1790996649,"root_contract":{"burning":"runtime identity contradiction (strict_drift=1, unresolved)","waiting":"held=7 · oldest: Concurrent-write protection on /root/AAA/cockpit/ (multi-agent race) · queue age=1456m","source_neq_runtime":"src=c76621091 vs wheel=1!2026.9.6 import=1!2026.9.6 (1 signals)","freshness":"STALE","last_consequence":"RECEIPT_RATIFICATION_REVERT_2026-10-02 · 1456m ago"},"panels":{"0_IDENTITY_AUTH":{"actor":"root","actor_crypto":"NO","authority_band":"OBSERVE_ONLY","mutation_allowed":"NO","active_lease":"arif (exclusive)"},"1_MISSION":{"objective":"no active governed mission (exec-path stale 1456m)","task_id":"exec-path@2026-10-01T22:00:00Z","mission_age_min":1456,"budget_bounded":"unspecified","termination":"ECW authority probe"},"2_RUNTIME":{"source_sha":"c76621091","deployed_sha":"1!2026.9.6","imported_version":"1!2026.9.6","strict_runtime_drift_signals":"1","runtime_identity_proof":"{\"total_organs\":3,\"drift_count\":1,\"contradictions\":[{\"organ\":\"frame\",\"drift_signals\":[\"source_file_sha != runtime_file_sha\"],\"source_sha\":\"4d4ee007\",\"pkg_version\":\"import-error:ModuleNotFoundError\",\"note\":\"HASH-equivalence only; pkg_version is semantic, not drift\"}]}","md5_identity":{"arifos":{"source_init_md5":"03b6f579848f","deployed_init_md5":"03b6f579848f","md5_match":true,"note":"Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"},"aforge":{"source_init_md5":"no-source-init","deployed_init_md5":"no-deployed-init","md5_match":false,"note":"Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"},"frame":{"source_init_md5":"no-source-init","deployed_init_md5":"e3b0c44298fc","md5_match":false,"note":"Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"}}},"3_SURVIVAL":{"disk_pct":80,"mem_pct":50,"swap_pct":"23.8","zombies":4,"systemd_running":112,"systemd_total":152,"well_score":"—","well_age_min":-1},"4_JUDGMENT":{"canon_ok":"OK","contradictions_n":1,"frame":{"age_days":"8","alerts":2,"warnings":2,"ok":1}},"5_TIME_LEARNING":{"chron_attention_debt":0,"chron_predictions_due":0,"chron_brier":"0.194"},"6_CONCURRENCY":{"active_agents":3,"leases":1,"dirty_repos":"0","ecw":"{\"total_probed\":11,\"transport_up\":11,\"surface_declared\":3,\"semantic_clean\":2,\"drift_classes_hit\":{\"SURFACE_DRIFT\":8,\"SCHEMA_DRIFT\":0,\"SEMANTIC_DRIFT\":0,\"AUTHORITY_DRIFT\":0,\"BEHAVIOR_DRIFT\":0,\"TRANSPORT_FAILURE\":0}}"},"7_ECW_FEDERATION":{"ecw_summary":"{\"total_probed\":11,\"transport_up\":11,\"surface_declared\":3,\"semantic_clean\":2,\"drift_classes_hit\":{\"SURFACE_DRIFT\":8,\"SCHEMA_DRIFT\":0,\"SEMANTIC_DRIFT\":0,\"AUTHORITY_DRIFT\":0,\"BEHAVIOR_DRIFT\":0,\"TRANSPORT_FAILURE\":0}}"}},"integrity_hash":"5751dd43955933e96e49be92f0805c3b24a74f1d169f0b90ef0b441d159b19e0"}
+{
+  "schema": "hud-state-v3-root-contract",
+  "generated_at": "2026-10-10T06:11:52.839783Z",
+  "generated_at_unix": 1791612712,
+  "root_contract": {
+    "burning": "truth provenance (Cluster 2: kernel SHA census \u2014 c76621091 \u2194 297abcb unresolved)",
+    "waiting": "888_HOLD \u00b7 22 carry-forward \u00b7 priority=P1 Cluster 2 SHA census, P2 Cluster 6 taxonomy musyawarah, P3 Cluster 7 observability",
+    "source_neq_runtime": "src=c76621091 vs wheel=1!2026.9.6 import=1!2026.9.6 (1 signals \u00b7 P1 HOLD per 888-APEX 2026-10-10)",
+    "freshness": "UNKNOWN",
+    "last_consequence": "RECEIPT_888_CROSSAUDIT_TRUTH_PROVENANCE_2026-10-10 \u00b7 RECIPE_TRUTH_ARCHITECTURE_CORRECTION_COPILOT_2026-10-10",
+    "freshness_epistemic": {
+      "state_status": "UPDATED_LOCAL",
+      "observation_status": "PARTIAL",
+      "publication_status": "NOT_PROPAGATED",
+      "identity_status": "HOLD",
+      "note": "freshness=write_time was epistemic error \u2014 replaced by observational freshness class. Copilot 888-cross-audit 2026-10-10.",
+      "oldest_required_observation_at": null,
+      "verdict": "UNKNOWN"
+    },
+    "v2_sot_split": {
+      "asserted_state": {
+        "freshness": "UPDATED_LOCAL",
+        "queue_carry_forward": 22,
+        "sha_census_proposal": "read-only, no canonical pick"
+      },
+      "observed_state": {
+        "public_site_sha256": "140bf1ea44bffbc7cef3c0a04c02285b6c90327abd846c93e3d4fda9b170d8e7",
+        "public_site_rendered_date": "2026-09-18",
+        "public_site_rendered_stale": true,
+        "kernel_source_sha": "c76621091",
+        "kernel_deployed_sha": "297abcb",
+        "kernel_import": "1!2026.9.6",
+        "md5_arifos_match": true,
+        "md5_aforge_match": false,
+        "md5_frame_match": false
+      },
+      "resolved_state": {
+        "overall": "HOLD",
+        "primary_cause": "kernel identity conflict",
+        "last_reconciled": null
+      },
+      "published_state": {
+        "aaa_arif_fazil_com": "stale 2026-09-18 cached; NOT YET REGENERATED",
+        "deployment_intent": "HOLD \u2014 site push forbidden until SHA reconciliation"
+      },
+      "contradictions": [
+        {
+          "name": "kernel_identity",
+          "canonical_source": "c76621091",
+          "recorded_build": "297abcb",
+          "runtime_reported_id": "UNKNOWN",
+          "deployment_marker": "1!2026.9.6",
+          "reconciliation_state": "HOLD"
+        },
+        {
+          "name": "freshness_class",
+          "old_label": "STALE \u2192 LIVE (write-time)",
+          "new_label": "UNKNOWN (observational freshness; no reconciler yet)",
+          "reconciliation_state": "RESHAPED"
+        }
+      ]
+    }
+  },
+  "panels": {
+    "0_IDENTITY_AUTH": {
+      "actor": "root",
+      "actor_crypto": "NO",
+      "authority_band": "OBSERVE_ONLY",
+      "mutation_allowed": "NO",
+      "active_lease": "arif (exclusive)"
+    },
+    "1_MISSION": {
+      "objective": "888_APEX_HOLD_2026-10-10: ship Cluster 2 SHA census next; truth provenance outranks observability",
+      "task_id": "cluster2-census@2026-10-10T05:58Z",
+      "mission_age_min": 0,
+      "budget_bounded": "observer+probe only \u2014 no MUTATE until SHA matches",
+      "termination": "888-cross-audit: SHA census delivered evidence (no canonical pick); awaits 333+555 musyawawah on Truth Architecture Phase 0."
+    },
+    "2_RUNTIME": {
+      "source_sha": "c76621091",
+      "deployed_sha": "1!2026.9.6",
+      "imported_version": "1!2026.9.6",
+      "strict_runtime_drift_signals": "1",
+      "runtime_identity_proof": "{\"total_organs\":3,\"drift_count\":1,\"contradictions\":[{\"organ\":\"frame\",\"drift_signals\":[\"source_file_sha != runtime_file_sha\"],\"source_sha\":\"4d4ee007\",\"pkg_version\":\"import-error:ModuleNotFoundError\",\"note\":\"HASH-equivalence only; pkg_version is semantic, not drift\"}]}",
+      "md5_identity": {
+        "arifos": {
+          "source_init_md5": "03b6f579848f",
+          "deployed_init_md5": "03b6f579848f",
+          "md5_match": true,
+          "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"
+        },
+        "aforge": {
+          "source_init_md5": "no-source-init",
+          "deployed_init_md5": "no-deployed-init",
+          "md5_match": false,
+          "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"
+        },
+        "frame": {
+          "source_init_md5": "no-source-init",
+          "deployed_init_md5": "e3b0c44298fc",
+          "md5_match": false,
+          "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"
+        }
+      }
+    },
+    "3_SURVIVAL": {
+      "disk_pct": 80,
+      "mem_pct": 50,
+      "swap_pct": "23.8",
+      "zombies": 4,
+      "systemd_running": 112,
+      "systemd_total": 152,
+      "well_score": "\u2014",
+      "well_age_min": -1
+    },
+    "4_JUDGMENT": {
+      "canon_ok": "OK",
+      "contradictions_n": 1,
+      "frame": {
+        "age_days": "8",
+        "alerts": 2,
+        "warnings": 2,
+        "ok": 1
+      },
+      "last_verdict": {
+        "authority": "888-APEX (cross-audit)",
+        "kind": "HOLD",
+        "binomial": "SAH_CENSUS + HOLD_SITE + UNKNOWN_CANONICAL_SHA",
+        "reason": "Reality cannot be updated by editing its representation. Public site cached 2026-09-18; sha census read-only next; site push forbidden until reconciliation.",
+        "priority_order": [
+          "P0: Cluster 2 SHA census (read-only)",
+          "P1: Phase 0/1 Truth Architecture semantics freeze (sealed recipe)",
+          "P2: Phase 5 UI redesign (HOLD)",
+          "P3: Cluster 7 observability"
+        ],
+        "f13_word_received_history": [
+          {
+            "word": "approve",
+            "scope": "3-cluster bundled (C1 ABI + C3 registry + C4 consequence render)",
+            "at": "2026-10-10 13:58 MYT"
+          },
+          {
+            "word": "approve (copilot review)",
+            "scope": "truth-architecture correction recipe parking",
+            "at": "2026-10-10 14:09 MYT"
+          }
+        ],
+        "session_id": "SEAL-177a77d4927d433f",
+        "issued_at_myt": "2026-10-10 14:12 MYT",
+        "receipt": "/root/AAA/cockpit/receipts/RECEIPT_F13_APPROVE_3CLUSTER_BUNDLED_2026-10-10.md",
+        "recipe_parked": "/root/AAA/cockpit/recipes/RECIPE_TRUTH_ARCHITECTURE_CORRECTION_COPILOT_2026-10-10.md",
+        "pending_receipt": "/root/AAA/cockpit/receipts/RECEIPT_888_CROSSAUDIT_TRUTH_PROVENANCE_2026-10-10.md",
+        "epistemic_correction_logged": "freshness=LIVE was write-time confusion; replaced with observational UNKNOWN. Reasoned per [[scar-claimed-before-checking]] family."
+      }
+    },
+    "5_TIME_LEARNING": {
+      "chron_attention_debt": 0,
+      "chron_predictions_due": 0,
+      "chron_brier": "0.194"
+    },
+    "6_CONCURRENCY": {
+      "active_agents": 3,
+      "leases": 1,
+      "dirty_repos": "0",
+      "ecw": "{\"total_probed\":11,\"transport_up\":11,\"surface_declared\":3,\"semantic_clean\":2,\"drift_classes_hit\":{\"SURFACE_DRIFT\":8,\"SCHEMA_DRIFT\":0,\"SEMANTIC_DRIFT\":0,\"AUTHORITY_DRIFT\":0,\"BEHAVIOR_DRIFT\":0,\"TRANSPORT_FAILURE\":0}}"
+    },
+    "7_ECW_FEDERATION": {
+      "ecw_summary": "{\"total_probed\":11,\"transport_up\":11,\"surface_declared\":3,\"semantic_clean\":2,\"drift_classes_hit\":{\"SURFACE_DRIFT\":8,\"SCHEMA_DRIFT\":0,\"SEMANTIC_DRIFT\":0,\"AUTHORITY_DRIFT\":0,\"BEHAVIOR_DRIFT\":0,\"TRANSPORT_FAILURE\":0}}",
+      "census_reduction": "32 \u2192 22 (PENDING carry-forward after F13 APPROVE of 10 rows in 3 clusters)"
+    }
+  },
+  "integrity_hash": "sha256:9787a37f1a2275b023a5b9a865469b659c00e11454769f5e5802d3939eb93982"
+}
