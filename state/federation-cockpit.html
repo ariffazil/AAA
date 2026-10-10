@@ -106,9 +106,9 @@
       </p>
       <div class="desk-principles">
         <span>🛡️ <strong>Membran Perhatian:</strong> Aktif (Arif bukan coder)</span>
-        <span>⚖️ <strong>Autoriti Digital:</strong> MUBAH / Auto-Approved</span>
+        <span id="desk-auth-status">⚖️ <strong>Autoriti Digital:</strong> MUBAH / Auto-Approved</span>
         <span>⚒️ <strong>Prinsip:</strong> Ditempa Bukan Diberi</span>
-        <span id="desk-fq-summary">🌊 FQ: Menghitung...</span>
+        <span id="desk-fq-summary">🌊 FQ: TIDAK DIUKUR</span>
       </div>
     </div>
   </section>
@@ -116,16 +116,28 @@
   <!-- 2. ARMADA EJEN ARIFOS -->
   <section class="section-container">
     <div class="section-heading">
-      <span>Armada Ejen arifOS (Agent Swarm Fleet)</span>
-      <span style="font-family:var(--font-mono);font-size:11px">Protokol: A2A JSON-RPC :3001</span>
+      <span>Armada Ejen arifOS (Agent Swarm Fleet — SOT: AGENTS_UNIFIED.yaml)</span>
+      <span style="font-family:var(--font-mono);font-size:11px">Protokol: A2A JSON-RPC :3001 · Topologi 3-Nod</span>
     </div>
     <div class="grid-fleet">
+      <div class="card">
+        <div class="card-header">
+          <div class="agent-name">🪽 HERMES</div>
+          <span class="agent-tag">KVM4 Gateway</span>
+        </div>
+        <div class="agent-desc">Pendamping pintar berterusan & Voice/Rasa Edge Gateway di KVM4 Workshop. Sintesis makna, penghalaan isyarat, dan interaksi peribadi.</div>
+        <div class="agent-meta">
+          <span>Mod: Sovereign Rasa</span>
+          <span style="color:var(--ok)">AKTIF (:18789)</span>
+        </div>
+      </div>
+
       <div class="card">
         <div class="card-header">
           <div class="agent-name">🦞 IRFANclaw</div>
           <span class="agent-tag">KVM4 Sentinel</span>
         </div>
-        <div class="agent-desc">Telegram Gateway & Penyemak Realiti nod luaran. Mengesahkan integriti git dan public surface.</div>
+        <div class="agent-desc">Telegram Gateway & Penyemak Realiti nod luaran. Mengesahkan integriti git, koridor nod, dan public surface.</div>
         <div class="agent-meta">
           <span>Saluran: Telegram</span>
           <span style="color:var(--ok)">AKTIF</span>
@@ -134,20 +146,8 @@
 
       <div class="card">
         <div class="card-header">
-          <div class="agent-name">🪽 HERMES</div>
-          <span class="agent-tag">KVM8 Co-Pilot</span>
-        </div>
-        <div class="agent-desc">Pendamping pintar berterusan Arif. Mengendalikan sintesis suara, somatic, dan interaksi peribadi.</div>
-        <div class="agent-meta">
-          <span>Mod: Sovereign Rasa</span>
-          <span style="color:var(--ok)">AKTIF</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
           <div class="agent-name">🚀 Antigravity (FI-004)</div>
-          <span class="agent-tag">KVM8 Architect</span>
+          <span class="agent-tag">Multi-Node Architect</span>
         </div>
         <div class="agent-desc">Pelaksana kod, pembina sistem, dan operator enjin A-FORGE reality loop untuk kemas kini autonomi.</div>
         <div class="agent-meta">
@@ -158,13 +158,13 @@
 
       <div class="card">
         <div class="card-header">
-          <div class="agent-name">🧠 FI Fleet (Codex/Qwen/Claude)</div>
-          <span class="agent-tag">Swarm Watchdogs</span>
+          <div class="agent-name">⚖️ arifOS Kernel (888-APEX)</div>
+          <span class="agent-tag">KVM8 Law Core</span>
         </div>
-        <div class="agent-desc">Konsolidasi memori L1-L5, penyemak tech-debt berkala, dan pengawal selia integriti repositori.</div>
+        <div class="agent-desc">Hakim Perlembagaan, Pintu Autoriti F1-F13, dan Pengesah Resit Kanonikal Merkle di KVM8.</div>
         <div class="agent-meta">
-          <span>Cron: 4h / 6h / 8h</span>
-          <span style="color:var(--ok)">TERATUR</span>
+          <span>Status: Port :8088</span>
+          <span id="kernel-card-status" style="color:var(--warn)">MEMERIKSA</span>
         </div>
       </div>
     </div>
@@ -173,39 +173,39 @@
   <!-- 3. REALITI INFRASTRUKTUR & TELEMETRI -->
   <section class="section-container">
     <div class="section-heading">
-      <span>Status Infrastruktur & Telemetri Persekutuan</span>
-      <span style="font-family:var(--font-mono);font-size:11px" id="fed-status-badge">Memeriksa...</span>
+      <span>Status Infrastruktur & Telemetri Persekutuan (Saksi KVM2 / SOT)</span>
+      <span style="font-family:var(--font-mono);font-size:11px" id="fed-status-badge">TIDAK DIUKUR</span>
     </div>
     <div class="grid-telemetry" id="telemetry-grid">
-      <!-- Telemetry cards rendered via JavaScript from /state.json -->
+      <!-- Telemetry cards rendered via JavaScript from status.json / state.json -->
       <div class="card" id="card-organs">
         <div class="card-header">
           <span style="font-weight:700">Organ Persekutuan</span>
-          <span class="agent-tag" id="organs-ratio">--/--</span>
+          <span class="agent-tag" id="organs-ratio">TIDAK DIUKUR</span>
         </div>
         <div class="organ-grid" id="organs-list">
-          <span style="color:var(--muted);font-size:12px">Memeriksa nod...</span>
+          <span style="color:var(--muted);font-size:12px">Memeriksa nod saksi...</span>
         </div>
       </div>
 
       <div class="card" id="card-metabolism">
         <div class="card-header">
           <span style="font-weight:700">Metabolisme (arifFLOW)</span>
-          <span class="agent-tag" id="meta-verdict-badge">--</span>
+          <span class="agent-tag" id="meta-verdict-badge">TIDAK DIUKUR</span>
         </div>
-        <div class="row"><span class="label">Quotient (FQ)</span><span class="value" id="fq-val">--</span></div>
-        <div class="row"><span class="label">Diagnosis</span><span class="value" id="fq-diag">--</span></div>
-        <div class="row"><span class="label">Sahkan / Laksana</span><span class="value" id="fq-counts">-- / --</span></div>
-        <div class="row"><span class="label">Stuck / Tertahan</span><span class="value" id="fq-stuck">0 / 0</span></div>
+        <div class="row"><span class="label">Quotient (FQ)</span><span class="value" id="fq-val">TIDAK DIUKUR</span></div>
+        <div class="row"><span class="label">Diagnosis</span><span class="value" id="fq-diag">TIDAK DIUKUR</span></div>
+        <div class="row"><span class="label">Sahkan / Laksana</span><span class="value" id="fq-counts">TIDAK DIUKUR</span></div>
+        <div class="row"><span class="label">Stuck / Tertahan</span><span class="value" id="fq-stuck">TIDAK DIUKUR</span></div>
       </div>
 
       <div class="card" id="card-authority">
         <div class="card-header">
           <span style="font-weight:700">Autoriti & Sekatan (Holds)</span>
-          <span class="agent-tag" id="auth-holds-badge">0 holds</span>
+          <span class="agent-tag" id="auth-holds-badge">TIDAK DIUKUR</span>
         </div>
-        <div class="row"><span class="label">Sekatan Tertangguh</span><span class="value" id="auth-holds-val">0</span></div>
-        <div class="row"><span class="label">Resit Termeterai</span><span class="value" id="auth-seals-val">--</span></div>
+        <div class="row"><span class="label">Sekatan Tertangguh</span><span class="value" id="auth-holds-val">TIDAK DIUKUR</span></div>
+        <div class="row"><span class="label">Resit Termeterai</span><span class="value" id="auth-seals-val">TIDAK DIUKUR</span></div>
         <div class="row"><span class="label">Akses Wire</span><span class="value">A2A :3001</span></div>
         <div class="row"><span class="label">Sovereign F13</span><span class="value" style="color:var(--gold)">ARIF</span></div>
       </div>
@@ -215,8 +215,8 @@
           <span style="font-weight:700">Titik Halangan (Bottleneck)</span>
         </div>
         <div class="bottleneck-box none" id="bottleneck-box">
-          <strong id="bottleneck-title">TIADA HALANGAN</strong><br>
-          <span id="bottleneck-desc">Persekutuan mengalir lancar tanpa rintangan.</span>
+          <strong id="bottleneck-title">TIDAK DIUKUR</strong><br>
+          <span id="bottleneck-desc">Menunggu data saksi berkembar KVM2.</span>
         </div>
       </div>
     </div>
@@ -233,93 +233,136 @@
 </footer>
 
 <script>
-const API = '/state.json';
+const STATUS_APIS = ['/status.json', '/state.json'];
 const REFRESH_MS = 15000;
 
 function render(data) {
-  const ts = data.generated_at ? new Date(data.generated_at).toLocaleString('ms-MY', { timeZone:'Asia/Kuala_Lumpur' }) : '?';
+  const ts = data.generated_at ? new Date(data.generated_at).toLocaleString('ms-MY', { timeZone:'Asia/Kuala_Lumpur' }) : 'TIDAK DIUKUR';
   const ageSec = data.generated_at ? Math.round((Date.now() - new Date(data.generated_at).getTime()) / 1000) : null;
-  const ageStr = ageSec !== null ? (ageSec < 60 ? `${ageSec}s yang lalu` : `${Math.round(ageSec/60)}m yang lalu`) : '';
-  
-  document.getElementById('nav-ts').textContent = `Dikemas kini: ${ageStr}`;
+  const ageStr = ageSec !== null ? (ageSec < 60 ? `${ageSec}s yang lalu` : `${Math.round(ageSec/60)}m yang lalu`) : 'Tiada Cap Masa';
+  const witnessSource = data.witness_node || 'KVM2/KVM4';
+
+  document.getElementById('nav-ts').textContent = `Saksi [${witnessSource}]: ${ageStr}`;
 
   const fed = data.federation || {};
   const meta = data.metabolism || {};
   const auth = data.authority || {};
   const bn = data.bottleneck || {};
+  const kernelAlive = data.kernel_alive ?? fed.kernel_alive ?? 
+    (fed.organs && fed.organs.some(o => o.id === 'arifos' && o.status === 'UP')) ??
+    (data.agent_list && data.agent_list.some(a => a.agent_id === 'arifos' && a.status === 'healthy')) ??
+    false;
 
-  // 1. Attention Desk Banner Logic
+  // 1. Attention Desk Banner Logic — STRICT FAIL-CLOSED DISCIPLINE
   const deskCard = document.getElementById('desk-card');
   const deskBadge = document.getElementById('desk-badge');
   const deskTitle = document.getElementById('desk-title');
   const deskDesc = document.getElementById('desk-desc');
   const deskHoldsCount = document.getElementById('desk-holds-count');
+  const deskAuthStatus = document.getElementById('desk-auth-status');
   const deskFqSummary = document.getElementById('desk-fq-summary');
+  const kernelCardStatus = document.getElementById('kernel-card-status');
 
-  deskHoldsCount.textContent = `${auth.holds || 0} holds aktif`;
-  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'UNKNOWN'})`;
+  if (kernelCardStatus) {
+    kernelCardStatus.textContent = kernelAlive ? 'AKTIF (:8088)' : 'TERPUTUS (:8088)';
+    kernelCardStatus.style.color = kernelAlive ? 'var(--ok)' : 'var(--danger)';
+  }
 
-  // F13 SAH 2026-10-06: holds = decision-ledger ONLY (true F13 binaries).
-  // Metabolic lane flags (auth.flow_holds) are bookkeeping — surfaced below as info, never as F13 attention.
-  if (auth.holds > 0) {
+  if (!kernelAlive) {
+    // FAIL-CLOSED: Kernel unreachable
+    deskCard.className = 'desk-card kernel-down';
+    deskCard.style.border = '2px solid var(--danger, #ff4444)';
+    deskCard.style.background = 'rgba(255, 68, 68, 0.08)';
+    deskBadge.className = 'desk-badge badge-danger';
+    deskBadge.style.background = 'var(--danger, #ff4444)';
+    deskBadge.style.color = '#fff';
+    deskBadge.textContent = 'HAKIM TIDAK DAPAT DICAPAI';
+    deskTitle.textContent = 'HAKIM TIDAK DAPAT DICAPAI — Semua Tindakan HOLD';
+    deskDesc.innerHTML = 'Enjin Hakim Perlembagaan (<code>arifOS :8088</code> di KVM8) tidak dapat dihubungi / terputus sambungan TCP. Semua tindakan berisiko ditahan secara automatik (888-HOLD) di bawah perlembagaan F1-F13.';
+    deskHoldsCount.textContent = 'holds: TIDAK DIUKUR';
+    deskAuthStatus.innerHTML = '⚖️ <strong>Autoriti Digital:</strong> <span style="color:var(--danger,#ff4444)">DITAHAN (Fail-Closed)</span>';
+    deskFqSummary.textContent = `🌊 FQ: TIDAK DIUKUR`;
+  } else if (auth.holds > 0) {
     deskCard.className = 'desk-card attention-needed';
+    deskCard.style.border = '';
+    deskCard.style.background = '';
     deskBadge.className = 'desk-badge badge-warn';
+    deskBadge.style.background = '';
+    deskBadge.style.color = '';
     deskBadge.textContent = 'PERHATIAN DIPERLUKAN';
     deskTitle.textContent = `${auth.holds} Tindakan Menunggu Keputusan Arif`;
-    const oldestIntent = auth.oldest_hold && auth.oldest_hold.intent ? ` — ${auth.oldest_hold.intent}` : '';
-    deskDesc.innerHTML = `Terdapat operasi berisiko (F13 Sovereign Binary) yang sengaja ditahan oleh enjin autoriti untuk persetujuan Arif${oldestIntent}`;
+    deskDesc.innerHTML = `Terdapat operasi berisiko (F13 Sovereign Binary) yang sengaja ditahan oleh enjin autoriti untuk persetujuan Arif.<br><strong>Tertahan:</strong> ${(auth.held_actors || []).join(', ') || 'Operasi mutasi'}`;
+    deskHoldsCount.textContent = `${auth.holds} holds aktif`;
+    deskAuthStatus.innerHTML = '⚖️ <strong>Autoriti Digital:</strong> GATED / SEPARUH TERTAHAN';
+    deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : 'TIDAK DIUKUR'} (${meta.verdict || 'OPTIMAL'})`;
   } else {
     deskCard.className = 'desk-card all-clear';
+    deskCard.style.border = '';
+    deskCard.style.background = '';
     deskBadge.className = 'desk-badge badge-ok';
+    deskBadge.style.background = '';
+    deskBadge.style.color = '';
     deskBadge.textContent = 'Peti Masuk Perhatian: KOSONG';
     deskTitle.textContent = 'Semua Tenang & Lancar (Zero Attention Leak)';
-    const fh = auth.flow_holds || { count: 0, actors: [] };
-    deskDesc.innerHTML = fh.count > 0
-      ? `Tiada keputusan berisiko tinggi yang memerlukan campur tangan Arif. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan F1-F13.<br><span style="color:var(--muted)">Lane metabolik tertahan (auto-release, bukan F13): ${fh.actors.join(', ')}</span>`
-      : 'Tiada keputusan berisiko tinggi atau sekatan yang memerlukan campur tangan Arif hari ini. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan perlembagaan F1-F13.';
+    deskDesc.textContent = 'Tiada keputusan berisiko tinggi atau sekatan yang memerlukan campur tangan Arif hari ini. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan perlembagaan F1-F13.';
+    deskHoldsCount.textContent = '0 holds aktif';
+    deskAuthStatus.innerHTML = '⚖️ <strong>Autoriti Digital:</strong> MUBAH / Auto-Approved';
+    deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : 'TIDAK DIUKUR'} (${meta.verdict || 'OPTIMAL'})`;
   }
 
   // 2. Organs
-  document.getElementById('organs-ratio').textContent = `${fed.organs_alive || 0}/${fed.organs_total || 0}`;
+  document.getElementById('organs-ratio').textContent = fed.organs_total ? `${fed.organs_alive || 0}/${fed.organs_total}` : 'TIDAK DIUKUR';
   let organsHtml = '';
   for (const o of (fed.organs || [])) {
     const dotCls = o.status === 'UP' ? 'up' : 'down';
-    organsHtml += `<div class="organ"><span class="dot ${dotCls}"></span><div><strong>${o.id}</strong> <span style="color:var(--muted);font-size:10px">${o.latency_ms}ms</span></div></div>`;
+    const latency = o.latency_ms != null ? `${o.latency_ms}ms` : 'TIMEOUT';
+    organsHtml += `<div class="organ"><span class="dot ${dotCls}"></span><div><strong>${o.id}</strong> <span style="color:var(--muted);font-size:10px">${latency}</span></div></div>`;
   }
   if (organsHtml) document.getElementById('organs-list').innerHTML = organsHtml;
 
   // 3. Metabolism
-  document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'UNKNOWN';
-  document.getElementById('fq-val').textContent = meta.quotient != null ? meta.quotient.toFixed(2) : '--';
-  document.getElementById('fq-diag').textContent = meta.diagnosis || 'UNKNOWN — diagnosis tidak tersedia';
-  document.getElementById('fq-counts').textContent = `${meta.verify_count || 0} sah / ${meta.execute_count || 0} laksana`;
-  document.getElementById('fq-stuck').textContent = `${meta.held_count || 0} tertahan / ${meta.throttled_count || 0} ditapis`;
+  document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'TIDAK DIUKUR';
+  document.getElementById('fq-val').textContent = meta.quotient != null ? meta.quotient.toFixed(2) : 'TIDAK DIUKUR';
+  document.getElementById('fq-diag').textContent = meta.diagnosis || 'TIDAK DIUKUR';
+  document.getElementById('fq-counts').textContent = meta.verify_count != null ? `${meta.verify_count} sah / ${meta.execute_count || 0} laksana` : 'TIDAK DIUKUR';
+  document.getElementById('fq-stuck').textContent = meta.held_count != null ? `${meta.held_count} tertahan / ${meta.throttled_count || 0} ditapis` : 'TIDAK DIUKUR';
 
   // 4. Authority
-  document.getElementById('auth-holds-badge').textContent = `${auth.holds || 0} holds`;
-  document.getElementById('auth-holds-val').textContent = auth.holds || 0;
-  document.getElementById('auth-holds-val').style.color = auth.holds > 0 ? 'var(--warn)' : 'var(--ok)';
-  document.getElementById('auth-seals-val').textContent = auth.seals || 0;
+  document.getElementById('auth-holds-badge').textContent = auth.holds != null ? `${auth.holds} holds` : 'TIDAK DIUKUR';
+  document.getElementById('auth-holds-val').textContent = auth.holds != null ? auth.holds : 'TIDAK DIUKUR';
+  document.getElementById('auth-holds-val').style.color = (auth.holds > 0) ? 'var(--warn)' : ((auth.holds === 0) ? 'var(--ok)' : 'var(--muted)');
+  document.getElementById('auth-seals-val').textContent = auth.seals != null ? auth.seals : 'TIDAK DIUKUR';
 
   // 5. Bottleneck
   const bnBox = document.getElementById('bottleneck-box');
-  const bnType = (bn.type || 'NONE').toUpperCase();
+  const bnType = (bn.type || (!kernelAlive ? 'KERNEL_DOWN' : 'NONE')).toUpperCase();
   bnBox.className = `bottleneck-box ${bnType.toLowerCase()}`;
   document.getElementById('bottleneck-title').textContent = bnType === 'NONE' ? 'TIADA HALANGAN' : `HALANGAN: ${bnType}`;
-  document.getElementById('bottleneck-desc').textContent = bn.reason || 'Persekutuan mengalir lancar tanpa rintangan.';
+  document.getElementById('bottleneck-desc').textContent = bn.reason || (!kernelAlive ? 'Hakim Perlembagaan KVM8 tidak membalas probe kesihatan.' : 'Persekutuan mengalir lancar tanpa rintangan.');
   
-  document.getElementById('fed-status-badge').textContent = `Status: ${fed.status || 'KUKUH'} · ${data.probe_ms || 0}ms`;
+  document.getElementById('fed-status-badge').textContent = `Saksi: ${witnessSource} · Status: ${fed.status || (kernelAlive ? 'KUKUH' : 'TERGANGGU')} · ${data.probe_ms || 0}ms`;
 }
 
 async function poll() {
-  try {
-    const res = await fetch(API, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    render(data);
-  } catch (err) {
-    document.getElementById('nav-ts').textContent = `Ralat memuatkan: ${err.message}`;
+  for (const url of STATUS_APIS) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        render(data);
+        return;
+      }
+    } catch (e) {}
   }
+  // If all fetch attempts fail, render strict fail-closed
+  render({
+    generated_at: null,
+    witness_node: 'OFFLINE',
+    kernel_alive: false,
+    federation: { status: 'TERPUTUS', organs_alive: 0, organs_total: 6, organs: [] },
+    authority: { holds: null, seals: null },
+    bottleneck: { type: 'WITNESS_UNREACHABLE', reason: 'Fail-closed: Pelayan saksi status.json tidak dapat dihubungi.' }
+  });
 }
 
 poll();

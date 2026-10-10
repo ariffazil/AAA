@@ -2,16 +2,16 @@
   "adapter_version": "1.0.0",
   "funnel": {
     "learn": 6,
-    "learn_per_verify": 0.15,
-    "observe": 138908,
-    "predict": 86,
-    "predict_per_1000_observe": 0.619,
-    "verify": 40,
-    "verify_per_predict": 0.465
+    "learn_per_verify": 0.146,
+    "observe": 148151,
+    "predict": 98,
+    "predict_per_1000_observe": 0.661,
+    "verify": 41,
+    "verify_per_predict": 0.418
   },
   "learning_closure_gap": {
     "actionable_lessons": 1,
-    "episodes_total": 139040,
+    "episodes_total": 148297,
     "gap": false,
     "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
     "unclassified_outcomes": 9
@@ -21,10 +21,18 @@
     "blind": 10,
     "total": 13
   },
-  "next_verify_at": "2026-10-09T23:59:59+08:00",
-  "swept_at": "2026-10-07T22:23:01Z",
+  "next_verify_at": "2026-10-13T23:59:59+08:00",
+  "swept_at": "2026-10-09T22:23:01Z",
   "verification_debt": {
-    "count": 0,
-    "items": []
+    "count": 1,
+    "items": [
+      {
+        "claim": "Event: arifOS F1 floor flickers pass/fail at the FQ=1.0 threshold (\u03c6FQ cliff + 100-receipt sliding window)",
+        "confidence": 0.715,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-2ebde5719588",
+        "verify_at": "2026-10-09T23:59:59+08:00"
+      }
+    ]
   }
 }

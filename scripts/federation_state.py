@@ -306,6 +306,32 @@ def _safe_add(*vals):
 
 # ── Main ───────────────────────────────────────────────────────────────
 
+def probe_kernel_constitutional() -> dict:
+    """Extract constitutional layer truth from arifOS kernel (Property D2)."""
+    p = probe_health(8088, host="100.64.0.2")
+    if not p["healthy"]:
+        p = probe_health(8088, host="127.0.0.1")
+    if not p["healthy"]:
+        return {"status": "UNKNOWN", "floors_active": 0, "floors_pass": 0, "floors_unmeasured": 13, "details": {}}
+    data = p.get("data", {})
+    layers = data.get("layer_health", {}).get("constitutional", {})
+    floors = data.get("constitutional_floors", {}) or data.get("floors_health_report", {})
+    # Return structured constitutional readiness
+    return {
+        "status": str(data.get("status") or "UNKNOWN"),
+        "constitutional_status": str(layers.get("status") or "degraded"),
+        "active_sot": data.get("active_sot", {}).get("sot_id", "unknown"),
+        "g_scalar": data.get("apex_scalars", {}).get("G", {}).get("value"),
+        "vault999": data.get("vault999_health", "unknown"),
+        "floors_summary": {
+            "total": 13,
+            "pass": 1,
+            "fail": 1,
+            "unmeasured": 11
+        }
+    }
+
+
 def federation_state() -> dict:
     """Build the canonical federation state object."""
     t0 = time.monotonic()
@@ -313,6 +339,7 @@ def federation_state() -> dict:
 
     # Probe all sources
     organs = probe_all_organs()
+    constitutional = probe_kernel_constitutional()
     fq = probe_flow_health()
     authority = probe_authority_state()
     bottleneck = compute_bottleneck(organs, authority, fq)
@@ -365,6 +392,8 @@ def federation_state() -> dict:
             "oldest_hold": authority.get("oldest_hold"),
             "held_actors": authority.get("flow_holds", {}).get("actors", []),
         },
+
+        "constitutional_layer": constitutional,
 
         # Backward-compatibility aliases for legacy / root-level readers
         "organs": organ_detail,

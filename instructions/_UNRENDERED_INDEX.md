@@ -163,6 +163,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - identity-continuity
 - institutional-memory-strata
 - inter-agent-protocol
+- interpretation-certainty-invariants
 - interpreter-drift
 - jauhari-intelligence-doctrine
 - kernel-hardening-eurekas

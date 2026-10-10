@@ -88,16 +88,18 @@ python3 /usr/local/lib/hermes-agent/profiles/aaa-hermes/skills/media/youtube-mul
 
 Cascade stages (stop at first success):
 
-| Stage | Method | Cost | VPS |
+| Stage | Method | Cost | VPS status (re-verified 2026-10-08) |
 |-------|--------|------|-----|
 | S0 | Cache hit | FREE | Always |
-| S8 | TranscriptAPI.com | 100 free/mo | Proven |
-| S1 | youtube-transcript-api direct | FREE | Blocked |
-| S2 | yt-dlp subtitles | FREE | Bot wall |
-| S4 | yt-dlp + cookies | FREE | If valid |
+| S1 | youtube-transcript-api v1.2.4 direct | FREE | **WORKING again** (61 segments on dQw4w9WgXcQ, 2026-10-08; was bot-blocked 2026-10-03 — IP flag lifted. Free-first: try before spending credits) |
+| S2 | yt-dlp --write-auto-sub (yt-dlp 2026.08.19) | FREE | **WORKING again** (VTT downloaded 2026-10-08) |
+| S8 | TranscriptAPI.com (`youtube-full` skill installed 2026-10-08, key sk_* in /root/.hermes/.env as TRANSCRIPT_API_KEY) | 1 credit/transcript; info+resolve+latest FREE | Proven — hosted egress, immune to IP flags. Endpoint: `https://transcriptapi.com/api/v2/youtube/*`, header `User-Agent: HermesAgent/0.11` MANDATORY (bare UA = CF 403 code 1010) |
+| S4 | yt-dlp + cookies | FREE | Last resort |
 | S5 | User paste | FREE | Fallback |
 | S6 | Supadata.ai | 100 free/mo | Alt hosted |
 | S7 | Composio | Per-call | OAuth needed |
+
+**Free-first ordering (2026-10-08):** S0 cache → S1 → S2 → S8 TranscriptAPI (spend credit only when free lanes fail). IP-flag status flips over time — probe, don't trust this table blindly (recovery-playbook §F6: blocks are per-request, not permanent).
 
 **Required env:** TRANSCRIPT_API_KEY (sk_*) in /root/.secrets/kunci-mas.env for S8.
 

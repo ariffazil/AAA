@@ -47,8 +47,7 @@ from fastmcp import FastMCP
 # ── Zen Priority Matrix ───────────────────────────────────────────────
 # ── BL12 calibration gate helper (F13 SAH 2026-09-30) ─────────────────────
 _CALIB_FILE = "/root/chron/data/calibration_per_actor.json"
-_CALIB_CACHE = {"t": 0.0, "idx": {}, "rows": 0, "matched": 0, "penalized": 0,
-                "unmatched": 0, "error": None}
+_CALIB_CACHE = {"t": 0.0, "idx": {}, "rows": 0, "matched": 0, "penalized": 0, "unmatched": 0, "error": None}
 
 
 def _actor_key(raw) -> str:
@@ -391,8 +390,7 @@ async def fed_health(_request):
                 "lookups_unmatched": _CALIB_CACHE["unmatched"],
                 "load_error": _CALIB_CACHE["error"],
                 "state": (
-                    "ERROR" if _CALIB_CACHE["error"] else
-                    ("VOCABULARY_GAP" if _CALIB_CACHE["rows"] == 0 else "ARMED")
+                    "ERROR" if _CALIB_CACHE["error"] else ("VOCABULARY_GAP" if _CALIB_CACHE["rows"] == 0 else "ARMED")
                 ),
             },
             "tools": [
@@ -435,6 +433,9 @@ async def fed_report_http(_request):
             tokens_out=int(body.get("tokens_out", 0)),
             agent_id=str(body.get("agent_id", "http")),
             hcsvog_fingerprint=str(body.get("hcsvog_fingerprint", "")),
+            ttft_ms=float(body["ttft_ms"]) if body.get("ttft_ms") is not None else None,
+            itl_ms=float(body["itl_ms"]) if body.get("itl_ms") is not None else None,
+            cache_hit=int(bool(body["cache_hit"])) if body.get("cache_hit") is not None else None,
         )
         return JSONResponse(result)
     except KeyError as e:
@@ -906,12 +907,14 @@ def fed_route_engine(
         # model that does not exist. Mirrors the unknown-capability refusal
         # already used at :884.
         if model not in MODEL_ROUTES:
-            return [{
-                "rank": 0,
-                "error": f"Unsupported model: {model}",
-                "requested_model": model,
-                "supported": False,
-            }]
+            return [
+                {
+                    "rank": 0,
+                    "error": f"Unsupported model: {model}",
+                    "requested_model": model,
+                    "supported": False,
+                }
+            ]
         routes = MODEL_ROUTES[model]
 
     if not routes:
@@ -1487,6 +1490,9 @@ def fed_classify(task: str) -> dict:
 
 
 # ── Latency telemetry ────────────────────────────────────────────────────
+_GOODPUT_COLS_READY = False  # module-level: ALTER runs once per process
+
+
 @mcp.tool()
 def fed_report_latency(
     provider: str,
@@ -1497,10 +1503,17 @@ def fed_report_latency(
     tokens_out: int = 0,
     agent_id: str = "unknown",
     hcsvog_fingerprint: str = "",
+    ttft_ms: float | None = None,
+    itl_ms: float | None = None,
+    cache_hit: int | None = None,
 ) -> dict:
     """
     Report latency for a provider-model route. Agents call this after every
     API call to populate route_latency table with live telemetry.
+
+    Goodput panel (2026-10-08 delta #2, Chase/Inference-Eng distillation):
+    optional ttft_ms (time-to-first-token), itl_ms (inter-token latency),
+    cache_hit (0/1 prefix-cache hit) — EMA-tracked alongside p50/p95.
 
     Args:
         provider: Provider name (deepseek, mulerouter, tokenrouter, etc.)
@@ -1512,14 +1525,29 @@ def fed_report_latency(
         agent_id: Reporting agent
         hcsvog_fingerprint: ETCSOVG harness fingerprint (SHA256-first-8) linking
             this latency sample to a specific harness configuration
+        ttft_ms: Time to first token (optional)
+        itl_ms: Inter-token latency (optional)
+        cache_hit: 1 if prompt-cache prefix hit, 0 if miss, omit if unknown
 
     Returns:
-        { recorded: true, p50_ms: ..., sample_count: ... }
+        { recorded: true, p50_ms: ..., ttft_ms: ..., sample_count: ... }
     """
     now = datetime.now(timezone.utc).isoformat()
 
     with sqlite3.connect(str(FED_STATE_DB)) as conn:
         conn.row_factory = sqlite3.Row
+
+        # Goodput telemetry columns — idempotent, fail-open (2026-10-08)
+        global _GOODPUT_COLS_READY
+        if not _GOODPUT_COLS_READY:
+            try:
+                cols = {r[1] for r in conn.execute("PRAGMA table_info(route_latency)").fetchall()}
+                for _col, _typ in (("ttft_ms", "REAL"), ("itl_ms", "REAL"), ("cache_hit", "INTEGER")):
+                    if _col not in cols:
+                        conn.execute(f"ALTER TABLE route_latency ADD COLUMN {_col} {_typ}")
+                _GOODPUT_COLS_READY = True
+            except sqlite3.OperationalError:
+                pass  # degraded: telemetry falls back to latency-only, never crashes router
 
         # Read existing stats
         existing = conn.execute(
@@ -1575,12 +1603,42 @@ def fed_report_latency(
             (provider, model, health_status, now),
         )
 
+        # Goodput telemetry write — EMA like p50, last-wins for cache_hit (2026-10-08)
+        if ttft_ms is not None or itl_ms is not None or cache_hit is not None:
+            try:
+                cur = conn.execute(
+                    "SELECT ttft_ms, itl_ms, cache_hit, sample_count FROM route_latency WHERE provider_name=? AND model_id=?",
+                    (provider, model),
+                ).fetchone()
+                if cur:
+                    n2 = cur["sample_count"] or 1
+                    upd, vals = [], []
+                    if ttft_ms is not None:
+                        _t = cur["ttft_ms"] if cur["ttft_ms"] is not None else ttft_ms
+                        upd.append("ttft_ms=?")
+                        vals.append(round(_t + (ttft_ms - _t) / n2, 2))
+                    if itl_ms is not None:
+                        _i = cur["itl_ms"] if cur["itl_ms"] is not None else itl_ms
+                        upd.append("itl_ms=?")
+                        vals.append(round(_i + (itl_ms - _i) / n2, 2))
+                    if cache_hit is not None:
+                        upd.append("cache_hit=?")
+                        vals.append(1 if cache_hit else 0)
+                    if upd:
+                        vals += [provider, model]
+                        conn.execute(
+                            f"UPDATE route_latency SET {', '.join(upd)} WHERE provider_name=? AND model_id=?", vals
+                        )
+            except sqlite3.OperationalError:
+                pass  # columns unavailable — degrade to latency-only
+
         # Read updated stats
         final = conn.execute(
-            "SELECT p50_ms, p95_ms, sample_count FROM route_latency WHERE provider_name = ? AND model_id = ?",
+            "SELECT p50_ms, p95_ms, sample_count, ttft_ms, itl_ms, cache_hit FROM route_latency WHERE provider_name = ? AND model_id = ?",
             (provider, model),
         ).fetchone()
 
+    keys = final.keys()
     return {
         "recorded": True,
         "provider": provider,
@@ -1589,6 +1647,9 @@ def fed_report_latency(
         "p95_ms": final["p95_ms"],
         "sample_count": final["sample_count"],
         "health": health_status,
+        "ttft_ms": final["ttft_ms"] if "ttft_ms" in keys else None,
+        "itl_ms": final["itl_ms"] if "itl_ms" in keys else None,
+        "cache_hit": final["cache_hit"] if "cache_hit" in keys else None,
     }
 
 

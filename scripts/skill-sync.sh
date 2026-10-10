@@ -10,129 +10,132 @@ AGENTS_SKILLS="/root/.agents/skills"
 HERMES_SKILLS="/root/HERMES/skills"
 KIMI_SKILLS="/root/.kimi-code/skills"
 
-RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
 log() { echo -e "${GREEN}[SYNC]${NC} $*"; }
 warn() { echo -e "${YELLOW}[WARN]${NC} $*"; }
 
 find_canonical() {
-    local skill_id="$1"
-    if [ -d "$HERMES_SKILLS/$skill_id" ] && [ ! -L "$HERMES_SKILLS/$skill_id" ]; then
-        echo "$HERMES_SKILLS/$skill_id"
-    elif [ -d "$AGENTS_SKILLS/$skill_id" ] && [ ! -L "$AGENTS_SKILLS/$skill_id" ]; then
-        echo "$AGENTS_SKILLS/$skill_id"
-    elif [ -d "$AAA_SKILLS/$skill_id" ] && [ ! -L "$AAA_SKILLS/$skill_id" ]; then
-        echo "$AAA_SKILLS/$skill_id"
-    else
-        local found
-        found=$(find "$HERMES_SKILLS" "$AGENTS_SKILLS" "$AAA_SKILLS" -maxdepth 3 -name "SKILL.md" -path "*/$skill_id/*" 2>/dev/null | head -1)
-        if [ -n "$found" ]; then
-            dirname "$found"
-        fi
-    fi
+	local skill_id="$1"
+	if [ -d "$HERMES_SKILLS/$skill_id" ] && [ ! -L "$HERMES_SKILLS/$skill_id" ]; then
+		echo "$HERMES_SKILLS/$skill_id"
+	elif [ -d "$AGENTS_SKILLS/$skill_id" ] && [ ! -L "$AGENTS_SKILLS/$skill_id" ]; then
+		echo "$AGENTS_SKILLS/$skill_id"
+	elif [ -d "$AAA_SKILLS/$skill_id" ] && [ ! -L "$AAA_SKILLS/$skill_id" ]; then
+		echo "$AAA_SKILLS/$skill_id"
+	else
+		local found
+		found=$(find "$HERMES_SKILLS" "$AGENTS_SKILLS" "$AAA_SKILLS" -maxdepth 3 -name "SKILL.md" -path "*/$skill_id/*" 2>/dev/null | head -1)
+		if [ -n "$found" ]; then
+			dirname "$found"
+		fi
+	fi
 }
 
 link_skill() {
-    local skill_id="$1"
-    local target_dir="$2"
-    local source
-    source=$(find_canonical "$skill_id")
+	local skill_id="$1"
+	local target_dir="$2"
+	local source
+	source=$(find_canonical "$skill_id")
 
-    if [ -z "$source" ]; then
-        warn "Cannot find canonical source for: $skill_id (skipping)"
-        return 0
-    fi
+	if [ -z "$source" ]; then
+		warn "Cannot find canonical source for: $skill_id (skipping)"
+		return 0
+	fi
 
-    local link_path="$target_dir/$skill_id"
+	local link_path="$target_dir/$skill_id"
 
-    # Skip if already correct symlink
-    if [ -L "$link_path" ]; then
-        local current_target resolved_source
-        current_target=$(readlink -f "$link_path" 2>/dev/null || true)
-        resolved_source=$(readlink -f "$source" 2>/dev/null || true)
-        [ "$current_target" = "$resolved_source" ] && return 0
-    fi
+	# Skip if already correct symlink
+	if [ -L "$link_path" ]; then
+		local current_target resolved_source
+		current_target=$(readlink -f "$link_path" 2>/dev/null || true)
+		resolved_source=$(readlink -f "$source" 2>/dev/null || true)
+		[ "$current_target" = "$resolved_source" ] && return 0
+	fi
 
-    [ -e "$link_path" ] && rm -rf "$link_path"
-    ln -sf "$source" "$link_path"
+	[ -e "$link_path" ] && rm -rf "$link_path"
+	ln -sf "$source" "$link_path"
 }
 
 # Skills available to all agents (canonical set)
 ALL_SKILLS=(
-    # Governance
-    aaa-agent-invariants aaa-agentic-governance arifos-governance arifos-act
-    constitutional-reasoning f1-gate sovereign-recognize phase-escalation-discipline
-    parallel-authority-detection incident-escalation incident-triage
-    pr-review-governance nusantara-intelligence-substrate spatial-grounding
-    # Engineering
-    aforge-apex-9-execution aforge-apex-9-execution-reference kernel-verbs-aforge-hands
-    precommit-gate precommit-review docker docker-entropy-ops docker-thermodynamics
-    vps-docker-runbook vps-docker-ops mcp-ops mcp-federation-ops mcp-builder-doctrine
-    mcp-zen-authoring mcp-smoke-test arif-mcp-governor arifos-mcp-federation
-    github github-ops github-runbook github-ci-diagnose github-issue-triage
-    github-pr-review secret-hygiene secret-safety-scan infra-guardian
-    # Domain
-    geox-grounding geox-basin-engines geox-claim-grammar geox-constitution
-    geox-contradiction-engine geox-earth-evidence geox-epistemic-ladder
-    geox-petrophysics-bounds geox-redteam-hantu geox-scientific-writing
-    geox-well-tie-pipeline geological-artifact-rigor prospect-maturation-workflow
-    wealth-capital-reasoning wealth-capital-thermodynamics wealth-collapse-signature
-    wealth-law-anthropology well-substrate-readiness
-    # Meta
-    skill-creator skill-trigger-linter recursive-skill-forge recursive-self-improvement
-    arifos-recursive-audit arifos-evals arifos-observability arifos-plan-dag
-    multi-discipline-critique meta-mesa-skill-atlas unified-skill-binding
-    drift-watch drift-response service-health-triage verify-runtime
-    code-wiki code-analysis-skills readme-truth-check repo-hygiene-audit summarize-pro
-    # Memory
-    vault999-integrity vault999-reader vault-integrity 999-vault-seal-immutable
-    session-continuity-inhabit agent-memory-bridge unified-memory-federation
-    knowledge-graph-query asi-knowledge-writeback agentic-dream-engine
-    claim-receipt-v1 claim-verification-gate truth-receipt-enforcer
-    # Trinity
-    # Consciousness
-    symbolic-order-collective-bias symbolic-order-trust-architecture
-    transport-physics-intelligence cooling-ledger-rsi zen-organ-memory
-    # Special
-    explorer-intelligence-architecture ask-search seek federation-orchestrator
-    mcp-lifeguard model-fallback-monitor telegram-security-audit google-workspace-cli
-    agentic-web-optimization subagent-spawn-template
-    agentic-web AGI-agentic-web AGI-explorer-intelligence
+	# Governance
+	aaa-agent-invariants aaa-agentic-governance arifos-governance arifos-act
+	constitutional-reasoning f1-gate sovereign-recognize phase-escalation-discipline
+	parallel-authority-detection incident-escalation incident-triage
+	pr-review-governance nusantara-intelligence-substrate spatial-grounding
+	# Engineering
+	aforge-apex-9-execution aforge-apex-9-execution-reference kernel-verbs-aforge-hands
+	precommit-gate precommit-review docker docker-entropy-ops docker-thermodynamics
+	vps-docker-runbook vps-docker-ops mcp-ops mcp-federation-ops mcp-builder-doctrine
+	mcp-zen-authoring mcp-smoke-test arif-mcp-governor arifos-mcp-federation
+	github github-ops github-runbook github-ci-diagnose github-issue-triage
+	github-pr-review secret-hygiene secret-safety-scan infra-guardian
+	# Domain
+	geox-grounding geox-basin-engines geox-claim-grammar geox-constitution
+	geox-contradiction-engine geox-earth-evidence geox-epistemic-ladder
+	geox-petrophysics-bounds geox-redteam-hantu geox-scientific-writing
+	geox-well-tie-pipeline geological-artifact-rigor prospect-maturation-workflow
+	wealth-capital-reasoning wealth-capital-thermodynamics wealth-collapse-signature
+	wealth-law-anthropology well-substrate-readiness
+	# Meta
+	skill-creator skill-trigger-linter recursive-skill-forge recursive-self-improvement
+	arifos-recursive-audit arifos-evals arifos-observability arifos-plan-dag
+	multi-discipline-critique meta-mesa-skill-atlas unified-skill-binding
+	drift-watch drift-response service-health-triage verify-runtime
+	code-wiki code-analysis-skills readme-truth-check repo-hygiene-audit summarize-pro
+	# Memory
+	vault999-integrity vault999-reader vault-integrity 999-vault-seal-immutable
+	session-continuity-inhabit agent-memory-bridge unified-memory-federation
+	knowledge-graph-query asi-knowledge-writeback agentic-dream-engine
+	claim-receipt-v1 claim-verification-gate truth-receipt-enforcer
+	# Trinity
+	# Consciousness
+	symbolic-order-collective-bias symbolic-order-trust-architecture
+	transport-physics-intelligence cooling-ledger-rsi zen-organ-memory
+	# Special
+	explorer-intelligence-architecture ask-search seek federation-orchestrator
+	mcp-lifeguard model-fallback-monitor telegram-security-audit google-workspace-cli
+	agentic-web-optimization subagent-spawn-template
+	agentic-web AGI-agentic-web AGI-explorer-intelligence
 )
 
 sync_agent() {
-    local agent_name="$1"
-    local target_dir="$2"
-    log "Syncing $agent_name → $target_dir"
-    mkdir -p "$target_dir"
+	local agent_name="$1"
+	local target_dir="$2"
+	log "Syncing $agent_name → $target_dir"
+	mkdir -p "$target_dir"
 
-    for skill in "${ALL_SKILLS[@]}"; do
-        link_skill "$skill" "$target_dir"
-    done
+	for skill in "${ALL_SKILLS[@]}"; do
+		link_skill "$skill" "$target_dir"
+	done
 
-    local count
-    count=$(ls "$target_dir" 2>/dev/null | wc -l)
-    log "$agent_name: $count skills linked"
+	local count
+	count=$(ls "$target_dir" 2>/dev/null | wc -l)
+	log "$agent_name: $count skills linked"
 }
 
 sync_claude() {
-    sync_agent "Claude Code" "$HOME/.claude/skills"
-    # Restore Claude-specific symlinks from backup if they existed
-    local bak="$HOME/.claude/skills.bak-20260711"
-    for special in forge-opencode-spawn opencode-acp opencode minimax-cli warga-skills; do
-        if [ -L "$bak/$special.md" ] && [ ! -e "$HOME/.claude/skills/$special.md" ] && [ ! -e "$HOME/.claude/skills/$special" ]; then
-            ln -sf "$(readlink "$bak/$special.md")" "$HOME/.claude/skills/$special.md" 2>/dev/null || true
-        elif [ -L "$bak/$special" ] && [ ! -e "$HOME/.claude/skills/$special" ]; then
-            ln -sf "$(readlink "$bak/$special")" "$HOME/.claude/skills/$special" 2>/dev/null || true
-        fi
-    done
+	sync_agent "Claude Code" "$HOME/.claude/skills"
+	# Restore Claude-specific symlinks from backup if they existed
+	local bak="$HOME/.claude/skills.bak-20260711"
+	for special in forge-opencode-spawn opencode-acp opencode minimax-cli warga-skills; do
+		if [ -L "$bak/$special.md" ] && [ ! -e "$HOME/.claude/skills/$special.md" ] && [ ! -e "$HOME/.claude/skills/$special" ]; then
+			ln -sf "$(readlink "$bak/$special.md")" "$HOME/.claude/skills/$special.md" 2>/dev/null || true
+		elif [ -L "$bak/$special" ] && [ ! -e "$HOME/.claude/skills/$special" ]; then
+			ln -sf "$(readlink "$bak/$special")" "$HOME/.claude/skills/$special" 2>/dev/null || true
+		fi
+	done
 }
 
 sync_codex() {
-    sync_agent "Codex CLI" "$HOME/.codex/skills"
+	sync_agent "Codex CLI" "$HOME/.codex/skills"
 }
 
 sync_grok() {
-    sync_agent "Grok Build" "$HOME/.grok/skills"
+	sync_agent "Grok Build" "$HOME/.grok/skills"
 }
 
 # F13 2026-08-21 "no more chaos redundant, all federated": sync_kimi REMOVED.
@@ -145,28 +148,28 @@ sync_grok() {
 # Re-flooding via rsync would recreate the 340-copy redundancy.
 
 audit() {
-    echo "═══════════════════════════════════════════════════"
-    echo "  AAA Federated Skills Audit — $(date -Iseconds)"
-    echo "═══════════════════════════════════════════════════"
-    echo ""
-    echo "Skill counts (tree):"
-    for d in "$AAA_SKILLS" "$AGENTS_SKILLS" "$HERMES_SKILLS" "$HOME/.kimi-code/skills" "$HOME/.claude/skills" "$HOME/.codex/skills" "$HOME/.grok/skills"; do
-        [ -d "$d" ] || continue
-        local name=$(echo "$d" | sed 's|/root/||; s|/skills||')
-        local phys=$(find "$d/" -maxdepth 2 -name SKILL.md -not -type l 2>/dev/null | wc -l)
-        local all=$(find "$d/" -maxdepth 2 -name SKILL.md 2>/dev/null | wc -l)
-        echo "  $name: $all SKILL.md resolvable ($phys physical)"
-    done
-    echo ""
-    # FIX 2026-09-19: two defects in the original one-liner.
-    #   (1) registry filename is _V3.yaml; the un-suffixed path never existed,
-    #       so this line silently reported "0 entries" forever.
-    #   (2) the registry carries counts as FIELDS (total_skills / logical_registry_count),
-    #       not as `id:` lines — grepping for 'id:' returns 0 even on a valid file.
-    local _reg="/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml"
-    [ -f "$_reg" ] || _reg="/root/AAA/skills/FEDERATED_SKILLS_REGISTRY.yaml"
-    if [ -f "$_reg" ]; then
-        python3 - "$_reg" <<'PYREG'
+	echo "═══════════════════════════════════════════════════"
+	echo "  AAA Federated Skills Audit — $(date -Iseconds)"
+	echo "═══════════════════════════════════════════════════"
+	echo ""
+	echo "Skill counts (tree):"
+	for d in "$AAA_SKILLS" "$AGENTS_SKILLS" "$HERMES_SKILLS" "$HOME/.kimi-code/skills" "$HOME/.claude/skills" "$HOME/.codex/skills" "$HOME/.grok/skills"; do
+		[ -d "$d" ] || continue
+		local name=$(echo "$d" | sed 's|/root/||; s|/skills||')
+		local phys=$(find "$d/" -maxdepth 2 -name SKILL.md -not -type l 2>/dev/null | wc -l)
+		local all=$(find "$d/" -maxdepth 2 -name SKILL.md 2>/dev/null | wc -l)
+		echo "  $name: $all SKILL.md resolvable ($phys physical)"
+	done
+	echo ""
+	# FIX 2026-09-19: two defects in the original one-liner.
+	#   (1) registry filename is _V3.yaml; the un-suffixed path never existed,
+	#       so this line silently reported "0 entries" forever.
+	#   (2) the registry carries counts as FIELDS (total_skills / logical_registry_count),
+	#       not as `id:` lines — grepping for 'id:' returns 0 even on a valid file.
+	local _reg="/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml"
+	[ -f "$_reg" ] || _reg="/root/AAA/skills/FEDERATED_SKILLS_REGISTRY.yaml"
+	if [ -f "$_reg" ]; then
+		python3 - "$_reg" <<'PYREG'
 import sys, yaml
 try:
     d = yaml.safe_load(open(sys.argv[1])) or {}
@@ -184,21 +187,64 @@ if rec:
           f"diverged={rec.get('diverged','?')}")
     print(f"  refreshed: {rec.get('refreshed','?')} via {rec.get('method','?')}")
 PYREG
-    else
-        echo "Registry: MISSING (no FEDERATED_SKILLS_REGISTRY*.yaml under /root/AAA/skills)"
-    fi
+	else
+		echo "Registry: MISSING (no FEDERATED_SKILLS_REGISTRY*.yaml under /root/AAA/skills)"
+	fi
+}
+
+reload() {
+	# Hot mesh reload (2026-10-08 delta #1 — Deep Agents distillation).
+	# Rescans skill mesh, diffs vs last snapshot, writes refresh marker.
+	# Agents/harnesses call this on /reload instead of rebooting the session.
+	local SNAP="/root/.local/share/arifos/skills_mesh_snapshot.txt"
+	local MARKER="/root/.local/share/arifos/skills_reload.marker"
+	mkdir -p /root/.local/share/arifos
+	find -L "$AAA_SKILLS" -name SKILL.md 2>/dev/null | sed "s|^$AAA_SKILLS/||; s|/SKILL.md$||" | sort >/tmp/mesh_now.$$
+	local now_count
+	now_count=$(grep -c . /tmp/mesh_now.$$ || true)
+	if [ -f "$SNAP" ]; then
+		local added removed
+		added=$(comm -13 "$SNAP" /tmp/mesh_now.$$ | grep . | head -20 || true)
+		removed=$(comm -23 "$SNAP" /tmp/mesh_now.$$ | grep . | head -20 || true)
+		if [ -n "$added" ]; then
+			echo "ADDED:"
+			echo "$added"
+		fi
+		if [ -n "$removed" ]; then
+			echo "REMOVED:"
+			echo "$removed"
+		fi
+		if [ -z "$added" ] && [ -z "$removed" ]; then echo "no mesh changes since last scan"; fi
+	else
+		echo "first scan — baseline established ($now_count skills)"
+	fi
+	cp /tmp/mesh_now.$$ "$SNAP"
+	rm -f /tmp/mesh_now.$$
+	date -u +"%Y-%m-%dT%H:%M:%SZ count=$now_count" >"$MARKER"
+	log "reload complete: $now_count skills live | marker: $MARKER"
 }
 
 case "${1:-sync}" in
-    audit)   audit ;;
-    sync)    sync_claude; sync_codex; sync_grok ;;
-    agent:*)
-        case "${1#agent:}" in
-            claude) sync_claude ;;
-            codex)  sync_codex ;;
-            grok)   sync_grok ;;
-            *)      echo "Unknown agent (kimi target removed 2026-08-21 F13 — reads AAA via extra_skill_dirs)"; exit 1 ;;
-        esac
-        ;;
-    *)  echo "Usage: $0 [audit|sync|agent:<claude|codex|grok>]"; exit 1 ;;
+audit) audit ;;
+sync)
+	sync_claude
+	sync_codex
+	sync_grok
+	;;
+reload) reload ;;
+agent:*)
+	case "${1#agent:}" in
+	claude) sync_claude ;;
+	codex) sync_codex ;;
+	grok) sync_grok ;;
+	*)
+		echo "Unknown agent (kimi target removed 2026-08-21 F13 — reads AAA via extra_skill_dirs)"
+		exit 1
+		;;
+	esac
+	;;
+*)
+	echo "Usage: $0 [audit|sync|reload|agent:<claude|codex|grok>]"
+	exit 1
+	;;
 esac
