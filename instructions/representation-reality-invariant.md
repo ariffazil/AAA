@@ -6,7 +6,7 @@
 > **Binding:** Any agent that reads a claim about a system's state — including its own.
 > **Lineage:** `APEX-ZEN-CANONICAL-COMPRESSION.md` · `authority-envelope.md` · `state-transition-discipline.md`
 > · `instructions/huma-edge-reality-bridge-contrast.md` (the worked case).
-> **Status:** DRAFT_AWAITING_F13 (2026-09-18) — advisory; T1 reversible; touches no protected tree.
+> **Status:** F13_SEAL (2026-10-10 — sovereign binary "sah", session SEAL-G09-INGRESS-2026-10-10; promoted from DRAFT_AWAITING_F13 2026-09-18).
 > **Kernel anchor:** F2 · F7 · F9 · F11 · F13.
 
 ## The invariant

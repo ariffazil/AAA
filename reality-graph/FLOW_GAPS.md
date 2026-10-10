@@ -104,6 +104,7 @@ Empirical, 2026-09-14: 4 of 6 attempts **ALLOWED** a token with a garbage signat
 
 ### G-11 · BYPASS — `forge_seal_lane_a` explicitly bypasses the canonical HOLD
 `/root/A-FORGE/src/interfaces/mcp/sealLaneA.ts:4` — *"bypasses chat-MCP `arif_seal` HOLD (vault_sovereign lease)"*, spawning `/root/scripts/forge_seal_lane_a.py`.
+**DISPOSITION (2026-10-10, F13 "sah"):** DEFERRED-BY-EVIDENCE. Probe found HMAC mode is the ONLY live canonical seal path — arifOS MCP seals via it; Ed25519 mode HELD by key mismatch. Removal would kill the only working VAULT999 seal lane. Retain + document; wire the gate into the execution path as Lane C follow-up. (Bypass-class finding retained as history; live-bypass claim downgraded.)
 **Consequence:** a second, in-process seal path that does not pass the `arif_seal` HOLD gate. Two ways to reach VAULT999 with different gate coverage.
 
 ---
