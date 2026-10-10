@@ -1,3 +1,4 @@
+<!-- SUPERSEDED 2026-10-05 → see /root/AAA/canon/AGENTIC-FLOW-ARCHITECTURE-2026-10-05.md (F13 ratified unified canon 2026-10-05). Pointer kept per doctrine (no delete). -->
 Status: DRAFT_AWAITING_F13
 
 # EUREKA — Reality-Bound Authority (R-BAP) — 2026-09-07
