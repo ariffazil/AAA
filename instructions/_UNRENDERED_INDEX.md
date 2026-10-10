@@ -7,13 +7,16 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-2026-09-24
 - CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-v0.6-2026-09-24
 - EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-STAGING-2026-09-25
+- EUREKA-STATELESS-TRANSPORT-GOVERNANCE-LOCUS-2026-10-10
 - F13-RATIFICATION-READINESS
 - HANDOFF_2026-09-29_HERMES_AUDIT
 - HERMES-RASA-CANONICAL-COMPRESSION
 - LEAN_BOOT_PROFILE
 - LEAN_BOOT_TRIGGER_TABLE
+- MCP-HARDENING-PHASE-00-01-2026-10-10
 - REALITY_DEBT_AUDIT
 - REALITY_GRAPH_5_LAYER_DOCTRINE-STAGING-2026-09-24
+- SEAL-ALL-DALIO-WEALTH-2026-10-09
 - SOVEREIGN-PROPOSAL-CANON-INDEX-STAGING-2026-09-24
 - _UNRENDERED_INDEX
 - add-only-truth-preservation
@@ -28,7 +31,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - agi-asi-skills-fundamentals
 - agi-grade-authority-kernel-invariants
 - amodei-corpus-agent-lessons
-- anti-behavior-sink
 - anti-calhoun
 - anti-collapse-doctrine
 - anti-haram-behavior-canonical
@@ -39,6 +41,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - apex-swot-loop
 - apex-zen-breath-loop
 - arifos-institutional-emergence-doctrine
+- attention-as-reality-continuity
 - attention-graph
 - attention-init-boundary
 - attention-kill-criterion
@@ -83,10 +86,12 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - context-axes
 - cost-of-translation
 - cultural-evolution-doctrine
+- dalio-lens-shadow-proposal
 - data-authority-hierarchy
 - dissipative-transition
 - doctrine-admission-gate
 - dunbar-constraint
+- economics-as-witness
 - ecosystem-expansion
 - emd-architecture
 - epistemic-operating-rules
@@ -104,11 +109,13 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - federation-orthogonality-future-state
 - federation-orthogonality-invariant-floor-mapping
 - federation-personality-taxonomy-2026-09-11
+- four-layer-separation
 - fsl-f13-non-substitution-boundary
 - functional-spec-binding-path
 - functional-spec-canonical-ontology
 - functional-spec-vaul999-anchoring
 - gate-promotion
+- gelombang-2-blindspot-laws
 - geology-artifact-kinabalu-basin
 - github-zen
 - godel-eurekas-brief
@@ -133,6 +140,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - human-leverage-north-star
 - human-meaning-membrane
 - human-memory
+- human-memory-compartmentalization
 - human-reality-invariants
 - human-substrate
 - human-substrate-exclusions-PROPOSAL
@@ -140,11 +148,13 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - identity-continuity
 - institutional-memory-strata
 - inter-agent-protocol
+- interpretation-certainty-invariants
 - interpreter-drift
 - jauhari-intelligence-doctrine
 - kernel-hardening-eurekas
 - knowledge-ingestion-schema
 - law-of-binding
+- linkgraph-namespace
 - mail-access
 - maturation-dynamics
 - meaning-consequence-vitality
@@ -196,6 +206,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - temporal-grounding-doctrine
 - temporal-intelligence-doctrine
 - testimony-gate
+- three-consequence-domains
 - three-plane-architecture
 - trauma-theorem
 - triad-perspective-consequence-persistence
@@ -204,7 +215,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - valence-loss-asymmetry
 - vault999-writer-discipline
 - wawabot-anthropology
-- wealth-pages-build-doctrine
 - well-use
 - witness-cost-gradient
 - witness-maintenance

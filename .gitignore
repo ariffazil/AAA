@@ -208,3 +208,6 @@ eval/aaa-gold/
 # 2026-10-04 FI-003: deletion witness may contain credential-bearing stash dumps
 reports/deletion-witness-*/
 skills/.pre-promote-*-backup-*/
+
+# [333-AGI deep-probe 2026-10-10] secret hygiene: never commit Redis URL
+auth/redis_url.env

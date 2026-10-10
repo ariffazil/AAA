@@ -103,7 +103,10 @@ async def probe_federation() -> FederationProbe:
                 fq = fq_data
 
     healthy = sum(1 for o in organ_list if o.healthy)
+    degraded = sum(1 for o in organ_list if not o.healthy and o.status != "down")
+    down = sum(1 for o in organ_list if not o.healthy and o.status == "down")
     total = len(organ_list)
+    assert healthy + degraded + down == total, f"Conservation invariant violated: {healthy}+{degraded}+{down} != {total}"
 
     probe_duration = (time.monotonic() - start) * 1000
 
@@ -111,8 +114,8 @@ async def probe_federation() -> FederationProbe:
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         total_organs=total,
         healthy_organs=healthy,
-        degraded_organs=sum(1 for o in organ_list if not o.healthy and o.status != "down"),
-        down_organs=total - healthy,
+        degraded_organs=degraded,
+        down_organs=down,
         organs=organ_list,
         fq=fq,
         probe_duration_ms=round(probe_duration, 2),
