@@ -7,14 +7,24 @@ echo " Authority: F13 Sovereign (Muhammad Arif bin Fazil)"
 echo " Doctrine: DITEMPA BUKAN DIBERI"
 echo "================================================================="
 
-cd /root/AAA
-export PYTHONPATH=/root/AAA
+# 2026-10-10 clean-room fix: bare `python3` resolves to an interpreter
+# without pytest on some witnesses (hermes toolchain shim shadows PATH).
+# Pin to PYTEST_PY (override), else /usr/bin/python3.13 (verified deps:
+# pytest, nacl, rfc8785, jsonschema), else fall back to python3.
+# Also: verify the CHECKED-OUT tree, not the author's working tree.
+if [ -n "${PYTEST_PY:-}" ]; then PY="$PYTEST_PY"
+elif /usr/bin/python3.13 -c "import pytest, nacl, rfc8785, jsonschema" 2>/dev/null; then PY=/usr/bin/python3.13
+else PY=python3; fi
+
+cd "$(dirname "$0")/.."
+ROOT="$(pwd -P)"
+export PYTHONPATH="$ROOT"
 
 echo "[1/3] Executing 9 Mandatory Unit & Causal Chain Tests..."
-python3 -m pytest -q tests/witness/test_receipt_v1.py
+"$PY" -m pytest -q tests/witness/test_receipt_v1.py
 
 echo "[2/3] Verifying Persisted Receipt Chain & Independent Verification..."
-python3 -c "
+"$PY" -c "
 import sys, json, nacl.signing, rfc8785, hashlib
 from src.witness.receipt_verifier import ReceiptVerifier
 
@@ -42,7 +52,7 @@ print('  ✓ All 4 causal receipts mathematically verified against public key: '
 "
 
 echo "[3/3] Verifying Zero Secrets in Staged Artifacts..."
-python3 -c "
+"$PY" -c "
 from pathlib import Path
 for p in list(Path('tests/witness/vectors').rglob('*')) + list(Path('evidence').rglob('*')):
     if p.is_file():
