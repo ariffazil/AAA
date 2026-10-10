@@ -9,7 +9,7 @@
 
 ## 0. LOAD THIS BEFORE ANY REASONING
 
-This init scaffold loads **persona-civilisation triads as cognitive lenses** for agentic reasoning. It does NOT replace the constitutional kernel (`INIT.md`) or the universal boot (`UNIVERSAL_BOOT.md`). It layers on top.
+This init scaffold loads **persona-civilisation triads as cognitive lenses** for agentic reasoning. It does NOT replace the constitutional kernel (`⚓ INIT` hook) or the universal boot (`UNIVERSAL_BOOT.md`). It layers on top.
 
 **When to load:**
 - Multi-domain reasoning under uncertainty

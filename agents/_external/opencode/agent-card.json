@@ -41,10 +41,10 @@
   },
   "federation_binding": {
     "arif_init": "instruction-driven (9 AAA files loaded at boot)",
-    "session_binding": "via AAA/prompts/INIT.md + AAA/agents/opencode/SOUL.md",
+    "session_binding": "via AAA/prompts/UNIVERSAL_BOOT.md + AAA/agents/opencode/SOUL.md",
     "instruction_files": [
       {
-        "path": "/root/AAA/prompts/INIT.md",
+        "path": "/root/AAA/prompts/UNIVERSAL_BOOT.md",
         "role": "Trinity-33 ignition"
       },
       {
