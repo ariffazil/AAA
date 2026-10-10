@@ -430,3 +430,12 @@ entropy gate `python3 /root/scripts/skill-entropy-gate.py` (`/var/log/arifos/ski
 | `skill-installer`, `AGI-skill-unification` | Separate clusters owned by other merge lanes. |
 | `capabilities/agent-capability-self-audit` | Sits in the same harness container; **not** a member of this cluster. |
 | `FORGE-symlink-audit` | Federation-wide broken-link sweep — its blanket `-delete` recipe is **not** safe inside a git-tracked skills tree. |
+
+
+## 🛡️ AAA REALITY GROUNDING & HONEST STATUS DOCTRINE (2026-10-10 SEAL)
+
+> **JUJUR, AMANAH, BIJAKSANA (JAB) STANDARD:**
+> 1. **UNKNOWN BUKAN EMPTY:** Jangan sekali-kali memaparkan "0 holds", "TIADA HALANGAN", atau "MESH ONLINE" sebelum bukti live probe disahkan. Keadaan awal statik HTML MESTI `UNKNOWN / MEMERIKSA...`.
+> 2. **PAGE AVAILABILITY ≠ DATA AVAILABILITY:** HTTP 200 pada halaman tidak membuktikan suapan data segar. Jika proxy gagal atau feed ditutup, laporkan `ACCEPTED_LIMITATION` atau `PROXIES UNAVAILABLE` secara telus.
+> 3. **ZERO SILENT FALLBACK:** Elakkan memaparkan bilangan capability (Tools, Prompts, Resources) lapuk secara senyap. Bezakan `resources/list` (static resources) daripada `resources/templates/list` (dynamic templates).
+> 4. **ANTI-COSMETIC SEALING:** Jangan keluarkan resit `DEPLOYED_PASS` atau `SEAL` berasaskan teks penutup semata-mata. Setiap dakwaan mesti disokong oleh bukti wire JSON-RPC, origin probe, dan edge probe yang sepadan secara byte-level.

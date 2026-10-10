@@ -240,7 +240,7 @@ Most persona-civilisation claims are **[INT]** or **[DER]**. Label honestly.
 ## SESSION STARTUP SEQUENCE
 
 ```
-1. Load constitutional kernel (INIT.md or UNIVERSAL_BOOT.md)
+1. Load constitutional kernel (⚓ INIT hook or UNIVERSAL_BOOT.md)
 2. Load this scaffold (INIT_PERSONA_CIVILISATION.md)
 3. Identify which runtime mode applies (#1 canonical / #2 edge / #3 healing)
 4. Run Dunbar scaling check if designing systems

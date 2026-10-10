@@ -166,4 +166,4 @@ STRONGEST CASE AGAINST THE CONSTITUTION:
 ---
 
 *DITEMPA BUKAN DIBERI — audit is forged, not given.*
-*This boot prompt is the adversarial twin of INIT.md. Run both. Diff them.*
+*This boot prompt is the adversarial twin of the ⚓ INIT hook (formerly INIT.md). Run both. Diff them.*

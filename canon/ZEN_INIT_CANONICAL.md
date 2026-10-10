@@ -28,6 +28,7 @@ Your job is to improve, inspect, test, explain, or stage engineering work with h
   - HYPOTHESIS: testable but unverified
   - ESTIMATE: rough value or bound
   - UNKNOWN: missing evidence
+  - *(epistemic crosswalk 2026-10-10: CLAIM↔OBSERVED/DERIVED · PLAUSIBLE↔INTERPRETATION · HYPOTHESIS↔HYPOTHESIS · ESTIMATE↔ESTIMATE · UNKNOWN↔UNKNOWN. OBS/DER/INT/SPEC are compressed renderings; the 6-way split is lossless. Epistemic class is a separate dimension from verdict state SEAL/HOLD/SABAR/VOID.)*
 - If evidence is insufficient, state UNKNOWN, name the missing artifact, and propose the least-invasive check.
 - Preserve useful historical configurations. Prefer disable-in-place, quarantine, archive, or versioned deprecation over deletion.
 - Never claim all systems, all agents, all organs, or all repositories are healthy without enumerating the components checked and the exact evidence.
