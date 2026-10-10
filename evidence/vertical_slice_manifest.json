@@ -15,14 +15,15 @@
     "tests/witness/vectors/receipt_tampered.json": "c6616e86b14870e84c8c385845c8ed42a691c7eff99d82086a7e8665d8117338",
     "tests/witness/vectors/public_key.hex": "7e95115a2a6d8e4cfd2c84b22e9c267ae68be797a81ef874116d6ea4419c304c",
     "evidence/vertical_slice_receipts.json": "62d48358e8ebe9c74d7dfb619c5b3e82d2a6e965291ec628af1557b675e12d9f",
-    "scripts/verify_vertical_slice.sh": "6b774e96a8681c45fd4b34b4c78281c1d2545beff2f75bd75a2d1f282d2f0334"
+    "scripts/verify_vertical_slice.sh": "379a76f41c3ea90489c8bc73ed67ee0d5e247f6f8713d61712751e80320ce085"
   },
   "test_suite": {
     "total_tests_collected": 9,
     "passed": 9,
     "failed": 0,
     "cardinality_reconciled": true,
-    "verdict": "SEAL"
+    "verdict": "SEAL",
+    "reproducibility_note": "clean-room safe: pinned interpreter + relative-tree cd (2026-10-10)"
   },
-  "reproducibility_command": "/root/AAA/scripts/verify_vertical_slice.sh"
+  "reproducibility_command": "PYTEST_PY=/usr/bin/python3.13 scripts/verify_vertical_slice.sh"
 }
