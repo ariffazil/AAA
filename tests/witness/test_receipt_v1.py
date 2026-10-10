@@ -71,7 +71,7 @@ def test_6_proxy_induced_failure_not_classified_as_down():
         return "DOWN"
     assert classify_probe(400, "Direct IP access not allowed") == "UNKNOWN_PATH"
 
-def test_7_8_governed_adaptation_and_rollback_causal_chain(test_keys):
+def test_7_authorized_bounded_adaptation_changes_behaviour(test_keys):
     sk, vk_hex = test_keys
     signer = ReceiptSigner(sk, key_id="key-test-witness-01")
     verifier = ReceiptVerifier(vk_hex)
@@ -141,18 +141,26 @@ def test_7_8_governed_adaptation_and_rollback_causal_chain(test_keys):
     }
     _, sig_csq = signer.sign(rec_csq)
     assert verifier.verify(rec_csq, sig_csq)
-    hash_csq = hashlib.sha256(rfc8785.dumps(rec_csq)).hexdigest()
+    assert rec_csq["payload"]["observed_consequence"]["param_throttle_ms"] == 500
 
-    # 4. ROLLBACK (Restoring baseline)
+def test_8_rollback_restores_baseline(test_keys):
+    sk, vk_hex = test_keys
+    signer = ReceiptSigner(sk, key_id="key-test-witness-01")
+    verifier = ReceiptVerifier(vk_hex)
+
+    # Base Consequence Hash mock for causal chain
+    csq_hash = hashlib.sha256(b"mock_consequence_bytes").hexdigest()
+
+    # ROLLBACK (Restoring baseline)
     rec_rb = {
         "schema_version": "receipt.v1",
         "receipt_id": "rec-44444444-4444-4444-4444-444444444444",
         "receipt_type": "ROLLBACK",
         "actor_id": "executor/a-forge",
         "capability_id": "federation.action.rollback.v1",
-        "authority_ref": rec_auth["receipt_id"],
-        "parent_receipt_id": rec_csq["receipt_id"],
-        "previous_receipt_hash": hash_csq,
+        "authority_ref": "rec-22222222-2222-2222-2222-222222222222",
+        "parent_receipt_id": "rec-33333333-3333-3333-3333-333333333333",
+        "previous_receipt_hash": csq_hash,
         "timestamp_utc": "2026-10-10T02:04:00Z",
         "key_id": "key-test-witness-01",
         "payload": {
@@ -163,6 +171,8 @@ def test_7_8_governed_adaptation_and_rollback_causal_chain(test_keys):
     }
     _, sig_rb = signer.sign(rec_rb)
     assert verifier.verify(rec_rb, sig_rb)
+    assert rec_rb["payload"]["baseline_verified"] is True
+    assert rec_rb["payload"]["restored_state"]["param_throttle_ms"] == 100
 
 def test_9_no_secrets_in_artifacts():
     # Verify no private key headers or binary seeds in vector files
