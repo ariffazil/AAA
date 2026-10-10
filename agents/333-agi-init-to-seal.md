@@ -75,7 +75,7 @@ while not done:
 
 - [ ] Substrate HEALTHY (no drift)
 - [ ] Truth score >= 0.99
-- [ ] L13 human witness present
+- [ ] Tri-witness (Human × AI × Earth) present
 - [ ] G >= 0.80
 - [ ] No unresolved contradictions
 - [ ] Human state witnessed

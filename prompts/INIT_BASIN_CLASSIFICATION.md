@@ -12,7 +12,7 @@ consistency test pipeline that the previous session established.
 
 You **MUST**:
 
-1. Read `/root/AAA/prompts/INIT.md` first — it contains the binding Presentation
+1. Read `/root/AAA/prompts/UNIVERSAL_BOOT.md` first — it contains the binding Presentation (INIT.md retired 2026-07-27)
    Law and Floor definitions.
 2. Read `/root/AAA/sessions/session-SEAL-454e3a09d5ff40e0-SEAL.md` for the audit
    trail of the prior session (Sundaland Malay Basin artifact).
