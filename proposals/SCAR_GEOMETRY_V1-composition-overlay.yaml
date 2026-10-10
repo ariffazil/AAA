@@ -1,0 +1,71 @@
+schema: arifos.scar-geometry-overlay/v1
+artifact: SCAR_GEOMETRY_V1_COMPOSITION_OVERLAY
+created: 2026-10-10
+emitter: kimi-code/FI-008
+status: SEAL_PROPOSED / HOLD_ACTIVATION
+executable: false
+
+# ── THIS FILE DOES NOT RESTATE THE 99 SLOTS ──────────────────────────────────
+# Slot ownership (one problem, one owner):
+owner_of_slots: /root/HAMPA/SCAR_GEOMETRY_V1.yaml      # generated_by: HERMES (A2H)
+also_present:   /root/HAMPA/SCAR-MAP-99-v1.yaml
+generator:      /root/.hermes/cache/scratch/build_scar_geometry.py
+sources:        /root/.hermes/cache/scratch/{scar-map-99.html, peta-scar-arif.html, peta-luka.typ, scar-geometry.html}
+purpose: "Crosswalk + anti-duplication audit for the canonical map. Adds what the canonical lacks: provenance of slot-content, alignment to existing canon, and duplication flags."
+
+correction_note: >
+  A first draft at /root/AAA/proposals/SCAR_GEOMETRY_V1.yaml was built from the F13
+  chat relay BEFORE the source generator was found, and is WITHDRAWN (deleted) as a
+  duplicate. Lesson (an agent scar): probe for the source artifact before compiling from
+  a relay. The canonical HAMPA artifact already handled provenance correctly (see its
+  HTML C1/C2/C3 corrections).
+
+# ── Slot-content provenance RESOLVED against the source ──────────────────────
+# The two F13 relays disagreed on law numbering. The SOURCE settles it:
+provenance_resolution:
+  - {node: "13", source: "kerap diulang tak pernah jadi benar (repetition never becomes truth)", relay1: match, relay2: "WRONG (delivery must be independently observed)"}
+  - {node: "23", source: "peta lama menipu (old maps lie)", relay1: match, relay2: "WRONG (authority must be scoped)"}
+  - {node: "25", source: "nampak hidup bukan boleh kerja (looks alive != can work)", relay1: match, relay2: "WRONG (cached state cannot govern changed reality)"}
+verdict: "relay1 correct for 13/23/25; relay2 law-numbering unreliable. Source-of-truth is /root/HAMPA/SCAR_GEOMETRY_V1.yaml + build_scar_geometry.py."
+
+# ── CANON ALIGNMENT — the systems the map must not duplicate ─────────────────
+canon_alignment:
+  constitutional_floors:  {owner: "/root/AAA/governance/FLOOR_TABLE.json", role: "authority (CAN/CANNOT)"}
+  machine_laws_7:         {owner: "/root/AAA/canon/7-MACHINE-LAWS.md", role: "machine/codebase boundary"}
+  constitutional_laws_13: {owner: "/root/AAA/canon/13-CONSTITUTIONAL-LAWS.md", role: "A2A boundary (above wire)"}
+  shadow_paradoxes_13:    {owner: "/root/AAA/instructions/shadow-paradoxes-13.md", role: "epistemic (SEE/CANNOT SEE) S1..S13"}
+  scar_authority:         {owner: "/root/AAA/canon/SCAR_AUTHORITY.md", role: "legitimacy — external, non-self-generatable"}
+  scar_binding:           {owner: "/root/AAA/canon/AAA-SCAR-BINDING-DOCTRINE-v1.md", role: "scar=constraint on selection; test-time frozen-retrieve-emit"}
+  scar_weight:            {owner: "/root/AAA/scar-weight-registry.json", role: "W_scar weighting"}
+
+duplication_flags:
+  - {id: DUP-01, slot: "L10 'Dah siap sebelum siap'", existing: "7-MachineLaw#5 (no success without behavioral verification)", verdict: DUPLICATE}
+  - {id: DUP-02, slot: "L13 repetition != truth",     existing: "source-type-promotion-gate (2026-09-25) + memory-promotion-gate", verdict: KINDRED}
+  - {id: DUP-03, slot: "L18 no self-examination",     existing: "13-ConstLaw#12 + SCAR-BINDING §7 (no feedback)", verdict: DUPLICATE}
+  - {id: DUP-04, slot: "L19 two correct hands spoil", existing: "scar 2026-10-02 concurrent-shared-file-edits-without-lock", verdict: KINDRED}
+  - {id: DUP-05, slot: "L22 'dah buat' != 'dah sampai'", existing: "7-MachineLaw#3 (source!=build!=deployed!=observed)", verdict: DUPLICATE}
+  - {id: DUP-06, slot: "L23 old map lies",            existing: "scar 2026-10-03 probe-without-fetch-stale-map + 7-MachineLaw#1", verdict: DUPLICATE}
+  - {id: DUP-07, slot: "L28 silent change = betrayal", existing: "7-MachineLaw#4 (no mutation without identity+scope+receipt)", verdict: DUPLICATE}
+  - {id: DUP-08, slot: "L38 don't delete, append",     existing: "VAULT999 immutability + 7-MachineLaw#7", verdict: DUPLICATE}
+  - {id: DUP-09, slot: "P53 Silence Interpretation",   existing: "Shadow Paradox S12 (Silence Shadow)", verdict: KINDRED}
+  - {id: DUP-10, slot: "P46 Measurement Substitution", existing: "Shadow Paradox S5 + HumanLeverage North-Star", verdict: KINDRED}
+  - {id: DUP-11, slot: "P57 Competence-Authority",     existing: "Shadow Paradox S7 + 13-ConstLaw#2", verdict: KINDRED}
+  - {id: DUP-12, slot: "P72 Consensus Authority",      existing: "13-ConstLaw#5 (Consensus != Truth)", verdict: DUPLICATE}
+
+ontology_hazards:
+  - {id: HAZARD-01, issue: "THREE+ scar-numbering systems coexist", systems: ["P99: 01-09 human / 10-41 law / 42-74 paradox / 75-99 unknown", "AAA: scar-001..006 + /root/AAA/scars/ dated", "NAME: scar-named-by-arif.md (vacuous integrity, hollow success, identity fork, unmeasured W3, delta_s null)", "HAMPA: SCAR-LEDGER-HUMAN / SCAR-MAP-99"], required: "namespace every scar reference"}
+  - {id: HAZARD-02, issue: "relay2 law-numbering wrong for 13/23/25", resolution: "RESOLVED from source (see provenance_resolution)"}
+  - {id: HAZARD-03, issue: "deployment-drift claim time-dependent", note: "source HTML C2 (live 19:37 MYT) = aligned, build=live=6df3d65; proof-plane audit (earlier) = stale. Different surfaces, different clocks — do not conflate."}
+
+canon_0_gate:
+  a_eliminates_failure_class: "YES — agents duplicating existing canon"
+  b_compiles_to_mechanism: "PARTIAL — machine-readable crosswalk; runtime read not wired"
+  c_improves_decision: "YES — one crosswalk instead of 4+ competing ontologies"
+  verdict: "PASS as overlay. FAIL as a new registry."
+
+human_decision_required:
+  - "Accept this overlay, or fold it into HAMPA canonical as a §Crosswalk section"
+  - "Namespace convention for scar references (HAZARD-01)"
+  - "Runtime wiring stays HOLD until SCAR-BINDING Phase B"
+
+verdict: {conceptual_architecture: SEAL_PROPOSED, runtime_activation: HOLD, executable: false}
