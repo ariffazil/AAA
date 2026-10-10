@@ -55,8 +55,10 @@ def probe_health(port: int) -> dict:
     url = f"http://127.0.0.1:{port}/health"
     t0 = time.monotonic()
     try:
+        from urllib.request import build_opener, ProxyHandler
         req = Request(url, headers={"User-Agent": "federation-state/1.0"})
-        with urlopen(req, timeout=PROBE_TIMEOUT) as resp:
+        opener = build_opener(ProxyHandler({}))
+        with opener.open(req, timeout=PROBE_TIMEOUT) as resp:
             ms = round((time.monotonic() - t0) * 1000, 1)
             body = json.loads(resp.read().decode())
             return {"healthy": resp.status == 200, "latency_ms": ms, "data": body, "failure_reason": None}
