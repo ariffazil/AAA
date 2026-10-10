@@ -1,16 +1,16 @@
 {
   "capability_name": "WITNESS_TO_ADAPTATION_VERTICAL_SLICE_V1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "status": "PROMOTED_DURABLE_CAPABILITY",
   "repository": "/root/AAA",
-  "base_commit": "12d98032410254040236ca0a7bc8df96b0688ece",
+  "base_commit": "b77b61c2199e420efd30a80438994e388efe078e",
   "public_key_hex": "d90350a26842b218afe5e2c662f0f533a863fda1208d15ae11055245a142fa29",
   "public_key_fingerprint_sha256": "474ab155ae1fd4a4028bd6665a64e309f3131915014aca0402a019a8eabb63b3",
   "file_manifest_sha256": {
     "schemas/receipt.v1.schema.json": "8efc16df9eb92fdfc35124569944cc1062aebe7f1c8d5d2a6184fce63a45eb00",
     "src/witness/receipt_signer.py": "06ccfeca0770eda07724707a00bbea6a9bd80f8ca76d6e9659f78fb142ac198e",
     "src/witness/receipt_verifier.py": "8aea67347c3288c33401ff2ddabf1fdfb664c3a094ece2d8cba240688360eae0",
-    "tests/witness/test_receipt_v1.py": "d849680dc01f9142bd9e4981802282a20b926e5a0b5c839485e7c9ee1ce2a9d4",
+    "tests/witness/test_receipt_v1.py": "b4a500812ef9d802625e824effbab2a6615360a42349053fa587cd8ffbf6d20f",
     "tests/witness/vectors/receipt_valid.json": "a347e439084b4591bae8fdd2dd0abb527acb37e16aeabcd4224f3646c074a061",
     "tests/witness/vectors/receipt_tampered.json": "c6616e86b14870e84c8c385845c8ed42a691c7eff99d82086a7e8665d8117338",
     "tests/witness/vectors/public_key.hex": "7e95115a2a6d8e4cfd2c84b22e9c267ae68be797a81ef874116d6ea4419c304c",
@@ -18,9 +18,10 @@
     "scripts/verify_vertical_slice.sh": "6b774e96a8681c45fd4b34b4c78281c1d2545beff2f75bd75a2d1f282d2f0334"
   },
   "test_suite": {
-    "total_tests": 8,
-    "passed": 8,
+    "total_tests_collected": 9,
+    "passed": 9,
     "failed": 0,
+    "cardinality_reconciled": true,
     "verdict": "SEAL"
   },
   "reproducibility_command": "/root/AAA/scripts/verify_vertical_slice.sh"
