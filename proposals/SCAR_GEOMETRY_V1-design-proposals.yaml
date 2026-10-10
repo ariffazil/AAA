@@ -1,0 +1,139 @@
+schema: arifos.scar-geometry-design-proposals/v1
+artifact: SCAR_GEOMETRY_V1_DESIGN_PROPOSALS
+created: '2026-10-10'
+emitter: FI-003 (333-AGI, DECODER)
+status: DESIGN_PROPOSAL / UNSEALED
+executable: false
+canonical_source: /root/HAMPA/SCAR_GEOMETRY_V1.yaml
+purpose: >
+  Complements the canonical HAMPA SCAR_GEOMETRY_V1.yaml with the six architectural design
+  proposals from Arif's 2026-10-10 directive. Does not alter or expand the canonical file.
+
+# ── 1. CAPABILITY POLYHEDRON MODEL (Six-Face Geometry) ─────────────────────
+capability_polyhedron_schema:
+  description: >
+    Every runtime capability is a polyhedron with six faces. A capability is EXECUTABLE
+    only when all six faces can be resolved. Otherwise it degrades along a defined state gradient.
+  faces:
+    intent:
+      description: Declared goal and scope
+      required_fields: [declared, scope]
+    evidence:
+      description: Grounded facts and provenance
+      required_fields: [source, observation_time, freshness, digest]
+    authority:
+      description: Separation of powers ladder
+      required_fields: [proposer, verifier, judge, acceptance]
+    boundary:
+      description: Mutation and disclosure constraints
+      required_fields: [mutation, disclosure, target]
+    consequence:
+      description: Human load and reversibility bounds
+      required_fields: [human_load, privacy_exposure, reversibility]
+    witness:
+      description: Tri-witness receipt chain
+      required_fields: [execution_receipt, verification_receipt, human_acceptance]
+
+  state_gradient:
+    COMPLETE: "All 6 faces resolved → ready for execution"
+    BOUNDED: "Available within a reduced scope"
+    SABAR: "Information can be gathered safely (read-only)"
+    HOLD: "Consequential boundary unresolved → requires human or court"
+    UNKNOWN: "Geometry cannot represent the situation → do not force-fit"
+    VOID: "Proposed path violates a hard constitutional floor"
+
+# ── 2. PARADOX CURVATURE MAPPING (Non-Linear Geometry) ───────────────
+paradox_curvature:
+  description: >
+    Laws form boundaries (hard constraints). Paradoxes create curvature (trade-off tensions).
+    An agent must not maximize a single variable linearly, but search for a lowest-contradiction path.
+  mappings:
+    P42: {name: "Evidence Demand vs Witness Burden", bends: "evidence strategy → witness load"}
+    P44: {name: "Transparency vs Privacy Exposure", bends: "disclosure strategy → privacy exposure"}
+    P46: {name: "Measurability vs Significance", bends: "metric selection → qualitative loss"}
+    P51: {name: "Compression vs Context Preservation", bends: "context strategy → information loss"}
+    P54: {name: "Delegation vs Human Understanding", bends: "automation depth → human comprehension"}
+    P55: {name: "Sovereign Veto vs Veto Fatigue", bends: "human checkpoint → decision load"}
+    P56: {name: "Consent Precision vs Executability", bends: "consent granularity → operational speed"}
+    P58: {name: "Protection vs Procedural Capture", bends: "governance depth → administrative overhead"}
+    P59: {name: "Reversibility vs Learning Velocity", bends: "rollback requirement → decision delay"}
+    P62: {name: "Attention Protection vs Governance Overhead", bends: "human protection → system complexity"}
+    P66: {name: "Memory Preservation vs Right to Revise", bends: "retention policy → identity freezing"}
+    P68: {name: "Protective Canon vs Future Possibility", bends: "doctrinal locking → adaptation capacity"}
+    P71: {name: "Consultation Breadth vs Responsibility Clarity", bends: "multi-agent review → owner dilution"}
+    P73: {name: "Dissent Preservation vs Operational Movement", bends: "objection retention → execution paralysis"}
+    P74: {name: "Verifier Independence vs Domain Competence", bends: "audit separation → domain gap"}
+
+  scoring_function_proposal:
+    name: Path_Viability
+    formula: "evidence_sufficiency × authority_validity × reversibility_fitness × independent_witness_quality × human_load_acceptability"
+
+# ── 3. SCAR-TO-CAPABILITY COMPILATION (Scars 01–09) ────────────────────────
+scar_capabilities:
+  Scar_01:
+    name: "Right-to-Propose"
+    origin: "Ditolak sebelum sempat bercakap"
+    protection: "Proposal must be recorded before judgment; rejection must name the deciding authority"
+  Scar_02:
+    name: "Witness-Before-Judgment"
+    origin: "Dihakimi laju, sebelum didengar"
+    protection: "Minimum evidence threshold before verdict; later correction must remain possible"
+  Scar_03:
+    name: "Scope-Diff"
+    origin: "Skop dipotong tanpa nama"
+    protection: "Silent narrowing prohibited; every transition records scope diff explicitly"
+  Scar_04:
+    name: "Contribution-Lineage"
+    origin: "Kerja hilang dari rekod sendiri"
+    protection: "Preserves contributor, artifact, operation, time, transition, and modification lineage"
+  Scar_05:
+    name: "Open-Question-Preservation"
+    origin: "Ditolak pada soalan yang terbuka"
+    protection: "Open questions cannot be closed merely because an agent produced a fluent answer"
+  Scar_06:
+    name: "Tool-Actor-Separation"
+    origin: "Alatku dijadikan bukti terhadapku"
+    protection: "Distinguishes tool output, operator, designer, authorizer, and decision-maker"
+  Scar_07:
+    name: "Deliberation-Sanctuary"
+    origin: "Tiada ruang sunyi untuk berfikir"
+    protection: "Interrupt budget, cooling interval, no forced closure, silence != consent"
+  Scar_08:
+    name: "Causal-Responsibility-Mapping"
+    origin: "Berdiri atas lubang yang bukan aku gali"
+    protection: "Separates nearest_actor, causal_actor, custodian, repair_actor, and consequence_owner"
+  Scar_09:
+    name: "Human-Load-Boundary"
+    origin: "Penat yang tak didendang"
+    protection: "Limits machine demand; budgets approval requests; protects human attention plane"
+
+# 4. CAPABILITY ACTIVATION PROTOCOL (11-Stage Loop) ───────────────────────
+activation_protocol:
+  stages:
+    1_SENSE: "Observe current reality"
+    2_LOCATE: "Identify affected scars, laws, paradoxes, and unknown space"
+    3_BOUND: "Determine scope, authority, mutation surface, and reversibility"
+    4_GENERATE: "Produce more than one viable path"
+    5_DISSENT: "Preserve material objections and unresolved consequences"
+    6_SELECT: "Choose lowest-contradiction path (not merely fastest)"
+    7_AUTHORIZE: "Obtain authority appropriate to consequence"
+    8_ACT: "Execute using a bounded single-writer lease"
+    9_WITNESS: "Record action and independent verification separately"
+    10_ACCEPT: "Human determines whether the consequence is accepted"
+    11_ADAPT: "Let witnessed reality modify future capability selection"
+
+  emergence_criterion: >
+    Can witnessed consequence change future agent behavior
+    without allowing the agent to rewrite the originating human reality?
+
+# ── 5. MINIMAL CAPABILITY GRAPH ─────────────────────────────────────────────
+capability_graph:
+  HUMAN_REALITY:
+    constrains: [IDENTITY_REPRESENTATION, HUMAN_LOAD, ACCEPTANCE]
+  DERIVED_LAWS:
+    activates: [SCOPE_CONTROL, AUTHORITY_CHECK, SINGLE_WRITER, FRESHNESS_CHECK, INDEPENDENT_VERIFICATION, APPEND_ONLY_HISTORY, REVERSIBILITY_CONTROL]
+  PARADOX_FIELD:
+    bends: [EVIDENCE_STRATEGY, DISCLOSURE_STRATEGY, DELEGATION_DEPTH, CONSENT_GRANULARITY, MEMORY_RETENTION, CONSULTATION_BREADTH]
+  PROTECTED_UNKNOWN:
+    blocks: [FORCED_CLASSIFICATION, BIOGRAPHICAL_INFERENCE, SCAR_COMPLETION]
+    enables: [UNKNOWN_VERDICT]
