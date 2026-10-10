@@ -14,12 +14,16 @@ P2 WRITER GOVERNANCE (2026-09-12):
 - NEVER writes to carry_forward.json (ownership = carry_forward.py)
 - Flock + atomic write enforced
 """
+
 import fcntl, json, sys, os, hashlib, time
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
-FLAME_URL = "http://localhost:18901/v1/chat/completions"
+# FLAME_URL removed 2026-10-11 (F13 SOVEREIGN OVERRIDE, audit chain trace_id=plan-2026-10-11-0742).
+# Pre-hash: a2861b87875360e0ab03eb7f9caabe7d853e0738d81bc2d36e399108ee88503e
+# FLAME :18901 was retired 2026-09-04. generate_title() at L36-54 already returns None;
+# constant was dead code with no caller. See audit: P2 in plan-2026-10-11-0742 §F.1.
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
 TITLES_SIDECAR = Path("/root/.local/share/arifos/session_titles.json")
@@ -32,18 +36,16 @@ Rules:
 - Examples: "Federation Memory Architecture Audit", "VAULT999 Seal Chain Verification", "WELL Biometric Telemetry Wiring"
 """
 
+
 def generate_title(user_message: str) -> str:
     """Call FLAME to generate a session title."""
     payload = {
         "model": "flame-free",
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_message[:500]}
-        ],
+        "messages": [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": user_message[:500]}],
         "max_tokens": 30,
-        "temperature": 0.3
+        "temperature": 0.3,
     }
-    
+
     try:
         # FLAME :18901 retired 2026-09-04 (dead endpoint). Dead-lane request
         # subtracted 2026-09-22 (F13 subtraction): no probe, no 15s timeout,
@@ -53,6 +55,7 @@ def generate_title(user_message: str) -> str:
     except Exception as e:
         print(f"FLAME error: {e}", file=sys.stderr)
         return None
+
 
 def _atomic_write(path: Path, data: dict) -> None:
     """Flock + atomic write — P2 writer governance."""
@@ -84,14 +87,18 @@ def store_title(title: str, source_message: str):
     # Store in Redis
     try:
         import redis
+
         r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
         title_key = f"session_title:{int(time.time())}"
-        r.hset(title_key, mapping={
-            "title": title,
-            "source": source_message[:200],
-            "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "generator": "flame-free"
-        })
+        r.hset(
+            title_key,
+            mapping={
+                "title": title,
+                "source": source_message[:200],
+                "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "generator": "flame-free",
+            },
+        )
         r.expire(title_key, 86400 * 30)  # 30 day TTL
         print(f"Redis: stored at {title_key}", file=sys.stderr)
     except ImportError:
@@ -117,6 +124,7 @@ def store_title(title: str, source_message: str):
     except Exception as e:
         print(f"sidecar write error: {e}", file=sys.stderr)
 
+
 def main():
     if len(sys.argv) < 2:
         # Try reading from stdin
@@ -127,24 +135,25 @@ def main():
             sys.exit(1)
     else:
         user_message = " ".join(sys.argv[1:])
-    
+
     if not user_message:
         print(json.dumps({"error": "Empty message"}))
         sys.exit(1)
-    
+
     title = generate_title(user_message)
-    
+
     if title:
         store_title(title, user_message)
-    
+
     result = {
         "title": title,
         "source_length": len(user_message),
         "generator": "flame-free-rm0",
-        "stored_in": ["redis", "carry_forward.json"] if title else []
+        "stored_in": ["redis", "carry_forward.json"] if title else [],
     }
     print(json.dumps(result, ensure_ascii=False))
     return 0 if title else 1
+
 
 if __name__ == "__main__":
     sys.exit(main())
