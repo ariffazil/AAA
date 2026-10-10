@@ -43,15 +43,15 @@ PROBE_TIMEOUT = 8  # seconds per endpoint (cold-start safe)
 #   a-forge/fed/aaa/wealth/arifflow -> reached by generator host (kokpit reads them UP) -> unchanged
 # revert: git checkout -- scripts/federation_state.py
 ORGAN_ENDPOINTS = [
-    {"id": "arifos",   "port": 8088,  "role": "Kernel",                "host": "100.64.0.2"},
-    {"id": "a-forge",  "port": 7071,  "role": "Execution"},  # mesh-silent; likely loopback-only by design (KVM8 on-host 9/9 alive per snapshot 2026-10-08)
-    {"id": "aaa",      "port": 3001,  "role": "Control Plane"},
-    {"id": "geox",     "port": 8081,  "role": "Earth Intelligence",    "host": "100.64.0.2"},
-    {"id": "wealth",   "port": 18082, "role": "Capital Intelligence"},
-    {"id": "well",     "port": 18083, "role": "Vitality Mirror",       "host": "100.64.0.2"},
-    {"id": "arifflow", "port": 7073,  "role": "Metabolism"},
-    {"id": "fed",      "port": 7074,  "role": "Model Router"},  # mesh-silent; loopback-only by design (fed-router pattern, cf. KVM2)
-    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},  # loopback-bound on host (mesh-silent; alive on-host per KVM8 snapshot) â generator probes via 127.0.0.1 correctly
+    {"id": "arifos",   "port": 8088,  "role": "Kernel",                  "host": "100.64.0.2"},
+    {"id": "a-forge",  "port": 7071,  "role": "Execution",               "host": "100.64.0.2"},
+    {"id": "aaa",      "port": 3001,  "role": "Control Plane",           "host": "100.64.0.2"},
+    {"id": "geox",     "port": 8081,  "role": "Earth Intelligence",      "host": "100.64.0.2"},
+    {"id": "wealth",   "port": 18082, "role": "Capital Intelligence",    "host": "100.64.0.2"},
+    {"id": "well",     "port": 18083, "role": "Vitality Mirror",         "host": "100.64.0.2"},
+    {"id": "arifflow", "port": 7073,  "role": "Metabolism",              "host": "100.64.0.2"},
+    {"id": "fed",      "port": 7074,  "role": "Model Router",            "host": "100.64.0.2"},
+    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence",   "host": "100.64.0.2"},
 ]
 
 # ── Probes ─────────────────────────────────────────────────────────────
