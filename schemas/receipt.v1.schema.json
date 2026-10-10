@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/receipt.v1.schema.json",
+  "title": "FederatedCausalReceiptV1",
+  "description": "Canonical versioned receipt schema enforcing cryptographic witness, authority reference, and causal linkage.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "receipt_type",
+    "actor_id",
+    "capability_id",
+    "authority_ref",
+    "parent_receipt_id",
+    "previous_receipt_hash",
+    "timestamp_utc",
+    "key_id",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "receipt.v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^rec-[a-f0-9\\-]{16,64}$"
+    },
+    "receipt_type": {
+      "type": "string",
+      "enum": ["OBSERVE", "AUTHORIZATION", "CONSEQUENCE", "ROLLBACK"]
+    },
+    "actor_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "capability_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "authority_ref": {
+      "type": ["string", "null"]
+    },
+    "parent_receipt_id": {
+      "type": ["string", "null"]
+    },
+    "previous_receipt_hash": {
+      "type": ["string", "null"],
+      "pattern": "^([a-f0-9]{64})?$"
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "key_id": {
+      "type": "string",
+      "minLength": 8
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "receipt_type": { "const": "OBSERVE" } }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["target", "probe_path", "observation"],
+            "properties": {
+              "target": { "type": "string" },
+              "probe_path": {
+                "type": "object",
+                "required": ["endpoint", "proxy_bypassed"],
+                "properties": {
+                  "endpoint": { "type": "string" },
+                  "proxy_bypassed": { "type": "boolean" }
+                }
+              },
+              "observation": {
+                "type": "object",
+                "required": ["reachable", "status_class", "param_throttle_ms"],
+                "properties": {
+                  "reachable": { "type": "boolean" },
+                  "status_class": { "type": "string" },
+                  "param_throttle_ms": { "type": "integer" }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "receipt_type": { "const": "AUTHORIZATION" } }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["verdict", "target_action", "approved_parameters", "rollback_constraint"],
+            "properties": {
+              "verdict": { "type": "string", "enum": ["SEAL_BOUNDED", "HOLD", "VOID"] },
+              "target_action": { "type": "string" },
+              "approved_parameters": {
+                "type": "object",
+                "required": ["param_throttle_ms"],
+                "properties": {
+                  "param_throttle_ms": { "type": "integer" }
+                }
+              },
+              "rollback_constraint": {
+                "type": "object",
+                "required": ["baseline_param_throttle_ms"],
+                "properties": {
+                  "baseline_param_throttle_ms": { "type": "integer" }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "receipt_type": { "const": "CONSEQUENCE" } }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["action_executed", "delta", "observed_consequence"],
+            "properties": {
+              "action_executed": { "type": "string" },
+              "delta": {
+                "type": "object",
+                "required": ["before", "after"],
+                "properties": {
+                  "before": { "type": "object" },
+                  "after": { "type": "object" }
+                }
+              },
+              "observed_consequence": {
+                "type": "object",
+                "required": ["param_throttle_ms", "status"],
+                "properties": {
+                  "param_throttle_ms": { "type": "integer" },
+                  "status": { "type": "string" }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "receipt_type": { "const": "ROLLBACK" } }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["rollback_action", "restored_state", "baseline_verified"],
+            "properties": {
+              "rollback_action": { "type": "string" },
+              "restored_state": { "type": "object" },
+              "baseline_verified": { "type": "boolean", "const": true }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
