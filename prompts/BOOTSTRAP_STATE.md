@@ -4,7 +4,7 @@
 >
 > **For agents that cannot reach arifOS (localhost:8088):** Use `/root/AAA/prompts/UNIVERSAL_BOOT.md` — the portable offline boot sequence.
 >
-> **For full constitutional bootstrap:** `/root/AAA/prompts/INIT.md` (1059 lines, MCP-aware, live-resource mapped).
+> **For full constitutional bootstrap:** the `⚓ INIT` kernel hook (formerly `/root/AAA/prompts/INIT.md`, retired 2026-07-27 — archived at `/root/AAA/prompts/archive/INIT_v3_2026-07-17.md`).
 >
 > Original content below preserved for audit (F11). Do not load this file for active sessions.
 

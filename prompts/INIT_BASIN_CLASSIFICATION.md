@@ -274,7 +274,7 @@ Reference files:
 
 ## 10. NEXT STEPS
 
-1. Read `/root/AAA/prompts/INIT.md` and `/root/.agents/skills/aaa-pdf-voice-protocol/SKILL.md`
+1. Read `/root/AAA/prompts/UNIVERSAL_BOOT.md` and `/root/.agents/skills/aaa-pdf-voice-protocol/SKILL.md`
 2. Probe live GEOX organ: `python3 -c "from aforge_publish.integrations.geox_hook import GeoxHook; g=GeoxHook(); print(g.probe())"`
 3. Define your basinal scope (which basins, which evidence)
 4. Build figures with publication voice
