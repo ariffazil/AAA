@@ -835,6 +835,34 @@ ssh <node> "timeout 8 <venv>/bin/python -m hermes_cli.main gateway status"     #
 
 Full session: `references/remote-node-status-check-2026-08-15.md`.
 
+## 15b. Loopback-bound ≠ service-down (Tailscale cross-node probe)
+
+A federation service bound to `127.0.0.1:<port>` will appear `CLOSED` to any cross-node probe that uses the Tailscale MagicDNS hostname (`<host>.tailnet`) — even when the service is healthy and answering locally. Pattern surfaced during a cross-node mesh audit: `af-forge:7071` / `:7074` / `:18102` probed via Tailscale returned "dead", but live `/health` calls from `af-forge` itself proved the services were alive. The bind interface is the discriminator, not the socket.
+
+**Detection recipe** (3-probe classification, use before declaring a mesh service down):
+
+```bash
+# P1: from a remote node, does the port answer on the Tailscale interface?
+echo > /dev/tcp/<host>/<port> && echo OPEN || echo CLOSED
+
+# P2: how is the port actually bound?
+ss -tlnp | grep ":<port>"
+
+# P3: does the service respond locally?
+curl -s http://127.0.0.1:<port>/health
+```
+
+| P1 remote | P2 bind | P3 local | Verdict |
+|---|---|---|---|
+| OPEN | `127.0.0.1:<port>` OR `0.0.0.0:<port>` | healthy | Service up. P1 finding was either TCP-firewall or false-negative probe. |
+| CLOSED | `127.0.0.1:<port>` | healthy | **Loopback-only by design.** Cross-node access needs a `bind=0.0.0.0` change OR a mesh bridge (Tailscale Serve/Funnel). |
+| CLOSED | `0.0.0.0:<port>` | unhealthy | Service crashed OR daemon down. `systemctl status <unit>`. |
+| CLOSED | not listening | n/a | Genuinely down OR never bound. Check systemd unit. |
+
+**Pitfall:** "federation down" verdicts that probe only via Tailscale hostname without checking `ss -tlnp` cause false-positive alert firings. A cockpit alarm that scans `<host>:port` from the local node will see a Tailscale-only service correctly; a sibling agent probing the same `<host>:port` from another node will see it wrongly. Treat the two views as different probes with different reach envelopes — never aggregate them into one signal.
+
+**Carry-forward:** when proposing a federation map, mark each port with its expected bind (`127.0.0.1` vs `0.0.0.0` vs `<mesh-iface>`). Loopback-bound ports are an architecture choice (the service is intentionally local — exposed to its node's own agents, not to the mesh), not a defect.
+
 ## 15a. Multi-node fleet resource audit (2026-08-15)
 
 When asked to map "the machine nodes" or audit resource allocation across the fleet: enumerate nodes via `tailscale status` (nickname ≠ SSH host — use `ssh root@<ts-ip>`), then per node: uptime/free/df + PSI (`/proc/pressure/memory`) + vmstat si/so + running units + `ss -tlnp` + docker stats. Three interpretation rules: (1) **swap full ≠ crisis** — full-but-cold swap with PSI 0.00 and si/so=0 is dormant pages, report headroom not panic; (2) fleet imbalance (one node load-2/swap-full vs one node 0.03/6GB-free) means the answer is relocation of decoupled services, not new hardware; (3) hunt `degraded` in health JSONs (found :18089 `mcp_connected:false` — the real P1) not just dead ports. Includes the live port map superseding the legacy 8080-8083 table (8080 is searxng now), the per-unit memory probe (`systemctl show -p MemoryCurrent`), and the **zombie-artifact 5-signal check** (process? port? venv? output ever? unit? — ComfyUI: cloned, 4GB models, never ran, no GPU → cargo not capability). Full recipe: `references/multi-node-fleet-audit-2026-08-15.md`.

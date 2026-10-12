@@ -1,5 +1,9 @@
 # Zen doctrine
 
+> **Status:** ACTIVE — machine-peace operational doctrine (doctrine batch 2026-08-31, commit 0344608f; ratification instrument not yet filed).
+> **Class:** Canonical doctrine. Binding on mutation discipline (rollback-first,
+> canary sequencing). Read with `/root/AAA/instructions/pointers.md` for topology.
+
 ## Machine peace: no mutation without rollback
 - Snapshot FIRST before any `rsync --delete`, `rm -rf`, or deploy
 - Dry-run with exclusions (`.env`, `data/`, `logs/`, `node_modules/`, `venv/`, `__pycache__/`, `*.db`) BEFORE destructive sync

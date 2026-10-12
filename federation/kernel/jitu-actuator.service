@@ -1,0 +1,9 @@
+[Unit]
+Description=JITU out-of-band actuator — physical lane cut, model-free, react-only (F13 SAH 2026-10-07)
+Documentation=file:/root/AAA/instructions/asi-substrate-invariants.md
+
+[Service]
+Type=oneshot
+ExecStart=/root/AAA/federation/kernel/jitu_actuator.sh apply
+# No model, no MCP, no network-out dependencies in this unit by construction.
+# Restore is NEVER automatic — run /root/AAA/federation/kernel/jitu_actuator.sh restore (sovereign-only).

@@ -1,0 +1,2 @@
+    PID USER     CWD     ELAPSED CMD
+1833418 root     -      14:45:06 /opt/geox/.venv/bin/python3 -m geox_mcp.server --host 127.0.0.1 --port 8081

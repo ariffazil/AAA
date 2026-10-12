@@ -1,1 +1,1 @@
-../../../../../general/workshop/document-intel/scientific-pdf-generation/references/governed-geospatial-figures.md
+/root/AAA/skills-cold/.archive/pdf-federation-consolidation-20261002/scientific-pdf-generation/references/governed-geospatial-figures.md

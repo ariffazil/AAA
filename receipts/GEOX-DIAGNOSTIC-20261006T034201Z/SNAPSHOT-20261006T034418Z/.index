@@ -1,0 +1,10 @@
+total 8404
+drwxr-xr-x 2 root root    4096 Oct  6 11:44 .
+drwxr-xr-x 3 root root    4096 Oct  6 11:44 ..
+-rw-r--r-- 1 root root       0 Oct  6 11:44 .index
+-rw-r--r-- 1 root root     365 Oct  6 11:44 bundle.log
+-rw-r--r-- 1 root root     437 Oct  6 11:44 file-backups.txt
+-rw-r--r-- 1 root root 8383807 Oct  6 11:44 opt-geox-uncommitted.bundle
+-rw-r--r-- 1 root root   12672 Oct  6 11:44 pre-touch.txt
+-rw-r--r-- 1 root root  180317 Oct  5 20:56 server.py.pre.bak
+-rw-r--r-- 1 root root     918 Oct  6 11:44 wip-meta.txt
