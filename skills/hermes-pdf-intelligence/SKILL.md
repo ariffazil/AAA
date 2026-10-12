@@ -1,5 +1,7 @@
 ---
 name: hermes-pdf-intelligence
+canonical_companion: pdf-federation
+note: "Consolidated PDF ops live in /root/AAA/skills/pdf-federation (2026-10-02 consolidation). This copy is the canonical distributed doctrine (commit cb66bcc7); the .hermes-side tombstone routing here was folded 2026-10-06 — single writer is AAA."
 description: Probe-first, cognition-aligned, verified, trust-anchored PDF doctrine for HERMES agents. Covers probe-first PDF capability mapping (presence is a fact, fitness is a verdict), cognition-aligned PDF design (attention budget, 4±1 working-memory chunks, visual doctrine), PDF generation routing across pandoc/xelatex, typst, reportlab+matplotlib, weasyprint, chromium headless, and libreoffice, Render-Rasterize-Read verification gates (qpdf, pdftoppm, pdftotext sentinels), and trust-anchoring outside the file (SHA-256, Merkle DAG in VAULT999, RFC 3161 timestamp). Use when creating a PDF, auditing PDF capability on a node, extracting text or tables from a PDF, verifying a generated PDF before delivery, redacting sensitive PDF content, or designing a document for a time-poor expert reader.
 ---
 

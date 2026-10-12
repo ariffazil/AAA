@@ -1,0 +1,5 @@
+LISTEN 0      2048             127.0.0.1:8765       0.0.0.0:*    users:(("python",pid=3484484,fd=7))          
+LISTEN 0      4096            100.64.0.2:8081       0.0.0.0:*    users:(("tailscaled",pid=246852,fd=26))      
+LISTEN 0      2048             127.0.0.1:8081       0.0.0.0:*    users:(("python3",pid=1833418,fd=14))        
+LISTEN 0      4096                     *:443              *:*    users:(("caddy",pid=1256252,fd=42))          
+LISTEN 0      4096   [fd7a:115c:a1e0::2]:8081          [::]:*    users:(("tailscaled",pid=246852,fd=34))      

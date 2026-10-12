@@ -14,9 +14,24 @@ providers:
     balance: unknown  # via FED: fed_status
     capabilities: [chat, function_calling, reasoning]
     models:
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: deepseek-v4-pro
         tier: heavy
         role: 333-AGI primary
+        cutoff_date: 2025-07
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-10
+        cutoff_basis: DeepSeek V4 release 2025-10; training typically 2-3 months
+          prior
+        cutoff_confidence: low
+        probe_source: https://api-docs.deepseek.com
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: deepseek-flash
         tier: cheap
         role: ops/monitoring (canonical V4.1; replaced v4-flash 2026-09-28)
@@ -24,39 +39,132 @@ providers:
   # ============================================================
   # POOL B — 888-APEX PRIMARY + MiniMax media
   # ============================================================
+        cutoff_date: 2025-06
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-09
+        cutoff_basis: DeepSeek V4.1-Flash release 2025-09; same family as V4-Pro
+        cutoff_confidence: low
+        probe_source: https://api-docs.deepseek.com
   minimax:
     status: live
     api: https://api.minimax.io/v1
     balance: unknown
     capabilities: [chat, function_calling, reasoning]
     models:
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: MiniMax-M3
         tier: heavy
         role: 888-APEX primary · multimodal · vision
         note: Arif confirmed LIVE 2026-08-04
+        cutoff_date: 2025-07
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-10
+        cutoff_basis: MiniMax-M3 release 2025-10; MiniMax series typically train
+          2-3 months prior
+        cutoff_confidence: low
+        probe_source: https://platform.MiniMax.io
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: MiniMax-M2.7
         tier: medium
+        cutoff_date: 2025-05
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-07
+        cutoff_basis: MiniMax M2.7 release ~2025-07
+        cutoff_confidence: low
+        probe_source: https://platform.MiniMax.io
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: MiniMax-M2.5
         tier: medium
+        cutoff_date: 2025-02
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-04
+        cutoff_basis: MiniMax M2.5 release ~2025-04
+        cutoff_confidence: low
+        probe_source: https://platform.MiniMax.io
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: MiniMax-M2.1
         tier: cheap
 
   # VIDEO MODELS (MiniMax MCP — server broken, direct API works)
+        cutoff_date: 2024-11
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-01
+        cutoff_basis: MiniMax M2.1 release ~2025-01
+        cutoff_confidence: low
+        probe_source: https://platform.MiniMax.io
   minimax-video:
     status: live_api_only
     api: https://api.minimax.io/v1/video_generation
     mcp_port: 18100
     mcp_status: broken  # mcp 1.24-1.29 FastMCP.run() API mismatch
-    workaround: POST /v1/video_generation (async, poll /v1/query/video_generation)
+    workaround: POST /v1/video_generation (async, poll 
+      /v1/query/video_generation)
     models:
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: T2V-01
         type: text-to-video
         max_duration_s: 10
         resolution: 1080p
         cost_per_clip: 0.30
+        cutoff_date: 2025-03
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-06
+        cutoff_basis: MiniMax T2V-01 video model release ~2025-06
+        cutoff_confidence: low
+        probe_source: https://platform.MiniMax.io
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: I2V-01
         type: image-to-video
         max_duration_s: 10
+        cutoff_date: 2025-03
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-06
+        cutoff_basis: MiniMax I2V-01 image-to-video
+        cutoff_confidence: low
+        probe_source: https://platform.MiniMax.io
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: Hailuo-02
         type: text-to-video + image-to-video
         max_duration_s: 10
@@ -66,17 +174,95 @@ providers:
   # ============================================================
   # POOL C — Qwen Individual (RATE LIMITED)
   # ============================================================
+        cutoff_date: 2025-01
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-04
+        cutoff_basis: MiniMax Hailuo-02 video
+        cutoff_confidence: low
+        probe_source: https://platform.MiniMax.io
   qwen-token-plan-individual:
     status: rate_limited
     api: https://token-plan.ap-southeast-1.maas.aliyuncs.com/v1
     balance: unknown
     capabilities: [chat, function_calling, reasoning]
     models:
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: qwen3.6-flash
+        cutoff_date: 2025-05
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-08
+        cutoff_basis: Qwen 3.6 Flash release ~2025-08
+        cutoff_confidence: low
+        probe_source: https://help.aliyun.com/zh/model-studio
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: deepseek-v4-flash-0731
+        cutoff_date: 2025-05
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-08
+        cutoff_basis: DeepSeek V4 Flash Jul 2025 snapshot
+        cutoff_confidence: low
+        probe_source: https://api-docs.deepseek.com
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: glm-5.2
+        cutoff_date: 2025-06
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-09
+        cutoff_basis: GLM-5.2 release 2025-Q3 (zai-direct inference)
+        cutoff_confidence: low
+        probe_source: https://open.bigmodel.cn
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: qwen3.8-max
+        cutoff_date: 2025-07
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-10
+        cutoff_basis: same as team plan
+        cutoff_confidence: low
+        probe_source: 
+          https://help.aliyun.com/zh/model-studio/getting-started/models
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: qwen3.7-max
+        cutoff_date: 2025-06
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-09
+        cutoff_basis: Qwen 3.7 max release ~2025-09
+        cutoff_confidence: low
+        probe_source: https://help.aliyun.com/zh/model-studio
     note: Pool C — FED auto-reenable on recovery. DO NOT REMOVE.
 
   # ============================================================
@@ -88,11 +274,77 @@ providers:
     balance: unknown
     capabilities: [chat, function_calling, reasoning]
     models:
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: qwen3.8-max
+        cutoff_date: 2025-07
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-10
+        cutoff_basis: same
+        cutoff_confidence: low
+        probe_source: 
+          https://help.aliyun.com/zh/model-studio/getting-started/models
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: qwen3.7-max
+        cutoff_date: 2025-06
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-09
+        cutoff_basis: Qwen 3.7 max release ~2025-09
+        cutoff_confidence: low
+        probe_source: https://help.aliyun.com/zh/model-studio
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: qwen3.7-plus
+        cutoff_date: 2025-06
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-09
+        cutoff_basis: Qwen 3.7 plus release ~2025-09
+        cutoff_confidence: low
+        probe_source: https://help.aliyun.com/zh/model-studio
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: deepseek-v4-pro
+        cutoff_date: 2025-07
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-10
+        cutoff_basis: DeepSeek V4 Pro
+        cutoff_confidence: low
+        probe_source: https://api-docs.deepseek.com
+# f13_stale_domain_extension: F13 SAH 2026-10-05 — observational; see audits/09
       - id: deepseek-v4-flash-0731
+        cutoff_date: 2025-05
+        stale_domains:
+          - geopolitics
+          - ai_capability
+        retrieval_first_domains:
+          - geopolitics
+          - ai_capability
+        confidence_restriction_domains: []
+        release_date: 2025-08
+        cutoff_basis: DeepSeek V4 Flash Jul 2025
+        cutoff_confidence: low
+        probe_source: https://api-docs.deepseek.com
     note: Pool D — 555-ASI primary. Quota exhausted 2026-08-10.
 
   # ============================================================
@@ -103,7 +355,8 @@ providers:
     api: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
     key_env: DASHSCOPE_API_KEY
     balance: unlimited_payg
-    capabilities: [chat, function_calling, reasoning, vision, image_gen, tts, asr]
+    capabilities: [chat, function_calling, reasoning, vision, image_gen, tts, 
+          asr]
     models:
       text:
         - qwen3.8-max
@@ -128,7 +381,8 @@ providers:
         - qwen3-tts-instruct-flash
       asr:
         - qwen3-asr-flash
-    note: Working — images, vision, chat confirmed. No video (wan is image-only).
+    note: Working — images, vision, chat confirmed. No video (wan is 
+      image-only).
 
   # ============================================================
   # Gemini — Google AI (RELOADED 2026-08-10)
@@ -138,7 +392,8 @@ providers:
     api: https://generativelanguage.googleapis.com/v1beta
     key_env: GEMINI_API_KEY
     balance: payg
-    capabilities: [chat, image_gen, image_edit, video_gen, video_edit, tts, search]
+    capabilities: [chat, image_gen, image_edit, video_gen, video_edit, tts, 
+          search]
     models:
       image:
         - id: gemini-3.1-flash-image
@@ -173,7 +428,7 @@ providers:
       tts:
         - id: gemini-3.1-flash-tts-preview
           voices: 30
-          languages: [en, ms, id, ar, zh, ja, ko, ...]  # Malay supported!
+          languages: [en, ms, id, ar, zh, ja, ko, '...'] # Malay supported!
       chat:
         - id: gemini-2.5-flash
     note: Key reloaded 2026-08-10. Nano Banana confirmed. Omni Flash TBD.
@@ -262,7 +517,8 @@ providers:
     balance: -0.75
     disabled_reason: negative_balance
     disabled_at: 2026-08-04
-    models: [deepseek-v4-flash, deepseek-v4-pro, qwen3.7-max, qwen3.8-max, qwen3.7-plus]
+    models: [deepseek-v4-flash, deepseek-v4-pro, qwen3.7-max, qwen3.8-max, 
+          qwen3.7-plus]
     note: DO NOT REMOVE. Re-enable when balance recovers.
 
   opencode-go:
@@ -285,8 +541,8 @@ providers:
     disabled_reason: api_unresponsive
     disabled_at: 2026-08-10
     models: [mimo-v2.5-pro, mimo-v2.5]
-    note: Was auxiliary.vision provider. Failed vision test. Switched to dashscope-payg qwen-vl-max.
-          DO NOT REMOVE. Re-enable if MiMo recovers.
+    note: Was auxiliary.vision provider. Failed vision test. Switched to 
+      dashscope-payg qwen-vl-max. DO NOT REMOVE. Re-enable if MiMo recovers.
 
   # ============================================================
   # FED — Internal router (LiteLLM proxy)
@@ -302,7 +558,8 @@ providers:
       - asi-555-vision
       - asi-555-audio
       - asi-555-video
-    note: LiteLLM proxy. /chat/completions responds but model routing may be incomplete.
+    note: LiteLLM proxy. /chat/completions responds but model routing may be 
+      incomplete.
 
 # ============================================================
 # AGENT → PRIMARY MODEL BINDING
@@ -311,27 +568,33 @@ agent_model_bindings:
   333-AGI:
     primary: deepseek/deepseek-v4-pro
     pool: A (deepseek)
-    fallback: [dashscope-payg/qwen3.8-max, qwen-token-plan-individual/deepseek-v4-pro, ollama/qwen2.5-coder:3b]
+    fallback: [dashscope-payg/qwen3.8-max, 
+          qwen-token-plan-individual/deepseek-v4-pro, ollama/qwen2.5-coder:3b]
 
   555-ASI:
     primary: qwen-token-plan/qwen3.6-flash
     pool: D (qwen-token-plan)
-    fallback: [dashscope-payg/qwen3.8-max, qwen-token-plan-individual/qwen3.6-flash, deepseek/deepseek-flash, ollama]
+    fallback: [dashscope-payg/qwen3.8-max, 
+          qwen-token-plan-individual/qwen3.6-flash, deepseek/deepseek-flash, 
+          ollama]
 
   555-ASI-VISION:
     primary: dashscope-payg/qwen-vl-max
     pool: dashscope-payg
-    fallback: [gemini/gemini-2.5-flash, qwen-token-plan-individual/qwen3.7-plus, minimax/MiniMax-M3]
+    fallback: [gemini/gemini-2.5-flash, qwen-token-plan-individual/qwen3.7-plus, 
+          minimax/MiniMax-M3]
 
   888-APEX:
     primary: minimax/MiniMax-M3
     pool: B (minimax)
-    fallback: [gemini/gemini-3.5-flash, deepseek/deepseek-v4-pro, ollama/qwen2.5-coder:3b]
+    fallback: [gemini/gemini-3.5-flash, deepseek/deepseek-v4-pro, 
+          ollama/qwen2.5-coder:3b]
 
   Hermes:
     primary: minimax/MiniMax-M3
     pool: B (minimax)
-    fallback: [deepseek/deepseek-v4-pro, dashscope-payg/qwen3.8-max, openrouter, ollama]
+    fallback: [deepseek/deepseek-v4-pro, dashscope-payg/qwen3.8-max, openrouter, 
+          ollama]
 
   image-analyzer:
     primary: dashscope-payg/qwen-vl-max
@@ -352,7 +615,8 @@ rules:
   - When a provider recovers (balance, API, key), flip status back to live.
   - FED :7074 is canonical for live balances. Cache only in this file.
   - Fallback chains must have ≥4 entries including at least 1 cross-provider.
-  - Constitutional roles (666_JUDGE, 999_SEAL) only on deepseek-v4-pro or MiniMax-M3.
+  - Constitutional roles (666_JUDGE, 999_SEAL) only on deepseek-v4-pro or 
+    MiniMax-M3.
   - Retry primary 3× with exponential backoff before falling back.
 
 # ============================================================

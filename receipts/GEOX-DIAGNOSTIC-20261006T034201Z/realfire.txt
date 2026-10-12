@@ -1,0 +1,64 @@
+=== Content-Length RuntimeError occurrences (last 200 lines) ===
+5602
+
+=== last 10 occurrences with context ===
+Oct 06 11:39:50 forge geox-mcp[1833418]: INFO:mcp.server.streamable_http_manager:Created new transport with session ID: 826d37dbd04d40009323c8343d8c9638
+Oct 06 11:39:50 forge geox-mcp[1833418]: INFO:geox.governance.middleware:session_init: client=mcp version=0.1.0
+Oct 06 11:39:50 forge geox-mcp[1833418]: INFO:geox.governance.middleware:lifecycle: session=348d7cba-7757-408e-93f5-f5d5e26fa9aa awaiting notifications/initialized (gate=on)
+Oct 06 11:39:50 forge geox-mcp[1833418]: INFO:geox.governance.middleware:lifecycle: session=826d37dbd04d40009323c8343d8c9638 PENDING (http-initialize) gate=on
+--
+Oct 06 11:39:50 forge geox-mcp[1833418]:   File "/opt/geox/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 552, in send
+Oct 06 11:39:50 forge geox-mcp[1833418]:     raise RuntimeError("Response content shorter than Content-Length")
+Oct 06 11:39:50 forge geox-mcp[1833418]: RuntimeError: Response content shorter than Content-Length
+Oct 06 11:39:51 forge geox-mcp[1833418]: INFO:     127.0.0.1:51918 - "GET /health HTTP/1.1" 200 OK
+Oct 06 11:39:52 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:39:52 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:39:52 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: GET http://127.0.0.1:8088/health "HTTP/1.1 200 OK"
+--
+Oct 06 11:39:53 forge geox-mcp[1833418]:   File "/opt/geox/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 552, in send
+Oct 06 11:39:53 forge geox-mcp[1833418]:     raise RuntimeError("Response content shorter than Content-Length")
+Oct 06 11:39:53 forge geox-mcp[1833418]: RuntimeError: Response content shorter than Content-Length
+Oct 06 11:39:56 forge geox-mcp[1833418]: INFO:     127.0.0.1:35084 - "GET /metrics HTTP/1.1" 404 Not Found
+Oct 06 11:39:57 forge geox-mcp[1833418]: INFO:mcp.server.streamable_http_manager:Created new transport with session ID: 006aa1eec2de4d7e8d9a545e981b1590
+Oct 06 11:39:57 forge geox-mcp[1833418]: INFO:geox.governance.middleware:session_init: client=mcp version=0.1.0
+Oct 06 11:39:57 forge geox-mcp[1833418]: INFO:geox.governance.middleware:lifecycle: session=88d3a712-ca15-42ca-98ab-97cded177f3f awaiting notifications/initialized (gate=on)
+--
+Oct 06 11:39:57 forge geox-mcp[1833418]:   File "/opt/geox/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 552, in send
+Oct 06 11:39:57 forge geox-mcp[1833418]:     raise RuntimeError("Response content shorter than Content-Length")
+Oct 06 11:39:57 forge geox-mcp[1833418]: RuntimeError: Response content shorter than Content-Length
+Oct 06 11:39:59 forge geox-mcp[1833418]: INFO:mcp.server.streamable_http_manager:Session ff3431c172cc444d9ec52800f9a9cc55 idle timeout
+Oct 06 11:39:59 forge geox-mcp[1833418]: INFO:mcp.server.streamable_http:Terminating session: ff3431c172cc444d9ec52800f9a9cc55
+Oct 06 11:40:00 forge geox-mcp[1833418]: INFO:mcp.server.streamable_http_manager:Created new transport with session ID: df0189ec0e2b416f97899dc7ce32d6e6
+Oct 06 11:40:00 forge geox-mcp[1833418]: INFO:geox.governance.middleware:session_init: client=surface-guard version=1.0.0
+--
+Oct 06 11:40:00 forge geox-mcp[1833418]:   File "/opt/geox/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 552, in send
+Oct 06 11:40:00 forge geox-mcp[1833418]:     raise RuntimeError("Response content shorter than Content-Length")
+Oct 06 11:40:00 forge geox-mcp[1833418]: RuntimeError: Response content shorter than Content-Length
+Oct 06 11:40:06 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:40:07 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:40:07 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: GET http://127.0.0.1:8088/health "HTTP/1.1 200 OK"
+Oct 06 11:40:07 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: GET http://127.0.0.1:8088/api/build-info "HTTP/1.1 200 OK"
+--
+Oct 06 11:40:12 forge geox-mcp[1833418]:   File "/opt/geox/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 552, in send
+Oct 06 11:40:12 forge geox-mcp[1833418]:     raise RuntimeError("Response content shorter than Content-Length")
+Oct 06 11:40:12 forge geox-mcp[1833418]: RuntimeError: Response content shorter than Content-Length
+Oct 06 11:40:13 forge geox-mcp[1833418]: INFO:mcp.server.streamable_http_manager:Session 46bdd94b06584ae48216adceac3dccbc idle timeout
+Oct 06 11:40:13 forge geox-mcp[1833418]: INFO:mcp.server.streamable_http:Terminating session: 46bdd94b06584ae48216adceac3dccbc
+Oct 06 11:40:14 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:40:14 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+--
+Oct 06 11:41:00 forge geox-mcp[1833418]:   File "/opt/geox/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 552, in send
+Oct 06 11:41:00 forge geox-mcp[1833418]:     raise RuntimeError("Response content shorter than Content-Length")
+Oct 06 11:41:00 forge geox-mcp[1833418]: RuntimeError: Response content shorter than Content-Length
+Oct 06 11:41:16 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:41:16 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:41:16 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:41:16 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+--
+Oct 06 11:42:00 forge geox-mcp[1833418]:   File "/opt/geox/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 552, in send
+Oct 06 11:42:00 forge geox-mcp[1833418]:     raise RuntimeError("Response content shorter than Content-Length")
+Oct 06 11:42:00 forge geox-mcp[1833418]: RuntimeError: Response content shorter than Content-Length
+Oct 06 11:42:01 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:42:01 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: POST http://127.0.0.1:8088/mcp "HTTP/1.1 200 OK"
+Oct 06 11:42:01 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: GET http://127.0.0.1:8088/health "HTTP/1.1 200 OK"
+Oct 06 11:42:01 forge geox-mcp[1833418]: INFO:httpx:HTTP Request: GET http://127.0.0.1:8088/api/build-info "HTTP/1.1 200 OK"

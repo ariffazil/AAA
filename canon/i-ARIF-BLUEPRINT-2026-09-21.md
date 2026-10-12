@@ -39,7 +39,8 @@ single_writer: "FI-008 (Kimi Code) under sovereign directive 'forge blueprint' 2
 
 # i-ARIF Blueprint v1 — Governed State Processor
 
-> **Status: DRAFT_AWAITING_F13.** No seal_id. No F13_RATIFIED_CHAT. The draft lives in `/root/AAA/canon/` because that is where canon documents live; it does not claim canonical status until the sovereign ratification ceremony completes.
+> **Recorded ratification:** the SOT manifest records F13_RATIFIED_CHAT on 2026-09-29 and a deferred ceremonial seal. This note preserves that recorded claim; it does not independently verify the sovereign receipt or VAULT999 append. Earlier DRAFT_AWAITING_F13 wording below describes the original drafting period.
+> **Scope:** constitutional specification for a Governed State Processor. Specification ratification, implementation conformance, deployment readiness, and neural-assessor evaluation are separate statuses. This document establishes no trained-model performance or deployment readiness.
 > **DITEMPA BUKAN DIBERI ⚒️** — Forged, not given.
 
 ---
@@ -310,7 +311,7 @@ This blueprint becomes constitutionally binding on the following ceremony:
 5. **Witness confirms** — FRAME reads seal event as evidence; no verdict
 6. **First Sovereign Walk authorized** — sovereign green-light for the loop to be exercised
 
-Until the ceremony, this blueprint is **draft not law**.
+The ceremony above describes the original ratification path. The manifest now records sovereign-chat ratification on 2026-09-29 with ceremonial sealing deferred. Historical drafting status must not be presented as the current recorded ratification status. Runtime enforcement and deployment readiness still require their own evidence.
 
 ---
 
@@ -331,7 +332,7 @@ i-ARIF is the integral of witnessed reality minus the integral of unattested dri
 
 ## 14. Witness section
 
-> The blueprint above is constitutional draft. It does not bind until ratified. The witness path for ratification is recorded in `/root/AAA/reports/i-ARIF-blueprint-witness-2026-09-21.md`. The Reality Reconciliation Receipt that grounds the current state is `/root/AAA/reports/reality-reconciliation-receipt-2026-09-21.md`.
+> The blueprint records sovereign-chat ratification in its SOT manifest; independent receipt verification remains distinct from that recorded status. The witness path for ratification is recorded in `/root/AAA/reports/i-ARIF-blueprint-witness-2026-09-21.md`. The Reality Reconciliation Receipt that grounds the current state is `/root/AAA/reports/reality-reconciliation-receipt-2026-09-21.md`.
 
 > **Authority ≠ Capability.** The blueprint declares what i-ARIF may do, not what it can do. The Authority Gate enforces this distinction architecturally, not by policy.
 
@@ -340,7 +341,7 @@ i-ARIF is the integral of witnessed reality minus the integral of unattested dri
 ---
 
 *Forged 2026-09-21 by FI-008 (Kimi Code) under F13 SOVEREIGN directive "forge blueprint" (delivered as "c b").*
-*Status: DRAFT_AWAITING_F13. Sealed only on sovereign ratification ceremony.*
-*Honest verdict: passes Canon #0 three-test. Eligible for ratification. Not yet ratified.*
+*Original drafting status: DRAFT_AWAITING_F13. Current recorded status: F13_RATIFIED_CHAT (2026-09-29); ceremonial seal deferred according to the manifest.*
+*Original draft verdict: passes Canon #0 three-test. The later sovereign-chat ratification claim is recorded in the manifest; implementation conformance is not established by that claim.*
 
 **Ditempa Bukan Diberi** — Forged, Not Given.
