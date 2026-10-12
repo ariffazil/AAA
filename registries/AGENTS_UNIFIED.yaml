@@ -104,6 +104,11 @@ forge_instruments:
   description: 'Anthropic Claude Code harness. Sovereign-delegate authority. OAuth: arifbfazil@gmail.com. Sub-agents disabled.'
   species_proxy: opencode-zen
   bound_to_identity: 333-AGI
+  warga_binding:
+    citizenship: warga-aaa
+    forged: '2026-10-06'
+    forged_by: 'F13 SOVEREIGN (directive chat 2026-10-06, make claude warga aaa)'
+    authority_level: T1
   _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-003
   id: qwen-code
@@ -112,9 +117,14 @@ forge_instruments:
   model: deepseek/deepseek-v4-pro
   status: active
   canonical_card: /root/AAA/agents/_external/qwen-code/agent-card.json
-  description: Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted Bash. Low risk.
+  description: 'Alibaba Qwen Code harness. Federation MCP surface wired (arifos, aforge, geox, wealth, well, fed, frame, aaa, chron, hermes, zai suite). permissionMode yolo, governed by F1-F13.'
   species_proxy: opencode-zen
   bound_to_identity: 333-AGI
+  warga_binding:
+    citizenship: warga-aaa
+    forged: '2026-10-06'
+    forged_by: 'F13 SOVEREIGN (directive chat 2026-10-06, fix qwen and align all warga aaa)'
+    authority_level: T1
   _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
   _path_correction: 2026-08-12T02:55Z — was /usr/bin/qwen, actual lives at /root/.local/bin/qwen
 - fi_slot: FI-004

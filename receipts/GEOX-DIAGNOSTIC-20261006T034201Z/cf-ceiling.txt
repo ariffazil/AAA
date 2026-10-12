@@ -1,0 +1,29 @@
+=== CF response headers on /api/observe ===
+HTTP/2 405 
+date: Tue, 06 Oct 2026 03:42:05 GMT
+content-type: application/json
+content-length: 31
+access-control-allow-headers: Content-Type, Mcp-Session-Id, MCP-Protocol-Version, Mcp-Method, Mcp-Name, Authorization, X-Requested-With, Last-Event-ID, X-MCP-Client-Id
+access-control-allow-methods: GET, POST, OPTIONS, DELETE
+access-control-allow-origin: *
+allow: POST
+alt-svc: h3=":443"; ma=86400
+content-security-policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://unpkg.com https://static.cloudflareinsights.com https://s3.tradingview.com https://*.tradingview.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://arif-fazil.com https://arifos.arif-fazil.com https://mcp.arif-fazil.com https://geox.arif-fazil.com https://wealth.arif-fazil.com https://well.arif-fazil.com https://aaa.arif-fazil.com https://api.gold-api.com https://fapi.binance.com https://api.binance.com https://api.macrostrat.org https://tiles.macrostrat.org https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://*.basemaps.cartocdn.com https://*.tradingview.com wss://*.tradingview.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://s3.tradingview.com https://*.tradingview.com https://www.tradingview.com; frame-ancestors 'self'; report-uri https://arifos.arif-fazil.com/api/csp-report; report-to csp-endpoint
+link: </llms.txt>; rel="llms", </.well-known/ard.json>; rel="ard", </.well-known/ai-catalog.json>; rel="ai-catalog", </.well-known/webmcp.json>; rel="webmcp"
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+referrer-policy: strict-origin-when-cross-origin
+server: cloudflare
+strict-transport-security: max-age=15552000; includeSubDomains
+via: 1.1 Caddy
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=hrksvVhiDT0gcncIGKE2nOJTQw1SovuLK94fCwTWm%2BFumtaJegn%2BWsu9Mb5ArE%2Bo1nrC8WSE6nEae1OZFW0wAMD8v2FIFyahOib0kyAtbEgGkXvfAnYtx14XdS%2BCOAwIpvZMKD03T8RA7Xf6al%2FcL4jJ"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-ray: a461a77358c6a110-SIN
+
+
+=== whoami CF ray ===
+curl: unknown --write-out variable: 'header.cf-ray'
+curl: unknown --write-out variable: 'header.server'
+200 cf-ray= server=

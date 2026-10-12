@@ -76,6 +76,16 @@ SECTIONS = ("SITUATION", "WALL", "VOID", "EUREKA", "RISK", "OWN")
 CLAIM_STATES = ("NEW", "OPEN", "MOVED", "CONTESTED", "SETTLED", "RETRACTED")
 TERMINAL_STATES = ("SETTLED", "RETRACTED")
 
+# The contract's four mandatory sections are COMPUTED FROM SOT AT RENDER TIME by
+# docforge.sections, and are deliberately NOT members of SECTIONS. SECTIONS is the
+# enum an agent-authored item may claim; a number an agent types into an item is a
+# number that can drift, which is exactly how the live /999/ page came to serve
+# "0.088" against an SOT of 0.14881943646798773 (Peraturan Sifar #4). Keeping the
+# two enums disjoint makes an authored "MODEL_CHANGE" item a schema violation
+# instead of a plausible-looking section — validate_items() rejects it by name.
+COMPUTED_SECTIONS = ("MODEL_CHANGE", "PREDICTION_LINEAGE", "SURVIVORS_AND_NEWCOMERS",
+                     "LEARNING_RECEIPT", "CALIBRATION_WITNESS")
+
 # A WALL is not a claim awaiting resolution — it is a boundary that was tested
 # and held. Two different things live under it on purpose:
 #   UNRESOLVED  something is knowable but not known yet (a hearing date)

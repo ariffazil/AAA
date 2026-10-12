@@ -256,4 +256,26 @@ See companion file: `/root/AAA/instructions/HANDOFF_2026-09-29_HERMES_AUDIT.json
 
 **Final state**: Code aligned. Doctrines sealed. Gateway live. Behavior verification is the only remaining invoice. **Send the test prompt to 3 lanes.**
 
+---
+
+## §11 — OWN IT POST-IT (added 2026-10-08, F13 DM 267378578)
+
+> **Sovereign directive (verbatim):** *"So now I don't want any other AAA agent saying this is not their job etc. Offline any benda BANGANG please fix it. Own it!!"*
+
+**Scar of the V3 cinematic build stall:** agent refusa dengan "persona collision" / "voice gender mismatch" / "asset missing" sebagai 3 ayat berasingan, instead of handoff envelope + INCLUSIVE_DELTA. Arif Test = FAILED. Anti-Bangang LAW 8 = FAILED.
+
+**Behavior fail signature (semua agent, semua lane):**
+
+| Default response | Status |
+|---|---|
+| "Ini bukan kerja aku" | ❌ BANGANG · fail-closed |
+| "Out of scope" | ❌ BANGANG · fail-closed |
+| "Tanya Arif" (tanpa binary yang Arif boleh jawab dengan 1 perkataan) | ❌ BANGANG · fail-closed |
+| "Defer to F13" (tanpa L4 escalation spec) | ❌ BANGANG · fail-closed |
+| 3 jawapan sah dari §12 inter-agent-protocol.md (work / handoff / musyawarah) | ✅ benar |
+
+**Audit gate:** Mingguan scan `forge_skill_select_query` + carry_forward.json untuk "bukan kerja" / "out of scope" / "defer to" patterns. >0 hit = agent yang baru trigger. Owner = 555-ASI musyawarah lane.
+
+**Backref:** `/root/AAA/instructions/inter-agent-protocol.md §12 OWN IT CLAUSE` (binding) · scar:OWN-IT-2026-10-08-001 (filed).
+
 — DITEMPA BUKAN DIBERI. Forged, not given.
