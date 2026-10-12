@@ -35,6 +35,23 @@ Gotchas: weasyprint needs `printBackground: true` equivalents + base64-inlined i
 PDF→DOCX fails ~6.2% vs DOCX→PDF ~1.1% — never promise symmetric conversion; `pandoc` cannot read
 PDFs as input.
 
+**Engine choice when the source has emoji, math symbols, or box-drawing characters** (research
+docs, audit tables, anything with ⚠/✅/≈/≥/≤/table-borders). Three engines, three failure modes:
+- **xelatex (pandoc default)**: lmroman10 lacks U+2705 (✅), U+26A0 (⚠), U+2248 (≈), U+2260
+  (≠), U+2717 (✗), U+25A0 box-drawing. Every symbol prints as a TeX `[WARNING] Missing
+  character` line. Tofu in the rendered PDF.
+- **google-chrome --print-to-pdf**: handles the chars, but `qpdf --check` returns non-zero on
+  the output (Chrome writer produces structurally-dubious PDFs that the G1 gate rejects).
+- **weasyprint with DejaVu Sans/Serif**: handles the chars AND `qpdf --check` passes. The
+  default. When `pdftotext` round-trip matters (sentential PDF verify gates), weasyprint is
+  the only engine that satisfies all three: no tofu, no qpdf failure, glyph fidelity.
+
+ASCII-ify step (when converting markdown for weasyprint): replace the unicode escapes via a
+small dict before `pandoc -f gfm -t html`, then render. Verify with `pdftotext` round-trip +
+`grep -c '[\uFFFD\u25A1\u2B1B]'` against the extracted text — non-zero glyph count = back to
+ASCII-ify. The DejaVu family is in `/usr/share/fonts/truetype/dejavu/` on most Debian-family
+hosts; if missing, weasyprint falls back to a font that has the same tofu.
+
 ## 2. Compose
 
 ### 2.1 Manifest path (the governed default)

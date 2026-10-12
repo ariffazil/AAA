@@ -194,6 +194,19 @@ someone he loves, while the mirror keeps turning back to him.
 
 After philosophy dialogues or open kernel contradictions: NO new GENESIS, floors, laws, or spawned agents. Map → patch → report. One problem, one patch, one day. This is a constitutional constraint, not a preference.
 
+## The Falsification-Correction Pattern (when forged theorems meet data)
+
+When Arif's theorem — a V1 like "at medium maturity, safety must be measured" — gets tested against the federation's actual docs and the test REFUTES the strong form, do not collapse the conversation into "V1 was wrong, here is V2." The correction is itself a doctrine artifact. Steps:
+
+1. **Run the test, don't skip it.** Even if the theorem is aesthetically beautiful — falsify it. A theorem that hasn't met data is a poem, not a doctrine.
+2. **Distinguish weak vs strong form.** "At medium maturity, safety MUST be measured" is the strong form. The weak form is "at medium maturity, safety CAN be measured" or "measurement primitives exist alongside narrative." The data usually refutes the strong form while supporting the weak.
+3. **V2 carries V1's failure as a load-bearing clause.** Do not silently drop V1. State explicitly: "V1 falsified by [test result]; V2 = V1 + the [test observation]." This makes the data the difference between the versions.
+4. **Show the data inline, not in a footnote.** The test result IS the doctrine. Burying it loses the witness.
+5. **Save V2 as a JSON artifact in scratch/, not a new canon file.** The theorem is REPORTED, not ratified, until F13 seals it. Falsified-by-data correction does NOT auto-promote to canon; it earns a stage in `.staged/` or scratch.
+6. **The mistake to avoid:** accepting "V1 was just an approximation" without running the test. Approximations that never meet data harden into unkillable lore. Doctrines that survive only because no one tested them are the deepest form of safety theater.
+
+The pattern in practice: when data refutes the strong form, the corrected V2 is **strictly more honest** than V1, never weaker. The data wins; the doctrine adapts; the seal waits.
+
 ## The Forge Pattern (when doctrine becomes operational)
 
 Sometimes a doctrine-forging session produces architecture that is immediately operationalizable — schemas, scripts, directory structures. The pattern observed across 2026-08-08 dialogues:

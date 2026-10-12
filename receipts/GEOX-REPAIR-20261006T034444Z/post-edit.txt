@@ -1,0 +1,82 @@
+HASH_HTML_AFTER=35eb30395baf8d65c11731c36ba0b0da55e6114b34b90e4a7e95b1550789ab5a
+HASH_SERVER_AFTER=707167766f0d54000bbbf31aadeeaf00fef556b2e666113d6fa8c6e760c55bd0
+
+### changed-region verification (server.py) ###
+        )
+    except McpError as exc:
+        # Witness-Card-shaped error envelope (2026-10-06 repair): the frontend
+        # only renders structured HOLD/OK cards, so a bare {"status":"ERROR"}
+        # falls through to the generic "Server menjawab HTTP 502 tanpa JSON"
+        # BM copy and the user loses the request_id, retry cue and link to
+        # /health. Return the same envelope shape the OK path uses, so the
+        # page can always render a card.
+        import uuid as _uuid
+        req_id = _uuid.uuid4().hex
+        return JSONResponse(
+            status_code=502,
+            content={
+                "status": "HOLD",
+                "request_id": req_id,
+                "reason_en": str(exc)[:300],
+                "reason_bm": "Organ geox-mcp tidak sempat atau gagal menjawab.",
+                "verdict": (
+                    f"HOLD — geox-mcp did not return a usable observation "
+                    f"(request_id {req_id}). Retry; if it persists, see /health."
+                ),
+                "retry_after_ms": 4000,
+                "health_url": "/health",
+            },
+        )
+
+    # geox_forbidden_claims_scan (fast in-process form) on EVERY outgoing reply — §7
+    scan = scan_reply(packet)
+    if not scan["ok"]:
+        return _hold(f"forbidden-claim scan hit: {scan['hits'][:3]} — reply withheld")
+
+    return JSONResponse({"status": "OK", "packet": packet})
+
+### changed-region verification (index.html, renderHold + call sites) ###
+178:    else if(j.status==='HOLD'){out.innerHTML=renderHold(j)}
+180:    else{out.innerHTML=renderHold({reason:`Server returned HTTP ${r.status} with status=${j.status}`,reason_bm:'Bentuk jawapan tidak dikenali.',request_id:j.request_id||'',health_url:'/health'})}
+185:function renderHold(j){
+---
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function renderHold(j){
+  const id=j.request_id?`req ${esc(j.request_id.slice(0,8))}… · `:'';
+  const en=esc(j.reason_en||j.reason||'HOLD');
+  const bm=esc(j.reason_bm||'Pegang — cuba lagi.');
+  const retry=j.retry_after_ms?` · retry in ${Math.round(j.retry_after_ms/1000)}s`:'';
+  const health=j.health_url?` · <a href="/health">/health</a>`:'';
+  return `<div class="card">
+    <span class="verdict" style="background:#fdecea;color:#8c2f26">HOLD</span>
+    <div class="kv" style="margin-top:8px"><b>Reason (EN)</b>${en}</div>
+    <div class="kv"><b>Sebab (BM)</b>${bm}</div>
+    <div class="kv mini">${id}${retry}${health}</div>
+  </div>`;
+}
+function render(p){
+  const ep=p.epistemic||{},lim=p.limitations||{},obs=p.observations||{};
+  const hyps=(p.hypotheses||[]).map(h=>`<div class="hyp"><b>${esc(h.label)}</b> <span class="conf">conf ${h.confidence} · falsifiers: ${esc((h.falsifiers||[]).join('; ')||'—')}</span></div>`).join('')||'<div class="mini">none</div>';
+  const feats=(obs.visible_features||[]).map(f=>`<li>${esc(f.label)} <span class="mini">(${f.confidence})</span></li>`).join('')||'<li>none captured</li>';
+  const ocr=(obs.ocr_text||[]).map(o=>`<li>"${esc(o.text)}" <span class="mini">— evidence of the text only</span></li>`).join('')||'';
+  const cant=(lim.image_cannot_determine||[]).map(x=>`<li>${esc(x)}</li>`).join('')||'<li>—</li>';
+  const next=(lim.requested_human_tests||[]).map(t=>`<li><b>${esc(t.test_name)}</b> — ${esc(t.purpose||'')} <span class="mini">discriminates: ${esc((t.discriminates||[]).join(' | '))}</span></li>`).join('')||'<li>none — packet complete</li>';
+  const prov=(ep.provenance||[]).map(pr=>`<li class="mini">${esc(pr.step)} · ${esc(pr.model_id)} · ${esc((pr.hash||'').slice(0,12))}…</li>`).join('');
+  return `<div class="card">
+    <span class="verdict">${esc(ep.state||'?')} · ${esc(ep.verdict||'')}</span>
+    <div class="kv" style="margin-top:8px"><b>Confidence cap</b>${ep.confidence} (ceiling 0.90)</div>
+    <div class="kv"><b>Interpreted (hypotheses, with falsifiers)</b>${hyps}</div>
+    <div class="kv"><b>Observed (visible)</b><ul>${feats}</ul></div>
+    ${ocr?`<div class="kv"><b>OCR text (not earth evidence)</b><ul>${ocr}</ul></div>`:''}
+    <div class="kv"><b>Cannot tell / limitations</b><ul>${cant}</ul></div>
+=== restarting earth-witness-chat ===
+=== service state ===
+active
+MainPID=4182188
+ActiveEnterTimestamp=Tue 2026-10-06 11:45:40 +08
+=== /api/observe (no image) ===
+cf-ray: a461acbfea59b4cd-SIN
+
+{"detail":"image upload required"}=== /observe/ (index served by chat proxy) ===
+http=200 ct=text/html; charset=utf-8 bytes=14600
+renderHold present? 1

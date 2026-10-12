@@ -899,7 +899,20 @@ def fed_route_engine(
                 all_routes.append(route_with_model)
         routes = all_routes
     else:
-        routes = MODEL_ROUTES.get(model, MODEL_ROUTES.get("deepseek-v4-pro", []))
+        # TRUTH-2026-10-07: an unknown explicit model must not inherit another
+        # model's provider cascade. Route dicts carry no model field, so the
+        # route_model lookup below would otherwise echo the unknown name back
+        # as if it had been served - a governance-flavoured endorsement of a
+        # model that does not exist. Mirrors the unknown-capability refusal
+        # already used at :884.
+        if model not in MODEL_ROUTES:
+            return [{
+                "rank": 0,
+                "error": f"Unsupported model: {model}",
+                "requested_model": model,
+                "supported": False,
+            }]
+        routes = MODEL_ROUTES[model]
 
     if not routes:
         return [{"rank": 0, "error": f"No routes defined for model: {model}"}]

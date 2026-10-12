@@ -1018,5 +1018,21 @@
       },
       "catalogued": "2026-09-22"
     }
+  },
+  "capability_defaults": {
+    "audio_out": {
+      "default_engine": "minimax",
+      "model": "speech-2.8-hd",
+      "note": "F13 directive 2026-10-06: MiniMax is DEFAULT for all AAA audio-out (TTS). Hermes path: /root/AAA/engines/iarif_tts_pipeline.sh (direct api.minimax.io/v1/t2a_v2, registry fail-closed). CLI path: mmx speech synthesize. Voices: /root/AAA/audio/voice-registry.json.",
+      "verified": "2026-10-06 FI-003 — Hermes pipeline both lanes rendered live (i-arif-sovereign-v9, abang-sado-live-v1); gateway environ carries MINIMAX_API_KEY"
+    },
+    "music_out": {
+      "default_engine": "minimax",
+      "note": "Via minimax-media MCP (:18100)."
+    },
+    "audio_in": {
+      "default_engine": "whisper-large-v3 (Groq)",
+      "note": "Unchanged 2026-10-06: no MiniMax ASR lane wired; round-trip witness = /root/AAA/engines/voice_render_verify.py."
+    }
   }
 }

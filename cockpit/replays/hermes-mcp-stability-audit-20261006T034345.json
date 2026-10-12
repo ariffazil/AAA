@@ -1,0 +1,101 @@
+{
+  "audit_id": "hermes-mcp-stability-audit-v2",
+  "timestamp_utc": "2026-10-06T03:43:45Z",
+  "supersedes": "hermes-mcp-stability-audit-20261006T034306.json",
+  "revision_note": "v1 had 2 false positives (DEFECT-001, DEFECT-002) caused by client-side parser extraction errors, not by server-side bugs. v2 re-verifies each finding with raw output and shape inspection.",
+  "scope": "arif-fazil.com site + HERMES MCP + federation organs",
+  "verifier": "HERMES audit probe (MCP 2025-11-25)",
+  "result": {
+    "site_health": "healthy",
+    "site_pages_200": ["/", "/about", "/words", "/words/doctrine", "/makcikgpt", "/sitemap.xml", "/robots.txt", "/llms.txt", "/arifos/"],
+    "well_known_surfaces": ["mcp.json", "agent.json", "identity.json", "did.json", "ard.json", "ai-catalog.json", "webmcp.json", "policy.json"],
+    "hermes_mcp": {
+      "status": "healthy",
+      "version": "2026.09.25.1",
+      "authority": "RELAY_ONLY",
+      "execution_authorized": false,
+      "tools_total": 15,
+      "resources_total": 31,
+      "prompts_total": 10,
+      "tools_all_callable": true,
+      "resources_all_serve": true,
+      "prompts_all_register": true,
+      "latency_p95_50_call_ms": 90,
+      "latency_avg_ms": 65.8,
+      "concurrency_5_sessions": "stable",
+      "consistency_5_calls": "deterministic"
+    },
+    "federation_organs": {
+      "arifos": "healthy",
+      "geox": "degraded (kernel_verdict=HOLD, 27 tools, accessible)",
+      "wealth": "healthy (15 tools, working_tree=DIRTY, semantic_gate=fail_closed)",
+      "well": "degraded (recoverable per organ contract)",
+      "mcp_kernel_stateless": true,
+      "aaa": "healthy",
+      "organs_alive": "6/6"
+    }
+  },
+  "defects_revalidated": [
+    {
+      "id": "DEFECT-2026-10-06-HERMES-001",
+      "severity_v1": "HIGH",
+      "severity_v2": "FALSE_POSITIVE",
+      "original_claim": "hermes_retrieve tool returns empty contents for 31/31 URIs",
+      "verification_v2": "Raw response: {\"tool\":\"hermes_retrieve\",\"status\":\"OK\",\"result\":{\"found\":true,\"resource_uri\":\"hermes://canon/rasa\",\"content\":\"# RASA ...\"}} — parsed with juster `j.get('contents',[])` returns []. Correct key is `result.content` (singular string) NOT `contents` (array).",
+      "conclusion": "Tool works correctly. Client extraction logic was wrong.",
+      "evidence": "Raw output shows real content: '# RASA — Preserving the Remainder (hermes://canon/rasa, v1.1.0) ...'. hermes_retrieve serves all31 resources as advertised."
+    },
+    {
+      "id": "DEFECT-2026-10-06-HERMES-002",
+      "severity_v1": "MEDIUM",
+      "severity_v2": "FALSE_POSITIVE",
+      "original_claim": "hermes_scar_wisdom returns 0 scars for all queries",
+      "verification_v2": "Raw response with query 'scars about hermes arif audit deploy prompt grounding fail': returns 'SCAR CONTEXT (2): • SCAR-2026-09-04-003-iarif-zen-cascade • SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23' + 3 EUREKA CONTEXT entries. The fields are `should_cont[e]have_injected_scars` and `would_have_injected_chars`, NOT direct `scars` array.",
+      "conclusion": "Tool works correctly. Specific keyword queries DO surface scars + eurekas + shadow log path. Generic queries correctly return 'no scar matched'.",
+      "evidence": "Real response: 'SCAR CONTEXT (2): • SCAR-2026-09-04-003-iarif-zen-cascade ... → /root/AAA/scars/SCAR-2026-09-04-003-iarif-zen-cascade.md ... EUREKA CONTEXT (3): • EUREKA-ARIF-SALAM-IRFAN-LOOP-2026-09-23 ... shadow_log /root/.hermes/runtime/shadow-injector.log'"
+    },
+    {
+      "id": "DEFECT-2026-10-06-HERMES-003",
+      "severity_v1": "LOW",
+      "severity_v2": "REAL — STATELESS_PROTOCOL",
+      "claim": "mcp.arif-fazil.com/mcp does not emit mcp-session-id header on initialize",
+      "verification": "Confirmed. But: ping + tools/list both work WITHOUT session header — kernel is stateless by design (streamable-HTTP stateless mode, see 2026-07-28 protocol).",
+      "conclusion": "Not a defect. mcp.arif-fazil.com is a stateless gateway (canonical MCP 2025-11-25 supports both stateful and stateless). Document the endpoint mode in .well-known/mcp.json for clarity.",
+      "evidence": "POST /mcp initialize returns 200 bytes=3126 with x-arifOS hostname header but no mcp-session-id. tools/list works immediately. This is consistent with stateless streamable-HTTP."
+    },
+    {
+      "id": "DEFECT-2026-10-06-HERMES-004",
+      "severity_v1": "LOW",
+      "severity_v2": "REAL — AESTHETIC",
+      "claim": "Hidden endpoints return 200 with empty body",
+      "endpoints": [
+        "https://hermes.arif-fazil.com/api/health",
+        "https://hermes.arif-fazil.com/api/tools",
+        "https://hermes.arif-fazil.com/registry",
+        "https://hermes.arif-fazil.com/openapi.json",
+        "https://hermes.arif-fazil.com/docs",
+        "https://hermes.arif-fazil.com/.well-known/mcp.json",
+        "https://hermes.arif-fazil.com/.well-known/agent.json"
+      ],
+      "verification": "All return 200 with 0 bytes.",
+      "conclusion": "Real defect — Caddy is forwarding routes but the upstream has no handlers. Spurious 200s.",
+      "fix_path": "Either remove the routes from Caddy, OR implement handlers with actual responses.",
+      "blast_radius": "low",
+      "reversibility": "high"
+    }
+  ],
+  "agi_asi_apex_loop_revisited": {
+    "loop": "333-AGI → 555-ASI → 888-APEX",
+    "v1_verdict": "Fix DEFECT-001 + DEFECT-002 first",
+    "v2_verdict": "Both DEFECT-001 + DEFECT-002 were false positives. No fix needed.",
+    "real_action": "Address DEFECT-004 (empty sub-routes) at LOW priority. Address DEFECT-003 (stateless mode) by documentation update only.",
+    "external_paste_distillation": "Source confirmed; verdict rubric matches live audit"
+  },
+  "constitutional_floors_checked": {
+    "F2_truth": "PASS — all defects re-verified with raw output before claiming severity",
+    "F8_governance": "PASS — fixes reversible via deploy rollback",
+    "F9_anti_hantu": "PASS — no impersonation",
+    "F11_auditability": "PASS — audit + revision saved",
+    "F13_sovereignty": "PASS — audit advisory only; F13 binary required for execution"
+  }
+}
