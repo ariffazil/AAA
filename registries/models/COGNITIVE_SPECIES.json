@@ -15,8 +15,9 @@
       "Gödel_3": "Judge species MUST be different provider from compiler species (independence measured)"
     },
     "usage": "FED Step -1: classify_task_species(task, agent_id) → species → route within species",
-    "updated": "2026-08-13T04:00:00+08:00",
-    "species_count": 6
+    "updated": "2026-10-14",
+    "species_count": 6,
+    "update_note": "zai-devpack-align: COMPILER rank-1 glm-5.2->glm-5.3 (silent redirect, live-probed on coding endpoint; canary CANARY-OK 2026-10-14 333-AGI)"
   },
   "species": {
     "compiler": {
@@ -44,13 +45,13 @@
       "models_ranked": [
         {
           "rank": 1,
-          "model": "glm-5.2",
+          "model": "glm-5.3",
           "provider_pool": [
             "zai-direct",
             "opencode-zen",
             "qwen-token-plan"
           ],
-          "note": "Compiler Prime — highest leverage position in the federation"
+          "note": "Compiler Prime — highest leverage position in the federation | UPDATED 2026-10-14 zai-devpack-align: glm-5.2 silently redirects to glm-5.3 on coding plan (live-probed); rank-1 binding points at the served model. Prev binding: glm-5.2."
         },
         {
           "rank": 2,
