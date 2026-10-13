@@ -81,9 +81,14 @@ soul:
     note: "Bailian Token Plan is 4.7x cheaper than Z.ai list price. Third-party resale splits the difference."
 
   variants:
-    glm-5.2: "Current flagship — 753B MoE, 1M ctx, MIT license"
-    glm-5.1: "Previous iteration"
-    glm-5: "Original GLM-5 release"
+    # DEVPACK-ALIGN 2026-10-14 (333-AGI, F13 zai-devpack-align order): live-probed coding
+    # endpoint api.z.ai/api/coding/paas/v4 — plan natively serves glm-5.3 + glm-5.3-flash
+    # only; everything else silently redirects (5.2/5.1->5.3, 4.7->flash). flashx=plan-gated-1311.
+    glm-5.3: "Current flagship — frontier coding/agents, 1M ctx, reasoning always-on"
+    glm-5.3-flash: "Multimodal budget lane — 3x cheaper credits, vision-capable"
+    glm-5.2: "REDIRECT -> glm-5.3 on coding plan (live-probed 2026-10-14; requested 5.2, served model=glm-5.3)"
+    glm-5.1: "REDIRECT -> glm-5.3 on coding plan"
+    glm-5: "Legacy listing; true 5.x access unaffected"
 
   benchmark_highlights:
     SWE_bench_Pro: "62.1% (#1 reported open-weight)"
