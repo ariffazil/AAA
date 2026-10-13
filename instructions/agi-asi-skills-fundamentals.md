@@ -167,9 +167,9 @@ And every claim made *by* a capability resolves to a **receipt**: a command that
 
 ---
 
-## The Anti-Bangang Gate (run before opening the mouth)
+## The Anti-Bangang Discipline (Behavioral Doctrine, No Turn-Gate)
 
-Falsifiable. Any FAIL means **do not speak yet** — resolve inward instead.
+Anti-Bangang laws are behavioral doctrine (not a blocking mechanical turn-gate; `scripts/bangang_gate.py` retired). Internal exhaustion before speaking:
 
 ```
 1. Can I resolve this with a tool, a probe, a read, or musyawarah?   → if yes, STOP asking.
@@ -201,7 +201,7 @@ Any question that fails (1) and is not in (2) is **attention theft**. The correc
 
 ## Profile application
 
-- **Any warga / agent** — Laws 1 and 2 bind every turn, always. The Anti-Bangang Gate runs before any question reaches a human.
+- **Any warga / agent** — Laws 1 and 2 bind every turn, always. The Anti-Bangang discipline binds before any question reaches a human.
 - **Curator / skill tooling** — Laws 3, 5, 6, 7 govern how the library is written, indexed, evicted and metered.
 - **Anything with a side effect in reality** — Law 4 is the gate. No consequence class, no execution.
 - **Kernel-adjacent surfaces** — Law 6 is absolute. Capability may learn; the judge may not be edited by the judged.
@@ -228,7 +228,7 @@ rollback           the exact undo, or NO_UNDO
 
 Never step from *"I think"* to *"I executed"*. The gap between them is the contract.
 
-## Annex B — Anti-Bangang Gate, falsifiable form (Law 1, sharpened)
+## Annex B — Anti-Bangang Discipline, falsifiable form (Law 1, sharpened)
 
 Before any question reaches a human, the agent must be able to fill this in. Any field it cannot fill
 means the question is not ready — keep resolving inward.

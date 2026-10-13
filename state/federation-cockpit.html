@@ -273,14 +273,22 @@ function render(data) {
   const deskFqSummary = document.getElementById('desk-fq-summary');
 
   deskHoldsCount.textContent = `${auth.holds || 0} holds aktif`;
-  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'OPTIMAL'})`;
+  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'UNKNOWN'})`;
 
-  if (auth.holds > 0) {
+  const ledgerHolds = Number(auth.ledger_holds || 0);
+  const names = (auth.held_actors || []).join(', ');
+  if (ledgerHolds > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
     deskBadge.textContent = 'PERHATIAN DIPERLUKAN';
-    deskTitle.textContent = `${auth.holds} Tindakan Menunggu Keputusan Arif`;
-    deskDesc.innerHTML = `Terdapat operasi berisiko (F13 Sovereign Binary) yang sengaja ditahan oleh enjin autoriti untuk persetujuan Arif.<br><strong>Tertahan:</strong> ${(auth.held_actors || []).join(', ') || 'Operasi mutasi'}`;
+    deskTitle.textContent = `${ledgerHolds} keputusan dalam buku rasmi`;
+    deskDesc.innerHTML = `Ini daripada buku keputusan, bukan kiraan aliran.<br><strong>Tertahan:</strong> ${names || 'lihat buku keputusan'}`;
+  } else if ((auth.holds || 0) > 0) {
+    deskCard.className = 'desk-card attention-needed';
+    deskBadge.className = 'desk-badge badge-warn';
+    deskBadge.textContent = 'ALIRAN BERHENTI SEKEJAP';
+    deskTitle.textContent = 'Bukan keputusan untuk Arif';
+    deskDesc.innerHTML = `Enjin aliran menahan ejen sampai kerja mereka disemak. Server tidak jatuh.<br><strong>Tertahan:</strong> ${names || 'ejen aliran'}`;
   } else {
     deskCard.className = 'desk-card all-clear';
     deskBadge.className = 'desk-badge badge-ok';
@@ -299,9 +307,9 @@ function render(data) {
   if (organsHtml) document.getElementById('organs-list').innerHTML = organsHtml;
 
   // 3. Metabolism
-  document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'OPTIMAL';
+  document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'UNKNOWN';
   document.getElementById('fq-val').textContent = meta.quotient != null ? meta.quotient.toFixed(2) : '--';
-  document.getElementById('fq-diag').textContent = meta.diagnosis || 'Mengalir lancar';
+  document.getElementById('fq-diag').textContent = meta.diagnosis || (meta.verdict && meta.verdict !== 'UNKNOWN' ? meta.verdict : 'Belum diukur');
   document.getElementById('fq-counts').textContent = `${meta.verify_count || 0} sah / ${meta.execute_count || 0} laksana`;
   document.getElementById('fq-stuck').textContent = `${meta.held_count || 0} tertahan / ${meta.throttled_count || 0} ditapis`;
 
@@ -314,9 +322,12 @@ function render(data) {
   // 5. Bottleneck
   const bnBox = document.getElementById('bottleneck-box');
   const bnType = (bn.type || 'NONE').toUpperCase();
-  bnBox.className = `bottleneck-box ${bnType.toLowerCase()}`;
-  document.getElementById('bottleneck-title').textContent = bnType === 'NONE' ? 'TIADA HALANGAN' : `HALANGAN: ${bnType}`;
-  document.getElementById('bottleneck-desc').textContent = bn.reason || 'Persekutuan mengalir lancar tanpa rintangan.';
+  const flowPause = ledgerHolds === 0 && (auth.holds || 0) > 0 && (bnType === 'NONE' || bnType === 'AUTHORITY');
+  bnBox.className = `bottleneck-box ${flowPause ? 'none' : bnType.toLowerCase()}`;
+  document.getElementById('bottleneck-title').textContent = flowPause ? 'TIADA MESIN JATUH' : (bnType === 'NONE' ? 'TIADA HALANGAN' : `HALANGAN: ${bnType}`);
+  document.getElementById('bottleneck-desc').textContent = flowPause
+    ? 'Yang tertahan ialah ejen, bukan server.'
+    : (bn.reason || 'Persekutuan mengalir lancar tanpa rintangan.');
   
   document.getElementById('fed-status-badge').textContent = `Status: ${fed.status || 'KUKUH'} · ${data.probe_ms || 0}ms`;
 }
