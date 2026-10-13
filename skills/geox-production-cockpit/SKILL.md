@@ -168,4 +168,28 @@ Before relying on any skill edit:
 
 *Updated 2026-08-17: Replaced 11 dead specialist skill refs with 7 canonical domain skills.*
 *Updated 2026-09-17: Restored after skill-store sweep; added §8 corpus conflicts, §9 primary-source rule, §10 write verification.*
+*Updated 2026-10-06: Added §11 MCP client lifecycle gate (initialize → notifications/initialized → tools/call).*
+
+## 11. MCP Client Lifecycle Gate
+
+GEOX exposes a JSON-RPC over HTTP MCP server at `http://localhost:8081/mcp`. It enforces a **three-message handshake** before any `tools/call` is honored. Skipping the gate returns:
+```json
+{"error":{"message":"MCP_LIFECYCLE: tools/call rejected until client sends notifications/initialized after initialize. Sequence: initialize → notifications/initialized → tools/call. (GEOX Phase A1 lifecycle gate)"}}
+```
+
+**Required sequence (every fresh session — session-id resets on `initialize`):**
+1. `POST /mcp` with `{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"...","version":"..."}}}`. Capture `mcp-session-id` from the response header — that ID becomes your auth header for every subsequent call. **Note**: the response body itself is JSON, the session-id is in the `mcp-session-id` response HEADER, not the body.
+2. `POST /mcp` with `{"jsonrpc":"2.0","method":"notifications/initialized"}` — NO `id` field (it's a JSON-RPC notification, not a request; the server returns no response body).
+3. `POST /mcp` with `{"jsonrpc":"2.0","id":N,"method":"tools/call","params":{"name":"geox_xxx","arguments":{...}}}` — include the captured `mcp-session-id` header.
+
+Headers required on every call after init: `Content-Type: application/json`, `Accept: application/json, text/event-stream`, `mcp-session-id: <captured_id>`. The Accept header is mandatory — GEOX returns a 400 Bad Request without it.
+
+**Pitfall: Pydantic guards reject human-natural argument names.** Tool schemas declare protected fields with leading underscores (e.g. `geox_basin` has `_basin: str` but does NOT accept `basin`, `_basin`, or `basin_id` from JSON). Read the schema via `tools/list` and use EXACT field names. When a tool keeps returning `ValidationError: ... Unexpected keyword argument`, inspect the schema for the underscore-prefixed name and retry with that exact key.
+
+**Pitfall: `geob_readstones` (typo class) hides behind rate-limited 429s.** Some tools (e.g. `geox_observe`) require an `artifact_ref` parameter that the tool needs the caller to have registered via `geox_register_native_source` first. Calling without artifact_ref returns a 3-error ValidationError — the fix is to register the source first, not to retry the call.
+
+**Pitfall: `resources/list` vs `resources/read` mismatch is normal.** Index endpoints list basin profiles (`geox://basins/kinabalu-basin/profile`) but `resources/read` returns "Unknown resource" for several of them — these are listed-but-not-loaded profiles, an upstream registration gap. Workaround: query the live data via the relevant `geox_*` tool (`geox_basin`, `geox_petrophysics`, etc.) instead of trying to read the missing profile directly.
+
+**Pitfall: OpenTopoData has a 1-req-per-second rate limit.** For multi-point transects (>10 points), insert `time.sleep(0.6)` between requests; for >30 points, insert a longer sleep (`time.sleep(3)`) every 10-15 requests. The limit is per-IP not per-tool, so concurrent calls share the same quota.
+
 *DITEMPA BUKAN DIBERI — Governed Control Plane for GEOX*

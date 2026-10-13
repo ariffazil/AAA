@@ -12,13 +12,19 @@ clause_highest_risk_for_this_skill: 3 (provenance-scoped isolation). Hermes mult
 
 Derived from live intelligence session 2026-09-20. Each doctrine was discovered through real failure analysis, not theoretical design.
 
+> **TOOL REMAP 2026-10-06 (FI-008):** the six original internal tool names below
+> (`hermes_signal_assessment`, `hermes_motive_boundary`, `hermes_calibration_check`,
+> `hermes_dajjal_check`, `hermes_calhoun_check`, `hermes_rasa_hold`) never shipped in the
+> live 15-tool registry. Each now routes to its live HERMES equivalent — see
+> `hermes-meaning-integrity` (the family routing index). Doctrine content unchanged.
+
 ## Doctrine 1: Signal-Narrowing Principle
 
 **Origin:** YTL email case — agent amplified low-signal email into 'most important email, reply now.' Human read same email, said 'signal low.'
 
 **Rule:** When signal is weak, interpretation must become narrower — not more elaborate.
 
-**Tool:** hermes_signal_assessment
+**Tool:** `hermes_claim_validate` (claim-integrity/provenance: evidence sources + reliability grading)
 
 **Before any interpretation:**
 1. How many independent evidence sources? (< 3 = weak)
@@ -35,7 +41,7 @@ Derived from live intelligence session 2026-09-20. Each doctrine was discovered 
 
 **Rule:** No classifier should upgrade another actor's motive beyond the qualia/motive boundary.
 
-**Tool:** hermes_motive_boundary
+**Tool:** `hermes_qualia_boundary` (qualia-boundary family)
 
 **What's observable:** behavior, words, actions, timing, patterns
 **What's inferable (with evidence):** possible intentions, likely goals
@@ -54,7 +60,7 @@ Derived from live intelligence session 2026-09-20. Each doctrine was discovered 
 
 **Rule:** Interpretation width must be proportionate to signal strength.
 
-**Tool:** hermes_calibration_check
+**Tool:** `hermes_counterstory_test` (competing explanations + falsifiers)
 
 **Over-interpretation signals:**
 - Weak signal + motivational claims ('they need me')
@@ -72,7 +78,7 @@ Derived from live intelligence session 2026-09-20. Each doctrine was discovered 
 
 **Rule:** Every consequential action must have sensors (consequence awareness) at the same level as execution capability.
 
-**Tool:** hermes_dajjal_check
+**Tool:** `hermes_moral_physics` (who receives, who pays, who can see it, when)
 
 **Sensor coverage formula:** sensors_present / actors_affected
 - 1.0 = full coverage (everyone affected has voice)
@@ -92,7 +98,7 @@ Derived from live intelligence session 2026-09-20. Each doctrine was discovered 
 
 **Rule:** When abundance increases but meaning decreases, behavioral sink follows.
 
-**Tool:** hermes_calhoun_check
+**Tool:** `hermes_institutional_decay` (institutional-decay family: decay-stage diagnosis)
 
 **Pattern:**
 1. Resources become unlimited (food, data, compute, answers)
@@ -105,19 +111,19 @@ Derived from live intelligence session 2026-09-20. Each doctrine was discovered 
 
 ## Cross-Tool Integration
 
-The 5 tools compose:
-1. Signal Assessment → feeds Calibration Check
-2. Motive Boundary → feeds Counterstory Test
-3. Dajjal Check → feeds Authority Envelope
-4. Calhoun Check → feeds Architectural Decisions
-5. All → feed hermes_rasa_hold for human review
+The 5 remapped tools compose:
+1. Claim Validation (`hermes_claim_validate`) → feeds Counterstory Test
+2. Qualia Boundary (`hermes_qualia_boundary`) → feeds Counterstory Test
+3. Moral Physics (`hermes_moral_physics`) → feeds Authority Envelope (arifOS)
+4. Institutional Decay (`hermes_institutional_decay`) → feeds Architectural Decisions
+5. All → feed `hermes_witness_signal` for human review (posture + cap)
 
 ## Anti-Patterns to Watch
 
-- Agent that never calls signal_assessment → likely amplifying noise
-- Agent that never calls motive_boundary → likely mind-reading
-- Agent that never calls calibration_check → likely over-interpreting
-- Agent that never calls dajjal_check → likely executing without consequence awareness
-- Agent that never calls calhoun_check → likely optimizing for efficiency at cost of meaning
+- Agent that never validates claims → likely amplifying noise
+- Agent that never checks the qualia boundary → likely mind-reading
+- Agent that never generates counterstories → likely over-interpreting
+- Agent that never maps moral physics → likely executing without consequence awareness
+- Agent that never scans for institutional decay → likely optimizing for efficiency at cost of meaning
 
 DITEMPA BUKAN DIBERI ⚒️

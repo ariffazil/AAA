@@ -1,0 +1,1 @@
+{"last_invocation": 1791423201, "last_invocation_utc": "2026-10-08T01:33:21Z", "last_outcome_delta": -1, "health": "PARTIAL_BLOCKED", "tiers_written": ["L2","step6-fragment","step6-table-row"], "tiers_skipped": ["L1","L3","L4"], "step6c_render": "BLOCKED_590_line_pre_existing_drift_in_canonical_AGENTS.md", "actor": "FI-008"}

@@ -279,6 +279,29 @@ These specifics MUST be labelled as "memory-based" in the document.
    live, what to sign off as
 ```
 
+## Voice render for translated wisdom (recurring SADO-room pattern)
+
+When Arif pastes a MakcikGPT article (or any third-party wisdom document) into the SADO room
+and asks to render it in a specific persona voice for another family member or friend, the
+delivery is a **voice note** that translates the document into spoken prose:
+
+- The document is the source. Read it fully; the rendered voice line distills ONE
+  situational verdict (what is happening, who decides, what to do this week), never the
+  full document.
+- The voice_id in the request (e.g. "suara Siti", "abang sado", "PMX") is a request for a
+  specific timbre. `text_to_speech(provider="abang-sado")` does **not** route to other voices
+  — the provider name maps to a fixed voice. To honour a non-default voice_id, invoke the
+  pipeline directly: `bash /root/AAA/engines/iarif_tts_pipeline.sh <text> <out> "<alias>"`
+  (e.g. `"suara siti"`, `"suara pmx"`, `"abang-sado"`). Persona-voice-binding is the
+  authority on which id to use; the pipeline just delivers it.
+- Output goes to the SADO room as a Telegram voice bubble (`[[audio_as_voice]]` + `MEDIA:`).
+  Do not over-explain in chat — the audio is the message. Add one short text line
+  ("ni bukan suara betul, jiwa archetype") if the request crosses the F9 line into a real
+  public-figure timbre.
+- Re-use the recipient name from the document. If the document names the recipient
+  (Jia, Naazira, Mak Opal), keep the name in the spoken line — it is the bridge that makes
+  the family-wisdom feel personal. Drop names only when the document anonymises them.
+
 ## References
 
 - `references/epf-akaun-fleksibel-withdrawal-template.md` — starter

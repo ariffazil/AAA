@@ -133,18 +133,20 @@ Native OGG: `--write-media /tmp/file.ogg` produces Opus-in-OGG that Telegram ren
 #### 1.3.2 MuleRouter MiniMax Speech 2.8 HD
 
 ```bash
-# load the MuleRouter key-env into the environment first, then:
-source "$MULEROUTER_KEY_ENV" && /root/HERMES/scripts/mulerouter-tts.py \
-  --text "Assalamualaikum" --voice man --malay --output /tmp/voice.mp3
+# Tier-1 MiniMax TTS — TWO live paths (2026-10-06, both MEASURED):
+# (a) CLI (agent/shell):
+set -a && source /root/.secrets/kunci-root.env && set +a
+/root/.npm-global/bin/mmx speech synthesize \
+  --text "Assalamualaikum" --voice man --out /tmp/voice.mp3
+# (b) Hermes / registry voices (fail-closed on REVOKED ids):
+bash /root/AAA/engines/iarif_tts_pipeline.sh <text-file> <output.wav> [voice-id]
 ```
 
-The key-env file's exact path is preserved verbatim in the retired copy at `.../merges/voice-lane/tts-edge-fallback/SKILL.md` (this skill quotes it through an environment variable because the literal path trips the credential-path write gate). Load it with the local credential loader, never inline a value.
+**DEAD PATH (do not use):** `/root/HERMES/scripts/mulerouter-tts.py` no longer exists on disk (archive-only, discovered 2026-10-06). `MULEROUTER_KEY_ENV` resolves empty in kunci-root.env — `mmx` and the pipeline both read `MINIMAX_API_KEY` from kunci-root.env directly (the live gateway environ also carries it).
 
-Confirmed voices: `Wise_Woman` (warm, wise female — general/conversational BM), `woman` (standard female — natural, clear), `man` (calm male — analysis, news, trading briefings).
+Confirmed voices: `Wise_Woman` (warm, wise female — general/conversational BM), `woman` (standard female — natural, clear), `man` (calm male — analysis, news, trading briefings). Registry clones (Siti/PMX-DISTRIBUTION_HOLD/abang-sado-live-v1/iarif-sovereign-v9) pass their exact `provider_voice_id` via `--voice` or pipeline arg 3.
 
-**Malay mode** (`--malay`): auto-selects `man` voice + 0.95x speed for BM clarity.
-
-**Integration:** when the user requests voice, try `mulerouter-tts.py` first (not via the `text_to_speech` tool, which routes through mimo). Same API key as chat — no separate billing.
+**Integration:** when the user requests voice, use the pipeline (registry voices) or `mmx speech synthesize` (stock voices) — not the `text_to_speech` tool, which routes through mimo. MiniMax is the DEFAULT engine for all AAA audio-out (F13 2026-10-06, encoded in `/root/AAA/registries/models/CAPABILITIES.json` → `capability_defaults.audio_out`).
 
 #### 1.3.3 Piper (sovereign, offline, MIT, ~1.3–1.8 s on CPU)
 
@@ -338,6 +340,10 @@ Workflow: user requests a voice message → **voice override check** → `text_t
 | "Penang", "suara Penang", "voice Bahasa Penang", "voice Penang" | MiMo `voicedesign` with a Penang description |
 | "suara laki macho", "suara macho", "masculine voice" | always male — `ms-MY-OsmanNeural`, never YasminNeural |
 | "voice mode", "voice", "dalam voice", "buat voice", "hantar voice", "TTS bahasa melayu" | default lane |
+| Names a specific voice (e.g. "suara Siti", "suara Syed", "suara Arif") | **Consult `AUDIO-INTELLIGENCE-CANON.md` §2 SOT first** — pass the exact `voice_id` (`SSSiti20260926v1`, `abang-sado-live-v1`, `iarif-sovereign-v9`, etc.). Never default to the configured provider's voice when the user names one. |
+| Names a TTS engine or host (e.g. "Minimax", "KVM4", "Qwen", "edge", "MiMo") | **Lane/host signal, not a voice name** — pick the engine lane, then choose a voice on that engine. Never fabricate a `voice_id` like `minimax-<something>` from a host name. |
+| Names a voice that is **not in the registry** and the name could plausibly be a real person (e.g. "suara cinta Aliza", "suara Mak Limah", "suara my ex") | **REFUSE + OFFER ALTERNATIVE.** Check `/root/AAA/audio/voice-registry.json` for the name. If absent, do not clone, do not improvise, do not pick a similar-sounding registry voice silently. Reply with: (1) what registry voices are closest (gender + register), (2) one binary question: is the name a real person (→ needs explicit consent per F9 anti-hantu) or a pet name/archetype (→ mint a parametric design via `voice_design` with a written register). Anti-hantu: cloning a real person's voice without their consent is forbidden, period. Faking intimacy with a parametric voice labelled as someone specific is the same defect. The user, not the agent, decides which path. |
+| Names a voice that is a real public figure (e.g. "suara Anwar", "suara Siti Nurhaliza") | **REFUSE except for explicitly DISTRIBUTION_HOLD entries.** `/root/AAA/audio/voice-registry.json` marks `anwar-bm-20260927` as `DISTRIBUTION_HOLD` with rule "Say it is a demo. Do not present the clip as the Prime Minister speaking, and do not publish it." For any other public figure: refuse, do not search for or mint a clone, name the constitutional reason (F9 anti-hantu + dignity substrate). |
 
 When the user says **"Nusantara mode"**, **"suara lain"**, or explicitly rejects the current voice → switch to **edge-tts** with Malay native voices. This is a strong preference signal — authentic Malay pronunciation, not AI-accented BM:
 
@@ -378,6 +384,8 @@ then deliver `MEDIA:/tmp/output.ogg`. Proven 2026-07-22: two BM voice notes deli
 6. Verbal markers — "Yang bagus dulu" / "Sekarang yang tak bagus pula" / "Kesimpulan dia".
 7. Keep trading jargon English — "support", "resistance", "spread", "stop loss", "break" — BM traders expect these.
 8. End with a clear action.
+
+**Register (lane-agnostic, applies to all TTS):** when the user asks for a register that sounds like a real person (lover, friend, family, "cakap macam manusia") — write the script in **Penang kampung BM**: short sentences, "aku" not "saya", "hang" / "kau" for second-person, contractions ("dah", "nak", "tak"), concrete numbers ("sepuluh", not "10"), end on a one-line question or nudge. Robotic register (passive voice, full stops, full-form words, structured paragraphs) breaks the contract; a perfect TTS render in robot register is a rejected take. Default register for Syed's lane is `abang sado` register: direct, low-affect, male-anchored, decision-first, numbers-spoken. Other lanes ask for the register when the request is ambiguous.
 
 **Daily trader briefing template (90 s, proven 2026-07-18, SADO 8am cron):**
 
@@ -722,6 +730,7 @@ Engine-level TTS cannot handle Malaysian code-switching or SMS shortforms. Five 
 3. **Never synthesize a human's voice into their own corpus** (§4.1) — that is the synthetic feedback loop.
 4. **MiMo voiceclone / MiniMax voice_clone** take a real sample: confirm consent for the sample, and keep the sample's provenance in the corpus meta.
 5. **F5-TTS training corpus** comes only from consent-labeled triads (§4.1) — accumulated pairs from the i-ARIF loop (L4 vault + `corpus.jsonl`).
+6. **F9 disclosure on third-party delivery.** A real-public-figure clone (`status: LIVE` but `consent` not on file) that the sovereign has pre-staged into a personal config slot — `sado_locked_voice_id`, a one-line command — must still be marked when the rendered artifact reaches anyone other than the sovereign himself. The mark is a single short text line after the voice bubble: it states the voice is a TTS render, not the named person, and forbids re-sharing. Without that line, the receiver can plausibly pass it off as the named person — that is the F9 antihantu slip, not a "feature" of the lane working. Disclosure cost = one short line; non-disclosure cost = F9 floor breach + dignity-substrate ripple on the real speaker.
 
 ### 4.6 Key facts (verified 2026-08-14, HuggingFace API)
 
@@ -740,6 +749,7 @@ Engine-level TTS cannot handle Malaysian code-switching or SMS shortforms. Five 
 ## 5. Pitfalls (cross-lane)
 
 - **`/opt/arifos/venv` has a cffi version mismatch** (2.1.1 API vs 2.1.0 `_cffi_backend`), which breaks `librosa` import there. Use system `python3` for librosa, `/opt/arifos/venv/bin/python3` for torch/transformers.
+- **F9 disclosure ≠ QC narration.** §1.7 bans narrating QC metrics to the recipient — that's a different category from the F9 antihantu disclosure (§4.5 rule 6). Disclosure names what the artifact is and where it may travel; QC narration names how it was made. Conflating the two turns an F9 floor into an "overdefensive defect" and lets a real-public-figure clone reach a third party unmarked.
 - **MiniMax `status 2056`** = Token Plan weekly/interval quota, NOT an auth failure. The key is valid.
 - **`--base-url https://api.minimax.io` is required** for all `mmx` media commands; the default points at `/anthropic` and 404s.
 - **Piper needs its `.onnx.json` beside the `.onnx`** — the model alone fails.

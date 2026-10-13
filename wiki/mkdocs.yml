@@ -1,0 +1,131 @@
+site_name: arifOS Knowledge Base
+site_url: https://wiki.arif-fazil.com
+site_description: The arifOS knowledge base — constitutional law, federation architecture, and agentic design explained in plain language.
+site_author: Muhammad Arif bin Fazil
+repo_url: https://github.com/ariffazil/arifOS
+edit_uri: edit/main/docs/
+
+# wiki/ is the docs root. Subdirectories become top-level nav sections.
+# mkdocs 1.6.1 restriction: docs_dir cannot be the parent of config file,
+# so we use an ABSOLUTE path here. docs_dir is the wiki source, site_dir
+# is the deployed /var/www/html/wiki served by Caddy.
+docs_dir: /root/AAA/wiki
+site_dir: /var/www/html/wiki
+use_directory_urls: true
+
+# Files / directories to exclude from build (not nav-listed)
+exclude_docs: |
+  .arifos/
+  SCHEMA.md
+  INDEX_MD.md
+  AGENT_IDENTITY.md
+  HERMES_ARIFOS.md
+  ARIF_FAZIL_B.md
+  ARIF_FAZIL_C.md
+  MEMORY_EUREKA.md
+  SCAR_TERRAIN.md
+  POST_TASK.md
+  nine-signal/
+  playbook/
+  raw/
+  infrastructure/
+
+theme:
+  name: material
+  language: en
+  logo: Ω
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: amber
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.indexes
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Architecture: arifos/AAA.md
+  - Organs: entities/FEDERATION_ENTITIES.md
+  - Constitution: axioms/RITUAL_PRECEDENCE.md
+  - MCP API: workflows/workflow-agent-onboarding/reasoning/SUMMARY_MD.md
+  - Eurekas: concepts/CONCEPT_ARIFOS_C.md
+  - Paradoxes: concepts/CONCEPT_ARIFOS_E.md
+  - Scars: scars/SCAR_GRAPHITI.md
+  - Health: skills/well/SKILL_WELL.md
+  - Skills:
+      - Skills Index: skills/index.md
+      - arifOS:
+          - Vault: skills/arifos/SKILL_VAULT.md
+          - Ops: skills/arifos/SKILL_OPS.md
+          - Trace: skills/arifos/SKILL_TRACE.md
+          - Scar: skills/arifos/SKILL_SCAR.md
+          - Constitutional: skills/arifos/SKILL_CONSTITUTIONAL_B.md
+      - Federation:
+          - Hermes: skills/federation/SKILL_HERMES.md
+          - AAA: skills/federation/SKILL_AAA.md
+          - Agent B: skills/federation/SKILL_AGENT_B.md
+          - Site: skills/federation/SKILL_SITE.md
+          - Memory: skills/federation/SKILL_MEMORY.md
+          - Adapter: skills/federation/SKILL_ADAPTER.md
+      - Infrastructure:
+          - VPS: skills/infrastructure/SKILL_VPS_C.md
+          - Docker: skills/infrastructure/SKILL_DOCKER_C.md
+          - Caddy: skills/infrastructure/SKILL_CADDY.md
+          - GitHub: skills/infrastructure/SKILL_GITHUB.md
+          - Workers: skills/infrastructure/SKILL_WORKERS.md
+  - Reference:
+      - Index: INDEX.md
+      - Concepts:
+          - Apex Theory: concepts/INTELLIGENCE_TREE.md
+          - Memory: concepts/CONCEPT_MEMORY_C.md
+          - Reality: concepts/CONCEPT_REALITY.md
+          - Anti-Fabrication: concepts/ANTI_FABRICATION.md
+          - Domains: concepts/CONCEPT_DOMAINS.md
+          - Mirror: concepts/CONCEPT_MIRROR.md
+          - Skills Architecture: concepts/AGENT_SKILLS.md
+      - Axioms:
+          - Ritual Precedence: axioms/RITUAL_PRECEDENCE.md
+          - Epistemology: axioms/EPISTEMOLOGY_MD.md
+          - Ethics: axioms/ETHICS_MD.md
+          - Language: axioms/LANGUAGE_MD.md
+          - Mathematics: axioms/MATHEMATICS_MD.md
+          - Physics: axioms/PHYSICS_MD.md
+      - Workflows:
+          - Scar → Skill: workflows/workflow-scar-to-skill/reasoning/SUMMARY_MD.md
+          - Agent Onboarding: workflows/workflow-agent-onboarding/reasoning/SUMMARY_MD.md
+          - Session Cycle: workflows/workflow-session-cycle/reasoning/SUMMARY_MD.md
+  - Changelog: LOG.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true

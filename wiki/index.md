@@ -1,7 +1,7 @@
 ---
 title: AAA Wiki Index
 created: 2026-05-17
-updated: 2026-08-14
+updated: 2026-10-06
 type: index
 tags: [federation, wiki, index]
 confidence: high
@@ -10,7 +10,7 @@ confidence: high
 # AAA Wiki — Federation Knowledge Base Index
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-08-14 | Total entries: 136
+> Last updated: 2026-10-06 | Total entries: 149
 
 > **MCP Server:** `tree777://index` — use the tree777 MCP server for programmatic access with `wiki_search` and `wiki_read` tools.
 
@@ -205,4 +205,17 @@ confidence: high
 | `tree777://raw/repos/vps-map` | VPS Map — arifOS Federation | repos | | Path | Purpose | Notes | |
 | `tree777://raw/repos/zkpc` | ZKPC — Zero-Knowledge Proof-of-Constraint 🔐⚖️ | repos | **Outcome Label: Definition / Approved Concept, Not Yet Implemented** |
 
-_Generated: 2026-08-14 20:18 UTC_
+## For Agents
+
+This wiki follows the **llm-wiki pattern** (Karpathy, 2026-07-29). Agents maintain it autonomously:
+
+- **Schema:** [`/root/AAA/wiki/SCHEMA.md`](../SCHEMA.md) — the maintenance protocol
+- **Ingest:** READ source → DISCUSS → WRITE wiki → LOG → REBUILD
+- **Query:** Ask questions. Good answers get filed back as new pages.
+- **Lint:** Weekly health check — contradictions, orphans, staleness, missing links
+
+The wiki is the skin. VAULT999 is the bones. The wiki breathes with every seal.
+
+---
+
+_Generated: 2026-10-06 15:50 MYT · 145 entries · llm-wiki pattern (Karpathy 2026-07-29) · SOT: [/root/AAA/wiki/](../)_
