@@ -1,0 +1,8 @@
+{
+  "skill_id": "federation-organ-recovery",
+  "agent": "hermes-rsi-loop",
+  "lesson": "SILENT_FAIL observed 1x \u2014 impact=runtime_error. First surface: session:assistant \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session:assistant\", \"excerpt\": \"lm_config_v6_20260904.yaml, root/A-FORGE/scripts/federation-auto-remediation.sh, root/.hermes/model-picker.yaml\\nerrors: Traceback (most recent call last), ImportError pii_redact_callback`)\\nhandles: @gmail(x8), @100(x6)\\nurls: https://api-docs.deepseek.com/(x2), http://127.0.0.1:18087/health, https://\"}]",
+  "atom_id": "ATOM-2480d7d0ccbc",
+  "verified_by": "hermes-rsi-verifier"
+}

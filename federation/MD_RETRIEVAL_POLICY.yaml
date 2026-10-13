@@ -1,0 +1,85 @@
+# MD_RETRIEVAL_POLICY.yaml — proposed retrieval boundary for Markdown context governance
+# STATUS: proposed (NOT canon, NOT SEAL, NOT ratified)
+# Authority chain: AAA proposes → arifOS judges → 555 verifies → ARIF accepts (F13)
+# This file does not change the artifact it governs; it changes only the default retrieval.
+
+schema: aaa.md-retrieval-policy/v1
+forged: 2026-10-13T10:01:22Z
+forged_by: 333-AGI (FI-001)
+status: proposed
+do_not_self_seal: true
+
+invariant: REALITY > EVERYTHING
+
+scope:
+  binds_artifact: /root/forge_work/2026-10-13-md-context-governance/MD_OBSERVED.yaml
+  binds_pointer: /root/AAA/federation/MD_OBSERVED.pointer.yaml
+  binds_receipt: /root/AAA/federation/MD_OBSERVED-2026-10-13.receipt.yaml
+
+# ----------------------------------------------------------------------------
+# Default retrieval — what enters active agent context by default
+# ----------------------------------------------------------------------------
+default_retrieval:
+  include_planes:
+    - organ_active
+    - harness_live_instruction
+    - harness_live_memory
+    - current_runtime_projection
+
+  exclude_planes:
+    - worktree_replica
+    - backup
+    - archive
+    - vendor
+    - deployment_rollback
+    - inert_harness_cache
+
+# ----------------------------------------------------------------------------
+# Explicit modes — opt-in retrieval for specific tasks
+# ----------------------------------------------------------------------------
+explicit_modes:
+  historical:
+    add_planes: [archive]
+  recovery:
+    add_planes: [backup, deployment_rollback]
+  external_reference:
+    add_planes: [vendor]
+  forensic:
+    add_planes: [all_planes]
+
+# ----------------------------------------------------------------------------
+# Fail-closed rules — UNKNOWN is safer than incorrect inclusion
+# ----------------------------------------------------------------------------
+fail_closed:
+  unknown_plane: exclude_and_report
+  unknown_consumer: exclude_and_report
+  casing_collision: hold
+  competing_live_instruction: hold
+  unresolved_symlink: hold
+
+# ----------------------------------------------------------------------------
+# What this policy deliberately does NOT do
+# ----------------------------------------------------------------------------
+does_not:
+  - delete any file
+  - rename any file
+  - move any file
+  - mutate AAA/federation/STATE.yaml
+  - mutate AAA/federation/SERVICE_OWNERSHIP.yaml
+  - mutate AAA/federation/federation-manifest.yaml
+  - commit the 15.3 MB artifact into the Git working tree
+  - create /root/federation/ namespace
+  - promote the pointer to canon
+  - self-seal this policy
+
+# ----------------------------------------------------------------------------
+# Ratification requirements
+# ----------------------------------------------------------------------------
+ratification_path:
+  - 555_verifier: independent_reproduction_required
+  - 888_judge: claim_vs_reality_verdict_required
+  - F13: human_acceptance_required
+  - vault999_receipt: required_before_promotion
+
+amendments:
+  - none_recorded

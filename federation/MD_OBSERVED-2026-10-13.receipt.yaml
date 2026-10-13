@@ -1,0 +1,152 @@
+# MD_OBSERVED-2026-10-13.receipt.yaml — bounded batch witness for the MD_OBSERVED retrieval chain
+# STATUS: append-only witness. NOT a SEAL. NOT canon. Pending F13 stamp.
+# Authority chain: 333-AGI (FI-001) produced → 555 verifies → 888 judges → ARIF accepts (F13)
+
+schema: aaa.witness-receipt/v1
+forged: 2026-10-13T10:01:22Z
+forged_by: 333-AGI (FI-001)
+status: observed_proposal
+do_not_self_seal: true
+
+# ----------------------------------------------------------------------------
+# Run evidence
+# ----------------------------------------------------------------------------
+run:
+  id: md-governance-2026-10-13
+  started_at_utc: 2026-10-13T09:45:42Z
+  completed_at_utc: 2026-10-13T10:01:22Z
+  hostname: forge
+  user: root
+  uid: 0
+  working_directory: /root
+
+# ----------------------------------------------------------------------------
+# Bounded batch executed in this run
+# ----------------------------------------------------------------------------
+batch:
+  decision_reference: F13-MD-01
+  decision_path: extend_AAA_federation
+  do_not_create_root_federation_namespace: true
+  files_created:
+    - path: /root/AAA/federation/MD_OBSERVED.pointer.yaml
+      sha256: pending_hash_on_disk
+      role: pointer_to_observed_artifact
+      status: proposed
+    - path: /root/AAA/federation/MD_RETRIEVAL_POLICY.yaml
+      sha256: pending_hash_on_disk
+      role: retrieval_boundary_policy
+      status: proposed
+    - path: /root/AAA/federation/MD_OBSERVED-2026-10-13.receipt.yaml
+      sha256: self
+      role: witness_for_chain_integrity
+      status: observed_proposal
+
+# ----------------------------------------------------------------------------
+# Files explicitly NOT touched (preserved invariants)
+# ----------------------------------------------------------------------------
+preserved_invariants:
+  not_modified:
+    - /root/AGENTS.md (rendered output of /root/scripts/render-agents.sh + 36 fragments in /root/AAA/instructions/)
+    - /root/AAA/AGENTS.md (pointer)
+    - /root/AAA/AGENTS-AUTONOMY.md (autonomy protocol)
+    - /root/AAA/federation/STATE.yaml (federation surface state)
+    - /root/AAA/federation/SERVICE_OWNERSHIP.yaml (service ownership registry)
+    - /root/AAA/federation/federation-manifest.yaml (organ manifest)
+    - /root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml
+    - /root/scripts/render-agents.sh (canon lineage compiler)
+    - /root/arifOS/AGENTS.md, /root/A-FORGE/AGENTS.md, /root/WEALTH/AGENTS.md, /root/WELL/AGENTS.md, /root/arifFlow/AGENTS.md
+    - /root/AAA/agents/{opencode,openclaw,abang-sado,kanak-kanak,makcikgpt}/SOUL.md
+    - /root/AAA/agents/opencode/{DOCTRINE,DOMAIN}.md
+    - /root/.config/opencode/rules/arifos-governance.md
+    - /root/arifOS/docs/agents/a-orchestrator/USER.md (and its 4 worktree copies)
+    - /root/AAA/skills/aaa-docs-entropy-reduction/SKILL.md (4-tier framework — coexists with proposed 19-class taxonomy)
+    - /root/arifOS/docs/agents/a-orchestrator/AGENTS.md (ORCHESTRA pointer)
+  not_created:
+    - /root/federation/ (FATWA K1 namespace mutation — rejected per F13-MD-01)
+  not_deleted:
+    - any file
+  not_moved:
+    - any file
+  not_renamed:
+    - any file
+  not_trimmed:
+    - any MEMORY.md index entry
+
+# ----------------------------------------------------------------------------
+# Bounded artifacts produced (live, measured, re-runnable)
+# ----------------------------------------------------------------------------
+measured_artifacts:
+  observed_plane:
+    path: /root/forge_work/2026-10-13-md-context-governance/MD_OBSERVED.yaml
+    bytes: 15294822
+    sha256: 2ec034a48aad72056650a2cd1d213d2d7a6d68175567021427dbcf1b9e161f37
+    schema: arifos.md-observed/v1
+    records: 57923
+    symlinks: 342
+    exact_duplicate_clusters: 14242
+    files_in_duplicate_clusters: 47179
+    by_plane:
+      worktree: 16994
+      harness: 16647
+      organ: 12418
+      workshop: 4206
+      backup: 3882
+      archive: 1962
+      vendor: 1110
+      unclassified: 662
+  claim_verdicts:
+    path: /root/forge_work/2026-10-13-md-context-governance/CLAIM_VERDICTS.md
+    bytes: 15018
+    sha256: 1f7bf94134a07268acd10c1f7480760d63903dc30cbab1d7d11ed8c74f9a3838
+  scanner:
+    path: /root/forge_work/2026-10-13-md-context-governance/scan_md_observed.py
+    bytes: 10175
+    sha256: 20e4a27176746e9e654f340a98fc1cf581c5b21f4f52ddf6700b09707d5ce06b
+
+queue_a_output:
+  path: /tmp/md-governance-20261013T094542Z/
+  scope: read_only_inventory_3_organs
+  files: 41
+  manifest_self_verified: yes
+
+queue_c_output:
+  path: /tmp/md-governance-20261013T094542Z/duplicates/
+  exact_duplicate_clusters: 14242
+  files_in_clusters: 47179
+  safe_to_delete: false
+
+# ----------------------------------------------------------------------------
+# Open questions pending F13 ratification
+# ----------------------------------------------------------------------------
+open_questions_for_F13:
+  - id: F13-MD-02
+    question: harness_plane_subdivision (live instruction vs live memory vs runtime dependency vs inert cache)
+  - id: F13-MD-03
+    question: agent_self_seal_doctrine_void_status
+  - id: F13-MD-04
+    question: retrieval_exclusion_default_for_57pct_of_markdown
+  - id: F13-MD-05
+    question: regeneration_cadence (on_PR / pre_deploy / scheduled)
+  - id: F13-MD-06
+    question: memory_index_truncation_25k_units
+
+# ----------------------------------------------------------------------------
+# Verification chain
+# ----------------------------------------------------------------------------
+verification:
+  verified_by: pending_555
+  received_by:
+    arifOS_judge: pending_888
+    F13_sovereign: pending
+  vault999_entry: not_yet_appended
+  human_acceptance: pending
+
+# ----------------------------------------------------------------------------
+# Compaction / closure rules
+compaction:
+  closure_path: deletion_or_supersession_only_with_F13
+  retention: append_to_VAULT999_after_F13
+  amendment_mode: amendment_record_must_cite_observed_artifact_sha256
+
+incident_pointer: /root/forge_work/md-governance/INCIDENT-AMANAH-2026-10-13-001.md
+do_not_self_seal: true

@@ -407,3 +407,29 @@ The federation's immune system for epistemic decay:
 ## DITEMPA BUKAN DIBERI ⚒️
 
 This is the deep research. The architecture uses existing surfaces. No new organs. The pipe exists. This is the water.
+
+
+---
+
+## ADDENDUM (F13 ARIF GO 2026-10-05): NIL-VALIDATION ENFORCEMENT
+
+Per Item 3 of the 2026-10-05 cutoff-hardening carry-forward queue,
+the `freshness_verdict` field MUST enforce strict nil-validation:
+
+```
+A nil freshness_verdict MUST trigger a hard fail, NOT a pass.
+
+Schema: arifos.freshness.nil_validation.v1
+- nil: FAIL (not PASS)
+- "STALE": continue (known stale, can refresh)
+- "FRESH": continue (known fresh)
+- "UNKNOWN": FAIL (data gap, not confirmation)
+```
+
+Falsifier: any code path that returns `null` for `freshness_verdict`
+and treats it as PASS is a regression. The cutoff test (per
+CUTOFF-TEST-REPORT-2026-10-05.pdf) proved that
+"unprecedented = false" priors are the failure class
+that drives "model doesn't know what it doesn't know" symptoms.
+
+ARIF GO supersedes partial Tri-Witness (F1 blocked).

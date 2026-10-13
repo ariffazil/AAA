@@ -1,0 +1,6 @@
+=== Weekly Federation Digest — 2026-10-11 14:00 MYT ===
+Capacity: disk=82% mem=32%
+Organs: all healthy
+Scars this week: 0
+Mesh: mesh_links: UNAVAILABLE
+Vault: INTACT

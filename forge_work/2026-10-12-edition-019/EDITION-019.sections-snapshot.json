@@ -1,0 +1,53 @@
+{
+  "rendered_at": "2026-10-11T22:07:15Z",
+  "edition_date": "2026-10-12",
+  "sot": {
+    "calibration": "chron/data/calibration.json",
+    "predictions": "chron/data/predictions.jsonl",
+    "lessons": "chron/data/lessons.jsonl",
+    "eurekas": "AAA/eurekas/eureka-entries.jsonl",
+    "episodes": "chron/data/episodes.jsonl",
+    "events": "AAA/scripts/chron_events.json"
+  },
+  "counts": {
+    "model_change_rows": 11,
+    "unresolved_rows": 94,
+    "survivors": 48,
+    "newcomers": 46,
+    "age_unmeasured": 0
+  },
+  "calibration": {
+    "accuracy": 0.8633333333333333,
+    "mean_brier": 0.15313435206495282,
+    "bias": -0.1808506639247619,
+    "mean_confidence": 0.6824826694085714,
+    "predictions_total": 148,
+    "effective_n": 25,
+    "quality": "SUFFICIENT",
+    "updated_at": "2026-10-10T23:15:25.864680Z"
+  },
+  "lessons": {
+    "total": 16,
+    "actionable": 2,
+    "not_actionable": 5,
+    "unspecified": 9,
+    "error_class_blind": 12,
+    "blind_share": 0.125,
+    "non_actionable_share": 0.875
+  },
+  "confidence_spread": {
+    "n": 75,
+    "mean_proposed": 0.6448,
+    "mean_calibrated": 0.5807836560599999,
+    "spread_proposed": 0.75,
+    "spread_calibrated": 0.458456104,
+    "spread_loss": 0.38872519466666666
+  },
+  "episodes": {
+    "learn_episodes": 7,
+    "lines_scanned": 173712,
+    "tail_bounded": false
+  },
+  "path_rewrites_in_quoted_text": 7,
+  "sot_errors": {}
+}

@@ -408,7 +408,11 @@ def _autocrop(png: Path) -> tuple[int, int]:
                 break
         if last:
             break
-    nh = min(h, max(200, last + 1))
+    # +14 px bottom padding: the scan steps 4 px and the footer row is faint, so
+    # without it the crop can land inside the last glyph's descenders and the
+    # seal line renders half-cut (vision-flagged 2026-10-12). Padding is inert on
+    # a tall page and only ever adds background.
+    nh = min(h, max(200, last + 1 + 14))
     if nh < h:
         im.crop((0, 0, w, nh)).save(png)
     return w, nh

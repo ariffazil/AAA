@@ -51,6 +51,9 @@ Before compiling anything, read in this order:
 
 Do NOT skip. The substrate remembers what your narrative forgot.
 
+**NEW — 2026-10-11 (two carry files, and tasks.json may not be v1):**
+`/root/.hermes/carry_forward.json` is not guaranteed to be a symlink of the canonical file. Compare inodes before treating them as one store. On 2026-10-11 they were two regular files (290955 vs 28104 bytes). `/root/work/tasks.json` may be an ad-hoc ledger rather than `arifos.work.tasks.v1`. If `tasks` is missing, do not report `n_tasks=0` as an empty queue — read the keys that are actually there, then rewrite v1 only after a live compile. Back the old file up first.
+
 ### Rule 2 — Distinguish SEAL from RECEIPT before emitting
 
 | Word | Means | Required |

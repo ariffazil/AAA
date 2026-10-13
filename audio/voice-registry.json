@@ -1,8 +1,8 @@
 {
   "schema": "aaa.voice-registry.v1",
   "owner": "AAA",
-  "updated_at": "2026-09-27T01:30:00Z",
-  "updated_by": "Antigravity \u2014 F13 SOVEREIGN RATIFIED 2026-09-24 (YA decision for qwen-voice-enrollment burn)",
+  "updated_at": "2026-10-12T10:45:00+08:00",
+  "updated_by": "F13 SOVEREIGN DIRECTIVE (Arif, 2026-10-12) — reconfirmed Siti voice correct after recipe sync from KVM4 (speech-2.8-hd + pitch 0 + 24000). Reinstated siti to LIVE. 2026-10-11 revocation was recipe-error, not clone-error.",
   "source_of_truth": "THIS FILE is the canonical voice-id registry. Resolvers (pipeline, identity card, routers) MUST resolve here; no component may hardcode a separate provider id.",
   "revocation_policy": [
     "A REVOKED voice id must never be selectable as a default, an explicit id, or a fallback rung.",
@@ -22,13 +22,9 @@
     "siti": "siti",
     "suara siti": "siti",
     "Siti voice": "siti",
-    "pmx": "anwar-bm-20260927",
-    "anwar": "anwar-bm-20260927",
-    "suara pmx": "anwar-bm-20260927",
-    "suara anwar": "anwar-bm-20260927",
-    "anwar ibrahim": "anwar-bm-20260927",
-    "suara anwar ibrahim": "anwar-bm-20260927",
-    "suara pmx anwar": "anwar-bm-20260927"
+    "SS": "siti",
+    "suara SS": "siti",
+    "voice SS": "siti"
   },
   "voices": {
     "i-arif-sovereign": {
@@ -98,23 +94,27 @@
       "provider_voice_id": "SSSiti20260926v1",
       "model": "speech-2.8-hd",
       "endpoint": "https://api.minimax.io/v1/t2a_v2",
-      "execute": "bash /root/AAA/engines/iarif_tts_pipeline.sh <text-file> <out.wav> \"suara siti\"",
-      "provenance": "Existing clone SSSiti20260926v1. Do not mint a new voice. Speech uses t2a_v2 only.",
-      "source": "/root/.hermes/voice/SS-VOICE-CANONICAL.json"
+      "speed": 1.0,
+      "pitch": 0,
+      "sample_rate": 24000,
+      "format": "mp3",
+      "archetype": "siti_graceful_homie_feminine",
+      "lane": "sovereign feminine persona (F13 DM lane) — graceful, homie-motherly, never coarse",
+      "source_sample": "Apa Cerita? Ep.26 — The Story of Dato' Sri Siti Nurhaliza (29 Jul 2024), window 8499.7s-8529.7s",
+      "provenance": "clone of real person's voice (Siti Nurhaliza), explicit F13 instruction 2026-09-26. canonical owner KVM4.",
+      "f9_compliance": "public_figure_clone — F13-authorized, private lane only, do not publish",
+      "reinstated_at": "2026-10-12T10:45:00+08:00",
+      "reinstated_by": "F13 directive (Arif, 2026-10-12) — reconfirmed correct Siti voice",
+      "reinstated_reason": "2026-10-11 revocation was based on wrong KVM8 render recipe (speech-2.6-hd + pitch -2). Canonical recipe is speech-2.8-hd + pitch 0 + sample_rate 24000 (KVM4 voice_alias.sh). Arif confirmed KVM4 render correct 2026-10-12."
     },
     "anwar-bm-20260927": {
-      "status": "LIVE",
-      "distribution": "DISTRIBUTION_HOLD",
-      "display_name": "PMX Anwar Ibrahim demo",
-      "provider": "minimax",
-      "provider_voice_id": "anwar-bm-20260927",
-      "model": "speech-2.8-hd",
-      "endpoint": "https://api.minimax.io/v1/t2a_v2",
-      "execute": "bash /root/AAA/engines/iarif_tts_pipeline.sh <text-file> <out.wav> \"suara PMX\"",
-      "agent_rule": "Say it is a demo. Do not present the clip as the Prime Minister speaking, and do not publish it.",
-      "provenance": "MiniMax clone of a 29.913s Malay window from the RTM cabinet press conference, 5 Dec 2022, archive.org master. sha256 038d662959a27f7bb483d306192741944b32d088f6a235100a96c510cc5945e1. file_id 446154272850435. Not an official voice. Not consented by the speaker. Do not publish.",
-      "source": "/root/.hermes/voice/AI/anwar_bm_30s_v2.wav",
-      "enrolled_at": "2026-09-27T02:46:50Z"
+      "status": "REVOKED",
+      "display_name": "PMX Anwar Ibrahim demo (REVOKED)",
+      "revoked_at": "2026-10-11T22:00:00+08:00",
+      "revoked_by": "F13 directive (Arif, 2026-10-11) — 'Buang both voice from registry'",
+      "reason": "Bulk-revoked with siti on F13 directive; quality gap same class.",
+      "previous_provider": "minimax",
+      "previous_provider_voice_id": "anwar-bm-20260927"
     },
     "abang-sado-alpha": {
       "status": "LIVE",

@@ -76,6 +76,10 @@ engines. Do not route singing or voice design through this binding.
 
 3. **Before minting a new voice_id, scan the federation.** Check `/root/.openclaw/workspace/voice/` (KVM4) and `/root/.hermes/voice/` (KVM8) for an existing canonical alias matching the request. If a sealed voice_id already exists (e.g. `SSSiti20260926v1` for "SS" trigger), reuse it — never mint a parallel ID. Duplicate voice_ids across hosts = drift.
 
+4. **`language_boost` MUST match the source language.** For BM-routed clones (Siti, Abang Sado, any Malay-register persona), the request body must include `"language_boost": "Malay"`. Without it the provider falls back to English phoneme routing and the rendered audio sounds like a Malay speaker through an English throat — wrong phoneme inventory, wrong prosody, wrong final-coda behaviour. The status_code will still return 0; the wire is healthy, the timbre is not. The canonical `siti_render.py` script sets this; never inline-bypass the recipe.
+
+5. **`pitch=-2` for feminine clones, `pitch=+0` for masculine.** Default pitch 0 reads masculine on female-source clones. Set `pitch` in the `voice_setting` block when the reference persona is female.
+
 ## The Four Phases
 
 ```
@@ -245,6 +249,63 @@ After each clone:
    platform (Hermes gateway, edge bot, voice-note pipeline).
    Acceptable thresholds per AAA-audio-emd-pipeline §"Reflex Arc".
 
+### Sove­reign-Listen Gate (F13 acceptance — mandatory before any delivery)
+
+Provider `status_code == 0` proves the wire is healthy, NOT that the timbre
+matches the reference. `base_resp.success` and F0 / voiced-ratio probes can
+measure *something*, but only the sovereign's ear decides if the rendered
+audio sounds like the person the voice_id is named after.
+
+- Render a 15–30 s test phrase on the new voice_id.
+- Send to the sovereign with provenance + file size + f0_median + a known
+  reference sample (the source audio uploaded in Phase 1, or the sealed
+  demo clip for an existing voice_id).
+- Mark `gate: sovereign_listen_pending` on the voice_id; do not register
+  it as LIVE.
+- The sovereign either confirms ("OK, that's her/him") or rejects
+  ("not X, redo" / "buang dari registry"). Until confirmed the voice_id
+  stays in a `gate: sovereign_listen_pending` or `REVOKED` state.
+- Bulk-rendered deliveries before listen-confirm → revoke the voice_id and
+  treat the artefact as untrusted. Re-record fresh audio rather than
+  re-render the old text with a fixed clone.
+
+Never auto-promote a freshly cloned voice_id to LIVE on the basis of
+provider status code, F0 numbers, or the fact that the file decoded
+without warnings. Those measure the wire; the ear measures the person.
+
+**The gate fires on EVERY render, not only the first.** A voice_id that
+sounded right on a 5-second probe can drift on a 60-second paragraph
+(model temperature, phoneme coverage, prosody long-tail). Re-run the
+sovereign-listen gate on every regenerated artefact before sending it to
+the recipient — do not assume an earlier confirm still holds. If the
+sovereign says "not X, redo" after multiple attempts at the same
+recipe, treat the source clone as failed: revoke the voice_id, do not
+keep tweaking `pitch`/`speed`/`language_boost` to chase a timbre the model
+was never trained to produce. Source clone ≠ reference person is a
+defect class, not a tuning problem.
+
+**Revocation path.** When the sovereign confirms the timbre fails:
+
+1. Set `voices.<id>.status` to `REVOKED` in `/root/AAA/audio/voice-registry.json`.
+   Keep the entry (append-only per F1 AMANAH; do NOT hard-delete). Add
+   `revoked_at`, `revoked_by`, `previous_provider`, `previous_provider_voice_id`,
+   and a one-line `reason`.
+2. Remove every live alias that resolves to the revoked entry from the
+   `aliases` block. Garbled/noise aliases (e.g. keys containing `_revoked`
+   in their name) may stay — they fail-closed by invalid-shape.
+3. Append a JSON line to `/var/lib/arifos/voice_revocations.jsonl`
+   (`event`, `actor`, `directive`, `voices_revoked[]`, `rationale`,
+   `registry_md5`, `session_carry`).
+4. Verify pipeline fail-closed: `python3 /root/AAA/engines/resolve_voice_id.py <handle>`
+   returns `rc=3` for the revoked handle and `rc=5` for any aliased handle.
+   Live handles must still return `rc=0`.
+5. Bump `updated_at` and `updated_by` on the registry.
+6. Carry-forward seal: `/root/scripts/carry_forward.py append --kind event --content "..." --session-id "SEAL-VOICE-REVOCATION-..." --tags "voice-registry,F13,F9-anti-hantu,revocation"`.
+
+The voice may remain on the provider's servers (we cannot delete it
+there). Revocation is enforced at every resolver we own, never at the
+provider.
+
 ## Trade-off Matrix (i-ARIF specific)
 
 | Component | Trade-off | i-ARIF strategy |
@@ -290,6 +351,7 @@ Parse: token at message start = trigger; remainder = TTS text. If multiple alias
 ## Reference Files
 
 - `references/federation-voice-id-canonicalization.md` — how one voice_id serves multiple hosts without drift.
+- `references/voice-alias-federation.md` — KVM4/KVM8 alias plumbing, env sourcing, revocation journal.
 
 ## Integration Points
 

@@ -1,0 +1,41 @@
+=== AFTER consolidation manifest ===
+lrwxrwxrwx   1 root root     37 Sep 16 10:12 FORGE-github-ops -> /root/.hermes/skills/FORGE-github-ops
+drwxr-xr-x   2 root root   4096 Oct  5 10:16 FORGE-github-workflow
+lrwxrwxrwx   1 root root     17 Oct 12 14:32 forge-github-ops -> github/github-ops
+drwxr-xr-x   3 root root   4096 Sep 27 07:53 github
+drwxr-xr-x   3 root root   4096 Oct  5 10:16 github-public-push-privacy
+
+=== hardening worktree github ===
+lrwxrwxrwx  1 root root    34 Oct 12 14:33 github -> /root/AAA/skills/github/github-ops
+lrwxrwxrwx  1 root root    34 Oct 12 14:33 github-repo-manager -> /root/AAA/skills/github/github-ops
+
+=== SHA256 chain verification ===
+EXPECTED: 956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487
+  956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487  /root/AAA/skills/github/github-ops/SKILL.md
+  956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487  /root/AAA/skills/forge-github-ops/SKILL.md
+  956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487  /root/AAA/skills/FORGE-github-ops/SKILL.md
+  956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487  /root/AAA/skills/github/github-auth/SKILL.md
+  956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487  /root/AAA/skills/github/github-issues/SKILL.md
+  956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487  /root/arifOS-wt-mcp-hardening/skills/github/SKILL.md
+  956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487  /root/arifOS-wt-mcp-hardening/skills/github-repo-manager/SKILL.md
+
+=== Verifier ===
+verify-canonical.sh — AAA GitHub ops consolidation witness
+  Canonical : /root/AAA/skills/github/github-ops
+  Expected  : 956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487
+  Registry  : /root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
+
+[1] Canonical exists as directory:
+  PASS — /root/AAA/skills/github/github-ops is a real directory
+[2] Canonical SKILL.md sha256:
+  PASS — 956425a6d1ebc771dbf16e5e2e94edb7b279ff727369447cdc35114f1f49b487
+[3] Alias paths resolve and match canonical sha256:
+  PASS — all 11 alias paths resolve to canonical sha256
+[4] Registry declares github-ops as canonical dev skill:
+  PASS — github-ops declared canonical in /root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
+[5] No rogue github-ops dirs outside canonical:
+  PASS — no rogue dirs
+[6] Canonical declares federated capability tier + floor scope:
+  PASS — federated metadata present
+
+=== VERDICT: PASS — canonical sole, sound, registered, governable ===

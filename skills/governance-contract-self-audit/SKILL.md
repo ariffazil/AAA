@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [governance, contracts, audit, self-audit, golden-test, delegation, f1-f13]
-    related: [verify-nested-sibling-reports, agent-config-validation, arifos-prompt-doctrine, constitution-institution-mapping]
+    related: [verify-nested-sibling-reports, agent-config-validation, arifos-prompt-doctrine, constitution-institution-mapping, persistent-memory-effectiveness-gate (P-MEM-GATE v1.0 — staged /root/forge_work/paper2610.07782-embedding/01-canonical-rule/MEMORY-EFFECTIVENESS-GATE.md; canonical placement /root/AAA/governance/ requires authorized shell — see file receipt)]
 ---
 
 # Governance Contract Self-Audit
