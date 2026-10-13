@@ -6975,6 +6975,20 @@
         "note": "Declining — keep but deprioritize."
       },
       "fff_gate_deputy_note": "Inherits parent's FFF gate verdict. New channel binding only — no independent FFF re-run. Cascade rescue via channel diversity, not model re-evaluation."
+    },
+    {
+      "id": "mimo-v2.6-pro",
+      "provider": "mimo-token-plan",
+      "status": "LIVE",
+      "supersedes": "mimo-v2.5-pro",
+      "added": "2026-10-14"
+    },
+    {
+      "id": "mimo-v2.6-flash",
+      "provider": "mimo-token-plan",
+      "status": "LIVE",
+      "supersedes": "mimo-v2.5",
+      "added": "2026-10-14"
     }
   ],
   "shadows": [
