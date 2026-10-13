@@ -595,11 +595,11 @@ def _emd_check(agent_id: str, operation: str, model_id: str, modality: str) -> d
     if modality in ("vision", "omni") and not cap["vision_in"]:
         verdict = "EMD_MISMATCH"
         reasons.append(f"vision payload to vision-blind {model_id}")
-        suggested += ["qwen3.8-max", "mimo-v2.5"]
+        suggested += ["qwen3.8-max", "mimo-v2.6-flash"]
     if modality == "audio" and not cap["audio_in"]:
         verdict = "EMD_MISMATCH"
         reasons.append(f"audio payload to audio-blind {model_id}")
-        suggested += ["mimo-v2.5"]
+        suggested += ["mimo-v2.6-flash"]
     if modality in ("image_out", "video_out") and not cap.get("image_out") and not cap.get("video_out"):
         verdict = "EMD_MISMATCH"
         reasons.append(f"generation payload to non-generation {model_id}")
@@ -1161,9 +1161,9 @@ def fed_route(
         task: Natural language description of the task
         model: Target model (default: deepseek-v4-pro). Can also be a capability signature:
             fed-reasoning-heavy  → [deepseek-v4-pro, qwen3.8-max, MiniMax-M3]
-            fed-multimodal-vision → [qwen-vl-max, mimo-v2.5, MiniMax-M3]
-            fed-long-context     → [MiniMax-M3, mimo-v2.5-pro, qwen3.8-max]
-            fed-agent-subagent   → [deepseek-v4-flash, qwen3.6-flash, mimo-v2.5]
+            fed-multimodal-vision → [qwen-vl-max, mimo-v2.6-flash, MiniMax-M3]
+            fed-long-context     → [MiniMax-M3, mimo-v2.6-pro, qwen3.8-max]
+            fed-agent-subagent   → [deepseek-v4-flash, qwen3.6-flash, mimo-v2.6-flash]
             fed-realtime-voice   → [mimo-v2.5-tts, mimo-v2.5-asr]
             fed-local-uncensored → LOCAL RUNTIME: routes to ComfyUI :8188 with full audit
         modality: text, vision, video, audio, omni
