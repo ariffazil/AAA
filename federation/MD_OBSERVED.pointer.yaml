@@ -1,0 +1,69 @@
+# MD_OBSERVED.pointer.yaml — pointer to the observed plane artifact
+# STATUS: proposed (F13-MD-01 ACCEPTED path; F13 stamp pending human acceptance)
+# Authority: AAA/federation (display-only surface state per AAA/federation/STATE.yaml)
+# Generator: scan_md_observed.py (re-runnable, 25.5 s on this host)
+# Storage: kept outside Git working tree (15.3 MB; not committed)
+
+schema: aaa.md-pointer/v1
+forged: 2026-10-13T10:01:22Z
+forged_by: 333-AGI (FI-001)
+acceptance:
+  path: F13-MD-01
+  decision: extend_AAA_federation
+  do_not_create_root_federation_namespace: true
+
+document:
+  document_id: ARIFOS::MD_OBSERVED
+  status: proposed
+  canonical: false
+  establishes_canon: false
+  establishes_authority: false
+  establishes_deletability: false
+  safe_to_delete: false
+  supersedes: []
+  human_acceptance: pending
+
+artifact:
+  path: /root/forge_work/2026-10-13-md-context-governance/MD_OBSERVED.yaml
+  repository_tracked: false
+  bytes: 15294822
+  sha256: 2ec034a48aad72056650a2cd1d213d2d7a6d68175567021427dbcf1b9e161f37
+  records: 57923
+  exact_duplicate_clusters: 14242
+  files_in_duplicate_clusters: 47179
+
+companion_artifacts:
+  - path: /root/forge_work/2026-10-13-md-context-governance/CLAIM_VERDICTS.md
+    bytes: 15018
+    sha256: 1f7bf94134a07268acd10c1f7480760d63903dc30cbab1d7d11ed8c74f9a3838
+  - path: /root/forge_work/2026-10-13-md-context-governance/scan_md_observed.py
+    bytes: 10175
+    sha256: 20e4a27176746e9e654f340a98fc1cf581c5b21f4f52ddf6700b09707d5ce06b
+
+ownership:
+  observation_holder: AAA/federation
+  observation_producer: AAA (FI-003 QwenCode author; 333-AGI re-verifier)
+  judgment_authority: arifOS
+  execution_authority: A-FORGE
+  human_authority: ARIF
+
+provenance:
+  generator_path: /root/forge_work/2026-10-13-md-context-governance/scan_md_observed.py
+  generator_sha256: 20e4a27176746e9e654f340a98fc1cf581c5b21f4f52ddf6700b09707d5ce06b
+  scanned_root: /root
+  scanned_at: 2026-10-13T09:46:50Z
+  scan_seconds: 25.5
+  pruned_dirs: [".eggs", ".git", ".mypy_cache", ".pytest_cache", ".ruff_cache", ".tox", ".venv", "__pycache__", "node_modules", "site-packages", "venv"]
+
+relates_to:
+  - policy: /root/AAA/federation/MD_RETRIEVAL_POLICY.yaml
+    relation: governs_default_retrieval
+  - receipt: /root/AAA/federation/MD_OBSERVED-2026-10-13.receipt.yaml
+    relation: bound_artifact_for_chain_integrity
+
+invariants:
+  - The observed plane contains no canonical, authority, or safe_to_delete fields.
+  - Regeneration must not be claimed without re-running the generator.
+  - Hashes must be measured from disk, never copied from narrative.
+  - Adjudication requires owner + F13 stamp on the receipt.
+  - The pointer does not mutate the artifact; it binds to it.

@@ -1,0 +1,59 @@
+{
+  "edition": "EDITION-019",
+  "date": "2026-10-12",
+  "built_at": "2026-10-11T22:07:21Z",
+  "engine": "chromium",
+  "engine_version": "Google Chrome 153.0.8010.36",
+  "template": "base-a4",
+  "profile": "print-light",
+  "content_sha256": "27d82dd0f31cf1dd9935ed79a1e1203eb198adf01e9932044386b10a4dd2cc30",
+  "artifact_sha256": "a24173f6c56e749354c75d05bea3b51f8db530e31b124a39000fde21dd0bfb56",
+  "artifact_bytes": 499343,
+  "artifact_file": "EDITION-019.pdf",
+  "artifact_path": "2026-10-12-edition-019/EDITION-019.pdf",
+  "sidecar": "EDITION-019.sha256",
+  "sidecar_verified": true,
+  "gates": [
+    {
+      "gate": "pdf_real",
+      "ok": true,
+      "detail": "real PDF, version 1.4"
+    },
+    {
+      "gate": "geometry",
+      "ok": true,
+      "detail": "15 pages, 594.96 x 841.92 pts (A4)"
+    },
+    {
+      "gate": "ink_present",
+      "ok": true,
+      "detail": "min ink 2.24%, median 8.38%, floor 0.05% \u2014 no blank page | pg-01:2.2% pg-02:6.8% pg-03:10.9% pg-04:9.0% pg-05:5.3% pg-06:7.5% pg-07:8.3% pg-08:7.5% pg-09:8.8% pg-10:8.0% pg-11:8.4% pg-12:12.0% pg-13:11.5% pg-14:9.2% pg-15:7.8%"
+    },
+    {
+      "gate": "theme_light",
+      "ok": true,
+      "detail": "max dark-area 4.6% (pg-13), limit 25% \u2014 no dark fill, bands are rules only"
+    },
+    {
+      "gate": "text_layer",
+      "ok": true,
+      "detail": "38556 chars extracted, no internal path, 5 required string(s) present"
+    },
+    {
+      "gate": "figures",
+      "ok": true,
+      "detail": "not asserted for this document"
+    },
+    {
+      "gate": "sot_truth",
+      "ok": true,
+      "detail": "9 SOT-backed value(s) match the rendered document: mean_brier=0.153, accuracy=0.863, bias=-0.181, mean_confidence=0.682, predictions_total=148, quality=SUFFICIENT, brier (excl. self-tests)=0.159, brier (raw, one row per hypothesis)=0.159, brier (gold-pair scope)=0.182"
+    }
+  ],
+  "gates_all_pass": true,
+  "chain_prev": "f7420a791e2c5428c2c31553167b6a27894c67de9e885deca55384c581eaab44",
+  "chain_prev_edition": "EDITION-018",
+  "signature": "not_signed",
+  "signature_note": "no C2PA/X.509 signing identity on this lane; hashes only. Integrity is proven, authorship is not.",
+  "seal_class": "lane-level integrity seal \u2014 NOT an F13 seal and not a canonical record"
+}

@@ -6,6 +6,10 @@ version: 1.0.2
 description: "Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS kernel and A-FORGE stdio actuator."
 owner: AAA
 risk_tier: medium
+applies_gate: persistent-memory-effectiveness-gate v1.0 (staged /root/forge_work/paper2610.07782-embedding/01-canonical-rule/MEMORY-EFFECTIVENESS-GATE.md; source arXiv:2610.07782 §4 + §5/C3). FI coding CLIs (Codex, Claude Code, Kimi, OpenCode) MUST NOT claim persistent-memory improves coding accuracy on independent-item benchmarks (HumanEval-class) — structural null. Valid claims require longitudinal engineering trajectories per Track 04.1.
+clause_highest_risk_for_this_skill: 1 (cross-episode information value). Independent coding items supply their own evidence; persistent project memory cannot help. Replace independent-item evaluation with revisit-the-repo or other longitudinal trajectories where information legitimately carries between episodes.
+related_scaffolds:
+  - /root/forge_work/paper2610.07782-embedding/04-fi-coding-longitudinal/SPEC.md
 knowledge_basis:
   language: true
   math: false

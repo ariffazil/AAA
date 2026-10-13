@@ -1,0 +1,124 @@
+{
+  "edition": "EDITION-019",
+  "date": "2026-10-12",
+  "built_at": "2026-10-11T22:07:14Z",
+  "stages": {
+    "validate": {
+      "ok": true,
+      "item_count": 23,
+      "problems": []
+    },
+    "state": {
+      "ok": true,
+      "prev_edition": "EDITION-018",
+      "delta": {
+        "new": 5,
+        "moved": 8,
+        "reopened": 0,
+        "still_open": 10,
+        "settled": 0,
+        "dropped": 0
+      },
+      "headline": "5 new, 8 moved, 10 carrying over",
+      "semantic_mirror": {
+        "available": true,
+        "detail": "reachable at http://localhost:6333"
+      },
+      "open_items": 57
+    },
+    "feedback": {
+      "ok": true,
+      "standing_rules": 1,
+      "rules_file": "/root/AAA/forge_work/2026-10-12-edition-019/brief-rules.md"
+    },
+    "computed_sections": {
+      "ok": true,
+      "errors": [],
+      "assertions_armed": 9,
+      "must_contain": [
+        "MODEL_CHANGE",
+        "PREDICTION_LINEAGE",
+        "SURVIVORS_AND_NEWCOMERS",
+        "LEARNING_RECEIPT",
+        "CALIBRATION_WITNESS"
+      ],
+      "snapshot": {
+        "rendered_at": "2026-10-11T22:07:15Z",
+        "edition_date": "2026-10-12",
+        "sot": {
+          "calibration": "chron/data/calibration.json",
+          "predictions": "chron/data/predictions.jsonl",
+          "lessons": "chron/data/lessons.jsonl",
+          "eurekas": "AAA/eurekas/eureka-entries.jsonl",
+          "episodes": "chron/data/episodes.jsonl",
+          "events": "AAA/scripts/chron_events.json"
+        },
+        "counts": {
+          "model_change_rows": 11,
+          "unresolved_rows": 94,
+          "survivors": 48,
+          "newcomers": 46,
+          "age_unmeasured": 0
+        },
+        "calibration": {
+          "accuracy": 0.8633333333333333,
+          "mean_brier": 0.15313435206495282,
+          "bias": -0.1808506639247619,
+          "mean_confidence": 0.6824826694085714,
+          "predictions_total": 148,
+          "effective_n": 25,
+          "quality": "SUFFICIENT",
+          "updated_at": "2026-10-10T23:15:25.864680Z"
+        },
+        "lessons": {
+          "total": 16,
+          "actionable": 2,
+          "not_actionable": 5,
+          "unspecified": 9,
+          "error_class_blind": 12,
+          "blind_share": 0.125,
+          "non_actionable_share": 0.875
+        },
+        "confidence_spread": {
+          "n": 75,
+          "mean_proposed": 0.6448,
+          "mean_calibrated": 0.5807836560599999,
+          "spread_proposed": 0.75,
+          "spread_calibrated": 0.458456104,
+          "spread_loss": 0.38872519466666666
+        },
+        "episodes": {
+          "learn_episodes": 7,
+          "lines_scanned": 173712,
+          "tail_bounded": false
+        },
+        "path_rewrites_in_quoted_text": 7,
+        "sot_errors": {}
+      }
+    },
+    "build": {
+      "ok": true,
+      "exit": 0,
+      "spec": "/root/AAA/forge_work/2026-10-12-edition-019/spec.json"
+    },
+    "seal": {
+      "ok": true,
+      "artifact": "/root/AAA/forge_work/2026-10-12-edition-019/EDITION-019.pdf",
+      "sidecar": "/root/AAA/forge_work/2026-10-12-edition-019/EDITION-019.sha256",
+      "artifact_sha256": "a24173f6c56e749354c75d05bea3b51f8db530e31b124a39000fde21dd0bfb56",
+      "content_sha256": "27d82dd0f31cf1dd9935ed79a1e1203eb198adf01e9932044386b10a4dd2cc30",
+      "gates_all_pass": true
+    },
+    "mirror": {
+      "ok": true,
+      "detail": "mirrored to hermes_brief_editions"
+    },
+    "dispatch": {
+      "state": "PRODUCED",
+      "literal": true,
+      "detail": "dry run \u2014 artifact sealed on disk, nothing pushed. Set target to actually send.",
+      "artifact": "/root/AAA/forge_work/2026-10-12-edition-019/EDITION-019.pdf"
+    }
+  },
+  "ok": true
+}

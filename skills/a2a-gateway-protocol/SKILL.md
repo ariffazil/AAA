@@ -1,6 +1,8 @@
 ---
 name: a2a-gateway-protocol
 description: 'Invoke AAA A2A Gateway (:3001) directly for cross-process agent dispatch with DID envelope, required headers, multi-agent fan-out patterns, and the mandatory verification step that catches hallucinated facts from delegated subagents. Triggers: "invoke agent X via A2A", "send message to 555-ASI / 888-APEX from CLI", "fan out multiple agents in parallel", "verify what a delegated subagent claimed about configs/code".'
+applies_gate: persistent-memory-effectiveness-gate v1.0 (staged /root/forge_work/paper2610.07782-embedding/01-canonical-rule/MEMORY-EFFECTIVENESS-GATE.md; source arXiv:2610.07782 §5/C1-C4 + §4). A2A routing ablations that quote a persistent-memory accuracy gain must satisfy clauses 1-6; route improvement without counterfactual replay evidence (Track 06.1 harness) is not publishable.
+clause_highest_risk_for_this_skill: 2 (verified invocation + consumption + decision dependence). Skill-mesh reads may carry prior session residue without consumption; counterfactual replay required to prove decision dependence.
 ---
 
 # A2A Gateway Protocol & Delegation Verification

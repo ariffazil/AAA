@@ -4,6 +4,8 @@ name: hermes-asi-intelligence
 description: "Use when assessing signals, motives, or decisions for over-interpretation."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+applies_gate: persistent-memory-effectiveness-gate v1.0 (staged /root/forge_work/paper2610.07782-embedding/01-canonical-rule/MEMORY-EFFECTIVENESS-GATE.md; source arXiv:2610.07782 §5/C1-C4 + §4). Any persistent-memory effectiveness claim produced under this skill must satisfy clauses 1-6; failure of any clause → INTERNAL HYPOTHESIS or UNVERIFIED DEMO, not a publishable effectiveness claim.
+clause_highest_risk_for_this_skill: 3 (provenance-scoped isolation). Hermes multi-session evaluation must hold model/route fixed across arms; unconditional reset between sessions destroys legitimate same-trajectory signal.
 ---
 
 # HERMES ASI Intelligence — 5 Runtime Doctrines

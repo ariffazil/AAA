@@ -83,6 +83,7 @@ pdf-federation/
 ├── SKILL.md                        ← this file
 ├── references/
 │   ├── PDF_OPERATIONS.md           ← THE single appendix: composer + verifier + cognition + styles + trust
+│   ├── typst-recipes.md            ← typst-specific patterns for one-off consumption PDFs (when NOT using manifest pipeline)
 │   ├── ROUTING.yaml                ← JOB → owner → maturity (machine-readable)
 │   ├── CAPABILITY_STATE.json       ← live flags (PRESENT/EXECUTABLE/PROVEN + dates)
 │   ├── build-manifest.v1.yaml      ← manifest schema (17 working sections)

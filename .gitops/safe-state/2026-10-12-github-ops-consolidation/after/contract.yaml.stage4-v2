@@ -1,0 +1,33 @@
+version: 2
+domain_plane: AAA
+system_of_record: GitHub
+execution_mode: capability-plane
+canonical_skill: /root/AAA/skills/github/github-ops  # v2.0.0 umbrella; verify-canonical.sh enforces
+
+allowed_operations:
+  - auth  # github-auth.md reference; F1 reversible
+  - repo-management  # github-repo-management.md; create/fork/settings/secrets/topics/archive/transfer/protect
+  - issue-triage  # github-issues.md + github-issue-to-pr.md
+  - pr-review  # github-code-review.md
+  - pr-workflow  # github-pr-workflow.md; branch/commit/merge/CI watch
+  - check-run  # gh run list/view/watch/rerun/workflow run
+  - release-stewardship  # tag + gh release create + attestation
+  - docs-maintenance  # code search + repo file ops
+  - federation-overlay  # forge-github-ops.md; multi-repo, F13-gated push authority
+
+risk_classes:
+  default: medium
+  destructive_repo_ops: high
+  push_to_main: high  # force-push, rebase, remote-branch delete require F13
+  archive_op: high
+  transfer_op: high
+
+reversible_writes_default: true
+required_witnesses:
+  - ARIFOS
+  - HUMAN
+requires_arifos_judgment: true
+requires_vault_seal: false
+execution_bridge: none
+verifier: /root/AAA/skills/github/github-ops/scripts/verify-canonical.sh
+contract_updated: 2026-10-12  # FI-008 — added auth, repo-management, pr-workflow, federation-overlay
