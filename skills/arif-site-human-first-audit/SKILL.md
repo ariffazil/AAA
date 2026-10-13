@@ -18,6 +18,10 @@ triggers:
 The deploy gate (`make verify-pages`) proves HTTP 200 only. This protocol proves
 the site is still **human**. Run the 4 lanes before ANY mutation lands.
 
+## Current rule (2026-10-13, wins over later copy-paste)
+
+`SITE_CONSTITUTION.md` and `SITE_IDENTITY.md` reads below are REPORTED 2026-08-09. Probe those paths before treating them as present. The 5-lane nav line, the `/vitals /propa/ /malaysia/` pair, the `/trust/` restore row, and the surfaces-vs-sitemap counts are REPORTED August. Do not restore `/trust/`. Do not regenerate the sitemap from that table. Do not `git checkout HEAD -- .` over `/var/www/html` or `/var/www/html/arif`. Disk that Caddy serves is what humans see. Live-only HTML is load-bearing. `make deploy` is T3. Manual ship is additive per-route, no `--delete`. Queue is `/root/work/tasks.json`.
+
 ## Read first — the two canons (non-negotiable)
 
 1. `/root/arif-fazil.com/SITE_CONSTITUTION.md` — the build law (priority order,
@@ -216,20 +220,20 @@ diff <(git -C /var/www/html/<site> ls-tree -r HEAD --name-only | sort) \
 ```
 
 **Rules:**
-- If git has files that disk doesn't → live webroot is BEHIND. Restore from git, do NOT overwrite.
-- If you see only `.git` on disk → git is the canonical truth. Use `git checkout HEAD -- .` to restore.
+- If git has files that disk doesn't → compare first. Live-only HTML that Caddy serves is load-bearing. Do not restore over `/var/www/html` or `/var/www/html/arif`.
+- If you see only `.git` on disk → stop. `git checkout HEAD -- .` is a 2026-08 scar. Do not run it over `/var/www/html` or `/var/www/html/arif`. Disk that Caddy serves is what humans see.
 - If you're the SOLE author of new content → fine, but commit to git FIRST, then rsync to live.
 - **Recovery when you've already bulldozed:**
   ```bash
   cd /var/www/html/<site>
-  git checkout HEAD -- .
+  # HISTORICAL SCAR. Do not run: git checkout HEAD -- .
   chown -R www-data:www-data .
   chmod 644 index.html
   curl -sfL -o /dev/null -w "Probe: %{http_code}\n" https://<site>/
   ```
   Then probe ALL routes — don't assume git restored everything intact.
 
-**The cardinal rule:** *The file you see on disk is not always the truth. Git is the truth. Disk is just the deployment.*
+**The cardinal rule (2026-10-13):** *Disk that Caddy serves is what humans see. Git is a source copy. Do not `git checkout HEAD -- .` over `/var/www/html` or `/var/www/html/arif`. A hashed file a live page still names is load-bearing.*
 
 ## Pitfalls
 
@@ -245,6 +249,4 @@ diff <(git -C /var/www/html/<site> ls-tree -r HEAD --name-only | sort) \
   See "Chrome-creep drift pattern" above for the full 5 Rein + 3-layer fix.
 - **Machine files must be REAL files** — Caddy `try_files` serves a real file
   when it exists; the SPA catch-all only fires on missing files.
-- **Deploy ≠ verify-pages** — `make deploy` has a stricter verify-surfaces
-  stage that may fail on catalog drift unrelated to your change; use the
-  manual rsync path + report drift separately (see arif-sites-ops).
+- **Deploy ≠ verify-pages** — `make deploy` is T3. The manual path is additive per-route, no `--delete`. Report catalog drift separately (see arif-sites-ops).

@@ -13,6 +13,10 @@ Turn an essay paste from Arif into a live `/words/writing/<slug>/` page on
 arif-fazil.com. Class of task: any time Arif writes a personal essay in chat
 and says "publish" / "under words" / "publish on my site".
 
+## Current rule (2026-10-13, wins over later copy-paste)
+
+`rsync -a dist/ /var/www/html/arif/` and `systemctl reload caddy` below are historical scars. Ship the shells that name the NEW hash, plus `rsync -av --update` of the new assets. No `--delete`. No Caddy reload. A full-tree rsync overwrites live-only HTML. Count live HTML that names a hash the new dist lacks. `--delete` only after that count is zero. On 2026-10-13 that count was 74. Re-count. Live vhost is `/etc/caddy/vhosts/arif-fazil.com.conf`. Queue is `/root/work/tasks.json`.
+
 ## Template Selection (read this FIRST — grouped 2026-08-11)
 
 arif-fazil.com has **three distinct writing surfaces**, each with its own
@@ -151,8 +155,9 @@ npm run build 2>&1 | tail -10
 NEW_BUNDLE=$(ls dist/assets/index-*.js | head -1 | xargs basename)
 echo "NEW BUNDLE: $NEW_BUNDLE"
 
-# Mirror dist → live webroot (NOT public/, the build pipeline already mirrors)
-rsync -a dist/ /var/www/html/arif/
+# HISTORICAL SCAR. Do not full-tree rsync. Copy the shells that name the NEW hash,
+# plus: rsync -av --update dist/assets/ /var/www/html/arif/assets/
+# Do not add --delete. Re-count live HTML that names a hash the new dist lacks.
 ```
 
 **The trap.** Without a static shell, the essay is **SPA-only**. A
@@ -249,7 +254,7 @@ try_files /makcikgpt-md{path}.html /makcikgpt-md{path}/index.html /index.html
 2. Use line-specific sed: `sed -i '<LINE_NUM>s|old|new|' /etc/caddy/Caddyfile`
 3. Verify: `sed -n '<LINE_NUM-5>,<LINE_NUM+5>p' /etc/caddy/Caddyfile`
 4. Validate: `caddy validate --config /etc/caddy/Caddyfile`
-5. Reload: `systemctl reload caddy`
+5. Reload is T3. Do not run `systemctl reload caddy`.
 
 **Post-fix behavior:** Any `.html` file dropped into `/var/www/html/arif/makcikgpt-md/` is immediately visible to browsers. No SPA registration needed. Landing page (`/world/makcikgpt/`) still serves the SPA shell (separate handler above the article handler).
 
@@ -473,7 +478,9 @@ TITLE="Your Article Title"
 # 4. Rebuild clean:
 rm -rf dist node_modules/.vite
 npm run build
-rsync -a --exclude='makcikgpt-md/index.html' dist/ /var/www/html/arif/
+# HISTORICAL SCAR. Do not full-tree rsync dist/ onto /var/www/html/arif/
+# Copy the shells that name the NEW hash, plus rsync -av --update of new assets.
+# Do not add --delete. Re-count live HTML that names a hash the new dist lacks.
 
 # 5. Verify all three gates (curl + browser + landing page)
 ```
@@ -596,8 +603,8 @@ text-only agents would have a black hole.
   the trilogy returned 404 until static shells were copied to the correct
   root. **Deploy recipe:**
   ```bash
-  # WRONG (404):
-  rsync -a dist/ /var/www/html/arif/
+  # WRONG, and also a wipe risk (404 plus live-only HTML overwrite):
+  # HISTORICAL SCAR. Do not run: rsync -a dist/ /var/www/html/arif/
   # Static shells at /var/www/html/arif/words/writing/<slug>/ — NOT SERVED
 
   # RIGHT (200):

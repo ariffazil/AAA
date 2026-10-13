@@ -7,6 +7,10 @@ description: Operate arif-fazil.com — add/route pages, deploy through the arif
 
 Operating the arif-fazil.com Ψ human surface: how pages are served, how to add one, the deploy gate, and 404 diagnosis.
 
+## Current rule (2026-10-13, wins over later copy-paste)
+
+Later `caddy reload`, `systemctl reload caddy`, `make deploy`, `deploy-site.sh --apply`, and `rsync -a dist/ /var/www/html/arif/` are historical scars. Live vhost file is `/etc/caddy/vhosts/arif-fazil.com.conf`. `/etc/caddy/Caddyfile` only imports vhosts. Ship with `arifos-site-patch-without-caddy-reload`: additive per-route, `rsync -av --update` of new assets, no `--delete`, no reload. A full-tree rsync without `--delete` still overwrites live-only HTML. Count live HTML that names a hashed file the new dist lacks. `--delete` only after that count is zero. On 2026-10-13 that count was 74. Re-count. August 5-lane nav, `/propa/` paired with `/malaysia/`, sitemap loc counts, and "a deploy will fix it" are REPORTED August. October front door is nine rooms. `/propa/` 301s to `/vitals/`. `/malaysia/` 308s to `/wealth/malaysia/`. Do not reverse those redirects. Do not edit Caddy. Queue is `/root/work/tasks.json`.
+
 ## Human-First Doctrine (LEAD — applies to ALL arif-fazil.com surfaces, 2026-08-11)
 
 **Arif, verbatim:** *"The sites must be bijaksana dan genius and more clarity, serve human first for human cognitive limit and then we do all agentic backend as needed for future agentic web."*
@@ -79,7 +83,7 @@ Fix options: build the static shell (`public/<path>/index.html` → rebuild → 
 2. For a static shell: put `index.html` (+ assets) in `public/<route>/`, `npm run build` → mirror lands in `dist/<route>/`.
 3. For a Vite sub-app: set `base: '/<route>/'`, build, copy `dist/*` (index.html + assets/) into `public/<route>/`.
 4. Gate: `bash scripts/verify-pages.sh` — must pass. Pre-existing gaps: declare them, don't silently bypass.
-5. `scripts/deploy-site.sh arif-fazil.com --dry-run` → `--apply`. Verify live. Receipt in `receipts/<agent-id>/`.
+5. `scripts/deploy-site.sh arif-fazil.com --dry-run` only. `--apply` is T3. Ship the one route with additive rsync, no `--delete`. Verify live. Receipt in `receipts/<agent-id>/`.
 6. Backup before replacing a live page: keep `index.html.bak-*` in place.
 
 ## User doctrine (Arif)
@@ -169,7 +173,7 @@ has `frame-ancestors 'self'` but no `frame-src` directive.
 ```
 Content-Security-Policy "...; frame-src https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'self'; ..."
 ```
-Then reload: `sudo systemctl reload caddy`. Verify: browser inspect shows iframe with
+Caddy reload is T3. Do not run `sudo systemctl reload caddy`. Verify: browser inspect shows iframe with
 `src="https://www.youtube.com/embed/..."` and Play button visible.
 
 **Pattern:** When adding ANY external embed (YouTube, Vimeo, Spotify, Twitter/X),
@@ -221,7 +225,7 @@ make deploy
   → sync-aaa     (rsync /root/AAA/dist/ → sites/arif-fazil.com/dist/aaa/)
   → build        (8 prebuild generators + tsc + vite + render-propa + inject-panel + generate-discovery)
   → verify-pages (content gate, runs again)
-  → reload       (caddy validate + systemctl reload caddy)
+  → reload       (HISTORICAL. caddy validate + systemctl reload caddy is T3. Do not run.)
 ```
 
 `verify-surfaces.cjs` is the **strictest** gate — it reads `surfaces.json` and
@@ -568,7 +572,7 @@ every animation guarded by `@media (prefers-reduced-motion:reduce){animation:non
   `rsync -a --delete public/ /var/www/html/arif/` (would delete live surfaces not in
   `public/` — `/999/verify`, `/work/proof`, `/earth/` shells), copied a non-existent
   `world-index.html`, and rsynced `public/` instead of `dist/`. Never run a sibling's
-  deploy script; use `scripts/deploy-site.sh` or the documented per-route rsync (no `--delete`).
+  deploy script. Use additive per-route rsync (no `--delete`). `deploy-site.sh --apply` is T3.
 
 ## Orphaned CSS classes — markup has classes, stylesheet is gone (verified 2026-08-07)
 
@@ -768,12 +772,12 @@ References block convention: arXiv/linked citations as superscript markers `<sup
   | 3 | `src/data/essays.json` | `dest.path` matching slug | `/words/writing/` index omits the essay (renderer can't link it) |
   | 4 | `src/data/essays/articles.json` | slug + title + date + categories + hasContent + isDirectPublication | Same as #2 (articles.json is the SPA bundle inclusion registry; essays.json is the listing-page registry) |
 
-  The cleanest publish workflow: edit `.ts` → edit `index.ts` → edit `essays.json` → edit `articles.json` → `npm run build` → `rsync -a dist/ /var/www/html/arif/` (full site, not just `/words/writing/`) → verify with the 5-gate check. The "5th file" of the chain is the static shell `public/words/writing/<slug>/index.html` + `index.md` — see SPA-only pitfall below for why this is mandatory.
+  The cleanest publish workflow: edit `.ts` → edit `index.ts` → edit `essays.json` → edit `articles.json` → `npm run build` → copy the shells that name the NEW hash, plus `rsync -av --update` of the new assets (not a full-tree `rsync -a dist/`). Do not add `--delete`. Count live HTML that names a hash the new dist lacks. `--delete` only after that count is zero. On 2026-10-13 that count was 74. Re-count. Then verify with the 5-gate check. The "5th file" of the chain is the static shell `public/words/writing/<slug>/index.html` + `index.md` — see SPA-only pitfall below for why this is mandatory.
 
 - **`sitemap.xml` stale drift (verified 2026-08-07).** Live sitemap has 46 `<loc>` entries; site has 140+ pages including 15 essays in `/words/writing/`. Zero essay URLs in sitemap — the static essay shells and markdown mirrors are crawler-invisible via sitemap even though they're discoverable via llms.txt + landing pages. `make deploy` runs the `verify-surfaces.cjs` probe that catches SOME drift but NOT sitemap-vs-essays mismatch. Diagnose: `curl -s https://arif-fazil.com/sitemap.xml | grep -c "<loc>"` (count) vs `curl -s https://arif-fazil.com/words/writing/llms.txt | grep -c "^- \["` (essay count). If sitemap count << llms.txt essay count, sitemap is stale. Fix: add a generator to prebuild that scans `public/words/writing/<slug>/index.html` and emits `<loc>` entries (deferred — separate day's work). Until fixed, agents using sitemap as a discovery path will MISS the essays entirely.
 
 - **FRAME recovery from quarantine (verified 2026-08-07).** During the repo audit session, `/root/FRAME/` source was deleted (still alive in `/opt/frame/app/` runtime). Recovery: check `/root/_quarantine_FRAME_<date>/` first, `mv` back to `/root/FRAME/`, content parity verified by `diff <(ls src/frame_organ/) <(ls /opt/frame/app/frame_organ/)`. Then `git push` to `ariffazil/FRAME` (private, gh repo create + push). Never assume a deleted source is unrecoverable — the quarantine dir holds 7-day grace copies per F1 doctrine. Lesson: when executing F1-authorized deletions, always check quarantine FIRST; the recovery path may be one `mv` away.
-- **SPA bundle rsync — full-site, not just `/words/writing/` (added 2026-08-07).** The per-slug SPA shell at `/words/writing/<slug>/` references a hashed bundle (`assets/index-XXXXXXX.js`). If you only rsync `dist/words/writing/` to live, the new shell ships but still points at the OLD bundle hash from the previous build. That old bundle doesn't have the new slug → 404. Fix: `rsync -a dist/ /var/www/html/arif/` (full site), then verify: `curl -s <slug-url> | grep index-` should match `ls dist/assets/index-*.js`. Both shell and bundle land in one pass. Full detail in `references/essay-publish-workflow.md`.
+- **SPA bundle rsync — full-site, not just `/words/writing/` (added 2026-08-07).** The per-slug SPA shell at `/words/writing/<slug>/` references a hashed bundle (`assets/index-XXXXXXX.js`). If you only rsync `dist/words/writing/` to live, the new shell ships but still points at the OLD bundle hash from the previous build. That old bundle doesn't have the new slug → 404. Fix: copy the shells that name the NEW hash, plus `rsync -av --update` of the new assets. Do not full-tree rsync. Do not add `--delete`. Count live HTML that names a hash the new dist lacks. `--delete` only after that count is zero. On 2026-10-13 that count was 74. Re-count. Then verify: `curl -s <slug-url> | grep index-` should match `ls dist/assets/index-*.js`. Both shell and bundle land in one pass. Full detail in `references/essay-publish-workflow.md`.
 
 - **Three-layer build-then-hand-write pipeline traps (verified 2026-08-07).** When the writing surface has both (a) a build-time generator, (b) a live `/var/www/html/arif/` webroot mirror, AND (c) a source `/root/arif-fazil.com/sites/arif-fazil.com/public/words/writing/` mirror, edits to layer (c) won't reach layer (b) unless (b) is also patched. Build pipeline regenerates (c) from `.ts` files, then `copy-static-html.js` mirrors (c) to `dist/`, then `rsync` mirrors `dist/` to (b). Three sequential steps, each can independently fail. Best practice for this surface: write directly to (b) for verification, then mirror back to (c) and trust the next `npm run build` to keep them in sync if you haven't changed the .ts source.
 - **Two .ts files with the same `slug:` field → renderer uses the first by filename length, ignores the second.** Always check that a unique slug is used; if the user gives a long slug, search the dir for any other essay claiming it.

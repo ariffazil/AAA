@@ -44,6 +44,8 @@ DITEMPA BUKAN DIBERI.
 
 **Auth**: `Authorization: Bearer $ZAI_API_KEY`.
 
+> **[LANE CAVEAT 2026-10-14]** `/api/paas/v4/audio/transcriptions` is the PAYG/general-API surface, NOT the Coding Plan lane. The coding key passes auth (live-probed: 1214 file-format error, not 401) but **billing attribution is UNVERIFIED** — GLM-ASR is not part of the Coding Plan. Verify quota ledger at z.ai/manage-apikey/billing after first real transcription; if it 402/403s, a separate PAYG key (`ZAI_PAYG_API_KEY`, not yet provisioned) is required.
+
 **Model**: `glm-asr-2512` (production) — based on GLM-ASR-Nano backbone.
 
 ## Hard Constraints

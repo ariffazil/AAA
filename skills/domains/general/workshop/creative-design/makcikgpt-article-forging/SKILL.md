@@ -34,6 +34,10 @@ ecology_state: WARM
 
 > Strip jargon. Tanya "niat siapa?". Connect institutional decay to individual survival moves.
 
+## Current rule (2026-10-13, wins over later copy-paste)
+
+Do not `rsync -av dist/ /var/www/html/arif/`. Do not `sudo caddy reload`. Do not `deploy-site.sh --apply`. Those steps below are historical scars. Ship one article path, additive, no `--delete`, no Caddy reload. A full-tree rsync overwrites live-only HTML. Queue is `/root/work/tasks.json`.
+
 ---
 
 ## What This Is
@@ -282,18 +286,19 @@ rsync -av public/makcikgpt-md/ /var/www/html/arif/makcikgpt-md/
 ### Step 2: Sync built dist to webroot
 
 ```bash
-rsync -av dist/ /var/www/html/arif/
+# HISTORICAL SCAR. Do not run: rsync -av dist/ /var/www/html/arif/
+# Copy the one article path. rsync -av --update of new assets only.
+# Do not add --delete.
 ```
 
 ### Step 3: Reload Caddy
 
 ```bash
-sudo caddy reload --config /etc/caddy/Caddyfile
+# HISTORICAL SCAR. Caddy reload is T3. Do not run:
+# sudo caddy reload --config /etc/caddy/Caddyfile
 ```
 
-**Do NOT** use `deploy-vps.sh` — it validates registry schema which may fail with
-`schema_version` mismatch. `scripts/deploy-site.sh arif-fazil.com --apply` is the
-reliable alternative but manual rsync (steps 1-3) is safest.
+**Do NOT** use `deploy-vps.sh`. `deploy-site.sh --apply` is T3, not the safest path. Steps 2 and 3 above are scars. Use the 2026-10-13 rule at the top.
 
 ### Cloudflare Pages alternative (slower)
 
