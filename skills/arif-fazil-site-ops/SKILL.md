@@ -28,6 +28,10 @@ Sovereign surface of the arifOS federation. Every edit here is governed by
 `/root/arif-fazil.com/canon/file-authority.yaml` (FAIL-CLOSED) and the
 deploy gate in `/root/AGENTS.md` ("If the gate fails → HOLD").
 
+## Current rule (2026-10-13, wins over later copy-paste)
+
+`caddy reload`, `systemctl reload caddy`, `make deploy`, `deploy-site.sh --apply`, and asset `--delete` below are historical scars. The current static-HTML ship is the direct-edit flow later in this file: edit `public/<path>/index.html`, `rsync -av` that one path, curl-grep, no `--delete`, no reload. Live vhost is `/etc/caddy/vhosts/arif-fazil.com.conf`. The August table that sends `/gold/` `/oil/` `/gas/` to `/world/economics/{slug}/` is REPORTED 2026-08-12. On 2026-10-13 origin oil and gas bytes equalled `/var/www/html/arif/{oil,gas}/index.html`. Do not reload. Do not copy world/economics over the live page. Re-probe. Do not delete `/root/arif-sites`. Queue is `/root/work/tasks.json`. The good pattern is "Direct-edit flow for static HTML".
+
 ## Topology (verified 2026-08-06)
 
 | Layer | Path |
@@ -76,8 +80,7 @@ this file and re-injecting kills their work.
    `index.html` first, e.g. `index.html.bak-<timestamp>-pre`), then `npm run build` in
    `sites/arif-fazil.com` so the mirror lands it in `dist/`.
 4. **Gate**: `bash scripts/verify-pages.sh` — all pages must pass or HOLD.
-5. **Deploy**: `scripts/deploy-site.sh arif-fazil.com --dry-run` (read-only JSON summary) →
-   `--apply` (atomic, archives, rollback on failure, writes `build-info.json` + receipt).
+5. **Deploy**: `scripts/deploy-site.sh arif-fazil.com --dry-run` only. `--apply` is T3. For one static page use the direct-edit rsync later in this file (no `--delete`, no reload).
 6. **Verify live**: curl the path, check HTTP 200, browser-render if interactive.
 
 ### Proposal-zone proposal lifecycle (the 3-file pattern)
@@ -182,7 +185,7 @@ assert old in c, "pattern not found — print c to see what shifted"
 open(path, 'w').write(c.replace(old, new, 1))
 PYEOF
 sudo caddy validate --config /etc/caddy/Caddyfile   # Always validate after edit
-sudo systemctl reload caddy                         # Reload preserves peers (never restart)
+# HISTORICAL SCAR. Do not run: sudo systemctl reload caddy
 ```
 **Always back up Caddyfile first** to `/root/backups/Caddyfile-<timestamp>-pre-<reason>.bak`. Single `cp` reverts.
 
@@ -294,7 +297,7 @@ If both report a real 3-digit code, the path is fine. The gate printed garbage.
 The `arif-fazil.com` Caddyfile is complex — different routes point to different roots.
 **Some routes serve from `/var/www/html/<slug>/` (old paths), some from `/var/www/html/arif/<slug>/` (new paths), and some from `/var/www/html/world/<slug>/` (legacy world root).** If you edit the wrong one, nothing changes live even after Caddy reload.
 
-**Verified mapping (2026-08-12 — CORRECTED):**
+**REPORTED 2026-08-12. Stale as of 2026-10-13.** Re-probe before acting. Do not reload Caddy. Do not copy `/world/economics/` over the live oil or gas page. The table below is the August scar:
 
 | Route | Actual root on disk | Notes |
 |---|---|---|
@@ -433,7 +436,7 @@ To move an agent_shells path to a new canonical URL while preserving backward co
 
 5. **Live sync** — `rsync -av dist/<new>/ /var/www/html/arif/<new>/` (no `--delete`) then `cp dist/<old>/index.html /var/www/html/arif/<old>/index.html` (keep old serving same content during transition window).
 
-6. **Reload Caddy** — `sudo systemctl reload caddy`. Then `curl -sI -L https://arif-fazil.com/<old>/` should 308 → `<new>/` → 200.
+6. **Reload Caddy** is T3. Do not run `sudo systemctl reload caddy`. The `/vitals/` → `/propa/` direction in this recipe is the August scar. October is the reverse. Do not reverse the live redirects.
 
 ### MakcikGPT article publishing — FOUR registers + generator (2026-08-09)
 
@@ -1131,7 +1134,7 @@ When writing a proposal to update a DERIVED surface, include a `manifest.json`:
   "proposed_by": "<agent-id>",
   "authority_class": "PROPOSAL",
   "actions": [{ "proposal": "A", "target": "...", "target_class": "DERIVED", ... }],
-  "deploy_command": "make deploy",
+  "deploy_command": "HISTORICAL. make deploy is T3. Do not run.",
   "deploy_prerequisites": ["make verify", "F13 lease from ARIF", "A-FORGE apply"],
   "verification": ["curl ...", "make verify-pages"]
 }

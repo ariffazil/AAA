@@ -10,6 +10,9 @@
 **/*.pem
 !**/*_public.pem
 .env
+*.env
+**/*.env
+auth/*.env
 # === EXTENDED CONTAINMENT (2026-09-04 zen sweep) ===
 .env.*
 **/.env.*
@@ -208,3 +211,15 @@ eval/aaa-gold/
 # 2026-10-04 FI-003: deletion witness may contain credential-bearing stash dumps
 reports/deletion-witness-*/
 skills/.pre-promote-*-backup-*/
+
+# ── 2026-10-13: P0 redis credential moved to /root/.secrets/; symlink stays in repo ──
+# Original P0: /root/AAA/auth/redis_url.env held live Redis password in working tree,
+# was untracked, and `git check-ignore` returned exit 1 (`.env` rule did not match `.env`
+# suffix; `.env.*` rule missed). A blind `git add .` would have committed the credential.
+# Fix: file moved to /root/.secrets/redis_url.env (mode 600); AAA/auth/ now holds a symlink.
+# This block makes both the symlink and the un-pinned pattern explicit.
+auth/redis_url.env
+**/redis_url.env
+**/*.env
+!.env.example
+!.env.sample

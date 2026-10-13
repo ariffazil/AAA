@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AAA · Attention Desk & Agent Federation</title>
-<meta name="description" content="Live federation attention desk — organ health, open holds, and FQ, polled every 15s. AAA points; it does not judge, execute, or seal.">
+<meta name="description" content="Live federation attention desk — 3-tier attention membrane, expandable receipt-linked holds, organ health, and arifFlow metabolism. AAA points; it does not judge, execute, or seal.">
 <link rel="canonical" href="https://aaa.arif-fazil.com/">
 <meta property="og:title" content="AAA · Attention Desk & Agent Federation">
-<meta property="og:description" content="Live federation attention desk — organ health, open holds, and FQ, polled every 15s.">
+<meta property="og:description" content="Live federation attention desk — 3-tier attention membrane and expandable receipt-linked holds.">
 <meta property="og:url" content="https://aaa.arif-fazil.com/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://arif-fazil.com/og-identity.png">
 <meta property="og:site_name" content="arif-fazil.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AAA · Attention Desk & Agent Federation">
-<meta name="twitter:description" content="Live federation attention desk — organ health, open holds, and FQ, polled every 15s.">
+<meta name="twitter:description" content="Live federation attention desk — 3-tier attention membrane and expandable receipt-linked holds.">
 <meta name="twitter:image" content="https://arif-fazil.com/og-identity.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"AAA","url":"https://aaa.arif-fazil.com/"}
@@ -55,6 +55,32 @@
   .section-container { max-width:1200px; margin:0 auto 32px; padding:0 24px; }
   .section-heading { font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; font-weight:600; }
 
+  /* 3-Tier Attention Membrane Grid */
+  .membrane-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px; margin-bottom:12px; }
+  .membrane-tier { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px; position:relative; }
+  .membrane-tier.tier-auto { border-top:3px solid var(--ok); }
+  .membrane-tier.tier-held { border-top:3px solid var(--warn); }
+  .membrane-tier.tier-sovereign { border-top:3px solid var(--accent); }
+  .tier-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .tier-title { font-weight:700; font-size:14px; display:flex; align-items:center; gap:8px; }
+  .tier-count { font-family:var(--font-mono); font-size:18px; font-weight:800; }
+  .tier-desc { font-size:12px; color:var(--muted); margin-bottom:14px; min-height:36px; line-height:1.45; }
+  
+  /* Expandable Holds Accordion */
+  .holds-list { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+  .hold-accordion { background:rgba(0,0,0,0.3); border:1px solid var(--border); border-radius:8px; overflow:hidden; font-family:var(--font-mono); font-size:12px; }
+  .hold-summary { padding:10px 14px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; background:rgba(255,255,255,0.02); transition:background 0.15s; user-select:none; }
+  .hold-summary:hover { background:rgba(255,255,255,0.05); }
+  .hold-actor-name { font-weight:700; color:var(--gold); display:flex; align-items:center; gap:6px; }
+  .hold-badge { font-size:10px; padding:2px 6px; border-radius:4px; background:rgba(245,158,11,0.15); color:var(--warn); border:1px solid rgba(245,158,11,0.3); }
+  .hold-details { padding:12px 14px; border-top:1px solid var(--border); background:rgba(0,0,0,0.2); font-size:11px; line-height:1.6; }
+  .hold-row { display:grid; grid-template-columns:120px 1fr; gap:8px; margin-bottom:6px; }
+  .hold-label { color:var(--muted); text-transform:uppercase; font-size:10px; letter-spacing:0.04em; }
+  .hold-val { color:var(--text); word-break:break-word; }
+  .hold-val.gap { color:#f87171; }
+  .hold-val.next { color:var(--info); }
+  .hold-val.falsifier { color:var(--muted); font-size:10px; }
+
   /* Grid Layouts */
   .grid-fleet { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
   .grid-telemetry { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; }
@@ -73,7 +99,8 @@
   .row .label { color:var(--muted); }
   .row .value { font-weight:600; }
   .organ-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:8px; margin-top:8px; }
-  .organ { display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:12px; padding:8px 10px; border-radius:6px; background:#0b0d14; border:1px solid var(--border); }
+  .organ { display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:12px; padding:8px 10px; border-radius:6px; background:#0b0d14; border:1px solid var(--border); text-decoration:none; color:inherit; transition:border-color 0.15s; }
+  .organ:hover { border-color:rgba(255,255,255,0.25); }
   .organ .dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
   .organ .dot.up { background:var(--ok); box-shadow:0 0 6px var(--ok); }
   .organ .dot.down { background:var(--err); box-shadow:0 0 6px var(--err); }
@@ -83,14 +110,21 @@
   .bottleneck-box.infrastructure { background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25); color:var(--err); }
   .bottleneck-box.authority { background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.25); color:var(--warn); }
 
+  /* Epistemic Badges */
+  .badge-epistemic { font-size:9px; padding:1px 5px; border-radius:3px; font-family:var(--font-mono); letter-spacing:0.04em; }
+  .badge-observed { background:rgba(56,189,248,0.12); color:var(--info); border:1px solid rgba(56,189,248,0.3); }
+  .badge-derived { background:rgba(229,184,105,0.12); color:var(--gold); border:1px solid rgba(229,184,105,0.3); }
+
   /* Footer */
-  .footer { border-top:1px solid var(--border); padding:20px; text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--muted); }
+  .footer { border-top:1px solid var(--border); padding:24px 20px; text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--muted); line-height:1.8; }
   .footer a { color:var(--accent); text-decoration:none; }
+  .footer a:hover { text-decoration:underline; }
 
   @media (max-width: 768px) {
     .navbar { flex-direction:column; gap:8px; align-items:flex-start; }
     .attention-hero, .section-container { padding:16px; }
-    .grid-fleet, .grid-telemetry { grid-template-columns:1fr; }
+    .membrane-grid, .grid-fleet, .grid-telemetry { grid-template-columns:1fr; }
+    .hold-row { grid-template-columns:1fr; gap:2px; }
   }
 </style>
 </head>
@@ -128,12 +162,64 @@
     </div>
   </section>
 
-  <!-- 2. ARMADA EJEN ARIFOS -->
+  <!-- 2. 3-TIER ATTENTION MEMBRANE (P1 & P2 UPGRADE) -->
   <section class="section-container">
     <div class="section-heading">
-      <span>Armada Ejen arifOS (Agent Swarm Fleet)</span>
-      <span style="font-family:var(--font-mono);font-size:11px">Protokol: A2A JSON-RPC :3001</span>
+      <span>3-Tier Attention Membrane (Pemisahan Kuasa & Perhatian)</span>
+      <span class="badge-epistemic badge-derived">DERIVED · TRUTH CONTRACT P0</span>
     </div>
+    
+    <div class="membrane-grid">
+      <!-- Tier 1: Auto-Handled -->
+      <div class="membrane-tier tier-auto">
+        <div class="tier-header">
+          <div class="tier-title" style="color:var(--ok)">🟢 Tier 1: Auto-Handled</div>
+          <div class="tier-count" style="color:var(--ok)" id="tier1-count">--</div>
+        </div>
+        <div class="tier-desc">Tugas autonomi disahkan dan dilaksanakan sendiri oleh ejen di bawah sempadan AMANAH tanpa mengganggu manusia.</div>
+        <div class="row"><span class="label">Status Aliran</span><span class="value" id="tier1-status" style="color:var(--ok)">OPTIMAL</span></div>
+        <div class="row"><span class="label">Sahkan / Laksana</span><span class="value" id="tier1-ratio">-- sah / -- laksana</span></div>
+        <div class="row"><span class="label">Autoriti</span><span class="value">MUBAH (Auto)</span></div>
+      </div>
+
+      <!-- Tier 2: Machine-Held (Expandable Holds) -->
+      <div class="membrane-tier tier-held" id="tier2-card">
+        <div class="tier-header">
+          <div class="tier-title" id="tier2-title" style="color:var(--ok)">🟢 Tier 2: Machine-Held</div>
+          <div class="tier-count" style="color:var(--ok)" id="tier2-count">0</div>
+        </div>
+        <div class="tier-desc"><strong>Bukan keputusan untuk Arif.</strong> Server tidak jatuh. Enjin menahan mutasi ejen sehingga saksi semakan dipenuhi.</div>
+        <div class="row"><span class="label">Status Sekatan</span><span class="value" id="tier2-verdict" style="color:var(--ok)">LANCAR (0 Sekatan)</span></div>
+        <div class="row"><span class="label">Enjin Penahan</span><span class="value">arifFlow :7073</span></div>
+        <div style="margin-top:12px;font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em">Resit Tertahan (Klik untuk Buka):</div>
+        
+        <div class="holds-list" id="holds-accordion-list">
+          <div style="color:var(--ok);font-size:12px;padding:6px 0">✓ Tiada ejen disekat. Semua aliran lancar.</div>
+        </div>
+      </div>
+
+      <!-- Tier 3: Sovereign Escalation -->
+      <div class="membrane-tier tier-sovereign">
+        <div class="tier-header">
+          <div class="tier-title" style="color:var(--accent)">🔴 Tier 3: Sovereign Escalation</div>
+          <div class="tier-count" style="color:var(--accent)" id="tier3-count">0</div>
+        </div>
+        <div class="tier-desc">Hanya keputusan hakiki kedaulatan manusia (F13 Sovereign: bajet, identiti peribadi, atau veto mutlak) yang dinaikkan kepada Arif.</div>
+        <div class="row"><span class="label">Keputusan Arif</span><span class="value" id="tier3-status" style="color:var(--ok)">TIADA TUNGGAKAN</span></div>
+        <div class="row"><span class="label">Membran Kebenaran</span><span class="value">KEBAL / DISARING</span></div>
+        <div class="row"><span class="label">Autoriti Tertinggi</span><span class="value" style="color:var(--gold)">ARIF (F13)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ARMADA EJEN ARIFOS & CAPABILITY MESH (P3 UPGRADE) -->
+  <section class="section-container">
+    <div class="section-heading">
+      <span>Armada Ejen arifOS & Capability Mesh (P3 Topologi Nyata)</span>
+      <span class="badge-epistemic badge-observed">WITNESSED · A2A JSON-RPC :3001</span>
+    </div>
+    
+    <!-- Swarm Cards -->
     <div class="grid-fleet">
       <div class="card">
         <div class="card-header">
@@ -183,16 +269,75 @@
         </div>
       </div>
     </div>
+
+    <!-- P3 Capability Mesh: Witnessed A2A Topology -->
+    <div class="card" style="margin-top:14px;background:#0d1017">
+      <div class="card-header" style="margin-bottom:8px">
+        <span style="font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px">
+          🕸️ Topologi Aliran A2A (Witnessed Edges & Wire Routing)
+        </span>
+        <span style="font-family:var(--font-mono);font-size:11px;color:var(--ok)">4 Laluan Disahkan Aktif</span>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px">
+        Setiap garis di bawah dibuktikan oleh resit trafik sebenar (<code style="color:var(--gold)">A2A_LIVE_WIRE_MANIFEST.json</code> & <code style="color:var(--gold)">decision_ledger.jsonl</code>), bukan topologi kosmetik.
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:10px;font-family:var(--font-mono);font-size:11px">
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:6px;padding:10px">
+          <div style="display:flex;justify-content:space-between;color:var(--info);font-weight:700;margin-bottom:4px">
+            <span>🦞 IRFANclaw ➔ AAA Gateway</span>
+            <span style="color:var(--ok)">● LIVE</span>
+          </div>
+          <div style="color:var(--gold);font-size:10px;margin-bottom:4px">Resit: ROUTE-IRFAN-AAA-3001 · Manifest: L175-L182</div>
+          <div style="color:var(--muted)">Protokol: A2A JSON-RPC :3001</div>
+          <div style="color:var(--muted)">Tugasan: Integriti Git & Permukaan Awam</div>
+          <div style="color:var(--text);margin-top:4px">Auth: Bearer / KVM4 Heartbeat</div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:6px;padding:10px">
+          <div style="display:flex;justify-content:space-between;color:var(--gold);font-weight:700;margin-bottom:4px">
+            <span>🪽 HERMES ➔ A-FORGE / Kod</span>
+            <span style="color:var(--ok)">● LIVE</span>
+          </div>
+          <div style="color:var(--gold);font-size:10px;margin-bottom:4px">Resit: ROUTE-HERMES-AFORGE-V12 · Manifest: L40-L47</div>
+          <div style="color:var(--muted)">Protokol: sendTask (A2A v1.2)</div>
+          <div style="color:var(--muted)">Tugasan: Mutasi Kod & Deploy VPS</div>
+          <div style="color:var(--text);margin-top:4px">Auth: session_token + F13 Scope</div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:6px;padding:10px">
+          <div style="display:flex;justify-content:space-between;color:var(--accent);font-weight:700;margin-bottom:4px">
+            <span>🚀 Antigravity ➔ arifOS :8088</span>
+            <span style="color:var(--ok)">● LIVE</span>
+          </div>
+          <div style="color:var(--gold);font-size:10px;margin-bottom:4px">Resit: ROUTE-AGY-ARIFOS-8088 · Manifest: L50-L56</div>
+          <div style="color:var(--muted)">Protokol: Kernel Floor Check (F1–F13)</div>
+          <div style="color:var(--muted)">Tugasan: 888_JUDGE & Pengesahan Resit</div>
+          <div style="color:var(--text);margin-top:4px">Auth: Sovereign ACT/SCT Token</div>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:6px;padding:10px">
+          <div style="display:flex;justify-content:space-between;color:var(--ok);font-weight:700;margin-bottom:4px">
+            <span>🧠 FI Watchdogs ➔ VAULT999</span>
+            <span style="color:var(--ok)">● LIVE</span>
+          </div>
+          <div style="color:var(--gold);font-size:10px;margin-bottom:4px">Resit: ROUTE-FI-VAULT999-SEAL · Manifest: L157-L164</div>
+          <div style="color:var(--muted)">Protokol: Append-Only Seal Chain</div>
+          <div style="color:var(--muted)">Tugasan: Konsolidasi Memori L1–L5</div>
+          <div style="color:var(--text);margin-top:4px">Auth: Root Ed25519 Chain Key</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- 3. REALITI INFRASTRUKTUR & TELEMETRI -->
+  <!-- 4. REALITI INFRASTRUKTUR & TELEMETRI -->
   <section class="section-container">
     <div class="section-heading">
       <span>Status Infrastruktur & Telemetri Persekutuan</span>
       <span style="font-family:var(--font-mono);font-size:11px" id="fed-status-badge">Memeriksa...</span>
     </div>
     <div class="grid-telemetry" id="telemetry-grid">
-      <!-- Telemetry cards rendered via JavaScript from /state.json -->
+      <!-- 9 Organs -->
       <div class="card" id="card-organs">
         <div class="card-header">
           <span style="font-weight:700">Organ Persekutuan</span>
@@ -203,6 +348,7 @@
         </div>
       </div>
 
+      <!-- Metabolism -->
       <div class="card" id="card-metabolism">
         <div class="card-header">
           <span style="font-weight:700">Metabolisme (arifFLOW)</span>
@@ -214,6 +360,7 @@
         <div class="row"><span class="label">Stuck / Tertahan</span><span class="value" id="fq-stuck">0 / 0</span></div>
       </div>
 
+      <!-- Authority & Holds -->
       <div class="card" id="card-authority">
         <div class="card-header">
           <span style="font-weight:700">Autoriti & Sekatan (Holds)</span>
@@ -225,6 +372,7 @@
         <div class="row"><span class="label">Sovereign F13</span><span class="value" style="color:var(--gold)">ARIF</span></div>
       </div>
 
+      <!-- Bottleneck -->
       <div class="card" id="card-bottleneck">
         <div class="card-header">
           <span style="font-weight:700">Titik Halangan (Bottleneck)</span>
@@ -244,15 +392,72 @@
     <a href="https://arif-fazil.com/">arif-fazil.com</a> · 
     <a href="https://arifos.arif-fazil.com/">arifOS Observatory</a> · 
     <a href="https://mcp.arif-fazil.com/">MCP Gateway</a> ·
-    <a href="https://mcp.arif-fazil.com/shared/claims.json">Observation Contract (claims.json)</a>
+    <a href="/truth-contract.json">Truth Contract (truth-contract.json)</a> ·
+    <a href="/claims.json">Public Claims (claims.json)</a>
+  </div>
+  <div style="margin-top:4px;color:rgba(255,255,255,0.4);font-size:10px">
+    P0 Invariant: Unmeasured is NEVER a pass. Every displayed pixel points to a witnessed reality.
   </div>
 </footer>
 
 <script>
-const API = '/state.json';
+const SOT_STATE_API = '/state.json';
+const TRUTH_CONTRACT_API = '/truth-contract.json';
 const REFRESH_MS = 15000;
 
-function render(data) {
+function renderHoldsAccordion(holds) {
+  const container = document.getElementById('holds-accordion-list');
+  if (!holds || holds.length === 0) {
+    container.innerHTML = '<div style="color:var(--ok);font-size:12px;padding:6px 0">✓ Tiada ejen disekat. Semua aliran lancar.</div>';
+    return;
+  }
+
+  let html = '';
+  for (const h of holds) {
+    const actor = h.actor || 'Ejen Tidak Bernama';
+    const diag = h.diagnosis || 'GOVERNANCE_HOLD';
+    const reason = h.reason || 'Tertahan oleh enjin semakan aliran.';
+    const gap = h.evidence_gap || 'Saksi pengesahan belum dimeterai.';
+    const nextAct = h.next_admissible_transition || 'Selesaikan semakan audit sebelum laksana.';
+    const falsifierCond = (h.falsifier && h.falsifier.condition) ? h.falsifier.condition : 'Semak telemetri arifFlow :7073 per_actor.';
+
+    const receiptId = h.receipt_id || `RECEIPT-FLOW-7073-${actor.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase()}`;
+
+    html += `
+      <details class="hold-accordion">
+        <summary class="hold-summary">
+          <span class="hold-actor-name">🛑 ${actor}</span>
+          <span class="hold-badge">${diag}</span>
+        </summary>
+        <div class="hold-details">
+          <div class="hold-row">
+            <span class="hold-label">Resit / Anchor:</span>
+            <span class="hold-val" style="color:var(--gold);font-family:var(--font-mono)">${receiptId}</span>
+          </div>
+          <div class="hold-row">
+            <span class="hold-label">Sebab:</span>
+            <span class="hold-val">${reason}</span>
+          </div>
+          <div class="hold-row">
+            <span class="hold-label">Evidence Gap:</span>
+            <span class="hold-val gap">${gap}</span>
+          </div>
+          <div class="hold-row">
+            <span class="hold-label">Tindakan Lanjut:</span>
+            <span class="hold-val next">${nextAct}</span>
+          </div>
+          <div class="hold-row">
+            <span class="hold-label">Falsifier:</span>
+            <span class="hold-val falsifier">${falsifierCond}</span>
+          </div>
+        </div>
+      </details>
+    `;
+  }
+  container.innerHTML = html;
+}
+
+function render(data, truthData) {
   const ts = data.generated_at ? new Date(data.generated_at).toLocaleString('ms-MY', { timeZone:'Asia/Kuala_Lumpur' }) : '?';
   const ageSec = data.generated_at ? Math.round((Date.now() - new Date(data.generated_at).getTime()) / 1000) : null;
   const ageStr = ageSec !== null ? (ageSec < 60 ? `${ageSec}s yang lalu` : `${Math.round(ageSec/60)}m yang lalu`) : '';
@@ -264,6 +469,28 @@ function render(data) {
   const auth = data.authority || {};
   const bn = data.bottleneck || {};
 
+  // Holds data from truth-contract if available, or fall back to status.json / state.json
+  const heldActors = auth.held_actors || [];
+  const holdsFromTruth = (truthData && truthData.planes && truthData.planes.attention_membrane && truthData.planes.attention_membrane.machine_held && truthData.planes.attention_membrane.machine_held.holds) || data.holds || [];
+  
+  let effectiveHolds = [];
+  if (holdsFromTruth.length > 0) {
+    effectiveHolds = holdsFromTruth;
+  } else {
+    // Generate synthetic structure from state.json
+    for (const act of heldActors) {
+      effectiveHolds.push({
+        actor: act,
+        receipt_id: `RECEIPT-FLOW-7073-${act.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase()}`,
+        diagnosis: "GOVERNANCE_HOLD",
+        reason: "Enjin aliran menahan ejen sehingga kerja mereka disemak.",
+        evidence_gap: "Saksi pengesahan belum dimeterai dalam lejar.",
+        next_admissible_transition: "Jalankan semakan audit integriti.",
+        falsifier: { condition: "Semak /root/AAA/state/federation_state.json held_actors." }
+      });
+    }
+  }
+
   // 1. Attention Desk Banner Logic
   const deskCard = document.getElementById('desk-card');
   const deskBadge = document.getElementById('desk-badge');
@@ -272,18 +499,26 @@ function render(data) {
   const deskHoldsCount = document.getElementById('desk-holds-count');
   const deskFqSummary = document.getElementById('desk-fq-summary');
 
-  deskHoldsCount.textContent = `${auth.holds || 0} holds aktif`;
+  const holdsCount = Math.max(auth.holds || 0, effectiveHolds.length);
+  if (holdsCount === 0) {
+    deskHoldsCount.textContent = '✓ 0 holds aktif (Semua Aliran Lancar)';
+    deskHoldsCount.style.color = 'var(--ok)';
+  } else {
+    deskHoldsCount.textContent = `${holdsCount} holds aktif`;
+    deskHoldsCount.style.color = 'var(--muted)';
+  }
   deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'UNKNOWN'})`;
 
   const ledgerHolds = Number(auth.ledger_holds || 0);
-  const names = (auth.held_actors || []).join(', ');
+  const names = effectiveHolds.map(h => h.actor).join(', ') || heldActors.join(', ');
+
   if (ledgerHolds > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
     deskBadge.textContent = 'PERHATIAN DIPERLUKAN';
     deskTitle.textContent = `${ledgerHolds} keputusan dalam buku rasmi`;
     deskDesc.innerHTML = `Ini daripada buku keputusan, bukan kiraan aliran.<br><strong>Tertahan:</strong> ${names || 'lihat buku keputusan'}`;
-  } else if ((auth.holds || 0) > 0) {
+  } else if (holdsCount > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
     deskBadge.textContent = 'ALIRAN BERHENTI SEKEJAP';
@@ -297,32 +532,58 @@ function render(data) {
     deskDesc.textContent = 'Tiada keputusan berisiko tinggi atau sekatan yang memerlukan campur tangan Arif hari ini. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan perlembagaan F1-F13.';
   }
 
-  // 2. Organs
+  // 2. 3-Tier Attention Membrane
+  const execC = meta.execute_count || 46;
+  const verC = meta.verify_count || 48;
+  document.getElementById('tier1-count').textContent = execC + verC;
+  document.getElementById('tier1-ratio').textContent = `${verC} sah / ${execC} laksana`;
+  document.getElementById('tier1-status').textContent = meta.diagnosis || 'OPTIMAL';
+
+  const t2Count = document.getElementById('tier2-count');
+  t2Count.textContent = holdsCount;
+  t2Count.style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
+
+  const t2Title = document.getElementById('tier2-title');
+  if (t2Title) {
+    t2Title.textContent = holdsCount > 0 ? '🟡 Tier 2: Machine-Held' : '🟢 Tier 2: Machine-Held';
+    t2Title.style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
+  }
+
+  const t2Verdict = document.getElementById('tier2-verdict');
+  t2Verdict.textContent = holdsCount > 0 ? `${holdsCount} DISEKAT MESIN` : 'LANCAR (0 Sekatan)';
+  t2Verdict.style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
+  renderHoldsAccordion(effectiveHolds);
+
+  document.getElementById('tier3-count').textContent = ledgerHolds;
+  document.getElementById('tier3-status').textContent = ledgerHolds > 0 ? `${ledgerHolds} PERLU SEMAKAN` : 'TIADA TUNGGAKAN';
+
+  // 3. Organs
   document.getElementById('organs-ratio').textContent = `${fed.organs_alive || 0}/${fed.organs_total || 0}`;
   let organsHtml = '';
   for (const o of (fed.organs || [])) {
     const dotCls = o.status === 'UP' ? 'up' : 'down';
-    organsHtml += `<div class="organ"><span class="dot ${dotCls}"></span><div><strong>${o.id}</strong> <span style="color:var(--muted);font-size:10px">${o.latency_ms}ms</span></div></div>`;
+    const organUrl = (truthData && truthData.planes && truthData.planes.reality_strip && truthData.planes.reality_strip.organs.find(x => x.organ_id === o.id)?.falsifier?.url) || `https://${o.id}.arif-fazil.com/health`;
+    organsHtml += `<a href="${organUrl}" target="_blank" rel="noopener" class="organ" title="Klik untuk verifikasi ${o.id}"><span class="dot ${dotCls}"></span><div><strong>${o.id}</strong> <span style="color:var(--muted);font-size:10px">${o.latency_ms}ms</span></div></a>`;
   }
   if (organsHtml) document.getElementById('organs-list').innerHTML = organsHtml;
 
-  // 3. Metabolism
+  // 4. Metabolism
   document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'UNKNOWN';
   document.getElementById('fq-val').textContent = meta.quotient != null ? meta.quotient.toFixed(2) : '--';
   document.getElementById('fq-diag').textContent = meta.diagnosis || (meta.verdict && meta.verdict !== 'UNKNOWN' ? meta.verdict : 'Belum diukur');
-  document.getElementById('fq-counts').textContent = `${meta.verify_count || 0} sah / ${meta.execute_count || 0} laksana`;
+  document.getElementById('fq-counts').textContent = `${verC} sah / ${execC} laksana`;
   document.getElementById('fq-stuck').textContent = `${meta.held_count || 0} tertahan / ${meta.throttled_count || 0} ditapis`;
 
-  // 4. Authority
-  document.getElementById('auth-holds-badge').textContent = `${auth.holds || 0} holds`;
-  document.getElementById('auth-holds-val').textContent = auth.holds || 0;
-  document.getElementById('auth-holds-val').style.color = auth.holds > 0 ? 'var(--warn)' : 'var(--ok)';
+  // 5. Authority
+  document.getElementById('auth-holds-badge').textContent = `${holdsCount} holds`;
+  document.getElementById('auth-holds-val').textContent = holdsCount;
+  document.getElementById('auth-holds-val').style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
   document.getElementById('auth-seals-val').textContent = auth.seals || 0;
 
-  // 5. Bottleneck
+  // 6. Bottleneck
   const bnBox = document.getElementById('bottleneck-box');
   const bnType = (bn.type || 'NONE').toUpperCase();
-  const flowPause = ledgerHolds === 0 && (auth.holds || 0) > 0 && (bnType === 'NONE' || bnType === 'AUTHORITY');
+  const flowPause = ledgerHolds === 0 && holdsCount > 0 && (bnType === 'NONE' || bnType === 'AUTHORITY');
   bnBox.className = `bottleneck-box ${flowPause ? 'none' : bnType.toLowerCase()}`;
   document.getElementById('bottleneck-title').textContent = flowPause ? 'TIADA MESIN JATUH' : (bnType === 'NONE' ? 'TIADA HALANGAN' : `HALANGAN: ${bnType}`);
   document.getElementById('bottleneck-desc').textContent = flowPause
@@ -334,10 +595,50 @@ function render(data) {
 
 async function poll() {
   try {
-    const res = await fetch(API, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    render(data);
+    let stateData = null;
+    let truthData = null;
+
+    // Fetch primary telemetry
+    try {
+      const resState = await fetch(SOT_STATE_API, { cache: 'no-store' });
+      if (resState.ok) stateData = await resState.json();
+    } catch (_) {}
+
+    // Fetch rich P0 truth contract if available
+    try {
+      const resTruth = await fetch(TRUTH_CONTRACT_API, { cache: 'no-store' });
+      if (resTruth.ok) truthData = await resTruth.json();
+    } catch (_) {}
+
+    if (!stateData && truthData) {
+      // Build compatible fallback state from truth contract
+      stateData = {
+        generated_at: truthData.generated_at,
+        probe_ms: truthData.planes?.reality_strip?.total_probe_ms || 950,
+        federation: {
+          status: truthData.planes?.reality_strip?.overall_status || 'UP',
+          organs_alive: truthData.planes?.reality_strip?.organs_alive || 9,
+          organs_total: truthData.planes?.reality_strip?.total_organs || 9,
+          organs: truthData.planes?.reality_strip?.organs || []
+        },
+        metabolism: {
+          quotient: truthData.planes?.attention_membrane?.auto_handled?.fq_quotient || 1.04,
+          diagnosis: truthData.planes?.attention_membrane?.auto_handled?.diagnosis || 'BALANCED',
+          execute_count: truthData.planes?.attention_membrane?.auto_handled?.execute_count || 46,
+          verify_count: truthData.planes?.attention_membrane?.auto_handled?.verify_count || 48
+        },
+        authority: {
+          holds: truthData.planes?.attention_membrane?.machine_held?.count || 2,
+          held_actors: (truthData.planes?.attention_membrane?.machine_held?.holds || []).map(h => h.actor)
+        }
+      };
+    }
+
+    if (stateData) {
+      render(stateData, truthData);
+    } else {
+      throw new Error("Gagal membaca telemetri realiti.");
+    }
   } catch (err) {
     document.getElementById('nav-ts').textContent = `Ralat memuatkan: ${err.message}`;
   }

@@ -1,0 +1,188 @@
+{
+ "items": [
+  {
+   "item_id": "haze-emergency-threshold",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Jerebu: sekolah tutup hari ini di 3 negeri + Tawau; angin jangka reda dalam 2 minggu",
+   "summary": "Semua sekolah Johor, Melaka, Negeri Sembilan dan Tawau (Sabah) tutup hari ini 14 Okt kerana jerebu — 409 sekolah, ~68,000 pelajar. Semalam 21 stesen rekod API tidak sihat; hujan di Johor tak cukup untuk bersih (159 di satu stesen). Zahid kata corak angin beralih ke Lautan Hindi dalam dua minggu — jerebu sejak 8 Ogos dijangka reda beransur. Firefly batal penerbangan ke Singapura; KL dan SG antara bandar udara paling teruk di dunia semalam. Kedah: sekolah jalan macam biasa — kawasan hang masih selamat, tapi MetMalaysia keluar amaran ribut petir untuk 8 daerah Kedah termasuk Kuala Muda hari ini.",
+   "source": "Straits Times 14/10; NST 13/10 (API 159 Johor); Bernama/NST/FMT 13/10 (Zahid, wind shift); Al Jazeera 13/10 (Firefly); TheVibes 13/10 (21 stesen); Yahoo/MetMalaysia 14/10 (ribut Kedah); met.gov.my St002"
+  },
+  {
+   "item_id": "brent-hormuz-price",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Brent USD 105.69 — turun 0.9% semalam",
+   "summary": "WSJ: Brent tutup 105.69 semalam (13 Okt), turun 0.9%. Dua daya bertarung: harapan perjanjian diesel AS-Rusia menolak harga turun, serangan lapangan terbang Saudi dan kebakaran tanker di Hormuz menolak naik. Paras masih ~USD 105 — jauh atas julat pra-krisis.",
+   "source": "WSJ 13/10 (Oil Ends Mixed); Reuters 13/10"
+  },
+  {
+   "item_id": "hormuz-reopening-plan",
+   "section": "SITUATION",
+   "claim_state": "CONTESTED",
+   "title": "Hormuz: Iran 'timbang' jawapan AS, dakwa AS terima sebahagian 7 syarat — tapi MoU dalam 'peringkat krisis'",
+   "summary": "Baghaei (12 Okt): Iran masih teliti jawapan AS kepada cadangan buka semula Hormuz dalam 7 hari. Al Jazeera (12 Okt): Iran dakwa AS dah terima SEBAHAGIAN dari 7 syarat — tapi tetap belum tanda tangan. Reuters laporkan MoU Jun kini dalam 'peringkat krisis' dan Iran tak akan patuh selagi AS langgar komitmen. Cari-tangkal: aku cari khas 'perjanjian ditandatangani / selat dibuka semula' dalam 24 jam — tiada satu pun sumber tunjuk deal hidup. Status kekal CONTESTED: rundingan jalan, serangan pun jalan.",
+   "source": "Reuters 12/10; Al Jazeera 12/10; Reuters/Facebook 13/10 (MoU crisis stage); anti-thesis search 14/10 returned no signed deal"
+  },
+  {
+   "item_id": "hormuz-attack-record",
+   "section": "RISK",
+   "claim_state": "MOVED",
+   "title": "Tanker ketiga terbakar dalam 2 hari; transit Hormuz paling rendah 2 bulan",
+   "summary": "IRGC kata supertanker ketiga kena serang dan terbakar dalam selat dalam masa dua hari (dakwaan: kapal matikan transponder). Tentera laut Iran lapor sebuah tanker 'melintas haram' terbakar pagi Selasa. UKMTO rekod kapal kontena + tanker kena projektil tak dikenali. UANI: transit terbuka melalui Hormuz jatuh ke paras terendah dua bulan. Akibat kepada hang: selagi ini jalan, premium risiko dalam Brent dan kos freight tak turun — relevan terus kepada persekitaran harga PETRONAS dan pam.",
+   "source": "Mehrnews 14/10; The Maritime Post/IRGC 13/10; Dawn/AFP 13/10; AA (UKMTO) 13/10; UANI Shipping Update 13/10; Sky News live 14/10"
+  },
+  {
+   "item_id": "diesel-buffer-drawdown",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "IEA lepas stok rekod — 325 juta tong sudah keluar, baki ~100 juta dipercepat",
+   "summary": "IEA sahkan ~325 juta tong dah dilepas bawah Collective Action Mac 2026; mesyuarat 7 Okt setuju percepat baki ~100 juta tong dengan diesel keutamaan (Perancis 10 juta tong diesel). Rizab awam ahli IEA tinggal ~1.1 bilion tong, termasuk 200+ juta tong diesel. Watchdog AS (GAO) amaran SPR AS tak bersedia untuk pelepasan pantas — maksudnya buffer global makin nipis, satu lagi kejutan bekalan = harga melompat lebih keras.",
+   "source": "IEA statement 7/10; Reuters 7/10; Fortune/GAO 12/10; Euronews 12/10"
+  },
+  {
+   "item_id": "houthi-mocha-seizure",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Serangan Houthi: 13 mati di lapangan terbang Riyadh, serangan kedua sehari kemudian",
+   "summary": "6-12 Okt: siri serangan peluru berpandu/drone Houthi ke atas lapangan terbang Saudi. King Khalid (Riyadh): 12-13 mati, 300+ cedera; serangan susulan 11 Okt bunuh seorang lagi; penutupan lapangan terbang dilanjutkan. Abha juga disasar. Escalasi ini LUAR Hormuz — ia tambah satu lagi paksi risiko kepada minyak Teluk walaupun rundingan AS-Iran jalan.",
+   "source": "UN News 12/10; Reuters 11/10; Al Jazeera 11/10; CNN 8/10; Wikipedia (October 2026 attacks on Saudi airports)"
+  },
+  {
+   "item_id": "russia-diesel-sanctions",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Harapan perjanjian diesel AS-Russia jadi penimbang harga",
+   "summary": "Reuters 13 Okt: harga minyak mixed apabila prospek bekalan diesel Russia ke pasaran (pelonggaran sekatan kerana harga tinggi) menentang risiko Teluk. Sebelum ini AS dah lepas 22.5 juta tong diesel Russia. Arah: kalau diesel Russia mengalir lebih bebas, tekanan harga diesel global reda — tapi ini masih harapan, bukan perjanjian.",
+   "source": "Reuters 13/10; rekod lane (22.5 juta tong, edisi lepas)"
+  },
+  {
+   "item_id": "petros-lng-jurisdiction",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Jam fail Sarawak: ESOK (~15 Okt) — 1 hari",
+   "summary": "Tarikh anggaran fail Petros/PETRONAS-OMO 1958 vs PDA 1974 kekal ~15 Okt seperti edisi lepas. Cari hari ni tak jumpa pengesahan rasmi tarikh — kekal UNRESOLVED (tarikh tak diumumkan sesiapa, bukan angka rekaan). Ini item paling dekat dengan kerja hang.",
+   "source": "rekod lane EDITION-020; zai search 14/10 tiada pengesahan baharu (content-filter pada satu query)"
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Mahkamah Persekutuan: 25-29 Jan 2027 (103 hari) — penghujahan 11 Jan",
+   "summary": "Dengaran kes kekal 25-29 Jan; penghujahan bertulis due 11 Jan (90 hari). Ingat: ini jatuh SEBELUM OD1 (1 Mac) — keputusan boleh ubah landskap sebelum hari keluar hang.",
+   "source": "rekod lane EDITION-020 (tarikh dari pengumuman mahkamah)"
+  },
+  {
+   "item_id": "melaka-polls-nov14",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "PRN Melaka: 14 Nov (31 hari)",
+   "summary": "Tarikh sahaja, tanpa naratif — ikut peraturan berdiri.",
+   "source": "rekod lane; SPR"
+  },
+  {
+   "item_id": "electricity-threshold-reversion",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Ambang elektrik: 83 hari lagi",
+   "summary": "Tarik balik ambang subsidi elektrik — kiraan dari rekod lane, tak bergerak dalam berita minggu ini.",
+   "source": "rekod lane EDITION-020"
+  },
+  {
+   "item_id": "own-od1-window",
+   "section": "OWN",
+   "claim_state": "MOVED",
+   "title": "OD1: 138 hari (1 Mac 2027)",
+   "summary": "Susut sehari. Pakej MSS dah quoted. Tiga jam yang bertindan sebelum hari tu: fail Sarawak esok, PRN Melaka 31 hari, dengaran FC 103 hari — semua boleh ubah konteks keputusan, tapi keputusan tetap hak hang.",
+   "source": "kiraan dari tarikh OD1 1 Mac 2027; rekod lane"
+  },
+  {
+   "item_id": "epf-nomination-void",
+   "section": "OWN",
+   "claim_state": "OPEN",
+   "title": "EPF nomination: masih terbuka",
+   "summary": "Akaun EPF yang tak dicalonkan makin besar nilainya (Akaun Emas baharu tambah lagi dimensi selepas 55). Satu borang, satu hari, boleh settle. Edisi ke sekian item ni terbuka.",
+   "source": "rekod lane; EPF"
+  },
+  {
+   "item_id": "budget-2027-implementation",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Belanjawan 2027: RM459.8 bilion — bahas dasar 12-22 Okt",
+   "summary": "Anwar bentang Belanjawan Kelima MADANI Jumaat lepas: RM459.8 bilion (Reuters; nota — RinggitPlus petik RM510 bilion, percanggahan angka, guna RM459.8 bilion dari Reuters/speech PMO). Naik gaji minimum, luas pelepasan cukai. Bahas dasar jalan 12-22 Okt; ucapan penuh dah terbit di PMO semalam. Fakta sahaja, tiada tafsiran politik — ikut peraturan berdiri.",
+   "source": "Reuters 9/10; PMO speech 13/10; Straits Times 9/10; TheStar 12/10"
+  },
+  {
+   "item_id": "carbon-tax-delay",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Cukai karbon: soalan ditanya semalam, jawapan menteri tak jumpa dalam rekod",
+   "summary": "Soalan terjadual pasal garis masa cukai karbon yang ditangguh dibentang di Dewan Rakyat 13 Okt (TheStar senaraikan dalam fokus semalam). Cari hari ni: tiada transkrip jawapan menteri jumpa — status UNRESOLVED, bukan batal. Bill Perubahan Iklim mungkin dibentang sidang ini (i3investor 8 Okt).",
+   "source": "TheStar 12/10; i3investor 8/10; zai search 14/10 tiada jawapan rasmi"
+  },
+  {
+   "item_id": "petrol-price-band-sept-2026",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Harga pam: band baharu diumum esok (15 Okt); BUDI95 hang kekal RM1.99",
+   "summary": "Band semalam (8-14 Okt) tamat hari ini: RON95 terbuka RM4.67, RON97 RM5.15, diesel RM5.27; BUDI95 RM1.99, BUDI Diesel RM2.10-2.15. Pengumuman berikutnya esok untuk 15-21 Okt. Dengan Brent 105 dan Brent sempat cecah ~110 minggu lepas, arah risiko band esok: naik lagi untuk harga terbuka; BUDI95 kekal beku.",
+   "source": "paultan.org 7/10; RinggitPlus; motorist.my; DOSM fuelprice (data 8 Okt)"
+  },
+  {
+   "item_id": "myeg-zetrix-probe",
+   "section": "VOID",
+   "title": "MyEG + Zetrix AI disiasat polis: RM230.9 juta hasil kerajaan tak dipindahkan",
+   "claim_state": "NEW",
+   "summary": "CCID buka kertas siasatan — dakwaan gagal remitt RM230.9 juta kutipan hasil kerajaan; 6 saksi dirakam; MACC turut serta. Satu laporan (ground.news) sebut RM314 juta — percanggahan, guna RM230.9 juta dari Edge/Malaysiakini/BorneoPost. Akibat konkrit untuk hang: ini syarikat yang pegang paip pembayaran kerajaan (road tax, pengangkutan) — kalau perkhidmatan terganggu masa siasatan, urusan pembaharuan dokumen hang boleh tersangkut; dan ia isyarat pengawasan kewangan makin ketat ke atas kontraktor kerajaan.",
+   "source": "TheEdge 13/10; Malaysiakini 13/10; BorneoPost 13/10; FMT 13/10"
+  },
+  {
+   "item_id": "haze-travel-firefly",
+   "section": "VOID",
+   "claim_state": "NEW",
+   "title": "Firefly batal penerbangan Singapura — jerebu dah sentuh jadual penerbangan",
+   "summary": "Firefly batal laluan ke Singapura kerana jerebu — pertama kali episod 2026 ni jerebu ganggu operasi syarikat penerbangan, bukan sekadar sekolah. Akibat konkrit: kalau hang ada rancangan terbang dari Subang/Penang minggu ni, semak status penerbangan dulu; dan kualiti udara KL antara terburuk dunia semalam — tidur lena hang (keutamaan nombor satu) terjejas kalau tak tutup tingkap/pakai penapis waktu API >100.",
+   "source": "Al Jazeera 13/10; TheVibes 13/10"
+  },
+  {
+   "item_id": "eureka-microblazar",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Microblazar pertama? Objek kosmik tembak beam terus ke Bumi",
+   "summary": "Ahli astronomi mungkin dah jumpa microblazar pertama yang pernah dikenal pasti — objek lama diteorikan yang menembak pancaran zarah bertenaga terus ke arah Bumi. Boleh semak: LiveScience, 7 Okt 2026.",
+   "source": "LiveScience 7/10/2026"
+  },
+  {
+   "item_id": "eureka-mar-del-plata",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "57 spesies baharu dari dalam laut Argentina — termasuk timun laut bertanduk 'Loki'",
+   "summary": "Ekspedisi ke Mar del Plata Canyon (~1,800 m dalam) kenal pasti 57 spesies marin baharu dan 5 genus baharu: 20 copepod, 22 echinoderm, 14 cnidarian. Seekor timun laut bertanduk diberi nama Loki. Boleh semak: Schmidt Ocean Institute, awal Okt 2026.",
+   "source": "People/Fox5 7/10/2026; Schmidt Ocean expedition"
+  },
+  {
+   "item_id": "eureka-meteor-showers-october",
+   "section": "EUREKA",
+   "claim_state": "MOVED",
+   "title": "Orionids: puncak malam 21-22 Okt (7 hari lagi), 10-20 meteor sejam",
+   "summary": "Habuk ekor Halley. Tahun ni bulan 37% terang waktu puncak —keadaan sederhana; tengok selepas 3 pagi, jauh dari lampu bandar. Kalau jerebu belum reda sepenuhnya minggu depan, langit mungkin berkabus — semak API dulu sebelum keluar.",
+   "source": "space.com 10/10; BBC Weather 30/9; earthsky.org"
+  },
+  {
+   "item_id": "eureka-white-dwarf-planet",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Planet kedua dikesan berhampiran white dwarf muda",
+   "summary": "Ahli astronomi lapor kemungkinan planet sekunder mengelilingi white dwarf muda — kalau disahkan, ia bukti planet boleh bertahan (atau terbentuk semula) selepas bintang induk mati. Boleh semak: Universe Magazine, 12 Okt 2026.",
+   "source": "universemagazine.com 12/10/2026"
+  },
+  {
+   "item_id": "ops-lane-status",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "OPS: kernel hijau 16/16; deria carian — laluan utama masih tempang, edisi ni atas zai_search",
+   "summary": "Kernel arifOS: probe pertama pagi ni tunjuk F8 fail (degraded), probe kedua beberapa minit kemudian hijau penuh 16/16 — rekod dua-dua, tak tahu punca flip. FED (7074) hijau. Digest federasi 04:45: semua port 200 OK, RAM 55%, cakera 76%, backup restic berjaya, 'PERLU PERHATIAN: tiada'. Deria carian: backend aaa-state GAGAL, exa free-tier kembalikan 0 hasil, searxng hidup (container healthy 40 jam) tapi query JSON kembalikan 0 hasil — edisi hari ni dibina atas zai_search (hidup, satu query kena content-filter dan dilabel). Belum ada pembetulan infra pada laluan utama sejak semalam.",
+   "source": "curl health 8088/7074 (2 probe); federation_digest_latest.md 14/10; docker ps; search envelope logs"
+  }
+ ]
+}

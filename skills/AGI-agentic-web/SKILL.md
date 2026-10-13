@@ -54,6 +54,8 @@ machine_inventory: /root/forge_work/2026-08-10-browser-zen/TOOL_INVENTORY.jsonl
 
 > **`forge_fetch` is the default for URL intake. `forge_search` is the default for web search. `forge_browser_navigate` is the default for browser ops. Route through A-FORGE governance first. Use `arif_observe` for constitutional-grade evidence. Use `free-search_read_doc` for non-HTML documents. Use FLAME for free pre-flight fact-checks.**
 
+Site files are not fetched via `forge_fetch` as authority to deploy. Site mutation follows `arifos-site-patch-without-caddy-reload` plus `forge-agentic-web-builder` (no Caddy reload, no asset `--delete`).
+
 ---
 
 ## THE AUTHORITY LADDER (lowest power first)
