@@ -23,13 +23,17 @@ STATE_JSON = Path("/root/AAA/state/federation_state.json")
 DECISION_LEDGER = Path("/root/AAA/state/decision_ledger.jsonl")
 
 PROBE_TIMEOUT = 8
-FRESHNESS_WARN = 60   # seconds
+FRESHNESS_WARN = 60  # seconds
 FRESHNESS_FAIL = 300  # seconds
 
 ORGAN_PORTS = {
-    "arifos": 8088, "a-forge": 7071, "aaa": 3001,
-    "geox": 8081, "wealth": 18082, "well": 18083,
-    "arifflow": 7073, "fed": 7074,
+    "arifos": 8088,
+    "a-forge": 7071,
+    "aaa": 3001,
+    "geox": 8081,
+    "wealth": 18082,
+    "well": 18083,
+    "arifflow": 7073, "fed": 7074, "chron": 18102,
 }
 
 results = []
@@ -46,14 +50,16 @@ def check(name: str, passed: bool, detail: str, source: str = "", freshness_s: f
                 status = "WARN"
         elif freshness_s > FRESHNESS_WARN:
             freshness_tag = " AGING"
-    results.append({
-        "check": name,
-        "status": status,
-        "detail": detail,
-        "source": source,
-        "freshness_s": round(freshness_s, 1) if freshness_s else None,
-        "freshness_tag": freshness_tag.strip(),
-    })
+    results.append(
+        {
+            "check": name,
+            "status": status,
+            "detail": detail,
+            "source": source,
+            "freshness_s": round(freshness_s, 1) if freshness_s else None,
+            "freshness_tag": freshness_tag.strip(),
+        }
+    )
     return passed
 
 
@@ -140,9 +146,13 @@ def main():
         p = probe_organ(port)
         if p["alive"]:
             live_alive += 1
-    check("ORGAN_COUNT", state_alive == live_alive,
-          f"state={state_alive}/{state_total} live={live_alive}/{len(ORGAN_PORTS)}",
-          source="direct_probe", freshness_s=state_age)
+    check(
+        "ORGAN_COUNT",
+        state_alive == live_alive,
+        f"state={state_alive}/{state_total} live={live_alive}/{len(ORGAN_PORTS)}",
+        source="direct_probe",
+        freshness_s=state_age,
+    )
 
     # 1b. Per-organ status
     for organ in fed.get("organs", []):
@@ -152,9 +162,13 @@ def main():
             continue
         state_up = organ["status"] == "UP"
         live = probe_organ(ORGAN_PORTS[oid])
-        check(f"ORGAN_{oid}", state_up == live["alive"],
-              f"state={'UP' if state_up else 'DOWN'} live={'UP' if live['alive'] else 'DOWN'} ({live['latency_ms']}ms)",
-              source=f":{ORGAN_PORTS[oid]}/health", freshness_s=state_age)
+        check(
+            f"ORGAN_{oid}",
+            state_up == live["alive"],
+            f"state={'UP' if state_up else 'DOWN'} live={'UP' if live['alive'] else 'DOWN'} ({live['latency_ms']}ms)",
+            source=f":{ORGAN_PORTS[oid]}/health",
+            freshness_s=state_age,
+        )
 
     # 1c. FQ value
     state_fq = meta.get("quotient")
@@ -165,23 +179,30 @@ def main():
                 flow_data = json.loads(resp.read().decode())
                 live_fq = flow_data.get("fq", {}).get("quotient")
                 fq_match = live_fq is not None and abs(state_fq - live_fq) < 0.05
-                check("FQ_QUOTIENT", fq_match,
-                      f"state={state_fq} live={live_fq}",
-                      source="flow_health :7073", freshness_s=state_age)
+                check(
+                    "FQ_QUOTIENT",
+                    fq_match,
+                    f"state={state_fq} live={live_fq}",
+                    source="flow_health :7073",
+                    freshness_s=state_age,
+                )
         except Exception as e:
             check("FQ_QUOTIENT", False, f"probe failed: {str(e)[:60]}", source="flow_health :7073")
 
-    # 1d. Authority holds (decision_ledger)
+    # 1d. Authority holds (F13 SAH 2026-10-06: state holds = decision_ledger ONLY;
+    #     metabolic flow flags are reported separately, never merged into F13 counts)
     state_holds = auth.get("holds", 0)
     ledger_holds = count_ledger_verdicts("HOLD")
     flow_held = get_flow_actors_held()
-    # Holds = ledger holds + flow held actors
     if ledger_holds >= 0 and flow_held >= 0:
-        expected_holds = ledger_holds + flow_held
-        # Note: state may show different count due to how it combines sources
-        check("AUTHORITY_HOLDS", True,
-              f"state={state_holds} ledger={ledger_holds} flow_held={flow_held}",
-              source="decision_ledger + flow_health", freshness_s=state_age)
+        # F13-class holds must equal ledger holds exactly (flow flags excluded)
+        check(
+            "AUTHORITY_HOLDS",
+            state_holds == ledger_holds,
+            f"state={state_holds} ledger={ledger_holds} flow_held={flow_held} (metabolic, excluded)",
+            source="decision_ledger + flow_health",
+            freshness_s=state_age,
+        )
     else:
         check("AUTHORITY_HOLDS", False, "could not read sources", source="decision_ledger + flow_health")
 
@@ -189,9 +210,13 @@ def main():
     state_seals = auth.get("seals", 0)
     ledger_seals = count_ledger_verdicts("SEAL")
     if ledger_seals >= 0:
-        check("AUTHORITY_SEALS", state_seals == ledger_seals,
-              f"state={state_seals} ledger={ledger_seals}",
-              source="decision_ledger", freshness_s=state_age)
+        check(
+            "AUTHORITY_SEALS",
+            state_seals == ledger_seals,
+            f"state={state_seals} ledger={ledger_seals}",
+            source="decision_ledger",
+            freshness_s=state_age,
+        )
     else:
         check("AUTHORITY_SEALS", False, "could not read decision_ledger", source="decision_ledger")
 
@@ -202,16 +227,24 @@ def main():
         expected_bn = "AUTHORITY"
     else:
         expected_bn = "NONE"
-    check("BOTTLENECK_LOGIC", bn.get("type") == expected_bn,
-          f"state={bn.get('type')} expected={expected_bn}",
-          source="computed", freshness_s=state_age)
+    check(
+        "BOTTLENECK_LOGIC",
+        bn.get("type") == expected_bn,
+        f"state={bn.get('type')} expected={expected_bn}",
+        source="computed",
+        freshness_s=state_age,
+    )
 
     # ── Layer 2: Freshness Verification ───────────────────────────────
     print("\n── LAYER 2: FRESHNESS VERIFICATION ──")
 
-    check("STATE_AGE", state_age < FRESHNESS_FAIL,
-          f"{state_age:.0f}s old (threshold: {FRESHNESS_FAIL}s)",
-          source="generated_at", freshness_s=state_age)
+    check(
+        "STATE_AGE",
+        state_age < FRESHNESS_FAIL,
+        f"{state_age:.0f}s old (threshold: {FRESHNESS_FAIL}s)",
+        source="generated_at",
+        freshness_s=state_age,
+    )
 
     # Probe fresh data from each source and compare timestamps
     sources_to_check = [
@@ -224,9 +257,13 @@ def main():
             with urlopen(req, timeout=PROBE_TIMEOUT) as resp:
                 resp.read()
                 latency = (time.monotonic() - t0) * 1000
-                check(f"FRESH_{name}", latency < 5000,
-                      f"probe latency={latency:.0f}ms",
-                      source=url, freshness_s=latency / 1000)
+                check(
+                    f"FRESH_{name}",
+                    latency < 5000,
+                    f"probe latency={latency:.0f}ms",
+                    source=url,
+                    freshness_s=latency / 1000,
+                )
         except Exception as e:
             check(f"FRESH_{name}", False, f"probe failed: {str(e)[:60]}", source=url)
 
@@ -244,33 +281,48 @@ def main():
         expected_health = "DEGRADED"
     else:
         expected_health = "CRITICAL"
-    check("HEALTH_VERDICT", fed.get("status") == expected_health,
-          f"state={fed.get('status')} expected={expected_health} (based on {state_alive}/{state_total} alive)",
-          source="derived", freshness_s=state_age)
+    check(
+        "HEALTH_VERDICT",
+        fed.get("status") == expected_health,
+        f"state={fed.get('status')} expected={expected_health} (based on {state_alive}/{state_total} alive)",
+        source="derived",
+        freshness_s=state_age,
+    )
 
     # Cross-check: if bottleneck is INFRASTRUCTURE, at least one organ must be DOWN
     if bn.get("type") == "INFRASTRUCTURE":
         has_down = any(o.get("status") == "DOWN" for o in fed.get("organs", []))
-        check("BN_INFRA_REALITY", has_down,
-              f"bottleneck=INFRASTRUCTURE has_down={has_down}",
-              source="cross_check", freshness_s=state_age)
+        check(
+            "BN_INFRA_REALITY",
+            has_down,
+            f"bottleneck=INFRASTRUCTURE has_down={has_down}",
+            source="cross_check",
+            freshness_s=state_age,
+        )
 
     # Cross-check: FQ verdict consistency
     fq_verdict = meta.get("verdict", "")
     fq_quotient = meta.get("quotient")
     if fq_verdict == "OPTIMAL" and fq_quotient is not None:
         fq_consistent = fq_quotient > 0.7
-        check("FQ_VERDICT_CONSISTENCY", fq_consistent,
-              f"verdict=OPTIMAL quotient={fq_quotient:.2f} (>0.7={fq_consistent})",
-              source="cross_check", freshness_s=state_age)
+        check(
+            "FQ_VERDICT_CONSISTENCY",
+            fq_consistent,
+            f"verdict=OPTIMAL quotient={fq_quotient:.2f} (>0.7={fq_consistent})",
+            source="cross_check",
+            freshness_s=state_age,
+        )
 
     # Unknown discipline check: no field should be 0 when source is unavailable
     # Check for suspicious zero values that might indicate fail-open
     for organ in fed.get("organs", []):
         if organ.get("status") == "DOWN" and organ.get("latency_ms", 0) == 0:
-            check(f"FAIL_CLOSED_{organ['id']}", False,
-                  "DOWN organ has 0ms latency (should report timeout/error value)",
-                  source="unknown_discipline")
+            check(
+                f"FAIL_CLOSED_{organ['id']}",
+                False,
+                "DOWN organ has 0ms latency (should report timeout/error value)",
+                source="unknown_discipline",
+            )
 
     # ── Summary ───────────────────────────────────────────────────────
     print("\n" + "=" * 68)

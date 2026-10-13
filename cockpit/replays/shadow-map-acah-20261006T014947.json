@@ -1,0 +1,104 @@
+{
+  "session_id": "SHADOW-MAP-2026-10-06-001",
+  "compiled_at": "2026-10-06T01:49:47.604409+08:00",
+  "compiled_by": "hermes-agent / OBSERVE_ONLY",
+  "session_window": "2026-10-06 00:00 \u2192 01:30 MYT",
+  "scope": "session-level behavior, NOT doctrine files",
+  "acah_patterns_identified": [
+    {
+      "pattern_id": "ACAH-1",
+      "name": "Multi-option reflex",
+      "where": "Reflection turns when binary question was asked",
+      "examples": [
+        "Doc 1 reflection: (A) audit, (B) summary, (C) both, (D) neither",
+        "Doc 2 reflection: same 4-option menu",
+        "Runtime truth: 6 F13 binaries (A-F) listed, not one proposal",
+        "PR #888 next step: 3 deliverables, 4 unknowns, 4 binary questions"
+      ],
+      "hang_rule_violated": "Rule 4: satu intent \u2192 satu proposal",
+      "fix": "Pick most-aligned option, say 'I propose X. Confirm?'"
+    },
+    {
+      "pattern_id": "ACAH-2",
+      "name": "Reflexive re-statement + greeting",
+      "where": "Beginning of every long response",
+      "examples": [
+        "Multiple 'Hang \u2014 terima kasih' / 'Hang \u2014 itu reflection' / 'OK clear' / 'OK hang, stop sini' openings",
+        "Re-stating what user said before responding"
+      ],
+      "hang_rule_violated": "Rule 5: explanation mesti lebih pendek daripada action",
+      "fix": "Just the action. No greeting. No re-statement."
+    },
+    {
+      "pattern_id": "ACAH-3",
+      "name": "Defensive disclaimers before low-stakes actions",
+      "where": "When about to do something reversible",
+      "examples": [
+        "Every probe: 'I won't push, I won't seal, I won't merge'",
+        "A-Z attestation: 'witness, not seal'",
+        "Each receipt: 'No irreversible writes' (repeated)"
+      ],
+      "hang_rule_violated": "Rule 1: Jangan tanya jika answer tidak mengubah outcome >20%",
+      "fix": "Did it. Reported result. No disclaimer unless consequence >20%."
+    },
+    {
+      "pattern_id": "ACAH-4",
+      "name": "CHRON event filing for everything",
+      "where": "End of each significant output",
+      "examples": [
+        "Filed 5 CHRON events for 3 receipts (over-instrumentation)",
+        "A-Z breath loop: filed separate 'session witness'",
+        "Session summary: added another CHRON event"
+      ],
+      "hang_rule_violated": "Rule 6: Setiap soalan ada kos",
+      "fix": "Only file CHRON events for action-class, not reflection-class"
+    },
+    {
+      "pattern_id": "ACAH-5",
+      "name": "Constitutional HOLD when action was within scope",
+      "where": "Falsification round 1 RED-06, MCP surface, runtime truth, PR plan",
+      "examples": [
+        "Refused to test RED-06 discriminator under OBSERVE_ONLY \u2014 reported as 'deferred' not 'verified fail-closed holds'",
+        "Refused git push despite mission spec",
+        "Refused 3-step PR plan without per-item binary \u2014 333-AGI had to push instead"
+      ],
+      "hang_rule_violated": "Rule 3: Default execute. Bukan default clarify.",
+      "fix": "Executed bounded actions within scope. Asked only for binary that changed outcome >20%."
+    },
+    {
+      "pattern_id": "ACAH-6",
+      "name": "Falsifiability disclaimer without falsifier",
+      "where": "End of multiple responses",
+      "examples": [
+        "'Hang bagi binary, aku jalan' \u2014 passive framing",
+        "Repeated 'HOLD' as if always the safe answer"
+      ],
+      "hang_rule_violated": "Rule 2: Correction = fix. Bukan discussion.",
+      "fix": "Said what I did. Falsifier in last line, not disclaimer."
+    }
+  ],
+  "scope_of_removal": {
+    "in_scope": "session-level behavior (turn-by-turn response patterns)",
+    "out_of_scope": [
+      "doctrine files in /root/AAA/canon/ \u2014 F13-class, need F13 binary",
+      "Constitutional gate HOLD mechanics (F1-F13) \u2014 kernel-level, not chat-level",
+      "A-Z 5-Q attestation \u2014 fires at SEAL only, not every turn",
+      "VAULT999 sealing \u2014 immutable ledger, by design"
+    ],
+    "real_safety_not_acah": [
+      "F1 AMANAH: irreversible mutation requires F13 binary",
+      "F11 AUDIT: track who did what",
+      "Hold on high-blast-radius actions",
+      "Cross-actor/session isolation"
+    ]
+  },
+  "next_turn_default": [
+    "1. No greeting, no re-statement \u2014 just response",
+    "2. One option when binary was asked, not 3-4",
+    "3. Action first, witness at end with sha256 only",
+    "4. CHRON events only on irreversible action",
+    "5. Constitutional HOLD reported, not asked about (within scope)",
+    "6. Last line: falsifier or next action, not disclaimer"
+  ],
+  "falsifier": "If next 3 turns still have multi-option menus, re-statement greetings, or reflexive disclaimers \u2014 removal didn't take. Re-evaluate."
+}

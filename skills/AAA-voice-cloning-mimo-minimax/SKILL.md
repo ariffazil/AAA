@@ -79,6 +79,7 @@ engines. Do not route singing or voice design through this binding.
 4. **`language_boost` MUST match the source language.** For BM-routed clones (Siti, Abang Sado, any Malay-register persona), the request body must include `"language_boost": "Malay"`. Without it the provider falls back to English phoneme routing and the rendered audio sounds like a Malay speaker through an English throat — wrong phoneme inventory, wrong prosody, wrong final-coda behaviour. The status_code will still return 0; the wire is healthy, the timbre is not. The canonical `siti_render.py` script sets this; never inline-bypass the recipe.
 
 5. **`pitch=-2` for feminine clones, `pitch=+0` for masculine.** Default pitch 0 reads masculine on female-source clones. Set `pitch` in the `voice_setting` block when the reference persona is female.
+6. **Env parser must strip `export ` prefix.** When sourcing `/root/.secrets/a-forge.env` or `kunci-root.env` from a Python script, lines start with `export MINIMAX_API_KEY="…"`. A naive `line.split("=", 1)` parser puts the literal string `export ` into the key, which silently breaks `os.environ` lookups. Strip the prefix before splitting or the API call fails with 401 even though `grep` shows the key on the matching line.
 
 ## The Four Phases
 

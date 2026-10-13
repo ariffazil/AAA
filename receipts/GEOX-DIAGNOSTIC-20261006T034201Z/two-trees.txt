@@ -1,0 +1,15 @@
+=== /opt/geox ===
+f043b761e3b11002a2ef1f1c229147af63de7465
+ M apps/well-desk/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp
+f043b761e3b11002a2ef1f1c229147af63de7465 2026-10-03 17:49:09 +0800 fix(chat): bounded-memory prune of rate/session state dicts (hardening GAP close)
+
+=== /root/GEOX ===
+b749d2ff4ccce06f84603722a9647c3e62cf38f6
+ M static/gui/GEOX_MCP_APPS_SURFACE.json
+b749d2ff4ccce06f84603722a9647c3e62cf38f6 2026-10-06 00:01:37 +0800 chore(surface): server.py + GEOX_MCP_APPS_SURFACE.json refresh

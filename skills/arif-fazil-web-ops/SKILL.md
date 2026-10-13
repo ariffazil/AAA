@@ -74,7 +74,8 @@ These pages exist in **multiple disk copies**; patching the wrong one wastes a s
 1. `curl -sIL "https://arif-fazil.com/gold/?cb=$(date +%s)" | grep -iE 'location|last-mod'` — follow redirects to the real URL.
 2. `grep -n "world/economics\|@static_dirs\|redir /gold" /etc/caddy/Caddyfile` — find the route.
 3. `find /var/www/html -name index.html -exec grep -l '<known-stale-string>' {} \;` — find EVERY copy containing the stale text.
-4. Patch the file Caddy actually serves, then `cp` to sibling copies.
+4. **Sibling-writer check before mutation.** Run `ps aux | grep -iE "kimi|opencode|openclaw|claude" | grep -v grep` and `stat -c '%y' <target-file>`. If another worker is alive AND the target file's mtime is within the last 30 minutes, another agent is staging a draft — read the file fresh and fold their content rather than overwrite. Concurrent writers on the same page are a known pattern (kimi/opencode can write `public/.../index.html` and leave it un-deployed for hours).
+5. Patch the file Caddy actually serves, then `cp` to sibling copies.
 
 ### Known layout (2026-08)
 - `/gold/` → 308 → `/world/economics/gold/` → served by `@static_dirs` from **`/var/www/html/arif/world/economics/gold/index.html`** (same for oil, gas, klci, usdmyr).
@@ -1275,5 +1276,50 @@ When you load this skill, also load these memory facts:
 - **MakcikGPT article source-of-truth:** `/var/www/html/arif/makcikgpt-md/<slug>.html` (live) — there is NO .ts source in `src/data/makcikgpt/` for most articles. They are direct-written static HTML, not SPA-rendered.
 - **Caddy static-first fix (2026-08-09):** All browsers get static HTML from `makcikgpt-md/`, NOT the SPA shell. SPA fallback only triggers if static file missing.
 - **Ditempa bukan diberi** is non-removable from any arif-fazil.com surface.
+
+---
+
+## `/earth/` subsurface pages — GEOX cross-sections, basin dossiers
+
+The `/earth/` room is the public reading layer for arifOS GEOX. Pages are static HTML + inline SVG/JS, served via the same Caddy static-first chain as `/world/makcikgpt`. Three surface types live here:
+
+| Type | Pattern | Source of truth |
+|---|---|---|
+| Basin dossier (e.g. `kinabalu-basin/index.html`) | Top header → locator map (Leaflet) → info cards → GEOX contrast bridge | handwritten HTML |
+| Cross-section (e.g. `kinabalu-cross-section.html`) | Single inline `<img src="kinabalu-xs-*.svg">` + locator map + 4 info cards | SVG asset + HTML shell |
+| Case study (e.g. `case-study.html`) | Per-case narrative layout | handwritten HTML |
+
+**Cross-section SVG versioning convention.** The cross-section page loads ONE SVG image whose filename carries the version: `kinabalu-xs-v2.svg` (legacy ASAS-MALAM interpretive), `kinabalu-xs-v3.svg` (ETOPO1 live only), `kinabalu-xs-full.svg` (full rebuild = bathymetry + geology bodies + thrusts + wells + Moho). To swap versions, edit the `<img src="...">` in the HTML only — never delete a prior version's SVG, the citation chain still references it.
+
+**Multi-copy disk layout (dist ↔ public mirror).** Every page exists in TWO places:
+- `/root/arif-fazil.com/sites/arif-fazil.com/dist/earth/` — build output (committed)
+- `/root/arif-fazil.com/sites/arif-fazil.com/public/earth/` — source-of-truth (committed)
+
+When you write or copy a new SVG/PNG, mirror it to BOTH paths in one step. The HTML page edits go to the same two paths. Never write to one and forget the other — the deploy step picks up whichever path has the freshest mtime, and stale copies cause silent regression.
+
+**Deploy recipe (cross-section edit):**
+```bash
+# 1. Write asset (matplotlib SVG → /tmp first, then mirror)
+for d in /root/arif-fazil.com/sites/arif-fazil.com/{dist,public}/earth; do
+  cp /tmp/kinabalu-xs-full.svg "$d/"
+done
+# 3. Edit HTML: update <img src="..."> + <img alt="..."> + author/source line
+# 4. Mirror HTML to both dist/ and public/
+# 5. git status — confirm only the intended files modified
+```
+
+**Pitfall: matplotlib SVG produces `<path>` not `<polygon>`.** When verifying fills rendered correctly, grep for `style="fill: #XXXXXX"` in the SVG body — that's the actual fill rendering. Searching for `<polygon>` returns 0 even when polygons are present. matplotlib aggregates geometry into Path objects.
+
+**Pitfall: SVG fill detection regex is `style="fill: ..."` not `fill="..."`.** A naive regex like `fill="(#[0-9a-fA-F]{6,8})"` over the whole SVG body returns 0 because matplotlib emits it as `style="fill: ..."` inside path attributes, not as a standalone `fill=` attribute. Always regex `style="fill: ..."` when verifying SVG color presence.
+
+**Pitfall: vision analysis misreads dark-fill polygons on dark backgrounds.** A `vision_analyze` call may report "no bodies rendered" for a chart where polygons DO render, simply because their fill colors blend with the navy background. Verify SVG fill rendering with `grep -c 'style="fill:' path-to-svg.svg` BEFORE trusting vision verdict. If fills count > 0 but vision says "no bodies", trust the grep — vision missed them.
+
+**Cross-section source citations (current as of 2026-10-06).** TGS Choi 2026, PETRONAS MPM 2025, Ab Ghani EAGE 2026 — open-literature; Balaguru & Hall 2009 (BGSM), Madon & Jong 2022 (GSM), Lunt 2022 (BGSM 74), Morley 2024 (slab breakoff), Cottam 2010 (granite U-Pb) — all peer-reviewed. Etopo1 bathymetry: NOAA ETOPO1 via OpenTopoData (DOI 10.5285/1c44ce99-0a0d-4f4a-89fb-0ab2745d3c64).
+
+**Cross-section citation reconciliation rules:**
+- BMU collision onset: page text "~24 Ma" → GEOX canonical ~23 Ma (Haq & Ogg 2024 sequence boundary, STRONG correlation Δ=0 Ma)
+- DRU slab breakoff: page text "Morley 2023" → canonical **Morley 2024**
+- Sabah Trough depth: page "~2,900 m" → live ETOPO1 -2,904 m → matches
+- Mt Kinabalu summit: page geodetic 4,095 m → ETOPO1 1.85-km grid samples 3,645 m (peak under-sampled); SRTM 1-arcsec = 3,951 m, geodetic = 4,095 m
 
 DITEMPA BUKAN DIBERI — Forged, not given.

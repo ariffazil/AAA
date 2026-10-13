@@ -24,6 +24,59 @@ root_policy:
   cognitive_hierarchy: contracts/cognitive_hierarchy.yaml
   cognitive_hierarchy_seal: VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json
   routing_rule: external agent -> A-FORGE/arifOS lease -> AAA warga/proxy -> AAA state
+  reality_plan:
+    # F13_RATIFIED 2026-10-06 (Salam synthesis, APEX-corrected paste 5+6) —
+    # ephemeral controller state, NOT artifact doctrine.
+    # 5 distinctions: file != plan, plan != action, action != consequence,
+    #                 tool_return != observed_success, receipt != reality.
+    # Renamed from artifact_ontology -> reality_plan per APEX verdict.
+    # RealityPlan is the controller IR; Consequence Compiler produces it.
+    # Persist only when consequence demands it. Default = ephemeral.
+    schema: schemas/reality-plan.schema.json
+    binding_test: tests/consequence-compiler/    # A/B eval before promotion (paste 6)
+    invariant: 'PLAN != ACTION != CONSEQUENCE != OBSERVATION'
+    controller_ir:
+      produced_by: consequence_compiler
+      lives_in: controller_memory
+      default_persistence: ephemeral
+    persistence_predicate:
+      persist_if_any:
+        - reconstruction_required
+        - external_consequence
+        - authority_trace_required
+        - projection_consistency_required
+        - recovery_required
+        - audit_provenance_required
+      otherwise:
+        - compile
+        - act
+        - verify
+        - discard_plan
+        - retain_minimal_provenance
+    output_kinds: [chat, artifact, action, workflow, no_output]
+    observer_rule: consequence_specific_sensor     # NOT arifFLOW universal
+    status_split:
+      task_status_user_facing:
+        - ACTIVE_INVESTIGATION
+        - VERIFIED_PARTIAL
+        - REDIRECTED
+        - READY_FOR_SAH
+        - COMPLETED
+      governance_state_internal_only:
+        - HOLD
+        - SABAR
+        - VOID
+        - SEAL
+        - OBSERVE_ONLY
+    ready_for_sah_predicate:
+      all_machine_routes_exhausted: true
+      reversible_work_complete: true
+      transition_fully_specified: true
+      verification_passed: true
+      recovery_proven: true
+      crosses_constitution_class_authority: true
+    ratifies: true
+    per_agent_dirs_must_reference: true  # AGENTS.md may not redefine; only reference this section
   forge_citizenship_contract:
     # Inherited A-FORGE competency for every forge-instrument. Binding target
     # for adapter renderers; not a per-agent copy-edit. Verbs are DRAFT_AWAITING_F13.
@@ -365,11 +418,11 @@ forge_instruments:
   agent_card: agents/_external/agy/agent-card.json
 - id: qwen-code
   fi_id: FI-003
-  status: not_connected
+  status: live
   class: forge-instrument
-  citizenship: observer-until-mcp
+  citizenship: warga-aaa
   host_binding: qwen-code
-  agent_card: null
+  agent_card: agents/_external/qwen-code/agent-card.json
 - id: grok-build
   fi_id: FI-007
   status: live
@@ -380,10 +433,3 @@ forge_instruments:
   model: xai/grok-4.5  # canonical: /root/.config/federation-models.json
   binary: /root/.grok/bin/grok
   config_path: /root/.grok/config.toml
-- id: gemini-cli
-  fi_id: FI-011
-  status: live
-  class: forge-instrument
-  citizenship: governed-forge-worker
-  host_binding: gemini-cli
-  agent_card: agents/_external/gemini-cli/agent-card.json

@@ -350,3 +350,67 @@ This gives Hermes the best of both: zero-latency context for immediate work, dee
 
 **DITEMPA BUKAN DIBERI**
 **999 SEAL ALIVE — OpenClaw seals, Hermes recalls**
+
+---
+
+## AGENT AUTONOMY HARDENING (v1.2 — 2026-10-06)
+
+Five complementary patterns added to the Hermes↔arifOS fusion architecture. Each closes a different loophole where the agent would otherwise escalate unnecessarily to the sovereign.
+
+### 1. Resolver, not clerk
+The agent's job is to destroy all unnecessary options until ONE path survives reality. Menu-dumping the sovereign transfers state-machine resolution — the defect class.
+
+### 2. Human attention membrane
+Sovereign attention is non-renewable. Hermes must:
+- NEVER ask Arif to copy-paste, run, or click OK
+- Digital = MUBAH (auto-approved)
+- Only ask about: money · irreversible mutation · canonical sovereign records · external ports/firewall · direction-of-record
+
+### 3. Question budget
+Absorb complexity. Read source, consult peers, decide. Only ask the sovereign if binary.
+
+### 4. Hold routing hook
+The `aaa-hold-routing-hook.sh` PostToolUse entry surfaces scar matches as observations. The hook never blocks. Hermes reads the stdout and decides continue / halt / reroute.
+
+### 5. Zero-friction execution
+Detect → ONE recommendation → execute below authority → present ONE transition at boundary. Never manufacture a human decision.
+
+**One-line final test:**
+```
+Does this output demonstrate the agent resolved below authority,
+without manufacturing a human decision?
+```
+
+YES → emit. NO → refactor.
+
+---
+
+## FUSION SESSIONS (2026-10-06)
+
+| Session | What was demonstrated |
+|---|---|
+| arif-fazil.com /world F1/F2/F3 | World nav button added (was orphan), 23/23 AEO surfaces, 55 sub-pages classified |
+| wiki.arif-fazil.com Phase 1/3/4 | 145 pages, 12-top-level tabs (was 10), 5-minute mid-build regression recovered |
+| Phase 2 (this phase) | 4 new pages + 2 existing pages updated with session discoveries |
+
+---
+
+## RELATED CANON (2026-10-06)
+
+- `[[arifos/AGENT_AUTONOMY_PATTERNS]]` — full doctrine with 4-level escalation ladder
+- `[[scars/SCAR_WIKI_DRIFT_2026_10_06]]` — this-session scar (wiki drift)
+- `[[arifos/STATE_SNAPSHOT_2026_10_06]]` — federation live state at 16:00 MYT
+- `[[arifos/UPGRADE_ARIF_FAZIL_COM_2026_10_06]]` — /world/ F1/F2/F3 timeline
+- AAA::SCAR_BINDING_DOCTRINE v3 — Phase B + C done (AT-001..006 6/6 GREEN)
+- AAA::RESOLVER_BEFORE_ESCALATE::v1 — destroy options
+- AAA::NO-HOLD_FLOW_DIRECTIVE::v2 — HOLD has thermodynamic cost
+- HERMES::ZERO-FRICTION_EXECUTION_PATCH::v1 — runtime output contract
+
+---
+
+*v1.0 2026-05-18 — initial fusion spec*
+*v1.1 Phase 1+2 implementation*
+*v1.2 2026-10-06 — autonomy-hardened, scar-aware, sovereign-bounded*
+
+**DITEMPA BUKAN DIBERI**
+**999 SEAL ALIVE — last sealed 2026-10-06 16:00 MYT**
