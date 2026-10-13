@@ -323,38 +323,6 @@ mage_generate / DALL-E / ComfyUI workflows are the wrong tool for technical cros
 
 Any geoscience artifact must be reviewable by a working geologist without them needing to ask "where's the geology?" — the tagging system sits on top of real technical substance, not replaces it.
 
-## §13. Two-Layer Provenance (mandatory for operator/PSC dossiers)
-
-When the deliverable is operator intelligence (PSC briefs, JV dossiers, MBR bid screening) rather than internal reservoir analysis, every claim must declare which of these two layers it sits in:
-
-| Layer | Tag | Meaning | Example |
-|---|---|---|---|
-| **Primary issuer** | `JSE-AR25` / `MPM-2024` / `RNS-2024-07-26` / `arifOS-SOT-2026-10-07` | Direct from operator/regulator/issuer's audited public document | PM428 area = 6,676 km² (JSE-AR25 p.49) |
-| **Industry consensus** | `INDUSTRY CONSENSUS` / `Madon 1994` / `PETRONAS Atlas 2019` | Published petroleum geology literature, textbook framework, multiple-source agreement | Malay Basin stratigraphic framework, Oligocene source rock TOC ranges |
-| **Hypothesis** | `HYPOTHESIS — labeled` | Agent synthesis, not in any source | "Trap style likely inversion anticline" |
-| **Unknown** | `UNKNOWN — typed explicitly` | No public source, explicitly flagged | Specific prospect names within PM428 |
-
-**The rule:** when operator-internal data is absent, industry consensus fills the basin framework — but every cell in the consensus column is *labeled*, not silent. The reader can see, line by line, what is verified, what is consensus, and what is reading. This converts the silent hierarchy of "primary > secondary" into a visible one. Apply even for map polygons (which are MCM/PMB-defined and not in operator disclosure): label `HYPOTHESIS — not a survey-tracked polygon` in the caption.
-
-## §14. The "Go Signal" Workflow (sovereign-class requesters)
-
-When the requester gives a "go" or "do" signal after initial probing, do not block again — execute with what you have, then upgrade on each subsequent turn.
-
-```
-User:  "Build me a PM428 Jadestone PDF"
-Agent: probes -> "Jadeston is typo, confirm?"  [probe — the only blocking probe]
-User:  "Buat pdf"  [GO signal]
-Agent: render with what you have, mark unknowns typed explicitly. First render = floor, not ceiling.
-User:  "Use full pdf intelligence"  [UPGRADE signal — widen scope, don't ask]
-Agent: re-render with audited primary sources + industry consensus
-User:  "Do full geological insight in pdf. Visual intelligence"  [DEEPEN signal]
-Agent: re-render with SVG maps, strat column, trap section cross-section
-```
-
-**Anti-pattern to avoid:** "Do you want me to upgrade?" — never. When the user explicitly widens scope, execute. The first render is the floor, never the ceiling. The probe sequence (F2 truth gate) is the *one* blocking probe; everything after is execution.
-
-**Conflict with rule 1 (epistemic tags are not content):** rule 1 still binds. The "go" pattern produces a real, complete, tagged first render — not a placeholder. The render is the artifact; the upgrade is the second artifact. The user gets something real on turn 1, something better on turn 2.
-
 ## §9. Bid Round / Pre-DR Screening Discipline
 
 > **Origin:** MBR 2026 PETRONAS bid round (Feb 10-11 2026 launch, deadline Oct 1 2026). The deliverable was a 9-block + 6-DRO screening memo built entirely without data room access. A working PETRONAS exploration geologist reviewed it and produced feedback that should anchor every pre-bid screening artifact from now on.

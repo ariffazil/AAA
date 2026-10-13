@@ -244,9 +244,3 @@ set -a && source /root/.secrets/kunci-mas.env && set +a
 > **Chain:** BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS
 > **Invariant:** CAPABILITY ≠ AUTHORITY. 333 builds and never seals. 555 verifies and never seals. 888 judges and never seals itself. Only F13 seals. A-FORGE acts after seal. VAULT999 witnesses, never judges.
 > **Canonical ref:** `/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md`
-
-## RealityPlan Binding (F13_RATIFIED 2026-10-06 · sovereign "sah and cal")
-
-Every persistent plan = RealityPlan controller IR per `/root/AAA/schemas/reality-plan.schema.json`. `PLAN != ACTION != CONSEQUENCE != OBSERVATION` · `file != reality`.
-Emergence roles (SCOUT/CRITIC/BUILDER/WITNESS/TEMPORAL/ALLOCATOR/REPAIRER/SYNTHESIZER): `/root/AAA/instructions/aaa-emergence-v1.md` — reference only, may not redefine.
-Human-facing artifacts (doctrine_md · audit_report · sovereign_brief · decision_request · f13_binary_prompt · agent_alignment_change · new_artifact_in_repo) route to sovereign Telegram 267378578 per `/root/AAA/instructions/aaa-human-facing-delivery.md`. Schema/test/code/receipt/log do NOT route.

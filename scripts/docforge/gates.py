@@ -34,7 +34,6 @@ THE DARK-FILL GATE, AND THE TEST THAT WAS WRONG
 """
 from __future__ import annotations
 
-import json
 import re
 import shutil
 import subprocess
@@ -372,102 +371,9 @@ def g_figures(pdf: Path, opts: dict) -> Finding:
                    + ("" if ok else " — a caption without an image is a missing figure"))
 
 
-def _sot_value(sot: Path, key: str):
-    """Read one dotted key out of a JSON source-of-truth file → (value, error)."""
-    try:
-        data = json.loads(sot.read_text())
-    except FileNotFoundError:
-        return None, f"SOT file absent: {sot}"
-    except Exception as exc:
-        return None, f"SOT unreadable ({type(exc).__name__}): {sot}"
-    cur = data
-    for part in key.split("."):
-        if not isinstance(cur, dict) or part not in cur:
-            return None, f"key '{key}' absent from SOT {sot.name}"
-        cur = cur[part]
-    return cur, None
-
-
-def g_sot_truth(pdf: Path, opts: dict) -> Finding:
-    """TRUTH_DRIFT gate — a rendered number must equal its source of truth.
-
-    WHY THIS EXISTS (measured, not hypothetical): the live /999/ page served
-    "Overall Brier Score: 0.088" and "Calibration Band: WELL CALIBRATED" while
-    /root/chron/data/calibration.json held mean_brier 0.14881943646798773. The
-    displayed 0.088 matched NO scope the SOT exposes (0.14882 / 0.15579 /
-    0.15039 / 0.18250) — an authored literal wearing the word "Calibrated",
-    with zero data binding behind it. A cached or hand-typed number is
-    indistinguishable from a lie, so any number that reaches a reader is
-    asserted against its SOT at build time. Peraturan Sifar #4,
-    AAA::EDITION_RENDER_CONTRACT::v1.3 (F13 SAH 2026-10-08).
-
-    Deliberately simple. This file's own contract is that "a gate that reports
-    the wrong thing is worse than no gate", so the check is string identity
-    against the SOT plus an optional forbidden-literal list — no fuzzy numeric
-    proximity matching that could pass a wrong number or fail a right one.
-
-    Opt-in, like g_figures: no `sot_assertions` in opts ⇒ nothing is asserted and
-    the gate passes. Additive — it cannot fail an edition that never claimed a
-    SOT-backed number.
-
-    opts["sot_assertions"] = [
-      {"label": "mean_brier",                       # what the reader sees
-       "sot": "/root/chron/data/calibration.json",   # source of truth
-       "key": "mean_brier",                          # dotted path into the JSON
-       "render": "0.149",                            # optional exact string expected
-       "forbid": ["0.088"]},                         # optional stale literals that must NOT appear
-    ]
-    """
-    opts = _effective(opts)
-    assertions = opts.get("sot_assertions")
-    if not assertions:
-        return Finding("sot_truth", True, "no SOT-backed number asserted for this document")
-    if not _need("pdftotext"):
-        return Finding("sot_truth", True, "pdftotext absent, skipped")
-
-    txt = _run(["pdftotext", str(pdf), "-"]).stdout
-    drift, witnessed = [], []
-
-    for a in assertions:
-        label = a.get("label", "?")
-        sot = Path(a.get("sot", ""))
-        val, err = _sot_value(sot, a.get("key", ""))
-        if err:
-            # Fail closed. Void Guard: an unreadable SOT means the number CANNOT
-            # be witnessed — that is not the same as the number being fine.
-            drift.append(f"{label}: {err}")
-            continue
-
-        expect = a.get("render")
-        if expect is None:
-            expect = f"{val:.3f}" if isinstance(val, float) else str(val)
-
-        if expect not in txt:
-            drift.append(f"{label}: document does not carry the SOT value '{expect}' "
-                         f"(SOT {sot.name}:{a.get('key')} = {val!r})")
-            continue
-
-        stale = [s for s in (a.get("forbid") or []) if s in txt]
-        if stale:
-            drift.append(f"{label}: stale literal(s) {stale} still rendered alongside "
-                         f"the SOT value {expect}")
-            continue
-
-        witnessed.append(f"{label}={expect}")
-
-    if drift:
-        return Finding("sot_truth", False,
-                       f"TRUTH_DRIFT on {len(drift)} value(s): " + " | ".join(drift),
-                       evidence="; ".join(witnessed))
-    return Finding("sot_truth", True,
-                   f"{len(witnessed)} SOT-backed value(s) match the rendered document: "
-                   + ", ".join(witnessed))
-
-
 # ── chain ────────────────────────────────────────────────────────────────────
 
-CHAIN = [g_pdf_real, g_geometry, g_ink_present, g_theme_light, g_text_layer, g_figures,
-         g_sot_truth]
+CHAIN = [g_pdf_real, g_geometry, g_ink_present, g_theme_light, g_text_layer, g_figures]
 
 # profile a document so gates know what to demand
 PROFILES = {

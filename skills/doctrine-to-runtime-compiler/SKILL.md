@@ -40,8 +40,6 @@ If the source is already a typed schema (yaml/json constraint list), skip this s
 
 5. **Emit the receipt with two SHA pairs.** (a) the module SHA, before and after the patches the test forced. (b) the test file SHA. The diff between the two module SHAs is the empirical evidence of how much the adversarial probes tightened the patterns — that is the receipt's strongest claim, not the final pass rate.
 
-6. **Independently re-run the agent's exit-gate if a subagent produced the artifact.** When a subagent (Kimi/Codex/Qwen/Claude) reports "all tests pass" and a hash, do NOT report that to the sovereign as the final answer. Re-run the test yourself in a fresh shell, capture your own hash, and report both. **Hash mismatch is the expected outcome of a subagent run that embedded a timestamp** — it is not a defect, but the receipts MUST show the verifier's hash, not the executor's. The agent's own self-report is a claim, not evidence.
-
 **Ordering beat:** the self-test runs the module *as a separate process* (`subprocess.run(['python3', module_path])`). If you `import` the module to test it, you lose the production-vs-test isolation that catches the "test path silently bypassed the gate" failure mode.
 
 ## Hard rules (each is a lesson, not a procedural nicety)

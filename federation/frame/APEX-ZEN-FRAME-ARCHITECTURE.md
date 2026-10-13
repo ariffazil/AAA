@@ -1,11 +1,9 @@
 # APEX-ZEN FRAME — Independent Epistemic Observatory Architecture
 
-> **Status:** F13_RATIFIED_CONSTITUTIONAL · 2026-10-06
-> **Date:** 2026-09-17 (draft) · 2026-10-06 (ratified)
-> **Authority:** F13 directive ("deep research on how to apex-zen FRAME") → F13 binary (a) 2026-10-06 ("ratify surface-collapse now")
+> **Status:** DRAFT — pending F13 ratification
+> **Date:** 2026-09-17
+> **Authority:** F13 directive ("deep research on how to apex-zen FRAME")
 > **Companion doctrine:** APEX-ZEN-CANONICAL-COMPRESSION.md · FI_DRIFT_GOVERNANCE.md · AAA_FEDERATION_FRAME_BOUNDARY_ALIGNMENT.md
-> **Chamber SOT (live):** `curl http://127.0.0.1:18085/health` → `.chambers` (9 chambers — see /root/AAA/canon/FRAME-CHAMBER-SOT-2026-09-30.md)
-> **Ratification receipt:** Phase 0 ratified 2026-10-06 via F13 binary (a); Phases 1-4 deferred to separate F13 binaries per session receipt.
 > **Motto:** DITEMPA BUKAN DIBERI ⚒️
 
 ---
@@ -138,7 +136,7 @@ Judgment does not manufacture its own evidence.
               ┌─────────────────────┐
               │  frame-organ.service│  ← independent process
               │      :18085        │     independent failure domain
-              │  9 chambers        │     independent data store
+              │  6 chambers + rsi  │     independent data store
               └─────────────────────┘
                          │ READ ONLY
        ┌─────────────────┼─────────────────┐
@@ -189,7 +187,7 @@ arifOS MCP:  arif_init .. arif_seal + arif_ops_measure(mode=*)
 
 ### Preserves (everything else)
 - `frame-organ.service` on :18085 — running
-- All 9 chambers — active (baseline, probe, compare, trend, alert, report, rsi_verify, rejection, witness)
+- All 6 chambers + rsi_verify — active
 - Baseline data — untouched (FRAME owns it)
 - Trend log — untouched (FRAME owns it)
 - FI_DRIFT_GOVERNANCE doctrine — canon
@@ -229,11 +227,11 @@ This directly addresses the arif_mind_reason/arif_stack_health_probe anomaly.
 
 | Phase | Description | Status |
 |-------|-------------|--------|
-| 0 | Pre-flight audit + architecture doc | ✅ DONE 2026-09-17 (draft) · RATIFIED F13 2026-10-06 (binary a) |
-| 1 | Build arif_ops_measure adapter in arifOS | ⏸ DEFERRED — separate F13 binary (constitutional-class kernel surgery) |
-| 2 | Verify equivalence (output match + latency) | ⏸ DEFERRED — separate F13 binary (requires Phase 1) |
-| 3 | Retire frame-mcp.service | ⏸ DEFERRED — separate F13 binary (requires Phase 2 pass) |
-| 4 | Add MCP surface consistency check to FRAME | ⏸ DEFERRED — separate F13 binary (additive, runs on FRAME side) |
+| 0 | Pre-flight audit + architecture doc | ✅ DONE 2026-09-17 |
+| 1 | Build arif_ops_measure adapter in arifOS | PENDING |
+| 2 | Verify equivalence (output match + latency) | PENDING |
+| 3 | Retire frame-mcp.service | PENDING |
+| 4 | Add MCP surface consistency check to FRAME | PENDING |
 
 ---
 

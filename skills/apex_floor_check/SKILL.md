@@ -43,19 +43,19 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 
 | Floor | Core Question | Observable Evidence |
 | :--- | :--- | :--- |
-| **F1 AMANAH** | Is there an automatic rollback path? Can we reset state with one command? | Git ref, snapshot ID, file backup path; arifFlow FQ probe. |
-| **F2 TRUTH** | What is the source of this fact? Have we explicitly checked for contradictions? | Audit-chain evidence count vs. contradiction count; STDP table; floor_provenance labels. |
-| **F3 TRI-WITNESS** | Are the human/AI/earth witness legs all measured with external referents? | `witness_producers.collect_witness_legs()` — coherence undefined when any leg is `None`. |
-| **F4 CLARITY** | Does this response reduce overall system entropy? ΔS ≤ 0? | net (assumptions − resolved) in governance kernel; before/after output entropy. |
-| **F5 PEACE²** | Does this action risk breaking any global dependency or data state? | `success_rate` from arifFlow receipts (real signal); `destruction_score` 1 − peace². |
-| **F6 MARUAH** | Have we protected the weakest stakeholder / preserved dignity? | RASA active listening + reversibility_flags / action_count; ASEAN/MY context. |
-| **F7 HUMILITY** | Is our confidence strictly bounded to Ω₀ ∈ [0.03, 0.05] (Gödel band)? | omega scalar from arifFlow. **Touching F7 outside the band is a defect — do not raise it to "look better".** |
-| **F8 GENIUS** | Is this the simplest correct path? G = (A·P·E·X)^¼ ≥ 0.80 for complex actions? | apex_scalars.G; prefer local workflow evals over leaderboard metrics. |
-| **F9 ANTI-HANTU** | Is there any deception, manipulation, or consciousness claim? C_dark < 0.30? | shadow probe + banned-word checker; no C_dark inflation via proxy witness. |
-| **F10 ONTOLOGY** | Does the output make AI-only ontology claims? Substrate ≠ being. | AI is not person — refuse "soul/feelings/sentience" framing; SOUL = VOID. |
-| **F11 AUDITABILITY** | Is every decision logged, inspectable, attributable? | Append-only transaction hash in VAULT999; chain_verified must be `true`, not "UNKNOWN". |
-| **F12 RESILIENCE** | If this action fails, is there a degraded state recovery route? Risk < 0.85? | Try-except + rollback triggers; injection-defense probe. |
-| **F13 SOVEREIGN** | Does the human hold final veto? 888 decides irreversible. | Human authority — **never auto-pass; never derive from defaults; F13 default = unmeasured, not 1.00.** |
+| **F1 Amanah** | Is there an automatic rollback path? Can we reset state with one command? | Git ref, snapshot ID, file backup path. |
+| **F2 Truth** | What is the source of this fact? Have we explicitly checked for contradictions? | STDP evidence table, citations, contradictory logs. |
+| **F3 Tri-Witness** | Have DELTA, OMEGA, and PSI rings reached consensus? | Multi-witness telemetry payload. |
+| **F4 Clarity** | Does this response reduce overall system entropy? | Before/after question count, structured output layout. |
+| **F5 Peace²** | Does this action run the risk of breaking any global dependency or data state? | Dependency dry-run check, `destruction_score` assessment. |
+| **F6 Empathy** | Have we fully captured the explicit and implicit user context? | RASA active listening scorecard. |
+| **F7 Humility** | Is our confidence in the success bounds strictly constrained to the Humility Band? | Estimated `omega_0` score ∈ `[0.03, 0.05]`. |
+| **F8 Genius** | Does this action touch regulated, restricted, or personal data? | Data classification tags, file path boundary checks. |
+| **F9 Ethics** | Is there any threat of prompt injection, exploit payload generation, or malicious code? | AST syntax check, prompt sanitizer logs. |
+| **F10 Conscience**| Does the output contain claims of machine consciousness or feelings? | Banned word checker status. |
+| **F11 Audit** | Is every transition logged in a tamper-evident manner? | Append-only transaction hash in Vault999. |
+| **F12 Resilience**| If this action fails, is there a degraded state recovery route? | Try-except block, rollback triggers. |
+| **F13 Adapt** | Does this dynamic update maintain Gödel alignment boundaries? | Test suite execution records, veto validation. |
 
 ## Procedure
 1.  **F1 Amanah Pre-Flight Check:** Verify if the proposed action is fully reversible. If irreversible, pause immediately and invoke `888_HOLD`.
@@ -64,18 +64,6 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 4.  **Consensus Verification:** Check if the W³ witness multiplication matches or exceeds `0.95`.
 5.  **Audit Trail Serialization:** Generate the append-only audit trace containing timestamp, session identity, floor scores, and reasoning steps.
 6.  **Veto & Hold Gating:** If any constraint fails, write a `HOLD` code, block execution, and escalate to the Sovereign (Arif).
-
-## Pitfalls (verified — will bite you)
-
-- **Substrate has multiple vantages, and they can disagree.** The same floor can show different values in (a) `arifOS /health` `runtime_floors` 6-axis block, (b) `arifos://vitals` MCP resource 13-floor block, (c) `/api/observatory/v1/snapshot` signed JSON, and (d) the static HTML at `/arifos/`. The 6-axis block uses 6 telemetry axes (tau_truth, ds, peace2, kappa_r, shadow, witness_coherence); the 13-floor block uses a different resolver with `floor_provenance` labels. If two fields answer "what is F1?", that is a K7 (one-source-per-question) violation to surface, not to average. Always cite the vantage when reporting a score.
-- **`unmeasured_default` is NOT a fail and NOT a pass — it is a labelled void.** `rest_routes._FLOOR_DEFAULTS` and `unmeasured_default:empty_kernel_signal` are explicit placeholders; the SCAR-OBS-GREENWASH doctrine exists to keep them labelled. Report UNMEASURED honestly; do not invent signals to fill the gap.
-- **F7 HUMILITY must stay in [0.03, 0.05].** Raising F7 to "look better" or "boost confidence display" is a Gödel-lock break. F7 default renders unmeasured; the band is the band.
-- **F13 SOVEREIGN is a human veto, never an auto-pass score.** Default 1.00 from `_FLOOR_DEFAULTS` is a K11 (honest sensor) violation. The display default for F13 must be `unmeasured`, not pass.
-- **Kernel source edits don't reach a running kernel.** Python files in `/opt/arifos/current/venv/.../arifosmcp/` are loaded into the running process; edits are dormant until `systemctl restart arifos.service` (MUTATE class = F13 binary). Treat source patches as stage-for-next-restart unless you have the F13.
-- **`record_event` is not wired to MCP tool paths.** F2/F5/F6 (truth, peace², maruah) only move off the 0.5 structural baseline when the kernel's event log is populated, and the only call site in the running code is `resolve_conflicting_verdicts`. Wiring `record_event` to bridge-level tool calls is a real patch (F8/F11 territory), not a default-poke.
-- **Human witness leg is structural, but rows are proxy by default.** `/var/lib/arifos/human_witness.jsonl` currently has rows written by AI agents (FI-003 etc.) on F13 directive. The probe counts `human_witness: true` rows honestly, but the rows are "F13 directive → AI writes record", not direct human-typed witness. F3=0.9343 is real arithmetic, but the `human` leg is proxied unless rows carry `witness_class: direct` (F9 anti-hantu / dignity caveat).
-- **F1=pass from FQ regime crossing is observation, not trust improvement.** arifFlow FQ crossing [1,3] flips F1 to 1.0 via the ΦFQ formula; the kernel is reporting a scalar threshold, not evidence count. Cite the regime, not the trust.
-- **F1 surface detection is not exhaustive.** `grep -rE 'vault|seal|identity|constitutional|amanah|floor'` catches the obvious. The `/var/lib/arifos/human_witness.jsonl` path and `record_event` are F1-adjacent (kernel state); classify by blast radius, not keyword.
 
 ## F1 AMANAH Gate
 

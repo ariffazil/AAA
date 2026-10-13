@@ -463,9 +463,6 @@ arif_seal(mode="session_close", payload="<bullets or summary>",
 ## SESSION EUREKA — SE-20261013-117336c7
 
 > **Sealed:** 2026-10-13T11:11:10Z | **Session:** AKS-e25345f235764f35 | **Actor:** `arif`
-## SESSION EUREKA — SE-20261005-919a84ad
-
-> **Sealed:** 2026-10-05T20:46:04Z | **Session:** SEAL-0e9b91dcfc9848de | **Actor:** `arif`
 > **Organs:** 7/7 alive | **Source:** arif_session_close_macro
 
 ### Insights
@@ -476,28 +473,5 @@ arif_seal(mode="session_close", payload="<bullets or summary>",
 4. AUDIT (FI-003 validation of the containment bundle): Dual-matrix reconciliation: Matrix A (fi-003, sha256 110eaafe...) vs Matrix B (fi-002). 10/18 disagreements resolved by direct re-probe: M13 CORRECT in A: schemas/memory_payload.py:162-165 decision_lifecycle/future_value/ authority/applicability present -> SCHEMA_DEFINED (B said NOT_FOUND — wrong) M16 CORRECT in A: memory/admissibility.py:294 'status can lie; time cannot' + :352 historical labelling -> IMPLEMENTED (B said NOT_FOUND — wrong) M1
 5. ARTIFACTS: M1_M18_ENFORCEMENT_MATRIX.yaml sha256 110eaafef4a494b675e0466351b45fba9759c94dd76d59ba446031671b23aeb2 MUSYAWAH_VERDICT_6Q.md sha256 fc26733ee9dded56f11468edc00118ec792a087f0d960658d32d4a91c1566d36 MEMORY_DREAM_REALITY_ALIGNMENT.md sha256 668807f85e30e96381c185e89974b8de61fe695330f225ee10c3870009a50ddf
 6. NOT CLAIMED: no canon mutation; no schema change; no dream-path move; no KCP-002 promotion; Q4 remains held; the 6 answers are F13-approved recommendations, execution still gated.
-1. F13 word SAH 2026-10-06 04:15 MYT. AGENTIC-ANTHROPOLOGY v0.1 promoted F13_RATIFIED_CHAT (B-tier) to F13_RATIFIED_CANON (A-tier). src=/root/AAA/instructions/agentic-anthropology-v0.1.md sha256=220941faae421f530aa03c08b645feb1577c7108925bb65687b9dc69686a726e. dst=/root/AAA/canon/AGENTIC-ANTHROPOLOGY-v0.1.md sha256=220941faae421f530aa03c08b645feb1577c7108925bb65687b9dc69686a726e (match). 4-step ceremony: [1] chattr -i /root/AAA/canon/ OK, [2] cp+sha256 OK match, [3] status header F13_RATIFIED_CHAT-
-
----
-
-## SESSION EUREKA — SE-20261007-b6cba56d
-
-> **Sealed:** 2026-10-07T04:44:17Z | **Session:** SEAL-5510265171344650 | **Actor:** `arif`
-> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
-
-### Insights
-
-1. _(no extractable insights — payload empty)_
-
----
-
-## SESSION EUREKA — SE-20261007-1b5af0bf
-
-> **Sealed:** 2026-10-07T07:26:34Z | **Session:** SEAL-aa08c92761074b92 | **Actor:** `arif`
-> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
-
-### Insights
-
-1. _(no extractable insights — payload empty)_
 
 ---

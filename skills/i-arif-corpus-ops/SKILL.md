@@ -3,6 +3,9 @@ name: i-arif-corpus-ops
 description: "Operate, verify, and extend the I-ARIF constitutional training corpus at /root/forge_work/i-arif-prep (SFT/DPO/VAL/redteam/trajectories). Covers file inventory, JSONL formats, manifest+reward_spec checks, the GAP 3b EMD trajectory schema, and claim-vs-corpus verification when Arif sends i-ARIF specs, proposals, or research PDFs."
 ---
 
+> WARNING DRIFT 2026-10-14: local mirror /root/forge_work/i-arif-prep ABSENT (probed: dir + *.jsonl missing, depth-5 sweep /root). HF dataset ariffazil/I-ARIF-CANON = live SOT (card 2026-10-04, 1,699 rows, 7 subsets, redteam=100 probes, not 10). Local commands below fail until mirror restored (one-command T1 restore, only on F13 ask; license AGPL research-only, incorporation needs F13 approval).
+
+
 # I-ARIF Corpus Ops
 
 Durable map of the i-ARIF training corpus. Arif's north star: build own agentic model (I-ARIF) — **data = moat**. This skill is the map of the moat: where things live, which manifest is truth, how to verify claims against live state, and the EMD trajectory spec that keeps arriving as PDFs/proposals.

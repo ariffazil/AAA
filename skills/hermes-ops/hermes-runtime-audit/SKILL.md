@@ -541,54 +541,6 @@ Build the diff with `difflib.unified_diff` over the original vs patched string, 
 # Decision (F13): ____________  (SAH □□ / TUNGGU □□ / UBAH □□)
 ```
 
-### §9.1 — Isolated test staging for live-tree validation
-
-When the question is "does this uncommitted / untracked / WIP patch actually work?" against the
-installed runtime, do **not** run pytest in the live venv and do **not** install dev deps into it.
-Stage a copy and run there. Procedure:
-
-1. **Copy the source tree into the agent's own scratch space** (never under the install dir or
-   the live home): `mkdir -p ~/.hermes/cache/scratch/<job>/src && tar --exclude=__pycache__
-   --exclude=.git --exclude=.venv --exclude=node_modules -cf - -C /usr/local/lib/hermes-agent . |
-   tar -xf - -C ~/.hermes/cache/scratch/<job>/src`. The excludes stop the copy from carrying
-   gateway-owned bytecode and 1+ GB of git objects. Confirm the file you intend to test has the
-   same SHA-256 in the staged copy as in the live tree (`sha256sum live staged`) — a mismatch
-   means the copy was lossy and the result means nothing.
-2. **Build the venv in the staged dir, not in result/ or any sub-path you typed.** `uv venv`
-   creates `./venv` relative to the **current working directory**; it ignores the second
-   positional argument. Either `cd` into the desired location first, or accept `./venv` and
-   reference the bin path accordingly. Re-find the bin with
-   `find ~/.hermes/cache/scratch/<job> -name pytest -type f` if unsure.
-3. **Install the minimum dependency set, not the project.** `uv sync` would re-resolve the full
-   pyproject dependency tree (≥3,600 packages on this runtime) and may reconcile the lockfile.
-   For a single test file, `uv pip install "pytest==X.Y.Z" "pytest-asyncio==X.Y.Z" "iniconfig"
-   "pluggy" "packaging==X.Y" "tomli-w==X.Y"` against the venv is enough — pytest resolves
-   production modules through `cwd` on `sys.path` because the project's `tests/conftest.py`
-   inserts the project root there. Read the exact locked versions from `uv.lock` first; do not
-   invent them.
-4. **Pre-flight: confirm the test's imported symbols actually exist in the production module.**
-   `grep -E "^(def |class |_[A-Z_]+ = )" <module>.py | head` against the file the test imports.
-   A test that expects `_entity_grounding_needs_probe` will fail with `AttributeError` if the
-   contract was specified but never landed; the result is a *behaviour-assertion* failure, not
-   an environment failure, and the remediation is the patch, not pytest. The ratio of
-   `passed / (passed + failed)` distinguishes the two failure classes: an environment failure
-   looks like "0 passed, 1 collection error" or "all tests error with ModuleNotFoundError"; a
-   behaviour failure looks like "≥1 passed, the rest fail with AttributeError / ImportError /
-   AssertionError against a real module".
-5. **Run pytest with the cache disabled** (`-p no:cacheprovider`); the only writes inside the
-   staged tree are `__pycache__/*.pyc` for the test file and the modules it imports, and those
-   die with the staging dir's `rm -rf` at end of task.
-6. **Run the no-production-change verification as a single independent command, not a chained
-   pipeline.** A `set -e` block with `sha256sum ... > BEFORE && ... > AFTER && diff -q BEFORE
-   AFTER` is frequently flagged by command-scanners (nested executable body, retried pipe) and
-   either gets auto-approved to a wrong exit or silently drops the AFTER step. Split into
-   independent steps that each stand alone; verify the second snapshot file actually exists
-   before diffing. A verification step that cannot run is the same as not having one.
-
-The hermetic conftest at `tests/conftest.py` already deletes credential env vars and
-sandbox-es `HERMES_HOME` to a per-test tempdir — do not pre-set `HERMES_HOME` from outside or
-you defeat the guard and the conftest will write fixture rows into the live `state.db`.
-
 ### Pitfalls specific to install-dir mutation
 
 - **One install can host many environments.** `/root/.hermes/installs/<install-sha>/environments/<env>/workspace/`
@@ -672,24 +624,6 @@ you defeat the guard and the conftest will write fixture rows into the live `sta
   them as suspect and they do not load until the next gateway restart. The CLI path writes an auditable
   line to `gateway.log` and the change is picked up without a restart. See
   `references/probe-cookbook.md` §5a.
-- **Claim a side effect with `find -newer <pre-session-anchor>`, not from a pattern-match of mtimes.**
-  A previous receipt reported "1 .pyc written by the failed pytest" based on a silent bash `for` loop
-  whose NO-PYC branches were mis-parsed as matches; the real check was `find <tree> -newer
-  <anchor>` against a file written **before** the session started, filtered by hand. Two failure
-  shapes hit the same trap: (a) a loop that prints nothing on a no-match returns empty output that
-  reads like "nothing to report" and gets read as "matches confirmed"; (b) `ls -lt` against a
-  directory that has churn from a prior session makes the mtime-sorted head look like a current
-  write. The discipline: anchor the search to a file **proven** to pre-date the session (the
-  `LIVE_BEFORE.sha256` snapshot itself works), then any file in the live tree newer than the anchor
-  is a candidate side effect, named and counted one by one. Anything older is owned by something
-  else — say so explicitly.
-- **`hermes update --check` is not side-effect-free.** The "check" path performs a `git fetch
-  --tags` against the configured remote and may warm-import modules on first call; the live runtime
-  writes `.pyc` files under `.hermes-runtime/python/.../cpython-X.Y.Z-linux/.../__pycache__/`
-  during the first invocation, and the agent has no way to tell those apart from gateway-owned
-  bytecode without an anchor. Treat any `--check` invocation as a real probe: record the time
-  before, then attribute the new `.pyc` set to the live runtime's import path, never to the
-  check itself, unless a `find -newer` distinguishes them.
 
 See `references/probe-cookbook.md` for the full one-shot command set, including the storage attribution
 query and the surface-inventory sweep. See `references/state-store-queries.md` for the behavioural-record
