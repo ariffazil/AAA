@@ -136,69 +136,7 @@ Then embed charts in HTML using `file://` URIs (simpler than base64):
 
 **Verified 2026-08-09:** `file://` URIs work in WeasyPrint for local files. No base64 encoding needed. Charts render correctly in PDF.
 
-## Path C — Markdown → WeasyPrint PDF (no HTML template, no JS)
-
-When the source is a `.md` file (audit, classification table, doctrine artifact, sovereign spec) and the deliverable is a PDF the sovereign reads in Telegram, this is the lightest path. The current `html-pdf-reporting` skill describes paths A and B (HTML+matplotlib or HTML+CSS charts). Path C is the markdown-direct path proven tonight.
-
-**When to use path C:**
-- Source is markdown, not raw data
-- No charts needed; tables and prose carry the content
-- The sovereign reads in Telegram via `MEDIA:` (PDF file viewer, not a browser)
-- One-shot document, not a recurring report
-- A single Python script does MD→HTML→PDF in one call
-
-**Why path C:**
-- The HTML-template-and-CSS skill covers data reports. Audit/classification PDFs are mostly tables, source quotes, and the `[OBS] / [REPORTED] / [DECLARED]` truth-ladder tags. Charts are noise.
-- Building a CSS template per document inflates context (10+ KB of CSS for a 50-row table).
-- The output is structurally identical to a markdown viewer rendered to print: head, body, tables.
-
-**Recipe (proven 2026-10-06, multi-document: math inventory, narrative classification, items-1-3 exec):**
-
-```python
-import markdown as md_lib
-from weasyprint import HTML, CSS
-
-src = Path('/abs/path/source.md')
-dst = Path('/abs/path/out.pdf')
-md_text = src.read_text()
-
-# Convert MD → HTML (extensions matter: tables, fenced_code, toc)
-html_body = md_lib.markdown(md_text, extensions=['tables', 'fenced_code', 'toc', 'attr_list', 'def_list'])
-
-# Inline CSS — no external file, no @import, no CDN
-css = """
-@page { size: A4; margin: 18mm 16mm; @bottom-right { content: counter(page) " / " counter(pages); font-family: 'DejaVu Sans', sans-serif; font-size: 9pt; color: #666; } }
-@page :first { @bottom-right { content: ''; } }
-body { font-family: 'DejaVu Sans', sans-serif; font-size: 10pt; line-height: 1.42; color: #1a1a1a; }
-h1 { font-size: 18pt; font-weight: 700; color: #5a1a1a; margin: 0 0 4pt; padding-bottom: 6pt; border-bottom: 2pt solid #5a1a1a; }
-h2 { font-size: 14pt; font-weight: 700; color: #5a1a1a; margin: 14pt 0 6pt; padding-bottom: 3pt; border-bottom: 1pt solid #c0a0a0; page-break-after: avoid; }
-h3 { font-size: 11.5pt; font-weight: 700; color: #7a3a3a; margin: 10pt 0 4pt; page-break-after: avoid; }
-table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 8.5pt; page-break-inside: avoid; }
-th { background: #5a1a1a; color: white; padding: 4pt 6pt; text-align: left; font-weight: 700; }
-td { padding: 3pt 6pt; border: 0.5pt solid #d0c0c0; vertical-align: top; }
-tr:nth-child(even) td { background: #faf5f5; }
-code, pre { font-family: 'DejaVu Sans Mono', monospace; font-size: 8.5pt; background: #f0e8e8; padding: 1pt 3pt; }
-blockquote { border-left: 2.5pt solid #7a3a3a; padding: 4pt 8pt; margin: 6pt 0; background: #faf5f5; font-style: italic; }
-"""
-
-HTML(string=f"<!DOCTYPE html><html><head><meta charset='utf-8'></head><body>{html_body}</body></html>").write_pdf(
-    target=str(dst), stylesheets=[CSS(string=css)]
-)
-```
-
-**Two pitfalls specific to path C:**
-
-1. **`pip install --break-system-packages` is required for `markdown`** in the same way as weasyprint (PEP 668 externally-managed-environment). The base hermes venv does not have `markdown`. Install once, or fall back to a hand-rolled minimal MD→HTML (just regex on `^#+ ` for headers, `|` for tables). Verified 2026-10-06: `python3 -c 'import markdown; print(markdown.__version__)'` returned 3.11 after install.
-2. **`write_file` refuses to overwrite a recently-read script.** Re-using the path of a script you already created in the same session will be rejected as a stale-write guard. Either delete the old script first, or write to a new path with `_run.py` suffix. Verified 2026-10-06: `compile_horizon_seal.py` was accepted on first write; re-writing it as `exec_items_1_3_run.py` required the new path.
-
-**When NOT to use path C:**
-- Document needs data charts (use path A)
-- Document is for a civic / public surface where brand matters (use path A or B with the cover/body templates in `templates/`)
-- Document is a surat terbuka / formal letter (use the formal-letter pattern noted below in this skill)
-
-**The path is so light it can be re-run per artifact.** When the source markdown changes, re-rendering takes one second and 50-100 KB PDF. Treat the script as ephemeral; keep the source MD as the durable artifact.
-
-## Cross-cutting pitfalls (paths A/B/C)
+## Pitfalls
 
 - **doctype/head encoding**: include `<meta charset="utf-8">` or WeasyPrint mangles non-ASCII.
 - **Google Fonts**: WeasyPrint downloads them; if offline, fall back to system fonts (Helvetica, Arial).
@@ -206,12 +144,11 @@ HTML(string=f"<!DOCTYPE html><html><head><meta charset='utf-8'></head><body>{htm
 - **Long URLs**: in tables, use display:none on mobile but allow line-wrap in print.
 - **External CDN scripts**: Chart.js CDN works in interactive HTML; PDF must not depend on it.
 - **Image rendering**: external `<img src="https://...">` may fail offline; for portability, base64-embed or copy locally.
-- **Matplotlib `Circle`/`FancyBboxPatch` import bug**: import via `matplotlib.patches`, NOT `matplotlib.pyplot`. Always `from matplotlib.patches import Circle, FancyBboxPatch`.
-- **`weasyprint` not installed by default** on this host — install with `pip install --break-system-packages weasyprint` (PEP 668). Same flag needed for `markdown` package (path C).
-- **Filename pattern discipline**: matplotlib chart files must be named `##_name.png` (zero-padded) and embedded via base64 data URI. Don't reference local paths in `<img src>`.
-- **Filename builder `.png` extension bug**: include the extension in filename builders — `f"{i+1:02d}_{name}.png"` not `f"{i:02d}_{name}"`.
-- **Two-image-object chart verification**: each PNG renders as TWO PDF image objects (`image` + `smask` alpha). For 12 charts, `pdfimages -list | grep -c image` = 24 (or 20 with aliasing). The 2×-ish ratio is the success signal.
-- **`write_file` stale-write guard**: re-using the path of a script you already created in the same session will be rejected. Either delete the old script first, or write to a new path with `_run.py` suffix. (Path C specific; covered above.)
+- **Matplotlib `Circle`/`FancyBboxPatch` import bug**: these must be imported via `matplotlib.patches`, NOT `matplotlib.pyplot` — the latter raises LSP warnings but generates correct output. Verified 2026-08-06: wrong import produces runtime errors only at matplotlib backend init. Always use `from matplotlib.patches import Circle, FancyBboxPatch` for shape primitives; `plt.subplots(...)` for axes only.
+- **`weasyprint` not installed by default** on this host — install with `pip install --break-system-packages weasyprint` (PEP 668 prevents system pip install; `--break-system-packages` is needed on this image). Verified 2026-08-06: `pip install weasyprint` alone fails with "externally-managed-environment" error.
+- **Filename pattern discipline**: matplotlib chart files must be named `##_name.png` (zero-padded) and embedded via base64 data URI for portability. Don't reference local paths in `<img src>` — WeasyPrint may not resolve them relative to the HTML's CWD. Use `data:image/png;base64,<...>` only.
+- **Filename builder `.png` extension bug**: when iterating chart filenames in Python, the easy bug is `f"{i:02d}_{name}"` (missing `.png`). Verified 2026-08-06 v2 build: `b64()` got `01_chartname` instead of `01_chartname.png` → `FileNotFoundError`. Always include the extension in the filename builder: `f"{i+1:02d}_{name}.png"`.
+- **Two-image-object chart verification**: each PNG renders as TWO PDF image objects (`image` + `smask` alpha channel). For 12 charts, `pdfimages -list | grep -c image` = 24 (or 20 with aliasing). Verified 2026-08-06: Gentari v2 had 12 charts → 20 image objects (some PNGs share alpha masks). The 2×-ish ratio is the success signal — if you see chart_count × 1, the smask is missing and your charts may render incorrectly.
 
 ## Support files
 

@@ -1,5 +1,8 @@
 # Architecture / Capability Claims — Verification Recipe
 
+> WARNING DRIFT 2026-10-14: local mirror /root/forge_work/i-arif-prep ABSENT (probed: dir + *.jsonl missing, depth-5 sweep /root). HF dataset ariffazil/I-ARIF-CANON = live SOT (card 2026-10-04, 1,699 rows, 7 subsets, redteam=100 probes, not 10). Local commands below fail until mirror restored (one-command T1 restore, only on F13 ask; license AGPL research-only, incorporation needs F13 approval).
+
+
 When a sibling (or external essay) presents a structural architecture claim — *"arifOS is capability-first"*, *"the 3-layer model is real"*, *"MCP mirrors are live"*, *"7-layer architecture complete"* — the verification discipline is: **don't argue the prose; probe the artifacts the prose cites.**
 
 The recurring pattern in this session (2026-08-06): the structural insight is correct, but the runtime doesn't yet match the design. The honest verdict shape is **"DESIGNED, NOT IS"** — architecture is sound, execution is 60% there.

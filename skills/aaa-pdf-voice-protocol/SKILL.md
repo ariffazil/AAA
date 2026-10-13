@@ -101,16 +101,3 @@ labels = translate_figure_legend(["[OBS] Malay Basin", "[SPEC] other 14"])
 
 The translator is idempotent and stateless. Apply once, ship forever.
 
-## Two-Layer Provenance Tagging (for operator/PSC dossiers)
-
-The voice protocol's epistemic translation layer covers internal state tags (`[OBS]`, `[DER]`, `[INT]`, `[SPEC]`). For operator intelligence deliverables (PSC briefs, JV dossiers, MBR bid screening), a *separate* provenance layer applies:
-
-| Tag class | Format | When |
-|---|---|---|
-| Primary issuer | `JSE-AR25` / `MPM-2024` / `RNS-2024-07-26` / `arifOS-SOT-2026-10-07` | Direct from operator/regulator/issuer's audited public document |
-| Industry consensus | `INDUSTRY CONSENSUS` / `Madon 1994` / `PETRONAS Atlas 2019` | Published petroleum geology literature, textbook framework, multiple-source agreement |
-| Hypothesis | `HYPOTHESIS — labeled` | Agent synthesis, not in any source |
-| Unknown | `UNKNOWN — typed explicitly` | No public source, explicitly flagged |
-
-These are **not epistemic confidence levels** (those are the `[OBS]/[DER]/[INT]/[SPEC]` set). These are **provenance classes** — the source of the claim, not the confidence in it. The two systems are orthogonal: a claim can be `[OBS]` (observed) AND `JSE-AR25` (primary issuer) — those mean different things. The voice protocol translates the confidence set into prose; the provenance set stays as inline tags for auditability. Operator dossiers need both.
-

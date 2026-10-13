@@ -30,9 +30,3 @@ last_seen_source: filesystem probe — directory exists, no recent activity
 
 This actor's status is determined by external probe — not by self-claim.
 Without external witness, the record is archive.
-
-## RealityPlan Binding (F13_RATIFIED 2026-10-06 · sovereign "sah and cal")
-
-Every persistent plan = RealityPlan controller IR per `/root/AAA/schemas/reality-plan.schema.json`. `PLAN != ACTION != CONSEQUENCE != OBSERVATION` · `file != reality`.
-Emergence roles (SCOUT/CRITIC/BUILDER/WITNESS/TEMPORAL/ALLOCATOR/REPAIRER/SYNTHESIZER): `/root/AAA/instructions/aaa-emergence-v1.md` — reference only, may not redefine.
-Human-facing artifacts (doctrine_md · audit_report · sovereign_brief · decision_request · f13_binary_prompt · agent_alignment_change · new_artifact_in_repo) route to sovereign Telegram 267378578 per `/root/AAA/instructions/aaa-human-facing-delivery.md`. Schema/test/code/receipt/log do NOT route.

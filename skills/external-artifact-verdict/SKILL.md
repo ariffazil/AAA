@@ -61,32 +61,6 @@ Use this skill when:
 
 **Critical distinction from `claim-validation-protocol`:** That skill validates *claims about the federation*. This skill validates *delivered code artifacts* AND *intra-federation agent audit findings*. Different evidence model — code is observable, claims about the federation often are not.
 
-## Doctrine / Architecture Drops — Different Failure Mode
-
-A third recurring shape: the external AI delivers **architectural specification** — schema, doctrine, ontology, manifest, "spec for X," "minimal architecture for Y." The artifact is *prose + JSON Schema + a list of recommended file paths*. The failure mode is **not fabrication** (the spec is usually coherent) but **over-embodiment**: the receiver creates the files immediately, fans out across many surfaces (per-agent doctrine, schemas, tests, hooks), and ships a far larger delta than the spec actually required.
-
-The verification protocol for doctrine drops is the same in shape (read all → classify → verify named entities → probe) but the disposition is different: most code drops are RUN to confirm; most doctrine drops are **read and either compressed or staged**, not executed. The risk of misreading a doctrine drop is not "tool returned 0" but "10 files written that the doctrine never required, including some that contradict the doctrine's own corrections."
-
-### Two-extra steps for doctrine drops
-
-1. **Read ALL the pastes before mutating.** Long external synthesis often includes a self-correction half-way through ("don't make this artifact-factory" or "this is the projection, not the source"). If you start writing files after the first half, you'll embody the *first* position and miss the second. The protocol of "extract → inventory → read" matters MORE for doctrine than for code, because doctrine's "tests" are embedded in the prose.
-
-2. **Classify the spec's own bundle law before applying it.** Most external doctrine drops include a "minimal architecture" section. The honest implementation is: (a) what the spec says is canonical (the schema/contract), (b) what the spec says is generated projection (the doctrine MD), (c) what the spec says is "don't create yet" (the skill, the tests, the per-agent fanout). Apply the same separation the spec applies to itself. If the spec says "schema = truth, doctrine = projection," don't create doctrine as a separate canonical file.
-
-### When a doctrine drop includes corrections of itself
-
-Often a second paste arrives that says: "the earlier version was over-built; here's the correction." The right move is **classify, baseline, revert** before any new construction:
-- STEP 1: Establish baseline — which files in this session are mine vs pre-existing
-- STEP 2: Classify each session mutation by intended/consumer/authority/reversibility/verification/consequence
-- STEP 3: Restore deterministic state — remove only isolated unsupported changes
-- STEP 4: One thin vertical slice aligned to the correction
-- STEP 5: Three behavioral cases (positive: 1, 2, 3; negative: 4, 5)
-- STEP 6: Report witnessed state in a fixed shape (BASELINE / SUPPORTED MUTATION / TEST EVIDENCE / PREDICTED / OBSERVED / REMAINING DELTA)
-
-Anti-pattern: treating a doctrine drop's first half as "what to do" and the second half's correction as "additional context." The correction is the canonical version; the earlier version is the failure mode.
-
-Full technique + worked case (doctrine drop → over-build → revert → thin vertical slice): `references/doctrine-architecture-drops.md`.
-
 ## Intra-Federation Cross-Agent Audit
 
 The same verification protocol applies when another federation agent (OpenCode, OpenClaw, Kimi Code, etc.) delivers a system audit or findings report — not just external AI code drops. The source is different (internal vs external) but the epistemic risk is the same: **a single agent's self-report is INT (interpreted) until cross-witness verification confirms OBS (observed).**

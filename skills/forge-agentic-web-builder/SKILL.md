@@ -252,27 +252,6 @@ GREEN: parsers, converters, disposable analysis. RED never self-grant: secrets, 
 - ❌ Advertising 128 tools as intelligence — six missions + Canonical 8
 - ❌ Deploying .well-known/robots.txt without no-cache header — Cloudflare serves stale Agentmap directives for hours, all 4 Lighthouse vectors appear broken from CDN while origin is correct
 - ❌ Fixing CDN stale by hand-editing live tree instead of fixing Caddy config — the Caddy config IS the source of truth
-
-## OP 10 — SEALED CONSTITUTIONAL PAGE UPDATE (probe before patch)
-
-Sealed pages (e.g. `/vitals/`, `/000/`, `/999/`, `/propa/`) carry a constitutional lock — display verdict withheld, BODY override active, or F13-anchored tripwire. The HTML is **rendered** from a source-of-truth (e.g. `public/data/wealth/<entity>.json` + `scripts/render-<page>.cjs`); hand-edits get clobbered on next render. They are also covered by a **parity test** (source JSON ↔ dist HTML ↔ JSON-LD) that runs in CI.
-
-**Probe order before any proposal to mutate a sealed page:**
-
-1. **Read live HTTP** — `curl -sI` to confirm page is live and grab `last-modified` + headers (CSP, link, last-modified). If `last-modified` is today and recent (≤24h), another agent just sealed. **Stop and disclose to user before proposing mutation.**
-2. **Identify SOT** — check for a `public/data/.../<entity>.json` and a `scripts/render-<page>.cjs` (or `.py`). If found, the JSON is the authority; HTML is output. If absent, the HTML itself is SOT.
-3. **Read the parity test** — `tests/<page>-parity.test.cjs` (or equivalent) is binding. List the assertions. Any edit must keep them green. Renderer must remain idempotent (re-run produces byte-identical dist).
-4. **List what is sealed** — JSON-LD `display_pulse`, `display_verdict`, `pre_lock_pulse`, `pre_lock_verdict`, `fy*_declared_state.feeds_scoring` flags are constitutional anchors. They are not "to be made prettier" — they encode the withheld-verdict design.
-5. **Disclose to user** — present the live state, the SOT location, the parity contract, the sealed fields, and ask the user for **scope** before touching anything. Options: (a) numbers-only via SOT, (b) generator change (F13-class), (c) new page, (d) stop.
-
-**Failure modes to avoid:**
-
-- ❌ Jumping straight to a "v2 design" without probing — the seal belongs to a previous session's sovereign decision; you will clobber it and the user has to ask "init new session" to reset.
-- ❌ Treating "update AND upgrade" as one action — the `update` half may be silent T1; the `upgrade` half is constitutional. Split them and ask.
-- ❌ Editing HTML by hand when a renderer exists — next build overwrites. Generator change requires F13 binary.
-- ❌ Trusting `last-modified` < 24h as a green light — it is a signal to slow down, not proceed.
-
-**When the user gives a "concise recap" of public facts (e.g. a third-party summary to fold into analysis), verify each load-bearing claim against primary sources before publishing.** Lapses look like accepting "FID defer" six days after FID was approved, or "fire-sale ahead" four months after the transfer closed. Two minutes of search prevents a prediction built on a false premise.
 ---
 
 ## OP 9 — SURGICAL SPA PAGE UPDATE (no Caddy reload)

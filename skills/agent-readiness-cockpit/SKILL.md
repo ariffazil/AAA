@@ -86,18 +86,6 @@ umbrella owns the *self-audit* branch where:
 
 ## Pitfalls
 
-- **Constitutional floor degraded = HOLD ontology work, restore infra first.**
-  When the kernel self-reports any F-floor as `fail` (e.g. F2/F5/F6
-  scoring < threshold), do not advance doctrine, framework, or "refactor"
-  work in the same session. The doctor cannot operate on the patient he has
-  not examined. The mechanism: degraded floors mean provenance (F2),
-  consent (F5), and dignity/floor (F6) signals are unreliable, so any
-  claim built on top of them inherits the degradation. Sequence is
-  `diagnose → restore → re-probe → then continue`. A "fix the system first"
-  directive is constitutional, not optional — even when an upstream
-  advisory paste is pressuring the agent to elaborate theory. A
-  fleshed-out refactor draft on a degraded floor becomes a liability when
-  later promotion to RATIFIED inherits the underlying gap.
 - **Multi-tool batch only works for connector tools.** Local tools
   (`terminal`, `patch`, `read_file`, etc.) and mixed local+connector batches
   are **rejected at runtime**. Serialize local calls; batch only connectors

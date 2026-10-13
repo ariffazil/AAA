@@ -113,16 +113,7 @@ Plain BM Penang, short, no tables and no receipt labels. Lead with what is actua
 - Never say "semua OK" when `/ready` is red — name the failing checks and keep the two verdicts separate.
 - Close with at most one decision. If a probe returned `human_decision_required`, that is the decision; do not offer a menu.
 - Do not paste raw JSON at the sovereign. Extract the fields, state the delta, keep evidence paths for when he asks.
-An internal identifier in the sentence becomes the question he asks. A config key, env var, table name or unit name quoted bare reads as an incident report — most of all one whose name contains a failure mode. Name the subsystem's measured state first, with its probe in the same breath ("Postgres up, accepting connections, 0 restarts"), *then* the stance in plain words. A healthy subsystem must never be quoted in the middle of a fault list; the keys belong in the receipt, not the sentence. If he comes back with "why is X unavailable?" or "should it be?", the framing failed — answer in two separate moves: (a) the measured state now, (b) whether anything is supposed to depend on it, because those are different questions with different owners.
-
-### Deliverable shape: chat vs PDF
-
-State reports have two deliverable shapes and the sovereign's wording picks one:
-
-- **Chat (default).** Plain BM Penang, short, no tables. Lead with what is actually wrong or what changed, then the layers in order, then one bounded decision.
-- **PDF artifact** — when the sovereign adds "forge PDF", "send me a file", "bagi aku pdf", or names a path under `/root/.hermes/cache/scratch/`. Route to `pdf-federation` for the rendering pipeline; do NOT hand-roll pandoc+weasyprint from inside this skill. Hand-rolling works but bypasses the canonical four-gate manifest, the engine fitness probe, and the seal provenance — the next session that wants the same artifact will reinvent your recipe and produce a different file. The prose-first rule still applies: write the narrative as if it were a chat reply, then let `pdf-federation` carry the markdown → PDF conversion with its gates.
-
-A request that adds "compare dulu vs sekarang" or "evolution" is also a PDF-class trigger, because the comparison does not fit chat length. Same routing.
+- **An internal identifier in the sentence becomes the question he asks.** A config key, env var, table name or unit name quoted bare reads as an incident report — most of all one whose name contains a failure mode. Name the subsystem's measured state first, with its probe in the same breath ("Postgres up, accepting connections, 0 restarts"), *then* the stance in plain words. A healthy subsystem must never be quoted in the middle of a fault list; the keys belong in the receipt, not the sentence. If he comes back with "why is X unavailable?" or "should it be?", the framing failed — answer in two separate moves: (a) the measured state now, (b) whether anything is supposed to depend on it, because those are different questions with different owners.
 
 ### When the sovereign pastes a HUD / cockpit / banner dump — filter before probing
 

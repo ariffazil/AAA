@@ -656,5 +656,3 @@ DITEMPA BUKAN DIBERI ⚒️
 *Wiki check added: 2026-08-10 — 333-AGI Δ MIND (F13 directive: living wiki skin, §10.5)*
 *Two lanes. One envelope. Receipt ≠ Seal. Wiki breathes. Vault remembers. Agent proposes. Sovereign seals.*
 *DITEMPA BUKAN DIBERI ⚒️*
-## ATTENTION DEBT CHECK (T11, SAH 2026-10-05)
-Before final seal: run `python3 /root/AAA/scripts/attention_debt_daily.py` and append today's AD total + growth to carry_forward open_loops. AD > 50 or growth > 2/day = surface one line to F13 in session close.

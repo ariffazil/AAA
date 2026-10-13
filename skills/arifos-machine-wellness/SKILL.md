@@ -9,24 +9,6 @@ The federation runs 24/7 on a single host. Workers accumulate, ollama runners go
 
 ## 1. The 5-second wellness probe (steel + silica)
 
-> **PREFER THE CANONICAL PROBE — do not hand-roll this.**
-> ```bash
-> bash /root/scripts/federation-wellness-probe.sh
-> ```
-> It exists because two false signals occurred in one session (2026-10-07), both of
-> which hand-rolled probes keep reproducing:
-> 1. **Transient false-DOWN.** A single-shot `curl -sf -m 3` reported the arifOS
->    kernel ❌ while it was a one-off timeout — HTTP 200 in **2ms** on retry. The
->    kernel was never down. Always retry a failed port before believing it.
-> 2. **False constitutional alarm.** `/health` returns `status: "degraded"`
->    because **11 of 13 floors are UNMEASURED** (`unmeasured_default:empty_kernel_signal`),
->    each defaulting to score 0.5 → read as "fail". Only **2 are actually measured**
->    (F1, F3). On the last check: **10/13 "pass", genuinely failing: none.**
->    Reporting "3 floors failing" is a false constitutional claim.
->
-> The probe prints STEEL / SILICA / measured-vs-defaulted constitution, with layers
-> never aggregated. If you hand-roll anyway, apply both rules above.
-
 Run this BEFORE any kill. Live, terse, no prose.
 
 ```bash
@@ -40,14 +22,6 @@ for p in 8088 7071 7072 7073 3001 8081 18082 18083; do
 done
 ```
 
-**If a port shows ❌ — RETRY BEFORE BELIEVING IT.** One-shot probes produce false
-outages. Confirmed 2026-10-07: the kernel returned ❌ once and HTTP 200 in 2ms on
-every subsequent call. Retry 3× at 1s intervals before reporting anything down.
-
-```bash
-for i in 1 2 3; do curl -sf -m 5 http://127.0.0.1:$p/health >/dev/null && { echo "✅ on retry $i"; break; } || sleep 1; done
-```
-
 **Interpret the result with these thresholds:**
 
 | Signal | Healthy | Warning | Critical |
@@ -55,7 +29,7 @@ for i in 1 2 3; do curl -sf -m 5 http://127.0.0.1:$p/health >/dev/null && { echo
 | Load avg (1m) | < cores | cores×1.5 | > cores×2 |
 | Swap | <50% | 50–80% | >80% (especially >95%) |
 | Mem `available` | >20% | 10–20% | <10% (oom imminent) |
-| Organ health | all ✅ (after retry) | 1 ❌ after 3 attempts | 2+ ❌ |
+| Organ health | all ✅ | 1 ❌ | 2+ ❌ |
 
 **Quotient for "is this normal"**: `earlyoom` is the federation's pressure-relief valve (configured `--avoid (^|/)(caddy|sshd|systemd|...|arifos|docker)` and `--prefer (^|/)([.opencode|chrome|pytest|agy|ollama|node|python3)`). If `earlyoom` is alive and avoided-killing core services, swap is **reclaiming as pages free** — give it 60–120s before any swap reset. Don't fight the valve.
 
@@ -255,35 +229,6 @@ When reporting system status to Arif, **four layers of health are INDEPENDENT** 
 Arif's exact teaching (2026-08-14): *"Infra pressure keliru dengan constitutional health."* Agents that merge these produce false alarms. The `/health` `status: "degraded"` umbrella aggregates registry + deployment drift into one word — **do not read `status` as the verdict.** Read the individual boolean fields.
 
 Also: `owner_summary.reasons[]` can contain the string `"runtime_drift"` even when the `runtime_drift` **boolean field** is `False`. This is a naming collision. Trust the boolean, not the reason label.
-
-### 8a. UNMEASURED ≠ FAILING — the constitutional false-alarm (2026-10-07)
-
-`status: "degraded"` is an **aggregate**, and on this host it is triggered almost
-entirely by floors that were never measured. `floors_provenance` distinguishes them:
-
-| Field | Meaning |
-|---|---|
-| `floors_measured` | floors with a real probe behind them |
-| `floors_defaulted` | `unmeasured_default:*` — placeholder score 0.5, reads as "fail" |
-| `floors_failing` | reported failures — **subtract `floors_defaulted` before calling any of these a violation** |
-
-Measured 2026-10-07 20:14 MYT:
-
-```
-constitutional : 10/13 pass · 2 MEASURED · 11 UNMEASURED
-  unmeasured (NOT violations): F2,F4,F5,F6,F7,F8,F9,L10,L11,L12,L13
-  ✓ F1 ← arifflow_fq_probe:fq=1.02
-  ✓ F3 ← witness_producers:human+ai+earth
-  genuinely failing: none
-```
-
-So "3 floors failing (F2/F5/F6)" — the reading reported earlier tonight — was a
-**false constitutional claim**. Those three are unmeasured defaults, not violated
-floors. `rest_routes.py:3438-3459` already documents this; the provenance was
-published precisely so consumers would stop conflating the two.
-
-**Rule: never report a constitutional violation without checking `floors_provenance`
-first.** Report measured and unmeasured separately.
 
 Report shape for Arif: one emoji per layer, one line each. Never aggregate. See `federation-infra-verification` §14 for the full decompose-before-report recipe.
 

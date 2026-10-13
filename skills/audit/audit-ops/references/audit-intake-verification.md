@@ -129,30 +129,6 @@ defensiveness and buries the one finding that matters. Lead with the premise che
 - **When the audit and the artifact's owner disagree, the owner's documented policy wins** unless
   the audit brings new evidence. Deliberate decisions look like gaps to a reader who cannot see the
   decision.
-- **Calibrate the verdict to the evidence the verifier can actually bring.** A sandbox-only claim
-  (the verifier never left its own vantage) is **unverifiable-until-published**, not "fabricated" and
-  not "proven false". Two opposite labels: a heavier-than-evidence label hardens a phantom into a
-  public accusation; a lighter-than-evidence label loses the catch. Match the label to what the
-  verifier *can* prove: independent vantage verified it → REAL_BUG / FALSE_POSITIVE; verifier's
-  vantage only → unverifiable-until-published; verifier admitted it can't see → UNKNOWN. Do not
-  invent a third class to suit the moment.
-- **Local HEAD is not origin.** When a claim about a repo names a commit or row, probe `git ls-remote
-  <repo> origin/<branch>` *first*, then `git show <sha>` locally. A clean local porcelain and a
-  different origin/main are the signature of "committed locally, awaiting push" — honest
-  reporting names the vantage the artefact was actually in. Quoting local SHA as if it were
-  canonical is fabricated provenance.
-- **Hash truncation is not deterministic for audit.** A 16-char sha256 prefix cannot match across
-  vantages — the verifier cannot tell if their compute produced the same prefix from a different
-  full digest. For any cross-vantage artefact handshake, publish the full 64-char sha256 PLUS a
-  manifest self-hash (sha256 of the manifest JSON itself). The verifier matches the self-hash
-  first, then the per-file digests. Prefix matches are evidence of structural similarity, not of
-  identity.
-- **Probe infrastructure and file/artefact claims are different verdicts.** A run that exposes live
-  kernel state (PIDs, ports, chain heads, process uptimes) is a *separate* measurement from one
-  that names files and rows. The first kind cross-verifies cleanly; the second often cannot
-  because the named path never left the sandbox. Report both: "kernel probes match your vantage,
-  file claims unverifiable until published." Do not collapse them into a single verdict, and do
-  not let a green infra probe whitewash red file claims.
 
 ## Related
 
