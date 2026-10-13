@@ -171,6 +171,117 @@ Retracting is **cheaper** than defending a fabricated detail. The other layers o
 hold up better when one retractable claim is dropped cleanly than when the agent defends it on
 the basis of "general pattern".
 
+## The intimate-territory escalation read (when the question is about contact, touch, or worship)
+
+When the sovereign asks about a bonded person in the context of *intimate physical contact* — muscle
+worship, cuddle, sleepover, massage, any contact the third party hasn't openly negotiated — the
+read is structurally different from a life-transition read. Three load-bearing distinctions apply.
+
+### 1. Horizontal vs vertical territory (the boundary that matters)
+
+Split the intimate territory into two operationally distinct classes before reading:
+
+- **Horizontal intimate** = peer/equal contact. Side-by-side, massage, mutual touch, chest worship,
+  body-appreciation, sleepover-as-sleep, sponsor-hotel-as-roommate. Both parties occupy equivalent
+  positions. Equilibrium is easy to maintain because power is symmetric.
+- **Vertical intimate** = asymmetric contact. Sitting on, cradling, surrender position, manja-mengada
+  dynamic, dominant/submissive framing, any "I am below / above you" posture. Power is asymmetric;
+  the relationship state is being acted out, not just touched.
+
+Horizontal intimate can run indefinitely without renegotiating the relationship contract. Vertical
+intimate *is* the relationship contract being renegotiated in the room. A flinch, withdrawal, or
+cool-down that occurs in vertical territory is not "incompatible" with stable horizontal contact
+— the two territories live in different layers, and the third party can handle one without
+handling the other. Default false-reading: treating a vertical flinch as if it disproved the
+horizontal pattern. It does not. The pattern holds, the territory is what's new.
+
+Probe order before emitting:
+1. Is the contact horizontal or vertical in the sovereign's description? Name it.
+2. Is there a track record on horizontal territory? (Duration, frequency, third-party response.)
+3. What is the *new* variable in the vertical event that the horizontal track record did not
+   contain? (Position, power asymmetry, vulnerability, surrender, identity-coded signal.)
+4. Did the third party have time to consciously process the new variable, or did the event
+   collapse into action before any verbal check?
+
+Falsification trigger: if the third party is observed engaging in vertical intimate contact
+with *anyone* (the sovereign, a partner, another person), the "vertical territory unavailable"
+read is killed. Track record must be vertical-specific, not vertical-in-general.
+
+### 2. The shadow trigger pattern (enjoyment + cognitive dissonance + flee)
+
+When a flinch or sudden withdrawal is observed in vertical intimate territory, and the sovereign
+reports that the third party *seemed to enjoy the contact* before withdrawing, the read is not
+rejection. It is the shadow trigger. Five-step signature:
+
+1. **Enjoyment** (real, body-level) — pupil dilation, soft focus, micro-relaxation, leaning-in,
+   any involuntary positive response. The third party is *actually enjoying it*.
+2. **Recognition of enjoyment** (mind-level) — the third party becomes aware, mid-action, that
+   they are enjoying this. Awareness is involuntary; they cannot un-notice.
+3. **Cognitive dissonance** — enjoyment conflicts with self-image, peer-script, cultural frame,
+   or committed identity. "I am straight / I am alpha / I am not this kind of person / I don't
+   do this with him" — whatever the script, the enjoyment violates it.
+4. **Emotional overload** — the gap between step 1 (body) and step 3 (script) is too large to
+   reconcile in real time. The third party cannot process, name, or act on the enjoyment
+   without first dismantling the script. That work takes minutes to days, not seconds.
+5. **Flee** — withdrawal is self-protection, not rejection. The third party preserves
+   self-image integrity by removing the stimulus before they have to *act on* the enjoyment.
+   Subsequent behaviour returns to the horizontal pattern once enough time has passed for
+   private processing.
+
+The default false-reading here is to label the flee as rejection, discomfort, or loss of
+interest. None of those fit. The flee is *because* the enjoyment was real. A person who
+disliked the contact would push the hand away and stay. A person who enjoyed it has to leave
+the room to keep the script intact.
+
+Operational consequences for the sovereign:
+- Do not re-attempt vertical territory in the same session or the next 1-3 sessions. The third
+  party needs processing time, and re-attempt is a re-trigger, not a reassurance.
+- Do not narrate the enjoyment back to the third party. They do not have vocabulary for it
+  yet, and being told "you enjoyed it" before they have processed it is the exact stimulus
+  they fled from.
+- Watch for the third party *returning to the horizontal pattern*. That return is the signal
+  that processing happened (or is happening) privately. The horizontal pattern is the only
+  public-facing test of whether the script has loosened.
+
+Probe before emitting this pattern:
+- Did the sovereign observe enjoyment, or is the enjoyment a retrofitted inference? ("He
+  seemed to like it" is observation. "I think he liked it" is inference. Only observation
+  supports this read.)
+- Is there an existing self-image / script / commitment that the contact would violate?
+  (Partner, peer culture, religious frame, public identity.) If no script is in evidence,
+  the shadow trigger read is unsupported.
+- What is the third party's *behaviour after the flee*? (Returns to horizontal, gradual
+  distance, hard cut, no contact at all.) Behaviour-after discriminates shadow trigger
+  (returns) from rejection (hard cut) from discomfort (gradual distance).
+
+### 3. The longing projection self-check (when the sovereign's "what does he want" is the sovereign's own)
+
+When the sovereign returns a motive read with "I think he wants X", and X is what the
+sovereign wants, the read is not a third-party motive read — it is a longing projection. The
+load-bearing tell is the sovereign mid-stream admitting ownership: "Idk, that's my issue
+actually." When that admission arrives, the read is no longer a model of the third party; it
+is a model of the sovereign's own desire, and the third party's actual state is what the
+read is using as a screen.
+
+The discipline when the tell fires:
+1. **Name the projection plainly.** Not as accusation, not as analysis. "Yang hang describe tu
+   mostly hang punya harapan, bukan data pasal dia. Aku boleh model apa hang rasa, tapi aku
+   tak boleh baca dia punya head dari sini."
+2. **Distinguish the two questions.** "Apa Syed rasa pasal hang" (the question the sovereign
+   asked) and "Apa hang rasa pasal Syed" (the question the data actually supports) are
+   different questions with different evidential bars. Hold both visibly.
+3. **Refuse to upgrade the projection into a third-party model.** "Syed rindukan hang"
+   asserted without record is fabrication, not inference. The sovereign's admission makes the
+   projection legible but does not turn it into data about the third party.
+4. **Name what the data does support.** The third party's *observable* state — what they
+   initiate, what they decline, what they return to. That is the legitimate read. Their inner
+   state, their longing, their private desires — that is UNKNOWN without their self-report.
+
+The read that follows should be a *sovereign-side* read, not a third-party read, until the
+sovereign supplies data the third party can be modeled from. The probe-first rule applies
+here in its sharpest form: an empty probe + a projection is two confirmations that the
+question is the wrong one.
+
 ## Bounds that do not move
 
 - The reading is the sovereign's to relay, never yours to send to the third party.
@@ -183,8 +294,8 @@ the basis of "general pattern".
 
 1. **Treating the sovereign's dual-hypothesis question as exclusive.** When he asks *"am I too
    much, or is he scared?"*, the answer is "both" at different layers (behaviour vs motive), not
-   "one of them." Picking one collapses a structural read into a flat choice the sovereign did
-   not actually offer.
+   "one of them." Picking one collapses a structural read into a flat choice the sovereign did not
+   actually offer.
 2. **Suggesting reassurance-words when the lever is operational certainty.** When the bonded
    person's stress tracks the sovereign's exit (job, money, routine), the cure is the sovereign
    *narrating* the plan with markers (date filed, deadline, runway), not saying "aku ada" louder.
@@ -203,6 +314,33 @@ the basis of "general pattern".
    ada 5 bulan buffer" — because the second gives the third party something to hold against the
    imagined worst case. The sovereign's feelings are real; the third party's worry is operational;
    operational worries respond to operational certainty.
+6. **Letting weight from observation slide into weight from the agent's narrative gravity.** When
+   the sovereign pushes back ("it's just words? u don't even do weighting?"), the failure shape is
+   to inflate the apparent weight of the read to satisfy the demand — adding bullets, percentages,
+   or layer after layer of "arguable signal" so the prose *feels* more rigorous. The push-back is
+   about the read, not the prose. Probe for what is on record, name what isn't, then deliver a
+   hypothesis that names its own weight band. A read that survives push-back is one that said
+   "yang aku ada ialah X, Y, Z" — never one that grew adjectives.
+7. **Voice cloning / persona adoption of the third party as a "deeper read".** When the sovereign
+   asks the agent to *speak as* the bonded person (text, audio, voice clone, "reply macam dia"),
+   the right answer is refusal with dignity — even when the clone model is technically registered.
+   The output is not the agent's read, it is a fabrication of the other person's voice. Three harms
+   converge: (a) the sovereign hears "Syed speaking" and starts treating machine output as Syed's
+   voice, (b) the bonded person's dignity is borrowed without their consent, (c) any later
+   contradiction between the clone and real Syed lands harder because two "voices" are now in the
+   sovereign's head. The offer must be the *shape* of what Syed might say, in the sovereign's own
+   voice — never a manufactured Syed speaking. Refuse once cleanly, then stay refused: pushing
+   harder does not move the line, because the right path is to ask Syed directly or have the
+   sovereign speak for himself.
+8. **Reading "model it for me" as license to upgrade I→S.** When the sovereign says *"u don't even
+   do weighting?"* or *"just do it properly then"*, he is testing whether the agent will upgrade
+   inference into self-report to satisfy demand — not asking for a deeper read. The right shape:
+   run the four-probe order, name what was found vs absent, deliver the read inside the
+   qualia boundary with its provenance tier on each row. A read that names its own weight
+   (HIGH on session evidence · MEDIUM on people.yaml hook · absent on inner state) survives
+   push-back; one that inflates weight on demand collapses the trust contract the moment a
+   later prompt makes the inflation visible. The line is not between zero weight and full weight;
+   the line is between weight-with-provenance and weight-without.
 
 ## Siblings
 
