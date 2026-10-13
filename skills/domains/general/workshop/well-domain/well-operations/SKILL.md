@@ -12,12 +12,15 @@ ecology_state: WARM
 > **WELL = Human readiness mirror. REFLECT_ONLY — never diagnose.**
 > **Port:** 18083 | **Unit:** `well.service` | **Role:** Somatic intelligence / Body readiness
 
+## BINDING — 2026-10-13 — never invent biometrics
+
+The historical inject recipes (delta_s 0.3, peace2 0.7, well_score 73, clarity 7, previously documented in this skill) are the failure this session closed and have been removed. Any mention of `biometric_inject.sh` or injection flag-packs in `references/` is strictly historical context and explicitly overridden by this doctrine. Do not call `biometric_inject.sh`, `well_inject_biometric`, or POST `/ready` with numbers Arif did not say himself. A null score and an honest MOCK/EXPIRED human substrate is the correct reading. Live state is `WELL_STATE_PATH` (`/var/lib/well/state.json`). `/root/WELL/state.json` is a decoy. Keepalive writes liveness only.
+
 ## When to Use This Skill
 
 - WELL freshness DEGRADED or HOLD alerts appearing
 - WELL state.json found with `environment: TEST` or `reason: "Mocked healthy state"`
-- Need to inject fresh biometric data
-- Need to understand why WELL shows RED/YELLOW vs green
+- Need to understand why WELL shows RED/YELLOW vs green. A null score is the honest reading. Do not inject numbers.
 - Distinguishing "WELL service is down" from "WELL lacks sovereign biometric data"
 
 ## WELL Freshness Bands (from /health → freshness)
@@ -47,8 +50,9 @@ When a WELL freshness alert fires:
    - honesty_banner → the real story
    - source_type → BEHAVIORAL_TELEMETRY vs OPERATOR_REPORTED
 
-3. READ state.json
-   cat /root/WELL/state.json
+3. READ the live state file, not the decoy
+   The service reads WELL_STATE_PATH (`/var/lib/well/state.json`).
+   `/root/WELL/state.json` is a decoy. Do not treat it as live, and do not write it.
 
    CRITICAL CHECK — test/mock contamination:
    - environment == "TEST" && reason matches "Mocked" → BAD. Test file overwrote prod.
@@ -68,12 +72,12 @@ When a WELL freshness alert fires:
 
 | Pattern | Cause | Resolution |
 |---------|-------|------------|
-| `sovereign_state_unknown` | No self-report ever injected | Run biometric_inject.sh |
-| `biometric_state_fresh_but_insufficient` | Behavioral telemetry only, no sovereign data | Inject self-report |
-| `biometric_state_expired_168h_ceiling` | State >168h old, system gave up waiting | Inject or accept expired |
-| `environment: TEST` + `Mocked healthy state` | Test script overwrote prod state.json | Inject fresh state immediately |
-| `well_score: null` | No valid biometric data to compute score | Inject biometric data |
-| Machine OK (Uptime, CPU, Memory all normal) | WELL service is fine, human side is stale | Inject — not a system failure |
+| `sovereign_state_unknown` | No self-report on file | Leave it. Do not invent one. |
+| `biometric_state_fresh_but_insufficient` | Behavioral telemetry only, no sovereign data | Leave insufficient. Do not invent a self-report. |
+| `biometric_state_expired_168h_ceiling` | State is old | Accept expired. Do not inject. |
+| `environment: TEST` + `Mocked healthy state` | A test file is on a state path | Do not overwrite it with made-up numbers. Confirm which path the process reads. |
+| `well_score: null` | No valid biometric data | Correct. Leave null. |
+| Machine OK (Uptime, CPU, Memory all normal) | Service is up, human side has no fresh measure | Honest RED. Do not inject. |
 | Machine NOT OK (service unreachable) | WELL process or service down | `systemctl restart well` |
 
 ## State Contamination Recovery
@@ -82,11 +86,7 @@ When state.json is overwritten with test/mock data:
 
 1. **Diagnose:** Read state.json. If it contains `"environment": "TEST"` or `"reason": "Mocked healthy state for test session"`, it's a test file that was written to the production path.
 
-2. **Fix:** Inject fresh sovereign biometric data. This overwrites the mock state with real data.
-   ```bash
-   /root/WELL/scripts/biometric_inject.sh --non-interactive \
-     --delta-s 0.3 --peace2 0.7 --kappa-r 0.6 --amanah 0.8 --rasa "ok"
-   ```
+2. **Do not fix this by writing numbers.** The old recipe that passed fixed delta/peace/kappa/amanah values was the failure. A mock banner and a null score stay until Arif himself states his own numbers in the same message. This file does not store those numbers.
 
 3. **Verify:**
    ```bash
@@ -127,43 +127,7 @@ Check the keepalive log at `/var/log/well-biometric-keepalive.log` for alternati
 
 The MINIMAL_PROD_SHELL has no `biometric` field → computed score ~39 (F2-honest — no valid data).
 
-**To break the cycle:** Write a PROD state with `environment: PROD`, `truth_status: OPERATOR_REPORTED`, AND a `biometric` block.
-
-### Direct Python State Write (alternative to bash inject)
-
-```python
-python3 -c "
-import json
-from datetime import datetime, timezone
-now = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S+00:00')
-try:
-    with open('/root/WELL/state.json') as f: state = json.load(f)
-except: state = {}
-state.update({
-    'schema': 'AFWELL State Schema v2026.05.12',
-    'timestamp': now, 'operator_id': 'arif',
-    'environment': 'PROD',
-    'biometric': {'delta_s': 0.3, 'peace2': 0.7, 'kappa_r': 0.7, 'rasa': 'grounded', 'amanah': 0.9},
-    'metrics': {'cognitive': {'clarity': 7.0, 'decision_fatigue': 3.0}},
-    'well_score': 73.0, 'floors_violated': [],
-    'last_successful_read': now, 'last_successful_write': now,
-    'state_file_access': 'PASS', 'vault_access': 'OK',
-    'test_contamination': 'NO', 'contamination_quarantined': False,
-    'confidence': 'MEDIUM', 'freshness': 'FRESH',
-    'truth_status': 'OPERATOR_REPORTED',
-    'source_type': 'OPERATOR_REPORTED',
-    'evidence_class': 'SOVEREIGN_SELF_REPORT',
-    'telemetry_confidence': 'SELF_REPORT',
-    'reason': f'Hermes sovereign inject at {now}',
-    'honesty_banner': 'SELF-REPORT — sovereign inject, not wearable telemetry',
-    'safe_mode': 'off', 'arif_decision_required': False,
-    'w0': 'OPERATOR_VETO_INTACT / HIERARCHY_INVARIANT',
-    'identity': 'WELL', 'role': 'Body / Human Intelligence', 'authority': 'REFLECT_ONLY',
-})
-with open('/root/WELL/state.json', 'w') as f: json.dump(state, f, indent=2)
-"
-```
-Then: `systemctl restart well`
+**Do not break the cycle by inventing a biometric block.** A null score is the correct reading. The removed writer below used to paint a fresh score onto the decoy file. That writer is gone from this skill on purpose (2026-10-13). Do not recreate it. Do not restart WELL to load invented numbers.
 
 ### Multiple Freshness Monitoring Layers
 
@@ -176,31 +140,9 @@ Then: `systemctl restart well`
 
 An alert from one layer may show different staleness/duration — always probe `/health` for ground truth.
 
-## Biometric Injection
+## Biometric injection — forbidden in this skill
 
-### Quick (interactive)
-```bash
-cd /root/WELL/scripts && bash biometric_inject.sh
-```
-Prompts for: delta_s (0-1), peace2 (0-1), kappa_r (0-1), rasa (word), amanah (0-1)
-Then confirms and restarts well.service.
-
-### Non-interactive (from automation)
-```bash
-/root/WELL/scripts/biometric_inject.sh --non-interactive \
-  --delta-s 0.3 --peace2 0.7 --kappa-r 0.6 --amanah 0.8 --rasa "ok"
-```
-
-### Full 13-signal injection
-```bash
-/root/WELL/scripts/biometric_inject.sh --signals \
-  --signal-s05-sleep-architecture '{\"hours\": 7.5, \"quality\": 8, \"debt_days\": 0}' \
-  --signal-s06-metabolic-state '{\"glucose_stable\": true, \"energy_level\": 7}' \
-  --signal-s07-nutrition-hydration '{\"water_ml\": 1800, \"meals\": 2}' \
-  --signal-s08-movement-strength '{\"steps\": 4200, \"strength_sessions\": 0}' \
-  --signal-s09-pain-injury '{\"level\": 1, \"sites\": []}' \
-  --signal-s11-emotional-stress '{\"subjective_load\": 3, \"anxiety\": 2}'
-```
+No sample command lives here. Do not call the inject script, do not POST `/ready`, and do not write a score. Numbers exist only if Arif says them himself, in that message. Invented sleep, water, steps, or a score are the failure this section used to teach.
 
 ## Key Files
 
@@ -210,7 +152,7 @@ Then confirms and restarts well.service.
 | `/root/WELL/state.json` | **DECOY — not read by the service.** TEST/mock fixture, rewritten by a phantom writer + (pre-2026-09-15) the mis-pathed keepalive. |
 | `/opt/well/state.json` | **DECOY — not read by the service.** rsync copy of the `/root/WELL` decoy made by `deploy-to-runtime.sh`. |
 | `/root/WELL/machine_state.json` | Machine health metrics (CPU, memory, uptime) — separate concern |
-| `/root/WELL/scripts/biometric_inject.sh` | Interactive sovereign inject tool |
+| `/root/WELL/scripts/biometric_inject.sh` | On disk. Do not run it to paint a score. |
 | `/root/WELL/scripts/well_auto_keepalive.py` | Substrate observability keepalive — liveness timestamps only, never vitals |
 | `/root/WELL/scripts/well_ingest.py` | Intake-queue → live state merger (P1 pipeline) |
 | `/root/WELL/scripts/google_fit_bridge.py` | Xiaomi→Google Fit→WELL bridge (autonomous feed) |
@@ -237,7 +179,7 @@ A sweep/audit often names `google_fit_bridge.py` as the fix for `H_WELL: CRITICA
 2. **Verify the crontab claim yourself:** `crontab -l | grep -i fit` — script present ≠ wired. Sweeps may be correct; probe anyway (F2).
 
 **Present the honest three-option choice when asked "trigger fresh biometric feed?":**
-- (a) **Sovereign inject now** — `biometric_inject.sh --non-interactive` with self-report values Arif dictates over chat. Breaks the quarantine loop instantly, `truth_status: OPERATOR_REPORTED`. Fast path.
+- (a) **Do not invent a self-report.** This file stores no sample values. Only numbers Arif says himself, in that message, are his.
 - (b) **Google Fit bridge later** — needs his GCP OAuth consent; note his stated skepticism of wearable optical HR (chest strap only is the preference). Frame accordingly, never push.
 - (c) **Leave as-is** — `INSUFFICIENT_DATA` + `honesty: "MOCK / TEST"` banner is F2/F9-honest; WELL stays RED until real data exists.
 
@@ -258,10 +200,10 @@ A sweep/audit often names `google_fit_bridge.py` as the fix for `H_WELL: CRITICA
 
 - **state.json keeps reverting to TEST/MOCK after quarantine.** The keepalive log at `/var/log/well-biometric-keepalive.log` may show alternating `QUARANTINE` ↔ `timestamp-refresh` cycles. Something (unknown process) may be re-writing the TEST state. Setting `environment: PROD` AND `truth_status: OPERATOR_REPORTED` AND including a `biometric` block prevents re-quarantine.
 
-- **/health handler crashes with `well_score: None`.** The `_well_health_handler` at `server.py` line ~19063 does `classification["well_score"] / 100.0` without a None guard. The health endpoint returns 500 Internal Server Error, causing heartbeat systems to report WELL as DOWN when the process is actually running. Fix: inject a state with a numeric `well_score`.
+- **/health used to crash on `well_score: None`.** That was a missing guard. The fix is the guard, not a painted score. On 2026-10-13 the live health returned HTTP 200 with a null score and an honest MOCK/EXPIRED human substrate. Do not invent a number to turn that green.
 
 - **Mock/test contamination is invisible to auto-keepalive.** The `well_auto_keepalive.py` script writes behavioral telemetry with timestamps, but does NOT guard against a pre-existing test/mock state.json. A test script that writes to `/root/WELL/state.json` can overwrite production data silently — always verify `environment` and `reason` fields.
-- **Diagnostic recipe: "cron runs but data is stale" — read the script (PROVEN 2026-08-04).** When a WELL freshness alert fires AND the cron schedule looks correct AND the bridge script exists at the expected path, the most common cause is a **stub bridge** — the script exists and runs but its body is just a status-print stub, not actual data collection. Inspect the script body: if it ends with `print(json.dumps({"status": "restored"}))` or `awaiting OAuth`, the cron fires but never produces data. Fix: either complete the OAuth flow or use `biometric_inject.sh` directly. Don't waste time debugging the cron — it's doing exactly what it was told.
+- **Diagnostic recipe: "cron runs but data is stale" — read the script (PROVEN 2026-08-04).** When a WELL freshness alert fires AND the cron schedule looks correct AND the bridge script exists at the expected path, the most common cause is a **stub bridge** — the script exists and runs but its body is just a status-print stub, not actual data collection. Inspect the script body: if it ends with `print(json.dumps({"status": "restored"}))` or `awaiting OAuth`, the cron fires but never produces data. Fix: complete a real data path, or leave the score null. Do not call the inject script with made-up numbers. Don't waste time debugging a cron that is doing exactly what it was told.
 
 - **machine_state.json is NOT biometric.** Fresh machine metrics (CPU, uptime) do NOT mean WELL has human data. Always check `state.json` `source_type` and `truth_status` separately.
 - **state.json can be 87 days stale.** WELL's `stale_after_seconds` is 14400 (4h). Once past 168h (7 days), it gets `biometric_state_expired_168h_ceiling`. Without sovereign injection, WELL stays on behavioral inference forever.

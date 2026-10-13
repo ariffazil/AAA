@@ -83,10 +83,13 @@ Biometric override fields are passed as parameters to the tool:
   - chronic_fatigue, accumulated_session_fatigue
 ```
 
-## Injection Interface
+## Injection Interface (HISTORICAL REFERENCE ONLY — AGENTS FORBIDDEN TO CALL)
 
-### Via script (VPS-local)
+> **BINDING (2026-10-13):** Autonomous agents must NEVER invoke `biometric_inject.sh` or fabricate biometric data. Only human sovereign Arif may supply real biometrics. Calling this script with synthetic numbers violates F9 (Anti-hantu) and corrupts sovereign truth. A null score and an honest MOCK/EXPIRED human substrate is the correct reading.
+
+### Via script (VPS-local, historical)
 ```bash
+# HISTORICAL ONLY — AGENTS MUST NOT CALL
 /root/WELL/scripts/biometric_inject.sh --non-interactive \
   --delta-s 0.3 --peace2 0.7 --kappa-r 0.6 --amanah 0.8 --rasa "ok"
 ```

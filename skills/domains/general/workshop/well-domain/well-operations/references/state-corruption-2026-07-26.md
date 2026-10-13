@@ -42,4 +42,4 @@ The production `state.json` path (`/root/WELL/state.json`) can be overwritten by
 
 1. **Always verify `environment` and `reason` fields** when reading state.json — a TEST environment flag is a red flag
 2. **Check the `honesty_banner`** — WELL explicitly states if data is mock/test
-3. **Fastest recovery:** Re-inject with `biometric_inject.sh` (30 seconds)
+3. **Recovery:** Sovereign human Arif re-injects authentic biometrics. Agents must NEVER call `biometric_inject.sh` with fabricated numbers; an honest null score or MOCK/EXPIRED reading is correct.

@@ -117,6 +117,9 @@ autonomy_tier  = T0/T1/T2/T3 with F13 sovereignty flags
 
 Write to `/root/work/tasks.json` with `$schema: "arifos.work.tasks.v1"`.
 
+**NEW — 2026-10-13 (survival-edge queue):**
+Keep `s1-witness-independence` through `s10-capability-loss-measurement` at the front of `tertib_flow`, in that order, until each evidence field records a measurement. Do not drop them on the next compile. Do not mint a doctrine file for them. Do not demote `p0-arifos-accept-queue` out of P0. Measure `s7-human-objection-path` first: a refusal that an affected human contradicts must change the next action, or the row stays open. The source is the 2026-10-13 paste. The OneDrive PDF was not opened.
+
 ### Rule 5 — Encode wisdom into SKILLs, not just docs
 
 Future agents inherit SKILLs (auto-loaded at session start). Docs (doctrine) require lookup. **Encode lessons as skills first, doctrine second.**
