@@ -86,7 +86,7 @@ arif-sites
 | GEOX | 8081 | `geox.arif-fazil.com/mcp` | 15 geox_* tools |
 | WEALTH | 18082 | `wealth.arif-fazil.com/mcp` | 20+ capital_* tools |
 | WELL | 18083 | `well.arif-fazil.com/mcp` | 10+ well_* tools |
-| HERMES | 18087 | N/A (Telegram bridge) | Operator edge only |
+| HERMES | 8644 | N/A (Telegram bridge) | Operator edge only |
 | AAA | 3001 | N/A (A2A, not MCP) | Cockpit + A2A gateway |
 | arif-sites | N/A | `arif-fazil.com` | Static sites, llms.txt discovery |
 

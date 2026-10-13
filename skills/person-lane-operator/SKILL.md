@@ -542,50 +542,6 @@ When the operator has MULTIPLE humans to serve (not one 3rd-party person), the d
 
 **DONE (2026-08-09):** `scripts/lane_switch.py` rewired to read from `/root/AAA/federation/person-register.json` — hardcoded `LANE_REGISTRY` replaced with register-driven `detect_lane()` (tg_user_id / username match) + lane-root dossier loading (identity dir → dossier string; canonical refs = mak-health/trading/brand/telegram). Fail-closed: register unreadable → `main` lane. Verified: `{"from_id":"1042200555"}` → `syed` lane (dossier loaded, NOT operator memory); unknown ID → `main`. Person lane loads the person's dossier only — operator's MEMORY.md/USER.md never enters a person lane.
 
-## Provenance discipline — "tell me where u get that info" (F13 standing rule)
-
-When the operator asks anything about a person served through a lane (himself, a bonded human, a 3rd party) — **surface the source before the claim**. The pattern:
-
-1. **Cite the file + line** the fact was read from (e.g. `MEMORY.md line 7`, `people.yaml §syed.facts[3]`).
-2. **Cite the scope tag** from `people.yaml` — `scope: shared` vs `scope: dm` vs `not registered`.
-4. **Name what's missing.** "Tiada Telegram id, tiada lane, tiada entry dalam people.yaml — cuma satu baris dalam MEMORY.md."
-
-**Anti-pattern:** synthesising a 3-line portrait of a person ("Syed ialah bodybuilder 41 tahun, GF ada, support Firdaus Kuhan…") when the operator asked a single fact-lookup. The synthesis is a leak vector — even when every sentence is true, it expands a one-line note into a record that didn't exist before.
-
-**Anti-pattern:** paraphrasing facts to sound fluent. The operator wants the **receipt** — exact string + exact file + observed date. Editorial paraphrase reads as interpretation; raw citation reads as testimony.
-
-**Rule:** the agent's knowledge of a bonded human is an index of source records, not a portrait. A portrait implies the agent owns a model of the person. An index means the agent can route to the file. F7: model < person, always — provenance disclosure is how the lane stays index-shaped.
-
-## Relevance filter for bonded-human data — "is all that info important for AI agents?" (F13 standing rule)
-
-The operator runs a periodic pass: *what's in agent memory about [person] is almost always too much*. Default behaviour:
-
-| Info class | Keep in agent memory? | Rationale |
-|---|---|---|
-| Name, age cohort, nickname, language register | **YES** | Calling lanes, voice register |
-| Career/work domain, lane-specific workflow | **YES** | Workflow context (nasi lemak order, training discipline) |
-| Biohacker/health *register* (peptides, IFBB coaching, recovery work ethic) | **YES** | Behavioural signal — affects how agent engages |
-| Emotional context (GF, family ties, defence mechanisms) | **YES at register level only** | Identity-drift warnings; never a clinical profile |
-| **Clinical detail (HIV screening, specific conditions, lab values, surgical history)** | **NO** | Not agent-call. The agent never acts on this, never references it, never retrieves it for the user. |
-| **Embarrassment + verbatim quotes** ("buat bila ready") | **NO** | Quote captures a moment of vulnerability. Out of context, the quote becomes exposure. |
-| **Precise timestamps** ("22:01–22:04, 29 Sep") | **NO** | Forensic detail no agent needs. Collapse to observed date. |
-| **Stigma content** (medical stigma, religious stigma, family-conflict detail) | **NO** | Stigma amplifies on re-read. The agent re-reading this is the harm. |
-
-**The relevance test (one question, always):**
-
-> *"Adakah info ni akan buat agent adjust kelakuan depan orang ni?"*
-> — YA exact register-level → keep.
-> — YA clinical/private/stigma → strip on next patch.
-
-**Default-strip procedure when F13 says "buang [X] info":
-
-1. Open the file containing the fact (grep first to confirm scope).
-2. Replace clinical/medical/embarrassment/timestamp detail with a single **register-level line** ("health-conscious", "biohacker training work ethic", "emotional context: ambiguity with GF").
-3. Add a brief note explaining why the strip happened, with F13 directive date — so future sessions don't re-import the stripped detail.
-4. Confirm `people.yaml` does not duplicate the stripped fact (people.yaml = `scope: dm` for sensitive; if absent there, stripping is correct).
-
-**Pitfall:** stripping too much loses register context. "Health-conscious" alone is too thin — the agent can't engage. Strip to the **behavioural register**, not to nothing. Example — Syed FJIR is biohacker-registered: peptides, IFBB coaching, Bachmeyer. That stays. The HIV-screening concern with timestamps and stigma quote goes. The line is between **discipline register** (keep) and **clinical detail** (strip).
-
 ## Memory-file discipline — "core invariants only in MD" (Arif correction 2026-08-09)
 
 Arif: *"Stupid MD file. Please put core invariants only in MD file."* — applies to the agent's OWN always-injected memory files (`MEMORY.md` / `USER.md` under the Hermes profile):

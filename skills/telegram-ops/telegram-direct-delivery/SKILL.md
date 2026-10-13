@@ -51,11 +51,7 @@ working lane is one command away.
 ## The working lane
 
 1. **Read the declared token env-var name from config. Never guess one.**
-   `telegram.bot_token_env` in `/root/.hermes/config.yaml`. On KVM8 the resolved
-   env var is `ASI_ARIFOS_BOT_TOKEN` for the `ASI_arifos_bot` (hermes); never
-   assume a sibling bot's token. If config is unreachable, source
-   `/root/.secrets/kunci-root.env` and the env var is present in the
-   environment.
+   `telegram.bot_token_env` in `/root/.hermes/config.yaml`.
 2. Source the secrets file, read that variable, POST straight to the Bot API.
 3. **Receipt = `result.message_id`.** Print it. Absence of an error is not delivery.
 
@@ -120,22 +116,7 @@ into a room no one was watching, and wrong-bot posts are permanent.
   venv. **Default to `curl` for the actual send:** `curl -F document=@<path> -F chat_id=<id>
   "https://api.telegram.org/bot${TOKEN}/sendDocument"` works with no Python at all. Reserve
   Python for cases where curl genuinely cannot express the payload (multipart mix, JSON inside
-  multipart, retries). When Python is needed, this minimal pattern works on KVM8 with no
-  extra deps:
-
-  ```python
-  import os, requests, hashlib
-  token = os.environ["ASI_ARIFOS_BOT_TOKEN"]  # ASI_arifos_bot
-  chat_id = "267378578"                       # F13 sovereign DM
-  with open("out.pdf", "rb") as f:
-      r = requests.post(
-          f"https://api.telegram.org/bot{token}/sendDocument",
-          data={"chat_id": chat_id, "caption": f"sha256:{hashlib.sha256(f.read()).hexdigest()[:12]}"},
-          files={"document": ("out.pdf", f, "application/pdf")},
-          timeout=60,
-      )
-  print(r.json()["result"]["message_id"])     # receipt
-  ```
+  multipart, retries).
 - **Do not present fake A/B/C options when the lane works in one curl.** When the human says
   "send to my DM" and the Bot API call is one line, the failure mode is to enumerate menu
   options ("Copy/Move/Download?") as if each one is equally viable. It is fabrication of

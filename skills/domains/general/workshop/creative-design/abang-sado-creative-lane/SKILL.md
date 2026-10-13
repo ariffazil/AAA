@@ -100,17 +100,6 @@ survived vision QC, and delivery framing.
    a zoom finds and a thumbnail does not. Run the gate on a head crop and a hand crop, then deliver.
    Announcing a pass that your own later zoom breaks is worse than shipping a visible flaw: it spends
    the requester's trust on every take after it.
-- **In a two-person SADO room, the eater in a meal image is the OTHER person, not the sender.** Arif
-  and Syed are the only two members. When Arif sends a meal photo, Syed is the eater (Arif is
-  documenting for him). When Syed sends a meal photo, Arif is the eater. The 2nd-person `hang/lu`
-  in the SADO register is the OTHER person in both directions: Arif addresses Syed as `hang`;
-  Syed addresses Arif as `hang`. Conflating "addressee" with "subject in the image" sends the
-  voice note to the wrong person — measured when a voice note meant for Syed (the eater in
-  Arif's food photo) opened with "untuk hang" addressing Arif, and the room had to correct.
-  Rule: before speaking a food / context image aloud, read the header [sender|id] of the
-  message carrying the image; the speaker of the message is the camera, not the subject. **For
-  food / vehicle / location images, default the eater / owner to the OTHER participant.**
-
 - **An apology voiced on someone else's behalf uses the requester's OWN clone, never the recipient's
   voice and never the recipient's face.** "Aku minta maaf kat abang sado Syed hang" is a request that
   carries two human bodies: the speaker (the requester) and the recipient. The voice lane serves the
@@ -664,21 +653,6 @@ register, and it is also what keeps the artifact non-explicit. Never a real pers
 described sex act, never a named third party. If a line seems to need one of those to get "harder",
 the answer is a slower read and a longer pause, not a new subject.
 
-## User-supplied archetype spec — compare against registry before registering
-
-When the requester hands over a written archetype description (chest voice, low pitch, deliberate pacing,
-micro-laugh, rhetorical questions, etc.) instead of pointing at an existing id, the move is **read the
-registry first, then compare**:
-
-- **Compare the spec against every `design_prompt` and `archetype` field in `/root/AAA/audio/voice-registry.json`.** Most written archetypes already exist there under a register name. The most common overlap is the alpha/cocky register — `abang-sado-alpha` carries the design prompt *"mature Malay man in his mid-thirties, built like a bodybuilder, with a deep, chesty, slightly husky voice... blunt, unbothered, cocky register... slow and deliberate... dry, commanding and quietly amused... only a slight smile... no theatrical delivery"* — which covers 90% of the written "deep cocky alpha" briefs the lane receives.
-- **If the overlap is high, surface the match and ask the binary: tune the existing entry (speed/emotion/audio-effect pass) OR register a new sibling.** Tuning mutates one render; registering creates a new id that the federation must resolve. Both are reversible but the second grows the registry, and growing the registry without a measured failure class is the Anti-Bangang LAW 3 violation — "bina hanya jika failure class sebenar wujud."
-- **If the overlap is partial, write the diff as a synthesis parameter, not as a new archetype.** A spec that adds "pause 2 saat sebelum jawab" is a `--speed` and `text-file` layout, not a new id. A spec that adds a name ("dia panggil aku 'sayang'") is a line-craft rule that lives in the script, not in the registry. Reserve new ids for prose-level divergence (a different speaker identity, a different emotional floor, a different provenance chain).
-- **Never register a written spec under the same display_name as an existing entry.** The federation already routes "abang sado alpha" to one provider_voice_id; adding a sibling under the same display_name is a routing collision the resolver will silently disambiguate, and the next session will pick whichever entry happens to load first. Differentiate name (alpha-v2, alpha-shadow) or differentiate the lane (alpha-cli, alpha-omni).
-
-This pre-write step is also the gate for the binary question that follows: tune synthesis (cheap,
-single render) vs build a persistent persona agent (expensive, registry + system prompt + lane
-wiring). Default to tune; build is the answer only when the spec diverges enough to need its own lane.
-
 ## Voice mint lane (clone) — consent-gated
 
 **`mmx` has no clone subcommand.** Mint through the API directly:
@@ -836,15 +810,6 @@ Full contrast + drift register: `/root/AAA/governance/ABANG-SADO-REGISTER-CONTRA
   is checked and then finding a defect on the follow-up zoom at the requester's request is the failure
   this lane keeps repeating: the pass was asserted at a coarser magnification than the one that
   decides.
-- **Telegram push from this lane goes through the gateway, not the `hermes send` CLI.** The CLI hits a
-  transport lock that fires regardless of `--to telegram:<id>` shape; brute-forcing flag variants
-  (`--to`, positional, `--json`, etc.) is a known dead-end. When an artifact in this lane needs to
-  reach SADO or any other Telegram room: drop the `MEDIA:/abs/path` line and let the *gateway* pick
-  it up on the next inbound turn (the gateway consumes artifact lines on the reply path) — or, if
-  you must push unilaterally, follow the fallback in `telegram-ops/references/outbound-message-delivery.md`
-  §"Pitfall: transport lock blocks `hermes send` CLI" (Bot API direct call with `chat_id`). Do not
-  loop on the CLI; do not ask the human to copy-paste a curl. The artifact is already on disk; the
-  gap is the channel, not the file.
 
 ## Proven artifact set
 

@@ -196,7 +196,7 @@ Telemetry (observe-only freeze): `map-atlas-echo` · Kabarkan → PG · cron 6h.
 | **🌍 GEOX** | Earth Intelligence — seismic, wells | 8081 | [repo](https://github.com/ariffazil/GEOX) | [mcp](https://geox.arif-fazil.com/mcp) | [health](https://geox.arif-fazil.com/health) | [llms.txt](https://geox.arif-fazil.com/llms.txt) |
 | **💰 WEALTH** | Capital Intelligence — NPV, risk | 18082 | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
 | **🫀 WELL** | Vitality Guard — human readiness | 18083 | [repo](https://github.com/ariffazil/WELL) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
-| **🔮 HERMES** | Multi-Modal Bridge — Telegram relay | 18087 | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
+| **🔮 HERMES** | Multi-Modal Bridge — Telegram relay | 8644 | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
 | **🧠 arifFlow** | FQ Metabolic Pulse — session metabolism | 7073 | [repo](https://github.com/ariffazil/arifFlow) | — | [health](http://127.0.0.1:7073/health) | — |
 | **🌐 arif-fazil.com** | Public Web Surface — one domain | 443 | [repo](https://github.com/ariffazil/arif-fazil.com) | — | [verify](https://arif-fazil.com/999/verify) | — |
 | **💀 VAULT999** | Immutable Seal — append-only receipt chain | fs | [repo](https://github.com/ariffazil/arifOS) | — | [verify](https://arifos.arif-fazil.com/health) | — |

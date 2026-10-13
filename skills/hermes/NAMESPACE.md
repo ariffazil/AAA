@@ -10,15 +10,9 @@
 This namespace groups related skills under one roof for discovery and routing.
 Each subdirectory is an independent skill with its own SKILL.md.
 
-## Contained skills (0 — migrated 2026-09-25 mesh repair)
-
-Former children, now merged into umbrellas (see `SKILL_ALIAS_TABLE.json`):
-- `web-scrape` → folded into `web-ops` (`hermes-research-substrate` → `web-ops`)
-- `web-search` → alias `web-search` → `web-ops`
-
-This namespace is retained as a routing marker only. Do not add children here;
-new hermes-capability skills live at top level (`hermes-*`) per the 2026-10-06
-alignment (`/root/AAA/reports/skills-alignment-2026-10-06.md`).
+## Contained skills (2)
+- `web-scrape`
+- `web-search`
 
 ## Owner
 

@@ -51,27 +51,3 @@
 | Receipt | 20260825-P0P1P2-SEAL-001 |
 
 DITEMPA BUKAN DIBERI
-
-## SESSION 2026-10-05 · KVM8 TERMINAL BIJAKSANA + APEX-ZEN AUDIT (FI-008)
-
-### DONE (receipts: /root/AAA/receipts/bijaksana-env.jsonl)
-- [x] Bijaksana env v1.2 in .bashrc (cwd+git prompt, dated history, rm -I seatbelt)
-- [x] reality card: agent-reachable via /usr/local/bin/reality (env -i verified) · v1.2 entry-count + self-exclusion fixes
-- [x] fileprobe v1 (/usr/local/bin/fileprobe): stat/lsof/lslocks/lsattr/writers/containers → UNKNOWN|CLEAR|HOLD, never "safe"
-- [x] arifos-backup: label fix (SuccessExitStatus=3) + log-append patch (truncation was destroying failure evidence) + case-sensitive grep fix · script backup: direct-backup.sh.bak.20261005
-- [x] arifos-deploy-reconciler-on-deploy.path: prose moved to comment, unit verifies clean
-- [x] External adjudication (4 AI outputs): physics SEAL'd, 175-writers claim corrected to 41+ named writers, deleted-but-open measured 2.61GB (not a disk risk)
-
-### HOLD GATE — F13 BINARY FOR ARIF (canonical/sovereign)
-- [ ] **APEX-ZEN FROZEN since ~Oct 2**: /root/VAULT999/apex-zen-receipts.jsonl is append-only (+a) BY LEDGER LAW; apex-zen-compact.py writes via os.replace (rewrite) → PermissionError every cycle.
-      CHOICE: (A) patch compactor to rotate-append (ledger law intact — recommended) · (B) drop +a from the receipts file (weakens ledger guarantee).
-- [ ] OPENCLAW bridge NAT → 100.64.0.5:18789 dead (kvm4-forge peer alive, port silent). Fix lives on KVM4 side. Firewall-adjacent → your switch.
-
-### OPEN — agent work (reversible, queued)
-- [ ] aaa-autonomy-loop: watchdog kills, restart counter 340 — suspect dead DeepSeek lane or lock contention; read wrapper chain next
-- [ ] governance timers carry `Timezone=` keys systemd IGNORES → schedules run UTC, authors wrote MYT (governance-hotspot-detector, governance-drift-batch, contradiction-accumulator) — silent 8h drift
-- [ ] disk 81% used, 75G free — no urgency; prune candidates: forge_work 26G, .cache 19G
-- [ ] session-start digest counter bug (74 sessions / 0 completed / 1 failure): Kimi Code harness artifact, upstream
-
-### NEXT — ROLLOUT
-- [ ] KVM4 (100.64.0.5, kvm4-forge) + KVM2 (100.64.0.4, azwaos): kit staged at /root/AAA/forge_work/bijaksana-env-kit-v1.tar.gz · deploy-node.sh included · both peers verified alive via tailscale

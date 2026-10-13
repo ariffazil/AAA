@@ -1,5 +1,5 @@
 {
-  "$schema": "arifOS/agent-card/v2.3.0",
+  "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
   "id": "333-AGI",
   "fi_id": "FI-002",

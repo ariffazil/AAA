@@ -106,6 +106,6 @@ F13-ratified 2026-09-08 (DUAL_GO → SEAL). First musyawarah verdict since 2026-
 2. T3/Seal no-ref post-grace → BLOCK ✓
 3. T2/Execute WITH ref → PASS ✓
 4. T2/Execute pre-grace (legacy) → PASS (exempt) ✓
-5. T0/Verify (skip — T0 by design out of musyawarah scope; A2 binding amendment) → PASS (skipped) ✓
+5. T0/Verify (out of scope) → PASS (skipped) ✓
 
 **Runtime gate status:** Pending. Sentinel covers audit/visibility. Runtime DENY on forge_shell T2/T3 calls is Phase 2 (deferred).

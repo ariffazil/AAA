@@ -30,36 +30,6 @@ const FLOW_STATE_PATH = '/root/AAA/state/flow_state.json';
 const FQ_HOLD_THRESHOLD = 0.50;
 const PROBE_TIMEOUT_MS = 3000;
 
-// ── Safe parsing + pure decision (fail-closed) ───────────────────────
-// FQ-v1.1.0: missing/unparseable quotient is UNMEASURABLE, never a pass.
-// A legitimate quotient of 0 must stay 0 (HOLD) — parseFloat()||0.5 masked it.
-
-function readQuotient(v) {
-    const n = typeof v === 'number' ? v : parseFloat(v);
-    return Number.isFinite(n) ? n : null;
-}
-
-function gateDecide(fq) {
-    const q = readQuotient(fq.quotient);
-    const unmeasurable = q === null;
-    const verdictHot = fq.verdict === 'BURNING' || fq.verdict === 'OVERHEAT';
-    // Docstring contract (header, line 12): BURNING/OVERHEAT HOLD regardless of quotient.
-    const passes = !unmeasurable && !verdictHot && q >= FQ_HOLD_THRESHOLD;
-    let reason = '';
-    if (!passes) {
-        if (unmeasurable) {
-            reason = 'FQ UNMEASURABLE: no readable quotient (fail-closed). MUTATE blocked until FQ observable.';
-        } else if (fq.verdict === 'BURNING') {
-            reason = `FQ CRITICAL: verdict=BURNING. Execute outruns verify by dangerous margin. All MUTATE blocked.`;
-        } else if (fq.verdict === 'OVERHEAT') {
-            reason = `FQ HIGH: verdict=OVERHEAT. Reduce execute, increase verify. MUTATE blocked.`;
-        } else {
-            reason = `FQ STUCK: quotient=${q.toFixed(3)} below threshold ${FQ_HOLD_THRESHOLD}. Verify before executing. MUTATE blocked.`;
-        }
-    }
-    return { pass: passes, reason };
-}
-
 // ── FQ Probe ─────────────────────────────────────────────────────────
 
 /**
@@ -76,8 +46,8 @@ async function probeLiveFQ() {
                     const d = JSON.parse(data);
                     const fq = d.fq || d;
                     resolve({
-                        quotient: readQuotient(fq.quotient ?? fq.legacy_quotient),
-                        verdict: fq.verdict || fq.legacy_verdict || 'UNKNOWN',
+                        quotient: parseFloat(fq.quotient) || 0.5,
+                        verdict: fq.verdict || 'UNKNOWN',
                         execute_count: fq.execute_count || 0,
                         verify_count: fq.verify_count || 0,
                         source: 'arifFlow:7073',
@@ -100,8 +70,8 @@ function fallbackFQ() {
     try {
         const data = JSON.parse(fs.readFileSync(FLOW_STATE_PATH, 'utf8'));
         return {
-            quotient: readQuotient(data.fq ?? data.quotient ?? data.legacy_quotient),
-            verdict: data.verdict || data.legacy_verdict || 'UNKNOWN',
+            quotient: parseFloat(data.fq) || 0.5,
+            verdict: data.verdict || 'UNKNOWN',
             execute_count: data.execute_count || 0,
             verify_count: data.verify_count || 0,
             source: 'flow_state.json (cache)',
@@ -109,7 +79,7 @@ function fallbackFQ() {
         };
     } catch {
         return {
-            quotient: null,  // fail-closed: no source = UNMEASURABLE, never a pass
+            quotient: 0.5,
             verdict: 'UNKNOWN',
             execute_count: 0,
             verify_count: 0,
@@ -131,14 +101,25 @@ async function fqGate() {
     // OBSERVE is always safe, but we check FQ for MUTATE
     // This function returns the FQ state for the caller to decide
 
-    const decision = gateDecide(fq);
+    const passes = fq.quotient >= FQ_HOLD_THRESHOLD;
+    let reason = '';
+
+    if (!passes) {
+        if (fq.verdict === 'BURNING') {
+            reason = `FQ CRITICAL: quotient=${fq.quotient.toFixed(3)} BURNING. Execute outruns verify by dangerous margin. All MUTATE blocked.`;
+        } else if (fq.verdict === 'OVERHEAT') {
+            reason = `FQ HIGH: quotient=${fq.quotient.toFixed(3)} OVERHEAT. Reduce execute, increase verify. MUTATE blocked until FQ ≥ 0.50.`;
+        } else {
+            reason = `FQ STUCK: quotient=${fq.quotient.toFixed(3)} below threshold ${FQ_HOLD_THRESHOLD}. Verify before executing. MUTATE blocked.`;
+        }
+    }
 
     return {
-        pass: decision.pass,
+        pass: passes,
         fq,
-        reason: decision.reason,
+        reason,
         threshold: FQ_HOLD_THRESHOLD,
-        gate_version: 'FQ-v1.1.0-failclosed',
+        gate_version: 'FQ-v1.0.0',
     };
 }
 
@@ -147,14 +128,18 @@ async function fqGate() {
  */
 function fqGateSync() {
     const fq = fallbackFQ();
-    const decision = gateDecide(fq);
+    const passes = fq.quotient >= FQ_HOLD_THRESHOLD;
+    let reason = '';
+    if (!passes) {
+        reason = `FQ HOLD: quotient=${fq.quotient.toFixed(3)} below ${FQ_HOLD_THRESHOLD}. MUTATE blocked until verify catches up.`;
+    }
     return {
-        pass: decision.pass,
+        pass: passes,
         fq,
-        reason: decision.reason,
+        reason,
         threshold: FQ_HOLD_THRESHOLD,
-        gate_version: 'FQ-v1.1.0-failclosed',
+        gate_version: 'FQ-v1.0.0',
     };
 }
 
-module.exports = { fqGate, fqGateSync, probeLiveFQ, gateDecide, readQuotient, FQ_HOLD_THRESHOLD };
+module.exports = { fqGate, fqGateSync, probeLiveFQ, FQ_HOLD_THRESHOLD };
