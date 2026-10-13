@@ -1,10 +1,4 @@
 # ═══════════════════════════════════════════════════════════════════
-# E1 OPEN 2026-10-06 by F13 SOVEREIGN (session SEAL-2a9a5294384a4213)
-# Organs.yaml SOT is now AUTHORITATIVE for F2/F5/F6 floor repair work.
-# OPEN F13 word received; pre-OPEN values remain in /root/AAA/federation/organs.yaml
-# history. Companion human-twin: /root/AAA/docs/ORGAN.md. Reversible by F13.
-# ═══════════════════════════════════════════════════════════════════
-# ═══════════════════════════════════════════════════════════════════
 # AAA Federation — Machine System Map (organs + linked planes)
 # ═══════════════════════════════════════════════════════════════════
 # HUMAN TWIN: /root/AAA/docs/ORGAN.md  (topology SOT — this file is machine SOT)
@@ -332,7 +326,6 @@ components:
   - id: arifflow
     class: METABOLISM
     display_name: arifFLOW
-    source_path: /root/arifFlow  # 2026-10-07: was absent, so this constitutional organ could not be presence-verified
     role: federation_metabolism
     authority_ceiling: METABOLIZE_ONLY
     port: 7073
@@ -678,39 +671,14 @@ components:
     class: EDGE
     display_name: arif-fazil.com
     repo: ariffazil/arif-fazil.com
-    source_path: /root/arif-fazil.com  # 2026-10-07: was absent, so this EDGE organ could not be presence-verified
     role: public_projection
     authority_ceiling: DISPLAY_ONLY
-    port_web: 443
-    units:
-      - caddy.service
-    endpoints:
-      human: https://arif-fazil.com/
-      arifos: https://arifos.arif-fazil.com/
-      mcp_trust_page: https://arifos.arif-fazil.com/mcp/
-      machine_surface: https://arifos.arif-fazil.com/.well-known/mcp/server.json
     owned_domains:
       - public_websites
       - federation_projection
-      - mcp_discovery
     forbidden_domains:
       - constitutional_truth
       - engineering_execution
-      - sealing
-      - credential_rotation
-      - dns
-    governance:
-      file_authority: /root/arif-fazil.com/canon/file-authority.yaml
-      note: >-
-        public/**/*.html and dist/** are DERIVED (hand_edit:false); site
-        mutations require a lease. Proposal-only zone is
-        forge_work/proposals/<agent-id>/<mission>/.
-    live_probe_2026_10_07:
-      status: active
-      http_root: 200
-      http_mcp_trust_page: 200
-      branch: site/harden
-      commit: cbf6e4c
     notes: "Supersedes id arif-sites / repo ariffazil/arif-sites (GitHub rename 301). Canon law: web-canon."
 
   # ── SUPPORT ──────────────────────────────────────────────────────

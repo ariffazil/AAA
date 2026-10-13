@@ -108,37 +108,7 @@ When the PDF documents a **DM-only personal/shadow session** (pattern maps, void
 - **Deliver DM-only** via MEDIA: — never publish, never cross-link from public sites. If a future public essay reuses the map, rewrite from the abstracted reference file, not from this PDF.
 - Cover carries an explicit sensitivity tag line and no author identifiers beyond the standard signoff.
 
-### Constitutional Specification Register (proven 2026-10-07 — arifOS::CO-REGULATION_SUBSTRATE v1.0)
-
-When the artifact is an **arifOS constitutional proposal / specification document** (technical/governance update intended for F13 ratification) — NOT a SOVEREIGN-grade briefing (navy/gold) and NOT a personal-guide (cream/coral) — use this register:
-
-- **Palette — strict RYB on deep black.** Background `#0a0a0a`, foreground uses only red `#dc2626` (danger/sympathetic/dorsal), yellow `#fbbf24` (caution/transition/safe mobilization), blue `#3b82f6` (calm/ventral/baseline), plus white `#f5f5f5` and grey `#737373` for text, plus `#404040` for borders. No other colors. No faces or human figures. No imagery of any kind.
-- **Typography — monospace only.** `Courier New`, `Consolas`, or equivalent fixed-width. Signals "spec / terminal / legal" register. Body 9-10pt, headers 11-18pt, code/table 8-9pt.
-- **Structure.** Cover with namespace-style identifier (`arifOS::MODULE_NAME v1.0`), abstract block with left blue border, metadata table, then numbered sections (0 TL;DR → 10 VERDICT). Each section starts with `<h1>` styled red with red bottom border. Subsections use `<h2>` yellow, `<h3>` blue.
-- **Tables — dense, monospace, with class-tagged cells.** Use `<td class="red">`, `<td class="yellow">`, `<td class="blue">` to embed RYB semantics directly in cells. No merged cells. Borders `#404040`.
-- **Callout boxes by content type, not by visual variety.** `red-box` = warning/danger/constraint. `yellow-box` = caution/transition/strategic. `blue-box` = calm/baseline/informational. Each uses left border + tinted background (`#1a0a0a` / `#1a1a0a` / `#0a0a1a`).
-- **Seal block at end.** Centered bordered box with spec ID, status (DRAFT / AWAITING SAH / RATIFIED), color-coded. Proves lineage.
-- **Chart pack — 6-8 geometric diagrams, ALL geometric (no data charts).** RYB palette, dark background, no faces, no decorative imagery. Valid types: nested-rectangle hierarchy, Venn intersection, geometric flow diagrams, structured grid tables, radial domain maps, falsification matrix tables. The chart IS the data — when claims are structural/conceptual, charts are diagrams, not bar charts.
-- **Page count — 14-18 pages is the floor for constitutional updates.** Enough for TL;DR + mechanism + applications + falsification + roadmap + verdict. Don't pad to 26+ (that's SOVEREIGN-collapse territory) and don't compress below 12 (loses the rationale).
-- **Verify.** `pdfinfo` + `pdfimages -list` (8 charts = 16 image objects) + `pdftoppm` full sweep + vision on cover AND every chart page. ~600KB / 16pp is normal. Confirm zero non-RYB colors via PIL pixel sample on a chart PNG.
-- **Sample artifact:** `/root/forge_work/arifos-coreg-2026-10-07/out/arifos_coreg_substrate_v1.0_2026-10-07.pdf` (16 pages, 633KB, 8 charts).
-
-### Bonded-human personal-guide register (proven 2026-10-07 — Syed co-regulation guide)
-
-When the PDF is for a **bonded human** (close friend, gym bro, "abang sado" type relationship) — NOT family, NOT sovereign-grade, NOT institutional — use this register. Triggers: a sovereign explicitly asks to share neuroscience/personal-development content with a specific named person they have emotional bond with; the recipient is NOT a technical/family reader.
-
-- **8–10 pages is the sweet spot.** Bonded humans read short, dense, visual. Don't pad.
-- **Warm palette — same as family-showcase (cream/coral/teal/gold/grey) but register is different.** Family-showcase is for "wow" the reader with agent capability. Bonded-human is for genuine knowledge transfer the sovereign wants the recipient to understand. The warmth signals "personal" not "corporate."
-- **Register: casual Bahasa Malaysia (BM Penang kampung style — "hang" address, "aku" speaker).** English technical terms allowed with brief inline explanation on first use. The reader is intelligent but not in the field. The sovereign's voice should be the dominant register — when in doubt, write as if the sovereign is talking directly to the bonded person.
-- **5 charts (matplotlib) — geometric + simple data, all conceptual-friendly.** Avoid data charts with numbers the reader won't read. Use: (1) two-state comparison (warm/cool palette to mirror tone), (2) 4-axis radar for quality differences, (3) venn or intersection for sweet-spot concept, (4) bidirectional loop for system schema, (5) numbered list as table for self-observation framework.
-- **Structure: cover with hook title (not academic) → opener (1-2 paragraphs of "this is for you, here's why") → 5-7 numbered sections each with one chart + 2-3 paragraphs → final page with closing message and "— [sovereign name]" signoff.**
-- **Closing message must be sovereign-voice, not agent-voice.** Don't write "this concludes the analysis." Write what the sovereign would actually say. End with a signoff line that names the sovereign by first name.
-- **No doctrine names, no constitutional vocabulary, no F1-F13 references in the bonded-human PDF.** The reader doesn't need to know arifOS exists. They just need the content. F2 truth, F1 reversibility apply to the artifact internally — they don't surface in the text.
-- **Korean/Chinese/Malay mixed character paste is a bug, not a feature.** When the source HTML accidentally contains stray CJK characters (e.g. `珍贵的` pasted mid-sentence), the rendered PDF will look like a vision-hallucination artifact. Run `pdftotext out.pdf - | tail -20` after every render and scan the last 20 lines for unexpected non-ASCII scripts. If found, fix the HTML source, re-render.
-- **Personal/co-regulation content → `read-after-review` workflow.** When a sovereign says "deep research" or "explain to [bonded human]" the artifact IS sovereign-voice. Do one full PDF-page sweep with `pdftoppm` + `vision_analyze` for every chart page (not just cover). Common issues: MOBILIZATION word broken mid-syllable because sweet-spot ellipse is too small; "Passion tanpa panic" italic label overlapping the ellipse border; bidirectional arrow direction contradicts the prose; venn circle labels getting cut at chart edges. Fix the matplotlib source, not the HTML.
-- **Verify:** `pdfinfo` + `pdfimages -list` (5 charts = 10 image objects) + full `pdftoppm` sweep + vision on every chart page + vision on closing/signoff page. ~500KB / 9-10pp is normal. Sample artifact: `/root/forge_work/sado-coreg-2026-10-07/out/co_regulation_sado_2026-10-07.pdf` (10 pages, 501KB, 5 charts).
-
-
+### Lightweight personal-guide register (proven 2026-08-15 — Azwa rental guide)
 
 When the PDF is a **personal/family practical guide** (rental vetting, purchase decision, "before you pay" checklist) in casual Bahasa Malaysia — NOT SOVEREIGN-grade — use the lightweight register instead of the apex contract:
 

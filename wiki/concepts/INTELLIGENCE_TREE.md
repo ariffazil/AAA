@@ -1,10 +1,10 @@
 ---
 title: "INTELLIGENCE TREE — Arif Fazil Federation Ontology"
 created: 2026-05-17
-updated: 2026-10-06
+updated: 2026-05-17
 type: concept
-tags: [intelligence, ontology, tree, knowledge, memory, skills, workflow, tools, embodiment, arifOS, kernel, MCP, scar-binding, resolver, hold-routing, llm-wiki]
-sources: [wiki/concepts/AGENT_SKILLS.md, wiki/skills/SKILL_SPATIAL.md, wiki/SCAR_HERMES.md, wiki/concepts/ANTI_FABRICATION.md, wiki/entities/FEDERATION_ENTITIES.md, wiki/scars/SCAR_WIKI_DRIFT_2026_10_06.md, wiki/arifos/AGENT_AUTONOMY_PATTERNS.md]
+tags: [intelligence, ontology, tree, knowledge, memory, skills, workflow, tools, embodiment, arifOS, kernel, MCP]
+sources: [wiki/concepts/AGENT_SKILLS.md, wiki/skills/SKILL_SPATIAL.md, wiki/SCAR_HERMES.md, wiki/concepts/ANTI_FABRICATION.md, wiki/entities/FEDERATION_ENTITIES.md]
 confidence: high
 ---
 
@@ -418,44 +418,5 @@ AAA is the **structured knowledge + skills layer** — externalized intelligence
 
 ---
 
-## SESSION DISCOVERIES (2026-10-06 16:00 MYT)
-
-Five complementary autonomy patterns ratified in this session, by F13:
-
-1. **RESOLVER, NOT CLERK** — Destroy options to ONE path before escalating. Menu-dumping the sovereign is the defect class.
-2. **HUMAN ATTENTION MEMBRANE** — Sovereign attention is non-renewable. Agents MUST ask only for binary; never ask to copy-paste, never ask to click OK.
-3. **QUESTION BUDGET** — Absorb complexity. Read source, consult peers, decide. Only ask if binary or irreversible.
-5. **HOLD ROUTING HOOK** — Hook is sensor, agent decides. NEVER block. Surface scar's learned_action, let agent choose continue/halt/reroute.
-5. **ZERO-FRICTION EXECUTION** — Run detection → resolve below authority → present ONE execution-ready transition. Never manufacture a human decision.
-
-See `[[arifos/AGENT_AUTONOMY_PATTERNS]]` for the full doctrine with examples and 4-level escalation ladder.
-
----
-
-## NEW SCARS (2026-10-06)
-
-- `[[scars/SCAR_WIKI_DRIFT_2026_10_06]]` — `/for-agents` section was in live HTML but missing from wiki source. Stale schema path. Deleted mkdocs.yml. +1 missing build-system gate.
-- `[[scars/SCAR_HERMES]]` (existing) — fabrication gateway that taught spatial grounding
-
----
-
-## NEW DIRECTIVES (2026-10-06)
-
-- `AAA::RESOLVER_BEFORE_ESCALATE::v1` — destroy options to one path
-- `AAA::NO-HOLD_FLOW_DIRECTIVE::v2` — HOLD has thermodynamic cost (10 vs 1)
-- `HERMES::ZERO-FRICTION_EXECUTION_PATCH::v1` — runtime output contract
-- AAA::SCAR_BINDING_DOCTRINE v3 — HOLD becomes accountability work item (Phase B + C done)
-
----
-
-## ONTOLOGY ADDITIONS (2026-10-06)
-
-- **Scar-Bound Selection** — selection must consult scar ledger before action (SCAR-BINDING DOCTRINE)
-- **Authority Bands** — lanes ≠ authority bands (555_COMPUTE evaluates evidence; 777_FORGE executes; REFLECT_ONLY mirror)
-- **State Snapshots** — recurring federation-state-capture pattern at every material boundary
-- **Wiki as LLM-Skin** — llm-wiki pattern (Karpathy 2026-07-29): wiki is the skin, VAULT999 is the bones
-
----
-
 *DITEMPA BUKAN DIBERI — Intelligence is forged through the loop, not given by the model.*
-*999 SEAL ALIVE — last sealed 2026-10-06 16:00 MYT*
+*999 SEAL ALIVE*

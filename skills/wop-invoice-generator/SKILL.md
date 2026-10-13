@@ -92,7 +92,6 @@ If user supplies *different* payment info, use theirs and override the default.
 - 4 decimal places on round numbers
 - Adding SST line unless rate specified
 - Forgetting payment info box on subsequent invoices
-- **Grand Total in `<tfoot>` repeats on every page break.** If the invoice spans multiple pages (e.g., 21-day catering invoice), put the Grand Total in a separate `<table>` block AFTER the closing `</table>` of the line items, not inside `tfoot`. Tfoot is designed to repeat; only move the total out of tfoot if user wants it on the last page only.
 
 ## Output language
 

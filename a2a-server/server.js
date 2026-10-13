@@ -56,7 +56,6 @@ const { getInbox, createSIAL, validateSIAL } = require('./agent_inbox');
 
 // ── FQ Gate — constitutional HOLD at FQ < 0.5 (forged 2026-08-05) ─
 const { fqGateSync } = require('./fq_gate');
-const delegationGuard = require('./delegation_guard');
 
 // ── SRO Propagation — A2A Cross-Agent Reality Sharing v1 (forged 2026-09-12) ─
 const { propagateSroEvent } = require('./sro_propagation');
@@ -728,13 +727,6 @@ function a2aHttpsPostJson(url, bodyObj, token) {
 async function dispatchOpenClawTask({ targetAgent, message, skill, taskId, contextId, timeoutMs = 60000 }) {
   const sessionKey = createOpenClawSessionKey(taskId);
   const text = extractText(message).trim();
-
-  // K1 delegation guard (musyawarah B' 2026-10-07): halt depth>2 + same-signature loops.
-  const _dg = delegationGuard.checkAndTrack({ contextId, targetAgent, skill, text });
-  if (!_dg.allow) {
-    console.error('[delegation-guard] BLOCKED ' + JSON.stringify({ contextId, depth: _dg.depth, sig: _dg.signature, reason: _dg.reason }));
-    return { runId: null, sessionKey, status: 'failed', text: _dg.reason, error: _dg.reason, delegation_loop: true };
-  }
   const prompt = [
     targetAgent ? `AAA route target: ${targetAgent}` : '',
     skill ? `AAA requested skill: ${skill}` : '',

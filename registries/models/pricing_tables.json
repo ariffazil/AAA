@@ -202,39 +202,13 @@
     }
   },
   "opencode-go": {
-    "_note": "Subscription $10/mo Go plan (per-model monthly $ caps; 5h=20%/wk=50%/mo=100%). Prices below = metered equivalents for cost estimation only. Muse-spark/cat-jam train on prompts \u2014 no sovereign/private data.",
-    "glm-5.3-flash": {
-      "input_per_1M": 0.15,
-      "output_per_1M": 0.5,
-      "cache_read_per_1M": 0.03,
-      "monthly_cap_usd": 60
+    "opencode-go/deepseek-v4-flash-free": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
     },
-    "glm-5.3": {
-      "input_per_1M": 1.4,
-      "output_per_1M": 4.4,
-      "cache_read_per_1M": 0.26,
-      "monthly_cap_usd": 15
-    },
-    "kimi-k2.7-code": {
-      "input_per_1M": 0.95,
-      "output_per_1M": 4.0,
-      "monthly_cap_usd": 60
-    },
-    "deepseek-v4-pro": {
-      "input_per_1M": 0.66,
-      "output_per_1M": 1.98,
-      "note": "off-peak; peak 2x",
-      "monthly_cap_usd": 15
-    },
-    "minimax-m3": {
-      "input_per_1M": 0.3,
-      "output_per_1M": 1.2,
-      "monthly_cap_usd": 60
-    },
-    "qwen3.8-max": {
-      "input_per_1M": 2.0,
-      "output_per_1M": 6.0,
-      "monthly_cap_usd": 15
+    "opencode-go/north-mini-code-free": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
     }
   },
   "mulerouter": {

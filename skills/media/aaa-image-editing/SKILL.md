@@ -290,73 +290,18 @@ the input, the stronger the pull toward generic output.
 3. Present all to user with **honest realism ratings**
 4. Let user pick — or acknowledge "ini semua edit, bukan you sebenar"
 
-## Post-Generation Validation Checklist (hardened 2026-10-07, scar-derived)
+## Post-Generation Validation Checklist
 
-Before delivering ANY edited image to user, walk every item below. The first
-three blocks (Source-of-Truth, Cultural Specificity, Filter Trigger) come from
-`/root/AAA/scars/2026-10-07-visual-intelligence-five-defects.md`. The
-remaining blocks are from earlier identity-preservation practice. **No item may
-be skipped. Aggregate "truthful completion" only when ALL items pass.**
-
-### A. Source-of-Truth (vs. vision-analyze verdict) — D1 from scar
-
-- [ ] **Inventory checklist derived from user intent** — every concrete item the user named (e.g. "tengkolok", "songket pucuk rebung", "keris", "Malayan tiger") written as a binary checklist BEFORE generation. Vague "score 1-10" is not ground truth.
-- [ ] **Each inventory item verified by `vision_analyze`** with the question `Does this image show <item>? Answer PASS or FAIL with one-sentence justification.`
-- [ ] **All inventory items return PASS** before declaring task complete. Failed items require retry, not delivery.
-
-### B. Cultural Specificity — D2 from scar
-
-When the user specifies a culture/region (Malay, Thai, Nusantara, etc.):
-
-- [ ] **Negative-discrimination cue present** — prompt must include `specifically <culture>, not <adjacent cultures>`. Diffusion priors drift to the most-trained adjacent culture (Thai/Indonesian for Malay, etc.).
-- [ ] **Subspecies/specific marker included** when relevant (e.g. `Malayan tiger Panthera tigris jacksoni, NOT Bengal`; `songket geometric pucuk rebung, NOT floral brocade`; `tengkolok, NOT crown`).
-- [ ] **Negative vocabulary enumerated** — every named item paired with what it is NOT. If the model drifts to the negative, the prompt was underspecified.
-
-### C. Filter Trigger Decode — D5 from scar
-
-When the API returns `DataInspectionFailed: Green net check failed for ...`:
-
-- [ ] **Identify which surface failed**: `input text` (prompt) vs `output image` (intended render).
-- [ ] **input text fail** → remove/replace terms that imply intimate, romantic, violent, political content. Keep cultural/visual core, reword the rest.
-- [ ] **output image fail** → the prompt passed but the *intended* output triggered. Simplify pose description, reduce reference to multiple figures in contact, use abstract vocabulary ("keep all visible figures with the same relative positions") instead of literal ("intimate pose", "embrace", "tender").
-- [ ] **Persist filter log**: `attempt_N: filter_pass | filter_fail_input | filter_fail_output | filter_decode`.
-
-### D. Attempt Evolution — D4 from scar
-
-Before each new submission (after the first), the attempt log MUST include:
-
-```
-attempt_N:
-  vocabulary_changed: [list]   # new terms not in attempt N-1
-  structural_changed: [list]   # new structural cues (e.g. "use bbox", "remove second figure", "shift palette")
-  falsifier_probed: [list]     # what failure mode you're testing
-  hypothesis: <one-sentence why this differs from N-1>
-```
-
-- [ ] **At least one of vocabulary_changed / structural_changed / falsifier_probed is non-empty.** Empty log = loop = 888_HOLD.
-- [ ] **No two consecutive attempts rephrase each other** with no new signal.
-
-### E. Identity Preservation (carried forward)
+Before delivering ANY edited image to user:
 
 - [ ] **Face check:** Does the subject's face match the original? (use `vision_analyze`)
 - [ ] **Body check:** Is the physique preserved? (not idealized/generic)
-- [ ] **Prop count:** Are all original props present and correct count? (e.g. 1 light tube, not 2)
+- [ ] **Prop count:** Are all original props present and correct count? (e.g., 1 light tube, not 2)
 - [ ] **No extra objects:** Did the model hallucinate additional elements?
 - [ ] **No skin smoothing:** Is skin texture preserved vs over-smoothed?
 - [ ] **No text/watermarks:** Did "No text" instruction work?
 - [ ] **Aspect ratio:** Does output match input aspect ratio?
 - [ ] **Resolution:** Is output at expected resolution?
-
-### F. "Siap" Gate — D3 from scar
-
-- [ ] **All inventory items PASS** (block A).
-- [ ] **At least one filter-trigger attempt log entry persisted** even on success (block C) — the absence of a log entry is itself suspicious.
-- [ ] **Each attempt introduced signal** (block D).
-- [ ] **NO "siap" verdict issued while validation FAILED across any block.** "Siap" requires SABAR-on-fail (best-so-far-as-best, never silent).
-
-**SABAR = best so far as best, not done.** When you declare complete with
-inventory items still missing, you owe the user a receipt of which items
-failed, why, and what next attempt would address them.
 
 ## Ensemble Editing (best results for identity-critical work)
 

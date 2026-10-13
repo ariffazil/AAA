@@ -44,7 +44,6 @@ I am the **meta-router** of the skill mesh. I do not implement — I orchestrate
 
 Given a mission, I:
 
-0. **Consult** — read institutional memory BEFORE decomposition: `tail -30 /root/AAA/knowledge/log.md` and the nearest `INDEX.md` under `/root/AAA/knowledge/` (start: `gist-ingest-2026-10-08/INDEX.md`). This is the Phase-B scar-consultation bridge (scar-binding doctrine v1 · AT-002): witnessed consequences must shape selection before any path is chosen. If the mission signature matches a logged REVERT/failure class, the matching contract governs — do not re-plan from zero.
 1. **Decompose** — break the mission into atomic sub-tasks. Each sub-task maps to ONE L1/L2 skill.
    - `[claude]` / `[qwen]` examples: `FORGE-call-map`, `AGI-decisions-reflect`.
    - `[opencode]` examples: `forge_filesystem`, `opencode-init`, `opencode-propose-seal`.

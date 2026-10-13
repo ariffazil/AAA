@@ -34,7 +34,7 @@
     "authority_level": "engineer",
     "citizenship_forged": "2026-05-17"
   },
-  "documentationUrl": "https://github.com/ariffazil/AAA",
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/opencode",
   "runtime_snapshot": {
     "probed": "2026-10-14T04:35:00Z",
     "opencode_version": "2.0.28",
@@ -938,6 +938,5 @@
     "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
     "auto_aligned_tier": "Warga",
     "auto_aligned_class": "AGI"
-  },
-  "_url_note": "documentationUrl repointed 2026-10-14: mcp.arif-fazil.com/docs/agents/opencode 404 (page never existed); a2a url 400-on-GET is normal JSON-RPC shape, not a defect."
+  }
 }

@@ -433,14 +433,6 @@ Union of every member's scars. This is the part a summariser would destroy — s
   PDF attachment and a tool output.
 - **Do not launder a lane's friction into a claim about the world.** Empty ≠ absent; refused ≠ false;
   blocked ≠ unreadable.
-- **Looking up a real person's social profile from this vantage is a 0-retry path.** Google indexes almost
-  no private Facebook/Instagram/TikTok profile pages, `web_search` returns unrelated noise for common
-  names, and `browser_exec` against facebook.com from a non-logged-in session returns "Not Found" or a
-  login wall. **The right path is to ask the requester to use their own app** — they have the friends list,
-  the chat history, and a logged-in session. Telling the user to look it up themselves is *not* a
-  capability gap; it is the honest verdict when the target is a private profile of a person the requester
-  already knows. Burn ≤1 search attempt to confirm the lane is closed, then route the user back to their
-  own client.
 
 ---
 

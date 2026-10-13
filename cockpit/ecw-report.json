@@ -1,6 +1,6 @@
 {
   "schema": "ecw-report-v1",
-  "generated_at": "2026-10-06T01:13:02.170198+00:00",
+  "generated_at": "2026-10-01T22:42:50.800884+00:00",
   "sovereign_invariant": "DeclaredState = ObservedState = InterpretedState = EnforcedState",
   "drift_taxonomy": [
     "SURFACE_DRIFT",
@@ -15,7 +15,7 @@
       "name": "arifOS",
       "port": 8088,
       "reachable": true,
-      "latency_ms": 1.7,
+      "latency_ms": 1.9,
       "surface": {
         "url": "http://127.0.0.1:8088/.well-known/mcp/server.json",
         "declared_tools": 8,
@@ -35,7 +35,6 @@
         "OBSERVE_ONLY",
         "SABAR",
         "SEAL",
-        "UNKNOWN",
         "VOID"
       ],
       "live_verdict_source": ".well-known/mcp/server.json",
@@ -47,9 +46,7 @@
           "SEAL",
           "VOID"
         ],
-        "legacy_hits": [
-          "UNKNOWN\u2192HOLD"
-        ],
+        "legacy_hits": [],
         "unknown_tokens": [],
         "semantic_drift": false
       },
@@ -67,7 +64,7 @@
       "name": "A-FORGE",
       "port": 7072,
       "reachable": true,
-      "latency_ms": 0.2,
+      "latency_ms": 0.5,
       "surface": {
         "url": "http://127.0.0.1:7072/mcp",
         "declared_tools": 122,
@@ -240,7 +237,7 @@
       "name": "CHRON",
       "port": 7074,
       "reachable": true,
-      "latency_ms": 0.2,
+      "latency_ms": 0.5,
       "surface": {
         "declared_tools": 0,
         "tool_names": [],
@@ -275,7 +272,7 @@
       "name": "FRAME",
       "port": 18085,
       "reachable": true,
-      "latency_ms": 1.0,
+      "latency_ms": 0.1,
       "surface": {
         "declared_tools": 0,
         "tool_names": [],
@@ -354,7 +351,7 @@
       "name": "GEOX",
       "port": 18412,
       "reachable": true,
-      "latency_ms": 0.5,
+      "latency_ms": 0.2,
       "surface": {
         "declared_tools": 0,
         "tool_names": [],
@@ -389,7 +386,7 @@
       "name": "federation-gw",
       "port": 18083,
       "reachable": true,
-      "latency_ms": 0.3,
+      "latency_ms": 0.1,
       "surface": {
         "url": "http://127.0.0.1:18083/.well-known/mcp/server.json",
         "declared_tools": 0,
@@ -419,7 +416,7 @@
       "name": "fed-router",
       "port": 18084,
       "reachable": true,
-      "latency_ms": 0.2,
+      "latency_ms": 0.1,
       "surface": {
         "declared_tools": 0,
         "tool_names": [],
@@ -500,5 +497,5 @@
       "TRANSPORT_FAILURE": 0
     }
   },
-  "integrity_hash": "cc88b828d97a2682489bc9c2cf0c678513f344905e0c10c043e35122859926dc"
+  "integrity_hash": "82531ba0b29ae7d11acd8ab8bac60cddbcf4559f67bc5ef9653acabe5576896b"
 }

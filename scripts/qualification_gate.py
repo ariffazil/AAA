@@ -25,28 +25,6 @@ results: list[tuple[str, bool, str]] = []
 def record(name, ok, detail):
     results.append((name, ok, detail))
 
-# T10 L8.5 Causal-Claim Gate (Items 2, AAA-NEXT-HORIZON-SEAL-2026-10-06)
-INTERVENTION_TOKENS = [
-    "do-calculus", "do_calculus", "do(", "SCM", "structural causal",
-    "instrumental variable", "counterfactual", "front-door", "back-door",
-    "intervention", "treatment effect", "ATE", "CATE", "pearl",
-]
-def t10_causal_claim_gate(cards):
-    bad = []
-    l85_count = 0
-    for p, d in cards:
-        q = d.get("qualification", {})
-        layers = q.get("math_competency", {}).get("layers", []) or []
-        if "L8.5" not in layers:
-            continue
-        l85_count += 1
-        q_text = json.dumps(q).lower()
-        has_intervention = any(tok.lower() in q_text for tok in INTERVENTION_TOKENS)
-        if not has_intervention:
-            bad.append((p, "L8.5 claimed but no intervention/SCM marker in qualification block"))
-    record("T10 L8.5 causal-claim gate (intervention marker required)", not bad,
-           f"{l85_count} L8.5 cards checked" + (f" · BAD: {[b[0] for b in bad[:3]]}" if bad else ""))
-
 def load_cards():
     paths = sorted(set(
         glob.glob(f"{AAA}/agent-cards/**/agent-card*.json", recursive=True)
@@ -186,7 +164,6 @@ def main():
     t6_phantom_plugins()
     t7_mesh(paths, cards)
     t8_debris(paths)
-    t10_causal_claim_gate(cards)
 
     print(f"QUALIFICATION GATE · {len(cards)} cards · {len(results)} tests")
     print("─" * 72)

@@ -1,10 +1,5 @@
 # Kinabalu Basin Structural Genesis & Petroleum System Map (Acts 1–5)
 
-> **Status:** REFERENCE_DOC — domain artifact, NOT doctrine.
-> **Class:** GEOX domain reference. Structural/petroleum-system interpretation of
-> the NW–SE transect. Carries no AAA operational authority; it is subject-matter
-> material for GEOX, not a constitutional instruction. Home: `/root/GEOX/artifacts/`.
-
 ## Executive Summary
 
 This artifact provides a comprehensive tectonic and petroleum system interpretation of the NW–SE transect through the Kinabalu Basin. It connects the structural evolution to the stratigraphic architecture and hydrocarbon plays, transforming the cross-section from a static visualization into a dynamic geological narrative.
