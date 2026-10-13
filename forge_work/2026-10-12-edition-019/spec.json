@@ -1,0 +1,98 @@
+{
+  "edition": "EDITION-019",
+  "edition_date": "2026-10-12",
+  "title": "Executive Brief",
+  "subtitle": "Delta tracked edition \u00b7 5 new, 8 moved, 10 carrying over",
+  "template": "base-a4",
+  "theme": "light",
+  "source": "/root/AAA/forge_work/2026-10-12-edition-019/content.html",
+  "run_dir": "/root/AAA/forge_work/2026-10-12-edition-019",
+  "gates": {
+    "profile": "print-light",
+    "forbid_paths": true,
+    "cover_orphan_exempt": true,
+    "sot_assertions": [
+      {
+        "label": "mean_brier",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "mean_brier",
+        "render": "0.153",
+        "forbid": [
+          "0.088",
+          "142 Resolved Predictions",
+          "WELL CALIBRATED"
+        ]
+      },
+      {
+        "label": "accuracy",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "accuracy",
+        "render": "0.863"
+      },
+      {
+        "label": "bias",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "bias",
+        "render": "-0.181"
+      },
+      {
+        "label": "mean_confidence",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "mean_confidence",
+        "render": "0.682"
+      },
+      {
+        "label": "predictions_total",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "predictions_total",
+        "render": "148",
+        "forbid": [
+          "142 Resolved Predictions"
+        ]
+      },
+      {
+        "label": "quality",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "quality",
+        "render": "SUFFICIENT",
+        "forbid": [
+          "WELL CALIBRATED"
+        ]
+      },
+      {
+        "label": "brier (excl. self-tests)",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "honest_scopes.canonical_unified_excluding_self_tests.mean_brier",
+        "render": "0.159"
+      },
+      {
+        "label": "brier (raw, one row per hypothesis)",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "raw.mean_brier",
+        "render": "0.159"
+      },
+      {
+        "label": "brier (gold-pair scope)",
+        "sot": "/root/chron/data/calibration.json",
+        "key": "honest_scopes.gold_pair_scope.mean_brier",
+        "render": "0.182"
+      }
+    ],
+    "must_contain": [
+      "MODEL_CHANGE",
+      "PREDICTION_LINEAGE",
+      "SURVIVORS_AND_NEWCOMERS",
+      "LEARNING_RECEIPT",
+      "CALIBRATION_WITNESS"
+    ]
+  },
+  "stats": {
+    "new": 5,
+    "moved": 8,
+    "reopened": 0,
+    "still_open": 10,
+    "settled": 0,
+    "dropped": 0,
+    "items_total": 23
+  }
+}

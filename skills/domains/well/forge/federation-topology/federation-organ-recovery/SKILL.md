@@ -2,7 +2,7 @@
 name: federation-organ-recovery
 description: Use when a federation organ is down or crash-looping.
 id: federation-organ-recovery
-version: 1.0.4
+version: 1.0.5
 owner: AAA-curator
 risk_tier: low
 autonomy_tier: T1
@@ -149,3 +149,4 @@ warm-up lag can make a healthy organ look dead on the first pass.
 - **[2026-09-15] hermes-rsi-loop** (evidence: [{"layer": "runtime", "source": "session-trace:subagent:20260912_022918_fdec", "excerpt": "Auto-traced session 20260912_022918_fdec01. 10 tool calls, 70% success. Errors: 3."}, {"l): SILENT_FAIL observed 10x — impact=session_error. First surface: session-trace:subagent:20260912_022918_fdec — all four checks passed, but independence is NAME-LEVEL ONLY (same author) — verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event
 - **[2026-09-15] hermes-rsi-loop** (evidence: [{"layer": "runtime", "source": "session-trace:telegram:20260912_012105_3a49", "excerpt": "Auto-traced session 20260912_012105_3a49a4f9. 18 tool calls, 89% success. Errors: 2."}, {): SILENT_FAIL observed 6x — impact=session_error. First surface: session-trace:telegram:20260912_012105_3a49 — all four checks passed, but independence is NAME-LEVEL ONLY (same author) — verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event
 - **[2026-09-15] hermes-rsi-loop** (evidence: [{"layer": "runtime", "source": "session-trace:cron:cron_5a8cdae52298_20", "excerpt": "Auto-traced session cron_5a8cdae52298_20260914_090032. 25 tool calls, 36% success. Errors: 16): SILENT_FAIL observed 3x — impact=session_error. First surface: session-trace:cron:cron_5a8cdae52298_20 — all four checks passed, but independence is NAME-LEVEL ONLY (same author) — verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event
+- **[2026-10-11] hermes-rsi-loop** (evidence: [{"layer": "runtime", "source": "session:assistant", "excerpt": "lm_config_v6_20260904.yaml, root/A-FORGE/scripts/federation-auto-remediation.sh, root/.hermes/model-picker.yaml\ner): SILENT_FAIL observed 1x — impact=runtime_error. First surface: session:assistant — all four checks passed, but independence is NAME-LEVEL ONLY (same author) — verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event

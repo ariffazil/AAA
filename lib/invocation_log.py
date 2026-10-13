@@ -100,6 +100,7 @@ def log_invocation(
     ok: bool = True,
     duration_ms: float | None = None,
     session_id: str | None = None,
+    verdict: str | None = None,
     error: str | None = None,
     extra: dict[str, Any] | None = None,
     path: Path | str | None = None,
@@ -125,6 +126,14 @@ def log_invocation(
             "epoch": now,
             "host": _host(),
         }
+        if verdict:
+            # Governance field: the CALLER'S OWN verdict label (SEAL / HOLD /
+            # SABAR / VOID / ...). A label, never content — this is the outcome
+            # of a decision the caller already made, not an argument or payload,
+            # so it stays inside PRIVACY_BOUNDARY. Emitted only when supplied;
+            # organs that do not judge (and the arifFlow forwarder, whose F2/F3
+            # plane law forbids carrying verdicts) leave it absent.
+            rec["verdict"] = str(verdict)[:64]
         if error:
             # Truncated: an error string can carry a payload by accident.
             rec["error"] = str(error)[:200]

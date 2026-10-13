@@ -213,7 +213,7 @@ destroys — read it before running the branch.
 
 ## REFERENCES
 
-| Reference | Source skill | Original path (now archived) |
+| Reference | Source skill | Original path (pre-merge) |
 |---|---|---|
 | `references/forge-github-ops.md` | forge-github-ops | `/root/AAA/skills/forge-github-ops/SKILL.md` |
 | `references/github-auth.md` | github-auth | `/root/AAA/skills/github/github-auth/SKILL.md` |
@@ -223,9 +223,9 @@ destroys — read it before running the branch.
 | `references/github-pr-workflow.md` | github-pr-workflow | `/root/AAA/skills/github/github-pr-workflow/SKILL.md` |
 | `references/github-repo-management.md` | github-repo-management | `/root/AAA/skills/github/github-repo-management/SKILL.md` |
 
-Each reference carries a 4-line provenance header; the body beneath it is byte-identical to the archived
+Each reference carries a 4-line provenance header; the body beneath it is byte-identical to the pre-merge
 original (sha256 verified at merge time — see the receipt at
-`/root/forge_work/merge-2026-09-20/github-receipt.json`).
+`/root/forge_work/merge-2026-09-20/github-receipt.json`, 9394 bytes, intact).
 
 **Supporting assets** (`references/assets/<member>/...`, member-relative layout preserved):
 
@@ -246,5 +246,6 @@ is recorded in the receipt.
 - The branch's own reference defines "done" for that branch.
 - Cross-cutting, every branch: every claim about remote state (auth, CI, merge, release, issue state) is
   backed by a fresh read in this session, never by memory.
-- Pre-merge archive: `/root/AAA/skills/.archive/merge-20260920/github/` — all seven member directories,
-  untouched.
+- Pre-merge byte-identity preserved by `/root/forge_work/merge-2026-09-20/github-receipt.json`;
+  originals live in git history pre-2026-09-20. The `.archive/merge-20260920/` safety-net was retired
+  2026-10 (see Scar-2026-10-03-001: representation ≠ reality).

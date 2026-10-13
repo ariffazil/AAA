@@ -12,6 +12,10 @@ floor_scope:
 - F11
 - F13
 autonomy_tier: T2
+applies_gate: persistent-memory-effectiveness-gate v1.0 (staged /root/forge_work/paper2610.07782-embedding/01-canonical-rule/MEMORY-EFFECTIVENESS-GATE.md; source arXiv:2610.07782 §5/C2). IRFANclaw/OpenClaw Telegram bridge requires explicit thread-scope fields (write_thread_id, read_thread_id, authorized_cross_thread_scope) per Track 05.1 — schema patch staged. Cross-thread leakage IS the C2 contamination channel in this agent's regime.
+clause_highest_risk_for_this_skill: 3 (provenance-scoped isolation). Telegram threads accumulate per-message state; without explicit cross-thread authorization, any persistent-memory eval is structurally contaminated.
+related_scaffolds:
+  - /root/forge_work/paper2610.07782-embedding/05-irfanclaw-threads/SPEC.md
 host_compatibility:
 - openclaw  # native — SYSTEM_MD.md emitted to openclaw/
 dependencies:

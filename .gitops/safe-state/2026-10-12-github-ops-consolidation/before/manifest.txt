@@ -1,0 +1,27 @@
+=== forge-github-ops ===
+forge-github-ops
+
+=== FORGE-github-ops ===
+FORGE-github-ops
+
+=== github/github-ops ===
+github/github-ops/references/github-auth.md
+github/github-ops/references/github-issues.md
+github/github-ops/references/github-code-review.md
+github/github-ops/references/forge-github-ops.md
+github/github-ops/references/github-repo-management.md
+github/github-ops/references/github-issue-to-pr.md
+github/github-ops/references/upstream-github-skill.md
+github/github-ops/references/github-pr-workflow.md
+github/github-ops/scripts/git-credential-token.py
+github/github-ops/scripts/gh-env.sh
+github/github-ops/SKILL.md
+
+=== FORGE-github-workflow ===
+FORGE-github-workflow/SKILL.md
+FORGE-github-workflow/liveness.json
+
+=== github-public-push-privacy ===
+github-public-push-privacy/references/public-push-near-miss-2026-08-15.md
+github-public-push-privacy/SKILL.md
+

@@ -1,0 +1,123 @@
+{
+  "schema_id": "arifos.verdict-vocabulary",
+  "version": "0.1-proposal",
+  "compiled_on": "2026-10-11",
+  "compiled_by": "FI-008 (kimi-code)",
+  "status": "PROPOSAL · NON_CANONICAL · DO_NOT_LOAD",
+  "license": "internal · single-writer integration pending ARIF verdict",
+  "principle": "Each verdict word has a unique consequence_class. Descriptive label != authorization token. Conflation is a constitutional violation.",
+  "classification_axis": ["consequence_class", "human_authority_required", "terminal", "scope"],
+  "transition_invariants": [
+    "non-terminal states may NOT trigger irreversible execution",
+    "terminal states MUST be sealed before any mutation",
+    "HOLD and VOID are absolute block; SABAR is temporal block; PARTIAL is bounded execution",
+    "AUTHORIZED + VERIFIED => SEAL (both required for irreversible)"
+  ],
+  "states": [
+    {
+      "name": "HEALTHY",
+      "synonyms": ["VALID"],
+      "consequence_class": "system-readiness",
+      "operational_state": "pre-execution integrity check passed; schema compliance verified",
+      "human_authority_required": false,
+      "terminal": false,
+      "allowed_next": ["DRYRUN_ACCEPTED", "VERIFIED", "HOLD", "VOID", "SABAR"]
+    },
+    {
+      "name": "DRYRUN_ACCEPTED",
+      "consequence_class": "simulation-confirmed",
+      "operational_state": "technical feasibility confirmed without mutation; safe simulation complete",
+      "human_authority_required": false,
+      "terminal": false,
+      "allowed_next": ["HEALTHY", "VERIFIED", "HOLD", "VOID"]
+    },
+    {
+      "name": "SUCCEEDED",
+      "synonyms": ["RECORDED"],
+      "consequence_class": "event-logged",
+      "operational_state": "event completion logged; historical fact; NOT unverified intent",
+      "human_authority_required": false,
+      "terminal": false,
+      "forbidden_implications": ["this is not AUTHORIZATION for live deployment"]
+    },
+    {
+      "name": "VERIFIED",
+      "consequence_class": "epistemic-validation",
+      "operational_state": "cryptographic or empirical validation achieved; epistemic check passed",
+      "human_authority_required": false,
+      "terminal": false,
+      "allowed_next": ["AUTHORIZED", "SEAL", "PARTIAL", "HOLD", "VOID"]
+    },
+    {
+      "name": "AUTHORIZED",
+      "consequence_class": "contractual-readiness",
+      "operational_state": "human or algorithmic permission explicitly granted; contract signed",
+      "human_authority_required": true,
+      "terminal": false,
+      "forbidden_implications": ["AUTHORIZED alone is NOT a SEAL — VERIFIED also required"],
+      "allowed_next": ["SEAL", "HOLD", "VOID"]
+    },
+    {
+      "name": "SEAL",
+      "consequence_class": "verified-authorized-mutation-allowed",
+      "operational_state": "verified execution authorized strictly within a sealed scope; mutation permitted within scope",
+      "human_authority_required": true,
+      "terminal": true,
+      "scope_required": true,
+      "exit_condition": "scope-exhausted or human-override"
+    },
+    {
+      "name": "PARTIAL",
+      "consequence_class": "bounded-verified",
+      "operational_state": "subset verified; proceed only within verified bounds",
+      "human_authority_required": false,
+      "terminal": false,
+      "scope_required": true,
+      "allowed_next": ["VERIFIED", "AUTHORIZED", "SEAL", "HOLD", "VOID"]
+    },
+    {
+      "name": "SABAR",
+      "consequence_class": "temporal-boundary",
+      "operational_state": "deliberate cooling pause; neither refusal nor approval; wait period enforces temporal friction",
+      "human_authority_required": false,
+      "terminal": false,
+      "time_bound_required": true,
+      "allowed_next": ["HEALTHY", "VERIFIED", "HOLD", "VOID"],
+      "forbidden_implications": ["SABAR is not a soft YES; cooling must elapse before re-evaluation"]
+    },
+    {
+      "name": "HOLD",
+      "consequence_class": "human-veto-required",
+      "operational_state": "human authority required; the agent MUST stop; absolute human veto invoked",
+      "human_authority_required": true,
+      "terminal": false,
+      "allowed_next": ["HEALTHY", "HOLD", "VOID"]
+    },
+    {
+      "name": "VOID",
+      "consequence_class": "terminal-rejection",
+      "operational_state": "invalid proposal; rejected; do not retry without new evidence",
+      "human_authority_required": false,
+      "terminal": true,
+      "forbidden_implications": ["retrying a VOID proposal without new evidence is a constitutional violation"],
+      "exit_condition": "new evidence or new proposal"
+    }
+  ],
+  "conflation_detector": {
+    "rule": "two states MUST NOT share a consequence_class",
+    "consequence_class_zones": {
+      "system-readiness":       ["HEALTHY"],
+      "simulation-confirmed":   ["DRYRUN_ACCEPTED"],
+      "event-logged":           ["SUCCEEDED"],
+      "epistemic-validation":   ["VERIFIED"],
+      "contractual-readiness":  ["AUTHORIZED"],
+      "verified-authorized":    ["SEAL"],
+      "bounded-verified":       ["PARTIAL"],
+      "temporal-boundary":      ["SABAR"],
+      "human-veto-required":    ["HOLD"],
+      "terminal-rejection":     ["VOID"]
+    }
+  },
+  "authorities_required_for_irreversible": ["VERIFIED", "AUTHORIZED"],
+  "single_writer_rule": "Kimi/FI-008 = canonical writer for this vocabulary schema; ARIF = acceptance authority; no concurrent mutator."
+}

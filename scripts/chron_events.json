@@ -1,6 +1,6 @@
 {
   "_comment": "CHRON canonical event store. Dates only \u2014 day counts are COMPUTED at render. Add an event with a real source or do not add it.",
-  "_updated": "2026-10-03",
+  "_updated": "2026-10-12",
   "_prediction_schema": "Falsifiable predictions: each event carries predictions[] with claim, expected_value, threshold, verifier (how to check), falsifier (what proves it wrong). A prediction that can only be 'did event happen' is not a prediction.",
   "events": [
     {
@@ -626,6 +626,20 @@
       "actionability": "WATCH",
       "note": "AMPLITUDE 0.30 (subjective prior; INFERRED). This is the COUNTER-BRANCH to F13's thesis that most human institutions will fail greatly and badly once agents can work \u2014 registered deliberately so the prediction set is falsifiable in both directions rather than only confirming. CLAIM: institutions do not die from being outrun. The Church, the common law, central banks and the East India Company all survived faster competitors for centuries. Institutions die when their WITNESS FUNCTION is captured, not when their cycle time is beaten. Therefore the damage concentrates in personal agentic states (branch A) rather than in public institutions. COLLAPSE MEASUREMENT: does any major slow institution actually LOSE A CORE FUNCTION (adjudication, custody, credentialing) to agentic competitors within the window? FALSIFIED IF such a transfer occurs. CONSTRAINT RELATION: if E holds, branch A's blast radius narrows to the personal/private tier and F13's institutional-failure thesis is directionally right but wrongly scoped.",
       "amplitude": 0.3
+    },
+    {
+      "id": "mistral-large4-weights-drop-oct",
+      "title": "Mistral Large 4 ('Le Chonk') open weights promised by end of October 2026 \u2014 preview API only as of announcement",
+      "target_date": "2026-10-31",
+      "timezone": "Asia/Kuala_Lumpur",
+      "audience": "arif",
+      "kind": "OBSERVATION",
+      "source": "https://mistral.ai/news/mistral-large-4/ (vendor page, raw-fetched HTTP 200, non-LLM-extracted) + FI-003 KVM8 live probe of api.mistral.ai/v1/models",
+      "confidence": "ANNOUNCED",
+      "consequence": "LOW",
+      "actionability": "WATCH",
+      "note": "FALSIFIABLE CLAIM: vendor states 'Weights drop end of this month' / 'We will release the weights by the end of the month' for a 1T-parameter natively multimodal MoE (vendor raw text: 52B active; Artificial Analysis: 49B active \u2014 UNRESOLVED conflict, do not average). VERIFICATION METHOD on/after 2026-10-31: (a) HuggingFace mistralai org for published ML4 weights, (b) mistral.ai/news release note, (c) whether preview-API-only access ($1.36 in / $4.18 out per M) still gates the model. FALSE if no downloadable weights by 2026-10-31. WHY IT MATTERS TO THE FEDERATION: open weights are the ONLY path to an independent rerun of the contested 82% AA Cyber Index vulnerability-reproduction score \u2014 rivals (Claude Opus 5.5, GPT-6 Astra) score near zero because safety policy REFUSES the task, not for lack of skill, and the vendor that benefits from that comparison is the one that ran it. Until weights ship, every ML4 benchmark stays SELF-REPORTED. Also note the vendor's own release condition: pre-release red-teaming by 'cybersecurity leaders, vetted partners, and state authorities, who will access the same model with reduced moderation and expanded cyber capabilities' \u2014 a two-tier capability surface where the cohort ahead of the public weights gets a LESS restrained model. FEDERATION DECISION 2026-10-12 = DO_NOT_WIRE (seat returns HTTP 402 unfunded; AA cost-per-task $1.13 vs incumbent GLM-5.3-Flash $0.25; already-wired MiMo-V2.6-Pro scores 56 vs ML4's 50 on the AA Cyber Index; 1T/49-52B-active not self-hostable on KVM8). Evidence recorded in /root/.config/federation-models.json _meta.mistral_seat_state_2026_10_12 + _meta.last_patch_note_2026_10_12_mistral_large4. AMPLITUDE 0.65 = honest base-rate estimate that a vendor 'end of month' promise, conditioned on state-authority red-teaming, lands by the stated date.",
+      "amplitude": 0.65
     }
   ],
   "_human_field": "Optional `human`: the BM rendering of a prediction's machine claim, for surfaces read by humans. The machine `claim` stays canonical for verification; a surface that has no `human` rendering stays silent rather than printing the machine text."

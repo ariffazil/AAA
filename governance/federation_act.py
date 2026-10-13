@@ -34,7 +34,7 @@ import httpx
 logger = logging.getLogger("federation.sct")
 
 ARIFOS_BASE = os.getenv("ARIFOS_BASE_URL", "http://localhost:8088")
-ARIFOS_TIMEOUT_S = float(os.getenv("ARIFOS_SCT_TIMEOUT_S", "2.0"))
+ARIFOS_TIMEOUT_S = float(os.getenv("ARIFOS_SCT_TIMEOUT_S", "5.0"))  # was 2.0 — kernel validate round-trip measured 1.4–2.3s; 2.0s raced the kernel and caused intermittent false ARIFOS_UNREACHABLE rejects of VALID tokens (found 2026-10-10, G-09 regression matrix). Fail-closed semantics unchanged.
 
 # Token shape: act_v1.<base64url>.<hmac>
 SCT_RE = re.compile(r"^sct_v1\.[A-Za-z0-9_\-]+(?:\.[A-Za-z0-9_\-]+)?$")
@@ -135,10 +135,11 @@ def _verify_local_hmac(payload_b64: str, sig: str) -> tuple[bool, str]:
         return False, "SCT_HMAC_UNCOMPUTABLE"
     if len(sig) == 64:
         return (True, "hmac-full") if hmac.compare_digest(expected, sig) else (False, "SCT_HMAC_MISMATCH")
-    if len(sig) >= 16:
-        ok = hmac.compare_digest(expected[:16], sig[:16])
-        return (True, "hmac-legacy-16") if ok else (False, "SCT_HMAC_MISMATCH")
-    return False, "SCT_HMAC_UNCOMPUTABLE"
+    # G-09 binary #5 (F13 "sah" 2026-10-10): legacy-16 truncated-tag acceptance
+    # DEPRECATED. A 64-bit HMAC prefix is a weakened keyed mode (NIST SP 800-224
+    # risk class); no active issuer of 16-char SCT signatures exists in the
+    # federation (probed 2026-10-10). Only full 64-hex signatures verify now.
+    return False, "SCT_HMAC_MISMATCH"
 
 
 

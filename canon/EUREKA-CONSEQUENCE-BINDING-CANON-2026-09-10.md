@@ -1,3 +1,4 @@
+<!-- SUPERSEDED 2026-10-05 → see /root/AAA/canon/AGENTIC-FLOW-ARCHITECTURE-2026-10-05.md (F13 ratified unified canon 2026-10-05). Pointer kept per doctrine (no delete). -->
 Status: ACTIVE_CANONICAL — F13_RATIFIED_EUREKA
 
 # EUREKA-13 :: CONSEQUENCE BINDING CANON
