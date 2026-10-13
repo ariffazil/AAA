@@ -46,6 +46,8 @@ python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py doctor
 
 MCP: `aforge.forge_web_zen` mode `doctor`. CLI has no `audit` mode — crawl yourself.
 
+Next session reads `/root/work/tasks.json` (schema `arifos.work.tasks.v1`). Do not copy metabolism numbers out of it. Oil and gas origin at 2026-10-13T19:13:21Z was the arif static copy, not `/var/www/html/{oil,gas}`. Re-probe. Re-count live HTML that names a hash the new dist lacks before trusting 74 (measured 2026-10-13). The barrel rail is already live. Three T1 jobs are named in the queue (`p1-site-audit-false-delete`, `p2-vitals-rm48-chart`, `p2-generator-dry-run`) and are not started from this skill. Do not run `make deploy`. A receipt is not a SEAL.
+
 ## Load order (first mission)
 
 1. This skill

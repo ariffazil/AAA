@@ -1,3 +1,9 @@
+> **[STALE-MODEL-LIST 2026-10-14 · 333-AGI]** Z.AI Coding Plan now natively serves
+> `glm-5.3` + `glm-5.3-flash` ONLY. Every legacy id below redirects server-side
+> (glm-5.2/5.1→glm-5.3, glm-4.7→glm-5.3-flash — live-probed 2026-10-14). FLAME itself
+> is RETIRED (2026-09-12); this reference survives as history. Do not copy these model
+> ids into new config. Also: glm-5.2/glm-4.6 reject image input (error 1210) — text-only.
+
 # Stage Routing Config — Full Reference (2026-08-12)
 
 ## Source: `/root/FLAME/flame_config.json` → `routing.stage_routing`

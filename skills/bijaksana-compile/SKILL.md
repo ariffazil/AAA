@@ -179,6 +179,18 @@ holding 15 — the number was carried from the *previous* compiler's manifest in
 of being counted from the artifact. Any N stated to a human must come from
 `len(...)` in the same turn, or it is narration.
 
+**NEW — 2026-10-13 (do not copy metabolism out of tasks.json):**
+`metabolism.G`, `hours_since_last_seal`, and `last_seal_timestamp` inside
+`/root/work/tasks.json` go stale the same day. Recompute them in the write
+process from `:8088/health` `apex_scalars` and from `seal_chain_head.json`.
+`governance.last_seal_timestamp` is a commit-receipt clock. It is not the chain
+head. If the two clocks differ, write both. Do not pick the prettier one.
+
+**NEW — 2026-10-13 (a delete-alert is not a delete order):**
+A site-audit line that says orphan files will be deleted does not authorize
+deletion. If live HTML still names a hashed asset, that asset is load-bearing.
+Count the HTML files and confirm the asset is on disk before any cleanup task.
+
 ### Rule 3d — Verify the DIRECTION of a divergence, both sides (NEW 2026-09-21)
 
 The commonest F2 error in durability claims is not a false number — it is a true

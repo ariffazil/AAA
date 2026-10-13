@@ -118,10 +118,17 @@ def probe_flow_health() -> dict:
     # Identify stuck actors
     stuck_actors = [aid for aid, a in per_actor.items() if a["verdict"] == "STUCK"]
 
+    fq_verdict = fq.get("verdict")
+    if not fq_verdict or fq_verdict == "UNKNOWN":
+        fq_verdict = data.get("verdict") or fq_verdict or "UNKNOWN"
+    diagnosis = fq.get("diagnosis") or fq.get("legacy_diagnosis") or ""
+    if not diagnosis:
+        diagnosis = data.get("diagnosis") or ""
+
     return {
-        "verdict": fq.get("verdict", "UNKNOWN"),
+        "verdict": fq_verdict,
         "quotient": fq.get("quotient"),
-        "diagnosis": fq.get("diagnosis", ""),
+        "diagnosis": diagnosis,
         "execute_count": fq.get("execute_count", 0),
         "verify_count": fq.get("verify_count", 0),
         "held_count": held_count,
@@ -354,17 +361,21 @@ def federation_state() -> dict:
 
         "authority": {
             "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
+            "ledger_holds": authority.get("decision_ledger", {}).get("holds"),
+            "flow_holds": authority.get("flow_holds", {}).get("count") if authority.get("flow_holds", {}).get("available") else None,
             "seals": authority.get("decision_ledger", {}).get("seals"),  # None = UNKNOWN if ledger unavailable
             "oldest_hold": authority.get("oldest_hold"),
             "held_actors": authority.get("flow_holds", {}).get("actors", []),
         },
+
+        "bottleneck": bottleneck,
 
         # Backward-compatibility aliases for legacy / root-level readers
         "organs": organ_detail,
         "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
         "held_actors": authority.get("flow_holds", {}).get("actors", []),
 
-        "_source": "federation_state.py v1.0",
+        "_source": "federation_state.py v1.1",
     }
 
     return state

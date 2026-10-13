@@ -52,6 +52,12 @@ federation_services:
   - unit: well-heartbeat.service
     role: well organ heartbeat daemon
     repo: /root/arifOS
+  - unit: arif_memory.verb
+    role: arifOS arif_memory kernel organ MCP verb — owner of MEMORY_MAINTENANCE function (consolidation, expiry, contradiction, forgetting-candidate, reconsolidation-planning)
+    repo: /root/arifOS
+    ratification: 2026-10-13T19:18 MYT via F13 'aku setuju semua'
+    cross_ref: /root/forge_work/2026-10-13-md-context-governance/audit/EVIDENCE_PLANE_CROSSWALK_FINAL.yaml
+    cross_ref_sha256: c41435b77ef46c29331b41585ab7b2982215089c5a7b5d820835d6fc1b52856a
   - unit: kabarkan-health.service
     role: Kabarkan Health Surface Server — telemetry plane metrics for FRAME
     repo: /root/scripts

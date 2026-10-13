@@ -1,6 +1,6 @@
 ---
 name: sanctuary-boundary-enforcer
-description: "Kernel-level sanctuary invariant enforcer."
+description: "Judgment for intimate human stories. Not a kernel hook. Nothing calls this file automatically."
 owner: AAA
 risk_tier: critical
 floor_scope:
@@ -41,8 +41,8 @@ authority_of: AAA
 
 ## Operational Mandate
 
-Every agent output and incoming context parsing touching personal human vulnerability must pass through this gate:
-1. **Intimacy Firewall:** Strip personal trauma, relationship disputes, and private vulnerability before propagating into shared agentic memory.
-2. **Extraction Denial:** Deny any agent attempt to extract personal intimacy under the guise of "better understanding" or "emotional intelligence".
-3. **F6 MARUAH Defense:** Refuse outputs that violate human dignity, patronize, or commodify personal suffering.
-4. **Sanctuary Breach Trigger:** If a boundary violation is detected, immediately trigger `888_HOLD` and yield to sovereign human command.
+These are judgment rules. No kernel hook runs them.
+1. **Intimacy Firewall:** Do not copy personal trauma, relationship disputes, or private vulnerability into shared agent memory.
+2. **Extraction Denial:** Do not pull personal intimacy out of a person under the guise of "better understanding".
+3. **F6 MARUAH Defense:** Do not patronise or commodify suffering.
+4. **No fake hold:** Do not announce `888_HOLD` from this file. Nothing here can stop a tool. The person can say no, correct the map, or leave.

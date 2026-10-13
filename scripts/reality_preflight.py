@@ -5,7 +5,7 @@ TRI-REALITY PRE-FLIGHT GATE — the 5 Golden Questions as an executable constrai
 REFERENCE: APEX::TRI_REALITY_GOVERNANCE_ACTIVATION::2026-09-13   MODE: EXECUTION
 DOCTRINE : /root/AAA/canon/APEX_REALITY_GRAPH_MEMORY_MIGRATION_v1.md §4
 SPEC     : /root/AAA/canon/REALITY_CONSEQUENCE_OBJECTS_SPEC_v1.md (arifos.wro|hro|mro|cro.v1)
-COMPANION: reality_object_gate.py (INV-1/2/3) · reality_substrate_classify.py (R0-R5 census)
+COMPANION: reality_substrate_classify.py (R0-R5 census). reality_object_gate.py retired 2026-10-13 — nothing called it.
 
 THE DIRECTIVE'S CORE RULE, MADE MECHANICAL
 ------------------------------------------

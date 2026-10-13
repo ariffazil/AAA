@@ -33,6 +33,10 @@ Oil/gas doctor 500 is missing `/root/venv/bin/python3` (gold uses WEALTH venv + 
 `web_zen.py audit` is documented here and **not in the CLI**. Use doctor + Playwright.
 `SITE_CONSTITUTION.md` / `SITE_IDENTITY.md` are cited below and **do not exist** (public 404). Use `docs/agentic-web/` instead.
 
+## Current rule (2026-10-13, wins over later copy-paste)
+
+Later steps that say `caddy reload`, `systemctl reload caddy`, `make deploy`, `rsync --delete`, or `forge_vault(mode="seal")` are historical scars. The live rule is `arifos-site-patch-without-caddy-reload`. A receipt is not a SEAL. The queue is `/root/work/tasks.json`. Do not mint a web-builder skill. Oil, gas, and gold boards measured 2026-10-13 are static HTML. Caddy file roots for `/oil/` `/gas/` `/gold/` are `/var/www/html/{oil,gas,gold}`, and origin oil and gas bytes equalled the arif copies. Do not reload to reconcile. Do not `git checkout` over `/var/www/html`. The HTML Caddy serves is what humans see. Git and dist can be behind that disk.
+
 ## The One Law
 
 ```
@@ -42,6 +46,8 @@ rsync --delete is an executioner — anything not in source is sentenced.
 Capability ≠ authority. Ephemeral tools die. Permission stays with arifOS/Arif.
 Caddy reload ≠ deploy. Public /a2a stays unmatched.
 ```
+
+**2026-10-13 note.** The block above is the scar. Live-only HTML that Caddy serves is what humans see. Git and dist can be behind that disk. Do not `git checkout HEAD -- .` over `/var/www/html` or `/var/www/html/arif`. A hashed file a live page still names is load-bearing. `--delete` waits until a fresh count of those HTML files is zero.
 
 ---
 
@@ -261,7 +267,7 @@ When the change is a single React page inside the arif-fazil.com SPA (e.g. a com
 **Source of truth:** `/root/arif-fazil.com/sites/arif-fazil.com/src/pages/<Page>.tsx`
 **Built shell:** `/root/arif-fazil.com/sites/arif-fazil.com/dist/index.html` + `dist/assets/`
 **Live webroot:** `/var/www/html/arif/index.html` + `assets/`
-**Caddy handler:** `@spa_routes` in `/etc/caddy/vhosts/arif-fazil.com.conf` line ~2313 — fallthrough to `/var/www/html/arif/index.html` for any SPA route (incl. `/world/economics/gold/`, `/oil/`, `/gas/`, `/klci/`).
+**Caddy handler:** `@spa_routes` in `/etc/caddy/vhosts/arif-fazil.com.conf` — historical fallthrough note. Oil, gas, and gold commodity boards measured 2026-10-13 are static HTML, not this SPA recipe. Caddy file roots for `/oil/` `/gas/` `/gold/` are `/var/www/html/{oil,gas,gold}` while origin oil and gas bytes equalled the arif copies. Do not reload to reconcile. Re-probe before editing either copy.
 
 Sequence:
 
@@ -275,9 +281,9 @@ Sequence:
 4. **Sync to live webroot WITHOUT triggering Caddy reload:**
    ```bash
    rsync -av --update /root/arif-fazil.com/sites/arif-fazil.com/dist/index.html /var/www/html/arif/index.html
-   rsync -av --update --delete /root/arif-fazil.com/sites/arif-fazil.com/dist/assets/ /var/www/html/arif/assets/
+   rsync -av --update /root/arif-fazil.com/sites/arif-fazil.com/dist/assets/ /var/www/html/arif/assets/
    ```
-   `--update` on `index.html` keeps other content untouched; `--delete` is safe on `assets/` because the directory is owned by the build (no orphan pages live there).
+   Do not add `--delete`. Count live HTML files that name a hashed file the new `dist/assets/` does not contain. `--delete` is safe only after that count is zero. On 2026-10-13 that count was 74. Re-count. Do not trust 74 later. A hashed file a page still names is not a leak.
 5. **Verify by content signature, not by status code.** SPA soft-404 trap:
    ```bash
    curl -s https://arif-fazil.com/assets/<NewChunkHash>.js | grep -c '<distinctive-new-string>'

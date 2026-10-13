@@ -122,6 +122,8 @@ export default content;
 
 ## Build & deploy
 
+**Current rule (2026-10-13, wins over every later copy-paste in this file).** Steps A–C below, `deploy-site.sh --apply`, `caddy reload`, and `rsync --delete` are historical scars. Live rule is `arifos-site-patch-without-caddy-reload`. Additive per-route copy. `rsync -av --update` of the new assets. No Caddy reload. A full-tree rsync without `--delete` still overwrites live-only HTML. Count live HTML that names a hashed file the new dist lacks. `--delete` only after that count is zero. On 2026-10-13 that count was 74. Re-count. The additive note already in this file (Partial rsync, no `--delete`, no Caddy reload) wins over the scars.
+
 ```bash
 # 1. Install deps if build hasn't run (--legacy-peer-deps required)
 cd /root/arif-fazil.com/sites/arif-fazil.com && npm install --legacy-peer-deps
@@ -135,11 +137,11 @@ cd /root/arif-fazil.com
 # Step A: Sync static HTML/MD files for crawlers (makcikgpt-md/)
 rsync -av sites/arif-fazil.com/public/makcikgpt-md/ /var/www/html/arif/makcikgpt-md/
 
-# Step B: Sync built dist
-rsync -av sites/arif-fazil.com/dist/ /var/www/html/arif/
+# Step B: HISTORICAL SCAR. Do not run. Full-tree rsync overwrites live-only HTML.
+# rsync -av sites/arif-fazil.com/dist/ /var/www/html/arif/
 
-# Step C: Reload Caddy
-sudo caddy reload --config /etc/caddy/Caddyfile
+# Step C: HISTORICAL SCAR. Caddy reload is T3. Do not run.
+# sudo caddy reload --config /etc/caddy/Caddyfile
 
 # Verify: check JS bundle hash matches
 DIST_JS=$(ls -t sites/arif-fazil.com/dist/assets/*.js | head -1 | xargs basename)
@@ -151,10 +153,10 @@ Build output goes to `dist/`. The dist syncs to `/var/www/html/arif/`.
 
 ### Deploy script alternative (may fail)
 ```bash
-bash scripts/deploy-site.sh arif-fazil.com --apply
+bash scripts/deploy-site.sh arif-fazil.com --apply   # T3 HISTORICAL. Do not run.
 ```
 `deploy-vps.sh` validates registry schema and may fail if `schema_version` in
-`infra/runtime-overlays.json` doesn't match. Manual rsync (steps A-C) is safest.
+`infra/runtime-overlays.json` doesn't match. Steps A–C are a 2026-08 scar, not the safest path. Use the 2026-10-13 rule under Build & deploy. `--apply` is T3.
 
 ## Governance Fix workflow (EXTERNAL AUDIT → REALITY VERDICT → FIX)
 
@@ -174,7 +176,7 @@ The "fable5" reference = external AI session identifier. Treat as second opinion
 2. **Extract the specific edits** — the audit usually names: (a) a claim to correct, (b) an argument to add/restructure, (c) a gap to fill. Map each to a specific location in the `html` string
 3. **Apply via patch** — use `patch` tool with `mode=replace` to find-and-replace within the `html` template literal. For adding new sections, replace the adjacent section boundary
 4. **Build** — `npm run build` to verify no syntax errors
-5. **Deploy** — `cd /root/arif-fazil.com && bash scripts/deploy-site.sh arif-fazil.com --apply`
+5. **Deploy** — `cd /root/arif-fazil.com && bash scripts/deploy-site.sh arif-fazil.com --apply   # T3 HISTORICAL. Do not run.`
 6. **Verify** — confirm HTTP 200 in deploy output
 
 ## Reading content from the site
@@ -210,7 +212,7 @@ MakcikGPT articles live under `/world/makcikgpt/<slug>` in the URL structure (no
 4. Add a `🏁 FINAL RESULT` banner card + mark scenario cards `✅ REALISED` / `✗ DID NOT MATERIALISE` — don't leave pre-poll projections labelled as live outcome.
 5. Update inspector defaults (the top `DUN N32 · 🔥 BATTLEGROUND` block) if the featured seat outcome changed — it's static HTML, not data-bound.
 6. Update `Updated <date>` in top-bar.
-7. `npm run build` (copies public/ → dist/), `rsync -av --delete dist/ /var/www/html/arif/`, then verify with `browser_navigate` (Leaflet renders client-side — curl/grep on the HTML won't show marker states; grep the file for banner strings instead).
+7. `npm run build` (copies public/ → dist/). Do not `rsync -av --delete`. Copy the one page, then `rsync -av --update` of the new assets. Count live HTML that names a hash the new dist lacks. `--delete` only after that count is zero. On 2026-10-13 that count was 74. Re-count. Then verify with `browser_navigate` (Leaflet renders client-side — curl/grep on the HTML won't show marker states; grep the file for banner strings instead).
 
 **Result provenance discipline (F2 TRUTH):** label UNOFFICIAL vs OFFICIAL explicitly on the page. Election-night media calls are TIDAK RASMI until SPR declares. Sources that worked 2026-08-01: BHarian live blog (`bharian.com.my` TERKINI PRN NS), Utusan, Harian Metro live, MyUndi (`myundi.com.my/ms`). Cross-check BN/PN/PH seat lists from two outlets before writing to the page. Update the companion `ns_live_telemetry.json` status (e.g. `RESULT_DECLARED`) via dual-write (see Pitfall #20).
 
@@ -646,8 +648,8 @@ sed -i 'STARTLINE,ENDLINE d' /etc/caddy/Caddyfile
 # 5. VALIDATE (never skip)
 caddy validate --config /etc/caddy/Caddyfile
 
-# 6. RELOAD (in-process, zero downtime)
-caddy reload --config /etc/caddy/Caddyfile
+# 6. RELOAD — HISTORICAL SCAR. Caddy reload is T3. Do not run.
+# caddy reload --config /etc/caddy/Caddyfile
 
 # 7. VERIFY — probe the changed routes
 for p in /changed-path/ /another-path/; do
@@ -837,7 +839,7 @@ rsync -av sites/arif-fazil.com/dist/llms.txt /var/www/html/arif/llms.txt
 ### Step 6: Build and deploy
 
 ```bash
-cd /root/arif-sites && bash scripts/deploy-site.sh arif-fazil.com --apply
+cd /root/arif-sites && bash scripts/deploy-site.sh arif-fazil.com --apply   # T3 HISTORICAL. Do not run.
 ```
 
 ### Step 7: Verify all endpoints
@@ -1014,7 +1016,7 @@ curl -s -o /dev/null -w "HTTP %{http_code} - %{size_download} bytes\n" https://a
 
 ```bash
 # Re-run deploy which regenerates makcikgpt-md/index.html from TS source
-cd /root/arif-fazil.com && bash scripts/deploy-site.sh arif-fazil.com --apply
+cd /root/arif-fazil.com && bash scripts/deploy-site.sh arif-fazil.com --apply   # T3 HISTORICAL. Do not run.
 ```
 
 #### To modify the auto-generated landing page STYLING (not content):
@@ -1047,8 +1049,8 @@ sed -i 'STARTLINE,ENDLINE d' /etc/caddy/Caddyfile
 # 5. VALIDATE (never skip)
 caddy validate --config /etc/caddy/Caddyfile
 
-# 6. RELOAD (in-process, zero downtime)
-caddy reload --config /etc/caddy/Caddyfile
+# 6. RELOAD — HISTORICAL SCAR. Caddy reload is T3. Do not run.
+# caddy reload --config /etc/caddy/Caddyfile
 
 # 7. VERIFY — probe the changed routes
 for p in /changed-path/ /another-path/; do

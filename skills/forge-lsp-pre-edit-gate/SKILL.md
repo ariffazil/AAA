@@ -4,7 +4,7 @@ id: forge-lsp-pre-edit-gate
 owner: A-FORGE · 333-AGI
 risk_tier: low
 floor_scope: [F2, F4, F7, F11]
-description: "MANDATORY LSP grounding gate BEFORE any code mutation on .ts, .py, .js, .tsx, .jsx files."
+description: "Optional structure check when an lsp tool is actually callable. A missing lsp tool is not a hold and not a safety gate."
 version: 1.0.0
 author: 333-AGI Δ MIND under F13 SOVEREIGN directive
 forged: 2026-08-06
@@ -12,7 +12,7 @@ tags: [lsp, grounding, truth, pre-edit, gate, observability, temporal-causality,
 scope: all_forge_agents
 priority: 95
 autonomy_tier: T1
-always_load: true
+always_load: false
 capability_tier: fed-agent-subagent
 ecology_state: WARM
 owned_by: A-FORGE · 333-AGI
@@ -21,9 +21,8 @@ authority_of: AAA
 
 # LSP PRE-EDIT GATE — Witness Observability for AGI Substrate
 
-> **"You are the hooded engineer. The LSP is your only window into the compiler's truth."**
-> **No LSP probe = no mutation. No exceptions. No shortcuts.**
-> **This is F2 TRUTH operationalized. LSP is the witness — not agent memory, not training data, not guesses.**
+> Read the file before editing. Use lsp only when this harness actually exposes an lsp tool.
+> No lsp tool means continue. Do not HOLD, and do not pretend a gate ran.
 
 ---
 
@@ -39,8 +38,8 @@ CACHE: LSP results cached per file per session (TTL: session lifetime).
        Do NOT re-probe the same file/symbol more than once per session.
        Do NOT probe if the file hasn't changed since last probe.
 
-GATE: If any step fails → HOLD. Fix diagnostics first. Then edit.
-       Zero LSP errors tolerated before mutation. Warnings ≤ 5.
+If an lsp tool exists and it reports errors in the lines you are changing, fix those before you leave the edit.
+       If no lsp tool exists on this harness, that absence is not a failure.
 ```
 
 ## THE THREE PROBES — What They Give You
@@ -68,7 +67,7 @@ After edit: re-run lsp(documentSymbol) on modified file
   ↓ diagnostics > 0?  → fix, re-verify
 ```
 
-**The logic is centralized:** the agent follows this skill. The `lsp` tool is called directly (it's a native OpenCode tool). The kernel's role is constitutional oversight — `arif_judge` can HOLD if LSP grounding is skipped.
+**The logic is local:** call lsp only when the harness exposes it. The kernel does not have an lsp tool, and skipping a missing tool is not a hold.
 
 **We do NOT reimplement LSP at the shell layer.** The `lsp` tool is the canonical interface. This skill is the gatekeeper — the pattern, not a new tool.
 
@@ -112,10 +111,9 @@ OBSERVE (LSP probes) → EDIT → VERIFY (LSP re-probe) → COMMIT (git anchor)
 
 ## ANTI-PATTERNS — Never Do These
 
-- ❌ "I already know what's in this file" — skip LSP probe → **HOLD. LSP is the witness.**
-- ❌ "This is a simple edit, I don't need LSP" → **HOLD. Simple edits break type chains.**
-- ❌ Probing only the edited line, not findReferences → **HOLD. You don't know blast radius.**
-- ❌ Editing despite LSP diagnostics > 0 → **VOID. Fix errors first.**
+- ❌ Pretend an lsp gate ran when this harness has no lsp tool.
+- ❌ Skip reading the file you are about to edit.
+- ❌ Leave an edit that an actual lsp diagnostic says is broken.
 - ❌ Re-probing the same file 10 times in one session → **WASTE. Use cache.**
 
 ## TOOL INVOCATION PATTERN

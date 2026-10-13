@@ -29,7 +29,8 @@ FRESHNESS_FAIL = 300  # seconds
 ORGAN_PORTS = {
     "arifos": 8088, "a-forge": 7071, "aaa": 3001,
     "geox": 8081, "wealth": 18082, "well": 18083,
-    "arifflow": 7073, "fed": 7074,
+    "arifflow": 7073, "fed": 7074, "chron": 18102,
+    "chron": 18102,
 }
 
 results = []

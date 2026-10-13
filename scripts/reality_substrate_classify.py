@@ -5,7 +5,7 @@ APEX::REALITY_GRAPH_MEMORY_MIGRATION::v1 — substrate classifier + orphan ledge
 AUTHORITY : ARIF (F13 Sovereign) · REFERENCE APEX::REALITY_GRAPH_MEMORY_MIGRATION::2026-09-13
 DOCTRINE  : /root/AAA/canon/APEX_REALITY_GRAPH_MEMORY_MIGRATION_v1.md
 SPEC      : /root/AAA/canon/REALITY_CONSEQUENCE_OBJECTS_SPEC_v1.md
-GATE      : /root/AAA/scripts/reality_object_gate.py  (INV-1/2/3)
+GATE      : none. reality_object_gate.py retired 2026-10-13 — named here, never called.
 
 FIRST LAW ENFORCED BY CONSTRUCTION
 -----------------------------------
