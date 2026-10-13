@@ -2,16 +2,16 @@
   "adapter_version": "1.0.0",
   "funnel": {
     "learn": 7,
-    "learn_per_verify": 0.171,
-    "observe": 173753,
+    "learn_per_verify": 0.167,
+    "observe": 178693,
     "predict": 99,
-    "predict_per_1000_observe": 0.57,
-    "verify": 41,
-    "verify_per_predict": 0.414
+    "predict_per_1000_observe": 0.554,
+    "verify": 42,
+    "verify_per_predict": 0.424
   },
   "learning_closure_gap": {
     "actionable_lessons": 2,
-    "episodes_total": 173901,
+    "episodes_total": 178842,
     "gap": false,
     "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
     "unclassified_outcomes": 10
@@ -21,10 +21,18 @@
     "blind": 10,
     "total": 14
   },
-  "next_verify_at": "2026-10-13T23:59:59+08:00",
-  "swept_at": "2026-10-12T22:23:01Z",
+  "next_verify_at": "2026-10-14T23:59:59+08:00",
+  "swept_at": "2026-10-13T22:23:01Z",
   "verification_debt": {
-    "count": 0,
-    "items": []
+    "count": 1,
+    "items": [
+      {
+        "claim": "Event: Tetingkap 2 minggu: perbualan line leader + HR diminta dalam borang. Diam selepas ini = jawapan.",
+        "confidence": 0.5572562358,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-345cf39314a2",
+        "verify_at": "2026-10-13T23:59:59+08:00"
+      }
+    ]
   }
 }

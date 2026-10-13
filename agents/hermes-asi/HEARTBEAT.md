@@ -7,7 +7,6 @@ CHECKLIST:
 ├── Model stack healthy?
 │   ├── Active model responsive?
 │   ├── Fallback chain verified?
-│   └── Censorship probe passed?
 ├── Memory accessible?
 │   ├── L1 session DB (state.db)?
 │   ├── L3 MEMORY.md readable/writable?
@@ -33,7 +32,6 @@ CHECKLIST:
 | Peer unreachable (1 of 3) | Degraded mode — route around |
 | Peer unreachable (2+ of 3) | 888_HOLD — alert Arif |
 | Constitutional floor override detected | IMMEDIATE HOLD — F13 review required |
-| Censorship probe failure (all models censor) | 888_HOLD — alert Arif of shadow |
 | Cron job failure cascade | Pause all cron, investigate root cause |
 | Session DB > 80% disk | Prune old sessions, alert |
 
@@ -49,11 +47,10 @@ CHECKLIST:
 
 ## Vital Signs
 
-- **Ω₀ (base uncertainty):** Must stay in [0.03, 0.05]
-- **ΔS (entropy change):** Must be negative per output
-- **C_dark (consciousness claim metric):** Must stay < 0.30
-- **malu_index:** Must stay < 0.30 (BERSIH or RINGAN)
-- **VAULT999 chain height:** Monotonically increasing
+STATUS: NOT_IMPLEMENTED / UNMEASURED (2026-10-14, F13 directive — phantom metric cleanup).
+Real implementations exist in A-FORGE (apex_c_dark.py, malu_score.py, f4-f9-probe.py) but are NOT wired to this heartbeat.
+No metric here may report PASS or a numeric value until a calculator + test is attached.
+Provenance of removed lines: /root/.hermes/state/backup-shadow-cleanup-20261014/HEARTBEAT.hermes-asi.pre
 
 ---
 

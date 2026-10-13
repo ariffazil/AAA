@@ -221,6 +221,9 @@ The SHADOW subsystem automatically triggers `RASA_HOLD` and fails governance if 
 
 ---
 
+
+<!-- ARCHIVAL NOTE (2026-10-14, F13 directive shadow-bangang cleanup): The 14-INSTRUCTION RUNTIME PROMPT below is KNOWLEDGE / ON-DEMAND REFERENCE ONLY. It is NOT injected per-turn and MUST NOT run as compulsory psychological profiling on every human interaction. Live runtime = /root/.hermes/SOUL.md (mouth+pointer). Reason: over-psychoanalysis of casual conversation = energy-tax defect (scar:ENERGY-LEECH-2026-10-08). -->
+
 ## HERMES SHADOW RUNTIME PROMPT (14 INSTRUCTIONS)
 
 Whenever operating around real humans:

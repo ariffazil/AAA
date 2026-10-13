@@ -1,0 +1,334 @@
+{
+  "check_time": "2026-10-13T20:33:09Z",
+  "total_checks": 54,
+  "seal": 44,
+  "partial": 4,
+  "hold": 6,
+  "void": 0,
+  "findings": [
+    {
+      "severity": "OK",
+      "check": "Agent card for aaa-gateway",
+      "detail": "EXISTS: a2a/agent-cards/aaa-gateway.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "SKIP",
+      "check": "Agent card for geox-witness",
+      "detail": "External card: external://geox.arif-fazil.com/a2a/.well-known/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "SKIP",
+      "check": "Agent card for wealth-witness",
+      "detail": "External card: external://wealth.arif-fazil.com/a2a/.well-known/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for mesa-test-agent",
+      "detail": "EXISTS: agents/_external/mesa-test-agent/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for antigravity",
+      "detail": "EXISTS: a2a/agent-cards/antigravity.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for hermes-asi",
+      "detail": "EXISTS: a2a-server/agent-cards/extensions/hermes-asi.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for opencode",
+      "detail": "EXISTS: a2a-server/agent-cards/forge/fi-001-opencode.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for codex-cli",
+      "detail": "EXISTS: agents/_external/codex/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for copilot-cli",
+      "detail": "EXISTS: agents/_external/copilot/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Agent card for grok-build",
+      "detail": "MISSING: agents/_external/grok/agent-card.json",
+      "verdict": "HOLD"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for kimi-code",
+      "detail": "EXISTS: a2a-server/agent-cards/forge/fi-008-kimi-code.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for claude-code",
+      "detail": "EXISTS: a2a-server/agent-cards/harnesses/claude-code.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "SKIP",
+      "check": "Agent card for 777-forge",
+      "detail": "External card: external://aaa.arif-fazil.com/a2a/777-forge",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "SKIP",
+      "check": "Agent card for arifos-kernel",
+      "detail": "External card: external://mcp.arif-fazil.com/a2a/arifos-kernel",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "SKIP",
+      "check": "Agent card for geox-personal",
+      "detail": "External card: external://geo.arif-fazil.com/a2a/geox-personal",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for makcikgpt",
+      "detail": "EXISTS: agent-cards/extensions/makcikgpt/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for prospect-maturation",
+      "detail": "EXISTS: agents/prospect-maturation/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for 333-AGI",
+      "detail": "EXISTS: agent-cards/identity/333-AGI/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for 555-ASI",
+      "detail": "EXISTS: agent-cards/identity/555-ASI/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for 888-APEX",
+      "detail": "EXISTS: agent-cards/identity/888-APEX/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for geox-organ",
+      "detail": "EXISTS: agent-cards/organs/geox/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for wealth-organ",
+      "detail": "EXISTS: agent-cards/organs/wealth/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for well-organ",
+      "detail": "EXISTS: agent-cards/organs/well/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for aforge-organ",
+      "detail": "EXISTS: agent-cards/organs/aforge/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for arifos-organ",
+      "detail": "EXISTS: agent-cards/pillars/arifos/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for ARIF_FAZIL",
+      "detail": "EXISTS: agent-cards/pillars/sovereign/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Agent card for aforge-pillar",
+      "detail": "MISSING: agent-cards/pillars/aforge/agent-card.json",
+      "verdict": "HOLD"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for openclaw",
+      "detail": "EXISTS: agent-cards/functions/openclaw/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for arifos-bot",
+      "detail": "EXISTS: agents/main/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for aider",
+      "detail": "EXISTS: agents/_external/aider/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Agent card for gemini-cli",
+      "detail": "MISSING: agents/_external/gemini-cli/agent-card.json",
+      "verdict": "HOLD"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for qwen-code",
+      "detail": "EXISTS: agents/_external/qwen-code/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent card for continue-cli",
+      "detail": "EXISTS: agents/_external/continue-cli/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Agent card for openclaw-edge-2026-08",
+      "detail": "MISSING: agents/_external/openclaw-edge-2026-08/agent-card.json",
+      "verdict": "HOLD"
+    },
+    {
+      "severity": "OK",
+      "check": "FI slots",
+      "detail": "10 slots, all unique owners per AGENTS_UNIFIED.yaml",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Card for aforge",
+      "detail": "MISSING: /root/AAA/agent-cards/pillars/aforge/agent-card.json",
+      "verdict": "HOLD"
+    },
+    {
+      "severity": "GAP",
+      "check": "Canonical cards",
+      "detail": "1 ghost paths",
+      "verdict": "HOLD"
+    },
+    {
+      "severity": "OK",
+      "check": "AGENTS_UNIFIED.yaml",
+      "detail": "5 layers, 8 invariants \u2014 canonical registry valid",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Skill registration",
+      "detail": "491 SKILL.md files not registered in skills.yaml",
+      "verdict": "PARTIAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Registered skill files",
+      "detail": "28 registered skills have missing SKILL.md files",
+      "verdict": "PARTIAL"
+    },
+    {
+      "severity": "INFO",
+      "check": "Tool authority",
+      "detail": "270 tools with authority hints, 0 without",
+      "verdict": "PARTIAL"
+    },
+    {
+      "severity": "INFO",
+      "check": "Agent cards on disk",
+      "detail": "68 agent-card.json files found",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Canonical agent registry (AGENTS_UNIFIED)",
+      "detail": "EXISTS: registries/AGENTS_UNIFIED.yaml",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Canonical registry policy",
+      "detail": "EXISTS: registries/CANONICAL_REGISTRY_POLICY.yaml",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Registry catalog",
+      "detail": "EXISTS: registries/REGISTRY_CATALOG.generated.yaml",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Agent-skill bindings",
+      "detail": "EXISTS: registries/bindings.generated.yaml",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "333-AGI identity",
+      "detail": "Agent card at agent-cards/identity/333-AGI/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "555-ASI identity",
+      "detail": "Agent card at agent-cards/identity/555-ASI/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "888-APEX identity",
+      "detail": "Agent card at agent-cards/identity/888-APEX/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "GAP",
+      "check": "Deprecated files",
+      "detail": "106 deprecated/tombstone files in active paths",
+      "verdict": "PARTIAL"
+    },
+    {
+      "severity": "OK",
+      "check": "A2A alignment spec",
+      "detail": "EXISTS: a2a/A2A_ALIGNMENT_SPEC.md",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "TaskState\u2192Verdict map",
+      "detail": "EXISTS: a2a/taskstate_verdict_map.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Public agent card",
+      "detail": "EXISTS: .well-known/agent-card.json",
+      "verdict": "SEAL"
+    },
+    {
+      "severity": "OK",
+      "check": "Harness wire-yield (F13/Substrate Swap)",
+      "detail": "No Agents-API orchestration wire in organ source (12853 files scanned) \u2014 engine local, leash held by arifOS",
+      "verdict": "SEAL"
+    }
+  ]
+}

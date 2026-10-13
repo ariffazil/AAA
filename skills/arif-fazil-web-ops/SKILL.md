@@ -20,7 +20,11 @@ linked_files:
 
 # arif-fazil-web-ops
 
-Arif's sites: `arif-fazil.com` (federation + WEALTH market pages) and `syedos.arif-fazil.com` (personal dashboards, "Abang Sado"). Both are static HTML behind Caddy on 80/443 + Cloudflare. No build step for live pages — edit HTML in place, `systemctl reload caddy` (reload, not restart).
+Arif's sites: `arif-fazil.com` (federation + WEALTH market pages) and `syedos.arif-fazil.com` (personal dashboards, "Abang Sado"). Both are static HTML behind Caddy on 80/443 + Cloudflare.
+
+## Current rule (2026-10-13, wins over later copy-paste)
+
+Edit the one HTML file in place. Do not reload Caddy. Do not run `git checkout HEAD -- .` over `/var/www/html` or `/var/www/html/arif`. Disk that Caddy serves is what humans see. Live-only HTML is load-bearing. Later reload and checkout lines in this file are historical scars. Queue is `/root/work/tasks.json`. Ship rule is `arifos-site-patch-without-caddy-reload`.
 
 ## Rule -2 — Archive Archaeology (BEFORE any landing-page or major-surface mutation)
 
@@ -81,7 +85,7 @@ These pages exist in **multiple disk copies**; patching the wrong one wastes a s
 - **`/words/compass/`** = 7-axis interactive compass rose (live file `/var/www/html/arif/words/compass/index.html`). Dual-lens toggle (power/meaning), SVG compass wheel with 7 clickable axis dots, inspector panel, bottom card grid. All data inline from `axisAdapter.ts` ported to vanilla JS — no React build required. Links to the two companion essays in the footer.
 - **`/world/vitals/`** = Sovereign Economic Cockpit (live file `/var/www/html/arif/world/vitals/index.html`, `data-organ="wealth"`). Legacy `/vitals` + `/vitals/*` 308-redirect to `/propa/` (Caddyfile ~L262-263) — never edit there; `/world/vitals/` is the live page. Stale mirrors at `/var/www/html/arif/vitals/` and `/var/www/html/arif/wealth/vitals/` are orphan copies — ignore.
 - Sibling copies to keep in sync: `/var/www/html/{asset}/`, `/var/www/html/arif/{asset}/` (may be absent), `/var/www/html/sites/arif-fazil.com/dist/{asset}/` (git dist source — often stale, not live).
-- syedos subdomain → `/var/www/html/syedos/` (root) + subpages at `/<slug>/index.html`. Personal surfaces for "Abang Sado" (Syed, Telegram ID 1042200555, SADO group). **Canonical git state** (single commit `6465d50 chore(core): initial commit, F1 lockdown of live syedos vhost`, 2026-08): contains `index.html` (5-card hub — Emas/Nasi Lemak/Heal/Dashboard/Meal-Plan), `dashboard.html`, `emas/index.html` (full gold chart with lightweight-charts + EMA20/50/200), `heal/index.html` + `heal/abang-sado.mp4`, `nasilemak/index.html`, `proposal.html`, `rental-swot.html`, `syed-golden.jpg`, `welcome.ogg`, `llms.txt`. **Live webroot can DIVERGE from git** — verified 2026-08-11 when live deployed state was just `.git` and an empty `/emas/index.html` placeholder while git had 11 canonical files. Recovered via `git checkout HEAD -- .`. **ALWAYS run `git ls-tree -r HEAD --name-only` before contributing** to confirm what's canonical vs. what's just on disk. SyedOS is OUTSIDE the `/root/arif-fazil.com/` FAIL-CLOSED regime — separate git repo at `/var/www/html/syedos/.git`, single-tenant personal deploy. See `references/syedos-personal-surface.md` for layout, recipe, and color system.
+- syedos subdomain → `/var/www/html/syedos/` (root) + subpages at `/<slug>/index.html`. Personal surfaces for "Abang Sado" (Syed, Telegram ID 1042200555, SADO group). **Canonical git state** (single commit `6465d50 chore(core): initial commit, F1 lockdown of live syedos vhost`, 2026-08): contains `index.html` (5-card hub — Emas/Nasi Lemak/Heal/Dashboard/Meal-Plan), `dashboard.html`, `emas/index.html` (full gold chart with lightweight-charts + EMA20/50/200), `heal/index.html` + `heal/abang-sado.mp4`, `nasilemak/index.html`, `proposal.html`, `rental-swot.html`, `syed-golden.jpg`, `welcome.ogg`, `llms.txt`. **Live webroot can DIVERGE from git** — verified 2026-08-11 when live deployed state was just `.git` and an empty `/emas/index.html` placeholder while git had 11 canonical files. Recovered via `# HISTORICAL SCAR. Do not run: git checkout HEAD -- .`. **ALWAYS run `git ls-tree -r HEAD --name-only` before contributing** to confirm what's canonical vs. what's just on disk. SyedOS is OUTSIDE the `/root/arif-fazil.com/` FAIL-CLOSED regime — separate git repo at `/var/www/html/syedos/.git`, single-tenant personal deploy. See `references/syedos-personal-surface.md` for layout, recipe, and color system.
 - Backups: `cp index.html index.html.bak-YYYYMMDD` before editing. Rollback = copy back + reload caddy.
 
 ## Shared design-system assets (`/_shared/`) — deploy root trap + edge cache
@@ -405,7 +409,7 @@ When Arif asks for two articles on the same topic — one English (Medium-level)
   If `git ls-tree` shows files that `ls -la` doesn't → the canonical content is in git; live is behind. **DO NOT OVERWRITE — INTEGRATE.**
 
   **Integration pattern (the right move):**
-  1. `git checkout HEAD -- .` to restore all canonical files to disk
+  1. `# HISTORICAL SCAR. Do not run: git checkout HEAD -- .` to restore all canonical files to disk
   2. `chown -R www-data:www-data /var/www/html/<site>/`
   3. `chmod 644` for files, `755` for dirs
   4. **Read the existing `index.html` first** to understand structure, cards, nav, anchor patterns
@@ -419,7 +423,7 @@ When Arif asks for two articles on the same topic — one English (Medium-level)
   # 1. Backup any new content you wrote (don't lose it)
   cp -r meal-plan /tmp/syedos-meal-plan-backup  # example
   # 2. Restore canonical state from git
-  git checkout HEAD -- .
+  # HISTORICAL SCAR. Do not run: git checkout HEAD -- .
   # 3. Fix perms
   chown -R www-data:www-data /var/www/html/syedos/
   chmod 644 /var/www/html/syedos/*.html /var/www/html/syedos/emas/index.html ...
@@ -1161,7 +1165,7 @@ git ls-tree -r HEAD --name-only    # WHAT EXACTLY IS IN GIT?
 ls -la                            # what is deployed right now?
 
 # 2. If git ls-tree shows files that ls -la doesn't → live is behind. Recover:
-git checkout HEAD -- .             # restore canonical files
+# HISTORICAL SCAR. Do not run: git checkout HEAD -- .             # restore canonical files
 chown -R www-data:www-data /var/www/html/<site>/
 chmod 644 /var/www/html/<site>/*.html /var/www/html/<site>/**/*.html
 chmod 755 /var/www/html/<site>/*/
