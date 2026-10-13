@@ -522,12 +522,11 @@ providers:
     note: DO NOT REMOVE. Re-enable when balance recovers.
 
   opencode-go:
-    status: disabled
-    api: https://opencode.ai/zen/go/v1/chat/completions
-    disabled_reason: 401_insufficient_balance
-    disabled_at: 2026-08-04
-    models: [deepseek-v4-pro, kimi-k3, minimax-m3, deepseek-v4-flash, glm-5.2]
-    note: DO NOT REMOVE.
+    status: live
+    api: https://opencode.ai/inference/go/v1
+    reenabled_at: 2026-10-14
+    models: [glm-5.3, glm-5.3-flash, glm-5.2, kimi-k3, kimi-k2.7-code, kimi-k2.6, minimax-m3, minimax-m2.7, qwen3.8-max, qwen3.8-flash, qwen3.7-plus, deepseek-v4-pro, deepseek-v4.1-flash, deepseek-v4-flash, mimo-v2.6-pro, mimo-v2.6-flash, longcat-2.0, hy3, space-bunny]
+    note: RE-ENABLED 2026-10-14 (333-AGI, F13 opencode-go directive) — subscription active ($10/mo, console 0% usage), 3-shape canaries green (GO/MSG/RESP-CANARY-OK + FED-GO-OK + CLI-V2-GO-OK). Old 401_insufficient_balance (2026-08-04) superseded by renewed sub. zen endpoint retired -> inference/go/v1.
 
   tokenrouter:
     status: disabled
