@@ -1,0 +1,70 @@
+=== HOUSEKEEPING ===
+--- /opt/geox status after repair (should be unchanged from snapshot) ---
+ M apps/well-desk/index.html
+ M chat/server.py
+ M chat/static/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp
+
+--- bundle still restorable? ---
+/root/AAA/receipts/GEOX-DIAGNOSTIC-20261006T034201Z/SNAPSHOT-20261006T034418Z/opt-geox-uncommitted.bundle is okay
+The bundle contains these 35 refs:
+fdb4edce8ac2bce847f0bb4c51ef933cb344b74b refs/heads/forge/sabah-collision-system-20260930
+
+--- receipts under /root/AAA/receipts this session ---
+/root/AAA/receipts/GEOX-FINAL-20261006T034737Z:
+total 16
+-rw-r--r-- 1 root root  655 Oct  6 11:47 housekeeping.txt
+-rw-r--r-- 1 root root  735 Oct  6 11:47 TEST.txt
+-rw-r--r-- 1 root root 1575 Oct  6 11:47 push.txt
+-rw-r--r-- 1 root root  884 Oct  6 11:47 deploy.txt
+
+/root/AAA/receipts/GEOX-REPAIR-20261006T034444Z:
+total 28
+-rw-r--r-- 1 root root  4758 Oct  6 11:45 post-edit.txt
+
+--- carry-forward (open F13 binaries parked, not auto-routed) ---
+F13-1: Content-Length RuntimeError on POST /mcp — 5602/day in uvicorn; separate session
+F13-2: Cloudflare plan tier / 524 ceiling — unverified, no host mutation can reach it
+F13-3: /opt/geox dirty tree (7 uncommitted including D tool_tiers.py) — separate audit
+F13-4: arifOS vs /opt/geox divergence (14 commits behind /root/GEOX) — held
+
+--- session tail (last lines of current chat log) ---
+154 /root/.claude/projects/-root/memory/MEMORY.md
+=== HOUSEKEEPING REDIS ===
+--- /opt/geox git status (should now show chat/server.py AND chat/static/index.html modified, plus pre-existing dirty tree) ---
+ M apps/well-desk/index.html
+ M chat/server.py
+ M chat/static/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp
+
+--- diff stat for the two files we edited (review-ready) ---
+ chat/server.py         | 24 +++++++++++++++++++++++-
+ chat/static/index.html | 17 +++++++++++++++--
+ 2 files changed, 38 insertions(+), 3 deletions(-)
+
+--- confirmation that our pre-edit .pre.bak files are byte-identical to the prior on-disk content ---
+Files /root/AAA/receipts/GEOX-DIAGNOSTIC-20261006T034201Z/SNAPSHOT-20261006T034418Z/server.py.pre.bak and /dev/fd/63 differ
+
+--- bundle integrity (F1 AMANAH snapshot still restorable) ---
+/root/AAA/receipts/GEOX-DIAGNOSTIC-20261006T034201Z/SNAPSHOT-20261006T034418Z/opt-geox-uncommitted.bundle is okay
+The bundle contains these 35 refs:
+
+--- FINAL CARRY-FORWARD (open F13 binaries, not auto-routed) ---
+F13-1: Content-Length RuntimeError on POST /mcp — 5,602/day in uvicorn httptools_impl.py:552
+       Live, ongoing, does NOT block user observe flow (chat proxy catches upstream failure
+       and now renders a Witness-Card HOLD). Separate session recommended.
+F13-2: Cloudflare plan tier / 524 ceiling — unverified. No host mutation can reach it.
+F13-3: /opt/geox dirty tree — 7 uncommitted, 1 deletion (tool_tiers.py).
+       git revert is NOT guaranteed-clean. Snapshot bundle already captured.
+F13-4: arifOS vs /opt/geox divergence — runtime is 14 commits behind /root/GEOX.
+       Diff in chat/ is empty so the Witness-Card repair reaches production regardless.

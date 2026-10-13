@@ -1,0 +1,3 @@
+### file backups (sha256 + size + head -5)
+d0d75c25af09ba67b2cfeeff22dd708aa351f862409486006c6b2f156ee5aefe  /opt/geox/chat/server.py  →  /root/AAA/receipts/GEOX-DIAGNOSTIC-20261006T034201Z/SNAPSHOT-20261006T034418Z/server.py.pre.bak
+20104585709252fdefb36259ba52ba97087600f784e6efc404c72933f96bc227  /opt/geox/src/geox_mcp/server.py  →  /root/AAA/receipts/GEOX-DIAGNOSTIC-20261006T034201Z/SNAPSHOT-20261006T034418Z/server.py.pre.bak

@@ -100,3 +100,72 @@ illustration or photograph? Are the person's clothes, pose and setting still the
   person. Say so plainly rather than delivering it as the user's photo.
 - **Aspect mismatch.** The edit lane returns roughly 3:4 by default; if the user sent a wide photo
   and expects a wide result, crop-check the output aspect before sending.
+
+## Token Plan vs PAYG keys — probe, don't prose (corrected 2026-10-07)
+
+Three DashScope key flavors live in this environment under different env var aliases
+(`DASHSCOPE_API_KEY`, `QWEN_PAYG_API_KEY`, `QWEN_TEAM_OWNER_API_KEY`, etc.). All same family,
+just labeled differently per `.env` file.
+
+**Flavor is read by prefix AND endpoint, not env var name alone:**
+
+| Prefix | Account class | dashscope-intl.aliyuncs.com (PAYG base) | token-plan.maas.qwencloudapi.com (Token Plan base) |
+|---|---|---|---|
+| `sk-ws-` | Workspace / PAYG / free-tier | **200** if budget, **403 `AllocationQuota.FreeTierOnly`** if free quota dry, **429 `Throttling.RateQuota`** if cooldown — route open | **401 `InvalidApiKey`** — this base is not for `sk-ws-` keys |
+| `sk-sp-` | Token Plan (Coding Plan) team/individual seat | **401 `InvalidApiKey`** — this base is not for `sk-sp-` keys | **200** — full multimodal-generation route opens; `qwen-image-2.0-pro`, `wan2.7-image-pro`, etc. listed in `/compatible-mode/v1/models` |
+| `sk-` (other) | Standard QwenCloud API key | try PAYG; check account status if ambiguous | try Token Plan; check authorization if 401 |
+
+**Discovery recipe (always probe BOTH endpoints, every key flavor):**
+
+```bash
+set -a && source /root/.secrets/qwen.env && set +a
+PAY_BODY='{"model":"qwen-image-edit","input":{"messages":[{"role":"user","content":[{"text":"x"}]}]},"parameters":{"n":1,"size":"1024*1024"}}'
+for V in DASHSCOPE_API_KEY QWEN_PAYG_API_KEY QWEN_HERMES_API_KEY QWEN_TEAM_OWNER_API_KEY QWEN_INDIVIDUAL_API_KEY QWEN_OPENCODE_API_KEY QWEN_ARIFOS_API_KEY; do
+  K="${!V:-}"; [ -z "$K" ] && continue
+  P="${K:0:5}"
+  PAY_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+    "https://dashscope-intl.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation" \
+    -H "Authorization: Bearer $K" -H "Content-Type: application/json" -d "$PAY_BODY")
+  TP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+    "https://token-plan.maas.qwencloudapi.com/api/v1/services/aigc/multimodal-generation/generation" \
+    -H "Authorization: Bearer $K" -H "Content-Type: application/json" -d "$PAY_BODY")
+  printf "%-32s %-6s pay=%s tp=%s\n" "$V" "$P" "$PAY_STATUS" "$TP_STATUS"
+done
+```
+
+The matrix output tells you, per key, which base URL actually serves it. Read across
+the row, not down the column — a 200 in either column is a working lane.
+
+**The diagnosis mistakes to avoid:**
+
+- Do not write "Token Plan quota exhausted" when a `sk-sp-` key returns 401 at the PAYG base. That's
+  not quota — it's the wrong base URL. The Token Plan key class has its own base URL
+  (`token-plan.maas.qwencloudapi.com`) where it does return 200. Pointing the user to "top up
+  quota" wastes a debug cycle when the real fix is "change the base URL".
+- Do not write "PAYG plan needed" when a `sk-ws-` key returns 401 at the Token Plan base. Same fix:
+  switch base URL.
+- Do not generalize one key's failure to "image editing is broken" without probing at least one
+  of each (sk-ws-, sk-sp-) on at least one of each base.
+
+**To list what the Token Plan base exposes for image edit:** hit `GET
+https://token-plan.maas.qwencloudapi.com/compatible-mode/v1/models` with the `sk-sp-` Bearer. The
+returned list will include `wan2.7-image`, `wan2.7-image-pro`, `qwen-image-2.0`, `qwen-image-2.0-pro`
+when Token Plan has the visual lane enabled. If the list is empty or returns 401, Token Plan does
+not cover image endpoints for that seat — fall back to a `sk-ws-` PAYG key.
+
+The ready-made script `scripts/probe_visual_lanes.sh` implements the matrix above.
+
+## Source env before testing — naive `os.environ.get` returns shadow
+
+`/root/.secrets/*.env` files are NOT auto-loaded into `os.environ`. A plain
+`os.environ.get("DASHSCOPE_API_KEY")` returns `"not set"` even when 8 `.env` files contain the
+key. When probing visual lanes, **always `set -a && source /root/.secrets/qwen.env && set +a`
+inside the shell call** before checking key status, or you will claim "key absent" while the key
+sits unused in a vault file. The probe pattern above uses `source` correctly; copy the pattern
+verbatim rather than rewriting it in Python without the source step.
+
+## References
+
+- `scripts/probe_visual_lanes.sh` — non-plaintext diagnostic that sources all `.env` files
+  and probes every sk-* key against the multimodal-generation endpoint. Use before claiming
+  "lane dead" — distinguishes quota (403/429) from authorization (401) correctly.

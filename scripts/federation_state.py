@@ -36,23 +36,29 @@ OUTPUT_JSON = Path("/root/AAA/state/federation_state.json")
 # ── Config ─────────────────────────────────────────────────────────────
 
 PROBE_TIMEOUT = 8  # seconds per endpoint (cold-start safe)
+# host-map patch (STAGED 2026-10-08, irfanclaw/FI-017, Arif-authorized "stage boleh-undur"):
+# organs verified LIVE via tailnet probe from kvm4-forge (100.64.0.5) at 2026-10-08 06:30-07:15 UTC:
+#   arifos:8088, geox:8081, well:18083 -> 100.64.0.2 (af-forge) all /health 200
+#   chron:18102 -> mesh-silent from .5/.4; KVM8 (=af-forge .2) on-host snapshot 15:25 MYT: chron ALIVE -> loopback-bound, 127.0.0.1 CORRECT for generator host
+#   a-forge/fed/aaa/wealth/arifflow -> reached by generator host (kokpit reads them UP) -> unchanged
+# revert: git checkout -- scripts/federation_state.py
 ORGAN_ENDPOINTS = [
-    {"id": "arifos",   "port": 8088,  "role": "Kernel"},
-    {"id": "a-forge",  "port": 7071,  "role": "Execution"},
-    {"id": "aaa",      "port": 3001,  "role": "Control Plane"},
-    {"id": "geox",     "port": 8081,  "role": "Earth Intelligence"},
-    {"id": "wealth",   "port": 18082, "role": "Capital Intelligence"},
-    {"id": "well",     "port": 18083, "role": "Vitality Mirror"},
-    {"id": "arifflow", "port": 7073,  "role": "Metabolism"},
-    {"id": "fed",      "port": 7074,  "role": "Model Router"},
-    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},
+    {"id": "arifos",   "port": 8088,  "role": "Kernel",                  "host": "100.64.0.2"},
+    {"id": "a-forge",  "port": 7071,  "role": "Execution",               "host": "100.64.0.2"},
+    {"id": "aaa",      "port": 3001,  "role": "Control Plane",           "host": "100.64.0.2"},
+    {"id": "geox",     "port": 8081,  "role": "Earth Intelligence",      "host": "100.64.0.2"},
+    {"id": "wealth",   "port": 18082, "role": "Capital Intelligence",    "host": "100.64.0.2"},
+    {"id": "well",     "port": 18083, "role": "Vitality Mirror",         "host": "100.64.0.2"},
+    {"id": "arifflow", "port": 7073,  "role": "Metabolism",              "host": "100.64.0.2"},
+    {"id": "fed",      "port": 7074,  "role": "Model Router",            "host": "100.64.0.2"},
+    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence",   "host": "100.64.0.2"},
 ]
 
 # ── Probes ─────────────────────────────────────────────────────────────
 
-def probe_health(port: int) -> dict:
+def probe_health(port: int, host: str = "127.0.0.1") -> dict:
     """Probe a single organ. Returns {healthy, latency_ms, data, failure_reason}."""
-    url = f"http://127.0.0.1:{port}/health"
+    url = f"http://{host}:{port}/health"
     t0 = time.monotonic()
     try:
         req = Request(url, headers={"User-Agent": "federation-state/1.0"})
@@ -77,11 +83,12 @@ def probe_all_organs() -> list[dict]:
     """Probe all organs and return list of organ states."""
     results = []
     for organ in ORGAN_ENDPOINTS:
-        p = probe_health(organ["port"])
+        p = probe_health(organ["port"], organ.get("host", "127.0.0.1"))
         results.append({
             "id": organ["id"],
             "role": organ["role"],
             "port": organ["port"],
+            "host": organ.get("host", "127.0.0.1"),
             "healthy": p["healthy"],
             "latency_ms": p["latency_ms"],
             "failure_reason": p["failure_reason"],

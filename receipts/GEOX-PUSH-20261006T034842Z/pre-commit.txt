@@ -1,0 +1,105 @@
+### PRE-COMMIT STATE
+f043b761e3b11002a2ef1f1c229147af63de7465
+ M apps/well-desk/index.html
+ M chat/server.py
+ M chat/static/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp
+main
+
+### git config — whoami will sign the commit
+kimi-code/FI-008
+kimi-code@arifos.local
+
+### remote
+origin	https://github.com/ariffazil/GEOX.git (fetch)
+origin	https://github.com/ariffazil/GEOX.git (push)
+### POST-STAGE STATE
+ M apps/well-desk/index.html
+M  chat/server.py
+M  chat/static/index.html
+ M src/geox_mcp/organ_governance.py
+ M src/geox_mcp/server.py
+ D src/geox_mcp/tool_tiers.py
+?? app/
+?? data/dde_cache/
+?? ingest/seismic_arif_2026-09-25.webp
+
+### staged diff stat
+ chat/server.py         | 24 +++++++++++++++++++++++-
+ chat/static/index.html | 17 +++++++++++++++--
+ 2 files changed, 38 insertions(+), 3 deletions(-)
+
+### staged diff (the bulk of what we are about to commit)
+diff --git a/chat/server.py b/chat/server.py
+index ba64725e..01a6eebf 100644
+--- a/chat/server.py
++++ b/chat/server.py
+@@ -204,7 +204,29 @@ async def observe(
+             },
+         )
+     except McpError as exc:
+-        return JSONResponse(status_code=502, content={"status": "ERROR", "reason": str(exc)[:300]})
++        # Witness-Card-shaped error envelope (2026-10-06 repair): the frontend
++        # only renders structured HOLD/OK cards, so a bare {"status":"ERROR"}
++        # falls through to the generic "Server menjawab HTTP 502 tanpa JSON"
++        # BM copy and the user loses the request_id, retry cue and link to
++        # /health. Return the same envelope shape the OK path uses, so the
++        # page can always render a card.
++        import uuid as _uuid
++        req_id = _uuid.uuid4().hex
++        return JSONResponse(
++            status_code=502,
++            content={
++                "status": "HOLD",
++                "request_id": req_id,
++                "reason_en": str(exc)[:300],
++                "reason_bm": "Organ geox-mcp tidak sempat atau gagal menjawab.",
++                "verdict": (
++                    f"HOLD — geox-mcp did not return a usable observation "
++                    f"(request_id {req_id}). Retry; if it persists, see /health."
++                ),
++                "retry_after_ms": 4000,
++                "health_url": "/health",
++            },
++        )
+ 
+     # geox_forbidden_claims_scan (fast in-process form) on EVERY outgoing reply — §7
+     scan = scan_reply(packet)
+diff --git a/chat/static/index.html b/chat/static/index.html
+index e24311e3..2ee3a0e5 100644
+--- a/chat/static/index.html
++++ b/chat/static/index.html
+@@ -175,13 +175,26 @@ document.getElementById('go').addEventListener('click',async()=>{
+         :`Server menjawab HTTP ${r.status} tanpa JSON. Cuba lagi; jika berterusan, lihat status organ di /health.`;
+       out.innerHTML=`<div class="card"><div class="err">${human}</div></div>`;
+     }
+-    else if(j.status==='HOLD'){out.innerHTML=`<div class="card"><div class="err">HOLD — ${j.reason||j.verdict}</div></div>`}
++    else if(j.status==='HOLD'){out.innerHTML=renderHold(j)}
+     else if(j.status==='OK'){out.innerHTML=render(j.packet)}
+-    else{out.innerHTML=`<div class="card"><div class="err">${j.reason||'error'}</div></div>`}
++    else{out.innerHTML=renderHold({reason:`Server returned HTTP ${r.status} with status=${j.status}`,reason_bm:'Bentuk jawapan tidak dikenali.',request_id:j.request_id||'',health_url:'/health'})}
+   }catch(e){out.innerHTML=`<div class="card"><div class="err">Sambungan terputus: ${esc(String(e))}</div></div>`}
+   go.disabled=false;
+ });
+ function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
++function renderHold(j){
++  const id=j.request_id?`req ${esc(j.request_id.slice(0,8))}… · `:'';
++  const en=esc(j.reason_en||j.reason||'HOLD');
++  const bm=esc(j.reason_bm||'Pegang — cuba lagi.');
++  const retry=j.retry_after_ms?` · retry in ${Math.round(j.retry_after_ms/1000)}s`:'';
++  const health=j.health_url?` · <a href="/health">/health</a>`:'';
++  return `<div class="card">
++    <span class="verdict" style="background:#fdecea;color:#8c2f26">HOLD</span>
++    <div class="kv" style="margin-top:8px"><b>Reason (EN)</b>${en}</div>
++    <div class="kv"><b>Sebab (BM)</b>${bm}</div>
++    <div class="kv mini">${id}${retry}${health}</div>
++  </div>`;
++}
+ function render(p){
+   const ep=p.epistemic||{},lim=p.limitations||{},obs=p.observations||{};
+   const hyps=(p.hypotheses||[]).map(h=>`<div class="hyp"><b>${esc(h.label)}</b> <span class="conf">conf ${h.confidence} · falsifiers: ${esc((h.falsifiers||[]).join('; ')||'—')}</span></div>`).join('')||'<div class="mini">none</div>';

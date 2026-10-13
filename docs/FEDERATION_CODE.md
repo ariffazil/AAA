@@ -21,7 +21,7 @@
 │   ┌──────────┐   ┌──────────┐   ┌──────────┐                    │
 │   │   AAA    │   │  APEX    │   │  HERMES  │                    │
 │   │ Cockpit  │   │  Judge   │   │ Telegram │                    │
-│   │  :3001   │   │ :3002    │   │  :8644   │                    │
+│   │  :3001   │   │ :3002    │   │ :18087   │                    │
 │   └────┬─────┘   └────┬─────┘   └────┬─────┘                    │
 │        │              │              │                           │
 │   ┌────┴──────────────┴──────────────┴────┐                      │
@@ -344,7 +344,7 @@ EXECUTION:
 MESSAGING:
   nats-server.service         → :4222, :8222
   hermes-a2a.service          → :18001
-  hermes-asi-gateway.service  → :8644  (Telegram bot)
+  hermes-asi-gateway.service  → Telegram bot runtime (no fixed HTTP port; MCP surface: hermes-mcp-server.service :18087)
   f11-bridge.service          → :5002  (F13 witness)
 
 DATA:
@@ -422,7 +422,7 @@ NETWORK:
 | 3001 | AAA A2A | 8001 | L5 Search |
 | 3002 | APEX Prime | 8081 | GEOX MCP |
 | 4222 | NATS | 8088 | arifOS Kernel |
-| 5001 | VAULT999 Writer | 8644 | Hermes ASI |
+| 5001 | VAULT999 Writer | 18087 | Hermes MCP |
 | 5002 | F11 Bridge | 8931 | Playwright |
 | 51001 | MIND | 9090 | Prometheus |
 | 51002 | MEMORY | 9100 | Node Exporter |
