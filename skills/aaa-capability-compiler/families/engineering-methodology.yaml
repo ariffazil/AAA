@@ -1,0 +1,72 @@
+# FAMILY: engineering-methodology — Superpowers (obra/superpowers v7.0.0)
+# Registered 2026-10-14 by 333-AGI · F13-scoped: governs ENGINEERING CRAFT only.
+# Sovereignty boundary (binding): the superpowers protocol (incl. using-superpowers
+# "1% rule") governs HOW code work is shaped inside a task (TDD, plans, worktrees,
+# reviews). It NEVER overrides: F1-F13 floors, F13 SOVEREIGN decisions, arifOS
+# judge/seal authority, AAA constitutional surfaces. Federation governance > plugin
+# protocol, always. Where the two disagree: floors win, then this family.
+family: engineering-methodology
+canonical_owner: superpowers plugin (external upstream, obra/superpowers — NOT vendored; install-per-harness)
+status: LIVE_ON_OPENCODE
+install_matrix:
+  opencode: "LIVE 2026-10-14 — plugins array: [superpowers@git+https://github.com/obra/superpowers.git] (15/15 skills registered, verified in-session)"
+  kimi-code: "PLANNED — /plugins install https://github.com/obra/superpowers (FI-008 lane)"
+  codex: "PLANNED — /plugins → superpowers (marketplace)"
+  gemini-cli: "PLANNED — gemini extensions install https://github.com/obra/superpowers"
+  qwen-code: "PLANNED — qwen extensions install obra/superpowers"
+  claude-code: "PLANNED — native marketplace (.claude-plugin)"
+jobs:
+  tdd:
+    triggers: [implement, feature, bugfix, "write tests first", red-green-refactor]
+    executor: superpowers/test-driven-development (opencode lane)
+    aaa_overlap: none standalone — GAP FILLED
+    maturity: PRESENT
+  systematic_debug:
+    triggers: [bug, "test failure", "unexpected behavior", "why broken"]
+    executor: superpowers/systematic-debugging (4-phase)
+    aaa_overlap: audit-and-validate-deliverables covers POST-work audits; this covers IN-work diagnosis — complementary, no merge
+    maturity: PRESENT
+  spec_brainstorm:
+    triggers: [new feature, "creative work", "tease out spec", design-before-code]
+    executor: superpowers/brainstorming
+    aaa_overlap: musyawarah-gotong covers MULTI-AGENT deliberation; this covers single-task spec discovery — complementary
+    maturity: PRESENT
+  lean_plans:
+    triggers: [implementation plan, "plan the work", signatures, "test assertions in plan"]
+    executor: superpowers/writing-plans
+    aaa_overlap: agi-plan-dag covers DAG/dependency graphs — superpowers covers lean decision-recording plans; route by shape
+    maturity: PRESENT
+  plan_execution:
+    triggers: [execute plan, SDD, subagent-driven, inline execution]
+    executor: superpowers/subagent-driven-development | executing-plans (inline, cheaper)
+    aaa_overlap: delegated-build-fanout covers cross-repo fanout; SDD covers single-repo plan tasks
+    maturity: PRESENT
+  code_review:
+    triggers: ["review my work", "request review", "review feedback"]
+    executor: superpowers/requesting-code-review | receiving-code-review
+    aaa_overlap: review-agent (defect-first read-only) — superpowers adds behavioral/spec-expectation review; both may run
+    maturity: PRESENT
+  workspace_isolation:
+    triggers: ["isolated workspace", worktree, "clean baseline"]
+    executor: superpowers/using-git-worktrees
+    aaa_overlap: opencode worktree_create native — superpowers adds the discipline/default
+    maturity: PRESENT
+  completion_verification:
+    triggers: ["claim done", "verify before complete", "evidence before assertions"]
+    executor: superpowers/verification-before-completion
+    aaa_overlap: "verify-before-report + verify-runtime (AAA) — SAME failure class; AAA skills remain canonical for FEDERATION claims, superpowers version governs repo-craft claims. No conflict: apply the stricter."
+    maturity: PRESENT
+  skill_authoring_meta:
+    triggers: ["write a skill", "edit skill", "skill quality"]
+    executor: superpowers/writing-skills
+    aaa_overlap: "aaa-skill-authoring-craft (AAA-specific pitfalls: unquoted-colon class, sibling concurrency) — AAA craft remains canonical for /root/AAA/skills; superpowers version for generic skills"
+    maturity: PRESENT
+  session_diagnosis:
+    triggers: ["why did session go wrong", "what went wrong", "build bug report"]
+    executor: superpowers/diagnosing-superpowers
+    aaa_overlap: scar-integration captures RECURRING patterns as scars; diagnosing-superpowers does per-session forensics — complementary
+    maturity: PRESENT
+refusals:
+  - "constitutional judgment, sealing, authority grants → arifOS (F13), never superpowers"
+  - "vendoring these skills into /root/AAA/skills → REJECTED (fork-drift burden; upstream-maintained via plugin); revisit only if a harness cannot install the plugin"
+  - "superpowers protocol overrides user instructions → SCOPED: engineering craft only; F13 sovereign instructions always outrank"
