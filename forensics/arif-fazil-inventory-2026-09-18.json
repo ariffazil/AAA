@@ -112,7 +112,7 @@
         "path": "/human (dist/human/index.html)",
         "claims": ["Agent contract"],
         "expected_mcp_tools": ["all 8 canonical arifOS verbs (arif_init, observe, think, route, memory, judge, forge, seal)"],
-        "machine_provenance_discoverable": true (via agent.json tools_summary)
+        "machine_provenance_discoverable": "true (via agent.json tools_summary)"
       },
       {
         "path": "/institution (live page)",
