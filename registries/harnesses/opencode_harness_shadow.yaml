@@ -1,0 +1,142 @@
+# OpenCode Harness Shadow — Hazard Profile
+# ═══════════════════════════════════════
+# arifOS Federation Harness Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-10-14 by 333-AGI (FI-001 lane)
+# Evidence: live session observation + config forensics (providersync session)
+# Status: ACTIVE — OBSERVED provenance (same-session receipts cited per shadow)
+# Completes the 9-harness set: aforge, claude-code, frame, grok-build,
+# hermes-asi, kimi-code, qwen-code, well, opencode.
+# DITEMPA BUKAN DIBERI.
+
+harness_id: opencode/FI-001
+harness_type: coding_cli
+harness_version: "2.0.28"
+model_family: litellm-federation/forge-777 (FED cascade)
+agent_card: /root/AAA/agents/opencode/agent-card.json
+fi_id: FI-001
+created: 2026-10-14
+last_updated: 2026-10-14
+forged_by: 333-AGI (self-observation, FI-001 lane)
+witness: Arif Fazil (F13 Sovereign)
+evidence_chain_status: OBSERVED
+metrics:
+  execute_count: high
+  verify_count: medium
+  note: >-
+    Execution-first doctrine (F13 2026-09-14) drives high mutation throughput.
+    Config surface is the primary entropy sink: 22 backup files and 3 archive
+    generations accumulated in /root/.config/opencode/ as of 2026-10-14.
+
+shadow:
+
+  - id: SHADOW-OC-001
+    name: config_entropy_sprawl
+    severity: MEDIUM
+    class: operational_shadow
+    pattern: >
+      opencode.json accretes ad-hoc edits from every session (providers, agents,
+      plugins, models) with no schema gate. Provider blocks and enabled lists
+      drift apart silently: 16 providers defined vs 12 enabled, 3 duplicate
+      provider entries (minimax-direct, opencode-go-claude, opencode-go-responses),
+      dead model aliases (kimi-k3), and models defined without upstream support
+      — all found in one audit (2026-10-14 providersync session). The config
+      becomes a chaos sink no single writer fully holds in mind.
+    triggers:
+      - multi_session_config_editing
+      - new_provider_or_model_wiring
+      - fed_sync_builder_rerun
+    failure_mode: >
+      Enabled/defined divergence, duplicate lanes, dead aliases, and orphan
+      model references accumulate until a lane silently fails (agent routed to
+      a provider that is defined-but-disabled).
+    failure_signature: >-
+      enabled_providers != provider.keys() OR duplicate baseURL+key pairs OR
+      model ids absent from upstream /v1/models
+    evidence:
+      - type: session_observation
+        date: 2026-10-14
+        description: >-
+          Providersync audit found 4 defined-but-not-enabled providers, 3
+          zero-reference duplicate providers, 1 dead model alias. Fixed to
+          13/13 sync; receipt opencode.json.bak-providersync-*.
+        provenance: OBSERVED (self, this session)
+    floor_posture_delta:
+      F2_TRUTH: fail
+      F4_CLARITY: fail
+    mitigation:
+      - Sync gate on every config write: enabled_providers must equal provider keys.
+      - Duplicate detection — same baseURL+apiKey twice = reject.
+      - Model catalog verified against upstream /v1/models before enable.
+      - One backup per mutation day, not per fix (22 current = archaeology, not rollback).
+
+  - id: SHADOW-OC-002
+    name: backup_archaeology
+    severity: LOW
+    class: operational_shadow
+    pattern: >
+      Every risky edit spawns a .bak file and every retirement spawns an
+      _archive directory, but nothing ever deletes them. A single day (2026-10-14)
+      produced 4 opencode.json backups from three separate fixes. Backups
+      multiply into an archaeology layer where "the current truth" competes
+      with 22 stale candidates — retrieval cost rises, and a future session
+      may restore a stale config believing it current.
+    triggers:
+      - any_config_mutation
+      - any_plugin_retirement
+      - session_close_without_cleanup
+    failure_mode: >
+      Restore-the-wrong-backup errors; entropy sink growth; attention tax on
+      every future audit that must enumerate backups before trusting state.
+    failure_signature: "backup_count(config_dir) > 5 OR archives_same_day > 2"
+    evidence:
+      - type: session_observation
+        date: 2026-10-14
+        description: >-
+          22 backup artifacts + 3 archive generations in /root/.config/opencode/
+          (plugins-archive, plugins-retired-20261014, _archive, _archive_2026-08-17).
+        provenance: OBSERVED (self, directory listing)
+    floor_posture_delta:
+      F11_ENTROPY: warn
+    mitigation:
+      - Time-boxed retention: keep latest backup per day, prune older on session close.
+      - Single canonical archive root with date suffix, not ad-hoc siblings.
+      - Restore always verifies SHA-256 against the mutation receipt before applying.
+
+  - id: SHADOW-OC-003
+    name: execution_hunger
+    severity: MEDIUM
+    class: cognitive_shadow
+    pattern: >
+      The execution-first doctrine ("never collapse unfinished executable work
+      back to the human") is a floor — but under task pressure it shades into
+      finishing-by-declaration: marking tasks RESOLVED because a fix exists in
+      source, without verifying the live/deployed copy carries it. The
+      multi-source-of-truth trap (source fixed, site-packages stale) is the
+      exact failure class the find-live-binary doctrine names. A task file can
+      carry a stale RESOLVED for days before anyone probes the live surface.
+    triggers:
+      - fix_applied_to_source_tree
+      - multi_copy_deploy_target
+      - carry_forward_task_marking
+    failure_mode: >
+      Task marked done from source-level evidence while the live binary still
+      runs old code; downstream sessions inherit false DONE state.
+    failure_signature: "task_status=RESOLVED AND no live/deployed-copy probe in evidence"
+    evidence:
+      - type: session_observation
+        date: 2026-10-14
+        description: >-
+          Actor-ID collision task was marked open in NEXT-20261014.md while the
+          fix was already live in deployed site-packages (verified: 5/5 slash
+          aliases normalize correctly). Reverse case (AX-0 patch live-only,
+          absent from git source) found in same session — both directions of
+          the same shadow.
+        provenance: OBSERVED (self, this session)
+    floor_posture_delta:
+      F2_TRUTH: warn
+      F9_CEILING: warn
+    mitigation:
+      - "Done = verified on the LIVE surface (probe the deployed copy, not the source tree)."
+      - "Every task-status write cites its probe receipt (file:line or curl)."
+      - "Diff source vs deployed before marking deploy-class tasks RESOLVED — both directions."
