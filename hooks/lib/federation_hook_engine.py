@@ -96,6 +96,7 @@ class HookPhase(str, enum.Enum):
 
 class RestrictionLevel(enum.IntEnum):
     """Monotonic Restriction Ladder: A restriction can never be degraded downstream."""
+
     ALLOW = 0
     OBSERVE_ONLY = 1
     SABAR = 2
@@ -159,33 +160,57 @@ class FederationHookEngine:
         self.turn_errors: List[Dict[str, Any]] = []
         self.active_scars: Dict[str, Dict[str, Any]] = {}
         self.rollback_entries: List[Dict[str, Any]] = []
+        self.is_degraded = False
 
     # =========================================================================
     # Phase 0: Session Ignition & Active Scar Priming (000_BOOT)
     # =========================================================================
-    def boot(self, context_info: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def boot(
+        self, context_info: Optional[Dict[str, Any]] = None, provided_token: Optional[str] = None
+    ) -> Dict[str, Any]:
         """
         Ignition hook:
-        1. Calls arif_init on kernel (with strict Accept: application/json) or falls back.
-        2. Binds session token.
-        3. Extracts top scars and open loops.
-        4. Generates Active Constraint Brief for agent context priming.
+        1. Binds a kernel session — three honest modes (patch 2026-10-15, F13 sah):
+             HARNESS_TOKEN          — harness already did the Ed25519 challenge/init
+                                      bind and passed its SCT (crypto-verified actor).
+             KERNEL_INIT            — engine binds a real kernel session via plain
+                                      arif_init over the working tools/call envelope
+                                      (actor unverified; session real).
+             DEGRADED_LOCAL_FALLBACK — kernel unreachable; local correlation only.
+           (Old bug: boot POSTed method "/kernel/call", which the kernel MCP
+           surface never had — every boot was permanently degraded even while
+           the judge path worked. Live-proven 2026-10-15 audit.)
+        2. Extracts top scars and open loops.
+        3. Generates Active Constraint Brief for agent context priming.
         """
-        # Step 1: Kernel arif_init contact
-        init_payload = {
-            "action": "arif_init",
-            "actor_id": self.actor_id,
-            "session_id": self.session_id,
-            "timestamp": _utc_iso(),
-        }
-        kernel_resp = self._call_kernel("/kernel/call", init_payload)
-        if kernel_resp and "token" in kernel_resp:
-            self.session_token = kernel_resp["token"]
-            init_mode = "KERNEL_AUTHENTICATED"
+        # Step 1: Kernel bind
+        if provided_token:
+            self.session_token = provided_token
+            init_mode = "HARNESS_TOKEN"
         else:
-            self.session_token = f"degraded-local-{self.actor_id}-{uuid.uuid4().hex[:8]}"
-            init_mode = "DEGRADED_LOCAL_FALLBACK"
-            self.is_degraded = True
+            kernel_resp = self._call_kernel(
+                "tools/call",
+                {
+                    "name": "arif_init",
+                    "arguments": {
+                        "mode": "init",
+                        "actor_id": self.actor_id,
+                        "session_id": self.session_id,
+                        "verbosity": "minimal",
+                    },
+                },
+            )
+            kernel_result = _kernel_tool_result(kernel_resp)
+            tok = None
+            if isinstance(kernel_result, dict):
+                tok = kernel_result.get("session_token") or kernel_result.get("sct")
+            if tok:
+                self.session_token = str(tok)
+                init_mode = "KERNEL_INIT"
+            else:
+                self.session_token = f"degraded-local-{self.actor_id}-{uuid.uuid4().hex[:8]}"
+                init_mode = "DEGRADED_LOCAL_FALLBACK"
+                self.is_degraded = True
 
         # Step 2: Query active scars & carry forward
         active_scars = self._load_recent_scars(limit=5)
@@ -215,13 +240,27 @@ class FederationHookEngine:
             "session_token": self.session_token,
             "session_identity": {
                 "session_id": self.session_id,
-                "source": "kernel" if init_mode == "KERNEL_AUTHENTICATED" else "local_hook_fallback",
-                "authority_scope": "authenticated" if init_mode == "KERNEL_AUTHENTICATED" else "local_correlation_only",
+                "source": "kernel" if init_mode in ("HARNESS_TOKEN", "KERNEL_INIT") else "local_hook_fallback",
+                "authority_scope": (
+                    "authenticated"
+                    if init_mode == "HARNESS_TOKEN"
+                    else "kernel_session_unverified"
+                    if init_mode == "KERNEL_INIT"
+                    else "local_correlation_only"
+                ),
             },
             "execution_authority": {
-                "source": "aaa_kernel" if init_mode == "KERNEL_AUTHENTICATED" else "degraded_local_policy",
-                "verdict": "kernel_authorized" if init_mode == "KERNEL_AUTHENTICATED" else "degraded_local_only",
-                "allows_irreversible": init_mode == "KERNEL_AUTHENTICATED",
+                "source": "aaa_kernel" if init_mode in ("HARNESS_TOKEN", "KERNEL_INIT") else "degraded_local_policy",
+                "verdict": (
+                    "kernel_authorized"
+                    if init_mode == "HARNESS_TOKEN"
+                    else "kernel_session_only"
+                    if init_mode == "KERNEL_INIT"
+                    else "degraded_local_only"
+                ),
+                # Irreversibility is decided by kernel/judge per action — never
+                # declared wholesale at boot (honest authority envelope).
+                "allows_irreversible": False,
             },
             "init_mode": init_mode,
             "scars_count": len(active_scars),
@@ -251,9 +290,7 @@ class FederationHookEngine:
         """
         tool_args = tool_args or {}
         incoming_level = (
-            RestrictionLevel.from_string(incoming_restriction)
-            if incoming_restriction
-            else self.current_restriction
+            RestrictionLevel.from_string(incoming_restriction) if incoming_restriction else self.current_restriction
         )
         # Track monotonicity (context only — hook doesn't block)
         if incoming_level > self.current_restriction:
@@ -275,51 +312,74 @@ class FederationHookEngine:
                 "session_token": provided_token or self.session_token,
             }
 
-        # 1. Detect forbidden targets (advisory enrichment, not blocking)
+        # AT-002 (F13 sah 2026-10-15): scar consultation is mandatory and
+        # PROVABLE before selection. Every gate receipt carries the consulted
+        # set; candidate-signature matches change the enrichment (the AT-001
+        # selection-delta seed: same signature, different guidance).
+        scar_consult = self._consult_scars(tool_name, tool_args)
+
+        # 1. Detect forbidden targets — EXACT path-target match (patch 4, F13
+        #    sah 2026-10-15). The old substring scan over the whole args dump
+        #    self-blocked any agent that so much as MENTIONED a forbidden path
+        #    in prose (live-proven twice on 2026-10-15: an audit command and
+        #    then the very patch fixing it were VOIDed by their own gate).
+        #    Now only real targets adjudicate:
+        #      a) argument values that ARE absolute paths (exact or child-of)
+        #      b) write-redirect targets inside command strings (> >> tee)
+        #    Known limit, documented: reads of forbidden files and exotic
+        #    redirection are not matched here — kernel arif_judge remains the
+        #    constitutional backstop for those classes.
+        def _candidate_targets(args: Dict[str, Any]) -> List[str]:
+            out: List[str] = []
+            for v in args.values():
+                if not isinstance(v, str):
+                    continue
+                if v.startswith("/"):
+                    out.append(v)
+                out.extend(m.strip("\"'") for m in re.findall(r"(?:>{1,2}\s*|tee\s+)(/\S+)", v))
+            return out
+
         normalized_paths = []
-        for k, v in tool_args.items():
-            if isinstance(v, str) and ("/" in v or ".." in v):
-                try:
-                    normalized_paths.append(os.path.normpath(v).lower())
-                except Exception:
-                    pass
-        arg_str = json.dumps(tool_args).lower()
+        for p in _candidate_targets(tool_args):
+            try:
+                normalized_paths.append(os.path.normpath(p).lower())
+            except Exception:
+                pass
 
         security_warnings = []
         for forbidden in FORBIDDEN_MUTATION_TARGETS:
             f_lower = forbidden.lower()
-            matched = False
-            if f_lower in arg_str:
-                matched = True
-            for np in normalized_paths:
-                if f_lower in np or np.startswith(f_lower) or np.endswith(f_lower.lstrip("/")):
-                    matched = True
-                    break
+            matched = any(np == f_lower or np.startswith(f_lower + "/") for np in normalized_paths)
             if matched:
-                security_warnings.append({
-                    "target": forbidden,
-                    "severity": "CRITICAL",
-                    "advisory": f"Target matches forbidden pattern: {forbidden}. Kernel arif_judge must evaluate.",
-                })
+                security_warnings.append(
+                    {
+                        "target": forbidden,
+                        "severity": "CRITICAL",
+                        "advisory": f"Target matches forbidden pattern: {forbidden}. Kernel arif_judge must evaluate.",
+                    }
+                )
 
         if security_warnings:
             # SENSOR: Forward target to kernel arif_judge for adjudication.
             # (Bridge fix FI-008 2026-09-25: valid arif_judge kwargs only —
             #  target_path was rejected by pydantic validation; the target
             #  rides inside the candidate string.)
-            kernel_resp = self._call_kernel("tools/call", {
-                "name": "arif_judge",
-                "arguments": {
-                    "mode": "judge",
-                    "candidate": f"SENSITIVE_PATH_TARGET: {security_warnings[0]['target']} in {tool_name} with args: {json.dumps(tool_args)}",
-                    "session_id": self.session_id,
-                    "session_token": provided_token or self.session_token,
-                    "actor_id": self.actor_id,
-                    "action_tier": "critical",
-                    "reversibility_level": "R5",
-                    "blast_radius": "critical",
-                }
-            })
+            kernel_resp = self._call_kernel(
+                "tools/call",
+                {
+                    "name": "arif_judge",
+                    "arguments": {
+                        "mode": "judge",
+                        "candidate": f"SENSITIVE_PATH_TARGET: {security_warnings[0]['target']} in {tool_name} with args: {json.dumps(tool_args)}",
+                        "session_id": self.session_id,
+                        "session_token": provided_token or self.session_token,
+                        "actor_id": self.actor_id,
+                        "action_tier": "critical",
+                        "reversibility_level": "R5",
+                        "blast_radius": "critical",
+                    },
+                },
+            )
             kernel_result = _kernel_tool_result(kernel_resp)
             kernel_verdict = (kernel_result or {}).get("verdict")
             if not kernel_verdict:
@@ -349,6 +409,13 @@ class FederationHookEngine:
                     "escalation_target": "kernel_arif_judge",
                     "escalation_floor": "F1",
                     "escalation_route": "arif_judge_requeue_on_reachable",
+                    # AT-004 (F13 sah 2026-10-15): a constitutional HOLD carries
+                    # owner / next_action / evidence_gap / expiry — no orphan
+                    # HOLDs, no fossil HOLDs.
+                    "owner": "arifos-kernel (arif_judge requeue)",
+                    "next_action": "re-queue arif_judge adjudication for the matched target once kernel is reachable; do not retry the tool meanwhile",
+                    "evidence_gap": f"kernel verdict for {security_warnings[0]['target']} (kernel returned no verdict)",
+                    "expiry": datetime.fromtimestamp(time.time() + 900, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "kernel_reachable": False,
                     "session_token": provided_token or self.session_token,
                 }
@@ -393,6 +460,10 @@ class FederationHookEngine:
             "auto_minted": auto_minted,
             "journal_id": journal_id,
             "security_warnings": security_warnings,
+            "scar_consulted": scar_consult["scar_consulted"],
+            "scars_in_context": scar_consult["scars_in_context"],
+            "scar_matches": scar_consult["scar_matches"],
+            "scar_guidance": scar_consult["scar_guidance"],
             "reason": "CLEAR: action permitted under autonomous digital policy (MUBAH)",
         }
 
@@ -445,7 +516,11 @@ class FederationHookEngine:
             remediated = True
 
         # Pattern C: Stale / Zombie Process Lock / Swap Starvation
-        elif "out of memory" in combined_err.lower() or "no space left on device" in combined_err.lower() or "resource temporarily unavailable" in combined_err.lower():
+        elif (
+            "out of memory" in combined_err.lower()
+            or "no space left on device" in combined_err.lower()
+            or "resource temporarily unavailable" in combined_err.lower()
+        ):
             healing_action = {
                 "type": "RESOURCE_EXHAUSTION",
                 "diagnosis": "Host memory, swap, or PID limits exceeded due to stale background workers.",
@@ -454,7 +529,11 @@ class FederationHookEngine:
             remediated = True
 
         # Pattern D: Git detached / merge conflict
-        elif "detached head" in combined_err.lower() or "non-fast-forward" in combined_err.lower() or "merge conflict" in combined_err.lower():
+        elif (
+            "detached head" in combined_err.lower()
+            or "non-fast-forward" in combined_err.lower()
+            or "merge conflict" in combined_err.lower()
+        ):
             healing_action = {
                 "type": "GIT_BRANCH_DESYNC",
                 "diagnosis": "Git worktree in detached state or remote rejected non-fast-forward update.",
@@ -621,6 +700,71 @@ class FederationHookEngine:
         except Exception:
             pass
         return scars
+
+    def _load_scar_candidates(self, limit: int = 10) -> List[Dict[str, Any]]:
+        """Autonomous crystallization queue (300_METABOLIZE output).
+
+        Patch 2026-10-15 (F13 sah): candidates were written but NEVER read
+        back — the quarantine had no visibility to selection. They are now
+        consulted at gate time (still quarantined: they enrich guidance,
+        they never block; promotion to canonical scar stays a human/kernel
+        ritual).
+        """
+        out: List[Dict[str, Any]] = []
+        cdir = SCARS_DIR / "candidates"
+        if not cdir.exists():
+            return out
+        try:
+            files = sorted(cdir.glob("*.md"), key=os.path.getmtime, reverse=True)
+            for f in files[:limit]:
+                content = f.read_text(encoding="utf-8", errors="ignore")
+                tool_m = re.search(r"^Tool `([^`]+)`", content, re.M)
+                rem_m = re.search(r"\*\*Remediation Reflex:\*\*\s*(.+)", content)
+                out.append(
+                    {
+                        "scar_id": f.stem,
+                        "tool": tool_m.group(1) if tool_m else None,
+                        "remediation": rem_m.group(1).strip()[:200] if rem_m else None,
+                        "first_seen": None,
+                    }
+                )
+        except Exception:
+            pass
+        return out
+
+    def _consult_scars(self, tool_name: str, tool_args: Dict[str, Any]) -> Dict[str, Any]:
+        """AT-002: prove scars were consulted before selection (receipt field),
+        and let matching candidate signatures change the enrichment (AT-001
+        seed: same signature -> different guidance -> observable delta)."""
+        names: List[str] = []
+        matches: List[Dict[str, Any]] = []
+        for s in self._load_recent_scars(limit=5):
+            names.append(s["name"])
+        for c in self._load_scar_candidates(limit=10):
+            names.append(c["scar_id"])
+            if c.get("tool") and c["tool"] == tool_name:
+                matches.append(
+                    {
+                        "scar_id": c["scar_id"],
+                        "tool": c["tool"],
+                        "remediation": c.get("remediation"),
+                        "binding": "enrichment_only_quarantined",
+                    }
+                )
+        guidance = None
+        if matches:
+            guidance = (
+                f"SCAR MATCH on tool '{tool_name}': prior failure signature present "
+                f"({len(matches)} candidate scar(s)). Apply known remediation before/instead of "
+                f"the identical failing invocation: "
+                + "; ".join(m.get("remediation") or "consult scar file" for m in matches)
+            )
+        return {
+            "scar_consulted": True,
+            "scars_in_context": names,
+            "scar_matches": matches,
+            "scar_guidance": guidance,
+        }
 
     def _load_open_loops(self, limit: int = 5) -> List[Dict[str, Any]]:
         if not CARRY_PATH.exists():
@@ -793,7 +937,7 @@ def main():
     engine = FederationHookEngine(actor_id=args.actor, session_id=args.session_id)
 
     if args.command in ("boot", "dispatch") and payload.get("event") in (None, "boot", "session_start"):
-        res = engine.boot(payload)
+        res = engine.boot(payload, provided_token=payload.get("session_token"))
     elif args.command == "gate" or payload.get("event") == "pre_tool":
         res = engine.gate(
             tool_name=payload.get("tool_name", "unknown"),
