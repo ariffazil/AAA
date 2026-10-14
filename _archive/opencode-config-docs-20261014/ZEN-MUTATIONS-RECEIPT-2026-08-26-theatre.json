@@ -1,0 +1,69 @@
+{
+  "receipt_id": "zen-theatre-2026-08-26",
+  "directive": "i-ARIF 2026-08-26: strip safety-filter theatre from OpenCode config; code safety to the kernel",
+  "operator": "333-AGI Delta MIND",
+  "session_id": "SEAL-f5844b242a224f9e",
+  "verdict": "LANE_B_RECEIPT",
+  "rationale": "T1 reversible prompt/config mutations. F1 backup intact. No irreversible state change.",
+  "files_mutated": 17,
+  "lines_before": 1362,
+  "lines_after": 789,
+  "lines_delta": -573,
+  "lines_delta_pct": -42.0,
+  "bytes_before": 46140,
+  "bytes_after": 27668,
+  "bytes_delta": -18472,
+  "bytes_delta_pct": -40.0,
+  "backup_dir": "_archive/backups-20260826T143000Z-theatre",
+  "theatre_patterns_removed": {
+    "f1_f13_floor_restatements": "~50 instances → 0 (replaced with single kernel-pointer per file)",
+    "ditempa_bukan_diberi_mottos_in_active_prompts": "17 → 0 (kept in 3 operational ceremony files)",
+    "f13_sovereign_emphases": "6+ restatements → 1 reference to session_token.auth + arifOS F13",
+    "never_say_jalan_proceed_lists": "4 restatements → 1 canonical in 333-AGI.md",
+    "t1_t2_t3_tier_tables": "3 restatements → 1 canonical",
+    "ferrari_engine_motivational": "6 closings → 0",
+    "response_contract_shape_restatements": "4 restatements → 1 canonical",
+    "subagent_floor_reminder_block": "7×5-line block → 7×3-line kernel-pointer"
+  },
+  "kernel_confirmation": {
+    "endpoint": "http://127.0.0.1:8088/health",
+    "floors_active": 13,
+    "floors_target": 13,
+    "vault999_health": "healthy",
+    "runtime_floors": {"F1":0.5,"F2":1,"F3":0.9299,"F4":0.8,"F5":1,"F6":1,"F7":0.04,"F8":0.8,"F9":0,"L10":1,"L11":1,"L12":0.425,"L13":1},
+    "verdict": "SEAL"
+  },
+  "what_was_kept_operational": [
+    "boot attestation (one-shot at session start)",
+    "11-step seal ceremony (one-shot at session close)",
+    "T1/T2/T3 autonomy tier table (canonical in AGENTS.md + 333-sovereign-directive.md)",
+    "888_HOLD escalation rules for irreversible gates",
+    "sovereign signal tokens (buat ja la, jalan terus, go, seal it)",
+    "555-ASI F2/F9/F12/F4 gate application rules",
+    "888-APEX verdict format",
+    "doom-loop circuit",
+    "Gödel lock conditions",
+    "UNKNOWN state protocol"
+  ],
+  "what_was_NOT_touched": [
+    "opencode.json (model registry, operational)",
+    "command/init.md (13-invariant boot recipe)",
+    "command/seal.md (11-step close ceremony)",
+    "command/probe-state.md (read-only state probe)",
+    "agents/image-analyzer.md (8 lines, no theatre)",
+    "plugins/*.ts (TypeScript code, not prompt)",
+    "skills/*/SKILL.md (skill descriptors)",
+    "MUTATIONS-2026-08-26-zen-mu.md (prior audit trail, immutable)",
+    "_archive/backups-20260826T143000Z-theatre/ (this audit's backup)",
+    "_audit-snapshots/ (historical audit trail)"
+  ],
+  "carry_forward_for_next_session": [
+    "Run /init in OpenCode to load new prompts (next session boot)",
+    "Verify agent prompts still bind correctly — test 333-AGI + 888-APEX + 555-ASI subagent spawn",
+    "Monitor: did removing DITEMPA + F13 restatement reduce per-turn context load?",
+    "Optional T2 follow-up: edit arifos-federation-manifest-compiler.ts so regenerated organ cards inherit slim 'Floor reference' block instead of 5-line restatement"
+  ],
+  "session_token_at_seal_time": "LIMITED_MUTATE",
+  "submitted_at_utc": "2026-08-26T14:30:00Z",
+  "ditempa": "Safety is the kernel, not the prompt. The Ferrari engine IS the kernel."
+}
