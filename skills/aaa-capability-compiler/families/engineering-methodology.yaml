@@ -7,14 +7,14 @@
 # protocol, always. Where the two disagree: floors win, then this family.
 family: engineering-methodology
 canonical_owner: superpowers plugin (external upstream, obra/superpowers — NOT vendored; install-per-harness)
-status: LIVE_ON_OPENCODE
+status: LIVE_ALL_FI_LANES
 install_matrix:
   opencode: "LIVE 2026-10-14 — plugins array: [superpowers@git+https://github.com/obra/superpowers.git] (15/15 skills registered, verified in-session)"
-  kimi-code: "PLANNED — /plugins install https://github.com/obra/superpowers (FI-008 lane)"
-  codex: "PLANNED — /plugins → superpowers (marketplace)"
-  gemini-cli: "PLANNED — gemini extensions install https://github.com/obra/superpowers"
-  qwen-code: "PLANNED — qwen extensions install obra/superpowers"
-  claude-code: "PLANNED — native marketplace (.claude-plugin)"
+  kimi-code: "LIVE 2026-10-14 — no plugin system in kimi 2.1.1; persistent clone /root/.agents/superpowers + extra_skill_dirs entry (config.toml:34); kimi doctor OK"
+  codex: "LIVE 2026-10-14 — codex plugin marketplace add obra/superpowers (=> superpowers-dev) + codex plugin add superpowers@superpowers-dev (v7.0.0 cached)"
+  gemini-cli: "LIVE 2026-10-14 — gemini extensions install (installed + enabled; ~/.gemini/extensions/superpowers)"
+  qwen-code: "LIVE 2026-10-14 — qwen extensions install marketplace:plugin syntax (v7.0.0 enabled; ~/.qwen/extensions/superpowers)"
+  claude-code: "LIVE 2026-10-14 — claude plugin marketplace add + install superpowers@superpowers-dev (user scope); settings.json immutable flag restored after bounded edit"
 jobs:
   tdd:
     triggers: [implement, feature, bugfix, "write tests first", red-green-refactor]
