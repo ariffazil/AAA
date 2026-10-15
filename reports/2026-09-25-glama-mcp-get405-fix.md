@@ -48,3 +48,38 @@ None on the server. Only Arif can trigger Glama's retest from the profile page (
 
 **Verified:** POST / (Glama's exact scenario) → 307 → full valid JSON-RPC initialize (`ARIFOS MCP`, proto 2025-06-18) · GET / 200 landing · GET /mcp 405 spec · POST /mcp 200.
 
+---
+
+## Addendum — Round 3 (2026-10-14 ~12:55 MYT): wrong door — `arifosmcp` subdomain's 301 flips POST→GET
+
+**Symptom:** Glama test profile "arifOS — Constitutional AI Governance" failing again — `Error POSTing to endpoint: HTTP status: 405`, cadence ~25 min (08:47–12:22 MYT; 502/503 mix on kernel-degraded minutes).
+
+**Evidence chain:**
+- Glama listing payload (glama.ai/mcp/servers/ariffazil/arifos): listing name `arifOS — Constitutional AI Governance` paired with endpoint **`https://arifosmcp.arif-fazil.com/mcp`** — NOT the canonical `mcp.arif-fazil.com/mcp` door (that one answered 200 to every POST variant all along).
+- Kernel journal at every failure minute (01:08–04:22 UTC): zero external requests reached :8088 → 405 served at the edge, before the kernel.
+- Reproduced 1:1 (`curl -L -d`, python urllib): `POST arifosmcp/mcp` → **301** `redir ... permanent` → client flips POST→GET → `GET mcp.arif-fazil.com/mcp` → **405** (kernel, spec-correct `Allow: POST, DELETE`). Final status 405 on a POST-initiated call — exactly Glama's error string.
+
+**Root cause:** `arifosmcp.arif-fazil.com.conf` answered `/mcp*` with a **301 permanent redirect**. 301/302 semantics let clients convert POST→GET on follow; the follow-up GET on the transport endpoint is a spec-405. Round 2's bare-domain lesson was "landing page ≠ JSON-RPC door"; Round 3's is **"a redirect is not a door"** — the method must survive without depending on client redirect compliance.
+
+**Change (reversible; backups kept):**
+- `arifosmcp.arif-fazil.com.conf.bak-20261014-glama301` → `/mcp*` now **reverse_proxy to kernel :8088 directly** (cors_public + Accept injection, same shape as canonical mcp vhost); bare-root non-GET → kernel `/mcp` (Round-2 resilience, now method-safe); `rewrite /mcp/ /mcp` kills the kernel's trailing-slash 307; GET `/` keeps its human redirect.
+- `mcp.arif-fazil.com.conf.bak-20261014-glama301-rootproxy` → `@mcp_root_rpc` upgraded from 307-redir to **direct proxy** (same class), trailing-slash normalized likewise.
+- `caddy validate` → Valid · `systemctl reload caddy` → active.
+
+**Verification (public URLs, through Cloudflare):**
+| Probe | Before | After |
+|---|---|---|
+| [GLAMA EXACT] naive POST arifosmcp/mcp | 301→GET→**405** | **200** `ARIFOS MCP` proto 2025-06-18 |
+| python urllib POST arifosmcp/mcp | **405** (reproduced) | **200** |
+| Full handshake via arifosmcp/mcp | — | initialize 200 → initialized 202 → tools/list 200 (8 verbs) |
+| GET arifosmcp/mcp | 405 | **405** (spec unchanged) |
+| POST mcp. bare root | 307 | **200** (direct) |
+| POST mcp./mcp/ | 307 | **200** (direct) |
+| GET mcp./mcp | 405 | **405** (spec unchanged) |
+| OPTIONS preflight | — | 204 |
+| GET arifosmcp/ landing | 301 | 301 (untouched) |
+
+**Witness instrument:** access log added to mcp.arif-fazil.com vhost (`/var/log/caddy/mcp-arif-fazil-access.log`) — registry traffic on this door was previously invisible.
+
+**Sovereign action needed:** none on the server. Glama retest ("Test again") or the automatic cycle should now pass; the failing profile posts to `arifosmcp.arif-fazil.com/mcp`, which now answers JSON-RPC directly. Optional cleanup (Arif's call): repoint the Glama test-profile endpoint at the canonical `https://mcp.arif-fazil.com/mcp` — both doors now work identically.
+

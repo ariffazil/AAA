@@ -37,8 +37,8 @@ ecology_state: WARM
 **User feedback (Jul 2026):** "Aku malas nak baca" — Arif prefers images over long text. When asked for trading analysis, the DEFAULT deliverable is a chart. Text is supplementary, not primary.
 
 **User feedback (Aug 2026 — "live gold today + upcoming week + full agentic intelligence insights, minimize text focus on visual deliver for human cognitive understanding"):** Reinforces the above with two new rules:
-1. **PDF = single visual artifact.** Build the chart + analysis panel + disclaimer in ONE matplotlib figure, then wrap the same figure with `matplotlib.backends.backend_pdf.PdfPages`. Do NOT build a separate reportlab doc for "visual-first" requests — the user wants to open ONE PDF and see the whole picture without scrolling. Chart area + right-side LEGEND PANEL (per Side Panel rule below) + small footer line = the whole PDF.
-2. **Chat-side text ≤ 8 markdown lines.** No repeated values that are already on the chart. No narrative summary. Default = `MEDIA:` link to PDF + `MEDIA:` link to PNG + ≤ 8-line bullet recap (price, range, bull/bear trigger, key zones, sentiment tag, disclaimer).
+1. **PDF = single visual artifact.** Build the chart + analysis panel in ONE matplotlib figure, then wrap the same figure with `matplotlib.backends.backend_pdf.PdfPages`. Do NOT build a separate reportlab doc for "visual-first" requests — the user wants to open ONE PDF and see the whole picture without scrolling. Chart area + right-side LEGEND PANEL (per Side Panel rule below) + small footer line = the whole PDF.
+2. **Chat-side text ≤ 8 markdown lines.** No repeated values that are already on the chart. No narrative summary. Default = `MEDIA:` link to PDF + `MEDIA:` link to PNG + ≤ 8-line bullet recap (price, range, bull/bear trigger, key zones, sentiment tag).
 
 **Pattern:**
 - User asks: "Bagi prediction untuk gold" → Deliver chart with S/R levels + 3-line summary
