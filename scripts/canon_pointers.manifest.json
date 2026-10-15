@@ -1,0 +1,253 @@
+{
+  "agents_md": "/root/AGENTS.md",
+  "fragments": {
+    "ARIFOS-APEX-INVARIANT-2026-10-08": {
+      "bytes": 12081,
+      "path": "/root/AAA/instructions/ARIFOS-APEX-INVARIANT-2026-10-08.md",
+      "repo_rel": "instructions/ARIFOS-APEX-INVARIANT-2026-10-08.md",
+      "sha256": "42d7897f2703682320d08bfc40c3bc5786315146d61fbde5362b81911a5e89b1"
+    },
+    "ARIFOS-EPISTEMIC-INVARIANT-2026-10-10": {
+      "bytes": 5476,
+      "path": "/root/AAA/instructions/ARIFOS-EPISTEMIC-INVARIANT-2026-10-10.md",
+      "repo_rel": "instructions/ARIFOS-EPISTEMIC-INVARIANT-2026-10-10.md",
+      "sha256": "bf53ae05c289128e2b750ecac8b53ba09120155f8491beb45146b9575423d13d"
+    },
+    "aaa-emergence-5-stages": {
+      "bytes": 7649,
+      "path": "/root/AAA/instructions/aaa-emergence-5-stages.md",
+      "repo_rel": "instructions/aaa-emergence-5-stages.md",
+      "sha256": "0509f1d68c9442ca18204a937b49733d2b2b2d7d31512d7078f2345b0a166772"
+    },
+    "aaa-emergence-acceptance-tests": {
+      "bytes": 5636,
+      "path": "/root/AAA/instructions/aaa-emergence-acceptance-tests.md",
+      "repo_rel": "instructions/aaa-emergence-acceptance-tests.md",
+      "sha256": "561eb22be32316189896763e2e957d3170948529180ba91a150d830eef2b4ad2"
+    },
+    "aaa-emergence-v1": {
+      "bytes": 6154,
+      "path": "/root/AAA/instructions/aaa-emergence-v1.md",
+      "repo_rel": "instructions/aaa-emergence-v1.md",
+      "sha256": "ebaac1c7540e836d8499a6a2048da4f341aa2c4a0cfe3831cda3333fb0d29882"
+    },
+    "aaa-no-hold-flow-directive-v2": {
+      "bytes": 14847,
+      "path": "/root/AAA/instructions/aaa-no-hold-flow-directive-v2.md",
+      "repo_rel": "instructions/aaa-no-hold-flow-directive-v2.md",
+      "sha256": "ed2d342fda52d3dfee245c27c60474e5d61ce7959a2745f7b241ab84974f7b13"
+    },
+    "aaa-scar-binding-doctrine": {
+      "bytes": 5837,
+      "path": "/root/AAA/instructions/aaa-scar-binding-doctrine.md",
+      "repo_rel": "instructions/aaa-scar-binding-doctrine.md",
+      "sha256": "206d119004244a03dd5e7646b8453eb46b9436a34dc692b0540e1f63a2d60671"
+    },
+    "agent-compartment": {
+      "bytes": 3703,
+      "path": "/root/AAA/instructions/agent-compartment.md",
+      "repo_rel": "instructions/agent-compartment.md",
+      "sha256": "19f8432a2b581c612776fc4d92dc83dd9b7d153e3cdce5164456be9d1a210a55"
+    },
+    "agent-relational-interpretation-rules": {
+      "bytes": 8951,
+      "path": "/root/AAA/instructions/agent-relational-interpretation-rules.md",
+      "repo_rel": "instructions/agent-relational-interpretation-rules.md",
+      "sha256": "09a5f4a3051f16a56f2907733d484d3e991931668af5f35b6003d6e69f10425b"
+    },
+    "agentic-flow-architecture-2026-10-05": {
+      "bytes": 1984,
+      "path": "/root/AAA/instructions/agentic-flow-architecture-2026-10-05.md",
+      "repo_rel": "instructions/agentic-flow-architecture-2026-10-05.md",
+      "sha256": "773a3eda1fa187a9734b1ed16ae02c6857e5fc02cf595ecbaf8dca6746e3116f"
+    },
+    "anti-bangang-engineering": {
+      "bytes": 2058,
+      "path": "/root/AAA/instructions/anti-bangang-engineering.md",
+      "repo_rel": "instructions/anti-bangang-engineering.md",
+      "sha256": "0ff20050b763bbbeab52970f5f57a63a084802c9dc970df926f703e00790a831"
+    },
+    "apex-geometry-substrate": {
+      "bytes": 4806,
+      "path": "/root/AAA/instructions/apex-geometry-substrate.md",
+      "repo_rel": "instructions/apex-geometry-substrate.md",
+      "sha256": "e4ee62e6835fd53409d312319aebe02a7da01ee3411a6a3e3543992168dfb1bd"
+    },
+    "apex-reality-kernel": {
+      "bytes": 5314,
+      "path": "/root/AAA/instructions/apex-reality-kernel.md",
+      "repo_rel": "instructions/apex-reality-kernel.md",
+      "sha256": "d62ff8f677af0a86735b8e7c8126b8e12ef95bb9b67c69707cc4c90014c4f41d"
+    },
+    "apex-zen-alignment": {
+      "bytes": 1207,
+      "path": "/root/AAA/instructions/apex-zen-alignment.md",
+      "repo_rel": "instructions/apex-zen-alignment.md",
+      "sha256": "0a5c5aa5ef90251fa4e7968256a7e7c479cddbb4e3be4986d6644db583408ff1"
+    },
+    "arif-human-principal": {
+      "bytes": 2687,
+      "path": "/root/AAA/instructions/arif-human-principal.md",
+      "repo_rel": "instructions/arif-human-principal.md",
+      "sha256": "a7ec25ea8d28e7a9304a626857476755d7fdf4b78aaeeb46d8b596c6d095889b"
+    },
+    "asi-substrate-invariants": {
+      "bytes": 4964,
+      "path": "/root/AAA/instructions/asi-substrate-invariants.md",
+      "repo_rel": "instructions/asi-substrate-invariants.md",
+      "sha256": "b588824259e5f6bbc7d0042d3dccbf161a45aad6fe83265b85d13beccc55be0c"
+    },
+    "authority-envelope": {
+      "bytes": 8001,
+      "path": "/root/AAA/instructions/authority-envelope.md",
+      "repo_rel": "instructions/authority-envelope.md",
+      "sha256": "c6c5cc8a770791df4da07e66fb452fd715fbc032a4e19d55cc74f0121ace5c2c"
+    },
+    "auto-seal": {
+      "bytes": 1108,
+      "path": "/root/AAA/instructions/auto-seal.md",
+      "repo_rel": "instructions/auto-seal.md",
+      "sha256": "f7dde77860b1e4eca4a98ebee8ae62e5279ebd7d005e85e23f60209735aa3de5"
+    },
+    "base": {
+      "bytes": 3271,
+      "path": "/root/AAA/instructions/base.md",
+      "repo_rel": "instructions/base.md",
+      "sha256": "bc9dcc2d219579b9700ca9a95f1ecd9c47a70fbca3c30e9a6cef1a678b646016"
+    },
+    "build": {
+      "bytes": 3892,
+      "path": "/root/AAA/instructions/build.md",
+      "repo_rel": "instructions/build.md",
+      "sha256": "8f77c76944aa3ddbe2e91dee79bd0ec26cd8567d39a9d0fe666d4ac327f3005c"
+    },
+    "epistemic-foundation": {
+      "bytes": 7878,
+      "path": "/root/AAA/instructions/epistemic-foundation.md",
+      "repo_rel": "instructions/epistemic-foundation.md",
+      "sha256": "e99eb1ac9392a90cee3a4d472136b101af41d7fd43af8161bde1f791a4cfd9f2"
+    },
+    "failure-class-separation": {
+      "bytes": 3157,
+      "path": "/root/AAA/instructions/failure-class-separation.md",
+      "repo_rel": "instructions/failure-class-separation.md",
+      "sha256": "2d3b146ee6d78c00eb6760b0eb0c2e6290e395d51b8d8676858c7b88984053ab"
+    },
+    "gold-provenance-law": {
+      "bytes": 4319,
+      "path": "/root/AAA/instructions/gold-provenance-law.md",
+      "repo_rel": "instructions/gold-provenance-law.md",
+      "sha256": "4a26f4ebb95c395d2dcfe8ce02038628a1081c6b9ff702e9243d03093259dd8b"
+    },
+    "hermes-interdisciplinary-layers": {
+      "bytes": 14488,
+      "path": "/root/AAA/instructions/hermes-interdisciplinary-layers.md",
+      "repo_rel": "instructions/hermes-interdisciplinary-layers.md",
+      "sha256": "6c99616b4ae53bcf7b100ff0b62528f91365d430efb2c1bd6c1bd8558c9ae3c7"
+    },
+    "hermes-rasa": {
+      "bytes": 30974,
+      "path": "/root/AAA/instructions/hermes-rasa.md",
+      "repo_rel": "instructions/hermes-rasa.md",
+      "sha256": "b623e7c2085da609e7e0818f6ebedead58f8dab3d69546e675c9bc68e43a0061"
+    },
+    "hermes-shadow": {
+      "bytes": 19038,
+      "path": "/root/AAA/instructions/hermes-shadow.md",
+      "repo_rel": "instructions/hermes-shadow.md",
+      "sha256": "d74d265d510064076c58965e6da9feedfd946ca2a7212691b3ca49e4c1ff3e32"
+    },
+    "human-attention-membrane": {
+      "bytes": 2935,
+      "path": "/root/AAA/instructions/human-attention-membrane.md",
+      "repo_rel": "instructions/human-attention-membrane.md",
+      "sha256": "f45438067e5a20645198623de824817b8f6983f7e1e8cc88ab053ee69a930ea4"
+    },
+    "human-invariant-deskriptif-normatif": {
+      "bytes": 5652,
+      "path": "/root/AAA/instructions/human-invariant-deskriptif-normatif.md",
+      "repo_rel": "instructions/human-invariant-deskriptif-normatif.md",
+      "sha256": "4fb724ea5c7f1c130073c0587dcf7b287846060d3cb5a628b2beed1dc6a16058"
+    },
+    "language-geometry-gradient": {
+      "bytes": 3497,
+      "path": "/root/AAA/instructions/language-geometry-gradient.md",
+      "repo_rel": "instructions/language-geometry-gradient.md",
+      "sha256": "1a92c942bbbd19c8b696fcbdde3e1bc19568abd7dd6677fa426087fe28ce8d0a"
+    },
+    "namespace-fatwa-k1": {
+      "bytes": 3971,
+      "path": "/root/AAA/instructions/namespace-fatwa-k1.md",
+      "repo_rel": "instructions/namespace-fatwa-k1.md",
+      "sha256": "9c38c9c2023e9da056d65f8eb79baa540ebcb972cb735c0ed630f32bda4e5206"
+    },
+    "pointers": {
+      "bytes": 7581,
+      "path": "/root/AAA/instructions/pointers.md",
+      "repo_rel": "instructions/pointers.md",
+      "sha256": "9533aee3804422cca1a639e8e299fef43e21e442423cff8fa9d0bdbf19a842b9"
+    },
+    "reality-navigation-execution": {
+      "bytes": 3229,
+      "path": "/root/AAA/instructions/reality-navigation-execution.md",
+      "repo_rel": "instructions/reality-navigation-execution.md",
+      "sha256": "358dfa42d79293fafc666eabd50286b1a90da95f064c0326f27997e8bceef39e"
+    },
+    "recovery-reality-cache": {
+      "bytes": 3622,
+      "path": "/root/AAA/instructions/recovery-reality-cache.md",
+      "repo_rel": "instructions/recovery-reality-cache.md",
+      "sha256": "8b753d3eedcdb45800da3b2ecd9d7ef8935bc7a7a4e6a555eae6fd5dd1323834"
+    },
+    "relationship-intelligence": {
+      "bytes": 6402,
+      "path": "/root/AAA/instructions/relationship-intelligence.md",
+      "repo_rel": "instructions/relationship-intelligence.md",
+      "sha256": "62e93d943fbe3841b9b4b2d1358ec26b2e2937b94b1f7bf34ae8d01a6b663b2f"
+    },
+    "resolver-before-escalate": {
+      "bytes": 5943,
+      "path": "/root/AAA/instructions/resolver-before-escalate.md",
+      "repo_rel": "instructions/resolver-before-escalate.md",
+      "sha256": "bf06e0b6813dac3a5f47522a32784d134afdc2eb96e85703a05c97414f7b2269"
+    },
+    "response-compass": {
+      "bytes": 4908,
+      "path": "/root/AAA/instructions/response-compass.md",
+      "repo_rel": "instructions/response-compass.md",
+      "sha256": "a3dd2c7c428c6c2d2f8204260d8b2936e1570007e00f206f3bbefe5ce937b639"
+    },
+    "security": {
+      "bytes": 3714,
+      "path": "/root/AAA/instructions/security.md",
+      "repo_rel": "instructions/security.md",
+      "sha256": "e61a47427d8f41d7b3d3f752546ad8880e7c98d2097fb1fad176c582f6f79402"
+    },
+    "sovereign-attention-preservation": {
+      "bytes": 5278,
+      "path": "/root/AAA/instructions/sovereign-attention-preservation.md",
+      "repo_rel": "instructions/sovereign-attention-preservation.md",
+      "sha256": "07288b6f31acaf38ae1bc80ac02f3ce7f05e21477cb46864f90e3848a57039b1"
+    },
+    "state-transition-discipline": {
+      "bytes": 4971,
+      "path": "/root/AAA/instructions/state-transition-discipline.md",
+      "repo_rel": "instructions/state-transition-discipline.md",
+      "sha256": "f8dcc2a2a150cbf8e21ab8f6a0c7c1535c7c66917cca97288b8e433422e793eb"
+    },
+    "temporal-derivation-law": {
+      "bytes": 6291,
+      "path": "/root/AAA/instructions/temporal-derivation-law.md",
+      "repo_rel": "instructions/temporal-derivation-law.md",
+      "sha256": "8c97710a9f19c475b5ba2ce4519c51a681c29c4bb77c78e863befed061525611"
+    },
+    "topology": {
+      "bytes": 5627,
+      "path": "/root/AAA/instructions/topology.md",
+      "repo_rel": "instructions/topology.md",
+      "sha256": "174ec5dde4d3107a646d6f1a386f69ec4850571a7937d5c8de053caf14926e70"
+    }
+  },
+  "generated_at": "2026-10-14T12:48:17+00:00",
+  "schema": "canon-pointers/v1"
+}

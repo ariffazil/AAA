@@ -10,7 +10,10 @@
   ],
   "max_blast_radius": "T1",
   "created_at": "2026-08-23T09:33:55+00:00",
-  "updated_at": "2026-08-23T09:33:55+00:00",
+  "updated_at": "2026-10-14T00:00:00+00:00",
+  "status": "DORMANT",
+  "dormant_since": "2026-09-25",
+  "replaced_mouth": "hermes-asi",
   "fingerprint": "39ddc5eb8eb6e5f6a24099756811ef50",
   "key_source": "FRESH KEYGEN 2026-08-23 at A-FORGE/IDENTITY/keys/hermesarifos-bot (no prior key in DID/farm/.secrets \u2014 verified before generation)",
   "fix_note": "2026-08-23 qwen-code FI-003: keygen per F13 directive \u2014 clears final needs_keygen flags; legacy bots capped OBSERVE/REASON T1"
