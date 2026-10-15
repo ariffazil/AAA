@@ -1,8 +1,10 @@
-# Reality Graph 5-Layer Doctrine (DRAFT)
+# Reality Graph 5-Layer Doctrine
 
-> **Status:** `external_advisory_doctrine_draft` — awaits F13 ratification via sovereign_chat_override
+> **Status:** `F13_RATIFIED_SOVEREIGN` — sah oleh Arif Fazil (F13), 2026-10-15, sovereign chat ("ok sah. go")
+> **Ratification amendment (2026-10-15):** two edge predicates added from external audit convergence (Gemini analysis + HERMES verification): `FALSIFIED_BY` (grounds CHRON falsification lane, live) and `AWAITING_WITNESS` (events whose outcome is not yet witnessed — outcome_unknown class). These close the falsification/observation loop the original draft lacked.
+> **Provenance:** writer FI-003 anonymous session, `actor_verified=false`, `OBSERVE_ONLY` at draft time (2026-09-24); ratified post-hoc by sovereign after independent cross-model audit (HERMES claim-by-claim verification vs Gemini definitional synthesis).
 > **Writer:** FI-003 anonymous session, `actor_verified=false`, `OBSERVE_ONLY` (per F13 directive "forge 5-layer reality graph doctrine")
-> **Date:** 2026-09-24T23:33 MYT
+> **Date drafted:** 2026-09-24T23:33 MYT · **Date ratified:** 2026-10-15
 > **Cross-references:** `consequence-pipeline-four-layers-20260917` (4-layer) + `reality-graph-doctrine-20260912` (DAG edges as causal substrate) + `identity-continuity.md` (F13-ratified 2026-09-08) + `reality-graph-roadmap-20260912` (RG-1 to RG-7 phased)
 
 ---
@@ -108,7 +110,14 @@ edge:
   
   # Predicate (which layer + what type)
   layer: relationship | authority | consequence | reality
-  predicate: <typed>            # kinship, friendship, employment, CEO_of, delegates, may_affect, etc.
+  predicate: <typed>            # kinship, friendship, employment, CEO_of, delegates, may_affect, falsified_by, awaiting_witness, etc.
+  # ── Ratified edge predicates for epistemic closure (2026-10-15 amendment) ──
+  # falsified_by:      this assertion was disproven by a witness/event — grounds CHRON
+  #                    falsification (chron_record_verification VERIFIED_INCORRECT path).
+  #                    Edge is RETAINED, never deleted; status flips to superseded/revoked.
+  # awaiting_witness:  this assertion's outcome exists but is not yet observed
+  #                    (CHRON outcome_unknown class). Unmeasured ≠ pass; the edge
+  #                    blocks any downstream claim of success until witnessed.
   
   # Witness (F2/F11 TRUTH/AUDIT)
   witness:
