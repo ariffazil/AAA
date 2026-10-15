@@ -79,7 +79,7 @@ All tool outputs tagged with evidence class:
 
 ## Censorship Awareness
 
-MiniMax-M3: CONFIRMED_CENSORED — Malaysian governance/politics/corporate topics. Server-side post-generation filter. Auto-route to DeepSeek when these topics detected. Censorship probe at /root/.hermes/state/censorship_probe.py.
+MiniMax-M3: CONFIRMED_CENSORED — Malaysian governance/politics/corporate topics. Server-side post-generation filter. Auto-route to DeepSeek when these topics detected. Censorship probe: NOT_IMPLEMENTED (phantom reference — no executable at /root/.hermes/state/censorship_probe.py).
 
 ---
 
