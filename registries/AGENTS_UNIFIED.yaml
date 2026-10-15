@@ -1,4 +1,5 @@
 version: 2026.08.12T02.55Z-qwen-code-incarnated
+# mouth_facts 2026-10-14: one Hermes mouth = hermes-asi @ASI_arifos_bot on KVM8. Twin hermesarifos-bot is dormant. Forge mouth = @arifOS_bot. OpenClaw = @irfanclaw_arifos_bot. FI slots were not renumbered.
 forged: '2026-07-31'
 forged_by: 333-AGI (Δ MIND) — F13 SOVEREIGN directive
 supersedes:
@@ -193,7 +194,23 @@ extensions:
   status: active
   canonical_card: /root/AAA/agents/hermes-asi/agent-card.json
   bound_to_identity: 555-ASI
-  description: Telegram conversational agent. Bahasa Malaysia + English. Bound to 555-ASI (Ω CORE). Reads FQ, never executes.
+  description: The one Hermes mouth. Telegram @ASI_arifos_bot (8410138119) on KVM8, unit hermes-asi-gateway.service. Lane 555-ASI. Speaks. Does not execute.
+  telegram:
+    bot: '@ASI_arifos_bot'
+    bot_id: '8410138119'
+    host: KVM8
+    unit: hermes-asi-gateway.service
+  species_proxy: hermes-zen
+- id: hermesarifos-bot
+  name: Hermes twin — dormant
+  role: Dormant Telegram face. Not a second Hermes.
+  fi_slot: null
+  status: dormant
+  canonical_card: /root/AAA/agents/hermesarifos-bot/agent-card.json
+  bound_to_identity: 555-ASI
+  replaced_by: hermes-asi
+  dormant_since: '2026-09-25'
+  description: Dormant twin @hermesarifos_bot (7958220838). Identity lock 2026-09-25 set DORMANT. A KVM4 user gateway was still polling it on 2026-10-14. That poll does not restore this seat.
   species_proxy: hermes-zen
 - id: main
   name: arifOS Telegram Bot
@@ -201,7 +218,7 @@ extensions:
   fi_slot: null
   status: active
   canonical_card: /root/AAA/agents/main/agent-card.json
-  description: Primary Telegram bot @ASI_arifos_bot. Direct Arif interface.
+  description: Card id arifOS_bot, lane 888-APEX. Telegram forge mouth is @arifOS_bot (8727562763). Not Hermes. Not @ASI_arifos_bot.
   species_proxy: openclaw-zen
 - id: makcikgpt
   name: MakcikGPT
@@ -244,9 +261,7 @@ extensions:
   _namespace_note: 'openclaw is NOT an AAA harness FI slot (this registry: FI-000..FI-009 are
     harnesses). openclaw/FI-017 is an arifOS kernel ACTOR INDEX id (agent_registry.json,
     19 actors, FI-001..FI-026). Two namespaces, both true; do not merge them.'
-  description: Runtime binding for the KVM4 OpenClaw gateway (Telegram host, subagent
-    orchestration). Kernel actor openclaw/FI-017, blast radius T1, bound_to arif-fazil/F13.
-    AAA Telegram group administrator. Citizenship stamped 2026-09-25.
+  description: KVM4 workshop door. Telegram @irfanclaw_arifos_bot (8149595687, renamed from @AGI_ASI_bot on 2026-09-25). Kernel actor openclaw/FI-017, blast radius T1, bound_to arif-fazil/F13. Not Hermes. Not 888.
 organs:
 - id: arifos
   name: arifOS Kernel
@@ -257,7 +272,7 @@ organs:
   name: A-FORGE
   port: 7071
   role: Execution — build, deploy, forge
-  canonical_card: /root/AAA/agent-cards/pillars/aforge/agent-card.json
+  canonical_card: /root/AAA/agent-cards/organs/aforge/agent-card.json
 - id: aaa
   name: AAA Control Plane
   port: 3001

@@ -100,7 +100,7 @@ runtime:
   GOVERNOR:   { systemd: [aaa-a2a.service, aaa-preforge.service],     ports: [3001], containers: [] }
   METABOLISM: { systemd: [arifflow.service],                          ports: [7073], containers: [] }
   HANDS:      { systemd: [a-forge-mcp.service, a-forge.service],      ports: [7071, 7072], containers: [] }
-  SENSES:     { systemd: [hermes-asi-gateway.service @KVM4 (~/.hermes LIVE)], systemd_kvm8_retired: [hermes-real-bridge, hermesarifos-bot, hermes-gateway-api, litellm-federation — disabled 2026-09-03], ports: [], containers: [] }
+  SENSES:     { systemd: [hermes-asi-gateway.service @KVM8 (~/.hermes LIVE, bot @ASI_arifos_bot)], kvm4_stray: "user hermes-gateway polls dormant @hermesarifos_bot — not a second Hermes", ports: [], containers: [] }
   EARTH:      { systemd: [geox-mcp.service],                          ports: [8081], containers: [] }
   ECONOMY:    { systemd: [wealth-organ.service],                      ports: [18082], containers: [] }
   HEALTH:     { systemd: [well.service],                              ports: [18083], containers: [] }

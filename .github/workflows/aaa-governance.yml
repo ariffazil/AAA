@@ -120,3 +120,33 @@ jobs:
         run: |
           test -f docs/FEDERATION_MAP.md || (echo "❌ Missing docs/FEDERATION_MAP.md" && exit 1)
 
+  canon-pointer-integrity:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
+    name: 🔏 Canon Pointer Integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify sealed canon pointers resolve and hash-match
+        run: |
+          # Directive WELL::SEVERITY_INVERSION_REPAIR::2026-10-14 (CANON REPAIR).
+          #
+          # The rendered index /root/AGENTS.md lives OUTSIDE this repo, so CI
+          # cannot audit it directly. CI therefore verifies the sealed manifest:
+          # every fragment recorded at seal time must (a) exist in the checkout
+          # and (b) hash identically. Fails closed on ABSENT or HASH_DRIFT --
+          # silent canon disappearance is the defect this guards against.
+          #
+          # Negative controls witnessed 2026-10-14: appending one byte to
+          # instructions/base.md -> HASH_DRIFT exit 1; moving
+          # agent-relational-interpretation-rules.md aside -> ABSENT exit 1;
+          # clean tree -> exit 0.
+          #
+          # Reseal after an INTENTIONAL canon edit (F13 action):
+          #   python3 scripts/canon_pointer_audit.py \
+          #     --write-manifest scripts/canon_pointers.manifest.json \
+          #     --allow-retired agentic-anthropology-v0.1
+          python3 scripts/canon_pointer_audit.py \
+            --verify-manifest scripts/canon_pointers.manifest.json \
+            --repo-root .
+
