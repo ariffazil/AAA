@@ -57,6 +57,13 @@ The 5-layer model:
 
 ### Layer 3 — Authority Graph
 
+> **Hardening Amendment 2 (2026-10-15):** EXECUTED_BY is a HARD PRE-COMMIT KERNEL GATE
+> (sct_v1.* inside the ACT envelope), not a post-hoc audit trail. When an action lacks
+> authority, or is irreversible without sovereign input, the graph HALTS at
+> AWAITING_AUTHORITY (888) — the mutation never touches the substrate. This is the
+> structural boundary distinguishing arifOS from post-hoc diff checkers
+> (cf. realitygraph.dev: detects violations AFTER the edit via git diff).
+
 > **Question:** *Who may act, access, delegate, or alter?*
 
 | Property | Value |
@@ -132,12 +139,23 @@ edge:
     basis: self_reported | observed | inferred | asserted
   
   # Temporal (identity-continuity temporal validity)
+  # ── Hardening Amendment 3 (2026-10-15): Epistemic decay ──
+  # When now > valid_until WITHOUT a fresh OBSERVED_BY edge, status AUTO-DECAYS
+  # active -> STALE -> UNKNOWN. Stale memory must never masquerade as present
+  # reality (same law class as WELL freshness: stale >24h = STALE_MIRROR, no
+  # extrapolation). Decay is mechanical, not model-judged.
   temporal:
     asserted_at: <ISO-8601>
     valid_from: <ISO-8601-or-null>
     valid_until: <ISO-8601-or-null>
-    status: active | superseded | disputed | revoked
+    status: active | superseded | disputed | revoked | stale | unknown
   
+  # ── Hardening Amendment 1 (2026-10-15): Closed learning loop ──
+  # The chain does NOT terminate at Receipt. Receipt serves VAULT999 (ledger);
+  # the NEW OBSERVATION updates the territory. Required closing edge:
+  #   [Observed Consequence] --GENERATES_WITNESS--> [Observation]
+  # Without this edge the graph records but never learns.
+
   # Confidence + governance (F7 HUMILITY + F12 INJECTION + F13 SOVEREIGN)
   confidence:
     value: 0.0-1.0
