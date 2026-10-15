@@ -224,3 +224,4 @@ auth/redis_url.env
 !.env.example
 !.env.sample
 audio/voice-registry.json  # person registry, local-only SOT (PERSON-DATA GATE)
+audio/voice-registry.json
