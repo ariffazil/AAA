@@ -230,7 +230,21 @@ agent:
     role: clerk
     fi: FI-002
     runtime: anthropic
-    note: "Expresses via Claude Code CLI"
+    node: KVM8
+    id: claude-code-kvm8
+    kernel_actor_id: claude-code-kvm8
+    cli: /root/.local/bin/claude
+    cli_version: 2.1.300
+    cli_version_probed: '2026-10-15'
+    lane: 333-AGI
+    class: CODiNG/FI
+    authority_ceiling: PROPOSE_AND_VERIFY
+    autonomy_tiers: {T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
+    agent_card: /root/AAA/agents/claude-code/agent-card.json
+    warga_card: /root/AAA/agents/claude-code/WARGAAA_CARD.md
+    settings_mcp_server_count: 21
+    live_federation_tool_total: 337
+    note: "Expresses via Claude Code CLI on KVM8. Truth-synced 2026-10-15 by FI-008 (FI-002 shadow audit). Model is forge-777 via FED :4000 — NOT a Claude model name."
   qwen:
     role: clerk
     fi: FI-003
