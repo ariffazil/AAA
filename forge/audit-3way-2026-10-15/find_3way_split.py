@@ -83,6 +83,13 @@ def classify(path: Path) -> str:
         return "WORKTREE"
     if "/root/qrl-verify-" in s:
         return "WORKTREE"
+    # Quarantined copies - MUST check before deploy-chain paths
+    # because quarantine dirs may contain /build/lib/ or /app/ substrings.
+    # (I-1 fix 2026-10-15: /opt/arifos/app.quarantine-*/build/lib/.../tools.py was labeled BUILD)
+    if "/quarantine" in s:
+        return "QUARANTINE"
+    if "/app.quarantine" in s:
+        return "QUARANTINE"
     # Canonical /opt/arifos/ deploy chain
     if "/current/venv/" in s:
         return "VENV"
@@ -92,11 +99,6 @@ def classify(path: Path) -> str:
         return "APP"
     if s.startswith("/opt/arifos/arifosmcp/runtime/"):
         return "SOURCE"
-    # Quarantined copies
-    if "/quarantine" in s:
-        return "QUARANTINE"
-    if "/app.quarantine" in s:
-        return "QUARANTINE"
     return "UNKNOWN"
 
 
@@ -161,7 +163,7 @@ def main() -> int:
         "expected_snap_hash": EXPECTED_HASH_SNAP,
         "copies": [],
         "deploy_chain_status": "UNKNOWN",
-        "schema_generator_status": "NOT_PROBED",
+        "schema_generator_status": "TOOL_SPEC_PY_AUTHORITATIVE_OVERRIDE_AT_BOOT",
     }
 
     for p in copies:
@@ -180,14 +182,29 @@ def main() -> int:
             "diet_function_has_concise": diet["has_concise"],
         })
 
-    # Derive deploy chain status: SOURCE vs VENV divergence.
-    src = next((c for c in report["copies"] if c["role"] == "SOURCE"), None)
-    venv = next((c for c in report["copies"] if c["role"] == "VENV"), None)
-    if src and venv:
-        if src["sha256"] == venv["sha256"]:
-            report["deploy_chain_status"] = "IN_SYNC"
-        else:
-            report["deploy_chain_status"] = f"DRIFT (source {src['sha256'][:12]}... != venv {venv['sha256'][:12]}...)"
+    # Derive deploy chain status: per-pair breakdown across all deploy-chain roles.
+    # (I-3 fix 2026-10-15: was SOURCE-vs-VENV only; a stale BUILD is invisible in 1-pair)
+    chain_roles = ["SOURCE", "BUILD", "VENV", "APP"]
+    chain_copies = {}
+    for role in chain_roles:
+        chain_copies[role] = next((c for c in report["copies"] if c["role"] == role), None)
+    deploy_pairs = {}
+    all_in_sync = True
+    for i, r1 in enumerate(chain_roles):
+        for r2 in chain_roles[i+1:]:
+            c1, c2 = chain_copies[r1], chain_copies[r2]
+            pair_key = f"{r1}__{r2}"
+            if c1 and c2:
+                if c1["sha256"] == c2["sha256"]:
+                    deploy_pairs[pair_key] = "IN_SYNC"
+                else:
+                    deploy_pairs[pair_key] = f"DRIFT ({r1} {c1['sha256'][:12]}... != {r2} {c2['sha256'][:12]}...)"
+                    all_in_sync = False
+            else:
+                deploy_pairs[pair_key] = f"MISSING ({'both' if not c1 and not c2 else (r1 if not c1 else r2)})"
+                all_in_sync = False
+    report["deploy_chain_pairs"] = deploy_pairs
+    report["deploy_chain_status"] = "IN_SYNC" if all_in_sync else "DRIFT"
 
     if args.json:
         print(json.dumps(report, indent=2))
@@ -206,7 +223,9 @@ def main() -> int:
             print(f"{c['role']:<8} {c['size_bytes']:<10} {c['sha256'][:12]:<14} {matches:<6} {concise:<9} {c['path']}")
         print()
         print(f"Deploy chain status: {report['deploy_chain_status']}")
-        print(f"Schema generator: {report['schema_generator_status']} (probe fastmcp_ext/*.py for Pydantic model)")
+        for pair, status in report.get("deploy_chain_pairs", {}).items():
+            print(f"  {pair}: {status}")
+        print(f"Schema generator: {report['schema_generator_status']} (tool_spec.py input_schema authoritative at boot via tools.py:28972-28973 override)")
 
     return 0
 

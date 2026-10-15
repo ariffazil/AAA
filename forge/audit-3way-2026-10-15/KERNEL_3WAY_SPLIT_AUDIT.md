@@ -73,9 +73,12 @@ The arifOS kernel has **three deploy-chain copies** of `arifosmcp/runtime/tools.
 
 ---
 
-## 4. Schema Generator — RESOLVED (DP-A, 2026-10-15)
+## 4. Schema Generator — RESOLVED-WITH-CAVEAT (DP-A, 2026-10-15; I-2 caveat added 2026-10-15 06:36 UTC)
 
-**Finding:** The "schema generator" is **FastMCP itself**, not a separate file. FastMCP reads `inspect.signature()` from the venv's function at server boot and builds the Pydantic input model dynamically. There is NO separate `BaseModel` or `model_json_schema` for `_arif_mind_reason_tool`.
+**Finding:** The "schema generator" is **FastMCP itself**, not a separate file. FastMCP reads `inspect.signature()` from the venv's function at server boot and builds the Pydantic input model dynamically. There is NO separate `BaseModel` or `model_json_schema` for `_arif_mind_reason_tool` in `fastmcp_ext/`.
+
+**⚠ I-2 RESOLVED (2026-10-15 06:40 UTC) — tool_spec.py IS the authoritative schema source:**
+`/opt/arifos/arifosmcp/runtime/tool_spec.py` contains a hand-written canonical `input_schema` for `arifos_mind` (lines 199-263) that **includes `concise`** (line 258, added INCREMENT-2 2026-10-14). At server boot, `tools.py:28972-28973` executes `_ft.parameters = dict(spec.input_schema)` — this **overrides** FastMCP's auto-generated schema with `tool_spec.py`'s hand-written one. **The operative runtime schema is `tool_spec.py`, NOT `inspect.signature()`.** The "third code copy" is therefore **three independent schema surfaces**: (1) function signature in `tools.py` (determines runtime acceptance), (2) `tool_spec.py` `input_schema` (determines MCP validation — authoritative via override), (3) venv copy of `tools.py` (determines FastMCP's initial auto-gen, which is then discarded). The `concise` parameter is **in the schema** but **not in the venv function signature** — schema validation passes, runtime call fails with "Unexpected keyword argument". **Root cause: function-signature drift between tool_spec.py and the venv, not missing schema.**
 
 **Evidence (first-party probed 2026-10-15):**
 
@@ -130,8 +133,8 @@ This sequence assumes F13 will authorize iter-4+ to land the diet. It is read-on
 
 ## 6. Known Unknowns (per `momentum-gloss-over-self-audit-before-irreversible`)
 
-### 6.1 RESOLVED (DP-A, 2026-10-15 03:48)
-- ~~Schema generator exact location~~ — **RESOLVED**: FastMCP generates the Pydantic schema from `inspect.signature()` at server boot. There is NO separate schema file. The "third code copy" mystery is a misdiagnosis — the actual problem is the deploy chain (venv not reinstalled). See §4.
+### 6.1 RESOLVED-WITH-CAVEAT (DP-A, 2026-10-15 03:48; I-2 caveat 2026-10-15 06:36 UTC)
+- ~~Schema generator exact location~~ — **RESOLVED-WITH-CAVEAT**: FastMCP generates the Pydantic schema from `inspect.signature()` at server boot for `fastmcp_ext/` functions. **BUT `tool_spec.py` (never scanned by DP-A) contains `arifos_mind` at lines 199/202/693 — its role in schema generation is UNVERIFIED.** See §4 I-2 caveat. There is NO separate schema file in `fastmcp_ext/`. The "third code copy" mystery is a misdiagnosis — the actual problem is the deploy chain (venv not reinstalled). See §4.
 
 ### 6.2 REMAINING
 - **State change at 03:47:37** — Between DP-A probe rounds, the venv was hot-patched from /root/arifOS working copy (hash 8590cd0, HAS `concise`). The SOURCE was NOT updated. This is an inverted deploy chain. Who did this? When? Why? No audit trail. F13 clarification needed.
@@ -161,7 +164,7 @@ python3 find_3way_split.py --json   # machine-readable
 
 ## 8. F13 Decision Points (blocking iter-4)
 
-- [x] **DP-A: COMPLETE (2026-10-15 03:48)** — Schema generator located: FastMCP itself, not a separate file. Probes confirmed: fastmcp_ext/ has no Pydantic models; venv was hot-patched at 03:47:37; running service has old code in memory. See §4 and §6.
+- [x] **DP-A: COMPLETE (2026-10-15 06:40 UTC)** — Schema generator: `tool_spec.py` (not FastMCP auto-gen). Override at `tools.py:28973`. Three schema surfaces identified. Root cause: function-signature drift between tool_spec.py and venv. venv was hot-patched at 03:47:37; running service has old code in memory. See §4 and §6.
 - [ ] **DP-B:** Authorize Phase B SSOT recipe. Requires `pip install --force-reinstall` and `systemctl restart arifos.service`. Reversible via snap rollback.
 - [ ] **DP-C:** Authorize Phase C guards. Adds pre-deploy-gate.sh + pre-commit hook. Reversible by removing the hook.
 
