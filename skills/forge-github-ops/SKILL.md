@@ -1,7 +1,7 @@
 ---
 id: "forge-github-ops"
 name: "github-ops"
-description: "DEPRECATED ALIAS (2026-10-14) — canonical_owner: github-ops. do_not_select: true. Live skill: /root/AAA/skills/FORGE-github-ops. Entropy consolidation 2026-10-14 by 333-AGI (F13 order)."
+description: "DEPRECATED ALIAS (2026-10-14) — canonical_owner: github-ops. do_not_select: true. Live skill: /root/AAA/skills/github/github-ops. Pointer repaired 2026-10-15 (was: /root/AAA/skills/FORGE-github-ops — a cross-store bounce, not the body)."
 owner: "333-AGI"
 risk_tier: "low"
 autonomy_tier: "T0"
