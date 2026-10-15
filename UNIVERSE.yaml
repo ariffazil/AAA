@@ -87,7 +87,7 @@ implementation:
   GOVERNOR:   { repo: AAA,            sot_path: /root/AAA,                   secondary_paths: [] }
   METABOLISM: { repo: arifFLOW,       sot_path: /root/arifFlow,              secondary_paths: [] }
   HANDS:      { repo: A-FORGE,        sot_path: /root/A-FORGE,               secondary_paths: [/opt/a-forge, /opt/aforge-publish] }
-  SENSES:     { repo: HERMES,         sot_path: /root/HERMES,                secondary_paths: [/root/Hermes] }
+  SENSES:     { repo: HERMES,         sot_path: /root/HERMES,                secondary_paths: [] }
   EARTH:      { repo: GEOX,           sot_path: /root/GEOX,                  secondary_paths: [] }
   ECONOMY:    { repo: WEALTH,         sot_path: /root/WEALTH,                secondary_paths: [] }
   HEALTH:     { repo: WELL,           sot_path: /root/WELL,                  secondary_paths: [] }
@@ -130,9 +130,8 @@ known_shadows:
     status: retired_symlink_alias
     was: symlink → /root/arif-fazil.com (since 2026-07-29)
   /root/Hermes:
-    status: pending_decision
-    type: case_shadow
-    notes: "Non-git, smaller than HERMES. Born 2026-09-03 12:15 MYT per MACHINE_MAP traps. Audit contents before retire."
+    status: retired_case_shadow
+    retired: 2026-10-15 (grounding sweep: directory no longer exists on disk; MACHINE_MAP 2026-09-07 FI-008 confirmed removal)
     f13_question: "Contents audit + retire decision pending"
   /root/arifOS/VAULT999/backups/federation:
     status: pending_decision
