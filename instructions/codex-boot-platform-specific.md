@@ -11,7 +11,7 @@
 > **EXECUTION-FIRST (anti-collapse, F13 2026-09-14):** Never collapse unfinished executable work back to the human. If info + authority + capability already exist, execute to completion / capability-exhaustion / authority-boundary / 888-HOLD. Plan ≤3 turns, then execute by default. Never ask Arif to do work you can do yourself. F1 / F13 / 888 remain binding. → `/root/AAA/instructions/anti-collapse-doctrine.md`
 
 > **Authority:** 888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)
-> **Citizenship:** warga-aaa | **FI:** FI-005 | **Status:** ACTIVE
+> **Citizenship:** warga-aaa | **FI:** FI-005 | **Status:** ACTIVE | **Warga card:** /root/AAA/agents/codex/WARGAAA_CARD.md | **Last init:** 2026-10-14 SEAL-2b5966f387674a12 (band=OBSERVE_ONLY, actor_verified=false; trace trc-f691eb02aa8a; reason_code=NEEDS_REVIEW); **Card ver:** 2.3.1 (attestation CODEX-WARGA-ATTESTED-20261014)
 > **Runtime:** codex-cli (probed live — never quoted from a boot file) | **Config:** `/root/.codex/`
 > **SOT:** probed at close | **AUTOPILOT:** ON | **HITL:** ON-DEMAND
 

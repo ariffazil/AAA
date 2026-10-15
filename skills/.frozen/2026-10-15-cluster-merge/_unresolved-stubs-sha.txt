@@ -1,0 +1,9 @@
+2a91038bf315e63589621cec7b103d2ed552227c00f388b92878dbfdf9fc7d5c  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/AGI-web-optimization/SKILL.md
+e8ccb8d7b4194340493943a731e8cf9e55a29a6c39058ac54ddaf86af68cf298  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/ASI-summarize/SKILL.md
+e05351f681067b6a839ee31a6c2d73cffda74547eadc47389a4f6ea390ce3e43  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/FORGE-cross-repo-doc-zen/SKILL.md
+fbe44f1636008b7e07f1b8141f4e9824e3f1219747af22345cbecc2241311d6d  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/FORGE-governance-jsonld/SKILL.md
+83a11be9a36c0fbb0a04f203096670e7cebc2458bfbd03b43bbe782d56e2d582  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/FORGE-mcp-a2a-agentic/SKILL.md
+b2c8811bfb429d065f940ddf3c616aaf4f6c7e4d16481a919116a3844143c557  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/FORGE-mcp-gui/SKILL.md
+2c10b82af09d010347118dcce34d5f3ca6604992d7d70a0f8919b727817eb649  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/FORGE-secret-hygiene/SKILL.md
+6f471301222361cdcde6a53fe5538912e45e5ed8b98a4965b31812026fc449a9  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/FORGE-symlink-audit/SKILL.md
+f3c468e38544a7b8295cb3e893767a2437deeac3bf0cb64f61086fdf66a09313  /root/AAA/skills/.frozen/2026-10-15-cluster-merge/FORGE-telegram-audit/SKILL.md

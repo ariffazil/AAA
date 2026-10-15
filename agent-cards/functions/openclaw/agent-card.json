@@ -8,7 +8,7 @@
     "category": "Native A2A agent — runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "description": "KVM4 Telegram guest @AGI_ASI_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
+  "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Same bot id 8149595687, renamed 2026-09-25. Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "2.0.0",
   "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
@@ -682,7 +682,7 @@
     "/root/arifOS/arifos/identity/agent_registry.json (canonical kernel SOT — openclaw/FI-017)"
   ],
   "_canonical_audit_2026_09_18": "333-AGI audit reconciled 10 drifts: KVM4 cutover, FI-017 alignment, port mapping, gateway URL, capabilities (OBSERVE/REASON/ROUTE/MEMORY T1). F13 pending: authority_ceiling reconciliation (IDENTITY.md GATEWAY vs kernel ROUTE_BRIDGE vs organs.yaml DISPLAY_ONLY).",
-  "identity_bind": "KVM4 openclaw-gateway + Telegram @AGI_ASI_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
+  "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
   "ikat": "2026-09-20 F13 — Arif: ok ikat la",
   "qualification": {
     "schema": "arifOS/qualification/v1",

@@ -4,7 +4,7 @@
 > **Author lane:** 333b
 > **Supersedes:** nothing yet
 
-> ## ⚠ PATH COLLISION — read first
+> ## Path collision note
 >
 > The mission assigned this draft to
 > `/root/AAA/instructions/aforge-citizen-contract.md`. **That path is already occupied** by a
