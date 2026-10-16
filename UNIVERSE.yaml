@@ -87,7 +87,7 @@ implementation:
   GOVERNOR:   { repo: AAA,            sot_path: /root/AAA,                   secondary_paths: [] }
   METABOLISM: { repo: arifFLOW,       sot_path: /root/arifFlow,              secondary_paths: [] }
   HANDS:      { repo: A-FORGE,        sot_path: /root/A-FORGE,               secondary_paths: [/opt/a-forge, /opt/aforge-publish] }
-  SENSES:     { repo: HERMES,         sot_path: /root/HERMES,                secondary_paths: [/root/Hermes] }
+  SENSES:     { repo: HERMES,         sot_path: /root/HERMES,                secondary_paths: [] }
   EARTH:      { repo: GEOX,           sot_path: /root/GEOX,                  secondary_paths: [] }
   ECONOMY:    { repo: WEALTH,         sot_path: /root/WEALTH,                secondary_paths: [] }
   HEALTH:     { repo: WELL,           sot_path: /root/WELL,                  secondary_paths: [] }
@@ -100,7 +100,7 @@ runtime:
   GOVERNOR:   { systemd: [aaa-a2a.service, aaa-preforge.service],     ports: [3001], containers: [] }
   METABOLISM: { systemd: [arifflow.service],                          ports: [7073], containers: [] }
   HANDS:      { systemd: [a-forge-mcp.service, a-forge.service],      ports: [7071, 7072], containers: [] }
-  SENSES:     { systemd: [hermes-asi-gateway.service @KVM4 (~/.hermes LIVE)], systemd_kvm8_retired: [hermes-real-bridge, hermesarifos-bot, hermes-gateway-api, litellm-federation — disabled 2026-09-03], ports: [], containers: [] }
+  SENSES:     { systemd: [hermes-asi-gateway.service @KVM8 (~/.hermes LIVE, bot @ASI_arifos_bot)], kvm4_stray: "user hermes-gateway polls dormant @hermesarifos_bot — not a second Hermes", ports: [], containers: [] }
   EARTH:      { systemd: [geox-mcp.service],                          ports: [8081], containers: [] }
   ECONOMY:    { systemd: [wealth-organ.service],                      ports: [18082], containers: [] }
   HEALTH:     { systemd: [well.service],                              ports: [18083], containers: [] }
@@ -130,9 +130,8 @@ known_shadows:
     status: retired_symlink_alias
     was: symlink → /root/arif-fazil.com (since 2026-07-29)
   /root/Hermes:
-    status: pending_decision
-    type: case_shadow
-    notes: "Non-git, smaller than HERMES. Born 2026-09-03 12:15 MYT per MACHINE_MAP traps. Audit contents before retire."
+    status: retired_case_shadow
+    retired: 2026-10-15 (grounding sweep: directory no longer exists on disk; MACHINE_MAP 2026-09-07 FI-008 confirmed removal)
     f13_question: "Contents audit + retire decision pending"
   /root/arifOS/VAULT999/backups/federation:
     status: pending_decision

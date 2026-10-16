@@ -367,7 +367,7 @@ federation_services:
     role: Media Ingest MCP — governed multi-lane media/link ingestion
     repo: /root/.hermes/mcp
   - unit: hermesarifos-bot.service
-    role: Hermes Archive Bot — Telegram gateway 4 (@hermesarifos_bot)
+    role: DORMANT twin @hermesarifos_bot. Not a second Hermes. Mouth is hermes-asi-gateway @ASI_arifos_bot on KVM8.
     repo: /opt/hermesarifos-bot
 docker_containers:
 - name: searxng
