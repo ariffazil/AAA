@@ -1158,8 +1158,8 @@ authority_chain:
 - arif_seal
 links:
   human_map: /root/AAA/docs/ORGAN.md
-  contract: /root/FEDERATION_CONTRACT.md
+  contract: /root/arifOS/FEDERATION_CONTRACT.md
   agents_doctrine: /root/AGENTS.md
   mcp_ops: /root/AAA/docs/MCP_FEDERATION_ZEN.md
-  runbook: /root/RUNBOOK.md
+  runbook: /root/arifOS/RUNBOOK.md
 last_reconciled_utc: '2026-10-14T06:43:26.779882+00:00'

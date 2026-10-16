@@ -367,7 +367,6 @@ Step 4: Double-check with user before final calculation
 - **RSI divergence on gold** — RSI can stay overbought/oversold longer than expected on XAUUSD due to strong trends. Don't counter-trade RSI alone.
 - **BPM double-time in price action** — gold's volatility can trigger false breakouts. Use multi-timeframe confirmation.
 - **Demo first** — always test on demo account for 3+ months before going live.
-- **Not financial advice** — always include disclaimer. AI signals are educational, not guaranteed.
 - **Visual chart analysis is WAJIB** — Arif (2026-07-18): "Weiii trading agent kena pandai tengok chart laaa, wajib. Pi cari cara nak ignite visual intelligence!!" Use MiniMax vision via `mmx vision describe` as primary. OCR fallback only if mmx quota exhausted. See §Vision Chart Analysis.
 
 ## Gold/Oil/Gas Site Dashboards — Cognitive Clarity

@@ -24,8 +24,11 @@ invariants:
   per_session_gotong: true
 sources:
   claude:
-    config: /root/.claude/mcp.json
-    server_count: 29
+    config: [/root/.claude/settings.json, /root/.mcp.json]
+    server_count: 23
+    server_count_breakdown: {user_settings: 21, project_mcp_json: 2}
+    server_count_probed: 2026-10-15
+    note: "Was 29 against /root/.claude/mcp.json — that file is NOT what Claude Code loads (stale 34-entry legacy roster). Live SOT = settings.json mcpServers (21) + project .mcp.json (2). Probed by FI-008."
     provenance_sealed: false
   codex:
     config: /root/.codex/config.toml

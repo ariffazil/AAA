@@ -1,13 +1,13 @@
 # Shadow Evidence Gate  v2 (prose + live FQ series)
-# Generated: 2026-10-13T22:25:03Z
+# Generated: 2026-10-14T22:25:03Z
 # Rule: CONFIRMED requires >= 5 DATED prose items, OR a measured
 #       attractor in the live FQ series (significant displacement from FQ*=1
 #       AND temporal stability AND sign concordance).
 # Sources: /root/AAA/registries/harnesses + /root/AAA/registries/models
 #          + /var/lib/arifflow/receipts.jsonl
 
-Entries assessed:            107
-  harness registry:          27
+Entries assessed:            110
+  harness registry:          30
   model registry:            80
 Eligible for CONFIRMED:      2
 OVER-CLAIM (dangerous):      19
@@ -29,44 +29,45 @@ NO-LABEL (ungateable):       0
   kimi-code_harness_shadow.yaml                  5      0     0     5     0
   kimi_shadow.yaml                              20     20     0     0     0
   minimax_shadow.yaml                            5      5     0     0     0
+  opencode_harness_shadow.yaml                   3      0     3     0     0
   qwen-code_harness_shadow.yaml                  1      1     0     0     0
   qwen_shadow.yaml                               7      7     0     0     0
   well_harness_shadow.yaml                       4      0     4     0     0
   xiaomi_mimo_shadow.yaml                       13     13     0     0     0
   zhipu_glm_shadow.yaml                          4      4     0     0     0
-  ⚠ SPLIT SCHEMA: 16 files use ['both', 'entry-level', 'evidence-level'] — the gate reads
+  ⚠ SPLIT SCHEMA: 17 files use ['both', 'entry-level', 'evidence-level'] — the gate reads
     all of them, but one registry should have one convention. Settling it is a
     canonical-file mutation (F13), not something a reader should paper over.
 
 ## Live FQ series — the shadow as a measurable attractor
-  ledger rows=168203 parsed=126432 unparsed=1
-  span=2026-07-30T12:07:03.502747Z -> 2026-10-13T22:24:05.819Z (75 days)
-  harness entries tested=27 confirmed=2 refuted=0 not_testable=8 no_receipts=13
+  ledger rows=178110 parsed=134238 unparsed=1
+  span=2026-07-30T12:07:03.502747Z -> 2026-10-14T22:24:38Z (76 days)
+  harness entries tested=30 confirmed=2 refuted=0 not_testable=11 no_receipts=13
 
   actor        signature                   pred     n  FQ(geo)  SE(ln)        Z    I2%  concord  binom p  verdict
   ---------------------------------------------------------------------------------------------------------------
-  aforge       mutation_hunger             FQ<1    35     1.263   0.032   +7.28   94.9     4/35   1.0000  NO_STABLE_ATTRACTOR
+  aforge       mutation_hunger             FQ<1    36     1.262   0.031   +7.54   94.8     4/36   1.0000  NO_STABLE_ATTRACTOR
   claude-code  execution_gravity           FQ<1    27     1.876   0.558   +1.13   85.4     8/27   0.9904  NO_STABLE_ATTRACTOR
   frame        behavioral_blindness        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        identical_score_problem     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        observer_inertia            FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        baseline_staleness          NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  grok-build   verification_paralysis      FQ>1    30   146.774   0.437  +11.42   94.9    30/30   0.0000  CONFIRMED_DIRECTION_HETEROGENEOUS
-  hermes-asi   bridge_volume_overload      FQ<1    31     0.708   0.054   -6.37   91.0    26/31   0.0001  CONFIRMED_DIRECTION_HETEROGENEOUS
-  hermes-asi   meaning_as_gatekeeping      FQ>1    31     0.708   0.054   -6.37   91.0     3/31   1.0000  NO_STABLE_ATTRACTOR
+  grok-build   verification_paralysis      FQ>1    31   151.987   0.428  +11.73   94.7    31/31   0.0000  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   bridge_volume_overload      FQ<1    32     0.712   0.050   -6.76   91.0    27/32   0.0001  CONFIRMED_DIRECTION_HETEROGENEOUS
+  hermes-asi   meaning_as_gatekeeping      FQ>1    32     0.712   0.050   -6.76   91.0     3/32   1.0000  NO_STABLE_ATTRACTOR
   kimi-code    organ_routing_reflex        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    receipt_theater             NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    constitutional_citation     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    subagent_delegation_escape  NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    synthesis_as_substance      NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  qwen-code    execution_dominance         FQ<1    45     0.882   0.085   -1.48   50.4    31/45   0.0080  CONCORDANT_WEAK_EFFECT
+  qwen-code    execution_dominance         FQ<1    46     0.884   0.083   -1.49   49.3    32/46   0.0057  CONCORDANT_WEAK_EFFECT
   well         self_report_paradox         NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         measurement_substitution    NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         dignity_as_avoidance        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         floor_as_boundary           NONE     0         —       —       —      —        —        —  NO_RECEIPTS
 
-  NOT_FQ_TESTABLE (8): behavioural shadows this observable cannot see —
-    attention_leak, calibration_as_refinement, forge_evaluate_circularity, honesty_performance, menu_reflex, narrative_momentum, receipt_as_product, tool_surface_bloat
+  NOT_FQ_TESTABLE (11): behavioural shadows this observable cannot see —
+    attention_leak, backup_archaeology, calibration_as_refinement, config_entropy_sprawl, execution_hunger, forge_evaluate_circularity, honesty_performance, menu_reflex, narrative_momentum, receipt_as_product, tool_surface_bloat
   Reported, not forced onto the metric: a wrong observable is worse than none.
 
 ## OVER-CLAIM — asserted measurement, and the ledger does not rescue it
@@ -91,16 +92,16 @@ NO-LABEL (ungateable):       0
   [model] xiaomi_mimo_shadow.yaml :: SHADOW-MIMO-013 (probe_vs_live_divergence_on_mimo_endpoints) — asserts OBSERVED with 1 dated evidence item(s); doctrine requires 5
 
 ## Promotion candidates (derived_status == CONFIRMED)
-  [harness] SHADOW-GB-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 30 daily windows, log-space inverse-variance pooled
-  [harness] SHADOW-HA-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 31 daily windows, log-space inverse-variance pooled
+  [harness] SHADOW-GB-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 31 daily windows, log-space inverse-variance pooled
+  [harness] SHADOW-HA-001 — prose_items=1 last_confirmed=2026-09-07 via=live FQ series — CONFIRMED_DIRECTION_HETEROGENEOUS, 32 daily windows, log-space inverse-variance pooled
 
 ## APEX — value of measurement (uncertainty reduction per unit waiting time)
 ##   VoI = severity x H(posterior)/ln2 x daily_receipt_rate
 ##   Settled entries sink to the bottom: no attention spent on closed questions.
   #   entry                                   sev         post      H   rate/d      VoI
-  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   1257.0   628.48
-  2   SHADOW-HA-002                           MEDIUM     0.500  1.000    235.8   117.88
-  3   SHADOW-CC-005                           CRITICAL   0.500  1.000     22.8    22.79
-  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     18.8     9.40
+  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   1300.4   650.22
+  2   SHADOW-HA-002                           MEDIUM     0.500  1.000    270.0   135.01
+  3   SHADOW-CC-005                           CRITICAL   0.500  1.000     22.5    22.53
+  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     18.9     9.43
 
 Receipt: /root/AAA/cockpit/shadow-matrix/evidence-gate-latest.json

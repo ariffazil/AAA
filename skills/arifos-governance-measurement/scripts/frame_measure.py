@@ -108,13 +108,26 @@ def compute_w2():
 
 def compute_w3(cf):
     """W3 — Context Integrity: open loop tracking across sessions."""
-    open_loops = cf.get("open_loops_888_HOLD", [])
+    # v3 carry_forward renamed the key (open_loops_888_HOLD -> open_loops) and
+    # moved the canonical loop lifecycle into entries[kind=open_loop]. Count all
+    # three shapes so W3 never undercounts (2026-10-14: 4 loops read as 0).
+    raw_loops = cf.get("open_loops_888_HOLD") or cf.get("open_loops", [])
+    e_loops = [
+        e
+        for e in cf.get("entries", [])
+        if isinstance(e, dict)
+        and e.get("kind") == "open_loop"
+        and e.get("status", "OPEN") not in ("RESOLVED", "resolved", "DONE", "SUPERSEDED")
+    ]
+    open_loops = list(raw_loops) + e_loops
     resolved = cf.get("resolved_this_session", [])
 
     # Count actual open loops (filter out resolved strings and dicts)
     actual_open = [
-        x for x in open_loops
-        if isinstance(x, dict) and x.get("status") not in ("RESOLVED", "resolved")
+        x
+        for x in open_loops
+        if (isinstance(x, dict) and x.get("status") not in ("RESOLVED", "resolved", "DONE", "SUPERSEDED"))
+        or (not isinstance(x, dict) and str(x).strip())
     ]
     resolved_count = len(resolved)
 
@@ -129,7 +142,7 @@ def compute_w3(cf):
         "open": len(actual_open),
         "total": total,
         "verdict": verdict,
-        "open_loop_ids": [x.get("id", "unknown") for x in actual_open],
+        "open_loop_ids": [(x.get("id", "unknown") if isinstance(x, dict) else str(x)[:60]) for x in actual_open],
     }
 
 
@@ -230,7 +243,16 @@ def main():
         "dimensions": w_scores,
         "aggregate": aggregate,
         "rsi_entries": len(entries),
-        "carry_forward_loops": len(cf.get("open_loops_888_HOLD", [])),
+        "carry_forward_loops": len(
+            (cf.get("open_loops_888_HOLD") or cf.get("open_loops", []))
+            + [
+                e
+                for e in cf.get("entries", [])
+                if isinstance(e, dict)
+                and e.get("kind") == "open_loop"
+                and e.get("status", "OPEN") not in ("RESOLVED", "resolved", "DONE", "SUPERSEDED")
+            ]
+        ),
     }
 
     if as_json:
@@ -257,7 +279,11 @@ def main():
         print(f"\n{'=' * 60}")
         agg_score = aggregate.get("score", "N/A")
         agg_verdict = aggregate.get("verdict", "UNKNOWN")
-        agg_icon = "✅" if agg_verdict == "OK" else ("⚠️" if agg_verdict == "CAUTION" else ("🔴" if agg_verdict == "HOLD" else "❓"))
+        agg_icon = (
+            "✅"
+            if agg_verdict == "OK"
+            else ("⚠️" if agg_verdict == "CAUTION" else ("🔴" if agg_verdict == "HOLD" else "❓"))
+        )
         print(f"{agg_icon} AGGREGATE W: {agg_score} — {agg_verdict}")
         print(f"   Available dims: {aggregate.get('available_dims', 0)}/5")
         print(f"   Missing dims: {aggregate.get('missing_dims', 0)}")
