@@ -1,6 +1,6 @@
 {
   "$schema": "arifOS/AAA-agents-registry/v2.0.0",
-  "$note": "DERIVED from registries/agents.yaml \u2014 agents.yaml is canonical source. Regenerate after any YAML change.",
+  "$note": "SUPERSEDED by registries/AGENTS_UNIFIED.yaml. agents.yaml does not exist. 2026-10-14 fact patch only: the one Hermes mouth is @ASI_arifos_bot on KVM8; @hermesarifos_bot is dormant. This file stays frozen apart from that correction.",
   "agents": [
     {
       "id": "opencode",
@@ -48,10 +48,32 @@
       "intelligence_tier": "ASI",
       "role": "autonomous-agent",
       "host_binding": "hermes-asi-gateway.service",
+      "host": "KVM8",
+      "telegram_bot": "@ASI_arifos_bot",
+      "telegram_bot_id": "8410138119",
       "a2a_exposure": "authenticated",
       "risk_tier": "autonomous",
       "agent_doc": "/root/AAA/agents/hermes-asi/IDENTITY.md",
-      "status": "active"
+      "status": "active",
+      "note": "The one Hermes mouth. Lane 555-ASI."
+    },
+    {
+      "id": "hermesarifos-bot",
+      "name": "Hermes twin — dormant",
+      "citizenship": "none",
+      "intelligence_tier": "ASI",
+      "role": "dormant-face",
+      "host_binding": "kvm4-user-hermes-gateway",
+      "host": "KVM4",
+      "telegram_bot": "@hermesarifos_bot",
+      "telegram_bot_id": "7958220838",
+      "a2a_exposure": "none",
+      "risk_tier": "dormant",
+      "agent_doc": "/root/AAA/agents/hermesarifos-bot/identity.json",
+      "status": "dormant",
+      "dormant_since": "2026-09-25",
+      "replaced_by": "hermes-asi",
+      "note": "Not a second Hermes. A KVM4 user gateway was still polling this bot on 2026-10-14. That poll does not restore the seat."
     },
     {
       "id": "aaa-gateway",
@@ -191,5 +213,5 @@
     }
   ],
   "_metadata": {},
-  "_TOMBSTONE": "2026-07-31 \u2014 SUPERSEDED by /root/AAA/registries/AGENTS_UNIFIED.yaml. This file is FROZEN. No further regeneration."
+  "_TOMBSTONE": "2026-07-31 — SUPERSEDED by /root/AAA/registries/AGENTS_UNIFIED.yaml. File stays frozen. 2026-10-14 patched only the Hermes mouth facts (one mouth, dormant twin). Not a revival."
 }
