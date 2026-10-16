@@ -400,7 +400,7 @@ components:
   display_name: FRAME
   repo: ariffazil/AAA
   role: federation_measurement
-  authority_ceiling: ADVISORY_ONLY
+  authority_ceiling: OBSERVE_ONLY   # 2026-10-16 rule: stricter ceiling binds (FRAME=observer; output is evidence, never a verdict)
   port: 18085
   unit: frame-organ.service
   source_path: /root/AAA/federation/frame/
