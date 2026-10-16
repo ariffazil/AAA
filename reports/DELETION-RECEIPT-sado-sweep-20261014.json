@@ -1,0 +1,523 @@
+{
+ "receipt": "DELETION-RECEIPT-sado-sweep-20261014",
+ "ts": "2026-10-14T09:12:20.224201",
+ "items": [
+  {
+   "path": "/root/artifacts/abang-sado-gym.png",
+   "sha256": "97cd0322a53e6a6f2cc8c0f3014c6833f6946b05dbbc842a782eb3d279820000",
+   "bytes": 1577173
+  },
+  {
+   "path": "/root/artifacts/abang_sado_20260818_011546.png",
+   "sha256": "92d7cb2dc72592e5f99a7aa25443acfaf28203ea81a961c1a25791d6d01e95cc",
+   "bytes": 1292062
+  },
+  {
+   "path": "/root/artifacts/abang_sado_v2.png",
+   "sha256": "399fdbc595cf29dc966719f792ef9f3b94c30d6a3ede27bc35dcb5f172df2002",
+   "bytes": 6985652
+  },
+  {
+   "path": "/root/artifacts/abang_sado_v3.png",
+   "sha256": "16d609181943fb8e32eaf480c895ac1c8450843f09d95e186f1f47b4700bf0ab",
+   "bytes": 6438418
+  },
+  {
+   "path": "/root/artifacts/abang_sado_v4a.png",
+   "sha256": "a3b7ca804baede5db4bfb5d3ec67982f03e28660d6fb60bb0000f166ffb9546b",
+   "bytes": 1352333
+  },
+  {
+   "path": "/root/artifacts/abang_sado_v4b.png",
+   "sha256": "9ff7e0d8d30e0fae1f1feb600cc0b90b208806c180b58ed51abd0509c3aa47a2",
+   "bytes": 1387851
+  },
+  {
+   "path": "/root/artifacts/comfy_result_sado_flex.png",
+   "sha256": "ca6fe513d922429aee5a45aa66e2b0d80f109522e61704692962d282158056fd",
+   "bytes": 573760
+  },
+  {
+   "path": "/root/artifacts/generated_sado_20260820_051047.jpeg",
+   "sha256": "c2477e50b9202e32e17e96c55f1c53de1e16150f728803ea7439336ab30c3028",
+   "bytes": 272951
+  },
+  {
+   "path": "/root/artifacts/generated_sado_v2_20260820_051204_1.jpeg",
+   "sha256": "3f80114ef6c5308b4ebfcba75fa7dc82fdd19b12fbdc52725c6d227f3a437ad0",
+   "bytes": 276726
+  },
+  {
+   "path": "/root/artifacts/generated_sado_v2_20260820_051204_2.jpeg",
+   "sha256": "3bcd72a898d136115679e5249b1fd9db2241ef6c8c2ee30f8950f0590b9deebf",
+   "bytes": 291858
+  },
+  {
+   "path": "/root/artifacts/generated_sado_v2_20260820_051204_3.jpeg",
+   "sha256": "09bad6090158069e2495e7bd354dbf07552f3d41325f7169248ea437e063ca75",
+   "bytes": 287881
+  },
+  {
+   "path": "/root/artifacts/muscular_than_this.png",
+   "sha256": "3ed1ddfd16d3fdf1d419be0e0c7d1ae1749640b5b01e7d780cb1f7fc939a2135",
+   "bytes": 6036749
+  },
+  {
+   "path": "/root/artifacts/muscular_voice.ogg",
+   "sha256": "2220be444c875927d4aa112d785940ec2aa6e24ae6d3876e6ef4e4c91088f085",
+   "bytes": 68428
+  },
+  {
+   "path": "/root/artifacts/muscular_voice_longanlufeng.mp3",
+   "sha256": "3b2f90f769ffde0bd795336a14e9ea69f8112f72999eb3f9938a12734907d602",
+   "bytes": 125896
+  },
+  {
+   "path": "/root/artifacts/muscular_voice_ms.mp3",
+   "sha256": "062847733df336c5fec229b643372d431d9d9e9516c872f6e098beb9a5a0fb42",
+   "bytes": 77472
+  },
+  {
+   "path": "/root/artifacts/muscular_voice_ms.ogg",
+   "sha256": "f42efbd98973b384ce3e74fc630cd58de4811578448af2c77621325cc8805665",
+   "bytes": 94169
+  },
+  {
+   "path": "/root/artifacts/qwen_monument.png",
+   "sha256": "ff0bb986739ffb042ba2ec2214a6553d7b41b639c9dc93102a175ab2464c3196",
+   "bytes": 1276388
+  },
+  {
+   "path": "/root/artifacts/qwen_pecs_worship.png",
+   "sha256": "09d3d8e51733b0a6807665fd8e5f450604e7fc338a0c1c47127fc329390c1311",
+   "bytes": 1499457
+  },
+  {
+   "path": "/root/artifacts/qwen_pecs_worship_color.png",
+   "sha256": "785628fffa8fd7c3b6542286006079499cb7bdfbf145c67fd424a6af5c7fdfc4",
+   "bytes": 1643927
+  },
+  {
+   "path": "/root/artifacts/qwen_pecs_worship_color2.png",
+   "sha256": "7e722867ddcb06eda92a443acd5db0918e004fbd49ed222611c7b0588ab9679a",
+   "bytes": 1671073
+  },
+  {
+   "path": "/root/artifacts/qwen_sado_flex.png",
+   "sha256": "1dcc78ada5eae76542604e52c0e2aa9b82d34046b0b30d21dfaeb64690b2742b",
+   "bytes": 1258201
+  },
+  {
+   "path": "/root/artifacts/qwen_sado_payg_20260820_053358.png",
+   "sha256": "697d77133a63c6efd7a03dc26b1a73b8ebdf227381f4531bd1af0be6f7a48e28",
+   "bytes": 4130652
+  },
+  {
+   "path": "/root/artifacts/qwen_sado_worship.png",
+   "sha256": "8d027019553ebca034c25a241f333e1ef1d4b9a1de70c452a8060c105b88ff84",
+   "bytes": 1874085
+  },
+  {
+   "path": "/root/artifacts/qwen_tower.png",
+   "sha256": "e3ebd7fd6b1651ca1bb3881828b006833b53aa543c99101492fb7455a3b02a05",
+   "bytes": 1552690
+  },
+  {
+   "path": "/root/artifacts/sado_alpha_20260820_053121_1.jpeg",
+   "sha256": "c2bb1982463d2d31a057aef035550408b3ef89b635cd0a7b0d56820dd9d993fc",
+   "bytes": 210911
+  },
+  {
+   "path": "/root/artifacts/sado_alpha_20260820_053121_2.jpeg",
+   "sha256": "eee74e7206ecb229975a2f87b130e1b771f03afd58de63530290ceb9074e2042",
+   "bytes": 267535
+  },
+  {
+   "path": "/root/artifacts/sado_flex_20260820_052346_1.jpeg",
+   "sha256": "ecec6c2ce13f8d2596336a08f4af72707ef777f54a0399ee4e58a84b0275e2b5",
+   "bytes": 356671
+  },
+  {
+   "path": "/root/artifacts/sado_flex_20260820_052346_2.jpeg",
+   "sha256": "9182c37f3cb530410ac5271b2d026dc1941f4d08dba802898c5bbaf09e1314c5",
+   "bytes": 372930
+  },
+  {
+   "path": "/root/artifacts/sado_flex_20260820_052346_3.jpeg",
+   "sha256": "014d3aed383f4da9ddf152d7d10872cb72f5fc68ae832ab2ac5039bf46cb1de2",
+   "bytes": 354313
+  },
+  {
+   "path": "/root/artifacts/sado_worship_20260820_052055_1.jpeg",
+   "sha256": "ccc438ea8fec626709f259d3c4c5a86390f1f5d92be8f981b044cb94815f88cf",
+   "bytes": 264249
+  },
+  {
+   "path": "/root/artifacts/sado_worship_20260820_052055_2.jpeg",
+   "sha256": "fe24bd16a8c03682927316dedb228447b2aff271b5c3707839e5f068bec2ff51",
+   "bytes": 243965
+  },
+  {
+   "path": "/root/artifacts/sado_worship_20260820_052055_3.jpeg",
+   "sha256": "79abeaa2a1cd3e1541ed7461e8bec46bbd35fff4d1027b2564c248f0692120dc",
+   "bytes": 284863
+  },
+  {
+   "path": "/root/artifacts/shadow_flex.jpg",
+   "sha256": "d8cd80cbcdd743c8dcac5475e42e25d144888d7e78764ddc44a092c76ff867b2",
+   "bytes": 267608
+  },
+  {
+   "path": "/root/artifacts/shadow_sado.jpg",
+   "sha256": "92de1be46841cfe49fd3f7073bb7eff665d4aa91cf9eb3f38c8254bf232a39e2",
+   "bytes": 241801
+  },
+  {
+   "path": "/root/artifacts/shadow_worship_1787176236.png",
+   "sha256": "821fb79e7cc946e3fde40a5611e7d7df3a4cd44fbcd33cb8c18803292ceaf88b",
+   "bytes": 1867821
+  },
+  {
+   "path": "/root/artifacts/tanktop_frame.png",
+   "sha256": "0f989b7ad90dfc39d7c885ea267bda29a2ad1d5f3d121126db801f99ce6e8474",
+   "bytes": 6025529
+  },
+  {
+   "path": "/root/artifacts/test_qwen_payg.jpg",
+   "sha256": "3692de5ac49b34778dca88b358832d473bc30932cd52e8f826d6b3e7adb76f23",
+   "bytes": 2643496
+  },
+  {
+   "path": "/root/artifacts/audio/20260909/v9-verify-final.mp3",
+   "sha256": "aa12b1390f61f2d4fa332a44b0141590392ad28829ff4d46f4eb94c64bd2987e",
+   "bytes": 112116
+  },
+  {
+   "path": "/root/artifacts/audio/20260909/v9-verify-mm.bin",
+   "sha256": "1a61cc6f4dc0514e7a8ba0eae6cd6d179fca7f559923f55a8c69c5d98e9d45db",
+   "bytes": 224577
+  },
+  {
+   "path": "/root/artifacts/audio/20260909/v9-verify.mp3",
+   "sha256": "ee1a27178227546d3dcc49e611a6d72e4f1c30080ee4493ae4085b58a49e28e6",
+   "bytes": 150
+  },
+  {
+   "path": "/root/artifacts/audio/20260909/v9-verify-tp.mp3",
+   "sha256": "ee1a27178227546d3dcc49e611a6d72e4f1c30080ee4493ae4085b58a49e28e6",
+   "bytes": 150
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/v8.mp3",
+   "sha256": "b630b29004d9885fe50f78a30dd0a93c5e38594084215aaed58a725260fc8ea7",
+   "bytes": 329460
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/pipe_v8_trim.ogg",
+   "sha256": "89ab3c8b813fec6c250792ef52613ee56909d87f7626937867a6f24ba234db6a",
+   "bytes": 97883
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/head_pipe_v9_trim.wav",
+   "sha256": "5cf476caf723e6b2492ab05b5fe1f412c5f7e5e40a0713d2e137d5d57bc55107",
+   "bytes": 28878
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/probe1.txt",
+   "sha256": "441f546f258bcffb9d0b70382e52b72de51590c42304dacac5354d60d7577520",
+   "bytes": 17
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/probe_sovereign_v9.mp3",
+   "sha256": "3ae519844de45e460f246d6492687be5ba5113e8546196d8ad299c65f9c51f08",
+   "bytes": 28212
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/pipe_v8.ogg",
+   "sha256": "be11af6f90eb121e87288dc151337e4e714f825d705be51ea42c56f428d114b3",
+   "bytes": 113067
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/seg_16_21.wav",
+   "sha256": "5e52a109e3a211573e20afdfc6fa109b74dfa4f2cdc93cc010f92cefd98668fe",
+   "bytes": 141810
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/v9_speed10.mp3",
+   "sha256": "3f634f2e0cc86f96d0634263434962735046ad47b3ab50ca5ac56e82478183d2",
+   "bytes": 251124
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/seg_12_18.wav",
+   "sha256": "5d631471cc9575d5e18faf96e9c54c4481f3a919602813e0ecf326078a03c4de",
+   "bytes": 192078
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/ctrl_noise_d22.wav",
+   "sha256": "f9dace971e6a81f3c471486a4371a226ca3ef6898dc0522855f0c66d3e8ee80f",
+   "bytes": 320044
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/pipe_v9.ogg",
+   "sha256": "2797db16b256e83e1c1ccb82b3d5d5a8ce01004bbc619a63c12cf151d578e482",
+   "bytes": 112900
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/pipe_v9_trim.ogg",
+   "sha256": "165bffad47c80329e20d1b9db3e20267ceb2c447d40744d860bf887a4a268e67",
+   "bytes": 96896
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/seg_0_7.wav",
+   "sha256": "31dcad1c806b98936fb996972917f933d49e0bdbd7817affa530871e0ba83308",
+   "bytes": 224078
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/head_pipe_v8_trim.wav",
+   "sha256": "6bd9688c4f1459a9d15321a42b94b6ce2cb1ab5d3f1c148bfdfff946f0b153e4",
+   "bytes": 28878
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/ctrl_silence.wav",
+   "sha256": "ee7bea4232762775f8fce9b3e27e4d3948c8ac6a45a87ca769f703d6eed0b448",
+   "bytes": 320044
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/line.txt",
+   "sha256": "92b2f5c8f5df9638a5f399956713ce4a796b4ce158128bf146b879daed8160d3",
+   "bytes": 171
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/seg_6_13.wav",
+   "sha256": "13eecbd6bbefcf84e76cc871f070d75a518bb7e2b55d430ad2dbf59c0464803a",
+   "bytes": 224078
+  },
+  {
+   "path": "/root/artifacts/audio/20260915-sitinurhaliza/v9.mp3",
+   "sha256": "6930451b60c8397997cd8be1b094385f3c9bbe95049602598b066f4b40bcaf0e",
+   "bytes": 298932
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/salam-syed-v8-studio.ogg",
+   "sha256": "ce5663246a0bbd7d77d071e05cec982be6b6a7debcb13948914d80d7318f936e",
+   "bytes": 80582
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/sado-siti-v8.ogg",
+   "sha256": "f23cb5f8bade03a0b239cef2a6bdbfdcf239a733b8da13e0b5129a91264355ee",
+   "bytes": 120910
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/siti-siti-v8.wav",
+   "sha256": "dd5ed805937cfae0ce1dc8a88a8cd00cfc660ce333091b1b224d5c07997efc9b",
+   "bytes": 767946
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/sado-siti-v8-official.ogg",
+   "sha256": "39fbb03cf359f5228c3b9b3fe1113538044f230abf799f66c54161295472a93c",
+   "bytes": 120844
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/sado-siti-v8.mp3",
+   "sha256": "dc5bcb5e6f09a47603306eb264c53f730463751dde8b2441839adde9b227241e",
+   "bytes": 1027278
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/sado-joke-v8-official.ogg",
+   "sha256": "e23694d6f2a56476104dc4d6e047a3683ccdf69c50f426d7ebcf096a5a0fcbb9",
+   "bytes": 69158
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/salam-syadi-v8.ogg",
+   "sha256": "28a2181dedea2b9085d39640985b2ed2b8aa8c6d5ecd9a4f4cc19aeffee730dc",
+   "bytes": 49288
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/voice-test-123.ogg",
+   "sha256": "656785192247581ee9b6b2e5334167ed2f8732b8138952be278d49aa7763d25d",
+   "bytes": 56867
+  },
+  {
+   "path": "/root/artifacts/audio/20260904/sado-siti-v8-proper.ogg",
+   "sha256": "80bb463140c0611e8570c472649c87c3d76795d14d9bcc99ba6e51b04a3c98ae",
+   "bytes": 56030
+  },
+  {
+   "path": "/root/scripts/sado.bak-alpha-pvid-20261008",
+   "sha256": "fac4f631b6a5994bf55088e6eee66c613124fa92786c6175b8a0694bc59fbbb0",
+   "bytes": 11661
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_batch_f.json",
+   "sha256": "c14f17155be9b92e039896c18346d2b654b580aa58601885e0eca2a2c038c4b0",
+   "bytes": 1903,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/adik_smoke.json",
+   "sha256": "949eacb6bffacda42ffa92b69c96093f4c5d538ee7a3262f377f87fa88bfd2a3",
+   "bytes": 2465,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/flux_test_01_00001_.png",
+   "sha256": "6ecf1c712fcb718dc330163265c6adc64f48da0697dfc4e91c4fba987ef8b7cb",
+   "bytes": 219606,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_batch_c.json",
+   "sha256": "c61a1b6ecfe742f25e2e8e2fbe7aa1f42ad6bd03b0612f3025364d1a5d2af593",
+   "bytes": 1901,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/submit_adik2.py",
+   "sha256": "ccc087acaa278a1e1182ae53729f66c1de63f7e45770563065db0dea7ed2b2d7",
+   "bytes": 6292,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/submit_adik.py",
+   "sha256": "5d35ee1a2ef6df9fd997f3c7cf540546f09850e05cee5c133fd38f0ebe2c6332",
+   "bytes": 549,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/submit_batch.py",
+   "sha256": "597249e69de09dc886e664cd233e034acd567e26804b2491f4e867ac5f8ccfc3",
+   "bytes": 594,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/render_sado.py",
+   "sha256": "071e47235fafda1f772783678bcfa1eb48312df018e3876c0d83303c7b38516b",
+   "bytes": 4569,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_batch_d.json",
+   "sha256": "27824d608adb98d600a9bf8cb757d702ec2088e309bb8de6f30d65cfb38e282e",
+   "bytes": 1880,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/adik_neon.json",
+   "sha256": "80f1be39f66a152c95027fa700a3d51c3388fd1f5d65f866cb8971a90ba0242e",
+   "bytes": 2545,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_batch_b.json",
+   "sha256": "086d6713b81c47c2481fe2605186c194af5565a5af1562d47fbae0913dd03d44",
+   "bytes": 1897,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/abang_sado_flex_00001_.png",
+   "sha256": "a857ee6c4582a8739077bc4eba2489c763329cdcdf77cbe73c06c3bc6e67c7bc",
+   "bytes": 415458,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_flex_00001_.png",
+   "sha256": "fd7e1379bb522b1a04007b97bb9ae03f50a291771c7b586073f5356c74e91738",
+   "bytes": 1369793,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/submit_pipeline2.py",
+   "sha256": "e819a60287edb6226f945637a2bd4241cdd8efabaad822815857d34ea51bd49c",
+   "bytes": 885,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/smoke_test_penang_00001_.png",
+   "sha256": "a1250ccba13d24d342a89023aff7387fcf4340098e4c2ff8d4613210a09210ed",
+   "bytes": 1592278,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/adik_lamp.json",
+   "sha256": "c90fd85f9352dc674bdb1ca899a6380dd3938abe24935afbf7356f8d4afde1b2",
+   "bytes": 2501,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/submit_pipeline.py",
+   "sha256": "72f904eb33def989b11f1a24510911ca71964ebd953426495e4c33756c50d5f7",
+   "bytes": 5934,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_v2_20260825.png",
+   "sha256": "d60f9f4c732f06de10487665736457802f16c45002059277567fffb1d0109570",
+   "bytes": 233798,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado-verify.py",
+   "sha256": "9b89b41d9161887d27ed7053226bd00476a90b81039cbf0baf073cabb5caeaeb",
+   "bytes": 5391,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_batch_e.json",
+   "sha256": "07722e178672fb30422f2b55aa9cce03f9e6bbb587b6d9406c9863ac3f84f507",
+   "bytes": 1900,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_alpha_20260825.png",
+   "sha256": "1c25c7046bdf4f2119d770554335ba7e82cd614bc25094685e16ec7e0b367255",
+   "bytes": 245227,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/abang_sado_flex_v2_00001_.png",
+   "sha256": "b4e50c153ec9b34dcf2cbeb1658b0d633ff1bd028c4a0e62f0c32cbc94573941",
+   "bytes": 1120725,
+   "phase": 2
+  },
+  {
+   "path": "/root/artifacts/shadow-gpu/sado_batch_a.json",
+   "sha256": "2c003ba6438b9d4f47dde16ce9e666bffa2e48ccc4404eef3877973f12680127",
+   "bytes": 1934,
+   "phase": 2
+  }
+ ],
+ "phase2": {
+  "deleted_count": 70,
+  "failed": [],
+  "reconstruction_test": {
+   "pattern": "sado|syed|worship|pecs|muscular",
+   "leftover_hits": [
+    "/root/artifacts/shadow-gpu/sado_batch_f.json",
+    "/root/artifacts/shadow-gpu/sado_batch_c.json",
+    "/root/artifacts/shadow-gpu/render_sado.py",
+    "/root/artifacts/shadow-gpu/sado_batch_d.json",
+    "/root/artifacts/shadow-gpu/sado_batch_b.json",
+    "/root/artifacts/shadow-gpu/abang_sado_flex_00001_.png",
+    "/root/artifacts/shadow-gpu/sado_flex_00001_.png",
+    "/root/artifacts/shadow-gpu/sado_v2_20260825.png",
+    "/root/artifacts/shadow-gpu/sado-verify.py",
+    "/root/artifacts/shadow-gpu/sado_batch_e.json",
+    "/root/artifacts/shadow-gpu/sado_alpha_20260825.png",
+    "/root/artifacts/shadow-gpu/abang_sado_flex_v2_00001_.png",
+    "/root/artifacts/shadow-gpu/sado_batch_a.json"
+   ],
+   "status_after_pass2": "CLEAN",
+   "note": "pass1 leftover_hits 13 (shadow-gpu scripts+batches); pass2 (09:13) padam baki, direktori /root/artifacts/shadow-gpu verified TIADA pada 09:20; reconstruction test pass2 = kosong"
+  },
+  "status": "DONE_MUTABLE_SUBSTRATE"
+ },
+ "phase3": {
+  "deleted_count": 24,
+  "failed": [],
+  "reconstruction_test": {
+   "leftover_hits": []
+  },
+  "status": "DONE_MUTABLE_SUBSTRATE"
+ },
+ "verified_at": "2026-10-14T09:20+08:00 (Hermes independent spot-check)"
+}

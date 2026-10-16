@@ -33,3 +33,16 @@ error — please log both sources in the T0 receipt.
 
 Ground state when authorized: main @ b78092a64 (FORGE 000Ω commits), 1 dirty file, no uncommitted
 verdict-token changes. Execute on that base.
+
+## ADDENDUM (F13 "Activate shadow mode", 2026-10-14) — IMPOSSIBLE_TASK_HOLD joins this pack
+
+Authorized Phase 0 SHADOW ONLY (log-only, no enforcement). Full spec:
+/root/AAA/inbox/IMPOSSIBLE-TASK-HOLD-SPEC-20261014.md
+Implement as part of this branch (patch-class, one commit):
+- shadow_hold event schema: {task_id, trigger(BUDGET_EXCEEDED|ZERO_SOLVE|STRUCTURAL_BLOCK),
+  budget_consumed, would_be_reason_code, ts_utc} → append-only JSONL alongside T0 receipts.
+- Gate review day 14 (28 Oct MYT): FP-cost derivation computed from shadow data; decision
+  deadline day 21 (4 Nov MYT): PROMOTE / RETUNE (once) / KILL — no fourth state.
+- Phase 1 enforcement requires a separate F13 authorization line. Do NOT enforce in this deploy.
+- Zero-solve register seed: task classes with zero solves across T1-T7 conformance history
+  (4 independent identities, per conformance baseline receipt).
