@@ -1,0 +1,6 @@
+#!/bin/bash
+# MOTD is a mirror. Hero is the only storyteller.
+# DITEMPA BUKAN DIBERI
+if [ -x /root/AAA/terminal/arifos-hero.sh ]; then
+    exec /root/AAA/terminal/arifos-hero.sh
+fi
