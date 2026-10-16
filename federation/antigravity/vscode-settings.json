@@ -11,7 +11,7 @@
   "claudeCode.selectedModel": "default",
   "python.languageServer": "Pylance",
   "workbench.editorAssociations": {
-    "*.docx": "default",
+    "*.docx": "default"
   },
   "editor.fontSize": 12,
   "editor.bracketPairColorization.enabled": true,
@@ -19,13 +19,13 @@
   "redhat.telemetry.enabled": false,
   "vs-kubernetes": {
     "vscode-kubernetes.helm-path-windows": "C:\\Users\\User\\.vs-kubernetes\\tools\\helm\\windows-amd64\\helm.exe",
-    "vscode-kubernetes.minikube-path-windows": "C:\\Users\\User\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe",
+    "vscode-kubernetes.minikube-path-windows": "C:\\Users\\User\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
   },
   "gitlens.ai.model": "gitkraken",
   "gitlens.ai.gitkraken.model": "gemini:gemini-3-flash",
   "workbench.editor.autoLockGroups": {
     "phpprofiler.cachegrind": true,
-    "default": true,
+    "default": true
   },
   "gitlens.views.fileHistory.mode": "contributors",
   "window.autoDetectColorScheme": true,
@@ -51,35 +51,35 @@
   "editor.rulers": [
     {
       "column": 80,
-      "color": "#00FF0010",
+      "color": "#00FF0010"
     },
     {
       "column": 100,
-      "color": "#BDB76B15",
+      "color": "#BDB76B15"
     },
     {
       "column": 120,
-      "color": "#FA807219",
-    },
+      "color": "#FA807219"
+    }
   ],
   "editor.unicodeHighlight.includeComments": true,
   "workbench.colorCustomizations": {
     "[Default Dark Modern]": {
       "tab.activeBorderTop": "#00FF00",
       "tab.unfocusedActiveBorderTop": "#00FF0088",
-      "textCodeBlock.background": "#00000055",
+      "textCodeBlock.background": "#00000055"
     },
     "editor.wordHighlightStrongBorder": "#FF6347",
     "editor.wordHighlightBorder": "#FFD700",
-    "editor.selectionHighlightBorder": "#A9A9A9",
+    "editor.selectionHighlightBorder": "#A9A9A9"
   },
   "workbench.editor.revealIfOpen": true,
   "files.eol": "\n",
   "[bat]": {
-    "files.eol": "\r\n",
+    "files.eol": "\r\n"
   },
   "emmet.variables": {
-    "lang": "en",
+    "lang": "en"
   },
   "cSpell.diagnosticLevel": "Hint",
   "trailing-spaces.backgroundColor": "rgba(255,0,0,0.1)",
@@ -93,67 +93,67 @@
   "java.maxConcurrentBuilds": 12,
   "java.sources.organizeImports.staticStarThreshold": 1,
   "terminal.integrated.automationProfile.windows": {
-    "path": "cmd",
+    "path": "cmd"
   },
   "java.test.config": {
-    "vmArgs": ["-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8"],
+    "vmArgs": ["-Dstdout.encoding=UTF-8", "-Dstderr.encoding=UTF-8"]
   },
   "maven.executable.path": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\maven\\latest\\bin\\mvn",
   "java.import.gradle.home": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\gradle\\latest",
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-17",
-      "path": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17",
+      "path": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17"
     },
     {
       "name": "JavaSE-21",
-      "path": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21",
+      "path": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21"
     },
     {
       "name": "JavaSE-25",
       "path": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
-      "default": true,
-    },
+      "default": true
+    }
   ],
   "terminal.integrated.profiles.windows": {
     "JavaSE-17 LTS": {
       "overrideName": true,
       "env": {
         "PATH": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17\\bin;${env:PATH}",
-        "JAVA_HOME": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17",
+        "JAVA_HOME": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17"
       },
-      "path": "cmd",
+      "path": "cmd"
     },
     "JavaSE-21 LTS": {
       "overrideName": true,
       "env": {
         "PATH": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21\\bin;${env:PATH}",
         "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
-        "JAVA_HOME": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21",
+        "JAVA_HOME": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21"
       },
       "path": "cmd",
-      "args": ["/k", "chcp", "65001"],
+      "args": ["/k", "chcp", "65001"]
     },
     "JavaSE-25 LTS": {
       "overrideName": true,
       "env": {
         "PATH": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest\\bin;${env:PATH}",
         "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
-        "JAVA_HOME": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
+        "JAVA_HOME": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest"
       },
       "path": "cmd",
-      "args": ["/k", "chcp", "65001"],
-    },
+      "args": ["/k", "chcp", "65001"]
+    }
   },
   "terminal.integrated.env.windows": {
     "JAVA_HOME": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
-    "PATH": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest\\bin;${env:PATH}",
+    "PATH": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest\\bin;${env:PATH}"
   },
   "maven.terminal.customEnv": [
     {
       "environmentVariable": "JAVA_HOME",
-      "value": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
-    },
+      "value": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest"
+    }
   ],
   "java.import.gradle.java.home": "C:\\Users\\User\\AppData\\Roaming\\Antigravity\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
   "window.density.editorTabHeight": "compact",
@@ -165,12 +165,12 @@
   "terminal.integrated.suggest.enabled": true,
   "window.newWindowProfile": "Default",
   "[markdown]": {
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "on"
   },
   "workbench.iconTheme": "material-icon-theme",
   "editor.multiCursorModifier": "ctrlCmd",
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.wordWrap": "wordWrapColumn",
   "gitlens.launchpad.indicator.enabled": false,
@@ -186,6 +186,6 @@
   "windsurfPyright.disableLanguageServices": true,
   "terminal.integrated.commandsToSkipShell": [
     "kilo-code.new.agentManagerOpen",
-    "kilo-code.new.agentManager.showTerminal",
-  ],
+    "kilo-code.new.agentManager.showTerminal"
+  ]
 }

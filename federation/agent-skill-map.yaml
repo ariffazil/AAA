@@ -63,6 +63,26 @@ agents:
     last_sync: 2026-08-15                      # post-HOLD sync executed; snapshot skills-pre-sync-20260815.tgz exists
     last_measured: 2026-08-20
 
+  claude-code:
+    id: claude-code-kvm8/FI-002
+    role: "Warga. Coding agent. Anthropic native CLI harness."
+    surface: "Claude Code CLI (native installer)"
+    primary_model: "forge-777 via FED :4000 (ANTHROPIC_MODEL) — NOT a Claude model name"
+    axis: [AGI]
+    authority: {ceiling: PROPOSE_AND_VERIFY, T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
+    node: KVM8
+    kernel_actor_id: claude-code-kvm8
+    skills_dir: /root/.claude/skills/
+    skills_dir_note: "/root/.claude/skills + /root/.agents/skills + /root/AAA/skills via ARIFOS_SKILLS_PATH — union surface exceeds any single count"
+    skill_count: null                       # STALE in every prior doc — measure with a live probe before asserting
+    sync_status: ZERO_COPY
+    sync_tool: null
+    agent_card: /root/AAA/agents/claude-code/agent-card.json
+    warga_card: /root/AAA/agents/claude-code/WARGAAA_CARD.md
+    settings_mcp_server_count: 21
+    live_federation_tool_total: 337
+    last_measured: 2026-10-15
+
   kimi-code:
     id: kimi-code/FI-008
     role: "External warga. Coding agent."

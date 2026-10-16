@@ -2,7 +2,7 @@
 
 > **Status:** F13_RATIFIED_CHAT (2026-09-11)
 > **Origin:** External repo analysis (github.com/ariffazil/{AAA,arifos,A-FORGE}) + Arif's synthesis: *"di mana memory sebenarnya hidup?"* Corrections applied after live probe (F2 — witnessed, bukan narrated).
-> **⚠️ AUDIT 2026-09-11 ~12:3x MYT:** Label F2 di atas **tidak disokong probe** untuk Correction #1 asal. Live probe selepas itu falsify claim tersebut; Correction #1 kini dibetulkan dengan evidence (W1–W4). Lihat `/root/AAA/reports/memory-strata-mem0-contradiction-audit-2026-09-11.md`. Jangan percaya label epistemic tanpa probe yang menghasilkan ayat itu.
+> **Note 2026-09-11:** label F2 asal untuk Correction #1 tidak disokong probe; dibetulkan dengan evidence W1–W4 (`/root/AAA/reports/memory-strata-mem0-contradiction-audit-2026-09-11.md`).
 > **Companion:** `memory-promotion-gate.md` (WHEN memory write dibenarkan) → doktrin ini (WHERE memory hidup).
 > **Applies to:** ALL agents in arifOS federation.
 

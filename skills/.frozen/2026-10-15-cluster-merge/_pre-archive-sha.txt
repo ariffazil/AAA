@@ -1,0 +1,8 @@
+354e26ff6d98bf18873cbd07d349b91936626ac9712a9dd0bf57cad7fbbdf17d  /root/AAA/skills/ASI-summarize/SKILL.md
+f2b0d0fc4dc50886f500120e3188fb5d180ed4fa742167448980990ab513e4ed  /root/AAA/skills/agi-web-optimization/SKILL.md
+79a6e1d5ba4565afabe94539fe34d1a7f61a2bbf99096145addb5aea8757e1d9  /root/AAA/skills/FORGE-secret-hygiene/SKILL.md
+a825a228ca1ac944fee0409ebd0415160a327f67a28dafdacad1a016ec2f07f3  /root/AAA/skills/forge-secret-hygiene/SKILL.md
+7415750584a70c467a0a80ec4307059103b22061410ebf285946f4854dc42734  /root/AAA/skills/FORGE-symlink-audit/SKILL.md
+62e4c5381eea248e3f3a7acd182a597ee25f54cb476c67b2d419671fa9c40a5b  /root/AAA/skills/forge-symlink-audit/SKILL.md
+c3af59f57500a72a34df7ab4418c94c8fa6a11ad07edaddaee7aced625ca355c  /root/AAA/skills/MY-REALITY-STACK/SKILL.md
+26ad502e48c080f9d0d4e68f2ec1dad440fb75d4daea2e62d70eada2b8038021  /root/AAA/skills/my-reality-stack/SKILL.md
