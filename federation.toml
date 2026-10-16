@@ -1,0 +1,50 @@
+# Federation canonical config — INC-2.1 final (C1)
+# Date: 2026-10-16 · KVM8 (100.64.0.2) · FI-003 (333-AGI, DECODER)
+# Loaded by pydantic-settings in source (wiring: pending)
+# All ports/URLs/paths in federation code must reference this file.
+# Hardcoded values in source are an I9 violation per blueprint.
+
+[meta]
+schema_version    = 1
+federation_name   = "arifOS-KVM8"
+node_id           = "kvm8"
+generated_by      = "INC-2.1 final / C1 from blueprint"
+
+# ----- Active ports (LIVE, bound) -----
+[ports]
+arifOS              = 8088
+a_forge_mcp         = 7072
+a_forge_legacy      = 7071
+geox                = 8081
+wealth              = 18082
+well                = 18083
+fed                 = 7074
+chron               = 18102
+aaa                 = 3001
+vault999_writer     = 5001    # AUTHORITATIVE; healthy, 14404 seals, 0 gaps
+apa_github_bridge   = 18095
+# Non-MCP but live:
+arif_flow           = 7073    # Rust HTTP daemon
+hermes_gateway      = 4040    # TBC by INC-0 era probe
+
+# ----- DEPRECATED — DO NOT BIND -----
+[deprecated]
+vault_legacy_8100   = 8100    # NOT listening; nothing is bound. STALE.
+                             # Evidence: probe_sys_health.sh lines 30-31
+                             # explicitly label this DO NOT TRUST.
+                             # Anything that references :8100 is a defect
+                             # (the previous session's smoke-script comment
+                             # names 8100 as STALE / DO NOT TRUST).
+
+# ----- Paths (canonical) -----
+[paths]
+vault_live          = "/root/arifOS/VAULT999/outcomes.jsonl"
+vault_rotated       = "/root/arifOS/VAULT999/outcomes.jsonl.1.gz"
+vault_stale_deploy  = "/opt/arifos/app/VAULT999/outcomes.jsonl"
+vault_stale_local   = "/root/.local/share/arifos/vault999/outcomes.jsonl"
+vault_seal_chain    = "/root/.local/share/arifos/vault999/seal_chain.jsonl"
+vault_signed_head   = "/root/AAA/state/vault_head_attestation.json"
+vault_attest_log    = "/root/AAA/state/vault_attest_history.jsonl"
+federation_canon    = "/root/AAA/canon"
+federation_state     = "/root/AAA/state"
+federation_receipts  = "/root/.qwen/projects/-root/memory/INC-0"
