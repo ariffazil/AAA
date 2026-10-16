@@ -86,7 +86,7 @@ operators:
     host: KVM4 (workshop, 100.64.0.5)
     kvm8_mirror: 127.0.0.1:18789 DNAT to KVM4
     gateway_port: 18789
-    telegram: "@AGI_ASI_bot"
+    telegram: "@irfanclaw_arifos_bot"
     agent_card: /root/AAA/agent-cards/functions/openclaw/agent-card.json
     audit_2026_09_18: 333-AGI reconciled — was (fi:null, layer:binding, bound_to:i-arif) per stale 2026-09-04 entry; now aligned to kernel agent_registry.json
   agy:

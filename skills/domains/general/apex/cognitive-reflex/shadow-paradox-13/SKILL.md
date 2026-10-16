@@ -1,4 +1,9 @@
 ---
+id: shadow-paradox-13
+name: shadow-paradox-13
+version: 1.0.0-2026.09.20
+description: "Shadow Paradox 13 — Agent Self-Audit. Loads 13 structural blind spots (Certainty, Fluency, Projection, Blind Spot, Optimizer, Memory, Authority, Witness, Consent, Scaling, Feedback Loop, Silence, Integration) into the reasoning chain as a pre-output check. Operational constraint (not philosophy): before any output involving judgment or claims about human behavior, name which shadow is most active. Canonical: /root/AAA/canon/SHADOW_PARADOX_13.md. CREATOR: Arif Fazil + 333-AGI · 2026-09-20 · F13-ratified."
+owner: AAA
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 ---

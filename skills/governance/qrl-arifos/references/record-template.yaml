@@ -1,0 +1,15 @@
+# Run record template (append to ~/.hermes/logs/qrl/<date>.jsonl)
+qrl_run: {id: "", started: "", actor_requested: hermes-agent, actor_returned: "", session_id: "", autonomy_band: ""}
+stages:
+  sense:      {source: "", status: "", provenance: "", facts: [{claim: "", label: ""}]}
+  superpose:  {source: "", status: "", candidates: [{id: "", summary: ""}]}
+  decohere:   {source: "", status: "", issues: []}
+  interfere:  {source: "", status: "", vetoed: [{id: "", floor: ""}], scores: [{id: "", S: 0, terms: ""}]}
+  collapse:   {raw_verdict: "", qrl_verdict: "", reason_code: "", floors: [], source: ""}
+  predict:    {record_location: "", sealed: false, prediction: ""}
+  act:        {phase: "", action: "", reversible: true}
+  measure:    {result: ""}
+  repair:     {loops_used: 0, outcome: ""}
+advisory_stages: []
+hold_requests: []
+corrections: []
