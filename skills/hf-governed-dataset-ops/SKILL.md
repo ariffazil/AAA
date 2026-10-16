@@ -22,10 +22,11 @@ documentation layer (F1 reversible, F11 audit trail).
 
 ## 1. Authenticate
 ```bash
+[ -f /root/.secrets/kunci-hf.env ] && set -a && source /root/.secrets/kunci-hf.env && set +a
 set -a && source /root/.secrets/kunci-mas.env && set +a
 hf auth whoami   # expect: user=ariffazil orgs=arifOS999
 ```
-HF_TOKEN lives only in kunci-mas.env (mode 600). Never paste it in chat or commits.
+HF_TOKEN is isolated in `/root/.secrets/kunci-hf.env` (mode 600) and is **not** in `kunci-mas.env` or `kunci-root.env`. This prevents the `.bashrc` blanket `set -a` export from leaking HF_TOKEN into every bash subprocess (the 2026-10-14 split — see snap `/root/.secrets/quarantine/step4-snap-20261014/` for F1 reversal). Source `kunci-hf.env` explicitly at point of use; do not re-add HF_TOKEN to the broad env files. Never paste it in chat or commits.
 
 ## 2. Inventory
 ```bash

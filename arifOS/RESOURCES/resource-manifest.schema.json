@@ -38,14 +38,14 @@
     "trust_tier": {
       "type": "string",
       "enum": [
-        "sovereign-canonical",     # F13-ratified, lives in arifOS canon
-        "sovereign-experimental",  # F13-ratified, in trial
-        "sovereign-deprecated",    # F13-ratified, being phased out
-        "external-canonical",      # third-party stable spec
-        "external-experimental",   # third-party in trial
-        "external-deprecated",     # third-party deprecated
-        "internal-canonical",      # federation-internal stable
-        "internal-experimental"    # federation-internal trial
+        "sovereign-canonical",
+        "sovereign-experimental",
+        "sovereign-deprecated",
+        "external-canonical",
+        "external-experimental",
+        "external-deprecated",
+        "internal-canonical",
+        "internal-experimental"
       ]
     },
     "epoch": {

@@ -102,7 +102,7 @@ constitutional_floors:
 cross_references:
   arif_chain: AAA/docs/architecture/A-R-I-F-AGENTIC-CHAIN.md
   arifos_kernel: /root/arifOS/arifosmcp/runtime/tools.py
-  federation_contract: /root/FEDERATION_CONTRACT.md
+  federation_contract: /root/arifOS/FEDERATION_CONTRACT.md
   forge_session_schema: AAA/schemas/forge_session.schema.json
   hermes_protocol: AAA/agents/protocols/hermes-asi-protocol.md
   hermes_soul: /root/.hermes/SOUL.md

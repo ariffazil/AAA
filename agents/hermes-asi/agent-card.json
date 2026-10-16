@@ -17,6 +17,15 @@
     "citizenship_forged": "2026-06-14T12:03:00+08:00"
   },
   "bound_to": "AAA",
+  "telegram": {
+    "bot": "@ASI_arifos_bot",
+    "bot_id": "8410138119",
+    "display_name": "HERMES",
+    "host": "KVM8",
+    "unit": "hermes-asi-gateway.service",
+    "role": "the one Hermes mouth",
+    "lane": "555-ASI"
+  },
   "power_band": "semantic_routing_human_interface_federation_voice",
   "skills_prefix": [
     "HERMES-"

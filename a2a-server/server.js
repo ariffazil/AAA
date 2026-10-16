@@ -11,6 +11,10 @@ const crypto = require('crypto');
 const fs = require('fs');
 const { writeSeal, writeVoid, checkHealth: checkVaultHealth } = require('./vault');
 const { processAREPTask, sealAREPTask, probeFederation } = require('./arep-task-manager');
+// SIGNED-ENVELOPE v1 (GAP #1 slice) — flag-gated Ed25519 signing of outbound
+// organ tool calls. Flag off ⇒ byte-identical behavior. Spec:
+// /root/arifOS/arifosmcp/docs/SIGNED-ENVELOPE-v1.md
+const { attachSignedEnvelope } = require('./envelope_v1');
 const { createClient } = require('redis');
 const { connect, StringCodec } = require('nats');
 
@@ -426,6 +430,9 @@ async function dispatchToOrgan(taskId, message, skill, params) {
       toolName = resolveOrganTool(organKey, intent);
       toolArgs = { prompt: extractText(message), skill, task_id: taskId, ...(params?.metadata || {}) };
     }
+    // SIGNED-ENVELOPE v1: attach Ed25519 envelope when ARIF_ENVELOPE_SIGNED=1
+    // (no-op otherwise). Signs the payload exactly as transmitted.
+    toolArgs = attachSignedEnvelope(toolArgs, { sessionId: params?.session_id || taskId });
     const result = await mcpCall(organKey, 'tools/call', {
       name: toolName,
       arguments: toolArgs,
