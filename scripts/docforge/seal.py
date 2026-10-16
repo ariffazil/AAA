@@ -73,7 +73,14 @@ def chain_tail(ledger: Path) -> dict | None:
     if not ledger.exists():
         return None
     rows = [json.loads(l) for l in ledger.read_text().splitlines() if l.strip()]
-    return rows[-1] if rows else None
+    # The chain is over SEAL rows only. Correction/audit annotations share the
+    # ledger (appended, never edited) and carry no artifact_sha256; taking the
+    # blind last row made every seal after an audit note crash with KeyError.
+    # Fix 2026-10-15: skip non-seal rows when walking backwards.
+    for r in reversed(rows):
+        if r.get("artifact_sha256"):
+            return r
+    return None
 
 
 def seal(*, edition: str, edition_date: str, source_text: str, pdf: Path,

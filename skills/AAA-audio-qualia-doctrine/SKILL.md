@@ -35,6 +35,11 @@ tags:
   - federation
 owner: AAA
 ---
+capability_tier: fed-agent-subagent
+ecology_state: WARM
+owned_by: AAA
+authority_of: AAA
+---
 
 # AAA · Audio Qualia Doctrine
 

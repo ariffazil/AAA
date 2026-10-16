@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://schemas/hermes-execution-blocker-v1.json",
+  "title": "Hermes Execution Blocker",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "execution_id",
+    "blocker_id",
+    "code",
+    "field",
+    "conditions",
+    "question",
+    "telegram",
+    "on_answer",
+    "on_no_answer"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "hermes.execution-blocker.v1"
+    },
+    "execution_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blocker_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]+$"
+    },
+    "field": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conditions": {
+      "type": "object",
+      "required": [
+        "concrete_execution_requested",
+        "at_execution_decision_point",
+        "required_field_missing",
+        "resolution_attempted",
+        "recoverable_from_evidence",
+        "recoverable_from_tools",
+        "authorized_safe_default_exists",
+        "materially_changes_execution",
+        "answer_owned_by_arif",
+        "answer_immediately_unlocks_execution",
+        "bounded_question_possible",
+        "duplicate_question"
+      ],
+      "properties": {
+        "concrete_execution_requested": { "const": true },
+        "at_execution_decision_point": { "const": true },
+        "required_field_missing": { "const": true },
+        "resolution_attempted": { "const": true },
+        "recoverable_from_evidence": { "const": false },
+        "recoverable_from_tools": { "const": false },
+        "authorized_safe_default_exists": { "const": false },
+        "materially_changes_execution": { "const": true },
+        "answer_owned_by_arif": { "const": true },
+        "answer_immediately_unlocks_execution": { "const": true },
+        "bounded_question_possible": { "const": true },
+        "duplicate_question": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "question": {
+      "type": "object",
+      "required": ["type", "text"],
+      "properties": {
+        "type": {
+          "enum": [
+            "single_choice",
+            "bounded_multi_choice",
+            "yes_no_for_missing_fact",
+            "short_value",
+            "secret_required"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "value"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "label": { "type": "string", "minLength": 1 },
+              "value": {}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "telegram": {
+      "type": "object",
+      "required": [
+        "allowed",
+        "send_once",
+        "reminders",
+        "expose_internal_reasoning"
+      ],
+      "properties": {
+        "allowed": { "const": true },
+        "send_once": { "const": true },
+        "reminders": { "const": false },
+        "expose_internal_reasoning": { "const": false }
+      },
+      "additionalProperties": true
+    },
+    "on_answer": {
+      "type": "object",
+      "required": ["bind_to", "resume_execution", "send_acknowledgement"],
+      "properties": {
+        "bind_to": { "type": "string", "minLength": 1 },
+        "resume_execution": { "const": true },
+        "send_acknowledgement": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "on_no_answer": {
+      "type": "object",
+      "required": ["state", "telegram_action", "execution_action"],
+      "properties": {
+        "state": { "const": "WAITING_INPUT" },
+        "telegram_action": { "const": "SILENT" },
+        "execution_action": { "const": "NO_MUTATION" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

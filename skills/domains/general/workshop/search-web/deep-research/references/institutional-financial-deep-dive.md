@@ -104,8 +104,8 @@ Model error: +6.7% (over)
 **Confidence band = max(|model − actual|/actual) over backtest runs.** For PETRONAS,
 ±15-20% is honest. State the band explicitly in the deliverable.
 
-If the backtest error is >30%, **don't publish the projection without disclaimers** —
-either tune the elasticities or flag the call as speculative.
+If the backtest error is >30%, label the call as speculative inline —
+either tune the elasticities or mark it UNMEASURED.
 
 ## Step 7: Falsification checklist (mandatory)
 

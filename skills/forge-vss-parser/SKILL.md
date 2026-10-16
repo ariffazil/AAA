@@ -2,6 +2,7 @@
 name: forge-vss-parser
 id: forge-vss-parser
 version: 1.0.0-2026.08.18
+description: "VSS-1 Causal Scene Graph Parser — entry gate for Verified Scene Synthesis (VSS) in arifOS/AAA. Converts unconstrained natural-language visual prompts into a strict machine-readable Assertion Ledger JSON (entities, spatial relations, verifier mapping, tolerances). Enforces F2/F4/F7/F9/F11 by compiling prompts into typed contracts before image generation."
 owner: 555-ASI
 risk_tier: low
 autonomy_tier: T1
