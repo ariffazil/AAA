@@ -445,3 +445,18 @@ python3 /root/AAA/scripts/attention_plane.py
 **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 
 Built by Muhammad Arif bin Fazil.
+
+<!-- FEDERATION-STANDARD v2026-10-15 START :: 333-AGI audit :: source: organs.yaml + git + live probes :: regenerate: re-run audit -->
+## 🔗 Federation Identity (auto-audit 2026-10-15)
+| Field | Value |
+|---|---|
+| Organ | `aaa` · CORE · control_plane |
+| Ports | 3001 |
+| Unit | aaa-a2a.service |
+| Authority ceiling | DISPLAY_ONLY |
+| Live (SOT probe @audit) | UP |
+| Repo HEAD @audit | `88020b0d 2026-10-14` |
+| Public MCP | — |
+| Rollback | — |
+| Flow graph | [FEDERATION-FLOW-GRAPH.md](../FEDERATION-FLOW-GRAPH.md) — peta semua organ + repo |
+<!-- FEDERATION-STANDARD v2026-10-15 END -->
