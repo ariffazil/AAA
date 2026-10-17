@@ -1,5 +1,7 @@
 # WawaBot — Anthropology Surface (pointer)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Skill:** `wawabot-anthropology-surface`
 > **Canon:** `/root/AAA/canon/WAWABOT-ANTHROPOLOGY-SURFACE.md`
 > **Not kernel. Not judge. Not family dossier. Not a floor.**

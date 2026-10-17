@@ -6,6 +6,8 @@
 
 # Registry → Witness → Governance
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Canonical compression of arifOS constitutional doctrine.
 > Not new doctrine — the irreducible structure that survives when all implementation is stripped.
 

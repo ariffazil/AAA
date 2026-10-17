@@ -1,5 +1,7 @@
 # GitHub Zen — Federation Repo Standard, Agent Duties, and Flows
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged 2026-09-06 by FI-003 under F13. Deep-probe evidence: 33 repos, 7 core, 16 local `.github` inventories, 4 canon skills, live CI/PR/release state. Full doctrine report: session SEAL-398d4a3ca1a14ce0. Execution artifacts: `/root/forge_work/2026-09-06-github-zen/`.
 
 ## The Law

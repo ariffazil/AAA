@@ -1,3 +1,5 @@
+
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
 ## ⚒️ 9 GÖDEL EUREKAS — Binding Constraints (2026-08-10)
 
 These are NOT philosophy. They are operating rules for every AAA warga agent.

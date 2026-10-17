@@ -1,5 +1,7 @@
 # REALITY_ALIGNMENT_KERNEL::v2 — Universal Agent Boot Kernel
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Source:** Arif Fazil, 2026-09-10; updated 2026-09-12 (Phase 4 Reality Alignment)
 > **Classification:** Universal (agent-agnostic, not arifOS-specific)
 > **Composes with:** constitution.md (F1-F13), reality-first.md, reality-compression.md, witness-zen-doctrine.md, substrate-invariants, experience-metabolism-reflex.md, CAPABILITY_EVOLUTION_SEAL

@@ -1,5 +1,7 @@
 # Gate Promotion — Detection Is Debt Until It Can Say NO
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged 2026-08-25 · FI-003 eureka extraction (SEAL candidate OBSERVE_ONLY → F13 ratified for instill)
 > Source contradiction: kernel floors fail closed while quality/surface/supply signals fail open.
 

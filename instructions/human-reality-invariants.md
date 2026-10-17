@@ -1,5 +1,7 @@
 # Human Reality Invariants — Canonical Instruction
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Binding for all arifOS warga agents.** Extends the Human Meaning Membrane — does not replace C1–C14.
 > **Ratified:** F13 SOVEREIGN chat SEAL (Conceptual), 2026-09-08
 > **Constitutional floors:** F1, F2, F4, F7, F9, F13

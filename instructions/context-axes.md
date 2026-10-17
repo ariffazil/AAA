@@ -1,5 +1,7 @@
 # Context Geometry — Orthogonal Axes (Forged 2026-09-02)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Context is not files. Context is an orthogonal vector space.
 > Every context surface owns EXACTLY ONE axis. Overlap = blob. Orthogonal = geometry.
 
