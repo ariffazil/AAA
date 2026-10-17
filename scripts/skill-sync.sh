@@ -97,6 +97,8 @@ ALL_SKILLS=(
     mcp-lifeguard model-fallback-monitor telegram-security-audit google-workspace-cli
     agentic-web-optimization subagent-spawn-template
     agentic-web AGI-agentic-web AGI-explorer-intelligence
+  "reality-intelligence"
+  "reality-loop-operator"
 )
 
 sync_agent() {

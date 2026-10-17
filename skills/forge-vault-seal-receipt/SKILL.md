@@ -382,6 +382,7 @@ with open(path, "wb") as f: f.write(data)
 **Pitfall (verified 2026-08-12, surat-final-v12-deepen forge):** patch the placeholder with `pathlib.Path.replace_bytes` or a binary write — NOT with string-mode `open(path).write(...)`. The file may contain non-UTF-8 bytes; a string write will silently corrupt them.
 
 ## Pitfalls
+- **Writer newline discipline (F13 ratified 2026-10-15, glued-line incident SEALED_EVENTS.jsonl:1352):** EVERY appender to an append-only ledger MUST verify the file's last byte is `0x0a` before writing; if not, write the missing newline first (see arifOS commit 78f587e0c self-heal). Two JSON objects on one line corrupts strict parsers even when both objects are byte-intact. Check: `tail -c1 <ledger> | xxd -p` must equal `0a`.
 
 - **A-FORGE :7071 vs :7072 confusion.** `:7071` does not expose `/health` on HTTP (MCP-only, no `tools/list` without session init). `:7072` is the bridge: session-free, 116 tools enumerate immediately. For receipt sealing, use `:7072`. For sub-task execution, use `:7071` (requires session init).
 - **`forge_vault` is in the bridge tool list but gated at runtime.** The tool appears in `tools/list` at `:7072` (which is session-free), but calling it returns `-32042` if the actor is not SOVEREIGN. Tool availability ≠ authorization. The tool surface and the authority surface are separate.

@@ -389,7 +389,7 @@ def tool_discover(intent: str) -> dict:
             "tier": 1,
             "count": 18,
             "tools": [
-                "well_readiness",
+                "well_validate_vitality",
                 "well_validate_vitality",
                 "well_assess_homeostasis",
                 "well_guard_dignity",

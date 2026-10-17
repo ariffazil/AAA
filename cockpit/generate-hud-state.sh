@@ -8,7 +8,7 @@
 # misi tersembun dari sesi lapuk. Fallback eksplisit, bukan karutan.
 budget_bounded="unspecified"
 _now_epoch=$(date -u +%s)
-_epn="/root/AAA/cockpit/execution-path-next.json"
+_epn="/var/lib/arifos/state/cockpit/execution-path-next.json"
 if [[ -r "$_epn" ]]; then
   mission_objective=$(jq -r '.current_state.last_action // .purpose // "no active governed mission"' "$_epn" 2>/dev/null | head -1)
   mission_objective=${mission_objective:-"no active governed mission"}
@@ -315,7 +315,7 @@ if [[ "${1:-}" == "--json" ]]; then
   exit 0
 fi
 
-STATE_OUT="${STATE_OUT:-/root/AAA/cockpit/hud-state.json}"
+STATE_OUT="${STATE_OUT:-/var/lib/arifos/state/cockpit/hud-state.json}"
 tmp="${STATE_OUT}.tmp"
 printf '%s\n' "$final" > "$tmp"
 mv "$tmp" "$STATE_OUT"

@@ -27,8 +27,8 @@
 #      SIGNED HEAD   : /root/AAA/state/vault_head_attestation.json
 #                      (emitted by /root/scripts/vault_head_attest.py)
 #    STALE / DO NOT TRUST:
-#      - VAULT_WRITER_URL=http://127.0.0.1:8100 and VAULT_API_URL=:8100
-#        -> NOTHING is listening on :8100 (vault999-api.service = not-found).
+#      - VAULT_WRITER_URL=http://127.0.0.1:5001 and VAULT_API_URL=:5001
+#        -> NOTHING is listening on :5001 (vault999-api.service = not-found).
 #      - /root/.local/share/arifos/vault999/outcomes.jsonl -> frozen Aug 25.
 #    The probe now prefers the live writer, records the stale env var, and
 #    detects append-only truncation against the signed attestation.
@@ -262,10 +262,24 @@ ATT_LINES=null; ATT_EMITTED=null; TRUNCATED=false
 if [ -f "$VAULT_ATTEST" ] && jq -e . "$VAULT_ATTEST" >/dev/null 2>&1; then
     ATT_LINES="$(jq -r '.payload.outcomes.lines // null' "$VAULT_ATTEST" 2>/dev/null)"
     ATT_EMITTED="$(jq -r '.payload.emitted_at // null' "$VAULT_ATTEST" 2>/dev/null)"
-    if [ "$OUT_LINES" != "null" ] && [ "$ATT_LINES" != "null" ] \
-       && [ "$OUT_LINES" -lt "$ATT_LINES" ] 2>/dev/null; then
+    # Rotation-aware: after logrotate compresses the live log to outcomes.jsonl.*.gz
+    # the live file restarts near-zero. Comparing only live lines then reads as a
+    # truncation breach. Sum live + rotated generations before comparing.
+    ROT_LINES=0
+    for gz in "$VAULT_OUTCOMES".*.gz; do
+        [ -f "$gz" ] || continue
+        c="$(zcat "$gz" 2>/dev/null | wc -l | tr -d ' ')"
+        case "$c" in ''|*[!0-9]*) c=0 ;; esac
+        ROT_LINES=$((ROT_LINES + c))
+    done
+    TOTAL_OUT_LINES=null
+    if [ "$OUT_LINES" != "null" ]; then
+        TOTAL_OUT_LINES=$((OUT_LINES + ROT_LINES))
+    fi
+    if [ "$TOTAL_OUT_LINES" != "null" ] && [ "$ATT_LINES" != "null" ] \
+       && [ "$TOTAL_OUT_LINES" -lt "$ATT_LINES" ] 2>/dev/null; then
         TRUNCATED=true
-        add_failure "vault: APPEND-ONLY BREACH — live lines ($OUT_LINES) < signed attestation ($ATT_LINES, $ATT_EMITTED)"
+        add_failure "vault: APPEND-ONLY BREACH — live+rotated lines ($TOTAL_OUT_LINES) < signed attestation ($ATT_LINES, $ATT_EMITTED)"
     fi
 else
     add_failure "vault: signed head attestation missing/unparseable at $VAULT_ATTEST"

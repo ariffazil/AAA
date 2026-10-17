@@ -121,7 +121,7 @@
       "explorer_id": "well_vitality_explorer",
       "domain": "wellness",
       "organ": "WELL",
-      "tools": ["well_validate_vitality", "well_readiness"],
+      "tools": ["well_validate_vitality", "well_validate_vitality"],
       "depends_on": [],
       "produces": [
         { "signal_type": "vitality_score", "payload_schema": { "score": "number", "color": "string", "ttl_hours": "number" } },

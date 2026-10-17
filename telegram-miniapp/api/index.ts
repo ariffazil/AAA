@@ -280,7 +280,7 @@ app.get("/api/wealth/finance", async (c) => {
 // ─── WELL: Readiness ───────────────────────────────────────
 app.get("/api/well/readiness", async (c) => {
   try {
-    const result = await callMCPTool("well", "well_readiness", {});
+    const result = await callMCPTool("well", "well_validate_vitality", {});
     return c.json({ ok: true, result: extractResult(result) });
   } catch (e: any) {
     return c.json({ error: e.message }, 502);
@@ -374,7 +374,7 @@ app.post("/api/init/classify", async (c) => {
     } else if (t.match(/sleep|fatigue|vitality|ready|health|energy|stress|readiness/)) {
       loop_class = "SUBSTRATE";
       required_organs = ["WELL"];
-      next_lawful_call = "well_readiness or well_validate_vitality";
+      next_lawful_call = "well_validate_vitality or well_validate_vitality";
       blast_radius = "LOW";
     } else if (t.match(/build|deploy|docker|git|push|restart|fix|code|script|execute/)) {
       loop_class = "EXECUTION";

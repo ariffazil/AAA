@@ -67,3 +67,20 @@ Structural mutations derived from these maps (module moves, boundary-rule remova
 | **D2** — Naming triad | **CANONIZED** | canon/CANONICAL_GLOSSARY.md → [CONCEPT] CODE-REALITY Naming Triad: FRAME / CodeRealityEnvelope / CodeRealityEvidencePacket. No variant abbreviations permitted. |
 | **D3** — arifFlow evidence-origin | **APPROVED: design + test only** | Proposal: forge_work/.../arifflow-evidence-origin-proposal.md (two-axis: EvidenceOrigin × EpistemicLabel, additive Rust field, golden fixtures, round-trip tests). **NO daemon rebuild/deploy/restart — outside this approval.** Implementation = next focused lane. |
 | **D4a** — CI ratchet | **RATIFIED, NARROW** | arifOS@ac94be1ef exactly as implemented: grimp-direct, path-scoped (arifosmcp/**+boundary/**), fail-on-NEW + expired-exception only, in-repo ledger, 2026-12-15 expiry auto-tighten. NOT ratified: expansion to other repos, whole-repo scope, legacy-debt failing, expiry/bypass changes, any broader CI enforcement. Cross-lane authority ambiguity preserved as regression finding: **future sovereign directives crossing an 888 boundary must name the exact fence, action, target, consequence class.** |
+
+---
+
+## Doc freshness stamp — 2026-10-16 (D1 from blueprint)
+
+Measured 2026-10-16 on KVM8, FI-003:
+
+- **arifFlow** has **TWO ports** live (correction to any "single-port" framing in the doc content above):
+  - `:7073` — Rust HTTP daemon `/opt/arifflow/bin/arifflow` (tailscale + localhost bind)
+  - `:7075` — python3 localhost MCP endpoint (config points here: 7075/mcp)
+  - The `/opt/arifflow/bin` reference above is correct (Rust daemon location on :7073); the MCP surface config points to :7075. The two are not duplicates; they are different components in the same organ.
+
+- **FLAME :18901** — **ABSENT** (no listener; `ss -ltnp | grep :18901` → 0 hits). All FLAME references in `skills-cold/.archive/` are archived snapshots, not active doctrine.
+
+- **i-ARIF :18101** — **ABSENT** (no listener; `ss -ltnp | grep :18101` → 0 hits). All i-ARIF references in `skills-cold/.archive/` are archived snapshots, not active doctrine.
+
+- D3 ("arifFlow evidence-origin") approval above is **APPROVED: design + test only** — NO daemon rebuild/deploy/restart yet (per blueprint + A0 close). A0 closed (sovereign manual rotation documented, A0 receipt at `/root/.qwen/projects/-root/memory/INC-0/2026-10-16-a0-receipt.txt`); W1 (witness) unblocked, awaiting F13 GO.

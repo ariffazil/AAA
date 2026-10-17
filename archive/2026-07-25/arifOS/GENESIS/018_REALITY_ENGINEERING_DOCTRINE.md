@@ -1,4 +1,4 @@
-# EUREKA-018: Reality Engineering Doctrine — The Seven Iron Laws
+# EUREKA-018: Reality Engineering Doctrine — The Nine Iron Laws (Law 0–Law 8)
 
 **Date:** 2026-06-21  
 **Author:** Sovereign reflection (Arif) + FORGE integration  
@@ -25,11 +25,18 @@ change the agent is allowed to participate in.
 
 Posture is internal. Forge is external.
 Agentic systems need the boundary between inner reasoning and outer state
-change made explicit. The Seven Iron Laws now do that.
+change made explicit. The Nine Iron Laws now do that.
 
 ---
 
-## The Seven Iron Laws (Corrected)
+## The Nine Iron Laws (Law 0–Law 8)
+
+> **Corrected 2026-10-16.** This heading previously read "The Seven Iron Laws
+> (Corrected)" while the body enumerates Law 0 through Law 8 — nine laws. The
+> earlier "(Corrected)" marker was itself wrong: it asserted a fix that had not
+> corrected the count. The **count** was wrong, not the numbering: Law 0 is
+> deliberate and must not be renumbered or dropped. Evidence: `grep -cE '^#+ *Law [0-9]+'`
+> returns 9. Verified by probe, not by reading.
 
 ```
 0. Non-action is a valid reality decision — Holding is also governance.
