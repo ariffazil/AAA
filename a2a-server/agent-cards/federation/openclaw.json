@@ -671,7 +671,7 @@
       ]
     },
     "minimax_media": {
-      "port": 18100,
+      "port": 15001,
       "tier": "extra",
       "surface": "private",
       "capability": [

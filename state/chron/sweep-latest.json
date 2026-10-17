@@ -2,43 +2,78 @@
   "adapter_version": "1.0.0",
   "funnel": {
     "learn": 7,
-    "learn_per_verify": 0.167,
-    "observe": 185858,
-    "predict": 100,
-    "predict_per_1000_observe": 0.538,
-    "verify": 42,
-    "verify_per_predict": 0.42
+    "learn_per_verify": 0.146,
+    "observe": 199276,
+    "predict": 117,
+    "predict_per_1000_observe": 0.587,
+    "verify": 48,
+    "verify_per_predict": 0.41
   },
   "learning_closure_gap": {
     "actionable_lessons": 2,
-    "episodes_total": 186008,
+    "episodes_total": 199449,
     "gap": false,
     "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
-    "unclassified_outcomes": 10
+    "unclassified_outcomes": 11
   },
   "lesson_health": {
     "active": 12,
     "blind": 10,
     "total": 14
   },
-  "next_verify_at": "2026-10-15T23:59:59+08:00",
-  "swept_at": "2026-10-14T22:23:01Z",
+  "next_verify_at": "2026-10-19T23:59:59+08:00",
+  "swept_at": "2026-10-16T22:23:02Z",
   "verification_debt": {
-    "count": 2,
+    "count": 7,
     "items": [
+      {
+        "claim": "Malaysia Q3 2026 advance GDP growth will be at least 5.0% YoY",
+        "confidence": 0.7,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-b225ca03d268",
+        "verify_at": "2026-10-16T23:59:59+08:00"
+      },
       {
         "claim": "Event: Tetingkap 2 minggu: perbualan line leader + HR diminta dalam borang. Diam selepas ini = jawapan.",
         "confidence": 0.5572562358,
-        "overdue_days": 1.27,
+        "overdue_days": 3.27,
         "prediction_id": "pred-345cf39314a2",
         "verify_at": "2026-10-13T23:59:59+08:00"
       },
       {
+        "claim": "Event: F13 binary pending: Wire mode_first_gate overlay to arif_route intent_canon (port 8088) as primary classifier, heuristic as degraded fallback",
+        "confidence": 0.5122186949,
+        "overdue_days": 1.27,
+        "prediction_id": "pred-10d283951895",
+        "verify_at": "2026-10-15T23:59:59+08:00"
+      },
+      {
         "claim": "Event: AI Harness x Kiro Builders Night \u2014 AWS User Group AI/ML KL",
         "confidence": 0.677492908,
-        "overdue_days": 0.27,
+        "overdue_days": 2.27,
         "prediction_id": "pred-49073c7e2850",
         "verify_at": "2026-10-14T23:59:59+08:00"
+      },
+      {
+        "claim": "Event: After IRFANclaw deploys E1 v2: arifOS kernel reports 13 unique floors, 12 pass, F5 fails with score ~0.692 (alias-collapse, not probe-null)",
+        "confidence": 0.6639028612,
+        "overdue_days": 1.27,
+        "prediction_id": "pred-2959bf6ad6e5",
+        "verify_at": "2026-10-15T23:59:59+08:00"
+      },
+      {
+        "claim": "CHRON episode store exceeds 200,000 lines by end 2026-10-16 MYT",
+        "confidence": 0.7139028612,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-d79e90c0b97c",
+        "verify_at": "2026-10-16T23:59:59+08:00"
+      },
+      {
+        "claim": "Median /health latency >= 700ms on 2026-10-16 (5-sample median, absent cache deploy)",
+        "confidence": 0.6889028612,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-adea59f96e3c",
+        "verify_at": "2026-10-16T23:59:59+08:00"
       }
     ]
   }

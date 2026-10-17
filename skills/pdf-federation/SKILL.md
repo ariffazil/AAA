@@ -126,6 +126,32 @@ Deviation note: the concurrent worker's plan was soft-aliases-first, archive-lat
 was explicit (prune; agents must not face 13 names), so hard-archive was executed same-day. All
 content preserved in the archive path above.
 
+## Self-update contract (auto-capture, no daemon needed)
+
+This skill self-improves the safe way: **whenever a session hits a typst
+pitfall, a stale fact, or a new recipe, it MUST patch the relevant reference
+file (typst-recipes.md / PDF_OPERATIONS.md) before the session ends.** One
+imperative rule per lesson, one cause, one fix — no incident narration.
+
+This is the "auto" in skill learning: not a background daemon mutating doctrine
+(which violates Pact 2 "the doer is not the judge" and self-modification
+asymmetry), but a standing rule that turns every real failure into a permanent
+lesson the NEXT session loads for free. The probe→hit→patch loop IS the
+automation; it just rides on real work instead of a watcher process.
+
+## Cross-engine redundancy (two bridges, one deliverable)
+
+Hermes (kvm8, typst) and Wawabot (kvm2, fpdf2) can both build the SAME
+consumption PDF — proven 2026-10-17 (concert guide: hermes 6pp typst, wawabot
+5pp fpdf2, both correct). This is NOT chaos: it is redundancy-by-design, the
+"isolation before voice" doctrine (kvm8 = Arif bridge, kvm2 = Azwa bridge).
+
+Rule when both fire on one artifact: **cross-verify, then pick ONE for the
+recipient — never hand the human two versions.** Each side keeps its own
+lessons (typst pitfalls vs fpdf2 pitfalls) and cross-pollinates the
+engine-agnostic ones (prose-integrity gate, page-fill, map+caption keep-together,
+hash anchor). The engines differ; the verify-before-ship discipline does not.
+
 ## What an agent MUST NOT do
 
 - **Do NOT write a new PDF skill name.** One PDF door.

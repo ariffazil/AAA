@@ -190,7 +190,7 @@
   },
   "iarif_sovereign_v5": {
    "voice_id": "iarif-sovereign-v5",
-   "provider": "MiniMax voice_design (MCP minimax-media port 18100)",
+   "provider": "MiniMax voice_design (MCP minimax-media port 15001)",
    "synthesis_model": "speech-2.8-hd",
    "provenance": "DESIGNED — zero human waveform. Prompt describes envelope only (warm composed mid-feminine register), no real person named. Consent-clean by construction.",
    "f0_median_hz": 170.7,
