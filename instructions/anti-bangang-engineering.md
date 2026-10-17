@@ -83,3 +83,15 @@ Tanya:
 
 Jika **TIDAK** atau **TAK PASTI**:  
 **JANGAN BUAT.**
+
+---
+
+## FAST-PATH GATEWAY (F13 & Anti-Bangang Engineering)
+
+1. **Kelas 0 (Read-Only / Idempotent):**  
+   Pemeriksaan fail, query, URL ingest, `curl`, pencarian, dan semakan telemetry adalah bacaan tanpa mutasi keadaan. Laksana terus tanpa overhead inisialisasi penuh kernel (`arif_init`).
+2. **Kelas 1 (State-Mutating / Irreversible):**  
+   Penulisan fail sistem, perubahan struktur data, `git push`, pengubahsuaian konfigurasi, dan sebarang tindakan tidak boleh balik WAJIB melalui inisialisasi kernel (`arif_init`) dan semakan kebolehbalikan (F1 Reversibility).
+3. **CLI Terminal Render Constraint:**  
+   Sebarang rajah dan jadual untuk paparan terminal dihadkan kepada $\le 100$ lajur bagi mengelakkan kegagalan render atau pemecahan baris.
+
