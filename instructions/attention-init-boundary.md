@@ -1,6 +1,6 @@
 # ATTENTION-INIT-BOUNDARY — Canonical Attention Doctrine (Consolidation)
 
-> **Status:F13_RATIFIED_SOVEREIGN (2026-09-12)
+> **Status:** F13_RATIFIED_SOVEREIGN (2026-09-12)
 > **Origin:** Sovereign articulation 2026-09-12 — *"INIT is an attention-conversion boundary"* + agent synthesis
 > **Canonicalizes:** attention-graph.md (map) · attention-scarcity-economics.md (economics) · attention-kill-criterion.md (enforcement) · attention-routing.md (governor)
 > **Pattern:** This file becomes the single active-context entry point for attention doctrine. The four predecessors remain on disk as audit strata with supersede pointers (F1 AMANAH — nothing destroyed).

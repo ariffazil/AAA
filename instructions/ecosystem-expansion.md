@@ -2,7 +2,7 @@
 
 > **REFERENCE:** `ARIFOS::ECOSYSTEM_EXPANSION::v1`
 > **AUTHORITY:** ARIF (Human Sovereign) — forged 2026-08-20
-> **STATUS:** DRAFT (2026-08-20) — awaiting inclusion in instruction render
+> **STATUS:** DRAFT (2026-08-20) — awaiting inclusion in canonical instruction render
 
 ---
 

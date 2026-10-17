@@ -2,7 +2,7 @@
 
 > Forged: 2026-09-08 | Session: consequence-honoring-reflection
 > Classification: Canonical Instruction | Constitutional binding: F2 (TRUTH), F7 (HUMILITY)
-> Status: F13_RATIFIED_SOVEREIGN (2026-09-12)
+> Status: F13_RATIFIED_CHAT · 2026-10-17 · "aku sahkan"
 
 ## The Problem This Doctrine Solves
 
