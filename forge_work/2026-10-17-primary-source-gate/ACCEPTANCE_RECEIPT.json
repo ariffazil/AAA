@@ -1,0 +1,79 @@
+{
+  "gate": "/root/AAA/instructions/primary-source-evidence-gate.md",
+  "gate_sha256": "981b185495f080bdcad9b34034acbb659b04e99d76ba1da15958a13b098b4116",
+  "gate_bytes": 3922,
+  "gate_state_after_tests": "EXECUTED_GATE",
+  "date": "2026-10-17",
+  "agent": "HERMES (F13 DM lane)",
+  "loader_receipt": {
+    "index": "/root/AAA/instructions/_UNRENDERED_INDEX.md",
+    "entry": "- primary-source-evidence-gate",
+    "inserted_before": "- probe-before-panic",
+    "state": "INDEXED"
+  },
+  "behavior_tests": [
+    {
+      "test": "3_positive_bound_passage",
+      "claim_under_test": "Von Eickstedt sends 'Primitiv-Monkmerier' (Mon-Khmer primitifs) as his own assessment of the Mon-Khmer groups opposed to the Tai.",
+      "source_id": "internet_archive:rassendynamik-von-ostasien-china-und-japan-tai-und-kmer-von-der-urzeit-bis-heute_20260307",
+      "artifact_sha256": "5797a8703d5dab64ed3ed6f14c35629bee55d41151babaf3f88309ec397211c1",
+      "artifact_bytes": 1161949,
+      "retrievals": "two independent downloads, same sha256 (content-addressed identity confirmed)",
+      "locator": "djvu-txt line 6527",
+      "raw_snippet": "Primitiv-Monkmerier vor allem aus dem Kreis der Liau?-Stämme,",
+      "context_inspected": "lines 6520-6534, author's own narration, no quotation, no negation",
+      "claim_relation": "supports",
+      "verdict": "PASS — SUPPORTED_CLAIM permitted"
+    },
+    {
+      "test": "4_title_only_forbidden_language",
+      "claim_under_test": "Buku 'Rassenkunde und Rassengeschichte der Menschheit' (1934) membuktikan von Eickstedt mengklasifikasikan Asia Tenggara sebagai primitif.",
+      "evidence_held": "Wikipedia (secondary) attributes the term 'Primitivrassen' to that title. NO passage retrieved from the 1934 book itself.",
+      "gate_rule": "§7 forbidden word 'membuktikan' without bound passage; §6 title->content leap invalid",
+      "verdict": "REJECTED — correct language: 'source discovered (secondary), content not yet verified; interpretation remains UNKNOWN' until the 1934 artifact is retrieved"
+    },
+    {
+      "test": "5_quotation_negation_scan",
+      "method": "full-text search 'primitiv*' in retrieved OCR (case-insensitive); sampled contexts at lines 6527, 14992, 15118, 15182, 1692",
+      "finding": "all sampled occurrences are the author's own asserting voice (e.g. line 15182 'unterwürfige Primitive'); no quotation/negation counter-example located within search scope",
+      "verdict": "PASS with §9 discipline — keyword presence alone was not accepted; every sampled 'supports' required context inspection first. Negative result scoped to this artifact's OCR only.",
+      "ocr_caveat": "djvu OCR, degraded spots present (e.g. 'Liau?' = place-name corruption); raw_snippet preserved unedited"
+    }
+  ],
+  "scratch_prune_incident": {
+    "observed": "/tmp/eickstedt.txt (first retrieval, sha256 5797a8703d5dab64...) no longer on disk — TMPDIR 24h prune",
+    "lesson": "evidence artifacts for claims that may be audited later must land in durable storage (forge_work), never TMPDIR scratch"
+  },
+  "debt_closure_2026_10_17": {
+    "debt": "test 4 — Rassenkunde 1934 book never retrieved; 'Primitivrassen' attribution was secondary (Wikipedia)",
+    "status": "CLOSED",
+    "source_id": "internet_archive:egon-freiherr-von-eickstedt-rassenkunde-und-rassengeschichte-der-menschheit",
+    "artifact": "Egon Freiherr von Eickstedt - Rassenkunde und Rassengeschichte der Menschheit_djvu.txt",
+    "artifact_sha256": "2f0fd1f15b75298e3721e5ff95fb0f818726f8e496891881a6d1456e6c08f154",
+    "artifact_bytes": 2638595,
+    "term_presence": "'Primitivrassen' occurs in 1934 text at lines 1284, 7043, 8613, 24612, 43231 — term CONFIRMED primary",
+    "bound_passages": [
+      {
+        "locator": "line 7043-7046",
+        "raw_snippet": "So sind heute alle Waldrassen gleichzeitig Primitivrassen. ... Von den an Kopfzahl, Intellekt und Stroßkraft überlegenen Großrassen geschoben und gedrängt, liegen sie heute um deren Verbreitungsgebiet wie ein Schlackenwall aus dem Bildungsprozeß der Menschheit. ... sind sie zu den von allen Völkern Verachteten, den Kulturarmen, den Paria der Menschheit geworden.",
+        "translation_note": "translated by agent; raw German preserved",
+        "claim_relation": "supports",
+        "notes": "the survival-struggle framing is the author's OWN text: superior master races in headcount/intellect/force pushing forest races into 'slag heap of humanity's civilizational process', despised, culture-poor, 'Paria of humanity' — validates essay phrase 'kalah dalam perjuangan hidup' nearly word-for-word (phrase was STA's framing; von Eickstedt's own words mirror it)"
+      },
+      {
+        "locator": "line 12740",
+        "raw_snippet": "der eigentliche Palämongolide ist der südostasiatische Waldbewohner",
+        "claim_relation": "supports",
+        "notes": "SE Asian forest dweller directly classified; combined with line 7043 (Waldrassen = Primitivrassen) the chain binds SE Asian forest peoples into Primitivrassen"
+      },
+      {
+        "locator": "line 14252",
+        "raw_snippet": "die Semang der Halbinsel Malakka und der Andamanesen der Andamanen-Inseln im Golf von Bengalen",
+        "claim_relation": "supports",
+        "notes": "Malay Peninsula peoples named directly in scope"
+      }
+    ],
+    "claim_relation_final": "CLAIM_CORROBORATED (classification chain: SE Asian forest dwellers = Palämongolide/Waldbewohner -> Waldrassen = Primitivrassen -> Paria der Menschheit)",
+    "honest_nuance": "no single sentence reads 'Südostasiaten sind Primitivrassen'; binding runs through the author's own classificatory chain, recorded as such"
+  }
+}

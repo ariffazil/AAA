@@ -1,0 +1,43 @@
+{
+  "session": "FI-002 2026-10-17 13:18 MYT",
+  "intervention": "Patch /root/AAA/cockpit/runtime-identity.py — correct source_path/runtime_path for aforge + frame and use import_name as md5_subdir lookup key",
+  "tests_pass": [
+    {"id": "T1", "name": "arifOS md5 still match (regression check)", "before": "match=true (03b6f579848f/03b6f579848f)", "after": "match=true (03b6f579848f/03b6f579848f)", "result": "PASS"},
+    {"id": "T2", "name": "A-FORGE md5 measurable", "before": "no-source-init / no-deployed-init / match=false", "after": "1e061ecd0072 / 1e061ecd0072 / match=true", "result": "PASS"},
+    {"id": "T3", "name": "FRAME md5 measurable", "before": "no-source-init / e3b0c44298fc(zero-hash) / match=false", "after": "1850a48eeea9 / 1850a48eeea9 / match=true", "result": "PASS"},
+    {"id": "T4", "name": "FRAME per-organ file_sha measurable", "before": "source_file_sha=no-source / runtime_file_sha=644728d2381e / drift_count=1 / contradictions=1", "after": "source_file_sha=644728d2381e / runtime_file_sha=644728d2381e / drift_count=0 / contradictions=[]", "result": "PASS"},
+    {"id": "T5", "name": "Runtime-state.json freshness", "before": "2026-10-02 (15d old)", "after": "2026-10-17 13:19 MYT (fresh)", "result": "PASS"},
+    {"id": "T6", "name": "Runtime-state.reconciled.json freshness", "before": "2026-10-02", "after": "2026-10-17 13:19 MYT", "result": "PASS"}
+  ],
+  "negative_tests": [
+    {"id": "N1", "name": "Backwards-compat: dict key `name` falls back when import_name absent", "result": "passes by design — `paths.get('import_name') or name`"},
+    {"id": "N2", "name": "site-packages rglob fallback preserved for true third-party installs", "result": "code path kept, only reordered after primary"},
+    {"id": "N3", "name": "Empty source_path or wrong subdir produces no-source-init (graceful UNVERIFIED)", "result": "PASS — file_sha returns 'no-source-init' string; md5_match requires non-placeholder"},
+    {"id": "N4", "name": "Script remains read-only — no git ops, no service restart, no commit message produced", "result": "PASS"}
+  ],
+  "fail_closed_checks": [
+    {"id": "F1", "name": "If source/__init__.py genuinely differs from deployed, drift signals populate", "result": "DESIGN-CORRECT — md5_match=false; HUD surfaces as CONTRADICTION"},
+    {"id": "F2", "name": "Unverified state stays UNVERIFIED, not coerced to PASS", "result": "DESIGN-CORRECT — `no-source-init` is preserved as a string, not silently promoted"}
+  ],
+  "blast_radius": {
+    "files_changed": 1,
+    "files_forbidden_change": 0,
+    "service_restarts": 0,
+    "git_ops": 0,
+    "external_calls": 0,
+    "downstream_consumers_affected": "HUD (cockpit/generate-hud-state.sh reads runtime-identity indirectly via /var/lib/arifos/state/cockpit/)"
+  },
+  "rollback": "cp /root/AAA/cockpit/receipts/2026-10-17-fi002/runtime-identity.py.BEFORE_PATCH /root/AAA/cockpit/runtime-identity.py",
+  "git_diff_pre_review": "PATCH SCOPE: lines 36-58 (organ dict) + lines 109-130 (md5 lookup). Total: ~22 lines of code change in 1 file. No imports added. No external dependencies. Backward-compatible (existing arifOS path unchanged).",
+  "secret_scan": "PASS — no credentials, tokens, or private keys introduced",
+  "before_after": {
+    "metrics": {
+      "md5_match_organs": {"before": "1/3", "after": "3/3"},
+      "runtime-state.json age_days": {"before": 15, "after": 0},
+      "drift_count": {"before": 1, "after": 0},
+      "contradictions": {"before": 1, "after": 0},
+      "no-source-init_organs": {"before": 2, "after": 0}
+    },
+    "answer_to_brief": "Reality (md5 identity) can now alter future behavior: any future drift between source and deployed for A-FORGE/FRAME will surface as CONTRADICTION in this JSON, propagating to HUD/ECW/canary. Before patch, identity was unprovable for 2/3 organs — every gate that depended on it was silently degraded."
+  }
+}
