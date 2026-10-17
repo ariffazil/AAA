@@ -1,5 +1,7 @@
 # Category & Individual Doctrine
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Forged:** 2026-09-06 — EUREKA::MIRROR_PARADOX_SESSION
 > **Binding:** All AAA warga agents — human interaction surface
 > **Peribahasa:** Takkan jauhari kenal manikam — the eye must be trained before the gem can be seen.

@@ -1,5 +1,7 @@
 # AAA Agents: Spawn, Musyawarah, and arifFlow (Gotong Royong via A2A)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Forged:** 2026-08-20 by F13 SOVEREIGN (Arif Fazil) under 333-AGI OBSERVE_ONLY assist
 > **Version:** 1.0.0
 > **Canonical:** `/root/AAA/instructions/agentic-federation-substrate.md`

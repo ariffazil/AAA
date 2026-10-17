@@ -1,5 +1,7 @@
 # F13-RATIFICATION-READINESS — attention-init-boundary.md
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Analysis date:** 2026-09-12
 > **Authority:** ARIF (Human Sovereign, F13)
 > **Mode:** READ_ONLY — no mutation beyond this file

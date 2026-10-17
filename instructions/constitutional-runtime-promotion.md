@@ -1,5 +1,7 @@
 # Constitutional Runtime Architecture & Epistemic Promotion
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Ratified: 2026-08-31 by F13 SOVEREIGN (Arif)**
 > **DITEMPA BUKAN DIBERI** — Invariant truth is promoted, not assumed.
 

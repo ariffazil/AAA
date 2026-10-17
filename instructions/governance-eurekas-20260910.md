@@ -1,5 +1,7 @@
 # ARIFOS::GOVERNANCE_EUREKAS::v1 — 12 Constitutional Primitives
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged 2026-09-10 by F13 sovereign. Hardcode-grade invariants derived from zen compression session.
 > 
 > Criteria: survive implementation change, survive re-examination, can influence future behavior.

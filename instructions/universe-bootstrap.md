@@ -1,5 +1,7 @@
 # Universe Bootstrap — Civilization-First Birth Order (F13, 2026-08-30)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **CANONICAL:** `/root/AAA/prompts/UNIVERSE_BOOTSTRAP.md` (FEDERATION::UNIVERSE_BOOTSTRAP::v1, sovereign verbatim)
 > **Machine atlas:** `/root/AAA/UNIVERSE.yaml` · **Rule:** this hierarchy loads BEFORE tools, registries, ports, models.
 
