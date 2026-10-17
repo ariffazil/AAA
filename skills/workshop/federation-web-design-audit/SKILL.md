@@ -51,6 +51,21 @@ Use when the sovereign reports visual / IA / architectural drift on a federation
 
 5. **Probe sibling narrative pages** (pages that hand-author extra inline `<style>` on top of the hub). This catches the "one page is the prototype" smell — if `doctrine/` has 7.5KB inline style, `constitution/` and `atlas/` probably do too. Don't quote body counts from one page; quote the **distribution** across siblings.
 
+5b. **Probe the live-state contract, not just the markup.** A cockpit/dashboard page is usually a renderer over one or two JSON endpoints. Fetch them and the generator source:
+
+   ```bash
+   curl -s https://<host>/state.json | python3 -m json.tool | head -40
+   curl -s https://<host>/truth-contract.json | python3 -m json.tool | head -40
+   grep -rn "generated_at\|legacy_diagnosis\|legacy_verdict" /root/<organ>/scripts/
+   ```
+
+   Check three things, in this order:
+   - **Freshness** — `generated_at` vs now; is a timer/cron actually installed? A compiler with no timer is a hand-copied file.
+   - **Era mixing** — a nested `fq` block may carry `legacy_verdict` while the canonical verdict is top-level. Reading the nested field silently yields `UNKNOWN` while the engine says `FLOWING`.
+   - **Snapshot vs live** — a snapshot file (`map_atlas_echo.json`, 5h old) may list actors that no longer exist in the live flow. Counting `held=true` from the snapshot produces phantom holds on a page whose own P0 says "every pixel points to a witnessed reality".
+
+   Compare the page's rendered numbers against the live engine (`curl :7073/health`), not against the page's own cache. A number that is merely old is `live_probe` with a freshness caveat; a number sourced from a dead actor is a **truth-contract defect**.
+
 6. **Classify each finding by evidence class** — `live_probe` / `configuration` / `structural` / `inferred`. Anything written about visual consistency from a text-only HTML scrape is at best `structural`; visual claim without a screenshot is `inferred`. State the class beside the finding, not just the claim.
 
 7. **Produce ranked fix proposals.** For each finding, propose a fix with:
@@ -91,6 +106,10 @@ Use when the sovereign reports visual / IA / architectural drift on a federation
 **P7 — overwrite the source file by accident.** The audit file is `/root/forge_work/site-audit/<topic>-audit-<date>.md`. Do not write to `/root/.hermes/skills/...`, the design-system source files, or any production page file. Stops mistakes that become irreversible on a live public site.
 
 **P8 — answer "what is this for" before answering "what's wrong".** When the sovereign asks about the page system as a whole, the response should start with **what the page is** (it's a /words/* hub system serving essay-style content), not **what's wrong** (inline style drift, missing nav items, etc.). The why-it-exists context precedes the divergence diagnosis. Otherwise the sovereign reads the audit as "everything is broken" instead of "one subsystem needs alignment".
+
+**P9 — treat a snapshot as live.** A JSON file with a recent mtime is not a live source. `map_atlas_echo.json` was 5 hours old and listed 6 actors marked `held=true` that did not exist in the live `:7073` per_actor map (which showed 0 held). Always compare snapshot contents to the engine's live endpoint before quoting a count. The fix is not "delete the snapshot" — it is "prefer live, fall back to snapshot, and label the source".
+
+**P10 — count resolved records as active holds.** A decision ledger with verdicts `SEAL / RESOLVED / PARTIAL / UNKNOWN` is not a hold queue. Counting every non-SEAL row inflates "machine holds" and makes a calm system look blocked. Active holds are explicit (`held=true`, `throttled=true`, `verdict=HOLD`), not "anything that is not a SEAL". Separate historical ledger counts from active flow holds in the payload, and never take `max()` across the two.
 
 ## Refusal surface
 
