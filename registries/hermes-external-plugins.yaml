@@ -1,0 +1,117 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# HERMES External Plugin Registry — CORRECTED
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOT for: external plugin admission to MY HERMES runtime
+# Policy: plugins add eyes and measurement tools, NOT hands or authority
+# Canonical doctrine: ARIFOS::HERMES_EXTERNAL_PLUGIN_FORGE::v1
+# CORRECTED: 2026-10-17 (Arif Fazil reality check — previous version
+#   presented generic Python packages as Hermes plugins. That was wrong.)
+# Caretaker: 333-AGI (registry), Arif Fazil (authorization)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+meta:
+  version: 1.1.0
+  corrected: 2026-10-17
+  correction_note: >
+    v1.0.0 incorrectly listed hermes-plugin-guard, context-audit,
+    hermes-session-diff, and qdrant-memory as installable Hermes plugins.
+    They are NOT. hermes-plugin-guard is a generic Python package on PyPI.
+    context-audit exists as PyPI/npm but not as a Hermes plugin.
+    hermes-session-diff and qdrant-memory do not exist at all.
+    v1.1.0 reflects actual reality.
+  authority: ARIF (F13 SOVEREIGN)
+  internal_control: arif-core (OpenCode plugin, KVM8)
+  hermes_location: KVM4
+
+# ── Actual MY HERMES plugin state (OBSERVED by Arif 2026-10-17) ────────────
+
+hermes_actual_state:
+  built_ins:
+    - browser
+    - memory
+    - observability
+    - context_engine
+    - kanban
+    - image_gen
+    - video_gen
+    - web
+    - security-guidance
+  custom_plugins:
+    - floor_gate_witness
+    - hermes-snapcompact
+    - identity-interceptor
+    - lane_switch
+    - mode_first_gate
+    - q-collapse-anchor
+    - silence-narration-guard
+    - well_3baik_capture
+    - well_human9_route
+  enabled:
+    - hermes-snapcompact
+    - lane_switch
+    - mode_first_gate
+
+# ── Capability gaps (from Arif's forge directive) ──────────────────────────
+# These are the IDEAS, not existing plugins. Build as custom or port.
+
+capability_gaps:
+
+  admission_scanning:
+    idea: Static review of candidate plugins before enabling
+    existing_coverage: Hermes built-in install-time security scan exists
+    gap: No pre-install review tool for community plugins
+    recommendation: BUILD as custom plugin (floor_gate_witness already does gate work — extend?)
+    status: IDEA_ONLY
+
+  context_measurement:
+    idea: Per-turn token estimates, largest tool output, compaction events
+    existing_coverage: Hermes built-in observability (Langfuse) + context_engine
+    gap: No metadata-only local SQLite measurement separate from Langfuse
+    recommendation: BUILD as custom plugin or extend observability
+    status: IDEA_ONLY
+
+  claim_evidence_binding:
+    idea: Record provisional claims before probe, link observations after
+    existing_coverage: arif-core (OpenCode) has tool.execute hooks; HERMES has pre_llm_call
+    gap: No claim-evidence pairing in HERMES runtime
+    recommendation: BUILD as custom plugin for HERMES, or port concept to arif-core (OpenCode)
+    status: IDEA_ONLY
+
+  session_diff:
+    idea: Persistent file diffs and edit history across session
+    existing_coverage: Hermes built-in has inline diff previews (v0.21+)
+    gap: No persistent cross-session diff view in Desktop
+    recommendation: BUILD as custom plugin if Desktop diff adds value
+    status: IDEA_ONLY
+
+# ── What to build (not buy) ────────────────────────────────────────────────
+
+build_order:
+  1_extend_existing:
+    - >
+      floor_gate_witness already does gate work — check if admission
+      scanning can be added as a mode/extension rather than new plugin
+    - >
+      well_3baik_capture + well_human9_route already do observation —
+      check if context measurement can piggyback on these hooks
+  2_new_custom_plugins:
+    - >
+      claim-evidence-binder: pre_llm_call records claim text,
+      tool result links evidence, resolution recorded.
+      Smallest useful version: just log claims + outcomes.
+    - >
+      context-meter: if observability/Langfuse doesn't cover local
+      metadata-only SQLite measurement, build thin wrapper.
+  3_do_not_build:
+    - Another memory provider (qdrant-memory idea rejected)
+    - Another judgment gate (floor_gate_witness + arifOS own this)
+    - Another execution owner (A-FORGE owns this)
+    - Another identity system (arif-core + identity-interceptor own this)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Core value remains: external plugins add EYES and measurement tools,
+# NOT hands, judgment authority, or second identity.
+# But BUILD them — don't pretend they exist upstream.
+#
+# DITEMPA BUKAN DIBERI ⚒️
+# ═══════════════════════════════════════════════════════════════════════════════
