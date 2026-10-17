@@ -1,0 +1,301 @@
+# INIT SOUL + SHADOW CONTRACT — Proposal for arif_session_init
+
+**Status:** PROPOSAL — autonomous design doc, no code patch
+**Forged:** 2026-06-12 by 333-AGI on F13 directive
+**Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil)
+**Target tool:** `arif_session_init` (canonical #1 of 13, Stage 000, Lane AGI)
+**Target repo:** `ariffazil/arifos` — file `arifosmcp/schemas/session.py`
+
+---
+
+## 1. THE GAP (F2 honest audit)
+
+`arif_session_init` already emits a rich `SessionManifest` with 14 sub-schemas:
+
+- `SessionState` — identity binding
+- `EmbodimentCard` — VPS-root disclosure
+- `CausalityWarning` — atomic-button awareness
+- `ExecutionLaw` — what-requires-what
+- `AttentionSurface` — what to watch
+- `ToolSurface` — semantic capability map
+- `RiskLeash` — risk boundary
+- `SessionWarnings` — computed warnings
+- `OperatorIdentity` (ToM-1) — verified operator identity
+- `IntentModel` (ToM-1) — declared + inferred purpose
+- `BeliefState` (ToM-1) — operator/world beliefs with provenance
+- `PreferenceMemory` (ToM-1) — provenance-bound preferences
+- `FalseBeliefFlag` (ToM-1) — claim-vs-evidence detection
+- `WellMirrorEnhanced` (ToM-1) — operator readiness mirror
+- `SessionContinuity` — prior-session linkage
+- `ConsentBoundaries` — explicit consent
+- `ContextCompletenessReceipt` — v3.1 context score
+
+**What's missing:**
+
+- `model_soul` — the truthful operating profile of the LLM in use
+- `model_shadow` — the known failure modes of that LLM
+
+Without these two fields:
+
+- Every session boots with a *generic* model assumption
+- F1-F13 floors apply generically (same posture for any LLM)
+- The substrate cannot enforce **model-adaptive** governance
+- Known hazards (e.g. M3's `phantom_proper_noun`) are discovered **post-incident**, not **pre-session**
+
+The shadow incident `SHADOW-2026-06-12-0001` (Ismail Marzuki Ghazali) is a direct example: an M3-known failure mode slipped through init because init didn't load shadow at boot.
+
+---
+
+## 2. THE PROPOSAL — TWO NEW FIELDS
+
+Add to `SessionManifest`:
+
+```python
+class ModelSoulCard(BaseModel):
+    """Truthful operating profile of the LLM bound to this session."""
+
+    provider: str                           # e.g. "minimax"
+    family: str                            # e.g. "MiniMax-M3"
+    version: str                           # e.g. "MiniMax-M3"
+    verified: bool = False
+    verified_at: str | None = None         # ISO timestamp
+    cooling_ledger_ref: str | None = None  # path to cooling ledger
+
+    archetype: str | None = None           # e.g. "frontier_agentic_longcontext_moe"
+    trust_posture: str = "instrument_not_oracle"
+
+    strengths: list[str] = Field(default_factory=list)
+    weak_domains: list[str] = Field(default_factory=list)
+
+    ideal_use: list[str] = Field(default_factory=list)
+    not_for_ground_truth: list[str] = Field(default_factory=list)
+
+
+class ModelShadowCard(BaseModel):
+    """Known failure modes of the LLM bound to this session."""
+
+    known_patterns: list[str] = Field(default_factory=list)
+    incident_refs: list[str] = Field(default_factory=list)
+    severity: str = "low"                  # low | medium | medium_high | high
+    mitigation_defaults: list[str] = Field(default_factory=list)
+
+
+# Add to SessionManifest:
+model_soul: ModelSoulCard | None = None
+model_shadow: ModelShadowCard | None = None
+```
+
+---
+
+## 3. INPUT EXTENSION (what caller provides)
+
+The current `arif_session_init` already accepts:
+
+- `actor_id`, `ack_irreversible`, `session_id`
+- `epoch_id`, `previous_session_hash`
+- `declared_model_key`
+- `actor_signature`, `nonce`
+- `counterparty`, `context`, `evidence`
+- `tooling`, `agent_policy`
+
+**Add:**
+
+```python
+class InitRequest(BaseModel):
+    # ... existing fields ...
+
+    # NEW: model soul/shadow gating
+    require_soul_profile: bool = True
+    require_shadow_profile: bool = True
+    fail_closed_on_missing_registry: bool = True
+
+    # NEW: explicit incident gating
+    active_shadow_gates: list[str] = Field(default_factory=list)
+    # e.g. ["PHANTOM_PROPER_NOUN", "NARRATIVE_FILL", "WESTERN_NAMING_FRAME"]
+
+    # NEW: person-name policy pack
+    patronymic_mode: str | None = None
+    # e.g. "malay" activates Malay onomastic rules from boot
+```
+
+---
+
+## 4. OUTPUT EXTENSION (what init returns)
+
+The current `SessionManifest` output is well-defined. **Add 2 fields:**
+
+```python
+# In SessionManifest:
+model_soul: ModelSoulCard | None = None
+model_shadow: ModelShadowCard | None = None
+```
+
+Plus a derived `floor_posture` extension that pulls from the soul+shadow:
+
+```python
+class FloorPosture(BaseModel):
+    """Per-session floor posture derived from soul+shadow+incidents."""
+
+    F02: str = "default"        # default | strict_grounding
+    F07: str = "default"        # default | elevated_humility
+    F09: str = "default"        # default | anti_hantu_high
+    F11: str = "default"        # default | auth_required
+    F13: str = "default"        # default | sovereign_final
+
+    notes: list[str] = Field(default_factory=list)
+    # e.g. ["M3 has phantom_proper_noun incident — F02 set to strict_grounding for this session"]
+```
+
+---
+
+## 5. IMPLEMENTATION PSEUDOCODE
+
+```python
+async def arif_session_init(req: InitRequest) -> SessionManifest:
+    manifest = SessionManifest(...)
+    # ... existing init flow ...
+
+    # NEW: load soul+shadow
+    if req.declared_model_key:
+        soul = load_model_soul_from_registry(req.declared_model_key)
+        shadow = load_model_shadow_from_registry(req.declared_model_key)
+        if (req.require_soul_profile and not soul) or \
+           (req.require_shadow_profile and not shadow):
+            if req.fail_closed_on_missing_registry:
+                manifest.status = "HOLD"
+                manifest.warnings.identity_unverified = True
+                manifest.warnings.model_identity_unverified = True
+                return manifest
+
+        manifest.model_soul = soul
+        manifest.model_shadow = shadow
+
+        # Derive per-session floor posture
+        manifest.floor_posture = derive_floor_posture(
+            soul=soul,
+            shadow=shadow,
+            active_incidents=get_recent_incidents(req.declared_model_key),
+            patronymic_mode=req.patronymic_mode,
+        )
+
+    return manifest
+```
+
+---
+
+## 6. THE 7 REPOS THIS TOUCHES (F2 honest)
+
+| Repo | Touch | Authority |
+|------|-------|-----------|
+| `ariffazil/arifOS` | **Primary**. Patch `arifosmcp/schemas/session.py` + `arifosmcp/runtime/tools.py`. Update `constitutional_map.py` if needed. | F13 (constitutional surface mutation) |
+| `ariffazil/AAA` | **Secondary**. Update `registries/model_soul.yaml` to include `floor_posture_examples`. Possibly add a `registries/shadow_incidents.yaml`. | 333-AGI (T1, autonomous) |
+| `ariffazil/well` | Indirect. `well_mirror_enhanced` already in SessionManifest. The new fields don't add WELL responsibilities. | None |
+| `ariffazil/geox` | None directly. But GEOX could *use* the new fields to gate prospect-evaluate behavior on shadow_pattern = "BM_grammar_drift". | None |
+| `ariffazil/wealth` | None directly. But WEALTH could refuse to emit a stock verdict if shadow_pattern = "confidence_without_ground" is active. | None |
+| `ariffazil/A-FORGE` | Indirect. Forge needs to honor the new `tool_policy` derived from shadow. | None |
+| `ariffazil/ariffazil` | None. Personal site. | None |
+
+---
+
+## 7. THE 3-LAYER ARCHITECTURE (mental model for Arif)
+
+```
+Layer 1 (already exists):   Constitutional Floors F1–F13
+                            → generic, model-agnostic
+
+Layer 2 (PROPOSED, this doc): Model Soul + Shadow binding at init
+                              → model-adaptive, derived from registry
+                              → per-session floor posture
+
+Layer 3 (future, not in scope): Dynamic risk adaptation during session
+                                → tools report near-miss → floor tightens
+                                → still F13 territory
+```
+
+This is **additive** to existing architecture, not replacement. No floor removed, no tool removed, no canonical 13-tool contract modified. The change is *adding* 2 fields to a schema + *adding* 1 input field to a request.
+
+---
+
+## 8. WHY THIS IS *NOT* A FULL REWRITE
+
+- `SessionManifest` is already 17 sub-schemas deep
+- Adding 2 fields to it is **additive, not breaking**
+- `arif_session_init`'s existing logic for identity binding, embodiment disclosure, risk leash, ToM-1 scaffold is **preserved**
+- The new fields sit alongside `model_identity`-like data, which is already partially there (`declared_model_key` on input)
+
+This is a **2-file patch** in `arifOS`:
+1. `arifosmcp/schemas/session.py` — add `ModelSoulCard`, `ModelShadowCard`, `FloorPosture`. Add 2 fields to `SessionManifest`. Add 3 fields to init request.
+2. `arifosmcp/runtime/tools.py` — wire the new fields in `arif_session_init` handler. Read from `model_soul.yaml` registry.
+
+Plus 1 file in `AAA`:
+1. `/root/AAA/registries/model_soul.yaml` (already forged) — add `floor_posture_examples` per model.
+
+---
+
+## 9. F13 TERRITORY (what needs Arif's call)
+
+This is **not** F13 territory if the patch is just schema+handler. But it is F13 if:
+- `arif_session_init`'s public MCP contract surface changes (the 13-tool count)
+- Any floor is *added* to F1-F13 (this proposal does NOT add floors — it only adapts posture of existing floors)
+- `model_soul.yaml` becomes canonically sealed (F11 sig territory)
+
+So:
+
+- **Schema addition** (`ModelSoulCard`, `ModelShadowCard`, `FloorPosture` classes) — autonomous, T1
+- **Handler patch** (`arif_session_init` reads `model_soul.yaml` at boot) — autonomous, T1
+- **Registry update** (`model_soul.yaml` is the SOT for soul/shadow per model) — autonomous, T1
+- **AAA cockpit UI update** (Cockpit shows soul+shadow on session start) — autonomous, T1
+- **Wire into MCP public surface** (so external clients see the new fields) — T2 (announce + 10s window)
+- **F11 sovereign sig on the registry** — F13 territory
+- **Update public docs / arifOS.arif-fazil.com** — F13 territory (public statement)
+
+---
+
+## 10. THE 3-MINUTE PROOF (for Arif)
+
+Before any patch, this can be tested by:
+1. Loading `/root/AAA/registries/model_soul.yaml` (already exists)
+2. Verifying that `models[0].id == "minimax-M3"`, `models[0].shadow.failure_modes` includes `PHANTOM_PROPER_NOUN`
+3. Verifying that `shadow_incidents[0].id == "SHADOW-2026-06-12-0001"`
+4. Verifying the cross_model_shadow_taxonomy has 5 types
+
+The substrate is **ready**. Only the wiring is missing.
+
+---
+
+## 11. ROLL-OUT SEQUENCE (when Arif approves)
+
+1. **T1 (autonomous):**
+   - Patch `arifosmcp/schemas/session.py` to add 3 Pydantic models
+   - Patch `arifosmcp/runtime/tools.py` to load `model_soul.yaml` at init
+   - Add 2 fields to `SessionManifest`
+   - Update `model_soul.yaml` with `floor_posture_examples` block
+   - Add `shadow_incidents.yaml` registry mirror in AAA
+2. **T1 (autonomous):**
+   - Add 24 tests in `tests/runtime/test_session_init_soul_shadow.py` covering:
+     - Soul loaded correctly
+     - Shadow loaded correctly
+     - Floor posture derived correctly
+     - `fail_closed_on_missing_registry` works
+     - `patronymic_mode="malay"` activates name policy
+3. **T1 (autonomous):**
+   - Append to local outcomes mirror
+4. **T2 (announce + 10s):**
+   - Restart arifOS service
+   - Verify with `curl -s http://127.0.0.1:8088/mcp ...` that new fields appear
+5. **F13 (Arif decides):**
+   - Seal canonically via `arif_vault_seal` (F11 sig)
+   - Update public docs
+   - Wire into Cockpit UI
+
+---
+
+## 12. ONE-SENTENCE EUREKA
+
+> The constitutional kernel has 17 sub-schemas in `SessionManifest` but is *model-agnostic* — adding `ModelSoulCard` and `ModelShadowCard` makes the kernel *model-adaptive* without adding floors, breaking contracts, or rewriting tools.
+
+This is a **2-file surgical patch**, not a redesign. The 13-tool canonical surface stays at 13. The 19-tool public surface stays at 19. The constitutional contract is preserved. The new fields are *additive disclosure*, not replacement.
+
+---
+
+DITEMPA BUKAN DIBERI — the shadow incident is the seed; the spec is the soil; the patch is the bloom.

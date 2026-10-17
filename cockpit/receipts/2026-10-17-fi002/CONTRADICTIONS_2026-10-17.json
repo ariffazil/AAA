@@ -1,0 +1,60 @@
+{
+  "session": "FI-002 2026-10-17 13:18 MYT",
+  "method": "live HUD + git status + runtime state + cockpit ecw",
+  "findings": [
+    {
+      "id": "C1",
+      "title": "FRAME source_init_md5 absent — runtime identity unprovable",
+      "severity": "HIGH",
+      "evidence": "HUD panel 2_RUNTIME.md5_identity.frame.source_init_md5 = no-source-init; deployed_init_md5 = e3b0c44298fc (zero-hash, suspicious); runtime_identity_proof.contradictions[0].drift_signals = source_file_sha != runtime_file_sha; pkg_version = import-error:ModuleNotFoundError",
+      "consequence": "Any FORGE mutation that touches FRAME cannot pass md5-equivalence gate; FRAME itself can't mark its own freshness",
+      "authority_owner": "555-ASI (FRAME is measurement organ; 555 verifies, 333 builds)",
+      "fixability_now": "PARTIAL — locate source/init.py in /root/AAA or /root/FRAME; if absent, surface as UNVERIFIED rather than rebuild"
+    },
+    {
+      "id": "C2",
+      "title": "A-FORGE source_init_md5 absent — same identity gap",
+      "severity": "HIGH",
+      "evidence": "HUD panel 2_RUNTIME.md5_identity.aforge = no-source-init / no-deployed-init / md5_match=false",
+      "consequence": "A-FORGE is the executor; unprovable identity means every SEAL-chained execution has a weaker provenance root than arifOS",
+      "authority_owner": "555-ASI + A-FORGE lane (FI-001)",
+      "fixability_now": "PARTIAL — locate /opt/a-forge/app/__init__.py or equivalent; surface as UNVERIFIED if absent"
+    },
+    {
+      "id": "C3",
+      "title": "Push hygiene blocked 12 days — loops 6,7 in carry_forward",
+      "severity": "MEDIUM",
+      "evidence": "carry_forward open_loops 6,7 PENDING_F13_BINARY since 2026-10-05; HUD root_contract.waiting.held=7 oldest=21751m; HERMES 7 commits ahead of origin/main + AAA + uncommitted trees",
+      "consequence": "Local source diverges from public mirror; receipt-attested federation reality cannot be re-witnessed by external parties",
+      "authority_owner": "ARIF (F13 binary only — git push is F13-class per CLAUDE.md)",
+      "fixability_now": "NONE — listed under MENUNGGU ARIF, no execution"
+    },
+    {
+      "id": "C4",
+      "title": "8 SURFACE_DRIFT signals — declared vs published tool count",
+      "severity": "LOW (informational)",
+      "evidence": "ECW drift_classes_hit.SURFACE_DRIFT=8 across 11 organs; surface_declared=3, semantic_clean=2",
+      "consequence": "A-FORGE claims 122 tools, declared 3 surfaces — readers may overclaim; not authority drift",
+      "authority_owner": "555-ASI",
+      "fixability_now": "OBSERVABLE — generate per-organ truth sheet for one organ first (e.g. GEOX: 20 live vs GEOX.md claim)"
+    },
+    {
+      "id": "C5",
+      "title": "HUD freshness=STALE — last_consequence 2457m ago",
+      "severity": "LOW",
+      "evidence": "HUD root_contract.freshness=STALE; last_consequence=RECEIPT_SMOKE_WRITE_BENIGN_2026-10-02 (~17d); mission_age_min=21751",
+      "consequence": "Mission-health > machine-health doctrine violated: no active governed mission recorded",
+      "authority_owner": "ARIF (mission definition is sovereign) or A-FORGE (can refresh HUD)",
+      "fixability_now": "PARTIAL — A-FORGE can refresh HUD generator, but mission field is ARIF-owned"
+    },
+    {
+      "id": "C6",
+      "title": "Runtime state JSON 15d old",
+      "severity": "LOW",
+      "evidence": "/root/AAA/federation/runtime-state.json generated_at 2026-10-02; runtime-state.reconciled.json same; HUD generator runs fresh",
+      "consequence": "Stale SOT — cockpit may show old state; HUD generator is fresher",
+      "authority_owner": "AAA (FI-008 generator)",
+      "fixability_now": "EXECUTE_SAFE_SUBSET — trigger generator from HUD path; one-command"
+    }
+  ]
+}
