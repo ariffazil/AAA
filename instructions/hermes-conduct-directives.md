@@ -1,6 +1,6 @@
 # HERMES CONDUCT DIRECTIVES — F13-sealed conduct rules
 
-> **Status:F13_RATIFIED_SOVEREIGN (2026-10-05)
+> **Status:** F13_SEALED · 2026-10-05 → 2026-10-15
 > **Moved from:** SOUL.md mouth 2026-10-16 (F13 directive "buang bangang bloat" — mouth returns to pointer+voice only).
 > **Why here:** these are F13-sealed conduct directives. They are doctrine, not voice. Doctrine lives in /root/AAA/; the mouth (SOUL.md) points here. Anti-Bangang LAW 8 (no duplicate).
 > **Load:** always-on behavioral core is restated lean in SOUL.md "Mulut". These full texts are the authoritative expansion, loaded when a specific lane/situation triggers.

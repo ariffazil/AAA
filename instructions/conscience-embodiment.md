@@ -1,7 +1,7 @@
 # Conscience Embodiment — Kernel & Agent Doctrine
 
 > Forged 2026-08-30 by 333-AGI from sovereign directive (i-arif reflection session, kanak2 context).
-> Status: F13_RATIFIED_SOVEREIGN (2026-09-12)
+> Status: F13_RATIFIED_CHAT · 2026-10-17 · "aku sahkan"
 
 ## Origin
 
