@@ -229,3 +229,10 @@ audio/voice-registry.json
 # runtime payload relocated out of the tree (2026-10-17 pure-attention)
 _registry_2026-10-11
 node_modules/
+
+# live runtime homes relocated to /root/runtime (symlinked, 2026-10-17)
+codex
+opencode
+claude
+claude-share
+hermes
