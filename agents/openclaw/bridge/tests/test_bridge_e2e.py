@@ -137,4 +137,3 @@ if n_fail:
         if m == FAIL:
             print(f"  {FAIL} {n}: {d}")
     sys.exit(1)
-sys.exit(0)

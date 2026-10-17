@@ -52,7 +52,7 @@
       "notes": "PETRONAS geologist KLCC. Friend. 60 DM msgs. Session shows as 'al'."
     },
     "izzu": {
-      "name": "Izzu",
+      "name": "Izzudin Tajjudin (Izzu / Mohd)",
       "telegram_id": "1237635275",
       "tier": 1,
       "status": "DM_ACTIVE",
@@ -61,8 +61,8 @@
       "days_since_interaction": 4,
       "lane_active": true,
       "dependency_health": "OK",
-      "alert": "VERIFY NEEDED: person-register shows 1 fact referencing wrong telegram ID. Session shows name as 'Mohd'. Confirm Izzu = Mohd?",
-      "notes": "1157 msgs, 167k tokens. Heavy user. Identity mismatch between registries."
+      "alert": null,
+      "notes": "1157 msgs, 167k tokens. Heavy user. Identity resolved: Mohd = Izzu (F13 2026-10-16)."
     },
     "aidel": {
       "name": "Aidel Tasuki",

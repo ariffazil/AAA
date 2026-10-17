@@ -13,7 +13,7 @@
 # NOT every minute polling.
 
 set -u
-STATE_OUT="${STATE_OUT:-/root/AAA/cockpit/hud-state.json}"
+STATE_OUT="${STATE_OUT:-/var/lib/arifos/state/cockpit/hud-state.json}"
 
 # ── helper: read with explicit UNKNOWN ──────────────────────────────────────
 _r() {  # _r <jq_expr> <fallback>
@@ -83,7 +83,7 @@ fi
 active_lease="${lease_truth_state} · ${lease_truth_detail}"
 
 # ── MISSION ────────────────────────────────────────────────────────────────
-_epn="/root/AAA/cockpit/execution-path-next.json"
+_epn="/var/lib/arifos/state/cockpit/execution-path-next.json"
 if [[ -r "$_epn" ]]; then
   mission_objective=$(_r "$_epn" '.current_state.last_action' 'no active governed mission')
   task_id="exec-path@$(_r "$_epn" '.generated_at' '?')"

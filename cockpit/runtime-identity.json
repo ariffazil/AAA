@@ -1,55 +1,43 @@
 {
   "schema": "runtime-identity-v1",
-  "generated_at": "2026-10-03T04:05:23.127079+00:00",
+  "generated_at": "2026-10-17T05:22:00.871751+00:00",
   "sovereign_law": "Source \u2260 build \u2260 deployed \u2260 imported runtime; all four identities must be measurable; drift surfaced as CONTRADICTION",
   "organs": {
     "arifos": {
       "source_path": "/root/arifOS",
       "runtime_path": "/opt/arifos/app",
-      "source_sha": "dd6183d63",
+      "source_sha": "6ab3033f7",
       "source_file_sha": "5a98075d4827",
-      "runtime_file_sha": "no-runtime-dir",
+      "runtime_file_sha": "5a98075d4827",
       "pkg_version": "1!2026.9.6",
       "pkg_version_note": "semantic, not hash-equal to source_sha (different question)",
       "drift_signals": []
     },
     "aforge": {
       "source_path": "/root/A-FORGE",
-      "runtime_path": "/opt/a-forge",
-      "source_sha": "4b8ab1cc",
+      "runtime_path": "/opt/a-forge/app",
+      "source_sha": "03285e87",
       "source_file_sha": "e6ae31b0b04c",
-      "runtime_file_sha": "no-py",
+      "runtime_file_sha": "e6ae31b0b04c",
       "pkg_version": "import-error:ModuleNotFoundError",
       "pkg_version_note": "semantic, not hash-equal to source_sha (different question)",
       "drift_signals": []
     },
     "frame": {
-      "source_path": "/root/AAA/federation/frame",
+      "source_path": "/root/FRAME/src",
       "runtime_path": "/opt/frame/app",
-      "source_sha": "0d89f741",
-      "source_file_sha": "66d12e7c41e6",
+      "source_sha": "86c3738",
+      "source_file_sha": "644728d2381e",
       "runtime_file_sha": "644728d2381e",
       "pkg_version": "import-error:ModuleNotFoundError",
       "pkg_version_note": "semantic, not hash-equal to source_sha (different question)",
-      "drift_signals": [
-        "source_file_sha != runtime_file_sha"
-      ]
+      "drift_signals": []
     }
   },
   "summary": {
     "total_organs": 3,
-    "drift_count": 1,
-    "contradictions": [
-      {
-        "organ": "frame",
-        "drift_signals": [
-          "source_file_sha != runtime_file_sha"
-        ],
-        "source_sha": "0d89f741",
-        "pkg_version": "import-error:ModuleNotFoundError",
-        "note": "HASH-equivalence only; pkg_version is semantic, not drift"
-      }
-    ]
+    "drift_count": 0,
+    "contradictions": []
   },
   "md5_identity": {
     "arifos": {
@@ -59,17 +47,17 @@
       "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"
     },
     "aforge": {
-      "source_init_md5": "no-source-init",
-      "deployed_init_md5": "no-deployed-init",
-      "md5_match": false,
+      "source_init_md5": "1e061ecd0072",
+      "deployed_init_md5": "1e061ecd0072",
+      "md5_match": true,
       "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"
     },
     "frame": {
-      "source_init_md5": "no-source-init",
-      "deployed_init_md5": "e3b0c44298fc",
-      "md5_match": false,
+      "source_init_md5": "1850a48eeea9",
+      "deployed_init_md5": "1850a48eeea9",
+      "md5_match": true,
       "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'"
     }
   },
-  "integrity_hash": "0764e08570752e16aacadc6b99b1fdf79354e6d2e8bba31e685b91282a72df68"
+  "integrity_hash": "d854bc1c11ae78f45768da0ec5d79b60b2ddf105ebf7b60c673d6a2440bb46db"
 }

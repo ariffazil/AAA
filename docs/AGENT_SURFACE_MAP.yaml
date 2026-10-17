@@ -270,75 +270,32 @@ organs:
 
   wealth:
     port: 18082
-    transport: HTTP (MCP Streamable)
-    tools_count: 28
+    transport: HTTP (MCP Streamable, sessionful — stateless 2026-07-28 era NOT supported)
+    tools_count: 18
     tools:
-      # ── Routing ──
-      - {name: wealth_agent_path, layer: L0, authority: OBSERVE_ONLY}
-      # ── Capital Primitives ──
-      - {name: wealth_compute_npv, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_compute_irr, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_compute_emv, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_compute_evoi, layer: L1, authority: PREPARE_ONLY}
-      # ── Conservation ──
-      - {name: wealth_conservation_check, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_flow_check, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_runway_check, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_survival_engine, layer: L1, authority: PREPARE_ONLY}
-      # ── Risk ──
-      - {name: wealth_asymmetry_check, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_monte_carlo_simulate, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_confluence_check, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_fiscal_breakeven, layer: L1, authority: PREPARE_ONLY}
-      # ── Market ──
-      - {name: wealth_market_data, layer: L0, authority: OBSERVE_ONLY}
-      - {name: wealth_stock_analysis, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_personal_finance, layer: L1, authority: PREPARE_ONLY}
-      # ── Power & Capture ──
-      - {name: wealth_power_audit, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_capture_scan, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_epistemic_audit, layer: L1, authority: PREPARE_ONLY}
-      # ── Collapse ──
-      - {name: wealth_collapse_signature_scan, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_beautiful_mouse_scan, layer: L1, authority: PREPARE_ONLY}
-      # ── Wisdom ──
-      - {name: wealth_wisdom_evaluate, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_omni_wisdom, layer: L1, authority: PREPARE_ONLY}
-      - {name: wealth_boundary_governance, layer: L2, authority: EXECUTE}
-      # ── Handoff ──
-      - {name: wealth_arifos_judge_handoff, layer: L2, authority: EXECUTE}
-      # ── VAULT999 ──
-      - {name: wealth_vault_query, layer: L0, authority: OBSERVE_ONLY}
-      - {name: wealth_vault_write, layer: L3, authority: F13_REQUIRED}
-      # ── Registry ──
-      - {name: wealth_system_registry_status, layer: L0, authority: OBSERVE_ONLY}
-    resources_count: 15
-    resources:
-      - wealth://schema
-      - wealth://tools/registry
-      - wealth://prompts/index
-      - wealth://domains/index
-      - wealth://runtime/policy
-      - wealth://canon/002-human-law
-      - wealth://glossary
-      - wealth://federation/contract
-      - wealth://health
-      - wealth://reality/context
-      - wealth://market/sources
-      - wealth://risk/thresholds
-      - wealth://affordance/contracts
-      - wealth://handoff/arifos-schema
-      - wealth://replay/receipt-schema
-    prompts_count: 7
-    prompts:
-      - wealth_reality_intake_loop
-      - wealth_capital_diagnosis_loop
-      - wealth_risk_downside_loop
-      - wealth_market_reality_loop
-      - wealth_allocation_judgment_loop
-      - wealth_institutional_power_loop
-      - wealth_arifos_handoff_loop
-
+      # Reconciled 2026-10-15 (333-AGI) to LIVE sessionful tools/list on :18082.
+      # Previous draft advertised 28+ retired wealth_* names (e.g. wealth_system_registry_status
+      # → canonical name is capital_registry). Layer/authority carried from prior entries where
+      # the tool survived; new entries default conservatively. DRAFT doc — WAJIB-009 pending.
+      # ── Capital compute lane (canonical 18) ──
+      - {name: capital_primitive, layer: L1, authority: PREPARE_ONLY}
+      - {name: capital_health, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_diagnose, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_market, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_ledger, layer: L2, authority: COMPUTE_ONLY}
+      - {name: capital_registry, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_claims, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_entropy, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_indicator, layer: L1, authority: PREPARE_ONLY}
+      - {name: capital_entry_plan, layer: L1, authority: PREPARE_ONLY}
+      - {name: capital_backtest, layer: L1, authority: PREPARE_ONLY}
+      - {name: capital_breakeven, layer: L1, authority: PREPARE_ONLY}
+      - {name: capital_civx, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_polix, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_rank_sources, layer: L0, authority: OBSERVE_ONLY}
+      - {name: capital_read, layer: L0, authority: OBSERVE_ONLY}
+      - {name: wealth_judge_handoff, layer: L0, authority: OBSERVE_ONLY}
+      - {name: wealth_synthesize, layer: L0, authority: OBSERVE_ONLY}
   well:
     port: 18083
     transport: HTTP (MCP POST)
@@ -386,7 +343,7 @@ organs:
       # ... (10 more not shown in initial 20)
     prompts_count: 15
     prompts:
-      - well_init
+      - well_000_init
       - well_sense
       - well_qc
       - well_compose
