@@ -209,7 +209,22 @@ def main():
     verify_count = flow_state.get("verify_count", 48)
 
     # Extract held actors from map_atlas_echo (fq_orthogonal.raw.per_actor) and federation_state
-    per_actor = (
+    # 2026-10-17: prefer the live arifFlow per_actor. map_atlas_echo.json is a
+    # snapshot (measured 5h old) and carried 6 phantom holds — actors absent
+    # from the live flow — while :7073 reported 0 held. A truth contract that
+    # counts ghosts is worse than one that admits staleness.
+    live_per_actor = {}
+    try:
+        import urllib.request as _ur
+
+        _live_health = json.loads(
+            _ur.urlopen("http://127.0.0.1:7073/health", timeout=3).read()
+        )
+        live_per_actor = (_live_health.get("fq") or {}).get("per_actor") or {}
+    except Exception:
+        live_per_actor = {}
+
+    per_actor = live_per_actor or (
         atlas_echo.get("fq_orthogonal", {}).get("raw", {}).get("per_actor", {})
         or atlas_echo.get("map_echo", {}).get("flow_metrics", {}).get("per_actor", {})
     )
