@@ -1,1 +1,0 @@
-/root/AAA/knowledge-graph/dream-engine/wisdom.md
