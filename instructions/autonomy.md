@@ -1,5 +1,7 @@
 # Autonomy tiers (T0 / T1 / T1.5 / T2 / T3)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Reference:** `/root/AAA/governance/AGENCY_LEVELS.md` (the seven-agent-contract + L0–L6 ladder) and the **3-tier executor doctrine** in `/root/CLAUDE.md` §4.
 
 | Tier | Action class | Pattern |

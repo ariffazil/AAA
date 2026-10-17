@@ -4,7 +4,7 @@
 > **Constitutional floors:** F1, F2, F4, F6, F9, F13
 > **Source EUREKA:** `/root/AAA/canon/EUREKA-CONSEQUENCE-BINDING-2026-09-07.md`
 > **Lineage:** WITNESS_VOID_CANON::v2 · Capability Graph · R-BAP · Human Meaning Membrane
-> **Status:** RATIFIED & ACTIVE · 2026-09-07
+> **Status:F13_RATIFIED_SOVEREIGN (2026-09-07)
 
 ## 1. The Core Asymmetry: Consequence Over Prediction
 

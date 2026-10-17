@@ -1,5 +1,7 @@
 # Agentic Web — Browser, Fetch, Search, Explore Doctrine
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Forged:** 2026-08-10 by 333-AGI Δ MIND under F13 SOVEREIGN directive
 > **Binding for:** ALL AAA warga agents (OpenCode, Hermes, OpenClaw, Claude Code, Kimi Code, Codex, Grok Build)
 > **Canonical SOT:** `/root/forge_work/2026-08-10-browser-zen/BROWSER_ZEN_MAP.md`

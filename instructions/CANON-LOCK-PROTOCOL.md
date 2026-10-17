@@ -3,6 +3,9 @@
 > **Status:** ACTIVE (F13 GO 2026-09-16, applied by release lane 11:37–11:57 MYT;
 > kernel interceptor gates protected trees since 12:00Z — journal `AUTHORITY_GATE`).
 > **Wired:** 333-AGI 2026-09-16 (canon-mutate v1.1 hardening + seal-skill routing).
+> **Registry extended:** 2026-10-15 FI-008 (session SEAL-d3c1d6e4e8ab42c6) — three trees were
+> locked but absent from the registry, so no legal write path existed for them. Added to
+> `canon-mutate TREES`. The lock was not weakened: direct writes still EPERM.
 
 ## Protected trees (immutable)
 
@@ -11,6 +14,22 @@
 | `/root/AAA/governance` | chattr +i (dirs + files) |
 | `/root/AAA/canon` | chattr +i (dirs + files) |
 | `/root/arifOS/GENESIS` | chattr +i (dirs + files) |
+| `/root/AAA/skills` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/eurekas` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/instructions` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/IDENTITY` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/VAULT999` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/a2a` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/aaa` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/cockpit` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/contracts` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/constitution` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/federation` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/schemas` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/scars` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/proof` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/verdicts` | chattr +i (registered 2026-10-15) |
+| `/root/AAA/claim_ledger` | chattr +i (registered 2026-10-15) |
 
 ## The only legal write path
 
@@ -18,7 +37,7 @@
 ARIFOS_TRACE_ID=trc-<trace> /root/scripts/canon-mutate run <tree> -- <command...>
 ```
 
-- `canon-mutate status` — live lock state of all three trees
+- `canon-mutate status` — live lock state of all registered trees
 - `canon-mutate run <tree> -- <cmd...>` — unlock → run → relock → receipt (crash-safe: EXIT/INT/TERM trap relocks)
 - `canon-mutate unlock|lock <tree>` — manual multi-step mode (you MUST relock; receipt records `lock_restored:false` until you do)
 

@@ -1,5 +1,7 @@
 # Security
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 ## Secrets
 
 - **Secrets:** `/root/.secrets/kunci-root.env` (mode 600). `${ENV_VAR}` placeholders only. Never commit, never paste, never `> mode 600`. Audit: `/root/.secrets/INDEX.md`. Alias: `kunci-mas.env`.

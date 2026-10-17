@@ -1,5 +1,7 @@
 # Evidence Discipline — 333-AGI Binding
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Forged:** 2026-08-10 by F13 SOVEREIGN audit of /seal prompts
 > **Binding:** 333-AGI Δ MIND — ALL evidence packages to 888-APEX
 > **DITEMPA BUKAN DIBERI**

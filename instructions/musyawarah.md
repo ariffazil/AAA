@@ -1,5 +1,7 @@
 # Musyawarah Protocol (Pre-Reality Deliberation & Anti-Fluff Gate)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Canon:** F1 (Amanah) · F2 (Truth) · F3 (Tri-Witness) · F4 (Clarity - ΔS ≤ 0) · F13 (Sovereign Veto)
 > **Forged:** 2026-08-11 by F13 SOVEREIGN directive
 > **DITEMPA BUKAN DIBERI** — Consultation before reality mutation; zero sembang kosong.

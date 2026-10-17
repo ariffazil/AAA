@@ -1,5 +1,7 @@
 # Identity Continuity — Constitutional Capability Primitive
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Ratified:** 2026-09-08 (session SEAL-9964f1fa5d0849f9)
 > **Authority:** F13 SOVEREIGN (Arif Fazil) · 888-APEX verdict
 > **Origin:** Syed Khairuddin pilot · HERMES routing failure · Copilot identity-binding analysis

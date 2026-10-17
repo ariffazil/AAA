@@ -81,9 +81,9 @@ DiscoverableCapability ⇒ LiveResolvableOwner
 CanonicalCapability  ⇒ DiscoverableExactlyOnce
 ```
 
-Ghost test passed 2026-09-16: WELL legacy aliases (well_readiness,
-well_get_health, well_state, well_init, well_machine_state,
-well_assess_governance) — removal date 2026-09-01, 30d call count = 0,
+Ghost test passed 2026-09-16: WELL legacy aliases (well_validate_vitality,
+well_assess_reliability, well_validate_vitality, well_000_init, well_assess_reliability,
+well_detect_boundary) — removal date 2026-09-01, 30d call count = 0,
 caller set = ∅ → DELETE path (after patching 1 stale skill reference).
 well_system_registry_status answers DEPRECATED — remove from advertiser layer.
 
