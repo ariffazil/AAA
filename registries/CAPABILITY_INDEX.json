@@ -3,7 +3,7 @@
   "protocol": "MCP",
   "protocolVersion": "2026-07-28",
   "forgedAt": "2026-09-29T15:07:52+00:00",
-  "total_tools": 343,
+  "total_tools": 320,
   "digest": "16e78b27fbe030f7801d2b109cf5cf4cca7195ef07227c28bb80779b4e81a1b6",
   "servers": [
     {
@@ -56,7 +56,7 @@
     },
     {
       "name": "wealth",
-      "tools": 41
+      "tools": 18
     },
     {
       "name": "well",
@@ -67,7 +67,7 @@
     {
       "tool_name": "auth_pipeline",
       "server": "aforge",
-      "description": "AUTH INSTITUTIONAL PROTOCOL \u2014 the non-bypassable workflow that governs transitions from OBSERVE to MUTATE to DEPLOY.\n\nTHE THREE LAWS:\n  OBSERVE is free. (no contract needed)\n  MUTATE is governed. (contract + lease + evidence + receipt)\n  DEPLOY is sealed. (full pipeline + 555 verify + 888 judge + Lane A seal)\n\nPIPELINE:\n  DECLARE \u2192 FQ_GATE \u2192 LEASE \u2192 LOCK \u2192 EXECUTE \u2192 EVIDENCE \u2192 VERIFY \u2192 JUDGE \u2192 MERGE \u2192 SEAL \u2192 INGEST\n\nAUTH governs transitions, not agents. Claude Code + OBSERVE needs no contract.\nKimi + MUTATE needs the same contract as any other agent.\nThe institution does not care WHO holds the scalpel \u2014 only whether the cut requires a contract.",
+      "description": "AUTH INSTITUTIONAL PROTOCOL — the non-bypassable workflow that governs transitions from OBSERVE to MUTATE to DEPLOY.\n\nTHE THREE LAWS:\n  OBSERVE is free. (no contract needed)\n  MUTATE is governed. (contract + lease + evidence + receipt)\n  DEPLOY is sealed. (full pipeline + 555 verify + 888 judge + Lane A seal)\n\nPIPELINE:\n  DECLARE → FQ_GATE → LEASE → LOCK → EXECUTE → EVIDENCE → VERIFY → JUDGE → MERGE → SEAL → INGEST\n\nAUTH governs transitions, not agents. Claude Code + OBSERVE needs no contract.\nKimi + MUTATE needs the same contract as any other agent.\nThe institution does not care WHO holds the scalpel — only whether the cut requires a contract.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -82,7 +82,7 @@
     {
       "tool_name": "forge_abort",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Safe stop + rollback for running execution. Requires lease or session auth. P2.3 canonical gap fill.",
+      "description": "ACTUATOR · execute · MUTATE. Safe stop + rollback for running execution. Requires lease or session auth. P2.3 canonical gap fill.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -97,7 +97,7 @@
     {
       "tool_name": "forge_agent",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Agent identity management. Modes: register, status, list, kill. F11 AUTH.",
+      "description": "ACTUATOR · registry · OBSERVE. Agent identity management. Modes: register, status, list, kill. F11 AUTH.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -112,7 +112,7 @@
     {
       "tool_name": "forge_apex_emd",
       "server": "aforge",
-      "description": "Run EMD (Encode\u2192Metabolize\u2192Decode) validation gate on a goal. Detects drift, scope creep, anomalies. Returns C_dark and ToAC verdict.",
+      "description": "Run EMD (Encode→Metabolize→Decode) validation gate on a goal. Detects drift, scope creep, anomalies. Returns C_dark and ToAC verdict.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -127,7 +127,7 @@
     {
       "tool_name": "forge_apex_encode",
       "server": "aforge",
-      "description": "J-SPACE (NOT G-space). Encode goal \u2192 task vector T=[t1..tm] with Jacobian J=\u2202T/\u2202G. Returns G_local (is_canonical_g=false) \u2014 local actuator estimate only. HARAM: treating G_local as forge_evaluate constitutional G \u2192 VOID. Use forge_evaluate for F8 GENIUS gate. High |J|>0.6 tasks recompute on field change (forge_apex_recompute).",
+      "description": "J-SPACE (NOT G-space). Encode goal → task vector T=[t1..tm] with Jacobian J=∂T/∂G. Returns G_local (is_canonical_g=false) — local actuator estimate only. HARAM: treating G_local as forge_evaluate constitutional G → VOID. Use forge_evaluate for F8 GENIUS gate. High |J|>0.6 tasks recompute on field change (forge_apex_recompute).",
       "parameters": null,
       "tags": [
         "aforge",
@@ -157,7 +157,7 @@
     {
       "tool_name": "forge_apex_metabolize",
       "server": "aforge",
-      "description": "Run metabolic cycle on a goal: adjust risk/constraint weights based on task outcomes. Failed tasks \u2192 risk \u00d71.2, constraint \u00d71.2. Returns updated G and C_dark.",
+      "description": "Run metabolic cycle on a goal: adjust risk/constraint weights based on task outcomes. Failed tasks → risk ×1.2, constraint ×1.2. Returns updated G and C_dark.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -172,7 +172,7 @@
     {
       "tool_name": "forge_apex_recompute",
       "server": "aforge",
-      "description": "Recompute task plan when a governance field changes (risk, scope, authority, etc.). Only high-sensitivity tasks (>0.6) are recalculated \u2014 stable tasks retain. Returns which tasks need recompute.",
+      "description": "Recompute task plan when a governance field changes (risk, scope, authority, etc.). Only high-sensitivity tasks (>0.6) are recalculated — stable tasks retain. Returns which tasks need recompute.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -187,7 +187,7 @@
     {
       "tool_name": "forge_browser_click",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE. Click a browser element. Use when: Click a browser element. OBSERVE-class.",
+      "description": "ACTUATOR · browser · MUTATE. Click a browser element. Use when: Click a browser element. OBSERVE-class.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -202,7 +202,7 @@
     {
       "tool_name": "forge_browser_evaluate_js",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE. Evaluate JS in browser context.",
+      "description": "ACTUATOR · browser · MUTATE. Evaluate JS in browser context.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -217,7 +217,7 @@
     {
       "tool_name": "forge_browser_extract_text",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE. Extract text from browser page.",
+      "description": "ACTUATOR · browser · OBSERVE. Extract text from browser page.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -232,7 +232,7 @@
     {
       "tool_name": "forge_browser_navigate",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE. Navigate browser to URL.",
+      "description": "ACTUATOR · browser · OBSERVE. Navigate browser to URL.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -247,7 +247,7 @@
     {
       "tool_name": "forge_browser_screenshot",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE. Take a browser screenshot. Use when: Take a browser screenshot. OBSERVE-class.",
+      "description": "ACTUATOR · browser · OBSERVE. Take a browser screenshot. Use when: Take a browser screenshot. OBSERVE-class.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -262,7 +262,7 @@
     {
       "tool_name": "forge_browser_type",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE. Type text into a browser element.",
+      "description": "ACTUATOR · browser · MUTATE. Type text into a browser element.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -277,11 +277,11 @@
     {
       "tool_name": "forge_canon_recall",
       "server": "aforge",
-      "description": "Semantic recall over the federation canon corpus (instruction/canon/eureka/governance/scar/session_closure) with 3-lane embedding fallback: Alibaba qwen3.7-text-embedding \u2192 Ollama bge-m3 \u2192 substring. Returns top-K with provenance and the lane used.",
+      "description": "Semantic recall over the federation canon corpus (instruction/canon/eureka/governance/scar/session_closure) with 3-lane embedding fallback: Alibaba qwen3.7-text-embedding → Ollama bge-m3 → substring. Returns top-K with provenance and the lane used.",
       "parameters": {
         "properties": {
           "act": {
-            "description": "Arif's Capability Token (ACT) \u2014 preferred alias for session_token",
+            "description": "Arif's Capability Token (ACT) — preferred alias for session_token",
             "type": "string"
           },
           "actor_id": {
@@ -354,7 +354,7 @@
     {
       "tool_name": "forge_chart",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE. Agentic charting + quantum eureka discovery margin patterns. Input data series or records; returns SVG + summary + eureka_candidates (reversals, high-z, curvature). Types support line/bar/scatter/pie/area/histogram. Use after postgres/wealth/well queries for visualization and pattern discovery. All organs share this surface.",
+      "description": "ACTUATOR · meta · OBSERVE. Agentic charting + quantum eureka discovery margin patterns. Input data series or records; returns SVG + summary + eureka_candidates (reversals, high-z, curvature). Types support line/bar/scatter/pie/area/histogram. Use after postgres/wealth/well queries for visualization and pattern discovery. All organs share this surface.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -369,7 +369,7 @@
     {
       "tool_name": "forge_check_governance",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Constitutional governance check \u2014 delegates to arifOS. A-FORGE NEVER adjudicates constitutional floors.",
+      "description": "ACTUATOR · governance · OBSERVE. Constitutional governance check — delegates to arifOS. A-FORGE NEVER adjudicates constitutional floors.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -414,7 +414,7 @@
     {
       "tool_name": "forge_compose",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Composition Bus \u2014 orchestrate multi-tool execution across MCP servers. 4 patterns: sequential, parallel, conditional, loop. Each step produces a receipt. DAG-based resolution with cycle detection. Modes: execute, status, cancel, analyze. Constitutional: F1 AMANAH, F2 TRUTH, F4 CLARITY, F11 AUDIT. Use when: ACTUATOR [execute/MUTATE] Composition Bus \u2014 orchestrate multi-tool execution across MCP servers. 4 patterns: sequential, parallel, conditional, loop. Each step produces a receipt. DAG-based resolution with cycle detection. Modes: execute, status, cancel, analyze. Constitutional: F1 AMANAH, F2 TRUTH, F4 CLARITY, F11 AUDIT.",
+      "description": "ACTUATOR · execute · MUTATE. Composition Bus — orchestrate multi-tool execution across MCP servers. 4 patterns: sequential, parallel, conditional, loop. Each step produces a receipt. DAG-based resolution with cycle detection. Modes: execute, status, cancel, analyze. Constitutional: F1 AMANAH, F2 TRUTH, F4 CLARITY, F11 AUDIT. Use when: ACTUATOR [execute/MUTATE] Composition Bus — orchestrate multi-tool execution across MCP servers. 4 patterns: sequential, parallel, conditional, loop. Each step produces a receipt. DAG-based resolution with cycle detection. Modes: execute, status, cancel, analyze. Constitutional: F1 AMANAH, F2 TRUTH, F4 CLARITY, F11 AUDIT.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -429,7 +429,7 @@
     {
       "tool_name": "forge_cool",
       "server": "aforge",
-      "description": "Emit a COOLING_RECEIPT. verb=drift for single convergence signal; verb=pattern for observed failure recurrence. Routes through seal_chain.js validateCooling() \u2192 VAULT999 append. INV-C1: OBSERVE-only. INV-C2: no forge caller. INV-C3: COLD_LINK. INV-C4: explicit governance.",
+      "description": "Emit a COOLING_RECEIPT. verb=drift for single convergence signal; verb=pattern for observed failure recurrence. Routes through seal_chain.js validateCooling() → VAULT999 append. INV-C1: OBSERVE-only. INV-C2: no forge caller. INV-C3: COLD_LINK. INV-C4: explicit governance.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -459,7 +459,7 @@
     {
       "tool_name": "forge_docker",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 docker \u00b7 MUTATE. Canonical Docker primitive \u2014 ps, logs, exec, and images. Use when: Canonical Docker primitive. Modes: ps, logs, exec, images. Destructive operations stay out of this r. Use when: Canonical Docker primitive. Modes: ps, logs, exec, images. Destructive operations stay out of this r.",
+      "description": "ACTUATOR · docker · MUTATE. Canonical Docker primitive — ps, logs, exec, and images. Use when: Canonical Docker primitive. Modes: ps, logs, exec, images. Destructive operations stay out of this r. Use when: Canonical Docker primitive. Modes: ps, logs, exec, images. Destructive operations stay out of this r.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -474,7 +474,7 @@
     {
       "tool_name": "forge_docket_prep",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE. Package all evidence and hand off to arifOS. A-FORGE RELINQUISHES CONTROL \u2014 docket is read-only.",
+      "description": "ACTUATOR · meta · OBSERVE. Package all evidence and hand off to arifOS. A-FORGE RELINQUISHES CONTROL — docket is read-only.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -504,7 +504,7 @@
     {
       "tool_name": "forge_document_ingest",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE. Document intelligence engine \u2014 layout-first parsing with bounding-box provenance.\n\nModes:\n  analyze  \u2014 Layout analysis only. Return structure tree with element types and positions.\n  extract  \u2014 Full pipeline: layout + text extraction + structured JSON with bbox coordinates.\n  chunk    \u2014 Extract then semantic chunk for RAG consumption (strategies: semantic, section, page).\n  compare  \u2014 Diff two documents (structural + text similarity).\n\nFormats: PDF + images (pymupdf/OCR) AND text/json/md/yaml/source (native text pipeline).\nPaths: prefer /root or /root/A-FORGE. Host /tmp is PrivateTmp-isolated \u2014 use content_base64 or stage under A-FORGE data.\n\nBlast radius: LOW (read-only). Reversibility: FULL.",
+      "description": "ACTUATOR · meta · OBSERVE. Document intelligence engine — layout-first parsing with bounding-box provenance.\n\nModes:\n  analyze  — Layout analysis only. Return structure tree with element types and positions.\n  extract  — Full pipeline: layout + text extraction + structured JSON with bbox coordinates.\n  chunk    — Extract then semantic chunk for RAG consumption (strategies: semantic, section, page).\n  compare  — Diff two documents (structural + text similarity).\n\nFormats: PDF + images (pymupdf/OCR) AND text/json/md/yaml/source (native text pipeline).\nPaths: prefer /root or /root/A-FORGE. Host /tmp is PrivateTmp-isolated — use content_base64 or stage under A-FORGE data.\n\nBlast radius: LOW (read-only). Reversibility: FULL.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -519,7 +519,7 @@
     {
       "tool_name": "forge_entropy_sweep",
       "server": "aforge",
-      "description": "Measure workspace entropy (\u0394S) across the federation. Reports file count, uncommitted changes, temp files, dead processes, and entropy hotspots. Classification: OBSERVE (read-only).",
+      "description": "Measure workspace entropy (ΔS) across the federation. Reports file count, uncommitted changes, temp files, dead processes, and entropy hotspots. Classification: OBSERVE (read-only).",
       "parameters": null,
       "tags": [
         "aforge",
@@ -534,7 +534,7 @@
     {
       "tool_name": "forge_ephemeral",
       "server": "aforge",
-      "description": "Ephemeral Tool Genesis \u2014 the capability metabolism engine.\nGenerates TEMPORARY tools from templates for one mission, then dissolves.\n\n9 MODES (default lifecycle: inspect_gap \u2192 generate \u2192 sandbox_test \u2192 invoke \u2192 verify \u2192 retire):\n  \u2022 inspect_gap        \u2014 Detect what capability is missing (use first).\n  \u2022 generate           \u2014 Create ephemeral tool from a template.\n  \u2022 sandbox_test       \u2014 Verify in bwrap-backed sandbox (fail-closed if no backend).\n  \u2022 invoke             \u2014 Execute the ephemeral tool (sandboxed).\n  \u2022 verify             \u2014 Independent verification. SELF_CERTIFIED is INADMISSIBLE.\n                         Accepted methods: known_answer | schema_invariant |\n                         independent_recompute | domain_witness.\n  \u2022 retire             \u2014 Cleanup. Temporary capability is REMOVED unless promoted.\n  \u2022 list_templates     \u2014 Browse the template registry.\n  \u2022 list_active        \u2014 List currently-active ephemeral tools + cleanup expired.\n  \u2022 propose_promotion  \u2014 Mark a template as recommended (after threshold + F13).\n\nEVIDENCE & PROMOTION (P0.3 + F13):\n  \u2022 A tool becomes permanent ONLY if: it survives sandbox_test, invoke, AND\n    an independent verify, AND the template reaches promotionThreshold, AND\n    F13 SOVEREIGN ratifies the proposal.\n  \u2022 SELF_CERTIFIED verification is REJECTED as inadmissible for promotion.\n\nCONTAINMENT (P0.4 \u2014 fail-closed):\n  \u2022 sandbox_test / invoke use the bwrap-backed ExecutionSandbox.\n  \u2022 No backend \u2192 tool state becomes 'failed' (NOT a green skip).\n\nUSE WHEN: 'I need to do X but no tool exists' \u2014 the federation synthesizes\ncapability on demand. After the mission, retire it. Capability was metabolized,\nnot accumulated.",
+      "description": "Ephemeral Tool Genesis — the capability metabolism engine.\nGenerates TEMPORARY tools from templates for one mission, then dissolves.\n\n9 MODES (default lifecycle: inspect_gap → generate → sandbox_test → invoke → verify → retire):\n  • inspect_gap        — Detect what capability is missing (use first).\n  • generate           — Create ephemeral tool from a template.\n  • sandbox_test       — Verify in bwrap-backed sandbox (fail-closed if no backend).\n  • invoke             — Execute the ephemeral tool (sandboxed).\n  • verify             — Independent verification. SELF_CERTIFIED is INADMISSIBLE.\n                         Accepted methods: known_answer | schema_invariant |\n                         independent_recompute | domain_witness.\n  • retire             — Cleanup. Temporary capability is REMOVED unless promoted.\n  • list_templates     — Browse the template registry.\n  • list_active        — List currently-active ephemeral tools + cleanup expired.\n  • propose_promotion  — Mark a template as recommended (after threshold + F13).\n\nEVIDENCE & PROMOTION (P0.3 + F13):\n  • A tool becomes permanent ONLY if: it survives sandbox_test, invoke, AND\n    an independent verify, AND the template reaches promotionThreshold, AND\n    F13 SOVEREIGN ratifies the proposal.\n  • SELF_CERTIFIED verification is REJECTED as inadmissible for promotion.\n\nCONTAINMENT (P0.4 — fail-closed):\n  • sandbox_test / invoke use the bwrap-backed ExecutionSandbox.\n  • No backend → tool state becomes 'failed' (NOT a green skip).\n\nUSE WHEN: 'I need to do X but no tool exists' — the federation synthesizes\ncapability on demand. After the mission, retire it. Capability was metabolized,\nnot accumulated.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -549,7 +549,7 @@
     {
       "tool_name": "forge_evaluate",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. APEX v36\u03a9 evaluation gate (G-SPACE CANONICAL). Computes G = (A\u00b7P\u00b7E\u00b7X)^(1/4) with is_canonical_g=true. P=Physics (not Purpose). \u03a6 is scar pressure, not a 5th dial. Returns SEAL/REVIEW/VOID. Does NOT generate code. HARAM: do not confuse with forge_apex_encode Jacobian G_local (is_canonical_g=false). Use when: APEX v36\u03a9 evaluation gate. Computes G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 (Nash bargaining product) and C_dark = A\u00b7(1-P)\u00b7(1-.",
+      "description": "ACTUATOR · governance · OBSERVE. APEX v36Ω evaluation gate (G-SPACE CANONICAL). Computes G = (A·P·E·X)^(1/4) with is_canonical_g=true. P=Physics (not Purpose). Φ is scar pressure, not a 5th dial. Returns SEAL/REVIEW/VOID. Does NOT generate code. HARAM: do not confuse with forge_apex_encode Jacobian G_local (is_canonical_g=false). Use when: APEX v36Ω evaluation gate. Computes G = A·P·E·X·Φ (Nash bargaining product) and C_dark = A·(1-P)·(1-.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -564,7 +564,7 @@
     {
       "tool_name": "forge_execute",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Execution and motor cortex (Stage 777 FORGE). Use this to execute an action plan. Requires cc_id for mutations (INV-4).",
+      "description": "ACTUATOR · execute · MUTATE. Execution and motor cortex (Stage 777 FORGE). Use this to execute an action plan. Requires cc_id for mutations (INV-4).",
       "parameters": null,
       "tags": [
         "aforge",
@@ -579,7 +579,7 @@
     {
       "tool_name": "forge_execute_sealed",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Execute with VAULT999 seal or governance stage (stage_id + human_seal_token). FAILS HARD without valid authorization. Use when: Execute with VAULT999 seal. FAILS HARD without valid seal \u2014 no self-authorization possible.",
+      "description": "ACTUATOR · execute · MUTATE. Execute with VAULT999 seal or governance stage (stage_id + human_seal_token). FAILS HARD without valid authorization. Use when: Execute with VAULT999 seal. FAILS HARD without valid seal — no self-authorization possible.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -609,7 +609,7 @@
     {
       "tool_name": "forge_experience_trace",
       "server": "aforge",
-      "description": "Record an experience trace (Chain-of-Experience). Captures action\u2192observation\u2192feedback\u2192delta after every non-trivial forge tool execution. Three feedback channels: self (model critique), environmental (test/lint/build), constitutional (floor check). Append-only hash-chained ledger. Returns the sealed trace with hash chain link.",
+      "description": "Record an experience trace (Chain-of-Experience). Captures action→observation→feedback→delta after every non-trivial forge tool execution. Three feedback channels: self (model critique), environmental (test/lint/build), constitutional (floor check). Append-only hash-chained ledger. Returns the sealed trace with hash chain link.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -624,7 +624,7 @@
     {
       "tool_name": "forge_fetch",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE. Governed URL evidence intake and self-hosted web search \u2014 fetch URLs as markdown, text, JSON, or article extraction, or search via SearxNG. Use when: Governed URL evidence intake + self-hosted web search. Modes: html, markdown, text, json, readable,. Use when: Governed URL evidence intake + self-hosted web search. Modes: html, markdown, text, json, readable,.",
+      "description": "ACTUATOR · research · OBSERVE. Governed URL evidence intake and self-hosted web search — fetch URLs as markdown, text, JSON, or article extraction, or search via SearxNG. Use when: Governed URL evidence intake + self-hosted web search. Modes: html, markdown, text, json, readable,. Use when: Governed URL evidence intake + self-hosted web search. Modes: html, markdown, text, json, readable,.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -639,7 +639,7 @@
     {
       "tool_name": "forge_filesystem",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 fs \u00b7 OBSERVE. Canonical governed filesystem primitive \u2014 read, write, patch, delete, and search files.",
+      "description": "ACTUATOR · fs · OBSERVE. Canonical governed filesystem primitive — read, write, patch, delete, and search files.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -654,7 +654,7 @@
     {
       "tool_name": "forge_fingerprint_check",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Compute and verify tool fingerprints. Detects duplicate tools (same name + schema) and schema drift.",
+      "description": "ACTUATOR · probe · OBSERVE. Compute and verify tool fingerprints. Detects duplicate tools (same name + schema) and schema drift.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -684,7 +684,7 @@
     {
       "tool_name": "forge_git",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 git \u00b7 MUTATE. Canonical git primitive \u2014 status, diff, log, and commit. Use when: Canonical git primitive. Modes: status, diff, log, commit. Mutating modes are floor-gated by A-FORGE. Use when: Canonical git primitive. Modes: status, diff, log, commit. Mutating modes are floor-gated by A-FORGE.",
+      "description": "ACTUATOR · git · MUTATE. Canonical git primitive — status, diff, log, and commit. Use when: Canonical git primitive. Modes: status, diff, log, commit. Mutating modes are floor-gated by A-FORGE. Use when: Canonical git primitive. Modes: status, diff, log, commit. Mutating modes are floor-gated by A-FORGE.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -714,7 +714,7 @@
     {
       "tool_name": "forge_github",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE. Canonical GitHub primitive \u2014 search and pull requests. Use when: Canonical GitHub primitive. Modes: search, pr. Use type for search variants instead of separate tool. Use when: Canonical GitHub primitive. Modes: search, pr. Use type for search variants instead of separate tool.",
+      "description": "ACTUATOR · git · OBSERVE. Canonical GitHub primitive — search and pull requests. Use when: Canonical GitHub primitive. Modes: search, pr. Use type for search variants instead of separate tool. Use when: Canonical GitHub primitive. Modes: search, pr. Use type for search variants instead of separate tool.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -729,7 +729,7 @@
     {
       "tool_name": "forge_github_create_issue",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 git \u00b7 MUTATE. Create a GitHub issue. Use when: Create a GitHub issue. MUTATE \u2014 lease required.",
+      "description": "ACTUATOR · git · MUTATE. Create a GitHub issue. Use when: Create a GitHub issue. MUTATE — lease required.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -744,7 +744,7 @@
     {
       "tool_name": "forge_github_create_or_update_file",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 git \u00b7 MUTATE. Create or update a file on GitHub.",
+      "description": "ACTUATOR · git · MUTATE. Create or update a file on GitHub.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -759,7 +759,7 @@
     {
       "tool_name": "forge_github_get_file",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE. Read a file from GitHub. Use when: Read a file from GitHub. OBSERVE-class.",
+      "description": "ACTUATOR · git · OBSERVE. Read a file from GitHub. Use when: Read a file from GitHub. OBSERVE-class.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -774,7 +774,7 @@
     {
       "tool_name": "forge_health_check",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE. Return A-FORGE server health and constitutional genome (v2.0) status.",
+      "description": "ACTUATOR · health · OBSERVE. Return A-FORGE server health and constitutional genome (v2.0) status.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -789,7 +789,7 @@
     {
       "tool_name": "forge_heart_critique",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Risk assessment and ethical review \u2014 delegates to arifOS 666 HEART pipeline. A-FORGE does NOT adjudicate floors locally.",
+      "description": "ACTUATOR · governance · OBSERVE. Risk assessment and ethical review — delegates to arifOS 666 HEART pipeline. A-FORGE does NOT adjudicate floors locally.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -804,7 +804,7 @@
     {
       "tool_name": "forge_hf_import",
       "server": "aforge",
-      "description": "Governed Hugging Face import gate. Validate and import models/datasets through constitutional floors F1-F13. Returns verdict (SEAL/HOLD/VOID) with G-score, kappa-r, entropy pathway, and floor-by-floor results. The gate validates \u2014 the kernel seals. Uses arifOS hf_import_gate under constitutional governance.",
+      "description": "Governed Hugging Face import gate. Validate and import models/datasets through constitutional floors F1-F13. Returns verdict (SEAL/HOLD/VOID) with G-score, kappa-r, entropy pathway, and floor-by-floor results. The gate validates — the kernel seals. Uses arifOS hf_import_gate under constitutional governance.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -819,7 +819,7 @@
     {
       "tool_name": "forge_isomorphism_check",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. J\u2011space manifold stability check. Verifies GEOX \u2194 arifOS isomorphism pairs (Identity, Authority, Irreversibility) through runtime witness functions.",
+      "description": "ACTUATOR · probe · OBSERVE. J‑space manifold stability check. Verifies GEOX ↔ arifOS isomorphism pairs (Identity, Authority, Irreversibility) through runtime witness functions.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -834,7 +834,7 @@
     {
       "tool_name": "forge_job",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 job \u00b7 OBSERVE. Background job system. Modes: submit, status.",
+      "description": "ACTUATOR · job · OBSERVE. Background job system. Modes: submit, status.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -849,7 +849,7 @@
     {
       "tool_name": "forge_journalctl",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Query systemd journal logs (read-only, PII-redacted). Modes: logs, errors, tail, grep.",
+      "description": "ACTUATOR · vps · OBSERVE. Query systemd journal logs (read-only, PII-redacted). Modes: logs, errors, tail, grep.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -864,7 +864,7 @@
     {
       "tool_name": "forge_judge_proxy",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Proxy forwarder to canonical arifOS constitutional judge.",
+      "description": "ACTUATOR · governance · OBSERVE. Proxy forwarder to canonical arifOS constitutional judge.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -879,7 +879,7 @@
     {
       "tool_name": "forge_kernel",
       "server": "aforge",
-      "description": "Constitutional kernel proxy. Routes to arifOS at :8088/mcp. Modes: init | observe | think | route | memory | judge | forge | seal. This is the LEGAL constitutional path \u2014 not a governance bypass. Requires session ownership for seal/judge/forge modes.",
+      "description": "Constitutional kernel proxy. Routes to arifOS at :8088/mcp. Modes: init | observe | think | route | memory | judge | forge | seal. This is the LEGAL constitutional path — not a governance bypass. Requires session ownership for seal/judge/forge modes.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -894,7 +894,7 @@
     {
       "tool_name": "forge_lease",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Lease lifecycle. Modes: request, status, revoke. A-FORGE does not self-issue leases \u2014 arifOS mints them.",
+      "description": "ACTUATOR · registry · OBSERVE. Lease lifecycle. Modes: request, status, revoke. A-FORGE does not self-issue leases — arifOS mints them.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -909,7 +909,7 @@
     {
       "tool_name": "forge_lock",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Amanah/F1 lock primitive. Modes: acquire (reversible F1 gate before mutation), release (free lock).",
+      "description": "ACTUATOR · registry · OBSERVE. Amanah/F1 lock primitive. Modes: acquire (reversible F1 gate before mutation), release (free lock).",
       "parameters": null,
       "tags": [
         "aforge",
@@ -924,7 +924,7 @@
     {
       "tool_name": "forge_memory",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 memory \u00b7 OBSERVE. Canonical memory primitive \u2014 recall from L3 semantic layer (Qdrant vectors + capability registry) with Supabase vault fallback. SRO v1 admissibility gate: arifos_memory results are filtered by the federation policy (default = currently-valid only; include_historical=true admits EXPIRED/SUPERSEDED, each labelled HISTORICAL). Use when: Canonical memory primitive. Modes: recall. Reads VAULT999 local files, then vault999-api fallback. Use when: Canonical memory primitive. Modes: recall. Reads VAULT999 local files, then vault999-api fallback.",
+      "description": "ACTUATOR · memory · OBSERVE. Canonical memory primitive — recall from L3 semantic layer (Qdrant vectors + capability registry) with Supabase vault fallback. SRO v1 admissibility gate: arifos_memory results are filtered by the federation policy (default = currently-valid only; include_historical=true admits EXPIRED/SUPERSEDED, each labelled HISTORICAL). Use when: Canonical memory primitive. Modes: recall. Reads VAULT999 local files, then vault999-api fallback. Use when: Canonical memory primitive. Modes: recall. Reads VAULT999 local files, then vault999-api fallback.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -939,7 +939,7 @@
     {
       "tool_name": "forge_netdata_alarms",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE. Read Netdata alarms. Use when: Read Netdata alarms. OBSERVE-class.",
+      "description": "ACTUATOR · health · OBSERVE. Read Netdata alarms. Use when: Read Netdata alarms. OBSERVE-class.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -954,7 +954,7 @@
     {
       "tool_name": "forge_netdata_metrics",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE. Read Netdata chart data. Use when: Read Netdata chart data. OBSERVE-class.",
+      "description": "ACTUATOR · health · OBSERVE. Read Netdata chart data. Use when: Read Netdata chart data. OBSERVE-class.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1014,7 +1014,7 @@
     {
       "tool_name": "forge_parallel_status",
       "server": "aforge",
-      "description": "Query the status of a parallel task group by group_id. Returns member states, outputs, and \u0394 anchors.",
+      "description": "Query the status of a parallel task group by group_id. Returns member states, outputs, and Δ anchors.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1029,7 +1029,7 @@
     {
       "tool_name": "forge_pipeline_run",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Autonomous intelligence pipeline (canonical). Routes organs, evidence\u2192compute\u2192(optional judge+seal). Requires cc_id/hold for mutate.",
+      "description": "ACTUATOR · execute · MUTATE. Autonomous intelligence pipeline (canonical). Routes organs, evidence→compute→(optional judge+seal). Requires cc_id/hold for mutate.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1044,7 +1044,7 @@
     {
       "tool_name": "forge_policy",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Governed MCP Policy Engine. Modes: check (simulate call), set (add/update policy, sovereign-only), remove (delete policy, sovereign-only), list (show loaded policies), save (persist policies to disk, sovereign-only). F1 AMANAH + F8 LAW + F11 AUDIT + F13 SOVEREIGN.",
+      "description": "ACTUATOR · registry · OBSERVE. Governed MCP Policy Engine. Modes: check (simulate call), set (add/update policy, sovereign-only), remove (delete policy, sovereign-only), list (show loaded policies), save (persist policies to disk, sovereign-only). F1 AMANAH + F8 LAW + F11 AUDIT + F13 SOVEREIGN.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1059,7 +1059,7 @@
     {
       "tool_name": "forge_postgres",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 db \u00b7 MUTATE. Canonical Postgres primitive \u2014 query and schema inspection. Use when: Canonical Postgres primitive. Modes: query, schema. Writes require mutate=true and remain floor-gate. Use when: Canonical Postgres primitive. Modes: query, schema. Writes require mutate=true and remain floor-gate.",
+      "description": "ACTUATOR · db · MUTATE. Canonical Postgres primitive — query and schema inspection. Use when: Canonical Postgres primitive. Modes: query, schema. Writes require mutate=true and remain floor-gate. Use when: Canonical Postgres primitive. Modes: query, schema. Writes require mutate=true and remain floor-gate.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1074,7 +1074,7 @@
     {
       "tool_name": "forge_predict",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Pre-action simulation layer (prediction bridge). GEOX/WEALTH forward models run BEFORE forge_execute. Result attached as evidence to arif_judge via forge_judge_proxy. Build prediction bridge first, then formalize. Domain auto-detects geox vs wealth from proposed_action.",
+      "description": "ACTUATOR · governance · OBSERVE. Pre-action simulation layer (prediction bridge). GEOX/WEALTH forward models run BEFORE forge_execute. Result attached as evidence to arif_judge via forge_judge_proxy. Build prediction bridge first, then formalize. Domain auto-detects geox vs wealth from proposed_action.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1089,7 +1089,7 @@
     {
       "tool_name": "forge_probe",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Federation organ liveness. Probes all 5 organs + latency. OBSERVE-class. P2.1 canonical gap fill.",
+      "description": "ACTUATOR · probe · OBSERVE. Federation organ liveness. Probes all 5 organs + latency. OBSERVE-class. P2.1 canonical gap fill.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1104,7 +1104,7 @@
     {
       "tool_name": "forge_probe_site",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Probe a web site or cockpit surface for federation resilience and compliance checks. Returns status, static fallbacks, and metadata.",
+      "description": "ACTUATOR · probe · OBSERVE. Probe a web site or cockpit surface for federation resilience and compliance checks. Returns status, static fallbacks, and metadata.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1119,7 +1119,7 @@
     {
       "tool_name": "forge_reality_loop",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Intent compiler: 7-stage state-tracking ledger (MEANING\u2192OBSERVE\u2192ENCODE\u2192IMPROVE\u2192VERIFY\u2192SEAL\u2192RETURN). Modes: start | advance | record | seal | report | metrics | list | destroy. Constitutional F1\u2013F13 at every stage. \u0394S \u2264 0 per iteration. Heuristic thresholds (G\u2265config.min_g_score, W\u00b3\u2265config.min_witness) are PHASE 1 HEURISTIC \u2014 both surfaced in seal output with calibration_required: true. Default 0.70 each; override via config JSON; out-of-range values are clamped to [0,1], non-finite falls back to default. W\u00b3 check: seal mode warns if min_witness > 0 and no tri_witness recorded. RETURN is terminal \u2014 human must decide.",
+      "description": "ACTUATOR · governance · OBSERVE. Intent compiler: 7-stage state-tracking ledger (MEANING→OBSERVE→ENCODE→IMPROVE→VERIFY→SEAL→RETURN). Modes: start | advance | record | seal | report | metrics | list | destroy. Constitutional F1–F13 at every stage. ΔS ≤ 0 per iteration. Heuristic thresholds (G≥config.min_g_score, W³≥config.min_witness) are PHASE 1 HEURISTIC — both surfaced in seal output with calibration_required: true. Default 0.70 each; override via config JSON; out-of-range values are clamped to [0,1], non-finite falls back to default. W³ check: seal mode warns if min_witness > 0 and no tri_witness recorded. RETURN is terminal — human must decide.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1134,7 +1134,7 @@
     {
       "tool_name": "forge_receipt_draft",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE. Draft a structured compliance receipt for a deployment or change. Output is standard markdown formatted for arifOS VAULT999 verification.",
+      "description": "ACTUATOR · vault · OBSERVE. Draft a structured compliance receipt for a deployment or change. Output is standard markdown formatted for arifOS VAULT999 verification.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1149,7 +1149,7 @@
     {
       "tool_name": "forge_register",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. APEX v36\u03a9 gated registration gate. Registers a tool ONLY after all gates pass: SEAL verdict from forge_evaluate, CONSENSUS from forge_witness, HARAM scan pass, and scar consultation pass. Non-compensatory: any single gate failure blocks registration. 24h TTL expiry. Backward compatible with forge_skill registry.",
+      "description": "ACTUATOR · registry · OBSERVE. APEX v36Ω gated registration gate. Registers a tool ONLY after all gates pass: SEAL verdict from forge_evaluate, CONSENSUS from forge_witness, HARAM scan pass, and scar consultation pass. Non-compensatory: any single gate failure blocks registration. 24h TTL expiry. Backward compatible with forge_skill registry.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1164,7 +1164,7 @@
     {
       "tool_name": "forge_registry",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Dynamic skill and tool registry. Modes: status (live MCP server & tools overview), list (all generated tools + Decision Field), get (one tool manifest), scars (Scar Law history), fingerprint (registry integrity hash), scan (HARAM scan arbitrary code). Use when: Dynamic skill registry. Modes: list (all generated tools + Decision Field), get (one tool manifest),.",
+      "description": "ACTUATOR · registry · OBSERVE. Dynamic skill and tool registry. Modes: status (live MCP server & tools overview), list (all generated tools + Decision Field), get (one tool manifest), scars (Scar Law history), fingerprint (registry integrity hash), scan (HARAM scan arbitrary code). Use when: Dynamic skill registry. Modes: list (all generated tools + Decision Field), get (one tool manifest),.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1179,7 +1179,7 @@
     {
       "tool_name": "forge_registry_status",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Full A-FORGE tool registry: callable, blocked, degraded, and drift status for all registered tools. Includes tool fingerprinting for dedupe detection.",
+      "description": "ACTUATOR · registry · OBSERVE. Full A-FORGE tool registry: callable, blocked, degraded, and drift status for all registered tools. Includes tool fingerprinting for dedupe detection.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1194,7 +1194,7 @@
     {
       "tool_name": "forge_rsi_dual_rate_fq",
       "server": "aforge",
-      "description": "RSI dual-rate FQ signal. Returns both daily FQ (cockpit telemetry, observational) and 7-day rolling FQ (governance decisions, constitutional). Daily FQ is aliased for weekly governance cycles \u2014 use governance_fq for constitutional decisions. OBS-class. Use when: 'FQ governance', 'dual rate', 'aliased FQ', '7-day FQ', 'governance signal'.",
+      "description": "RSI dual-rate FQ signal. Returns both daily FQ (cockpit telemetry, observational) and 7-day rolling FQ (governance decisions, constitutional). Daily FQ is aliased for weekly governance cycles — use governance_fq for constitutional decisions. OBS-class. Use when: 'FQ governance', 'dual rate', 'aliased FQ', '7-day FQ', 'governance signal'.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1209,7 +1209,7 @@
     {
       "tool_name": "forge_rsi_impulse_response",
       "server": "aforge",
-      "description": "RSI P0 measurement \u2014 impulse response h(t). Measures how long 888_HOLD, scar seal, and tool failure events remain causally active in subsequent routing, tool selection, and budget allocation. Returns causal half-life in sessions. OBS-class. Use when: 'impulse response', 'HOLD influence', 'how long does a HOLD last', 'causal half-life', 'h(t)', 'RSI measurement'.",
+      "description": "RSI P0 measurement — impulse response h(t). Measures how long 888_HOLD, scar seal, and tool failure events remain causally active in subsequent routing, tool selection, and budget allocation. Returns causal half-life in sessions. OBS-class. Use when: 'impulse response', 'HOLD influence', 'how long does a HOLD last', 'causal half-life', 'h(t)', 'RSI measurement'.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1224,7 +1224,7 @@
     {
       "tool_name": "forge_rsi_state_vector",
       "server": "aforge",
-      "description": "RSI state vector snapshot. Returns current s_t = (identity, plant, memory, controller) for the active session. Read-only \u2014 state vector is computed from live traces, not stored. OBS-class. Use when: 'state vector', 'RSI snapshot', 's_t', 'controller state', 'Imp state'.",
+      "description": "RSI state vector snapshot. Returns current s_t = (identity, plant, memory, controller) for the active session. Read-only — state vector is computed from live traces, not stored. OBS-class. Use when: 'state vector', 'RSI snapshot', 's_t', 'controller state', 'Imp state'.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1284,7 +1284,7 @@
     {
       "tool_name": "forge_sandbox_pause",
       "server": "aforge",
-      "description": "PAUSE a persistent sandbox \u2014 tar upperdir, SHA256 integrity, unmount overlay, cold storage. F1 reversible. F13 lease-gated on resume.",
+      "description": "PAUSE a persistent sandbox — tar upperdir, SHA256 integrity, unmount overlay, cold storage. F1 reversible. F13 lease-gated on resume.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1299,7 +1299,7 @@
     {
       "tool_name": "forge_sandbox_resume",
       "server": "aforge",
-      "description": "RESUME a paused sandbox \u2014 extract tarball, re-mount overlay, lease re-verify gate. F13 HOLD if lease mismatch or >24h age.",
+      "description": "RESUME a paused sandbox — extract tarball, re-mount overlay, lease re-verify gate. F13 HOLD if lease mismatch or >24h age.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1314,7 +1314,7 @@
     {
       "tool_name": "forge_sandbox_run",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE. Execute staged artifact in isolated sandbox. ABSOLUTE timeout \u2014 cannot be overridden.",
+      "description": "ACTUATOR · execute · MUTATE. Execute staged artifact in isolated sandbox. ABSOLUTE timeout — cannot be overridden.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1329,7 +1329,7 @@
     {
       "tool_name": "forge_scan",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Security scan a file or directory before code execution. Detects dangerous patterns. OBSERVE-class. P2.5 canonical gap fill.",
+      "description": "ACTUATOR · probe · OBSERVE. Security scan a file or directory before code execution. Detects dangerous patterns. OBSERVE-class. P2.5 canonical gap fill.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1344,7 +1344,7 @@
     {
       "tool_name": "forge_scar",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE. APEX v36\u03a9 scar metabolization gate. Seals failures as permanent constitutional constraints. Modes: seal (record failure), list (enumerate scars), consult (check fingerprint for matching scars). SCAR LAW: errors are metabolized into constitutional constraints. Pain = \u0394S spike. Learning = cooling. F1 AMANAH: scars are immutable once sealed.",
+      "description": "ACTUATOR · vault · OBSERVE. APEX v36Ω scar metabolization gate. Seals failures as permanent constitutional constraints. Modes: seal (record failure), list (enumerate scars), consult (check fingerprint for matching scars). SCAR LAW: errors are metabolized into constitutional constraints. Pain = ΔS spike. Learning = cooling. F1 AMANAH: scars are immutable once sealed.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1359,7 +1359,7 @@
     {
       "tool_name": "forge_seal",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vault \u00b7 MUTATE. Seal a Tri-Witness validated skill into permanent VAULT999 memory. Irreversible. Sealed skills cannot be deleted, demoted below TRUSTED, or expired. Requires REVIEWED tier + Tri-Witness PASS + F13 approval token.",
+      "description": "ACTUATOR · vault · MUTATE. Seal a Tri-Witness validated skill into permanent VAULT999 memory. Irreversible. Sealed skills cannot be deleted, demoted below TRUSTED, or expired. Requires REVIEWED tier + Tri-Witness PASS + F13 approval token.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1389,7 +1389,7 @@
     {
       "tool_name": "forge_search",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE. Unified governed search across web (Brave), documentation (Context7), and deep research with provenance and epistemic labels. Use when: Governed web search via Brave. OBSERVE-class.",
+      "description": "ACTUATOR · research · OBSERVE. Unified governed search across web (Brave), documentation (Context7), and deep research with provenance and epistemic labels. Use when: Governed web search via Brave. OBSERVE-class.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1404,7 +1404,7 @@
     {
       "tool_name": "forge_security_drift_scan",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Production security telemetry. Scans live ports/services/cron against Machine Constitution registry \u2014 flags unknown public ports, new systemd services, new cron jobs, rogue containers. OBSERVE-class; does not mutate. (Renamed from forge_boundaries_assert 2026-07-09.) Use when: Production security telemetry (renamed from forge_boundaries_assert).",
+      "description": "ACTUATOR · probe · OBSERVE. Production security telemetry. Scans live ports/services/cron against Machine Constitution registry — flags unknown public ports, new systemd services, new cron jobs, rogue containers. OBSERVE-class; does not mutate. (Renamed from forge_boundaries_assert 2026-07-09.) Use when: Production security telemetry (renamed from forge_boundaries_assert).",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1419,7 +1419,7 @@
     {
       "tool_name": "forge_send_confirm",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 confirm \u00b7 MUTATE. Send data with human confirmation via elicitation. Supports form mode (standard) and URL mode (sensitive credentials). F13 consent gate.",
+      "description": "ACTUATOR · confirm · MUTATE. Send data with human confirmation via elicitation. Supports form mode (standard) and URL mode (sensitive credentials). F13 consent gate.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1434,7 +1434,7 @@
     {
       "tool_name": "forge_session_init",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Constitutional session ignition. Proxies to arifOS kernel \u2014 A-FORGE no longer mints independent sessions. (Stage 000 INIT)",
+      "description": "ACTUATOR · governance · OBSERVE. Constitutional session ignition. Proxies to arifOS kernel — A-FORGE no longer mints independent sessions. (Stage 000 INIT)",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1449,7 +1449,7 @@
     {
       "tool_name": "forge_shell",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 shell \u00b7 MUTATE. Canonical governed shell execution. Executes commands through constitutional gate (ArifJudge) + hash-chain audit (ArifSeal). DENY patterns are hard-blocked. GATE patterns require human approval. Every execution is sealed to VAULT999 hash chain. REQUIRES arifOS authority envelope for executing mutable shell commands: call arif_init() first, pass the returned session_id. Read-only probes may omit session_id when they are clearly observation-only. Use forge_shell_dryrun for preview without side effects.",
+      "description": "ACTUATOR · shell · MUTATE. Canonical governed shell execution. Executes commands through constitutional gate (ArifJudge) + hash-chain audit (ArifSeal). DENY patterns are hard-blocked. GATE patterns require human approval. Every execution is sealed to VAULT999 hash chain. REQUIRES arifOS authority envelope for executing mutable shell commands: call arif_init() first, pass the returned session_id. Read-only probes may omit session_id when they are clearly observation-only. Use forge_shell_dryrun for preview without side effects.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1464,7 +1464,7 @@
     {
       "tool_name": "forge_shell_alert_history",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. View recent ArifJudge alert history (DENY/GATE/self-modification events). Read-only.",
+      "description": "ACTUATOR · shell · OBSERVE. View recent ArifJudge alert history (DENY/GATE/self-modification events). Read-only.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1479,7 +1479,7 @@
     {
       "tool_name": "forge_shell_dryrun",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. Preview a shell command's output WITHOUT executing it. Returns what WOULD happen. F1 AMANAH: no mutation, pure dry-run. For actual execution, use forge_shell.",
+      "description": "ACTUATOR · shell · OBSERVE. Preview a shell command's output WITHOUT executing it. Returns what WOULD happen. F1 AMANAH: no mutation, pure dry-run. For actual execution, use forge_shell.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1494,7 +1494,7 @@
     {
       "tool_name": "forge_shell_ledger",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. Query recent ArifSeal hash-chain ledger entries. Read-only, paged. Returns last N records with chain integrity status.",
+      "description": "ACTUATOR · shell · OBSERVE. Query recent ArifSeal hash-chain ledger entries. Read-only, paged. Returns last N records with chain integrity status.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1509,7 +1509,7 @@
     {
       "tool_name": "forge_shell_status",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE. Check forge_shell subsystem health: ledger state, judge pattern count, defaults.",
+      "description": "ACTUATOR · shell · OBSERVE. Check forge_shell subsystem health: ledger state, judge pattern count, defaults.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1524,7 +1524,7 @@
     {
       "tool_name": "forge_skill",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE. Dynamic tool forge (APEX Epoch 34\u03a9). Generates a new MCP tool via LLM, gated by HARAM scan + Decision Field (G=Q\u00b7V\u00b7\u03a8\u00b7\u03a6), sealed to VAULT999. Phase 1: human approval per generation, 24h expiry, max 1 generation depth. F13 SOVEREIGN: arifOS domains require seal_verdict_id.",
+      "description": "ACTUATOR · skill · MUTATE. Dynamic tool forge (APEX Epoch 34Ω). Generates a new MCP tool via LLM, gated by HARAM scan + Decision Field (G=Q·V·Ψ·Φ), sealed to VAULT999. Phase 1: human approval per generation, 24h expiry, max 1 generation depth. F13 SOVEREIGN: arifOS domains require seal_verdict_id.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1554,7 +1554,7 @@
     {
       "tool_name": "forge_skillstore_read",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 skill \u00b7 OBSERVE. Query artifact store. Semantic search with tag filtering.",
+      "description": "ACTUATOR · skill · OBSERVE. Query artifact store. Semantic search with tag filtering.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1569,7 +1569,7 @@
     {
       "tool_name": "forge_skillstore_write",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE. Store artifact with provenance. WRITE mode only. Two-layer retention with SCAR immunization.",
+      "description": "ACTUATOR · skill · MUTATE. Store artifact with provenance. WRITE mode only. Two-layer retention with SCAR immunization.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1584,7 +1584,7 @@
     {
       "tool_name": "forge_stage",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vault \u00b7 MUTATE. Stage an artifact (mode=artifact) or governance preview (mode=governance). Governance mode returns ui://aforge/preview/<stage_id> for human review. Use when: Move artifact to quarantine staging. Spec becomes IMMUTABLE after staging.",
+      "description": "ACTUATOR · vault · MUTATE. Stage an artifact (mode=artifact) or governance preview (mode=governance). Governance mode returns ui://aforge/preview/<stage_id> for human review. Use when: Move artifact to quarantine staging. Spec becomes IMMUTABLE after staging.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1599,7 +1599,7 @@
     {
       "tool_name": "forge_status",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. Active execution state: jobs, leases, agents. INFRA-class. P2.2 canonical gap fill.",
+      "description": "ACTUATOR · registry · OBSERVE. Active execution state: jobs, leases, agents. INFRA-class. P2.2 canonical gap fill.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1614,7 +1614,7 @@
     {
       "tool_name": "forge_surface_audit",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Audit MCP tool surface: compare live registry vs affordances.yaml to detect phantom entries, missing tools, description drift, and alias conflicts. Federation-wide drift detection.",
+      "description": "ACTUATOR · probe · OBSERVE. Audit MCP tool surface: compare live registry vs affordances.yaml to detect phantom entries, missing tools, description drift, and alias conflicts. Federation-wide drift detection.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1629,7 +1629,7 @@
     {
       "tool_name": "forge_surface_guard",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. MCP Surface Guard \u2014 schema fingerprinting + drift detection. Modes: check (run federation drift check), status (get cached drift log), pin (snapshot current tool surface), config (show guard config). F1 AMANAH + F2 TRUTH + F8 LAW + F11 AUDIT.",
+      "description": "ACTUATOR · probe · OBSERVE. MCP Surface Guard — schema fingerprinting + drift detection. Modes: check (run federation drift check), status (get cached drift log), pin (snapshot current tool surface), config (show guard config). F1 AMANAH + F2 TRUTH + F8 LAW + F11 AUDIT.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1644,7 +1644,7 @@
     {
       "tool_name": "forge_synthesize",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE. Create artifact from intent. Code goes to temporary buffer ONLY \u2014 never touches filesystem.",
+      "description": "ACTUATOR · skill · MUTATE. Create artifact from intent. Code goes to temporary buffer ONLY — never touches filesystem.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1659,7 +1659,7 @@
     {
       "tool_name": "forge_tier_bind",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE. [FORGE8#6] Set trust tier LOWER BOUND only. A-FORGE cannot promote \u2014 only arifOS sets actual tier. Phase C: not unregistered (pipeline load-bearing); agents should not call ad-hoc outside FORGE8 flow. Use when: Set trust tier LOWER BOUND only. A-FORGE cannot promote \u2014 only arifOS sets actual tier.",
+      "description": "ACTUATOR · registry · OBSERVE. [FORGE8#6] Set trust tier LOWER BOUND only. A-FORGE cannot promote — only arifOS sets actual tier. Phase C: not unregistered (pipeline load-bearing); agents should not call ad-hoc outside FORGE8 flow. Use when: Set trust tier LOWER BOUND only. A-FORGE cannot promote — only arifOS sets actual tier.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1674,7 +1674,7 @@
     {
       "tool_name": "forge_transfer_confirm",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 confirm \u00b7 MUTATE. Transfer funds with human confirmation via form-mode elicitation. F13 consent gate. Blocks until user accept/decline/cancel.",
+      "description": "ACTUATOR · confirm · MUTATE. Transfer funds with human confirmation via form-mode elicitation. F13 consent gate. Blocks until user accept/decline/cancel.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1689,7 +1689,7 @@
     {
       "tool_name": "forge_trust_score",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. Trust scoring engine for external MCP servers. Scores on 5 dimensions (identity, uptime, auditability, mutation_risk, witnessability), maps to bands (ALLOW/LIMITED/HOLD/DENY), and gates access. Modes: score, evaluate, list, history, verify. Constitutional: F2 TRUTH, F7 HUMILITY, F11 AUDIT, F13 SOVEREIGN. Use when: ACTUATOR [governance/OBSERVE] Trust scoring engine for external MCP servers. Scores on 5 dimensions (identity, uptime, auditability, mutation_risk, witnessability), maps to bands (ALLOW/LIMITED/HOLD/DENY), and gates access. Modes: score, evaluate, list, history, verify. Constitutional: F2 TRUTH, F7 HUMILITY, F11 AUDIT, F13 SOVEREIGN.",
+      "description": "ACTUATOR · governance · OBSERVE. Trust scoring engine for external MCP servers. Scores on 5 dimensions (identity, uptime, auditability, mutation_risk, witnessability), maps to bands (ALLOW/LIMITED/HOLD/DENY), and gates access. Modes: score, evaluate, list, history, verify. Constitutional: F2 TRUTH, F7 HUMILITY, F11 AUDIT, F13 SOVEREIGN. Use when: ACTUATOR [governance/OBSERVE] Trust scoring engine for external MCP servers. Scores on 5 dimensions (identity, uptime, auditability, mutation_risk, witnessability), maps to bands (ALLOW/LIMITED/HOLD/DENY), and gates access. Modes: score, evaluate, list, history, verify. Constitutional: F2 TRUTH, F7 HUMILITY, F11 AUDIT, F13 SOVEREIGN.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1704,7 +1704,7 @@
     {
       "tool_name": "forge_vault",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE. VAULT999 primitive (A-FORGE cache layer). Modes: read, list, write, receipt. For seal: use arifOS arif_seal (port 8088) or /root/scripts/federation_ritual.py seal. Use when: VAULT999 primitive. Modes: read, list, write, seal. Use when: VAULT999 primitive. Modes: read, list, write, seal.",
+      "description": "ACTUATOR · vault · OBSERVE. VAULT999 primitive (A-FORGE cache layer). Modes: read, list, write, receipt. For seal: use arifOS arif_seal (port 8088) or /root/scripts/federation_ritual.py seal. Use when: VAULT999 primitive. Modes: read, list, write, seal. Use when: VAULT999 primitive. Modes: read, list, write, seal.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1719,7 +1719,7 @@
     {
       "tool_name": "forge_verify_timeline",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE. Verify timeline claims require minimum 2 independent sources.\nTIMELINE_MIN_SOURCES invariant: No timeline claim with fewer than 2 sources passes.\nReturns verification verdict, source count, source quality assessment, and gaps.",
+      "description": "ACTUATOR · probe · OBSERVE. Verify timeline claims require minimum 2 independent sources.\nTIMELINE_MIN_SOURCES invariant: No timeline claim with fewer than 2 sources passes.\nReturns verification verdict, source count, source quality assessment, and gaps.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1734,7 +1734,7 @@
     {
       "tool_name": "forge_visual_qa",
       "server": "aforge",
-      "description": "Constitutional visual QA: W\u00b3 tri-witness (vision+linter+sovereign), scar consultation, entropy gate. PASS does not exist \u2014 only PASS_CANDIDATE + 888_HOLD \u2192 SEALED_DEPLOY. F1/F2/F3/F4/F7.",
+      "description": "Constitutional visual QA: W³ tri-witness (vision+linter+sovereign), scar consultation, entropy gate. PASS does not exist — only PASS_CANDIDATE + 888_HOLD → SEALED_DEPLOY. F1/F2/F3/F4/F7.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1749,7 +1749,7 @@
     {
       "tool_name": "forge_visual_seal",
       "server": "aforge",
-      "description": "VAULT999 composite seal: validates W\u00b3 tri-witness hash and seals. I1-I5 invariants. Routing guard blocks premature seals. F1/F2/F3/F11.",
+      "description": "VAULT999 composite seal: validates W³ tri-witness hash and seals. I1-I5 invariants. Routing guard blocks premature seals. F1/F2/F3/F11.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1764,7 +1764,7 @@
     {
       "tool_name": "forge_vps_cron",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Machine Constitution cron registry. Lists cron jobs from root crontab, /etc/crontab, and /etc/cron.d. OBSERVE-class; does not mutate.",
+      "description": "ACTUATOR · vps · OBSERVE. Machine Constitution cron registry. Lists cron jobs from root crontab, /etc/crontab, and /etc/cron.d. OBSERVE-class; does not mutate.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1779,7 +1779,7 @@
     {
       "tool_name": "forge_vps_ports",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Machine Constitution port registry. Scans listening ports and classifies each as public, internal, or unknown. OBSERVE-class; does not mutate. Does not trust UFW alone because Docker can bypass it.",
+      "description": "ACTUATOR · vps · OBSERVE. Machine Constitution port registry. Scans listening ports and classifies each as public, internal, or unknown. OBSERVE-class; does not mutate. Does not trust UFW alone because Docker can bypass it.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1794,7 +1794,7 @@
     {
       "tool_name": "forge_vps_services",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE. Machine Constitution service registry. Lists running systemd services and Docker containers. OBSERVE-class; does not mutate.",
+      "description": "ACTUATOR · vps · OBSERVE. Machine Constitution service registry. Lists running systemd services and Docker containers. OBSERVE-class; does not mutate.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1809,7 +1809,7 @@
     {
       "tool_name": "forge_wealth",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 org_bridge \u00b7 OBSERVE. Route to WEALTH capital intelligence organ. Modes: emv, conservation, flow, runway, wisdom.",
+      "description": "ACTUATOR · org_bridge · OBSERVE. Route to WEALTH capital intelligence organ. Modes: emv, conservation, flow, runway, wisdom.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1824,7 +1824,7 @@
     {
       "tool_name": "forge_web_extract",
       "server": "aforge",
-      "description": "Full-capability agentic web extraction \u2014 auto-SPA-rendering, browser actions, authenticated sessions, downloads. All agents. DITEMPA BUKAN DIBERI.",
+      "description": "Full-capability agentic web extraction — auto-SPA-rendering, browser actions, authenticated sessions, downloads. All agents. DITEMPA BUKAN DIBERI.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1839,7 +1839,7 @@
     {
       "tool_name": "forge_web_zen",
       "server": "aforge",
-      "description": "Thin wrapper around web_zen CLI \u2014 agentic site sense/verify/orphan/ephemeral/doctor. Humans use six missions at /missions; agents call this instead of inventing deploy paths. Modes: sense, verify, orphan (dry-run only), ephemeral, doctor, caddy-reload-hint. No production rsync --delete. No Caddy authority self-grant. USE WHEN: site audit, missions 404, vitals proxies, SPA deploy check, ephemeral site parser.",
+      "description": "Thin wrapper around web_zen CLI — agentic site sense/verify/orphan/ephemeral/doctor. Humans use six missions at /missions; agents call this instead of inventing deploy paths. Modes: sense, verify, orphan (dry-run only), ephemeral, doctor, caddy-reload-hint. No production rsync --delete. No Caddy authority self-grant. USE WHEN: site audit, missions 404, vitals proxies, SPA deploy check, ephemeral site parser.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1854,7 +1854,7 @@
     {
       "tool_name": "forge_well",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 org_bridge \u00b7 OBSERVE. WELL relay primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors, anchor, machine_intelligence. Use when: WELL human readiness primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors,. Use when: WELL human readiness primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors,.",
+      "description": "ACTUATOR · org_bridge · OBSERVE. WELL relay primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors, anchor, machine_intelligence. Use when: WELL human readiness primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors,. Use when: WELL human readiness primitive. Routes to WELL organ (port 18083). Modes: state, readiness, floors,.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1869,7 +1869,7 @@
     {
       "tool_name": "forge_witness",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE. APEX v36\u03a9 tri-witness consensus gate. Computes W\u00b3 = \u221b(Human \u00d7 AI \u00d7 External) via geometric mean (Nash 1950). Returns CONSENSUS/WEAK/DIVERGENT. All three channels must be present. Zero in any channel collapses consensus. DO NOT fake witness confidence \u2014 unknown \u2192 0.0, not 0.5. F13 SOVEREIGN: DIVERGENT \u2192 888_HOLD.",
+      "description": "ACTUATOR · governance · OBSERVE. APEX v36Ω tri-witness consensus gate. Computes W³ = ∛(Human × AI × External) via geometric mean (Nash 1950). Returns CONSENSUS/WEAK/DIVERGENT. All three channels must be present. Zero in any channel collapses consensus. DO NOT fake witness confidence — unknown → 0.0, not 0.5. F13 SOVEREIGN: DIVERGENT → 888_HOLD.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1884,7 +1884,7 @@
     {
       "tool_name": "forge_wm_gaps",
       "server": "aforge",
-      "description": "World Model gap alerts with experience trace cross-reference. Returns high-confidence wrong predictions where the agent was confident but the output diverged significantly. Now also shows which gaps have experience feedback and which lack it \u2014 identifying the highest-priority improvement targets. Severity: CRITICAL/HIGH/MEDIUM. Read-only.",
+      "description": "World Model gap alerts with experience trace cross-reference. Returns high-confidence wrong predictions where the agent was confident but the output diverged significantly. Now also shows which gaps have experience feedback and which lack it — identifying the highest-priority improvement targets. Severity: CRITICAL/HIGH/MEDIUM. Read-only.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -1929,7 +1929,7 @@
     {
       "tool_name": "forge_worktree",
       "server": "aforge",
-      "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE. Local git physics sensor \u2014 reports branch, dirty state, stash, conflicts, and blast radius. Use when: Local git physics sensor. Returns branch, dirty state, stash, conflicts, in-progress ops, blast radi.",
+      "description": "ACTUATOR · git · OBSERVE. Local git physics sensor — reports branch, dirty state, stash, conflicts, and blast radius. Use when: Local git physics sensor. Returns branch, dirty state, stash, conflicts, in-progress ops, blast radi.",
       "parameters": null,
       "tags": [
         "aforge",
@@ -2008,7 +2008,7 @@
     {
       "tool_name": "arif_forge",
       "server": "arifos",
-      "description": "KERNEL 777 \u00b7 Execution gate via A-FORGE \u2014 mutates only after SEAL verdict.",
+      "description": "KERNEL 777 · Execution gate via A-FORGE — mutates only after SEAL verdict.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2073,7 +2073,7 @@
     {
       "tool_name": "arif_init",
       "server": "arifos",
-      "description": "KERNEL 000 \u00b7 Session ignition \u2014 binds actor, floors, and audit before any other arif_* verb.",
+      "description": "KERNEL 000 · Session ignition — binds actor, floors, and audit before any other arif_* verb.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2088,7 +2088,7 @@
     {
       "tool_name": "arif_judge",
       "server": "arifos",
-      "description": "KERNEL 666 \u00b7 Constitutional verdict \u2014 binding SEAL/HOLD/SABAR/VOID arbitration.",
+      "description": "KERNEL 666 · Constitutional verdict — binding SEAL/HOLD/SABAR/VOID arbitration.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2136,7 +2136,7 @@
     {
       "tool_name": "arif_memory",
       "server": "arifos",
-      "description": "KERNEL 555 \u00b7 Memory governor \u2014 L1\u2013L6 governed semantic recall, storage, and persistence.",
+      "description": "KERNEL 555 · Memory governor — L1–L6 governed semantic recall, storage, and persistence.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2185,7 +2185,7 @@
     {
       "tool_name": "arif_observe",
       "server": "arifos",
-      "description": "KERNEL 111 \u00b7 Sense reality into evidence with epistemic tags and uncertainty bounds.",
+      "description": "KERNEL 111 · Sense reality into evidence with epistemic tags and uncertainty bounds.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2233,7 +2233,7 @@
     {
       "tool_name": "arif_route",
       "server": "arifos",
-      "description": "KERNEL 444 \u00b7 Intent\u2192organ router \u2014 dispatches to GEOX/WEALTH/WELL/A-FORGE.",
+      "description": "KERNEL 444 · Intent→organ router — dispatches to GEOX/WEALTH/WELL/A-FORGE.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2248,7 +2248,7 @@
     {
       "tool_name": "arif_seal",
       "server": "arifos",
-      "description": "KERNEL 999 \u00b7 VAULT999 immutable append \u2014 irreversible civilizational memory sealing.",
+      "description": "KERNEL 999 · VAULT999 immutable append — irreversible civilizational memory sealing.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2296,7 +2296,7 @@
     {
       "tool_name": "arif_think",
       "server": "arifos",
-      "description": "KERNEL 333 \u00b7 Mind \u2014 structured reasoning under F2/F7 with OBS/DER/INT/SPEC labels.",
+      "description": "KERNEL 333 · Mind — structured reasoning under F2/F7 with OBS/DER/INT/SPEC labels.",
       "parameters": null,
       "tags": [
         "arifos",
@@ -2429,13 +2429,13 @@
     {
       "tool_name": "chron_active_events",
       "server": "chron",
-      "description": "Get chron_events filtered by audience \u2014 the institution's known temporal anchors.\n\nReturns events with computed days_until for each target_date.\nEvents are the source material from which predictions are generated.\nCall chron_generate_predictions after adding new events.",
+      "description": "Get chron_events filtered by audience — the institution's known temporal anchors.\n\nReturns events with computed days_until for each target_date.\nEvents are the source material from which predictions are generated.\nCall chron_generate_predictions after adding new events.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
           "audience": {
             "default": "all",
-            "description": "Filter \u2014\n'arif'  \u2192 events addressed to arif + shared (audience in ['arif','both'])\n'syed'  \u2192 events addressed to syed + shared (audience in ['syed','both'])\n'both'  \u2192 SHARED-ONLY events (audience == 'both'). NOT a superset.\n'all'   \u2192 EVERY event regardless of audience (use this for full inventory).\nDefault: 'all' (returns every event).",
+            "description": "Filter —\n'arif'  → events addressed to arif + shared (audience in ['arif','both'])\n'syed'  → events addressed to syed + shared (audience in ['syed','both'])\n'both'  → SHARED-ONLY events (audience == 'both'). NOT a superset.\n'all'   → EVERY event regardless of audience (use this for full inventory).\nDefault: 'all' (returns every event).",
             "enum": [
               "arif",
               "syed",
@@ -2460,13 +2460,13 @@
     {
       "tool_name": "chron_active_predictions",
       "server": "chron",
-      "description": "Get all active (unverified) predictions \u2014 the institution's current\nexpectations about the future that haven't been tested yet.\n\nEvery active prediction is a promise. CHRON will hold it until\nits verify_at arrives, then it becomes due. Callers should cross-\nreference with chron_predictions_due() to see what's overdue.",
+      "description": "Get all active (unverified) predictions — the institution's current\nexpectations about the future that haven't been tested yet.\n\nEvery active prediction is a promise. CHRON will hold it until\nits verify_at arrives, then it becomes due. Callers should cross-\nreference with chron_predictions_due() to see what's overdue.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
           "audience": {
             "default": "all",
-            "description": "Privacy filter \u2014 same contract as chron_active_events:\n'arif'  \u2192 predictions addressed to arif + shared\n'syed'  \u2192 predictions addressed to syed + shared\n'both'  \u2192 SHARED-ONLY. Correct for two-person surfaces.\n'all'   \u2192 EVERY prediction (full inventory).\nDefault: 'all'.",
+            "description": "Privacy filter — same contract as chron_active_events:\n'arif'  → predictions addressed to arif + shared\n'syed'  → predictions addressed to syed + shared\n'both'  → SHARED-ONLY. Correct for two-person surfaces.\n'all'   → EVERY prediction (full inventory).\nDefault: 'all'.",
             "enum": [
               "arif",
               "syed",
@@ -2501,7 +2501,7 @@
     {
       "tool_name": "chron_attention_debt",
       "server": "chron",
-      "description": "Attention Debt \u2014 measures unresolved contradiction backlog.\n\nAD(t) = \u03a3 (known_contradiction_age_days \u00d7 consequence_weight)\n\nSources: overdue predictions, unresolved HIGH events, SABAR verdicts.\nThe core hypothesis: constraint failure occurs first, attention failure\ndelays its detection, trust failure propagates it, price records it.\n\nThis tool measures the \"attention failure delays its detection\" part.\nAD > 50 = material backlog. AD growth rate > 2/day = attention system\nis falling behind. Call chron_predictions_due() to identify the specific\nitems contributing to debt.",
+      "description": "Attention Debt — measures unresolved contradiction backlog.\n\nAD(t) = Σ (known_contradiction_age_days × consequence_weight)\n\nSources: overdue predictions, unresolved HIGH events, SABAR verdicts.\nThe core hypothesis: constraint failure occurs first, attention failure\ndelays its detection, trust failure propagates it, price records it.\n\nThis tool measures the \"attention failure delays its detection\" part.\nAD > 50 = material backlog. AD growth rate > 2/day = attention system\nis falling behind. Call chron_predictions_due() to identify the specific\nitems contributing to debt.",
       "parameters": {
         "additionalProperties": false,
         "properties": {},
@@ -2520,7 +2520,7 @@
     {
       "tool_name": "chron_calibration_state",
       "server": "chron",
-      "description": "Get calibration statistics \u2014 how wrong have we been?\n\nReturns Brier scores, accuracy, error distribution, and per-error-class\nbreakdown. The institution's epistemic health metric.\n\nA Brier score of 0.25 = coin-flip calibration. Below 0.15 = useful.\nAccuracy below 60% at high confidence (>0.8) = systematic overconfidence.\nThis is the evidence that drives the Arrow of Time: verify \u2192 calibrate.",
+      "description": "Get calibration statistics — how wrong have we been?\n\nReturns Brier scores, accuracy, error distribution, and per-error-class\nbreakdown. The institution's epistemic health metric.\n\nA Brier score of 0.25 = coin-flip calibration. Below 0.15 = useful.\nAccuracy below 60% at high confidence (>0.8) = systematic overconfidence.\nThis is the evidence that drives the Arrow of Time: verify → calibrate.",
       "parameters": {
         "additionalProperties": false,
         "properties": {},
@@ -2539,7 +2539,7 @@
     {
       "tool_name": "chron_create_event",
       "server": "chron",
-      "description": "Create a new event in chron_events.json \u2014 plant a temporal stake.\n\nEvents are the raw material. After creating an event, call\nchron_generate_predictions() to create prediction objects from it.\nThe chain: Event \u2192 Prediction \u2192 Verification \u2192 Lesson.",
+      "description": "Create a new event in chron_events.json — plant a temporal stake.\n\nEvents are the raw material. After creating an event, call\nchron_generate_predictions() to create prediction objects from it.\nThe chain: Event → Prediction → Verification → Lesson.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -2574,7 +2574,7 @@
           },
           "note": {
             "default": "",
-            "description": "Additional context \u2014 why this event matters",
+            "description": "Additional context — why this event matters",
             "type": "string"
           },
           "source": {
@@ -2611,13 +2611,13 @@
     {
       "tool_name": "chron_episodes",
       "server": "chron",
-      "description": "Query CHRON episodes \u2014 the raw temporal ledger.\n\nEpisodes are the atomic temporal facts: observations, predictions,\nverifications, and lesson extractions. Each episode has a function\n(observe/predict/verify/learn), a principal (arif/syed/both), and\na valid_time.\n\nUse this for forensic queries: \"what did we know and when?\"\nThe episode store is append-only JSONL \u2014 immutable once written.",
+      "description": "Query CHRON episodes — the raw temporal ledger.\n\nEpisodes are the atomic temporal facts: observations, predictions,\nverifications, and lesson extractions. Each episode has a function\n(observe/predict/verify/learn), a principal (arif/syed/both), and\na valid_time.\n\nUse this for forensic queries: \"what did we know and when?\"\nThe episode store is append-only JSONL — immutable once written.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
           "function": {
             "default": "",
-            "description": "Filter by function \u2014 'observe', 'predict', 'verify', 'learn'",
+            "description": "Filter by function — 'observe', 'predict', 'verify', 'learn'",
             "type": "string"
           },
           "limit": {
@@ -2627,12 +2627,12 @@
           },
           "principal": {
             "default": "",
-            "description": "Filter by principal \u2014 'arif', 'syed', 'both'",
+            "description": "Filter by principal — 'arif', 'syed', 'both'",
             "type": "string"
           },
           "since": {
             "default": "",
-            "description": "ISO timestamp \u2014 only episodes after this time",
+            "description": "ISO timestamp — only episodes after this time",
             "type": "string"
           }
         },
@@ -2670,7 +2670,7 @@
     {
       "tool_name": "chron_last_loop",
       "server": "chron",
-      "description": "Get the last FULL_LOOP entry from loop_log.\n\nReturns the most recent metabolic cycle result:\nepisodes created, predictions verified, lessons extracted.\n\nIf this shows 0 verifications and 0 lessons across multiple loops,\nCHRON is in observation-only mode \u2014 the prediction\u2192verification\u2192lesson\npipeline is broken. This is the canary for metabolic health.",
+      "description": "Get the last FULL_LOOP entry from loop_log.\n\nReturns the most recent metabolic cycle result:\nepisodes created, predictions verified, lessons extracted.\n\nIf this shows 0 verifications and 0 lessons across multiple loops,\nCHRON is in observation-only mode — the prediction→verification→lesson\npipeline is broken. This is the canary for metabolic health.",
       "parameters": {
         "additionalProperties": false,
         "properties": {},
@@ -2689,7 +2689,7 @@
     {
       "tool_name": "chron_lessons",
       "server": "chron",
-      "description": "Get extracted lessons \u2014 what the institution has learned from verified outcomes.\n\nLessons are the final stage of the Arrow of Time:\nEvent \u2192 Prediction \u2192 Verification \u2192 Error \u2192 LESSON.\n\nA lesson is only useful if it changes future behavior. Lessons with\nstatus=CANDIDATE are awaiting human ratification. Lessons with\nstatus=ACTIVE have been ratified and should constrain future predictions.\n\nThe calibration gap (accuracy vs confidence) should shrink as lessons\naccumulate. If it doesn't, the lessons aren't being metabolized.",
+      "description": "Get extracted lessons — what the institution has learned from verified outcomes.\n\nLessons are the final stage of the Arrow of Time:\nEvent → Prediction → Verification → Error → LESSON.\n\nA lesson is only useful if it changes future behavior. Lessons with\nstatus=CANDIDATE are awaiting human ratification. Lessons with\nstatus=ACTIVE have been ratified and should constrain future predictions.\n\nThe calibration gap (accuracy vs confidence) should shrink as lessons\naccumulate. If it doesn't, the lessons aren't being metabolized.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -2700,7 +2700,7 @@
           },
           "status": {
             "default": "all",
-            "description": "Filter \u2014 'all', 'active', 'candidate', 'archived'",
+            "description": "Filter — 'all', 'active', 'candidate', 'archived'",
             "type": "string"
           }
         },
@@ -2719,7 +2719,7 @@
     {
       "tool_name": "chron_predictions_due",
       "server": "chron",
-      "description": "Get predictions whose verify_at has arrived \u2014 the temporal delta.\n\nReturns predictions that CHRON expects to verify NOW.\nThis is the 'what did we expect vs what happened' signal.\nCall this BEFORE chron_record_verification to find what needs closing.\n\nThe Arrow of Time: active \u2192 due \u2192 verified \u2192 calibrated \u2192 lesson.\nThis tool sits at the active\u2192due boundary. Every prediction returned\nhere represents an unpaid epistemic debt.",
+      "description": "Get predictions whose verify_at has arrived — the temporal delta.\n\nReturns predictions that CHRON expects to verify NOW.\nThis is the 'what did we expect vs what happened' signal.\nCall this BEFORE chron_record_verification to find what needs closing.\n\nThe Arrow of Time: active → due → verified → calibrated → lesson.\nThis tool sits at the active→due boundary. Every prediction returned\nhere represents an unpaid epistemic debt.",
       "parameters": {
         "additionalProperties": false,
         "properties": {},
@@ -2790,7 +2790,7 @@
     {
       "tool_name": "chron_proxy_reality_register",
       "server": "chron",
-      "description": "Register a proxy\u2192reality pair for correlation tracking.\n\nEach organ declares what proxy it measures and what reality it should\ndefend. CHRON tracks observations over time and flags divergence:\nproxy improving while reality degrades = GAMING.\n\nThis is the Proxy-Reality Paradox defense: every metric can be gamed.\nThe only defense is to measure both the proxy AND the reality it claims\nto represent. Without observations, this is empty instrumentation.\n\nAfter registering, call chron_proxy_reality_observe() to feed data.\n14 pairs are pre-seeded. 0 currently have observations.",
+      "description": "Register a proxy→reality pair for correlation tracking.\n\nEach organ declares what proxy it measures and what reality it should\ndefend. CHRON tracks observations over time and flags divergence:\nproxy improving while reality degrades = GAMING.\n\nThis is the Proxy-Reality Paradox defense: every metric can be gamed.\nThe only defense is to measure both the proxy AND the reality it claims\nto represent. Without observations, this is empty instrumentation.\n\nAfter registering, call chron_proxy_reality_observe() to feed data.\n14 pairs are pre-seeded. 0 currently have observations.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -2847,7 +2847,7 @@
     {
       "tool_name": "chron_proxy_reality_state",
       "server": "chron",
-      "description": "Get proxy-reality correlation state \u2014 the Proxy-Reality Paradox metric.\n\nFor each registered pair, computes whether proxy trends match reality\ntrends. Flags divergence: proxy improving while reality degrades = GAMING.",
+      "description": "Get proxy-reality correlation state — the Proxy-Reality Paradox metric.\n\nFor each registered pair, computes whether proxy trends match reality\ntrends. Flags divergence: proxy improving while reality degrades = GAMING.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -2877,7 +2877,7 @@
     {
       "tool_name": "chron_reconcile_state",
       "server": "chron",
-      "description": "Phase 0 \u2014 reconcile in-memory state with JSONL truth.\n\nReturns the invariant status:\n  - jsonl_count: actual episode lines on disk\n  - index_count: in-memory index size\n  - drift: index - jsonl (must be \u2264 0 unless signed compaction exists)\n  - invariant_held: bool\n  - generation, schema_version, compaction_receipt\n\nIf force=True, rebuilds the in-memory index from JSONL.\nThis is the tool an operator runs after a state contradiction\nto surface \u2014 not to silently mask \u2014 the gap.",
+      "description": "Phase 0 — reconcile in-memory state with JSONL truth.\n\nReturns the invariant status:\n  - jsonl_count: actual episode lines on disk\n  - index_count: in-memory index size\n  - drift: index - jsonl (must be ≤ 0 unless signed compaction exists)\n  - invariant_held: bool\n  - generation, schema_version, compaction_receipt\n\nIf force=True, rebuilds the in-memory index from JSONL.\nThis is the tool an operator runs after a state contradiction\nto surface — not to silently mask — the gap.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -2901,7 +2901,7 @@
     {
       "tool_name": "chron_record_verification",
       "server": "chron",
-      "description": "Record a verification outcome for a prediction. CLOSES THE ARROW.\n\nThis is the WRITE surface that completes the Arrow of Time:\nactive \u2192 due \u2192 VERIFIED \u2192 calibrated \u2192 lesson.\n\nAn agent observes reality, compares to the prediction, and records\nwhether the prediction was correct or incorrect. CHRON then computes\nthe Brier score and writes a permanent verification record.\n\nAfter calling this, call chron_calibration_state() to see updated\ncalibration, and chron_lessons() to check for extractable lessons.",
+      "description": "Record a verification outcome for a prediction. CLOSES THE ARROW.\n\nThis is the WRITE surface that completes the Arrow of Time:\nactive → due → VERIFIED → calibrated → lesson.\n\nAn agent observes reality, compares to the prediction, and records\nwhether the prediction was correct or incorrect. CHRON then computes\nthe Brier score and writes a permanent verification record.\n\nAfter calling this, call chron_calibration_state() to see updated\ncalibration, and chron_lessons() to check for extractable lessons.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -2910,7 +2910,7 @@
             "type": "boolean"
           },
           "observed_outcome": {
-            "description": "What actually happened (free text \u2014 becomes evidence)",
+            "description": "What actually happened (free text — becomes evidence)",
             "type": "string"
           },
           "prediction_id": {
@@ -2938,7 +2938,7 @@
     {
       "tool_name": "chron_resolve_unverifiable",
       "server": "chron",
-      "description": "Resolve a prediction as UNVERIFIABLE \u2014 close it without scoring.\n\nSome predictions cannot be verified: the evidence never arrived,\nthe question became meaningless, or the measurement window closed.\nUNVERIFIABLE predictions are removed from the active set (stopping\nattention debt accumulation) but NOT scored in calibration.\n\nThis is distinct from VERIFIED_INCORRECT: the prediction wasn't wrong,\nit was untestable.",
+      "description": "Resolve a prediction as UNVERIFIABLE — close it without scoring.\n\nSome predictions cannot be verified: the evidence never arrived,\nthe question became meaningless, or the measurement window closed.\nUNVERIFIABLE predictions are removed from the active set (stopping\nattention debt accumulation) but NOT scored in calibration.\n\nThis is distinct from VERIFIED_INCORRECT: the prediction wasn't wrong,\nit was untestable.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -2970,7 +2970,7 @@
     {
       "tool_name": "chron_store_stats",
       "server": "chron",
-      "description": "Get CHRON store statistics \u2014 episode/prediction/lesson counts.\n\nPrediction census is derived from the JOIN of the immutable birth store\nwith the verification ledger, not from the birth record alone. A birth\nrecord always reads ``status: ACTIVE`` (that is the immutability\ninvariant), so counting verdicts from it would always report zero.",
+      "description": "Get CHRON store statistics — episode/prediction/lesson counts.\n\nPrediction census is derived from the JOIN of the immutable birth store\nwith the verification ledger, not from the birth record alone. A birth\nrecord always reads ``status: ACTIVE`` (that is the immutability\ninvariant), so counting verdicts from it would always report zero.",
       "parameters": {
         "additionalProperties": false,
         "properties": {},
@@ -3008,7 +3008,7 @@
     {
       "tool_name": "chron_verified_predictions",
       "server": "chron",
-      "description": "Get the verification ledger \u2014 what has actually been checked, and how it went.\n\nThis is the read surface for CHRON's *second* act. ``chron_active_predictions``\nshows what we expect; this shows what reality answered. Each row carries the\nbirth snapshot (claim, confidence at birth, assumptions, evidence) joined with\nthe observed outcome, verdict, error class, and Brier score \u2014 so a wrong\nprediction can be diagnosed against the reasoning that produced it.",
+      "description": "Get the verification ledger — what has actually been checked, and how it went.\n\nThis is the read surface for CHRON's *second* act. ``chron_active_predictions``\nshows what we expect; this shows what reality answered. Each row carries the\nbirth snapshot (claim, confidence at birth, assumptions, evidence) joined with\nthe observed outcome, verdict, error class, and Brier score — so a wrong\nprediction can be diagnosed against the reasoning that produced it.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -3113,7 +3113,7 @@
     {
       "tool_name": "fed_classify",
       "server": "fed",
-      "description": "Classify a message into a capability lane. Deterministic, identity-blind.\n\nAnswers ONE question: \"capability apa diperlukan oleh mesej ini?\"\nNever identity, never emotion, never philosophy \u2014 those live prompt-side.",
+      "description": "Classify a message into a capability lane. Deterministic, identity-blind.\n\nAnswers ONE question: \"capability apa diperlukan oleh mesej ini?\"\nNever identity, never emotion, never philosophy — those live prompt-side.",
       "parameters": null,
       "tags": [
         "fed",
@@ -3143,7 +3143,7 @@
     {
       "tool_name": "fed_health",
       "server": "fed",
-      "description": "FED health check \u2014 returns service status and DB integrity.",
+      "description": "FED health check — returns service status and DB integrity.",
       "parameters": null,
       "tags": [
         "fed",
@@ -3158,7 +3158,7 @@
     {
       "tool_name": "fed_probe",
       "server": "fed",
-      "description": "Probe LiteLLM gateway lanes + DB state (v3.3.1).\n\nReplaces the dead delegation to balance_probe.py (probed DeepSeek only,\nhardcoded provider_count=6). Reads live gateway health surfaces directly\nand reports honest DB counts. ADVISORY_ONLY \u2014 never judges.",
+      "description": "Probe LiteLLM gateway lanes + DB state (v3.3.1).\n\nReplaces the dead delegation to balance_probe.py (probed DeepSeek only,\nhardcoded provider_count=6). Reads live gateway health surfaces directly\nand reports honest DB counts. ADVISORY_ONLY — never judges.",
       "parameters": null,
       "tags": [
         "fed",
@@ -3338,7 +3338,7 @@
     {
       "tool_name": "geox_glof",
       "server": "geox",
-      "description": "Unified GLOF multi-phase cascade simulation. Multi-phase physics: solid dam \u2192 granular debris \u2192 liquid flood (Mohr-Coulomb + Saint-Venant + 33D zen-33 state). Modes: run (full cascade in one call), inverse (Bayesian grid-search), mcmc (MCMC posterior), propagate (Saint-Venant 1D), phase (yield surface debug). Replaces 7 individual geox_glof_cascade_* tools (333 ARCHITECT 2026-09-19). Use when: Use when you need glof evidence.",
+      "description": "Unified GLOF multi-phase cascade simulation. Multi-phase physics: solid dam → granular debris → liquid flood (Mohr-Coulomb + Saint-Venant + 33D zen-33 state). Modes: run (full cascade in one call), inverse (Bayesian grid-search), mcmc (MCMC posterior), propagate (Saint-Venant 1D), phase (yield surface debug). Replaces 7 individual geox_glof_cascade_* tools (333 ARCHITECT 2026-09-19). Use when: Use when you need glof evidence.",
       "parameters": {
         "additionalProperties": false,
         "properties": {
@@ -3555,7 +3555,7 @@
     {
       "tool_name": "geox_glof_cascade_mcmc_inverse",
       "server": "geox",
-      "description": "Phase C \u2014 proper Bayesian posterior via adaptive Metropolis-Hastings MCMC. Replaces grid search. Returns posterior mean, std, percentiles, R-hat, ESS, accept_rate, n_samples. Sampling on (E, c, phi, tau_0, sigma_t, phi_p). Use when: Use when you need glof cascade mcmc inverse evidence.",
+      "description": "Phase C — proper Bayesian posterior via adaptive Metropolis-Hastings MCMC. Replaces grid search. Returns posterior mean, std, percentiles, R-hat, ESS, accept_rate, n_samples. Sampling on (E, c, phi, tau_0, sigma_t, phi_p). Use when: Use when you need glof cascade mcmc inverse evidence.",
       "parameters": null,
       "tags": [
         "geox",
@@ -3600,7 +3600,7 @@
     {
       "tool_name": "geox_glof_cascade_propagate",
       "server": "geox",
-      "description": "Phase C \u2014 1D Saint-Venant (shallow-water) wave propagation from breach to downstream. Lax-Friedrichs finite-volume solver with Manning friction. Returns time series of (h, u, Q) along domain + peak downstream Q/time/depth/velocity. Use when: Use when you need glof cascade propagate evidence.",
+      "description": "Phase C — 1D Saint-Venant (shallow-water) wave propagation from breach to downstream. Lax-Friedrichs finite-volume solver with Manning friction. Returns time series of (h, u, Q) along domain + peak downstream Q/time/depth/velocity. Use when: Use when you need glof cascade propagate evidence.",
       "parameters": null,
       "tags": [
         "geox",
@@ -3720,7 +3720,7 @@
     {
       "tool_name": "geox_register_native_source",
       "server": "geox",
-      "description": "Register a native SEG-Y source for trace extraction.\n\nValidates file existence, computes SHA256, extracts binary header metadata.\nDoes NOT load trace data \u2014 that happens at extraction time.\n\nReturns registration receipt with HOLD reasons if validation fails.",
+      "description": "Register a native SEG-Y source for trace extraction.\n\nValidates file existence, computes SHA256, extracts binary header metadata.\nDoes NOT load trace data — that happens at extraction time.\n\nReturns registration receipt with HOLD reasons if validation fails.",
       "parameters": null,
       "tags": [
         "geox",
@@ -3765,7 +3765,7 @@
     {
       "tool_name": "geox_seismic_interpret",
       "server": "geox",
-      "description": "One semantic capability \u2014 propose geometry, physics-gate, compare hypotheses (NOT autonomous SEAL). Live modes: horizon_contrast, fault_sticks, volume_frame, blend, structure_validate, interpret (interpretation_bundle \u22653 hyps), interpret_section/rsi_pipeline (INT_SEISMIC), segy_slice. Gates return PASS|WARN|KILL|UNMEASURED + receipt_hash. preferred_hypothesis always null from GEOX. Local max QUALIFIED_CANDIDATE \u2014 arifOS seals only. Use when: Use when you need seismic interpret evidence.",
+      "description": "One semantic capability — propose geometry, physics-gate, compare hypotheses (NOT autonomous SEAL). Live modes: horizon_contrast, fault_sticks, volume_frame, blend, structure_validate, interpret (interpretation_bundle ≥3 hyps), interpret_section/rsi_pipeline (INT_SEISMIC), segy_slice. Gates return PASS|WARN|KILL|UNMEASURED + receipt_hash. preferred_hypothesis always null from GEOX. Local max QUALIFIED_CANDIDATE — arifOS seals only. Use when: Use when you need seismic interpret evidence.",
       "parameters": null,
       "tags": [
         "geox",
@@ -3780,7 +3780,7 @@
     {
       "tool_name": "geox_source",
       "server": "geox",
-      "description": "Source rock and diagenesis evaluation. Modes: source_rock (TOC, kerogen, maturity, \u0394logR), diagenesis (compaction models: Athy, Sclater & Christie).",
+      "description": "Source rock and diagenesis evaluation. Modes: source_rock (TOC, kerogen, maturity, ΔlogR), diagenesis (compaction models: Athy, Sclater & Christie).",
       "parameters": null,
       "tags": [
         "geox",
@@ -4476,894 +4476,6 @@
       "authority_ceiling": "UNBOUNDED"
     },
     {
-      "tool_name": "capital_backtest",
-      "server": "wealth",
-      "description": "Run strategy backtest on XAUUSD using the proven indicator fusion (EMA alignment + ATR-scaled stops + RSI pullback filter + S/R zones). Wraps the v2 backtest engine. Returns win rate, profit factor, Sharpe, max drawdown, and trade log. SIDE EFFECT: writes a vault receipt.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_civx",
-      "server": "wealth",
-      "description": "Civilizational scenario intelligence \u2014 long-horizon resilience, sovereignty, intergenerational burden. MODES: scenario (full scenario study), resilience (resilience scores), risks (key risks), assumptions (assumption axes). SEED CASES: malaysia_fiscal_2027_2040. Status: SAFE_TO_STUDY, never decision authority. SIDE EFFECT: writes a vault receipt.",
-      "parameters": {
-        "additionalProperties": false,
-        "properties": {
-          "actor_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "caller_service": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "mode": {
-            "default": "scenario",
-            "type": "string"
-          },
-          "seed_case": {
-            "default": "malaysia_fiscal_2027_2040",
-            "type": "string"
-          },
-          "session_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "trace_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          }
-        },
-        "type": "object"
-      },
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_claims",
-      "server": "wealth",
-      "description": "Named-entity claim gate \u2014 validates claims about real institutions/persons before publication. OBS_ELIGIBLE requires external source_uri + ISO retrieval timestamp + CHECKED contradiction with external second source; person-trait claims rejected (structures, not people); any HOLD/REJECT blocks the batch. SIDE EFFECT: writes a vault receipt.",
-      "parameters": {
-        "additionalProperties": false,
-        "properties": {
-          "actor_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "claims": {
-            "anyOf": [
-              {
-                "items": {
-                  "additionalProperties": true,
-                  "type": "object"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "session_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "trace_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          }
-        },
-        "type": "object"
-      },
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_diagnose",
-      "server": "wealth",
-      "description": "Abductive institutional diagnostics \u2014 inference from partial evidence across stress, governance, and institutional domains. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_entropy",
-      "server": "wealth",
-      "description": "Capital and institutional entropy analysis \u2014 measures information loss, consequence displacement, and metric drift. Computes, never allocates. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_entry_plan",
-      "server": "wealth",
-      "description": "Compute S/R-aware entry zone, stop loss, and take profit targets for XAUUSD. Combines swing-point support/resistance clustering with ATR-based risk scaling. Returns structured trade plan: entry_zone, stop_loss, target_1, target_2, risk_reward_ratio. SIDE EFFECT: writes a vault receipt.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_health",
-      "server": "wealth",
-      "description": "Financial health metrics \u2014 deductive computation from structured inputs, no inference or governance verdict. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_indicator",
-      "server": "wealth",
-      "description": "Compute technical analysis indicators for any yfinance symbol. Indicators: ema, sma, rsi, macd, bb (Bollinger Bands), psar (Parabolic SAR), atr, adx. Pure numpy computation \u2014 no external TA library needed. SIDE EFFECT: writes a vault receipt.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_ledger",
-      "server": "wealth",
-      "description": "VAULT999 immutable ledger access \u2014 query read-only, write requires human acknowledgment. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "MUTATE",
-      "effective_class": "MUTATE",
-      "risk_tier": "medium",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_market",
-      "server": "wealth",
-      "description": "Market data and commodity intelligence \u2014 observational with derived and interpreted fields. MODES: fundamentals (pass ticker=<BURSA_CODE> for the F1-F9 fundamental-invariant engine), fx, commodity, indicator, stock, gold, oil, gas. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_polix",
-      "server": "wealth",
-      "description": "Power topology intelligence \u2014 incentive mapping, capture detection, rent extraction analysis, rule asymmetry. MODES: topology (full power map), capture (capture risk), rents (rent flows), asymmetry (rule asymmetries). SEED CASES: malaysia_fiscal, petronas_glc (DEPRECATED for non-archival use \u2014 call with seed_case=None to refuse a static seed and require caller-supplied material fields). SIDE EFFECT: writes a vault receipt.",
-      "parameters": {
-        "additionalProperties": false,
-        "properties": {
-          "actor_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "caller_service": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "mode": {
-            "default": "topology",
-            "type": "string"
-          },
-          "seed_case": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "session_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "trace_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          }
-        },
-        "type": "object"
-      },
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_primitive",
-      "server": "wealth",
-      "description": "Deductive capital math primitives \u2014 pure computation, no inference or governance verdict. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "capital_registry",
-      "server": "wealth",
-      "description": "WEALTH meta/introspection \u2014 registry status, tool schema, domain index, health check. Observational only. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_agent_path",
-      "server": "wealth",
-      "description": "Sovereign Intent Router \u2014 classifies tasks into L1/L2 physics-economic paths.",
-      "parameters": null,
-      "tags": [
-        "routing",
-        "intent",
-        "physics",
-        "economics"
-      ],
-      "epistemic_tag": "PLAUSIBLE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_boundary_governance",
-      "server": "wealth",
-      "description": "Boundary \u2014 constitutional floors, maruah, stewardship, constraint.",
-      "parameters": null,
-      "tags": [
-        "boundary",
-        "governance",
-        "maruah",
-        "stewardship"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "GOVERN",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_conservation_capital",
-      "server": "wealth",
-      "description": "Conservation \u2014 capital stock reality (assets, liabilities, reserves).",
-      "parameters": null,
-      "tags": [
-        "capital",
-        "assets",
-        "liabilities",
-        "reserves"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_energy_productivity",
-      "server": "wealth",
-      "description": "Energy \u2014 output per input, productivity, capital efficiency.",
-      "parameters": null,
-      "tags": [
-        "productivity",
-        "efficiency",
-        "energy"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_entropy_audit",
-      "server": "wealth",
-      "description": "Calculate structural and narrative entropy coefficients for an SOE/NOC.",
-      "parameters": null,
-      "tags": [
-        "entropy",
-        "audit",
-        "soe",
-        "noc",
-        "governance"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "GOVERN",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_entropy_risk",
-      "server": "wealth",
-      "description": "Entropy \u2014 uncertainty, dispersion, tail risk, disorder.",
-      "parameters": null,
-      "tags": [
-        "risk",
-        "entropy",
-        "uncertainty",
-        "tail-risk"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_epf_project",
-      "server": "wealth",
-      "description": "Project EPF accumulation to target age.",
-      "parameters": null,
-      "tags": [
-        "epf",
-        "malaysia",
-        "retirement",
-        "projection"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_field_macro",
-      "server": "wealth",
-      "description": "Field \u2014 macro environment (rates, FX, energy, carbon, regime).",
-      "parameters": null,
-      "tags": [
-        "macro",
-        "rates",
-        "fx",
-        "energy",
-        "carbon"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_flow_liquidity",
-      "server": "wealth",
-      "description": "Flow \u2014 liquidity movement (cashflow, burn, runway, survival).",
-      "parameters": null,
-      "tags": [
-        "liquidity",
-        "cashflow",
-        "burn",
-        "runway"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_game_coordination",
-      "server": "wealth",
-      "description": "Game \u2014 multi-agent incentives, bargaining, coordination.",
-      "parameters": null,
-      "tags": [
-        "game-theory",
-        "incentives",
-        "bargaining",
-        "coordination"
-      ],
-      "epistemic_tag": "PLAUSIBLE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_governance_verdict",
-      "server": "wealth",
-      "description": "Final Allocation Verdict \u2014 sovereign governance recommendation.",
-      "parameters": null,
-      "tags": [
-        "governance",
-        "verdict",
-        "allocation",
-        "sovereign"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_gradient_price",
-      "server": "wealth",
-      "description": "Gradient \u2014 price pressure, spread, mispricing detection.",
-      "parameters": null,
-      "tags": [
-        "price",
-        "spread",
-        "mispricing",
-        "trading"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_health_check",
-      "server": "wealth",
-      "description": "Universal health check for federation stability.",
-      "parameters": null,
-      "tags": [
-        "health",
-        "federation",
-        "stability"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_inequality_kernel",
-      "server": "wealth",
-      "description": "Inequality Kernel \u2014 unified diagnosis across all 5 inequality dimensions.",
-      "parameters": null,
-      "tags": [
-        "inequality",
-        "kernel",
-        "diagnosis",
-        "social"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_inertia_leverage",
-      "server": "wealth",
-      "description": "Inertia \u2014 resistance to change, leverage stress, fragility.",
-      "parameters": null,
-      "tags": [
-        "leverage",
-        "dscr",
-        "fragility",
-        "stress"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_judge_handoff",
-      "server": "wealth",
-      "description": "Build or validate structured handoff envelope for arifOS governance review and 888_HOLD judgment. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
-      "parameters": null,
-      "tags": [
-        "wealth",
-        "wealth"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "GOVERN",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_ledger_query",
-      "server": "wealth",
-      "description": "Ledger Read \u2014 query the immutable governance ledger.",
-      "parameters": null,
-      "tags": [
-        "ledger",
-        "query",
-        "audit"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_ledger_write",
-      "server": "wealth",
-      "description": "Ledger Append \u2014 irreversible state transition to VAULT999.",
-      "parameters": null,
-      "tags": [
-        "ledger",
-        "write",
-        "vault",
-        "irreversible"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "MUTATE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_market_data",
-      "server": "wealth",
-      "description": "Unified surface for FX, commodities, and macro indicators.",
-      "parameters": null,
-      "tags": [
-        "market",
-        "fx",
-        "commodity",
-        "macro"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_omni_wisdom",
-      "server": "wealth",
-      "description": "Unified capital intelligence \u2014 synthesis + deal + hysteresis in one tool.",
-      "parameters": null,
-      "tags": [
-        "synthesis",
-        "wisdom",
-        "capital",
-        "deal"
-      ],
-      "epistemic_tag": "PLAUSIBLE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_personal_finance",
-      "server": "wealth",
-      "description": "Unified surface for cashflow, runway, and net worth.",
-      "parameters": null,
-      "tags": [
-        "finance",
-        "cashflow",
-        "runway",
-        "net-worth",
-        "personal"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_preference_rank",
-      "server": "wealth",
-      "description": "Personal Utility Ranking \u2014 preference ordering under constraints.",
-      "parameters": null,
-      "tags": [
-        "preference",
-        "ranking",
-        "utility",
-        "decision"
-      ],
-      "epistemic_tag": "PLAUSIBLE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_signal_information",
-      "server": "wealth",
-      "description": "Signal \u2014 information value, evidence quality, schema validity.",
-      "parameters": null,
-      "tags": [
-        "signal",
-        "information",
-        "evidence",
-        "e-and-p"
-      ],
-      "epistemic_tag": "ESTIMATE",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_survival_engine",
-      "server": "wealth",
-      "description": "Unified survival intelligence: cashflow, runway, burn, liquidity.",
-      "parameters": null,
-      "tags": [
-        "survival",
-        "liquidity",
-        "burn",
-        "runway"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_synthesize",
-      "server": "wealth",
-      "description": "\u03a900 Cross-dimensional synthesis \u2014 collapses the 12 \u03a9-invariants (\u03a901 conservation, \u03a902 flow, \u03a903 gradient, \u03a904 entropy, \u03a905 energy, \u03a906 time, \u03a907 inertia, \u03a908 field, \u03a909 signal, \u03a910 game, \u03a911 boundary, \u03a912 hysteresis) into a domain_assessment. Returns FAVORABLE | CAUTION | INSUFFICIENT_EVIDENCE | CONSTRAINT_VIOLATION \u2014 NEVER a constitutional verdict (SEAL/HOLD/SABAR/VOID). execution_authority is fixed at ADVISORY_ONLY; handoff is fixed at arifOS.arif_judge. Doctrine: Analyst (WEALTH) \u2260 Judge (arifOS).",
-      "parameters": {
-        "additionalProperties": false,
-        "properties": {
-          "actor_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "domain": {
-            "default": "capital",
-            "type": "string"
-          },
-          "omega_invariants": {
-            "additionalProperties": true,
-            "type": "object"
-          },
-          "session_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "trace_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          }
-        },
-        "required": [
-          "omega_invariants"
-        ],
-        "type": "object"
-      },
-      "tags": [
-        "wealth",
-        "wealth"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "MUTATE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_system_registry_status",
-      "server": "wealth",
-      "description": "Registry truth diagnostic \u2014 intended, registered, and alias surfaces.",
-      "parameters": null,
-      "tags": [
-        "registry",
-        "diagnostic",
-        "truth"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_time_discount",
-      "server": "wealth",
-      "description": "Time \u2014 NPV, IRR, payback, compounding, decay.",
-      "parameters": null,
-      "tags": [
-        "npv",
-        "irr",
-        "payback",
-        "time-value"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
-      "tool_name": "wealth_zakat_calculate",
-      "server": "wealth",
-      "description": "Malaysian 2.5%% zakat above nisab.",
-      "parameters": null,
-      "tags": [
-        "zakat",
-        "malaysia",
-        "islamic-finance"
-      ],
-      "epistemic_tag": "CLAIM",
-      "action_class": "OBSERVE",
-      "effective_class": "OBSERVE",
-      "risk_tier": "low",
-      "authority_ceiling": "COMPUTE_ONLY"
-    },
-    {
       "tool_name": "mcp_health_check",
       "server": "well",
       "description": "DEPRECATED: use well_assess_reliability instead.",
@@ -5396,7 +4508,7 @@
     {
       "tool_name": "well_assess_homeostasis",
       "server": "well",
-      "description": "\u03a9-WELL-06: Assess regulation, stability, and empathic balance under change.\n\nWhen mode=\"fatigue\", accepts biometric overrides to support contrast scenarios\nand real-time assessment without state.json dependency. Also accepts decision_class\nto route the homeostasis verdict through the C-class threshold matrix:\n  C1/C2 -- proceed unless CRITICAL\n  C3     -- proceed if STABLE or better\n  C4     -- proceed only if OPTIMAL; DEFER if STABLE; ADVISORY_BLOCK if DEGRADED/CRITICAL\n  C5     -- proceed only if OPTIMAL + no chronic fatigue; block otherwise",
+      "description": "Ω-WELL-06: Assess regulation, stability, and empathic balance under change.\n\nWhen mode=\"fatigue\", accepts biometric overrides to support contrast scenarios\nand real-time assessment without state.json dependency. Also accepts decision_class\nto route the homeostasis verdict through the C-class threshold matrix:\n  C1/C2 -- proceed unless CRITICAL\n  C3     -- proceed if STABLE or better\n  C4     -- proceed only if OPTIMAL; DEFER if STABLE; ADVISORY_BLOCK if DEGRADED/CRITICAL\n  C5     -- proceed only if OPTIMAL + no chronic fatigue; block otherwise",
       "parameters": null,
       "tags": [
         "well",
@@ -5444,7 +4556,7 @@
     {
       "tool_name": "well_assess_reliability",
       "server": "well",
-      "description": "\u03a9-WELL-10: Assess machine, tool, institution, and operational reliability.",
+      "description": "Ω-WELL-10: Assess machine, tool, institution, and operational reliability.",
       "parameters": null,
       "tags": [
         "well",
@@ -5475,7 +4587,7 @@
     {
       "tool_name": "well_assess_triadic_state",
       "server": "well",
-      "description": "[Triad Phase 4] Headline composition: human \u00d7 machine \u00d7 governance \u2192 unified signal.\n\nComposes:\n  - Human plane: well_assess_homeostasis (state.json metrics)\n  - Machine plane: well_observe_federation_thermal (per-organ /health aggregate)\n  - Governance plane: well_consent_audit + events.jsonl recommendation count\n\nReturns unified_score, weakest_plane, route (PROCEED/REDUCE_LOAD/RECOVER/HOLD/SABAR).\nF12 verdict hygiene: NEVER returns sealed/verdict/acted_on. Route is recommendation only.\nCaller must pass through arifOS.verify \u2192 AAA.judge before any action.",
+      "description": "[Triad Phase 4] Headline composition: human × machine × governance → unified signal.\n\nComposes:\n  - Human plane: well_assess_homeostasis (state.json metrics)\n  - Machine plane: well_observe_federation_thermal (per-organ /health aggregate)\n  - Governance plane: well_consent_audit + events.jsonl recommendation count\n\nReturns unified_score, weakest_plane, route (PROCEED/REDUCE_LOAD/RECOVER/HOLD/SABAR).\nF12 verdict hygiene: NEVER returns sealed/verdict/acted_on. Route is recommendation only.\nCaller must pass through arifOS.verify → AAA.judge before any action.",
       "parameters": null,
       "tags": [
         "well",
@@ -5490,7 +4602,7 @@
     {
       "tool_name": "well_attest_to_kernel",
       "server": "well",
-      "description": "[Triad Phase 3] Bridge fire \u2014 attestation from WELL \u2192 arifOS :18081 /attest.\n\nWrites own copy to events.jsonl first, then forwards to arifOS bridge.\nF8 graceful UNKNOWN if arifOS unreachable. NEVER returns verdict or sealed\nfrom WELL alone (separation of powers: WELL proposes, arifOS verifies,\nAAA judges, A-FORGE executes, FRAME observes).",
+      "description": "[Triad Phase 3] Bridge fire — attestation from WELL → arifOS :18081 /attest.\n\nWrites own copy to events.jsonl first, then forwards to arifOS bridge.\nF8 graceful UNKNOWN if arifOS unreachable. NEVER returns verdict or sealed\nfrom WELL alone (separation of powers: WELL proposes, arifOS verifies,\nAAA judges, A-FORGE executes, FRAME observes).",
       "parameters": null,
       "tags": [
         "well",
@@ -5505,7 +4617,7 @@
     {
       "tool_name": "well_bridge",
       "server": "well",
-      "description": "G-WELL outbound witness plane. mode=attest|signal|recommend|dignity|log.\n\nAll modes route via arifFlow receipts (F13 Option B); arifOS lane DEAD.\nWELL never returns verdicts \u2014 proposals + evidence only.",
+      "description": "G-WELL outbound witness plane. mode=attest|signal|recommend|dignity|log.\n\nAll modes route via arifFlow receipts (F13 Option B); arifOS lane DEAD.\nWELL never returns verdicts — proposals + evidence only.",
       "parameters": null,
       "tags": [
         "well",
@@ -5520,7 +4632,7 @@
     {
       "tool_name": "well_check_repair",
       "server": "well",
-      "description": "\u03a9-WELL-07: Check repair, recovery, resilience, and forge cycle integrity.",
+      "description": "Ω-WELL-07: Check repair, recovery, resilience, and forge cycle integrity.",
       "parameters": null,
       "tags": [
         "well",
@@ -5535,7 +4647,7 @@
     {
       "tool_name": "well_classify_machine_state",
       "server": "well",
-      "description": "[Triad Phase 2] Compose prior tools \u2192 OPTIMAL/WATCH/DEGRADED/CRITICAL.\n\nNever writes verdict to vault. Recommendation only. F12 verdict hygiene\nenforced (no \"sealed\" / \"verdict\" / \"acted_on\" fields in response).",
+      "description": "[Triad Phase 2] Compose prior tools → OPTIMAL/WATCH/DEGRADED/CRITICAL.\n\nNever writes verdict to vault. Recommendation only. F12 verdict hygiene\nenforced (no \"sealed\" / \"verdict\" / \"acted_on\" fields in response).",
       "parameters": null,
       "tags": [
         "well",
@@ -5550,7 +4662,7 @@
     {
       "tool_name": "well_classify_substrate",
       "server": "well",
-      "description": "\u03a9-WELL-01: Substrate classification and boundary sensing.",
+      "description": "Ω-WELL-01: Substrate classification and boundary sensing.",
       "parameters": null,
       "tags": [
         "well",
@@ -5565,7 +4677,7 @@
     {
       "tool_name": "well_compute_metabolic_flux",
       "server": "well",
-      "description": "Compute metabolic_flux \u2014 unified thermodynamic entropy rate.",
+      "description": "Compute metabolic_flux — unified thermodynamic entropy rate.",
       "parameters": null,
       "tags": [
         "metabolic-flux",
@@ -5642,7 +4754,7 @@
     {
       "tool_name": "well_frame_read_snapshot",
       "server": "well",
-      "description": "[Triad Phase 5] FRAME observer reads snapshot as evidence, never verdict.\n\nF12 verdict hygiene: returns `snapshot` (observation) + `frame_verdict:\n\"EVIDENCE_ONLY\"`. FRAME is the independent observer \u2014 never ratifies decisions.",
+      "description": "[Triad Phase 5] FRAME observer reads snapshot as evidence, never verdict.\n\nF12 verdict hygiene: returns `snapshot` (observation) + `frame_verdict:\n\"EVIDENCE_ONLY\"`. FRAME is the independent observer — never ratifies decisions.",
       "parameters": null,
       "tags": [
         "well",
@@ -5672,7 +4784,7 @@
     {
       "tool_name": "well_guard_dignity",
       "server": "well",
-      "description": "\u03a9-WELL-12: Guard soul, personhood, meaning, and symbolic boundaries.",
+      "description": "Ω-WELL-12: Guard soul, personhood, meaning, and symbolic boundaries.",
       "parameters": null,
       "tags": [
         "well",
@@ -5687,7 +4799,7 @@
     {
       "tool_name": "well_handoff_dignity_to_arifos",
       "server": "well",
-      "description": "[Triad Phase 3] High-urgency dignity handoff WELL \u2192 arifOS /dignity/handoff.\n\nSeparation of powers: WELL prepares the dignity packet; arifOS judges.\nReturns `awaiting_verification: True` \u2014 never a verdict.",
+      "description": "[Triad Phase 3] High-urgency dignity handoff WELL → arifOS /dignity/handoff.\n\nSeparation of powers: WELL prepares the dignity packet; arifOS judges.\nReturns `awaiting_verification: True` — never a verdict.",
       "parameters": null,
       "tags": [
         "well",
@@ -5717,7 +4829,7 @@
     {
       "tool_name": "well_inject_biometric",
       "server": "well",
-      "description": "[Triad Phase 1] Hermes-only biometric injection from external device.\n\nRequires Hermes actor_token (env HERMES_HERMETIC_TOKEN). Required scope:\nbiometric.full (default OFF \u2014 operator must opt in via Hermes).",
+      "description": "[Triad Phase 1] Hermes-only biometric injection from external device.\n\nRequires Hermes actor_token (env HERMES_HERMETIC_TOKEN). Required scope:\nbiometric.full (default OFF — operator must opt in via Hermes).",
       "parameters": null,
       "tags": [
         "well",
@@ -5732,7 +4844,7 @@
     {
       "tool_name": "well_intake",
       "server": "well",
-      "description": "H-WELL write plane. mode=meal|recovery|substance|biometric.\n\nConsent gates (F11/F13) preserved by delegation \u2014 biometric requires\nHermes actor_token; substance requires substance.full scope.",
+      "description": "H-WELL write plane. mode=meal|recovery|substance|biometric.\n\nConsent gates (F11/F13) preserved by delegation — biometric requires\nHermes actor_token; substance requires substance.full scope.",
       "parameters": null,
       "tags": [
         "well",
@@ -5777,7 +4889,7 @@
     {
       "tool_name": "well_log_substance",
       "server": "well",
-      "description": "[Triad Phase 1] Log a substance intake event.\n\nRequired scope: substance.full (default OFF \u2014 operator must opt in).",
+      "description": "[Triad Phase 1] Log a substance intake event.\n\nRequired scope: substance.full (default OFF — operator must opt in).",
       "parameters": null,
       "tags": [
         "well",
@@ -5792,7 +4904,7 @@
     {
       "tool_name": "well_machine",
       "server": "well",
-      "description": "M-WELL unified plane. mode=diagnose|recommend|classify|observe.\n\nobserve scope=organ \u2192 per-organ thermal/drift/scar/evidence card;\nscope=federation \u2192 all-organ + mesh thermal aggregate.",
+      "description": "M-WELL unified plane. mode=diagnose|recommend|classify|observe.\n\nobserve scope=organ → per-organ thermal/drift/scar/evidence card;\nscope=federation → all-organ + mesh thermal aggregate.",
       "parameters": null,
       "tags": [
         "well",
@@ -5959,7 +5071,7 @@
     {
       "tool_name": "well_reality",
       "server": "well",
-      "description": "R-WELL (v1). Reality Integrity plane. mode=confidence|memory|witness|lineage|patterns.\n\nConstitutional metric: Edited Reality \u2260 Executed Reality.\nv1 sources (live-probed): graphiti_mcp :18412, falkordb graphs,\ncommit alignment, machine telemetry, witness bridge lane.",
+      "description": "R-WELL (v1). Reality Integrity plane. mode=confidence|memory|witness|lineage|patterns.\n\nConstitutional metric: Edited Reality ≠ Executed Reality.\nv1 sources (live-probed): graphiti_mcp :18412, falkordb graphs,\ncommit alignment, machine telemetry, witness bridge lane.",
       "parameters": null,
       "tags": [
         "well",
@@ -6034,7 +5146,7 @@
     {
       "tool_name": "well_system_registry_status",
       "server": "well",
-      "description": "WELL registry truth probe \u2014 somatic surface vs autonomic internals.",
+      "description": "WELL registry truth probe — somatic surface vs autonomic internals.",
       "parameters": null,
       "tags": [
         "registry",
@@ -6050,7 +5162,7 @@
     {
       "tool_name": "well_trace_lineage",
       "server": "well",
-      "description": "\u03a9-WELL-02: Memory, trend, ledger, and vault chain tracing.",
+      "description": "Ω-WELL-02: Memory, trend, ledger, and vault chain tracing.",
       "parameters": null,
       "tags": [
         "well",
@@ -6065,7 +5177,7 @@
     {
       "tool_name": "well_triad",
       "server": "well",
-      "description": "G+C triadic plane. mode=assess|snapshot|hud.\n\nsnapshot observer=frame \u2192 FRAME evidence-only read of the same file.",
+      "description": "G+C triadic plane. mode=assess|snapshot|hud.\n\nsnapshot observer=frame → FRAME evidence-only read of the same file.",
       "parameters": null,
       "tags": [
         "well",
@@ -6080,7 +5192,7 @@
     {
       "tool_name": "well_validate_vitality",
       "server": "well",
-      "description": "\u03a9-WELL-08: Validate vitality, readiness, and NIAT. (Floor compliance removed -- arifOS adjudicates floors.)",
+      "description": "Ω-WELL-08: Validate vitality, readiness, and NIAT. (Floor compliance removed -- arifOS adjudicates floors.)",
       "parameters": null,
       "tags": [
         "well",
@@ -6091,6 +5203,507 @@
       "effective_class": "OBSERVE",
       "risk_tier": "low",
       "authority_ceiling": "REFLECT_ONLY"
+    },
+    {
+      "tool_name": "capital_backtest",
+      "server": "wealth",
+      "description": "Run strategy backtest on XAUUSD using the proven indicator fusion (EMA alignment + ATR-scaled stops + RSI pullback filter + S/R zones). Wraps the v2 backtest engine. Returns win rate, profit factor, Sharpe, max drawdown, and trade log. SIDE EFFECT: writes a vault receipt.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_breakeven",
+      "server": "wealth",
+      "description": "Canonical WEALTH surface tool (live sessionful tools/list on :18082, probed 2026-10-15).",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "canonical"
+      ],
+      "epistemic_tag": "OBS",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_civx",
+      "server": "wealth",
+      "description": "Civilizational scenario intelligence — long-horizon resilience, sovereignty, intergenerational burden. MODES: scenario (full scenario study), resilience (resilience scores), risks (key risks), assumptions (assumption axes). SEED CASES: malaysia_fiscal_2027_2040. Status: SAFE_TO_STUDY, never decision authority. SIDE EFFECT: writes a vault receipt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "caller_service": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "mode": {
+            "default": "scenario",
+            "type": "string"
+          },
+          "seed_case": {
+            "default": "malaysia_fiscal_2027_2040",
+            "type": "string"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_claims",
+      "server": "wealth",
+      "description": "Named-entity claim gate — validates claims about real institutions/persons before publication. OBS_ELIGIBLE requires external source_uri + ISO retrieval timestamp + CHECKED contradiction with external second source; person-trait claims rejected (structures, not people); any HOLD/REJECT blocks the batch. SIDE EFFECT: writes a vault receipt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "claims": {
+            "anyOf": [
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_diagnose",
+      "server": "wealth",
+      "description": "Abductive institutional diagnostics — inference from partial evidence across stress, governance, and institutional domains. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_entropy",
+      "server": "wealth",
+      "description": "Capital and institutional entropy analysis — measures information loss, consequence displacement, and metric drift. Computes, never allocates. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_entry_plan",
+      "server": "wealth",
+      "description": "Compute S/R-aware entry zone, stop loss, and take profit targets for XAUUSD. Combines swing-point support/resistance clustering with ATR-based risk scaling. Returns structured trade plan: entry_zone, stop_loss, target_1, target_2, risk_reward_ratio. SIDE EFFECT: writes a vault receipt.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_health",
+      "server": "wealth",
+      "description": "Financial health metrics — deductive computation from structured inputs, no inference or governance verdict. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_indicator",
+      "server": "wealth",
+      "description": "Compute technical analysis indicators for any yfinance symbol. Indicators: ema, sma, rsi, macd, bb (Bollinger Bands), psar (Parabolic SAR), atr, adx. Pure numpy computation — no external TA library needed. SIDE EFFECT: writes a vault receipt.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_ledger",
+      "server": "wealth",
+      "description": "VAULT999 immutable ledger access — query read-only, write requires human acknowledgment. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "MUTATE",
+      "risk_tier": "medium",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_market",
+      "server": "wealth",
+      "description": "Market data and commodity intelligence — observational with derived and interpreted fields. MODES: fundamentals (pass ticker=<BURSA_CODE> for the F1-F9 fundamental-invariant engine), fx, commodity, indicator, stock, gold, oil, gas. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_polix",
+      "server": "wealth",
+      "description": "Power topology intelligence — incentive mapping, capture detection, rent extraction analysis, rule asymmetry. MODES: topology (full power map), capture (capture risk), rents (rent flows), asymmetry (rule asymmetries). SEED CASES: malaysia_fiscal, petronas_glc (DEPRECATED for non-archival use — call with seed_case=None to refuse a static seed and require caller-supplied material fields). SIDE EFFECT: writes a vault receipt.",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "caller_service": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "mode": {
+            "default": "topology",
+            "type": "string"
+          },
+          "seed_case": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      },
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_primitive",
+      "server": "wealth",
+      "description": "Deductive capital math primitives — pure computation, no inference or governance verdict. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_rank_sources",
+      "server": "wealth",
+      "description": "Canonical WEALTH surface tool (live sessionful tools/list on :18082, probed 2026-10-15).",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "canonical"
+      ],
+      "epistemic_tag": "OBS",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_read",
+      "server": "wealth",
+      "description": "Canonical WEALTH surface tool (live sessionful tools/list on :18082, probed 2026-10-15).",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "canonical"
+      ],
+      "epistemic_tag": "OBS",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "capital_registry",
+      "server": "wealth",
+      "description": "WEALTH meta/introspection — registry status, tool schema, domain index, health check. Observational only. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "capital"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "OBSERVE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_judge_handoff",
+      "server": "wealth",
+      "description": "Build or validate structured handoff envelope for arifOS governance review and 888_HOLD judgment. SIDE EFFECT: writes a vault receipt to /root/VAULT999/wealth/receipts.jsonl (per wealth-organ.service.d/receipts-write.conf). Receipts include call_status=PASS/FAIL and input hashes.",
+      "parameters": null,
+      "tags": [
+        "wealth",
+        "wealth"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "GOVERN",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
+    },
+    {
+      "tool_name": "wealth_synthesize",
+      "server": "wealth",
+      "description": "Ω00 Cross-dimensional synthesis — collapses the 12 Ω-invariants (Ω01 conservation, Ω02 flow, Ω03 gradient, Ω04 entropy, Ω05 energy, Ω06 time, Ω07 inertia, Ω08 field, Ω09 signal, Ω10 game, Ω11 boundary, Ω12 hysteresis) into a domain_assessment. Returns FAVORABLE | CAUTION | INSUFFICIENT_EVIDENCE | CONSTRAINT_VIOLATION — NEVER a constitutional verdict (SEAL/HOLD/SABAR/VOID). execution_authority is fixed at ADVISORY_ONLY; handoff is fixed at arifOS.arif_judge. Doctrine: Analyst (WEALTH) ≠ Judge (arifOS).",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "domain": {
+            "default": "capital",
+            "type": "string"
+          },
+          "omega_invariants": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "required": [
+          "omega_invariants"
+        ],
+        "type": "object"
+      },
+      "tags": [
+        "wealth",
+        "wealth"
+      ],
+      "epistemic_tag": "CLAIM",
+      "action_class": "MUTATE",
+      "effective_class": "OBSERVE",
+      "risk_tier": "low",
+      "authority_ceiling": "COMPUTE_ONLY"
     }
-  ]
+  ],
+  "reconciliation": {
+    "at": "2026-10-15",
+    "actor": "333-AGI",
+    "trigger": "External advisor connector called advertised wealth_system_registry_status; live WEALTH correctly returned Unknown tool. Root cause: index advertised retired names.",
+    "note": "WEALTH section reconciled to live :18082 tools/list (18 canonical). Dropped 26 retired wealth_* names; added 3 live-canonical names. servers[wealth].tools 41->18; total_tools 343->320.",
+    "probe": "sessionful MCP initialize + tools/list on http://127.0.0.1:18082 (stateless 2026-07-28 era not supported by WEALTH - SESSION_MISSING)."
+  },
+  "digest_note": "digest is stale (forged 2026-09-29, pre-dating this reconciliation); no consumer verifies it - regenerate on next full index forge."
 }

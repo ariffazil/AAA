@@ -1,7 +1,7 @@
 {
-  "reconciled_at": "2026-10-02T03:23:05Z",
+  "reconciled_at": "2026-10-17T05:19:44Z",
   "reconciler": "scripts/state_reconciler.py v1 (FI-008 \u00b7 PR-2 FEDERATION-SOT)",
-  "input": "federation/runtime-state.json",
+  "input": "/root/AAA/federation/runtime-state.json",
   "summary": {
     "CONCLUSION": 10,
     "CONTRADICTION": 0,

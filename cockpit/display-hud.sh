@@ -8,9 +8,9 @@
 set -euo pipefail
 
 COCKPIT_DIR="$(cd "$(dirname "$0")" && pwd)"
-STATE_FILE="${COCKPIT_DIR}/hud-state.json"
+STATE_FILE="/var/lib/arifos/state/cockpit/hud-state.json"
 GENERATOR="${COCKPIT_DIR}/generate-hud-state.sh"
-EXEC_PATH="${COCKPIT_DIR}/execution-path-next.json"
+EXEC_PATH="/var/lib/arifos/state/cockpit/execution-path-next.json"
 
 REGEN=1
 RAW=0
@@ -189,6 +189,6 @@ printf '%sFRESHNESS%s       %s%s%s  (state=%ss · exec-path=%s)\n' "$BOLD" "$RES
 
 # F1 receipt trail
 echo
-printf '%sreceipt: [receipt: /root/AAA/cockpit/hud-state.json]%s\n' "$DIM" "$RESET"
+printf '%sreceipt: [receipt: /var/lib/arifos/state/cockpit/hud-state.json]%s\n' "$DIM" "$RESET"
 
 exit 0

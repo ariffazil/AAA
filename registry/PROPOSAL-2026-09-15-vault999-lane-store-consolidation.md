@@ -15,7 +15,7 @@ also editing, (b) pre-empt a two-lane design that compose still declares, and (c
 store lifecycle — which the previous session explicitly blocked. So they are raised
 here instead of executed.
 
-## P1 — One declared seal writer: `:8100` (compose) vs `:5001` (systemd)
+## P1 — One declared seal writer: `:5001` (compose) vs `:5001` (systemd)
 
 **Reality.** Two definitions of the vault writer coexist:
 
@@ -23,13 +23,13 @@ here instead of executed.
   listening on **`127.0.0.1:5001`** (pid 1450999). `curl :5001/health` → 200;
   `/vault/status` → `vault_seals_total=10492, chain_integrity=INTACT, chain_gaps=0`.
 - **DEAD:** `arifOS/deploy/docker-compose.yml:20,78,82,124` declares a `vault999`
-  service on **`:8100`**, expose to peers as `http://vault999:8100`. No such container
-  runs (`docker ps`), and **nothing listens on `:8100`** (`ss -ltnp`: 0 matches;
-  `curl :8100/health` → HTTP 000).
+  service on **`:5001`**, expose to peers as `http://vault999:5001`. No such container
+  runs (`docker ps`), and **nothing listens on `:5001`** (`ss -ltnp`: 0 matches;
+  `curl :5001/health` → HTTP 000).
 
 **The defect.** `/root/.secrets/kunci-root.env:298` and `kunci-mas.env:299` export
-`VAULT_WRITER_URL=http://127.0.0.1:8100`, and lines 296/297 export
-`VAULT_API_URL=http://localhost:8100`. These **override correct `:5001` defaults** in:
+`VAULT_WRITER_URL=http://127.0.0.1:5001`, and lines 296/297 export
+`VAULT_API_URL=http://localhost:5001`. These **override correct `:5001` defaults** in:
 
 - `AAA/a2a-server/vault.js:12` (default `http://vault999-writer:5001`) — used at :136, :184, :202
 - `AAA/a2a-server/seal_chain.js:96` (`REMOTE_URL = process.env.VAULT_WRITER_URL || null`)
@@ -44,7 +44,7 @@ So every seal/health call from those four consumers goes to a dead port. Only
 `kunci-root.flat.env` (175,177), `kunci-mas.flat.env` (304,306); delete or comment the
 compose `vault999` service stanza so one writer is declared once. *Cost:* a
 `kunci-root.env` edit that every lane re-sources — needs a quiet window.
-**Option B.** Stand the compose `vault999` service back up on `:8100` as the declared
+**Option B.** Stand the compose `vault999` service back up on `:5001` as the declared
 edge. *Cost:* two writers, and `:5001` is the one already holding the Supabase DSN
 (sourced from `/root/.secrets/vault.flat.env` by
 `/usr/local/bin/vault999-writer-launcher.sh`), so this duplicates authority.

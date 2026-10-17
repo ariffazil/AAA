@@ -57,9 +57,9 @@ listener / unresolvable · **ALIAS** = same inode as a LIVE path.
 |---|---|---|---|---|
 | 12 | `/root/.local/share/arifos/vault999/outcomes.jsonl` | **pre-fix:** `A-FORGE/duties/aed.py:534` (L6 liveness), `A-FORGE/duties/memory_promotion_smoke.py:191` (L6 fallback), `arifOS/scripts/auto_remediate.py:23` (**WRITE target**). Correctly annotated as stale by `AAA/bin/probe_sys_health.sh:73,239-244` | **STALE (FROZEN)** | 1,894,697 B, **mtime 2026-08-25 16:45:18**, 2,953 lines. Last record: `{"skill":"hermes-coding-gateway","version":"1.0.0-2026.08.25","actor":"333-AGI",...}`. `inode 3277578` — a different file from the live log |
 | 13 | `/agent/vault999/receipts/outcomes.jsonl` | `A-FORGE/duties/memory_promotion_smoke.py:41` — **default** `VAULT_OUTCOMES` | **STALE** | 11,401,151 B, mtime **2026-08-26 05:44**. `inode 46161949` |
-| 14 | `VAULT_WRITER_URL=http://127.0.0.1:8100` — `/root/.secrets/kunci-root.env:298`, `/root/.secrets/kunci-mas.env:299` (and the `.flat.env` twins at 306/177) | read by `AAA/a2a-server/vault.js:12,136,184,202`, `AAA/a2a-server/seal_chain.js:96`, `arifOS/arifosmcp/cli/check.py:99`, `arifOS/arifosmcp/cli/seal.py:37`, `AAA/bin/probe_sys_health.sh:162` | **DEAD** | `ss -ltnp` shows **no `:8100` listener** (0 matches); `curl :8100/health` → **HTTP 000**. These env values OVERRIDE consumers' correct `:5001` defaults |
-| 15 | `VAULT_API_URL=http://localhost:8100` — `kunci-root.env:296`, `kunci-mas.env:297` (`.flat.env` 304/175) | same env surface | **DEAD** | as #14 |
-| 16 | `arifOS/deploy/docker-compose.yml:20,78,82,124` (`http://vault999:8100`, `PORT: '8100'`) | compose definition of a `vault999` service | **DEAD (not running)** | `docker ps` shows no `vault999*` container; only the systemd writer on `:5001` exists |
+| 14 | `VAULT_WRITER_URL=http://127.0.0.1:5001` — `/root/.secrets/kunci-root.env:298`, `/root/.secrets/kunci-mas.env:299` (and the `.flat.env` twins at 306/177) | read by `AAA/a2a-server/vault.js:12,136,184,202`, `AAA/a2a-server/seal_chain.js:96`, `arifOS/arifosmcp/cli/check.py:99`, `arifOS/arifosmcp/cli/seal.py:37`, `AAA/bin/probe_sys_health.sh:162` | **DEAD** | `ss -ltnp` shows **no `:5001` listener** (0 matches); `curl :5001/health` → **HTTP 000**. These env values OVERRIDE consumers' correct `:5001` defaults |
+| 15 | `VAULT_API_URL=http://localhost:5001` — `kunci-root.env:296`, `kunci-mas.env:297` (`.flat.env` 304/175) | same env surface | **DEAD** | as #14 |
+| 16 | `arifOS/deploy/docker-compose.yml:20,78,82,124` (`http://vault999:5001`, `PORT: '5001'`) | compose definition of a `vault999` service | **DEAD (not running)** | `docker ps` shows no `vault999*` container; only the systemd writer on `:5001` exists |
 | 17 | `127.0.0.1:5432` docker postgres, db `vault999`, table `vault_seals` | `POSTGRES_URL` consumers; the writer only if its DSN defaults (see §3) | **STALE (seals)** | **12 rows**. `pg_stat_user_tables`: `vault_seals ins=0`, `last_autoanalyze=never`. Schema differs (`sealed_at`, `prev_seal_id`) |
 | 18 | `POSTGRES_URL=postgresql://arifos_admin:***@127.0.0.1:5432/vault999` | arifOS kernel telemetry / Kabarkan | **LIVE for telemetry, STALE for seals** | Same DB, different tables: `observations` **ins=58,454 / upd=406,136**, autoanalyzed 2026-09-15 08:42; `observations_pre_d2` **ins=203,064**. Kabarkan units all `active running`: `kabarkan-collector.service` (otelcol), `kabarkan-worker.service`, `kabarkan-health.service` |
 | 19 | `/root/VAULT999/state.db` | — | **EMPTY** | 0 bytes, mtime 2026-09-08 |
@@ -95,9 +95,9 @@ fallback, on top of a primary default of `/agent/vault999/...` that is itself st
 the frozen file with mode `"a"` at line 147 and appended every auto-remediation receipt
 into it**, i.e. real receipts were being written to a ledger the federation had stopped
 advancing three weeks earlier. All three are fixed in place (§3). Separately, the
-`VAULT_WRITER_URL`/`VAULT_API_URL` pair set to **`http://127.0.0.1:8100`**
+`VAULT_WRITER_URL`/`VAULT_API_URL` pair set to **`http://127.0.0.1:5001`**
 (`/root/.secrets/kunci-root.env:296,298` and `/root/.secrets/kunci-mas.env:297,299`) is
-**dead** — nothing listens on `:8100` and a probe returns HTTP 000 — and because those
+**dead** — nothing listens on `:5001` and a probe returns HTTP 000 — and because those
 env values override the correct `:5001` defaults inside
 `AAA/a2a-server/vault.js:12`, `AAA/a2a-server/seal_chain.js:96`,
 `arifOS/arifosmcp/cli/check.py:99` and `cli/seal.py:37`, every one of those consumers
@@ -120,17 +120,17 @@ postgres must stay until the telemetry store is migrated.
 | `/root/A-FORGE/duties/aed.py:534` | `vault_path` → `/root/VAULT999/outcomes.jsonl` | Pointed at a file frozen since 2026-08-25; `exists()`+`lines>0` made L6 a permanent false-green |
 | `/root/A-FORGE/duties/memory_promotion_smoke.py:191` | L6 fallback → `/root/VAULT999/outcomes.jsonl` | Fallback targeted the same frozen file (primary default `/agent/vault999/...` is stale too) |
 | `/root/arifOS/scripts/auto_remediate.py:23` | write target → `/root/VAULT999/outcomes.jsonl` | This is an **appender** (line 147); receipts were landing in the frozen ledger |
-| `/root/AAA/docs/deprecation-registry.json` | +1 `open_divergences` entry `DIV-VAULT999-MULTIPATH-SOT`; +2 `deprecated_files` (frozen log, `/agent/vault999` log); +1 `deprecated_endpoints` (`:8100`) | Registry is the canonical place to record the divergence |
+| `/root/AAA/docs/deprecation-registry.json` | +1 `open_divergences` entry `DIV-VAULT999-MULTIPATH-SOT`; +2 `deprecated_files` (frozen log, `/agent/vault999` log); +1 `deprecated_endpoints` (`:5001`) | Registry is the canonical place to record the divergence |
 
 Verified after edit: all four files pass `python3 -m py_compile`; `arifflow_digest.py`
 re-runs clean and now prints `36166 receipts in VAULT999 arifFLOW mirror (cumulative …)
 / Chains in file: 343 / Max chain_position: 5000`.
 
-**Not edited (deliberate):** `/root/.secrets/*.env` (`:8100` — §4 proposal);
+**Not edited (deliberate):** `/root/.secrets/*.env` (`:5001` — §4 proposal);
 `/root/.hermes/cron/jobs.json` (the only occurrence of the dead path is in
 `arif-morning-pulse`, which is **`enabled: false`** — no live cron consumer);
 `AAA/bin/probe_sys_health.sh` (already correct — it treats `/root/VAULT999` as live and
-`:8100` + the frozen log as STALE at lines 22-32 and 70-75).
+`:5001` + the frozen log as STALE at lines 22-32 and 70-75).
 
 ---
 

@@ -68,6 +68,42 @@ hermes skills tap list
 
 Record: version, config_version, active memory provider, profiles, MCP servers, gateway platforms, skills count.
 
+### Phase 2b — Service Inventory (scar 2026-10-16)
+
+Upstream Hermes runs ONE gateway process. Your box may have accumulated extra services. Inventory them:
+
+```bash
+# All hermes-* services
+systemctl list-units --type=service | grep -E 'hermes|Hermes'
+
+# Per-service RSS
+for svc in $(systemctl list-units --type=service --no-pager --no-legend | grep hermes | awk '{print $1}'); do
+  pid=$(systemctl show "$svc" -p MainPID --value 2>/dev/null)
+  if [ "$pid" ] && [ "$pid" != "0" ]; then
+    rss=$(ps -p "$pid" -o rss= 2>/dev/null)
+    rss_mb=$((rss / 1024))
+    echo "$svc: ${rss_mb}MB"
+  fi
+done
+
+# Who connects to each port?
+ss -tnp | grep -E '18087|18089|18420|18791'
+```
+
+**Reality (measured 2026-10-16):**
+
+| Service | Port | RSS | Active callers | Verdict |
+|---------|------|-----|----------------|---------|
+| hermes-asi-gateway | (polling) | ~600MB | Telegram | KEEP — core gateway |
+| hermes-mcp-server | :18087 | ~55MB | OpenCode, Codex | KEEP — MCP tools |
+| hermes-liveness | (timer) | ~0 | systemd timer | KEEP — watchdog |
+| hermes-a2a | :18089 | ~23MB | 0 established | QUESTIONABLE |
+| hermes-rasa-mcp | :18420 | ~33MB | 0 callers | QUESTIONABLE |
+| hermes-health | :18791 | ~10MB | 0 callers | QUESTIONABLE |
+| hermes-voice-governor | (none) | ~12MB | no downstream | QUESTIONABLE |
+
+For each QUESTIONABLE service, ask: "Who calls it, what unique capability does it provide, and what verified workflow fails when it is unavailable?" If you cannot answer, it is inventory, not capability.
+
 ### Phase 3 — The 8 Dimensions
 
 Check each dimension against upstream docs. For each gap found, assign impact (🔴 HIGH / 🟡 MEDIUM / ⚪ LOW) and confidence cap.

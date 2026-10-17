@@ -245,7 +245,7 @@
         "_synced_by": "FI-008 \u2014 live session evidence 2026-08-21"
       },
       {
-        "url": "http://localhost:18100/mcp",
+        "url": "http://localhost:15001/mcp",
         "tool_count": 9,
         "tools": [
           "generate_video",
