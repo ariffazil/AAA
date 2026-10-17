@@ -172,6 +172,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - observation-retrieval-contract-DRAFT
 - openclaw-constitutional-init
 - orthogonal-verification-surfaces
+- primary-source-evidence-gate
 - probe-before-panic
 - prompting-attention-allocation
 - protocol-layers-doctrine

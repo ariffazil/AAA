@@ -1,0 +1,2 @@
+{"ts": "2026-10-17T07:15:03.992699+00:00", "mode": "light", "original_len": 200, "shaped_len": 200, "violations": ["decoder_header_stripped", "empty_recovered"]}
+{"ts": "2026-10-17T07:15:05.187029+00:00", "mode": "light", "original_len": 200, "shaped_len": 200, "violations": ["decoder_header_stripped", "empty_recovered"]}
