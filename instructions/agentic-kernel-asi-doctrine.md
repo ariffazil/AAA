@@ -1,5 +1,7 @@
 # AGI Kernel Substrate & ASI Tooling — Canonical Doctrine (Corrected Mapping)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Type:** AAA instruction fragment · **Forged:** 2026-09-04 · **Authority:** F13 SOVEREIGN Arif "seal all"
 > **Derived from:** sovereign dossier (session 2026-09-04) + live contrast by kimi-code/FI-008
 > **Contrast record:** /root/forge_work/drafts/2026-09-04-agi-kernel-asi-dossier-contrast.md

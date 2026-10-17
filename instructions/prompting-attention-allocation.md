@@ -1,5 +1,7 @@
 # Prompting as Attention Allocation
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 **Sealed:** 2026-09-12 F13_RATIFIED_CHAT  
 **Origin:** Thread alpha → zen → witness → mutual witnessing → prompting  
 **Author:** Arif Fazil (SOVEREIGN)

@@ -1,5 +1,7 @@
 # Human Memory — Fragment
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Canonical doctrine:** `/root/AAA/governance/HUMAN_MEMORY_DOCTRINE.md`
 > **This file is a pointer.** The full axiom, two-axis split, scar-to-constitution pipeline, three-prompt ritual, and ledger schema live in the canonical document. Read it before reasoning about H-axis memory.
 

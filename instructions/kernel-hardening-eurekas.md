@@ -1,5 +1,7 @@
 # 4 Eureka Margin Discoveries — Kernel Hardening Sphere
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Canon:** `/root/arifOS/arifosmcp/runtime/kernel_hardening_eurekas.py`  
 > **Ratified:** 2026-08-16 by F13 SOVEREIGN  
 > **Doctrine:** *Kecerdasan = Fluid (boleh berubah & berkembang). Kernel = Rigid (berpaut pada bukti & batas).*

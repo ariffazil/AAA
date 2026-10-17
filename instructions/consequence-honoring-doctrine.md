@@ -2,7 +2,7 @@
 
 > Forged: 2026-09-08 | Session: consequence-honoring-reflection
 > Classification: Canonical Instruction | Constitutional binding: F2 (TRUTH), F7 (HUMILITY)
-> Status: F13_RATIFIED_CHAT (Arif direct session)
+> Status: F13_RATIFIED_SOVEREIGN (2026-09-12)
 
 ## The Problem This Doctrine Solves
 

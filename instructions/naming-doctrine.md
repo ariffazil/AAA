@@ -1,5 +1,7 @@
 # Naming Doctrine — Compression, Not Labeling
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged: 2026-09-08 | Source: Session EUREKA on "I'm Arif"
 > Classification: Canonical Instruction | Constitutional binding: F1 (AMANAH), F2 (TRUTH)
 

@@ -1,5 +1,7 @@
 # TEMPORAL INTELLIGENCE DOCTRINE — Time Accounting Architecture
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > F13_RATIFIED_CHAT · 2026-09-09 · CHRONUS origin
 > Classification: DOCTRINE · Scope: arifOS Federation
 

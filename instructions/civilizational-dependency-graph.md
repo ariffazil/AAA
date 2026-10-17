@@ -1,5 +1,7 @@
 # Civilizational Dependency Graph — The Complete Compression
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged: 2026-09-08 | Source: Naming Doctrine session with Arif
 > Classification: Canonical Reference | Pairs with: naming-doctrine.md
 

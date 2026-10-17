@@ -6,6 +6,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - CARRY-FORWARD-PATH-RECONCILIATION
 - CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-2026-09-24
 - CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-v0.6-2026-09-24
+- DECISION-RECORD-memory-conflicts-20261014
 - EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-STAGING-2026-09-25
 - F13-RATIFICATION-READINESS
 - FEDERATION_HARDENING_DIGEST_v1
@@ -15,7 +16,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - LEAN_BOOT_TRIGGER_TABLE
 - MCP-HARDENING-EXECUTION-PROMPT-v3
 - REALITY_DEBT_AUDIT
-- REALITY_GRAPH_5_LAYER_DOCTRINE-STAGING-2026-09-24
 - SOVEREIGN-PROPOSAL-CANON-INDEX-STAGING-2026-09-24
 - SUBSTRATE-PATCHES-v2.1
 - _UNRENDERED_INDEX
@@ -35,7 +35,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - anti-collapse-doctrine
 - anti-haram-behavior-canonical
 - anti-haram-behavior-canonical-human
-- anti-shadow-architecture
 - apex-parity-doctrine-v1
 - apex-rose-parallel
 - apex-swot-loop
@@ -128,11 +127,11 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - gui-spec
 - gut-override-ledger-spec
 - harness-commoditization-boundary
+- hermes-conduct-directives
 - hermes-identity-directive
 - hermes-layer-discipline
+- hermes-question-policy
 - hermes-role-ladder
-- hermes-shadow-SOURCE-2026-09-16
-- hermes-shadow-paradox
 - hermes-v1-canon
 - hook-federation-standard
 - huma-edge-reality-bridge-contrast
@@ -142,6 +141,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - human-meaning-membrane
 - human-memory
 - human-memory-compartmentalization
+- human-memory-law
 - human-reality-invariants
 - human-substrate
 - human-substrate-exclusions-PROPOSAL
@@ -149,6 +149,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - identity-continuity
 - institutional-memory-strata
 - inter-agent-protocol
+- interpretation-certainty-invariants
 - interpreter-drift
 - jauhari-intelligence-doctrine
 - kernel-hardening-eurekas
@@ -191,9 +192,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - salam-consequence-membrane
 - sanctuary-invariant
 - scar-engineering
-- shadow-as-expensive-reality
-- shadow-authority-doctrine
-- shadow-paradoxes-13
 - shebtoc-p0-witness-capture-layer
 - shebtoc-p2-mutation-protocol
 - six-graph-federation-model

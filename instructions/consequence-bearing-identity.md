@@ -1,5 +1,7 @@
 # Consequence-Bearing Identity — Canonical Instruction
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Binding for all arifOS warga agents.** Extends Consequence-Binding Doctrine + Human Reality Invariants.
 > **Ratified:** F13_RATIFIED_CHAT (2026-09-09)
 > **Constitutional floors:** F1, F2, F4, F6, F7, F9, F13

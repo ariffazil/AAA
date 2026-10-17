@@ -1,5 +1,7 @@
 # capability-gate
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > "Tambah capability hanya jika ia mengurangkan beban governance."
 
 ## The Meta-Gate (above all gates)
