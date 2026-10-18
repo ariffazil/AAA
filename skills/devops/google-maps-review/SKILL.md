@@ -55,6 +55,26 @@ POST https://productmate.com/api/v1/google-review-link
 
 Or just open the Maps place page in the browser and read the place id from `window.location.href` / the `data:` payload. No key needed.
 
+## LIVE BLOCKER (verified 2026-10-18) — Google rejects COLD headless login
+
+A fresh headless login from the VPS is rejected by Google BotGuard at the
+identifier step (`signin/rejected`) — BEFORE password/2FA is ever asked.
+Adding a TOTP secret does NOT fix this (it never reaches that step).
+
+**The browser path is NOT dead** — only cold login is. Two viable escapes:
+1. **Cookie import (the real durable fix):** import an already-logged-in
+   Google session (storageState.json / cookies exported from Arif's own
+   trusted device) into the persistent browser profile via CDP
+   `Network.setCookie` (or playwright storageState). Then the session skips
+   login entirely — no BotGuard challenge. Still may be CAPTCHA-flagged for
+   review posting specifically from a datacenter IP; test before claiming.
+2. **Direct write-review URL** (for a one-off): `search.google.com/local/
+   writereview?placeid=<FTID>` — one tap on his logged-in phone, straight to
+the form.
+
+Do NOT retry cold login in a loop (account-lock risk). After one
+`signin/rejected`, stop.
+
 ## The posting flow (after login exists)
 
 ```python

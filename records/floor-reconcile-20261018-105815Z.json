@@ -1,0 +1,22 @@
+{
+  "host": "forge",
+  "written_utc": "2026-10-18T10:58:15.739261+00:00",
+  "written_my": "2026-10-18T18:58:15.739261+00:00",
+  "kernel_8088": {
+    "status": "degraded",
+    "overall": "DEGRADED",
+    "floors_failing": [
+      "F12",
+      "F8"
+    ],
+    "F1_value": 1.0,
+    "F1_status": "pass",
+    "F1_provenance": "arifflow_fq_probe:fq=0.8055077452667814"
+  },
+  "arifflow_7073": {
+    "diagnosis_top": "SIMULATION",
+    "legacy_verdict": "FLOWING",
+    "execute": 55,
+    "barriers": 0
+  }
+}
