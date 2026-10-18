@@ -1,0 +1,137 @@
+patch_session_id: 333-AGI-batch-patches-2026-10-18
+patched_by: 333-AGI Δ MIND
+patched_at: 2026-10-18T03:00Z
+patch_mode: T1-reversible + Tier 2 archival, sequential, receipt-traceable
+
+patches_executed:
+  - patch_id: autonomous-substrate-kernel-patch-2026-10-18
+    target: /root/AAA/instructions/autonomous-substrate-kernel.md
+    scope: lines 13, 24, 36, 40, 47 + receipt-schema insertion + Authority Envelope section
+    header_preserved: F13_RATIFIED_CHAT (T3 downgrade awaits Arif ratification)
+    receipt: /root/AAA/state/autonomous-substrate-kernel-patch-2026-10-18.yaml
+    verification:
+      - grep "silently\|Never ask\|RESOLVE SILENTLY" → 2 (only in NEGATION contexts "Zero Silent Mutation" and "allowed silently (read-only metric)")
+      - grep "F13 lease\|OBSERVE_ONLY\|EMIT RECEIPT" → 5
+
+  - patch_id: at-004-5-field-schema-2026-10-18
+    target: /root/AAA/instructions/aaa-emergence-acceptance-tests.md
+    scope: lines 80, 207, 222 — 5-field HOLD schema (scar_signature resolved)
+    receipt: /root/AAA/state/at-004-patch-2026-10-18.yaml
+    verification:
+      - grep "scar_signature" → 4 occurrences (was 0)
+
+  - patch_id: human-leverage-todo-wording-2026-10-18
+    target: /root/AAA/instructions/human-leverage-north-star.md
+    scope: line 72 — TODO wording → NOT_IMPLEMENTED + binding status (no removal)
+    rationale: hiding gap is worse than labelling it (sixth sibling correction)
+
+  - patch_id: scar-binding-doctrine-status-2026-10-18
+    target: /root/AAA/instructions/aaa-scar-binding-doctrine.md
+    scope: §5 F2 acknowledgment — Phase B status: Missing → PARTIAL with implementation list
+    rationale: forge_scar_consult.py exists, doctrine status was stale
+    verification:
+      - grep "Phase B is NOT yet implemented" → 0 (was 1)
+      - grep "Phase B implementation status: PARTIAL" → 1
+
+  - patch_id: emergence-5-stages-projection-marker-2026-10-18
+    target: /root/AAA/instructions/aaa-emergence-5-stages.md
+    scope: header — GENERATED PROJECTION marker added (canonical + sha)
+
+  - patch_id: emergence-acceptance-tests-projection-marker-2026-10-18
+    target: /root/AAA/instructions/aaa-emergence-acceptance-tests.md
+    scope: header — GENERATED PROJECTION marker added (canonical + sha)
+
+state_files_created:
+  - /root/AAA/state/autonomous-substrate-kernel-patch-2026-10-18.yaml
+  - /root/AAA/state/at-004-patch-2026-10-18.yaml
+  - /root/AAA/state/MISSING-ARTIFACTS.yaml
+  - /root/AAA/state/emergence-capability-tensor-v1.yaml
+
+cleanup_executed:
+  - tier_2_archive_nusantara_drafts:
+      files: [nusantara-glossary-DRAFT-v0.6-2026-09-24.md, CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-v0.6-2026-09-24.md]
+      destination: /root/AAA/archive/2026-10-18/
+      sha256_captured: yes
+  - tier_2_archive_render_agents_bak:
+      files: [render-agents.sh.bak-20260924, render-agents.sh.bak-20260927T071800Z-pre-codesx, render-agents.sh.bak-ctx-zen-20260929, render-agents.sh.bak-epifound-20261007]
+      source: /root/scripts/ (NOT /root/AAA/scripts/ — corrected)
+      destination: /root/AAA/archive/2026-10-18/scripts-bak/
+      sha256_captured: yes
+  - tier_1_pycache:
+      deleted: 1 (in /root/AAA/state)
+      python_regenerates: true
+
+cleanup_blocked:
+  - tier_2_fed_config_bak:
+      files: [FEDERATION_CONFIG_CONTRACT.v1.json.bak-mimo-v26-20260922T043303Z, FEDERATION_CONFIG_CONTRACT.v1.json.bak-pins-20260914T180052Z]
+      blocker: /root/AAA/canon/ has chattr `i` + `I` flags (immutable + immutable-dir) by design
+      decision: HOLD — F13 ratification needed to touch immutable canon
+      sha256_captured: yes (in this receipt)
+
+cleanup_rejected_after_verify:
+  - tier_3_empty_mds:
+      files: [observability/views/README.md (180B), FEDERATION_CONTRACT.md (4526B)]
+      reason: NOT empty as initially classified
+      references_found: yes (governance-gate.sh, FEDERATION.md, scan-result.json, ROOT_ENTROPY.md)
+      decision: HOLD — keep both
+
+remaining_queue:
+
+  T1_auto_executable_next:
+    - add projection markers for AAA-EMERGENCE-ACCEPTANCE-TESTS (DONE — see above)
+    - patch aaa-no-hold-flow-directive-v2.md cross-reference to scar_signature (5th field)
+    - audit and rewrite MD claims referencing pattern_compress.py / behavioral_adaptations.jsonl / governed_intuition.jsonl with "TARGET ARTIFACT — NOT IMPLEMENTED" labels
+
+  T2_multi_file_announce:
+    - agentic-federation-substrate.md 290-line sweep (mark lived claims STALE_UNLESS_REPROBED)
+    - Code-level P0 sinks patch (e2e_canary.py, session_state.py, helix_wiring.py, tool_invariant_check.py, session_enforcer/auth.py) — gated on import-graph verification
+    - Tier 1 cleanup extension: __pycache__ in /root/.hermes, /root/arifOS, /root/.qwen (auto-regenerate)
+
+  T3_F13_ratification_required:
+    - autonomous-substrate-kernel.md header downgrade F13_RATIFIED_CHAT → DRAFT_BOUNDARY_REQUIRED
+    - FEDERATION_CONFIG_CONTRACT baks removal (touches immutable canon)
+    - Stage 1 P2 ratification
+    - Stage 2-5 substrate decision (priority of pattern_compress.py, behavioral_adaptations.jsonl, governed_intuition.jsonl)
+    - RBA proof mission (G=0.4577 → ≥0.80)
+    - arif_judge row 28 SAFE_VOID_FALLBACK NameError fix
+    - Capability-status tensor first probe (verdict from SPEC to LIVE/PARTIAL/MISSING per class)
+
+scars_filed_this_session:
+  - scar_id: scar-2026-10-18-001 (w_scar=0.7): silent-mutation shadow command in autonomous-substrate-kernel.md
+    resolution: PATCHED (semantic content); header downgrade awaits F13
+  - scar_id: scar-2026-10-18-002 (w_scar=0.5): LOC reduction without import-graph verification loses immune memory
+    resolution: ACCEPTED — gating primitive = import-graph-first before deletion
+
+revert: git revert per-file commits OR manual restore from /root/AAA/archive/2026-10-18/
+
+session_summary:
+  files_patched: 6 (4 doctrine + 2 projection markers)
+  files_archived: 6 (2 Nusantara + 4 render-agents.sh.bak)
+  state_files_created: 4
+  blocked_F13: 1 (canon immutable touch)
+  rejected_post_verify: 2 (not actually orphan)
+  scars_filed: 2
+  total_deletions: 1 (__pycache__ in /root/AAA/state)
+
+next_session_priority:
+  1. aaa-no-hold-flow-directive-v2.md cross-reference patch (T1, ~5 min)
+  2. MD claims rewrite with "TARGET ARTIFACT — NOT IMPLEMENTED" (T1, ~10 min)
+  3. agentic-federation-substrate.md 290-line sweep (T2, ~30 min, announce 10s window)
+  4. Code-level P0 sinks (T2, gated on migration verification, deferred)
+  - patch_id: p0-01-trust-auto-sign-removal-2026-10-18
+    target: /etc/systemd/system/arifos.service
+    scope: line 34 — removed Environment=ARIFOS_TRUST_AUTO_SIGN_UNKNOWN=1
+    authority: Arif F13 sovereign verbal GO, session 2026-10-18
+    external_audit: agy-cli SINK-04, independently probed by 333-AGI (not echoed)
+    backup: /etc/systemd/system/arifos.service.bak-autosign-20261018-*
+    verification:
+      - "grep TRUST_AUTO_SIGN_UNKNOWN → 0 [OBS]"
+      - "systemctl show -p Environment → clean [OBS]"
+      - "anonymous arif_init → actor_verified=false, OBSERVE_ONLY [OBS]"
+      - "/health → healthy, floors_active=13 [OBS]"
+    epistemic: "OBS=4, INT=1, SPEC=0, confidence=0.95"
+    receipt_id: ee734979-a0d5-441a-a85f-6d2725c2333a
+    kernel_seal: "HOLD (F13 Ed25519 required) — Lane B receipt via arifflow"
+    delta_s: -1
+    reversible: "restore backup line + systemctl daemon-reload + restart"
+    reverted_by_prior_commit: "git 46a0cc6 set code default=0; service unit was overriding to 1"

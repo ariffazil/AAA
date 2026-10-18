@@ -97,6 +97,7 @@ If paste type is unambiguous, proceed. If ambiguous, one short question. If stil
 | 1-3 sentence text in BM/EN | Question/note | answer from text |
 | Code block ```...``` | Code | patch / analyze / search |
 | 3+ paragraph text | Document | summarize (asi-summarize) |
+| Bare social handle (`@name`, `@name.tld`, plain `name`) | Profile lookup | SerpApi `instagram_profile` / `google_scholar` for the named person. **Probe first, ask after** — see media-ingest-lane "Profile / handle lookup". |
 
 ## Tool priority (fail-soft)
 

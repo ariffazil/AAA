@@ -1,0 +1,102 @@
+receipt_id: finish-all-remaining-2026-10-18
+executed_by: 333-AGI Δ MIND
+executed_at: 2026-10-18T12:10+08:00
+scope: close every open item from the acah2 inventory + federation audit threads
+
+# ── DONE (executed, reversible, verified) ─────────────────────────────
+done:
+  1_aforge_mcp_crash_loop:
+    root_cause: >
+      /root/.hermes/config.yaml pointed `aforge` MCP at /root/scripts/mcp-compress.sh,
+      which calls /root/.local/bin/mcp-compressor — a DANGLING symlink whose target
+      (/root/.local/share/uv/tools/mcp-compressor/bin/mcp-compressor) was removed.
+      Failed "Connection closed" on every gateway start: 10:43, 10:55, 11:22, 11:27, 11:39.
+    fix: "bypass wrapper — command: node, args: [/root/A-FORGE/dist/src/interfaces/mcp/cli.js, serve, --transport, stdio]"
+    verified: "YAML valid; direct stdio probe registers 4 tool groups"
+    backup: /root/.hermes/config.yaml.bak-pre-aforge-direct-20261018
+    activation: "next gateway restart (not forced — would kill live session)"
+    honest_note: "89-98% schema compression is real but was measured 2026-09-16 when the binary existed. Restore via `uv tool install mcp-compressor` if wanted."
+
+  2_scar_index_regeneration:
+    root_cause: >
+      A-FORGE scar index had 72 entries, ZERO from October. 11 October scar MDs
+      existed on disk unrepresented. matchScarsByKeywords() therefore could not
+      surface any October scar → AT-001 (scar binding) failing on freshness.
+    fix: "synced 11 October MD scars into index (schema-matched: failure_mode, constraint_imposed, severity, scar_pressure)"
+    verified: "72 → 83 entries (+11). Today's signature now matches 6 tokens, top hit = 'Stale Audit Batch: 3/3 P0 Already Fixed'"
+    backup: /root/A-FORGE/.runtime/scars/index.json.bak-pre-oct-sync-20261018
+    effect: "scar reflex in A-FORGE can now see October lessons"
+
+  3_reports_archive:
+    action: "moved 81 reports >30 days old to archive"
+    verified: "171 → 90 active, 1.2MB archived, 13MB retained"
+    backup: "files moved, not deleted — reversible with mv"
+
+  4_hook_performance_previous_round:
+    result: "0.27s → 0.11s per tool call (-58%)"
+    status: "already receipted in hermes-runtime-fixes-receipt-2026-10-18.yaml"
+
+# ── STAGED (T3 — needs Arif, exact commands ready) ────────────────────
+staged:
+  A_forge_vault_hourly_noise:
+    finding: "Forge→Vault Auto-Ingest: interval 60m, 1083 completions, deliver telegram:-1003753855708:1, last_status ok"
+    cost: "~24 Telegram messages/day of routine ingest status"
+    smallest_fix: |
+      # in /root/HERMES/cron/jobs.json, job 9eca62b8db1b:
+      #   "minutes": 60  ->  360          (6h instead of 1h; 24/day -> 4/day)
+      # OR add silent-if-unchanged to git_to_vault_wrapper.sh
+    authority: ARIF (cron = federation delivery routing)
+
+  B_sovereignty_drill_override:
+    finding: "/etc/systemd/system/arifos.service.d/sovereignty-drill-override.conf — labelled 'Temporary override for sovereignty drill', mtime 2026-08-02 (77 days), zero expiry/owner tokens, disables MINIMAX_ENABLED + ILMU_ENABLED"
+    fix: "rm the file, then systemctl daemon-reload && systemctl restart arifos.service"
+    authority: ARIF (re-enables two model providers)
+    risk: "may re-enable providers that were deliberately off for quota reasons — verify intent first"
+
+  C_airlock_emergency_as_default:
+    finding: "25-airlock-mode.conf sets ARIFOS_MCP_REQUIRE_VERSION=0, documented in-file as 'Emergency: restores versionless POST acceptance'"
+    fix: "decide whether versionless POST is intended standing policy or should revert to =1"
+    authority: ARIF
+
+  D_qwen_four_posttooluse_hooks:
+    finding: "PostToolUse: 4 hooks in /root/.qwen/settings.json; only the scar hook was measured (now 110ms). Other 3 unmeasured."
+    fix: "measure each, disable redundant — FI-003 lane, not 333's"
+    authority: FI-003 / ARIF
+
+  E_skill_catalog_108_aliases:
+    finding: "760 skill entries, 108 DEPRECATED ALIAS. Aliases exist only to say 'do not use me' but are injected into context every session."
+    fix: "cold-storage the aliases after caller-migration sweep — skill-mesh owner"
+    authority: skill-mesh / ARIF
+
+  F_224_unrendered_fragments:
+    finding: "/root/AGENTS.md footer: UNRENDERED_FRAGMENTS: 224"
+    fix: "either render them or move to on-demand index — renderer owner"
+    authority: renderer / ARIF
+
+# ── VERIFIED EXTERNAL CLAIMS (sibling audit) ──────────────────────────
+sibling_claims_verified:
+  - claim: "Qwen PostToolUse x4"
+    result: "CONFIRMED (PreToolUse:1 SessionStart:1 SessionEnd:1 PostToolUse:4)"
+  - claim: "760 skills + 108 DEPRECATED"
+    result: "CONFIRMED exact"
+  - claim: "224 unrendered fragments"
+    result: "CONFIRMED"
+  - claim: "aforge MCP crash-loop + 98% fake metric"
+    result: "CONFIRMED — root cause found (dangling binary symlink), fixed"
+  - claim: "SINK-05 87KB index not found"
+    result: "CORRECTED — /root/A-FORGE/.runtime/scars/index.json, 87740 bytes, exists"
+
+# ── NOT DONE (deliberate) ─────────────────────────────────────────────
+not_done:
+  - "delete deprecated skill aliases — 108 dirs, needs caller-migration sweep first"
+  - "render 224 fragments — renderer owner's decision, not a fix"
+  - "remove sovereignty-drill override — re-enables providers, quota implications"
+  - "gateway restart — would kill live session; config picks up on next restart"
+
+mutations: 4 (config.yaml, scar index, reports archive, prior hook fix)
+all_reversible: yes
+receipt_files:
+  - /root/AAA/state/audit-reverification-receipt-2026-10-18.yaml
+  - /root/AAA/state/AT-001-execution-receipt-2026-10-18.yaml
+  - /root/AAA/state/hermes-runtime-fixes-receipt-2026-10-18.yaml
+  - /root/AAA/state/finish-all-remaining-receipt-2026-10-18.yaml (this file)
