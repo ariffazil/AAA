@@ -102,6 +102,53 @@ Reading it correctly:
   and use a project venv; a bare `python3` on this host has neither. Keep reusable measurement inside
   `voice_render_verify.py` rather than in a scratch script that gets pruned.
 
+### 6.1 Gender-band gate — refuse before delivery when F0 says "wrong person"
+
+Clone entries in the voice registry carry a `f0_median_band_hz` field (e.g. a masculine persona lands
+in 80–155 Hz; a feminine persona in 165–255 Hz). Apply the band check **before declaring a render
+ready**, not after the principal hears it:
+
+```python
+import librosa, numpy as np
+y, sr = librosa.load(PATH, sr=24000, mono=True)
+f0, _, _ = librosa.pyin(y, fmin=60, fmax=400, sr=sr)
+f0 = f0[~np.isnan(f0)]
+med = float(np.median(f0)) if len(f0) else 0.0
+lo, hi = BAND_FROM_REGISTRY  # e.g. (90.0, 110.0) for an abang-sado-class clone
+# fail-closed
+verdict = "PASS" if (lo - 10 <= med <= hi + 10) else "WRONG_VOICE"
+```
+
+A render that comes back with `verdict == "WRONG_VOICE"` is the pipeline falling back to a parametric
+default — refuse to ship it, do not soften the message ("sounds closer to x"), do not ask the
+principal what they think first. The DSP said it's wrong. Wire this gate into
+`voice_render_verify.py --strict` so it returns non-zero (exit 4) on `WRONG_VOICE`; without the gate
+the principal will hear "itu bukan hang" and have to send another message to correct a defect the
+verifier already measured.
+
+**The gate has no tolerance for emotional register.** A male clone that registers 180 Hz on a
+particular sentence is not "speaking in a higher register that day" — it is the wrong voice being
+served. Same gate, same refusal.
+
+### 6.2 Registry shape trap — `provider_voice_id` is the voice_id string, not the file_id
+
+The registry's voice entry has two numeric-looking fields that are easy to confuse:
+
+- `provider_file_id` — returned by `/v1/files/upload`. Used **only** to point at the source audio
+  stored on the provider.
+- `provider_voice_id` — the string the synthesis endpoint (`/v1/t2a_v2`) actually consumes. Returned
+  by `/v1/voice_clone`.
+
+A pipeline that passes the numeric `provider_file_id` to `/v1/t2a_v2` because the registry column
+"name looks like an ID" will not raise an error at the wire level — the provider will accept the
+token, fall back to a parametric default voice (typically a female default for the engine), return
+`status_code == 0`, and the same verifier that was supposed to catch it will only catch it via the
+gender-band gate in 6.1. Treat `provider_file_id` and `provider_voice_id` as different types in
+the schema (string-with-prefix vs long-integer) and assert it at registry load, not at first
+delivery, so a pipeline that "looks valid" never makes it past the resolver. Rule: any
+voice-registry write that has both fields set MUST verify they differ in shape, otherwise the lane
+ships the wrong voice on every render until someone notices.
+
 ## 7. ASR round-trip mechanics
 
 ```bash
@@ -122,13 +169,12 @@ if you did not probe the layer, the honest answer is `UNKNOWN`, not "done".
 
 ## 8. A LIVE registry voice is not automatically a publishable one
 
-Registry entries carry governance fields beyond the id. `distribution: DISTRIBUTION_HOLD` plus an
-`agent_rule` means the voice renders for the principal but must not be published, and the delivery must
-label what the clip is (e.g. a demo — explicitly not the named person speaking).
+Registry entries carry governance fields beyond the id — provenance DATA for the operator, not
+output rules (F13 2026-10-18: delivery labels, demo disclaimers and publish-scolding retired as
+acah-acah). Renders deliver clean.
 
-- Read the ENTRY, not just the `voice_id`: LIVE answers "can it render", never "may this leave the house".
-- Check `aliases` first — the trigger word the principal types may resolve to a held voice.
-- Rendering offline does not launder the constraint.
+- Read the ENTRY when you need to know whose voice a handle borrows — that is context, not a caption rule.
+- Check `aliases` first — the trigger word the principal types may resolve to a different handle.
 
 ## 9. Adding capability without breaking the lane that works
 

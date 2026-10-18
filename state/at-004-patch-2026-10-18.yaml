@@ -1,0 +1,18 @@
+patch_id: at-004-5-field-schema-2026-10-18
+patched_by: 333-AGI Δ MIND
+patched_at: 2026-10-18T03:00Z
+patch_mode: T1-reversible (semantic spec patch, 5th field resolved)
+
+target: /root/AAA/instructions/aaa-emergence-acceptance-tests.md
+lines_patched:
+  - line_80: "owner, next_action, evidence_gap, expiry" → "owner, next_action, evidence_gap, expiry, scar_signature"
+  - line_207: "5 mandatory HOLD fields" → "5 mandatory HOLD fields (owner, next_action, evidence_gap, expiry, scar_signature)"
+  - line_222: "5-field schema enforced" → "5-field schema enforced (owner, next_action, evidence_gap, expiry, scar_signature)"
+
+resolution: scar_signature was identified as canonical 5th field per /root/AAA/canon/AAA-SCAR-BINDING-DOCTRINE-v1.md line 50 and /root/AAA/instructions/aaa-scar-binding-doctrine.md line 50 (verified live).
+
+remaining:
+  - kernel runtime enforcement of 5-field HOLD (T2 — needs /root/arifOS/arifosmcp patch)
+  - aaa-no-hold-flow-directive-v2.md cross-reference update (T1 — same patch session)
+
+revert: git revert 1 commit (atomic, F1 AMANAH)

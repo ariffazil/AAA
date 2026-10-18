@@ -46,6 +46,12 @@ DITEMPA BUKAN DIBERI.
 
 > **[LANE CAVEAT 2026-10-14]** `/api/paas/v4/audio/transcriptions` is the PAYG/general-API surface, NOT the Coding Plan lane. The coding key passes auth (live-probed: 1214 file-format error, not 401) but **billing attribution is UNVERIFIED** — GLM-ASR is not part of the Coding Plan. Verify quota ledger at z.ai/manage-apikey/billing after first real transcription; if it 402/403s, a separate PAYG key (`ZAI_PAYG_API_KEY`, not yet provisioned) is required.
 
+> **[FALLBACK LADDER — WAJIB 2026-10-18 · 333-AGI]** GLM-ASR gagal (401/402/403/timeout) → **JANGAN BLIND-STOP**. Turun tangga ni, catat status setiap lane yang dicuba:
+> 1. **GLM-ASR** — `POST https://api.z.ai/api/paas/v4/audio/transcriptions`, `Authorization: Bearer $ZAI_API_KEY`, `model=glm-asr-2512`. Lane utama, dialek BM.
+> 2. **Groq Whisper** *(PROBED LIVE 2026-10-18, auth HTTP 200)* — `POST https://api.groq.com/openai/v1/audio/transcriptions`, `Authorization: Bearer $GROQ_API_KEY`, form: `file=@note.ogg`, `model=whisper-large-v3`, `language=ms`. Binaan stt gateway pun memang lalu sini.
+> 3. **MiMo Token Plan** *(PROBED LIVE 2026-10-18, aud_tok tepat, transkrip betul)* — **BUKAN** `/v1/audio/transcriptions` (404, dah disahkan). Guna chat lane: `POST $MIMO_BASE_URL/chat/completions`, `Authorization: Bearer $MIMO_API_KEY`, `content=[{"type":"input_audio","input_audio":{"data":"data:audio/ogg;base64,<b64>"}},{"type":"text","text":"Transkrip verbatim apa yang disebut."}]`, `model=mimo-v2.6-pro` (atau `mimo-v2.5-asr`), `max_completion_tokens≥1500` (budget kecil = reasoning telan semua, content kosong!).
+> 4. Semua gagal → lapor `UNKNOWN: audio tidak dapat dibaca` + minta Arif taip ringkas. **JANGAN sekali-kali agak atau huraikan isi audio yang tak berjaya dibaca** (H4 private — teks ≠ realiti).
+
 **Model**: `glm-asr-2512` (production) — based on GLM-ASR-Nano backbone.
 
 ## Hard Constraints

@@ -95,14 +95,30 @@ paraphrase silence. If `frames=0` and there is no transcript, the honest answer 
    `image_url` content). A rung that can only fail is not a fallback, it is noise.
 8. **Firecrawl markdown → r.jina.ai free** — last-resort page text.
 
-## Platform reality on this host (verified 2026-09-16)
+### ASR lane reality (verified live)
+
+- **Groq `whisper-large-v3-turbo` (`groq-stt --lang ms`)** is the working BM / Bahasa
+  Indonesia / code-switch lane. Default for any voice note or `*.ogg` / `*.wav` /
+  extracted MP4 audio track. Chunk with `ffmpeg -ar 16000 -ac 1 -f segment
+  -segment_time 25` to fit Groq's size cap; transcribe each chunk in order.
+- **GLM-ASR 2512** (`/api/paas/v4/audio/transcriptions`, `ZAI_API_KEY`) is a Coding-Plan
+  mirror, **not** a paid ASR quota — auth passes, the call returns `{"error":{"code":"1113","message":"Insufficient balance or no resource package"}}` with HTTP 429 the moment any real audio is sent. Treat GLM-ASR as DEAD for BM/Indonesia until `ZAI_PAYG_API_KEY` is provisioned. The naive reference function swallows that error as `text=""`, which is the worst possible shape — silence looks identical to "no speech in audio", and downstream agents will report "audio is silent" instead of "ASR lane is dark".
+
+**Rule: a clean `text=""` from any ASR call is a swallowed quota error until proven
+otherwise.** Probe the lane (one short known-non-silent clip) before declaring audio
+empty. If ASR is dark, fall back to Groq or report `transcript_state: BLOCKED` and let
+the vision lane carry the read.
+
+## Platform reality on this host (verified 2026-09-16, re-probed 2026-10-18)
 
 | platform | status | note |
 |---|---|---|
 | YouTube captions | **works** via SerpApi | unaffected by our IP |
 | YouTube media | **works** via Firecrawl `["video"]` | yt-dlp is **intermittently** bot-checked — one video passes, the next fails minutes later. Probe the URL; never declare it globally dead |
 | Firecrawl audio format | **flaky** | transient denials, retried with backoff; never the primary lane |
-| Instagram | **works, no cookies** | public reels only. `empty media response` = dead/private shortcode, **not** an IP block |
+| Instagram **reels** | **partial** via yt-dlp | yt-dlp returns `HTTP 429` from VPS datacenter IP. Public profile pages + reels: use SerpApi `instagram_profile` (its proxy bypasses our IP) before burning lanes. |
+| Instagram **profiles** | **works** via SerpApi `instagram_profile` (proxy) | Returns `"Instagram profile not found"` if handle does not exist; do not fabricate bio. Public business/creator handles only. |
+| Instagram **media-ingest MCP** | **DOWN** since the `media_ingest.py` move | `mcp-media-ingest` systemd unit restart-loops (8,000+ on 2026-10-18) because `/root/.hermes/tools/media_ingest/media_ingest.py` is missing. **Stop the unit** (`systemctl stop mcp-media-ingest`) to stop wasting CPU; do not `disable` — restore the file before re-enabling. |
 | TikTok | **blocked** | `Your IP address is blocked` — needs a cookie/proxy lane |
 | X/Twitter | untested | — |
 
@@ -137,8 +153,102 @@ paraphrase silence. If `frames=0` and there is no transcript, the honest answer 
   agree** before reporting anatomy, injury or identity. One model is a read, not a witness.
 - **The service reads `HOME`/`PATH` from its systemd unit.** A wrapper that works in your shell
   and fails as a service is almost always a missing `HOME=/root` (yt-dlp finds its config there).
+- **`systemctl stop` alone does NOT stop a crash loop.** If the unit is `enabled` it restarts
+  on boot, and `Restart=on-failure` re-runs it within seconds. After stopping, run
+  `systemctl disable <unit>` (or `systemctl mask` if the missing file is the root cause and
+  you want a hard refusal). Probe `systemctl show <unit> -p NRestarts` first — a counter in
+  the thousands tells you the file/script the unit points at is gone, not that the service
+  is misbehaving. A fix that only stops the loop without resolving the missing artifact
+  will look "fixed" until the next boot. **Disable first, restore the artifact second.**
 - **Never use `find … -delete` as a listing idiom.** A `-type l -delete -print` sweep deleted 17
   tracked symlinks under `/root/AAA/skills`; list with `ls`/`find -print` only.
+
+## Probing a public social handle when the platform refuses VPS IP
+
+When a user asks "who is @X" or "find this IG account" and `media_ingest_url`
+returns BLOCKED, **the answer is rarely "no data exists"** — it is "VPS IP got 429,
+login wall, or Cloudflare challenge". The right move is to drop down to the raw
+public-web probe ladder before concluding the handle is dead. Use this when the
+official lane fails AND no wrapper (SerpApi `instagram_profile`, Brave) credits
+are being spent on the call.
+
+Ladder, cost-ordered, falls through on empty result:
+
+1. **`mcp__exa__web_search_exa` (query: `"<handle>" instagram bio`)** — semantic
+   index, often returns a third-party directory page (StarNgage, Socialveins,
+   Famous Birthdays) with bio + follower count. Returns nothing → handle has no
+   third-party footprint, not the same as "doesn't exist".
+2. **DuckDuckGo HTML** — `curl -sL -H "User-Agent: <real browser UA>"
+   "https://duckduckgo.com/html/?q=%22<handle>%22+instagram"`. The HTML page
+   itself says "No results found" when nothing matches; that string is the
+   honest answer.
+3. **Bing raw** — `curl -sL -H "User-Agent: <real browser UA>"
+   "https://www.bing.com/search?q=%22<handle>%22"`. Note: most hits are search
+   form echoes (`raifzilaf%22`); extract only URLs whose `href` actually points
+   off-domain.
+4. **Wayback Machine** —
+   `curl -sL "https://web.archive.org/web/*/instagram.com/<handle>"`. Catches
+   archived snapshots even when the live account is private/deleted. Free, no
+   auth, no rate-limit pain on a single read.
+5. **Cross-platform index** — same handle on Threads/TikTok/Twitter via the
+   Exa query above. Many creators cross-post once and the cross-post IS the
+   indexable footprint.
+
+**Anti-patterns:**
+- ❌ Treating one 429 from `instagram.com` as "handle doesn't exist" — it
+  almost always means "datacenter IP is flagged".
+- ❌ Spending a SerpApi `instagram_profile` credit before exhausting the free
+  ladder above; one credit covers more than five free reads.
+- ❌ Going to `picuki.com` / `imginn.com` first — they sit behind Cloudflare
+  and return 403 from VPS IPs; they are residential-proxy viewers, not
+  VPS-friendly mirrors.
+- ❌ Asking the user "is this your account?" before probing. If the handle is
+  indexable anywhere, the answer is in the data; if it isn't, the empty
+  ladder IS the answer ("no public footprint found").
+
+When the entire ladder returns empty, report that as the result — "no public
+third-party footprint located for @<handle> via Exa, DDG, Bing, Wayback" —
+not as a failure.
+
+For the full per-tool commands, decision tree, and the comparison matrix
+of which lane costs what, see
+`references/social-handle-probe-ladder.md`.
+
+## Profile / handle lookup by handle only (no URL)
+
+When the user names a public handle (`@raifzilaf`, `rico_ricaldo_33`, `arif_fazil`)
+without giving a URL, the probe ladder is:
+
+1. **SerpApi `instagram_profile`** with `extra_params={"profile_id": "<handle>"}` —
+   returns the proxy-fetched profile JSON. `error: "Instagram profile not found"` is a
+   real answer (handle does not exist or is private), not a failure to retry.
+   **The wrapper's `q=` slot does not work for `instagram_profile`** — the engine
+   reads `profile_id` from the query params. Passing the handle as `q` returns
+   `HTTP 400 Missing query 'profile_id' parameter`. Always pass via
+   `extra_params={"profile_id": <handle>}`.
+2. **SerpApi web search / Exa** for `"<handle> instagram"` — catches handles that exist
+   but SerpApi cannot reach (private account, archived). If the search returns no IG
+   results, the handle is either misspelled or the user is thinking of another platform.
+3. **Try handle variations** (`<handle>_`, `<handle>.official`, real name reversed) only
+   after the user confirms they are looking for the same person, never automatically.
+4. **Report what was found**, not what was assumed. `"profile not found"` is a finding;
+   do not invent a bio to fill the silence.
+
+**Privacy default — the user owns the probe, not the agent.** When the user asks
+"find <public handle>" or "search for <named person>" and they are talking about a
+real human (creator, public figure, business, journalist), the user has the standing
+authority for the lookup. Do not gate it on consent screens for *ordinary* public
+profiles — that turns basic conversation into a permission dance. Reserve the
+HARD_HOLD gate for **bonded humans** (the user's inner circle: family, partner,
+close friends, the user themselves): those names live in `people.yaml` / memory and
+probing them requires a per-call override. Everyone else gets a probe; report what
+the public web actually returns.
+
+**VPS datacenter IP is the silent killer.** Direct `yt-dlp` and `curl` from this host
+return HTTP 429 / login wall for IG, X, sometimes TikTok — datacenter ASNs are
+flagged. SerpApi proxies live behind residential-ish IPs and bypass that, which is
+why its `instagram_profile` succeeds where direct fetch fails. **Always lead with the
+proxied lane for social profile discovery**, not `yt-dlp` first.
 
 ## Verification receipt (the lane is not "probably" working)
 
