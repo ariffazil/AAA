@@ -5,6 +5,10 @@ tags: [constitutional, init, substrate-primitive, opencode, coding-agent]
 license: MIT
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+relationships:
+  - target: hermes-init
+    type: alternative_to
+    confidence: 1.00
 ---
 # OpenCode /init — Substrate Primitive
 

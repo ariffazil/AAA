@@ -5,6 +5,10 @@ tags: [forge, execution, coding-agent, opencode]
 license: MIT
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+relationships:
+  - target: hermes-forge
+    type: alternative_to
+    confidence: 1.00
 ---
 # OpenCode /forge — Execution Primitive
 
