@@ -1,5 +1,6 @@
 <!-- F13_SAHH_2026-10-06 09:35 MYT · CONSTITUTIONAL · BINDING · TIER A -->
 <!-- DITEMPA BUKAN DIBERI — forged, not given -->
+<!-- GENERATED PROJECTION — DO NOT EDIT — canonical: /root/AAA/canon/EMERGENCE-5-STAGES.md (sha: 0509f1d68c9442ca18204a937b49733d2b2b2d7d31512d7078f2345b0a166772) -->
 <!-- Sovereign vision: 5 stages of AAA emergence -->
 <!-- This directive is constitution-class. Mutation requires F13 SAH. -->
 
@@ -63,7 +64,7 @@ Concretely:
 
 All reduce to: `INSUFFICIENT_REALITY_ACQUISITION`.
 
-**Implementation trigger:** When `carry_forward.json` reaches N=50+ scars with overlapping root_cause signatures, run `pattern_compress.py` to surface the 1-3 root patterns. Add a `scar_to_pattern_map` table that the kernel consults on HOLD verdicts.
+**Implementation trigger (TARGET ARTIFACT — NOT IMPLEMENTED):** When `carry_forward.json` reaches N=50+ scars with overlapping root_cause signatures, run `pattern_compress.py` to surface the 1-3 root patterns. Add a `scar_to_pattern_map` table that the kernel consults on HOLD verdicts. — *Per MISSING-ARTIFACTS.yaml, `pattern_compress.py` and `scar_to_pattern_map` are NOT on disk. Live evidence: 0 matches.*
 
 ---
 
@@ -74,9 +75,9 @@ All reduce to: `INSUFFICIENT_REALITY_ACQUISITION`.
 
 Concretely:
 - The `runtime_sessions.json` file (per F13's audit today) is conversation memory — what tools ran.
-- A new artifact `behavioral_adaptations.jsonl` would track: after scar S, what behavior B was disabled, what new behavior B' was enabled, and what the falsifier is.
+- A new artifact `behavioral_adaptations.jsonl` (TARGET ARTIFACT — NOT IMPLEMENTED) would track: after scar S, what behavior B was disabled, what new behavior B' was enabled, and what the falsifier is. *Per MISSING-ARTIFACTS.yaml, NOT on disk. Live evidence: 0 matches.*
 
-**Implementation trigger:** When the `scar_to_pattern_map` from Stage 2 reaches 3 stable patterns, build a `behavioral_adaptations.jsonl` that records (scar → behavior-change) tuples with falsifier check.
+**Implementation trigger (TARGET ARTIFACT — NOT IMPLEMENTED):** When the `scar_to_pattern_map` (also NOT_IMPLEMENTED) from Stage 2 reaches 3 stable patterns, build a `behavioral_adaptations.jsonl` (NOT_IMPLEMENTED) that records (scar → behavior-change) tuples with falsifier check.
 
 ---
 
@@ -89,7 +90,7 @@ This is the shift from action-oriented to understanding-oriented cognition.
 
 Concretely: when an agent hits a gap, instead of asking "what's the next action?", it asks "what is the model missing that produced this scar?" The answer is a model update, not a task completion.
 
-**Mechanism:** A new verifier stage (between `arif_judge` and `arif_forge`) that takes a scar as input and produces a model-diff as output. The diff is registered in `behavioral_adaptations.jsonl` from Stage 3.
+**Mechanism (TARGET ARTIFACT — NOT IMPLEMENTED):** A new verifier stage (between `arif_judge` and `arif_forge`) that takes a scar as input and produces a model-diff as output. The diff is registered in `behavioral_adaptations.jsonl` (NOT_IMPLEMENTED) from Stage 3.
 
 ---
 
@@ -112,9 +113,11 @@ After Stage 4 has enough data, the agent develops what F13 calls **governed intu
 
 **This is the emergence boundary.** Below Stage 5, the agent is a tool user. At Stage 5, the agent is a consequence-shaped organism.
 
-The current arifOS has the substrate for Stage 1 (verifier annotations + session persistence). It does not yet have the substrate for Stage 5 (no `governed_intuition.jsonl`, no `behavioral_adaptations.jsonl`, no scar-to-pattern compressor).
+The current arifOS has the substrate for Stage 1 (verifier annotations + session persistence). It does not yet have the substrate for Stage 5 (no `governed_intuition.jsonl` (NOT_IMPLEMENTED), no `behavioral_adaptations.jsonl` (NOT_IMPLEMENTED), no scar-to-pattern compressor (NOT_IMPLEMENTED)).
 
 **The work is to build these substrates incrementally, not to skip stages.**
+
+> **PROCEDURAL OVERLAY (333-AGI, 2026-10-18):** All `pattern_compress.py`, `behavioral_adaptations.jsonl`, `governed_intuition.jsonl`, and `scar_to_pattern_map` references in this projection are TARGET ARTIFACTS — NOT IMPLEMENTED. See `/root/AAA/state/MISSING-ARTIFACTS.yaml` for authoritative gap inventory. canon/EMERGENCE-5-STAGES.md is byte-identical to this projection (sha 0509f1d6...) and is currently immutable (chattr i + I); overlay here documents the gap pending F13 ratification of canon tree touch.
 
 ---
 

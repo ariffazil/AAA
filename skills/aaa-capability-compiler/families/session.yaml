@@ -17,3 +17,18 @@ jobs:
     maturity: PRESENT
 adapters:
   temporal_truth: CHRON (consume only — never absorb temporal intelligence into this family)
+
+# init_renders folded 2026-10-18 (ACAH2: consumer + failure class named)
+# consumer: every booting agent across harnesses · failure_class: init identity inflation (25+ doors, 4 planes)
+init_renders:
+  binder:
+    owner: arif_init (kernel KERNEL 000, :8088)   # the ONLY state binder — everything below renders its output
+    authority: binds session_id + SCT + authority band
+  doors:
+    - { id: opencode-command-init, path: /root/.config/opencode/command/init.md, register: A2M, note: "v7.0 lean MCP-first, canonical_source per prompt_registry" }
+    - { id: render-opencode, path: skills/opencode-init, register: A2A, note: "SESSION BOUND card — rendering only, no authority" }
+    - { id: render-hermes, path: skills/hermes-init, register: A2H, note: "Telegram card — rendering only" }
+    - { id: render-openclaw, path: skills/openclaw-init, register: A2A, note: "card — rendering only" }
+    - { id: session-ops, path: skills/domains/general/aaa/substrate/session-ops, register: A2M, note: "lifecycle umbrella; alias views: arifos-auto-init / session-init-human-first / arifos-frozen-snapshot-init (symlinks, designed)" }
+  canon_contract: /root/AAA/canon/ZEN_INIT_CANONICAL.md  # SOT; arifOS/governance copy is a stamped view
+  protected: [ARIFOS_FEDERATION_INIT.md, INIT_HUMAN.md]   # live code deps — never archive
