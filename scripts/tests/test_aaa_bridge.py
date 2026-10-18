@@ -43,6 +43,22 @@ LAUNCHER_MAP_PATH = Path("/root/AAA/federation/launcher_map.yaml")
 MCP_JSON_PATH = Path("/root/.kimi-code/mcp.json")
 
 
+def pending_adjudication() -> tuple[set[str], str | None]:
+    """Named live-vs-registry MCP drift, with expiry. Not an enablement grant."""
+    raw = yaml.safe_load(REGISTRY_PATH.read_text()) or {}
+    block = raw.get("pending_adjudication") or {}
+    return set(block.get("servers") or []), block.get("expires_at")
+
+
+def classify_live_servers(
+    live_names: set[str],
+    authorised: set[str],
+    pending: set[str],
+) -> set[str]:
+    """Live servers that are neither authorised nor explicitly pending (F4 bypass)."""
+    return set(live_names) - set(authorised) - set(pending) - {"VAULT999"}
+
+
 # --- Fixtures ---
 
 VALID_LAUNCHER_MAP = """
@@ -56,6 +72,7 @@ launchers:
 
 
 # --- Bridge behaviour tests ---
+
 
 class BridgeGenerationTests(unittest.TestCase):
     """The generator emits mcp.json from registry+launcher_map."""
@@ -73,17 +90,19 @@ class BridgeGenerationTests(unittest.TestCase):
                 [
                     sys.executable,
                     str(SCRIPTS / "aaa_mcp_json_generator.py"),
-                    str(reg_path), str(map_path), str(out_path),
+                    str(reg_path),
+                    str(map_path),
+                    str(out_path),
                 ],
-                capture_output=True, text=True, timeout=30,
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
-            payload = (
-                json.loads(out_path.read_text())
-                if out_path.exists() else {"mcpServers": "MISSING"}
-            )
+            payload = json.loads(out_path.read_text()) if out_path.exists() else {"mcpServers": "MISSING"}
             return result, payload, out_path, td
         except Exception:
             import shutil
+
             shutil.rmtree(td, ignore_errors=True)
             raise
 
@@ -149,14 +168,23 @@ axes:
             # brave-search, context7, hindsight, serena, semgrep, github — all disabled
             # → must NOT appear in mcpServers
             for forbidden in (
-                "brave-search", "context7", "hindsight", "serena",
-                "semgrep", "github", "VAULT999",  # filesystem, not MCP
+                "brave-search",
+                "context7",
+                "hindsight",
+                "serena",
+                "semgrep",
+                "github",
+                "VAULT999",  # filesystem, not MCP
             ):
-                self.assertNotIn(forbidden, servers,
-                                 f"F4/F7: '{forbidden}' must NOT appear in mcp.json "
-                                 f"(catalogued-only or filesystem); got {list(servers)}")
+                self.assertNotIn(
+                    forbidden,
+                    servers,
+                    f"F4/F7: '{forbidden}' must NOT appear in mcp.json "
+                    f"(catalogued-only or filesystem); got {list(servers)}",
+                )
         finally:
             import shutil
+
             shutil.rmtree(td, ignore_errors=True)
 
     def test_sealed_enabled_without_launcher_is_skipped(self):
@@ -212,9 +240,7 @@ axes:
         backends:
           VAULT999: { F_rating: SAFE, enabled: true, seal: sealed, transport: filesystem }
 """
-        result, data, out_path, td = self._run_generator(
-            registry_yaml, launcher_yaml="version: v1\nlaunchers: {}\n"
-        )
+        result, data, out_path, td = self._run_generator(registry_yaml, launcher_yaml="version: v1\nlaunchers: {}\n")
         try:
             self.assertEqual(result.returncode, 0, msg=result.stderr)
             # VAULT999 has no launcher → must be reported, not crash
@@ -224,28 +250,41 @@ axes:
             self.assertEqual(data["mcpServers"], {})
         finally:
             import shutil
+
             shutil.rmtree(td, ignore_errors=True)
 
     def test_generated_mcp_json_is_parseable(self):
-        """The generated mcp.json must round-trip through json.loads."""
-        result = subprocess.run(
-            [
-                sys.executable,
-                str(SCRIPTS / "aaa_mcp_json_generator.py"),
-                str(REGISTRY_PATH), str(LAUNCHER_MAP_PATH),
-                str(MCP_JSON_PATH),  # real path; the script backs it up
-            ],
-            capture_output=True, text=True, timeout=30,
-        )
-        self.assertEqual(result.returncode, 0, msg=result.stderr)
-        data = json.loads(MCP_JSON_PATH.read_text())
+        """The generated mcp.json must round-trip through json.loads.
+
+        Generates into a temporary path — never the live harness config.
+        (Prior version wrote /root/.kimi-code/mcp.json directly, truncating
+        14 out-of-band servers and masking the bypass test below.)
+        """
+        with tempfile.TemporaryDirectory() as td:
+            out_path = Path(td) / "mcp.json"
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPTS / "aaa_mcp_json_generator.py"),
+                    str(REGISTRY_PATH),
+                    str(LAUNCHER_MAP_PATH),
+                    str(out_path),
+                ],
+                capture_output=True,
+                text=True,
+                timeout=30,
+                env=dict(os.environ, MCPGEN_RECEIPT_DIR=str(Path(td) / "receipts")),
+            )
+            self.assertEqual(result.returncode, 0, msg=result.stderr)
+            data = json.loads(out_path.read_text())
         self.assertIn("mcpServers", data)
-        # Gotong Royong 8 organ servers active
-        for active_server in ("arifos", "aforge", "geox", "wealth", "well", "fed", "minimax", "arifFlow"):
+        # Gotong Royong 8 organ servers active + governed xerj read lane
+        for active_server in ("arifos", "aforge", "geox", "wealth", "well", "fed", "minimax", "arifFlow", "xerj"):
             self.assertIn(active_server, data["mcpServers"], f"'{active_server}' must be active in gotong mcp.json")
 
 
 # --- F4: MCP bypass detection ---
+
 
 class BypassTests(unittest.TestCase):
     """F4: an MCP trying to bypass AAA must be detected."""
@@ -260,16 +299,16 @@ class BypassTests(unittest.TestCase):
         mcp_data = json.loads(MCP_JSON_PATH.read_text())
         servers = mcp_data.get("mcpServers", {})
         index = load_registry(REGISTRY_PATH)
-        authorised = {
-            name for name, b in index.backends.items()
-            if b.enabled and b.seal == "sealed"
-        }
-        mcp_names = set(servers.keys())
-        unauthorised = mcp_names - authorised
-        # filesystem transport (VAULT999) is intentional — exclude from bypass check
-        unauthorised -= {"VAULT999"}
-        self.assertEqual(unauthorised, set(),
-                         f"F4: MCPs in mcp.json without registry authorisation: {unauthorised}")
+        authorised = {name for name, b in index.backends.items() if b.enabled and b.seal == "sealed"}
+        pending, expires_at = pending_adjudication()
+        unauthorised = classify_live_servers(set(servers.keys()), authorised, pending)
+        self.assertEqual(unauthorised, set(), f"F4: MCPs in mcp.json without registry authorisation: {unauthorised}")
+        self.assertTrue(expires_at, "F4: pending_adjudication must carry an expiry")
+        self.assertLessEqual(
+            dt.date.today(),
+            dt.date.fromisoformat(expires_at),
+            f"F4: pending_adjudication expired on {expires_at} — adjudicate before extending",
+        )
 
     def test_disabled_backend_in_mcp_json_is_bypass(self):
         """
@@ -339,17 +378,21 @@ axes:
                 [
                     sys.executable,
                     str(SCRIPTS / "aaa_mcp_json_generator.py"),
-                    str(reg_path), str(map_path), str(out_path),
+                    str(reg_path),
+                    str(map_path),
+                    str(out_path),
                 ],
-                capture_output=True, text=True, timeout=30,
+                capture_output=True,
+                text=True,
+                timeout=30,
             )
             self.assertEqual(result.returncode, 0)
             data = json.loads(out_path.read_text())
-            self.assertNotIn("arifFlow", data["mcpServers"],
-                             "F4: disabled arifFlow must NOT appear in mcp.json")
+            self.assertNotIn("arifFlow", data["mcpServers"], "F4: disabled arifFlow must NOT appear in mcp.json")
 
 
 # --- F6: registry hash receipt binding ---
+
 
 class RegistryHashTests(unittest.TestCase):
     """F6: the registry hash must match its witnessed receipt."""
@@ -358,8 +401,9 @@ class RegistryHashTests(unittest.TestCase):
         receipt = run_init(REGISTRY_PATH)
         current_index = load_registry(REGISTRY_PATH)
         self.assertEqual(
-            receipt.registry_sha256, current_index.source_sha256,
-            "F6: init receipt hash must match the current registry hash"
+            receipt.registry_sha256,
+            current_index.source_sha256,
+            "F6: init receipt hash must match the current registry hash",
         )
 
     def test_receipt_persists_with_hash_field(self):
@@ -369,6 +413,7 @@ class RegistryHashTests(unittest.TestCase):
             dest = Path(td)
             # write_receipt coerces str→Path
             from aaa_capability_init import write_receipt
+
             out = write_receipt(receipt, dest_dir=dest)
             self.assertIsNotNone(out)
             data = json.loads(Path(out).read_text())
@@ -378,47 +423,84 @@ class RegistryHashTests(unittest.TestCase):
 
 # --- F7: catalogued ≠ enabled ---
 
+
 class CataloguedNotEnabledTests(unittest.TestCase):
     """F7: a backend must NOT start merely because it is catalogued."""
 
     def test_all_catalogued_except_canon_are_disabled(self):
         """Every catalogued backend except VAULT999 + arifFlow has enabled=False."""
         index = load_registry(REGISTRY_PATH)
-        enabled_canon = {"VAULT999", "arifFlow", "arifos", "aforge", "geox", "wealth", "well", "fed", "minimax"}
+        enabled_canon = {"VAULT999", "arifFlow", "arifos", "aforge", "geox", "wealth", "well", "fed", "minimax", "xerj"}
         for name, b in index.backends.items():
             if name in enabled_canon:
                 continue
-            self.assertFalse(
-                b.enabled,
-                f"F7: backend '{name}' is catalogued but enabled — must stay disabled"
-            )
+            self.assertFalse(b.enabled, f"F7: backend '{name}' is catalogued but enabled — must stay disabled")
 
     def test_mcp_json_only_has_explicitly_enabled_backends(self):
-        """mcp.json must NOT contain any backend that is catalogued-but-disabled."""
+        """mcp.json must NOT contain any catalogued-but-disabled backend,
+        except entries explicitly declared as pending_adjudication debt."""
         if not MCP_JSON_PATH.exists():
             self.skipTest(f"{MCP_JSON_PATH} not present")
         mcp_names = set(json.loads(MCP_JSON_PATH.read_text()).get("mcpServers", {}).keys())
         index = load_registry(REGISTRY_PATH)
+        pending, _ = pending_adjudication()
         # filesystem (VAULT999) doesn't need an MCP entry
         forbidden = {
-            name for name, b in index.backends.items()
-            if not b.enabled and b.transport != "filesystem"
-        }
+            name for name, b in index.backends.items() if not b.enabled and b.transport != "filesystem"
+        } - pending
         leaked = mcp_names & forbidden
-        self.assertEqual(leaked, set(),
-                         f"F7: catalogued-but-disabled backends leaking into mcp.json: {leaked}")
+        self.assertEqual(leaked, set(), f"F7: catalogued-but-disabled backends leaking into mcp.json: {leaked}")
+
+
+class PendingAdjudicationTests(unittest.TestCase):
+    """Named MCP drift must stay visible, bounded, and expiring."""
+
+    def test_pending_is_disjoint_from_authorised(self):
+        pending, _ = pending_adjudication()
+        index = load_registry(REGISTRY_PATH)
+        authorised = {name for name, b in index.backends.items() if b.enabled and b.seal == "sealed"}
+        self.assertEqual(pending & authorised, set(), "a backend cannot be both authorised and pending")
+
+    def test_pending_entries_still_exist_in_live_config(self):
+        if not MCP_JSON_PATH.exists():
+            self.skipTest(f"{MCP_JSON_PATH} not present")
+        pending, _ = pending_adjudication()
+        live = set(json.loads(MCP_JSON_PATH.read_text()).get("mcpServers", {}).keys())
+        stale = pending - live
+        self.assertEqual(stale, set(), f"pending_adjudication is stale — remove resolved entries: {stale}")
+
+    def test_new_live_server_fails_growth_guard(self):
+        """Negative control: a server outside authorised ∪ pending is F4 bypass."""
+        drift = classify_live_servers(
+            {"arifos", "chron", "brand-new-server"},
+            {"arifos"},
+            {"chron"},
+        )
+        self.assertEqual(drift, {"brand-new-server"})
+
+    def test_pending_list_expiry_is_enforced(self):
+        _, expires_at = pending_adjudication()
+        self.assertTrue(expires_at, "pending_adjudication must carry an expiry date")
+        self.assertLessEqual(
+            dt.date.today(),
+            dt.date.fromisoformat(expires_at),
+            f"pending_adjudication expired on {expires_at}",
+        )
 
 
 # --- Operational integrity ---
+
 
 class OperationalIntegrityTests(unittest.TestCase):
     """The end-to-end state of the VPS must match the registry intent."""
 
     def test_real_init_verdict_is_ready_readonly(self):
         receipt = run_init(REGISTRY_PATH)
-        self.assertEqual(receipt.verdict, "READY_READONLY",
-                         f"F1-F13 verdict regressed: {receipt.reason}; "
-                         f"fail_closed={receipt.fail_closed_reasons}")
+        self.assertEqual(
+            receipt.verdict,
+            "READY_READONLY",
+            f"F1-F13 verdict regressed: {receipt.reason}; fail_closed={receipt.fail_closed_reasons}",
+        )
 
     def test_no_init_mutations(self):
         """The init script must NOT spawn subprocesses, open sockets, or write
@@ -426,13 +508,12 @@ class OperationalIntegrityTests(unittest.TestCase):
         import aaa_capability_init
         import aaa_capability_loader
         import aaa_capability_validator
+
         for mod in (aaa_capability_init, aaa_capability_loader, aaa_capability_validator):
-            self.assertFalse(hasattr(mod, "subprocess"),
-                             f"{mod.__name__} should not import subprocess")
+            self.assertFalse(hasattr(mod, "subprocess"), f"{mod.__name__} should not import subprocess")
         for forbidden in ("socket", "requests", "urllib3", "httpx", "aiohttp"):
             for mod in (aaa_capability_init, aaa_capability_loader, aaa_capability_validator):
-                self.assertFalse(hasattr(mod, forbidden),
-                                 f"{mod.__name__} should not import {forbidden}")
+                self.assertFalse(hasattr(mod, forbidden), f"{mod.__name__} should not import {forbidden}")
 
 
 if __name__ == "__main__":
