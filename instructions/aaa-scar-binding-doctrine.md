@@ -189,7 +189,16 @@ Each phase requires one imperative change:
 ## 5 · F2 honest acknowledgment
 
 - This is F13's deepest doctrine, transcribed.
-- Phase B is the smallest executable next action. It is NOT yet implemented.
+- **Phase B implementation status: PARTIAL (corrected 2026-10-18).**
+- **Implemented (verified live):**
+  - tool-creation scar consultation (`/root/arifOS/arifosmcp/kernel/forge_scar_consult.py`)
+  - forge preflight scar consultation (`/root/arifOS/arifosmcp/runtime/forge_preflight.py`)
+  - federation hook consultation receipt (`/root/AAA/hooks/lib/federation_hook_engine.py` — path corrected 2026-10-18; canon previously claimed `/root/.hermes/hooks/lib/`, CLAIM_DRIFT verified by first-party probe)
+- **Not yet proven (requires first-party probe + AT-001/002/006 passage):**
+  - consultation BEFORE every consequential `select_path()` invocation
+  - same signature produces verifiable selection delta
+  - cross-agent transfer (AT-009)
+  - anti-fossilization passage (AT-006)
 - Per F13 terse defect enumeration doctrine: each phase needs first-party probe before execution.
 - Per Anti-sink meta-rule: this directive is the second-level correction (resolve from HOLD-paradox to binding-paradox). No third-level recurrence in this thread.
 

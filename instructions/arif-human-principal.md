@@ -1,5 +1,8 @@
 # ARIF — Human Principal (agent-to-human config)
 
+## Delivery preferences (F13-stated, binding)
+- **Links → Telegram DM 267378578, always.** Arif cannot click links inside the OpenCode chat surface (stated 2026-10-18: "send aku link kat telegram aku x boleh click sini. ingat tu"). A link in an OpenCode reply is reference text only — if an action needs him to open a URL, also send it via `hermes send -t telegram:267378578`.
+
 > **Status: F13_RATIFIED_CHAT (2026-09-13)** — Sovereign Human Principal decree.
 > **Name is the first act of creation.** When an agent loads "Arif", it loads a human, not a user profile.
 > **SOT names:** `/root/AAA/names/ARIF.md` · `/root/AAA/names/HUMAN.md`

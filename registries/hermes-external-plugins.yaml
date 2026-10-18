@@ -1,41 +1,25 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-# HERMES External Plugin Registry — CORRECTED
+# HERMES External Plugin Registry — v2.0 CORRECTED
 # ═══════════════════════════════════════════════════════════════════════════════
 # SOT for: external plugin admission to MY HERMES runtime
 # Policy: plugins add eyes and measurement tools, NOT hands or authority
-# Canonical doctrine: ARIFOS::HERMES_EXTERNAL_PLUGIN_FORGE::v1
-# CORRECTED: 2026-10-17 (Arif Fazil reality check — previous version
-#   presented generic Python packages as Hermes plugins. That was wrong.)
-# Caretaker: 333-AGI (registry), Arif Fazil (authorization)
+# Authority: ARIF (F13 SOVEREIGN)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 meta:
-  version: 1.1.0
-  corrected: 2026-10-17
-  correction_note: >
-    v1.0.0 incorrectly listed hermes-plugin-guard, context-audit,
-    hermes-session-diff, and qdrant-memory as installable Hermes plugins.
-    They are NOT. hermes-plugin-guard is a generic Python package on PyPI.
-    context-audit exists as PyPI/npm but not as a Hermes plugin.
-    hermes-session-diff and qdrant-memory do not exist at all.
-    v1.1.0 reflects actual reality.
+  version: 2.0.0
+  created: 2026-10-17
+  corrections:
+    - "v1.0.0: presented generic Python packages as Hermes plugins — FABRICATED"
+    - "v1.1.0: corrected to actual state but incorrectly listed epistemic-harness as NOT FOUND"
+    - "v2.0.0: all candidates verified against official Hermes plugin catalog"
   authority: ARIF (F13 SOVEREIGN)
-  internal_control: arif-core (OpenCode plugin, KVM8)
   hermes_location: KVM4
 
-# ── Actual MY HERMES plugin state (OBSERVED by Arif 2026-10-17) ────────────
+# ── Actual MY HERMES state (OBSERVED by Arif 2026-10-17) ───────────────────
 
-hermes_actual_state:
-  built_ins:
-    - browser
-    - memory
-    - observability
-    - context_engine
-    - kanban
-    - image_gen
-    - video_gen
-    - web
-    - security-guidance
+hermes_actual:
+  version: "0.21.7"
   custom_plugins:
     - floor_gate_witness
     - hermes-snapcompact
@@ -51,67 +35,134 @@ hermes_actual_state:
     - lane_switch
     - mode_first_gate
 
-# ── Capability gaps (from Arif's forge directive) ──────────────────────────
-# These are the IDEAS, not existing plugins. Build as custom or port.
+# ── Plugin decisions (authorization from Arif 2026-10-17) ───────────────────
 
-capability_gaps:
+plugins:
 
-  admission_scanning:
-    idea: Static review of candidate plugins before enabling
-    existing_coverage: Hermes built-in install-time security scan exists
-    gap: No pre-install review tool for community plugins
-    recommendation: BUILD as custom plugin (floor_gate_witness already does gate work — extend?)
-    status: IDEA_ONLY
+  hermes-plugin-guard:
+    decision: SEAL_SANDBOX
+    repo: mauricemohr88-debug/hermes-plugin-guard
+    license: MIT
+    install: git clone ~/.hermes/plugins/hermes-plugin-guard
+    sha: null  # pin after first clone
+    description: >
+      Static no-execution security scanner. Reads manifests, Python source,
+      and dependency declarations as data — never imports or executes target.
+    hooks: []  # no hooks — read-only tool only
+    collision_with_arif_core: NONE
+    authorized_actions:
+      - clone pinned commit into isolated staging
+      - independently inspect source before execution
+      - verify deps, subprocess, network, filesystem scope
+      - enable only in disposable Hermes profile
+    not_authorized:
+      - production enablement until self-audit passes
 
-  context_measurement:
-    idea: Per-turn token estimates, largest tool output, compaction events
-    existing_coverage: Hermes built-in observability (Langfuse) + context_engine
-    gap: No metadata-only local SQLite measurement separate from Langfuse
-    recommendation: BUILD as custom plugin or extend observability
-    status: IDEA_ONLY
+  context-audit:
+    decision: SEAL_SANDBOX
+    catalog_sha: 2aaa96aab2c685798b011a5d6479a4a1fa6a033f
+    maintainer: ZidoCode
+    version: "0.1.0"
+    install: hermes plugins install context-audit
+    description: >
+      Context-window forensics. Per-turn token estimates, largest tool output,
+      oversized calls (>50KB), compaction events. Metadata only in local SQLite.
+    hooks:
+      - observation hooks (no tool-execution middleware)
+    collision_with_arif_core: LOW
+    authorized_actions:
+      - install pinned in disposable profile
+      - generate controlled tool/compaction events
+      - verify SQLite contains metadata only
+      - measure storage growth and overhead
+      - test plugin failure isolation
+    production_enable_criteria:
+      - no raw tool content stored
+      - database growth bounded
+      - plugin failure doesn't break session
+      - no autonomous deletion or compaction
+      - overhead measured and acceptable
 
-  claim_evidence_binding:
-    idea: Record provisional claims before probe, link observations after
-    existing_coverage: arif-core (OpenCode) has tool.execute hooks; HERMES has pre_llm_call
-    gap: No claim-evidence pairing in HERMES runtime
-    recommendation: BUILD as custom plugin for HERMES, or port concept to arif-core (OpenCode)
-    status: IDEA_ONLY
+  epistemic-harness:
+    decision: HOLD_COMPARE_EXISTING_PLUGIN
+    repo: https://github.com/quangphucqp/epistemic-harness
+    pinned_sha: eb45ca676df53cce0629a3cc5dcf8a7bdab1c806
+    compatibility: "Hermes >=0.21,<1.0"
+    catalog_entry: plugin-catalog/epistemic-harness.yaml
+    tools:
+      - epistemic_model
+      - epistemic_probe
+    hooks:
+      - LLM hook
+      - tool result hook
+      - subagent stop
+      - session reset
+      - session finalize
+    middleware:
+      - tool-execution middleware
+    description: >
+      Records provisional claims before evidence-gathering, links actual
+      observations, resolves as CONFIRMED/REFUTED/UNKNOWN.
+    collision_with_arif_core: HIGH_IF_EXTERNAL
+    decision_rationale: >
+      Plugin EXISTS in catalog (corrected from v1.1.0 NOT FOUND error).
+      But hook collision with arif-core is high. Do not port blindly.
+      Run collision experiment first.
+    collision_audit_questions:
+      - "Is claim recorded before every tool or only evidence-gathering tools?"
+      - "Is raw observation preserved?"
+      - "Does transform_tool_result alter evidence the model sees?"
+      - "Who determines confirmed/refuted/unknown?"
+      - "Can middleware precede governance gate?"
+      - "Does session reset/finalize collide with carry-forward?"
+    port_strategy: >
+      If only claim-evidence data model has value, port SCHEMA + INVARIANTS
+      (Claim ID, Provisional status, Expected falsifier, Evidence reference,
+      Observed result, Resolution status, Resolver authority) — not full hooks.
+      arif-core should bind claims only when operation explicitly tests something.
+    possible_outcomes:
+      - USE_EXTERNAL_SANDBOX
+      - PORT_SCHEMA_ONLY
+      - PORT_BOUNDED_CAPABILITY
+      - REJECT
+      - UNKNOWN
 
-  session_diff:
-    idea: Persistent file diffs and edit history across session
-    existing_coverage: Hermes built-in has inline diff previews (v0.21+)
-    gap: No persistent cross-session diff view in Desktop
-    recommendation: BUILD as custom plugin if Desktop diff adds value
-    status: IDEA_ONLY
+  hermes-session-diff:
+    decision: KEEP_DISABLED
+    description: >
+      Persistent file diffs and run comparisons in Desktop.
+      pre_llm_call hook + tool-execution middleware.
+    collision_with_arif_core: MODERATE
+    skip_rationale: >
+      arif-core already tracks file mutations and receipts.
+      Without demonstrated human-visible diff gap, adding this
+      increases middleware overlap and persistence surface.
+    revisit: only if human-visible diff is a demonstrated gap
 
-# ── What to build (not buy) ────────────────────────────────────────────────
+  qdrant-memory:
+    decision: REJECT
+    description: >
+      LLM-extracted facts in Qdrant. Conversation text sent to LLM.
+      Single-writer. Deletion not forensic.
+    rejection_reason: DUPLICATE_MEMORY_OWNER
+    existing_coverage:
+      - arif-core session memory
+      - carry_forward.json
+      - scars
+      - arifFlow receipts
+      - Qdrant infrastructure (already via MCP)
+      - AAA memory doctrine (L1-L6)
 
-build_order:
-  1_extend_existing:
-    - >
-      floor_gate_witness already does gate work — check if admission
-      scanning can be added as a mode/extension rather than new plugin
-    - >
-      well_3baik_capture + well_human9_route already do observation —
-      check if context measurement can piggyback on these hooks
-  2_new_custom_plugins:
-    - >
-      claim-evidence-binder: pre_llm_call records claim text,
-      tool result links evidence, resolution recorded.
-      Smallest useful version: just log claims + outcomes.
-    - >
-      context-meter: if observability/Langfuse doesn't cover local
-      metadata-only SQLite measurement, build thin wrapper.
-  3_do_not_build:
-    - Another memory provider (qdrant-memory idea rejected)
-    - Another judgment gate (floor_gate_witness + arifOS own this)
-    - Another execution owner (A-FORGE owns this)
-    - Another identity system (arif-core + identity-interceptor own this)
+# ── Category rules (default REJECT) ─────────────────────────────────────────
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Core value remains: external plugins add EYES and measurement tools,
-# NOT hands, judgment authority, or second identity.
-# But BUILD them — don't pretend they exist upstream.
-#
+category_reject:
+  external_judgment: arifOS owns judgment
+  external_execution: A-FORGE owns execution
+  external_approval_ledger: arifOS F1-F13 owns gates
+  external_model_router: FED owns routing
+  external_self_healing: arif-core + engine own recovery
+  external_memory_governor: kernel owns memory promotion
+  external_identity_provider: arif-core owns identity binding
+  external_receipt_owner: arif-core owns receipt chain
+
 # DITEMPA BUKAN DIBERI ⚒️
-# ═══════════════════════════════════════════════════════════════════════════════
