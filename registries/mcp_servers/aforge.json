@@ -531,12 +531,6 @@
       "transport": "streamable_http"
     },
     {
-      "name": "forge_github_create_issue",
-      "description": "ACTUATOR · git · MUTATE. Create a GitHub issue. Use when: Create a GitHub issue. MUTATE — lease required.",
-      "risk_tier": "CRITICAL",
-      "transport": "streamable_http"
-    },
-    {
       "name": "forge_github_create_pull_request",
       "description": "ACTUATOR · git · MUTATE. Create a GitHub pull request. Use when: Create a GitHub pull request. MUTATE — lease required.",
       "risk_tier": "CRITICAL",
