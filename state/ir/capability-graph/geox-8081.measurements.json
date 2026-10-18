@@ -30,7 +30,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "exported_tool_count",
-      "observed_at": "2026-10-18T11:57:15Z",
+      "observed_at": "2026-10-18T12:02:56Z",
       "referent": "geox:8081",
       "scope": {
         "kind": "endpoint",
@@ -65,7 +65,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "config_declared_vs_live_gap",
-      "observed_at": "2026-10-18T11:57:15Z",
+      "observed_at": "2026-10-18T12:02:56Z",
       "referent": "config declaration (27) vs live exported surface (this probe)",
       "scope": {
         "kind": "endpoint",
@@ -101,7 +101,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "dispatch_coverage",
-      "observed_at": "2026-10-18T11:57:15Z",
+      "observed_at": "2026-10-18T12:02:56Z",
       "referent": "tools dispatch-proven by execution / tools exported",
       "scope": {
         "kind": "endpoint",
@@ -135,7 +135,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "organ_self_registry_count",
-      "observed_at": "2026-10-18T11:57:15Z",
+      "observed_at": "2026-10-18T12:02:56Z",
       "referent": "geox_surface_status(mode=registry).canonical_tools",
       "scope": {
         "kind": "endpoint",

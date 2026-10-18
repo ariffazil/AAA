@@ -130,7 +130,7 @@
     "phantom_count": 0
   },
   "mutating_tools": [],
-  "observed_at": "2026-10-18T11:57:15Z",
+  "observed_at": "2026-10-18T12:02:56Z",
   "observed_by": "kimi-code/FI-008",
   "observed_callable": [
     "geox_surface_status",
@@ -138,7 +138,7 @@
   ],
   "probe_evidence_refs": [
     "tools/list sha256 sha256:807ca21e40759cf5",
-    "geox_surface_status evidence_receipt sha256:1608836af238fdccaa83b16c6491ca24d508e0b251bf191cdc125bd104976b7c",
+    "geox_surface_status evidence_receipt sha256:f1a5ab1dce4f7aacdf14bc467428a2804e1049b95cf3361ea768f69db788f4de",
     "AAA/reports/STAB-2026-09-16/SURFACE-TRUTH-CENSUS.md (prior census: 27 exposed post-handshake)"
   ],
   "probe_identity": "kimi-code/FI-008 via JSON-RPC (read-only)",
@@ -176,7 +176,7 @@
     "geox_well_qc"
   ],
   "runtime_identity": {
-    "organ_self_registry": "geox_surface_status verdict=REGISTRY_PASS, evidence sha256:1608836af238fdccaa83b16c6491ca24d508e0b251bf191cdc125bd104976b7c",
+    "organ_self_registry": "geox_surface_status verdict=REGISTRY_PASS, evidence sha256:f1a5ab1dce4f7aacdf14bc467428a2804e1049b95cf3361ea768f69db788f4de",
     "service": "geox organ MCP (streamable HTTP :8081, session-gated)",
     "transport": "initialize handshake + mcp-session-id required for tools/call"
   },

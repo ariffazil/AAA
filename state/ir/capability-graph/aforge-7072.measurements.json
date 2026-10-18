@@ -23,7 +23,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "exported_tool_count",
-      "observed_at": "2026-10-18T11:57:15Z",
+      "observed_at": "2026-10-18T12:02:56Z",
       "referent": "a-forge-mcp-gateway:7072",
       "scope": {
         "kind": "endpoint",
@@ -58,7 +58,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "dispatch_resolved_sample",
-      "observed_at": "2026-10-18T11:57:15Z",
+      "observed_at": "2026-10-18T12:02:56Z",
       "referent": "get_tool_schema dispatch over deterministic sample",
       "scope": {
         "kind": "endpoint",
@@ -93,7 +93,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "mutating_share",
-      "observed_at": "2026-10-18T11:57:15Z",
+      "observed_at": "2026-10-18T12:02:56Z",
       "referent": "MUTATE-class share of the live surface",
       "scope": {
         "kind": "endpoint",
