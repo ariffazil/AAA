@@ -1,19 +1,20 @@
 # AAA Federation State — Live Map
 
 > Forged 2026-08-14. One source of truth. Probe before trust.
+> **Live re-verified 2026-10-18T12:04Z** — CLI versions and organ statuses below are probe output from that run, not carried-over memory. Per-harness model routing lives in each harness config; not duplicated here.
 
 ## CLI Coders (verified installed)
 
-| CLI | Version | Path | Default Model | Status |
-|---|---|---|---|---|
-| Kimi Code | 0.35.0 | /root/.kimi-code/bin/kimi | MiniMax-M3 | ✅ alive |
-| Qwen Code | 0.21.10 | /root/.local/bin/qwen | GLM-5.2 z.ai | ✅ alive |
-| OpenCode | 1.18.11 | /root/.npm-global/bin/opencode | FED router | ✅ alive |
-| Codex | 0.147.0 | /root/.npm-global/bin/codex | FED codex alias | ✅ alive |
-| Claude Code | 2.1.226 | /root/.local/bin/claude | claude-sonnet | ✅ alive |
-| Aider | 0.86.2 | /home/arifos/.local/bin/aider | DeepSeek V3 | ✅ alive |
-| Gemini CLI | 0.43.0 | /usr/bin/gemini | gemini-3.x | ✅ alive |
-| Agy | 1.1.12 | /root/.local/bin/agy | gemini-3.x | ✅ alive |
+| CLI | Version | Path | Status (2026-10-18) |
+|---|---|---|---|
+| OpenCode | 2.0.32 | /root/.opencode/bin/opencode | ✅ alive (FED forge-777; running TUI 2.0.28 until relaunch) |
+| Kimi Code | 2.2.0 | /root/.kimi-code/bin/kimi | ✅ alive |
+| Qwen Code | 0.25.2 | /root/.local/bin/qwen | ✅ alive |
+| Codex | 0.163.0 | /root/.npm-global/bin/codex | ✅ alive |
+| Claude Code | 2.1.300 | /root/.local/bin/claude | ✅ alive |
+| Gemini CLI | 0.59.0 | /root/.npm-global/bin/gemini | ✅ alive |
+| Agy (Antigravity) | 1.4.2 | /root/.local/bin/agy | ✅ alive |
+| Aider | — | not found on PATH | ❌ absent (dropped from table, do not claim) |
 
 ## FED Router (LiteLLM — localhost:4000)
 
@@ -44,16 +45,19 @@ Two LiteLLM instances:
 
 ## Organs (live health)
 
-| Organ | Port | Status | Function |
+| Organ | Port | Status (live 2026-10-18) | Function |
 |---|---|---|---|
-| arifOS | 8088 | ✅ healthy | Constitutional kernel, F1-F13 |
+| arifOS | 8088 | ⚠️ degraded — G=0.5498, QDF=0.4263 below band | Constitutional kernel, F1-F13 |
 | A-FORGE | 7071/7072 | ✅ healthy | Execution/mutation gate |
-| arifFlow | 7073 | ✅ healthy | Metabolism, receipts |
+| arifFlow | 7073 | ✅ ok-v3-vector | Metabolism, receipts |
 | WEALTH | 18082 | ✅ healthy | Capital domain |
-| WELL | 18083 | ⚠️ degraded | Human wellness (no biometric source) |
-| GEOX | 8081 | ✅ healthy | Geoscience |
-| AAA | 3001 | ✅ alive | A2A gateway |
+| WELL | 18083 | ⚠️ degraded (reachable; no fresh biometric source) | Human wellness |
+| GEOX | 8081 | ⚠️ degraded — kernel_verdict HOLD | Geoscience |
+| AAA | 3001 | ✅ healthy (G=0.5498, C_dark=0.2246, QDF=0.4263, ceiling DISPLAY_ONLY) | A2A gateway |
+| FED | 4000 (HAProxy→litellm 4013) | ✅ 401 without auth = live | Model router |
+| FRAME / CHRON / SIGNAL | 18085 / 18102 / 18084 | ✅ live | Witness / temporal / signal organs |
 | OpenClaw | 18789 | ❌ COLD | AGI gateway (edge mesh, cold-stored 2026-09-07) |
+| FLAME / graphiti-mcp / qwen server | 18901 / 18412 / 4357 | ❌ DOWN | Retired or cold |
 
 ## Memory Architecture
 
@@ -99,13 +103,13 @@ Dream engine integration: advisory telemetry only. HOLD on promotion gate.
 ## Apex Scalars (live)
 
 ```
-A-FORGE :7071 reads from arifOS :8088
-G:      0.4716  REPLICATED
-C_dark: 0.1226  REPLICATED
-W3:     0.7439  REPLICATED→FROZEN-ARTIFACT 2026-08-25 (no live W3 meter; null in live payloads — see TODO.md #5)
-h:      0.7668  REPLICATED
-QDF:    0.4138  REPLICATED
-latency: 6ms
+Source: arifOS :8088/health + AAA :3001/health, measured 2026-10-18T12:04:05Z
+G:      0.5498  MEASURED  (below healthy band → arifOS /health = degraded)
+C_dark: 0.2246  MEASURED
+W3:     0.8736  MEASURED  (independence UNMEASURED — rank needs witness sample vectors)
+h:      0.8084  MEASURED
+QDF:    0.4263  MEASURED  (below healthy band)
+authority: DISPLAY_ONLY
 ```
 
 ## Health Check
@@ -115,7 +119,7 @@ bash /root/AAA/scripts/federation-health.sh
 # → GREEN/YELLOW/RED | organs:N | vvv:N | apex_replicated:N/5 | reasons
 ```
 
-Last result: `GREEN | organs:7 | vvv:6 | apex_replicated:5/5 | DEGRADED:WELL`
+Last result (2026-10-18T12:04Z): `STATE_DEGRADED — fail=1 warn=1` · organs 8/8 alive · FED liveliness ✅ · AAA status=healthy drift=False vault=CONNECTED ceiling=DISPLAY_ONLY · **fail: G=0.5498, QDF=0.4263 below band** · warn: openclaw/opencode units inactive (openclaw cold; `opencode.service` is a legacy bot unit — live 333-AGI runs as CLI processes + `opencode serve --service`, not that unit)
 
 ## Repos (GitHub sync state as of 2026-08-14 19:10 MYT)
 

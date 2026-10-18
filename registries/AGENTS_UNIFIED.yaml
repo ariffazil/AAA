@@ -1,4 +1,4 @@
-version: 2026.08.12T02.55Z-qwen-code-incarnated
+version: 2026.10.18T12.06Z-opencode-v2-fleet-sync
 forged: '2026-07-31'
 forged_by: 333-AGI (Δ MIND) — F13 SOVEREIGN directive
 supersedes:
@@ -93,14 +93,15 @@ forge_instruments:
 - fi_slot: FI-001
   id: opencode
   name: OpenCode CLI
-  binary: /root/.npm-global/bin/opencode
-  model: deepseek/deepseek-v4-pro
-  model_fallback: ollama/qwen2.5-coder:3b
+  binary: /root/.opencode/bin/opencode
+  cli_version: 2.0.32
+  model: litellm-federation/forge-777
+  model_fallback: FED cascade (deepseek-v4-pro → MiniMax-M3) · ollama local lane
   status: active
   canonical_card: /root/AAA/agents/opencode/agent-card.json
   bound_to_identity: 333-AGI
-  description: Primary forge instrument. Governed coding forge bound to 333-AGI (Δ
-    MIND). DeepSeek V4 Pro direct. 200+ MCP tools.
+  description: Primary forge instrument. OpenCode V2 on FED forge-777 (HAProxy :4000
+    → litellm :4013). 13 MCP servers, AAA instruction stack, governed agent defs.
   species_proxy: opencode-zen
 - fi_slot: FI-002
   id: claude-code
