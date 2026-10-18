@@ -1,6 +1,6 @@
 ---
-name: ASI-drift-watch
-id: asi-drift-watch
+name: drift-watch-asi
+id: drift-watch-asi
 version: 1.1.0
 owner: 555-ASI
 risk_tier: low
