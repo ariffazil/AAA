@@ -52,6 +52,8 @@ DITEMPA BUKAN DIBERI.
 > 3. **MiMo Token Plan** *(PROBED LIVE 2026-10-18, aud_tok tepat, transkrip betul)* — **BUKAN** `/v1/audio/transcriptions` (404, dah disahkan). Guna chat lane: `POST $MIMO_BASE_URL/chat/completions`, `Authorization: Bearer $MIMO_API_KEY`, `content=[{"type":"input_audio","input_audio":{"data":"data:audio/ogg;base64,<b64>"}},{"type":"text","text":"Transkrip verbatim apa yang disebut."}]`, `model=mimo-v2.6-pro` (atau `mimo-v2.5-asr`), `max_completion_tokens≥1500` (budget kecil = reasoning telan semua, content kosong!).
 > 4. Semua gagal → lapor `UNKNOWN: audio tidak dapat dibaca` + minta Arif taip ringkas. **JANGAN sekali-kali agak atau huraikan isi audio yang tak berjaya dibaca** (H4 private — teks ≠ realiti).
 
+> **[PITFALL 2026-10-18 — MiMo reasoning model CONFABULATES on noisy short audio]** Audio 3 saat + crowd bising, target sebenar "Aku benci PMX". 9 transkrip, 9 jawapan berbeza. **Whisper/Groq** (`whisper-large-v3-turbo`) bagi "Aku mencif ibn X" — salah tapi **dekat fonetik** (gagal jujur, garble terikat bunyi). **MiMo `understand`/`watch`** (`mimo-v2.5`/`v2.6-pro`) bagi "Aku pencinta dangdut" + naratif penuh Rhoma Irama / "Hancurkan Zionis" — **confabulate confident**, reka cerita bukan dengar. Puncanya: MiMo `understand`/`watch` ialah REASONING model, bukan transcriber — bila tak dapat dengar, dia REASON jalan ke jawapan masuk akal + reasoning chain sokong pembohongan. **RULE: transcribe guna Whisper/Groq (ASR sebenar, gagal jujur). JANGAN guna MiMo reasoning model untuk audio pendek bising.** Whisper pun tak betul pada audio macam ni — "dekat" bukan "tepat".
+
 **Model**: `glm-asr-2512` (production) — based on GLM-ASR-Nano backbone.
 
 ## Hard Constraints

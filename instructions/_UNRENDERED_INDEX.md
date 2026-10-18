@@ -5,7 +5,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - CARRY-FORWARD-ARIFOS-LANE-LINEAGE-003
 - CARRY-FORWARD-PATH-RECONCILIATION
 - CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-2026-09-24
-- CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-v0.6-2026-09-24
 - DECISION-RECORD-memory-conflicts-20261014
 - EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-STAGING-2026-09-25
 - F13-RATIFICATION-READINESS
@@ -19,6 +18,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - SOVEREIGN-PROPOSAL-CANON-INDEX-STAGING-2026-09-24
 - SUBSTRATE-PATCHES-v2.1
 - _UNRENDERED_INDEX
+- acah2-remediation-deep-research-2026-10-18
 - add-only-truth-preservation
 - aforge-citizen-contract
 - aforge-citizen-contract-333b-DRAFT
@@ -168,7 +168,6 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - namespace-fatwa-k2-symbol-settlement
 - naming-doctrine
 - national-intelligence-invariants
-- nusantara-glossary-DRAFT-v0.6-2026-09-24
 - observation-retrieval-contract-DRAFT
 - openclaw-constitutional-init
 - orthogonal-verification-surfaces
@@ -177,6 +176,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - prompting-attention-allocation
 - protocol-layers-doctrine
 - proxy-reality-paradox
+- rasa-entity-type-gate-proposal
 - rationality-filter-doctrine
 - rationality-filter-quantum-map
 - reality-alignment-kernel
@@ -193,6 +193,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - salam-consequence-membrane
 - sanctuary-invariant
 - scar-engineering
+- scar-litmus-protocol
 - shebtoc-p0-witness-capture-layer
 - shebtoc-p2-mutation-protocol
 - six-graph-federation-model
