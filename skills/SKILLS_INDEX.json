@@ -5,15 +5,15 @@
  "single_writer": true,
  "do_not_hand_edit": true,
  "summary": {
-  "total_entries": 1114,
-  "skills": 952,
+  "total_entries": 1115,
+  "skills": 953,
   "namespaces": 162,
-  "bodies": 930,
+  "bodies": 931,
   "projections": 22,
-  "alias_paths": 126,
+  "alias_paths": 127,
   "max_skill_depth": 4,
   "skills_by_depth": {
-   "0": 549,
+   "0": 550,
    "1": 219,
    "2": 16,
    "3": 1,
@@ -2128,7 +2128,9 @@
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/capabilities/media/AAA-audio-qualia-doctrine"
+   ],
    "authority": {
     "risk_tier": null,
     "autonomy_tier": null,
@@ -7106,6 +7108,34 @@
    "depth": 0,
    "namespace": null,
    "sha256": "8e04458640358eaa3692292f975ef7aececde07926c0f949db663a401adb6938",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-multimodal-vision",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "browser-service-ops",
+   "path": "/root/AAA/skills/browser-service-ops",
+   "skill_md": "/root/AAA/skills/browser-service-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "845d4d03c58682b47e99938af5b362562f604f823bdccda79046f263f3c5fc8f",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
