@@ -20,7 +20,7 @@
   "trinity": "\u0394 MIND (agi) \u2014 orchestrates \u03a9 CORE (asi) + \u03a8 SOUL (apex)",
   "warga_status": "attested",
   "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
-  "bound_to": "888-APEX",
+  "bound_to": "333-AGI",
   "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/opencode",
   "provider": {
@@ -994,5 +994,6 @@
     ],
     "doctrine": "cheap models explore, frontier models reason",
     "requires": "F13 ratification of pool before auto-deploy"
-  }
+  },
+  "fi_designation": "FI-001"
 }
