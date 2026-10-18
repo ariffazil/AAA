@@ -225,3 +225,8 @@ auth/redis_url.env
 !.env.sample
 audio/voice-registry.json  # person registry, local-only SOT (PERSON-DATA GATE)
 audio/voice-registry.json
+
+# Nested working copies under forge_work/ must never be committed as gitlinks.
+# 2026-10-18: an un-URL'd gitlink here made `actions/checkout` fail every CI
+# job with "No url found for submodule path ... in .gitmodules".
+forge_work/2026-10-13-md-context-governance/
