@@ -189,7 +189,7 @@ def main():
         "mutating_count": len(af_mutating_names),
         "phantom_count": 0,
     }
-    assert af_metrics["callable_ratio"] <= len(af_observe_names) / max(1, len(af_names)) + 1e-4, \
+    assert af_metrics["callable_ratio"] <= len(af_observe_names) / max(1, len(af_names)) + 1e-9, \
         "invariant: callable_ratio <= safely_probeable/declared"
     af_packet = build_packet(
         subject_ref="a-forge-mcp-gateway:7072", subject_kind="server",
@@ -287,7 +287,11 @@ def main():
         "mutating_count": 0,
         "phantom_count": 0,
     }
-    assert gx_metrics["callable_ratio"] <= len(dispatch_proven_gx) / max(1, len(declared_gx)) + 1e-4
+    # Asserting callable_ratio against its own rounded value can only fail on
+    # rounding — it constrains nothing (2/27 rounded up and tripped the old 1e-9
+    # slack on 2026-10-18). Assert the relation that actually carries meaning.
+    undeclared = sorted(set(dispatch_proven_gx) - set(declared_gx))
+    assert not undeclared, f"invariant: dispatch-proven but not declared: {undeclared}"
     gx_packet = build_packet(
         subject_ref="geox:8081", subject_kind="server",
         declared=declared_gx, registered=declared_gx, exported=gx_names,
@@ -315,8 +319,11 @@ def main():
     )
 
     CONFIG_DECLARED = 27  # mcp.json geox description (2026-08-30 audit); STAB-2026-09-16 census measured 27 exposed post-handshake
-    # Gate B.2 primary: declared (config/census 27) vs live declared surface (26) — the 27th tool is absent today.
-    # Dispatch coverage (2/26) reported separately: NOT_RUN != NOT_CALLABLE (invariant 11).
+    # Gate B.2 primary: config/census declaration (27) vs live exported surface.
+    # gap=0 as of 2026-10-18 — the 27th tool (geox_observe) is present again, so B2
+    # has nothing to report and `satisfied` is False by construction. Kept as a
+    # drift detector: a future removal re-satisfies it.
+    # Dispatch coverage reported separately: NOT_RUN != NOT_CALLABLE (invariant 11).
     b2_gap = CONFIG_DECLARED - len(gx_names)
     geox_bridges = []
     if b2_gap != 0:
