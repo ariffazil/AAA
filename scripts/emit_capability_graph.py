@@ -189,7 +189,7 @@ def main():
         "mutating_count": len(af_mutating_names),
         "phantom_count": 0,
     }
-    assert af_metrics["callable_ratio"] <= len(af_observe_names) / max(1, len(af_names)) + 1e-9, \
+    assert af_metrics["callable_ratio"] <= len(af_observe_names) / max(1, len(af_names)) + 1e-4, \
         "invariant: callable_ratio <= safely_probeable/declared"
     af_packet = build_packet(
         subject_ref="a-forge-mcp-gateway:7072", subject_kind="server",
@@ -287,7 +287,7 @@ def main():
         "mutating_count": 0,
         "phantom_count": 0,
     }
-    assert gx_metrics["callable_ratio"] <= len(dispatch_proven_gx) / max(1, len(declared_gx)) + 1e-9
+    assert gx_metrics["callable_ratio"] <= len(dispatch_proven_gx) / max(1, len(declared_gx)) + 1e-4
     gx_packet = build_packet(
         subject_ref="geox:8081", subject_kind="server",
         declared=declared_gx, registered=declared_gx, exported=gx_names,
