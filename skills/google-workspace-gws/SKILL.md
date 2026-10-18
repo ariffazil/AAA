@@ -3,6 +3,10 @@ name: google-workspace-gws
 description: "Access Gmail, Drive, Calendar, Docs via official gws CLI."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+relationships:
+  - target: forge-google-workspace
+    type: composes_with
+    confidence: 0.95
 ---
 
 # Google Workspace via gws CLI (official @googleworkspace/cli)

@@ -80,3 +80,16 @@ Copy `families/pdf.yaml` as template. Fields: `family`, `canonical_owner` (real 
 `jobs` (each: `triggers` keywords, `executor`, `verify`, `maturity`, `authority`), `adapters`,
 `refusals`. Register in `references/ROUTING.yaml`. Probe before flagging maturity — a flag without
 a dated probe receipt is fabrication.
+
+## Phase 2 — typed-edge loadout (F13 2026-10-18)
+
+Before opening any family, run the budgeted graph router to get the ≤12-skill subgraph for the
+job (seed top-5 + 1-hop `depends_on`/`extends`, cap ≤12 skills / ~4000 tokens):
+
+```
+python3 /root/scripts/skill-graph.py --loadout "<job in plain words>"
+```
+
+The lint gate `python3 /root/scripts/skill-graph.py --lint` enforces: every `relationships.target`
+resolves to a canonical skill, and `depends_on`+`extends` form a strict DAG. This is the "graph,
+not wiki" layer over the canonical store — it never mints a parallel catalog.
