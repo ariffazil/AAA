@@ -1,45 +1,12 @@
 {
-  "bridge_proofs": [
-    {
-      "applied_to": [
-        "geox:8081"
-      ],
-      "bridge_id": "bp-geox-configdecl-vs-live-2026-10-02T030716Z",
-      "claim_a": {
-        "source": "mcp.json 2026-08-30 audit + STAB-2026-09-16 census",
-        "type": "metric",
-        "value": "27"
-      },
-      "claim_b": {
-        "source": "geox:8081 live tools/list 2026-10-02 (organ self-registry agrees: 26)",
-        "type": "metric",
-        "value": "26"
-      },
-      "comparability": "COMPARABLE",
-      "decided_at": "2026-10-02T03:07:16Z",
-      "decided_by": "kimi-code/FI-008",
-      "probe_state": "SUCCESS",
-      "relation": "DIVERGES_FROM",
-      "supersedes": null,
-      "verification_state": "WITNESSED",
-      "witness_evidence_refs": [
-        "geox_surface_status evidence_receipt sha256:2866847f123db44c2968dbbd69eca0f113a0afa37d34a6c4d84d6acf36e77c4b",
-        "consolidation record: geox_glof replaced geox_glof_cascade_* family (333 ARCHITECT 2026-09-19)"
-      ],
-      "witness_method": {
-        "kind": "invocation",
-        "method": "JSON-RPC initialize handshake + tools/list + geox_surface_status(mode=registry)",
-        "read_only": true
-      }
-    }
-  ],
+  "bridge_proofs": [],
   "gate_B2": {
     "config_declared": 27,
-    "dispatch_coverage": "2/26 (lower bound)",
-    "gap": 1,
+    "dispatch_coverage": "2/27 (lower bound)",
+    "gap": 0,
     "gate": "gap >= 1",
-    "live_exported": 26,
-    "satisfied": true
+    "live_exported": 27,
+    "satisfied": false
   },
   "measurements": [
     {
@@ -63,7 +30,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "exported_tool_count",
-      "observed_at": "2026-10-02T03:07:16Z",
+      "observed_at": "2026-10-18T11:57:15Z",
       "referent": "geox:8081",
       "scope": {
         "kind": "endpoint",
@@ -72,7 +39,7 @@
         "window": null
       },
       "unit": "tools",
-      "value": 26,
+      "value": 27,
       "witness_refs": [
         "kimi-code/FI-008 session probes (read-only)"
       ]
@@ -98,7 +65,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "config_declared_vs_live_gap",
-      "observed_at": "2026-10-02T03:07:16Z",
+      "observed_at": "2026-10-18T11:57:15Z",
       "referent": "config declaration (27) vs live exported surface (this probe)",
       "scope": {
         "kind": "endpoint",
@@ -107,7 +74,7 @@
         "window": null
       },
       "unit": "tools",
-      "value": 1,
+      "value": 0,
       "witness_refs": [
         "kimi-code/FI-008 session probes (read-only)"
       ]
@@ -134,7 +101,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "dispatch_coverage",
-      "observed_at": "2026-10-02T03:07:16Z",
+      "observed_at": "2026-10-18T11:57:15Z",
       "referent": "tools dispatch-proven by execution / tools exported",
       "scope": {
         "kind": "endpoint",
@@ -143,7 +110,7 @@
         "window": null
       },
       "unit": "ratio",
-      "value": 0.0769,
+      "value": 0.0741,
       "witness_refs": [
         "kimi-code/FI-008 session probes (read-only)"
       ]
@@ -168,7 +135,7 @@
         "tool_version": "1.0.0"
       },
       "metric": "organ_self_registry_count",
-      "observed_at": "2026-10-02T03:07:16Z",
+      "observed_at": "2026-10-18T11:57:15Z",
       "referent": "geox_surface_status(mode=registry).canonical_tools",
       "scope": {
         "kind": "endpoint",
@@ -177,7 +144,7 @@
         "window": null
       },
       "unit": "tools",
-      "value": 26,
+      "value": 27,
       "witness_refs": [
         "kimi-code/FI-008 session probes (read-only)"
       ]

@@ -12,6 +12,7 @@
     "geox_list_registered_sources",
     "geox_map",
     "geox_model",
+    "geox_observe",
     "geox_paleobiodb_query",
     "geox_petrophysics",
     "geox_prospect",
@@ -40,6 +41,7 @@
     "geox_list_registered_sources",
     "geox_map",
     "geox_model",
+    "geox_observe",
     "geox_paleobiodb_query",
     "geox_petrophysics",
     "geox_prospect",
@@ -71,6 +73,7 @@
       "geox_glof",
       "geox_map",
       "geox_model",
+      "geox_observe",
       "geox_paleobiodb_query",
       "geox_petrophysics",
       "geox_prospect",
@@ -102,6 +105,7 @@
     "geox_list_registered_sources",
     "geox_map",
     "geox_model",
+    "geox_observe",
     "geox_paleobiodb_query",
     "geox_petrophysics",
     "geox_prospect",
@@ -120,21 +124,21 @@
   "freshness": "FRESH",
   "metrics": {
     "callable_count": 2,
-    "callable_ratio": 0.0769,
-    "declared_count": 26,
+    "callable_ratio": 0.0741,
+    "declared_count": 27,
     "mutating_count": 0,
     "phantom_count": 0
   },
   "mutating_tools": [],
-  "observed_at": "2026-10-02T03:07:16Z",
+  "observed_at": "2026-10-18T11:57:15Z",
   "observed_by": "kimi-code/FI-008",
   "observed_callable": [
     "geox_surface_status",
     "geox_list_registered_sources"
   ],
   "probe_evidence_refs": [
-    "tools/list sha256 sha256:ffaaa59b55fec464",
-    "geox_surface_status evidence_receipt sha256:2866847f123db44c2968dbbd69eca0f113a0afa37d34a6c4d84d6acf36e77c4b",
+    "tools/list sha256 sha256:807ca21e40759cf5",
+    "geox_surface_status evidence_receipt sha256:1608836af238fdccaa83b16c6491ca24d508e0b251bf191cdc125bd104976b7c",
     "AAA/reports/STAB-2026-09-16/SURFACE-TRUTH-CENSUS.md (prior census: 27 exposed post-handshake)"
   ],
   "probe_identity": "kimi-code/FI-008 via JSON-RPC (read-only)",
@@ -155,6 +159,7 @@
     "geox_list_registered_sources",
     "geox_map",
     "geox_model",
+    "geox_observe",
     "geox_paleobiodb_query",
     "geox_petrophysics",
     "geox_prospect",
@@ -171,7 +176,7 @@
     "geox_well_qc"
   ],
   "runtime_identity": {
-    "organ_self_registry": "geox_surface_status verdict=REGISTRY_PASS, evidence sha256:2866847f123db44c2968dbbd69eca0f113a0afa37d34a6c4d84d6acf36e77c4b",
+    "organ_self_registry": "geox_surface_status verdict=REGISTRY_PASS, evidence sha256:1608836af238fdccaa83b16c6491ca24d508e0b251bf191cdc125bd104976b7c",
     "service": "geox organ MCP (streamable HTTP :8081, session-gated)",
     "transport": "initialize handshake + mcp-session-id required for tools/call"
   },
@@ -179,7 +184,7 @@
     "geox_surface_status",
     "geox_list_registered_sources"
   ],
-  "schema_hash": "sha256:ffaaa59b55fec464",
+  "schema_hash": "sha256:807ca21e40759cf5",
   "subject": {
     "kind": "server",
     "ref": "geox:8081"
