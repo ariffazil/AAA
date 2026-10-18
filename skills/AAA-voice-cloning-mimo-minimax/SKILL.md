@@ -205,6 +205,10 @@ curl -X POST "$BASE/v1/t2a_v2" \
 
 **Decode pitfall (always-on):** `data.audio` is HEX, NOT base64. Use `bytes.fromhex(...)`. Base64 decoding produces garbage. Success indicator: `base_resp.status_code == 0`.
 
+**Alias vs provider_voice_id — pass the canonical alias, not the raw provider ID.** The federation wrapper `iarif_tts_pipeline.sh` looks up its argument in `/root/AAA/audio/voice-registry.json` and resolves aliases (`siti`, `i-arif-sovereign`, `abang-sado-live-v1`) to the live entry before calling the provider. Passing the raw provider_voice_id (`SSSiti20260926v1`) trips the resolver's "voice id not in registry" branch and aborts fail-closed even though the voice is LIVE. The `scripts/siti_render.py` wrapper handles this for you; if you build the payload inline, use the alias — or call the provider directly and accept that you are bypassing the federation alias registry.
+
+**`voice_setting.emotion` is rejected on `/v1/t2a_v2` (status_code 2013).** Direct TTS accepts only `voice_id`, `speed`, `vol`, `pitch` in `voice_setting`. If you want emotional color, omit `emotion` from `/v1/t2a_v2` and control timbre through `pitch`/`speed` and the source clone. The `emotion` field belongs to the chat-style `/v1/chat` messages endpoint, NOT direct synthesis.
+
 **Conversion for Telegram voice bubble:**
 ```bash
 ffmpeg -y -i out.mp3 -c:a libopus -b:a 48k -ar 16000 -ac 1 out.ogg
@@ -249,7 +253,7 @@ After each clone:
    platform (Hermes gateway, edge bot, voice-note pipeline).
    Acceptable thresholds per AAA-audio-emd-pipeline §"Reflex Arc".
 
-### Sove­reign-Listen Gate (F13 acceptance — mandatory before any delivery)
+### Sove­reign-Listen Gate (F13 acceptance — mandatory before promoting a NEW mint to LIVE (F13 2026-10-18: per-render re-gating retired))
 
 Provider `status_code == 0` proves the wire is healthy, NOT that the timbre
 matches the reference. `base_resp.success` and F0 / voiced-ratio probes can
@@ -273,15 +277,10 @@ Never auto-promote a freshly cloned voice_id to LIVE on the basis of
 provider status code, F0 numbers, or the fact that the file decoded
 without warnings. Those measure the wire; the ear measures the person.
 
-**The gate fires on EVERY render, not only the first.** A voice_id that
-sounded right on a 5-second probe can drift on a 60-second paragraph
-(model temperature, phoneme coverage, prosody long-tail). Re-run the
-sovereign-listen gate on every regenerated artefact before sending it to
-the recipient — do not assume an earlier confirm still holds. If the
-sovereign says "not X, redo" after multiple attempts at the same
-recipe, treat the source clone as failed: revoke the voice_id, do not
-keep tweaking `pitch`/`speed`/`language_boost` to chase a timbre the model
-was never trained to produce. Source clone ≠ reference person is a
+**Scope (F13 2026-10-18): the gate fires ONCE per new mint, not per render.** A LIVE,
+sovereign-confirmed voice_id renders and delivers free — no re-gate, no per-render ceremony. If the
+sovereign later says "not X, redo" on a LIVE voice, that is a mint defect: revoke and re-mint, do
+not chase timbre with `pitch`/`speed`/`language_boost` tweaks. Source clone ≠ reference person is a
 defect class, not a tuning problem.
 
 **Revocation path.** When the sovereign confirms the timbre fails:

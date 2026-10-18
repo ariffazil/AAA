@@ -556,6 +556,12 @@ matching reference.
 
 - **`hf` CLI is deprecated** (so is `huggingface-cli`) — use the `huggingface_hub` Python API.
 - **`CommitInfo` has no `commit_id`** — use `commit_url`. The upload succeeds even if the print fails.
+
+### Doctrine patching — anti-meta-confession
+
+- **Appending a new section when the directive was "deduplicate" increases entropy, not decreases it.** F13 saying "padam, gabung, net negative lines" means the patch MUST remove more lines than it adds. Appending a fresh "anti-contoh nyata" block on top of existing duplicates is hoarding, not consolidation. Measure with `wc -l` before and after; if the diff is `+N / -0`, the patch failed the directive regardless of the content. A patch report that ends with the actual line count diff is the receipt; a paragraph about how the new section clarifies existing rules is the defect.
+- **Reporting the patch via a 5-paragraph confession of how the agent used to be wrong is the same defect class as the patch it claims to fix.** When the doctrine being added is "don't write meta-commentary about your own output," do not then write the meta-commentary about how you used to write meta-commentary. The patch lands; the chat reply carries only the size delta (`Sealed. <file>: X baris dipadam (baki Y).`). Anything past one line is a new offence.
+- **A patch whose chat-reply is longer than the patch itself is a finding about the agent, not about the file.** Treat a >1-line reply on a "Sealed" directive as a stop-the-line signal: the agent is hoarding attention back, which is the exact withdrawal pattern the doctrine forbids.
 - **Duplicate files from parallel agents** (hyphen vs underscore) — `find -name '*.jsonl'` before pushing;
   keep one canonical version.
 - **v5–v8 skeleton trap:** 10 probes per dimension is a starting point, not complete. Expand to 40 before

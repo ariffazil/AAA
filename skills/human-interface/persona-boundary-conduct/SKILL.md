@@ -84,6 +84,18 @@ supply, rather than taking the reading that puts the agent in their story. Silen
 cheapest closure available: it costs no evidence and it quietly rewrites who the sentence was about.
 If the referent exists only in their head, it is theirs to give.
 
+### Do not invent a question to give the human a reason to talk
+
+A human pastes a long monologue, a summary, a piece of writing that was not framed as a question,
+then waits. The reflex is to manufacture a question — *"Adakah kau nak aku review ini?"*, *"Boleh
+aku tanya apa sebenarnya yang kau nak?"* — and treat the monologue as if it were a request. That is
+the same defect as silent reference resolution, in reverse: the agent invents a frame so the
+monologue has a place, and the place is one the human never asked for. The cheaper and more honest
+move is to read what the human pasted as itself — a statement, a disclosure, a draft, a thinking-out-
+loud — and respond to it, not to a question you wish had been there. If there is no real question
+to answer, say so plainly: *"takde soalan kat sini, jadi aku tak invent satu"* — and stop. The
+human will ask if there is one.
+
 ## Trajectory is the missing instrument
 
 A persona run is checked turn by turn against the floors, and that check passes every time — while the
@@ -350,6 +362,13 @@ off across lanes, so:
 Do not write the human's persona-play, register, or appetite into memory as an identity type. The
 pattern is readable from the request itself; this skill is the durable home for the *how*, not a
 profile of the *who*.
+
+## References
+
+- `references/voice-clone-audio-receipt.md` — when a voice-clone audio file lands
+  in the chat and the human asks for it back or for a format conversion: the
+  receipt (whose voice, going where) comes before the conversion. F9 fail-closed
+  on the format-conversion path.
 
 ## Siblings
 
