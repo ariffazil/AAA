@@ -3103,6 +3103,66 @@ print(json.dumps(json.load(open(RUNTIME_PATH / 'vps_main_arifos.json'))))
   }
 });
 
+// ── Kernel apex-scalar proxy (2026-10-18 · 333-AGI · honesty fix) ────────────
+// AAA is DISPLAY_ONLY. The authoritative apex scalars are MEASURED by the arifOS
+// kernel (per-scalar provenance = arifflow_live_vector / witness_producers).
+// AAA's own (A·P·E·X)^1/4 is a constant-driven local heuristic (A=0.85, P=0.90,
+// E=0.85, X=0.90 ⇒ G≈0.875 by construction, independent of federation state).
+// Publishing that under `apex_scalars` produced a live contradiction:
+//   AAA G=0.875 "HEALTHY"  vs  kernel G=0.5499 MEASURED, F8 fail, status=degraded
+// Measured wins. Kernel values become `apex_scalars`; the local heuristic is
+// demoted to `apex_scalars_local` with authoritative:false. If the kernel is
+// unreachable the key reports UNMEASURED with nulls — never a synthetic fallback
+// wearing a HEALTHY badge.
+const KERNEL_HEALTH_URL = process.env.ARIFOS_LOCAL_URL
+  ? `${process.env.ARIFOS_LOCAL_URL.replace(/\/$/, '')}/health`
+  : 'http://127.0.0.1:8088/health';
+const KERNEL_APEX_TTL_MS = 5000;
+let _kernelApexCache = { data: null, ts: 0 };
+
+function fetchKernelApex() {
+  const now = Date.now();
+  if (_kernelApexCache.ts && now - _kernelApexCache.ts < KERNEL_APEX_TTL_MS) {
+    return Promise.resolve(_kernelApexCache.data);
+  }
+  const stamp = () => new Date().toISOString();
+  return new Promise((resolve) => {
+    let settled = false;
+    const done = (payload) => {
+      if (settled) return;
+      settled = true;
+      _kernelApexCache = { data: payload, ts: Date.now() };
+      resolve(payload);
+    };
+    const req = HTTP.get(KERNEL_HEALTH_URL, { timeout: 1500 }, (r) => {
+      let body = '';
+      r.on('data', (c) => { body += c; });
+      r.on('end', () => {
+        try {
+          const parsed = JSON.parse(body);
+          const scalars = parsed.apex_scalars;
+          if (!scalars || typeof scalars !== 'object') {
+            return done({ ok: false, error: 'kernel_apex_absent', measured_at: stamp() });
+          }
+          return done({
+            ok: true,
+            scalars,
+            kernel_status: parsed.status || null,
+            floor_passed: parsed.floor_passed === undefined ? null : parsed.floor_passed,
+            floors_active: parsed.floors_active || null,
+            kernel_version: parsed.version || null,
+            measured_at: stamp(),
+          });
+        } catch (e) {
+          return done({ ok: false, error: `kernel_parse_error: ${e.message}`, measured_at: stamp() });
+        }
+      });
+    });
+    req.on('timeout', () => { req.destroy(); done({ ok: false, error: 'kernel_timeout', measured_at: stamp() }); });
+    req.on('error', (e) => done({ ok: false, error: `kernel_unreachable: ${e.code || e.message}`, measured_at: stamp() }));
+  });
+}
+
 app.get('/health', async (req, res) => {
   const vaultHealthy = await checkVaultHealth();
   // Include seal chain head — the real heartbeat
@@ -3139,7 +3199,7 @@ app.get('/health', async (req, res) => {
   const deploymentDrift = deployedCommit !== 'UNAVAILABLE' && sourceCommit !== 'UNAVAILABLE' && deployedCommit !== sourceCommit;
   const healthStatus = (deployedCommit === 'UNAVAILABLE' || deploymentDrift) ? 'degraded' : 'healthy';
 
-  // APEX SCALARS — live computation from observable state
+  // APEX SCALARS — LOCAL HEURISTIC (non-authoritative, see fetchKernelApex above)
   // G = (A·P·E·X)^(1/4) — Nash bargaining product (geometric mean)
   const A = identityHash !== 'UNAVAILABLE' ? 0.85 : 0.30;  // Authority: identity present
   const P = !deploymentDrift ? 0.90 : 0.40;                 // Plan integrity: no drift
@@ -3162,6 +3222,8 @@ app.get('/health', async (req, res) => {
   // QDF = Quality Deployment Factor
   const QDF = (healthStatus === 'healthy' ? 1.0 : 0.5) * (vaultHealthy ? 1.0 : 0.5) * (!deploymentDrift ? 1.0 : 0.5);
 
+  const kernelApex = await fetchKernelApex();
+
   res.json({
     status: healthStatus,
     identity: identityHash,
@@ -3169,13 +3231,45 @@ app.get('/health', async (req, res) => {
     deployed_commit: deployedCommit,
     source_commit: sourceCommit,
     deployment_drift: deploymentDrift,
-    apex_scalars: {
+    // Authoritative: proxied from arifOS kernel /health. `authority: MEASURED` is a
+    // claim about the kernel's per-scalar provenance, not about this proxy hop.
+    apex_scalars: kernelApex.ok
+      ? {
+        ...kernelApex.scalars,
+        source: 'arifOS:8088/health',
+        authority: 'MEASURED',
+        measured_at: kernelApex.measured_at,
+      }
+      : {
+        G: { value: null, status: 'UNMEASURED' },
+        C_dark: { value: null, status: 'UNMEASURED' },
+        W3: { value: null, status: 'UNMEASURED' },
+        h: { value: null, status: 'UNMEASURED' },
+        QDF: { value: null, status: 'UNMEASURED' },
+        source: 'arifOS:8088/health',
+        authority: 'UNMEASURED',
+        error: kernelApex.error,
+        measured_at: kernelApex.measured_at,
+      },
+    // Demoted local heuristic — kept for continuity, explicitly non-authoritative.
+    apex_scalars_local: {
       G: { value: parseFloat(G.toFixed(3)), status: G >= 0.70 ? 'HEALTHY' : 'DEGRADED' },
       C_dark: { value: parseFloat(C_dark.toFixed(3)), status: C_dark <= 0.30 ? 'SAFE' : 'ELEVATED' },
       W3: { value: parseFloat(W3.toFixed(3)), status: W3 >= 0.75 ? 'CONSENSUS' : 'WEAK' },
       h: { value: parseFloat(h.toFixed(3)), status: h <= 0.50 ? 'CLEAN' : 'ENTROPIC' },
       QDF: { value: parseFloat(QDF.toFixed(3)), status: QDF >= 0.90 ? 'QUALITY' : 'DEGRADED' },
+      authoritative: false,
+      method: 'AAA local heuristic — (A·P·E·X)^1/4 over identity/drift/vault/runtime flags',
+      note: 'Display-only. Kernel-measured apex_scalars above are authoritative.',
     },
+    kernel_health: kernelApex.ok
+      ? {
+        status: kernelApex.kernel_status,
+        floor_passed: kernelApex.floor_passed,
+        floors_active: kernelApex.floors_active,
+        version: kernelApex.kernel_version,
+      }
+      : { status: 'UNREACHABLE', error: kernelApex.error },
     federation_geometry: {
       status: 'enabled',
       // G9 fix 2026-09-27: subjects was hardcoded 0 while the A2A registry held 47
