@@ -130,13 +130,18 @@ These patterns emerged from all 3 major browser-agent projects. Every agent shou
 > **E3: Independence is measured. No single search provider is sufficient.**
 
 ```
-forge_search (Brave→SearXNG→DeepSeek) → primary governed search (fallback chain live 2026-10-18)
-  ⚠ Brave direct = 402 prepaid-credit exhausted (probed 2026-10-18) — circuit-breaker skips it
-  ✅ SearXNG (local, free) = first working rung (thin engines: bing+wikipedia)
-  ✅ DeepSeek Search (api.deepseek.com/v1/tools/search) = fallback rung — $0.75/1k successful reqs
+forge_search (LFD-ADAPTIVE, 2026-10-18) → order EMERGENT from live evidence:
+  routing = capability-prior × LFD-learned weight, curriculum-gated by difficulty class
+  (method: LFD 2610.17246 — preference weights, not hardcoded; dead lanes fall, healthy rise)
+  Current measured ranking (live-probed 2026-10-18 by sovereign + agent):
+  ✅ exa (api.exa.ai)      — BEST: clean content, $0.007/search, full results
+  ✅ serpapi (serpapi.com)  — Google organic, live
+  ✅ searxng (local, free)  — thin engines (bing+wikipedia)
+  ✅ deepseek (v1/tools)    — live, $0.75/1k successful
+  ☠️ brave                  — 402 prepaid exhausted
+  ☠️ firecrawl              — OUT OF CREDITS (sovereign live-test 2026-10-18)
 free-search_search (DDG+Mojeek) → engine diversity, zero-key (replaces forge_minimax_search — REMOVED 2026-07-31)
-brave_web_search (Brave direct) → DEAD 2026-10-18 (402) — do not rely on
-minimax_web_search (MiniMax MCP) → DEAD 2026-10-18 (insufficient balance) — provider diversity only while funded
+minimax_web_search (MiniMax MCP) → DEAD 2026-10-18 (insufficient balance)
 perplexity_search               → AI-synthesized (requires Perplexity MCP — not in all sessions)
 meyhem_search                   → feedback-driven search with result ranking (when available)
 ```
