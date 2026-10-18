@@ -190,6 +190,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - representation-layer-integrity
 - representation-reality-invariant
 - reversibility-as-information-test
+- safety-is-emergence
 - salam-consequence-membrane
 - sanctuary-invariant
 - scar-engineering
