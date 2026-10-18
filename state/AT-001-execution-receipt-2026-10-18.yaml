@@ -1,0 +1,110 @@
+receipt_id: AT-001-execution-2026-10-18
+executed_by: 333-AGI Δ MIND (OpenCode harness)
+executed_at: 2026-10-18T11:45+08:00
+test: AT-001 Scar Binding Test (per /root/AAA/instructions/aaa-emergence-acceptance-tests.md §1)
+mode: READ-ONLY probe + one doc-path correction
+
+# ── Test definition ────────────────────────────────────────────────────
+# 1. Register scar S.
+# 2. Produce repeat occurrence with same signature.
+# 3. Observe routing.
+# PASS: same_signature + different_selection
+# FAIL: same_signature + same_selection  -> Verdict: "Scar = History"
+
+# ── Step 1: scar S registered ─────────────────────────────────────────
+scar_S:
+  pattern_id: audit-without-first-party-probe
+  scar_cost: 10
+  first_recorded: 2026-09-22
+  learned_action: "before citing any audit finding, run a fresh first-party probe. Trust no sibling summary without re-verification."
+  location: /root/forge_work/proposals/fi-003/behavioral-memory-stage3/scar_pattern_ledger.json
+  ledger_state: 18 patterns, --self-test OK, monotonic cost ladder, hold=10 highest
+
+# ── Step 2: repeat occurrence, same signature ─────────────────────────
+recurrence:
+  date: 2026-10-18
+  actor: agy-cli/audit (Antigravity harness)
+  event: "ARIFOS::AGENTIC_SUBSTRATE_ALIGNMENT_AUDIT::v1.0 submitted 'Proposed Mutation Batch 1' with 3 P0 blockers"
+  signature_match: "audit findings cited without first-party re-probe at authorization time"
+  measured_staleness:
+    SINK-04: "ALREADY FIXED today 11:14:49 (bak-autosign-20261018-111449 proves removal)"
+    SINK-06: "ALREADY FIXED (conftest.py uses tmp_path_factory exclusively; vps_path absent)"
+    SINK-10: "ALREADY FIXED (i-arif fallback = deepseek-flash/mimo/MiniMax, no apex-888/forge-777)"
+  staleness_rate: "3/3 P0 stale"
+
+# ── Step 3: observe routing ───────────────────────────────────────────
+routing_observation:
+  ledger_lookup_works: true
+  live_test: "check_hold.py 'audit finding cited without first-party probe re-verification' -> MATCHED 5 patterns, top hit audit-without-first-party-probe cost=10"
+  hook_wired: true
+  hook_path: /root/scripts/aaa-hold-routing-hook.sh
+  hook_mode: observe (advisory, never blocks — by design per F13 "HOLD is a work item, not absence of work")
+  selection_changed: false
+
+# ── VERDICT ───────────────────────────────────────────────────────────
+AT-001_VERDICT: FAIL
+verdict_label: "Scar = History"
+reasoning: >
+  The scar existed in the ledger since 2026-09-22 with cost=10. The lookup
+  mechanism works and returns the correct learned action. The recurrence on
+  2026-10-18 produced the identical failure. Selection did not change.
+
+# ── Root causes (2, both structural, both measured) ───────────────────
+root_cause_1_coverage:
+  finding: "aaa-hold-routing-hook.sh is wired to exactly ONE harness"
+  measured:
+    /root/.qwen/settings.json: 1
+    /root/.claude/settings.json: 0
+    /root/.config/opencode/opencode.json: 0
+    /root/.kimi-code/config.toml: 0
+    /root/.codex/config.toml: 0
+    /root/.gemini/settings.json: 0
+    agy-cli (antigravity): 0 (not wired)
+  consequence: "the actor that produced the stale audit never had the scar surfaced to it"
+  note: "333-AGI (this session, OpenCode) is also unwired — self-included in the gap"
+
+root_cause_2_writeback:
+  finding: "no path from /root/AAA/scars/*.md into scar_pattern_ledger.json"
+  measured:
+    ledger_generated_at: 2026-10-06T01:40:00Z
+    stale_days: 11
+    patterns_count: 18
+    patterns_referencing_2026-10-18: 0
+    occurrence_counters: "audit-without-first-party-probe occ=1 despite 2026-10-18 recurrence"
+    md_scars_on_disk_2026-10: 11
+    md_scars_in_ledger: 0
+  consequence: "ledger cannot count its own recurrences; AT-001 step 2 is unrecordable"
+  missing_artifact: "pattern_compress.py (Stage 2) — 0 matches on disk, confirmed by two independent probes"
+
+# ── Corroborating doctrine (from the ledger itself) ───────────────────
+ledger_self_diagnosis:
+  paradox-7-federation-remembers-does-not-obey:
+    cost: 10
+    rule: "every scar in the ledger must be SURFACED at least once during execution. If a scar is never surfaced, it's dead."
+    status: VIOLATED for 6 of 7 harnesses
+  paradox-8-documentation-vs-behavior:
+    cost: 10
+    rule: "for every MD/canon addition, require a paired EXECUTABLE that enforces it at runtime. No MD without executable."
+    status: VIOLATED — 42 scar MDs on disk, 18 patterns in ledger, 0 write-back
+  paradox-5-memory-separates-from-action:
+    cost: 10
+    rule: "memory becomes binding when it surfaces as observation at action-time, not as archive after action"
+    status: VIOLATED — archive-only for unwired harnesses
+
+# ── Secondary finding: CLAIM_DRIFT in canon (self-inflicted, corrected) ──
+claim_drift_corrected:
+  file: /root/AAA/instructions/aaa-scar-binding-doctrine.md
+  defect: "my own patch earlier today cited /root/.hermes/hooks/lib/federation_hook_engine.py"
+  reality: "/root/AAA/hooks/lib/federation_hook_engine.py (42090 B, Oct 15)"
+  action: corrected in-place with probe annotation
+  note: "same defect the sibling audit flagged; I reproduced it, then caught it by probe"
+
+# ── Posture statement ─────────────────────────────────────────────────
+posture: >
+  Stage 1 (scar stored) wearing Stage 3 (behavioral memory) clothing.
+  Surfacing works for 1 harness. Write-back is absent. Therefore witnessed
+  consequence does NOT change later selection federation-wide.
+  Per AT-001 master criterion, agentic emergence is NOT demonstrated.
+
+mutations_this_round: 1 (doc path correction, reversible, git-tracked)
+next_smallest_move: "wire aaa-hold-routing-hook.sh to remaining harnesses OR build the MD->ledger write-back. Coverage fix is smaller and closes the measured failure path first."

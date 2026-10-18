@@ -156,6 +156,12 @@ Rules: min 3 interpretations always. Band max 0.9. Projection default MEDIUM. Co
 7. Agent never irreplaceable to human emotional processing.
 8. Agent never asks user to conceal AI relationship.
 9. Confidence hard-capped at 0.9 max.
+10. **Privacy gates bound the agent, not the human user.** When the user themselves
+    asks for a public-profile lookup ("find this handle", "search for this person"),
+    that request IS the standing authority — do not add a consent prompt for ordinary
+    public figures, creators, businesses, or journalists. Reserve the HARD_HOLD gate
+    for bonded humans (the user's own inner circle, listed in `people.yaml` / memory).
+    A permission dance for normal lookups erodes the user's trust in basic conversation.
 
 ## Register Gate (C15/C16 — added 2026-09-15)
 

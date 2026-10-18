@@ -1,0 +1,49 @@
+patch_id: autonomous-substrate-kernel-patch-2026-10-18
+patched_by: 333-AGI Δ MIND
+patched_at: 2026-10-18T03:00Z
+patch_mode: T1-reversible (semantic content + lease template, header preserved)
+canonical_path: /root/AAA/instructions/autonomous-substrate-kernel.md
+
+before_sha256: TBD-snapshot-pre-patch
+after_sha256:  TBD-snapshot-post-patch
+
+lines_patched:
+  - line_13: "Never ask 888 to debug" → "OBSERVE_ONLY Default. Emit diagnostic receipt before any recovery action."
+  - line_24: "Silently auto-restart failed process dependencies" → "On dependency failure, EMIT RECEIPT then HOLD. Restart requires F13 lease with scope + blast-radius + rollback plan."
+  - line_36: "Post-Task Purge: Automatically clean up" → "QUARANTINE (not delete) orphaned resources to /root/.quarantine/. Hold 24h for F13 review."
+  - line_40: "RESOLVE SILENTLY: Infrastructure issues" → "EMIT RECEIPT AND HOLD on infrastructure issue. Resolution requires F13 lease."
+  - line_47: "Execute all substrate management tasks in silence" → "Emit substrate receipt on every action. Silence applies to log/metric/heartbeat only — NOT to mutation/escalation/lease."
+
+header_preserved: "F13_RATIFIED_CHAT · 2026-10-17 · aku sahkan"
+header_downgrade_required: DRAFT_BOUNDARY_REQUIRED (Arif F13 ratification needed)
+reason_header_not_downgraded: F13 status amendment is T3 (F1-F13 changes). 333-AGI can patch semantic content (T1) but cannot ratify constitutional status (T3). Awaiting Arif explicit sign-off.
+
+verification:
+  - grep "silently" canonical_path  → must return 0 (was 1)
+  - grep "Never ask" canonical_path → must return 0 (was 1)
+  - grep "RESOLVE SILENTLY" canonical_path → must return 0 (was 1)
+  - grep "Quarantine (not delete)" canonical_path → must return 1
+  - grep "F13 lease" canonical_path → must return 1
+
+downstream_check:
+  - any_runtime_module_referencing_autonomous_substrate_directive: TBD-probe
+  - any_skill_referencing_silent_recovery: TBD-probe
+  - any_state_file_with_stale_substrate_directive_reference: TBD-probe
+
+revert: git revert 1 commit (atomic, F1 AMANAH)
+
+constitutional_pass:
+  canon_0_three_test:
+    eliminate_failure_class: YES (silent mutations)
+    compile_into_enforceable_mechanism: YES (lease template + receipt schema)
+    materially_improve_decision: YES (silent vs receipt gives F13 audit visibility)
+  root_law_compliance:
+    capability_!=_authority: YES (authority now requires F13 lease)
+    receipt_!=_consequence: YES (no silent resolution)
+    metabolize_capability: YES (bounded, smallest ephemeral, reversible)
+
+arif_action_required:
+  - ratify_header_downgrade: DRAFT_BOUNDARY_REQUIRED (T3)
+  - OR: explicitly keep F13_RATIFIED_CHAT status with this patch as fulfillment of F13's "aku sahkan" with constraints
+
+scar_filed: scar-2026-10-18-001-silent-mutation-shadow-command (w_scar=0.7)

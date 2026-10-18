@@ -457,6 +457,86 @@ The principled recovery: state the pattern plainly ("Three reports so far. Total
 
 Arif's distillation (2026-08-06, after 5 nested reports on the same memory-system question): *"The tell between them is simple. The useful ones name a line number and offer to be wrong. The others offer a metaphor and a seal."* This is the structural test for every incoming report — see skill `verify-nested-sibling-reports` for the full pattern, the arithmetic, and the worked example.
 
+## 8. User-split workflow — "Btw I prompt OpenCode to do it. U just validate later"
+
+The new pattern: Arif explicitly hands the **execution** lane to another agent (OpenCode, OpenClaw, Codex) and tells Hermes the **validation** lane. The phrasing is direct — *"Btw I prompt opencode to do it. U just validate later"* — and the user expects:
+
+1. Do not redo the work. Do not start from scratch. Do not paste a parallel-attempt plan.
+2. Wait for the report, then verify. The sibling already did it; the live state already shows the result.
+3. Report with the corrected-claims table, not with ceremony.
+
+The danger of this lane: a sibling report that *looks* clean and complete can still contain factual misses, and the validate-only role means Hermes is the last line of defense before the user ratifies. **The validator must probe the same things the executor should have probed, and grade each claim with the same §1 / §4.2 discipline.**
+
+### 8.1 The "I joined late" precheck — concurrent-writer detection
+
+When Hermes receives the validate request, the executor may have already finished. The state on disk may already be in its final form. Two implications:
+
+- **Do not run the executor's tools from scratch.** That doubles token cost and risks overwriting the work.
+- **Verify by *reading the final state*, not by reproducing the work.** A `stat -c '%y' <file>` mtime check tells you whether the work is fresh (sibling just did it) or stale (left over from a prior session). Fresh mtime within minutes of the report = concurrent-execution signal — work is already there, just probe it.
+
+Pattern:
+```bash
+# 1. mtime freshness — sibling just landed?
+stat -c '%y %n' /path/to/touched/file
+# 2. live state probe — what's the actual on-disk reality?
+ls -la /path/; grep <expected-claim> /path/file
+# 3. independent re-probe — your own cheapest falsification
+curl -s -o /dev/null -w '%{http_code}' https://<service>/<path>
+```
+
+If the mtime is *older* than the report claims, the report backdated itself (see §4.2c row "BACKDATED" — the work is real but the timing is fabricated). If the mtime is *fresher* than you expected, the executor finished between your last probe and now — re-confirm before writing a verdict.
+
+### 8.2 The validate-only probe sequence
+
+When the report is a sibling ops/rename/migration report, this is the canonical probe set. Run them in order; the first failure terminates validation and the verdict is partial:
+
+| # | Probe | Catches |
+|---|---|---|
+| 1 | `stat -c '%y'` on every file the report claims to have touched | Concurrent-execution freshness, backdating |
+| 2 | `grep -rn <old-marker>` across source / dist / live | Old residue ("renamed but `lambang` still on disk") |
+| 3 | `grep -rn <new-marker>` across source / dist / live | New claim actually landed |
+| 4 | Per-layer 1-line probe: source / public / dist / live webroot | One-layer-only edits (e.g. dist rebuilt but live not rsynced) |
+| 5 | Per-registry probe: every JSON / TS / MD file the report claims to have updated | Registry drift (e.g. `.ts` renamed but `articles.json` and `essays.json` still point to old slug) |
+| 6 | Live HTTP hop-by-hop on every URL the report claims works | 404s, 500s, broken redirects |
+| 7 | 301/302 redirect chain on every old URL the report claims to have redirected | Stale redirects, redirect loops, missing target |
+| 8 | External-link inventory: `grep -rln <old-marker>` on the whole repo tree | Inbound links that still point at the old identity |
+
+If probes 1-5 all pass but 6-7 fail, the work is half-done (state correct, navigation broken). If 8 fails, the work is "complete" but the canonical surface still exposes the old name.
+
+### 8.3 The "inventory completeness" check — don't accept the report's bundle list
+
+A common sibling-report miss: the report lists the orphan artifacts it cleaned up, but omits one or two that share the same defect. **Re-list the surface yourself; never trust the sibling's inventory count.**
+
+```bash
+# The sibling said: "4 bundles, 2 orphaned"
+# The validator re-lists:
+ls -la /var/www/html/arif/assets/bundle-*.js
+# 5 bundles. The report undercounted by 1.
+```
+
+Rule: any time the report says "N items of type X", reproduce the list with a `find`/`ls -la` and diff. Mismatches are either (a) sibling oversight, (b) report fabrication, (c) surface that grew during the report's own work. Whichever, the corrected-claims table must show the *actual* count and the *actual* disposition of each item.
+
+### 8.4 The "unreferenced" claim — distinguish HTML from chunk graph
+
+Siblings often claim a bundle is "unreferenced" when they mean "unreferenced from rendered HTML". For a code-split JS bundle, the chunk graph (which bundles import which) is a *separate* reference surface from the HTML pages (which `<script>` tags load). Verdict:
+
+| Reference surface | Probe | "Orphan" verdict means |
+|---|---|---|
+| Rendered HTML | `grep -rln <bundle> /var/www/html/arif/ <all-page-paths>` | No page will ever load it via a `<script>` tag — safe to delete if no chunk ref |
+| Chunk graph | `grep -rln <bundle> /var/www/html/arif/assets/index-*.js` | A main bundle or lazy chunk may still import it — deletion breaks navigation |
+| Both | Both above | Truly dead — safe to delete |
+
+If the report says "orphaned" without specifying, the default assumption is "orphaned from HTML". Probe the chunk graph before approving any deletion. A 1-line note in the corrected-claims table ("sibling claim 'orphaned' verified only against HTML; chunk-graph reference still present in `index-X.js`") is the difference between a clean audit and a broken-site deploy.
+
+### 8.5 The reply shape for validate-only
+
+Lead with the verdict ("Report: ✅ / ⚠️ / ❌"). The corrected-claims table follows. **End with a "next probe the report didn't run"** — the one cheap falsification the executor skipped, which the validator caught. Do not echo the report's own framework back. Do not propose further work beyond the audit.
+
+Bad: long agreement with the report's framing, then "shall I also check X?"
+Good: "Net: rename complete, 4/4 hops 200, 2 bundles confirmed orphaned, 1 bundle (`BOOxh2Xm`) not in your inventory — checked: 0 simbol / 0 lambang, status unclear. Old URL 301s cleanly. Verdict: validate ✅ with one open item."
+
+The user is in execute-mode and gave you the validation lane. Compress to verdict + table + one open item. If there's no open item, the response is two lines.
+
 ## Support files
 
 - `references/source-vs-runtime-deployment-drift-2026-08-06.md` — deployment-model matrix (source=runtime organs vs rsync+restart organs), 30s "never deployed" probe, stale-restart-in-same-turn pattern, migration-map file/line ref fabrication detection, MCP tools/list Streamable-HTTP session-id requirement. NEW 2026-08-06
