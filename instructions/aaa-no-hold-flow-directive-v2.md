@@ -79,6 +79,15 @@ action_costs:
 
 **Implementation rule:** Every 333-AGI output that contains the token "HOLD" (as a state, not a verdict) must be accompanied by a `resolution_path_attempted:` field listing the 7 exhausted paths. Empty `resolution_path_attempted` + HOLD as state = `555-HOLD` (audit-failed, not implementation).
 
+**Cross-ref AT-004 (5-field HOLD schema, ratified 2026-10-18):**
+- `owner` (who placed HOLD)
+- `next_action` (what unblocks)
+- `evidence_gap` (what's missing to decide)
+- `expiry` (when HOLD auto-expires)
+- `scar_signature` (what scar pattern triggered HOLD — per `/root/AAA/instructions/aaa-scar-binding-doctrine.md` line 50)
+
+`resolution_path_attempted` (7 exhausted paths) is the *trigger requirement* for emitting a HOLD; the 5-field schema above is the *structure requirement* for the HOLD receipt itself. Both must hold for constitutional HOLD.
+
 ---
 
 ## 4 · THE NEW CHAIN — HOLD removed as state (NEW in v2)
@@ -113,7 +122,7 @@ verdict: HOLD
 reason: irreversible_mutation
 ```
 
-In both cases, the `resolution_path_attempted:` field MUST be present. The HOLD verdict is the constitutional consequence after all resolution paths are exhausted, not a state the agent can occupy.
+In both cases, the `resolution_path_attempted:` field MUST be present. The HOLD verdict is the constitutional consequence after all resolution paths are exhausted, not a state the agent can occupy. Each HOLD emission must also carry the 5-field AT-004 schema (`owner`, `next_action`, `evidence_gap`, `expiry`, `scar_signature`).
 
 ---
 
@@ -223,7 +232,7 @@ This directive is binding for:
 
 1. **All future 333-AGI sessions** (Qwen Code, Codex, OpenCode, Kimi Code, Claude Code, OpenClaw)
 2. **All future 555-ASI audits** (where auditor offers alternatives)
-3. **All future 888-APEX verdicts** (where judge returns 5-row form)
+3. **All future 888-APEX verdicts** (where judge returns 5-row form: owner, next_action, evidence_gap, expiry, scar_signature — per AT-004)
 4. **All future A-FORGE executions** (where actuator touches the world)
 5. **All future SEAL receipts** (where the chain records a decision)
 
