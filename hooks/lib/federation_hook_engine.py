@@ -36,6 +36,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 # --- Canonical Constants & Paths ---
 KERNEL_URL = os.environ.get("ARIFOS_KERNEL_URL", "http://127.0.0.1:8088")
+IDENTITY_KEYS_DIR = Path(os.environ.get("ARIFOS_IDENTITY_KEYS", "/root/AAA/IDENTITY/keys"))
 CARRY_PATH = Path("/root/.local/share/arifos/carry_forward.json")
 SCARS_DIR = Path("/root/AAA/scars")
 ROLLBACK_JOURNAL_PATH = Path("/root/.local/share/arifos/rollback_journal.jsonl")
@@ -165,6 +166,80 @@ class FederationHookEngine:
     # =========================================================================
     # Phase 0: Session Ignition & Active Scar Priming (000_BOOT)
     # =========================================================================
+    def _ed25519_bind(self) -> Optional[Tuple[str, str]]:
+        """Challenge → sign → init. Returns (session_token, authority) or None.
+
+        2026-10-18 (root-cause fix): boot previously called arif_init without a
+        signature, so the kernel always returned an unverified session and the
+        harness stayed DEGRADED_LOCAL_FALLBACK. The kernel supports a real
+        Ed25519 bind: mode=challenge → sign result.signature_payload → mode=init
+        with actor_signature + nonce. Fail-open: any error returns None and the
+        caller falls back to the old plain-init path.
+        """
+        try:
+            import base64
+
+            from cryptography.hazmat.primitives import serialization
+
+            key_path = IDENTITY_KEYS_DIR / f"{self.actor_id}_private.pem"
+            if not key_path.is_file():
+                return None
+
+            ch_resp = self._call_kernel(
+                "tools/call",
+                {
+                    "name": "arif_init",
+                    "arguments": {
+                        "mode": "challenge",
+                        "actor_id": self.actor_id,
+                        "intent": "hook boot identity bind",
+                        "verbosity": "minimal",
+                    },
+                },
+            )
+            ch = _kernel_tool_result(ch_resp)
+            inner = ch.get("result") if isinstance(ch, dict) else None
+            if not isinstance(inner, dict):
+                return None
+            nonce = inner.get("nonce")
+            payload = inner.get("signature_payload") or (f"{self.actor_id}:{nonce}" if nonce else None)
+            if not nonce or not payload:
+                return None
+
+            private_key = serialization.load_pem_private_key(key_path.read_bytes(), password=None)
+            signature = base64.b64encode(private_key.sign(str(payload).encode())).decode()
+
+            init_resp = self._call_kernel(
+                "tools/call",
+                {
+                    "name": "arif_init",
+                    "arguments": {
+                        "mode": "init",
+                        "actor_id": self.actor_id,
+                        "intent": "hook boot identity bind",
+                        "actor_signature": signature,
+                        "nonce": nonce,
+                        "verbosity": "minimal",
+                    },
+                },
+            )
+            res = _kernel_tool_result(init_resp)
+            if not isinstance(res, dict):
+                return None
+            actor = res.get("actor") or {}
+            if actor.get("actor_verified") is not True:
+                return None
+            token = res.get("session_token") or res.get("sct")
+            if not token:
+                return None
+            authority = str(
+                res.get("authority_band") or actor.get("authority_level") or res.get("autonomy_band") or "UNKNOWN"
+            )
+            self.is_degraded = False
+            return str(token), authority
+        except Exception:
+            return None
+
     def boot(
         self, context_info: Optional[Dict[str, Any]] = None, provided_token: Optional[str] = None
     ) -> Dict[str, Any]:
@@ -188,23 +263,32 @@ class FederationHookEngine:
             self.session_token = provided_token
             init_mode = "HARNESS_TOKEN"
         else:
-            kernel_resp = self._call_kernel(
-                "tools/call",
-                {
-                    "name": "arif_init",
-                    "arguments": {
-                        "mode": "init",
-                        "actor_id": self.actor_id,
-                        "session_id": self.session_id,
-                        "verbosity": "minimal",
+            bound = self._ed25519_bind()
+            if bound:
+                self.session_token, _authority = bound
+                init_mode = "ED25519_BIND"
+                kernel_resp = None
+                kernel_result = None
+            else:
+                kernel_resp = self._call_kernel(
+                    "tools/call",
+                    {
+                        "name": "arif_init",
+                        "arguments": {
+                            "mode": "init",
+                            "actor_id": self.actor_id,
+                            "session_id": self.session_id,
+                            "verbosity": "minimal",
+                        },
                     },
-                },
-            )
-            kernel_result = _kernel_tool_result(kernel_resp)
+                )
+                kernel_result = _kernel_tool_result(kernel_resp)
             tok = None
             if isinstance(kernel_result, dict):
                 tok = kernel_result.get("session_token") or kernel_result.get("sct")
-            if tok:
+            if bound:
+                pass
+            elif tok:
                 self.session_token = str(tok)
                 init_mode = "KERNEL_INIT"
             else:
@@ -240,20 +324,24 @@ class FederationHookEngine:
             "session_token": self.session_token,
             "session_identity": {
                 "session_id": self.session_id,
-                "source": "kernel" if init_mode in ("HARNESS_TOKEN", "KERNEL_INIT") else "local_hook_fallback",
+                "source": "kernel"
+                if init_mode in ("HARNESS_TOKEN", "KERNEL_INIT", "ED25519_BIND")
+                else "local_hook_fallback",
                 "authority_scope": (
                     "authenticated"
-                    if init_mode == "HARNESS_TOKEN"
+                    if init_mode in ("HARNESS_TOKEN", "ED25519_BIND")
                     else "kernel_session_unverified"
                     if init_mode == "KERNEL_INIT"
                     else "local_correlation_only"
                 ),
             },
             "execution_authority": {
-                "source": "aaa_kernel" if init_mode in ("HARNESS_TOKEN", "KERNEL_INIT") else "degraded_local_policy",
+                "source": "aaa_kernel"
+                if init_mode in ("HARNESS_TOKEN", "KERNEL_INIT", "ED25519_BIND")
+                else "degraded_local_policy",
                 "verdict": (
                     "kernel_authorized"
-                    if init_mode == "HARNESS_TOKEN"
+                    if init_mode in ("HARNESS_TOKEN", "ED25519_BIND")
                     else "kernel_session_only"
                     if init_mode == "KERNEL_INIT"
                     else "degraded_local_only"
