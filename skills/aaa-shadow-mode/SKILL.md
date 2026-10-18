@@ -1,5 +1,5 @@
 ---
-name: aaa-shadow-mode
+name: sovereign-shadow-mode
 id: AAA-shadow-mode
 risk_tier: low
 description: "Shadow mode multimodal compute & generation doctrine for sovereign human needs."

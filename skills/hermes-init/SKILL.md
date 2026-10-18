@@ -3,6 +3,10 @@ name: hermes-init
 description: Substrate primitive /init — establishes actor, session, lane, atlas expression, authority tier. EVERY autonomous agent MUST call this before any mutation. SESSION BOUND is the answer to "who is acting?"
 tags: [constitutional, init, substrate-primitive, telegram-native, hermes]
 license: MIT
+relationships:
+  - target: opencode-init
+    type: alternative_to
+    confidence: 1.00
 ---
 # Hermes /init — Substrate Primitive
 
