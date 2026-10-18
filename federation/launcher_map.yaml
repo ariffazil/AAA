@@ -38,6 +38,26 @@ launchers:
     startup_timeout_ms: 30000
     tool_timeout_ms: 30000
 
+  xerj:
+    description: "XERJ retrieval + second-brain — READ-ONLY lane. Generator injects the positive --include-tools allowlist from the registry; mutation tools are never emitted."
+    transport: stdio
+    command: /root/.local/bin/mcp-compressor
+    args:
+    - -c
+    - medium
+    - -n
+    - xerj
+    - --
+    - /root/.local/bin/xerj
+    - mcp
+    - --url
+    - http://127.0.0.1:9300
+    - --disable-feedback
+    env:
+      XERJ_URL: http://127.0.0.1:9300
+    startup_timeout_ms: 30000
+    tool_timeout_ms: 60000
+
   # Wave 1 — the 7 organs (QMG_E1). F13 SOVEREIGN ratified 2026-08-11.
 
   arifos:
