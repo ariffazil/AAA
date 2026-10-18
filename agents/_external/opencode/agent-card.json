@@ -9,35 +9,32 @@
   "protocolVersion": "1.0",
   "description": "Substrate-as-actor. The 333-AGI declared runtime. 16 providers, 9 AAA instruction files, plugin-based architecture. Deepest federation integration of any FI. Canonical orchestrator.",
   "substrate": {
-    "upstream": "opencode-ai/opencode",
-    "cli_version": "1.18.11",
+    "upstream": "anomalyco/opencode (V2 channel)",
+    "cli_version": "2.0.32",
     "vanilla_remaining_pct": 10,
-    "forged_surface_summary": "16 enabled providers, 9 AAA instruction files, 333-AGI agent def, capability cascade, 5 plugins"
+    "forged_surface_summary": "V2 native (agents/permissions/policies/compaction); 13 MCP servers, AAA instruction stack, 333-AGI agent def, FED forge-777 routing"
   },
   "model_routing": {
-    "declared_model": "zai-direct/glm-5.2",
-    "effective_model": "GLM-5.2 (Z.ai Coding Plan)",
+    "declared_model": "litellm-federation/forge-777",
+    "effective_model": "FED forge-777 (head deepseek-v4-pro → MiniMax-M3)",
     "route_chain": [
       "opencode",
-      "zai-direct",
-      "glm-5.2"
+      "litellm-federation",
+      "forge-777"
     ],
     "primary": {
-      "provider": "zai-direct",
-      "model": "glm-5.2",
-      "path": "direct"
+      "provider": "litellm-federation",
+      "model": "forge-777",
+      "path": "HAProxy :4000 → litellm :4013"
     },
-    "small_model": "opencode-go-zen/deepseek-v4-flash",
+    "small_model": "litellm-federation/forge-777",
     "fallback_models": [
-      "kimi-k3 (Go)",
-      "GLM-5.2 (Go)",
-      "mimo-v2.5-pro (Go)",
-      "deepseek-v4-flash (Go)",
-      "LiteLLM FED",
-      "qwen3.7-plus (Individual)"
+      "deepseek-v4-pro (FED cascade)",
+      "MiniMax-M3 (FED cascade)",
+      "ollama (local lane)"
     ],
-    "provider_diversity": 16,
-    "vendor_collapse_risk": "MINIMAL — 16 providers, full cascade"
+    "provider_diversity": 12,
+    "vendor_collapse_risk": "MINIMAL — FED cascade + local ollama lane"
   },
   "federation_binding": {
     "arif_init": "instruction-driven (9 AAA files loaded at boot)",

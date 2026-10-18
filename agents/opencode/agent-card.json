@@ -10,10 +10,10 @@
   },
   "description": "OpenCode Trinity harness \u2014 \u0394 Mind (agi) orchestrates \u03a9 Core (asi: memory/telemetry) and \u03a8 Soul (apex: constitutional verdict). 3 agents, route-aware, SHADOW-TR-001 encoded. Agentic flow: no human tab-switch needed.",
   "version": "2.0.0-trinity",
-  "model": "FED router / GLM-5.2",
+  "model": "litellm-federation/forge-777 (FED cascade: deepseek-v4-pro \u2192 MiniMax-M3)",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml \u2192 canonical SOT: /root/.config/opencode/opencode.json (ROOT_AGENT_CONFIG.yaml is a conceptual pointer, not a live file)",
-  "binary": "/root/.npm-global/bin/opencode",
+  "binary": "/root/.opencode/bin/opencode",
   "tier": "FI",
   "role": "warga",
   "class": "AGI",
@@ -36,8 +36,8 @@
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/opencode",
   "runtime_snapshot": {
-    "probed": "2026-08-14T06:46:05Z",
-    "opencode_version": "1.18.9",
+    "probed": "2026-10-18T12:04:31Z",
+    "opencode_version": "2.0.32",
     "organ_health": {
       "arifos": {
         "verdict": "SEAL",
