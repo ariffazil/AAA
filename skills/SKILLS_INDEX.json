@@ -10,11 +10,11 @@
   "namespaces": 162,
   "bodies": 931,
   "projections": 22,
-  "alias_paths": 127,
+  "alias_paths": 128,
   "max_skill_depth": 4,
   "skills_by_depth": {
-   "0": 550,
-   "1": 219,
+   "0": 549,
+   "1": 220,
    "2": 16,
    "3": 1,
    "4": 167
@@ -25,8 +25,8 @@
    "2": 11,
    "3": 59
   },
-  "with_owner": 364,
-  "with_risk_tier": 320
+  "with_owner": 363,
+  "with_risk_tier": 319
  },
  "harnesses": [
   "claude",
@@ -310,7 +310,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 4,
+   "contains": 5,
    "owner_layer": null,
    "sha256": null
   },
@@ -1300,7 +1300,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 42,
+   "contains": 43,
    "owner_layer": null,
    "sha256": null
   },
@@ -2669,14 +2669,14 @@
    ]
   },
   {
-   "name": "ASI-drift-watch",
+   "name": "drift-watch-asi",
    "path": "/root/AAA/skills/ASI-drift-watch",
    "skill_md": "/root/AAA/skills/ASI-drift-watch/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4a0937fcf61703bf53215a68611d3bd5d373959d6a9f93c18dae1cbde2f6c24c",
+   "sha256": "29bdfe43ae4de81c235251c0ce9dcba539e947a4b38bd73ed8375880fbbea176",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "555-ASI",
@@ -3315,14 +3315,14 @@
    ]
   },
   {
-   "name": "FORGE-mcp-ops",
+   "name": "mcporter-cli",
    "path": "/root/AAA/skills/FORGE-mcp-ops",
    "skill_md": "/root/AAA/skills/FORGE-mcp-ops/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "fcedb0c28856f9b448296f9c614f143436ca5d548fe9ac5df3fb2743e2a50c43",
+   "sha256": "a8548e24f94ce5497db79d65c5ad2ab12c0634ee62d8ebe3ed3fe05b7bfa84c9",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -3413,14 +3413,14 @@
    ]
   },
   {
-   "name": "FORGE-pr-governance",
+   "name": "pr-review-governance",
    "path": "/root/AAA/skills/FORGE-pr-governance",
    "skill_md": "/root/AAA/skills/FORGE-pr-governance/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ff0a575ec5a614c3897688455fce83806f265578701609a73681dc3815bd6cd4",
+   "sha256": "1fef8dde4b781ee799aa2e5264d0b18d0c0a3aeee409822758b754caf96c8bb9",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -3644,42 +3644,6 @@
      "F11",
      "F12",
      "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "FORGE-telemetry-watchdog",
-   "path": "/root/AAA/skills/FORGE-telemetry-watchdog",
-   "skill_md": "/root/AAA/skills/FORGE-telemetry-watchdog/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "0b2e95cab996d3249590a835d7a131d6aa6eeb90090ecb2249be1c6f9c5c18b7",
-   "version": "2026.07.19",
-   "deprecated": false,
-   "owner_layer": "A-FORGE",
-   "aliases": [
-    "/root/AAA/skills/domains/forge/telemetry-watchdog",
-    "/root/AAA/skills/domains/forge/telemetry-watchdog.DEPRECATED-2026-09-19"
-   ],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F7"
     ]
    },
    "harnesses": [
@@ -3933,7 +3897,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ae96297f75a5a66a58a60fb2fa3d05992369153e5ac4a640cc29b3b015ba9f82",
+   "sha256": "09aef729e681bbf0446a6b16954203c29ad78302aa648ae5d3dacd46ad4b8155",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil",
@@ -4215,14 +4179,14 @@
    ]
   },
   {
-   "name": "aaa-shadow-mode",
+   "name": "sovereign-shadow-mode",
    "path": "/root/AAA/skills/aaa-shadow-mode",
    "skill_md": "/root/AAA/skills/aaa-shadow-mode/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b883ddd17ebd638cf7b9a615700f9c8f0ca99dd7ef3727070180c4a91cad1193",
+   "sha256": "2265944976c1947e6261994be8ac3caae5dbd66d8f4c82285c2a6f3fd9bfeada",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -8887,6 +8851,34 @@
      "F6",
      "F13"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "aforge-google-workspace",
+   "path": "/root/AAA/skills/devops/aforge-google-workspace",
+   "skill_md": "/root/AAA/skills/devops/aforge-google-workspace/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "devops",
+   "sha256": "419de91c7fc8442c8f199965fdc7bf291ab0a8c847cc243ebcdab5dbcc842b48",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -14798,7 +14790,11 @@
    "version": "2026.07.19",
    "deprecated": false,
    "owner_layer": "A-FORGE",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/FORGE-telemetry-watchdog",
+    "/root/AAA/skills/domains/forge/telemetry-watchdog",
+    "/root/AAA/skills/domains/forge/telemetry-watchdog.DEPRECATED-2026-09-19"
+   ],
    "authority": {
     "risk_tier": "low",
     "autonomy_tier": "T1",
@@ -17929,7 +17925,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f748f2144bccc43caa31fb373d7ada81c0a82f86c8012755de413c42e73386a7",
+   "sha256": "1e93895c2fa73be50d5101734fc28b152f481b1f92c28bf73be2e38a5366b8d3",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "A-FORGE",
@@ -19546,34 +19542,6 @@
    ]
   },
   {
-   "name": "frontier-model-audit-verification",
-   "path": "/root/AAA/skills/frontier-model-audit-verification/frontier-model-audit-verification",
-   "skill_md": "/root/AAA/skills/frontier-model-audit-verification/frontier-model-audit-verification/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "frontier-model-audit-verification",
-   "sha256": "8c00eceb6d652ec79590cddaaaabfb5a30ffb5fb706f93c0973a91790d6c88e7",
-   "version": "1.2.0",
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "gemini-integration",
    "path": "/root/AAA/skills/gemini-integration",
    "skill_md": "/root/AAA/skills/gemini-integration/SKILL.md",
@@ -20010,7 +19978,7 @@
    "state": "projection",
    "depth": 0,
    "namespace": null,
-   "sha256": "e45b95155082db98f3b809df188836d04a3bb7e339e758ce4670c3c2c9839a1b",
+   "sha256": "eef177a3b9f15ffed4e10a4b452d64fa1f2bb3b12f2036b47f4e7be60c26b71d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -20043,7 +20011,7 @@
    "state": "projection",
    "depth": 0,
    "namespace": null,
-   "sha256": "a2fce4942408a71d88fd06a3c817f918758b72dd651a10d573e7fe5d83ad6b75",
+   "sha256": "0f7b3c73a680aa8d5f785043b77f4f65b300364a11aca94ec525f855cc618b74",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -20272,7 +20240,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "49f18adeefc723ba222c6b2024fca27eb337a20243c9c6a80fa9202a95927668",
+   "sha256": "4b495331d857f8f477ea56b81cd5bf628289b73cb9b7526c76b900f1cbcab989",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -20604,6 +20572,34 @@
      "F4",
      "F7"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "capability-gate-unblock",
+   "path": "/root/AAA/skills/governance/capability-gate-unblock",
+   "skill_md": "/root/AAA/skills/governance/capability-gate-unblock/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "06f74168a3c89401b1f8ec1b67a2eb507e2c3214e08bf973103c7f33db859e6b",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -22140,7 +22136,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "62378149257d53527efaea178c7bf88b9a74125f9ff4d0651fed55c3763f6beb",
+   "sha256": "321ecb0e4adfeeef42b7079c53607c415d31c1604dd5861f01ffc4fe913a43c7",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -22201,7 +22197,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6b713b0c8b7bd7898b0a7db1a76a42bc44b9efdf63178c5e0c224b742c8be69c",
+   "sha256": "779898bbbd2876734af1d81703ce1e87d9f2daca53411644e60a32d7763f4999",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -25405,7 +25401,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "35d66fd57656802cffccf7bf4350408d365735f0a458551aab2725ac2c660d58",
+   "sha256": "79fd689bfda318f8ab335aceb5bc7a71b41a0481b2a79aacaa205fc117dd2062",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -25433,7 +25429,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d48e68068eb590c43b31e22d2cb876d40a1f6dae4faea947766a6574411eb20d",
+   "sha256": "e086c2bb1bb7ae814f00dbb22a7e06959094ed420fe5b0db994803df75e03cab",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
