@@ -168,7 +168,7 @@ Before any poster featuring a named human:
 1. `find /root -maxdepth 5 -type f \( -iname "*<name>*" -o -iname "*<handle>*" \) \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" \)` for existing real photos.
 2. If none, ask the user to supply a fresh photo (single message: "Real photo needed - Syed shot from chest-up clean frame works"). Do not proceed with AI stand-ins and pretend.
 3. Arif is words (verbatim, 2026-08-06 session): "Syed adalah manusia Sado sebenar. Hang jangan nak buat dia jadi AI Agent plak." - the brand is the person, the person is real, fake stand-ins destroy trust.
-4. **Image-edit models ALSO fail identity preservation** (verified 2026-08-12). Do NOT use Gemini/Qwen image-to-image edit to "place this person in a new scene" — the model regenerates the face. Use the **composite fallback** (rembg cutout + empty background + PIL paste) documented in `gemini-media-gen` → `references/identity-preservation-composite-fallback.md`. Arif's binding rule: "Hang jangan ubah muka manusia."
+4. **Image-edit models ALSO fail identity preservation** (verified 2026-08-12). Do NOT use Gemini/Qwen image-to-image edit to "place this person in a new scene" — the model regenerates the face. Use the **composite fallback** (rembg cutout + empty background + PIL paste) documented in `gemini-media-gen` → `/root/AAA/skills/gemini-media-gen/references/identity-preservation-composite-fallback.md`. Arif's binding rule: "Hang jangan ubah muka manusia."
 
 ---
 

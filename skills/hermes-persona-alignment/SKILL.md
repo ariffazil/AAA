@@ -382,7 +382,7 @@ If any box is unchecked, the persona is **read-only** — Hermes can answer X if
 ## Support files
 
 - `references/syed-alignment-2026-08-07.md` — 7-layer audit snapshot for Syed Khairuddin with current status and per-layer action items. Reference when re-running the alignment audit on this persona.
-- `references/syed-person-identity.md` (in `syedos-ops`) — the canonical identity fixture (TG ID, IC, family chain, medical history). Re-read before any conversation with Syed.
+- `/root/AAA/skills/syedos-ops/references/syed-person-identity.md` (in `syedos-ops`) — the canonical identity fixture (TG ID, IC, family chain, medical history). Re-read before any conversation with Syed.
 - `templates/USER-persona.md` — starter template for `USER-<persona>.md` with all required sections (identity, life situation, consent). Copy and customise per persona.
 - `scripts/persona-alignment-audit.sh` — verify-script that probes layer 1 (Telegram access) and layer 4 (cron registry) for a given persona. Run before declaring alignment complete.
 
