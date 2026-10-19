@@ -3,6 +3,13 @@ name: forge
 description: "Forge — bare /forge alias for the 333-forge spine. Build the smallest executable unit now; receipt > narrative."
 triggers:
   - "/forge"
+relationships:
+  - target: hermes-forge
+    type: alternative_to
+    confidence: 1.00
+  - target: opencode-forge
+    type: alternative_to
+    confidence: 1.00
 ---
 
 # /forge

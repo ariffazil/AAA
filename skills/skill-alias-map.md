@@ -117,3 +117,6 @@
 | 108 | `web-search` | `web-ops` | ❌ NO |
 | 109 | `web-search-query-gate-recovery` | `web-ops` | ❌ NO |
 | 110 | `youtube-analysis` | `` | ⚠️ check |
+| 111 | `skill-drift` | `skill-mesh` | ❌ NO |
+| 112 | `skill-inventory` | `skill-mesh` | ❌ NO |
+| 113 | `skill-creator` (AAA twin; `.system/skill-creator` builtin untouched) | `skill-mesh` | ❌ NO |
