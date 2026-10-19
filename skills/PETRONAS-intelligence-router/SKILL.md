@@ -61,6 +61,34 @@ ecology_state: WARM
 3. **F6 maruah:** no personal attacks on named individuals; institutional critique ≠ defamation.
 4. **Data sovereignty:** PETRONAS internal data never leaves MY/CN jurisdiction; public sources only.
 5. **F13:** the exit/stay decision is sovereign — the atlas supplies data, never pressure.
+## Reserves anchors (ARPR 2026 — primary source, verified 2026-10-19)
+
+**Source:** PETRONAS Integrated Report 2025 → "Delivering Our Strategy", Annual Review of
+Petroleum Resources as at 1 Jan 2026
+(`petronas.com/integrated-report-2025/assets/pdf/by-section/5_PETRONAS_IR25_DeliveringOurStrategy.pdf`)
+
+| Metric | 1.1.2026 | 1.1.2025 |
+|---|---|---|
+| Reserves Replacement Ratio, 3-yr avg (1P) | **0.3** | 0.8 |
+| Reserves Life Index, 3-yr avg (1P) | **9.9 yrs** | 10.6 |
+| Overall Resource Life Index (2P+2C) | **38.6 yrs** | 40.5 |
+| 2P net entitlement reserves | **7.92 bn boe** (−8%) | — |
+| 2C net entitlement contingent resources | **13.16 bn boe** (−13%) | — |
+
+Company's own sentence: movements reflect "portfolio rationalisation … alongside continued
+project maturation activities" — true, but it names no cause.
+
+**Two traps that make agents get this wrong:**
+1. **Basis pairing.** 7.92 bn is *net entitlement*. Dividing by gross production (2,334 kboe/d)
+   gives ~9.3 yrs and looks calm; the honest net change is `(1 − RRR) × annual production`
+   = 0.7 × 0.852 bn = ~0.60 bn/yr.
+2. **Date pairing.** The 8% decline is measured 1.1.2025 → 1.1.2026. **Searah (effective 1 Jun 2026)
+   and EnQuest (expected 31 Dec 2026) cannot be its cause** — both post-date the snapshot. Any
+   "deconsolidation explains it" alibi must be checked against transaction date vs portrait date.
+
+**Stale-number warning:** older dossier `/root/AAA/forge_work/2026-08-26-petronas-rakyat-dossier/`
+carries "RRR 1.2×" — different basis/period. Use the ARPR series above for anything dated 2026.
+
 ## Key Financial Anchors (FY2025)
 
 | Metric | Value | Source |
