@@ -74,7 +74,7 @@ layers:
       - graphiti-temporal-memory-ops
       - provider-endpoint-migration
       dev:
-      - github-ops  # canonical: /root/AAA/skills/github/github-ops/  (F13-ratified umbrella v2.0; floor_scope F1/F2/F11; autonomy_tier T1)
+      - github-ops  # canonical: /root/AAA/skills/github/github-ops/  (v3.0.0 INIT→DEPLOY single door; aliases archived 2026-10-19; floor_scope F1/F2/F11; autonomy_tier T1)
       - dev-ci-diagnose
       - dev-issue-triage
       - dev-pr-review
