@@ -1,5 +1,5 @@
 # Shadow Evidence Gate  v2 (prose + live FQ series)
-# Generated: 2026-10-18T10:25:02Z
+# Generated: 2026-10-19T10:25:02Z
 # Rule: CONFIRMED requires >= 5 DATED prose items, OR a measured
 #       attractor in the live FQ series (significant displacement from FQ*=1
 #       AND temporal stability AND sign concordance).
@@ -12,7 +12,7 @@ Entries assessed:            110
 Eligible for CONFIRMED:      0
 OVER-CLAIM (dangerous):      19
 SUPPORTED_BY_MEASUREMENT:    0   (prose thin; ledger confirmed)
-REFUTED_BY_MEASUREMENT:      2   (ledger contradicts registry)
+REFUTED_BY_MEASUREMENT:      0   (ledger contradicts registry)
 UNDER-CLAIM (wasted):        0
 NO-LABEL (ungateable):       0
 
@@ -40,41 +40,38 @@ NO-LABEL (ungateable):       0
     canonical-file mutation (F13), not something a reader should paper over.
 
 ## Live FQ series — the shadow as a measurable attractor
-  ledger rows=23034 parsed=20231 unparsed=0
-  span=2026-10-15T14:31:43Z -> 2026-10-18T10:24:04.938Z (2 days)
-  harness entries tested=30 confirmed=0 refuted=2 not_testable=11 no_receipts=13
+  ledger rows=5454 parsed=5187 unparsed=0
+  span=2026-10-18T21:17:35.749Z -> 2026-10-19T10:24:13.430Z (1 days)
+  harness entries tested=30 confirmed=0 refuted=0 not_testable=8 no_receipts=17
 
   actor        signature                   pred     n  FQ(geo)  SE(ln)        Z    I2%  concord  binom p  verdict
   ---------------------------------------------------------------------------------------------------------------
-  aforge       mutation_hunger             FQ<1     4     1.433   0.127   +2.83   98.1      0/4   1.0000  NO_STABLE_ATTRACTOR
-  claude-code  execution_gravity           FQ<1     2    14.601   1.037   +2.58    0.0      0/2   1.0000  REFUTED
+  aforge       mutation_hunger             FQ<1     2     1.418   0.150   +2.33   89.1      0/2   1.0000  NO_STABLE_ATTRACTOR
+  claude-code  execution_gravity           FQ<1     0         —       —       —      —        —        —  INSUFFICIENT
   frame        behavioral_blindness        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        identical_score_problem     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        observer_inertia            FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        baseline_staleness          NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  grok-build   verification_paralysis      FQ>1     0         —       —       —      —        —        —  INSUFFICIENT
-  hermes-asi   bridge_volume_overload      FQ<1     4     0.588   0.058   -9.23   30.2      4/4   0.0625  DISPLACEMENT_NOT_CONCORDANT
-  hermes-asi   meaning_as_gatekeeping      FQ>1     4     0.588   0.058   -9.23   30.2      0/4   1.0000  REFUTED
+  grok-build   verification_paralysis      FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
+  hermes-asi   bridge_volume_overload      FQ<1     1         —       —       —      —      0/1        —  INSUFFICIENT
+  hermes-asi   meaning_as_gatekeeping      FQ>1     1         —       —       —      —      0/1        —  INSUFFICIENT
   kimi-code    organ_routing_reflex        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    receipt_theater             NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    constitutional_citation     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    subagent_delegation_escape  NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    synthesis_as_substance      NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  qwen-code    execution_dominance         FQ<1     4     0.563   0.196   -2.92   25.6      3/4   0.3125  DISPLACEMENT_NOT_CONCORDANT
+  opencode     config_entropy_sprawl       NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  opencode     backup_archaeology          NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  opencode     execution_hunger            NONE     0         —       —       —      —        —        —  NO_RECEIPTS
+  qwen-code    execution_dominance         FQ<1     1         —       —       —      —      0/1        —  INSUFFICIENT
   well         self_report_paradox         NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         measurement_substitution    NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         dignity_as_avoidance        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   well         floor_as_boundary           NONE     0         —       —       —      —        —        —  NO_RECEIPTS
 
-  NOT_FQ_TESTABLE (11): behavioural shadows this observable cannot see —
-    attention_leak, backup_archaeology, calibration_as_refinement, config_entropy_sprawl, execution_hunger, forge_evaluate_circularity, honesty_performance, menu_reflex, narrative_momentum, receipt_as_product, tool_surface_bloat
+  NOT_FQ_TESTABLE (8): behavioural shadows this observable cannot see —
+    attention_leak, calibration_as_refinement, forge_evaluate_circularity, honesty_performance, menu_reflex, narrative_momentum, receipt_as_product, tool_surface_bloat
   Reported, not forced onto the metric: a wrong observable is worse than none.
-
-## REFUTED_BY_MEASUREMENT — the ledger contradicts the registry
-  claude-code :: SHADOW-CC-005 (execution_gravity)
-      no significant displacement (Z=+2.58, FQ=14.601), no sign concordance (0/2, p=1.000), and I²=0.0% is low enough that a single value DOES explain the windows — that value is simply not the predicted one
-  hermes-asi :: SHADOW-HA-002 (meaning_as_gatekeeping)
-      no significant displacement (Z=-9.23, FQ=0.588), no sign concordance (0/4, p=1.000), and I²=30.2% is low enough that a single value DOES explain the windows — that value is simply not the predicted one
 
 ## OVER-CLAIM — asserted measurement, and the ledger does not rescue it
   [harness] aforge_harness_shadow.yaml :: SHADOW-AF-004 (receipt_as_product) — asserts OBSERVED with 0 dated evidence item(s); doctrine requires 5 | fq: NOT_FQ_TESTABLE
@@ -101,8 +98,10 @@ NO-LABEL (ungateable):       0
 ##   VoI = severity x H(posterior)/ln2 x daily_receipt_rate
 ##   Settled entries sink to the bottom: no attention spent on closed questions.
   #   entry                                   sev         post      H   rate/d      VoI
-  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   8602.0  4301.00
-  2   SHADOW-QC-001                           MEDIUM     0.986  0.104    184.0     9.59
-  3   SHADOW-GB-001                           CRITICAL   0.500  1.000      1.5     1.50
+  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   4970.0  2485.00
+  2   SHADOW-HA-001                           HIGH       0.500  1.000    158.0   118.50
+  3   SHADOW-HA-002                           MEDIUM     0.500  1.000    158.0    79.00
+  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     21.0    10.50
+  5   SHADOW-CC-005                           CRITICAL   0.500  1.000      2.0     2.00
 
 Receipt: /root/AAA/cockpit/shadow-matrix/evidence-gate-latest.json

@@ -141,3 +141,9 @@ Last result (2026-10-18T12:04Z): `STATE_DEGRADED — fail=1 warn=1` · organs 8/
 7. Nav invariant enforcer: arif-sites scripts/zen-nav.cjs (canon v7 primary_links → all static surfaces; see FORGE-agentic-web-builder OP 7)
 
 DITEMPA BUKAN DIBERI ⚒️
+
+## Phone Body State (2026-10-19)
+
+> Canonical: `/root/AAA/federation/PHONE_BODY_STATE-2026-10-19.md`
+> Honor 600 Pro `100.64.0.6` = ACTIVE body; S24 `100.64.0.1` = STANDBY; both bridge `:8765` health 200.
+> SSH `vps`=KVM8, `kvm`=KVM4, `kvm2`=KVM2 via `ProxyJump vps` (no KVM2 password). Phone one-word `arif` menu 0–7.

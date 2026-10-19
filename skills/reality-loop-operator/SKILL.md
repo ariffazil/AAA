@@ -14,6 +14,8 @@ owned_by: 333-AGI
 authority_of: 333-AGI
 ---
 
+> **DOOR TABLE v2:** peta reality-mesh (7 paksi) ada di `reality-intelligence` — Pintu 4 NAVIGATION. Peranan sini: **Pintu 5 exec** (qrl-arifos = gov).
+
 # Reality Loop Operator — Autonomous 000→999
 
 > **Doctrine:** The loop does NOT decide. The loop PRESENTS at RETURN and waits for human judgment. But the loop DOES observe, encode, improve, and verify autonomously.

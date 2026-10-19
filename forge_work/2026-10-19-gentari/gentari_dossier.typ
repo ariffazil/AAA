@@ -1,0 +1,264 @@
+#set page(paper: "a4", margin: (x: 2.2cm, y: 2.0cm), numbering: none)
+#set text(font: ("DejaVu Sans"), size: 9.8pt, fill: rgb("#1b1b1b"))
+#set par(justify: true, leading: 0.72em)
+#set heading(numbering: none)
+
+#show heading.where(level: 1): it => [
+  #v(10pt)
+  #text(size: 13pt, weight: "bold", fill: rgb("#0b4f3a"))[#it.body]
+  #v(2pt)
+  #line(length: 100%, stroke: 0.6pt + rgb("#c9d8cf"))
+  #v(4pt)
+]
+
+#align(center)[
+  #v(30pt)
+  #text(size: 9pt, fill: rgb("#5c6b63"))[DOSSIER REALITI · 19 OKTOBER 2026]
+  #v(10pt)
+  #text(size: 30pt, weight: "bold", fill: rgb("#0b4f3a"))[GENTARI]
+  #v(4pt)
+  #text(size: 12pt, fill: rgb("#33413a"))[Apa dia, siapa punya, berapa besar, dan di mana ia boleh pecah]
+  #v(18pt)
+  #line(length: 55%, stroke: 1.2pt + rgb("#0b4f3a"))
+  #v(18pt)
+  #text(size: 9pt, fill: rgb("#5c6b63"))[
+    Sumber: dokumen SSM melalui CTOS, PETRONAS Integrated Report 2025, \
+    laporan media 2024 sampai 19 Oktober 2026, dan arkib dalaman AAA.
+  ]
+  #v(120pt)
+  #text(size: 8.5pt, fill: rgb("#7a8880"))[Disusun untuk Arif Fazil · F13 SOVEREIGN]
+]
+
+#pagebreak()
+
+#set page(numbering: "1")
+
+= Ringkasan: satu muka, kalau hang baca ini saja
+
+Gentari bukan syarikat bebas. Ia 100 peratus milik PETRONAS, dan ia duduk atas nama lama sebuah syarikat yang didaftarkan pada 18 Mac 1993 sebagai Petronas Carigali (Dai Hung) Sdn Bhd. Nama Gentari mula digunakan pada 2022, dilancarkan September tahun itu sebagai "clean energy platform" PETRONAS.
+
+Tiga tiang: tenaga boleh diperbaharui, hidrogen dan ammonia hijau, dan mobiliti hijau atau pengecasan EV.
+
+Hujung 2025, Gentari pegang 9.1 gigawatt kapasiti tenaga boleh diperbaharui dan storan, dipasang campur yang sedang dibina. Satu beg. PETRONAS tidak memberi pecahan berapa yang sudah jual elektrik. Sasaran 2030 ialah 30 sampai 40 gigawatt, 1.2 juta tan hidrogen setahun, dan 25,000 titik pengecasan EV.
+
+Tetapi taburannya tidak sekata. Daripada 9.1 gigawatt, hanya 257 megawatt ada di Malaysia, lebih kurang 2.8 peratus. Bahagian terbesar di India, sekitar 7 gigawatt termasuk projek dalam pembangunan. Australia dan Taiwan melengkapkan gambar.
+
+Duitnya begini. Tahun kewangan 2024, Gentari catat hasil RM805.4 juta, rugi sebelum cukai RM501 juta, rugi selepas cukai RM455 juta. Jumlah aset RM17.63 bilion. Jumlah liabiliti RM6.15 bilion. Modal dibayar RM13.29 bilion, semuanya dari PETRONAS. Nilai bersih RM11.48 bilion, jadi jurang RM1.81 bilion, dan baris rizab negatif dalam penyata RM1.714 bilion. Nisbah hutang kepada ekuiti 54 peratus.
+
+Tahun 2025, PETRONAS tidak keluarkan penyata berasingan Gentari kepada awam. Yang keluar cuma satu baris: perbelanjaan modal segmen Corporate and Others RM5.7 bilion, dan Gentari ambil 44 peratus, lebih kurang RM2.5 bilion. Itu turun banyak berbanding dua tahun sebelumnya.
+
+Tahun 2026 ini Gentari masuk fasa jual aset dan cari rakan modal. Januari, dia cari pembeli sehingga 50 peratus saham perniagaan India, dengan nilai perusahaan 2 sampai 2.5 bilion dolar, tetapi nilai ekuiti cuma 600 sampai 700 juta dolar kerana hutang berat. Oktober, KKR mahu masuk lebih RM2.6 bilion ke Gentari Renewable India, bukan sebagai pemegang saham terus, tetapi sebagai pembiayaan dengan opsyen beli saham kemudian. Ogos, Gentari kata dia sedang kaji jual perniagaan pengecasan EV di India yang ada sekitar 3,000 titik.
+
+Maksudnya satu: Gentari sudah jadi pertaruhan modal negara yang terlalu besar untuk dibiarkan dalam buku PETRONAS saja. Soalan sekarang bukan lagi "boleh berkembang ke tak". Soalan sekarang, siapa dapat nilai bila ia dijual, dan berapa telus urus niaga itu.
+
+= 1. Asal dan badan
+
+Gentari Sdn Bhd, nombor pendaftaran 199301005062, dahulunya 0259799X. Didaftarkan 18 Mac 1993. Nama-nama sebelumnya: Legendary Alpha (M) Sdn Bhd, PETRONAS eLearning Solutions Sdn Bhd, PETRONAS eLearning Solution Sdn Bhd, dan Petronas Carigali (Dai Hung) Sdn Bhd.
+
+Alamat berdaftar di Tower 1, PETRONAS Twin Towers. Alamat perniagaan di Level 30, Permata Sapura, KLCC. Sektor perniagaan yang didaftarkan: investment holding. Juruaudit Ernst and Young PLT. Tahun kewangan berakhir 31 Disember.
+
+Pemegang saham: PETRONAS, 28,352,704 saham. Tiada pemegang saham lain. Tiada caj syarikat.
+
+Anak syarikat utama: Gentari Renewables Sdn Bhd, modal dibayar RM995.16 juta. Gentari Green Mobility Sdn Bhd, RM318.84 juta. Gentari Hydrogen Sdn Bhd, RM105.0 juta. Gentari juga pegang 1.83 peratus dalam EV Connection Sdn Bhd, operator JomCharge.
+
+Lembaga pengarah setakat dokumen Oktober 2025: Tengku Muhammad Taufik, Ashok Kumar Belani, Girish Vishwanath Nadkarni, Sushil Kumar Purohit, dan Liza Mustapha. Setiausaha syarikat: Fauziah Abu Bakar.
+
+Yang penting di sini: Taufik ialah Presiden dan Ketua Pegawai Eksekutif PETRONAS, dan pada masa yang sama Pengerusi Gentari. Itu bukan dua syarikat berasingan dari segi kuasa. Ia satu orang di dua kerusi.
+
+= 2. Tiga tiang
+
+*Tenaga boleh diperbaharui.* Suria dan angin, utility scale dan commercial and industrial, dengan storan bateri. Ini tulang belakang Gentari dan tempat hampir semua modal pergi.
+
+*Hidrogen dan ammonia hijau.* Gentari pegang 30 peratus dalam AM Green Ammonia di India, dengan sasaran 5 juta tan ammonia hijau setahun menjelang 2030, bersamaan kira-kira 1 juta tan hidrogen. Projek Kakinada di Andhra Pradesh sudah capai keputusan pelaburan muktamad pada 2024, dan dijana oleh 650 megawatt tenaga boleh diperbaharui sepanjang masa dari Gentari. Di Malaysia, Gentari bekerjasama dengan SEDC Energy untuk infrastruktur Sarawak Hydrogen Hub.
+
+*Mobiliti hijau.* Pengecasan EV, van dan armada elektrik melalui Vehicle-as-a-Service, dan aplikasi Gentari Go.
+
+= 3. Saiz sebenar
+
+Angka rasmi PETRONAS dalam Integrated Report 2025:
+
+- Kapasiti boleh diperbaharui dan storan, dipasang dan dalam pembinaan: 2.9GW pada 2023, 8.0GW pada 2024, 9.1GW pada 2025.
+- Nota kaki laporan itu sendiri: untuk 2024 dan sebelumnya, ukuran ialah kapasiti tenaga boleh diperbaharui saja; untuk 2025, ukuran ialah kapasiti tenaga boleh diperbaharui dan storan. Bateri masuk kiraan pada 2025.
+- PETRONAS tidak menerbitkan pecahan berapa yang sudah beroperasi. Gentari sendiri, setakat 30 Jun 2025, catat 8.4GW dipasang dan dalam pembinaan.
+- Peluang hidrogen yang dimatangkan: 175 kiloton setahun pada 2024 dan 2025, kosong pada 2023.
+- Titik pengecasan EV: 570 pada 2023, 1,060 pada 2024, 1,181 pada 2025.
+
+Taburan geografi pada 2026:
+
+- India: sekitar 7GW termasuk projek dalam pembangunan. Ini pusat graviti Gentari.
+- Malaysia: 257MW, termasuk projek LSS5 di Kuala Muda, Kedah, 150MWp atau 99.99MWac, dengan pembiayaan Islam HSBC Amanah yang dimuktamadkan Januari 2026.
+- Australia: Wirsol Energy, yang dibeli 2023 dan kini Gentari Solar Australia. Projek Maryvale di New South Wales, 243MWp suria dengan bateri 172MW dan 409MWh, sedang dibina, dengan operasi komersial disasarkan pada 2027.
+- Taiwan: projek angin luar pesisir Hai Long, 1GW, bersama Mitsui dan Northland Power. Kuasa pertama sudah masuk grid, sasaran siap penuh hujung 2026.
+- Vietnam: penyertaan dalam kajian eksport elektrik boleh diperbaharui Vietnam ke Malaysia dan Singapura, melalui konsortium MY Energy bersama TNB, Sembcorp dan PetroVietnam.
+
+Satu perkara yang selalu dilupakan orang: 9.1 gigawatt itu bukan semuanya Gentari punya seratus peratus. Sebahagian besar duduk dalam syarikat usaha sama dan penyertaan ekuiti. Itu sebab hasil naik kecil tetapi aset naik besar.
+
+#pagebreak(weak: true)
+
+= 4. Nombor: apa yang penyata sebenarnya kata
+
+Ini angka daripada penyata kewangan yang ditabulasi SSM, bukan anggaran.
+
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 10pt,
+  block(fill: rgb("#f2f7f4"), inset: 9pt, radius: 3pt)[
+    *#text(fill: rgb("#0b4f3a"))[Tahun kewangan 2024, disatukan]*
+    - Hasil: RM805.4 juta
+    - Untung sebelum cukai: rugi RM501.0 juta
+    - Untung selepas cukai: rugi RM455.0 juta
+    - Jumlah aset: RM17.63 bilion
+    - Jumlah liabiliti: RM6.15 bilion
+    - Nilai bersih: RM11.48 bilion
+  ],
+  block(fill: rgb("#f2f7f4"), inset: 9pt, radius: 3pt)[
+    *#text(fill: rgb("#0b4f3a"))[Tahun kewangan 2023, tidak disatukan]*
+    - Hasil: sifar
+    - Untung selepas cukai: rugi RM49.7 juta
+    - Jumlah aset: RM9.88 bilion
+    - Jumlah liabiliti: RM31.7 juta
+    - Nilai bersih: RM9.85 bilion
+  ],
+)
+
+Dua perkara penting di sini.
+
+Pertama, hasil sifar pada 2023 bukan bermakna tiada perniagaan. Ia bermakna penyata 2023 belum disatukan. Gentari mula buat akaun disatukan pada 2024. Jadi perbandingan hasil 2023 ke 2024 tidak bermakna.
+
+Kedua, modal dibayar RM13.29 bilion tetapi nilai bersih RM11.48 bilion. Jurangnya RM1.81 bilion, bukan RM1.71 bilion. Angka RM1.714 bilion itu satu baris dalam penyata, iaitu share premium and reserve negatif. Aritmetik penuhnya dalam CTOS: modal saham RM12.999 bilion, tolak rizab RM1.714 bilion, tambah kepentingan minoriti RM0.196 bilion, jadi RM11.48 bilion. Maksudnya PETRONAS sudah suntik lebih RM13 bilion ekuiti, dan sebahagian sudah termakan.
+
+Nisbah hutang kepada ekuiti 54 peratus. Nisbah semasa 1.17, yang ketat untuk syarikat infrastruktur. Pulangan atas ekuiti negatif 4 peratus. Pulangan atas aset negatif 2.6 peratus.
+
+Anak syarikat mobiliti hijau pula kecil sangat berbanding asetnya. Tahun 2024, Gentari Green Mobility catat hasil RM10.16 juta, rugi selepas cukai RM40.36 juta, jumlah aset RM248.3 juta. Ini perniagaan yang masih jauh dari pulang modal. Pengecas EV di Malaysia memang ramai pengguna, tetapi hasil per titik masih rendah dan kos penyelenggaraan tinggi.
+
+Tahun 2025, PETRONAS tidak dedah penyata Gentari kepada awam. Yang ada cuma perbelanjaan modal. Segmen Corporate and Others belanja RM5.7 bilion, Gentari 44 peratus, lebih kurang RM2.5 bilion. Bandingkan dengan 2023, di mana Corporate and Others belanja RM10.5 bilion dan 58 peratus daripadanya, sekitar RM6.09 bilion, dikaitkan dengan Gentari. Tahun 2024, segmen itu belanja RM9.8 bilion, tetapi pecahan Gentari tidak dikeluarkan.
+
+Jadi perbelanjaan modal Gentari menurun kasar daripada sekitar RM6 bilion pada 2023 kepada sekitar RM2.5 bilion pada 2025. Itu bukan tanda Gentari berhenti. Itu tanda PETRONAS mengawal semula kadar bakar duit.
+
+= 5. Kronologi duit besar
+
+*2022.* Gentari diperkenalkan Jun, dilancarkan September oleh Perdana Menteri. Sasaran asal: 30 sampai 40GW, 1.2 juta tan hidrogen, 25,000 titik EV menjelang 2030.
+
+*2023.* Beli Wirsol Energy di Australia, sekitar 690 juta dolar, bawa masuk 1.1GW suria dan storan. Ambil bahagian dalam Hai Long di Taiwan. Masuk India melalui Amplus Solar.
+
+*2024.* Beli 185MW suria beroperasi daripada Fortum dan rakan-rakan, Mei. Capai keputusan pelaburan muktamad untuk AM Green Ammonia, Ogos, dengan komitmen sekitar 1.5 bilion dolar untuk 30 peratus. PETRONAS mula kaji jual kepentingan minoriti dalam Gentari, nilai kepentingan 300 sampai 500 juta dolar.
+
+*2025.* Mac, beli portfolio 1.6GW suria dan angin daripada Brookfield di India, 900 juta dolar. Jun, lantik Standard Chartered untuk cari pembeli sehingga 50 peratus Gentari India. November, Shah Yang Razalli naik jadi Group COO dan Country Head Malaysia, Fadzrul Ahmad ambil alih mobiliti hijau. Hujung tahun, kapasiti 9.1GW.
+
+*2026.* Januari, proses jual 50 peratus Gentari India masuk pusingan pertama. Minat daripada Macquarie, Actis, Sembcorp, Serentica dan JSW. Nilai perusahaan 2 sampai 2.5 bilion dolar, nilai ekuiti 600 sampai 700 juta dolar kerana hutang. April, Ketua Strategi Gentari kata sasaran 30 sampai 40GW masih dikejar tetapi bergantung kepada pulangan pasaran. Julai, Bernard Esselinckx masuk sebagai Chief Renewables Officer. Julai juga, Gentari turunkan harga pengecasan DC di beberapa lokasi dan lancar AutoCharge. Ogos, Gentari kaji jual perniagaan pengecasan EV India, sekitar 3,000 titik dalam 11 negeri. September, konsortium Gamuda, SD Guthrie dan Gentari tandatangan term sheet 21 tahun untuk bekalan 680MW suria campur bateri kepada pusat data sebuah syarikat teknologi Amerika di Perak, potensi hasil lebih RM10 bilion sepanjang tempoh. Oktober, KKR mahu masuk lebih RM2.6 bilion ke Gentari Renewable India.
+
+= 6. 2026: musim jual aset, bukan musim beli
+
+Pola tahun ini jelas. Gentari tidak lagi beli dengan laju. Ia sedang mengumpul modal dan mengurangkan hutang.
+
+Tiga urus niaga tunjuk pola itu.
+
+Pertama, Gentari India. Dia cari rakan untuk 50 peratus perniagaan, bukan kerana nak keluar dari India, tetapi kerana hutang India berat dan nilai ekuiti kecil berbanding nilai aset. Pembeli yang berminat ialah dana ekuiti swasta besar dan pemain strategik.
+
+Kedua, pengecasan EV India. Sekitar 3,000 titik, 11 negeri, ada kerjasama dengan Shell. Gentari kata ini peringkat awal, belum hubungi pembeli, belum nilai. Tetapi fakta dia kaji jual bermakna perniagaan itu belum cukup untung untuk dipegang sampai matang.
+
+Ketiga, KKR. Ini yang paling penting. KKR tidak beli saham terus. Dia masuk sebagai pembiayaan, dengan opsyen beli saham kemudian. Struktur ini bagi Gentari modal tanpa dilusi segera pada nilai yang dia tidak suka, dan bagi KKR jalan masuk jika perniagaan naik. Ia juga bermakna Gentari tidak dapat harga ekuiti yang dia mahu hari ini.
+
+Bandingkan dengan 2024, bila Bloomberg lapor PETRONAS kaji jual kepentingan minoriti dalam Gentari sendiri, nilai kepentingan 300 sampai 500 juta dolar. Itu bukan nilai syarikat. Itu saiz kepentingan yang dicadangkan. Ada dokumen dalaman lama yang tersilap baca angka itu sebagai nilai Gentari 300 sampai 500 juta dolar. Itu salah. Nilai perniagaan India saja hari ini dianggarkan 2 sampai 2.5 bilion dolar.
+
+= 7. Governans dan telus
+
+Ini bahagian yang paling penting untuk hang, sebab di sini nilai boleh berpindah tanpa nampak.
+
+Gentari 100 peratus milik PETRONAS. Ia bukan syarikat tersenarai. Ia tidak perlu umumkan penyata suku tahunan, tidak perlu analyst call, tidak perlu jawab parlimen. Ia hanya perlu patuh pada syarat anak syarikat di bawah Companies Act.
+
+Dalam akaun PETRONAS, Gentari duduk dalam segmen Corporate and Others. Segmen itu bercampur dengan hartanah KLCC dan operasi perbendaharaan. PETRONAS sendiri kata segmen itu "terdiri terutamanya daripada perniagaan tenaga boleh diperbaharui, hidrogen dan mobiliti hijau serta perniagaan hartanah". Tahun 2025, segmen itu catat hasil RM13.2 bilion (2024: RM14.0 bilion) dan rugi selepas cukai RM0.5 bilion (2024: rugi RM0.8 bilion), tetapi itu bukan hasil Gentari. Hasil Gentari 2024 hanya RM805 juta. Jadi angka segmen tidak boleh dipakai untuk menilai Gentari.
+
+Yang lebih halus: pengerusi Gentari ialah CEO PETRONAS. Lembaga Gentari ada Liza Mustapha, CFO PETRONAS. Ini bukan kejanggalan kecil. Ia bermakna tiada penyelia bebas antara modal PETRONAS dan keputusan Gentari. Bila Gentari jual aset kepada pihak ketiga, tiada lembaga bebas yang boleh kata tidak.
+
+Arkib dalaman kita sudah lama flag ini. ATLAS PETRONAS letak indeks pemisahan governans pada 1 daripada skala 0 sampai 3, di mana 0 paling teruk, kerana Taufik pegang dua kerusi. Model Collapse Trajectory v3 guna ukuran berasingan, skor singulariti governans, di mana 1.00 ialah paling teruk. Model itu letak penjualan kepentingan Gentari sebagai satu daripada tiga pangsi utama. Kalau urus niaga ditutup secara telus, dengan nilai, rakan dan terma lembaga didedahkan, skor singulariti boleh turun dari 1.00 ke sekitar 0.6 dan risiko struktur dipotong separuh. Kalau ia ditutup gelap, skor kekal 1.00 dan kebarangkalian kejadian distress naik sekitar 15 mata peratus.
+
+Itu bukan ramalan. Itu satu pemboleh ubah yang boleh diperhati.
+
+= Sambungan: siapa bayar bila duit ketat
+
+Gentari tidak duduk dalam vakum. Ia duduk dalam aliran tunai PETRONAS yang sedang mengetat.
+
+Empat angka, semua dicetak. Belanja modal PETRONAS turun dari RM54.2 bilion pada 2024 ke RM41.6 bilion pada 2025. Dividen yang lembaga isytihar untuk 2026 ialah RM20 bilion, tetapi kerajaan meletakkan RM27 bilion dalam anggaran 2026 dan RM32 bilion untuk 2027. Pada 2026 PETRONAS membelanjakan sekitar RM26 bilion untuk ambil alih penuh Pengerang daripada Saudi Aramco. Dan pada 29 September 2026 ia mengambil keputusan pelaburan muktamad LNG Canada Fasa 2, C\$33 bilion.
+
+Dalam aliran yang sama, belanja modal Gentari turun dari sekitar RM6.1 bilion pada 2023 ke sekitar RM2.5 bilion pada 2025, sementara tahun ini ia menjual 50 peratus perniagaan India dan membawa masuk KKR sebagai pembiayaan.
+
+Itu bukan dua cerita berasingan. Itu satu ayat: bila duit perlu keluar untuk dividen dan loji minyak, platform hijau bertukar dari tempat duit pergi menjadi tempat duit datang.
+
+Itu tidak salah dengan sendirinya. Tetapi ia menjawab soalan yang dokumen ini mula-mula tanya. Penjual yang terdesa tidak menetapkan harga. Pembeli yang menetapkan.
+
+= 8. Risiko: di mana ia boleh pecah
+
+*Satu, hidrogen tak semaju cerita.* Di Sarawak, projek H2biscus dan H2ornbill sudah dikecilkan pada 2025 kerana isyarat permintaan lemah. Mei 2026, konsep asal eksport hidrogen ke Jepun digantung kerana kos penghantaran. SEDC Energy kata kos pengeluaran bawah RM20 sekilogram, tetapi sampai Jepun jadi sekitar RM50 sekilogram. Keputusan pelaburan muktamad terus tergelincir. Gentari terlibat dalam infrastruktur hab, bukan pemilik tunggal projek, tetapi ini menunjukkan bahagian hidrogen masih jauh dari hasil.
+
+*Dua, modal berat, pulangan lambat.* Aset RM17.6 bilion, hasil RM805 juta. Nisbah hasil kepada aset 4.6 peratus. Untuk syarikat infrastruktur yang sedang membina, itu normal, tetapi ia bermakna Gentari bergantung kepada PETRONAS untuk masa yang lama. Bila PETRONAS potong perbelanjaan modal daripada RM54.2 bilion ke RM41.6 bilion, Gentari rasa terus.
+
+*Tiga, sasaran 30 sampai 40GW terlalu jauh dari 9.1GW.* Untuk sampai 30GW menjelang 2030, Gentari perlu tambah sekitar 21GW dalam empat tahun, lebih 5GW setahun. Tahun 2025 dia tambah 1.1GW. Laju itu tidak cukup. Ketua Strategi sendiri kata ia bergantung kepada pulangan pasaran. Jadi sasaran itu sekarang bukan janji, ia arah.
+
+*Empat, India terlalu besar dalam gambar.* Sekitar 7 daripada 9.1GW ada di India, termasuk saluran paip. Itu pendedahan kepada satu pasaran, satu regulator, satu risiko mata wang dan satu risiko pembeli. Jual 50 peratus dan masuk KKR ialah cara kurangkan pendedahan itu, tetapi juga pengakuan bahawa Gentari tidak boleh tanggung semuanya sendiri.
+
+*Lima, pengecasan EV belum jadi perniagaan.* Hasil RM10 juta, rugi RM40 juta pada 2024. Enam ratus lebih titik di Malaysia, tetapi penggunaan masih rendah, harga ditekan, dan pengguna marah bila pengecas rosak. Gentari turunkan harga Julai 2026. Itu tanda ia utamakan penggunaan, bukan margin.
+
+*Enam, risiko penangkapan nilai.* Ini yang paling susah dibuktikan tetapi paling mahal kalau berlaku. Bila aset negara dijual kepada rakan strategik atau dana swasta, nilai sebenar ditentukan oleh terma yang tidak didedahkan. Kalau pembeli dapat harga murah, rakyat yang tanggung, kerana modal asal datang dari PETRONAS, dan PETRONAS datang dari minyak rakyat.
+
+#pagebreak(weak: true)
+
+= 9. Apa yang arkib dalaman kita sudah kata
+
+Arkib AAA ada tiga lapis tesis tentang Gentari.
+
+ATLAS PETRONAS letak Gentari sebagai enjin peralihan tenaga, 9.1GW, 97 peratus kapasiti di luar negara, 257MW di Malaysia, 175 kiloton hidrogen setahun. Itu bacaan asas.
+
+Dossier 2025 dalam GDrive, termasuk "Green Mirage" dan "Investigative Report", bawa tesis yang lebih keras: Gentari berfungsi sebagai pelapik ESG. Modal hijau dibenarkan keluar melalui entiti berasingan supaya perniagaan minyak dan gas kekal "lean, mean and generating as much profit as possible". Anggaran dokumen itu, perbelanjaan modal Gentari 2022 sampai 2025 sekitar RM10 sampai 15 bilion, sebahagian besar di luar Malaysia. Dokumen itu juga kata projek Gentari hanya offset sekitar 4 peratus daripada Scope 1 PETRONAS.
+
+Aku letak tesis itu pada darjah INTERPRET, bukan MEASURED. Sebabnya, angka perbelanjaan modal dalam dokumen itu dianggarkan daripada segmen yang bercampur, bukan dari penyata Gentari sendiri. Tetapi arah tesis itu disokong oleh fakta keras: 97 peratus kapasiti di luar Malaysia, hasil kecil berbanding aset, rugi berterusan, dan tiada penyata awam.
+
+Model Collapse Trajectory v3 pula letak Gentari dalam senario D, "Détente Trap": Petros selesai, Gentari dijual gelap kepada pihak yang berkaitan, Shell MDS dibayar, dan nilai peralihan ditangkap oleh kawan-kawan. Model itu bagi senario D 10 peratus berat, dengan 45 peratus kebarangkalian collapse dalam senario itu. Ia bukan ramalan. Ia satu laluan yang perlu ditutup dengan telus.
+
+= 10. Apa nak tengok dalam 12 bulan
+
+- Sama ada KKR tutup urus niaga dan CCI lulus, dan sama ada termanya didedahkan.
+- Sama ada jualan 50 peratus Gentari India akhirnya jadi, dengan siapa, dan pada nilai berapa.
+- Sama ada Gentari jual perniagaan pengecasan EV India, dan berapa harganya.
+- Penyata kewangan Gentari tahun kewangan 2025, yang sepatutnya sudah difailkan pertengahan 2026. Kalau rugi melebar melebihi RM600 juta, itu tanda tekanan.
+- Sama ada perbelanjaan modal Gentari dalam segmen Corporate and Others naik balik atau terus turun.
+- Keputusan pelaburan muktamad H2biscus dan H2ornbill di Sarawak.
+- Sama ada PETRONAS jual kepentingan di peringkat Gentari sendiri, bukan hanya India. Ini pangsi governans yang sebenar.
+- Sama ada LSS5 Kedah masuk operasi mengikut jadual, dan sama ada projek 680MW Perak bersama Gamuda dan SD Guthrie dapat pembiayaan.
+- Sama ada Taufik kekal pegang dua kerusi, atau Gentari dapat pengerusi bebas.
+- Sama ada PETRONAS mula dedah penyata segmen Gentari secara berasingan. Satu baris itu akan ubah seluruh perbualan.
+
+#pagebreak(weak: true)
+
+= 11. Penilaian aku, ringkas
+
+Gentari bukan projek kecil dan bukan hanya alat propaganda. Ia benar-benar bina aset. 9.1 gigawatt dipasang dan dalam pembinaan itu wujud pada kertas, dan projek Maryvale, Hai Long, LSS5 Kedah dan Perak semuanya konkrit.
+
+Tetapi ia juga bukan perniagaan yang berdiri sendiri. Ia hidup atas ekuiti PETRONAS, dalam akaun PETRONAS, di bawah pengerusi PETRONAS, dan ia rugi setiap tahun.
+
+Fasa 2022 sampai 2024 ialah fasa beli. Fasa 2025 sampai 2026 ialah fasa jual dan cari rakan. Itu bukan kelemahan. Itu kitaran normal untuk platform infrastruktur yang membesar. Tetapi ia juga saat di mana nilai dipindahkan, dan saat itu berlaku di luar pandangan awam.
+
+Kalau hang nak satu ayat: Gentari sudah cukup besar untuk menentukan masa depan PETRONAS, tetapi masih cukup gelap untuk menentukan siapa yang dapat untung bila ia dijual.
+
+= Sumber dan darjah keyakinan
+
+*MEASURED, penyata SSM melalui CTOS, laporan 1 Oktober 2025:* semua angka kewangan 2020 sampai 2024, modal dibayar, liabiliti, pengarah, pemegang saham, anak syarikat.
+
+*REPORTED, PETRONAS Integrated Report 2025 dan kenyataan media 27 Februari 2026:* 9.1GW dipasang dan dalam pembinaan (pecahan beroperasi tidak diterbitkan), nota kaki takrif kapasiti, 175 kilotons, 1,181 titik pengecasan, perbelanjaan modal segmen RM5.7 bilion dan bahagian Gentari 44 peratus, hasil segmen RM13.2 bilion dan LAT RM0.5 bilion, belanja modal kumpulan RM41.6 bilion (2024: RM54.2 bilion), hasil kumpulan RM266.1 bilion, untung selepas cukai RM45.4 bilion.
+
+*REPORTED, Kementerian Kewangan:* Fiscal Outlook dan Anggaran Hasil Kerajaan Persekutuan 2027, 9 Oktober 2026 — dividen PETRONAS RM27 bilion untuk 2026 dan RM32 bilion untuk 2027.
+
+*REPORTED, media:* KKR dan Gentari Renewable India, Economic Times dan New Straits Times, 19 Oktober 2026. Jualan 50 peratus Gentari India, Livemint, Januari 2026. Jualan pengecasan EV India, Ogos 2026. Sarawak hidrogen dikecilkan, Borneo Post dan Nikkei Asia, April sampai Mei 2026. LSS5 Kedah dan pembiayaan HSBC Amanah, Januari 2026. Perak 680MW, Bursa Malaysia melalui Gamuda dan SD Guthrie, 29 September 2026.
+
+*DERIVED, bukan angka rasmi:* peratus kapasiti Malaysia 257MW daripada 9.1GW, sekitar 2.8 peratus. Penurunan perbelanjaan modal Gentari 2023 ke 2025, dikira daripada bahagian peratus segmen. Nisbah hasil kepada aset 4.6 peratus. Semua ini aritmetik, bukan angka yang disiarkan syarikat.
+
+*INTERPRET, tesis:* "ESG façade", penangkapan nilai melalui penjualan gelap, dan indeks pemisahan governans. Ini bacaan, bukan fakta yang diukur. Ia patut diuji dengan setiap urus niaga yang ditutup.
+
+#v(14pt)
+#line(length: 100%, stroke: 0.5pt + rgb("#c9d8cf"))
+#align(center)[
+  #text(size: 8.5pt, fill: rgb("#5c6b63"))[
+    Ditempa, bukan diberi. \
+    Dokumen ini disusun 19 Oktober 2026. Setiap angka membawa darjah keyakinannya sendiri.
+  ]
+]
