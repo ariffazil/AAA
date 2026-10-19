@@ -3,44 +3,115 @@
   "$id": "arifos://chron/events.schema.json",
   "title": "CHRON canonical event store",
   "description": "The clock that matters. Every countdown is COMPUTED from target_date at render time — never stored as '21 days'. Expired events leave the active pool. Reference anchor: /root/AAA/scripts/chron.py",
-
   "THE LAW": [
     "Never hardcode a day count. Store target_date; compute delta = target_date - now.",
     "Every event carries a source. A date without provenance does not ship.",
     "Expired events do not display. Stale countdowns are worse than none.",
     "Rank by urgency x consequence x actionability — NOT by nearest date alone.",
-    "audience: 'both' | 'arif' | 'syed'. Never name a private deadline for one man in a card the other reads."
+    "audience: 'both' | 'arif' | 'syed'. Never name a private deadline for one man in a card the other reads.",
+    "An event that HAPPENED carries occurred_at. Freshness is COMPUTED from it at read time — never stored as 'this is new'. Age beyond delivery_window_hours is STALE and does not ship.",
+    "Delivery is recorded in chron_delivery.json. A delivered event is never news twice — 'new' means new to the reader, not new to the file."
   ],
-
   "type": "object",
-  "required": ["events"],
+  "required": [
+    "events"
+  ],
   "additionalProperties": false,
   "properties": {
     "events": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "title", "target_date", "audience", "source", "kind"],
+        "required": [
+          "id",
+          "title",
+          "target_date",
+          "audience",
+          "source",
+          "kind"
+        ],
         "additionalProperties": false,
         "properties": {
-          "id": { "type": "string" },
-          "title": { "type": "string" },
-          "target_date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
-          "timezone": { "type": "string", "default": "Asia/Kuala_Lumpur" },
-          "audience": { "enum": ["both", "arif", "syed"] },
-          "kind": {
-            "enum": ["DEADLINE", "REGULATORY_WINDOW", "MARKET_EVENT", "MEETING",
-                     "PROJECT_MILESTONE", "FISCAL", "PUBLIC_EVENT", "PERSONAL_SAFE"]
+          "id": {
+            "type": "string"
           },
-          "source": { "type": "string" },
-          "confidence": { "enum": ["CONFIRMED", "ANNOUNCED", "TENTATIVE"] },
-          "consequence": { "enum": ["HIGH", "MEDIUM", "LOW"] },
-          "actionability": { "enum": ["ACT_NOW", "PREPARE", "WATCH"] },
-          "note": { "type": "string" },
+          "title": {
+            "type": "string"
+          },
+          "target_date": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "timezone": {
+            "type": "string",
+            "default": "Asia/Kuala_Lumpur"
+          },
+          "audience": {
+            "enum": [
+              "both",
+              "arif",
+              "syed"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "DEADLINE",
+              "REGULATORY_WINDOW",
+              "MARKET_EVENT",
+              "MEETING",
+              "PROJECT_MILESTONE",
+              "FISCAL",
+              "PUBLIC_EVENT",
+              "PERSONAL_SAFE"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "confidence": {
+            "enum": [
+              "CONFIRMED",
+              "ANNOUNCED",
+              "TENTATIVE"
+            ]
+          },
+          "consequence": {
+            "enum": [
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ]
+          },
+          "actionability": {
+            "enum": [
+              "ACT_NOW",
+              "PREPARE",
+              "WATCH"
+            ]
+          },
+          "note": {
+            "type": "string"
+          },
           "state": {
-            "enum": ["ACTIVE", "FULFILLED", "MISSED", "WITHDRAWN"],
+            "enum": [
+              "ACTIVE",
+              "FULFILLED",
+              "MISSED",
+              "WITHDRAWN"
+            ],
             "default": "ACTIVE",
             "description": "Set by hand when an outcome is known. Expiry by date is automatic."
+          },
+          "occurred_at": {
+            "type": "string",
+            "description": "ISO-8601 timestamp of when the thing HAPPENED (with offset, or naive = +08:00). Presence turns on freshness tracking: the event can be delivered as news only while age <= delivery_window_hours, and only once.",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2})?([+-][0-9]{2}:[0-9]{2}|Z)?$"
+          },
+          "delivery_window_hours": {
+            "type": "number",
+            "default": 6,
+            "description": "How long an occurrence stays NEWS after occurred_at. Past this age it is STALE and must not be reported, even if never delivered.",
+            "minimum": 0.1
           }
         }
       }
