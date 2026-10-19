@@ -86,7 +86,7 @@ Reference templates under `templates/`:
 
 | Template | Purpose | File |
 |---|---|---|
-| **slide-cover-master.json** | Title/cover slide | `templates/slide-cover-master.json` |
+| **slide-cover-master.json** | Title/cover slide | `templates/slide-content-master.json` |
 | **slide-content-master.json** | Content slide with eyebrow + title + body | `templates/slide-content-master.json` |
 | **slide-grid-master.json** | Grid/card layout (4-col, 5-col) | `templates/slide-grid-master.json` |
 | **slide-closing-master.json** | DITEMPA BUKAN DIBERI closing | `templates/slide-closing-master.json` |

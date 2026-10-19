@@ -315,7 +315,7 @@ Archived session archaeology and detailed worked examples in `references/`:
 - `references/archive-session-specific-audits.md` — Reader-dormancy, hash-chain, invariant-preservation, env-wiring, agent-card alignment, cross-witness session, autonomous deployment, code-edit receipt, cron telemetry, and unification receipt worked examples
 - `references/hermes-mcp-self-schema-drift-2026-09-25.md` — Three classes of single-surface MCP drift (resource description vs content, detector silent input loss, schema/validator mismatch) with the probe order that surfaces all three
 - `references/reality-first-gap-repair-receipt.md` — Receipt shape for sealing a multi-gap repair on a running cron/organ. Five-question format; anti-patterns.
-- `references/readiness-cockpit-receipt.md` — Hermes *self-readiness* pattern: when an audit target is the agent itself, swap narration for live probes + SHA-sealed JSON artifact + grounded verdict band.
+- `/root/AAA/skills/agent-readiness-cockpit/references/readiness-cockpit-receipt.md` — Hermes *self-readiness* pattern: when an audit target is the agent itself, swap narration for live probes + SHA-sealed JSON artifact + grounded verdict band.
 
 ## Step 5 — Self-Readiness Cockpit (auditing the auditor)
 

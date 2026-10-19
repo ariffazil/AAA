@@ -190,7 +190,7 @@ The 7 layers and any named frameworks (Acemoglu, Calhoun, Gödel/Hofstadter, Ost
 - ALWAYS include the subsidy bill curve as a live slider, not a static chart (for live-site deliverables).
 - ALWAYS check whether the net position (petroleum revenue − subsidy bill) flips negative at any point in the Brent range.
 - ALWAYS cross-link corporate and sovereign pages bidirectionally at `#subsidy-paradox` anchors.
-See `pdf-report-generation` skill `references/petronas-subsidy-paradox-2026.md` for the numbers bank, and `arif-fazil-site-ops` skill for the live-site interactive engine pattern.
+See `pdf-report-generation` skill `/root/AAA/skills/pdf-report-generation/references/petronas-subsidy-paradox-2026.md` for the numbers bank, and `arif-fazil-site-ops` skill for the live-site interactive engine pattern.
 
 **Calibrate constants against reported data, not assumptions (2026-08-06, learned the hard way).** First version of the subsidy model used 38B L/yr (total national fuel consumption). At $85 Brent + RM 1.99/L BUDI95 cap, the model output subsidy = 38B × RM 2.46 = RM 93.5B/yr — but the *actually reported* steady-state is RM 3.5B/month ≈ RM 42B/yr (not the April RM 7.5B/month war-spike). The model was off by 2.2×. The fix: derive the constant from the reported figure, not the assumption. Formula: `actual_pool_L = reported_total_bill ÷ per_unit_gap`. Always cross-check: if the model's "headline value" number at a known anchor disagrees with a published value, the model is wrong, not the chart. Show the user the numeric readout before any chart.
 
@@ -203,7 +203,7 @@ For "when will X collapse / is it titanic / net debt / ranges and tripwires" req
 - **"Where I'm wrong"** ranked by magnitude of swing, upside AND downside, ranked separately.
 - **Honor the asker's stated bias** ("It's titanic now, but I'm bias") — acknowledge it, label INT, then test the bias against the bull case at equal rigour. **Do not collapse to the user's stated certainty.**
 - **Page floor:** ≥13 pages for PDF deliverables of this class; all raw data tables → appendix with epistemic tag column.
-- **Adversarial balance & scenario weights (Apex v2, 2026-08-07):** every main thesis carries a countercase block (steelman + one disconfirming datapoint + "what would make this wrong by next week"); no countercase → F2 violation risk. Replace single-path directional language with weighted 3-scenario branching (Base/Upside/Failure, e.g. 40/25/35), each with trigger + falsifier threshold — a scenario without a falsifier is decoration. Render contract (claim blocks C-IDs, source index S-IDs, decision packet, semantic-role chart palette): see `pdf-report-generation` → `references/apex-deliverable-protocol.md`.
+- **Adversarial balance & scenario weights (Apex v2, 2026-08-07):** every main thesis carries a countercase block (steelman + one disconfirming datapoint + "what would make this wrong by next week"); no countercase → F2 violation risk. Replace single-path directional language with weighted 3-scenario branching (Base/Upside/Failure, e.g. 40/25/35), each with trigger + falsifier threshold — a scenario without a falsifier is decoration. Render contract (claim blocks C-IDs, source index S-IDs, decision packet, semantic-role chart palette): see `pdf-report-generation` → `/root/AAA/skills/pdf-report-generation/references/apex-deliverable-protocol.md`.
 
 ## The reflective-essay variant (personal-reflection deep research — proven 2026-08-07)
 

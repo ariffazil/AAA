@@ -181,7 +181,7 @@ the honest version rather than escalating it:
 ## See also
 
 - `../sovereign-surface-design/` — companion skill for the "design a sovereign surface
-  from its canon tokens" lane. Its `references/arif-fazil-type-and-color.md` is the live
+  from its canon tokens" lane. Its `/root/AAA/skills/design/sovereign-surface-design/references/arif-fazil-type-and-color.md` is the live
   contrast table this one abstracts from; its `scripts/render_and_measure.py` is the same
   render-then-measure pipeline. Use it when the page is sovereign-owned rather than a
   generic site fidelity task.

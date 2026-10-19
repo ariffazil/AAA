@@ -629,4 +629,4 @@ chown arifos:arifos /root/.agent-workbench/mcp-audit.jsonl
 - Constitutional verdicts (use F13 Elicitation flow)
 - First time seeing the issue (try forge_vault once first)
 
-**Full worked example + receipt schema:** `references/direct-vault-write-fallback-2026-08-11.md` (under `arifos-cron-ops` skill umbrella). Same canonical ledger, different write path.
+**Full worked example + receipt schema:** `/root/AAA/skills/arifos-cron-ops/references/direct-vault-write-fallback-2026-08-11.md` (under `arifos-cron-ops` skill umbrella). Same canonical ledger, different write path.

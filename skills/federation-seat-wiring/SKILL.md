@@ -360,7 +360,7 @@ Direct providers stay registered as fallback — NEVER delete them (Arif: "nak l
 ## Pitfalls
 
 - **Do not blur WHO and WHICH in one change-set.** An agent's identity (opencode = FI-001 buruh, hermes = 555-bound mandor) is independent of which engine powers it. Flipping a primary model (FED → direct, or vice versa) is a WHICH change and must never require editing an agent card.
-- **JSON round-trip silent drops** — see `references/json-roundtrip-silent-drops.md`. Mandatory post-write diff. The bug bit OpenCode's `enabled_providers` array on 2026-08-07 (3 entries vanished with no error).
+- **JSON round-trip silent drops** — see `/root/AAA/skills/provider-quota-diagnostics/references/json-roundtrip-silent-drops.md`. Mandatory post-write diff. The bug bit OpenCode's `enabled_providers` array on 2026-08-07 (3 entries vanished with no error).
 - **Schema rejection of unknown root keys** — `opencode` enforces a strict schema on `/root/.config/opencode/opencode.json`. JSON parses fine (`python3 -m json.tool` succeeds), so syntax check passes — only the runtime schema validator catches it. Stray metadata keys (`_last_updated`, `_patch_summary`, any `_`-prefixed top-level key) break boot with `Error: Configuration is invalid at ... ↳ Unrecognized keys: _last_updated, _patch_summary`. Bit Arif 2026-08-07 when a sibling session's automation dumped patch metadata at the JSON root. **Mandatory post-write probe (do this AFTER every opencode.json edit):**
   ```bash
   cd /root/.config/opencode && echo ping | timeout 30 opencode run --log-level DEBUG --print-logs 2>&1 \

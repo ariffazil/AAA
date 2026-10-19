@@ -79,4 +79,4 @@ curl -s http://127.0.0.1:4000/v1/chat/completions \
 ## Reference files
 
 - `references/thinking-model-tool-loop-2026-08-09.md` — full diagnostic transcript from live incident
-- `references/gemini-api-integration-2026-08-09.md` — Gemini API key setup and agy CLI config
+- `/root/AAA/skills/gemini-integration/references/gemini-api-integration-2026-08-09.md` — Gemini API key setup and agy CLI config

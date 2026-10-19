@@ -1108,7 +1108,7 @@ NOT the Malaysia subsidy paradox. For a future revamp, candidate additions: Trip
 #10 Subsidy Paradox (monthly fuel-subsidy bill, trip > RM5B/month; actuals Jan RM0.7B →
 Apr RM7.5B → Jun ~RM3.5B) and Tripwire #11 Nation Net Fiscal Position (PETRONAS dividend
 + petroleum revenue − fuel/electricity subsidies). Numbers bank: pdf-report-generation
-skill `references/petronas-subsidy-paradox-2026.md`.
+skill `/root/AAA/skills/pdf-report-generation/references/petronas-subsidy-paradox-2026.md`.
 
 **/propa/ + /malaysia/ — gap closed 2026-08-06 (v3 live):** Tripwire #10 (Subsidy bill /
 Petroleum dividend > 1.0× for 2 consecutive quarters) is now BAKED INTO both pages as a
