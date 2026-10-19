@@ -1,5 +1,6 @@
 ---
 name: geox-mcp-tool-invocation
+version: 1.1.0
 description: "How to invoke GEOX MCP tools from a shell/agent. Documents the working HTTP+streamable-HTTP session protocol (initialize → notifications/initialized → tools/call), the schema quirks (mode parameter not action; arguments not params; well_id not well), the auth header rule, and the canonical evidence-envelope output shape. Triggers on any GEOX MCP call attempt from a non-FastMCP client (Hermes shell, OpenClaw, OpenCode, custom agent)."
 license: Proprietary
 platforms: [linux]
@@ -165,3 +166,25 @@ This is what works. Verified 2026-08-13.
 - arifOS meridian for tool emission: `/root/AAA/governance/` (F2/F7/F9/F11 floors)
 
 *DITEMPA BUKAN DIBERI — Tool invocation is forged, not guessed.*
+## Tool coverage — the 7 tools no other skill documents (2026-10-20)
+
+Verified against the live `tools/list` schema and by calling each one. Zero other
+GEOX skills mention these names, so an agent had no procedure and re-derived from
+priors. Use these exact shapes.
+
+| Tool | Minimal working call | Returns | Gate |
+|---|---|---|---|
+| `geox_list_registered_sources` | `{}` | registered native SEG-Y sources | none — safe read |
+| `geox_observe` | `{"modality_hint":"map"}` | EarthObservationPacket | **HOLD** without `artifact_ref`; vision output is EVIDENCE, interpretation stays HYPOTHESIS |
+| `geox_register_native_source` | `{"source_uri":"/abs/path.segy","source_id":"SRC-1","classification":"public","authority":"registrant"}` | registration receipt + SHA-256 + binary header | validates file existence; does NOT load traces |
+| `geox_extract_native_trace` | `{"source_id":"SRC-1","trace_index":0}` | NativeTraceRef + permitted/prohibited uses | HOLD if source unregistered, authority insufficient, or classification disallows |
+| `geox_calibration_register_witness` | `{"witness":{"type":"structural","datum":"WGS84","vertical_datum":"MSL","estimated_depth_uncertainty_m":25,"calibration_method":"literature","reference":"Madon 2006"}}` | witness registration | without a witness, structural gates return **UNMEASURED** |
+| `geox_glof` | `{"mode":"run"}` | multi-phase cascade result | modes: run / inverse / mcmc / propagate / phase |
+| `geox_paleobiodb_query` | `{"mode":"taxa","name":"Tyrannosaurus"}` | PBDB taxa / occurrence / zone | public-domain; literature-derived, unevenly sampled |
+
+**Chain rule.** `register_native_source` → `list_registered_sources` → `extract_native_trace`
+is the only order that works; each step writes the handle the next one reads. Registering
+without extracting leaves the lane empty (that is why the source registry read 0 entries).
+
+**Do not** call `geox_observe` expecting pixels without an artifact, and do not treat a
+returned `HOLD` as a failure — it is the gate working.
