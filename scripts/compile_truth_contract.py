@@ -573,6 +573,16 @@ def main():
         except Exception as e:
             print(f"⚠ Target {target_path} skipped: {e}")
 
+    # The second known writer (generate-public-claims.cjs) checks this marker
+    # and exits 2 before writing. This is a mechanism, not a cron convention.
+    owner_marker = "/var/www/html/mcp/shared/.claims-owner"
+    try:
+        os.makedirs(os.path.dirname(owner_marker), exist_ok=True)
+        with open(owner_marker, "w", encoding="utf-8") as f:
+            f.write("compile_truth_contract.py\n")
+    except Exception as e:
+        print(f"⚠ Owner marker skipped: {e}")
+
     print("\n[P0 Truth Contract Compiled Successfully]")
     print(f"  • Organs Alive: {organs_alive_count}/{len(reality_strip)}")
     print(f"  • FQ Metabolism: {round(fq_score, 2)} ({fq_diagnosis})")
