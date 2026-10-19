@@ -27,6 +27,23 @@ MCP/A2A are replaceable adapters. arifOS decides. VAULT999 proves.
 
 ---
 
+## 0b. Current verified state — 2026-10-19 15:26Z
+
+- **arifOS :8088** — degraded, 10/13 floors. F8 failing; F5/F6 unmeasured. Thermodynamic HOLD
+  derives from cold qdf 0.5946 (0.5 structural baselines), not from an observed collapse.
+- **Defects queued (not applied)** — A: `rest_routes.py:1277-1280` judges uncalibrated
+  arifFlow g (0.5613, `PHASE_1_HEURISTIC_UNCALIBRATED`) against the 0.80 DERIVED threshold.
+  B: `governance_kernel.py:208-214` computes a verdict from placeholder inputs already
+  declared unmeasured. Both need one restart; Soak forbids it.
+- **Soak** — PID 94370 on 7628a9a. Gates: loop p99 50/500 ms · fds 29/32 · threads 6/8.
+  Window ends `2026-10-20T14:17:25Z` (22:17 MYT). No restart, no new MCP clients.
+- **Source vs deploy** — arifOS source is 8 commits ahead of deployed 7628a9a. Deploy waits.
+- **HERMES gateway** — active, NRestarts=0. Delivery guard reads a frozen profile copy of
+  `channel_directory.json` (31 entries, 2026-08-15) while the gateway writes the live copy
+  (116 entries). Split-brain directory; adding IDs to the live file fixes nothing.
+- **Evidence** — `forge_work/system-state-2026-10-19/SYSTEM-STATE-2026-10-19.pdf`
+  (sha256 `84135c4a05a255482b233e5c…`), delivered to sovereign 2026-10-19 23:12 MYT.
+
 ## 1. Seven pillars (must all stand)
 
 | # | Pillar | SOT | Live proof |
