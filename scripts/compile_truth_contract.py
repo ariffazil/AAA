@@ -205,6 +205,7 @@ def main():
     # 3. ATTENTION MEMBRANE & HOLDS
     fq_score = flow_state.get("fq", 1.04)
     fq_diagnosis = flow_state.get("diagnosis", "BALANCED")
+    fq_status = flow_state.get("status") or flow_state.get("verdict") or "UNKNOWN"
     exec_count = flow_state.get("execute_count", 46)
     verify_count = flow_state.get("verify_count", 48)
 
@@ -321,6 +322,7 @@ def main():
             "execute_count": exec_count,
             "verify_count": verify_count,
             "fq_quotient": round(fq_score, 2),
+            "fq_status": fq_status,
             "diagnosis": fq_diagnosis,
             "epistemic_class": "DERIVED",
             "source": flow_state.get("source", "daemon:arifFlow:7073"),
@@ -461,7 +463,8 @@ def main():
         "epistemic_class": "DERIVED",
         "value": round(fq_score, 2),
         "diagnosis": fq_diagnosis,
-        "state": "MEASURED_PASS",
+        "status": fq_status,
+        "state": "SIMULATED" if str(fq_status).upper() == "SIMULATION" else "MEASURED_PASS",
         "source": flow_state.get("source", "daemon:arifFlow:7073"),
         "observed_at": flow_state.get("timestamp", now_iso),
         "falsifier_url": "https://arifos.arif-fazil.com/api/organs/arifflow/health",
@@ -510,6 +513,7 @@ def main():
         },
         "metabolism": {
             "fq": round(fq_score, 2),
+            "fq_status": fq_status,
             "diagnosis": fq_diagnosis,
             "execute_count": exec_count,
             "verify_count": verify_count
