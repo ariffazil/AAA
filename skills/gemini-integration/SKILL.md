@@ -132,4 +132,4 @@ Google provides a public **Gemini Docs MCP** server at `https://gemini-api-docs-
 
 ## Reference files
 
-- `references/thinking-model-tool-loop-2026-08-09.md` — full diagnostic of thinking model failures that led to this integration
+- `/root/AAA/skills/thinking-model-tool-loops/references/thinking-model-tool-loop-2026-08-09.md` — full diagnostic of thinking model failures that led to this integration

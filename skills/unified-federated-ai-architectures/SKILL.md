@@ -37,7 +37,7 @@ It was scoped across technical, epistemic, economic, operational, and human dime
 
 All detailed evidence, including URLs/DOIs, confidence scores (capped at 0.90), break_points (where analogies fail), and per-part breakdowns, is stored in:
 
-*   `references/findings-parts-i-iii.md` — Conceptual taxonomy, information theory, epistemology & self-verification.
+*   `references/findings-parts-iv-vi-viii.md` — Conceptual taxonomy, information theory, epistemology & self-verification.
 *   `references/findings-parts-iv-vi-viii.md` — Governance, economics, human factors, AGI/cognitive federation analogies.
 *   `references/scout-validation-summary.md` — Ad-hoc structural validation reports for both SCOUT outputs.
 
