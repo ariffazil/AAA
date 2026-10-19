@@ -531,7 +531,7 @@ Pattern: **add the new engine prominently, demote the old engine to collapsed/la
 The 5-item top-nav is the **human mirror** of organ outputs:
 HOME(AAA) · EARTH(GEOX) · WORDS(arifOS) · WORLD(WEALTH) · WORK(WELL).
 Organs are agent-owned — they live in `machine_links`, not the human nav.
-See `references/nav-canon-v7-organ-mirror.md` for the full architecture.
+See `/root/AAA/skills/arif-fazil-site-ops/references/nav-canon-v7-organ-mirror.md` for the full architecture.
 
 ## Hub hero pattern (locked 2026-08-07)
 

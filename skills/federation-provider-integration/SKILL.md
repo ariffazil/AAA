@@ -151,7 +151,7 @@ Antigravity is Google's hosted coding agent runtime. Deploy managed agents with 
 - **`drop_params: True`** needed in litellm_settings to avoid unsupported parameter errors from non-standard providers.
 - **Context windows differ across providers:** Same model can have different limits via different providers (e.g. MiMo V2.5 = 1M via Xiaomi token plan, 262k via HuggingFace).
 - **Gemini `thoughtSignature` in responses:** Gemini thinking models return `thoughtSignature` fields in response. OpenAI-compat proxy strips these correctly, but native route may not.
-- **agyg CLI requires TTY:** The `agy` CLI (Gemini API CLI) uses bubbletea and requires `/dev/tty`. Does not work in non-interactive terminal contexts. Use REST API directly for headless operations. See `references/session-2026-08-09-layer-separation.md` for antigravity managed agent deployment patterns.
+- **agyg CLI requires TTY:** The `agy` CLI (Gemini API CLI) uses bubbletea and requires `/dev/tty`. Does not work in non-interactive terminal contexts. Use REST API directly for headless operations. See `/root/AAA/skills/gemini-integration/references/session-2026-08-09-layer-separation.md` for antigravity managed agent deployment patterns.
 
 ## Related Skills
 

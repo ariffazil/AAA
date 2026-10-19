@@ -73,7 +73,7 @@ changing the repo is the other skill's job, with its own authority gate.
 | 10 | "is this workflow YAML actually sound" | `workflow_integrity` | parse result, duplicate job IDs, unsafe patterns |
 | 11 | "does our documented tool count match runtime" | `manifest_reconcile` | README/FEDERATION/AGENTS vs live tools/list |
 | 12 | "are we enforcing branch protection" | `ruleset_audit` | protection gaps + remediation |
-| 13 | **"is this code real or theatre" (stubs, orphans, leaks)** | read-only peer `audit/audit-ops`: `references/audit-repo-reality.md` + `references/audit-repository-entropy.md` | stub tiers, corruption score, disposition ledger |
+| 13 | **"is this code real or theatre" (stubs, orphans, leaks)** | read-only peer `audit/audit-ops`: `/root/AAA/skills/audit/audit-ops/references/audit-repo-reality.md` + `/root/AAA/skills/audit/audit-ops/references/audit-repository-entropy.md` | stub tiers, corruption score, disposition ledger |
 | 14 | **"do the docs across repos agree"** | `references/forge-cross-repo-doc-zen.md` | orphan docs, wrong floor names, deprecated tool refs, fixed or listed |
 
 Modes 1–12 are the body below. Modes 13–14 are member bodies kept verbatim in `references/`.
@@ -126,7 +126,7 @@ F13 rules on which successor is canonical. Do not silently pick one.
 | `references/forge-cross-repo-doc-zen.md` | forge-cross-repo-doc-zen | `/root/AAA/skills/.archive/merge-20260920/repo-intelligence/forge-cross-repo-doc-zen/` |
 
 Read-only peers owned by another cluster (not absorbed here): `audit/audit-ops`
-(`references/audit-repo-reality.md`, `references/audit-repository-entropy.md`).
+(`/root/AAA/skills/audit/audit-ops/references/audit-repo-reality.md`, `/root/AAA/skills/audit/audit-ops/references/audit-repository-entropy.md`).
 Mutation lane: `github/github-ops`.
 
 <!-- wave1-merge:FLOW:END -->
