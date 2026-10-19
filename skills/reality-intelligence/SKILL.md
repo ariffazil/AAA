@@ -19,6 +19,25 @@ Observe → collapse → act. Bukan meneka. Ini `probe-before-panic` dalam bahas
 
 ---
 
+## REALITY-MESH DOOR TABLE v2 (Pintu 4 = primary host)
+
+> Satu perkataan "reality", tujuh paksi berbeza. Jadual ni SATU sumber (ΔK ≤ 0) — owner writable
+> lain cuma pegang 1-baris pointer ke sini. Census 2026-10-19: 21 skill bodies (19 live) / 21
+> fragmen / 21 canon / 5 schema / 4 engine. Canon owners = IMMUTABLE (jangan unlock).
+
+| # | Paksi → Soalan | Owner (kelas) | Lock | Members (kelas) |
+|---|---|---|---|---|
+| 1 | LAW → apa yang wajib benar? | APEX-REALITY-KERNEL (canon) | IMMUT | reality-first · reality-bound-authority (fragmen) |
+| 2 | GRAPH → bagaimana realiti berhubung? | REALITY_GRAPH.md (canon) | IMMUT | 5-Layer Doctrine ratified (canon) |
+| 3 | TRUTH-STATE → adakah ini berlaku? | reality-kernel-phase1-evidence-ledger (skill) | writable | AREP×3 · reality-plan · reality_ledger (schema) · RealityLedgerClient.ts (engine) |
+| 4 | NAVIGATION → aku di mana? | reality-intelligence (skill) — **host jadual ni** | writable | reality-navigation-execution · recovery-reality-cache (fragmen) |
+| 5 | LOOP → sistem makin baik? | reality-loop-operator **(exec)** + qrl-arifos **(gov)** | writable | reality-loop/ (engine) · reality_source.ts · deployedReality.ts |
+| 6 | ADAPTERS → domain mana? | my-reality (skill) | writable | malaysia-reality-interface · audit-* reality skills — KEEP SEPARATE, jangan merge |
+| 7 | QUANTUM → contradiction mana? | APEX-quantum-eureka (skill) | writable | AGI-audio-quantum-cognition · rationality-filter-quantum-map (fragmen) |
+
+Pintu 5 pembahagian peranan: **exec** = lari loop (engine, stages, zen-margin) · **gov** = batas QRL
+lawan kernel (HOLD/OBSERVE_ONLY, tiada ACT). Tiada pertindihan kuasa.
+
 ## Empat mode (satu command, empat args)
 
 ### root (no args) — MANA AKU, APA SETERUSNYA

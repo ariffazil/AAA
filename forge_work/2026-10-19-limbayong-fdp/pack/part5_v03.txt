@@ -1,0 +1,298 @@
+// ═══════════════════════ PART 5 — THE EARTH ═══════════════════════
+#heading(level: 1)[5    The Earth]
+
+#text(size: 8.3pt, fill: grey)[The previous revision had no geology. This Part is the object the other Parts are about.]
+
+#heading(level: 2)[5.1    Why this section exists]
+A field development plan that contains production, facilities and economics but no geology is a
+plan for a factory with no ore body. The earlier revisions of this pack described Limbayong as a
+set of volumes and a vessel. That is the accountant's view of a mountain range.
+
+This Part asks a different question: what does the ground actually do? Six things follow from the
+answer, and five of them change decisions taken elsewhere in the pack.
+
+#heading(level: 2)[5.2    Plate framework]
+The northern margin of Borneo is the product of one long collision and one long escape.
+
+South China Sea oceanic crust was subducting southward beneath Borneo from the Late Eocene. The
+sediment stripped off the downgoing plate built an accretionary prism — the Crocker complex, now
+exposed on land as folded turbidites. In the early Middle Miocene the attenuated continental crust
+of the Dangerous Grounds arrived at the trench and could not be subducted. It collided. The prism
+was uplifted and eroded, producing the regional surface that every well in this province
+penetrates: the Deep Regional Unconformity. Tan and Lamy (1990) describe this as the change from a
+trench-associated basin to a prograding shelf-slope system, and divide the margin into seven
+tectonostratigraphic provinces.
+
+Figure 5.1 places Limbayong in that framework. The field is not on the shelf. It sits in the
+deepwater fold-and-thrust belt outboard of the shelf edge, in the province the same authors call
+the Outboard Belt, between the NW Sabah Trough and the prograding Baram-Champion delta system.
+
+#figure(
+  image("fig/fig5_tectonic.png", width: 100%),
+  caption: [Figure 5.1 — Plate framework. South China Sea, the rifted Dangerous Grounds block, the Borneo margin and the deformation front. Limbayong sits in the deepwater belt outboard of the shelf, not on the platform. Coastline: Natural Earth 1:50m. Outlines are schematic; position is exact. Sources S-19, S-14. #tag("DERIVED")],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  Two numbers matter for everything downstream. First, the belt is *young and still moving*: Tan and
+  Lamy record a Late Pliocene deformation phase that produced gentle anticlines with numerous
+  crestal faults across this very province. Second, the belt is *built of the same sediment the
+  reservoirs are made of* — the folds are the delta, shortened. That is why the traps are long,
+  narrow and faulted rather than broad and simple.
+]
+
+#heading(level: 2)[5.3    The belt, seen from the sea surface]
+The bathymetry is the cheapest seismic interpretation in the world: it is the structural grain
+expressed as topography.
+
+#figure(
+  image("fig/fig5_bathy.png", width: 100%),
+  caption: [Figure 5.2 — Real bathymetry and shaded relief, NW Sabah deepwater. The NE–SW grain is the fold-thrust belt; each ridge is a shortened anticline. Limbayong reads 994 m from the grid, consistent with the 900–1,200 m reported depth (L-16, L-43). Field coordinates from GEM. Relief: NOAA/ETOPO, ~450 m cells. #tag("DERIVED")],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  The DEM gives four measurements, each checkable:
+]
+#v(1mm)
+#table(columns: (62mm, 28mm, 1fr),
+  table.header([*Measurement*], [*Value*], [*How obtained*]),
+  [Water depth at the field], [994 m], [DEM cell at 5.888 N, 114.510 E — L-43],
+  [Seafloor slope at the field], [3.2°], [DEM gradient; 95th percentile 7.8° within 30 km — L-53],
+  [Shelf break along section A–A′], [144 km from the shelf edge], [−200 m crossing on the transect — L-54],
+  [Total relief, shelf to basin], [about 2,800 m], [Transect minimum and maximum — L-55],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  *The first real finding from the Earth.* Limbayong sits at 994 m, almost exactly the depth the
+  operator reports, on ground that slopes at only 3.2°. That is gentle. It matters twice: a
+  spread-moored or turret-moored unit can sit there without the mooring problem people expect in
+  a fold belt; and the site is not on a steep ridge flank where mass transport deposits would
+  dominate the shallow section. The hazard is not the slope at the field. It is the slope between
+  the field and the shelf, and the faults beneath it.
+]
+
+#figure(
+  image("fig/fig5_section.png", width: 100%),
+  caption: [Figure 5.3 — Real bathymetric section A–A′ across the margin, from the shelf, across the fold-thrust belt, into the basin. Limbayong projects onto the belt at 994 m. Vertical exaggeration ≈32×. Data: NOAA/ETOPO DEM (S-14). #tag("DERIVED")],
+)
+
+#heading(level: 2)[5.4    Stratigraphy and what the reservoir actually is]
+Tan and Lamy divide the margin into four stages, and the division still holds.
+
+#figure(
+  image("fig/fig5_strat.png", width: 100%),
+  caption: [Figure 5.5 — Tectonostratigraphic column. Stages I–III are deep-marine clastics of the accretionary wedge, truncated by the Deep Regional Unconformity; Stage IV is the prograding shelf-slope system that hosts the deepwater fans. The Kinarut fan (10.6 Ma) is the regional analogue for the reservoir interval, not a stated Limbayong reservoir. After Tan & Lamy (1990) and Cullen et al. (2006). #tag("DERIVED")],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  The reservoir is not a layer cake. The operator's own description is precise: *"vertical
+  intercalation of thin-bed, thick sand reservoir"* (S-13). That phrase is worth unpacking, because
+  it is the whole engineering problem in eight words.
+]
+#v(1.5mm)
+#text(size: 8.6pt)[
+  Thin beds and thick beds interbedded means permeability varies by orders of magnitude over
+  metres. Flow will not be homogeneous. Water or gas will find the thick beds first; the thin beds
+  will hold oil that the pressure front reaches late or never. Recovery factor in such a system is
+  not a property of the field — it is a property of the completion design, the well spacing and the
+  pressure support, which is why the operator's paper talks about *"high-grading producer-injector
+  pairing"* rather than about a field-wide number.
+]
+
+#heading(level: 2)[5.5    The trap, and why one field is really several]
+Limbayong is a *severe elongated structure: 30 km long, 2.5 km wide* (S-13). Aspect ratio 12:1.
+That is not a dome. It is a ridge, and ridges in thrust belts are cut by cross-faults.
+
+#figure(
+  image("fig/fig5_structure.png", width: 100%),
+  caption: [Figure 5.4 — Schematic cross-section: a thrust-cored anticline with a gas column over an oil rim, cut into compartments by thrust splays, detached on overpressured shale, with crestal faulting. Not from seismic, and not to scale — topology only. Geometry after published descriptions of the NW Borneo belt (S-13, S-19). #tag("ASSUMED")],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  The operator does not leave this to inference. Their paper names the problem: the structure has
+  *"varying faults frequency"* and *"lateral compartmentalization which impend effectiveness of well
+  drainage and pressure maintenance"*. It also records that four appraisal wells since 2002 gave
+  *"diverse subsurface understanding, indicated possible different depositional model and greater
+  degree of complication."*
+]
+#v(2mm)
+#block(fill: rgb("#FDF4F4"), stroke: (left: 3pt + red), inset: 9pt, width: 100%)[
+  #set text(size: 8.4pt)
+  *This is the most important sentence in the pack, and it is the operator's, not mine.* The company
+  that owns the data says the field is compartmentalised in a way that defeats well drainage and
+  pressure maintenance. Any development plan that assumes one connected tank — including a
+  material-balance model, a single recovery factor, or a single plateau — is contradicted by the
+  operator's own published description.
+]
+
+#v(2mm)
+#text(size: 8.6pt)[
+  Put a number on it. Ten development wells across 30 km is one well every 3 km. If the fault
+  blocks are 2–5 km wide — the assumption in L-52, and it is an assumption — then several
+  compartments receive no well at all, and the wells that exist cannot drain them. The field would
+  produce from the compartments it happens to intersect, at a rate set by those compartments, and
+  the rest of the 139 MMbbl would sit behind a fault. This is testable, cheaply: interference
+  testing and tracers between wells, early. It is also the reason the well count is a bigger value
+  lever than the vessel.
+]
+
+#heading(level: 2)[5.6    Charge, leakage, and the oil rim]
+The discovery history is a geological argument in three dates.
+
+#table(columns: (26mm, 30mm, 1fr),
+  table.header([*Date*], [*Event*], [*What it implies*]),
+  [early 2000s], [Limbayong-1, gas], [A gas accumulation was found first. Public estimates put it near 800 bcf (S-16).],
+  [17 Mar 2014], [Limbayong-2 appraisal: 136 m of oil-bearing sand], [The appraisal found an oil column beneath the gas. Shell 35%, ConocoPhillips 35%, PETRONAS Carigali 30% at the time (S-15).],
+  [2026], [FID, 100% PCSB], [The oil rim, not the gas, is what converted a stranded gas discovery into a development.],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  Why is there an oil rim under a gas field at all? The basin-modelling study for the adjacent
+  Block R gives a mechanism that fits (S-20): in this system, traps with larger structural relief
+  retain oil, while *gas leaks preferentially and progressively to shallower levels, leaving the oil
+  behind*. The same paper reports that the leakage model is observed at Kikeh and Gumusut-Kakap, and
+  that seabed pockmarks and mud volcanoes in the area indicate hydrocarbons reaching the surface
+  today.
+]
+#v(2mm)
+#text(size: 8.6pt)[
+  If that mechanism is operating at Limbayong, three consequences follow, and none of them is in the
+  previous revisions:
+]
+#v(1mm)
+#set enum(numbering: "1.")
++ *The gas column may be a leaking accumulation, not a sealed one.* 790.9 bcf is a static volumetric
+  estimate. On a trap that vents, the producible gas is set by seal capacity and leakage rate, not
+  by trap volume.
++ *The oil rim is the resource that stayed.* Which is consistent with it having been missed by the
+  first well in 2002 and found by an appraisal eleven years later.
++ *The top seal is a dynamic boundary.* Crestal faults in a Late Pliocene deformation phase are the
+  same faults a gas chimney would use. Seal integrity should be tested, not assumed, and any
+  development that changes pressure in the gas cap changes the leakage driving force.
+
+#open-banner[
+  *Not established:* whether seepage is active at Limbayong specifically. The pockmarks and mud
+  volcanoes are documented in the adjacent Block R, on the same trend, not on the Limbayong
+  structure. This is a hypothesis with a mechanism and an analogue, not a measurement. It is cheap
+  to test: a seabed geochemical survey and a repeat bathymetric or AUV survey over the crest.
+]
+
+#heading(level: 2)[5.7    Geomechanics — the Earth pushing back on the drill bit]
+The operator has published the drilling problem, which is unusual and useful (S-17):
+
+- the drilling margin is *less than 0.5 ppg* on some wells, even at the surface section;
+- most deep wells must be drilled *highly deviated, in the direction of minimum horizontal stress*;
+- the consequences named are stuck pipe, hole instability, differential sticking and skin damage;
+- managed pressure drilling is required, with a multi-phase model for gas influx transport.
+
+#v(1mm)
+#text(size: 8.6pt)[
+  A 0.5 ppg window is not a drilling inconvenience. It is a cost and schedule driver, a well-count
+  constraint, and a reason why the tenth well may cost more than the first. Any capital estimate
+  built from day-rate times days, without an MPD spread and a geomechanical contingency, is
+  optimistic at the source. This is also the part of the Earth that most directly supports the
+  decision to drill fewer, better-placed wells rather than many.
+]
+
+#heading(level: 2)[5.8    What the Earth changes]
+Five findings. Each one moves a decision that lives in another Part.
+
+#figure(
+  table(columns: (8mm, 1fr, 1fr),
+    table.header([*ID*], [*Finding from the ground*], [*Consequence for the FDP*]),
+    [E-1], [A 30 × 2.5 km thrust ridge, cut by faults of varying frequency, with lateral compartmentalisation that the operator says defeats drainage and pressure maintenance (S-13).], [The single-tank model is invalid. Recovery factor and plateau are outputs of well placement, not inputs. Part 3's 139.5 MMbbl P50 should be read as a resource in place in several tanks, not one.],
+    [E-2], [Ten wells over 30 km is one well every 3 km; inferred compartment width 2–5 km (L-52).], [Well count, not vessel capacity, is the first value lever. Add interference and tracer tests before the development drilling campaign, or accept that some compartments are never drained.],
+    [E-3], [Gas is the leaking phase in this system; pockmarks and mud volcanoes in the adjacent block show active seepage; Limbayong-1 found gas, an appraisal found 136 m of oil (S-15, S-20).], [790.9 bcf is a static trap-fill number on a possibly leaking trap. The oil rim is the bankable resource. Test seal and seepage before committing gas export capacity.],
+    [E-4], [Drilling margin under 0.5 ppg on some wells; MPD required; trajectories along minimum horizontal stress (S-17).], [Well cost carries a geomechanical premium. A cost estimate without MPD and contingency is optimistic. Fewer wells also means less cumulative geomechanical risk.],
+    [E-5], [About 800 MMboe scattered across deepwater Sabah, and the operator states an intent to be the deepwater hub for East Malaysia (S-13, S-17).], [The value case for Limbayong is not the 139 MMbbl. It is the hub. That is a different economic question from the one the public narrative poses — and a stronger one.],
+  ),
+  caption: [Table 5.1 — Earth findings and their consequences. E-1 to E-4 are sourced; E-5 is strategic and sourced to operator statements.],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  *Read E-1 and E-5 together.* The field is small and compartmentalised. That is a poor standalone
+  investment and an excellent infrastructure anchor for 800 MMboe of neighbours. The previous
+  revisions argued about the vessel; the ground says the argument should be about phasing and hub
+  economics. That is the new light this Part contributes.
+]
+
+#heading(level: 2)[5.9    What the ground still withholds]
+#grid(columns: (1fr, 1fr), gutter: 9pt,
+  block(fill: lightbg, inset: 8pt)[
+    #set text(size: 8.0pt)
+    *Established from the Earth*
+    #v(2pt)
+    - Regional framework, stratigraphic stage and tectonic timing, with sources.
+    - Water depth measured independently: 994 m.
+    - Structure dimensions and complexity from the operator's own paper.
+    - Four appraisal wells; 136 m of oil sand in Limbayong-2.
+    - A published geomechanical constraint: under 0.5 ppg, MPD required.
+    - A mechanism for the gas-oil distribution, with analogues.
+  ],
+  block(fill: rgb("#FDF4F4"), stroke: (left: 3pt + red), inset: 8pt)[
+    #set text(size: 8.0pt)
+    *Not established*
+    #v(2pt)
+    - Reservoir age, net-to-gross, porosity and permeability at Limbayong.
+    - Fault block size, throw, and seal capacity — L-52 is an assumption.
+    - Whether the trap leaks today, and at what rate.
+    - Depth to detachment and the amount of shortening.
+    - Pore pressure and fracture gradient at Limbayong specifically.
+    - Whether the structure is filled to spill or to a leak point.
+  ],
+)
+
+#v(2mm)
+#text(size: 8.6pt)[
+  Every item in the second column is available to the operator and to no one else. That is the
+  honest boundary of a public-source shadow FDP: the Earth is visible from outside, but only its
+  surface. The seismic that would settle all six is not public, and should not be.
+]
+
+#heading(level: 2)[5.10    Geological risk register]
+#figure(
+  table(columns: (8mm, 44mm, 40mm, 44mm, 1fr),
+    table.header([*ID*], [*Risk*], [*Evidence*], [*Impact*], [*Cheapest test*]),
+    [G-1], [Compartments not drained by ten wells], [Operator reports lateral compartmentalisation defeating drainage; 3 km spacing], [Recovery factor falls; plateau shortens; pressure maintenance fails], [Interference test and tracers between first two wells],
+    [G-2], [Top seal leaks at crest], [Crestal faults from Late Pliocene deformation; active seepage nearby], [Gas column smaller than volumetric estimate; 790.9 bcf overstated], [Seabed geochemical survey and AUV bathymetry over the crest],
+    [G-3], [Reservoir quality poorer than analogue], [Thin-bed/thick-sand intercalation; no public porosity or permeability], [Lower productivity index; more wells needed], [Core and DST on the first development well],
+    [G-4], [Drilling margin tighter than planned], [Under 0.5 ppg reported; MPD required], [Well cost and schedule overrun; stuck pipe], [Pre-drill pore pressure from the next appraisal opportunity],
+    [G-5], [Shallow geohazard at the FPSO site], [Fold belt with mass transport deposits; slope 3.2° locally], [Mooring or top-hole problem], [High-resolution site survey before mooring design],
+    [G-6 (note)], [Structure not filled to spill], [No public contact or spill-point data], [Volumes below P90], [Pressure data across contacts from appraisal wells],
+  ),
+  caption: [Table 5.2 — Six geological risks, each with a test that costs less than the decision it informs. G-6 is the one that cannot be closed from public data.],
+)
+
+#v(3mm)
+#heading(level: 2)[5.11    In one page]
+#block(fill: lightbg, inset: 10pt, width: 100%, stroke: (left: 3pt + navy))[
+  #set text(size: 8.5pt)
+  Limbayong is not a dome with a vessel attached. It is a *30 km ridge* in an active fold-thrust
+  belt, made of the same delta sediment that was shortened to form it, cut by faults whose spacing
+  the operator describes as variable and whose effect the operator describes as defeating drainage.
+  #v(2pt)
+  The reservoir is thin beds and thick beds interbedded — heterogeneous at the scale of metres, not
+  kilometres. That is why recovery is a design question and not a number.
+  #v(2pt)
+  The gas is the phase that leaks in this basin. The oil stayed. An appraisal well found 136 m of
+  oil sand eleven years after the discovery well found gas, which is exactly what a leaking gas
+  accumulation with an oil rim looks like.
+  #v(2pt)
+  The drilling margin is under half a pound per gallon on some wells. Every well is expensive and
+  every well carries risk. Ten wells over 30 km is three kilometres apart — which may be too far if
+  the compartments are two to five kilometres wide.
+  #v(2pt)
+  And the field is small: 139 MMbbl. What makes it worth building is not the 139. It is the
+  800 MMboe of neighbours and the operator's stated intention to be the deepwater hub for East
+  Malaysia. *That is the investment case, and it is a different case from the one being told in
+  public.*
+]
+
+
+

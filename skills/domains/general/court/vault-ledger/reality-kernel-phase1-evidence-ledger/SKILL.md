@@ -29,6 +29,8 @@ DO NOT USE WHEN:
 
 ---
 
+> **DOOR TABLE v2:** peta reality-mesh (7 paksi) ada di `reality-intelligence` — Pintu 4 NAVIGATION. Rujuk sana sebelum tambah/migrate skill reality-*.
+
 # Reality Kernel Phase 1 — Evidence Ledger
 
 > **DITEMPA BUKAN DIBERI** — Memory is not evidence. A tool call is not proof.

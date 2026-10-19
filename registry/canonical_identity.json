@@ -94,6 +94,15 @@
     "species": "",
     "status": "active"
   },
+  "agy": {
+    "collapsed_into": "",
+    "fi_slot": "FI-009",
+    "name": "AGY (Antigravity CLI)",
+    "role": "forge-instrument",
+    "source": "forge_instruments",
+    "species": "",
+    "status": "active"
+  },
   "aider": {
     "collapsed_into": "",
     "fi_slot": "",
@@ -204,6 +213,13 @@
     "source": "frozen_registry",
     "status": "active"
   },
+  "hermesarifos-bot": {
+    "fi_slot": "",
+    "name": "Hermes twin \u2014 dormant",
+    "role": "dormant-face",
+    "source": "frozen_registry",
+    "status": "dormant"
+  },
   "i-arif": {
     "collapsed_into": "",
     "fi_slot": "FI-000",
@@ -243,6 +259,15 @@
     "name": "META-MESA Test Agent",
     "role": "test-agent",
     "source": "frozen_registry",
+    "status": "active"
+  },
+  "openclaw": {
+    "collapsed_into": "",
+    "fi_slot": "",
+    "name": "OpenClaw Gateway",
+    "role": "Runtime/surface binding - Telegram host, subagent orchestration",
+    "source": "extensions",
+    "species": "",
     "status": "active"
   },
   "opencode": {

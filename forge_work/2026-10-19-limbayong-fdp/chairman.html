@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>-</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+body { font-family: 'Georgia', serif; font-size: 9.6pt; line-height: 1.45; color:#111; }
+h1 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:19pt; border-bottom:2.5pt solid #111; padding-bottom:5pt; margin:0 0 4pt 0; letter-spacing:-0.4pt;}
+h2 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:12.5pt; margin:16pt 0 5pt 0; color:#111; border-bottom:0.6pt solid #999; padding-bottom:2pt;}
+h3 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:10.2pt; margin:11pt 0 3pt 0; color:#222;}
+h4 { font-family:'Helvetica Neue',Arial,sans-serif; font-size:9.4pt; margin:8pt 0 2pt 0; color:#444; text-transform:uppercase; letter-spacing:0.5pt;}
+table { border-collapse:collapse; width:100%; font-size:8.1pt; margin:7pt 0; font-family:'Helvetica Neue',Arial,sans-serif;}
+th { background:#1a1a1a; color:#fff; text-align:left; padding:3.2pt 4pt; font-weight:600; font-size:7.9pt;}
+td { border-bottom:0.4pt solid #ccc; padding:2.8pt 4pt; vertical-align:top;}
+tr:nth-child(even) td { background:#f6f6f4; }
+code { font-family:'Menlo',monospace; font-size:8pt; background:#efefef; padding:0.5pt 2pt;}
+blockquote { border-left:2.5pt solid #999; margin:7pt 0; padding:3pt 9pt; color:#333; background:#fafaf7; font-style:italic;}
+.verdict { border:1.6pt solid #111; padding:9pt 11pt; margin:11pt 0; background:#fbfbf8;}
+.verdict strong { font-size:12pt; }
+.warn { border-left:3pt solid #b00; background:#fdf4f4; padding:6pt 10pt; margin:8pt 0;}
+.kpi { display:flex; gap:8pt; margin:9pt 0;}
+hr { border:none; border-top:0.6pt solid #bbb; margin:12pt 0;}
+.small { font-size:7.9pt; color:#555;}
+
+@page { margin: 22mm 20mm 22mm 20mm; }
+body { font-size:10.2pt; line-height:1.52; }
+h1 { font-size:17pt; letter-spacing:-0.3pt; margin-bottom:2pt;}
+h2 { font-size:11.8pt; margin-top:15pt; border-bottom:0.5pt solid #bbb;}
+table { font-size:8.4pt; }
+blockquote { font-size:9.4pt; }
+</style></head>
+<body>
+<h1 id="shadow-fdp-paper-to-the-chairman">SHADOW FDP — PAPER TO THE
+CHAIRMAN</h1>
+<h2 id="limbayong-deepwater-development-board-decision-paper">Limbayong
+Deepwater Development · Board Decision Paper</h2>
+<h3
+id="prepared-by-hermes-shadow-chairmans-office-19-october-2026">Prepared
+by HERMES (Shadow Chairman’s Office) · 19 October 2026</h3>
+<p><strong>For the attention of:</strong> Tan Sri Dato’ Seri Mohd Bakke
+Salleh, Chairman, PETRONAS <strong>Classification:</strong> Shadow
+paper. Independent. Not a PETRONAS document. No internal data used.</p>
+<hr />
+<blockquote>
+<p><em>Tan Sri, this paper is written in your language, not the
+geologists’. It has one page of decision, four pages of evidence, and a
+list of the things I could not see. Where I have guessed, I say so.
+Where I do not know, I say that too. — H.</em></p>
+</blockquote>
+<hr />
+<h2 id="decision-required">1. DECISION REQUIRED</h2>
+<p>Whether to continue committing irrevocable capital to Limbayong (FID
+taken 28 August 2026) before three specific facts are established.</p>
+<p><strong>Recommendation: HOLD capital release for six months. Gate on
+1 April 2027.</strong></p>
+<hr />
+<h2
+id="the-equity-question-answered-first-because-it-is-the-real-question">2.
+THE EQUITY QUESTION — ANSWERED FIRST, BECAUSE IT IS THE REAL
+QUESTION</h2>
+<p>You asked what equity assumption sits under this project. The answer
+is the finding:</p>
+<p><strong>The equity is 100% PETRONAS Carigali. There is no partner.
+There will not be one.</strong></p>
+<p>That is not a modelling convenience. It is a structural fact, and it
+is the most important fact in this paper.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Working interest</td>
+<td>PCSB <strong>100%</strong>, operator</td>
+<td>[M] Welligence, Aug 2026</td>
+</tr>
+<tr class="even">
+<td>Farm-out partner</td>
+<td><strong>None</strong></td>
+<td>[M] 24 years, four failed development attempts</td>
+</tr>
+<tr class="odd">
+<td>Funding structure</td>
+<td>100% equity from PETRONAS balance sheet; no project finance</td>
+<td>[A] — no public debt facility disclosed</td>
+</tr>
+<tr class="even">
+<td>Peak cash exposure</td>
+<td><strong>US$4.05bn by 2030</strong>, before first revenue</td>
+<td>[D]</td>
+</tr>
+<tr class="odd">
+<td>RM equivalent</td>
+<td><strong>RM 16.6 billion</strong> at 4.10</td>
+<td>[D]</td>
+</tr>
+<tr class="even">
+<td>Cash returned</td>
+<td><strong>Not before 2037</strong> — ten years after first spend</td>
+<td>[D]</td>
+</tr>
+<tr class="odd">
+<td>Downside absorbed by</td>
+<td>PETRONAS alone, therefore the Malaysian public</td>
+<td>[D]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-100-is-not-a-choice">Why 100% is not a choice</h3>
+<p>A 100% interest is normally a strategic decision. Here it is a
+<strong>residual</strong> — the position left over after everyone else
+declined.</p>
+<p>Section 7 of the underlying study ran the numbers from a foreign
+contractor’s seat. On a contractor basis, Limbayong needs
+<strong>US$96/bbl Brent to return 10%</strong>. Not 15% — 10%. Brent has
+exceeded $96 for a minority of the last decade. That is why the field
+was discovered in 2002, had a subsea contract awarded in 2021, watched
+its FPSO tender collapse twice, was declared “commercially unviable as a
+standalone” in 2023, and only reached FID in 2026 — when a used hull was
+bought for US$35 million.</p>
+<p><strong>I stress-tested whether a farm-out could fix this.</strong>
+For a 49% partner to reach a 15% IRR at $70 Brent, the fiscal terms
+required are beyond anything Malaysia publishes. The project does not
+generate enough value at $70 to pay a partner a commercial return and
+leave PETRONAS whole. <strong>Any farm-out would be a transfer of value
+from the nation to a private party, dressed as risk transfer.</strong>
+If a farm-out proposal reaches your board, that is the question to ask
+it.</p>
+<h3 id="what-this-means-for-the-equity-assumption">What this means for
+the equity assumption</h3>
+<p>Every model in this pack — mine and the eight technical sections —
+runs at <strong>100% equity, no debt, 10% real discount rate</strong>.
+That is correct for PCSB. But it carries a consequence that a chairman
+should see clearly:</p>
+<p><strong>There is no risk-sharing layer between this project and the
+national balance sheet.</strong></p>
+<p>No partner to share the overrun. No lender to test the assumptions.
+No joint-venture committee to ask the awkward question. When a
+100%-owned project is wrong, it is wrong in private, and nobody outside
+finds out until the write-down.</p>
+<hr />
+<h2 id="the-three-numbers">3. THE THREE NUMBERS</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Value at US$70 Brent</th>
+<th>At today’s US$105</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NPV10</td>
+<td><strong>−US$668M</strong></td>
+<td>+US$586M</td>
+</tr>
+<tr class="even">
+<td>IRR</td>
+<td><strong>6.0%</strong></td>
+<td>13.3%</td>
+</tr>
+<tr class="odd">
+<td>Brent required for NPV = 0</td>
+<td><strong>US$88/bbl</strong></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Brent required for 15% IRR</td>
+<td><strong>US$115/bbl</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read the last two lines together.</strong> The project breaks
+even at $88 and needs $115 for a proper return. Brent is $105 today,
+held there by a Middle East risk premium, not by supply scarcity.
+<strong>This is not an oil project with a price risk. It is a price bet
+with an oil project attached.</strong></p>
+<p>Change one variable — capex — and the picture moves more than any oil
+price move:</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Capex</th>
+<th>capex/boe</th>
+<th>NPV10 @ $70</th>
+<th>IRR</th>
+<th>Breakeven Brent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>US$2.90bn</td>
+<td>$10.5</td>
+<td>−US$180M</td>
+<td>8.6%</td>
+<td>$68</td>
+</tr>
+<tr class="even">
+<td><strong>US$4.05bn (WBS P50)</strong></td>
+<td><strong>$15.0</strong></td>
+<td><strong>−US$668M</strong></td>
+<td><strong>6.0%</strong></td>
+<td><strong>$88</strong></td>
+</tr>
+<tr class="odd">
+<td>US$6.07bn (P50 +50%)</td>
+<td>$22.0</td>
+<td>−US$2,281M</td>
+<td>−0.2%</td>
+<td>$133</td>
+</tr>
+</tbody>
+</table>
+<p>US$15/boe is the industry-typical deepwater number. US$10.5/boe is
+not. <strong>The estimate that makes this project look acceptable is the
+one below the global range.</strong> That should worry the board more
+than the oil price.</p>
+<hr />
+<h2 id="what-is-actually-known-and-what-is-not">4. WHAT IS ACTUALLY
+KNOWN, AND WHAT IS NOT</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Status</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reserves 139 MMbbl + 791 bcf</td>
+<td><strong>Known</strong> — public tracker, data year 2023</td>
+<td>The only hard number in the pack</td>
+</tr>
+<tr class="even">
+<td>Reservoir quality</td>
+<td><strong>Known</strong> — operator’s own SPE paper: <em>“industry top
+decile reservoir complexity”</em>, <em>“lateral
+compartmentalization”</em></td>
+<td>Sanctioning basis, in PETRONAS’s own words</td>
+</tr>
+<tr class="odd">
+<td>Appraisal coverage</td>
+<td><strong>Known</strong> — 4 wells across 30 km of strike, one per 7.5
+km</td>
+<td>10 development wells are de facto appraisal</td>
+</tr>
+<tr class="even">
+<td>Well cost</td>
+<td><strong>Estimated</strong> — US$67M/well P50, no Malaysian deepwater
+benchmark published</td>
+<td>±40%</td>
+</tr>
+<tr class="odd">
+<td>Capex total</td>
+<td><strong>Estimated</strong> — US$4.05bn P50, AACE Class 4</td>
+<td>±30/+50%</td>
+</tr>
+<tr class="even">
+<td>FPSO conversion cost</td>
+<td><strong>NOT KNOWN</strong> — the only public figure I found was a
+2011 article, withdrawn</td>
+<td><strong>Critical gap</strong></td>
+</tr>
+<tr class="odd">
+<td>FPSO capacity fit</td>
+<td><strong>Known gap</strong> — Excalibur ~25–30 kbopd vs 40 kbopd
+design; no gas handling</td>
+<td>31% short on oil, 100% short on gas</td>
+</tr>
+<tr class="even">
+<td>First oil date</td>
+<td><strong>Estimated</strong> — Q4 2030 P50; comparables took 43–46
+months on clean hulls</td>
+<td>2029 is not credible</td>
+</tr>
+<tr class="odd">
+<td>Gas sales agreement</td>
+<td><strong>NOT KNOWN</strong> — no public GSA, no defined route</td>
+<td>US$317M of the NPV</td>
+</tr>
+<tr class="even">
+<td>PSC fiscal vintage</td>
+<td><strong>NOT KNOWN</strong> — deepwater R/C terms are bespoke and
+unpublished</td>
+<td>±8 months of payback</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Two of these gaps are disqualifying at board level.</strong>
+A chairman cannot approve US$4.05bn of capital when the conversion cost
+of the central facility is unknown and the gas — 39% of the barrels and
+110% of the NPV — has no buyer.</p>
+<hr />
+<h2 id="what-would-make-me-change-my-mind">5. WHAT WOULD MAKE ME CHANGE
+MY MIND</h2>
+<p>Five conditions. Three unknowns, two failures.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Condition</th>
+<th>Status</th>
+<th>Evidence needed</th>
+<th>Cost</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Excalibur, after conversion, delivers 40 kbopd + 150 mmscfd</td>
+<td><strong>UNKNOWN</strong></td>
+<td>Lump-sum conversion scope from MMHE; class survey of hull and
+mooring</td>
+<td>US$8–12M</td>
+<td>4–5 mo</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Real capex ≤ US$2.9bn</td>
+<td><strong>FAILS</strong> on WBS</td>
+<td>Independent cost assurance against P50</td>
+<td>US$2–3M</td>
+<td>3 mo</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>10 wells deliver ≥35 kboe/d; P90 ≥120 MMbbl</td>
+<td><strong>UNKNOWN</strong></td>
+<td>One appraisal well on lateral continuity + DST</td>
+<td>US$93–125M</td>
+<td>9–14 mo</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Gas sold ≥US$6/mmbtu, route defined</td>
+<td><strong>UNKNOWN</strong></td>
+<td>Gas sales agreement; SSGP Kimanis tie decision</td>
+<td>US$40–60M</td>
+<td>6 mo</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Brent ≥US$88 sustained to 2030</td>
+<td><strong>Met today — not controllable</strong></td>
+<td>Nothing. This is the bet.</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Score: 0 TRUE · 3 UNKNOWN · 2 FALSE.</strong></p>
+<p>A total of ~US$60M and six months converts three of these into
+answers. That is 1.5% of the capital at risk, to remove the possibility
+of a US$4bn mistake. <strong>The asymmetry is not close.</strong></p>
+<hr />
+<h2 id="the-argument-for-proceeding-anyway-and-its-honest-price">6. THE
+ARGUMENT FOR PROCEEDING ANYWAY — AND ITS HONEST PRICE</h2>
+<p>I would be a poor shadow chairman if I only gave you the numbers that
+support a HOLD. There is a real case for proceeding, and it is not the
+one in the press release.</p>
+<p><strong>The strategic case:</strong> PCSB is 100% WI, it is the
+operator, and it has never led a Malaysian deepwater development. A host
+at Limbayong is the only infrastructure that monetises Bestari and
+anything else found along the L-B-P trend. A host for one marginal field
+is a stranded asset. A host with a second customer is a business. Judged
+on that basis, Limbayong is not a field development — it is the
+<strong>entry ticket to Sabah deepwater as an operator.</strong></p>
+<p><strong>The price of that argument:</strong> it is a portfolio and
+capability decision, and it should be approved as one. It should not be
+approved on the oil economics, because the oil economics do not support
+it at any price below $88.</p>
+<p>A sovereign operator is entitled to make strategic investments. It is
+not entitled to describe them as commercial ones. <strong>If the board
+approves Limbayong, approve it as a capability investment with a stated
+strategic return, not as an NPV-positive project. Then the
+accountability is honest, and the next chairman inherits a decision that
+can be evaluated against what it claimed.</strong></p>
+<hr />
+<h2 id="what-i-could-not-see">7. WHAT I COULD NOT SEE</h2>
+<p>Stated plainly, because a paper that hides its blindness is worse
+than no paper.</p>
+<ul>
+<li>No PETRONAS reservoir model, well proposal, AFE, FDP, or gas
+contract.</li>
+<li>No MMHE conversion estimate. <strong>The number I most needed, I
+could not find.</strong></li>
+<li>No class survey or condition report on Excalibur after six years
+laid up.</li>
+<li>No PSC text. Deepwater R/C terms are bespoke and not published; I
+modelled a generic cost-recovery structure with a profitability sliding
+scale.</li>
+<li>No well performance data from any Malaysian deepwater analogue.</li>
+<li>Every subsurface number is analogue-derived. There is no public
+seismic, log, core or PVT for this field, and I have not invented
+one.</li>
+</ul>
+<p>A full FDP would cost <strong>US$15–40M and take 12–18
+months</strong> of institutional work. This paper cost a fraction of
+that and answers a different question: <strong>not “what is the answer”
+but “what would we need to know before the answer can be
+trusted.”</strong></p>
+<hr />
+<h2 id="recommendation">8. RECOMMENDATION</h2>
+<p><strong>HOLD. Six months. Three deliverables. One gate.</strong></p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>By</th>
+<th>Deliverable</th>
+<th>Owner</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Feb 2027</td>
+<td>Independent cost assurance vs the US$4.05bn WBS</td>
+<td>Group Finance + external</td>
+<td>US$2–3M</td>
+</tr>
+<tr class="even">
+<td>Mar 2027</td>
+<td>Lump-sum conversion scope at MMHE, incl. gas handling and 40 kbopd
+topsides</td>
+<td>MISC + PCSB Facilities</td>
+<td>US$8–12M</td>
+</tr>
+<tr class="odd">
+<td>Mar 2027</td>
+<td>Gas sales agreement, or a written decision that the gas is
+stranded</td>
+<td>Group Commercial</td>
+<td>US$40–60M</td>
+</tr>
+<tr class="even">
+<td><strong>1 Apr 2027</strong></td>
+<td><strong>Gate 1: GO / NO-GO / REVIEW</strong></td>
+<td><strong>Board</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>If all three land favourably: proceed with a full FDP and a
+re-baselined schedule. If any fails: the project is a hull write-down of
+US$35M plus sunk engineering — recoverable, and small against what an
+unbounded commitment would cost.</p>
+<p><strong>The asymmetry is the whole argument.</strong> Six months and
+US$60M, to avoid the possibility of committing US$4.05bn to a project
+whose central facility cost is unknown, whose gas has no buyer, and
+whose break-even sits US$17 below today’s oil price.</p>
+<hr />
+<p><em>Respectfully submitted. Every number carries an evidence class.
+Every claim can be traced. Nothing here is asserted that cannot be
+checked.</em></p>
+<hr />
+</body>
+</html>
