@@ -104,9 +104,42 @@ bukan template artikel MakcikGPT. Semua 42 artikel lain menghidang **shell SPA**
 | title suffix `— MakcikGPT \| arif-fazil.com` | ✓ | ✓ | ✓ |
 | h1 uppercase / 48px / Newsreader / `#EDEAE2` | ✓ | ✓ | ✓ |
 | body bg `rgb(10,11,13)` | ✓ | ✓ | ✓ |
-| h2 Georgia / `#EDEAE2` / border 1px `#1F2733` | ✓ | ✓ | ✓ |
+| h2 Newsreader / 24px / border 1px `#1F2733` | ✓ | ✓ | ✓ |
 | `.makcik-article` max-width 800px | ✓ | ✓ | ✓ |
 | `.signature` + `details.receipts` + `.hashtags` | ✓ | ✓ | ✓ |
+
+## 4c. Punca sebenar — wrapper `<article>`/`<section>` dalam badan `.ts`
+
+**Diagnosis:** 7 artikel (termasuk 2 Gentari) menulis badan `.ts` dengan
+`<article class="makcik-article">` + `<section class="article-section">` sendiri.
+`MakcikGptArticle.tsx` sudah membungkus body dalam `<article class="prose">` dan
+selector `[&>h2]:…` hanya mengenai **anak langsung**. Jadi h2 dalam `<section>`
+terlepas semua styling → jatuh ke global `h2 { Cabinet Grotesk 18px }`.
+
+Hasilnya 7 artikel nampak berbeza daripada 37 yang lain, walaupun CSS sama.
+Ini juga sebab `.cover`/`cover-title` masih muncul pada sesetengah halaman:
+`index.css` sembunyikan `.cover` hanya bila ia anak `.makcik-article` — tetapi
+`cleanHtml` (baris 36–38 `MakcikGptArticle.tsx`) yang buang cover hanya apabila
+corak tepat.
+
+**Fix:** buang semua wrapper `<article>`, `<section>`, `<footer>` daripada badan
+`.ts` 7 artikel itu — biar React yang membungkus, sama seperti 37 artikel lain.
+`<h2 style="…Georgia…">` inline juga dibuang; kini semua h2 ikut token.
+
+Disemak: 7/7 tiada baki `section`/`makcik-article`; tag balance OK; h2 computed
+style **Newsreader 24px border 1px** pada ketujuh-tujuh, sama dengan sibling.
+
+## 4d. Kerosakan lain yang ditemui semasa menyelaraskan
+
+| Defect | Bukti | Fix |
+|---|---|---|
+| 62→109 HTML merujuk bundle JS berbeza | `index-DmLLK0hq` (lama) vs `index-DNeIMmCN` (baru) | semua HTML dipasang dari `dist`; 109/109 satu hash |
+| `/world/` kad Politik → `/politics/` 308 ke `/world/politics/` | redirect chain | pautan terus ke destinasi |
+| `/world/` kad KLCI/USD-MYR → 308 | idem | pautan terus |
+| `/world/` footer Malaysia → `/malaysia/` 308 | idem | → `/wealth/malaysia/` |
+| `/vitals/` nav tiada **MAKCIKGPT** | nav 5 item vs 6 di seluruh site | ditambah; nav kanon 6 item kini sama pada 7 halaman |
+| `/vitals/` footer Doctrine `/doctrine/` 308 | idem | → `/words/doctrine/` |
+| `/vitals/` render-vitals tulis semula nav lama | `dist/vitals/index.html` stale | nav dipatch pada `dist` + live |
 
 ## 5. Perubahan sumber (SOT, bukan live sahaja)
 
