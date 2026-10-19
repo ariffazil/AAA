@@ -204,7 +204,10 @@ def main():
 
     # 3. ATTENTION MEMBRANE & HOLDS
     fq_score = flow_state.get("fq", 1.04)
-    fq_diagnosis = flow_state.get("diagnosis", "BALANCED")
+    fq_diagnosis = flow_state.get("diagnosis", "UNKNOWN")
+    fq_legacy_diagnosis = flow_state.get("legacy_diagnosis", "UNKNOWN")
+    fq_t1_floor = flow_state.get("t1_fq_floor", 0.3)
+    fq_t1_gate = flow_state.get("t1_mutation_gate") or ("HOLD" if fq_score < fq_t1_floor else "PASS")
     fq_status = flow_state.get("status") or flow_state.get("verdict") or "UNKNOWN"
     exec_count = flow_state.get("execute_count", 46)
     verify_count = flow_state.get("verify_count", 48)
@@ -324,6 +327,9 @@ def main():
             "fq_quotient": round(fq_score, 2),
             "fq_status": fq_status,
             "diagnosis": fq_diagnosis,
+            "legacy_diagnosis": fq_legacy_diagnosis,
+            "t1_fq_floor": fq_t1_floor,
+            "t1_mutation_gate": fq_t1_gate,
             "epistemic_class": "DERIVED",
             "source": flow_state.get("source", "daemon:arifFlow:7073"),
             "observed_at": flow_state.get("timestamp", now_iso),
@@ -463,6 +469,9 @@ def main():
         "epistemic_class": "DERIVED",
         "value": round(fq_score, 2),
         "diagnosis": fq_diagnosis,
+        "legacy_diagnosis": fq_legacy_diagnosis,
+        "t1_fq_floor": fq_t1_floor,
+        "t1_mutation_gate": fq_t1_gate,
         "status": fq_status,
         "state": "SIMULATED" if str(fq_status).upper() == "SIMULATION" else "MEASURED_PASS",
         "source": flow_state.get("source", "daemon:arifFlow:7073"),
@@ -515,6 +524,8 @@ def main():
             "fq": round(fq_score, 2),
             "fq_status": fq_status,
             "diagnosis": fq_diagnosis,
+            "legacy_diagnosis": fq_legacy_diagnosis,
+            "t1_mutation_gate": fq_t1_gate,
             "execute_count": exec_count,
             "verify_count": verify_count
         },
