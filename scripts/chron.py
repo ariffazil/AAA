@@ -222,16 +222,19 @@ def parse_when(raw: str) -> datetime | None:
     return dt.astimezone(timezone.utc)
 
 
-def freshness(e: dict, *, now: datetime | None = None,
-              default_window_h: float | None = None) -> dict | None:
+def freshness(e: dict, *, now: datetime | None = None, default_window_h: float | None = None) -> dict | None:
     """Age in hours and whether the occurrence is still news. None if it never happened."""
     when = parse_when(e.get("occurred_at", ""))
     if when is None:
         return None
     now = now or _utcnow()
     window = e.get("delivery_window_hours")
-    window = float(window) if window is not None else (
-        default_window_h if default_window_h is not None else DEFAULT_DELIVERY_WINDOW_H
+    if window is None:
+        window = e.get("freshness_window_hours")
+    window = (
+        float(window)
+        if window is not None
+        else (default_window_h if default_window_h is not None else DEFAULT_DELIVERY_WINDOW_H)
     )
     age_h = (now - when).total_seconds() / 3600.0
     if age_h < 0:
@@ -261,7 +264,7 @@ def load_ledger(path: Path = LEDGER) -> list[dict]:
 def save_ledger(deliveries: list[dict], path: Path = LEDGER) -> None:
     payload = {
         "_comment": "Append-only record of what CHRON has already told a human. "
-                    "Presence here means the event is no longer news.",
+        "Presence here means the event is no longer news.",
         "deliveries": deliveries,
     }
     tmp = path.with_suffix(".tmp")
@@ -269,10 +272,14 @@ def save_ledger(deliveries: list[dict], path: Path = LEDGER) -> None:
     tmp.replace(path)
 
 
-def fresh_events(events: list[dict], *, who: str | None = None,
-                 now: datetime | None = None,
-                 default_window_h: float | None = None,
-                 deliveries: list[dict] | None = None) -> list[dict]:
+def fresh_events(
+    events: list[dict],
+    *,
+    who: str | None = None,
+    now: datetime | None = None,
+    default_window_h: float | None = None,
+    deliveries: list[dict] | None = None,
+) -> list[dict]:
     """Occurrences that are still news: young enough, not yet delivered, visible to `who`."""
     seen = {d.get("event_id") for d in (deliveries if deliveries is not None else load_ledger())}
     now = now or _utcnow()
@@ -349,11 +356,14 @@ def main(argv: list[str]) -> int:
         i = 0
         while i < len(rest):
             if rest[i] == "--who" and i + 1 < len(rest):
-                who = rest[i + 1]; i += 2
+                who = rest[i + 1]
+                i += 2
             elif rest[i] == "--window" and i + 1 < len(rest):
-                window = float(rest[i + 1]); i += 2
+                window = float(rest[i + 1])
+                i += 2
             elif rest[i] == "--all":
-                show_all = True; i += 1
+                show_all = True
+                i += 1
             else:
                 i += 1
         evs = fresh_events(load(), who=who, default_window_h=window)
@@ -364,10 +374,7 @@ def main(argv: list[str]) -> int:
                     "default_window_hours": window if window is not None else DEFAULT_DELIVERY_WINDOW_H,
                     "count": len(evs),
                     "fresh": [
-                        {
-                            k: e.get(k)
-                            for k in ("id", "title", "kind", "audience", "source", "note")
-                        }
+                        {k: e.get(k) for k in ("id", "title", "kind", "audience", "source", "note")}
                         | {"freshness": e["freshness"]}
                         for e in evs
                     ],
@@ -547,7 +554,8 @@ def main(argv: list[str]) -> int:
         got = fresh_events([one], now=at_same_night, deliveries=[])
         assert len(got) == 1, "fresh event not surfaced"
         got2 = fresh_events(
-            [one], now=at_same_night,
+            [one],
+            now=at_same_night,
             deliveries=[{"event_id": "megat-procard"}],
         )
         assert got2 == [], "delivered event resurfaced as news"
