@@ -1,251 +1,150 @@
 ---
-name: github-ops
 id: github-ops
-version: 2.0.0
-description: "Manage GitHub issues, PRs, CI workflows, and commit signing."
+name: "GitHub Ops — Init to Deploy"
+version: 3.0.0
+description: "One GitHub door, init to deploy: auth, repo setup, issues, branches, PRs, CI, review, merge, release, deploy verification, receipt."
 owner: AAA
-risk_tier: low
+risk_tier: medium
 floor_scope: [F1, F2, F11]
 autonomy_tier: T1
 triggers:
-  - authentication
-  - automation
-  - bug-tracking
-  - ci
-  - ci/cd
-  - code-review
-  - coding
-  - configuration
-  - forge-github-ops
-  - gh-cli
-  - git
   - github
-  - github-auth
-  - github-code-review
-  - github-issue-to-pr
-  - github-issues
-  - github-pr-workflow
-  - github-repo-management
-  - issues
+  - gh cli
+  - git remote
+  - repository
+  - repo setup
+  - branch
+  - commit
+  - push
+  - pull request
+  - pr
+  - ci
+  - checks
   - merge
-  - ops
-  - project-management
-  - pull-requests
-  - quality
-  - releases
-  - repositories
-  - runbook
-  - secrets
-  - setup
-  - ssh
+  - release
+  - tag
+  - deploy
+  - issue
   - triage
-tags: [github, git, gh-cli, ops, runbook, authentication, repositories, issues, pull-requests, code-review]
-capability_tier: fed-agent-subagent
-ecology_state: WARM
-owned_by: AAA
-authority_of: AAA
+  - code review
+  - github auth
+  - webhook
+  - github actions
+forged: 2026-09-20
+forged_by: 333-AGI
+upgraded: 2026-10-19
+absorbed: [github-auth, github-issues, github-pr-workflow, github-code-review, github-issue-to-pr, github-repo-management, FORGE-github-workflow]
 ---
 
-# github-ops — ONE routing surface for every GitHub action in the federation
+# GitHub Ops — the single door, INIT → DEPLOY
 
-Seven former GitHub skills are folded into the seven reference files below. The bodies are
-byte-identical to the archived originals. **This file routes; the reference holds the procedure.**
-Do not work GitHub from memory — open the reference the flow points at.
+> **One door.** `github-issues`, `github-pr-workflow`, `github-code-review`, `github-repo-management`,
+> `github-issue-to-pr`, `github-auth` and `FORGE-github-workflow` are **frozen aliases** of this skill.
+> If a harness opened one of those names, you are already here. Do not maintain a second procedure.
+>
+> **This file owns the lifecycle. `references/` owns the detail.** Never work GitHub from memory:
+> open the reference the stage points at.
 
-## FLOW
+**Authority:** T1 = read + branch + commit + push feature branch + open PR are auto.
+`main` push, force-push, rebase, remote-branch delete, multi-repo PR, production deploy = **T2/F13 gate**.
+Release/tag and deploy are T2. Destructive remote operations are T3.
 
-### Step 0 — PREFLIGHT (always, before any branch)
+---
 
-```bash
-gh --version 2>/dev/null || echo "gh: absent"
-gh auth status 2>/dev/null; echo "gh-auth-exit=$?"
-git config --global credential.helper 2>/dev/null || echo "no git credential helper"
-git remote get-url origin 2>/dev/null || echo "no origin remote"
-```
+## THE LIFECYCLE (walk in order; each stage has an exit gate)
 
-Then walk the table top-down. The **observable** is the thing you can actually see on the machine —
-not your impression of the request.
+| # | Stage | Observable that starts it | Do | Exit gate (must be true to move on) |
+|---|-------|---------------------------|----|-------------------------------------|
+| **0** | **INIT** | No auth, or a new repo/clone | `gh auth status`; `git remote -v`; derive `OWNER/REPO`; `gh repo create/clone`; branch protection; Actions secrets | `gh auth status` exit 0 **or** `$GITHUB_TOKEN` proven by a live API read. Remote resolves. → `github-auth.md`, `github-repo-management.md` |
+| **1** | **ORIENT** | Any request about a repo/issue/PR | Read the real object: `gh issue view N --comments`, `gh pr view N --comments`, `git log`, `gh pr checks`. Fresh reads only | You can state object, state, owner/repo, and last human decision without guessing |
+| **2** | **CLASSIFY** | Any GitHub ask | Pick exactly one object class from the table below | One branch chosen; no parallel flows |
+| **3** | **PLAN** | Code change implied | Duplicate sweep (`gh pr list --search`, `git log -S`), scope, branch name, risk tier, F13 gate check | No duplicate PR/issue; scope fits one PR; tier known |
+| **4** | **BUILD** | Implementation | Branch from current base, write code + test. For a bug fix: **sabotage check** — test must fail without the fix | Test fails before, passes after; no sibling call sites left with the same bug |
+| **5** | **PUBLISH** | Work is green locally | Lane-signed commit; `git push -u origin HEAD`; `gh pr create` with **truthful** body (re-read `git status` + staged files first) | Commit signed; branch on remote; PR body matches the actual diff |
+| **6** | **VERIFY** | PR exists | Poll BOTH `/commits/$SHA/status` **and** `/commits/$SHA/check-runs`. Read required checks from branch protection | Required checks green; every red non-required check classified as noise or patch-attributable |
+| **7** | **REVIEW** | PR needs a verdict, or review feedback arrives | `git fetch origin pull/N/head:pr-N`, check out, read surrounding code, post inline comments (`side: LEFT` for deletions) | Every finding has file:line + severity; no verdict from diff-only reading |
+| **8** | **MERGE** | Required checks green + approval | Confirm `mergeable`, `mergeStateStatus`, required contexts; merge per policy | Merge state read back live; branch cleaned; no force/rebase without F13 |
+| **9** | **DEPLOY** | Merge landed and deploy is in scope | Tag/release (`gh release create`), run the organ's deploy command, then **live read-back** of the deployed surface | Public/live endpoint returns the new version or behavior; rollback path named before deploy |
+| **10** | **SEAL** | Work is delivered | Write the receipt with the layer you reached: `repo` ≠ `receipt` ≠ `vault`. Hand-off for the next agent | Claim matches the layer: commit SHA, receipt path, or SEAL id — never "done" alone |
 
-| # | Observable (what you see) | Reference | What it produces |
-|---|---|---|---|
-| **1** | `gh-auth-exit!=0` **AND** `$GITHUB_TOKEN` empty **AND** `~/.git-credentials` shows no `github.com` -> no working credential | `references/github-auth.md` | A working `AUTH_METHOD` (`gh` or `curl` or `none`) + a credential store that survives the session. **Every other branch is blocked until this is `gh` or `curl`.** |
-| **2** | Auth proven, and the object of work is a **repository**: clone / create / fork / remotes / settings / branch protection / Actions secrets / releases / gists | `references/github-repo-management.md` (+ `references/assets/github-repo-management/references/github-api-cheatsheet.md`) | The repo exists / is configured / has a release or secret, verified by a live `gh` or REST read-back |
-| **3** | Auth proven, an **issue number exists**, and a **code change is requested** ("fix #123", "implement this issue", "take this bug to green CI") | `references/github-issue-to-pr.md` | An issue that is *delivered*: premise validated, regression test proven to bite, PR open with an honest live CI state. **This reference owns the discipline**; load `references/github-pr-workflow.md` for PR mechanics and `references/github-code-review.md` before requesting review |
-| **4** | Auth proven, object of work is an **issue**, and **no code change** is requested (create / list / triage / label / assign / comment / close / search) | `references/github-issues.md` (+ `references/assets/github-issues/templates/*`) | Issue opened, triaged, labelled, assigned, or closed — verified by reading the issue back |
-| **5** | Auth proven, work is on a **branch / commit / open PR / watch CI / merge**, with **no issue number in play** | `references/github-pr-workflow.md` (+ `references/assets/github-pr-workflow/references/ci-troubleshooting.md`, `.../conventional-commits.md`, `.../templates/*`) | Branch pushed, PR opened, CI read live, PR merged — each state read back, never assumed |
-| **6** | Auth proven, a **PR number or URL exists** and the ask is **review / look at / verdict** with **no code change requested** | `references/github-code-review.md` (+ `references/assets/github-code-review/references/review-output-template.md`) | A structured verdict (Critical / Warnings / Suggestions / Looks Good) posted as a formal review with inline comments, or delivered locally pre-push |
-| **7** | The work spans **more than one federation repo / an arifOS organ**, or the ask is a **push to main, force-push, rebase, remote-branch delete, or a multi-repo PR** | `references/forge-github-ops.md` | Registry-derived repo paths (`/root/AAA/federation/organs.yaml`) and the F13 confirmation gate honoured **before** the mutation |
+### Object → path (stage 2 in one table)
 
-### Disambiguation — the pairs that look alike
+| Object / ask | Path | Reference |
+|---|---|---|
+| Auth, token, credential, headless login | 0 → 5 | `references/github-auth.md` |
+| Create/clone/fork repo, settings, protection, secrets, topics, release | 0 → 9 | `references/github-repo-management.md` |
+| Issue only: create, list, triage, label, assign, comment, close, search | 1 → 2 → 10 | `references/github-issues.md` |
+| Issue **+ code change**: "fix #123", "take to green CI" | 1 → 4 → 5 → 6 → 8 → 10 | `references/github-issue-to-pr.md` |
+| Branch/commit/open PR/watch CI/merge, no issue number | 1 → 5 → 6 → 8 → 10 | `references/github-pr-workflow.md` |
+| Review a PR (no code change) | 1 → 7 → 10 | `references/github-code-review.md` |
+| Release, tag, deploy, post-deploy verification | 8 → 9 → 10 | `references/github-pr-workflow.md` + organ runbook |
+| Multi-repo / organ-level / push to main / force / rebase | any → **F13 gate first** | `references/forge-github-ops.md` |
 
-- **#3 vs #5.** Both end in a merged PR. Split on the observable: *does an issue number exist?* If yes
-  it is #3 (`github-issue-to-pr` — premise validation, duplicate sweep, sabotage run, honest CI) and #5 is
-  its mechanics subcontract. If no, it is #5 and #3's discipline does **not** apply.
-- **#6 vs everything else.** #6 never changes code. If the ask implies a code change, it is #3 or #5,
-  and #6 becomes a review step *inside* that flow — not a parallel branch.
-- **#7 is an overlay, not an alternative.** It can apply on top of #2 / #4 / #5 the moment the blast radius
-  crosses one repo or touches `main`. Check it before any `git push`.
+---
 
-## CORE RULES
+## HARD RULES (apply at every stage)
 
-Applies to every branch. Duplicates across members are merged; disagreements are **kept and flagged**.
-
-1. **No auth, no work.** Run Step 0 first. `gh` is preferred; `git` + `curl` with `$GITHUB_TOKEN` is the
-   fallback. Never invent a credential — ask the human (`github-auth.md`, methods 1-2).
-2. **Derive `OWNER`/`REPO` from the remote, never hardcode them.**
-   `REMOTE_URL=$(git remote get-url origin)`, then strip `github.com[:/]` and `.git`.
-   `forge-github-ops` is explicit: any `/root/<repo>` literal in the docs is an **EXAMPLE**; the live
-   value comes from `/root/AAA/federation/organs.yaml`, and the registry wins on conflict.
-3. **Every claim about remote state needs a fresh read.** Never say "CI is green", "merged", "released",
-   or "issue closed" without a live `gh pr checks` / `state,mergedAt` / `gh issue view` in this session.
-   Memory is not evidence (`github-issue-to-pr`, step 8).
-4. **Read the thread, not the title.** `gh issue view N --comments` / `gh pr view N --comments`. The body
-   is a filing-time snapshot; decisions live in the comments.
-5. **Sweep before you create.** `gh pr list --search "#<N>" --state all` plus at least two keyword/synonym
-   variants, and `git log --oneline -20 -- <files>`, before opening a PR or an issue.
-6. **The REST `/issues` endpoint returns pull requests too.** Filter with `if 'pull_request' not in i` on
-   every issue listing (`github-issues.md`).
-7. **Never `rm`.** Members and their assets are archived, never deleted. Archive:
-   `/root/AAA/skills/.archive/merge-20260920/github/`.
-8. **Member support files live under `references/assets/<member>/`**, preserving each member's own relative
-   layout (its `references/`, `templates/`, `scripts/`). The scripts the auth flow actually executes sit at
-   the umbrella root in `scripts/` (`gh-env.sh`, `git-credential-token.py`).
+1. **No auth, no work.** `gh` preferred; `git`+`curl` with `$GITHUB_TOKEN` is the fallback. Never invent a credential.
+2. **Derive `OWNER/REPO` from the remote**, never from memory: `git remote get-url origin` → strip `github.com[:/]` and `.git`. Registry (`/root/AAA/federation/organs.yaml`) wins over any literal in a doc.
+3. **Every remote claim needs a fresh read in this session.** "CI green", "merged", "released", "closed" without a live probe = an unsealed claim.
+4. **Read the thread, not the title.** Bodies are filing-time snapshots; decisions live in comments.
+5. **Sweep before create.** `gh pr list --search "#N" --state all` + two synonym variants + `git log --oneline -20 -- <files>`.
+6. **`/issues` returns PRs too.** Filter `if 'pull_request' not in i`.
+7. **Never `rm`.** Archive, never delete. Aliases and old procedures go to `/root/AAA/skills/.frozen/`.
+8. **The PR body must match reality, not the plan.** Hooks can add files between `git add` and commit — re-read the staged diff before writing the description.
+9. **Deploy is not done until the live surface is read back.** A green deploy command is a claim; the endpoint is the evidence.
 
 ### CONTRADICTION — push authority (KEEP BOTH, do not average)
 
-- `forge-github-ops`, in its commit workflow, says inline:
-  **`# NEVER: git push without ARIF confirmation (F13 SOVEREIGN)`** — every push is sovereign-gated.
-- The same file's "Sensitive Actions" list narrows that to: push to `main`/`master`, `--force`, `rebase`,
-  remote-branch delete, and PRs affecting greater than one repo.
-- `github-issue-to-pr`, step 7, states the opposite tempo: *"push and open the PR **right away** — the PR is
-  what dispatches CI ... do not sit on finished work."*
+- `references/forge-github-ops.md`: **never `git push` without F13 confirmation** (every push gated).
+- The same file's sensitive list narrows it to: `main`/`master`, `--force`, `rebase`, remote-branch delete, multi-repo PRs.
+- `references/github-issue-to-pr.md` says push immediately — the PR is what dispatches CI.
 
-These cannot all be the rule for a feature-branch push. **Resolution is F13's, not an agent's.** Until F13
-rules: treat the *narrower* list as the standing gate, and surface the conflict rather than silently
-choosing the convenient reading.
+**Standing resolution until F13 rules:** feature-branch push + PR = T1 (do it, don't sit on green work).
+The narrower sensitive list is the real gate. Surface the conflict; never silently choose the convenient reading.
 
-## PITFALLS
+---
 
-Union of every member's scars, with the specificity that makes them useful. This is the part a summariser
-destroys — read it before running the branch.
+## FAILURE MODES THAT BITE (specific, from live scars)
 
-**Auth (`github-auth.md`)**
-- **`gh auth login --with-token` hangs forever** on keyring-less/headless boxes (VPS, container, no dbus
-  session) — even with `--insecure-storage`, and with no output. Guard it: `timeout 20 gh auth login
-  --with-token`. On exit 124, skip gh's login machinery and write `~/.config/gh/hosts.yml` directly (the
-  exact `printf` block is in the reference), `chmod 600`, then `gh auth status` + `gh auth setup-git` —
-  those read the file store without touching the keyring. Proven on a headless x86_64 VPS, gh 2.97.0.
-- **Windows PTY:** driving `gh auth login` through a pty, answer prompts with `process(submit)`, never
-  `process(write)` with a bare newline. On ConPTY a lone line-feed is not a line terminator, so gh's
-  blocking "Press Enter to open the browser" read never returns and the login hangs silently.
-- Device-flow polling: respect `interval`; add 5s on `slow_down`; `expired_token` -> restart the flow;
-  `access_denied` -> stop. Never echo the token.
-- Windows winget installs gh at `/c/Program Files/GitHub CLI` — add it to `PATH` in the same shell.
-- SSH `port 22: Connection refused` -> `~/.ssh/config` with `Hostname ssh.github.com` and `Port 443`.
-- `git push` asking for a password is expected: GitHub disabled password auth. Token or SSH only.
-- Multiple accounts -> per-host aliases in `~/.ssh/config`, or per-repo credential URLs.
+- **`gh auth login --with-token` hangs headless.** Guard with `timeout 20`; on 124 write `~/.config/gh/hosts.yml` directly, `chmod 600`, then `gh auth setup-git`.
+- **Commit status ≠ check-runs.** Poll both; Actions failures live in check-runs.
+- **Required vs noise.** Read branch protection contexts. If the required check is green and `enforce_admins:false`, the other red checks are not the gate.
+- **Shallow-clone SOT gates + Mergify.** `fetch-depth: 2` sees only the top commits; a Mergify auto-commit hides yours. Fix structurally (squash/reopen or `no-merge` label), don't re-stamp in a loop.
+- **Auto-fix loop max 3 attempts**, then escalate.
+- **Review without checkout is blind.** `git fetch origin pull/N/head:pr-N` first; delete the local branch after.
+- **A regression test that passes with and without the fix proves nothing.** Run the sabotage check.
+- **Symptom-only fix.** `search_files` the bug shape; fix the class or rule siblings out explicitly.
+- **"PR exists" ≠ delivered.** Delivery is merged, read live.
+- **Token leakage.** Never echo tokens; never commit `.env`, `*.pem`, `vault.flat.env`, credentials.
+- **Deploy without rollback.** Name the restore path before you deploy. Archive the previous tree.
 
-**Repo management (`github-repo-management.md`)**
-- `gh secret set` is dramatically simpler than the REST path — REST secrets require `PyNaCl` sealed-box
-  encryption against the repo public key. If secrets are needed and `gh` is absent, install `gh` for that.
-- Auto-merge is GraphQL-only; REST has no endpoint for it.
-- Topic updates need the `application/vnd.github.mercy-preview+json` Accept header.
+---
 
-**Issues (`github-issues.md`)**
-- `GET /repos/{o}/{r}/issues` **includes pull requests**. Always filter `'pull_request' not in i`.
-- `gh issue develop 42 --checkout` is the gh branch-from-issue shortcut; manual equivalent is
-  `git checkout main && git pull origin main` then `git checkout -b fix/issue-42-<slug>`.
+## REFERENCE MAP (byte-identical bodies, provenance headers intact)
 
-**PR workflow (`github-pr-workflow.md`)**
-- Commit-status and check-runs are **two different endpoints** (`/commits/$SHA/status` and
-  `/commits/$SHA/check-runs`). Checking only the first misses GitHub Actions failures.
-- Auto-fix loop: **max 3 attempts, then ask the human.**
-- Push the branch with `git push -u origin HEAD` before `gh pr create`, or the create fails for want of a
-  tracking branch.
-- **PR body must match reality, not the agent's plan.** A pre-commit hook (security scan, ruff
-  auto-fixer, deps audit) may add files to the index between your `git add` and the commit landing.
-  Re-read `git status` and `gh pr view <N> --json files` before writing the PR description — the
-  files-and-lines claim is the most common place to lie to a reviewer.
-- **Required-check vs gate-noise.** Branch protection lists the required checks; everything else is
-  informational. To decide if a PR is mergeable: `gh pr view <N> --json mergeable,mergeStateStatus`
-  AND `gh api repos/<org>/<repo>/branches/main/protection --jq .required_status_checks.contexts`.
-  If the required check passes and `enforce_admins: false`, the `--admin --squash` path is legal —
-  the other red checks are noise, not gate.
-- **`sot-manifest-check` + Mergify + `fetch-depth: 2` race.** Gates that read `git log` over a
-  shallow clone see only the top two commits on the PR branch. Mergify adds an auto-commit on top,
-  pushing your actual code commits off-screen. Symptom: `live_commit` says your SHA, gate says HEAD
-  is something else. Fix is structural, not local: either close + re-open the PR as a single
-  squashed commit before Mergify runs, or disable Mergify on that branch with the `no-merge`
-  label. Re-stamping `live_commit` repeatedly is a losing race.
-- **The 3-stage fallback commit sequence when CI gate noise blocks a correct patch.** When your
-  fix is correct but a gate is fundamentally compatible with it (required check passes, only non-required
-  checks fail), do NOT keep re-stamping the same artifact. Sequence: (1) commit the patch + push.
-  (2) poll the required check; if it passes, **read the OTHER failing checks and decide if they are
-  noise or patch-attributable**. (3) If noise, do the next two commits as **separate follow-up
-  commits** — lockfile regen, SOT-manifest re-stamp, README bump — each with its own message so
-  reviewers can isolate the changes. (4) poll again; if the required check still passes after
-  follow-ups land, admin-squash with `--admin --squash --delete-branch`. Never fold the follow-ups
-  into a single commit with the patch — a reviewer finding one fault must not have to untangle
-  unrelated edits. After approval, squash is fine.
+| Reference | Owns |
+|---|---|
+| `references/github-auth.md` | credential methods, headless gh, device flow, SSH-over-443 |
+| `references/github-repo-management.md` | repo create/clone/fork, settings, protection, secrets, releases, topics |
+| `references/github-issues.md` | issue lifecycle, triage, labels, templates |
+| `references/github-issue-to-pr.md` | premise validation, duplicate sweep, sabotage test, delivery definition |
+| `references/github-pr-workflow.md` | branch/commit/push/PR/CI/merge mechanics, conventional commits, CI triage |
+| `references/github-code-review.md` | review procedure, inline comment shape, output template |
+| `references/forge-github-ops.md` | federation overlay, organ registry, F13 confirmation gate |
+| `scripts/gh-env.sh`, `scripts/git-credential-token.py`, `scripts/verify-canonical.sh` | executable helpers |
 
-**Code review (`github-code-review.md`)**
-- In inline review comments, `line` is the line number in the **new** version of the file; deleted lines
-  need `"side": "LEFT"`.
-- Reviewing a foreign PR without checking it out first is a mistake:
-  `git fetch origin pull/N/head:pr-N && git checkout pr-N`. A diff alone misses issues that only the
-  surrounding code reveals.
-- Clean up afterwards: `git checkout main && git branch -D pr-N`.
+---
 
-**Issue to PR (`github-issue-to-pr.md`)**
-- A regression test that passes **with and without** the fix proves nothing — run the sabotage check:
-  restore the old behavior, confirm the test FAILS, restore the fix, confirm it passes.
-- "Fixing" behavior that the original commit shows is intentional design. Check
-  `git log -p -S "<symbol>"` before changing it.
-- Fixing the symptom at one call site while sibling sites keep the same bug. `search_files` the bug shape
-  and fix the class, or explicitly rule the siblings out.
-- Claiming the issue is delivered because a PR exists. Delivery is the merged state, read live.
+## VERIFICATION (before claiming this skill or a GitHub job is done)
 
-**Federation overlay (`forge-github-ops.md`)**
-- Hardcoded `/root/<repo>` paths are EXAMPLES and drift. Read `source_path` from
-  `/root/AAA/federation/organs.yaml`; the registry wins over any literal in a document.
-- `gh issue` / `gh pr` run outside the repo need `-R "$ORG_REPO"`, with `ORG_REPO` derived from
-  `git remote get-url origin` — not from memory.
+- [ ] `gh auth status` exit 0 (or token proven by a live read)
+- [ ] `OWNER/REPO` derived from remote, not memory
+- [ ] Object state read live this session (issue/PR/CI/merge)
+- [ ] Branch pushed with `-u`; PR body matches `git diff --stat`
+- [ ] Required checks green; non-required failures classified
+- [ ] Merge state read back; deploy surface read back
+- [ ] Receipt names the layer reached: `repo=<sha>` · `receipt=<path>` · `vault=<id or PENDING>`
 
-## REFERENCES
-
-| Reference | Source skill | Original path (pre-merge) |
-|---|---|---|
-| `references/forge-github-ops.md` | forge-github-ops | `/root/AAA/skills/forge-github-ops/SKILL.md` |
-| `references/github-auth.md` | github-auth | `/root/AAA/skills/github/github-auth/SKILL.md` |
-| `references/github-code-review.md` | github-code-review | `/root/AAA/skills/github/github-code-review/SKILL.md` |
-| `references/github-issue-to-pr.md` | github-issue-to-pr | `/root/AAA/skills/github/github-issue-to-pr/SKILL.md` |
-| `references/github-issues.md` | github-issues | `/root/AAA/skills/github/github-issues/SKILL.md` |
-| `references/github-pr-workflow.md` | github-pr-workflow | `/root/AAA/skills/github/github-pr-workflow/SKILL.md` |
-| `references/github-repo-management.md` | github-repo-management | `/root/AAA/skills/github/github-repo-management/SKILL.md` |
-
-Each reference carries a 4-line provenance header; the body beneath it is byte-identical to the pre-merge
-original (sha256 verified at merge time — see the receipt at
-`/root/forge_work/merge-2026-09-20/github-receipt.json`, 9394 bytes, intact).
-
-**Supporting assets** (`references/assets/<member>/...`, member-relative layout preserved):
-
-- `github-code-review/references/review-output-template.md`
-- `github-issues/templates/bug-report.md`, `github-issues/templates/feature-request.md`
-- `github-pr-workflow/references/ci-troubleshooting.md`, `github-pr-workflow/references/conventional-commits.md`
-- `github-pr-workflow/templates/pr-body-bugfix.md`, `github-pr-workflow/templates/pr-body-feature.md`
-- `github-repo-management/references/github-api-cheatsheet.md`
-- `forge-github-ops/liveness.json`
-
-**Executable helpers** (`scripts/`, at the umbrella root): `gh-env.sh`, `git-credential-token.py`. The
-member bodies point at `${HERMES_HOME}/skills/github/github-auth/scripts/...`, a path that does **not**
-exist on this machine (the member directories held SKILL.md only). Use `scripts/` here instead — the fix
-is recorded in the receipt.
-
-## VERIFICATION
-
-- The branch's own reference defines "done" for that branch.
-- Cross-cutting, every branch: every claim about remote state (auth, CI, merge, release, issue state) is
-  backed by a fresh read in this session, never by memory.
-- Pre-merge byte-identity preserved by `/root/forge_work/merge-2026-09-20/github-receipt.json`;
-  originals live in git history pre-2026-09-20. The `.archive/merge-20260920/` safety-net was retired
-  2026-10 (see Scar-2026-10-03-001: representation ≠ reality).
+**The Zen:** one door, eleven stages, every gate opened by evidence — not by memory, not by a sibling's summary.
+DITEMPA BUKAN DIBERI.
