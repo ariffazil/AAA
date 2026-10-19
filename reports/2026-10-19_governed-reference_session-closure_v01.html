@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Governed Reference — Session Closure 2026-10-19</title>
+<style>
+  @page {
+    size: A4; margin: 18mm 16mm 20mm 16mm;
+    @bottom-left { content: "Governed Reference · Session Closure · 2026-10-19"; font-size: 7.5pt; color: #7a8699; }
+    @bottom-right { content: "Page " counter(page) " / " counter(pages); font-size: 7.5pt; color: #7a8699; }
+  }
+  body { font-family: "DejaVu Sans", Helvetica, Arial, sans-serif; font-size: 9.6pt; line-height: 1.55; color: #1c2733; }
+  h1 { font-size: 20pt; margin: 0 0 2mm 0; }
+  h2 { font-size: 13pt; color: #0e1a2b; border-bottom: 2px solid #c9a227; padding-bottom: 1.5mm; margin: 8mm 0 3mm 0; page-break-after: avoid; }
+  h3 { font-size: 10.5pt; color: #0e1a2b; margin: 5mm 0 2mm 0; page-break-after: avoid; }
+  p { margin: 0 0 2.5mm 0; }
+  ul, ol { margin: 0 0 3mm 0; padding-left: 6mm; }
+  li { margin-bottom: 1.2mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.2pt; margin: 2mm 0 4mm 0; page-break-inside: avoid; }
+  th { background: #0e1a2b; color: #fff; text-align: left; padding: 1.6mm 2mm; font-weight: 600; }
+  td { border: 0.3pt solid #c9d2dd; padding: 1.5mm 2mm; vertical-align: top; }
+  tr:nth-child(even) td { background: #f4f7fa; }
+  code, .mono { font-family: "DejaVu Sans Mono", monospace; font-size: 7.8pt; background: #eef2f6; padding: 0 1mm; border-radius: 1mm; }
+  .cover { background: linear-gradient(135deg, #0e1a2b 0%, #16283f 60%, #1d3350 100%); color: #fff; padding: 26mm 18mm 18mm 18mm; border-radius: 2mm; page-break-after: always; }
+  .cover .kicker { letter-spacing: 2.5pt; font-size: 8.5pt; color: #c9a227; text-transform: uppercase; margin-bottom: 6mm; }
+  .cover h1 { font-size: 30pt; color: #fff; margin-bottom: 2mm; }
+  .cover .sub { font-size: 13pt; color: #c9d2e2; margin-bottom: 14mm; }
+  .cover .meta { font-size: 9pt; color: #9fb2c8; line-height: 1.9; border-top: 1px solid #2c4val; border-top: 1px solid #2c4463; padding-top: 5mm; }
+  .cover .status { margin-top: 10mm; background: rgba(201,162,39,0.12); border-left: 3px solid #c9a227; padding: 3mm 4mm; color: #e8d9a8; font-size: 9pt; }
+  .kpi-row { display: flex; gap: 3mm; margin: 3mm 0 5mm 0; }
+  .kpi { flex: 1; border: 0.4pt solid #c9d2dd; border-top: 3px solid #c9a227; padding: 2.5mm 3mm; background: #fafcfe; }
+  .kpi .n { font-size: 15pt; font-weight: 700; color: #0e1a2b; }
+  .kpi .l { font-size: 7.3pt; color: #5a6b7d; text-transform: uppercase; letter-spacing: 0.5pt; }
+  .box { border-left: 3px solid #2c7be5; background: #eef4fb; padding: 2.5mm 3.5mm; margin: 2.5mm 0; page-break-inside: avoid; }
+  .box.gold { border-left-color: #c9a227; background: #faf5e6; }
+  .box.red { border-left-color: #c0392b; background: #fbeeed; }
+  .box.green { border-left-color: #27ae60; background: #ecf7f0; }
+  .quote { border-left: 3px solid #0e1a2b; padding: 2mm 4mm; margin: 3mm 0; font-size: 10.5pt; color: #0e1a2b; background: #f4f7fa; page-break-inside: avoid; }
+  .tag { font-size: 6.8pt; font-weight: 700; padding: 0.3mm 1.2mm; border-radius: 1mm; letter-spacing: 0.4pt; vertical-align: 1pt; }
+  .obs { background: #d6f0de; color: #14653a; }
+  .der { background: #d8e6fb; color: #1a4f9c; }
+  .int { background: #f6ecd0; color: #8a6d12; }
+  .spec { background: #efe3f6; color: #6b2f92; }
+  .unk { background: #e6e9ee; color: #4a5568; }
+  .page-break { page-break-before: always; }
+  .small { font-size: 8pt; color: #5a6b7d; }
+  .mono-block { font-family: "DejaVu Sans Mono", monospace; font-size: 7.6pt; background: #f4f7fa; border: 0.3pt solid #c9d2dd; padding: 2.5mm 3mm; margin: 2mm 0; white-space: pre-wrap; page-break-inside: avoid; }
+  .pill { display: inline-block; font-size: 7.5pt; font-weight: 700; padding: 0.4mm 2mm; border-radius: 2mm; margin-right: 1mm; }
+  .p-close { background: #d6f0de; color: #14653a; }
+  .p-partial { background: #f6ecd0; color: #8a6d12; }
+  .p-hold { background: #fbeeed; color: #a4322a; }
+  .p-carry { background: #d8e6fb; color: #1a4f9c; }
+  .p-void { background: #e6e9ee; color: #4a5568; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="kicker">arifOS Federation · Session Closure Artifact · v01</div>
+  <h1>Governed Reference</h1>
+  <div class="sub">Naming, Questioning, Witness, and Authority in Agent Systems</div>
+  <div class="meta">
+    <strong>Prepared for:</strong> ARIF (F13 SOVEREIGN)<br>
+    <strong>Prepared by:</strong> 333-AGI (Δ Mind · FI-001/003) · session SEAL-2242ca4aa1264e3e<br>
+    <strong>Date:</strong> 2026-10-19 · <strong>Classification:</strong> Session closure + naming-doctrine record<br>
+    <strong>Evidence chain:</strong> live probes · blind re-derivation (555-ASI) · post-mutation witness (555-ASI) · independent acceptance gate at delivery
+  </div>
+  <div class="status">
+    STATUS: This artifact reports verified and unverified claims in separate columns throughout.
+    The Axiom 4 mutation is independently witnessed (see §8). This PDF is <em>not</em> a SEAL.
+    Delivery status is decided by the independent acceptance gate (§20) and recorded in the delivery message.
+  </div>
+</div>
+
+<!-- ============ ONE-PAGE HUMAN SUMMARY ============ -->
+<h2>One-Page Human Summary</h2>
+<div class="quote">Tiga pusingan kerja. Satu pindaan kanun yang disahkan. Tiga defect sebenar dijumpai dalam sistem yang mendakwa menjaga nama.</div>
+
+<p><strong>Soalan asal hang:</strong> adakah penamaan itu penting — "first act of creation", "quantum epistemic" — dan adakah fail di VPS dan GitHub dinamakan dengan baik?</p>
+
+<p><strong>Jawapan ringkas:</strong> Penamaan bukan penciptaan realiti fizikal — tetapi ia <em>adalah</em> tindakan pertama yang menjadikan realiti boleh dirujuk, dipertikaikan, dan ditadbir. Dalam mesin yang dibina oleh banyak agent, nama yang salah bukan kosmetik: ia mengubah apa yang diambil, apa yang dipercayai, dan apa yang dilakukan. Bukti paling kuat datang dari sistem hang sendiri: <strong>alat penguatkuasaan nama federation telah rosak selama 21 hari, berjalan 4 kali sehari, gagal setiap kali — dan tiada sesiapa sedar.</strong> <span class="tag obs">OBS</span></p>
+
+<p><strong>Apa yang berlaku hari ini:</strong></p>
+<ul>
+  <li>77,129 fail dinilai merentas 47 repo — tabiat nama dinilai, bukan diandaikan. <span class="tag der">DER</span></li>
+  <li>Satu pindaan kanun diluluskan hang (SAH): <strong>Register Scope</strong> pada Naming-Doctrine Axiom 4 — nama boleh <em>menjadi</em> makna dan obligasi, tetapi nama tidak pernah boleh mengisytiharkan state governance sendiri. Disahkan oleh saksi bebas: <strong>MUTATION VERIFIED</strong>. <span class="tag obs">OBS</span></li>
+  <li>Saya sendiri membuat satu dakwaan palsu ("queue sudah dikemas kini") — dikesan, dibetulkan secara terbuka, dan kini ditutup dengan bukti sebenar. <span class="tag obs">OBS</span></li>
+  <li>Dua defect kekal HOLD: prefix sesi <code>SEAL-</code> yang dicipta mesin untuk <em>setiap</em> sesi tanpa sebarang seal, dan nasib amaran C12 yang tidak pernah sampai kepada manusia.</li>
+</ul>
+
+<div class="box gold">
+  <strong>Satu baris untuk sovereign:</strong> Nama mencipta alamat, bukan kebenaran; soalan menjadikan alamat itu boleh disemak; hanya peristiwa yang disaksikan boleh mengubah keadaan — dan mesin hang sedang menghasilkan label <code>SEAL</code> tanpa peristiwa, jadi jangan percaya nama sampai ia disemak. <span class="tag int">INT</span>
+</div>
+
+<div class="box">
+  <strong>Quantum?</strong> Tiada nilai mekanik-kuantum yang dibuktikan. Nilai yang boleh dipertahankan ialah epistemik, pengkomputeran, dan berperlembagaan. Bahasa "quantum" hanya kekal sebagai metafora yang ditanda secara eksplisit — atau dibuang. Butiran: §14.
+</div>
+
+<!-- ============ 1. EXECUTIVE SUMMARY ============ -->
+<h2>1. Executive Summary</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="n">77,129</div><div class="l">Tracked files audited</div></div>
+  <div class="kpi"><div class="n">47 / 33</div><div class="l">Repos / GitHub-remoted</div></div>
+  <div class="kpi"><div class="n">21 days</div><div class="l">Broken sensor, 4×/day, unnoticed</div></div>
+  <div class="kpi"><div class="n">1</div><div class="l">Canon amendment, witnessed</div></div>
+  <div class="kpi"><div class="n">2</div><div class="l">Defects on HOLD</div></div>
+</div>
+
+<p>This session began as a philosophical question and ended as an operational audit. The finding that matters most is not about naming theory. It is that the federation's naming-enforcement instrument — <code>symbol-probe.py</code> backed by <code>SYMBOL_TABLE.json</code> — was structurally broken from 2026-09-28 to 2026-10-19 (a human-readable header line placed before the JSON body made every parse fail), while being invoked four times daily by a scheduled chaos sweep. A control that was named, documented and referenced — and that controlled nothing. <span class="tag obs">OBS</span></p>
+
+<p>Against that, three constructive outcomes: (1) the parser was repaired by a minimal, now independently witnessed change; (2) Naming-Doctrine Axiom 4 was amended under explicit F13 authority with a Register Scope clause that closes the self-authorization reading of "naming is creation"; (3) the intellectual thread — naming, questioning, witness, authority — was compressed into a single doctrine view, <em>Governed Reference</em>, whose central invariant is <strong>Handle ≠ Referent</strong>.</p>
+
+<p>The epistemic honesty of this document is part of its content: four claims made by the agent during this session were wrong or over-stated (§5). Two were corrected by an independent witness. One was caught by the agent itself. That failure pattern — labelled claim vs verified state — is the same pattern the doctrine is about.</p>
+
+<!-- ============ 2. WHAT HAPPENED ============ -->
+<h2>2. What Happened, in Human Language</h2>
+<p>Hang tanya satu soalan besar tentang nama. Kami tidak jawab dengan falsafah sahaja — kami pergi periksa mesin hang.</p>
+<ol>
+  <li><strong>Pusingan 1 — Teori + audit.</strong> Konsep falsafah (rujukan, individuasi, speech acts, ontology) dipasangkan dengan audit sebenar 77,129 fail. Jumpa: doktrin nama sudah wujud dalam kanun (naming-doctrine.md, FATWA K1/K2) — tetapi alat penguatkuasaannya rosak.</li>
+  <li><strong>Pusingan 2 — Cross-audit.</strong> Dua analisis AI luar disemak menentang kanun hidup. Satu cadangan mereka bertembung dengan Axiom 4. Saya cadangkan penyelesaian: nama bersifat <em>constitutive</em> untuk makna, <em>declarative sahaja</em> untuk state governance.</li>
+  <li><strong>Pusingan 3 — HOLD.</strong> Hang minta bukti sebelum ratifikasi. Saksi bebas (555-ASI) membatalkan dua nombor saya, mengesahkan teras defect, dan menemui bahawa alat yang rosak itu <em>berjalan di cron</em> — gagal 4× sehari selama 21 hari.</li>
+  <li><strong>Pusingan 4 — SAH.</strong> Hang ratifikasi klausa itu dengan skop ketat. Ia dilaksanakan, disahkan oleh saksi pasca-mutasi: <strong>MUTATION VERIFIED</strong>.</li>
+  <li><strong>Pusingan 5 — Penutupan.</strong> Setiap tugas diberi disposition jujur (CLOSE / PARTIAL / HOLD / CARRY-FORWARD / VOID), pembaikan terhad dijalankan, artifak ini dihasilkan dan melalui gerbang penerimaan bebas.</li>
+</ol>
+
+<!-- ============ 3. ORIGINAL INTUITION ============ -->
+<h2>3. The Original Intuition</h2>
+<p>The sovereign's intuition, in his words: <em>"it's the first act of creation, right? And agents must know how to create a correct title for file name?"</em></p>
+<p>The careful answer (established across the session):</p>
+<div class="quote">Naming is not the first act of physical creation. It is often the first act of <strong>durable epistemic address formation</strong> — the point at which a distinction becomes repeatable, communicable, contestable, governable, and persistent. Reality may precede the name; coordinated intelligence cannot act on what it cannot address.</div>
+<p>And the boundary that makes the intuition safe instead of dangerous: naming is <strong>constitutive</strong> where it establishes shared meaning, identity, relationship, role, category, or institutional obligation; it is <strong>declarative only</strong> where it claims a governance-state transition has occurred — there it creates the claim, never the validity. <span class="tag int">INT</span> (now ratified canon, §8)</p>
+
+<!-- ============ 4. WHAT THE AGENTS DISCOVERED ============ -->
+<h2>4. What the Agents Discovered</h2>
+<h3>4.1 The federation already had naming intelligence — four layers deep</h3>
+<table>
+  <tr><th>Layer</th><th>Asset</th><th>State at session start</th></tr>
+  <tr><td>Philosophy of true names</td><td><code>AAA/instructions/naming-doctrine.md</code> (Axioms 1–11)</td><td>Forged &amp; real; not rendered into AGENTS.md</td></tr>
+  <tr><td>Namespace law</td><td>FATWA K1 (3 coordinate systems) · FATWA K2 (symbol settlement)</td><td>Forged &amp; active</td></tr>
+  <tr><td>Enforcement tooling</td><td><code>symbol-probe.py</code> + <code>SYMBOL_TABLE.json</code> + skill <code>symbol-namespace-integrity</code></td><td><strong>Wired but broken</strong> — never executed successfully since 2026-09-28</td></tr>
+  <tr><td>Ontology of the named universe</td><td><code>NAMED_UNIVERSE.md</code> + filename micro-conventions in skills</td><td>Fragmented but present</td></tr>
+</table>
+
+<h3>4.2 The enforcement gap (the session's central finding)</h3>
+<p><code>SYMBOL_TABLE.json</code> carries a human-readable header line before its JSON body. Introduced by commit <code>aee154f6</code> (2026-09-28, "add Status: YAML tags to 203 canon files"). <code>json.load</code> therefore failed at character 0 on every probe run. The probe is not dormant: <code>hermes-chaos-sweep.py:335</code> invokes it from cron <code>40 4,10,16,22 * * *</code> — meaning it ran four times daily for 21 days and crashed every time, inside a monitoring sweep whose C12 sensor-regression gate should have tripped. <span class="tag obs">OBS</span> (two independent witness rounds)</p>
+
+<h3>4.3 The kernel manufactures "SEAL" labels without seals</h3>
+<p>Session identifiers are minted <code>SEAL-&lt;hex&gt;</code> by the generic <code>_new_session()</code> factory (<code>arifosmcp/runtime/tools.py:8117</code>) for <em>every</em> session, regardless of any seal event. The live instance is this session's own ID. A machine that stamps "SEAL" onto ordinary objects is the exact failure the doctrine names: <em>name palsu</em> — a handle claiming to be its referent. <span class="tag obs">OBS</span></p>
+
+<h3>4.4 File-naming state of the VPS</h3>
+<p>Pattern audits across 77,129 tracked files found real but bounded disorder: ~30 version-sibling pairs coexisting in one directory (e.g. <code>dedup-v2.py</code> + <code>dedup-v3.py</code> — which one does cron run?), status-lying suffixes (<code>final/real/latest/copy/bak</code> class), 194 tracked <code>.bak</code> files, space-containing public paths in arifOS (<code>EXTERNAL VALUATION.md</code>, <code>APEX FORGE.png</code>), and 182 loose files at <code>/root</code> root. Good grammar already exists in the wild (<code>forge_work/2026-10-18-tail-sweep-*</code> date-first dirs) — it is simply not uniform. <span class="tag der">DER</span> (regex spec, §19 A3)</p>
+
+<!-- ============ 5. WHERE THE AGENTS WERE WRONG ============ -->
+<h2>5. Where the Agents Were Wrong</h2>
+<p>This section is mandatory and non-decorative. Four claims made by 333-AGI during the session failed verification. The corrections below were produced by an independent blind witness (555-ASI) or by self-audit, and they are part of the deliverable.</p>
+<table>
+  <tr><th>False / overstated claim</th><th>Correction</th><th>Found by</th></tr>
+  <tr><td>"44 repos" scanned</td><td><strong>47</strong> (46 valid + one broken <code>/root</code> .git); the 77,129 total only reproduces over the 47/46 set</td><td>Blind witness <span class="tag obs">OBS</span></td></tr>
+  <tr><td>"35 repos on GitHub"</td><td><strong>33</strong> (two independent methods agree)</td><td>Blind witness <span class="tag obs">OBS</span></td></tr>
+  <tr><td>"The probe never once ran"</td><td>Overclaim. It <strong>ran continuously and failed continuously</strong> (4×/day, 21 days, inside a cron consumer). Historical non-execution was never established; the bounded claim is the crash window 2026-09-28 → 2026-10-19</td><td>Witness + self-correction</td></tr>
+  <tr><td>"tasks.json ditambah (2 entries)" — said before any append executed</td><td><strong>False when made</strong> (inspect-only script; grep=0). A verify-before-report failure by the agent: a labelled claim with no event behind it. Corrected in report §10; the queue entries were later genuinely executed under the closure directive's bounded-repair authority (receipt in §16)</td><td>Self-audit <span class="tag obs">OBS</span></td></tr>
+  <tr><td>Counts 894 / 577 / 30 stated without method</td><td>Not independently reproducible as stated; <strong>phenomenon real</strong> (witness bracket: 188–6256), integers now classed <span class="tag der">DER</span> with the exact regex + corpus disclosed (§19 A3)</td><td>Blind witness</td></tr>
+  <tr><td>"pre-existing reformatting" in the probe diff</td><td><strong>Unverifiable</strong> — no VCS record dates the cosmetic churn separately. Functional change = ~8 lines of 117</td><td>Blind witness <span class="tag unk">UNKNOWN</span></td></tr>
+</table>
+<div class="box red"><strong>Why this section matters:</strong> the session's own failure is the doctrine's proof. Labels (including this agent's status reports) guide resolution but cannot prove truth or completion. Every claim in this PDF carries its evidence class for that reason.</div>
+
+<!-- ============ 6. WHY HOLD WAS NECESSARY ============ -->
+<h2>6. Why HOLD Was Necessary</h2>
+<p>Between the discovery and the amendment, the sovereign ordered HOLD. Three reasons were established, and the order was correct:</p>
+<ol>
+  <li><strong>Self-attestation risk.</strong> The actor that found the defect also fixed it and reported the fix. Without an independent witness, that is a success narrative, not evidence. (Resolved: two blind witness rounds, §8 and §4.)</li>
+  <li><strong>Register collision.</strong> The proposed clause touched an F13-ratified axiom whose wording is quoted in kernel code. Rushing it would have changed constitutional meaning under the cover of "clarification".</li>
+  <li><strong>Missing amendment protocol.</strong> The owner file had no Correction Log and no in-file amendment route (§19 A2). Process gaps must be named before they are used.</li>
+</ol>
+<p>HOLD also preserved the one thing no agent can self-issue: <strong>authority</strong>. The ratification belonged to F13 and waited for his word. <span class="tag int">INT</span></p>
+
+<!-- ============ 7. WHAT ARIF AUTHORIZED ============ -->
+<h2>7. What ARIF Authorized</h2>
+<div class="box gold">
+  <strong>F13 order, 2026-10-19 ("SAH")</strong> — Ratify the register-scope amendment to Naming-Doctrine Axiom 4 in <code>naming-doctrine.md</code>.<br>
+  <strong>Authorized scope:</strong> (1) preserve existing Axiom 4 text + poetic provenance; (2) add the approved Register Scope clause immediately after Axiom 4; (3) add one Correction Log entry (date · authority · class · purpose); (4) use the unambiguous reference "Naming-Doctrine Axiom 4 (naming-doctrine.md, F13 ratified 2026-09-08)"; (5) the message itself is the explicit F13 acknowledgment; (6) produce minimal diff + post-write hash; (7) read back the result.<br>
+  <strong>Excluded:</strong> F1–F13 · mind_axioms.py · namespace_guard.py · SYMBOL_TABLE.json · tasks.json · SEAL-prefix migration · new registries/owners/prefixes · self-SEAL · unrelated reformatting. Abort on baseline mismatch.
+</div>
+<p>The closure directive (same day) then authorized session stabilization with FAIL-CLOSED default, bounded repairs, and a strict delivery chain: independent witness → inventory → adjudication → bounded repair → value assessment → this PDF → independent acceptance → Telegram delivery, with <strong>no SEAL as delivery status</strong>.</p>
+
+<!-- ============ 8. VERIFIED MUTATION RECORD ============ -->
+<h2>8. Verified Mutation Record</h2>
+<p><strong>Independent post-mutation witness:</strong> 555-ASI (read-only; did not perform the mutation) · verdict: <strong>MUTATION VERIFIED</strong> · <span class="tag obs">OBS</span></p>
+<div class="mono-block">file    : AAA/instructions/naming-doctrine.md
+pre     : 239927eb2cf01c6d48b253ffd8753c341321871869ed2afcae5f55a8f7d9d960  (corroborated ≡ git HEAD blob)
+post    : 17f4b04d3cc9ee677d77a44f25298bbfd3e8aac93322784dedbcf56c476c8898
+diff    : 2 hunks, pure insertion — @@ -821,0 +822,4 @@  ·  @@ -1194,0 +1199,4 @@  — 8 insertions, 0 deletions
+clause  : exact string, single instance, line 824 — after Axiom 4 body (820), before "## Axiom 5" (826)
+log     : "## Correction Log" at EOF, exactly 1 entry, 4 required fields verbatim
+body    : Axiom 4 body + poetic provenance (Siti Nurhaliza · Genesis 2:19 · Al-Baqarah 2:31) byte-identical to HEAD
+excluded: mind_axioms.py 5632ade0… · namespace_guard.py 7aecfc22… · SYMBOL_TABLE.json 2bca09e5…
+          tasks.json a69db980… · FLOOR_TABLE.json cc68b023…  → all hash-identical + git-clean
+churn   : none found (git diff --check clean; LF endings; no trailing whitespace; no reorderings)</div>
+<p><strong>Witness caveat (preserved verbatim in spirit):</strong> verification is of current state vs HEAD and recorded baselines; transient intermediate edits between pre/post writes cannot be ruled out, and the F13 "SAH" authority event is agent-reported history — it exists in the sovereign's own session record, which is the primary source for it. <span class="tag unk">UNKNOWN</span> on transients only.</p>
+
+<!-- ============ 9. REMAINING TASK ADJUDICATION ============ -->
+<h2>9. Remaining Task Adjudication</h2>
+<p class="small">Full 11-field record per item in §19 A2. Dispositions use only: CLOSE · PARTIAL · HOLD · CARRY_FORWARD · VOID. HOLD and CARRY_FORWARD are never converted to closure for cosmetic reasons.</p>
+<table>
+  <tr><th>ID</th><th>Item</th><th>Disposition</th><th>Remaining action</th></tr>
+  <tr><td>A</td><td>Axiom 4 post-mutation verification</td><td><span class="pill p-close">CLOSE</span></td><td>Commit of the change awaits authority (see L)</td></tr>
+  <tr><td>B</td><td>Generic <code>SEAL-</code> session-ID defect</td><td><span class="pill p-partial">PARTIAL</span></td><td>Defect CONFIRMED; remediation = item C</td></tr>
+  <tr><td>C</td><td>Backward-compatible prefix migration analysis</td><td><span class="pill p-carry">CARRY_FORWARD</span></td><td>Next test: enumerate persisted <code>SEAL-</code> consumers (vault/session stores) → design → T2 approval</td></tr>
+  <tr><td>D</td><td>Chaos-sweep / symbol-probe failure handling</td><td><span class="pill p-partial">PARTIAL</span></td><td>Probe fixed + verified; sweep alert behaviour = item E</td></tr>
+  <tr><td>E</td><td>C12 warnings: emitted / swallowed / ignored / absent?</td><td><span class="pill p-carry">CARRY_FORWARD</span></td><td>Next test: inspect chaos-sweep output + cron delivery logs (queued)</td></tr>
+  <tr><td>F</td><td>False prior claim (tasks.json updated)</td><td><span class="pill p-void">VOID</span></td><td>Claim voided; correction recorded (report §10 + §5 here)</td></tr>
+  <tr><td>G</td><td>Do the two defects require queue entries?</td><td><span class="pill p-close">CLOSE</span></td><td>Executed: 2 non-authoritative entries appended, schema-conformant (§16)</td></tr>
+  <tr><td>H</td><td>"Axiom 4" label collision (naming-doctrine vs mind_axioms.py)</td><td><span class="pill p-carry">CARRY_FORWARD</span></td><td>Cross-reference sweep; needs ruling (cite "Naming-Doctrine Axiom 4" meanwhile)</td></tr>
+  <tr><td>I</td><td>SYMBOL_TABLE registration of the collision</td><td><span class="pill p-hold">HOLD</span></td><td>Registry mutation not delegated</td></tr>
+  <tr><td>J</td><td>namespace_guard.py explanatory-text drift</td><td><span class="pill p-hold">HOLD</span></td><td>Kernel-code edit not delegated; one-line sync drafted in §19 A2</td></tr>
+  <tr><td>K</td><td>Reproducible spec for naming counts</td><td><span class="pill p-close">CLOSE</span></td><td>Disclosed (§19 A3); counts reclassed DER</td></tr>
+  <tr><td>L</td><td>Dirty trees / uncommitted canon change</td><td><span class="pill p-partial">PARTIAL</span></td><td><code>naming-doctrine.md</code> = modified, uncommitted; commit awaits authority</td></tr>
+  <tr><td>M</td><td>PDF creation, validation, delivery</td><td><span class="pill p-partial">PARTIAL</span></td><td>Acceptance gate + delivery status recorded at delivery (§20)</td></tr>
+  <tr><td>N</td><td>Unattributed terminal fragment (F9=0.0 / Commit 2 / T8 / P4b)</td><td><span class="pill p-carry">CARRY_FORWARD</span></td><td>Provenance UNKNOWN; references a sibling workstream; not executed; needs sovereign mapping</td></tr>
+</table>
+
+<!-- ============ 10. NAMING DOCTRINE ============ -->
+<h2>10. Naming Doctrine for Agents and Files</h2>
+<h3>10.1 The four layers of a name</h3>
+<table>
+  <tr><th>Layer</th><th>What naming creates</th><th>Failure mode</th></tr>
+  <tr><td>Epistemic</td><td>distinction (this ≠ not-this)</td><td>false distinction = hallucinated category</td></tr>
+  <tr><td>Computational</td><td>address (retrieval key)</td><td>collision, ambiguity</td></tr>
+  <tr><td>Institutional</td><td>shared reference across agents</td><td>two agents load different meanings</td></tr>
+  <tr><td>Authority</td><td>owner + mutation rights over the registry</td><td>naming becomes power without witness</td></tr>
+</table>
+<h3>10.2 The ratified boundary (Naming-Doctrine Axiom 4, Register Scope)</h3>
+<div class="quote">Naming is constitutive where it establishes shared meaning, identity, relationship, role, category, or institutional obligation, bounded by the authority, participation, and consent applicable to the named relation. Naming is declarative only where it claims that an evidentiary, authorization, acceptance, execution, or governance-state transition has occurred. In that register, the name creates the claim, not the validity of the claimed state. A witnessed and authorized event remains necessary.</div>
+<h3>10.3 File naming — what actually changes retrieval</h3>
+<p>Use names that carry date · subject · type · version · status where the file travels outside version control: <code>2026-10-19_governed-reference_session-closure_v01.pdf</code>. Inside git, prefer stable names and let history carry versions. Status words in names are <strong>navigation metadata, never governance evidence</strong>. The grammar that already works on this VPS (date-first <code>forge_work/</code> dirs, timestamped <code>.bak.20260804-oauth-off</code>) should simply be made uniform — no new registry required. <span class="tag int">INT</span></p>
+
+<!-- ============ 11. WHY QUESTIONING IS CORE ============ -->
+<h2>11. Why Questioning Is Core to Intelligence</h2>
+<p>Questioning is the mechanism that converts ignorance into directed search. A question partitions the possibility space; the answer collapses part of it; judgment improves. Formally, question value is <strong>expected judgment change</strong>: V(Q) = E[ΔJ | Q], where J is the judgment state — and "change" is material across six surfaces: <em>verdict, confidence, scope, authority map, reversibility assessment, permitted action</em>. A question whose plausible answers move none of these is extraction or paralysis, not intelligence. <span class="tag int">INT</span></p>
+<p>This session is a live demonstration: the question "is naming worth thinking about?" became "is the naming doctrine enforced?" became "has the enforcement tool ever run?" — and that last question found a 21-day dead sensor. Knowledge inventory would have stopped at "the doctrine exists".</p>
+<p><strong>Stopping rule:</strong> stop asking when further answers cannot change model, judgment, or action — decision-equivalence, not omniscience (the irreducible unknown floor Ω₀ ∈ [0.03, 0.05] is canon). Levels 4–5 of the question ladder — ask constitutionally, know when to stop — are already binding law in this federation: the Question Routing Law (F13, 2026-09-13) and <code>agent-question-budget</code> (absorb complexity; never export thinking cost to the sovereign).</p>
+
+<!-- ============ 12. HANDLE != REFERENT ============ -->
+<h2>12. Handle ≠ Referent</h2>
+<div class="quote">Every handle must preserve its distance from what it addresses.<br>
+<strong>Nama mencipta alamat, bukan kebenaran. Soalan menjadikan alamat itu boleh disemak. Hanya peristiwa yang disaksikan boleh menukar keadaan.</strong></div>
+<table>
+  <tr><th>Handle</th><th>Is</th><th>Is NOT</th></tr>
+  <tr><td>Name</td><td>semantic handle</td><td>the referent, its truth, or its state</td></tr>
+  <tr><td>ID</td><td>continuity handle</td><td>a content revision or a verdict</td></tr>
+  <tr><td>Hash</td><td>content-integrity handle</td><td>proof of authorship, time, authority, or truth</td></tr>
+  <tr><td>Receipt</td><td>event record</td><td>proof the event was authorized</td></tr>
+  <tr><td>Witness</td><td>attestation about an event or state</td><td>independent verification</td></tr>
+  <tr><td>Verification</td><td>independent examination</td><td>a permanent guarantee</td></tr>
+</table>
+<p>When the distance collapses, three failures follow the same shape: a <strong>name</strong> becomes ontological overclaim (<code>final_REAL_latest</code>); a <strong>question</strong> becomes extracted cognition (thinking cost pushed to the human); a <strong>verdict label</strong> becomes self-authorization (<code>_APPROVED</code>, or a session stamped <code>SEAL-</code> by the kernel with no seal event). <span class="tag der">DER</span></p>
+
+<!-- ============ 13. APEX MAPPING ============ -->
+<h2>13. APEX Mapping</h2>
+<table>
+  <tr><th>APEX object</th><th>Naming / handle relation</th></tr>
+  <tr><td>G = (A·P·E·X)^(1/4) — SEALED 2026-07-28</td><td>Multiplicative: naming defects drag P and E; the federation's own worst naming collision is <em>on G itself</em> (FATWA K2 K2-4: <code>G = A·P·E·X</code> vs the sealed geometric mean coexisting in live code — escalated, unresolved)</td></tr>
+  <tr><td>P — PRESENT×AUTHORITY</td><td>A name is a claim about what the world is + who may mutate its registry. Misname → P drops</td></tr>
+  <tr><td>E — ENTROPY×ENERGY</td><td>Naming is compression (Landauer metaphor): a name moves entropy into the string; a bad name displaces it into the future as search-and-ask debt</td></tr>
+  <tr><td>C_dark = A(1−P)(1−X)</td><td>Misnaming mathematically inflates the dark-hallucination term: false distinctions feed false confidence</td></tr>
+  <tr><td>F9 anti-hantu</td><td>Status-lying names are <em>hantu</em> — ghosts claiming verified state. The kernel's <code>SEAL-</code> prefix is a live instance</td></tr>
+  <tr><td>Verdict lattice</td><td>Probe verdicts map cleanly: FATAL→VOID · AMBIGUOUS→HOLD · NEW_AXIS→SABAR (stage, don't mint) · CLEAR→SEAL-candidate</td></tr>
+</table>
+<p class="small">APEX is constitutional dynamics, not physics; the thermodynamic language above is marked metaphor throughout.</p>
+
+<!-- ============ 14. QUANTUM ASSESSMENT ============ -->
+<h2>14. Quantum-Epistemic Assessment</h2>
+<table>
+  <tr><th>Class</th><th>Verdict</th><th>Basis</th></tr>
+  <tr><td>Demonstrated quantum physics</td><td><strong>NONE</strong></td><td>No physical quantum system, no quantum formalism, no experimental signature anywhere in this work</td></tr>
+  <tr><td>Formal quantum-like mathematics</td><td><strong>NONE</strong></td><td>V(Q)=E[ΔJ|Q] is classical decision theory / information gain. No non-classical probability structure specified</td></tr>
+  <tr><td>Structural metaphor</td><td><strong>RETAINED, MARKED</strong></td><td>Contextuality ≈ coordinate systems (FATWA K1); no-cloning of meaning ≈ rendered index vs owner file; superposition ≈ role-ambiguity before naming. Analogies only</td></tr>
+  <tr><td>Unsupported rhetoric</td><td><strong>REMOVED from claims</strong></td><td>"Quantum Epistemic Universe-Level Intelligence" as an intensity word; may survive only as a clearly-marked title</td></tr>
+</table>
+<div class="box red"><strong>Plain statement:</strong> No quantum-mechanical value was established. The defensible value is epistemic, computational, and constitutional. Quantum language is retained only as an explicitly marked metaphor or removed. <em>"Quantum" must never be used as an authority amplifier.</em></div>
+
+<!-- ============ 15. REAL VALUE ============ -->
+<h2>15. Real Value of the Forge Work</h2>
+<p>What changed in reality, not in text:</p>
+<ol>
+  <li><strong>A dead enforcement sensor is alive</strong> — <code>symbol-probe.py</code> now parses and discriminates (CLEAR vs AMBIGUOUS demonstrated with exit codes), inside a live cron consumer. <span class="tag obs">OBS</span></li>
+  <li><strong>Canon carries its own boundary</strong> — Naming-Doctrine Axiom 4 now scopes itself; the self-authorization reading ("I named it SEAL, therefore SEAL exists") is closed in the owner text, witnessed end-to-end. <span class="tag obs">OBS</span></li>
+  <li><strong>Two defects are queued with evidence</strong>, non-authoritatively, in the existing queue SOT. <span class="tag obs">OBS</span></li>
+  <li><strong>A false status report was caught and corrected</strong> — the verification culture it argues for was actually applied to its own author. <span class="tag obs">OBS</span></li>
+  <li><strong>A naming audit with disclosed method</strong> exists for future retrieval work (30 version-sibling pairs, root clutter, status-lying class). <span class="tag der">DER</span></li>
+</ol>
+<p>What did <em>not</em> change: no kernel identity semantics, no registries, no F1–F13, no session-ID migration, no commits. Those remain deliberately untouched.</p>
+
+<!-- ============ 16. DEFECTS, REPAIRS, CARRY-FORWARD ============ -->
+<h2>16. Defects, Repairs, and Carry-Forward Work</h2>
+<h3>16.1 Repairs executed (bounded, delegated, reversible)</h3>
+<table>
+  <tr><th>Repair</th><th>Class</th><th>Evidence</th></tr>
+  <tr><td>Parser fix: header-tolerant <code>load_table()</code> in <code>symbol-probe.py</code></td><td>reversible code correction</td><td>8 functional lines; post-fix exit 0 / exit 2 demonstrated; diff recorded</td></tr>
+  <tr><td>False-report correction, durably recorded</td><td>correction of demonstrably false session reporting</td><td>report §10 + §5 of this document</td></tr>
+  <tr><td>Reproducible spec for naming counts</td><td>reproducible test specification</td><td>§19 A3</td></tr>
+  <tr><td>Queue entries (2), non-authoritative, schema-conformant</td><td>queue write within delegated scope</td><td><code>tasks.json</code> pre <code>a69db980…</code> → post <code>deb569d9…</code>; ids <code>closure-seal-prefix-migration</code>, <code>closure-c12-chaos-sweep-fate</code>; front items s1–s3 untouched; total 98→100</td></tr>
+</table>
+<h3>16.2 On HOLD (fail-closed, not executed)</h3>
+<ul>
+  <li><strong>SEAL- prefix migration</strong> — kernel identity semantics; consumers carry the prefix in vaults; needs enumerated-consumer analysis + T2 approval (queue: <code>closure-seal-prefix-migration</code>).</li>
+  <li><strong>namespace_guard.py docstring sync</strong> — kernel code edit not delegated. Draft change (one line): append "Naming-Doctrine Axiom 4 Register Scope (2026-10-19): naming establishes namespace claims; validity of state requires a witnessed event." to the module docstring.</li>
+  <li><strong>SYMBOL_TABLE registration</strong> of the "Axiom 4" label collision — registry mutation excluded by the sovereign's own order.</li>
+  <li><strong>Git commit of the canon change</strong> — not authorized in either F13 order; recorded as remaining action under item L.</li>
+</ul>
+<h3>16.3 Carry-forward</h3>
+<p>Items C, E, H, N (see §9). Stopping rule for each is named in §19 A2: each carries a next test and a condition under which it may be closed, and none may be closed without an evidence-preserving test.</p>
+
+<!-- ============ 17. STOPPING RULE ============ -->
+<h2>17. Stopping Rule</h2>
+<div class="quote">A name is worth thinking about exactly when its shape changes retrieval, interpretation, coordination, or consequence. Two names that induce identical behaviour in all four are decision-equivalent — take the simpler one and return to work.</div>
+<p>The same rule governs questioning (stop when answers cannot change judgment) and verification (stop when further checks cannot change the verdict). In this federation, naming demonstrably changes behaviour — the 666/888 dispute, the G-formula collision, the 30 version-sibling pairs all had real consequence — so the thinking was warranted. Past the decision-equivalence line: bikeshedding. <span class="tag int">INT</span></p>
+
+<!-- ============ 18. HUMAN SOVEREIGNTY ============ -->
+<h2>18. Human Sovereignty and Final Boundary</h2>
+<p>Three boundaries held this session and are the reason the artifact is trustworthy:</p>
+<ul>
+  <li><strong>The Gödel lock.</strong> The agent that authored the change could not ratify it. The authority event was F13's alone ("SAH"), and the agent may never issue its own envelope.</li>
+  <li><strong>Labelled state ≠ Authorized state.</strong> This document is not a SEAL. The delivery status is a gate outcome, not a word chosen by its author.</li>
+  <li><strong>Fail closed.</strong> Where evidence, delegation, or provenance was insufficient (items I, J, L, N), nothing was executed. Silence and HOLD are permitted outputs; fabricated closure is not.</li>
+</ul>
+<div class="box gold"><strong>Final boundary:</strong> the machine carries structure, not sense. Names, verdicts and receipts are handles; the human remains the only source of authority, consent, and meaning. <em>DITEMPA BUKAN DIBERI.</em></div>
+
+<!-- ============ 19. EVIDENCE APPENDIX ============ -->
+<h2 class="page-break">19. Evidence Appendix</h2>
+
+<h3>A1 — Hashes and diff receipts</h3>
+<div class="mono-block">naming-doctrine.md   pre  239927eb2cf01c6d48b253ffd8753c341321871869ed2afcae5f55a8f7d9d960  (≡ HEAD blob)
+naming-doctrine.md   post 17f4b04d3cc9ee677d77a44f25298bbfd3e8aac93322784dedbcf56c476c8898
+diff hunks (git diff -U0):  @@ -821,0 +822,4 @@ (Register Scope blockquote)
+                           @@ -1194,0 +1199,4 @@ (## Correction Log + 1 entry)
+excluded baselines (identical pre/post):
+  mind_axioms.py      5632ade0dc082b4568d256a65a3b41f60cf02f96140a0edd49e7db292f15fe69
+  namespace_guard.py  7aecfc22909ed107c73f7183d5e54a93161e6e242b8df4b532643d1590dde013
+  SYMBOL_TABLE.json   2bca09e57bc0896ffb226cbe610fad88f3f80348ca9d4de9e8095317e505321f
+  tasks.json          a69db9806af07daf7a26945e8caa37877bed8b8d5df357c2f3f6d1be477c2d5a   (before authorized Phase-4 append)
+  FLOOR_TABLE.json    cc68b023efacdd86948b3291f401239bf70e5a99529952bf95e39c847edade08
+tasks.json (Phase-4 append, 2 entries) post: deb569d95739e1f7299fb46cb10fe5e2e8c6f5e648a3e853b1a448d17cd91566
+symbol-probe.py fix: load_table() skips human header to first '{' — post-fix: clean prose → CLEAR/exit 0;
+  "T0-T3 authority K0-K4 scale" → AMBIGUOUS/exit 2 (NEW AXIS K[0,4] flagged)</div>
+
+<h3>A2 — Full task record (11 fields per item)</h3>
+<div class="small">
+<p><strong>A · Axiom 4 post-mutation verification.</strong> Claim: mutation applied as ordered. Evidence: two-witness chain (self + 555-ASI blind), hashes A1. Owner: 333-AGI. Tier: T3→executed under F13 ack. Reversibility: reversible (revert hunk). Affected: naming-doctrine.md. Verification: diff-vs-HEAD + byte-compare + excluded hashes. Present state: verified. Allowed closure: CLOSE. Remaining: commit (item L).</p>
+<p><strong>B · SEAL- session prefix defect.</strong> Claim: kernel mints SEAL- for all sessions. Evidence: tools.py:8117 + callers (session.py:2784/3547/4868, tools.py:11355) + live instance; witness-confirmed. Owner: arifOS. Tier: T2. Reversibility: migration only (backward-compat). Affected: arifosmcp runtime, vault/session stores. Verification: consumer enumeration. Present state: defect CONFIRMED. Allowed closure: PARTIAL (finding). Remaining: design (C).</p>
+<p><strong>C · Prefix migration analysis.</strong> Claim: migration can be backward-compatible. Evidence: none yet. Owner: 333-AGI + arifOS. Tier: T2 (approval required). Reversibility: high if dual-read. Affected: same as B. Verification: dry-run migration against a copied store. Present state: not started. Allowed closure: CARRY_FORWARD. Next test: enumerate persisted SEAL- consumers. Stopping rule: design + rollback proof ready for F13.</p>
+<p><strong>D · Chaos-sweep failure handling.</strong> Claim: sweep absorbed a failing sensor for 21 days. Evidence: hermes-chaos-sweep.py:335 + cron schedule + crash window. Owner: HERMES. Tier: T1. Reversibility: n/a (read). Affected: chaos sweep. Verification: log inspection (E). Present state: probe fixed. Allowed closure: PARTIAL.</p>
+<p><strong>E · C12 warning fate.</strong> Claim: unknown whether alerts were emitted/swallowed/ignored/absent. Evidence: none (logs unread). Owner: HERMES. Tier: T1. Affected: monitoring credibility. Verification: sweep output + cron MAIL/journal. Present state: UNKNOWN. Allowed closure: CARRY_FORWARD. Stopping rule: one log read classifies the four outcomes.</p>
+<p><strong>F · False queue claim.</strong> Claim made: "tasks.json ditambah". Truth: false when made. Evidence: grep=0 at detection; self-catch. Owner: 333-AGI. Reversibility: correction recorded. Present state: voided + corrected. Allowed closure: VOID.</p>
+<p><strong>G · Queue entries for B/D.</strong> Claim: defects deserve durable queue homes. Evidence: delegated scope (queue SOT carry-forward) + closure-directive Phase 4 permission. Owner: 333-AGI. Tier: T1. Reversibility: delete-by-id. Affected: tasks.json (2 additive entries, counts +2). Present state: executed, front items intact. Allowed closure: CLOSE.</p>
+<p><strong>H · "Axiom 4" label collision.</strong> Claim: two axioms share the label (naming-doctrine "Naming Is Creation" vs mind_axioms.py "can(a) ≠ may(a)"). Evidence: both files read directly; SYMBOL_TABLE does not track the label. Owner: AAA canon. Tier: T2 (ruling). Reversibility: n/a. Allowed closure: CARRY_FORWARD. Next test: cross-reference sweep across canon. Stopping rule: F13 ruling or registry entry.</p>
+<p><strong>I · SYMBOL_TABLE registration.</strong> Evidence: excluded by sovereign order. Tier: T3-ish (registry). Allowed closure: HOLD.</p>
+<p><strong>J · namespace_guard.py drift.</strong> Claim: code docstring quotes the unscoped axiom. Evidence: file read. Tier: T2 (kernel code). Allowed closure: HOLD. Draft one-liner recorded (§16.2).</p>
+<p><strong>K · Count reproducibility.</strong> Claim: 894/577/30 were underspecified. Evidence: witness bracket + spec disclosure A3. Allowed closure: CLOSE (counts now DER with spec).</p>
+<p><strong>L · Working-tree state.</strong> Evidence: AAA dirty ≈116 files (sibling activity included); naming-doctrine.md modified-uncommitted; scripts repo dirty (probe fix uncommitted + pre-existing churn). Allowed closure: PARTIAL. Remaining: commit decision (authority).</p>
+<p><strong>M · PDF chain.</strong> Allowed closure: PARTIAL at render; CLOSE only on ACCEPTED_FOR_DELIVERY.</p>
+<p><strong>N · Unattributed fragment.</strong> Claim: closing prompt carried stray lines ("Siasat F9=0.0 read-only…", "Commit 2 (self-HTTP subset)…", "Commit 3 selepas ≥24 jam…", "P4b kekal HOLD…"). Evidence: present in the order text; references unknown workstream (T8/P4b). Owner: UNKNOWN. Tier: UNKNOWN. Reversibility: n/a. Present state: not executed. Allowed closure: CARRY_FORWARD. Stopping rule: sovereign maps the fragment to its workstream or voids it.</p>
+</div>
+
+<h3>A3 — Reproducible spec for naming counts</h3>
+<div class="mono-block">corpus : `git ls-files` only — repos from `find /root -maxdepth 3 -name .git -type d`
+         (excluding node_modules/.venv) → 47 paths (46 valid repos + /root, which has a
+         .git dir but is not a repository) — Σ files = 77,129 [OBS, two independent derivations]
+match  : basename, case-insensitive
+A_status_lie = r'(final\d*|latest|real\d*|copy\d*|backup|bak|old|tmp|new|fix\d*|updated|done|clean)\w*\
+               \.(md|txt|json|ya?ml|py|ts|js|sh|pdf|docx?|xlsx?|csv|html)$'          → 894 [DER]
+B_iteration  = r'(_v\d+|[-.]v\d+)\.(md|txt|json|ya?ml|py|ts|js|sh|html)$'            → 577 [DER]
+C_pairs      = same-stem sibling groups in one dir after stripping version suffix     → 30  [DER]
+root loose files: /root non-hidden regular files = 139–140 · incl. hidden = 182–184
+                  (43 hidden + 13 top-level symlinks explain the gap) [OBS, reconciled]</div>
+
+<h3>A4 — Command receipts (re-runnable by any stranger)</h3>
+<div class="mono-block">python3 /root/scripts/symbol-probe.py --text "clean prose no notation"        → CLEAR, exit 0
+python3 /root/scripts/symbol-probe.py --text "T0-T3 authority K0-K4 scale"   → AMBIGUOUS, exit 2
+git -C /root/AAA diff HEAD -- instructions/naming-doctrine.md                → 8 ins / 0 del
+sha256sum /root/AAA/instructions/naming-doctrine.md                          → 17f4b04d…c8898
+git -C /root/AAA log -S "Status: ACTIVE_CANONICAL" -- canon/SYMBOL_TABLE.json → aee154f6 (2026-09-28)
+grep -n "sid = f\"SEAL-\"" /root/arifOS/arifosmcp/runtime/tools.py            → :8117</div>
+
+<!-- ============ 20. HASHES, DIFFS, RECEIPTS, LIMITS ============ -->
+<h2>20. Hashes, Diffs, Receipts, and Verification Limits</h2>
+<h3>20.1 Verification chain for this document</h3>
+<table>
+  <tr><th>Stage</th><th>Instrument</th><th>Outcome</th></tr>
+  <tr><td>Content probes</td><td>live shell + git (333-AGI)</td><td>recorded throughout, evidence-tagged</td></tr>
+  <tr><td>Blind re-derivation of audit claims</td><td>555-ASI (read-only, blind)</td><td>2 claims refuted, core claims confirmed (§5)</td></tr>
+  <tr><td>Post-mutation witness</td><td>555-ASI (read-only, non-author)</td><td>MUTATION VERIFIED (§8)</td></tr>
+  <tr><td>Render QA</td><td>page rasterization + per-page inspection</td><td>recorded at render (§20.3)</td></tr>
+  <tr><td>Artifact acceptance</td><td>independent read-only verifier</td><td>gate outcome recorded in the delivery message — ACCEPTED_FOR_DELIVERY or HOLD_FOR_CORRECTION</td></tr>
+</table>
+<h3>20.2 Verification limits (what this document does NOT prove)</h3>
+<ul>
+  <li>Transient intermediate file states between pre/post hashes cannot be excluded. <span class="tag unk">UNKNOWN</span></li>
+  <li>Witnesses were Gödel-separated actors but ran on the same host; true cross-host independence remains open. <span class="tag int">INT</span></li>
+  <li>The F13 "SAH" authority event is agent-reported history; its primary source is the sovereign's own session record.</li>
+  <li>Naming counts are derived from a disclosed regex, not from adjudicated per-file judgments — the pattern class is real; each individual match is not a proven defect.</li>
+  <li>No secret material, tokens, keys, or credentials are included in this document by design.</li>
+</ul>
+<h3>20.3 Render QA record</h3>
+<div class="mono-block">Render QA (2026-10-19, by 333-AGI): pages rasterized = 15 · pages inspected = 15 (contact-sheet + per-page visual)
+defects found: 1 cosmetic (template blanks in this block — now filled) · 0 blocking (no clipping, no overlap,
+no broken glyphs incl. ≠ · Δ · BM text, no blank pages)
+preflight: qpdf --check = clean (PDF 1.7, unencrypted) · pdftotext extraction = OK, 21/21 headings present
+secret scan = 0 matches (no tokens/keys/credentials)
+final SHA-256 + page count = recorded in the delivery message and the closure return
+(reason: a file cannot embed its own hash without changing it)</div>
+
+<div class="box gold"><strong>One-line ledger for the sovereign:</strong> The name is an address, not the territory; the question is what keeps the address honest; the witness is what keeps the answer accountable; and the only thing that ever changed state today was an act you authorized yourself.</div>
+
+<p class="small" style="margin-top:6mm; text-align:center; color:#7a8699;">Governed Reference · Session Closure v01 · 2026-10-19 · 333-AGI for ARIF (F13) · DITEMPA BUKAN DIBERI ⚒️<br>
+Status vocabulary follows the canon: this artifact reports; the acceptance gate decides; SEAL is never self-issued.</p>
+
+</body>
+</html>

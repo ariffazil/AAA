@@ -1,6 +1,6 @@
 # EUREKA — DeepSeek Harness Distillation (E1–E5)
 
-**Status:** DRAFT_AWAITING_F13 (2026-10-14) · **Author:** FI-008 (kimi-code) · **Session:** SEAL-67ec3a164c834d18
+**Status:** DRAFT_AWAITING_F13 (2026-10-14) · **Author:** FI-008 (kimi-code) · **Session:** SEAL-67ec3a164c834d18 · **E6 extension 2026-10-19:** 333-AGI (V4.1-Flash-1017 checkpoint + architecture distillation)
 **Provenance:** external Copilot architecture analysis (forwarded by sovereign 2026-10-14) × FI-008 live API probes × api-docs.deepseek.com. Testimony gate applied: every item labeled VERIFIED (probe/doc receipt) / INTERPRETATION (design) / UNVERIFIED.
 **Recreated 2026-10-14T05:0xZ:** original file (written 03:0xZ, 7406 bytes) was deleted by an unidentified lane during the multi-lane campaign window — deletion preserved as failure record in FED-CAMPAIGN-20261014-RECEIPTS.md; content restored verbatim from author session context. Durable staging copy: /root/forge_work/fed-capability-fabric-20261014/.
 **Kin:** representation-reality-invariant · proxy-reality-paradox · probe-before-panic · scar-2026-10-03-001 (probe-without-fetch) · scar-2026-10-01-002 (agreement ≠ independence) · §21 survival benchmark · ETCSOVG harness fingerprint · attention-kill criterion
@@ -77,5 +77,43 @@ Changelog (updates 2026-07-31 & 08-21 notes): official Code-Agent benchmarks "te
 1. **E1** receipt tuple `(requested, resolved, fingerprint)` in FED spend callback + probe scripts — small reversible code change.
 2. **E2** `user_id` per-agent passthrough in adapters — small reversible code change.
 3. **E4** dsh benchmark run (~30 min, cents-scale, scratch sandbox) under the envelope + kill gate above.
+
+---
+
+## E6 — V4.1-Flash-1017 checkpoint (2026-10-17) + architecture distillation [VERIFIED docs × live canary]
+
+**Extended 2026-10-19 by 333-AGI** under F13 order ("update deepseek configs + deep research architecture/harness"). Sources: api-docs.deepseek.com/news/news261017 (primary) × HF model card × vLLM recipe (recipes.vllm.ai/deepseek-ai/DeepSeek-V4.1-Flash) × live canary on box. Kin: E1 (requested≠resolved), E5 (harness-conditioned).
+
+### E6.1 — 1017 is a weights-only checkpoint; same id, no migration [VERIFIED]
+
+`deepseek-flash` (the canonical id since 2026-09-10) auto-serves the 1017 weights. Same config.json / tokenizer / prompt-encoding / pricing. DeepSeek's own phrase: "minor update … advancing the performance–cost Pareto frontier." Live canary 2026-10-19: PONG 200, `system_fingerprint=e72d3c7f`. **Consequence for us:** no config rewire — our existing `openai/deepseek-flash` rungs (forge-777 P5, forge-builder P1, forge-economy P1, fed/vision P0, i-arif vision) already carry 1017. The only work was version/benchmark metadata.
+
+### E6.2 — Architecture (unchanged from V4.1 launch, now fully documented) [VERIFIED — vLLM recipe]
+
+- **Causal Encoder-Decoder (CED):** 40 layers split 20 encoder + 20 decoder. Prefill runs only the encoder half → **8B active on prefill, 16B on decode**. Asymmetric cost: long inputs are cheap, long outputs are expensive.
+- **Two-tier sparse attention:** 128-token sliding window + compressed KV latents; an indexer keeps best 512 per query; only 4 layers compress KV. KV cache ≈ **890 bytes/token (~¼ of V4-Flash)**.
+- **Engram n-gram memory:** 2/3/4-gram hash tables on layers 1 & 14, 196B params, read+written into the residual stream.
+- **Hyper-Connections:** 4 parallel residual streams, combine matrix doubly-stochastic via 20 Sinkhorn iterations.
+- **DSpark draft head:** speculative decode, drafts 5 tokens at once.
+- **Mixed MXFP4/MXFP8 checkpoint** (expert weights MXFP4, dense MXFP8, UE8M0 scales).
+
+### E6.3 — What 1017 changed: RL-with-self-feedback ("wish-driven programming") [VERIFIED]
+
+Vendor deltas: **Terminal-Bench 4.0 31.2→42.3, HLE w/o-tools 36.8→42.6**, shorter outputs, faster task completion. Method = RL where the reward is "did the end-to-end project get built" (game, 3D model, Portal 2 recreation). This is frontier validation of our EXECUTION-FIRST / anti-collapse doctrine — the industry is training models to *finish the thing*, not to answer the prompt.
+
+### E6.4 — Distillation: what we extract (concrete, bounded)
+
+1. **[ACTION] Tool-loop thinking starvation — proven live.** With thinking ON (provider default), a small `max_tokens` burns the budget on the reasoning trace and returns **empty `content` + `finish_reason=length`** (canary reproduced 2026-10-19). Our deepseek-flash tool-loop lanes (forge-777, fed/vision, i-arif) MUST either pin `thinking:disabled` or give `max_tokens` reasoning headroom. Same failure class as E1's "resolved≠requested", but on the *output* side.
+2. **[ACTION] reasoning_effort = cost dial.** API maps low/high/max→50/75/100 (open-source maps 25/50/75/100). High-volume builder loops can drop to `reasoning_effort: low` to cut reasoning-trace cost. A cost lever we aren't using yet.
+3. **[CONFIRM] Shorter-output RL = our ΔS discipline.** DeepSeek explicitly traded verbosity for cost/speed. Our ΔS ≤ 0 output discipline is the same pressure applied on the consumer side.
+4. **[WATCH] Search & Fetch API ($0.75/1k, GA).** No adoption — we already have free search/fetch (free-search, firecrawl, arif_observe). No demonstrated gap (attention-kill criterion). Revisit only if a lane needs server-side search against DeepSeek's index.
+5. **[HOLD] Balance $2.89.** Near shadow_ds_005 alert floor ($2.00). The $20 topup of 2026-09-13 is nearly exhausted across forge-builder/economy/777 high-volume loops. Flagged to sovereign (money = F13).
+6. **[RECORD] Harness v0.2.1-rc.1.** E5's harness-conditioning warning extends to all 1017 numbers — Terminal-Bench 4.0 ≠ 2.1 (the "28.3 Mistral" figure elsewhere in SOT is a *different* benchmark version; never cross-compare).
+
+### E6.5 — Falsification / not-adopted
+
+- **"Adopt DeepSeek Harness (dsh)"** — still VOID per E4 (merges propose+plan+approve+execute). 1017 does not change that.
+- **Engram memory / Hyper-Connections / DSpark** — research-grade, not transferable to our Python/TS organs. Recorded, not copied.
+- **New explicit `deepseek-v4.1-flash-1017` model id in FED** — NOT added. Direct API has no such id (deepseek-flash only); the `-1017` suffix is a third-party-gateway convention (Vercel/DeepInfra). Adding it would be a phantom alias.
 
 DITEMPA BUKAN DIBERI ⚒️

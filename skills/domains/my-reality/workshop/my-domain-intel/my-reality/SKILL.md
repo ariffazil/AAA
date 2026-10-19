@@ -21,6 +21,8 @@ capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
+> **DOOR TABLE v2:** peta reality-mesh (7 paksi) ada di `reality-intelligence` — Pintu 4 NAVIGATION. Peranan sini: **Pintu 6 ADAPTERS** (domain, bukan duplikat — jangan merge).
+
 # my-reality — Malaysia Reality Adapters (P0)
 
 Lived-reality data layer untuk Hermes EDGE. Semua adapter: stdlib-only, keyless,

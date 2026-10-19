@@ -1,0 +1,111 @@
+{
+  "_meta": {
+    "purpose": "SINGLE SOURCE OF NUMBERS for the Limbayong FDP pack. No section may hardcode a value that exists here.",
+    "rule": "If a section needs a number, it reads this file. If a number is not here, it must be declared [U] and given a range with a named basis.",
+    "version": "1.0",
+    "issued": "2026-10-19",
+    "owner": "HERMES"
+  },
+  "field": {
+    "name": "Limbayong (+Bestari)",
+    "blocks": "G/J/R",
+    "water_depth_m": [
+      900,
+      1200
+    ],
+    "distance_offshore_km": 120,
+    "working_interest": 1.0,
+    "operator": "PETRONAS Carigali",
+    "fid_date": "2026-08-28"
+  },
+  "volumes": {
+    "liquids_mmbbl": 139.0,
+    "gas_bcf": 790.9,
+    "boe_per_mcf": 0.1724137931034483,
+    "total_mmboe": 275.4,
+    "_class": {
+      "liquids_mmbbl": "M",
+      "gas_bcf": "M",
+      "total_mmboe": "D"
+    },
+    "_basis": "GEM Global Oil & Gas Extraction Tracker, data year 2023"
+  },
+  "capacity": {
+    "oil_bopd_nameplate": 40000,
+    "gas_mmscfd_nameplate": 150,
+    "oil_bopd_forecast": 35000,
+    "gas_mmscfd_forecast": 135,
+    "boe_d_forecast": 58276,
+    "_class": {
+      "oil_bopd_nameplate": "M",
+      "oil_bopd_forecast": "D",
+      "boe_d_forecast": "D"
+    },
+    "_basis": "nameplate = PETRONAS 2021 + GEM annualisation; forecast = S2 derate for topsides weight/area"
+  },
+  "capex_usd_m": {
+    "wells": 762,
+    "surf": 682,
+    "fpso_purchase": 35,
+    "fpso_conversion": 600,
+    "gas_export": 400,
+    "pm_engineering_owner": 500,
+    "contingency": 618,
+    "total_p50": 4050,
+    "low_p10": 2830,
+    "high_p90": 6070,
+    "_class": {
+      "wells": "D",
+      "surf": "D",
+      "fpso_purchase": "M",
+      "fpso_conversion": "A",
+      "gas_export": "A",
+      "total_p50": "D"
+    },
+    "_basis": "S3 wells, S5 SURF, DNeX filing for purchase, S4 conversion benchmark, Class 4 -30/+50"
+  },
+  "opex": {
+    "usd_per_boe": 12.0,
+    "_class": "A",
+    "_basis": "deepwater analogue 10-14"
+  },
+  "schedule": {
+    "first_oil_p50": "2030-Q4",
+    "first_oil_p10": "2029-Q3",
+    "first_oil_p90": "2031-Q3",
+    "plateau_years": 6,
+    "decline_per_yr": 0.146,
+    "_class": "D",
+    "_basis": "S6: 51 months FID-to-FO P50; comparables Kikeh 43, GK 44, Malikai 46"
+  },
+  "fiscal": {
+    "basis": "PETRONAS consolidated (100% WI, no partner)",
+    "sabah_sst": 0.05,
+    "pita": 0.38,
+    "tax_depreciation_years": 5,
+    "royalty": 0.0,
+    "export_duty": 0.0,
+    "_note": "royalty and export duty are intra-group at 100% WI and are therefore not external leaks"
+  },
+  "price": {
+    "brent_base_usd": 70,
+    "brent_reference_xom": 65,
+    "brent_spot_2026_10": 105,
+    "gas_usd_per_mmbtu": 6.0,
+    "domestic_gas_cap_rm_per_mmbtu": 30,
+    "_class": {
+      "brent_base_usd": "A",
+      "brent_reference_xom": "M",
+      "gas_usd_per_mmbtu": "A"
+    }
+  },
+  "discount_rate": 0.1,
+  "hurdle_irr": 0.15,
+  "known_unknowns": [
+    "MMHE conversion cost - no public figure; the 2011 RM952M article is withdrawn",
+    "Excalibur class survey and hull condition after 6 years laid up",
+    "Gas sales agreement - existence and price",
+    "Deepwater PSC fiscal vintage - bespoke, unpublished",
+    "Real deliverability per well - no public DST, no logs, no core"
+  ]
+}

@@ -45,6 +45,20 @@ Live scripts on box (copy/modify, don't reinvent):
 - `/root/scripts/vault-add-login.sh` — argv-driven: label, origin, identifier as args; password prompted.
 - `/root/scripts/vault-add-google.sh` — auto-fetches the email from the OAuth token, prompts password only.
 
+## Config values the file editor refuses
+
+Editors (and the patch layer) refuse `~/.hermes/config.yaml` as security-sensitive. Use the CLI that owns the file:
+
+```bash
+hermes config get approvals.mode
+hermes config set approvals.mode off     # valid: manual | smart | off
+hermes config path
+```
+
+- The config cache is keyed on file mtime/size, so a `set` takes effect on the next read — values read live per call (`approvals.*`) need no gateway restart.
+- **Standing preference for this operator: no approval prompts.** Keep `approvals.mode` at `off` unless he asks otherwise. What still blocks with mode off are engine floors, not settings: `sudo` with a piped password, `approvals.deny` globs, and commands whose payload the parser cannot read. Promise "no prompt", never "everything will run".
+- A bare `off` in YAML round-trips as boolean `False`; the mode normaliser maps it back to `"off"`, but the CLI writes the quoted string — prefer `hermes config set` over a hand edit so the file stays round-trip clean.
+
 ## Pitfalls
 
 - **Don't put prose inside the thing-to-paste.** A code block meant for one-tap copy must contain ONLY
