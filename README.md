@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.09.21 (P2 — AAA-ATTENTION-CONVERGENCE)
-last_verified: 2026-09-21T02:11:00Z
+federation_release: v2026.10.19 (state capture + housekeeping checkpoint)
+last_verified: 2026-10-19T15:26:00Z
 apex_zen: HERMES claims → CHRON temporal → AAA attention → arifOS authority → A-FORGE execution
 
 identity:
