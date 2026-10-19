@@ -85,6 +85,12 @@ const { getOrchestrator } = require('./orchestrator');
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
+// ── Tailnet transport identity (observe-only, 2026-10-19) ─────────────
+// The aaa-ingress tsagent verifies the peer with whois and HMAC-signs the
+// identity. This middleware verifies it and attaches req.tailnetIdentity.
+const { tailnetIdentityMiddleware } = require('./tailnet_identity');
+app.use(tailnetIdentityMiddleware);
+
 // Membrane gate — every cross-organ message must pass through
 app.use(membraneMiddleware);
 app.use(membraneResponseHook);

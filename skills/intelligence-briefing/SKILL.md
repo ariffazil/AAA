@@ -179,8 +179,13 @@ Both were stated verbatim in the source bodies and survive the merge unchanged:
   publication date before it enters the brief.
 - **Do not stack analyst predictions as facts.** Where several desks agree, say "the
   consensus read is" and mark it interpretation.
-- Attribute the act to the actor that performed it. Where the actor is a component party,
+- **Attribute the act to the actor that performed it.** Where the actor is a component party,
   name the party, not the coalition.
+- **Sanction ≠ award.** A project FID (investment approved) and the equipment selection (which
+  rig, FPSO, contractor) are separate claim states. Vessel/contractor names appearing in
+  "likely", "being considered", "strong candidate" reporting are CANDIDATES, not the plan.
+  Write "FID taken; FPSO not yet awarded — X is the frontrunner" — never "FID with X". Check
+  the vessel's published capacity against the project's stated throughput before pairing them.
 
 ## 4. Claim-state law (every mode that reports system or institutional state)
 

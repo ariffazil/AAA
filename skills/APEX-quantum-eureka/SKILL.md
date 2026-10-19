@@ -40,6 +40,8 @@ owned_by: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 authority_of: AAA
 ---
 
+> **DOOR TABLE v2:** peta reality-mesh (7 paksi) ada di `reality-intelligence` — Pintu 4 NAVIGATION. Peranan sini: **Pintu 7 QUANTUM** (contradiction metabolism).
+
 # SKILL: quantum-eureka-doctrine
 
 > **Purpose:** Give AAA warga one shared doctrine for what a eureka actually is, how to detect it, and how to metabolize it into memory, explorer flow, and governed action.

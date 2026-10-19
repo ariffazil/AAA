@@ -1,0 +1,887 @@
+{
+  "version": "2.0",
+  "date": "2026-10-19",
+  "mc": {
+    "n": 20000,
+    "rho": 0.6,
+    "rec_p90": 132.6,
+    "rec_p50": 139.5,
+    "rec_p10": 146.8,
+    "rec_mean": 139.6,
+    "ooip_p90": 358.0,
+    "ooip_p50": 372.0,
+    "ooip_p10": 387.0,
+    "rf_p90": 0.361,
+    "rf_p50": 0.375,
+    "rf_p10": 0.389,
+    "life_p90": 14.5,
+    "life_p50": 15.3,
+    "life_p10": 16.1
+  },
+  "rows": [
+    {
+      "id": "L-01",
+      "parameter": "Vessel identity \u2014 FPSO Excalibur",
+      "value": "IMO 9417103",
+      "unit": "\u2014",
+      "class": "VERIFIED",
+      "sources": [
+        "S-01",
+        "S-05"
+      ],
+      "independence": 2,
+      "basis": "IMO number in Bursa filing; name history in trade press",
+      "note": "Equals Sevan Hummingbird / Hummingbird Spirit. Renamed by Ping Petroleum (DNeX) 4 Aug 2022."
+    },
+    {
+      "id": "L-02",
+      "parameter": "Vessel \u2014 year built",
+      "value": 2007,
+      "unit": "year",
+      "class": "VERIFIED",
+      "sources": [
+        "S-01",
+        "S-02"
+      ],
+      "independence": 2,
+      "basis": "Bursa filing; commissioned 2008 per trade press",
+      "note": ""
+    },
+    {
+      "id": "L-03",
+      "parameter": "Vessel \u2014 design storage capacity",
+      "value": 300000,
+      "unit": "bbl",
+      "class": "VERIFIED",
+      "sources": [
+        "S-01"
+      ],
+      "independence": 1,
+      "basis": "Bursa filing, primary document",
+      "note": "Design figure. Working storage differs \u2014 see L-04."
+    },
+    {
+      "id": "L-04",
+      "parameter": "Vessel \u2014 working storage",
+      "value": 270000,
+      "unit": "bbl",
+      "class": "REPORTED",
+      "sources": [
+        "S-02",
+        "S-03"
+      ],
+      "independence": 1,
+      "basis": "Trade press + owner factsheet, single owner",
+      "note": "270k working vs 300k design are not a contradiction."
+    },
+    {
+      "id": "L-05",
+      "parameter": "Vessel \u2014 oil production capacity",
+      "value": 25000,
+      "unit": "bopd",
+      "class": "VERIFIED",
+      "sources": [
+        "S-02",
+        "S-03"
+      ],
+      "independence": 2,
+      "basis": "Trade press 2022; Sevan DWT vessel page",
+      "note": "AS-BUILT. The governing ceiling unless topsides are upgraded."
+    },
+    {
+      "id": "L-06",
+      "parameter": "Vessel \u2014 total liquids capacity",
+      "value": 30000,
+      "unit": "bpd",
+      "class": "REPORTED",
+      "sources": [
+        "S-03"
+      ],
+      "independence": 1,
+      "basis": "Teekay factsheet via slideshare, single owner",
+      "note": "If oil is ~85% of liquids, oil ceiling is ~25,500 bopd \u2014 consistent with L-05."
+    },
+    {
+      "id": "L-07",
+      "parameter": "Vessel \u2014 water injection capacity",
+      "value": 20000,
+      "unit": "bwpd",
+      "class": "REPORTED",
+      "sources": [
+        "S-03",
+        "S-06"
+      ],
+      "independence": 1,
+      "basis": "Teekay factsheet; corroborated by Sevan DWT",
+      "note": "Not the 75,000 of the cancelled tender."
+    },
+    {
+      "id": "L-08",
+      "parameter": "Vessel \u2014 produced water capacity",
+      "value": 25000,
+      "unit": "bwpd",
+      "class": "REPORTED",
+      "sources": [
+        "S-03"
+      ],
+      "independence": 1,
+      "basis": "Teekay factsheet",
+      "note": ""
+    },
+    {
+      "id": "L-09",
+      "parameter": "Vessel \u2014 gas handling/export",
+      "value": "not published",
+      "unit": "\u2014",
+      "class": "OPEN",
+      "sources": [],
+      "independence": 0,
+      "basis": "No public figure",
+      "note": "No gas compression or export capacity is disclosed for this hull."
+    },
+    {
+      "id": "L-10",
+      "parameter": "Cancelled 2020 tender \u2014 oil",
+      "value": 40000,
+      "unit": "bopd",
+      "class": "VERIFIED",
+      "sources": [
+        "S-04",
+        "S-06"
+      ],
+      "independence": 2,
+      "basis": "World Energy Reports via trade press",
+      "note": "TENDER SPEC. Belongs to no vessel. Never awarded."
+    },
+    {
+      "id": "L-11",
+      "parameter": "Cancelled 2020 tender \u2014 gas",
+      "value": 90,
+      "unit": "MMscfd",
+      "class": "VERIFIED",
+      "sources": [
+        "S-06"
+      ],
+      "independence": 1,
+      "basis": "World Energy Reports via OE Digital",
+      "note": "Tender spec, not a vessel limit."
+    },
+    {
+      "id": "L-12",
+      "parameter": "Cancelled 2020 tender \u2014 water injection",
+      "value": 75000,
+      "unit": "bwpd",
+      "class": "VERIFIED",
+      "sources": [
+        "S-06"
+      ],
+      "independence": 1,
+      "basis": "World Energy Reports via OE Digital",
+      "note": "Tender spec. Repeated in v0.1 as if it were Excalibur's."
+    },
+    {
+      "id": "L-13",
+      "parameter": "Cancelled 2020 tender \u2014 storage",
+      "value": 600000,
+      "unit": "bbl",
+      "class": "VERIFIED",
+      "sources": [
+        "S-06"
+      ],
+      "independence": 1,
+      "basis": "World Energy Reports via OE Digital",
+      "note": "Tender spec."
+    },
+    {
+      "id": "L-14",
+      "parameter": "Oil recoverable \u2014 public figure",
+      "value": 139,
+      "unit": "MMbbl",
+      "class": "REPORTED",
+      "sources": [
+        "S-07"
+      ],
+      "independence": 1,
+      "basis": "Global Energy Monitor tracker",
+      "note": "Single non-commercial monitor. Used as P50 calibration anchor, not as a case."
+    },
+    {
+      "id": "L-15",
+      "parameter": "Gas recoverable \u2014 public figure",
+      "value": 790.9,
+      "unit": "bcf",
+      "class": "REPORTED",
+      "sources": [
+        "S-07"
+      ],
+      "independence": 1,
+      "basis": "Global Energy Monitor tracker",
+      "note": ""
+    },
+    {
+      "id": "L-16",
+      "parameter": "Water depth",
+      "value": "900\u20131200",
+      "unit": "m",
+      "class": "VERIFIED",
+      "sources": [
+        "S-04",
+        "S-08"
+      ],
+      "independence": 2,
+      "basis": "Operator-side project description; 2026 trade press",
+      "note": "1,400 m bound in v0.1 withdrawn \u2014 no source."
+    },
+    {
+      "id": "L-17",
+      "parameter": "Distance offshore",
+      "value": "120",
+      "unit": "km",
+      "class": "VERIFIED",
+      "sources": [
+        "S-04",
+        "S-08"
+      ],
+      "independence": 2,
+      "basis": "Project description",
+      "note": ""
+    },
+    {
+      "id": "L-18",
+      "parameter": "Field type",
+      "value": "oil + non-associated gas",
+      "unit": "\u2014",
+      "class": "VERIFIED",
+      "sources": [
+        "S-04",
+        "S-09"
+      ],
+      "independence": 2,
+      "basis": "Project description; discovery reporting",
+      "note": "Limbayong-1 (2002) gas; Limbayong-2 (2013) oil. Not a single oil pool with a gas cap."
+    },
+    {
+      "id": "L-19",
+      "parameter": "Working interest",
+      "value": 100,
+      "unit": "% PCSB",
+      "class": "VERIFIED",
+      "sources": [
+        "S-06"
+      ],
+      "independence": 1,
+      "basis": "Trade press 2021",
+      "note": ""
+    },
+    {
+      "id": "L-20",
+      "parameter": "FID date",
+      "value": "2026-08-28",
+      "unit": "date",
+      "class": "REPORTED",
+      "sources": [
+        "S-10"
+      ],
+      "independence": 1,
+      "basis": "Trade press",
+      "note": ""
+    },
+    {
+      "id": "L-21",
+      "parameter": "OOIP \u2014 declared bracket, low",
+      "value": 347,
+      "unit": "MMbbl",
+      "class": "ASSUMED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Review brief; back-calculated from L-14 at 40% RF",
+      "note": "Not a measured value."
+    },
+    {
+      "id": "L-22",
+      "parameter": "OOIP \u2014 declared bracket, mode",
+      "value": 372.5,
+      "unit": "MMbbl",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "(L-21 + L-23) / 2",
+      "note": ""
+    },
+    {
+      "id": "L-23",
+      "parameter": "OOIP \u2014 declared bracket, high",
+      "value": 398,
+      "unit": "MMbbl",
+      "class": "ASSUMED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Review brief; back-calculated from L-14 at 35% RF",
+      "note": ""
+    },
+    {
+      "id": "L-24",
+      "parameter": "Recovery factor \u2014 low",
+      "value": 0.35,
+      "unit": "fraction",
+      "class": "ASSUMED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Review brief",
+      "note": ""
+    },
+    {
+      "id": "L-25",
+      "parameter": "Recovery factor \u2014 mode",
+      "value": 0.375,
+      "unit": "fraction",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "(L-24 + L-26) / 2",
+      "note": ""
+    },
+    {
+      "id": "L-26",
+      "parameter": "Recovery factor \u2014 high",
+      "value": 0.4,
+      "unit": "fraction",
+      "class": "ASSUMED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Review brief",
+      "note": ""
+    },
+    {
+      "id": "L-27",
+      "parameter": "OOIP\u2013RF correlation",
+      "value": 0.6,
+      "unit": "rho",
+      "class": "ASSUMED",
+      "sources": [],
+      "independence": 0,
+      "basis": "HERMES: better rock raises both OOIP and RF",
+      "note": "Positive correlation narrows the product. Zero correlation is the conservative alternative."
+    },
+    {
+      "id": "L-28",
+      "parameter": "Recoverable \u2014 P90",
+      "value": 132.6,
+      "unit": "MMbbl",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Monte Carlo, L-21..L-27",
+      "note": ""
+    },
+    {
+      "id": "L-29",
+      "parameter": "Recoverable \u2014 P50",
+      "value": 139.5,
+      "unit": "MMbbl",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Monte Carlo, L-21..L-27",
+      "note": "Reconciles to the public 139 within 1%: the bracket was built to do so."
+    },
+    {
+      "id": "L-30",
+      "parameter": "Recoverable \u2014 P10",
+      "value": 146.8,
+      "unit": "MMbbl",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Monte Carlo, L-21..L-27",
+      "note": ""
+    },
+    {
+      "id": "L-31",
+      "parameter": "Field life at 25,000 bopd \u2014 P50",
+      "value": 15.3,
+      "unit": "years",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "L-29 \u00f7 (25,000 \u00d7 365)",
+      "note": "At the as-built ceiling, with no decline tail."
+    },
+    {
+      "id": "L-32",
+      "parameter": "Field life at 25,000 bopd \u2014 P90",
+      "value": 14.5,
+      "unit": "years",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "L-28 \u00f7 (25,000 \u00d7 365)",
+      "note": ""
+    },
+    {
+      "id": "L-33",
+      "parameter": "Field life at 25,000 bopd \u2014 P10",
+      "value": 16.1,
+      "unit": "years",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "L-30 \u00f7 (25,000 \u00d7 365)",
+      "note": ""
+    },
+    {
+      "id": "L-34",
+      "parameter": "Formation volume factor",
+      "value": 1.3,
+      "unit": "rb/stb",
+      "class": "ASSUMED",
+      "sources": [],
+      "independence": 0,
+      "basis": "HERMES: deepwater oil analogue",
+      "note": "No public PVT. Range 1.25\u20131.40 would move voidage by \u00b18%."
+    },
+    {
+      "id": "L-35",
+      "parameter": "Voidage at 25,000 bopd",
+      "value": 32500,
+      "unit": "rb/d",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "25,000 \u00d7 L-34",
+      "note": "Oil term only."
+    },
+    {
+      "id": "L-36",
+      "parameter": "VRR, oil term only, 20,000 bwpd",
+      "value": 0.62,
+      "unit": "ratio",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "L-07 \u00f7 L-35",
+      "note": "Under-replacement before water and free gas are counted."
+    },
+    {
+      "id": "L-37",
+      "parameter": "Gas:oil ratio of totals",
+      "value": 5640,
+      "unit": "scf/bbl",
+      "class": "DERIVED",
+      "sources": [],
+      "independence": 0,
+      "basis": "L-15 \u00d7 10\u00b3 \u00f7 L-14",
+      "note": "NOT a producing GOR. Mixes free and solution gas. Must not be used to size a gas train."
+    },
+    {
+      "id": "L-38",
+      "parameter": "Subsea award 2021",
+      "value": "250\u2013500",
+      "unit": "US$M",
+      "class": "VERIFIED",
+      "sources": [
+        "S-06",
+        "S-11"
+      ],
+      "independence": 2,
+      "basis": "TechnipFMC 'substantial' band",
+      "note": "10 wells + SPS + SURF iEPCI."
+    },
+    {
+      "id": "L-39",
+      "parameter": "Subsea award 2026",
+      "value": "75\u2013250",
+      "unit": "US$M",
+      "class": "REPORTED",
+      "sources": [
+        "S-12"
+      ],
+      "independence": 1,
+      "basis": "TechnipFMC 'significant' band, trade press",
+      "note": "Post-FID iEPCI. Band narrowed."
+    },
+    {
+      "id": "L-40",
+      "parameter": "Economic limit",
+      "value": "not stated",
+      "unit": "\u2014",
+      "class": "OPEN",
+      "sources": [],
+      "independence": 0,
+      "basis": "Requires price deck, opex, fiscal terms",
+      "note": ""
+    },
+    {
+      "id": "L-41",
+      "parameter": "Fiscal terms",
+      "value": "not public",
+      "unit": "\u2014",
+      "class": "OPEN",
+      "sources": [],
+      "independence": 0,
+      "basis": "PSC text unavailable",
+      "note": ""
+    },
+    {
+      "id": "L-42",
+      "parameter": "Post-conversion topsides",
+      "value": "not public",
+      "unit": "\u2014",
+      "class": "OPEN",
+      "sources": [],
+      "independence": 0,
+      "basis": "No MISC/MMHE/PETRONAS disclosure",
+      "note": "The single largest gap in this pack."
+    },
+    {
+      "id": "L-43",
+      "parameter": "Water depth at Limbayong, measured",
+      "value": 994,
+      "unit": "m",
+      "class": "DERIVED",
+      "sources": [
+        "S-14"
+      ],
+      "independence": 1,
+      "basis": "Read from NOAA/ETOPO DEM at 5.888 N 114.510 E",
+      "note": "Independent check on L-16; agrees within the reported range."
+    },
+    {
+      "id": "L-44",
+      "parameter": "Structure length",
+      "value": 30,
+      "unit": "km",
+      "class": "VERIFIED",
+      "sources": [
+        "S-13"
+      ],
+      "independence": 1,
+      "basis": "Operator paper, IPA complexity description",
+      "note": ""
+    },
+    {
+      "id": "L-45",
+      "parameter": "Structure width",
+      "value": 2.5,
+      "unit": "km",
+      "class": "VERIFIED",
+      "sources": [
+        "S-13"
+      ],
+      "independence": 1,
+      "basis": "Operator paper, IPA complexity description",
+      "note": ""
+    },
+    {
+      "id": "L-46",
+      "parameter": "Appraisal wells since 2002",
+      "value": 4,
+      "unit": "wells",
+      "class": "VERIFIED",
+      "sources": [
+        "S-13"
+      ],
+      "independence": 1,
+      "basis": "Operator paper",
+      "note": "Four appraisal wells; not exploration wildcats."
+    },
+    {
+      "id": "L-47",
+      "parameter": "Net oil-bearing sand, Limbayong-2",
+      "value": 136,
+      "unit": "m",
+      "class": "VERIFIED",
+      "sources": [
+        "S-15",
+        "S-16"
+      ],
+      "independence": 2,
+      "basis": "2014 discovery report, two outlets",
+      "note": "Appraisal well; the number is net sand, not net pay."
+    },
+    {
+      "id": "L-48",
+      "parameter": "Water depth, reported",
+      "value": 1000,
+      "unit": "m",
+      "class": "VERIFIED",
+      "sources": [
+        "S-15"
+      ],
+      "independence": 1,
+      "basis": "2014 discovery report",
+      "note": "'lies in 1000 metres of water, Block J'."
+    },
+    {
+      "id": "L-49",
+      "parameter": "Drilling margin, some wells",
+      "value": "<0.5",
+      "unit": "ppg",
+      "class": "VERIFIED",
+      "sources": [
+        "S-17"
+      ],
+      "independence": 1,
+      "basis": "Operator drilling paper",
+      "note": "Even the surface section; MPD required."
+    },
+    {
+      "id": "L-50",
+      "parameter": "Kinarut fan age (regional analogue)",
+      "value": 10.6,
+      "unit": "Ma",
+      "class": "VERIFIED",
+      "sources": [
+        "S-18"
+      ],
+      "independence": 1,
+      "basis": "Cullen et al., AAPG Search & Discovery #90052",
+      "note": "Sequence boundary age; analogue, not a stated Limbayong reservoir."
+    },
+    {
+      "id": "L-51",
+      "parameter": "Scattered deepwater resource, offshore Sabah",
+      "value": "~800",
+      "unit": "MMboe",
+      "class": "VERIFIED",
+      "sources": [
+        "S-13"
+      ],
+      "independence": 1,
+      "basis": "Operator paper",
+      "note": "Context for hub strategy."
+    },
+    {
+      "id": "L-52",
+      "parameter": "Compartment width, inferred",
+      "value": "3\u201315 km (was 2\u20135)",
+      "unit": "\u20135 km",
+      "class": "ASSUMED",
+      "sources": [],
+      "independence": 0,
+      "basis": "Now sourced to thrust spacing, L-56; the earlier 2\u20135 km guess is withdrawn",
+      "note": "Changed by the literature: a 30 km structure contains 6\u201315 thrust-bound panels, not 6."
+    },
+    {
+      "id": "L-53",
+      "parameter": "Seafloor slope at Limbayong",
+      "value": 3.2,
+      "unit": "deg",
+      "class": "DERIVED",
+      "sources": [
+        "S-14"
+      ],
+      "independence": 1,
+      "basis": "DEM gradient at the field coordinate",
+      "note": "Gentle locally; 95th percentile 7.8 deg within 30 km."
+    },
+    {
+      "id": "L-54",
+      "parameter": "Shelf break, distance along A\u2013A'",
+      "value": 144,
+      "unit": "km",
+      "class": "DERIVED",
+      "sources": [
+        "S-14"
+      ],
+      "independence": 1,
+      "basis": "DEM transect, -200 m crossing",
+      "note": ""
+    },
+    {
+      "id": "L-55",
+      "parameter": "Seafloor relief within 30 km",
+      "value": 1600,
+      "unit": "m",
+      "class": "DERIVED",
+      "sources": [
+        "S-14"
+      ],
+      "independence": 1,
+      "basis": "DEM window min/max",
+      "note": "Ridges and troughs of the fold belt."
+    },
+    {
+      "id": "L-56",
+      "parameter": "Deepwater fold-thrust belt \u2014 thrust spacing",
+      "value": "3\u201315",
+      "unit": "km",
+      "class": "VERIFIED",
+      "sources": [
+        "S-21"
+      ],
+      "independence": 1,
+      "basis": "Sulaiman 2017 Table 3.2; 1\u20139 km in the compressed north",
+      "note": "Governs compartment size, and therefore well count."
+    },
+    {
+      "id": "L-57",
+      "parameter": "Minimum shortening since ca. 10 Ma",
+      "value": "~8",
+      "unit": "km",
+      "class": "VERIFIED",
+      "sources": [
+        "S-22"
+      ],
+      "independence": 1,
+      "basis": "Wu et al. 2020, Geosphere 16:329",
+      "note": "Implies ~0.8 mm/yr average (DERIVED arithmetic)."
+    },
+    {
+      "id": "L-58",
+      "parameter": "Wedge-base pore pressure ratio (\u03bb)",
+      "value": "0.91\u20130.97",
+      "unit": "ratio",
+      "class": "VERIFIED",
+      "sources": [
+        "S-21"
+      ],
+      "independence": 1,
+      "basis": "Sulaiman 2017 after Morley 2007",
+      "note": "Approaching lithostatic at the detachment."
+    },
+    {
+      "id": "L-59",
+      "parameter": "P50 capillary column \u2014 deepwater turbidites",
+      "value": 250,
+      "unit": "m",
+      "class": "VERIFIED",
+      "sources": [
+        "S-23"
+      ],
+      "independence": 1,
+      "basis": "Kessler & Jong 2018, Berita Sedimentologi 40",
+      "note": "The number that bounds the gas column; deltaic analogue is 30 m."
+    },
+    {
+      "id": "L-60",
+      "parameter": "P50 capillary column \u2014 deltaics",
+      "value": 30,
+      "unit": "m",
+      "class": "VERIFIED",
+      "sources": [
+        "S-23"
+      ],
+      "independence": 1,
+      "basis": "Kessler & Jong 2018",
+      "note": "Contrast case."
+    },
+    {
+      "id": "L-61",
+      "parameter": "Analogue per-well ultimate recovery (Bonga)",
+      "value": "20\u2013100",
+      "unit": "MMstb",
+      "class": "VERIFIED",
+      "sources": [
+        "S-24"
+      ],
+      "independence": 1,
+      "basis": "Inikori et al. 2008, via structural brief",
+      "note": "Deepwater turbidite analogue range."
+    },
+    {
+      "id": "L-62",
+      "parameter": "Kikeh reservoir porosity",
+      "value": "28\u201332",
+      "unit": "%",
+      "class": "VERIFIED",
+      "sources": [
+        "S-25"
+      ],
+      "independence": 2,
+      "basis": "Jones et al. 2016; regional summaries",
+      "note": "Analogue, not Limbayong."
+    },
+    {
+      "id": "L-63",
+      "parameter": "Kikeh reservoir permeability",
+      "value": "~1000",
+      "unit": "mD",
+      "class": "VERIFIED",
+      "sources": [
+        "S-25"
+      ],
+      "independence": 1,
+      "basis": "Jones et al. 2016",
+      "note": "Analogue."
+    },
+    {
+      "id": "L-64",
+      "parameter": "Geothermal gradient, deepwater belt",
+      "value": "66.5",
+      "unit": "\u00b0C/km",
+      "class": "VERIFIED",
+      "sources": [
+        "S-26"
+      ],
+      "independence": 1,
+      "basis": "Madon & Jong 2021, JX Nippon acreage along strike",
+      "note": "Conflicts with the assumption that quartz cementation is not reached \u2014 see C-10."
+    },
+    {
+      "id": "L-65",
+      "parameter": "Geothermal gradient, Baram/Sabah shelf",
+      "value": "29\u201334",
+      "unit": "\u00b0C/km",
+      "class": "VERIFIED",
+      "sources": [
+        "S-26"
+      ],
+      "independence": 1,
+      "basis": "Madon & Jong 2021, 600+ BHT points",
+      "note": "Shelf is normal; deepwater belt is hot."
+    },
+    {
+      "id": "L-66",
+      "parameter": "Seismicity, M\u22653 within 300 km since 1970",
+      "value": 23,
+      "unit": "events",
+      "class": "VERIFIED",
+      "sources": [
+        "S-27"
+      ],
+      "independence": 1,
+      "basis": "USGS FDSN catalogue query",
+      "note": "None within 50 km. Low seismicity does not mean the folds are inactive."
+    },
+    {
+      "id": "L-67",
+      "parameter": "Mud volcano centres, North Sabah\u2013Pagasa wedge",
+      "value": "~50",
+      "unit": "centres",
+      "class": "VERIFIED",
+      "sources": [
+        "S-28"
+      ],
+      "independence": 1,
+      "basis": "Morley et al. 2022, Geosphere",
+      "note": "~1,900 km\u00b2 canopy; requires very large gas volumes."
+    },
+    {
+      "id": "L-68",
+      "parameter": "Brunei Slide volume",
+      "value": 1200,
+      "unit": "km\u00b3",
+      "class": "VERIFIED",
+      "sources": [
+        "S-29"
+      ],
+      "independence": 1,
+      "basis": "Gee et al. 2007",
+      "note": "240 m mean thickness, 120 km runout, 2\u20137 ka."
+    },
+    {
+      "id": "L-69",
+      "parameter": "Hydrate stability onset depth",
+      "value": "~500",
+      "unit": "m",
+      "class": "VERIFIED",
+      "sources": [
+        "S-30"
+      ],
+      "independence": 1,
+      "basis": "Jong et al. 2020",
+      "note": "Field is at 994 m, so hydrates are expected at the mudline."
+    }
+  ]
+}

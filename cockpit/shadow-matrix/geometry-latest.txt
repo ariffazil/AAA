@@ -1,24 +1,24 @@
 # Federation Agent Shadow Geometry Report
-# Generated: 2026-10-18T10:25:01Z by shadow_geometry_comparison.py
+# Generated: 2026-10-19T10:25:02Z by shadow_geometry_comparison.py
 
 ## Provenance
 - FQ source: http://127.0.0.1:7073/health
-- FQ snapshot: 2026-10-18T10:25:01Z
-- FQ status: UNAVAILABLE
-- Actors measured: 0/8 (live source reports None actors total)
-- Federation FQ scalar: None
+- FQ snapshot: 2026-10-19T10:25:02Z
+- FQ status: MEASURED
+- Actors measured: 3/8 (live source reports 17 actors total)
+- Federation FQ scalar: 0.906751570132589
 - Failure signatures: DECLARED — static registry (/root/AAA/registries/harnesses/*_harness_shadow.yaml), not measured
 
 | Rank | Agent | FQ | State | Exec | Verify | Balance | Phase | Boundary | Critical |
 |------|-------|-----|-------|------|--------|---------|-------|----------|----------|
-| 1 | claude-code | UNKNOWN | UNKNOWN | — | — | 0.222 | SHADOW_PROMINENT | -0.620 | 1 |
-| 2 | kimi-code | UNKNOWN | UNKNOWN | — | — | 0.230 | SHADOW_PROMINENT | -0.520 | 0 |
-| 3 | aforge | UNKNOWN | UNKNOWN | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
-| 4 | well | UNKNOWN | UNKNOWN | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
-| 5 | frame | UNKNOWN | UNKNOWN | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
-| 6 | grok-build | UNKNOWN | UNKNOWN | — | — | 0.247 | NIGREDO | -0.020 | 1 |
-| 7 | qwen-code | UNKNOWN | UNKNOWN | — | — | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
-| 8 | hermes-asi | UNKNOWN | UNKNOWN | — | — | 0.234 | NIGREDO | +0.080 | 0 |
+| 1 | claude-code | UNKNOWN | FLOWING | 0 | 2 | 0.222 | SHADOW_PROMINENT | -0.620 | 1 |
+| 2 | kimi-code | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.230 | SHADOW_PROMINENT | -0.520 | 0 |
+| 3 | aforge | 1.174 | OPTIMAL | 23 | 27 | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 4 | well | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 5 | frame | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.237 | SHADOW_PROMINENT | -0.420 | 0 |
+| 6 | grok-build | UNKNOWN | NOT_IN_LIVE_SOURCE | — | — | 0.247 | NIGREDO | -0.020 | 1 |
+| 7 | qwen-code | 0.636 | FLOWING | 11 | 7 | 0.204 | NIGREDO_DEEP | +0.180 | 0 |
+| 8 | hermes-asi | 0.550 | FLOWING | 20 | 11 | 0.234 | NIGREDO | +0.080 | 0 |
 
 ## Federation Aggregate
 - Average Yin-Yang balance: 0.231 / 0.250 max (92.4%) — DECLARED inputs
@@ -28,15 +28,10 @@
 - Best balance: grok-build (0.247)
 - Agents in CRITICAL: 2
 - Agents in BURNING/STUCK: 0
-- Agents with no live FQ: 8
+- Agents with no live FQ: 5
 
 ## Inventory (MEASURED from disk)
 - Harness shadow files present: 9
 - Mechanical checks defined in YAML: 10
 - check_* functions in shadow_mechanical_checks.py: 11
 - Mechanical checks ACTIVE on an actor: UNKNOWN
-
-## ⚠ FQ UNAVAILABLE — response had no fq.per_actor map
-## All FQ columns above are UNKNOWN by design. This report refuses to
-## substitute a stored or hardcoded value for a missing measurement
-## (fail-closed: 0 = confirmed absence, UNKNOWN = cannot determine).
