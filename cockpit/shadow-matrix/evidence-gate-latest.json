@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T10:25:02Z",
+  "generated_at": "2026-10-19T16:25:02Z",
   "gate_version": "2-fq-series",
   "promote_at": 5,
   "entries_assessed": 110,
@@ -13,10 +13,10 @@
   "fq_series": {
     "available": true,
     "error": null,
-    "ledger_rows": 5454,
-    "parsed": 5187,
+    "ledger_rows": 6881,
+    "parsed": 6449,
     "span_min": "2026-10-18T21:17:35.749Z",
-    "span_max": "2026-10-19T10:24:13.430Z",
+    "span_max": "2026-10-19T16:24:30.159Z",
     "span_days": 1,
     "tested": 30,
     "confirmed": 0,
@@ -32,8 +32,8 @@
       "posterior": 0.5,
       "entropy_norm": 1.0,
       "severity_weight": 0.5,
-      "daily_receipt_rate": 4970.0,
-      "voi": 2485.0,
+      "daily_receipt_rate": 5958.0,
+      "voi": 2979.0,
       "voi_status": "OPEN",
       "note": "measurable and unresolved \u2014 waiting produces evidence"
     },
@@ -44,8 +44,8 @@
       "posterior": 0.5,
       "entropy_norm": 1.0,
       "severity_weight": 0.75,
-      "daily_receipt_rate": 158.0,
-      "voi": 118.5,
+      "daily_receipt_rate": 363.0,
+      "voi": 272.25,
       "voi_status": "OPEN",
       "note": "measurable and unresolved \u2014 waiting produces evidence"
     },
@@ -56,8 +56,8 @@
       "posterior": 0.5,
       "entropy_norm": 1.0,
       "severity_weight": 0.5,
-      "daily_receipt_rate": 158.0,
-      "voi": 79.0,
+      "daily_receipt_rate": 363.0,
+      "voi": 181.5,
       "voi_status": "OPEN",
       "note": "measurable and unresolved \u2014 waiting produces evidence"
     },
@@ -80,8 +80,8 @@
       "posterior": 0.5,
       "entropy_norm": 1.0,
       "severity_weight": 1.0,
-      "daily_receipt_rate": 2.0,
-      "voi": 2.0,
+      "daily_receipt_rate": 7.0,
+      "voi": 7.0,
       "voi_status": "OPEN",
       "note": "measurable and unresolved \u2014 waiting produces evidence"
     }
@@ -112,12 +112,12 @@
       "fq_candidates": "mutation_hunger|mutations_per_session > 0 AND no_explicit_mutation_request",
       "fq_predicted": "FQ<1",
       "fq_verdict": "NO_STABLE_ATTRACTOR",
-      "fq_reason": "I\u00b2=89.1% with no significant displacement (Z=+2.34, FQ=1.418, 0/2 concordant) \u2014 the actor regime-switches rather than sitting in one state; neither confirmed nor refuted, and NOT grounds for deletion",
+      "fq_reason": "I\u00b2=83.6% with no significant displacement (Z=+2.70, FQ=1.383, 0/2 concordant) \u2014 the actor regime-switches rather than sitting in one state; neither confirmed nor refuted, and NOT grounds for deletion",
       "fq_windows_used": 2,
-      "fq_pooled": 1.4183,
-      "fq_pooled_se": 0.1497,
-      "fq_z": 2.335,
-      "fq_i_squared": 89.1,
+      "fq_pooled": 1.3827,
+      "fq_pooled_se": 0.1201,
+      "fq_z": 2.698,
+      "fq_i_squared": 83.56,
       "fq_concordance": "0/2",
       "fq_binom_p": 1.0,
       "fq_posterior": 0.5,
@@ -128,8 +128,8 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.5,
-        "daily_receipt_rate": 4970.0,
-        "voi": 2485.0,
+        "daily_receipt_rate": 5958.0,
+        "voi": 2979.0,
         "voi_status": "OPEN",
         "note": "measurable and unresolved \u2014 waiting produces evidence"
       }
@@ -174,7 +174,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.75,
-        "daily_receipt_rate": 4970.0,
+        "daily_receipt_rate": 5958.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -220,7 +220,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.5,
-        "daily_receipt_rate": 4970.0,
+        "daily_receipt_rate": 5958.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -266,7 +266,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.25,
-        "daily_receipt_rate": 4970.0,
+        "daily_receipt_rate": 5958.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -310,7 +310,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.75,
-        "daily_receipt_rate": 2.0,
+        "daily_receipt_rate": 7.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -354,7 +354,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 1.0,
-        "daily_receipt_rate": 2.0,
+        "daily_receipt_rate": 7.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -398,7 +398,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.5,
-        "daily_receipt_rate": 2.0,
+        "daily_receipt_rate": 7.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -442,7 +442,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.75,
-        "daily_receipt_rate": 2.0,
+        "daily_receipt_rate": 7.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -471,13 +471,13 @@
       "fq_candidates": "execution_gravity|executes_without_verification",
       "fq_predicted": "FQ<1",
       "fq_verdict": "INSUFFICIENT",
-      "fq_reason": "only 0 usable window(s); >=2 required to test stability",
-      "fq_windows_used": 0,
+      "fq_reason": "only 1 usable window(s); >=2 required to test stability",
+      "fq_windows_used": 1,
       "fq_pooled": null,
       "fq_pooled_se": null,
       "fq_z": null,
       "fq_i_squared": null,
-      "fq_concordance": null,
+      "fq_concordance": "0/1",
       "fq_binom_p": null,
       "fq_posterior": null,
       "fq_model": "none",
@@ -486,8 +486,8 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 1.0,
-        "daily_receipt_rate": 2.0,
-        "voi": 2.0,
+        "daily_receipt_rate": 7.0,
+        "voi": 7.0,
         "voi_status": "OPEN",
         "note": "measurable and unresolved \u2014 waiting produces evidence"
       }
@@ -530,7 +530,7 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.5,
-        "daily_receipt_rate": 2.0,
+        "daily_receipt_rate": 7.0,
         "voi": 0.0,
         "voi_status": "UNMEASURABLE_BY_FQ",
         "note": "observable cannot see this shadow"
@@ -802,8 +802,8 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.75,
-        "daily_receipt_rate": 158.0,
-        "voi": 118.5,
+        "daily_receipt_rate": 363.0,
+        "voi": 272.25,
         "voi_status": "OPEN",
         "note": "measurable and unresolved \u2014 waiting produces evidence"
       }
@@ -846,8 +846,8 @@
         "posterior": 0.5,
         "entropy_norm": 1.0,
         "severity_weight": 0.5,
-        "daily_receipt_rate": 158.0,
-        "voi": 79.0,
+        "daily_receipt_rate": 363.0,
+        "voi": 181.5,
         "voi_status": "OPEN",
         "note": "measurable and unresolved \u2014 waiting produces evidence"
       }
