@@ -70,7 +70,10 @@ class TestFederationHookEngine(unittest.TestCase):
         self.assertEqual(gate_res["verdict"], "ALLOW")
         self.assertTrue(gate_res["auto_minted"])
         self.assertIsNotNone(gate_res["session_token"])
-        self.assertTrue(gate_res["session_token"].startswith("act-minted-555-ASI"))
+        # Renamed 2026-10-20: `act-minted-*` read as a kernel ACT credential but
+        # was self-minted by the caller's own process. `local-corr-*` is honest.
+        self.assertTrue(gate_res["session_token"].startswith("local-corr-555-ASI"))
+        self.assertFalse(gate_res["session_token"].startswith("act-minted-"))
         self.assertIsNotNone(gate_res.get("journal_id"))
 
     def test_04_monotonic_restriction_ladder(self):
