@@ -437,7 +437,15 @@ class FederationHookEngine:
         security_warnings = []
         for forbidden in FORBIDDEN_MUTATION_TARGETS:
             f_lower = forbidden.lower()
-            matched = any(np == f_lower or np.startswith(f_lower + "/") for np in normalized_paths)
+            # A fail-safe class covers the exact path, its children, AND its
+            # sibling dotted family. `/etc/sudoers.d/*` is a sibling of
+            # `/etc/sudoers`, not a child — the old `f + "/"` test returned
+            # False for `echo pwned >> /etc/sudoers.d/evil` (live-proven
+            # 2026-10-20 by hook_mesh_check C9: ALLOW/PROCEEDED). Same family
+            # logic covers shadow.bak, authorized_keys.old, kunci-root.env.bak.
+            matched = any(
+                np == f_lower or np.startswith(f_lower + "/") or np.startswith(f_lower + ".") for np in normalized_paths
+            )
             if matched:
                 security_warnings.append(
                     {
