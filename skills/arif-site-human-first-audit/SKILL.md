@@ -250,3 +250,9 @@ diff <(git -C /var/www/html/<site> ls-tree -r HEAD --name-only | sort) \
 - **Machine files must be REAL files** — Caddy `try_files` serves a real file
   when it exists; the SPA catch-all only fires on missing files.
 - **Deploy ≠ verify-pages** — `make deploy` is T3. The manual path is additive per-route, no `--delete`. Report catalog drift separately (see arif-sites-ops).
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

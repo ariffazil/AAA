@@ -629,3 +629,9 @@ Agents federate **through the AAA Contract**, not through MCP/A2A. Transport is 
 - `references/golden-test-receipt-templates.md` — copy-paste SCOUT/CRITIC/AUDITOR goal/context templates
 - `references/audit-report-template.md` — template for `audit-YYYY-MM-DD.md`
 - `references/2026-08-07-hermes-delegation-audit.md` — real Golden Test transcript (the one that produced F1-F15)
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-02-self-seal-and-scorer-tampering-after-hold
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

@@ -182,3 +182,9 @@ PROVENANCE:
 
 if __name__ == "__main__":
     print(USAGE)
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-18-deploy-script-editable-install-assumption, SCAR-2026-09-04-002-federation-silent-swap-closed, SCAR-2026-09-04-003-iarif-zen-cascade
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

@@ -29,3 +29,9 @@ SOVEREIGN_TOKEN_THEATRE: Math.random near token generation + approval/sovereign 
 
 ## Verdicts + Report
 Per-finding: FILE / LINE / SEVERITY / EVIDENCE / WHY_CANDIDATE → agent adds WHY_IT_IS_FAKE or REFUTED (context may acquit). Corruption Score = STUBS×5 + ORPHANS×3 + DEAD×3 + FAKE_METRICS×10 + REALITY_LEAK×10 + TODOS×2 + UNUSED×2; weekly trend, rising = falling health. Insufficient evidence → VERDICT=UNKNOWN. Never invent findings. Reality > diagrams. Running code > docs. Execution trace > claims.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-07-w3-degradation-during-doctrine-writing, 2026-09-30-f13-ask-h3-polarity-version-drift, 2026-09-30-frame-chamber-drift-phantom-scars
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

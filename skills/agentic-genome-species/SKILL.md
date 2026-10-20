@@ -270,3 +270,9 @@ Hermes DM cannot read group history (webhook blocks `getUpdates` on both `@ASI_a
 - `frontier-model-audit-verification` (audit sibling SEAL reports)
 
 *DITEMPA BUKAN DIBERI — Forged 2026-08-08 under F13 SOVEREIGN directive. Genome is universal, not a feature.*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-18-git-lane-identity-binding-and-agy-harness
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

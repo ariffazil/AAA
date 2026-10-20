@@ -102,3 +102,9 @@ Never write "X exists at [single path]" without listing what other paths were se
 > **Probe ALL roots. Declare absent only after enumeration.**
 > F11 Auditability = every absence claim cites the paths searched.
 > Path-blind probing is a verifier failure mode, not a user-error.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-01-complexity-must-not-exceed-leverage
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

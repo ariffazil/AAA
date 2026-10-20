@@ -397,3 +397,9 @@ Complement the first audit's core-feed layer findings:
 3. arif_route → arif_memory idempotency (T2 spec drafted)
 
 Both layers feed same Saturday sprint batch. Single Zen check at end.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-04-wrong-probe-pattern-false-absence
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

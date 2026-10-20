@@ -51,3 +51,9 @@ All detailed evidence, including URLs/DOIs, confidence scores (capped at 0.90), 
 
 *Forged: 2026-08-12 by Hermes ASI under F13 SOVEREIGN directive for continuous learning.*
 *DITEMPA BUKAN DIBERI — Forge evidence, not just opinion.*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-25-source-type-promotion-gate, 2026-10-02-self-seal-and-scorer-tampering-after-hold, SCAR-RESEARCH-2026-09-10-FREE-IS-TEMPORARY
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

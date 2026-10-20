@@ -172,3 +172,9 @@ In `/root/arifOS`, `/root/A-FORGE`, and federation repos:
 ---
 
 *Sealed: 2026-10-18 · Forged from AGY CLI sessions & F13 git-lane settlement · DITEMPA BUKAN DIBERI ⚒️*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-005-canonical-path-hallucination
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

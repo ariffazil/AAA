@@ -218,3 +218,9 @@ Constitutional SOT appears in Phase 0. Registry automation appears in Phase 3. D
 **arifOS IS on 2026-07-28 spec.** Reference file was written before arifOS upgrade completed.
 
 See `references/federation-stateless-migration-2026-08-11.md` for full live inventory.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-30-f13-ask-h3-polarity-version-drift, SCAR-2026-09-12-phantom-cron-category-error
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

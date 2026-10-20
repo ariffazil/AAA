@@ -22,3 +22,9 @@ Engineering skill for repairing WELL organ boundary conditions.
 ## Floors
 - F1 AMANAH: Reversible repairs only. Irreversible → 888_HOLD.
 - F6 EMPATHY: Protect weakest stakeholder in all repairs.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-001-harness-hubris-boundary-drift
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

@@ -167,3 +167,9 @@ Full session trace: `references/mma-2026-08-07-session-postmortem.md`.
 - **governance-contract-self-audit** — author and self-audit governance contracts (the audit-write-and-the-audit-of-the-audit pattern)
 - **retrieval-vs-memory-fidelity** — the core distinction this skill operationalizes
 - **arifos-federation-ops** — kernel/session/topology layer; for the H-axis sovereignty gate operating against the federation substrate
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-004-session-gate-confusion, SCAR-AGY-007-over-output-verbosity, SCAR-ARCHITECTURE-OF-REJECTION
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

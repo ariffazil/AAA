@@ -416,3 +416,9 @@ See also:
 - `/root/arif-fazil.com/sites/arif-fazil.com/scripts/inject-article-styles.sh` — article CSS retrofitter
 - `/root/arif-fazil.com/sites/arif-fazil.com/scripts/generate-makcik-index.cjs` — landing generator (Primer Dark template)
 - `references/visual-recovery-workflow-2026-08-11.md` — canonical playbook (extract → serve → screenshot → compare → restore → lint → wire)
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

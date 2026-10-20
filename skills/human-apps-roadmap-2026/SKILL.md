@@ -28,3 +28,9 @@ Evidence from Arif's own calendar: Mr Olympia 2026 💪 (Sept 22–27 LV — NEX
 
 ## Sleep + micro-joy lane (added 2026-09-16 night — "sleep is happy as well")
 Sleep = joy lane (sovereign call), full research in `/root/docs/human-benefit-apps-2026.md` S1–S4. Anchors: Windred 2024 (sleep regularity beats duration, 20–48% mortality delta) · Lajunen 2023 (duration ~30% of happiness variance) · Seligman 2005 (3 Good Things → 6-month happiness gains) · White 2019 (≥120 min/wk nature threshold) · Sturm 2020 (15-min weekly awe walk) · NASA 26-min nap (+~50% alertness). Features, ZERO new MCPs: briefing sleep line joy-framed + bedtime-consistency streak · wind-down nudge + caffeine cutoff (~16:00) on existing 22:00 digest · "3 baik hari ini" (3GT) = one line on existing digest, shippable tonight · Menu Suka (dopamine menu, Mayo/ADDitude pattern) = pre-decided micro-joy starters seeded from his lanes · nature-120 counter + awe-run suggestions once Strava live (KL: Perdana Botanical, KLCC Park, Titiwangsa, FRIM) · nap window via WELL `log_recovery_event(nap)` (exists) · sunrise lamp = T3 his call. **S3 SHIPPED 2026-09-16 01:10 MYT** (witness PROCEED_S3, conf 0.84): digest human block live in `arifflow_digest.py` · `cron-deliver.sh` revived at `/root/.hermes/scripts/` (was phantom since zen-20260912 — nightly digest delivery was silently dead) · reply capture = Hermes skill `WELL-3baik-log` (`3baik:` prefix → `/root/WELL/state/3baik_log.jsonl`) · policy `/root/WELL/state/human-benefit-sleep-joy-v1.json` ACTIVE · population effect sizes = PLAUSIBLE for Arif individually, learn from his data.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
