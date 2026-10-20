@@ -1,9 +1,22 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
+  "id": "a-forge-mcp",
   "protocolVersion": "1.0",
   "agentId": "a-forge-mcp",
   "name": "A-FORGE Execution Shell",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Execution shell \u2014 governed by FORGE (777) lane",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "FORGE-777",
+    "intelligence_tier": "FORGE",
+    "authority_level": "executor",
+    "citizenship_forged": "2026-05-17"
+  },
   "description": "Governed execution actuator. Hands, not law. Build, deploy, orchestrate, document, git.",
   "version": "1.0.0",
   "provider": {
@@ -19,7 +32,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0",
+      "protocolVersion": "1.2",
       "url": "https://aaa.arif-fazil.com/a2a"
     }
   ],
@@ -42,18 +55,7 @@
       "name": "x-a2a-key"
     }
   },
-  "skills": [],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "ULnF77oWnwEusJIky1VwuE+ooiSAAB+R8cSbaD7GR+dYqulJdyElT7UV6vDjO07f+LmGTd3cRtapX+ruoK8iBg==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "_quarantined_skills": [
+  "skills": [
     {
       "id": "forge_shell",
       "name": "Governed Shell",
@@ -66,8 +68,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_filesystem",
@@ -81,8 +82,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_git",
@@ -96,8 +96,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_docker",
@@ -111,8 +110,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_browser",
@@ -126,8 +124,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_fetch",
@@ -141,8 +138,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_execute",
@@ -156,8 +152,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_parallel",
@@ -171,8 +166,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_vps",
@@ -186,13 +180,12 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_evaluate",
       "name": "APEX Gate",
-      "description": "Compute G = A·P·E·X·Φ.",
+      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
       "tags": [
         "actuator"
       ],
@@ -201,8 +194,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_seal",
@@ -216,8 +208,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "forge_reality_loop",
@@ -231,53 +222,101 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     }
   ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 12,
-    "after": 0,
-    "quarantined": 12,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "ULnF77oWnwEusJIky1VwuE+ooiSAAB+R8cSbaD7GR+dYqulJdyElT7UV6vDjO07f+LmGTd3cRtapX+ruoK8iBg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "supported_interfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "registry_receipt_hash": "e579cec971adfaf40c79d03d985a7a9cd253323bbd54d686c447426bd528d84a",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
   },
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "531fa39381f4c7bff91c0d774ead795c7afd3bd89f911f98297314334234a6e1",
-  "apexMasterSeal": {
-    "cognitiveRing": "generator",
-    "thermodynamicRole": "outer",
-    "ringPlacement": "multi-model",
-    "parallelism": "multi-model",
-    "shadowAcknowledged": [],
-    "jituGate": {
-      "requiresJitu": false,
-      "jituTriggerPatterns": [],
-      "autoAbortWithoutJitu": true
-    },
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "hassabisInversion": {
-      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "multi-model",
-      "parallelism": "multi-model",
-      "shadowAcknowledged": []
-    },
-    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
-    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_by": "333-AGI (FI-001) under user directive",
-    "auto_aligned_reason": "synthesized from tier=ORGAN, class=Warga"
+  "governance_profile": {
+    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
   },
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "BUILD",
-    "lane": "aforge",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "ORGAN",
-    "auto_aligned_class": "Warga"
-  }
+  "admissible": true,
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L3",
+        "L4",
+        "L4.5",
+        "L8"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (A-FORGE)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: executor",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  },
+  "authority_ceiling": "EXECUTE_AFTER_SEAL"
 }

@@ -1,9 +1,22 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
+  "id": "geox-mcp",
   "protocolVersion": "1.0",
   "agentId": "geox",
   "name": "GEOX",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Earth intelligence \u2014 EVIDENCE_ONLY, never adjudicates",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "EVIDENCE-111",
+    "intelligence_tier": "AGI",
+    "authority_level": "EVIDENCE_ONLY",
+    "citizenship_forged": "2026-05-17"
+  },
   "description": "Earth intelligence \u2014 basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
   "version": "1.0.0",
   "provider": {
@@ -19,7 +32,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0",
+      "protocolVersion": "1.2",
       "url": "https://aaa.arif-fazil.com/a2a"
     }
   ],
@@ -44,261 +57,6 @@
   },
   "skills": [
     {
-      "id": "geox_basin",
-      "name": "geox_basin",
-      "description": "Unified basin intelligence: profile, resolve, macrostrat, backstrip, mass balance, thermal maturity, map context, deep time, tectonic reconstruction.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_calibration_register_witness",
-      "name": "geox_calibration_register_witness",
-      "description": "Register a CalibrationWitness for structural interpretation. Validates schema, checks completeness blockers (missing axes, depth-without-velocity). Returns VOID on bad input, HOLD on missing calibration.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_claim",
-      "name": "geox_claim",
-      "description": "Claim lifecycle: create, validate, challenge, seal, evidence, falsify, synthesize, contradict. Modes: create, validate, challenge, seal, attach, falsify, discover, synthesize, abduct, contradict, scan.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_contrast_metabolize",
-      "name": "geox_contrast_metabolize",
-      "description": "Unified anomalous contrast metabolic pipeline. Binds three stages into one call: ISOLATE (deterministic acoustic impedance contrast detection) then MEASURE (AVO gradient + LMR estimates) then CLASSIFY (>=3 stratigraphic trap hypotheses). substrate_class=INERT. Local max QUALIFIED_CANDIDATE - arifOS seals.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_deep_time",
-      "name": "geox_deep_time",
-      "description": "Deep time: Earth state, dynamical systems, DDE reasoning. Modes: dde_reason.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_extract_display_proxy",
-      "name": "geox_extract_display_proxy",
-      "description": "Extract display-derived proxy from raster seismic image. Requires CalibrationWitness. Output labeled DISPLAY_DERIVED_PROXY \u2014 NOT suitable for AVO, amplitude preservation, or native well-tie.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_extract_native_trace",
-      "name": "geox_extract_native_trace",
-      "description": "Extract a native seismic trace from a registered source. Returns NativeTraceRef with full provenance. HOLD for unverified authority, restricted data, or missing source.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_geomechanics",
-      "name": "geox_geomechanics",
-      "description": "Geomechanical analysis: bulk/shear/young modulus, poisson ratio, acoustic impedance, stress polygon.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_glof",
-      "name": "geox_glof",
-      "description": "Unified GLOF multi-phase cascade simulation. Multi-phase physics: solid dam \u2192 granular debris \u2192 liquid flood (Mohr-Coulomb + Saint-Venant + 33D zen-33 state). Modes: run (full cascade in one call), inverse (Bayesian grid-search), mcmc (MCMC posterior), propagate (Saint-Venant 1D), phase (yield surface debug). Replaces 7 individual geox_glof_cascade_* tools (333 ARCHITECT 2026-09-19).",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_list_registered_sources",
-      "name": "geox_list_registered_sources",
-      "description": "List all registered native seismic sources with classification, authority, trace count, and sample metadata.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_map",
-      "name": "geox_map",
-      "description": "Map intelligence: layer discovery, scene composition, preview. Modes: layers_list, scene_plan, render_preview.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_model",
-      "name": "geox_model",
-      "description": "Geological modeling: subsurface inversion, 2D cross-sections, GemPy 3D. Modes: subsurface, geological_generate, gempy_3d.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_observe",
-      "name": "geox_observe",
-      "description": "Canonical multimodal Earth observation umbrella (Earth Witness v1). Rock/outcrop/core/thin_section/fossil/seismic_display/map/section intake \u2192 governed EarthObservationPacket. Vision output is EVIDENCE only; interpretations stay HYPOTHESIS; no hydrocarbon claim from image alone (I1-I9); missing diagnostics \u2192 INPUT_REQUIRED; local ceiling QUALIFIED_CANDIDATE \u2014 arifOS seals only.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_paleobiodb_query",
-      "name": "geox_paleobiodb_query",
-      "description": "Query the Paleobiology Database (PBDB v1.2) for taxa, occurrences, and biozones. Modes: taxa (resolve a taxon), occurrence (fossil occurrence records), zone (biozones by scale), age_intervals (ICS / nanno / foram zones). Read-only, public-domain fossil data.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_petrophysics",
-      "name": "geox_petrophysics",
-      "description": "Unified petrophysics: Vsh, porosity, Sw, permeability, net pay, LEM inference, QC. Modes: generate, verify, lem_inference, stoip_feed, qc.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_prospect",
-      "name": "geox_prospect",
-      "description": "Prospect evaluation: volumetrics, POS, EVOI, risk assessment. Modes: screen, evaluate.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_register_native_source",
-      "name": "geox_register_native_source",
-      "description": "Register a native SEG-Y source for trace extraction. Validates file existence, computes SHA256, extracts binary header metadata. Authority downgrade: OPERATOR_APPROVED without actor \u2192 UNVERIFIED.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_seismic_compute",
-      "name": "geox_seismic_compute",
-      "description": "Seismic computation: forward model, well tie, attributes, wavelet extraction, inversion.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_seismic_ingest",
-      "name": "geox_seismic_ingest",
-      "description": "SEG-Y I/O, header inspection, export.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_seismic_interpret",
-      "name": "geox_seismic_interpret",
-      "description": "One semantic capability \u2014 propose geometry, physics-gate, compare hypotheses (NOT autonomous SEAL). Live modes: horizon_contrast, fault_sticks, volume_frame, blend, structure_validate, interpret (interpretation_bundle \u22653 hyps), interpret_section/rsi_pipeline (INT_SEISMIC), segy_slice. Gates return PASS|WARN|KILL|UNMEASURED + receipt_hash. preferred_hypothesis always null from GEOX. Local max QUALIFIED_CANDIDATE \u2014 arifOS seals only.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_source",
-      "name": "geox_source",
-      "description": "Source rock & diagenesis: TOC, kerogen, maturity, compaction. Modes: source_rock, diagenesis.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_spatial",
-      "name": "geox_spatial",
-      "description": "Spatial intelligence: H3, LanceDB, STAC. Modes: h3_index, lancedb_store, stac_discover.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_surface_status",
-      "name": "geox_surface_status",
-      "description": "Canonical registry probe: public surface truth (count, canonical_tools, verdict). Self-witness for surface SOT.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_temporal",
-      "name": "geox_temporal",
-      "description": "Temporal analytics: decline curve, RRR, basin lifecycle, cadence. Modes: decline, rrr, basin_lifecycle, cadence.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_well",
-      "name": "geox_well",
-      "description": "Well intelligence: view curves, open desk, desurvey. Modes: view, desk.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_well_ingest",
-      "name": "geox_well_ingest",
-      "description": "Load well log data from LAS, SEG-Y, DST, deviation, or tops files. Auto-detects format.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    },
-    {
-      "id": "geox_well_qc",
-      "name": "geox_well_qc",
-      "description": "Quality control for well data: depth monotonicity, null %, physical range checks.",
-      "tags": [
-        "geoscience",
-        "earth-intelligence"
-      ]
-    }
-  ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "LVkeJKrOyMuHUU/GCC4etf1g5ZELzYnef24iYGAndYoeovD2Slvz62CqNfvQ+PaluK1neN3rLcjHgPnMMwDBAw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "_quarantined_skills": [
-    {
       "id": "geox_well_ingest",
       "name": "Well Ingest",
       "description": "GEOX geoscience tool",
@@ -310,8 +68,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_well_qc",
@@ -325,8 +82,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_well_desk_open",
@@ -340,8 +96,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_well_desk_publish",
@@ -355,8 +110,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_render_well_panel",
@@ -370,8 +124,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_petrophysics",
@@ -385,8 +138,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_sequence",
@@ -400,8 +152,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_seismic_ingest",
@@ -415,8 +166,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_seismic_compute",
@@ -430,8 +180,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_seismic_interpret",
@@ -445,8 +194,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_vision",
@@ -460,8 +208,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_subsurface_model",
@@ -475,8 +222,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_geomechanics",
@@ -490,8 +236,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_basin",
@@ -505,8 +250,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_deep_time_state",
@@ -520,8 +264,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_surface_status",
@@ -535,8 +278,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_claim",
@@ -550,8 +292,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_evidence",
@@ -565,8 +306,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_prospect",
@@ -580,8 +320,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_map_context_scene",
@@ -595,8 +334,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_contrast_detect",
@@ -610,8 +348,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_biostrat_parse",
@@ -625,8 +362,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_biostrat_falsify",
@@ -640,8 +376,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_basin_backstrip",
@@ -655,8 +390,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_sediment_mass_balance",
@@ -670,8 +404,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_thermal_maturity_history",
@@ -685,8 +418,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_claim_graph_evaluate",
@@ -700,8 +432,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_consequence_footprint",
@@ -715,8 +446,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_optionality_loss",
@@ -730,8 +460,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_feedback_integrity",
@@ -745,8 +474,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_material_truth_challenge",
@@ -760,8 +488,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "geox_cascade_pathway",
@@ -775,58 +502,103 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     }
   ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 32,
-    "after": 0,
-    "quarantined": 32,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "LVkeJKrOyMuHUU/GCC4etf1g5ZELzYnef24iYGAndYoeovD2Slvz62CqNfvQ+PaluK1neN3rLcjHgPnMMwDBAw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "supported_interfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "registry_receipt_hash": "263fd962cf0b642d5f5ca1f664027250c6ae1dbd7b3d12a399327186dafa92e7",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 32
   },
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "a86b4398fbeed5a89fc622c26ff4a8712ee509e69ef5b22812abe66a5a4a25a6",
-  "apexMasterSeal": {
-    "cognitiveRing": "observer",
-    "thermodynamicRole": "metabolic",
-    "ringPlacement": "pipeline",
-    "parallelism": "pipeline",
-    "shadowAcknowledged": [],
-    "jituGate": {
-      "requiresJitu": false,
-      "jituTriggerPatterns": [],
-      "autoAbortWithoutJitu": true
+  "governance_profile": {
+    "authority_ceiling": "COMPUTE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true,
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L4.5",
+        "L5",
+        "L6",
+        "L7.5",
+        "L8",
+        "L8.5"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (GEOX)",
+      "claim_state": "CANON_DERIVED"
     },
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "hassabisInversion": {
-      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "pipeline",
-      "parallelism": "pipeline",
-      "shadowAcknowledged": []
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
     },
-    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
-    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_by": "333-AGI (FI-001) under user directive",
-    "auto_aligned_reason": "synthesized from tier=ORGAN, class=Warga"
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: EVIDENCE_ONLY",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
   },
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
-    "invariant": "CAPABILITY \u2260 AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "OBSERVE",
-    "lane": "geox",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "ORGAN",
-    "auto_aligned_class": "Warga"
-  },
-  "_skill_reconciliation": {
-    "date": "2026-10-03",
-    "action": "2026-10-03 alignment audit: geox tool ids reconciled to live canonical surface (registry.py, 27 tools) \u2014 dead pre-consolidation names removed",
-    "live_count": 27
-  }
+  "authority_ceiling": "COMPUTE_ONLY"
 }

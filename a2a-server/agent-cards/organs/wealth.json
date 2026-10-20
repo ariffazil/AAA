@@ -1,10 +1,23 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
+  "id": "wealth-mcp",
   "protocolVersion": "1.0",
   "agentId": "wealth",
   "name": "WEALTH",
-  "description": "Capital intelligence — NPV/IRR, markets, institutional stress, entropy, wisdom.",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Capital intelligence \u2014 ADVISORY_ONLY, compute never allocate",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "ADVISORY-222",
+    "intelligence_tier": "AGI",
+    "authority_level": "ADVISORY_ONLY",
+    "citizenship_forged": "2026-05-17"
+  },
+  "description": "Capital intelligence \u2014 NPV/IRR, markets, institutional stress, entropy, wisdom.",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -19,7 +32,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0",
+      "protocolVersion": "1.2",
       "url": "https://aaa.arif-fazil.com/a2a"
     }
   ],
@@ -42,18 +55,7 @@
       "name": "x-a2a-key"
     }
   },
-  "skills": [],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "/Hfc52GfOBNbAa8T8ei691BS92Yt8RilvFHpiuQp2w59M+jRaEQoRiocQT5FnXr7gcQ9qcDOK4eYtYMscoQHAg==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "_quarantined_skills": [
+  "skills": [
     {
       "id": "capital_primitive",
       "name": "Capital Math",
@@ -66,8 +68,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "capital_health",
@@ -81,8 +82,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "capital_market",
@@ -96,8 +96,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "capital_wisdom",
@@ -111,8 +110,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "capital_diagnose",
@@ -126,8 +124,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "capital_entropy",
@@ -141,8 +138,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "capital_ledger",
@@ -156,8 +152,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "capital_registry",
@@ -171,8 +166,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "wealth_institutional_stress",
@@ -186,8 +180,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "wealth_governance_capacity",
@@ -201,8 +194,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "wealth_cascade_model",
@@ -216,8 +208,7 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     },
     {
       "id": "wealth_external_exploitation",
@@ -231,53 +222,102 @@
       ],
       "outputModes": [
         "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
+      ]
     }
   ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 12,
-    "after": 0,
-    "quarantined": 12,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "/Hfc52GfOBNbAa8T8ei691BS92Yt8RilvFHpiuQp2w59M+jRaEQoRiocQT5FnXr7gcQ9qcDOK4eYtYMscoQHAg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com",
+  "supported_interfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "registry_receipt_hash": "cf778c76c079ecf063929d5169bf1ec1a22195148b4e6e881c467c1bb2f08b61",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 12
   },
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "ed1893b2850fe33b95fdc5273f60132cf57fcf500f234ec027a1a99451718bb4",
-  "apexMasterSeal": {
-    "cognitiveRing": "observer",
-    "thermodynamicRole": "metabolic",
-    "ringPlacement": "pipeline",
-    "parallelism": "pipeline",
-    "shadowAcknowledged": [],
-    "jituGate": {
-      "requiresJitu": false,
-      "jituTriggerPatterns": [],
-      "autoAbortWithoutJitu": true
-    },
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "hassabisInversion": {
-      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "pipeline",
-      "parallelism": "pipeline",
-      "shadowAcknowledged": []
-    },
-    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
-    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_by": "333-AGI (FI-001) under user directive",
-    "auto_aligned_reason": "synthesized from tier=ORGAN, class=Warga"
+  "governance_profile": {
+    "authority_ceiling": "COMPUTE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
   },
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "OBSERVE",
-    "lane": "wealth",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "ORGAN",
-    "auto_aligned_class": "Warga"
-  }
+  "admissible": true,
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L1",
+        "L1.5",
+        "L3",
+        "L6",
+        "L10"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (WEALTH)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: ADVISORY_ONLY",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  },
+  "authority_ceiling": "COMPUTE_ONLY"
 }
