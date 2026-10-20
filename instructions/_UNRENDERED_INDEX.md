@@ -130,12 +130,14 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - hermes-conduct-directives
 - hermes-identity-directive
 - hermes-layer-discipline
+- hermes-meaning-fidelity
 - hermes-question-policy
 - hermes-role-ladder
 - hermes-v1-canon
 - hook-federation-standard
 - huma-edge-reality-bridge-contrast
 - human-cognitive-artifact-invariants
+- human-feeling-custody
 - human-heartbeat-map-DRAFT-2026-09-24
 - human-leverage-north-star
 - human-meaning-membrane
@@ -172,6 +174,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - openclaw-constitutional-init
 - orthogonal-verification-surfaces
 - primary-source-evidence-gate
+- prior-art-claim-lane
 - probe-before-panic
 - prompting-attention-allocation
 - protocol-layers-doctrine
