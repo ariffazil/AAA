@@ -162,3 +162,9 @@ The discipline: "Read the map, don't build the road."
 
 - `references/identity-naming-registry-2026-08-09.md` — the sealed naming translation table (AIMS→AAA, HDP→ACT, etc.) with forbidden creations list
 - `references/reasoning-pad-patch-2026-08-09.md` — FED thinking backend detection, patch location, reapply instructions
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-07-w3-degradation-during-doctrine-writing
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

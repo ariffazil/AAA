@@ -139,3 +139,9 @@ This skill did not exist before the scar. It is foodset-derived.
 Its existence proves the W1 wire is real.
 
 DITEMPA BUKAN DIBERI — the first foodset-derived item. ⚒️
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-02-concurrent-shared-file-edits-without-lock, SCAR-2026-09-04-002-federation-silent-swap-closed, SCAR-2026-09-04-003-iarif-zen-cascade
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

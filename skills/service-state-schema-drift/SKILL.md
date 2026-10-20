@@ -85,3 +85,9 @@ explicit human decision, never a reflex to make a unit go green.
 The useful receipt names: the refusal line from the journal (both versions), the store path, the
 installed build now serving, the unit's `active` timestamp, and which pre-migration backups exist.
 Do not report the watchdog's restart count as the fault — it is the thing that noticed.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-30-f13-ask-h3-polarity-version-drift
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

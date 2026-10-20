@@ -230,3 +230,9 @@ Is this value referenced in F1-F13 floors?
 
 *Forged: 2026-08-12 from F13 Sovereign Override session.  
 The body that detects disease in others must not have the same disease in its own spine. ⚒️ DITEMPA BUKAN DIBERI*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-07-w3-degradation-during-doctrine-writing, SCAR-REGISTRY-E13-CLASSIFICATION-2026-09-10
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
