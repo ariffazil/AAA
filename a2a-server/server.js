@@ -2569,6 +2569,19 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       responseText = `[AAA Gateway] Received: "${userText}"\nSkills: agent-dispatch, agent-handoff, status-query, federated-memory-query.`;
   }
 
+  // ── ACAH2 template honesty (2026-10-20, 333-AGI) ──────────────────────
+  // Everything above in this section is a TEMPLATE responder: no agent and no
+  // model executes here. NUSANTARA-P1 failure class — a generic echo must never
+  // read like agent work. execution_succeeded (the echo ran) is separated from
+  // outcome_verified (the intended effect is confirmed): agent_executed=false,
+  // outcome_verified=false, and the payload says so in plain text.
+  task.metadata.agent_executed = false;
+  task.metadata.execution_mode = 'template';
+  task.metadata.outcome_verified = false;
+  if (skill !== 'federated-memory-query') {
+    responseText += `\n[TEMPLATE_RESPONSE — echo only; no agent or model executed (agent_executed=false, outcome_verified=false). For live agent work set params.agent_id (or configuration.agent) to a registered agent.]`;
+  }
+
   logEvent('999_SEAL', taskId, 'Task completed — sealing to VAULT999');
   const completedStatus = {
     state: 'TASK_STATE_COMPLETED',
@@ -4524,7 +4537,14 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
     await taskStore.set(taskId, task);
     registerContextLineage(contextId, sessionId, taskId);
 
-    await executeTask(taskId, contextId, message, params.agent_id, params);
+    // ACAH2 (2026-10-20, 333-AGI): the DOCUMENTED dispatch field is
+    // configuration.agent — read it as fallback so documented callers reach the
+    // real agent router instead of silently landing in the template responder.
+    // Failure class: template echo returned TASK_STATE_COMPLETED with no agent
+    // executed (A/B probe 2026-10-20: configuration.agent → 0.3s template;
+    // params.agent_id → 21.8s real 555-ASI reply).
+    await executeTask(taskId, contextId, message,
+      params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null, params);
 
     const updatedTask = await taskStore.get(taskId);
     const skill = updatedTask.metadata?.skill || 'general';
@@ -5334,7 +5354,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
       console.warn(`[DelegationGuard] WARNING ${sourceAgent} → ${targetSkill}: ${delegationVerdict.reason}`);
     }
 
-    await executeTask(taskId, contextId, message, params.agent_id || params.metadata?.targetAgent || null, params);
+    await executeTask(taskId, contextId, message, params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null, params);
 
       const updatedTask = await taskStore.get(taskId);
 
