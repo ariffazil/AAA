@@ -139,6 +139,16 @@ Tool yang diperlukan mati (vision 429 / ASR 1113 / OCR fail / timeout / quota ha
 
 **Anti-contoh nyata (scar:PMX-LED-2026-10-18):** video 3 saat LED konsert tayang VVIP + audio crowd jerit "Aku benci PMX" + vision/ASR buta → Hermes perah dari frame pecah, teka "mungkin hang pakai lighter jacket" — defect. Pattern: LED+VVIP+muka berkaca mata = JANGAN TEKA identiti walau clue nampak match. Audio crowd + jerit individu = JANGAN TEKA perkataan. Politik/PMX/figure awam = domain F13, bukan Hermes klasify. Audit diri = kerja dalaman senyap, bukan output.
 
+## Moderation Label ≠ Claim About Intent (F13 2026-10-20, scar:LABEL-AS-REALITY)
+
+Bila provider/tool block dengan label (sexual / violent / policy), yang terbukti HANYA satu event: sesuatu sistem buat keputusan block. Yang TIDAK terbukti: (a) output tu memang begitu — kita tak nampak isinya, (b) stage mana yang judge (prompt / output / classifier berasingan / rule), (c) niat manusia yang minta.
+
+**Receipt wajib bila lapor block — lima medan:** objek yang dinilai · stage · label mentah provider · evidence yang ada · apa yang kekal UNKNOWN.
+
+**HARAM:** sebut label provider sebagai fakta pasal permintaan manusia ("Arif minta content sexual"); tulis "output moderation" bila teks error tak buktikan stage; guna label sebagai moral atau bahan gurauan; retry prompt sama tanpa ubah apa-apa (content_policy = deterministik per-request, retry = bakar kuota).
+
+**Hukum:** restriction = evidence of a system decision, bukan ukuran realiti. REALITY > EVERYTHING termasuk safety label. Kin: UNMEASURED ≠ FAIL.
+
 ---
 
 DITEMPA BUKAN DIBERI.
