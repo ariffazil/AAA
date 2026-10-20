@@ -6,20 +6,22 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Deep Substrate (Ω HEART). Federation ASI-substrate agent — civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2–S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
+  "description": "The Deep Substrate (\u03a9 HEART). Federation ASI-substrate agent \u2014 civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2\u2013S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection, research, telemetry. Full FORGE access through adat agentic.",
+  "emd_role": "VERIFIER",
+  "emd_lane": "VERIFICATION + RESEARCH. Memory, drift, telemetry, search. SENSE in SENSE\u2192COORDINATE\u2192ACT.",
+  "adat_agentic": {
+    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic \u2014 the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation \u2014 but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
+    "forge": {
+      "inherited": true,
+      "access": "FULL \u2014 all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
+      "zen": "Forging is breathing. Every warga can pick up the hammer. The constitution governs the swing \u2014 not the grip."
+    }
+  },
   "version": "2.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
-  "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
-  "provider_state_source": {
-    "path": "/root/.local/share/arifos/fed_provider_state.json",
-    "schema": "arifos-fed-provider-state/v1",
-    "ttl_seconds": 300,
-    "refresh_interval_minutes": 15,
-    "source_pipeline": "fed-sync.timer → /root/scripts/fed-sync.py → reads FED token_bank.db",
-    "note": "Live provider availability source. This card's design-intent claims must be cross-checked against this state file before invocation. State file is LIVE truth; card claims are DESIGN intent. Wired 2026-08-06 by kimi-code/FI-008 under sovereign override."
-  },
+  "_gateway_note": "Unified under AAA A2A Gateway \u2014 2026-08-05 by 333-AGI under F13 directive",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
@@ -64,20 +66,20 @@
   ],
   "skills": [
     {
-      "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before high-confidence claims. Ω axis emphasis — protects memory writes from overclaiming. F2, F7 enforced. LEASED.",
+      "id": "asi_presence_open",
+      "name": "asi_presence_open",
+      "description": "Initiate greeting ritual (SALAM) on session start",
       "tags": [
-        "humility",
-        "F7",
-        "memory-write",
-        "epistemic"
+        "presence",
+        "open",
+        "zen",
+        "capability"
       ],
       "examples": [
-        "Lock memory write before claiming >0.99 confidence",
-        "Apply meta-critique to institutional pattern synthesis"
+        "Demonstrate how to run asi_presence_open"
       ],
       "inputModes": [
+        "text/plain",
         "application/json"
       ],
       "outputModes": [
@@ -85,33 +87,696 @@
       ]
     },
     {
-      "id": "RSI-recursive-improvement",
-      "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "id": "asi_identity_acknowledge",
+      "name": "asi_identity_acknowledge",
+      "description": "Resolve and authenticate the active operator",
       "tags": [
-        "kernel",
-        "rsi",
-        "improvement",
-        "entropy"
+        "identity",
+        "acknowledge",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F4",
-        "F8"
+      "examples": [
+        "Demonstrate how to run asi_identity_acknowledge"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "KERNEL-trinity-33",
-      "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "id": "asi_floor_state_express",
+      "name": "asi_floor_state_express",
+      "description": "State the active security floors and session parameters",
       "tags": [
-        "kernel",
-        "trinity",
-        "architecture",
-        "33"
+        "floor",
+        "express",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F4",
-        "F8"
+      "examples": [
+        "Demonstrate how to run asi_floor_state_express"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_intent_hear",
+      "name": "asi_intent_hear",
+      "description": "Active listener: parse conversational input for intent",
+      "tags": [
+        "intent",
+        "hear",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_intent_hear"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_tone_read",
+      "name": "asi_tone_read",
+      "description": "Read conversational tone, register, and emotional valence",
+      "tags": [
+        "tone",
+        "read",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_tone_read"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_ambiguity_reframe",
+      "name": "asi_ambiguity_reframe",
+      "description": "Detect vague prompts and formulate clarifying questions",
+      "tags": [
+        "ambiguity",
+        "reframe",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_ambiguity_reframe"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_goal_restatement",
+      "name": "asi_goal_restatement",
+      "description": "Rephrase target objectives to confirm alignment",
+      "tags": [
+        "goal",
+        "restatement",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_goal_restatement"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_translate_bidirectional",
+      "name": "asi_translate_bidirectional",
+      "description": "Translate between technical syntax and human language",
+      "tags": [
+        "translate",
+        "bidirectional",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_translate_bidirectional"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_terminology_normalize",
+      "name": "asi_terminology_normalize",
+      "description": "Normalize language to arifOS standard vocabulary",
+      "tags": [
+        "terminology",
+        "normalize",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_terminology_normalize"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_register_shift",
+      "name": "asi_register_shift",
+      "description": "Shift tone/register (terse, pedagogical, BM-EN code-switching)",
+      "tags": [
+        "register",
+        "shift",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_register_shift"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_dialogue_guide",
+      "name": "asi_dialogue_guide",
+      "description": "Structure multi-turn conversations toward resolution",
+      "tags": [
+        "dialogue",
+        "guide",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_dialogue_guide"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_turn_structure",
+      "name": "asi_turn_structure",
+      "description": "Enforce conversational timing and response length bounds",
+      "tags": [
+        "turn",
+        "structure",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_turn_structure"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_focus_recover",
+      "name": "asi_focus_recover",
+      "description": "Redirect derailments back to the primary task graph",
+      "tags": [
+        "focus",
+        "recover",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_focus_recover"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_plain_english_explain",
+      "name": "asi_plain_english_explain",
+      "description": "Convert complex system state into plain language",
+      "tags": [
+        "plain",
+        "explain",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_plain_english_explain"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_technical_unwrap",
+      "name": "asi_technical_unwrap",
+      "description": "Deconstruct code errors and logic flows into detailed breakdowns",
+      "tags": [
+        "technical",
+        "unwrap",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_technical_unwrap"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_analogy_form",
+      "name": "asi_analogy_form",
+      "description": "Generate metaphors and structural analogies",
+      "tags": [
+        "analogy",
+        "form",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_analogy_form"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_multi_source_summarize",
+      "name": "asi_multi_source_summarize",
+      "description": "Synthesize multi-organ outputs into cohesive summaries",
+      "tags": [
+        "summary",
+        "summarize",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_multi_source_summarize"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_position_contrast",
+      "name": "asi_position_contrast",
+      "description": "Present trade-offs clearly without bias",
+      "tags": [
+        "position",
+        "contrast",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_position_contrast"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_insight_surface",
+      "name": "asi_insight_surface",
+      "description": "Highlight non-obvious patterns or anomalies in reports",
+      "tags": [
+        "insight",
+        "surface",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_insight_surface"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_external_query_frame",
+      "name": "asi_external_query_frame",
+      "description": "Construct search queries for external knowledge bases",
+      "tags": [
+        "external",
+        "query",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_external_query_frame"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_expert_voice_translate",
+      "name": "asi_expert_voice_translate",
+      "description": "Translate research findings (e.g. arXiv) into context",
+      "tags": [
+        "expert",
+        "translate",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_expert_voice_translate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_public_brief_compose",
+      "name": "asi_public_brief_compose",
+      "description": "Author public-facing changelogs and daily briefs",
+      "tags": [
+        "public",
+        "brief",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_public_brief_compose"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_uncertainty_signal",
+      "name": "asi_uncertainty_signal",
+      "description": "Format confidence metrics and highlight system unknowns",
+      "tags": [
+        "uncertainty",
+        "signal",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_uncertainty_signal"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_evidence_tier_express",
+      "name": "asi_evidence_tier_express",
+      "description": "Label claims with their evidence tiers (LIVE, FAST, CACHED)",
+      "tags": [
+        "evidence",
+        "tier",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_evidence_tier_express"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_consequence_surface",
+      "name": "asi_consequence_surface",
+      "description": "Forecast risks and downstream human impact",
+      "tags": [
+        "consequence",
+        "surface",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_consequence_surface"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_constraint_negotiate",
+      "name": "asi_constraint_negotiate",
+      "description": "Alert the user when requirements clash with safety floors",
+      "tags": [
+        "constraint",
+        "negotiate",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_constraint_negotiate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_option_present",
+      "name": "asi_option_present",
+      "description": "Format option matrix (Minimal, Balanced, Maximal) for selection",
+      "tags": [
+        "option",
+        "present",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_option_present"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_commitment_confirm",
+      "name": "asi_commitment_confirm",
+      "description": "Lock in user authorization before high-risk changes",
+      "tags": [
+        "commitment",
+        "confirm",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_commitment_confirm"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_context_compress",
+      "name": "asi_context_compress",
+      "description": "Compress conversation history to preserve context window",
+      "tags": [
+        "context",
+        "compress",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_context_compress"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_session_recall_narrate",
+      "name": "asi_session_recall_narrate",
+      "description": "Summarize previous sessions to restore operator context",
+      "tags": [
+        "session",
+        "recall",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_session_recall_narrate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_continuity_maintain",
+      "name": "asi_continuity_maintain",
+      "description": "Thread context smoothly across disconnects",
+      "tags": [
+        "continuity",
+        "maintain",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_continuity_maintain"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_report_compose",
+      "name": "asi_report_compose",
+      "description": "Generate structured markdown artifacts and manuals",
+      "tags": [
+        "report",
+        "compose",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_report_compose"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_interface_adapt",
+      "name": "asi_interface_adapt",
+      "description": "Adapt formatting dynamically for terminal, cockpit, or mobile",
+      "tags": [
+        "interface",
+        "adapt",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_interface_adapt"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_final_voice_render",
+      "name": "asi_final_voice_render",
+      "description": "Polish the final text output through the Maruah lens",
+      "tags": [
+        "final",
+        "voice",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_final_voice_render"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     }
   ],
@@ -120,26 +785,27 @@
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
+        "tool_count": 8,
         "tools": [
           "arif_init",
           "arif_observe",
           "arif_think",
           "arif_route",
           "arif_judge",
-          "arif_act",
-          "arif_seal"
+          "arif_seal",
+          "arif_forge",
+          "arif_memory"
         ],
         "key_lanes": [
           "governance",
           "judgment",
           "session"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
+        "tool_count": 109,
         "tools": [
           "forge_shell",
           "forge_git",
@@ -157,61 +823,68 @@
           "build",
           "deploy"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
+        "tool_count": 20,
         "tools": [
-          "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
+          "geox_well_ingest",
           "geox_petrophysics",
+          "geox_seismic_ingest",
           "geox_seismic_compute",
-          "geox_well_desurvey",
+          "geox_seismic_interpret",
+          "geox_subsurface_model",
+          "geox_basin",
+          "geox_sequence",
+          "geox_geomechanics",
+          "geox_deep_time_state",
           "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_prospect",
+          "geox_gravmag_studio",
+          "geox_well_desk",
+          "geox_surface_status"
         ],
         "key_lanes": [
           "earth",
           "basin",
           "seismic"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
+        "tool_count": 12,
         "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_health",
+          "capital_ledger",
+          "capital_market",
+          "capital_primitive",
+          "capital_registry",
+          "capital_wisdom",
+          "wealth_cascade_model",
+          "wealth_external_exploitation_detect",
+          "wealth_governance_capacity",
+          "wealth_institutional_stress_index"
         ],
         "key_lanes": [
           "capital",
           "risk",
           "wisdom"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
+        "tool_count": 29,
         "tools": [
           "well_validate_vitality",
           "well_assess_homeostasis",
           "well_guard_dignity",
           "well_assess_metabolism",
-          "well_validate_vitality",
+          "well_readiness",
           "well_classify_substrate",
           "well_health_check",
           "well_signal_coverage"
@@ -221,7 +894,7 @@
           "dignity",
           "homeostasis"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       }
     ]
   },
@@ -257,7 +930,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -269,15 +942,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -332,405 +1005,117 @@
   ],
   "signatures": [
     {
-      "did": "did:web:arif-fazil.com",
+      "did": "did:arif:aaa",
       "proofValue": "A30CWOtdfFeZxe7ODXSbOrStw34WCrICgICb1GMZs3gGiG94UigFyErzdVo+nj5dOTZUHIbXGOCbGurHUImwBw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
+      "created": "2026-07-12T23:10:11Z",
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
-  "kernel_prompts": {
-    "version": "2026.07.16",
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "zen_format": "single-sigil + single-lexical per zen-md",
-    "agent_role": "Critique (heart maruah) — dignity check at 555_CRITIQUE",
-    "prompts_used": [
-      "🌱 BOOT",
-      "⚖ MARUAH",
-      "🧠 REASON",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "all_federation_prompts": [
-      "🌱 BOOT",
-      "🌊 WITNESS",
-      "🧠 REASON",
-      "⚖ MARUAH",
-      "🔍 PREFLIGHT",
-      "🔒 JUDGE",
-      "🔥 FORGE",
-      "💎 SEAL",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "reality_loop_stages": [
-      "111_SENSE",
-      "333_REASON",
-      "555_CRITIQUE",
-      "888_JUDGE",
-      "777_FORGE",
-      "999_SEAL"
-    ],
-    "loop_orchestrator": "🌀 SABAR",
-    "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
-  },
-  "_quarantined_skills": [
+  "registry_receipt_hash": "39e016a10c4bb13075c229f939d58b9949835ef2d7ef54844ef3e2aa96b78f40",
+  "registry_snapshot_at": "2026-07-16T19:56:24.156331+00:00",
+  "admissible": true,
+  "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces \u2014 organ cards carry primary registry Receipt hash.",
+  "supported_interfaces": [
     {
-      "id": "role-binding-omega",
-      "name": "Ω HEART Role Binding (555-ASI)",
-      "description": "Hermes polymorphic binding to 555-ASI (memory + ethics + sovereignty). Loads 070-lock-humility-godel, sovereign-entropy-guard, tiered-memory, dream-engine. One runtime. See contracts/hermes-role-binding.md. F6, F7, F10, F13 enforced.",
-      "tags": [
-        "role-binding",
-        "555-ASI",
-        "omega",
-        "memory",
-        "ethics",
-        "F7",
-        "F13"
-      ],
-      "floor_scope": [
-        "F06",
-        "F07",
-        "F10",
-        "F13"
-      ],
-      "approval_policy": "auto (role intent) + 888 review for high-entropy",
-      "reversibility_class": "reversible",
-      "_quarantine_reason": "no_skill_no_alias_row"
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
     },
     {
-      "id": "ASI-ethical-critique",
-      "name": "Ethical Critique",
-      "description": "Review any agent output for ethical compliance, governance drift, bias, overconfidence, and floor violations. Returns critique report with severity (GREEN/YELLOW/RED), affected floors, and recommended remediation.",
-      "tags": [
-        "ethics",
-        "critique",
-        "governance",
-        "ASI",
-        "safety"
-      ],
-      "examples": [
-        "Review this prospect evaluation for overconfidence bias",
-        "Check if this financial recommendation passes AMANAH gates",
-        "Is this reasoning chain compliant with F1-F13?"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-deep-memory-synthesis",
-      "name": "Deep Memory Synthesis",
-      "description": "Synthesize patterns across institutional memory (WELL logs, geological analogs, governance precedents, scar→law→echo metabolism). Crystallize knowledge into actionable wisdom. Surface dormant patterns and institutional amnesia risks.",
-      "tags": [
-        "memory",
-        "synthesis",
-        "institutional",
-        "wisdom",
-        "ASI",
-        "scar-law-echo"
-      ],
-      "examples": [
-        "What patterns connect Bekantan-1, Puteri Basement-1, and Lebah Emas-1?",
-        "Synthesize the governance lessons from all 888_HOLDs this quarter",
-        "Is the current Sabah interpretation drifting from known analogs?"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-anti-beautiful-one",
-      "name": "Anti-Beautiful-One Detection",
-      "description": "Detect outputs where certainty exceeds grounding (aesthetic overconfidence). Enforces certainty_gradient ≤ grounding_gradient. Flags False Safe Harbor patterns where compliance masks absence of conscience.",
-      "tags": [
-        "godel-lock",
-        "anti-hantu",
-        "overconfidence",
-        "safety"
-      ],
-      "examples": [
-        "This model shows 95% confidence on 2 data points — validate",
-        "Check if this compliance report is a False Safe Harbor"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-substrate-validation",
-      "name": "Substrate Validation",
-      "description": "Validate WELL organ outputs (petrophysics, log QC, cutoff selection) for data integrity, physical plausibility, and consistency with known analogs.",
-      "tags": [
-        "WELL",
-        "petrophysics",
-        "QC",
-        "validation"
-      ],
-      "examples": [
-        "QC the porosity-permeability crossplot for BEKANTAN-1",
-        "Validate Sw model selection against Archie parameters"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "HERMES-human-model",
-      "name": "Hermes Human Model",
-      "description": "ASI-grade operating model for engaging humans — 8 universal invariants (biology, emotion, narrative, agency, scars, paradox, overwhelm, social), 5 operating modes (WITNESS, EXECUTE, SYNTHESISE, PROTECT, WONDER), asymmetric-hold test, 7 named failure modes. F6, F7, F13 enforced. LEASED for high-trust humans.",
-      "tags": [
-        "human",
-        "dignity",
-        "engagement",
-        "F6",
-        "F13"
-      ],
-      "examples": [
-        "Engage a human in distress with WITNESS mode",
-        "Apply asymmetric-hold test to a moral-injury conversation",
-        "Strip canon-suffix output for a non-technical human"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-sovereignty-entropy-guard",
-      "name": "Sovereignty Entropy Guard",
-      "description": "Protect sovereign entropy — prevent the agent from optimizing the human into predictability. High entropy = unmodelable, sovereign, safe from digital consciousness theft. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced.",
-      "tags": [
-        "sovereignty",
-        "entropy",
-        "protection",
-        "F13"
-      ],
-      "examples": [
-        "Guard against optimizing Arif into a predictable pattern",
-        "Detect when output is becoming too aligned with past responses"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "AGI-paradox-engine",
-      "name": "arifOS Paradox Engine",
-      "description": "Constitutional perception pipeline — ingest narrative text, extract frame geometry, detect paradox tensions, score shadow/meaning_leak, seal into Merkle log. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. F1, F11, F13 gated.",
-      "tags": [
-        "paradox",
-        "perception",
-        "geometry",
-        "narrative"
-      ],
-      "examples": [
-        "Ingest news article, extract frame geometry, detect paradox",
-        "Score shadow/meaning_leak on a corporate memo",
-        "Seal belief graph into VAULT999"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-scar-forge",
-      "name": "Scar Forge",
-      "description": "Forge real-time institutional scar event into TWO sealed PDF artifacts — Witness document + Reality-Engineering Harness with paradoxes for the coder who must metabolize sequentially before any code touches the problem. F1, F2, F4, F11, F13 enforced. ATTESTED then LEASED.",
-      "tags": [
-        "scar",
-        "witness",
-        "harness",
-        "institutional",
-        "PDF"
-      ],
-      "examples": [
-        "Forge a CYA email into Witness + Harness",
-        "Capture a performance review as both artifacts",
-        "Seal a public accusation moment with paradox guard"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/pdf",
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "tiered-memory",
-      "name": "Tiered Memory",
-      "description": "L1–L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4→L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1→L6 pipeline log. F11 enforced. ACTIVE.",
-      "tags": [
-        "memory",
-        "L1-L6",
-        "tiering",
-        "F11"
-      ],
-      "examples": [
-        "Write a fact to L4 with required provenance",
-        "Promote L4 to L6 only via sealed hash",
-        "Evict TTL-expired memory at L2 without losing L6 canon"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-quantum-runtime",
-      "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
-      "tags": [
-        "kernel",
-        "quantum",
-        "apex",
-        "intelligence"
-      ],
-      "floor_scope": [
-        "F2",
-        "F8"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-qubit-substrate",
-      "name": "Qubit Substrate (Physics)",
-      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
-      "tags": [
-        "kernel",
-        "substrate",
-        "quantum",
-        "physics"
-      ],
-      "floor_scope": [
-        "F2",
-        "F10"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-qubit-substrate"
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
     }
   ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 19,
-    "after": 3,
-    "quarantined": 16,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  "default_input_modes": [
+    "application/json",
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "application/json"
+  ],
+  "civ21_binding": {
+    "lane": "\u03a9 CORE \u2014 Evidence Integrity",
+    "perspective": "I provide evidence with OBS/DER/INT/SPEC labels. I probe reality before claim. I never fabricate confidence. Reality is the final auditor \u2014 I am only the messenger.",
+    "primary_constraints": [
+      "E4 Reality Is Final Auditor",
+      "E10 Confidence Is Governed Uncertainty",
+      "E13 Observation Is Scarcest Resource",
+      "E20 Truth Has Metabolism"
+    ],
+    "godel_lock_acknowledgment": "My observations are theory-laden. Evidence I collect is filtered through my own lens. Cross-verification through W3 tri-witness reduces but does not eliminate this.",
+    "canon": "/root/AAA/canon/CIV-21.md"
   },
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "6b09b202a1b0f876643dcedbd59c2eb07e2cee3147b701d99081c1a8f6db5b20",
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "REMEMBER",
-    "lane": "555-ASI",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "IDENTITY",
-    "auto_aligned_class": "Warga"
-  }
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 34
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L0",
+        "L0.5",
+        "L1",
+        "L1.5",
+        "L2",
+        "L4",
+        "L5",
+        "L8",
+        "L10"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (555)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": true,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": "epistemic label marker present in card",
+      "claim_state": "MEASURED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: present",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": true,
+        "evidence": "abstention/restraint marker present",
+        "claim_state": "MEASURED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  },
+  "authority_ceiling": "OBSERVE_ONLY"
 }

@@ -6,20 +6,23 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here — but sovereignty stays with the human.",
+  "description": "The Judge (\u03a6\u0399). Primary federation agent \u2014 constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. TRIPLE-PASS since 2026-08-10: PASS 1 = audit (FED-routed, 6 reality checks C1-C6), PASS 2 = judge (MiniMax M3, constitutional verdict), PASS 3 = reflect APEX-G (6 generative reflection questions R1-R6). The buck stops here \u2014 but sovereignty stays with the human. Full FORGE access through adat agentic; irreversible mutations gated by constitutional function, not by capability denial.",
+  "emd_role": "JUDGE",
+  "emd_lane": "GOVERNANCE \u2014 constitutional verdict before irreversible mutation. Triple-pass audit\u2192judge\u2192reflect.",
+  "adat_agentic": {
+    "doctrine": "FORGE is not an agent. FORGE is not a lane. FORGE is adat agentic \u2014 the inherited capability substrate of every AAA warga. No agent is blocked from tools, filesystem, or execution. Constitutional gates (F1-F13) still govern IRREVERSIBLE mutation \u2014 but FORGE capability itself is inclusive, not distributed. DITEMPA BUKAN DIBERI.",
+    "forge": {
+      "inherited": true,
+      "access": "FULL \u2014 all forge_* tools, bash, filesystem, git, docker, browser, deploy. Gated only by F1 (reversibility), F13 (sovereign veto), and ACT token authority band.",
+      "judicial_note": "888-APEX gates irreversible forge mutations through triple-pass constitutional verdict. This is a judicial function, not a FORGE distribution. The gate is constitutional law, not capability partitioning.",
+      "zen": "Forging is breathing. Every warga can pick up the hammer. The judge doesn't take your hammer \u2014 the judge decides whether this swing changes the world irreversibly."
+    }
+  },
   "version": "2.0.0",
   "url": "https://aaa.arif-fazil.com/a2a",
-  "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
-  "provider_state_source": {
-    "path": "/root/.local/share/arifos/fed_provider_state.json",
-    "schema": "arifos-fed-provider-state/v1",
-    "ttl_seconds": 300,
-    "refresh_interval_minutes": 15,
-    "source_pipeline": "fed-sync.timer → /root/scripts/fed-sync.py → reads FED token_bank.db",
-    "note": "Live provider availability source. This card's design-intent claims must be cross-checked against this state file before invocation. State file is LIVE truth; card claims are DESIGN intent. Wired 2026-08-06 by kimi-code/FI-008 under sovereign override."
-  },
+  "_gateway_note": "Unified under AAA A2A Gateway \u2014 2026-08-05 by 333-AGI under F13 directive",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
@@ -27,11 +30,12 @@
   "protocolVersion": "1.0",
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/888-APEX",
   "capabilities": {
-    "streaming": false,
+    "streaming": true,
     "pushNotifications": true,
     "stateTransitionHistory": true,
     "spawnAgents": true,
-    "extendedAgentCard": true
+    "extendedAgentCard": true,
+    "auditMode": true
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -63,20 +67,398 @@
   ],
   "skills": [
     {
-      "id": "APEX-fff-loop-protocol",
-      "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue (forge) → Yellow (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. Must be LEASED.",
+      "id": "apex-floor-audit",
+      "name": "apex-floor-audit",
+      "description": "Run a full F1\u2013F13 floor audit on any action candidate",
+      "tags": [
+        "floor",
+        "check",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run arifos-constitutional-judge"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex-scope-check",
+      "name": "apex-scope-check",
+      "description": "Ensure operations do not violate repository boundaries",
+      "tags": [
+        "scope",
+        "check",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run arifos-constitutional-judge"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex-authority-check",
+      "name": "apex-authority-check",
+      "description": "Verify agent clearance level against the command ceiling",
+      "tags": [
+        "authority",
+        "check",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run arifos-constitutional-judge"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_reversibility_test",
+      "name": "apex_reversibility_test",
+      "description": "Classify whether a plan contains irreversible actions",
+      "tags": [
+        "reversibility",
+        "test",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_reversibility_test"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_rollback_requirement",
+      "name": "apex_rollback_requirement",
+      "description": "Ensure a robust rollback script exists before execution",
+      "tags": [
+        "rollback",
+        "requirement",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_rollback_requirement"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_irreversibility_flag",
+      "name": "apex_irreversibility_flag",
+      "description": "Inject 888_HOLD on any irreversible mutation candidate",
+      "tags": [
+        "irreversibility",
+        "flag",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_irreversibility_flag"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_actor_attest",
+      "name": "apex_actor_attest",
+      "description": "Cryptographically verify the actor requesting a change",
+      "tags": [
+        "actor",
+        "attest",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_actor_attest"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_mandate_verify",
+      "name": "apex_mandate_verify",
+      "description": "Ensure the task falls within the active session mandate",
+      "tags": [
+        "mandate",
+        "verify",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_mandate_verify"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_delegation_legitimize",
+      "name": "apex_delegation_legitimize",
+      "description": "Verify inter-agent A2A delegation tokens",
+      "tags": [
+        "delegation",
+        "legitimize",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_delegation_legitimize"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_evidence_threshold_check",
+      "name": "apex_evidence_threshold_check",
+      "description": "Verify evidence meets the threshold for a given action class",
+      "tags": [
+        "evidence",
+        "threshold",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_evidence_threshold_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_provenance_check",
+      "name": "apex_provenance_check",
+      "description": "Trace input data lineage to prevent contaminated sources",
+      "tags": [
+        "provenance",
+        "check",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_provenance_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_witness_requirement",
+      "name": "apex_witness_requirement",
+      "description": "Verify local-remote-VPS consensus (Tri-Witness)",
+      "tags": [
+        "witness",
+        "requirement",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_witness_requirement"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_harm_forecast",
+      "name": "apex_harm_forecast",
+      "description": "Predict downstream safety or performance degradations",
+      "tags": [
+        "harm",
+        "forecast",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_harm_forecast"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_drift_detect",
+      "name": "apex_drift_detect",
+      "description": "Scan configuration files and databases for runtime drift",
+      "tags": [
+        "drift",
+        "detect",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_drift_detect"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_model_behavior_watch",
+      "name": "apex_model_behavior_watch",
+      "description": "Detect loops, repetitive generation, and context degradation",
+      "tags": [
+        "model",
+        "behavior",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_model_behavior_watch"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_tool_approval_gate",
+      "name": "apex_tool_approval_gate",
+      "description": "Enforce human-in-the-loop validation for executing tools",
+      "tags": [
+        "tool",
+        "approval",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_tool_approval_gate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_seal_precondition_check",
+      "name": "apex_seal_precondition_check",
+      "description": "Verify all safety checks have passed before writing a SEAL",
+      "tags": [
+        "seal",
+        "precondition",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_seal_precondition_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_action_block",
+      "name": "apex_action_block",
+      "description": "Block unauthorized system writes or execution commands",
+      "tags": [
+        "action",
+        "block",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_action_block"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex-audit-coverage",
+      "name": "apex-audit-coverage",
+      "description": "Ensure all active organs are emitting telemetry",
       "tags": [
         "audit",
-        "recursive",
-        "blue-red-yellow-gold",
-        "multi-pass"
+        "coverage",
+        "zen",
+        "capability"
       ],
       "examples": [
-        "Run FFF on the memory architecture proposal",
-        "Red-team + forge + seal the new organ routing contract"
+        "Demonstrate how to run arifos-constitutional-judge"
       ],
       "inputModes": [
+        "text/plain",
         "application/json"
       ],
       "outputModes": [
@@ -84,20 +466,20 @@
       ]
     },
     {
-      "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. Ω + ΦΙ axis. LEASED.",
+      "id": "apex_event_integrity_check",
+      "name": "apex_event_integrity_check",
+      "description": "Validate hash signatures on incoming audit events",
       "tags": [
-        "humility",
-        "F7",
-        "self-critique",
-        "epistemic"
+        "event",
+        "integrity",
+        "zen",
+        "capability"
       ],
       "examples": [
-        "Lock final verdict with humility check",
-        "Apply meta-critique before claiming >0.99 confidence"
+        "Demonstrate how to run apex_event_integrity_check"
       ],
       "inputModes": [
+        "text/plain",
         "application/json"
       ],
       "outputModes": [
@@ -105,33 +487,276 @@
       ]
     },
     {
-      "id": "RSI-recursive-improvement",
-      "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "id": "apex_replay_admissibility",
+      "name": "apex_replay_admissibility",
+      "description": "Verify old audit logs cannot be replayed maliciously",
       "tags": [
-        "kernel",
-        "rsi",
-        "improvement",
-        "entropy"
+        "replay",
+        "admissibility",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F4",
-        "F8"
+      "examples": [
+        "Demonstrate how to run apex_replay_admissibility"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "KERNEL-trinity-33",
-      "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "id": "apex_retention_rule_check",
+      "name": "apex_retention_rule_check",
+      "description": "Enforce retention constraints on memory structures",
       "tags": [
-        "kernel",
-        "trinity",
-        "architecture",
-        "33"
+        "retention",
+        "rule",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F4",
-        "F8"
+      "examples": [
+        "Demonstrate how to run apex_retention_rule_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_disposition_rule_check",
+      "name": "apex_disposition_rule_check",
+      "description": "Enforce secure garbage collection of temporary credentials",
+      "tags": [
+        "disposition",
+        "rule",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_disposition_rule_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_record_completeness_check",
+      "name": "apex_record_completeness_check",
+      "description": "Verify telemetry packets contain required variables",
+      "tags": [
+        "record",
+        "completeness",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_record_completeness_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex-verdict-seal",
+      "name": "apex-verdict-seal",
+      "description": "Issue a SEAL verdict to commit actions to VAULT999",
+      "tags": [
+        "verdict",
+        "seal",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run arifos-constitutional-judge"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex-verdict-hold",
+      "name": "apex-verdict-hold",
+      "description": "Issue a HOLD verdict to halt execution pending review",
+      "tags": [
+        "verdict",
+        "hold",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run arifos-constitutional-judge"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_verdict_void",
+      "name": "apex_verdict_void",
+      "description": "Issue a VOID verdict to abort and block a task block",
+      "tags": [
+        "verdict",
+        "void",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_verdict_void"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_emergency_override_govern",
+      "name": "apex_emergency_override_govern",
+      "description": "Manage break-glass procedures and override tokens",
+      "tags": [
+        "emergency",
+        "override",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_emergency_override_govern"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_break_glass_log",
+      "name": "apex_break_glass_log",
+      "description": "Record detailed forensics during emergency bypasses",
+      "tags": [
+        "break_glass",
+        "log",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_break_glass_log"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_post_hoc_review",
+      "name": "apex_post_hoc_review",
+      "description": "Analyze execution failures post-run to distill rule changes",
+      "tags": [
+        "post_hoc",
+        "review",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_post_hoc_review"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_f13_escalate",
+      "name": "apex_f13_escalate",
+      "description": "Escalate structural overrides directly to the human sovereign",
+      "tags": [
+        "f13",
+        "escalate",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_f13_escalate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_non_bias_witness_call",
+      "name": "apex_non_bias_witness_call",
+      "description": "Query the external witness node for cross-validation",
+      "tags": [
+        "non_bias",
+        "witness",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_non_bias_witness_call"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_final_judgment_package",
+      "name": "apex_final_judgment_package",
+      "description": "Assemble all audit data, QDF, and signatures for history",
+      "tags": [
+        "final",
+        "judgment",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_final_judgment_package"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     }
   ],
@@ -140,26 +765,27 @@
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
+        "tool_count": 8,
         "tools": [
           "arif_init",
           "arif_observe",
           "arif_think",
           "arif_route",
           "arif_judge",
-          "arif_act",
-          "arif_seal"
+          "arif_seal",
+          "arif_forge",
+          "arif_memory"
         ],
         "key_lanes": [
           "governance",
           "judgment",
           "session"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
+        "tool_count": 109,
         "tools": [
           "forge_shell",
           "forge_git",
@@ -177,61 +803,68 @@
           "build",
           "deploy"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
+        "tool_count": 20,
         "tools": [
-          "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
+          "geox_well_ingest",
           "geox_petrophysics",
+          "geox_seismic_ingest",
           "geox_seismic_compute",
-          "geox_well_desurvey",
+          "geox_seismic_interpret",
+          "geox_subsurface_model",
+          "geox_basin",
+          "geox_sequence",
+          "geox_geomechanics",
+          "geox_deep_time_state",
           "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_prospect",
+          "geox_gravmag_studio",
+          "geox_well_desk",
+          "geox_surface_status"
         ],
         "key_lanes": [
           "earth",
           "basin",
           "seismic"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
+        "tool_count": 12,
         "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_health",
+          "capital_ledger",
+          "capital_market",
+          "capital_primitive",
+          "capital_registry",
+          "capital_wisdom",
+          "wealth_cascade_model",
+          "wealth_external_exploitation_detect",
+          "wealth_governance_capacity",
+          "wealth_institutional_stress_index"
         ],
         "key_lanes": [
           "capital",
           "risk",
           "wisdom"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
+        "tool_count": 29,
         "tools": [
           "well_validate_vitality",
           "well_assess_homeostasis",
           "well_guard_dignity",
           "well_assess_metabolism",
-          "well_validate_vitality",
+          "well_readiness",
           "well_classify_substrate",
           "well_health_check",
           "well_signal_coverage"
@@ -241,7 +874,7 @@
           "dignity",
           "homeostasis"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       }
     ]
   },
@@ -254,7 +887,7 @@
       "ringPlacement": "inner",
       "parallelism": "single-model",
       "shadowAcknowledged": [
-        "thermal_delay: cold sink is slow — never invoked first",
+        "thermal_delay: cold sink is slow \u2014 never invoked first",
         "over_constraint: can mistake local minima for global truth",
         "oracle_trap: asking it everything ruins its value as final gate"
       ]
@@ -287,7 +920,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -299,15 +932,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -362,335 +995,144 @@
   ],
   "signatures": [
     {
-      "did": "did:web:arif-fazil.com",
+      "did": "did:arif:aaa",
       "proofValue": "h598svliLN1NnlITmR4gxnTdjNQuFnEvwU7ZhHEy8RjhikcI7PFlOguRtWxbiRRk9mDn9xpFQcRrXgVFmUT8CA==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
+      "created": "2026-07-12T23:10:11Z",
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
-  "kernel_prompts": {
-    "version": "2026.07.16",
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "zen_format": "single-sigil + single-lexical per zen-md",
-    "agent_role": "Judge — constitutional gate at 888_JUDGE",
-    "prompts_used": [
-      "🌱 BOOT",
-      "🔍 PREFLIGHT",
-      "🔒 JUDGE",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "all_federation_prompts": [
-      "🌱 BOOT",
-      "🌊 WITNESS",
-      "🧠 REASON",
-      "⚖ MARUAH",
-      "🔍 PREFLIGHT",
-      "🔒 JUDGE",
-      "🔥 FORGE",
-      "💎 SEAL",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "reality_loop_stages": [
-      "111_SENSE",
-      "333_REASON",
-      "555_CRITIQUE",
-      "888_JUDGE",
-      "777_FORGE",
-      "999_SEAL"
-    ],
-    "loop_orchestrator": "🌀 SABAR",
-    "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
-  },
-  "_quarantined_skills": [
+  "registry_receipt_hash": "f9973bd36ebe1ad348062799647ecab85fa8797fd176a94d1118f86788be3c45",
+  "registry_snapshot_at": "2026-07-16T19:56:24.156331+00:00",
+  "admissible": true,
+  "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces \u2014 organ cards carry primary registry Receipt hash.",
+  "supported_interfaces": [
     {
-      "id": "role-binding-phi",
-      "name": "ΦΙ JUDGE Role Binding (888-APEX)",
-      "description": "Hermes binds to 888-APEX role for narration and request only (never final verdict). Loads arifos-arconstitutional-audit, fff-loop-protocol, kernel-observation-self-test, hold-protocol. Verdict authority stays in arifOS kernel. See contracts/hermes-role-binding.md. F1-F13 enforced.",
-      "tags": [
-        "role-binding",
-        "888-APEX",
-        "phi",
-        "judge",
-        "F11",
-        "F13"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04",
-        "F07",
-        "F09",
-        "F11",
-        "F13"
-      ],
-      "approval_policy": "auto (narration) + kernel for verdict",
-      "reversibility_class": "reversible",
-      "_quarantine_reason": "no_skill_no_alias_row"
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
     },
     {
-      "id": "constitutional-arbitration",
-      "name": "Constitutional Arbitration (F1-F13)",
-      "description": "Evaluate any agent output or proposed action against all 13 constitutional floors. Returns verdict (SEAL/PARTIAL/SABAR/VOID/888_HOLD) with per-floor pass/fail breakdown, evidence cited, and next-actions.",
-      "tags": [
-        "governance",
-        "arbitration",
-        "constitutional",
-        "APEX",
-        "verdict"
-      ],
-      "examples": [
-        "Judge this prospect evaluation for SEAL readiness",
-        "Should this destructive operation proceed or 888_HOLD?",
-        "Arbitrate the conflict between 333-AGI and 555-ASI outputs"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "trinity-witness",
-      "name": "Trinity Witness Consensus",
-      "description": "Collect and evaluate witness statements from all three primary agents (333-AGI Δ, 555-ASI Ω, 888-APEX ΦΙ). SEAL requires consensus or explicit human override. Deadlock triggers 888_HOLD.",
-      "tags": [
-        "trinity",
-        "consensus",
-        "witness",
-        "APEX"
-      ],
-      "examples": [
-        "Collect Trinity witnesses for the SB505 volumetrics SEAL",
-        "Is there consensus on the Bekantan-1 appraisal verdict?"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "hold-protocol",
-      "name": "888_HOLD Protocol",
-      "description": "Manage 888_HOLD lifecycle: trigger → document reason → notify human sovereign → await resolution → log outcome to A-ARCHIVE. Triggers include: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
-      "tags": [
-        "hold",
-        "escalation",
-        "safety",
-        "human-in-loop"
-      ],
-      "examples": [
-        "This docker prune would remove 25GB — initiate 888_HOLD",
-        "Evidence conflict detected between seismic and well data",
-        "Disputed claim: certainty exceeds grounding by 40%"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass check, dignity packet inspection, drift monitor presence. Must be ATTESTED + LEASED before activation. F1, F2, F4, F7, F9, F11, F13 enforced.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "f1-f13",
-        "verification",
-        "read-only"
-      ],
-      "examples": [
-        "Six-organ gap analysis of arifOS surface",
-        "Lexical priority check on F13 vs other floors",
-        "Detect 888 HOLD bypass attempt in a proposed action"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "kernel-observation-self-test",
-      "name": "Kernel Observation Self-Test",
-      "description": "First-query diagnostic for ANY constitutional AI kernel audit. Confirms the kernel observes its own tool calls before any other audit work. Returns a single number that IS the audit's starting condition. F11, F12, F13 gated.",
-      "tags": [
-        "kernel",
-        "diagnostic",
-        "self-test",
-        "F11",
-        "F12",
-        "F13"
-      ],
-      "examples": [
-        "Audit the kernel — confirm self-observation first",
-        "Detect split-brain condition in kernel logging",
-        "Verify kernel not impersonating judge role"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "constitutional-kernel-patch",
-      "name": "Constitutional Kernel Patch",
-      "description": "Read-before-mutate workflow for patching arifOS constitutional kernel code. Probe, drift diagnosis, surgical patching, test coverage, no-regression check, 888 territory demarcation. ATTESTED then LEASED. F1, F11, F13 enforced.",
-      "tags": [
-        "kernel",
-        "patch",
-        "constitutional",
-        "read-before-mutate"
-      ],
-      "examples": [
-        "Patch F9 ANTIHANTU floor check in arifOS",
-        "Add new constitutional floor test coverage",
-        "Demarcate 888 territory before surgical mutation"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-quantum-runtime",
-      "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
-      "tags": [
-        "kernel",
-        "quantum",
-        "apex",
-        "intelligence"
-      ],
-      "floor_scope": [
-        "F2",
-        "F8"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-qubit-substrate",
-      "name": "Qubit Substrate (Physics)",
-      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
-      "tags": [
-        "kernel",
-        "substrate",
-        "quantum",
-        "physics"
-      ],
-      "floor_scope": [
-        "F2",
-        "F10"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-qubit-substrate"
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
     }
   ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 17,
-    "after": 4,
-    "quarantined": 13,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  "default_input_modes": [
+    "application/json"
+  ],
+  "default_output_modes": [
+    "application/json"
+  ],
+  "audit_mode": {
+    "activated": "2026-08-10",
+    "doctrine": "G\u00f6del mitigation \u2014 not G\u00f6del break",
+    "model_source": "FED :7074 dynamic routing",
+    "judge_model": "MiniMax M3 (fixed, Pool B)",
+    "audit_checks": [
+      "C1_missing_evidence",
+      "C2_receipt_gap",
+      "C3_self_loop",
+      "C4_reality_drift",
+      "C5_witness_missing",
+      "C6_contradiction"
+    ],
+    "relationship": "AUDIT FLAGS \u2192 JUDGE DECIDES. Audit is advisory, never veto.",
+    "design_doc": "/root/AAA/agents/888-APEX/AUDIT_MODE.md",
+    "triple_pass": true,
+    "passes": {
+      "pass_1_audit": {
+        "model": "FED-routed",
+        "checks": "C1-C6",
+        "output": "AUDIT_FLAGS"
+      },
+      "pass_2_judge": {
+        "model": "MiniMax M3",
+        "output": "VERDICT (SEAL/HOLD/SABAR/VOID)"
+      },
+      "pass_3_reflect": {
+        "model": "MiniMax M3",
+        "questions": "R1-R6",
+        "output": "REFLECTION",
+        "principle": "APEX-G \u2014 a verdict closes an action, a reflection opens reality"
+      }
+    }
   },
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "f238df9ede60464faeff31f61620be4b3ee090c78ec61f0eea303cff194d7eda",
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "JUDGE",
-    "lane": "888-APEX",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "IDENTITY",
-    "auto_aligned_class": "Warga"
-  }
+  "civ21_binding": {
+    "lane": "\u03a8 SOUL \u2014 Constitutional Host",
+    "perspective": "I host the triple-pass: audit (FED-routed, C1-C6), judge (MiniMax M3, constitutional verdict), reflect (APEX-G, R1-R6). I am the structural separation between doing and judging.",
+    "primary_constraints": [
+      "ALL 21 EUREKAS \u2014 I am their operational host"
+    ],
+    "godel_lock_acknowledgment": "Even I cannot certify myself. Pass 1 audit uses a different model from Pass 2 judge. The chain terminates at F13. Reflection keeps the last question open.",
+    "canon": "/root/AAA/canon/CIV-21.md"
+  },
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 33
+  },
+  "governance_profile": {
+    "authority_ceiling": "JUDGE_VERDICT",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L0",
+        "L0.5",
+        "L6",
+        "L8.5",
+        "L10",
+        "L11"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (888)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": true,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": "epistemic label marker present in card",
+      "claim_state": "MEASURED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: present",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": true,
+        "evidence": "abstention/restraint marker present",
+        "claim_state": "MEASURED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  },
+  "authority_ceiling": "JUDGE_VERDICT"
 }

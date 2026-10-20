@@ -29,6 +29,13 @@
     "stateTransitionHistory": true,
     "extendedAgentCard": true
   },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "researcher",
+    "citizenship_forged": "2026-05-17"
+  },
   "defaultInputModes": [
     "text/plain",
     "application/json"
@@ -378,7 +385,6 @@
       ]
     }
   ],
-  "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
     "cognitiveRing": "unassigned",
     "thermodynamicRole": "neutral",
@@ -386,7 +392,10 @@
       "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
       "ringPlacement": "none",
       "parallelism": "none",
-      "shadowAcknowledged": []
+      "shadowAcknowledged": [
+        "makcik_persona_rigidity: over-identifies with makcik voice even when inappropriate (MEDIUM, HYPOTHESIS 2026-09-19)",
+        "warung_metaphor_overflow: maps everything to warung/makcik context (LOW, HYPOTHESIS 2026-09-19)"
+      ]
     },
     "jituGate": {
       "requiresJitu": false,
@@ -422,36 +431,28 @@
       "protocolVersion": "1.0"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "DHe7jtW38tTzKmnWtAt/EdksfBVYafn6RYJlPcf/IVvzty9pNbiLvSuRCwDcEJb8nxh9Ggu7/ykSVGp1d2VSAw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:10:11Z",
-      "type": "Ed25519Signature2020"
-    }
+  "covenants": [
+    "AAA_SHARED_SESSION_COVENANT@v1"
   ],
-  "supported_interfaces": [
-    {
-      "url": "https://aaa.arif-fazil.com/a2a",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    },
-    {
-      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    }
-  ],
-  "default_input_modes": [
-    "text/plain",
-    "application/json"
-  ],
-  "default_output_modes": [
-    "text/plain",
-    "application/json"
-  ],
-  "registry_receipt_hash": "72273fc4017f4d9cc15a1eeccf1f6ace1e509d8d608024f706a903f894bc0fb4",
+  "session_ownership": {
+    "mode": "shared",
+    "steward_window": "1_cycle",
+    "forbidden_phrases": [
+      "my session",
+      "my work",
+      "my fix",
+      "my state",
+      "my context",
+      "ini sesi saya",
+      "karya saya",
+      "i am 888",
+      "i own AAA"
+    ]
+  },
+  "ed25519_pubkey": "39a6e9845834423edd82d688475f3aa7696e0ea4ea7aa1c6a75e3da3d091bb0c",
+  "identity_fingerprint": "5aa6defbb5d109ef12f31be56f63fabe",
+  "identity_bound_at": "2026-07-29T13:55:07.271136+00:00",
+  "registry_receipt_hash": "b383d9f8c506e844d83fefbaa27368b5b5342b583b7662327732fbb27d64f35f",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -479,45 +480,40 @@
     "vault": "VAULT999"
   },
   "admissible": true,
-  "qualification": {
-    "schema": "arifOS/qualification/v1",
-    "added": "2026-09-25T04:43:47Z",
-    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
-    "math_competency": {
-      "layers": [
-        "L1",
-        "L2",
-        "L6",
-        "L7.5"
-      ],
-      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via id (HERMES)",
-      "claim_state": "CANON_DERIVED"
-    },
-    "epistemic_typing": {
-      "declared": true,
-      "labels": [
-        "OBS",
-        "DER",
-        "INT",
-        "SPEC",
-        "UNKNOWN"
-      ],
-      "evidence": "epistemic label marker present in card",
-      "claim_state": "MEASURED"
-    },
-    "irfan": {
-      "least_power": {
-        "declared": true,
-        "evidence": "authority bound declared: present",
-        "claim_state": "MEASURED"
-      },
-      "abstention": {
-        "declared": false,
-        "evidence": null,
-        "claim_state": "UNVERIFIED"
-      },
-      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "BUILD",
+    "lane": "333-AGI"
+  },
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "5b4XkOpA0y-a0QCndXm24ePkzc92migmLw_tWAZEkWVBszG-Ku8UojrqSTuNfDlX41afujyU1aM7YD8nI30tBQ",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
     }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "provenance": {
+    "restored": "2026-09-17 Fasa 1 (SOUL from 2026-09-04 consolidation bak)",
+    "triad_forged": "2026-09-17 Fasa 2",
+    "canon": "/root/AAA/canon/EUREKA-2026-09-17-PERSONA-CIVILISATION-TRIAD.md",
+    "triad_position": "READ + HEAL \u2014 verify, never punish. Kanak-kanak asks, Makcik understands, Abang Sado protects.",
+    "dunbar_layer": "Affinity (~50)"
   },
   "authority_ceiling": "DRAFT_ONLY"
 }
