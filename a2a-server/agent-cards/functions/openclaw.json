@@ -8,7 +8,7 @@
     "category": "Native A2A agent — runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
+  "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Same bot id 8149595687, renamed 2026-09-25. Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "2.0.0",
   "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
@@ -55,9 +55,209 @@
   ],
   "skills": [
     {
+      "id": "role-binding-gateway",
+      "name": "Gateway Role Binding (OpenClaw)",
+      "description": "Polymorphic gateway binding for subagent orchestration and execution handoff. Loads openclaw-doctor-recipes, mcp-boot-failure-diagnosis, kanban-playbook, arif-federation-ops. References contracts/hermes-role-binding.md and AAA_SKILL_BINDING.md. F1, F4, F11 enforced.",
+      "tags": [
+        "role-binding",
+        "openclaw",
+        "gateway",
+        "subagent",
+        "F11"
+      ],
+      "floor_scope": [
+        "F01",
+        "F04",
+        "F11"
+      ],
+      "approval_policy": "auto (per task) + 888 for T3",
+      "reversibility_class": "reversible",
+      "binding_state": "LEASED (gateway execution)"
+    },
+    {
+      "id": "FORGE-gateway-routing",
+      "name": "Gateway Routing",
+      "description": "Route inbound Telegram messages to the correct agent persona via deterministic bindings",
+      "approval_policy": "none"
+    },
+    {
+      "id": "FORGE-agent-dispatch",
+      "name": "Agent Dispatch",
+      "description": "Dispatch tasks to internal OpenClaw personas or external federation agents",
+      "approval_policy": "on-demand"
+    },
+    {
+      "id": "FORGE-agent-handoff",
+      "name": "Agent Handoff",
+      "description": "Governed handoff to Hermes, A-FORGE, or arifOS through A2A/ACP bridges",
+      "approval_policy": "hold"
+    },
+    {
+      "id": "ASI-web-research",
+      "name": "Web Research",
+      "description": "Search and fetch web content via MiniMax and Tavily plugins",
+      "approval_policy": "none"
+    },
+    {
+      "id": "FORGE-browser-automation",
+      "name": "Browser Automation",
+      "description": "Chrome-based browser automation for E2E testing, screenshots, and scraping",
+      "approval_policy": "on-demand"
+    },
+    {
+      "id": "FORGE-shell-execution",
+      "name": "Shell Execution",
+      "description": "Local shell command execution on VPS af-forge under constitutional F1-F13 governance",
+      "approval_policy": "hold"
+    },
+    {
+      "id": "ASI-memory-search",
+      "name": "Memory Search",
+      "description": "QMD session transcript search and Ollama bge-m3 embedding retrieval",
+      "approval_policy": "none"
+    },
+    {
+      "id": "FORGE-status-query",
+      "name": "Status Query",
+      "description": "Read-only gateway, agent, and session status retrieval",
+      "approval_policy": "none"
+    },
+    {
+      "id": "FORGE-openclaw-doctor",
+      "name": "OpenClaw Doctor Recipes",
+      "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
+      "tags": [
+        "doctor",
+        "MCP",
+        "Telegram",
+        "drift",
+        "recovery"
+      ],
+      "examples": [
+        "Fix 'M3 not found' model-registry drift",
+        "Recover Telegram webhook 404 after Caddy reload",
+        "Clear orphan transcript cache"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "FORGE-mcp-boot-diagnosis",
+      "name": "MCP Boot Failure Diagnosis",
+      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
+      "tags": [
+        "MCP",
+        "boot",
+        "diagnosis",
+        "transport"
+      ],
+      "examples": [
+        "Distinguish stdio false-negative from SSE handshake failure",
+        "Diagnose playwright dead + agentmail not connecting"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "FORGE-federation-ops",
+      "name": "arif Federation Ops",
+      "description": "arifOS federation topology and routing — 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "tags": [
+        "federation",
+        "topology",
+        "ops",
+        "ports"
+      ],
+      "examples": [
+        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 for routing decisions",
+        "Trace a Telegram request through the gateway to its organ"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "AGI-kanban-playbook",
+      "name": "Kanban Playbook",
+      "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
+      "tags": [
+        "kanban",
+        "dispatcher",
+        "orchestrator",
+        "worker"
+      ],
+      "examples": [
+        "Decompose task into worker lanes with capability_mode",
+        "Recover from worker timeout with retry chain"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Every output reduces entropy. ΔS < 0.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -72,7 +272,7 @@
     {
       "id": "KERNEL-trinity-33",
       "name": "Trinity-33 Architecture",
-      "description": "33 repos: KERNEL(11)+CODE(11)+FOUNDRY(11).",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
       "tags": [
         "kernel",
         "trinity",
@@ -85,13 +285,57 @@
       ]
     },
     {
-      "id": "KERNEL-trinity-33",
-      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
     },
     {
-      "id": "RSI-recursive-improvement",
-      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
-    }
+      "id": "KERNEL-verbs-forge-hands",
+      "name": "Forge Verbs (Execution)",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "tags": [
+        "kernel",
+        "forge",
+        "execution",
+        "verbs"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "name": "MCP Builder",
+      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "builder",
+        "forge"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
   ],
   "mcp_surface": {
     "type": "consumed",
@@ -189,7 +433,7 @@
           "well_assess_homeostasis",
           "well_guard_dignity",
           "well_assess_metabolism",
-          "well_validate_vitality",
+          "well_readiness",
           "well_classify_substrate",
           "well_health_check",
           "well_signal_coverage"
@@ -358,320 +602,128 @@
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "G87ORqBOrpfwykCV1yTYi885zFKHg1aY98Ivy37svk2BEAEdFiJ8Zus+Pa2XhIg3SFqVhYdBWpPezaqKER6xCw==",
+      "proofValue": "ZbydclPdQOXID503sPGXZ43vdVGTLZvHfTq5BEL3Ff+2q9a2Wtz+zIb0v1/bU9gqYbMGYr/fSahh4ObXjgmMCg==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
+      "created": "2026-07-12T23:10:11Z",
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com",
-  "model": "minimax/MiniMax-M3",
-  "_model_sot": "/root/.config/federation-models.json",
-  "_quarantined_skills": [
+  "model": "deepseek/deepseek-v4-flash",
+  "_model_sot": "/root/AAA/registries/models/AGENT_MODEL_MAP.json",
+  "_model_prior": "minimax/MiniMax-M3 (direct API key invalid 2049 — routed via TokenRouter gateway; provider ACTIVE, model LIVE per registry 2026-08-03)",
+  "supported_interfaces": [
     {
-      "id": "role-binding-gateway",
-      "name": "Gateway Role Binding (OpenClaw)",
-      "description": "Polymorphic gateway binding for subagent orchestration and execution handoff. Loads openclaw-doctor-recipes, mcp-boot-failure-diagnosis, kanban-playbook, arif-federation-ops. References contracts/hermes-role-binding.md and AAA_SKILL_BINDING.md. F1, F4, F11 enforced.",
-      "tags": [
-        "role-binding",
-        "openclaw",
-        "gateway",
-        "subagent",
-        "F11"
-      ],
-      "floor_scope": [
-        "F01",
-        "F04",
-        "F11"
-      ],
-      "approval_policy": "auto (per task) + 888 for T3",
-      "reversibility_class": "reversible",
-      "binding_state": "LEASED (gateway execution)",
-      "_quarantine_reason": "no_skill_no_alias_row"
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
     },
     {
-      "id": "FORGE-gateway-routing",
-      "name": "Gateway Routing",
-      "description": "Route inbound Telegram messages to the correct agent persona via deterministic bindings",
-      "approval_policy": "none",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-agent-dispatch",
-      "name": "Agent Dispatch",
-      "description": "Dispatch tasks to internal OpenClaw personas or external federation agents",
-      "approval_policy": "on-demand",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-agent-handoff",
-      "name": "Agent Handoff",
-      "description": "Governed handoff to Hermes, A-FORGE, or arifOS through A2A/ACP bridges",
-      "approval_policy": "hold",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-web-research",
-      "name": "Web Research",
-      "description": "Search and fetch web content via MiniMax and Tavily plugins",
-      "approval_policy": "none",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-browser-automation",
-      "name": "Browser Automation",
-      "description": "Chrome-based browser automation for E2E testing, screenshots, and scraping",
-      "approval_policy": "on-demand",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-shell-execution",
-      "name": "Shell Execution",
-      "description": "Local shell command execution on VPS af-forge under constitutional F1-F13 governance",
-      "approval_policy": "hold",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-memory-search",
-      "name": "Memory Search",
-      "description": "QMD session transcript search and Ollama bge-m3 embedding retrieval",
-      "approval_policy": "none",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-status-query",
-      "name": "Status Query",
-      "description": "Read-only gateway, agent, and session status retrieval",
-      "approval_policy": "none",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-openclaw-doctor",
-      "name": "OpenClaw Doctor Recipes",
-      "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
-      "tags": [
-        "doctor",
-        "MCP",
-        "Telegram",
-        "drift",
-        "recovery"
-      ],
-      "examples": [
-        "Fix 'M3 not found' model-registry drift",
-        "Recover Telegram webhook 404 after Caddy reload",
-        "Clear orphan transcript cache"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-mcp-boot-diagnosis",
-      "name": "MCP Boot Failure Diagnosis",
-      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
-      "tags": [
-        "MCP",
-        "boot",
-        "diagnosis",
-        "transport"
-      ],
-      "examples": [
-        "Distinguish stdio false-negative from SSE handshake failure",
-        "Diagnose playwright dead + agentmail not connecting"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-federation-ops",
-      "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing — 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
-      "tags": [
-        "federation",
-        "topology",
-        "ops",
-        "ports"
-      ],
-      "examples": [
-        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 for routing decisions",
-        "Trace a Telegram request through the gateway to its organ"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "AGI-kanban-playbook",
-      "name": "Kanban Playbook",
-      "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
-      "tags": [
-        "kanban",
-        "dispatcher",
-        "orchestrator",
-        "worker"
-      ],
-      "examples": [
-        "Decompose task into worker lanes with capability_mode",
-        "Recover from worker timeout with retry chain"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Route to sovereign. No action without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "Naming contracts, transport physics, capability vs authority.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-verbs-forge-hands",
-      "name": "Forge Verbs (Execution)",
-      "description": "dry_run→engineer→write→commit→deploy. Reversibility class per verb.",
-      "tags": [
-        "kernel",
-        "forge",
-        "execution",
-        "verbs"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-verbs-forge-hands"
-    },
-    {
-      "id": "KERNEL-mcp-builder",
-      "name": "MCP Builder",
-      "description": "FastMCP server construction, tool registration, handshake, venv.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "builder",
-        "forge"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
-      "id": "KERNEL-sovereign-recognize"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit",
-      "id": "KERNEL-session-inhabit"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/SHADOW-diagnostic",
-      "id": "SHADOW-diagnostic"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/CLAIM-verification-gate",
-      "id": "CLAIM-verification-gate"
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
     }
   ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 27,
-    "after": 4,
-    "quarantined": 23,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
+  "agentId": "openclaw",
+  "layer": "binding",
+  "fi": null,
+  "fi_note": "Not FI — gateway binding; dispatches to FI harnesses",
+  "model_socket": "fed/openclaw",
+  "identity_vs_runtime": "agentId=openclaw; runtime=FED seat openclaw (not opencode FI-001)",
+  "warga_binding": {
+    "status": "stamped",
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "T1",
+    "kernel_actor_index": "openclaw/FI-017",
+    "forged": "2026-09-25",
+    "forged_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil) - directive 2026-09-25T07:01Z; executed by openclaw",
+    "preceding_state": "resident_not_stamped (planned infrastructure_citizen, stamp deferred_phase_B)",
+    "ikat_note": "was operator; F13 ikat 2026-09-20 -> T1"
   },
+  "capability_token": "act_v1",
+  "registry_receipt_hash": "e89ae7aa9b94415104e01f04e8282a95c2a5dc10423a3174036d37f097dbf956",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 27
+  },
+  "governance_profile": {
+    "authority_ceiling": "T1",
+    "_authority_ceiling_note": "2026-09-18: kernel-aligned per kernel-wins doctrine. Prior claim was ROUTE_BRIDGE; IDENTITY.md prior was GATEWAY; organs.yaml prior was DISPLAY_ONLY. Kernel SOT T1 wins. See /root/AAA/agents/openclaw/IDENTITY.md Authority drift section.",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true,
+  "_canonical": true,
+  "_canonical_role": "source-of-truth (hand-curated) for OpenClaw identity, governance profile, and constitutional alignment",
+  "_canonical_consumers": [
+    "/root/AAA/a2a-server/agent-cards/federation/openclaw.json (auto-generated)",
+    "/root/AAA/agents/openclaw/IDENTITY.md (alignment pending F13)",
+    "/root/AAA/agents/openclaw/AGENTS.md (reconciled 2026-09-18)",
+    "/root/AAA/federation/organs.yaml (reconciled 2026-09-18)",
+    "/root/AAA/federation/STATE.yaml (reconciled 2026-09-18)",
+    "/root/arifOS/arifos/identity/agent_registry.json (canonical kernel SOT — openclaw/FI-017)"
+  ],
+  "_canonical_audit_2026_09_18": "333-AGI audit reconciled 10 drifts: KVM4 cutover, FI-017 alignment, port mapping, gateway URL, capabilities (OBSERVE/REASON/ROUTE/MEMORY T1). F13 pending: authority_ceiling reconciliation (IDENTITY.md GATEWAY vs kernel ROUTE_BRIDGE vs organs.yaml DISPLAY_ONLY).",
   "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
   "ikat": "2026-09-20 F13 — Arif: ok ikat la",
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "ace06e29a9bbe9353d5ce4c1af36745907c393d5aa46d8047b74015996a86674",
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "ACT",
-    "lane": "openclaw",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "FUNCTION",
-    "auto_aligned_class": "Warga"
-  }
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:47Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L1",
+        "L2",
+        "L6",
+        "L7.5"
+      ],
+      "source": "APEX-MATH-CANON-2026-09-23 §5 via id (HERMES)",
+      "claim_state": "CANON_DERIVED"
+    },
+    "epistemic_typing": {
+      "declared": true,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": "epistemic label marker present in card",
+      "claim_state": "MEASURED"
+    },
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: T1",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+    }
+  },
+  "authority_ceiling": "T1",
+  "_e1_note": "2026-10-14 F13: \"irfanclw flash is enough\" — canonicalized to deployed KVM4 reality (deepseek-v4-flash; resolves to V4.1-Flash, cheaper). Was: v4-pro."
 }
