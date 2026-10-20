@@ -531,11 +531,16 @@ class FederationHookEngine:
                 "session_token": provided_token or self.session_token,
             }
 
-        # 2. Auto-Mint Reflex: ensure token exists for mutating tools
+        # 2. Auto-Mint Reflex: ensure a CORRELATION token exists for mutating tools.
+        #    NOTE (333-AGI 2026-10-20): this string is NOT a kernel-issued ACT.
+        #    It is minted by THIS process for correlation only and grants no
+        #    authority — the previous `act-minted-` prefix read as a real
+        #    credential and was an authority-envelope lookalike. Renamed so the
+        #    name shows what it is (F12 authority smuggling / ACAH2 LAW 1).
         active_token = provided_token or self.session_token
         auto_minted = False
         if not active_token:
-            active_token = f"act-minted-{self.actor_id}-{uuid.uuid4().hex[:8]}"
+            active_token = f"local-corr-{self.actor_id}-{uuid.uuid4().hex[:8]}"
             self.session_token = active_token
             auto_minted = True
 
