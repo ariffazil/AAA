@@ -52,6 +52,8 @@ counts_are_live:
 
 ### Attention before action.
 
+> Invariant: Routing a message ≠ authorizing its consequence. Attention is measured before action; authority is checked before mutation.
+
 AAA is the **attention and agent-discovery plane** of the arifOS federation. It converts evidence, state, deadlines, drift and uncertainty into machine-readable **AttentionPackets** so humans and AI agents can identify what deserves attention — without confusing priority with authority.
 
 > **What deserves scarce attention now?**
