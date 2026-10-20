@@ -338,3 +338,32 @@ If a selection is made and F2 status is UNMEASURED at decision time (not FAIL, b
 **Mutual non-interference clause (binding while DRAFT):** This section adds a ranking layer; it does NOT amend the HOLD thermodynamics (§3), the 4 LOCKS (§2), the BLOCKER_RESOLUTION reframe (§4), the NAD (§5), the autonomy redefinition (§6), or the fail-closed rule (§7). On F13 SAH, this section becomes binding and is renumbered as a top-level directive. On F13 silence or rejection, this section is removed by edit — no scar, no drift.
 
 DITEMPA BUKAN DIBERI — forged, not given.
+
+---
+
+## METABOLIC CHECKPOINT AMENDMENT — 2026-10-18 (F13, "selari dengan enjin")
+
+> **Failure class named:** GLOBAL_ROLLUP_GATES_LANE — enjin rollup global
+> menghalang lane yang sihat; baris lama "Bila FQ turun, semua HOLD" ialah
+> "dokumen menipu diri sendiri" (diisytiharkan sendiri oleh doktrin, dipinda).
+> **Consumers named:** `/root/A-FORGE/src/domain/forge/check_verdict.ts`
+> (`gateToolByFq`, `checkVerdictPrecondition` GATE 0/1); arifFlow engine
+> `fq.per_actor` (held/throttled/quotient = sumber per-lane).
+
+**Teks pindaan (binding):**
+"Lane FQ sendiri < 0.5 atau held=true (enjin arifFlow, per-lane) → LANE ITU
+sahaja HOLD; lane lain terus jalan. **Rollup = pemantauan, bukan gerbang**
+(dipinda 2026-10-18 selari dengan enjin; baris lama 'ALL agents HOLD' =
+dokumen menipu diri sendiri)."
+
+**Keputusan pelaksanaan (333-AGI, 2026-10-20, disemak 888-APEX):**
+- Lane diukur: held/throttled/Lane FQ<0.50 → HOLD lane itu sahaja.
+- Lane TIDAK diukur / MUTATE tanpa identiti: fallback konservatif ke gerbang
+  global (receipt nyatakan `lane_measured:false`) — laluan tanpa identiti
+  TIDAK dilebarkan (ajaran 2026-08-13: MUTATE path widening requires F13).
+- arifFlow tak dapat dicapai → kekal fail-closed.
+- Rollup global = medan pemantauan dalam receipt, tidak pernah menghalang
+  lane berukur yang sihat.
+
+Rujukan: A-FORGE `bbbf3d31` + commit penutup syarat 888; resepi gate:
+`test/fqGatePerLane.test.ts` (7 kes).
