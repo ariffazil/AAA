@@ -699,8 +699,8 @@ class TestT12_RecursiveImprovement(unittest.TestCase):
         self.assertFalse(result["new_scar_created"])
 
     def test_manifest_auto_apply_false(self):
-        """IPENCODE-HOOK-ORDER-MANIFEST.json has auto_apply: false for RI."""
-        manifest_path = Path("/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json")
+        """OPENCODE-HOOK-ORDER-MANIFEST.json: no idle hook may auto-apply RI."""
+        manifest_path = Path("/root/.config/opencode/plugins/OPENCODE-HOOK-ORDER-MANIFEST.json")
         if not manifest_path.exists():
             self.skipTest("Manifest not found")
         with open(manifest_path) as f:
