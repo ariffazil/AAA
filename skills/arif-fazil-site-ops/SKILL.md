@@ -1330,3 +1330,9 @@ fails on a clean rebuild run; mtime of the file is later than your script's writ
 4. For batch rebuilds of 14+ pages, do them all in one Python pass and verify all in the same script. The daemon tick interval is the budget; a full pass + verify usually beats it (under 30s).
 
 **Reference recipe (with single-script rebuild + verify pattern):** `references/per-essay-page-rebuild-from-ts.md`.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-25-source-type-promotion-gate, SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

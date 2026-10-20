@@ -156,8 +156,16 @@ def verify_chain(ledger_path: Path) -> tuple[bool, list[str]]:
 
     problems: list[str] = []
     notes: list[str] = []
-    for i, row in enumerate(rows):
-        want_prev = rows[i - 1]["artifact_sha256"] if i else None
+    # A correction row is an annotation, not a link: it carries no artifact, so it
+    # must not become the parent of the row that follows it. Chaining through it
+    # would either break the chain or, worse, make a correction look like a seal.
+    prev_artifact: str | None = None
+    for row in rows:
+        if not row.get("artifact_sha256"):
+            notes.append(f"{row.get('edition_id') or row.get('edition')}: annotation row (kind={row.get('kind')}), not chained")
+            continue
+        want_prev = prev_artifact
+        prev_artifact = row["artifact_sha256"]
         if row.get("chain_prev") != want_prev:
             problems.append(
                 f"{row.get('edition')}: chain_prev={row.get('chain_prev')} "
@@ -170,6 +178,8 @@ def verify_chain(ledger_path: Path) -> tuple[bool, list[str]]:
     # re-hash whatever is still on disk
     checked = 0
     for row in rows:
+        if not row.get("artifact_sha256"):
+            continue
         rel = row.get("artifact_path")
         candidates = []
         if rel:

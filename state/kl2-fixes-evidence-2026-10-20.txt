@@ -1,0 +1,25 @@
+=== ACTION TRACE · 333-AGI · 2026-10-20 · generated 2026-10-20T03:38:23+08:00 ===
+[1] L0 labels in kl2_reality_calibration.py
+137:rows += [["B (NW, Dangerous Grounds)", "0.0 km", "L0 CHOSEN", "chosen on-line, 7.78N 113.00E — operator pick, not a published position"],
+138:         ["Layang-Layang / Swallow Reef", f"{along_track(ANCHORS[0][1:])[0]:.1f} km", "L0 PUBLISHED", "7.372N 113.847E (published position)"],
+139:         ["Mt Kinabalu 4,095 m", f"{along_track(ANCHORS[1][1:])[0]:.1f} km", "L0 PUBLISHED", "6.075N 116.558E (published summit position)"],
+140:         ["B′ (SE, Sulu Sea)", f"{DIST[-1]:.1f} km", "L0 CHOSEN", "chosen on-line, 5.10N 118.60E — operator pick, not a published position"]]
+165:    ("Transect geometry", "DERIVED (L0 inputs)", SCH, "haversine computed FROM the published coordinates — derived, not measured"),
+[2] idempotent surface writes (2nd consecutive run)
+  ✓ Wrote tools_sot.yaml (27 tools)
+  ✓ Wrote CANONICAL_PUBLIC_SURFACE.json (27 tools)
+  ✓ Wrote tools.json (27 tools)
+  = llms.txt unchanged — skipped write
+  ✓ Wrote contracts/tools.yaml (27 tools)
+  = README.md unchanged — skipped write
+[3] single authority answer for geox_claim
+  caller=OPERATOR      -> LIMITED_MUTATE
+  caller=LIMITED_MUTATE-> LIMITED_MUTATE
+  caller=None          -> LIMITED_MUTATE
+[4] patch 66789b4 provenance
+  /root/GEOX: ABSENT
+  /root/arifOS: ABSENT
+  /root/A-FORGE: ABSENT
+  /root/AAA: ABSENT
+[5] syntax of both edited modules
+  SYNTAX_OK x3

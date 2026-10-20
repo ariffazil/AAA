@@ -307,3 +307,9 @@ Staying abstract when the signal is operationalize. The philosophy IS the pipeli
 - This skill governs the dialogue that PRODUCES new canon — the other skill navigates what already exists
 - See `hermes-propose-seal` for the full seal lifecycle (init → judge → forge_vault → verify)
 - **Apex-judge isolate flow for philosophical sessions:** `source kunci-mas.env` → probe federation → build evidence JSON (`/tmp/ev.json`) → `apex-judge isolate --doer HERMES --judge-actor 888-APEX --candidate "..." -e /tmp/ev.json --pretty --human` → quote verdict (effective_verdict + call_hash + session_id + independence_class + reasons) → present to F13 for lane classification. Evidence format: `session_provenance` + `candidate_artifact` (with epistemic tags per component) + `live_probes` + `Ω₀ estimate` + `reversibility classification` + `blast_radius`.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-007-over-output-verbosity
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

@@ -145,3 +145,9 @@ OpenCode cycle:
   /init → /forge → /seal
   identity → mutation → evidence
 ```
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-004-session-gate-confusion
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

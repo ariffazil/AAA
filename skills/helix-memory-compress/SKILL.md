@@ -170,3 +170,9 @@ with open('/root/memory/H5-scars/H5_SCAR_REGISTRY.json') as f:
 ---
 
 *Forged: 2026-08-12 from live session — Arif asked to zen memory with helix double-strand procedure. DITEMPA BUKAN DIBERI ⚒️*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-18-stale-audit-batch-p0-already-fixed, SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
