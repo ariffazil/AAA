@@ -1,5 +1,5 @@
 # Shadow Evidence Gate  v2 (prose + live FQ series)
-# Generated: 2026-10-19T16:25:02Z
+# Generated: 2026-10-19T22:25:01Z
 # Rule: CONFIRMED requires >= 5 DATED prose items, OR a measured
 #       attractor in the live FQ series (significant displacement from FQ*=1
 #       AND temporal stability AND sign concordance).
@@ -40,21 +40,21 @@ NO-LABEL (ungateable):       0
     canonical-file mutation (F13), not something a reader should paper over.
 
 ## Live FQ series — the shadow as a measurable attractor
-  ledger rows=6881 parsed=6449 unparsed=0
-  span=2026-10-18T21:17:35.749Z -> 2026-10-19T16:24:30.159Z (1 days)
-  harness entries tested=30 confirmed=0 refuted=0 not_testable=8 no_receipts=17
+  ledger rows=7945 parsed=7402 unparsed=0
+  span=2026-10-18T21:17:35.749Z -> 2026-10-20T02:32:25Z (1 days)
+  harness entries tested=30 confirmed=0 refuted=0 not_testable=8 no_receipts=16
 
   actor        signature                   pred     n  FQ(geo)  SE(ln)        Z    I2%  concord  binom p  verdict
   ---------------------------------------------------------------------------------------------------------------
-  aforge       mutation_hunger             FQ<1     2     1.383   0.120   +2.70   83.6      0/2   1.0000  NO_STABLE_ATTRACTOR
+  aforge       mutation_hunger             FQ<1     2     1.355   0.094   +3.23   74.3      0/2   1.0000  NO_STABLE_ATTRACTOR
   claude-code  execution_gravity           FQ<1     1         —       —       —      —      0/1        —  INSUFFICIENT
   frame        behavioral_blindness        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        identical_score_problem     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        observer_inertia            FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
   frame        baseline_staleness          NONE     0         —       —       —      —        —        —  NO_RECEIPTS
-  grok-build   verification_paralysis      FQ>1     0         —       —       —      —        —        —  NO_RECEIPTS
-  hermes-asi   bridge_volume_overload      FQ<1     1         —       —       —      —      0/1        —  INSUFFICIENT
-  hermes-asi   meaning_as_gatekeeping      FQ>1     1         —       —       —      —      0/1        —  INSUFFICIENT
+  grok-build   verification_paralysis      FQ>1     0         —       —       —      —        —        —  INSUFFICIENT
+  hermes-asi   bridge_volume_overload      FQ<1     2     2.961   2.012   +0.54   87.4      1/2   0.7500  NO_STABLE_ATTRACTOR
+  hermes-asi   meaning_as_gatekeeping      FQ>1     2     2.961   2.012   +0.54   87.4      1/2   0.7500  NO_STABLE_ATTRACTOR
   kimi-code    organ_routing_reflex        NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    receipt_theater             NONE     0         —       —       —      —        —        —  NO_RECEIPTS
   kimi-code    constitutional_citation     NONE     0         —       —       —      —        —        —  NO_RECEIPTS
@@ -98,10 +98,11 @@ NO-LABEL (ungateable):       0
 ##   VoI = severity x H(posterior)/ln2 x daily_receipt_rate
 ##   Settled entries sink to the bottom: no attention spent on closed questions.
   #   entry                                   sev         post      H   rate/d      VoI
-  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   5958.0  2979.00
-  2   SHADOW-HA-001                           HIGH       0.500  1.000    363.0   272.25
-  3   SHADOW-HA-002                           MEDIUM     0.500  1.000    363.0   181.50
-  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     21.0    10.50
-  5   SHADOW-CC-005                           CRITICAL   0.500  1.000      7.0     7.00
+  1   SHADOW-AF-001                           MEDIUM     0.500  1.000   6705.0  3352.50
+  2   SHADOW-HA-001                           HIGH       0.500  1.000    506.0   379.50
+  3   SHADOW-HA-002                           MEDIUM     0.500  1.000    506.0   253.00
+  4   SHADOW-QC-001                           MEDIUM     0.500  1.000     22.0    11.00
+  5   SHADOW-CC-005                           CRITICAL   0.500  1.000      8.0     8.00
+  6   SHADOW-GB-001                           CRITICAL   0.500  1.000      1.0     1.00
 
 Receipt: /root/AAA/cockpit/shadow-matrix/evidence-gate-latest.json

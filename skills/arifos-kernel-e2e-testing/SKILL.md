@@ -403,3 +403,9 @@ If a test fails, the failure is a real signal — never paper over it with a ski
 3. **Known open defect** (e.g. vault corruption): add the test with the expected-fail annotation (see `gate_1_pytest` pattern above)
 
 The pre-push hook should block 1 and 2, allow 3 with explicit acknowledgment.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-04-wrong-probe-pattern-false-absence
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

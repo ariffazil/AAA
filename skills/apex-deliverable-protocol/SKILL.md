@@ -102,3 +102,9 @@ Repeating visual lane per section: **Headline signal · Evidence block · Operat
 - Claim IDs without a source index are decoration. Both or neither.
 - Don't tag every sentence — tag the claims that would change a decision. Too many chips = noise (ΔS > 0).
 - **Transport ≠ truth.** A signed round-trip from bridge→AAA proves the envelope was delivered, not that the content behind it is accurate. Never assert "zero hallucinated answers" merely because routing, signing, and formatting succeeded. The transport chain is honest; the content provenance needs explicit snapshot+timestamp+source at the delivery layer. (Lesson: OpenClaw bridge 2026-08-07 — four 200 responses did not prove gold price was verified, only that the request reached the gateway.)
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-007-over-output-verbosity
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

@@ -302,3 +302,9 @@ By end of session, 4 attempts at adding edge to gold price prediction:
 3. THIRD: run 30-50 sample non-overlapping walk-forward with proper timestamp guards before any LIVE promotion
 4. FOURTH: M5 admission if it improves M0 distribution quality (without direction claim)
 5. FIFTH: never claim edge on n<30 samples — statistical honesty
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

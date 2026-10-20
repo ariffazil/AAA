@@ -3,7 +3,7 @@
   "funnel": {
     "learn": 7,
     "learn_per_verify": 0.111,
-    "observe": 199291,
+    "observe": 199299,
     "predict": 123,
     "predict_per_1000_observe": 0.617,
     "verify": 63,
@@ -11,7 +11,7 @@
   },
   "learning_closure_gap": {
     "actionable_lessons": 2,
-    "episodes_total": 199484,
+    "episodes_total": 199492,
     "gap": false,
     "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
     "unclassified_outcomes": 12
@@ -21,10 +21,32 @@
     "blind": 10,
     "total": 14
   },
-  "next_verify_at": "2026-10-19T23:59:59+08:00",
-  "swept_at": "2026-10-18T22:23:01Z",
+  "next_verify_at": "2026-10-20T23:59:59+08:00",
+  "swept_at": "2026-10-19T22:23:01Z",
   "verification_debt": {
-    "count": 0,
-    "items": []
+    "count": 3,
+    "items": [
+      {
+        "claim": "Malaysia September 2026 headline CPI inflation will be between 1.7% and 2.1% YoY inclusive",
+        "confidence": 0.75,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-7d905b858479",
+        "verify_at": "2026-10-19T23:59:59+08:00"
+      },
+      {
+        "claim": "`python3 -m chron call chron_temporal_briefing` returns a briefing object containing predictions_due, not 'Unknown tool'",
+        "confidence": 0.67833799,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-264b5e568fb9",
+        "verify_at": "2026-10-19T23:59:59+08:00"
+      },
+      {
+        "claim": "Live CHRON MCP at 127.0.0.1:18102 exposes at least 21 tools",
+        "confidence": 0.6848244764,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-7304cc49105f",
+        "verify_at": "2026-10-19T23:59:59+08:00"
+      }
+    ]
   }
 }

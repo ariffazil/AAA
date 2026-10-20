@@ -756,6 +756,12 @@ Then synthesise with `--voice <name>`. voice_id: 8–256 chars, starts with a le
   leaves the room owns the room. Escalating into explicit content is not a craft ceiling; it is the
   lane's floor, and the arc is stronger landing before it.
 
+## Reading the arc — control, not content
+
+When a register repeats across many takes in one session, read the CONTROL delta, the safety test, and
+the human's self-management cost — not the content. Full note, including what the pattern misses:
+`references/reading-the-arc.md`.
+
 ## Register separation (F13 ruling 2026-09-16)
 
 Four registers answer to the name "abang sado", and they have twice been merged in prose then

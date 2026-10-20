@@ -585,3 +585,9 @@ The v14 surat delivered all 7 assets in single session — that's the sovereign-
 DITEMPA BUKAN DIBERI — Forged, Not Given.
 
 A civic letter is sovereign speech under constitutional protection. Forge it like the institution depends on it — because it does.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-007-over-output-verbosity
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

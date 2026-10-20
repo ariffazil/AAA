@@ -80,3 +80,9 @@ Group routing is by bot presence: whichever profile's bot is in a group serves t
 - `hermes-telegram-gateway-ops` (hub pack) — identity truth, env injection, restart discipline, allowlist reconciliation. The multiplexer complements it: that skill resolves which bot speaks; this one gives each human their own bot.
 - `arifos-federation-ops` — sovereign seal paths; the sovereign profile is the only one that should hold seal/scar tooling.
 - `forge-vault-seal-receipt` — receipt schema; `meaning_anchor`/`scar_lineage` extension fields apply only in the sovereign profile's seal path.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-004-session-gate-confusion
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

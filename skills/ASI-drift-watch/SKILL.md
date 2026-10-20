@@ -103,3 +103,9 @@ for o in reg.get('organs', []):
 - Port numbers read from `/root/AAA/federation/organs.yaml` live
 - Health endpoints probed dynamically rather than assumed
 - Added graceful degradation: if registry unavailable, fall back to filesystem scan
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-005-canonical-path-hallucination
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

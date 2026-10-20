@@ -179,3 +179,9 @@ When promoting an identity layer agent (i-ARIF), the organ class taxonomy gained
 | **IDENTITY** | **sovereign identity core** | **i-arif** |
 
 The IDENTITY class is the only class that is `bound_to: F13-SOVEREIGN` directly. It is the only class where `authority_ceiling: IDENTITY_SOVEREIGN` is used. `receive_only_from:` (instead of `routes_to:`) — identity organs don't dispatch tasks, they receive routed questions from reality bridges.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-18-git-lane-identity-binding-and-agy-harness
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

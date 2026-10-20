@@ -228,3 +228,9 @@ rm src/data/essays/28-<your-slug>.ts
 # 4. Re-build to confirm listing shows ONE entry, not two
 npm run build
 ```
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-07-w3-degradation-during-doctrine-writing
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
