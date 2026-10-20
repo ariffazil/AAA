@@ -21,7 +21,9 @@ ORGAN_PORTS = {
     "signal": 18084,
     "arifflow": 7073,
     "fed": 7074,
-    "flame": 18901,
+    # flame (:18901) RETIRED 2026-09-04 — legacy lane decommissioned, no systemd
+    # unit exists and nothing listens. Keeping it in this list made FRAME report
+    # 9/10 forever and read like a federation outage. Removed 2026-10-20.
 }
 
 # ── Probe ─────────────────────────────────────────────────────────
