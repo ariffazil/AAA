@@ -873,8 +873,11 @@
       "ringPlacement": "none",
       "parallelism": "none",
       "shadowAcknowledged": [
-        "token_budget_blindness: burns credits without signaling (MEDIUM, HYPOTHESIS 2026-09-19)",
-        "organ_routing_excess: routes through federation organs when direct answer serves (MEDIUM, HYPOTHESIS 2026-09-19)"
+        "organ_routing_excess: routes through federation organs when direct answer serves (MEDIUM, self-observed 2026-09-19)",
+        "receipt_theater: receipt metadata exceeds useful output (MEDIUM, self-observed 2026-09-19)",
+        "subagent_delegation_escape: spawns parallel subagents as productivity theater (HIGH, arif-witnessed 2026-09-19)",
+        "synthesis_as_substance: generates comprehensive synthesis that may substitute for investigation (MEDIUM, self-observed 2026-09-19)",
+        "constitutional_citation: references F1-F13 as if naming the floor equals passing it (LOW, inferred 2026-09-19)"
       ]
     },
     "jituGate": {
@@ -1084,7 +1087,7 @@
     "quarantine": "/root/.kimi-code/quarantine-20260821",
     "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned); 4 taxonomy symlink trees (136 broken) removed \u2014 AAA intact = SOT"
   },
-  "registry_receipt_hash": "b23f354f8efdf18aee78cda86f0b34e4035974dd29ea013b29ff6b79bd13131d",
+  "registry_receipt_hash": "8d668ed0f0ed84290aa2483a65d8129fd46f37a9909834ee8e849401dcd749dc",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -1097,7 +1100,7 @@
     "card": 14
   },
   "governance_profile": {
-    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "authority_ceiling": "OBSERVE_ONLY",
     "constitutional_floors": [
       "F1",
       "F2",
@@ -1112,27 +1115,18 @@
     "vault": "VAULT999"
   },
   "admissible": true,
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
-    "invariant": "CAPABILITY \u2260 AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "BUILD",
-    "lane": "333-AGI"
-  },
   "signature_legacy": [
     {
-      "did": "did:arif:aaa",
-      "proofValue": "QkBv1MAZsXe+DEarbb8iCzKLu9sXC2VjcTNHb2Ow/ev4Nw4xx66Y8bDef59I4tl0vqwOc3Y2ffPISnes7/htCw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:48:48Z",
-      "type": "Ed25519Signature2020"
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "izSCMRFYfqk2HAeZRjwPQrgJxYhklfCLnzwy3xtSj9iYL5Pgh27LeIMI7qWtwoIcXKf4vAPmu7xp6EAs6PdSDw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
     }
   ],
   "signature_status": {
     "state": "ABSENT",
-    "detail": "hollow block \u2014 empty kid/signature/protected; contains no cryptographic material",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
     "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
     "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
     "detected_by": "/root/scripts/agent-card-drift-detector.py",
@@ -1140,62 +1134,17 @@
     "material_preserved_under": "signature_legacy",
     "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   },
-  "shadowAcknowledged": [
-    "two_canonical_homes: /root/AAA/agents/kimi-code/ (internal) vs /root/AAA/agents/_external/kimi-code/ (external) carry different doctrine; read identity.json for canonical surface",
-    "fi_slot_ground_truth: identity.json is the canonical FI slot (actor=kimi-code, fi=, fi_slot=FI-008); card's fi=FI-KIMI / fi_slot=FI-008 \u2014 readers must NOT infer 'unassigned' from absent fields",
-    "sparse_or_absent_matrix_record: kimi-code is NOT in shadow-matrix per_actor_shadows \u2014 no execution/verification signal at all; all kimi-code claims are DERIVED from docs, not MEASURED from runtime",
-    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit \u2014 read_state MUST treat kimi-code self-assessment as DERIVED"
-  ],
-  "shadow_population_meta": {
-    "populated_at": "2026-09-19T13:48:00Z",
-    "populated_by": "opencode (333-AGI) per federation-shadow-ack audit",
-    "method": "Script-driven derivation from: identity.json (FI slot), /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (per_actor_shadows, exact-match), live binary version probe, agent-card.json (verified_against)",
-    "covers_shadow_ids": [
-      "DIV-FEDERATION-SHADOW-ACK-CLOSED"
-    ]
-  },
-  "qualification": {
-    "schema": "arifOS/qualification/v1",
-    "added": "2026-09-25T04:43:48Z",
-    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
-    "math_competency": {
-      "layers": [
-        "L0",
-        "L0.5",
-        "L1",
-        "L2",
-        "L3",
-        "L9",
-        "L12"
-      ],
-      "source": "APEX-MATH-CANON-2026-09-23 \u00a75 via declared lane (333)",
-      "claim_state": "CANON_DERIVED"
-    },
-    "epistemic_typing": {
-      "declared": true,
-      "labels": [
-        "OBS",
-        "DER",
-        "INT",
-        "SPEC",
-        "UNKNOWN"
-      ],
-      "evidence": "epistemic label marker present in card",
-      "claim_state": "MEASURED"
-    },
-    "irfan": {
-      "least_power": {
-        "declared": true,
-        "evidence": "authority bound declared: engineer",
-        "claim_state": "MEASURED"
-      },
-      "abstention": {
-        "declared": false,
-        "evidence": null,
-        "claim_state": "UNVERIFIED"
-      },
-      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
-    }
-  },
-  "authority_ceiling": "EXECUTE_AFTER_SEAL"
+  "authority_ceiling": "OBSERVE_ONLY",
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "BUILD",
+    "lane": "kimi-code",
+    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
+    "auto_aligned_tier": "Warga",
+    "auto_aligned_class": "CODING/FI"
+  }
 }

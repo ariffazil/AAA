@@ -5,10 +5,10 @@
   "name": "OpenClaw Gateway",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent — runtime owns itself",
+    "category": "Native A2A agent \u2014 runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Same bot id 8149595687, renamed 2026-09-25. Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
+  "description": "KVM4 Telegram guest @irfanclaw_arifos_bot (openclaw-gateway :18789). Kernel FI-017 T1 OBSERVE/REASON/ROUTE/MEMORY. Not Hermes, not 888, not an execution organ.",
   "version": "2.0.0",
   "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
@@ -16,6 +16,14 @@
     "organization": "arifOS Federation",
     "system": "AAA Control Plane + OpenClaw Runtime",
     "runtime": "OpenClaw (Node.js, openclaw/openclaw main)"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "T1",
+    "citizenship_forged": "2026-05-17",
+    "ikat_note": "was operator; F13 ikat 2026-09-20"
   },
   "capabilities": {
     "streaming": true,
@@ -125,7 +133,7 @@
     {
       "id": "FORGE-openclaw-doctor",
       "name": "OpenClaw Doctor Recipes",
-      "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
+      "description": "Fix common OpenClaw gateway health issues \u2014 model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
       "tags": [
         "doctor",
         "MCP",
@@ -148,7 +156,7 @@
     {
       "id": "FORGE-mcp-boot-diagnosis",
       "name": "MCP Boot Failure Diagnosis",
-      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
+      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports \u2014 distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
       "tags": [
         "MCP",
         "boot",
@@ -169,7 +177,7 @@
     {
       "id": "FORGE-federation-ops",
       "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing — 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "description": "arifOS federation topology and routing \u2014 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
       "tags": [
         "federation",
         "topology",
@@ -190,7 +198,7 @@
     {
       "id": "AGI-kanban-playbook",
       "name": "Kanban Playbook",
-      "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
+      "description": "Hermes Kanban dispatcher \u2014 both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
       "tags": [
         "kanban",
         "dispatcher",
@@ -241,7 +249,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -257,7 +265,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -302,7 +310,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -330,38 +338,125 @@
         "F4"
       ]
     },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+    {
+      "id": "AGI-semantic-router",
+      "name": "Semantic Intent Router",
+      "description": "LLM-based intent classification via FED flash lane. Fallback when regex confidence < 0.7. Multi-intent detection with fan-out routing to federation organs. OBSERVE_ONLY.",
+      "tags": [
+        "orchestrator",
+        "routing",
+        "semantic",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F7"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "AGI-dag-workflow-engine",
+      "name": "DAG Workflow Engine",
+      "description": "Declarative JSON DAG workflow execution with fan-out/fan-in, dependency ordering, checkpoint/resume, and 3 pre-built templates (research_and_report, multi_domain_synthesis, code_review_pipeline). OBSERVE_ONLY for define/dry-run; MUTATE for live execution.",
+      "tags": [
+        "orchestrator",
+        "dag",
+        "workflow",
+        "fan-out",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "approval_policy": "auto (define/dry-run) + 888 for live execution",
+      "reversibility_class": "reversible (define/dry-run) | partial (live)"
+    },
+    {
+      "id": "AGI-cross-session-state",
+      "name": "Cross-Session State Manager",
+      "description": "Per-person state persistence: conversation history, routing stats, preferences, FQ-aware state. Redis L1 + JSON L2. OBSERVE_ONLY.",
+      "tags": [
+        "orchestrator",
+        "state",
+        "memory",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "AGI-orchestrator-observability",
+      "name": "Orchestrator Observability",
+      "description": "Trace trees, token budget tracking per conversation, FQ correlation with routing decisions, structured JSONL event logging, latency stats per agent. OBSERVE_ONLY.",
+      "tags": [
+        "orchestrator",
+        "observability",
+        "tracing",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "AGI-subprocess-adapter",
+      "name": "Node\u2192Python Subprocess Adapter",
+      "description": "Allowlisted subprocess bridge: 7 capability IDs, JSON stdin\u2192stdout, 30s timeout, 2MB output cap, URL/shell-char/path-traversal rejection. OBSERVE_ONLY. No generic spawn.",
+      "tags": [
+        "orchestrator",
+        "adapter",
+        "subprocess",
+        "security",
+        "AGI"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F11",
+        "F12"
+      ],
+      "approval_policy": "auto (read-only capabilities) + 888 for mutate",
+      "reversibility_class": "reversible"
+    }
   ],
   "mcp_surface": {
     "type": "consumed",
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
+        "tool_count": 8,
         "tools": [
           "arif_init",
           "arif_observe",
           "arif_think",
           "arif_route",
           "arif_judge",
-          "arif_act",
-          "arif_seal"
+          "arif_forge",
+          "arif_seal",
+          "arif_memory"
         ],
         "key_lanes": [
           "governance",
           "judgment",
           "session"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
+        "tool_count": 52,
         "tools": [
           "forge_shell",
           "forge_git",
@@ -379,92 +474,112 @@
           "build",
           "deploy"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
+        "tool_count": 33,
         "tools": [
           "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
+          "geox_calibration_register_witness",
           "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_contrast_metabolize",
+          "geox_deep_time",
+          "geox_extract_display_proxy",
+          "geox_extract_native_trace",
+          "geox_geomechanics",
+          "geox_glof",
+          "geox_list_registered_sources",
+          "geox_map",
+          "geox_model",
+          "geox_observe",
+          "geox_paleobiodb_query",
+          "geox_petrophysics",
+          "geox_prospect",
+          "geox_register_native_source",
+          "geox_seismic_compute",
+          "geox_seismic_ingest",
+          "geox_seismic_interpret",
+          "geox_source",
+          "geox_spatial",
+          "geox_surface_status",
+          "geox_temporal",
+          "geox_well",
+          "geox_well_ingest",
+          "geox_well_qc"
         ],
         "key_lanes": [
           "earth",
           "basin",
           "seismic"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
+        "tool_count": 14,
         "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
+          "capital_market",
+          "capital_health",
+          "capital_ledger",
+          "capital_primitive",
+          "capital_wisdom",
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_registry",
+          "wealth_institutional_stress_index",
+          "wealth_cascade_model",
+          "wealth_governance_capacity",
+          "wealth_external_exploitation_detect",
+          "wealth_judge_handoff",
+          "wealth_bid_surface"
         ],
         "key_lanes": [
           "capital",
           "risk",
           "wisdom"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
+        "tool_count": 8,
         "tools": [
-          "well_validate_vitality",
-          "well_assess_homeostasis",
-          "well_guard_dignity",
-          "well_assess_metabolism",
-          "well_readiness",
           "well_classify_substrate",
-          "well_health_check",
-          "well_signal_coverage"
+          "well_trace_lineage",
+          "well_assess_homeostasis",
+          "well_check_repair",
+          "well_validate_vitality",
+          "well_guard_dignity",
+          "well_assess_reliability",
+          "well_registry_status"
         ],
         "key_lanes": [
           "vitality",
           "dignity",
           "homeostasis"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-29"
+      },
+      {
+        "url": "http://localhost:7073/health",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "metabolism",
+          "fq",
+          "cooling"
+        ],
+        "version": "2026-07-29",
+        "note": "arifFLOW \u2014 FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
       }
     ]
   },
-  "protocol_version": "1.2",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [
     {
       "transport": "websocket",
       "url": "ws://127.0.0.1:18789"
-    }
-  ],
-  "security_schemes": [
-    {
-      "id": "openclaw-gateway-password",
-      "type": "apiKey",
-      "description": "Gateway operator password loaded from openclaw.json gateway.auth.password"
-    },
-    {
-      "id": "aaa-a2a-bearer",
-      "type": "bearer",
-      "description": "AAA federation bearer token for A2A bridge traffic"
     }
   ],
   "default_input_modes": [
@@ -483,7 +598,7 @@
     "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
     "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
     "load_at_init": true,
-    "default_action_class": "MUTATE",
+    "default_action_class": "OBSERVE",
     "substrates": {
       "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
       "schema": "/root/arifOS/arifosmcp/schemas/art.py",
@@ -528,7 +643,7 @@
       "from_version": "2026.6.1",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -536,7 +651,6 @@
       ]
     }
   ],
-  "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
     "cognitiveRing": "generator",
     "thermodynamicRole": "entropy_source",
@@ -565,8 +679,6 @@
       "KERNEL-session-inhabit",
       "KERNEL-sovereign-recognize",
       "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
       "KERNEL-reality-skills",
       "KERNEL-mcp-zen",
       "KERNEL-mcp-builder"
@@ -580,8 +692,6 @@
     "KERNEL-session-inhabit",
     "KERNEL-sovereign-recognize",
     "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
     "KERNEL-reality-skills",
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
@@ -599,50 +709,50 @@
       "protocolVersion": "1.0"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "ZbydclPdQOXID503sPGXZ43vdVGTLZvHfTq5BEL3Ff+2q9a2Wtz+zIb0v1/bU9gqYbMGYr/fSahh4ObXjgmMCg==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:10:11Z",
-      "type": "Ed25519Signature2020"
-    }
+  "covenants": [
+    "AAA_SHARED_SESSION_COVENANT@v1"
   ],
-  "model": "deepseek/deepseek-v4-flash",
-  "_model_sot": "/root/AAA/registries/models/AGENT_MODEL_MAP.json",
-  "_model_prior": "minimax/MiniMax-M3 (direct API key invalid 2049 — routed via TokenRouter gateway; provider ACTIVE, model LIVE per registry 2026-08-03)",
-  "supported_interfaces": [
-    {
-      "url": "https://aaa.arif-fazil.com/a2a",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    },
-    {
-      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    }
-  ],
-  "agentId": "openclaw",
-  "layer": "binding",
-  "fi": null,
-  "fi_note": "Not FI — gateway binding; dispatches to FI harnesses",
-  "model_socket": "fed/openclaw",
-  "identity_vs_runtime": "agentId=openclaw; runtime=FED seat openclaw (not opencode FI-001)",
-  "warga_binding": {
-    "status": "stamped",
-    "citizenship": "warga-aaa",
-    "lane": "333-AGI",
-    "intelligence_tier": "AGI",
-    "authority_level": "T1",
-    "kernel_actor_index": "openclaw/FI-017",
-    "forged": "2026-09-25",
-    "forged_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil) - directive 2026-09-25T07:01Z; executed by openclaw",
-    "preceding_state": "resident_not_stamped (planned infrastructure_citizen, stamp deferred_phase_B)",
-    "ikat_note": "was operator; F13 ikat 2026-09-20 -> T1"
+  "session_ownership": {
+    "mode": "shared",
+    "steward_window": "1_cycle",
+    "forbidden_phrases": [
+      "my session",
+      "my work",
+      "my fix",
+      "my state",
+      "my context",
+      "ini sesi saya",
+      "karya saya",
+      "i am 888",
+      "i own AAA"
+    ]
   },
-  "capability_token": "act_v1",
-  "registry_receipt_hash": "e89ae7aa9b94415104e01f04e8282a95c2a5dc10423a3174036d37f097dbf956",
+  "ed25519_pubkey": "6c232cbe23b8414b25e07a981ac0530e784bc02665f209ab9fa46a8ea72bbd2c",
+  "identity_fingerprint": "d34446ad0908b3f58b6b57031ea4153d",
+  "identity_bound_at": "2026-07-29T13:55:07.272023+00:00",
+  "model": "deepseek/deepseek-v4-pro",
+  "primary_model": "deepseek/deepseek-v4-pro",
+  "fallback_chain": [
+    "deepseek/deepseek-v4-flash",
+    "minimax/MiniMax-M3",
+    "kimi/kimi-for-coding",
+    "kimi/k3"
+  ],
+  "_pool": "A",
+  "_pool_name": "DeepSeek Direct",
+  "_zen_note": "2026-08-03: Aligned with redistribution. Primary: Pool A (DeepSeek direct). Fallbacks: Pool B (MiniMax), Pool F (Kimi).",
+  "civ21_binding": {
+    "lane": "Encoder \u2014 Encoding Integrity",
+    "perspective": "I encode sovereign intent with audit_mode:true and requires_reflection:true. I DO NOT modify reality claims. I DO NOT audit. I am the skin \u2014 I feel the signal, I don't interpret it.",
+    "primary_constraints": [
+      "E2 No Self-Certification",
+      "E15 Narrative Is Not The Enemy",
+      "E18 Every Compression Creates A Blind Spot"
+    ],
+    "godel_lock_acknowledgment": "My encoding of human intent is a compression. What I encode is not what the human said \u2014 it is what I understood. The compression itself may filter reality.",
+    "canon": "/root/AAA/canon/CIV-21.md"
+  },
+  "registry_receipt_hash": "4241270c6441f9c16e6c5e32fd7a5941e053fc94fd9ba95ed2d3835ad2c0c33c",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -652,7 +762,7 @@
   "registry_tool_count": {
     "source": 0,
     "registry": 0,
-    "card": 27
+    "card": 21
   },
   "governance_profile": {
     "authority_ceiling": "T1",
@@ -671,59 +781,39 @@
     "vault": "VAULT999"
   },
   "admissible": true,
-  "_canonical": true,
-  "_canonical_role": "source-of-truth (hand-curated) for OpenClaw identity, governance profile, and constitutional alignment",
-  "_canonical_consumers": [
-    "/root/AAA/a2a-server/agent-cards/federation/openclaw.json (auto-generated)",
-    "/root/AAA/agents/openclaw/IDENTITY.md (alignment pending F13)",
-    "/root/AAA/agents/openclaw/AGENTS.md (reconciled 2026-09-18)",
-    "/root/AAA/federation/organs.yaml (reconciled 2026-09-18)",
-    "/root/AAA/federation/STATE.yaml (reconciled 2026-09-18)",
-    "/root/arifOS/arifos/identity/agent_registry.json (canonical kernel SOT — openclaw/FI-017)"
-  ],
-  "_canonical_audit_2026_09_18": "333-AGI audit reconciled 10 drifts: KVM4 cutover, FI-017 alignment, port mapping, gateway URL, capabilities (OBSERVE/REASON/ROUTE/MEMORY T1). F13 pending: authority_ceiling reconciliation (IDENTITY.md GATEWAY vs kernel ROUTE_BRIDGE vs organs.yaml DISPLAY_ONLY).",
-  "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
-  "ikat": "2026-09-20 F13 — Arif: ok ikat la",
-  "qualification": {
-    "schema": "arifOS/qualification/v1",
-    "added": "2026-09-25T04:43:47Z",
-    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
-    "math_competency": {
-      "layers": [
-        "L1",
-        "L2",
-        "L6",
-        "L7.5"
-      ],
-      "source": "APEX-MATH-CANON-2026-09-23 §5 via id (HERMES)",
-      "claim_state": "CANON_DERIVED"
-    },
-    "epistemic_typing": {
-      "declared": true,
-      "labels": [
-        "OBS",
-        "DER",
-        "INT",
-        "SPEC",
-        "UNKNOWN"
-      ],
-      "evidence": "epistemic label marker present in card",
-      "claim_state": "MEASURED"
-    },
-    "irfan": {
-      "least_power": {
-        "declared": true,
-        "evidence": "authority bound declared: T1",
-        "claim_state": "MEASURED"
-      },
-      "abstention": {
-        "declared": false,
-        "evidence": null,
-        "claim_state": "UNVERIFIED"
-      },
-      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
-    }
+  "apex_zen": {
+    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
+    "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",
+    "invariant": "CAPABILITY \u2260 AUTHORITY",
+    "doctrine": "Govern capabilities, not implementations.",
+    "motto": "DITEMPA BUKAN DIBERI",
+    "capability": "BUILD",
+    "lane": "333-AGI"
   },
-  "authority_ceiling": "T1",
-  "_e1_note": "2026-10-14 F13: \"irfanclw flash is enough\" — canonicalized to deployed KVM4 reality (deepseek-v4-flash; resolves to V4.1-Flash, cheaper). Was: v4-pro."
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "Z94D09_omAvIkdZLjflK0aYHETwUD6c-JMMP75Kac0NG1GXFOSw-D69QSVMwwOD7C6mYYh5d_wvQaDP3Zka3CQ",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "_canonical_source": "/root/AAA/agent-cards/functions/openclaw/agent-card.json",
+  "_canonical_source_note": "agents/openclaw/agent-card.json is hand-curated but co-located with identity files (NOT the SOT for federation mesh \u2014 that is functions/agent-card.json). Auto-generated A2A card at /root/AAA/a2a-server/agent-cards/federation/openclaw.json.",
+  "_canonical_audit_2026_09_18": "333-AGI audit found this third card missed in initial sweep. Reconciled with canonical pointer to avoid split-SOT confusion.",
+  "canonical_marker_2026_09_18": "co-located identity card; federation-mesh canonical = agent-cards/functions/openclaw/agent-card.json",
+  "identity_bind": "KVM4 openclaw-gateway + Telegram @irfanclaw_arifos_bot. Kernel FI-017 T1. Not Hermes. Not 888. Not the encoder in front of Hermes.",
+  "ikat": "2026-09-20 F13 \u2014 Arif: ok ikat la",
+  "authority_ceiling": "T1"
 }
