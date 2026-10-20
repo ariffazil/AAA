@@ -82,3 +82,27 @@ targets:
   claude:
     status: existing_surface           # claude-code-federation already serves
     note: upgrade path = repoint its hooks at the mesh; not rebuilt here
+
+# ── Retired mesh disposition (2026-10-20) ───────────────────────────────────
+# "Buang yang keruh, ambil yang jernih": one compressed archive, zero live
+# shadow copies, and an explicit fate for every fragment. Nothing is left
+# ambiguous for the next agent to re-litigate.
+retired:
+  date: 2026-10-20
+  archive: /root/.config/opencode/_archive/plugins-retired-20261014.tar.gz
+  sha256: 746db2cbaff44177624ec72bce1d00751d99c393db65bdef869f26248c2c20ea
+  contents: [plugins-retired-20261014/, plugins-archive/reality-probe-gate.ts]
+  disposition:
+    aaa-autonomy.ts: absorbed — identity threading, 888 tripwires, autonomy contract
+    aaa-dispatch.ts: superseded — agents/dispatch.md (A2A router)
+    arif-core.ts: superseded — this plugin
+    arifos-compaction-rsi.ts: absorbed — compaction hook + carry-forward
+    arifos-federation-manifest-compiler.ts: superseded — /root/AAA/plugins/plugin87 views
+    arifos-judge-gate.ts: absorbed — gate/heal + VOID enforcement
+    arifos-kernel-bridge.ts: absorbed — challenge/init/Ed25519 bind
+    arifos-recursive-improvement.ts: dropped — no consumer, no failure class; arifFlow owns metabolism
+    arifos-turn-rsi.ts: dropped — no assistant-output hook in V2, no consumer
+    failure-immunity-guards.ts: absorbed — lib/guards.ts
+    hermes-nudge-injector.ts: superseded — HERMES nudge engine owns it
+    sycophancy-detector.ts: dropped — post-hoc and non-blocking; F2 prompt + judge own it
+    reality-probe-gate.ts: dropped — dead lib, zero consumers; probe discipline is harness P5
