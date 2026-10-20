@@ -223,8 +223,10 @@ auth/redis_url.env
 **/*.env
 !.env.example
 !.env.sample
-audio/voice-registry.json  # person registry, local-only SOT (PERSON-DATA GATE)
+# person registry, local-only SOT (PERSON-DATA GATE)
 audio/voice-registry.json
+audio/voice-samples/
+audio/*.bak*
 
 # runtime payload relocated out of the tree (2026-10-17 pure-attention)
 _registry_2026-10-11
