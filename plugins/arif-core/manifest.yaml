@@ -51,6 +51,10 @@ hooks:
     advisory_only: true
   - canonical: aaa.turn.received       # sensor: intent provenance
     advisory_only: true
+  - canonical: aaa.prompt.admitted     # sensor: one continuity injection per session
+    advisory_only: true
+  - canonical: aaa.model.request       # sensor: governance card on every model call
+    advisory_only: true
   - canonical: aaa.action.proposed     # sensor: mutation attempt observed
     advisory_only: true
     enforce_note: kernel-only enforcement (FP-02)
