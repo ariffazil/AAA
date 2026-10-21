@@ -1,7 +1,16 @@
 # EUREKA — Shadow Origin & BANGANG Taxonomy (F13, 2026-10-21)
 
-**Status:** DRAFT_AWAITING_F13 · Full 17-EUREKA text + P0/P1/P2 gaps: `EUREKA-SHADOW-BANGANG-FULL-2026-10-21.txt` (same dir)
-**Origin:** cross-session distillation — Demis/Elon/Altman/Anthropic artifact productions + federation audit claims. Arif's framing, agent-distilled.
+**Status:** DRAFT_AWAITING_F13 · Full 17-EUREKA text + P0/P1/P2 gaps: `EUREKA-SHADOW-BANGANG-FULL-2026-10-21.txt` (30,164 chars — F13 original paste, recovered from state.db msg 297666 after the first archive attempt wrongly captured a lane banner; defect verified by independent falsifier 21/10 and used as the eureka's own Receipt-BANGANG instance).
+
+## Independent falsification verdict (21/10, separate-lane subagent)
+
+**PARTIAL.** Three tightenings required before F13 ratification:
+
+1. **Taxonomy class is circular** — fires only when a taxonomy claims exhaustiveness without a stated admission test.
+2. **Aesthetic lacks a boundary operator** — fires only when polish is offered *in place of* a named primary source not opened that session.
+3. **Temporal overlaps Persistence/Memory** — restrict to timestamp contradictions (claim newer than its cited evidence).
+
+**Law status:** Shadow-law survives with scope caveat (exclude authored doctrine/config patterns; six factors are candidate causes to rank, not sufficient condition). BANGANG-law falls as universal, survives as subset classifier — operational test: *name the check that was skipped*; spec/transmission failures are separate classes. Success-vector survives only if `human_accepted` is a measured signal (not a self-report bit) AND a cost/harm field is added — otherwise it's a boolean with 7 columns.
 
 ## Hukum besi (3 baris, sisanya archive)
 
