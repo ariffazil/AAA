@@ -209,17 +209,16 @@ Exit 0 = compile. Exit 1 = fix defects (unmatched brackets, unbalanced asterisks
    ```
    Exit 0 = compile. Any defect listed = fix first. Checks: bracket balance, asterisk hazards (block-level), stray `)` after `#sect[...]` (renders as garbage ')' lines in the PDF — 13 defects shipped in demis.pdf before this check existed), markdown-table pipes, raw() misuse, missing images, orphan headings. Known limits: compiler line errors may point away from the actual source — inspect around the reported line AND preceding markup boundaries.
 9. **Compile, then verify:**
-   ```bash
-   typst compile subject.typ subject.pdf
-   pdfinfo subject.pdf | grep -E "Pages|File size"
-   pdftotext subject.pdf - | head -40     # text integrity
-   pdftotext subject.pdf - | tail -40     # last page readability
-   pdftotext subject.pdf - | grep -cE "/(root|home|usr|tmp|opt)/"   # must be 0 (no path leaks)
-   pdftoppm -png -r 55 subject.pdf pg     # rasterize for ink-density + visual check
-   ```
-   Ink density per page (PIL pixel-count, no numpy): healthy body pages 8-25%. Below 3% = stranded fragment page (usually a forced #pagebreak splitting header from body) — fix by removing the pagebreak, never by adding filler. Then vision_analyze 2 key pages (cover + densest page) for overlap/clipping only.
-9. **Deliver** `MEDIA:/abs/path/subject.pdf` plus a one-paragraph receipt listing chapters and a short note on asterisks/$-escapes you had to handle (so Arif knows what was sanitised).
-   Pages target: 12–16. File size 60–100 KB. If pages < 10, expansion is too thin; if > 18, content is too wide.
+  ```bash
+  typst compile subject.typ subject.pdf
+  pdfinfo subject.pdf | grep -E "Pages|File size"
+  pdftotext subject.pdf - | head -40     # text integrity
+  pdftotext subject.pdf - | tail -40     # last page readability
+  pdftotext subject.pdf - | grep -cE "/(root|home|usr|tmp|opt)/"   # must be 0 (no path leaks)
+  pdftoppm -png -r 55 subject.pdf pg     # rasterize for ink-density + visual check
+  ```
+  Ink density per page (PIL pixel-count, no numpy): healthy body pages 8-25%. Below 3% = stranded fragment page (usually a forced #pagebreak splitting header from body) — fix by removing the pagebreak, never by adding filler. Then vision_analyze 2 key pages (cover + densest page) for overlap/clipping only.
+  Pages target: 12–16. File size 60–100 KB. If pages < 10, expansion is too thin; if > 18, content is too wide.
 10. **Deliver** `MEDIA:/abs/path/subject.pdf` plus a one-paragraph receipt listing chapters and a short note on asterisks/$-escapes you had to handle (so Arif knows what was sanitised).
 
 ## Pitfall register (cumulative, distilled)
