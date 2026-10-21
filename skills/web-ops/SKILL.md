@@ -423,6 +423,13 @@ Union of every member's scars. This is the part a summariser would destroy — s
 - **Provider status is not uniform.** OpenAlex (327M+ works, graph spine) and PubMed (37M+ citations,
   E-utilities) are **LIVE TESTED, no auth**. Semantic Scholar needs a free key. CORE needs a key.
   **arXiv and Open Library have no adapter yet** — do not assume they are wired.
+- **Named-people / institution / biography research: the default `web_search` backend returns
+  garbage (stale aggregators). The proven lane is exa** — `mcp__exa__web_search_exa` (6-8 results)
+  + `mcp__exa__web_fetch_exa` (4-6k chars/page), 2-3 exa calls per subject: one core biography,
+  one book/report-specific, one current-state. Golden source types: publisher excerpt (PRH/Penguin
+  carry full chapter text), courtlistener filings, official company news posts, one long-form
+  review (LessWrong, Guardian). 2026-corpus results contain future-dated claims (IPO prospectus,
+  verdicts, model releases) — not an error; label FACT + retrieval date, don't discard.
 - **Dedup by DOI** before it reaches the claim graph.
 - **No agent self-ratifies truth.** Evidence-weighted consensus with confidence levels, provenance lineage
   preserved, re-examination on new evidence, and F13 ratification for knowledge promotion.
