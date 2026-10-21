@@ -293,30 +293,43 @@ def main():
             receipt_id = f"RECEIPT-FLOW-7073-{clean_name}"
             diag = act_data.get("diagnosis", "THROTTLED")
 
-            if "MEMORY_HELIX" in clean_name or "HELIX" in clean_name:
-                reason = f"Execution dominance in memory consolidation (consecutive_exec_no_verify={consec})."
-                gap = "L1-L5 memory witness consolidation receipt not yet verified."
-                next_act = "Verify helix memory consistency before release."
-            elif clean_name == "333_AGI":
-                reason = "Sliding-window rate guard active on autonomous planning loop."
-                gap = "Tripartite deliberation witness receipt pending."
-                next_act = "Complete consensus probe with 555-asi."
-            elif clean_name == "CODEX":
-                reason = "Single execution burst without paired audit receipt."
-                gap = "Matching verification witness receipt not yet sealed."
-                next_act = "Submit verification probe to arifFlow :7073 before mutation lock releases."
+            # 2026-10-21: sebab hold DITERBITKAN daripada nombor per_actor
+            # sendiri — cermin tiga tiang f3_hold_condition (invariants.rs):
+            #   STUCK      fq < max(fq_required, 0.5) dengan execute>0
+            #   BURNING    execute:verify > 10:1
+            #   FOSSILIZED verify:execute > 3:1 (q > 3.0)
+            # Teks lama memparrokk field `diagnosis` dan tersalah cerita:
+            # chron ditahan fosiliasi (bukan "no basis"); hermes ditahan STUCK.
+            q = act_data.get("quotient")
+            ex = int(act_data.get("execute") or 0)
+            ve = int(act_data.get("verify") or 0)
+            fq_req = max(float(act_data.get("fq_required") or 0.0), 0.5)
+            q_eff = 0.0 if q is None else float(q)  # enjin: unwrap_or(0.0)
+
+            if q_eff < fq_req and ex > 0:
+                reason = (
+                    f"STUCK: FQ={q_eff:.2f} < lantai {fq_req:.2f} (execute={ex}, verify={ve}) — bawah lantai verify."
+                )
+                gap = f"Resit Verify diperlukan sehingga FQ ≥ {fq_req:.2f} (verify ≥ execute)."
+                next_act = "Hantar resit Verify tulen ke POST /ingest :7073 — auto-release akan cerah latch."
+            elif ex > 0 and (ve == 0 or ex / ve > 10):
+                reason = f"BURNING: execute={ex}, verify={ve} (nisbah >10:1) — gerak tanpa saksi."
+                gap = "Resit Verify berpasangan belum dimeterai."
+                next_act = "Hantar resit Verify tulen ke POST /ingest :7073 — auto-release akan cerah latch."
+            elif q is not None and float(q) > 3.0 and ex > 0:
+                reason = (
+                    f"FOSSILIZED: FQ={float(q):.2f} > 3.0 (verify={ve}, execute={ex}) — saksi ada, kerja tak gerak."
+                )
+                gap = "Resit Execute diperlukan supaya nisbah verify:execute turun ke ≤3:1."
+                next_act = "Hantar resit Execute (kerja nyata) ke POST /ingest :7073, atau minta F13 nilai semula tiang fosil bagi organ verification-native."
             else:
-                if consec:
-                    reason = f"Execution dominance (consecutive_exec_no_verify={consec})."
-                else:
-                    # 2026-10-20: a hold must not assert execution dominance when the
-                    # measured count is 0 (hermes-asi shipped that contradiction).
-                    reason = (
-                        f"Held on measured diagnosis={diag} "
-                        f"(consecutive_exec_no_verify=0 — no execution-dominance basis on record)."
-                    )
-                gap = "Matching verification witness receipt not yet sealed."
-                next_act = "Submit verification probe to arifFlow :7073 before mutation lock releases."
+                reason = (
+                    f"LATCH LAPUK: tiada tiang (STUCK/BURNING/FOSSILIZED) menyala "
+                    f"pada kaunter semasa (execute={ex}, verify={ve}, "
+                    f"FQ={'—' if q is None else float(q):.2f})."
+                )
+                gap = "Hold warisan (latch restore_holds / lama) — bukan keterangan bukti semasa."
+                next_act = "Hantar satu resit Verify tulen ke POST /ingest :7073 — auto-release akan cerah latch; enjin re-hold jika tiang menyala semula."
 
             held_list.append(
                 {

@@ -206,6 +206,7 @@
         </div>
         <div class="tier-desc">Hanya keputusan hakiki kedaulatan manusia (F13 Sovereign: bajet, identiti peribadi, atau veto mutlak) yang dinaikkan kepada Arif.</div>
         <div class="row"><span class="label">Keputusan Arif</span><span class="value" id="tier3-status" style="color:var(--ok)">TIADA TUNGGAKAN</span></div>
+        <div id="tier3-pending-list" style="margin-top:4px"></div>
         <div class="row"><span class="label">Membran Kebenaran</span><span class="value">KEBAL / DISARING</span></div>
         <div class="row"><span class="label">Autoriti Tertinggi</span><span class="value" style="color:var(--gold)">ARIF (F13)</span></div>
       </div>
@@ -512,12 +513,31 @@ function render(data, truthData) {
   const ledgerHolds = Number(auth.ledger_holds || 0);
   const names = effectiveHolds.map(h => h.actor).join(', ') || heldActors.join(', ');
 
-  if (ledgerHolds > 0) {
+  // 2026-10-21: peti arif_report — perkara yang BENAR-BENAR tunggu Arif.
+  // number = hidup; null = storan peti tak wujud (UNKNOWN — bukan 0).
+  const pendingN = (auth.pending_for_human === undefined || auth.pending_for_human === null)
+    ? null : Number(auth.pending_for_human);
+  const pendingItems = auth.pending_for_human_items || [];
+
+  if (pendingN !== null && pendingN > 0) {
+    deskCard.className = 'desk-card attention-needed';
+    deskBadge.className = 'desk-badge badge-warn';
+    deskBadge.textContent = 'TUNGGU HANG';
+    deskTitle.textContent = `${pendingN} perkara tunggu keputusan hang`;
+    deskDesc.innerHTML = `Daripada peti arif_report (decision/blocked belum sampai ke telefon hang).<br><strong>Ejen tertahan mesin:</strong> ${names || 'tiada'}`;
+  } else if (ledgerHolds > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
     deskBadge.textContent = 'PERHATIAN DIPERLUKAN';
     deskTitle.textContent = `${ledgerHolds} keputusan dalam buku rasmi`;
     deskDesc.innerHTML = `Ini daripada buku keputusan, bukan kiraan aliran.<br><strong>Tertahan:</strong> ${names || 'lihat buku keputusan'}`;
+  } else if (pendingN === null) {
+    // Sumber peti tak wujud — jangan klaim "KOSONG" tanpa bukti (fail-closed).
+    deskCard.className = 'desk-card attention-needed';
+    deskBadge.className = 'desk-badge badge-warn';
+    deskBadge.textContent = 'PETI TIDAK DAPAT DIBACA';
+    deskTitle.textContent = 'Status peti arif_report UNKNOWN';
+    deskDesc.innerHTML = `Storan /var/lib/arifos/reports tak dapat dibaca oleh penjana state — Tier 3 menunjukkan UNKNOWN, bukan kosong.<br><strong>Ejen tertahan mesin:</strong> ${names || 'tiada'}`;
   } else if (holdsCount > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
@@ -554,8 +574,40 @@ function render(data, truthData) {
   t2Verdict.style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
   renderHoldsAccordion(effectiveHolds);
 
-  document.getElementById('tier3-count').textContent = ledgerHolds;
-  document.getElementById('tier3-status').textContent = ledgerHolds > 0 ? `${ledgerHolds} PERLU SEMAKAN` : 'TIADA TUNGGAKAN';
+  // Tier 3 = peti arif_report (sumber: /var/lib/arifos/reports, semantik
+  // report_lane.pending_for_human). Buku rasmi (ledger_holds) kekal dipaparkan
+  // oleh kad desk di atas — dua sumber berasingan, jangan dicampur.
+  const t3count = document.getElementById('tier3-count');
+  const t3status = document.getElementById('tier3-status');
+  const t3list = document.getElementById('tier3-pending-list');
+  if (pendingN === null) {
+    t3count.textContent = '?';
+    t3count.style.color = 'var(--warn)';
+    t3status.textContent = 'SUMBER PETI TIDAK ADA (UNKNOWN)';
+    t3status.style.color = 'var(--warn)';
+  } else if (pendingN > 0) {
+    t3count.textContent = pendingN;
+    t3count.style.color = 'var(--accent)';
+    t3status.textContent = `${pendingN} PERLU KEPUTUSAN HANG`;
+    t3status.style.color = 'var(--accent)';
+  } else {
+    t3count.textContent = '0';
+    t3count.style.color = 'var(--accent)';
+    t3status.textContent = 'TIADA TUNGGAKAN';
+    t3status.style.color = 'var(--ok)';
+  }
+  if (t3list) {
+    if (pendingItems.length > 0) {
+      let ph = '';
+      for (const it of pendingItems.slice(0, 5)) {
+        ph += `<div style="font-size:11px;color:var(--text);padding:2px 0">• <span style="color:var(--gold)">${it.sender || 'agent'}</span> (${it.kind || '?'}) — ${it.subject || ''}</div>`;
+      }
+      if (pendingItems.length > 5) ph += `<div style="font-size:11px;color:var(--muted)">Lagi ${pendingItems.length - 5} dalam peti.</div>`;
+      t3list.innerHTML = ph;
+    } else {
+      t3list.innerHTML = '';
+    }
+  }
 
   // 3. Organs
   document.getElementById('organs-ratio').textContent = `${fed.organs_alive || 0}/${fed.organs_total || 0}`;
