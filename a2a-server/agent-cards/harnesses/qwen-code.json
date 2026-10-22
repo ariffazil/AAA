@@ -10,8 +10,8 @@
   },
   "description": "Qwen Code CLI forge instrument \u2014 lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
   "version": "2.1.0",
-  "qwen_version": "0.23.0",
-  "_card_synced": "2026-09-05 by FI-008 \u2014 updated to Qwen Code 0.23.0 release install",
+  "qwen_version": "0.26.0",
+  "_card_synced": "2026-10-22 by FI-003 (qwen-code/FI-003) \u2014 atomic-swap to 0.26.0 release install, tarball SHA256 matched manifest 72c90f43d4c2ace0146dc48982389f8c2353fd504bef835b7bbe8b7b207fb826",
   "model": "qwen / MiniMax-M3 bridge",
   "binary": "/root/.local/bin/qwen",
   "config": "/root/.qwen/settings.json",
@@ -421,15 +421,6 @@
       "protocolVersion": "1.0"
     }
   ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "fr1swNwYYKkZ56DNrD1Gt/n5SE6TP+YXwNBA3Kdh4V3TU0QnCYM1XesWgkXaLVj934CVmT0nVhlJeIi5IrCdCA==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
   "_model_sot": "/root/.config/federation-models.json",
   "kvm4_routing": {
     "dispatch": "ccc-remote qwen (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
@@ -565,5 +556,14 @@
     "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
     "auto_aligned_tier": "Warga",
     "auto_aligned_class": "CODING/FI"
-  }
+  },
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "0arDOYlsBO5NHqOn+lcKYO8O+md8uKo+q9fXXJUiEc2Pma5TAX9qGYWA1Sk2M7n3FgawBqg/gPBWTUDHcw8BDw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-10-22T07:36:11Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }
