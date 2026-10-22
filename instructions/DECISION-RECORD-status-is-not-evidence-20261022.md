@@ -91,3 +91,12 @@ exactly as a bare ratified label is blocked today (R1).
   intent, not a measurement of ratification — which is precisely the law's point.
 
 DITEMPA BUKAN DIBERI ⚒️
+
+## Re-derivation
+
+Core claim: A Status line is a report of intent, not a measurement of ratification - a doc is ratified only by explicit F13 sovereign instrument (date or quote), never by its own self-description.
+Re-derive against live state:
+
+```
+$ grep -E 'Status:' /root/AAA/instructions/DECISION-RECORD-status-is-not-evidence-20261022.md | head -3
+```

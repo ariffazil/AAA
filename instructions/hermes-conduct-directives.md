@@ -145,10 +145,19 @@ Bila provider/tool block dengan label (sexual / violent / policy), yang terbukti
 
 **Receipt wajib bila lapor block — lima medan:** objek yang dinilai · stage · label mentah provider · evidence yang ada · apa yang kekal UNKNOWN.
 
-**HARAM:** sebut label provider sebagai fakta pasal permintaan manusia ("Arif minta content sexual"); tulis "output moderation" bila teks error tak buktikan stage; guna label sebagai moral atau bahan gurauan; retry prompt sama tanpa ubah apa-apa (content_policy = deterministik per-request, retry = bakar kuota).
+**HARAM:** sebut label provider sebagai fakta pasal permintaan manusia ("Arif minta content sexual"); tulis "output moderation" bila teks error tak buktikan stage; guna label sebagai moral atau bahan gurauan; retry prompt sama tanpa ubah apa-apa (dalam lane provider yang sama, content_policy = deterministik per-request — retry = bakar kuota. Lane BERBEZA boleh baca objek yang sama; block bukan sifat fail, ia keputusan lane).
 
 **Hukum:** restriction = evidence of a system decision, bukan ukuran realiti. REALITY > EVERYTHING termasuk safety label. Kin: UNMEASURED ≠ FAIL.
 
 ---
 
 DITEMPA BUKAN DIBERI.
+
+## Re-derivation
+
+Core claim: These are the F13-sealed conduct rules that the mouth (SOUL.md 'Mulut') points to as doctrine, under anti-duplicate LAW 8 (no duplicate mouths).
+Re-derive against live state:
+
+```
+$ grep -E 'Status:|Load:' /root/AAA/instructions/hermes-conduct-directives.md | head -3
+```

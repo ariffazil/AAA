@@ -42,3 +42,12 @@ A bare numeral `000–999` is **ambiguous by default** and is a naming violation
 - **B-4 residue:** **CLOSED 2026-09-29** — `agent_geometry.py` fixed under F13 SAH batch (arifOS commit 2026-09-29).
 
 DITEMPA BUKAN DIBERI ⚒️
+
+## Re-derivation
+
+Core claim: The five coordinate systems are settled and this doc is the F13-ratified authority for the verdict:/state: coordinate space (amended by F13 RULING 2026-10-22).
+Re-derive against live state:
+
+```
+$ grep -E 'Status:|Amended' /root/AAA/instructions/namespace-fatwa-k1.md | head -3
+```
