@@ -152,3 +152,13 @@ Audit the habits, not just the agents.
 Full plain-language canon: EUREKA-VERIFICATION-GRADIENT-2026-09-07.md §9.
 
 *DITEMPA BUKAN DIBERI ⚒️*
+
+## Re-derivation
+
+Core claim: The Dunbar constraint governs federation membership bandwidth: enforcement and candidate tracking must stay within human governance bandwidth (F13_RATIFIED_CHAT 2026-09-07, canon-recorded).
+Re-derive against live state:
+
+```
+$ grep -c 'Dunbar' /root/AAA/canon/EUREKA-GOVERNANCE-DUNBAR-2026-09-07.md
+$ grep -E 'Status:' /root/AAA/instructions/dunbar-constraint.md | head -2
+```

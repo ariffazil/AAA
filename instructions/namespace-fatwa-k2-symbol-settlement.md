@@ -245,3 +245,13 @@ The failure mode is concrete and already observed: an agent reading `T = ln(V/B)
 ---
 
 *DITEMPA BUKAN DIBERI — identity precedes measurement. Staged, not ratified.*
+
+## Re-derivation
+
+Core claim: Glyph overloading is real across the federation canon (lambda, B, G, A, P, E, X, W, H, T, V, tau each carry multiple non-equivalent referents); this settlement is DRAFT_AWAITING_F13, not ratified.
+Re-derive against live state:
+
+```
+$ grep -E 'Status:' /root/AAA/instructions/namespace-fatwa-k2-symbol-settlement.md | head -2
+$ grep -l 'lambda' /root/AAA/instructions/*.md | wc -l
+```
