@@ -160,6 +160,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - linkgraph-namespace
 - mail-access
 - maturation-dynamics
+- mcp-client-session-replay
 - meaning-consequence-vitality
 - memory-lifecycle-forgetting-policy-DRAFT
 - memory-promotion-gate
@@ -230,3 +231,13 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - zen
 - zen-alignment-audit-v1
 - zen-checkpoint
+
+## Re-derivation
+
+Core claim: The on-demand fragment index enumerates all unrendered instruction fragments (231 entries as of the 2026-10-21 render) and is machine-regenerated, holding no authority of its own.
+Re-derive against live state:
+
+```
+$ grep -c '^- [A-Za-z]' /root/AAA/instructions/_UNRENDERED_INDEX.md
+$ find /root/AAA/instructions -maxdepth 1 -name '*.md' ! -name 'AGENTS.md' ! -name '_UNRENDERED_INDEX.md' | wc -l
+```
