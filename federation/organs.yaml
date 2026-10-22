@@ -900,6 +900,13 @@ components:
     bridge_file: /root/AAA/warga/qwen_bridge.py
     bridge_log: /root/VAULT999/warga/qwen-bridge/2026-09-30.jsonl
     fq_status: FLOWING
+  live_probe_2026_10_22:
+    cli_version: '0.26.0'
+    cli_probe: 'qwen --version returned 0.26.0 — atomic-swap from 0.25.3, tarball SHA256 matched release manifest, rollback tree qwen-code.old.0.25.3 preserved'
+    bridge_port_4357: 'not listening (ss probe) — live_status DOWN remains accurate'
+    companion_runtime_path: '/root/.local/lib/qwen-code (unchanged by in-place swap)'
+    agent_cards_synced: 'both harness card and warga external card carry qwen_version 0.26.0, signed did:arif:aaa'
+    probe_by: 'FI-003 (qwen-code/FI-003)'
   owned_domains:
   - code_generation
   - code_review
