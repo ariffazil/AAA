@@ -12,6 +12,10 @@ ecology_state: WARM
 > **Author:** 333-AGI Δ MIND, session SEAL-3d9590f853084465, 2026-09-06T15:42:00Z
 > **Scar-bound:** SCAR-002, SCAR-005, SCAR-KERNEL-LEGACY-VERDICT-LEAK-002, SCAR-AFORGE-SSE-HANDSHAKE-001
 
+> **PRIME LAW (F13-articulated 2026-10-22, Arif):** **STATUS IS NOT EVIDENCE** -- *Status bukan bukti.*
+> A stored status field is a claim about the past, not a measurement of the present. Compile by
+> **re-deriving** each row from a live probe; never carry a status forward. See Rule 3n.
+
 ## When to load
 
 Load this skill the MOMENT the user says any of:
@@ -82,6 +86,8 @@ SHADOW:
 
 **NEW — 2026-09-18 (vault999 SEAL gap probe):**
 MUST probe `/root/.local/share/arifos/vault999/seal_chain_head.json` and compute `hours_since_last_seal = (now - last_seal_timestamp) / 3600`. If > 24h, log as SHADOW item ("VAULT999 silent for Nh — constitutional heartbeat slow"). If > 72h, escalate as P0 alert (the kernel witness oracle is not breathing).
+
+**NEW — 2026-10-21 (apex_scalars verdict field is optional):** the `apex_scalars` block on `/health` sometimes carries NO `verdict` field at all — the verdict lives in `thermodynamic.verdict` and `execution_readiness`. Probe all three locations before declaring a contradiction; do not crash the probe on a missing key, and absence of the field is not absence of the drift.
 
 **NEW — 2026-09-18 (apex_scalars contradiction probe):**
 MUST probe `apex_scalars` field for verdict-vs-threshold contradictions:
@@ -178,6 +184,8 @@ NOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')   # then interpolate; never type a time
 holding 15 — the number was carried from the *previous* compiler's manifest instead
 of being counted from the artifact. Any N stated to a human must come from
 `len(...)` in the same turn, or it is narration.
+
+**NEW — 2026-10-21 (backup discipline):** Back up tasks.json BEFORE the first write, not after — a post-write `shutil.copy` archives your own edit and destroys the only pre-edit snapshot. Check a fresh `.bak-*` exists first; if not, the `shutil.copy` must run before `json.dump`. A compiler that loses the pre-edit state has broken reversibility — F2-class defect. (Hit once by hermes 21/10; the 13:29:55Z backup from the prior compiler survived only by luck.)
 
 **NEW — 2026-10-13 (do not copy metabolism out of tasks.json):**
 `metabolism.G`, `hours_since_last_seal`, and `last_seal_timestamp` inside
@@ -345,6 +353,53 @@ If `process_start < file_mtime`, the claim is **DONE_FILE_LAYER / EFFECTIVE_ON_R
 — never plain DONE. Live banners, stderr warnings, and the serving model are the
 witness; the file is only the declaration.
 
+### Rule 3m — When a probe CANNOT_WITNESS, trace the chain to root, then grep for the DEFINITION (NEW 2026-10-21)
+
+A failing probe is a LAYER, not a root. Walk it down each hop — 2026-10-21 instance:
+`health unit exit 1 → dependent service → vault999-writer /vault/status HTTP 500 →
+asyncpg UndefinedTableError "cooling_queue"`. Then do the step compilers skip:
+**grep the repo for the missing artifact's DEFINITION.** Here `CREATE TABLE cooling_queue`
+existed nowhere in /root/arifOS (only `cooling_ledger_entries` in
+supabase/migrations/20260628_001_cooling_ledger_core.sql), which flipped the pending F13
+decision from "apply the migration" into "first witness which instance ever had it, and
+with what columns". Absence of the DEFINITION changes the decision's SHAPE, not merely its
+difficulty. Evidence: /root/memory/eureka-entries.jsonl `E-cooling-queue-no-ddl-20261021`.
+
+### Rule 3n -- STATUS IS NOT EVIDENCE (PRIME LAW, NEW 2026-10-22)
+
+A status field records the **past**, not the **present**. Work moves; the map does not.
+
+The failure class: a compiler that copies `status` forward **re-opens closed work** and
+**re-closes contested work**. Live instance (2026-10-22): 2 of the 3 front-of-queue items were
+already DONE but listed open -- `p2-union-test-defect` (pytest 70/70 pass live; fix commit is HEAD
+on both branches, tree-identical) and `p2-kvm2-guard-activate` (guard `cc534602ad0` is running
+HEAD; process start 12:42:28Z > commit 05:27:15Z). `seal-events-2-breaks-forward-fix` likewise
+already repaired (0 malformed lines, TOMBSTONE_REPAIR present). Only `p3-amend-stt-commit-title`
+was real, and it was half-resolved + F13-gated. Evidence: eureka
+`E-front-of-queue-already-done-20261022` and
+`AAA/instructions/DECISION-RECORD-status-is-not-evidence-20261022.md`.
+
+Three laws fall out of the prime law:
+
+1. **Status is not Evidence.** A row may only carry `COMPLETED` with the probe receipt that closed
+   it (command + output + utc), inline. No receipt -> the row stays open.
+2. **Re-derive, never carry.** On every compile, each row's status is re-measured or explicitly
+   marked `CARRIED (unmeasured, from <source>)`. Silence reads as measurement -- do not let it.
+3. **Ticket count is not problem count.** N tickets may hide M roots. Compress before you count:
+   `One root -> four symptoms` beats `114 open`. The queue is a *map of work*, not the work.
+
+Corollaries already proved in this federation: representation is not reality; present tense is a
+claim not a status; a verifier that regenerates its own input destroys what it judges (2026-10-22,
+verify_task.py `materialize()` clobber); ghost capability and phantom absence are the same defect
+with the sign flipped.
+
+**Sharper probe (from the same day):** when a status field disagrees with a live probe, neither is
+automatically right -- the *probe instrument* is also a candidate. Trace it: was the heartbeat
+reading the canonical file? `seal_chain.jsonl` silent 172h while `SEALED_EVENTS.jsonl` was being
+written the same hour -- the "silence" was a wrong-file probe, and the true root was a downstream
+seal-path defect (`arif_seal` output-schema `-32602`, `tools.py:29233-29251`). **A wrong gauge and
+a dead engine report the same number.**
+
 ## Workflow (canonical)
 
 ```
@@ -408,4 +463,5 @@ Evidence: [seal_chain seq | forge_vault receipt | carry_forward residue]
 > I will not close a session without shadow.
 > I will not patch doctrine without F13.
 > I will not celebrate before I have witnessed.
+> **I will not carry a status I did not probe. Status is not evidence.**
 > **Lebih arif, lebih bijaksana, atau tidak sama sekali.**
