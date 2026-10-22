@@ -470,6 +470,48 @@ apabila pelanggan sebenar wujud — kenaikan itu ialah resit pembaikan).
 hadir, tetapi sistem terus berurusan dengan bayang-bayang lama yang telah
 dibatalkan.*
 
+### C.9 AMENDMENT 03 — 2026-10-23 (Seni bina Kelulusan; additive)
+
+#### C.9.1 Model Seremoni Bertingkat (ganti andaian kelulusan/kuiz rata)
+
+| Tingkat | Bila | Apa yang dikehendaki | Apa yang TERLARANG |
+|---|---|---|---|
+| **Tier 1** — rutin, boleh-dibalik | tugasan rutin dalam mandat sedia ada | **TIADA kelulusan, TIADA kuiz, TIADA copy-paste.** Mesin laksana & mesin sahkan; manusia terima resit selepas peristiwa | menguji manusia; melambatkan kerja rutin (gate pada rutin = pelanggaran F6, §3) |
+| **Tier 2** — novel, kabur, kesan sederhana | kebaharuan / kekaburan / kesan sederhana | mesin paparkan perbezaan bermakna, pilihan, risiko, ketidakpastian | menguji manusia; kelulusan dipaksa jika mandat sedia ada meliputi aksi itu |
+| **Tier 3** — tidak boleh-dibalik / kesan tinggi | pemusnahan, komitmen modal, dedahan identiti, aksi luaran tak-boleh-dibalik | **SATU keputusan bermakna** dari manusia: nyatakan blast radius, pihak terjejas, kos pemulihan | sepuluh pop-up; kuiz yang menggred kepintaran manusia. Ini pengakuan AKIBAT, bukan ujian kefahaman |
+
+Pencetus eskalasi antara tingkat: **perubahan konsekuensi, kebaharuan,
+ketidakpastian model** — bukan geseran secara lalai.
+
+#### C.9.2 Keletihan Kelulusan = Pemindahan Buruh (approval fatigue)
+
+Permintaan kelulusan yang kerat memindahkan kerja jaga-sempadan mesin kepada
+manusia (**'human-as-runtime dependency'**). Sistem MESTI menyerap kerja
+verifikasi SEBELUM mendepositkan hutang verifikasi kepada manusia. Kerja
+verifikasi tak-kelihatan (invisible verification labor) ialah kos yang
+relevan kepada F6 dan mesti diambil kira dalam reka bentuk seremoni.
+
+#### C.9.3 Struktur Resit (anti-zon-hancur / anti-crumple-zone)
+
+Setiap resit aksi konsekuensi MESTI membezakan, secara berasingan:
+1. arahan asal manusia (original instruction);
+2. timestamp pembetulan manusia (jika ada);
+3. pengakuan agen (agent acknowledgment);
+4. status propagasi mengikut lapisan (memori/queue/planner/payload — lihat C.8.6);
+5. aksi hiliran sebenar yang berlaku.
+
+Resit **TIADA PERNAH** boleh menggunakan 'Human Sovereign Approved' sebagai
+perisai yang menyembunyikan model, konteks, sensor atau cadangan mana yang
+sebenarnya menyebabkan kegagalan.
+
+#### C.9.4 Bentuk Kanon (prinsip, verbatim)
+
+*Maruah manusia bukan dipelihara dengan menjadikan manusia operator manual
+kepada AI. Maruah dipelihara apabila mesin menyerap kerumitan, kerja rutin
+dan beban verifikasi, sementara manusia mengekalkan tujuan, sempadan, kuasa
+membatalkan, hak berehat dan keputusan terakhir hanya pada perkara yang
+membawa akibat sebenar.*
+
 ## Lampiran B — Jargon / JSON (rujukan teknikal)
 
 - **Objek 1** = F6 sebagai lantai arifOS (cara sistem layan manusia),
@@ -503,6 +545,7 @@ arifOS `/root/arifOS-wt-f6`. Tiada deploy, tiada merge.
 | A01 C.3 kos keparahan | dokumen | — | belum (pemberat belum dikalibrasi) | semua pemberat = parameter |
 | A01 C.4 linkage | `test_f6_linkage_attacks.py` | — | 8 ujian LULUS | stylometrik penuh TIDAK terbatas (C.7.1) |
 | A02 C.8 tatatertib bahasa / F2≠F6 / anti-instrumentalisasi | dokumen (C.8) | — | test_11 (tiada skor maruah) | konflik lantai = FUTURE WORK (C.8.3) |
+| A03 C.9 seremoni bertingkat / resit anti-crumple | dokumen (C.9) | — | belum (producer tier belum dibina) | rangka dokumen; pelaksanaan = keputusan F13 |
 | Q1 IRFAN advisory vs gate | laporan (FINAL-CHECKLIST-PREDICATE-DOMINANCE.md) | `irfan_review.py` + `tools.py:4171` | jejak kod (tiada ujian — advisory by design) | perubahan binding = keputusan F13, TIDAK diimplement |
 | Q2 koreksi 4 lapisan | `test_f6_correction_propagation.py` | probe | 3 ujian (1 pin defek FAIL-terukur, 2 OK) | Meter 5 verdict: FAIL semua lapisan (C.8.6) |
 
