@@ -344,3 +344,14 @@ python3 scripts/attention_plane.py   # sample AttentionPacket
 | Public card | https://aaa.arif-fazil.com/.well-known/agent-card.json |
 | Flow graph | [FEDERATION.md](./docs/FEDERATION.md) — peta semua organ + repo |
 <!-- FEDERATION-STANDARD v2026-10-15 END -->
+
+## External Footprint & Discovery
+
+HERMES is the Tier-3 federation interface and human reality bridge of the arifOS federation.
+
+- **Discoverable:** YES (GitHub repository)
+- **Authority Ceiling:** OBSERVE_ONLY (normalizes, classifies, routes, receipts — never judges, executes, or seals)
+- **Inspectable & Forkable:** YES
+- **Independent Validation:** NOT YET ESTABLISHED
+
+Canonical Witness Ledger: [EXTERNAL_WITNESS_LEDGER.md](https://github.com/ariffazil/arifOS/blob/main/docs/EXTERNAL_WITNESS_LEDGER.md)
