@@ -500,7 +500,9 @@ function render(data, truthData) {
   const deskHoldsCount = document.getElementById('desk-holds-count');
   const deskFqSummary = document.getElementById('desk-fq-summary');
 
-  const holdsCount = Math.max(auth.holds || 0, effectiveHolds.length);
+  // 2026-10-21 unifikasi: kiraan DAN senarai dari sumber sama (effectiveHolds). max() dengan auth.holds
+  // pernah papar 8 kiraan vs 5 nama apabila kontrak lapuk.
+  const holdsCount = effectiveHolds.length;
   if (holdsCount === 0) {
     deskHoldsCount.textContent = '✓ 0 holds aktif (Semua Aliran Lancar)';
     deskHoldsCount.style.color = 'var(--ok)';
@@ -508,7 +510,11 @@ function render(data, truthData) {
     deskHoldsCount.textContent = `${holdsCount} holds aktif`;
     deskHoldsCount.style.color = 'var(--muted)';
   }
-  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'UNKNOWN'})`;
+  const execC = meta.execute_count || 46;
+  const verC = meta.verify_count || 48;
+  const _mh = (truthData && truthData.planes && truthData.planes.attention_membrane && truthData.planes.attention_membrane.machine_held) || {};
+  const _fqlab = _mh.fq_formula_version ? ` · ${_mh.fq_formula_version} · tetingkap ${_mh.fq_window_size ?? '?'} · ${_mh.fq_actors_tracked ?? '?'} aktor — bukan nisbah ${verC}/${execC}` : '';
+  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'UNKNOWN'})${_fqlab}`;
 
   const ledgerHolds = Number(auth.ledger_holds || 0);
   const names = effectiveHolds.map(h => h.actor).join(', ') || heldActors.join(', ');
@@ -552,11 +558,9 @@ function render(data, truthData) {
     deskDesc.textContent = 'Tiada keputusan berisiko tinggi atau sekatan yang memerlukan campur tangan Arif hari ini. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan perlembagaan F1-F13.';
   }
 
-  // 2. 3-Tier Attention Membrane
-  const execC = meta.execute_count || 46;
-  const verC = meta.verify_count || 48;
-  document.getElementById('tier1-count').textContent = execC + verC;
-  document.getElementById('tier1-ratio').textContent = `${verC} sah / ${execC} laksana`;
+  // 2. 3-Tier Attention Membrane (execC/verC hoisted above — first use is the FQ summary label; TDZ fix 2026-10-22)
+  document.getElementById('tier1-count').textContent = (execC + verC) + ' peristiwa';
+  document.getElementById('tier1-ratio').textContent = `${verC} sah / ${execC} laksana (peristiwa — bukan tugas; tugas unik = UNKNOWN)`;
   document.getElementById('tier1-status').textContent = meta.diagnosis || 'OPTIMAL';
 
   const t2Count = document.getElementById('tier2-count');
