@@ -42,3 +42,13 @@ sejarah kekal sebagai keterangan, bukan lesen menetapkan maksud baharu.
 Kurang salah faham berulang · kurang minta pengesahan bila konteks sudah jelas · tiada
 peluasan kuasa melalui tafsiran · masa betulkan diri mengecil. Kalau satu pun tak bergerak,
 fail ini hiasan — buang.
+
+## Re-derivation
+
+Core claim: Meaning fidelity is delta-only: the seven owned laws live in their owner files and this file holds exactly three deltas - it must be discarded if it grows past three.
+Re-derive against live state:
+
+```
+$ grep -c '^## Delta' /root/AAA/instructions/hermes-meaning-fidelity.md
+$ grep -E 'Status:' /root/AAA/instructions/hermes-meaning-fidelity.md
+```

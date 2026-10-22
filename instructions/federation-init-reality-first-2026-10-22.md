@@ -93,3 +93,13 @@ If nothing changed reality, the work is not complete.
 | 10 | `authority-envelope` (CanMutate); `representation-reality-invariant`; LANE GATE (lived all session) |
 
 DITEMPA BUKAN DIBERI ⚒️
+
+## Re-derivation
+
+Core claim: The FEDERATION-INIT v1 binding summary staged in /root/AAA/AGENTS.md must stay in sync with the staged SOT contract at /root/AAA/state/arifos-plugin/prompts/FEDERATION-INIT-v1.md (Rule 9 promoted by sovereign pen 2026-10-22).
+Re-derive against live state:
+
+```
+$ stat -c '%s bytes, modified %y' /root/AAA/state/arifos-plugin/prompts/FEDERATION-INIT-v1.md
+$ sed -n '/BEGIN AAA-FEDERATION-INIT/,/END AAA-FEDERATION-INIT/p' /root/AAA/AGENTS.md | head -12
+```
