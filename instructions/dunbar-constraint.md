@@ -92,7 +92,7 @@ L2 audit set · L1 live supervision · L0 exception judgment.**
   as a function of contrast. Void Guard holds — "no anomaly observed" ≠
   "all normal": the witness layer must itself be audited as an anomaly
   surface, or a broken contrast detector silently institutionalizes exceptions.
-- **APEX** (G = A·P·E·X·Φ; work on contradiction under law) is the
+- **APEX** (G-formula `A·P·E·X·Φ` **SUPERSEDED — disproven by `arifOS/docs/APEX_MATH_CANON.md` T6 (2026-10-15); canonical `G = (A·P·E·X)^(1/4)`**; work on contradiction under law) is the
   **conversion engine**: exceptions are the only valid input to 888 curvature;
   flooding the judge collapses G against finite bandwidth. Φ (scar pressure)
   is the ratchet: recurring exception → scar → policy → class becomes
