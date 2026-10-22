@@ -348,3 +348,17 @@ python3 scripts/attention_plane.py   # sample AttentionPacket
 | Public card | https://aaa.arif-fazil.com/.well-known/agent-card.json |
 | Flow graph | [FEDERATION.md](./docs/FEDERATION.md) — peta semua organ + repo |
 <!-- FEDERATION-STANDARD v2026-10-15 END -->
+
+---
+
+## External Footprint & Discovery
+
+AAA is the attention-routing and A2A mesh cockpit of the arifOS federation.
+
+- **Discoverable:** YES (GitHub repository, public agent card at `https://aaa.arif-fazil.com/.well-known/agent-card.json`)
+- **Authority Ceiling:** DISPLAY_ONLY (routing and display — never adjudicates)
+- **Inspectable & Forkable:** YES
+- **Independent Validation:** NOT YET ESTABLISHED
+
+Canonical Witness Ledger: [EXTERNAL_WITNESS_LEDGER.md](https://github.com/ariffazil/arifOS/blob/main/docs/EXTERNAL_WITNESS_LEDGER.md)
+
