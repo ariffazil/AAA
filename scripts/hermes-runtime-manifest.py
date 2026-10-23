@@ -27,7 +27,22 @@ OUT = Path("/root/AAA/state/runtime-manifest")
 LEDGER = OUT / "memory-ledger"
 MEM = HERMES_HOME / "memories"
 USER_MD, MEM_MD = MEM / "USER.md", MEM / "MEMORY.md"
-USER_BUDGET, MEM_BUDGET = 10_000, 16_000
+
+
+def _budgets() -> tuple[int, int]:
+    """Read the enforced limits from config. Hardcoding 10_000/16_000 was a real defect:
+    config memory.user_char_limit is 11,000, so 'USER.md over budget' was measured against
+    a limit the runtime never enforced."""
+    try:
+        import yaml  # noqa: PLC0415
+        cfg = yaml.safe_load(open(HERMES_HOME / "config.yaml")) or {}
+        m = cfg.get("memory") or {}
+        return int(m.get("user_char_limit", 11_000)), int(m.get("memory_char_limit", 16_000))
+    except Exception:
+        return 11_000, 16_000
+
+
+USER_BUDGET, MEM_BUDGET = _budgets()
 
 INVARIANTS = [
     ("F13_SOVEREIGNTY", "F13 human sovereignty", r"(?i)sovereign|F13"),
@@ -237,7 +252,7 @@ def metabolism(apply: bool, do_user: bool = True) -> dict:
         for e in entries:
             classes[classify(e)] = classes.get(classify(e), 0) + 1
         rec["files"][name] = {
-            "path": str(path), "budget_unit": "characters (the unit the memory tool enforces)",
+            "path": str(path), "budget_unit": "characters", "budget_source": "config.yaml memory.{user,memory}_char_limit",
             "chars_before": before_chars, "bytes_before": before_bytes,
             "budget": budget, "over_budget_chars": before_chars - budget,
             "sha256_16_before": before_sha, "entries": len(entries), "classes": classes,
@@ -313,6 +328,32 @@ def metabolism(apply: bool, do_user: bool = True) -> dict:
             "invariant_tokens": {"checked": tokens, "lost": lost},
         })
     return rec
+
+
+
+def collect_memory_profiles() -> dict:
+    """Every live profile's memory, with the geo anchor checked. The 2026-10-23 referent
+    collapse happened because two symlinks (/root/HERMES, /root/.hermes) point at one tree
+    while several PROFILE directories hold separate memory sets. This makes that visible."""
+    import glob
+    gx = r"3\.044248"
+    rows = []
+    cand = [("default (root memories)", MEM / "USER.md")]
+    for d in sorted(glob.glob(str(HERMES_HOME / "profiles" / "*"))):
+        cand.append((Path(d).name, Path(d) / "memories" / "USER.md"))
+    for name, path in cand:
+        if not path.exists():
+            rows.append({"profile": name, "status": "ABSENT"}); continue
+        txt = path.read_text(errors="replace")
+        rows.append({"profile": name, "user_md": str(path), "chars": len(txt),
+                     "sha256_16": sha(path), "geo_anchor_present": bool(re.search(gx, txt))})
+    live = [r for r in rows if r.get("status") != "ABSENT"]
+    return {"root_symlinks": {"/root/HERMES": str(Path("/root/HERMES").resolve()),
+                              "/root/.hermes": str(HERMES_HOME.resolve())},
+            "profiles": rows,
+            "profiles_with_memory": len(live),
+            "geo_anchor_in_all_live": all(r.get("geo_anchor_present") for r in live) if live else False,
+            "note": "MEMORY-TOPOLOGY.md at the Hermes home explains which profile serves which lane"}
 
 
 def collect_floors() -> dict:
@@ -481,15 +522,21 @@ footer{{margin-top:44px;border-top:2px solid var(--ink);padding-top:16px;font-si
 <h2>6. Cron</h2>
 <table>{rows(m['cron'])}</table>
 
-<h2>7. Delta</h2>
+<h2>7. Memory profiles (referent check)</h2>
+<p class="sub">One tree, several profiles, separate memory sets. Root symlinks both resolve to {esc(m['memory_profiles']['root_symlinks']['/root/.hermes'])}.</p>
+<table><tr><th>Profile</th><th>chars</th><th>geo anchor</th></tr>
+{''.join(f"<tr><td>{esc(r['profile'])}</td><td>{esc(r.get('chars','-'))}</td><td><span class='pill {'ok' if r.get('geo_anchor_present') else 'warn'}'>{'PRESENT' if r.get('geo_anchor_present') else 'ABSENT'}</span></td></tr>" for r in m['memory_profiles']['profiles'])}
+</table>
+
+<h2>8. Delta</h2>
 <table>{rows({'previous': m['delta'].get('previous'), 'status': m['delta'].get('status'), 'counts': m['delta'].get('counts', {})})}</table>
 
-<h2>8. Readiness ladder</h2>
+<h2>9. Readiness ladder</h2>
 <table><tr><th>Axis</th><th>State</th></tr>
 {''.join(f"<tr><td>{esc(k)}</td><td><span class='pill {pill(v)}'>{esc(v)}</span></td></tr>" for k,v in m['readiness'].items())}
 </table>
 
-<h2>9. Non-claims</h2>
+<h2>10. Non-claims</h2>
 <ul>
 <li>No claim of AGI, ASI, certification, or institutional readiness.</li>
 <li>Identity is verified <b>locally on this host only</b>. Independent witness is absent.</li>
@@ -518,7 +565,8 @@ def main() -> int:
                        "script": "/root/AAA/scripts/hermes-runtime-manifest.py",
                        "method": "derive-don't-declare; every field read from /proc, systemd, git, journal or the file itself"},
          "build": ident, "admission": adm, "memory": met,
-         "floors": collect_floors(), "capability": collect_caps(), "cron": collect_cron()}
+         "floors": collect_floors(), "capability": collect_caps(), "cron": collect_cron(),
+         "memory_profiles": collect_memory_profiles()}
     m["readiness"] = readiness(ident, adm, met, m["floors"])
     m["delta"] = delta(m)
 

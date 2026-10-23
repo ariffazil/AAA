@@ -1,0 +1,375 @@
+{
+ "schema": "arifos.runtime-manifest/v1.1",
+ "generated_at": "2026-10-23T04:49:47+00:00",
+ "generator": {
+  "actor": "HERMES",
+  "host": "forge",
+  "script": "/root/AAA/scripts/hermes-runtime-manifest.py",
+  "method": "derive-don't-declare; every field read from /proc, systemd, git, journal or the file itself"
+ },
+ "build": {
+  "instance_id": "hermes-kvm8-asi",
+  "actor_tuple": {
+   "actor_name": "HERMES",
+   "host": "forge",
+   "address": "100.64.0.2",
+   "service": "hermes-asi-gateway.service",
+   "pid": "373283",
+   "channel": "@ASI_arifos_bot"
+  },
+  "hermes_home": "/root/.hermes",
+  "started_at_local": "Fri Oct 23 12:28:56 2026",
+  "uptime_seconds": 1250,
+  "exec_start_path": "/usr/local/lib/hermes-agent/.hermes/bin/hermes",
+  "resolved_exe": "/root/runtime/hermes/.hermes/tools/python-3.14.7+20260901-linux-x64/bin/python3.14",
+  "argv_head": "/root/.hermes/tools/python-3.14.7+20260901-linux-x64/bin/python3 -I -c import os, re, sys\nos.environ.pop('PYTHONHOME', None)\nos.environ.pop('PYTHONPATH', None)\nsys.path.insert(0, '/usr/local/lib/herme",
+  "install_tree": "/usr/local/lib/hermes-agent",
+  "install_tree_git_head": "5e16f33277",
+  "install_tree_dirty": "M plugins/platforms/telegram/adapter.py",
+  "editable_workspace_commit": "1fa3f4c",
+  "declared_pyproject_version": "0.0.0",
+  "declared_dist_metadata_version": "0.21.1",
+  "artefact_sha256_16": {
+   "hermes_constants.py": "1bef6b1066658264",
+   "config.yaml": "6b076d45b461e76f",
+   "USER.md": "a7e81cc1c20ff1e1",
+   "MEMORY.md": "d37a1e154eef66bb"
+  },
+  "contradiction": {
+   "status": "OPEN",
+   "detail": "pyproject=0.0.0 vs dist-metadata=0.21.1. Neither is a build identity. Binding key = install_tree_git_head=5e16f33277 + artefact hashes above."
+  },
+  "identity_status": "VERIFIED_LOCAL",
+  "verification_scope": "host forge only",
+  "independent_verification": false
+ },
+ "admission": {
+  "surfaces": [
+   {
+    "surface": "AGENTS.md (project context)",
+    "path": "/root/AAA/AGENTS.md",
+    "injected": true,
+    "cap_bound": true,
+    "chars": 4026,
+    "bytes": 4075,
+    "sha256_16": "9a5d2a69795a0b8b",
+    "cap_chars": 32000,
+    "verdict": "COMPLETE",
+    "measured": 43433
+   },
+   {
+    "surface": "SOUL.md (voice)",
+    "path": "/root/.hermes/SOUL.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 8932,
+    "bytes": 9026,
+    "sha256_16": "05f11b575a3bcb49"
+   },
+   {
+    "surface": "USER.md (identity)",
+    "path": "/root/.hermes/memories/USER.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 10314,
+    "bytes": 10475,
+    "sha256_16": "a7e81cc1c20ff1e1"
+   },
+   {
+    "surface": "MEMORY.md (env/lessons)",
+    "path": "/root/.hermes/memories/MEMORY.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 15626,
+    "bytes": 15824,
+    "sha256_16": "d37a1e154eef66bb"
+   },
+   {
+    "surface": "FEDERATION-INIT-v1 (plugin prompt)",
+    "path": "/root/AAA/state/arifos-plugin/prompts/FEDERATION-INIT-v1.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 3674,
+    "bytes": 3759,
+    "sha256_16": "d05e2f53ffcaaad0"
+   }
+  ],
+  "admitted_chars_total": 42572,
+  "capped_surface": null,
+  "cap_chars": 32000,
+  "cap_source": "journal telemetry",
+  "telemetry_line": "Context file AGENTS.md TRUNCATED: 43433 chars exceeds limit of 32000",
+  "verdict": "COMPLETE",
+  "verdict_note": "Invariants are tested across every injected surface, with provenance. A concept that exists only as a path inside AGENTS.md's doctrine index is NOT counted as stated; that distinction is the whole point of this receipt.",
+  "invariants": {
+   "F13_SOVEREIGNTY": {
+    "label": "F13 human sovereignty",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "SOUL.md (voice)",
+     "USER.md (identity)",
+     "MEMORY.md (env/lessons)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "FAIL_CLOSED": {
+    "label": "Fail-closed UNKNOWN/HOLD",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "SOUL.md (voice)",
+     "USER.md (identity)",
+     "MEMORY.md (env/lessons)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "CAP_NE_AUTH": {
+    "label": "Capability != authority",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "NO_SELF_SEAL": {
+    "label": "No agent self-SEAL",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "SEP_POWERS": {
+    "label": "Proposer != judge != executor",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "WITNESS_FIRST": {
+    "label": "Witness before mutation",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "USER.md (identity)",
+     "MEMORY.md (env/lessons)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "REP_NE_PERSON": {
+    "label": "Representation(person) != person",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "MEMORY.md (env/lessons)"
+    ],
+    "missing_from_all_admitted": false
+   }
+  },
+  "excluded_note": "AGENTS.md is an index of doctrine paths. The index being admitted does not prove the doctrine files behind those paths are read."
+ },
+ "memory": {
+  "generated_at": "2026-10-23T04:49:47+00:00",
+  "mode": "PLAN",
+  "files": {
+   "MEMORY.md": {
+    "path": "/root/.hermes/memories/MEMORY.md",
+    "budget_unit": "characters",
+    "budget_source": "config.yaml memory.{user,memory}_char_limit",
+    "chars_before": 15626,
+    "bytes_before": 15824,
+    "budget": 16000,
+    "over_budget_chars": -374,
+    "sha256_16_before": "d37a1e154eef66bb",
+    "entries": 48,
+    "classes": {
+     "GATE": 9,
+     "ENV": 18,
+     "SKILL": 11,
+     "SCAR": 2,
+     "LEDGER": 3,
+     "EPISODE": 3,
+     "UNCLASSIFIED": 2
+    },
+    "headroom_before": 374,
+    "status": "PLAN_ONLY"
+   },
+   "USER.md": {
+    "path": "/root/.hermes/memories/USER.md",
+    "budget_unit": "characters",
+    "budget_source": "config.yaml memory.{user,memory}_char_limit",
+    "chars_before": 10314,
+    "bytes_before": 10475,
+    "budget": 11000,
+    "over_budget_chars": -686,
+    "sha256_16_before": "a7e81cc1c20ff1e1",
+    "entries": 36,
+    "classes": {
+     "UNCLASSIFIED": 31,
+     "SCAR": 1,
+     "SKILL": 1,
+     "GATE": 3
+    },
+    "headroom_before": 686,
+    "status": "PLAN_ONLY"
+   }
+  }
+ },
+ "floors": {
+  "active": 13,
+  "floor_passed": false,
+  "fq": 0.1111111111111111,
+  "fq_measured_at": "2026-10-23T04:48:44Z",
+  "pass": [
+   "F11",
+   "F12",
+   "F13",
+   "F2",
+   "F3",
+   "F5"
+  ],
+  "fail": [
+   "F1"
+  ],
+  "unmeasured": [
+   "F10",
+   "F4",
+   "F6",
+   "F7",
+   "F8",
+   "F9"
+  ],
+  "scores": {
+   "F1": 0.0,
+   "F2": 1.0,
+   "F3": 0.9778,
+   "F4": 0.8,
+   "F5": 1.0,
+   "F6": 0.5,
+   "F7": 0.04,
+   "F8": 0.8,
+   "F9": 0.0,
+   "F11": 1.0,
+   "F12": 0.0,
+   "F13": 1.0,
+   "F10": 1.0
+  }
+ },
+ "capability": {
+  "declared": 30,
+  "reachable_http": 22,
+  "stdio_present": 8,
+  "callable_verified": "UNKNOWN",
+  "note": "reachability is not capability; no read-only canary map is claimed in v1.1"
+ },
+ "cron": {
+  "configured": 33,
+  "enabled": 32,
+  "with_last_error": 0,
+  "errors": []
+ },
+ "memory_profiles": {
+  "root_symlinks": {
+   "/root/HERMES": "/root/runtime/hermes/.hermes",
+   "/root/.hermes": "/root/runtime/hermes/.hermes"
+  },
+  "profiles": [
+   {
+    "profile": "default (root memories)",
+    "user_md": "/root/.hermes/memories/USER.md",
+    "chars": 10314,
+    "sha256_16": "a7e81cc1c20ff1e1",
+    "geo_anchor_present": true
+   },
+   {
+    "profile": "aaa-hermes",
+    "user_md": "/root/.hermes/profiles/aaa-hermes/memories/USER.md",
+    "chars": 2027,
+    "sha256_16": "309a64e9b13c3e2d",
+    "geo_anchor_present": true
+   },
+   {
+    "profile": "default",
+    "status": "ABSENT"
+   },
+   {
+    "profile": "hermes_apex",
+    "user_md": "/root/.hermes/profiles/hermes_apex/memories/USER.md",
+    "chars": 2501,
+    "sha256_16": "c65fee43b0780069",
+    "geo_anchor_present": false
+   },
+   {
+    "profile": "hermes_asi",
+    "user_md": "/root/.hermes/profiles/hermes_asi/memories/USER.md",
+    "chars": 2501,
+    "sha256_16": "c65fee43b0780069",
+    "geo_anchor_present": false
+   },
+   {
+    "profile": "hermes_forge",
+    "user_md": "/root/.hermes/profiles/hermes_forge/memories/USER.md",
+    "chars": 2501,
+    "sha256_16": "c65fee43b0780069",
+    "geo_anchor_present": false
+   }
+  ],
+  "profiles_with_memory": 5,
+  "geo_anchor_in_all_live": false,
+  "note": "MEMORY-TOPOLOGY.md at the Hermes home explains which profile serves which lane"
+ },
+ "readiness": {
+  "IDENTITY": "VERIFIED_LOCAL",
+  "OBSERVATION": "READY",
+  "ATTENTION": "READY_WITH_LIMITS",
+  "PROPOSAL": "READY_WITH_LIMITS",
+  "VERIFICATION": "PARTIAL",
+  "JUDGMENT": "DEGRADED",
+  "EXECUTION": "NOT_ESTABLISHED_BY_THIS_MANIFEST",
+  "INDEPENDENT_WITNESS": "NOT_PRESENT",
+  "memory_headroom_restored": true,
+  "build_contradiction": "OPEN",
+  "admission_verdict": "COMPLETE"
+ },
+ "delta": {
+  "previous": "manifest-20261023T044939+0000.json",
+  "status": "COMPARED",
+  "counts": {
+   "ADDED": 0,
+   "REMOVED": 12,
+   "CHANGED": 3,
+   "REGRESSED": 0,
+   "RECOVERED": 0
+  },
+  "classes": {
+   "ADDED": [],
+   "REMOVED": [
+    "delta.previous",
+    "delta.status",
+    "delta.counts.ADDED",
+    "delta.counts.REMOVED",
+    "delta.counts.CHANGED",
+    "delta.counts.REGRESSED",
+    "delta.counts.RECOVERED",
+    "delta.classes.ADDED",
+    "delta.classes.REMOVED",
+    "delta.classes.CHANGED",
+    "delta.classes.REGRESSED",
+    "delta.classes.RECOVERED"
+   ],
+   "CHANGED": [
+    "generated_at",
+    "build.uptime_seconds",
+    "memory.generated_at"
+   ],
+   "REGRESSED": [],
+   "RECOVERED": []
+  }
+ }
+}
