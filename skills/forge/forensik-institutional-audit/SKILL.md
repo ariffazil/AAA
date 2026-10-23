@@ -1,6 +1,6 @@
 ---
 name: forensik-institutional-audit
-description: Use when Arif names a person + institution and asks for "institutional audit" or witness artifact with HOLD verdict — produces 21-25pp Typst constitutional audit PDF. Trigger: institution-centered subject.
+description: 'Use when Arif names a person + institution and asks for "institutional audit" or witness artifact with HOLD verdict — produces 21-25pp Typst constitutional audit PDF. Trigger: institution-centered subject.'
 version: 1.1.0
 forged: 2026-10-21
 hardened: 2026-10-21 (contract audit + paradox-test grammar + adversarial gates)

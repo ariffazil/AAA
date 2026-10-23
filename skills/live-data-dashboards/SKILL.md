@@ -247,4 +247,7 @@ Always write `public/llms.txt` AND `public/agent.json`. Vite copies both to `dis
 ## References
 - `references/free-data-sources.md` — API quirks, response shapes, indicator codes, GDELT classification regexes, trim script sketch.
 - `references/arif-fazil-site-governance.md` — arif-fazil.com deploy gate + file-authority protocol (site-specific; may graduate into its own skill if site ops grows).
-- `references/article-metadata-patcher.py` — single-pass script that patches article HTML with OG/Twitter/JSON-LD/theme-color. Argument: source dir, deploy dir. Outputs: count of patched files + sample verification curl.
+- ``references/`` — single-pass script that patches article HTML with OG/Twitter/JSON-LD/theme-color. Argument: source dir, deploy dir. Outputs: count of patched files + sample verification curl.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

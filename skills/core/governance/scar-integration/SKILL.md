@@ -1,60 +1,14 @@
 ---
 name: scar-integration
+description: "Alias → wisdom-scar-session-audit. Load `wisdom-scar-session-audit` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: scar-integration
-version: 2.0.0-wave2-merged
-description: "Capture session failure patterns as constitutional scars — reusable diagnostics that prevent repeat mistakes."
-owner: AAA
-risk_tier: medium
-floor_scope: [F1, F2, F7, F11]
-doctrine: /root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md
-merged_from:
-  - wisdom-scar-session-audit (sha256: f168d9ddf0418241b1afabc9393573ba9ea4de65e2e438be4efb81766763586d)
-wave: 2
-ts: 2026-09-16T22:46:00Z
-audit: /root/.hermes/reports/hermes-skill-entropy-audit-2026-09-16.md
-tombstones: /root/.hermes/.archive_skills_wave2/scar-integration/TOMBSTONE-wisdom-scar-session-audit.json
-triggers:
-  - "capture wisdom scar"
-  - "session failure audit"
-  - "scar ledger"
-  - "constitutional scar"
-attention:
-  load_class: medium
-  default_load: false
-  prerequisite_skills: []
-  mutually_exclusive_with: []
-  activation_signals:
-    - "scar"
-    - "failure pattern"
-    - "wisdom"
-  output_contract:
-    - "scar_receipt"
-    - "scar_severity"
-    - "scar_remediation"
-tags: [governance, scar, wisdom, session, F2, F7, F11]
-capability_tier: fed-reasoning-heavy
-ecology_state: WARM
-owned_by: AAA
-authority_of: AAA
+version: 0.0.1
 ---
 
-# core/governance/scar-integration
+# scar-integration — alias
 
-Session failure pattern → constitutional scar promotion. Merged from wisdom-scar-session-audit per Wave 2 APEX verdict.
+Canonical owner: **wisdom-scar-session-audit**
+Path: `/root/AAA/skills/wisdom-scar-session-audit`
 
-A scar is a reusable diagnostic that prevents repeat mistakes. Severity: P0-P4 per AGY/SCAR doctrine.
-
-## Rollback
-
-```bash
-git checkout entropy-wave2-pre-act-20260916T144144Z -- skills/wisdom-scar-session-audit/
-rm -rf skills/core/governance/scar-integration/
-```
-
-## Provenance
-- **Wave:** 2, item 10
-- **Deprecation window:** 30 days
-
-**DITEMPA BUKAN DIBERI ⚒️**
-## Absorbed references (Wave-2 merge completion)
-- `references/absorbed-wisdom-scar-session-audit.md` — content absorbed from the retired `wisdom-scar-session-audit` skill (Wave-2 merge 2026-09-16, recovered 2026-09-17). Living scar catalog: #1–#21. Latest additions are Scar #20 (Privacy ≠ Amnesia — Redacted ≠ Unauditable, 2026-10-02) and Scar #21 (Runtime State Machine Correct, Ledger State Machine Stale, 2026-10-02). Scar #20 enforces the two-surface rule (payload retention policy separate from causal-provenance envelope); Scar #21 enforces the runtime-vs-ledger dual audit (a detector's bookkeeping table can lie even when its runtime is correct). Always read this file when the user says "capture wisdom scar", "what did we learn", "session failure audit", "redact / scrub / tombstone", or when a redacted-but-auditable surface is being designed.
+Merged 2026-10-23 under the F13 entropy-reduction directive. The pre-merge body is
+preserved at `/root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/scar-integration`. Do not add procedure here — patch the owner.

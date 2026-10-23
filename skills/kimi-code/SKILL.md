@@ -1,6 +1,6 @@
 ---
 name: kimi-code
-description: "Diagnose and operate Kimi Code (kimi-code ≥0.29) — the dynamic, multi-modal coding harness with per-model capability signatures and runtime model selection. Covers config.toml structure, capabilities-based model matching (image_in / video_in / thinking / tool_use / always_thinking), main-agent vs sub-agent topology (af-forge / af-explore / af-plan / af-fix / af-coordinator / af-worker / af-reviewer), MCP server launchers, hooks (PreToolUse / PostToolUse / SessionStart / SessionEnd — K-02 patched to exit 2 on destructive patterns, but secrets-disclosure + subagent-spawn + Read tool coverage gaps remain), and the SYSTEM.md v2 overlay (KIMI_CODE_EXPERIMENTAL_FLAG=1). Trigger: Kimi Code TUI boot issues, 'no such model', wrong model selected for the task, agent-invariance questions, MCP launcher script not running, 'K-02 status', hook silently allowed a secrets-path read, or any kimi-config / kimi-code / kimi.json / config.toml under /root/.arifos/agents/kimi/."
+description: 'Diagnose and operate Kimi Code (kimi-code ≥0.29) — the dynamic, multi-modal coding harness with per-model capability signatures and runtime model selection.'
 version: 1.0.0
 author: Hermes Agent
 license: MIT
@@ -326,3 +326,7 @@ Success criteria:
 - Output contains `KIMI_CODE_SMOKE_OK`
 - No `model not found` or `server unavailable` errors in the run log
 - MCP servers all respond to `tools/list` probe
+
+## Routing notes (moved from description 2026-10-23)
+
+Covers config.toml structure, capabilities-based model matching (image_in / video_in / thinking / tool_use / always_thinking), main-agent vs sub-agent topology (af-forge / af-explore / af-plan / af-fix / af-coordinator / af-worker / af-reviewer), MCP server launchers, hooks (PreToolUse / PostToolUse / SessionStart / SessionEnd — K-02 patched to exit 2 on destructive patterns, but secrets-disclosure + subagent-spawn + Read tool coverage gaps remain), and the SYSTEM.md v2 overlay (KIMI_CODE_EXPERIMENTAL_FLAG=1). Trigger: Kimi Code TUI boot issues, 'no such model', wrong model selected for the task, agent-invariance questions, MCP launcher script not running, 'K-02 status', hook silently allowed a secrets-path read, or any kimi-config / kimi-code / kimi.json / config.toml under /root/.arifos/agents/kimi/.

@@ -114,6 +114,8 @@ When a session opens with a single word — "Continue", "go on", "sambung" — a
 
 ## Support files
 
-- `references/state-db-schema-2026-08-13.md` — verified table schemas (sessions, messages, session_model_usage) and the per-user token/cost SQL, captured from live probe.
+- ``references/`` — verified table schemas (sessions, messages, session_model_usage) and the per-user token/cost SQL, captured from live probe.
 - `references/unknown-chat-triage-2026-08-15.md` — Koho Pharma incident: full probe trail (channel_directory hit, zero sessions, zero routing, journal Forbidden ×2), the four-rung ladder, and the two-signature classification table.
 - `references/bare-continue-context-recovery-2026-08-15.md` — schema-first ladder for reconstructing what a bare "Continue" refers to when the session context is empty; includes the async-persist gotcha and the register-matching rule.
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

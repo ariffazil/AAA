@@ -1,6 +1,6 @@
 ---
 name: arifos-kernel-e2e-testing
-description: "End-to-end testing patterns for the arifOS constitutional kernel at :8088/mcp. Covers Streamable-HTTP MCP protocol compliance (spec 2026-07-28), 8-tool per-tool verdict correctness, K-series substrate-honesty probes (K1/K2/K7/K10), vault integrity checks, evidence-gate discipline (Rule #6 in_band pattern), and deployment-alignment gates. Trigger: 'write E2E tests for arifOS', 'add pytest for kernel', 'probe kernel for defects', 'verify MCP protocol', 'audit floor_passed', 'check vault corruption'. Adjacent to arifos-kernel-eurekas (the substrate laws these tests enforce) and arifos-integration-recon (code-path tracing when a test reveals a defect)."
+description: 'End-to-end testing patterns for the arifOS constitutional kernel at :8088/mcp. Covers Streamable-HTTP MCP protocol compliance (spec 2026-07-28), 8-tool per-tool verdict correctness, K-series substrate-honesty probes'
 version: 1.0.0
 author: F13 SOVEREIGN + Hermes Agent
 license: MIT
@@ -409,3 +409,7 @@ Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
 Scar signatures: 2026-10-04-wrong-probe-pattern-false-absence
 Do not treat this skill as neutral until the signatures are resolved.
 <!-- /SKILL-WITNESS-NOTE -->
+
+## Routing notes (moved from description 2026-10-23)
+
+(K1/K2/K7/K10), vault integrity checks, evidence-gate discipline (Rule #6 in_band pattern), and deployment-alignment gates. Trigger: 'write E2E tests for arifOS', 'add pytest for kernel', 'probe kernel for defects', 'verify MCP protocol', 'audit floor_passed', 'check vault corruption'. Adjacent to arifos-kernel-eurekas (the substrate laws these tests enforce) and arifos-integration-recon (code-path tracing when a test reveals a defect).

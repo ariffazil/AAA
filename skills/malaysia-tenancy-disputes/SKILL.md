@@ -84,4 +84,7 @@ The 3-format deliverable (md/pdf/docx) is the standard. Don't ship just markdown
 - templates/aircond-replacement-letter.md — formal Malay letter citing SC4/SC5/3(f)/Schedule B
 - templates/occupancy-plus-1-letter.md — formal Malay letter for adding 1 occupant (pasangan), with Manglish glossary
 - references/neu-suites-ta-clauses.md — worked example: [ADDRESS-REDACTED] TA exact clause wording
-- references/manglish-shorthand-glossary.md — full BM/Manglish abbreviation mapping for tenancy + adjacent real-estate conversations
+- `references/` — full BM/Manglish abbreviation mapping for tenancy + adjacent real-estate conversations
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

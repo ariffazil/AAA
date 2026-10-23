@@ -576,3 +576,7 @@ namespace because they were relative inside the member directory):
 ---
 
 *DITEMPA BUKAN DIBERI ⚒️*
+
+## Eureka updates (auto)
+
+- 2026-10-22 · `e-449cfac2b5c7` · CONTRADICTION-COLLAPSE AUDIT DISCIPLINE: A good audit does not stop at finding a contradiction — it forces the contradiction to collapse into a NAMEABLE cause. Tonight: 'WEALTH registry failed' collapsed to 'schema contract defect (trace_id null vs string)';…
