@@ -346,13 +346,16 @@ def collect_memory_profiles() -> dict:
             rows.append({"profile": name, "status": "ABSENT"}); continue
         txt = path.read_text(errors="replace")
         rows.append({"profile": name, "user_md": str(path), "chars": len(txt),
-                     "sha256_16": sha(path), "geo_anchor_present": bool(re.search(gx, txt))})
+                     "sha256_16": sha(path), "geo_anchor_present": bool(re.search(gx, txt)),
+                     "resolved_facts_present": bool(re.search(r"18 Nov 2013", txt))
+                                               and bool(re.search(r"2 Mac 2024", txt))})
     live = [r for r in rows if r.get("status") != "ABSENT"]
     return {"root_symlinks": {"/root/HERMES": str(Path("/root/HERMES").resolve()),
                               "/root/.hermes": str(HERMES_HOME.resolve())},
             "profiles": rows,
             "profiles_with_memory": len(live),
             "geo_anchor_in_all_live": all(r.get("geo_anchor_present") for r in live) if live else False,
+            "resolved_facts_in_all_live": all(r.get("resolved_facts_present") for r in live) if live else False,
             "note": "MEMORY-TOPOLOGY.md at the Hermes home explains which profile serves which lane"}
 
 
@@ -524,8 +527,8 @@ footer{{margin-top:44px;border-top:2px solid var(--ink);padding-top:16px;font-si
 
 <h2>7. Memory profiles (referent check)</h2>
 <p class="sub">One tree, several profiles, separate memory sets. Root symlinks both resolve to {esc(m['memory_profiles']['root_symlinks']['/root/.hermes'])}.</p>
-<table><tr><th>Profile</th><th>chars</th><th>geo anchor</th></tr>
-{''.join(f"<tr><td>{esc(r['profile'])}</td><td>{esc(r.get('chars','-'))}</td><td><span class='pill {'ok' if r.get('geo_anchor_present') else 'warn'}'>{'PRESENT' if r.get('geo_anchor_present') else 'ABSENT'}</span></td></tr>" for r in m['memory_profiles']['profiles'])}
+<table><tr><th>Profile</th><th>chars</th><th>geo anchor</th><th>resolved facts</th></tr>
+{''.join(f"<tr><td>{esc(r['profile'])}</td><td>{esc(r.get('chars','-'))}</td><td><span class='pill {'ok' if r.get('geo_anchor_present') else 'warn'}'>{'PRESENT' if r.get('geo_anchor_present') else 'ABSENT'}</span></td><td><span class='pill {'ok' if r.get('resolved_facts_present') else 'warn'}'>{'PRESENT' if r.get('resolved_facts_present') else 'ABSENT'}</span></td></tr>" for r in m['memory_profiles']['profiles'])}
 </table>
 
 <h2>8. Delta</h2>
