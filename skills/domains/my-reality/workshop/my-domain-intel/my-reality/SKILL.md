@@ -21,6 +21,10 @@ capability_tier: fed-agent-subagent
 ecology_state: WARM
 ---
 
+**Human-life layer splits out:** food, events, gyms, local news and neighbourhood
+reality live in `my-local-reality` (this skill stays institutional: prayer, weather,
+flood, FX, gold, quake, OPR, base rate). Do not duplicate those sources here.
+
 > **DOOR TABLE v2:** peta reality-mesh (7 paksi) ada di `reality-intelligence` — Pintu 4 NAVIGATION. Peranan sini: **Pintu 6 ADAPTERS** (domain, bukan duplikat — jangan merge).
 
 # my-reality — Malaysia Reality Adapters (P0)
