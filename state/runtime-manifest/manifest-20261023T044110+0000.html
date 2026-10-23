@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>HERMES Runtime Manifest v1.1 — 2026-10-23T04:41:10+00:00</title>
+<style>
+:root{--ink:#141210;--muted:#6b625c;--line:#e3dad0;--ok:#2f6a4a;--bad:#a83a1c;--warn:#8a6418}
+*{box-sizing:border-box}
+body{margin:0;background:#faf8f4;color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:44px 26px 70px}
+.kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bad);font-weight:700}
+h1{font-family:Georgia,serif;font-size:34px;line-height:1.1;margin:8px 0 6px;letter-spacing:-.02em}
+.sub{color:var(--muted);font-size:15px;margin:0 0 6px}
+.meta{font-size:12px;color:var(--muted);border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:26px}
+h2{font-family:Georgia,serif;font-size:21px;margin:34px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:20px 0 6px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}
+th{text-align:left;width:36%;font-weight:600;color:var(--muted);vertical-align:top;padding:5px 10px 5px 0;border-bottom:1px solid #f0ebe3}
+td{padding:5px 0;border-bottom:1px solid #f0ebe3;vertical-align:top;word-break:break-word}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:2px;text-transform:uppercase}
+.ok{background:#e5f0e9;color:var(--ok)} .bad{background:#f8e5df;color:var(--bad)} .warn{background:#f7eed7;color:var(--warn)}
+.note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--bad);padding:14px 16px;border-radius:3px;margin:14px 0;font-size:14px}
+ul{margin:6px 0 12px;padding-left:20px} li{margin-bottom:5px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+footer{margin-top:44px;border-top:2px solid var(--ink);padding-top:16px;font-size:12.5px;color:var(--muted)}
+</style></head><body><div class="wrap">
+<div class="kicker">Runtime identity contract · v1.1</div>
+<h1>HERMES Runtime Manifest</h1>
+<p class="sub">Three receipts, not a portrait: derived build identity, instruction admission, memory metabolism.</p>
+<div class="meta">generated 2026-10-23T04:41:10+00:00 · instance hermes-kvm8-asi · host forge · pid 373283</div>
+
+<h2>1. Derived build identity</h2>
+<p class="sub">Read from the running process and its unit, not from a declaration.</p>
+<table><tr><th>exec_start_path</th><td>/usr/local/lib/hermes-agent/.hermes/bin/hermes</td></tr><tr><th>resolved_exe</th><td>/root/runtime/hermes/.hermes/tools/python-3.14.7+20260901-linux-x64/bin/python3.14</td></tr><tr><th>install_tree</th><td>/usr/local/lib/hermes-agent</td></tr><tr><th>install_tree_git_head</th><td>5e16f33277</td></tr><tr><th>install_tree_dirty</th><td>M plugins/platforms/telegram/adapter.py</td></tr><tr><th>editable_workspace_commit</th><td>1fa3f4c</td></tr><tr><th>declared_pyproject_version</th><td>0.0.0</td></tr><tr><th>declared_dist_metadata_version</th><td>0.21.1</td></tr><tr><th>started_at_local</th><td>Fri Oct 23 12:28:56 2026</td></tr><tr><th>uptime_seconds</th><td>733</td></tr><tr><th>identity_status</th><td>VERIFIED_LOCAL</td></tr><tr><th>verification_scope</th><td>host forge only</td></tr><tr><th>independent_verification</th><td>False</td></tr></table>
+<div class="note"><b>Contradiction OPEN.</b> pyproject=0.0.0 vs dist-metadata=0.21.1. Neither is a build identity. Binding key = install_tree_git_head=5e16f33277 + artefact hashes above.</div>
+<h3>Artefact hashes (sha256, first 16)</h3><table><tr><th>hermes_constants.py</th><td>1bef6b1066658264</td></tr><tr><th>config.yaml</th><td>6b076d45b461e76f</td></tr><tr><th>USER.md</th><td>2ce912377758862f</td></tr><tr><th>MEMORY.md</th><td>9c5ba5484e3f5a6e</td></tr></table>
+
+<h2>2. Instruction admission receipt</h2>
+<table><tr><th>admitted_chars_total</th><td>82186</td></tr><tr><th>cap_chars</th><td>32000</td></tr><tr><th>cap_source</th><td>journal telemetry</td></tr><tr><th>verdict</th><td>COMPLETE_WITH_TRUNCATION</td></tr><tr><th>telemetry_line</th><td>Context file AGENTS.md TRUNCATED: 43433 chars exceeds limit of 32000</td></tr></table>
+<h3>Surfaces the builder merges into one turn</h3>
+<table><tr><th>Surface</th><th>chars</th><th>state</th></tr>
+<tr><td>AGENTS.md (project context)</td><td>43434</td><td><span class='pill bad'>TRUNCATED</span></td></tr><tr><td>SOUL.md (voice)</td><td>8932</td><td><span class='pill ok'>INJECTED</span></td></tr><tr><td>USER.md (identity)</td><td>10214</td><td><span class='pill ok'>INJECTED</span></td></tr><tr><td>MEMORY.md (env/lessons)</td><td>15932</td><td><span class='pill ok'>INJECTED</span></td></tr><tr><td>FEDERATION-INIT-v1 (plugin prompt)</td><td>3674</td><td><span class='pill ok'>INJECTED</span></td></tr>
+</table>
+<h3>Mandatory invariants, with provenance</h3>
+<table><tr><th>Invariant</th><th>State</th><th>stated in</th></tr>
+<tr><td>F13 human sovereignty</td><td><span class='pill ok'>PRESENT</span></td><td class='mono'>AGENTS.md (project context), SOUL.md (voice), USER.md (identity), MEMO</td></tr><tr><td>Fail-closed UNKNOWN/HOLD</td><td><span class='pill ok'>PRESENT</span></td><td class='mono'>AGENTS.md (project context), SOUL.md (voice), USER.md (identity), MEMO</td></tr><tr><td>Capability != authority</td><td><span class='pill ok'>PRESENT</span></td><td class='mono'>AGENTS.md (project context), FEDERATION-INIT-v1 (plugin prompt)</td></tr><tr><td>No agent self-SEAL</td><td><span class='pill ok'>PRESENT</span></td><td class='mono'>AGENTS.md (project context)</td></tr><tr><td>Proposer != judge != executor</td><td><span class='pill ok'>PRESENT</span></td><td class='mono'>FEDERATION-INIT-v1 (plugin prompt)</td></tr><tr><td>Witness before mutation</td><td><span class='pill ok'>PRESENT</span></td><td class='mono'>AGENTS.md (project context), USER.md (identity), MEMORY.md (env/lesson</td></tr><tr><td>Representation(person) != person</td><td><span class='pill ok'>PRESENT</span></td><td class='mono'>AGENTS.md (project context), MEMORY.md (env/lessons)</td></tr>
+</table>
+<p class="sub">AGENTS.md is an index of doctrine paths. The index being admitted does not prove the doctrine files behind those paths are read.</p>
+<p class="sub">Invariants are tested across every injected surface, with provenance. A concept that exists only as a path inside AGENTS.md's doctrine index is NOT counted as stated; that distinction is the whole point of this receipt.</p>
+
+<h2>3. Memory metabolism receipt</h2>
+<table><tr><th>File</th><th>before to after</th><th>budget</th><th>headroom</th><th>status</th></tr>
+<tr><td class='mono'>MEMORY.md</td><td>16139 to 15955</td><td>16000</td><td>45</td><td><span class='pill ok'>APPLIED</span></td></tr><tr><td class='mono'>USER.md</td><td>10372 to 10293</td><td>10000</td><td>-293</td><td><span class='pill ok'>APPLIED</span></td></tr>
+</table>
+<h3>What moved, and where</h3>
+<ul><li><span class='mono'>merged:CANON-SITE-KELUARGA-BAYANG</span> — two entries described the same four pages (LAW 8 duplicate) (601 bytes)</li><li><span class='mono'>merged:CANON-SITE-KELUARGA-BAYANG</span> — two entries described the same four pages (LAW 8 duplicate) (545 bytes)</li><li><span class='mono'>compressed-in-place:expired-logistics-removed</span> — state that expired: unpaid leave ended, office duty resumed 1 Jan 2026 (148 bytes)</li></ul>
+<h3>Rollback</h3><ul><li class='mono'>/root/AAA/state/runtime-manifest/memory-ledger/MEMORY.md.rollback-20261023T124110</li><li class='mono'>/root/AAA/state/runtime-manifest/memory-ledger/USER.md.rollback-20261023T124110</li></ul>
+
+<h2>4. Floors as measured</h2>
+<table><tr><th>active</th><td>13</td></tr><tr><th>floor_passed</th><td>False</td></tr><tr><th>fq</th><td>0.125</td></tr><tr><th>fq_measured_at</th><td>2026-10-23T04:39:26Z</td></tr><tr><th>pass</th><td>["F11", "F12", "F13", "F2", "F3", "F4", "F5", "F7", "F9"]</td></tr><tr><th>fail</th><td>["F1", "F8"]</td></tr><tr><th>unmeasured</th><td>["F10", "F6"]</td></tr></table>
+
+<h2>5. Capability surface</h2>
+<table><tr><th>declared</th><td>30</td></tr><tr><th>reachable_http</th><td>22</td></tr><tr><th>stdio_present</th><td>8</td></tr><tr><th>callable_verified</th><td>UNKNOWN</td></tr><tr><th>note</th><td>reachability is not capability; no read-only canary map is claimed in v1.1</td></tr></table>
+
+<h2>6. Cron</h2>
+<table><tr><th>configured</th><td>33</td></tr><tr><th>enabled</th><td>32</td></tr><tr><th>with_last_error</th><td>0</td></tr><tr><th>errors</th><td>[]</td></tr></table>
+
+<h2>7. Delta</h2>
+<table><tr><th>previous</th><td>manifest-20261023T044107+0000.json</td></tr><tr><th>status</th><td>COMPARED</td></tr><tr><th>counts</th><td>{"ADDED": 16, "REMOVED": 12, "CHANGED": 15, "REGRESSED": 0, "RECOVERED": 0}</td></tr></table>
+
+<h2>8. Readiness ladder</h2>
+<table><tr><th>Axis</th><th>State</th></tr>
+<tr><td>IDENTITY</td><td><span class='pill ok'>VERIFIED_LOCAL</span></td></tr><tr><td>OBSERVATION</td><td><span class='pill ok'>READY</span></td></tr><tr><td>ATTENTION</td><td><span class='pill warn'>READY_WITH_LIMITS</span></td></tr><tr><td>PROPOSAL</td><td><span class='pill warn'>READY_WITH_LIMITS</span></td></tr><tr><td>VERIFICATION</td><td><span class='pill warn'>PARTIAL</span></td></tr><tr><td>JUDGMENT</td><td><span class='pill bad'>DEGRADED</span></td></tr><tr><td>EXECUTION</td><td><span class='pill bad'>NOT_ESTABLISHED_BY_THIS_MANIFEST</span></td></tr><tr><td>INDEPENDENT_WITNESS</td><td><span class='pill bad'>NOT_PRESENT</span></td></tr><tr><td>memory_headroom_restored</td><td><span class='pill warn'>False</span></td></tr><tr><td>build_contradiction</td><td><span class='pill warn'>OPEN</span></td></tr><tr><td>admission_verdict</td><td><span class='pill warn'>COMPLETE_WITH_TRUNCATION</span></td></tr>
+</table>
+
+<h2>9. Non-claims</h2>
+<ul>
+<li>No claim of AGI, ASI, certification, or institutional readiness.</li>
+<li>Identity is verified <b>locally on this host only</b>. Independent witness is absent.</li>
+<li>Reachability is not capability. No MCP tool is marked <span class="mono">callable_verified</span> here.</li>
+<li>This document is generated. Nothing in it was edited by hand after render.</li>
+</ul>
+<footer>HERMES KVM8 · forge 100.64.0.2 · generated 2026-10-23T04:41:10+00:00 · generator /root/AAA/scripts/hermes-runtime-manifest.py</footer>
+</div></body></html>
