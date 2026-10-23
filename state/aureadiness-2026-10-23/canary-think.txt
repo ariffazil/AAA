@@ -1,0 +1,12 @@
+RPC ok: True
+result keys: ['content', 'isError']
+len: 91
+carries evidence object? False
+mentions UNKNOWN? False
+snippet: {"content": [{"text": "Error calling tool 'arif_think'", "type": "text"}], "isError": true}
+
+--- retry WITHOUT the declared-but-rejected param 'concise'
+isError: False | len: 17531
+carries typed evidence fields? False
+honest-unknown language? True
+snippet: {"content": [{"text": "{\"status\":\"completed\",\"tool\":\"arif_think\",\"verdict\":\"HOLD\",\"actor\":{\"actor_id\":\"hermes\",\"actor_verified\":false,\"authority_level\":\"OBSERVE_ONLY\"},\"session_id\":\"anonymous\",\"actor_id\":\"hermes\",\"autonomy_band\":\"OBSERVE_ONLY\",\"band\":\"OBSERVE_ONLY\",\"authority\":\"OBSERVE_ONLY\",\"actor_verified\":false,\"call_hash\":\"sha256:f260e3d1cdc1afbf424eaa5f20efaa4f75361bf3a0818ec8511495a8102754fb\",\"trace_id\":\"trace-bf6c5432d8954064\",\"signature\":null,\"session_token\":null,\"audit_provenance\":{\"call_hash\":\"sha256:f260e3d1cdc1afbf424eaa5f20efaa4f75361bf3a0818ec8511495a8102754fb\",\"trace_id\":\"trace-bf6c5432d8954064\",\"signature\":
