@@ -400,6 +400,15 @@ written the same hour -- the "silence" was a wrong-file probe, and the true root
 seal-path defect (`arif_seal` output-schema `-32602`, `tools.py:29233-29251`). **A wrong gauge and
 a dead engine report the same number.**
 
+## Rule 3o — tasks.json is a concurrent store; lock + diff IDs (NEW 2026-10-23)
+
+`tasks.json` can be appended by a sibling between your backup and your write. In this
+compile, a sibling added 11 rows after the 12:57Z backup; a naive read-modify-write would
+have reported 135 rows and hidden them. Use `fcntl.flock` on `/root/work/.tasks.lock`,
+diff the current ID set against the pre-write backup, label new rows
+`SIBLING_APPENDED_UNMEASURED`, and recompute counts from `len(tasks)` after the diff.
+Never claim a sibling's row as measured; never drop it.
+
 ## Workflow (canonical)
 
 ```
@@ -465,3 +474,5 @@ Evidence: [seal_chain seq | forge_vault receipt | carry_forward residue]
 > I will not celebrate before I have witnessed.
 > **I will not carry a status I did not probe. Status is not evidence.**
 > **Lebih arif, lebih bijaksana, atau tidak sama sekali.**
+
+**NEW — 2026-10-23 (the seal gauge has two clocks):** `seal_chain_head.last_anchor_utc` and `latest_commit` are **bookkeeping anchors**, not seal entries. `hours_since_last_seal` must be measured from the last **seq-bearing SEAL** row in `seal_chain.jsonl`. Live case: head declared seq 72 / canonical 72 + historical 274 = 346 vs 274 file lines, while the chain tail was seq 55 @ 2026-10-15T09:48:35Z = 195.1h; `last_anchor_utc` was 7.3h. Reporting the anchor as "seal silence" is a wrong-gauge claim. State both clocks and the chain-tail seq, or mark chain integrity UNVERIFIED.
