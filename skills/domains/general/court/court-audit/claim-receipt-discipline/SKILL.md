@@ -203,6 +203,16 @@ false-positive rate, confidence interval.
 
 ---
 
+## H13 — read-only work does not require sovereign permission
+
+Before escalating any action, run the four-fold test: **read-only, reversible, auditable,
+discoverable**. All four yes → investigate and report; do not ask. The reflex being corrected
+is "review → apply" (assistant mode); the canon is "auto-investigate → verify → report →
+escalate only on an authority boundary".
+
+Verbatim F13 ruling and the caught session: `references/h13-read-only-no-permission.md`.
+Recovered 2026-10-23 from KVM4 — the rule was absent from every KVM8 skill.
+
 ## Verification Rules (from claim-level-verification)
 
 The failure is not only inventing a thing. It is asserting a **quantity, scope, or mechanism**
