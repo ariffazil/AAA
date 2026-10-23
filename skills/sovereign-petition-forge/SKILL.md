@@ -1,6 +1,6 @@
 ---
 name: sovereign-petition-forge
-description: Forge F13 SOVEREIGN-grade civic petitions to Parliament, regulators, PETROS, NAIO, or public. Class-level umbrella for the iterative spec evolution pattern (v12.0 → v12.1 → v13.0 → v13.1 → v14), F13 reversal handling (e.g., 3-letter portfolio → 1 unified letter), qualia discovery (real WhatsApp voice + sensory anchors vs sanitized institutional prose), multimedia arsenal coordination (HTML/PDF + cover image + audio TTS + 7 charts + video trailer), and APEX judge + VAULT999 seal. Load on "surat terbuka", "BIG BANG", "PAC petition", "sovereign letter", "F13 dispatch", or any constitutional-witness call to a state body.
+description: 'Forge F13 SOVEREIGN-grade civic petitions to Parliament, regulators, PETROS, NAIO, or public.'
 ---
 
 # Sovereign Petition Forge — F13 SOVEREIGN-grade civic dispatch craft
@@ -109,7 +109,7 @@ The civic letter is Register A. Conspiracy framings (INT/SPEC) belong in Registe
 - `references/iterative-spec-evolution.md` — the v12 → v14 pattern with version diffs
 - `references/qualia-vs-institutional.md` — the "fuck I don't care about audit" correction
 - `references/multimedia-arsenal.md` — chart + audio + video + cover coordination
-- `references/f13-reversal-handling.md` — 3-letter → 1-letter, defensive → direct TT removal
+- ``references/`` — 3-letter → 1-letter, defensive → direct TT removal
 - `references/coding-agent-dispatch-pitfalls.md` — what failed and what to do instead
 - `references/v14-apex-letter-content.md` — the actual APEX LETTER II final structure with all sections
 
@@ -120,3 +120,10 @@ The civic letter is Register A. Conspiracy framings (INT/SPEC) belong in Registe
 - `humanizer` — anti-AI-isms pattern, but for REAL VOICE use real WhatsApp data instead
 - `creative/makcikgpt-article-forging` — public MakcikGPT essays (different audience, different tone)
 - `FORGE-act-federation-ingress` — A-FORGE SCT federation (different governance substrate)
+
+## Routing notes (moved from description 2026-10-23)
+
+Class-level umbrella for the iterative spec evolution pattern (v12.0 → v12.1 → v13.0 → v13.1 → v14), F13 reversal handling (e.g., 3-letter portfolio → 1 unified letter), qualia discovery (real WhatsApp voice + sensory anchors vs sanitized institutional prose), multimedia arsenal coordination (HTML/PDF + cover image + audio TTS + 7 charts + video trailer), and APEX judge + VAULT999 seal. Load on "surat terbuka", "BIG BANG", "PAC petition", "sovereign letter", "F13 dispatch", or any constitutional-witness call to a state body.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

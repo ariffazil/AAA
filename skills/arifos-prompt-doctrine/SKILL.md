@@ -1,6 +1,6 @@
 ---
 name: arifos-prompt-doctrine
-description: "Edit, maintain, and strip the arifOS prompt-stack (SOUL.md, HERMES_IDENTITY.md, AGENTS.md, AAA instruction fragments) — the files that define how an Hermes agent thinks, speaks, and decides. Also covers the kernel MCP prompt surface (zen sigils /init…/seal, legacy aliases, /command docs). Covers the multi-SOUL load chain, the invariant-vs-dynamics classification, rasa jiwa derita manusia doctrine, backup-first surgery, and the sibling-write concurrency pitfall. Trigger: any SOUL.md / AGENTS.md / instruction-fragment edit, arifOS MCP prompt-surface review (/init…/seal, zen sigils, legacy aliases), prompt bloat reduction, identity configuration, or voice/style enforcement for Hermes agents."
+description: 'Edit, maintain, and strip the arifOS prompt-stack (SOUL.md, HERMES_IDENTITY.md, AGENTS.md, AAA instruction fragments) — the files that define how an Hermes agent thinks, speaks, and decides.'
 category: autonomous-ai-agents
 ---
 
@@ -361,3 +361,7 @@ Old `🌀 SABAR` ran the 6-stage reality loop autonomously. New `🌀 GOVERN` do
 4. **VOID discipline** — dead branches stay dead without new evidence (no amnesia re-proposals)
 
 These four gates are what makes GOVERN a *governed* loop rather than a procedural one. If you write a new auto-loop pattern, encode these as gates, not as instructions.
+
+## Routing notes (moved from description 2026-10-23)
+
+Also covers the kernel MCP prompt surface (zen sigils /init…/seal, legacy aliases, /command docs). Covers the multi-SOUL load chain, the invariant-vs-dynamics classification, rasa jiwa derita manusia doctrine, backup-first surgery, and the sibling-write concurrency pitfall. Trigger: any SOUL.md / AGENTS.md / instruction-fragment edit, arifOS MCP prompt-surface review (/init…/seal, zen sigils, legacy aliases), prompt bloat reduction, identity configuration, or voice/style enforcement for Hermes agents.

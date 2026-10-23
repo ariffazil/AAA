@@ -66,7 +66,7 @@ If you see `_last_updated`, `_patch_summary`, `_version`, `_notes`, etc., these 
 python3 -c "import json; d=json.load(open('<config.json>')); print(len(d.get('enabled_providers', [])))"
 ```
 
-Compare against a known-good backup or git history. If the count dropped, a recent python/json round-trip silently lost entries (Hermes memory note: this is a recurring pitfall in this federation — see `references/josn-roundtrip-loss.md`).
+Compare against a known-good backup or git history. If the count dropped, a recent python/json round-trip silently lost entries (Hermes memory note: this is a recurring pitfall in this federation — see ``references/``).
 
 ### 5. Run the tool's own validator
 
@@ -640,3 +640,5 @@ rm -rf /root/.opencode-worktrees/<session-hash>
 - **Kernel restart breaks session bindings.** After arifOS/AAA restart, agent TUI gets "no-session-token" on every tool call. Fix: reload the agent (clears stale session cache), not the kernel.
 - **Sibling-write concurrency has no receipt.** Two agents writing same canonical artifact = constitutional violation with no detection. After every canonical write: `ls -la <dir>` + `git status` immediately. Archive (never `rm`) duplicates.
 - **Hermes has no plugin system for hooks.** To add a gate: `hooks.pre_tool_call` block in profile `config.yaml` (see `references/runtime-enforcement-without-source-mods-2026-08-07.md` for wire protocol).
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

@@ -1,5 +1,6 @@
 ---
 name: telegram-ops
+description: "Use when any Telegram bot, group, lane or chat history task arises. One door: routes by observable to the exact reference."
 id: telegram-ops
 version: 2.0.0
 owner: AAA/telegram-ops
@@ -101,7 +102,7 @@ triggers:
   - "telegram webhook check"
   - "no name in group telegram"
   - "telegram delivery receipt"
-description: "Use when any Telegram bot, group, lane or chat history task arises. One door: routes by observable to the exact reference."
+
 owned_by: AAA/telegram-ops
 authority_of: AAA
 ---
@@ -387,5 +388,8 @@ header with the source sha256.
 Supporting files that were **nested inside** the archived member directories (per-member
 `references/`, `templates/*.py`) travelled with their member into
 `/root/AAA/skills/.archive/merge-20260920/telegram/<member>/`. Paths quoted inside a member body
-(e.g. `references/two-step-auth.py`) resolve **inside that member's archived directory**, not
+(e.g. ``references/``) resolve **inside that member's archived directory**, not
 inside this one.
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

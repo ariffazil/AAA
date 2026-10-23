@@ -137,3 +137,8 @@ When dirty after clean commit: check if injected content was already committed �
 - F4 CLARITY: Drift report must be actionable, not noise.
 - F7 HUMILITY: Confidence cap. Uncertain drift → flag, don't assert.
 - F11 AUDITABILITY: Every drift check logged with timestamp and findings.
+
+## Eureka updates (auto)
+
+- 2026-10-22 · `e-0591b2a357af` · MAP-ROT LAW: Peta menjadi lapuk lebih cepat daripada sistem rosak (representation decay rate > substrate decay rate). Same night, four independent instances: FRAME baseline 2026-09-15 generated every 'degraded+down'; GEOX card 20 vs live 27; arifos well-known…
+- 2026-10-22 · `e-65cdef5c9f66` · REPRESENTATION-DRIFT THEOREM (F13, 2026-10-22): Across the audit batch, failures that looked like capability failure were consistently representation failure — stale cards (GEOX 20 vs 27 live), stale baselines (FRAME 2026-09-15 vs October reality), schema…

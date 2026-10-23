@@ -1,6 +1,6 @@
 ---
 name: presentation-pack-forge
-description: "Orchestrate a complete presentation pack — pptx deck + companion PDF + hero image + sealed delivery receipt — under one entry point. Routes to the right skills (powerpoint, pdf-report-generation, ai-media-generation-ops, FORGE-komda-color-law, notebooklm-bridge, humanizer), enforces Komda color law pre-render, runs the codified QA loop, seals with sha256 + DELIVERY.md, and delivers via Telegram MEDIA. Triggers on 'deck about X', 'slides for board', 'presentation pack on X', 'buat slide', 'pitch deck', 'rebrand deck'. Class-level umbrella — supersedes manual orchestration across 4-5 individual skills."
+description: 'Orchestrate a complete presentation pack — pptx deck + companion PDF + hero image + sealed delivery receipt — under one entry point.'
 license: Proprietary
 platforms: [linux, mac, windows]
 ---
@@ -133,7 +133,7 @@ See `references/framing-discipline.md` § Boundary Vocabulary Translation.
 |---|---|
 | `scripts/deck_qa.py` | Codified QA loop — convert → vision batch → issue list. Run before declaring success. |
 | `references/deck-render-pitfalls-2026-08-11.md` | The 3 LibreOffice/pptxgenjs pitfalls with fixes, learned live on the arifOS deck. |
-| `references/komda-territory-palette-table.md` | Closed palette per territory — quick reference for new decks. |
+| ``references/`` | Closed palette per territory — quick reference for new decks. |
 | `references/framing-discipline.md` | Authority-without-evidence trap + framing sentence discipline + reality bridge test. |
 | `templates/DELIVERY.md` | Sealed-delivery manifest boilerplate. |
 | `templates/pres-pack-forge-checklist.md` | Pre-flight checklist for any "deck on X" request. |
@@ -168,3 +168,9 @@ When forging a deck/PDF that anchors to a **named real well, incident, person, o
 **Empathy override.** If the sovereign reveals trauma mid-session (e.g. "they said the well collide? wtf. I'm geologist. it's shallow gas duhhh" → "I can see it live" → "I'm traumatic. But I was roped in post blowout to help the official team. But the moment nobody cares to listen. Fuck off I quit the team"), STOP artifact work entirely. The next correct move is a plain human check ("hang ok tak sekarang?"), not any further governance, floor analysis, or skill housekeeping. The deck/PDF is not the priority anymore. The person is.
 
 *DITEMPA BUKAN DIBERI — the orchestrator that enforces the law, runs the QA loop, seals the artifact, delivers via Telegram.*
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->
+
+## Routing notes (moved from description 2026-10-23)
+
+Routes to the right skills (powerpoint, pdf-report-generation, ai-media-generation-ops, FORGE-komda-color-law, notebooklm-bridge, humanizer), enforces Komda color law pre-render, runs the codified QA loop, seals with sha256 + DELIVERY.md, and delivers via Telegram MEDIA. Triggers on 'deck about X', 'slides for board', 'presentation pack on X', 'buat slide', 'pitch deck', 'rebrand deck'. Class-level umbrella — supersedes manual orchestration across 4-5 individual skills.

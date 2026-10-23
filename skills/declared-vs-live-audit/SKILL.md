@@ -170,3 +170,7 @@ you did not read. Never conclude a capability is unavailable from an argument-va
 Before quoting any self-description to a human, ask: *did I probe the thing, or did I read the thing?*
 
 If the answer is "I read it", the sentence is a claim — not a finding.
+
+## Eureka updates (auto)
+
+- 2026-10-22 · `e-65cdef5c9f66` · REPRESENTATION-DRIFT THEOREM (F13, 2026-10-22): Across the audit batch, failures that looked like capability failure were consistently representation failure — stale cards (GEOX 20 vs 27 live), stale baselines (FRAME 2026-09-15 vs October reality), schema…

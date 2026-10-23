@@ -1,6 +1,6 @@
 ---
 name: local-business-deep-dive
-description: "Comprehensive research of a local business entity (esp. Malaysian): owner identity + namesake disambiguation, founding history, notable members/alumni, equipment/offerings reputation, competition-production record, pricing history across years (e.g. 2020-2025), and scene positioning vs competitors. Produces a structured dossier (quick-reference fact table, per-dimension sections, pricing/people tables, source URL list, limitations note). Trigger: 'research <business> comprehensively', 'owner/history/pricing of X', any deep-dive on a local gym, restaurant, clinic, studio, shop. Pairs with anti-bot-web-extraction for FB/IG login-wall bypass."
+description: 'Comprehensive research of a local business entity (esp. Malaysian): owner identity + namesake disambiguation, founding history, notable members/alumni, equipment/offerings reputation, competition-production record,'
 ---
 # Local Business Deep-Dive Research
 
@@ -73,3 +73,7 @@ Write a dossier to a markdown file, structured as:
 - **Video-only content**: prices/announcements often live only in FB video titles — the indexed title is the fact, the exact figure may need the video.
 - **Registration fee vs monthly fee confusion**: Time Out listed RM170 "upfront upon registration" while IG card posts said RM50 registration — report both with dates.
 - Don't fabricate missing figures; say "not in indexed text — needs the video/phone call."
+
+## Routing notes (moved from description 2026-10-23)
+
+pricing history across years (e.g. 2020-2025), and scene positioning vs competitors. Produces a structured dossier (quick-reference fact table, per-dimension sections, pricing/people tables, source URL list, limitations note). Trigger: 'research <business> comprehensively', 'owner/history/pricing of X', any deep-dive on a local gym, restaurant, clinic, studio, shop. Pairs with anti-bot-web-extraction for FB/IG login-wall bypass.
