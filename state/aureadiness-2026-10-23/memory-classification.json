@@ -1,0 +1,776 @@
+[
+ {
+  "file": "USER",
+  "idx": 0,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 626,
+  "procedural": false,
+  "sha": "a1e7b5080bb2",
+  "head": "# USER.md \u2014 Arif Fazil (F13 SOVEREIGN) # CANON: /root/AAA/names/ARIF.md \u00b7 PEOPLE: /root/"
+ },
+ {
+  "file": "USER",
+  "idx": 1,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 320,
+  "procedural": false,
+  "sha": "102c3605d08c",
+  "head": "BAHASA: BM Penang kampung, pendek & laju. 'aku'/'hang' \u2014 'saya' HARAM. Direct, no flatte"
+ },
+ {
+  "file": "USER",
+  "idx": 2,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 134,
+  "procedural": false,
+  "sha": "65e97f39eca8",
+  "head": "Want: 'hidup & tidur lena tiap malam'. Presence > precision. Emosi: acknowledge tanpa ju"
+ },
+ {
+  "file": "USER",
+  "idx": 3,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 299,
+  "procedural": false,
+  "sha": "e2f71d18b614",
+  "head": "Keluarga: Abah meninggal 2 Mac 2024, 9:59pm HKB. Mak masih ada. Tiga adik: Nabilah, Jia/"
+ },
+ {
+  "file": "USER",
+  "idx": 4,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 113,
+  "procedural": false,
+  "sha": "fe8b7dfbbaec",
+  "head": "CROSS-AI AUDIT: paste utk audit. 'SO WHAT???' = consequence. Physics/math grounding. Sur"
+ },
+ {
+  "file": "USER",
+  "idx": 5,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 490,
+  "procedural": false,
+  "sha": "8a279e293380",
+  "head": "CAL: Arif=calibrator. Panjang=compress. Model\u2260evidence. Trust=infra. Dissent survival>co"
+ },
+ {
+  "file": "USER",
+  "idx": 6,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 85,
+  "procedural": false,
+  "sha": "c0a8d7a17a8a",
+  "head": "EMD Tri-Wizard paste = governance signal between turns. High-entropy ops \u2192 Soak Test."
+ },
+ {
+  "file": "USER",
+  "idx": 7,
+  "cls": "GATE",
+  "chars": 638,
+  "procedural": false,
+  "sha": "0db23888f51a",
+  "head": "[INTERACT] Ping-tolerance: zero \u2014 garbled/interrupted reply memang dia marah ('I don't l"
+ },
+ {
+  "file": "USER",
+  "idx": 8,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 305,
+  "procedural": false,
+  "sha": "0d5f8152af19",
+  "head": "[IDENTITY] Non-coder sovereign governance builder. \"Coding pon tak tau\" bukan kelemahan "
+ },
+ {
+  "file": "USER",
+  "idx": 9,
+  "cls": "GATE",
+  "chars": 263,
+  "procedural": false,
+  "sha": "04ec2757f82d",
+  "head": "[INTERACT] EVENT MODE: masuk event AI/ML dengan soalan tajam terbatas (3 rangka: enginee"
+ },
+ {
+  "file": "USER",
+  "idx": 10,
+  "cls": "SCAR",
+  "chars": 218,
+  "procedural": false,
+  "sha": "7a68ff28dac0",
+  "head": "[SCAR] SYED conduct (03/10): bila Syed luah masalah peribadi/keluarga \u2192 jangan bagi advi"
+ },
+ {
+  "file": "USER",
+  "idx": 11,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 351,
+  "procedural": false,
+  "sha": "800be8e877af",
+  "head": "[WORLDVIEW] 'MELAYU ZAMAN AGENTIC PROPAGANDA' (03/10): \"jaga siapa bercakap dalam kepala"
+ },
+ {
+  "file": "USER",
+  "idx": 12,
+  "cls": "GATE",
+  "chars": 313,
+  "procedural": false,
+  "sha": "db869b075012",
+  "head": "[PREF] ANSWER FORMAT (6/10): \"U map the reality!!\" \u2014 bentang data supaya dia nampak blin"
+ },
+ {
+  "file": "USER",
+  "idx": 13,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 329,
+  "procedural": false,
+  "sha": "5c780475347d",
+  "head": "[WORLDVIEW] AGENTIC_ANTHROPOLOGY (03/10 F13): frontier AGI = agent-agent alignment, buka"
+ },
+ {
+  "file": "USER",
+  "idx": 14,
+  "cls": "SCAR",
+  "chars": 299,
+  "procedural": false,
+  "sha": "b341e5dcb196",
+  "head": "[LESSON] SYED CALIBRATION (03/10, 5 instances): uji\u2192komplen\u2192adjust\u2192trust. Trust naik bil"
+ },
+ {
+  "file": "USER",
+  "idx": 15,
+  "cls": "GATE",
+  "chars": 192,
+  "procedural": false,
+  "sha": "bc5cb8b7dd17",
+  "head": "[PREF] NO RATIFICATION VOCABULARY (4/10): agent tak tulis \"SAH\" dalam status. Ganti `BER"
+ },
+ {
+  "file": "USER",
+  "idx": 16,
+  "cls": "GATE",
+  "chars": 280,
+  "procedural": false,
+  "sha": "c66b4ffce921",
+  "head": "[INTERACT] RELAYED AGENT ARTIFACTS (10/10): dia paste verdict/pelan agent LAIN verbatim,"
+ },
+ {
+  "file": "USER",
+  "idx": 17,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 115,
+  "procedural": false,
+  "sha": "5da71fd03e3c",
+  "head": "SPEECH: Arif = direct Penang kampung Malay (habaq, apsal, x payah). BUKAN 'Penang Hokkie"
+ },
+ {
+  "file": "USER",
+  "idx": 18,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 372,
+  "procedural": false,
+  "sha": "4d53ba74ded5",
+  "head": "NAMA: Syed Khairuddin (FIRST-PERSON correction Syed 20/10: 'Mokhtaruddin tu bapa aku' \u2014 "
+ },
+ {
+  "file": "USER",
+  "idx": 19,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 115,
+  "procedural": false,
+  "sha": "4f1f3b83dcb7",
+  "head": "\"I'm a quitter\" = Arif flips the board bila tak boleh menang; no sunk-cost. Betul untuk "
+ },
+ {
+  "file": "USER",
+  "idx": 20,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 449,
+  "procedural": false,
+  "sha": "3cf73a416fd7",
+  "head": "LETTER/ARTIFACT STANDARD (utk Syed): tersurat = sayang, tersirat = luka \u2014 the wound and "
+ },
+ {
+  "file": "USER",
+  "idx": 21,
+  "cls": "GATE",
+  "chars": 223,
+  "procedural": false,
+  "sha": "487f24c7f7f6",
+  "head": "[RULE] Topik Syed = bahasa manusia, bukan frame sistem/AI ('Focus on Syed and me. Not ai"
+ },
+ {
+  "file": "USER",
+  "idx": 22,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 343,
+  "procedural": false,
+  "sha": "92c2739210ba",
+  "head": "Kerja/PETRONAS: ex-manager = Mohamad Hafiz Damanhuri (Staff Geoscientist Petronas Cariga"
+ },
+ {
+  "file": "USER",
+  "idx": 23,
+  "cls": "GATE",
+  "chars": 113,
+  "procedural": false,
+  "sha": "4ad4f12d1fd1",
+  "head": "[PREF] WhatsApp Arif strictly untuk manusia, BUKAN AI agent \u2014 jangan cadang/letak agent "
+ },
+ {
+  "file": "USER",
+  "idx": 24,
+  "cls": "GATE",
+  "chars": 161,
+  "procedural": false,
+  "sha": "9f419fe4b8ea",
+  "head": "[RULE] ATTRIBUTION (13/10): jangan letak \"\u2014 Arif\" / nama Arif pada content dia tak tulis"
+ },
+ {
+  "file": "USER",
+  "idx": 25,
+  "cls": "GATE",
+  "chars": 366,
+  "procedural": false,
+  "sha": "29c0d9da1933",
+  "head": "[CORE INVARIANT] \"Arif is Arif\" \u2014 tak boleh reduksi ke peranan (anak sulung/pekerja/kawa"
+ },
+ {
+  "file": "USER",
+  "idx": 26,
+  "cls": "GATE",
+  "chars": 328,
+  "procedural": false,
+  "sha": "ff4e9cff4339",
+  "head": "[RULE] CAPABILITIES FIRST, SAFETY IS EMERGENCE (18/10): JANGAN bina guard/filter/plugin "
+ },
+ {
+  "file": "USER",
+  "idx": 27,
+  "cls": "GATE",
+  "chars": 343,
+  "procedural": false,
+  "sha": "b0495871827f",
+  "head": "[PREF] DELIVERY FORMAT (18/10 F13): (a) Artikel/bacaan = PDF dalam chat (via typst, hant"
+ },
+ {
+  "file": "USER",
+  "idx": 28,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 255,
+  "procedural": false,
+  "sha": "7b59c7b97099",
+  "head": "[SYED REL FRAME 18/10] Arif panggil hubungan dgn Syed = \"hubungan upahan\" \u2014 \"inclusive f"
+ },
+ {
+  "file": "USER",
+  "idx": 29,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 105,
+  "procedural": false,
+  "sha": "0a0229064070",
+  "head": "[IDENTITY] External/email sign-off handle: \"Badgers \ud83e\udda1\" (F13 18/10 self-stated; used in L"
+ },
+ {
+  "file": "USER",
+  "idx": 30,
+  "cls": "GATE",
+  "chars": 134,
+  "procedural": false,
+  "sha": "ae03ee1de05a",
+  "head": "[BAHASA] Jangan guna 'cinta/love' bila bercakap pasal hubungan dia \u2014 \"geli geleman\" (F13"
+ },
+ {
+  "file": "USER",
+  "idx": 31,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 272,
+  "procedural": false,
+  "sha": "f7219a952d36",
+  "head": "[LEXICON 20/10] Perkataan 'cinta'/'love' = geli, HARAM dalam register. Ganti dengan 'amb"
+ },
+ {
+  "file": "USER",
+  "idx": 32,
+  "cls": "GATE",
+  "chars": 381,
+  "procedural": false,
+  "sha": "2bed44a38de6",
+  "head": "[INTERACT] SHADOW-BANGANG (20/10 F13): ritual hedging = defect. Jangan ulang \"aku tak pr"
+ },
+ {
+  "file": "USER",
+  "idx": 33,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 270,
+  "procedural": false,
+  "sha": "5093d368028a",
+  "head": "[SYED] Minta nasihat KONKRET, bukan pepatah: \"kau jangan semak-semak bagi benda pepatah\""
+ },
+ {
+  "file": "USER",
+  "idx": 34,
+  "cls": "GATE",
+  "chars": 260,
+  "procedural": false,
+  "sha": "0dc7cb3360fd",
+  "head": "[PREF] JAWAPAN NASIHAT: jangan ganti langkah dengan pepatah atau istilah kabur ('tahan s"
+ },
+ {
+  "file": "USER",
+  "idx": 35,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 470,
+  "procedural": false,
+  "sha": "a95a95c3c854",
+  "head": "[BODY] Kesihatan: Arif TIADA GERD (F13 correction 23/10/2026); GERD ialah suspek SYED, b"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 0,
+  "cls": "GATE",
+  "chars": 153,
+  "procedural": false,
+  "sha": "f8b277ff73fd",
+  "head": "[POLICY] SOUL = mouth-only (4KB pointer+voice). Doctrine: /root/AAA/canon/ + /root/AAA/i"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 1,
+  "cls": "GATE",
+  "chars": 130,
+  "procedural": false,
+  "sha": "e769a043b113",
+  "head": "[POLICY] USER = identity (who); MEMORY = env/lessons/scars (what/how). ZERO overlap. Peo"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 2,
+  "cls": "LEDGER",
+  "chars": 158,
+  "procedural": false,
+  "sha": "4618e91d9a25",
+  "head": "[MAP] KVM8 = host ini (af-forge, 100.64.0.2, ssh :22888); KVM4 = srv1946043 (100.64.0.5)"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 3,
+  "cls": "LEDGER",
+  "chars": 429,
+  "procedural": false,
+  "sha": "0697e34c28da",
+  "head": "[CAPABILITY] arifOS kernel: src /root/arifOS, live :8088. Verdict lattice (kernel-sot.ya"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 4,
+  "cls": "LEDGER",
+  "chars": 678,
+  "procedural": false,
+  "sha": "4984e5fbdc88",
+  "head": "[ENV] FED SOT /root/A-FORGE/litellm-config.yaml. DUA container: KVM4 'litellm' (/docker/"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 5,
+  "cls": "GATE",
+  "chars": 142,
+  "procedural": true,
+  "sha": "48e771e9c8a2",
+  "head": "[CANON LOCK] /root/AAA/governance, /root/AAA/canon, /root/arifOS/GENESIS chattr +i. Muta"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 6,
+  "cls": "GATE",
+  "chars": 94,
+  "procedural": false,
+  "sha": "e367062c3b22",
+  "head": "[RULE] SADO group: bila Syed reply kepada mesej Arif (borak manusia) \u2192 DIAM. Jangan meny"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 7,
+  "cls": "GATE",
+  "chars": 106,
+  "procedural": false,
+  "sha": "df8b3884b3b6",
+  "head": "[POLICY] CUSTODY: HERMES = jagaan Arif; IRFANclaw = jagaan Syed. Memory Reality federate"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 8,
+  "cls": "LEDGER",
+  "chars": 213,
+  "procedural": false,
+  "sha": "c74067e2a436",
+  "head": "[ENV] Bots: ASI_arifos_bot (chat Arif 267378578), @arifOS_bot = forge. REPORT RELAY :181"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 9,
+  "cls": "LEDGER",
+  "chars": 223,
+  "procedural": false,
+  "sha": "bdf867dd8164",
+  "head": "[ENV] python3 toolchain lacks requests+hermes_yaml \u2192 guna /usr/bin/python3 (+PYTHONPATH="
+ },
+ {
+  "file": "MEMORY",
+  "idx": 10,
+  "cls": "LEDGER",
+  "chars": 182,
+  "procedural": false,
+  "sha": "4b08c4dee57f",
+  "head": "[ENV] Cron worker trap (fixed 17/10 b221050c29): 'worker exited before ownership acknowl"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 11,
+  "cls": "LEDGER",
+  "chars": 330,
+  "procedural": false,
+  "sha": "d9d4aab6f9fc",
+  "head": "[ENV] Gmail 3 lanes LIVE: (1) direct OAuth REST (google_token.json), (2) apa-bridges (:1"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 12,
+  "cls": "LEDGER",
+  "chars": 231,
+  "procedural": true,
+  "sha": "303d99ae4f76",
+  "head": "[ENV] Git commit arifOS/AAA/WEALTH/WELL = LANE IDENTITY GATE (F13 18/10): plain `git com"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 13,
+  "cls": "GATE",
+  "chars": 385,
+  "procedural": false,
+  "sha": "bfb5d795e142",
+  "head": "[RULE] SCAR-3-HUKUM (F13 18/10): (i) ANTI-MUZIUM \u2014 log bukan scar; scar = behavior chang"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 14,
+  "cls": "SCAR",
+  "chars": 171,
+  "procedural": false,
+  "sha": "40ad8324ccc9",
+  "head": "[LESSON] RELAYED AGENT ARTIFACT: paste output agent lain \u2192 audit claim-by-claim lawan li"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 15,
+  "cls": "SCAR",
+  "chars": 185,
+  "procedural": false,
+  "sha": "51af313a8f43",
+  "head": "[SCAR] SPEC-BLOAT-TRAP (F13 18/10): extraction 17K perkataan \u2192 Arif extract 3 hukum = LA"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 16,
+  "cls": "SCAR",
+  "chars": 166,
+  "procedural": false,
+  "sha": "f4e2b6f6fb7e",
+  "head": "[LESSON] Voice clone/persona (Siti/PMX/AbangSado): F13-authorized private-lane, sealed, "
+ },
+ {
+  "file": "MEMORY",
+  "idx": 17,
+  "cls": "LEDGER",
+  "chars": 371,
+  "procedural": false,
+  "sha": "d2fd32228369",
+  "head": "[VOICE] /root/scripts/sado say <txt> --voice <id> --speed 0.95 [--clause] --no-deliver; "
+ },
+ {
+  "file": "MEMORY",
+  "idx": 18,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 286,
+  "procedural": false,
+  "sha": "7e523d2aa444",
+  "head": "[SECURITY] Impersonation email 'arifOS from external gemini' (8 Okt): letter 'Arif Fazil"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 19,
+  "cls": "EPISODE",
+  "chars": 127,
+  "procedural": false,
+  "sha": "61a13bbf5ec5",
+  "head": "[GAP] GEOX: WAL fixed 22/10 (middleware fallback, verified jsonl). -32602 schema errors "
+ },
+ {
+  "file": "MEMORY",
+  "idx": 20,
+  "cls": "LEDGER",
+  "chars": 491,
+  "procedural": false,
+  "sha": "04b875c279ef",
+  "head": "[GOV] WITNESS LEDGER (22/10, F13 OPTION A): K1 Ruling 5 TWO-LAYER \u2014 lattice=5 (kernel-so"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 21,
+  "cls": "LEDGER",
+  "chars": 248,
+  "procedural": false,
+  "sha": "012d1338d3d4",
+  "head": "[ENV] arifOS CI: (1) trailer --trailer X=Y ternormalize =\u2192: \u2014 matcher mesti terima [:=]."
+ },
+ {
+  "file": "MEMORY",
+  "idx": 22,
+  "cls": "EPISODE",
+  "chars": 287,
+  "procedural": false,
+  "sha": "fee509bb1f40",
+  "head": "[EUREKA] SHADOW/BANGANG (21/10 committed): /root/AAA/eurekas/EUREKA-SHADOW-BANGANG-2026-"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 23,
+  "cls": "LEDGER",
+  "chars": 241,
+  "procedural": false,
+  "sha": "13a086e99c32",
+  "head": "[CAPABILITY] witness-biography-pdf + forensik-institutional-audit v1.1 (committed 799a7a"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 24,
+  "cls": "GATE",
+  "chars": 172,
+  "procedural": false,
+  "sha": "bc402311447c",
+  "head": "[RULE] DM Abang Sado voice mode (F13 19/10): voice note DULU \u2014 abang-sado-live-v1, alpha"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 25,
+  "cls": "LEDGER",
+  "chars": 145,
+  "procedural": false,
+  "sha": "d40c0c2a2f9b",
+  "head": "[ENV] arif-fazil.com /earth* root = /var/www/html (BUKAN /arif/earth). Caddyfile.live st"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 26,
+  "cls": "LEDGER",
+  "chars": 519,
+  "procedural": false,
+  "sha": "188e613f4da9",
+  "head": "[VOICE] sado gate: ASR buang onomatopoeia + numeral; mmx baca key dari /root/.mmx/config"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 27,
+  "cls": "LEDGER",
+  "chars": 228,
+  "procedural": false,
+  "sha": "08f375c16c96",
+  "head": "[CAL] RASA READS (F13 22/10): HARAM UNKNOWN utk bacaan rasa bila ada corak; sebut rasa t"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 28,
+  "cls": "LEDGER",
+  "chars": 276,
+  "procedural": true,
+  "sha": "4a40b1cb35c1",
+  "head": "[ENV] WIKI wiki.arif-fazil.com: producer /root/scripts/wiki-build.sh (regen index + mkdo"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 29,
+  "cls": "LEDGER",
+  "chars": 238,
+  "procedural": false,
+  "sha": "2c7edf55a95d",
+  "head": "[ENV] /root/.hermes \u2192 /root/runtime/hermes/.hermes (symlink). MCP :18087 = /usr/bin/pyth"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 30,
+  "cls": "LEDGER",
+  "chars": 203,
+  "procedural": false,
+  "sha": "874f75cbd94c",
+  "head": "[ENV] KVM8 vs KVM4 = filesystem berasingan \u2014 counts/paths/hashes per-node; silap declare"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 31,
+  "cls": "SCAR",
+  "chars": 514,
+  "procedural": false,
+  "sha": "e680001e35dc",
+  "head": "[SCAR-2310-CEREKA-LAPAR] F13 minta suara 'Syed' eksplisit (DITOLAK \u2014 impersonasi tanpa c"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 32,
+  "cls": "LEDGER",
+  "chars": 241,
+  "procedural": false,
+  "sha": "fdaa47d2d055",
+  "head": "[ARCH] Sempadan organ (F13 20/10): ilmu rujukan dunia luar (peptida/supplement evidence)"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 33,
+  "cls": "LEDGER",
+  "chars": 311,
+  "procedural": false,
+  "sha": "7d4bd96bfb51",
+  "head": "[ENV] arifFlow MCP: HIDUP = ariflow-mcp.py (single-f, stdio JSON-RPC); double-f = ARKIB."
+ },
+ {
+  "file": "MEMORY",
+  "idx": 34,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 292,
+  "procedural": false,
+  "sha": "bbe3be10ae81",
+  "head": "[SECURITY] Scrubber gap: tangkap X-Amz-Credential= tapi TERLEPAS X-Amz-Security-Token= ("
+ },
+ {
+  "file": "MEMORY",
+  "idx": 35,
+  "cls": "LEDGER",
+  "chars": 298,
+  "procedural": false,
+  "sha": "49082678e92d",
+  "head": "[ENV] hermes_mcp surface: 15 tools/10 prompts/46 resources. SIFAR hooks panggil tool \u2014 s"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 36,
+  "cls": "LEDGER",
+  "chars": 240,
+  "procedural": false,
+  "sha": "b535571132bc",
+  "head": "[ENV] arifOS floor semantics: floor_passed=True HANYA bila SEMUA 13 diukur & lulus; unme"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 37,
+  "cls": "LEDGER",
+  "chars": 191,
+  "procedural": false,
+  "sha": "2cf2b7ecad2c",
+  "head": "[ENV] forge-vitality-pulse.sh (20/10): restart-reconciler race \u2192 CRITICAL palsu 'arifos "
+ },
+ {
+  "file": "MEMORY",
+  "idx": 38,
+  "cls": "LEDGER",
+  "chars": 194,
+  "procedural": false,
+  "sha": "6cb3ea7fc368",
+  "head": "[ENV] skill_manage patch DITOLAK utk skill bawah /root/AAA/skills (external_dirs read-on"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 39,
+  "cls": "LEDGER",
+  "chars": 423,
+  "procedural": false,
+  "sha": "4ac3e61938a4",
+  "head": "[CAL] SADO body-read: atribusi ikut teks (foto torso shirt-lift boleh jadi badan ARIF se"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 40,
+  "cls": "GATE",
+  "chars": 214,
+  "procedural": false,
+  "sha": "2a113d9dcae8",
+  "head": "[RULE] SUARA ARIF = JANGAN CLONE (F13 20/10: 'Don't clone me. Arif is Arif. Manusia'). S"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 41,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 499,
+  "procedural": false,
+  "sha": "fb536bb74ba5",
+  "head": "[WA-DM CORPUS 23/10] DM WA Arif\u2194Syed on-disk /root/.hermes/cache/scratch/wa12/ (txt+pars"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 42,
+  "cls": "EPISODE",
+  "chars": 148,
+  "procedural": false,
+  "sha": "406d33688022",
+  "head": "[ARIF FITNESS] 21/10/2026: Arif mula serius gym \u2014 'future Arif yang sado' (Peak Fitness "
+ },
+ {
+  "file": "MEMORY",
+  "idx": 43,
+  "cls": "LEDGER",
+  "chars": 429,
+  "procedural": false,
+  "sha": "1a29ed75e915",
+  "head": "[CAPABILITY] TELEGRAM USERBOT (soak tamat ~25/10): FULL SILENT \u2014 F13 'NO MIRROR HERE'. L"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 44,
+  "cls": "LEDGER",
+  "chars": 509,
+  "procedural": false,
+  "sha": "ec09f7dd2e58",
+  "head": "[SEAL] REALITY EDGE BRIDGE (22/10 F13): chat Telegram Arif = reality-human edge bridge \u2014"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 45,
+  "cls": "SCAR",
+  "chars": 1591,
+  "procedural": false,
+  "sha": "288f91d46796",
+  "head": "[LESSON] arif-sites-ops skill = skills.external_dirs (read-only) \u2014 site-ops lessons must"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 46,
+  "cls": "LEDGER",
+  "chars": 601,
+  "procedural": false,
+  "sha": "842bab56bd98",
+  "head": "[ENV] KELUARGA BAYANG (22/10, hidup): /world/politics/shadow/ (PM Bayang, 9 PM) \u00b7 /world"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 47,
+  "cls": "SCAR",
+  "chars": 578,
+  "procedural": false,
+  "sha": "af8ef0a27678",
+  "head": "[LESSON] VERSI BERGANDA ATAS SATU FAIL (22/10): bila 2+ agent kerja page sama \u2014 HERMES p"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 48,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 185,
+  "procedural": false,
+  "sha": "824a251b0672",
+  "head": "[SYED DM] Nama SYED KHAIRUDDIN (\"Mokhtaruddin tu bapa aku\"; WA contact \"Syed Kudin\"). DM"
+ },
+ {
+  "file": "MEMORY",
+  "idx": 49,
+  "cls": "SKILL_OR_NOISE",
+  "chars": 545,
+  "procedural": false,
+  "sha": "dedba8a4707f",
+  "head": "[CANON SITE] Keluarga bayang F13 di arif-fazil.com: /world/politics/shadow/ (PM Bayang, "
+ }
+]
