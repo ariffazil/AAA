@@ -237,3 +237,50 @@ Nothing was promoted by wording.
 4. **MCP capability canaries** (DECLARED → REACHABLE → DISCOVERABLE → SCHEMA_VALID →
    READ_ONLY_CANARY_PASS) — deliberately not attempted; reachability is still not claimed as
    capability.
+
+---
+
+## ADDENDUM — F8 changed between observers, and both were right
+
+Written 2026-10-23 04:57Z, after the PDF render.
+
+Step 3 states that F8 was `unmeasured` (score 0.8, default) and therefore not failing, and uses
+that to say the 333-AGI report named the wrong floor. Re-probing at 04:53:45Z shows F8 is now
+**measured and failing**:
+
+```
+F8  score=0.5802  status=fail  measured=True
+    provenance=arifflow_live_vector:g=0.5802@2026-10-23T04:53:45Z
+```
+
+At 04:34:19Z it was `unmeasured` (0.8, `unmeasured_default`). The live-vector producer came alive
+between the two probes. So:
+
+- My 04:34 reading was correct at its own timestamp.
+- The 333-AGI statement "F8 masih gagal" is correct at 04:53.
+- Neither reading was wrong. The earlier framing — "they named the wrong floor" — is only true
+  for the 04:34 window, and the honest statement is that **F8's status flipped under us**.
+
+Current floor truth (04:53:45Z):
+
+| floor | score | status | provenance |
+|---|---|---|---|
+| F1 | 0.0 | **fail** | arifflow_fq_probe fq=0.111 |
+| F8 | 0.5802 | **fail** | arifflow_live_vector g=0.5802 |
+| F6 | 0.5 | unmeasured | empty_kernel_signal |
+| F10 | 1.0 | unmeasured | ontology_config_reference |
+| others | — | pass | floor_producer / live_vector |
+
+So there are now TWO failing floors, not one: F1 (receipted-verification deficit, mine) and
+F8 (G scalar 0.5802). F8's number is the same `apex_scalars.G` value seen earlier at 0.5807, which
+means F8 is a passthrough of federation coherence G. Diagnosing F8 causally is therefore the same
+job as diagnosing G, and it is not solved by moving a threshold — which is exactly what the
+333-AGI report warned against and I now apply to F8 rather than only to its framing.
+
+Also noticed and not explained: F12 scores 0.0 with status `pass`, and F7 scores 0.04 with status
+`pass`. A floor whose status is `pass` at near-zero score is a semantic defect in its own gate,
+recorded here as an open question rather than a claim.
+
+Lesson recorded: a floor's status is a reading with a timestamp, like any other measurement.
+Two observers who disagree across a 20-minute window are not in contradiction — they are in
+different frames. State the frame.

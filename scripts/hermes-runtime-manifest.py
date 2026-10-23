@@ -464,7 +464,7 @@ h3{{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute
 table{{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 4px}}
 th{{text-align:left;width:36%;font-weight:600;color:var(--muted);vertical-align:top;padding:5px 10px 5px 0;border-bottom:1px solid #f0ebe3}}
 td{{padding:5px 0;border-bottom:1px solid #f0ebe3;vertical-align:top;word-break:break-word}}
-.pill{{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:2px;text-transform:uppercase}}
+.pill{{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:2px;text-transform:uppercase;white-space:nowrap}}
 .ok{{background:#e5f0e9;color:var(--ok)}} .bad{{background:#f8e5df;color:var(--bad)}} .warn{{background:#f7eed7;color:var(--warn)}}
 .note{{background:#fff;border:1px solid var(--line);border-left:4px solid var(--bad);padding:14px 16px;border-radius:3px;margin:14px 0;font-size:14px}}
 ul{{margin:6px 0 12px;padding-left:20px}} li{{margin-bottom:5px}}
