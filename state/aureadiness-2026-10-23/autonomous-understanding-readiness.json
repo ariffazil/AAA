@@ -1,0 +1,238 @@
+{
+ "schema": "autonomous-understanding-readiness/v1",
+ "generated_at": "2026-10-23T03:43:00+00:00",
+ "host": "KVM8 af-forge (100.64.0.2)",
+ "scope_note": "Readiness measured per stage per actor. No global READY issued \u2014 the mission forbids it unless every lower stage is proven.",
+ "evidence_sources": [
+  "kernel /health + /tools (live)",
+  "tools/list handshake on 8 organs",
+  "arifFlow /health",
+  "VAULT999 line-parse sweep of 29 jsonl",
+  "identity.toml + IDENTITY/keys",
+  "ss -tlnp",
+  "systemctl running units",
+  "cron jobs.json",
+  "kvm4 ssh read-only census",
+  "skills-catalog-drift.py",
+  "site-preflight.py",
+  "arif_think canary"
+ ],
+ "stages": [
+  "observe",
+  "propose",
+  "verify",
+  "judge",
+  "execute"
+ ],
+ "per_actor": {
+  "ARIF": {
+   "observe": "READY",
+   "propose": "READY",
+   "verify": "READY",
+   "judge": "READY",
+   "execute": "READY_BOUNDED",
+   "basis": "only actor with ed25519_verified rows in seal_chain"
+  },
+  "arifos": {
+   "observe": "READY",
+   "propose": "READY",
+   "verify": "READY",
+   "judge": "READY",
+   "execute": "NO_AUTHORITY",
+   "basis": "9 tools callable, 13 floors active, but actor_verified=false and two contradictory measurement sets"
+  },
+  "hermes-kvm8": {
+   "observe": "READY",
+   "propose": "READY",
+   "verify": "READY",
+   "judge": "NO_AUTHORITY",
+   "execute": "NO_AUTHORITY",
+   "basis": "canary proved reasoning works and returns HOLD at OBSERVE_ONLY; no registered key"
+  },
+  "hermes-kvm4": {
+   "observe": "READY_LOCAL_ONLY",
+   "propose": "HOLD",
+   "verify": "HOLD",
+   "judge": "NO_AUTHORITY",
+   "execute": "NO_AUTHORITY",
+   "basis": "241 skills, 192 dead canon paths, /root/AAA is a 3-dir stub"
+  },
+  "irfanclaw": {
+   "observe": "UNKNOWN",
+   "propose": "UNKNOWN",
+   "verify": "UNKNOWN",
+   "judge": "NO_AUTHORITY",
+   "execute": "BOUNDED_LANE_ONLY",
+   "basis": "unit running; lane boundary not probed"
+  },
+  "333-AGI": {
+   "observe": "READY",
+   "propose": "READY",
+   "verify": "NO_AUTHORITY",
+   "judge": "NO_AUTHORITY",
+   "execute": "NO_AUTHORITY",
+   "basis": "traffic present, HELD at FQ 5.75; key unregistered"
+  },
+  "555-ASI": {
+   "observe": "READY",
+   "propose": "NO_AUTHORITY",
+   "verify": "READY",
+   "judge": "NO_AUTHORITY",
+   "execute": "NO_AUTHORITY",
+   "basis": "verify traffic present; key unregistered"
+  },
+  "888-APEX": {
+   "observe": "UNKNOWN",
+   "propose": "NO_AUTHORITY",
+   "verify": "READY",
+   "judge": "UNKNOWN",
+   "execute": "NO_AUTHORITY",
+   "basis": "key exists, no live 888 session probed this run"
+  },
+  "A-FORGE": {
+   "observe": "READY",
+   "propose": "NO_AUTHORITY",
+   "verify": "READY",
+   "judge": "NO_AUTHORITY",
+   "execute": "BOUNDED_UNGATED_AT_SCHEMA",
+   "basis": "115 tools; shell demands expected_output; execute/sealed do not require a verdict"
+  },
+  "arifFlow": {
+   "observe": "READY",
+   "propose": "NO_AUTHORITY",
+   "verify": "PARTIAL",
+   "judge": "NO_AUTHORITY",
+   "execute": "NO_AUTHORITY",
+   "basis": "/health only, no MCP; quotient 1.011 contradicted by kernel 0.44; 7 synthetic actors in production data"
+  },
+  "GEOX/WEALTH/WELL/CHRON/FRAME": {
+   "observe": "READY",
+   "propose": "NO_AUTHORITY",
+   "verify": "READY",
+   "judge": "NO_AUTHORITY",
+   "execute": "NO_AUTHORITY",
+   "basis": "tools/list handshake succeeds; no domain tool invoked this run"
+  }
+ },
+ "stage_verdicts": {
+  "READY_OBSERVE": {
+   "verdict": "CONDITIONAL",
+   "basis": "11 of 12 actors can observe live state; KVM4 can only observe its own partial host",
+   "gap": "no typed evidence object at the observation exit"
+  },
+  "READY_PROPOSE": {
+   "verdict": "PARTIAL",
+   "basis": "333 lane has traffic; proposals are not bound to evidence objects"
+  },
+  "READY_VERIFY": {
+   "verdict": "PARTIAL",
+   "basis": "555 lane has traffic + hermes_claim_validate callable; no contradiction set reaches the verdict"
+  },
+  "READY_JUDGE": {
+   "verdict": "NOT_READY",
+   "basis": "arif_judge callable but evidence is an untyped optional bag and no actor is verified; a verdict cannot be shown to rest on evidence"
+  },
+  "READY_EXECUTE_BOUNDED": {
+   "verdict": "NOT_READY",
+   "basis": "forge_execute/execute_sealed do not require a verdict; forge_shell does require expected_output"
+  }
+ },
+ "contradictions": [
+  {
+   "id": "C1",
+   "claim": "FQ",
+   "values": {
+    "kernel_/health": "0.44 @2026-10-23T03:36:19Z",
+    "arifflow_/health": "1.0109573602153903 @2026-10-23T03:41Z"
+   },
+   "impact": "F1 floor score 0.0 is derived from 0.44; if 1.011 is the truth, F1 is mis-scored. Neither source names the other.",
+   "owner": "UNASSIGNED"
+  },
+  {
+   "id": "C2",
+   "claim": "which floors are measured",
+   "values": {
+    "measurement_basis.unmeasured_floors": "F3,F4,F5,F6,F9",
+    "runtime_floors_status": "F3/F4/F5/F9 measured=True pass"
+   },
+   "impact": "A consumer can report 8/13 measured or 13/13 measured from the same payload.",
+   "owner": "arifOS"
+  },
+  {
+   "id": "C3",
+   "claim": "contract drift",
+   "values": {
+    "/health.contract_drift": "false",
+    "observed": "arif_think rejects a property it publishes"
+   },
+   "impact": "the drift sensor cannot see schema\u2192runtime divergence.",
+   "owner": "arifOS"
+  },
+  {
+   "id": "C4",
+   "claim": "identity source",
+   "values": {
+    "/etc/arifos/identity.toml": "'superseded by /root/AAA/identity.toml'",
+    "/root/AAA/identity.toml": "organ identity, no actor blocks",
+    "/root/AAA/IDENTITY/identity.toml": "1 actor block (FI-008)"
+   },
+   "impact": "three identity files; the one the kernel hashes is not the one holding actors.",
+   "owner": "ARIF decision"
+  },
+  {
+   "id": "C5",
+   "claim": "peer skill catalog",
+   "values": {
+    "kvm4 body arif-sites-content-ops": "102,722B",
+    "kvm8 body": "2,363B pointer stub",
+    "kvm4 makcikgpt-article-forging": "97,076B",
+    "kvm8": "7,487B"
+   },
+   "impact": "an agent reading KVM4's copy learns a deploy rule KVM8 retired on 2026-10-22.",
+   "owner": "HERMES (mined 3 sections, 124 forks remain)"
+  },
+  {
+   "id": "C6",
+   "claim": "cron registry plurality",
+   "values": {
+    "three paths": "/root/.hermes/cron/jobs.json, /root/HERMES/cron/jobs.json, runtime/hermes/.hermes/cron/jobs.json",
+    "inode": "all 5353039"
+   },
+   "impact": "NOT a contradiction on KVM8 \u2014 one file, three names. Prior doctrine warned of a dual registry; that warning is stale for this host.",
+   "owner": "none needed"
+  },
+  {
+   "id": "C7",
+   "claim": "seal closure",
+   "values": {
+    "SEALED_EVENTS.jsonl": "1357 rows",
+    "SEALED_EVENTS.relinked.jsonl": "1358 rows",
+    "outcomes.jsonl": "2256 rows"
+   },
+   "impact": "three ledgers with different lengths; which one is the canonical seal chain is not declared in /health.",
+   "owner": "arifOS"
+  }
+ ],
+ "contradictions_resolved": [
+  {
+   "id": "C6",
+   "resolution": "resolved by inode probe \u2014 one file via three symlinks; no action"
+  }
+ ],
+ "artifacts": [
+  "/root/AAA/state/aureadiness-2026-10-23/federation-identity-graph.json",
+  "/root/AAA/state/aureadiness-2026-10-23/federation-authority-graph.json",
+  "/root/AAA/state/aureadiness-2026-10-23/federation-capability-graph.json",
+  "/root/AAA/state/aureadiness-2026-10-23/d2-evidence-channel-audit.md",
+  "/root/AAA/state/aureadiness-2026-10-23/readiness-test-receipt.md",
+  "/root/AAA/state/aureadiness-2026-10-23/bounded-fix-plan.md",
+  "/root/AAA/state/aureadiness-2026-10-23/rollback-plan.md"
+ ],
+ "verdict": "HOLD",
+ "verdict_basis": "Every stage above OBSERVE is unproven at the evidence layer: arif_judge accepts evidence=null, no actor is verified, three identity files disagree, and 124 peer skill forks remain unmined. OBSERVE is conditionally ready. HOLD is the honest state.",
+ "what_would_change_it": [
+  "arif_judge rejects evidence=null for claim_class OBS/DER (one predicate)",
+  "one signed agent call returns actor_verified=true end-to-end",
+  "kernel and arifFlow publish one FQ value or an explicit contradiction record"
+ ]
+}
