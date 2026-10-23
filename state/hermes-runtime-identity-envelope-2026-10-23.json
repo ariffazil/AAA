@@ -1,0 +1,53 @@
+{
+ "schema": "hermes.runtime-identity-envelope/v1",
+ "actor_family": "Hermes",
+ "instance_id": "hermes-kvm8-asi",
+ "display_name": "HERMES (KVM8 edge bridge)",
+ "host": "forge / af-forge",
+ "address": "100.64.0.2",
+ "service": "hermes-asi-gateway.service",
+ "channel": "@ASI_arifos_bot",
+ "telegram_bot_id": 8410138119,
+ "pid": 1986168,
+ "executable": "/root/runtime/hermes/.hermes/tools/python-3.14.7+2026****0901-linux-x64/bin/python3.14",
+ "entrypoint_argv": [
+  "-I",
+  "-c",
+  "sys.path.insert(0,'/usr/local/lib/hermes-agent'); from hermes_cli.main import main; sys.exit(main())",
+  "gateway",
+  "run",
+  "--replace"
+ ],
+ "engine_root": "/usr/local/lib/hermes-agent",
+ "package_version_tree": "0.0.0",
+ "package_version_dist_metadata": "0.21.1",
+ "version_sources_disagree": true,
+ "source_commit": null,
+ "binary_or_tree_hash": "sha256:9d476c7edc67b0d7e9ab9ac95147d03898cfb4f8955119ffca85e0bdae216f07",
+ "tree_hash_method": "sha256 of sorted sha256sums over 1476 *.py + *.toml at depth<=2 under engine_root",
+ "service_started_at": "2026-10-22T19:32:38+00:00",
+ "uptime_seconds_at_measure": 58483,
+ "rss_kb": 1179172,
+ "threads": 66,
+ "restarts_since_start": 0,
+ "identity_status": "PARTIAL",
+ "identity_status_basis": [
+  "no source_commit is derivable: the tree carries version 0.0.0 and no VCS metadata",
+  "two version sources disagree (tree 0.0.0 vs installed dist metadata 0.21.1)",
+  "no cryptographic key is bound to this actor in /root/AAA/IDENTITY/identity.toml",
+  "every live kernel call returns actor_verified=false, authority OBSERVE_ONLY"
+ ],
+ "self_measurement_warning": "This envelope was produced BY the process it describes (via its own shell tool). It is a self-report with receipts, not independent attestation. Only a second host or a distinct process tree can raise it to VERIFIED.",
+ "measured_at": "2026-10-23T03:47:34+00:00",
+ "observer": "hermes-kvm8 (self)",
+ "evidence_source": [
+  "systemctl show hermes-asi-gateway.service",
+  "ps -o lstart,etimes,rss,nlwp",
+  "/proc/1986168/exe",
+  "/proc/1986168/cmdline",
+  "sha256sum over engine_root",
+  "importlib.metadata.version('hermes-agent')",
+  "/root/AAA/IDENTITY/identity.toml"
+ ],
+ "classification": "OBSERVED_SELF"
+}
