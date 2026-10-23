@@ -1,7 +1,7 @@
 ---
 name: arif-sites-ops
 description: "Use when deploying, editing, routing or diagnosing any arif-fazil.com page. The single canonical owner for the site — serving path, sanctioned additive deploy, human-first design gate, dead-URL trace, nav canon — with the merged pitfall ledger behind it."
-version: 2.0.0
+version: 2.1.0
 tags: [arifos, arif-fazil, deploy, caddy, vite, static-site, human-first, nav-canon, canonical-owner]
 triggers:
   - "add a page to arif-fazil.com"
@@ -75,6 +75,33 @@ patching any page; mirrored copies must both be patched or stale nav resurrects.
 
 ---
 
+## PREFLIGHT GATE — run this before any deploy, not the 92KB ledger
+
+```bash
+python3 /root/AAA/skills/arif-sites-ops/scripts/site-preflight.py --check /<route>/ \
+    [--url https://arif-fazil.com/<route>/] [--receipt receipts/<agent>/deploy.json]
+# exit 0 PASS · 1 FAIL (a real physical defect — do not deploy) · 2 UNKNOWN (never a pass)
+```
+
+Four mechanical traps became a check: **split-root** (which handler serves the route and from
+which root; names the trap when the file lives under the other root) · **orphan hashed assets**
+(route-scoped: live HTML naming an asset missing from `dist/assets` and live `assets/`) ·
+**phantom-200** (SPA shell, or the PARENT page served verbatim at a child URL — the zombie-link
+class) · **redaction** (delegates to `skill-artifact-redact --check` on the receipt).
+
+**Trigger-to-ref binding.** The script is the gate; the ledger is the depth. Open
+`references/pitfalls.md` ONLY in these cases:
+
+| Situation | Read |
+|---|---|
+| Preflight returns FAIL on a trap you have not seen before | the matching section of `pitfalls.md`, then fix and re-run the gate |
+| The route is a landing page or hub being redesigned | Human-First Doctrine above + `pitfalls.md` → archive archaeology |
+| The failure is a 308/redirect chain or a Caddy matcher question | `pitfalls.md` → path-root / split-root entries |
+| A sibling already built or deployed the same surface | `pitfalls.md` → "when the sibling already built the artifact" |
+| Everything else | do not read it — run the gate |
+
+A PASS is mechanical only: it does not judge content, copy, or design.
+
 ## DEAD URL — trace the missing layer
 
 A path can be registered in Caddy and still 404 when the file was never built.
@@ -143,7 +170,8 @@ Merged ledger, all four skills, verbatim with worked cases: `references/pitfalls
 
 ## REFERENCES
 
-`references/pitfalls.md` (merged, 92KB) · `references/nav-canon-v7.md` ·
+`scripts/site-preflight.py` (the active gate — 4 checks, exit 0/1/2) ·
+`references/pitfalls.md` (merged, 92KB — read by trigger, not by default) · `references/nav-canon-v7.md` ·
 `references/transmission-engine-viz.md` (29KB) · `references/build-deploy.md` (from
 `arif-fazil-site-ops`) · `references/web-surfaces.md` (from `arif-fazil-web-ops`: archive
 archaeology, `/words/` sections, makcikgpt-md mirror, atlas, live-data wiring) ·
@@ -157,4 +185,5 @@ Related: `arifos-site-patch-without-caddy-reload` (the ship path), `makcikgpt-ar
 
 | Version | Date | Change |
 |---|---|---|
+| 2.1.0 | 2026-10-23 | Adds `scripts/site-preflight.py` — the 92KB pitfall ledger converted into a 4-check active gate (split-root, route-scoped orphan assets, phantom-200 incl. hub-copied child URLs, receipt redaction) with explicit trigger-to-ref rules so the ledger is read by trigger, not by default. Canary-tested: zombie `/world/ai-founders/` FAILs, real pages PASS, dirty receipt FAILs. |
 | 2.0.0 | 2026-10-23 | Becomes the single canonical owner of arif-fazil.com (F13 consolidation). Merged pitfall ledger from four skills (deduped), nav canon v7, transmission-engine viz, build/deploy and content-ops history into `references/`. Static 28KB "Support files" dump dropped. `arif-fazil-web-ops`, `arif-fazil-site-ops`, `arif-sites-content-ops` converted to pointer stubs with `alternative_to: arif-sites-ops`. |
