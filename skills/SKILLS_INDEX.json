@@ -5,28 +5,28 @@
  "single_writer": true,
  "do_not_hand_edit": true,
  "summary": {
-  "total_entries": 1177,
-  "skills": 1014,
-  "namespaces": 163,
-  "bodies": 992,
+  "total_entries": 1305,
+  "skills": 1138,
+  "namespaces": 167,
+  "bodies": 1116,
   "projections": 22,
-  "alias_paths": 121,
+  "alias_paths": 118,
   "max_skill_depth": 4,
   "skills_by_depth": {
-   "0": 590,
-   "1": 240,
+   "0": 676,
+   "1": 282,
    "2": 16,
    "3": 1,
-   "4": 167
+   "4": 163
   },
   "namespaces_by_depth": {
-   "0": 66,
+   "0": 70,
    "1": 27,
    "2": 11,
    "3": 59
   },
-  "with_owner": 377,
-  "with_risk_tier": 337
+  "with_owner": 405,
+  "with_risk_tier": 367
  },
  "harnesses": [
   "claude",
@@ -46,7 +46,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 1,
+   "contains": 2,
    "owner_layer": null,
    "sha256": null
   },
@@ -183,6 +183,17 @@
    "sha256": null
   },
   {
+   "name": "cognitive-reflex",
+   "path": "/root/AAA/skills/cognitive-reflex",
+   "kind": "namespace",
+   "state": "namespace",
+   "depth": 0,
+   "namespace": null,
+   "contains": 1,
+   "owner_layer": null,
+   "sha256": null
+  },
+  {
    "name": "core",
    "path": "/root/AAA/skills/core",
    "kind": "namespace",
@@ -266,7 +277,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 11,
+   "contains": 14,
    "owner_layer": null,
    "sha256": null
   },
@@ -310,7 +321,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 5,
+   "contains": 7,
    "owner_layer": null,
    "sha256": null
   },
@@ -321,7 +332,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 8,
+   "contains": 9,
    "owner_layer": null,
    "sha256": null
   },
@@ -332,7 +343,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 168,
+   "contains": 164,
    "owner_layer": null,
    "sha256": null
   },
@@ -376,7 +387,7 @@
    "state": "namespace",
    "depth": 1,
    "namespace": "domains",
-   "contains": 150,
+   "contains": 146,
    "owner_layer": null,
    "sha256": null
   },
@@ -706,7 +717,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 71,
+   "contains": 67,
    "owner_layer": null,
    "sha256": null
   },
@@ -772,7 +783,7 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 5,
+   "contains": 1,
    "owner_layer": null,
    "sha256": null
   },
@@ -1300,7 +1311,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 52,
+   "contains": 62,
    "owner_layer": null,
    "sha256": null
   },
@@ -1333,7 +1344,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 4,
+   "contains": 5,
    "owner_layer": null,
    "sha256": null
   },
@@ -1355,7 +1366,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 7,
+   "contains": 8,
    "owner_layer": null,
    "sha256": null
   },
@@ -1536,6 +1547,17 @@
    "sha256": null
   },
   {
+   "name": "physique-intel",
+   "path": "/root/AAA/skills/physique-intel",
+   "kind": "namespace",
+   "state": "namespace",
+   "depth": 0,
+   "namespace": null,
+   "contains": 1,
+   "owner_layer": null,
+   "sha256": null
+  },
+  {
    "name": "primitives",
    "path": "/root/AAA/skills/primitives",
    "kind": "namespace",
@@ -1641,7 +1663,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 5,
+   "contains": 6,
    "owner_layer": null,
    "sha256": null
   },
@@ -1652,7 +1674,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 4,
+   "contains": 8,
    "owner_layer": null,
    "sha256": null
   },
@@ -1663,7 +1685,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 5,
+   "contains": 7,
    "owner_layer": null,
    "sha256": null
   },
@@ -1740,7 +1762,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 3,
+   "contains": 5,
    "owner_layer": null,
    "sha256": null
   },
@@ -1758,6 +1780,28 @@
   {
    "name": "video-gen",
    "path": "/root/AAA/skills/video-gen",
+   "kind": "namespace",
+   "state": "namespace",
+   "depth": 0,
+   "namespace": null,
+   "contains": 1,
+   "owner_layer": null,
+   "sha256": null
+  },
+  {
+   "name": "vision-analyzer",
+   "path": "/root/AAA/skills/vision-analyzer",
+   "kind": "namespace",
+   "state": "namespace",
+   "depth": 0,
+   "namespace": null,
+   "contains": 1,
+   "owner_layer": null,
+   "sha256": null
+  },
+  {
+   "name": "voice-stack",
+   "path": "/root/AAA/skills/voice-stack",
    "kind": "namespace",
    "state": "namespace",
    "depth": 0,
@@ -1828,7 +1872,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 5,
+   "contains": 9,
    "owner_layer": null,
    "sha256": null
   },
@@ -2529,7 +2573,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cd2803206e30f618115cec844cdd78140e09858da556fc3f491c77e5641994d0",
+   "sha256": "9f140485c32366cb492df2652f24f71a5e0ca56aa550538673c5fc89ace484a6",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -2687,7 +2731,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "29bdfe43ae4de81c235251c0ce9dcba539e947a4b38bd73ed8375880fbbea176",
+   "sha256": "d4a22efae7798bc78d6673528f4a8d891a0c94c562d2b7aee88acd2193b57c36",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "555-ASI",
@@ -2724,7 +2768,7 @@
    "state": "projection",
    "depth": 0,
    "namespace": null,
-   "sha256": "5aa4b08e7306a3ad315229eb15fb1e228b41a377797a206ea36c51ff35f42993",
+   "sha256": "636b66d2be74a52ae5e8c3aaece1237abab0211016b4a33dd5bef4156daa12d3",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -2790,7 +2834,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "660bd5ecc14bb3725577daa640efa7348e582b52a5b7ce51641788232929ea04",
+   "sha256": "fc022e3b4d95132ab9b91a94e560f89d242a92a9465e6e70e82524bb11b930fb",
    "version": "2026.08.14.2",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN (Arif) \u2014 forged by 333-AGI",
@@ -4200,8 +4244,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9cb8c025861c1d8e1ebbd39c899c129fc5f53fad57353365bcdf45bfebab8393",
-   "version": "1.0.0",
+   "sha256": "7918b3f78460adce4337fd4ea3eddebc31973c47ef3b640240a85e54cc405c4c",
+   "version": "1.3.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -4237,6 +4281,66 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-long-context",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "federated-claim-audit",
+   "path": "/root/AAA/skills/aaa/federated-claim-audit",
+   "skill_md": "/root/AAA/skills/aaa/federated-claim-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "aaa",
+   "sha256": "c3a54c08dc794bc64dcd0e131f1cf01afb6f3966093abe804587fcf426b8fabf",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "abang-sado-analysis-doctrine",
+   "path": "/root/AAA/skills/abang-sado-analysis-doctrine",
+   "skill_md": "/root/AAA/skills/abang-sado-analysis-doctrine/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "86b1638663d560f0d14a5b7c85d184d2c7c055935b99c724b39a903040c50259",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -4340,7 +4444,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f74f39ebf29fa57ba079a2c4214ce0ace027a9814eae82ac3595629011ff5eb5",
+   "sha256": "3af3cda23a2422c5a48553ad6385a1f748610eb5721fb004d0e2cc83355dab12",
    "version": "1.2.0",
    "deprecated": false,
    "owner_layer": null,
@@ -4457,6 +4561,39 @@
    ]
   },
   {
+   "name": "agent-runtime-shadow-repair",
+   "path": "/root/AAA/skills/agent-runtime-shadow-repair",
+   "skill_md": "/root/AAA/skills/agent-runtime-shadow-repair/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "acd0915550d4b99521356c9f9f6b6a9881526aaa0a9cd339a3eab35dab528f1e",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F7",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "agent-tool-verification",
    "path": "/root/AAA/skills/agent-tool-verification",
    "skill_md": "/root/AAA/skills/agent-tool-verification/SKILL.md",
@@ -4464,7 +4601,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "33ce716447606946f8480e5e2a960052c0d6e67152869712bdc20a446a513257",
+   "sha256": "cb1dbaacec76e805cf3a51ed2ad948b2a099c9ab6223d73331714167e326f224",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -4496,7 +4633,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6332e23d979b92d7cb5511d0df7d77a725177b669f5983ab5366454e0576a8d7",
+   "sha256": "5499bb4cb8e90fe4bc166a2d0137d8e763f3d40a13104c7603c0347a1150cb1b",
    "version": "2026-08-08-v1",
    "deprecated": false,
    "owner_layer": null,
@@ -4615,7 +4752,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a291fa482d7914e7d4f3c6af58e20f24170e3e824bf3c26e2c6387c76f105e4a",
+   "sha256": "d1da373b44626652ab9c6eff275f83385e7a2f2070d6300dad4e7f6d8f0089d4",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -4782,7 +4919,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3301916159b26932f7e3445fd27b57bd626e156f8be8053c1d96b0d5e8b09ca2",
+   "sha256": "bb0eb5237ed44f3789670db74e2e88bc432851558b1796e1e4f0191fda6c542d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -4839,6 +4976,34 @@
    "depth": 0,
    "namespace": null,
    "sha256": "c1f1349f082873fa6792b853927e8371fe095fd8f6e24044dffa5361662b5bde",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "ai-paper-paste-audit",
+   "path": "/root/AAA/skills/ai-paper-paste-audit",
+   "skill_md": "/root/AAA/skills/ai-paper-paste-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "405d56890b445c772ff5d2d5a05f0ae852588a0890241e616dd8c96172a289dd",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -4956,7 +5121,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7cd0b281b102191f5afeab4e1b9e5433a290c16b59d0a85dd95ffee577ce588f",
+   "sha256": "d30d18a6d14f84c843ed418691dc35704126ef9de9e326e8c3f8796c53fe6412",
    "version": "2026-08-07-v1",
    "deprecated": false,
    "owner_layer": null,
@@ -5470,7 +5635,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cbed2d406f6d86eb7992341fab26d0f0f163128bb314168d63e127f0219fbef3",
+   "sha256": "c8667f7c8fc8e3ca98d01003e0652c0617dfa8b75c3e7261a4451421df4ef4ed",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -5547,6 +5712,34 @@
    ]
   },
   {
+   "name": "arif-fazil-site-deploy",
+   "path": "/root/AAA/skills/arif-fazil-site-deploy",
+   "skill_md": "/root/AAA/skills/arif-fazil-site-deploy/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "463f28ee8f314e1d18fe3db3e3ae19e0cf6d413823cd0abd49a87dff0187203d",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "arif-fazil-site-ops",
    "path": "/root/AAA/skills/arif-fazil-site-ops",
    "skill_md": "/root/AAA/skills/arif-fazil-site-ops/SKILL.md",
@@ -5554,7 +5747,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "35c28a43246bbd0c490da65f5a4a136decd41db851fd92e523c21165d9c3ddcb",
+   "sha256": "4b0424bbc00b3d2cd70bc436a6dfd98695f027611f55ebb16ac1a7f3b6165359",
    "version": "2.4.0",
    "deprecated": false,
    "owner_layer": null,
@@ -5610,8 +5803,36 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3417cb2ffb278757c808410aa72e4c005ca96b2e95d0f8f28c9f3e178462cc26",
+   "sha256": "dc4479d072fbdb7352ac61639cf5b9c2927acab69528cb1fb6bae478ff3e600d",
    "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "arif-site-publish",
+   "path": "/root/AAA/skills/arif-site-publish",
+   "skill_md": "/root/AAA/skills/arif-site-publish/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "09a7c8f8800bcf02373ddaa006380aa3e55b89cf3be4f97e76cd9f6e33f057c0",
+   "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -5967,7 +6188,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f51bf01703233623438f67525b772f0812c2b93ab7b1340e68c39841d4866b18",
+   "sha256": "b9dd35722c640e24d28b88966d07627035bcae1705d36000f30ddbcec2016a89",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -6411,6 +6632,34 @@
      "F4",
      "F7"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "attribution-integrity",
+   "path": "/root/AAA/skills/attribution-integrity",
+   "skill_md": "/root/AAA/skills/attribution-integrity/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "65ab9d6f138f433d14e9fa0a62a7c7d3900d40d2089cbfdbe808b3b0fe350559",
+   "version": "0.1.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -6987,7 +7236,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "db3566666cfece22f88c4f6e943f9e3d27c3c67ec10838754779d2746db4ed31",
+   "sha256": "3ba27cacfd6cbe2abae4505e8d54ea9a6c788984ae247e2a67115530a408d86d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -7021,7 +7270,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0781bb3105e61421fc0fdabdf45283f97013a6b0c13ae38646e215c092ae4e63",
+   "sha256": "5730c518e227f1621b65f1e3710109034026770794a89bc8d44e6586f225a648",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -7030,6 +7279,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "bm-business-translation",
+   "path": "/root/AAA/skills/bm-business-translation",
+   "skill_md": "/root/AAA/skills/bm-business-translation/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "9cc0578f84cb31a72a71caf6a32efde3cd06d270ad5f819d4b3ce3aff8345cf6",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -7070,6 +7347,34 @@
    ]
   },
   {
+   "name": "body-composition-assessment",
+   "path": "/root/AAA/skills/body-composition-assessment",
+   "skill_md": "/root/AAA/skills/body-composition-assessment/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "15ec04962e4fcb277c85be02b600697025d1b8b70ff0844404cb095d3858fb4d",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "bond-corpus-probe",
    "path": "/root/AAA/skills/bond-corpus-probe",
    "skill_md": "/root/AAA/skills/bond-corpus-probe/SKILL.md",
@@ -7077,7 +7382,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3cf1d655470cb142a2f1a73c2212a57c5f781fde66090c65cfa008f02844fc40",
+   "sha256": "73e88a19758f589ec8eab2f8a02d4c145e3ea6b8bb8453161150c506572b635c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13",
@@ -7091,6 +7396,34 @@
      "F5",
      "F9"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "bond-reading-discipline",
+   "path": "/root/AAA/skills/bond-reading-discipline",
+   "skill_md": "/root/AAA/skills/bond-reading-discipline/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "d9e2190bb786085facf6191190c02a9c066d2f60de4e03a878ac2617d42aa03d",
+   "version": "0.1.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -7220,6 +7553,34 @@
    ]
   },
   {
+   "name": "business-document-production",
+   "path": "/root/AAA/skills/business-document-production",
+   "skill_md": "/root/AAA/skills/business-document-production/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "42e3ad041403210e02dc2436224741980a67e4320ab40c98f6ef17f0b94c1235",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "builder-commercial-positioning",
    "path": "/root/AAA/skills/business-intel/builder-commercial-positioning",
    "skill_md": "/root/AAA/skills/business-intel/builder-commercial-positioning/SKILL.md",
@@ -7248,6 +7609,34 @@
    ]
   },
   {
+   "name": "business-letter-pdf",
+   "path": "/root/AAA/skills/business-letter-pdf",
+   "skill_md": "/root/AAA/skills/business-letter-pdf/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "f94ba6ebf6972875de44aea0bac549e5612385be40560f383cfea07ca19c4527",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "canon-integrity-check",
    "path": "/root/AAA/skills/canon-integrity-check",
    "skill_md": "/root/AAA/skills/canon-integrity-check/SKILL.md",
@@ -7256,6 +7645,34 @@
    "depth": 0,
    "namespace": null,
    "sha256": "209d976dabf0912c288548f4ad54998c582464f810db76fe3c28b739592e7f32",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "canon-single-source",
+   "path": "/root/AAA/skills/canon-single-source",
+   "skill_md": "/root/AAA/skills/canon-single-source/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "7c3fadfcecef1776b050671d20fb1aad260d88d5945b0308b958a6496418a7f4",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -7372,6 +7789,34 @@
    ]
   },
   {
+   "name": "casual-bm-chat-register",
+   "path": "/root/AAA/skills/casual-bm-chat-register",
+   "skill_md": "/root/AAA/skills/casual-bm-chat-register/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "2e163cfbb1b76d5fb64d6167d316ccdb544b06b2767530d7faebaecad98e8ab6",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "causal555-pywhy",
    "path": "/root/AAA/skills/causal555-pywhy",
    "skill_md": "/root/AAA/skills/causal555-pywhy/SKILL.md",
@@ -7460,6 +7905,34 @@
    ]
   },
   {
+   "name": "chatgpt-apps",
+   "path": "/root/AAA/skills/chatgpt-apps",
+   "skill_md": "/root/AAA/skills/chatgpt-apps/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "c3a13a659ce26e9d067b5a97c321e8abec6d8e878afce31b7e841dfcf2635c3a",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "check-work",
    "path": "/root/AAA/skills/check-work",
    "skill_md": "/root/AAA/skills/check-work/SKILL.md",
@@ -7483,6 +7956,34 @@
      "F7",
      "F11"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "chunked-tts-render-integrity",
+   "path": "/root/AAA/skills/chunked-tts-render-integrity",
+   "skill_md": "/root/AAA/skills/chunked-tts-render-integrity/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "6c20802913a08c51c89770433e0ee10a9406e79b166d02357c94ffa0086e2c52",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -7529,7 +8030,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "192af3d9dfc934242b0e273de43e616dd6f8309458c8bc63112758a69e9c17d5",
+   "sha256": "e4499e6f4ed7415a1472cbd31540d5c653189c4511c4cb15bf35f143ebd00b9a",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
@@ -7611,6 +8112,34 @@
      "F11",
      "F13"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "clause-split-tts-render-ops",
+   "path": "/root/AAA/skills/clause-split-tts-render-ops",
+   "skill_md": "/root/AAA/skills/clause-split-tts-render-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "cc49ea93a37e6d300b5efce576375f62cb2298686707683ae78d4fb975228787",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -7724,6 +8253,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "social-exposure-read",
+   "path": "/root/AAA/skills/cognitive-reflex/social-exposure-read",
+   "skill_md": "/root/AAA/skills/cognitive-reflex/social-exposure-read/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "cognitive-reflex",
+   "sha256": "62fefc12c7e45afa8753fbdeb7cb90b3142e1cb50644cf78fc33799a5579a2a2",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
     "floor_scope": null
    },
    "harnesses": [
@@ -8535,7 +9092,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "creative",
-   "sha256": "c0fee42a3e3bdf8cca159d38105f91afccf57254f5cc90bb8c98405df3588ade",
+   "sha256": "0a298bcdebe6fb6cbf6328b0fcd03d5ae28120f3f089ab011a063615b9c34ace",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -8544,6 +9101,62 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "persona-arc-scripting",
+   "path": "/root/AAA/skills/creative/persona-arc-scripting",
+   "skill_md": "/root/AAA/skills/creative/persona-arc-scripting/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "creative",
+   "sha256": "0c9ce3e89648593bfd623d6cf43eb5a469db39011f51783fd66aac6481b2a8e4",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "persona-voice-sequence-delivery",
+   "path": "/root/AAA/skills/creative/persona-voice-sequence-delivery",
+   "skill_md": "/root/AAA/skills/creative/persona-voice-sequence-delivery/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "creative",
+   "sha256": "e0c3ebc14f286201b35cb0375da5cc355c5a2607cff0fcd71044bc784604c40d",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
     "floor_scope": null
    },
    "harnesses": [
@@ -8656,6 +9269,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "tts-take-gate-repair",
+   "path": "/root/AAA/skills/creative/tts-take-gate-repair",
+   "skill_md": "/root/AAA/skills/creative/tts-take-gate-repair/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "creative",
+   "sha256": "209139e51482e6b46a9ba22444365cbabda517bd2420f63bf3e5de1192916d96",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
     "floor_scope": null
    },
    "harnesses": [
@@ -8785,6 +9426,65 @@
    ]
   },
   {
+   "name": "cross-harness-relay-wiring",
+   "path": "/root/AAA/skills/cross-harness-relay-wiring",
+   "skill_md": "/root/AAA/skills/cross-harness-relay-wiring/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "119ac791acb8a68b2d979e576d46f87ef9bf19ca81f63203f146133e7edf1e76",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "cross-host-tool-lane-integration",
+   "path": "/root/AAA/skills/cross-host-tool-lane-integration",
+   "skill_md": "/root/AAA/skills/cross-host-tool-lane-integration/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "ceed7430b3ad005f0cf0c20cc05990234420c84eb390f83f4bb06b252bf215c0",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": [
+     "F2",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "curated-recommendation-artifact",
    "path": "/root/AAA/skills/curated-recommendation-artifact",
    "skill_md": "/root/AAA/skills/curated-recommendation-artifact/SKILL.md",
@@ -8860,6 +9560,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "declared-vs-live-audit",
+   "path": "/root/AAA/skills/declared-vs-live-audit",
+   "skill_md": "/root/AAA/skills/declared-vs-live-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "c0804300a85db5a01e1387faee776e9601e724c799116ac03f4eaa37aa573ba4",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
     "floor_scope": null
    },
    "harnesses": [
@@ -9135,6 +9863,34 @@
    ]
   },
   {
+   "name": "desire-structure-mapping",
+   "path": "/root/AAA/skills/desire-structure-mapping",
+   "skill_md": "/root/AAA/skills/desire-structure-mapping/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "139defb57f528d92a28cd55affae6dd9ec23cb569a99edfce97d38f8e16ad6fa",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "aforge-google-workspace",
    "path": "/root/AAA/skills/devops/aforge-google-workspace",
    "skill_md": "/root/AAA/skills/devops/aforge-google-workspace/SKILL.md",
@@ -9143,6 +9899,34 @@
    "depth": 1,
    "namespace": "devops",
    "sha256": "419de91c7fc8442c8f199965fdc7bf291ab0a8c847cc243ebcdab5dbcc842b48",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "federated-surface-family",
+   "path": "/root/AAA/skills/devops/federated-surface-family",
+   "skill_md": "/root/AAA/skills/devops/federated-surface-family/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "devops",
+   "sha256": "72c91f9aa1f6e6c5c47666834804c5d3a70bc0c1116c8fbfa3e2526bf77e80f9",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -9285,6 +10069,34 @@
    ]
   },
   {
+   "name": "monitor-probe-integrity",
+   "path": "/root/AAA/skills/devops/monitor-probe-integrity",
+   "skill_md": "/root/AAA/skills/devops/monitor-probe-integrity/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "devops",
+   "sha256": "4a060b4cc411b944d956d0833d61c0ad07b7ea2d2728b9fa1e9ee85b77fdc068",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "discovery-surface-verification",
    "path": "/root/AAA/skills/discovery-surface-verification",
    "skill_md": "/root/AAA/skills/discovery-surface-verification/SKILL.md",
@@ -9386,7 +10198,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2352025df056b3c9d9278affe439a19549747455ab56873b7690db05a610c791",
+   "sha256": "9617401be66169cd0d751c925ecec301c6deb160fb64e64723bbbc61f9ed61a0",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -9451,6 +10263,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "clinical-explainer-for-lay-reader",
+   "path": "/root/AAA/skills/document-intel/clinical-explainer-for-lay-reader",
+   "skill_md": "/root/AAA/skills/document-intel/clinical-explainer-for-lay-reader/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "document-intel",
+   "sha256": "ba8f7f68aec0c828ddc48eae103b9577126c210fb5bc919f8902e81358fb951b",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-document",
     "floor_scope": null
    },
    "harnesses": [
@@ -9588,7 +10428,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "document-intel",
-   "sha256": "81213e3ea583069c7fdb9dd688ed3780f8c9045056a58cb1055910919a6a3fda",
+   "sha256": "5f1336b5d4ed56eeb8f913a55dcdc9c57256eb1fb55e0af90f5838ea9a1246e5",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -9644,7 +10484,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "document-intel",
-   "sha256": "b92262fd4e81d45afebc6dfec9f96d64b8b556902fb35acf790098474a35fb03",
+   "sha256": "b50e709be1a7d1f7ad3810ef71ef5d59f364b376b6b070548901b9c97edaf853",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -10066,7 +10906,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "81912adac51236376c1bc7a9c82ed4242ac1a192cbded1714d3a504f947d7de8",
+   "sha256": "7a701c01b30001e9e718a6eb9a94e1917ebbdbc677e0c8e157abdb2b39b4d0c6",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -10655,7 +11495,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "52eafe46cc73c95f326dbe600cd2c4a6eb5bd5de62d783299bf832acd5e4f7e1",
+   "sha256": "a7907160040fab09ec936b5010e4bfffe380d0a427c79283ca005f8593554870",
    "version": null,
    "deprecated": false,
    "owner_layer": "curator",
@@ -11872,7 +12712,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "b6bfe85e101adab056773f93989044757d8095106c9714cfd0ecc73443342d57",
+   "sha256": "4471f16d0cb88590c35fb508a5dfe7d0aec0e64ee6028fcda1e0cfd7aa40c0c7",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -12268,7 +13108,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "9befa69d96e9531ee3d9f9708ff9f0c2207060fc3e58c6a00a72b5d44f000a33",
+   "sha256": "556b8aaa197c483f21a2267d4604dce8e404dcd55f6ba568ad2d8ad9e980345b",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -12524,62 +13364,6 @@
    ]
   },
   {
-   "name": "civic-intelligence-pdf",
-   "path": "/root/AAA/skills/domains/general/workshop/document-intel/civic-intelligence-pdf",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/document-intel/civic-intelligence-pdf/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "4d0318bf4ac35fb78f107371480be1f2ed614ef455c82c89c064af2bd266089d",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "forge-pdf-delivery",
-   "path": "/root/AAA/skills/domains/general/workshop/document-intel/forge-pdf-delivery",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/document-intel/forge-pdf-delivery/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "81774bd3d5bc9551399cdae05040394a1bd3de77755dd38470b3e71712bd8753",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "medical-document-interpretation",
    "path": "/root/AAA/skills/domains/general/workshop/document-intel/medical-document-interpretation",
    "skill_md": "/root/AAA/skills/domains/general/workshop/document-intel/medical-document-interpretation/SKILL.md",
@@ -12596,62 +13380,6 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-long-context",
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "open-slide-integration",
-   "path": "/root/AAA/skills/domains/general/workshop/document-intel/open-slide-integration",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/document-intel/open-slide-integration/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "5f527050fa18b4e7b769a2eff20f507e1fa4dbc62da2b8d5ea5c5bbdc24c1adb",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "scientific-pdf-generation",
-   "path": "/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation",
-   "skill_md": "/root/AAA/skills/domains/general/workshop/document-intel/scientific-pdf-generation/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 4,
-   "namespace": "domains",
-   "sha256": "79ec37a715afc5537cea42b394dba3dd55a0432bbd720a11ec5056aaa5d721ac",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -14539,7 +15267,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "cb0b5345fcb33fbf590ed2dbc1d58d9dbed9dac9fc4edb17f467205b4275cf64",
+   "sha256": "3935d2e9983d9ccb04d2da0927a807b8b736fe0e9b6dce392379172ae25398d8",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -15405,8 +16133,64 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "abd6150cca39375d93d57573b13cb143ff87d741419f268573aac7e9829db81b",
+   "sha256": "87540cf142f7a8dc7926cffb42b2987e99e52f59c872c3e02d37101c80648f11",
    "version": "1.1.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "evidence-artifact-forensics",
+   "path": "/root/AAA/skills/evidence-artifact-forensics",
+   "skill_md": "/root/AAA/skills/evidence-artifact-forensics/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "1f0cd6fca7fb374e3d484e76606c4db9ffdd0c3c5be2b9326e4d448f8bb22f7c",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "evidence-chain-audit",
+   "path": "/root/AAA/skills/evidence-chain-audit",
+   "skill_md": "/root/AAA/skills/evidence-chain-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "6eb8b61329fdd396c4102f71e3b08813d470093abf09ca3f866c4e4893b46b45",
+   "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -15457,6 +16241,34 @@
    ]
   },
   {
+   "name": "external-agent-conformance-testing",
+   "path": "/root/AAA/skills/external-agent-conformance-testing",
+   "skill_md": "/root/AAA/skills/external-agent-conformance-testing/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "fc2a126f341107c4f9060e342680d89fb0b80f1dc83023c987f74036180a2a1d",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "external-artifact-verdict",
    "path": "/root/AAA/skills/external-artifact-verdict",
    "skill_md": "/root/AAA/skills/external-artifact-verdict/SKILL.md",
@@ -15475,6 +16287,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "faceless-subject-rendering",
+   "path": "/root/AAA/skills/faceless-subject-rendering",
+   "skill_md": "/root/AAA/skills/faceless-subject-rendering/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "59ad1667af5af8526847e70ea1a1a9586f74ea81f5006e2872f943835d80bb04",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -15634,7 +16474,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "17ba20fc0a45f8dae9d502b388f33ea83db4db14d030e2d394a63b3ed22e222d",
+   "sha256": "180126568543569e8787bf6e71d83ccb76a4dcf7b06e93fd4f2bb9e604468ddc",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -15722,7 +16562,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b3881dbdec8ad7e7e78b48c46efa90a996c7d142fcc8bcbc5e9c7ef697c662bd",
+   "sha256": "d62617dfeeef92de203b0b865514bd83799bb1eb12073953649aeac0d0bc94c5",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -15750,7 +16590,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c0a49664d48469032da72f6cf9b83e7d6598c23df85c0e347224566a0899f68c",
+   "sha256": "aa9af2e48032d3920e884067e1c68b73d3f06f72cdf57483496abfffe1384a59",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -15778,7 +16618,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9197d49d36d6e266e6a534f9b8d2b2c266839932b7aa0b537a8c7a954f69f922",
+   "sha256": "1242a02b8abb7a92d5fc7658e765a5c14679fe1728b0c512e7a3536e3d1a49f4",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -16288,7 +17128,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "76a7bd4575617d8a9d437782536f78166f377ae190cc06a4f7c11d1c9419dc73",
+   "sha256": "ebaf3c0e9c87cf49283dc33ba2426dd3157797e0190efe71906c2ff3cbc4012b",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -16316,7 +17156,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9c358d461e0cd4bed819225c6e7675d871eeadea8f154390a93cc427e29e7b7b",
+   "sha256": "47387e5c99f3055f95324b48d8e27f467a65b0a66b42b83170a0467fa62891e9",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -16817,6 +17657,38 @@
      "F7",
      "F11",
      "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "figure-annotation-verification",
+   "path": "/root/AAA/skills/figure-annotation-verification",
+   "skill_md": "/root/AAA/skills/figure-annotation-verification/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "5c7612368a95ee79806fd0e138ff6b48f398181838d6afb7b0cddf87d4a0c797",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4"
     ]
    },
    "harnesses": [
@@ -18053,7 +18925,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8ca9ed473e5ab4f56ac65c66916692b86116d19c97b0128dcf84d6e040da39d0",
+   "sha256": "c5723fdcc450ecdd303d116e9db0672b3f94ace12e7ccd3886f0eceb63de5172",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -18214,7 +19086,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7707f493dc704e30d2eb566b8bdaadeb0afb15d1797793a3ccbfd1cab732aaa1",
+   "sha256": "b57e1250fcb476dcea25bfb0e664bca8165fe306b8a52a84a528eff25bc57d63",
    "version": "1.1.0-2026.08.21",
    "deprecated": false,
    "owner_layer": "A-FORGE",
@@ -18420,7 +19292,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0e913c5c315bd0d6853bfc30b16f24199f64acd46e29710d576cf6105783776f",
+   "sha256": "dfc3c555e2199da6525537034c1087797a3cce90fc79c0d932ddb9edc76205f1",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -18526,6 +19398,38 @@
      "F1",
      "F2",
      "F4",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "Forge Feedback Loop Ladder \u2014 Build the Red Signal First",
+   "path": "/root/AAA/skills/forge-feedback-loop-ladder",
+   "skill_md": "/root/AAA/skills/forge-feedback-loop-ladder/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "528af5eaed42a9bbdd34fa5d2acadb647bd50724053009addfa0b33cc591bf7a",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "medium",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": [
+     "F1",
+     "F2",
      "F11"
     ]
    },
@@ -19604,7 +20508,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cca0f25f84962584f752f05c761b5084f2388bedbc20785bdb36caf3c39797f1",
+   "sha256": "c6c894b5d78cbbdc1da76bc3884d3ca4a266398d889689eccdff0586741ae282",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -19667,7 +20571,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f1cd395cab923da0f8ba0ff4636d0b0ac30badc88c887c2bf38dd9a9e90ed503",
+   "sha256": "a340c264a7fe2ca190e8541e10cdaf3dc14445b15a3ed611332b29f8b4f88345",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -19832,7 +20736,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "eb14f3d1bf937515812281c1d52c774230aad36397f7719fc536d30dc82d4a09",
+   "sha256": "670242d94e496e81aa2279fa32116f95b3abb663e937e8d809d9f6948529a89e",
    "version": null,
    "deprecated": false,
    "owner_layer": "A-FORGE",
@@ -19918,6 +20822,62 @@
    ]
   },
   {
+   "name": "flow-gap-sweep",
+   "path": "/root/AAA/skills/forge/flow-gap-sweep",
+   "skill_md": "/root/AAA/skills/forge/flow-gap-sweep/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "forge",
+   "sha256": "aad2e5a5f395204a29b6d704bf24577e7e794849d3e34a5a11ddd11d2a5a3af6",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "forensik-institutional-audit",
+   "path": "/root/AAA/skills/forge/forensik-institutional-audit",
+   "skill_md": "/root/AAA/skills/forge/forensik-institutional-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "forge",
+   "sha256": "baf75d63b8bfa50976aa69ddb0650df1b24b669beefc868aad0172ab2f92beb4",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "forge-embedding-qdrant-integration",
    "path": "/root/AAA/skills/forge/forge-embedding-qdrant-integration",
    "skill_md": "/root/AAA/skills/forge/forge-embedding-qdrant-integration/SKILL.md",
@@ -19966,6 +20926,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-multimodal-vision",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "hermes-config-mutation",
+   "path": "/root/AAA/skills/forge/hermes-config-mutation",
+   "skill_md": "/root/AAA/skills/forge/hermes-config-mutation/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "forge",
+   "sha256": "cf21be331eebd0905ff78ffa4b978db020fa9503c84a20c2f3a3b6244044d4cf",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "medium",
+    "autonomy_tier": null,
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -20138,6 +21126,90 @@
    ]
   },
   {
+   "name": "remote-mcp-adoption-review",
+   "path": "/root/AAA/skills/forge/remote-mcp-adoption-review",
+   "skill_md": "/root/AAA/skills/forge/remote-mcp-adoption-review/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "forge",
+   "sha256": "8537c11c43a82dba1212ebfd8ee55ca6961866e245582c0448c1018a0e92c37f",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "technical-figure-geometry",
+   "path": "/root/AAA/skills/forge/technical-figure-geometry",
+   "skill_md": "/root/AAA/skills/forge/technical-figure-geometry/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "forge",
+   "sha256": "fc86e29914a1712dcf218e6915e70b356bbd012649d3929ec014f981adfa59d6",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": "fed-multimodal-vision",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "third-party-mcp-adoption",
+   "path": "/root/AAA/skills/forge/third-party-mcp-adoption",
+   "skill_md": "/root/AAA/skills/forge/third-party-mcp-adoption/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "forge",
+   "sha256": "4ea0d933f27b5654ec3a2db12597bd6a0ce7ad51c68007db5df7eb6a7576b2c0",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "forget",
    "path": "/root/AAA/skills/forget",
    "skill_md": "/root/AAA/skills/forget/SKILL.md",
@@ -20147,6 +21219,34 @@
    "namespace": null,
    "sha256": "85bb68d2a5c46311692ae77548f73464fb4152830eeca464fd860cc8800b612d",
    "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "formal-document-rebuild",
+   "path": "/root/AAA/skills/formal-document-rebuild",
+   "skill_md": "/root/AAA/skills/formal-document-rebuild/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "404a1b5030024c2d77bbf9c9bf82e1770d69a9c1026c809efd6a7629d71fe386",
+   "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -20239,6 +21339,66 @@
     "autonomy_tier": null,
     "capability_tier": null,
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "generated-audio-provenance",
+   "path": "/root/AAA/skills/generated-audio-provenance",
+   "skill_md": "/root/AAA/skills/generated-audio-provenance/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "30901e42ab3e191c8864183cc9d3abebdd5d83ab611e9da13ae5d8a73f79e968",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "generated-scientific-artifact-audit",
+   "path": "/root/AAA/skills/generated-scientific-artifact-audit",
+   "skill_md": "/root/AAA/skills/generated-scientific-artifact-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "6d649346b6737b97e96f6e47858c44061afed2d6b00ac0e5fd18509e03ff8658",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F7"
+    ]
    },
    "harnesses": [
     "claude",
@@ -20372,6 +21532,122 @@
    ]
   },
   {
+   "name": "geological-asset-brief",
+   "path": "/root/AAA/skills/geological-asset-brief",
+   "skill_md": "/root/AAA/skills/geological-asset-brief/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "fd2378f89f102f3b2a3068c2143a72b043113bbd47eca42c10c903e7603f5050",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "GEOX",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F7",
+     "F9"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "geoscience-figure-audit",
+   "path": "/root/AAA/skills/geoscience-figure-audit",
+   "skill_md": "/root/AAA/skills/geoscience-figure-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "31c56e241d2e479a9aa01dd642cb36ddf0dceffa9ec254496d2a8b12c094957f",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "geoscience-model-figure",
+   "path": "/root/AAA/skills/geoscience-model-figure",
+   "skill_md": "/root/AAA/skills/geoscience-model-figure/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "c6f220a1af6ae664c983192ffb57eab9c13955b777311514fa5080cb51406517",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "geoscience-section-forge",
+   "path": "/root/AAA/skills/geoscience-section-forge",
+   "skill_md": "/root/AAA/skills/geoscience-section-forge/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "706577d45d9ca9478ace0e926406bbf1a307350164c48933eccd7095706d35bb",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "geox-backend-development",
    "path": "/root/AAA/skills/geox-backend-development",
    "skill_md": "/root/AAA/skills/geox-backend-development/SKILL.md",
@@ -20466,6 +21742,34 @@
    ]
   },
   {
+   "name": "geox-geoscience-artifacts",
+   "path": "/root/AAA/skills/geox-geoscience-artifacts",
+   "skill_md": "/root/AAA/skills/geox-geoscience-artifacts/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "305b704e6949a3e999e560ffed887c0f8b8097b97f2f1b4a3198c0d452106981",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "geox-grounding",
    "path": "/root/AAA/skills/geox-grounding",
    "skill_md": "/root/AAA/skills/geox-grounding/SKILL.md",
@@ -20505,8 +21809,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "67979f42a25c9f01f4bd424cdbf13eb84bdceea89f6289003df80f7547bfa72f",
-   "version": null,
+   "sha256": "5d4c1f160dbec97e19f1b2372fc20c21cd3142d520174019bc930523021ab42b",
+   "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -20888,7 +22192,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "749ee835edc7a74811b0b09249d20cf328b4ada39f84a16f1aefbbe63f8a569f",
+   "sha256": "8f33bc53e88f2bf963764de853b9a471c5c7da8e09f3d03aafab8b74ab89575d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -20944,7 +22248,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "02d11962268ebbe51466c935dcef2e7b8594bdcb08257835bdd571db69e87866",
+   "sha256": "48b932547efdf1ab0c652c3576ad9f1e3413b131a4a725f94809f363760f6403",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -21133,6 +22437,71 @@
    ]
   },
   {
+   "name": "governance-removal-review",
+   "path": "/root/AAA/skills/governance-removal-review",
+   "skill_md": "/root/AAA/skills/governance-removal-review/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "e896d0ca04c615f9ee3b15b7ea6a221b17cba2b42adf05f473531ecae6d61def",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T0",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F7"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "agent-report-audit",
+   "path": "/root/AAA/skills/governance/agent-report-audit",
+   "skill_md": "/root/AAA/skills/governance/agent-report-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "995ec72153ab2ba5a893825498ad9a5162fc363e8900d7add7334748f953758e",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T0",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F3",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "alert-inbox-triage",
    "path": "/root/AAA/skills/governance/alert-inbox-triage",
    "skill_md": "/root/AAA/skills/governance/alert-inbox-triage/SKILL.md",
@@ -21216,6 +22585,37 @@
     "autonomy_tier": null,
     "capability_tier": "fed-reasoning-heavy",
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "attestation-receipt-audit",
+   "path": "/root/AAA/skills/governance/attestation-receipt-audit",
+   "skill_md": "/root/AAA/skills/governance/attestation-receipt-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "02ee45d00af5a4db4e9fbeac67355e023513542d3e86d3cfc32535acd8586674",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F11"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21453,6 +22853,64 @@
     "autonomy_tier": null,
     "capability_tier": "fed-long-context",
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "config-drift-forensics",
+   "path": "/root/AAA/skills/governance/config-drift-forensics",
+   "skill_md": "/root/AAA/skills/governance/config-drift-forensics/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "7d5546f0386971abaa2827cdd655f8eb3fa7344ddbd3f892ab7772a8ff39844d",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": "Hermes",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "context-budget-forensics",
+   "path": "/root/AAA/skills/governance/context-budget-forensics",
+   "skill_md": "/root/AAA/skills/governance/context-budget-forensics/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "89b10dd566a9b93026ed4239c876c29a6218983ad8c6b44e4c947be142bc99b3",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21892,6 +23350,34 @@
    ]
   },
   {
+   "name": "governed-report-relay",
+   "path": "/root/AAA/skills/governance/governed-report-relay",
+   "skill_md": "/root/AAA/skills/governance/governed-report-relay/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "cabce3241bc63a2cb08292c5493615a05157aa951a6cefc8004f56e825b0cb2e",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "inbound-mail-verification",
    "path": "/root/AAA/skills/governance/inbound-mail-verification",
    "skill_md": "/root/AAA/skills/governance/inbound-mail-verification/SKILL.md",
@@ -21908,6 +23394,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-agent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "informal-market-claim-audit",
+   "path": "/root/AAA/skills/governance/informal-market-claim-audit",
+   "skill_md": "/root/AAA/skills/governance/informal-market-claim-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "bb0cba33d80b904f11bc631f6a015390c36c5a6a5c6c532637c86a73f175ee38",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -21977,6 +23491,34 @@
      "F9",
      "F13"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "life-history-recall",
+   "path": "/root/AAA/skills/governance/life-history-recall",
+   "skill_md": "/root/AAA/skills/governance/life-history-recall/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "26f6bffeb96c2e7020681676fe5ccfc8cea7482420f7f62b0d10de479ae29004",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -22061,6 +23603,37 @@
     "autonomy_tier": null,
     "capability_tier": "fed-long-context",
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "prior-art-claim-discipline",
+   "path": "/root/AAA/skills/governance/prior-art-claim-discipline",
+   "skill_md": "/root/AAA/skills/governance/prior-art-claim-discipline/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "ad280fdd4cfc8200d98b16d8fcb09b98b0dd58e528bc1bc5e77cdc7b1f5ed2a3",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F9"
+    ]
    },
    "harnesses": [
     "claude",
@@ -22352,6 +23925,39 @@
     "autonomy_tier": null,
     "capability_tier": "fed-agent-subagent",
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "session-corpus-abstraction",
+   "path": "/root/AAA/skills/governance/session-corpus-abstraction",
+   "skill_md": "/root/AAA/skills/governance/session-corpus-abstraction/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "6f89594a835f6fd94e793a98d7d36796fa1fb7227f6fca6019b795d047412a16",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F6",
+     "F9"
+    ]
    },
    "harnesses": [
     "claude",
@@ -22669,6 +24275,34 @@
    ]
   },
   {
+   "name": "verified-portrait-sourcing",
+   "path": "/root/AAA/skills/governance/verified-portrait-sourcing",
+   "skill_md": "/root/AAA/skills/governance/verified-portrait-sourcing/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "governance",
+   "sha256": "24657141fc1c0539e06e9f39ce4c3cd6ceffa3ec9f6d605e800996cf9bfc11f4",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "weekly-chat-reflection",
    "path": "/root/AAA/skills/governance/weekly-chat-reflection",
    "skill_md": "/root/AAA/skills/governance/weekly-chat-reflection/SKILL.md",
@@ -22685,6 +24319,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "governed-removal-discipline",
+   "path": "/root/AAA/skills/governed-removal-discipline",
+   "skill_md": "/root/AAA/skills/governed-removal-discipline/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "da6d0f0c8b4661ed3d7a3e443f015c203f998de53fcf56a1673b6d1579a52616",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-reasoning-heavy",
     "floor_scope": null
    },
    "harnesses": [
@@ -22718,6 +24380,34 @@
      "F4",
      "F9"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "health-provider-navigation",
+   "path": "/root/AAA/skills/health-provider-navigation",
+   "skill_md": "/root/AAA/skills/health-provider-navigation/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "5d640f1d61c50c01e6e2a9744c2d94bb85735b49a54fdb2d965b40583a598b02",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -22792,7 +24482,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "151a3572d6c0f215660ebea3a2590ec29ed24f3877c9c6c007da887236df4885",
+   "sha256": "02ba4d0811927b1e57d302e39b31e236adc3b429f6257cf402285d18b8b6ea5b",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -23184,6 +24874,37 @@
    ]
   },
   {
+   "name": "hermes-mcp-server-registration",
+   "path": "/root/AAA/skills/hermes-mcp-server-registration",
+   "skill_md": "/root/AAA/skills/hermes-mcp-server-registration/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "a348ef96c11fbfb8c0b929b235ec5253a1e348c222f7d42c2118aa8afbd0f28b",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "hermes-multi-human-lanes",
    "path": "/root/AAA/skills/hermes-multi-human-lanes",
    "skill_md": "/root/AAA/skills/hermes-multi-human-lanes/SKILL.md",
@@ -23219,7 +24940,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "279d6650f26817dd6f6c6bab7a15a0cd7feec7e76497a0d52b84836a68d3716c",
+   "sha256": "827fc8857c1d8aa3884fb4df068c34a2bded6132b1504df702e7d8cdb0662948",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -23334,6 +25055,38 @@
    ]
   },
   {
+   "name": "hermes-mcp-surface-maintenance",
+   "path": "/root/AAA/skills/hermes-ops/hermes-mcp-surface-maintenance",
+   "skill_md": "/root/AAA/skills/hermes-ops/hermes-mcp-surface-maintenance/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "hermes-ops",
+   "sha256": "e4a5e43a2b444d102a9c4ca590ec1b9939efb6e18401b5e25496c0baf44ddc38",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "hermes-runtime-audit",
    "path": "/root/AAA/skills/hermes-ops/hermes-runtime-audit",
    "skill_md": "/root/AAA/skills/hermes-ops/hermes-runtime-audit/SKILL.md",
@@ -23431,6 +25184,34 @@
    "depth": 0,
    "namespace": null,
    "sha256": "282a1fba1ec79f917ad2186bb70ed5dfa20e506c83637d486999fa098fadd9cd",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "hermes-room-relay",
+   "path": "/root/AAA/skills/hermes-room-relay",
+   "skill_md": "/root/AAA/skills/hermes-room-relay/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "021d97382ffd674bdc4e5ce49352e8d01e5452d97bd115e557b63c074baaa0db",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -23632,7 +25413,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e22faffbffe63a8d6e6aa57d044ab6b141bb380c171b46b6479be394dc98157d",
+   "sha256": "2053516b2e7069c7d86d24e821340bcd28d658fc07d0adfafb3333a876963658",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -23884,6 +25665,34 @@
    ]
   },
   {
+   "name": "two-human-room-conduct",
+   "path": "/root/AAA/skills/human-interface/two-human-room-conduct",
+   "skill_md": "/root/AAA/skills/human-interface/two-human-room-conduct/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "human-interface",
+   "sha256": "9c710b97fe38ee13496c2a6aa89575603a724d1e530efba4b0b378e7ea897685",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "human-logistics-advisory",
    "path": "/root/AAA/skills/human-logistics-advisory",
    "skill_md": "/root/AAA/skills/human-logistics-advisory/SKILL.md",
@@ -23947,7 +25756,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "46cff325f380f2ea4f6dc4611e8e2ca0f843c43b0458275e5316e3071d98f995",
+   "sha256": "38383b6c4017de780a55fa8599ed5024ce2385dbcea592a927cc388cb604a624",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -23975,7 +25784,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b8cc9fff78076b1bfec8d9481bc7bb1fd720c2d365503eb6f41ea2fe04130642",
+   "sha256": "a655a216eb62739242f311184b33f93bf58ba479b4b64c9050ebd31f9acf6cb1",
    "version": null,
    "deprecated": false,
    "owner_layer": "AAA",
@@ -23991,6 +25800,40 @@
      "F7",
      "F9",
      "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "human-trust-calibration",
+   "path": "/root/AAA/skills/human-trust-calibration",
+   "skill_md": "/root/AAA/skills/human-trust-calibration/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "1083dc36977926f8431fa1c0f8b0cbe0d128729a2e484f01455d83c261e2198b",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F6",
+     "F7",
+     "F9"
     ]
    },
    "harnesses": [
@@ -25217,6 +27060,90 @@
    ]
   },
   {
+   "name": "local-video-read",
+   "path": "/root/AAA/skills/local-video-read",
+   "skill_md": "/root/AAA/skills/local-video-read/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "a35203910733ef32cd14c423a86e19d70b725653fb872eb6541bbac8e5b29b96",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "long-form-tts-render-integrity",
+   "path": "/root/AAA/skills/long-form-tts-render-integrity",
+   "skill_md": "/root/AAA/skills/long-form-tts-render-integrity/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "aa002d6ab15900ec9b5f06adfb500a34383f17df6533c12802b9dd46db3a10e1",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "loved-one-artifact-ops",
+   "path": "/root/AAA/skills/loved-one-artifact-ops",
+   "skill_md": "/root/AAA/skills/loved-one-artifact-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "e73328d82aa1db5a109b77213b74924ca10c31c3023d86475044c13cd36b3461",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "machine-discovery-surface-audit",
    "path": "/root/AAA/skills/machine-discovery-surface-audit",
    "skill_md": "/root/AAA/skills/machine-discovery-surface-audit/SKILL.md",
@@ -25252,8 +27179,36 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1aae2b897635af6a1e047ee783bb42398b0e18bc946165fbac15afef879c7966",
+   "sha256": "30c6aaf0cabe4c6c19e8a1c10cc6639e7c67a5b98195e1488cd1a883940d0575",
    "version": "1.1.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "malaysia-commercial-premise-sourcing",
+   "path": "/root/AAA/skills/malaysia-commercial-premise-sourcing",
+   "skill_md": "/root/AAA/skills/malaysia-commercial-premise-sourcing/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "126401442995b828f0fc1189dfd5e45bbe87903c4525476937b4e003a4c7d0d6",
+   "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -25525,6 +27480,62 @@
    ]
   },
   {
+   "name": "mcp-client-conformance",
+   "path": "/root/AAA/skills/mcp-client-conformance",
+   "skill_md": "/root/AAA/skills/mcp-client-conformance/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "c6bec1894f8f315c97986b26014d9914f04dd95be22d2957cfb92d10dff1361d",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "mcp-external-conformance",
+   "path": "/root/AAA/skills/mcp-external-conformance",
+   "skill_md": "/root/AAA/skills/mcp-external-conformance/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "0059e140bf32b9eb5728829454110de4eeee67f884f42ad5fe93fa69487fbe22",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "mcp-stateless-protocol",
    "path": "/root/AAA/skills/mcp-stateless-protocol",
    "skill_md": "/root/AAA/skills/mcp-stateless-protocol/SKILL.md",
@@ -25532,7 +27543,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "445af50f690bd5d6f7c8b8185c8332815986141a25882cf37cf18addb213312f",
+   "sha256": "2ea84fb2f09fe5a8b8b3c2998b1ef1786133c01c7bb551dec1974e8ceffeaad8",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -25813,6 +27824,34 @@
    ]
   },
   {
+   "name": "migrate-to-codex",
+   "path": "/root/AAA/skills/migrate-to-codex",
+   "skill_md": "/root/AAA/skills/migrate-to-codex/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "145b7fe48360642cb7a42bad3a817f10833fa8a387ffcb4c2df8a47c01a832e2",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "mimo-audio",
    "path": "/root/AAA/skills/mimo-audio",
    "skill_md": "/root/AAA/skills/mimo-audio/SKILL.md",
@@ -25915,6 +27954,36 @@
     "capability_tier": "fed-multimodal-vision",
     "floor_scope": [
      "F2, F4, F7"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "MiniMax M Plan",
+   "path": "/root/AAA/skills/minimax-m-plan",
+   "skill_md": "/root/AAA/skills/minimax-m-plan/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "ffcbafd1ac8d4b958a5f5357951c858ff098740dfcb67edb1e79139a11288ed7",
+   "version": "1.0.0-2026.10.21",
+   "deprecated": false,
+   "owner_layer": "333-AGI",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-multimodal-vision",
+    "floor_scope": [
+     "F2, F4"
     ]
    },
    "harnesses": [
@@ -26074,15 +28143,45 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "fefc8ef82ae788711d4fe5ebd2ee94b101d06de094913ec77d597cb028c16142",
-   "version": null,
+   "sha256": "402f1c913e0c0d9594be4af7f3832a78d5fd2a2d0f5617e4556310a62c2294af",
+   "version": "1.0.0-2026.08.14",
+   "deprecated": false,
+   "owner_layer": "333-AGI",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "T1",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-multimodal-vision",
+    "floor_scope": [
+     "F2, F4"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "mobile-app-mockup",
+   "path": "/root/AAA/skills/mobile-app-mockup",
+   "skill_md": "/root/AAA/skills/mobile-app-mockup/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "385789ee84af77d7f135a64a4e22330ccd63216b54cd5a6a4966697b10085d85",
+   "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
     "autonomy_tier": null,
-    "capability_tier": "fed-multimodal-vision",
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -26113,6 +28212,95 @@
     "capability_tier": null,
     "floor_scope": [
      "F2"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "monetary-amount-integrity",
+   "path": "/root/AAA/skills/monetary-amount-integrity",
+   "skill_md": "/root/AAA/skills/monetary-amount-integrity/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "38c7a2c73caa562d0bdb393f975797895e1135caa12452dcfc2e81423df81591",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "monetary-amount-parsing",
+   "path": "/root/AAA/skills/monetary-amount-parsing",
+   "skill_md": "/root/AAA/skills/monetary-amount-parsing/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "afdea1af03623334cb647701b4446697732cd256acdab4eed8d39c0944974746",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "money-path-discipline",
+   "path": "/root/AAA/skills/money-path-discipline",
+   "skill_md": "/root/AAA/skills/money-path-discipline/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "ab39657d715efc435cb7a82a8f3adf337d720e23d2dc2821495870a75fd1b06e",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F11"
     ]
    },
    "harnesses": [
@@ -26166,7 +28354,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "22029101f61f6ea26a41cd5abb21cf76c7f70bb0c625e93180aa3a49cec3dd92",
+   "sha256": "c24a8cbfff99a107c5bd78fe5ba303c75e50edd6521391457ae21e370e0f5155",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
@@ -26279,6 +28467,34 @@
    ]
   },
   {
+   "name": "multisite-performance-dashboards",
+   "path": "/root/AAA/skills/multisite-performance-dashboards",
+   "skill_md": "/root/AAA/skills/multisite-performance-dashboards/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "4276bf43e5cc83291188edc9ff207795cdcf4bf9c801f481ee810c535022c2f7",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "malaysia-benefit-eligibility",
    "path": "/root/AAA/skills/my-reality/malaysia-benefit-eligibility",
    "skill_md": "/root/AAA/skills/my-reality/malaysia-benefit-eligibility/SKILL.md",
@@ -26370,10 +28586,38 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ef37f3b1c94782a19c7ead5f07141b78b92e0a04067899d5c8e2cdf5e7cd59d9",
+   "sha256": "175a88bfcf3353d5d393b778f82a172529739d470096f7c91780dab25d1af7ac",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "openai-docs",
+   "path": "/root/AAA/skills/openai-docs",
+   "skill_md": "/root/AAA/skills/openai-docs/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "057d24b4f36dab38299857777e4c0ca5bcce65d8cf89d917c174c1a0ae23d9f8",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
@@ -26579,8 +28823,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "331b1e5a5d7ff4681bd395a8638609374db0e11b2a4a68032f0843dab9ba450a",
-   "version": "1.0.0",
+   "sha256": "5a347e7de43e384aa2d2a264da9cda4e6d0fd7c0905fcdf29ff608e892743dc4",
+   "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -26663,7 +28907,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e086c2bb1bb7ae814f00dbb22a7e06959094ed420fe5b0db994803df75e03cab",
+   "sha256": "0baa513f48f1afd559b47171a2d5d14f5adc65ab04ba4d7be4feff0dc4506264",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -26975,7 +29219,35 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0ca3da81b9a6de19f3012d964a7f95b1329c3a09b075976d41ce9fb1dce1332f",
+   "sha256": "9f84eb9b658b462b0158cf6ce5faa196456a9814de892c8faf09b7d749ce1339",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "persona-voice-act-arcs",
+   "path": "/root/AAA/skills/persona-voice-act-arcs",
+   "skill_md": "/root/AAA/skills/persona-voice-act-arcs/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "3b2533963519c574c82e19655c5a94e2c1d2b4a6679c7e0ab75ef427544c0ab2",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -27024,6 +29296,34 @@
    ]
   },
   {
+   "name": "persona-voice-note-delivery",
+   "path": "/root/AAA/skills/persona-voice-note-delivery",
+   "skill_md": "/root/AAA/skills/persona-voice-note-delivery/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "a82ff0730d7ccd7bb724d8f14f8a55cd41bb5a8453971a37810ba8f2b9c27dca",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "persona-voice-note-render",
    "path": "/root/AAA/skills/persona-voice-note-render",
    "skill_md": "/root/AAA/skills/persona-voice-note-render/SKILL.md",
@@ -27032,6 +29332,34 @@
    "depth": 0,
    "namespace": null,
    "sha256": "3821a3f7691673245eb0c5e5c15b81b5d577d7974e9c5f7ba5986e512ab68a95",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "persona-voice-render-ops",
+   "path": "/root/AAA/skills/persona-voice-render-ops",
+   "skill_md": "/root/AAA/skills/persona-voice-render-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "bfd19cc43479e91ce998d1997d1bbb2daf5a8317479993905e339158dca827f6",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -27108,6 +29436,62 @@
    ]
   },
   {
+   "name": "physique-image-lane",
+   "path": "/root/AAA/skills/physique-intel/physique-image-lane",
+   "skill_md": "/root/AAA/skills/physique-intel/physique-image-lane/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "physique-intel",
+   "sha256": "29c276e4249bde3c0b5a1f221ac305f37088f71e3df7cce77cc65f2254a54cfa",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "physique-photo-assessment",
+   "path": "/root/AAA/skills/physique-photo-assessment",
+   "skill_md": "/root/AAA/skills/physique-photo-assessment/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "d03c9bc2593e0d2d1c4d7e0d2f0e57703e11bd7be9f7c5d6f478e6f5fdc6b507",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-multimodal-vision",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "pipeline-integrity",
    "path": "/root/AAA/skills/pipeline-integrity",
    "skill_md": "/root/AAA/skills/pipeline-integrity/SKILL.md",
@@ -27125,6 +29509,38 @@
     "autonomy_tier": null,
     "capability_tier": "fed-long-context",
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "political-fiscal-claims",
+   "path": "/root/AAA/skills/political-fiscal-claims",
+   "skill_md": "/root/AAA/skills/political-fiscal-claims/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "796a6ba2ac674b4011113434546bac54731a06a3e01eb52f58cabc1fe5f6f860",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F6",
+     "F9"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27245,6 +29661,38 @@
     "capability_tier": null,
     "floor_scope": [
      "F1",
+     "F7"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "priority-claim-verification",
+   "path": "/root/AAA/skills/priority-claim-verification",
+   "skill_md": "/root/AAA/skills/priority-claim-verification/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "75903b9bc01f3aa2b0be0344b167286324366f39b75f86b2009641d84dcbf0ef",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "medium",
+    "autonomy_tier": null,
+    "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": [
+     "F2",
+     "F5",
      "F7"
     ]
    },
@@ -27414,6 +29862,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "provenance-field-audit",
+   "path": "/root/AAA/skills/provenance-field-audit",
+   "skill_md": "/root/AAA/skills/provenance-field-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "e8bc4aafff6df9686f3bc86ba5eff69bf184b20e7f11553db759b5f282986adb",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
@@ -27615,6 +30091,38 @@
     "autonomy_tier": null,
     "capability_tier": null,
     "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "qr-code-ops",
+   "path": "/root/AAA/skills/qr-code-ops",
+   "skill_md": "/root/AAA/skills/qr-code-ops/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "53d1bea3bf5e59396d8d360bfedcc605fcdf663f61b40154f358a50895eaf9f8",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28035,7 +30543,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8984831fd33a199c855810c293c7456cfddd7d6c91f2d17fac63b7f554a65aa0",
+   "sha256": "4aa53a0ef8ad98f45abfb13a3f6f4d131236951e7c239f7a1e50368dc390d85c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -28147,6 +30655,62 @@
    ]
   },
   {
+   "name": "refusal-sink-audit",
+   "path": "/root/AAA/skills/refusal-sink-audit",
+   "skill_md": "/root/AAA/skills/refusal-sink-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "51bd245bbd45c957af6a7c7cec73cb27693dcc7c46308346c8f823dd74868d82",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "relationship-state-review",
+   "path": "/root/AAA/skills/relationship-state-review",
+   "skill_md": "/root/AAA/skills/relationship-state-review/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "d855e4f12dc130be672adbba7cbf5b2f5ef7499e028334d84eadd20ebda2ddcc",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "rendered-surface-verification",
    "path": "/root/AAA/skills/rendered-surface-verification",
    "skill_md": "/root/AAA/skills/rendered-surface-verification/SKILL.md",
@@ -28163,6 +30727,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "expert-finder-engine",
+   "path": "/root/AAA/skills/research-core/expert-finder-engine",
+   "skill_md": "/root/AAA/skills/research-core/expert-finder-engine/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "research-core",
+   "sha256": "be78d67f5bf79198ce0512fdf1794b28e75820ffa7a0d15c90dd238637b9b16a",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
     "floor_scope": null
    },
    "harnesses": [
@@ -28264,6 +30856,34 @@
    ]
   },
   {
+   "name": "malaysia-specialist-dossier",
+   "path": "/root/AAA/skills/research-core/malaysia-specialist-dossier",
+   "skill_md": "/root/AAA/skills/research-core/malaysia-specialist-dossier/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "research-core",
+   "sha256": "8744c251270f498197a833c5254970cbbbc15a4bfc2fcb7053515b383ba995c5",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "public-source-cost-reconstruction",
    "path": "/root/AAA/skills/research-core/public-source-cost-reconstruction",
    "skill_md": "/root/AAA/skills/research-core/public-source-cost-reconstruction/SKILL.md",
@@ -28280,6 +30900,62 @@
     "risk_tier": "medium",
     "autonomy_tier": null,
     "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "research-paper-sourcing",
+   "path": "/root/AAA/skills/research-core/research-paper-sourcing",
+   "skill_md": "/root/AAA/skills/research-core/research-paper-sourcing/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "research-core",
+   "sha256": "461e0fc04ac3bbe25332c4d3dd66b3fbf3d3ae77f20134897217d5ea0ede1516",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-long-context",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "social-expert-ranking",
+   "path": "/root/AAA/skills/research-core/social-expert-ranking",
+   "skill_md": "/root/AAA/skills/research-core/social-expert-ranking/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "research-core",
+   "sha256": "cfb997293a25458bdc3609a899e6bcf494893a76b0b33aa41f33f71ddf65472c",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
     "floor_scope": null
    },
    "harnesses": [
@@ -28396,6 +31072,34 @@
      "F2",
      "F11"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "malaysia-medical-specialist-sourcing",
+   "path": "/root/AAA/skills/research/malaysia-medical-specialist-sourcing",
+   "skill_md": "/root/AAA/skills/research/malaysia-medical-specialist-sourcing/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "research",
+   "sha256": "f116799dd5ad1f0ae36c88f47bf50f7905dd1e4ec3998dfc2f0f4d1c608d2df1",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -28727,6 +31431,34 @@
    ]
   },
   {
+   "name": "rust-federation",
+   "path": "/root/AAA/skills/rust-federation",
+   "skill_md": "/root/AAA/skills/rust-federation/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "80aebd743b312ecf66874e511652f50dba0c8d7d7dbf11c3eec70210c0abdbb7",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "sanctuary-boundary-enforcer",
    "path": "/root/AAA/skills/sanctuary-boundary-enforcer",
    "skill_md": "/root/AAA/skills/sanctuary-boundary-enforcer/SKILL.md",
@@ -28771,7 +31503,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f4adcfe07ec2147618ba98b66c753a669a57db6259b4f32c5a877b1c232d64bf",
+   "sha256": "922fbeb5fa4c15d40ebcf5ae918c62ab5900769990716eea40798ce8187ed80c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -28876,6 +31608,34 @@
    ]
   },
   {
+   "name": "security-best-practices",
+   "path": "/root/AAA/skills/security-best-practices",
+   "skill_md": "/root/AAA/skills/security-best-practices/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "responsible-disclosure-handling",
    "path": "/root/AAA/skills/security-ops/responsible-disclosure-handling",
    "skill_md": "/root/AAA/skills/security-ops/responsible-disclosure-handling/SKILL.md",
@@ -28892,6 +31652,34 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-long-context",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "agent-store-secret-scrub",
+   "path": "/root/AAA/skills/security/agent-store-secret-scrub",
+   "skill_md": "/root/AAA/skills/security/agent-store-secret-scrub/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "security",
+   "sha256": "b184810d6cc9da8dc9da3151295a1f9b97a632265194814eeaf1cd03de56ed24",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-reasoning-heavy",
     "floor_scope": null
    },
    "harnesses": [
@@ -29057,6 +31845,38 @@
    ]
   },
   {
+   "name": "untrusted-payload-inspection",
+   "path": "/root/AAA/skills/security/untrusted-payload-inspection",
+   "skill_md": "/root/AAA/skills/security/untrusted-payload-inspection/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "security",
+   "sha256": "13b592f84d4e05a0443d95f9e41ca3cf8823414d876d74156c4505e487389ab1",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F9",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "service-state-schema-drift",
    "path": "/root/AAA/skills/service-state-schema-drift",
    "skill_md": "/root/AAA/skills/service-state-schema-drift/SKILL.md",
@@ -29064,7 +31884,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ce45c8da50a078c419331b987c1bb085d743e6ed30458ec24cfc74eda0c34b8e",
+   "sha256": "7f9e75c281769a2e1e54251bfc1859e1ed5785fe1ffeb0375a5acee9e4883437",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -29077,6 +31897,34 @@
      "F2",
      "F11"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "serving-parity-audit",
+   "path": "/root/AAA/skills/serving-parity-audit",
+   "skill_md": "/root/AAA/skills/serving-parity-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "e6b6b2e95e0dcf97df8c342f2ba0180f12d6b5f41f983cffcf6c8d590eecbf2f",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -29204,6 +32052,94 @@
    ]
   },
   {
+   "name": "shape-map-generalization",
+   "path": "/root/AAA/skills/shape-map-generalization",
+   "skill_md": "/root/AAA/skills/shape-map-generalization/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "1aed07f023e86035a51bc5e6ae4e9d87e45b19e5068f1c4c5a75de3befa83ec0",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "short-stay-listing-vetting",
+   "path": "/root/AAA/skills/short-stay-listing-vetting",
+   "skill_md": "/root/AAA/skills/short-stay-listing-vetting/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "8c6ae67c2dd7498fad115e2b708d46862af1d6ef0fb7a0c60f73adc76c9a3573",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "Skill Artifact Redact \u2014 Secrets Never Land Raw",
+   "path": "/root/AAA/skills/skill-artifact-redact",
+   "skill_md": "/root/AAA/skills/skill-artifact-redact/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "2f14ce72a4fe883a46b1e124c8e9e015ea89c2312aebd0ee0164755357fd0b96",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "high",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "skill-mesh",
    "path": "/root/AAA/skills/skill-mesh",
    "skill_md": "/root/AAA/skills/skill-mesh/SKILL.md",
@@ -29215,11 +32151,7 @@
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [
-    "/root/AAA/skills/domains/forge/skill-creator",
-    "/root/AAA/skills/domains/forge/skill-drift",
-    "/root/AAA/skills/domains/forge/skill-inventory"
-   ],
+   "aliases": [],
    "authority": {
     "risk_tier": "medium",
     "autonomy_tier": "T1",
@@ -29386,6 +32318,34 @@
    ]
   },
   {
+   "name": "sourced-media-delivery",
+   "path": "/root/AAA/skills/sourced-media-delivery",
+   "skill_md": "/root/AAA/skills/sourced-media-delivery/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "814fb9fbf1e12861cc7d49ad143fc6be6d01a826580809f9e98431efc590a505",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "sovereign-daily-brief",
    "path": "/root/AAA/skills/sovereign-daily-brief",
    "skill_md": "/root/AAA/skills/sovereign-daily-brief/SKILL.md",
@@ -29421,7 +32381,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "91cf923b5aeae653702076d03d0bd2b583d196e1b285afc613b8e8e0d7a12956",
+   "sha256": "b0b905444dad01fd173f4b77252af264e29b774a03dfdd950359e043d1c0ba93",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -29458,6 +32418,34 @@
    "namespace": null,
    "sha256": "61cffe59b5f9b3967d720e9b596008c3bc2ba54351ef16dcca8da216f74630dc",
    "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "sovereign-self-history-recall",
+   "path": "/root/AAA/skills/sovereign-self-history-recall",
+   "skill_md": "/root/AAA/skills/sovereign-self-history-recall/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "452c811a00afc6655adaaf3cc39cfe7d2d81ffe8b13f5059664e8c781dbbf92c",
+   "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -29946,6 +32934,92 @@
    ]
   },
   {
+   "name": "technical-artifact-audit",
+   "path": "/root/AAA/skills/technical-artifact-audit",
+   "skill_md": "/root/AAA/skills/technical-artifact-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "65d6fa10d61bfb855e507bfd41ccca2801c67e451e205b27d75635ab1dfea531",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "tectonic-section-architecture",
+   "path": "/root/AAA/skills/tectonic-section-architecture",
+   "skill_md": "/root/AAA/skills/tectonic-section-architecture/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "45bea96c53444ae56ad036ec28e2e0cc646e82f10d26861cdb61380da7338646",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F2"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "telegram-chat-resolution",
+   "path": "/root/AAA/skills/telegram-chat-resolution",
+   "skill_md": "/root/AAA/skills/telegram-chat-resolution/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "a25682f90d5d2ed1d0a8661c8fe0b4f31b89a3c558e9951eea6866fdd0ccfd55",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "telegram-gateway-group-debug",
    "path": "/root/AAA/skills/telegram-gateway-group-debug",
    "skill_md": "/root/AAA/skills/telegram-gateway-group-debug/SKILL.md",
@@ -30043,7 +33117,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "telegram-ops",
-   "sha256": "7957484f14573d06bae54ae8c6be1523280b83b847b6eb144fa04dc4e8d8b77f",
+   "sha256": "95517b57992966fbe8c148a43205fca7d621fcc3120989a03b077331dc1feaa4",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -30320,6 +33394,40 @@
    ]
   },
   {
+   "name": "third-party-tool-quarantine",
+   "path": "/root/AAA/skills/third-party-tool-quarantine",
+   "skill_md": "/root/AAA/skills/third-party-tool-quarantine/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "8046fe553192f2371eb37d747cb86e14f40cff70f712f797b67489e369839c5e",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "medium",
+    "autonomy_tier": "T2",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F9",
+     "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "token-plan-image",
    "path": "/root/AAA/skills/token-plan-image",
    "skill_md": "/root/AAA/skills/token-plan-image/SKILL.md",
@@ -30565,6 +33673,90 @@
    ]
   },
   {
+   "name": "tts-provider-failure-triage",
+   "path": "/root/AAA/skills/tts-provider-failure-triage",
+   "skill_md": "/root/AAA/skills/tts-provider-failure-triage/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "e895d56c7084a7a6c1add63aae7a7ae27628629130efae00e79335cb22349b15",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "tts-render-failure-modes",
+   "path": "/root/AAA/skills/tts-render-failure-modes",
+   "skill_md": "/root/AAA/skills/tts-render-failure-modes/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "e955ffdb120aa50a4db71b37c7182c7aab9d7507dd8f1248776e3f61999fbeb2",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "tts-script-asr-gate",
+   "path": "/root/AAA/skills/tts-script-asr-gate",
+   "skill_md": "/root/AAA/skills/tts-script-asr-gate/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "738e6557b0e661b32d5c8243a6fc4dce858c5ef0bfabe039d4b9a613329fe569",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "unattended-agent-execution",
    "path": "/root/AAA/skills/unattended-agent-execution",
    "skill_md": "/root/AAA/skills/unattended-agent-execution/SKILL.md",
@@ -30595,6 +33787,34 @@
    ]
   },
   {
+   "name": "unauthenticated-read-surface-audit",
+   "path": "/root/AAA/skills/unauthenticated-read-surface-audit",
+   "skill_md": "/root/AAA/skills/unauthenticated-read-surface-audit/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "7056491d24950b4488182e774354684f68b01727392f315a11864f42171fea74",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "curator",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "unified-federated-ai-architectures",
    "path": "/root/AAA/skills/unified-federated-ai-architectures",
    "skill_md": "/root/AAA/skills/unified-federated-ai-architectures/SKILL.md",
@@ -30602,7 +33822,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6602e1e1aca7417b2e234ec27bd3b51ccb1f07197f5ffc80d38b0565136b315f",
+   "sha256": "644e9e4b842049ccd22d742f11fc72f91c3bcab05f26db77508a9fc6ae28ba66",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -30651,6 +33871,34 @@
    ]
   },
   {
+   "name": "value-provenance-testing",
+   "path": "/root/AAA/skills/value-provenance-testing",
+   "skill_md": "/root/AAA/skills/value-provenance-testing/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "0e1883f43dfc3df5e2a7aad0b27295a2fb2110780f3c91322001ff92ec8889d5",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "vault999-audit-forensics",
    "path": "/root/AAA/skills/vault999-audit-forensics",
    "skill_md": "/root/AAA/skills/vault999-audit-forensics/SKILL.md",
@@ -30672,6 +33920,62 @@
      "F2",
      "F11"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "vending-dashboard-reporting",
+   "path": "/root/AAA/skills/vending-dashboard-reporting",
+   "skill_md": "/root/AAA/skills/vending-dashboard-reporting/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "ba1366218c64b7afd27fc0c2975128e1ac8ae271a872508a8f15e2a8a38262b4",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "vending-site-reporting",
+   "path": "/root/AAA/skills/vending-site-reporting",
+   "skill_md": "/root/AAA/skills/vending-site-reporting/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "2e3bc2fd58f9df71a3c96f5e6263c106861ef1fe809645dbcc4fa70374d3fd1e",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -30799,6 +34103,62 @@
      "F7",
      "F9"
     ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "browser-surface-probe",
+   "path": "/root/AAA/skills/verification/browser-surface-probe",
+   "skill_md": "/root/AAA/skills/verification/browser-surface-probe/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "verification",
+   "sha256": "9e170223c25df4196ce575f80ecebd4b7abf01cb90b4ad9782e9d4dae827b08d",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "cross-host-change-verification",
+   "path": "/root/AAA/skills/verification/cross-host-change-verification",
+   "skill_md": "/root/AAA/skills/verification/cross-host-change-verification/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "verification",
+   "sha256": "627218529b99b64571a6875ae0bf490f42780fad1a50b4f850e4b8aafac06d8f",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -31006,6 +34366,34 @@
    ]
   },
   {
+   "name": "qr-decode-and-verify",
+   "path": "/root/AAA/skills/vision-analyzer/qr-decode-and-verify",
+   "skill_md": "/root/AAA/skills/vision-analyzer/qr-decode-and-verify/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "vision-analyzer",
+   "sha256": "ce7ac993abc39e56d6c7b39cd5023e3e36f288af2e62654b880cbc8765717a72",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "vision-direct-api-fallback",
    "path": "/root/AAA/skills/vision-direct-api-fallback",
    "skill_md": "/root/AAA/skills/vision-direct-api-fallback/SKILL.md",
@@ -31125,7 +34513,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6b3fbf618f49e87d4d24b689661bab890c415efbf92834d1626c573be37aca01",
+   "sha256": "cd6c128f6fc6952487d07673cf274ceec99707f4fc521dd038efe616fc3403ea",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -31153,6 +34541,62 @@
    ]
   },
   {
+   "name": "voice-register-fidelity",
+   "path": "/root/AAA/skills/voice-register-fidelity",
+   "skill_md": "/root/AAA/skills/voice-register-fidelity/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "5887110988435c15c75a3d9a191beb8eb056c53362c12f49cb7f8432359ef429",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "voice-register-tuning",
+   "path": "/root/AAA/skills/voice-register-tuning",
+   "skill_md": "/root/AAA/skills/voice-register-tuning/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "f50061dbc324dd35a6adf6d51a66b0936cafdaf7296c5899e9b971c70781a8c4",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "voice-render-verification",
    "path": "/root/AAA/skills/voice-render-verification",
    "skill_md": "/root/AAA/skills/voice-render-verification/SKILL.md",
@@ -31161,6 +34605,34 @@
    "depth": 0,
    "namespace": null,
    "sha256": "03a2b23887cf2069c5573da9db1b9c7434b539e79f16047e73a66590a840ffe9",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "spoken-answer-shape",
+   "path": "/root/AAA/skills/voice-stack/spoken-answer-shape",
+   "skill_md": "/root/AAA/skills/voice-stack/spoken-answer-shape/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "voice-stack",
+   "sha256": "131eac75a61dbbb4eeffaabde4b1f0c3071b3efa8067b59567492bb8b8f63d3d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -31381,7 +34853,7 @@
    "state": "projection",
    "depth": 0,
    "namespace": null,
-   "sha256": "6668b57b90cd923ac06f71cb23153cb87c4db1597f116dba3edfaf66261f84d1",
+   "sha256": "a639730e81a632e7c7f2702edf784628e52b88c72984347a0824967b9426ff56",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -31676,7 +35148,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f32e3d827124ab8de62f80f8e726e8a6061afc5e7bff1e13c9c8ff2045136674",
+   "sha256": "37bfd83295aaf7997344a21e979fc0b63a82a1d66ceb2d2acc7a124561d79e36",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -31794,8 +35266,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7326ce45f655c4aef7d893b0b41ff0490b18638fb8c4c25619c5054af795dc2c",
-   "version": "1.0.0",
+   "sha256": "e093a976cd0e1dc389a978344ccbe2fdf9ebf96738538f0876df6d9fc9afc093",
+   "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -32016,10 +35488,38 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f168d9ddf0418241b1afabc9393573ba9ea4de65e2e438be4efb81766763586d",
+   "sha256": "c6dbcbce3f37688954ba9d7c780fca6838de166452c28af45a9079f730fe1219",
    "version": null,
    "deprecated": false,
    "owner_layer": "AAA",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "witness-biography-pdf",
+   "path": "/root/AAA/skills/witness-biography-pdf",
+   "skill_md": "/root/AAA/skills/witness-biography-pdf/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "711468def031cc900da7fef977719d39062d2d6dc09e5dc207330c90f710ec55",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
@@ -32253,6 +35753,34 @@
    ]
   },
   {
+   "name": "inline-svg-figure-artifact",
+   "path": "/root/AAA/skills/workshop/inline-svg-figure-artifact",
+   "skill_md": "/root/AAA/skills/workshop/inline-svg-figure-artifact/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "workshop",
+   "sha256": "e783f01d03f2f7c03b2b9802a25491f8e07e2efc0037359cbfc4d255948ddc1a",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "principal-submission-authoring",
    "path": "/root/AAA/skills/workshop/principal-submission-authoring",
    "skill_md": "/root/AAA/skills/workshop/principal-submission-authoring/SKILL.md",
@@ -32269,6 +35797,90 @@
     "risk_tier": null,
     "autonomy_tier": null,
     "capability_tier": "fed-long-context",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "remote-mcp-triage",
+   "path": "/root/AAA/skills/workshop/remote-mcp-triage",
+   "skill_md": "/root/AAA/skills/workshop/remote-mcp-triage/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "workshop",
+   "sha256": "ac54b7fceb34d29cc0840913b08148dbf1e6ca6a5f3c19f65c2524f0f7b55fec",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "self-contained-html-tool",
+   "path": "/root/AAA/skills/workshop/self-contained-html-tool",
+   "skill_md": "/root/AAA/skills/workshop/self-contained-html-tool/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "workshop",
+   "sha256": "8abf3c90892406a2182ba8634e0f573b641a65dd284b2c7251ac01c0c3e6f145",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "short-stay-booking-search",
+   "path": "/root/AAA/skills/workshop/short-stay-booking-search",
+   "skill_md": "/root/AAA/skills/workshop/short-stay-booking-search/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "workshop",
+   "sha256": "ad63452dcbade25902e05a04eefd345f836aaf2c7b977244b19e75c36a028c07",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
     "floor_scope": null
    },
    "harnesses": [
