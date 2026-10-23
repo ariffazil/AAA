@@ -1,6 +1,6 @@
 ---
 name: pdf-federation
-description: One canonical front door for every PDF capability in the AAA federation. Use when creating, auditing, verifying, or routing any PDF artifact — compose from manifest + live data, verify with the four-gate ladder, probe engine fitness, extract text, convert slides, seal provenance. Replaces all 13 previously-named PDF skills (forge-pdf-delivery, forge-artifact-publisher, scientific-pdf-generation, civic-intelligence-pdf, open-slide-integration, powerpoint, pdf-realmap, hermes-pdf-intelligence, empirical-audit-pdf, document-pipeline, governed-artifact-composition, nano-pdf-routing, ocr-routing). Compose-verify-publish; one matrix, one verifier, one canonical owner. DITEMPA BUKAN DIBERI.
+description: 'One canonical front door for every PDF capability in the AAA federation. Use when creating, auditing, verifying, or routing any PDF artifact'
 version: 1.1.0
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil
 forged: 2026-10-02
@@ -194,3 +194,7 @@ reachable (HOLD naming the missing engine) · geological/market/substrate data m
    AND a stated grand total, recompute sum-of-line-items in Python and diff against their
    stated figure. Mismatch = STOP and ask. Never silently "fix" by editing one side; the
    mismatch is a real-world error that belongs in front of the human.
+
+## Routing notes (moved from description 2026-10-23)
+
+— compose from manifest + live data, verify with the four-gate ladder, probe engine fitness, extract text, convert slides, seal provenance. Replaces all 13 previously-named PDF skills (forge-pdf-delivery, forge-artifact-publisher, scientific-pdf-generation, civic-intelligence-pdf, open-slide-integration, powerpoint, pdf-realmap, hermes-pdf-intelligence, empirical-audit-pdf, document-pipeline, governed-artifact-composition, nano-pdf-routing, ocr-routing). Compose-verify-publish; one matrix, one verifier, one canonical owner. DITEMPA BUKAN DIBERI.

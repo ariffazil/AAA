@@ -1,6 +1,6 @@
 ---
 name: arifos-collapse-vector-audit
-description: "Verify a sibling agent's reported Constitutional Collapse Vector (N3 F13-bypass + N4 signing key on disk) against live state on the arifOS federation box before recommending hardening. Cross-check every claim — algorithm, file path, ACL, evidence layers — against `stat`, `grep`, and source-code reads. Distinguish HMAC from Ed25519 (the naming trap). Produce a reversible-first ranked hardening plan. Trigger: a sibling report says 'N3+N4 = total constitutional collapse', 'signing key on disk', 'F13 bypass ACTIVE', 'judge/forge/seal forgery possible', or any arifOS security audit claim requiring independent verification."
+description: 'Verify a sibling agent''s reported Constitutional Collapse Vector (N3 F13-bypass + N4 signing key on disk) against live state on the arifOS federation box before recommending hardening. Cross-check every claim'
 ---
 
 # arifOS Collapse-Vector Audit
@@ -166,3 +166,7 @@ When a sibling report carries multiple CRITICAL claims and you dispatch parallel
 - `references/2026-08-05-audit.md` — full audit transcript: original 333-AGI report claims, live probes (stat / grep / source-read), correction table, collapse-vector verdict, ranked P0–P2 hardening plan.
 - `references/multi-verifier-reconciliation-2026-08-05.md` — 3 parallel subagents returned aligned ~80% on a 10-node extractive map; OpenClaw's independent peer audit caught 2 wrong findings (A-FORGE FQ gate "absent" was actually PARTIAL with conditional gating; N9 Gödel "no Q9" was actually kernel canonical, path untraced). Also corrected the N3+N4 threat model: HMAC leak ≠ SOVEREIGN forgery (Ω private key is OFF-MACHINE). The parallel-verifier consensus trap rule: 3 aligned verifiers ≠ truth; the contrarian is load-bearing.
 - `references/2026-08-05-fq-null-source-runtime-trace.md` — FQ-null handling audit + the source↔runtime invariant violation. Documents the `check_verdict.ts:90` `0.5` → `0.0` patch, the source-only patch that wasn't live at runtime, and the four-step discipline for Node/TS patch verification (source diff → compile → restart → re-probe).
+
+## Routing notes (moved from description 2026-10-23)
+
+— algorithm, file path, ACL, evidence layers — against `stat`, `grep`, and source-code reads. Distinguish HMAC from Ed25519 (the naming trap). Produce a reversible-first ranked hardening plan. Trigger: a sibling report says 'N3+N4 = total constitutional collapse', 'signing key on disk', 'F13 bypass ACTIVE', 'judge/forge/seal forgery possible', or any arifOS security audit claim requiring independent verification.

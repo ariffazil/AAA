@@ -1,6 +1,6 @@
 ---
 name: ai-media-generation
-description: "Generate photorealistic AI videos and images on the arifOS box via cloud APIs — MiniMax Media MCP (:18100), Gemini Image Gen (gemini-2.5-flash-image + gemini-3-pro-image, no MCP needed), and Qwen Image Edit (DashScope/Bailian). Covers MCP streamable-http pattern, Gemini REST API, prompt craft for people (Malay/SEA, Chinese Malaysian vs Indian), sado/bodybuilder physique amplification, symbolic/psychological concept art (shadow reversal, yin-yang, chiaroscuro), worship/devotional scene craft, alpha cocky attitude vocabulary, execute_code→terminal() fallback, vision verification, and AAA registry updates. Trigger: 'buat video', 'generate video', 'koyak baju', 'edit gambar', 'buat satu visual', 'nak gambar sado', 'logo', 'avatar', 'shadow', 'yin yang', 'cocky', 'worship', 'abang sado', any photorealistic video or image request, or registering a media MCP."
+description: 'Generate photorealistic AI videos and images on the arifOS box via cloud APIs — MiniMax Media MCP (:18100), Gemini Image Gen (gemini-2.5-flash-image + gemini-3-pro-image, no MCP needed), and Qwen Image Edit'
 ---
 
 # AI Media Generation — MiniMax video + Qwen image edit
@@ -1121,3 +1121,7 @@ branding section.
 - `references/comfyui-api-workflow-patterns.md` — ComfyUI API quirks (LoadImage, LoadImageMask channel param), VAEEncodeForInpaint multi-subject workflow, endpoint reference, render benchmarks
 - `references/gpu-rental-shadow-pipeline.md` — GPU pricing, model links, RunPod agent setup, shadow governance, RunPod storage trap fix
 - `references/runpod-jupyter-execution.md` — Jupyter WebSocket execution pattern (full shell replacement when SSH unavailable), Civitai download pitfall, ComfyUI operational notes
+
+## Routing notes (moved from description 2026-10-23)
+
+(DashScope/Bailian). Covers MCP streamable-http pattern, Gemini REST API, prompt craft for people (Malay/SEA, Chinese Malaysian vs Indian), sado/bodybuilder physique amplification, symbolic/psychological concept art (shadow reversal, yin-yang, chiaroscuro), worship/devotional scene craft, alpha cocky attitude vocabulary, execute_code→terminal() fallback, vision verification, and AAA registry updates. Trigger: 'buat video', 'generate video', 'koyak baju', 'edit gambar', 'buat satu visual', 'nak gambar sado', 'logo', 'avatar', 'shadow', 'yin yang', 'cocky', 'worship', 'abang sado', any photorealistic video or image request, or registering a media MCP.

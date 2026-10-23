@@ -408,7 +408,7 @@ Then restart the gateway. No source code change needed — the pipeline is alrea
 
 `references/izzu-aia-silence-debug-2026-08-09.md` — full transcript of the Izzu-in-AIA debug session: env-var override + Telegram privacy mode as dual root causes, lane-*.json red herring, zero-log-entry diagnostic path.
 `references/group-message-debugging-2026-08-05.md` — full transcript of the SADO debug session, with the chat_id evidence, the gating chain walked through, and the nuclear-option env config.
-`references/bot-self-dm-delivery-2026-08-06.md` (inline below) — full transcript of the cron bot-self-DM delivery: state.db session showing `chat_id=8410138119`, `_resolve_single_delivery_target` resolver path, the fix (override `deliver=telegram:267378578`), the prior-learnings sibling sessions that pointed at the wrong layer.
+``references/`` (inline below) — full transcript of the cron bot-self-DM delivery: state.db session showing `chat_id=8410138119`, `_resolve_single_delivery_target` resolver path, the fix (override `deliver=telegram:267378578`), the prior-learnings sibling sessions that pointed at the wrong layer.
 
 ### Inline transcript — bot-self-DM delivery (2026-08-06 04:00–04:24 UTC)
 
@@ -705,3 +705,5 @@ curl -s -X POST "https://api.telegram.org/bot${ASI_ARIFOS_BOT_TOKEN}/sendMessage
 - bot membership: `@ASI_arifos_bot` and `@arifOS_bot` both have send permissions
 
 **The user's DM chat_id is 267378578** — found in this profile's `MEMORY.md` lane notes (SADO-group user) and in `channel_directory.json` for the bot DM entry.
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

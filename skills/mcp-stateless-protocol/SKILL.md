@@ -1,6 +1,6 @@
 ---
 name: mcp-stateless-protocol
-description: "Probe and connect MCP servers on the 2026-07-28 stateless wire format (MCP 2.0). Covers the exact header+envelope handshake (MCP-Protocol-Version, Mcp-Method, Mcp-Name, _meta io.modelcontextprotocol/* keys), the error taxonomy (-32020 HeaderMismatch, -32022 UnsupportedProtocolVersion, -32602 missing envelope keys), using stateless.mcpjam.com/mcp as a conformance test rig (13 fixture tools), and verifying whether any coding agent/client supports the latest MCP (SDK version + trial calls). Trigger: user asks which agents support the latest MCP, wants to connect an https MCP server, or an MCP endpoint rejects initialize with UnsupportedProtocolVersion."
+description: 'Probe and connect MCP servers on the 2026-07-28 stateless wire format (MCP 2.0). Covers the exact header+envelope handshake (MCP-Protocol-Version, Mcp-Method, Mcp-Name, _meta io.modelcontextprotocol/* keys), the error'
 ---
 
 # MCP Stateless Protocol (2026-07-28 wire format)
@@ -224,3 +224,7 @@ Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
 Scar signatures: 2026-09-30-f13-ask-h3-polarity-version-drift, SCAR-2026-09-12-phantom-cron-category-error
 Do not treat this skill as neutral until the signatures are resolved.
 <!-- /SKILL-WITNESS-NOTE -->
+
+## Routing notes (moved from description 2026-10-23)
+
+taxonomy (-32020 HeaderMismatch, -32022 UnsupportedProtocolVersion, -32602 missing envelope keys), using stateless.mcpjam.com/mcp as a conformance test rig (13 fixture tools), and verifying whether any coding agent/client supports the latest MCP (SDK version + trial calls). Trigger: user asks which agents support the latest MCP, wants to connect an https MCP server, or an MCP endpoint rejects initialize with UnsupportedProtocolVersion.

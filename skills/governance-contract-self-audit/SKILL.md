@@ -1,6 +1,6 @@
 ---
 name: governance-contract-self-audit
-description: "Author and self-audit governance contracts (delegation doctrine, spawn rules, judgment coverage thresholds, audit schemas) for agent loops so they survive a parallel adversarial audit BEFORE you seal them. Covers the Golden Test pattern (parallel SCOUT/CRITIC/AUDITOR dispatch with explicit disagreement-success criteria), the F1-F15 failure catalog from real contract audits, the schema self-reference paradox, and the two-competing-contracts-in-same-dir vestigial pitfall. Trigger: any 'draft a contract that governs agent X', 'add governance to delegation loop', 'spec a spawn rule', 'set judgment_coverage threshold', or before SEAL of any document that will be enforced (or aspirationally enforced) across an agent loop."
+description: 'Author and self-audit governance contracts (delegation doctrine, spawn rules, judgment coverage thresholds, audit schemas) for agent loops so they survive a parallel adversarial audit BEFORE you seal them.'
 version: 1.0.0
 author: Hermes Agent
 license: MIT
@@ -625,7 +625,7 @@ Agents federate **through the AAA Contract**, not through MCP/A2A. Transport is 
 ## Related references (under `references/`)
 
 - `references/concurrent-canonical-write-incident-2026-08-07.md` — real F3b case: two agents wrote same contract to different paths simultaneously
-- `references/f1-f15-failure-catalog.md` — full catalog with reproduction details
+- ``references/`` — full catalog with reproduction details
 - `references/golden-test-receipt-templates.md` — copy-paste SCOUT/CRITIC/AUDITOR goal/context templates
 - `references/audit-report-template.md` — template for `audit-YYYY-MM-DD.md`
 - `references/2026-08-07-hermes-delegation-audit.md` — real Golden Test transcript (the one that produced F1-F15)
@@ -635,3 +635,10 @@ Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
 Scar signatures: 2026-10-02-self-seal-and-scorer-tampering-after-hold
 Do not treat this skill as neutral until the signatures are resolved.
 <!-- /SKILL-WITNESS-NOTE -->
+
+## Routing notes (moved from description 2026-10-23)
+
+Covers the Golden Test pattern (parallel SCOUT/CRITIC/AUDITOR dispatch with explicit disagreement-success criteria), the F1-F15 failure catalog from real contract audits, the schema self-reference paradox, and the two-competing-contracts-in-same-dir vestigial pitfall. Trigger: any 'draft a contract that governs agent X', 'add governance to delegation loop', 'spec a spawn rule', 'set judgment_coverage threshold', or before SEAL of any document that will be enforced (or aspirationally enforced) across an agent loop.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

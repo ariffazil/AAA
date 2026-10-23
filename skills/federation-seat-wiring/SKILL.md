@@ -1,6 +1,6 @@
 ---
 name: federation-seat-wiring
-description: "Wire a new provider/API-key seat into the arifOS federation so all 3 layers (LiteLLM proxy, Hermes config, OpenCode/OpenClaw agents) can reach it. Covers the 3-layer config topology, the safe-patch recipe, JSON round-trip silent drops, system_fingerprint verification, and rollback discipline. Also covers warga-organ provisioning (giving a new agent constitutional identity — DID + key + organs.yaml + SCT). Trigger: 'wire X into FED', 'add Qwen seat', 'make agent use new key', 'cascade through new provider', 'opencode not using my new key', 'retire provider', 'remove dead key', 'unwire X', 'purge Tavily', 'clean up dead provider', 'provision warga', 'add new organ', 'warga identity', 'constitutional citizen', or any time a model/provider/key/org needs to be added to OR removed from the federation."
+description: 'Wire a new provider/API-key seat into the arifOS federation so all 3 layers (LiteLLM proxy, Hermes config, OpenCode/OpenClaw agents) can reach it.'
 tags: [wiring, federation, litellm, opencode, hermes-config, provider-onboarding, json-safety]
 ---
 
@@ -515,3 +515,7 @@ This is **different from a provider seat.** A provider seat is a key + endpoint 
 - `references/opencode-json-pitfalls.md` — verbatim recipes for the two opencode.json traps (round-trip drops + schema rejection), 17-key root whitelist, mandatory verification pipeline.
 - `references/a2a-dispatch-five-gates.md` — A2A dispatch protocol: auth → A2A-Version → session lineage → DID envelope → AGENT_POLICIES. Live trace from this session: `arif_judge_deliberate` is internal-only; `arif_judge` is the public binding; A2A canonical actors list; how to sign a DID envelope from AAA private key.
 - `references/openclaw-aaa-wiring-2026-08-07.md` — **OpenClaw-specific 4-error debug trace**: the exact `registerAgentPolicy()` location in `federation_envelope.js`, the 4-file alignment requirement (DID registry + organs.yaml + agents.yaml + policy code), the `params.message.parts[].text` wire shape vs nested-envelope trap, canonical-actor colon-form rejection, and the `systemctl restart` requirement for policy code patches.
+
+## Routing notes (moved from description 2026-10-23)
+
+Covers the 3-layer config topology, the safe-patch recipe, JSON round-trip silent drops, system_fingerprint verification, and rollback discipline. Also covers warga-organ provisioning (giving a new agent constitutional identity — DID + key + organs.yaml + SCT). Trigger: 'wire X into FED', 'add Qwen seat', 'make agent use new key', 'cascade through new provider', 'opencode not using my new key', 'retire provider', 'remove dead key', 'unwire X', 'purge Tavily', 'clean up dead provider', 'provision warga', 'add new organ', 'warga identity', 'constitutional citizen', or any time a model/provider/key/org needs to be added to OR removed from the federation.

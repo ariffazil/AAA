@@ -1,6 +1,6 @@
 ---
 name: institutional-communication-audit
-description: "Class-level methodology for auditing institutional communications against physical, financial, and operational reality. Goes behind the performance to map: (1) corporate comms detection — scripted vs spontaneous speech patterns, (2) incentive mapping — the 7-Layer Incentive Stack, (3) shadow/contradiction mapping — cross-referencing public claims against internal data, (4) the 7 Physical Constraint Questions — the hard numbers an institution is preventing you from calculating, (5) financial report back-calculation — reverse-engineering hidden entity contributions from related operator disclosures. Use whenever analyzing a CEO interview, government policy announcement, corporate earnings call, or any institutional statement during a crisis."
+description: 'Class-level methodology for auditing institutional communications against physical, financial, and operational reality. Goes behind the performance to map: (1) corporate comms detection'
 tags: [institutional, intelligence, audit, corporate-comms, shadow-analysis, incentive-mapping, physical-constraints, research-methodology]
 version: 1.0.0
 triggers:
@@ -325,3 +325,7 @@ That's correct — the method is neutral.
 - **F2 TRUTH:** Every claim must have an epistemic tag. OBS/DER/INT/SPEC.
 - **F7 HUMILITY:** Confidence cap 0.90. Physical data gaps are [UNMEASURED], not estimated.
 - **F11 AUDITABILITY:** Every contradiction must cite source for both the claim and the counter-evidence.
+
+## Routing notes (moved from description 2026-10-23)
+
+— scripted vs spontaneous speech patterns, (2) incentive mapping — the 7-Layer Incentive Stack, (3) shadow/contradiction mapping — cross-referencing public claims against internal data, (4) the 7 Physical Constraint Questions — the hard numbers an institution is preventing you from calculating, (5) financial report back-calculation — reverse-engineering hidden entity contributions from related operator disclosures. Use whenever analyzing a CEO interview, government policy announcement, corporate earnings call, or any institutional statement during a crisis.

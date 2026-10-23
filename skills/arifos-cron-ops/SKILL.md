@@ -1,6 +1,6 @@
 ---
 name: arifos-cron-ops
-description: "Edit and operate /root/HERMES/cron/jobs.json safely — understand the script-resolver rule (scripts MUST live under HERMES_HOME/scripts/, bare names only, absolute paths outside get Blocked), the validator's quirks (check ignores file arg, apply takes full replacement), and the pre-edit probe order that prevents wrong-direction patches. Trigger: any cron job with last_status=error, 'Script not found', 'Blocked: script path resolves outside', provider not in live set, audit-freshness gap between intent and registry, or 'fix eureka-promote-style path bug'. Adjacent to arifos-federation-ops (kernel/seal/topology) — this skill is the cron-scheduler subsystem."
+description: 'Edit and operate /root/HERMES/cron/jobs.json safely — understand the script-resolver rule (scripts MUST live under HERMES_HOME/scripts/, bare names only, absolute paths outside get Blocked), the validator''s quirks'
 ---
 
 # arifOS Cron Ops — jobs.json Protocol
@@ -1162,3 +1162,7 @@ The `arif-morning-pulse` prompt looks up `thermodynamic.vitality_index` to map G
 ## Token-cost audit support
 
 - `scripts/cron-token-cost-auditor.py` — Reusable Python script that takes a `jobs.json` path and produces a ranked cost table (daily + monthly tokens per job) with tier classification (GREEN/YELLOW/RED). Handles `no_agent` mode, FQ-gated machine lane, and cron/interval schedules. Run via: `python3 cron-token-cost-auditor.py [--jobs /path] [--json]`. Used to baseline the 20-job catalog at 3.77M tok/month on 2026-08-11, then verify optimization gains. Output ranking by `daily_tok` desc surfaces the worst offenders first — start there.
+
+## Routing notes (moved from description 2026-10-23)
+
+(check ignores file arg, apply takes full replacement), and the pre-edit probe order that prevents wrong-direction patches. Trigger: any cron job with last_status=error, 'Script not found', 'Blocked: script path resolves outside', provider not in live set, audit-freshness gap between intent and registry, or 'fix eureka-promote-style path bug'. Adjacent to arifos-federation-ops (kernel/seal/topology) — this skill is the cron-scheduler subsystem.

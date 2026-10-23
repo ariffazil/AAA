@@ -1,5 +1,5 @@
 ---
-name: "openai-docs"
+name: "openai-docs-bundled"
 relations:
   - target: openai-docs  # canonical owner: /root/AAA/skills/openai-docs
     type: alternative_to  # bundled Codex-variant kept for provenance (2026-10-23 typed relation)
