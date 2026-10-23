@@ -1,5 +1,8 @@
 ---
 name: "openai-docs"
+relations:
+  - target: openai-docs  # canonical owner: /root/AAA/skills/openai-docs
+    type: alternative_to  # bundled Codex-variant kept for provenance (2026-10-23 typed relation)
 description: "Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge—including 'you,' 'your,' 'this app,' or 'this coding agent'..."
 metadata:
   short-description: "Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, and self-knowledge; OpenAI APIs and ChatGPT Work. 'You'/'this app' means Codex only."
