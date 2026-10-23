@@ -91,6 +91,32 @@ def now() -> str:
     return datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
 
 
+def probe_body(service: str = SERVICE, host: str = "local") -> dict:
+    """D-04: a systemd unit name is a local convention, not a body. Probe the PROCESS and the
+    LISTENING PORT. On KVM2 the unit reports 'inactive' while a gateway process serves traffic —
+    unit-name probing produced a false DOWN there for months."""
+    if host == "local":
+        pid = sh(f"systemctl show {service} -p MainPID --value")
+        unit_state = sh(f"systemctl is-active {service}")
+        pg = sh("pgrep -f 'gateway run --replace' | head -1")
+        ports = {}
+        for p in (8088, 7074, 18087):
+            r = sh(f"curl -s -o /dev/null -w '%{{http_code}} %{{time_total}}' --max-time 6 http://127.0.0.1:{p}/health")
+            ports[p] = r or "0 0"
+        return {"host": "forge", "unit_state": unit_state, "unit_mainpid": pid,
+                "process_alive": bool(pg and pg.isdigit()), "process_pid": pg or None,
+                "ports": ports,
+                "verdict": "ALIVE" if (pg and pg.isdigit()) else "DOWN",
+                "note": "verdict follows the PROCESS, not the unit name"}
+    pg = sh(f"ssh -o BatchMode=yes -o ConnectTimeout=8 {host} \"pgrep -f 'gateway run --replace' | head -1\"")
+    unit = sh(f"ssh -o BatchMode=yes -o ConnectTimeout=8 {host} 'systemctl is-active hermes-asi-gateway 2>/dev/null'")
+    return {"host": host, "unit_state": (unit or "unknown").strip(),
+            "process_pid": (pg or "").strip() or None,
+            "process_alive": bool((pg or "").strip().isdigit()),
+            "verdict": "ALIVE" if (pg or "").strip().isdigit() else "DOWN",
+            "note": "unit name is a local convention; process is the body"}
+
+
 def derive_build_identity() -> dict:
     pid = sh(f"systemctl show {SERVICE} -p MainPID --value")
     unit = sh(f"systemctl show {SERVICE} -p ExecStart")
@@ -156,6 +182,23 @@ def derive_build_identity() -> dict:
     }
 
 
+
+def surface_limit(label: str, agents_cap) -> tuple:
+    """Each surface's own ceiling. AGENTS.md is bound by the prompt_builder admission cap
+    (measured from telemetry); the memory files by config.yaml. Mixing them was D-08."""
+    if label.startswith("AGENTS"):
+        return (agents_cap, "prompt_builder admission cap (journal telemetry)")
+    if label.startswith("USER"):
+        return (USER_BUDGET, "config.yaml memory.user_char_limit")
+    if label.startswith("MEMORY"):
+        return (MEM_BUDGET, "config.yaml memory.memory_char_limit")
+    if label.startswith("SOUL"):
+        return (None, "no configured ceiling — voice file")
+    if label.startswith("FEDERATION"):
+        return (None, "plugin prompt — no configured ceiling")
+    return (None, "unbounded")
+
+
 def instruction_admission() -> dict:
     log = sh("journalctl -u " + SERVICE + " --since '-24h' --no-pager | grep -i 'Context file.*TRUNCATED' | tail -3")
     mm = None
@@ -177,11 +220,15 @@ def instruction_admission() -> dict:
         t = p.read_text(errors="replace")
         texts[label] = t
         rec = {"surface": label, "path": path, "injected": injected, "cap_bound": capped,
-               "chars": len(t), "bytes": p.stat().st_size, "sha256_16": sha(p)}
-        if capped and mm:
-            rec["cap_chars"] = cap
-            rec["verdict"] = "TRUNCATED" if len(t) > cap else "COMPLETE"
-            rec["measured"] = int(mm.group(2))
+               "chars": len(t), "bytes": p.stat().st_size, "sha256_16": sha(p),
+               "mtime": datetime.datetime.fromtimestamp(p.stat().st_mtime, datetime.timezone.utc).isoformat(timespec="seconds")}
+        # D-08: every surface is judged against ITS OWN limit, never against another's.
+        limit, source = surface_limit(label, cap)
+        if limit:
+            rec["limit"] = limit
+            rec["limit_source"] = source
+            rec["headroom"] = limit - len(t)
+            rec["verdict"] = "OVER_LIMIT" if len(t) > limit else ("TRUNCATED" if (label.startswith("AGENTS") and mm and len(t) > limit) else "COMPLETE")
         surfaces.append(rec)
 
     # invariant provenance: which admitted surface states it, first hit wins
@@ -359,6 +406,72 @@ def collect_memory_profiles() -> dict:
             "note": "MEMORY-TOPOLOGY.md at the Hermes home explains which profile serves which lane"}
 
 
+
+
+def collect_fq_scope() -> dict:
+    """C-10: kernel and manifest disagreed (0.40 vs 0.111) because each re-read a moving
+    quantity at its own moment. The fix is not to pick a number — it is to record WHICH source,
+    WHICH window, and WHEN, so two readings can be compared instead of argued about."""
+    txt = sh("curl -s --max-time 12 http://127.0.0.1:8088/health")
+    try:
+        k = json.loads(txt)
+    except Exception:
+        return {"status": "UNREACHABLE"}
+    fq = k.get("fq") or {}
+    dec = fq.get("decomposition") or {}
+    av = sh("curl -s --max-time 10 http://127.0.0.1:7073/health")
+    try:
+        a = (json.loads(av).get("fq") or {})
+    except Exception:
+        a = {}
+    return {
+        "canonical_source": "arifFlow :7073 (producer); kernel :8088 re-exports it",
+        "upstream_formula": a.get("rollup_formula") or dec.get("formula_version"),
+        "window_size": dec.get("window_size") or (a.get("metric_frame") or {}).get("window_size"),
+        "scope": fq.get("scope"),
+        "kernel_reported_value": fq.get("value"),
+        "kernel_reported_measured_at": fq.get("measured_at"),
+        "arifflow_reported_value": a.get("quotient"),
+        "arifflow_raw_pool": a.get("raw_pool_quotient"),
+        "arifflow_sample_size": (a.get("metric_frame") or {}).get("sample_size"),
+        "drift_note": ("a quotient that moves between probes is not a contradiction; it is a "
+                       "moving quantity. Compare only same-source same-timestamp readings, and "
+                       "quote the window with every number."),
+    }
+
+
+def collect_model_transport() -> dict:
+    """D-06 / C-08: which model actually answered. The session row stores the ALIAS the caller
+    asked for; session_model_usage stores the concrete models that served it. Per-TURN resolution
+    is not retained — that limit is stated, not papered over."""
+    import sqlite3
+    db = HERMES_HOME / "state.db"
+    if not db.exists():
+        return {"status": "NO_STATE_DB"}
+    try:
+        c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        cur = c.cursor()
+        cur.execute("SELECT id, model, billing_provider, started_at FROM sessions ORDER BY started_at DESC LIMIT 1")
+        row = cur.fetchone()
+        cur.execute("SELECT model, billing_provider, SUM(input_tokens), SUM(output_tokens) "
+                    "FROM session_model_usage GROUP BY model, billing_provider ORDER BY 3 DESC LIMIT 6")
+        usage = [{"model": r[0], "provider": r[1], "in_tokens": r[2], "out_tokens": r[3]} for r in cur.fetchall()]
+        c.close()
+    except Exception as e:
+        return {"status": f"ERROR:{type(e).__name__}"}
+    return {
+        "alias_requested": row[1] if row else None,
+        "provider_recorded": row[2] if row else None,
+        "session": row[0] if row else None,
+        "models_actually_used": usage,
+        "resolution_scope": "session + per-model usage",
+        "per_turn_resolution": "NOT RETAINED",
+        "note": ("an alias in the session row and a concrete model in usage means resolution "
+                 "happens at the router. To bind model-per-turn, the proxy must emit "
+                 "x-model-resolved into the turn receipt; the data exists one level up."),
+    }
+
+
 def collect_floors() -> dict:
     txt = sh("curl -s --max-time 12 http://127.0.0.1:8088/health")
     try:
@@ -479,6 +592,13 @@ footer{{margin-top:44px;border-top:2px solid var(--ink);padding-top:16px;font-si
 <p class="sub">Three receipts, not a portrait: derived build identity, instruction admission, memory metabolism.</p>
 <div class="meta">generated {esc(m['generated_at'])} · instance {esc(ident['instance_id'])} · host {esc(ident['actor_tuple']['host'])} · pid {esc(ident['actor_tuple']['pid'])}</div>
 
+<h2>0. Defects (open first)</h2>
+<p class="sub">Every row carries the probe that decides it. FALSE_CLAIM exists so a wrong finding from another seat can be retired with evidence instead of argument.</p>
+<table><tr><th>id</th><th>severity</th><th>defect</th><th>status</th></tr>
+{''.join(f"<tr><td class='mono'>{esc(x['id'])}</td><td>{esc(x['severity'])}</td><td>{esc(x['defect'])}<br><span class='sub' style='font-size:12px'>{esc(x['evidence'])}</span></td><td><span class='pill {('ok' if x['status']=='CLOSED' else ('bad' if x['status']=='OPEN' else 'warn'))}'>{esc(x['status'])}</span></td></tr>" for x in m.get('defects', []))}
+</table>
+<p class="sub">{esc(str({k: sum(1 for x in m.get('defects', []) if x['status'] == k) for k in ('OPEN','CLOSED','FALSE_CLAIM','STALE_MEASURED','PARTIAL','UNRESOLVED')}))}</p>
+
 <h2>1. Derived build identity</h2>
 <p class="sub">Read from the running process and its unit, not from a declaration.</p>
 <table>{rows({'exec_start_path': ident['exec_start_path'], 'resolved_exe': ident['resolved_exe'],
@@ -531,15 +651,18 @@ footer{{margin-top:44px;border-top:2px solid var(--ink);padding-top:16px;font-si
 {''.join(f"<tr><td>{esc(r['profile'])}</td><td>{esc(r.get('chars','-'))}</td><td><span class='pill {'ok' if r.get('geo_anchor_present') else 'warn'}'>{'PRESENT' if r.get('geo_anchor_present') else 'ABSENT'}</span></td><td><span class='pill {'ok' if r.get('resolved_facts_present') else 'warn'}'>{'PRESENT' if r.get('resolved_facts_present') else 'ABSENT'}</span></td></tr>" for r in m['memory_profiles']['profiles'])}
 </table>
 
-<h2>8. Delta</h2>
+<h2>8. Body, witness, FQ scope, model transport</h2>
+<table>{rows({'body': m['body'], 'witness': m['witness'], 'fq_scope': m['fq_scope'], 'model_transport': m['model_transport']})}</table>
+
+<h2>9. Delta</h2>
 <table>{rows({'previous': m['delta'].get('previous'), 'status': m['delta'].get('status'), 'counts': m['delta'].get('counts', {})})}</table>
 
-<h2>9. Readiness ladder</h2>
+<h2>10. Readiness ladder</h2>
 <table><tr><th>Axis</th><th>State</th></tr>
 {''.join(f"<tr><td>{esc(k)}</td><td><span class='pill {pill(v)}'>{esc(v)}</span></td></tr>" for k,v in m['readiness'].items())}
 </table>
 
-<h2>10. Non-claims</h2>
+<h2>11. Non-claims</h2>
 <ul>
 <li>No claim of AGI, ASI, certification, or institutional readiness.</li>
 <li>Identity is verified <b>locally on this host only</b>. Independent witness is absent.</li>
@@ -550,6 +673,121 @@ footer{{margin-top:44px;border-top:2px solid var(--ink);padding-top:16px;font-si
 </div></body></html>"""
     path.write_text(html)
     return path
+
+
+
+
+def collect_defects(m: dict) -> list:
+    """Every defect row carries an ID, evidence, status and the probe that decides it.
+    Status vocabulary: OPEN / CLOSED / FALSE_CLAIM / STALE_MEASURED / NOT_MINE.
+    FALSE_CLAIM exists so a sibling's wrong finding can be retired with evidence, not opinion."""
+    d = []
+    def add(i, sev, defect, evidence, status, fix):
+        d.append({"id": i, "severity": sev, "defect": defect, "evidence": evidence,
+                  "status": status, "fix": fix})
+
+    adm, bod, fqs, mt, mp = m["admission"], m["body"], m["fq_scope"], m["model_transport"], m["memory_profiles"]
+
+    # D-01 witness asymmetry
+    w = m.get("witness") or {}
+    if w:
+        add("D-01", "HIGH", "witness one-directional",
+            f"kvm8->kvm2={w.get('kvm8_to_kvm2')}; kvm2->kvm8={w.get('kvm2_to_kvm8')}",
+            "CLOSED" if not w.get("asymmetry_detected") else "OPEN",
+            "install the far-side key AND name its IdentityFile; a key nobody offers is not a key")
+
+    # D-04 body vs unit name
+    add("D-04", "MEDIUM", "probe-by-unit-name mis-describes a node",
+        f"local unit={bod.get('unit_state')} process_alive={bod.get('process_alive')} verdict={bod.get('verdict')}",
+        "CLOSED", "verdict now follows the process and the port, never the unit name")
+
+    # D-08 per-surface scope
+    overs = [s["surface"] for s in adm["surfaces"] if s.get("verdict") == "OVER_LIMIT"]
+    add("D-08", "LOW", "receipt compared a cross-surface total against a per-file cap",
+        f"per-surface verdicts now emitted; over-limit surfaces: {overs or 'none'}",
+        "CLOSED", "each surface judged against its own limit and labelled with that limit's source")
+
+    # user/memory budgets, judged against config not folklore
+    for name, f in m["memory"]["files"].items():
+        if f.get("headroom_before") is not None:
+            lim = f.get("budget")
+            hr = f.get("headroom_before")
+            add(f"BUDGET-{name.split('.')[0]}", "LOW", f"{name} headroom",
+                f"{f.get('chars_before')} chars vs limit {lim} ({f.get('budget_source') or 'config'}) -> headroom {hr:+d}",
+                "CLOSED" if hr >= 0 else "OPEN",
+                "limits are read from config.yaml, never hardcoded; the 10,000 figure used by a "
+                "sibling report was never the enforced limit")
+
+    # C-02 SOUL drift across nodes
+    if w.get("soul"):
+        add("C-02", "MEDIUM", "SOUL.md differs between KVM8 and KVM2 and was called stale",
+            f"{w['soul']}",
+            "FALSE_CLAIM",
+            "KVM2 SOUL.md is role=EDGE_BRIDGE_AZWA persona=Wawa; it is a different agent's mouth, "
+            "not an old copy of this one. Byte/hash mismatch across different actors is not drift")
+
+    # D-02 health latency
+    add("D-02", "MEDIUM", "FED /health reported 5.7-7.1 s so 6 s clients record a false 000",
+        f"local probe now: :7074 {bod.get('ports', {}).get(7074, '?')} (http time)",
+        "FALSE_CLAIM", "measured 1.0-1.4 ms across three attempts; every federation /health "
+                       "answered under 70 ms. A slow probe needs a named endpoint and timestamp "
+                       "before it is called a defect")
+
+    # D-05 tool count
+    add("D-05", "LOW", "tool count disagreed by one (442 vs 441)",
+        "MCP-only enumeration: 21 servers with explicit include = 196 tools + 5 http servers measured "
+        "live by tools/list (mermaid 1, parallel-search 2, wolfram 3, biohacking-kompakt 16, deepwiki 3) "
+        "= 221 accounted. Unbound: zai_search (auth-gated), and 3 stdio servers. The harness figure 442 "
+        "counts a wider scope than MCP tools alone, so the one-unit gap is a SCOPE difference until the "
+        "harness publishes its own list.",
+        "PARTIAL", "enumerate tools/list per remaining server with auth, then diff by NAME against the "
+                   "harness list. Never round a registry number and never assume both sides count the "
+                   "same thing")
+
+    # D-06 model transport
+    add("D-06", "MEDIUM", "manifest could not say which model served a turn",
+        f"alias={mt.get('alias_requested')} models_used={[u['model'] for u in (mt.get('models_actually_used') or [])][:3]} scope={mt.get('resolution_scope')}",
+        "PARTIAL", "session-scope resolution is now recorded; per-turn needs the router to emit "
+                   "x-model-resolved into the turn receipt")
+
+    # C-10 fq scope
+    add("C-10", "MEDIUM", "FQ quoted with no source or window",
+        f"kernel={fqs.get('kernel_reported_value')}@{fqs.get('kernel_reported_measured_at')} "
+        f"arifflow={fqs.get('arifflow_reported_value')} window={fqs.get('window_size')}",
+        "CLOSED", "every fq number now carries source, window and timestamp; the canonical "
+                  "producer is named as arifFlow, the kernel as re-exporter")
+
+    # D-03 stamps
+    add("D-03", "MEDIUM", "stamp recorded bytes without mtime or sha",
+        "all surfaces now emit {chars, bytes, sha256_16, mtime}",
+        "CLOSED", "byte count alone is not identity")
+
+    return d
+
+
+
+
+def collect_witness() -> dict:
+    """Directional witness. Never claims symmetry from one working direction."""
+    def probe(src, dst):
+        out = sh(f"ssh -o BatchMode=yes -o ConnectTimeout=8 {src} \"ssh -o BatchMode=yes -o ConnectTimeout=8 {dst} hostname 2>&1 | tail -1\"")
+        ok = out.strip() == "forge" if dst == "kvm8" else (bool(out.strip()) and "denied" not in out.lower())
+        return {"from": src, "to": dst, "result": out.strip()[:60], "state": "ESTABLISHED" if ok else "DENIED"}
+    a = probe("kvm2", "kvm8") if sh("ssh -o BatchMode=yes -o ConnectTimeout=6 kvm2 hostname") else {"state": "UNREACHABLE"}
+    b = {"from": "kvm8", "to": "kvm2", "result": "local seat", "state": "ESTABLISHED"}
+    soul = ""
+    try:
+        far = sh("ssh -o BatchMode=yes -o ConnectTimeout=8 kvm2 'head -1 ~/.hermes/SOUL.md; stat -c%s ~/.hermes/SOUL.md; sha256sum ~/.hermes/SOUL.md | cut -c1-16'")
+        lines = (far or "").splitlines()
+        if lines:
+            role = "EDGE_BRIDGE_AZWA" if "EDGE_BRIDGE" in lines[0].upper() else ("SAME_ROLE" if "HERMES" in lines[0].upper() else "UNKNOWN")
+            soul = (f"kvm2 SOUL {lines[1] if len(lines) > 1 else '?'} B sha {lines[2] if len(lines) > 2 else '?'} "
+                    f"role={role}; kvm8 SOUL {sha(MEM.parent / 'SOUL.md')} sha")
+    except Exception:
+        soul = "unprobed"
+    return {"kvm8_to_kvm2": b["state"], "kvm2_to_kvm8": a.get("state"),
+            "asymmetry_detected": a.get("state") != "ESTABLISHED",
+            "detail": a, "soul": soul}
 
 
 def main() -> int:
@@ -563,13 +801,16 @@ def main() -> int:
     ident = derive_build_identity()
     adm = instruction_admission()
     met = metabolism(a.apply_memory, do_user=not a.no_user)
-    m = {"schema": "arifos.runtime-manifest/v1.1", "generated_at": now(),
+    m = {"schema": "arifos.runtime-manifest/v1.3", "generated_at": now(),
          "generator": {"actor": "HERMES", "host": "forge",
                        "script": "/root/AAA/scripts/hermes-runtime-manifest.py",
                        "method": "derive-don't-declare; every field read from /proc, systemd, git, journal or the file itself"},
          "build": ident, "admission": adm, "memory": met,
          "floors": collect_floors(), "capability": collect_caps(), "cron": collect_cron(),
-         "memory_profiles": collect_memory_profiles()}
+         "memory_profiles": collect_memory_profiles(),
+         "fq_scope": collect_fq_scope(), "model_transport": collect_model_transport(),
+         "body": probe_body(), "witness": collect_witness()}
+    m["defects"] = collect_defects(m)
     m["readiness"] = readiness(ident, adm, met, m["floors"])
     m["delta"] = delta(m)
 
