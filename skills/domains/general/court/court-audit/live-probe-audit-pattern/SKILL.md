@@ -285,6 +285,16 @@ An external review of "what the agent said" samples one session from many. Match
 - **A grep that excludes hidden/gitignored paths manufactures an absence claim.** A `search_files` (or `rg`/`grep`/`find`) run with default settings on a working tree that contains hidden directories (`.hermes/logs`, `.hermes/pastes`, `.git/objects`, `~/.cache/...`) will report zero matches for content that is actually present in those excluded trees — and the resulting "no record" verdict is the user's first read of the answer, not a second-order nuance. Treat every absence claim as null until the probe lists which surfaces it searched AND the writer could plausibly have written there. Specifically: before declaring a name, conversation, or fact "not present in the machine," probe (1) all hidden directories under the relevant root, (2) the paste / drop / cache / log folders the gateway actually writes to, and (3) any `.gitignored` paths the user might have authored privately. The probe that found nothing is not evidence of absence; it is evidence about the probe. The user has to nudge you to widen it — that is the reflex defect, not their instruction.
 - **Idempotent writes + stable content-hash IDs close recursive writes.** Use `MERGE` (graph) or `INSERT ... ON CONFLICT DO NOTHING` (SQL) keyed by `sha256(content)[:8]`. This makes re-emission non-destructive and lets later runs query earlier ones by ID without schema join keys.
 
+## Recovered audits (2026-10-23, from KVM4 — read by trigger)
+
+Two audit classes existed only on KVM4 and were absent from the whole KVM8 tree. Read them
+**before** answering these questions, not after:
+
+| Trigger | Read |
+|---|---|
+| "is this subsystem actually alive / used?" — a report shows impressive architecture (state machines, gates, leases, promotion pipelines) and you must judge whether any agent invokes it end-to-end | `references/architecture-vs-liveness-audit.md` — the 10-question liveness probe. Architecture ≠ alive: 20+ real files, 1,100-line engine, tests, and zero production calls is a real scar, not a hypothetical |
+| "who are you, as per reality now" / "forge a pdf about yourself" — the sovereign asks the agent to describe itself | `references/self-state-reality-document.md` — measured self-state artifact with a numbered "what is wrong today" section; a self-report with zero defects is marketing, not witness |
+
 ## Common Drift Patterns (compressed)
 
 | Pattern | Tell | Fix |
