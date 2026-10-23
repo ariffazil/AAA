@@ -1,6 +1,6 @@
 ---
 name: apex-theory-canon
-description: "Navigate and explain the arifOS APEX THEORY canon — the constitutional field law of governed intelligence. Use when Arif (or any agent) asks 'what is APEX THEORY', 'map APEX', 'what are the dials/letters/floors', 'explain the grand equation', 'what is ΔΩΨ', or needs a coherent synthesis of the APEX documents. Covers: the four-letter Grand Equation (two sealed canonical forms + one DRAFT + one superseded legacy form), the 8 constitutional axioms (Nash uniqueness proof), the A-P-E-X dial↔floor mapping, the 13 floors, the 10-gate MCP envelope, the verdict lattice, the three closures, FQ pulse, the falsifiable core, and the seven-organ stack. Load BEFORE answering any APEX theory question — the canon is fragmented across 15+ docs and easy to mis-synthesize."
+description: 'Navigate and explain the arifOS APEX THEORY canon — the constitutional field law of governed intelligence.'
 version: 1.0.0
 author: Hermes Agent (aaa-hermes profile)
 license: MIT
@@ -204,3 +204,7 @@ Arif wants this "in full human language and real scientific, mathematics, agenti
 - `references/apex-art-act-layer-correction.md` — ART/ACT/Kernel/AAA layered architecture, canonical one-liners, synthesis-drift traps, Malay glosses, ACT patterns (added 2026-08-08)
 - `references/double-helix-three-truths-2026-08-08.md` — Double helix (Floors ⇅ Flow, Laws as hydrogen bonds), inner/outer loop coupling, trilemma (Truth/Reality/Survival), three truths (regress terminus = suffering, qualia prerequisite, law without witness = corpse), epigenetic propagation gaps, telomere = sovereign attention, engagement style for canon dialogue. NEW 2026-08-08
 - `references/nine-atlas-eight-verbs-invariant-2026-08-08.md` — 9=genome vs 8=machinery invariant (sealed as EUREKA §11), W-vector bridging, 666→arif_audit promotion gates, phenotype substrate three-layer model. NEW 2026-08-08
+
+## Routing notes (moved from description 2026-10-23)
+
+Use when Arif (or any agent) asks 'what is APEX THEORY', 'map APEX', 'what are the dials/letters/floors', 'explain the grand equation', 'what is ΔΩΨ', or needs a coherent synthesis of the APEX documents. Covers: the four-letter Grand Equation (two sealed canonical forms + one DRAFT + one superseded legacy form), the 8 constitutional axioms (Nash uniqueness proof), the A-P-E-X dial↔floor mapping, the 13 floors, the 10-gate MCP envelope, the verdict lattice, the three closures, FQ pulse, the falsifiable core, and the seven-organ stack. Load BEFORE answering any APEX theory question — the canon is fragmented across 15+ docs and easy to mis-synthesize.

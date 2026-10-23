@@ -96,3 +96,7 @@ Every engine mutation must write to /root/AAA/VAULT999/receipts/:
 A receipt that says live_api_verification.changed = false AND calibration_run_only = true is a receipt for failure, not success. Surface it as such.
 
 DITEMPA BUKAN DIBERI
+
+## Eureka updates (auto)
+
+- 2026-10-22 · `e-d26b07f4530e` · PATCH-CRAFT ON ENGINE FILES, ADDENDUM (extends the edit-tool-reformat LESSON): (1) The edit tool silently reformats the WHOLE file — for byte-clean patches, git-baseline the original and apply exact-string replacements via python (each anchor asserted to…

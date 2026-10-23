@@ -1,6 +1,6 @@
 ---
 name: witness-biography-pdf
-description: Use when Arif says "realiti hidup" or "cover to cover" for a named person — produces a 14pp witness-biography PDF. Trigger: named human subject + biography register.
+description: 'Use when Arif says "realiti hidup" or "cover to cover" for a named person — produces a 14pp witness-biography PDF. Trigger: named human subject + biography register.'
 version: 1.1.0
 forged: 2026-10-21
 hardened: 2026-10-21 (contract audit + adversarial gates + fresh-session matrix)

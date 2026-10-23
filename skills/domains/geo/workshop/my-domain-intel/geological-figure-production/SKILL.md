@@ -55,7 +55,7 @@ patterns:
   ("Can we at least put real map please!!!!" → "Fail. No full map. Redo
   again."). Use GeoPandas + Natural Earth 50m + Rasterio bathymetry, full
   regional extent, real lat/lon only. See `scientific-pdf-generation` →
-  `references/governed-geospatial-figures.md` (supersedes the v2 block-map
+  ``references/`` (supersedes the v2 block-map
   pattern in Phase 2 above).
 - **Cross-section / burial curves**: bezier/aesthetic curves are rejected.
   Sclater-Christie decompaction + McKenzie subsidence with declared
@@ -284,3 +284,6 @@ against these before writing any NW Borneo section:
 - `references/gempy-2026-api-and-segy-bridge.md` — GemPy 2026.0.3 API drift table (verified-working ImporterHelper CSV flow), the SEGY horizon-picks → GemPy → true-scale section bridge, truth-class propagation rule (OBS→DER, never upgrades), and the falsification-first rule for "ingest real SEGY" requests. Proven 2026-08-20 GEOX session.
 - `references/wire-up-execution-2026-08-20.md` — Post-session update: the bridge→gempy→renderer wire-up **executed end-to-end** in the second Senegal session. Documents `gempy_section_renderer` (the missing third leg), the auto-extent fix for the `zmin=0` silent-failure, the section-index off-by-axis bug, the centroid clip pattern, the z-convention contract, and the v1→v4 dossier progression pattern. Read this **before** running the wire-up — saves ~30 minutes of debugging.
 - `templates/geological-figure-pipeline.py` — starter script combining all 7 figure generators with vision-QA loop
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

@@ -1,6 +1,6 @@
 ---
 name: federation-config-incarnation
-description: "Close the gap between federation config writes (yaml/JSON to disk) and runtime incarnation (services actually serving the new state). Use after any /forge that mutates litellm-config.yaml, call_map.yaml, STATE.yaml, organs.yaml, AAA agent-card registry, or any organ daemon config — the parent must probe live state (curl /v1/models, /health, A2A endpoint, /chat/completions) and confirm runtime incarnation BEFORE declaring SEAL. Also covers: the identity-core litmus test ('if you swap the model, is X still X?'), the 'uncommitted' false alarm (verify git log before committing on behalf of F13), and multi-surface provider/key retirement (env SOT + flat env regen + skill docs). Trigger phrases: 'federation refactor', 'litellm reload', 'config write', 'model not exposed', 'Invalid model name', 'identity core', 'i-ARIF style refactor', 'sovereign persona registration', 'config vs runtime', 'commit these changes', 'retire provider', 'remove API key', 'clean up dependency'."
+description: 'Close the gap between federation config writes (yaml/JSON to disk) and runtime incarnation (services actually serving the new state).'
 tags: [federation, config, litellm, incarnation, runtime, identity-core, litmus-test, reload, operational]
 license: MIT
 ---
@@ -230,3 +230,7 @@ auto-restart loop. Full diagnostic + fix: `references/litellm-params-null-detect
 - `verify-before-report` — post-action verification pattern
 - `verify-nested-sibling-reports` — detect nested self-report pattern
 - `FORGE-verify-runtime` — verification-as-terminal-state
+
+## Routing notes (moved from description 2026-10-23)
+
+Use after any /forge that mutates litellm-config.yaml, call_map.yaml, STATE.yaml, organs.yaml, AAA agent-card registry, or any organ daemon config — the parent must probe live state (curl /v1/models, /health, A2A endpoint, /chat/completions) and confirm runtime incarnation BEFORE declaring SEAL. Also covers: the identity-core litmus test ('if you swap the model, is X still X?'), the 'uncommitted' false alarm (verify git log before committing on behalf of F13), and multi-surface provider/key retirement (env SOT + flat env regen + skill docs). Trigger phrases: 'federation refactor', 'litellm reload', 'config write', 'model not exposed', 'Invalid model name', 'identity core', 'i-ARIF style refactor', 'sovereign persona registration', 'config vs runtime', 'commit these changes', 'retire provider', 'remove API key', 'clean up dependency'.

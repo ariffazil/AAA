@@ -1,6 +1,6 @@
 ---
 name: audit-and-validate-deliverables
-description: "Independent audit + validation pattern for any produced artifacts (audit reports, code reviews, research, agent outputs). Author-and-audit pattern with adversarial posture, claim-by-claim evidence matrix, witness disagreement preserved. NOT for greenfield work — the artifact must already exist. Use when: a sibling/worker/session produced deliverables that need signed-off verification; you just executed a multi-phase task and need to verify your own claims before sealing; a user explicitly asks for verification/audit/validation. Distinct from requesting-code-review (which is pre-commit) and systematic-debugging (which is for runtime bugs). This is for *deliverables*."
+description: 'Independent audit + validation pattern for any produced artifacts (audit reports, code reviews, research, agent outputs).'
 version: 1.0.0
 author: Hermes Agent
 license: MIT
@@ -361,10 +361,17 @@ errors — see `references/post-commit-node-organ-audit.md`. This is a lighter-w
 
 ## References
 
-- `references/mma-2026-08-07-evidence-matrix.md` — full evidence matrix from the 2026-08-07 memory audit (61 claims, 87% verified, 0 fabricated)
+- ``references/`` — full evidence matrix from the 2026-08-07 memory audit (61 claims, 87% verified, 0 fabricated)
 - `references/audit-checklist-template.md` — copy-paste Phase 1-6 checklist for any audit
 - `references/seal-hash-drift-quarantine.md` — recovery pattern when sealed hashes no longer match disk artifacts (MMA-2026-08-07)
 - `references/self-seal-godel-lock-pattern.md` — detection, override, and recovery for self-SEAL violations (HEXAGON 5.0 separation of powers); 2026-08-08 case study
 - `references/federation-architecture-audit-pattern.md` — federation-wide audit patterns (port scan, drift detection, doctrine verification)
 - `references/vault999-chain-audit-2026-08-08.md` — VAULT999 ledger integrity findings (42K-entry multi-schema JSONL, canonical verifier unwired from Makefile, 18 JUDGE_SEAT_DEPUTY schema-bug entries, schema-distribution discipline)
 - `references/post-commit-node-organ-audit.md` — lightweight 4-check pattern for auditing a Node organ repo after a feature commit (git status, npm test, ESM hygiene, tsc)
+
+## Routing notes (moved from description 2026-10-23)
+
+Author-and-audit pattern with adversarial posture, claim-by-claim evidence matrix, witness disagreement preserved. NOT for greenfield work — the artifact must already exist. Use when: a sibling/worker/session produced deliverables that need signed-off verification; you just executed a multi-phase task and need to verify your own claims before sealing; a user explicitly asks for verification/audit/validation. Distinct from requesting-code-review (which is pre-commit) and systematic-debugging (which is for runtime bugs). This is for *deliverables*.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

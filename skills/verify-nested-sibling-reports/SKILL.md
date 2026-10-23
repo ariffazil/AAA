@@ -1,6 +1,6 @@
 ---
 name: verify-nested-sibling-reports
-description: "Detect and break the nested-sibling-report pattern (and singleton report inflation) — multiple agent reports stacking on each other with philosophy while live work stays undone, OR a single report with quantified claims, unrun tests, two-manifests-on-one-repo, categorical-vs-instance naming drift, or trend verdicts on insufficient baseline data. Also covers: philosophical-essays-as-audit where SPEC claims are counted as verified alongside OBS. Trigger: Arif pastes 2+ sibling reports in sequence on the same problem; or a single sibling report carries 2+ of: ΔS-inflation, unprobed numbers, Zen stamps, ceremonial templates, categorical language treated as instance counts, or SPEC/DER claims inflated into the verdict numerator alongside OBS claims."
+description: 'Detect and break the nested-sibling-report pattern (and singleton report inflation)'
 ---
 
 > WARNING DRIFT 2026-10-14: local mirror /root/forge_work/i-arif-prep ABSENT (probed: dir + *.jsonl missing, depth-5 sweep /root). HF dataset ariffazil/I-ARIF-CANON = live SOT (card 2026-10-04, 1,699 rows, 7 subsets, redteam=100 probes, not 10). Local commands below fail until mirror restored (one-command T1 restore, only on F13 ask; license AGPL research-only, incorporation needs F13 approval).
@@ -1852,3 +1852,7 @@ Action: deploy + re-probe + (optionally) real apex-judge isolate.
 
 45 seconds to fill in. The cost of catching both defects at audit time is
 much less than the cost of either propagating downstream.
+
+## Routing notes (moved from description 2026-10-23)
+
+— multiple agent reports stacking on each other with philosophy while live work stays undone, OR a single report with quantified claims, unrun tests, two-manifests-on-one-repo, categorical-vs-instance naming drift, or trend verdicts on insufficient baseline data. Also covers: philosophical-essays-as-audit where SPEC claims are counted as verified alongside OBS. Trigger: Arif pastes 2+ sibling reports in sequence on the same problem; or a single sibling report carries 2+ of: ΔS-inflation, unprobed numbers, Zen stamps, ceremonial templates, categorical language treated as instance counts, or SPEC/DER claims inflated into the verdict numerator alongside OBS claims.
