@@ -1,24 +1,24 @@
 version: 3
 x5_reconcile_utc: '2026-09-26T23:34:40Z'
-last_updated: '2026-09-26T23:34:40Z'
+last_updated: '2026-10-23T03:00:00Z'
 canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
 disk_reconciliation:
-  refreshed: '2026-10-23T02:45:43+00:00'
+  refreshed: '2026-10-23T02:51:43+00:00'
   method: 'skills-census.py --write — machine-derived, do not hand-edit; NOT on a schedule, refresh by running the tool'
-  physical_disk_skills: 1143
-  canonical_skills: 1254
+  physical_disk_skills: 1145
+  canonical_skills: 1256
   viewed_skills: 1174
   loadable_skills: 1172
   overlay_skills: 'codex=26, continue=0, gemini=22, kimi=34, opencode=22, qwen=48'
-  whole_mesh_skills: 1295
+  whole_mesh_skills: 1297
   duplicate_identity_groups: 4
   duplicate_identity_skills: 4
   shells: 7
   diverged: 0
   broken_symlinks: 0
-  witness_hash: f223a9870c62315c
+  witness_hash: 4c76297235b2242c
   verdict: WARN
 layers:
   substrate:
@@ -103,6 +103,7 @@ layers:
       - ops-health
       - ops-mcp-lifeguard
       - ops-model-monitor
+      - forge-feedback-loop-ladder  # canonical: /root/AAA/skills/forge-feedback-loop-ladder (v1.0.0, forged 2026-10-23, floors F1/F2/F11, T1; binds skill-artifact-redact + probe-before-panic)
       - ops-google
       - ops-transport
       - ops-infra-crons
@@ -131,6 +132,7 @@ layers:
       sec:
       - sec-secrets
       - sec-telegram
+      - skill-artifact-redact  # canonical: /root/AAA/skills/skill-artifact-redact (v1.0.0, forged 2026-10-23, floors F1/F2/F11, T1; script scripts/redact.py)
       research:
       - research-summarize
       - research-search

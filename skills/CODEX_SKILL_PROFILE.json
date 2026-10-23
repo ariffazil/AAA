@@ -236,6 +236,30 @@
     {
       "name": "FORGE-musyawarah-gotong",
       "axis": "a2a"
+    },
+    {
+      "name": "skill-artifact-redact",
+      "reason": "redact secrets before any captured artifact leaves the machine",
+      "source": "/root/AAA/skills",
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F11"
+      ],
+      "autonomy_tier": "T1",
+      "added": "2026-10-23"
+    },
+    {
+      "name": "forge-feedback-loop-ladder",
+      "reason": "build a red signal before proposing a cause",
+      "source": "/root/AAA/skills",
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F11"
+      ],
+      "autonomy_tier": "T1",
+      "added": "2026-10-23"
     }
   ]
 }
