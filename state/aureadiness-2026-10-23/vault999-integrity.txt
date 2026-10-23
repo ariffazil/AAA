@@ -1,0 +1,37 @@
+VAULT999 integrity scan — /opt/arifos/app/VAULT999
+file                                                     bytes  lines linemode wholejson
+SEALED_EVENTS.ERRATA.jsonl                                4538      6     True     False
+SEALED_EVENTS.jsonl                                    1882064   1357     True     False
+SEALED_EVENTS.relinked.jsonl                           2134306   1358     True     False
+a2a_chain.jsonl                                           8089      3     True     False
+apex-zen-announce.jsonl                                 588805   1719     True     False
+apex-zen-receipts.jsonl                                 737876   2030     True     False
+apex-zen-telemetry.jsonl                              16149944  24058     True     False
+apex-zen-witness.jsonl                                14065377   8410     True     False
+arifflow_sealed.jsonl                                 19028779  41462    False     False
+arifflow_sealed_rg2.jsonl                             12129778  29424    False     False
+authority-layer-doctrine-2026-08-09-ATTESTED.jsonl        1476     36    False      True
+layer-separation-doctrine-2026-08-09-ATTESTED.jsonl       1357     36    False      True
+local_seals.jsonl                                        28071     23     True     False
+outcomes.jsonl                                         1468593   2256     True     False
+outcomes.sig.jsonl                                        1893      6     True     False
+outcomes_manual.jsonl                                     2415      5     True     False
+qqq_receipts.jsonl                                        4222      2     True     False
+qwen-code-sealed.jsonl                                     364      1     True      True
+receipts_v2.jsonl                                        36325     25     True     False
+rsi_ledger.jsonl                                       4939377  13834     True     False
+seal_chain.jsonl                                        468481    274     True     False
+session-seals.jsonl                                      13609      7     True     False
+shim_hits.jsonl                                            249      2     True     False
+sibling-acah2-fixes.jsonl                                  821      1     True      True
+skill_mutations.jsonl                                  4013021   4055     True     False
+sro_expiry_receipts.jsonl                                 5997     42     True     False
+vault999.jsonl                                           43410     26     True     False
+vault999_legacy.jsonl                                   163091    106     True     False
+voice-revocations.jsonl                                    709      2     True     False
+
+DEFECTS:
+  CORRUPT_OR_MIXED                       arifflow_sealed.jsonl  (1)
+  CORRUPT_OR_MIXED                       arifflow_sealed_rg2.jsonl  (3)
+  PRETTY_PRINTED_SINGLE_JSON_in_jsonl    authority-layer-doctrine-2026-08-09-ATTESTED.jsonl  (36)
+  PRETTY_PRINTED_SINGLE_JSON_in_jsonl    layer-separation-doctrine-2026-08-09-ATTESTED.jsonl  (36)

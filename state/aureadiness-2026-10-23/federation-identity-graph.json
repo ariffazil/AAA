@@ -1,0 +1,451 @@
+{
+ "schema": "federation-identity-graph/v1",
+ "generated_at": "2026-10-23T03:41:56+00:00",
+ "host_measured_from": "KVM8 af-forge 100.64.0.2",
+ "measurement": [
+  "/health",
+  "/tools",
+  "tools/list handshake on 5 organs",
+  "identity.toml",
+  "seal_chain.jsonl tail",
+  "ss -tlnp",
+  "agent-cards",
+  "kvm4 ssh read-only"
+ ],
+ "counts": {
+  "nodes": 16,
+  "verified": 1,
+  "unverified": 10,
+  "unregistered_key": 4
+ },
+ "nodes": [
+  {
+   "actor_id": "ARIF",
+   "display_name": "Muhammad Arif bin Fazil",
+   "runtime_identity": "human sovereign",
+   "host": "KVM8 af-forge 100.64.0.2 (operator session)",
+   "endpoint": "n/a",
+   "identity_source": "self + ed25519 signature on seal_chain rows",
+   "identity_source_hash": "ed25519_verified (seal_chain.jsonl tail)",
+   "verification_status": "VERIFIED_HISTORICAL",
+   "authority_class": "SOVEREIGN",
+   "blast_radius_class": "federation",
+   "capabilities_declared": [
+    "final authority",
+    "veto",
+    "seal acceptance",
+    "identity binding"
+   ],
+   "capabilities_observed": [
+    "signed seal rows exist: actor_verification.method=ed25519_verified",
+    "seal_chain last row authority_state=SOVEREIGN"
+   ],
+   "mutation_rights": "ALL",
+   "verdict_rights": "ALL",
+   "execution_rights": "ALL",
+   "witness_destination": "VAULT999",
+   "falsifier": "a row claiming ARIF without a verified ed25519 signature",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": "Only actor with proven signature verification in the live ledger."
+  },
+  {
+   "actor_id": "arifos",
+   "display_name": "arifOS Constitutional Kernel",
+   "runtime_identity": "arifosmcp 2026.10.22-a7bda8a (python3.13)",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:8088 (mcp) / tailscale 100.64.0.2:8088",
+   "identity_source": "/etc/arifos/identity.toml -> /root/AAA/identity.toml (DERIVED pointer)",
+   "identity_source_hash": "sha256:73a284a66578e7f58b823a373455c610237e33f13e0fb352397ff152e6833719",
+   "verification_status": "DECLARED_NOT_AUTHENTICATED",
+   "authority_class": "JUDGE",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "8 canonical verbs",
+    "13 floors",
+    "verdict SEAL/HOLD/VOID/SABAR"
+   ],
+   "capabilities_observed": [
+    "tools/list=9",
+    "/health 200",
+    "floor_passed=false",
+    "actor_verified=false"
+   ],
+   "mutation_rights": "NONE (own AGENTS.md: cannot execute mutations)",
+   "verdict_rights": "SEAL/HOLD/VOID/SABAR",
+   "execution_rights": "NONE (delegates to A-FORGE)",
+   "witness_destination": "VAULT999",
+   "falsifier": "a verdict written without judge_state_hash or without an actor that can be verified",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": "Two identity files disagree: /etc/arifos/identity.toml says \"superseded by /root/AAA/identity.toml\"; both exist with different content."
+  },
+  {
+   "actor_id": "hermes-kvm8",
+   "display_name": "HERMES (edge bridge / mouth)",
+   "runtime_identity": "hermes-agent (hermes-mcp 2026.09.25.1)",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "no inbound TCP (telegram long-poll + stdio MCP children)",
+   "identity_source": "/root/.hermes/SOUL.md + IDENTITY_LOCK.json",
+   "identity_source_hash": "not hashed at probe time",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "OBSERVE_ONLY",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "route",
+    "normalize",
+    "classify",
+    "receipt",
+    "skill curation",
+    "report relay"
+   ],
+   "capabilities_observed": [
+    "kernel call returned actor_verified=false, authority OBSERVE_ONLY",
+    "hermes-mcp :18087 tools=15",
+    "writes skills + memory"
+   ],
+   "mutation_rights": "skills/memory/receipts (no canon, no money, no deploy)",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "VAULT999 via arif_seal only",
+   "falsifier": "any claim that Hermes executed or sealed in its own name",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": "NO actor block in /root/AAA/IDENTITY/identity.toml \u2014 the mouth has no registered cryptographic identity."
+  },
+  {
+   "actor_id": "hermes-kvm4",
+   "display_name": "HERMES (KVM4 instance)",
+   "runtime_identity": "hermes-agent",
+   "host": "KVM4 srv1946043 100.64.0.5",
+   "endpoint": "no inbound TCP observed",
+   "identity_source": "/root/.hermes/skills (241 SKILL.md, no registry)",
+   "identity_source_hash": "n/a",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "OBSERVE_ONLY",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "241 skills",
+    "case + peer execution lanes"
+   ],
+   "capabilities_observed": [
+    "241 SKILL.md",
+    "no skills-census / registry / index present"
+   ],
+   "mutation_rights": "local skill files only",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE (bounded lane only)",
+   "witness_destination": "local only",
+   "falsifier": "a KVM4 claim citing /root/AAA/skills, /root/AAA/instructions or /root/AAA/canon as its source",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": "/root/AAA on KVM4 is a 3-directory stub (forge_work, ledger, state) \u2014 192 distinct dead canon paths referenced."
+  },
+  {
+   "actor_id": "irfanclaw",
+   "display_name": "IRFANclaw (OpenClaw)",
+   "runtime_identity": "openclaw-gateway",
+   "host": "KVM4 srv1946043 100.64.0.5",
+   "endpoint": "openclaw-gateway.service :18789",
+   "identity_source": "openclaw config",
+   "identity_source_hash": "not hashed",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "BOUNDED_EXECUTOR",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "bounded execution lane",
+    "peer messaging"
+   ],
+   "capabilities_observed": [
+    "openclaw-gateway.service running (per unit list)"
+   ],
+   "mutation_rights": "bounded execution only",
+   "verdict_rights": "NONE",
+   "execution_rights": "bounded",
+   "witness_destination": "local",
+   "falsifier": "an IRFANclaw action without a bounded lane envelope",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": "Custody: IRFANclaw serves Syed, HERMES serves Arif."
+  },
+  {
+   "actor_id": "333-AGI",
+   "display_name": "333-AGI (proposer)",
+   "runtime_identity": "FI-003 lane",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "via FED / lanes",
+   "identity_source": "/root/AAA/IDENTITY/keys/333-AGI_private.pem",
+   "identity_source_hash": "key present; NO [actor.333-AGI] block in identity.toml",
+   "verification_status": "UNREGISTERED_KEY",
+   "authority_class": "PROPOSE",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "proposal",
+    "decomposition"
+   ],
+   "capabilities_observed": [
+    "arifFlow per_actor 333-agi: execute=4 verify=23 quotient=5.75 HELD"
+   ],
+   "mutation_rights": "proposals only",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "VAULT999 via judge",
+   "falsifier": "a 333 output treated as a verdict",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "555-ASI",
+   "display_name": "555-ASI (verifier)",
+   "runtime_identity": "FI-003 lane",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "via FED / lanes",
+   "identity_source": "/root/AAA/IDENTITY/keys/555-ASI_private.pem",
+   "identity_source_hash": "key present; NO actor block",
+   "verification_status": "UNREGISTERED_KEY",
+   "authority_class": "VERIFY",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "verification",
+    "contradiction check"
+   ],
+   "capabilities_observed": [
+    "hermes-asi actor in arifFlow: execute=24 verify=12 quotient=0.5 FLOWING"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "VAULT999 via judge",
+   "falsifier": "a verification accepted without a falsifier",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "888-APEX",
+   "display_name": "888-APEX (judge)",
+   "runtime_identity": "APEX lane",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "via FED / lanes",
+   "identity_source": "/root/AAA/IDENTITY/keys/888-APEX_private.pem",
+   "identity_source_hash": "key present; NO actor block",
+   "verification_status": "UNREGISTERED_KEY",
+   "authority_class": "JUDGE",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "independent verdict"
+   ],
+   "capabilities_observed": [
+    "apex verdict files present; no live 888 session probed"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "SEAL/HOLD/VOID/SABAR",
+   "execution_rights": "NONE",
+   "witness_destination": "VAULT999",
+   "falsifier": "an 888 verdict issued by the same model lane as the executor",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "A-FORGE",
+   "display_name": "A-FORGE Execution Engine",
+   "runtime_identity": "a-forge 0.1.0",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:7071 (sense) / :7072 (forge)",
+   "identity_source": "forge identity (key /root/AAA/IDENTITY/keys/777-forge_private.pem)",
+   "identity_source_hash": "key present; no actor block",
+   "verification_status": "UNREGISTERED_KEY",
+   "authority_class": "EXECUTE_BOUNDED",
+   "blast_radius_class": "federation",
+   "capabilities_declared": [
+    "115 tools",
+    "forge_shell / forge_docker / forge_git / forge_seal"
+   ],
+   "capabilities_observed": [
+    "tools/list=115 on both 7071 and 7072",
+    "ACT ingress HMAC-SHA256 per AGENTS.md"
+   ],
+   "mutation_rights": "bounded execution inside lease/ACT",
+   "verdict_rights": "NONE",
+   "execution_rights": "yes, inside envelope",
+   "witness_destination": "VAULT999",
+   "falsifier": "forge_execute / forge_execute_sealed accepting a call with no verdict id",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "arifFlow",
+   "display_name": "arifFlow metabolism",
+   "runtime_identity": "arifflow (fastmcp separate)",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:7073/health (no /mcp)",
+   "identity_source": "n/a",
+   "identity_source_hash": "n/a",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "WITNESS_METABOLIC",
+   "blast_radius_class": "federation",
+   "capabilities_declared": [
+    "FQ",
+    "invariants",
+    "receipts"
+   ],
+   "capabilities_observed": [
+    "/health 200, verdict FLOWING, fq.quotient=1.0109",
+    "MCP endpoint 404 on :7073"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "local jsonl",
+   "falsifier": "an FQ value consumed as health without window_duration_s and without excluding synthetic actors",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "VAULT999",
+   "display_name": "VAULT999 immutable ledger",
+   "runtime_identity": "vault999-writer.service",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "/opt/arifos/app/VAULT999 (fs)",
+   "identity_source": "append-only jsonl",
+   "identity_source_hash": "n/a",
+   "verification_status": "PRESENT",
+   "authority_class": "WITNESS",
+   "blast_radius_class": "federation",
+   "capabilities_declared": [
+    "append",
+    "chain"
+   ],
+   "capabilities_observed": [
+    "29 jsonl files",
+    "4 malformed files detected"
+   ],
+   "mutation_rights": "append only",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "self",
+   "falsifier": "a receipt row that cannot be re-parsed by a line-delimited reader",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "GEOX",
+   "display_name": "GEOX organ",
+   "runtime_identity": "earth",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:8081",
+   "identity_source": "organ local config",
+   "identity_source_hash": "not probed",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "WITNESS_CONSTRAINED",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "domain tools"
+   ],
+   "capabilities_observed": [
+    "tools/list reachable (see capability graph)"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "local",
+   "falsifier": "claim sourced from GEOX without a live /health probe",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "WEALTH",
+   "display_name": "WEALTH organ",
+   "runtime_identity": "capital",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:18082",
+   "identity_source": "organ local config",
+   "identity_source_hash": "not probed",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "WITNESS_CONSTRAINED",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "domain tools"
+   ],
+   "capabilities_observed": [
+    "tools/list reachable (see capability graph)"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "local",
+   "falsifier": "claim sourced from WEALTH without a live /health probe",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "WELL",
+   "display_name": "WELL organ",
+   "runtime_identity": "substrate",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:18083",
+   "identity_source": "organ local config",
+   "identity_source_hash": "not probed",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "WITNESS_CONSTRAINED",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "domain tools"
+   ],
+   "capabilities_observed": [
+    "tools/list reachable (see capability graph)"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "local",
+   "falsifier": "claim sourced from WELL without a live /health probe",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "CHRON",
+   "display_name": "CHRON organ",
+   "runtime_identity": "temporal",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:18102",
+   "identity_source": "organ local config",
+   "identity_source_hash": "not probed",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "WITNESS_CONSTRAINED",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "domain tools"
+   ],
+   "capabilities_observed": [
+    "tools/list reachable (see capability graph)"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "local",
+   "falsifier": "claim sourced from CHRON without a live /health probe",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  },
+  {
+   "actor_id": "FRAME",
+   "display_name": "FRAME organ",
+   "runtime_identity": "drift",
+   "host": "KVM8 af-forge 100.64.0.2",
+   "endpoint": "http://127.0.0.1:18085",
+   "identity_source": "organ local config",
+   "identity_source_hash": "not probed",
+   "verification_status": "UNVERIFIED",
+   "authority_class": "WITNESS_CONSTRAINED",
+   "blast_radius_class": "organ",
+   "capabilities_declared": [
+    "domain tools"
+   ],
+   "capabilities_observed": [
+    "tools/list reachable (see capability graph)"
+   ],
+   "mutation_rights": "NONE",
+   "verdict_rights": "NONE",
+   "execution_rights": "NONE",
+   "witness_destination": "local",
+   "falsifier": "claim sourced from FRAME without a live /health probe",
+   "measured_at": "2026-10-23T03:41:56+00:00",
+   "note": ""
+  }
+ ]
+}
