@@ -1,0 +1,220 @@
+{
+ "schema": "arifos.runtime-manifest/v1.1",
+ "generated_at": "2026-10-23T04:40:21+00:00",
+ "generator": {
+  "actor": "HERMES",
+  "host": "forge",
+  "script": "/root/AAA/scripts/hermes-runtime-manifest.py",
+  "method": "derive-don't-declare; every field read from /proc, systemd, git, journal or the file itself"
+ },
+ "build": {
+  "instance_id": "hermes-kvm8-asi",
+  "actor_tuple": {
+   "actor_name": "HERMES",
+   "host": "forge",
+   "address": "100.64.0.2",
+   "service": "hermes-asi-gateway.service",
+   "pid": "373283",
+   "channel": "@ASI_arifos_bot"
+  },
+  "hermes_home": "/root/.hermes",
+  "started_at_local": "Fri Oct 23 12:28:56 2026",
+  "uptime_seconds": 684,
+  "exec_start_path": "/usr/local/lib/hermes-agent/.hermes/bin/hermes",
+  "resolved_exe": "/root/runtime/hermes/.hermes/tools/python-3.14.7+20260901-linux-x64/bin/python3.14",
+  "argv_head": "/root/.hermes/tools/python-3.14.7+20260901-linux-x64/bin/python3 -I -c import os, re, sys\nos.environ.pop('PYTHONHOME', None)\nos.environ.pop('PYTHONPATH', None)\nsys.path.insert(0, '/usr/local/lib/herme",
+  "install_tree": "/usr/local/lib/hermes-agent",
+  "install_tree_git_head": "5e16f33277",
+  "install_tree_dirty": "M plugins/platforms/telegram/adapter.py",
+  "editable_workspace_commit": "1fa3f4c",
+  "declared_pyproject_version": "0.0.0",
+  "declared_dist_metadata_version": "0.21.1",
+  "artefact_sha256_16": {
+   "hermes_constants.py": "1bef6b1066658264",
+   "config.yaml": "4e7ad0618c881c14",
+   "USER.md": "0e2f95a78c7c40ec",
+   "MEMORY.md": "9c5ba5484e3f5a6e"
+  },
+  "contradiction": {
+   "status": "OPEN",
+   "detail": "pyproject=0.0.0 vs dist-metadata=0.21.1. Neither is a build identity. Binding key = install_tree_git_head=5e16f33277 + artefact hashes above."
+  },
+  "identity_status": "VERIFIED_LOCAL",
+  "verification_scope": "host forge only",
+  "independent_verification": false
+ },
+ "admission": {
+  "candidates": [
+   {
+    "path": "/root/AAA/AGENTS.md",
+    "bytes": 44156,
+    "sha256_16": "77951da9bb708ae2"
+   },
+   {
+    "path": "/root/.hermes/AGENTS.md",
+    "bytes": 11395,
+    "sha256_16": "a68b1e6111bce87d"
+   },
+   {
+    "path": "/root/AGENTS.md",
+    "bytes": 9251,
+    "sha256_16": "4d5c65eb3e470583"
+   }
+  ],
+  "admitted_file": "/root/AAA/AGENTS.md",
+  "admitted_source_chars": 43434,
+  "cap_chars": 32000,
+  "cap_source": "journal telemetry",
+  "telemetry_line": "Context file AGENTS.md TRUNCATED: 43433 chars exceeds limit of 32000",
+  "verdict": "TRUNCATED_CRITICAL",
+  "verdict_note": "Admission measured from prompt_builder telemetry, not inferred from file size. Invariants are tested against the SOURCE; runtime survival is proven only for the portion the builder kept, which is the open question this receipt exposes.",
+  "invariants": {
+   "F13_SOVEREIGNTY": {
+    "label": "F13 human sovereignty",
+    "present_in_source": true
+   },
+   "FAIL_CLOSED": {
+    "label": "Fail-closed UNKNOWN/HOLD",
+    "present_in_source": true
+   },
+   "CAP_NE_AUTH": {
+    "label": "Capability != authority",
+    "present_in_source": true
+   },
+   "NO_SELF_SEAL": {
+    "label": "No agent self-SEAL",
+    "present_in_source": false
+   },
+   "SEP_POWERS": {
+    "label": "Proposer != judge != executor",
+    "present_in_source": false
+   },
+   "WITNESS_FIRST": {
+    "label": "Witness before mutation",
+    "present_in_source": true
+   },
+   "REP_NE_PERSON": {
+    "label": "Representation(person) != person",
+    "present_in_source": false
+   }
+  }
+ },
+ "memory": {
+  "generated_at": "2026-10-23T04:40:21+00:00",
+  "mode": "PLAN",
+  "files": {
+   "MEMORY.md": {
+    "path": "/root/.hermes/memories/MEMORY.md",
+    "bytes_before": 16139,
+    "budget": 16000,
+    "over_budget_bytes": 139,
+    "sha256_16_before": "9c5ba5484e3f5a6e",
+    "entries": 50,
+    "classes": {
+     "GATE": 9,
+     "ENV": 19,
+     "SKILL": 11,
+     "SCAR": 2,
+     "EPISODE": 4,
+     "LEDGER": 3,
+     "UNCLASSIFIED": 2
+    },
+    "headroom_before": -139,
+    "status": "PLAN_ONLY"
+   },
+   "USER.md": {
+    "path": "/root/.hermes/memories/USER.md",
+    "bytes_before": 10035,
+    "budget": 10000,
+    "over_budget_bytes": 35,
+    "sha256_16_before": "0e2f95a78c7c40ec",
+    "entries": 36,
+    "classes": {
+     "UNCLASSIFIED": 31,
+     "SCAR": 1,
+     "SKILL": 1,
+     "GATE": 3
+    },
+    "headroom_before": -35,
+    "status": "PLAN_ONLY"
+   }
+  }
+ },
+ "floors": {
+  "active": 13,
+  "floor_passed": false,
+  "fq": 0.125,
+  "fq_measured_at": "2026-10-23T04:39:26Z",
+  "pass": [
+   "F11",
+   "F12",
+   "F13",
+   "F2",
+   "F3",
+   "F4",
+   "F5",
+   "F7",
+   "F9"
+  ],
+  "fail": [
+   "F1",
+   "F8"
+  ],
+  "unmeasured": [
+   "F10",
+   "F6"
+  ],
+  "scores": {
+   "F1": 0.0,
+   "F2": 1.0,
+   "F3": 0.9778,
+   "F4": 0.8,
+   "F5": 1.0,
+   "F6": 0.5,
+   "F7": 0.04,
+   "F8": 0.5807,
+   "F9": 0.2073,
+   "F11": 1.0,
+   "F12": 0.0,
+   "F13": 1.0,
+   "F10": 1.0
+  }
+ },
+ "capability": {
+  "declared": 30,
+  "reachable_http": 22,
+  "stdio_present": 8,
+  "callable_verified": "UNKNOWN",
+  "note": "reachability is not capability; no read-only canary map is claimed in v1.1"
+ },
+ "cron": {
+  "configured": 33,
+  "enabled": 32,
+  "with_last_error": 0,
+  "errors": []
+ },
+ "readiness": {
+  "IDENTITY": "VERIFIED_LOCAL",
+  "OBSERVATION": "READY",
+  "ATTENTION": "READY_WITH_LIMITS",
+  "PROPOSAL": "BLOCKED_BY_ADMISSION",
+  "VERIFICATION": "PARTIAL",
+  "JUDGMENT": "DEGRADED",
+  "EXECUTION": "NOT_ESTABLISHED_BY_THIS_MANIFEST",
+  "INDEPENDENT_WITNESS": "NOT_PRESENT",
+  "memory_headroom_restored": false,
+  "build_contradiction": "OPEN",
+  "admission_verdict": "TRUNCATED_CRITICAL"
+ },
+ "delta": {
+  "previous": null,
+  "status": "FIRST_GENERATION",
+  "classes": {
+   "ADDED": [],
+   "REMOVED": [],
+   "CHANGED": [],
+   "REGRESSED": [],
+   "RECOVERED": []
+  }
+ }
+}
