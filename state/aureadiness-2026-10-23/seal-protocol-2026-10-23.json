@@ -1,0 +1,159 @@
+{
+ "schema": "arifos.close-record/v2",
+ "discipline": "seal-discipline (SEAL != RECEIPT != SABAR != HOLD)",
+ "generated_at": "2026-10-23T03:51:11+00:00",
+ "host": "forge / af-forge",
+ "session_id": "SEAL-CAND-22bb052cd48bfaa2",
+ "observer": {
+  "actor": "HERMES (KVM8)",
+  "actor_verified": false,
+  "authority": "OBSERVE_ONLY",
+  "receipt_state": "UNSEALED",
+  "basis": "/health state_axes at 03:36Z"
+ },
+ "counts": {
+  "actors": 9,
+  "receipt": 1,
+  "not_mine": 5,
+  "pending": 1,
+  "unknown": 2
+ },
+ "verdict_issued_by_me": "RECEIPT",
+ "seal_issued_by_me": false,
+ "statement": "I issued zero SEALs. A SEAL requires judge_state_hash from a real arif_judge run plus sovereign witness >0.5; this session has neither. Writing SEAL here would be vocabulary rot, and vocabulary rot is how a federation loses the ability to tell a receipt from a truth.",
+ "actors": [
+  {
+   "actor": "HERMES (KVM8)",
+   "tuple_": "100.64.0.2 / hermes-asi-gateway.service / @ASI_arifos_bot / PID 1986168",
+   "work_this_session": "7 commits: git-lane in-tree, 3 surgical compressions, 4-to-1 site consolidation, census mirror classification + PASS, site-preflight gate, cross-node drift sensor, 3 recovered sections, identity collision gate, AUR v1 artifact set",
+   "lane": "B",
+   "klass": "RECEIPT",
+   "evidence": [
+    "7 git commits with lane identity + REPO trailer",
+    "census VERDICT PASS witness 891d51ff085ce5ab",
+    "site-preflight 6 canaries incl. 2 genuine FAILs",
+    "drift sensor exit 1 FORK measured twice",
+    "arif_think canary trace-bf6c5432d8954064"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "No arif_judge call was made; actor_verified=false; session_authority=OBSERVE_ONLY; receipt_state=UNSEALED. Lane A conditions unmet."
+  },
+  {
+   "actor": "ARIF (F13 SOVEREIGN)",
+   "tuple_": "human / operator session / 267378578",
+   "work_this_session": "issued 5 directives, corrected 1 identity conflation, accepted 2 verdicts",
+   "lane": "A-sovereign",
+   "klass": "NOT_MINE_TO_ISSUE",
+   "evidence": [
+    "seal_chain.jsonl last row: actor=arif, authority_state=SOVEREIGN, verdict=SEAL, session SEAL-df5e74c55309481f"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": "SEAL-df5e74c55309481f (historical, not this session)",
+   "why_not_seal": "Only ARIF may accept closure. An agent writing a SEAL for the sovereign is the exact defect the constitution forbids."
+  },
+  {
+   "actor": "arifOS kernel",
+   "tuple_": "8088 / arifos.service / 2026.10.22-a7bda8a",
+   "work_this_session": "served /health, /tools, one arif_think call, no mutation",
+   "lane": "-",
+   "klass": "NO_RECORD",
+   "evidence": [
+    "9 tools loaded",
+    "floor_passed=false",
+    "13 floors active, 0 with measured_at"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "The kernel judges; it does not receive a seal from an agent it judges."
+  },
+  {
+   "actor": "333-AGI",
+   "tuple_": "FED lane / key 333-AGI_private.pem / no [actor] block",
+   "work_this_session": "none \u2014 not invoked this session",
+   "lane": "-",
+   "klass": "NO_RECORD",
+   "evidence": [
+    "arifFlow per_actor 333-agi: execute=4 verify=23 quotient=5.75 HELD"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "No work performed by this actor in this session; sealing absent work is fabrication."
+  },
+  {
+   "actor": "555-ASI",
+   "tuple_": "FED lane / key 555-ASI_private.pem / no [actor] block",
+   "work_this_session": "none \u2014 not invoked this session",
+   "lane": "-",
+   "klass": "NO_RECORD",
+   "evidence": [
+    "arifFlow hermes-asi lane: execute=24 verify=12 quotient=0.5 FLOWING"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "No work performed by this actor."
+  },
+  {
+   "actor": "888-APEX",
+   "tuple_": "APEX lane / key 888-APEX_private.pem / no [actor] block",
+   "work_this_session": "none \u2014 no judge called this session (the one hinge I refused to test)",
+   "lane": "-",
+   "klass": "SEAL_CANDIDATE_PENDING",
+   "evidence": [
+    "arif_judge callable, required=[] with 31 optional props",
+    "no verdict issued"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "A 888 seal requires an 888 judge run. That run is the HOLD I did not execute."
+  },
+  {
+   "actor": "A-FORGE",
+   "tuple_": "7071/7072 / a-forge.service / forge key, no [actor] block",
+   "work_this_session": "none \u2014 zero forge_execute / forge_shell calls (irreversible)",
+   "lane": "-",
+   "klass": "NO_RECORD",
+   "evidence": [
+    "tools/list 115 on both ports",
+    "forge_shell requires expected_output; forge_execute does not require a verdict"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "An executor record with no execution is a blank form."
+  },
+  {
+   "actor": "HERMES (KVM4)",
+   "tuple_": "100.64.0.5 / gateway PID 1826369 / @hermesarifos_bot",
+   "work_this_session": "none attributed \u2014 read-only ssh census, no write",
+   "lane": "-",
+   "klass": "UNKNOWN",
+   "evidence": [
+    "241 SKILL.md",
+    "stale DORMANT label repaired to ACTIVE_NODE_KVM4",
+    "/root/AAA = 3-dir stub, 192 dead canon paths"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "Cross-node actor; I cannot attest a process on another host. This is the identity-collision-gate rule applied to myself."
+  },
+  {
+   "actor": "irfanclaw",
+   "tuple_": "100.64.0.5 / openclaw-gateway / @irfanclaw_arifos_bot",
+   "work_this_session": "none \u2014 not probed",
+   "lane": "-",
+   "klass": "UNKNOWN",
+   "evidence": [
+    "custody: Syed, not Arif"
+   ],
+   "judge_state_hash": null,
+   "chain_entry": null,
+   "why_not_seal": "Not probed. Reported figures are REPORTED, not observed."
+  }
+ ],
+ "what_would_make_this_a_seal": [
+  "arif_judge run on this session with judge_state_hash returned",
+  "sovereign witness > 0.5 (ARIF acknowledging in-session)",
+  "arif_seal(judge_state_hash=<that hash>) accepted, seal_chain.jsonl gains a row",
+  "then and only then: verdict=SEAL, lane=A"
+ ]
+}
