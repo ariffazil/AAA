@@ -2954,14 +2954,17 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     // SOVEREIGN
     'ARIF_FAZIL',
     // META
-    'anonymous', 'mesa-test-agent',
+    'mesa-test-agent',
   ]);
 
-  const sourceAgent = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || 'anonymous';
-  if (!CANONICAL_ACTORS.has(sourceAgent)) {
-    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${sourceAgent}" is not canonical`));
+  // T1 HARDENING 2026-10-22 (item 5): 'anonymous' removed from CANONICAL_ACTORS.
+  // A claimed actor is checked only when one is actually claimed; identity for
+  // accounting comes from the verified DID (effectiveSourceAgent, below).
+  const claimedActor = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || null;
+  if (claimedActor && !CANONICAL_ACTORS.has(claimedActor)) {
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${claimedActor}" is not canonical`));
   }
-
+  const sourceAgent = claimedActor || 'anonymous';
   // TDZ-SAFE (hotfix 2026-10-22): the res.on('finish') metabolic-ledger
   // callback below reads this binding. It MUST be initialized before that
   // callback can fire (early returns finish the response first). Declaring
@@ -3038,6 +3041,14 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   if (!Number.isFinite(issuedAtMs)) {
     logEvent('A2A_ISSUED_AT_MISSING', resolvedTaskId,
       'envelope.issued_at absent - replay window bounded by REPLAY_CACHE_TTL_MS only');
+  }
+
+  // (2) Actor<->signer binding: the claimed actor is decorative until the DID
+  //     says otherwise. Effective actor for accounting = verified organ_id.
+  effectiveSourceAgent = didResult.organId || didResult.did || sourceAgent;
+  if (effectiveSourceAgent !== sourceAgent) {
+    logEvent('A2A_ACTOR_SUPERSEDED', resolvedTaskId,
+      `claimed=${sourceAgent} verified=${effectiveSourceAgent}`);
   }
 
   logEvent('A2A_DISPATCH', resolvedTaskId, `From: ${req.auth?.scheme || 'unknown'}, Target: ${targetAgent || 'auto'}`);
@@ -4560,6 +4571,19 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
+    // T1 HARDENING 2026-10-22 (item 4): unsigned callers may not select a real
+    // agent. ACAH2 (2026-10-20) made agent_id/configuration.agent route to the
+    // live router, so an unsigned PREPARE-band call could invoke a real agent.
+    // Envelope-level legacy caps do not cover that field - gate it here.
+    const requestedAgent = params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null;
+    const envForDispatch = req.federationEnvelope || params.envelope || {};
+    if (requestedAgent && !envForDispatch.from_did) {
+      logEvent('A2A_UNSIGNED_AGENT_DISPATCH', String(params.taskId || 'none'),
+        `agent=${requestedAgent} blocked: envelope.from_did missing`);
+      return res.status(403).json(createJSONRPCError(id, -32001,
+        'DID_REQUIRED: dispatching to a real agent requires envelope.from_did. Unsigned calls may create template tasks only.'));
+    }
+
     const lineage = requireTaskLineage(params, id);
     if (!lineage.ok) {
       return res.status(400).json(lineage.error);
@@ -5013,6 +5037,18 @@ app.post('/a2a', jsonRpcValidate, async (req, res) => {
         const msgValidation = validateMessage(message);
         if (!msgValidation.valid) {
           return res.status(400).json(createJSONRPCError(id, -32602, msgValidation.message));
+        }
+
+        // T1 HARDENING 2026-10-22 (item 4b): this dispatcher passes
+        // params.agent_id straight to executeTask. Unsigned JSON-RPC callers
+        // may not select a real agent - same rule as /a2a/message/send (item 4).
+        const requestedAgentJR = params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null;
+        const envJR = req.federationEnvelope || params.envelope || {};
+        if (requestedAgentJR && !envJR.from_did) {
+          logEvent('A2A_UNSIGNED_AGENT_DISPATCH', String(taskId),
+            `agent=${requestedAgentJR} blocked (jsonrpc dispatcher): envelope.from_did missing`);
+          return res.status(403).json(createJSONRPCError(id, -32001,
+            'DID_REQUIRED: dispatching to a real agent requires envelope.from_did. Unsigned calls may create template tasks only.'));
         }
         
         // External payloads with insufficient witness → downgrade to observe-only

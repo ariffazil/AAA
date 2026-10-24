@@ -649,6 +649,7 @@ function resolveDidPublicKey(did) {
     publicKeyHex: entry.public_key_hex,
     organId: entry.organ_id,
     algorithm: entry.algorithm || 'Ed25519',
+    actors: Array.isArray(entry.actors) ? entry.actors : null,
   };
 }
 
@@ -732,12 +733,50 @@ function verifyA2ASignature(envelope) {
   // Verify
   const valid = verifyEd25519(canonical, signature, keyInfo.publicKeyHex);
 
+  // Actor binding (F2/F12 — forged 2026-10-22): a valid signature proves KEY
+  // OWNERSHIP, not ACTOR OWNERSHIP. A claimed actor_id must sit inside the
+  // signing DID's declared scope (registry `actors`), else any registered key
+  // could impersonate any canonical actor. 'anonymous' = no claim = no check.
+  if (valid && envelope.actor_id && envelope.actor_id !== 'anonymous') {
+    const binding = actorBindingCheck(keyInfo, envelope.actor_id);
+    if (!binding.ok) {
+      return { ok: false, reason: binding.reason, did: from_did, organId: keyInfo.organId };
+    }
+  }
+
   return {
     ok: valid,
     reason: valid ? 'SEAL' : 'Signature verification failed',
     did: from_did,
     organId: keyInfo.organId,
   };
+}
+
+/**
+ * Actor-binding scope of a DID key. Registry `actors` is authoritative;
+ * entries without it fall back to their own organ id (fail-closed default).
+ */
+function actorBindingScope(keyInfo) {
+  if (!keyInfo) return [];
+  return Array.isArray(keyInfo.actors) && keyInfo.actors.length
+    ? keyInfo.actors
+    : [keyInfo.organId];
+}
+
+/**
+ * Is actorId inside the key's scope?
+ * A2A_ACTOR_BINDING=strict (default) rejects out-of-scope actor claims.
+ * A2A_ACTOR_BINDING=warn logs and passes — emergency rollback lever only.
+ */
+function actorBindingCheck(keyInfo, actorId) {
+  const allowed = actorBindingScope(keyInfo);
+  if (allowed.includes(actorId)) return { ok: true };
+  const reason = `ACTOR_BINDING: actor_id "${actorId}" is not in scope of ${keyInfo.organId} (scope: ${allowed.join(',') || 'none'}). Fix: sign with the DID that owns this actor, or add it to that DID's actors in the registry.`;
+  if ((process.env.A2A_ACTOR_BINDING || 'strict') === 'warn') {
+    console.warn(`[actor_binding] WARN (non-enforcing): ${reason}`);
+    return { ok: true, warned: reason };
+  }
+  return { ok: false, reason };
 }
 
 /**
@@ -846,6 +885,8 @@ module.exports = {
   loadDidRegistry,
   resolveDidPublicKey,
   verifyA2ASignature,
+  actorBindingScope,
+  actorBindingCheck,
   verifyEnvelopeDidSignature,
   // Explorer Dependency Registry (forged 2026-07-06)
   EXPLORER_DEPENDENCIES,
