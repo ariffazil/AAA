@@ -2048,9 +2048,13 @@ function authMiddleware(req, res, next) {
   // ── Cloudflare Tunnel proxy check (X-Forwarded-For from Caddy on localhost) ──
   const forwarded = req.headers['x-forwarded-for'];
   if (forwarded) {
-    const ips = forwarded.split(',').map(s => s.trim());
-    if (ips.some(ip => ip === '127.0.0.1' || ip === '::1')) {
-      req.auth = { scheme: 'loopback-proxy', valid: true, ip: forwarded };
+    // T1 HARDENING 2026-10-22 (item 3): only the RIGHTMOST entry (the peer
+    // Caddy actually saw) can claim loopback. The previous some() trusted
+    // any upstream-spoofable entry anywhere in the chain.
+    const ips = forwarded.split(',').map(s => s.trim()).filter(Boolean);
+    const peer = ips[ips.length - 1] || '';
+    if (peer === '127.0.0.1' || peer === '::1') {
+      req.auth = { scheme: 'loopback-proxy', valid: true, ip: peer, chain: forwarded };
       return next();
     }
   }
