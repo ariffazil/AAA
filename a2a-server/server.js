@@ -2961,6 +2961,12 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   if (!CANONICAL_ACTORS.has(sourceAgent)) {
     return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${sourceAgent}" is not canonical`));
   }
+
+  // TDZ-SAFE (hotfix 2026-10-22): the res.on('finish') metabolic-ledger
+  // callback below reads this binding. It MUST be initialized before that
+  // callback can fire (early returns finish the response first). Declaring
+  // it as a later `const` crashed the gateway on every unsigned 403.
+  let effectiveSourceAgent = sourceAgent;
   if (targetAgent && !CANONICAL_ACTORS.has(targetAgent)) {
     return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Target agent "${targetAgent}" is not canonical`));
   }
@@ -2976,7 +2982,7 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     const stepType = res.statusCode >= 400 ? 'Execute' : 'Execute';
     const floorVerdict = res.statusCode >= 500 ? 'Hold' : res.statusCode >= 400 ? 'Caution' : 'Pass';
     ingestFlow({
-      actorId: sourceAgent,
+      actorId: effectiveSourceAgent,
       sessionId: resolvedTaskId,
       stepType,
       epistemicLabel: 'Derivation',
@@ -3009,6 +3015,30 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   }
   logEvent('A2A_DID_VERIFIED', resolvedTaskId,
     `from=${didResult.did} organ=${didResult.organId}`);
+
+  // -- T1 HARDENING 2026-10-22 (333-AGI, F13 'gooooo') - items 1+2 ----------
+  // (1) Replay guard: this mutation path had NONE (message/send has had one
+  //     since 2026-07). A captured signed envelope must not re-dispatch.
+  const sendPayloadHash = hashPayload(req.body);
+  if (checkReplay(sendPayloadHash)) {
+    logEvent('A2A_REPLAY_DROP', resolvedTaskId, 'Duplicate payload hash dropped');
+    return res.status(400).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.NONCE_REPLAY,
+      'Duplicate request detected (replay)'));
+  }
+  // (1b) Freshness - enforced only when the caller actually stamps issued_at.
+  //      Measured 2026-10-22: no live builder sets it, so absence is LOGGED,
+  //      not rejected (rejection would have broken every dispatching caller).
+  //      Rejection activates automatically once callers adopt issued_at.
+  const issuedAtMs = Date.parse(envelope.issued_at || '');
+  if (Number.isFinite(issuedAtMs) && Math.abs(Date.now() - issuedAtMs) > 5 * 60 * 1000) {
+    logEvent('A2A_STALE_ENVELOPE', resolvedTaskId, `issued_at=${envelope.issued_at}`);
+    return res.status(400).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.TIMESTAMP_EXPIRED,
+      'envelope.issued_at outside 5min freshness window'));
+  }
+  if (!Number.isFinite(issuedAtMs)) {
+    logEvent('A2A_ISSUED_AT_MISSING', resolvedTaskId,
+      'envelope.issued_at absent - replay window bounded by REPLAY_CACHE_TTL_MS only');
+  }
 
   logEvent('A2A_DISPATCH', resolvedTaskId, `From: ${req.auth?.scheme || 'unknown'}, Target: ${targetAgent || 'auto'}`);
 
