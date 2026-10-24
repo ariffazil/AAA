@@ -581,3 +581,59 @@ capabilities:
     governance:
       authority: observe
       activation_gate: 888_HOLD
+
+  # ── FI-003 M Plan audit 2026-10-21 ──────────────────────────────────────────────
+  - id: provider.minimax.mplan
+    title: "MiniMax M Plan (Build tier) — federation primary MiniMax seat"
+    domain: "provider.minimax"
+    lifecycle: active
+
+    implementation:
+      state: implemented
+      routes:
+        - name: "FED litellm (apex-888 / forge-planner / forge-judge / forge-777 / hermes-default / i-arif)"
+          type: "openai_compatible"
+          endpoint: "https://api.minimax.io/v1"
+        - name: "FED litellm (hermes-asi-vision)"
+          type: "anthropic_compatible"
+          endpoint: "https://api.minimax.io/anthropic/v1"
+        - name: "Direct API — image / video / speech"
+          type: "direct_api"
+          endpoint: "https://api.minimax.io/v1"
+        - name: "MiniMax Code CLI (mmx)"
+          type: "cli"
+          endpoint: "https://api.minimax.io"
+      evidence:
+        - type: operational_use
+          claim: "Live-probed 2026-10-21 (FI-003): /v1/models 200, /v1/chat/completions 200, /anthropic/v1/messages 200, /v1/responses 200, /v1/t2a_v2 200 (73KB render, registry voice SSSiti20260926v1), /v1/image_generation 200, /v1/video_generation 200 for MiniMax-Hailuo-02 + T2V-01"
+        - type: incident
+          claim: "Key split fixed 2026-10-21 — vault SOT held the sk-api PAYG key under MINIMAX_API_KEY (HTTP 402 insufficient balance) while 6 other surfaces + the model SOT already declared it the sk-cp plan seat; TTS lane silently fell back to Edge/F5 and 11 services held a stale env snapshot"
+
+    reachability:
+      state: reachable
+      route_type: "federation_gateway_plus_direct"
+      last_probe_at: "2026-10-21T08:00:00Z"
+      last_probe_status: "LIVE"
+      probe_mode: read_only
+      known_failure_modes:
+        - "402 insufficient_balance_error — PAYG key bound instead of the plan seat, or plan credits exhausted"
+        - "2054 voice id not exist — a federation voice alias passed to the API instead of provider_voice_id"
+        - "2013 incorrect model param — video model id 'H3' is advertised by the tier sheet but rejected by the API"
+        - "Silent degradation to Edge-TTS/F5-TTS when the lane resolves a dead key"
+
+    governance:
+      authority: observe
+      confirmation_required: false
+      receipt_required: true
+      failure_policy: "use the alias's own fallback chain — never the sk-api PAYG lane (no balance)"
+
+    owner:
+      runtime: "FED litellm + direct API consumers"
+      human_accountable: "Arif"
+      review_interval_days: 30
+      subscription:
+        tier: "Monthly M Plan Build"
+        renewal: "2026-11-19"
+        order_id: "2112696757015031993"
+        chron_event: "EV-MPLAN-RENEW-20261119"
+        fallback_credential: "NONE — the sk-api PAYG lane is 402 exhausted, so the plan seat is the only working MiniMax credential"

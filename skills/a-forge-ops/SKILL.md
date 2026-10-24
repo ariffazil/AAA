@@ -126,3 +126,14 @@ systemctl daemon-reload && systemctl restart a-forge.service
 - **`dist/build-commit.txt` is the bridge's BUILD_COMMIT source — must be rewritten on every deploy** (verified 2026-08-08). `npm run build` regenerates `dist/src/**/*.js` but does NOT touch `dist/build-commit.txt`. The bridge at `:7072` reads that file (see `dist/src/interfaces/mcp/serve.js` line ~37: `fs.readFileSync('${AFORGE_ROOT}/dist/build-commit.txt')`). Only the canonical `make deploy` rewrites it. **After running `npm run build` for any reason (LSP fix, hand edit), always also do `git rev-parse --short HEAD > dist/build-commit.txt` BEFORE restarting `a-forge-mcp.service`**, otherwise the bridge will report a stale commit and the federation probe (`forge-federation-probe --phase=drift`) flags drift. `make deploy-local` (added 2026-08-08, `e1eb1d4f`) does this for you.
 - **`:7072/health` and `:7071/health` are TWO separate `/health` handlers** (verified 2026-08-08). The bridge payload lives in `dist/src/interfaces/mcp/serve.js` and is intentionally minimal (`{ok, service, version, commit, sessions, ...}`); the canonical payload lives in `dist/src/interfaces/server.js` and carries authority_ceiling + apex_scalars_policy. **Adding a field to `:7071/health` does not propagate to `:7072/health`** — patch `serve.ts` separately. The federation probe checks BOTH ports; forgetting the bridge causes the probe to FAIL authority check even after the canonical fix.
 - **Verification requires a live MCP roundtrip.** `curl :7072/health` does NOT prove new behavior landed. Use the MCP SDK via `/root/A-FORGE/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js` + `StreamableHTTPClientTransport(new URL("http://127.0.0.1:7072/mcp"))`, call `forge_fetch` with `egress_profile="mubeng"`, expect `status=BLOCKED, reason="egress profile 'mubeng' not yet configured..."` in `content[0].text`. Bare `curl -X POST /mcp` against SSE transports returns empty without an Accept header `application/json, text/event-stream` and a proper MCP client. See `references/live-mcp-probe-recipe.md`.
+
+## Kill-switch bypass test (forged 2026-10-23)
+
+A revocation is only real if **every adapter path** returns HOLD. Do not accept "MCP is gated" as closure.
+
+Test sequence, with a non-destructive read verb:
+1. `apa-revoke revoke gmail --reason bypass-test --by <actor>`
+2. Probe: MCP `forge_gmail`, APA bridge `:18097` direct POST, `gws_bridge.py` CLI, `google_workspace` import, Telegram bridge `:18096` direct POST.
+3. `apa-revoke clear gmail`; probe again to prove reversibility.
+
+Live result 2026-10-23: MCP, APA bridge, `gws_bridge.py`, `google_workspace` import and Telegram bridge all returned `APA_REVOKED`; the `gws` **binary** still returned Gmail messages. That residual is a root-shell / token-custody problem — close it with non-root agents, a secret broker, or an egress policy, not another wrapper. A kill switch tested only at one path is a rumour.

@@ -175,10 +175,34 @@ def verify_chain(ledger_path: Path) -> tuple[bool, list[str]]:
             failed = [g["gate"] for g in row.get("gates", []) if not g.get("ok")]
             problems.append(f"{row.get('edition')}: sealed with failing gate(s) {failed}")
 
+    # A render can be superseded before delivery (re-run of the same edition).
+    # Only the LAST seal row per edition can still be hashed: an earlier render's
+    # bytes are overwritten by the re-render. Treat last-row-wins explicitly and
+    # SAY it, rather than silently comparing the file against a dead row.
+    art_rows = [(i, r) for i, r in enumerate(rows) if r.get("artifact_sha256")]
+    last_for: dict[str, int] = {}
+    for idx, r in art_rows:
+        last_for[r.get("edition")] = idx
+    for pos, (idx, row) in enumerate(art_rows):
+        if last_for.get(row.get("edition")) == idx:
+            continue
+        nxt = art_rows[pos + 1][1] if pos + 1 < len(art_rows) else None
+        if nxt is None or nxt.get("edition") != row.get("edition"):
+            problems.append(
+                f"{row.get('edition')}: superseded seal row is not followed by a "
+                "seal of the same edition — cannot tell it apart from an edit"
+            )
+        else:
+            notes.append(
+                f"{row.get('edition')}: earlier seal {str(row['artifact_sha256'])[:16]}… "
+                "superseded before delivery by a later render; its bytes are gone, "
+                "not re-hashed"
+            )
+
     # re-hash whatever is still on disk
     checked = 0
-    for row in rows:
-        if not row.get("artifact_sha256"):
+    for idx, row in art_rows:
+        if last_for.get(row.get("edition")) != idx:
             continue
         rel = row.get("artifact_path")
         candidates = []
@@ -188,6 +212,11 @@ def verify_chain(ledger_path: Path) -> tuple[bool, list[str]]:
         candidates.append(ledger_path.parent / row.get("artifact_file", ""))
         target = next((c for c in candidates if c.is_file()), None)
         if not target:
+            # Absent is not resolved: say so instead of skipping in silence.
+            notes.append(
+                f"{row.get('edition')}: artifact NOT on disk — could not re-hash "
+                f"({row.get('artifact_file') or rel})"
+            )
             continue
         checked += 1
         got = sha256_file(target)

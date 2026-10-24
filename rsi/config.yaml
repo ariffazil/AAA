@@ -25,6 +25,7 @@ verification:
 promotion:
   skill_layer: auto_verified      # Layer 1 — reversible, digital, MUBAH
   capability_layer: auto_verified # Layer 2 — capability graph node upsert
+  tool_layer: propose_only        # Layer 2.5 — MCP tool-surface delta (propose-only until behaviour-witness proves it)
   policy_layer: propose_only      # Layer 3 — invariant proposals queue for F13
   judgment_layer: propose_only    # Layer 4 — ranking/weight proposals queue for F13
   governance_layer: forbidden     # Layer 5 — HOLD. Never. Hardcoded too.

@@ -235,3 +235,69 @@ more than one compile attempt to fix. Keep the entry at imperative form
 content"), and one fix. Do not paste full error transcripts — distill the
 rule. If the lesson generalises BEYOND typst (e.g. named-vs-positional
 parameter binding), it belongs in MEMORY, not here.
+
+## 12. BM kampung long-form institutional-audit PDFs (14–25 pages)
+
+Distinct class from concert guides / one-page briefings: multi-section audit PDFs
+where the body mixes cover, front-matter, founder biographies, structural analysis
+(paradoxes, scar ledgers, authority graphs), cross-audit blocks, and a HOLD verdict.
+Proven on Demis Hassabis / Elon Musk / Sam Altman / Dario+Daniela Amodei
+artifacts in one F13 session (2026-10-21). Pitfalls repeated enough to deserve a
+section here rather than fresh discovery each time:
+
+- **Bullet-list items cannot begin with `* `** — Typst parses `*` as emphasis
+  marker at line start and emits `unclosed delimiter` on the next match. A list
+  with seven founders each starting `* <Name> -- title, ...` breaks on the first
+  one. Convert every line-start `* ` to `- `. If you wanted bold inside the bullet,
+  write `- #text(weight: "bold")[Name] -- title, ...`. Verify by
+  `typst compile x.typ x.pdf` after writing the source, before padding with more
+  body — earlier verify catches earlier failures.
+- **`***` (three asterisks in a row) breaks markdown-flavored strings** — anything
+  that would be a starred expletive or redaction (`f---`, `f*****`) triggers the
+  same emphasis-mode parse because Typst sees `*...*`. Substitute with `[REDACTED]`
+  or replace the run with `.` dashes. The class of artifact needs explicit redactions
+  sometimes — choose words, not stars.
+- **Dollar amounts as math: every `$` opens math mode** — Typst interprets
+  `~$130B equity~` and `$1.5 billion` as math expressions. To get a literal dollar
+  glyph, write `\$`. For long audit PDFs that quote many dollar amounts, do a
+  global pass (`text.replace('$', '\\$')` once) before compiling. Math that needs
+  actual math formatting (units like `$10^170$`) is rare in this class — usually
+  every `$` is a currency symbol.
+- **Triple-nested callout, e.g. `#align(left)[#sm[content]]`** is fragile —
+  Typst silently mis-parses when any closing bracket matches a different
+  bracket it expected. Prefer flat callouts: `#block(...)[#text(size: 9pt)[content]]`
+  with no `align(left)` wrapper, and reject the typst `raw(block: true)[...]` form
+  (it expects a raw string, not mixed content; use `block(...)` with monospace
+  font instead). When three compile rounds have failed on the same nested block,
+  restart from the safest form — the time saved on the fourth round exceeds the
+  rewrite cost.
+- **Bullet-list items can stay one-line even when the value is long** — wrap the
+  bullet text at column 90+ in the source. Typst will set bullets in justified
+  paragraphs, and one-line-per-founder in the source makes later rewrites cheaper
+  than multi-line wrapped items.
+
+Pattern that survives every artefact in this class:
+`#set page(paper: "a4", margin: (x: 2.2cm, y: 2cm), numbering: "1")`,
+`#set text(font: "DejaVu Serif", size: 10pt, lang: "ms")`, `leading: 0.6em`,
+`first-line-indent: 0pt`. Add `#set par(justify: true)`. Use
+`#let sect(title) = { v(0.7em); block(fill: luma(232), inset: 8pt)[
+#text(size: 11.5pt, weight: "bold")[#title]]; v(0.3em) }` once at the top.
+
+Verification gate per artefact: `typst compile`, then `pdfinfo <name>.pdf |
+grep Pages` (expect 14–25), then `pdftotext <name>.pdf - | head -40` to
+sanity-check that the first paragraph renders without garbled glyphs or
+empty bullets. Do not ship without the pdfinfo + pdftotext gate.
+
+## 13. Audit voice: never genderize complementarity
+
+Two-founder framing (the Amodei siblings, the Collison brothers) tempts the
+analysis into Dario=intellect / Daniela=operational. That mapping is
+shorthand for "Dario = mind, sibling = hands" and it stereotypes both
+parties. Daniela Amodei, asked at Stanford eCorner (Feb 2024), explicitly
+refused the frame: "much more practical, the business-oriented side" —
+not "less intellectual." Use a complementarity matrix (research vs
+operations vs policy vs governance; org-organ vs genotype-human columns),
+not a binary. The same rule applies to CEO/President, CTO/Chief Scientist,
+or any "founder-plus-founding-X" pair in this class of artefact. When the
+user supplies names, treat them as coordinates on a competency map, not
+as slots in a stereotype.

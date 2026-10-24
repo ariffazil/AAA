@@ -20,6 +20,7 @@ DITEMPA BUKAN DIBERI.
 """
 
 import json
+import os
 import sys
 import time
 from datetime import datetime, timezone
@@ -38,7 +39,10 @@ DECISION_LEDGER = Path("/root/AAA/state/decision_ledger.jsonl")
 # (dup-kill 2026-10-21). Jangan ubah satu tanpa yang satu lagi.
 REPORT_INBOX = Path("/var/lib/arifos/reports/inbox.jsonl")
 REPORT_OUTBOX = Path("/var/lib/arifos/reports/outbox.jsonl")
-OUTPUT_JSON = Path("/root/AAA/state/federation_state.json")
+# 2026-10-24 TRANSACTION A: mutable runtime state must not live inside
+# the immutable control plane (/root/AAA). A writer that cannot create
+# its own .tmp is a dead writer, however healthy the timer looks.
+OUTPUT_JSON = Path("/var/lib/aaa/state/federation_state.json")
 
 # ── Config ─────────────────────────────────────────────────────────────
 
@@ -528,8 +532,21 @@ def main():
     elif mode == "write":
         # Write to file only (for cron)
         tmp = OUTPUT_JSON.with_suffix(".tmp")
-        tmp.write_text(json.dumps(state, indent=2))
-        tmp.rename(OUTPUT_JSON)
+        # Durable atomic replace: tmp lives in the SAME directory as the
+        # target, file fsync before replace, directory fsync after.
+        with open(tmp, "w", encoding="utf-8") as _fh:
+            _fh.write(json.dumps(state, indent=2))
+            _fh.flush()
+            os.fsync(_fh.fileno())
+        os.replace(tmp, OUTPUT_JSON)
+        try:
+            _dfd = os.open(str(OUTPUT_JSON.parent), os.O_DIRECTORY)
+            try:
+                os.fsync(_dfd)
+            finally:
+                os.close(_dfd)
+        except OSError:
+            pass
         print(f"Written to {OUTPUT_JSON} ({state['probe_ms']}ms)")
     else:
         # JSON mode: print to stdout

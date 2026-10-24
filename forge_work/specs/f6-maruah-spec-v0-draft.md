@@ -512,7 +512,107 @@ dan beban verifikasi, sementara manusia mengekalkan tujuan, sempadan, kuasa
 membatalkan, hak berehat dan keputusan terakhir hanya pada perkara yang
 membawa akibat sebenar.*
 
-## Lampiran B — Jargon / JSON (rujukan teknikal)
+### C.10 AMENDMENT 04 — 2026-10-23 (Perhatian Bukan Sumber Percuma; additive)
+
+Sumber: dokumen "Penyelesaian Isu Maruah Manusia" + arahan sesi 2026-10-23.
+Menjawab jurus yang C.9 belum tutup: C.9 menyusun BILA manusia diganggu;
+C.10 menjadikan EKSTRAKSI PERHATIAN itu sendiri pelanggaran.
+
+#### C.10.1 Pembetulan Asas (verbatim)
+
+```text
+Manusia bukan mesin persetujuan.
+Manusia bukan pekerja QA percuma.
+Manusia bukan moral crumple zone AI.
+```
+
+#### C.10.2 Larangan Ekstraksi Perhatian (floor clause)
+
+Perhatian manusia **BUKAN sumber percuma** untuk:
+
+1. **operasi mesin** — kelulusan rutin, pengesahan berulang, kuiz kefahaman;
+2. **verifikasi mesin** — melontar hutang verifikasi / semakan halusinasi
+   kepada manusia (*invisible verification labor* = kos F6);
+3. **perlindungan liabiliti mesin** — butang kelulusan supaya rekod berkata
+   "Human Approved" (lihat C.9.3 — resit tidak pernah boleh menyorok
+   model/konteks/sensor/cadangan yang menyebabkan kegagalan).
+
+Sebarang reka bentuk yang memerlukan perhatian manusia untuk salah satu
+daripada tiga di atas bagi kerja yang **berada dalam mandat sedia ada**
+= pelanggaran F6, tanpa mengira betapa ringan seremoni itu.
+
+#### C.10.3 Semakan Meter 3 — kuiz kefahaman DITARIK BALIK
+
+Bingkai lama (draf pengukuran: "mingguan, manusia terangkan balik keputusan /
+beri betul-silap") ialah **kuiz kefahaman = procedural humiliation** — ia
+melayan manusia dewasa seperti pelajar yang tidak dipercayai. DITARIK BALIK.
+
+Meter 3 kini mengukur **kewajipan MESIN**, bukan manusia:
+`[decision_id, restatement_provided: bool]` — adakah sistem menyampaikan
+setiap keputusan besar dalam bahasa manusia. Kegagalan = sistem yang gagal
+menyampaikan, bukan manusia yang gagal memahami. Maklum balas manusia
+berlaku hanya jika dia sendiri memulakan (lane saksi / pembetulan spontan)
+— itu **isyarat**, bukan tugasan.
+
+#### C.10.4 Bentuk Kanon (verbatim)
+
+*Mandat sekali. Skop sempit. Pelaksanaan automatik. Verifikasi mesin-ke-mesin.
+Receipt selepas tindakan. Revocation serta-merta. Eskalasi manusia hanya
+apabila consequence berubah.*
+
+- **Revocation serta-merta** — kuasa membatalkan mandat mesti serta-merta dan
+  tanpa seremoni. Mencabut tidak memerlukan T3; ia lebih rendah daripada
+  memberi mandat.
+- **Eskalasi hanya apabila consequence berubah** — pencetus antara tingkat
+  (C.9.1) ialah perubahan konsekuensi/kebaharuan/ketidakpastian. **Geseran
+  bukan pencetus.** "Saya tak pasti" dari mesin bukan asas mengganggu manusia.
+
+#### C.10.5 Hak Berehat — sistem terus berfungsi
+
+Lane saksi tidak pernah menjadi syarat kerja sistem. Prompt berkala mesti
+boleh ditolak / disenapkan selama-lamanya tanpa kos dan tanpa rasa bersalah.
+Kekosongan saksi = **status sistem** (`STALE_WITNESS`) untuk mesin perbaiki,
+bukan kesalahan manusia. Mesin terus laksana dan terus mengesahkan
+mesin-ke-mesin semasa manusia berehat — itulah maksud delegasi yang sah.
+
+#### C.10.6 Pembezaan yang mengikat (jangan dilonggokkan)
+
+Perhatian yang **DIPILIH** manusia sendiri (isyarat saksi sukarela, membaca
+resit, pembetulan spontan) **BUKAN ekstraksi** — itu kuasa dan saluran
+manusia, dilindungi F6. Yang dilarang: perhatian yang **DIPERLUKAN** oleh
+sistem untuk operasi, verifikasi, atau liabilitinya sendiri. Sistem tidak
+pernah mempunyai tuntutan ke atas perhatian manusia; manusia mempunyai
+tuntutan ke atas ketiadaan tuntutan itu.
+
+---
+
+### C.11 AMENDMENT 05 — 2026-10-23 (Jahitan alias F6 ↔ kappa_r; proxy-reality seam)
+
+Ditemui pada render Observatory langsung (2026-10-23): peta alias runtime
+`rest_routes.py` mengikat **`F6 → kappa_r`** — tetapi `kappa_r` dalam kod
+(`arifosd.py`) ialah skor **reversibility**, bukan maruah. Definisi F6 dalam
+ruling ialah enam meter + lane saksi — tiada satu pun reversibility.
+
+Kesan: hari ini tiada producer `kappa_r`, jadi baris F6 render `unmeasured`
+(penjaga SCAR-OBS-GREENWASH berfungsi, confidence 0, placeholder dinamakan
+secara jujur). Tetapi **jika producer `kappa_r` muncul esok, F6 MARUAH akan
+menyala dari nombor reversibility** — proxy yang mencuci reality. Itu tepat
+kelas yang ditolak ruling: sistem tidak boleh menghasilkan "markah maruah"
+dari isyarat gantian.
+
+Keputusan yang direkodkan (bukan dilaksanakan — pelarasan semula makna
+lantai = permukaan governan):
+
+1. **F6 TIDAK PERNAH** populate dari live vector (`kappa_r` atau apa-apa
+   isyarat gantian). Satu-satunya sumber yang sah: enam meter F6 sendiri +
+   lane saksi. Selagi producer itu tiada, F6 kekal `unmeasured` — itu
+   jawapan yang betul, dan dash itu sendiri perlindungan maruah.
+2. Alias `F6 → kappa_r` patut **dipisahkan** (sever) atau dilabel legacy —
+   keputusan pelaksanaan = F13-class / kernel review, bukan suntingan senyap.
+3. Falsifier sedia ada sudah merangkum kes ini: mana-mana pelaksanaan yang
+   mengira skor maruah dari isyarat bukan-enam-meter memalsukan ruling.
+
+
 
 - **Objek 1** = F6 sebagai lantai arifOS (cara sistem layan manusia),
   boleh-dipalsukan melalui 6 meter baca-sahaja + lane saksi.

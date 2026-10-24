@@ -35,6 +35,36 @@ Test 1, then 2. A green unit-test run excludes neither.
 
 ---
 
+## Step 0 — Precondition guard: name the referent before you rule
+
+A defect/removal verdict is only as good as the corpus you probed. Two measured failures
+(2026-10) make this Step 0:
+
+- **Wrong-referent retraction:** four defects reported from one session (gate-DEGRADED,
+  6 broken crons, memory over-cap, selftest degraded) all died on re-probe — each was read
+  from the *wrong file* (a forked copy, a stale cache, a snapshot) while the canonical
+  surface was healthy. The author retracted 4 of their own findings.
+- **Corpus-incomplete false-delete:** a dead-module screen run without `tests/` present
+  proposed 34 modules / ~9,880 lines for deletion. Run with the reference corpus present,
+  the true count was **3 modules / 566 lines** — 30 were referenced, two had live importers.
+  The screen now **refuses to run without `tests/`**; a detector that cannot see the
+  references must not emit an absence.
+
+**Rule (E2):** before emitting "broken / dead / unused / remove", state two things:
+
+| Term | Means | Must carry |
+|---|---|---|
+| **Referent** | the artifact you actually read | absolute path + sha256 or mtime |
+| **Proxy** | the model you inferred from | one sentence naming what you generalised |
+
+If referent and proxy are not the same object (fork vs canonical, cache vs live, snapshot
+vs tree) the verdict does not hold. And if the reference corpus is incomplete — no `tests/`,
+no consumer scan, probe pointed at a replica — **refuse the absence verdict**; a negative
+needs the same warrant as a positive. Kin: `claimed-defect-verification`,
+`production-source-disambiguation`, `find-live-binary-before-engine-mutation`.
+
+---
+
 ## Step 1 — Stub probe: does the tool do anything at all?
 
 A tool that accepts a rich payload and returns a constant verdict is worse than a broken tool: it

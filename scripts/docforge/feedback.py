@@ -88,6 +88,16 @@ CREATE TABLE IF NOT EXISTS feedback_refusals (
 );
 """
 
+CREATE_APPLICATIONS = """
+CREATE TABLE IF NOT EXISTS feedback_applications (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    fb_id       INTEGER NOT NULL,
+    edition_key TEXT NOT NULL,
+    at          TEXT NOT NULL,
+    UNIQUE(fb_id, edition_key)
+);
+"""
+
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -132,6 +142,7 @@ class FeedbackStore:
         self.conn.row_factory = sqlite3.Row
         self.conn.executescript(CREATE_FEEDBACK)
         self.conn.executescript(CREATE_REFUSALS)
+        self.conn.executescript(CREATE_APPLICATIONS)
         self._ensure_scope_column()
         self.conn.commit()
 
@@ -203,15 +214,36 @@ class FeedbackStore:
         self.conn.commit()
         return cur.rowcount > 0
 
-    def mark_applied(self, fb_ids: list[int]) -> int:
+    def mark_applied(self, fb_ids: list[int], edition_key: str | None = None) -> int:
+        """Count an application ONCE per distinct edition.
+
+        2026-10-24 FIX: this used to increment on every call, and export_rules()
+        is called on every pipeline RUN — so a gate refusal followed by a retry
+        counted one edition twice (inflating the count to 77 "editions" in a
+        lane that had produced 28). The count is supposed to make a stale rule
+        visible; a count that tracks retries instead of editions makes every
+        rule look eternal.
+
+        `feedback_applications` holds one row per (rule, edition) with a UNIQUE
+        constraint, so the second write for the same edition is a no-op while
+        the attempt is still recorded.
+        """
         if not fb_ids:
             return 0
-        q = ("UPDATE feedback SET editions_applied = editions_applied + 1,"
-             " last_applied_at = ? WHERE id IN ("
-             + ",".join("?" * len(fb_ids)) + ")")
-        cur = self.conn.execute(q, [utc_now(), *fb_ids])
+        key = (edition_key or "unversioned").strip() or "unversioned"
+        now = utc_now()
+        counted = 0
+        for fid in fb_ids:
+            cur = self.conn.execute(
+                "INSERT OR IGNORE INTO feedback_applications"
+                " (fb_id, edition_key, at) VALUES (?, ?, ?)", (fid, key, now))
+            if cur.rowcount:
+                self.conn.execute(
+                    "UPDATE feedback SET editions_applied = editions_applied + 1,"
+                    " last_applied_at = ? WHERE id = ?", (now, fid))
+                counted += cur.rowcount
         self.conn.commit()
-        return cur.rowcount
+        return counted
 
     # ── reads ───────────────────────────────────────────────────────────────
 
@@ -228,7 +260,8 @@ class FeedbackStore:
     def all_rows(self) -> list[dict]:
         return [_row(r) for r in self.conn.execute("SELECT * FROM feedback ORDER BY id")]
 
-    def export_rules(self, out: Path | None = None) -> Path:
+    def export_rules(self, out: Path | None = None,
+                     edition_key: str | None = None) -> Path:
         """Write the standing instructions where the build reads them, and count
         the application. The count is the point: a rule that never changes
         anything becomes visible and can be retired."""
@@ -239,6 +272,8 @@ class FeedbackStore:
                  "the raw comment it came from and how long it has been in force.",
                  "A rule with a high count and no visible effect is a candidate for",
                  "retirement.",
+                 "Counted once per distinct edition from 2026-10-24. Before that it",
+                 "counted pipeline runs, so a render refused by a gate inflated it.",
                  ""]
         if not rows:
             lines.append("_None standing._")
@@ -250,7 +285,7 @@ class FeedbackStore:
                          + (f" (re: {r['edition_ref']})" if r["edition_ref"] else ""))
         out = Path(out) if out else self.path.parent / "brief-rules.md"
         out.write_text("\n".join(lines) + "\n")
-        self.mark_applied([r["fb_id"] for r in rows])
+        self.mark_applied([r["fb_id"] for r in rows], edition_key=edition_key)
         return out
 
 

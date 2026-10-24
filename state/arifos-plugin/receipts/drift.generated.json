@@ -1,0 +1,105 @@
+{
+ "_GENERATED": "federation_build.py \u2014 DO NOT HAND-EDIT (FP-06)",
+ "run_at": "2026-10-22T20:08:16+00:00",
+ "mode": "apply-additive",
+ "skill_index": {
+  "skills": 770,
+  "distribution": {
+   "governance": 106,
+   "research": 85,
+   "execution": 127,
+   "domain": 53,
+   "memory": 29,
+   "communication": 79,
+   "unclassified": 327,
+   "engineering": 105
+  }
+ },
+ "projection": {
+  "/root/.kimi-code/skills": {
+   "linked": 0,
+   "kept": 762,
+   "repaired": 0,
+   "preserved": 8
+  },
+  "/root/.qwen/skills": {
+   "linked": 0,
+   "kept": 770,
+   "repaired": 0,
+   "preserved": 0
+  },
+  "/root/.codex/skills": {
+   "linked": 0,
+   "kept": 766,
+   "repaired": 0,
+   "preserved": 4
+  },
+  "/root/.gemini/skills": {
+   "linked": 0,
+   "kept": 770,
+   "repaired": 0,
+   "preserved": 0
+  },
+  "/root/.config/opencode/skills": {
+   "linked": 0,
+   "kept": 770,
+   "repaired": 0,
+   "preserved": 0
+  },
+  "/root/.claude/skills": {
+   "linked": 0,
+   "kept": 0,
+   "repaired": 0,
+   "preserved": 770
+  },
+  "/root/.grok/skills": {
+   "linked": 0,
+   "kept": 0,
+   "repaired": 0,
+   "preserved": 770
+  }
+ },
+ "pointer_integrity": {
+  "/root/.kimi-code/skills": 0,
+  "/root/.qwen/skills": 0,
+  "/root/.codex/skills": 0,
+  "/root/.gemini/skills": 0,
+  "/root/.config/opencode/skills": 0,
+  "/root/.claude/skills": 0,
+  "/root/.grok/skills": 0
+ },
+ "init_guard": {
+  "/root/AGENTS.md": "WIRED",
+  "/root/.kimi-code/AGENTS.md": "WIRED",
+  "/root/.config/opencode/AGENTS.md": "WIRED",
+  "/root/CLAUDE.md": "WIRED",
+  "/root/QWEN.md": "WIRED",
+  "/root/GEMINI.md": "WIRED"
+ },
+ "drift": {
+  "registry_declared": {
+   "registry_mcp": 13,
+   "registry_skill_AAA": 255,
+   "refreshed_at": "2026-09-19T16:39:41.345758+00:00"
+  },
+  "live_disk": {
+   "kimi_mcp": 22,
+   "opencode_mcp": 25,
+   "one_mcp": 15,
+   "skills_AAA": 778,
+   "skills_kimi": 785,
+   "skills_qwen": 777,
+   "skills_codex": 782,
+   "skills_gemini": 770,
+   "skills_opencode": 770,
+   "skills_claude": 778
+  }
+ },
+ "problems": [
+  "registry_stale: 255 vs live 778"
+ ],
+ "state_labels": {
+  "projection": "PRODUCED \u2014 runtime consumption per-harness",
+  "claude_grok_codex": "whole-dir symlinks to SOT (pointer pure) \u2014 no copies exist; REFUTED claim corrected 2026-10-22"
+ }
+}

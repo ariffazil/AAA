@@ -304,7 +304,10 @@ Close with what the probe actually established:
   registry records and cross-record drift, whether an advertised remote is a real protocol endpoint,
   discovery documents, identity-enforcement probes (negative probe + positive control), and
   reconciling the same count stated on several public surfaces.
-- `references/ai-provider-endpoint-probes.md` — Probe recipe for AI provider endpoints
+- ``references/`` — Probe recipe for AI provider endpoints
   (embeddings, rerank, generation). Covers path-vs-payload shape disambiguation, dashboard-vs-
   drawable capability checks, expiry-claim verification limits, and the shape of a probe matrix
   that scales across candidate shapes without burning the free-tier quota.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

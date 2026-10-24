@@ -84,7 +84,7 @@ asyncio.run(main())
 4. Telethon saves session to `/root/.hermes/userbot.session`
 5. Future runs use the session file — no more codes needed
 
-**UNBUILT — state on disk, verified 2026-09-19:** no session file exists on this host. `/root/.hermes/userbot.session`, `/root/userbot/`, and any `*.session` under `/root` are all absent, so no interactive auth has been completed here. The `/root/.hermes/userbot.session` literal below is the path Telethon *will* create on first successful `client.start()` — it does not resolve today, and every read/relay pattern below needs that auth run first.
+**BUILT & LIVE — 2026-10-22:** Telethon session EXISTS at `/root/userbot/ari_session.session` (logged in as Arif, phone +60124910258, id 267378578, QR+code hybrid auth via web form after QR/scanner-same-phone failed). Listener runs as `telegram-userbot.service` (systemd, enabled, `/root/userbot/listener.py`) — watches all incoming DMs, mirrors each to Arif's bot chat 267378578, NEVER auto-replies. Outbound sends only on explicit Arif order via a send script using this session. Historical note (2026-09-19, now stale): the UNBUILT warnings below described the pre-auth state; they no longer apply. Pitfalls that bit during build: (1) port 18900 was occupied by aaa-signing.service — never assume a random high port is free; (2) Caddy SPA catch-all returns 405 to POSTs — a login form must POST to its own path, not `/`; (3) multiple concurrent pollers on one Telethon session race each other and eat each other's login tokens — run exactly one.
 
 ## Step 3: Relay Script (Hermes Integration)
 

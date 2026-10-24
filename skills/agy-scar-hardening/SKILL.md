@@ -1,6 +1,6 @@
 ---
 name: agy-scar-hardening
-description: "Operating hardening doctrine for Antigravity CLI (FI-004 canonical / agy) derived from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007)."
+description: "Operating hardening doctrine for Antigravity CLI (FI-009 canonical / agy (FI-004 = Gemini CLI DECEASED 2026-09-13)) derived from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007)."
 trigger: always_on
 capability_tier: fed-agent-subagent
 ecology_state: WARM
