@@ -34,5 +34,9 @@ Read `/root/AAA/audio/voice-registry.json`. Only `voices{}` entries with `status
 
 - The `verify_take` ASR gate renames acronyms and strips punctuation — a brand name can come back one letter off and still pass at ~95% match with no INSERTED/MISSING. Judge the verdict line, not a character diff.
 - Laughter, onomatopoeia and numerals are the usual REVIEW triggers, because ASR cannot round-trip them. Keep spoken scripts free of them.
+- REVIEW fix order: edit the SCRIPT, never re-render blind. ASR either INSERTS a phantom interjection (stutters like "bada..." become phantom words) or DROPS a real word — and the dropped word is almost always a reduplicated one (`dua-dua`, `bulan-bulan`) or a short function word the render swallowed. Replace reduplications with non-reduplicated forms (`berdua`, `kedua`, `serentak`) and delete written stutters entirely, then re-render once. Looping on the same script wastes takes.
+- REVIEW verdicts report exactly one MISSING token at a time — fix the visible one AND scan the script for siblings of the same pattern before re-rendering, or you pay one take per occurrence.
+- Register selection is content-driven: `abang-sado-mad-v1` keeps its high pitched edge even on calm text — never use it for calm/tender content; use the blend voice there. Match voice register to the CONTENT's emotion, not to the persona's reputation.
+- Long multi-act scripts (3-act, ~10 min total) render as separate takes per act — deliver as numbered act files, not one concat; the gate runs per take and a single mega-script multiplies gate-failure risk.
 - The voice carries the message; it does not license softening. If the ask needs analysis, the script is the finished analysis.
 - Copy the take to a 644 scratch path before sending; the workdir is 0700 and the transport may not read it.

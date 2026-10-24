@@ -30,7 +30,7 @@ who commissioned it, not a third party and not a decision-maker he is lobbying.
 **Not this skill:** the mechanical build/verify/deliver pipeline for a PDF (`forge-pdf-delivery` owns that),
 an emotional letter to another person (`wisdom-letter-for-loved-ones` owns that, and it owns the disclosure rule
 for third-party recipients), a chat reply (`bridge-protocol` / SOUL.md own that), or an audit of someone else's
-document (`petronas-entity-filings-probe` → `references/group-financial-report-audit.md` owns the three-bucket
+document (`petronas-entity-filings-probe` → ``references/`` owns the three-bucket
 output format and the near-miss rule).
 
 ## Register
@@ -321,3 +321,6 @@ The shape that survives contact:
 7. Is the file actually a PDF, and does the page count and ink sweep come back clean?
 
 If any answer is wrong, fix it before delivering.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

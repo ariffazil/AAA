@@ -1,0 +1,10 @@
+ARIFOS — REALITY REPORT · 23 Okt 2026 (10:50 MYT)
+
+Apa yang berubah: mesin pulih — 1.0 → 10 GB kosong, beban 38 → 2.5–5, pintu 503 → 200. Punca: satu kerja binaan yatim 12.9 GB; penjaga ingatan hanya menghantar isyarat, tidak bertindak. Sekarang ada reaper yang diuji.
+
+Apa yang belum: kernel HOLD (10/13 lulus; F1/F8 gagal), identiti OBSERVE_ONLY, buku rekod 40 lubang & verification=false, 5 label awam salah.
+
+Skor: RED (kuasa, buku rekod, nadi, perhatian) · AMBER (beban, cakera, pelaksanaan) · GREEN (ketersediaan, organ hidup).
+Cap: PARTIAL — yang nyata diiktiraf; yang belum ditahan.
+
+PDF 15 muka · sha256 c5e71562…8ab0e5

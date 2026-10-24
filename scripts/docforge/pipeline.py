@@ -225,7 +225,7 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
     # 3. compose body: delta first, then standing instructions, then the register
     from .feedback import FeedbackStore
     fb = FeedbackStore(db or DEFAULT_DB)
-    rules_path = fb.export_rules(run_dir / "brief-rules.md")
+    rules_path = fb.export_rules(run_dir / "brief-rules.md", edition_key=edition)
     receipt["stages"]["feedback"] = {
         "ok": True, "standing_rules": len(fb.active()),
         "rules_file": str(rules_path),

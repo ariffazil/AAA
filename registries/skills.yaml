@@ -2356,6 +2356,18 @@ skills:
       - F2
       - F4
       - F11
+  - id: mmx-cli
+    name: mmx-cli
+    version: 1.0.0-2026.08.14
+    description: "Use mmx to generate text, images, video, and speech via the MiniMax AI platform.
+      For which credential to bind, which provider to prefer, and the M Plan credit boundary,
+      load the minimax-m-plan skill."
+    owner: 333-AGI
+    risk_tier: t1
+    status: active
+    source_path: skills/mmx-cli/SKILL.md
+    package: domain-and-harness
+    floor_scope: F2, F4
   - id: memory-manage
     name: memory-manage
     version: 1.0.0
@@ -2383,6 +2395,19 @@ skills:
     source_path: skills/minimax-image-gen/SKILL.md
     package: domain-and-harness
     floor_scope: F2, F4, F7
+  - id: minimax-m-plan
+    name: MiniMax M Plan
+    version: 1.0.0-2026.10.21
+    description: "Use when routing work to MiniMax — deciding whether the M Plan seat or another
+      provider serves the task, which credential to bind, and when the plan boundary (credits,
+      not PAYG) changes the answer. Also use when a MiniMax call returns 402, 401, or an empty
+      model catalogue."
+    owner: 333-AGI
+    risk_tier: low
+    status: active
+    source_path: skills/minimax-m-plan/SKILL.md
+    package: domain-and-harness
+    floor_scope: F2, F4
   - id: nusantara-intelligence-substrate
     name: AGI-nusantara-substrate
     version: 1.0.0

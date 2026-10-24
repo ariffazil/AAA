@@ -18,7 +18,9 @@ version: "3.9"
 
 services:
   cohort-b-claude-code:
-    image: ghcr.io/anthropics/claude-code:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.cohort-runner
     container_name: §21-cohort-b-claude-code
     restart: no
     working_dir: /workspace

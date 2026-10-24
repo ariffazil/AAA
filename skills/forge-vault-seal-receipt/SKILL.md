@@ -203,6 +203,41 @@ When the agent cannot complete the seal (F13 gate), it must:
    - Fabricating receipt_id or seal_id
    - Claiming "SEAL COMPLETE" when the gate returned an error
 
+## Two gates before ANY Lane B receipt — and the digest-binding rule (2026-10-22)
+
+MARKER:LANEB-TWO-GATES-2026-10-22
+
+A Lane B `forge_vault(mode="receipt")` is not free. Observed on a live session
+(333-AGI, SEAL-308e15cb13024396):
+
+1. **CLAIM_GATE (CLAIM_TEXT_MISSING).** Declaring `claim_class` without a
+   `justification` text fails closed — a declared class is not a justification.
+   Fix: pass `justification` carrying action-eligible text (MEASURED | MECHANISM |
+   PATTERN). Dry-check first: `python3 /root/AAA/lib/claim_kernel/claim_kernel.py
+   eligible "<text>" --declared MEASURED`.
+
+2. **LEASE_GATE (LEASE_CLASS_EXCEEDED).** `forge_vault` is class IRREVERSIBLE; the
+   session lease must permit IRREVERSIBLE. An **OBSERVE_ONLY** session (actor not
+   cryptographically verified) is capped at OBSERVE -> the receipt is BLOCKED.
+   Escalation is itself IRREVERSIBLE-gated (`forge_lease` is also IRREVERSIBLE) —
+   a deliberate chicken-and-egg: an unverified actor cannot self-upgrade to write the
+   ledger. Instance: the only 333-AGI leases on disk were GitHub-connector-scoped.
+   **Unlock:** bind identity (Ed25519 `actor_signature` via
+   `opencode-ed25519-bootstrap-fix`, or signing lane :18900) so
+   `actor_cryptographically_verified=true` mints a MUTATE lease; or the sovereign
+   issues the lease. Do NOT hand-append to `outcomes.jsonl`/`session-receipts.jsonl`
+   to bypass — that defeats the envelope the gate enforces.
+
+3. **DIGEST BINDING.** A digest-bound `ARIF_SEAL <name> <digest>` whose digest does
+   not re-derive from its artifact is NOT a valid seal. Re-derive every digest
+   (`sha256sum <artifact>`) before treating a seal as real. Instance: four
+   ARIF_SEAL digests bound to no file on disk while the real artifacts hashed
+   differently.
+
+**When the vault receipt is blocked**, the honest Lane B close = a metabolic receipt
+(`arifflow flow_ingest step_type="Seal"`) PLUS an explicit `UNSEALED
+(LEASE_CLASS_EXCEEDED)` statement — never a forced append.
+
 ## Dual evaluation path (critical, discovered 2026-08-08)
 
 Lane A (`arif_seal`) has **two independent evaluation paths** that can return contradictory results:

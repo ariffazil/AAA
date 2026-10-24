@@ -46,6 +46,34 @@ NUM = {
 }
 FILLERS = {"hmm", "hm", "ha", "oh", "eh", "ah", "aah", "la", "lah", "kan", "je"}
 
+# PHANTOM TAIL — Whisper's stock outros. Measured 2026-10-23 on an 86 s BM take:
+# the transcriber appended "terima kasih kerana menonton" and placed its last word at
+# 116.1 s inside an 86.36 s file. Physically impossible, so it is invention, not audio.
+# Without this list every clean long take trips INSERTED and needs the tail/EOF
+# discriminator to rescue it. A known phantom should not look like render contamination.
+PHANTOM_TAIL = [
+    "terima kasih kerana menonton", "terima kasih kerana menonton video ini",
+    "thanks for watching", "thank you for watching", "subscribe", "sila subscribe",
+    "jangan lupa subscribe", "selamat menonton", "hope you enjoyed",
+]
+
+
+def strip_phantom_tail(heard: str) -> str:
+    """Remove a stock Whisper outro that was never spoken. Only the TAIL is cut, and
+    only when the phrase sits at the very end -- a phantom in the middle would be a
+    real transcription error and must still fail."""
+    t = heard.rstrip()
+    # match on the de-punctuated tail: Whisper writes "menonton!" and "Menonton." alike.
+    tl = re.sub(r"[^a-z0-9 ]+", " ", t.lower())
+    tl = re.sub(r"\s+", " ", tl).strip()
+    for ph in sorted(PHANTOM_TAIL, key=len, reverse=True):
+        if tl.endswith(ph):
+            # cut the same number of WORDS from the original, preserving earlier text
+            n = len(ph.split())
+            words = t.split()
+            return " ".join(words[: len(words) - n]).rstrip(" .,!-")
+    return t
+
 
 def norm(s: str, aliases: dict[str, str]) -> str:
     s = s.lower().replace("\u2019", "'")
@@ -81,19 +109,87 @@ def duration(path: str) -> float:
 
 
 def f0(path: str):
-    """(median, p90) Hz via librosa yin. None when librosa is unavailable."""
+    """(median, p90) Hz. librosa yin when present, else a numpy autocorrelation
+    fallback so the identity check is never silently dark.
+
+    Why (2026-10-23): every receipt on this lane read "librosa absent -- f0
+    family check SKIPPED (not a pass)". A check that always reports "skipped"
+    is not a check. The fallback is conservative: it needs voiced frames with a
+    clear periodicity peak, and reports UNKNOWN rather than inventing a number.
+    """
     try:
-        import librosa
         import numpy as np
     except ImportError:
-        print("  note: librosa absent -- f0 family check SKIPPED (not a pass)")
+        print("  note: numpy absent -- f0 identity check UNKNOWN (not a pass)")
         return None
-    y, sr = librosa.load(path, sr=16000, mono=True)
-    f = librosa.yin(y, fmin=60, fmax=400, sr=sr, frame_length=2048, hop_length=512)
-    m = np.isfinite(f) & (f > 0)
-    if not m.any():
+    try:
+        import librosa
+        y, sr = librosa.load(path, sr=16000, mono=True)
+        f = librosa.yin(y, fmin=60, fmax=400, sr=sr, frame_length=2048, hop_length=512)
+        m = np.isfinite(f) & (f > 0)
+        if not m.any():
+            return None
+        return round(float(np.median(f[m])), 1), round(float(np.percentile(f[m], 90)), 1)
+    except ImportError:
+        pass
+
+    y, sr = _load_mono_16k(path)
+    if y is None or len(y) < sr // 4:
+        print("  note: audio unreadable for f0 -- identity check UNKNOWN (not a pass)")
         return None
-    return round(float(np.median(f[m])), 1), round(float(np.percentile(f[m], 90)), 1)
+    hop, win = 320, 1024
+    lo, hi = int(sr / 400), int(sr / 60)
+    est = []
+    for start in range(0, len(y) - win, hop):
+        fr = y[start:start + win]
+        fr = fr - fr.mean()
+        if float(np.dot(fr, fr)) < 1e-5:
+            continue
+        ac = np.correlate(fr, fr, mode="full")[win - 1:]
+        if ac[0] <= 0:
+            continue
+        seg = ac[lo:hi]
+        if len(seg) == 0:
+            continue
+        peak = float(seg.max())
+        if peak / ac[0] < 0.30:
+            continue
+        # OCTAVE GUARD: take the lowest lag whose peak is within 85% of the best
+        # peak. Plain argmax locks onto the 2nd harmonic, which is stronger than
+        # the fundamental in most male voices; that reported a phantom 300 Hz
+        # p90 on a take whose real f0 was ~96 Hz.
+        cand = [i for i, v in enumerate(seg) if v >= 0.85 * peak]
+        lag = (cand[0] if cand else int(np.argmax(seg))) + lo
+        est.append(sr / lag)
+    if len(est) < 10:
+        print("  note: too few voiced frames -- identity check UNKNOWN (not a pass)")
+        return None
+    a = np.array(est)
+    # Drop octave-up frames that survived the guard: anything past 1.9x the
+    # lower-half median is a doubling artefact, not a pitch excursion.
+    lower = np.median(a[a <= np.percentile(a, 50)])
+    a = a[(a >= 0.6 * lower) & (a <= 1.9 * lower)]
+    if len(a) < 10:
+        print("  note: too few stable frames -- identity check UNKNOWN (not a pass)")
+        return None
+    return round(float(np.median(a)), 1), round(float(np.percentile(a, 90)), 1)
+
+
+def _load_mono_16k(path: str):
+    """Decode any audio to mono float32 @16k via ffmpeg (already a lane dep)."""
+    import subprocess
+    try:
+        import numpy as np
+    except ImportError:
+        return None, None
+    try:
+        r = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", "16000",
+                            "-f", "s16le", "-"], capture_output=True, timeout=180)
+    except Exception:
+        return None, None
+    if r.returncode != 0 or not r.stdout:
+        return None, None
+    return np.frombuffer(r.stdout, dtype="<i2").astype("float32") / 32768.0, 16000
 
 
 def main() -> int:
@@ -121,7 +217,7 @@ def main() -> int:
     dur = duration(a.take)
     rate = (len(src) / dur) if dur else 0.0
     j = asr(a.take, a.lang)
-    heard = (j.get("text") or "").strip()
+    heard = strip_phantom_tail((j.get("text") or "").strip())
 
     ns, nh = norm(src, aliases), norm(heard, aliases)
     # TOKEN-level diff. The opcodes of a SequenceMatcher run on the normalised

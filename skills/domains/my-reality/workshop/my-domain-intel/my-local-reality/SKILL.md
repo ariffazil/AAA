@@ -2,7 +2,7 @@
 id: my-local-reality
 name: my-local-reality
 description: "Use when the sovereign asks about food, events, gyms, local news or neighbourhood reality in Malaysia. The human-life layer under my-reality: three area anchors (Seri Kembangan, KLCC, Penang), verified keyless sources, blocked sources named, freshness gate so gossip never outlives its window."
-version: 1.0.0
+version: 1.1.2
 owner: F13
 risk_tier: low
 floor_scope: [F2, F4, F6, F11]
@@ -67,14 +67,16 @@ say which one you used.
 
 | Layer | Source | Status | Notes |
 |---|---|---|---|
-| Weather, district | `api.data.gov.my/weather/forecast` | **200** | 29 districts. **Does not carry Seri Kembangan or KL by name** — nearest district must be resolved and named |
+| Weather, district | `api.data.gov.my/weather/forecast?limit=2000` | **200** | **249 locations**, including `Kuala Lumpur`, `Petaling`, `Hulu Langat`, `Sepang`. A `limit=200` probe shows only 29 and is a false negative — always enumerate with limit>=2000. Seri Kembangan itself is absent; use its district (`Petaling`) and name it. |
 | Weather, warning | `api.data.gov.my/weather/warning` | **200** | storms, rough seas, valid_from/to |
 | Transit, live | `api.data.gov.my/gtfs-realtime/vehicle-position/prasarana?category=rapid-bus-kl` | **200** | live RapidKL bus positions, ~10 KB |
 | News, national | `thestar.com.my/RSS` , `rss.bernama.com` | **200** | keyless |
 | News, independent | `freemalaysiatoday.com` | **200** | keyless |
 | Tech/consumer | `soyacincau.com/feed` | **200** | keyless |
 | Community forum | `forum.lowyat.net` | **200** | keyless, scraped |
-| Places / food / gym | **SerpAPI (already held)** | **key PRESENT** | Google Maps local results through the `serpapi` MCP — no new key needed |
+| Places / food / gym | **OpenStreetMap Overpass + Nominatim** | **200, keyless** | Structured POI (name, address, `opening_hours`, phone, website, distance). No ratings. |
+| Places (paid lane) | SerpAPI `google_maps` | **quota 0 / 250** (2026-10-23) | Key is present in A-FORGE/1MCP env, but the Free Plan is exhausted this month. Not a dependency; do not report it as usable until `/account.json` shows `plan_searches_left > 0`. |
+| Local discovery routing | **A-FORGE `forge_search`** | **probed 2026-10-23** | Returns branches (Synergy, Sigma, OXYGYM, Hypercore). `forge_fetch(query=...)` routes to SearxNG and returns national chains/equipment shops. Route local queries to `forge_search`. |
 | Places, fallback | Foursquare Places | needs key | 500 free Pro calls/mo, then paid |
 | Events | Eventbrite | 405 to plain GET | needs its API token, not a scrape |
 
@@ -118,23 +120,48 @@ Never present a review as the current state of a business without saying when it
 
 | Need | Have | Missing |
 |---|---|---|
-| Food discovery | SerpAPI Google Maps lane | scripted adapter + radius/anchor resolver |
-| Gym reviews | same | same, plus the 90-day review gate |
+| Food discovery | **BUILT 2026-10-23** — `/root/scripts/local-reality/places.py near <type>` | ratings lane only (enrich with `forge_search`) |
+| Gym reviews | existence/hours via `places.py` | ratings + review age via `forge_search`; apply the 90-day gate |
 | Events | nothing verified | Eventbrite API token, or firecrawl on KL listing pages |
 | Local news | 4 working RSS feeds | de-duplicating ingest + freshness tagger |
 | Community pulse | Lowyat 200, Reddit 403 | proxy/OAuth lane for Reddit, or accept Lowyat only |
 | Transit | GTFS realtime 200 | scripted adapter; trip-updates 404s, only vehicle-position works |
-| Area profile | nothing | three anchor files as first-class objects (static facts, not API) |
+| Route / travel time | **BUILT 2026-10-23** — `places.py route` (OSRM, free-flow) | live-traffic ETA (paid Routes lane) — defer until a money decision needs it |
+| Area profile | **BUILT 2026-10-23** — `/root/scripts/local-reality/anchors.json` (home/work/kampung with precision + provenance) | exact kampung area (Penang) still UNKNOWN |
 | Halal | nothing wired | JAKIM directory lookup |
+
+
+## Runtime (built 2026-10-23)
+
+```
+python3 /root/scripts/local-reality/places.py near restaurant --anchor home --radius 2
+python3 /root/scripts/local-reality/places.py near gym --anchor home --radius 8
+python3 /root/scripts/local-reality/places.py near "nasi lemak" --anchor home --radius 3
+python3 /root/scripts/local-reality/places.py route home work
+python3 /root/scripts/local-reality/places.py anchors
+```
+
+`places.py` is discovery + geometry only. Ratings, review age and "siapa kata bagus" come from
+the web lane (`A-FORGE forge_search`), never from OSM. Anchors live in
+`/root/scripts/local-reality/anchors.json`; edit there, not in prose.
+
+**Lane rule (probed 2026-10-23).** Local discovery MUST go through `forge_search`
+(provider pool exa / brave / serpapi). `forge_fetch(query=...)` is a self-hosted SearxNG lane:
+the same query returns national chains and equipment shops (kampunggym.com, GoFit, Fitness
+First), not Seri Kembangan branches. So a "0/3 relevant" result is a **lane-selection defect,
+not a broken search engine** — route local queries to `forge_search` first. Zero cost.
 
 ## Falsifier
 
-If `api.data.gov.my/weather/forecast` stops returning 200, or the SerpAPI key is rotated out,
-every row above marked verified is stale and must be re-probed before use. If a local answer
-names a place without naming the anchor and radius that produced it, the answer is in breach.
+If `api.data.gov.my/weather/forecast` stops returning 200, if Overpass/Nominatim becomes
+unreachable, or if the anchors file is edited without re-probing coordinates, every row above
+marked verified is stale and must be re-probed before use. If a local answer names a place
+without naming the anchor and radius that produced it, the answer is in breach.
 
 ## Changelog
 
 | Version | Date | Change |
 |---|---|---|
 | 1.0.0 | 2026-10-23 | Initial forge. Splits the human-life layer out of `my-reality` (which stays institutional). Nine sources probed live; four named blocked; freshness ladder per class; three area anchors declared. |
+| 1.1.2 | 2026-10-23 | Radius unit fix: `--radius` is km, values >100 are treated as metres (`--radius 2000` = 2 km), `--radius-m` explicit; `--category food` queries amenity~restaurant/cafe/food_court; every result carries `distance_km` and `distance_m`. Acceptance test: `near restaurant --radius 2000` -> 28 POI, not 0. |
+| 1.1.0 | 2026-10-23 | Build state added after live probes: `places.py` (Overpass + Nominatim + OSRM) and `anchors.json` under `/root/scripts/local-reality/`; SerpAPI quota 0/250 recorded; weather coverage corrected to 249 locations (limit>=2000). |

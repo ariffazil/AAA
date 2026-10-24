@@ -1,0 +1,83 @@
+# DEPLOYMENT MANIFEST — observed deployment facts for membrane plugins
+# Status: DRAFT_AWAITING_F13 (sovereign "sah" needed to become authoritative)
+# Purpose: closes REBASE-2026-10-22 item 1 WITHOUT lifting the 2026-10-19 freeze.
+#   Code SOT stays frozen at /root/AAA/plugins/arif-core (FP-01).
+#   This file records WHAT IS DEPLOYED WHERE — deployment facts, not code, not aspiration.
+# Consumer (named, per anti-bangang Law 3): dist-install acceptance tests
+#   (criterion 1: build/hash known) + federation_build drift census.
+# Writer: 333-AGI, 2026-10-23, session opencode FI-001. Receipt:
+#   receipts/plugin-alignment-2026-10-23.md (ADDENDUM)
+schema: arifos.deployment_manifest.v1
+membranes:
+  opencode:
+    source_sot: /root/AAA/plugins/arif-core (chattr+i frozen, FP-01)
+    installed: /root/.config/opencode/plugins/arif-core/index.ts
+    sha256_installed_index: 858f6117e0430364dba360903cb3b8cd4e9bb65511740c6c088bc60f76cb3ed7
+    sha256_sot_manifest_yaml: 5bb2cc909ded8ff335215f2341f046729cb897049ec622214284c39b28902f50
+    runtime: LIVE since 2026-10-14 (87k+ receipts; opencode_receipts.jsonl active 2026-10-23)
+    conformance: results present 2026-10-21 (p1-p11) — verdict fields not re-parsed 2026-10-23 (inherited claim, labeled)
+    hook_order_manifest: /root/.config/opencode/plugins/OPENCODE-HOOK-ORDER-MANIFEST.json (2026-10-21)
+  kimi:
+    runtime: LIVE — membrane = 14 constitutional hooks (/root/.arifos/agents/kimi/hooks/aaa-*.sh, K-02 exit-2) + SYSTEM.md v2
+    home_live: /root/.kimi-code (migrated from /root/.arifos/agents/kimi; marker .migrated-to-kimi-code)
+    plugins_managed:
+      - kimi-datasource@official (2026-10-22)
+      - kimi-webbridge@official (2026-10-22)
+      - superpowers@v7.0.1 sha 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b (2026-10-22)
+      - modern-web-guidance@v0.0.195 sha 65e7edd67e77420eaf02c5df00fdc0521417d809 (2026-10-22)
+    legacy_registry: installed.json.stale-postmigration-20261023 (quarantined, not deleted)
+  claude:
+    runtime: LIVE — claude-code-federation view + per-project mcp.json; skills = symlink -> /root/AAA/skills (pure pointer)
+  codex:
+    status: INSTALLED_VERIFIED (2026-10-23, F13 "now please aligned all", session opencode FI-001 333-AGI)
+    dist: /root/AAA/plugins/dist/codex (build trc-arif-core-81f3b2351bd1, 2026-10-14)
+    stale_view_label: signal+minimax-media SKIPPED (404 /mcp, route moved post-build) — same decision as qwen canary
+    installed_what:
+      - config.toml [mcp_servers] +5 organs native toml url= form (claim-ledger :8791, filings :18410, media-ingest :18411, numeric-audit :3013, session-federation :18088) — chron/hermes already present
+      - hooks NOT touched (live /root/.codex/hooks.json = AAA session-start arif_init+witness, retained; dist sensor union deferred)
+    rollback: config.toml.bak-arifcore-20261023 + config.toml.bak-arifcore-20261023T015830Z
+    evidence: pre-wire init=200 x5; codex mcp list = 5 rows enabled (HARNESS_LOADED); parse OK 20 servers; call lane BLOCKED by approval policy "never" (pre-existing, separate defect)
+    acceptance: 1 build+hash OK · 2 backup x2 OK · 3 harness-loaded OK · 4 ADAPTED_FP-02 (advisory sensors; kernel enforces) · 5 allow-path via harness-list+protocol (exec call lane pre-broken) · 6 this receipt
+  qwen:
+    status: INSTALLED_VERIFIED (2026-10-23, F13 directive "execute agentically")
+    dist: /root/AAA/plugins/dist/qwen (build trc-arif-core-81f3b2351bd1, 2026-10-14)
+    stale_view_label: SOT manifest.yaml moved 2026-10-20 + organs.yaml 2026-10-22 (post-build) — per-server LIVE-verified at install; signal+minimax-media SKIPPED (404 /mcp)
+    installed_what:
+      - mcpServers +5 live organs (claim-ledger :8791, filings :18410, media-ingest :18411, numeric-audit :3013, session-federation :18088) — reshaped to qwen-0.26 native httpUrl form
+      - hooks +UserPromptSubmit/+SessionStart sensors via codex shim (mesh evidence spool)
+      - skills pointer ~/.qwen/skills/arif-core/SKILL.md (preserved-class)
+      - artifact ~/.qwen/extensions/arif-core/ (view as-is + qwen-extension.json)
+    rollback: settings.json.bak-arifcore-20261023 + rm extensions/arif-core skills/arif-core
+    evidence: 2x smoke OK (exit 0, no MCP-fail warning on run 2); shim standalone validated (aaa.turn.received + aaa.session.opened, validated:true)
+    build_lane_note: dist snippets carry qwen-legacy schema (type/url) — qwen 0.26 wants httpUrl; compile.py (FI-003) should emit native per-harness shape on next rebuild
+  gemini:
+    status: INSTALLED_VERIFIED (2026-10-23, same directive) — CALL_LANE_BLOCKED_BY_PREEXISTING_HARNESS_DEFECT (model gemini-3.8-flash-medium API 404)
+    dist: /root/AAA/plugins/dist/gemini (build trc-arif-core-81f3b2351bd1)
+    stale_view_label: signal+minimax-media SKIPPED (404 /mcp)
+    installed_what:
+      - settings.json mcpServers +6 native type=http url form (chron :18102, claim-ledger, filings, media-ingest, numeric-audit, session-federation) — arifos/aforge/hermes-mcp already present
+      - GEMINI.md dist view NOT installed (no consumer on-host beyond session prompt — anti-bangang Law 3)
+    rollback: settings.json.bak-arifcore-20261023 + settings.json.bak-arifcore-20261023T015830Z
+    evidence: pre-wire init=200 x6; gemini mcp list = 6 new rows ALL Connected (harness handshake OK); parse OK 19 servers
+    acceptance: 1 OK · 2 OK · 3 OK · 4 ADAPTED_FP-02 · 5 handshake max evidence (model lane 404 = harness defect, not plugin) · 6 this receipt
+  grok:
+    status: INSTALLED_VERIFIED (2026-10-23, same directive) — FULL 6/6 incl. through-harness call
+    dist: /root/AAA/plugins/dist/grok (build trc-arif-core-81f3b2351bd1)
+    stale_view_label: signal+minimax-media SKIPPED (404 /mcp)
+    installed_what:
+      - config.toml [mcp_servers] +7 native grok form (url+enabled+timeouts+headers Accept) : chron, claim-ledger, filings, media-ingest, numeric-audit, session-federation, hermes — arifos/aforge already present
+      - hooks form NOT doubled (live .grok/hooks/aaa-*.json federation hooks retained — install-exactly-one-form respected)
+    rollback: config.toml.bak-arifcore-20261023 + config.toml.bak-arifcore-20261023T015830Z
+    evidence: pre-wire init=200 x7; grok mcp list = 16 servers incl. 7 new; CALL_VERIFIED grok -p -> chron.chron_last_loop SUCCESS 2026-10-23 (FULL_LOOP 2026-10-22T23:16:10Z)
+    acceptance: 1 OK · 2 OK · 3 OK · 4 ADAPTED_FP-02 · 5 ALLOW-PATH VERIFIED through harness · 6 this receipt
+
+dist_build_receipt: /root/AAA/plugins/dist/build_receipt.json
+coverage_matrix: /root/AAA/plugins/dist/coverage-matrix.md
+canary_recommendation: qwen — most-active secondary forge CLI, QWEN.md WIRED, smallest blast radius (fallback lane, not daily driver). F13 pending.
+acceptance_criteria_per_install: # adopted verbatim from external review (Perplexity 999) — matches PRODUCED != OBSERVED law
+  - build + hash identified
+  - existing config saved for rollback
+  - plugin loaded by the real harness
+  - guard blocks one forbidden action in controlled test
+  - allowed path also works
+  - receipt states INSTALLED_VERIFIED (not BUILT)

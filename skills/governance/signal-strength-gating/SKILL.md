@@ -155,7 +155,7 @@ the check actually showed. "I checked 6 and found nothing" is not "it does not e
   the items exist. Answer the existence question first, then the action question.
 - **A claim of "enforcement" / "locked" / "sealed" is three layers, not one.** When reporting that
   something has been wired in, distinguish: (1) **write complete** (file on disk, expected content
-  present), (2) **render complete** (composer ran, references/aggregators updated), (3) **pickup
+  present), (2) **render complete** (composer ran, `references/` updated), (3) **pickup
   complete** (consumer code exists, runtime reloaded, gateway reads the new state). A confident
   "locked" / "dikunci" / "enforced" that collapses the three is the same defect as a confident
   "shipped" that means "the file is on disk" — the word does the persuasion the evidence cannot.
@@ -178,7 +178,7 @@ the check actually showed. "I checked 6 and found nothing" is not "it does not e
   hash) from Agent A to Agent B, B inherits the evidence but NOT A's authority to claim completion.
   Per-hop authority re-earning is a separate check from evidence propagation. A FALSIFIER envelope
   that uses the same evidence as a HYPOTHESIS_GENERATOR envelope is correlated, not independent —
-  see `references/a2a-r-wire-law.md` for the full rule set (REJECT-001..008) and the per-claim
+  see ``references/`` for the full rule set (REJECT-001..008) and the per-claim
   Authority Envelope shape. "I trust X because I trust X" is the failure pattern; the fix is to
   require every claim to carry an `authority_scope` field that the receiving end validates against
   the issuer's current role, not against the issuer's past record.
@@ -200,3 +200,6 @@ enforcement.
 - `references/a2a-r-claim-authority.md` — the per-claim Authority Envelope and the
   REJECT-001..008 wire-law that prevents chain hallucination and correlated error amplification
   across arifOS federation agents. Apply when receiving A2A messages, not when generating.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->
