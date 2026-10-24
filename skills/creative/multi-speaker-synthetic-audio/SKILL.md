@@ -141,3 +141,15 @@ own register, in one clause, riding on the delivery line.
 - The persona-register skill for the lane in play (e.g. the SADO creative lane) — what the speakers may
   say, which archetypes stay unnamed and unfaced, and the declaration discipline. Those rules are not
   restated here.
+
+## Session-learned additions (long two-person scene, one overnight session)
+
+| Pitfall | Cause | Fix |
+|---|---|---|
+| Batch render of >10 clips exceeds the 600 s foreground cap and gets promoted to a tracked background job mid-loop | ~30-60 s per clip × N clips | Batch ≤5 clips per call; run persona clips and secondary clips as two separate calls, then poll before assembly |
+| Requester's own voice wanted as a scene speaker but no registered clone exists | Clone slots full (`insufficient voice slot`) or clone-lane balance drained (HTTP 402) | Name the fallback in the delivery line ("suara boy = system voice, bukan clone sebenar") and note the pending clone id — never silently substitute, never delay the whole scene on the clone lane |
+| Multi-part scene assembled across turns loses act-break silences | Scratch gap files prune at 24 h; last turn's `gap.mp3`/`gap2.mp3` may be gone | Regenerate `anullsrc` gap clips in the SAME call as the final concat, and re-loudnorm every part's clips at assembly time |
+| Young-male BM interjections ("Mmh... abang...") read flat at 1.0 | System boy voice is stiff at full speed | 0.95 for breathy interjections; for a "quiet enjoyment" beat drop the persona clone to 0.88 — slower reads as savouring |
+| Scene grows by "sambung lagi" requests across the session | Each continuation re-renders from scratch and the clips drift in level | Keep one work dir per scene, name clips by order prefix (`10_a`, `11_b`...), and re-run `volumedetect` on the FULL file before each delivery |
+
+## Related

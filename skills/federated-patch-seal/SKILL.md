@@ -119,6 +119,33 @@ forge_vault(
 
 ---
 
+### canon-mutate argv boundary loss — "rc=0 + lock_restored=true" is NOT effect (Forged 2026-10-22)
+
+MARKER:CANONMUTATE-D1-ARGBOUNDARY-2026-10-22
+
+`canon-mutate run <tree> -- <cmd>` built `CMD="$*"`, which **flattens argv** and
+destroys quoting, so nested shell forms silently no-op:
+
+```
+bash -c "cat staging >> target"    # flattened to: bash -c cat staging >> target
+```
+The inner `bash` gets `cat` as its command, `staging` becomes `$0`, and the OUTER
+shell performs `>>`. Result: **rc=0, lock_restored=true, ZERO bytes written.**
+Confirmed in production receipts [141][142] (staging payload absent from target).
+
+- Flat `cat a >> b` and heredoc forms happened to work -> historical successes do
+  NOT falsify the defect (different invocation forms, different outcomes).
+- **Fix shipped** (canon-mutate scheme 1.3): rebuild `CMD` word-by-word, `printf %q`
+  each word, pass pure shell operators (`&& || ; | >> < << 2>`) unquoted. Verified
+  12/12 suite + live canary flat/nested/cd = VERIFIED_EFFECT on the prod ledger.
+- **Always verify EFFECT, not rc:** pass `--expect-target <file>` +
+  `--expect-lines-delta N` (or `--expect-sha256-post`). Verdicts: `FAIL` (rc!=0),
+  `VERIFIED_EFFECT`, `NO_EFFECT`, `UNVERIFIED` (no postcondition declared).
+  `lock_restored` is a SEPARATE field, never proof of effect.
+- **Concurrent-mutation check:** a `chattr +i` tree can still be
+  thawed->written->relocked by another actor. Re-derive digests and check mtimes
+  before trusting a pin — a sealed digest that no longer re-derives is void.
+
 ## Coordination patterns
 
 ### Kimi auto-commit before opencode finishes

@@ -18,6 +18,31 @@ no owner — anyone with a printer can make one. Every rule below follows from t
 Covers: reading a code out of a screenshot or poster, generating one, interpreting a payment
 payload (EMVCo / DuitNow), and explaining the security limits to a human.
 
+## Rule −1 — the container is code, the payload is text
+
+A QR lives inside an image file. The decoder stack parses that file **before** any payload exists,
+and a crafted container can execute code at scan time even when the decoded payload is harmless.
+There is no signature on the container either. On this host, `zbarimg` links ImageMagick, and
+ImageMagick's EPS delegate invokes Ghostscript; Pillow < 13.0.0 carries the CVE-2026-112900
+EPS/Ghostscript batch plus JPEG/FPX parser flaws.
+
+Before any decode:
+
+1. **Format allowlist by magic bytes, not extension.** Accept PNG / JPEG / WebP / GIF only.
+   Reject EPS/PS (`%!PS`), PDF (`%PDF`), and OLE/FPX (`D0 CF 11 E0 A1 B1 1A E1`). A `.jpg` name is
+   not a format.
+2. **Pillow ≥ 13.0.0.** Check `python3 -c "import PIL; print(PIL.__version__)"`. Never pass a
+   user-controlled filename to `Image.open`; copy to a generated temp name first.
+3. **Cap and timeout.** `Image.MAX_IMAGE_PIXELS = 64_000_000`; wrap zbarimg/Pillow in
+   `timeout 20`; reject files over ~25 MB.
+4. **No `gs` on the decode host.** If Ghostscript is installed, treat EPS/PS as hostile. Backstop
+   with ImageMagick's coder policy: `rights="none"` for `{PS,PS2,PS3,EPS,PDF,XPS}`.
+5. **Do not mutate `Image.OPEN` and call it security.** Pillow's own handbook says plugin
+   unregistration is not a stable control. Gate at the boundary, or sandbox the decoder.
+
+A QR payload can be a valid, harmless string while the file that carries it is the exploit.
+When the gate fires, report `container: rejected` — never "no QR".
+
 ## Rule 0 — scan before you speak
 
 Never describe what a QR "probably points to". Decode it. If you cannot decode it, say the decode

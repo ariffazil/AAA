@@ -43,6 +43,7 @@
     "MD5 and SHA-1 are broken for collision resistance",
     "TLS 1.3 is the current standard for transport encryption",
     "SQL injection is still the #1 web vulnerability after 20+ years",
-    "Zero-trust architecture: never trust, always verify (even internal traffic)"
+    "Zero-trust architecture: never trust, always verify (even internal traffic)",
+    "Credential boundary: secrets reach child-process environments, never model context — plus pattern-scanning of governed tool arguments for secret leaks"
   ]
 }

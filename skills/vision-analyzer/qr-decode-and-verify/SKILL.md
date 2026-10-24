@@ -5,6 +5,13 @@ description: Decode, verify, and regenerate QR codes safely.
 
 # QR decode and verify
 
+## Container gate (mandatory before the ladder)
+
+QR is text inside a file; the file is parsed as code. Accept PNG/JPEG/WebP/GIF only, by magic
+bytes. Reject EPS/PS (`%!PS`), PDF (`%PDF`), OLE/FPX (`D0 CF 11 E0`). Require Pillow >= 13.0.0;
+never pass a user-supplied filename to `Image.open`; `timeout 20` every decode; set
+`Image.MAX_IMAGE_PIXELS = 64_000_000`. Canonical detail: `/root/AAA/skills/qr-code-ops/SKILL.md`.
+
 ## Decode ladder (stop at first success)
 
 ```

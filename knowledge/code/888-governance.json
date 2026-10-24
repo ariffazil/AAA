@@ -43,6 +43,11 @@
     "The 888_HOLD pattern: pause \u2192 evaluate \u2192 authorize \u2192 execute",
     "Audit trails are worthless if they can be tampered with",
     "Governance overhead should be proportional to blast radius",
-    "The best governance is invisible when things go right, visible when they don't"
+    "The best governance is invisible when things go right, visible when they don't",
+    "Append-only must be enforced at the storage/grant layer, not by application convention (external corroboration: systemprompt-core governance_decisions refuses UPDATE for every role)",
+    "Correlation identifiers (trace_id) get their own key \u2014 identity keys (session_id) must never double as correlation keys",
+    "Record-before-block: a denied action still emits its audit record; refusals are events, not absences",
+    "Pending/HOLD is a first-class verdict, distinct from deny \u2014 human gate as primitive, not soft refusal",
+    "License is a governance surface: source-available \u2260 deployable (BSL-1.1 class) \u2014 evaluate ideas clean-room, never copy code across incompatible licenses"
   ]
 }

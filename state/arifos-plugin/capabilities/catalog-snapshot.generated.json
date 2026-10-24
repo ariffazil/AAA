@@ -1,0 +1,58 @@
+{
+ "_NOTE": "Authoritative live tool lists for ChatGPT connector rebuild (probe 2026-10-22). Phantom names like wealth_ingest_health come from stale DOCS \u2014 never scrape docs; use this or live tools/list.",
+ "generated": "2026-10-22T13:02:05.410520+00:00",
+ "geox": {
+  "count": 27,
+  "tools": [
+   "geox_basin",
+   "geox_calibration_register_witness",
+   "geox_claim",
+   "geox_contrast_metabolize",
+   "geox_deep_time",
+   "geox_extract_display_proxy",
+   "geox_extract_native_trace",
+   "geox_geomechanics",
+   "geox_glof",
+   "geox_list_registered_sources",
+   "geox_map",
+   "geox_model",
+   "geox_observe",
+   "geox_paleobiodb_query",
+   "geox_petrophysics",
+   "geox_prospect",
+   "geox_register_native_source",
+   "geox_seismic_compute",
+   "geox_seismic_ingest",
+   "geox_seismic_interpret",
+   "geox_source",
+   "geox_spatial",
+   "geox_surface_status",
+   "geox_temporal",
+   "geox_well",
+   "geox_well_ingest",
+   "geox_well_qc"
+  ],
+  "surface_version": "v2026.10.03"
+ },
+ "wealth": {
+  "count": 15,
+  "tools": [
+   "capital_primitive",
+   "capital_health",
+   "capital_diagnose",
+   "capital_market",
+   "capital_ledger",
+   "capital_registry",
+   "capital_claims",
+   "capital_entropy",
+   "wealth_judge_handoff",
+   "capital_indicator",
+   "capital_backtest",
+   "capital_entry_plan",
+   "wealth_synthesize",
+   "capital_polix",
+   "capital_civx"
+  ],
+  "registry_truth": "PASS"
+ }
+}

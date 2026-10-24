@@ -310,7 +310,7 @@ def main():
                 reason = (
                     f"STUCK: FQ={q_eff:.2f} < lantai {fq_req:.2f} (execute={ex}, verify={ve}) — bawah lantai verify."
                 )
-                gap = f"Resit Verify diperlukan sehingga FQ ≥ {fq_req:.2f} (verify ≥ execute)."
+                gap = f"Resit Verify diperlukan sehingga FQ ≥ {fq_req:.2f}, iaitu verify ≥ {fq_req:.2f} × execute (bukan verify ≥ execute — itu polisi berasingan, FQ ≥ 1.0)."
                 next_act = "Hantar resit Verify tulen ke POST /ingest :7073 — auto-release akan cerah latch."
             elif ex > 0 and (ve == 0 or ex / ve > 10):
                 reason = f"BURNING: execute={ex}, verify={ve} (nisbah >10:1) — gerak tanpa saksi."
@@ -326,7 +326,7 @@ def main():
                 reason = (
                     f"LATCH LAPUK: tiada tiang (STUCK/BURNING/FOSSILIZED) menyala "
                     f"pada kaunter semasa (execute={ex}, verify={ve}, "
-                    f"FQ={'—' if q is None else float(q):.2f})."
+                    f"FQ={'—' if q is None else format(float(q), '.2f')})."
                 )
                 gap = "Hold warisan (latch restore_holds / lama) — bukan keterangan bukti semasa."
                 next_act = "Hantar satu resit Verify tulen ke POST /ingest :7073 — auto-release akan cerah latch; enjin re-hold jika tiang menyala semula."
@@ -348,8 +348,10 @@ def main():
             )
             seen_actors.add(act_name)
 
-    # Merge held actors from federation_state if not already included
-    raw_held_actors = fed_state.get("held_actors", [])
+    # Merge held actors from federation_state ONLY when live arifFlow per_actor is unavailable.
+    # When :7073/health is live, live_per_actor is the authoritative real-time source;
+    # merging a stale federation_state.json snapshot would resurrect already-released holds.
+    raw_held_actors = fed_state.get("held_actors", []) if not live_per_actor else []
     for act in raw_held_actors:
         if act not in seen_actors:
             clean_name = act.replace("/", "_").replace("-", "_").upper()
@@ -396,6 +398,9 @@ def main():
         "principle": "Arif bukan coder. Saring kerumitan mesin; jangan banjiri perhatian manusia.",
         "auto_handled": {
             "count": exec_count + verify_count,
+            "count_semantics": "events_not_tasks — jumlah peristiwa resit (verify+execute), BUKAN bilangan tugas selesai",
+            "unique_tasks_completed": None,
+            "unique_tasks_note": "UNKNOWN — enjin belum dedah kiraan task_id unik; jangan jual peristiwa sebagai tugas",
             "execute_count": exec_count,
             "verify_count": verify_count,
             "fq_quotient": round(fq_score, 2) if fq_score is not None else None,
@@ -420,8 +425,12 @@ def main():
             "principle": "Bukan keputusan untuk Arif. Yang tertahan ialah ejen, bukan server.",
             "holds": held_list,
             "epistemic_class": "OBSERVED",
-            "source": "arifFlow:atlas_echo:per_actor",
-            "observed_at": atlas_echo.get("as_of", now_iso),
+            "source": "live:arifFlow:7073/per_actor",
+            "observed_at": now_iso,
+            "aggregate_fq": fq_score,
+            "fq_formula_version": ((live_health.get("fq") or {}).get("metric_frame") or {}).get("formula_version"),
+            "fq_window_size": ((live_health.get("fq") or {}).get("metric_frame") or {}).get("window_size"),
+            "fq_actors_tracked": ((live_health.get("fq") or {}).get("metric_frame") or {}).get("actors_tracked"),
         },
         "sovereign_escalation": {
             "count": 0,
@@ -608,6 +617,14 @@ def main():
             "status": "ACTIVE",
             "auto_handled_count": exec_count + verify_count,
             "machine_held_count": len(held_list),
+            "holds_source": "live:arifFlow:7073/per_actor (tetingkap sama seperti kiraan)",
+            "aggregate_fq": fq_score,
+            "fq_formula_version": ((live_health.get("fq") or {}).get("metric_frame") or {}).get("formula_version"),
+            "fq_window_size": ((live_health.get("fq") or {}).get("metric_frame") or {}).get("window_size"),
+            "fq_actors_tracked": ((live_health.get("fq") or {}).get("metric_frame") or {}).get("actors_tracked"),
+            "generated_at_utc": __import__("datetime")
+            .datetime.now(__import__("datetime").timezone.utc)
+            .strftime("%Y-%m-%dT%H:%M:%SZ"),
             "sovereign_escalation_count": 0,
         },
         "metabolism": {

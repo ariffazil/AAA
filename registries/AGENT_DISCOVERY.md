@@ -378,3 +378,5 @@ No contract → no capability. No attestation → no trust. No lease → no auto
 ---
 
 *DITEMPA BUKAN DIBERI — Discovery is forged, not given.*
+
+> FI RECONCILE 2026-10-22 (FI-008): FI-004 = Gemini CLI DECEASED (F13 2026-09-13). agy/Antigravity = FI-009 (config.toml canonical). grok-build = FI-007 (its AGENTS.md). This doc's 'FI-007 here = Aider' = historical numbering — do not wire Aider slots to grok. Shadow yaml grok-build/FI-004 row corrected to FI-007 same date.

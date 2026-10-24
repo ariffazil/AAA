@@ -1,0 +1,33 @@
+{
+ "receipt_type": "PROJECTION_RECEIPT",
+ "timestamp": "2026-10-22T12:05:50Z",
+ "projection": "skills+categories+authority",
+ "source_count": 1590,
+ "union_count": 941,
+ "projected_count": 941,
+ "duplicates_removed_by_union": 649,
+ "failures": 0,
+ "category_counts": {
+  "Governance": 435,
+  "Research": 297,
+  "Engineering": 536,
+  "Execution": 212,
+  "Memory": 188,
+  "Communication": 322,
+  "Domain": 131,
+  "Unclassified": 32
+ },
+ "outputs": [
+  "AUTHORITY_RECEIPT.json",
+  "CAPABILITY_RECEIPT.json",
+  "PROJECTION_RECEIPT.json",
+  "authority-map.json",
+  "authority-map.md",
+  "capability-index.json",
+  "category-index.json",
+  "skills.catalog.json",
+  "skills.index.json",
+  "skills.search.json"
+ ],
+ "verdict": "SUCCESS"
+}

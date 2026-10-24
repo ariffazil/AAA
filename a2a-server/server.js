@@ -2048,9 +2048,13 @@ function authMiddleware(req, res, next) {
   // ── Cloudflare Tunnel proxy check (X-Forwarded-For from Caddy on localhost) ──
   const forwarded = req.headers['x-forwarded-for'];
   if (forwarded) {
-    const ips = forwarded.split(',').map(s => s.trim());
-    if (ips.some(ip => ip === '127.0.0.1' || ip === '::1')) {
-      req.auth = { scheme: 'loopback-proxy', valid: true, ip: forwarded };
+    // T1 HARDENING 2026-10-22 (item 3): only the RIGHTMOST entry (the peer
+    // Caddy actually saw) can claim loopback. The previous some() trusted
+    // any upstream-spoofable entry anywhere in the chain.
+    const ips = forwarded.split(',').map(s => s.trim()).filter(Boolean);
+    const peer = ips[ips.length - 1] || '';
+    if (peer === '127.0.0.1' || peer === '::1') {
+      req.auth = { scheme: 'loopback-proxy', valid: true, ip: peer, chain: forwarded };
       return next();
     }
   }
@@ -2950,13 +2954,22 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     // SOVEREIGN
     'ARIF_FAZIL',
     // META
-    'anonymous', 'mesa-test-agent',
+    'mesa-test-agent',
   ]);
 
-  const sourceAgent = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || 'anonymous';
-  if (!CANONICAL_ACTORS.has(sourceAgent)) {
-    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${sourceAgent}" is not canonical`));
+  // T1 HARDENING 2026-10-22 (item 5): 'anonymous' removed from CANONICAL_ACTORS.
+  // A claimed actor is checked only when one is actually claimed; identity for
+  // accounting comes from the verified DID (effectiveSourceAgent, below).
+  const claimedActor = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || null;
+  if (claimedActor && !CANONICAL_ACTORS.has(claimedActor)) {
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${claimedActor}" is not canonical`));
   }
+  const sourceAgent = claimedActor || 'anonymous';
+  // TDZ-SAFE (hotfix 2026-10-22): the res.on('finish') metabolic-ledger
+  // callback below reads this binding. It MUST be initialized before that
+  // callback can fire (early returns finish the response first). Declaring
+  // it as a later `const` crashed the gateway on every unsigned 403.
+  let effectiveSourceAgent = sourceAgent;
   if (targetAgent && !CANONICAL_ACTORS.has(targetAgent)) {
     return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Target agent "${targetAgent}" is not canonical`));
   }
@@ -2972,7 +2985,7 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     const stepType = res.statusCode >= 400 ? 'Execute' : 'Execute';
     const floorVerdict = res.statusCode >= 500 ? 'Hold' : res.statusCode >= 400 ? 'Caution' : 'Pass';
     ingestFlow({
-      actorId: sourceAgent,
+      actorId: effectiveSourceAgent,
       sessionId: resolvedTaskId,
       stepType,
       epistemicLabel: 'Derivation',
@@ -3005,6 +3018,38 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   }
   logEvent('A2A_DID_VERIFIED', resolvedTaskId,
     `from=${didResult.did} organ=${didResult.organId}`);
+
+  // -- T1 HARDENING 2026-10-22 (333-AGI, F13 'gooooo') - items 1+2 ----------
+  // (1) Replay guard: this mutation path had NONE (message/send has had one
+  //     since 2026-07). A captured signed envelope must not re-dispatch.
+  const sendPayloadHash = hashPayload(req.body);
+  if (checkReplay(sendPayloadHash)) {
+    logEvent('A2A_REPLAY_DROP', resolvedTaskId, 'Duplicate payload hash dropped');
+    return res.status(400).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.NONCE_REPLAY,
+      'Duplicate request detected (replay)'));
+  }
+  // (1b) Freshness - enforced only when the caller actually stamps issued_at.
+  //      Measured 2026-10-22: no live builder sets it, so absence is LOGGED,
+  //      not rejected (rejection would have broken every dispatching caller).
+  //      Rejection activates automatically once callers adopt issued_at.
+  const issuedAtMs = Date.parse(envelope.issued_at || '');
+  if (Number.isFinite(issuedAtMs) && Math.abs(Date.now() - issuedAtMs) > 5 * 60 * 1000) {
+    logEvent('A2A_STALE_ENVELOPE', resolvedTaskId, `issued_at=${envelope.issued_at}`);
+    return res.status(400).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.TIMESTAMP_EXPIRED,
+      'envelope.issued_at outside 5min freshness window'));
+  }
+  if (!Number.isFinite(issuedAtMs)) {
+    logEvent('A2A_ISSUED_AT_MISSING', resolvedTaskId,
+      'envelope.issued_at absent - replay window bounded by REPLAY_CACHE_TTL_MS only');
+  }
+
+  // (2) Actor<->signer binding: the claimed actor is decorative until the DID
+  //     says otherwise. Effective actor for accounting = verified organ_id.
+  effectiveSourceAgent = didResult.organId || didResult.did || sourceAgent;
+  if (effectiveSourceAgent !== sourceAgent) {
+    logEvent('A2A_ACTOR_SUPERSEDED', resolvedTaskId,
+      `claimed=${sourceAgent} verified=${effectiveSourceAgent}`);
+  }
 
   logEvent('A2A_DISPATCH', resolvedTaskId, `From: ${req.auth?.scheme || 'unknown'}, Target: ${targetAgent || 'auto'}`);
 
@@ -3440,7 +3485,7 @@ app.get('/cockpit/queue_depth', async (req, res) => {
 // Surfaces: CRF terminal, web cockpit, machine API — all from one object.
 app.get('/api/state', (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync('/root/AAA/state/federation_state.json', 'utf8'));
+    const data = JSON.parse(fs.readFileSync('/var/lib/aaa/state/federation_state.json', 'utf8'));
     res.setHeader('Cache-Control', 'no-store');
     res.json(data);
   } catch (_) {
@@ -4526,6 +4571,19 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
+    // T1 HARDENING 2026-10-22 (item 4): unsigned callers may not select a real
+    // agent. ACAH2 (2026-10-20) made agent_id/configuration.agent route to the
+    // live router, so an unsigned PREPARE-band call could invoke a real agent.
+    // Envelope-level legacy caps do not cover that field - gate it here.
+    const requestedAgent = params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null;
+    const envForDispatch = req.federationEnvelope || params.envelope || {};
+    if (requestedAgent && !envForDispatch.from_did) {
+      logEvent('A2A_UNSIGNED_AGENT_DISPATCH', String(params.taskId || 'none'),
+        `agent=${requestedAgent} blocked: envelope.from_did missing`);
+      return res.status(403).json(createJSONRPCError(id, -32001,
+        'DID_REQUIRED: dispatching to a real agent requires envelope.from_did. Unsigned calls may create template tasks only.'));
+    }
+
     const lineage = requireTaskLineage(params, id);
     if (!lineage.ok) {
       return res.status(400).json(lineage.error);
@@ -4979,6 +5037,18 @@ app.post('/a2a', jsonRpcValidate, async (req, res) => {
         const msgValidation = validateMessage(message);
         if (!msgValidation.valid) {
           return res.status(400).json(createJSONRPCError(id, -32602, msgValidation.message));
+        }
+
+        // T1 HARDENING 2026-10-22 (item 4b): this dispatcher passes
+        // params.agent_id straight to executeTask. Unsigned JSON-RPC callers
+        // may not select a real agent - same rule as /a2a/message/send (item 4).
+        const requestedAgentJR = params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null;
+        const envJR = req.federationEnvelope || params.envelope || {};
+        if (requestedAgentJR && !envJR.from_did) {
+          logEvent('A2A_UNSIGNED_AGENT_DISPATCH', String(taskId),
+            `agent=${requestedAgentJR} blocked (jsonrpc dispatcher): envelope.from_did missing`);
+          return res.status(403).json(createJSONRPCError(id, -32001,
+            'DID_REQUIRED: dispatching to a real agent requires envelope.from_did. Unsigned calls may create template tasks only.'));
         }
         
         // External payloads with insufficient witness → downgrade to observe-only

@@ -2,50 +2,85 @@
   "adapter_version": "1.0.0",
   "funnel": {
     "learn": 7,
-    "learn_per_verify": 0.111,
-    "observe": 199299,
-    "predict": 123,
-    "predict_per_1000_observe": 0.617,
-    "verify": 63,
-    "verify_per_predict": 0.512
+    "learn_per_verify": 0.104,
+    "observe": 199314,
+    "predict": 127,
+    "predict_per_1000_observe": 0.637,
+    "verify": 67,
+    "verify_per_predict": 0.528
   },
   "learning_closure_gap": {
     "actionable_lessons": 2,
-    "episodes_total": 199492,
+    "episodes_total": 199515,
     "gap": false,
     "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
-    "unclassified_outcomes": 12
+    "unclassified_outcomes": 13
   },
   "lesson_health": {
     "active": 12,
     "blind": 10,
     "total": 14
   },
-  "next_verify_at": "2026-10-20T23:59:59+08:00",
-  "swept_at": "2026-10-19T22:23:01Z",
+  "next_verify_at": "2026-10-28T23:59:59+08:00",
+  "swept_at": "2026-10-23T22:23:02Z",
   "verification_debt": {
-    "count": 3,
+    "count": 8,
     "items": [
       {
-        "claim": "Malaysia September 2026 headline CPI inflation will be between 1.7% and 2.1% YoY inclusive",
-        "confidence": 0.75,
+        "claim": "Event: F-A IRFAN falsification target: individually-SEAL-clean action-class repeated N times normalizes extraction (trajectory failure, per-act passes F1-F13); ",
+        "confidence": 0.5383333333,
         "overdue_days": 0.27,
-        "prediction_id": "pred-7d905b858479",
-        "verify_at": "2026-10-19T23:59:59+08:00"
+        "prediction_id": "pred-b1c05a5a0b0b",
+        "verify_at": "2026-10-23T23:59:59+08:00"
       },
       {
-        "claim": "`python3 -m chron call chron_temporal_briefing` returns a briefing object containing predictions_due, not 'Unknown tool'",
-        "confidence": 0.67833799,
+        "claim": "Event: F-B IRFAN falsification target: Authority-Envelope-passing action where a narrower alternative sufficed \u2014 CanMutate = A AND S AND T AND B has NO Necessit",
+        "confidence": 0.5383333333,
         "overdue_days": 0.27,
-        "prediction_id": "pred-264b5e568fb9",
-        "verify_at": "2026-10-19T23:59:59+08:00"
+        "prediction_id": "pred-f843acc96c16",
+        "verify_at": "2026-10-23T23:59:59+08:00"
       },
       {
-        "claim": "Live CHRON MCP at 127.0.0.1:18102 exposes at least 21 tools",
-        "confidence": 0.6848244764,
+        "claim": "Event: QRL increment 1 falsifiers: F0 hygiene-zero-divergence, F1 branches \u22653/10-loops, F2 irreversible-never-SEAL, F3 one-prediction-per-collapse, C1 advisory-",
+        "confidence": 0.6764028612,
+        "overdue_days": 2.27,
+        "prediction_id": "pred-da1bd9e25304",
+        "verify_at": "2026-10-21T23:59:59+08:00"
+      },
+      {
+        "claim": "Event: APEX AX-0: zero-data feeds must yield zero numbers (D2-D4 falsifier, blocks all APEX results)",
+        "confidence": 0.6764028612,
+        "overdue_days": 3.27,
+        "prediction_id": "pred-387b8923fb0d",
+        "verify_at": "2026-10-20T23:59:59+08:00"
+      },
+      {
+        "claim": "Event: APEX Lane B falsifier: one definition per symbol + verdicts pass with G/C_dark=None",
+        "confidence": 0.6764028612,
+        "overdue_days": 2.27,
+        "prediction_id": "pred-2792d9cb4832",
+        "verify_at": "2026-10-21T23:59:59+08:00"
+      },
+      {
+        "claim": "Event: EROI audit /opt (t0+7 hari): jumpa >=5 service dalam kelas 1:1/mati (corn-ethanol)",
+        "confidence": 0.6889028612,
+        "overdue_days": 2.27,
+        "prediction_id": "pred-7229f53b827e",
+        "verify_at": "2026-10-21T23:59:59+08:00"
+      },
+      {
+        "claim": "Verified predictions reach >= 40 by 2026-10-22 (Lane A evidence growth)",
+        "confidence": 0.6514028612,
+        "overdue_days": 1.27,
+        "prediction_id": "pred-9b8ad2e39891",
+        "verify_at": "2026-10-22T23:59:59+08:00"
+      },
+      {
+        "claim": "Event: Identiti bekas menteri (44) ditahan khalwat PJ diumumkan = Nik Nazmi Nik Ahmad (predicted 0.75)",
+        "confidence": 0.6667650815,
         "overdue_days": 0.27,
-        "prediction_id": "pred-7304cc49105f",
-        "verify_at": "2026-10-19T23:59:59+08:00"
+        "prediction_id": "pred-a955a3b42092",
+        "verify_at": "2026-10-23T23:59:59+08:00"
       }
     ]
   }
