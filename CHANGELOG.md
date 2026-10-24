@@ -4,6 +4,14 @@ All notable changes to the AAA organ.
 
 ## [Unreleased]
 
+### Security (preserved from live 2026-10-22 hardening, Git custody 2026-10-24)
+- a2a-server: rightmost-only `X-Forwarded-For` loopback-proxy trust (spoof regression-tested from non-loopback peer)
+- a2a-server: `anonymous` removed from `CANONICAL_ACTORS`; unsigned agent dispatch → 403 on both dispatchers; actor↔signer binding (accounting uses DID-verified organ)
+- a2a-server: TDZ-safe `effectiveSourceAgent`; tasks/send replay guard; 5-min `issued_at` freshness
+- federation_envelope: envelope actor-claim scope enforcement (fail-closed strict)
+- identity: lowercase key deduped against canonical `333-AGI_public.pem`; actor registry synced
+- Full record: `docs/A2A-AUTH-HARDENING-PRESERVATION-2026-10-24.md` · branch `preserve/live-auth-hardening-2026-10-24`
+
 ### Added
 - MEMORY_ENGINEERING_SPEC_v1
 - Witness Void Canon pointers in glossary
