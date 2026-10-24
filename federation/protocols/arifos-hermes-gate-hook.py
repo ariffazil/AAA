@@ -535,11 +535,31 @@ def t3_pattern_hit(tool_input: dict):
 def main():
     try:
         raw = sys.stdin.read()
-        if not raw:
-            return  # No input → no-op
+    except OSError:
+        return  # cannot even read stdin — nothing to judge
+    if not raw.strip():
+        # Unreadable protocol frame (empty/garbage input). Fail CLOSED: a mutation
+        # tool must not run just because its gate payload could not be parsed.
+        # T1 observe-only calls are harmless either way; blocking them on a broken
+        # frame costs nothing. (F13 2026-10-24: fix for fail-open-on-junk-input.)
+        try:
+            _t = (json.loads(raw) if raw.strip().startswith("{") else {}).get("tool_name", "unknown")
+        except Exception:
+            _t = "unknown"
+        write_receipt(_t, "UNKNOWN", "BLOCK", "gate payload empty or unparseable — fail-closed")
+        print(json.dumps({"decision": "block", "reason": "gate hook: unparseable stdin frame — fail-closed"}))
+        sys.exit(2)
+    try:
         payload = json.loads(raw)
     except json.JSONDecodeError:
-        return
+        # Malformed JSON with content: same fail-closed verdict.
+        write_receipt("unknown", "UNKNOWN", "BLOCK", "gate payload malformed JSON — fail-closed")
+        print(json.dumps({"decision": "block", "reason": "gate hook: malformed JSON stdin — fail-closed"}))
+        sys.exit(2)
+    if not isinstance(payload, dict):
+        write_receipt("unknown", "UNKNOWN", "BLOCK", "gate payload not an object — fail-closed")
+        print(json.dumps({"decision": "block", "reason": "gate hook: stdin frame not a JSON object — fail-closed"}))
+        sys.exit(2)
 
     tool_name = payload.get("tool_name", "unknown")
     # Hermes wire format puts tool args under "args"; accept "tool_input" for
