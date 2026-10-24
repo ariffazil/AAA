@@ -615,6 +615,42 @@ def main():
             )
             sys.exit(3)  # 3 = circuit-breaker interrupt (distinct from T3's 2)
 
+    # ---- 0.75 KERNEL CONSULT (F13 2026-10-24) — mutation-class calls require a
+    # reachable, structurally-honest, non-rejecting kernel. Three failure modes all
+    # BLOCK with the true reason on the receipt; none collapses to a clean pass.
+    # OBSERVE stays passthrough: stopping investigation is not what a gate is for
+    # (same rule as JITU), and an outage must not brick read-only work.
+    # Sovereign brake: ARIFOS_GATE_KERNEL_CONSULT=0 disables this section.
+    if classification != "OBSERVE" and KERNEL_GATE_ENABLED:
+        _allowed, _label, _detail = kernel_consult()
+        if not _allowed:
+            write_receipt(
+                tool_name, classification, _label, f"{_label}: {_detail}", trace_id=trace_id, session_id=session_id
+            )
+            write_falsification_metric(_label.lower(), {"tool": tool_name, "detail": _detail})
+            update_telemetry("hold")
+            print(
+                json.dumps(
+                    {
+                        "decision": "block",
+                        "reason": (
+                            f"⛔ KERNEL GATE [{_label}]: {_detail}. Mutation-class call refused — "
+                            "the kernel must be reachable and allow execution. Read-only tools stay "
+                            "available. Sovereign brake: ARIFOS_GATE_KERNEL_CONSULT=0."
+                        ),
+                    }
+                )
+            )
+            sys.exit(2)
+        write_receipt(
+            tool_name,
+            classification,
+            "KERNEL_ALLOW",
+            f"kernel consult allow: {_detail}",
+            trace_id=trace_id,
+            session_id=session_id,
+        )
+
     # ---- 0.5 TRANSPORT LOCK (F13 2026-09-18) — destination must be DECLARED. ----
     # 2026-09-18: a cron job stored origin.chat_id = 8410138119 (the BOT's own id)
     # while deliver=origin. Telegram refused three times with "the bot can't send
@@ -675,6 +711,54 @@ def main():
                 )
             )
             sys.exit(2)
+
+
+# ---------------------------------------------------------------------------
+# KERNEL CONSULT (2026-10-24, F13) — the kernel is now IN the gate path.
+# Before this section the hook never called the kernel; the plugin-inventory
+# claim "kernel menolak -> tool tak jalan (fail-closed, 10s)" described a gate
+# that did not exist (measured 2026-10-24 by 333-AGI, whole-file read).
+# URL/timeout env-overridable so the three-mode falsifier can be tested
+# against a stub without touching the real kernel.
+# ---------------------------------------------------------------------------
+KERNEL_GATE_URL = os.environ.get("ARIFOS_GATE_URL", "http://127.0.0.1:8088/health")
+KERNEL_GATE_TIMEOUT_S = float(os.environ.get("ARIFOS_GATE_TIMEOUT_S", "10"))
+KERNEL_GATE_ENABLED = os.environ.get("ARIFOS_GATE_KERNEL_CONSULT", "1") != "0"
+KERNEL_ALLOW_VERDICTS = {"PASS", "SEAL"}
+
+
+def kernel_consult():
+    """(allowed, label, detail). Three-mode falsifier: reject / unreachable / malformed.
+
+    Every non-allow outcome is honest about WHY it blocked — no mode collapses to a
+    silent pass. Structural incompleteness (missing thermodynamic.verdict or
+    floors_active) is malformed, not clean: a partial answer is not an allow.
+    """
+    import urllib.error  # noqa: F401 — kept for parity with URL-check section
+    import urllib.request
+
+    try:
+        req = urllib.request.Request(KERNEL_GATE_URL, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=KERNEL_GATE_TIMEOUT_S) as resp:
+            raw = resp.read()
+    except Exception as exc:  # timeout, refused, TLS, DNS — mode (b)
+        return False, "KERNEL_UNREACHABLE", f"kernel {KERNEL_GATE_URL}: {type(exc).__name__}: {exc}"
+    try:
+        body = json.loads(raw.decode("utf-8", "replace"))
+    except Exception as exc:  # mode (c): unparseable reply
+        return False, "KERNEL_MALFORMED", f"unparseable kernel reply: {type(exc).__name__}: {exc}"
+    verdict = ""
+    floors = None
+    if isinstance(body, dict):
+        thermo = body.get("thermodynamic")
+        if isinstance(thermo, dict):
+            verdict = str(thermo.get("verdict", "") or "").upper()
+        floors = body.get("floors_active")
+    if not verdict or not isinstance(floors, int):  # mode (c): structurally incomplete
+        return False, "KERNEL_MALFORMED", f"reply missing thermodynamic.verdict/floors_active: {str(body)[:160]}"
+    if verdict in KERNEL_ALLOW_VERDICTS:
+        return True, "KERNEL_ALLOW", f"verdict={verdict} floors={floors}"
+    return False, "KERNEL_REJECT", f"verdict={verdict} floors={floors}"  # mode (a)
 
     # ---- 1. W_scar v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
     # v1 blocked on vocabulary found anywhere in the payload (including file paths) and passed on
