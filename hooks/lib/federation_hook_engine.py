@@ -43,6 +43,49 @@ ROLLBACK_JOURNAL_PATH = Path("/root/.local/share/arifos/rollback_journal.jsonl")
 SEALS_LEDGER_PATH = Path("/root/.local/share/arifos/seal_receipts.jsonl")
 TURN_MEMORY_PATH = Path("/root/.local/share/arifos/turn_memory.json")
 
+# ── Reality Link (2026-10-23, 333-AGI) ──────────────────────────────────────
+# Every non-R0 action leaves an Execute receipt; a file mutation leaves a
+# Verify receipt with pre/post sha256. Delivery is outbox-based (never block
+# the tool on flow transport). Disable with ARIFOS_FLOW_LINK=0.
+FLOW_URL = os.environ.get("ARIFOS_FLOW_URL", "http://127.0.0.1:7073")
+FLOW_LINK_ENABLED = os.environ.get("ARIFOS_FLOW_LINK", "1") != "0"
+FLOW_OUTBOX = Path(os.environ.get("ARIFOS_FLOW_OUTBOX", "/root/.local/share/arifos/flow_outbox.jsonl"))
+FLOW_SENT = Path(os.environ.get("ARIFOS_FLOW_SENT", "/root/.local/share/arifos/flow_outbox.sent"))
+HOOK_ACTIONS_DIR = Path(os.environ.get("ARIFOS_HOOK_ACTIONS_DIR", "/root/.local/share/arifos/hook_actions"))
+
+# Mutating tool names (native + common adapter aliases). Everything not in
+# UNCONDITIONAL_PASS_TOOLS and not a read-only prefix is treated conservatively.
+MUTATE_TOOL_HINTS = {
+    "bash", "shell", "write", "edit", "patch", "multi_edit", "multiedit",
+    "replace_file_content", "create_file", "delete_file", "apply_patch",
+    "write_to_file", "run_command", "execute_command", "terminal",
+}
+READONLY_PREFIXES = (
+    "read", "get_", "list", "grep", "glob", "find", "search", "view",
+    "probe", "status", "health", "describe",
+)
+R4_COMMAND_PATTERNS = (
+    r"\brm\s+-[a-zA-Z]*r[a-zA-Z]*f?\s+/(?:\s|$)",
+    r"\bmkfs(\.[a-z0-9]+)?\b",
+    r"\bdd\s+[^\n]*of=/dev/",
+    r"\b(shutdown|reboot|poweroff|halt)\b",
+    r"\bdrop\s+(table|database|schema)\b",
+    r"\btruncate\s+table\b",
+    r"git\s+push\s+[^\n]*--force",
+    r"\bchmod\s+777\s+/",
+    r"\b(userdel|passwd|visudo)\b",
+)
+R3_COMMAND_PATTERNS = (
+    r"\bsystemctl\s+(restart|stop|start|disable|enable|mask|unmask)\b",
+    r"\bdocker\s+(rm|rmi|restart|stop|kill|prune)\b",
+    r"\bcaddy\s+reload\b",
+    r"\b(apt|apt-get|dnf|yum|apk)\s+(install|remove|purge|upgrade)\b",
+    r"\bpip3?\s+install\b",
+    r"\b(npm|pnpm|yarn)\s+install\s+-g\b",
+    r"\bcrontab\b",
+    r"(/etc/|/root/\.ssh/|/root/\.secrets/|/root/VAULT999|/root/arifOS/VAULT999)",
+)
+
 # Unconditional pass-through tools for 100_GATE (read/probe/bootstrap)
 UNCONDITIONAL_PASS_TOOLS = {
     "arif_init",
@@ -752,6 +795,345 @@ class FederationHookEngine:
     # =========================================================================
     # Internal Helpers
     # =========================================================================
+    # =========================================================================
+    # Reality Link — flow receipts + consequence witness (2026-10-23)
+    # =========================================================================
+    # Doctrine: the hook NEVER blocks. It labels risk, records pre-state, and
+    # transmits evidence to arifFlow. Enforcement stays with the kernel and the
+    # harness boundary (F13 2026-09-14: "a hook is not a stopper gate").
+
+    def _flow_enabled(self) -> bool:
+        return FLOW_LINK_ENABLED
+
+    def _action_id(self, payload: Dict[str, Any], tool_name: str, target: str) -> str:
+        cid = payload.get("call_id") or payload.get("action_id") or payload.get("tool_call_id")
+        if isinstance(cid, str) and cid.strip():
+            return cid.strip()
+        seed = f"{self.actor_id}|{self.session_id}|{tool_name}|{target}|{int(time.time() // 60)}"
+        return "act-" + hashlib.sha256(seed.encode("utf-8")).hexdigest()[:20]
+
+    def _risk_class(self, tool_name: str, tool_args: Dict[str, Any]) -> str:
+        """R0..R4 label. Advisory only — do not use to block here."""
+        name = (tool_name or "").lower()
+        if name in UNCONDITIONAL_PASS_TOOLS or name.startswith(READONLY_PREFIXES):
+            return "R0"
+        # Match raw string arg values (JSON encoding wraps commands in quotes,
+        # which breaks end-anchored patterns like "/(?:\s|$)").
+        _texts = [v for v in (tool_args or {}).values() if isinstance(v, str)]
+        blob = "\n".join(_texts) if _texts else json.dumps(tool_args or {}, ensure_ascii=False, sort_keys=True)
+        if re.search("|".join(R4_COMMAND_PATTERNS), blob, re.IGNORECASE):
+            return "R4"
+        if re.search("|".join(R3_COMMAND_PATTERNS), blob, re.IGNORECASE):
+            return "R3"
+        if name in MUTATE_TOOL_HINTS or any(k in blob for k in ("command", "cmd")):
+            return "R2" if name in ("bash", "shell", "run_command", "execute_command", "terminal") else "R1"
+        return "R2"
+
+    def _file_target(self, tool_name: str, tool_args: Dict[str, Any]) -> Optional[str]:
+        name = (tool_name or "").lower()
+        if name not in MUTATE_TOOL_HINTS and name not in ("write", "edit", "patch", "multi_edit", "replace_file_content", "create_file", "write_to_file"):
+            return None
+        for key in ("path", "filePath", "file_path", "TargetFile", "target_file", "filename"):
+            val = (tool_args or {}).get(key)
+            if isinstance(val, str) and val.startswith("/"):
+                return val
+        return None
+
+    @staticmethod
+    def _file_state(path: Optional[str]) -> Dict[str, Any]:
+        if not path:
+            return {"exists": False, "sha256": None, "size": None}
+        try:
+            with open(path, "rb") as f:
+                data = f.read()
+            return {"exists": True, "sha256": hashlib.sha256(data).hexdigest(), "size": len(data)}
+        except FileNotFoundError:
+            return {"exists": False, "sha256": None, "size": None}
+        except Exception:
+            return {"exists": None, "sha256": None, "size": None}
+
+    def _pending_path(self, action_id: str) -> Path:
+        return HOOK_ACTIONS_DIR / f"{action_id}.json"
+
+    def _record_pending(self, action_id: str, record: Dict[str, Any]) -> None:
+        try:
+            _ensure_dir(self._pending_path(action_id))
+            with open(self._pending_path(action_id), "w", encoding="utf-8") as f:
+                json.dump(record, f, ensure_ascii=False)
+        except Exception:
+            pass
+
+    def _load_pending(self, payload: Dict[str, Any], tool_name: str) -> Optional[Dict[str, Any]]:
+        try:
+            aid = payload.get("call_id") or payload.get("action_id")
+            if aid:
+                p = self._pending_path(str(aid))
+                if p.exists():
+                    return json.loads(p.read_text(encoding="utf-8"))
+            # Fallback: newest pending for this actor/session/tool within 10 min.
+            if not HOOK_ACTIONS_DIR.exists():
+                return None
+            best = None
+            best_m = 0.0
+            auto_sess = not self.session_id or self.session_id.startswith("sess-")
+            for f in HOOK_ACTIONS_DIR.glob("*.json"):
+                m = f.stat().st_mtime
+                if time.time() - m > 600 or m < best_m:
+                    continue
+                try:
+                    rec = json.loads(f.read_text(encoding="utf-8"))
+                except Exception:
+                    continue
+                if rec.get("actor") == self.actor_id and rec.get("tool") == tool_name:
+                    if rec.get("session") == self.session_id or auto_sess:
+                        best, best_m = rec, m
+            return best
+        except Exception:
+            return None
+
+    def _flow_post(self, route: str, body: Dict[str, Any], timeout: float = 0.4) -> Optional[Dict[str, Any]]:
+        try:
+            req = urllib.request.Request(
+                FLOW_URL.rstrip("/") + route,
+                data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                if resp.status in (200, 201, 202):
+                    raw = resp.read().decode("utf-8", errors="replace")
+                    return json.loads(raw) if raw.strip() else {}
+        except Exception:
+            return None
+        return None
+
+    def _flow_emit(self, receipt: Dict[str, Any]) -> Optional[str]:
+        """Append to the outbox. Returns receipt_id. Never raises."""
+        if not self._flow_enabled():
+            return None
+        try:
+            _ensure_dir(FLOW_OUTBOX)
+            with open(FLOW_OUTBOX, "a", encoding="utf-8") as f:
+                f.write(json.dumps(receipt, ensure_ascii=False) + "\n")
+            return receipt.get("receipt_id")
+        except Exception:
+            return None
+
+    def _flow_drain(self, max_items: int = 5) -> None:
+        """Best-effort outbox → /ingest. Serialized by flock, deduped by sent ledger.
+
+        Concurrency defect observed 2026-10-23: 8 parallel tool calls started 8
+        drains; each read the sent ledger before the others wrote, delivering 6
+        receipts twice. LOCK_NB + re-read under lock closes that race.
+        """
+        if not self._flow_enabled() or not FLOW_OUTBOX.exists():
+            return
+        lock_fd = None
+        try:
+            _ensure_dir(FLOW_SENT)
+            lock_fd = open(str(FLOW_SENT) + ".lock", "a+")
+            try:
+                fcntl.flock(lock_fd.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except OSError:
+                return  # another drain owns the outbox
+            sent: set[str] = set()
+            if FLOW_SENT.exists():
+                sent = {ln.strip() for ln in FLOW_SENT.read_text(encoding="utf-8").splitlines() if ln.strip()}
+            lines = FLOW_OUTBOX.read_text(encoding="utf-8", errors="replace").splitlines()
+            delivered = 0
+            for line in lines:
+                if delivered >= max_items:
+                    break
+                try:
+                    rec = json.loads(line)
+                except Exception:
+                    continue
+                rid = rec.get("receipt_id")
+                if not rid or rid in sent:
+                    continue
+                if self._flow_post("/ingest", rec) is not None:
+                    with open(FLOW_SENT, "a", encoding="utf-8") as f:
+                        f.write(rid + "\n")
+                    sent.add(rid)
+                    delivered += 1
+        except Exception:
+            pass
+        finally:
+            if lock_fd is not None:
+                try:
+                    fcntl.flock(lock_fd.fileno(), fcntl.LOCK_UN)
+                    lock_fd.close()
+                except Exception:
+                    pass
+
+    def _flow_receipt(
+        self,
+        step_type: str,
+        risk_class: str,
+        summary: str,
+        payload: Dict[str, Any],
+        floor_verdict: str = "Pass",
+        epistemic: str = "Observation",
+        details: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        risk_map = {"R0": "T0Observe", "R1": "T1Mutate", "R2": "T1Mutate", "R3": "T2Deploy", "R4": "T3Irreversible"}
+        return {
+            "receipt_id": str(uuid.uuid4()),
+            "previous_receipt_hash": None,
+            "created_at": _utc_iso(),
+            # Attribution: the harness passes its bound crypto actor in identity.
+            # Using the harness label ("opencode") would shard FQ away from 333-AGI.
+            "actor_id": (
+                (payload.get("identity") or {}).get("crypto_actor")
+                if isinstance(payload.get("identity"), dict)
+                else None
+            ) or self.actor_id,
+            "session_id": self.session_id or "session-unattributed",
+            "session_token": None,
+            "step_type": step_type,
+            "risk_class": risk_map.get(risk_class, "T1Mutate"),
+            "topology_id": None,
+            "lane_id": None,
+            "step_number": 0,
+            "cost_ns": 0,
+            "preceding_verify_cost_ns": None,
+            "epistemic_label": epistemic,
+            "floor_verdict": floor_verdict,
+            "cooling_decision": "None",
+            "tri_witness_votes": None,
+            "merkle_root": None,
+            "merkle_inclusion_proof": None,
+            "payload": {
+                "engine": "federation_hook_engine",
+                "source": "arif-core/reality-link",
+                **(details or {}),
+            },
+            "summary": summary[:500],
+        }
+
+    def flow_after_gate(self, res: Dict[str, Any], payload: Dict[str, Any]) -> Dict[str, Any]:
+        """Attach action identity, risk label, pre-state and Execute receipt."""
+        if not self._flow_enabled():
+            return res
+        try:
+            tool_name = payload.get("tool_name", "unknown")
+            tool_args = payload.get("tool_args") or {}
+            target = self._file_target(tool_name, tool_args) or payload.get("target") or ""
+            risk = self._risk_class(tool_name, tool_args)
+            action_id = self._action_id(payload, tool_name, target)
+            pre = self._file_state(target) if target else {"exists": None, "sha256": None, "size": None}
+
+            if risk != "R0" and res.get("verdict") not in ("VOID", "HOLD") and res.get("execution_status") != "NOT_EXECUTED":
+                self._record_pending(action_id, {
+                    "action_id": action_id, "actor": self.actor_id, "session": self.session_id,
+                    "tool": tool_name, "target": target, "risk": risk,
+                    "pre": pre, "ts": _utc_iso(),
+                })
+                receipt = self._flow_receipt(
+                    "Execute", risk, f"{tool_name} {('-> ' + target) if target else ''}".strip(),
+                    payload,
+                    floor_verdict="Pass",
+                    details={
+                        "action_id": action_id, "tool": tool_name, "target": target,
+                        "pre_exists": pre.get("exists"), "pre_sha256": pre.get("sha256"),
+                        "hook_verdict": res.get("verdict"), "verdict_source": res.get("verdict_source"),
+                    },
+                )
+                rid = self._flow_emit(receipt)
+                res["action_id"] = action_id
+                res["risk_class"] = risk
+                res["flow_receipt_id"] = rid
+                # Advisory FQ context for elevated risk (never blocking).
+                if risk in ("R3", "R4"):
+                    chk = self._flow_post("/check", {"actor_id": self.actor_id})
+                    res["flow_actor_allowed"] = (chk or {}).get("allowed")
+                    res["flow_check_note"] = "advisory context only — hook does not block"
+                self._flow_drain(max_items=2)
+            elif risk != "R0":
+                res["action_id"] = action_id
+                res["risk_class"] = risk
+        except Exception as exc:
+            res["flow_link_error"] = str(exc)[:200]
+        return res
+
+    def flow_after_heal(self, res: Dict[str, Any], payload: Dict[str, Any]) -> Dict[str, Any]:
+        """Post-state witness → Verify receipt (VERIFIED_CHANGE / NO_CHANGE / FAILED)."""
+        if not self._flow_enabled():
+            return res
+        try:
+            tool_name = payload.get("tool_name", "unknown")
+            tool_args = payload.get("tool_args") or {}
+            pending = self._load_pending(payload, tool_name)
+            if pending and pending.get("session") and (not self.session_id or self.session_id.startswith("sess-")):
+                self.session_id = str(pending["session"])
+            target = (pending or {}).get("target") or self._file_target(tool_name, tool_args) or ""
+            pre = (pending or {}).get("pre") or {"exists": None, "sha256": None}
+            post = self._file_state(target) if target else {"exists": None, "sha256": None}
+            exit_code = int(payload.get("exit_code", 0) or 0)
+
+            consequence = "NO_TARGET"
+            floor = "Pass"
+            if target and pre.get("sha256") is not None or (target and pre.get("exists") is False):
+                if exit_code != 0:
+                    consequence, floor = "FAILED", "Caution"
+                elif post.get("sha256") != pre.get("sha256") or (post.get("exists") and not pre.get("exists")):
+                    consequence, floor = "VERIFIED_CHANGE", "Pass"
+                else:
+                    consequence, floor = "NO_CHANGE", "Caution"
+            elif exit_code != 0:
+                consequence, floor = "FAILED", "Caution"
+            elif target and pre.get("sha256") is None and pre.get("exists") is None:
+                # Heal-only harness (no gate pending): pre-state is unknown, but
+                # the postcondition (target exists + hash) is still observed.
+                consequence = "POST_STATE_OBSERVED" if post.get("exists") else "TARGET_MISSING"
+                floor = "Pass" if post.get("exists") else "Caution"
+            elif not target:
+                # No file target, but the exit code is a mechanical postcondition.
+                consequence, floor = "VERIFIED_EXIT", "Pass"
+
+            risk = (pending or {}).get("risk") or self._risk_class(tool_name, tool_args)
+            action_id = (pending or {}).get("action_id") or self._action_id(payload, tool_name, target)
+            receipt = self._flow_receipt(
+                "Verify", risk, f"verify {tool_name} {consequence}",
+                payload, floor_verdict=floor, epistemic="Observation",
+                details={
+                    "action_id": action_id, "tool": tool_name, "target": target,
+                    "pre_exists": pre.get("exists"), "pre_sha256": pre.get("sha256"),
+                    "post_exists": post.get("exists"), "post_sha256": post.get("sha256"),
+                    "consequence": consequence, "exit_code": exit_code,
+                    "witness": "host_file_probe" if target else "exit_code",
+                },
+            )
+            rid = self._flow_emit(receipt)
+            if pending and pending.get("action_id"):
+                try:
+                    self._pending_path(str(pending["action_id"])).unlink(missing_ok=True)
+                except Exception:
+                    pass
+            res["consequence"] = consequence
+            res["action_id"] = action_id
+            res["flow_verify_receipt_id"] = rid
+            self._flow_drain(max_items=5)
+        except Exception as exc:
+            res["flow_link_error"] = str(exc)[:200]
+        return res
+
+    def flow_after_seal(self, res: Dict[str, Any], payload: Dict[str, Any]) -> Dict[str, Any]:
+        if not self._flow_enabled():
+            return res
+        try:
+            receipt = self._flow_receipt(
+                "Seal", "R1", f"session seal {res.get('seal_id', '')}",
+                payload, floor_verdict="Pass", epistemic="Seal",
+                details={"seal_id": res.get("seal_id"), "verdict": payload.get("verdict", "COMPLETED")},
+            )
+            rid = self._flow_emit(receipt)
+            res["flow_seal_receipt_id"] = rid
+            self._flow_drain(max_items=10)
+        except Exception as exc:
+            res["flow_link_error"] = str(exc)[:200]
+        return res
+
     def _call_kernel(self, endpoint: str, payload: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """JSON-RPC call over the kernel MCP endpoint.
 
@@ -1046,6 +1428,7 @@ def main():
             provided_token=payload.get("session_token"),
             incoming_restriction=payload.get("restriction_level"),
         )
+        res = engine.flow_after_gate(res, payload)
     elif args.command == "heal" or payload.get("event") == "post_tool":
         res = engine.heal(
             tool_name=payload.get("tool_name", "unknown"),
@@ -1056,6 +1439,7 @@ def main():
             http_status=payload.get("http_status"),
             error_message=payload.get("error_message"),
         )
+        res = engine.flow_after_heal(res, payload)
     elif args.command == "metabolize" or payload.get("event") == "turn_end":
         res = engine.metabolize(
             assistant_text=payload.get("assistant_text", ""),
@@ -1067,6 +1451,7 @@ def main():
             completed_tasks=payload.get("completed", []),
             open_loops=payload.get("open_loops", []),
         )
+        res = engine.flow_after_seal(res, payload)
     else:
         res = {"error": f"Unknown command {args.command} or event {payload.get('event')}"}
 

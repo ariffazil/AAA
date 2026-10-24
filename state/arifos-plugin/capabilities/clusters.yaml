@@ -1,0 +1,45 @@
+# AUTHORED taxonomy — C1-C8 governance view · FI-008 · 2026-10-22 (STAGED)
+# Purpose: ONE governance view mapped onto existing capability views. NOT a new registry.
+# Existing views: forge 7 verbs (warga-capabilities.json) · FED 8 families (federation-capability-graph)
+#                · hermes 13 capability_families. One writer, many views (FP-01).
+# Failure class named: 3+ capability taxonomies with no cross-map = interpreter confusion (Law 8).
+schema: arifos.capability_clusters.v1
+source_of_truth: /root/AAA/skills (skills) · kernel verbs (authority) · organs.yaml (endpoints)
+clusters:
+  C1_reasoning:
+    capabilities: [deep_research, contradiction_mapping, synthesis, planning, architecture_design, root_cause, falsification]
+    composed_of: [lane:333, research_skills, sources]
+    maps_to: {forge: [forge_plan, forge_inspect], fed: [Reasoning, LongContext], hermes: [counterstory, claim-integrity]}
+  C2_verification:
+    capabilities: [evidence_validation, receipt_validation, cross_witness_review, fact_checking, drift_detection, governance_audit]
+    composed_of: [lane:555, verification_skills, receipts]
+    maps_to: {forge: [forge_verify], fed: [JudgeSeat], hermes: [reality-grounding, provenance]}
+  C3_judgment:
+    capabilities: [priority_selection, risk_assessment, path_ranking, tradeoff_selection, authorization]
+    composed_of: [lane:888, governance_model, capability_graph]
+    maps_to: {forge: [forge_control], fed: [JudgeSeat], hermes: [moral-physics]}
+  C4_execution:
+    capabilities: [coding, refactoring, deployment, git_operations, ci_cd, infrastructure_mutation]
+    composed_of: [aforge, execution_mcps]
+    maps_to: {forge: [forge_run, forge_change, forge_extend], fed: [Coding]}
+  C5_memory:
+    capabilities: [receipt_generation, lesson_extraction, scar_promotion, knowledge_distillation, skill_promotion]
+    composed_of: [receipts, memory_skills]
+    maps_to: {forge: [forge_inspect], hermes: [scar-wisdom]}
+    gate: memory promotion = human_approval (kernel); scar promotion = scar-weight registry
+  C6_federation:
+    capabilities: [agent_discovery, a2a_routing, capability_resolution, task_delegation, cross_harness_handoff]
+    composed_of: [a2a, acp_governance_contract, capability_registry]
+    maps_to: {forge: [forge_agent, forge_lease, forge_parallel], fed: [fed_route, fed_classify]}
+  C7_reality_alignment:
+    capabilities: [system_probes, live_verification, registry_drift_detection, declared_vs_live_detection, capability_census]
+    composed_of: [hermes, probes, hooks]
+    maps_to: {hermes: [reality-grounding, contradiction-scan], tools: [federation_build.py drift census]}
+  C8_autonomous_healing:
+    capabilities: [skill_projection, plugin_sync, drift_correction, manifest_repair, broken_link_detection, capability_recovery]
+    composed_of: [receipts, diff_engine, plugin_sot]
+    constraint: >-
+      Healing may never modify governance/, identities/, hooks that bind the healer, or lift deliberate
+      freezes. Detect yes; repair authority never-auto. Reversible only, receipted (FP-05: explicit step, no auto-sync).
+emergence_status: SPEC — E1-E4 remain SPEC until the §21 survival benchmark runs (Cohort A/B/C +
+  model-swap, m_min>0 post-swap). Label kept honest.

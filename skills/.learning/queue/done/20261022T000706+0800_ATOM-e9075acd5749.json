@@ -1,0 +1,8 @@
+{
+  "skill_id": "forge-context-compressor",
+  "agent": "hermes-rsi-loop",
+  "lesson": "TRUNCATION_LOSS observed 1x \u2014 impact=evidence_loss. First surface: session:assistant \u2014 all four checks passed, but independence is NAME-LEVEL ONLY (same author) \u2014 verdict is PROVISIONAL: may enter the capability graph, may NOT record a survival event",
+  "evidence": "[{\"layer\": \"runtime\", \"source\": \"session:assistant\", \"excerpt\": \"ompile bersih dari skill directories \u2014 anthropic 25pp, demis 14pp, elon 14pp, sam-altman 23pp. Text integrity verified (head + tail extract).\\n- Test A (abundant): proven via Demis/Elon examples. Test B/E (thin evidence, future-dated): grammar dah encoded (attribution hedges, future-date handling). T\"}]",
+  "atom_id": "ATOM-e9075acd5749",
+  "verified_by": "hermes-rsi-verifier"
+}

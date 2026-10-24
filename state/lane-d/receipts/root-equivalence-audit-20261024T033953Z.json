@@ -1,0 +1,218 @@
+{
+  "audit": "root-equivalence",
+  "version": 1,
+  "utc": "2026-10-24T03:41:18Z",
+  "identities": {
+    "arifos": {
+      "groups": [
+        "arifos",
+        "nogroup",
+        "ariffazil",
+        "arifos-auth",
+        "mailgw-clients"
+      ],
+      "fresh_capeff": "0000000000000000",
+      "elevated_caps": false
+    },
+    "forge": {
+      "groups": [
+        "forge",
+        "mailgw-clients"
+      ],
+      "fresh_capeff": "0000000000000000",
+      "elevated_caps": false
+    }
+  },
+  "findings": {
+    "systemd_exec_writable": [],
+    "cron_script_writable": [],
+    "etc_group_writable": [],
+    "home_writable": [
+      {
+        "identity": "arifos",
+        "writable": "/home/arifos"
+      }
+    ],
+    "host_setuid": [
+      "/opt/google/chrome/chrome-sandbox",
+      "/usr/bin/passwd",
+      "/usr/bin/newgrp",
+      "/usr/bin/fusermount3",
+      "/usr/bin/firejail",
+      "/usr/bin/su",
+      "/usr/bin/chfn",
+      "/usr/bin/ntfs-3g",
+      "/usr/bin/gpasswd",
+      "/usr/bin/umount",
+      "/usr/bin/mount",
+      "/usr/bin/sudo.ws",
+      "/usr/bin/chsh",
+      "/usr/bin/at",
+      "/usr/lib/dbus-1.0/dbus-daemon-launch-helper",
+      "/usr/lib/polkit-1/polkit-agent-helper-1",
+      "/usr/lib/cargo/bin/sudo",
+      "/usr/lib/cargo/bin/su",
+      "/usr/lib/openssh/ssh-keysign",
+      "/usr/libexec/netdata/plugins.d/ioping.plugin",
+      "/usr/libexec/netdata/plugins.d/ndsudo",
+      "/usr/libexec/netdata/plugins.d/local-listeners",
+      "/usr/libexec/netdata/plugins.d/nfacct.plugin",
+      "/usr/libexec/netdata/plugins.d/ebpf-go.plugin",
+      "/usr/libexec/netdata/plugins.d/cgroup-network"
+    ],
+    "host_setuid_count": 26,
+    "file_capabilities": [
+      "/usr/bin/mtr-packet cap_net_raw=ep",
+      "/usr/bin/ping cap_net_raw=ep",
+      "/usr/lib/snapd/snap-confine cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_setgid,cap_setuid,cap_sys_chroot,cap_sys_ptrace,cap_sys_admin,cap_sys_resource=p",
+      "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper cap_net_bind_service,cap_net_admin,cap_sys_nice=ep",
+      "/usr/libexec/netdata/plugins.d/systemd-journal.plugin cap_dac_read_search=eip",
+      "/usr/libexec/netdata/plugins.d/perf.plugin cap_perfmon=ep",
+      "/usr/libexec/netdata/plugins.d/slabinfo.plugin cap_dac_read_search=eip",
+      "/usr/libexec/netdata/plugins.d/apps.plugin cap_dac_read_search,cap_sys_ptrace=eip",
+      "/usr/libexec/netdata/plugins.d/debugfs.plugin cap_dac_read_search,cap_audit_control=eip",
+      "/usr/libexec/netdata/plugins.d/network-viewer.plugin cap_dac_read_search,cap_sys_ptrace,cap_sys_admin=eip",
+      "/usr/libexec/netdata/plugins.d/go.d.plugin cap_dac_read_search,cap_net_bind_service,cap_net_admin,cap_net_raw=eip"
+    ],
+    "sockets": [
+      {
+        "socket": "/run/haproxy-master.sock",
+        "mode": "755",
+        "group": "root"
+      },
+      {
+        "socket": "/run/haproxy-admin.sock",
+        "mode": "660",
+        "group": "root"
+      },
+      {
+        "socket": "/run/tailscale/tailscaled.sock",
+        "mode": "666",
+        "group": "root"
+      },
+      {
+        "socket": "/run/headscale/headscale.sock",
+        "mode": "700",
+        "group": "headscale"
+      },
+      {
+        "socket": "/run/docker/libnetwork/72bffd7d82aa.sock",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/docker/metrics.sock",
+        "mode": "777",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/5d974dc197d296be2c4b1b8c489847ddc5dcce43c947b4c1afaedfb8c498675e",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/07518617977258b22e8ea6f7612c577874bc5be069b7e298f71a186cd27422e8",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/f5b6b3046e160fb20c45652b0e78a7ae83b32717f4e00d895b878850cb55c99f",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/7499520f41ad7699fb74da48619968ef04f2bb431de424a5afba3018f87dfd34",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/9e23270fe190f826d784845f06546268d975bbad7ec1126e60da2a6eca769619",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/46345d6d129ea1fb87d43ce2ac25488590b5a6d59e2b4037c79140aa9cfb61a4",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/9d8fbd98ed8232c5a0f3a1555d20457616f7a863b9138eb6e774a6b301ee1571",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/f235872e7237aff56bf6d16e8189bb6cd679869304afac106c50369f668b643c",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/74f84f711ea305fb8b5867676c5f593a9181c3ca4fdd8d74a0cc682b4112d125",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/e9e7fb37a2cb42412a750d0a755a7d1a1583bc464df7334b68911a6238e308ee",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/f75ee598010074e709ee93af367a251ff7d8d8a8e0754c2dbc26beecacddff0d",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/s/e1ac29fa2ccbe62a1e2e275555eacc909e62f90353f5db30fb20761a7a5ffab6",
+        "mode": "600",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/containerd.sock",
+        "mode": "660",
+        "group": "root"
+      },
+      {
+        "socket": "/run/containerd/containerd.sock.ttrpc",
+        "mode": "660",
+        "group": "root"
+      },
+      {
+        "socket": "/run/caddy-admin.sock",
+        "mode": "200",
+        "group": "root"
+      },
+      {
+        "socket": "/run/grafana/plugin3972211917",
+        "mode": "750",
+        "group": "grafana"
+      },
+      {
+        "socket": "/run/grafana/plugin2870204778",
+        "mode": "750",
+        "group": "grafana"
+      },
+      {
+        "socket": "/run/grafana/plugin3881448610",
+        "mode": "750",
+        "group": "grafana"
+      },
+      {
+        "socket": "/run/grafana/plugin136882833",
+        "mode": "750",
+        "group": "grafana"
+      }
+    ]
+  },
+  "pruned": [
+    "/proc",
+    "/sys",
+    "/dev",
+    "/var/lib/docker",
+    "/var/lib/containerd",
+    "/var/lib/lxcfs",
+    "/run/containerd",
+    "/snap",
+    "/mnt",
+    "/media"
+  ],
+  "verdict": "NO_ROOT_EQUIVALENT_PATH_FOUND"
+}

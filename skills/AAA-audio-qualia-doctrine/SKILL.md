@@ -1,7 +1,7 @@
 ---
 name: AAA-audio-qualia-doctrine
 description: "Operational doctrine for Audio Intelligence with 'qualia rasa' in the arifOS federation. Defines qualia as high-fidelity acoustic variance — agents simulate biological imperfection (breath, pause, hesitation, dry wit, nasal resonance) synchronously with semantic context. Bridge doctrine between AGI-audio-quantum-cognition physics and AAA-audio-emd-pipeline reflex arc."
-version: 1.0.0
+version: 1.1.0
 author: Muhammad Arif bin Fazil (F13) — for ARIF
 forged: 2026-08-18
 floor_scope:
@@ -116,6 +116,28 @@ The LLM (i-arif / 333-AGI / 555-ASI) must understand when to insert hidden audio
 | `[emph]` | Drop pitch 6 Hz, slow rate 8% for one word only | Emphasizing a load-bearing point |
 | `[uv_break]` | Glottal stop, 80 ms — indicates restart | Recovering from a mid-sentence correction |
 
+**MEASURED REALITY (2026-10-23) — the table above is DESIGN, not runtime.**
+
+`/root/scripts/sado` passes zero `--emotion` flags and MiniMax `t2a_v2` accepts no inline
+`[breath]`/`[sigh]` syntax. So at the time of writing the eight tags in the table above exist
+as doctrine only; no render has ever carried one. Do not cite this table as a live capability.
+
+What DOES manufacture the imperfection today is **clause-split rendering** (`sado say --clause`):
+each sentence is rendered separately and rejoined with jittered pauses drawn from a pool seeded
+from the text. Measured on the same line, single-shot vs clause-split:
+
+| | pause (s) | f0 sd | centroid |
+|---|---|---|---|
+| single shot | 0.257 | 45.7 | 802 |
+| clause-split | 0.308 | 50.7 | 794 |
+| human reference (Syed) | 0.297 | 65.1 | — |
+
+The breath a listener hears is bought by splitting and pausing, not by tags. If tag injection
+is ever wired, this section must be rewritten with the measured delta — until then the tag
+table stays labelled design.
+
+F9 ANTI-HANTU still holds either way: clause-split injects silence, not feeling.
+
 **Qualia hidup dalam ketidaksempurnaan.** Humans inhale before complex statements. Humans pause before warnings. The agent must inject these tags selectively, not decoratively. Every tag must earn its place — no ornamental affect.
 
 **Dialect & State-Switching — Contextual Boundary.**
@@ -125,7 +147,7 @@ The agent must know the lane before it speaks:
 | Lane | Voice ID | Speed | Emotion | Persona | Forbidden |
 |---|---|---|---|---|---|
 | Private / CLI / Arif-only | i-ARIF-{date} (when minted) | 0.85 | `[hold]/[breath]/[dry]/[settle]` active | iarif_persona.md | Female voices |
-| Group / Telegram / Discord / IG / public surface | `ttv-voice-2026081808404926-BdoQh6ec` (Sado locked) | 0.83 | neutral — no tag injection | Syed Sado persona | Female voices (F9 + user policy 2026-08-18) |
+| Group / Telegram / Discord / IG / public surface | resolved from `voice-registry.json` lane_precedence (`abang-sado-blend-v1`) — never a hardcoded id | 0.95 | neutral — no tag injection | Syed Sado persona | Female voices (F9 + user policy 2026-08-18) |
 
 **Voice Policy seal (Syed persona, 2026-08-18):** Female voices are FORBIDDEN in group flow. "Suara perempuan AI = berhantu" — user verbatim. All Sado / Syed / motivational / business / chest workout / authority content for group channels must use the locked MiniMax Sado voice at 0.82–0.85 speed.
 
@@ -155,6 +177,30 @@ Streaming discipline:
 - First-sentence-first latency budget: <500 ms from intent to first audio byte.
 
 Speed is part of the consciousness illusion. Slowness breaks presence.
+
+## Voice Identity — Measured, Not Inferred
+
+f0 does not identify a speaker. Measured on this lane 2026-10-23: the clone reference sits at
+93.8 Hz median while an alpha-register take of the same throat sits at 151.8 Hz — 58 Hz apart,
+same person. Any gate that decides identity from pitch medians is measuring the script, not the
+speaker.
+
+The actual test is an ECAPA-TDNN speaker embedding, run by
+`abang-sado-creative-lane/scripts/voice_identity.py` in its own venv, wired into `sado` and
+recorded in every receipt as `identity`. Calibration measured on 7 files:
+
+| pair class | cosine |
+|---|---|
+| same speaker (source vs takes, and takes vs each other) | 0.706 – 0.973 |
+| different speaker (siti, pmx, osman) | -0.009 – 0.221 |
+
+Threshold 0.45 — the midpoint of the two measured populations, not a round number. A take below
+it is refused before delivery. UNMEASURED (missing venv, missing reference) never becomes a pass:
+it is reported as UNMEASURED and the human decides.
+
+Register is separate from identity. Both calm and alpha takes score SAME (0.72–0.73) against the
+calm reference, while sitting 45 Hz apart in pitch. A clone may change register; it may not
+change person. Keep those two judgements apart.
 
 ## F9 ANTI-HANTU — Definitive Boundary
 
@@ -242,3 +288,7 @@ Any future agent that joins the federation and processes audio must read this do
 ---
 
 *Qualia doctrine forged 2026-08-18. F2 evidence: synthesis of AGI-audio-quantum-cognition v1.0.0 (parent physics), AAA-audio-emd-pipeline v1.0.0 (reflex arc), Hermes Voice Mode v2026.3.17 patch notes (barge-in, two-stage silence, hallucination filter), Syed persona lock seal (2026-08-18), user verbatim ("suara perempuan AI = berhantu"), Nusantara voice stack engine ceiling analysis (2026-08-14). F10 boundary enforced without exception.*
+
+---
+
+*v1.1.0 (2026-10-23): lane-table voice id re-pointed to registry precedence after the hardcoded id was retired; tag table labelled design-only with clause-split named as the live mechanism; voice identity section added from measured ECAPA + f0 data. No floor changed.*

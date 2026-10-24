@@ -844,3 +844,55 @@ your own filenames, and check the mtimes plus the session ids in `~/.hermes/logs
 claiming which render is yours — "the newest file" is not evidence of authorship.
 
 DITEMPA BUKAN DIBERI.
+
+## Pitfalls measured 2026-10-23 (each one caused a wrong gate verdict)
+
+- **Digital silence between clauses makes the gate invent defects.** Joining
+  sentence renders with `anullsrc` (true zero) made Whisper hallucinate words in
+  the gaps — "coffee you die", "clapping", "terima kasih kerana menonton" — and
+  verify_take.py reported them as INSERTED contamination, i.e. a render defect
+  that did not exist. Fix: fill gaps with low pink noise
+  (`anoisesrc=color=pink:amplitude=0.0018`), which is also closer to a real room.
+  Measured: same script, same voice — 94.0% with 8 false INSERTED words before,
+  99.2% with none after.
+- **Pitch is not identity.** The f0-family rule fails a take when its median sits
+  >15 Hz from the clone source, but anger legitimately raises pitch. Measured on
+  one alpha take: f0 163.5 Hz vs a 93.8 Hz source (a 69.7 Hz "drift" FAIL) while
+  ECAPA-TDNN cosine against the source scored 0.759 — the same throat. Run
+  voice_identity.py before believing an f0 drift verdict; an f0-only failure with
+  identity SAME is advisory, not fatal.
+- **Never select the take by recency — a sibling session shares the workroot.**
+  `sado` names each take dir by the second, so `ls -td take-* | head -1` can hand
+  you ANOTHER process's render. Measured 2026-10-23 22:51: two sessions rendered
+  into `/root/forge_work/sado` in the same minute; the newest dir held a different
+  script (811 chars vs my 1483) and that wrong take was delivered before anyone
+  noticed. Rule: bind the dir to your own source first — compare `wc -m < line.txt`
+  against your input file AND diff the first line — and only send when they match.
+  A take is identified by its text, never by its timestamp.
+- **A cloned voice whose id is reused is not free.** MiniMax deletes cloned voices
+  after 7 days of non-use, and slots are hard-capped by plan tier (Starter = 10).
+  Check `GET /v1/get_voice` against registry LIVE ids BEFORE minting; deleting a
+  revoked id is the safe way to free a slot, never a speaking one.
+
+- **A renderer that ignores the registry recipe is the siti bug, again.** Every
+  voice entry may declare `sample_rate` / `pitch` / `format`; if the render call
+  hardcodes 32000 + pitch 0 instead, the voice is rendered off-recipe while the
+  receipt still says "PASS". Measured 2026-10-23: siti declared 24000/0/1.0 and
+  was rendered 32000/0/0.90. Fix: read the recipe from the entry
+  (`audio_args_for`) and record it in the receipt.
+- **Two renders starting in the same second share a workdir.** The gate then
+  diffs one session's text against another session's clause files. Measured:
+  13.8% match with 80+ phantom INSERTED words on a take that was actually fine.
+  Claim the directory with `exist_ok=False` and suffix on collision.
+- **A demo that lives in `cache/scratch` does not survive.** Scratch is pruned
+  after 24h, so an approved demo there is gone within a day, and if the provider
+  object is also deleted the voice is unrecoverable except from the raw source.
+  Approved artifacts belong under `forge_work/sado/<lane>-<date>/`.
+- **A voice_id is a mutable pointer, not an identity.** Two sessions minting the
+  same id means MiniMax keeps only the later one, silently. Record which
+  `file_id` built the live object, and measure identity from a render, never from
+  the id string.
+- **Concurrent writers must merge, not overwrite.** Another session rewrote the
+  registry entry mid-flight. Overwriting its provenance would destroy the only
+  record of which source audio produced the live clone. Read-modify-write with a
+  timestamped backup, add fields, never replace a foreign block.

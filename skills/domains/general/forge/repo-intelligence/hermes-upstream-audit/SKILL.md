@@ -283,6 +283,16 @@ the install times out (use scoped `search_files`). Full map + recipe:
 
 After any Tier 1 execution, re-run `hermes memory status` (or equivalent check for each dimension fixed) and confirm the gap is closed. Record before/after state.
 
+## NEW — 2026-10-22 (version-name vs graph-state; commit-count vs content)
+
+Three divergences caught live in the 22 Oct session (contradiction audit C-03/C-04/C-07):
+
+1. **A release name is not a base.** "Union atas v0.22.4" was declared while the local repo had NO `v0.22.4` tag (GitHub release only, published 4 days after the last local fetch). Before naming any base: `git ls-remote --tags origin | grep <ver>` + resolve release→sha, and `git log -1 --format=%ci origin/main` to state fetch freshness.
+
+2. **A diverged commit count is not an innovation inventory.** "394 commits ahead" on KVM4 contained exactly 4 sovereign commits (author filter: root/arifOS Agent); 390 were upstream commits displaced by a stale origin (last fetch in Aug). Count content, not commits: `git cherry` patch-ids are still not enough — filter by author AND grep each candidate's symbols against the target tree (2 of 4 "jewels" were already absorbed upstream; verify before carrying).
+
+3. **Reported agent numbers are REPORTED, not MEASURED.** In a seal message, label every number you did not re-run yourself (e.g. "15/15 (REPORTED, subagent transcript)"). Structural verification (compile/wiring) does not import test-suite validity.
+
 ## Reference Files
 
 | File | Purpose |

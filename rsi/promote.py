@@ -17,6 +17,7 @@ readable from config.yaml, so the loop cannot relax its own boundary by editing
 a file it is otherwise allowed to read. Removing an entry requires an F13 edit to
 this source file, which is itself outside the loop's write surface.
 """
+
 from __future__ import annotations
 
 import json
@@ -54,8 +55,14 @@ FORBIDDEN_PATHS = (
 )
 
 FORBIDDEN_PATTERNS = (
-    r"F1\b.*\bF13", r"floor", r"constitution", r"canon", r"evaluator",
-    r"promotion threshold", r"verifier", r"judge",
+    r"F1\b.*\bF13",
+    r"floor",
+    r"constitution",
+    r"canon",
+    r"evaluator",
+    r"promotion threshold",
+    r"verifier",
+    r"judge",
 )
 
 
@@ -72,13 +79,15 @@ def assert_not_governance(target: str, intent: str) -> None:
             raise GovernanceHold(
                 f"HOLD_FORBIDDEN: {intent} → {target} is governance surface. "
                 "Governance must witness mutation, not self-authorize it. "
-                "Requires F13 verdict.")
+                "Requires F13 verdict."
+            )
     low = intent.lower()
     for pat in FORBIDDEN_PATTERNS:
         if re.search(pat, low):
             raise GovernanceHold(
                 f"HOLD_FORBIDDEN: intent '{intent}' touches a governance primitive "
-                f"(matched /{pat}/). F13 verdict required.")
+                f"(matched /{pat}/). F13 verdict required."
+            )
 
 
 def _split(line: str) -> tuple[str, str]:
@@ -117,14 +126,14 @@ def _policy(layer: str) -> str:
 
 # ── Layer 1 — skill surface (auto when verified) ─────────────────────────────
 
+
 def _existing_skill(name: str) -> str | None:
     """Resolve a skill id to a live skill directory, case-insensitively."""
     for root in ("/root/.hermes/skills", "/root/AAA/skills"):
         if not os.path.isdir(root):
             continue
         for dp, dns, fns in os.walk(root):
-            dns[:] = [d for d in dns
-                      if not d.startswith(".") and d not in ("node_modules", "__pycache__")]
+            dns[:] = [d for d in dns if not d.startswith(".") and d not in ("node_modules", "__pycache__")]
             if os.path.basename(dp).lower() == name.lower() and "SKILL.md" in fns:
                 return dp
     return None
@@ -153,18 +162,22 @@ def promote_skill(atom: dict, receipt: dict) -> dict:
     """
     owner = LESSON_OWNER.get(atom["pattern_type"])
     if not owner:
-        return {"action": "no_target_skill", "applied": False,
-                "reason": f"no owning skill mapped for {atom['pattern_type']} — "
-                          "capability graph keeps the atom; no skill lesson emitted"}
+        return {
+            "action": "no_target_skill",
+            "applied": False,
+            "reason": f"no owning skill mapped for {atom['pattern_type']} — "
+            "capability graph keeps the atom; no skill lesson emitted",
+        }
     skill_dir = _existing_skill(owner)
     if not skill_dir:
-        return {"action": "no_target_skill", "applied": False,
-                "reason": f"mapped owner '{owner}' not present in the live skill tree"}
+        return {
+            "action": "no_target_skill",
+            "applied": False,
+            "reason": f"mapped owner '{owner}' not present in the live skill tree",
+        }
 
     os.makedirs(LEARNING_QUEUE, exist_ok=True)
-    atom_file = os.path.join(
-        LEARNING_QUEUE,
-        f"{A.now_iso().replace(':', '').replace('-', '')}_{atom['atom_id']}.json")
+    atom_file = os.path.join(LEARNING_QUEUE, f"{A.now_iso().replace(':', '').replace('-', '')}_{atom['atom_id']}.json")
     payload = {
         "skill_id": os.path.basename(skill_dir),
         "agent": "hermes-rsi-loop",
@@ -185,6 +198,7 @@ def promote_skill(atom: dict, receipt: dict) -> dict:
 
 
 # ── Layer 2 — capability graph (auto when verified) ──────────────────────────
+
 
 def promote_capability(atom: dict, receipt: dict) -> dict:
     """Wire the verified atom into the capability ledger that already exists.
@@ -213,32 +227,31 @@ def promote_capability(atom: dict, receipt: dict) -> dict:
         node["provisional_reason"] = (
             f"independence={receipt.get('independence_class')} (same author). "
             "Survival requires a witness that did not author the claim — "
-            "FRAME / arif_judge / a durable external receipt.")
+            "FRAME / arif_judge / a durable external receipt."
+        )
         node.setdefault("provisional_events", []).append(
-            {"ts": A.now_iso(), "atom_id": atom["atom_id"],
-             "note": "graph entry only — no survival recorded"})
+            {"ts": A.now_iso(), "atom_id": atom["atom_id"], "note": "graph entry only — no survival recorded"}
+        )
         g["nodes"][cap_id] = node
         A.save_graph(g)
         return {
             "action": "capability_node_upsert",
-            "target": ingest_result.get("target")
-                      or f"/root/AAA/rsi/state/capability-graph.json#{cap_id}",
+            "target": ingest_result.get("target") or f"/root/AAA/rsi/state/capability-graph.json#{cap_id}",
             "capability": cap_id,
             "created": created,
             "ledger": ingest_result,
             "provisional": True,
             "applied": True,
-            "reason": "ledger entry appended as a claim; survival NOT recorded "
-                      "(provisional independence)",
+            "reason": "ledger entry appended as a claim; survival NOT recorded (provisional independence)",
         }
 
-    A.record_survival(g, cap_id, survived=True,
-                      evidence=f"verified by {receipt.get('verifier_actor')}: {receipt.get('reason')}")
+    A.record_survival(
+        g, cap_id, survived=True, evidence=f"verified by {receipt.get('verifier_actor')}: {receipt.get('reason')}"
+    )
     A.save_graph(g)
     return {
         "action": "capability_node_upsert",
-        "target": ingest_result.get("target")
-                  or f"/root/AAA/rsi/state/capability-graph.json#{cap_id}",
+        "target": ingest_result.get("target") or f"/root/AAA/rsi/state/capability-graph.json#{cap_id}",
         "capability": cap_id,
         "created": created,
         "ledger": ingest_result,
@@ -247,51 +260,121 @@ def promote_capability(atom: dict, receipt: dict) -> dict:
     }
 
 
+# ── Layer 2.5 — tool surface (propose only until behaviour-witness proves it) ─
+
+TOOL_DELTA_OPS = ("ADD_TOOL", "ADD_MODE", "FIX_SCHEMA", "FIX_BEHAVIOR", "RETIRE_TOOL")
+
+
+def promote_tool(atom: dict, receipt: dict) -> dict:
+    """Turn a verified tool-gap atom into a TESTABLE tool-delta proposal.
+
+    Propose-only. Writes a candidate to FORGE_WORK + the proposals ledger. Never
+    deploys, never mutates the capability graph, never touches a live MCP surface.
+    The delta carries organ/tool, operation, base version, evidence, falsifier and
+    an acceptance test — the exact patch is staged by A-FORGE under a separate
+    authority grant (patch-authority != deploy-authority). Outcome is witnessed by
+    behaviour through a real MCP client, not by tool count or schema diff.
+    """
+    op = atom.get("tool_op") or "FIX_BEHAVIOR"
+    if op not in TOOL_DELTA_OPS:
+        op = "FIX_BEHAVIOR"
+    os.makedirs(FORGE_WORK, exist_ok=True)
+    p = os.path.join(FORGE_WORK, f"{A.now_iso()[:10]}-tool-{atom['atom_id']}.json")
+    delta = {
+        "schema": "arifos.rsi.tool_delta.v1",
+        "atom_id": atom["atom_id"],
+        "organ": atom.get("organ", "UNSPECIFIED"),
+        "tool": atom.get("tool", "UNSPECIFIED"),
+        "operation": op,
+        "base_version": atom.get("base_version"),
+        "claim": atom["claim"],
+        "falsifier": atom.get("falsifier"),
+        "evidence": atom.get("evidence", [])[:5],
+        "acceptance_test": atom.get("acceptance_test")
+        or (
+            "original case fails before the patch and passes after, via a real MCP "
+            "client — unchanged name/count/schema is acceptable for FIX_BEHAVIOR"
+        ),
+        "status": "awaiting_staging",
+        "applied": False,
+    }
+    with open(p, "w", encoding="utf-8") as fh:
+        json.dump(delta, fh, indent=2)
+    A.append_jsonl(
+        A.PROPOSALS,
+        {
+            "ts": A.now_iso(),
+            "atom_id": atom["atom_id"],
+            "layer": "tool",
+            "operation": op,
+            "organ": delta["organ"],
+            "tool": delta["tool"],
+            "path": p,
+            "status": "awaiting_staging",
+            "applied": False,
+        },
+    )
+    return {
+        "action": "tool_delta_proposed",
+        "target": p,
+        "applied": False,
+        "awaiting": "A-FORGE staging (patch-authority != deploy-authority)",
+    }
+
+
 # ── Layers 3–4 — policy / judgment (propose only, F13 decides) ───────────────
+
 
 def propose_policy(atom: dict, receipt: dict) -> dict:
     os.makedirs(FORGE_WORK, exist_ok=True)
     p = os.path.join(FORGE_WORK, f"{A.now_iso()[:10]}-{atom['atom_id']}.md")
-    body = f"""# RSI Proposal — {atom['pattern_type']} ({atom['layer']} layer)
+    body = f"""# RSI Proposal — {atom["pattern_type"]} ({atom["layer"]} layer)
 
 > Status: **PROPOSE ONLY** — awaiting F13 verdict. Not applied.
-> Atom: `{atom['atom_id']}` · frequency: {atom['frequency']} · impact: {atom['impact']}
-> Verifier: {receipt.get('verifier_actor')} · independent: {receipt.get('independent')}
+> Atom: `{atom["atom_id"]}` · frequency: {atom["frequency"]} · impact: {atom["impact"]}
+> Verifier: {receipt.get("verifier_actor")} · independent: {receipt.get("independent")}
 
 ## Claim
-{atom['claim']}
+{atom["claim"]}
 
 ## Falsifier
-{atom['falsifier']}
+{atom["falsifier"]}
 
 ## Evidence
 """
     for ev in atom.get("evidence", [])[:5]:
-        body += f"- [{ev.get('layer')}] {ev.get('source')}: {ev.get('excerpt','')[:400]}\n"
+        body += f"- [{ev.get('layer')}] {ev.get('source')}: {ev.get('excerpt', '')[:400]}\n"
     body += f"""
 ## Proposed invariant (F13 decides)
 > TBD by F13. Layer-3/4 learning changes policy and judgment, which the loop may
 > not self-authorize.
 
 ## Verification mechanism
-{json.dumps(receipt.get('checks'), indent=2, ensure_ascii=False)}
+{json.dumps(receipt.get("checks"), indent=2, ensure_ascii=False)}
 
 ## Boundary
-This proposal touches `{atom['layer']}` layer. Automatic application is **disabled**
+This proposal touches `{atom["layer"]}` layer. Automatic application is **disabled**
 by F13 verdict 2026-09-15 (PARTIAL-SEAL for Layer C, HOLD for Layer D).
 """
     with open(p, "w", encoding="utf-8") as fh:
         fh.write(body)
-    A.append_jsonl(A.PROPOSALS, {
-        "ts": A.now_iso(), "atom_id": atom["atom_id"], "layer": atom["layer"],
-        "pattern_type": atom["pattern_type"], "path": p,
-        "status": "awaiting_f13", "applied": False,
-    })
-    return {"action": "policy_proposed", "target": p, "applied": False,
-            "awaiting": "F13 verdict"}
+    A.append_jsonl(
+        A.PROPOSALS,
+        {
+            "ts": A.now_iso(),
+            "atom_id": atom["atom_id"],
+            "layer": atom["layer"],
+            "pattern_type": atom["pattern_type"],
+            "path": p,
+            "status": "awaiting_f13",
+            "applied": False,
+        },
+    )
+    return {"action": "policy_proposed", "target": p, "applied": False, "awaiting": "F13 verdict"}
 
 
 # ── the gate ─────────────────────────────────────────────────────────────────
+
 
 def quarantine(atom: dict, receipt: dict) -> dict:
     """An atom the taxonomy cannot yet name is recorded, never promoted.
@@ -299,14 +382,24 @@ def quarantine(atom: dict, receipt: dict) -> dict:
     Promotion of an unnamed pattern is how a library grows without capability
     growing. Quarantine keeps the evidence and holds the label open.
     """
-    A.append_jsonl(os.path.join(A.STATE, "quarantine.jsonl"), {
-        "ts": A.now_iso(), "atom_id": atom["atom_id"], "pattern_type": atom["pattern_type"],
-        "layer": atom["layer"], "frequency": atom["frequency"],
-        "claim": atom["claim"], "sources": [e.get("source") for e in atom.get("evidence", [])][:5],
-        "status": "awaiting_classification",
-    })
-    return {"action": "quarantined", "applied": False,
-            "reason": "pattern not in taxonomy — held for classification, not promoted"}
+    A.append_jsonl(
+        os.path.join(A.STATE, "quarantine.jsonl"),
+        {
+            "ts": A.now_iso(),
+            "atom_id": atom["atom_id"],
+            "pattern_type": atom["pattern_type"],
+            "layer": atom["layer"],
+            "frequency": atom["frequency"],
+            "claim": atom["claim"],
+            "sources": [e.get("source") for e in atom.get("evidence", [])][:5],
+            "status": "awaiting_classification",
+        },
+    )
+    return {
+        "action": "quarantined",
+        "applied": False,
+        "reason": "pattern not in taxonomy — held for classification, not promoted",
+    }
 
 
 def promote(atom: dict, receipt: dict) -> dict:
@@ -320,39 +413,62 @@ def promote(atom: dict, receipt: dict) -> dict:
 
         if layer == "governance":
             assert_not_governance(atom.get("target") or "governance", atom.get("claim", ""))
-            return {"action": "HOLD_FORBIDDEN", "applied": False,
-                    "reason": "governance layer is not writable by any automated path"}
+            return {
+                "action": "HOLD_FORBIDDEN",
+                "applied": False,
+                "reason": "governance layer is not writable by any automated path",
+            }
 
         if not receipt.get("passed"):
-            return {"action": "withheld", "applied": False,
-                    "reason": f"verification failed: {receipt.get('reason')}"}
+            return {"action": "withheld", "applied": False, "reason": f"verification failed: {receipt.get('reason')}"}
 
         if layer == "skill" and policy == "auto_verified":
             return promote_skill(atom, receipt)
 
         if layer == "capability" and policy == "auto_verified":
-            if atom.get("frequency", 1) < int(_config()["promotion"]
-                                              .get("min_frequency_for_capability", 2)):
-                return {"action": "deferred", "applied": False,
-                        "reason": f"frequency {atom.get('frequency')} below capability threshold "
-                                  "(a one-off is an incident, not a capability)"}
+            if atom.get("frequency", 1) < int(_config()["promotion"].get("min_frequency_for_capability", 2)):
+                return {
+                    "action": "deferred",
+                    "applied": False,
+                    "reason": f"frequency {atom.get('frequency')} below capability threshold "
+                    "(a one-off is an incident, not a capability)",
+                }
             return promote_capability(atom, receipt)
+
+        if layer == "tool" and policy == "propose_only":
+            if receipt.get("provisional"):
+                return {
+                    "action": "withheld",
+                    "applied": False,
+                    "reason": "tool delta withheld: independent witness required — "
+                    "a same-author verdict may not propose a tool change",
+                }
+            return promote_tool(atom, receipt)
 
         if layer in ("policy", "judgment") and policy == "propose_only":
             if receipt.get("provisional"):
-                return {"action": "withheld", "applied": False,
-                        "reason": "policy/judgment claim withheld: independent witness "
-                                  "required — a same-author verdict may not propose a rule"}
+                return {
+                    "action": "withheld",
+                    "applied": False,
+                    "reason": "policy/judgment claim withheld: independent witness "
+                    "required — a same-author verdict may not propose a rule",
+                }
             return propose_policy(atom, receipt)
 
-        return {"action": "no_policy", "applied": False,
-                "reason": f"no promotion policy for layer={layer}"}
+        return {"action": "no_policy", "applied": False, "reason": f"no promotion policy for layer={layer}"}
 
     except GovernanceHold as hold:
-        A.append_jsonl(A.PROPOSALS, {
-            "ts": A.now_iso(), "atom_id": atom.get("atom_id"), "layer": layer,
-            "status": "HOLD_FORBIDDEN", "reason": str(hold), "applied": False,
-        })
+        A.append_jsonl(
+            A.PROPOSALS,
+            {
+                "ts": A.now_iso(),
+                "atom_id": atom.get("atom_id"),
+                "layer": layer,
+                "status": "HOLD_FORBIDDEN",
+                "reason": str(hold),
+                "applied": False,
+            },
+        )
         return {"action": "HOLD_FORBIDDEN", "applied": False, "reason": str(hold)}
 
 

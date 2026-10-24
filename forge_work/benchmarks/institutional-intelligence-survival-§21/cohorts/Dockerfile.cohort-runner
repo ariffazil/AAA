@@ -1,0 +1,6 @@
+# Cohort runner image — replaces ghcr.io/anthropics/claude-code:latest (manifest unknown, 2026-10-22).
+# Model lane MUST route via FED alias (no Anthropic key on box): set at runtime by compose env.
+FROM node:22-alpine
+LABEL org.arifos.s21.cli.pinned="2.1.300"
+RUN npm install -g @anthropic-ai/claude-code@2.1.300
+WORKDIR /task

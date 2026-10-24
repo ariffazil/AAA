@@ -1,0 +1,2477 @@
+{
+ "_GENERATED": "federation_build.py \u2014 DO NOT HAND-EDIT (FP-01)",
+ "generated_at": "2026-10-22T20:08:16+00:00",
+ "source_of_truth": "/root/AAA/skills",
+ "skill_count": 770,
+ "distribution": {
+  "governance": 106,
+  "research": 85,
+  "execution": 127,
+  "domain": 53,
+  "memory": 29,
+  "communication": 79,
+  "unclassified": 327,
+  "engineering": 105
+ },
+ "index": {
+  "000-salam": [
+   "governance"
+  ],
+  "111-tengok": [
+   "governance",
+   "research"
+  ],
+  "333-forge": [
+   "execution",
+   "governance"
+  ],
+  "555-betul": [
+   "governance"
+  ],
+  "666-rasa": [
+   "governance",
+   "research"
+  ],
+  "777-faham": [
+   "governance"
+  ],
+  "888-adil": [
+   "governance"
+  ],
+  "999-ingat": [
+   "governance"
+  ],
+  "AAA-asr-glm-ingest": [
+   "domain",
+   "memory"
+  ],
+  "AAA-audio-emd-pipeline": [
+   "domain"
+  ],
+  "AAA-audio-qualia-doctrine": [
+   "domain"
+  ],
+  "AAA-somatic-emd-pipeline": [
+   "domain"
+  ],
+  "AAA-somatic-engine-catalog": [
+   "domain"
+  ],
+  "AAA-somatic-music-doctrine": [
+   "domain"
+  ],
+  "AAA-tts-engine-catalog": [
+   "domain"
+  ],
+  "AAA-voice-cloning-mimo-minimax": [
+   "communication"
+  ],
+  "AAA-voice-cloning-qwen-cloud": [
+   "communication"
+  ],
+  "AGI-agentic-web": [
+   "unclassified"
+  ],
+  "AGI-audio-quantum-cognition": [
+   "domain"
+  ],
+  "AGI-decisions-reflect": [
+   "unclassified"
+  ],
+  "AGI-explorer-intelligence": [
+   "unclassified"
+  ],
+  "AGI-graph-engineering-patterns": [
+   "engineering"
+  ],
+  "AGI-skill-unification": [
+   "unclassified"
+  ],
+  "AGI-web-optimization": [
+   "unclassified"
+  ],
+  "APEX-humility-godel": [
+   "unclassified"
+  ],
+  "APEX-quantum-eureka": [
+   "memory"
+  ],
+  "ASI-agentic-architecture": [
+   "engineering"
+  ],
+  "ASI-drift-watch": [
+   "research"
+  ],
+  "ASI-fabrication-prevention": [
+   "unclassified"
+  ],
+  "ASI-skill-binding": [
+   "unclassified"
+  ],
+  "ASI-summarize": [
+   "communication"
+  ],
+  "AUDIT-repo-reality": [
+   "governance",
+   "research"
+  ],
+  "EUREKA777-paradox-resolution": [
+   "memory"
+  ],
+  "FORGE-ci-diagnose": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-cicd-docker-deploy": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-cross-repo-doc-zen": [
+   "execution"
+  ],
+  "FORGE-data-compression": [
+   "execution"
+  ],
+  "FORGE-docker-entropy": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-fastmcp": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-federation-manifest": [
+   "execution"
+  ],
+  "FORGE-federation-orchestrator": [
+   "execution"
+  ],
+  "FORGE-governance-jsonld": [
+   "execution",
+   "governance"
+  ],
+  "FORGE-incident-escalation": [
+   "execution"
+  ],
+  "FORGE-incident-triage": [
+   "execution"
+  ],
+  "FORGE-mcp-a2a-agentic": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-mcp-federation-ops": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-mcp-gui": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-mcp-ops": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-mcp-probe": [
+   "engineering",
+   "execution",
+   "research"
+  ],
+  "FORGE-mcp-registry-ops": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-pr-governance": [
+   "execution",
+   "governance"
+  ],
+  "FORGE-pr-review": [
+   "execution"
+  ],
+  "FORGE-precommit-review": [
+   "execution"
+  ],
+  "FORGE-readme-truth-check": [
+   "execution"
+  ],
+  "FORGE-secret-hygiene": [
+   "execution"
+  ],
+  "FORGE-skill-creator": [
+   "execution"
+  ],
+  "FORGE-skill-linter": [
+   "execution"
+  ],
+  "FORGE-symlink-audit": [
+   "execution",
+   "governance"
+  ],
+  "FORGE-telegram-audit": [
+   "communication",
+   "execution",
+   "governance"
+  ],
+  "FORGE-telemetry-watchdog": [
+   "execution"
+  ],
+  "FORGE-vps-docker": [
+   "engineering",
+   "execution"
+  ],
+  "FORGE-vps-runbook": [
+   "execution"
+  ],
+  "PETRONAS-intelligence-router": [
+   "domain"
+  ],
+  "RSI-recursive-improvement": [
+   "unclassified"
+  ],
+  "WELL-3baik-log": [
+   "domain"
+  ],
+  "a-forge-ops": [
+   "execution"
+  ],
+  "a2a-gateway-protocol": [
+   "unclassified"
+  ],
+  "a2a-task-delegator": [
+   "unclassified"
+  ],
+  "aaa": [
+   "unclassified"
+  ],
+  "aaa-capability-compiler": [
+   "engineering"
+  ],
+  "aaa-chamber-protocol": [
+   "unclassified"
+  ],
+  "aaa-constitution-architecture-audit": [
+   "engineering",
+   "governance"
+  ],
+  "aaa-docs-entropy-reduction": [
+   "unclassified"
+  ],
+  "aaa-governance": [
+   "governance"
+  ],
+  "aaa-human-physique-topology": [
+   "communication"
+  ],
+  "aaa-musyawarah-execution": [
+   "execution"
+  ],
+  "aaa-ocr-optical-compression": [
+   "unclassified"
+  ],
+  "aaa-pdf-voice-protocol": [
+   "communication"
+  ],
+  "aaa-setup-help": [
+   "unclassified"
+  ],
+  "aaa-shadow-mode": [
+   "unclassified"
+  ],
+  "aaa-skill-authoring-craft": [
+   "unclassified"
+  ],
+  "abang-sado-analysis-doctrine": [
+   "unclassified"
+  ],
+  "abang-sado-tenderness-arc": [
+   "unclassified"
+  ],
+  "agent-capability-gap-audit": [
+   "governance"
+  ],
+  "agent-capability-self-audit": [
+   "governance"
+  ],
+  "agent-config-validation": [
+   "unclassified"
+  ],
+  "agent-memory-architecture": [
+   "communication",
+   "engineering",
+   "memory"
+  ],
+  "agent-message-store-forensics": [
+   "unclassified"
+  ],
+  "agent-question-budget": [
+   "unclassified"
+  ],
+  "agent-readiness-cockpit": [
+   "unclassified"
+  ],
+  "agent-runtime-shadow-repair": [
+   "unclassified"
+  ],
+  "agent-tool-verification": [
+   "research"
+  ],
+  "agentic-genome-species": [
+   "unclassified"
+  ],
+  "agentic-state": [
+   "unclassified"
+  ],
+  "agentic-trust-trajectory": [
+   "engineering"
+  ],
+  "agi-agentic-web-delivery": [
+   "unclassified"
+  ],
+  "agi-deep-research-loop": [
+   "engineering",
+   "research"
+  ],
+  "agi-dream-engine": [
+   "unclassified"
+  ],
+  "agi-multimodal-bridge": [
+   "communication"
+  ],
+  "agi-nusantara-substrate": [
+   "unclassified"
+  ],
+  "agi-plan-dag": [
+   "unclassified"
+  ],
+  "agy-scar-hardening": [
+   "memory"
+  ],
+  "ai-media-generation": [
+   "unclassified"
+  ],
+  "ai-media-generation-ops": [
+   "execution"
+  ],
+  "ai-paper-paste-audit": [
+   "governance"
+  ],
+  "aia-cycle-operator": [
+   "unclassified"
+  ],
+  "apex-attention-optimizer": [
+   "unclassified"
+  ],
+  "apex-cognitive-reflex": [
+   "unclassified"
+  ],
+  "apex-deliverable-protocol": [
+   "unclassified"
+  ],
+  "apex-fact-check-pass": [
+   "research"
+  ],
+  "apex-judge": [
+   "governance"
+  ],
+  "apex-theory-canon": [
+   "unclassified"
+  ],
+  "apex_audit_coverage_check": [
+   "governance"
+  ],
+  "apex_authority_check": [
+   "governance"
+  ],
+  "apex_floor_check": [
+   "governance"
+  ],
+  "apex_reversibility_test": [
+   "engineering"
+  ],
+  "apex_scope_check": [
+   "unclassified"
+  ],
+  "apex_tool_approval_gate": [
+   "unclassified"
+  ],
+  "apex_verdict_hold": [
+   "governance"
+  ],
+  "apex_verdict_seal": [
+   "governance"
+  ],
+  "apple": [
+   "unclassified"
+  ],
+  "architecture-alignment-audit": [
+   "engineering",
+   "governance"
+  ],
+  "arif-digest-group-chat": [
+   "unclassified"
+  ],
+  "arif-fazil-publication-doctrine": [
+   "unclassified"
+  ],
+  "arif-fazil-site-deploy": [
+   "engineering"
+  ],
+  "arif-fazil-site-ops": [
+   "execution"
+  ],
+  "arif-fazil-web-ops": [
+   "execution"
+  ],
+  "arif-site-human-first-audit": [
+   "communication",
+   "governance"
+  ],
+  "arif-site-publish": [
+   "unclassified"
+  ],
+  "arif-sites-ops": [
+   "execution"
+  ],
+  "arif-world-reality-intel": [
+   "research"
+  ],
+  "arifos-auto-init": [
+   "unclassified"
+  ],
+  "arifos-cognitive-atlas": [
+   "memory"
+  ],
+  "arifos-collapse-vector-audit": [
+   "governance"
+  ],
+  "arifos-constitutional-judge": [
+   "governance"
+  ],
+  "arifos-control-plane-sot-audit": [
+   "governance"
+  ],
+  "arifos-cron-ops": [
+   "execution"
+  ],
+  "arifos-eight-verb-canonical": [
+   "unclassified"
+  ],
+  "arifos-external-council": [
+   "unclassified"
+  ],
+  "arifos-governance-measurement": [
+   "governance"
+  ],
+  "arifos-integration-recon": [
+   "unclassified"
+  ],
+  "arifos-kernel-e2e-testing": [
+   "engineering",
+   "governance"
+  ],
+  "arifos-kernel-eurekas": [
+   "governance",
+   "memory"
+  ],
+  "arifos-kernel-zen-audit": [
+   "governance"
+  ],
+  "arifos-machine-wellness": [
+   "domain"
+  ],
+  "arifos-mcp-audit": [
+   "engineering",
+   "governance"
+  ],
+  "arifos-mcp-resource-surface": [
+   "engineering",
+   "research"
+  ],
+  "arifos-morning-pulse": [
+   "unclassified"
+  ],
+  "arifos-prompt-doctrine": [
+   "unclassified"
+  ],
+  "arifos-site-patch-without-caddy-reload": [
+   "unclassified"
+  ],
+  "artifact-emission-pipeline": [
+   "research"
+  ],
+  "artifact-source-reconciliation": [
+   "research"
+  ],
+  "arxiv-submission-package": [
+   "unclassified"
+  ],
+  "asi-agentic-governance": [
+   "governance"
+  ],
+  "asi-summarize": [
+   "communication"
+  ],
+  "atlas333-cognitive-geometry": [
+   "memory"
+  ],
+  "attribution-integrity": [
+   "unclassified"
+  ],
+  "audio-nervous-system": [
+   "domain"
+  ],
+  "audit": [
+   "governance"
+  ],
+  "audit-and-validate-deliverables": [
+   "governance"
+  ],
+  "audit-entity-classify": [
+   "governance"
+  ],
+  "audit-repo-reality": [
+   "governance",
+   "research"
+  ],
+  "audit-seal": [
+   "governance"
+  ],
+  "auth-failure-attribution": [
+   "unclassified"
+  ],
+  "authority-reality-grounder": [
+   "governance",
+   "research"
+  ],
+  "autonomous-ai-agents": [
+   "unclassified"
+  ],
+  "autonomous-overnight-agent-dispatch": [
+   "unclassified"
+  ],
+  "banda-haram-hardcode": [
+   "engineering",
+   "governance"
+  ],
+  "bijaksana-compile": [
+   "engineering",
+   "governance"
+  ],
+  "bm-business-translation": [
+   "unclassified"
+  ],
+  "bm-voice-script-prep": [
+   "communication"
+  ],
+  "body-composition-assessment": [
+   "unclassified"
+  ],
+  "bond-corpus-probe": [
+   "research"
+  ],
+  "bond-reading-discipline": [
+   "unclassified"
+  ],
+  "bonded-human-special-lane": [
+   "communication"
+  ],
+  "brand-identity-mark": [
+   "unclassified"
+  ],
+  "browser-playwright-runner": [
+   "unclassified"
+  ],
+  "browser-service-ops": [
+   "execution"
+  ],
+  "business-document-production": [
+   "unclassified"
+  ],
+  "business-intel": [
+   "unclassified"
+  ],
+  "business-letter-pdf": [
+   "unclassified"
+  ],
+  "canon-integrity-check": [
+   "unclassified"
+  ],
+  "canon-single-source": [
+   "research"
+  ],
+  "capabilities": [
+   "unclassified"
+  ],
+  "capability-telemetry-audit": [
+   "governance"
+  ],
+  "casual-bm-chat-register": [
+   "unclassified"
+  ],
+  "causal555-pywhy": [
+   "unclassified"
+  ],
+  "ccc-coder-federation": [
+   "engineering"
+  ],
+  "ceremonial-letter-pdf": [
+   "unclassified"
+  ],
+  "chatgpt-apps": [
+   "unclassified"
+  ],
+  "check-work": [
+   "unclassified"
+  ],
+  "chunked-tts-render-integrity": [
+   "communication",
+   "domain"
+  ],
+  "civic-advocacy": [
+   "unclassified"
+  ],
+  "civic-petition-forge": [
+   "execution"
+  ],
+  "civic-publishing": [
+   "unclassified"
+  ],
+  "civic-whistleblower-letter": [
+   "unclassified"
+  ],
+  "clause-split-tts-render-ops": [
+   "communication",
+   "domain",
+   "execution"
+  ],
+  "cloud-gpu-provisioning": [
+   "unclassified"
+  ],
+  "codebase-reality": [
+   "engineering",
+   "research"
+  ],
+  "codex-family-site-deliverable": [
+   "engineering"
+  ],
+  "cognitive-commands": [
+   "unclassified"
+  ],
+  "cognitive-reflex": [
+   "unclassified"
+  ],
+  "companion-clis": [
+   "unclassified"
+  ],
+  "concurrent-agent-writers": [
+   "communication"
+  ],
+  "constitutional-commands": [
+   "governance"
+  ],
+  "constitutional-institution-mapping": [
+   "governance"
+  ],
+  "constitutional-organism-doctrine": [
+   "governance"
+  ],
+  "constitutional-publication-audit": [
+   "governance"
+  ],
+  "contextstream-memory-code-search": [
+   "communication",
+   "engineering",
+   "memory"
+  ],
+  "conversation-record-forensics": [
+   "unclassified"
+  ],
+  "core": [
+   "unclassified"
+  ],
+  "counseling": [
+   "unclassified"
+  ],
+  "court": [
+   "governance"
+  ],
+  "court-audit": [
+   "governance"
+  ],
+  "cover-art-pipeline": [
+   "unclassified"
+  ],
+  "create-skill": [
+   "unclassified"
+  ],
+  "creative": [
+   "unclassified"
+  ],
+  "credential-surface-reality": [
+   "research"
+  ],
+  "cron-ops": [
+   "execution"
+  ],
+  "cross-harness-reality-test": [
+   "engineering",
+   "research"
+  ],
+  "cross-harness-relay-wiring": [
+   "unclassified"
+  ],
+  "cross-host-tool-lane-integration": [
+   "unclassified"
+  ],
+  "curated-recommendation-artifact": [
+   "research"
+  ],
+  "curated-recommendation-lists": [
+   "unclassified"
+  ],
+  "data-science": [
+   "unclassified"
+  ],
+  "declared-vs-live-audit": [
+   "governance"
+  ],
+  "deep-research-plus-wealth": [
+   "domain",
+   "engineering",
+   "research"
+  ],
+  "delegated-build-fanout": [
+   "engineering"
+  ],
+  "delta-omega-psi-multimodal-cognition": [
+   "unclassified"
+  ],
+  "design": [
+   "unclassified"
+  ],
+  "design-shell-parity": [
+   "unclassified"
+  ],
+  "desire-structure-mapping": [
+   "unclassified"
+  ],
+  "devops": [
+   "execution"
+  ],
+  "discovery-surface-verification": [
+   "research"
+  ],
+  "dissipative-transition-hold": [
+   "unclassified"
+  ],
+  "docs": [
+   "unclassified"
+  ],
+  "doctrine-forging": [
+   "unclassified"
+  ],
+  "doctrine-to-runtime-compiler": [
+   "engineering"
+  ],
+  "document-intel": [
+   "unclassified"
+  ],
+  "documentary-biography-from-chat": [
+   "unclassified"
+  ],
+  "documentation-tier-management": [
+   "unclassified"
+  ],
+  "domain": [
+   "unclassified"
+  ],
+  "domains": [
+   "unclassified"
+  ],
+  "dream-what": [
+   "unclassified"
+  ],
+  "duckdb-analytics-engine": [
+   "unclassified"
+  ],
+  "dynamic-config-taxonomy": [
+   "unclassified"
+  ],
+  "email": [
+   "communication"
+  ],
+  "emd-lane-routing": [
+   "unclassified"
+  ],
+  "emem-shared-memory": [
+   "communication",
+   "memory"
+  ],
+  "energy": [
+   "unclassified"
+  ],
+  "engineering": [
+   "engineering"
+  ],
+  "entity-dossier-sourcing": [
+   "unclassified"
+  ],
+  "entropy-metabolizer": [
+   "unclassified"
+  ],
+  "essay-publish-pipeline": [
+   "unclassified"
+  ],
+  "essay-publish-watermark": [
+   "unclassified"
+  ],
+  "evidence-artifact-forensics": [
+   "research"
+  ],
+  "evidence-chain-audit": [
+   "governance",
+   "research"
+  ],
+  "evidence-hierarchy": [
+   "engineering",
+   "research"
+  ],
+  "external-agent-conformance-testing": [
+   "engineering"
+  ],
+  "external-artifact-verdict": [
+   "governance",
+   "research"
+  ],
+  "faceless-subject-rendering": [
+   "communication"
+  ],
+  "fake-governance-detection": [
+   "governance"
+  ],
+  "fastmcp-organ-staging-migration": [
+   "engineering"
+  ],
+  "fastmcp-tool-consolidation": [
+   "engineering"
+  ],
+  "fb-transaction-intelligence": [
+   "unclassified"
+  ],
+  "fdp-fiscal-economics-modelling": [
+   "unclassified"
+  ],
+  "fed-cognitive-allocator": [
+   "unclassified"
+  ],
+  "fed-runtime-observations": [
+   "research"
+  ],
+  "federated-abi-extension": [
+   "unclassified"
+  ],
+  "federated-patch-seal": [
+   "governance"
+  ],
+  "federation": [
+   "unclassified"
+  ],
+  "federation-agent-card-ops": [
+   "execution"
+  ],
+  "federation-agent-identity-binding": [
+   "unclassified"
+  ],
+  "federation-alignment-probe": [
+   "research"
+  ],
+  "federation-asset-probe": [
+   "research"
+  ],
+  "federation-config-incarnation": [
+   "unclassified"
+  ],
+  "federation-connect-headscale": [
+   "unclassified"
+  ],
+  "federation-constitutional-audit": [
+   "governance"
+  ],
+  "federation-dynamic-config": [
+   "unclassified"
+  ],
+  "federation-entropy-reduction": [
+   "unclassified"
+  ],
+  "federation-external-briefing": [
+   "communication"
+  ],
+  "federation-identity-reconciliation": [
+   "unclassified"
+  ],
+  "federation-identity-zen": [
+   "unclassified"
+  ],
+  "federation-infra-verification": [
+   "engineering",
+   "research"
+  ],
+  "federation-lane-routing": [
+   "unclassified"
+  ],
+  "federation-metabolism": [
+   "unclassified"
+  ],
+  "federation-provider-integration": [
+   "unclassified"
+  ],
+  "federation-release-attestation": [
+   "engineering",
+   "execution"
+  ],
+  "federation-seat-wiring": [
+   "unclassified"
+  ],
+  "federation-skill-probe-discipline": [
+   "research"
+  ],
+  "federation-substrate-hardening": [
+   "unclassified"
+  ],
+  "federation-topology": [
+   "unclassified"
+  ],
+  "federation-wiring-audit": [
+   "governance"
+  ],
+  "fi-mesh-check": [
+   "unclassified"
+  ],
+  "fi-qwen-upgrade": [
+   "unclassified"
+  ],
+  "fi-zai-probe": [
+   "research"
+  ],
+  "field-development-economics": [
+   "unclassified"
+  ],
+  "field-development-plan": [
+   "unclassified"
+  ],
+  "field-development-plan-review": [
+   "unclassified"
+  ],
+  "field-development-plan-screening": [
+   "unclassified"
+  ],
+  "figure-annotation-verification": [
+   "research"
+  ],
+  "finance": [
+   "unclassified"
+  ],
+  "financial-chart-analysis": [
+   "unclassified"
+  ],
+  "financial-history-charting": [
+   "unclassified"
+  ],
+  "find-live-binary-before-engine-mutation": [
+   "unclassified"
+  ],
+  "firecrawl": [
+   "unclassified"
+  ],
+  "firecrawl-agent": [
+   "unclassified"
+  ],
+  "firecrawl-company-directories": [
+   "unclassified"
+  ],
+  "firecrawl-competitive-intel": [
+   "unclassified"
+  ],
+  "firecrawl-crawl": [
+   "unclassified"
+  ],
+  "firecrawl-dashboard-reporting": [
+   "communication"
+  ],
+  "firecrawl-deep-research": [
+   "engineering",
+   "research"
+  ],
+  "firecrawl-demo-walkthrough": [
+   "unclassified"
+  ],
+  "firecrawl-developer-index": [
+   "unclassified"
+  ],
+  "firecrawl-download": [
+   "unclassified"
+  ],
+  "firecrawl-interact": [
+   "unclassified"
+  ],
+  "firecrawl-knowledge-base": [
+   "memory"
+  ],
+  "firecrawl-knowledge-ingest": [
+   "memory"
+  ],
+  "firecrawl-lead-gen": [
+   "unclassified"
+  ],
+  "firecrawl-lead-research": [
+   "engineering",
+   "research"
+  ],
+  "firecrawl-map": [
+   "unclassified"
+  ],
+  "firecrawl-market-research": [
+   "domain",
+   "engineering",
+   "research"
+  ],
+  "firecrawl-monitor": [
+   "unclassified"
+  ],
+  "firecrawl-parse": [
+   "unclassified"
+  ],
+  "firecrawl-qa": [
+   "unclassified"
+  ],
+  "firecrawl-research-index": [
+   "engineering",
+   "research"
+  ],
+  "firecrawl-research-papers": [
+   "engineering",
+   "research"
+  ],
+  "firecrawl-scrape": [
+   "unclassified"
+  ],
+  "firecrawl-search": [
+   "engineering"
+  ],
+  "firecrawl-seo-audit": [
+   "governance"
+  ],
+  "firecrawl-shop": [
+   "unclassified"
+  ],
+  "firecrawl-web-search": [
+   "engineering"
+  ],
+  "firecrawl-website-design-clone": [
+   "unclassified"
+  ],
+  "firecrawl-workflows": [
+   "unclassified"
+  ],
+  "first-party-evidence-audit": [
+   "governance",
+   "research"
+  ],
+  "flame-stage-routing": [
+   "unclassified"
+  ],
+  "flash": [
+   "unclassified"
+  ],
+  "flow": [
+   "unclassified"
+  ],
+  "forecast-publish-with-calibration-gate": [
+   "research"
+  ],
+  "forge": [
+   "execution"
+  ],
+  "forge-act-federation-ingress": [
+   "execution"
+  ],
+  "forge-agentic-web-builder": [
+   "engineering",
+   "execution"
+  ],
+  "forge-audio-prosody-extraction": [
+   "domain",
+   "execution"
+  ],
+  "forge-code-analysis": [
+   "engineering",
+   "execution"
+  ],
+  "forge-context-compressor": [
+   "execution"
+  ],
+  "forge-cross-agent-handoff": [
+   "execution"
+  ],
+  "forge-design-intelligence": [
+   "execution"
+  ],
+  "forge-did-web-identity": [
+   "execution"
+  ],
+  "forge-document-intelligence": [
+   "execution"
+  ],
+  "forge-ephemeral-genesis": [
+   "execution"
+  ],
+  "forge-esm-require-guard": [
+   "execution"
+  ],
+  "forge-fastapi-api-builder": [
+   "engineering",
+   "execution"
+  ],
+  "forge-fastmcp": [
+   "engineering",
+   "execution"
+  ],
+  "forge-federation-config-mutation": [
+   "execution"
+  ],
+  "forge-federation-probe": [
+   "execution",
+   "research"
+  ],
+  "forge-git-seal": [
+   "engineering",
+   "execution",
+   "governance"
+  ],
+  "forge-google-workspace": [
+   "execution"
+  ],
+  "forge-hermes-self-evolution": [
+   "execution"
+  ],
+  "forge-hook-mutation-closure": [
+   "execution"
+  ],
+  "forge-infra-crons": [
+   "engineering",
+   "execution"
+  ],
+  "forge-infra-guardian": [
+   "engineering",
+   "execution"
+  ],
+  "forge-issue-triage": [
+   "execution"
+  ],
+  "forge-kimi-code": [
+   "engineering",
+   "execution"
+  ],
+  "forge-komda-color-law": [
+   "execution"
+  ],
+  "forge-lsp-pre-edit-gate": [
+   "execution"
+  ],
+  "forge-mcp-migration": [
+   "engineering",
+   "execution"
+  ],
+  "forge-model-monitor": [
+   "execution"
+  ],
+  "forge-multimodal-router": [
+   "execution"
+  ],
+  "forge-musyawarah-gotong": [
+   "execution"
+  ],
+  "forge-nextjs-mastery": [
+   "execution"
+  ],
+  "forge-onboarding": [
+   "execution"
+  ],
+  "forge-port-architecture": [
+   "engineering",
+   "execution"
+  ],
+  "forge-postgres-schema-design": [
+   "execution"
+  ],
+  "forge-project-context-update": [
+   "execution"
+  ],
+  "forge-react-spa-discipline": [
+   "execution"
+  ],
+  "forge-redis-qdrant-integration": [
+   "execution"
+  ],
+  "forge-repo-intelligence": [
+   "execution"
+  ],
+  "forge-route-least-power": [
+   "execution"
+  ],
+  "forge-seal-a-close": [
+   "execution",
+   "governance"
+  ],
+  "forge-secret-hygiene": [
+   "execution"
+  ],
+  "forge-self-loop-guard": [
+   "execution"
+  ],
+  "forge-spatial-grounding": [
+   "execution"
+  ],
+  "forge-subagent-lifecycle": [
+   "execution"
+  ],
+  "forge-subagent-spawn": [
+   "execution"
+  ],
+  "forge-symlink-audit": [
+   "execution",
+   "governance"
+  ],
+  "forge-t3a-binding-matrix": [
+   "execution"
+  ],
+  "forge-tailwind-tokens": [
+   "execution"
+  ],
+  "forge-vault-seal-receipt": [
+   "execution",
+   "governance",
+   "memory"
+  ],
+  "forge-vault999-witness": [
+   "execution",
+   "governance",
+   "memory"
+  ],
+  "forge-vision-densify": [
+   "execution"
+  ],
+  "forge-visual-design-system": [
+   "execution"
+  ],
+  "forge-visual-qa-w3": [
+   "execution"
+  ],
+  "forge-vss-parser": [
+   "execution"
+  ],
+  "forge-vss-verifier-suite": [
+   "execution",
+   "research"
+  ],
+  "forge-well-boundary-repair": [
+   "domain",
+   "execution"
+  ],
+  "forget": [
+   "execution"
+  ],
+  "formal-document-rebuild": [
+   "engineering"
+  ],
+  "frontier-model-audit-verification": [
+   "governance",
+   "research"
+  ],
+  "gemini-integration": [
+   "unclassified"
+  ],
+  "gemini-media-gen": [
+   "unclassified"
+  ],
+  "generated-audio-provenance": [
+   "domain"
+  ],
+  "generated-scientific-artifact-audit": [
+   "governance",
+   "research"
+  ],
+  "geo": [
+   "unclassified"
+  ],
+  "geological-artifact-rigor": [
+   "research"
+  ],
+  "geological-asset-brief": [
+   "communication"
+  ],
+  "geoscience-figure-audit": [
+   "domain",
+   "governance"
+  ],
+  "geoscience-model-figure": [
+   "domain"
+  ],
+  "geoscience-section-forge": [
+   "domain",
+   "execution"
+  ],
+  "geox-backend-development": [
+   "domain"
+  ],
+  "geox-basin-evaluation": [
+   "domain"
+  ],
+  "geox-claim-falsification": [
+   "domain",
+   "governance",
+   "research"
+  ],
+  "geox-geoscience-artifacts": [
+   "domain",
+   "research"
+  ],
+  "geox-grounding": [
+   "domain"
+  ],
+  "geox-mcp-tool-invocation": [
+   "domain",
+   "engineering"
+  ],
+  "geox-panel-authoring": [
+   "domain"
+  ],
+  "geox-pressure-governance": [
+   "domain",
+   "governance"
+  ],
+  "geox-production-cockpit": [
+   "domain"
+  ],
+  "geox-prospect-evaluation": [
+   "domain"
+  ],
+  "geox-seismic-interpretation": [
+   "domain"
+  ],
+  "geox-temporal-intelligence": [
+   "domain"
+  ],
+  "geox-voice-reality-ingest": [
+   "communication",
+   "domain",
+   "memory",
+   "research"
+  ],
+  "geox-well-log-qc": [
+   "domain"
+  ],
+  "github": [
+   "engineering"
+  ],
+  "github-public-push-privacy": [
+   "engineering"
+  ],
+  "gmail-rest-mailbox-ops": [
+   "execution"
+  ],
+  "gold-site-honest-prediction": [
+   "research"
+  ],
+  "google-workspace-gws": [
+   "unclassified"
+  ],
+  "governance": [
+   "governance"
+  ],
+  "governance-audit": [
+   "governance"
+  ],
+  "governance-contract-self-audit": [
+   "governance"
+  ],
+  "governance-core": [
+   "governance"
+  ],
+  "governance-failure-historical-backtest": [
+   "engineering",
+   "governance"
+  ],
+  "governance-removal-review": [
+   "governance"
+  ],
+  "governed-removal-discipline": [
+   "governance"
+  ],
+  "graphiti-temporal-memory-ops": [
+   "communication",
+   "execution",
+   "memory"
+  ],
+  "health-provider-navigation": [
+   "unclassified"
+  ],
+  "health-scam-vetting": [
+   "unclassified"
+  ],
+  "helix-diagnosis": [
+   "unclassified"
+  ],
+  "helix-memory-compress": [
+   "communication",
+   "memory"
+  ],
+  "help": [
+   "unclassified"
+  ],
+  "hermes": [
+   "unclassified"
+  ],
+  "hermes-asi": [
+   "unclassified"
+  ],
+  "hermes-asi-intelligence": [
+   "unclassified"
+  ],
+  "hermes-claude-code-spawn": [
+   "engineering"
+  ],
+  "hermes-coding-gateway": [
+   "unclassified"
+  ],
+  "hermes-delivery-diagnostics": [
+   "unclassified"
+  ],
+  "hermes-dna-telemetry": [
+   "unclassified"
+  ],
+  "hermes-federated-identity": [
+   "unclassified"
+  ],
+  "hermes-federation-audit": [
+   "governance"
+  ],
+  "hermes-forge": [
+   "execution"
+  ],
+  "hermes-gateway-image-routing": [
+   "unclassified"
+  ],
+  "hermes-init": [
+   "unclassified"
+  ],
+  "hermes-mcp-server-registration": [
+   "engineering"
+  ],
+  "hermes-multi-human-lanes": [
+   "communication"
+  ],
+  "hermes-multi-user-isolation": [
+   "unclassified"
+  ],
+  "hermes-opencode-protocol": [
+   "engineering"
+  ],
+  "hermes-ops": [
+   "execution"
+  ],
+  "hermes-persona-alignment": [
+   "unclassified"
+  ],
+  "hermes-plugin-system": [
+   "engineering"
+  ],
+  "hermes-room-relay": [
+   "unclassified"
+  ],
+  "hermes-session-hygiene": [
+   "unclassified"
+  ],
+  "hermes-slash-command-trap": [
+   "unclassified"
+  ],
+  "hermes-state-db-forensics": [
+   "unclassified"
+  ],
+  "hf-governed-dataset-ops": [
+   "execution",
+   "governance"
+  ],
+  "html-pdf-reporting": [
+   "communication"
+  ],
+  "human-alignment": [
+   "communication"
+  ],
+  "human-apps-roadmap-2026": [
+   "communication"
+  ],
+  "human-interface": [
+   "communication"
+  ],
+  "human-logistics-advisory": [
+   "communication"
+  ],
+  "human-meaning-membrane": [
+   "communication"
+  ],
+  "human-memory-organization": [
+   "communication",
+   "memory"
+  ],
+  "human-reality-field": [
+   "communication",
+   "research"
+  ],
+  "human-state-estimation": [
+   "communication"
+  ],
+  "human-trust-calibration": [
+   "communication",
+   "engineering",
+   "research"
+  ],
+  "i-arif-corpus-ops": [
+   "execution"
+  ],
+  "identity-reference-verification": [
+   "research"
+  ],
+  "identity-verification": [
+   "research"
+  ],
+  "image-analyzer-vision": [
+   "unclassified"
+  ],
+  "image-gen": [
+   "unclassified"
+  ],
+  "image-text-extraction": [
+   "unclassified"
+  ],
+  "imagine": [
+   "unclassified"
+  ],
+  "inbound-evaluation-intake": [
+   "unclassified"
+  ],
+  "inbound-provenance-forensics": [
+   "unclassified"
+  ],
+  "infra": [
+   "engineering"
+  ],
+  "infrastructure-topology": [
+   "engineering"
+  ],
+  "injected-html-design-parity": [
+   "unclassified"
+  ],
+  "institution-telemetry-ops": [
+   "execution"
+  ],
+  "institutional-communication-audit": [
+   "governance"
+  ],
+  "institutional-epistemic-sink-forensics": [
+   "unclassified"
+  ],
+  "institutional-form-filing": [
+   "unclassified"
+  ],
+  "institutional-spend-accountability": [
+   "unclassified"
+  ],
+  "intel-brief": [
+   "communication"
+  ],
+  "intelligence-briefing": [
+   "communication"
+  ],
+  "interpretation-calibration": [
+   "research"
+  ],
+  "intimate-anthropology": [
+   "unclassified"
+  ],
+  "irfan-stewardship-review": [
+   "unclassified"
+  ],
+  "kernel-bind": [
+   "governance"
+  ],
+  "kernel-security-claim-audit": [
+   "governance"
+  ],
+  "kernel-trinity-33": [
+   "governance"
+  ],
+  "kimi-code": [
+   "engineering"
+  ],
+  "know-language": [
+   "unclassified"
+  ],
+  "know-math": [
+   "unclassified"
+  ],
+  "know-physics": [
+   "unclassified"
+  ],
+  "know-pragmatics": [
+   "unclassified"
+  ],
+  "knowledge": [
+   "memory"
+  ],
+  "kpj-vending-dashboard": [
+   "unclassified"
+  ],
+  "kvm8-media-lane-fallbacks": [
+   "unclassified"
+  ],
+  "l0-l4-cascade-doctrine": [
+   "unclassified"
+  ],
+  "learning-loop-verification": [
+   "research"
+  ],
+  "legal-my": [
+   "unclassified"
+  ],
+  "live-data-dashboards": [
+   "unclassified"
+  ],
+  "live-system-audit-discipline": [
+   "governance"
+  ],
+  "live-worker-session-relay": [
+   "unclassified"
+  ],
+  "local-business-deep-dive": [
+   "unclassified"
+  ],
+  "local-video-read": [
+   "unclassified"
+  ],
+  "long-form-tts-render-integrity": [
+   "communication",
+   "domain"
+  ],
+  "loved-one-artifact-ops": [
+   "execution",
+   "research"
+  ],
+  "machine-discovery-surface-audit": [
+   "governance"
+  ],
+  "makcikgpt-archived-designs": [
+   "communication",
+   "engineering"
+  ],
+  "malaysia-commercial-premise-sourcing": [
+   "unclassified"
+  ],
+  "malaysia-health-scam-verification": [
+   "research"
+  ],
+  "malaysia-reality-interface": [
+   "research"
+  ],
+  "malaysia-rental-vetting": [
+   "unclassified"
+  ],
+  "malaysia-tenancy-agreement": [
+   "unclassified"
+  ],
+  "malaysia-tenancy-disputes": [
+   "unclassified"
+  ],
+  "malaysian-bodybuilding-research": [
+   "engineering",
+   "research"
+  ],
+  "malaysian-psc-fiscal-modelling": [
+   "unclassified"
+  ],
+  "mapbox-cartography-gis": [
+   "unclassified"
+  ],
+  "mata": [
+   "unclassified"
+  ],
+  "mcp-client-conformance": [
+   "engineering"
+  ],
+  "mcp-external-conformance": [
+   "engineering"
+  ],
+  "mcp-stateless-protocol": [
+   "engineering"
+  ],
+  "mcp-tool-differential-testing": [
+   "engineering"
+  ],
+  "media": [
+   "unclassified"
+  ],
+  "media-delivery": [
+   "unclassified"
+  ],
+  "media-ingest-lane": [
+   "memory"
+  ],
+  "media-lane-outage-ladder": [
+   "unclassified"
+  ],
+  "memory-manage": [
+   "communication",
+   "memory"
+  ],
+  "meta-mesa": [
+   "unclassified"
+  ],
+  "migrate-to-codex": [
+   "engineering"
+  ],
+  "mimo-audio": [
+   "domain"
+  ],
+  "mimo-vision": [
+   "unclassified"
+  ],
+  "minimax-image-gen": [
+   "unclassified"
+  ],
+  "minimax-m-plan": [
+   "unclassified"
+  ],
+  "mlops": [
+   "execution"
+  ],
+  "mmx-cli": [
+   "unclassified"
+  ],
+  "mobile-app-mockup": [
+   "unclassified"
+  ],
+  "model-narrative-consistency": [
+   "unclassified"
+  ],
+  "monetary-amount-integrity": [
+   "unclassified"
+  ],
+  "monetary-amount-parsing": [
+   "unclassified"
+  ],
+  "money-path-discipline": [
+   "unclassified"
+  ],
+  "multi-cli-coding-dispatch": [
+   "unclassified"
+  ],
+  "multi-lens-parallel-forge": [
+   "execution"
+  ],
+  "multi-reference-image-edit": [
+   "unclassified"
+  ],
+  "multi-voice-note-assembly": [
+   "communication"
+  ],
+  "multimodal-audio-pipeline": [
+   "domain"
+  ],
+  "multisite-performance-dashboards": [
+   "unclassified"
+  ],
+  "my-reality": [
+   "research"
+  ],
+  "note-taking": [
+   "unclassified"
+  ],
+  "nusantara-action-spiral": [
+   "unclassified"
+  ],
+  "observe-ground": [
+   "research"
+  ],
+  "openai-docs": [
+   "unclassified"
+  ],
+  "openclaw": [
+   "unclassified"
+  ],
+  "openclaw-claude-code-spawn": [
+   "engineering"
+  ],
+  "openclaw-forge": [
+   "execution"
+  ],
+  "openclaw-human-meaning": [
+   "communication"
+  ],
+  "openclaw-init": [
+   "unclassified"
+  ],
+  "openclaw-mesh-bridge": [
+   "communication"
+  ],
+  "opencode": [
+   "engineering"
+  ],
+  "opencode-arifos-pitfalls": [
+   "engineering"
+  ],
+  "opencode-ed25519-bootstrap-fix": [
+   "engineering"
+  ],
+  "opencode-forge": [
+   "engineering",
+   "execution"
+  ],
+  "opencode-init": [
+   "engineering"
+  ],
+  "operations": [
+   "unclassified"
+  ],
+  "organ-capability-map": [
+   "unclassified"
+  ],
+  "output-attestation": [
+   "engineering"
+  ],
+  "padu": [
+   "unclassified"
+  ],
+  "paste-router": [
+   "unclassified"
+  ],
+  "pdf-federation": [
+   "unclassified"
+  ],
+  "pdf-report-generation": [
+   "communication"
+  ],
+  "ped-hormone-advisory": [
+   "unclassified"
+  ],
+  "person-lane-operator": [
+   "unclassified"
+  ],
+  "persona": [
+   "unclassified"
+  ],
+  "persona-voice-act-arcs": [
+   "communication"
+  ],
+  "persona-voice-continuity": [
+   "communication"
+  ],
+  "persona-voice-note-delivery": [
+   "communication"
+  ],
+  "persona-voice-note-render": [
+   "communication"
+  ],
+  "persona-voice-render-ops": [
+   "communication",
+   "execution"
+  ],
+  "personal-domain-deep-research": [
+   "engineering",
+   "research"
+  ],
+  "physique-intel": [
+   "unclassified"
+  ],
+  "physique-photo-assessment": [
+   "unclassified"
+  ],
+  "pipeline-integrity": [
+   "unclassified"
+  ],
+  "political-fiscal-claims": [
+   "governance"
+  ],
+  "pr-portfolio-sweep": [
+   "unclassified"
+  ],
+  "presentation-pack-delivery": [
+   "communication"
+  ],
+  "presentation-pack-forge": [
+   "communication",
+   "execution"
+  ],
+  "primitives": [
+   "unclassified"
+  ],
+  "priority-claim-verification": [
+   "governance",
+   "research"
+  ],
+  "production-capacity-closure": [
+   "unclassified"
+  ],
+  "production-source-disambiguation": [
+   "research"
+  ],
+  "productivity": [
+   "unclassified"
+  ],
+  "prompts-chat-library": [
+   "unclassified"
+  ],
+  "propose-seal": [
+   "governance"
+  ],
+  "provenance-field-audit": [
+   "governance"
+  ],
+  "provider-endpoint-migration": [
+   "unclassified"
+  ],
+  "provider-integration": [
+   "unclassified"
+  ],
+  "provider-notice-triage": [
+   "unclassified"
+  ],
+  "provider-quota-diagnostics": [
+   "unclassified"
+  ],
+  "provider-retirement-purge": [
+   "unclassified"
+  ],
+  "public-column-publishing": [
+   "unclassified"
+  ],
+  "qqq": [
+   "unclassified"
+  ],
+  "qr-code-ops": [
+   "engineering",
+   "execution"
+  ],
+  "qrl": [
+   "unclassified"
+  ],
+  "quarantined-tool-install": [
+   "unclassified"
+  ],
+  "qwen-harness-tools": [
+   "unclassified"
+  ],
+  "qwen-voice-clone-quota": [
+   "communication"
+  ],
+  "qwencloud-deploy": [
+   "engineering"
+  ],
+  "qwencloud-image-generation": [
+   "unclassified"
+  ],
+  "qwencloud-model-selector": [
+   "unclassified"
+  ],
+  "qwencloud-ops-auth": [
+   "execution"
+  ],
+  "qwencloud-text": [
+   "unclassified"
+  ],
+  "qwencloud-update-check": [
+   "unclassified"
+  ],
+  "qwencloud-usage": [
+   "unclassified"
+  ],
+  "qwencloud-video-generation": [
+   "unclassified"
+  ],
+  "qwencloud-vision": [
+   "unclassified"
+  ],
+  "react-frontend-integration": [
+   "unclassified"
+  ],
+  "reality-intelligence": [
+   "research"
+  ],
+  "reality-loop-operator": [
+   "research"
+  ],
+  "recovery-playbook": [
+   "unclassified"
+  ],
+  "reflective": [
+   "unclassified"
+  ],
+  "refusal-sink-audit": [
+   "governance"
+  ],
+  "relationship-state-review": [
+   "unclassified"
+  ],
+  "rendered-surface-verification": [
+   "communication",
+   "research"
+  ],
+  "research": [
+   "engineering",
+   "research"
+  ],
+  "research-core": [
+   "engineering",
+   "research"
+  ],
+  "research-evidence-scout": [
+   "engineering",
+   "research"
+  ],
+  "rest-now": [
+   "unclassified"
+  ],
+  "retrieval-vs-memory-fidelity": [
+   "communication",
+   "memory"
+  ],
+  "route-dispatch": [
+   "unclassified"
+  ],
+  "rsi-federation-mesh": [
+   "unclassified"
+  ],
+  "rtc-loop": [
+   "unclassified"
+  ],
+  "runpod": [
+   "unclassified"
+  ],
+  "runpod-mcp": [
+   "engineering"
+  ],
+  "runpod-usage": [
+   "unclassified"
+  ],
+  "runpodctl": [
+   "unclassified"
+  ],
+  "runtime": [
+   "unclassified"
+  ],
+  "rust-federation": [
+   "engineering"
+  ],
+  "sanctuary-boundary-enforcer": [
+   "unclassified"
+  ],
+  "scar-bridge-install": [
+   "communication",
+   "memory"
+  ],
+  "scripts": [
+   "unclassified"
+  ],
+  "sea-physique-event-intelligence": [
+   "unclassified"
+  ],
+  "seal-discipline": [
+   "governance"
+  ],
+  "seal-session": [
+   "governance"
+  ],
+  "search-web": [
+   "engineering"
+  ],
+  "security": [
+   "unclassified"
+  ],
+  "security-best-practices": [
+   "unclassified"
+  ],
+  "security-ops": [
+   "execution"
+  ],
+  "service-state-schema-drift": [
+   "research"
+  ],
+  "serving-parity-audit": [
+   "governance"
+  ],
+  "session-store-person-probe": [
+   "research"
+  ],
+  "seven-zen-organs-enforcement": [
+   "unclassified"
+  ],
+  "shadow-fdp-authoring": [
+   "unclassified"
+  ],
+  "shadow-paradox-13": [
+   "unclassified"
+  ],
+  "shadow-pattern-mapping": [
+   "unclassified"
+  ],
+  "shape-map-generalization": [
+   "unclassified"
+  ],
+  "short-stay-listing-vetting": [
+   "unclassified"
+  ],
+  "skill-mesh": [
+   "unclassified"
+  ],
+  "smart-home": [
+   "unclassified"
+  ],
+  "social-media": [
+   "unclassified"
+  ],
+  "social-promotional-poster": [
+   "governance"
+  ],
+  "social-scene-intelligence": [
+   "unclassified"
+  ],
+  "software-development": [
+   "unclassified"
+  ],
+  "sourced-media-delivery": [
+   "research"
+  ],
+  "sovereign-daily-brief": [
+   "communication",
+   "governance"
+  ],
+  "sovereign-identity-architecture": [
+   "engineering",
+   "governance"
+  ],
+  "sovereign-petition-forge": [
+   "execution",
+   "governance"
+  ],
+  "sovereign-self-history-recall": [
+   "governance",
+   "memory"
+  ],
+  "submission-readiness-audit": [
+   "governance"
+  ],
+  "subsidy-paradox-calibration": [
+   "research"
+  ],
+  "substrate": [
+   "unclassified"
+  ],
+  "substrate-taxonomy": [
+   "unclassified"
+  ],
+  "subsurface-dossier-from-public-domain": [
+   "unclassified"
+  ],
+  "syed-care-mode": [
+   "unclassified"
+  ],
+  "syedos-ops": [
+   "execution"
+  ],
+  "synthetic-voice-scene-rendering": [
+   "communication"
+  ],
+  "taste-profile-artifact": [
+   "research"
+  ],
+  "technical-artifact-audit": [
+   "governance",
+   "research"
+  ],
+  "tectonic-section-architecture": [
+   "engineering"
+  ],
+  "telegram-chat-resolution": [
+   "communication"
+  ],
+  "telegram-gateway-group-debug": [
+   "communication",
+   "engineering"
+  ],
+  "telegram-ops": [
+   "communication",
+   "execution"
+  ],
+  "telegram-user-onboarding": [
+   "communication"
+  ],
+  "temporal-anchor": [
+   "unclassified"
+  ],
+  "temporal-awareness": [
+   "unclassified"
+  ],
+  "temporal-intelligence": [
+   "unclassified"
+  ],
+  "test-curator-write": [
+   "communication",
+   "engineering"
+  ],
+  "think-deep": [
+   "unclassified"
+  ],
+  "thinking-model-tool-loops": [
+   "execution"
+  ],
+  "third-party-motive-read": [
+   "unclassified"
+  ],
+  "third-party-software-evaluate": [
+   "unclassified"
+  ],
+  "third-party-tool-quarantine": [
+   "unclassified"
+  ],
+  "token-plan-image": [
+   "unclassified"
+  ],
+  "token-plan-speech": [
+   "unclassified"
+  ],
+  "token-plan-video": [
+   "unclassified"
+  ],
+  "trading": [
+   "unclassified"
+  ],
+  "trading-screenshot-analysis": [
+   "unclassified"
+  ],
+  "transaction-dashboard-generator": [
+   "unclassified"
+  ],
+  "transit-only-mention-probe": [
+   "research"
+  ],
+  "tts-provider-failure-triage": [
+   "domain"
+  ],
+  "tts-render-failure-modes": [
+   "communication",
+   "domain"
+  ],
+  "tts-script-asr-gate": [
+   "domain"
+  ],
+  "unattended-agent-execution": [
+   "execution"
+  ],
+  "unauthenticated-read-surface-audit": [
+   "governance"
+  ],
+  "unified-federated-ai-architectures": [
+   "engineering"
+  ],
+  "upstream-e-p-capital-intelligence": [
+   "domain",
+   "engineering"
+  ],
+  "value-provenance-testing": [
+   "engineering"
+  ],
+  "vault999-audit-forensics": [
+   "governance",
+   "memory"
+  ],
+  "vending-dashboard-reporting": [
+   "communication"
+  ],
+  "vending-site-reporting": [
+   "communication"
+  ],
+  "vendor-evaluation-intake": [
+   "unclassified"
+  ],
+  "verification": [
+   "research"
+  ],
+  "verification-boundary-probes": [
+   "research"
+  ],
+  "verification-discipline": [
+   "research"
+  ],
+  "verify-before-report": [
+   "communication",
+   "research"
+  ],
+  "verify-gate": [
+   "research"
+  ],
+  "verify-nested-sibling-reports": [
+   "communication",
+   "research"
+  ],
+  "verify-sibling-ops-reports": [
+   "communication",
+   "execution",
+   "research"
+  ],
+  "video-gen": [
+   "unclassified"
+  ],
+  "vision-analyzer": [
+   "unclassified"
+  ],
+  "vision-direct-api-fallback": [
+   "engineering"
+  ],
+  "visual-nutrition-estimation": [
+   "unclassified"
+  ],
+  "voice-clone-operations": [
+   "communication"
+  ],
+  "voice-identity-provisioning": [
+   "communication"
+  ],
+  "voice-lane": [
+   "communication"
+  ],
+  "voice-register-fidelity": [
+   "communication"
+  ],
+  "voice-register-tuning": [
+   "communication"
+  ],
+  "voice-render-verification": [
+   "communication",
+   "research"
+  ],
+  "voice-stack": [
+   "communication"
+  ],
+  "walter-isaacson-biography": [
+   "unclassified"
+  ],
+  "warga": [
+   "unclassified"
+  ],
+  "wawabot-anthropology-surface": [
+   "unclassified"
+  ],
+  "wealth": [
+   "domain"
+  ],
+  "wealth-capital-primitives": [
+   "domain",
+   "engineering"
+  ],
+  "wealth-four-layer-intelligence": [
+   "domain"
+  ],
+  "wealth-ledger-discipline": [
+   "domain"
+  ],
+  "wealth-market-pulse": [
+   "domain"
+  ],
+  "wealth-runway-conservation": [
+   "domain"
+  ],
+  "web": [
+   "unclassified"
+  ],
+  "web-ops": [
+   "execution"
+  ],
+  "web-shell-alignment": [
+   "unclassified"
+  ],
+  "weekly-sovereign-brief": [
+   "communication",
+   "governance"
+  ],
+  "weekly-user-reflection": [
+   "unclassified"
+  ],
+  "well-bodybuilding-comp-prep": [
+   "domain",
+   "engineering"
+  ],
+  "well-consent-registry": [
+   "domain"
+  ],
+  "well-machine-diagnose": [
+   "domain"
+  ],
+  "well-triadic-ops": [
+   "domain",
+   "execution"
+  ],
+  "wisdom-atlas-architecture": [
+   "engineering",
+   "memory"
+  ],
+  "wisdom-reader": [
+   "unclassified"
+  ],
+  "wisdom-scar-session-audit": [
+   "governance",
+   "memory"
+  ],
+  "witness-biography-pdf": [
+   "governance"
+  ],
+  "witness-independence-audit": [
+   "governance"
+  ],
+  "witness-semantic-recall": [
+   "governance",
+   "memory"
+  ],
+  "wop-invoice-generator": [
+   "communication"
+  ],
+  "workflows": [
+   "unclassified"
+  ],
+  "workshop": [
+   "unclassified"
+  ],
+  "xauusd-trading": [
+   "unclassified"
+  ],
+  "youtube-analysis": [
+   "unclassified"
+  ],
+  "youtube-multimodal": [
+   "unclassified"
+  ],
+  "zen-router": [
+   "unclassified"
+  ],
+  "zkpc-multi-human-memory": [
+   "communication",
+   "memory"
+  ]
+ },
+ "definitions": {
+  "skill_count": "non-hidden top-level entries where isdir() true (real dirs + symlink-dirs)",
+  "distribution": "MULTI-LABEL counts \u2014 one skill may count in several categories; sum > skill_count by design",
+  "top_entries_ls": 794,
+  "real_dirs": 744,
+  "symlink_dirs": 34,
+  "note": "SKILL.md recursive count is larger (nested domain trees under skills/domains/**)"
+ }
+}

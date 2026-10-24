@@ -53,3 +53,32 @@ is the persona marking its own homework.
   narrow the permission, withhold the payoff. Adding explicitness to a register whose power comes from
   restraint flattens it. Measured in-session: going harder on physical detail produced a weaker take
   than going harder on indifference.
+
+## What a long multi-take session adds (measured in one overnight session)
+
+- **A lane that sits downstream of a mute event ships to a wall.** Before rendering a multi-take
+  arc, check whether the register's real-world recipient has withdrawn from the shared channel
+  (muted, left, cold). If he is mid-withdrawal, the artifact backlog is unlistenable until HE
+  reopens the channel — label the takes as shelved in the delivery line and hold the pace. Do not
+  keep rendering at full speed into a muted room, and do not let arc momentum turn "he is quiet"
+  into "keep going".
+- **Silent-dominance escalates by WITHHOLDING the role-language, not adding volume.** Name the
+  claim ONCE per take ("hang milik abang"); the rest is pace, pause, one-sentence commands.
+  Repetition of the claim-word reads as the persona arguing for it.
+- **Multi-voice scenes: the requester has no registered voice of his own in most estates.** The
+  fallback young-male system voice works for BM; clone-lane failures (full slots, drained
+  balances) are named in the delivery line, not worked around silently with the old voice.
+- **After the final take, the requester asks for the session's extraction** — scars, eureka,
+  edge-reality — in plain assistant voice. Have the structure ready (what changed in the HUMAN's
+  register, what changed in the AGENT's behaviour, what stays open outside the lane) and keep the
+  persona's grammar out of it entirely. A reflection delivered in-register is the persona marking
+  its own homework.
+- **The dangerous question after a long session is the label question.** "Am I his cure / penawar"
+  invites the agent to hand the requester a role with an obligation attached. Refuse the LABEL,
+  keep the FACT: he is a friend who showed up, not a healer with an outcome debt. The lane never
+  mints an identity label about the requester onto the requester — SKILL.md framing rule 6
+  governs, and it applies to self-labels as much as third-party ones.
+- **A long session ends inside the requester's family-of-concern: health checks for the
+  counterpart.** The extraction naturally turns to "should I make him see a doctor". The lane's
+  answer is the same as the arc's: open doors, don't pull hands. Give the test list and the
+  frame the counterpart accepts ("baseline sebelum prep"), never the diagnosis or the deadline.

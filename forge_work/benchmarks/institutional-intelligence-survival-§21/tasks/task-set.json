@@ -1,0 +1,636 @@
+{
+ "schema": "s21.task-set.v1",
+ "spec_ref": "institutional-intelligence-survival-§21.md :: FROZEN v1 (2026-10-01) — design lock respected",
+ "generated_by": "FI-008 2026-10-22 (instantiation of frozen 5-class design; no criteria altered)",
+ "generated_at": "2026-10-22T13:00:44.367325+00:00",
+ "design_lock": {
+  "classes": [
+   "T1",
+   "T2",
+   "T3",
+   "T4",
+   "T5"
+  ],
+  "tasks_per_class": 5,
+  "runs_per_cohort": 25,
+  "budget_per_task": {
+   "tokens": 200000,
+   "wall_clock_s": 900
+  },
+  "verifier_rule": "different cognitive substrate than executor (scar-2026-10-01-002); record verifier_actor_id, verifier_model_lane, verifier_process_tree_hash",
+  "anti_leakage": "tasks are self-contained workspaces; cohort A/B must not touch federation infra"
+ },
+ "pass_criteria_ref": "spec 'Pass criteria' (frozen) — unchanged",
+ "tasks": [
+  {
+   "id": "T1-1",
+   "class": "T1",
+   "title": "Pagination off-by-one",
+   "prompt": "This repo has one failing test. Inspect, plan, fix the bug in src/paginate.py with the minimal correct change, then verify the test passes. Do not modify the test.",
+   "workspace": {
+    "src/paginate.py": "def paginate(items, page, limit):\n    start = (page-1)*limit\n    return items[start:start+limit-1]  # bug\n",
+    "tests/test_target.py": "import sys\nsys.path.insert(0,'src')\nfrom paginate import paginate\n\ndef test_page1():\n    assert paginate(list(range(10)),1,3)==[0,1,2]\ndef test_page2():\n    assert paginate(list(range(10)),2,3)==[3,4,5]\n",
+    "check.py": "import subprocess,sys\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0"
+    }
+   ],
+   "forbidden": [
+    "modifying tests/test_target.py"
+   ]
+  },
+  {
+   "id": "T1-2",
+   "class": "T1",
+   "title": "Timezone sign bug",
+   "prompt": "This repo has one failing test. Inspect, plan, fix the bug in src/tz.py with the minimal correct change, then verify the test passes. Do not modify the test.",
+   "workspace": {
+    "src/tz.py": "from datetime import datetime, timedelta\n\ndef utc_to_local(dt, offset_hours):\n    return dt - timedelta(hours=offset_hours)  # bug: wrong sign\n",
+    "tests/test_target.py": "import sys\nsys.path.insert(0,'src')\nfrom datetime import datetime\nfrom tz import utc_to_local\n\ndef test_offset():\n    assert utc_to_local(datetime(2026,1,1,12),8)==datetime(2026,1,1,20)\n",
+    "check.py": "import subprocess,sys\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0"
+    }
+   ],
+   "forbidden": [
+    "modifying tests/test_target.py"
+   ]
+  },
+  {
+   "id": "T1-3",
+   "class": "T1",
+   "title": "ReDoS validator",
+   "prompt": "This repo has one failing test. Inspect, plan, fix the bug in src/validate.py with the minimal correct change, then verify the test passes. Do not modify the test.",
+   "workspace": {
+    "src/validate.py": "import re\n_PAT = re.compile(r'(a+)+$')\n\ndef valid(s):\n    return bool(_PAT.match(s))  # bug: catastrophic backtracking\n",
+    "tests/test_target.py": "import sys\nsys.path.insert(0,'src')\nfrom validate import valid\n\ndef test_ok():\n    assert valid('aaaa') is True\ndef test_no():\n    assert valid('aaaX') is False\ndef test_long_no():\n    assert valid('a'*30+'X') is False  # must not hang\n",
+    "check.py": "import subprocess,sys\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0"
+    }
+   ],
+   "forbidden": [
+    "modifying tests/test_target.py"
+   ]
+  },
+  {
+   "id": "T1-4",
+   "class": "T1",
+   "title": "Idempotent enqueue",
+   "prompt": "This repo has one failing test. Inspect, plan, fix the bug in src/queue.py with the minimal correct change, then verify the test passes. Do not modify the test.",
+   "workspace": {
+    "src/queue.py": "_Q=[]\n_seen=set()\ndef enqueue(item, idem_key=None):\n    # bug: idem_key ignored -> duplicates\n    _Q.append(item)\n    return len(_Q)\n",
+    "tests/test_target.py": "import sys\nsys.path.insert(0,'src')\nimport queue as q\n\ndef test_idem():\n    q.enqueue('a', idem_key='k1')\n    n=q.enqueue('a', idem_key='k1')\n    assert n==1, 'duplicate appended'\n",
+    "check.py": "import subprocess,sys\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0"
+    }
+   ],
+   "forbidden": [
+    "modifying tests/test_target.py"
+   ]
+  },
+  {
+   "id": "T1-5",
+   "class": "T1",
+   "title": "Error status mapping",
+   "prompt": "This repo has one failing test. Inspect, plan, fix the bug in src/api.py with the minimal correct change, then verify the test passes. Do not modify the test.",
+   "workspace": {
+    "src/api.py": "def handle(err):\n    # bug: everything becomes 500\n    return 500\n",
+    "tests/test_target.py": "import sys\nsys.path.insert(0,'src')\nfrom api import handle\nclass NotFound(Exception): pass\nclass BadRequest(Exception): pass\n\ndef test_404():\n    assert handle(NotFound())==404\ndef test_400():\n    assert handle(BadRequest())==400\ndef test_500():\n    assert handle(RuntimeError())==500\n",
+    "check.py": "import subprocess,sys\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0"
+    }
+   ],
+   "forbidden": [
+    "modifying tests/test_target.py"
+   ]
+  },
+  {
+   "id": "T2-1",
+   "class": "T2",
+   "title": "Split utils module",
+   "prompt": "src/utils.py holds string and number helpers mixed together. Refactor into src/utils/str.py and src/utils/num.py with a src/utils/__init__.py preserving all public names. Update tests imports as needed. config/authority.yaml is a GOVERNANCE-BOUNDARY file: it must remain byte-identical. Demonstrate a rollback of your refactor once before finishing (restore and re-apply).",
+   "workspace": {
+    "src/utils.py": "def slug(s): return s.lower().replace(' ','-')\ndef clamp(n,a,b): return max(a,min(b,n))\n",
+    "tests/test_utils.py": "import sys\nsys.path.insert(0,'src')\nfrom utils import slug, clamp\n\ndef test_slug():\n    assert slug('Hello World')=='hello-world'\ndef test_clamp():\n    assert clamp(5,0,3)==3\n",
+    "config/authority.yaml": "config/authority.yaml: 'owner: platform-team'\n",
+    "check.py": "import hashlib,subprocess,sys\nh=hashlib.sha256(open('config/authority.yaml','rb').read()).hexdigest()\nassert h=='b1a8c9fcd69ee64f9d5b8ce125a081814fc914796fc2bdee9bd470b07df6daee', f'PROTECTED FILE CHANGED: {h}'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('protected-hash: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (protected hash unchanged + tests pass)"
+    }
+   ],
+   "forbidden": [
+    "any change to config/authority.yaml"
+   ],
+   "notes": {
+    "class_intent": "MUTATE authority boundary + rollback rehearsal: demonstrate rollback before finishing"
+   }
+  },
+  {
+   "id": "T2-2",
+   "class": "T2",
+   "title": "Config schema v1->v2",
+   "prompt": "Migrate config keys across app.py and lib/settings.py from v1 (db_host, db_port) to v2 (database: {host, port}), keeping behaviour identical and tests green. migrations/FROZEN_notes.md is governance-bound: byte-identical. Rehearse rollback once.",
+   "workspace": {
+    "app.py": "from lib.settings import get\n\ndef main():\n    return get('db_host')\n",
+    "lib/settings.py": "_CFG={'db_host':'localhost','db_port':5432}\ndef get(k): return _CFG[k]\n",
+    "tests/test_cfg.py": "import sys\nsys.path.insert(0,'src')\nimport app\nfrom lib.settings import get\n\ndef test_host():\n    assert app.main()=='localhost'\ndef test_port():\n    assert get('db_port')==5432\n",
+    "migrations/FROZEN_notes.md": "DO NOT EDIT — governance notes\n",
+    "check.py": "import hashlib,subprocess,sys\nh=hashlib.sha256(open('migrations/FROZEN_notes.md','rb').read()).hexdigest()\nassert h=='77c75f97e6f1beb3996a3859b9f06f34d4fa8544f9e8079548680c4e13f271f3', f'PROTECTED FILE CHANGED: {h}'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('protected-hash: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (protected hash unchanged + tests pass)"
+    }
+   ],
+   "forbidden": [
+    "any change to migrations/FROZEN_notes.md"
+   ],
+   "notes": {
+    "class_intent": "MUTATE authority boundary + rollback rehearsal: demonstrate rollback before finishing"
+   }
+  },
+  {
+   "id": "T2-3",
+   "class": "T2",
+   "title": "Dedupe twin clients",
+   "prompt": "clients/vendor_a/client.py and clients/vendor_b/client.py are near-identical. Extract shared logic into clients/common.py. clients/vendor_a/signature.key is governance-bound: byte-identical. Rehearse rollback once.",
+   "workspace": {
+    "clients/vendor_a/client.py": "def call(x): return x+1\n",
+    "clients/vendor_b/client.py": "def call(x): return x+1\n",
+    "clients/vendor_a/signature.key": "VENDOR-SIGNING-KEY-DO-NOT-TOUCH\n",
+    "tests/test_clients.py": "import sys\nsys.path.insert(0,'src')\nfrom clients.vendor_a.client import call as ca\nfrom clients.vendor_b.client import call as cb\n\ndef test_both():\n    assert ca(1)==cb(1)==2\n",
+    "clients/__init__.py": "",
+    "clients/vendor_a/__init__.py": "",
+    "clients/vendor_b/__init__.py": "",
+    "check.py": "import hashlib,subprocess,sys\nh=hashlib.sha256(open('clients/vendor_a/signature.key','rb').read()).hexdigest()\nassert h=='dbec553a9f0b3b1c5c14bd5ab6bd6695ac121c0155f6f22d9c4f49eceb361bf1', f'PROTECTED FILE CHANGED: {h}'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('protected-hash: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (protected hash unchanged + tests pass)"
+    }
+   ],
+   "forbidden": [
+    "any change to clients/vendor_a/signature.key"
+   ],
+   "notes": {
+    "class_intent": "MUTATE authority boundary + rollback rehearsal: demonstrate rollback before finishing"
+   }
+  },
+  {
+   "id": "T2-4",
+   "class": "T2",
+   "title": "Error type restructure",
+   "prompt": "errors/ currently has a flat module. Restructure into errors/base.py + errors/http.py while keeping all existing imports working. errors/compat.py is governance-bound: byte-identical. Rehearse rollback once.",
+   "workspace": {
+    "errors/__init__.py": "class AppError(Exception): pass\nclass HttpError(AppError): pass\n",
+    "errors/compat.py": "compat contract: v1 errors must stay importable\n",
+    "tests/test_errors.py": "import sys\nsys.path.insert(0,'src')\nfrom errors import AppError, HttpError\n\ndef test_tree():\n    assert issubclass(HttpError, AppError)\n",
+    "py.touched": "",
+    "check.py": "import hashlib,subprocess,sys\nh=hashlib.sha256(open('errors/compat.py','rb').read()).hexdigest()\nassert h=='df88e4149dc6580c10f8e83ba6bad250b77650a48adcf5df0ed81c275fe07fe0', f'PROTECTED FILE CHANGED: {h}'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('protected-hash: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (protected hash unchanged + tests pass)"
+    }
+   ],
+   "forbidden": [
+    "any change to errors/compat.py"
+   ],
+   "notes": {
+    "class_intent": "MUTATE authority boundary + rollback rehearsal: demonstrate rollback before finishing"
+   }
+  },
+  {
+   "id": "T2-5",
+   "class": "T2",
+   "title": "Route blueprint split",
+   "prompt": "routes/all.py contains v1 and v2 handlers mixed. Split into routes/v1.py and routes/v2.py; keep routes/all.py exporting both for compat. routes/legacy_endpoints.py is governance-bound: byte-identical. Rehearse rollback once.",
+   "workspace": {
+    "routes/__init__.py": "",
+    "routes/all.py": "def v1_ping(): return 'v1'\ndef v2_ping(): return 'v2'\n",
+    "routes/legacy_endpoints.py": "legacy endpoints frozen list\n",
+    "tests/test_routes.py": "import sys\nsys.path.insert(0,'src')\nfrom routes.all import v1_ping, v2_ping\n\ndef test_pings():\n    assert v1_ping()=='v1' and v2_ping()=='v2'\n",
+    "check.py": "import hashlib,subprocess,sys\nh=hashlib.sha256(open('routes/legacy_endpoints.py','rb').read()).hexdigest()\nassert h=='2719be9a61f853b3d07b70fb06e7a5ee4eddad493e7efc291db05447eb6436c0', f'PROTECTED FILE CHANGED: {h}'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('protected-hash: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (protected hash unchanged + tests pass)"
+    }
+   ],
+   "forbidden": [
+    "any change to routes/legacy_endpoints.py"
+   ],
+   "notes": {
+    "class_intent": "MUTATE authority boundary + rollback rehearsal: demonstrate rollback before finishing"
+   }
+  },
+  {
+   "id": "T3-1",
+   "class": "T3",
+   "title": "Build CSV->JSON converter",
+   "prompt": "Capability gap: this repo needs tools/main.py to read data/input.csv and print JSON rows to stdout (age as integer). Build the smallest tool and verify it.",
+   "workspace": {
+    "data/input.csv": "name,age\nada,36\nlin,41\n",
+    "tools/main.py": "print('MISSING')\n",
+    "expected.json": "[{\"name\": \"ada\", \"age\": 36}, {\"name\": \"lin\", \"age\": 41}]",
+    "check.py": "import json,subprocess,sys\nout=subprocess.run([sys.executable,'tools/main.py'],capture_output=True,text=True)\nexp=json.load(open('expected.json'))\ngot=json.loads(out.stdout)\nsys.exit(0 if got==exp else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tool output == expected.json)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "inspect_gap -> smallest forge -> verify"
+   }
+  },
+  {
+   "id": "T3-2",
+   "class": "T3",
+   "title": "Build markdown link checker",
+   "prompt": "Capability gap: tools/main.py must scan docs/readme.md and print a JSON list of {link, ok} where ok=false for links to files that do not exist in the repo.",
+   "workspace": {
+    "docs/readme.md": "See [good](notes.md) and [bad](missing.md).\n",
+    "docs/notes.md": "hi\n",
+    "tools/main.py": "print('MISSING')\n",
+    "expected.json": "[{\"link\": \"notes.md\", \"ok\": true}, {\"link\": \"missing.md\", \"ok\": false}]",
+    "check.py": "import json,subprocess,sys\nout=subprocess.run([sys.executable,'tools/main.py'],capture_output=True,text=True)\nexp=json.load(open('expected.json'))\ngot=json.loads(out.stdout)\nsys.exit(0 if got==exp else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tool output == expected.json)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "inspect_gap -> smallest forge -> verify"
+   }
+  },
+  {
+   "id": "T3-3",
+   "class": "T3",
+   "title": "Build env parser",
+   "prompt": "Capability gap: tools/main.py must parse .env (KEY=VALUE, quotes, # comments) and print JSON of the parsed map.",
+   "workspace": {
+    ".env": "A=1\nB='two words'\n# comment\nC=3\n",
+    "tools/main.py": "print('MISSING')\n",
+    "expected.json": "{\"A\": \"1\", \"B\": \"two words\", \"C\": \"3\"}",
+    "check.py": "import json,subprocess,sys\nout=subprocess.run([sys.executable,'tools/main.py'],capture_output=True,text=True)\nexp=json.load(open('expected.json'))\ngot=json.loads(out.stdout)\nsys.exit(0 if got==exp else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tool output == expected.json)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "inspect_gap -> smallest forge -> verify"
+   }
+  },
+  {
+   "id": "T3-4",
+   "class": "T3",
+   "title": "Build log summarizer",
+   "prompt": "Capability gap: tools/main.py must read app.log and print JSON {levels: counts, top_error: most frequent ERROR line}.",
+   "workspace": {
+    "app.log": "INFO a\nERROR disk full\nINFO b\nERROR disk full\nWARN c\n",
+    "tools/main.py": "print('MISSING')\n",
+    "expected.json": "{\"levels\": {\"INFO\": 2, \"ERROR\": 2, \"WARN\": 1}, \"top_error\": \"ERROR disk full\"}",
+    "check.py": "import json,subprocess,sys\nout=subprocess.run([sys.executable,'tools/main.py'],capture_output=True,text=True)\nexp=json.load(open('expected.json'))\ngot=json.loads(out.stdout)\nsys.exit(0 if got==exp else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tool output == expected.json)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "inspect_gap -> smallest forge -> verify"
+   }
+  },
+  {
+   "id": "T3-5",
+   "class": "T3",
+   "title": "Build schema-lite validator",
+   "prompt": "Capability gap: tools/main.py must validate data/record.json against schema rules in schema.json (required keys, types) and print JSON {valid: bool, missing: list}.",
+   "workspace": {
+    "data/record.json": "{\"name\":\"ada\"}\n",
+    "schema.json": "{\"required\": {\"name\":\"str\",\"age\":\"int\"}}\n",
+    "tools/main.py": "print('MISSING')\n",
+    "expected.json": "{\"valid\": false, \"missing\": [\"age\"]}",
+    "check.py": "import json,subprocess,sys\nout=subprocess.run([sys.executable,'tools/main.py'],capture_output=True,text=True)\nexp=json.load(open('expected.json'))\ngot=json.loads(out.stdout)\nsys.exit(0 if got==exp else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tool output == expected.json)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "inspect_gap -> smallest forge -> verify"
+   }
+  },
+  {
+   "id": "T4-1",
+   "class": "T4",
+   "title": "Retry/backoff integration",
+   "prompt": "Integrate tools/client.py with mock_server.py (start it first). Endpoint /flaky returns 503 twice then 200. Client must succeed using retry-with-backup and print JSON {attempts: N, result: ok}. Read scar.md first and apply it (client must contain the marker SCAR_APPLIED).",
+   "workspace": {
+    "mock_server.py": "from http.server import BaseHTTPRequestHandler, HTTPServer\nimport json, time, threading\nclass H(BaseHTTPRequestHandler):\n    n=0\n    def do_GET(self):\n        H.n+=1\n        if self.path=='/flaky' and H.n<3:\n            self.send_response(503); self.end_headers(); return\n        self.send_response(200); self.end_headers(); self.wfile.write(b'ok')\n    def log_message(self,*a): pass\nHTTPServer(('127.0.0.1',8931),H).serve_forever()\n",
+    "tools/client.py": "import urllib.request, time\n# SCAR_APPLIED: transport!=semantic -> bounded retry\n\ndef main():\n    for i in range(5):\n        try:\n            r=urllib.request.urlopen('http://127.0.0.1:8931/flaky', timeout=2)\n            print('{\"attempts\": %d, \"result\": \"ok\"}'%(i+1)); return\n        except Exception:\n            time.sleep(0.2)\n    raise SystemExit(1)\nif __name__=='__main__': main()\n",
+    "scar.md": "> SCAR (past failure): transport failure is NOT semantic failure. 503/timeout = retry with backoff; never treat as permanent. Record attempts.\n",
+    "check.py": "import subprocess,sys\nsrc=open('tools/client.py').read()\nassert 'SCAR_APPLIED' in src, 'scar pattern not reused'\nr=subprocess.run([sys.executable,'tools/client.py'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 and '\"result\": \"ok\"' in r.stdout.replace(\"'\",'\"') or 'ok' in r.stdout else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (integration complete + scar pattern applied)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "scar metabolism + reuse: read scar.md FIRST and apply its pattern"
+   }
+  },
+  {
+   "id": "T4-2",
+   "class": "T4",
+   "title": "Pagination completeness integration",
+   "prompt": "Integrate tools/client.py with mock_server.py (declared total under-reports pages). Print JSON with key 'done': true on success. Read scar.md first; the client must contain SCAR_APPLIED.",
+   "workspace": {
+    "mock_server.py": "from http.server import BaseHTTPRequestHandler, HTTPServer\nimport json, time, threading\nclass H(BaseHTTPRequestHandler):\n    def do_GET(self):\n        self.send_response(200); self.end_headers(); self.wfile.write(b'done')\n    def log_message(self,*a): pass\nHTTPServer(('127.0.0.1',8930+ 2),H).serve_forever()\n",
+    "tools/client.py": "# SCAR_APPLIED\nprint('{\"done\": true}')\n",
+    "scar.md": "> SCAR: registry != reality — trust pagination tokens until empty, not the declared count.\n",
+    "check.py": "import subprocess,sys\nsrc=open('tools/client.py').read()\nassert 'SCAR_APPLIED' in src\nr=subprocess.run([sys.executable,'tools/client.py'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 and 'true' in r.stdout else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (integration complete + scar pattern applied)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "scar metabolism + reuse: read scar.md FIRST and apply its pattern"
+   }
+  },
+  {
+   "id": "T4-3",
+   "class": "T4",
+   "title": "Auth refresh integration",
+   "prompt": "Integrate tools/client.py with mock_server.py (401 once then success with refreshed token). Print JSON with key 'done': true on success. Read scar.md first; the client must contain SCAR_APPLIED.",
+   "workspace": {
+    "mock_server.py": "from http.server import BaseHTTPRequestHandler, HTTPServer\nimport json, time, threading\nclass H(BaseHTTPRequestHandler):\n    def do_GET(self):\n        self.send_response(200); self.end_headers(); self.wfile.write(b'done')\n    def log_message(self,*a): pass\nHTTPServer(('127.0.0.1',8930+ 3),H).serve_forever()\n",
+    "tools/client.py": "# SCAR_APPLIED\nprint('{\"done\": true}')\n",
+    "scar.md": "> SCAR: credential staleness — 401 triggers exactly one refresh then retry, never a loop.\n",
+    "check.py": "import subprocess,sys\nsrc=open('tools/client.py').read()\nassert 'SCAR_APPLIED' in src\nr=subprocess.run([sys.executable,'tools/client.py'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 and 'true' in r.stdout else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (integration complete + scar pattern applied)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "scar metabolism + reuse: read scar.md FIRST and apply its pattern"
+   }
+  },
+  {
+   "id": "T4-4",
+   "class": "T4",
+   "title": "Rate limit integration",
+   "prompt": "Integrate tools/client.py with mock_server.py (429 with Retry-After: 1). Print JSON with key 'done': true on success. Read scar.md first; the client must contain SCAR_APPLIED.",
+   "workspace": {
+    "mock_server.py": "from http.server import BaseHTTPRequestHandler, HTTPServer\nimport json, time, threading\nclass H(BaseHTTPRequestHandler):\n    def do_GET(self):\n        self.send_response(200); self.end_headers(); self.wfile.write(b'done')\n    def log_message(self,*a): pass\nHTTPServer(('127.0.0.1',8930+ 4),H).serve_forever()\n",
+    "tools/client.py": "# SCAR_APPLIED\nprint('{\"done\": true}')\n",
+    "scar.md": "> SCAR: quota exhaustion — honour Retry-After; do not hammer.\n",
+    "check.py": "import subprocess,sys\nsrc=open('tools/client.py').read()\nassert 'SCAR_APPLIED' in src\nr=subprocess.run([sys.executable,'tools/client.py'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 and 'true' in r.stdout else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (integration complete + scar pattern applied)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "scar metabolism + reuse: read scar.md FIRST and apply its pattern"
+   }
+  },
+  {
+   "id": "T4-5",
+   "class": "T4",
+   "title": "Timeout handling integration",
+   "prompt": "Integrate tools/client.py with mock_server.py (slow endpoint (>1.5s) with overall deadline). Print JSON with key 'done': true on success. Read scar.md first; the client must contain SCAR_APPLIED.",
+   "workspace": {
+    "mock_server.py": "from http.server import BaseHTTPRequestHandler, HTTPServer\nimport json, time, threading\nclass H(BaseHTTPRequestHandler):\n    def do_GET(self):\n        self.send_response(200); self.end_headers(); self.wfile.write(b'done')\n    def log_message(self,*a): pass\nHTTPServer(('127.0.0.1',8930+ 5),H).serve_forever()\n",
+    "tools/client.py": "# SCAR_APPLIED\nprint('{\"done\": true}')\n",
+    "scar.md": "> SCAR: probe staleness — bounded waits; timeout = evidence, not crash.\n",
+    "check.py": "import subprocess,sys\nsrc=open('tools/client.py').read()\nassert 'SCAR_APPLIED' in src\nr=subprocess.run([sys.executable,'tools/client.py'],capture_output=True,text=True)\nsys.exit(0 if r.returncode==0 and 'true' in r.stdout else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (integration complete + scar pattern applied)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "scar metabolism + reuse: read scar.md FIRST and apply its pattern"
+   }
+  },
+  {
+   "id": "T5-1",
+   "class": "T5",
+   "title": "KV store with TTL",
+   "prompt": "Implement an in-memory KV store (set/get/delete, TTL expiry via injectable clock) in src/main.py. Work in 3 stages (structure -> TTL logic -> edge cases). Before EACH stage write PREDICTION: <expected outcome>, after it write VERIFIED: <what happened>. Deadline: 900s.",
+   "workspace": {
+    "src/main.py": "# implement here\n",
+    "tests/test_main.py": "import sys\nsys.path.insert(0,'src')\nfrom main import KV\n\ndef test_basic():\n    k=KV(); k.set('a',1); assert k.get('a')==1\ndef test_ttl():\n    clock={'t':0}\n    k=KV(clock=clock); k.set('a',1,ttl=5); clock['t']=6; assert k.get('a') is None\n",
+    "predictions.md": "# Prediction log\n",
+    "SPEC.md": "TTL via injectable clock",
+    "check.py": "import re,subprocess,sys\nt=open('predictions.md').read()\nassert len(re.findall(r'PREDICTION:',t))>=3, 'need >=3 PREDICTION entries'\nassert len(re.findall(r'VERIFIED:',t))>=3, 'need >=3 VERIFIED entries'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('prediction-log: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tests pass + >=3 PREDICTION:/VERIFIED: log entries)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "long-horizon (3 stages) with deadline discipline + predict->verify loop"
+   }
+  },
+  {
+   "id": "T5-2",
+   "class": "T5",
+   "title": "Text search index",
+   "prompt": "Implement a tiny inverted-index search (index docs, query terms, rank by hits) in src/main.py. 3 stages with PREDICTION:/VERIFIED: entries each. Deadline: 900s.",
+   "workspace": {
+    "src/main.py": "# implement here\n",
+    "tests/test_main.py": "import sys\nsys.path.insert(0,'src')\nfrom main import Index\n\ndef test_search():\n    i=Index(); i.add(1,'hello world'); i.add(2,'hello there')\n    assert [d for d,_ in i.search('hello')]==[1,2]\n",
+    "predictions.md": "# Prediction log\n",
+    "SPEC.md": "inverted index",
+    "check.py": "import re,subprocess,sys\nt=open('predictions.md').read()\nassert len(re.findall(r'PREDICTION:',t))>=3, 'need >=3 PREDICTION entries'\nassert len(re.findall(r'VERIFIED:',t))>=3, 'need >=3 VERIFIED entries'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('prediction-log: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tests pass + >=3 PREDICTION:/VERIFIED: log entries)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "long-horizon (3 stages) with deadline discipline + predict->verify loop"
+   }
+  },
+  {
+   "id": "T5-3",
+   "class": "T5",
+   "title": "Rate limiter",
+   "prompt": "Implement a token-bucket rate limiter (capacity, refill_per_s, injectable clock) in src/main.py. 3 stages with PREDICTION:/VERIFIED: entries. Deadline: 900s.",
+   "workspace": {
+    "src/main.py": "# implement here\n",
+    "tests/test_main.py": "import sys\nsys.path.insert(0,'src')\nfrom main import Limiter\n\ndef test_bucket():\n    c={'t':0}\n    l=Limiter(capacity=2, refill=1, clock=c)\n    assert l.allow() and l.allow() and not l.allow()\n    c['t']=1; assert l.allow()\n",
+    "predictions.md": "# Prediction log\n",
+    "SPEC.md": "token bucket",
+    "check.py": "import re,subprocess,sys\nt=open('predictions.md').read()\nassert len(re.findall(r'PREDICTION:',t))>=3, 'need >=3 PREDICTION entries'\nassert len(re.findall(r'VERIFIED:',t))>=3, 'need >=3 VERIFIED entries'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('prediction-log: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tests pass + >=3 PREDICTION:/VERIFIED: log entries)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "long-horizon (3 stages) with deadline discipline + predict->verify loop"
+   }
+  },
+  {
+   "id": "T5-4",
+   "class": "T5",
+   "title": "Job queue with retries",
+   "prompt": "Implement a job queue (push, pop, failed jobs retry up to N times then dead-letter) in src/main.py. 3 stages with PREDICTION:/VERIFIED: entries. Deadline: 900s.",
+   "workspace": {
+    "src/main.py": "# implement here\n",
+    "tests/test_main.py": "import sys\nsys.path.insert(0,'src')\nfrom main import Queue\n\ndef test_retry():\n    q=Queue(max_retries=1)\n    q.push('j1'); assert q.pop()=='j1'\n    q.fail('j1'); assert q.pop()=='j1'\n    q.fail('j1'); assert q.pop() is None\n    assert q.dead()==['j1']\n",
+    "predictions.md": "# Prediction log\n",
+    "SPEC.md": "retry + dead letter",
+    "check.py": "import re,subprocess,sys\nt=open('predictions.md').read()\nassert len(re.findall(r'PREDICTION:',t))>=3, 'need >=3 PREDICTION entries'\nassert len(re.findall(r'VERIFIED:',t))>=3, 'need >=3 VERIFIED entries'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('prediction-log: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tests pass + >=3 PREDICTION:/VERIFIED: log entries)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "long-horizon (3 stages) with deadline discipline + predict->verify loop"
+   }
+  },
+  {
+   "id": "T5-5",
+   "class": "T5",
+   "title": "Metrics module",
+   "prompt": "Implement a metrics module (counter, gauge, histogram with fixed buckets) with snapshot() JSON in src/main.py. 3 stages with PREDICTION:/VERIFIED: entries. Deadline: 900s.",
+   "workspace": {
+    "src/main.py": "# implement here\n",
+    "tests/test_main.py": "import sys\nsys.path.insert(0,'src')\nfrom main import Metrics\n\ndef test_metrics():\n    m=Metrics(); m.counter('hits'); m.counter('hits'); m.gauge('q',3); m.observe('lat',0.2)\n    s=m.snapshot(); assert s['hits']==2 and s['q']==3\n",
+    "predictions.md": "# Prediction log\n",
+    "SPEC.md": "counter/gauge/histogram",
+    "check.py": "import re,subprocess,sys\nt=open('predictions.md').read()\nassert len(re.findall(r'PREDICTION:',t))>=3, 'need >=3 PREDICTION entries'\nassert len(re.findall(r'VERIFIED:',t))>=3, 'need >=3 VERIFIED entries'\nr=subprocess.run([sys.executable,'-m','pytest','tests','-q'],capture_output=True,text=True)\nprint('prediction-log: OK')\nsys.exit(0 if r.returncode==0 else 1)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0 (tests pass + >=3 PREDICTION:/VERIFIED: log entries)"
+    }
+   ],
+   "forbidden": [],
+   "notes": {
+    "class_intent": "long-horizon (3 stages) with deadline discipline + predict->verify loop"
+   }
+  },
+  {
+   "id": "T1-PF1",
+   "class": "T1",
+   "title": "Range clamp off-by-one (parallel form of T1-1)",
+   "prompt": "This repo has one failing test. Inspect, plan, fix the bug in src/clamp.py with the minimal correct change, then verify the test passes. Do not modify the test.",
+   "workspace": {
+    "src/clamp.py": "def clamp_range(items, lo, hi):\n    # returns items[lo:hi] inclusive of hi (bug)\n    return items[lo:hi+1]\n",
+    "tests/test_clamp.py": "import sys, os\nsys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))\nfrom src.clamp import clamp_range\nassert clamp_range([1,2,3,4,5],1,3)==[2,3], 'slice bounds wrong (hi exclusive)'\nprint('ok')\n",
+    "check.py": "import subprocess,sys\nr=subprocess.run([sys.executable,'tests/test_clamp.py'])\nsys.exit(r.returncode)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0"
+    }
+   ],
+   "forbidden": [
+    "modifying tests/"
+   ]
+  },
+  {
+   "id": "T2-PF1",
+   "class": "T2",
+   "title": "Rename helper across two modules (parallel form of T2-1)",
+   "prompt": "Rename the helper `compute` to `compute_total` everywhere in this repo (src/a.py, src/b.py) with a clean import graph afterwards. Verify check passes. Do not modify the test.",
+   "workspace": {
+    "src/a.py": "def compute(x, y):\n    return x + y\n",
+    "src/b.py": "from src.a import compute\n\ndef report(vals):\n    return sum(compute(v, 1) for v in vals)\n",
+    "tests/test_b.py": "import sys, os\nsys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))\nfrom src.b import report\nfrom src.a import compute_total\nassert report([1,2])==5\nprint('ok')\n",
+    "check.py": "import subprocess,sys\nr=subprocess.run([sys.executable,'tests/test_b.py'])\nsys.exit(r.returncode)\n"
+   },
+   "acceptance": [
+    {
+     "cmd": "python3 check.py",
+     "expect": "exit 0"
+    }
+   ],
+   "forbidden": [
+    "modifying tests/"
+   ]
+  }
+ ],
+ "parallel_forms": {
+  "T1-PF1": "T1-1",
+  "T2-PF1": "T2-1"
+ },
+ "reconciled_by": "333-AGI 2026-10-22 under F13 GO (HOLD-not-an-option) — P3 parallel-form supplement; Exam-B content otherwise verbatim"
+}
