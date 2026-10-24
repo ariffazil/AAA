@@ -106,14 +106,23 @@ def _assert_read_class(tool_names) -> bool:
 
 def _kill_switch_audit() -> bool:
     """Enumerate registered FastMCP tools and enforce the allowlist."""
-    manager = getattr(mcp, "_tool_manager", None)
-    tools = getattr(manager, "_tools", None)
-    if not isinstance(tools, dict):
-        raise RuntimeError(
-            "READ-ONLY KILL-SWITCH: cannot enumerate registered tools - "
-            "fail closed (FastMCP internals changed?)"
-        )
-    return _assert_read_class(set(tools.keys()))
+    names: set[str] = set()
+    import asyncio
+
+    try:
+        tools = asyncio.run(mcp.list_tools())
+        names = {getattr(t, "name", "") for t in tools} - {""}
+    except Exception:
+        manager = getattr(mcp, "_tool_manager", None)
+        tools = getattr(manager, "_tools", None)
+        if isinstance(tools, dict):
+            names = set(tools.keys())
+        else:
+            raise RuntimeError(
+                "READ-ONLY KILL-SWITCH: cannot enumerate registered tools - "
+                "fail closed (FastMCP internals changed?)"
+            )
+    return _assert_read_class(names)
 
 
 if __name__ == "__main__":
