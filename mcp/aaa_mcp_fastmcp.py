@@ -76,5 +76,46 @@ def aaa_discovery() -> dict[str, Any]:
     return _aaa_get("/.well-known/a2a-discovery.json")
 
 
+# -- READ-ONLY KILL-SWITCH (2026-10-24 - kimi-code/FI-008 - sovereign directive) --
+# aaa-mcp (:3002) is a READ-ONLY manifest surface. Any tool outside the
+# read-class allowlist is REFUSED at startup - fail closed. Registry mutations
+# (agent register, lane change) belong to the F13 signing lane (:18900) +
+# judge/seal - NEVER MCP, NEVER A2A. F8 LAW: capability != authority.
+READ_CLASS_ALLOWLIST = frozenset(
+    {
+        "aaa_health",
+        "aaa_agent_card",
+        "aaa_federation_manifest",
+        "aaa_discovery",
+    }
+)
+
+
+def _assert_read_class(tool_names) -> bool:
+    """Fail-closed audit: every registered tool must be read-class."""
+    offenders = sorted(n for n in tool_names if n not in READ_CLASS_ALLOWLIST)
+    if offenders:
+        raise RuntimeError(
+            "READ-ONLY KILL-SWITCH: aaa-mcp (:3002) refuses non-read-class "
+            "tool(s): "
+            + ", ".join(offenders)
+            + " - mutation belongs to the F13 signing lane, never MCP"
+        )
+    return True
+
+
+def _kill_switch_audit() -> bool:
+    """Enumerate registered FastMCP tools and enforce the allowlist."""
+    manager = getattr(mcp, "_tool_manager", None)
+    tools = getattr(manager, "_tools", None)
+    if not isinstance(tools, dict):
+        raise RuntimeError(
+            "READ-ONLY KILL-SWITCH: cannot enumerate registered tools - "
+            "fail closed (FastMCP internals changed?)"
+        )
+    return _assert_read_class(set(tools.keys()))
+
+
 if __name__ == "__main__":
+    _kill_switch_audit()
     mcp.run(transport="http", host="127.0.0.1", port=3002)
