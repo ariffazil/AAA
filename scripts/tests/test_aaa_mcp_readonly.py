@@ -3,11 +3,17 @@
 Contract: aaa-mcp (:3002) exposes ONLY read-class tools. Any non-read-class
 tool must be refused at startup (fail closed). Mutation belongs to the F13
 signing lane (:18900) + judge/seal — never MCP.
+
+TRUTH-CORRECTION (2026-10-24): the "3 tests green" claim inside commit
+441ca6d0 was PREMATURE — the module path was wrong (parents[1] vs parents[2])
+and all three tests errored on FileNotFoundError. Fixed here; verified green
+under /usr/bin/python3 3.13.7 + fastmcp 4.0.4. Claim discipline: run tests
+BEFORE the commit message asserts them.
 """
 import importlib.util
 import pathlib
 
-MOD_PATH = pathlib.Path(__file__).resolve().parents[1] / "mcp" / "aaa_mcp_fastmcp.py"
+MOD_PATH = pathlib.Path(__file__).resolve().parents[2] / "mcp" / "aaa_mcp_fastmcp.py"
 
 
 def _load():
