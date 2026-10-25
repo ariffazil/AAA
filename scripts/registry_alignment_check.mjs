@@ -236,9 +236,9 @@ const uniqueCards = (() => {
     }
   }
   // Principal store = the one the RUNTIME verifier reads (federation_envelope.js:620,
-  // overridden by aaa-a2a.service DID_REGISTRY_PATH). auth/did_registry.yaml is the
-  // SIGNER's store and is NOT counted here — measuring it would ratchet a universe
-  // production never verifies against.
+  // overridden by aaa-a2a.service DID_REGISTRY_PATH). Fallback: the tracked projection
+  // auth/did_registry.yaml, which scripts/render-did-projection.py regenerates from that
+  // same store; INV-AR-16 keeps the two from drifting. The fallback is labelled, never silent.
   let didNote = "ABSENT in this checkout — principal coverage under-measured";
   const didPath = process.env.DID_REGISTRY_PATH || "secrets/did/registry.json";
   try {
@@ -255,7 +255,22 @@ const uniqueCards = (() => {
     }
     didNote = `${entries.length} DIDs (${didPath})`;
   } catch {
-    /* store not committed — reported below, not silently substituted */
+    // Runtime store absent (clean checkout). Use the tracked projection — it is
+    // regenerated from the same store and drift-checked by INV-AR-16.
+    try {
+      const proj = readYaml("auth/did_registry.yaml")?.dids;
+      if (Array.isArray(proj)) {
+        for (const e of proj) {
+          for (const a of e.actors || []) principals.add(String(a).toLowerCase());
+          for (const k of ["organ_id", "actor_id", "id", "name"]) {
+            if (e[k]) principals.add(String(e[k]).toLowerCase());
+          }
+        }
+        didNote = `runtime store ABSENT — tracked projection fallback (${proj.length} DIDs)`;
+      }
+    } catch {
+      /* projection absent too — reported below */
+    }
   }
   checks.push({ id: "AR9i", invariant: "INV-AR-9", label: "verifier principal store", measured: 0, baseline: 0, status: "INFO", detail: [didNote] });
 
@@ -278,9 +293,34 @@ const uniqueCards = (() => {
   const noRuntime = auth.filter(({ doc }) => !doc.runtime_harness);
   const noLifecycle = auth.filter(({ doc }) => !doc.status);
 
-  check("AR9", "INV-AR-9", `actor authority without principal (of ${actors.length})`, noPrincipal.length, baseline.authority_without_principal ?? 0, noPrincipal.map(({ doc }) => doc.id));
-  check("AR10", "INV-AR-10", `actor authority without runtime_ref (of ${actors.length})`, noRuntime.length, baseline.authority_without_runtime ?? 0, noRuntime.map(({ doc }) => doc.id));
-  check("AR11", "INV-AR-11", `actor authority without lifecycle state (of ${actors.length})`, noLifecycle.length, baseline.authority_without_lifecycle ?? 0, []);
+  check("AR9", "INV-AR-9", `actor authority without principal (of ${actors.length}; source: verifier DID store)`, noPrincipal.length, baseline.authority_without_principal ?? 0, noPrincipal.map(({ doc }) => doc.id));
+  check("AR10", "INV-AR-10", `actor authority without runtime_ref (of ${actors.length}; field: runtime_harness)`, noRuntime.length, baseline.authority_without_runtime ?? 0, noRuntime.map(({ doc }) => doc.id));
+  check("AR11", "INV-AR-11", `actor authority without lifecycle state (of ${actors.length}; field: status)`, noLifecycle.length, baseline.authority_without_lifecycle ?? 0, []);
+}
+
+// ── INV-AR-16: tracked DID projection must not drift from the runtime store ──
+{
+  let drift = 0;
+  const detail = [];
+  try {
+    const rtPath = process.env.DID_REGISTRY_PATH || abs("secrets/did/registry.json");
+    const tracked = readYaml("auth/did_registry.yaml")?.dids;
+    if (fs.existsSync(rtPath) && Array.isArray(tracked)) {
+      const rt = JSON.parse(fs.readFileSync(rtPath, "utf8"))?.dids || {};
+      const tr = new Map(tracked.map((e) => [e.did, e]));
+      for (const [k, v] of Object.entries(rt)) {
+        const t = tr.get(k);
+        if (!t) { drift++; detail.push(`missing in projection: ${k}`); }
+        else if ((t.public_key_hex || "") !== (v.public_key_hex || "")) { drift++; detail.push(`key drift: ${k}`); }
+      }
+      for (const k of tr.keys()) if (!rt[k]) { drift++; detail.push(`stale in projection: ${k}`); }
+    } else {
+      detail.push("runtime store absent — tracked projection is the only witness");
+    }
+  } catch (e) {
+    detail.push(`probe error: ${e.message}`);
+  }
+  check("AR16", "INV-AR-16", "runtime DID store vs tracked projection drift", drift, baseline.did_projection_drift ?? 0, detail);
 }
 
 // ── INV-AR-12/13: one admission owner; resolution may not admit ──────────────

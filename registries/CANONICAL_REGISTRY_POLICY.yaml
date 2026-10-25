@@ -88,12 +88,13 @@ alignment:
     # card.public_key.hex OR agents/**/identity.json OR IDENTITY/keys/*_public.pem OR DID
     # registry. Service-class cards (organs/pillars/functions/*-mcp) are excluded — an MCP
     # surface legitimately has no agent principal.
-    authority_without_principal: 17  # of 40 actor-class cards claiming authority
+    authority_without_principal: 10  # of 40; re-derived 2026-10-25 after the DID projection was actually parsed
     authority_without_runtime: 32    # of 40; runtime_harness present on only 6/47 cards
     authority_without_lifecycle: 27  # of 40
-    resolution_not_admitted: 4       # canonical_identity.json ids absent from canonical_agents.json (+ aliases)
-    case_duplicate_keys: 1           # 777-FORGE + 777-forge in canonical_identity.json
-    did_stores_named_in_code: 2      # secrets/did/registry.json (verifier) + auth/did_registry.yaml (signer)
+    resolution_not_admitted: 0       # canonical_identity.json ids absent from canonical_agents.json (+ aliases)
+    case_duplicate_keys: 0           # 777-FORGE + 777-forge collapsed to one canonical
+    did_stores_named_in_code: 2      # secrets/did/registry.json (runtime verifier) + auth/did_registry.yaml (tracked projection)
+    did_projection_drift: 0          # runtime store vs tracked projection: missing/stale/key mismatch (INV-AR-16)
     envelope_allows_anonymous: 1     # federation_envelope.js allowlist still admits 'anonymous'
     server_actors_missing_from_envelope: 34  # incl. 333-AGI, 555-ASI, 888-APEX
     # Reconciliation (INV-REG-7/8): declared layer (cards) vs inventory (organs.yaml).
@@ -109,10 +110,11 @@ alignment:
     - "INV-AR-6 tool id unique across catalogue; policy references existing ids"
     - "INV-AR-7 every declared canonical path exists (or external: true + absolute)"
     - "INV-AR-8 no executable consumer reads _deprecated_/_archive/_superseded/.archive-*"
-    - "INV-AR-9 authority claimed on a card requires a non-empty principal pubkey"
+    - "INV-AR-9 authority claimed on a card requires a resolvable principal (pubkey or DID actor)"
     - "INV-AR-10 authority claimed on a card requires a runtime_ref"
     - "INV-AR-11 authority claimed on a card requires a lifecycle state"
     - "INV-AR-14 the principal store has one owner named in code"
+    - "INV-AR-16 the tracked DID projection matches the runtime store (when present)"
     - "INV-AR-15 the /a2a envelope allowlist must not be narrower than the server allowlist, and must not admit anonymous"
     - "INV-REG-7 every generated/discovery object has exactly one authoring source and carries provenance"
     - "INV-REG-8 every runtime/endpoint claim resolves to an inventory entry, or is counted as unverifiable"
