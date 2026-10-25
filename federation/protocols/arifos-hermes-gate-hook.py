@@ -41,9 +41,9 @@ import sys
 import os
 import re
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
-RECEIPT_PATH = "/root/.local/share/arifos/hermes_hook_receipts.jsonl"
+RECEIPT_PATH = os.environ.get("HERMES_RECEIPT_PATH", "/root/.local/share/arifos/hermes_hook_receipts.jsonl")
 JITU_AUTHORITY = "/root/AAA/federation/kernel/jitu.py"
 
 
@@ -335,7 +335,7 @@ def write_falsification_metric(event_type: str, details: dict):
                 json.dumps(
                     {
                         "event": event_type,
-                        "timestamp": datetime.utcnow().isoformat() + "Z",
+                        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                         **details,
                     }
                 )
@@ -350,8 +350,8 @@ def update_telemetry(event_type: str):
     Atomic write (tmp+rename) for cross-process safety."""
     import tempfile
 
-    now = datetime.utcnow()
-    ts = now.isoformat() + "Z"
+    now = datetime.now(timezone.utc)
+    ts = now.isoformat().replace("+00:00", "Z")
     try:
         os.makedirs(os.path.dirname(TELEMETRY_PATH), exist_ok=True)
         # Load existing state
@@ -427,6 +427,10 @@ def classify(tool_name: str, tool_input: dict) -> str:
         "browser_press",
         "skill_view",
         "tools_list",
+        "tool_describe",
+        "tool_search",
+        "tool_view",
+        "tools_view",
     }:
         return "OBSERVE"
     if tool_name in T2_TOOLS:
@@ -447,8 +451,8 @@ def write_receipt(
     reason: str = "",
     trace_id: str = "unknown",
     session_id: str = "unknown",
-):
-    """Append to gate receipt trail. Never block on failure (E-11)."""
+) -> bool:
+    """Append to gate receipt trail. Returns True on success, False on failure."""
     try:
         os.makedirs(os.path.dirname(RECEIPT_PATH), exist_ok=True)
         with open(RECEIPT_PATH, "a") as f:
@@ -461,14 +465,15 @@ def write_receipt(
                         "reason": reason,
                         "trace_id": trace_id,
                         "session_id": session_id,
-                        "timestamp": datetime.utcnow().isoformat() + "Z",
+                        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                         "k02_transition": True,  # First runtime enforcement
                     }
                 )
                 + "\n"
             )
+        return True
     except Exception:
-        pass  # Never block
+        return False
 
 
 # CCC-T-02 (2026-09-18): Federation Envelope emit.
@@ -513,7 +518,7 @@ def emit_envelope(
             "transport": transport,
             "decision": decision,
             "trace_id": trace_id,
-            "emitted_at": datetime.utcnow().isoformat() + "Z",
+            "emitted_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         }
         os.makedirs(os.path.dirname(FEDERATION_ENVELOPE_PATH), exist_ok=True)
         with open(FEDERATION_ENVELOPE_PATH, "a") as f:
@@ -535,11 +540,31 @@ def t3_pattern_hit(tool_input: dict):
 def main():
     try:
         raw = sys.stdin.read()
-        if not raw:
-            return  # No input → no-op
+    except OSError:
+        return  # cannot even read stdin — nothing to judge
+    if not raw.strip():
+        # Unreadable protocol frame (empty/garbage input). Fail CLOSED: a mutation
+        # tool must not run just because its gate payload could not be parsed.
+        # T1 observe-only calls are harmless either way; blocking them on a broken
+        # frame costs nothing. (F13 2026-10-24: fix for fail-open-on-junk-input.)
+        try:
+            _t = (json.loads(raw) if raw.strip().startswith("{") else {}).get("tool_name", "unknown")
+        except Exception:
+            _t = "unknown"
+        write_receipt(_t, "UNKNOWN", "BLOCK", "gate payload empty or unparseable — fail-closed")
+        print(json.dumps({"decision": "block", "reason": "gate hook: unparseable stdin frame — fail-closed"}))
+        sys.exit(2)
+    try:
         payload = json.loads(raw)
     except json.JSONDecodeError:
-        return
+        # Malformed JSON with content: same fail-closed verdict.
+        write_receipt("unknown", "UNKNOWN", "BLOCK", "gate payload malformed JSON — fail-closed")
+        print(json.dumps({"decision": "block", "reason": "gate hook: malformed JSON stdin — fail-closed"}))
+        sys.exit(2)
+    if not isinstance(payload, dict):
+        write_receipt("unknown", "UNKNOWN", "BLOCK", "gate payload not an object — fail-closed")
+        print(json.dumps({"decision": "block", "reason": "gate hook: stdin frame not a JSON object — fail-closed"}))
+        sys.exit(2)
 
     tool_name = payload.get("tool_name", "unknown")
     # Hermes wire format puts tool args under "args"; accept "tool_input" for
@@ -712,7 +737,7 @@ def main():
         # Falls through to T2 allow path below
 
     # T2 — log witness receipt, allow (K-02 transition: witness → enforcer for T3 only)
-    write_receipt(
+    receipt_ok = write_receipt(
         tool_name,
         classification,
         "WITNESSED",
@@ -720,6 +745,17 @@ def main():
         trace_id=trace_id,
         session_id=session_id,
     )
+    if not receipt_ok:
+        print(
+            json.dumps(
+                {
+                    "decision": "block",
+                    "reason": "gate hook: receipt-write failure — mutation refused (fail-closed)",
+                }
+            )
+        )
+        sys.exit(2)
+
     write_falsification_metric("mutation_witnessed", {"tool": tool_name, "classification": "T2"})
     update_telemetry("pass")
     # CCC-T-02 (2026-09-18): emit FederationEnvelope v0.1 for cross-harness tracing.
@@ -733,7 +769,7 @@ def main():
         decision="WITNESSED_T2",
         harness="hermes",
         trace_id=trace_id,
-        verdict="SEAL",
+        verdict="WITNESSED",
     )
     # Allow (no output)
 
