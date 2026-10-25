@@ -88,7 +88,7 @@ def canonicalize(agent_id: str, role: str = "unknown", source: str = "unknown") 
 
     # Step 1: Check hard-coded aliases
     if not agent_id:
-        return "unknown"
+        raise ValueError("Empty agent_id — resolution does not grant admission")
     if agent_id in KNOWN_ALIASES:
         canonical = KNOWN_ALIASES[agent_id]
         # Also learn the normalized variant
