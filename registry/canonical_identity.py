@@ -138,13 +138,11 @@ def _admit(canonical: str, agent_id: str) -> str:
         return canonical
     key = str(canonical).lower()
     if key in admitted:
-        resolved = admitted[key]
-        alias_map = load_alias_map()
-        norm = _normalize(agent_id)
-        if alias_map.get(norm) != resolved:
-            alias_map[norm] = resolved
-            save_alias_map(alias_map)
-        return resolved
+        # Read-only resolution. 2026-10-25: this used to call save_alias_map(), which
+        # made a pure lookup mutate alias_map.json — side-effect-on-read, the same
+        # class as a verifier regenerating its own input. Learning stays in
+        # register_alias(); resolution only reports the admission map's spelling.
+        return admitted[key]
     raise ValueError(
         f"Unknown agent_id '{agent_id}' (resolved to '{canonical}'). Not admitted in "
         f"{ADMISSION_MAP_FILE.name} — resolution does not grant admission. "

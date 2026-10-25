@@ -235,19 +235,29 @@ const uniqueCards = (() => {
       if (f.toLowerCase().includes("public")) principals.add(f.split("_")[0].toLowerCase());
     }
   }
+  // Principal store = the one the RUNTIME verifier reads (federation_envelope.js:620,
+  // overridden by aaa-a2a.service DID_REGISTRY_PATH). auth/did_registry.yaml is the
+  // SIGNER's store and is NOT counted here — measuring it would ratchet a universe
+  // production never verifies against.
+  let didNote = "ABSENT in this checkout — principal coverage under-measured";
+  const didPath = process.env.DID_REGISTRY_PATH || "secrets/did/registry.json";
   try {
-    const did = readYaml("auth/did_registry.yaml")?.dids;
-    if (Array.isArray(did)) {
-      for (const e of did) {
-        const id = e?.actor_id || e?.agent_id || e?.id || e?.name;
-        if (id) principals.add(String(id).toLowerCase());
+    const raw = JSON.parse(fs.readFileSync(abs(didPath), "utf8"));
+    const dids = raw.dids || {};
+    const entries = Array.isArray(dids)
+      ? dids
+      : Object.entries(dids).map(([k, v]) => ({ ...(v || {}), did: (v && v.did) || k }));
+    for (const e of entries) {
+      for (const a of e.actors || []) principals.add(String(a).toLowerCase());
+      for (const k of ["organ_id", "actor_id", "id", "name"]) {
+        if (e[k]) principals.add(String(e[k]).toLowerCase());
       }
-    } else if (did && typeof did === "object") {
-      for (const k of Object.keys(did)) principals.add(k.toLowerCase());
     }
+    didNote = `${entries.length} DIDs (${didPath})`;
   } catch {
-    /* noop */
+    /* store not committed — reported below, not silently substituted */
   }
+  checks.push({ id: "AR9i", invariant: "INV-AR-9", label: "verifier principal store", measured: 0, baseline: 0, status: "INFO", detail: [didNote] });
 
   const isService = (id, doc, rel) => {
     const blob = [doc.constitutional_class, doc.class, doc.role, doc.type, doc.category]

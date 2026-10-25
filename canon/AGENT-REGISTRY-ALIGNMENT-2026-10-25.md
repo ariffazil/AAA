@@ -132,7 +132,7 @@ Name ≠ Identity ≠ Principal ≠ Runtime ≠ Authority ≠ Capability ≠ Per
 | Collapse | Evidence | Consequence |
 |---|---|---|
 | Authority ← card field, principal not required | **17/40** actor-class authority claims have no resolvable principal (card-scoped key: 4/47) | a card can assert a ceiling with nothing to verify it against |
-| Authorization ← **two** allowlists | `server.js:2933` 47 names (name is a **pre-filter** only — DID signature is enforced at 3011–3048 and `effectiveSourceAgent = didResult.organId`). `federation_envelope.js:279` holds a **second** 15-name list that still admits `anonymous`, mounted on 8 `/a2a` routes via `jsonRpcValidate` | 34 server-admitted actors — including 333-AGI, 555-ASI, 888-APEX — are absent from the envelope list |
+| Authorization ← **two** allowlists | `server.js:2933` 47 names (name is a **pre-filter** only — DID signature is enforced at 3011–3048 and `effectiveSourceAgent = didResult.organId`). `federation_envelope.js:279` holds a **second** 15-name list that still admits `anonymous`, mounted on **11** `/a2a` route mounts (10 unique paths) via `jsonRpcValidate` | 34 server-admitted actors — including 333-AGI, 555-ASI, 888-APEX — are absent from the envelope list |
 | Runtime ← documentation | 33/40 actor-class authority claims declare no `runtime_harness` | "who may act" is asserted without "where it runs" |
 | Lifecycle ← prose | 28/40 actor-class authority claims have no `status` | a retired actor and an active one look identical to a reader |
 | Discovery ← file path | 0 URNs anywhere in the repo | discovery is a filesystem convention; a move breaks a reference |
@@ -228,7 +228,7 @@ identity + policy *ownership* in one file remains a defect.
 | **D9** | **Identity compressed into one object** | 47 unique live cards: **45 claim an authority envelope, 22 have a resolvable principal (17/40 actor-class claims do not), 6 declare a runtime, 11 declare lifecycle, 0 use a discovery URN.** Gateway authorises by name equality (`CANONICAL_ACTORS`, 47 literals) | **P1** — over-claim, not absence |
 | **D10** | **Two canonical identity maps with opposite admission semantics** | `canonical_agents.json` (34 canonical, `_meta.rule`: *"not in this map is REJECTED"*) vs `canonical_identity.json` (41 keys, 1 case-dup `777-FORGE`+`777-forge`) + `canonical_identity.py` (*"Single source of truth … every agent_id passes through canonicalize()"*). `canonicalize()` **auto-admitted** unknown ids (`save_alias_map` steps 1 & 4); `alias_map.json` holds 34 self-mapped entries. 4 resolution ids absent from admission (+aliases): `agy`, `hermesarifos-bot`, `mesa-test-agent`, `unknown` | **P0** — admission bypass |
 | **D11** | **Three DID stores, one of them untracked** | `secrets/did/registry.json` (14 DIDs / 48 actor names — the **verifier's** store, `federation_envelope.js:620`) is **gitignored** (`.gitignore:19`) and absent from any clone; `auth/did_registry.yaml` (10 DIDs) is the signer's store; `/opt/arifos/secrets/did-registry.json` (11) is a third. `did:arif:aaa` alone covers **22** actors incl. 333-AGI/555-ASI/888-APEX | **P1** — a clean checkout cannot verify any A2A signature |
-| **D12** | **Envelope allowlist narrower than server allowlist** | server 47 vs `federation_envelope.js` 15 (+`anonymous`, +`openclaw:ingress`); the narrow list is mounted on 8 `/a2a` routes | **P1** — Trinity actors would be rejected at the middleware |
+| **D12** | **Envelope allowlist narrower than server allowlist** | server 47 vs `federation_envelope.js` 15 (+`anonymous`, +`openclaw:ingress`); the narrow list is mounted on 11 `/a2a` route mounts (10 unique paths) | **P1** — Trinity actors would be rejected at the middleware |
 | **D13** | **Principal granularity: one organ key, many actors** | `did:arif:aaa` → 22 actors; `did:arif:a-forge` → 6; `did:arif:geox` → 5 | **F13 call** — organ-level vs per-lane principals |
 
 ### D5 detail — the one that matters
@@ -306,7 +306,7 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 
 | Probe | Before | After | Meaning |
 |---|---|---|---|
-| `npm run validate:registry` | no such gate | **PASS 21 checks** (20 enforced + 1 informational), exit 0 | **REGISTRY_ALIGNMENT_BASELINE_PASS** — ratchet baseline: unresolved debt frozen, not cleared (this is not REGISTRY_HEALTHY) |
+| `npm run validate:registry` | no such gate | **PASS 22 checks** (20 enforced + 2 informational), exit 0 | **REGISTRY_ALIGNMENT_BASELINE_PASS** — ratchet baseline: unresolved debt frozen, not cleared (this is not REGISTRY_HEALTHY) |
 | `node scripts/validate-aaa.mjs` | **13 failures** | **10 failures** | −2 false "unknown skill" errors (validator was reading the stale 196-skill copy); +1 real data defect surfaced (`minimax-m-plan` assigned to two packages). Remaining 10 are pre-existing card/identity drift — queued, not introduced. |
 | Executable reads of a `_deprecated_` path | 2 (`validate-aaa.mjs:59,65`) | **0** | INV-AR-8 |
 | Policy ghost canonical/derived paths | 4 | **0** | INV-AR-7 |
@@ -455,3 +455,44 @@ commits are provenance, not package identity. Auth providers do not exist as a s
 Each of these has **no consumer today**; they stay declared gaps, not work, until one appears.
 
 **DITEMPA BUKAN DIBERI.**
+
+## 14. Seventh pass — two defects in this document's own instrumentation
+
+A review of the *instrument* (not the finding) produced two corrections, both accepted.
+
+### 14.1 The gate measured a principal store production does not read
+
+`INV-AR-9` resolved principals from `auth/did_registry.yaml` — the **signer's** store (10 DIDs).
+Production resolves from what `federation_envelope.js:620` reads: `DID_REGISTRY_PATH` (set by
+`aaa-a2a.service` to `/root/AAA/secrets/did/registry.json`, 14 DIDs / 48 actor names). Two instruments,
+two worlds: the ratchet was measuring a universe the gateway never verifies against.
+
+Fixed: the gate now reads the verifier's store (env-overridable) and, when the checkout does not carry
+it, prints **`verifier principal store — ABSENT in this checkout; coverage under-measured`** instead of
+silently substituting another file. The limitation is now visible rather than absorbed.
+
+**Three live principal stores, none of them the same file:**
+
+| Store | Count | Read by |
+|---|---|---|
+| `/root/AAA/secrets/did/registry.json` | 14 DIDs / 48 actor names | AAA A2A verifier — **gitignored, absent from any clone** |
+| `/opt/arifos/.secrets/did/registry.json` | 11 DIDs | arifOS kernel (`ARIFOS_DID_REGISTRY_PATH`) |
+| `/root/AAA/auth/did_registry.yaml` | 10 DIDs | card signer |
+
+### 14.2 `canonicalize()` wrote on read
+
+The admission fix routed every return through `_admit()`, and `_admit()` called `save_alias_map()` when
+the cached spelling differed. A pure lookup therefore mutated `alias_map.json` — **side-effect-on-read**,
+the same class as a verifier regenerating its own input. A test resolution dirtied a working clone.
+
+Fixed: `_admit()` is read-only. It returns the admission map's spelling and writes nothing. Alias
+learning stays in `register_alias()`, which is an explicit mutation.
+
+### 14.3 Route count corrected
+
+`jsonRpcValidate` is mounted on **11** routes (10 unique paths; `/a2a` appears twice), five of them
+`/a2a/tasks/*` — not 8.
+
+**Consequence for the F13 packet:** the ratchet on principal coverage is a ratchet over *committed*
+principals only. In a clean checkout it under-measures by design, and says so. Tracking a schema or
+template (not the secret) is the decision that would let CI measure the real universe.
