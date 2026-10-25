@@ -293,6 +293,49 @@ const allCards = cards();
   check("AR13", "INV-AR-13", "case-duplicate keys in identity map", caseDups, baseline.case_duplicate_keys ?? 0, detail.filter((d) => d.startsWith("case-duplicate")));
 }
 
+// ── INV-AR-14/15: principal store and allowlist must have one owner ──────────
+{
+  let didStores = 0;
+  const storeDetail = [];
+  const codeExt = /\.(mjs|cjs|js|ts|py)$/;
+  for (const root of ["a2a-server", "scripts", "auth", "registry"]) {
+    walk(root, (rel) => {
+      if (!codeExt.test(rel)) return;
+      const text = fs.readFileSync(abs(rel), "utf8");
+      for (const m of text.matchAll(/([\w./-]*(?:did[_-]registry|secrets\/did\/registry)\.(?:json|yaml))/g)) {
+        // Normalise spellings of the same store: an absolute /root/AAA/... path and a
+        // relative path are ONE owner, not two. Two owners remain (see baseline).
+        const raw = m[1];
+        const p = raw.includes("secrets/did/registry") ? "secrets/did/registry.json" : "did_registry.yaml";
+        if (!storeDetail.includes(p)) storeDetail.push(p);
+      }
+    });
+  }
+  didStores = storeDetail.length;
+  check("AR14", "INV-AR-14", "distinct DID stores named in code", didStores, baseline.did_stores_named_in_code ?? 0, storeDetail);
+
+  // Two allowlists: server.js (canonical) and federation_envelope.js (mounted on every /a2a route).
+  let anon = 0;
+  let missing = 0;
+  const names = [];
+  try {
+    const grab = (file, re) => {
+      const m = fs.readFileSync(abs(file), "utf8").match(re);
+      return m ? [...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1]) : [];
+    };
+    const server = new Set(grab("a2a-server/server.js", /CANONICAL_ACTORS = new Set\(\[([\s\S]*?)\]\)/));
+    const env = new Set(grab("a2a-server/federation_envelope.js", /const CANONICAL_ACTORS = new Set\(\[([\s\S]*?)\]\)/));
+    anon = env.has("anonymous") && !server.has("anonymous") ? 1 : 0;
+    const diff = [...server].filter((x) => !env.has(x));
+    missing = diff.length;
+    names.push(...diff.slice(0, 8));
+  } catch {
+    /* noop */
+  }
+  check("AR15a", "INV-AR-15", "envelope allowlist admits anonymous", anon, baseline.envelope_allows_anonymous ?? 0, []);
+  check("AR15b", "INV-AR-15", "server actors missing from envelope list", missing, baseline.server_actors_missing_from_envelope ?? 0, names);
+}
+
 // ── INV-AR-5: skill index entries resolve to a real SKILL.md ─────────────────
 {
   const idx = readYamlSafeJson("skills_index.json");
