@@ -1,6 +1,6 @@
 {
-  "name": "fi003-federation",
-  "version": "1.1.0",
-  "displayName": "FI-003 Federation Runbook",
-  "description": "Portable AAA federation context + runbook commands + mesh skills (fi-mesh-check, fi-zai-probe, fi-qwen-upgrade) for Qwen Code (FI-003). Pure markdown — zero executable surface."
+  "name": "arifos-core",
+  "version": "1.2.1",
+  "displayName": "arifOS Core",
+  "description": "Federation context + runbook commands + mesh skills (fi-mesh-check, fi-zai-probe, fi-qwen-upgrade) for Qwen Code (FI-003). One arifOS extension since 2026-10-25 (arif-core folded in). Pure markdown \u2014 zero executable surface."
 }
