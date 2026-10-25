@@ -1,6 +1,8 @@
 ---
 name: hermes-delivery-diagnostics
 description: "Use when work is produced but never reaches the human."
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Hermes Delivery Diagnostics

@@ -3,6 +3,8 @@ name: generated-audio-provenance
 description: "Use when generated audio needs provenance labels."
 version: 1.0.0
 tags: [voice, tts, metadata, provenance, delivery, ogg]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Generated audio — labelling and provenance

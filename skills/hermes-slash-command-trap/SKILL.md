@@ -3,6 +3,8 @@ name: hermes-slash-command-trap
 description: "Hermes custom slash command registration — the plugin vs built-in COMMAND_REGISTRY conflict. When /seal, /init, or any custom command fails silently in Telegram, this is the first thing to check. One-shot diagnostic + fix pattern."
 tags: [hermes, plugin, commands, troubleshooting, gateway, telegram]
 related_skills: [hermes-agent, hermes-telegram-gateway-ops]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Hermes Slash Command Registration Trap

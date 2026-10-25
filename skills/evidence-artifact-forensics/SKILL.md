@@ -2,6 +2,8 @@
 name: evidence-artifact-forensics
 description: "Use when a report carries DOIs, hashes, or witnesses."
 version: 1.0.0
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Evidence artifact forensics

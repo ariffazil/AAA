@@ -7,6 +7,8 @@ description: >
   insights" document as the key deliverable, not a mega-merge.
 category: software-development
 tags: [docs, entropy, zen, canon, cleanup, classification, governance]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Documentation Tier Management

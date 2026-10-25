@@ -2,6 +2,8 @@
 name: production-source-disambiguation
 description: "Find the live path before mutating duplicated code files."
 trigger: "production code, live service, audit replica, source-of-truth, multiple copies"
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Production Source Disambiguation

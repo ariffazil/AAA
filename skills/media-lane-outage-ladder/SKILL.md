@@ -17,6 +17,8 @@ triggers:
   - deciding whether to wait for a quota reset or ship a different engine
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Media Lane Outage Ladder

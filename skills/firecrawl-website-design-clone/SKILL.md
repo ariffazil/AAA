@@ -11,6 +11,8 @@ inputs:
   - name: FIRECRAWL_API_KEY
     description: Firecrawl API key for hosted Firecrawl requests when the workflow runs through the CLI or API.
     required: true
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Firecrawl Website Design Clone

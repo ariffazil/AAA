@@ -2,6 +2,8 @@
 name: ai-paper-paste-audit
 description: "Use when Arif pastes an AI paper link or arXiv-cited draft."
 tags: [arxiv, citation, verification, paste, ai-research, kunyah]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # AI Paper Paste Audit — kunyah pasted AI/ML claims against the source

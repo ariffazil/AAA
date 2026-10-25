@@ -3,6 +3,8 @@ name: monetary-amount-parsing
 description: "Use when parsing money amounts from untrusted input."
 version: 1.0.0
 tags: [money, amount, decimal, currency, payment, parser, finance]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Monetary Amount Parsing

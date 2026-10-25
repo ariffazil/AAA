@@ -8,6 +8,8 @@ triggers:
   - the human asks who that person prefers, will choose, or still wants
   - a power-asymmetry or transaction frame is being used to explain a bond
   - the same question about a bond returns in new wording within one session
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Bond-reading discipline

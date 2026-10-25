@@ -6,6 +6,8 @@ owner: HERMES
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
 when_to_use: arXiv upload, 'is this paper arXiv ready', building submission tarball, checking a manuscript for submission gates.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # arXiv Submission Package

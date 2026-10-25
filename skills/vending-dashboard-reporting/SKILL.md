@@ -2,6 +2,8 @@
 name: vending-dashboard-reporting
 description: Build vending sales dashboard PDFs per site or combined.
 version: 1.0.0
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Vending Sales Dashboard Reporting

@@ -17,6 +17,8 @@ triggers:
   - a clone reads flat, dull, rushed, or wrong-register
   - deciding whether to re-mint a voice or fix the render
   - a person supplies their own voice note as the reference
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Voice Register Fidelity
