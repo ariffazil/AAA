@@ -84,9 +84,15 @@ alignment:
     policy_ghost_paths: 0            # canonical+derived only; deprecated tombstones may name deleted files
     skill_index_missing_entries: 23
     deprecated_reads: 0              # executable consumers reading a _deprecated_ path (INV-AR-8)
-    authority_without_principal: 41  # of 45 cards claiming authority; only 4 carry a non-empty pubkey
-    authority_without_runtime: 39    # of 45; only 6 declare runtime_harness
-    authority_without_lifecycle: 34  # of 45; lifecycle state absent
+    # Correct-scope instrument (2026-10-25 2nd correction): principal resolved across
+    # card.public_key.hex OR agents/**/identity.json OR IDENTITY/keys/*_public.pem OR DID
+    # registry. Service-class cards (organs/pillars/functions/*-mcp) are excluded — an MCP
+    # surface legitimately has no agent principal.
+    authority_without_principal: 18  # of 38 actor-class cards claiming authority
+    authority_without_runtime: 33    # of 38; runtime_harness present on only 6/47 cards
+    authority_without_lifecycle: 28  # of 38
+    resolution_not_admitted: 4       # canonical_identity.json ids absent from canonical_agents.json (+ aliases)
+    case_duplicate_keys: 1           # 777-FORGE + 777-forge in canonical_identity.json
   invariants:
     - "INV-AR-1 one layer per file"
     - "INV-AR-2 derived files name their source"

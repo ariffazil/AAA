@@ -202,39 +202,95 @@ const allCards = cards();
   );
 }
 
-// ── INV-AR-9/10/11: authority must not outrun principal, runtime, or lifecycle ─
+// ── INV-AR-9/10/11: agency authority must not outrun principal, runtime, lifecycle ─
+// 2026-10-25 correction: the first gate counted only card.public_key.hex and included
+// service-class cards. Both were wrong: a principal may live in agents/**/identity.json,
+// IDENTITY/keys/*_public.pem or the DID registry, and an MCP/organ surface legitimately
+// has NO agent principal (service authority ≠ agency).
 {
   const byId = new Map();
   for (const c of allCards) byId.set(c.doc.id, c); // later root wins, mirrors loader order
   const unique = [...byId.values()];
-  const auth = unique.filter(({ doc }) => doc.authority_ceiling || doc.authority);
-  const noPrincipal = auth.filter(({ doc }) => !(doc.public_key && doc.public_key.hex));
+
+  const principals = new Set();
+  walk("agents", (rel) => {
+    if (!rel.endsWith("/identity.json")) return;
+    try {
+      const d = JSON.parse(fs.readFileSync(abs(rel), "utf8"));
+      const id = d.actor_id || d.agent_id || d.id;
+      if (id) principals.add(String(id).toLowerCase());
+    } catch {
+      /* noop */
+    }
+  });
+  if (fs.existsSync(abs("IDENTITY/keys"))) {
+    for (const f of fs.readdirSync(abs("IDENTITY/keys"))) {
+      if (f.toLowerCase().includes("public")) principals.add(f.split("_")[0].toLowerCase());
+    }
+  }
+  try {
+    const did = readYaml("auth/did_registry.yaml")?.dids;
+    if (Array.isArray(did)) {
+      for (const e of did) {
+        const id = e?.actor_id || e?.agent_id || e?.id || e?.name;
+        if (id) principals.add(String(id).toLowerCase());
+      }
+    } else if (did && typeof did === "object") {
+      for (const k of Object.keys(did)) principals.add(k.toLowerCase());
+    }
+  } catch {
+    /* noop */
+  }
+
+  const isService = (id, doc, rel) => {
+    const blob = [doc.constitutional_class, doc.class, doc.role, doc.type, doc.category]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+    if (/(organ|service|mcp|pillar|gateway)/.test(blob)) return true;
+    if (/\/(organs|pillars|functions)\//.test(rel)) return true;
+    if (/-mcp$/.test(id) || ["arifos", "aforge", "aaa"].includes(id)) return true;
+    return false;
+  };
+  const hasPrincipal = (id, doc) =>
+    Boolean(doc.public_key && doc.public_key.hex) || principals.has(id.toLowerCase());
+
+  const actors = unique.filter(({ doc, rel }) => !isService(doc.id, doc, rel));
+  const auth = actors.filter(({ doc }) => doc.authority_ceiling || doc.authority);
+  const noPrincipal = auth.filter(({ doc }) => !hasPrincipal(doc.id, doc));
   const noRuntime = auth.filter(({ doc }) => !doc.runtime_harness);
   const noLifecycle = auth.filter(({ doc }) => !doc.status);
-  check(
-    "AR9",
-    "INV-AR-9",
-    "authority claimed without principal",
-    noPrincipal.length,
-    baseline.authority_without_principal ?? 0,
-    noPrincipal.map(({ doc }) => doc.id),
-  );
-  check(
-    "AR10",
-    "INV-AR-10",
-    "authority claimed without runtime_ref",
-    noRuntime.length,
-    baseline.authority_without_runtime ?? 0,
-    noRuntime.map(({ doc }) => doc.id),
-  );
-  check(
-    "AR11",
-    "INV-AR-11",
-    "authority claimed without lifecycle state",
-    noLifecycle.length,
-    baseline.authority_without_lifecycle ?? 0,
-    [],
-  );
+
+  check("AR9", "INV-AR-9", "actor authority without principal", noPrincipal.length, baseline.authority_without_principal ?? 0, noPrincipal.map(({ doc }) => doc.id));
+  check("AR10", "INV-AR-10", "actor authority without runtime_ref", noRuntime.length, baseline.authority_without_runtime ?? 0, noRuntime.map(({ doc }) => doc.id));
+  check("AR11", "INV-AR-11", "actor authority without lifecycle state", noLifecycle.length, baseline.authority_without_lifecycle ?? 0, []);
+}
+
+// ── INV-AR-12/13: one admission owner; resolution may not admit ──────────────
+{
+  let gap = 0;
+  let caseDups = 0;
+  const detail = [];
+  try {
+    const resMap = JSON.parse(fs.readFileSync(abs("registry/canonical_identity.json"), "utf8"));
+    const admRaw = JSON.parse(fs.readFileSync(abs("registry/canonical_agents.json"), "utf8"))?.canonical || {};
+    const admitted = new Map();
+    for (const [cid, entry] of Object.entries(admRaw)) {
+      admitted.set(String(cid).toLowerCase(), cid);
+      for (const a of entry?.aliases || []) admitted.set(String(a).toLowerCase(), cid);
+    }
+    const resKeys = Object.keys(resMap);
+    gap = resKeys.filter((k) => !admitted.has(k.toLowerCase())).length;
+    for (const k of resKeys.filter((k) => !admitted.has(k.toLowerCase()))) detail.push(`not admitted: ${k}`);
+    const g = new Map();
+    for (const k of resKeys) g.set(k.toLowerCase(), [...(g.get(k.toLowerCase()) || []), k]);
+    caseDups = [...g.values()].filter((v) => v.length > 1).length;
+    for (const v of g.values()) if (v.length > 1) detail.push(`case-duplicate: ${v.join(" + ")}`);
+  } catch {
+    gap = -1;
+  }
+  check("AR12", "INV-AR-12", "resolution ids not admitted", Math.max(gap, 0), baseline.resolution_not_admitted ?? 0, detail.filter((d) => d.startsWith("not admitted")));
+  check("AR13", "INV-AR-13", "case-duplicate keys in identity map", caseDups, baseline.case_duplicate_keys ?? 0, detail.filter((d) => d.startsWith("case-duplicate")));
 }
 
 // ── INV-AR-5: skill index entries resolve to a real SKILL.md ─────────────────
