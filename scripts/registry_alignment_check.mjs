@@ -70,6 +70,10 @@ function resolveSkillSource(src) {
 }
 
 const checks = [];
+function checkAtLeast(id, invariant, label, measured, floor, detail = []) {
+  const failed = MEASURE_ONLY ? false : measured < floor;
+  checks.push({ id, invariant, label, measured, baseline: floor, status: failed ? "FAIL" : "PASS", detail });
+}
 function check(id, invariant, label, measured, baseline, detail = []) {
   const failed = MEASURE_ONLY ? false : measured > baseline;
   checks.push({ id, invariant, label, measured, baseline, status: failed ? "FAIL" : "PASS", detail });
@@ -146,6 +150,11 @@ function globExists(pattern) {
 
 // ── INV-AR-1: duplicate agent identity across live card roots ─────────────────
 const allCards = cards();
+const uniqueCards = (() => {
+  const m = new Map();
+  for (const c of allCards) m.set(c.doc.id, c); // later root wins, mirrors loader order
+  return [...m.values()];
+})();
 {
   const byId = new Map();
   for (const { rel, doc } of allCards) {
@@ -208,9 +217,7 @@ const allCards = cards();
 // IDENTITY/keys/*_public.pem or the DID registry, and an MCP/organ surface legitimately
 // has NO agent principal (service authority ≠ agency).
 {
-  const byId = new Map();
-  for (const c of allCards) byId.set(c.doc.id, c); // later root wins, mirrors loader order
-  const unique = [...byId.values()];
+  const unique = uniqueCards;
 
   const principals = new Set();
   walk("agents", (rel) => {
@@ -334,6 +341,59 @@ const allCards = cards();
   }
   check("AR15a", "INV-AR-15", "envelope allowlist admits anonymous", anon, baseline.envelope_allows_anonymous ?? 0, []);
   check("AR15b", "INV-AR-15", "server actors missing from envelope list", missing, baseline.server_actors_missing_from_envelope ?? 0, names);
+}
+
+// ── INV-REG: declared layer vs inventory reconciliation ─────────────────────
+{
+  let organs = [];
+  try {
+    organs = readYaml("federation/organs.yaml")?.components || [];
+  } catch {
+    organs = [];
+  }
+  const cardIds = new Set(uniqueCards.map(({ doc }) => doc.id));
+  const joined = organs.filter((c) => cardIds.has(c.id) || cardIds.has(`${c.id}-mcp`));
+  const orphans = organs.filter((c) => !cardIds.has(c.id) && !cardIds.has(`${c.id}-mcp`)).map((c) => c.id);
+  checkAtLeast("REG1", "INV-REG-7", `organ→component join (of ${organs.length})`, joined.length, baseline.organ_component_join ?? 0, [`orphaned: ${orphans.length}`]);
+
+  const hosts = new Set();
+  for (const c of organs) {
+    for (const u of c.public_urls || []) {
+      try {
+        const h = new URL(u).hostname;
+        if (h) hosts.add(h);
+      } catch {
+        /* noop */
+      }
+    }
+  }
+  const unknown = [];
+  for (const { doc } of uniqueCards) {
+    const u = doc.url || doc.endpoint;
+    if (typeof u !== "string" || !u.startsWith("http")) continue;
+    try {
+      const h = new URL(u).hostname;
+      if (h && !hosts.has(h)) unknown.push(`${doc.id} -> ${h}`);
+    } catch {
+      unknown.push(`${doc.id} -> ${u}`);
+    }
+  }
+  check("REG2", "INV-REG-8", "endpoint hosts absent from inventory", unknown.length, baseline.unverifiable_endpoint_hosts ?? 0, unknown.slice(0, 6));
+
+  const generated = [
+    "registries/bindings.generated.yaml",
+    "registries/REGISTRY_CATALOG.generated.yaml",
+    "registries/AAA_AGENTS_REGISTRY.json.derived",
+    "skills_index.json",
+    "skills_index.federation.json",
+  ];
+  const noProv = [];
+  for (const f of generated) {
+    if (!exists(f)) continue;
+    const text = fs.readFileSync(abs(f), "utf8").slice(0, 2000);
+    if (!/generated_at|generated_by|derived_from|_source|_canon/i.test(text)) noProv.push(f);
+  }
+  check("REG3", "INV-REG-7", "generated objects without provenance", noProv.length, baseline.generated_without_provenance ?? 0, noProv);
 }
 
 // ── INV-AR-5: skill index entries resolve to a real SKILL.md ─────────────────
