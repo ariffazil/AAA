@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [media, video, asr, vision]
     related_skills: [media-ingest-lane, paste-router]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Local Video Read — frames plus speech, in that order
@@ -23,6 +25,13 @@ caption, a screen recording, media nobody transcribed.
 skill is only the execution recipe for a local file.
 
 ## Pipeline
+
+**0. Check for an existing digest first (added 2026-10-25).** The Telegram gateway now pre-computes
+frames + speech at inbound for every video and inlines the result as a `[VIDEO DIGEST — measured
+locally, not described]` block. If that block is in your message, the frames are already on disk and
+the speech already transcribed — go straight to step 4 with those paths. Do not re-run ffmpeg; do not
+claim you cannot read the clip. Fall through to step 1 only when no digest block is present (CLI,
+other platforms, or a digest that reported failure).
 
 1. **Identity only, never the answer.**
    ```bash
@@ -56,6 +65,13 @@ matters to him. No scene-by-scene narration.
 
 ## Pitfalls
 
+- **"I cannot read video" is almost never the truth on Telegram anymore.** Since the digest landed in
+  the inbound path (2026-10-25), a video turn arrives with frames and a transcript already computed.
+  Replying that the clip is unreadable wastes the human's turn and, measured that morning, led to a
+  wrong-intent answer when he was actually asking about a cooking defect. Read the digest block first.
+- **A digest speech line marked SUSPECT is not speech.** Whisper-family models emit "Terima kasih
+  kerana menonton" over silence, music and outro stings. On a short silent clip that phrase means the
+  decoder filled a gap — report no speech and let the frames carry the answer.
 - **Identical ASR segments separated by silence are loop, not speech.** A clip whose audio repeats
   the same line at 0:00, 0:30 and 1:00 is a music bed or a hallucinating decoder; quote the first
   occurrence, say the rest repeats or is unclear, and never present the repetition as three separate
