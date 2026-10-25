@@ -2,6 +2,8 @@
 name: hermes-room-relay
 description: "Relay a chat room to an external agent runtime."
 tags: [hermes, gateway, plugin, relay, telegram, opencode, hooks]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Hermes Room Relay

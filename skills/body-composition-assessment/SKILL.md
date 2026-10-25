@@ -3,6 +3,8 @@ name: body-composition-assessment
 description: "Use when a body photo needs a body-fat verdict."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Body Composition Assessment

@@ -3,6 +3,8 @@ name: persona-voice-render-ops
 description: "Use when rendering a persona voice note via sado."
 version: 1.0.0
 tags: [voice, tts, sado, telegram, minimax]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Persona voice render — runner, registry, delivery

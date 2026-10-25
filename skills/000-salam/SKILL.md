@@ -3,6 +3,8 @@ name: 000-salam
 description: "Salam — buka sesi dengan hadir: sapa, waktu, satu perkara paling perlu. ZEN spine /000."
 triggers:
   - "/000_salam"
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # /000_salam — Salam

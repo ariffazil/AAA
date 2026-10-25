@@ -8,6 +8,8 @@ triggers:
   - a pasted audit says "you said X" and X is not in the thread
   - a video or essay blends two named thinkers into one voice
   - a claim carries a precise number and a vague or absent source
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Attribution integrity — audit the sourcing before the substance

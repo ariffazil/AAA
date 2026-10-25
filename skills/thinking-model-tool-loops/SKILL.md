@@ -2,6 +2,8 @@
 name: thinking-model-tool-loops
 description: "Diagnose and fix thinking model + tool loop incompatibilities — the reasoning_content / thought_signature 400-error cascade. Covers MiMo, Gemini 3+, DeepSeek R1, Kimi K2, and any future thinking model that requires reasoning state to be echoed back in multi-turn tool-calling conversations. Trigger: 'reasoning_content must be passed back', 'thought_signature missing', thinking model works for first turn then fails, mid-task provider failure with thinking model, agent dies after tool call on thinking model."
 tags: [thinking, reasoning, tool-loop, miimo, gemini, deepseek, litellm, 400-error]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Thinking Model Tool Loops

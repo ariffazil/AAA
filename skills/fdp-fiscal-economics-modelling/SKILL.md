@@ -11,6 +11,8 @@ triggers:
   - asked for NPV, IRR, EMV, breakeven or Monte Carlo on a field development
   - several workstreams emit different headline numbers for one project
   - asked which parts of a plan are solid and which need work
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # FDP Fiscal Economics Modelling

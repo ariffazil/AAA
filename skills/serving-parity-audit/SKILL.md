@@ -1,6 +1,8 @@
 ---
 name: serving-parity-audit
 description: Audit whether a deployed site really serves its repo.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # serving-parity-audit

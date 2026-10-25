@@ -7,6 +7,8 @@ triggers:
   - User asks to add a group to the allowlist
   - Bot returns "chat not found" or "bot can't initiate"
   - Setting up a new person on Hermes
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Telegram User Onboarding

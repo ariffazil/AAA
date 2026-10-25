@@ -1,6 +1,8 @@
 ---
 name: transaction-dashboard-generator
 description: Generate visual dashboard PDFs from business POS/transaction Excel exports. Clean, light-themed, non-federation dashboards for business operators (not Arif/WEALTH). Auto-detects location, date range; renders 6 charts + KPI cards + insights. Trigger when user uploads transaction Excel file (KPJAP, KPJD, etc.) and asks for "dashboard", "summary", or "automate invoice/management account."
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Transaction Dashboard Generator

@@ -9,6 +9,8 @@ metadata:
   hermes:
     category: document-production
     related: [formal-document-rebuild, chart-artifact-render-qa, rendered-document-audit]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Monthly Vending-Site Performance Reporting

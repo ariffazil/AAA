@@ -4,6 +4,8 @@ description: "[QwenCloud] Generate videos using Wan models."
 compatibility: "Requires Python 3.9+ and curl. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use."
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 > **Agent setup**: If your agent doesn't auto-load skills (e.g. Claude Code),
 > see [agent-compatibility.md](references/agent-compatibility.md) once per session.

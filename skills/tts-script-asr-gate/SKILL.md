@@ -3,6 +3,8 @@ name: tts-script-asr-gate
 description: "Use when a TTS script must pass an ASR round-trip gate."
 version: 1.0.0
 tags: [tts, asr, verification, gate, voice, malay]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # TTS scripts that pass an ASR round-trip gate

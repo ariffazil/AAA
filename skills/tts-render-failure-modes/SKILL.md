@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [voice, tts, render, diagnostics, fail-closed]
     related_skills: [generated-audio-provenance, voice-clone-operations, voice-lane]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # TTS render failure modes

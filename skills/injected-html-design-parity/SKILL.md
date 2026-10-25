@@ -1,6 +1,8 @@
 ---
 name: injected-html-design-parity
 description: "Use when a page looks unlike its siblings despite same CSS."
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Injected-HTML design parity

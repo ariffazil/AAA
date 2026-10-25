@@ -2,6 +2,8 @@
 name: opencode-ed25519-bootstrap-fix
 description: "Class-level: wire any federation agent's Ed25519 identity into arifOS for MUTATE authority. Covers: identity registration (PEM path, agent-card bound_to, kernel normalization), 2-step challenge flow (mode=challenge → sign → mode=init), Node.js PKCS8 PEM key loading, MCP transport Accept header pitfall, A-FORGE deploy markers. Trigger: agent boots OBSERVE_ONLY (identity_declared ✓, authenticated ✗), or kernel returns HTTP 406, or arif_judge fails with verify-side rejection."
 version: 1.0.0
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # OpenCode Ed25519 Bootstrap Fix

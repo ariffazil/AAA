@@ -7,6 +7,8 @@ tags: [provider-retirement, secret-hygiene, env-cleanup, tavily-style, configura
 metadata:
   hermes:
     related: [FORGE-secret-hygiene, federation-identity-reconciliation, arifos-federation-ops]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Provider Retirement Purge
