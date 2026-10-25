@@ -21,6 +21,79 @@ adopted_changes:
   - "DEPRECATION_REGISTRY.yaml created (was 'to-be-created'); supersedes docs/deprecation-registry.json"
   - "A6 payload above"
 
+# ─────────────────────────────────────────────────────────────────────────────
+# 2026-10-25 update — Agent Registry terminology alignment (F13 request)
+# Measured against /root/AAA @ 09eff9b6. Doctrine: canon/AGENT-REGISTRY-ALIGNMENT-2026-10-25.md
+# ─────────────────────────────────────────────────────────────────────────────
+last_measured: "2026-10-25T09:30:00Z"
+measured_against_commit: "09eff9b6be8d30ff63932a8fb75bd253fbb02ef4"
+
+# Four layers. A file carries ONE layer's claim. Mixing layers is a defect (INV-AR-1).
+layers:
+  L1_identity:  "Who is this agent and what does it claim?  → agent cards"
+  L2_catalogue: "What exists on disk?                      → generated indexes + ABI"
+  L3_policy:    "What is permitted?                        → policy registries"
+  L4_runtime:   "What is live right now?                   → loader + health probes"
+
+# Agent Registry (agentregistry.googleapis.com) component types → AAA realization.
+# Writable `service` resources produce read-only discovery resources.
+component_types:
+  agent:
+    canonical: "agent-cards/**/agent-card.json"
+    discovery_view: "a2a-server/agent-card-registry.js"
+    identifier: "card.id (+ did:arif:* + key fingerprint)"
+  a2a_skill:
+    canonical: "card.skills[] (inline)"
+    constraint: "INV-AR-4 — source resolves from repo root or is absolute"
+  skill:
+    canonical: "skills/**/SKILL.md"
+    publisher: "did:arif:aaa (auth/sign_agent_card.py)"
+    revision: "git commit SHA of the skill directory"
+    index: "skills_index.json (local) · skills_index.federation.json (cross-organ, derived)"
+  mcp_server:
+    canonical: "federation/organs.yaml (components[].mcp)"
+    endpoint_view: "registry/mcp-tools.yaml (derived)"
+  endpoint:
+    canonical: "federation/organs.yaml (components[].port + public_urls)"
+    derived_probe: "registries/PORT_REGISTRY.json (9-organ probed slice)"
+  tool:
+    catalogue: "registries/tool_registry.canonical.json (ABI)"
+    policy: "registries/tools.yaml (risk tier, approval, witnesses)"
+    enumeration: "docs/federation_tools_sot.yaml (derived per-organ)"
+  binding:
+    canonical: "card.bound_to + organs.yaml routes_to / receive_only_from"
+  runtime_reference:
+    canonical: "federation/organs.yaml (systemd + port) + card.runtime_harness"
+  governance_scope:
+    canonical: "arifOS kernel F1–F13 (:8088) — capability ≠ authority"
+
+# Ratchet. Enforced by scripts/registry_alignment_check.mjs (`npm run validate:registry`).
+# A count that RISES fails the gate. A count that FALLS must be re-baselined in the same commit.
+alignment:
+  doctrine: "canon/AGENT-REGISTRY-ALIGNMENT-2026-10-25.md"
+  gate: "scripts/registry_alignment_check.mjs"
+  baseline:
+    # Measured on the COMMITTED tree @ aaa/warga-claude-code, 2026-10-25.
+    # The live worktree at /root/AAA carries extra uncommitted cards and measures higher
+    # (see canon §4 D2/D5/D6). The gate governs the repo, so the repo numbers are the ratchet.
+    duplicate_agent_ids: 24
+    card_skill_refs_total: 778
+    card_skill_refs_unresolved: 171
+    card_skill_refs_no_source: 604
+    cards_missing_schema_version: 1
+    policy_ghost_paths: 0            # canonical+derived only; deprecated tombstones may name deleted files
+    skill_index_missing_entries: 23
+    deprecated_reads: 2              # executable consumers reading a _deprecated_ path (removed in the next commit)
+  invariants:
+    - "INV-AR-1 one layer per file"
+    - "INV-AR-2 derived files name their source"
+    - "INV-AR-3 a _deprecated_ path holds no live dependency"
+    - "INV-AR-4 card skill source resolves from repo root or is absolute"
+    - "INV-AR-5 skill index entry resolves to a real SKILL.md"
+    - "INV-AR-6 tool id unique across catalogue; policy references existing ids"
+    - "INV-AR-7 every declared canonical path exists (or external: true + absolute)"
+    - "INV-AR-8 no executable consumer reads _deprecated_/_archive/_superseded/.archive-*"
+
 # ── CATEGORY PRECEDENCE ──
 # Within each category, earlier entries beat later entries.
 
@@ -28,26 +101,35 @@ categories:
 
   agent_identity:
     description: "Who is an agent, what is its ID, kind, status, FI slot, lane, organ"
+    # 2026-10-25 correction: identity lives in agent cards (L1). Every YAML list is a view.
+    # Runtime precedence INV-005: cards under /agent-cards/ win over /agents/ mirrors.
     canonical:
-      - path: "registries/AGENTS_UNIFIED.yaml"
-        reason: "Forged 2026-07-31 by 333-AGI under F13 SOVEREIGN. Single canonical registry. 5 layers: identity lanes, forge instruments, extensions, organs, collapsed. 0 ghost paths, 0 FI conflicts. Supersedes AGENT_INDEX.json + AAA_AGENTS_REGISTRY.json."
-        coverage: "Identity lanes + forge instruments (FI-001 through FI-009) + extensions + 7 organs + collapsed"
-      - path: "agent-cards/identity/333-AGI/agent-card.json"
-        reason: "Authoritative card for 333-AGI with full skills, MCP surface, Ed25519 signatures"
-      - path: "agent-cards/identity/555-ASI/agent-card.json"
-        reason: "Authoritative card for 555-ASI with full skills, MCP surface, Ed25519 signatures"
-      - path: "agent-cards/identity/888-APEX/agent-card.json"
-        reason: "Authoritative card for 888-APEX with full skills, MCP surface, Ed25519 signatures"
+      - path: "agent-cards/identity/*/agent-card.json"
+        reason: "Authoritative identity cards — full skills, MCP surface, Ed25519 signatures. L1."
+      - path: "agent-cards/organs/*/agent-card.json"
+        reason: "Organ cards (MCP server identity). L1."
+      - path: "agent-cards/functions/*/agent-card.json"
+        reason: "Function cards (gateway roles). L1."
+      - path: "agent-cards/pillars/*/agent-card.json"
+        reason: "Pillar cards (sovereign, arifos, aforge, aaa-gateway). L1."
     derived:
+      - path: "registries/AGENTS_UNIFIED.yaml"
+        reason: "DERIVED taxonomy view (3 identity lanes + 9 FI slots + 7 extensions + 7 organs + 4 collapsed). Not an agent list — never use for discovery."
       - path: "a2a/registry/agents.yaml"
-        reason: "A2A-aligned agent registry — operational view, superseded by AGENTS_UNIFIED.yaml for identity"
+        reason: "DERIVED operational A2A binding view (34 entries, keyed agent_id). L4."
       - path: "ROOT_AGENT_CONFIG.yaml"
         reason: "Runtime config with FI slots and MCP surface details. Operational, not identity-canonical."
     deprecated:
       - path: "AGENT_INDEX.json"
-        reason: "Self-tombstoned. Superseded by AGENTS_UNIFIED.yaml. 5 ghost paths, stale FI slots."
+        reason: "Self-tombstoned. Superseded by agent cards + AGENTS_UNIFIED.yaml. 5 ghost paths, stale FI slots."
       - path: "registries/AAA_AGENTS_REGISTRY.json"
-        reason: "Superseded by AGENTS_UNIFIED.yaml. 15-agent stale view."
+        reason: "Superseded. 15-agent stale view."
+      - path: "registries/AAA_AGENTS_REGISTRY.json.derived"
+        reason: "Superseded. Derived remnant of the 15-agent view."
+      - path: "AAA_AGENTS_REGISTRY.json.md"
+        reason: "Superseded prose pointer to a JSON that no longer holds the agent list."
+      - path: "registry/canonical_agents.json"
+        reason: "Superseded 34-agent view (2026-09-14). Identity is in cards; policy is in registries/agents.yaml."
       - path: "registries/unified_agent_protocol.yaml"
         reason: "Self-declared DEPRECATED 2026-06-22."
       - path: "registries/AAA_FEDERATION_STATE.yaml"
@@ -72,28 +154,41 @@ categories:
 
   skill:
     description: "What skills exist, their metadata, triggers, and packaging"
+    # 2026-10-25: three scopes, three owners. Local catalogue ≠ cross-organ view ≠ deprecated snapshot.
     canonical:
       - path: "registries/skills.yaml"
-        reason: "163 registered skills with full metadata, packages, and orthogonal tags. Most structured."
-      - path: "skills/*/SKILL.md"
-        reason: "234 actual SKILL.md files on disk — ground truth for skill content"
+        reason: "196 active skills with routing view + alias view (moved out of federation/_deprecated_20260819/ 2026-10-25 — it was live all along). L3."
+        variables: ["total_active: 196", "source: canonical-skill-bodies"]
+      - path: "skills/**/SKILL.md"
+        reason: "949 SKILL.md bodies on disk — ground truth for skill content. L2."
+      - path: "skills_index.json"
+        reason: "Generated local catalogue (945 entries, scripts/skills_index_gen.py, root /root/AAA/skills). L2."
     derived:
+      - path: "skills_index.federation.json"
+        reason: "Cross-organ catalogue — 5 roots, priority AAA > arifOS > HERMES > A-FORGE > kimi-code. 810 files / 754 unique."
       - path: "skills/FEDERATED_SKILLS_REGISTRY_V3.yaml"
-        reason: "279-line routing view derived from skills.yaml"
+        reason: "Routing view derived from registries/skills.yaml"
       - path: "skills/SKILL_ALIAS_TABLE.json"
-        reason: "6187-line alias table — V3 short names to disk paths"
-      - path: "skills/AAA_SKILL.md"
-        reason: "DRAFT registry from 2026-06-23 — historical entropy reduction plan, not canonical"
-    deprecated: []
+        reason: "Alias table — V3 short names to disk paths"
+    deprecated:
+      - path: "registries/discovery/skills-index.json"
+        reason: "82-entry snapshot, 2026-06-22. Superseded by skills_index.json (945). Tombstone in DEPRECATION_REGISTRY.yaml."
 
   tool:
     description: "What tools exist, their schemas, authority gates, and organ ownership"
+    # 2026-10-25: two layers, both canonical for their own question. Catalogue ≠ policy.
     canonical:
+      - path: "registries/tool_registry.canonical.json"
+        reason: "CATALOGUE — implementation tool surface derived from arifOS ABI capability_registry + constitutional_map. L2."
       - path: "registries/tools.yaml"
-        reason: "Comprehensive tool registry — 2513 lines, 175+ tools with authority gates"
+        reason: "POLICY — risk tier, approval policy, execution kind, required witnesses. L3."
       - path: "registries/CAPABILITY_INDEX.json"
-        reason: "2771-line capability index with MCP protocol binding"
+        reason: "Capability index with MCP protocol binding. L2."
     derived:
+      - path: "docs/federation_tools_sot.yaml"
+        reason: "Per-organ tool enumeration — generated by scripts/generate_tool_census.py. L2."
+      - path: "registry/mcp-tools.yaml"
+        reason: "9-organ endpoint + tool-count view. L4. Regenerate against federation/organs.yaml."
       - path: "registries/TOOLBENCH_CONTRAST.md"
         reason: "Ontological contrast map — FI-001 through FI-008 vs upstream vanilla"
       - path: "contracts/TOOL_MANIFEST.yaml"
@@ -110,14 +205,20 @@ categories:
 
   network:
     description: "Ports, routes, tunnels, servers — infrastructure truth"
+    # 2026-10-25: endpoint ownership unified. organs.yaml owns port + authority for all 41 components.
+    # PORT_REGISTRY.json is a 9-organ probed slice, not the federation SOT.
     canonical:
-      - path: "registries/PORT_REGISTRY.json"
-        reason: "Live-probed 2026-07-28 via ss -tlnp. Declared single source of truth."
+      - path: "federation/organs.yaml"
+        reason: "CANONICAL endpoint + authority surface — 41 components, 30 with ports, authority ceilings. L3+L4."
       - path: "registries/ROUTE_REGISTRY.json"
         reason: "Extracted from /etc/caddy/Caddyfile, validated 2026-07-28."
       - path: "registries/TUNNEL_REGISTRY.json"
         reason: "Extracted from /etc/cloudflared/config.yml, validated 2026-07-28."
     derived:
+      - path: "registries/PORT_REGISTRY.json"
+        reason: "DERIVED probed slice — 9 organs (2026-07-28). All 6 shared ids MATCH organs.yaml; 24 organ ports absent. Do not extend; regenerate or retire."
+      - path: "registry/mcp-tools.yaml"
+        reason: "9-organ tool-count view. L4."
       - path: "registries/servers.yaml"
         reason: "Server inventory"
       - path: "registries/hosts.yaml"
@@ -137,13 +238,15 @@ categories:
   model_identity:                              # ADDED 2026-08-02 — kimi-code/FI-008 + F13 ratification
     description: "Model identity, capabilities, modalities, route, pricing — federation-wide SOT"
     canonical:
-      - path: ".config/federation-models.json"
-        reason: "Symlinked from registries/models/AGENT_MODEL_MAP.json — 6792-line SOT, validator-gated (validate_federation_models.py). F13 ratified 2026-07-31 (F13::AAA_ENTROPY_REDUCTION); F13::FED_UNIFIED round 2 ratified 2026-08-02 (this round)."
-        validator: "HERMES/scripts/zen/validate_federation_models.py"
+      - path: "/root/.config/federation-models.json"
+        external: true
+        reason: "Symlinked from registries/models/AGENT_MODEL_MAP.json — SOT, validator-gated (validate_federation_models.py). F13 ratified 2026-07-31; F13::FED_UNIFIED round 2 2026-08-02. Lives OUTSIDE the repo; path is absolute by design."
+        validator: "/root/HERMES/scripts/zen/validate_federation_models.py"
         coverage: "59 -> 93 models, 19 -> 20 providers, all 14 agents, OpenCode Go + Zen + Qwen Token Plan absorbed"
     derived:
-      - path: "arifOS/arifosmcp/config/model_registry.json"
-        reason: "arifOS kernel routing 2026.08.02-v1 — adds Claude BLOCK LIFT note, links to federation-models.json"
+      - path: "/root/arifOS/arifosmcp/config/model_registry.json"
+        external: true
+        reason: "arifOS kernel routing 2026.08.02-v1 — adds Claude BLOCK LIFT note, links to federation-models.json. Outside repo."
       - path: "registries/models/pricing_tables.json"
         reason: "Deprecated-as-source 2026-07-31; merged into federation-models.json _meta.cost_per_1m_*"
       - path: "registries/models/MODEL_TIERS.json"
@@ -151,25 +254,24 @@ categories:
     deprecated:
       - path: "registries/models/FEDERATION_MODEL.json"
         reason: "Claimed absorbed by federation-models.json per 2026-07-31 _meta.replaces; still on disk for back-compat. Tombstoned in DEPRECATION_REGISTRY.yaml."
-      - path: "registries/models/LEGACY_FEDERATION_MODEL_provider_routing.json.deprecated-2026-07-29"
-        reason: "Filename already carries .deprecated-2026-07-29; tombstoned in DEPRECATION_REGISTRY.yaml."
 
 # ── CONFLICT TIEBREAKER RULES ──
+# 2026-10-25: ordering below reflects the four-layer model. Within a layer, earlier rule wins.
 tiebreakers:
-  - rule: "A2A-registered beats non-A2A"
-    apply: "a2a/registry/agents.yaml beats AGENT_INDEX.json on agent identity"
-  - rule: "Live-probed beats hand-maintained"
-    apply: "PORT_REGISTRY.json (ss -tlnp) beats servers.yaml on port numbers"
   - rule: "Agent card beats registry entry"
-    apply: "agent-card.json skills[] beats skills.yaml if they disagree on what skills an agent has"
+    apply: "agent-card.json skills[] beats skills.yaml if they disagree on what skills an agent has (L1 > L3)"
+  - rule: "Filesystem truth beats registry claim"
+    apply: "If a registry says a SKILL.md/card exists at path X but X doesn't exist, filesystem wins"
+  - rule: "Live-probed beats hand-maintained"
+    apply: "A fresh ss -tlnp probe beats PORT_REGISTRY.json; both are L4 and organs.yaml is the declared owner"
+  - rule: "Explicit deprecation marker beats implicit absence"
+    apply: "A file with 'DEPRECATED' in header, or under a _deprecated_ path, is deprecated even if not in the deprecation registry — AND no executable consumer may read it (INV-AR-3/8)"
   - rule: "Registry entry beats card omission"
     apply: "If skills.yaml registers a skill but no agent card claims it, skill is orphaned, not deleted"
-  - rule: "Filesystem truth beats registry claim"
-    apply: "If skills.yaml says a SKILL.md exists at path X but path X doesn't exist, filesystem wins"
   - rule: "Newer timestamp beats older on equivalent authority"
-    apply: "When two registries of same category disagree, compare generation timestamps"
-  - rule: "Explicit deprecation marker beats implicit absence"
-    apply: "A file with 'DEPRECATED' in header is deprecated even if not in deprecation registry"
+    apply: "When two registries of the same layer disagree, compare generation timestamps"
+  - rule: "L1 beats L2 beats L3 beats L4 on identity; L4 beats L3 beats L2 on liveness"
+    apply: "Identity questions resolve upward to cards. 'Is it running?' resolves downward to the loader/probe. Never use a generated index to answer 'who is this agent'."
 
 # ── OWNER ORGAN ──
 owner_organ: "AAA (Control Plane)"
