@@ -202,6 +202,41 @@ const allCards = cards();
   );
 }
 
+// ── INV-AR-9/10/11: authority must not outrun principal, runtime, or lifecycle ─
+{
+  const byId = new Map();
+  for (const c of allCards) byId.set(c.doc.id, c); // later root wins, mirrors loader order
+  const unique = [...byId.values()];
+  const auth = unique.filter(({ doc }) => doc.authority_ceiling || doc.authority);
+  const noPrincipal = auth.filter(({ doc }) => !(doc.public_key && doc.public_key.hex));
+  const noRuntime = auth.filter(({ doc }) => !doc.runtime_harness);
+  const noLifecycle = auth.filter(({ doc }) => !doc.status);
+  check(
+    "AR9",
+    "INV-AR-9",
+    "authority claimed without principal",
+    noPrincipal.length,
+    baseline.authority_without_principal ?? 0,
+    noPrincipal.map(({ doc }) => doc.id),
+  );
+  check(
+    "AR10",
+    "INV-AR-10",
+    "authority claimed without runtime_ref",
+    noRuntime.length,
+    baseline.authority_without_runtime ?? 0,
+    noRuntime.map(({ doc }) => doc.id),
+  );
+  check(
+    "AR11",
+    "INV-AR-11",
+    "authority claimed without lifecycle state",
+    noLifecycle.length,
+    baseline.authority_without_lifecycle ?? 0,
+    [],
+  );
+}
+
 // ── INV-AR-5: skill index entries resolve to a real SKILL.md ─────────────────
 {
   const idx = readYamlSafeJson("skills_index.json");
