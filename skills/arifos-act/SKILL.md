@@ -6,12 +6,14 @@ description: The complete constitutional reflex arc — ART (pre-kernel) → Ker
   → ACT (post-kernel execution). Load once. Apply always.
 owner: AAA
 risk_tier: critical
+canonical_note: >
+  Recovered 2026-10-25 (333-AGI). This body previously survived only as
+  apex_verdict_hold/claude/SKILL.md and as two verdict-frontmattered copies
+  (apex_verdict_seal/_hold). Six harness adapters already pointed here.
 knowledge_basis:
   language: true
   math: false
   physics: false
-host_compatibility:
-- claude-code
 - codex
 - opencode
 - kimi
