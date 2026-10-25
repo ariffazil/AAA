@@ -84,6 +84,9 @@ alignment:
     policy_ghost_paths: 0            # canonical+derived only; deprecated tombstones may name deleted files
     skill_index_missing_entries: 23
     deprecated_reads: 0              # executable consumers reading a _deprecated_ path (INV-AR-8)
+    authority_without_principal: 41  # of 45 cards claiming authority; only 4 carry a non-empty pubkey
+    authority_without_runtime: 39    # of 45; only 6 declare runtime_harness
+    authority_without_lifecycle: 34  # of 45; lifecycle state absent
   invariants:
     - "INV-AR-1 one layer per file"
     - "INV-AR-2 derived files name their source"
@@ -93,6 +96,9 @@ alignment:
     - "INV-AR-6 tool id unique across catalogue; policy references existing ids"
     - "INV-AR-7 every declared canonical path exists (or external: true + absolute)"
     - "INV-AR-8 no executable consumer reads _deprecated_/_archive/_superseded/.archive-*"
+    - "INV-AR-9 authority claimed on a card requires a non-empty principal pubkey"
+    - "INV-AR-10 authority claimed on a card requires a runtime_ref"
+    - "INV-AR-11 authority claimed on a card requires a lifecycle state"
 
 # ── CATEGORY PRECEDENCE ──
 # Within each category, earlier entries beat later entries.
