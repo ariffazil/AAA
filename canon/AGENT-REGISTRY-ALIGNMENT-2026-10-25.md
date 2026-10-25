@@ -45,7 +45,7 @@ This document settles the vocabulary and the ownership. The gate makes regressio
 | **Agent principal** | IAM identity that holds permissions + audit trail | `bound_to` / `actor_id` + Ed25519 key | card field; `IDENTITY/keys/` | PARTIAL — no per-agent IAM principal |
 | **A2A skill** | Capability described *inline* in the agent card | card `skills[]` | same card | PRESENT, **77% unresolvable** |
 | **Skill** (standalone) | `SKILL.md` package + scripts + metadata | `/root/AAA/skills/**/SKILL.md` | `skills/` | PRESENT (949) |
-| **Skill revision** | Immutable versioned snapshot | git commit SHA of the skill directory | git | PRESENT (implicit) |
+| **Skill revision** | Immutable versioned snapshot | git commit SHA of the skill directory | git | **PARTIAL** — repository-level provenance exists; first-class immutable skill revision (deterministic bundle + own hash + validation + default selection + lifecycle state) does not |
 | **Publisher** | Entity that scopes a skill identifier | AAA, `did:arif:aaa` | `auth/sign_agent_card.py` | PRESENT |
 | **Agentic component** | Any registrable unit: agent / MCP server / endpoint / skill | the four rows below | — | — |
 | **MCP server** | Program exposing tools + data resources over MCP | federation organ MCP endpoint | `federation/organs.yaml` (`mcp` block) + `registry/mcp-tools.yaml` | PRESENT |
@@ -57,12 +57,16 @@ This document settles the vocabulary and the ownership. The gate makes regressio
 | **Registration** | Adding a component to the registry | card commit + re-sign + loader reload | `sign_agent_card.py` | PRESENT |
 | **Discovery** | Query for consumable components at runtime | `agent-card-registry.js` (live) | `a2a-server/` | PRESENT |
 | **Governance project / scope** | Boundary where resources are catalogued + governed | arifOS kernel F1–F13, federation boundary | `:8088` + this repo | PRESENT |
-| **Service resource** (writable) | Management handle that produces discovery resources | policy registries (writable) | `registries/*.yaml` | PRESENT |
+| **Service resource** (writable) | Management handle that produces discovery resources | component registration manifest (writable — **not** policy) | card commit + `registry/canonical_agents.json` | PARTIAL |
+| **Policy registry** | Authority + access-policy plane (separate from Service) | `registries/agents.yaml` (autonomy) · `registries/tools.yaml` (risk/approval) | `validate-aaa.mjs`, kernel gates | PRESENT |
+| **Discovery resource** | Generated read-only consumable view | `agent-card-registry.js` projections | `a2a-server/` | PRESENT |
 | **Data resource** | Dataset an MCP server exposes | organ data plane (GEOX, WEALTH, VAULT999) | per organ | PRESENT |
 
 **Translation rule.** When an AAA document says *warga*, write **agent**. *Lane* → **agent identifier**.
-*Organ* → **MCP server + endpoint**. *FI slot* → **runtime reference**. *Capability* → **skill or tool**
-(never both — a capability is a skill if an agent judges, a tool if a function returns). *Power band* →
+*Organ* → **MCP server + endpoint**. *FI slot* → **runtime reference**. *Capability* → **governed
+capability with typed realizations** (a declaration must name its realization type explicitly — skill,
+tool, agent, or endpoint; a single registry entry must not ambiguously claim to be both skill and tool;
+the underlying capability may have multiple governed realizations). *Power band* →
 **authority ceiling** (policy, not capability).
 
 ---
@@ -198,7 +202,11 @@ encode D10: resolution ids must be admitted, and no case-duplicate keys may exis
 | **L3 POLICY** | *What is permitted?* | `registries/agents.yaml` (agent autonomy), `registries/tools.yaml` (tool risk/approval), `federation/organs.yaml` (authority ceiling + endpoints) | `validate-aaa.mjs`, kernel gates |
 | **L4 RUNTIME** | *What is live right now?* | loader + health probes | `aaa-a2a`, organ `/health` |
 
-**INV-AR-1.** A file carries exactly one layer's claim. Mixing identity + policy in one file is a defect.
+**INV-AR-1 (refined 2026-10-25, second review).** A *claim* belongs to exactly one layer. A canonical
+authoring file may contain fields projected into multiple layers (e.g. `federation/organs.yaml` carries
+authority-ceiling policy AND endpoint facts), but each field must have exactly one semantic owner and
+projection must run authoring → derived. Derived layers must not become independent writers. Mixing
+identity + policy *ownership* in one file remains a defect.
 **INV-AR-2.** A *derived* file must name its source (`_derived_view_of` / `superseded_by`) or be deleted.
 **INV-AR-3.** A deprecated file must live under a path that says so, or be tombstoned in
 `registries/DEPRECATION_REGISTRY.yaml`. A folder named `_deprecated_*` must contain no live dependency.
@@ -298,7 +306,7 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 
 | Probe | Before | After | Meaning |
 |---|---|---|---|
-| `npm run validate:registry` | no such gate | **PASS 18 checks** (17 enforced + 1 informational), exit 0 | invariants hold at baseline |
+| `npm run validate:registry` | no such gate | **PASS 18 checks** (17 enforced + 1 informational), exit 0 | **REGISTRY_ALIGNMENT_BASELINE_PASS** — ratchet baseline: unresolved debt frozen, not cleared (this is not REGISTRY_HEALTHY) |
 | `node scripts/validate-aaa.mjs` | **13 failures** | **10 failures** | −2 false "unknown skill" errors (validator was reading the stale 196-skill copy); +1 real data defect surfaced (`minimax-m-plan` assigned to two packages). Remaining 10 are pre-existing card/identity drift — queued, not introduced. |
 | Executable reads of a `_deprecated_` path | 2 (`validate-aaa.mjs:59,65`) | **0** | INV-AR-8 |
 | Policy ghost canonical/derived paths | 4 | **0** | INV-AR-7 |
