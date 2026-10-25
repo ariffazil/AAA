@@ -6,6 +6,8 @@ metadata:
   hermes:
     tags: [poster, design, html, headless-chrome, social-media, malaysian-brand, image-pipeline, viral, instagram, telegram]
     related_skills: [claude-design, sketch, excalidraw, popular-web-designs]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Social Promotional Poster - HTML to PNG pipeline

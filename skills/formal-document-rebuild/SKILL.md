@@ -3,6 +3,8 @@ name: formal-document-rebuild
 description: Rebuild a formal A4 document from a photo or prior PDF.
 version: 1.0.0
 author: hermes
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Formal Document Rebuild (A4, client-facing)

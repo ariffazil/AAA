@@ -3,6 +3,8 @@ name: chunked-tts-render-integrity
 description: "Use when a TTS take is rendered in chunks."
 version: 1.0.0
 tags: [tts, voice, integrity, render-pipeline]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Chunked TTS Render Integrity

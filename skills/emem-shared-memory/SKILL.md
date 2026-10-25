@@ -3,6 +3,8 @@ name: emem-shared-memory
 description: "Verifiable shared memory layer for multi-agent systems and Earth observation (emem.dev)."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # `emem` Verifiable Shared Memory Skill
 

@@ -8,6 +8,8 @@ metadata:
   hermes:
     tags: [arifos, mcp, resources, registry, consolidation, surface]
     related_skills: [arifos-kernel-e2e-testing, arifos-integration-recon, canon-integrity-check]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # arifOS MCP Resource Surface Operations

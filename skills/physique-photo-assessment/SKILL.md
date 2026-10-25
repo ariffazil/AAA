@@ -6,6 +6,8 @@ version: 1.0.0
 license: MIT
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Physique Photo Assessment

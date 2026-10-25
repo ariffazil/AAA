@@ -3,6 +3,8 @@ name: paste-router
 description: "Use when Arif pastes URL, file, or media. Route via media-intake."
 version: 1.1.0
 tags: [paste, intake, router, arif-attention]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Paste Router — thin adapter only (no implementation)

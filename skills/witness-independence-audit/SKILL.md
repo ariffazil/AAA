@@ -12,6 +12,8 @@ triggers:
   - a self-modifying runtime change should have left a trail
   - deciding whether a record is an independent witness or self-attestation
 related_skills: [claim-receipt-discipline, probe-evidence-integrity]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Witness Independence Audit

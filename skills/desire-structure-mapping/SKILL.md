@@ -9,6 +9,8 @@ triggers:
   - user pastes a peer AI audit of a model you produced and expects adjudication
   - user asks for the analysis "in full human language"
   - user asks for the final PDF of an analytical mapping
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Desire-Structure Mapping

@@ -3,6 +3,8 @@ name: short-stay-listing-vetting
 description: "Use when vetting an Airbnb or Booking listing link."
 version: 1.0.0
 tags: [rental, airbnb, vetting, malaysia, travel]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Short-Stay Listing Vetting (Airbnb / Booking / Agoda)

@@ -9,6 +9,8 @@ triggers:
 tags: [mcp, arifos, cross-harness, reality-test, prompt-authoring, session, identity]
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Cross-Harness Reality Test — authoring the prompt, reading the run

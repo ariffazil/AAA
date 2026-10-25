@@ -1,6 +1,8 @@
 ---
 name: malaysia-rental-vetting
 description: Use when vetting a Malaysian rental listing from photos.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Malaysia Rental Vetting — Bilik Sewa / Rumah Sewa Pre-Deposit Check

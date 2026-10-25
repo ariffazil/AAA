@@ -3,6 +3,8 @@ name: forge-self-loop-guard
 description: Recovery when delegate_task returns loop_subagent_cap.
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Self-Loop Guard - delegate_task runaway recovery
