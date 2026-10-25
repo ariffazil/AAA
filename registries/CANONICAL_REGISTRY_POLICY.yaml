@@ -83,7 +83,7 @@ alignment:
     cards_missing_schema_version: 1
     policy_ghost_paths: 0            # canonical+derived only; deprecated tombstones may name deleted files
     skill_index_missing_entries: 23
-    deprecated_reads: 2              # executable consumers reading a _deprecated_ path (removed in the next commit)
+    deprecated_reads: 0              # executable consumers reading a _deprecated_ path (INV-AR-8)
   invariants:
     - "INV-AR-1 one layer per file"
     - "INV-AR-2 derived files name their source"
