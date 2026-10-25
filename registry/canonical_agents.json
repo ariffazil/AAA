@@ -1,11 +1,5 @@
 {
-  "_meta": {
-    "schema": "arifos.canonical_agents.v1",
-    "description": "Canonical agent identity map. All registration must resolve through this map.",
-    "updated": "2026-09-14T01:45:00+08:00",
-    "updated_by": "Hermes (Fix 3 — canonical identity binding)",
-    "rule": "Any agent_id not in this map is REJECTED at registration. Add new agents here first."
-  },
+  "schema": "arifos.canonical_agents.v1",
   "canonical": {
     "arif": {
       "canonical_id": "arif",
@@ -22,9 +16,10 @@
       "canonical_id": "hermes",
       "role": "ops-bridge",
       "aliases": [
-        "hermes-asi",
+        "HERMES",
         "Hermes",
-        "HERMES"
+        "hermes-asi",
+        "hermesarifos-bot"
       ],
       "authority_band": "sovereign-witness"
     },
@@ -50,6 +45,7 @@
       "canonical_id": "777-forge",
       "role": "execution",
       "aliases": [
+        "777-FORGE",
         "777forge",
         "forge-777"
       ],
@@ -269,7 +265,9 @@
     "antigravity": {
       "canonical_id": "antigravity",
       "role": "agentic-executor",
-      "aliases": [],
+      "aliases": [
+        "agy"
+      ],
       "authority_band": "novice"
     },
     "copilot": {
@@ -293,6 +291,12 @@
         "i-ARIF"
       ],
       "authority_band": "sovereign-witness"
+    },
+    "mesa-test-agent": {
+      "canonical_id": "mesa-test-agent",
+      "role": "test-agent",
+      "aliases": [],
+      "authority_band": "novice"
     }
   }
 }

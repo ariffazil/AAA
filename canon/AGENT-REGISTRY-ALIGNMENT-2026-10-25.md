@@ -496,3 +496,27 @@ learning stays in `register_alias()`, which is an explicit mutation.
 **Consequence for the F13 packet:** the ratchet on principal coverage is a ratchet over *committed*
 principals only. In a clean checkout it under-measures by design, and says so. Tracking a schema or
 template (not the secret) is the decision that would let CI measure the real universe.
+
+## 15. Settle pass — data + tracked projection (333-AGI, 2026-10-25)
+
+Executed on top of §14. No keys minted, no merge, no deploy.
+
+### 15.1 Admission settled (0 unadmitted, 0 case-duplicate)
+- `agy` → alias of `antigravity` (card: "Antigravity CLI (Google agy)").
+- `hermesarifos-bot` → alias of `hermes`; identity entry kept as dormant/archive face.
+- `mesa-test-agent` → canonical (role test-agent, band novice; in `did:arif:aaa` actors).
+- `unknown` → removed; empty `agent_id` now raises (fail-closed).
+- `777-FORGE` + `777-forge` → one canonical `777-forge` (the admission map is the authority); uppercase resolves case-insensitively.
+- `alias_map.json` rebuilt as a pure projection of `canonical_agents.json` (75 entries). The 34 self-maps that poisoned resolution are gone.
+
+### 15.2 Tracked DID projection (answers §14.3 open decision)
+- `scripts/render-did-projection.py` regenerates `auth/did_registry.yaml` from the verifier's runtime store; public keys only; refuses private material.
+- Projection now carries 14 DIDs / 48 actor names (was 10 DIDs).
+- Two Hermes public keys were stale in the tracked YAML (`0775872a…`). The live private key derives to `39ed9013…`, which is what the runtime store and `hermes_public.key` carry. The old projection would have verified the wrong key in any clean deployment.
+- `INV-AR-16` fails the gate if the runtime store and the projection differ (missing, stale, or key mismatch). In a clean checkout the gate labels the projection fallback instead of silently substituting.
+
+### 15.3 Gate numbers at this commit
+`PASS — aligned`: INV-AR-9 **10/40** (was 17), INV-AR-10 32/40, INV-AR-11 27/40, INV-AR-12 **0**, INV-AR-13 **0**, INV-AR-16 **0**.
+
+### 15.4 Still F13
+Merge is blocked at AAA Actions billing (checks fail in 2s / 0 steps). Merge ≠ deploy; live `/root/AAA` stays `09eff9b6`. Trinity principal granularity (3 DIDs vs 1) remains a declared policy decision — `did:arif:aaa` still covers 22 actor names including 333-AGI, 555-ASI, 888-APEX.
