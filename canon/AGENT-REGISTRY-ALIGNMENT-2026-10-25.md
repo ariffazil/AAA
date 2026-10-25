@@ -82,7 +82,7 @@ This document settles the vocabulary and the ownership. The gate makes regressio
 
 | # | Defect | Evidence | Severity |
 |---|---|---|---|
-| **D1** | Validator's agent + skill SOT is filed as deprecated | `validate-aaa.mjs:59,65` reads `federation/_deprecated_20260819/{agents,skills}.yaml`; content is live (`agents: 34`, `skills: 196`, header `total_active: 196`) | **P0** — one folder rename silently kills validation |
+| **D1** | Validator's agent + skill SOT is filed as deprecated | `validate-aaa.mjs:59,65` read `federation/_deprecated_20260819/{agents,skills}.yaml`; content is live (`agents: 34`, `skills: 196`, header `total_active: 196`). **Fixed:** `agents.yaml` → `registries/agents.yaml`; `skills.yaml` deleted (strict subset 196 ⊂ 198, one stale bot handle). Validator repointed. | **P0** — one folder rename silently kills validation |
 | **D2** | Duplicate agent identities across 3 card roots | **Committed tree: 24 duplicated ids.** Live worktree: 96 card files / 54 unique ids / 28 duplicated (4 extra uncommitted). Runtime de-dupes to 57 cards by INV-005 (`/agent-cards/` wins). `federation-agent-card-ops` skill still states `a2a-server/agent-cards/` is canonical — contradicts runtime | **P1** |
 | **D3** | Three skill indexes, no declared precedence | `skills_index.json` 945 · `skills_index.federation.json` 754 unique/810 files · `registries/discovery/skills-index.json` 82 · disk 949 `SKILL.md` | **P1** |
 | **D4** | Four tool registries, no join declared | `tool_registry.canonical.json` (ABI, 65 ids) · `tools.yaml` (policy, 269) · `federation_tools_sot.yaml` (per-organ) · `registry/mcp-tools.yaml` (9 organs) | **P2** |
@@ -157,5 +157,24 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 - delete duplicate cards (they are mirrors; deleting them changes A2A discovery — F13 call);
 - touch `/root/AAA` or `/root/AAA/.git` (both `chattr +i`; immutable by design);
 - promote any agent's authority. Terminology alignment is not an authority grant.
+
+**DITEMPA BUKAN DIBERI.**
+
+---
+
+## 9. Verification receipt — 2026-10-25
+
+| Probe | Before | After | Meaning |
+|---|---|---|---|
+| `npm run validate:registry` | no such gate | **PASS 10/10**, exit 0 | invariants hold at baseline |
+| `node scripts/validate-aaa.mjs` | **13 failures** | **10 failures** | −2 false "unknown skill" errors (validator was reading the stale 196-skill copy); +1 real data defect surfaced (`minimax-m-plan` assigned to two packages). Remaining 10 are pre-existing card/identity drift — queued, not introduced. |
+| Executable reads of a `_deprecated_` path | 2 (`validate-aaa.mjs:59,65`) | **0** | INV-AR-8 |
+| Policy ghost canonical/derived paths | 4 | **0** | INV-AR-7 |
+| Skill-policy registries | 2 (196 + 198) | **1** (198) | D3, skill layer |
+| Agent-policy registry location | `_deprecated_20260819/agents.yaml` | `registries/agents.yaml` | D1 |
+
+**Remaining work (queued, not fixed here):** 171 unresolvable + 604 source-less card skill refs on the
+committed tree; 24 duplicate agent ids; 10 `validate-aaa` identity/card failures; `minimax-m-plan`
+double package assignment. Each needs a content decision (build / delete / re-point), not a rename.
 
 **DITEMPA BUKAN DIBERI.**
