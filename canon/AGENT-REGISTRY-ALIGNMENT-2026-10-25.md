@@ -77,15 +77,20 @@ questions with one object, so a card can claim authority it cannot authenticate.
 |---|---|---|---|---|
 | **Discovery id** | *Which logical component is this?* | none — no URN scheme | **0/47** | **ABSENT** |
 | **Resource ref** | *What does policy target?* | agent card path, implicit | 47/47 implicit | **PARTIAL** — no formal name |
-| **Credential principal** | *Who is calling?* | `public_key.hex`, `signature_status`, DID registry | **4/47** non-empty key · 28/47 status | **PARTIAL** |
+| **Credential principal** | *Who is calling?* | `card.public_key` · `agents/**/identity.json` · `IDENTITY/keys/*_public.pem` · DID registry | **22/47 resolvable** (card 4 · identity.json 8 · keys 10) · card-scoped only: 4/47 | **PARTIAL** |
 | **Runtime ref** | *Where is it running?* | `runtime_harness` + `organs.yaml` systemd/port | **6/47** cards | **PARTIAL** |
-| **Authority envelope** | *What may it do?* | `authority_ceiling` / `authority` | **45/47** | **OVER-CLAIMED** |
+| **Authority envelope** | *What may it do?* | `authority_ceiling` / `authority` | **45/47** (38 actor-class · 7 service-class) | **OVER-CLAIMED** |
 | **Lifecycle** | *Is it alive, retired, drift?* | `status` | 11/47 | **PARTIAL** |
 | **Verdict ref** | *Was this action authorised now?* | none on card (correct — kernel owns it) | 0/47 | **ABSENT by design** |
 | **Receipt** | *What actually happened?* | `registry_receipt_hash` | 46/47 | **PARTIAL** |
 
-> **The one number that matters: 45 cards claim an authority envelope; 4 can prove a principal;
-> 6 declare a runtime.** Authority outruns authentication 11:1. That is the layer collapse in a single line.
+> **Second correction (2026-10-25, after reviewing the card schema).** The first matrix was
+> card-scoped and under-counted principals by 5.5×: it read only `card.public_key.hex`, while AAA
+> keeps principals in `identity.json` and `IDENTITY/keys/`. Correct scope: **22/47 resolvable**.
+> Service-class cards (organs, pillars, functions, `*-mcp`) are excluded from the agency test — an
+> MCP surface legitimately has **no** agent principal; `authority_ceiling` on an organ is *service*
+> authority, not agency. The remaining gap is **18 of 38 actor-class authority claims** with no
+> resolvable principal.
 
 ### Identity laws (binding for AAA documents)
 
@@ -109,11 +114,44 @@ Name ≠ Identity ≠ Principal ≠ Runtime ≠ Authority ≠ Capability ≠ Per
 
 | Collapse | Evidence | Consequence |
 |---|---|---|
-| Authority ← card field, principal not required | 41/45 authority claims have no non-empty `public_key.hex` | a card can assert a ceiling nobody can authenticate |
+| Authority ← card field, principal not required | **18/38** actor-class authority claims have no resolvable principal (card-scoped key: 4/47) | a card can assert a ceiling with nothing to verify it against |
 | Authorization ← name equality | `server.js:2933` `CANONICAL_ACTORS` = 47 literal ids | the gateway authorises a **string**, not a verified principal; kernel-side Ed25519 is a separate path |
-| Runtime ← documentation | 39/45 authority claims declare no `runtime_harness` | "who may act" is asserted without "where it runs" |
-| Lifecycle ← prose | 34/45 authority claims have no `status` | a retired actor and an active one look identical to a reader |
+| Runtime ← documentation | 33/38 actor-class authority claims declare no `runtime_harness` | "who may act" is asserted without "where it runs" |
+| Lifecycle ← prose | 28/38 actor-class authority claims have no `status` | a retired actor and an active one look identical to a reader |
 | Discovery ← file path | 0 URNs anywhere in the repo | discovery is a filesystem convention; a move breaks a reference |
+| **Admission ← two owners** | `canonical_agents.json` says *"not in this map is REJECTED"*; `canonical_identity.canonicalize()` **auto-admitted** every unknown id (`save_alias_map`, steps 1 and 4) | any string reaching the resolver became an identity; 34 self-mapped entries in `alias_map.json` |
+
+### D10 — two canonical maps, one of them auto-admits (fixed in this pass)
+
+Call path probed 2026-10-25 (this is the probe that must precede any merge):
+
+```
+warga_bootstrap.py:19   from canonical_identity import canonicalize, register_alias
+warga_bootstrap.py:20   from warga_manager   import register_agent, list_agents
+warga_bootstrap.py:123  canonical = canonicalize(aid, role=..., source=...)   # ← admits
+warga_bootstrap.py:156  canonical = canonicalize(aid, role=..., source=...)
+warga_manager.py:100    raise ValueError("Unknown agent_id ... Not in canonical_agents.json")
+```
+
+The pipeline was **admit-by-default, then check admission**. `canonicalize()` steps 1 and 4 called
+`save_alias_map()` with `normalized → normalized`, persisting the id as canonical before
+`register_agent()` ever ran. `alias_map.json` still carries **34 self-mapped entries** from that path.
+
+**Fix applied (one resolver, one admission owner):**
+
+- every return in `canonicalize()` now passes through `_admit()`, which consults
+  `canonical_agents.json` and raises when the id is absent. No step mints an identity.
+- the admission map's spelling wins: `777-FORGE` and `777-forge` both resolve to `777-forge`,
+  collapsing the case-duplicate at resolution time (the duplicate **row** stays until F13 retires one).
+- `REGISTRY_DIR` derives from `__file__` (env-overridable) instead of hardcoding `/root/AAA/registry`,
+  so a checkout no longer silently reads the immutable live tree.
+
+**Test:** known ids and casing normalise (`333-agi` → `333-AGI`, `OPEncode` → `opencode`);
+unknown ids raise with the admission file named; `python3 -m py_compile` clean.
+
+**Remaining F13 decision:** 4 resolution ids are absent from admission — `agy`, `hermesarifos-bot`,
+`mesa-test-agent`, and the `unknown` sentinel. Admit three, drop the sentinel, or retire the rows.
+Ratchet baseline = 4 (INV-AR-12), case-duplicates = 1 (INV-AR-13).
 
 ### What is correct as-is
 
@@ -125,8 +163,9 @@ Name ≠ Identity ≠ Principal ≠ Runtime ≠ Authority ≠ Capability ≠ Per
 - **The registry identifier is optional.** AAA can keep card paths as its discovery key. A URN scheme is a
   namespace decision (AAA owns it), not a requirement imported from a vendor.
 
-**Enforcement.** INV-AR-9/10/11 in the gate encode L2/L3/L4: a card claiming authority without a principal,
-a runtime, or a lifecycle state is counted and ratcheted. The counts may fall, never rise.
+**Enforcement.** INV-AR-9/10/11 encode L2/L3/L4: an **actor-class** card claiming authority without a
+resolvable principal, a runtime reference, or a lifecycle state is counted and ratcheted. INV-AR-12/13
+encode D10: resolution ids must be admitted, and no case-duplicate keys may exist. Counts may fall, never rise.
 
 ---
 
@@ -158,7 +197,8 @@ a runtime, or a lifecycle state is counted and ratcheted. The counts may fall, n
 | **D6** | Card schema undeclared / drifting | **Committed tree: 1 card without `schemaVersion`.** Live worktree: 53 of 152. 10 distinct `($schema, schemaVersion)` pairs; one claims `v2.5.0` (no such schema on disk); 6 schema files in `schemas/` | **P2** |
 | **D7** | Two port sources of truth, unequal scope | `organs.yaml` 30 ports (41 components) vs `PORT_REGISTRY.json` 9 organs / *"Single source of truth for all network ports"*. 6 shared ids all MATCH; 24 organ ports absent from PORT_REGISTRY | **P1** |
 | **D8** | Policy declares paths that do not exist | 5 ghost paths in `CANONICAL_REGISTRY_POLICY.yaml` (`AGENT_INDEX.json`, `skills/AAA_SKILL.md`, `.config/federation-models.json`, `arifOS/arifosmcp/config/model_registry.json`, `LEGACY_...deprecated-2026-07-29`) | **P2** |
-| **D9** | **Identity compressed into one object** | 47 unique live cards: **45 claim an authority envelope, 4 carry a non-empty principal pubkey, 6 declare a runtime, 11 declare lifecycle, 0 use a discovery URN.** Gateway authorises by name equality (`CANONICAL_ACTORS`, 47 literals) | **P0** — authority without authentication |
+| **D9** | **Identity compressed into one object** | 47 unique live cards: **45 claim an authority envelope, 22 have a resolvable principal (18/38 actor-class claims do not), 6 declare a runtime, 11 declare lifecycle, 0 use a discovery URN.** Gateway authorises by name equality (`CANONICAL_ACTORS`, 47 literals) | **P1** — over-claim, not absence |
+| **D10** | **Two canonical identity maps with opposite admission semantics** | `canonical_agents.json` (34 canonical, `_meta.rule`: *"not in this map is REJECTED"*) vs `canonical_identity.json` (41 keys, 1 case-dup `777-FORGE`+`777-forge`) + `canonical_identity.py` (*"Single source of truth … every agent_id passes through canonicalize()"*). `canonicalize()` **auto-admitted** unknown ids (`save_alias_map` steps 1 & 4); `alias_map.json` holds 34 self-mapped entries. 4 resolution ids absent from admission (+aliases): `agy`, `hermesarifos-bot`, `mesa-test-agent`, `unknown` | **P0** — admission bypass |
 
 ### D5 detail — the one that matters
 
@@ -235,7 +275,7 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 
 | Probe | Before | After | Meaning |
 |---|---|---|---|
-| `npm run validate:registry` | no such gate | **PASS 13/13**, exit 0 | invariants hold at baseline |
+| `npm run validate:registry` | no such gate | **PASS 15/15**, exit 0 | invariants hold at baseline |
 | `node scripts/validate-aaa.mjs` | **13 failures** | **10 failures** | −2 false "unknown skill" errors (validator was reading the stale 196-skill copy); +1 real data defect surfaced (`minimax-m-plan` assigned to two packages). Remaining 10 are pre-existing card/identity drift — queued, not introduced. |
 | Executable reads of a `_deprecated_` path | 2 (`validate-aaa.mjs:59,65`) | **0** | INV-AR-8 |
 | Policy ghost canonical/derived paths | 4 | **0** | INV-AR-7 |
@@ -247,5 +287,28 @@ committed tree; 24 duplicate agent ids; 10 `validate-aaa` identity/card failures
 double package assignment; **and the D9 identity split — 41 authority claims without a principal,
 39 without a runtime ref, 34 without a lifecycle state, 0 discovery identifiers.** Each needs a content
 decision (build / delete / re-point / issue key / assign runtime), not a rename.
+
+**DITEMPA BUKAN DIBERI.**
+
+## 10. Third pass — the instrument was wrong before the reading was
+
+Two corrections in one day, both on the same defect class: **a gauge that answers a narrower question
+than the claim it is used to support.**
+
+| Claim made | Gate measured | Corrected instrument | Corrected value |
+|---|---|---|---|
+| "4/47 can prove a principal" | `card.public_key.hex` only | card + `identity.json` + `IDENTITY/keys` + DID | **22/47** |
+| "41/45 authority claims unauthenticated" | all cards, card-scoped | actor-class only, multi-store principal | **18/38** |
+| "authority outruns authentication 11:1" | ratio of the two above | — | **authority is over-claimed, not absent** |
+| "two maps" | not measured | resolution ⊆ admission + case-dup scan | **4 unadmitted · 1 case-dup group** |
+
+The ontology from the review was right; the under-credit was in this document's first measurement, not in
+AAA. The live defect is narrower and sharper: **admission had two owners with opposite defaults**, and the
+permissive one ran first.
+
+**What this changes about the recommendation.** No new identity system, no third registry. One admission
+map (`canonical_agents.json`), one resolver (`canonicalize()`), one derived alias cache. Fields
+`discovery_id` / `runtime_ref` / `governed_resource_ref` are **not** to be added until a consumer exists —
+they are declared gaps with a ratchet, not a build order.
 
 **DITEMPA BUKAN DIBERI.**
