@@ -306,7 +306,7 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 
 | Probe | Before | After | Meaning |
 |---|---|---|---|
-| `npm run validate:registry` | no such gate | **PASS 18 checks** (17 enforced + 1 informational), exit 0 | **REGISTRY_ALIGNMENT_BASELINE_PASS** — ratchet baseline: unresolved debt frozen, not cleared (this is not REGISTRY_HEALTHY) |
+| `npm run validate:registry` | no such gate | **PASS 21 checks** (20 enforced + 1 informational), exit 0 | **REGISTRY_ALIGNMENT_BASELINE_PASS** — ratchet baseline: unresolved debt frozen, not cleared (this is not REGISTRY_HEALTHY) |
 | `node scripts/validate-aaa.mjs` | **13 failures** | **10 failures** | −2 false "unknown skill" errors (validator was reading the stale 196-skill copy); +1 real data defect surfaced (`minimax-m-plan` assigned to two packages). Remaining 10 are pre-existing card/identity drift — queued, not introduced. |
 | Executable reads of a `_deprecated_` path | 2 (`validate-aaa.mjs:59,65`) | **0** | INV-AR-8 |
 | Policy ghost canonical/derived paths | 4 | **0** | INV-AR-7 |
@@ -398,3 +398,60 @@ so a future reviewer can contest the rule instead of re-deriving the number.
 **Correction to the earlier blast-radius claim.** `canonicalize()` has **8 executable call sites** (6
 in-module, 2 in `warga_bootstrap.py`), not "warga_bootstrap + the CLI". None is scheduled. After merge,
 every ingest path fails closed on an unadmitted id — a behaviour change, declared in §2c.
+
+## 13. Sixth pass — registration lifecycle, reconciliation, and two discovery questions
+
+The four-layer model was incomplete. Registration (a writable declaration) and witness (a probe that binds a
+claim to reality) are separate layers. Final model:
+
+| Layer | Question it answers | AAA owner |
+|---|---|---|
+| **L0 registration** | *What did the owner declare?* | `agent-cards/**/agent-card.json`, `federation/organs.yaml` |
+| **L1 identity** | *Who is it, and who is calling?* | card `id`, principal stores, DID |
+| **L2 discovery** | *What can a consumer find?* | `agent-card-registry.js`, `skills_index.json`, derived YAML views |
+| **L3 relationships** | *What may it reach?* | `bound_to`, `routes_to` (untyped strings) |
+| **L4 runtime** | *Where does it run?* | `organs.yaml` ports/systemd, health probes |
+| **L5 witness** | *What binds the claim to reality?* | this gate, receipts, VAULT999 (via 888/F13) |
+
+### Declared vs observed — the state taxonomy
+
+```
+RECONCILED          declaration and inventory agree on the join key
+DIVERGENT           both exist, values disagree
+ORPHANED_INVENTORY  inventory entry with no consumption-layer component
+PHANTOM_DECLARATION component declares a resource the inventory cannot resolve
+UNDECLARED          runtime exists, no declaration (the default state of most cards)
+```
+
+**Measured (committed tree, 2026-10-25):**
+
+| State | Count | Evidence |
+|---|---|---|
+| ORPHANED_INVENTORY | **33/41** organs | join by `id` or `id-mcp`: only a-forge, openclaw, geox, wealth, well, chron, hermes, opencode match a card |
+| PHANTOM_DECLARATION (endpoint) | **30/32** cards with a URL | `organs.yaml` carries **0** `public_urls`; every card host (`aaa.arif-fazil.com`, …) is unresolvable from the inventory |
+| UNDECLARED (runtime) | **41/47** | only 6 cards declare `runtime_harness` |
+| generated objects without provenance | **0/5** | all carry `generated_at`/`generated_by`/`derived_from` |
+| RECONCILED | **8** | the join set above — and these eight are exactly the organs with a matching card |
+
+**The finding is not "33 orphans".** `organs.yaml` mixes two discovery questions in one file: data planes
+(postgres, redis, qdrant, caddy) are *infrastructure discovery*; arifOS, GEOX, WEALTH are *consumption
+discovery*. Components that are not agentic should not be counted as missing an agent card. The defect is
+that one file answers both questions, so neither count is clean.
+
+### What is enforced now
+
+Three checks in the same gate — not a new organ, not a "reconciliation compiler" as a service:
+
+- **INV-REG-7** — the organ→component join may not fall below 8 and every generated object must carry
+  provenance (currently 0 violations).
+- **INV-REG-8** — a declared endpoint that no inventory entry can resolve is counted (currently 30). It is a
+  ratchet, not a build order.
+
+### What is declared but not enforced
+
+Typed bindings (DISCOVER / DELEGATE / REQUEST_EXECUTION / …) do not exist — `bound_to` is one string.
+Standalone skills have no `publisher`, no immutable revision digest, no default-revision pointer — git
+commits are provenance, not package identity. Auth providers do not exist as a separate abstraction.
+Each of these has **no consumer today**; they stay declared gaps, not work, until one appears.
+
+**DITEMPA BUKAN DIBERI.**

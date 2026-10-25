@@ -96,6 +96,10 @@ alignment:
     did_stores_named_in_code: 2      # secrets/did/registry.json (verifier) + auth/did_registry.yaml (signer)
     envelope_allows_anonymous: 1     # federation_envelope.js allowlist still admits 'anonymous'
     server_actors_missing_from_envelope: 34  # incl. 333-AGI, 555-ASI, 888-APEX
+    # Reconciliation (INV-REG-7/8): declared layer (cards) vs inventory (organs.yaml).
+    organ_component_join: 8          # FLOOR — of 41 organs; must not fall
+    unverifiable_endpoint_hosts: 30  # 32 cards declare a URL; organs.yaml carries 0 public_urls
+    generated_without_provenance: 0  # skills_index*, bindings.generated, REGISTRY_CATALOG.generated, AAA_AGENTS_REGISTRY.derived
   invariants:
     - "INV-AR-1 one layer per file"
     - "INV-AR-2 derived files name their source"
@@ -110,6 +114,8 @@ alignment:
     - "INV-AR-11 authority claimed on a card requires a lifecycle state"
     - "INV-AR-14 the principal store has one owner named in code"
     - "INV-AR-15 the /a2a envelope allowlist must not be narrower than the server allowlist, and must not admit anonymous"
+    - "INV-REG-7 every generated/discovery object has exactly one authoring source and carries provenance"
+    - "INV-REG-8 every runtime/endpoint claim resolves to an inventory entry, or is counted as unverifiable"
 
 # ── CATEGORY PRECEDENCE ──
 # Within each category, earlier entries beat later entries.
