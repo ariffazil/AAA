@@ -3,6 +3,8 @@ name: browser-service-ops
 description: "Use when debugging the playwright-mcp browser service."
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Browser Service Operations
 

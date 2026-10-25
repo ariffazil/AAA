@@ -7,6 +7,8 @@ triggers:
   - user asks to "map the reality" / "what invariants" / "what paradox" on a subject he has lived from inside
   - user pastes a third-party analysis and wants it turned into a durable structural model
   - any deliverable where population numbers do not exist but the user still wants a usable map
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Shape-Map Generalization

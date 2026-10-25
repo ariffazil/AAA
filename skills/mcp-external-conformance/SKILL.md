@@ -4,6 +4,8 @@ description: "Use when outside AI agents audit an MCP surface."
 tags: [mcp, conformance, audit, external-agents, verification, reproduction]
 version: 1.0.0
 author: Hermes Agent
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # MCP External Conformance

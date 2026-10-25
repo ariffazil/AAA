@@ -6,6 +6,8 @@ author: Hermes Agent
 license: MIT
 tags: [react, vite, frontend, iframe, component-integration, build, jsx]
 related_skills: [systematic-debugging, spike, live-data-dashboards]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # React Frontend Integration

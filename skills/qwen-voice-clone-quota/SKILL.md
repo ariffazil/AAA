@@ -2,6 +2,8 @@
 name: qwen-voice-clone-quota
 description: Use when picking a Qwen voice-clone target_model.
 type: reference
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Qwen Voice Cloning — Quota Reference (Sept 2026)

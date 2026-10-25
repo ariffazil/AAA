@@ -3,6 +3,8 @@ name: faceless-subject-rendering
 description: "Use when a rendered person must be unidentifiable."
 version: 1.0.0
 tags: [image-generation, privacy, cropping, vision-verify, persona]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Faceless Subject Rendering

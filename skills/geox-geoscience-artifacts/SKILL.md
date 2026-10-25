@@ -2,6 +2,8 @@
 name: geox-geoscience-artifacts
 version: 1.0.0
 description: "Use when forging or auditing a geological cross-section."
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # GEOX — Geoscience Artifacts

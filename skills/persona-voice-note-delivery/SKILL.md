@@ -8,6 +8,8 @@ metadata:
   hermes:
     tags: [voice, delivery, telegram, lane]
     related_skills: [voice-lane, voice-render-verification, abang-sado-tenderness-arc]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Persona Voice Note — Delivery to the Right Chat

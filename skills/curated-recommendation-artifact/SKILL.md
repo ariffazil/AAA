@@ -1,6 +1,8 @@
 ---
 name: curated-recommendation-artifact
 description: Use when ranking media picks from a person's taste.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Curated Recommendation Artifact

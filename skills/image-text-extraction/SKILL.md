@@ -3,6 +3,8 @@ name: image-text-extraction
 description: "Use when reading text off an image fails or is unreliable."
 version: 1.0.0
 tags: [ocr, vision, tesseract, documents, images, fallback]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Image Text Extraction

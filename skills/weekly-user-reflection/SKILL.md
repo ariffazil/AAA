@@ -3,6 +3,8 @@ name: weekly-user-reflection
 description: "Use when Arif asks for his weekly users reflection."
 version: 1.1.0
 tags: [hermes, telegram, state-db, reflection, weekly, forensics, arif]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Weekly User Reflection (state.db deep read)

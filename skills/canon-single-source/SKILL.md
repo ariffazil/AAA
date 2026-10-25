@@ -1,6 +1,8 @@
 ---
 name: canon-single-source
 description: "Use when one invariant is duplicated and copies disagree."
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Canon Single-Source
