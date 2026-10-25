@@ -115,7 +115,7 @@ Name ≠ Identity ≠ Principal ≠ Runtime ≠ Authority ≠ Capability ≠ Per
 | Collapse | Evidence | Consequence |
 |---|---|---|
 | Authority ← card field, principal not required | **18/38** actor-class authority claims have no resolvable principal (card-scoped key: 4/47) | a card can assert a ceiling with nothing to verify it against |
-| Authorization ← name equality | `server.js:2933` `CANONICAL_ACTORS` = 47 literal ids | the gateway authorises a **string**, not a verified principal; kernel-side Ed25519 is a separate path |
+| Authorization ← **two** allowlists | `server.js:2933` 47 names (name is a **pre-filter** only — DID signature is enforced at 3011–3048 and `effectiveSourceAgent = didResult.organId`). `federation_envelope.js:279` holds a **second** 15-name list that still admits `anonymous`, mounted on 8 `/a2a` routes via `jsonRpcValidate` | 34 server-admitted actors — including 333-AGI, 555-ASI, 888-APEX — are absent from the envelope list |
 | Runtime ← documentation | 33/38 actor-class authority claims declare no `runtime_harness` | "who may act" is asserted without "where it runs" |
 | Lifecycle ← prose | 28/38 actor-class authority claims have no `status` | a retired actor and an active one look identical to a reader |
 | Discovery ← file path | 0 URNs anywhere in the repo | discovery is a filesystem convention; a move breaks a reference |
@@ -199,6 +199,9 @@ encode D10: resolution ids must be admitted, and no case-duplicate keys may exis
 | **D8** | Policy declares paths that do not exist | 5 ghost paths in `CANONICAL_REGISTRY_POLICY.yaml` (`AGENT_INDEX.json`, `skills/AAA_SKILL.md`, `.config/federation-models.json`, `arifOS/arifosmcp/config/model_registry.json`, `LEGACY_...deprecated-2026-07-29`) | **P2** |
 | **D9** | **Identity compressed into one object** | 47 unique live cards: **45 claim an authority envelope, 22 have a resolvable principal (18/38 actor-class claims do not), 6 declare a runtime, 11 declare lifecycle, 0 use a discovery URN.** Gateway authorises by name equality (`CANONICAL_ACTORS`, 47 literals) | **P1** — over-claim, not absence |
 | **D10** | **Two canonical identity maps with opposite admission semantics** | `canonical_agents.json` (34 canonical, `_meta.rule`: *"not in this map is REJECTED"*) vs `canonical_identity.json` (41 keys, 1 case-dup `777-FORGE`+`777-forge`) + `canonical_identity.py` (*"Single source of truth … every agent_id passes through canonicalize()"*). `canonicalize()` **auto-admitted** unknown ids (`save_alias_map` steps 1 & 4); `alias_map.json` holds 34 self-mapped entries. 4 resolution ids absent from admission (+aliases): `agy`, `hermesarifos-bot`, `mesa-test-agent`, `unknown` | **P0** — admission bypass |
+| **D11** | **Three DID stores, one of them untracked** | `secrets/did/registry.json` (14 DIDs / 48 actor names — the **verifier's** store, `federation_envelope.js:620`) is **gitignored** (`.gitignore:19`) and absent from any clone; `auth/did_registry.yaml` (10 DIDs) is the signer's store; `/opt/arifos/secrets/did-registry.json` (11) is a third. `did:arif:aaa` alone covers **22** actors incl. 333-AGI/555-ASI/888-APEX | **P1** — a clean checkout cannot verify any A2A signature |
+| **D12** | **Envelope allowlist narrower than server allowlist** | server 47 vs `federation_envelope.js` 15 (+`anonymous`, +`openclaw:ingress`); the narrow list is mounted on 8 `/a2a` routes | **P1** — Trinity actors would be rejected at the middleware |
+| **D13** | **Principal granularity: one organ key, many actors** | `did:arif:aaa` → 22 actors; `did:arif:a-forge` → 6; `did:arif:geox` → 5 | **F13 call** — organ-level vs per-lane principals |
 
 ### D5 detail — the one that matters
 
@@ -312,3 +315,27 @@ map (`canonical_agents.json`), one resolver (`canonicalize()`), one derived alia
 they are declared gaps with a ratchet, not a build order.
 
 **DITEMPA BUKAN DIBERI.**
+
+## 11. Fourth pass — reviewer corrections, re-derived
+
+The review that triggered this pass observed head `01576b01`; current head is `c778952b`.
+A witness on an older commit is evidence about that commit, not about the branch. Re-derived anyway:
+
+| Reviewer claim | Verdict | Evidence |
+|---|---|---|
+| "47 was carried, not counted; true count 45" | **REFUTED** | Gate enumerates **170 card files / 169 parsed / 47 unique ids**. 45 is the subset that claims an authority envelope. Both numbers are right; they answer different questions. |
+| "Gateway authorises by name, not principal — incomplete" | **CONFIRMED** | `server.js:3011` requires `from_did` + signature (403 `DID_REQUIRED`); `3048` sets `effectiveSourceAgent = didResult.organId`. The name check at 2964 is a pre-filter. My earlier sentence was wrong and is corrected. |
+| "Two allowlists: 47 vs 15, the 15 still admits anonymous" | **CONFIRMED, worse** | **34** server-admitted actors missing from the envelope list, including 333-AGI / 555-ASI / 888-APEX. The narrow list is mounted on 8 `/a2a` routes. |
+| "14 organ DIDs cover 24/45 cards" | **PARTIAL** | The 14-DID store (`secrets/did/registry.json`) lists **48 actor names** and covers **22** names under `did:arif:aaa` alone (not 21). But that file is **gitignored** and absent from the clone; `auth/did_registry.yaml` has 10 DIDs; the runtime copy has 11. Three stores, not one. |
+
+**New finding that came out of the re-derivation:** the verifier's principal store is untracked. A clean
+checkout of AAA has no DID registry at all — `resolveDidPublicKey()` returns null and every A2A call fails
+`DID_VERIFY_FAIL`. The federation verifies against a file that the repository does not carry.
+
+**What survives from the review:** the ontology sequence and the "one map, one resolver, one projection"
+remedy. **What does not:** the card count, the name-only characterisation, and the DID coverage figure.
+
+**F13 decision, re-framed by this evidence:** principal granularity is not "issue 41 keys". The organ DID
+already maps 22 actors to one key. The question is whether the Trinity (propose / verify / judge) may
+continue to share `did:arif:aaa`, since three different constitutional functions currently present the
+same principal to the gateway.
