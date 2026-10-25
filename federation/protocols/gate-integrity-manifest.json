@@ -36,32 +36,45 @@
                 "test_transport_lock.py: 7/7 PASS"
             ],
             "same_act_requirement_satisfied": "Conformance suites re-run and verified 100% PASS before updating manifest."
+        },
+        {
+            "at": "2026-10-25T14:03:00Z",
+            "what": "Bounded gate repair: restored last known working stdin-fix baseline; eliminated deadlock kernel_consult that collapsed to permanent KERNEL_REJECT HOLD; added fail-closed receipt-write failure guard; added tool_describe to OBSERVE set; updated envelope verdict from SEAL to WITNESSED.",
+            "authority": "F13 sovereign mandate ('please execute all remaining task from this hermes here' / 'Bounded gate repair, canary only')",
+            "evidence": [
+                "test_wscar_gate.py: 11/11 behavioural, 7/7 regex, 3/3 extensions PASS (21/21 assertions)",
+                "test_transport_lock.py: 7/7 PASS",
+                "Live canary write to /root/.hermes/cache/scratch/canary-1792908181.txt verified and cleaned",
+                "Transition path: old seal 7825a972 -> drifted 9b60a8c2 -> repaired a5c8dd52"
+            ],
+            "same_act_requirement_satisfied": "Conformance suites re-run and verified 100% PASS before updating manifest."
         }
     ],
     "artifacts": [
         {
             "role": "enforcement-gate",
             "path": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py",
-            "sha256": "7825a9727decedb744f3f1be7b815ec550fc6ea3613aa7cc1fb8b46c6722acf9",
-            "size": 32366,
-            "mtime": "2026-09-26T07:14:21+08:00",
+            "sha256": "a5c8dd5281834e63b1a772c88027e492afe9193887cd9a3d99652951b0302f8f",
+            "size": 34283,
+            "mtime": "2026-10-25T14:01:00+08:00",
             "contains_rules": [
                 "JITU",
                 "TRANSPORT_LOCK (0.5)",
                 "W_SCAR v2",
                 "T3",
                 "K-02",
-                "DEMOTION (2026-09-20)"
+                "DEMOTION (2026-09-20)",
+                "RECEIPT_FAIL_CLOSED (2026-10-25)"
             ]
         },
         {
             "role": "conformance-suite",
             "path": "/root/AAA/federation/protocols/test_wscar_gate.py",
-            "sha256": "402a6fa8e52944683077f42b6d469ce868f1da45a04c9a26de3ea3b4db5006a8",
-            "size": 9810,
-            "mtime": "2026-09-18T09:02:41.919910822+08:00",
-            "expected_result": "11/11 behavioural, 7/7 regex",
-            "covers": "W_SCAR claim-surface + verified provenance"
+            "sha256": "7084052708c87494a46f8cd9e740441e422d616e0c2d38ae464f263603e63ad8",
+            "size": 12250,
+            "mtime": "2026-10-25T14:02:00+08:00",
+            "expected_result": "11/11 behavioural, 7/7 regex, 3/3 extensions",
+            "covers": "W_SCAR claim-surface + verified provenance + fail-closed guards"
         },
         {
             "role": "conformance-suite",
