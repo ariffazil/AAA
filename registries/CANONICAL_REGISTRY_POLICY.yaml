@@ -88,9 +88,9 @@ alignment:
     # card.public_key.hex OR agents/**/identity.json OR IDENTITY/keys/*_public.pem OR DID
     # registry. Service-class cards (organs/pillars/functions/*-mcp) are excluded — an MCP
     # surface legitimately has no agent principal.
-    authority_without_principal: 18  # of 38 actor-class cards claiming authority
-    authority_without_runtime: 33    # of 38; runtime_harness present on only 6/47 cards
-    authority_without_lifecycle: 28  # of 38
+    authority_without_principal: 17  # of 40 actor-class cards claiming authority
+    authority_without_runtime: 32    # of 40; runtime_harness present on only 6/47 cards
+    authority_without_lifecycle: 27  # of 40
     resolution_not_admitted: 4       # canonical_identity.json ids absent from canonical_agents.json (+ aliases)
     case_duplicate_keys: 1           # 777-FORGE + 777-forge in canonical_identity.json
     did_stores_named_in_code: 2      # secrets/did/registry.json (verifier) + auth/did_registry.yaml (signer)
