@@ -79,7 +79,7 @@ questions with one object, so a card can claim authority it cannot authenticate.
 | **Resource ref** | *What does policy target?* | agent card path, implicit | 47/47 implicit | **PARTIAL** — no formal name |
 | **Credential principal** | *Who is calling?* | `card.public_key` · `agents/**/identity.json` · `IDENTITY/keys/*_public.pem` · DID registry | **22/47 resolvable** (card 4 · identity.json 8 · keys 10) · card-scoped only: 4/47 | **PARTIAL** |
 | **Runtime ref** | *Where is it running?* | `runtime_harness` + `organs.yaml` systemd/port | **6/47** cards | **PARTIAL** |
-| **Authority envelope** | *What may it do?* | `authority_ceiling` / `authority` | **45/47** (38 actor-class · 7 service-class) | **OVER-CLAIMED** |
+| **Authority envelope** | *What may it do?* | `authority_ceiling` / `authority` | **45/47** (40 actor-class · 7 service-class) | **OVER-CLAIMED** |
 | **Lifecycle** | *Is it alive, retired, drift?* | `status` | 11/47 | **PARTIAL** |
 | **Verdict ref** | *Was this action authorised now?* | none on card (correct — kernel owns it) | 0/47 | **ABSENT by design** |
 | **Receipt** | *What actually happened?* | `registry_receipt_hash` | 46/47 | **PARTIAL** |
@@ -89,8 +89,21 @@ questions with one object, so a card can claim authority it cannot authenticate.
 > keeps principals in `identity.json` and `IDENTITY/keys/`. Correct scope: **22/47 resolvable**.
 > Service-class cards (organs, pillars, functions, `*-mcp`) are excluded from the agency test — an
 > MCP surface legitimately has **no** agent principal; `authority_ceiling` on an organ is *service*
-> authority, not agency. The remaining gap is **18 of 38 actor-class authority claims** with no
+> authority, not agency. The remaining gap is **17 of 40 actor-class authority claims** with no
 > resolvable principal.
+
+### Denominator hierarchy — declare once, use everywhere
+
+| Basis | Count | What it answers |
+|---|---|---|
+| unique card ids | **47** | how many identities exist in the committed tree |
+| of those, claiming an authority envelope | **45** | how many assert a ceiling (40 actor-class + 7 service-class) |
+| actor-class (agency) | **40** | the denominator for INV-AR-9/10/11 |
+| principal-resolvable | **22** | of the 47, across card · identity.json · keys · DID |
+
+**No sentence may mix bases.** "18" means 17 of 40 actor-class. "22" means 22 of 47 unique ids.
+The two numbers were used in one paragraph on 2026-10-25 and read as a contradiction — the same
+defect this document exists to remove.
 
 ### Identity laws (binding for AAA documents)
 
@@ -114,10 +127,10 @@ Name ≠ Identity ≠ Principal ≠ Runtime ≠ Authority ≠ Capability ≠ Per
 
 | Collapse | Evidence | Consequence |
 |---|---|---|
-| Authority ← card field, principal not required | **18/38** actor-class authority claims have no resolvable principal (card-scoped key: 4/47) | a card can assert a ceiling with nothing to verify it against |
+| Authority ← card field, principal not required | **17/40** actor-class authority claims have no resolvable principal (card-scoped key: 4/47) | a card can assert a ceiling with nothing to verify it against |
 | Authorization ← **two** allowlists | `server.js:2933` 47 names (name is a **pre-filter** only — DID signature is enforced at 3011–3048 and `effectiveSourceAgent = didResult.organId`). `federation_envelope.js:279` holds a **second** 15-name list that still admits `anonymous`, mounted on 8 `/a2a` routes via `jsonRpcValidate` | 34 server-admitted actors — including 333-AGI, 555-ASI, 888-APEX — are absent from the envelope list |
-| Runtime ← documentation | 33/38 actor-class authority claims declare no `runtime_harness` | "who may act" is asserted without "where it runs" |
-| Lifecycle ← prose | 28/38 actor-class authority claims have no `status` | a retired actor and an active one look identical to a reader |
+| Runtime ← documentation | 33/40 actor-class authority claims declare no `runtime_harness` | "who may act" is asserted without "where it runs" |
+| Lifecycle ← prose | 28/40 actor-class authority claims have no `status` | a retired actor and an active one look identical to a reader |
 | Discovery ← file path | 0 URNs anywhere in the repo | discovery is a filesystem convention; a move breaks a reference |
 | **Admission ← two owners** | `canonical_agents.json` says *"not in this map is REJECTED"*; `canonical_identity.canonicalize()` **auto-admitted** every unknown id (`save_alias_map`, steps 1 and 4) | any string reaching the resolver became an identity; 34 self-mapped entries in `alias_map.json` |
 
@@ -148,6 +161,13 @@ The pipeline was **admit-by-default, then check admission**. `canonicalize()` st
 
 **Test:** known ids and casing normalise (`333-agi` → `333-AGI`, `OPEncode` → `opencode`);
 unknown ids raise with the admission file named; `python3 -m py_compile` clean.
+
+**Blast radius (corrected 2026-10-25).** `canonicalize()` has **8 executable call sites**: six inside
+`canonical_identity.py` — `179` (batch), `237` (forge ingest), `269` (aaa identity ingest), `293`
+(arifos registry ingest), `316` (geox cards ingest), `388` (CLI) — and two in `warga_bootstrap.py`
+(`123`, `156`). None is scheduled by systemd or cron. After merge, any ingest that passes an
+unadmitted id **fails closed** instead of normalising it. That is a behaviour change, not merely an
+added gate.
 
 **Remaining F13 decision:** 4 resolution ids are absent from admission — `agy`, `hermesarifos-bot`,
 `mesa-test-agent`, and the `unknown` sentinel. Admit three, drop the sentinel, or retire the rows.
@@ -197,7 +217,7 @@ encode D10: resolution ids must be admitted, and no case-duplicate keys may exis
 | **D6** | Card schema undeclared / drifting | **Committed tree: 1 card without `schemaVersion`.** Live worktree: 53 of 152. 10 distinct `($schema, schemaVersion)` pairs; one claims `v2.5.0` (no such schema on disk); 6 schema files in `schemas/` | **P2** |
 | **D7** | Two port sources of truth, unequal scope | `organs.yaml` 30 ports (41 components) vs `PORT_REGISTRY.json` 9 organs / *"Single source of truth for all network ports"*. 6 shared ids all MATCH; 24 organ ports absent from PORT_REGISTRY | **P1** |
 | **D8** | Policy declares paths that do not exist | 5 ghost paths in `CANONICAL_REGISTRY_POLICY.yaml` (`AGENT_INDEX.json`, `skills/AAA_SKILL.md`, `.config/federation-models.json`, `arifOS/arifosmcp/config/model_registry.json`, `LEGACY_...deprecated-2026-07-29`) | **P2** |
-| **D9** | **Identity compressed into one object** | 47 unique live cards: **45 claim an authority envelope, 22 have a resolvable principal (18/38 actor-class claims do not), 6 declare a runtime, 11 declare lifecycle, 0 use a discovery URN.** Gateway authorises by name equality (`CANONICAL_ACTORS`, 47 literals) | **P1** — over-claim, not absence |
+| **D9** | **Identity compressed into one object** | 47 unique live cards: **45 claim an authority envelope, 22 have a resolvable principal (17/40 actor-class claims do not), 6 declare a runtime, 11 declare lifecycle, 0 use a discovery URN.** Gateway authorises by name equality (`CANONICAL_ACTORS`, 47 literals) | **P1** — over-claim, not absence |
 | **D10** | **Two canonical identity maps with opposite admission semantics** | `canonical_agents.json` (34 canonical, `_meta.rule`: *"not in this map is REJECTED"*) vs `canonical_identity.json` (41 keys, 1 case-dup `777-FORGE`+`777-forge`) + `canonical_identity.py` (*"Single source of truth … every agent_id passes through canonicalize()"*). `canonicalize()` **auto-admitted** unknown ids (`save_alias_map` steps 1 & 4); `alias_map.json` holds 34 self-mapped entries. 4 resolution ids absent from admission (+aliases): `agy`, `hermesarifos-bot`, `mesa-test-agent`, `unknown` | **P0** — admission bypass |
 | **D11** | **Three DID stores, one of them untracked** | `secrets/did/registry.json` (14 DIDs / 48 actor names — the **verifier's** store, `federation_envelope.js:620`) is **gitignored** (`.gitignore:19`) and absent from any clone; `auth/did_registry.yaml` (10 DIDs) is the signer's store; `/opt/arifos/secrets/did-registry.json` (11) is a third. `did:arif:aaa` alone covers **22** actors incl. 333-AGI/555-ASI/888-APEX | **P1** — a clean checkout cannot verify any A2A signature |
 | **D12** | **Envelope allowlist narrower than server allowlist** | server 47 vs `federation_envelope.js` 15 (+`anonymous`, +`openclaw:ingress`); the narrow list is mounted on 8 `/a2a` routes | **P1** — Trinity actors would be rejected at the middleware |
@@ -278,7 +298,7 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 
 | Probe | Before | After | Meaning |
 |---|---|---|---|
-| `npm run validate:registry` | no such gate | **PASS 15/15**, exit 0 | invariants hold at baseline |
+| `npm run validate:registry` | no such gate | **PASS 18 checks** (17 enforced + 1 informational), exit 0 | invariants hold at baseline |
 | `node scripts/validate-aaa.mjs` | **13 failures** | **10 failures** | −2 false "unknown skill" errors (validator was reading the stale 196-skill copy); +1 real data defect surfaced (`minimax-m-plan` assigned to two packages). Remaining 10 are pre-existing card/identity drift — queued, not introduced. |
 | Executable reads of a `_deprecated_` path | 2 (`validate-aaa.mjs:59,65`) | **0** | INV-AR-8 |
 | Policy ghost canonical/derived paths | 4 | **0** | INV-AR-7 |
@@ -301,7 +321,7 @@ than the claim it is used to support.**
 | Claim made | Gate measured | Corrected instrument | Corrected value |
 |---|---|---|---|
 | "4/47 can prove a principal" | `card.public_key.hex` only | card + `identity.json` + `IDENTITY/keys` + DID | **22/47** |
-| "41/45 authority claims unauthenticated" | all cards, card-scoped | actor-class only, multi-store principal | **18/38** |
+| "41/45 authority claims unauthenticated" | all cards, card-scoped | actor-class only, multi-store principal | **17/40** |
 | "authority outruns authentication 11:1" | ratio of the two above | — | **authority is over-claimed, not absent** |
 | "two maps" | not measured | resolution ⊆ admission + case-dup scan | **4 unadmitted · 1 case-dup group** |
 
@@ -339,3 +359,34 @@ remedy. **What does not:** the card count, the name-only characterisation, and t
 already maps 22 actors to one key. The question is whether the Trinity (propose / verify / judge) may
 continue to share `did:arif:aaa`, since three different constitutional functions currently present the
 same principal to the gateway.
+
+## 12. Fifth pass — classification calls, declared
+
+Two counts in §2b and §10 were mixed (47-based and 38-based in one paragraph). Fixed: the gate is the
+instrument of record and now prints its own denominator in every label.
+
+**Final denominators (committed tree, gate):**
+
+```
+47  unique card ids
+45  claim an authority envelope   (40 actor-class + 5 service-class)
+40  actor-class                   ← denominator for INV-AR-9/10/11
+22  principal-resolvable          ← of the 47
+17  actor authority without principal   (17/40)
+32  actor authority without runtime_ref (32/40)
+27  actor authority without lifecycle   (27/40)
+```
+
+**Two classification calls — declared, not hidden:**
+
+| Card | Classified as | Why |
+|---|---|---|
+| `aaa-gateway` | **service** | a gateway is a transport surface (DISPLAY_ONLY); it is not an agent that can be authenticated as an actor |
+| `ARIF_FAZIL` (pillars/sovereign) | **excluded from the agency test** | F13 authority is the sovereign's, not an agent principal. Excluding it keeps the invariant about *agents*, not about the human |
+
+Neither is a fact of nature — both are judgement calls, and both are now visible in the gate's classifier
+so a future reviewer can contest the rule instead of re-deriving the number.
+
+**Correction to the earlier blast-radius claim.** `canonicalize()` has **8 executable call sites** (6
+in-module, 2 in `warga_bootstrap.py`), not "warga_bootstrap + the CLI". None is scheduled. After merge,
+every ingest path fails closed on an unadmitted id — a behaviour change, declared in §2c.

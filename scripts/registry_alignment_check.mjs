@@ -249,7 +249,7 @@ const allCards = cards();
       .toLowerCase();
     if (/(organ|service|mcp|pillar|gateway)/.test(blob)) return true;
     if (/\/(organs|pillars|functions)\//.test(rel)) return true;
-    if (/-mcp$/.test(id) || ["arifos", "aforge", "aaa"].includes(id)) return true;
+    if (/-mcp$/.test(id) || /-gateway$/.test(id) || ["arifos", "aforge", "aaa"].includes(id)) return true;
     return false;
   };
   const hasPrincipal = (id, doc) =>
@@ -261,9 +261,9 @@ const allCards = cards();
   const noRuntime = auth.filter(({ doc }) => !doc.runtime_harness);
   const noLifecycle = auth.filter(({ doc }) => !doc.status);
 
-  check("AR9", "INV-AR-9", "actor authority without principal", noPrincipal.length, baseline.authority_without_principal ?? 0, noPrincipal.map(({ doc }) => doc.id));
-  check("AR10", "INV-AR-10", "actor authority without runtime_ref", noRuntime.length, baseline.authority_without_runtime ?? 0, noRuntime.map(({ doc }) => doc.id));
-  check("AR11", "INV-AR-11", "actor authority without lifecycle state", noLifecycle.length, baseline.authority_without_lifecycle ?? 0, []);
+  check("AR9", "INV-AR-9", `actor authority without principal (of ${actors.length})`, noPrincipal.length, baseline.authority_without_principal ?? 0, noPrincipal.map(({ doc }) => doc.id));
+  check("AR10", "INV-AR-10", `actor authority without runtime_ref (of ${actors.length})`, noRuntime.length, baseline.authority_without_runtime ?? 0, noRuntime.map(({ doc }) => doc.id));
+  check("AR11", "INV-AR-11", `actor authority without lifecycle state (of ${actors.length})`, noLifecycle.length, baseline.authority_without_lifecycle ?? 0, []);
 }
 
 // ── INV-AR-12/13: one admission owner; resolution may not admit ──────────────
