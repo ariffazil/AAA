@@ -36,7 +36,12 @@ This document settles the vocabulary and the ownership. The gate makes regressio
 | Agent Registry term | Meaning | AAA realization | Canonical location | State |
 |---|---|---|---|---|
 | **Agent** | Autonomous actor defined by identifier + its skills | A2A agent card | `agent-cards/**/agent-card.json` | PRESENT |
-| **Agent identifier** | Stable, immutable agent reference | card `id` + DID + key fingerprint | card field; `auth/did_registry.yaml` | PRESENT |
+| **Agent identifier** | Stable agent reference | **six layers — see §2b** | card + DID + keys | **SPLIT, see matrix** |
+| **Discovery identifier** | Lookup / metadata only | none — no URN scheme | — | **ABSENT (0/47)** |
+| **Governed resource ref** | What policy targets | agent card path (implicit) | `agent-cards/**` | **PARTIAL — implicit only** |
+| **Credential principal** | Who is calling | `public_key.hex` + `signature_status` + DID registry | card fields | **PARTIAL (4/47 keys)** |
+| **Runtime reference** | Where it runs | `runtime_harness` + organs systemd/port | card + `organs.yaml` | **PARTIAL (6/47)** |
+| **Authority envelope** | What it may do | `authority_ceiling` / `authority` | card | **OVER-CLAIMED (45/47)** |
 | **Agent principal** | IAM identity that holds permissions + audit trail | `bound_to` / `actor_id` + Ed25519 key | card field; `IDENTITY/keys/` | PARTIAL — no per-agent IAM principal |
 | **A2A skill** | Capability described *inline* in the agent card | card `skills[]` | same card | PRESENT, **77% unresolvable** |
 | **Skill** (standalone) | `SKILL.md` package + scripts + metadata | `/root/AAA/skills/**/SKILL.md` | `skills/` | PRESENT (949) |
@@ -59,6 +64,69 @@ This document settles the vocabulary and the ownership. The gate makes regressio
 *Organ* → **MCP server + endpoint**. *FI slot* → **runtime reference**. *Capability* → **skill or tool**
 (never both — a capability is a skill if an agent judges, a tool if a function returns). *Power band* →
 **authority ceiling** (policy, not capability).
+
+---
+
+## 2b. Identity is not one string — corrected on second pass
+
+**Correction of this document's own first pass.** §2 originally compressed identity into a single row:
+*"card id + DID + key fingerprint"*. That was wrong, and the machine proves it. AAA answers six different
+questions with one object, so a card can claim authority it cannot authenticate.
+
+| Layer | Question it answers | AAA field today | Measured (47 unique live cards) | State |
+|---|---|---|---|---|
+| **Discovery id** | *Which logical component is this?* | none — no URN scheme | **0/47** | **ABSENT** |
+| **Resource ref** | *What does policy target?* | agent card path, implicit | 47/47 implicit | **PARTIAL** — no formal name |
+| **Credential principal** | *Who is calling?* | `public_key.hex`, `signature_status`, DID registry | **4/47** non-empty key · 28/47 status | **PARTIAL** |
+| **Runtime ref** | *Where is it running?* | `runtime_harness` + `organs.yaml` systemd/port | **6/47** cards | **PARTIAL** |
+| **Authority envelope** | *What may it do?* | `authority_ceiling` / `authority` | **45/47** | **OVER-CLAIMED** |
+| **Lifecycle** | *Is it alive, retired, drift?* | `status` | 11/47 | **PARTIAL** |
+| **Verdict ref** | *Was this action authorised now?* | none on card (correct — kernel owns it) | 0/47 | **ABSENT by design** |
+| **Receipt** | *What actually happened?* | `registry_receipt_hash` | 46/47 | **PARTIAL** |
+
+> **The one number that matters: 45 cards claim an authority envelope; 4 can prove a principal;
+> 6 declare a runtime.** Authority outruns authentication 11:1. That is the layer collapse in a single line.
+
+### Identity laws (binding for AAA documents)
+
+```
+L1  Discovery         ≠ Identity        finding a name proves an entry exists, not who controls it
+L2  Identity          ≠ Principal       a card ID is a label; a principal is a verifiable caller
+L3  Principal         ≠ Runtime         the same actor survives machine, container and harness swaps
+L4  Runtime           ≠ Authority       a healthy process is not an authorised one
+L5  Authority         ≠ Capability      capability says what is possible; authority says what is permitted
+L6  Capability        ≠ Permission      permission is granted per action, not possessed in general
+L7  Permission        ≠ Judgment        judgment is the kernel's; execution is A-FORGE's; witness is the vault's
+```
+
+Canonical compression:
+
+```
+Name ≠ Identity ≠ Principal ≠ Runtime ≠ Authority ≠ Capability ≠ Permission ≠ Judgment ≠ Execution
+```
+
+### Where AAA currently collapses them
+
+| Collapse | Evidence | Consequence |
+|---|---|---|
+| Authority ← card field, principal not required | 41/45 authority claims have no non-empty `public_key.hex` | a card can assert a ceiling nobody can authenticate |
+| Authorization ← name equality | `server.js:2933` `CANONICAL_ACTORS` = 47 literal ids | the gateway authorises a **string**, not a verified principal; kernel-side Ed25519 is a separate path |
+| Runtime ← documentation | 39/45 authority claims declare no `runtime_harness` | "who may act" is asserted without "where it runs" |
+| Lifecycle ← prose | 34/45 authority claims have no `status` | a retired actor and an active one look identical to a reader |
+| Discovery ← file path | 0 URNs anywhere in the repo | discovery is a filesystem convention; a move breaks a reference |
+
+### What is correct as-is
+
+- **MCP servers have no agent principal.** `organs.yaml` gives 41 components an `authority_ceiling` and a
+  port, not a signing key. That matches the reference: a tool surface is a *service*, and access is
+  authorised through the calling agent's principal. Do not promote a tool surface to a constitutional actor.
+- **Verdict does not live on the card.** It lives in the kernel (`arif_judge`) and the vault. A card that
+  carried a verdict would be self-certifying.
+- **The registry identifier is optional.** AAA can keep card paths as its discovery key. A URN scheme is a
+  namespace decision (AAA owns it), not a requirement imported from a vendor.
+
+**Enforcement.** INV-AR-9/10/11 in the gate encode L2/L3/L4: a card claiming authority without a principal,
+a runtime, or a lifecycle state is counted and ratcheted. The counts may fall, never rise.
 
 ---
 
@@ -90,6 +158,7 @@ This document settles the vocabulary and the ownership. The gate makes regressio
 | **D6** | Card schema undeclared / drifting | **Committed tree: 1 card without `schemaVersion`.** Live worktree: 53 of 152. 10 distinct `($schema, schemaVersion)` pairs; one claims `v2.5.0` (no such schema on disk); 6 schema files in `schemas/` | **P2** |
 | **D7** | Two port sources of truth, unequal scope | `organs.yaml` 30 ports (41 components) vs `PORT_REGISTRY.json` 9 organs / *"Single source of truth for all network ports"*. 6 shared ids all MATCH; 24 organ ports absent from PORT_REGISTRY | **P1** |
 | **D8** | Policy declares paths that do not exist | 5 ghost paths in `CANONICAL_REGISTRY_POLICY.yaml` (`AGENT_INDEX.json`, `skills/AAA_SKILL.md`, `.config/federation-models.json`, `arifOS/arifosmcp/config/model_registry.json`, `LEGACY_...deprecated-2026-07-29`) | **P2** |
+| **D9** | **Identity compressed into one object** | 47 unique live cards: **45 claim an authority envelope, 4 carry a non-empty principal pubkey, 6 declare a runtime, 11 declare lifecycle, 0 use a discovery URN.** Gateway authorises by name equality (`CANONICAL_ACTORS`, 47 literals) | **P0** — authority without authentication |
 
 ### D5 detail — the one that matters
 
@@ -166,7 +235,7 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 
 | Probe | Before | After | Meaning |
 |---|---|---|---|
-| `npm run validate:registry` | no such gate | **PASS 10/10**, exit 0 | invariants hold at baseline |
+| `npm run validate:registry` | no such gate | **PASS 13/13**, exit 0 | invariants hold at baseline |
 | `node scripts/validate-aaa.mjs` | **13 failures** | **10 failures** | −2 false "unknown skill" errors (validator was reading the stale 196-skill copy); +1 real data defect surfaced (`minimax-m-plan` assigned to two packages). Remaining 10 are pre-existing card/identity drift — queued, not introduced. |
 | Executable reads of a `_deprecated_` path | 2 (`validate-aaa.mjs:59,65`) | **0** | INV-AR-8 |
 | Policy ghost canonical/derived paths | 4 | **0** | INV-AR-7 |
@@ -175,6 +244,8 @@ This pass settles **terminology, ownership, and the gate**. It does not:
 
 **Remaining work (queued, not fixed here):** 171 unresolvable + 604 source-less card skill refs on the
 committed tree; 24 duplicate agent ids; 10 `validate-aaa` identity/card failures; `minimax-m-plan`
-double package assignment. Each needs a content decision (build / delete / re-point), not a rename.
+double package assignment; **and the D9 identity split — 41 authority claims without a principal,
+39 without a runtime ref, 34 without a lifecycle state, 0 discovery identifiers.** Each needs a content
+decision (build / delete / re-point / issue key / assign runtime), not a rename.
 
 **DITEMPA BUKAN DIBERI.**
