@@ -93,6 +93,9 @@ alignment:
     authority_without_lifecycle: 28  # of 38
     resolution_not_admitted: 4       # canonical_identity.json ids absent from canonical_agents.json (+ aliases)
     case_duplicate_keys: 1           # 777-FORGE + 777-forge in canonical_identity.json
+    did_stores_named_in_code: 2      # secrets/did/registry.json (verifier) + auth/did_registry.yaml (signer)
+    envelope_allows_anonymous: 1     # federation_envelope.js allowlist still admits 'anonymous'
+    server_actors_missing_from_envelope: 34  # incl. 333-AGI, 555-ASI, 888-APEX
   invariants:
     - "INV-AR-1 one layer per file"
     - "INV-AR-2 derived files name their source"
@@ -105,6 +108,8 @@ alignment:
     - "INV-AR-9 authority claimed on a card requires a non-empty principal pubkey"
     - "INV-AR-10 authority claimed on a card requires a runtime_ref"
     - "INV-AR-11 authority claimed on a card requires a lifecycle state"
+    - "INV-AR-14 the principal store has one owner named in code"
+    - "INV-AR-15 the /a2a envelope allowlist must not be narrower than the server allowlist, and must not admit anonymous"
 
 # ── CATEGORY PRECEDENCE ──
 # Within each category, earlier entries beat later entries.
