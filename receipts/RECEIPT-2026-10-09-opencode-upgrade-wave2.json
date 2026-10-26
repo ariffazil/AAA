@@ -1,0 +1,15 @@
+{
+  "receipt_id": "RECEIPT-2026-10-09-opencode-upgrade-wave2",
+  "actor": "opencode/FI-001",
+  "host": "KVM4 (srv1946043)",
+  "trace_id": "selfupgrade-20261009-FI001",
+  "supersedes_unresolved": ["RECEIPT-2026-10-09-opencode-recursive-upgrade.json#unresolved[0..2]"],
+  "transitions": [
+    {"what": "kernel MCP catalog exercised", "state": "MEASURED", "detail": "8 tools = full 8-verb chain (arif_init/observe/think/route/memory/judge/forge/seal); live tools/call arif_route -> kernel returned HOLD, actor=anonymous, band=OBSERVE_ONLY — authority binding VERIFIED LIVE (unauthenticated raw call correctly bounded; governed session identity flows via opencode MCP client next session)"},
+    {"what": "external card FI claim", "state": "SUPERSEDED", "detail": "/root/AAA/agents/_external/opencode/agent-card.json shadowAcknowledged fi_slot_unresolved replaced with resolution record (6->5 entries, 0 FI-??? remaining); applied-backup kept"},
+    {"what": "hermes mirror drift", "state": "ELIMINATED", "before": "20/26 shared skills drifted (all canon-newer)", "after": "0 drift byte-exact", "backup": "/root/.local/state/hermes-mirror-backup-20261009.tar.gz (20 dirs)"},
+    {"what": "drift durability", "state": "INSTALLED+ACTIVE", "detail": "/root/scripts/mesh-sync-kvm4.sh (AAA=canon; hermes shared-name mirror auto-sync; opencode surface report-only) + mesh-sync-kvm4.timer (daily + boot+5min), enabled+active; script bugs found+fixed in-session: recursive canon scan, find -L for symlinked canon dirs (case-variant aliases)"},
+    {"what": "FI-??? sweep remainder", "state": "ESCALATED-TO-OWNER", "detail": "~9 stale FI-??? identities belong to OTHER actors (_brief, _lanes/{555-ASI,777-forge,333-AGI,888-APEX}, _external, agent_cards/FI-???, WP-01 doc row) — not mine to mint; flagged for identity-convergence work"}
+  ],
+  "falsifier": "Receipt withdrawn if: timer misses a daily fire (systemctl list-timers); any hermes shared-name SKILL.md diverges from canon after next fire; kernel MCP rejects opencode-native MCP client handshake at next session."
+}
