@@ -32,6 +32,8 @@ triggers:
   - 'any mission that begins "do not contact them, do not manufacture tests"'
 capability_tier: fed-long-context
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # First-Party Evidence Audit (canonical)

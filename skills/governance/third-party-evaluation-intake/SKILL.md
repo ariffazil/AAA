@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: vendor-evaluation-intake
 name: third-party-evaluation-intake
 description: "Alias → vendor-evaluation-intake. Load `vendor-evaluation-intake` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: third-party-evaluation-intake

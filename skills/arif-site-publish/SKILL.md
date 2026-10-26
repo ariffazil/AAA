@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: arif-sites-ops
 name: arif-site-publish
 description: "Alias → arif-sites-ops. Load `arif-sites-ops` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: arif-site-publish

@@ -3,6 +3,8 @@ name: evidence-chain-audit
 description: "Use when auditing claimed evidence artifacts or receipts."
 license: Proprietary
 platforms: [linux]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Evidence-Chain Audit

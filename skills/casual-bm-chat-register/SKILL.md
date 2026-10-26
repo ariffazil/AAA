@@ -2,6 +2,8 @@
 name: casual-bm-chat-register
 description: "Use when casual BM chat reads like literature."
 category: human-interface
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Casual BM Chat Register

@@ -2,6 +2,8 @@
 name: production-capacity-closure
 description: Use when a resource, rate and facility may not all be true.
 tags: [engineering, production, capacity, closure, fdp, forensics]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Production capacity closure

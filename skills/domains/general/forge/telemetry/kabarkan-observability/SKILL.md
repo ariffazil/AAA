@@ -28,6 +28,15 @@ ecology_state: WARM
 > Supersedes the 2026-07-24 block, which described 240 rows. The pipeline is
 > still sovereign; the scale and the surfaces around it are not what they were.
 
+> **DELTA 2026-10-25T03:30Z (333-AGI live re-probe — Prime Law: status is not evidence):**
+> **Layer 1 PG = 506,554 rows, newest 03:26Z (fresh, single-layer carries the plane).**
+> **Layer 3 = DOWN: `kabarkan-worker.service` inactive/**disabled** (unit mtime 2026-09-21 01:33,
+> NRestarts=0, journal empty), durable consumer `kabarkan-worker-fresh` = 404 (not found),
+> stream `kabarkan-ingest` = 592,232 msgs with NO consumer (first_seq=1 — backlog accumulating).
+> Rationale for the disable NOT found in carry_forward/tasks.json/muse quick grep (UNKNOWN).
+> Reconcile task: `p2-kabarkan-layer3-reconcile` in /root/work/tasks.json — re-enable OR ratify
+> Layer1-only as the design; do not treat the 3-layer block below as live until then.
+
 **Postgres `vault999.observability.observations`: 201,554 rows, live (newest span < 5 min).**
 **NATS `kabarkan-ingest`: 193,198 msgs; consumer `kabarkan-worker-fresh` pending=0, fully drained.**
 **Worker: `kabarkan-worker.service` active — ExecStart is `arifosmcp.runtime.observability.worker`, NOT the A-FORGE copy.**

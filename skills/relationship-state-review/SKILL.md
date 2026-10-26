@@ -9,6 +9,8 @@ triggers:
   - "reality loop on <person>"
   - a chat export is pasted or attached for analysis
   - a long narrative run about one person accumulates without any measurement
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Relationship State Review

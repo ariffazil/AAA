@@ -1,6 +1,8 @@
 ---
 name: local-business-deep-dive
 description: 'Comprehensive research of a local business entity (esp. Malaysian): owner identity + namesake disambiguation, founding history, notable members/alumni, equipment/offerings reputation, competition-production record,'
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Local Business Deep-Dive Research
 

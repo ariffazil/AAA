@@ -1,0 +1,299 @@
+{
+ "items": [
+  {
+   "item_id": "us-iran-election-clock",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Trump tahan serangan Ahad — tapi aset serangan lengkap hujung November",
+   "summary": "Semalam Trump kata 'takde serangan hari ini' bila ditanya sama ada AS akan serang Iran. Pagi Jumaat beliau kata AS 'mungkin buat satu lagi Epic Fury kecil'. Soalannya sekarang bukan lagi ya atau tidak, tapi bila. Tiga perkara baru: CENTCOM sudah ada pakej sasaran siap di meja (lapor The Hill), kumpulan kapal induk ketiga USS Theodore Roosevelt dengan kira-kira 10,000 tentera tambahan dan 13th MEU tiba menjelang hujung November, dan Qatar masuk sebagai orang tengah ke Tehran hari Ahad. Iran kata saluran mesej belum tutup. Bagi hang: tetingkap paling logik ialah selepas undi pertengahan penggal 3 Nov, dan sebelum aset lengkap hujung Nov keputusan itu boleh jatuh lebih awal dari jadual.",
+   "source": "AP 25 Okt; Al Jazeera 25 Okt (The Hill, CENTCOM options); CBS live 25 Okt; Jerusalem Post 25 Okt (pegawai AS: 'bukan jika tapi bila'); Iran International 25 Okt"
+  },
+  {
+   "item_id": "brent-hormuz-price",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "claim_state": "SETTLED",
+   "title": "Dua angka Brent yang berlegar — 116.72 itu penyelesaian, 117.38 itu dagangan terakhir",
+   "summary": "Jumaat: Brent penyelesaian AS$116.72, naik AS$3.55 atau 3.14 peratus, tertinggi sejak 29 April (Reuters). Tapi berita Asia pagi ni menulis AS$117.38. Dua-dua betul, dua-dua bukan angka yang sama: 116.72 ialah harga penyelesaian rasmi, 117.38 ialah dagangan terakhir selepas penyelesaian (FT, 22:59 BST). WTI penyelesaian AS$103.27. Dubai minggu ni AS$111.68, jadi Brent-Dubai jarak sekitar AS$5.70. Aku tutup percanggahan ini dengan sebab, bukan pilih satu angka.",
+   "source": "Reuters (Nicole Jao) 23 Okt untuk penyelesaian; FT markets 23 Okt 22:59 BST untuk 117.38; oilpriceapi 25 Okt untuk Dubai"
+  },
+  {
+   "item_id": "saudi-houthi-escalation",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Lapangan terbang Riyadh buka semula — dan diserang pada hari yang sama",
+   "summary": "Ahad: Terminal 1 dan 2 Lapangan Terbang King Khalid buka semula untuk penerbangan domestik dan antarabangsa selepas ditutup sejak 10 Okt. Pada hari yang sama Houthi tembak dua dron dan satu peluru balistik ke arah Riyadh, 10 peluru balistik ke wilayah selatan, dan satu peluru jelajah ke Khamis Mushait — semua dipintas. Serpihan: dua cedera, tiga bangunan dan tujuh kenderaan rosak. Jurucakap Houthi Saree kata lapangan terbang itu masih 'sasaran tentera' dan syarikat penerbangan dinasihatkan jangan guna. Dua peluru ke arah Makkah dan Madinah juga dipintas; Ketua Masjidil Haram sebut itu 'garis merah'.",
+   "source": "AP 25 Okt; Al Jazeera 25 Okt; CNBC 25 Okt; Arab News 25 Okt; Malay Mail 25 Okt"
+  },
+  {
+   "item_id": "hormuz-reopening-plan",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Qatar masuk bilik: orang tengah baru ke Tehran",
+   "summary": "Ahad Qatar menghantar orang tengah ke Tehran — saluran baru, bukan lagi Pakistan sahaja. Jurucakap luar Iran Baghaei kata tetingkap diplomasi belum tutup dan mesej masih dihantar melalui perantara, tetapi AS terus guna frasa 'penyerahan sepenuhnya' yang katanya tiada orang Iran terima. Iran juga dakwa menembak jatuh dron dekat Bandar Abbas. Tawaran asal masih sama: buka Hormuz jika sekatan pelabuhan Iran ditamatkan.",
+   "source": "Al Jazeera liveblog 25 Okt; AP 25 Okt; Indian Express live 25 Okt (dron Bandar Abbas)"
+  },
+  {
+   "item_id": "petros-onshore-first-oil",
+   "reality": "PETRONAS_SARAWAK_AUTHORITY",
+   "section": "SITUATION",
+   "claim_state": "NEW",
+   "title": "PETROS keluar minyak darat pertama — 10 telaga, RM500 juta, sembilan kawasan",
+   "summary": "Timbalan Premier Sarawak Awang Tengah dalam ucapan penggulungan DUN: PETROS bersama Petra Energy dapat pengeluaran minyak pertama di Adong Kechil West, menghidupkan semula pengeluaran petroleum darat Sarawak selepas hampir 50 tahun. PETROS sudah kenal pasti sembilan kawasan dan rancang 10 telaga penerokaan baru di Balingian, Limbang-Lawas, Marudi dan Niah, anggaran RM500 juta. Pada separuh pertama 2026, 300 vendor Sarawak dapat kontrak PETRONAS bernilai RM2.68 bilion, jumlah terkumpul RM51.5 bilion sejak 2014. Ini satu sumber sahaja (ucapan menteri) yang dipetik dua akhbar — kiraan asal tetap satu.",
+   "source": "UKAS Sarawak 21 Okt; DagangNews 22 Okt; kedua-duanya memetik ucapan penggulungan DUN Sarawak 19, 21 Okt"
+  },
+  {
+   "item_id": "physical-paper-divergence",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Jurang tong fizikal mengecil — tapi itu kerana kertas naik, bukan fizikal turun",
+   "summary": "Dated Brent terakhir tercatat AS$122.44 pada 22 Okt. Kertas Jumaat naik ke AS$116.72, jadi jurang turun dari AS$9.27 ke sekitar AS$5.72. Tiada bacaan fizikal baru sejak 22 Okt, jadi angka fizikal hari ini tidak diketahui. Aku tak anggap jurang mengecil sebagai isyarat reda — ia cuma bermakna kertas mengejar.",
+   "source": "CommodityScope 22 Okt (fizikal); Reuters 23 Okt (kertas); tiada bacaan fizikal 23-26 Okt"
+  },
+  {
+   "item_id": "own-od1-window",
+   "reality": "OD1_PERSONAL_TRANSITION",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "OD1: 126 hari",
+   "summary": "Tolak satu hari. Pakej MSS sudah dikutip. Apa-apa yang menyentuh keputusan ini kekal lebih besar daripada berita harian.",
+   "source": "kiraan daripada 127 hari pada 25 Okt, sasaran 1 Mac 2027"
+  },
+  {
+   "item_id": "budget-2027-debate",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Jawapan menteri Belanjawan: hari ini hari pertama, 26 hingga 29 Okt",
+   "summary": "Sesi penggulungan kementerian bermula hari ini di Dewan Rakyat dan habis Khamis. Perbahasan peringkat jawatankuasa pula 2 hingga 26 Nov sebelum undang-undang dibawa untuk kelulusan. Peraturan berdiri buang naratif politik, jadi tarikh sahaja di sini.",
+   "source": "takwim Dewan Rakyat; Astro Awani 9 Okt (jadual penggulungan 26-29 Okt, jawatankuasa 2-26 Nov)"
+  },
+  {
+   "item_id": "israel-election-oct27",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Israel mengundi esok — tinjauan akhir terbelah 50 hingga 59, tiada siapa dekat 61",
+   "summary": "Undi esok 27 Okt. Tinjauan terakhir dibenarkan Jumaat: Kan dan Channel 12 masing-masing 50 blok Netanyahu lawan 52 blok Eisenkot, Channel 13 50 lawan 54, Haaretz julat 50 lawan 52-56. Satu tinjauan i24NEWS/Direct Polls pula letak blok Netanyahu 59, dua kerusi pendek — itu outlier dan aku tak ambil ia sebagai pangkalan. Yang disepakati: tiada blok sampai 61. 36 peratus pengundi belum tetap. Keluar pusat mengundi Selasa 10 malam waktu Israel, iaitu sekitar 4 pagi Rabu waktu kita.",
+   "source": "Haaretz 23 Okt; Anadolu 24 Okt; i24NEWS 25 Okt; Jerusalem Post 25 Okt; Times of Israel 22 Okt"
+  },
+  {
+   "item_id": "melaka-polls-nov14",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Melaka: penamaan 5 hari, undi 19 hari",
+   "summary": "Penamaan 31 Okt, hari mengundi 14 Nov. Tiada perubahan jadual.",
+   "source": "jadual SPR yang dibawa dari edisi sebelumnya"
+  },
+  {
+   "item_id": "void-operator-change-od1",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Empat PSC tukar tangan 1 Jan — 67 hari",
+   "summary": "Perubahan operator berkuat kuasa 1 Januari 2027. Enam puluh tujuh hari untuk semua peralihan selesai.",
+   "source": "kiraan daripada 68 hari pada 25 Okt"
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "reality": "PETRONAS_SARAWAK_AUTHORITY",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Mahkamah Persekutuan 25-29 Jan — 91 hari, dan satu pembetulan kiraan",
+   "summary": "Petisyen berasingan PETRONAS dan kerajaan Sarawak didengar 25 hingga 29 Januari 2027. Aku kira semula dari kalendar: 91 hari dari hari ini. Rekod semalam tulis 93 pada 25 Okt, yang sepatutnya 92 — angka lama itu satu hari lebih. Angka hari ini datang dari kiraan kalendar, bukan tolak satu dari angka lama.",
+   "source": "DagangNews 22 Okt (tarikh mahkamah); kiraan kalendar sendiri dari 26 Okt 2026"
+  },
+  {
+   "item_id": "risk-subsidy-ceiling-45b",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "RISK",
+   "claim_state": "NEW",
+   "title": "Siling subsidi naik: RM40 bilion jadi RM45 bilion setahun",
+   "summary": "Sabtu di Melaka, PM kata kerajaan bersedia tanggung subsidi bahan api sampai RM42-45 bilion setahun jika minyak kekal AS$120-130 setong, dan RON95 kekal RM1.99. Band sekarang: kerajaan tanggung RM2.33 seliter RON95 dan RM2.97 seliter diesel. Ini naik dari RM40 bilion yang ditulis dalam Belanjawan 2027 — iaitu kerajaan sudah mengaku silingnya tidak cukup pada harga sekarang. Akibat untuk hang: harga pam kekal buat masa ini, tetapi bil subsidi itu ditanggung melalui hasil minyak yang PETRONAS bayar sebagai dividen. Wang yang sama dikira dua kali di dua tempat.",
+   "source": "Bernama/NST 24 Okt; The Star 24 Okt; Malaysiakini 24 Okt; kenyataan MoF 21 Okt untuk RM2.33 dan RM2.97 seliter"
+  },
+  {
+   "item_id": "petrol-price-band",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "title": "Band pam baru diumum Rabu 28 Okt — arah ke atas, tapi bukan sebab Brent semata",
+   "summary": "Band 22-28 Okt: RON95 tanpa subsidi RM4.32, RON97 RM4.80, diesel RM5.07; BUDI95 kekal RM1.99. Band seterusnya diumum Rabu dan berkuat kuasa Khamis 29 Okt. Aku nak betulkan satu andaian: APM dikira atas harga produk MOPS Singapura, bukan Brent. Pada 21 Okt harga turun 30 sen walaupun Brent tinggi sebab harga produk serantau sedang menyederhana. Jadi arah ke atas itu mungkin, tetapi ia bergantung pada MOPS — dan aku tiada bacaan MOPS hari ini. Isi minyak sebelum Khamis kalau nak selamat.",
+   "source": "siaran MoF 21 Okt; hargaminyak.my band 22-28 Okt; formula APM MoF; tiada bacaan MOPS 24-26 Okt"
+  },
+  {
+   "item_id": "void-freight-arbitrage",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "VOID",
+   "claim_state": "NEW",
+   "title": "Kos kapal sudah jadi harga minyak: AS$80 juta satu kargo",
+   "summary": "Hantar satu kargo dari Teluk Mexico AS ke China kini sampai AS$80 juta, kira-kira sepuluh kali kadar biasa sebelum perang, kerana pelayaran lebih jauh mengunci kapal. Pada 2 juta tong satu VLCC, itu sekitar AS$40 setong. Jarak Brent-WTI pula hanya sekitar AS$14 — jadi tong AS tidak berbaloi untuk bergerak ke Asia langsung, dan ia tersekat di darat. Dalam produk, bahan bakar tinggi sulfur Singapura sudah lebih mahal daripada minyak mentah yang membuatnya. Akibat untuk hang: pasaran Asia kini ditetapkan oleh kos angkut, bukan oleh tong. Sesiapa yang beli tong Atlantik (termasuk lengan dagangan PETRONAS) bayar AS$40 setong lebih hanya untuk pengangkutan, dan minyak Malaysia yang dijual atas Dated Brent dapat premium tanpa perlu buat apa-apa.",
+   "source": "OilPrice.com melalui briefing EnergyReader 26 Okt; harga Brent/WTI penyelesaian 23 Okt"
+  },
+  {
+   "item_id": "void-page-date-not-evidence",
+   "section": "VOID",
+   "claim_state": "MOVED",
+   "title": "Perangkap tarikh berjalan: enam artikel arkib hari ini, satu daripadanya sebut tarikh yang belum wujud",
+   "summary": "Pagi ini enam artikel di satu portal berita ekonomi keluar bertarikh 'Monday 26 Oct 2026' tetapi isinya arkib: PETRONAS semak semua projek (CEO ketika itu Shamsul Azhar, era 2014-15), EOR Tapis dengan pelantar belayar 2 April (2014), PETRONAS pertimbang keluar Gharraf Iraq pada minyak AS$40 (2020), PSC SK317B Total 85 peratus (Nov 2021), kontrak Petra Energy 2013-2019, dan Deleum 2021-2023. Bukti paling jelas: satu artikel berkata 'statement on Friday (Oct 28)' — tarikh yang belum sampai. Akibat untuk hang: kalau nampak tajuk 'PETRONAS semak semua projek, potong kos' atau 'PETRONAS mungkin keluar Iraq' dalam feed hari ini, itu bukan berita.",
+   "source": "perbandingan dalaman enam halaman theedgemalaysia.com bertarikh 26 Okt 2026: nama CEO, tempoh kontrak 2013-2023, rujukan 'Friday (Oct 28)', harga minyak AS$40"
+  },
+  {
+   "item_id": "eureka-positron-cyclotron",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Satu positron dipenjara berbulan-bulan, cukup untuk uji cermin alam",
+   "summary": "Pasukan Gabrielse di Northwestern perangkap satu positron — antizarah elektron — dalam 'siklotron kuantum' yang disejukkan hampir sifar mutlak, dan ia boleh disimpan berbulan-bulan. Positron itu mesti melalui satu atom positronium dulu sebelum dipecahkan dalam perangkap. Hasilnya: bacaan momen magnet boleh jadi 30 kali lebih tepat, cukup untuk uji sama ada antizarah benar-benar cermin jirim.",
+   "source": "Physical Review Letters, Myers et al., DOI 10.1103/gbkc-6nlj; laporan phys.org 24 Okt"
+  },
+  {
+   "item_id": "eureka-sea-cucumber-gel",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Gel ikut timun laut untuk baiki tendon",
+   "summary": "Timun laut boleh ubah kekerasan badannya. Universiti Waterloo tiru helah itu jadi hidrogel yang boleh dilaras lembut atau keras, untuk sokong tisu baru tumbuh. Dalam ujian pra-klinikal pada tikus, tendon yang cedera sembuh lebih tersusun berbanding jahitan sahaja, dan gel itu larut sendiri dalam badan dalam kira-kira lapan minggu — tiada bahan kekal tertinggal.",
+   "source": "Advanced Functional Materials, Teng et al., DOI 10.1002/adfm.78596; laporan phys.org 25 Okt"
+  },
+  {
+   "item_id": "eureka-monsoon-stalagmites",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "450,000 tahun stalagmit: monsun Asia dan Amerika Selatan biasanya berlawanan, 10 kali tidak",
+   "summary": "Dari 30 stalagmit dalam tiga gua Peru, pasukan antarabangsa bina rekod monsun Amerika Selatan sepanjang kira-kira 450,000 tahun. Pola biasa: monsun Asia kuat bila Amerika Selatan lemah, ikut ayunan orbit 23,000 tahun. Tetapi ada 10 episod kedua-duanya lemah atau kuat serentak, kebanyakannya ketika bumi keluar dari zaman ais. Ini kerja geologi — dan ia tanda aras untuk uji model iklim, bukan ramalan.",
+   "source": "Nature, DOI 10.1038/s41586-026-11166-3; laporan phys.org 24 Okt"
+  },
+  {
+   "item_id": "eureka-cryogenic-alloy",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Aloi yang tidak rapuh pada minus 196 darjah",
+   "summary": "Keluli biasa jadi rapuh dalam sejuk — Titanic tenggelam antara sebabnya. Pasukan PolyU Hong Kong guna antara muka 'kelengkungan negatif' pada skala nano untuk dapatkan aloi NiCoCr-AlTa yang pada 77 Kelvin (minus 196 darjah) masih beri kekuatan alah 1.30 GPa, kekuatan tegangan 1.80 GPa, pemanjangan 50 peratus dan keliatan 213 MPa akar meter. Sasaran: perkakasan laut dalam dan angkasa.",
+   "source": "Nature Communications, Zhang et al., DOI 10.1038/s41467-026-74629-1 dan 10.1038/s41467-026-75563-y; laporan phys.org 24 Okt"
+  }
+ ],
+ "states": [
+  {
+   "state_id": "GULF_ENERGY_WAR",
+   "label": "Perang Teluk: Iran, AS, Houthi",
+   "phase": "ELEVATED",
+   "confidence": 0.75,
+   "first_seen": "EDITION-029",
+   "note": "Trump tahan serangan Ahad; aset serangan lengkap hujung Nov; Qatar masuk sebagai orang tengah; Hormuz belum dibuka"
+  },
+  {
+   "state_id": "MALAYSIA_FISCAL_POLICY",
+   "label": "Fiskal Malaysia: subsidi bahan api lawan hasil minyak",
+   "phase": "ELEVATED",
+   "confidence": 0.8,
+   "first_seen": "EDITION-030",
+   "note": "Siling subsidi dinaikkan RM40b ke RM45b setahun pada minyak AS$120-130; RON95 kekal RM1.99"
+  },
+  {
+   "state_id": "PETRONAS_SARAWAK_AUTHORITY",
+   "label": "PETRONAS lawan Sarawak: kuasa kawal selia",
+   "phase": "HOLDING",
+   "confidence": 0.85,
+   "first_seen": "EDITION-029",
+   "note": "Mahkamah Persekutuan 25-29 Jan 2027; PETROS mula minyak darat sendiri sementara menunggu"
+  },
+  {
+   "state_id": "OD1_PERSONAL_TRANSITION",
+   "label": "OD1: tetingkap keluar Mac 2027",
+   "phase": "HOLDING",
+   "confidence": 0.9,
+   "first_seen": "EDITION-025",
+   "note": "126 hari; pakej MSS sudah dikutip"
+  },
+  {
+   "state_id": "HERMES_SYSTEM_HEALTH",
+   "label": "Kesihatan sistem Hermes di KVM8",
+   "phase": "ELEVATED",
+   "confidence": 0.7,
+   "first_seen": "EDITION-030",
+   "note": "Cakera 90 peratus dengan 43 GB tinggal; kalendar Google mati sebab token ditolak"
+  }
+ ],
+ "contradictions": [
+  {
+   "cid": "C-HORMUZ-FLOWS",
+   "topic": "Trafik Hormuz: pulih atau 70 peratus bawah paras pra-perang?",
+   "claim_a": "Kpler: eksport mentah lebih 24 juta tong sehari lawan 23.3 juta sebelum perang, Selat 82 peratus pulih",
+   "source_a": "Kpler melalui NY Post, Maritime Executive, Bloomberg 21-22 Okt",
+   "claim_b": "Menteri luar Iran: trafik maritim 70 peratus di bawah paras pra-perang",
+   "source_b": "Turkiye Today 24 Okt; UKMTO 16 Okt (70 peratus lebih rendah)",
+   "status": "OPEN",
+   "opened_edition": "EDITION-029"
+  },
+  {
+   "cid": "C-RIYADH-AIRPORT",
+   "topic": "Lapangan terbang Riyadh: dibuka semula atau masih sasaran tentera?",
+   "claim_a": "King Khalid International membuka Terminal 1 dan 2 untuk penerbangan domestik dan antarabangsa pada 25 Okt",
+   "source_a": "AP 25 Okt; CNBC 25 Okt; kenyataan lapangan terbang di X",
+   "claim_b": "Houthi (Saree): lapangan terbang itu tidak selamat dan masih sasaran tentera; syarikat penerbangan dinasihatkan jangan guna",
+   "source_b": "Al Jazeera 25 Okt (petikan Saree)",
+   "status": "OPEN",
+   "opened_edition": "EDITION-031"
+  },
+  {
+   "cid": "C-BRENT-SETTLE",
+   "topic": "Angka Brent Jumaat: 116.72 atau 117.38?",
+   "claim_a": "AS$116.72 penyelesaian rasmi, naik AS$3.55 atau 3.14 peratus",
+   "source_a": "Reuters (Nicole Jao) 23 Okt",
+   "claim_b": "AS$117.38, naik AS$0.66 atau 0.57 peratus",
+   "source_b": "FT markets, 23 Okt 22:59 BST",
+   "status": "RESOLVED",
+   "opened_edition": "EDITION-031",
+   "resolution": "Bukan percanggahan fakta: 116.72 ialah harga penyelesaian, 117.38 ialah dagangan terakhir selepas penyelesaian. Perubahan 0.57 peratus pada FT ialah pergerakan sesi itu, bukan pergerakan hari. Angka penyelesaian yang dipakai untuk sebarang perbandingan."
+  }
+ ],
+ "scars": [
+  {
+   "scar_id": "SCAR-PAGE-DATE-ARCHIVE",
+   "name": "Tarikh halaman bukan bukti tarikh peristiwa",
+   "severity": "medium",
+   "status": "ACTIVE",
+   "symptom": "Portal berita ekonomi memaparkan tarikh hari ini pada artikel arkib; tajuk lama masuk senarai berita semasa",
+   "root_cause": "Tarikh render halaman (hari ini) bercampur dengan tarikh penerbitan artikel asal",
+   "fix": "Semak nama pegawai, tempoh kontrak dan harga minyak dalam isi; buang artikel yang mustahil secara kronologi",
+   "first_seen": "EDITION-029",
+   "recurred_today": true,
+   "observed_note": "Enam artikel bertarikh 26 Okt 2026 dengan isi 2014-2023; satu sebut 'statement on Friday (Oct 28)', tarikh yang belum wujud"
+  },
+  {
+   "scar_id": "SCAR-CALENDAR-TOKEN",
+   "name": "Token Google mati berulang, dan pembaikan token tidak menyentuh punca",
+   "severity": "medium",
+   "status": "ACTIVE",
+   "symptom": "Lane kalendar gagal; gws pulang 401 invalid_grant, refresh token terus pulang 400",
+   "root_cause": "Aplikasi OAuth jenis external dengan status Testing hanya dapat refresh token hidup 7 hari; menulis semula fail token tidak menukar status itu",
+   "fix": "Terbitkan aplikasi OAuth (atau guna service account dengan delegation) supaya token tidak luput setiap 7 hari",
+   "first_seen": "EDITION-030",
+   "recurred_today": true,
+   "observed_note": "Token yang ditulis 25 Okt 06:16 sudah ditolak pada 26 Okt 06:16: gws 401, refresh token 400"
+  }
+ ],
+ "realities": [
+  {
+   "reality_id": "GULF_ENERGY_WAR",
+   "label": "Perang Teluk dan Selat Hormuz",
+   "domain": "energy"
+  },
+  {
+   "reality_id": "MALAYSIA_FISCAL_POLICY",
+   "label": "Fiskal Malaysia dan subsidi bahan api",
+   "domain": "fiscal"
+  },
+  {
+   "reality_id": "PETRONAS_SARAWAK_AUTHORITY",
+   "label": "Kuasa kawal selia PETRONAS dan Sarawak",
+   "domain": "institutions"
+  },
+  {
+   "reality_id": "OD1_PERSONAL_TRANSITION",
+   "label": "Tetingkap keputusan OD1",
+   "domain": "personal"
+  }
+ ]
+}

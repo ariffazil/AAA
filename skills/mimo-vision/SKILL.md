@@ -3,6 +3,8 @@ name: mimo-vision
 description: "FEDERATED Xiaomi MiMo vision lane — image AND video understanding via mimo-v2.5, plus token estimators and a PAIRED-fixture perception canary."
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # MiMo Vision — image + video understanding (AAA canonical)
 

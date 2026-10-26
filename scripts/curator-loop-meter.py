@@ -66,7 +66,9 @@ def journal_scan(since: str) -> tuple[Counter, Counter, Counter]:
                 reviews[skill] += 1
         if "Refusing background curator" not in line:
             continue
-        if "for bundled skill" in line:
+        if "external_dirs" in line:
+            reasons["external_dirs"] += 1
+        elif "for bundled skill" in line:
             reasons["bundled"] += 1
         elif "not curator-managed" in line:
             reasons["user_owned"] += 1
@@ -117,6 +119,48 @@ def ledger_rows() -> tuple[Counter, Counter, Counter]:
     return refused, landed, actions
 
 
+def refusal_reason_classes() -> Counter:
+    """Classify every refused ledger row by its actual evidence.reason.
+
+    The ledger stores the refusal text under ``evidence.reason``; earlier versions read
+    ``reason``/``message`` at the top level, which do not exist, so all 3,547 refusals
+    were counted as "other" — a signal that could not name its own cause.
+    """
+    out: Counter = Counter()
+    if not LEDGER.exists():
+        return out
+    for line in LEDGER.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if row.get("action") != "refused":
+            continue
+        reason = row.get("evidence", {}).get("reason") if isinstance(row.get("evidence"), dict) else None
+        reason = str(reason or row.get("reason") or row.get("message") or "")
+        low = reason.lower()
+        if "external_dirs" in low:
+            out["external_dirs"] += 1
+        elif "pinned" in low:
+            out["pinned"] += 1
+        elif "hub-installed" in low or "hub installed" in low:
+            out["hub"] += 1
+        elif "bundled" in low:
+            out["bundled"] += 1
+        elif "not curator-managed" in low or "user-owned" in low:
+            out["user_owned"] += 1
+        elif "read-before-write" in low or "has not been loaded" in low:
+            out["read_before_write"] += 1
+        elif reason:
+            out["other_classified"] += 1
+        else:
+            out["unclassified"] += 1
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=float, default=1.0, help="journal window, days back (default 1)")
@@ -128,6 +172,7 @@ def main() -> int:
     reasons, attempted, reviews = journal_scan(f"-{hours}h")
     refused, landed, actions = ledger_rows()
     pending = pending_memory()
+    refusal_reasons = refusal_reason_classes()
 
     report = {
         "captured_at_myt": datetime.now(MYT).isoformat(timespec="seconds"),
@@ -141,6 +186,7 @@ def main() -> int:
         "landed_skills_ledger_all_time": {k: v for k, v in landed.most_common(10)},
         "ledger_actions": dict(actions),
         "pending_memory_proposals": pending,
+        "refusal_reason_classes_all_time": dict(refusal_reasons.most_common()),
         "repeating_targets": {k: v for k, v in attempted.items() if v > 1},
         "verdict": ("POSING — a blocked target repeated in the window; fix the boundary "
                     "declaration, not the counter"
@@ -165,6 +211,7 @@ def main() -> int:
         print(f"  landed (ledger)  : {sum(landed.values())} mutations on {len(landed)} skills")
         print(f"  memory proposals : {pending['count']} staged "
               f"(oldest {pending['oldest_days']}d) {pending['targets'] or ''}")
+        print(f"  refusal causes   : {report['refusal_reason_classes_all_time']}")
         print(f"  repeating targets: {report['repeating_targets'] or 'none'}")
         print(f"  verdict          : {report['verdict']}")
         if args.write:

@@ -1,6 +1,8 @@
 ---
 name: financial-chart-analysis
 description: Generate financial charts with technical indicators (PSAR, RSI, MACD, etc.) using Python, and produce future analysis with epistemic-labeled verdicts. Covers live data via yfinance, custom indicator calculations, dark-themed matplotlib rendering, TradingView browser automation pitfalls, and the analysis output format (tables + signal summary). Use when the user asks for "stock chart", "live chart", "add [indicator]", "technical analysis", "buy or do nothing", or any request to visualize market data with overlays.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Financial Chart Analysis
