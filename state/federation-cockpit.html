@@ -160,6 +160,7 @@
         <span>SERVERS DOWN: <strong id="strip-servers">--</strong></span>
         <span id="strip-held-label">MACHINE-HELD: <strong id="strip-held">--</strong></span>
         <span>HUMAN DECISION: <strong id="strip-human">--</strong></span>
+        <span>KERNEL FLOOR: <strong id="strip-kernel">--</strong></span>
       </div>
       <div id="strip-action" style="margin-top:6px;font-size:12px;color:var(--muted)"></div>
     </div>
@@ -693,6 +694,32 @@ function render(data, truthData) {
   const stripHuman = document.getElementById('strip-human');
   stripHuman.textContent = pendingN === null ? 'UNKNOWN' : pendingN;
   stripHuman.style.color = (pendingN === null || pendingN > 0) ? 'var(--warn)' : 'var(--ok)';
+
+  // KERNEL FLOOR (2026-10-26): the attention plane must carry the kernel's own
+  // floor verdict. A missing/unreadable kernel block is UNKNOWN — never green.
+  // The FAIL branch names the floor ids so the human knows where to look.
+  const stripKernel = document.getElementById('strip-kernel');
+  if (stripKernel) {
+    const k = data.kernel || null;
+    if (!k || k.reachable !== true) {
+      stripKernel.textContent = 'UNKNOWN';
+      stripKernel.style.color = 'var(--warn)';
+      stripKernel.title = 'Kernel /health tidak dapat dibaca oleh penjana state.';
+    } else if (k.floor_passed === true) {
+      stripKernel.textContent = 'PASS';
+      stripKernel.style.color = 'var(--ok)';
+      stripKernel.title = `floor_measurement=${k.floor_measurement || 'UNKNOWN'}`;
+    } else if (k.floor_passed === false) {
+      const ids = (k.failing || []).map(f => f.floor).join(',') || '?';
+      stripKernel.textContent = `FAIL (${ids})`;
+      stripKernel.style.color = 'var(--err)';
+      stripKernel.title = (k.failing || []).map(f => `${f.floor}: ${f.origin || '?'}`).join(' | ');
+    } else {
+      stripKernel.textContent = 'UNMEASURED';
+      stripKernel.style.color = 'var(--warn)';
+      stripKernel.title = 'Kernel tidak melaporkan floor_passed.';
+    }
+  }
   document.getElementById('strip-action').textContent =
     pendingN === 0 ? (isFresh ? 'Tiada tindakan diperlukan dari Arif.' : 'Tiada keputusan dilaporkan dalam snapshot terakhir — equivalence live belum mapan.')
     : (pendingN === null ? 'Keputusan manusia: UNKNOWN (peti keputusan tidak dapat dibaca — jangan anggap kosong).'
