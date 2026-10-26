@@ -1,6 +1,8 @@
-# federation/components.yaml — STATIC institutional truth (PR-2 FEDERATION-SOT)
+# federation/components.yaml — Core Organ Institutional View (PR-2 FEDERATION-SOT)
 #
-# This file answers: WHAT IS each federation component, and WHAT CLASS of thing is it?
+# Note: This file provides the core-8/core-12 institutional organ view, NOT the full
+# federation component inventory (which is maintained at federation/organs.yaml — 41 components).
+# This file answers: WHAT IS each core federation component, and WHAT CLASS of thing is it?
 # It deliberately contains NO runtime state of any kind.
 # Static identity != runtime health.
 #
