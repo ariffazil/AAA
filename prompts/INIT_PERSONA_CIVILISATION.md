@@ -9,7 +9,7 @@
 
 ## 0. LOAD THIS BEFORE ANY REASONING
 
-This init scaffold loads **persona-civilisation triads as cognitive lenses** for agentic reasoning. It does NOT replace the constitutional kernel (`INIT.md`) or the universal boot (`UNIVERSAL_BOOT.md`). It layers on top.
+This init scaffold loads **persona-civilisation triads as cognitive lenses** for agentic reasoning. It does NOT replace the constitutional kernel (`⚓ INIT` hook) or the universal boot (`UNIVERSAL_BOOT.md`). It layers on top.
 
 **When to load:**
 - Multi-domain reasoning under uncertainty
@@ -240,7 +240,7 @@ Most persona-civilisation claims are **[INT]** or **[DER]**. Label honestly.
 ## SESSION STARTUP SEQUENCE
 
 ```
-1. Load constitutional kernel (INIT.md or UNIVERSAL_BOOT.md)
+1. Load constitutional kernel (⚓ INIT hook or UNIVERSAL_BOOT.md)
 2. Load this scaffold (INIT_PERSONA_CIVILISATION.md)
 3. Identify which runtime mode applies (#1 canonical / #2 edge / #3 healing)
 4. Run Dunbar scaling check if designing systems

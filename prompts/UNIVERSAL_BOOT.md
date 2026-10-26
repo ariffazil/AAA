@@ -12,7 +12,7 @@
 > - Human sovereign: `INIT_HUMAN.md`
 > - Basin classification: `INIT_BASIN_CLASSIFICATION.md`
 > - Zen alignment: `INIT-ZEN.md`
-> - Constitutional kernel: `INIT.md`
+> - Constitutional kernel: `⚓ INIT` hook (retired `INIT.md`, 2026-07-27)
 > - Federation Reality Graph & Meta-Law: `FEDERATION_REALITY_GRAPH_PROPAGATION_20260913.md`
 
 ---

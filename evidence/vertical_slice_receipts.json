@@ -1,0 +1,110 @@
+[
+  {
+    "receipt": {
+      "schema_version": "receipt.v1",
+      "receipt_id": "rec-11111111-1111-1111-1111-111111111111",
+      "receipt_type": "OBSERVE",
+      "actor_id": "observer/wawa-probe",
+      "capability_id": "federation.health.observe.v1",
+      "authority_ref": null,
+      "parent_receipt_id": null,
+      "previous_receipt_hash": null,
+      "timestamp_utc": "2026-10-10T02:01:00Z",
+      "key_id": "key-test-witness-01",
+      "payload": {
+        "target": "synthetic_canary",
+        "probe_path": {
+          "endpoint": "http://127.0.0.1:9999/health",
+          "proxy_bypassed": true
+        },
+        "observation": {
+          "reachable": true,
+          "status_class": "UP",
+          "param_throttle_ms": 100
+        }
+      }
+    },
+    "signature_hex": "80430d94592875e371951331e87412b3445144e1d7566f21e4c663ca9c0077dcd7308c2ecce31c1c4161d894c948529292678f1be9ef69de432a48f5a6fdd700",
+    "hash": "69f202589798e06ebe14cb2e2e069c707e6bf6c0c67d0506150d9af13880d7a2"
+  },
+  {
+    "receipt": {
+      "schema_version": "receipt.v1",
+      "receipt_id": "rec-22222222-2222-2222-2222-222222222222",
+      "receipt_type": "AUTHORIZATION",
+      "actor_id": "governor/888-apex",
+      "capability_id": "federation.governance.authorize.v1",
+      "authority_ref": "F13_SOVEREIGN_MANDATE",
+      "parent_receipt_id": "rec-11111111-1111-1111-1111-111111111111",
+      "previous_receipt_hash": "69f202589798e06ebe14cb2e2e069c707e6bf6c0c67d0506150d9af13880d7a2",
+      "timestamp_utc": "2026-10-10T02:02:00Z",
+      "key_id": "key-test-witness-01",
+      "payload": {
+        "verdict": "SEAL_BOUNDED",
+        "target_action": "tune_canary_throttle",
+        "approved_parameters": {
+          "param_throttle_ms": 500
+        },
+        "rollback_constraint": {
+          "baseline_param_throttle_ms": 100
+        }
+      }
+    },
+    "signature_hex": "f4694dd40e4ac026dac5534adc146c1fb1601bc05f033239f239434b68155223587ae430ebd41baa408c3adba07f70e6e59717811f357f0920929373d4a98d02",
+    "hash": "305526d5102fe226ede138ba3946f217d7a4e275f3af370f96fe41bebfd997c4"
+  },
+  {
+    "receipt": {
+      "schema_version": "receipt.v1",
+      "receipt_id": "rec-33333333-3333-3333-3333-333333333333",
+      "receipt_type": "CONSEQUENCE",
+      "actor_id": "executor/a-forge",
+      "capability_id": "federation.action.execute.v1",
+      "authority_ref": "rec-22222222-2222-2222-2222-222222222222",
+      "parent_receipt_id": "rec-22222222-2222-2222-2222-222222222222",
+      "previous_receipt_hash": "305526d5102fe226ede138ba3946f217d7a4e275f3af370f96fe41bebfd997c4",
+      "timestamp_utc": "2026-10-10T02:03:00Z",
+      "key_id": "key-test-witness-01",
+      "payload": {
+        "action_executed": "tune_canary_throttle",
+        "delta": {
+          "before": {
+            "param_throttle_ms": 100
+          },
+          "after": {
+            "param_throttle_ms": 500
+          }
+        },
+        "observed_consequence": {
+          "param_throttle_ms": 500,
+          "status": "ADAPTED"
+        }
+      }
+    },
+    "signature_hex": "afe8932dc4d28b35bebb6b35f357fda79d7f5651704c9636f9abe22e236b4865d607ca0cf96eee7f710b0fd9848dfd40bd4c0729094ce0b99070f4883fabde0c",
+    "hash": "fca69f0c2717bb14c6317c2f3eedf26fbb089668c25e960877eb8a182b97a925"
+  },
+  {
+    "receipt": {
+      "schema_version": "receipt.v1",
+      "receipt_id": "rec-44444444-4444-4444-4444-444444444444",
+      "receipt_type": "ROLLBACK",
+      "actor_id": "executor/a-forge",
+      "capability_id": "federation.action.rollback.v1",
+      "authority_ref": "rec-22222222-2222-2222-2222-222222222222",
+      "parent_receipt_id": "rec-33333333-3333-3333-3333-333333333333",
+      "previous_receipt_hash": "fca69f0c2717bb14c6317c2f3eedf26fbb089668c25e960877eb8a182b97a925",
+      "timestamp_utc": "2026-10-10T02:04:00Z",
+      "key_id": "key-test-witness-01",
+      "payload": {
+        "rollback_action": "restore_canary_throttle_baseline",
+        "restored_state": {
+          "param_throttle_ms": 100
+        },
+        "baseline_verified": true
+      }
+    },
+    "signature_hex": "3230f1b0989c72e0cc8760b25787183f017d2a88381e61a85d0108635d232f1f6f1a0ad7e50397ab5a5b9bf803b764d7475b2913381fa66f872779d00922060f",
+    "hash": "e9d0fdc70bf18d4f0fa5d2fb37dbb72e7f615c70fbe3f2cb6e767c8e3e8aa338"
+  }
+]

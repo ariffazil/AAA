@@ -13743,7 +13743,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "c0e9686ab74e16d5af5e0b39e24d7978a2c4a60fe08adb6265e85f6d7687830b",
+   "sha256": "abe9542f5570ea2194fff58c2bb169c147784663a8ff7eda429990aec11899a6",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -15861,7 +15861,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "email",
-   "sha256": "deeade1bb70f8835b2f3158980030b8aa41bb1ea6f798631451c89cfd632bcc8",
+   "sha256": "ebc0907d3aad935cb0c09bafdb3f9598afa868c75dd94d8f35b09611c341428c",
    "version": "0.2.0",
    "deprecated": false,
    "owner_layer": null,
@@ -17818,7 +17818,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "federation-topology",
-   "sha256": "0a86e5150c3d40ebcc8a5f07e1b8dc671cb3c2980763a91246aa862d922eccd9",
+   "sha256": "3154923b341b8040890f4049ae555234d994aacfafa0d46992fd75cb3108f586",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "Hermes (arifOS federation)",
@@ -25382,6 +25382,40 @@
      "F2",
      "F4",
      "F7"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "hermes-agent-email",
+   "path": "/root/AAA/skills/hermes-agent-email",
+   "skill_md": "/root/AAA/skills/hermes-agent-email/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "55104adeacfe285ff35f9d8c0a60bbe635e5bbc14240ef7ade34c33f85b9cdc8",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": "T2",
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F6",
+     "F13"
     ]
    },
    "harnesses": [

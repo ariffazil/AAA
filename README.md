@@ -1,3 +1,18 @@
+<!-- CURRENT-VERIFIED-STATE :: re-probed 2026-10-10/11 UTC · do not delete -->
+> ### ⚠️ Current verified state (2026-10-11) — measured, not intended
+>
+> Re-probed live by FI-008 on this date. This block states only what was observed; it does not replace the hand-audited manifest below, and it deliberately does **not** advance `last_verified`.
+>
+> **Two properties hold end-to-end:** deterministic rejection (the judge refuses without consulting a model — `gate: hard_deterministic`, `llm_consulted: false`; a MUTATE-class call was stopped by a class/budget guard) and prevention of an unauthorised mutation.
+>
+> **Four do not:** verified actor (the signing path exists, the lane on `:18900` listens, but observed calls arrived **unsigned**) · receipt fidelity (the invocation-telemetry writer's interface does not accept a governance outcome) · sink agreement (one event: `ok:false` in one sink, absent from another) · independent reconstruction (no external verifier bound).
+>
+> **Floors: pass 2 · fail F2/F11/F12/F13 · unmeasured 10. Unmeasured is not pass.**
+>
+> No customers, no pilots, no signed contracts, no independent benchmark, no external security audit. Current revenue value: USD 0.
+>
+> Claim-level audit: `AAA/forge_work/grant-arifos-reality-reforge-2026-10-11/`.
+
 <!-- SOT-MANIFEST
 federation_release: v2026.10.19 (state capture + housekeeping checkpoint)
 last_verified: 2026-10-19T15:26:00Z

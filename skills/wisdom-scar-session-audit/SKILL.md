@@ -286,6 +286,15 @@ A wisdom scar is NOT a memory. It's NOT a log. It's a **constitutional-grade dia
 
 ### Scar #16: Ollama Batch Embedding Timeout — Local GPU Queue Overwhelm
 
+## No retroactive whitening (2026-10-10, scar: AUTHORIZATION_ORDER_VIOLATION)
+After an unauthorized execution is discovered, the ONLY permitted outputs are:
+report the violation; stop further mutation; preserve evidence; offer RESTORE,
+PROVISIONAL_ACCEPTANCE or HOLD_OPEN; request sovereign disposition.
+FORBIDDEN: claiming the action was pre-authorized; presenting later acknowledgement
+as completion of the original two-phase commit; rewriting timestamps, manifests or
+receipts. Correction layers (v2, v3, v4…) must preserve every prior record's hash —
+a correction that replaces the original is itself a violation (fixtures B02, B08).
+
 ## How to Use
 
 When Arif says "what should I improve" or "seal the wisdom scar":

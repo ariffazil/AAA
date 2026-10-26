@@ -51,6 +51,38 @@ Caddy reload ≠ deploy. Public /a2a stays unmatched.
 
 ---
 
+## 🏛️ Invarian Web Builder Jujur, Amanah & Bijaksana (2026-10-10 Seal)
+
+Setiap ejen (AGY, Claude, Kimi, OpenCode) yang membina atau membaiki web mesti patuh 6 Invarian Mutlak:
+
+1. **Pantang Dual-Render (Anti-Bangang Rule 1):**
+   - Jangan sekali-kali biarkan fallback static HTML dan React SPA bundle (`<div id="root">`) wujud bersama pada page yang sama tanpa hydration penggantian.
+   - Jika route itu static (seperti `/words/wiki/` atau `/000/` atau `/999/`), pastikan ia diasingkan daripada `SPA_ROUTES` dan tidak disuntik skrip bundle.
+   - Satu page = Satu `<h1>`. Jangan bertindih tajuk atau sub-tajuk.
+
+2. **Satu Punca Kebenaran (Single Source of Truth - SOT):**
+   - Data mestilah berpunca daripada fail JSON/data contract yang boleh di-parse oleh mesin (contoh: `/data/wiki-index.json`).
+   - DILARANG menduplikasi teks atau tajuk secara hardcoded dalam React component jika kontrak JSON wujud.
+
+3. **Pemisahan Dimensi Epistemik & Tadbir Urus:**
+   - Asingkan `epistemic_class` (`OBSERVED`, `DERIVED`, `INTERPRETATION`, `HISTORICAL`) daripada `canonical_status` (`CANONICAL`, `PROVISIONAL`).
+   - Jangan anggap sesuatu itu "CANONICAL" melainkan ada bukti ratifikasi berdaulat.
+   - Jangan kelirukan "Lineage Destination" (link dalaman) dengan "Primary Source" (rekod primer luaran).
+
+4. **Haram Telemetri Palsu (No Synthetic Telemetry):**
+   - Jangan paparkan badge hijau `IDLE/HEALTHY` atau `ACTIVE` melainkan ada probe runtime hidup yang mengesahkannya.
+   - Jika tiada probe aktif, labelkan dengan jujur sebagai `UNPROBED` atau `STATUS: PENDING_PROBE`.
+   - Hash saksi atau ledger hash mesti dinamakan `LEDGER POINTER`, bukan "VERIFIED PUBLIC RECEIPT" jika laluannya belum dibuka untuk semakan awam.
+
+5. **Kejelasan Navigasi (Seni Bina vs Bilik Tempatan):**
+   - Jangan buat manusia keliru antara peta global ("Nine rooms" $\rightarrow$ `/discovery/`) dengan pecahan sayap bilik tempatan ("Writing room: Words · Essays · Wiki · MakcikGPT"). Pisahkan dengan label semantik yang jelas.
+
+6. **Pengesahan Sebelum Tuntut Siap:**
+   - "Deployed" bukan bukti hidup melainkan diuji dengan curl sebenar pada origin dan public domain.
+   - Semak kehadiran payload sebenar, bukan sekadar HTTP 200. Semak status cache edge Cloudflare vs origin disk.
+
+---
+
 ## OP 0 — DOCTOR (always first · anti-chaos)
 
 ```bash
@@ -404,3 +436,12 @@ Before executing this web operation, the agent MUST enforce the following constr
 **Rubric reference:** `huggingface.co/spaces/ariffazil/nusantara-validator` (live, 28 probes, 7 phases)
 **Claim schema:** `claim-schema.json` on the Nusantara Validator Space
 **Grammar Doctrine:** §10 Validator Sovereignty at `/root/AAA/instructions/grammar-doctrine.md`
+
+
+## 🛡️ AAA REALITY GROUNDING & HONEST STATUS DOCTRINE (2026-10-10 SEAL)
+
+> **JUJUR, AMANAH, BIJAKSANA (JAB) STANDARD:**
+> 1. **UNKNOWN BUKAN EMPTY:** Jangan sekali-kali memaparkan "0 holds", "TIADA HALANGAN", atau "MESH ONLINE" sebelum bukti live probe disahkan. Keadaan awal statik HTML MESTI `UNKNOWN / MEMERIKSA...`.
+> 2. **PAGE AVAILABILITY ≠ DATA AVAILABILITY:** HTTP 200 pada halaman tidak membuktikan suapan data segar. Jika proxy gagal atau feed ditutup, laporkan `ACCEPTED_LIMITATION` atau `PROXIES UNAVAILABLE` secara telus.
+> 3. **ZERO SILENT FALLBACK:** Elakkan memaparkan bilangan capability (Tools, Prompts, Resources) lapuk secara senyap. Bezakan `resources/list` (static resources) daripada `resources/templates/list` (dynamic templates).
+> 4. **ANTI-COSMETIC SEALING:** Jangan keluarkan resit `DEPLOYED_PASS` atau `SEAL` berasaskan teks penutup semata-mata. Setiap dakwaan mesti disokong oleh bukti wire JSON-RPC, origin probe, dan edge probe yang sepadan secara byte-level.

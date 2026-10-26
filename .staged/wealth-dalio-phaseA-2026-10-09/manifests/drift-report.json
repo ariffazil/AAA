@@ -1,0 +1,28 @@
+{
+  "live_health_count": 15,
+  "registry_source_count": 15,
+  "tools_sot_yaml_count": 17,
+  "doc_claims": {
+    "AGENTS.md": 17,
+    "mcp/README.md": 8,
+    "tools_sot.yaml": 17,
+    "live_health": 15
+  },
+  "registry_minus_sot": [
+    "capital_backtest",
+    "capital_claims",
+    "capital_entry_plan",
+    "capital_indicator",
+    "wealth_synthesize"
+  ],
+  "sot_minus_registry": [
+    "capital_backtest.mode=compass",
+    "capital_backtest.mode=ensemble",
+    "capital_backtest.mode=stress_test",
+    "capital_diagnose.mode=regime_map",
+    "capital_health.mode=asymmetric_risk",
+    "capital_indicator.indicator=alpha158",
+    "capital_primitive.mode=reward_design"
+  ],
+  "verdict": "DRIFT_CONFIRMED"
+}
