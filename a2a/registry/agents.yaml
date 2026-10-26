@@ -81,7 +81,7 @@ agents:
     '
   species: hermes-zen
 - agent_id: opencode
-  card_path: a2a-server/agent-cards/forge/fi-001-opencode.json
+  card_path: agents/opencode/agent-card.json
   binding_type: local-cli
   trust_level: internal
   auth_scheme: arifos-session
@@ -126,7 +126,7 @@ agents:
     '
   species_proxy: opencode-zen
 - agent_id: grok-build
-  card_path: agents/_external/grok/agent-card.json
+  card_path: agents/_external/grok-build/agent-card.json
   binding_type: local-cli
   trust_level: internal
   auth_scheme: arifos-session
@@ -140,7 +140,7 @@ agents:
     '
   species_proxy: opencode-zen
 - agent_id: kimi-code
-  card_path: a2a-server/agent-cards/forge/fi-008-kimi-code.json
+  card_path: agents/kimi-code/agent-card.json
   binding_type: local-cli
   trust_level: internal
   auth_scheme: arifos-session
@@ -157,7 +157,7 @@ agents:
     '
   species_proxy: opencode-zen
 - agent_id: claude-code
-  card_path: a2a-server/agent-cards/harnesses/claude-code.json
+  card_path: agents/_external/claude-code/agent-card.json
   binding_type: local-cli
   trust_level: internal
   auth_scheme: arifos-session
@@ -341,17 +341,8 @@ agents:
     authority.
   species: null
   note: "F13 SOVEREIGN — not a species"
-- agent_id: aforge-pillar
-  card_path: agent-cards/pillars/aforge/agent-card.json
-  binding_type: governance-pillar
-  trust_level: internal
-  auth_scheme: arifos-session
-  streaming: false
-  push_notifications: false
-  openclaw_target: aforge-executor
-  notes: A-FORGE governance pillar — execution governance. 12 skills.
-  species: null
-  note: "governance pillar — not a species"
+  # aforge-pillar removed 2026-10-26 — card_path agent-cards/pillars/aforge/ never existed;
+  # canonical A-FORGE entry is aforge-organ (agent-cards/organs/aforge/agent-card.json).
 - agent_id: openclaw
   card_path: agent-cards/functions/openclaw/agent-card.json
   binding_type: openclaw-bridge
@@ -373,16 +364,8 @@ agents:
   notes: arifOS_bot — main Telegram bot agent. 14 skills.
   species_proxy: openclaw-zen
   # aider retired 2026-10-26 (F13 directive: not installed, not used; card -> agents/_superseded/aider-20261026)
-- agent_id: gemini-cli
-  card_path: agents/_external/gemini-cli/agent-card.json
-  binding_type: local-cli
-  trust_level: internal
-  auth_scheme: arifos-session
-  streaming: true
-  push_notifications: false
-  openclaw_target: gemini-cli
-  notes: Gemini CLI — Google Gemini forge instrument. 12 skills.
-  species_proxy: opencode-zen
+  # gemini-cli removed 2026-10-26 — card only survives at agents/_superseded/gemini-cli/;
+  # the Gemini/Antigravity family is served by `antigravity` (a2a/agent-cards/antigravity.json).
 - agent_id: qwen-code
   card_path: agents/_external/qwen-code/agent-card.json
   binding_type: local-cli
@@ -404,7 +387,7 @@ agents:
   notes: Continue CLI — open-source coding harness. 12 skills.
   species_proxy: opencode-zen
 - agent_id: openclaw-edge-2026-08
-  card_path: agents/_external/openclaw-edge-2026-08/agent-card.json
+  card_path: a2a/agents/_external/openclaw-edge-2026-08/agent-card.json
   binding_type: local-cli
   trust_level: internal
   auth_scheme: ed25519-signature
