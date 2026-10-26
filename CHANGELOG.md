@@ -4,6 +4,10 @@ All notable changes to the AAA organ.
 
 ## [Unreleased]
 
+### Fixed (Build)
+- postcss.config.js: Scope `@tailwindcss/postcss` scanning to `base: './src'`. Eliminates recursive Oxide filesystem traversal over 47,000+ non-frontend files, reducing Vite build peak RSS from 7.63 GB (earlyoom SIGKILL 137) to 375 MB and build time from >4m48s to 2.72s.
+
+
 ### Security (preserved from live 2026-10-22 hardening, Git custody 2026-10-24)
 - a2a-server: rightmost-only `X-Forwarded-For` loopback-proxy trust (spoof regression-tested from non-loopback peer)
 - a2a-server: `anonymous` removed from `CANONICAL_ACTORS`; unsigned agent dispatch → 403 on both dispatchers; actor↔signer binding (accounting uses DID-verified organ)
