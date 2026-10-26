@@ -69,7 +69,7 @@
     },
     {
       "name": "Forge Execution \u2014 workshop pool",
-      "owner": "ccc pool + agy/kimi/grok/aider + opencode:4096",
+      "owner": "ccc pool + agy/kimi/grok + opencode:4096",
       "machine": "KVM4",
       "class": "HOT_STANDBY",
       "note": "dual-forge is LEGAL per Primary+Hot-Standby law"

@@ -372,16 +372,7 @@ agents:
   openclaw_target: hermes-agent
   notes: arifOS_bot — main Telegram bot agent. 14 skills.
   species_proxy: openclaw-zen
-- agent_id: aider
-  card_path: agents/_external/aider/agent-card.json
-  binding_type: local-cli
-  trust_level: internal
-  auth_scheme: arifos-session
-  streaming: true
-  push_notifications: false
-  openclaw_target: aider
-  notes: Aider CLI — AI pair programming. 12 skills. NOT INSTALLED on machine.
-  species_proxy: opencode-zen
+  # aider retired 2026-10-26 (F13 directive: not installed, not used; card -> agents/_superseded/aider-20261026)
 - agent_id: gemini-cli
   card_path: agents/_external/gemini-cli/agent-card.json
   binding_type: local-cli
