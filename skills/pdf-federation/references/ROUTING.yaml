@@ -79,6 +79,18 @@ jobs:
     maturity: EXECUTABLE
     executor: soffice --headless --convert-to pdf
 
+  slides_deck_typst:
+    description: "Compose 16:9 executive deck natively (cards, split layout, tokens)"
+    owner: pdf-federation (typst lane); design DNA from pdf-design-replication
+    maturity: PROVEN
+    executor: typst compile deck.typ deck.pdf
+    template: /root/.hermes/skills/media/pdf-design-replication/templates/base_slide.typ
+    evidence: "2026-10-09 KVM4: typst 0.15.1, compile 0.106s measured, 841.89x473.563pt (16:9), G1+G3 sentinels pass; zero browser daemon"
+    rules:
+      - "Never list Arial in font stack on this node (unknown-family warning)"
+      - "Dark surface only for glanceable decks; >2pp or print -> light theme"
+      - "Content invariance: re-layout to fit, never drop evidence"
+
 # Delegated producers (not PDF skills)
 producers:
   WEALTH: market data, financial computations
