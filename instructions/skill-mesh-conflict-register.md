@@ -93,3 +93,25 @@ This is a **layerless count** — conflating the design layer (12 audited) with 
 **What IS confirmed good in the v1.1 canon:** the etymology overclaim I patched (Rasa "never split"/qualia "residue") was folded into §"v1.1 Corrections"; the SEP-sourced Lewis 1929 attribution checks out; the dual law (`ActivateCapabilityMinimally` / `RetainHumanDataMinimally`), the `ε_qualia` logical-not-scalar guard, `ProfileCompleteness=forbidden`, and `Signal ≠ Diagnosis / Priority ≠ Authority` are sound and need no change.
 
 DITEMPA BUKAN DIBERI ⚒️
+
+---
+
+## ENTRY-2026-10-09 · FORGE-mcp-ops ≡ forge-mcp-a2a-agentic (identical content, two folders)
+
+**Found by:** opencode/FI-001 (KVM4, sovereign recursive-upgrade session) · content sha256 match on SKILL.md.
+**State:** `DUPLICATE_CONTENT_TWO_FOLDERS` — `/root/AAA/skills/FORGE-mcp-ops/SKILL.md` and `/root/AAA/skills/forge-mcp-a2a-agentic/SKILL.md` are byte-identical. Deployments resolve either folder to the same content (proven: KVM4 installed surface `mcp-ops` matches both hashes).
+**Risk:** one-writer/many-views — a future edit to one folder silently forks the skill; namespace ambiguity (which is canonical?).
+**Ruling requested (F13/AAA owner):** collapse to ONE folder (suggestion: keep `FORGE-mcp-ops`, absorb a2a-agentic naming into aliases) — deletion is canonical-library mutation, not taken unilaterally.
+**Interim:** no edit to either folder until ruled. Deployments unaffected (content identical).
+
+DITEMPA BUKAN DIBERI ⚒️
+
+## ENTRY-2026-10-09b · 2 broken skill symlinks on KVM4 installed surface (corpse class)
+
+**Found by:** opencode/FI-001 content-hash audit · `file` confirmed broken.
+- `~/.claude/skills/aaa-agent-invariants -> /root/AAA/skills/ASI-agent-invariants` — target nonexistent anywhere in library (canonical doctrine lives at `AAA/instructions/agent-invariants-external-convergence.md`; AGENTS.md pointer also stale on this path).
+- `~/.claude/skills/sovereign-recognize -> /root/AAA/skills/reflective/sovereign-recognize` — target quarantined 2026-09-19 (`.quarantine-redundancy-2026-09-19/`); symlink missed in that sweep.
+**Action:** symlinks removed from installed surface (ghost-capability signal, F9/F10). No capability lost: invariants doctrine reaches agents via AGENTS.md; sovereign-recognize was ruled redundant.
+**Follow-up for owner:** AGENTS.md fragment `agent-invariants-external-convergence.md` cites `/root/AAA/skills/ASI-agent-invariants/SKILL.md` as canonical home — path is dead; retarget or restore.
+
+DITEMPA BUKAN DIBERI ⚒️
