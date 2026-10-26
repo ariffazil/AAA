@@ -340,6 +340,7 @@ def federation_state() -> dict:
 
     state = {
         "version": 1,
+        "cadence_seconds": 300,  # cron */5 contract; consumers gate freshness on this
         "generated_at": now,
         "probe_ms": round((time.monotonic() - t0) * 1000, 1),
 
