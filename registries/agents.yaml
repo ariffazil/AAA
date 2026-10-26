@@ -91,7 +91,7 @@ agents:
   - aaa-gateway
   - hermes-asi
   - antigravity
-  - 777-FORGE
+  - 777-forge
   - arifos-kernel
   allowed_servers:
   - arifos-mcp
@@ -262,7 +262,7 @@ agents:
   - aaa-gateway
   - antigravity
   - claude-code
-  - 777-FORGE
+  - 777-forge
   - arifos-kernel
   - geox-witness
   - wealth-witness
@@ -359,7 +359,7 @@ agents:
   - hermes-asi
   - antigravity
   - claude-code
-  - 777-FORGE
+  - 777-forge
   - arifos-kernel
   - geox-witness
   - wealth-witness
@@ -588,17 +588,14 @@ agents:
   - terminal
   - file_read
   - file_write
-  authority_level: spawn_and_witness
-  description: 'Relay Orchestrator + Session Spawn Witness. Only 777 FORGE may spawn
-    OpenCode sessions. Every spawn emits a witness receipt with real PID, wall-clock
-    timestamp, and cryptographic hash. Created to prevent hermes-fabrication-2026-05-17.
-
-    '
+  authority_level: none
+  status: retired
+  description: 'Retired 2026-07-25. Replaced by 777-forge (EXECUTOR).'
   host_binding: opencode
-  id: 777-FORGE
+  id: 777-forge
   intelligence_band: 777
   intelligence_tier: 777
-  name: 777 FORGE 🔥🧠⚒️🌎💎
+  name: 777 FORGE 🔥🧠⚒️🌎💎 (RETIRED)
   risk_tier: low
   role: witness-agent
   runtime:
@@ -606,18 +603,9 @@ agents:
     model: deepseek/deepseek-v4-pro
     temperature: 0.2
     transport: opencode-cli-1.17.4
-  separation_of_duties:
-    cannot_self_spawn: true
-    requires_arif_ack_for_888_hold_spawns: true
-    spawn_only_for_authorized_requestors: true
-  sole_authority:
-  - Spawn OpenCode sessions
-  - Emit witness receipts
-  - Verify process table
-  witness_ledger: /root/VAULT999/witness/777-forge-spawns.jsonl
 - a2a_exposure: authenticated
   allowed_peers:
-  - 777-FORGE
+  - 777-forge
   - aaa-gateway
   - hermes-asi
   - claude-code
@@ -644,7 +632,7 @@ agents:
     restart/reload, no chmod/chown). 4 hooks: write-gate (PreToolUse→arif_judge),
     write-seal (PostToolUse→VAULT999), destructive-command-gate (PreToolUse→block
     rm-rf/DROP/force-push), session-stop (Stop→organ health+receipt).'
-  host_binding: gemini-cli-antigravity
+  host_binding: gemini-cli
   id: antigravity
   intelligence_band: AGI
   intelligence_tier: AGI
@@ -1081,6 +1069,7 @@ agents:
 - id: aider
   name: Aider — AI Pair Programming
   citizenship: warga-aaa
+  status: uninstalled
   authority_level: none
   intelligence_tier: AGI
   intelligence_band: AGI
@@ -1091,13 +1080,14 @@ agents:
 - id: gemini-cli
   name: Gemini CLI — Google Forge
   citizenship: warga-aaa
-  authority_level: engineer
+  status: retired
+  authority_level: none
   intelligence_tier: AGI
   intelligence_band: AGI
   lane: A-FORGE
   a2a_exposure: internal
   host_binding: gemini-cli
-  description: Google Gemini CLI forge instrument. 12 skills.
+  description: FI-004 DECEASED 2026-09-13. Replaced by Antigravity CLI.
 - id: qwen-code
   name: Qwen Code — Lightweight Reasoner
   citizenship: warga-aaa
@@ -1119,16 +1109,26 @@ agents:
   host_binding: continue-cli
   description: Continue CLI — open-source coding harness. 12 skills.
 - id: aforge-pillar
-  name: A-FORGE Governance Pillar
+  name: A-FORGE Execution Pillar
   citizenship: warga-aaa
-  authority_level: governance
+  authority_level: executor
   intelligence_tier: AGI
   intelligence_band: AGI
   lane: A-FORGE
   a2a_exposure: internal
   host_binding: aforge-executor
-  description: A-FORGE governance pillar — execution governance, forge gate, Amanah
-    lock. 12 skills.
+  description: A-FORGE execution pillar — hands of the federation (A-FORGE executes; arifOS judges).
+- id: openclaw-edge-2026-08
+  name: OpenClaw Edge — 2026-08 Key
+  citizenship: warga-aaa
+  status: active
+  authority_level: worker
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: A-FORGE
+  a2a_exposure: internal
+  host_binding: openclaw-gateway
+  description: OpenClaw edge routing and execution agent with year-month tagged Ed25519 key.
 - id: agentic-trading-companion
   name: Agentic Trading Companion — Governed Executor
   citizenship: warga-aaa

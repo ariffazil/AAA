@@ -215,7 +215,6 @@ packages:
       - id: imagine
       - id: institutional-epistemic-sink-forensics
       - id: minimax-image-gen
-      - id: minimax-m-plan
       - id: openclaw
       - id: openclaw-claude-code-spawn
       - id: openclaw-forge

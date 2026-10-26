@@ -175,7 +175,7 @@
               "F12",
               "F13"
             ],
-            "verdict_authority": "arifOS (port 8088)",
+            "verdict_authority": "arifOS",
             "self_approval_forbidden": true,
             "authority_class": "gateway",
             "injection_defense": "active",
@@ -191,8 +191,8 @@
               "F12",
               "F13"
             ],
-            "governance_kernel": "arifOS (port 8088)",
-            "execution_shell": "A-FORGE (port 7071)",
+            "governance_kernel": "arifOS",
+            "execution_shell": "A-FORGE",
             "vault": "VAULT999"
           }
         }
@@ -397,7 +397,7 @@
     {
       "id": "arifos.session.init",
       "name": "Federation Session Init",
-      "description": "Queue session init to arifOS kernel arif_init (:8088). AAA does not mint SCTs itself. Returns whatever the kernel returns.",
+      "description": "Queue session init to arifOS kernel arif_init. AAA does not mint SCTs itself. Returns whatever the kernel returns.",
       "tags": [
         "init",
         "session",
@@ -415,7 +415,7 @@
     {
       "id": "arifos.session.seal",
       "name": "Queue kernel session seal",
-      "description": "Queue a session-close to arifOS kernel arif_seal (:8088). AAA does not write VAULT999. DISPLAY_ONLY — kernel + Arif seal.",
+      "description": "Queue a session-close to arifOS kernel arif_seal. AAA does not write VAULT999. DISPLAY_ONLY — kernel + Arif seal.",
       "tags": [
         "seal",
         "session",
@@ -431,7 +431,7 @@
       ]
     }
   ],
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
   "signatures": [
     {
