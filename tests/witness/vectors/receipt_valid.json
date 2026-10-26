@@ -1,0 +1,27 @@
+{
+  "receipt": {
+    "schema_version": "receipt.v1",
+    "receipt_id": "rec-00000000-0000-0000-0000-000000000001",
+    "receipt_type": "OBSERVE",
+    "actor_id": "wawa-probe",
+    "capability_id": "federation.health.observe.v1",
+    "authority_ref": null,
+    "parent_receipt_id": null,
+    "previous_receipt_hash": null,
+    "timestamp_utc": "2026-10-10T02:00:00Z",
+    "key_id": "key-test-witness-01",
+    "payload": {
+      "target": "synthetic_canary_organ",
+      "probe_path": {
+        "endpoint": "http://127.0.0.1:9999/health",
+        "proxy_bypassed": true
+      },
+      "observation": {
+        "reachable": true,
+        "status_class": "UP",
+        "param_throttle_ms": 100
+      }
+    }
+  },
+  "signature_hex": "ba202d7ee12431feeb9e165cb18d581b970f3aee1b0e8702671e975c1ae9da95ce183ced22572640d2d888a859c52574f18e74d18bce61c7fd13f63696b7cd03"
+}

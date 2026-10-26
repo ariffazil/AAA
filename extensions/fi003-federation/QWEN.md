@@ -15,7 +15,7 @@ SOT: `/root/AAA/docs/MACHINE_MAP.md`. Fingerprint yourself first: `echo "$(hostn
 
 | Port | Surface |
 |---|---|
-| :4000 | FED front door — KVM8 HAProxy → **local** litellm (docker via litellm-federation.service drop-in, `127.0.0.1:4013` primary); KVM4 `100.64.0.5:4000` = backup only. Health check: `/health/liveliness` ONLY (`/health` falsely returns 000) |
+| :4000 | FED front door — KVM8 HAProxy → **KVM4** litellm (`fed-litellm.service`, docker compose `/docker/litellm/`, live config `/docker/litellm/config.yaml`). KVM8 local litellm RETIRED (unit inactive, :4013 dead — verified 2026-10-10). Health check: `/health/liveliness` ONLY (`/health` falsely returns 000) |
 | :4010 | fed-aware-middleware (strips web_search/store for Codex; preserves /v1/responses path — fixed 2026-08-21) |
 | :7074 | FED MCP (route advisor, token_bank) |
 | :8088 | arifOS kernel (constitutional) |

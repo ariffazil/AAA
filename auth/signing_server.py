@@ -329,7 +329,7 @@ class SigningHandler(BaseHTTPRequestHandler):
         try:
             import pam
 
-            if not pam.authenticate(pam_user, os.environ.get("AAA_PAM_PASS", "")):
+            if not pam.authenticate(pam_user, os.environ.get("AAA_PAM_PASS", ""), service=os.environ.get("AAA_PAM_SERVICE", "login")):
                 self.send_response(401)
                 self.end_headers()
                 self.wfile.write(b'{"error":"pam authentication failed"}')

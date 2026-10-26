@@ -38,10 +38,14 @@ def load_aliases() -> dict:
 def resolve(query: str, fams: list[dict]) -> tuple[dict | None, list[dict]]:
     q = query.lower()
     scored: list[tuple[int, dict, dict]] = []
+    query_tokens = set(q.split())
     for fam in fams:
         for job_name, job in (fam.get("jobs") or {}).items():
             triggers = [str(t).lower() for t in (job.get("triggers") or [])]
-            score = sum(1 for t in triggers if t in q)
+            score = sum(
+                1 for t in triggers
+                if (" " in t and t in q) or (" " not in t and t in query_tokens)
+            )
             if job_name.lower().replace("_", " ") in q:
                 score += 3
             if score:

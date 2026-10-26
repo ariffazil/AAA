@@ -53,12 +53,9 @@ def value_of(line):
 
 
 def r1_blocks(value):
-    """Re-apply the gate's R1 rule to an extracted value."""
-    if not dsg.RATIFIED_CLASS_RE.search(value):
-        return False
-    has_marker = bool(dsg.F13_MARKER_RE.search(value))
-    has_instrument = bool(dsg.DATE_RE.search(value) or dsg.QUOTE_RE.search(value))
-    return not (has_marker and has_instrument)
+    """Re-apply the gate's R1 rule to an extracted value — delegates to the gate
+    so the conformance harness and the enforcer can never drift apart."""
+    return dsg.r1_violates(value)
 
 
 print("=" * 74)
@@ -103,6 +100,8 @@ MUST_BLOCK = [
     ("sovereign marker, no date", "F13_RATIFIED_SOVEREIGN"),
     ("CANON with no instrument", "CANONICAL"),
     ("SEALED with no instrument", "SEALED"),
+    ("head class still governs when a trailing provenance clause is present",
+     "CANONICAL · home: canon/AGENTIC-RUNTIME-STATE.md"),
 ]
 for label, value in MUST_BLOCK:
     check(f"R1 blocks: {label}", r1_blocks(value), value)
@@ -132,6 +131,13 @@ MUST_PASS = [
     ("F13_SEAL + date", "F13_SEAL (2026-09-13)"),
     ("F13_SEALED + date", "F13_SEALED 2026-09-16"),
     ("non-ratified class is not R1 territory at all", "DRAFT_AWAITING_F13 (2026-09-16)"),
+    # Regression 2026-10-10 (ARS §INTEGRITY_IS_CHEAPER_v1, chain e-43867355):
+    # "canon" as a NOUN in a provenance clause is not a ratified-class CLAIM.
+    # Before the fix these false-blocked and forced a status-line workaround.
+    ("F13_DIRECTED + trailing 'appended to canon' clause",
+     "F13_DIRECTED 2026-10-10 (sovereign chat, lane paan_sado) · appended to canon 2026-10-10 · chain e-43867355"),
+    ("DRAFT head + trailing 'home: canon/' clause",
+     "DRAFT_AWAITING_F13 (2026-10-10) · home: canon/AGENTIC-RUNTIME-STATE.md"),
 ]
 for label, value in MUST_PASS:
     check(f"R1 allows: {label}", not r1_blocks(value), value)

@@ -1,6 +1,6 @@
 # CARE GOVERNOR — Conduct Toward Humans (Always On)
 
-> **Status:** DRAFT_AWAITING_F13 (2026-09-17 · G2 care-build) — advisory only until F13 seals it.
+> **Status:** F13_SEAL (2026-10-10 — sovereign binary "sah", session SEAL-G09-INGRESS-2026-10-10; promoted from DRAFT_AWAITING_F13 2026-09-17). Binding on every agent that can address a human.
 > **Binding:** Every agent that can address a human, in any lane — DM, shared group, email, voice.
 > **Rule vs procedure:** this file states the rule. Procedure lives in the skills it composes with — `governed-uncertainty` · `loved-one-worry-support` · `relationship-kernel`.
 > **Why a fragment, not a skill:** a trigger-loaded skill protects a human only when the trigger happens to fire. Conduct must not depend on trigger luck.

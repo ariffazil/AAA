@@ -34,9 +34,26 @@ Do not invent a second catalog. Load this, then the mapped existing skills.
 **SOT:** `/root/arif-fazil.com/docs/agentic-web/`
 
 ```
-brief → architecture → implement → render → test → audit → review
-     → Git evidence → approved ship → post-verify
+brief → architecture → data_contract → implement → render → test → audit → review
+     → Git evidence → approved ship → post-verify (origin + edge)
 ```
+
+## Flow Jujur, Amanah & Bijaksana (JAB Protocol)
+
+1. **Jujur (Truth over Cosmetic Green):**
+   - Tiada telemetri tiruan (A-FORGE/AAA MCP mesti `UNPROBED` melainkan diuji live).
+   - Jangan tuntut "primary source" jika ia sekadar pautan dalaman tapak web. Labelkan sebagai `lineage destination`.
+   - Data mestilah fail-closed: jika data tiada, pulangkan `UNKNOWN` atau `HOLD`.
+
+2. **Amanah (Fiduciary Responsibility to the Human Sovereign):**
+   - Hak veto mutlak di F13: Ejen tidak boleh meminjam nama 888-APEX atau mencipta ratifikasi sendiri.
+   - Pelihara sempadan: jangan clobber fail statik yang ditugaskan kepada arkitektur lain.
+   - Perubahan mesti komited dalam git sebelum dihantar ke pokok serving web sebenar.
+
+3. **Bijaksana (Wisdom & Architectural Compression):**
+   - Elakkan pertindihan antara static renderer dan client-side SPA mount (pantang dual-render).
+   - Berikan manusia peta yang tenang: bezakan seni bina global 9 bilik dengan bilik semasa secara intuitif.
+   - Sentiasa sahkan origin disk vs Cloudflare edge cache sebelum mendakwa selesai.
 
 ## Always first
 

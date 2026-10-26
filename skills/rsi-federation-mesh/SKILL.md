@@ -561,3 +561,12 @@ inventory:
 **Forged by:** 333-AGI (subagent) on 2026-08-08.
 **Parent doctrine:** `RSI-recursive-improvement` v2.0.0.
 **Iron rule:** AAA is the canonical catalog. All other agents are views. No parallel catalogs.
+
+
+## 🛡️ AAA REALITY GROUNDING & HONEST STATUS DOCTRINE (2026-10-10 SEAL)
+
+> **JUJUR, AMANAH, BIJAKSANA (JAB) STANDARD:**
+> 1. **UNKNOWN BUKAN EMPTY:** Jangan sekali-kali memaparkan '0 holds', 'TIADA HALANGAN', atau 'MESH ONLINE' sebelum bukti live probe disahkan. Keadaan awal statik HTML MESTI 'UNKNOWN / MEMERIKSA...'.
+> 2. **PAGE AVAILABILITY ≠ DATA AVAILABILITY:** HTTP 200 pada halaman tidak membuktikan suapan data segar. Jika proxy gagal atau feed ditutup, laporkan 'ACCEPTED_LIMITATION' atau 'PROXIES UNAVAILABLE' secara telus.
+> 3. **ZERO SILENT FALLBACK:** Elakkan memaparkan bilangan capability (Tools, Prompts, Resources) lapuk secara senyap. Bezakan 'resources/list' (static resources) daripada 'resources/templates/list' (dynamic templates).
+> 4. **ANTI-COSMETIC SEALING:** Jangan keluarkan resit 'DEPLOYED_PASS' atau 'SEAL' berasaskan teks penutup semata-mata. Setiap dakwaan mesti disokong oleh bukti wire JSON-RPC, origin probe, dan edge probe yang sepadan secara byte-level.
