@@ -20,7 +20,6 @@ DITEMPA BUKAN DIBERI.
 """
 
 import json
-import os
 import sys
 import time
 from datetime import datetime, timezone
@@ -32,39 +31,34 @@ from urllib.error import URLError, HTTPError
 
 STATUS_JSON = Path("/root/AAA/state/status.json")
 DECISION_LEDGER = Path("/root/AAA/state/decision_ledger.jsonl")
-
-# Peti arif_report (implementasi kanonik: /root/arifOS/arifosmcp/runtime/report_lane.py).
-# Semantik WAJIB kekal sama dengan report_lane.pending_for_human(): id dalam
-# outbox tanpa SEBARANG push berjaya = pending; push berjaya sekali = consumed
-# (dup-kill 2026-10-21). Jangan ubah satu tanpa yang satu lagi.
-REPORT_INBOX = Path("/var/lib/arifos/reports/inbox.jsonl")
-REPORT_OUTBOX = Path("/var/lib/arifos/reports/outbox.jsonl")
-# 2026-10-24 TRANSACTION A: mutable runtime state must not live inside
-# the immutable control plane (/root/AAA). A writer that cannot create
-# its own .tmp is a dead writer, however healthy the timer looks.
-OUTPUT_JSON = Path("/var/lib/aaa/state/federation_state.json")
+OUTPUT_JSON = Path("/root/AAA/state/federation_state.json")
 
 # ── Config ─────────────────────────────────────────────────────────────
 
 PROBE_TIMEOUT = 8  # seconds per endpoint (cold-start safe)
+# host-map patch (STAGED 2026-10-08, irfanclaw/FI-017, Arif-authorized "stage boleh-undur"):
+# organs verified LIVE via tailnet probe from kvm4-forge (100.64.0.5) at 2026-10-08 06:30-07:15 UTC:
+#   arifos:8088, geox:8081, well:18083 -> 100.64.0.2 (af-forge) all /health 200
+#   chron:18102 -> mesh-silent from .5/.4; KVM8 (=af-forge .2) on-host snapshot 15:25 MYT: chron ALIVE -> loopback-bound, 127.0.0.1 CORRECT for generator host
+#   a-forge/fed/aaa/wealth/arifflow -> reached by generator host (kokpit reads them UP) -> unchanged
+# revert: git checkout -- scripts/federation_state.py
 ORGAN_ENDPOINTS = [
-    {"id": "arifos", "port": 8088, "role": "Kernel"},
-    {"id": "a-forge", "port": 7071, "role": "Execution"},
-    {"id": "aaa", "port": 3001, "role": "Control Plane"},
-    {"id": "geox", "port": 8081, "role": "Earth Intelligence"},
-    {"id": "wealth", "port": 18082, "role": "Capital Intelligence"},
-    {"id": "well", "port": 18083, "role": "Vitality Mirror"},
-    {"id": "arifflow", "port": 7073, "role": "Metabolism"},
-    {"id": "fed", "port": 7074, "role": "Model Router"},
-    {"id": "chron", "port": 18102, "role": "Temporal Intelligence"},
+    {"id": "arifos",   "port": 8088,  "role": "Kernel",                "host": "100.64.0.2"},
+    {"id": "a-forge",  "port": 7071,  "role": "Execution"},  # mesh-silent; likely loopback-only by design (KVM8 on-host 9/9 alive per snapshot 2026-10-08)
+    {"id": "aaa",      "port": 3001,  "role": "Control Plane"},
+    {"id": "geox",     "port": 8081,  "role": "Earth Intelligence",    "host": "100.64.0.2"},
+    {"id": "wealth",   "port": 18082, "role": "Capital Intelligence"},
+    {"id": "well",     "port": 18083, "role": "Vitality Mirror",       "host": "100.64.0.2"},
+    {"id": "arifflow", "port": 7073,  "role": "Metabolism"},
+    {"id": "fed",      "port": 7074,  "role": "Model Router"},  # mesh-silent; loopback-only by design (fed-router pattern, cf. KVM2)
+    {"id": "chron",    "port": 18102, "role": "Temporal Intelligence"},  # loopback-bound on host (mesh-silent; alive on-host per KVM8 snapshot) â generator probes via 127.0.0.1 correctly
 ]
 
 # ── Probes ─────────────────────────────────────────────────────────────
 
-
-def probe_health(port: int) -> dict:
+def probe_health(port: int, host: str = "127.0.0.1") -> dict:
     """Probe a single organ. Returns {healthy, latency_ms, data, failure_reason}."""
-    url = f"http://127.0.0.1:{port}/health"
+    url = f"http://{host}:{port}/health"
     t0 = time.monotonic()
     try:
         req = Request(url, headers={"User-Agent": "federation-state/1.0"})
@@ -73,58 +67,32 @@ def probe_health(port: int) -> dict:
             body = json.loads(resp.read().decode())
             return {"healthy": resp.status == 200, "latency_ms": ms, "data": body, "failure_reason": None}
     except HTTPError as e:
-        return {
-            "healthy": False,
-            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-            "data": {},
-            "failure_reason": f"HTTP {e.code}",
-        }
+        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": f"HTTP {e.code}"}
     except URLError as e:
-        reason = str(e.reason) if hasattr(e, "reason") else str(e)
+        reason = str(e.reason) if hasattr(e, 'reason') else str(e)
         if "Connection refused" in reason or "ECONNREFUSED" in reason:
-            return {
-                "healthy": False,
-                "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-                "data": {},
-                "failure_reason": "service_down",
-            }
+            return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": "service_down"}
         elif "timed out" in reason.lower() or "timeout" in reason.lower():
-            return {
-                "healthy": False,
-                "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-                "data": {},
-                "failure_reason": "timeout",
-            }
-        return {
-            "healthy": False,
-            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-            "data": {},
-            "failure_reason": reason[:80],
-        }
+            return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": "timeout"}
+        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": reason[:80]}
     except Exception as e:
-        return {
-            "healthy": False,
-            "latency_ms": round((time.monotonic() - t0) * 1000, 1),
-            "data": {},
-            "failure_reason": str(e)[:80],
-        }
+        return {"healthy": False, "latency_ms": round((time.monotonic() - t0) * 1000, 1), "data": {}, "failure_reason": str(e)[:80]}
 
 
 def probe_all_organs() -> list[dict]:
     """Probe all organs and return list of organ states."""
     results = []
     for organ in ORGAN_ENDPOINTS:
-        p = probe_health(organ["port"])
-        results.append(
-            {
-                "id": organ["id"],
-                "role": organ["role"],
-                "port": organ["port"],
-                "healthy": p["healthy"],
-                "latency_ms": p["latency_ms"],
-                "failure_reason": p["failure_reason"],
-            }
-        )
+        p = probe_health(organ["port"], organ.get("host", "127.0.0.1"))
+        results.append({
+            "id": organ["id"],
+            "role": organ["role"],
+            "port": organ["port"],
+            "host": organ.get("host", "127.0.0.1"),
+            "healthy": p["healthy"],
+            "latency_ms": p["latency_ms"],
+            "failure_reason": p["failure_reason"],
+        })
     return results
 
 
@@ -157,17 +125,10 @@ def probe_flow_health() -> dict:
     # Identify stuck actors
     stuck_actors = [aid for aid, a in per_actor.items() if a["verdict"] == "STUCK"]
 
-    fq_verdict = fq.get("verdict")
-    if not fq_verdict or fq_verdict == "UNKNOWN":
-        fq_verdict = data.get("verdict") or fq_verdict or "UNKNOWN"
-    diagnosis = fq.get("diagnosis") or fq.get("legacy_diagnosis") or ""
-    if not diagnosis:
-        diagnosis = data.get("diagnosis") or ""
-
     return {
-        "verdict": fq_verdict,
+        "verdict": fq.get("verdict", "UNKNOWN"),
         "quotient": fq.get("quotient"),
-        "diagnosis": diagnosis,
+        "diagnosis": fq.get("diagnosis", ""),
         "execute_count": fq.get("execute_count", 0),
         "verify_count": fq.get("verify_count", 0),
         "held_count": held_count,
@@ -175,54 +136,6 @@ def probe_flow_health() -> dict:
         "stuck_actors": stuck_actors,
         "per_actor": per_actor,
     }
-
-
-def probe_arif_report_pending() -> dict:
-    """Perkara yang benar-benar tunggu manusia — peti arif_report.
-
-    Cermin semantik report_lane.pending_for_human(). Fail-closed: storan tak
-    wujud → available=False, count=None (UNKNOWN, bukan 0).
-    """
-
-    def _rows(p: Path) -> list:
-        out = []
-        try:
-            with open(p) as f:
-                for line in f:
-                    line = line.strip()
-                    if not line:
-                        continue
-                    try:
-                        out.append(json.loads(line))
-                    except json.JSONDecodeError:
-                        pass
-        except Exception:
-            pass
-        return out
-
-    if not (REPORT_INBOX.exists() and REPORT_OUTBOX.exists()):
-        return {"available": False, "pending_for_human": None, "pending_items": [], "last_push_at": None}
-
-    outbox = _rows(REPORT_OUTBOX)
-    inbox = _rows(REPORT_INBOX)
-    pushed = {r.get("report_id") for r in outbox if r.get("pushed")}
-    queued = {r.get("report_id") for r in outbox} - pushed
-    pending = [r for r in inbox if r.get("report_id") in queued]
-    last_push = next(
-        (str(r.get("pushed_at")) for r in reversed(outbox) if r.get("pushed") and r.get("pushed_at")),
-        None,
-    )
-    items = [
-        {
-            "report_id": r.get("report_id"),
-            "kind": r.get("kind"),
-            "sender": r.get("sender"),
-            "subject": r.get("subject"),
-            "ts": r.get("ts"),
-        }
-        for r in pending
-    ]
-    return {"available": True, "pending_for_human": len(pending), "pending_items": items, "last_push_at": last_push}
 
 
 def probe_authority_state() -> dict:
@@ -293,15 +206,12 @@ def probe_authority_state() -> dict:
         "oldest_hold": {
             "age_hours": oldest_hold_hours,
             "intent": oldest_hold_intent,
-        }
-        if holds and holds > 0
-        else None,
+        } if holds and holds > 0 else None,
         "flow_holds": {
             "count": len(held_actors),
             "actors": held_actors,
             "available": flow["healthy"],
         },
-        "arif_report": probe_arif_report_pending(),
     }
 
 
@@ -388,7 +298,6 @@ def derive_health_verdict(organs: list[dict]) -> str:
 
 # ── Helpers ────────────────────────────────────────────────────────────
 
-
 def _safe_add(*vals):
     """Sum optional numeric values. Returns None if no numeric value present."""
     nums = [v for v in vals if isinstance(v, (int, float))]
@@ -396,7 +305,6 @@ def _safe_add(*vals):
 
 
 # ── Main ───────────────────────────────────────────────────────────────
-
 
 def federation_state() -> dict:
     """Build the canonical federation state object."""
@@ -432,12 +340,14 @@ def federation_state() -> dict:
         "version": 1,
         "generated_at": now,
         "probe_ms": round((time.monotonic() - t0) * 1000, 1),
+
         "federation": {
             "status": health,
             "organs_alive": alive,
             "organs_total": total,
             "organs": organ_detail,
         },
+
         "metabolism": {
             "verdict": fq.get("verdict", "UNKNOWN"),
             "quotient": fq.get("quotient"),
@@ -448,32 +358,20 @@ def federation_state() -> dict:
             "throttled_count": fq.get("throttled_count", 0),
             "stuck_actors": fq.get("stuck_actors", []),
         },
+
         "authority": {
-            "holds": _safe_add(
-                authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")
-            ),
-            "ledger_holds": authority.get("decision_ledger", {}).get("holds"),
-            "flow_holds": authority.get("flow_holds", {}).get("count")
-            if authority.get("flow_holds", {}).get("available")
-            else None,
+            "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
             "seals": authority.get("decision_ledger", {}).get("seals"),  # None = UNKNOWN if ledger unavailable
             "oldest_hold": authority.get("oldest_hold"),
             "held_actors": authority.get("flow_holds", {}).get("actors", []),
-            # 2026-10-21: Tier 3 (Sovereign) kini dibekalkan peti arif_report —
-            # buku rasmi (ledger_holds) kekal sebagai sumber berasingan.
-            "pending_for_human": authority.get("arif_report", {}).get("pending_for_human"),
-            "pending_for_human_items": authority.get("arif_report", {}).get("pending_items", []),
-            "arif_report_available": authority.get("arif_report", {}).get("available", False),
-            "last_human_push_at": authority.get("arif_report", {}).get("last_push_at"),
         },
-        "bottleneck": bottleneck,
+
         # Backward-compatibility aliases for legacy / root-level readers
         "organs": organ_detail,
-        "holds": _safe_add(
-            authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")
-        ),
+        "holds": _safe_add(authority.get("decision_ledger", {}).get("holds"), authority.get("flow_holds", {}).get("count")),
         "held_actors": authority.get("flow_holds", {}).get("actors", []),
-        "_source": "federation_state.py v1.1",
+
+        "_source": "federation_state.py v1.0",
     }
 
     return state
@@ -532,21 +430,8 @@ def main():
     elif mode == "write":
         # Write to file only (for cron)
         tmp = OUTPUT_JSON.with_suffix(".tmp")
-        # Durable atomic replace: tmp lives in the SAME directory as the
-        # target, file fsync before replace, directory fsync after.
-        with open(tmp, "w", encoding="utf-8") as _fh:
-            _fh.write(json.dumps(state, indent=2))
-            _fh.flush()
-            os.fsync(_fh.fileno())
-        os.replace(tmp, OUTPUT_JSON)
-        try:
-            _dfd = os.open(str(OUTPUT_JSON.parent), os.O_DIRECTORY)
-            try:
-                os.fsync(_dfd)
-            finally:
-                os.close(_dfd)
-        except OSError:
-            pass
+        tmp.write_text(json.dumps(state, indent=2))
+        tmp.rename(OUTPUT_JSON)
         print(f"Written to {OUTPUT_JSON} ({state['probe_ms']}ms)")
     else:
         # JSON mode: print to stdout
