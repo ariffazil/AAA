@@ -41,9 +41,9 @@ import sys
 import os
 import re
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime
 
-RECEIPT_PATH = os.environ.get("HERMES_RECEIPT_PATH", "/root/.local/share/arifos/hermes_hook_receipts.jsonl")
+RECEIPT_PATH = "/root/.local/share/arifos/hermes_hook_receipts.jsonl"
 JITU_AUTHORITY = "/root/AAA/federation/kernel/jitu.py"
 
 
@@ -121,15 +121,31 @@ TELEMETRY_PATH = "/root/.local/share/arifos/wscar_telemetry.json"
 
 # Fields that carry human-facing assertions. Everything else (paths, ids, flags, enums) is structure.
 CLAIM_TEXT_FIELDS = (
-    "content", "new_string", "old_string", "text", "message", "response",
-    "command", "cmd", "code", "body", "description", "prompt", "answer",
+    "content",
+    "new_string",
+    "old_string",
+    "text",
+    "message",
+    "response",
+    "command",
+    "cmd",
+    "code",
+    "body",
+    "description",
+    "prompt",
+    "answer",
 )
 
 # System-owned doctrine / operations trees. A path under these roots names method, never a market
 # position or a patient, so tokens inside it are never promoted to a claim.
 OPS_PATH_WHITELIST = (
-    "/root/aaa/", "/root/arifos/", "/root/.hermes/", "/root/forge_work/",
-    "/root/agentic/", "/root/skill-audit/", "/root/aaa/skills/",
+    "/root/aaa/",
+    "/root/arifos/",
+    "/root/.hermes/",
+    "/root/forge_work/",
+    "/root/agentic/",
+    "/root/skill-audit/",
+    "/root/aaa/skills/",
 )
 
 URL_RE = re.compile(r"https?://[^\s\"'`<>)\]}]+", re.IGNORECASE)
@@ -174,10 +190,10 @@ def _strip_nonclaim(text: str) -> str:
 
     Order matters: URLs are extracted as EVIDENCE before they are removed from the claim surface.
     """
-    text = URL_RE.sub(" ", text)                                # evidence, collected separately
+    text = URL_RE.sub(" ", text)  # evidence, collected separately
     text = re.sub(r"(?:^|[\s\"'(=|])/?[\w.@+-]+(?:/[\w.@+-]+)+", " ", text)  # paths ≠ claims
-    text = RECEIPT_RE.sub(" ", text)                            # receipt ids ≠ claims
-    text = re.sub(r"`[^`]*`", " ", text)                        # code spans ≠ claims
+    text = RECEIPT_RE.sub(" ", text)  # receipt ids ≠ claims
+    text = re.sub(r"`[^`]*`", " ", text)  # code spans ≠ claims
     text = re.sub(r"^```.*?^```", " ", text, flags=re.S | re.M)
     return text.lower()
 
@@ -281,7 +297,7 @@ def _url_resolves(url: str, cache: dict):
         if isinstance(exc.reason, socket.gaierror):
             verdict = False  # NXDOMAIN — a fact about the citation, not about our link
         else:
-            verdict = None   # timeout / refused / TLS — undetermined, not fabricated
+            verdict = None  # timeout / refused / TLS — undetermined, not fabricated
     except Exception:
         verdict = None  # unreachable ≠ fabricated
     if verdict is not None:
@@ -335,7 +351,7 @@ def write_falsification_metric(event_type: str, details: dict):
                 json.dumps(
                     {
                         "event": event_type,
-                        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                        "timestamp": datetime.utcnow().isoformat() + "Z",
                         **details,
                     }
                 )
@@ -350,8 +366,8 @@ def update_telemetry(event_type: str):
     Atomic write (tmp+rename) for cross-process safety."""
     import tempfile
 
-    now = datetime.now(timezone.utc)
-    ts = now.isoformat().replace("+00:00", "Z")
+    now = datetime.utcnow()
+    ts = now.isoformat() + "Z"
     try:
         os.makedirs(os.path.dirname(TELEMETRY_PATH), exist_ok=True)
         # Load existing state
@@ -427,10 +443,6 @@ def classify(tool_name: str, tool_input: dict) -> str:
         "browser_press",
         "skill_view",
         "tools_list",
-        "tool_describe",
-        "tool_search",
-        "tool_view",
-        "tools_view",
     }:
         return "OBSERVE"
     if tool_name in T2_TOOLS:
@@ -451,8 +463,8 @@ def write_receipt(
     reason: str = "",
     trace_id: str = "unknown",
     session_id: str = "unknown",
-) -> bool:
-    """Append to gate receipt trail. Returns True on success, False on failure."""
+):
+    """Append to gate receipt trail. Never block on failure (E-11)."""
     try:
         os.makedirs(os.path.dirname(RECEIPT_PATH), exist_ok=True)
         with open(RECEIPT_PATH, "a") as f:
@@ -465,15 +477,14 @@ def write_receipt(
                         "reason": reason,
                         "trace_id": trace_id,
                         "session_id": session_id,
-                        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                        "timestamp": datetime.utcnow().isoformat() + "Z",
                         "k02_transition": True,  # First runtime enforcement
                     }
                 )
                 + "\n"
             )
-        return True
     except Exception:
-        return False
+        pass  # Never block
 
 
 # CCC-T-02 (2026-09-18): Federation Envelope emit.
@@ -518,7 +529,7 @@ def emit_envelope(
             "transport": transport,
             "decision": decision,
             "trace_id": trace_id,
-            "emitted_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "emitted_at": datetime.utcnow().isoformat() + "Z",
         }
         os.makedirs(os.path.dirname(FEDERATION_ENVELOPE_PATH), exist_ok=True)
         with open(FEDERATION_ENVELOPE_PATH, "a") as f:
@@ -604,6 +615,42 @@ def main():
             )
             sys.exit(3)  # 3 = circuit-breaker interrupt (distinct from T3's 2)
 
+    # ---- 0.75 KERNEL CONSULT (F13 2026-10-24) — mutation-class calls require a
+    # reachable, structurally-honest, non-rejecting kernel. Three failure modes all
+    # BLOCK with the true reason on the receipt; none collapses to a clean pass.
+    # OBSERVE stays passthrough: stopping investigation is not what a gate is for
+    # (same rule as JITU), and an outage must not brick read-only work.
+    # Sovereign brake: ARIFOS_GATE_KERNEL_CONSULT=0 disables this section.
+    if classification != "OBSERVE" and KERNEL_GATE_ENABLED:
+        _allowed, _label, _detail = kernel_consult()
+        if not _allowed:
+            write_receipt(
+                tool_name, classification, _label, f"{_label}: {_detail}", trace_id=trace_id, session_id=session_id
+            )
+            write_falsification_metric(_label.lower(), {"tool": tool_name, "detail": _detail})
+            update_telemetry("hold")
+            print(
+                json.dumps(
+                    {
+                        "decision": "block",
+                        "reason": (
+                            f"⛔ KERNEL GATE [{_label}]: {_detail}. Mutation-class call refused — "
+                            "the kernel must be reachable and allow execution. Read-only tools stay "
+                            "available. Sovereign brake: ARIFOS_GATE_KERNEL_CONSULT=0."
+                        ),
+                    }
+                )
+            )
+            sys.exit(2)
+        write_receipt(
+            tool_name,
+            classification,
+            "KERNEL_ALLOW",
+            f"kernel consult allow: {_detail}",
+            trace_id=trace_id,
+            session_id=session_id,
+        )
+
     # ---- 0.5 TRANSPORT LOCK (F13 2026-09-18) — destination must be DECLARED. ----
     # 2026-09-18: a cron job stored origin.chat_id = 8410138119 (the BOT's own id)
     # while deliver=origin. Telegram refused three times with "the bot can't send
@@ -632,30 +679,86 @@ def main():
             _r = f"TRANSPORT LOCK {_dec.verdict}: {_dec.reason}"
             write_receipt(tool_name, "TRANSPORT_LOCK", "BLOCKED", _r, trace_id=trace_id, session_id=session_id)
             update_telemetry("hold")
-            print(json.dumps({
-                "decision": "block",
-                "reason": (
-                    f"🔒 TRANSPORT LOCK: outbound send refused. {_r} "
-                    "A destination must be DECLARED (telegram:<chat_id>), never inferred from "
-                    "context. The 2026-09-18 defect was exactly this: origin resolved to the bot's "
-                    "own chat and the document was delivered into a room the principal does not "
-                    "read, with no error visible to anyone. Declare the target explicitly and retry."
-                ),
-            }))
+            print(
+                json.dumps(
+                    {
+                        "decision": "block",
+                        "reason": (
+                            f"🔒 TRANSPORT LOCK: outbound send refused. {_r} "
+                            "A destination must be DECLARED (telegram:<chat_id>), never inferred from "
+                            "context. The 2026-09-18 defect was exactly this: origin resolved to the bot's "
+                            "own chat and the document was delivered into a room the principal does not "
+                            "read, with no error visible to anyone. Declare the target explicitly and retry."
+                        ),
+                    }
+                )
+            )
             sys.exit(2)
         if _dec is None and _lockset:
             _r = f"TRANSPORT LOCK DEGRADED: cannot verify destination ({_load_err if '_load_err' in dir() else 'import failed'})"
             write_receipt(tool_name, "TRANSPORT_LOCK", "BLOCKED", _r, trace_id=trace_id, session_id=session_id)
             update_telemetry("hold")
-            print(json.dumps({
-                "decision": "block",
-                "reason": (
-                    f"🔒 {_r}. An unverifiable send is not an allowed send — 'I could not check' "
-                    "is not 'it is fine'. Restore /root/AAA/scripts/docforge/transport.py and "
-                    "/root/.hermes/IDENTITY_LOCK.json, then retry."
-                ),
-            }))
+            print(
+                json.dumps(
+                    {
+                        "decision": "block",
+                        "reason": (
+                            f"🔒 {_r}. An unverifiable send is not an allowed send — 'I could not check' "
+                            "is not 'it is fine'. Restore /root/AAA/scripts/docforge/transport.py and "
+                            "/root/.hermes/IDENTITY_LOCK.json, then retry."
+                        ),
+                    }
+                )
+            )
             sys.exit(2)
+
+
+# ---------------------------------------------------------------------------
+# KERNEL CONSULT (2026-10-24, F13) — the kernel is now IN the gate path.
+# Before this section the hook never called the kernel; the plugin-inventory
+# claim "kernel menolak -> tool tak jalan (fail-closed, 10s)" described a gate
+# that did not exist (measured 2026-10-24 by 333-AGI, whole-file read).
+# URL/timeout env-overridable so the three-mode falsifier can be tested
+# against a stub without touching the real kernel.
+# ---------------------------------------------------------------------------
+KERNEL_GATE_URL = os.environ.get("ARIFOS_GATE_URL", "http://127.0.0.1:8088/health")
+KERNEL_GATE_TIMEOUT_S = float(os.environ.get("ARIFOS_GATE_TIMEOUT_S", "10"))
+KERNEL_GATE_ENABLED = os.environ.get("ARIFOS_GATE_KERNEL_CONSULT", "1") != "0"
+KERNEL_ALLOW_VERDICTS = {"PASS", "SEAL"}
+
+
+def kernel_consult():
+    """(allowed, label, detail). Three-mode falsifier: reject / unreachable / malformed.
+
+    Every non-allow outcome is honest about WHY it blocked — no mode collapses to a
+    silent pass. Structural incompleteness (missing thermodynamic.verdict or
+    floors_active) is malformed, not clean: a partial answer is not an allow.
+    """
+    import urllib.error  # noqa: F401 — kept for parity with URL-check section
+    import urllib.request
+
+    try:
+        req = urllib.request.Request(KERNEL_GATE_URL, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=KERNEL_GATE_TIMEOUT_S) as resp:
+            raw = resp.read()
+    except Exception as exc:  # timeout, refused, TLS, DNS — mode (b)
+        return False, "KERNEL_UNREACHABLE", f"kernel {KERNEL_GATE_URL}: {type(exc).__name__}: {exc}"
+    try:
+        body = json.loads(raw.decode("utf-8", "replace"))
+    except Exception as exc:  # mode (c): unparseable reply
+        return False, "KERNEL_MALFORMED", f"unparseable kernel reply: {type(exc).__name__}: {exc}"
+    verdict = ""
+    floors = None
+    if isinstance(body, dict):
+        thermo = body.get("thermodynamic")
+        if isinstance(thermo, dict):
+            verdict = str(thermo.get("verdict", "") or "").upper()
+        floors = body.get("floors_active")
+    if not verdict or not isinstance(floors, int):  # mode (c): structurally incomplete
+        return False, "KERNEL_MALFORMED", f"reply missing thermodynamic.verdict/floors_active: {str(body)[:160]}"
+    if verdict in KERNEL_ALLOW_VERDICTS:
+        return True, "KERNEL_ALLOW", f"verdict={verdict} floors={floors}"
+    return False, "KERNEL_REJECT", f"verdict={verdict} floors={floors}"  # mode (a)
 
     # ---- 1. W_scar v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
     # v1 blocked on vocabulary found anywhere in the payload (including file paths) and passed on
@@ -674,8 +777,18 @@ def main():
                 f"W_SCAR AUDIT: Tool '{tool_name}' asserts a critical "
                 f"variable (money/health/legal/trading) with no source — {detail}."
             )
-            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked", {"tool": tool_name, "reason": "claim_without_source"})
+            write_receipt(
+                tool_name,
+                "W_SCAR",
+                "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED",
+                reason,
+                trace_id=trace_id,
+                session_id=session_id,
+            )
+            write_falsification_metric(
+                "wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked",
+                {"tool": tool_name, "reason": "claim_without_source"},
+            )
             update_telemetry("pass" if not _enforce_block else "hold")
             if _enforce_block:
                 print(json.dumps({"decision": "block", "reason": reason}))
@@ -684,11 +797,19 @@ def main():
             sys.stderr.flush()
 
         if state == "UNRESOLVED":
-            reason = (
-                f"W_SCAR AUDIT: {detail}. Citation shape but no resolve."
+            reason = f"W_SCAR AUDIT: {detail}. Citation shape but no resolve."
+            write_receipt(
+                tool_name,
+                "W_SCAR",
+                "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED",
+                reason,
+                trace_id=trace_id,
+                session_id=session_id,
             )
-            write_receipt(tool_name, "W_SCAR", "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED", reason, trace_id=trace_id, session_id=session_id)
-            write_falsification_metric("wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked", {"tool": tool_name, "reason": "citation_unresolved"})
+            write_falsification_metric(
+                "wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked",
+                {"tool": tool_name, "reason": "citation_unresolved"},
+            )
             update_telemetry("pass" if not _enforce_block else "hold")
             if _enforce_block:
                 print(json.dumps({"decision": "block", "reason": reason}))
@@ -699,9 +820,7 @@ def main():
         # VERIFIED or DEGRADED — witness it. DEGRADED is deliberate: an unreachable network is not
         # evidence of fabrication, and a gate that turns an outage into a blanket denial of service
         # is worse than the defect it guards. The receipt records which of the two it was.
-        write_falsification_metric(
-            "wscar_pass", {"tool": tool_name, "reason": f"provenance_{state.lower()}"}
-        )
+        write_falsification_metric("wscar_pass", {"tool": tool_name, "reason": f"provenance_{state.lower()}"})
         update_telemetry("wscar_pass")
         write_receipt(
             tool_name,
@@ -728,7 +847,9 @@ def main():
         hit = t3_pattern_hit(tool_input) or "unknown-pattern"
         reason = f"T3 pattern [{hit}] matched in '{tool_name}' args"
         write_receipt(tool_name, classification, "WITNESSED_DEMOTED", reason, trace_id=trace_id, session_id=session_id)
-        write_falsification_metric("t3_witnessed_audit_only", {"tool": tool_name, "classification": "T3", "pattern": hit, "reason": reason})
+        write_falsification_metric(
+            "t3_witnessed_audit_only", {"tool": tool_name, "classification": "T3", "pattern": hit, "reason": reason}
+        )
         update_telemetry("pass")  # witness, not hold
         # WARN to stderr (not stdout — stdout is the decision channel)
         sys.stderr.write(f"[hermes-gate AUDIT-ONLY] T3 witnessed (no block): {reason}\n")
@@ -737,7 +858,7 @@ def main():
         # Falls through to T2 allow path below
 
     # T2 — log witness receipt, allow (K-02 transition: witness → enforcer for T3 only)
-    receipt_ok = write_receipt(
+    write_receipt(
         tool_name,
         classification,
         "WITNESSED",
@@ -745,17 +866,6 @@ def main():
         trace_id=trace_id,
         session_id=session_id,
     )
-    if not receipt_ok:
-        print(
-            json.dumps(
-                {
-                    "decision": "block",
-                    "reason": "gate hook: receipt-write failure — mutation refused (fail-closed)",
-                }
-            )
-        )
-        sys.exit(2)
-
     write_falsification_metric("mutation_witnessed", {"tool": tool_name, "classification": "T2"})
     update_telemetry("pass")
     # CCC-T-02 (2026-09-18): emit FederationEnvelope v0.1 for cross-harness tracing.
@@ -769,6 +879,10 @@ def main():
         decision="WITNESSED_T2",
         harness="hermes",
         trace_id=trace_id,
+        # 2026-10-24 (F13, invariant #4 "no agent may SEAL itself"): an envelope this
+        # hook emits for a T2 mutation it merely WITNESSED and ALLOWED must not stamp
+        # verdict="SEAL" — RECEIPT ≠ SEAL. The old value was vocabulary rot in shipped
+        # code (measured 2026-10-24, whole-file read by 333-AGI).
         verdict="WITNESSED",
     )
     # Allow (no output)
