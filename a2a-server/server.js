@@ -3639,10 +3639,17 @@ app.get('/api/seal-chain/head', async (req, res) => {
     const verify = sealChain.verifyChain();
     const summary = sealChain.getChainSummary();
     const recent = sealChain.getRecent(3);
+    const diagnostics =
+      typeof sealChain.getChainDiagnostics === 'function'
+        ? sealChain.getChainDiagnostics()
+        : null;
     res.json({
       ok: true,
       head,
       chain_ok: verify.ok,
+      chain_break_reason: verify.ok ? null : verify.reason || null,
+      chain_break_at_seq: verify.ok ? null : (verify.broken_at_seq ?? null),
+      chain_diagnostics: diagnostics,
       chain_length: verify.length,
       chain_head_hash: verify.head,
       v1_entries: summary.v1_entries,
