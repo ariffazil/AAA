@@ -19,7 +19,7 @@
 | **OpenCode** | ✅ 18 servers | arifOS, A-FORGE, GEOX, WEALTH, WELL, GitHub, Context7, Playwright, Docker, web/search/data MCPs | MCP native | YELLOW |
 | **Copilot** | ✅ 8 servers | arifOS, WEALTH, WELL, github, brave-search, meyhem, playwright, **capability-index** | IDE MCP | GREEN |
 | **Codex** | ⚠️ Ready | Configured for 8 servers (experimental) | MCP config ready | YELLOW |
-| **Aider** | ❌ No | Python fallback | A-FORGE bridge | YELLOW |
+| **Aider** | ❌ RETIRED 2026-10-26 | — | — | — |
 | **Antigravity / Gemini** | ❌ No | Python fallback | A-FORGE bridge | YELLOW |
 
 **Total swarm size:** 8 agents  
@@ -36,7 +36,7 @@ These agents connect directly to MCP servers via stdio, SSE, or HTTP. They disco
 ### MCP-Ready (Codex)
 MCP config file created at `.codex/mcp.json`. Will activate automatically when Codex CLI adds MCP support.
 
-### Bridge/Fallback (Aider, Antigravity)
+### Bridge/Fallback (Antigravity)
 No MCP support. Use Python subprocess or A-FORGE pattern detection to access federation tools.
 
 **Example fallback:**
@@ -82,7 +82,7 @@ for r in CapabilityStore().search('calculate zakat', 3):
 | Python/data pipeline | **Codex** | OpenAI function calling, Python strength |
 | Autonomous health audit | **Continue** | Headless, systemd, 17 tools |
 | Skill-driven automation | **OpenCode** | 40+ skills, subagent delegation |
-| Multi-file refactor with git | **Aider** | Git-integrated, diff review |
+| Multi-file refactor with git | **git CLI** | Git-integrated, diff review |
 | Google ecosystem task | **Antigravity** | Gemini backend, rapid generation |
 
 ---
@@ -98,7 +98,7 @@ for r in CapabilityStore().search('calculate zakat', 3):
 | `agents/continue-cli/agent-card.json` | +1 server (capability-index) |
 | `agents/opencode/agent-card.json` | +1 server (capability-index) |
 | `agents/antigravity/agent-card.json` | fallback_commands added |
-| `agents/aider/agent-card.json` | **NEW** |
+| `agents/_superseded/aider-20261026/agent-card.json` | archived 2026-10-26 (was NEW) |
 | `agents/gemini/agent-card.json` | **NEW** |
 | `registries/CAPABILITY_INDEX.json` | **NEW** — 97 tools |
 | `schemas/capability-card.schema.json` | **NEW** |
