@@ -21,7 +21,11 @@ export function shouldPoll({ hidden = false, online = true } = {}) {
 }
 export function card(label, field, now = Date.now()) {
   const has = field && Object.prototype.hasOwnProperty.call(field, "value");
-  const value = has ? field.value : undefined;
+  const raw = has ? field.value : undefined;
+  const value = raw === null || raw === undefined ? undefined
+    : (typeof raw === "object"
+        ? (raw.aggregate || (raw.measured !== undefined ? `${raw.measured ?? "?"}/${raw.target ?? "?"} measured` : JSON.stringify(raw)))
+        : raw);
   const observedAt = (field && field.observed_at) || null;
   const state = value === undefined || value === null ? "unmeasured" : stateOf(observedAt, now);
   return { label, value: value === undefined || value === null ? "UNMEASURED" : value,
