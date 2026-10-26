@@ -120,7 +120,7 @@ req = urllib.request.Request(
     data=json.dumps({
         "model": "speech-2.8-hd",
         "text": text,
-        "voice_setting": {"voice_id": voice_id, "speed": 1.0, "vol": 1.0, "pitch": 0, "emotion": "neutral"},
+        "voice_setting": {"voice_id": voice_id, "speed": float(os.environ.get("IARIF_TTS_SPEED", "1.0")), "vol": 1.0, "pitch": 0, "emotion": "neutral"},
         "audio_setting": {"sample_rate": 32000, "bitrate": 128000, "format": "mp3", "channel": 1},
     }).encode(),
     headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
