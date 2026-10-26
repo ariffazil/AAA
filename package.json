@@ -12,7 +12,7 @@
     "test": "npm run lint && npm run build && npm run test:mcp-apps-security && npm run test:stabilization",
     "test:mcp-apps-security": "tsx tests/mcp-apps-security.test.ts",
     "test:stabilization": "node a2a-server/tests/seed-agents.test.js && tsx tests/observability-config.test.ts",
-    "validate:aaa": "node scripts/validate-aaa.mjs && node scripts/validate-root-agent-config.mjs",
+    "validate:aaa": "node scripts/validate-aaa.mjs && node scripts/validate-root-agent-config.mjs && node scripts/registry_alignment_check.mjs",
     "validate:root-agents": "node scripts/validate-root-agent-config.mjs",
     "export:aaa": "node scripts/export-aaa-json.mjs",
     "a2a:server": "tsx src/gateway/server.ts",
@@ -20,7 +20,8 @@
     "a2a:test": "tsx src/lib/a2a/test.ts",
     "a2a:demo": "tsx src/lib/a2a/demo.ts",
     "a2a:conformance": "tsx scripts/a2a-conformance.mjs",
-    "validate:a2a-cards": "node schemas/validate-a2a-cards.mjs"
+    "validate:a2a-cards": "node schemas/validate-a2a-cards.mjs",
+    "validate:registry": "node scripts/registry_alignment_check.mjs"
   },
   "dependencies": {
     "@a2a-js/sdk": "^1.3.0",
