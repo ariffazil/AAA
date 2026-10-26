@@ -1,6 +1,5 @@
 schema_version: 2
-generated: 2026-10-14T06:43:26.779882+00:00 (entries re-probed 2026-10-14; live health
-  snapshot)
+generated: 2026-10-18T12:04:31+00:00 (entries re-probed 2026-10-18; live health snapshot)
 maintainer: AAA Control Plane
 human_map: /root/AAA/docs/ORGAN.md
 truth_rule: live_health_beats_file
@@ -62,7 +61,7 @@ components:
   - arif_forge
   - arif_seal
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: a-forge
   class: CORE
   display_name: A-FORGE
@@ -108,7 +107,7 @@ components:
   - earth_evidence
   - capital_allocation
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: aaa
   class: CORE
   display_name: AAA
@@ -137,7 +136,7 @@ components:
   - hosts machine SOT at federation/organs.yaml
   - companion units: aaa-signing, aaa-preforge (SUPPORT)
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: openclaw
   class: EDGE
   display_name: OpenClaw
@@ -213,7 +212,7 @@ components:
     not the Telegram path).
   - Escalation: F13 holds go to Arif; do not self-judge.
   live_status: DOWN
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: geox
   class: CORE
   display_name: GEOX
@@ -249,7 +248,7 @@ components:
   - capital_allocation
   - deployment_authorization
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: wealth
   class: CORE
   display_name: WEALTH
@@ -278,7 +277,7 @@ components:
   - investment_authority
   - deployment_authorization
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: well
   class: CORE
   display_name: WELL
@@ -315,7 +314,7 @@ components:
   companions:
   - well-witness
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: arifflow
   class: METABOLISM
   display_name: arifFLOW
@@ -341,7 +340,7 @@ components:
     — topology+flow view; architect lock 2026-08-18 lifted; metabolism-derived graph
     (receipts -> edges) still queued
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: signal
   class: CORE
   display_name: SIGNAL
@@ -394,13 +393,13 @@ components:
     redis: healthy
     all_6_chambers: active
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: frame
   class: CORE
   display_name: FRAME
   repo: ariffazil/AAA
   role: federation_measurement
-  authority_ceiling: OBSERVE_ONLY   # 2026-10-16 rule: stricter ceiling binds (FRAME=observer)
+  authority_ceiling: OBSERVE_ONLY   # 2026-10-16 rule: stricter ceiling binds (FRAME=observer; output is evidence, never a verdict)
   port: 18085
   unit: frame-organ.service
   source_path: /root/AAA/federation/frame/
@@ -460,7 +459,7 @@ components:
     drift_verdict: STABLE
     fq: 0.887
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
   mcp_endpoint: http://127.0.0.1:18086/mcp
   note: MCP surface is :18086 (probe MCP_OK 2026-10-14). :18085 = secondary python
     listener, no /mcp route — do not use for MCP.
@@ -514,7 +513,7 @@ components:
   - 'arifFlow bridge: CHRON loop entries → arifflow receipts'
   - 'First falsification window: Sep 23 (fuel-price prediction)'
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: minimax-media
   class: SUPPORT
   display_name: MiniMax Media MCP
@@ -581,7 +580,7 @@ components:
     - suno-music
     sample_run: sado_chest_real.mp4 (5.64s, 720x720, 765KB)
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: vault999
   class: MEMORY
   display_name: VAULT999
@@ -613,7 +612,7 @@ components:
     transport: streamable-http
     probe: MCP initialize handshake OK (HERMES session 20261014)
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: filings
   class: DATA
   display_name: Filings MCP
@@ -631,7 +630,7 @@ components:
     transport: streamable-http
     probe: MCP initialize handshake OK (HERMES session 20261014)
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: media-ingest
   class: SUPPORT
   display_name: Media Ingest MCP
@@ -649,7 +648,7 @@ components:
     transport: streamable-http
     probe: MCP initialize handshake OK (HERMES session 20261014)
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: numeric-audit
   class: SUPPORT
   display_name: Numeric Audit MCP
@@ -667,7 +666,7 @@ components:
     transport: streamable-http
     probe: MCP initialize handshake OK (HERMES session 20261014)
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: session-federation
   class: SUPPORT
   display_name: Session Federation MCP
@@ -685,7 +684,7 @@ components:
     transport: streamable-http
     probe: MCP initialize handshake OK (HERMES session 20261014)
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
   note: MCP initialize MCP_OK on :18088 (2026-10-14). Prior DOWN was stale.
 - id: fed
   class: ADVISORY
@@ -706,7 +705,7 @@ components:
   - '2026-09-27 probe: FED router is :7074. The model proxy that answers I''m alive
     is :4000 (haproxy). Do not call :4000 by the name FED.'
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: flame
   class: ADVISORY
   display_name: FLAME
@@ -731,7 +730,7 @@ components:
   - answers cheap tool meaning; never seals
   - RETIRED — registry SOT is deprecation-registry.json; entry kept for history
   live_status: DOWN
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: hermes
   class: EDGE
   display_name: HERMES
@@ -745,6 +744,8 @@ components:
   mcp_port: 18087
   mcp_unit: hermes-mcp-server.service
   mcp_endpoint: https://hermes.arif-fazil.com/mcp
+  live_status: UP
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
   owned_domains:
   - telegram_relay
   - multimodal_bridge
@@ -788,7 +789,7 @@ components:
   unit: aaa-signing.service
   authority_ceiling: CRYPTO_HELPER
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: surface-guard
   class: SUPPORT
   display_name: Surface Guard
@@ -819,37 +820,37 @@ components:
   port: 5432
   role: durable_state
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: redis
   class: DATA
   port: 6379
   role: ephemeral_locks_session
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: qdrant
   class: DATA
   port: 6333
   role: vector_similarity_not_truth
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: falkordb
   class: DATA
   port: 6380
   role: graph
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: graphiti-mcp
   class: DATA
   port: 18412
   role: knowledge_graph_mcp
   live_status: DOWN
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: minio
   class: DATA
   port: 9000
   role: object_storage
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: nats
   class: DATA
   port: 4222
@@ -862,20 +863,20 @@ components:
     unit: nats-prometheus-exporter.service
     role: metrics_export
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: searxng
   class: DATA
   port: 8080
   role: search
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: headscale
   class: DATA
   port: 8083
   unit: headscale.service
   role: mesh_coordination
   live_status: UP
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: caddy
   class: DATA
   unit: caddy.service
@@ -899,6 +900,13 @@ components:
     bridge_file: /root/AAA/warga/qwen_bridge.py
     bridge_log: /root/VAULT999/warga/qwen-bridge/2026-09-30.jsonl
     fq_status: FLOWING
+  live_probe_2026_10_22:
+    cli_version: '0.26.0'
+    cli_probe: 'qwen --version returned 0.26.0 — atomic-swap from 0.25.3, tarball SHA256 matched release manifest, rollback tree qwen-code.old.0.25.3 preserved'
+    bridge_port_4357: 'not listening (ss probe) — live_status DOWN remains accurate'
+    companion_runtime_path: '/root/.local/lib/qwen-code (unchanged by in-place swap)'
+    agent_cards_synced: 'both harness card and warga external card carry qwen_version 0.26.0, signed did:arif:aaa'
+    probe_by: 'FI-003 (qwen-code/FI-003)'
   owned_domains:
   - code_generation
   - code_review
@@ -932,7 +940,7 @@ components:
   - 'Bridge tests: /root/AAA/warga/test_qwen_bridge.py (14/14 pass) + /root/AAA/warga/qwen_bridge_test.py
     (external parallel suite).'
   live_status: DOWN
-  last_probed_utc: '2026-10-14T08:07:58.156027+00:00'
+  last_probed_utc: '2026-10-18T12:04:31+00:00'
 - id: i-arif
   class: IDENTITY
   display_name: i-ARIF

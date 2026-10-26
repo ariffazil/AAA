@@ -1,0 +1,149 @@
+{
+ "schema": "federation-authority-graph/v1",
+ "generated_at": "2026-10-23T03:42:10+00:00",
+ "separation_of_powers_model": {
+  "ARIF": "sovereign veto",
+  "arifOS/888": "judge",
+  "333": "propose",
+  "555": "verify",
+  "A-FORGE": "execute bounded",
+  "VAULT999": "witness",
+  "HERMES": "interface/route",
+  "IRFANclaw": "bounded exec lane"
+ },
+ "edges": [
+  {
+   "from_": "ARIF",
+   "to": "ALL",
+   "right": "sovereign_veto",
+   "proven": "seal_chain last row: authority_state=SOVEREIGN, ed25519_verified",
+   "status": "VERIFIED_HISTORICAL"
+  },
+  {
+   "from_": "arifos",
+   "to": "verdict",
+   "right": "judgment",
+   "proven": "tools/list exposes arif_judge; /health reports 13 floors active",
+   "status": "OBSERVED"
+  },
+  {
+   "from_": "333-AGI",
+   "to": "proposal",
+   "right": "propose",
+   "proven": "arifFlow per_actor 333-agi traffic; AGI_CANONICAL.md role",
+   "status": "OBSERVED"
+  },
+  {
+   "from_": "555-ASI",
+   "to": "verification",
+   "right": "verify",
+   "proven": "ASI_SPEC.md role; hermes-asi lane verify_count=12",
+   "status": "OBSERVED"
+  },
+  {
+   "from_": "A-FORGE",
+   "to": "execution",
+   "right": "execute_bounded",
+   "proven": "115 tools; forge_shell requires expected_output",
+   "status": "OBSERVED"
+  },
+  {
+   "from_": "VAULT999",
+   "to": "witness",
+   "right": "witness",
+   "proven": "29 jsonl; outcomes.jsonl 2256 rows; seal_chain 274 rows",
+   "status": "OBSERVED"
+  },
+  {
+   "from_": "hermes-kvm8",
+   "to": "interface",
+   "right": "route_report",
+   "proven": "15 hermes-mcp tools; gateway unit running",
+   "status": "OBSERVED"
+  },
+  {
+   "from_": "irfanclaw",
+   "to": "execution",
+   "right": "execute_bounded_lane",
+   "proven": "openclaw-gateway.service running on KVM4",
+   "status": "OBSERVED_UNPROVEN_BOUND"
+  }
+ ],
+ "prohibited_combinations": [
+  {
+   "id": "P1",
+   "combination": "judge + executor",
+   "evidence": "arifOS publishes arif_forge among its 8 canonical verbs while its own AGENTS.md says it cannot execute code mutations; execution is delegated to A-FORGE :7072.",
+   "impact": "If arif_forge ever performs the mutation instead of delegating, the judge writes the consequence it then judges.",
+   "containment": "Delegation is the designed path (A-FORGE holds the 115 execution tools). No write observed from :8088.",
+   "min_fix": "Add a runtime assertion + health field: arif_forge MUST return a delegation receipt naming A-FORGE call id; assert no filesystem write from the kernel process.",
+   "falsifier": "grep the kernel process for write syscalls during an arif_forge call, or show an arif_forge result payload with no a-forge call id.",
+   "severity": "MEDIUM",
+   "state": "CONTAINED_BY_DELEGATION_UNPROVEN"
+  },
+  {
+   "id": "P2",
+   "combination": "builder + self-authorisation",
+   "evidence": "forge_execute inputSchema required=['task'] only \u2014 no seal_verdict_id, no lease_id, no act token in the required set. A-FORGE AGENTS.md claims 'A-FORGE CANNOT self-authorize'.",
+   "impact": "Schema-level, a task string is sufficient to invoke the executor. Authorisation, if it exists, lives in transport middleware that the schema does not express.",
+   "containment": "AGENTS.md + ACT ingress (HMAC-SHA256) claim a lease/ACT gate; the gate is not visible in the published contract.",
+   "min_fix": "Make seal_verdict_id or lease_id a REQUIRED property of forge_execute and forge_execute_sealed, so the contract states what the runtime enforces.",
+   "falsifier": "Call forge_execute with task only and no lease/ACT from a non-privileged actor; a success proves self-authorisation is possible.",
+   "severity": "HIGH",
+   "state": "HOLD_NOT_TESTED"
+  },
+  {
+   "id": "P3",
+   "combination": "verifier + mutation",
+   "evidence": "HERMES holds hermes_claim_validate / hermes_contradiction_scan (verification verbs) and also writes skill bodies + memory (mutation of its own operating substrate).",
+   "impact": "The agent that validates a claim also edits the corpus it validates against \u2014 a self-grading loop.",
+   "containment": "Skill/memory writes are not constitution, canon, money or deploy. Canon trees are chattr +i behind canon-mutate.",
+   "min_fix": "Route skill-body writes through a second lane (proposal + independent verify) for any skill tagged floor_scope containing F2 or F11.",
+   "falsifier": "A skill body amended by HERMES whose claim was validated by the same HERMES session with no second lane.",
+   "severity": "MEDIUM",
+   "state": "PARTIAL"
+  },
+  {
+   "id": "P4",
+   "combination": "executor + policy override",
+   "evidence": "forge_execute_sealed declares ZERO required properties (all optional, including vault_seal_id and human_seal_token) while its name asserts a sealed path.",
+   "impact": "A \"sealed\" verb that can be called with no seal is a naming lie; the caller decides whether the seal is present.",
+   "containment": "Name + separate vault_seal_id field; no live call attempted (irreversible).",
+   "min_fix": "Make vault_seal_id + vault_seal_signature required on forge_execute_sealed; reject calls without them.",
+   "falsifier": "A forge_execute_sealed call that completes with no vault_seal_id.",
+   "severity": "HIGH",
+   "state": "HOLD_NOT_TESTED"
+  },
+  {
+   "id": "P5",
+   "combination": "agent + self-SEAL",
+   "evidence": "arif_seal required=['payload'] only. No judge_state_hash, no verdict id, no constitutional_chain_id in the required set. Any transport-level caller can attempt a seal.",
+   "impact": "G\u00f6del lock (author != judge) rests entirely on runtime checks not expressed in the contract. If they are absent, an agent can seal its own claim.",
+   "containment": "runtime floors F11/F13 report pass; VAULT999 writer is a separate service; seal_readiness reports ack_irreversible_gate passable.",
+   "min_fix": "Require judge_state_hash + constitutional_chain_id on arif_seal and refuse payload-only seals; return the exact missing-field name.",
+   "falsifier": "An arif_seal call with payload only that returns a vault entry id.",
+   "severity": "CRITICAL",
+   "state": "HOLD_NOT_TESTED"
+  },
+  {
+   "id": "P6",
+   "combination": "identity source controlled by the identity it validates",
+   "evidence": "/etc/arifos/identity.toml is a 3-line DERIVED pointer to /root/AAA/identity.toml; both files exist and differ (one is organ identity, one is actor registry). Kernel reports identity_source=identity.toml with b3 hash 73a284a6; only ONE [actor.*] block exists (FI-008).",
+   "impact": "The kernel authenticates against a file that names itself derived, while the actor registry that would verify Hermes/333/555/888/A-FORGE lives in a different file with 4 unregistered keys.",
+   "containment": "Key material exists for 333/555/777/888/FI-008; nothing binds those keys to actor ids except the single FI-008 block.",
+   "min_fix": "Register actor blocks for the 4 existing keys (additive, reversible) so a key can be resolved to an actor id; then probe one signed call end-to-end.",
+   "falsifier": "A signed call from a key that has no [actor.*] block still returning actor_verified=true (or: a key with a block that never verifies).",
+   "severity": "HIGH",
+   "state": "OPEN"
+  }
+ ],
+ "counts": {
+  "edges": 8,
+  "prohibited_found": 6,
+  "critical": 1,
+  "high": 3,
+  "tested": 3,
+  "untested": 3
+ },
+ "note": "No prohibited combination was actively tested where the test could mutate (seal, execute). HOLD is the honest state, not a pass."
+}

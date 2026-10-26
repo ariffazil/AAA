@@ -2,6 +2,8 @@
 name: kpj-vending-dashboard
 description: Generate PDF dashboards from KPJ hospital vending machine transaction Excel exports. Auto-detects location (KPJ Damansara/KPJ Ampang Puteri), generates charts (daily trend, day-of-week, category, top products, payment, peak hours), and renders A4 PDF via weasyprint.
 version: 1.0.0
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # KPJ Vending Dashboard Generator

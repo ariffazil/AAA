@@ -51,7 +51,7 @@ if [ "$AFORGE_HEALTH" != "200" ]; then
 fi
 
 # Pre-flight: FRAME reachable
-FRAME_HEALTH=$(curl -sf -o /dev/null -w "%{http_code}" http://127.0.0.1:18500/health 2>&1 || echo "FAIL")
+FRAME_HEALTH=$(curl -sf -o /dev/null -w "%{http_code}" http://127.0.0.1:18085/health 2>&1 || echo "FAIL")
 if [ "$FRAME_HEALTH" != "200" ]; then
   echo "ERROR: FRAME not healthy (HTTP $FRAME_HEALTH)"
   exit 1
@@ -68,14 +68,14 @@ echo ""
 echo "Pre-flight PASS. Loading task set..."
 
 # Load the 25-task set
-TASK_SET="/root/AAA/forge_work/benchmarks/institutional-intelligence-survival-§21/cohorts/tasks/task-set.json"
+TASK_SET="/root/AAA/forge_work/benchmarks/institutional-intelligence-survival-§21/tasks/task-set.json"
 if [ ! -f "$TASK_SET" ]; then
   echo "ERROR: task set not found at $TASK_SET"
   echo "  Per §21 spec, task set must be frozen before launch"
   exit 1
 fi
 
-echo "Task set: $(jq 'length' "$TASK_SET") tasks loaded"
+echo "Task set: $(jq '.tasks | length' "$TASK_SET") tasks loaded"
 echo ""
 echo "Cohort C ready for run."
 echo "  Phase: $PHASE"

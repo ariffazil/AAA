@@ -1,0 +1,94 @@
+# Hermes actor-family registry — multi-instance
+# Canon: this file. Written 2026-10-23 after the KVM4/KVM8 portrait mix-up.
+# Rule: the string "Hermes" is NOT an identity key. The tuple is.
+#
+#   (actor_name, host, service, channel, process_or_instance_id)
+
+schema: hermes.actor-family-registry/v1
+generated: '2026-10-23T03:52:00Z'
+generated_by: hermes-kvm8
+trigger: three portraits (KVM8 Hermes, KVM4 Hermes, irfanclaw) were conflated in one report
+
+actor_family: Hermes
+
+identity_key:
+  type: tuple
+  fields: [actor_name, host, service, channel, process_or_instance_id]
+  note: >
+    Display name is presentation. The tuple is identity evidence. Two live instances that
+    share actor_name but differ in host, service or channel are DIFFERENT actors.
+
+instances:
+  - instance_id: hermes-kvm8-asi
+    host: 100.64.0.2            # forge / af-forge
+    service: hermes-asi-gateway.service
+    channel: "@ASI_arifos_bot"
+    process: 1986168
+    observed_state: ACTIVE
+    observed_at: '2026-10-23T03:52:00Z'
+    observer: self
+    evidence_class: OBSERVED_SELF
+    runtime_envelope: state/hermes-runtime-identity-envelope-2026-10-23.json
+    inventory_owns:
+      local_skills: 33
+      canonical_skills_readable: 1256   # census 2026-10-23, witness 891d51ff
+      mcp_servers_registered: 30        # 22 healthy http, 8 stdio_present unprobed
+      cron_jobs: 33                     # 32 enabled, 1 disabled, 1 last_status=error
+      sessions: 3101
+      messages: 256104
+      state_db_bytes: 1567080448
+    authority_shared: false
+    memory_shared: false
+
+  - instance_id: hermes-kvm4
+    host: 100.64.0.5            # srv1946043
+    service: hermes-(kvm4) gateway, PID 1826369 at verify time
+    channel: "@hermesarifos_bot"
+    process: 1826369
+    observed_state: ACTIVE_NODE_KVM4
+    observed_at: '2026-10-23T03:40:00Z'
+    observer: hermes-kvm8 (remote getMe + ssh read-only)
+    evidence_class: OBSERVED_REMOTE
+    verified_at: '2026-10-23T03:40:00Z'
+    stale_label_repaired: DORMANT (from 2026-09-25) -> ACTIVE_NODE_KVM4
+    inventory_owns:
+      local_skills: 233
+      sessions: 160
+      messages: 29943
+      state_db_mb: 124.2
+      cron_jobs: 15               # 1 enabled
+    authority_shared: false
+    memory_shared: false
+    note: >
+      Its inventory MUST NOT be quoted as federation inventory. It also holds knowledge KVM8
+      lost (3 sections mined back on 2026-10-23) — peer is a reservoir, not a subordinate.
+
+  - instance_id: irfanclaw
+    host: 100.64.0.5            # same host as hermes-kvm4, different actor
+    service: openclaw-gateway
+    channel: "@irfanclaw_arifos_bot"
+    process: null               # not probed this run
+    observed_state: UNKNOWN
+    observed_at: null
+    observer: null
+    evidence_class: UNKNOWN
+    inventory_owns:
+      local_skills: 87          # reported, NOT verified by hermes-kvm8
+      cron_jobs: 16             # reported, NOT verified
+      sessions: 141             # reported, NOT verified
+    authority_shared: false
+    memory_shared: false
+    note: >
+      Custody is Syed's, not Arif's. Shares a HOST with hermes-kvm4 but not a workspace.
+      Reported figures are REPORTED, not OBSERVED.
+
+family_state: MULTI_INSTANCE
+family_rules:
+  - preserve both instances; do not elect one by recency
+  - do not borrow memory across instances
+  - do not merge skill counts
+  - do not merge schedules
+  - do not merge authority
+  - a stale DORMANT or ACTIVE label is CONTRADICTED until the identity owner repairs it
+  - a number from one machine is not a federation number
+cross_node_dedup_required: true

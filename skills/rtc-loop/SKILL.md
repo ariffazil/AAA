@@ -4,6 +4,8 @@ description: "USE WHEN: ANY text-to-image / image-generation dispatch in the fed
 version: 0.0.0-untracked
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # rtc-loop — Reality-Topography Compilation Loop

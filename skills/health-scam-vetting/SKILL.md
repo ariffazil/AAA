@@ -12,6 +12,8 @@ triggers:
   - user asks whether a "doctor" advertising a cure on social media is legit
   - family/friends are considering buying a herbal product from a FB/TikTok ad
   - user asks to check a supplement, teh herba, or traditional remedy
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Health Product Scam Vetting

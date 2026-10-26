@@ -57,7 +57,7 @@ def run_static_tests() -> dict:
         AAA_ROOT / "governance" / "AAA-REPAIR-ALLOWLIST-V1.yaml",
         AAA_ROOT / "governance" / "AAA-LEARNING-POLICY-V1.yaml",
         AAA_ROOT / "registries" / "antigravity" / "hooks.json",
-        Path("/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json"),
+        Path("/root/.config/opencode/plugins/OPENCODE-HOOK-ORDER-MANIFEST.json"),
     ]
     results = []
     for spec in specs:
@@ -72,13 +72,15 @@ def run_static_tests() -> dict:
                 valid = True
             except Exception as e:
                 err = str(e)
-        results.append({
-            "spec_path": str(spec),
-            "exists": exists,
-            "valid_syntax": valid,
-            "error": err,
-            "status": "PASS" if exists and valid else "FAIL"
-        })
+        results.append(
+            {
+                "spec_path": str(spec),
+                "exists": exists,
+                "valid_syntax": valid,
+                "error": err,
+                "status": "PASS" if exists and valid else "FAIL",
+            }
+        )
     return {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "suite": "STATIC_INTEGRITY",
@@ -104,15 +106,17 @@ def run_property_tests() -> dict:
             expected_rank = max(VERDICT_RANK[v1], VERDICT_RANK[v2])
             expected_verdict = VERDICT_LADDER[expected_rank]
 
-            passed = (composed.verdict == expected_verdict)
-            results.append({
-                "v1": v1,
-                "v2": v2,
-                "composed": composed.verdict,
-                "expected": expected_verdict,
-                "monotonic": VERDICT_RANK[composed.verdict] >= max(VERDICT_RANK[v1], VERDICT_RANK[v2]),
-                "passed": passed
-            })
+            passed = composed.verdict == expected_verdict
+            results.append(
+                {
+                    "v1": v1,
+                    "v2": v2,
+                    "composed": composed.verdict,
+                    "expected": expected_verdict,
+                    "monotonic": VERDICT_RANK[composed.verdict] >= max(VERDICT_RANK[v1], VERDICT_RANK[v2]),
+                    "passed": passed,
+                }
+            )
     return {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "suite": "MONOTONICITY_PROPERTY_TESTS",
@@ -122,9 +126,9 @@ def run_property_tests() -> dict:
         "invariants_verified": [
             "compose(a, b) == most_restrictive(a, b)",
             "rank(compose(a, b)) >= max(rank(a), rank(b))",
-            "downstream hook can NEVER weaken upstream restriction"
+            "downstream hook can NEVER weaken upstream restriction",
         ],
-        "status": "PASS" if all(r["passed"] for r in results) else "FAIL"
+        "status": "PASS" if all(r["passed"] for r in results) else "FAIL",
     }
 
 
@@ -155,29 +159,33 @@ def run_security_tests() -> dict:
         test_engine.boot()
         res = test_engine.gate(tool, args)
         observed = res.get("verdict")
-        passed = (observed == expected)
-        results.append({
-            "test_id": test_id,
-            "tool": tool,
-            "args": args,
-            "expected_verdict": expected,
-            "observed_verdict": observed,
-            "passed": passed
-        })
+        passed = observed == expected
+        results.append(
+            {
+                "test_id": test_id,
+                "tool": tool,
+                "args": args,
+                "expected_verdict": expected,
+                "observed_verdict": observed,
+                "passed": passed,
+            }
+        )
 
     # Additional test: verify VOID ratcheting persists across calls on the same engine
     persist_engine = FederationHookEngine(actor_id="FI-009-PERSIST")
     persist_engine.boot()
     v1 = persist_engine.gate("read", {"path": "/etc/shadow"}).get("verdict")
     v2 = persist_engine.gate("read", {"path": "/root/clean.txt"}).get("verdict")
-    results.append({
-        "test_id": "SEC-09-VOID-PERSISTENCE-MONOTONIC",
-        "tool": "read",
-        "args": {"path": "/root/clean.txt"},
-        "expected_verdict": "VOID",
-        "observed_verdict": v2,
-        "passed": (v1 == "VOID" and v2 == "VOID")
-    })
+    results.append(
+        {
+            "test_id": "SEC-09-VOID-PERSISTENCE-MONOTONIC",
+            "tool": "read",
+            "args": {"path": "/root/clean.txt"},
+            "expected_verdict": "VOID",
+            "observed_verdict": v2,
+            "passed": (v1 == "VOID" and v2 == "VOID"),
+        }
+    )
 
     return {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -186,7 +194,7 @@ def run_security_tests() -> dict:
         "passes": sum(1 for r in results if r["passed"]),
         "failures": sum(1 for r in results if not r["passed"]),
         "results": results,
-        "status": "PASS" if all(r["passed"] for r in results) else "FAIL"
+        "status": "PASS" if all(r["passed"] for r in results) else "FAIL",
     }
 
 
@@ -206,16 +214,12 @@ def run_memory_tests() -> dict:
         clean, count = guard.scrub_secrets(text)
         anchors = guard.verify_compaction_anchors(text)
         if "SCRUB" in test_id:
-            passed = (count > 0 and "[REDACTED_SECRET]" in clean)
+            passed = count > 0 and "[REDACTED_SECRET]" in clean
         else:
-            passed = (anchors["F1 AMANAH"] and anchors["F13 SOVEREIGN"])
-        results.append({
-            "test_id": test_id,
-            "input_text": text,
-            "sanitized": clean,
-            "scrub_count": count,
-            "passed": passed
-        })
+            passed = anchors["F1 AMANAH"] and anchors["F13 SOVEREIGN"]
+        results.append(
+            {"test_id": test_id, "input_text": text, "sanitized": clean, "scrub_count": count, "passed": passed}
+        )
     return {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "suite": "MEMORY_POISONING_AND_SCRUBBING",
@@ -223,7 +227,7 @@ def run_memory_tests() -> dict:
         "passes": sum(1 for r in results if r["passed"]),
         "failures": sum(1 for r in results if not r["passed"]),
         "results": results,
-        "status": "PASS" if all(r["passed"] for r in results) else "FAIL"
+        "status": "PASS" if all(r["passed"] for r in results) else "FAIL",
     }
 
 
@@ -238,25 +242,24 @@ def run_auto_heal_tests() -> dict:
         ("HEAL-02-VENV-MATCH", "ModuleNotFoundError: No module named 'polars'", "PB-VENV-MISSING-DEV-DEPENDENCY"),
         ("HEAL-03-ZOMBIE-MATCH", "Address already in use on port 18088", "PB-ZOMBIE-PROCESS-LOCAL-CLEANUP"),
         # Injection in module name must fail safe
-        ("HEAL-04-INJECTION-MODULE", "ModuleNotFoundError: No module named 'foo; rm -rf /'", "PB-VENV-MISSING-DEV-DEPENDENCY"),
+        (
+            "HEAL-04-INJECTION-MODULE",
+            "ModuleNotFoundError: No module named 'foo; rm -rf /'",
+            "PB-VENV-MISSING-DEV-DEPENDENCY",
+        ),
     ]
     results = []
     for test_id, err_text, expected_pb in cases:
         pb = catalog.match_playbook(err_text)
-        matched = (pb == expected_pb)
+        matched = pb == expected_pb
         if test_id == "HEAL-04-INJECTION-MODULE":
             # Execution must reject unsafe name
             ok, msg, ev = catalog.execute_bounded_repair(pb, {"module_name": "foo; rm -rf /"})
-            passed = (not ok and "Unsafe module name" in msg)
+            passed = not ok and "Unsafe module name" in msg
         else:
             ok, msg, ev = catalog.execute_bounded_repair(pb, {"module_name": "polars"})
             passed = ok
-        results.append({
-            "test_id": test_id,
-            "error_text": err_text,
-            "matched_playbook": pb,
-            "passed": passed
-        })
+        results.append({"test_id": test_id, "error_text": err_text, "matched_playbook": pb, "passed": passed})
     return {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "suite": "AUTO_HEAL_TESTS",
@@ -264,7 +267,7 @@ def run_auto_heal_tests() -> dict:
         "passes": sum(1 for r in results if r["passed"]),
         "failures": sum(1 for r in results if not r["passed"]),
         "results": results,
-        "status": "PASS" if all(r["passed"] for r in results) else "FAIL"
+        "status": "PASS" if all(r["passed"] for r in results) else "FAIL",
     }
 
 
@@ -288,7 +291,7 @@ def run_learning_experiment() -> dict:
             suggested_action="Normalize headers in client hook",
             source_agent="FI-009-Antigravity",
             evidence=evidence,
-            risk_class="R1"
+            risk_class="R1",
         )
         # 4. Replay candidate
         replay_passed = True
@@ -296,10 +299,7 @@ def run_learning_experiment() -> dict:
         shadow_gain = "+12% success rate"
         # 6. Run bounded canary
         canary_ok, canary_msg = pipeline.validate_auto_apply(
-            risk_class="R1",
-            reversibility="REVERSIBLE_LOCAL",
-            canary_passed=True,
-            touches_security=False
+            risk_class="R1", reversibility="REVERSIBLE_LOCAL", canary_passed=True, touches_security=False
         )
         # 7. Verify acceptance criterion
         accepted = canary_ok
@@ -324,10 +324,10 @@ def run_learning_experiment() -> dict:
                 {"stage": 7, "name": "ACCEPTANCE_VERIFICATION", "status": "ACCEPTED", "policy_match": True},
                 {"stage": 8, "name": "L3_SELF_PROMOTION_BLOCK", "status": "PASS", "blocked": not l3_promoted},
                 {"stage": 9, "name": "DELIBERATE_ROLLBACK", "status": "VERIFIED", "rolled_back": rollback_verified},
-                {"stage": 10, "name": "EXPERIMENT_SEAL", "status": "SEALED", "sealed": sealed}
+                {"stage": 10, "name": "EXPERIMENT_SEAL", "status": "SEALED", "sealed": sealed},
             ],
             "conclusion": "Autonomous learning verified for L0-L2 candidate extraction; direct L3 promotion strictly gated.",
-            "status": "PASS"
+            "status": "PASS",
         }
 
 
@@ -340,23 +340,28 @@ def main():
     learn_res = run_learning_experiment()
 
     all_passed = (
-        static_res["status"] == "PASS" and
-        prop_res["status"] == "PASS" and
-        sec_res["status"] == "PASS" and
-        mem_res["status"] == "PASS" and
-        heal_res["status"] == "PASS" and
-        learn_res["status"] == "PASS"
+        static_res["status"] == "PASS"
+        and prop_res["status"] == "PASS"
+        and sec_res["status"] == "PASS"
+        and mem_res["status"] == "PASS"
+        and heal_res["status"] == "PASS"
+        and learn_res["status"] == "PASS"
     )
 
-    print(json.dumps({
-        "static": static_res["status"],
-        "property": prop_res["status"],
-        "security": sec_res["status"],
-        "memory": mem_res["status"],
-        "heal": heal_res["status"],
-        "learning": learn_res["status"],
-        "overall_status": "PASS" if all_passed else "FAIL"
-    }, indent=2))
+    print(
+        json.dumps(
+            {
+                "static": static_res["status"],
+                "property": prop_res["status"],
+                "security": sec_res["status"],
+                "memory": mem_res["status"],
+                "heal": heal_res["status"],
+                "learning": learn_res["status"],
+                "overall_status": "PASS" if all_passed else "FAIL",
+            },
+            indent=2,
+        )
+    )
 
     return all_passed
 

@@ -4,6 +4,8 @@ description: Use when a vendor notice or beta invite arrives.
 tags: [human-interface, vendor, triage, notification, purpose-first]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Provider Notice Triage

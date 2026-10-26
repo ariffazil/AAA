@@ -617,6 +617,7 @@ Build the diff with `difflib.unified_diff` over the original vs patched string, 
   machine. Before telling the principal you cannot reach a resource, sweep the skill corpus and the
   installed binaries for a lane — a false "I have no access" pushes manual verification back onto the one
   person whose attention the whole system exists to protect, and it is usually wrong.
+- **Double-nested `.hermes` from directory consolidation (scar 2026-10-16).** When agent state directories are consolidated under a shared root (e.g. `/root/AAA/hermes/`), the symlink `/root/.hermes → /root/AAA/hermes/` may point to a directory that does NOT contain `config.yaml`, `state.db`, or `auth.json` — those files live one level deeper at `/root/AAA/hermes/.hermes/`. The gateway boots with no config, defaults to `provider: openrouter` with empty model, and silently fails ("I couldn't connect to the AI model service"). Diagnostic: `ls /root/.hermes/config.yaml` — if MISSING, check `ls /root/.hermes/.hermes/config.yaml`. Fix: repoint symlink to the inner `.hermes` directory. **Also check `state.db` size** — the outer (wrong-level) state.db is ~272KB (empty gateway state), the inner (real) state.db is ~1.2GB. The gateway silently uses whichever `state.db` its HERMES_HOME resolves to.
 - **`/root/.hermes/config.yaml` is read-only to file-write helpers, by design.** Direct `patch` or
   `write_file` returns `Agent cannot modify security-sensitive configuration`. Config changes go
   through `hermes config set <dotted.key.path> <value>` per key, then verify with `hermes config get`

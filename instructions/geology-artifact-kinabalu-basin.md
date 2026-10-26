@@ -1,5 +1,7 @@
 # Kinabalu Basin Structural Genesis & Petroleum System Map (Acts 1–5)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 ## Executive Summary
 
 This artifact provides a comprehensive tectonic and petroleum system interpretation of the NW–SE transect through the Kinabalu Basin. It connects the structural evolution to the stratigraphic architecture and hydrocarbon plays, transforming the cross-section from a static visualization into a dynamic geological narrative.

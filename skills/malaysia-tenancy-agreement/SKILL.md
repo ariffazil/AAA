@@ -11,6 +11,8 @@ triggers:
   - Owner refuses to repair or replace
   - Deposit dispute or TA clause questions
   - Arif sends a Tenancy Agreement PDF for analysis
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Malaysia Tenancy Agreement Analysis

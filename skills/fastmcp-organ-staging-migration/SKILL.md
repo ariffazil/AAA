@@ -344,7 +344,7 @@ For A-FORGE (Node.js, MCP SDK v2 already), Wave migration is simpler than Python
 ## Reference Receipts
 
 - `references/well-staging-receipt-2026-08-11.md` — full WELL migration receipt (8/8 PASS, 3.25 hours, all patches documented)
-- `references/aforge-wave-migration-2026-08-11.md` — A-FORGE Wave A+B migration methodology (lighter pattern, 20 tools moved to stateless, transport-layer insight)
+- ``references/`` — A-FORGE Wave A+B migration methodology (lighter pattern, 20 tools moved to stateless, transport-layer insight)
 
 ## Reference Pattern Comparison
 
@@ -356,3 +356,6 @@ For A-FORGE (Node.js, MCP SDK v2 already), Wave migration is simpler than Python
 | Whitelist mechanism | `_EXEMPT_TOOLS` (middleware-level) | `STATELESS_TOOLS` (transport-level) |
 | Risk | MEDIUM (beta framework) | MEDIUM (auth duplication removal) |
 | Auth preserved | ✅ task_context unchanged | ✅ task_context + lease_id + policy_gate unchanged |
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

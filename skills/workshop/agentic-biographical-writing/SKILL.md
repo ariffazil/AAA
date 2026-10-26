@@ -109,14 +109,14 @@ This task class has a known iteration cadence. Plan for it from the start, not a
 1. **Draft 1 — basic version.** Witness account or investigative biography. Source from metadata and corpus. Around 5,000–8,000 words. Cover and PDF in light theme. This draft is a scaffold.
 2. **Push to upgrade.** Principal will ask for: more visual, more intimate, voice shift (e.g. "make it the friend's perspective", "make it first-person as the principal"). Don't fight this — restructure the draft around the new angle.
 3. **Push to real data.** Principal will provide the actual source: WhatsApp export, voice notes, photos. When this happens, drop the metadata-derived version and re-author from the real data. The structural findings from Step 2 become the spine of the new draft.
-4. **Push to real book format.** Principal will ask for: cover image, A5 / hardcover margins, drop caps, running headers, ISBN-style metadata. This is the forge-pdf-delivery + image-gen phase. See `references/book-format-pipeline.md`.
+4. **Push to real book format.** Principal will ask for: cover image, A5 / hardcover margins, drop caps, running headers, ISBN-style metadata. This is the forge-pdf-delivery + image-gen phase. See ``references/``.
 5. **(Sometimes) Push to scope clarification.** Principal may say "actually, write about humans and agents in general, not just us." This is the scope failure signal. Push back to the actual corpus. The book is not "everything about X"; it is what the corpus allows.
 
 Each iteration adds 30–50% to the word count and 2–3× the file size. Plan disk and token budget accordingly.
 
 ### Step 6: Cover and book-format rendering
 
-For the book-class output, see `references/book-format-pipeline.md`. The key commands (validated):
+For the book-class output, see ``references/``. The key commands (validated):
 
 ```bash
 # Cover image generation — abstract symbolic, no people, no real names
@@ -148,7 +148,7 @@ python3 -c "from pypdf import PdfWriter, PdfReader; m=PdfWriter();
 m.write('FINAL.pdf')"
 ```
 
-The full CSS template is in `references/book-format-pipeline.md`. Do not skip the `--prompt-optimizer` flag on image-gen; without it the visuals degrade significantly.
+The full CSS template is in ``references/``. Do not skip the `--prompt-optimizer` flag on image-gen; without it the visuals degrade significantly.
 
 ## Pitfalls
 
@@ -173,5 +173,8 @@ The full CSS template is in `references/book-format-pipeline.md`. Do not skip th
 ## Support files
 
 - `references/fabrication-boundary.md` — the layered defense against inventing real-person interior; what consent looks like, what source looks like, what to do when the principal pushes for invention.
-- `references/book-format-pipeline.md` — full pandoc + weasyprint + image-gen recipe with validated CSS, page-size variables, and cover-merge command sequence. Includes the weasyprint `AssertionError` on background-image gotcha (use `<img>` tag, not `background-image`).
-- `references/isaacson-voice-moves.md` — concrete sentences and paragraph structures in the Isaacson register. Read once before drafting any prose in that mode.
+- ``references/`` — full pandoc + weasyprint + image-gen recipe with validated CSS, page-size variables, and cover-merge command sequence. Includes the weasyprint `AssertionError` on background-image gotcha (use `<img>` tag, not `background-image`).
+- ``references/`` — concrete sentences and paragraph structures in the Isaacson register. Read once before drafting any prose in that mode.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

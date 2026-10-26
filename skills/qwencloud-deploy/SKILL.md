@@ -20,6 +20,8 @@ output: >-
   (.qwencloud-deploy), and success card with access URL, cost summary, and next-step guidance.
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Qwen Cloud Deploy
 

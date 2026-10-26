@@ -1,5 +1,7 @@
 # Zen doctrine
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 ## Machine peace: no mutation without rollback
 - Snapshot FIRST before any `rsync --delete`, `rm -rf`, or deploy
 - Dry-run with exclusions (`.env`, `data/`, `logs/`, `node_modules/`, `venv/`, `__pycache__/`, `*.db`) BEFORE destructive sync

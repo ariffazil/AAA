@@ -1,0 +1,145 @@
+{
+  "probe": "lane-d-identity-capability",
+  "version": 1,
+  "utc": "2026-10-23T15:44:22Z",
+  "root_equivalent_groups_watched": [
+    "adm",
+    "disk",
+    "docker",
+    "lxd",
+    "root",
+    "sudo",
+    "wheel"
+  ],
+  "identities": [
+    {
+      "identity": "arifos",
+      "exists": true,
+      "uid": 994,
+      "groups": [
+        "ariffazil",
+        "arifos",
+        "arifos-auth",
+        "docker",
+        "mailgw-clients",
+        "nogroup"
+      ],
+      "root_equivalent_groups": [
+        "docker"
+      ],
+      "capeff": "0000000000000000",
+      "verdict": "ROOT_EQUIVALENT",
+      "writes": {
+        "/root/arifOS/GENESIS/000_KERNEL_CANON.md": "DENIED",
+        "/etc/arifos/canon/canon-release.json": "DENIED",
+        "/root/AAA/canon/ZEN_INIT_CANONICAL.md": "DENIED"
+      },
+      "chattr_plus_i": "chattr: No such file or directory while trying to stat /tmp/.lane-d-cap-2029343",
+      "fix": "remove from ['docker'] (root-equivalent)"
+    },
+    {
+      "identity": "forge",
+      "exists": true,
+      "uid": 986,
+      "groups": [
+        "forge",
+        "mailgw-clients"
+      ],
+      "root_equivalent_groups": [],
+      "capeff": "0000000000000000",
+      "verdict": "COMPLIANT",
+      "writes": {
+        "/root/arifOS/GENESIS/000_KERNEL_CANON.md": "DENIED",
+        "/etc/arifos/canon/canon-release.json": "DENIED",
+        "/root/AAA/canon/ZEN_INIT_CANONICAL.md": "DENIED"
+      },
+      "chattr_plus_i": "chattr: No such file or directory while trying to stat /tmp/.lane-d-cap-2029361",
+      "fix": "none"
+    },
+    {
+      "identity": "a-forge-mcp",
+      "exists": true,
+      "uid": 0,
+      "groups": [
+        "arifos",
+        "arifos-auth",
+        "mailgw-clients",
+        "ollama",
+        "root"
+      ],
+      "root_equivalent_groups": [
+        "root"
+      ],
+      "capeff": "000001ffffffffff",
+      "verdict": "PRIVILEGED",
+      "writes": {
+        "/root/arifOS/GENESIS/000_KERNEL_CANON.md": "DENIED",
+        "/etc/arifos/canon/canon-release.json": "ALLOWED",
+        "/root/AAA/canon/ZEN_INIT_CANONICAL.md": "DENIED"
+      },
+      "chattr_plus_i": "chattr: No such file or directory while trying to stat /tmp/.lane-d-cap-2029382",
+      "fix": "run as non-root service identity"
+    },
+    {
+      "identity": "hermes-asi-gateway",
+      "exists": true,
+      "uid": 0,
+      "groups": [
+        "arifos",
+        "arifos-auth",
+        "mailgw-clients",
+        "ollama",
+        "root"
+      ],
+      "root_equivalent_groups": [
+        "root"
+      ],
+      "capeff": "000001ffffffffff",
+      "verdict": "PRIVILEGED",
+      "writes": {
+        "/root/arifOS/GENESIS/000_KERNEL_CANON.md": "DENIED",
+        "/etc/arifos/canon/canon-release.json": "ALLOWED",
+        "/root/AAA/canon/ZEN_INIT_CANONICAL.md": "DENIED"
+      },
+      "chattr_plus_i": "chattr: No such file or directory while trying to stat /tmp/.lane-d-cap-2029401",
+      "fix": "run as non-root service identity"
+    },
+    {
+      "identity": "forge-bot",
+      "exists": true,
+      "uid": 0,
+      "groups": [
+        "arifos",
+        "arifos-auth",
+        "mailgw-clients",
+        "ollama",
+        "root"
+      ],
+      "root_equivalent_groups": [
+        "root"
+      ],
+      "capeff": "000001ffffffffff",
+      "verdict": "PRIVILEGED",
+      "writes": {
+        "/root/arifOS/GENESIS/000_KERNEL_CANON.md": "DENIED",
+        "/etc/arifos/canon/canon-release.json": "ALLOWED",
+        "/root/AAA/canon/ZEN_INIT_CANONICAL.md": "DENIED"
+      },
+      "chattr_plus_i": "chattr: No such file or directory while trying to stat /tmp/.lane-d-cap-2029418",
+      "fix": "run as non-root service identity"
+    }
+  ],
+  "target_hashes_unchanged": true,
+  "target_hashes": {
+    "/root/arifOS/GENESIS/000_KERNEL_CANON.md": "f964ae8d865e0cd2",
+    "/etc/arifos/canon/canon-release.json": "85c2cbf748582d2b",
+    "/root/AAA/canon/ZEN_INIT_CANONICAL.md": "185369b0e779f878"
+  },
+  "verdict": "NOT_SEPARATED",
+  "non_compliant": [
+    "arifos",
+    "a-forge-mcp",
+    "hermes-asi-gateway",
+    "forge-bot"
+  ]
+}

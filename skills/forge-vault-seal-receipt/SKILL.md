@@ -203,6 +203,41 @@ When the agent cannot complete the seal (F13 gate), it must:
    - Fabricating receipt_id or seal_id
    - Claiming "SEAL COMPLETE" when the gate returned an error
 
+## Two gates before ANY Lane B receipt — and the digest-binding rule (2026-10-22)
+
+MARKER:LANEB-TWO-GATES-2026-10-22
+
+A Lane B `forge_vault(mode="receipt")` is not free. Observed on a live session
+(333-AGI, SEAL-308e15cb13024396):
+
+1. **CLAIM_GATE (CLAIM_TEXT_MISSING).** Declaring `claim_class` without a
+   `justification` text fails closed — a declared class is not a justification.
+   Fix: pass `justification` carrying action-eligible text (MEASURED | MECHANISM |
+   PATTERN). Dry-check first: `python3 /root/AAA/lib/claim_kernel/claim_kernel.py
+   eligible "<text>" --declared MEASURED`.
+
+2. **LEASE_GATE (LEASE_CLASS_EXCEEDED).** `forge_vault` is class IRREVERSIBLE; the
+   session lease must permit IRREVERSIBLE. An **OBSERVE_ONLY** session (actor not
+   cryptographically verified) is capped at OBSERVE -> the receipt is BLOCKED.
+   Escalation is itself IRREVERSIBLE-gated (`forge_lease` is also IRREVERSIBLE) —
+   a deliberate chicken-and-egg: an unverified actor cannot self-upgrade to write the
+   ledger. Instance: the only 333-AGI leases on disk were GitHub-connector-scoped.
+   **Unlock:** bind identity (Ed25519 `actor_signature` via
+   `opencode-ed25519-bootstrap-fix`, or signing lane :18900) so
+   `actor_cryptographically_verified=true` mints a MUTATE lease; or the sovereign
+   issues the lease. Do NOT hand-append to `outcomes.jsonl`/`session-receipts.jsonl`
+   to bypass — that defeats the envelope the gate enforces.
+
+3. **DIGEST BINDING.** A digest-bound `ARIF_SEAL <name> <digest>` whose digest does
+   not re-derive from its artifact is NOT a valid seal. Re-derive every digest
+   (`sha256sum <artifact>`) before treating a seal as real. Instance: four
+   ARIF_SEAL digests bound to no file on disk while the real artifacts hashed
+   differently.
+
+**When the vault receipt is blocked**, the honest Lane B close = a metabolic receipt
+(`arifflow flow_ingest step_type="Seal"`) PLUS an explicit `UNSEALED
+(LEASE_CLASS_EXCEEDED)` statement — never a forced append.
+
 ## Dual evaluation path (critical, discovered 2026-08-08)
 
 Lane A (`arif_seal`) has **two independent evaluation paths** that can return contradictory results:
@@ -382,6 +417,7 @@ with open(path, "wb") as f: f.write(data)
 **Pitfall (verified 2026-08-12, surat-final-v12-deepen forge):** patch the placeholder with `pathlib.Path.replace_bytes` or a binary write — NOT with string-mode `open(path).write(...)`. The file may contain non-UTF-8 bytes; a string write will silently corrupt them.
 
 ## Pitfalls
+- **Writer newline discipline (F13 ratified 2026-10-15, glued-line incident SEALED_EVENTS.jsonl:1352):** EVERY appender to an append-only ledger MUST verify the file's last byte is `0x0a` before writing; if not, write the missing newline first (see arifOS commit 78f587e0c self-heal). Two JSON objects on one line corrupts strict parsers even when both objects are byte-intact. Check: `tail -c1 <ledger> | xxd -p` must equal `0a`.
 
 - **A-FORGE :7071 vs :7072 confusion.** `:7071` does not expose `/health` on HTTP (MCP-only, no `tools/list` without session init). `:7072` is the bridge: session-free, 116 tools enumerate immediately. For receipt sealing, use `:7072`. For sub-task execution, use `:7071` (requires session init).
 - **`forge_vault` is in the bridge tool list but gated at runtime.** The tool appears in `tools/list` at `:7072` (which is session-free), but calling it returns `-32042` if the actor is not SOVEREIGN. Tool availability ≠ authorization. The tool surface and the authority surface are separate.
@@ -628,4 +664,10 @@ chown arifos:arifos /root/.agent-workbench/mcp-audit.jsonl
 - Constitutional verdicts (use F13 Elicitation flow)
 - First time seeing the issue (try forge_vault once first)
 
-**Full worked example + receipt schema:** `references/direct-vault-write-fallback-2026-08-11.md` (under `arifos-cron-ops` skill umbrella). Same canonical ledger, different write path.
+**Full worked example + receipt schema:** `/root/AAA/skills/arifos-cron-ops/references/direct-vault-write-fallback-2026-08-11.md` (under `arifos-cron-ops` skill umbrella). Same canonical ledger, different write path.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-004-session-gate-confusion
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

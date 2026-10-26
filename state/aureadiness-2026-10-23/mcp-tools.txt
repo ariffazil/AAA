@@ -1,0 +1,9 @@
+A-FORGE sense  :7071  tools=115  [server=A-FORGE v=0.1.0]  forge_session_init,forge_health_check,forge_heart_critique,forge_check_governance,forge_execute,forge_judge_proxy
+GEOX           :8081  tools= 27  [server=GEOX v=v2026.10.03]  geox_geomechanics,geox_glof,geox_paleobiodb_query,geox_observe,geox_well_ingest,geox_well_qc
+WEALTH         :18082  tools= 15  [server=WEALTH Federated Domain v=v2026.07.24]  capital_primitive,capital_health,capital_diagnose,capital_market,capital_ledger,capital_registry
+WELL           :18083  tools= 10  [server=WELL v=v2026.10.20]  well_machine_diagnose,well_machine_recommend,well_classify_substrate,well_trace_lineage,well_assess_homeostasis,well_check_repair
+arifFlow       :7073  UNKNOWN — HTTPError: HTTP Error 404: Not Found
+FED            :7074  tools=  7  [server=FED — Federation Router v=4.0.4]  fed_route,fed_status,fed_probe,fed_contrast,fed_health,fed_classify
+CHRON          :18102  tools= 22  [server=CHRON v=4.2.0]  chron_predictions_due,chron_calibration_state,chron_last_loop,chron_active_events,chron_active_predictions,chron_store_stats
+FRAME          :18085  UNKNOWN — HTTPError: HTTP Error 404: Not Found
+hermes-mcp     :18087  tools= 15  [server=hermes-mcp v=2026.09.25.1]  hermes_registry_status,hermes_claim_validate,hermes_perspective_scope,hermes_qualia_boundary,hermes_contradiction_scan,hermes_counterstory_test

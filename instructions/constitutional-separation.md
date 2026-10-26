@@ -1,4 +1,5 @@
 # CONSTITUTIONAL SEPARATION ENFORCEMENT
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
 > Forged: 2026-08-29T15:50:00Z
 > Source: 888-JUDGE verdict (external surveillance)
 > Enforcement: F13 sovereign directive

@@ -289,10 +289,81 @@ def regex_units() -> int:
     return 1 if failed else 0
 
 
+def gate_extension_checks() -> int:
+    print("=" * 74)
+    print("GATE EXTENSION CONFORMANCE CHECKS")
+    print("=" * 74)
+    passed = failed = 0
+
+    # 1. Junk stdin blocks
+    p1 = subprocess.run(
+        [sys.executable, GATE],
+        input="this is not valid json at all",
+        capture_output=True,
+        text=True,
+        timeout=10,
+    )
+    ok1 = p1.returncode == 2 and "block" in p1.stdout and "malformed JSON" in p1.stdout
+    print(f"{'PASS' if ok1 else 'FAIL'}  junk stdin blocks (fail-closed)")
+    passed += ok1
+    failed += not ok1
+
+    # 2. A plain T2 write emits a witnessed receipt
+    session_id = f"selftest-{os.getpid()}"
+    p2 = subprocess.run(
+        [sys.executable, GATE],
+        input=json.dumps({
+            "tool_name": "write_file",
+            "tool_input": {"path": "/tmp/test-t2-plain.txt", "content": "plain uncritical content"},
+            "session_id": session_id,
+        }),
+        capture_output=True,
+        text=True,
+        timeout=10,
+        env=dict(os.environ, ARIFOS_TRACE_ID="trc-test-receipt"),
+    )
+    receipt_path = "/root/.local/share/arifos/hermes_hook_receipts.jsonl"
+    found_receipt = False
+    if os.path.exists(receipt_path):
+        with open(receipt_path, "r", encoding="utf-8") as f:
+            for line in f:
+                if session_id in line and "hermes-gate.witnessed" in line:
+                    found_receipt = True
+                    break
+    ok2 = p2.returncode == 0 and found_receipt
+    print(f"{'PASS' if ok2 else 'FAIL'}  plain T2 write emits witnessed receipt")
+    passed += ok2
+    failed += not ok2
+
+    # 3. Receipt-write failure blocks
+    p3 = subprocess.run(
+        [sys.executable, GATE],
+        input=json.dumps({
+            "tool_name": "write_file",
+            "tool_input": {"path": "/tmp/test-t2-fail.txt", "content": "plain uncritical content"},
+            "session_id": "test-fail-receipt",
+        }),
+        capture_output=True,
+        text=True,
+        timeout=10,
+        env=dict(os.environ, HERMES_RECEIPT_PATH="/dev/full/cannot/write/here.jsonl"),
+    )
+    ok3 = p3.returncode == 2 and "receipt-write failure" in p3.stdout
+    print(f"{'PASS' if ok3 else 'FAIL'}  receipt-write failure blocks (fail-closed)")
+    passed += ok3
+    failed += not ok3
+
+    print("-" * 74)
+    print(f"extensions: {passed}/3 passed, {failed} failed")
+    return 1 if failed else 0
+
+
 if __name__ == "__main__":
     if "--regex" in sys.argv:
         sys.exit(regex_units())
     rc = behavioural()
     print()
     rc |= regex_units()
+    print()
+    rc |= gate_extension_checks()
     sys.exit(rc)

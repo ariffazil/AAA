@@ -1,6 +1,6 @@
 {
   "schema": "mcp",
-  "version": "2026.06.30",
+  "version": "2026.10.19",
   "protocolVersion": "2025-11-25",
   "name": "AAA MCP",
   "description": "Control plane — A2A gateway, cockpit dashboard, agent registry.",

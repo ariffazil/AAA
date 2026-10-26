@@ -128,6 +128,12 @@ into a room no one was watching, and wrong-bot posts are permanent.
   figure without a citation are held before they are written — the gate reads the **claim**, not the
   path, and a trigger word in the filename no longer satisfies it. Open the file with a resolvable
   source (`# SOURCE: <path|url>`) and strip that line before synthesis if the text is spoken.
+- **`sado say --to telegram:<id>` renders and gates fine but delivery fails.** Verified 2026-10-20:
+  gate prints `PASS`, `deliver_rc: 1`, `delivered: false` with `Could not resolve
+  'telegram:-1003815535761'` — the wrapper's long-form `--to` path. The take is still good:
+  convert to a real voice bubble and POST it yourself
+  (`ffmpeg -c:a libopus -b:a 48k -ar 48000 -ac 1` → `sendVoice` with `chat_id` + `caption`),
+  then print `result.message_id` + `chat.id`. Never re-render just because the handoff failed.
 - **`ffmpeg` → `libopus` before `sendVoice`.** A raw `.mp3` sent as a voice bubble plays as a file.
   `-c:a libopus -b:a 48k -ar 48000` gives a real voice bubble.
 - **Cloned-voice renders carry an ASR round-trip obligation** before delivery — and note the

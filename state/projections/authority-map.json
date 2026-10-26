@@ -1,0 +1,248 @@
+{
+ "schema": "aaa/projection/authority-map/v1",
+ "generated_at": "2026-10-22T12:05:50Z",
+ "generated_by": "/root/scripts/projection_pipeline.py",
+ "consumer": "every warga agent (load-time authority reference) + human governance review",
+ "failure_class": "authority enforcement lived as prompt-law while its mechanical sources were undocumented",
+ "rule": "GENERATED from mechanism evidence — nothing here is authored doctrine. Policy blocks stay in F13-owned canon.",
+ "namespace_warning": "lane:555-ASI (agent lane) != KERNEL 555 (verb number 000-999). Two number systems; always label.",
+ "authority_classes": {
+  "source": "/root/arifOS/arifosmcp/abi/mode_contracts.json",
+  "action_class": [
+   "OBSERVE",
+   "PREPARE",
+   "MATERIAL",
+   "IRREVERSIBLE"
+  ],
+  "authority_required": [
+   "ANONYMOUS",
+   "OBSERVER",
+   "TRUSTED_AGENT",
+   "EXECUTOR",
+   "SOVEREIGN"
+  ],
+  "note": "SOVEREIGN is a mechanical kernel authority class (not an agent class): sole power to widen authority and to approve memory promote/forget (human_approval gate in arif_memory)."
+ },
+ "lanes": [
+  {
+   "lane": "SOVEREIGN (Arif)",
+   "roles": [
+    "widen authority",
+    "memory promote/forget approval",
+    "F13 decisions"
+   ],
+   "mechanical": [
+    "kernel authority_required=SOVEREIGN",
+    "arif_memory human_approval gate"
+   ]
+  },
+  {
+   "lane": "lane:333-AGI",
+   "roles": [
+    "propose",
+    "explore",
+    "synthesize"
+   ],
+   "mechanical": [
+    "session bind -> authority band (arif_init)",
+    "forge_lease max_action_class"
+   ],
+   "prompt_law_only": [
+    "role boundary vs lane:555-ASI (no cross-lane lease exists)"
+   ]
+  },
+  {
+   "lane": "lane:555-ASI",
+   "roles": [
+    "verify",
+    "challenge",
+    "falsify"
+   ],
+   "mechanical": [
+    "read-only tool surface (no mutate verbs on lane)"
+   ],
+   "prompt_law_only": [
+    "independence beyond provider diversity (scar-2026-10-002: same-model-different-prompt = costume verifier)"
+   ]
+  },
+  {
+   "lane": "lane:888-APEX",
+   "roles": [
+    "judge",
+    "prioritize",
+    "authorize"
+   ],
+   "mechanical": [
+    "arif_judge verdict -> seal_verdict_id chain (arifosmcp/runtime/tools.py)"
+   ],
+   "permanence_write": "MAY commit permanence (VAULT999 append = seal). CANNOT mutate runtime systems. Seal IS a write.",
+   "prompt_law_only": [
+    "verdict independence beyond provider diversity"
+   ]
+  },
+  {
+   "lane": "A-FORGE (executor)",
+   "roles": [
+    "execute",
+    "mutate",
+    "deploy"
+   ],
+   "mechanical": [
+    "arif_forge requires seal_verdict_id",
+    "lease scope/forbidden/max_action_class (src/domain/types/mcp-bridge.ts)",
+    "tools_sot.yaml per-tool access"
+   ]
+  }
+ ],
+ "mechanical_enforcement_inventory": {
+  "lease": {
+   "evidence": "/root/A-FORGE/src/domain/types/mcp-bridge.ts",
+   "fields": [
+    "scope",
+    "forbidden",
+    "max_action_class"
+   ]
+  },
+  "tool_surface_slices": {
+   "evidence": "/root/A-FORGE/tools_sot.yaml",
+   "tool_count": 115
+  },
+  "kernel_gate": {
+   "evidence": "/root/arifOS/arifosmcp/runtime/tools.py",
+   "chain": "arif_judge -> seal_verdict_id -> arif_forge",
+   "capabilities_tracked": 8
+  },
+  "hooks_live": {
+   "evidence": "/root/.arifos/agents/kimi/hooks",
+   "files": [
+    ".bak-acah2-20261016-aaa-witness-post.sh",
+    "aaa-completion-check.sh",
+    "aaa-danger-warn.sh",
+    "aaa-mcp-boot-readiness.sh",
+    "aaa-notify.sh",
+    "aaa-prompt-enrich.sh",
+    "aaa-session-close.sh",
+    "aaa-session-end.sh",
+    "aaa-session-start.sh",
+    "aaa-subagent-stop.sh",
+    "aaa-turn-classify.sh",
+    "aaa-witness-post.sh",
+    "aaa-witness-pre.sh",
+    "skill-selection-witness.sh"
+   ]
+  },
+  "governance_default": {
+   "evidence": "/root/AAA/arifos_kernel/abi/capability_registry.json",
+   "rule": "missing arifos_governance -> BLOCKED (requires_888_hold)"
+  }
+ },
+ "kernel_capability_action_classes": [
+  {
+   "capability_id": "session.bind",
+   "action_class": "OBSERVE",
+   "mutation": false,
+   "irreversible": false
+  },
+  {
+   "capability_id": "reality.observe",
+   "action_class": "OBSERVE",
+   "mutation": false,
+   "irreversible": false
+  },
+  {
+   "capability_id": "cognition.think",
+   "action_class": "PREPARE",
+   "mutation": false,
+   "irreversible": false
+  },
+  {
+   "capability_id": "intent.route",
+   "action_class": "PREPARE",
+   "mutation": false,
+   "irreversible": false
+  },
+  {
+   "capability_id": "memory.govern",
+   "action_class": "MATERIAL",
+   "mutation": true,
+   "irreversible": false
+  },
+  {
+   "capability_id": "authority.judge",
+   "action_class": "MATERIAL",
+   "mutation": false,
+   "irreversible": false
+  },
+  {
+   "capability_id": "action.execute",
+   "action_class": "MATERIAL",
+   "mutation": true,
+   "irreversible": false
+  },
+  {
+   "capability_id": "history.seal",
+   "action_class": "IRREVERSIBLE",
+   "mutation": true,
+   "irreversible": true
+  }
+ ],
+ "aforge_verbs": {
+  "source": "/root/AAA/registries/AFORGE_VERB_SCHEMA.json",
+  "status": "DRAFT_AWAITING_F13",
+  "verbs": [
+   {
+    "verb": "forge_inspect",
+    "authority_ceiling": "OBSERVE_ONLY",
+    "candidate_count": 26
+   },
+   {
+    "verb": "forge_plan",
+    "authority_ceiling": "OBSERVE_ONLY",
+    "candidate_count": 0
+   },
+   {
+    "verb": "forge_change",
+    "authority_ceiling": "OBSERVE_ONLY",
+    "candidate_count": 0
+   },
+   {
+    "verb": "forge_run",
+    "authority_ceiling": "MUTATE",
+    "candidate_count": 17
+   },
+   {
+    "verb": "forge_verify",
+    "authority_ceiling": "OBSERVE_ONLY",
+    "candidate_count": 0
+   },
+   {
+    "verb": "forge_extend",
+    "authority_ceiling": "OBSERVE_ONLY",
+    "candidate_count": 0
+   },
+   {
+    "verb": "forge_control",
+    "authority_ceiling": "MUTATE",
+    "candidate_count": 1
+   }
+  ]
+ },
+ "registered_agents": [
+  "777-FORGE",
+  "aaa-gateway",
+  "antigravity",
+  "arifos-kernel",
+  "claude-code",
+  "codex-cli",
+  "copilot-cli",
+  "geox-personal",
+  "geox-witness",
+  "grok-build",
+  "hermes-asi",
+  "hermesarifos-bot",
+  "kimi-code",
+  "mesa-test-agent",
+  "opencode",
+  "wealth-witness"
+ ]
+}

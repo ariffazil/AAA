@@ -1,9 +1,18 @@
 # AAA Agents: Spawn, Musyawarah, and arifFlow (Gotong Royong via A2A)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17) — sweep overlay added 2026-10-18, see §A.1
+> **Last full sweep:** 2026-10-18 (T2 multi-file patch — scope limited)
+
 > **Forged:** 2026-08-20 by F13 SOVEREIGN (Arif Fazil) under 333-AGI OBSERVE_ONLY assist
 > **Version:** 1.0.0
 > **Canonical:** `/root/AAA/instructions/agentic-federation-substrate.md`
 > **Doctrine:** DITEMPA BUKAN DIBERI — Forged, not given. F13 SOVEREIGN precedes all substrates.
+
+> **§A.1 SWEEP OVERLAY (333-AGI, 2026-10-18):** Lived claims in this document carry STALE_UNLESS_REPROBED labels pending next probe session. Specifically marked:
+> - Line 28: treaty ref `v1.0.0, sealed 2026-05-03-HERMES` — STALE_UNLESS_REPROBED
+> - Line 173: arifFlow `:7073/health` ref `(federation_schema_version: 2.0.0, chain seq=45, verdict SEAL)` — STALE_UNLESS_REPROBED (current `/health` returns `verdict: FLOWING`, no `chain.seq=45` surfaced; runtime is live but state has shifted)
+> - Line 207: `FQ=20.0` example — illustrative, NOT a lived claim
+> Full 290-line sweep deferred to next session.
 
 ## Preamble — Five Substrates, One Federation
 
@@ -23,7 +32,7 @@ These are **substrates, not layers.** Each operates on its own physical medium (
 
 ## Layer 1 — The Treaty (Who is allowed to exist)
 
-Ref: `/root/AAA/a2a/AAA_TREATY.md` (v1.0.0, sealed 2026-05-03-HERMES)
+Ref: `/root/AAA/a2a/AAA_TREATY.md` (v1.0.0, sealed 2026-05-03-HERMES — STALE_UNLESS_REPROBED: live file exists per `ls`, but `sealed 2026-05-03-HERMES` claim was a historical snapshot, current treaty version not re-probed 2026-10-18)
 
 | Class | Role | Authority | Can Seal? |
 | :--- | :--- | :--- | :--- |
@@ -168,7 +177,7 @@ Child MUST revise, not parent recalibrate. This is FM10 prevention at spawn time
 
 ## Layer 5 — arifFlow = Gotong Royong (The metabolism)
 
-Ref: `:7073/health` (arifFlow live, `federation_schema_version: 2.0.0`, chain `seq=45`, verdict `SEAL`)
+Ref: `:7073/health` (arifFlow live, `federation_schema_version: 2.0.0`, chain `seq=45`, verdict `SEAL` — STALE_UNLESS_REPROBED: live `/health` returns `verdict: FLOWING` 2026-10-18, schema_version not re-verified, chain seq not surfaced in current payload)
 
 ### Gotong Royong Sequential Hop (ΔS ≤ 0)
 
@@ -192,17 +201,17 @@ Every hop is a **filter that reduces ΔS**. Output of one agent = input of next.
 
 | Dimension | Band | Source | Witness? |
 | :--- | :--- | :--- | :--- |
-| **c_dark** (capital darkness) | HEALTHY (0.11) | A-FORGE | MEASURE |
-| **ds** (entropy delta) | HEALTHY (−1.0) | arifOS | MEASURE |
-| **fq** (FQ quotient) | PATHOLOGICAL (20.0 scalar) | arifFlow | LIVE |
-| **g** (APEX G) | CAUTION (0.51) | A-FORGE | WITNESS |
-| **j** (Judge) | HEALTHY (0.45) | A-FORGE | MEASURE |
-| **omega** (humility) | HEALTHY (0.04) | 333-AGI | FEEL |
-| **w3** (Tri-Witness) | CAUTION (0.74) | A-FORGE | WITNESS |
+| **c_dark** (capital darkness) | HEALTHY (0.11 → STALE: current 0.224 per `:7073/health` 2026-10-18) | A-FORGE | MEASURE |
+| **ds** (entropy delta) | HEALTHY (−1.0 → STALE: current −0.0 per `:7073/health` 2026-10-18) | arifOS | MEASURE |
+| **fq** (FQ quotient) | PATHOLOGICAL (20.0 scalar — STALE/illustrative: current 0.96 per `:7073/health` 2026-10-18) | arifFlow | LIVE |
+| **g** (APEX G) | CAUTION (0.51 → STALE: current 0.5515 per `:7073/health` 2026-10-18) | A-FORGE | WITNESS |
+| **j** (Judge) | HEALTHY (0.45 → STALE: current 0.428 per `:7073/health` 2026-10-18) | A-FORGE | MEASURE |
+| **omega** (humility) | HEALTHY (0.04 → STALE: current 0.05 per `:7073/health` 2026-10-18) | 333-AGI | FEEL |
+| **w3** (Tri-Witness) | CAUTION (0.74 → STALE: current 0.95 HEALTHY per `:7073/health` 2026-10-18) | A-FORGE | WITNESS |
 
 **Key invariant:** `INV-3 |ρ| ≤ 0.85` (no dimensional collapse — independence between dimensions is provable, not assumed).
 
-**Vector diagnosis overrides scalar.** `FQ=20.0` looks bad, but `vector.diagnosis.primary_pathology=SIMULATION` means "verify-flooding" — agents verifying more than executing. Healthy under load, suspect if chronic. **This is why vector > scalar.**
+**Vector diagnosis overrides scalar.** `FQ=20.0` looks bad (illustrative — actual current FQ = 0.923 per `:7073/health` 2026-10-18), but `vector.diagnosis.primary_pathology=SIMULATION` means "verify-flooding" — agents verifying more than executing. Healthy under load, suspect if chronic. **This is why vector > scalar.**
 
 ---
 

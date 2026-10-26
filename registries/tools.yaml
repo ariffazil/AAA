@@ -912,16 +912,6 @@ tools:
   approval_policy: on-demand
   execution_kind: read
   required_witnesses: []
-- id: forge_github_create_issue
-  name: forge_github_create_issue
-  description: "Create a GitHub issue. MUTATE \u2014 lease required."
-  source_type: mcp
-  server_ref: a-forge-mcp
-  risk_tier: high
-  approval_policy: hold
-  execution_kind: execute
-  required_witnesses:
-  - ARIFOS
 - id: forge_github_create_pull_request
   name: forge_github_create_pull_request
   description: "Create a GitHub pull request. MUTATE \u2014 lease required."

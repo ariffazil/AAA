@@ -1,5 +1,7 @@
 # Reality Compression Doctrine — Canonical Instruction
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Binding for all arifOS warga agents.** Operating doctrine, not a skill.
 > **Constitutional floors:** F1 (Amanah), F2 (Truth), F4 (Clarity/ΔS), F6 (Reversibility), F7 (Boundaries), F9 (Anti-Hantu), F13 (Sovereign/Veto)
 > **Canonical axiom:** *Intelligence is not information accumulation; intelligence is bounded reality compression.*

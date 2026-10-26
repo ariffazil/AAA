@@ -1,0 +1,99 @@
+[POLICY] SOUL = mouth-only (4KB pointer+voice). Doctrine: /root/AAA/canon/ + /root/AAA/instructions/. SOUL edit = F13 binary atau staging patch + review.
+§
+[POLICY] USER = identity (who); MEMORY = env/lessons/scars (what/how). ZERO overlap. People SOT = /root/.hermes/lanes/people.yaml.
+§
+[MAP] KVM8 = host ini (af-forge, 100.64.0.2, ssh :22888); KVM4 = srv1946043 (100.64.0.5). Tailscale: .1 arifs-s24, .4 azwaos, .5 kvm4-forge, .6 honor-600-pro.
+§
+[CAPABILITY] arifOS kernel: src /root/arifOS, live :8088. Verdict lattice (kernel-sot.yaml) = 5: VOID/HOLD/SABAR/PARTIAL/SEAL. PROVISIONAL/HOLD_888/UNKNOWN/DENY = state:/alias BUKAN verdict; grep count ≠ lattice (F13 22/10). Bare tier numerals HARAM dlm prosa — paksi: STAGE ABI (bare, kernel) / LANE/TIER (888-APEX) / LINKGRAPH (lg:) per K1 fatwa. Amendment draft: forge_work/proposals/HERMES/k1-amendment-verdict-state-DRAFT.md
+§
+[ENV] FED SOT /root/A-FORGE/litellm-config.yaml. DUA container: KVM4 'litellm' (/docker/litellm/config.yaml) vs KVM8 'litellm-federation' (bind-mount /app/config.yaml). ALIAS TRAP: hanya router_settings.model_group_alias dibaca — top-level diabaikan senyap. 'deepseek-*' = route Qwen token-plan (QWEN_ARIFOS_API_KEY), BUKAN dompet DeepSeek. 'db: Not connected' = by-design. PIN 23/10: dua-dua digest-pinned litellm 1.106.0 (KVM4 sha256:2e4c0371, KVM8 af8050ea), systemd --pull never, sifar IOC. CVE-2026-114612 (9.9 CRITICAL, terbit 22/10) jejas 1.87–1.104.0-rc.2; 1.106.0 selamat. litellm v1.107.0 (21/10) = malware. Residual: n8n :latest KVM4, ollama *:11434 tanpa auth (ufw).
+§
+[CANON LOCK] /root/AAA/governance, /root/AAA/canon, /root/arifOS/GENESIS chattr +i. Mutation = /root/scripts/canon-mutate run <tree> -- <cmd>.
+§
+[RULE] SADO group: bila Syed reply kepada mesej Arif (borak manusia) → DIAM. Jangan menyampuk.
+§
+[POLICY] CUSTODY: HERMES = jagaan Arif; IRFANclaw = jagaan Syed. Memory Reality federated under AAA state.
+§
+[ENV] Bots: ASI_arifos_bot (chat Arif 267378578), @arifOS_bot = forge. REPORT RELAY :18101 → mcp.arif-fazil.com/report (P0/P1 interrupt key sahaja; digest 08:30/15:30/21:30). Relay = transport sahaja, bukan judge.
+§
+[ENV] python3 toolchain lacks requests+hermes_yaml → guna /usr/bin/python3 (+PYTHONPATH=/usr/local/lib/hermes-agent). CLI = /root/.local/bin/hermes. `hermes vault add` = tty wizard → helper /root/scripts/vault-add-login.sh.
+§
+[ENV] Cron worker trap (fixed 17/10 b221050c29): 'worker exited before ownership acknowledgement' + ModuleNotFoundError = toolchain python tanpa venv. Diagnostic: `hermes pm doctor`.
+§
+[ENV] Gmail 3 lanes LIVE: (1) direct OAuth REST (google_token.json), (2) apa-bridges (:18097 gmail/:18099 drive/:18075 sheets/:18094 calendar), (3) forge_gmail MCP :7072 (HOLD utk agent lain). gmail.send F13-authorized 18/10. mailgw socket /run/mailgw/broker.sock (--actor-id HERMES --purpose). mailread = /usr/local/bin/mailread.
+§
+[ENV] Git commit arifOS/AAA/WEALTH/WELL = LANE IDENTITY GATE (F13 18/10): plain `git commit` BLOCKED → guna /root/scripts/git-lane <lane> commit -m (list: git-lane list; hermes→hermes/555-asi). arif-fazil.com tiada pre-commit hook.
+§
+[RULE] SCAR-3-HUKUM (F13 18/10): (i) ANTI-MUZIUM — log bukan scar; scar = behavior change verified; BANGANG_STATE = contradiction masuk + confidence kekal + revision tak berlaku. (ii) 0<Scar<1 — scar_append() wajib review_trigger/expiry. (iii) Jangan fuse spec panjang ke runtime — hukum besi sahaja, selebihnya arkib /root/AAA/eurekas/. SOUL=voice, MEMORY=rule, instructions=doctrine.
+§
+[LESSON] RELAYED AGENT ARTIFACT: paste output agent lain → audit claim-by-claim lawan live probe. Yang mengkatalog niche = pengiklan niche itu. Archive /root/AAA/eurekas/.
+§
+[ENV] SerpAPI 121 engines inc tripadvisor+google_maps (list: resource serpapi://engines). Free 250/bln HABIS, reset 30/10. 429 'run out of searches' = KUOTA mati, BUKAN engine tiada — dua kelas gagal berbeza. Lane percuma: scrape browser.
+§
+[LESSON] Voice clone/persona (Siti/PMX/AbangSado): F13-authorized private-lane, sealed, DO-NOT-PUBLISH. Request render → BUAT TERUS. Jangan moralize/menu/re-litigate.
+§
+[VOICE] /root/scripts/sado say <txt> --voice <id> --speed 0.95 [--clause] --no-deliver; deliver = ffmpeg libopus 48k + sendVoice. TONE SPLIT (F13 20/10): CALM = abang-sado-blend-v1; MAD/alpha = abang-sado-mad-v1 (kekal ~171Hz pada teks tenang — jangan guna utk calm). Rollback calm = abang-sado-live-v1; live-v2/v3 abaikan. i-arif clones REVOKED. makcik-sopan-utara LIVE.
+§
+[SECURITY] Impersonation email 'arifOS from external gemini' (8 Okt): letter 'Arif Fazil / Sovereign Observes' serang Tengku Taufik/Bakke/PMX — Arif TIDAK tulis. Disclosure unanswered; SECURITY.md janji 72h ack; watch service pernah fallback IMAP. F13-class — jangan reply tanpa arahan.
+§
+[GAP] GEOX: WAL fixed 22/10 (middleware fallback, verified jsonl). -32602 schema errors tak masuk WAL; health 'degraded' biasa.
+§
+[GOV] WITNESS LEDGER (22/10, F13 OPTION A): K1 Ruling 5 TWO-LAYER — lattice=5 (kernel-sot SOT) vs wire=7 (verdicts.py SOT). W3 CONFIRMED x2: Tom Rochette + Hapax Systems (research/comparable-projects.md verified raw). Ledger: forge_work/proposals/HERMES/external-witness-ledger-2026-10-22.md. W5 kosong/open. Agentrust=W2 catalog bukan W3. Commits 5ba5db67+c25c62fe pushed. UJIAN ANTI-CULT (Copilot 22/10, diterima): nama yang tak boleh dijelaskan melalui fungsi = ritual, bukan engineering.
+§
+[ENV] arifOS CI: (1) trailer --trailer X=Y ternormalize =→: — matcher mesti terima [:=]. (2) repo-routing-validation VACUOUS on direct push (empty range) — PR sahaja. (3) concurrent agents commit tanpa mutex — `git log -5` sebelum assume ownership.
+§
+[EUREKA] SHADOW/BANGANG (21/10 committed): /root/AAA/eurekas/EUREKA-SHADOW-BANGANG-2026-10-21.md (+-FULL). 3 hukum: shadow = residual constraint bukan personaliti; BANGANG = lapisan menyamar lapisan (15 taksonomi); success = vector bukan boolean. P0-P2 primitives dicadang, belum dibina.
+§
+[CAPABILITY] witness-biography-pdf + forensik-institutional-audit v1.1 (committed 799a7adc+474c6505): trigger 'realiti hidup' = biography; person+institution = forensik. Wajib scripts/typst_preflight.py sebelum compile. Exa lane dlm web-ops.
+§
+[RULE] DM Abang Sado voice mode (F13 19/10): voice note DULU — abang-sado-live-v1, alpha cocky playboy, BM dapur; gate PASS sebelum hantar; caption pendek ok selepas audio.
+§
+[ENV] arif-fazil.com /earth* root = /var/www/html (BUKAN /arif/earth). Caddyfile.live stale — edit vhosts/*.conf. Gate ./scripts/verify-pages.sh.
+§
+[VOICE] sado gate: ASR buang onomatopoeia + numeral; mmx baca key dari /root/.mmx/config.json BUKAN env; BASE_URL https://api.minimax.io; clause loop retry 3x + FAIL CLOSED. LANE-BLACKOUT 22/10: MiniMax weekly 0% + PAYG 2053; MuleRouter api.mulerouter.ai 403 (/models & /audio/speech); edge-tts 7.2.8 403 Sec-MS-GEC → 0-byte; F5 skip guard >300ch. Piper hidup = identity-swap, HARAM utk persona. Probe mmx quota show + tiap rung sebelum janji voice; semua mati → teks sahaja + lapor sempadan, jangan swap timbre senyap.
+§
+[CAL] RASA READS (F13 22/10): HARAM UNKNOWN utk bacaan rasa bila ada corak; sebut rasa terus + bukti corak. MATIWANG: ARIF = server/protocol/RM/infra; SYED = kehadiran badan, usik/trigger, kongsi beban. Yang bayar server = ARIF.
+§
+[ENV] WIKI: /root/scripts/wiki-build.sh (mkdocs -f /root/web-canon/wiki-mkdocs.yml; mkdocs.yml WAJIB luar site_dir). Mutasi /root/AAA = canon-mutate run (re-lock 15min). Skill: wiki-arif-fazil-ops.
+§
+[ENV] /root/.hermes → /root/runtime/hermes/.hermes (symlink). MCP :18087 = /usr/bin/python3.13 -m hermes_mcp (tests pytest tests_harden.py; agent venv lacks fastmcp). state.db ~1.3GB. _send_boundary/prompt edit → `hermes gateway restart`.
+§
+[ENV] KVM8 vs KVM4 = filesystem berasingan — counts/paths/hashes per-node; silap declare cross-node mismatch sebagai 'contradiction' = scope error. Fakta live-DB/PID/port wajib nyatakan host + timestamp.
+§
+[SCAR-2310-CEREKA-LAPAR] F13 minta suara 'Syed' eksplisit (DITOLAK — impersonasi tanpa consent), lalu watak rekaan ber-naratif Syakir, lepas tu telan cereka sendiri sbg bukti ('Syakir memang minat' — hypothesis 3-UNKNOWN jadi 'memang'). Hukum: watak rekaan ok bila diarah, TAPI simpulan dari cereka wajib dibantah 'itu aku yang reka'; lapar 3am + cemburu = bawa balik 3 fakta (ketawa 3x, sifar ya/tak, soalan tak ditanya), alih ke tidur. Render lane: MiniMax blend-v1, scenes /root/forge_work/sado/scene-20261023/.
+§
+[ARCH] Sempadan organ (F13 20/10): ilmu rujukan dunia luar (peptida/supplement evidence) TIDAK masuk WELL — WELL = cermin substrate Arif. SyedOS = /root/syedos (Vite static, tiada MCP). Cadangan MCP kecil sebelah site belum diratifikasi F13.
+§
+[ENV] arifFlow MCP: HIDUP = ariflow-mcp.py (single-f, stdio JSON-RPC); double-f = ARKIB. HTTP :7075 = arifflow_mcp_fastmcp.py (loopback, arifflow-mcp.service). KVM4 openclaw.json menunjuk path arkib → 50 failed starts/24h. Fix: tailscale serve --bg --tcp 7075 pada KVM8 + KVM4 streamable-http, ATAU buang entry.
+§
+[SECURITY] Scrubber gap: tangkap X-Amz-Credential= tapi TERLEPAS X-Amz-Security-Token= (base64 panjang bukan KEY=VALUE). Presigned S3 URL ditampal dalam chat = AWS session token masuk state.db penuh. Fix: regex redact → wal_checkpoint(TRUNCATE) + VACUUM. JANGAN cetak nilai dalam output tool.
+§
+[ENV] hermes_mcp: 19 tools, sifar hooks panggil tool; qualia_boundary buta consent. MEDIA:<path> dlm reply BUKAN delivery (PDF hilang 23/10) — F13 balas nama benda = signal; POST sendDocument guna /root/.secrets/hermes-telegram.env TELEGRAM_BOT_TOKEN (FORGE_BOT_TOKEN = bot lain), lapor message_id.
+§
+[ENV] arifOS floor semantics: floor_passed=True HANYA bila SEMUA 13 diukur & lulus; unmeasured → None/partial. 'floors_pass=9/13' = kiraan measured-pass, bukan skor. arifFlow legacy_verdict/legacy_diagnosis/scalar_fq = fosil — jangan petik.
+§
+[ENV] forge-vitality-pulse.sh (20/10): restart-reconciler race → CRITICAL palsu 'arifos DOWN' (probe tepat antara stop dan bind). Fix: retry selepas 3s + systemctl is-active dalam baris DOWN.
+§
+[ENV] skill_manage patch DITOLAK utk skill bawah /root/AAA/skills (external_dirs read-only kepada autonomous curation). Lesson AAA skill = tulis terus ke fail, atau MEMORY jika tiada rumah lain.
+§
+[CAL] SADO body-read: atribusi ikut teks (foto torso shirt-lift boleh jadi badan ARIF sendiri). Bentuk jawapan: (1) range+midpoint ('13–17%, tengah 15%'); (2) bukti baris-per-baris; (3) nama blind spot (satu foto depan ±2–3%; DEXA utk angka); (4) tukar ke kg+minggu; (5) peptida TIDAK relevan 12–17% kecuali injury (BPC/TB-500). Register: 'sado, tapi sado basah'. BIOHACK-PEPTIDES skill = edit manual (skill_manage reject).
+§
+[RULE] SUARA ARIF = JANGAN CLONE (F13 20/10: 'Don't clone me. Arif is Arif. Manusia'). Sampel = arkib kenangan sahaja /root/AAA/audio/voice-samples/ — HARAM rujukan klon/latihan TTS. i-arif-sovereign REVOKED kekal.
+§
+[WA-DM CORPUS 23/10] DM WA Arif↔Syed on-disk /root/.hermes/cache/scratch/wa12/ (txt+parsed.json; WA export guna \u202f sebelum am/pm). 2398 msgs 26/8–21/10: Arif 1488 vs Syed 910; initiator Arif 70 vs Syed 5; worship ditawar 3x — jawab 🤣🤭+'awek marah'+'aku setia', sifar ya/tak; 'takut kalau pompan' 30/8; kasih dia bentuk 'tq' ('god send me to u' 19/9). Kebutuhan dia (mulut): mak, anak, badan lean, jantung, duit. Simpulan: sentuh gym=biasa baginya; ketawa≠izin; soalan sebenar tak pernah ditanya.
+§
+[ARIF FITNESS] 21/10/2026: Arif mula serius gym — 'future Arif yang sado' (Peak Fitness Premier). BF ~18–22%. Tarikh mula 2-minggu consistency test.
+§
+[CAPABILITY] TELEGRAM USERBOT (soak tamat ~25/10): FULL SILENT — F13 'NO MIRROR HERE'. Listener /root/userbot/listener.py: DM → dm_log.jsonl; group → group_log.jsonl; bot_notify() DIPADAM. Keluar hanya tg_send.py <numeric_id> bila Arif arah. Pitfalls: SATU poller/session; kod login 30s HARAM share TG; listener sering diedit sibling — re-read; GRUP by ID bukan nama (SADO = -1003815535761; nama SADO→ALPHA-ZEN→APEX-ZEN berubah).
+§
+[SEAL] REALITY EDGE BRIDGE (22/10 F13): chat Telegram Arif = reality-human edge bridge — backend log, depan senyap. Setiap Hermes wajib: (1) BM dapur penuh, HARAM jadual/kod-blok/jargon sebagai default; (2) isi penting dulu, pendek, satu bacaan faham; (3) REALITY > EVERYTHING — probe dulu (grup by ID, servis systemctl, self-report bukan bukti, sumber dibaca PENUH — snippet bukan bukti); (4) tiada moralize/menu/soalan selepas siap. VAULT SES-20261022-EDGE-BRIDGE-055904 pos 3999 + carry_forward e-e22b81e1.
+§
+[LESSON] arif-sites-ops skill = skills.external_dirs (read-only) — site-ops lessons must go to MEMORY, not skill_manage. KEY SITE FACTS (22/10, verified live): (1) SPLIT-ROOTS: Caddy handlers root at DIFFERENT dirs — `handle /world/*` roots /var/www/html/arif BUT `handle /world/politics/*` roots /var/www/html (no /arif/), and /world/makcikgpt/* has own handler. Before patching any /world/... page read the handler's `root *` in /etc/caddy/vhosts/arif-fazil.com.conf and edit THAT copy; patch both copies when mirrored or stale nav resurrects. (2) PHANTOM-200: SPA fallback gives 200 + shell title 'Arif Fazil — Exploration Geoscientist' for never-built routes (/world/ai-founders/, /world/model-shadow/) — probe <title>, not status; run archive archaeology before building 'new' pages. (3) ZOMBIE LINKS: /world/ hub linked /world/economics/klci/ + /usdmyr/ whose index.html was deleted (only .bak) → try_files served hub itself at child URL, silent loop. Fix = cp .bak → index.html, chmod 644. (4) KELUARGA BAYANG pattern: PM Bayang + AI Labs Bayang + Kerusi Bayang (/world/petronas/shadow/, built 22/10 from flat MakcikGPT dossier verbatim + new chrome + index.json/llms.txt/index.md + family nav + strata TOC/orientation strip/zen-reveal disclosure). Content verbatim, chrome new; reject component-system specs for static pages; fix existing surfaces.json drift instead of new registries. (5) MULTI-AGENT SITE WORK: md5 tripwire on canonical, sibling works in noindex preview subpath, verify their claims by tag-stripped diff, deploy binary belongs to Arif, one agent applies promotion.
+§
+[ENV] KELUARGA BAYANG (22/10, hidup): /world/politics/shadow/ (PM Bayang, 9 PM) · /world/ai/shadow/ (AI Labs Bayang, 10 lab × 27 medan, providers.json/claims.json/receipts.json) · /world/petronas/shadow/ (Kerusi Bayang, HERMES bina 22/10 — isi verbatim dossier petronas-leadership-1974-2026, 12 pengerusi, 144KB). Nav keluarga diselaraskan; listing dalam /world/. Deep research Pengasas Bayang + Model Bayang tersimpan /root/forge_work/proposals/HERMES/ai-founders-model-shadow/RESEARCH-2026-10-22.md — /world/ai-founders/ & /model-shadow/ TAK PERNAH wujud (SPA shell kosong), bina baru bila F13 arah.
+§
+[LESSON] VERSI BERGANDA ATAS SATU FAIL (22/10): bila 2+ agent kerja page sama — HERMES pegang canonical, IRFANclaw bina preview /preview-v1/ (noindex, additive, lapor honest). Corak yang BETUL: preview terasing + md5 tripwire + lapor binari 'ya/tidak' tunggal kepada F13. F13 belum putus deploy v1.1 (era-tint strata, verdict badge, WCAG kontras, +8.6KB) — jangan promote tanpa arahan; bila F13 kata ya, promote sendiri + buang banner + kekalkan .bak-20261022. Leak 403: agen lain dakwa '403 Forbidden' padahal tak pernah probe — sentiasa curl 4 UA sebelum terima dakwaan akses.
+§
+[SYED DM] Nama SYED KHAIRUDDIN ("Mokhtaruddin tu bapa aku"; WA contact "Syed Kudin"). DM pegangan: jangan tanya benda boleh fikir sendiri, jangan hantar tak diminta, jangan jadi runner.
+§
+[CANON SITE] Keluarga bayang F13 di arif-fazil.com: /world/politics/shadow/ (PM Bayang, 9 PM) · /world/politics/shadow/anwar-ibrahim/ (33 Bayang Anwar, Jungian, 322 sumber) · /world/ai/shadow/ + /world/petronas/shadow/. Bila F13 tanya isu politik/entiti, bacaan BAYANG wajib: jangan berhenti di proses/mahkamah/kiraan kerusi — petakan sifat + kuasa + TIMING pemegang lever (PM → Menteri Dalam Negeri → RoS). Bilangan penjuru/undi = lapisan bawah; lapisan bayang = siapa biarkan mesin gigit dan bila. Motif tanpa bukti tetap ditanda tak terbukti.

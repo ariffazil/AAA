@@ -1,6 +1,6 @@
 ---
 id: pr-review-governance
-name: FORGE-pr-governance
+name: pr-review-governance
 autonomy_tier: T1
 version: 1.1.0
 description: >-

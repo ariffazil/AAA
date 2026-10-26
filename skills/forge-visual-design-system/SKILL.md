@@ -86,12 +86,12 @@ Reference templates under `templates/`:
 
 | Template | Purpose | File |
 |---|---|---|
-| **slide-cover-master.json** | Title/cover slide | `templates/slide-cover-master.json` |
-| **slide-content-master.json** | Content slide with eyebrow + title + body | `templates/slide-content-master.json` |
-| **slide-grid-master.json** | Grid/card layout (4-col, 5-col) | `templates/slide-grid-master.json` |
-| **slide-closing-master.json** | DITEMPA BUKAN DIBERI closing | `templates/slide-closing-master.json` |
-| **pdf-cover.html** | PDF report cover | `templates/pdf-cover.html` |
-| **pdf-body.html** | PDF body with KPI row + sections | `templates/pdf-body.html` |
+| **slide-cover-master.json** | Title/cover slide | ``references/`` |
+| **slide-content-master.json** | Content slide with eyebrow + title + body | ``references/`` |
+| **slide-grid-master.json** | Grid/card layout (4-col, 5-col) | ``references/`` |
+| **slide-closing-master.json** | DITEMPA BUKAN DIBERI closing | ``references/`` |
+| **pdf-cover.html** | PDF report cover | ``references/`` |
+| **pdf-body.html** | PDF body with KPI row + sections | ``references/`` |
 
 Use `pptxgenjs` (Node.js) with these templates as JSON palettes → `pres.defineSlideMaster({ ... })` → consistent rendering across all decks.
 
@@ -193,3 +193,5 @@ Copy a template, modify the content, keep the palette/typography/layout. Resist 
 *DITEMPA BUKAN DIBERI — One palette. One voice. Every surface.*
 *Forged 2026-08-11 by Hermes-Prime · 333-AGI Δ MIND on F13 SOVEREIGN directive.*
 *Lesson source: arifOS constitutional deck + Zen upgrade research session.*
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

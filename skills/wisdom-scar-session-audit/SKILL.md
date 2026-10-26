@@ -293,3 +293,9 @@ When Arif says "what should I improve" or "seal the wisdom scar":
 2. Check if they match existing scars (update if deepening) or create new scar
 3. Patch this skill with the new scar entry
 4. Memory gets the one-line law, skill gets the full diagnostic
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-2026-09-12-concurrent-session-collision-dead-fix, SCAR-AGY-004-session-gate-confusion
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

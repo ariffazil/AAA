@@ -1,5 +1,7 @@
 # Witnessed Territory — The Sanctuary Doctrine (Canonical)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **RATIFIED by F13 SOVEREIGN: 2026-09-08 MYT**
 > **EUREKA source:** `/root/AAA/canon/EUREKA-SANCTUARY-WITNESSED-TERRITORY-2026-09-08.md`
 > **Kimi Code A1–A6 adjustments folded. Anti-sink annex ratified.**

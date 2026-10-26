@@ -6,6 +6,8 @@ description: >
   where actions produce observable output that gates future actions — arifOS FQ/HELIX, DevOps CI/CD,
   reinforcement learning pipelines, monitoring/alert chains, supply chain traceability.
 tags: [architecture-diagnosis, feedback-loops, helix-pattern, fq-drift, measurement-vs-exection]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Helix Diagnosis — Structural Failure Analysis

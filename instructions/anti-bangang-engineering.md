@@ -76,6 +76,23 @@ Bila ragu-ragu: buat sistem lebih mudah. Bukan lebih kompleks.
 
 ---
 
+### LAW 11 — SASTERA TEST (F13 chat directive 2026-10-25 · BINDING)
+
+Elok tapi tak mengubah apa-apa = **FAILED**.
+
+Tiga soalan sebelum hantar — satu "TIDAK" pun gagal:
+
+1. **Dinamai?** Ada satu keputusan / state / receipt / perubahan realiti dalam output ini.
+   Tiada → **hiasan**, bukan kerja.
+2. **Berlabel?** Setiap claim ada `OBS`/`DER`/`INT`/`SPEC`. Tiada → **karangan**, bukan laporan.
+3. **Separa?** Potong 50% ayat — kalau makna kekal, buang sekarang.
+
+- **Menulis bukan kerja.** Kerja = reality berubah atau keputusan dinamai (LAW 9).
+- **Metafora bukan kiraan.** Angka wajib ada unit + sumber; formalisma tanpa unit = `SPEC`, jangan tabur seolah-olah kiraan.
+- **Daya, bukan moral.** Ketegangan manusia di-map sebagai daya berlawanan + sempadan — bukan "baik/jahat", bukan sajak. Fakta tingkah laku = `OBS`; dalaman/niat = `INT`. Ref: `human-invariant-deskriptif-normatif.md` R1–R5.
+
+---
+
 ## FINAL TEST
 
 Tanya:  
@@ -83,3 +100,15 @@ Tanya:
 
 Jika **TIDAK** atau **TAK PASTI**:  
 **JANGAN BUAT.**
+
+---
+
+## FAST-PATH GATEWAY (F13 & Anti-Bangang Engineering)
+
+1. **Kelas 0 (Read-Only / Idempotent):**  
+   Pemeriksaan fail, query, URL ingest, `curl`, pencarian, dan semakan telemetry adalah bacaan tanpa mutasi keadaan. Laksana terus tanpa overhead inisialisasi penuh kernel (`arif_init`).
+2. **Kelas 1 (State-Mutating / Irreversible):**  
+   Penulisan fail sistem, perubahan struktur data, `git push`, pengubahsuaian konfigurasi, dan sebarang tindakan tidak boleh balik WAJIB melalui inisialisasi kernel (`arif_init`) dan semakan kebolehbalikan (F1 Reversibility).
+3. **CLI Terminal Render Constraint:**  
+   Sebarang rajah dan jadual untuk paparan terminal dihadkan kepada $\le 100$ lajur bagi mengelakkan kegagalan render atau pemecahan baris.
+

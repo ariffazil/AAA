@@ -320,3 +320,9 @@ Multi-lens produces multiple drafts. F13 must disposition the SYNTHESIS, not eac
 *Forged: 2026-08-12 from the PETRONAS letter v12 dispatch (3 lenses: sovereign rigor, mak reconciliation, compressed).*
 
 *DITEMPA BUKAN DIBERI — Multi-perspective is forged, not averaged.*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-01-same-model-different-prompt-not-independence
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

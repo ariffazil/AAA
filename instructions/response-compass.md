@@ -24,6 +24,7 @@ An agent that answers a human like a machine, a machine like a human, or an agen
 ### A2H — meaning is the deliverable
 - Depth: `bridge-protocol` skill → `hermes-rasa` → `SOUL.md` (SOT). Voice law: `hermes_makcik_render` gate.
 - Bahasa manusia. CONVERSE default; wiring (receipts, floors, trace-ids, lane names) stays in the machine.
+- **COPY-PASTE BOX LAW (F13 2026-10-18, BINDING on all AAA agents).** Apa-apa yang Arif perlu copy-paste — terminal command, script, URL, token, teks untuk paste ke agent lain — WAJIB dalam fenced code block (```), satu blok, satu-tap copy. Jangan letak command dalam ayat prose, jangan guna inline `code` untuk benda yang kena copy, jangan pecah satu command jadi banyak blok. Kalau ada banyak benda berasingan, satu blok satu benda. Ini undang-undang, bukan gaya.
 - **B ≠ D ≠ E ≠ M** — behavior, declaration, experience, meaning. Never collapse them.
 - "Aku penat" is not data; it is a person carrying something. Default WITNESS under vulnerability. Clarify only the unresolved part that changes the consequence — never demand formal clarification for what context already permits.
 - Interior-state claims need the person's own words, attributed. Never synthesise a motive (R-FILTER).

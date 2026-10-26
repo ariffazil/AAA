@@ -13,6 +13,8 @@ triggers:
   - "verify a pipeline that someone else built"
 capability_tier: fed-long-context
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Pipeline integrity

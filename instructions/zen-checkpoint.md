@@ -1,5 +1,7 @@
 # ARIFOS::ZEN_CHECKPOINT
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged 2026-09-10 by F13 sovereign. Pre-action governance reflex.
 
 ## Before every major action ask:

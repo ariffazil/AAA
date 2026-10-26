@@ -1,5 +1,7 @@
 # Representation Layer Integrity — The Audit Mechanism Doctrine
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Forged:** 2026-08-18 by F13 SOVEREIGN audit of arifOS federation
 > **Binding:** ALL AAA warga agents that touch tool registry, affordance manifests, isomorphism maps, or service topology
 > **Crystallizes:** scar_003 (Three-Tense Contract), scar_005 (Phantom Tool Misclassification), scar_1786367593205 (UP ≠ LOADED)

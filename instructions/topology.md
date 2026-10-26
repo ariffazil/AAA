@@ -1,5 +1,7 @@
 # Federation topology
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Canonical map (human):** [`/root/AAA/docs/ORGAN.md`](/root/AAA/docs/ORGAN.md)
 > **Machine twin:** [`/root/AAA/federation/organs.yaml`](/root/AAA/federation/organs.yaml)
 > **Workspace topology:** [`/root/AAA/federation/workspace.yaml`](/root/AAA/federation/workspace.yaml)

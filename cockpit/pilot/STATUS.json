@@ -1,0 +1,61 @@
+{
+ "mission": "AAA read-only cockpit pilot + Vercel optimization",
+ "generated_at": "2026-10-26T06:14:00Z",
+ "owner": "AAA (Arif)",
+ "states": {
+  "pilot_implementation": "VERIFIED_LOCAL",
+  "repo_placement": "VERIFIED_LOCAL (canon cycle receipt 22a2fbfc-a747-4efa-b69f-2db2ab0da107)",
+  "vercel_preview_deployment": "ACCOUNT_ACCESS_BLOCKED (no CLI, no token on host)",
+  "account_usage_metrics": "ACCOUNT_ACCESS_BLOCKED (10 GB, 330/30d, 96/24h unverified)",
+  "before_after_measurement": "PARTIAL (source-derived baseline; browser/synthetic run not executed)",
+  "rollback_proof": "PENDING_MEASUREMENT (requires preview deployment)"
+ },
+ "baseline": {
+  "captured_at": "2026-10-26T06:12:00Z",
+  "source": "/root/AAA/src/Cockpit.tsx",
+  "poller_count": 11,
+  "intervals_ms": [
+   3000,
+   5000,
+   5000,
+   15000,
+   15000,
+   20000,
+   30000,
+   30000,
+   30000,
+   60000,
+   60000
+  ],
+  "baseline_requests_per_hour": 3780,
+  "method": "sum(3600000/interval_ms) over 11 static setInterval calls; conditional pollers excluded",
+  "pilot_requests_per_hour": 120,
+  "pilot_method": "one /api/status every 30s; paused when hidden; backoff on failure",
+  "reduction_pct": 96.8
+ },
+ "files": [
+  "index.html",
+  "app.js",
+  "api/status.js",
+  "vercel.json",
+  "ignore-build.mjs",
+  "verify.mjs",
+  "tests/pilot.test.mjs",
+  "BASELINE.json"
+ ],
+ "tests": {
+  "runner": "node verify.mjs",
+  "passed": 13,
+  "failed": 0
+ },
+ "vercel_config": {
+  "catch_all": "/((?!api/).*)",
+  "api_cache": "private, no-store",
+  "ignore_build": "node ignore-build.mjs"
+ },
+ "no_action_controls": true,
+ "secrets_in_bundle": false,
+ "rollback": "remove /root/AAA/cockpit/pilot via the same canon cycle; nothing else is touched",
+ "blocked_by": "Vercel account credential absent; no preview URL can be produced from this host",
+ "next_owner_action": "Arif supplies a read-only Vercel token (team arifos) or runs `vercel link` for the project"
+}

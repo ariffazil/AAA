@@ -8,9 +8,30 @@ Per sovereign 2026-10-02:
 - Drift among them surfaced as CONTRADICTION
 
 Output: /root/AAA/cockpit/runtime-identity.json (atomic write)
+
+Algorithm contract (post 2026-10-17 FI-002 closeout):
+- Hashing algorithm: SHA-256 (hexadecimal), NO TRUNCATION
+- Scope: per organ, the configured package initialization file only
+  (NOT the entire package). Compare-only-apples-to-apples.
+- Field naming: canonical fields are identity_probe.* with full SHA-256
+  digests; legacy fields (md5_identity.* with md5_match) are DEPRECATED
+  ALIASES, preserved so generate-hud-state.sh / arifhud / display-hud.sh
+  keep working without an immediate upgrade.
+- Backward compat: legacy and canonical digests derive from ONE
+  calculation (no double-hashing). Legacy strings are the first 12
+  hex chars of the full canonical SHA-256 — explicit "truncated" label.
+- Unresolved paths are fail-closed: match=false, measurable=false,
+  reason populated, NO false PASS.
 """
 import json, sys, hashlib, subprocess
 from pathlib import Path
+
+# Probe contract — exposed as constants so consumers can introspect.
+ALGORITHM = "sha256"
+ENCODING = "hex"
+DIGEST_FULL_LENGTH = 64           # hex chars for sha256
+LEGACY_TRUNCATED_LENGTH = 12      # kept for backward-compat consumers only
+SCOPE = "package_init_file"       # explicit: we hash ONE file per organ
 
 def now_utc():
     import datetime
@@ -25,11 +46,18 @@ def git_sha(repo_path: str) -> str:
     except Exception:
         return "no-git"
 
-def file_sha(path: str) -> str:
+def file_sha_full(path: str) -> str:
+    """Full SHA-256 hex digest. Empty string if file not readable.
+    Never returns a sentinel value; caller decides fail-closed."""
     try:
-        return hashlib.sha256(Path(path).read_bytes()).hexdigest()[:12]
+        return hashlib.sha256(Path(path).read_bytes()).hexdigest()
     except Exception:
-        return "no-file"
+        return ""
+
+def file_sha_truncated(path: str, length: int = LEGACY_TRUNCATED_LENGTH) -> str:
+    """First N hex chars of the full digest. DEPRECATED for new code;
+    retained so legacy fields are computable from the same one pass."""
+    return file_sha_full(path)[:length]
 
 def pkg_version(import_name: str) -> str:
     try:
@@ -39,8 +67,9 @@ def pkg_version(import_name: str) -> str:
     except Exception as e:
         return f"import-error:{type(e).__name__}"
 
-def main():
-    organs = {
+def _build_organs() -> dict:
+    """Canonical organ config. Module-level so tests can monkeypatch."""
+    return {
         "arifos": {
             "source_path": "/root/arifOS",
             "runtime_path": "/opt/arifos/app",
@@ -48,93 +77,205 @@ def main():
         },
         "aforge": {
             "source_path": "/root/A-FORGE",
-            "runtime_path": "/opt/a-forge",
-            "import_name": "a_forge",
+            "runtime_path": "/opt/a-forge/app",
+            "import_name": "apa",
         },
         "frame": {
-            "source_path": "/root/AAA/federation/frame",
+            "source_path": "/root/FRAME/src",
             "runtime_path": "/opt/frame/app",
             "import_name": "frame_organ",
         },
     }
+
+# Organs config (module-level so tests can patch without re-import)
+ORGANS = _build_organs()
+
+def resolve_paths(name: str, paths: dict) -> dict:
+    """Deterministic path resolution. Returns:
+       - source_init_path, source_init_exists (bool)
+       - runtime_init_path, runtime_init_exists (bool)
+       - resolution_method: direct_runtime_path | configured_legacy_path |
+                            bounded_fallback | unresolved
+       - reason: human-readable explanation if unresolved
+    """
+    md5_subdir = paths.get("import_name") or name
+    src_init = Path(paths["source_path"]) / md5_subdir / "__init__.py"
+    rt_init_primary = Path(paths["runtime_path"]) / md5_subdir / "__init__.py"
+
+    if src_init.exists() and rt_init_primary.exists():
+        return {
+            "source_init_path": str(src_init),
+            "source_init_exists": True,
+            "runtime_init_path": str(rt_init_primary),
+            "runtime_init_exists": True,
+            "resolution_method": "direct_runtime_path",
+            "reason": None,
+        }
+    # Legacy site-packages guess — bounded to <runtime_root>/current/venv/...
+    legacy = (
+        Path("/opt") / name / "current/venv/lib/python3.13/site-packages"
+        / md5_subdir / "__init__.py"
+    )
+    if src_init.exists() and legacy.exists():
+        return {
+            "source_init_path": str(src_init),
+            "source_init_exists": True,
+            "runtime_init_path": str(legacy),
+            "runtime_init_exists": True,
+            "resolution_method": "configured_legacy_path",
+            "reason": "primary runtime path missing; used bounded legacy site-packages candidate",
+        }
+    # Source-only or runtime-only → fail-closed
+    reason_parts = []
+    if not src_init.exists():
+        reason_parts.append(f"source init missing at {src_init}")
+    if not rt_init_primary.exists() and not legacy.exists():
+        reason_parts.append(
+            f"runtime init missing at {rt_init_primary} and no legacy site-packages candidate"
+        )
+    return {
+        "source_init_path": str(src_init),
+        "source_init_exists": src_init.exists(),
+        "runtime_init_path": str(rt_init_primary),
+        "runtime_init_exists": rt_init_primary.exists(),
+        "resolution_method": "unresolved",
+        "reason": "; ".join(reason_parts) or "unknown",
+    }
+
+def main():
+    organs = ORGANS
     out = {
-        "schema": "runtime-identity-v1",
+        "schema": "runtime-identity-v2",
         "generated_at": now_utc(),
+        "algorithm": ALGORITHM,
+        "algorithm_encoding": ENCODING,
+        "digest_truncation": False,                       # canonical: no truncation
+        "scope": SCOPE,
         "sovereign_law": "Source ≠ build ≠ deployed ≠ imported runtime; all four identities must be measurable; drift surfaced as CONTRADICTION",
         "organs": {},
         "summary": {
             "total_organs": 0,
+            "measurable_count": 0,
+            "match_count": 0,
             "drift_count": 0,
             "contradictions": [],
         },
+        # NEW canonical surface — preferred for all consumers
+        "identity_probe": {},
+        # DEPRECATED legacy surface — preserved so generate-hud-state.sh,
+        # arifhud, display-hud.sh keep working. Each legacy value is the
+        # explicit prefix of the canonical digest, NOT a separate hash.
+        "md5_identity": {},                               # DEPRECATED — values are sha256[:12], not MD5
+        "legacy_field_status": {
+            "md5_identity": "deprecated_alias_of_identity_probe",
+            "source_init_md5": "deprecated_alias_of_source_digest_prefix12",
+            "deployed_init_md5": "deprecated_alias_of_runtime_digest_prefix12",
+            "md5_match": "deprecated_alias_of_identity_probe.<organ>.match",
+            "removed_in": None,                            # no removal scheduled; consumers upgrade at their pace
+        },
     }
+
     for name, paths in organs.items():
         src_sha = git_sha(paths["source_path"])
-        # Find a representative runtime file
         rt_dir = Path(paths["runtime_path"])
         if rt_dir.exists():
-            # Hash first .py file at depth 3
             rt_files = list(rt_dir.rglob("*.py"))[:1]
-            rt_file_sha = file_sha(str(rt_files[0])) if rt_files else "no-py"
+            rt_file_sha = file_sha_truncated(str(rt_files[0])) if rt_files else "no-py"
         else:
             rt_file_sha = "no-runtime-dir"
         pkg_v = pkg_version(paths["import_name"])
-        # File SHA from source main file
         src_main = list(Path(paths["source_path"]).rglob("*.py"))[:1] if Path(paths["source_path"]).exists() else []
-        src_file_sha = file_sha(str(src_main[0])) if src_main else "no-source"
+        src_file_sha = file_sha_truncated(str(src_main[0])) if src_main else "no-source"
 
-        # Drift detection — HASH-EQUIVALENCE only (per forge_runtime_verify doctrine)
-        # Semantic divergence (PEP 440 version vs commit SHA) is NOT a runtime failure;
-        # it is a legitimate duality answered by a different question.
+        # Per-organ broader drift (informational only — same package_init_file hash)
         drift = []
-        if src_sha != "no-git" and src_file_sha != "no-source" and rt_file_sha != "no-runtime-dir" and rt_file_sha != "no-py":
+        if (
+            src_sha != "no-git"
+            and src_file_sha != "no-source"
+            and rt_file_sha not in ("no-runtime-dir", "no-py")
+        ):
             if src_file_sha != rt_file_sha:
-                drift.append("source_file_sha != runtime_file_sha")
+                drift.append("broader_file_sha != runtime_file_sha")
 
+        # ----- Canonical identity probe -----
+        resolution = resolve_paths(name, paths)
+        measurable = (
+            resolution["source_init_exists"] and resolution["runtime_init_exists"]
+        )
+        source_digest = (
+            file_sha_full(resolution["source_init_path"])
+            if resolution["source_init_exists"] else ""
+        )
+        runtime_digest = (
+            file_sha_full(resolution["runtime_init_path"])
+            if resolution["runtime_init_exists"] else ""
+        )
+        match = (
+            measurable
+            and len(source_digest) == DIGEST_FULL_LENGTH
+            and len(runtime_digest) == DIGEST_FULL_LENGTH
+            and source_digest == runtime_digest
+        )
+
+        canonical_entry = {
+            "algorithm": ALGORITHM,
+            "encoding": ENCODING,
+            "scope": SCOPE,
+            "source_path": paths["source_path"],
+            "runtime_path": paths["runtime_path"],
+            "source_init_path": resolution["source_init_path"],
+            "runtime_init_path": resolution["runtime_init_path"],
+            "source_digest": source_digest,                # full SHA-256 hex
+            "runtime_digest": runtime_digest,              # full SHA-256 hex
+            "digest_truncation": False,
+            "measurable": measurable,
+            "match": match,
+            "resolution_method": resolution["resolution_method"],
+            "resolution_reason": resolution["reason"],
+        }
+        out["identity_probe"][name] = canonical_entry
+
+        # ----- Deprecated legacy aliases (derived from same digest) -----
+        out["md5_identity"][name] = {
+            "source_init_md5": source_digest[:LEGACY_TRUNCATED_LENGTH] if source_digest else "no-source-init",
+            "deployed_init_md5": runtime_digest[:LEGACY_TRUNCATED_LENGTH] if runtime_digest else "no-deployed-init",
+            "md5_match": match,
+            # Explicit truth: these are NOT MD5 — they are sha256[:12]
+            "note": (
+                "DEPRECATED alias. This field name retained for generate-hud-state.sh / arifhud / "
+                "display-hud.sh compatibility. The actual algorithm is sha256 (full digest under "
+                "identity_probe.<organ>.source_digest / runtime_digest). The 12-char value here is "
+                "sha256[:12], NOT MD5 (MD5 would be 32 hex chars)."
+            ),
+        }
+
+        # ----- Per-organ broader-record (informational, no semantic claim) -----
         out["organs"][name] = {
             "source_path": paths["source_path"],
             "runtime_path": paths["runtime_path"],
             "source_sha": src_sha,
-            "source_file_sha": src_file_sha,
-            "runtime_file_sha": rt_file_sha,
+            "broader_source_file_sha": src_file_sha,
+            "broader_runtime_file_sha": rt_file_sha,
             "pkg_version": pkg_v,
             "pkg_version_note": "semantic, not hash-equal to source_sha (different question)",
-            "drift_signals": drift,
+            "broader_drift_signals": drift,
+            "broader_drift_note": "informational — first .py file found under source vs runtime paths; NOT a package identity claim",
         }
-        out["summary"]["total_organs"] += 1
-        if drift:
-            out["summary"]["drift_count"] += 1
-            out["summary"]["contradictions"].append({
-                "organ": name,
-                "drift_signals": drift,
-                "source_sha": src_sha,
-                "pkg_version": pkg_v,
-                "note": "HASH-equivalence only; pkg_version is semantic, not drift",
-            })
 
-    # MD5 identity probe (per Hermes hook finding 2026-10-02):
-    # source package __init__.py md5 vs deployed site-packages __init__.py md5
-    # Sovereign invariant #46: "drift among them is surfaced"
-    md5_identity = {}
-    for name, paths in organs.items():
-        src_init = Path(paths["source_path"]) / name / "__init__.py"
-        deployed_init = Path("/opt") / name / "current/venv/lib/python3.13/site-packages" / name / "__init__.py"
-        # Fallback: search for __init__.py under /opt/<name>/**/site-packages/<name>/
-        if not deployed_init.exists():
-            for p in Path("/opt").rglob(f"{name}/__init__.py"):
-                if "site-packages" in str(p):
-                    deployed_init = p
-                    break
-        src_md5 = file_sha(str(src_init)) if src_init.exists() else "no-source-init"
-        py_md5 = file_sha(str(deployed_init)) if deployed_init.exists() else "no-deployed-init"
-        md5_match = (src_md5 == py_md5) and src_md5 not in ("no-source-init", "no-deployed-init")
-        md5_identity[name] = {
-            "source_init_md5": src_md5,
-            "deployed_init_md5": py_md5,
-            "md5_match": md5_match,
-            "note": "Hash-level identity check beyond commit SHA. Per Hermes hook finding 2026-10-02: 'dua fail entry-point package berbeza kandungan antara source dan deployed'",
-        }
-    out["md5_identity"] = md5_identity
+        out["summary"]["total_organs"] += 1
+        if measurable:
+            out["summary"]["measurable_count"] += 1
+            if match:
+                out["summary"]["match_count"] += 1
+            else:
+                out["summary"]["drift_count"] += 1
+                out["summary"]["contradictions"].append({
+                    "organ": name,
+                    "signal": "source_digest != runtime_digest",
+                    "scope": SCOPE,
+                    "algorithm": ALGORITHM,
+                    "resolution_method": resolution["resolution_method"],
+                })
 
     body = json.dumps(out, sort_keys=True).encode("utf-8")
     out["integrity_hash"] = hashlib.sha256(body).hexdigest()

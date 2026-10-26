@@ -1,16 +1,17 @@
 ---
-id: "RSI-recursive-improvement"
-name: "rsi-federation-mesh"
-description: "DEPRECATED ALIAS (2026-10-14) — canonical_owner: rsi-federation-mesh. do_not_select: true. Live skill: /root/AAA/skills/rsi-federation-mesh. Entropy consolidation 2026-10-14 by 333-AGI (F13 order). Was a 34-byte orphan stub (no frontmatter)."
-owner: "333-AGI"
-risk_tier: "low"
-autonomy_tier: "T0"
-floor_scope: [F2, F12]
-forged: "2026-10-14"
-forged_by: "333-AGI"
+do_not_select: true
+canonical_owner: rsi-federation-mesh
+name: RSI-recursive-improvement
+description: "Alias → rsi-federation-mesh. Load `rsi-federation-mesh` for the live RSI protocol. Pointer kept after the 2026-10-23 entropy merge."
+id: RSI-recursive-improvement
+version: 0.0.1
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
-# RSI-recursive-improvement → rsi-federation-mesh
+# RSI-recursive-improvement — alias
 
-This directory is a retired alias door. All content lives at `/root/AAA/skills/rsi-federation-mesh`.
-Do not select this skill; load `rsi-federation-mesh` instead.
+Canonical owner: **rsi-federation-mesh**
+Path: `/root/AAA/skills/rsi-federation-mesh`
+
+Pre-merge shell preserved at `/root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/RSI-recursive-improvement`.

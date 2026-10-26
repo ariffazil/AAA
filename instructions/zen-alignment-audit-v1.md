@@ -1,5 +1,7 @@
 # ARIFOS::ZEN_ALIGNMENT_AUDIT::v1
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged 2026-09-10 by F13 sovereign. Diagnose alignment, not optimize performance.
 
 ## MISSION

@@ -1,0 +1,41 @@
+{
+  "schema": "aaa.eureka.seal_candidate.receipt.v1",
+  "artifact_id": "EUREKA::AGENTIC-INSTITUTION::2026-10-23::v1.1",
+  "artifact_path": "/root/AAA/reports/EUREKA-AGENTIC-INSTITUTION-2026-10-23-v1.1.md",
+  "human_sovereign": "Arif Fazil",
+  "author_claim": "session artifact (EUREKA session seal, v1.1)",
+  "stored_by": "333-AGI (opencode FI-001)",
+  "stored_at_utc": "2026-10-23T05:10:56Z",
+  "status": "SEAL_CANDIDATE",
+  "integrity": {
+    "algorithm": "sha256",
+    "sha256": "ba1658959f717039d6c96917774d818d074b5b8b87ac0c4ea24a6c977a894738",
+    "bytes": 14344,
+    "hashed_at_utc": "2026-10-23T05:10:56Z"
+  },
+  "state": {
+    "produced": true,
+    "hashed": true,
+    "receipted": true,
+    "sealed": false,
+    "accepted": false,
+    "institutionalized": false
+  },
+  "eureka_ledger": "/root/AAA/eurekas/eureka-entries.jsonl",
+  "lesson_id": "LESSON::MEASURE-BEFORE-SOVEREIGN-BINARY::v1",
+  "corrections": {
+    "paste_truncation_repaired": true,
+    "terminal_token_recovered": "TRANSPORT",
+    "duplicate_sections_collapsed": [
+      "9",
+      "10"
+    ],
+    "content_otherwise_verbatim": true,
+    "note": "Sovereign paste ended mid-word at 'TRANSP'; sections 9-10 appeared twice in the paste. Stored once, terminal token restored. No other edits."
+  },
+  "authority": {
+    "seal_authority": "NOT_SELF_ISSUED",
+    "final_authority": "ARIF",
+    "rule": "author != judge (Godel); receipt != acceptance"
+  }
+}

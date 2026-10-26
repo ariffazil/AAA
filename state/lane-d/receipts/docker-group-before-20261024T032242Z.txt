@@ -1,0 +1,5 @@
+before_utc=20261024T032242Z
+groups_before=arifos nogroup docker ariffazil arifos-auth mailgw-clients
+proc_groups_before=Groups:	969 971 983 989 1002 65534 
+docker_as_arifos_before=12 containers
+rollback=gpasswd -a arifos docker

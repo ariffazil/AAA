@@ -499,8 +499,8 @@ When the sovereign says "Sabar" (have patience) + "Reflect" + "Ask 9 questions" 
 | `references/constitutional-shield-pattern.md` | The 4-layer shield architecture (named sovereign + institutional witness + F13 authorization + NAIO prior witness + cryptographic anchor). |
 | `references/voice-doctrines.md` | Full doctrine for Voice A (berhenti sabar), Voice B (marhaen formal), Voice C (constitutional audit). |
 | `references/tier-distribution-framework.md` | 11-tier distribution with blast-radius reasoning, sequencing rules, and risk matrix. |
-| `references/scar-integration-procedure.md` | How to load SCAR_* entries from `/root/memory/H5-scars/` and integrate as proof points without F9 ANTIHANTU. |
-| `references/letter-evolution-ledger.md` | Template for documenting each iteration's lesson as the trajectory evolves. |
+| ``references/`` | How to load SCAR_* entries from `/root/memory/H5-scars/` and integrate as proof points without F9 ANTIHANTU. |
+| ``references/`` | Template for documenting each iteration's lesson as the trajectory evolves. |
 | `references/f13-mid-stream-corrections.md` | Protocol for handling F13 SOVEREIGN corrections that arrive DURING the dispatch loop (after agents started, before HTML complete). The constitutional-edit pattern — corrections win over agent polish. |
 | `references/multimedia-arsenal-recipe.md` | **NEW 2026-08-12:** Sovereign-grade artifact delivery — PDF + cover image (Gemini 3 Pro) + charts (matplotlib) + audio (edge-tts ms-MY-OsmanNeural) + video (Gemini Omni Flash). Model ID pain chain + scaling pattern. |
 | `references/qualia-vs-institutional-axis.md` | **NEW 2026-08-12:** The two-axis model of sovereign letters (institutional weight × qualia). Probe pattern for "Now what do u really want?" — when sovereign reverses on defensive language, this is the playbook. |
@@ -585,3 +585,12 @@ The v14 surat delivered all 7 assets in single session — that's the sovereign-
 DITEMPA BUKAN DIBERI — Forged, Not Given.
 
 A civic letter is sovereign speech under constitutional protection. Forge it like the institution depends on it — because it does.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-007-over-output-verbosity
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

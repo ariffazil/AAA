@@ -15,7 +15,7 @@
 | Live discovery surface | `/.well-known/a2a-discovery.json` · `/.well-known/agent-card.json` · `/.well-known/arifos-federation.json` |
 | Live task surface | `POST /tasks` · `GET /tasks/{taskId}` · `GET /tasks/{taskId}/stream` |
 | Declared successor runs nowhere | `/root/AAA/src/gateway/server.ts` exists; **no TS gateway process is running** |
-| Legacy `/a2a/*` path | absent from the live Caddyfile (only in `Caddyfile.bak.*`) · public `/a2a` → **404** |
+| Legacy `/a2a/*` path | **SUPERSEDED 2026-10-22 (333-AGI, F13 go):** `/a2a` is LIVE and public again on `aaa.arif-fazil.com` (JSON-RPC: agent/getCard, agent/listSkills, tasks/send, tasks/get, tasks/cancel, tasks/list). Read paths unauthenticated by design (LOCALHOST_IS_PASSWORD via tunnel); mutation verbs are DID-gated. The historic 'public `/a2a` → **404**' claim at the bottom of this file was true on 2026-09-13 and is false from 2026-10-22. |
 
 Modules added to this directory **after** the deprecation notice, through 2026-08-10:
 `fq_gate.js` · `witness_gate.js` · `art_gate.js` · `predict_gate.js` ·

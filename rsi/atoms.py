@@ -11,6 +11,7 @@ An atom is the smallest surviving unit of experience that changes future
 behaviour. It is only real if it carries: evidence at the same layer as its
 claim, a falsifier, and a measured survival history.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -33,23 +34,23 @@ SCHEMA = "arifos.rsi.atom.v1"
 GRAPH_SCHEMA = "arifos.rsi.capability_graph.v1"
 
 # Capability layers, lowest → highest. Selection pressure rises with the layer.
-LAYERS = ("skill", "capability", "policy", "judgment", "governance")
+LAYERS = ("skill", "capability", "tool", "policy", "judgment", "governance")
 
 # Closed taxonomy of failure/learning patterns. Extend only by F13 edit.
 PATTERN_TYPES = (
-    "PATH_DRIFT",            # two names/paths for one thing; case, symlink, legacy dir
-    "REGISTRY_MISMATCH",     # declared surface != live surface
-    "DUPLICATE_SOT",         # two sources of truth for one fact
-    "DEAD_POINTER",          # a cited artifact no longer resolves
-    "QUEUE_BLOCKED",         # ingest/loop jammed, retrying the same unit forever
-    "SILENT_FAIL",           # failure swallowed by a default/fallback
-    "SELF_EVAL",             # producer grades its own output
-    "PROXY_REALITY",         # secondary representation treated as primary ground truth
-    "LAYER_MISMATCH",        # claim layer != evidence layer
-    "HUMAN_BURDEN",          # work collapsed back onto the sovereign
-    "RESOURCE_WASTE",        # paid/idle capability not used (F2: ignorance of inventory)
-    "PERMISSION_DRIFT",      # config allow-list != intended authority
-    "TRUNCATION_LOSS",       # silent head/tail cut mistaken for the whole
+    "PATH_DRIFT",  # two names/paths for one thing; case, symlink, legacy dir
+    "REGISTRY_MISMATCH",  # declared surface != live surface
+    "DUPLICATE_SOT",  # two sources of truth for one fact
+    "DEAD_POINTER",  # a cited artifact no longer resolves
+    "QUEUE_BLOCKED",  # ingest/loop jammed, retrying the same unit forever
+    "SILENT_FAIL",  # failure swallowed by a default/fallback
+    "SELF_EVAL",  # producer grades its own output
+    "PROXY_REALITY",  # secondary representation treated as primary ground truth
+    "LAYER_MISMATCH",  # claim layer != evidence layer
+    "HUMAN_BURDEN",  # work collapsed back onto the sovereign
+    "RESOURCE_WASTE",  # paid/idle capability not used (F2: ignorance of inventory)
+    "PERMISSION_DRIFT",  # config allow-list != intended authority
+    "TRUNCATION_LOSS",  # silent head/tail cut mistaken for the whole
     "UNCLASSIFIED",
 )
 
@@ -144,7 +145,7 @@ def make_atom(
         "actor": actor,
         "sessions": session_ids[:20],
         "target": target,
-        "status": "candidate",       # candidate → verified | rejected
+        "status": "candidate",  # candidate → verified | rejected
         "survived_verification": False,
         "promotion": None,
         "survival_events": [],
@@ -170,6 +171,7 @@ def parse_frequency(text: str) -> int:
 
 # ── capability graph ─────────────────────────────────────────────────────────
 
+
 def load_graph() -> dict:
     if os.path.exists(GRAPH):
         try:
@@ -181,7 +183,7 @@ def load_graph() -> dict:
         "created": now_iso(),
         "updated": now_iso(),
         "doctrine": "Capability → Organ → Tool → Skill. Selection pressure lives "
-                    "at the capability layer; skills are adapters.",
+        "at the capability layer; skills are adapters.",
         "nodes": {},
         "edges": [],
     }
@@ -200,19 +202,22 @@ def upsert_capability(g: dict, atom: dict) -> tuple[str, bool]:
     """Attach an atom to the capability graph. Returns (capability_id, created)."""
     cap_id = atom.get("target") or f"capability.{atom['pattern_type'].lower()}"
     created = cap_id not in g["nodes"]
-    node = g["nodes"].get(cap_id, {
-        "id": cap_id,
-        "title": cap_id.split(".")[-1].replace("_", " ").title(),
-        "layer": atom["layer"],
-        "created": now_iso(),
-        "atoms": [],
-        "exposures": 0,
-        "survivals": 0,
-        "contradictions_survived": 0,
-        "contradictions_failed": 0,
-        "fitness_score": None,
-        "status": "PROVISIONAL",
-    })
+    node = g["nodes"].get(
+        cap_id,
+        {
+            "id": cap_id,
+            "title": cap_id.split(".")[-1].replace("_", " ").title(),
+            "layer": atom["layer"],
+            "created": now_iso(),
+            "atoms": [],
+            "exposures": 0,
+            "survivals": 0,
+            "contradictions_survived": 0,
+            "contradictions_failed": 0,
+            "fitness_score": None,
+            "status": "PROVISIONAL",
+        },
+    )
     if atom["atom_id"] not in node["atoms"]:
         node["atoms"].append(atom["atom_id"])
     # Measurement discipline: exposures/survivals count VERIFICATION EVENTS.
@@ -222,10 +227,14 @@ def upsert_capability(g: dict, atom: dict) -> tuple[str, bool]:
     node.setdefault("exposures", 0)
     g["nodes"][cap_id] = node
     if not any(e.get("from") == atom["atom_id"] and e.get("to") == cap_id for e in g["edges"]):
-        g["edges"].append({
-            "from": atom["atom_id"], "to": cap_id,
-            "relation": "evidences", "ts": now_iso(),
-        })
+        g["edges"].append(
+            {
+                "from": atom["atom_id"],
+                "to": cap_id,
+                "relation": "evidences",
+                "ts": now_iso(),
+            }
+        )
     return cap_id, created
 
 
@@ -241,11 +250,10 @@ def record_survival(g: dict, cap_id: str, survived: bool, evidence: str) -> None
         node["contradictions_failed"] = node.get("contradictions_failed", 0) + 1
     exp = max(1, node["exposures"])
     node["fitness_score"] = round(node["survivals"] / exp, 4)
-    node["status"] = ("ACTIVE" if node["fitness_score"] >= 0.8
-                      else "DEGRADED" if node["fitness_score"] >= 0.5 else "AT_RISK")
-    node.setdefault("survival_events", []).append(
-        {"ts": now_iso(), "survived": survived, "evidence": evidence[:240]}
+    node["status"] = (
+        "ACTIVE" if node["fitness_score"] >= 0.8 else "DEGRADED" if node["fitness_score"] >= 0.5 else "AT_RISK"
     )
+    node.setdefault("survival_events", []).append({"ts": now_iso(), "survived": survived, "evidence": evidence[:240]})
     node["survival_events"] = node["survival_events"][-50:]
 
 
@@ -267,7 +275,6 @@ def ranking_report(g: dict) -> dict:
     return {
         "n": len(fits),
         "median_fitness": med,
-        "ranking": [{"capability": k, "fitness": v, "below_median": v < med}
-                    for k, v in order],
+        "ranking": [{"capability": k, "fitness": v, "below_median": v < med} for k, v in order],
         "note": "Proposal surface only. Changing the ranking function is F13 territory.",
     }

@@ -1,0 +1,2 @@
+5e16f33277320118d41d1729f4ebac421c12c0b2
+5e16f33277320118d41d1729f4ebac421c12c0b2 2026-10-22 19:28:00 +0800 fix(tests): align coding-prompt order test with NO_VISION_DISCLAIMER injection (union)

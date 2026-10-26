@@ -1,6 +1,6 @@
 ---
 name: arifos-machine-wellness
-description: "Stabilize the arifOS host when CPU/load/swap/oil is red — triage zombies (orphaned arifosmcp.runtime workers, runaway ollama runners), free resources, identify the LIVE kernel before killing anything, report steel+silica state tersely, and stop at any irreversible gate. Trigger: 'stabilize the machine', 'stabilize the server', 'steel and silica', load avg > cores × 2, swap >80% full, machine wellness check, 'is the host healthy', orphan python workers, runaway ollama process. Distinct from federation-runtime-forensics (reactive — sibling reported a flood) and federation-infra-verification (proactive — declared-vs-live audit). This is the wellness/triage class."
+description: 'Stabilize the arifOS host when CPU/load/swap/oil is red — triage zombies (orphaned arifosmcp.runtime workers, runaway ollama runners), free resources, identify the LIVE kernel before killing anything, report'
 ---
 
 # arifOS Machine Wellness
@@ -247,6 +247,13 @@ Report shape for Arif: one emoji per layer, one line each. Never aggregate. See 
 ## Support files
 
 - `references/wellness-probe-recipe.md` — copy-paste terminal session for the 5-second wellness probe, the orphan-arifosmcp kill sequence, and the ollama-runner kill. Run from `/root` with `bash` and the kill lists resolve to live PIDs.
-- `references/2026-08-08-machine-wellness-session.md` — the session transcript that produced this skill: live machine had load ~19, swap 100%, 4 orphan workers, stuck ollama runner, killed all safely, load dropped to ~13 and continued draining.
+- ``references/`` — the session transcript that produced this skill: live machine had load ~19, swap 100%, 4 orphan workers, stuck ollama runner, killed all safely, load dropped to ~13 and continued draining.
 - `references/2026-08-11-drop-cache-protect-session.md` — session where 8 concurrent opencode instances (~6GB RSS) pushed swap to 99.4% with an active session mid-task; the fix was `drop_caches` (664MB→4.3GB ram free, 0 earlyoom kills) rather than killing the hot process. Includes the exact probe + active/idle discrimination.
 - `references/2026-08-15-node-institution-map-session.md` — full live institution map (77 services + 7 containers, top-RAM consumers), the stale-swap-vs-thrashing discrimination case, zram observation (proposed, not yet implemented), dead-weight /root/comfy finding, and the ROI-ordered next-level resource list. Load this before answering any "map the machine / what does X service do / resource allocation" question.
+
+## Routing notes (moved from description 2026-10-23)
+
+steel+silica state tersely, and stop at any irreversible gate. Trigger: 'stabilize the machine', 'stabilize the server', 'steel and silica', load avg > cores × 2, swap >80% full, machine wellness check, 'is the host healthy', orphan python workers, runaway ollama process. Distinct from federation-runtime-forensics (reactive — sibling reported a flood) and federation-infra-verification (proactive — declared-vs-live audit). This is the wellness/triage class.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

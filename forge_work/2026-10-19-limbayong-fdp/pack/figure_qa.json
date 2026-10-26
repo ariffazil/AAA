@@ -1,0 +1,32 @@
+[
+  {
+    "figure": "Fig 0",
+    "texts": 20,
+    "outside": 0,
+    "overlaps": 0
+  },
+  {
+    "figure": "Fig 1",
+    "texts": 29,
+    "outside": 0,
+    "overlaps": 0
+  },
+  {
+    "figure": "Fig 2",
+    "texts": 29,
+    "outside": 0,
+    "overlaps": 0
+  },
+  {
+    "figure": "Fig 3",
+    "texts": 25,
+    "outside": 0,
+    "overlaps": 0
+  },
+  {
+    "figure": "Fig 4",
+    "texts": 16,
+    "outside": 0,
+    "overlaps": 0
+  }
+]

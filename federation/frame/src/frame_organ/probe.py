@@ -49,7 +49,10 @@ async def probe_organ(organ: str, port: int) -> OrganProbe:
             return OrganProbe(
                 organ=organ,
                 port=port,
-                healthy=resp.status_code == 200,
+                # F2 2026-10-21 (external audit P0): reachable ≠ healthy. An
+                # organ answering 200 with status="degraded" in its own payload
+                # is DEGRADED, not healthy — the summary counters must say so.
+                healthy=resp.status_code == 200 and status not in ("degraded", "down"),
                 latency_ms=round(latency, 2),
                 status=status,
                 details=data if isinstance(data, dict) else {"raw_status": resp.status_code},

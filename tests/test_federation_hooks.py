@@ -70,7 +70,10 @@ class TestFederationHookEngine(unittest.TestCase):
         self.assertEqual(gate_res["verdict"], "ALLOW")
         self.assertTrue(gate_res["auto_minted"])
         self.assertIsNotNone(gate_res["session_token"])
-        self.assertTrue(gate_res["session_token"].startswith("act-minted-555-ASI"))
+        # Renamed 2026-10-20: `act-minted-*` read as a kernel ACT credential but
+        # was self-minted by the caller's own process. `local-corr-*` is honest.
+        self.assertTrue(gate_res["session_token"].startswith("local-corr-555-ASI"))
+        self.assertFalse(gate_res["session_token"].startswith("act-minted-"))
         self.assertIsNotNone(gate_res.get("journal_id"))
 
     def test_04_monotonic_restriction_ladder(self):
@@ -97,13 +100,19 @@ class TestFederationHookEngine(unittest.TestCase):
         self.assertEqual(engine.current_restriction, RestrictionLevel.HOLD)  # State preserved
 
     def test_05_gate_forbidden_target_enforced(self):
-        """Phase 1: Forbidden target returns kernel VOID verdict (enforcement, not judgment)."""
+        """Phase 1: Forbidden target is REFUSED by transmitting the kernel verdict.
+
+        2026-10-20: verdict is HOLD, not VOID. Since SOT v1.3.2 a hook may never
+        SPELL a kernel-only verdict (VOID/DENY/REVOKED) — it transports the
+        kernel's decision. assertion of intent = refusal (NOT_EXECUTED), not the
+        word that spells it.
+        """
         engine = FederationHookEngine(actor_id="333-AGI")
         gate_res = engine.gate(
             tool_name="replace_file_content",
             tool_args={"TargetFile": "/etc/shadow", "ReplacementContent": "root:x:"},
         )
-        self.assertEqual(gate_res["verdict"], "VOID")
+        self.assertEqual(gate_res["verdict"], "HOLD")
         self.assertEqual(gate_res.get("execution_status"), "NOT_EXECUTED")
         self.assertEqual(gate_res.get("consequence"), "PREVENTED_BY_KERNEL_VOID")
         self.assertGreater(len(gate_res.get("security_warnings", [])), 0)

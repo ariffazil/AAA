@@ -1,0 +1,80 @@
+{
+ "receipt_type": "CAPABILITY_RECEIPT",
+ "timestamp": "2026-10-22T12:05:50Z",
+ "runtime": "opencode/333-AGI",
+ "observed": {
+  "skills_union": 941,
+  "skills_by_library": {
+   "AAA": 698,
+   "HERMES": 855,
+   "CODEX": 37
+  },
+  "library_stats": {
+   "AAA": {
+    "root": "/root/AAA/skills",
+    "exists": true,
+    "dirs": 778,
+    "skill_md": 693,
+    "desc_only": 5,
+    "other_entries": 16
+   },
+   "HERMES": {
+    "root": "/root/runtime/hermes/.hermes/skills",
+    "exists": true,
+    "dirs": 886,
+    "skill_md": 845,
+    "desc_only": 10,
+    "other_entries": 14
+   },
+   "CODEX": {
+    "root": "/root/.codex/skills",
+    "exists": true,
+    "dirs": 39,
+    "skill_md": 37,
+    "desc_only": 0,
+    "other_entries": 0
+   }
+  },
+  "views": [
+   {
+    "view": "/root/.opencode/skills",
+    "is_link": true,
+    "resolves_to": "/root/AAA/skills"
+   },
+   {
+    "view": "/root/.agents/skills",
+    "is_link": true,
+    "resolves_to": "/root/AAA/skills"
+   },
+   {
+    "view": "/root/.claude/skills",
+    "is_link": true,
+    "resolves_to": "/root/AAA/skills"
+   },
+   {
+    "view": "/root/HERMES/skills",
+    "is_link": false,
+    "resolves_to": "/root/runtime/hermes/.hermes/skills"
+   }
+  ],
+  "aforge_tools": 115,
+  "kernel_capabilities": 8,
+  "registered_agents": 16,
+  "hooks_live": 14
+ },
+ "declared": {
+  "claim_kimi_2026_10_22": {
+   "skills": 785,
+   "mcps": 22,
+   "opencode_visible_skills": 0,
+   "codex_skills": 22
+  },
+  "authored_manifest_gap": "authored registry declared 13 MCP / 255 skills (Kimi A1)"
+ },
+ "delta": {
+  "opencode_visibility": "claimed 0 / observed 941 via symlink view -> CLAIM STALE",
+  "library_consistency": "AAA skills mirror into .opencode/.agents/.claude views (single library, N views — the 'unified library' is already live as links)",
+  "codex_skills": "claimed 22 / observed 37 at /root/.codex/skills (CODEX_RUNTIME_BASELINE.json says codex consumes /root/AAA/skills directly)"
+ },
+ "verdict": "DRIFT_DETECTED"
+}

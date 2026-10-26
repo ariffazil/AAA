@@ -111,7 +111,7 @@ imported but with a wrong relative path. Trace importers with
 is > 0 — `tsc --noEmit` and `vite build` passing does NOT mean shipped.
 
 **GEOX GUI reference implementation:** see `web-development/geox-panel-authoring`
-+ `references/integration-verification.md` for the full recipe applied to a real
++ `/root/AAA/skills/geox-panel-authoring/references/integration-verification.md` for the full recipe applied to a real
 tree-shaking incident (2026-08-10).
 
 ## The Pattern

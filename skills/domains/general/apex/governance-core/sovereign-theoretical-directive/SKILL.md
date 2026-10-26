@@ -103,3 +103,22 @@ Document: /root/AAA/IDENTITY_AXIOMS_V0.md
 
 2026-08-31: Persona-Desire Mechanics canonized (mask↔baseline trade-off, frame
 ownership, stage model, validation asymmetry) into the shadow framework.
+
+2026-10-20: Keikhlasan derivation ("Bayang Ikhlas", /root/AAA/eurekas/bayang-ikhlas-2026-10-20/).
+Two moves worth repeating: (1) **probe the corpus before deriving** — count the topic keyword in
+`state.db` messages (role='user') and say out loud whether the question is new or a repeat; here
+"ikhlas" = 20 of 19,049 msgs, so it was honestly new territory and the reply opened with that
+receipt instead of pretending recall. (2) **Extend the existing formalism, do not mint a rival one** —
+`register-as-channel.md` already models `Y ~ p(Y|X,C,A,H,ε)` with "register is price, not character"
++ Correction 1 (gross cost is NOT proof of honesty). Sincerity became the derivative of that model
+(behaviour invariant to C/A/H) rather than a new ontology, and the file's own correction prevented
+the obvious wrong claim ("cost ∝ sincerity"). Read the adjacent ratified fragment before writing a
+new law; a derivation that lands inside an existing equation needs a staging eureka, not a canon file.
+
+**Qualia-map lane (same day, follow-on).** When F13 asks to map rasa/emotion (sayang · benci · dengki · rindu),
+two traps that a clean geometric answer walks into: (1) **the instrument is made of the measured** — language is
+both lossy AND performative, so naming a state installs it; never present a verbal map as a read of interior state.
+(2) **the map must declare its own roof** — body, time-derivative (gradient not snapshot), and *what was never felt*
+are the three axes prose models omit. Anchor every claim outside language (somatic report, cross-medium delta,
+behaviour over months). One channel = a portrait; two channels = a measurement. Deliver as PDF, and name the
+stopping point explicitly — the honest map ends where the evidence ends.

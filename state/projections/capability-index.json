@@ -1,0 +1,10355 @@
+{
+ "schema": "aaa/projection/skill-capability-index/v1",
+ "generated_at": "2026-10-22T12:05:50Z",
+ "kind": "skill-category-projection",
+ "distinct_from": "/root/AAA/registries/CAPABILITY_INDEX.json (MCP TOOL index — different object; do not merge)",
+ "consumer": "capability routing: which skill families each harness can reach",
+ "failure_class": "capability visibility differed per harness with no cross-view matrix",
+ "per_library_counts": {
+  "AAA": 698,
+  "HERMES": 855,
+  "CODEX": 37
+ },
+ "per_category_counts": {
+  "Governance": 435,
+  "Research": 297,
+  "Engineering": 536,
+  "Execution": 212,
+  "Memory": 188,
+  "Communication": 322,
+  "Domain": 131,
+  "Unclassified": 32
+ },
+ "matrix": [
+  {
+   "skill_id": "000-salam",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "111-tengok",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "333-forge",
+   "categories": [
+    "Execution",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "555-betul",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "666-rasa",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "777-faham",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "888-adil",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "999-ingat",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-asr-glm-ingest",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-audio-emd-pipeline",
+   "categories": [
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-audio-qualia-doctrine",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-setup-help",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-somatic-emd-pipeline",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-somatic-engine-catalog",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-somatic-music-doctrine",
+   "categories": [
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-tts-engine-catalog",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-voice-cloning-mimo-minimax",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AAA-voice-cloning-qwen-cloud",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-agentic-web",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-audio-quantum-cognition",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-decisions-reflect",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-dream-engine",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-explorer-intelligence",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-graph-engineering-patterns",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-nusantara-substrate",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-skill-unification",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AGI-web-optimization",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "APEX-humility-godel",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "APEX-quantum-eureka",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ASI-agentic-architecture",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ASI-agentic-governance",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ASI-drift-watch",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ASI-fabrication-prevention",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ASI-skill-binding",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ASI-summarize",
+   "categories": [
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "AUDIT-repo-reality",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "COPILOT-zen-router",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "EUREKA777-paradox-resolution",
+   "categories": [
+    "Research",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-act-federation-ingress",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-agentic-web-builder",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-ci-diagnose",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-cicd-docker-deploy",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-code-analysis",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-context-compressor",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-cross-repo-doc-zen",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-data-compression",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-design-intelligence",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-did-web-identity",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-docker-entropy",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-esm-require-guard",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-fastapi-api-builder",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-fastmcp",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-federation-manifest",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-federation-orchestrator",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-google-workspace",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-governance-jsonld",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-incident-escalation",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-incident-triage",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-infra-crons",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-infra-guardian",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-kimi-code",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-komda-color-law",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-a2a-agentic",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-federation-ops",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-gui",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-lifeguard",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-ops",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-probe",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-registry-ops",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-testing",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-model-monitor",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-musyawarah-gotong",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-nextjs-mastery",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-onboarding",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-postgres-schema-design",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-pr-governance",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-pr-review",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-precommit-review",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-react-spa-discipline",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-readme-truth-check",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-redis-qdrant-integration",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-repo-intelligence",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-route-least-power",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-sct-federation-ingress",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-secret-hygiene",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-skill-creator",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-skill-linter",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-spatial-grounding",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-symlink-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-tailwind-tokens",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-telegram-audit",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-telemetry-watchdog",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-vps-docker",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "FORGE-vps-runbook",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "HERMES-opencode-protocol",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "KERNEL-trinity-33",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "PETRONAS-intelligence-router",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "RSI-federation-mesh",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "RSI-recursive-improvement",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "WELL-3baik-log",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "a-forge-ops",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "a2a-gateway-protocol",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "a2a-task-delegator",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-audio-qualia-doctrine",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-capability-compiler",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-chamber-protocol",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-constitution-architecture-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-docs-entropy-reduction",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-doctrine-sealing",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-human-physique-topology",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-image-editing",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-musyawarah-execution",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-ocr-optical-compression",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-pdf-voice-protocol",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-setup-help",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-shadow-mode",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-skill-authoring-craft",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "aaa-skill-governor-runtime",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "abang-sado-analysis-doctrine",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "abang-sado-tenderness-arc",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-capability-gap-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-capability-self-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-claim-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-config-validation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-finding-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-grammar",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-memory-architecture",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-message-store-forensics",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-question-budget",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-readiness-cockpit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agent-runtime-shadow-repair",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "agent-tool-verification",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agentic-genome-species",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agentic-state",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agentic-trust-trajectory",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-agentic-web-delivery",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-decisions-reflect",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-deep-research-loop",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-dream-engine",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-multimodal-bridge",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-nusantara-substrate",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-plan-dag",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agi-web-optimization",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "agy-scar-hardening",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ai-media-generation",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ai-media-generation-ops",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ai-paper-paste-audit",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "aia-cycle-operator",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "all-time-and-delisted-charts",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "alpha-zen-lanes",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex-attention-optimizer",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex-deliverable-protocol",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex-fact-check-pass",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex-judge",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex-theory-canon",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_audit_coverage_check",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_authority_check",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_floor_check",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_reversibility_test",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_scope_check",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_tool_approval_gate",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_verdict_hold",
+   "categories": [
+    "Governance",
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "apex_verdict_seal",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "apple",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "architecture-alignment-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arif-digest-group-chat",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arif-fazil-publication-doctrine",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arif-fazil-site-deploy",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "arif-fazil-site-ops",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arif-fazil-web-ops",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arif-site-human-first-audit",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arif-site-publish",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "arif-sites-ops",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arif-world-reality-intel",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-auto-init",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-cognitive-atlas",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-collapse-vector-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-constitutional-judge",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-control-plane-sot-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-cron-ops",
+   "categories": [
+    "Research",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-eight-verb-canonical",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-evidence-policy",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-external-council",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-frozen-snapshot-init",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-governance-measurement",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-integration-recon",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-kernel-e2e-testing",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-kernel-eurekas",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-kernel-zen-audit",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-machine-wellness",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-mcp-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-mcp-resource-surface",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-morning-pulse",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-prompt-doctrine",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arifos-site-patch-without-caddy-reload",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "artifact-emission-pipeline",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "artifact-source-reconciliation",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arxiv-preprint-pipeline",
+   "categories": [
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "arxiv-submission-package",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ascii-art",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "asi-agentic-governance",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "asi-summarize",
+   "categories": [
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "atlas333-cognitive-geometry",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "attribution-integrity",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "audio-nervous-system",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "audit-and-validate-deliverables",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "audit-entity-classify",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "audit-falsification-discipline",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "audit-intake-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "audit-repo-reality",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "audit-repository-entropy",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "audit-seal",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "auditable-numeric-artifacts",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "auth-failure-attribution",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "authority-reality-grounder",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "autonomous-ai-agents",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "autonomous-overnight-agent-dispatch",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "background-monitor-design",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "banda-haram-hardcode",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "bijaksana-compile",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "blind-prediction-testing",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "blogwatcher",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "bm-business-translation",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "bm-voice-script-prep",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "body-composition-assessment",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "bond-corpus-probe",
+   "categories": [
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "bond-reading-discipline",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "bonded-human-special-lane",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "boundary-debug",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "brand-identity-mark",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "browser-playwright-runner",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "browser-service-ops",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "business-document-production",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "business-letter-pdf",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "canon-integrity-check",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "canon-single-source",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "capability-telemetry-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "casual-bm-chat-register",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "causal-attribution-discipline",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "causal555-pywhy",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ccc-coder-federation",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ceremonial-letter-pdf",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "chart-artifact-render-qa",
+   "categories": [
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "chatgpt-apps",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX"
+   ]
+  },
+  {
+   "skill_id": "check-work",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "chokepoint-enforcement-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "chron-consequence-tracking",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "chunked-tts-render-integrity",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "circular-mark-and-arabic-typography",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "civic-advocacy",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "civic-article-publishing",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "civic-petition-forge",
+   "categories": [
+    "Governance",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "civic-whistleblower-letter",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "claim-ledger-integrity",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "claimed-defect-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "claude-meta-mesa",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "clause-split-tts-render-ops",
+   "categories": [
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "clone-receipt-protocol",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cloud-gpu-provisioning",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "codebase-reality",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "codex-family-site-deliverable",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cognitive-commands",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "comfyui",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "companion-clis",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "company-failure-analysis",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "company-solvency-forensics",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "compensation-claim-grading",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "concurrent-agent-writers",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "constitutional-commands",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "constitutional-institution-mapping",
+   "categories": [
+    "Governance",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "constitutional-organism-doctrine",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "constitutional-publication-audit",
+   "categories": [
+    "Governance",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "contextstream-memory-code-search",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "control-reality-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "conversation-record-forensics",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "corporate-language-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "corpus-claim-discipline",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "corpus-claim-falsification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "corpus-evidence-discipline",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cover-art-pipeline",
+   "categories": [
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "create-skill",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "creative",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "credential-surface-reality",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cross-ai-analysis-distillation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cross-harness-reality-test",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cross-harness-relay-wiring",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "cross-host-artifact-delivery",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cross-host-tool-lane-integration",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "cross-node-artifact-transfer",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "cross-surface-conformance-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "curated-recommendation-artifact",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "curated-recommendation-lists",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "decision-risk-quantification",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "declared-vs-live-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "deep-research-plus-wealth",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "delegated-build-fanout",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "delta-omega-psi-multimodal-cognition",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "design-shell-parity",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "desire-structure-mapping",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "discovery-surface-verification",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "dissipative-transition-hold",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "divergent-claim-reconciliation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "docs",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "doctrine-forging",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "doctrine-to-runtime-compiler",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "documentary-biography-from-chat",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "documentation-tier-management",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "dream-what",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "duckdb-analytics-engine",
+   "categories": [
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "durable-claim-ledger",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "dynamic-config-taxonomy",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "echo-loop-detector",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "email",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "emd-lane-routing",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "emem-shared-memory",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "emergence-maturation-ladder",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "enforcement-coverage-verification",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "entity-dossier-sourcing",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "entity-failure-forensics",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "entity-position-dossier",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "entropy-metabolizer",
+   "categories": [
+    "Governance",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "essay-publish-pipeline",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "essay-publish-watermark",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "evaluating-llms-harness",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "evidence-artifact-forensics",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "evidence-chain-audit",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "evidence-gate-hardening",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "evidence-hierarchy",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "excalidraw",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "external-agent-conformance-testing",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "external-artifact-verdict",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "external-review-intake",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "faceless-subject-rendering",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "fake-governance-detection",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fastmcp-organ-staging-migration",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fastmcp-tool-consolidation",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fb-transaction-intelligence",
+   "categories": [
+    "Governance",
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fdp-fiscal-economics-modelling",
+   "categories": [
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fed-cognitive-allocator",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fed-runtime-observations",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federated-abi-extension",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federated-patch-seal",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-agent-card-ops",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-agent-identity-binding",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-alignment-probe",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-asset-probe",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-config-incarnation",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-connect-headscale",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-constitutional-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-cycle-instrument",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-dep-upgrade",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-dynamic-config",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-entropy-reduction",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-external-briefing",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-identity-reconciliation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-infra-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-lane-routing",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-metabolism",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-provider-integration",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-release-attestation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-seat-wiring",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-skill-probe-discipline",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-substrate-hardening",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "federation-wiring-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fi-mesh-check",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fi-qwen-upgrade",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "fi-zai-probe",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "field-development-economics",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "field-development-plan",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "field-development-plan-review",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "field-development-plan-screening",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "figure-annotation-verification",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "financial-chart-analysis",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "financial-distress-data-lanes",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "financial-distress-forensics",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "financial-history-charting",
+   "categories": [
+    "Governance",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "find-live-binary-before-engine-mutation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-agent",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-company-directories",
+   "categories": [
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-competitive-intel",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-crawl",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-dashboard-reporting",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-deep-research",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-demo-walkthrough",
+   "categories": [
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-developer-index",
+   "categories": [
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-download",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-interact",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-knowledge-base",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-knowledge-ingest",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-lead-gen",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-lead-research",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-map",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-market-research",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-monitor",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-parse",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-qa",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-research-index",
+   "categories": [
+    "Research",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-research-papers",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-scrape",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-search",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-seo-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-shop",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-web-search",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-website-design-clone",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "firecrawl-workflows",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "first-party-evidence-audit",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "flame-stage-routing",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "flash",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "flow",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forecast-publish-with-calibration-gate",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "forge-act-federation-ingress",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-agentic-web-builder",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-audio-prosody-extraction",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-ci-diagnose",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-code-analysis",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-context-compressor",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-cross-agent-handoff",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-cross-repo-doc-zen",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-design-intelligence",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-did-web-identity",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-document-intelligence",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-ephemeral-genesis",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-esm-require-guard",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-execution-governance",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-explainer-90s",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-fastapi-api-builder",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-fastmcp",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-federation-config-mutation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-federation-probe",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-git-seal",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-github-ops",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-google-workspace",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-governance-analysis",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-governance-jsonld",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-hermes-self-evolution",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-hook-mutation-closure",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-infra-crons",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-infra-guardian",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-issue-triage",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-kimi-code",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-komda-color-law",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-lsp-pre-edit-gate",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-mcp-a2a-agentic",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-mcp-gui",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-mcp-migration",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-model-monitor",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-multimodal-router",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-musyawarah-gotong",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-nextjs-mastery",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-onboarding",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-port-architecture",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-postgres-schema-design",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-project-context-update",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-react-spa-discipline",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-redis-qdrant-integration",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-repo-intelligence",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-route-least-power",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-seal-a-close",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-secret-hygiene",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-self-loop-guard",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-spatial-grounding",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-subagent-lifecycle",
+   "categories": [
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-subagent-spawn",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-symlink-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-t3a-binding-matrix",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-tailwind-tokens",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-vault-seal-receipt",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-vault999-witness",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-vision-densify",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-visual-design-system",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-visual-qa-w3",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-vss-parser",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-vss-verifier-suite",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-web-intelligence",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge-well-boundary-repair",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forge_card_migrate",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "forget",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "formal-document-rebuild",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "frontier-model-audit-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "futures-forecast-briefing",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "gate-grounding-audit",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "gemini-integration",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "gemini-media-gen",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "generated-artifact-integrity",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "generated-audio-provenance",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "generated-scientific-artifact-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "geo-delivery-flow",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geological-artifact-rigor",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geological-asset-brief",
+   "categories": [
+    "Memory",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "geoscience-figure-audit",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "geoscience-model-figure",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "geoscience-section-forge",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "geox-backend-development",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-basin-evaluation",
+   "categories": [
+    "Research",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-claim-falsification",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-geoscience-artifacts",
+   "categories": [
+    "Governance",
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "geox-grounding",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-mcp-tool-invocation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-panel-authoring",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-pressure-governance",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-production-cockpit",
+   "categories": [
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-prospect-evaluation",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-seismic-interpretation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-temporal-intelligence",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-voice-reality-ingest",
+   "categories": [
+    "Execution",
+    "Memory",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "geox-well-log-qc",
+   "categories": [
+    "Execution",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "github-auth",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "github-code-review",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "github-issue-to-pr",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "github-issues",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "github-pr-workflow",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "github-public-push-privacy",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "github-repo-management",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "gmail-rest-mailbox-ops",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "gold-site-honest-prediction",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "google-workspace-gws",
+   "categories": [
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "governance-audit",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "governance-benchmark-authoring",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "governance-contract-self-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "governance-failure-historical-backtest",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "governance-removal-review",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "governed-removal-discipline",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "graphiti-temporal-memory-ops",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "health-provider-navigation",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "health-scam-vetting",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "helix-diagnosis",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "helix-memory-compress",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "help",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-align",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-asi-intelligence",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-claude-code-spawn",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-coding-gateway",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-delivery-diagnostics",
+   "categories": [
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-dna-telemetry",
+   "categories": [
+    "Governance",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-federated-identity",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-federation-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-forge",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-gateway-image-routing",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-init",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-mcp-server-registration",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "hermes-multi-human-lanes",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-multi-user-isolation",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-multimodal-intelligence",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-naked-prior-audit",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-opencode-protocol",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-persona-alignment",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-plugin-system",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-propose-seal",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-rasa-doctrine",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-research-substrate",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-room-relay",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "hermes-session-hygiene",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-slash-command-trap",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hermes-state-db-forensics",
+   "categories": [
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "hf-governed-dataset-ops",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "html-pdf-reporting",
+   "categories": [
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "huggingface-hub",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-apps-roadmap-2026",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-care-coaching",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-corpus-falsification",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-facing-recurring-card",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-logistics-advisory",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-meaning-membrane",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-memory-organization",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-reality-field",
+   "categories": [
+    "Execution",
+    "Memory",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-response-witness",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-state-estimation",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "human-trust-calibration",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "i-arif-corpus-ops",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "identity-reference-verification",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "identity-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "image-analyzer-vision",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "image-restyle-and-edit",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "image-text-editing",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "image-text-extraction",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "imagegen",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "imagine",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "inbound-evaluation-intake",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "inbound-provenance-forensics",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "infrastructure-topology",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "inherited-claim-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "injected-html-design-parity",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "insider-exposure-inventory",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "instagram-story-forge",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "institution-telemetry-ops",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "institutional-communication-audit",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "institutional-epistemic-sink-forensics",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "institutional-fact-verification",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "institutional-form-filing",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "institutional-language-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "institutional-spend-accountability",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "intelligence-briefing",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "interpretation-calibration",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "intimate-anthropology",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "irfan-stewardship-review",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "kernel-bind",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "kernel-security-claim-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "kernel-trinity-33",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "kimi-code",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "know-language",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "know-math",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "know-physics",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "know-pragmatics",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "kpj-vending-dashboard",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "kvm8-media-lane-fallbacks",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "l0-l4-cascade-doctrine",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "layered-perspective-brief",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "learning-loop-verification",
+   "categories": [
+    "Governance",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "link-to-evidence",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "listed-equity-chart-delivery",
+   "categories": [
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "live-data-dashboards",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "live-system-audit-discipline",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "live-worker-session-relay",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "llama-cpp",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "local-business-deep-dive",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "local-video-read",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "long-form-tts-render-integrity",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "loved-one-artifact-ops",
+   "categories": [
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "loved-one-worry-support",
+   "categories": [
+    "Execution",
+    "Memory",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "machine-discovery-surface-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "makcikgpt-archived-designs",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "makcikgpt-article-craft",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysia-commercial-premise-sourcing",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "malaysia-health-scam-verification",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysia-reality-interface",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysia-rental-vetting",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysia-tenancy-agreement",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysia-tenancy-disputes",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysian-bodybuilding-research",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysian-employment-separation",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "malaysian-psc-fiscal-modelling",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mapbox-cartography-gis",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "market-analysis-scope",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "market-claim-assessment",
+   "categories": [
+    "Governance",
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "market-collapse-forensics",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "market-prediction-falsification",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mata",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mcp-client-conformance",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "mcp-context-compression",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mcp-edit-activation",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mcp-external-conformance",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "mcp-organ-probe",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mcp-sota-shopping-list",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mcp-stateless-protocol",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mcp-tool-differential-testing",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mcp-transport-fix",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "measurement-discipline",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "media",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "media-content-extraction",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "media-ingest-lane",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "media-lane-outage-ladder",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "memory-manage",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "merge-reconciler",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "meta-mesa",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "migrate-to-codex",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX"
+   ]
+  },
+  {
+   "skill_id": "mimo-audio",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mimo-v2-5-tts",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mimo-vision",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "minimax-image-gen",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "minimax-m-plan",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "mmx-cli",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "mobile-app-mockup",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "model-narrative-consistency",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "model-score-disclosure",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "monetary-amount-integrity",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "monetary-amount-parsing",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "money-path-discipline",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "multi-cli-coding-dispatch",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "multi-lens-parallel-forge",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "multi-period-cashflow-analysis",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "multi-reference-image-edit",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "multi-voice-note-assembly",
+   "categories": [
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "multimodal-audio-pipeline",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "multisite-performance-dashboards",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "my-reality",
+   "categories": [
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "nano-pdf",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "nervous-system-coregulation",
+   "categories": [
+    "Governance",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "note-taking",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "nusantara-action-spiral",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "observe-ground",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ocr-and-documents",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openai-docs",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openclaw",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openclaw-claude-code-spawn",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openclaw-forge",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openclaw-human-meaning",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openclaw-init",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openclaw-mesh-bridge",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openclaw-propose-seal",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-agentic-state",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-arifos-pitfalls",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-ed25519-bootstrap-fix",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-forge",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-init",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-meta-mesa",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-propose-seal",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "opencode-zen-router",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "openhue",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "organ-capability-map",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "output-attestation",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "padu",
+   "categories": [
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "parallel-agent-fanout",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "paste-router",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "pasted-review-falsification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "path-hallucination-guard",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "pdf-federation",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "pdf-realmap",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "pdf-report-generation",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "ped-hormone-advisory",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "person-lane-operator",
+   "categories": [
+    "Governance",
+    "Memory",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "persona-boundary-conduct",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "persona-triad-reasoning",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "persona-voice-act-arcs",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "persona-voice-binding",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "persona-voice-continuity",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "persona-voice-note-delivery",
+   "categories": [
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "persona-voice-note-render",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "persona-voice-render-ops",
+   "categories": [
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "personal-domain-deep-research",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "photo-style-transfer",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "physique-photo-assessment",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "pipeline-integrity",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "plan",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "plugin-creator",
+   "categories": [
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "political-fiscal-claims",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "pr-portfolio-sweep",
+   "categories": [
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "prediction-honesty-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "predictive-claim-falsification",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "presentation-pack-delivery",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "presentation-pack-forge",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "pretext",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "principal-analysis-artifact",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "priority-claim-verification",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "probe-evidence-integrity",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "production-capacity-closure",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "production-source-disambiguation",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "productivity",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "prompts-chat-library",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "propose-seal",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "provenance-field-audit",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "provenance-typed-analysis",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "provider-endpoint-migration",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "provider-integration",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "provider-notice-triage",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "provider-pool-outage-fallback",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "provider-quota-diagnostics",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "provider-retirement-purge",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "public-column-publishing",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "public-ingress-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qqq",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qr-code-ops",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "qrl",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qrl-arifos",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "quarantined-tool-install",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwen-harness-tools",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwen-meta-mesa",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwen-voice-clone-quota",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-deploy",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-image-generation",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-model-selector",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-ops-auth",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-text",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-update-check",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-usage",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-video-generation",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "qwencloud-vision",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "react-frontend-integration",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "reality-intelligence",
+   "categories": [
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "reality-loop-operator",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "reality333-source-topology",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "recovery-playbook",
+   "categories": [
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "reference-image-rendering",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "refusal-sink-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "relationship-kernel",
+   "categories": [
+    "Execution",
+    "Memory",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "relationship-state-review",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "rendered-artifact-verification",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "rendered-surface-verification",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "research",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "research-evidence-scout",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "research-paper-writing",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "rest-now",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "retrieval-vs-memory-fidelity",
+   "categories": [
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "review-agent",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "route-dispatch",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "rsi-federation-mesh",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "rtc-loop",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "runpod",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "runpod-mcp",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "runpod-usage",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "runpodctl",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "runtime",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "rust-federation",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "sado-snapshot",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sanctuary-boundary-enforcer",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "scar-bridge-install",
+   "categories": [
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "scar-capture-sado",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "scar-context-injector",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sea-physique-event-intelligence",
+   "categories": [
+    "Research",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "seal-discipline",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "seal-session",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sealed-deliverable-provenance",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "security-best-practices",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX"
+   ]
+  },
+  {
+   "skill_id": "service-state-schema-drift",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "serving-llms-vllm",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "serving-parity-audit",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "session-federation-discovery",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "session-init-human-first",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "session-librarian",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "session-lifecycle-temporal",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "session-lifecycle-temporal-v2",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "session-store-person-probe",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "seven-zen-organs-enforcement",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "shadow-fdp-authoring",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "shadow-paradox-13",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "shadow-pattern-mapping",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "shape-map-generalization",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "short-stay-listing-vetting",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "signal-strength-gating",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sketch",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "skill-audit-methodology",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "skill-cluster-merge",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "skill-installer",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "skill-library-integrity",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "skill-mesh",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "skill-taxonomy-reclassification",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "skills-cold-storage-ops",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "social-media",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "social-promotional-poster",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "social-scene-intelligence",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sourced-media-delivery",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "sovereign-daily-brief",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sovereign-identity-architecture",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sovereign-petition-forge",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sovereign-search",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sovereign-self-history-recall",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "sovereign-surface-design",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "sovereign-tts-lanes",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "submission-readiness-audit",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "subsidy-paradox-calibration",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "substrate-taxonomy",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "subsurface-dossier-from-public-domain",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "surface-consistency-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "syed-care-mode",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "syedos-ops",
+   "categories": [
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "synthetic-voice-scene-rendering",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "taste-profile-artifact",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "technical-artifact-audit",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "tectonic-section-architecture",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "telegram-chat-resolution",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "telegram-gateway-group-debug",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "telegram-ops",
+   "categories": [
+    "Execution",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "telegram-user-onboarding",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "temporal-anchor",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "temporal-artifact-integrity",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "temporal-awareness",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "temporal-intelligence",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "test-curator-write",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "think-deep",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "thinking-model-tool-loops",
+   "categories": [
+    "Research",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "third-party-artifact-review",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "third-party-audit-intake",
+   "categories": [
+    "Governance",
+    "Research",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "third-party-motive-read",
+   "categories": [
+    "Governance",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "third-party-software-evaluate",
+   "categories": [
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "third-party-tool-quarantine",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "token-plan-image",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "token-plan-speech",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "token-plan-video",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "touchdesigner-mcp",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "trading-risk-review",
+   "categories": [
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "trading-screenshot-analysis",
+   "categories": [
+    "Research",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "transaction-dashboard-generator",
+   "categories": [
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "transit-only-mention-probe",
+   "categories": [
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "trinity-33-canonical",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "tts-provider-failure-triage",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "tts-render-failure-modes",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "tts-script-asr-gate",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "unattended-agent-execution",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "unauthenticated-read-surface-audit",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "unified-federated-ai-architectures",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "upstream-e-p-capital-intelligence",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "value-provenance-testing",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "vault999-audit-forensics",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "vending-dashboard-reporting",
+   "categories": [
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "vending-site-reporting",
+   "categories": [
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "vendor-evaluation-intake",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "verification-boundary-probes",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "verify-before-report",
+   "categories": [
+    "Governance",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "verify-gate",
+   "categories": [
+    "Governance",
+    "Research"
+   ],
+   "libraries": [
+    "AAA",
+    "CODEX",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "verify-nested-sibling-reports",
+   "categories": [
+    "Governance",
+    "Research",
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "verify-sibling-ops-reports",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "vision-direct-api-fallback",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "vision-intelligence-with-rasa",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "visual-nutrition-estimation",
+   "categories": [
+    "Governance",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "visual-surface-delivery",
+   "categories": [
+    "Engineering",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "voice-clone-operations",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "voice-engine-fallback-chain",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "voice-identity-provisioning",
+   "categories": [
+    "Governance",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "voice-lane",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "voice-register-fidelity",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "voice-register-tuning",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "voice-render-verification",
+   "categories": [
+    "Governance",
+    "Execution",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "walter-isaacson-biography",
+   "categories": [
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wawabot-anthropology-surface",
+   "categories": [
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wealth-capital-primitives",
+   "categories": [
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wealth-four-layer-intelligence",
+   "categories": [
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wealth-ledger-discipline",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wealth-market-pulse",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wealth-runway-conservation",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web",
+   "categories": [
+    "Engineering"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web-extraction-fallbacks",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web-ops",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web-scrape",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web-search",
+   "categories": [
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web-search-query-gate-recovery",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web-shell-alignment",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "web-surface-design-fidelity",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "weekly-federation-maintenance",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "weekly-sovereign-brief",
+   "categories": [
+    "Governance",
+    "Research",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "weekly-user-reflection",
+   "categories": [
+    "Unclassified"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "weights-and-biases",
+   "categories": [
+    "Research"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "well-bodybuilding-comp-prep",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "well-consent-registry",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "well-machine-diagnose",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "well-triadic-ops",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Execution"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wisdom-atlas-architecture",
+   "categories": [
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wisdom-reader",
+   "categories": [
+    "Governance"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wisdom-scar-session-audit",
+   "categories": [
+    "Governance",
+    "Research",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "witness-biography-pdf",
+   "categories": [
+    "Governance",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA"
+   ]
+  },
+  {
+   "skill_id": "witness-independence-audit",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "witness-semantic-recall",
+   "categories": [
+    "Governance",
+    "Memory"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "wop-invoice-generator",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "xauusd-trading",
+   "categories": [
+    "Execution",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "youtube-analysis",
+   "categories": [
+    "Research",
+    "Execution",
+    "Communication",
+    "Domain"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "youtube-eureka",
+   "categories": [
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "youtube-extraction-datacenter-ip",
+   "categories": [
+    "Research",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "youtube-full",
+   "categories": [
+    "Research",
+    "Communication"
+   ],
+   "libraries": [
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "youtube-multimodal",
+   "categories": [
+    "Research",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "zen-router",
+   "categories": [
+    "Engineering",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  },
+  {
+   "skill_id": "zkpc-multi-human-memory",
+   "categories": [
+    "Governance",
+    "Engineering",
+    "Memory",
+    "Communication"
+   ],
+   "libraries": [
+    "AAA",
+    "HERMES"
+   ]
+  }
+ ]
+}

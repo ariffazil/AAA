@@ -1,0 +1,213 @@
+#!/usr/bin/env bash
+# git-lane — commit with an explicit lane identity and that lane's signing key.
+#
+#   git-lane list
+#   git-lane <lane> commit -m "..."
+#   git-lane <lane> -C /root/arifOS commit -m "..."
+#
+# Registry: /root/.config/git/lane-identities.tsv  (lane|name|email|key|fingerprint)
+# Installed 2026-10-18 under F13 directive. Repos carry user.name="" and
+# user.signingkey="" so that a commit without a lane fails closed.
+#
+# 2026-10-23 (F13 order): immutable-.git atomic lock cycle. `/root/AAA/.git` and
+# its object/ref trees are `chattr +i`. Until today the only way to commit was a
+# raw `chattr -i -R .git` typed into a shell — an unlocked window with no relock
+# guarantee if the command aborted. This wrapper now owns that cycle:
+#   detect immutability -> unlock -> trap EXIT/INT/TERM/HUP relocks -> receipt
+# No caller may raw-unlock a repo gitdir again. Set GIT_LANE_NO_LOCK_CYCLE=1 only
+# for a documented, receipted exception.
+set -euo pipefail
+
+REGISTRY="${GIT_LANE_REGISTRY:-/root/.config/git/lane-identities.tsv}"
+
+if [ ! -r "$REGISTRY" ]; then
+  echo "git-lane: registry not readable: $REGISTRY" >&2
+  exit 2
+fi
+
+usage() {
+  cat >&2 <<EOF
+usage: git-lane list
+       git-lane <lane> <git-args...>
+
+registered lanes:
+$(awk -F'|' '{printf "  %-10s %-28s %s\n", $1, $2, $3}' "$REGISTRY")
+EOF
+  exit 2
+}
+
+[ $# -ge 1 ] || usage
+
+case "$1" in
+  list|ls)
+    awk -F'|' '{printf "  %-10s %-28s %-28s %s\n", $1, $2, $3, $5}' "$REGISTRY"
+    exit 0
+    ;;
+  -h|--help)
+    usage
+    ;;
+esac
+
+lane="$1"; shift
+row=$(awk -F'|' -v l="$lane" '$1==l' "$REGISTRY")
+
+if [ -z "$row" ]; then
+  echo "git-lane: unknown lane '$lane'" >&2
+  usage
+fi
+
+IFS='|' read -r _lg_lane _lg_name _lg_email _lg_key _lg_fp <<<"$row"
+
+# ── REPO= trailer injection (2026-10-18) ─────────────────────────────────
+# The Repo Routing Validation gate requires every commit to carry a
+# `REPO=<repo>` trailer. git-lane previously only set lane identity, so every
+# lane commit failed that gate. Derive the repo name from the origin remote
+# (honouring `-C <path>`) and inject it automatically on `git commit`.
+_repo_path="."
+_prev=""
+for _a in "$@"; do
+  if [ "$_prev" = "-C" ]; then _repo_path="$_a"; fi
+  _prev="$_a"
+done
+REPO_NAME="$(git -C "$_repo_path" remote get-url origin 2>/dev/null \
+  | sed -E 's/\.git$//' \
+  | sed -E 's#^.*[:/]##' \
+  | tr '[:upper:]' '[:lower:]' || true)"
+# A repo with no `origin` remote used to abort the whole wrapper here under
+# `set -o pipefail` (git remote returns 2 → assignment fails → silent exit 2,
+# no message). Local-only repos (e.g. /root/.config/opencode) could not be
+# committed with a lane at all. Empty REPO_NAME now simply skips the trailer
+# injection; the caller can still pass `-m REPO=<name>` explicitly.
+
+# ── immutable-.git atomic lock cycle (2026-10-23, F13 order) ─────────────
+# Receipt log: one JSON line per cycle. Never contains file contents.
+_lg_lock_log="${GIT_LANE_LOCK_LOG:-/var/lib/arifos/git_lane_locks.jsonl}"
+_lg_verb=""
+_skip_next=0
+for _a in "$@"; do
+  if [ "$_skip_next" = "1" ]; then _skip_next=0; continue; fi
+  case "$_a" in
+    -C|-c|--git-dir|--work-tree) _skip_next=1 ;;
+    -*) : ;;
+    *) _lg_verb="$_a"; break ;;
+  esac
+done
+
+_lg_gitdir="$(git -C "$_repo_path" rev-parse --absolute-git-dir 2>/dev/null || true)"
+_lg_locked=0          # 1 = this process unlocked it and must relock
+_lg_cycle_applied=0
+
+_lg_lane_receipt() {
+  # $1=event  $2=rc  $3=relocked(0/1)
+  local _ts _repo
+  _ts="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  _repo="$(cd "$_repo_path" 2>/dev/null && pwd -P || printf '%s' "$_repo_path")"
+  mkdir -p "$(dirname "$_lg_lock_log")" 2>/dev/null || true
+  printf '{"ts":"%s","actor":"%s","event":"%s","repo":"%s","gitdir":"%s","verb":"%s","rc":%s,"relocked":%s}\n' \
+    "$_ts" "$_lg_lane" "$1" "$_repo" "$_lg_gitdir" "${_lg_verb:-none}" "${2:-0}" "${3:-0}" \
+    >>"$_lg_lock_log" 2>/dev/null || true
+}
+
+_lg_relock_impl() {
+  # chattr -R returns nonzero when any entry cannot carry flags (e.g. .git/hooks/
+  # pre-commit is a non-regular file: "Operation not supported while reading
+  # flags"). The exit code is therefore NOT the truth — verify the top-level
+  # flag, which is the operational gate (git must create .git/index.lock there).
+  local _i
+  for _i in 1 2 3; do
+    chattr -R +i "$_lg_gitdir" >/dev/null 2>&1 || true
+    if lsattr -d "$_lg_gitdir" 2>/dev/null | awk '{print $1}' | grep -q 'i'; then
+      return 0
+    fi
+    sleep 0.2
+  done
+  return 1
+}
+
+_lg_unlock_impl() {
+  # Same rule inverted: chattr -R -i may exit nonzero on unsupported entries
+  # while succeeding for everything git actually writes. Verify, never trust rc.
+  chattr -R -i "$_lg_gitdir" >/dev/null 2>&1 || true
+  if lsattr -d "$_lg_gitdir" 2>/dev/null | awk '{print $1}' | grep -q 'i'; then
+    return 1     # still locked → real failure
+  fi
+  return 0
+}
+
+_lg_relock_now() {
+  if [ "$_lg_locked" = "1" ]; then
+    if _lg_relock_impl; then
+      _lg_locked=0
+      _lg_lane_receipt relock "${_LG_RC:-0}" 1
+    else
+      echo "git-lane: WARNING relock failed for $_lg_gitdir — gitdir left UNLOCKED" >&2
+      _lg_lane_receipt relock_failed "${_LG_RC:-0}" 0
+    fi
+  fi
+}
+
+_lg_exit() {
+  _LG_RC=$?
+  _lg_relock_now
+  exit "$_LG_RC"
+}
+trap _lg_exit EXIT
+trap '_LG_RC=130; _lg_relock_now; exit 130' INT
+trap '_LG_RC=143; _lg_relock_now; exit 143' TERM HUP
+
+_lg_write_verb=0
+case "${_lg_verb:-}" in
+  commit|add|rm|mv|merge|rebase|cherry-pick|revert|reset|checkout|switch|stash|\
+  tag|am|apply|pull|fetch|push|gc|prune|repack|update-ref|notes|worktree|submodule)
+    _lg_write_verb=1 ;;
+esac
+
+if [ -n "$_lg_gitdir" ] && [ -d "$_lg_gitdir" ] && [ "$_lg_write_verb" = "1" ] \
+   && [ "${GIT_LANE_NO_LOCK_CYCLE:-0}" != "1" ] && command -v chattr >/dev/null 2>&1; then
+  if lsattr -d "$_lg_gitdir" 2>/dev/null | awk '{print $1}' | grep -q 'i'; then
+    if ! _lg_unlock_impl; then
+      echo "git-lane: cannot unlock $_lg_gitdir (verified still immutable) — aborting, nothing written" >&2
+      _lg_lane_receipt unlock_failed 3 0
+      exit 3
+    fi
+    _lg_locked=1
+    _lg_cycle_applied=1
+    _lg_lane_receipt unlock 0 0
+  fi
+fi
+
+_git_args=("$@")
+if [ "${_git_args[0]:-}" = "commit" ] && [ -n "$REPO_NAME" ]; then
+  # Only inject if the caller didn't already pass a REPO= trailer, and NOT on
+  # --no-edit (which preserves the existing message untouched — it should
+  # already carry REPO= from its own git-lane commit).
+  _has_repo=0
+  _has_noedit=0
+  for _a in "$@"; do
+    case "$_a" in
+      REPO=*|--trailer\ REPO=*|--trailer=REPO=*) _has_repo=1 ;;
+      --no-edit) _has_noedit=1 ;;
+    esac
+  done
+  if [ "$_has_repo" = "0" ] && [ "$_has_noedit" = "0" ]; then
+    # `-m` (not `--trailer`) so the line lands verbatim as `REPO=<repo>`, which
+    # is what the Repo Routing Validation gate greps for (`^REPO=`).
+    _git_args+=("-m" "REPO=$REPO_NAME")
+  fi
+fi
+
+# No `exec`: the process must survive the git call so the EXIT trap relocks.
+set +e
+git \
+  -c user.name="$_lg_name" \
+  -c user.email="$_lg_email" \
+  -c user.signingkey="$_lg_key" \
+  "${_git_args[@]}"
+_LG_RC=$?
+set -e
+
+if [ "$_lg_cycle_applied" = "1" ]; then
+  _lg_relock_now
+  _lg_lane_receipt finish "$_LG_RC" 1
+fi
+exit "$_LG_RC"

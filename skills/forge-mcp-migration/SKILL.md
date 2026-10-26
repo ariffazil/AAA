@@ -28,7 +28,7 @@ Before any FastMCP 4 work begins:
 - [ ] Production venv path known (e.g. `/root/WELL/.venv`)
 - [ ] Pre-mutation backup planned: `mv .venv .venv.bak.$(date +%Y%m%d)`
 - [ ] Production port known and isolated from staging (e.g. prod `:18083`, staging `:28083`)
-- [ ] 8-receipt test matrix ready (see `references/receipt-matrix.md`)
+- [ ] 8-receipt test matrix ready (see ``references/``)
 - [ ] Wave A/B/C/D tool classification done for the organ
 - [ ] `_EXEMPT_TOOLS` candidates identified for read-only tools
 - [ ] FastMCP 4 changelog reviewed for breaking changes (3 known — see `references/breaking-changes.md`)
@@ -67,7 +67,7 @@ curl -sf http://127.0.0.1:2<PROD_PORT>/health
 
 ## 8-Receipt Test Matrix
 
-Run this matrix against staging before declaring migration successful. **All 8 must pass.** See `references/receipt-matrix.md` for the full curl commands.
+Run this matrix against staging before declaring migration successful. **All 8 must pass.** See ``references/`` for the full curl commands.
 
 | # | Test | Pass criterion |
 |---|------|----------------|
@@ -149,7 +149,7 @@ none + readonly → category=A
 
 **Confidence: ~75%** — always manually inspect the 4-5 most ambiguous tools before classification.
 
-See `references/wave-classification.md` for the full taxonomy and reference implementation.
+See ``references/`` for the full taxonomy and reference implementation.
 
 ## Quality Checklist (before declaring SEAL)
 
@@ -171,10 +171,13 @@ See `references/wave-classification.md` for the full taxonomy and reference impl
 ## Linked References
 
 - `references/breaking-changes.md` — FastMCP 4 API changes with code examples
-- `references/receipt-matrix.md` — Full curl commands for all 8 tests
-- `references/wave-classification.md` — Handler body inspection methodology
-- `references/well-staging-case-study.md` — WELL 8/8 PASS reference run details
+- ``references/`` — Full curl commands for all 8 tests
+- ``references/`` — Handler body inspection methodology
+- ``references/`` — WELL 8/8 PASS reference run details
 
 ---
 
 *Forged 2026-08-11 by 333-AGI under F13 SOVEREIGN directive. DITEMPA BUKAN DIBERI.*
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

@@ -11,6 +11,8 @@ inputs:
   - name: FIRECRAWL_API_KEY
     description: Firecrawl API key for hosted Firecrawl requests.
     required: true
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Firecrawl Dashboard Reporting
