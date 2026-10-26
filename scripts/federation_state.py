@@ -127,10 +127,18 @@ def probe_flow_health() -> dict:
     # Identify stuck actors
     stuck_actors = [aid for aid, a in per_actor.items() if a["verdict"] == "STUCK"]
 
+    # FI-008 2026-10-26: arifFlow publishes the constellation verdict as
+    # `legacy_verdict` inside fq{} (there is no fq.verdict key), with top-level
+    # `diagnosis` alongside. Reading only fq["verdict"] turned a real OPTIMAL
+    # into a permanent UNKNOWN every 5 minutes. UNKNOWN now means "neither key
+    # present", not "wrong key name".
+    _verdict = fq.get("verdict") or fq.get("legacy_verdict") or "UNKNOWN"
+    _diagnosis = fq.get("diagnosis") or fq.get("legacy_diagnosis") or data.get("diagnosis", "")
+
     return {
-        "verdict": fq.get("verdict", "UNKNOWN"),
+        "verdict": _verdict,
         "quotient": fq.get("quotient"),
-        "diagnosis": fq.get("diagnosis", ""),
+        "diagnosis": _diagnosis,
         "execute_count": fq.get("execute_count", 0),
         "verify_count": fq.get("verify_count", 0),
         "held_count": held_count,
@@ -138,6 +146,37 @@ def probe_flow_health() -> dict:
         "stuck_actors": stuck_actors,
         "per_actor": per_actor,
     }
+
+
+def probe_pending_for_human():
+    """Ask the single owner (arifosmcp.report_lane) for pending human decisions.
+
+    FI-008 2026-10-26: the cockpit renders `authority.pending_for_human`; this
+    producer never emitted it, so Tier 3 (sovereign escalation) was a permanent
+    UNKNOWN. The value already exists in report_lane.stats() — no duplicate
+    inbox parsing is introduced here (one problem, one owner).
+
+    Fail-closed: returns None (= UNKNOWN) when the owner cannot be reached.
+    Never returns 0 as a substitute for "unreadable" (P0 invariant: unmeasured
+    is never a pass, and an unreadable box is never an empty box).
+    """
+    try:
+        from arifosmcp.runtime import report_lane as rl
+    except Exception:
+        try:
+            import glob
+            import sys as _sys
+
+            for sp in glob.glob("/opt/arifos/current/venv/lib/python*/site-packages"):
+                if sp not in _sys.path:
+                    _sys.path.append(sp)
+            from arifosmcp.runtime import report_lane as rl
+        except Exception:
+            return None
+    try:
+        return int(rl.stats().get("pending_for_human"))
+    except Exception:
+        return None
 
 
 def probe_authority_state() -> dict:
@@ -214,6 +253,8 @@ def probe_authority_state() -> dict:
             "actors": held_actors,
             "available": flow["healthy"],
         },
+        # FI-008 2026-10-26: Tier-3 sovereign escalation counter (None = UNKNOWN)
+        "pending_for_human": probe_pending_for_human(),
     }
 
 
@@ -367,6 +408,8 @@ def federation_state() -> dict:
             "seals": authority.get("decision_ledger", {}).get("seals"),  # None = UNKNOWN if ledger unavailable
             "oldest_hold": authority.get("oldest_hold"),
             "held_actors": authority.get("flow_holds", {}).get("actors", []),
+            # FI-008 2026-10-26: consumed by cockpit Tier-3 card (None = UNKNOWN)
+            "pending_for_human": authority.get("pending_for_human"),
         },
 
         # Backward-compatibility aliases for legacy / root-level readers
@@ -435,7 +478,15 @@ def main():
         tmp = OUTPUT_JSON.with_suffix(".tmp")
         tmp.write_text(json.dumps(state, indent=2))
         tmp.rename(OUTPUT_JSON)
-        print(f"Written to {OUTPUT_JSON} ({state['probe_ms']}ms)")
+        var_lib = Path("/var/lib/aaa/state/federation_state.json")
+        try:
+            var_lib.parent.mkdir(parents=True, exist_ok=True)
+            tmp_var = var_lib.with_suffix(".tmp")
+            tmp_var.write_text(json.dumps(state, indent=2))
+            tmp_var.rename(var_lib)
+        except Exception:
+            pass
+        print(f"Written to {OUTPUT_JSON} and {var_lib} ({state['probe_ms']}ms)")
     else:
         # JSON mode: print to stdout
         print(json.dumps(state, indent=2))
