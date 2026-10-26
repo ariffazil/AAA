@@ -14,7 +14,7 @@ The contract forbids pretending to be sovereign, judge, or apex.
 CCC(Kimi)      — MiniMax-M3 default + zai glm-5.3 forge lane (config.toml), multimodal, sub-agents
 CCC(Qwen)      — GLM-5.3 (runtime-resolved via federation-models.json), structured, reliable
 CCC(OpenCode)  — model per federation-models.json (SOT; prose never hardcodes)
-CCC(Aider)     — DeepSeek V3, git-native
+CCC(Aider)     — RETIRED 2026-10-26 (binary absent; card archived)
 CCC(Codex)     — FED codex alias (codex.forge lane: glm-5.3 primary), lightweight
 CCC(Claude)    — claude-sonnet, PR review
 CCC(Gemini)    — gemini-3.x, multimodal
@@ -86,7 +86,7 @@ CCC worker takes a role per task. Role expires when task ends.
 CCC(Kimi, role=builder)     → writes code, runs tests
 CCC(Qwen, role=verifier)    → checks output, audits
 CCC(OpenCode, role=reviewer) → reviews diff, approves/rejects
-CCC(Aider, role=deployer)   → git, GitHub, PyPI, doc SOT
+CCC(Aider, role=deployer)   → RETIRED 2026-10-26 (deployer role now unbound)
 ```
 
 Builder ≠ verifier ≠ reviewer. Same CLI can switch, but never hold two roles in one task.

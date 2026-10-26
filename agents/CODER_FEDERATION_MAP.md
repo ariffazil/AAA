@@ -9,7 +9,7 @@
 | **OpenCode** | 888-APEX + apex FORGER | verify, execute | FED router | Best executor, builds + judges | Tool failures (aca² fail) |
 | **Claude Code** | 888-APEX | forger | claude-sonnet | Strong code generation, PR review | Cost, rate limits |
 | **Codex** | 333-AGI | coder | FED codex alias | Fast, lightweight | Limited tool surface |
-| **Aider** | 000 (raw codex) | housekeeping, GitHub, deploy, doc SOT | DeepSeek V3 | Git-native, auto-commit, simple | Slow on full swap |
+| **Aider** | 000 (raw codex) | housekeeping, GitHub, deploy, doc SOT | DeepSeek V3 | Git-native, auto-commit, simple | Slow on full swap — **RETIRED 2026-10-26** (binary not installed; card → `_superseded/aider-20261026`) |
 | **Hermes** | apex VALIDATOR | coordinate, witness | i-arif | Validates coder output, routes, remembers | Not a coder |
 
 ## Role Definitions (Adat Agentic)
@@ -28,7 +28,7 @@ CITIZEN:    Every coder can read, write, test, commit, audit.
             OpenCode = apex forger. Builds AND validates.
             Carries: all roles.
 
-000-AIDER:  Raw execution. No identity. Git in, code out, commit.
+000-AIDER:  [RETIRED 2026-10-26 — historical] Raw execution. No identity. Git in, code out, commit.
             Housekeeping: README, PyPI, deps, doc SOT, entropy check.
 
 VALIDATOR:  Hermes (me). When coders disagree or output is uncertain,
@@ -49,7 +49,7 @@ When OpenCode fails on tools:
 Kimi Code:  MiniMax-M3 (alive) → DeepSeek → FED router
 Qwen Code:  GLM-5.2 z.ai → FED router
 OpenCode:   FED router (all models) → direct provider
-Aider:      DeepSeek V3 → FED codex alias
+Aider:      RETIRED 2026-10-26 (not installed)
 Hermes:     i-arif → FED hermes-asi
 ```
 

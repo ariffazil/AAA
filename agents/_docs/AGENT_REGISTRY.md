@@ -102,7 +102,7 @@ Agents with active systemd services and Telegram presence.
 **Full 17-Citizen Matrix Summary (see artifacts for details):**  
 HEXAGON (333-AGI Δ, 555-ASI Ω, 888-APEX ΦΙ, A-AUDIT, A-ARCHIVE): Role bindings + 8-12 skills each, heavy on constitutional/forge/audit.  
 RUNTIME: hermes-asi (polymorphic), openclaw (execution), 777-forge, antigravity runtime binding.  
-CODING/FI (~9: grok-build + claude-code, opencode, codex, kimi-code, copilot, aider, continue-cli, gemini-cli, qwen-code): Baseline 8 + consumer role-bindings; grok-build exemplar at 12 with orthogonal depth.  
+CODING/FI (~9: grok-build + claude-code, opencode, codex, kimi-code, copilot, continue-cli, gemini-cli, qwen-code): Baseline 8 + consumer role-bindings; grok-build exemplar at 12 with orthogonal depth.  
 Legacy (aaa-*, hermes-ops): Minimal or deprecated.  
 
 All focus citizens now declare explicit role-binding-* skills with references to contracts and orthogonal axes. Skills counts increased; F11 auditability strengthened.
@@ -116,7 +116,7 @@ Classification (18 citizens):
 - architect (7): arifOS, A-FORGE, 888-APEX, 555-ASI, 333-AGI, A-AUDIT, A-ARCHIVE  
 - agent (3): hermes-asi, openclaw, hermes-ops  
 - earth (3): GEOX, WEALTH, WELL  
-- llm (10+): grok-build + opencode, claude-code, codex, copilot, kimi-code, aider, antigravity, continue-cli, gemini-cli, qwen-code  
+- llm (10+): grok-build + opencode, claude-code, codex, copilot, kimi-code, antigravity, continue-cli, gemini-cli, qwen-code  
 - human (1): arif-fazil-identity  
 
 Schema enhancement applied: `principal_agent` (string) + `principal_binding` + `principal_accountability`. See taxonomy contract for full table and rationale. This directly elevates F11 auditability and A2A governance clarity.
@@ -152,7 +152,7 @@ All share the 97-tool capability index and F1-F13 governance.
 | **FI-004** | antigravity (CODING) | gemini-2.5-pro | ✅ 13 servers | swarm_ignite (analyst) | GREEN | **L4 — Execution** | ✅ LIVE (same name as Layer 2 antigravity — different model binding) |
 | **FI-005** | codex | gpt-5.5 | ⚠️ MCP-ready | observer | YELLOW | **L4 — Execution** (bounded observer) | ⚠️ MCP unverified |
 | **FI-006** | copilot | gpt-4o | ✅ 8 servers | init (analyst) | GREEN | **L4 — Execution** | ✅ LIVE |
-| **FI-007** | aider | MiniMax-M3 | ❌ No | bridge mode | YELLOW | **L4 — Execution** | ✅ LIVE |
+| **FI-007** | ~~aider~~ | — | ❌ No | — | — | — | ❌ RETIRED 2026-10-26 (binary absent; card archived `_superseded/aider-20261026`) |
 | **FI-008** | kimi-code | kimi | ✅ 9 servers | — | YELLOW | **L4 — Execution** | ✅ LIVE |
 | **FI-009** | continue-cli | MiniMax-M3 | ✅ 17 servers | — | YELLOW | **L4 — Execution** | ✅ LIVE |
 | **FI-010** | gemini-cli | gemini | (see JSON) | — | YELLOW | **L4 — Execution** | ✅ LIVE (drift: not in MD's earlier count — added 2026-06-26) |
@@ -333,7 +333,7 @@ Wired 10 FI citizens as real AAA warga with 8-skill baseline (per orthogonal map
 | qwen-code | 8 | qwen | a2a-server/agent-cards/qwen-code.json |
 | copilot | 8 | copilot | a2a-server/agent-cards/copilot.json |
 | kimi-code | 8 | kimi | a2a-server/agent-cards/kimi-code.json |
-| aider | 8 | aider | a2a-server/agent-cards/aider.json |
+| ~~aider~~ | — | — | RETIRED 2026-10-26 → `agents/_superseded/aider-20261026/agent-card.json` |
 | antigravity | 8 | agy (Gemini 3.5) | a2a-server/agent-cards/antigravity.json |
 | continue-cli | 8 | cn | a2a-server/agent-cards/continue-cli.json |
 | gemini-cli | 8 | gemini | a2a-server/agent-cards/gemini-cli.json |
