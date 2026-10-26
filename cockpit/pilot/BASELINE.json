@@ -1,0 +1,23 @@
+{
+ "captured_at": "2026-10-26T06:12:00Z",
+ "source": "/root/AAA/src/Cockpit.tsx",
+ "poller_count": 11,
+ "intervals_ms": [
+  3000,
+  5000,
+  5000,
+  15000,
+  15000,
+  20000,
+  30000,
+  30000,
+  30000,
+  60000,
+  60000
+ ],
+ "baseline_requests_per_hour": 3780,
+ "method": "sum(3600000/interval_ms) over 11 static setInterval calls; conditional pollers excluded",
+ "pilot_requests_per_hour": 120,
+ "pilot_method": "one /api/status every 30s; paused when hidden; backoff on failure",
+ "reduction_pct": 96.8
+}

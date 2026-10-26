@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ms"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AAA Cockpit — baca sahaja</title>
+<style>
+  :root{--navy:#0e1a2b;--gold:#c9a227;--ink:#1c2430;--line:#e2e5e9;--red:#b03a2e;--green:#1e7a5a;--amber:#b35c00;--grey:#8a8f98}
+  *{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,Segoe UI,Arial;color:var(--ink);background:#f7f8fa}
+  header{background:var(--navy);color:#fff;padding:18px 22px}header h1{margin:0;font-size:18px}
+  header p{margin:4px 0 0;color:#9fb0c6;font-size:12px}
+  .banner{margin:14px 22px;padding:10px 14px;border-left:4px solid var(--grey);background:#fff;font-size:13px}
+  .banner.fresh{border-color:var(--green)}.banner.stale{border-color:var(--amber)}
+  .banner.unavailable,.banner.unmeasured{border-color:var(--red)}
+  #grid{display:grid;gap:12px;padding:0 22px 24px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--grey);padding:12px 14px;border-radius:6px}
+  .card.fresh{border-top-color:var(--green)}.card.stale{border-top-color:var(--amber)}
+  .card.unavailable,.card.unmeasured{border-top-color:var(--red)}
+  .card h3{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--grey)}
+  .card .v{margin:0;font-size:20px;font-weight:700;word-break:break-word}
+  .card .m{margin:8px 0 0;font-size:11px;color:var(--grey)}
+  footer{padding:0 22px 22px;font-size:11px;color:var(--grey)}
+  .ro{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:1px 7px;font-size:10px;margin-left:8px;vertical-align:2px}
+</style></head>
+<body>
+<header><h1>AAA Cockpit <span class="ro">BACA SAHAJA</span></h1>
+<p>Tiada kawalan tindakan. Setiap nilai membawa sumber dan timestamp.</p></header>
+<div id="banner" class="banner">Memuatkan…</div>
+<main id="grid"></main>
+<footer>Satu snapshot setiap 30s · berhenti bila tab tersembunyi · backoff bila gagal · tiada kredensial dalam bundle.</footer>
+<script type="module" src="./app.js"></script>
+</body></html>
