@@ -1,7 +1,12 @@
 ---
 name: nano-pdf
+id: nano-pdf
 description: "Edit text in existing PDFs via natural-language prompts."
 version: 1.0.0
+owner: AAA
+risk_tier: high
+autonomy_tier: T2
+floor_scope: [F1, F2, F4, F11, F12]
 author: community
 license: MIT
 platforms: [linux, macos, windows]
@@ -13,6 +18,12 @@ metadata:
 capability_tier: fed-long-context
 ecology_state: WARM
 ---
+
+> [!CAUTION]
+> **GOVERNANCE & AUTHORITY BOUNDARY:**
+> - Package installation (`uv pip install nano-pdf` / `pip install`) requires prior operator approval; NEVER install unvetted external binaries autonomously.
+> - LLM API key handling must adhere to Floor F11 (no plaintext secrets written to disk or logs).
+> - PDF mutations must preserve an unmutated backup before modification.
 
 # nano-pdf
 

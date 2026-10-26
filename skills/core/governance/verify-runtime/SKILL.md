@@ -12,7 +12,7 @@ merged_from:
 wave: 2
 ts: 2026-09-16T22:46:00Z
 audit: /root/.hermes/reports/hermes-skill-entropy-audit-2026-09-16.md
-tombstones: /root/.hermes/.archive_skills_wave2/verify-runtime/TOMBSTONE-FORGE-verify-runtime.json
+tombstones: ./references/absorbed-FORGE-verify-runtime.md
 triggers:
   - "verify runtime"
   - "verification as terminal state"
