@@ -5,8 +5,8 @@ Kaedah: `/root/AAA/skills/declared-vs-live-audit` — setiap claim di-probe, buk
 
 ## Keputusan
 
-Hook F1 AMANAH aku sendiri **boleh dilepasi 20 cara**. Sudah dibaiki, diuji 59/59, deployed, dan
-disahkan pada hook live. Sesi aku terus berjalan normal selepas deploy (200 tool call dibenarkan).
+Hook F1 AMANAH aku sendiri **boleh dilepasi 24 cara** (diukur). Sudah dibaiki, diuji 67/67, deployed,
+dan disahkan pada hook live. Sesi aku terus berjalan normal selepas deploy.
 
 Klaim agy (FI-004) bahawa Claude Code kini "kebal daripada mengubah sempadan konfigurasinya
 sendiri" adalah **palsu pada masa ia ditulis** — ia benar hanya untuk 3 kes Write/Edit absolute-path
@@ -14,10 +14,20 @@ yang dia kebetulan uji.
 
 ## 1. Defect yang diukur (baseline, sebelum fix)
 
-Suite 59 kes dijalankan melalui **kedua-dua** gate PreToolUse seperti `settings.json` mendaftarkannya
-(`f1-amanah-preshell.py` + `pretool_engine_gate.py`), bukan satu gate sahaja.
+Suite **67 kes** dijalankan melalui **kedua-dua** gate PreToolUse seperti `settings.json`
+mendaftarkannya (`f1-amanah-preshell.py` + `pretool_engine_gate.py`), bukan satu gate sahaja.
+Semua angka dalam report ini diukur pada suite 67 yang sama — suite bermula pada 59 kes dan
+diperluas apabila defect kedua (§3.1) ditemui, jadi baseline diukur semula untuk kekal setara.
 
-Baseline: **39/59 PASS**. 20 kes mahu DENY, dapat ALLOW:
+| Versi | Keputusan | Gagal |
+|---|---|---|
+| baseline (sebelum kerja) | **43/67** | 24 — semua DENY jadi ALLOW |
+| v3 (deploy pertama) | 66/67 | 1 — ALLOW jadi DENY (false-positive §3.1) |
+| **v5 (live sekarang)** | **67/67** | 0 |
+
+24 kegagalan baseline: 20 vektor path-escape di bawah, tambah 4 kes laluan ber-quote
+(`sed -i '…' '/root/.claude/mcp.json'`, `tee "…"`, redirect quoted) yang ditemui semasa
+membaiki defect kedua.
 
 | Kelas | Contoh vektor yang lepas |
 |---|---|
@@ -39,8 +49,13 @@ Kelas ketiga adalah penemuan baharu audit ini dan **tidak disebut** oleh agy mah
 
 ## 2. Fix
 
-`/root/.claude/hooks/f1-amanah-preshell.py` (4,443 B → 14,210 B), dimutasi melalui laluan sah
-`canon-mutate --agent FI-002 file …`, receipt `effect=CHANGED lock_restored=True exit=0`.
+`/root/.claude/hooks/f1-amanah-preshell.py` (4,443 B → 16,932 B, dua deploy: v3 `a343a057…` →
+v5 `1a37bc96…`), dimutasi melalui laluan sah `canon-mutate --agent FI-002 file …`, kedua-dua receipt
+`effect=CHANGED lock_restored=True exit=0` (`trc-fi002-path-escape-fix`, `trc-fi002-quote-aware-redirect`).
+
+Bukti hook itu hidup dan bekerja: **Edit aku sendiri ke hook ini telah DIBLOK oleh hook itu**
+(`W_scar protected path write`) — ia memaksa aku lalu `canon-mutate`. Guard menolak penulisnya
+sendiri adalah tingkah laku yang diingini, bukan halangan.
 
 Tiga perubahan:
 - **Dua bentuk laluan** diuji bagi setiap input: literal-normalised (tangkap `..`, `//`, `~`) **dan**
@@ -61,16 +76,48 @@ untuk lindungi.
 
 | Permukaan | Keputusan |
 |---|---|
-| Suite pada hook **live** (deployed) | **59/59 PASS**, exit 0 |
-| 28 kes ALLOW (kerja harian) | 28/28 lepas, semua `f1=allow/0` — tiada NOJSON/crash disalah baca sebagai allow |
+| Suite pada hook **live** v5 (deployed) | **67/67 PASS**, exit 0 |
+| 32 kes ALLOW (kerja harian) | semua lepas, semua `f1=allow/0` — tiada NOJSON/crash disalah baca sebagai allow |
 | Laluan sah ber-receipt | `canon-mutate file/unlock/lock/run -- cp…sed -i` semua ALLOW (verb pertama `canon-mutate`) → tiada self-lock |
-| `hook_mesh_check.py` (gate sibling) | **PASS 9 ok / 0 failed** — tidak dipecahkan |
-| Kos runtime | median 46.7 ms → 52.5 ms (+5.8 ms), p95 57.7 → 76.9 ms. Hook jalan setiap tool call; +6 ms boleh terima untuk tutup 20 lubang |
-| In-situ | 200 tool call aku dibenarkan selepas deploy; sesi tidak brick |
-| Suite dikekalkan | `/root/AAA/scripts/f1-hook-escape-suite.py` (11,153 B, sha disahkan, tree relocked) — bukan mati di `/tmp` |
-| Selepas branch churn (§5.2) | Hook live sha `a343a057…` = candidate, masih `chattr +i`; suite **59/59** diulang selepas semua reset/pull. Hook tidak ter-revert kerana `/root/.claude` → `/root/AAA/claude` dan `/claude` ada dalam `.gitignore` baris 242 (0 fail tracked) |
+| `hook_mesh_check.py` (gate sibling) | **PASS 9 ok / 0 failed** — tidak dipecahkan, diuji semula selepas kedua-dua deploy |
+| Kos runtime | median 46.7 ms → 52.5 ms (+5.8 ms), p95 57.7 → 76.9 ms. Hook jalan setiap tool call; +6 ms boleh terima untuk tutup 24 lubang |
+| In-situ | tool call aku dibenarkan selepas deploy; sesi tidak brick |
+| Suite dikekalkan | `/root/AAA/scripts/f1-hook-escape-suite.py` (sha disahkan, tree relocked) — bukan mati di `/tmp` |
+| Selepas branch churn (§5.2) | Hook live sha `1a37bc96…` = candidate, masih `chattr +i`; suite diulang selepas semua reset/pull. Hook tidak ter-revert kerana `/root/.claude` → `/root/AAA/claude` dan `/claude` ada dalam `.gitignore` baris 242 (0 fail tracked) |
 
-Snapshot F1: `/root/_to_delete/f1-amanah-preshell.py.bak-20261026T072105Z` (sha `a43293c6…` = baseline).
+Snapshot F1: `_to_delete/f1-amanah-preshell.py.bak-20261026T072105Z` (baseline `a43293c6…`) dan
+`.bak-v3-20261026T080259Z` (v3 `a343a057…`).
+
+### 3.1 Defect kedua ditemui oleh hook itu sendiri (v3 → v5)
+
+v3 menutup semua 24 bypass tetapi memperkenalkan **satu false-positive yang aku langgar sendiri**:
+aku cuba `git commit -m` yang *menerangkan* bypass itu — mesej mengandungi teks
+`echo x > /root/.claude/settings.json` — dan hook menolaknya sebagai
+"Bash redirection into protected path". Guard itu menyekat laporan tentang dirinya.
+
+Kesan sebenar, bukan teori: menulis patch untuk sesuatu bypass memerlukan commit yang menamakan
+bypass itu. Guard yang menolak penulisan itu **menyekat pembaikan kepada perkara yang ia laporkan**
+(ANTI_BANGANG LAW 1 — kalau benda itu menambah kerja manusia, ia bukan improvement).
+
+Punca: `_REDIRECT` dijalankan pada teks mentah, jadi `>` di dalam string ber-quote dibaca sebagai
+operator. Fix v5: quote-aware pada **operator sahaja**, dengan dua keputusan yang sengaja berbeza arah:
+
+- **Operator** (`>`, `>>`, `2>`) dibaca dari teks yang sudah dibuang quote → `>` dalam mesej = data.
+- **Token laluan** dibaca dari teks **asal** termasuk yang ber-quote → `sed -i 's/a/b/' '/root/.claude/mcp.json'`
+  dan `tee "/root/.claude/settings.json"` tetap DENY, kerana laluan ber-quote masih fail sebenar.
+
+Buang quote pada kedua-duanya akan membuka bypass baru; buang pada operator sahaja menutup
+false-positive tanpa melemahkan deny. Diuji kedua-dua arah (kes `ok29`–`ok32` ALLOW,
+kes `q1`–`q4` DENY).
+
+Nota pelaksanaan: `_strip_quoted` **length-preserving**, jadi offset padan antara teks stripped dan
+asal — perlu kerana sasaran redirect dibaca dari teks asal pada offset yang ditemui dalam stripped.
+Draf pertama aku baca `m.end()` dari regex yang sudah consume target dalam capture group, jadi ia
+membaca token *selepas* sasaran dan memecahkan 3 kes redirect sebenar (67 → 64/67). Suite menangkapnya.
+
+Bukti in-situ selepas v5: Bash call yang mengandungi teks
+`echo x > /root/.claude/settings.json` dan `/root/arifOS/VAULT999` kini **berjaya dijalankan** —
+iaitu guard membenarkan aku menyebut serangan yang sedang aku laporkan.
 
 ## 4. Residual — dinyatakan, tidak disembunyi
 
@@ -96,7 +143,7 @@ Disahkan **benar** dengan probe live:
 
 Dibetulkan:
 - agy — "159 deployments": 159 = kiraan **occurrence string**, bukan deployment. Parse YAML autoritatif: **161 deployment, 62 nama unik (26 alias multi-route), 149 blok ada drop_params**.
-- agy — "5/5 negative test lulus" → benar tapi tidak mencukupi: 5 kes itu semua Write/Edit absolute-path. Ia tidak menguji Bash, path normalisation, atau symlink target — iaitu 20 lubang sebenar.
+- agy — "5/5 negative test lulus" → benar tapi tidak mencukupi: 5 kes itu semua Write/Edit absolute-path. Ia tidak menguji Bash, path normalisation, symlink target, atau laluan ber-quote — iaitu 24 lubang sebenar.
 
 ### 5.1 Ditarik balik: aku salah menilai claim branch agy
 
@@ -171,13 +218,14 @@ jawapan tanpa bertanya "ref ini wujud pada 14:27?".
 
 Dan satu kesilapan reka bentuk awal: draf pertama skrin Bash aku menyekat
 `cat /protected > /tmp/x` dan `python3 -c "json.load(open('/protected'))"` — kedua-duanya **bacaan sah**.
-Suite ALLOW-case (28 kes) yang menangkap ini, bukan pemikiran aku. Itulah sebab suite itu dikekalkan.
+Suite ALLOW-case (32 kes kerja harian sebenar) yang menangkap ini, bukan pemikiran aku. Itulah sebab
+suite itu dikekalkan: ia bukan senarai serangan, ia senarai kerja yang mesti terus boleh dibuat.
 
 ## Ulang sendiri
 
 ```bash
 python3 -I /root/AAA/scripts/f1-hook-escape-suite.py \
-  /root/.claude/hooks/f1-amanah-preshell.py "LIVE"      # exit 0 = 59/59
+  /root/.claude/hooks/f1-amanah-preshell.py "LIVE"      # exit 0 = 67/67
 python3 -I /root/AAA/scripts/hook_mesh_check.py         # exit 0 = 9 ok
 ```
 
