@@ -1,17 +1,17 @@
 {
  "_GENERATED": "federation_build.py \u2014 DO NOT HAND-EDIT (FP-01)",
- "generated_at": "2026-10-22T20:08:16+00:00",
+ "generated_at": "2026-10-25T19:07:01+00:00",
  "source_of_truth": "/root/AAA/skills",
- "skill_count": 770,
+ "skill_count": 782,
  "distribution": {
-  "governance": 106,
-  "research": 85,
-  "execution": 127,
+  "governance": 110,
+  "research": 87,
+  "execution": 129,
   "domain": 53,
   "memory": 29,
   "communication": 79,
-  "unclassified": 327,
-  "engineering": 105
+  "unclassified": 332,
+  "engineering": 104
  },
  "index": {
   "000-salam": [
@@ -21,8 +21,17 @@
    "governance",
    "research"
   ],
+  "222-reka": [
+   "governance"
+  ],
+  "333-fikir": [
+   "governance"
+  ],
   "333-forge": [
    "execution",
+   "governance"
+  ],
+  "444-arah": [
    "governance"
   ],
   "555-betul": [
@@ -33,6 +42,10 @@
    "research"
   ],
   "777-faham": [
+   "governance"
+  ],
+  "777-forge": [
+   "execution",
    "governance"
   ],
   "888-adil": [
@@ -318,6 +331,9 @@
   "agentic-genome-species": [
    "unclassified"
   ],
+  "agentic-review-gate": [
+   "unclassified"
+  ],
   "agentic-state": [
    "unclassified"
   ],
@@ -434,6 +450,9 @@
   ],
   "arif-world-reality-intel": [
    "research"
+  ],
+  "arifos-act": [
+   "unclassified"
   ],
   "arifos-auto-init": [
    "unclassified"
@@ -791,6 +810,9 @@
   "dream-what": [
    "unclassified"
   ],
+  "drift-watch-asi": [
+   "research"
+  ],
   "duckdb-analytics-engine": [
    "unclassified"
   ],
@@ -1142,6 +1164,9 @@
   "forge-federation-probe": [
    "execution",
    "research"
+  ],
+  "forge-feedback-loop-ladder": [
+   "execution"
   ],
   "forge-git-seal": [
    "engineering",
@@ -1523,6 +1548,9 @@
   "human-memory-organization": [
    "communication",
    "memory"
+  ],
+  "human-message-referent": [
+   "communication"
   ],
   "human-reality-field": [
    "communication",
@@ -2102,6 +2130,9 @@
   "security-ops": [
    "execution"
   ],
+  "service-failure-attribution": [
+   "unclassified"
+  ],
   "service-state-schema-drift": [
    "research"
   ],
@@ -2127,6 +2158,15 @@
    "unclassified"
   ],
   "short-stay-listing-vetting": [
+   "unclassified"
+  ],
+  "skill-artifact-redact": [
+   "research"
+  ],
+  "skill-catalogue-pruning": [
+   "unclassified"
+  ],
+  "skill-estate-maintenance": [
    "unclassified"
   ],
   "skill-mesh": [
@@ -2222,10 +2262,6 @@
   ],
   "temporal-intelligence": [
    "unclassified"
-  ],
-  "test-curator-write": [
-   "communication",
-   "engineering"
   ],
   "think-deep": [
    "unclassified"
@@ -2469,9 +2505,9 @@
  "definitions": {
   "skill_count": "non-hidden top-level entries where isdir() true (real dirs + symlink-dirs)",
   "distribution": "MULTI-LABEL counts \u2014 one skill may count in several categories; sum > skill_count by design",
-  "top_entries_ls": 794,
-  "real_dirs": 744,
-  "symlink_dirs": 34,
+  "top_entries_ls": 806,
+  "real_dirs": 753,
+  "symlink_dirs": 36,
   "note": "SKILL.md recursive count is larger (nested domain trees under skills/domains/**)"
  }
 }

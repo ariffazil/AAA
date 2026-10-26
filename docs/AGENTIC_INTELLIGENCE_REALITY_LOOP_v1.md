@@ -203,6 +203,52 @@ judgment state
 
 ---
 
+### 5b. When independent check is MANDATORY (v1.1, 2026-10-25)
+
+Ratified by F13 2026-10-25 after a proposed threshold ("more than 20 files or more than 10
+agents") was rejected on measurement. The axis is BLAST RADIUS, not size.
+
+**Why file-count and agent-count failed as axes — measured:**
+- *Agent count is dead on arrival.* The federation lists far fewer than 10 executing agents, so a
+  ">10 agents" trigger can never fire. A rule that cannot fire looks strong and enforces nothing.
+- *File count measures size, not consequence.* `fed-parity-guard` reported 420 mismatch events in
+  one day from **one** file on KVM4 missing two model entries — whole model routing unstable, while
+  the diff was two lines. Conversely, 152 skill directories (~1,134 files) were deduped in one pass
+  with blast radius limited to discovery and a full git rollback available. Counting files would
+  have flagged the safe change and missed the dangerous one.
+
+### The four rules
+
+**R1 — Independent check is MANDATORY when ANY ONE holds:**
+1. **No point of return** — no commit, no backup, no rollback path exists, however small the change.
+2. **Shared read path** — the change touches a path read by more than one harness
+   (e.g. `/root/AAA/skills` read by Hermes via `external_dirs`, OpenCode via
+   `/root/.agents/skills`, Codex via `/root/.codex/skills-curated`).
+3. **Outward-facing number** — the change alters a figure that leaves the machine:
+   a manifest, `claims.json`, `/health`, a published page, a report sent to a human.
+
+**R2 — "Independent" means ANOTHER PARTY, not another hat.**
+A merger who also verifies is labelled `SELF-CHECK`, never `VERIFIED`. Two different words.
+Self-check is legal and often enough; it is simply not evidence of independence.
+
+**R3 — The 888 gate reads `arif_judge` verdict for that candidate, NOT `floor_passed`.**
+Measured 2026-10-25: `/health` returns `floor_passed: null` because 2 of 13 floors have no
+instrument (F6, F8) and fail-closed holds. A gate keyed on `floor_passed` would block every push
+forever, for a reason that is about missing instruments, not about the candidate. `apex-judge`
+on :8001 answers HTTP 200; a per-candidate verdict is available today.
+
+**R4 — If 888 cannot return a verdict, F13 decides — labelled `SEAL BY SOVEREIGN`.**
+Not `independent verification`. Mixing the two is the same "different hat" defect R2 forbids,
+just with the sovereign as the hat.
+
+### What this does NOT change
+
+Capability stays wider than authority: a change that fails no rule needs no gate. These rules add
+one mandatory stop, not a queue. Nothing here authorises an agent to block — a gate returns a
+verdict, it does not hold the work hostage.
+
+---
+
 ## 6. Completion ladder
 
 ```text

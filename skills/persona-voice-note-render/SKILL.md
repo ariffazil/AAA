@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: persona-voice-render-ops
 name: persona-voice-note-render
 description: "Alias → persona-voice-render-ops. Load `persona-voice-render-ops` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: persona-voice-note-render
