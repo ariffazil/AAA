@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [f&b, business-intelligence, payment-gateway, transaction-analysis, kpid, tng, duitnow, excel]
     related_skills: [ocr, financial-chart-analysis, local-business-deep-dive]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # F&B Transaction Intelligence

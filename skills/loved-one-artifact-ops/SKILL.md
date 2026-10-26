@@ -12,6 +12,8 @@ triggers:
   - "follow up on the video I sent"
   - "loved-one artifact"
 tags: [family, loved-ones, artifact, voice, video, delivery, F5, witness]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Loved-one artifact ops

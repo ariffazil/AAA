@@ -1,6 +1,8 @@
 ---
 name: migrate-to-codex
 description: Migrate supported instruction files, skills, agents, and MCP config into Codex project and global files.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Migrate to Codex

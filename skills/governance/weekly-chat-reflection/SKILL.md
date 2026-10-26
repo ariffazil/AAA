@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: weekly-user-reflection
 name: weekly-chat-reflection
 description: "Alias → weekly-user-reflection. Load `weekly-user-reflection` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: weekly-chat-reflection

@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [media, provenance, verification, delivery]
     related_skills: [refusal-sink-audit, shadow-mode, visual-artifact-delivery]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Sourced Media Delivery

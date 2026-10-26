@@ -30,6 +30,9 @@
 | `/root/AAA/proof` | chattr +i (registered 2026-10-15) |
 | `/root/AAA/verdicts` | chattr +i (registered 2026-10-15) |
 | `/root/AAA/claim_ledger` | chattr +i (registered 2026-10-15) |
+| `/root/A-FORGE/src/domain/forge` | chattr +i (registered 2026-10-25, 333-AGI; Arif "register & apply") |
+| `/root/A-FORGE/test` | chattr +i (registered 2026-10-25, 333-AGI; Arif "register & apply") |
+| `/root/A-FORGE/.git` | chattr +i recursive (registered 2026-10-25, 333-AGI; discovered frozen during apply — index/objects/refs) |
 
 ## The only legal write path
 

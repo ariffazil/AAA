@@ -65,8 +65,12 @@ Artifacts land in `/root/forge_work/media_ingest/<date>/<kind>-<hash>/`:
 
 ## Reading a VIDEO properly (the shape)
 
-1. `media_ingest_url` → fills `media_path`, `frames[]`, `contact_sheet`, and (when there is
-   no spoken transcript) `visual_read`.
+0. **Video in the chat = video on disk. Read it before you answer.** A Telegram video
+   arrives as `/root/.hermes/cache/videos/<file>.mp4` with a note that the content is
+   "not inlined". That note is not a permission slip to answer from the caption. Call
+   `media_ingest_file(path, vision=True)` on it FIRST. Answering a video you never
+   ingested is the failure this whole lane exists to prevent.
+1. `media_ingest_url` → fills `media_path`, `frames[]`, `contact_sheet`, `visual_read`.
 2. **Read `visual_read` first.** If it is empty but frames exist, call
    `media_vision_read([contact_sheet])` — one image tiles the whole timeline.
 3. Zoom only where it matters: `media_vision_read(["frames/<name>.jpg"], question="...")`
@@ -124,6 +128,20 @@ the vision lane carry the read.
 
 ## Hard-won pitfalls
 
+- **A transcript does not excuse skipping the pixels** (fixed 2026-10-25). `ingest_local`
+  used to sample frames only when there was NO transcript. Any video carrying speech — or a
+  Whisper hallucination — skipped frames entirely and the whole read collapsed to one line.
+  A 7s Malaysian food-stall clip (leaf-wrapped nasi dagang, "TELOR DADAR") came back as the
+  single string "Kansai International Airport" and was stamped `transcript_state: OK`.
+  Frames now always run when a picture track exists; a sparse read is labelled
+  `THIN_SPARSE(<n> words / <s>s)` below 0.8 words/s on clips >=5s. **Pixels are half the
+  payload; a transcript is not a substitute for them.**
+- **A human's DM media never existed** (fixed 2026-10-25). The Telethon listener logged
+  inbound media as the literal string `[media/sticker]`; 59 media events sat in the logs
+  as placeholders with zero bytes on disk, so no agent could ever read them. It now
+  downloads every video/photo/voice/audio to `/root/userbot/media/<date>/` and runs the
+  same `ingest_local` lane, appending `transcript` / `visual_read` / `truth_state` to the
+  log record. Still silent — reading is backend, nothing is forwarded.
 - **Silence is not a transcript.** Measure before you trust STT: a silent audio track reads
   `mean_volume: -91.0 dB` under `ffmpeg -i m.mp4 -af volumedetect -f null -`. Whisper turns
   that into "you", deterministically, on every 25-second window. Check the audio is real and

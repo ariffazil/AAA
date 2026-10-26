@@ -143,6 +143,7 @@ Output structured result:
 - **NEVER** delete files with `risk.external_consumer == "yes"`.
 - **NEVER** mutate `.gitignore` as part of cleanup (separate action).
 - **NEVER** commit without verifying `git status` shows only expected changes.
+- **NEVER** treat two path names as two objects. Before any dedupe/merge/stub: `stat -c '%i'` both paths and `test -L` each. **A symlink alias is ALREADY deduped — writing a stub through it overwrites its owner.** (NEW — 2026-10-25 SCAR-333: 5 case-variant "duplicates" were 2 real dupes + 3 symlink aliases; the stub write destroyed 3 skill bodies, recovered from git HEAD same session.)
 
 ---
 

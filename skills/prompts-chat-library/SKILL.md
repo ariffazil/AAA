@@ -3,6 +3,8 @@ name: prompts-chat-library
 description: "Access thousands of curated AI system prompts, role personas, task templates, and variable substitution templates directly via prompts.chat MCP server (@fkadev/prompts.chat-mcp). "
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Prompts.chat System Prompt Library Skill (`prompts-chat`)
 

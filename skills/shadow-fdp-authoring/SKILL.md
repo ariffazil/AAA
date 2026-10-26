@@ -2,6 +2,8 @@
 name: shadow-fdp-authoring
 description: Use when building a shadow FDP review pack.
 tags: [fdp, upstream, review-pack, governance, artifacts]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Shadow FDP authoring

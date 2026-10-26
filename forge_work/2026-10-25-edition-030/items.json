@@ -1,0 +1,164 @@
+{
+ "items": [
+  {
+   "item_id": "brent-hormuz-price",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Jumaat tutup AS$116.72 — tertinggi sejak April 2026",
+   "summary": "Penyelesaian Jumaat 23 Okt: Brent AS$116.72, naik AS$3.55 (3.1 peratus) — penutupan tertinggi sejak 29 April 2026. Minggu ketiga berturut naik, tambah 6 peratus untuk minggu ini. Dua pembetulan terhadap edisi 029: angka AS$116.17 yang aku catat itu bacaan pra-penyelesaian 17:19 GMT, dan frasa 'tertinggi sejak Jun 2022' tidak sepadan dengan laluan wayar Reuters yang menyebut 29 April 2026 — angka wire yang dipakai hari ini.",
+   "source": "Reuters (Nicole Jao) 23 Okt: penyelesaian ICE Brent 116.72, WTI 103.27; edisi 029 guna bacaan ICE 17:19 GMT + TradingEconomics"
+  },
+  {
+   "item_id": "us-iran-election-clock",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Trump buka pintu serangan 'mungkin esok' — hari ini",
+   "summary": "Sabtu 24 Okt, selepas mengundi awal pilihan raya pertengahan penggal di Florida, Trump berkata AS mungkin menyerang Iran seawal Ahad ini, atau mencapai perjanjian yang beliau panggil besar dan cantik. Ini bercanggah dengan kenyataan 8 Okt beliau bahawa tiada serangan sebelum pilihan raya 3 Nov. Iran pula berkata pintu rundingan terbuka jika sekatan laut AS ditamatkan, dan mendakwa Trump yang menolak. Jam sekarang: keputusan boleh jatuh bila-bila, undi Israel 2 hari lagi, undi AS 9 hari.",
+   "source": "AP, Arab Times, EastOrana 24 Okt (petikan langsung West Palm Beach); WSJ via houseofsaud untuk kenyataan 8 Okt"
+  },
+  {
+   "item_id": "saudi-houthi-escalation",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Tujuh operasi 24 jam — dan kali ini Saluran Paip Timur-Barat",
+   "summary": "Houthi melalui jurucakap Saree mendakwa tujuh operasi dalam 24 jam: Lapangan Terbang King Khalid Riyadh dua peringkat, King Fahd Dammam, Najran, pangkalan Khamis Mushait, fasiliti Aramco Yanbu, kilang Rabigh, serta Saluran Paip Timur-Barat dan stesen pam minyak mentah. Itu laluan Saudi menghantar minyak timur ke Yanbu tanpa melalui Hormuz. Gabungan Saudi kata memintas dua peluru ke arah Taif dan Yanbu; Houthi juga menembak tiga peluru balistik ke Aden. Dakwaan 16 mati di Sanaa akibat serangan balas tidak disahkan secara bebas.",
+   "source": "Reuters 24 Okt (Idaho Statesman, ABC, UrduPoint); kenyataan Saree; GACA untuk operasi Dammam"
+  },
+  {
+   "item_id": "hormuz-reopening-plan",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Iran tawar buka Hormuz — syaratnya sekatan laut ditamatkan",
+   "summary": "Duta Iran ke Pakistan berkata Sabtu bahawa Iran menyampaikan melalui panglima tentera Pakistan kesediaan membuka semula Hormuz jika AS mengangkat sekatan pelabuhan Iran, dan mendakwa Trump menolak serta mahu sekatan diteruskan. Presiden Pezeshkian berkata rundingan dicacatkan oleh pengecut tetapi patut ditamatkan. Panglima tentera Iran pula berkata kapal perang AS tidak akan kembali ke Hormuz. Iran juga sedang mengkaji Perjanjian Pertahanan Makkah melibatkan Pakistan, Saudi dan Turki.",
+   "source": "AP via CityNews dan Toronto 24 Okt; theqldr 25 Okt; IRNA untuk kenyataan Abdollahi"
+  },
+  {
+   "item_id": "hormuz-flows-kpler",
+   "section": "SITUATION",
+   "claim_state": "CONTESTED",
+   "title": "Tiga tuntutan tentang trafik Hormuz — aku masih tidak pilih",
+   "summary": "Menteri luar Iran: trafik maritim 70 peratus di bawah paras pra-perang. Kpler: eksport mentah lebih 24 juta tong sehari lawan 23.3 juta sebelum perang, Selat 82 peratus pulih. Trump Sabtu: penghantaran minyak melalui Hormuz naik berbanding sebelum perang, tanpa sebarang angka. Tiga tuntutan, dua tanpa nombor yang boleh disemak. Aku kekalkan CONTESTED dan tidak mengambil purata.",
+   "source": "Turkiye Today 24 Okt (angka 70 peratus); Kpler via NY Post, Maritime Executive, Bloomberg 21-22 Okt; Trump 24 Okt tanpa angka"
+  },
+  {
+   "item_id": "physical-paper-divergence",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Kertas lompat ke AS$116.72 — tong fizikal tiada bacaan baharu",
+   "summary": "Dated Brent yang terakhir tercatat ialah AS$122.44 pada 22 Okt, premium AS$9.27 atas kertas. Kertas Jumaat naik ke AS$116.72. Tiada bacaan fizikal baharu sejak itu, jadi jurang sebenar hari ini tidak diketahui. Kekal di bawah pengawasan: kalau tong fizikal tidak ikut naik, kertas yang terdedah.",
+   "source": "CommodityScope 22 Okt untuk tong fizikal; Reuters 23 Okt untuk kertas; tiada bacaan fizikal 23-25 Okt"
+  },
+  {
+   "item_id": "petrol-price-band",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Band pam kekal — band baru ditetapkan Rabu 28 Okt pada harga lebih tinggi",
+   "summary": "Band 22-28 Okt kekal: RON95 RM4.32, RON97 RM4.80, diesel RM5.07, dengan BUDI95 RM1.99 dan BUDI Diesel RM2.10. Band seterusnya ditetapkan 28 Okt berdasarkan Brent sekitar AS$116, bukan AS$108 semasa band sekarang ditetapkan. Arah harganya ke atas. Isi minyak sebelum Rabu kalau boleh.",
+   "source": "Siaran media MoF 21 Okt; hargaminyak.my untuk band 22-28 Okt; OpenDOSM"
+  },
+  {
+   "item_id": "own-od1-window",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "OD1: 127 hari",
+   "summary": "Tolak satu hari daripada semalam. Pakej MSS sudah dikutip. Apa-apa yang menyentuh keputusan ini kekal lebih besar daripada berita harian.",
+   "source": "kiraan dalaman daripada 128 hari pada 24 Okt, sasaran yang sama"
+  },
+  {
+   "item_id": "budget-2027-debate",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Jawapan menteri Belanjawan: empat hari, Isnin 26 hingga Khamis 29 Okt",
+   "summary": "Takwim Dewan Rakyat mengesahkan jawapan oleh YB Menteri pada 26, 27, 28 dan 29 Okt. Peraturan berdiri membuang naratif politik, jadi tarikh sahaja di sini.",
+   "source": "parlimen.gov.my takwim Dewan Rakyat, minggu keempat"
+  },
+  {
+   "item_id": "israel-election-oct27",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Israel mengundi Selasa — tinjauan akhir kedua-dua blok tersekat",
+   "summary": "Undi 27 Okt, dua hari lagi. Tinjauan terakhir yang dibenarkan pada Jumaat: KAN dan Channel 12 masing-masing 52 kerusi blok pembangkang Eisenkot lawan 50 blok Netanyahu, Channel 13 54-50, Zman dan ToI 51-51. Tiada blok hampir 61. Eisenkot kekal lebih disukai sebagai PM tetapi jalan ke majoriti belum nampak, dan 36 peratus pengundi belum tetap. Tiada tinjauan lagi sehingga keluar pusat mengundi Selasa malam.",
+   "source": "Times of Israel, Anadolu, JPost, Madad 22-24 Okt"
+  },
+  {
+   "item_id": "melaka-polls-nov14",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Melaka: penamaan 31 Okt, undi 14 Nov",
+   "summary": "Penamaan enam hari lagi, hari mengundi dua puluh hari. Tiada perubahan jadual.",
+   "source": "jadual SPR yang dibawa dari edisi sebelumnya"
+  },
+  {
+   "item_id": "void-operator-change-od1",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Empat PSC tukar tangan 1 Jan — 68 hari",
+   "summary": "Perubahan operator berkuat kuasa 1 Januari 2027. Enam puluh lapan hari untuk semua peralihan selesai.",
+   "source": "kiraan dalaman daripada 69 hari pada 24 Okt"
+  },
+  {
+   "item_id": "uae-tanker-spill-gemno2",
+   "section": "RISK",
+   "claim_state": "NEW",
+   "title": "Tangki kena tembak 9 Okt masih bocor — air masuk nyahgaram terancam",
+   "summary": "GEM NO.2 berbendera Panama kena projektil 9 Okt, 13 batu nautika luar UAE. Dua minggu kemudian ia masih bocor: imej satelit 19 dan 21 Okt menunjukkan tumpahan kira-kira 160 km persegi. Model hanyutan Windward 21 Okt meramal tumpahan sampai ke air masuk nyahgaram Sharjah dan Ajman serta pelabuhan menjelang 22-23 Okt. UAE menutup pantai Umm Al Quwain, Sharjah menutup Al Hamriyah. Ini satu daripada dua sebab harga naik Jumaat. Akibat untuk peta risiko hang: serangan kapal bukan insiden sekali — kesannya berlarutan ke air minyak, air bersih dan insurans.",
+   "source": "Reuters 23 Okt (kenyataan MOCCAE); euronews 23 Okt (Vanguard mengenal pasti GEM NO.2); Windward di X 21 Okt; Conflict and Environment Observatory untuk angka 160 km persegi"
+  },
+  {
+   "item_id": "void-rig-market-drillship",
+   "section": "VOID",
+   "claim_state": "NEW",
+   "title": "Gerek dalam: 85 peratus kapasiti 2027 sudah ditempah, harga empat kali ganda 2020",
+   "summary": "Kadar gerek drillship generasi ketujuh kini AS$450,000 hingga AS$520,000 sehari, berbanding AS$180,000 hingga AS$220,000 pada 2020. Seadrill menempatkan West Carina untuk Indonesia pada kira-kira AS$477,000 sehari, 880 hari bernilai kira-kira AS$420 juta, bermula separuh pertama 2027; West Capella untuk Malaysia pula kira-kira AS$94 juta untuk dua tempoh 120 hari hingga Februari 2028. Lebih 85 peratus kapasiti drillship 2027 sudah terjual. Akibat konkrit untuk hang: gerek yang Carigali perlukan untuk SK306, Limbayong dan telaga dalam Sarawak bukan sahaja mahal, ia perlu ditempah awal sambil bersaing dengan Vietnam dan Indonesia.",
+   "source": "laporan anugerah kontrak Seadrill Okt 2026 (discoveryalert); laporan pasaran offshoreindustry.co.uk 2026; jadual kadar angolapetroleum"
+  },
+  {
+   "item_id": "void-page-date-not-evidence",
+   "section": "VOID",
+   "claim_state": "MOVED",
+   "title": "Perangkap tarikh berjalan lagi: empat artikel lama nyaris masuk brief",
+   "summary": "Pagi ini empat artikel bertarikh semalam tersadung semakan tarikh: PSC SK317B yang sebenarnya dari Nov 2021, kontrak tubular Destini dari Dis 2018, sambungan Deleum dengan kontrak 2021 hingga 2023, dan PSC Talisman Kinabalu dari era awal 2010-an. Akibat untuk hang: kalau nampak berita PETRONAS menang blok atau kontrak baharu Carigali dalam feed hang hari ini, itu arkib, bukan berita.",
+   "source": "perbandingan kandungan: PDF destinigroup.com 17 Dis 2018; siaran Investegate Total SK317B; frasa Edge 'statement Monday, Nov 22'"
+  },
+  {
+   "item_id": "eureka-snail-chirality",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Satu gen tentukan siput pusing kiri atau kanan",
+   "summary": "Penyelidik Nottingham dan Tohoku jumpa perubahan kecil pada gen myosin yang menentukan arah lingkar cangkerang siput Euhadra Jepun — menghasilkan siput cermin yang sihat dan subur. Kaitannya dengan kita: mekanisme yang sama terlibat dalam kenapa jantung manusia di sebelah kiri.",
+   "source": "Current Biology, Davison et al., dilaporkan phys.org Oktober 2026"
+  },
+  {
+   "item_id": "eureka-plastic-nanodiamonds",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Laser plus plastik sama dengan berlian nano, dan mereka berjaya tangkap",
+   "summary": "Pasukan HZDR dan Universiti Rostock menembak laser kuat ke plastik untuk mencipta keadaan dalam Neptune dan Uranus. Hasilnya berlian nano 3 nanometer, kira-kira 3,000 atom karbon, yang terpelanting keluar pada lebih 10 kilometer sesaat — dan kali pertama berjaya dikumpul utuh. Asal kajian: memahami planet ais. Kesan sampingan: bahan untuk pengimejan perubatan dan sensor kuantum.",
+   "source": "Diamond and Related Materials, Kraus et al.; laporan dailygalaxy Oktober 2026"
+  },
+  {
+   "item_id": "eureka-methanol-masers",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Kit kimia pembentuk planet lebih kaya daripada yang disangka",
+   "summary": "Kali pertama sejenis metanol jarang dikesan di ruang angkasa, di sekeliling bintang muda dalam awan Perseus 1,000 tahun cahaya jauhnya. Data ALMA menunjuk lebih separuh bintang muda yang dikaji mempunyai pancaran maser metanol — sebelum ini dianggap jarang.",
+   "source": "program ALMA COMPASS, Jeong et al.; laporan phys.org Oktober 2026"
+  },
+  {
+   "item_id": "eureka-cell-division-tissue",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Pembahagian sel buat lubang, kemudian baiki dengan geometri",
+   "summary": "Sel yang membahagi menarik diri dari lapisan bawah tisu, jiran-jiran masuk dan membentuk bunga seketika, kemudian sel anak kembali dengan bentuk 30 peratus kurang bulat daripada induk. Bila pergerakan balik disekat dadah, pertukaran jiran jatuh 93 peratus. Pembahagian bukan sekadar menambah sel, ia membentuk tisu.",
+   "source": "Institut Stowers, Ramanathan dan Gibson; Current Biology Oktober 2026"
+  },
+  {
+   "item_id": "eureka-constants-viscosity",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Pemalar alam ada tetingkap sempit untuk darah mengalir",
+   "summary": "Analisis Trachenko di Queen Mary University of London: ubah pemalar asas seperti cas elektron atau pemalar Planck beberapa peratus, kelikatan cecair berubah — darah menjadi terlalu pekat atau terlalu cair untuk badan berfungsi. Keadaan mesra kehidupan ini wujud berbilion tahun sebelum sel pertama muncul.",
+   "source": "Science Advances, Trachenko, 11 Oktober 2026"
+  }
+ ]
+}

@@ -3,6 +3,8 @@ name: cross-harness-relay-wiring
 description: "Wire a chat room to a coding-agent session."
 version: 1.0.0
 tags: [hermes, opencode, telegram, relay, plugin, hook]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Cross-harness relay wiring

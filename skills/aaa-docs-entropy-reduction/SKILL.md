@@ -6,6 +6,8 @@ description: >
   or auditing any AAA/docs-like document tree, when asked to "clean up docs", reduce markdown entropy, classify 
   documents by tier, find duplicate MD files, extract key insights from old docs, or consolidate scattered doctrine.
 tags: [docs, entropy, classification, pointer-convention, state-md]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # AAA Docs Entropy Reduction
