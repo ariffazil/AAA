@@ -233,8 +233,12 @@ _registry_2026-10-11
 node_modules/
 
 # live runtime homes relocated to /root/runtime (symlinked, 2026-10-17)
-codex
-opencode
-claude
-claude-share
-hermes
+# ANCHORED 2026-10-25 (333-AGI): these were unanchored names, so git ignored ANY
+# nested dir called opencode/claude/hermes — e.g. skills/arifos-act/adapters/
+# {claude,hermes,opencode}/ disappeared from every commit silently. Root-level
+# runtime homes keep the exclusion; nested paths no longer inherit it.
+/codex
+/opencode
+/claude
+/claude-share
+/hermes

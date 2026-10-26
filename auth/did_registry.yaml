@@ -1,54 +1,146 @@
 version: '1.0'
-note: Public keys only. Private keys in auth/keys/ (gitignored — never commit). Hermes
-  rotated 2026-07-09.
+note: Public keys only. Projection of secrets/did/registry.json — regenerate with scripts/render-did-projection.py.
+  Never commit private keys.
+generated_from: secrets/did/registry.json
 dids:
-- did: did:arif:Ω
-  organ_id: omega
-  public_key_hex: ade3ee70f74f2d96c06244e9817612fc1be483b53e460426add7a85813be6f22
-  algorithm: Ed25519
-  description: Sovereign root — F13-issuer, capability token signer
-- did: did:arif:aaa
-  organ_id: aaa
-  public_key_hex: f0ac01994f07d49eb960bbed60f2ea42799408832eaa433aac2336d8be44b43f
-  algorithm: Ed25519
-  description: AAA control plane — signs ingress capsules, issues capability tokens
 - did: did:arif:a-forge
   organ_id: a-forge
   public_key_hex: 551f494a66011d90dd8271f929088611505d2f9e0afa1ed9f952835997057059
   algorithm: Ed25519
   description: A-FORGE execution — signs skill step receipts
-- did: did:arif:geox
-  organ_id: geox
-  public_key_hex: 5d5c1931e704b055092a016e1acf4fc304b949782ed15b29d7f830ceb2146e4d
+  actors:
+  - aforge
+  - aforge-organ
+  - aforge-executor
+  - aforge-pillar
+  - forge
+  - 777-forge
+- did: did:arif:aaa
+  organ_id: aaa
+  public_key_hex: f0ac01994f07d49eb960bbed60f2ea42799408832eaa433aac2336d8be44b43f
   algorithm: Ed25519
-  description: GEOX domain — signs petrophysics and subsurface outputs
-- did: did:arif:wealth
-  organ_id: wealth
-  public_key_hex: d761c0c27491f5b699d214b3f65b4e1f92b108f306936fc1bef1be4ef42cb489
-  algorithm: Ed25519
-  description: WEALTH capital — signs economic verdicts and NPV claims
-- did: did:arif:well
-  organ_id: well
-  public_key_hex: 45a7d71a929e659432f02a7de0f5acd1f207e4ece53b7e9b079b7fdf7e56b3fb
-  algorithm: Ed25519
-  description: WELL vitality — signs substrate assessments
-- did: did:arif:hermes
-  organ_id: hermes
-  public_key_hex: 0775872a5c14888bb4715cff267ace79ca01d1caaf7d7907bd9a703892653980
-  algorithm: Ed25519
-  description: HERMES agent — rotated 2026-07-09 onboard
+  description: AAA control plane — signs ingress capsules, issues capability tokens
+  actors:
+  - 333-AGI
+  - 555-ASI
+  - 888-APEX
+  - aaa
+  - aaa-gateway
+  - aaa-architect
+  - aaa-engineer
+  - aaa-auditor
+  - mesa-test-agent
+  - opencode
+  - claude-code
+  - kimi-code
+  - codex
+  - codex-cli
+  - copilot
+  - copilot-cli
+  - grok-build
+  - antigravity
+  - gemini-cli
+  - aider
+  - qwen-code
+  - continue-cli
 - did: did:arif:arifos
   organ_id: arifos
   public_key_hex: 5118f5273759723bc1f7c0299fbe84011cb417efbfb3d9102d55349561d57417
   algorithm: Ed25519
   description: arifOS kernel — signs constitutional verdicts (SEAL/HOLD/VOID)
+  actors:
+  - arifos
+  - arifos-organ
+  - arifos-kernel
+  - arifos-bot
+- did: did:arif:geox
+  organ_id: geox
+  public_key_hex: 5d5c1931e704b055092a016e1acf4fc304b949782ed15b29d7f830ceb2146e4d
+  algorithm: Ed25519
+  description: GEOX domain — signs petrophysics and subsurface outputs
+  actors:
+  - geox
+  - geox-organ
+  - geox-witness
+  - geox-personal
+  - prospect-maturation
+- did: did:arif:grok-build
+  organ_id: grok-build
+  public_key_hex: 2db018c79b3b5d54a3c67ce05013214b086b8765c9a1d14e8a55df17bf811fa6
+  algorithm: Ed25519
+  description: Grok Build FI-007 CLI harness — OIDC identity material; not a FED seat
+  actors:
+  - grok-build
+- did: did:arif:hermes
+  organ_id: hermes
+  public_key_hex: 39ed9013d2f355e40ed88e9fd912253a8db1af0a68860c8b2fa0122697989f9c
+  algorithm: Ed25519
+  description: HERMES agent — Telegram/A2A (rotated 2026-07-09 onboard)
+  actors:
+  - hermes
+  - makcikgpt
 - did: did:arif:hermes-asi
   organ_id: hermes-asi
-  public_key_hex: 0775872a5c14888bb4715cff267ace79ca01d1caaf7d7907bd9a703892653980
+  public_key_hex: 39ed9013d2f355e40ed88e9fd912253a8db1af0a68860c8b2fa0122697989f9c
   algorithm: Ed25519
-  description: HERMES-ASI alias
+  description: HERMES-ASI gateway alias — same keypair as hermes
+  actors:
+  - hermes-asi
 - did: did:arif:openclaw
   organ_id: openclaw
   public_key_hex: 133462bdb96b4ee83f485b11aa1fe5e3e9d9381c7f91555394dd0101a03728af
   algorithm: Ed25519
-  description: "OpenClaw AGI runtime — Telegram bridge gateway (key reconciled 2026-08-08, key source: /root/.openclaw/identity/device.json)"
+  description: OpenClaw agentic mesh router — agent-facing dispatch layer (DISPLAY_ONLY ceiling); receives
+    from Hermes/cron, routes to 333-AGI/OpenCode/arifOS
+  actors:
+  - openclaw
+- did: did:arif:wealth
+  organ_id: wealth
+  public_key_hex: d761c0c27491f5b699d214b3f65b4e1f92b108f306936fc1bef1be4ef42cb489
+  algorithm: Ed25519
+  description: WEALTH capital — signs economic verdicts and NPV claims
+  actors:
+  - wealth
+  - wealth-organ
+  - wealth-witness
+- did: did:arif:well
+  organ_id: well
+  public_key_hex: 45a7d71a929e659432f02a7de0f5acd1f207e4ece53b7e9b079b7fdf7e56b3fb
+  algorithm: Ed25519
+  description: WELL vitality — signs substrate assessments
+  actors:
+  - well
+  - well-organ
+  - well-witness
+- did: did:arif:Ω
+  organ_id: omega
+  public_key_hex: ade3ee70f74f2d96c06244e9817612fc1be483b53e460426add7a85813be6f22
+  algorithm: Ed25519
+  description: Sovereign root — F13-issuer, capability token signer
+  actors:
+  - ARIF_FAZIL
+- did: did:key:z7QHNDZM4dm0fl4bwI7BOhVmMAh_pBVsQN2i17Ndog1jLjQ
+  organ_id: openclaw
+  public_key_hex: cd0d9338766d1f9786f023b04e85598c021fe9055b103768b5ecd7688358cb8d
+  algorithm: Ed25519
+  description: OpenClaw agentic mesh router — agent-facing dispatch layer (DISPLAY_ONLY ceiling); receives
+    from Hermes/cron, routes to 333-AGI/OpenCode/arifOS
+  actors:
+  - openclaw
+- did: did:web:arif-fazil.com
+  organ_id: omega
+  public_key_hex: 6aec521dd3b0caf3beb3efec458ccaf5982f1a3f26e7b358ce66d8d74aacbd5e
+  algorithm: Ed25519
+  description: did:web BRIDGE — published sovereign root key (alias of did:arif:Ω, distinct keypair)
+  actors:
+  - ARIF_FAZIL
+- did: did:web:arifos.arif-fazil.com
+  organ_id: arifos
+  public_key_hex: cdfcd4e968a1aba061ca45549b99e56bf4cde5606425d88515699e69897ee28f
+  algorithm: Ed25519
+  description: did:web BRIDGE — arifOS observatory key (alias of did:arif:arifos, distinct keypair)
+  actors:
+  - arifos
+  - arifos-organ
+  - arifos-kernel
+  - arifos-bot

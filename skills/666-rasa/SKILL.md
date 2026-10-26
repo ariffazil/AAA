@@ -3,9 +3,17 @@ name: 666-rasa
 description: "Rasa — somatic/human-state check untuk Arif: energy, tidur, makan, mood. ZEN spine /666. cognitive-commands doctrine di /root/AAA/skills/cognitive-commands/SKILL.md."
 triggers:
   - "/666_rasa"
+atlas_numeral: "666"
+atlas_function: AUDITOR
+atlas_layer: ACT
+atlas_question: "Is it governed? (human-dimension audit)"
+slot: apex-9
+kernel_verb: null
 ---
 
 # /666_rasa
+
+> Slot: **666 AUDITOR** · APEX-9 spine (law: `cognitive-commands`).
 
 Bila mesej ini tiba (sebagai slash atau teks):
 

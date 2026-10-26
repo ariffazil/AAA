@@ -1042,6 +1042,57 @@ function getChainSummary() {
   };
 }
 
+/**
+ * Chain diagnostics — WHY the chain reports not-ok (2026-10-26).
+ * verifyChain() answers yes/no. This answers where, what kind, and how old.
+ * A ledger that survived version migrations carries several newline epochs:
+ * null seq values, restarted counters (seq 1 appears twice), sentinel prev
+ * values ('genesis' / 'unknown' / '0'), and mixed hash prefixes. A declared
+ * restart marker is not the same event as a real linkage mismatch, and a
+ * frozen ledger tail is not the same thing as a live heartbeat.
+ */
+function getChainDiagnostics() {
+  const entries = readLedger();
+  const norm = (x) => (typeof x === 'string' && x.startsWith('sha256:') ? x.slice(7) : x);
+  const pick = (e, keys) => {
+    for (const k of keys) if (e[k]) return e[k];
+    return null;
+  };
+  const RESTART_SENTINELS = new Set(['genesis', 'unknown', '0', 'sha256:0']);
+  let checked = 0;
+  const breaks = [];
+  for (let i = 1; i < entries.length; i++) {
+    const prev = pick(entries[i], ['prev_hash', 'previous_hash', 'prev_chain_hash']);
+    const prior = pick(entries[i - 1], ['this_hash', 'hash', 'chain_hash']);
+    if (prev == null || prior == null) continue;
+    checked++;
+    if (RESTART_SENTINELS.has(prev)) continue;
+    if (norm(prev) !== norm(prior)) {
+      const e = entries[i];
+      breaks.push({
+        index: i,
+        seq: e.seq === undefined ? null : e.seq,
+        kind: e.seq === null || e.seq === undefined ? 'null_seq_entry' : 'linkage_mismatch',
+        prev_hash_prefix: String(prev).slice(0, 20),
+        expected_prefix: String(prior).slice(0, 20),
+      });
+    }
+  }
+  const last = entries[entries.length - 1] || {};
+  const lastTs = last.timestamp || last.epoch || null;
+  const ageSec = lastTs ? Math.max(0, Math.floor((Date.now() - Date.parse(lastTs)) / 1000)) : null;
+  return {
+    entries: entries.length,
+    pairs_checked: checked,
+    breaks: breaks.length,
+    break_detail: breaks.slice(0, 10),
+    last_append_seq: last.seq === undefined ? null : last.seq,
+    last_append_at: lastTs,
+    last_append_age_sec: ageSec,
+    verdict: breaks.length === 0 ? 'CONTINUOUS' : 'DISCONTINUOUS',
+  };
+}
+
 // ── CLI ──────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -1088,6 +1139,7 @@ module.exports = {
   getChainLength,
   getRecent,
   getChainSummary,
+  getChainDiagnostics,
   hashSeal,
   computeEventMerkleRoot,
   canonicalJson,

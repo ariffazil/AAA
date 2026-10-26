@@ -1,48 +1,48 @@
 {
  "_GENERATED": "federation_build.py \u2014 DO NOT HAND-EDIT (FP-06)",
- "run_at": "2026-10-22T20:08:16+00:00",
+ "run_at": "2026-10-25T19:07:01+00:00",
  "mode": "apply-additive",
  "skill_index": {
-  "skills": 770,
+  "skills": 782,
   "distribution": {
-   "governance": 106,
-   "research": 85,
-   "execution": 127,
+   "governance": 110,
+   "research": 87,
+   "execution": 129,
    "domain": 53,
    "memory": 29,
    "communication": 79,
-   "unclassified": 327,
-   "engineering": 105
+   "unclassified": 332,
+   "engineering": 104
   }
  },
  "projection": {
   "/root/.kimi-code/skills": {
-   "linked": 0,
-   "kept": 762,
+   "linked": 13,
+   "kept": 761,
    "repaired": 0,
    "preserved": 8
   },
   "/root/.qwen/skills": {
-   "linked": 0,
-   "kept": 770,
+   "linked": 13,
+   "kept": 769,
    "repaired": 0,
    "preserved": 0
   },
   "/root/.codex/skills": {
-   "linked": 0,
-   "kept": 766,
+   "linked": 753,
+   "kept": 25,
    "repaired": 0,
    "preserved": 4
   },
   "/root/.gemini/skills": {
-   "linked": 0,
+   "linked": 12,
    "kept": 770,
    "repaired": 0,
    "preserved": 0
   },
   "/root/.config/opencode/skills": {
-   "linked": 0,
-   "kept": 770,
+   "linked": 13,
+   "kept": 769,
    "repaired": 0,
    "preserved": 0
   },
@@ -50,21 +50,21 @@
    "linked": 0,
    "kept": 0,
    "repaired": 0,
-   "preserved": 770
+   "preserved": 782
   },
   "/root/.grok/skills": {
    "linked": 0,
    "kept": 0,
    "repaired": 0,
-   "preserved": 770
+   "preserved": 782
   }
  },
  "pointer_integrity": {
-  "/root/.kimi-code/skills": 0,
-  "/root/.qwen/skills": 0,
+  "/root/.kimi-code/skills": 1,
+  "/root/.qwen/skills": 1,
   "/root/.codex/skills": 0,
-  "/root/.gemini/skills": 0,
-  "/root/.config/opencode/skills": 0,
+  "/root/.gemini/skills": 1,
+  "/root/.config/opencode/skills": 1,
   "/root/.claude/skills": 0,
   "/root/.grok/skills": 0
  },
@@ -73,7 +73,7 @@
   "/root/.kimi-code/AGENTS.md": "WIRED",
   "/root/.config/opencode/AGENTS.md": "WIRED",
   "/root/CLAUDE.md": "WIRED",
-  "/root/QWEN.md": "WIRED",
+  "/root/QWEN.md": "MISSING_READONLY",
   "/root/GEMINI.md": "WIRED"
  },
  "drift": {
@@ -84,19 +84,21 @@
   },
   "live_disk": {
    "kimi_mcp": 22,
-   "opencode_mcp": 25,
-   "one_mcp": 15,
-   "skills_AAA": 778,
-   "skills_kimi": 785,
-   "skills_qwen": 777,
-   "skills_codex": 782,
-   "skills_gemini": 770,
-   "skills_opencode": 770,
-   "skills_claude": 778
+   "opencode_mcp": 22,
+   "one_mcp": 16,
+   "skills_AAA": 789,
+   "skills_kimi": 797,
+   "skills_qwen": 790,
+   "skills_codex": 794,
+   "skills_gemini": 782,
+   "skills_opencode": 782,
+   "skills_claude": 789
   }
  },
  "problems": [
-  "registry_stale: 255 vs live 778"
+  "broken_pointers={'/root/.kimi-code/skills': 1, '/root/.qwen/skills': 1, '/root/.codex/skills': 0, '/root/.gemini/skills': 1, '/root/.config/opencode/skills': 1, '/root/.claude/skills': 0, '/root/.grok/skills': 0}",
+  "init_guard={'/root/AGENTS.md': 'WIRED', '/root/.kimi-code/AGENTS.md': 'WIRED', '/root/.config/opencode/AGENTS.md': 'WIRED', '/root/CLAUDE.md': 'WIRED', '/root/QWEN.md': 'MISSING_READONLY', '/root/GEMINI.md': 'WIRED'}",
+  "registry_stale: 255 vs live 789"
  ],
  "state_labels": {
   "projection": "PRODUCED \u2014 runtime consumption per-harness",

@@ -1,6 +1,8 @@
 ---
 name: federation-metabolism
 description: "Operate the arifFlow (:7073) metabolism plane — receipt ingestion, FQ state diagnosis, blind-FQ repair, actor unblock, invariant enforcement cycles, audit-log path drift. Trigger: actors held on stale FQ=0.00, POST /ingest failures, daemon blind/receipts.jsonl growing without FQ effect, /release not sticking."
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Federation Metabolism — Operating arifFlow (:7073)
@@ -59,6 +61,14 @@ Expect ~70–85% success rate after the first few batches (chain-validation catc
 ## 4. Actor unblock — release is transient
 
 `POST /release {"actor_id":"333-AGI"}` returns `200 released` but the enforcement cycle (~10s) re-holds any actor with **FQ < 0.5** (STUCK band). So:
+
+**NEW — 2026-10-25 (requester_id is REQUIRED):** `{"actor_id":...}` alone → **403**
+`{"reason":"missing_requester_id","status":"denied"}` — "release requires requester_id — arifOS
+arbitrates hold removal". Correct call: `POST /release {"actor_id":"X","requester_id":"333-AGI"}`
+→ 200 `{"authority":"arifOS:888_JUDGE","status":"released","verdict_class":"SEAL","verdict_id":"<hash>"}`
+(the verdict_id is the arbitration receipt — cite it). Re-check AFTER one full enforcement cycle
+(~10s), not immediately: an UNMEASURED actor (quotient=null, 0/0) was observed to STAY clear
+(null is not `<0.5`, so the re-hold rule does not fire) — measured 2026-10-25 on codex-fi-005.
 - Actors now at FQ ≥ 0.5 stay CLEAR after release.
 - Actors still under FQ < 0.5 get re-held — the release worked but cannot stick. Permanent unblock needs Verify receipts lifting the band above 0.5.
 
