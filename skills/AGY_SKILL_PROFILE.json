@@ -1,73 +1,310 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "harness": "antigravity",
   "fi_slot": "FI-004",
-  "status": "calibration_view",
+  "status": "production_view",
   "purpose": "Curated arifOS federation view for Antigravity CLI (agy); eliminates context token truncation, prevents prompt exclusions, and preserves Google DeepMind built-in capabilities.",
   "contrast_axes": {
-    "spine": "000-999 cognitive spine verbs and agy scar hardening",
+    "spine": "000-999 cognitive spine verbs (APEX-9) and agy scar hardening",
     "substrate": "governed lifecycle primitives; always loaded before domain work",
-    "knowledge": "physics, math, language, and pragmatics verification layers",
-    "forge": "coding, git, mcp, docker, and subagent orchestration",
-    "federation": "geox, petronas, wealth, well, duckdb, and malaysia reality stack",
-    "governance": "apex floor check, musyawarah, audit seal, and attention membrane"
+    "knowledge": "physics, math, language, logic, and pragmatics verification layers",
+    "flow": "agentic flow, subagent orchestration, musyawarah, and cross-agent handoffs",
+    "forge": "coding, fastmcp, web ops, git, docker, and hands actuation",
+    "governance": "apex floor check, authority boundaries, anti-bangang, and audit seals",
+    "federation": "geox, well, duckdb, senses, and sovereign attention membrane"
   },
   "skills": [
-    {"name": "000-salam", "axis": "spine"},
-    {"name": "111-tengok", "axis": "spine"},
-    {"name": "333-forge", "axis": "spine"},
-    {"name": "555-betul", "axis": "spine"},
-    {"name": "666-rasa", "axis": "spine"},
-    {"name": "777-faham", "axis": "spine"},
-    {"name": "888-adil", "axis": "spine"},
-    {"name": "999-ingat", "axis": "spine"},
-    {"name": "agy-scar-hardening", "axis": "spine"},
-    {"name": "kernel-bind", "axis": "substrate"},
-    {"name": "observe-ground", "axis": "substrate"},
-    {"name": "route-dispatch", "axis": "substrate"},
-    {"name": "memory-manage", "axis": "substrate"},
-    {"name": "verify-gate", "axis": "substrate"},
-    {"name": "audit-seal", "axis": "substrate"},
-    {"name": "know-physics", "axis": "knowledge"},
-    {"name": "know-math", "axis": "knowledge"},
-    {"name": "know-language", "axis": "knowledge"},
-    {"name": "know-pragmatics", "axis": "knowledge"},
-    {"name": "evidence-hierarchy", "axis": "knowledge"},
-    {"name": "FORGE-github-ops", "axis": "forge"},
-    {"name": "FORGE-fastmcp", "axis": "forge"},
-    {"name": "FORGE-mcp-probe", "axis": "forge"},
-    {"name": "forge-subagent-lifecycle", "axis": "forge"},
-    {"name": "forge-subagent-spawn", "axis": "forge"},
-    {"name": "forge-lsp-pre-edit-gate", "axis": "forge"},
-    {"name": "FORGE-musyawarah-gotong", "axis": "forge"},
-    {"name": "FORGE-incident-triage", "axis": "forge"},
-    {"name": "FORGE-docker-entropy", "axis": "forge"},
-    {"name": "FORGE-vps-runbook", "axis": "forge"},
-    {"name": "FORGE-repo-intelligence", "axis": "forge"},
-    {"name": "FORGE-pr-review", "axis": "forge"},
-    {"name": "FORGE-cicd-docker-deploy", "axis": "forge"},
-    {"name": "geox-grounding", "axis": "federation"},
-    {"name": "geox-production-cockpit", "axis": "federation"},
-    {"name": "geological-artifact-rigor", "axis": "federation"},
-    {"name": "PETRONAS-intelligence-router", "axis": "federation"},
-    {"name": "MY-REALITY-STACK", "axis": "federation"},
-    {"name": "malaysia-reality-interface", "axis": "federation"},
-    {"name": "duckdb-analytics-engine", "axis": "federation"},
-    {"name": "xauusd-trading", "axis": "federation"},
-    {"name": "well-machine-diagnose", "axis": "federation"},
-    {"name": "WELL-3baik-log", "axis": "federation"},
-    {"name": "a2a-task-delegator", "axis": "governance"},
-    {"name": "asi-agentic-governance", "axis": "governance"},
-    {"name": "asi-summarize", "axis": "governance"},
-    {"name": "intelligence-briefing", "axis": "governance"},
-    {"name": "sovereign-daily-brief", "axis": "governance"},
-    {"name": "apex_floor_check", "axis": "governance"},
-    {"name": "apex_verdict_hold", "axis": "governance"},
-    {"name": "apex_verdict_seal", "axis": "governance"},
-    {"name": "apex_authority_check", "axis": "governance"},
-    {"name": "web-ops", "axis": "forge"},
-    {"name": "mata", "axis": "federation"},
-    {"name": "media-ingest-lane", "axis": "federation"},
-    {"name": "voice-lane", "axis": "federation"}
+    {
+      "name": "000-salam",
+      "axis": "spine"
+    },
+    {
+      "name": "111-tengok",
+      "axis": "spine"
+    },
+    {
+      "name": "222-reka",
+      "axis": "spine"
+    },
+    {
+      "name": "333-fikir",
+      "axis": "spine"
+    },
+    {
+      "name": "444-arah",
+      "axis": "spine"
+    },
+    {
+      "name": "555-betul",
+      "axis": "spine"
+    },
+    {
+      "name": "666-rasa",
+      "axis": "spine"
+    },
+    {
+      "name": "777-forge",
+      "axis": "spine"
+    },
+    {
+      "name": "888-adil",
+      "axis": "spine"
+    },
+    {
+      "name": "999-ingat",
+      "axis": "spine"
+    },
+    {
+      "name": "padu",
+      "axis": "spine"
+    },
+    {
+      "name": "dream-what",
+      "axis": "spine"
+    },
+    {
+      "name": "rest-now",
+      "axis": "spine"
+    },
+    {
+      "name": "forget",
+      "axis": "spine"
+    },
+    {
+      "name": "flow",
+      "axis": "spine"
+    },
+    {
+      "name": "think-deep",
+      "axis": "spine"
+    },
+    {
+      "name": "bijaksana-compile",
+      "axis": "spine"
+    },
+    {
+      "name": "agy-scar-hardening",
+      "axis": "spine"
+    },
+    {
+      "name": "kernel-bind",
+      "axis": "substrate"
+    },
+    {
+      "name": "observe-ground",
+      "axis": "substrate"
+    },
+    {
+      "name": "route-dispatch",
+      "axis": "substrate"
+    },
+    {
+      "name": "memory-manage",
+      "axis": "substrate"
+    },
+    {
+      "name": "verify-gate",
+      "axis": "substrate"
+    },
+    {
+      "name": "audit-seal",
+      "axis": "substrate"
+    },
+    {
+      "name": "propose-seal",
+      "axis": "substrate"
+    },
+    {
+      "name": "seal-session",
+      "axis": "substrate"
+    },
+    {
+      "name": "know-physics",
+      "axis": "knowledge"
+    },
+    {
+      "name": "know-math",
+      "axis": "knowledge"
+    },
+    {
+      "name": "know-language",
+      "axis": "knowledge"
+    },
+    {
+      "name": "know-pragmatics",
+      "axis": "knowledge"
+    },
+    {
+      "name": "evidence-hierarchy",
+      "axis": "knowledge"
+    },
+    {
+      "name": "causal555-pywhy",
+      "axis": "knowledge"
+    },
+    {
+      "name": "forge-subagent-lifecycle",
+      "axis": "flow"
+    },
+    {
+      "name": "forge-subagent-spawn",
+      "axis": "flow"
+    },
+    {
+      "name": "forge-cross-agent-handoff",
+      "axis": "flow"
+    },
+    {
+      "name": "a2a-task-delegator",
+      "axis": "flow"
+    },
+    {
+      "name": "aaa-musyawarah-execution",
+      "axis": "flow"
+    },
+    {
+      "name": "forge-musyawarah-gotong",
+      "axis": "flow"
+    },
+    {
+      "name": "meta-mesa",
+      "axis": "flow"
+    },
+    {
+      "name": "qrl",
+      "axis": "flow"
+    },
+    {
+      "name": "qqq",
+      "axis": "flow"
+    },
+    {
+      "name": "FORGE-fastmcp",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-mcp-probe",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-mcp-ops",
+      "axis": "forge"
+    },
+    {
+      "name": "web-ops",
+      "axis": "forge"
+    },
+    {
+      "name": "browser-playwright-runner",
+      "axis": "forge"
+    },
+    {
+      "name": "check-work",
+      "axis": "forge"
+    },
+    {
+      "name": "create-skill",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-incident-triage",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-docker-entropy",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-vps-runbook",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-precommit-review",
+      "axis": "forge"
+    },
+    {
+      "name": "forge-repo-intelligence",
+      "axis": "forge"
+    },
+    {
+      "name": "apex_floor_check",
+      "axis": "governance"
+    },
+    {
+      "name": "apex_authority_check",
+      "axis": "governance"
+    },
+    {
+      "name": "apex_scope_check",
+      "axis": "governance"
+    },
+    {
+      "name": "apex_verdict_hold",
+      "axis": "governance"
+    },
+    {
+      "name": "apex_verdict_seal",
+      "axis": "governance"
+    },
+    {
+      "name": "asi-agentic-governance",
+      "axis": "governance"
+    },
+    {
+      "name": "wisdom-scar-session-audit",
+      "axis": "governance"
+    },
+    {
+      "name": "geox-grounding",
+      "axis": "federation"
+    },
+    {
+      "name": "geox-production-cockpit",
+      "axis": "federation"
+    },
+    {
+      "name": "geological-artifact-rigor",
+      "axis": "federation"
+    },
+    {
+      "name": "WELL-substrate-readiness",
+      "axis": "federation"
+    },
+    {
+      "name": "WELL-3baik-log",
+      "axis": "federation"
+    },
+    {
+      "name": "duckdb-analytics-engine",
+      "axis": "federation"
+    },
+    {
+      "name": "xauusd-trading",
+      "axis": "federation"
+    },
+    {
+      "name": "mata",
+      "axis": "federation"
+    },
+    {
+      "name": "media-ingest-lane",
+      "axis": "federation"
+    },
+    {
+      "name": "mimo-vision",
+      "axis": "federation"
+    },
+    {
+      "name": "mimo-audio",
+      "axis": "federation"
+    },
+    {
+      "name": "sovereign-daily-brief",
+      "axis": "federation"
+    },
+    {
+      "name": "syed-care-mode",
+      "axis": "federation"
+    }
   ]
 }
