@@ -152,13 +152,13 @@
   <section class="section-container" style="margin-bottom:16px">
     <div class="section-heading">
       <span>AAA · ATTENTION PLANE</span>
-      <span class="badge-epistemic badge-observed">LIVE · 15s POLL</span>
+      <span class="badge-epistemic badge-observed" id="hero-freshness-badge">LIVE · 15s POLL</span>
     </div>
     <div class="card" style="padding:14px 18px">
       <div style="display:flex;flex-wrap:wrap;gap:18px;font-family:var(--font-mono);font-size:12px">
         <span>MESH: <strong id="strip-mesh">--</strong></span>
         <span>SERVERS DOWN: <strong id="strip-servers">--</strong></span>
-        <span>MACHINE-HELD: <strong id="strip-held">--</strong></span>
+        <span id="strip-held-label">MACHINE-HELD: <strong id="strip-held">--</strong></span>
         <span>HUMAN DECISION: <strong id="strip-human">--</strong></span>
       </div>
       <div id="strip-action" style="margin-top:6px;font-size:12px;color:var(--muted)"></div>
@@ -541,6 +541,28 @@ function render(data, truthData) {
   const ts = data.generated_at ? new Date(data.generated_at).toLocaleString('ms-MY', { timeZone:'Asia/Kuala_Lumpur' }) : '?';
   const ageSec = data.generated_at ? Math.round((Date.now() - new Date(data.generated_at).getTime()) / 1000) : null;
   const ageStr = ageSec !== null ? (ageSec < 60 ? `${ageSec}s yang lalu` : `${Math.round(ageSec/60)}m yang lalu`) : '';
+
+  // ── FRESHNESS GATE (audit 2026-10-26): no stale producer may render as live truth.
+  // One gate, one snapshot: every dependent field below reads isFresh from THIS data.
+  // Cadence-aware: FRESH = younger than the producer's declared schedule + grace.
+  const _cadence = Number(data.cadence_seconds) || 300;
+  const _fresh_ttl = _cadence + 120;
+  const _gate = (ageSec === null || ageSec < -60)
+    ? { state: 'UNKNOWN', age_seconds: null }
+    : (ageSec <= _fresh_ttl)
+      ? { state: 'FRESH', age_seconds: ageSec }
+      : { state: 'STALE', age_seconds: ageSec };
+  const isFresh = _gate.state === 'FRESH';
+  {
+    const hb = document.getElementById('hero-freshness-badge');
+    if (hb) {
+      if (isFresh) { hb.textContent = `CURRENT · producer ${_gate.age_seconds}s · poll 15s`; hb.className = 'badge-epistemic badge-observed'; }
+      else if (_gate.state === 'STALE') { hb.textContent = `STALE SNAPSHOT · ${_gate.age_seconds}s · LIVE STATE UNKNOWN`; hb.className = 'badge-epistemic badge-warn'; }
+      else { hb.textContent = 'LIVE STATE UNKNOWN'; hb.className = 'badge-epistemic badge-warn'; }
+    }
+    const sl = document.getElementById('strip-held-label');
+    if (sl) sl.innerHTML = (isFresh ? 'MACHINE-HELD: ' : 'MACHINE-HELD (last reported): ') + '<strong id="strip-held">--</strong>';
+  }
   
   document.getElementById('nav-ts').textContent = `Dikemas kini: ${ageStr}`;
 
@@ -636,6 +658,15 @@ function render(data, truthData) {
     deskBadge.textContent = 'PETI TIDAK DAPAT DIBACA';
     deskTitle.textContent = 'Status peti arif_report UNKNOWN';
     deskDesc.innerHTML = `Storan /var/lib/arifos/reports tak dapat dibaca oleh penjana state — Tier 3 menunjukkan UNKNOWN, bukan kosong.<br><strong>Ejen tertahan mesin:</strong> ${names || 'tiada'}`;
+  } else if (holdsCount > 0 && !isFresh) {
+    // STALE producer + reported holds = current hold status UNKNOWN, never a red live block.
+    deskCard.className = 'desk-card';
+    deskBadge.className = 'desk-badge';
+    deskBadge.style.background = 'rgba(148,163,184,0.15)';
+    deskBadge.style.color = 'var(--muted)';
+    deskBadge.textContent = 'STATE UNKNOWN';
+    deskTitle.textContent = `Hold terakhir dilaporkan: ${names || 'tiada'} · status kini UNKNOWN`;
+    deskDesc.innerHTML = `Producer state berumur ${_gate.age_seconds !== null ? _gate.age_seconds + 's' : 'UNKNOWN'} (bukan FRESH). Tiada kesimpulan boleh dibuat daripada snapshot lapuk — equivalence live tidak mapan.`;
   } else if (holdsCount > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
@@ -663,7 +694,7 @@ function render(data, truthData) {
   stripHuman.textContent = pendingN === null ? 'UNKNOWN' : pendingN;
   stripHuman.style.color = (pendingN === null || pendingN > 0) ? 'var(--warn)' : 'var(--ok)';
   document.getElementById('strip-action').textContent =
-    pendingN === 0 ? 'Tiada tindakan diperlukan dari Arif.'
+    pendingN === 0 ? (isFresh ? 'Tiada tindakan diperlukan dari Arif.' : 'Tiada keputusan dilaporkan dalam snapshot terakhir — equivalence live belum mapan.')
     : (pendingN === null ? 'Keputusan manusia: UNKNOWN (peti keputusan tidak dapat dibaca — jangan anggap kosong).'
       : `${pendingN} keputusan menunggu Arif.`);
   document.getElementById('held-summary-list').innerHTML = effectiveHolds.map(h => {
