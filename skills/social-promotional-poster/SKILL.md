@@ -1,11 +1,13 @@
 ---
 name: social-promotional-poster
-description: Build fixed-size promotional raster graphics (Instagram post 1080x1350, Story 1080x1920, FB cover, X header 1500x500, Telegram channel banner) end-to-end - HTML authoring to headless Chrome screenshot to vision-loop self-critique to multi-iteration. Covers hero image sourcing (Unsplash CDN extraction, real-photo inpainting limits), typography hierarchy, BM/Manglish copywriting for Malaysian brand voice, and the brand-fidelity rule that AI stand-ins must NEVER replace a named real person. Triggers include poster, banner, cover, social card, IG post, promote X, viral, Jordon Yeoh style, poster untuk abang, or any request for a downloadable PNG/JPG designed for sharing.
+description: 'Build fixed-size promotional raster graphics (Instagram post 1080x1350, Story 1080x1920, FB cover, X header 1500x500, Telegram channel banner) end-to-end - HTML authoring to headless Chrome screenshot to vision-loop'
 version: 1.0.0
 metadata:
   hermes:
     tags: [poster, design, html, headless-chrome, social-media, malaysian-brand, image-pipeline, viral, instagram, telegram]
     related_skills: [claude-design, sketch, excalidraw, popular-web-designs]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Social Promotional Poster - HTML to PNG pipeline
@@ -168,7 +170,7 @@ Before any poster featuring a named human:
 1. `find /root -maxdepth 5 -type f \( -iname "*<name>*" -o -iname "*<handle>*" \) \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" \)` for existing real photos.
 2. If none, ask the user to supply a fresh photo (single message: "Real photo needed - Syed shot from chest-up clean frame works"). Do not proceed with AI stand-ins and pretend.
 3. Arif is words (verbatim, 2026-08-06 session): "Syed adalah manusia Sado sebenar. Hang jangan nak buat dia jadi AI Agent plak." - the brand is the person, the person is real, fake stand-ins destroy trust.
-4. **Image-edit models ALSO fail identity preservation** (verified 2026-08-12). Do NOT use Gemini/Qwen image-to-image edit to "place this person in a new scene" — the model regenerates the face. Use the **composite fallback** (rembg cutout + empty background + PIL paste) documented in `gemini-media-gen` → `references/identity-preservation-composite-fallback.md`. Arif's binding rule: "Hang jangan ubah muka manusia."
+4. **Image-edit models ALSO fail identity preservation** (verified 2026-08-12). Do NOT use Gemini/Qwen image-to-image edit to "place this person in a new scene" — the model regenerates the face. Use the **composite fallback** (rembg cutout + empty background + PIL paste) documented in `gemini-media-gen` → `/root/AAA/skills/gemini-media-gen/references/identity-preservation-composite-fallback.md`. Arif's binding rule: "Hang jangan ubah muka manusia."
 
 ---
 
@@ -296,3 +298,7 @@ The right discipline is: build → vision_analyze → patch → vision_analyze �
 - `references/poster-iteration-checklist.md` - copy-paste vision-loop review prompt + dimension verification checklist
 - `references/malaysian-brand-voice.md` - BM/Manglish tagline patterns, urgency phrases, CTA channel conventions
 - `references/matplotlib-editorial-poster-skeleton.py` - 1080x1080 dark editorial skeleton (proven SADO PHYSIQUE RADAR 2026-08-11): canvas + grid texture + 4-card event layout + legend + footer + built-in PNG signature+dim verification
+
+## Routing notes (moved from description 2026-10-23)
+
+self-critique to multi-iteration. Covers hero image sourcing (Unsplash CDN extraction, real-photo inpainting limits), typography hierarchy, BM/Manglish copywriting for Malaysian brand voice, and the brand-fidelity rule that AI stand-ins must NEVER replace a named real person. Triggers include poster, banner, cover, social card, IG post, promote X, viral, Jordon Yeoh style, poster untuk abang, or any request for a downloadable PNG/JPG designed for sharing.

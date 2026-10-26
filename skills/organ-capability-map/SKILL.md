@@ -3,6 +3,8 @@ name: organ-capability-map
 description: "Use when which organ owns X, route capability."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Organ Capability Map (canonical pointer)

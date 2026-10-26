@@ -21,7 +21,9 @@ Authorized by F13 directive, 2026-08-11 (SEAL_PHASE_A_ONLY).
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -30,10 +32,18 @@ from typing import Any
 import yaml
 
 
+class ConfigurationError(ValueError):
+    """Registry/launcher declaration is ambiguous or incomplete — fail closed."""
+
+
+class AuthorityClassificationError(ValueError):
+    """A tool surface contains unclassified or contradictory authority — fail closed."""
+
+
 REGISTRY_PATH = Path("/root/AAA/federation/AAA_CAPABILITY_REGISTRY.yaml")
 LAUNCHER_MAP_PATH = Path("/root/AAA/federation/launcher_map.yaml")
 MCP_JSON_PATH = Path("/root/.kimi-code/mcp.json")
-RECEIPT_DIR = Path("/root/AAA/federation/init_receipts")
+RECEIPT_DIR = Path(os.environ.get("MCPGEN_RECEIPT_DIR", "/root/AAA/federation/init_receipts"))
 
 
 def _now_utc_iso() -> str:
@@ -100,23 +110,101 @@ def collect_enabled_sealed(
                         enabled_no_launcher.append(backend_name)
                         continue
                     seen.add(backend_name)
-                    emitted.append((backend_name, launcher))
+                    emitted.append((backend_name, launcher, backend_raw))
                 elif enabled and seal != "sealed":
                     enabled_not_sealed.append(backend_name)
 
     return emitted, catalogued_enabled_sealed, enabled_not_sealed, enabled_no_launcher
 
 
+def tool_surface_sha256(tools: list[str] | set[str]) -> str:
+    """Canonical hash of a tool surface: sorted names, newline-separated, trailing NL."""
+    canonical = "\n".join(sorted(tools)) + "\n"
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def validate_authority(backend_name: str, backend: dict[str, Any]) -> None:
+    """
+    Fail-closed authority classification for explicit READ_ONLY backends.
+
+    Rules (S-01 canary):
+      - READ_ONLY requires a non-empty positive allowlist.
+      - known_tools must be explicitly classified into allowed ∪ forbidden.
+      - allowed ∩ forbidden must be empty.
+      - mutation_allowed must be false.
+      - the declared tool-surface hash must match the sorted known_tools.
+    Unknown/unclassified tools are never implicitly allowed.
+    """
+    if backend.get("authority_class") != "READ_ONLY":
+        return
+
+    allowed = backend.get("allowed_tools")
+    forbidden = backend.get("forbidden_tools")
+    known = backend.get("known_tools")
+
+    if not isinstance(allowed, list) or not allowed:
+        raise ConfigurationError(f"backend '{backend_name}': READ_ONLY requires an explicit non-empty allowed_tools")
+    if not isinstance(known, list) or not known:
+        raise ConfigurationError(f"backend '{backend_name}': READ_ONLY requires known_tools (fail-closed surface)")
+    if not isinstance(forbidden, list):
+        raise ConfigurationError(f"backend '{backend_name}': READ_ONLY requires forbidden_tools (may be empty)")
+    if backend.get("mutation_allowed") is not False:
+        raise ConfigurationError(f"backend '{backend_name}': READ_ONLY requires mutation_allowed: false")
+
+    a, f, k = set(allowed), set(forbidden), set(known)
+    if a & f:
+        raise AuthorityClassificationError(
+            f"backend '{backend_name}': tools both allowed and forbidden: {sorted(a & f)}"
+        )
+    unclassified = k - (a | f)
+    if unclassified:
+        raise AuthorityClassificationError(
+            f"backend '{backend_name}': unclassified tools detected (fail closed): {sorted(unclassified)}"
+        )
+    extra = (a | f) - k
+    if extra:
+        raise AuthorityClassificationError(
+            f"backend '{backend_name}': classified tools absent from known_tools: {sorted(extra)}"
+        )
+
+    declared = backend.get("tool_surface_sha256")
+    actual = tool_surface_sha256(k)
+    if declared != actual:
+        raise ConfigurationError(
+            f"backend '{backend_name}': tool surface hash mismatch (declared={declared} actual={actual})"
+        )
+
+
+def _inject_allowlist(
+    backend_name: str,
+    backend: dict[str, Any],
+    args: list[str],
+) -> list[str]:
+    """Insert the positive allowlist flag before the backend separator."""
+    flag = backend.get("allowlist_flag")
+    allowed = backend.get("allowed_tools") or []
+    if not flag:
+        raise ConfigurationError(f"backend '{backend_name}': READ_ONLY requires allowlist_flag")
+    if not allowed:
+        raise ConfigurationError(f"backend '{backend_name}': READ_ONLY requires allowed_tools to emit")
+    inject = [str(flag), ",".join(allowed)]
+    if "--" in args:
+        i = args.index("--")
+        return args[:i] + inject + args[i:]
+    return args + inject
+
+
 def build_mcp_servers(
-    emitted: list[tuple[str, dict[str, Any]]],
+    emitted: list[tuple[str, dict[str, Any], dict[str, Any]]],
 ) -> dict[str, dict[str, Any]]:
     """
-    Translate (backend_name, launcher_entry) pairs into a Kimi
-    mcpServers dict. Only stdio and http transports are valid for Kimi;
+    Translate (backend_name, launcher_entry, backend_declaration) triples into a
+    Kimi mcpServers dict. Only stdio and http transports are valid for Kimi;
     filesystem (e.g. VAULT999) is not an MCP and is skipped here.
     """
     servers: dict[str, dict[str, Any]] = {}
-    for backend_name, launcher in emitted:
+    for backend_name, launcher, backend in emitted:
+        validate_authority(backend_name, backend)
         transport = launcher.get("transport")
         if transport not in ("stdio", "http"):
             # filesystem or other — Kimi does not spawn these
@@ -125,22 +213,20 @@ def build_mcp_servers(
         if transport == "stdio":
             command = launcher.get("command")
             if not command:
-                raise ValueError(
-                    f"Launcher for '{backend_name}' is stdio but has no command"
-                )
+                raise ValueError(f"Launcher for '{backend_name}' is stdio but has no command")
             entry["command"] = command
-            args = launcher.get("args") or []
+            args = list(launcher.get("args") or [])
+            if backend.get("authority_class") == "READ_ONLY":
+                args = _inject_allowlist(backend_name, backend, args)
             if args:
-                entry["args"] = list(args)
+                entry["args"] = args
             env = launcher.get("env") or {}
             if env:
                 entry["env"] = dict(env)
         else:  # http
             url = launcher.get("url")
             if not url:
-                raise ValueError(
-                    f"Launcher for '{backend_name}' is http but has no url"
-                )
+                raise ValueError(f"Launcher for '{backend_name}' is http but has no url")
             entry["url"] = url
         if "startup_timeout_ms" in launcher:
             entry["startupTimeoutMs"] = int(launcher["startup_timeout_ms"])
@@ -190,9 +276,7 @@ def main(argv: list[str]) -> int:
     registry = load_registry(registry_path)
     launcher_map = load_launcher_map(launcher_map_path)
 
-    emitted, catalogued_es, enabled_not_sealed, enabled_no_launcher = collect_enabled_sealed(
-        registry, launcher_map
-    )
+    emitted, catalogued_es, enabled_not_sealed, enabled_no_launcher = collect_enabled_sealed(registry, launcher_map)
 
     servers = build_mcp_servers(emitted)
 
@@ -207,10 +291,10 @@ def main(argv: list[str]) -> int:
     # Indicators (subset of INIT format, scoped to this generator's job)
     print(f"[{ts}] [MCPGEN]  catalogued_enabled_sealed={len(catalogued_es)}")
     print(f"[{ts}] [MCPGEN]  emitted={n_servers}")
-    print(f"[{ts}] [MCPGEN]  enabled_not_sealed={len(enabled_not_sealed)} "
-          f"({','.join(enabled_not_sealed) or 'none'})")
-    print(f"[{ts}] [MCPGEN]  enabled_no_launcher={len(enabled_no_launcher)} "
-          f"({','.join(enabled_no_launcher) or 'none'})")
+    print(f"[{ts}] [MCPGEN]  enabled_not_sealed={len(enabled_not_sealed)} ({','.join(enabled_not_sealed) or 'none'})")
+    print(
+        f"[{ts}] [MCPGEN]  enabled_no_launcher={len(enabled_no_launcher)} ({','.join(enabled_no_launcher) or 'none'})"
+    )
     print(f"[{ts}] [MCPGEN]  emitted_names={','.join(sorted(servers.keys())) or '(none)'}")
     print(f"[{ts}] [MCPGEN]  verdict=REGENERATED")
 
@@ -224,7 +308,7 @@ def main(argv: list[str]) -> int:
         "mcp_json_path": str(mcp_json_path),
         "mcp_json_backup": str(backup) if backup else None,
         "catalogued_enabled_sealed": catalogued_es,
-        "emitted": [name for name, _ in emitted],
+        "emitted": [name for name, *_ in emitted],
         "emitted_count": n_servers,
         "enabled_not_sealed": enabled_not_sealed,
         "enabled_no_launcher": enabled_no_launcher,

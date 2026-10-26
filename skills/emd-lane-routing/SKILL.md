@@ -2,7 +2,7 @@
 id: emd-lane-routing
 name: emd-lane-routing
 version: 1.0.0
-description: 'Apply the EMD triad (Encoder/Metabolizer/Decoder) to model selection and routing decisions in the arifOS federation. Use when choosing between SENSE-heavy models (wide-context multimodal ingestion) and ACT-heavy models (long-output autoregressive execution), when debugging why a SENSE model is failing on coding tasks (or vice versa), when designing new agent lanes or splitting SENSE/ACT across instances, when validating that FED routing decisions respect the mechanical limits of attention vs autoregressive generation, and when explaining to non-frontier engineers why "one model for everything" violates matrix geometry and Shannon thermodynamics.'
+description: 'Apply the EMD triad (Encoder/Metabolizer/Decoder) to model selection and routing decisions in the arifOS federation.'
 owner: AAA
 risk_tier: low
 autonomy_tier: T1
@@ -286,3 +286,7 @@ If any Q3/Q4 fails, you have a lane violation. Re-pick before requesting.
 | `references/emd-lane-table.md` | The full SENSE/ACT/METABOLIZE mapping table per model, updated 2026-08-08, with cost ratios and live state references |
 | `references/why-99-percent-miss-this.md` | The "monolithic black box" anti-pattern, explained for non-frontier engineers (Artie's framing, suitable for arif-fazil.com/words) |
 | `templates/emd-decision-template.md` | Drop-in template for any "should I use model X for task Y?" question, with the 6-question self-check |
+
+## Routing notes (moved from description 2026-10-23)
+
+Use when choosing between SENSE-heavy models (wide-context multimodal ingestion) and ACT-heavy models (long-output autoregressive execution), when debugging why a SENSE model is failing on coding tasks (or vice versa), when designing new agent lanes or splitting SENSE/ACT across instances, when validating that FED routing decisions respect the mechanical limits of attention vs autoregressive generation, and when explaining to non-frontier engineers why "one model for everything" violates matrix geometry and Shannon thermodynamics.

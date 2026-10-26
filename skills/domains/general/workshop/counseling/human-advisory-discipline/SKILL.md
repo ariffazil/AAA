@@ -498,8 +498,11 @@ wrong for this person, at this moment, under this constraint.
   requests aimed at a bonded person, not only for decisions.
 
 
-- `references/rental-gotong-royong-malaysia-2026.md` — verified WhatsApp directory for
+- ``references/`` — verified WhatsApp directory for
   student-tier Bangi rentals, the eight-section `syarat wajib + haram` PDF shape as a locked
   contract, the iBilik.my Cloudflare workaround, the gotong-royong HTML shape (five
   sections, plain `maps/dir/` links), and the cross-platform verification rule. Load when
   advising a Malaysian tenant with a tight cash ceiling and a 5-day move-in window.
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

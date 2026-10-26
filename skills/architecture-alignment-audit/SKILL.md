@@ -1,6 +1,6 @@
 ---
 name: architecture-alignment-audit
-description: "Audit external research documents, agent proposals, or architectural blueprints against locked AAA/arifOS doctrine. Checks: (1) claims that don't match live state, (2) Phase E+ solutions proposed during Phase A-C, (3) naming sovereignty — external brands never rename locked vocabulary, (4) contradictions with explicitly rejected directions. Triggers: PDF/DOCX/architecture proposals from Gemini/Claude/architect, 'does X align with our system', external standard proposals, design specs from research. Covers: Gemini AIMS/HDP/IBCT/x402 audits, naming registry creation, Hermes FED reasoning_content patches."
+description: 'Audit external research documents, agent proposals, or architectural blueprints against locked AAA/arifOS doctrine.'
 tags: []
 related_skills:
   - verify-sibling-ops-reports
@@ -162,3 +162,13 @@ The discipline: "Read the map, don't build the road."
 
 - `references/identity-naming-registry-2026-08-09.md` — the sealed naming translation table (AIMS→AAA, HDP→ACT, etc.) with forbidden creations list
 - `references/reasoning-pad-patch-2026-08-09.md` — FED thinking backend detection, patch location, reapply instructions
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-07-w3-degradation-during-doctrine-writing
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
+
+## Routing notes (moved from description 2026-10-23)
+
+Checks: (1) claims that don't match live state, (2) Phase E+ solutions proposed during Phase A-C, (3) naming sovereignty — external brands never rename locked vocabulary, (4) contradictions with explicitly rejected directions. Triggers: PDF/DOCX/architecture proposals from Gemini/Claude/architect, 'does X align with our system', external standard proposals, design specs from research. Covers: Gemini AIMS/HDP/IBCT/x402 audits, naming registry creation, Hermes FED reasoning_content patches.

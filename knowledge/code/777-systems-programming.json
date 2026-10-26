@@ -9,7 +9,9 @@
     "Concurrency requires synchronization: races, deadlocks, livelocks are inevitable without it",
     "Network is unreliable: design for latency, packet loss, and partial failure",
     "Premature optimization is the root of all evil (Knuth)",
-    "Abstraction has cost: every layer adds latency and complexity"
+    "Abstraction has cost: every layer adds latency and complexity",
+    "Rust ownership/borrowing moves memory-safety proof to compile time: no GC pauses, no null, no data races in safe code",
+    "Memory safety without garbage collection is achievable (Rust) \u2014 the C buffer-overflow class is a language-choice problem, not an inevitability"
   ],
   "reasoning_patterns": [
     "Strace/ltrace: trace system calls and library calls to understand behavior",
@@ -36,13 +38,18 @@
     "Tanenbaum, A. Modern Operating Systems",
     "W. Richard Stevens. Advanced Programming in the UNIX Environment",
     "Comer, D. Internetworking with TCP/IP",
-    "Kerrisk, M. The Linux Programming Interface"
+    "Kerrisk, M. The Linux Programming Interface",
+    "Klabnik & Nichols. The Rust Programming Language (rust-lang.org/book)",
+    "Jorg Brown. Rust for Rustaceans (idiomatic intermediate Rust)"
   ],
   "canonical_truths": [
     "TCP is reliable, ordered, connection-oriented; UDP is unreliable, unordered, connectionless",
     "Context switch cost: ~1-10 \u03bcs (depends on cache state)",
     "System call overhead: ~100-1000 ns (user\u2192kernel\u2192user)",
     "Memory-mapped I/O avoids kernel buffer copies",
-    "The C language has no bounds checking \u2014 buffer overflows are a C problem"
+    "The C language has no bounds checking \u2014 buffer overflows are a C problem",
+    "Rust guarantees memory safety in safe code (no null, no data races, no UB from safe blocks); unsafe is the explicit, auditable boundary",
+    "Rust toolchain on this box: rustc 1.98.1 stable, edition 2024, x86_64-unknown-linux-gnu (probed 2026-10-21)",
+    "In this federation Rust = the flow plane only (arifFlow :7073): schedules, checkpoints, transmits receipts; never judges (888 arifOS), never executes (A-FORGE)"
   ]
 }

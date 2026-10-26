@@ -20,7 +20,7 @@ agent-finding-verification:
   canonical: agent-claim-verification
   do_not_select: true
 civic-intelligence-pdf:
-  action: DEPRECATED STUB 2026-10-02
+  action: REMOVED 2026-10-22 (stub tree archived to .archive/deprecated-aliases-20261022/)
   canonical: pdf-federation
   do_not_select: true
 document-pipeline:
@@ -36,7 +36,7 @@ forge-artifact-publisher:
   canonical: pdf-federation
   do_not_select: true
 forge-pdf-delivery:
-  action: DEPRECATED STUB 2026-10-02
+  action: REMOVED 2026-10-22 (stub tree archived to .archive/deprecated-aliases-20261022/)
   canonical: pdf-federation
   do_not_select: true
 governed-artifact-composition:
@@ -48,7 +48,7 @@ hermes-pdf-intelligence:
   canonical: pdf-federation
   do_not_select: true
 open-slide-integration:
-  action: DEPRECATED STUB 2026-10-02
+  action: REMOVED 2026-10-22 (stub tree archived to .archive/deprecated-aliases-20261022/)
   canonical: pdf-federation
   do_not_select: true
 pdf-realmap:
@@ -56,7 +56,7 @@ pdf-realmap:
   canonical: pdf-federation
   do_not_select: true
 scientific-pdf-generation:
-  action: DEPRECATED STUB 2026-10-02
+  action: REMOVED 2026-10-22 (stub tree archived to .archive/deprecated-aliases-20261022/)
   canonical: pdf-federation
   do_not_select: true
 session-lifecycle-temporal:

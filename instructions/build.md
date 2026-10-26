@@ -1,5 +1,7 @@
 # Build, test, deploy
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 ## Tech stack
 
 | Layer | Stack |

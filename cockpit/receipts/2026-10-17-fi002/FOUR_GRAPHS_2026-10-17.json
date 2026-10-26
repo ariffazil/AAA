@@ -1,0 +1,55 @@
+{
+  "session": "FI-002 2026-10-17 13:18 MYT",
+  "generated_from": "live HUD + systemd + organ health probes + git status",
+  "source": "/var/lib/arifos/state/cockpit/hud-state.json (sha fc9ef1bc580a, 2026-10-17T13:18:38+08:00)",
+  "A_CAPABILITY_GRAPH": [
+    {"cap": "constitutional_judgment", "owner": "arifOS", "surface": "arif_judge :8088", "authority": "JUDGE_ONLY", "live": true, "status": "HEALTHY", "falsifier": "arif_judge returns verdict outside SEAL|HOLD|SABAR|VOID"},
+    {"cap": "engineering_execution", "owner": "A-FORGE", "surface": "forge_* 122 tools :7072", "authority": "EXECUTE_AFTER_SEAL", "live": true, "status": "HEALTHY_SURFACE_DRIFT_8", "falsifier": "executable claims authority it cannot produce (self-authorization)"},
+    {"cap": "federation_registry", "owner": "AAA", "surface": "organs.yaml + cockpit :3001", "authority": "DISPLAY_ONLY", "live": true, "status": "DIRTY_TREE", "falsifier": "registry entry has no live organ behind it"},
+    {"cap": "earth_evidence", "owner": "GEOX", "surface": "20 tools :8081", "authority": "ANALYST", "live": true, "status": "HEALTHY", "falsifier": "claim about Earth lacks provenance"},
+    {"cap": "capital_evidence", "owner": "WEALTH", "surface": ":18082", "authority": "ANALYST", "live": true, "status": "HEALTHY", "falsifier": "capital claim without vault pointer"},
+    {"cap": "human_substrate", "owner": "WELL", "surface": ":18083", "authority": "MIRROR_ONLY", "live": true, "status": "DEGRADED_BIOMETRIK_HOLD", "falsifier": "WELL decides worth (sovereignty violation)"},
+    {"cap": "meaning_integrity", "owner": "HERMES", "surface": "mcp :18087 + rasa :18420 + a2a :18089", "authority": "RELAY_ONLY", "live": true, "status": "DIRTY_TREE_17_FILES", "falsifier": "claim about human qua human"},
+    {"cap": "witness_independence", "owner": "FRAME", "surface": ":18085", "authority": "MEASURE_ONLY", "live": true, "status": "SOURCE_INIT_MISSING", "falsifier": "FRAME adjudicates (it must not)"},
+    {"cap": "temporal_truth", "owner": "CHRON", "surface": ":18102 (port drift: runtime-state shows 18102; HUD shows chrn mcp service live)", "authority": "MEASURE_ONLY", "live": true, "status": "HEALTHY_BRIER_0.164", "falsifier": "Brier score rises above 0.25 (use calibration_state)"},
+    {"cap": "flow_plane", "owner": "arifFlow", "surface": ":7073", "authority": "OBSERVE_ONLY", "live": true, "status": "BALANCED_OPTIMAL_FQ_46", "falsifier": "arifFlow interprets or judges"},
+    {"cap": "federation_router", "owner": "FED", "surface": ":7074", "authority": "ADVISORY_ONLY", "live": true, "status": "HEALTHY", "falsifier": "FED hard-blocks (it must never)"}
+  ],
+  "B_AUTHORITY_GRAPH": [
+    {"role": "ARIF", "scope": "sovereign veto + F13 binary", "drift": "blocked_only_by_arif", "evidence": "carry_forward open loops 6,7 = pending F13 binaries (push posture, push hygiene)"},
+    {"role": "arifOS", "scope": "JUDGE_ONLY", "drift": "NONE", "evidence": "forbidden_domains: engineering_execution, earth_evidence, capital_allocation, human_diagnosis"},
+    {"role": "AAA", "scope": "DISPLAY_ONLY + routing", "drift": "NONE", "evidence": "forbidden_domains: constitutional_judgment, engineering_execution"},
+    {"role": "A-FORGE", "scope": "EXECUTE_AFTER_SEAL", "drift": "self-SEAL prevented by SEAL token chain (forge_seal requires tri_witness + cc_id)", "evidence": "8 SURFACE_DRIFT = tools declared vs tools published drift; not authority drift"},
+    {"role": "FRAME", "scope": "MEASURE_ONLY", "drift": "INVESTIGATE — import-error prevents md5 check; source init missing", "evidence": "hud md5_match=false + import-error:ModuleNotFoundError"},
+    {"role": "HERMES", "scope": "RELAY_ONLY", "drift": "NONE", "evidence": "execution_authorized=false on mcp :18087"},
+    {"role": "WELL", "scope": "MIRROR_ONLY", "drift": "NONE", "evidence": "final_authority=ARIF"},
+    {"role": "FED", "scope": "ADVISORY_ONLY", "drift": "NONE", "evidence": "ceiling=never judges, never hard-blocks"},
+    {"role": "OBSERVED": "no actor combining builder+verifier+executor+witness simultaneously; AAA has DISPLAY_ONLY ceiling; arifOS has JUDGE_ONLY ceiling; FORGE requires prior cc_id"},
+    {"role": "FORBIDDEN_ROLE_COMBOS": ["judge+executor (arifOS never executes)", "builder+self-auth (FORGE requires tri_witness)", "router+judge (FED is advisory)", "flow+interpreter (arifFlow observes only)", "domain+infra (GEOX/WEALTH never own infra)"]
+  },
+  "C_DEPENDENCY_GRAPH": [
+    {"from": "AAA :3001", "to": "arifOS :8088 (cert sign)", "via": "AAA-signing :8089 → ed25519", "evidence": "actor envelopes minted"},
+    {"from": "A-FORGE :7072", "to": "arifOS :8088 (judge before execute)", "via": "forge_judge_proxy / forge_execute_sealed", "evidence": "INV-4 cc_id required"},
+    {"from": "HERMES :18087", "to": "AAAgentLifecycle hook", "via": "unidirectional reference", "evidence": "no reverse edge in registry"},
+    {"from": "FRAME :18085", "to": "arifOS (witness hash)", "via": "tri_witness_evidence", "evidence": "Q9 anti-self-seal pattern"},
+    {"from": "AAA cockpit", "to": "all organ health", "via": "federation/organs.yaml + probes", "evidence": "all 11 transports REACHABLE"},
+    {"from": "opencode-mesh", "to": "openclaw (DNAT to KVM4)", "via": "iptables MASQUERADE", "evidence": "live_kvm4_cold_kvm8 — verified 2026-09-18", "falsifier": "DNAT route broken"},
+    {"from": "/root (caller)", "to": "/root/AAA", "via": "env shift during session", "evidence": "PWD changed mid-session — session state.db closure still anchored"}
+  ],
+  "D_GOVERNANCE_GRAPH": {
+    "INTENT": "USER — 'the high-leverage intervention' brief",
+    "PROPOSAL": "IMPLICIT — this session is itself the proposal",
+    "VERIFICATION": "BLOCKED by loop 6/7 (push hygiene) and 2 source_init_missing (FRAME)",
+    "JUDGMENT": "DEFERRED — no proposal advanced that requires SEAL",
+    "EXECUTION": "BOUNDED — runtime observe/probe only; zero mutation",
+    "WITNESS": "this file = receipt; HUD refresh at 13:18 MYT",
+    "MEMORY": "carry_forward open_loops unchanged (no F13 word arrived)",
+    "FUTURE_BEHAVIOR": "unchanged until F13 resolution on loop 6/7",
+    "GAPS_DETECTED": [
+      "Reality observed (HUD live) but cannot alter push-hygiene behavior (waiting on ARIF F13 binary)",
+      "Dirty trees in HERMES/AAA cannot be resolved in-session without producing irreversible git op",
+      "FRAME source_init missing prevents md5 identity check — observable to A-FORGE mutations",
+      "8 SURFACE_DRIFT signals (declared vs published tool count) have no reduction path"
+    ]
+  }
+}

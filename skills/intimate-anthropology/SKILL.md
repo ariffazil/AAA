@@ -8,6 +8,8 @@ triggers:
   - user asks to "validate or falsify" a personal observation against science
   - user pastes an external AI audit block (CLAIM/PLAUSIBLE/HYPOTHESIS + numbered citations)
   - user asks to map invariants/axes/scar-personas from "our internal observation data"
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Intimate Anthropology — frank desire-pattern analysis in F5 DM

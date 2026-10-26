@@ -321,7 +321,8 @@ def cmd_feedback(args) -> int:
         return 0 if ok else 1
 
     if args.fb_action == "export":
-        out = store.export_rules(Path(args.out) if args.out else None)
+        out = store.export_rules(Path(args.out) if args.out else None,
+                                 edition_key=getattr(args, "edition", None))
         print(f"exported {len(store.active())} standing instruction(s) -> {out}")
         return 0
 

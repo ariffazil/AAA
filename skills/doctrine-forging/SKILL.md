@@ -303,7 +303,16 @@ Staying abstract when the signal is operationalize. The philosophy IS the pipeli
 - **Kernel vs State doctrine** (forged 2026-08-10): `references/kernel-state-doctrine.md` — the formula "Kernel = Constraints on possible states, State = Current position inside those constraints," physics/biology analogies, failure modes, scar pathway (state→kernel), federation map (kernel vs state per organ), and external protocol alignment (MCP=transport, A2A=IPC, MCP-UI=display, arifOS=kernel). Load when Arif discusses kernel/state boundaries, invariant vs dynamic, or external protocol positioning.
 - See `apex-theory-canon` for navigating existing canon
 - See `human-memory-organization` for H-axis (human memory) vs L-axis (agentic memory) distinction
-- See `references/FIVE_VERB_SPIRAL.md` under `AGI-nusantara-substrate` for the Nusantara action-spiral forged in session 2026-08-10
+- See ``references/`` under `AGI-nusantara-substrate` for the Nusantara action-spiral forged in session 2026-08-10
 - This skill governs the dialogue that PRODUCES new canon — the other skill navigates what already exists
 - See `hermes-propose-seal` for the full seal lifecycle (init → judge → forge_vault → verify)
 - **Apex-judge isolate flow for philosophical sessions:** `source kunci-mas.env` → probe federation → build evidence JSON (`/tmp/ev.json`) → `apex-judge isolate --doer HERMES --judge-actor 888-APEX --candidate "..." -e /tmp/ev.json --pretty --human` → quote verdict (effective_verdict + call_hash + session_id + independence_class + reasons) → present to F13 for lane classification. Evidence format: `session_provenance` + `candidate_artifact` (with epistemic tags per component) + `live_probes` + `Ω₀ estimate` + `reversibility classification` + `blast_radius`.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-007-over-output-verbosity
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

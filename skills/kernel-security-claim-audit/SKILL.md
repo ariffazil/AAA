@@ -347,3 +347,7 @@ End with: claim → verdict → severity → fix → token delta before/after.
   `/opt/a-forge/app/dist/` and the live service picks it up. Source↔runtime
   invariant violation is exactly how the 2026-08-05 null-FQ patch silently
   failed to take effect — this script prevents that class of mistake.
+
+## Eureka updates (auto)
+
+- 2026-10-23 · `e-5cce6930bb2e` · EXPOSE-VS-ENFORCE (one lesson, three instances, one shape): a field the runtime ACCEPTS is not a control; a control is a REFUSAL. (1) arif_judge's `evidence` is anyOf[object,array,string,null] default null — a verdict can cite nothing and still be a verdict.…

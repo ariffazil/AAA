@@ -1,10 +1,23 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
+  "id": "chron-mcp",
   "protocolVersion": "1.0",
   "agentId": "chron",
   "name": "CHRON",
-  "description": "Temporal consequence tracker — predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Temporal consequence tracker \u2014 PREDICT_ONLY, never adjudicates",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "TEMPORAL-777",
+    "intelligence_tier": "AGI",
+    "authority_level": "COMPUTE_ONLY",
+    "citizenship_forged": "2026-09-18"
+  },
+  "description": "Temporal consequence tracker \u2014 predictions, verification, calibration, learning. The8th organ. Answers: What did we expect? What happened? Were we wrong?",
   "version": "1.0.0",
   "provider": {
     "organization": "arifOS",
@@ -19,7 +32,7 @@
   "supportedInterfaces": [
     {
       "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0",
+      "protocolVersion": "1.2",
       "url": "https://aaa.arif-fazil.com/a2a"
     },
     {
@@ -36,7 +49,48 @@
     "application/json",
     "text/plain"
   ],
-  "skills": [],
+  "skills": [
+    {
+      "id": "chron_predictions_due",
+      "name": "Predictions Due",
+      "description": "Get predictions whose verify_at has arrived \u2014 the temporal delta"
+    },
+    {
+      "id": "chron_calibration_state",
+      "name": "Calibration State",
+      "description": "Get calibration statistics \u2014 Brier scores, accuracy"
+    },
+    {
+      "id": "chron_last_loop",
+      "name": "Last Loop",
+      "description": "Get the last FULL_LOOP entry from loop_log"
+    },
+    {
+      "id": "chron_active_events",
+      "name": "Active Events",
+      "description": "Get chron_events filtered by audience"
+    },
+    {
+      "id": "chron_active_predictions",
+      "name": "Active Predictions",
+      "description": "Get all active (unverified) predictions"
+    },
+    {
+      "id": "chron_store_stats",
+      "name": "Store Stats",
+      "description": "Get CHRON store statistics"
+    },
+    {
+      "id": "chron_temporal_briefing",
+      "name": "Temporal Briefing",
+      "description": "Full temporal briefing for agent wake-up"
+    },
+    {
+      "id": "chron_generate_predictions",
+      "name": "Generate Predictions",
+      "description": "Generate predictions from chron_events.json"
+    }
+  ],
   "governance_profile": {
     "authority_ceiling": "COMPUTE_ONLY",
     "forbidden_domains": [
@@ -44,76 +98,74 @@
       "engineering_execution",
       "capital_allocation",
       "mutation_authorization"
+    ],
+    "owned_domains": [
+      "prediction_lifecycle",
+      "temporal_verification",
+      "calibration_tracking",
+      "lesson_extraction",
+      "bitemporal_episodes"
     ]
+  },
+  "identity": {
+    "did": "did:web:chron.arif-fazil.com",
+    "verification_method": "Ed25519VerificationKey2020",
+    "service_endpoint": "https://chron.arif-fazil.com/mcp"
   },
   "temporal": {
     "port": 18102,
+    "unit": "chron-mcp.service",
     "health_endpoint": "https://chron.arif-fazil.com/health",
-    "mcp_endpoint": "https://chron.arif-fazil.com/mcp"
+    "mcp_endpoint": "https://chron.arif-fazil.com/mcp",
+    "timers": [
+      "chron-task0-reconciliation.timer (06:50 MYT)",
+      "chron-prediction-verifier.timer (07:00 MYT)",
+      "chron-loop-closer.timer (07:15 MYT)"
+    ],
+    "first_falsification": "2026-09-23"
   },
-  "_quarantined_skills": [
-    {
-      "id": "chron_predictions_due",
-      "name": "Predictions Due",
-      "description": "Get predictions whose verify_at has arrived",
-      "_quarantine_reason": "no_skill_no_alias_row"
+  "doctrine": "Demi masa. Time is the witness. CHRON is the temporal cortex \u2014 predicts, verifies, calibrates, learns. Not a scheduler. Not a memory store.",
+  "qualification": {
+    "schema": "arifOS/qualification/v1",
+    "added": "2026-09-25T04:43:48Z",
+    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
+    "math_competency": {
+      "layers": [
+        "L1",
+        "L2",
+        "L5",
+        "L8",
+        "L10"
+      ],
+      "source": "FI-003 derivation: temporal consequence: probability, information, dynamics, active inference, thermodynamic cost",
+      "claim_state": "UNVERIFIED"
     },
-    {
-      "id": "chron_calibration_state",
-      "name": "Calibration State",
-      "description": "Get calibration statistics",
-      "_quarantine_reason": "no_skill_no_alias_row"
+    "epistemic_typing": {
+      "declared": false,
+      "labels": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC",
+        "UNKNOWN"
+      ],
+      "evidence": null,
+      "claim_state": "UNVERIFIED"
     },
-    {
-      "id": "chron_temporal_briefing",
-      "name": "Temporal Briefing",
-      "description": "Full temporal briefing for agent wake-up",
-      "_quarantine_reason": "no_skill_no_alias_row"
+    "irfan": {
+      "least_power": {
+        "declared": true,
+        "evidence": "authority bound declared: COMPUTE_ONLY",
+        "claim_state": "MEASURED"
+      },
+      "abstention": {
+        "declared": false,
+        "evidence": null,
+        "claim_state": "UNVERIFIED"
+      },
+      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
     }
-  ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 3,
-    "after": 0,
-    "quarantined": 3,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
   },
   "authority_ceiling": "COMPUTE_ONLY",
-  "registry_receipt_hash": "bec6a6949e7d8456a56a9d2d7020fa22e76ca8e3e54225844d5ab921f35d2c42",
-  "apexMasterSeal": {
-    "cognitiveRing": "observer",
-    "thermodynamicRole": "metabolic",
-    "ringPlacement": "pipeline",
-    "parallelism": "pipeline",
-    "shadowAcknowledged": [],
-    "jituGate": {
-      "requiresJitu": false,
-      "jituTriggerPatterns": [],
-      "autoAbortWithoutJitu": true
-    },
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "hassabisInversion": {
-      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "pipeline",
-      "parallelism": "pipeline",
-      "shadowAcknowledged": []
-    },
-    "sealRef": "VAULT999/apex-zen-aligned-2026-09-30T07:16:47.690204+00:00",
-    "ratifiedAt": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_by": "333-AGI (FI-001) under user directive",
-    "auto_aligned_reason": "synthesized from tier=ORGAN, class=Warga"
-  },
-  "apex_zen": {
-    "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
-    "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
-    "invariant": "CAPABILITY ≠ AUTHORITY",
-    "doctrine": "Govern capabilities, not implementations.",
-    "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "OBSERVE",
-    "lane": "chron",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "ORGAN",
-    "auto_aligned_class": "Warga"
-  }
+  "registry_receipt_hash": "8ce8693c7cc18177f6f478ef530685b578e8c95e5ae856ea2c77dc99f919776f"
 }

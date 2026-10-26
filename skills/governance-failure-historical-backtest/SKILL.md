@@ -135,4 +135,7 @@ Multiplicative institutional independence is the **firewall against fat-tailed c
 ## Support files
 
 - `references/germany-1929-1939-case.md` — full rolling-checkpoint backtest across 1929/1932/1934/1937 with verdicts, dominant drivers, and the Évian-bound discussion.
-- `references/decision-node-audit-recipe.md` — the four-question counterfactual audit template, with examples (Hindenburg, Centre Party, Rhineland, business elites).
+- ``references/`` — the four-question counterfactual audit template, with examples (Hindenburg, Centre Party, Rhineland, business elites).
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

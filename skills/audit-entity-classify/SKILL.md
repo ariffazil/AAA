@@ -147,7 +147,7 @@ Do not confuse what X is structurally with whether X works correctly. The classi
 | **The 9-Role Agent Kernel (HEXAGON)** | Organisational decomposition — *which organ carries which deed* | `/root/AAA/agents/HEXAGON.yaml` — 3+2+1+1 |
 | **The 9-Cell Cognitive Atlas** | Functional decomposition — *which cognitive step every forge MUST traverse* | 000 Observer → 111 Explorer → 222 Architect → 333 Thinker → 444 Orchestrator → 555 Verifier → 666 Auditor → 777 Executor → 888 Judge → 999 Witness. Two views, one truth. |
 | **Phenotype / Genome framing** | Cognitive genome carried by every phenotype; OpenCode-Zen / Hermes-Zen / OpenClaw-Zen = expression patterns, not separate agents | `AAA_PRINCIPAL.md` §2.8 — 10 LLM harnesses are phenotype expressions, not constitutional roles. |
-| **ART-ACT-AUTH orthogonal binding** | 3-layer binding that makes phenotype swap work: ART = reflex pre-call, ACT = execution ceremony, AUTH = identity + attestation | `apex-theory-canon` references/apex-art-act-layer-correction.md. 999 = AUTH, not ART. |
+| **ART-ACT-AUTH orthogonal binding** | 3-layer binding that makes phenotype swap work: ART = reflex pre-call, ACT = execution ceremony, AUTH = identity + attestation | `apex-theory-canon` /root/AAA/skills/apex-theory-canon/references/apex-art-act-layer-correction.md 999 = AUTH, not ART. |
 
 ## The correction pattern
 

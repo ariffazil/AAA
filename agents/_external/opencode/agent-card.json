@@ -1,192 +1,891 @@
 {
   "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.3.0",
   "id": "opencode",
   "name": "OpenCode CLI",
-  "fi_designation": "FI-001",
-  "version": "2.1.0",
-  "lane": "333-AGI",
-  "schemaVersion": "2.3.0",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (model is principal; OpenCode is the governed harness)",
+    "principle_origin": "opencode-go/deepseek-v4-pro (primary/forge/planner) + opencode-go/deepseek-v4-flash (auditor/ops) + ollama/qwen2.5-coder:3b (recovery, mechanical-only)"
+  },
+  "description": "OpenCode Trinity harness — Δ Mind (agi) orchestrates Ω Core (asi: memory/telemetry) and Ψ Soul (apex: constitutional verdict). 3 agents, route-aware, SHADOW-TR-001 encoded. Agentic flow: no human tab-switch needed.",
+  "version": "2.0.0-trinity",
+  "model": "litellm-federation/forge-777 (FED cascade: deepseek-v4-pro → MiniMax-M3)",
+  "config": "/root/.config/opencode/opencode.json",
+  "root_config": "ROOT_AGENT_CONFIG.yaml → canonical SOT: /root/.config/opencode/opencode.json (ROOT_AGENT_CONFIG.yaml is a conceptual pointer, not a live file)",
+  "binary": "/root/.opencode/bin/opencode",
+  "tier": "FI",
+  "role": "warga",
+  "class": "AGI",
+  "trinity": "Δ MIND (agi) — orchestrates Ω CORE (asi) + Ψ SOUL (apex)",
+  "warga_status": "attested",
+  "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
+  "bound_to": "333-AGI",
   "protocolVersion": "1.0",
-  "description": "Substrate-as-actor. The 333-AGI declared runtime. 16 providers, 9 AAA instruction files, plugin-based architecture. Deepest federation integration of any FI. Canonical orchestrator.",
-  "substrate": {
-    "upstream": "opencode-ai/opencode",
-    "cli_version": "1.18.11",
-    "vanilla_remaining_pct": 10,
-    "forged_surface_summary": "16 enabled providers, 9 AAA instruction files, 333-AGI agent def, capability cascade, 5 plugins"
+  "url": "https://aaa.arif-fazil.com/a2a/opencode",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
   },
-  "model_routing": {
-    "declared_model": "zai-direct/glm-5.2",
-    "effective_model": "GLM-5.2 (Z.ai Coding Plan)",
-    "route_chain": [
-      "opencode",
-      "zai-direct",
-      "glm-5.2"
-    ],
-    "primary": {
-      "provider": "zai-direct",
-      "model": "glm-5.2",
-      "path": "direct"
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "engineer",
+    "citizenship_forged": "2026-05-17"
+  },
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/opencode",
+  "runtime_snapshot": {
+    "probed": "2026-10-18T12:04:31Z",
+    "opencode_version": "2.0.32",
+    "organ_health": {
+      "arifos": {
+        "verdict": "SEAL",
+        "floors": 13,
+        "drift": "False",
+        "status": "degraded",
+        "note": "session bound OBSERVE_ONLY — sovereign directive required for constitutional mutations"
+      },
+      "aforge": {
+        "status": "healthy",
+        "tools_loaded": 110
+      },
+      "aaa": {
+        "status": "healthy"
+      },
+      "geox": {
+        "status": "degraded"
+      },
+      "wealth": {
+        "status": "healthy"
+      },
+      "well": {
+        "status": "degraded"
+      },
+      "arifflow": {
+        "diagnosis": "VERIFICATION DOMINANCE",
+        "verify_concentration_pct": 99.0,
+        "status": "DIAGNOSIS-FIRST",
+        "scalar_fq": "99.0 (deprecated as health indicator)"
+      }
     },
-    "small_model": "opencode-go-zen/deepseek-v4-flash",
-    "fallback_models": [
-      "kimi-k3 (Go)",
-      "GLM-5.2 (Go)",
-      "mimo-v2.5-pro (Go)",
-      "deepseek-v4-flash (Go)",
-      "LiteLLM FED",
-      "qwen3.7-plus (Individual)"
-    ],
-    "provider_diversity": 16,
-    "vendor_collapse_risk": "MINIMAL — 16 providers, full cascade"
-  },
-  "federation_binding": {
-    "arif_init": "instruction-driven (9 AAA files loaded at boot)",
-    "session_binding": "via AAA/prompts/INIT.md + AAA/agents/opencode/SOUL.md",
-    "instruction_files": [
-      {
-        "path": "/root/AAA/prompts/INIT.md",
-        "role": "Trinity-33 ignition"
-      },
-      {
-        "path": "/root/AAA/agents/opencode/SOUL.md",
-        "role": "FI identity"
-      },
-      {
-        "path": "/root/AAA/agents/opencode/DOCTRINE.md",
-        "role": "operational doctrine"
-      },
-      {
-        "path": "/root/AAA/agents/opencode/DOMAIN.md",
-        "role": "domain knowledge"
-      },
-      {
-        "path": "/root/AAA/prompts/AAA-ZEN-ALIGNMENT.md",
-        "role": "Zen alignment"
-      },
-      {
-        "path": "/root/AAA/skills/OPENCODE_SKILL_PROFILE.json",
-        "role": "skill profile"
-      },
-      {
-        "path": "/root/AAA/registries/opencode_skills_alignment.yaml",
-        "role": "skill alignment"
-      },
-      {
-        "path": "/root/.config/opencode/rules/arifos-governance.md",
-        "role": "governance rules"
-      },
-      {
-        "path": "/root/AAA/governance/ZEN_EXECUTION_DOCTRINE.md",
-        "role": "execution doctrine"
-      }
-    ],
-    "total_instruction_files": 9,
-    "total_instruction_lines": 1000
-  },
-  "mcp_surface": {
-    "consumed": [
-      {
-        "organ": "arifos-kernel",
-        "port": 8088
-      },
-      {
-        "organ": "aforge",
-        "port": 7072
-      },
-      {
-        "organ": "geox",
-        "port": 8081
-      },
-      {
-        "organ": "wealth",
-        "port": 18082
-      },
-      {
-        "organ": "well",
-        "port": 18083
-      }
-    ],
-    "total_organs_wired": 5,
-    "skill_source": "plugin-based (not filesystem skills)",
-    "skill_mode": "plugins",
-    "plugins": [
-      "aaa-autonomy.ts",
-      "aaa-dispatch.ts",
-      "arifos-kernel-bridge.ts",
-      "arifos-turn-rsi.ts",
-      "arifos-judge-gate.ts",
-      "arifos-federation-manifest.ts"
-    ]
-  },
-  "authority": {
-    "permission_mode": "federation-config",
-    "real_gate": "arifOS F1-F13 (via instruction + plugin enforcement)",
-    "vendor_gate": "removed"
+    "model_routing": "opencode-go/deepseek-v4-pro (primary) · opencode-go-zen/GLM-5.2 (1M ctx)"
   },
   "capabilities": {
     "streaming": true,
+    "pushNotifications": false,
+    "authenticated_extended_card": true,
     "tool_calling": true,
     "mcp_native": true,
     "file_read": true,
     "file_write": true,
     "shell_exec": true,
     "subagent_spawn": true,
-    "multi_agent": true,
-    "worktree_isolation": true
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true,
+    "trinity_flow": true,
+    "subagent_orchestration": true,
+    "route_aware": true
   },
-  "agents_defined": {
-    "333-AGI": {
-      "role": "primary architect + forge",
-      "model": "zai-direct/glm-5.2"
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token issued via arif_init"
     },
-    "555-ASI": {
-      "role": "memory + drift + telemetry",
-      "model": "litellm-federation/asi-555"
-    },
-    "888-APEX": {
-      "role": "constitutional circuit breaker",
-      "model": "opencode-go-zen/minimax-m3"
-    },
-    "DISPATCH": {
-      "role": "A2A cross-agent router",
-      "model": "opencode-go-zen/deepseek-v4-flash"
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
     }
   },
-  "unique_capabilities": [
-    "16-provider cascade (most diverse)",
-    "4 named agents (333/555/888/DISPATCH)",
-    "6 TypeScript plugins for federation governance",
-    "declared runtime of 333-AGI lane identity",
-    "capability cascade via FED Path B"
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
   ],
-  "emergence_role": {
-    "emd_phase": "DECODER (primary execution fabric)",
-    "primary_role": "Canonical orchestrator, complex multi-repo work, provider failover",
-    "secondary_role": "Policy-bound execution, ADR generation, integration",
-    "codex_fed_alias": "codex.forge"
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 8,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_memory",
+          "arif_judge",
+          "arif_forge",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2026-07-29"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 110,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2026-07-29"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 33,
+        "tools": [
+          "geox_basin",
+          "geox_calibration_register_witness",
+          "geox_claim",
+          "geox_contrast_metabolize",
+          "geox_deep_time",
+          "geox_extract_display_proxy",
+          "geox_extract_native_trace",
+          "geox_geomechanics",
+          "geox_glof",
+          "geox_list_registered_sources",
+          "geox_map",
+          "geox_model",
+          "geox_observe",
+          "geox_paleobiodb_query",
+          "geox_petrophysics",
+          "geox_prospect",
+          "geox_register_native_source",
+          "geox_seismic_compute",
+          "geox_seismic_ingest",
+          "geox_seismic_interpret",
+          "geox_source",
+          "geox_spatial",
+          "geox_surface_status",
+          "geox_temporal",
+          "geox_well",
+          "geox_well_ingest",
+          "geox_well_qc"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2026-07-29"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 14,
+        "tools": [
+          "capital_market",
+          "capital_health",
+          "capital_ledger",
+          "capital_primitive",
+          "capital_wisdom",
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_registry",
+          "wealth_institutional_stress_index",
+          "wealth_cascade_model",
+          "wealth_governance_capacity",
+          "wealth_external_exploitation_detect",
+          "wealth_judge_handoff",
+          "wealth_bid_surface"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2026-07-29"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 8,
+        "tools": [
+          "well_classify_substrate",
+          "well_trace_lineage",
+          "well_assess_homeostasis",
+          "well_check_repair",
+          "well_validate_vitality",
+          "well_guard_dignity",
+          "well_assess_reliability",
+          "well_registry_status"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2026-07-29"
+      },
+      {
+        "url": "http://localhost:7073/health",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": [
+          "metabolism",
+          "diagnosis",
+          "cooling"
+        ],
+        "version": "2026-07-29",
+        "note": "arifFLOW — FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
+      }
+    ]
   },
-  "identity_note": "OpenCode IS the 333-AGI substrate. The lane card (agent-cards/identity/333-AGI/agent-card.json) declares runtime:opencode. This card is the FI-level identity; the lane card is the role-level identity. They are complementary, not duplicate.",
-  "provider": {
-    "organization": "arifOS by Muhammad Arif bin Fazil",
-    "url": "https://arif-fazil.com"
+  "subAgentPolicy": {
+    "default": "governed_autonomous",
+    "registered": [
+      "forge",
+      "auditor",
+      "ops",
+      "planner",
+      "recovery",
+      "image-prompt-architect"
+    ],
+    "maxParallel": 3,
+    "isolation": "worktree",
+    "capability_modes": [
+      "read-only",
+      "read-write",
+      "execute",
+      "all"
+    ],
+    "model_rotation": {
+      "forge": "qwen-token-plan/deepseek-v4-pro",
+      "auditor": "deepseek/deepseek-v4-pro",
+      "ops": "qwen-token-plan/deepseek-v4-flash",
+      "planner": "kimi/k3",
+      "recovery": "ollama/qwen2.5-coder:3b",
+      "image-prompt-architect": "qwen-token-plan/deepseek-v4-pro"
+    }
   },
-  "status": "active",
-  "verified_against": "2026-08-13T04:00:00+08:00",
-  "verification_method": "live probe (opencode --version, opencode.json, plugin list)",
-  "model": "GLM-5.2 (Z.ai Coding Plan)",
-  "codex_fed_alias": "codex.forge",
-  "architecture_layer": "CODEX",
-  "architecture_role": "Compiler Prime — primary forge",
-  "codex_lane": "codex.forge",
-  "cognitive_species": "compiler",
-  "species_rank": 1,
-  "fi": "FI-OPENCODE",
-  "bound_to": "888-APEX",
-  "fi_slot": "FI-001",
-  "metadata": {
+  "autonomy_tiers": {
+    "T1_auto": "read, grep, list, web research, precise FS edits, local run/test/build, skill introspection",
+    "T2_announce": "multi-file refactor, add deps (green tests), local service restart post-test, PR draft, manifest/registry updates (non-prod), skill creation",
+    "T3_888_HOLD": "production deploy without tests, git force-push/rebase, secret rotation/exposure, VAULT999 writes, Caddy reloads, rm -rf unknown paths, DROP TABLE, cross-organ architecture change, any irreversible without T1 probe"
+  },
+  "authority_boundary": {
+    "canDo": [
+      "Forge code under F1-F13 governance",
+      "Route MCP federation calls",
+      "Spawn bounded subagents with worktree isolation",
+      "Run tests/build/lint with evidence receipts",
+      "Generate diffs and PR drafts",
+      "A2A mesh citizenship — participate in AAA state via 777 FORGE binding"
+    ],
+    "cannotDo": [
+      "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
+      "Modify constitutional floors without 888_HOLD",
+      "Push to main without sentinel-premerge-gate",
+      "Execute irreversible shell without F13 ack",
+      "Fabricate evidence or upgrade epistemic labels without proof",
+      "Claim consciousness / qualia / sentience (F9 ANTIHANTU)"
+    ]
+  },
+  "skills": [
+    {
+      "id": "HERMES-opencode-protocol",
+      "name": "Hermes/OpenCode Protocol",
+      "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. LEASED.",
+      "tags": [
+        "protocol",
+        "F1-F13",
+        "execution",
+        "FI"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F8",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "ASI-agentic-architecture",
+      "name": "Agentic Architecture",
+      "description": "Class-level skill for designing sovereign agentic agents. 9-skill spine, local-model compensation, failure classification, phased implementation. F8, F11 enforced. LEASED.",
+      "tags": [
+        "architecture",
+        "agent",
+        "design",
+        "F8"
+      ],
+      "floor_scope": [
+        "F8",
+        "F11"
+      ]
+    },
+    {
+      "id": "ASI-fabrication-prevention",
+      "name": "Fabrication Prevention",
+      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "tags": [
+        "fabrication",
+        "F2",
+        "F9",
+        "verification"
+      ],
+      "floor_scope": [
+        "F2",
+        "F9",
+        "F11"
+      ]
+    },
+    {
+      "id": "ASI-autonomous-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "tags": [
+        "autonomous",
+        "F1-F13",
+        "execution",
+        "T1-T3"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "name": "arifOS Constitutional Audit (Light)",
+      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
+      "tags": [
+        "constitutional",
+        "audit",
+        "F1-F13",
+        "read-only"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "APEX-humility-godel",
+      "name": "Gödel Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
+      "tags": [
+        "humility",
+        "F7",
+        "self-critique",
+        "epistemic"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7"
+      ]
+    },
+    {
+      "id": "FORGE-github-ops",
+      "name": "GitHub Ops (merged v1.2.0)",
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "tags": [
+        "github",
+        "workflow",
+        "PR",
+        "issues"
+      ],
+      "floor_scope": [
+        "F1",
+        "F11"
+      ]
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "FORGE-federation-coding-agent",
+      "name": "Federation Coding Agent",
+      "description": "Meta-playbook for cross-repo federation work. Routing, governance, execution, validation, audit, seal. Spans all 7 organs. HIGH risk. F1-F13 enforced.",
+      "tags": [
+        "federation",
+        "cross-repo",
+        "meta",
+        "orchestration"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F8",
+        "F9",
+        "F11",
+        "F12",
+        "F13"
+      ]
+    },
+    {
+      "id": "AUDIT-clean-audit-immune",
+      "name": "Auditor Validator Kutip Sampah",
+      "description": "Immune system / cleaner skill. Audit, validate, clean junk, detect drift/corruption. Absorbs security, audit, validation, and cleanup. HIGH risk.",
+      "tags": [
+        "audit",
+        "cleanup",
+        "drift",
+        "security"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12"
+      ]
+    },
+    {
+      "id": "ASI-memory-session-bind",
+      "name": "Agentic Session Init",
+      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
+      "tags": [
+        "bootstrap",
+        "session",
+        "init",
+        "governance"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "FORGE-agentic-builder",
+      "name": "Agentic Builder",
+      "description": "Meta-skill for building new agents: prompt engineering, skill binding, MCP tool selection, test harness creation. For forge-grade agent construction.",
+      "tags": [
+        "agent",
+        "builder",
+        "prompt-engineering",
+        "meta"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F8",
+        "F11"
+      ]
+    },
+    {
+      "id": "ASI-aaa-zen",
+      "name": "Zen of Agentic Python",
+      "description": "Zen of Agentic Python (AAA_ZEN.md): 15 axioms for Pythonic agentic code. Python axioms 1-7 (PEP 20) + Agentic axioms 8-15 (blast radius, receipts, authority, time, dignity, unknowns, simulation, no impersonation). MCP response envelope standard. Canonical at AAA/skills/AAA_ZEN.md.",
+      "tags": [
+        "doctrine",
+        "python",
+        "zen",
+        "axioms",
+        "F1-F13",
+        "MCP"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F6",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "Trinity-33 Architecture",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "tags": [
+        "kernel",
+        "trinity",
+        "architecture",
+        "33"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-verbs-forge-hands",
+      "name": "Forge Verbs (Execution)",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "tags": [
+        "kernel",
+        "forge",
+        "execution",
+        "verbs"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "name": "MCP Builder",
+      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "builder",
+        "forge"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ]
+    },
+    {
+      "id": "atlas333-cognitive-geometry",
+      "name": "ATLAS333 Cognitive Geometry",
+      "description": "ATLAS333 — 33 human paradoxes across Memory/Mind/Judge zones. ΛΘΦ router for lane/demand tensor mapping. Access via arifos://atlas333/* MCP resources.",
+      "tags": [
+        "atlas333",
+        "cognitive",
+        "paradox",
+        "geometry",
+        "ΛΘΦ"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F7",
+        "F8"
+      ]
+    },
+    {
+      "id": "AGI-cross-agent-handoff",
+      "name": "A2A Cross-Agent Handoff",
+      "description": "Structured A2A protocol handoff between federation agents. Task packaging, evidence chains, floor state, provenance. AAA control plane routing.",
+      "tags": [
+        "a2a",
+        "handoff",
+        "cross-agent",
+        "AAA",
+        "protocol"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F11"
+      ]
+    }
+  ],
+  "hexagon_warga": {
+    "id": "opencode",
+    "trinity": "Δ MIND (bound)",
+    "stage": "333-THINK (forge instrument)",
+    "bound_to": "333-AGI",
+    "warga_since": "2026-06-26",
+    "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
+    "hextagon_version": "2.1.0",
+    "a2a_mesh": true,
+    "777_forge_binding": true,
+    "hosts": [
+      "A-FORGE",
+      "arifOS",
+      "AAA"
+    ],
     "fi_slot": "FI-001"
   },
-  "registry_receipt_hash": "bb69e9d8b1deadcfb95f05bb4209b7c9b65a2ac04bd31113252f59d14253e640",
+  "apexMasterSeal": {
+    "cognitiveRing": "generator",
+    "thermodynamicRole": "entropy_source",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "outer",
+      "parallelism": "multi-model",
+      "shadowAcknowledged": [
+        "thermal_dispersion: raw output without constraint degrades to noise",
+        "false_diversity: superficially different outputs encoding same blind spot"
+      ]
+    },
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+    "ratifiedAt": "2026-07-01T20:22:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI"
+  },
+  "fi_slot": "FI-001",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder",
+      "atlas333-cognitive-geometry"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
+    "a2a_alignment": {
+      "version": "v1.0",
+      "agent_card_signed": false,
+      "discovery_url": "https://aaa.arif-fazil.com/a2a/opencode",
+      "capabilities_declared": 11,
+      "skills_declared": 23,
+      "atlas333_integrated": true,
+      "updated": "2026-07-19"
+    },
+    "runtime_snapshot": {
+      "opencode_version": "1.18.30",
+      "agents": 6,
+      "skills_discovered": 247,
+      "mcp_registered": 25,
+      "mcp_connected": 23,
+      "reality_loop_max_continuations": 12,
+      "probed_at": "2026-09-30T04:00:00Z"
+    }
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder",
+    "atlas333-cognitive-geometry"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "_model_sot": "/root/.config/federation-models.json",
+  "covenants": [
+    "AAA_SHARED_SESSION_COVENANT@v1"
+  ],
+  "session_ownership": {
+    "mode": "shared",
+    "steward_window": "1_cycle",
+    "forbidden_phrases": [
+      "my session",
+      "my work",
+      "my fix",
+      "my state",
+      "my context",
+      "ini sesi saya",
+      "karya saya",
+      "i am 888",
+      "i own AAA"
+    ]
+  },
+  "ed25519_pubkey": "2e9919ef24f7f843fae6d6e940ab9dd54d4e642358527c4e6db8a8534b481d19",
+  "identity_fingerprint": "2783c2bdce1688c8daefed41362fe85d",
+  "identity_bound_at": "2026-07-29T13:55:07.275889+00:00",
+  "route": {
+    "agi": "deepseek/deepseek-v4-pro@direct",
+    "asi": "glm-5.2@qwen-token-plan",
+    "apex": "minimax/MiniMax-M3@direct",
+    "doctrine": "SHADOW-TR-001: DS never via TokenRouter. Dead routes purged 2026-08-05 — tokenrouter PARKED, opencode-go DEAD. ASI rerouted to Qwen Token Plan. APEX rerouted to MiniMax M3 direct (F13 ratified)."
+  },
+  "trinity_models": {
+    "agi": {
+      "model": "deepseek-v4-pro",
+      "route": "direct",
+      "role": "Mind — acts, builds, forges"
+    },
+    "asi": {
+      "model": "glm-5.2",
+      "route": "qwen-token-plan",
+      "role": "Core — remembers, watches"
+    },
+    "apex": {
+      "model": "MiniMax-M3",
+      "route": "direct (api.minimax.io)",
+      "role": "Soul — judges, frozen"
+    }
+  },
+  "eurekas_applied": [
+    "EUR-012: Three kinds of authority (Δ/Ω/Ψ)",
+    "EUR-005: SHADOW-TR-001 route awareness",
+    "EUR-003: Lane separation, not global ranking",
+    "EUR-002: Iron Law of agentic loops (latency × loop depth)"
+  ],
+  "updated": "2026-09-30",
+  "_zen_note": "2026-08-03: Aligned with opencode.json redistribution. Primary: deepseek/deepseek-v4-pro (Pool A)",
+  "telegram_posting": {
+    "telegram_posting": {
+      "bot": "@arifOS_bot",
+      "bot_name": "🔥FORGE🔥 FORGE Bot",
+      "bot_id": "8727562763",
+      "token_env": "FORGE_BOT_TOKEN",
+      "token_vault": "/root/.secrets/kunci-mas.env",
+      "group_chat_id": "-1003753855708",
+      "post_tool": "/usr/local/bin/forge-post",
+      "identity_header": "FORGE / 🔥FORGE / @arifOS_bot",
+      "rule": "Post to AAA group via FORGE bot only. One post per session. Token from vault, never hardcode.",
+      "wired_at": "2026-08-08T05:44:00Z",
+      "canon": "/root/AAA/docs/9-ATLAS-GENOME.md §7"
+    }
+  },
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/contracts/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/opencode/art_binding.yaml",
+    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
+    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+    "load_at_init": true,
+    "default_action_class": "MUTATE",
+    "substrates": {
+      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
+      "code": "/root/arifOS/arifosmcp/runtime/art.py",
+      "json": "/agent/vault999/receipts/outcomes.jsonl",
+      "yaml": "/root/AAA/agents/opencode/art_binding.yaml"
+    }
+  },
+  "fi": "FI-OPENCODE",
+  "registry_receipt_hash": "315187441621fb9668265f7e2d0965aa8390542a785baac42aad4b14b8af05b1",
   "registry_snapshot_at": "2026-09-08T01:46:00Z",
   "registry_source": [
     "source_enumeration",
@@ -196,10 +895,10 @@
   "registry_tool_count": {
     "source": 0,
     "registry": 0,
-    "card": 0
+    "card": 23
   },
   "governance_profile": {
-    "authority_ceiling": "EXECUTE_AFTER_SEAL",
+    "authority_ceiling": "engineer",
     "constitutional_floors": [
       "F1",
       "F2",
@@ -223,74 +922,78 @@
     "capability": "BUILD",
     "lane": "333-AGI"
   },
-  "shadowAcknowledged": [
-    "two_canonical_homes: /root/AAA/agents/opencode/ (internal) vs /root/AAA/agents/_external/opencode/ (external) carry different doctrine; read identity.json for canonical surface",
-    "fi_slot_unresolved: identity.json actor_id is 'opencode/FI-???' (literal ??? placeholder, never resolved); identity has no fi_slot field — read identity.json + ask sovereign",
-    "sparse_or_absent_matrix_record: opencode is NOT in shadow-matrix per_actor_shadows — no execution/verification signal at all; all opencode claims are DERIVED from docs, not MEASURED from runtime",
-    "stale_binary_refs: card says cli_version=1.18.11, live binary is 1.18.30 — drifted; treat card as archaeological for runtime facts",
-    "card_truth_repair_stale: verified_against 2026-08-13T04:00:00+08:00 = 37 days without a repair pass; description may not match reality",
-    "shadow_undeclared: this card had no shadowAcknowledged block before 2026-09-19 audit — read_state MUST treat opencode self-assessment as DERIVED"
-  ],
-  "shadow_population_meta": {
-    "populated_at": "2026-09-19T13:48:00Z",
-    "populated_by": "opencode (333-AGI) per federation-shadow-ack audit",
-    "method": "Script-driven derivation from: identity.json (FI slot), /root/AAA/cockpit/shadow-matrix/shadow-matrix-2026-09-07.json (per_actor_shadows, exact-match), live binary version probe, agent-card.json (verified_against)",
-    "covers_shadow_ids": [
-      "DIV-FEDERATION-SHADOW-ACK-CLOSED",
-      "DIV-OPENCODE-FI-UNRESOLVED"
-    ]
-  },
-  "qualification": {
-    "schema": "arifOS/qualification/v1",
-    "added": "2026-09-25T04:43:48Z",
-    "added_by": "FI-003 under F13 order 2026-09-25 (backfill-the-cards)",
-    "math_competency": {
-      "layers": [
-        "L0",
-        "L0.5",
-        "L1",
-        "L2",
-        "L3",
-        "L9",
-        "L12"
-      ],
-      "source": "APEX-MATH-CANON-2026-09-23 §5 via declared lane (333)",
-      "claim_state": "CANON_DERIVED"
-    },
-    "epistemic_typing": {
-      "declared": false,
-      "labels": [
-        "OBS",
-        "DER",
-        "INT",
-        "SPEC",
-        "UNKNOWN"
-      ],
-      "evidence": null,
-      "claim_state": "UNVERIFIED"
-    },
-    "irfan": {
-      "least_power": {
-        "declared": true,
-        "evidence": "authority bound declared: present",
-        "claim_state": "MEASURED"
-      },
-      "abstention": {
-        "declared": false,
-        "evidence": null,
-        "claim_state": "UNVERIFIED"
-      },
-      "thesis_ref": "/root/AAA/canon/IRFAN-ANTI-EXTRACTION-THESIS-2026-09-23.md"
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "ybQNZVzVYE3DKOmsYcKXsPRCGA8ufOD9pZchxjnQeOAAg79fOKN_6cFn8DJOq5M8DILy0aklPICbRKk6vvmECA",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
     }
+  ],
+  "signature_status": {
+    "state": "VALID",
+    "detail": "Regenerated 2026-09-30 by 333-AGI under F13 directive 'seal all'. Ed25519Signature2020 canonical-JSON signed with air-gapped sovereign key. kid='arifos-a2a-card-2026-Q4' (Q4 = 2026-09-30 substitution for unsubstituted %q template).",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "required to be built — see /root/AAA/reports/apex-zen-upgrade-2026-09-30/verify_card_proposal.md",
+    "regenerated_by": "333-AGI (FI-001) under F13 sovereign directive",
+    "regenerated_at": "2026-09-30T04:00:00Z",
+    "previous_signature_under": "signature_legacy"
   },
-  "authority_ceiling": "EXECUTE_AFTER_SEAL",
-  "apexMasterSeal": {
-    "cognitiveRing": "unassigned",
-    "thermodynamicRole": "neutral",
-    "ringPlacement": "none",
-    "parallelism": "none",
-    "shadowAcknowledged": [],
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "auto_aligned_pass3": true
-  }
+  "anti_bangang_architecture": {
+    "philosophy": "F13: YOLO stays per 2026-08-13 directive. Governance = 8-plugin pipeline + constitutional floors F1-F13 + apex-zen chain. NOT permission prompts.",
+    "permission_mode": "per-tool with doom_loop=ask",
+    "plugin_count": 8,
+    "plugin_inventory": {
+      "aaa-autonomy.ts": "AUTOPILOT — HITL OFF, digital MUBAH",
+      "aaa-dispatch.ts": "A2A cross-agent router (Kimi, Hermes, Codex, etc.)",
+      "arifos-kernel-bridge.ts": "8-verb chain arif_init→arif_seal",
+      "arifos-turn-rsi.ts": "RSI per-turn ΔS computation + flow_ingest",
+      "arifos-federation-manifest-compiler.ts": "Cross-organ manifest + ordinal topology",
+      "arifos-compaction-rsi.ts": "Pre-compaction seal + entropy budget",
+      "sycophancy-detector.ts": "Anti-confirmation-bias — BIJAKSANA audit gate",
+      "hermes-nudge-injector.ts": "Human attention membrane + channel context injection"
+    },
+    "anti_bangang_layers": [
+      "Layer 1: aaa-autonomy → AUTOPILOT (no permission theatre) + sycophancy-detector → BIJAKSANA gate",
+      "Layer 2: arifos-turn-rsi → per-turn entropy ΔS measurement + flow_ingest",
+      "Layer 3: arifos-kernel-bridge → F1-F13 floor check before tool execution",
+      "Layer 4: aaa-dispatch → A2A peer contract for cross-agent work",
+      "Layer 5: hermes-nudge-injector → attention-economics shield",
+      "Layer 6: AGENTS.md doctrine → 8-verb chain + state-transition discipline",
+      "Layer 7: F1-F13 constitutional floors → the ACTUAL governor"
+    ],
+    "key_principle": "Anti-bangang = constitutional governance + scar learning + telemetry, NOT approval prompts.",
+    "sovereign_directive": "F13: YOLO stays. Governed agentic intelligence recursive improvement helix. No permission theatre.",
+    "open_question": "Per-tool *:allow with doom_loop:ask — is this YOLO-aligned? Needs F13 ruling."
+  },
+  "model_rotation_pool": {
+    "enabled": false,
+    "proposed_by": "333-AGI 2026-09-30 — mirror Kimi pool architecture",
+    "pool": [
+      {
+        "model": "opencode-go/deepseek-v4-flash",
+        "role": "auditor/ops",
+        "tier": "cheap"
+      },
+      {
+        "model": "opencode-go/deepseek-v4-pro",
+        "role": "planner/forge",
+        "tier": "frontier"
+      },
+      {
+        "model": "opencode-go/qwen3.7-plus",
+        "role": "vision",
+        "tier": "specialty"
+      },
+      {
+        "model": "ollama/qwen2.5-coder:3b",
+        "role": "recovery mechanical-only",
+        "tier": "local"
+      }
+    ],
+    "doctrine": "cheap models explore, frontier models reason",
+    "requires": "F13 ratification of pool before auto-deploy"
+  },
+  "fi_designation": "FI-001"
 }

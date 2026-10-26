@@ -1,5 +1,4 @@
-version: 2026.08.12T02.55Z-qwen-code-incarnated
-# mouth_facts 2026-10-14: one Hermes mouth = hermes-asi @ASI_arifos_bot on KVM8. Twin hermesarifos-bot is dormant. Forge mouth = @arifOS_bot. OpenClaw = @irfanclaw_arifos_bot. FI slots were not renumbered.
+version: 2026.10.18T12.06Z-opencode-v2-fleet-sync
 forged: '2026-07-31'
 forged_by: 333-AGI (Δ MIND) — F13 SOVEREIGN directive
 supersedes:
@@ -30,8 +29,8 @@ identity_lanes:
     '777': 0.6
     '888': 0.0
     '999': 0.0
-  description: Δ Mind of the Trinity. Reasons, plans, builds, forges, synthesizes. Primary conversational surface. Orchestrates
-    555-ASI and 888-APEX.
+  description: Δ Mind of the Trinity. Reasons, plans, builds, forges, synthesizes.
+    Primary conversational surface. Orchestrates 555-ASI and 888-APEX.
 - id: 555-ASI
   name: 555-ASI (Ω CORE)
   role: Memory, telemetry, drift, research
@@ -51,7 +50,8 @@ identity_lanes:
     '777': 0.1
     '888': 0.0
     '999': 0.0
-  description: Ω Core of the Trinity. Memory steward, vector mapping, probe execution, drift detection, research synthesis.
+  description: Ω Core of the Trinity. Memory steward, vector mapping, probe execution,
+    drift detection, research synthesis.
 - id: 888-APEX
   name: 888-APEX (Ψ SOUL)
   role: Constitutional verdict, SEAL/HOLD/VOID
@@ -63,13 +63,15 @@ identity_lanes:
   expression_weights: null
   constitutional_role: JUDGE
   note: 8≠9 invariant — AUTH is not a species. 888 is a chair, not an agent.
-  description: Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible mutations. Read-only, never mutates.
+  description: Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible
+    mutations. Read-only, never mutates.
 forge_instruments:
 - fi_slot: FI-000
   id: i-arif
   name: i-ARIF (sovereign identity core)
   binary: null
-  model: litellm FED chain :4000 (P1 qwen3.8-max → P2 glm-5.3 → P3 mimo-v2.5 → P4 deepseek-v4-flash → P5 MiniMax-M3)
+  model: litellm FED chain :4000 (P1 qwen3.8-max → P2 glm-5.3 → P3 mimo-v2.5 → P4
+    deepseek-v4-flash → P5 MiniMax-M3)
   status: active
   canonical_card: /root/AAA/agent-cards/identity/i-ARIF/agent-card.json
   bound_to_identity: F13-SOVEREIGN
@@ -80,20 +82,26 @@ forge_instruments:
   - audio
   - image
   - video
-  description: Identity organ FI-000. Pre-harness — identity precedes engine. Bound directly to F13-SOVEREIGN (the only ID-class organ). Promoted 2026-08-12 per F13 SOVEREIGN directive. hermes-asi = nerve (routes signal); i-ARIF = brain (synthesises meaning). Litellm FED chain 2026-08-18 zen-fix bypasses Xiaomi MiMo server-side content filter.
+  description: Identity organ FI-000. Pre-harness — identity precedes engine. Bound
+    directly to F13-SOVEREIGN (the only ID-class organ). Promoted 2026-08-12 per F13
+    SOVEREIGN directive. hermes-asi = nerve (routes signal); i-ARIF = brain (synthesises
+    meaning). Litellm FED chain 2026-08-18 zen-fix bypasses Xiaomi MiMo server-side
+    content filter.
   _promotion_source: federation/STATE.yaml + federation/organs.yaml (promoted 2026-08-12)
-  _registry_sync: 2026-08-21T03:30:00Z — synced into AGENTS_UNIFIED per F13 directive ("update ja laaaaa", ASI session #51995)
+  _registry_sync: 2026-08-21T03:30:00Z — synced into AGENTS_UNIFIED per F13 directive
+    ("update ja laaaaa", ASI session
 - fi_slot: FI-001
   id: opencode
   name: OpenCode CLI
-  binary: /root/.npm-global/bin/opencode
-  model: deepseek/deepseek-v4-pro
-  model_fallback: ollama/qwen2.5-coder:3b
+  binary: /root/.opencode/bin/opencode
+  cli_version: 2.0.32
+  model: litellm-federation/forge-777
+  model_fallback: FED cascade (deepseek-v4-pro → MiniMax-M3) · ollama local lane
   status: active
   canonical_card: /root/AAA/agents/opencode/agent-card.json
   bound_to_identity: 333-AGI
-  description: Primary forge instrument. Governed coding forge bound to 333-AGI (Δ MIND). DeepSeek V4 Pro direct. 200+ MCP
-    tools.
+  description: Primary forge instrument. OpenCode V2 on FED forge-777 (HAProxy :4000
+    → litellm :4013). 13 MCP servers, AAA instruction stack, governed agent defs.
   species_proxy: opencode-zen
 - fi_slot: FI-002
   id: claude-code
@@ -102,7 +110,8 @@ forge_instruments:
   model: deepseek/deepseek-v4-pro
   status: active
   canonical_card: /root/AAA/agents/_external/claude-code/agent-card.json
-  description: 'Anthropic Claude Code harness. Sovereign-delegate authority. OAuth: arifbfazil@gmail.com. Sub-agents disabled.'
+  description: 'Anthropic Claude Code harness. Sovereign-delegate authority. OAuth:
+    arifbfazil@gmail.com. Sub-agents disabled.'
   species_proxy: opencode-zen
   bound_to_identity: 333-AGI
   _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
@@ -113,22 +122,12 @@ forge_instruments:
   model: deepseek/deepseek-v4-pro
   status: active
   canonical_card: /root/AAA/agents/_external/qwen-code/agent-card.json
-  description: Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted Bash. Low risk.
+  description: Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted
+    Bash. Low risk.
   species_proxy: opencode-zen
   bound_to_identity: 333-AGI
   _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
   _path_correction: 2026-08-12T02:55Z — was /usr/bin/qwen, actual lives at /root/.local/bin/qwen
-- fi_slot: FI-004
-  id: antigravity
-  name: Antigravity CLI
-  binary: /root/.local/bin/agy
-  model: google/gemini-3.5-flash
-  status: active
-  canonical_card: /root/AAA/agents/_external/agy/agent-card.json
-  description: Google Antigravity CLI. Gemini 3.5 Flash. 5 federation organs + context7.
-  species_proxy: opencode-zen
-  bound_to_identity: 333-AGI
-  _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
 - fi_slot: FI-005
   id: codex
   name: Codex CLI
@@ -136,7 +135,8 @@ forge_instruments:
   model: openai/gpt-5.6-sol
   status: active
   canonical_card: /root/AAA/agents/_external/codex/agent-card.json
-  description: OpenAI Codex CLI. GPT-5.6 Sol (reasoning=medium). Landlock sandbox. 8 MCP servers.
+  description: OpenAI Codex CLI. GPT-5.6 Sol (reasoning=medium). Landlock sandbox.
+    8 MCP servers.
   species_proxy: opencode-zen
   bound_to_identity: 333-AGI
   _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
@@ -147,7 +147,8 @@ forge_instruments:
   model: deepseek/deepseek-v4-pro
   status: active
   canonical_card: /root/AAA/agents/_external/copilot/agent-card.json
-  description: GitHub Copilot CLI. DeepSeek V4 Pro via Anthropic compat API. 11 MCP servers. Fleet subagent mode.
+  description: GitHub Copilot CLI. DeepSeek V4 Pro via Anthropic compat API. 11 MCP
+    servers. Fleet subagent mode.
   species_proxy: opencode-zen
   bound_to_identity: 333-AGI
   _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
@@ -158,7 +159,8 @@ forge_instruments:
   model: xai/grok-build
   status: active
   canonical_card: /root/AAA/agents/_external/grok-build/agent-card.json
-  description: xAI Grok Build. REPLACED dead FI-007 Aider slot (2026-07-18). Always-approve. No MCP surface yet.
+  description: xAI Grok Build. REPLACED dead FI-007 Aider slot (2026-07-18). Always-approve.
+    No MCP surface yet.
   species_proxy: opencode-zen
   bound_to_identity: 333-AGI
   _identity_binding_note: auto-bound to 333-AGI per F11 auditability (2026-08-12T02:45Z)
@@ -173,7 +175,10 @@ forge_instruments:
   hook_count: 12
   status: active
   canonical_card: /root/AAA/agents/kimi-code/agent-card.json
-  description: 'Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking). 8 MCP servers (177 tools total). A-FORGE stdio ingress. YOLO-native anti-bangang: 12 hooks, constitutional governance via F1-F13, NOT permission prompts. v2.4.0 (2026-08-13).'
+  description: 'Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking).
+    8 MCP servers (177 tools total). A-FORGE stdio ingress. YOLO-native anti-bangang:
+    12 hooks, constitutional governance via F1-F13, NOT permission prompts. v2.4.0
+    (2026-08-13).'
   species_proxy: opencode-zen
   bound_to_identity: 555-ASI
   _identity_binding_note: auto-bound to 555-ASI per F11 auditability (2026-08-12T02:45Z)
@@ -182,10 +187,13 @@ forge_instruments:
   id: agy
   name: AGY (Antigravity CLI)
   previous: A-AUDIT (collapsed into 888-APEX per Zen 99 doctrine, 2026-07-15)
-  status: active  # F13 'seal all' 2026-09-16 — promotion receipted in seal commit
+  status: active
   canonical_card: /root/AAA/agents/_external/agy/agent-card.json
   species_proxy: zai-coding-plan
-  description: "FI-009 candidate = AGY (Antigravity CLI, agy 1.2.3). Role: researcher (Z.AI endpoint probe, doc freshness, external API health). Gemini Flash backend. Assigned by GOTONG_ROYONG roster 2026-09-16 + commit 7b4a228ce; agent-card still says FI-009-candidate. Promoted to ACTIVE per sovereign 'seal all' 2026-09-16."
+  description: 'FI-009 candidate = AGY (Antigravity CLI, agy 1.2.3). Role: researcher
+    (Z.AI endpoint probe, doc freshness, external API health). Gemini Flash backend.
+    Assigned by GOTONG_ROYONG roster 2026-09-16 + commit 7b4a228ce; agent-card still
+    says FI-009-candidate. Promoted to ACTIVE per sovereign ''seal all'' 2026-09-16.'
 extensions:
 - id: hermes-asi
   name: Hermes ASI
@@ -194,7 +202,8 @@ extensions:
   status: active
   canonical_card: /root/AAA/agents/hermes-asi/agent-card.json
   bound_to_identity: 555-ASI
-  description: The one Hermes mouth. Telegram @ASI_arifos_bot (8410138119) on KVM8, unit hermes-asi-gateway.service. Lane 555-ASI. Speaks. Does not execute.
+  description: The one Hermes mouth. Telegram @ASI_arifos_bot (8410138119) on KVM8,
+    unit hermes-asi-gateway.service. Lane 555-ASI. Speaks. Does not execute.
   telegram:
     bot: '@ASI_arifos_bot'
     bot_id: '8410138119'
@@ -210,7 +219,9 @@ extensions:
   bound_to_identity: 555-ASI
   replaced_by: hermes-asi
   dormant_since: '2026-09-25'
-  description: Dormant twin @hermesarifos_bot (7958220838). Identity lock 2026-09-25 set DORMANT. A KVM4 user gateway was still polling it on 2026-10-14. That poll does not restore this seat.
+  description: Dormant twin @hermesarifos_bot (7958220838). Identity lock 2026-09-25
+    set DORMANT. A KVM4 user gateway was still polling it on 2026-10-14. That poll
+    does not restore this seat.
   species_proxy: hermes-zen
 - id: main
   name: arifOS Telegram Bot
@@ -218,7 +229,8 @@ extensions:
   fi_slot: null
   status: active
   canonical_card: /root/AAA/agents/main/agent-card.json
-  description: Card id arifOS_bot, lane 888-APEX. Telegram forge mouth is @arifOS_bot (8727562763). Not Hermes. Not @ASI_arifos_bot.
+  description: Card id arifOS_bot, lane 888-APEX. Telegram forge mouth is @arifOS_bot
+    (8727562763). Not Hermes. Not @ASI_arifos_bot.
   species_proxy: openclaw-zen
 - id: makcikgpt
   name: MakcikGPT
@@ -258,10 +270,12 @@ extensions:
     forged_by: F13 SOVEREIGN (directive 2026-09-25T07:01Z)
     authority_level: T1
     kernel_actor_index: openclaw/FI-017
-  _namespace_note: 'openclaw is NOT an AAA harness FI slot (this registry: FI-000..FI-009 are
-    harnesses). openclaw/FI-017 is an arifOS kernel ACTOR INDEX id (agent_registry.json,
+  _namespace_note: 'openclaw is NOT an AAA harness FI slot (this registry: FI-000..FI-009
+    are harnesses). openclaw/FI-017 is an arifOS kernel ACTOR INDEX id (agent_registry.json,
     19 actors, FI-001..FI-026). Two namespaces, both true; do not merge them.'
-  description: KVM4 workshop door. Telegram @irfanclaw_arifos_bot (8149595687, renamed from @AGI_ASI_bot on 2026-09-25). Kernel actor openclaw/FI-017, blast radius T1, bound_to arif-fazil/F13. Not Hermes. Not 888.
+  description: KVM4 workshop door. Telegram @irfanclaw_arifos_bot (8149595687, renamed
+    from @AGI_ASI_bot on 2026-09-25). Kernel actor openclaw/FI-017, blast radius T1,
+    bound_to arif-fazil/F13. Not Hermes. Not 888.
 organs:
 - id: arifos
   name: arifOS Kernel
@@ -332,8 +346,11 @@ invariants:
 - Identity lanes (333-AGI, 555-ASI, 888-APEX) do NOT claim FI slots
 - Every canonical_card path resolves to an existing agent-card.json
 - No collapsed agent retains an active FI slot
-- FI-009 is in CANDIDATE state (agy) — promotion to ACTIVE requires explicit F13 ack; until then it is not counted in "active owner" audits
-- FI-010 was vacated on 2026-07-15 (A-ARCHIVE collapse) and is reserved for future assignment; per commit 7b4a228ce (2026-09-16) it was referenced for deceased Gemini CLI — treated as tombstone note, not active claim
+- FI-009 is in CANDIDATE state (agy) — promotion to ACTIVE requires explicit F13 ack;
+  until then it is not counted in "active owner" audits
+- FI-010 was vacated on 2026-07-15 (A-ARCHIVE collapse) and is reserved for future
+  assignment; per commit 7b4a228ce (2026-09-16) it was referenced for deceased Gemini
+  CLI — treated as tombstone note, not active claim
 - FI-000 is sovereign-bound to F13 (i-arif) — not reassignable
 - FI-001 through FI-008 are LOCKED — reassignment requires F13 ratification
 fi_slot_summary:
@@ -403,3 +420,12 @@ prompt_loop:
   - repeated_error
   - f13_override
   - mutation_requested_without_seal
+_corrections:
+- date: '2026-10-17'
+  agent: 333-AGI
+  action: Removed FI-004 antigravity entry (duplicate of FI-009 agy)
+  reason: 'Self-contradiction: two active entries for same entity (Antigravity CLI).
+    FI-004 was renumbered to FI-009 per C10 adjudication 2026-08-14.'
+  evidence: forge_instruments.yaml commit 630a4865, FI-009 entry has provenance
+  reversible: true
+  backup: AGENTS_UNIFIED.yaml.bak-*

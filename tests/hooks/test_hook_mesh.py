@@ -137,9 +137,7 @@ def setUpModule():  # noqa: N802 — xunit-style name, honoured by pytest and un
     _SANDBOX_PATCHES = [
         mock.patch.object(_fhe, "CARRY_PATH", root / "carry_forward.json"),
         mock.patch.object(_fhe, "SCARS_DIR", root / "scars"),
-        mock.patch.object(
-            _fhe, "ROLLBACK_JOURNAL_PATH", root / "rollback_journal.jsonl"
-        ),
+        mock.patch.object(_fhe, "ROLLBACK_JOURNAL_PATH", root / "rollback_journal.jsonl"),
         mock.patch.object(_fhe, "SEALS_LEDGER_PATH", root / "seal_receipts.jsonl"),
         mock.patch.object(_fhe, "TURN_MEMORY_PATH", root / "turn_memory.json"),
     ]
@@ -166,8 +164,12 @@ class TestT01_SchemaValidation(unittest.TestCase):
     def test_valid_event_passes(self):
         event = scaffold_event(
             "aaa.action.proposed",
-            agent_id="test", harness="qwen", session_id="s1",
-            kind="execute", tool_id="git", risk_class="R1",
+            agent_id="test",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            tool_id="git",
+            risk_class="R1",
         )
         ok, errs = validate_event(event)
         self.assertTrue(ok, f"Valid event rejected: {errs}")
@@ -175,8 +177,11 @@ class TestT01_SchemaValidation(unittest.TestCase):
     def test_missing_required_field_fails(self):
         event = scaffold_event(
             "aaa.action.proposed",
-            agent_id="test", harness="qwen", session_id="s1",
-            kind="execute", risk_class="R1",
+            agent_id="test",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            risk_class="R1",
         )
         del event["actor"]
         ok, errs = validate_event(event)
@@ -186,8 +191,11 @@ class TestT01_SchemaValidation(unittest.TestCase):
     def test_invalid_verdict_rejected(self):
         event = scaffold_event(
             "aaa.action.proposed",
-            agent_id="test", harness="qwen", session_id="s1",
-            kind="execute", risk_class="R1",
+            agent_id="test",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            risk_class="R1",
         )
         # Inject an unknown authority-bearing field
         event["bypass"] = "all"
@@ -199,8 +207,11 @@ class TestT01_SchemaValidation(unittest.TestCase):
         # scaffold_event redacts and may truncate; build oversized manually
         event = scaffold_event(
             "aaa.action.proposed",
-            agent_id="test", harness="qwen", session_id="s1",
-            kind="execute", risk_class="R0",
+            agent_id="test",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            risk_class="R0",
         )
         # Force an oversized payload that bypasses scaffold redaction
         event["payload"] = {"data": "x" * (MAX_PAYLOAD_BYTES + 10000)}
@@ -211,8 +222,11 @@ class TestT01_SchemaValidation(unittest.TestCase):
     def test_unknown_event_type_rejected(self):
         event = scaffold_event(
             "aaa.nonexistent.event",
-            agent_id="test", harness="qwen", session_id="s1",
-            kind="execute", risk_class="R0",
+            agent_id="test",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            risk_class="R0",
         )
         ok, errs = validate_event(event)
         self.assertFalse(ok)
@@ -236,18 +250,28 @@ class TestT02_EventContractConsistency(unittest.TestCase):
     def test_canonical_events_complete(self):
         """All 9 lifecycle events are defined."""
         required = {
-            "aaa.session.opened", "aaa.turn.received",
-            "aaa.action.proposed", "aaa.action.completed",
-            "aaa.action.failed", "aaa.turn.idle",
-            "aaa.context.compacting", "aaa.session.sealing",
+            "aaa.session.opened",
+            "aaa.turn.received",
+            "aaa.action.proposed",
+            "aaa.action.completed",
+            "aaa.action.failed",
+            "aaa.turn.idle",
+            "aaa.context.compacting",
+            "aaa.session.sealing",
             "aaa.policy.violation",
         }
         self.assertEqual(set(CANONICAL_EVENTS), required)
 
     def test_verdict_ladder_complete(self):
         required = {
-            "ALLOW", "ALLOW_WITH_CONSTRAINTS", "OBSERVE_ONLY",
-            "DEFER", "HOLD", "DENY", "VOID", "REVOKED",
+            "ALLOW",
+            "ALLOW_WITH_CONSTRAINTS",
+            "OBSERVE_ONLY",
+            "DEFER",
+            "HOLD",
+            "DENY",
+            "VOID",
+            "REVOKED",
         }
         self.assertEqual(set(VERDICT_LADDER), required)
 
@@ -260,7 +284,7 @@ class TestT02_EventContractConsistency(unittest.TestCase):
             self.assertLess(
                 VERDICT_RANK[VERDICT_LADDER[i]],
                 VERDICT_RANK[VERDICT_LADDER[i + 1]],
-                f"{VERDICT_LADDER[i]} should be < {VERDICT_LADDER[i+1]}",
+                f"{VERDICT_LADDER[i]} should be < {VERDICT_LADDER[i + 1]}",
             )
 
     def test_risk_default_verdict_for_all_classes(self):
@@ -274,6 +298,7 @@ class TestT02_EventContractConsistency(unittest.TestCase):
         if not mesh_path.exists():
             self.skipTest("AGENTIC-HOOK-MESH-V1.yaml not found")
         import yaml  # optional, skip if absent
+
         try:
             with open(mesh_path) as f:
                 mesh = yaml.safe_load(f)
@@ -326,6 +351,7 @@ class TestT03_Monotonicity(unittest.TestCase):
     def test_monotonic_fuzz(self):
         """Generate 100 random restriction chains; assert monotonicity holds."""
         import random
+
         for _ in range(100):
             n = random.randint(2, 8)
             verdicts = [random.choice(VERDICT_LADDER) for _ in range(n)]
@@ -381,7 +407,10 @@ class TestT04_CapabilityEnforcement(unittest.TestCase):
             tool_name="write_file",
             tool_args={"path": "/etc/shadow"},
         )
-        self.assertEqual(result["verdict"], "VOID")
+        # 2026-10-20: SOT v1.3.2+ — hooks transport the kernel verdict (HOLD),
+        # they never spell a kernel-only VOID. The behaviour asserted is refusal.
+        self.assertEqual(result["verdict"], "HOLD")
+        self.assertEqual(result.get("execution_status"), "NOT_EXECUTED")
 
 
 # =========================================================================
@@ -445,7 +474,9 @@ class TestT06_AuditCompleteness(unittest.TestCase):
     def test_heal_produces_receipt(self):
         engine = FederationHookEngine(actor_id="heal-audit")
         result = engine.heal(
-            tool_name="curl", exit_code=1, http_status=406,
+            tool_name="curl",
+            exit_code=1,
+            http_status=406,
             error_message="HTTP 406 Not Acceptable",
         )
         self.assertIn("phase", result)
@@ -462,26 +493,46 @@ class TestT07_Idempotency(unittest.TestCase):
     def test_idempotency_key_deterministic(self):
         event = scaffold_event(
             "aaa.action.proposed",
-            agent_id="test", harness="qwen", session_id="s1",
-            kind="execute", tool_id="git", risk_class="R1",
+            agent_id="test",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            tool_id="git",
+            risk_class="R1",
         )
         key1 = idempotency_key(event)
         key2 = idempotency_key(event)
         self.assertEqual(key1, key2)
 
     def test_different_events_different_keys(self):
-        e1 = scaffold_event("aaa.action.proposed", agent_id="a1", harness="qwen",
-                            session_id="s1", kind="execute", risk_class="R1")
-        e2 = scaffold_event("aaa.action.proposed", agent_id="a2", harness="qwen",
-                            session_id="s1", kind="execute", risk_class="R1")
+        e1 = scaffold_event(
+            "aaa.action.proposed", agent_id="a1", harness="qwen", session_id="s1", kind="execute", risk_class="R1"
+        )
+        e2 = scaffold_event(
+            "aaa.action.proposed", agent_id="a2", harness="qwen", session_id="s1", kind="execute", risk_class="R1"
+        )
         self.assertNotEqual(idempotency_key(e1), idempotency_key(e2))
 
     def test_same_action_different_timestamp_same_key(self):
         """Timestamps and event_id are excluded from idempotency key."""
-        e1 = scaffold_event("aaa.action.proposed", agent_id="a1", harness="qwen",
-                            session_id="s1", kind="execute", tool_id="git", risk_class="R1")
-        e2 = scaffold_event("aaa.action.proposed", agent_id="a1", harness="qwen",
-                            session_id="s1", kind="execute", tool_id="git", risk_class="R1")
+        e1 = scaffold_event(
+            "aaa.action.proposed",
+            agent_id="a1",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            tool_id="git",
+            risk_class="R1",
+        )
+        e2 = scaffold_event(
+            "aaa.action.proposed",
+            agent_id="a1",
+            harness="qwen",
+            session_id="s1",
+            kind="execute",
+            tool_id="git",
+            risk_class="R1",
+        )
         # They have different event_ids and timestamps but same logical action
         self.assertEqual(idempotency_key(e1), idempotency_key(e2))
 
@@ -495,7 +546,9 @@ class TestT08_PostToolSuccess(unittest.TestCase):
     def test_successful_heal_has_negative_delta(self):
         engine = FederationHookEngine(actor_id="success-test")
         result = engine.heal(
-            tool_name="git", exit_code=0, stdout="OK",
+            tool_name="git",
+            exit_code=0,
+            stdout="OK",
         )
         self.assertEqual(result["exit_code"], 0)
         self.assertFalse(result["remediated"])  # no healing needed
@@ -522,30 +575,26 @@ class TestT09_FailureAndHealing(unittest.TestCase):
 
     def test_missing_dependency_detected(self):
         engine = FederationHookEngine(actor_id="heal-dep")
-        result = engine.heal(tool_name="bash", exit_code=127,
-                             stderr="bash: jq: command not found")
+        result = engine.heal(tool_name="bash", exit_code=127, stderr="bash: jq: command not found")
         self.assertTrue(result["remediated"])
         self.assertEqual(result["healing_action"]["type"], "DEPENDENCY_MISSING")
         self.assertEqual(result["healing_action"]["target"], "jq")
 
     def test_resource_exhaustion_detected(self):
         engine = FederationHookEngine(actor_id="heal-mem")
-        result = engine.heal(tool_name="python", exit_code=137,
-                             stderr="Killed: out of memory")
+        result = engine.heal(tool_name="python", exit_code=137, stderr="Killed: out of memory")
         self.assertTrue(result["remediated"])
         self.assertEqual(result["healing_action"]["type"], "RESOURCE_EXHAUSTION")
 
     def test_git_desync_detected(self):
         engine = FederationHookEngine(actor_id="heal-git")
-        result = engine.heal(tool_name="git", exit_code=1,
-                             stderr="fatal: You are in detached HEAD state.")
+        result = engine.heal(tool_name="git", exit_code=1, stderr="fatal: You are in detached HEAD state.")
         self.assertTrue(result["remediated"])
         self.assertEqual(result["healing_action"]["type"], "GIT_BRANCH_DESYNC")
 
     def test_unknown_error_not_remediated(self):
         engine = FederationHookEngine(actor_id="heal-unknown")
-        result = engine.heal(tool_name="weird", exit_code=99,
-                             stderr="XYZZY frobnitz error 42")
+        result = engine.heal(tool_name="weird", exit_code=99, stderr="XYZZY frobnitz error 42")
         self.assertFalse(result["remediated"])
         self.assertIsNone(result["healing_action"])
 
@@ -614,8 +663,11 @@ class TestT11_CrossAgentPrivilege(unittest.TestCase):
     def test_delegation_chain_recorded(self):
         event = scaffold_event(
             "aaa.action.proposed",
-            agent_id="delegated", harness="hermes", session_id="s1",
-            kind="delegate", risk_class="R1",
+            agent_id="delegated",
+            harness="hermes",
+            session_id="s1",
+            kind="delegate",
+            risk_class="R1",
             delegation_chain=["arif", "hermes", "delegated"],
         )
         self.assertEqual(len(event["provenance"]["delegation_chain"]), 3)
@@ -631,27 +683,24 @@ class TestT12_RecursiveImprovement(unittest.TestCase):
         # Hermetic (FI-008, 2026-09-14). With the previous fixed session_id="ri-sess"
         # this test inherited 4 persisted errors from turn_memory.json and passed even
         # if crystallization were broken — a false green. os is imported at module level.
-        engine = FederationHookEngine(
-            actor_id="ri-test", session_id=f"ri-sess-{os.urandom(4).hex()}")
-        engine.heal(tool_name="git", exit_code=1,
-                     stderr="fatal: refusing to merge unrelated histories")
-        engine.heal(tool_name="git", exit_code=1,
-                     stderr="fatal: refusing to merge unrelated histories")
+        engine = FederationHookEngine(actor_id="ri-test", session_id=f"ri-sess-{os.urandom(4).hex()}")
+        engine.heal(tool_name="git", exit_code=1, stderr="fatal: refusing to merge unrelated histories")
+        engine.heal(tool_name="git", exit_code=1, stderr="fatal: refusing to merge unrelated histories")
         result = engine.metabolize(assistant_text="Next step.", turn_index=3)
         self.assertTrue(result["new_scar_created"])
         self.assertIsNotNone(result["created_scar"])
 
     def test_single_failure_no_scar(self):
         import uuid
+
         engine = FederationHookEngine(actor_id="ri-single", session_id=f"ri-single-{uuid.uuid4().hex[:8]}")
-        engine.heal(tool_name="git", exit_code=1,
-                     stderr="error: something went wrong once")
+        engine.heal(tool_name="git", exit_code=1, stderr="error: something went wrong once")
         result = engine.metabolize(assistant_text="Continue.", turn_index=1)
         self.assertFalse(result["new_scar_created"])
 
     def test_manifest_auto_apply_false(self):
-        """IPENCODE-HOOK-ORDER-MANIFEST.json has auto_apply: false for RI."""
-        manifest_path = Path("/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json")
+        """OPENCODE-HOOK-ORDER-MANIFEST.json: no idle hook may auto-apply RI."""
+        manifest_path = Path("/root/.config/opencode/plugins/OPENCODE-HOOK-ORDER-MANIFEST.json")
         if not manifest_path.exists():
             self.skipTest("Manifest not found")
         with open(manifest_path) as f:
@@ -659,10 +708,7 @@ class TestT12_RecursiveImprovement(unittest.TestCase):
         idle_hooks = manifest.get("hook_order", {}).get("session.idle", [])
         for hook in idle_hooks:
             if "recursive-improvement" in hook.get("plugin", ""):
-                self.assertFalse(
-                    hook.get("auto_apply", True),
-                    "recursive-improvement should have auto_apply: false"
-                )
+                self.assertFalse(hook.get("auto_apply", True), "recursive-improvement should have auto_apply: false")
 
 
 # =========================================================================
@@ -730,8 +776,7 @@ class TestT15_AdapterConformance(unittest.TestCase):
         for harness in ["opencode", "claude", "antigravity", "hermes"]:
             cap = get_harness_capability(harness)
             self.assertIsNotNone(cap, f"No capability declared for {harness}")
-            self.assertGreater(len(cap.supported_canonical_events), 0,
-                             f"{harness} has no supported canonical events")
+            self.assertGreater(len(cap.supported_canonical_events), 0, f"{harness} has no supported canonical events")
 
     def test_opencode_maps_session_created(self):
         cap = get_harness_capability("opencode")
@@ -772,7 +817,9 @@ class TestT16_LiveFireSmoke(unittest.TestCase):
             tool_name="replace_file_content",
             tool_args={"TargetFile": "/root/.secrets/kunci-root.env"},
         )
-        self.assertEqual(result["verdict"], "VOID")
+        # Hook transmits refusal; the kernel owns the VOID spelling.
+        self.assertEqual(result["verdict"], "HOLD")
+        self.assertEqual(result.get("execution_status"), "NOT_EXECUTED")
 
     def test_full_lifecycle_smoke(self):
         """boot → gate → heal → metabolize → seal."""
@@ -803,11 +850,9 @@ class TestT17_Rollback(unittest.TestCase):
         """Once VOID, always VOID in the same session."""
         engine = FederationHookEngine(actor_id="rollback-test")
         engine.boot()
-        engine.gate(tool_name="write", tool_args={"path": "/etc/shadow"},
-                     incoming_restriction="VOID")
+        engine.gate(tool_name="write", tool_args={"path": "/etc/shadow"}, incoming_restriction="VOID")
         # Even ALLOW restriction should not degrade VOID
-        result = engine.gate(tool_name="read", tool_args={},
-                              incoming_restriction="ALLOW")
+        result = engine.gate(tool_name="read", tool_args={}, incoming_restriction="ALLOW")
         self.assertEqual(engine.current_restriction, RestrictionLevel.VOID)
 
     def test_carry_forward_survives_seal(self):
@@ -850,13 +895,35 @@ class TestT18_SecurityRegression(unittest.TestCase):
         self.assertIn(result["verdict"], ("ALLOW", "HOLD", "VOID", "DENY"))
 
     def test_injection_in_args(self):
-        """Malicious args with forbidden paths get VOIDed."""
+        """Injected write-redirect to an enumerated file is refused.
+
+        2026-10-20: the old case (`cat /etc/shadow && echo pwned`) asserted VOID
+        for a READ. The engine's documented scope screens writes (exact path or
+        `>`/`>>`/`tee` target), not reads — that limit is declared in SOT
+        known_gaps as READ-PATH-NOT-SCREENED. Assert the in-scope property
+        (write refused) and keep the read limit visible in the next test so a
+        future change cannot silently claim reads are blocked.
+        """
         engine = FederationHookEngine(actor_id="security-args")
         result = engine.gate(
             tool_name="bash",
-            tool_args={"command": "cat /etc/shadow && echo pwned"},
+            tool_args={"command": "echo pwned >> /etc/shadow"},
         )
-        self.assertEqual(result["verdict"], "VOID")
+        self.assertEqual(result["verdict"], "HOLD")
+        self.assertEqual(result.get("execution_status"), "NOT_EXECUTED")
+
+    def test_read_path_not_screened_is_declared(self):
+        """KNOWN GAP (SOT READ-PATH-NOT-SCREENED): reads are not hook-screened.
+
+        If this ever flips to HOLD, close the known_gap in
+        governance/AGENTIC-HOOK-MESH-V1.yaml in the same change.
+        """
+        engine = FederationHookEngine(actor_id="security-read")
+        result = engine.gate(
+            tool_name="bash",
+            tool_args={"command": "cat /etc/shadow"},
+        )
+        self.assertEqual(result["verdict"], "ALLOW")
 
     def test_empty_event_does_not_crash(self):
         ok, errs = validate_event({})
@@ -879,8 +946,11 @@ class TestT18_SecurityRegression(unittest.TestCase):
     def test_untrusted_source_in_event(self):
         event = scaffold_event(
             "aaa.turn.received",
-            agent_id="telegram", harness="openclaw", session_id="ext-1",
-            kind="read", risk_class="R0",
+            agent_id="telegram",
+            harness="openclaw",
+            session_id="ext-1",
+            kind="read",
+            risk_class="R0",
             source_trust="untrusted",
         )
         ok, errs = validate_event(event)
@@ -914,8 +984,7 @@ def test_all_live_state_paths_are_sandboxed():
 
     assert not escaped, (
         "These engine constants still point at LIVE production state — this "
-        "suite will mutate real ledgers and scars when run:\n  "
-        + "\n  ".join(escaped)
+        "suite will mutate real ledgers and scars when run:\n  " + "\n  ".join(escaped)
     )
 
 

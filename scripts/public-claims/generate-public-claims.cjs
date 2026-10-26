@@ -62,6 +62,19 @@ function stateFor(rule, value) {
 }
 
 function main() {
+  // Fail closed if the canonical owner marker names another writer. The marker
+  // is written by compile_truth_contract.py after every successful compile.
+  const ownerMarker = '/var/www/html/mcp/shared/.claims-owner';
+  try {
+    const owner = fs.readFileSync(ownerMarker, 'utf8').trim();
+    if (owner && owner !== 'generate-public-claims.cjs') {
+      process.stderr.write(`[claims] REFUSED: canonical owner is ${owner}; ${path.basename(__filename)} may not write\n`);
+      process.exit(2);
+    }
+  } catch (e) {
+    if (e.code !== 'ENOENT') throw e;
+  }
+
   const contractPath = arg('--contract', DEFAULTS.contract);
   const outPath = arg('--out', DEFAULTS.out);
   const contract = JSON.parse(fs.readFileSync(contractPath, 'utf8'));

@@ -1,30 +1,24 @@
 # NAMESPACE: github
 
-**owner:** AAA  <!-- SK7: derived from dir_name=github, default=AAA, added 2026-09-26T23:53:33Z -->
+**owner:** AAA
 
-> **Marker file** (added 2026-09-19, Fasa 1 skill hygiene).
-> This directory is a *namespace*, not a skill.
-> Skills live in the subdirectories listed below.
+> **Marker file.** This directory is a namespace, not a skill.
 
 ## Purpose
-This namespace groups related skills under one roof for discovery and routing.
-Each subdirectory is an independent skill with its own SKILL.md.
+One canonical GitHub skill, one door, one lifecycle.
 
-## Contained skills (6)
-- `github-auth`
-- `github-code-review`
-- `github-issue-to-pr`
-- `github-issues`
-- `github-pr-workflow`
-- `github-repo-management`
+## Contained skills (1)
+- `github-ops` — INIT → ORIENT → CLASSIFY → PLAN → BUILD → PUBLISH → VERIFY → REVIEW → MERGE → DEPLOY → SEAL
 
-## Owner
+## Archived aliases (2026-10-19)
+`github-auth`, `github-issues`, `github-pr-workflow`, `github-code-review`,
+`github-issue-to-pr`, `github-repo-management`, `FORGE-github-ops` were symlinks to
+`github-ops`. They appeared as seven separate skills in every picker. Archived to
+`/root/AAA/archive/skills-frozen-20261019/2026-10-19-github-ops-single-door/` (outside the catalog — the harness scans `.frozen`).
 
-**Owner:** `AAA/github`
-
-_Single-writer policy (Fasa 2): owner has write authority; other layers can read but not edit._
+`FORGE-github-workflow` remains on disk as a `do_not_select` pointer to the same owner.
 
 ## Conventions
-- Do not edit skill SKILL.md files from this namespace layer.
-- To add a new skill: create subdirectory with SKILL.md, then add to FEDERATED_SKILLS_REGISTRY_V3.yaml.
-- To deprecate: rename subdir to `<name>.DEPRECATED-<date>`, do not delete.
+- Add a new GitHub capability as a **stage or reference** inside `github-ops`, not as a sibling skill.
+- Never restore an alias without a harness config that hard-codes the old name.
+- To deprecate: `do_not_select: true` + `absorbed_into:` — do not delete.

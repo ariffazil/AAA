@@ -188,3 +188,9 @@ i-ARIF was forged 2026-08-12 per F13 SOVEREIGN DIRECTIVE — refactored from her
 ---
 
 *Layered because one layer cannot bear all failures. Constitutional because cost is asymmetric. Forged because identity is not given — it is carried.*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-007-over-output-verbosity, SCAR-ARCHITECTURE-OF-REJECTION, SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

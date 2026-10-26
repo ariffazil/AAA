@@ -418,18 +418,18 @@ organs:
 
     # ── Deprecated Aliases (callable, emit advisory) ──
     deprecated_tools:
-      - legacy: well_get_health
+      - legacy: well_assess_reliability
         canonical: well_assess_reliability
         mode: health
-      - legacy: well_state
+      - legacy: well_validate_vitality
         canonical: well_validate_vitality
         mode: state
-      - legacy: well_readiness
+      - legacy: well_validate_vitality
         canonical: well_validate_vitality
         mode: readiness
-      - legacy: well_init
-        canonical: well_init
-      - legacy: well_machine_state
+      - legacy: well_000_init
+        canonical: well_000_init
+      - legacy: well_assess_reliability
         canonical: well_assess_reliability
         mode: machine
 

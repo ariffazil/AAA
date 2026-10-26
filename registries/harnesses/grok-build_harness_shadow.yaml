@@ -4,7 +4,7 @@
 # Status: DRAFT — AWAITING F13 RATIFICATION
 # Evidence grade: COMPUTED (shadow-matrix FQ) only — no transcript receipt yet.
 
-harness_id: grok-build/FI-004
+harness_id: grok-build/FI-007
 harness_type: coding_cli
 model_family: xai/grok
 schema_version: harness-shadow-v1

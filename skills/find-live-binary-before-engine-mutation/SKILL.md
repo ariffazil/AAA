@@ -2,6 +2,8 @@
 name: find-live-binary-before-engine-mutation
 description: "Use when modifying any forecast engine, ML model serving code, or computational backend in the arifOS federation. Multi-source-of-truth failure (modifying audit replicas or source copies while leaving the live binary untouched) is the canonical mistake — calibration looks like it improved, but production output is unchanged. Procedure: identify the live systemd service, locate its canonical script path, mutate THAT, restart, verify before claiming success."
 trigger: engine mutation, modify forecast, edit fetch_*.py, calibration didn't improve, live API unchanged, production forecast, cone engine, model server, WEALTH backend, forecast orchestrator
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Find the Live Binary Before Mutating
@@ -96,3 +98,7 @@ Every engine mutation must write to /root/AAA/VAULT999/receipts/:
 A receipt that says live_api_verification.changed = false AND calibration_run_only = true is a receipt for failure, not success. Surface it as such.
 
 DITEMPA BUKAN DIBERI
+
+## Eureka updates (auto)
+
+- 2026-10-22 · `e-d26b07f4530e` · PATCH-CRAFT ON ENGINE FILES, ADDENDUM (extends the edit-tool-reformat LESSON): (1) The edit tool silently reformats the WHOLE file — for byte-clean patches, git-baseline the original and apply exact-string replacements via python (each anchor asserted to…

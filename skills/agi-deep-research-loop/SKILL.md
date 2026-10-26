@@ -22,6 +22,11 @@ E2B / Daytona / Modal sandbox MCPs when A-FORGE already sandboxes execution).
 
 ## The chain (already wired)
 
+0. **KIQ**       → Before any collection: write ONE line — `KIQ: <the question
+                    this research must answer>`. (Intelligence-cycle Phase 1,
+                    2026-10-22: define the Key Intelligence Question before
+                    collecting. A research task without a KIQ line is drifting,
+                    not researching. The KIQ goes into the receipt for judging.)
 1. **RESEARCH**   → firecrawl (`deep-research`, `agent`, `research-papers`
                     = PubMed/bioRxiv/arXiv, `crawl`, `scrape`, `map`, `monitor`)
                     + brave-search (ranked web/news) + context7 (library docs)

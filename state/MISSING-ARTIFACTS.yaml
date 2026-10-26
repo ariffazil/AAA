@@ -1,0 +1,74 @@
+# Missing-artifact inventory — Federation substrate gaps
+# Authored: 2026-10-18 by 333-AGI Δ MIND
+# Purpose: single source of truth for artifacts referenced in MD as runtime but not on disk
+# Status: SCAFFOLD_ONLY · verification_history empty · all last_verified_at: null
+
+audit_id: missing-artifacts-2026-10-18
+audit_at: null  # pending first probe
+audit_method: PENDING
+audit_status: SCAFFOLD_ONLY
+
+artifacts:
+  - artifact_id: pattern_compress.py
+    claimed_in:
+      - /root/AAA/instructions/aaa-emergence-5-stages.md
+      - /root/AAA/canon/EMERGENCE-5-STAGES.md
+    claims: "run pattern_compress.py when scar count ≥ 50 (Stage 2 trigger)"
+    reality: NOT_IMPLEMENTED
+    stage: 2
+    search_result: 0 matches on disk
+    risk_class: shadow-runtime-surface (agent may assume capability exists)
+    fix_path: rewrite MD claims with TARGET ARTIFACT — NOT IMPLEMENTED labels
+
+  - artifact_id: behavioral_adaptations.jsonl
+    claimed_in:
+      - /root/AAA/instructions/aaa-emergence-5-stages.md
+      - /root/AAA/canon/EMERGENCE-5-STAGES.md
+    claims: "behavioral memory record (scar → behavior-change tuples)"
+    reality: NOT_IMPLEMENTED
+    stage: 3
+    search_result: 0 matches on disk
+    risk_class: shadow-runtime-surface
+    fix_path: same as pattern_compress.py
+
+  - artifact_id: scar_to_pattern_map
+    claimed_in:
+      - /root/AAA/instructions/aaa-emergence-5-stages.md
+    claims: "pattern mapping table for Stage 2 compression"
+    reality: NOT_IMPLEMENTED
+    stage: 2
+    search_result: 0 matches on disk
+    risk_class: shadow-runtime-surface
+    fix_path: same
+
+  - artifact_id: governed_intuition.jsonl
+    claimed_in:
+      - /root/AAA/instructions/aaa-emergence-5-stages.md
+    claims: "governed intuition ledger (Stage 5 substrate)"
+    reality: NOT_IMPLEMENTED
+    stage: 5
+    search_result: 0 matches on disk
+    risk_class: shadow-runtime-surface
+    fix_path: same
+
+  - artifact_id: scripts/human_leverage_audit.py
+    claimed_in:
+      - /root/AAA/instructions/human-leverage-north-star.md
+    claims: "human_leverage audit script"
+    reality: NOT_IMPLEMENTED
+    stage: AT-008 measurement
+    search_result: 0 matches on disk
+    risk_class: shadow-runtime-surface (binding in AT-008 but missing)
+    fix_path: wording patched to NOT_IMPLEMENTED + binding status (done 2026-10-18)
+
+verification:
+  last_verified_at: null
+  verification_method: null
+  next_verification_due: 2026-10-25
+  trajectory: UNKNOWN
+  verified_by: []
+  evidence_refs: []
+
+arif_action_required:
+  - decide: Stage 2-5 substrate priority (T3 — F13 binary)
+  - OR: rewrite all MD claims with TARGET ARTIFACT labels (T1 — content patch)

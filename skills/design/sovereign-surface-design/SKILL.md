@@ -145,7 +145,7 @@ Three checks, in order:
 ## See also
 
 - `../web-surface-design-fidelity/` — companion skill for the "match an existing live
-  site" lane. Its `references/design-language-fidelity.md` carries the worked example
+  site" lane. Its `/root/AAA/skills/design/web-surface-design-fidelity/references/design-language-fidelity.md` carries the worked example
   the canon tokens here abstract from. Read both before re-skinning any sovereign page.
 
 ---

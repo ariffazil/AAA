@@ -9315,7 +9315,7 @@
       "priority": 5
     },
     {
-      "rule_id": "well_readiness",
+      "rule_id": "well_validate_vitality",
       "domain": "well",
       "task_pattern": "vitality|readiness|fatigue|homeostasis",
       "preferred_model": "deepseek/deepseek-v4-flash",

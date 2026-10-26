@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arifos.local/schemas/challenge-envelope.schema.json",
+  "title": "arifOS 555 Challenge Envelope v1",
+  "description": "One verification protocol for the federation (F13-approved shape 2026-10-18). Fields: claim, evidence, provenance, freshness, contradiction, falsifier, confidence, independent_witness. Verdicts: ACCEPT | REJECT | UNKNOWN_OUTCOME. A claim without a falsifier is REJECTED (CLAIM_WITHOUT_FALSIFIER). Consumers: arif_judge evidence gate, HERMES claim_validate, CHRON prediction mint, FRAME observation handoff, A-FORGE claim gates (adapters in arifosmcp/runtime/challenge_envelope.py).",
+  "x-consumers": [
+    "arif_judge evidence gate (arifosmcp)",
+    "HERMES claim_validate",
+    "CHRON prediction mint",
+    "FRAME observation handoff",
+    "A-FORGE claim gates"
+  ],
+  "x-failure-classes": [
+    "CLAIM_WITHOUT_FALSIFIER",
+    "WITNESS_SELF",
+    "EVIDENCE_ABSENT",
+    "CONFIDENCE_UNBOUNDED"
+  ],
+  "type": "object",
+  "required": [
+    "claim",
+    "evidence",
+    "provenance",
+    "freshness",
+    "contradiction",
+    "falsifier",
+    "confidence",
+    "independent_witness"
+  ],
+  "properties": {
+    "claim": { "type": "string", "minLength": 1 },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "ref": { "type": "string" },
+          "kind": { "type": "string" }
+        },
+        "required": ["ref"]
+      }
+    },
+    "provenance": { "type": "string", "minLength": 1 },
+    "freshness": { "type": "string", "minLength": 1, "description": "timestamp of the evidence, not of the claim" },
+    "contradiction": { "type": ["string", "null"], "description": "known counter-evidence; null only when none found and searched" },
+    "falsifier": { "type": "string", "minLength": 1, "description": "the observation that would make this claim wrong" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "independent_witness": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "type": "string" }
+        },
+        "required": ["id"]
+      },
+      "description": "at least one witness whose id != claimant (WITNESS_SELF)"
+    },
+    "claimant": { "type": "string" },
+    "verdict": { "type": "string", "enum": ["ACCEPT", "REJECT", "UNKNOWN_OUTCOME"] }
+  },
+  "additionalProperties": true
+}

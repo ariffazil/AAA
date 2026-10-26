@@ -4,7 +4,7 @@
   "note": "F:8700 = A-FORGE A2A slot (Hermes Authority plane gap closed 2026-07-10). Live MCP remains 7072.",
   "ports": {
     "P": {
-      "port": 8100,
+      "port": 5001,
       "role": "VAULT999_API",
       "status": "optional"
     },

@@ -73,7 +73,7 @@ changing the repo is the other skill's job, with its own authority gate.
 | 10 | "is this workflow YAML actually sound" | `workflow_integrity` | parse result, duplicate job IDs, unsafe patterns |
 | 11 | "does our documented tool count match runtime" | `manifest_reconcile` | README/FEDERATION/AGENTS vs live tools/list |
 | 12 | "are we enforcing branch protection" | `ruleset_audit` | protection gaps + remediation |
-| 13 | **"is this code real or theatre" (stubs, orphans, leaks)** | read-only peer `audit/audit-ops`: `references/audit-repo-reality.md` + `references/audit-repository-entropy.md` | stub tiers, corruption score, disposition ledger |
+| 13 | **"is this code real or theatre" (stubs, orphans, leaks)** | read-only peer `audit/audit-ops`: `/root/AAA/skills/audit/audit-ops/references/audit-repo-reality.md` + `/root/AAA/skills/audit/audit-ops/references/audit-repository-entropy.md` | stub tiers, corruption score, disposition ledger |
 | 14 | **"do the docs across repos agree"** | `references/forge-cross-repo-doc-zen.md` | orphan docs, wrong floor names, deprecated tool refs, fixed or listed |
 
 Modes 1–12 are the body below. Modes 13–14 are member bodies kept verbatim in `references/`.
@@ -126,7 +126,7 @@ F13 rules on which successor is canonical. Do not silently pick one.
 | `references/forge-cross-repo-doc-zen.md` | forge-cross-repo-doc-zen | `/root/AAA/skills/.archive/merge-20260920/repo-intelligence/forge-cross-repo-doc-zen/` |
 
 Read-only peers owned by another cluster (not absorbed here): `audit/audit-ops`
-(`references/audit-repo-reality.md`, `references/audit-repository-entropy.md`).
+(`/root/AAA/skills/audit/audit-ops/references/audit-repo-reality.md`, `/root/AAA/skills/audit/audit-ops/references/audit-repository-entropy.md`).
 Mutation lane: `github/github-ops`.
 
 <!-- wave1-merge:FLOW:END -->
@@ -298,6 +298,50 @@ output:
 ```
 
 **Truth gate:** Never label a diagnostic-survival job as "passed." If lint fails but `continue-on-error` keeps the workflow green, report the truth.
+
+#### Gmail→CI diagnosis path (proven 2026-10-18)
+
+When CI failures surface as Gmail notifications (not via a known commit/PR), pull them straight
+from the sovereign's Gmail OAuth token, no browser needed:
+
+```python
+# refresh token → access_token (google_token.json: client_id/secret/refresh_token)
+POST https://oauth2.googleapis.com/token  {client_id, client_secret, refresh_token, grant_type:refresh_token}
+# list failure notifications
+GET  https://gmail.googleapis.com/gmail/v1/users/me/messages?q=from%3Anotifications%40github.com%20Run%20failed
+# decode message (base64url body.parts[].body.data) → extract repo + run id from Subject/link
+# then diagnose with gh CLI (already authed as the sovereign):
+gh api repos/<org>/<repo>/actions/runs/<RUN>/jobs --jq '.jobs[] | select(.conclusion=="failure") | .name'
+JOBID=$(gh api repos/<org>/<repo>/actions/runs/<RUN>/jobs --jq '.jobs[] | select(.conclusion=="failure") | .id' | head -1)
+gh api repos/<org>/<repo>/actions/jobs/$JOBID/logs --allow-escape-sequences > /tmp/job.log
+```
+
+The log is the truth, not the email summary (which only says "Failed in 39 seconds, 2 annotations").
+Grep the log for `##[error]`, `drift`, `PermissionError`, `mismatch`, `exit code`.
+
+**arifOS dual-SOT trap (the mode-drift class):** `arifOS` declares tool modes in TWO places that
+must stay in lockstep — `arifosmcp/constitutional_map.py` (charter) AND `tools_sot.yaml` (tools_sot).
+`scripts/contract_closure.py verify --local` diffs both against runtime `tool_discovery`. Removing a
+mode from only one file flips the drift to the other surface (`extra_modes` vs `missing_modes`).
+Edit BOTH, then re-run `contract_closure.py verify --local` and require `"drift": false`. A mode that
+is declared but whose wiring file (e.g. `tools/qrl_collapse.py`) does not exist is an overclaim — remove
+it from the SOT, do not stub the tool.
+
+**CI fix is an ONION, not a one-shot (proven 2026-10-18):** fixing one red gate exposes the next.
+Order observed: broken `arifosd.py` symlink → broken `CLAUDE.md` symlink (both absolute `/root/...`
+paths, broken on the runner) → `verify_vault_chain.py` exit-code drift. Fix the CLASS, not the
+instance: replace per-file symlink whack-a-mole with `find . -type l ! -exec test -e {} \; -delete`
+before pytest. And the vault-chain script exited 2 on a frozen-historical MISSING ledger while its own
+`overall` verdict said INTACT — the `hard_failures` scan lacked the `not historical_frozen` guard that
+`overall` already had. Align the exit code with the verdict.
+
+**git-lane REPO trailer bug (2026-10-18):** `/root/scripts/git-lane` auto-injects the repo-routing
+trailer as `--trailer "REPO=$REPO_NAME"`, but git normalises `=` to `: `, so the commit message ends up
+with `REPO: arifos` (colon). The repo-routing gate greps `^REPO=` (EQUALS). So git-lane's injection
+NEVER satisfies the gate. Write the trailer as a literal message line `REPO=arifOS` (equals, capital OS)
+via `-F` message file or a plain `-m "REPO=arifOS"` — not `--trailer`. Also: git-lane only injects when
+`${_git_args[0]}` is literally `commit`; calling `git-lane <lane> -C <path> commit` puts `-C` first and
+silently skips injection. Call it from inside the repo with `commit` as the first arg.
 
 ### `issue_triage` — Issue intelligence
 

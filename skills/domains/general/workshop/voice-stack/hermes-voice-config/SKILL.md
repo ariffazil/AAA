@@ -81,10 +81,10 @@ Working path proven same session:
 - **Base:** `edge-tts ms-MY-YasminNeural` — Microsoft's Malay-specific neural model. Native BM corpus, NOT Chinese-backbone with Malay adapter (key differentiator vs MiniMax/Qwen for Malay soul work).
 - **DSP shaping** (`/root/AAA/engines/soul_envelope_dsp.py`): attack (60ms sigmoidal ramp, sopan entry, no harsh transient) → singer's formant (+3dB @ 2.9kHz, gemersik clarity) → breath floor (-40dB noise gate, tenang, no hiss) → release (180ms cosine decay, gentle landing).
 - **Three paths now exist:**
-  - **Path A (V8, proven):** Clone real audio → DSP lock F0 + formant → consent needed (F13).
+  - **Path A (V8, proven):** Clone real audio → DSP lock F0 + formant. F13 sovereign-owned.
   - **Path B (V9 attempt 2026-08-25, rejected):** Voice design from prompt alone → metrics hit, soul missing.
-  - **Path C (soul envelope, proven 2026-08-25):** Native synthetic BM base + DSP envelope shaping → sopan-santun carried via envelope, not impersonation. F9 clean, no consent needed.
-- **Rule:** For "soul of Melayu" voice work, start with Path C. Only escalate to Path A if explicit consent is available AND Arif specifically wants personal timbre.
+  - **Path C (soul envelope, proven 2026-08-25):** Native synthetic BM base + DSP envelope shaping → sopan-santun carried via envelope, not impersonation. F9 clean.
+- **Rule:** For "soul of Melayu" voice work, start with Path C. Escalate to Path A when Arif wants personal timbre.
 
 Implementation details: `references/soul-envelope-dsp-2026-08-25.md`.
 

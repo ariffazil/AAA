@@ -51,6 +51,29 @@ sources:
     - playwright
     - serena
     - human-inference
+pending_adjudication:
+  # Live harness MCP servers NOT yet authorised by this registry.
+  # This is named debt with an expiry — NOT an enablement grant.
+  # S-02 must register (enabled+sealed+launcher) or remove each entry.
+  purpose: Track live-vs-registry MCP drift without hiding it.
+  authority: F13 sovereign (Arif) 2026-10-18
+  expires_at: '2026-11-18'
+  servers:
+  - chron
+  - composio
+  - frame
+  - human-inference
+  - minimax-media
+  - qwen
+  - zai-vision
+  - zai-web-reader
+  - zai-web-search
+  - zai-zread
+  - context7
+  - hermes
+  - playwright
+  - serena
+  next_action: S-02 adjudicate each — register with launcher or remove from live config.
 axes:
   sense:
     description: Observe the current external world.
@@ -170,6 +193,53 @@ axes:
             url: http://127.0.0.1:8000/mcp
             seal: sealed
             source: claude+codex
+          xerj:
+            F_rating: SAFE
+            enabled: true
+            seal: sealed
+            transport: stdio
+            authority_mode: read_only
+            authority_class: READ_ONLY
+            capability_class: MEMORY_RETRIEVAL
+            mutation_allowed: false
+            primary_writer: opencode
+            allowlist_flag: --include-tools
+            # Tool surface pinned from live discovery 2026-10-18 (13 tools).
+            # Generator refuses to emit if declared hash != sorted(known_tools).
+            known_tools:
+            - xerj_search
+            - xerj_semantic_search
+            - xerj_vector_search
+            - xerj_hybrid_search
+            - xerj_memory_recall
+            - xerj_brain_ego
+            - xerj_brain_overview
+            - xerj_map
+            - xerj_code_search
+            - xerj_plan
+            - xerj_memory_store
+            - xerj_brain_link
+            - xerj_brain_unlink
+            allowed_tools:
+            - xerj_search
+            - xerj_semantic_search
+            - xerj_vector_search
+            - xerj_hybrid_search
+            - xerj_memory_recall
+            - xerj_brain_ego
+            - xerj_brain_overview
+            - xerj_map
+            - xerj_code_search
+            - xerj_plan
+            forbidden_tools:
+            - xerj_memory_store
+            - xerj_brain_link
+            - xerj_brain_unlink
+            tool_surface_sha256: 4790df9777c698ae910d97c4d6a9849540dd6f2aed1985785ca52a92c923a92b
+            note: "XERJ retrieval + second-brain. READ-ONLY lane emitted only for
+              non-primary harnesses via positive allowlist; write tools excluded.
+              Primary write authority (opencode) is OUT OF SCOPE and is not granted
+              by primary_writer — it still needs identity + lease + kernel judgment."
       memory.vector:
         description: Semantic vector storage and retrieval.
         F_rating: HOLD

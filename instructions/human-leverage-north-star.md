@@ -69,7 +69,7 @@ This metric is **falsifiable** in two directions:
 
 - **Doctrine:** This file (`/root/AAA/instructions/human-leverage-north-star.md`)
 - **Binding:** `ROOT_AGENT_CONFIG.yaml::human_leverage_north_star`
-- **Audit:** `scripts/human_leverage_audit.py` (TODO — separate mission)
+- **Audit:** `scripts/human_leverage_audit.py` → **NOT_IMPLEMENTED · Acceptance binding: AT-008 · Passage status: NOT_ESTABLISHED · Automation dependency: NONE CURRENTLY**
 - **Linked scars:** `/root/AAA/scars/2026-10-01-complexity-must-not-exceed-leverage.md` · `/root/AAA/scars/2026-10-01-agent-turn-vs-institution-optimization.md`
 
 ## What this metric does NOT measure

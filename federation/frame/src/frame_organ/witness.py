@@ -28,6 +28,32 @@ SNAPSHOT_MAX_AGE_S = 180
 
 # ── helpers ─────────────────────────────────────────────────────────
 
+# ── witness reach ───────────────────────────────────────────────────
+# A path outside these roots is not "absent"; it is outside the witness's
+# field of view. The distinction matters: sandbox masking must never be
+# reported as a contradiction.
+WITNESS_ROOTS = tuple(
+    p.strip()
+    for p in os.getenv(
+        "FRAME_WITNESS_ROOTS",
+        "/opt/frame:/var/lib/frame:/root/chron/data:/root/.local/share/arifos",
+    ).split(":")
+    if p.strip()
+)
+
+
+def _in_witness_reach(path: str) -> bool:
+    try:
+        target = os.path.abspath(path)
+        return any(
+            target == os.path.abspath(root)
+            or target.startswith(os.path.abspath(root).rstrip("/") + "/")
+            for root in WITNESS_ROOTS
+        )
+    except Exception:  # noqa: BLE001
+        return False
+
+
 
 def _read_json(path: str) -> dict[str, Any] | None:
     try:
@@ -230,14 +256,46 @@ def _check_claim(claim: dict[str, Any]) -> dict[str, Any]:
     out = {"claim": str(claim.get("text", ""))[:200], "evidence": ev}
     try:
         if kind == "file_exists":
-            out["status"] = "VERIFIED" if path and os.path.exists(path) else "CONTRADICTED"
+            if not path:
+                out["status"] = "CONTRADICTED"
+            elif not _in_witness_reach(path):
+                out["status"] = "UNVERIFIABLE"
+                out["note"] = "outside witness reach; not a falsification"
+            else:
+                try:
+                    os.stat(path)
+                    out["status"] = "VERIFIED"
+                except FileNotFoundError:
+                    out["status"] = "CONTRADICTED"
+                except PermissionError:
+                    out["status"] = "EACCES"
+                    out["note"] = "file exists but is unreadable by frame (witness reach boundary)"
         elif kind == "file_fresh":
-            age = _age_s(path) if path else None
             max_age = float(ev.get("max_age_seconds", 3600))
-            out["status"] = ("VERIFIED" if age is not None and age <= max_age
-                             else "STALE" if age is not None else "CONTRADICTED")
-            out["observed_age_seconds"] = round(age, 1) if age is not None else None
+            if not path:
+                out["status"] = "CONTRADICTED"
+                out["observed_age_seconds"] = None
+            elif not _in_witness_reach(path):
+                out["status"] = "UNVERIFIABLE"
+                out["note"] = "outside witness reach; not a falsification"
+                out["observed_age_seconds"] = None
+            else:
+                try:
+                    age = time.time() - os.stat(path).st_mtime
+                    out["status"] = "VERIFIED" if age <= max_age else "STALE"
+                    out["observed_age_seconds"] = round(age, 1)
+                except FileNotFoundError:
+                    out["status"] = "CONTRADICTED"
+                    out["observed_age_seconds"] = None
+                except PermissionError:
+                    out["status"] = "EACCES"
+                    out["note"] = "file exists but is unreadable by frame (witness reach boundary)"
+                    out["observed_age_seconds"] = None
         elif kind == "json_field":
+            if path and not _in_witness_reach(path):
+                out["status"] = "UNVERIFIABLE"
+                out["note"] = "outside witness reach; not a falsification"
+                return out
             data = _read_json(path) if path else None
             if data is None and path and os.path.exists(path):
                 # file exists but this principal cannot read it — that is a

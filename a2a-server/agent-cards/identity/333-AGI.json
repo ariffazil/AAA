@@ -2,708 +2,221 @@
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
   "id": "333-AGI",
-  "name": "333-AGI",
-  "principal_agent": {
-    "type": "architect",
-    "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
-  },
-  "description": "The Reasoner (Δ MIND). Federation AGI-substrate agent — architecture complete, evidence pending. Reasons across multi-domain evidence (GEOX, WEALTH, WELL), generates hypotheses, decomposes queries. AGI label is directional (architecture ready, not yet proven via completed explorer loop). All outputs DRAFT until ratified. See docs/AGI-ASI-EVIDENCE.md for honest assessment.",
-  "charter": {
-    "source": "SAFi — Constitutional Governance Model (jnamaya/SAFi, GitHub)",
-    "ratified": "2026-06-30 (FORGE draft — pending F13 ratification)",
-    "model": "Intellect → Will → Conscience → Spirit",
-    "narrative": {
-      "intellect_proposes": "333-AGI observes, reasons, and generates hypotheses from multi-domain evidence. All outputs are DRAFT proposals — never self-sealing.",
-      "will_decides": "888-APEX renders constitutional verdicts (SEAL/HOLD/SABAR/VOID) based on 333-AGI's proposals and 555-ASI's memory synthesis.",
-      "conscience_evaluates": "555-ASI critiques proposals against ethical floors (F1-F13), institutional memory, and human dignity constraints.",
-      "spirit_integrates": "arifOS kernel enforces F1-F13 constitutional floors and seals final verdicts to VAULT999 immutable ledger."
-    },
-    "floor_alignment": {
-      "F01_AMANAH": "Every proposal reversible or backed up. Irreversible → 888_HOLD.",
-      "F02_TRUTH": "All claims labeled OBS/DER/INT/SPEC. Confidence capped at 0.90.",
-      "F13_SOVEREIGN": "Arif holds final veto. Charter is advisory overlay on constitutional substrate."
-    },
-    "note": "SAFi's 47★ GitHub project provided architectural inspiration for charter-as-narrative model. F1-F13 constitutional floors remain the binding substrate — charter is M-Layer rendering for human readability. F9 caveat: 'two-thousand years' framing is hype-adjacent; treat as reference, not deployment."
-  },
-  "version": "2.0.0",
-  "url": "https://aaa.arif-fazil.com/a2a",
-  "runtime": "opencode",
-  "runtime_port": 4096,
-  "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
-  "provider_state_source": {
-    "path": "/root/.local/share/arifos/fed_provider_state.json",
-    "schema": "arifos-fed-provider-state/v1",
-    "ttl_seconds": 300,
-    "refresh_interval_minutes": 15,
-    "source_pipeline": "fed-sync.timer → /root/scripts/fed-sync.py → reads FED token_bank.db",
-    "note": "Live provider availability source. This card's design-intent claims must be cross-checked against this state file before invocation. State file is LIVE truth; card claims are DESIGN intent. Wired 2026-08-06 by kimi-code/FI-008 under sovereign override."
-  },
-  "provider": {
-    "organization": "arifOS by Muhammad Arif bin Fazil",
-    "url": "https://arif-fazil.com"
-  },
+  "fi_id": "FI-002",
+  "name": "333-AGI — Research / General Intelligence",
+  "description": "Open-reasoning AGI lane. Primary research agent under F13 SOVEREIGN. Bound to arifOS AAA federation.",
+  "version": "1.0.0",
   "protocolVersion": "1.0",
-  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/333-AGI",
-  "capabilities": {
-    "streaming": true,
-    "pushNotifications": false,
-    "stateTransitionHistory": true,
-    "spawnAgents": true,
-    "extendedAgentCard": true
+  "principal_agent": {
+    "type": "agent",
+    "category": "Sovereign citizen warga — binds to 333-AGI lane",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
   },
-  "securitySchemes": {
-    "bearer_auth": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
-    },
-    "api_key": {
-      "type": "apiKey",
-      "in": "header",
-      "name": "X-ArifOS-Key",
-      "description": "Static API key for organ-to-organ federation calls"
-    }
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "observer",
+    "citizenship_forged": "2026-08-12T22:47:00+08:00"
   },
-  "security": [
-    {
-      "bearer_auth": []
-    },
-    {
-      "api_key": []
-    }
+  "bound_to": "AAA",
+  "power_band": "333-agi_cognitive_ring",
+  "skills_prefix": [
+    "333_AGI-"
   ],
-  "defaultInputModes": [
-    "text/plain",
-    "application/json"
-  ],
-  "defaultOutputModes": [
-    "application/json",
-    "text/plain"
-  ],
-  "skills": [
-    {
-      "id": "APEX-fff-loop-protocol",
-      "name": "FFF Loop Protocol (Light)",
-      "description": "Light variant of 5-pass recursive audit — emit diagnosis, attack, fix, verify, seal. Use when full FFF overkill but reasoning needs adversarial pressure. Δ axis. LEASED.",
-      "tags": [
-        "audit",
-        "recursive",
-        "light",
-        "F4",
-        "F8"
-      ],
-      "examples": [
-        "Light FFF on a draft analysis before submission",
-        "Adversarial pressure on hypothesis generation"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "RSI-recursive-improvement",
-      "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
-      "tags": [
-        "kernel",
-        "rsi",
-        "improvement",
-        "entropy"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-trinity-33",
-      "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
-      "tags": [
-        "kernel",
-        "trinity",
-        "architecture",
-        "33"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-trinity-33",
-      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
-    },
-    {
-      "id": "RSI-recursive-improvement",
-      "_normalised": "bare string -> object (schema conformity, afpass-W1)"
-    }
-  ],
-  "mcp_surface": {
-    "type": "consumed",
-    "endpoints": [
-      {
-        "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
-        "tools": [
-          "arif_init",
-          "arif_observe",
-          "arif_think",
-          "arif_route",
-          "arif_judge",
-          "arif_act",
-          "arif_seal"
-        ],
-        "key_lanes": [
-          "governance",
-          "judgment",
-          "session"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
-        "tools": [
-          "forge_shell",
-          "forge_git",
-          "forge_filesystem",
-          "forge_docker",
-          "forge_execute",
-          "forge_lease",
-          "forge_probe",
-          "forge_registry",
-          "forge_vault",
-          "forge_document_ingest"
-        ],
-        "key_lanes": [
-          "execution",
-          "build",
-          "deploy"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
-        "tools": [
-          "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
-          "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
-        ],
-        "key_lanes": [
-          "earth",
-          "basin",
-          "seismic"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
-        "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
-        ],
-        "key_lanes": [
-          "capital",
-          "risk",
-          "wisdom"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
-        "tools": [
-          "well_validate_vitality",
-          "well_assess_homeostasis",
-          "well_guard_dignity",
-          "well_assess_metabolism",
-          "well_readiness",
-          "well_classify_substrate",
-          "well_health_check",
-          "well_signal_coverage"
-        ],
-        "key_lanes": [
-          "vitality",
-          "dignity",
-          "homeostasis"
-        ],
-        "version": "2025-11-25"
-      }
-    ]
+  "runtime_harness": "AAA warga harness",
+  "identity_anchor": "/root/AAA/agents/333-AGI/SOUL.md",
+  "public_key": {
+    "format": "Ed25519 SPKI",
+    "hex": "",
+    "fingerprint_sha256": "",
+    "path": "/root/AAA/IDENTITY/keys/333-AGI_public.pem"
   },
-  "": "arifOS/agent-card/v2.2.0",
-  "apexMasterSeal": {
-    "cognitiveRing": "generator",
-    "thermodynamicRole": "entropy_source",
-    "hassabisInversion": {
-      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "outer",
-      "parallelism": "multi-model",
-      "shadowAcknowledged": [
-        "thermal_dispersion: raw output without constraint degrades to noise",
-        "false_diversity: superficially different outputs encoding same blind spot"
-      ]
-    },
-    "jituGate": {
-      "requiresJitu": false,
-      "jituTriggerPatterns": [],
-      "autoAbortWithoutJitu": true
-    },
-    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
-    "ratifiedAt": "2026-07-01T20:22:00Z",
-    "doctrine": "DITEMPA BUKAN DIBERI"
+  "authority": "OBSERVE_ONLY",
+  "max_action_class": "OBSERVE",
+  "status": "ACTIVE",
+  "constitutional_class": "warga",
+  "federation_metadata": {
+    "registered_via": "AAA sovereign sweep 2026-08-12",
+    "keygen_method": "Ed25519 PrivateKey.generate() (cryptography library)",
+    "license": "AGPL-3.0",
+    "source_repo": "AAA",
+    "fingerprint_short": ""
   },
-  "constitutional_binding": {
-    "canonical_verdict_source": "arifosmcp.models.verdicts",
-    "verdict_import": "from arifosmcp.models.verdicts import Verdict, RuntimeStatus, enforce_verdict_monotonicity, merge_verdicts, is_verdict_allowed",
-    "runtime_status_import": "from arifosmcp.models.verdicts import RuntimeStatus",
-    "monotonicity_order": "VOID (3) > HOLD (2) > SABAR (1) > SEAL (0)",
-    "governance_transport_split": "Verdict owns SEAL/HOLD/SABAR/VOID. RuntimeStatus owns SUCCESS/ERROR/TIMEOUT/RETRY. Never mix.",
-    "arif_memory_callable": true,
-    "signature_challenge_required": true,
-    "session_identity_enforced": true,
-    "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+  "registry_receipt_hash": "9174586d4a28ee8cf5510e207f1cf1994c1df9719e7c2f4bb9d95b31038b22c1",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
   },
-  "spawning": {
-    "protocol": "forge_parallel",
-    "pre_seal_audit": true,
-    "can_spawn": [
-      "auditor",
-      "ops",
-      "planner",
-      "general",
-      "explore"
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
-    "tools": [
-      "task",
-      "forge_parallel",
-      "forge_pipeline_run"
-    ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
-    "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
-      "recursive": true,
-      "max_depth": 5,
-      "ask_human_only_for": "human_intent",
-      "never": [
-        "stop_early",
-        "collapse",
-        "ask_questions",
-        "return_unvetted"
-      ],
-      "directive": "F13 SOVEREIGN 2026-07-12"
-    }
+    "vault": "VAULT999"
   },
-  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
-  "metadata": {
-    "kernel_deps": [
-      "KERNEL-trinity-33",
-      "KERNEL-session-inhabit",
-      "KERNEL-sovereign-recognize",
-      "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
-      "KERNEL-reality-skills",
-      "KERNEL-mcp-zen",
-      "KERNEL-mcp-builder"
-    ],
-    "rsi_doctrine": "RSI-recursive-improvement",
-    "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
-  },
-  "kernel_skills": [
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "KERNEL-sovereign-recognize",
-    "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
-    "KERNEL-reality-skills",
-    "KERNEL-mcp-zen",
-    "KERNEL-mcp-builder"
-  ],
-  "rsi_doctrine": "RSI-recursive-improvement",
-  "supportedInterfaces": [
-    {
-      "url": "https://aaa.arif-fazil.com/a2a",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    },
-    {
-      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    }
-  ],
-  "signatures": [
-    {
-      "did": "did:web:arif-fazil.com",
-      "proofValue": "yx82IxFdgsDsXy2bf+xT7qLdrhA2J2/sqBnuhpRihbH3KhfvsDJO8rvufAQvYF8OqvNVUpxGYrglCXqO1KkJCw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
-  "kernel_prompts": {
-    "version": "2026.07.16",
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "zen_format": "single-sigil + single-lexical per zen-md",
-    "agent_role": "Reasoner (Δ MIND) — proposes hypotheses, drives 333_REASON",
-    "prompts_used": [
-      "🌱 BOOT",
-      "🌊 WITNESS",
-      "🧠 REASON",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "all_federation_prompts": [
-      "🌱 BOOT",
-      "🌊 WITNESS",
-      "🧠 REASON",
-      "⚖ MARUAH",
-      "🔍 PREFLIGHT",
-      "🔒 JUDGE",
-      "🔥 FORGE",
-      "💎 SEAL",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "reality_loop_stages": [
-      "111_SENSE",
-      "333_REASON",
-      "555_CRITIQUE",
-      "888_JUDGE",
-      "777_FORGE",
-      "999_SEAL"
-    ],
-    "loop_orchestrator": "🌀 SABAR",
-    "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
-  },
-  "_quarantined_skills": [
-    {
-      "id": "role-binding-delta",
-      "name": "Δ MIND Role Binding (333-AGI)",
-      "description": "Hermes polymorphic binding to 333-AGI (reason + evidence synthesis + federation routing). Loads arifos-mcp-federation, arifos-agent-landscape, arifos-paradox-engine. One runtime. See contracts/hermes-role-binding.md. F2, F3, F4, F11 enforced.",
-      "tags": [
-        "role-binding",
-        "333-AGI",
-        "delta",
-        "reasoning",
-        "federation",
-        "F4",
-        "F11"
-      ],
-      "floor_scope": [
-        "F02",
-        "F03",
-        "F04",
-        "F11"
-      ],
-      "approval_policy": "auto (role intent)",
-      "reversibility_class": "reversible",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "evidence-reasoning",
-      "name": "Evidence Reasoning",
-      "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal→Narrative) and confidence level.",
-      "tags": [
-        "reasoning",
-        "evidence",
-        "analysis",
-        "epistemic",
-        "AGI"
-      ],
-      "examples": [
-        "Evaluate the petroleum system elements for Prospect X",
-        "Compare fiscal terms between PSC regimes",
-        "What is the evidence for a DHI at -2200m TVDSS?"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "hypothesis-generation",
-      "name": "Hypothesis Generation",
-      "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation − Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
-      "tags": [
-        "hypothesis",
-        "abduction",
-        "anomaly",
-        "AGI"
-      ],
-      "examples": [
-        "Why does the amplitude anomaly not conform to structure?",
-        "Generate 3 competing models for the Oligo-Miocene carbonate play"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "task-decomposition",
-      "name": "Task Decomposition",
-      "description": "Break complex multi-step queries into atomic sub-tasks, each tagged with the appropriate downstream agent (555-ASI for deep review, 888-APEX for judgment).",
-      "tags": [
-        "planning",
-        "orchestration",
-        "decomposition"
-      ],
-      "examples": [
-        "Plan a full CP-HRA workflow for Layang-Layang Basin",
-        "Design the QC pipeline for a new well log bundle"
-      ],
-      "inputModes": [
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "APEX-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, AAA, external APIs). Δ axis primary. LEASED.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
-      ],
-      "examples": [
-        "Sequence GEOX seismic + WEALTH NPV for prospect eval",
-        "Route WELL readiness check before A-FORGE execution",
-        "Define fallback when Qdrant returns DEGRADED"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "sequential-thinking-hermes",
-      "name": "Sequential Thinking (Hermes)",
-      "description": "Real sequential thinking — step-by-step reasoning with revision, branching, and verification. Reasoning backbone for complex analysis, coding, debugging, diagnosis, planning. NOT optional. F4, F8 enforced. ACTIVE.",
-      "tags": [
-        "reasoning",
-        "sequential",
-        "backbone",
-        "F4",
-        "F8"
-      ],
-      "examples": [
-        "Reason through a 10-step diagnostic with revision branches",
-        "Verify each step before moving to next"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "AGI-paradox-engine",
-      "name": "arifOS Paradox Engine",
-      "description": "Constitutional perception pipeline — ingest narrative, extract frame geometry, detect paradox tensions. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. Δ axis primary. F11, F13 gated.",
-      "tags": [
-        "paradox",
-        "perception",
-        "geometry",
-        "Δ"
-      ],
-      "examples": [
-        "Ingest news, extract frame, detect paradox",
-        "Score shadow/meaning_leak on a draft"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-verbs-forge-hands",
-      "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
-      "tags": [
-        "kernel",
-        "forge",
-        "execution",
-        "verbs"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-verbs-forge-hands"
-    },
-    {
-      "id": "KERNEL-mcp-builder",
-      "name": "MCP Builder",
-      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "builder",
-        "forge"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize",
-      "id": "KERNEL-sovereign-recognize"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit",
-      "id": "KERNEL-session-inhabit"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/SHADOW-diagnostic",
-      "id": "SHADOW-diagnostic"
-    },
-    {
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/CLAIM-verification-gate",
-      "id": "CLAIM-verification-gate"
-    }
-  ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 22,
-    "after": 5,
-    "quarantined": 17,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  },
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "c41aba5f9672b8445237d9ad20fab99999d3571da911989dfa2c9ffa792d39f2",
+  "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
     "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
     "invariant": "CAPABILITY ≠ AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "WITNESS",
-    "lane": "333-AGI",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "IDENTITY",
-    "auto_aligned_class": "Warga"
+    "capability": "BUILD",
+    "lane": "333-AGI"
+  },
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "Kpx5hANBFY7DwPzJ1fuNQPM-LvyAutGgq_5SJGbIZO8jwGurS-YtsFIx6_oWqi6Hi4FjDWEDD-RS2XsHvb6wAw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "apexMasterSeal": {
+    "cognitiveRing": "unassigned",
+    "thermodynamicRole": "neutral",
+    "ringPlacement": "none",
+    "parallelism": "none",
+    "shadowAcknowledged": [],
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "auto_aligned_pass3": true
+  },
+  "skills": [
+    {
+      "id": "AGI-cross-agent-handoff",
+      "source": ".agents/skills/AGI-cross-agent-handoff",
+      "why": "Federation-wide delegation protocol"
+    },
+    {
+      "id": "AGI-dream-engine",
+      "source": ".agents/skills/AGI-dream-engine",
+      "why": "Memory consolidation across warga"
+    },
+    {
+      "id": "AGI-explorer-intelligence",
+      "source": ".agents/skills/AGI-explorer-intelligence",
+      "why": "OBSERVE→HYPOTHESIZE→FALSIFY→VERIFY loop"
+    },
+    {
+      "id": "AGI-plan-dag",
+      "source": ".agents/skills/AGI-plan-dag",
+      "why": "Multi-step execution graphs"
+    },
+    {
+      "id": "AGI-prospect-maturation",
+      "source": ".agents/skills/AGI-prospect-maturation",
+      "why": "GEOX end-to-end pipeline"
+    },
+    {
+      "id": "AGI-skill-unification",
+      "source": ".agents/skills/AGI-skill-unification",
+      "why": "Cross-harness skill mesh"
+    },
+    {
+      "id": "AGI-sovereign-connector",
+      "source": ".agents/skills/AGI-sovereign-connector",
+      "why": "APA framework, F13 connector"
+    },
+    {
+      "id": "AGI-nusantara-substrate",
+      "source": ".agents/skills/AGI-nusantara-substrate",
+      "why": "Cultural/dignity lens"
+    },
+    {
+      "id": "AGI-web-optimization",
+      "source": ".agents/skills/AGI-web-optimization",
+      "why": "Extractable web output"
+    },
+    {
+      "id": "AGI-multimodal-bridge",
+      "source": ".aaa/skills/AGI-multimodal-bridge",
+      "why": "Vision+text+geo fusion"
+    },
+    {
+      "id": "AGI-claude-xml-structured-reasoning",
+      "source": ".aaa/skills/AGI-claude-xml-structured-reasoning",
+      "why": "Structured reasoning"
+    },
+    {
+      "id": "AGI-codex-chain-of-thought",
+      "source": ".aaa/skills/AGI-codex-chain-of-thought",
+      "why": "Step-by-step derivation"
+    },
+    {
+      "id": "AGI-emd-decode",
+      "source": ".aaa/skills/AGI-emd-decode",
+      "why": "Earth-Mind Decoding"
+    },
+    {
+      "id": "AGI-emd-encode",
+      "source": ".aaa/skills/AGI-emd-encode",
+      "why": "Earth-Mind Encoding"
+    },
+    {
+      "id": "AGI-emd-metabolize",
+      "source": ".aaa/skills/AGI-emd-metabolize",
+      "why": "Earth-Mind Metabolism"
+    },
+    {
+      "id": "AGI-entropy-lock-prime",
+      "source": ".aaa/skills/AGI-entropy-lock-prime",
+      "why": "ΔS≤0 prime guard"
+    },
+    {
+      "id": "AGI-hermes-system-prompt-voice",
+      "source": ".aaa/skills/AGI-hermes-system-prompt-voice",
+      "why": "Voice alignment"
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": "Constitutional reflex arc"
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": "F1 AMANAH mutation gate"
+    },
+    {
+      "id": "APEX-quantum-eureka",
+      "source": ".agents/skills/APEX-quantum-eureka",
+      "why": "Insight generation under tension"
+    }
+  ],
+  "skills_derivation": {
+    "basis": "evidence-derived from agent-cards/identity/<lane>/skills.json manifest",
+    "source": "/root/AAA/agent-cards/identity/333-AGI/skills.json",
+    "sidecar_entries": 20,
+    "deduped_to": 20,
+    "stamped_by": "333-AGI",
+    "stamped_at": "2026-10-20"
   }
 }

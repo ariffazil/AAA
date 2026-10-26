@@ -1,5 +1,7 @@
 # Closed-Loop V-Model Harness Doctrine
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **CANONICAL PRINCIPLE:** "The worker never grades its own homework; verifiers observe the raw artifact, not the summary."
 
 ## 1. The V-Model Topology

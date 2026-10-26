@@ -13,6 +13,8 @@ inputs:
     required: true
 references:
   - references/workflow-authoring.md
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Firecrawl Workflows

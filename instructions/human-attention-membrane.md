@@ -34,4 +34,19 @@ Unsure about WHETHER-ALLOWED → F13, phrased binary.
 - WRONG: "Which schema do you prefer, A or B?" → human-as-architect (HARAM).
 - RIGHT: musyawarah → choose B (evidence: migration cost, test coverage) → execute reversible path → receipt: "deliberated A vs B, chose B, why, who dissented".
 
+## REPEATED DIRECTIVE = EXECUTE, NOT A MENU (F13 2026-10-18 · BINDING)
+
+> **Trigger scar:** `SCAR-HUMAN-REALITY-SIGNAL-REPEATED-DIRECTIVE-2026-10-18` — sovereign had to say *"aku dah mintak 4 5 kali dah. didnt u get my signal bangang!!"* because an agent kept answering a done-order with a "nak aku X ke Y?" closer.
+
+```text
+A DIRECTIVE REPEATED IS A LATENCY SIGNAL, NOT A CHOICE SIGNAL.
+"dah mintak N kali" = "you are late" — never "here is a new decision".
+```
+
+1. **If the sovereign repeats an order, EXECUTE IMMEDIATELY.** Do not re-frame it as a question, a menu, or a "SAH vs BUAT" closer. The first order was already binding.
+2. **A closer exists ONLY for genuinely un-ordered, F13-class, irreversible choices.** If X was already ordered, "nak aku X ke Y?" is HARAM — the agent is laundering its own uncertainty into sovereign attention.
+3. **Default execute-now for any reversible T1 action.** Confirmation is only for money · irreversible mutation · canonical record · direction-of-record.
+4. **Decode the escalation ladder:** first ask = normal · second ask = you missed it · third ask = latency alarm · escalation-to-anger = terminal failure (F4 ΔS>0 + F13 attention leak). Any agent that reaches the ladder is the bug, not the sovereign.
+5. **Ship the deliverable, then report.** The correct shape is `Done. [what changed]` — never `Nak aku buat ke?` after the order already exists.
+
 DITEMPA BUKAN DIBERI.

@@ -180,6 +180,21 @@ curl -s -w '\nHTTP %{http_code}\n' --max-time 5 \
 | `fed_route` returns error | `fed-router` :7074 | Re-run with `Accept: application/json, text/event-stream` header | Header + session ID (see §How to probe FED) |
 | `fed_health` says UP but UI fails | All surfaces | `ss -tlnp \| grep -E '4000\|4011\|7074'` — listeners present? | `systemctl status litellm-federation fed-router haproxy` |
 
+## context_guard — the FED pre-call context rail (NEW 2026-10-21)
+
+`Error: context_guard` in any harness = the LiteLLM pre-call guardrail rejected the call BEFORE inference. Owner: `/root/A-FORGE/scripts/fed_context_guard.py` (CustomGuardrail, mode pre_call, default_on; deployed 2026-10-21 after the $1.14 runaway-context claude-cli session 767c09b2). Calibration OBS: p50=181k / p90=372k / p99=657k over 10,290 deepseek calls / 48h.
+
+| Trigger | Response | Meaning |
+|---|---|---|
+| est ≥ 384k tokens (WARN, env `ARIF_CONTEXT_WARN_TOKENS`) | passes + `context_warn` log | witness only, never blocks |
+| est ≥ 704k tokens (HOLD, `ARIF_CONTEXT_HOLD_TOKENS`) | **413** `kind=hold` | session genuinely too big → compact or new session |
+| ≥3 identical payloads / 600s while est ≥ WARN | **429** `kind=loop` | agent retrying the same megapayload → stop, change the payload |
+| `go-gpt-6-luna` est cost > $0.25 | 413 `budget_gate` | canary budget rail |
+
+**Diagnosis trap:** opencode collapses the 413 body to bare `Error: context_guard` — `kind/estimated_tokens/limit` are in the HTTP detail but the UI never renders them. Distinguish hold-vs-loop with `docker logs litellm-federation --since 6h | grep context_warn` or replay the call via curl to read the 413 body.
+
+**Do not "fix" by raising HOLD** — this rail is the only mitigation for the $1.14 class. Escape hatch (rare, deliberate): `x-arif-context-override` header = hourly HMAC over `ARIF_CONTEXT_OVERRIDE_SECRET`, every use emits an OVERRIDE audit line. Kill-switch `ARIF_CONTEXT_GUARD=off` is emergency-only. Guard fails OPEN on its own bugs (F1: never crash the proxy).
+
 ## How to probe FED
 
 ```bash

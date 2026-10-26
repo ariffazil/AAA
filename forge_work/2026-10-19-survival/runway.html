@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Survival Runway — Arif</title>
+<style>
+:root{--bg:#0d1117;--ink:#c9d1d9;--dim:#8b949e;--line:#21262d;--gold:#ffd700;--red:#f85149;--green:#3fb950;--blue:#58a6ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:24px 18px 60px}
+h1{font-size:26px;color:#fff;margin:0 0 6px;letter-spacing:-.02em}
+.sub{color:var(--dim);font-size:14px;margin:0 0 24px}
+label{display:block;font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin:18px 0 6px}
+input{width:100%;background:#161b22;border:1px solid var(--line);color:#fff;font-size:18px;padding:12px 14px;border-radius:6px}
+input:focus{outline:none;border-color:var(--blue)}
+.hint{font-size:12px;color:var(--dim);margin-top:4px}
+.out{margin-top:28px;padding:20px;border:1px solid var(--line);border-radius:8px;background:#11151c}
+.big{font-size:40px;font-weight:700;line-height:1;color:var(--gold)}
+.big.red{color:var(--red)}.big.green{color:var(--green)}
+.lbl{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row:last-child{border:0}
+.row b{color:#fff}
+.warn{margin-top:18px;padding:14px;border-left:3px solid var(--red);background:#1a1214;border-radius:4px;font-size:14px;line-height:1.6}
+.ok{margin-top:18px;padding:14px;border-left:3px solid var(--green);background:#0f1a13;border-radius:4px;font-size:14px;line-height:1.6}
+.foot{margin-top:30px;font-size:12px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Survival Runway</h1>
+  <p class="sub">Letak dua nombor. Keluar satu jawapan: berapa lama kau boleh tahan.</p>
+
+  <label>Duit boleh guna sekarang (RM)</label>
+  <input id="cash" type="number" inputmode="numeric" placeholder="0">
+  <div class="hint">Tunai + simpanan mudah cair. Jangan masukkan KWSP atau rumah.</div>
+
+  <label>Belanja sebulan (RM)</label>
+  <input id="burn" type="number" inputmode="numeric" placeholder="0">
+  <div class="hint">Sewa + makan + kereta + insurans + hutang. Purata 3 bulan terakhir.</div>
+
+  <label>Duit masuk sebulan kalau berhenti (RM)</label>
+  <input id="inflow" type="number" inputmode="numeric" placeholder="0" value="0">
+  <div class="hint">Sewaan, dividen, kerja sampingan. Kalau tiada, letak 0.</div>
+
+  <label>Pakej MSS (RM) — kalau dah ada angka</label>
+  <input id="mss" type="number" inputmode="numeric" placeholder="0" value="0">
+  <div class="hint">Kosongkan kalau belum dapat angka.</div>
+
+  <div class="out">
+    <div class="lbl">Kau boleh tahan</div>
+    <div class="big" id="months">—</div>
+    <div id="verdict" style="margin-top:8px;font-size:14px"></div>
+  </div>
+
+  <div id="detail"></div>
+  <div class="foot">Angka ni aritmetik, bukan nasihat. Ia jawab satu soalan sahaja: berapa lama sebelum duit habis.</div>
+</div>
+
+<script>
+var ids = ['cash','burn','inflow','mss'];
+function calc(){
+  var cash = +document.getElementById('cash').value || 0;
+  var burn = +document.getElementById('burn').value || 0;
+  var inflow = +document.getElementById('inflow').value || 0;
+  var mss = +document.getElementById('mss').value || 0;
+  var monthsEl = document.getElementById('months');
+  var verdict = document.getElementById('verdict');
+  var detail = document.getElementById('detail');
+
+  if(!burn){ monthsEl.textContent='—'; verdict.textContent='Isi belanja sebulan dulu.'; detail.innerHTML=''; return; }
+
+  var net = burn - inflow;
+  if(net <= 0){ monthsEl.textContent='∞'; monthsEl.className='big green';
+    verdict.textContent='Duit masuk cukup tutup belanja.'; detail.innerHTML=''; return; }
+
+  var m = cash / net;
+  var gate = (new Date('2027-03-01') - new Date()) / (30.44*864e5);
+  var margin = m - gate;
+  monthsEl.textContent = m.toFixed(1) + ' bulan';
+  monthsEl.className = 'big ' + (margin < 1 ? 'red' : margin < 4 ? '' : 'green');
+  verdict.textContent = mss > 0
+    ? (margin < 1 ? 'Cash sahaja tidak sampai pintu. Pakej mesti jadi, atau cari kerja.'
+      : margin < 4 ? 'Cash sampai pintu, margin nipis. Pakej itu yang tentukan segalanya.'
+      : 'Cash sampai pintu dengan ruang.')
+    : (m < 6 ? 'Tidak cukup untuk satu pusingan keputusan.'
+      : m < 12 ? 'Cukup untuk satu pusingan, bukan dua.'
+      : 'Ada ruang untuk pilih, bukan terpaksa.');
+
+  var h = '';
+  h += '<div class="out"><div class="row"><span>Bersih keluar sebulan</span><b>RM ' + Math.round(net).toLocaleString() + '</b></div>';
+  if(mss > 0){
+    var withMss = (cash + mss) / net;
+    var atGate = cash - net*gate;
+    h += '<div class="row"><span>Dengan pakej MSS</span><b>' + withMss.toFixed(1) + ' bulan (' + (withMss/12).toFixed(1) + ' tahun)</b></div>';
+    h += '<div class="row"><span>Pakej tambah</span><b>' + (withMss - m).toFixed(1) + ' bulan</b></div>';
+    h += '<div class="row"><span>Kalau MSS TAK jadi</span><b style="color:#f85149">' + (atGate/net).toFixed(1) + ' bulan di pintu</b></div>';
+  }
+  h += '<div class="row"><span>Sampai</span><b>' + new Date(Date.now() + m*30.44*864e5).toLocaleDateString('en-GB',{month:'short',year:'numeric'}) + '</b></div>';
+  h += '</div>';
+
+  // decision gate: Mac 2027
+  var monthsToGate = (new Date('2027-03-01') - new Date()) / (30.44*864e5);
+  if(m < monthsToGate){
+    h += '<div class="warn"><b>Duit habis sebelum Mac 2027.</b><br>Kau ada ' + m.toFixed(1) +
+         ' bulan, pintu keputusan ada ' + monthsToGate.toFixed(1) + ' bulan. Jurang ' +
+         (monthsToGate - m).toFixed(1) + ' bulan. Itu yang perlu ditutup dulu — sama ada dengan pakej, kerja lain, atau kurangkan belanja.</div>';
+  } else {
+    h += '<div class="' + (margin < 4 ? 'warn' : 'ok') + '"><b>Cash sampai pintu keputusan.</b><br>Kau ada ' + m.toFixed(1) +
+         ' bulan, pintu Mac 2027 dalam ' + monthsToGate.toFixed(1) + ' bulan. Margin ' + margin.toFixed(1) +
+         ' bulan sahaja.' + (margin < 4 ? ' Itu bukan ruang untuk pilih. Itu ruang untuk satu keputusan, dan ia mesti betul.' : '') + '</div>';
+  }
+  detail.innerHTML = h;
+}
+ids.forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

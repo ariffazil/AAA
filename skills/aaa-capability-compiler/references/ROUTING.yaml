@@ -5,6 +5,7 @@ families:
   evidence:           families/evidence.yaml            # ALIAS_PENDING_MERGE
   session:            families/session.yaml             # ALIAS_PENDING_MERGE
   federation-runtime: families/federation-runtime.yaml  # ALIAS_PENDING_MERGE
+  github:             families/github.yaml             # ACTIVE 2026-10-18 (7-body collapse -> 1 body + 6 symlinks)
 aliases: references/ALIASES.yaml
 proofs:  references/PROOFS.jsonl
 state:   references/CAPABILITY_STATE.json

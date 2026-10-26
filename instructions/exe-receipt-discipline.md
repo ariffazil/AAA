@@ -1,5 +1,7 @@
 # [🦾ACT] Receipt Discipline — Hermes Output Contract
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Forged:** 2026-08-12 by F13 SOVEREIGN (Taufik Constraint)  
 > **Renamed:** 2026-08-12 — `[EXE]` → `[🦾ACT]` (ACT execution actuator alignment)  
 > **Binding:** Hermes — ALL execution outputs to F13/888  

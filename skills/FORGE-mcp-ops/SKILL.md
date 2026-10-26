@@ -1,6 +1,6 @@
 ---
-id: mcp-ops
-name: FORGE-mcp-ops
+id: mcporter-cli
+name: mcporter-cli
 version: 1.0.0
 description: "mcporter — Universal MCP CLI for inspecting, calling, and debugging MCP servers from terminal."
 owner: AAA

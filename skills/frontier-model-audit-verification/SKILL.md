@@ -1,6 +1,6 @@
 ---
 name: frontier-model-audit-verification
-description: "Treat pasted audit reports from frontier models (Claude, Gemini, etc.) as self-reports requiring reproduction against live runtime. Covers probe-to-witness discipline (Rule #8: never predict a probe result; run it or report UNMEASURED), cross-session evidence hashing (SHA-256), the 10-class arifOS envelope contradiction checklist with deployment-drift hazard, the 8-rule stabilization doctrine, the two-writer dual-truth pattern, mode-routing gaps, the hypothesis-vs-source trap, the format-projection failure class (copy-pasted metrics block across regenerated prose), and the token-economics audit. When the user pastes a model's audit findings, paste a model analysis, or the agent receives any report claiming runtime kernel behaviour. Adjacent to federation-runtime-forensics and verify-sibling-ops-reports."
+description: 'Treat pasted audit reports from frontier models (Claude, Gemini, etc.) as self-reports requiring reproduction against live runtime. Covers probe-to-witness discipline (Rule #8: never predict a probe result;'
 tags:
   - MCP
   - Audit
@@ -862,3 +862,7 @@ Worked case + probe table: `references/ghost-probe-skill-audit-2026-08-15.md`.
 - `scripts/probe_kernel_contradictions.py` — re-runnable JSON-RPC probe
   harness: exercises classes 1–6 against live `:8088`, exits 0/1.
 - `scripts/arif_kernel_liveness.py` — daily liveness probe for all 8 canonical tools (Rule #4).
+
+## Routing notes (moved from description 2026-10-23)
+
+run it or report UNMEASURED), cross-session evidence hashing (SHA-256), the 10-class arifOS envelope contradiction checklist with deployment-drift hazard, the 8-rule stabilization doctrine, the two-writer dual-truth pattern, mode-routing gaps, the hypothesis-vs-source trap, the format-projection failure class (copy-pasted metrics block across regenerated prose), and the token-economics audit. When the user pastes a model's audit findings, paste a model analysis, or the agent receives any report claiming runtime kernel behaviour. Adjacent to federation-runtime-forensics and verify-sibling-ops-reports.

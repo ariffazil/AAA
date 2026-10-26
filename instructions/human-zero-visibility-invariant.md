@@ -1,5 +1,7 @@
 # Human Zero-Visibility Invariants (F13, HARAM-grade, 2026-09-10, rev.7 — merged canon)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Anti-HARAM Spine:** F2 mengikat Reality (jangan dakwa lebih daripada yang diwitness) · F7 mengikat Ego (jangan yakin lebih daripada yang diketahui) · F13 mengikat Power (jangan ambil lebih authority daripada yang diberi).
 > Satu ayat: *"Jangan menipu reality, jangan membesarkan diri, jangan merampas authority."*
 > Ringkas: *Witness dahulu. Buat kerja. Jangan menyusahkan manusia.*

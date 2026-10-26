@@ -4,6 +4,8 @@ description: "[QwenCloud] Check for qwencloud-ai updates and notify the user whe
 compatibility: "Requires Python 3.9+ and curl. Cursor: auto-loaded. Claude Code: read this skill's SKILL.md before first use."
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Qwen Update Checker
 

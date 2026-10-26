@@ -3,9 +3,17 @@ name: 999-ingat
 description: "Ingat — tutup loop memori: seal resit, carry_forward, apa yang patut jadi scar. ZEN spine /999. cognitive-commands doctrine di /root/AAA/skills/cognitive-commands/SKILL.md."
 triggers:
   - "/999_ingat"
+atlas_numeral: "999"
+atlas_function: WITNESS
+atlas_layer: AUTH
+atlas_question: "What actually happened? (layer, not agent)"
+slot: apex-9
+kernel_verb: arif_seal
 ---
 
 # /999_ingat
+
+> Slot: **999 WITNESS** · APEX-9 spine (law: `cognitive-commands`).
 
 Bila mesej ini tiba (sebagai slash atau teks):
 

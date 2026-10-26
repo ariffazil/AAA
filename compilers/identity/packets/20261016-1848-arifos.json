@@ -1,0 +1,49 @@
+{
+ "packet": {
+  "subject_type": "arifos",
+  "identities": {
+   "source": {
+    "scheme": "git_sha",
+    "value": "de1b916c0"
+   },
+   "import": {
+    "scheme": "filesystem_path",
+    "value": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py"
+   }
+  },
+  "equivalence_evidence": [
+   {
+    "relation": "LOADED_FROM",
+    "from": "source",
+    "to": "import",
+    "evidence_ref": "import path inside /opt/arifos worktree",
+    "measured_at": "2026-10-16T18:48:30.554303+00:00"
+   }
+  ],
+  "unresolved_relations": [
+   "build_to_package: NO wheel/dist-info artifact on disk \u2014 wheel-based MATCH/DRIFT verdicts compare against a phantom artifact"
+  ],
+  "identity_state": "AMBIGUOUS_LENS_CONFLICT",
+  "observed_at": "2026-10-16T18:48:30.554552+00:00"
+ },
+ "measurement_provenance": [
+  {
+   "m": "source git",
+   "cmd": "git -C /opt/arifos log -1",
+   "ok": true,
+   "out": "de1b916c0"
+  },
+  {
+   "m": "package dist-info",
+   "cmd": "ls /opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp-*.dist-info",
+   "ok": false,
+   "out": ""
+  },
+  {
+   "m": "import",
+   "cmd": "/opt/arifos/current/venv/bin/python -c import arifosmcp; print(arifosmcp.__file__)",
+   "ok": true,
+   "out": "/opt/arifos/current/venv/lib/python3.13/site-packages/arifosmcp/__init__.py"
+  }
+ ]
+}

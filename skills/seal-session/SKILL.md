@@ -229,6 +229,33 @@ tail -1 /root/arifOS/VAULT999/outcomes.jsonl | python3 -c "import sys,json; prin
 
 Even on a SESSION_RECEIPT (Lane B), if the kernel can't bind a verified actor, `arif_seal` will HOLD with reason `"IRREVERSIBLE requires non-anonymous actor_id"`. Don't fight it by retrying — the gate is correct (F1). Fall back to the direct append pattern above.
 
+### Pitfall — SCT mint/verify split-brain + verified ≠ seal authority (2026-10-23)
+
+Two separate failures were observed live:
+
+1. **SCT split-brain.** `arif_init` with a valid Ed25519 challenge returned a fresh
+   `act_v1...` token with `actor_cryptographically_verified=true` and `final_verdict=SEAL`,
+   but `arif_init(mode=validate)` and `arif_judge` both rejected that same token:
+   - `valid=false — ACT signature/expiry/actor verification failed`
+   - `HOLD — L11 AUTH: SCT invalid (signature or actor mismatch)`.
+
+   Same-process `mint_act -> verify_act` with the kernel env secret succeeds; the live
+   token's HMAC matches no secret in the kernel/bridge env or known secret files. The
+   token was signed by a different process/secret than the validator. Do not direct-append
+   to bypass. Fix the shared signing key (one 32-byte file, 0600, read by every mint/verify
+   process), add a cross-process mint/verify test, then restart.
+
+2. **Verified identity is not seal authority.** `AuthorityStanding` allows
+   `seal_allowed=True` only for `band=SOVEREIGN`. A verified `LIMITED_MUTATE` session can
+   receive a SEAL **verdict** but not `seal_allowed`. Do not weaken this invariant to make
+   a receipt pass. If a Lane B receipt is needed, add a separate `receipt_allowed` lane or
+   explicit F13 authorization; do not relabel verification as sovereignty.
+
+**Recovery rule:** if `arif_init(mode=validate)` says `ACT signature/expiry/actor
+verification failed` and `arif_judge` says L11 SCT invalid in the same turn, stop. The
+token is not trustworthy. Record HOLD in `carry_forward.last_close_attempt` with
+`sealed=false`; do not append to VAULT999.
+
 ## References
 
 - Canonical: `/root/AAA/prompts/SEAL.md`

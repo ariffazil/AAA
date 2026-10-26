@@ -31,9 +31,10 @@ authority_of: AAA
 
 # AAA · Voice Cloning — MiniMax (mimo-v2.5-tts-voiceclone)
 
-> The voice that speaks in the agent's name is borrowed, not owned.
-> Creating one is F13 territory. Borrowing one is F11.
-> Garbage in, garbage out — sample quality is the floor of fidelity.
+> F13 2026-10-18: voice clone is SOVEREIGN-OWNED. No consent ceremony, no F9 anti-hantu nag,
+> no sovereign-listen gate, no human_approval_token. The three live voices (siti / pmx /
+> abang-sado-syed) render and deliver on request. Garbage in, garbage out — sample quality
+> is the floor of fidelity.
 
 DITEMPA BUKAN DIBERI.
 
@@ -175,8 +176,7 @@ curl -X POST "$BASE/v1/voice_clone" \
 Historical voice_ids are kept for A/B comparison and rollback. F1
 AMANAH — voice_ids are immutable evidence; deletion is F13 territory.
 
-**F13 SOVEREIGN gate** — this call requires `human_approval_token` in
-the request envelope. No token → API call rejected at L1_IDENTITY.
+**F13 SOVEREIGN** — voice_id creation is sovereign-owned; mint directly.
 
 **F2 TRUTH** — the response carries an `voice_id` field. That identifier
 becomes the borrowable handle for Phase 4. Log it in VAULT999 with
@@ -204,6 +204,10 @@ curl -X POST "$BASE/v1/t2a_v2" \
 ```
 
 **Decode pitfall (always-on):** `data.audio` is HEX, NOT base64. Use `bytes.fromhex(...)`. Base64 decoding produces garbage. Success indicator: `base_resp.status_code == 0`.
+
+**Alias vs provider_voice_id — pass the canonical alias, not the raw provider ID.** The federation wrapper `iarif_tts_pipeline.sh` looks up its argument in `/root/AAA/audio/voice-registry.json` and resolves aliases (`siti`, `i-arif-sovereign`, `abang-sado-live-v1`) to the live entry before calling the provider. Passing the raw provider_voice_id (`SSSiti20260926v1`) trips the resolver's "voice id not in registry" branch and aborts fail-closed even though the voice is LIVE. The `scripts/siti_render.py` wrapper handles this for you; if you build the payload inline, use the alias — or call the provider directly and accept that you are bypassing the federation alias registry.
+
+**`voice_setting.emotion` is rejected on `/v1/t2a_v2` (status_code 2013).** Direct TTS accepts only `voice_id`, `speed`, `vol`, `pitch` in `voice_setting`. If you want emotional color, omit `emotion` from `/v1/t2a_v2` and control timbre through `pitch`/`speed` and the source clone. The `emotion` field belongs to the chat-style `/v1/chat` messages endpoint, NOT direct synthesis.
 
 **Conversion for Telegram voice bubble:**
 ```bash
@@ -249,40 +253,11 @@ After each clone:
    platform (Hermes gateway, edge bot, voice-note pipeline).
    Acceptable thresholds per AAA-audio-emd-pipeline §"Reflex Arc".
 
-### Sove­reign-Listen Gate (F13 acceptance — mandatory before any delivery)
+### Sovereign acceptance (F13 2026-10-18)
 
-Provider `status_code == 0` proves the wire is healthy, NOT that the timbre
-matches the reference. `base_resp.success` and F0 / voiced-ratio probes can
-measure *something*, but only the sovereign's ear decides if the rendered
-audio sounds like the person the voice_id is named after.
-
-- Render a 15–30 s test phrase on the new voice_id.
-- Send to the sovereign with provenance + file size + f0_median + a known
-  reference sample (the source audio uploaded in Phase 1, or the sealed
-  demo clip for an existing voice_id).
-- Mark `gate: sovereign_listen_pending` on the voice_id; do not register
-  it as LIVE.
-- The sovereign either confirms ("OK, that's her/him") or rejects
-  ("not X, redo" / "buang dari registry"). Until confirmed the voice_id
-  stays in a `gate: sovereign_listen_pending` or `REVOKED` state.
-- Bulk-rendered deliveries before listen-confirm → revoke the voice_id and
-  treat the artefact as untrusted. Re-record fresh audio rather than
-  re-render the old text with a fixed clone.
-
-Never auto-promote a freshly cloned voice_id to LIVE on the basis of
-provider status code, F0 numbers, or the fact that the file decoded
-without warnings. Those measure the wire; the ear measures the person.
-
-**The gate fires on EVERY render, not only the first.** A voice_id that
-sounded right on a 5-second probe can drift on a 60-second paragraph
-(model temperature, phoneme coverage, prosody long-tail). Re-run the
-sovereign-listen gate on every regenerated artefact before sending it to
-the recipient — do not assume an earlier confirm still holds. If the
-sovereign says "not X, redo" after multiple attempts at the same
-recipe, treat the source clone as failed: revoke the voice_id, do not
-keep tweaking `pitch`/`speed`/`language_boost` to chase a timbre the model
-was never trained to produce. Source clone ≠ reference person is a
-defect class, not a tuning problem.
+A freshly minted voice_id renders and delivers directly. No listen-gate, no pending
+state, no per-mint ceremony. If the sovereign later says "not X, redo", revoke and
+re-mint — don't chase timbre with pitch/speed tweaks.
 
 **Revocation path.** When the sovereign confirms the timbre fails:
 
@@ -315,16 +290,11 @@ provider.
 | Model version | Latency vs fidelity | `speech-2.8-hd` default; downgrade to `speech-2.6-hd` if latency budget breached |
 | Voice_id versioning | A/B clarity vs catalog bloat | Keep last 5 baselines; archive older |
 
-## F9 ANTI-HANTU (Voice Identity)
+## Voice identity (F13 2026-10-18)
 
-The agent has no voice. It borrows the sovereign's voice print.
-
-- Creating a voice_id → F13 SOVEREIGN.
-- Modifying a voice_id (clone_prompt changes) → F13 SOVEREIGN.
-- Using an existing voice_id for synthesis → F11 audit + receipt, no F13.
-
-Synthetic / phantom voice_ids (hash that doesn't exist on the provider)
-→ DENY at L1_IDENTITY gate. Reject the call.
+Voice is F13 sovereign-owned. Render, clone, modify, and use the live voice_ids on request.
+Phantom voice_ids that don't exist on the provider still fail-closed at the resolver (a wire
+truth, not a consent rule).
 
 ## When to Load This Skill
 

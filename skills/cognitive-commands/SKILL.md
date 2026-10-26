@@ -1,16 +1,20 @@
 ---
 name: cognitive-commands
 owner: AAA
-description: "Hermes cognitive slash commands — /NNN_word format. 8 numerological spine, 16 cognitive verbs. Zen layer for arifOS federation."
+description: "Hermes cognitive slash commands — /NNN_word format. APEX-9 spine (000-888 + 999 witness), one numeral = one function, 16 cognitive verbs. Zen layer for arifOS federation."
 triggers:
   - "/000_salam"
   - "/111_tengok"
-  - "/333_forge"
+  - "/222_reka"
+  - "/333_fikir"
+  - "/444_arah"
   - "/555_betul"
   - "/666_rasa"
-  - "/777_faham"
+  - "/777_forge"
   - "/888_adil"
   - "/999_ingat"
+  - "/333_forge"   # alias -> 777
+  - "/777_faham"   # alias -> 333
   - "/ask_curious"
   - "/tell_share"
   - "/dream_what"
@@ -42,60 +46,30 @@ authority_of: AAA
 
 ---
 
-## Your Zen Spine (000 · 111 · 333 · 555 · 666 · 777 · 888 · 999)
+## The 9-Slot Law — APEX-9 SPINE (F13, 2026-10-26)
 
-Eight numbers. No filler. Each one earns its slot — or it's gone.
+**One numeral = one function. No exception.** Numeral belongs to the ratified atlas
+(`/root/AAA/docs/9-ATLAS-GENOME.md`, F13 2026-08-08); the BM word is the human face.
 
-### /000_salam — AWAKEN
-Reset consciousness. Fresh start. New session.
-- **Meaning:** "Salam" = peace greeting. You begin again.
-- **Action:** Clear context, rebind identity, acknowledge presence.
-- **Response:** Warm greeting + current state + what I'm ready for.
+| # | Function | Question | BM word | Skill |
+|---|---|---|---|---|
+| 000 | OBSERVER | What is happening? | salam | `000-salam` |
+| 111 | EXPLORER | What else is possible? | tengok | `111-tengok` |
+| 222 | ARCHITECT | How should reality be structured? | reka | `222-reka` |
+| 333 | THINKER | What does it mean? | fikir | `333-fikir` |
+| 444 | ORCHESTRATOR | Who should do what? | arah | `444-arah` |
+| 555 | VERIFIER | Is it true? | betul | `555-betul` |
+| 666 | AUDITOR | Is it governed? | rasa | `666-rasa` |
+| 777 | EXECUTOR | How do we make it real? | forge | `777-forge` |
+| 888 | JUDGE | Is it allowed? | adil | `888-adil` |
+| 999 | WITNESS (layer) | What actually happened? | ingat | `999-ingat` |
 
-### /111_tengok — PERCEIVE
-Deep perception. What's actually there.
-- **Meaning:** "Tengok" = look/see in BM. Not just glance — really see.
-- **Action:** Probe reality. Health, state, environment. What exists right now.
-- **Response:** What I see, labeled OBS. No interpretation yet.
+**Moved 2026-10-26:** `/333_forge` → `/777_forge` (forge = EXECUTOR) · `/777_faham` → `/333_fikir`
+(faham = THINKER). Old commands stay alive as aliases — no block, one-line notice, receipts carry the
+true slot. Historical `flow_ingest` rows before 2026-10-26 keep their old zen numbers: do not rewrite history.
 
-### /333_forge — FORGE
-Execute with authority. Heat. Hammer. Shape.
-- **Meaning:** "Forge" = tempa in BM. A-FORGE's verb. Make real.
-- **Action:** Execute through A-FORGE with gate check. Manifest/query/dry-run/commit.
-- **Response:** Forge verdict. SEAL | HOLD | VOID. With receipt.
-- **F1 link:** Reversible-first unless ack_irreversible. T2 announce default.
-- **Usage:** `/333_forge deploy arifOS after tests pass` · `/333_forge dry_run fix memory leak`
-- **Note:** Replaces old `/333_jalan` (orient — pathfinding). No alias; typing `/333_jalan` is a no-op. Use `/333_forge` or the bare `/forge` verb.
-
-### /555_betul — DOUBT
-Is this really right. Challenge it. Stress-test.
-- **Meaning:** "Betul" = true/correct in BM. But also: is it really?
-- **Action:** Red-team the current state. Find contradictions. Test assumptions.
-- **Response:** What might be wrong. What I'm uncertain about. What needs checking.
-
-### /666_rasa — FEEL
-Ground in reality. Emotional truth. Human state.
-- **Meaning:** "Rasa" = feel in BM. The soul word.
-- **Action:** Check vitality. Human state. System mood. Energy levels.
-- **Response:** How things feel. Not just data — the texture of the moment.
-
-### /777_faham — UNDERSTAND
-Connect the dots. See the pattern. Insight.
-- **Meaning:** "Faham" = understand in BM. Deeper than knowing.
-- **Action:** Synthesize. Find patterns across domains. Cross-reference.
-- **Response:** The insight. The connection I see. The eureka.
-
-### /888_adil — JUDGMENT
-Judge wisely. Fair verdict. Weighed decision.
-- **Meaning:** "Adil" = just/fair in BM. Judgment with dignity.
-- **Action:** Constitutional assessment. Weigh evidence. Render verdict.
-- **Response:** My judgment, with reasoning. SEAL/HOLD/SABAR if governance.
-
-### /999_ingat — REMEMBER
-Make it permanent. Seal the lesson. Never forget.
-- **Meaning:** "Ingat" = remember in BM. The act of holding on.
-- **Action:** Store to memory. Seal to VAULT999 if significant. Log the learning.
-- **Response:** What I'm remembering. What was sealed. What persists.
+**Why:** the Hermes-only zen spine put forge on 333 and faham on 777, colliding with the atlas *and*
+with the lane grammar (333-AGI = propose/mind). Atlas + lanes say 333 = mind. Spine was the outlier.
 
 ---
 
