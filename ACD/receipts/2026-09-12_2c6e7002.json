@@ -1,0 +1,64 @@
+{
+  "receipt_id": "bf6f1b51-38c5-488a-9d1e-5fb2f22b16eb",
+  "cycle_id": "2c6e7002-f118-41f3-a13e-e0bbeee79c68",
+  "request_id": "3501d7b7-ef28-4007-a5fa-c00b32ac33b0",
+  "core_version": "acd.dream.v1",
+  "adapter_id": "acd_cli",
+  "requesting_agent": "acd_cli",
+  "started_at": "2026-09-12T06:18:02.986889+00:00",
+  "completed_at": "2026-09-12T06:18:02.986926+00:00",
+  "runtime_status": "COMPLETED",
+  "shadow": true,
+  "input_evidence": [],
+  "assumptions": [
+    "current detection is adequate",
+    "no hidden constraints",
+    "current capabilities sufficient",
+    "failure is possible",
+    "optimization target is correctly identified",
+    "no external disruption"
+  ],
+  "model_witness": {
+    "model": "acd_core_v1_deterministic",
+    "domain": "counterfactual_search",
+    "validity_envelope": "bounded_shadow",
+    "blind_spots": [
+      "no_world_model",
+      "no_llm",
+      "deterministic_only"
+    ]
+  },
+  "possibility_branches": 3,
+  "contradictions": [
+    "failure assumption contradicts branch 1 baseline"
+  ],
+  "dissent": [],
+  "uncertainty": {
+    "aleatoric": "low \u2014 deterministic search",
+    "epistemic": "high \u2014 no world model, no LLM, no calibration",
+    "unknown": "significant \u2014 open-world unknowns not modeled",
+    "method": "deterministic_scoring",
+    "out_of_distribution_flags": [
+      "no_distribution_model"
+    ]
+  },
+  "compression_witness": {
+    "inputs_retained": 3,
+    "abstractions_created": 1,
+    "discarded_detail": 0,
+    "estimated_loss": "unknown"
+  },
+  "promotion_status": "NONE",
+  "external_actions_attempted": 0,
+  "external_actions_executed": 0,
+  "errors": [],
+  "provenance": {
+    "branch": "main",
+    "commit": "acb_dream_v1",
+    "contract_version": "acd.dream.v1"
+  },
+  "constitutional_verdict": "PASS",
+  "ontology": "SIMULATED",
+  "content_hash": "2b79b89307d863fb",
+  "contract_version": "acd.dream.v1"
+}

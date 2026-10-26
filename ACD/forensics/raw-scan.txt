@@ -1,0 +1,144 @@
+# ACD raw scan (bounded) — 2026-09-12T06:21:48Z
+roots: /root/AAA/ACD, /root/AAA/dream_engine, /root/AAA/dreams, /root/AAA/dream-engine, /root/.hermes/skills/AGI-dream-engine, /root/.grok/memory, /root/.qwen/projects, /root/.arifos, /root/.kimi-code/skills-backup
+terms: dream, rehearsal, recombination, counterfactual, possibility
+
+[dream] /root/AAA/ACD: 38 files
+  - /root/AAA/ACD/CONSTITUTION.md
+  - /root/AAA/ACD/migration/legacy-disposition.md
+  - /root/AAA/ACD/cli/__pycache__/acd_cli.cpython-313.pyc
+  - /root/AAA/ACD/cli/acd_cli.py
+  - /root/AAA/ACD/schemas/dream-receipt.schema.json
+  - /root/AAA/ACD/schemas/possibility-branch.schema.json
+[rehearsal] /root/AAA/ACD: 2 files
+  - /root/AAA/ACD/forensics/03-DREAM-ADMISSIBILITY-BRIEF.md
+  - /root/AAA/ACD/forensics/acd-component-inventory.json
+[counterfactual] /root/AAA/ACD: 16 files
+  - /root/AAA/ACD/CONSTITUTION.md
+  - /root/AAA/ACD/cli/__pycache__/acd_cli.cpython-313.pyc
+  - /root/AAA/ACD/cli/acd_cli.py
+  - /root/AAA/ACD/core/acd_core.py
+  - /root/AAA/ACD/core/__pycache__/acd_core.cpython-313.pyc
+  - /root/AAA/ACD/core/__pycache__/acd_memory.cpython-313.pyc
+[possibility] /root/AAA/ACD: 20 files
+  - /root/AAA/ACD/CONSTITUTION.md
+  - /root/AAA/ACD/migration/legacy-disposition.md
+  - /root/AAA/ACD/schemas/promotion-petition.schema.json
+  - /root/AAA/ACD/schemas/dream-receipt.schema.json
+  - /root/AAA/ACD/schemas/possibility-branch.schema.json
+  - /root/AAA/ACD/core/acd_core.py
+[dream] /root/AAA/dream_engine: 8 files
+  - /root/AAA/dream_engine/SKILL.md.bak-20260912-normalize
+  - /root/AAA/dream_engine/SKILL.md
+  - /root/AAA/dream_engine/dreams/consolidate.py
+  - /root/AAA/dream_engine/dreams/__pycache__/consolidate.cpython-313.pyc
+  - /root/AAA/dream_engine/dreams/consolidate.py.bak-20260909T0932Z
+  - /root/AAA/dream_engine/DESIGN.md.bak-20260912-normalize
+[rehearsal] /root/AAA/dream_engine: 4 files
+  - /root/AAA/dream_engine/SKILL.md.bak-20260912-normalize
+  - /root/AAA/dream_engine/SKILL.md
+  - /root/AAA/dream_engine/DESIGN.md.bak-20260912-normalize
+  - /root/AAA/dream_engine/DESIGN.md
+[recombination] /root/AAA/dream_engine: 4 files
+  - /root/AAA/dream_engine/SKILL.md.bak-20260912-normalize
+  - /root/AAA/dream_engine/SKILL.md
+  - /root/AAA/dream_engine/DESIGN.md.bak-20260912-normalize
+  - /root/AAA/dream_engine/DESIGN.md
+[counterfactual] /root/AAA/dream_engine: 2 files
+  - /root/AAA/dream_engine/SKILL.md.bak-20260912-normalize
+  - /root/AAA/dream_engine/SKILL.md
+[dream] /root/AAA/dream-engine: 1 files
+  - /root/AAA/dream-engine/distill.py
+[dream] /root/.hermes/skills/AGI-dream-engine: 19 files
+  - /root/.hermes/skills/AGI-dream-engine/IMPLEMENTATION_PLAN.md
+  - /root/.hermes/skills/AGI-dream-engine/SKILL.md.bak-20260912-normalize
+  - /root/.hermes/skills/AGI-dream-engine/kimi/SKILL_MD.md
+  - /root/.hermes/skills/AGI-dream-engine/kimi/SKILL_MD.md.bak-20260912-normalize
+  - /root/.hermes/skills/AGI-dream-engine/opencode/README.md
+  - /root/.hermes/skills/AGI-dream-engine/opencode/README.md.bak-20260912-normalize
+[rehearsal] /root/.hermes/skills/AGI-dream-engine: 7 files
+  - /root/.hermes/skills/AGI-dream-engine/IMPLEMENTATION_PLAN.md
+  - /root/.hermes/skills/AGI-dream-engine/SKILL.md.bak-20260912-normalize
+  - /root/.hermes/skills/AGI-dream-engine/SKILL.md
+  - /root/.hermes/skills/AGI-dream-engine/prototype/README.md
+  - /root/.hermes/skills/AGI-dream-engine/prototype/README.md.bak-20260912-normalize
+  - /root/.hermes/skills/AGI-dream-engine/prototype/systemd/arif-dream-phase2.timer
+[recombination] /root/.hermes/skills/AGI-dream-engine: 3 files
+  - /root/.hermes/skills/AGI-dream-engine/IMPLEMENTATION_PLAN.md
+  - /root/.hermes/skills/AGI-dream-engine/SKILL.md.bak-20260912-normalize
+  - /root/.hermes/skills/AGI-dream-engine/SKILL.md
+[counterfactual] /root/.hermes/skills/AGI-dream-engine: 11 files
+  - /root/.hermes/skills/AGI-dream-engine/IMPLEMENTATION_PLAN.md
+  - /root/.hermes/skills/AGI-dream-engine/SKILL.md.bak-20260912-normalize
+  - /root/.hermes/skills/AGI-dream-engine/SKILL.md
+  - /root/.hermes/skills/AGI-dream-engine/prototype/l3_shadow_schema.sql
+  - /root/.hermes/skills/AGI-dream-engine/prototype/morning_briefing_merge.py
+  - /root/.hermes/skills/AGI-dream-engine/prototype/l3_shadow_schema.sql.bak-20260912-normalize
+[dream] /root/.grok/memory: 4 files
+  - /root/.grok/memory/root-675ca5d9/index.sqlite
+  - /root/.grok/memory/root-675ca5d9/sessions/2026-08-09-interval-019fe54f.md
+  - /root/.grok/memory/root-675ca5d9/sessions/2026-09-06-interval-01a07774.md
+  - /root/.grok/memory/root-675ca5d9/sessions/2026-08-24-interval-01a034ca.md
+[dream] /root/.qwen/projects: 188 files
+  - /root/.qwen/projects/-root/subagents/b1f8e704-c304-448d-a892-fac3277e536a/agent-Explore-call_7e07b8473e1b42c8bef7973c.jsonl
+  - /root/.qwen/projects/-root/subagents/8c300d85-455e-4954-b244-adc50417477a/agent-Explore-call_756bb8e2bed24db08fe76e85.jsonl
+  - /root/.qwen/projects/-root/subagents/8c300d85-455e-4954-b244-adc50417477a/agent-Explore-call_667e75d0403a47d5a1e14127.jsonl
+  - /root/.qwen/projects/-root/subagents/6edccf62-0a52-4dd5-b493-6d9ea1401fa6/agent-Explore-call_26352d5dbbc4444ab481e26f.jsonl
+  - /root/.qwen/projects/-root/subagents/6edccf62-0a52-4dd5-b493-6d9ea1401fa6/agent-Explore-call_280ca5cdfa2c4ab1969c8291.jsonl
+  - /root/.qwen/projects/-root/subagents/d77e2a6e-56d5-4322-89a9-01f2d5fbe7f4/agent-Explore-call_c7033381e7004f4b90be4b4f.jsonl
+[rehearsal] /root/.qwen/projects: 8 files
+  - /root/.qwen/projects/-root/subagents/29ef79ba-1b7f-4e93-9eff-1df8e4294189/agent-Explore-call_8c6a57db1aa44ffe9e69678b.jsonl
+  - /root/.qwen/projects/-root/subagents/c4a17fc4-8c51-4c16-9c84-7169a15c96f7/agent-Explore-call_d4dcd285e3e446108ba6fe9d.jsonl.stream
+  - /root/.qwen/projects/-root/subagents/c4a17fc4-8c51-4c16-9c84-7169a15c96f7/agent-Explore-call_d4dcd285e3e446108ba6fe9d.jsonl
+  - /root/.qwen/projects/-root/subagents/a5348643-7f48-408b-b66a-bce649ea3317/agent-general-purpose-call_f7e6af71a0274b519e7713e0.jsonl
+  - /root/.qwen/projects/-root/chats/c4a17fc4-8c51-4c16-9c84-7169a15c96f7.jsonl
+  - /root/.qwen/projects/-root/chats/99077b94-a860-4df5-8734-24d7f90383d6.jsonl
+[recombination] /root/.qwen/projects: 4 files
+  - /root/.qwen/projects/-root/subagents/c4a17fc4-8c51-4c16-9c84-7169a15c96f7/agent-Explore-call_d4dcd285e3e446108ba6fe9d.jsonl
+  - /root/.qwen/projects/-root/chats/c4a17fc4-8c51-4c16-9c84-7169a15c96f7.jsonl
+  - /root/.qwen/projects/-root/chats/211ed29d-432a-4558-9346-04ddeb7fe6a6.jsonl
+  - /root/.qwen/projects/-root/chats/63b5a9fa-16d1-401a-afdc-7dee0529b423.jsonl
+[counterfactual] /root/.qwen/projects: 27 files
+  - /root/.qwen/projects/-root/subagents/8c300d85-455e-4954-b244-adc50417477a/agent-Explore-call_667e75d0403a47d5a1e14127.jsonl
+  - /root/.qwen/projects/-root/subagents/d77e2a6e-56d5-4322-89a9-01f2d5fbe7f4/agent-Explore-call_7f1e0d8deae24961acdddf2c.jsonl
+  - /root/.qwen/projects/-root/subagents/d77e2a6e-56d5-4322-89a9-01f2d5fbe7f4/agent-Explore-call_3522c1e7160b4bd08b95e206.jsonl
+  - /root/.qwen/projects/-root/subagents/c4a17fc4-8c51-4c16-9c84-7169a15c96f7/agent-Explore-call_d4dcd285e3e446108ba6fe9d.jsonl.stream
+  - /root/.qwen/projects/-root/subagents/c4a17fc4-8c51-4c16-9c84-7169a15c96f7/agent-Explore-call_d4dcd285e3e446108ba6fe9d.jsonl
+  - /root/.qwen/projects/-root/subagents/9df7617b-a6a8-40cf-b25a-e6dc95aa3aa6/agent-Explore-call_12e3e684a57a4acca85dd9ce.jsonl
+[possibility] /root/.qwen/projects: 68 files
+  - /root/.qwen/projects/-root/subagents/da9a108e-d2a8-4106-96f2-dbafa01ea633/agent-Explore-call_7562f7cf8b824af299f4576c.jsonl
+  - /root/.qwen/projects/-root/subagents/6edccf62-0a52-4dd5-b493-6d9ea1401fa6/agent-Explore-call_7dbe98f074e845ef971a14c3.jsonl
+  - /root/.qwen/projects/-root/subagents/d77e2a6e-56d5-4322-89a9-01f2d5fbe7f4/agent-Explore-call_7f1e0d8deae24961acdddf2c.jsonl
+  - /root/.qwen/projects/-root/subagents/263b528e-eada-4452-8ef3-56299e2652ae/agent-Explore-call_06ad199893814ab58625cee6.jsonl
+  - /root/.qwen/projects/-root/subagents/55cb4dc3-7efc-4d5f-add8-9199b1e01ff2/agent-Explore-call_efaec634351544e2a0737af6.jsonl
+  - /root/.qwen/projects/-root/subagents/3a9874bb-a1bb-4dee-82ae-3cb39f78a11c/agent-general-purpose-call_708052ad02014128853d042c.jsonl
+[recombination] /root/.arifos: 20 files
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/b03b69aa-2442-47e0-a59a-4cfeef718df7.db
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/1a7b068e-e851-44ca-a807-32e7d903c9db.db
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/bddc6e55-cef1-40d4-80ce-890cad3fa84a.db
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/64892f29-4c7d-40c7-9fd3-070faf14c385.db
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/72d53898-a4c3-4124-bfbe-8c5b720732b3.db
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/brain/b03b69aa-2442-47e0-a59a-4cfeef718df7/.system_generated/logs/transcript_full.jsonl
+[counterfactual] /root/.arifos: 483 files
+  - /root/.arifos/agents/claude/AAA/projects/-root/6acc236e-695b-4c5d-a769-ac1b19b2a210/subagents/agent-acompact-1c380a04be7e5f33.jsonl
+  - /root/.arifos/agents/claude/AAA/projects/-root/6acc236e-695b-4c5d-a769-ac1b19b2a210.jsonl
+  - /root/.arifos/agents/claude/AAA/paste-cache/d8f0ec65a917d923.txt
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/083827f8-a8d1-43e6-ae72-83f1e30b3db4.db
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/87f4d72f-e126-4b72-8bc1-5eb276e27bc1.db
+  - /root/.arifos/agents/gemini/AAA/antigravity-cli/conversations/024534b6-f643-4f70-95d2-d1c397d2f3e3.db
+[possibility] /root/.arifos: 476 files
+  - /root/.arifos/agents/claude/AAA/plugins/marketplaces/claude-plugins-official/external_plugins/discord/LICENSE
+  - /root/.arifos/agents/claude/AAA/plugins/marketplaces/claude-plugins-official/external_plugins/telegram/LICENSE
+  - /root/.arifos/agents/claude/AAA/plugins/marketplaces/claude-plugins-official/external_plugins/imessage/LICENSE
+  - /root/.arifos/agents/claude/AAA/plugins/marketplaces/claude-plugins-official/external_plugins/fakechat/LICENSE
+  - /root/.arifos/agents/claude/AAA/plugins/marketplaces/claude-plugins-official/plugins/claude-md-management/LICENSE
+  - /root/.arifos/agents/claude/AAA/plugins/marketplaces/claude-plugins-official/plugins/explanatory-output-style/LICENSE
+[dream] /root/.kimi-code/skills-backup: 4 files
+  - /root/.kimi-code/skills-backup/artifact-rehome-20260908-163646/SKILL_ALIAS_TABLE.json
+  - /root/.kimi-code/skills-backup/consolidate-20260908-162154/AUDIT-recursive-audit/AUDIT_REPORT.md
+  - /root/.kimi-code/skills-backup/consolidate-20260908-162154/AGI-skill-unification/SKILL_ALIAS_TABLE.json
+  - /root/.kimi-code/skills-backup/alias-fix-x/SKILL_ALIAS_TABLE.json
+[rehearsal] /root/.kimi-code/skills-backup: 4 files
+  - /root/.kimi-code/skills-backup/consolidate-20260908-162154/apex_verdict_hold/claude/SKILL.md
+  - /root/.kimi-code/skills-backup/consolidate-20260908-162154/apex_verdict_hold/SKILL.md
+  - /root/.kimi-code/skills-backup/consolidate-20260908-162154/apex_verdict_seal/claude/SKILL.md
+  - /root/.kimi-code/skills-backup/consolidate-20260908-162154/apex_verdict_seal/SKILL.md
