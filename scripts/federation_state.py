@@ -98,6 +98,52 @@ def probe_all_organs() -> list[dict]:
     return results
 
 
+def probe_kernel_floors() -> dict:
+    """Read the kernel's own floor verdict (2026-10-26).
+
+    The attention plane must carry the kernel's real floor state. Fail-closed:
+    an unreachable kernel yields reachable=False and nulls -- never a green.
+    """
+    p = probe_health(8088, "100.64.0.2")
+    if not p["healthy"] or not p.get("data"):
+        return {
+            "reachable": False,
+            "floor_passed": None,
+            "floor_measurement": None,
+            "deployment_drift_status": None,
+            "failing": [],
+            "unmeasured": [],
+            "read_at": None,
+        }
+    d = p["data"]
+    floors = d.get("runtime_floors_status") or {}
+    failing = []
+    unmeasured = []
+    for fid, row in floors.items():
+        if not isinstance(row, dict):
+            continue
+        status = str(row.get("status") or "").lower()
+        if status == "fail":
+            failing.append(
+                {
+                    "floor": fid,
+                    "score": row.get("score"),
+                    "origin": row.get("provenance"),
+                }
+            )
+        elif row.get("measured") is False:
+            unmeasured.append(fid)
+    return {
+        "reachable": True,
+        "floor_passed": d.get("floor_passed"),
+        "floor_measurement": d.get("floor_measurement"),
+        "deployment_drift_status": d.get("deployment_drift_status"),
+        "failing": failing,
+        "unmeasured": sorted(unmeasured),
+        "read_at": d.get("timestamp"),
+    }
+
+
 def probe_flow_health() -> dict:
     """Get FQ state from arifFlow."""
     p = probe_health(7073)
@@ -411,6 +457,8 @@ def federation_state() -> dict:
             # FI-008 2026-10-26: consumed by cockpit Tier-3 card (None = UNKNOWN)
             "pending_for_human": authority.get("pending_for_human"),
         },
+
+        "kernel": probe_kernel_floors(),
 
         # Backward-compatibility aliases for legacy / root-level readers
         "organs": organ_detail,
