@@ -92,7 +92,7 @@ Reality invoices.
 1. **E1: Model ≠ Intelligence** — Model is labor. Identity is continuity.
 2. **E2: Memory ≠ History** — Memory is persistence of consequence.
 3. **E3: Capability > Tool** — Tools change; capabilities survive.
-4. **E4: Routing ≠ Judgment** — FED routes; AAA judges.
+4. **E4: Routing ≠ Judgment** — FED routes; arifOS judges; AAA attends; A-FORGE executes.
 5. **E5: Identity ≠ Routing** — Identity determines meaning; routing determines execution.
 6. **E6: Witness Precedes Mutation** — Observe before change. Reality before narrative.
 7. **E7: Soul is Continuity** — Not persona, not style, not prompt: `Identity + Attention + Witness + Judgment`.
