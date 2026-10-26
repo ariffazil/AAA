@@ -1,26 +1,47 @@
 version: 3
 x5_reconcile_utc: '2026-09-26T23:34:40Z'
-last_updated: '2026-09-26T23:34:40Z'
+last_updated: '2026-10-26T00:05:00Z'
 canonical_home: /root/AAA/skills
 contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
 disk_reconciliation:
-  refreshed: '2026-10-14T20:37:03+00:00'
+  refreshed: '2026-10-25T16:03:41+00:00'
   method: 'skills-census.py --write — machine-derived, do not hand-edit; NOT on a schedule, refresh by running the tool'
-  physical_disk_skills: 1065
-  canonical_skills: 1187
-  viewed_skills: 1208
-  loadable_skills: 1186
-  overlay_skills: 'codex=1, continue=0, gemini=12, kimi=25, opencode=0, qwen=38'
-  whole_mesh_skills: 1141
-  duplicate_identity_groups: 32
-  duplicate_identity_skills: 200
-  shells: 5
-  diverged: 103
+  physical_disk_skills: 1159
+  canonical_skills: 1270
+  viewed_skills: 1246
+  loadable_skills: 1246
+  overlay_skills: 'codex=5, continue=0, gemini=22, kimi=34, opencode=22, qwen=48'
+  whole_mesh_skills: 1290
+  duplicate_identity_groups: 4
+  duplicate_identity_skills: 4
+  shells: 8
+  diverged: 0
   broken_symlinks: 0
-  witness_hash: dc4f2002fd2678cd
+  witness_hash: 72999f48494f4897
   verdict: WARN
 layers:
+  apex:
+    count: 10
+    path: /root/AAA/skills
+    law: 'APEX-9 SPINE — one numeral = one function (000-888) + 999 witness layer. F13 2026-10-26.'
+    canonical: /root/AAA/skills/cognitive-commands/SKILL.md
+    genome: /root/AAA/docs/9-ATLAS-GENOME.md
+    skills:
+    - 000-salam
+    - 111-tengok
+    - 222-reka
+    - 333-fikir
+    - 444-arah
+    - 555-betul
+    - 666-rasa
+    - 777-forge
+    - 888-adil
+    - 999-ingat
+    aliases:
+    - 333-forge: 777-forge
+    - 777-faham: 333-fikir
+    load: 'ALL agents — spine verbs, on demand by numeral; aliases never block'
   substrate:
     count: 8
     path: /root/AAA/skills/substrate
@@ -74,7 +95,7 @@ layers:
       - graphiti-temporal-memory-ops
       - provider-endpoint-migration
       dev:
-      - github-ops  # canonical: /root/AAA/skills/github/github-ops/  (F13-ratified umbrella v2.0; floor_scope F1/F2/F11; autonomy_tier T1)
+      - github-ops  # canonical: /root/AAA/skills/github/github-ops/  (v3.0.0 INIT→DEPLOY single door; aliases archived 2026-10-19; floor_scope F1/F2/F11; autonomy_tier T1)
       - dev-ci-diagnose
       - dev-issue-triage
       - dev-pr-review
@@ -103,6 +124,7 @@ layers:
       - ops-health
       - ops-mcp-lifeguard
       - ops-model-monitor
+      - forge-feedback-loop-ladder  # canonical: /root/AAA/skills/forge-feedback-loop-ladder (v1.0.0, forged 2026-10-23, floors F1/F2/F11, T1; binds skill-artifact-redact + probe-before-panic)
       - ops-google
       - ops-transport
       - ops-infra-crons
@@ -131,6 +153,7 @@ layers:
       sec:
       - sec-secrets
       - sec-telegram
+      - skill-artifact-redact  # canonical: /root/AAA/skills/skill-artifact-redact (v1.0.0, forged 2026-10-23, floors F1/F2/F11, T1; script scripts/redact.py)
       research:
       - research-summarize
       - research-search
@@ -341,6 +364,26 @@ tombstone_alias_rows: 31
 # status="RESOLVED" is a claim in the row; these two numbers are the measurement.
 alias_rows_resolvable: 42
 alias_rows_dead: 91
+consolidation_2026_10_23:
+  reason: 'LAW 8 — one problem, one owner, one path. Four skills (362KB) each carried a stale copy of the same deploy rule.'
+  canonical_owner: arif-sites-ops
+  owner_skill_bytes: 9209
+  pointer_stubs:
+    - {name: arif-fazil-web-ops, bytes: 2487, relation: 'alternative_to: arif-sites-ops'}
+    - {name: arif-fazil-site-ops, bytes: 2325, relation: 'alternative_to: arif-sites-ops'}
+    - {name: arif-sites-content-ops, bytes: 2363, relation: 'alternative_to: arif-sites-ops'}
+  merged_into_owner:
+    - references/pitfalls.md          # 91,901B — four pitfall catalogues, deduped, verbatim
+    - references/nav-canon-v7.md      # 31,873B — the longer of two copies
+    - references/transmission-engine-viz.md  # 29,961B (was arif-fazil-web-ops)
+    - references/build-deploy.md      # 20,995B (was arif-fazil-site-ops)
+    - references/web-surfaces.md      # 74,944B (was arif-fazil-web-ops)
+    - references/content-ops.md       # 83,302B (was arif-sites-content-ops)
+  dropped: 'arif-fazil-site-ops static 28KB "Support files" directory dump — an index of files is not a skill body; ls references/ answers it live.'
+  surgical_compression_2026_10_23:
+    bridge-protocol: {before: 113046, after: 12286, refs: [stage1-read-human.md, stage5-wiring-vs-meaning.md, stages-0-2-3-4-detail.md]}
+    verify-sibling-ops-reports: {before: 108063, after: 8897, refs: [pitfalls-ledger.md, reply-shape.md, procedure-original.md]}
+    makcikgpt-article-forging: {before: 105510, after: 7487, refs: [stage-1..5.md, voice-patterns.md, deploy.md, operations.md, editorial-doctrine.md, pitfalls-ledger.md]}
 alias_reconciliation:
   refreshed: '2026-09-18'
   by: afpass-W2

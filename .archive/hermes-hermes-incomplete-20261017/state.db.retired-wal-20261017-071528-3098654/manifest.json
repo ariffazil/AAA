@@ -1,0 +1,58 @@
+{
+  "captured_at": "2026-10-17T07:15:28Z",
+  "database": "/root/AAA/hermes/.hermes/state.db",
+  "main": {
+    "bytes": 176128,
+    "file": "state.db",
+    "header": {
+      "application_id": 0,
+      "change_counter": 3,
+      "page_count": 43,
+      "page_size": 4096,
+      "user_version": 0,
+      "valid": true,
+      "version_valid_for": 3
+    },
+    "identity": [
+      2049,
+      288969
+    ],
+    "mode": "copied",
+    "sha256": "51debe0b0401575b4e933e18e602436507f55ae65bcb6576b9626322966d7374",
+    "size": 176128
+  },
+  "note": "Frames in the captured WAL were committed by the retired generation. Whether they belong on top of the main file now at the path is an operator decision; inspect the copied image with `hermes sessions recover --inspect-only` first.",
+  "path_generation_at_capture": {
+    "-shm": [
+      2049,
+      289000
+    ],
+    "-wal": [
+      2049,
+      288999
+    ]
+  },
+  "pid": 3098654,
+  "python": "3.14.7",
+  "shm": {
+    "bytes": 32768,
+    "file": "state.db-shm",
+    "identity": [
+      2049,
+      5268958
+    ],
+    "sha256": "e622b24a56a6fa6d8c277bc8187011a850d3babef3e063c90897735cc18ee923"
+  },
+  "sqlite": "3.53.1",
+  "trigger": "close",
+  "version": 1,
+  "wal": {
+    "bytes": 6039952,
+    "file": "state.db-wal",
+    "identity": [
+      2049,
+      5268683
+    ],
+    "sha256": "3dc97750889e34ef59300216977148a11017f9511a052388c7b2df8486cf343e"
+  }
+}

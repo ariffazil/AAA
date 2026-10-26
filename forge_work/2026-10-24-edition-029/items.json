@@ -1,0 +1,284 @@
+{
+ "items": [
+  {
+   "item_id": "brent-hormuz-price",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Brent tutup AS$116 — tertinggi sejak Jun 2022",
+   "summary": "Kontrak Disember tutup AS$116.17 pada Jumaat 23 Okt, naik kira-kira 3 peratus dalam sehari dan lebih 6 peratus seminggu — minggu ketiga naik berturut. Puncak dalam hari AS$116.88. Ini paras tertinggi sejak Jun 2022, lebih tinggi daripada puncak awal perang. Sebab yang disebut: jangkaan AS mula serangan balik dalam beberapa minggu. Bukan sebab tong kurang.",
+   "source": "ICE Brent futures 23 Okt (Dec26 116.17, 17:19 GMT; Jan27 111.34); TradingEconomics 23 Okt (116.88, +3.27% sehari, +6% seminggu)"
+  },
+  {
+   "item_id": "saudi-houthi-escalation",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Aramco kosongkan ibu pejabat Dhahran — pertama sejak perang mula",
+   "summary": "Enam sumber beritahu Reuters: Aramco arahkan staf keluar ibu pejabat Dhahran dan kerja dari rumah, sehari selepas serangan ke lapangan terbang Dammam bunuh dua orang. Bangunan itu sudah rosak beberapa tingkat kena serangan 13 Okt. Houthi kata mereka tembak fasiliti Aramco di Yanbu dan Kementerian Pertahanan di Riyadh; gabungan pimpinan Saudi kata drone dipintas atas Riyadh dan Madinah. Indeks Saudi TASI jatuh 2.5 peratus hari Khamis.",
+   "source": "Reuters 22 Okt (enam sumber; evakuasi pertama sejak perang); Jerusalem Post/Reuters 22 Okt (Yanbu, Riyadh, Madinah, TASI -2.5%); Bloomberg 22 Okt; The New Arab 22 Okt"
+  },
+  {
+   "item_id": "bab-el-mandeb-second-chokepoint",
+   "section": "SITUATION",
+   "claim_state": "NEW",
+   "title": "Selat kedua pun dalam bahaya: Bab el-Mandeb",
+   "summary": "Houthi bergerak ke arah Bab el-Mandeb, mulut Laut Merah, dan letak sekatan laut pada Saudi sejak pertengahan Julai. Jurucakap mereka dakwa serangan Saudi di Yemen bunuh dan cedera 562 orang sejak Julai. Dua selat, dua risiko: satu di Teluk, satu di Laut Merah. Laluan minyak Eropah-Asia kini kena dua kali, bukan sekali.",
+   "source": "Jerusalem Post/Reuters 22 Okt (Bab el-Mandeb, 562, sekatan Julai — angka dakwaan Houthi, bukan angka bebas)"
+  },
+  {
+   "item_id": "us-iran-election-clock",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Jam yang gerakkan harga: Israel undi 3 hari lagi, AS 10 hari",
+   "summary": "Yang naikkan harga Jumaat ialah jangkaan AS sambung serangan 'dalam beberapa minggu' — dan dua tarikh duduk dalam tetingkap itu: Israel mengundi 27 Okt, undi pertengahan AS 3 Nov. AS sudah hantar carrier ketiga dan ribuan tentera ke rantau. Bekas pakar Iran dalam tentera Israel kata kemenangan Netanyahu yang jelas bermakna serangan hampir dijamin. Itu bacaan seorang sumber, bukan keputusan.",
+   "source": "TradingEconomics 23 Okt (jangkaan serangan dalam minggu terdekat); AP 22 Okt (Citrinowicz, carrier ketiga, tarikh undi Israel 27 Okt dan AS 3 Nov)"
+  },
+  {
+   "item_id": "hormuz-reopening-plan",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Araghchi di Baghdad: pilihan sekarang di tangan Amerika",
+   "summary": "Di sidang OIC Baghdad Jumaat, menteri luar Iran ulang pelan tujuh hari — buka Selat pada hari keenam kalau syarat dipenuhi — dan tambah syarat di depan umum: jaminan kredibel serangan tak berulang. Dia juga tawar Iran jadi orang tengah antara Saudi dan Yemen. Katanya lalu lintas pulih 60 peratus dua minggu selepas memorandum Islamabad 17 Jun, lepas tu tersekat. Tiada perjanjian ditandatangani.",
+   "source": "Turkiye Today 24 Okt (sidang OIC Baghdad, petikan Araghchi); IRNA melalui Arab News Pakistan 21 Okt; signalpostnews 24 Okt (butiran pelan tujuh hari)"
+  },
+  {
+   "item_id": "hormuz-flows-kpler",
+   "section": "SITUATION",
+   "claim_state": "CONTESTED",
+   "title": "Dua kiraan Selat bercanggah arah — jangan ambil purata",
+   "summary": "Menteri luar Iran kata lalu lintas maritim masih sekitar 70 peratus bawah paras pra-perang. Kpler pula kira eksport mentah keluar Teluk lebih 24 juta tong sehari minggu lepas, lawan 23.3 juta sebelum perang, dan Selat 82 peratus pulih. Dua-dua tak boleh betul serentak. Bezanya ukuran: Kpler kira tong yang naik kapal, Iran kira kapal yang berani lalu. Aku tak pilih satu.",
+   "source": "Turkiye Today 24 Okt untuk angka 70 peratus (sumber: menteri luar Iran); Kpler melalui NY Post, Maritime Executive dan Bloomberg 21-22 Okt untuk 24 juta tong dan 82 peratus"
+  },
+  {
+   "item_id": "hormuz-attack-record",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Tujuh kapal tangki terbakar: masih tiada pengesahan bebas",
+   "summary": "Dakwaan Iran bahawa tujuh kapal tangki terbakar dalam satu malam masih berdiri tanpa pengesahan bebas — AP kata ia tak dapat sahkan, dan badan pemantau Britain (UKMTO) tidak melaporkan kejadian itu, cuma mencatat kapal makin malas melapor. Rekod IMO kekal 120 insiden disahkan dengan 24 anak kapal mati sehingga 22 Okt. Tiada nombor baharu hari ni; item kekal terbuka sebab dakwaan asalnya belum disahkan atau ditolak.",
+   "source": "AP 22 Okt; UKMTO melalui AP (pantau tidak lapor kejadian, sebut keengganan melapor); IMO halaman insiden"
+  },
+  {
+   "item_id": "physical-paper-divergence",
+   "section": "SITUATION",
+   "claim_state": "MOVED",
+   "title": "Tong fizikal AS$122.44, kertas AS$113 — jurang AS$9.27",
+   "summary": "Pada 22 Okt, Dated Brent — harga tong yang betul-betul bertukar tangan — AS$122.44, iaitu premium AS$9.27 atas kontrak Disember AS$113.17. Spread Disember/Januari +AS$4.51: pasaran masih bayar lebih untuk tong dekat. Jumaat kertas lompat ke AS$116. Kalau tong fizikal tak ikut naik, harga kertas yang terdedah jatuh. Ini item premium risiko yang sama, kali ini dengan angka.",
+   "source": "CommodityScope 22 Okt (Dated Brent 122.44, premium 9.27, spread Dec/Jan +4.51); ICE 23 Okt (Dec26 116.17)"
+  },
+  {
+   "item_id": "diesel-crack-spread",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Margin diesel masih atas AS$100 — tiada bacaan baharu",
+   "summary": "Tiada angka baharu Jumaat dan Sabtu. Margin penapisan diesel Eropah dan AS kekal atas AS$100 setong, dan IEA kata kekangan boleh berlarut sampai 2027. Harga pam Malaysia turun 10 sen minggu ni; asas diesel global belum ikut turun.",
+   "source": "ringkasan industri tenaga 23 Okt (satu agregator, angka disemak lawan Kpler dan Reuters); IEA laporan Oktober melalui Egypt Oil & Gas dan DW"
+  },
+  {
+   "item_id": "petrol-price-band",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Band 22-28 Okt: RON95 RM4.32, RON97 RM4.80, diesel RM5.07",
+   "summary": "Harga tanpa subsidi turun 30 sen (RON97 dan RON95) dan 10 sen (diesel) berbanding minggu lepas. BUDI95 kekal RM1.99, BUDI Diesel RM2.10. Band seterusnya diumum 28 Okt, empat hari lagi — dan kali ini ia ditetapkan pada Brent AS$116, bukan AS$108 semasa band ini ditetapkan.",
+   "source": "Siaran media MoF 21 Okt; OpenDOSM harga petroleum (data 22 Okt); hargaminyak.my band 22-28 Okt"
+  },
+  {
+   "item_id": "war-risk-insurance-lag",
+   "section": "SITUATION",
+   "claim_state": "OPEN",
+   "title": "Insurans perang: 32 kali ganda, tiada angka baharu",
+   "summary": "Kos insurans perang masih 32 kali ganda asas sebelum perang, dan ia masuk kos setiap tong yang bergerak. Tiada kemas kini 23-24 Okt. Item kekal terbuka sebab ia yang menentukan sama ada kos sampai ke harga pam lambat atau cepat — bukan sebab ada berita.",
+   "source": "angka asal Kpler dan broker insurans 20-21 Okt; tiada kemas kini"
+  },
+  {
+   "item_id": "own-od1-window",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "OD1: 128 hari",
+   "summary": "Hari ini 24 Okt. OD1 1 Mac 2027 tinggal 128 hari. Brent naik AS$3 lagi dalam sehari: apa-apa angka pakej yang disebut minggu lepas disebut pada harga minyak yang lebih rendah daripada hari ni.",
+   "source": "kiraan tarikh 24 Okt 2026 ke 1 Mac 2027; harga dari ICE 23 Okt"
+  },
+  {
+   "item_id": "void-operator-change-od1",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Empat PSC tukar tangan 1 Jan — 69 hari",
+   "summary": "1 Jan 2027 tinggal 69 hari. EnQuest ambil operatorship Balingian, SK8 dan D35, dan masuk PM6-12 sebagai rakan tanpa operator. Carigali keluar sebagai operator di blok itu. Dua bulan sebelum OD1, kerja harian blok Sarawak tertentu diatur orang lain.",
+   "source": "akuan rasmi EnQuest dan PETRONAS (edisi 027); kiraan semula 24 Okt"
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "section": "WALL",
+   "claim_state": "OPEN",
+   "title": "Mahkamah Persekutuan 25-29 Jan — 93 hari",
+   "summary": "Dengar petisyen PETRONAS dan Sarawak lima hari mulai 25 Jan 2027. Hujah bertulis 11 Jan, balasan 18 Jan, pengurusan kes 12 Jan. Kedua-dua pihak minta panel sembilan atau 11 hakim; siapa dengar dulu belum diputuskan. Tiada gerakan baharu minggu ni.",
+   "source": "Malay Mail 1 Okt 2026 (tarikh tetap, Justice Rhodzariah Bujang); Scoop dan Bernama"
+  },
+  {
+   "item_id": "melaka-polls-nov14",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Melaka: undi pos 1B dan 1C tutup semalam, penamaan 7 hari lagi",
+   "summary": "Permohonan undi pos kategori 1B (luar negara) dan 1C (agensi) tutup 23 Okt. Kategori 1A tutup 28 Okt. Semakan maklumat pengundi dan jualan daftar pemilih mula 26 Okt. Penamaan calon 31 Okt; undi awal 10 Nov; mengundi 14 Nov, 21 hari lagi. 687,697 pengundi, 28 pusat pencalonan.",
+   "source": "SPR Kertas Mesyuarat Bil. 49/2026 (dokumen rasmi, tarikh tutup 1A/1B/1C); Malay Mail dan The Star 7 Okt"
+  },
+  {
+   "item_id": "budget-2027-debate",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Belanjawan 2027: menteri jawab mula Isnin, 2 hari lagi",
+   "summary": "Debat peringkat dasar tamat 22 Okt. Dewan tak bersidang Sabtu dan Ahad. Sesi jawapan menteri 26 hingga 29 Okt, kemudian peringkat jawatankuasa mula 2 Nov. Tiada sidang 9 dan 10 Nov sebab cuti Deepavali.",
+   "source": "Takwim Dewan Rakyat, mesyuarat ketiga sesi kelima parlimen ke-15"
+  },
+  {
+   "item_id": "israel-election-oct27",
+   "section": "WALL",
+   "claim_state": "MOVED",
+   "title": "Israel mengundi 27 Okt — 3 hari",
+   "summary": "Tiga hari lagi. Ini yang pasaran baca sebagai jam untuk Iran, bukan undi pertengahan AS yang 10 hari lagi. Apa-apa yang berlaku selepas 27 Okt dibaca sebagai keputusan pengundi Israel, sama ada betul atau tidak.",
+   "source": "AP 22 Okt (tarikh undi); TradingEconomics 23 Okt (harga bergerak atas jangkaan serangan)"
+  },
+  {
+   "item_id": "petros-lng-jurisdiction",
+   "section": "WALL",
+   "claim_state": "OPEN",
+   "title": "PETRONAS-Sarawak: menunggu mahkamah, bukan menunggu keputusan",
+   "summary": "Tiada kenyataan baharu. Perkara ini didengar 93 hari lagi. Yang berubah minggu ni bukan di mahkamah — Sarawak sedang bina infrastruktur gasnya sendiri; lihat bahagian VOID.",
+   "source": "tiada kenyataan baharu 22-24 Okt; silang rujuk item terminal Kuching"
+  },
+  {
+   "item_id": "petros-kuching-lng",
+   "section": "VOID",
+   "claim_state": "NEW",
+   "title": "Sarawak bina terminal LNG sendiri di Kuching — gas pertama 2029",
+   "summary": "PETROS tandatangan perjanjian pembangunan bersama dengan Höegh Evi (Norway) pada 1 Okt untuk terminal LNG Kuching: unit terapung regasifikasi, paip, kemudahan darat. Gas pertama disasar hujung 2029. Ini terminal regasifikasi pertama Sarawak. Maksudnya: dalam pertikaian yang didengar Jan 2027, satu pihak sedang bina jalan keluar fizikal — bukan menunggu hakim untuk boleh terima gas tanpa kompleks Bintulu PETRONAS.",
+   "source": "PETROS siaran 1 Okt 2026 (JDA Höegh Evi, FSRU, gas pertama hujung 2029); Borneo Post 4 Okt (kenyataan Abang Johari)"
+  },
+  {
+   "item_id": "carigali-kasapi-sk306",
+   "section": "VOID",
+   "claim_state": "NEW",
+   "title": "Carigali sedia gerek Kasapi di SK306 — blok penemuan Nahara",
+   "summary": "Upstream lapor 22 Okt: Carigali akan mula gerek telaga eksplorasi Kasapi di SK306, blok 100 peratus Carigali di Balingian, tempat siri penemuan Nahara-1 dan Gedombak. Butiran rig dan tarikh mula belum diumum secara awam. Ini kerja huluan di blok yang sama keluarga dengan Balingian yang bertukar operator 1 Jan — dua perkara berbeza pada peta yang sama.",
+   "source": "Upstream 22 Okt 2026 (tajuk dan ringkasan: Kasapi di SK306, siri penemuan); PETRONAS siaran 7 Dis 2022 dan 21 Julai 2023 untuk konteks blok"
+  },
+  {
+   "item_id": "void-cables-datacentres",
+   "section": "VOID",
+   "claim_state": "NEW",
+   "title": "Iran isyarat kabel bawah laut dan pusat data boleh jadi sasaran",
+   "summary": "AP lapor Tehran dalam beberapa hari ni beri isyarat boleh perluas sasaran ke infrastruktur seperti kabel bawah laut dan pusat data. Ini isyarat, bukan serangan — aku label begitu. Sebab ia masuk brief kau: yang bergerak atas kabel itu bukan kapal minyak. API, bank, dan semua lapisan yang kau guna untuk jalankan federation duduk atas laluan yang sama.",
+   "source": "AP 22 Okt (disebut sebagai isyarat Tehran, tanpa bukti serangan)"
+  },
+  {
+   "item_id": "void-strait-rationed",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "Selat pulih untuk mentah, tak pulih untuk produk",
+   "summary": "Kpler kata pemulihan itu tak sekata: minyak mentah lebih dulu pulih, produk bertapis masih tersekat di sekitar 44 peratus paras sebelum perang. Kilang Teluk tak jalan penuh, jadi tekanan kekal pada diesel dan petrol, bukan pada minyak mentah. Tiada angka baharu hari ni.",
+   "source": "Kpler explainer data September; Yahoo/DPA 22 Okt; Bloomberg 22 Okt (produk 44 peratus)"
+  },
+  {
+   "item_id": "petronas-petrovietnam-pm3",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "PM3: 20 tahun lagi untuk Carigali, tiada gerakan baharu",
+   "summary": "Kontrak PM3 di sempadan maritim Malaysia-Vietnam disambung hingga 2047, dan pakatan strategik dengan Petrovietnam ditandatangani di Hanoi 16 Okt. Tiada pengumuman baharu 23-24 Okt. Kaki serantau Carigali membesar dalam tahun yang sama peranan operator domestiknya menyusut di empat PSC.",
+   "source": "VIR melalui Vilasia 22 Okt; sidang media pengerusi PETRONAS di Ho Chi Minh 20 Okt; Rigzone 20 Okt"
+  },
+  {
+   "item_id": "petronas-turkmenistan-blocks",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "Turkmenistan: tiga telaga, Disember hingga pertengahan 2027",
+   "summary": "Ketua pegawai eksekutif Carigali Turkmenistan kata di Ashgabat: tiga telaga eksplorasi di Blok 19 dan 20, mula Disember 2026 hingga pertengahan 2027. Blok 1 masih ada 7 trilion kaki padu gas dan lebih 200 juta tong cecair. Tiada kemas kini baharu.",
+   "source": "News Central Asia 22 Okt, laporan OGT 2026 Ashgabat"
+  },
+  {
+   "item_id": "void-capex-redirect",
+   "section": "VOID",
+   "claim_state": "OPEN",
+   "title": "EOR: Guntong, Angsi, Dulang — tiada gerakan baharu",
+   "summary": "Tiga medan EOR selepas Tapis; kepala teknologi E&P kumpulan sebut tiga hingga lima projek dalam tiga hingga lima tahun. Dulang ada isu CO2 sekitar 70 peratus. Tiada pengumuman baharu 23-24 Okt. Kerja huluan Semenanjung, tepat pada baris kau.",
+   "source": "The Edge (edisi 027); tiada kemas kini baharu"
+  },
+  {
+   "item_id": "risk-fuel-subsidy-exposure",
+   "section": "RISK",
+   "claim_state": "MOVED",
+   "title": "Subsidi lawan harga dunia: 54 peratus petrol, 59 peratus diesel",
+   "summary": "BUDI95 RM1.99 lawan harga tanpa subsidi RM4.32 — kerajaan tampan RM2.33 seliter, 54 peratus. BUDI Diesel RM2.10 lawan RM5.07 — tampan RM2.97 seliter, 59 peratus. Belanjawan anggar RM40 bilion subsidi bahan api tahun depan, disusun ketika Brent bawah AS$110. Brent kini AS$116 dan band seterusnya ditetapkan 28 Okt. RM40 bilion yang sama beli lebih sedikit liter.",
+   "source": "Siaran media MoF 21 Okt; OpenDOSM 22 Okt; ICE 23 Okt (Brent 116.17); angka RM40 bilion dari Belanjawan 2027"
+  },
+  {
+   "item_id": "asia-refining-margins",
+   "section": "RISK",
+   "claim_state": "OPEN",
+   "title": "Margin kilang: penampan hiliran, kos huluan — dua-dua betul",
+   "summary": "Margin diesel Eropah dan AS atas AS$100 setong menampan bahagian hiliran kumpulan. Pada masa yang sama ia kos untuk operasi huluan dan pengangkutan. Tiada angka baharu hari ni; item kekal sebab ia dua arah, bukan satu.",
+   "source": "ringkasan industri tenaga 23 Okt; Kpler (produk 44 peratus sebelum perang)"
+  },
+  {
+   "item_id": "ops-lane-status",
+   "section": "OWN",
+   "claim_state": "MOVED",
+   "title": "OPS: cakera 86 peratus — 8 GB hilang dalam sehari",
+   "summary": "Cakera naik dari 84 ke 86 peratus: 65 GB tinggal semalam, 57 GB hari ni. Lapan gigabait sehari, dan aku belum jumpa satu fail tunggal yang terangkan lompatan itu. arifOS masih degraded pada lapisan constitutional, floor_passed false; FED sihat tapi vocab routing masih sifar kunci. Beban mesin turun ke 1.83 dari 11.11.",
+   "source": "semakan ruang cakera 24 Okt 06:0x (331G guna daripada 387G); respons health arifOS dan FED 24 Okt; bacaan beban mesin"
+  },
+  {
+   "item_id": "ops-rule-counter",
+   "section": "OWN",
+   "claim_state": "SETTLED",
+   "title": "OPS: kiraan arahan dibaiki — kira edisi, bukan larian",
+   "summary": "Punca yang aku namakan semalam dah dibaiki hari ni. Fungsi yang tulis fail arahan menambah kiraan pada setiap panggilan, dan pipeline panggil ia pada setiap larian — jadi satu render yang ditolak gate kemudian diulang dikira dua kali. Sekarang setiap pasangan (arahan, edisi) dicatat sekali sahaja; cubaan kedua masih direkod tapi tak menaikkan kiraan. Kiraan tersimpan dibetulkan dari 90 ke 27, bilangan edisi sebenar sejak arahan itu hidup 18 Sep. Ujian: 38, 32 dan 39 lulus dalam tiga suite.",
+   "source": "modul feedback docforge (jadual feedback_applications, kunci edisi); suite ujian feedback 38/38, docforge 32/32, delta 39/39; kiraan semula dari jadual editions"
+  },
+  {
+   "item_id": "ops-forgework-lock",
+   "section": "OWN",
+   "claim_state": "SETTLED",
+   "title": "OPS: direktori kerja dibuka, dan tak akan dikunci lagi",
+   "summary": "Semalam direktori kerja brief kena kunci immutable dari satu cycle recursive yang sapu seluruh pokok AAA. Hari ni ia dibuka melalui cycle rasmi canon-mutate, bukan dengan buka kunci manual, dan aku tambah direktori itu ke senarai kecuali dalam skrip canon-mutate — sama kelas dengan direktori state: hasil kerja harian, bukan canon. Lock semula dijalankan dan skrip jawab SKIP. Skrip canon dikunci balik dan disahkan.",
+   "source": "receipt canon-mutate 24 Okt (unlock, lock, skip); semakan atribut direktori selepas cycle; senarai kecuali dalam skrip canon-mutate"
+  },
+  {
+   "item_id": "ops-air-haze",
+   "section": "OWN",
+   "claim_state": "OPEN",
+   "title": "OPS: jerebu — aku tak dapat bacaan hari ni",
+   "summary": "Aku cuba baca bacaan IPU hari ni melalui portal APIMS dan dua endpoint data terbuka: tiada satu pun boleh dibaca mesin, jadi aku tak letak angka hari ni. Yang terakhir aku sahkan dengan tarikh jelas ialah 17 Okt: 24 kawasan tidak sihat, Pasir Gudang 196, Cheras 162, Batu Muda 159. Itu seminggu lalu, bukan pagi ini — aku sebut supaya hang tak baca angka lama sebagai angka hari ni.",
+   "source": "APIMS tidak boleh dibaca mesin 24 Okt (dua endpoint data terbuka pulang 404); angka bertarikh dari Sinar Harian melalui Newswav 17 Okt 2026"
+  },
+  {
+   "item_id": "epf-nomination-void",
+   "section": "OWN",
+   "claim_state": "OPEN",
+   "title": "EPF: penama masih belum dikemas kini",
+   "summary": "Item peribadi yang kekal terbuka. Tiada perubahan.",
+   "source": "carry forward; tiada kemas kini"
+  },
+  {
+   "item_id": "eureka-euclid-comet",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Teleskop Euclid jumpa komet baharu",
+   "summary": "Komet C/2026 S1 (Euclid) dijumpai dari data teleskop Euclid, disahkan Pusat Planet Minor 8 Okt. Jaraknya kira-kira 1.3 bilion kilometer — antara orbit Musytari dan Zuhal. Euclid dibina untuk peta gelap alam semesta, bukan cari komet; ia jumpa sebab ia memotret langit yang sama berulang kali dan perisiannya nampak benda bergerak.",
+   "source": "ESA 19 Okt 2026 (pengesahan Pusat Planet Minor 8 Okt, MPEC K26TE6)"
+  },
+  {
+   "item_id": "eureka-retron-typeVI",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Bakteria punya sistem pertahanan yang peliknya lain macam",
+   "summary": "Gladstone Institutes jumpa kelas sistem pertahanan bakteria baharu, type VI retron. Caranya berlawan dengan intuisi: satu benang DNA pendek yang dihasilkan melalui transkripsi balik melepaskan — bukan menyekat — pengeluaran protein antivirus. Selalunya pertahanan berfungsi dengan menyekat; ini yang membuka. Terbit dalam Molecular Cell 13 Okt.",
+   "source": "Gladstone Institutes 13 Okt 2026; Molecular Cell, doi 10.1016/j.molcel.2026.09.026"
+  },
+  {
+   "item_id": "eureka-nobel-chemistry-2026",
+   "section": "EUREKA",
+   "claim_state": "NEW",
+   "title": "Nobel Kimia 2026: kenapa hidup pilih satu tangan",
+   "summary": "Hadiah Nobel Kimia 2026 ke Henri Kagan dan Kenso Soai untuk kesan tak linear dan autokatalisis dalam sintesis organik tak simetri. Soalan besarnya: kenapa asid amino dalam badan kita semua kidal, sedangkan kilang kimia hasilkan dua tangan bercampur. Jawapan mereka: satu hasil boleh mempercepatkan pembentukannya sendiri, dan itu cukup untuk satu tangan menang.",
+   "source": "NobelPrize.org siaran 7 Okt 2026 (Royal Swedish Academy of Sciences)"
+  }
+ ]
+}

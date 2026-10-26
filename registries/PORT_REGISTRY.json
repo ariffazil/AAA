@@ -164,6 +164,16 @@
       ],
       "health": "/health",
       "role": "Metabolism \u2014 Flow Quotient, receipt ledger, checkpoints"
+    },
+    "arifflow-mcp": {
+      "port": 7075,
+      "bind": "127.0.0.1",
+      "proto": "http",
+      "process": "python3 (FastMCP)",
+      "systemd": "arifflow-mcp.service",
+      "health": "/health",
+      "role": "arifFlow MCP surface \u2014 8 tools over streamable HTTP",
+      "note": "Remote flow-edge peer also uses 7075 for fed_router (federation-peers.yaml port_allocation.flow). Different hosts: no bind conflict here. Never route cross-host on 7075 without checking which side owns it."
     }
   },
   "gateways": {

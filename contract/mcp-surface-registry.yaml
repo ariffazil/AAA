@@ -12,8 +12,8 @@ registry:
   version: "1.0.0"
   generated: "2026-07-14T17:00:00+08:00"
   verified_by: "live MCP tools/list scan"
-  total_tools: 169
-  total_organs: 6
+  total_tools: 172
+  total_organs: 7
 
 organs:
 
@@ -220,3 +220,100 @@ deployment:
     commit: b463cf3
   aaa:
     commit: 6c63c8c
+
+  serpapi:
+    port: 0  # hosted, no local port
+    role: peripheral_search_engine
+    status: UP
+    transport: http
+    tools: 3
+    upstream: "https://mcp.serpapi.com/mcp (SerpApi MCP v2.0.0, hosted, MIT-licensed)"
+    auth: "Authorization: Bearer ${SERPAPI_API_KEY} (env-substituted by 1mcp-hub; runtime config has literal key, chmod 600)"
+    binding_files:
+      user_sot: /root/.1mcprc (Bearer ${SERPAPI_API_KEY} placeholders)
+      runtime_sot: /run/1mcp/config.json (literal Bearer key, chmod 600)
+    f1_backup: /root/.1mcprc.bak-pre-serpapi-20261017T222341Z
+    canonical_tools:
+      - search
+      - search_table
+      - search_dashboard
+    internal_tools: 0
+    resources:
+      - serpapi://engines
+      - serpapi://engines/{name}
+    priority_lanes_taxonomy:  # 11 priority lanes per F13 directive
+      - lane: google_search (default)
+        engines: [google, google_light]
+        credit_strategy: google_light for default
+      - lane: google_news
+        engines: [google_news]
+        light_variant: google_news_light
+        credit_strategy: USE_LIGHT_FOR_CRON
+      - lane: google_scholar
+        engines: [google_scholar]
+        cite_variant: scholar_cite
+      - lane: google_play_books
+        engines: [google_books]
+      - lane: bing_search (fallback)
+        engines: [bing]
+        credit_strategy: USE_AS_FALLBACK only
+      - lane: google_jobs
+        engines: [google_jobs]
+      - lane: google_maps
+        engines: [google_maps]
+      - lane: youtube_search
+        engines: [youtube_search]
+      - lane: youtube_video
+        engines: [youtube]
+      - lane: youtube_video_transcript
+        engines: [youtube_video_transcript]
+        status: TO_VERIFY
+      - lane: youtube_channel
+        engines: [youtube_channel]
+        status: TO_VERIFY
+      - lane: facebook_profile (all_access)
+        engines: [facebook_profile]
+        privacy_class: all_access
+      - lane: instagram_profile (all_access)
+        engines: [instagram_profile]
+        privacy_class: all_access
+    notes: >
+      SerpApi is a PERIPHERAL search organ, not constitutional.
+      Hosted by SerpApi (mcp.serpapi.com) — no local port, no local binary.
+      1mcp-hub aggregates this for AAA/A-FORGE/GEOX/WEALTH/WELL/arifFlow visibility.
+      3 universal tools route to 121 engines via params.engine — engines are NOT separate tools.
+      Always prefer /root/.qwen/settings.json native YouTube lane for direct YouTube links
+      (jimat kredit); use serpapi youtube_search / youtube_channel / youtube_video_transcript
+      only for discovery or when native lane fails.
+
+constitutional_credit_guards:
+  policy_id: serpapi-credit-guard-v1
+  effective: 2026-10-18
+  ratified_by: F13 (888 directive)
+  rules:
+    - id: NO_AUTOPLAY_HEALTHCHECK
+      description: "Haramkan autoplay atau empty healthcheck probes (__healthcheck__) secara berjadual."
+      enforcement: AAA governance + crontab review
+    - id: USE_GOOGLE_NEWS_LIGHT_FOR_CRON
+      description: "Untuk cron / brief edisi pagi, wajib guna google_news_light atau cache result dalam state DB supaya tak langgar had kredit bila gate retry."
+      enforcement: AAA skill loader
+    - id: CACHE_PERSISTENCE
+      description: "Cache SerpApi results in /root/.local/share/arifos/state/serpapi_cache/ when same query within 1h."
+      enforcement: Application-layer (skill wrapper)
+
+constitutional_privacy_brakes:
+  policy_id: serpapi-privacy-brake-v1
+  effective: 2026-10-18
+  ratified_by: F13 (888 directive)
+  rules:
+    - id: SOCIAL_LANES_ALL_ACCESS
+      description: "facebook_profile dan instagram_profile DIBUKA ALL_ACCESS (F13 override 2026-10-18 — was PUBLIC_BUSINESS_ONLY). Named-private-account safeguard tetap berkuatkuasa."
+      enforcement: AAA + skill loader
+      override_log: "F13 directive 2026-10-18: 'facebook all access and ig as well' — supersedes 2026-10-18 PUBLIC_BUSINESS_ONLY default"
+    - id: PRIVATE_ACCOUNT_PROBE_REQUIRES_888_CONSENT
+      description: "Sebarang probe ke atas akaun peribadi (Syed, adik-beradik, Hafiz, atau 888 sendiri) WAJIB HOLD dan minta izin eksplisit 888 per-tujuan."
+      enforcement: Hard HOLD with 5-field scar-binding object
+      named_private_accounts: [Syed, adik-beradik, Hafiz, F13, Arif_Fazil]
+    - id: NO_RAW_KEY_IN_LEDGER
+      description: "Jangan log atau print raw SERPAPI_API_KEY dalam output, vault receipt, atau fed/aa ledger."
+      enforcement: HF_TOKEN redaction methodology applied

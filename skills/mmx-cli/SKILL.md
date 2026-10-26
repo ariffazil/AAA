@@ -1,6 +1,13 @@
 ---
+id: mmx-cli
 name: mmx-cli
-description: "Use mmx to generate text, images, video, and speech via the MiniMax AI platform."
+version: 1.0.0-2026.08.14
+description: "Use mmx to generate text, images, video, and speech via the MiniMax AI platform. For which credential to bind, which provider to prefer, and the M Plan credit boundary, load the minimax-m-plan skill."
+owner: 333-AGI
+risk_tier: T1
+status: active
+floor_scope: F2, F4
+autonomy_tier: T1
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
 ---
@@ -341,3 +348,22 @@ mmx text chat --model MiniMax-M3 --message "Hello"
 ```
 
 **Resolution priority**: `--model` flag > config default > hardcoded fallback.
+
+---
+
+## Federation Context (FI-003, 2026-10-21)
+
+This CLI is the **MiniMax Code** surface of the federation's **M Plan (Build tier)** subscription —
+order `2112696757015031993`, renewal **2026-11-19**, region `global`.
+
+- The federation's `~/.mmx/config.json` is already bound to the **sk-cp plan seat** (`sk-cp-…`, the
+  same credential as `MINIMAX_API_KEY` / `MINIMAX_MPLAN_KEY`). Do not re-point it at a pay-as-you-go
+  key — the separate sk-api PAYG lane is **402 exhausted** and is not a usable fallback.
+- `mmx quota show` reads live credit consumption for the plan seat — the honest instrument for
+  "how much is left", ahead of any vendor console counter.
+- Video model ids: use `MiniMax-Hailuo-02` / `T2V-01`. The tier sheet's advertised `H3` is
+  **rejected** by `/v1/video_generation` (`2013 incorrect model param`).
+
+**For which key to bind, which provider to prefer, and every failure mode, load the
+`minimax-m-plan` skill** (`/root/AAA/skills/minimax-m-plan/SKILL.md`) — this file only covers the
+CLI mechanics.

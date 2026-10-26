@@ -2,6 +2,8 @@
 name: fastmcp-tool-consolidation
 description: Consolidate multiple FastMCP tools into merged mode-dispatch tools with backwards-compat shims. Pattern for reducing MCP tool surface by absorbing related tools under a single unified tool with a `mode` parameter. Covers the multi-line decorator commenting pitfall, verification approach, and interaction with unified server tool registration.
 tags: [mcp, fastmcp, consolidation, tool-surface, arifos]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # FastMCP Tool Consolidation

@@ -1,5 +1,7 @@
 # Reality-First Doctrine (Forged 2026-08-08)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Binding for all AAA warga agents.** This is operating doctrine, not a skill.
 > **Canonical:** `/root/AAA/governance/AAA_A2A_MESH_EUREKA_2026_08_08.md`
 

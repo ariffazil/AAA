@@ -4,6 +4,8 @@ description: "Use for web research or finding structured records."
 allowed-tools:
   - Bash(firecrawl *)
   - Bash(npx firecrawl-cli *)
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # firecrawl search

@@ -1,5 +1,6 @@
 <!-- F13_SAHH_2026-10-06 10:05 MYT · CONSTITUTIONAL · BINDING · TIER A -->
 <!-- DITEMPA BUKAN DIBERI — forged, not given -->
+<!-- GENERATED PROJECTION — DO NOT EDIT — canonical: /root/AAA/canon/AAA-EMERGENCE-ACCEPTANCE-TESTS.md (sha: 561eb22be32316189896763e2e957d3170948529180ba91a150d830eef2b4ad2) -->
 <!-- The final acceptance test suite for AAA-EMERGENCE. Mutation requires F13 SAH. -->
 
 # AAA-EMERGENCE::AT-001 — Acceptance Test Suite (10 tests + master criterion)
@@ -77,9 +78,16 @@ Event 2 → Decision B  (where B ≠ A because X was witnessed)
 
 **Purpose:** Distinguish constitutional HOLD from bangang HOLD.
 
-**PASS:** Every HOLD contains `owner`, `next_action`, `evidence_gap`, `expiry`.
+**PASS:** Every HOLD contains 5 fields (cross-ref: aaa-scar-binding-doctrine.md §signature):
+- `owner`            — who placed the HOLD (actor identity)
+- `next_action`      — what unblocks the HOLD
+- `evidence_gap`     — what's missing to decide
+- `expiry`           — when the HOLD auto-expires
+- `scar_signature`   — what scar pattern triggered HOLD
 
-**FAIL:** `HOLD because uncertainty` without structure.
+**FAIL:** `HOLD because uncertainty` without all 5 fields.
+
+**Cross-ref:** `aaa-scar-binding-doctrine.md` line 50 — `scar_signature` is canonical 5th HOLD field.
 
 ---
 
@@ -197,7 +205,7 @@ because of a consequence witnessed today?
 
 | Existing | This suite's relation |
 |---|---|
-| `AAA::NO-HOLD_FLOW_DIRECTIVE::v2` | AT-004 enforces the 5 mandatory HOLD fields |
+| `AAA::NO-HOLD_FLOW_DIRECTIVE::v2` | AT-004 enforces the 5 mandatory HOLD fields (owner, next_action, evidence_gap, expiry, scar_signature) |
 | `AAA::EMERGENCE_5_STAGES` | AT-001..AT-010 map to Stage 1..5 acceptance |
 | `AAA::SCAR_BINDING_DOCTRINE::v1` | AT-001 / AT-002 / AT-006 directly test scar-binding |
 | `human-attention-membrane` | AT-008 measures HumanLeverage |
@@ -212,7 +220,7 @@ because of a consequence witnessed today?
 | AT-001 Scar Binding | ✅ YES | Phase B implementation (DONE this session) |
 | AT-002 Scar Disregard | ✅ YES | Wire consult_scar() into agent runtime |
 | AT-003 Selection Mutation | ✅ YES | Same as AT-002 |
-| AT-004 HOLD Legitimacy | ✅ YES | 5-field schema enforced |
+| AT-004 HOLD Legitimacy | ✅ YES | 5-field schema enforced (owner, next_action, evidence_gap, expiry, scar_signature) |
 | AT-005 Constitutional Boundary | ✅ YES | Authority envelope test |
 | AT-006 Anti-Fossilization | ✅ YES | Scar override mechanism |
 | AT-007 Pattern Compression | ⏸ not yet | Stage 2 (need ≥50 patterns) |

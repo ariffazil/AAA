@@ -39,7 +39,7 @@
 | # | Finding | Risk | Suggested owner/lane |
 |---|---|---|---|
 | S1 | **Ghost docker postgres** still running (old `vault999` schema) on `127.0.0.1:5432` publish | Medium — any code defaulting to `host postgres` writes to a lying DB. Root cause of 1.3. | Retirement needs compose audit → T2/T3. Pair with D4 lock ratification (first governed infra mutation candidate). |
-| S2 | `vault.flat.env` has `VAULT_WRITER_URL=http://127.0.0.1:8100` — **dead port** (writer binds 5001; nothing on 8100) | Low — kernel sealer defaults to 5001 in-code, so pipeline works; env value is a latent trap | One-line env correction; touches secrets file → apply under 5-R discipline or during D4-governed change |
+| S2 | `vault.flat.env` has `VAULT_WRITER_URL=http://127.0.0.1:5001` — **dead port** (writer binds 5001; nothing on 5001) | Low — kernel sealer defaults to 5001 in-code, so pipeline works; env value is a latent trap | One-line env correction; touches secrets file → apply under 5-R discipline or during D4-governed change |
 | S3 | carry_forward v3 entries carry `agent: "unknown"` for some writers | Low — attribution gap in the federation's own memory | carry_forward.py writer validation (small) |
 | S4 | WELL organ :18083 + GEOX :8081 still `degraded` on /health | Medium | Separate diagnosis; M-WELL heal (1.1) removes one likely input — re-probe next session before acting |
 

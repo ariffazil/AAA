@@ -482,7 +482,16 @@ not in the challenge/verify path.
 
 ## References
 
-- `references/agent-ed25519-challenge.md` — full OpenCode worked example (step-by-step)
+- ``references/`` — full OpenCode worked example (step-by-step)
 - `references/opencode-9-location-key-drift-2026-08-12.md` — session where 3 keypairs drifted across 9 files; A-FORGE restart rotation; pre_execution_gate phantom claims bug
 - `references/opencode-mcp-bare-url-identity-missing-2026-08-12.md` — **Layer Zero failure: MCP config was bare URL, agent never sent actor_id, kernel returned "anonymous". Agent falsely attributed denial to Gödel Rule 2 / no self-certification. Real fix: add identity headers to MCP config.**
 - `references/opencode-orphan-key-and-parent-agent-footgun-2026-08-12.md` — **Plugin loaded orphan key (identity_pkcs8.pem) not in any registry. parent_agent param caused kernel remap trap. Definitive Python isolation test. Root cause: wrong private key file path, not philosophical denial.**
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-18-git-lane-identity-binding-and-agy-harness
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

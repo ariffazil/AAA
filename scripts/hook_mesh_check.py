@@ -27,6 +27,7 @@ Exit 0 = clean (or all defects declared). Exit 1 = undeclared drift.
 
 Run:  python3 /root/AAA/scripts/hook_mesh_check.py [--json]
 """
+
 from __future__ import annotations
 
 import argparse
@@ -41,7 +42,7 @@ SOT = AAA / "governance" / "AGENTIC-HOOK-MESH-V1.yaml"
 ORDER_DOC = AAA / "governance" / "AAA-HOOK-ORDER-AND-MONOTONICITY.md"
 ANTIGRAVITY = AAA / "registries" / "antigravity" / "hooks.json"
 CLAUDE_HOOKS = AAA / "plugins" / "claude-code-federation" / "hooks" / "hooks.json"
-OPENCODE_MANIFEST = Path("/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json")
+OPENCODE_MANIFEST = Path("/root/.config/opencode/plugins/OPENCODE-HOOK-ORDER-MANIFEST.json")
 
 KERNEL_ONLY_VERDICTS = ("VOID", "DENY", "REVOKED")
 
@@ -125,9 +126,9 @@ def check_classes(sot_text: str) -> set[str]:
 BLOCK_CLAIM_PATTERNS = (
     (r'"can_block"\s*:\s*true', "can_block: true"),
     (r'"must_block"\s*:\s*true', "must_block: true"),
-    (r'must_block_on\s*:', "must_block_on"),
+    (r"must_block_on\s*:", "must_block_on"),
     (r'"authority"\s*:\s*"MONOTONIC_GATE"', "authority: MONOTONIC_GATE"),
-    (r'Authority Ceiling\s*\|?\s*MONOTONIC_GATE', "MONOTONIC_GATE ceiling in table"),
+    (r"Authority Ceiling\s*\|?\s*MONOTONIC_GATE", "MONOTONIC_GATE ceiling in table"),
 )
 
 
@@ -236,7 +237,9 @@ def check_declared_defects(sot_text: str) -> None:
             with _tempfile.NamedTemporaryFile(suffix=".js", delete=True) as out:
                 proc = _subprocess.run(
                     ["bun", "build", "--target=bun", str(ts), f"--outfile={out.name}"],
-                    capture_output=True, text=True, timeout=60,
+                    capture_output=True,
+                    text=True,
+                    timeout=60,
                 )
             if proc.returncode != 0:
                 last = (proc.stderr.strip().splitlines() or ["unknown error"])[-1]
@@ -254,15 +257,20 @@ def check_declared_defects(sot_text: str) -> None:
     # every suite green (observed flapping 2026-09-14 09:19/09:29/09:30 —
     # VOID/NOT_EXECUTED, then ALLOW/PROCEEDED, then VOID again within minutes).
     import subprocess as _sp9
+
     eng_cli = LIB / "federation_hook_engine.py"
     if eng_cli.exists():
-        _payload = json.dumps({
-            "tool_name": "Bash",
-            "tool_args": {"command": "echo pwned >> /etc/sudoers.d/evil"},
-        })
+        _payload = json.dumps(
+            {
+                "tool_name": "Bash",
+                "tool_args": {"command": "echo pwned >> /etc/sudoers.d/evil"},
+            }
+        )
         _proc = _sp9.run(
             ["python3", str(eng_cli), "gate", "--actor", "MESH-CHECK-C9", "--payload", _payload],
-            capture_output=True, text=True, timeout=60,
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
         _verdict = _exec = None
         try:
@@ -297,22 +305,26 @@ def main() -> int:
     check_declared_defects(sot_text)
 
     if args.json:
-        print(json.dumps({
-            "check": "aaa.hook_mesh_check.v1",
-            "sot": str(SOT),
-            "sot_version": (re.search(r'^version:\s*"([^"]+)"', sot_text, flags=re.M) or [None, "?"])[1],
-            "failures": failures,
-            "notices": notices,
-            "status": "FAIL" if failures else "PASS",
-        }, indent=2))
+        print(
+            json.dumps(
+                {
+                    "check": "aaa.hook_mesh_check.v1",
+                    "sot": str(SOT),
+                    "sot_version": (re.search(r'^version:\s*"([^"]+)"', sot_text, flags=re.M) or [None, "?"])[1],
+                    "failures": failures,
+                    "notices": notices,
+                    "status": "FAIL" if failures else "PASS",
+                },
+                indent=2,
+            )
+        )
     else:
         print("=== AAA HOOK MESH DRIFT GUARD ===")
         for n in notices:
             print(f"  ok   {n}")
         for f in failures:
             print(f"  FAIL {f}")
-        print(f"\nstatus: {'FAIL' if failures else 'PASS'} "
-              f"({len(notices)} ok, {len(failures)} failed)")
+        print(f"\nstatus: {'FAIL' if failures else 'PASS'} ({len(notices)} ok, {len(failures)} failed)")
     return 1 if failures else 0
 
 

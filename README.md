@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.09.21 (P2 — AAA-ATTENTION-CONVERGENCE)
-last_verified: 2026-09-21T02:11:00Z
+federation_release: v2026.10.19 (state capture + housekeeping checkpoint)
+last_verified: 2026-10-19T15:26:00Z
 apex_zen: HERMES claims → CHRON temporal → AAA attention → arifOS authority → A-FORGE execution
 
 identity:
@@ -51,6 +51,10 @@ counts_are_live:
 # AAA
 
 ### Attention before action.
+
+> Invariant: Routing a message ≠ authorizing its consequence. Attention is measured before action; authority is checked before mutation.
+
+> AAA does not establish Claim = AbsoluteTruth — it establishes ObservedState with evidence. What AAA performs is state reconciliation and consistency verification. arifFlow = metabolism / FQ / receipts — not a witness plane. And the three records stay distinct: Witness ≠ Telemetry ≠ Ledger.
 
 AAA is the **attention and agent-discovery plane** of the arifOS federation. It converts evidence, state, deadlines, drift and uncertainty into machine-readable **AttentionPackets** so humans and AI agents can identify what deserves attention — without confusing priority with authority.
 
@@ -345,13 +349,16 @@ python3 scripts/attention_plane.py   # sample AttentionPacket
 | Flow graph | [FEDERATION.md](./docs/FEDERATION.md) — peta semua organ + repo |
 <!-- FEDERATION-STANDARD v2026-10-15 END -->
 
+---
+
 ## External Footprint & Discovery
 
-HERMES is the Tier-3 federation interface and human reality bridge of the arifOS federation.
+AAA is the attention-routing and A2A mesh cockpit of the arifOS federation.
 
-- **Discoverable:** YES (GitHub repository)
-- **Authority Ceiling:** OBSERVE_ONLY (normalizes, classifies, routes, receipts — never judges, executes, or seals)
+- **Discoverable:** YES (GitHub repository, public agent card at `https://aaa.arif-fazil.com/.well-known/agent-card.json`)
+- **Authority Ceiling:** DISPLAY_ONLY (routing and display — never adjudicates)
 - **Inspectable & Forkable:** YES
 - **Independent Validation:** NOT YET ESTABLISHED
 
 Canonical Witness Ledger: [EXTERNAL_WITNESS_LEDGER.md](https://github.com/ariffazil/arifOS/blob/main/docs/EXTERNAL_WITNESS_LEDGER.md)
+

@@ -1,6 +1,8 @@
 ---
 name: federated-abi-extension
 description: Extend federated typed ABI without semantic duplication.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Federated Typed-ABI Extension

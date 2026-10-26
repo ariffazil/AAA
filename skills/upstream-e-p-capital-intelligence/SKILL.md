@@ -82,4 +82,4 @@ Each entry point with actual headline amounts, date, and WI%:
 
 ## References
 - `references/petronas-brasil-2026.md` — full Petronas Brasil deal ledger (2003–2026): amounts, dates, sources, cost benchmarks, model mid-points. Worked example of this whole workflow.
-- `references/noc-control-set-fy2025.md` (under pdf-report-generation) — default NOC peer panel for any single-NOC verdict: Aramco, Equinor, PTT, Ecopetrol, Petrobras, ADNOC Gas + PETRONAS FY2025 financials. Always pair verdict lines against this table; single-case scoring = INADMISSIBLE.
+- `/root/AAA/skills/pdf-report-generation/references/noc-control-set-fy2025.md` (under pdf-report-generation) — default NOC peer panel for any single-NOC verdict: Aramco, Equinor, PTT, Ecopetrol, Petrobras, ADNOC Gas + PETRONAS FY2025 financials. Always pair verdict lines against this table; single-case scoring = INADMISSIBLE.

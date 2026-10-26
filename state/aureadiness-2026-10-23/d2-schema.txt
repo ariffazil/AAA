@@ -1,0 +1,20 @@
+arif_observe: 8 props | required=[]
+   props: ['mode', 'query', 'session_id', 'actor_id', 'session_token', 'url', 'layers', 'result_limit']
+   evidence-ish fields: []
+
+arif_think: 9 props | required=[]
+   props: ['mode', 'query', 'session_id', 'actor_id', 'session_token', 'plan_id', 'witness_type', 'concise', 'context']
+   evidence-ish fields: []
+
+arif_judge: 31 props | required=[]
+   props: ['mode', 'candidate', 'session_id', 'session_token', 'actor_id', 'constitutional_chain_id', 'vault_entry_id', 'cooldown_entry_id', 'action_tier', 'heart_critique', 'niat_params', 'context_source', 'sovereign_receipt', 'evidence', 'actor_signature', 'nonce', 'key_id', 'authority_token', 'reversibility_level', 'blast_radius', 'seal_purpose', 'authority_effect', 'action_class', 'requested_capability', 'domain', 'claim_class', 'claim_text', 'actor_B', 'actor_Phi', 'entropy_pathway', 'entropy_receipt']
+   evidence-ish fields: ['context_source', 'sovereign_receipt', 'evidence', 'action_class', 'claim_class', 'entropy_receipt']
+
+arif_forge: 15 props | required=[]
+   props: ['mode', 'manifest', 'seal_verdict_id', 'approved_action_hash', 'query', 'artifact_id', 'session_id', 'session_token', 'ack_irreversible', 'actor_id', 'constitutional_chain_id', 'judge_state_hash', 'vault_entry_id', 'plan_id', 'arif_ack_id']
+   evidence-ish fields: []
+
+arif_seal: 14 props | required=['payload']
+   props: ['mode', 'payload', 'session_id', 'actor_id', 'session_token', 'actor_signature', 'nonce', 'constitutional_chain_id', 'judge_state_hash', 'witness_type', 'drift_events', 'constitutional', 'seal_purpose', 'ack_irreversible']
+   evidence-ish fields: []
+

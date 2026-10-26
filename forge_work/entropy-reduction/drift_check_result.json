@@ -1,7 +1,7 @@
 {
-  "check_time": "2026-10-13T20:33:09Z",
-  "total_checks": 54,
-  "seal": 44,
+  "check_time": "2026-10-21T14:18:16Z",
+  "total_checks": 53,
+  "seal": 43,
   "partial": 4,
   "hold": 6,
   "void": 0,
@@ -43,10 +43,10 @@
       "verdict": "SEAL"
     },
     {
-      "severity": "OK",
+      "severity": "GAP",
       "check": "Agent card for opencode",
-      "detail": "EXISTS: a2a-server/agent-cards/forge/fi-001-opencode.json",
-      "verdict": "SEAL"
+      "detail": "MISSING: a2a-server/agent-cards/forge/fi-001-opencode.json",
+      "verdict": "HOLD"
     },
     {
       "severity": "OK",
@@ -67,10 +67,10 @@
       "verdict": "HOLD"
     },
     {
-      "severity": "OK",
+      "severity": "GAP",
       "check": "Agent card for kimi-code",
-      "detail": "EXISTS: a2a-server/agent-cards/forge/fi-008-kimi-code.json",
-      "verdict": "SEAL"
+      "detail": "MISSING: a2a-server/agent-cards/forge/fi-008-kimi-code.json",
+      "verdict": "HOLD"
     },
     {
       "severity": "OK",
@@ -213,20 +213,14 @@
     {
       "severity": "OK",
       "check": "FI slots",
-      "detail": "10 slots, all unique owners per AGENTS_UNIFIED.yaml",
+      "detail": "9 slots, all unique owners per AGENTS_UNIFIED.yaml",
       "verdict": "SEAL"
     },
     {
-      "severity": "GAP",
-      "check": "Card for aforge",
-      "detail": "MISSING: /root/AAA/agent-cards/pillars/aforge/agent-card.json",
-      "verdict": "HOLD"
-    },
-    {
-      "severity": "GAP",
+      "severity": "OK",
       "check": "Canonical cards",
-      "detail": "1 ghost paths",
-      "verdict": "HOLD"
+      "detail": "All paths resolve \u2014 0 ghost paths",
+      "verdict": "SEAL"
     },
     {
       "severity": "OK",
@@ -237,19 +231,19 @@
     {
       "severity": "GAP",
       "check": "Skill registration",
-      "detail": "491 SKILL.md files not registered in skills.yaml",
+      "detail": "544 SKILL.md files not registered in skills.yaml",
       "verdict": "PARTIAL"
     },
     {
       "severity": "GAP",
       "check": "Registered skill files",
-      "detail": "28 registered skills have missing SKILL.md files",
+      "detail": "45 registered skills have missing SKILL.md files",
       "verdict": "PARTIAL"
     },
     {
       "severity": "INFO",
       "check": "Tool authority",
-      "detail": "270 tools with authority hints, 0 without",
+      "detail": "269 tools with authority hints, 0 without",
       "verdict": "PARTIAL"
     },
     {
@@ -303,7 +297,7 @@
     {
       "severity": "GAP",
       "check": "Deprecated files",
-      "detail": "106 deprecated/tombstone files in active paths",
+      "detail": "97 deprecated/tombstone files in active paths",
       "verdict": "PARTIAL"
     },
     {
@@ -327,7 +321,7 @@
     {
       "severity": "OK",
       "check": "Harness wire-yield (F13/Substrate Swap)",
-      "detail": "No Agents-API orchestration wire in organ source (12853 files scanned) \u2014 engine local, leash held by arifOS",
+      "detail": "No Agents-API orchestration wire in organ source (14207 files scanned) \u2014 engine local, leash held by arifOS",
       "verdict": "SEAL"
     }
   ]

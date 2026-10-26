@@ -129,6 +129,7 @@ known_shadows:
   /root/arif-sites:
     status: retired_symlink_alias
     was: symlink → /root/arif-fazil.com (since 2026-07-29)
+    corrected_2026-10-20: "REAL DIR on disk (not a symlink, not a ghost) — ACTIVE writer output: /root/.local/bin/wealth_daily_briefing.py:21 hardcodes base /root/arif-sites/sites/arif-fazil.com (stale path from symlink era) and writes daily ~06:00 MYT. Holds the ONLY copy of 38 Brave-source wealth archives (2026-09-12→2026-10-19, 0 overlap with repo or live). DO NOT archive/delete. Split-brain open: wealth-briefing-cron.sh [2/3] syncs the OTHER stream (yfinance, archives frozen 2026-08-30) from the repo — the Brave stream never ships. Repoint decision = F13."
   /root/Hermes:
     status: retired_case_shadow
     retired: 2026-10-15 (grounding sweep: directory no longer exists on disk; MACHINE_MAP 2026-09-07 FI-008 confirmed removal)

@@ -47,6 +47,36 @@ the subject's defence trusts the rest more, and you cannot be accused of selecti
 - Carry the source inline per item (short list: outlet names). Keep the full list on a sources page.
 - Corroborate anything that carries a number or a quote in two places before it ships.
 
+## Step 2b — Wikipedia text via API (not scraping)
+
+For public-figure facts, skip Wikipedia HTML scraping. Use the plaintext API — clean, no tables, no infobox noise:
+
+```python
+url = "https://en.wikipedia.org/w/api.php?" + urllib.parse.urlencode({
+    "action": "query", "prop": "extracts", "explaintext": "1",
+    "titles": "<Person Name>", "format": "json", "redirects": "1"})
+req = urllib.request.Request(url, headers={"User-Agent": "<agent>/1.0"})
+text = next(iter(json.load(urllib.request.urlopen(req))['query']['pages'].values()))['extract']
+```
+
+Returns 15-55KB plain text per figure. Slice by section markers (`text.find("== Section ==")`).
+
+For the lead portrait, use the `pageimages` prop instead of Commons search:
+
+```python
+url = "...&prop=pageimages&piprop=original&titles=<Person Name>"
+# returns {'original': {'source': <url>, 'width': ..., 'height': ...}}
+```
+
+Wikipedia lead image is usually the best licensed portrait and saves a Commons search round-trip.
+Still verify licence via Commons `imageinfo` API before embedding.
+
+## Step 2c — Live status via web_search (person may have changed)
+
+Wikipedia extract lags weeks behind. For "what is this person doing now" sections, run one targeted
+web search (exa preferred) for `<Person> 2025 2026 current news status` BEFORE writing, so the
+artifact doesn't ship stale job titles or missed recent events. Cite the search date inline.
+
 ## Step 3 — Imagery: real photos only, licensed and attributed
 
 **Never text-to-image a named real person.** A diffusion prior produces a person-like image, not
@@ -147,6 +177,12 @@ visual QA** — that is the same defect class as shipping a fabricated figure.
 
 - Pipeline doctrine, engine matrix and layout ownership: the externally owned `document-pipeline`
   skill. That one routes; this one is the procedure for a named-person subject.
+- Companion pattern in this repo: institutional-audit variant (same skill, different lens). When the
+  brief is "audit an institution, not a biography" — founders, authority, consequences, contradictions —
+  apply the same Step 1-6 discipline but structure output as: Angels / Devils / Humans / Agents lens,
+  claim-evidence matrix (P1-Pn propositions with PROVEN/PARTIAL/CONTESTED/UNKNOWN verdicts),
+  authority graph, consequence ledger, contradictions-preserved section, and a final HOLD verdict.
+  Never self-seal an institutional audit — the human reviews it.
 - Licensed-photo sourcing rules also live in the externally owned real-person reference-photo
   skill. Where that skill and this one differ on the download route, the API recipe above was
   verified against live Wikimedia responses.

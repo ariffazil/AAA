@@ -3,6 +3,8 @@ name: auth-failure-attribution
 description: "Use when a 401/403 could belong to any hop in the chain."
 version: 1.0.0
 tags: [auth, credentials, 401, triage, proxy, gateway, credential-store, attribution]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Auth Failure Attribution

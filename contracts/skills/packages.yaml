@@ -20,6 +20,8 @@ packages:
       - id: audit-seal
       - id: kernel-bind
       - id: memory-manage
+      - id: minimax-m-plan
+      - id: mmx-cli
       - id: observe-ground
       - id: route-dispatch
       - id: substrate
@@ -213,6 +215,7 @@ packages:
       - id: imagine
       - id: institutional-epistemic-sink-forensics
       - id: minimax-image-gen
+      - id: minimax-m-plan
       - id: openclaw
       - id: openclaw-claude-code-spawn
       - id: openclaw-forge

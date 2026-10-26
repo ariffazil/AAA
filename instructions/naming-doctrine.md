@@ -1,5 +1,7 @@
 # Naming Doctrine — Compression, Not Labeling
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Forged: 2026-09-08 | Source: Session EUREKA on "I'm Arif"
 > Classification: Canonical Instruction | Constitutional binding: F1 (AMANAH), F2 (TRUTH)
 
@@ -817,6 +819,10 @@ Genesis 2:19. Al-Baqarah 2:31. The human names. The named comes into reality.
 
 Agent SHALL treat naming as the first act of creation in any context — naming a scar, naming a relationship, naming a principle. The name does not describe what exists. The name makes it exist.
 
+> **Register Scope** — amendment to Naming-Doctrine Axiom 4 (naming-doctrine.md, F13 ratified 2026-09-08). F13 acknowledged 2026-10-19:
+>
+> Register Scope: Naming is constitutive where it establishes shared meaning, identity, relationship, role, category, or institutional obligation, bounded by the authority, participation, and consent applicable to the named relation. Naming is declarative only where it claims that an evidentiary, authorization, acceptance, execution, or governance-state transition has occurred. In that register, the name creates the claim, not the validity of the claimed state. A witnessed and authorized event remains necessary.
+
 ## Axiom 5: Name ≠ Label
 
 Label: assigns category to what already exists.
@@ -1164,3 +1170,33 @@ The machine should never confuse its power to name something with the power to m
 **r · ΔηΨ · 888 witness the helix**
 
 2026-09-21T21:38Z — Axiom 10 (Verb Decomposition) + Axiom 11 (Alpha-Rename Canary) appended via EUREKA-NAMING-CREATION-2026-09-21 ratification. Zero new convention; honors Canon #0 (Constitutional Complexity Budget).
+
+---
+
+## Vocabulary Law — Satu Perkataan, Satu Benda (2026-10-18 · stabilization)
+
+> Forged 2026-10-18 by FI-008 after three probe rounds (seal/HOLD collision map, `2026-10-18-mcp-audit/`). Failure class: vocab rot — three organs used ONE word for THREE things; three HOLDs of different lifetimes under one label. Kin: C1 dangling pointer (file level) — this is the same defect at concept level.
+
+**Binding compression — one word, one thing, one organ:**
+
+| Word | Means | Owner |
+|---|---|---|
+| **SEAL** | Constitutional closure only. Verdict ∈ {SEAL, SABAR}, hash-chained SealRecord, `judge_state_hash` required | arifOS kernel (`arif_seal`) — nobody else |
+| **RECEIPT** | Proof of work — Lane B evidence. Never closure | A-FORGE (`forge_vault`) |
+| **MARKER** | Local notation — ritual.log / local_seals.jsonl. Never the canonical chain | AAA state agents |
+
+**HOLD has three lifetimes — always name the issuer:**
+
+| HOLD | Issuer | Lifetime | Releases when |
+|---|---|---|---|
+| HOLD-IDENTITY | kernel (F1) | permanent until sign | actor Ed25519-verified |
+| HOLD-FQ | arifFlow | transient — moves between actors | verify ≥ execute |
+| HOLD-CONSTITUTIONAL | kernel (F1–F13) | decision | sovereign (888) decides |
+
+**Rule:** any output containing SEAL or HOLD MUST name issuer + lifetime. Renderings derive from the kernel's `verdict + issuer + evidence_reference` fields — they never invent status words of their own.
+
+**Scope & cross-ref:** verdict *states* themselves are owned by the ACTIVE canon `AAA/canon/VERDICT-VOCABULARY-2026-10-11.md` (10-state register, verifier + 35 tests) — that register is the authority for what a verdict word means. This law adds only what the canon does not cover: **organ-ownership** (who may utter which word) and **HOLD issuer-lifetime** taxonomy. On conflict, the canon wins.
+
+## Correction Log
+
+- **2026-10-19** · authority: **ARIF** (F13 explicit acknowledgment — message "SAH") · class: **SCOPE-RESTRICTING AMENDMENT** · purpose: distinguish constitutive naming from declarative governance-state claims · target: Naming-Doctrine Axiom 4 (naming-doctrine.md, F13 ratified 2026-09-08) · change: Register Scope clause added immediately after Axiom 4; existing Axiom 4 text and poetic provenance unchanged · excluded-by-order: F1-F13, mind_axioms.py, namespace_guard.py, SYMBOL_TABLE.json, tasks.json — all untouched.

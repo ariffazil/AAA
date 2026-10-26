@@ -3,6 +3,8 @@ name: paste-router
 description: "Use when Arif pastes URL, file, or media. Route via media-intake."
 version: 1.1.0
 tags: [paste, intake, router, arif-attention]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Paste Router — thin adapter only (no implementation)
@@ -97,6 +99,7 @@ If paste type is unambiguous, proceed. If ambiguous, one short question. If stil
 | 1-3 sentence text in BM/EN | Question/note | answer from text |
 | Code block ```...``` | Code | patch / analyze / search |
 | 3+ paragraph text | Document | summarize (asi-summarize) |
+| Bare social handle (`@name`, `@name.tld`, plain `name`) | Profile lookup | SerpApi `instagram_profile` / `google_scholar` for the named person. **Probe first, ask after** — see media-ingest-lane "Profile / handle lookup". |
 
 ## Tool priority (fail-soft)
 

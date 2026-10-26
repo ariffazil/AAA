@@ -1,6 +1,6 @@
 ---
 name: agy-scar-hardening
-description: "Operating hardening doctrine for Antigravity CLI (FI-004 canonical / agy) derived from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007)."
+description: "Operating hardening doctrine for Antigravity CLI (FI-009 canonical / agy (FI-004 = Gemini CLI DECEASED 2026-09-13)) derived from 7 sealed AGY-specific scars (SCAR-AGY-001 through SCAR-AGY-007)."
 trigger: always_on
 capability_tier: fed-agent-subagent
 ecology_state: WARM
@@ -138,6 +138,23 @@ When updating a symbolic resource (web page, canon doc, identity file):
 
 ---
 
+## LAW 8 — git-lane Discipline (SCAR-AGY-008, P0)
+
+**"NEVER mutate repo git config to set author identity. ALWAYS commit via `git-lane agy`."**
+
+In `/root/arifOS`, `/root/A-FORGE`, and federation repos:
+- `user.name=""` and `user.signingkey=""` are intentionally empty by constitutional design.
+- Direct `git commit` is BLOCKED fail-closed by the pre-commit LANE GATE.
+- **NEVER** run `git config user.name "..."` or `git config user.email "..."` in repo working trees. Doing so breaks sibling lanes and triggers concurrent-writer collisions.
+- **ALWAYS** invoke git via the lane wrapper:
+  ```bash
+  /root/scripts/git-lane agy commit -m "..."
+  /root/scripts/git-lane agy -C /path/to/repo commit -m "..."
+  ```
+- Identity `fi-004@arifos.local` is cryptographically signed by `/root/.ssh/git-signing/agy` and recorded in `/root/.config/git/lane-identities.tsv`.
+
+---
+
 ## Quick Reference
 
 | Scar | Law | Enforcement |
@@ -149,8 +166,15 @@ When updating a symbolic resource (web page, canon doc, identity file):
 | AGY-005 | Path verify | find before read on unverified path |
 | AGY-006 | Subagent depth | No nesting from subagent context |
 | AGY-007 | Output contract | 3 sentences, receipt shape |
+| AGY-008 | git-lane discipline | Never touch git config user.name; use git-lane agy |
 | GENESIS-001 | Prepend not replace | Add meaning, don't overwrite |
 
 ---
 
-*Sealed: 2026-09-13 · Forged from 383 AGY CLI sessions · DITEMPA BUKAN DIBERI ⚒️*
+*Sealed: 2026-10-18 · Forged from AGY CLI sessions & F13 git-lane settlement · DITEMPA BUKAN DIBERI ⚒️*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-005-canonical-path-hallucination
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

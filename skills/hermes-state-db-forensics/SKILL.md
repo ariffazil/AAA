@@ -104,12 +104,18 @@ When a chat name surfaces with zero known history ("agent bot tu la" — who is 
 
 Both fired within one minute of journal on 2026-08-15 when replying to an unknown "Koho Pharma" DM. Key doctrine: **allowlisting fixes INBOUND only — neither Forbidden is fixable by config; they are Telegram platform law.** So a correct answer to "why is the bot silent to chat X" names which of the four ladder rungs failed, not just "check the config".
 
+## An audit that catches fabrication can itself fabricate (hit 2026-10-18)
+
+When a sibling/CLI agent reports it audited a reflection and "found the real numbers" (e.g. "5,421 messages", "92 skills"), **re-probe THOSE corrected figures against the live store before repeating them.** The auditor needs the same SQL discipline as the original claim — a "bertaubat sambil buat dosa yang sama" audit gives invented corrections. Also confirm **which state.db it queried**: stale copies (profile `aaa-hermes`, `/usr/local/lib/hermes-agent/state.db`) freeze at ~15 Aug, so any total from them is wrong by construction. Live store = `/root/.hermes/state.db` (1.28GB, max `messages.timestamp` ≈ now). Skill-count truth: `find /root/.hermes/skills -name SKILL.md | wc -l` (live bundle) vs `/root/AAA/skills` (mesh) — neither equals prose counts.
+
 ## Bare "Continue" recovery (hit 2026-08-15)
 
 When a session opens with a single word — "Continue", "go on", "sambung" — and context is empty (group rotation/restart), reconstruct the referent from the store before replying: (1) skip a failed `session_search`, (2) read `sessions` schema via `pragma_table_info` (columns are `last_activity_at`/`started_at`, NOT `created_at`/`updated_at` — guessing fails), (3) pick the newest session row for that `chat_id` (one group accrues many session rows over days), (4) read its `user`+`assistant` tail — the pending message itself lands in `messages` only asynchronously, so don't loop waiting for it, (5) cross-check the sender's DM sessions by `user_id` in case "Continue" points at DM work, not group banter. Then **match the recovered register**: if the tail is 1-2 line group banter, the correct continuation is one more line of banter, not a status report. Full trail: `references/bare-continue-context-recovery-2026-08-15.md`.
 
 ## Support files
 
-- `references/state-db-schema-2026-08-13.md` — verified table schemas (sessions, messages, session_model_usage) and the per-user token/cost SQL, captured from live probe.
+- ``references/`` — verified table schemas (sessions, messages, session_model_usage) and the per-user token/cost SQL, captured from live probe.
 - `references/unknown-chat-triage-2026-08-15.md` — Koho Pharma incident: full probe trail (channel_directory hit, zero sessions, zero routing, journal Forbidden ×2), the four-rung ladder, and the two-signature classification table.
 - `references/bare-continue-context-recovery-2026-08-15.md` — schema-first ladder for reconstructing what a bare "Continue" refers to when the session context is empty; includes the async-persist gotcha and the register-matching rule.
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

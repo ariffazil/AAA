@@ -85,6 +85,12 @@ const { getOrchestrator } = require('./orchestrator');
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
+// ── Tailnet transport identity (observe-only, 2026-10-19) ─────────────
+// The aaa-ingress tsagent verifies the peer with whois and HMAC-signs the
+// identity. This middleware verifies it and attaches req.tailnetIdentity.
+const { tailnetIdentityMiddleware } = require('./tailnet_identity');
+app.use(tailnetIdentityMiddleware);
+
 // Membrane gate — every cross-organ message must pass through
 app.use(membraneMiddleware);
 app.use(membraneResponseHook);
@@ -2042,9 +2048,13 @@ function authMiddleware(req, res, next) {
   // ── Cloudflare Tunnel proxy check (X-Forwarded-For from Caddy on localhost) ──
   const forwarded = req.headers['x-forwarded-for'];
   if (forwarded) {
-    const ips = forwarded.split(',').map(s => s.trim());
-    if (ips.some(ip => ip === '127.0.0.1' || ip === '::1')) {
-      req.auth = { scheme: 'loopback-proxy', valid: true, ip: forwarded };
+    // T1 HARDENING 2026-10-22 (item 3): only the RIGHTMOST entry (the peer
+    // Caddy actually saw) can claim loopback. The previous some() trusted
+    // any upstream-spoofable entry anywhere in the chain.
+    const ips = forwarded.split(',').map(s => s.trim()).filter(Boolean);
+    const peer = ips[ips.length - 1] || '';
+    if (peer === '127.0.0.1' || peer === '::1') {
+      req.auth = { scheme: 'loopback-proxy', valid: true, ip: peer, chain: forwarded };
       return next();
     }
   }
@@ -2563,6 +2573,19 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       responseText = `[AAA Gateway] Received: "${userText}"\nSkills: agent-dispatch, agent-handoff, status-query, federated-memory-query.`;
   }
 
+  // ── ACAH2 template honesty (2026-10-20, 333-AGI) ──────────────────────
+  // Everything above in this section is a TEMPLATE responder: no agent and no
+  // model executes here. NUSANTARA-P1 failure class — a generic echo must never
+  // read like agent work. execution_succeeded (the echo ran) is separated from
+  // outcome_verified (the intended effect is confirmed): agent_executed=false,
+  // outcome_verified=false, and the payload says so in plain text.
+  task.metadata.agent_executed = false;
+  task.metadata.execution_mode = 'template';
+  task.metadata.outcome_verified = false;
+  if (skill !== 'federated-memory-query') {
+    responseText += `\n[TEMPLATE_RESPONSE — echo only; no agent or model executed (agent_executed=false, outcome_verified=false). For live agent work set params.agent_id (or configuration.agent) to a registered agent.]`;
+  }
+
   logEvent('999_SEAL', taskId, 'Task completed — sealing to VAULT999');
   const completedStatus = {
     state: 'TASK_STATE_COMPLETED',
@@ -2931,13 +2954,22 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     // SOVEREIGN
     'ARIF_FAZIL',
     // META
-    'anonymous', 'mesa-test-agent',
+    'mesa-test-agent',
   ]);
 
-  const sourceAgent = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || 'anonymous';
-  if (!CANONICAL_ACTORS.has(sourceAgent)) {
-    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${sourceAgent}" is not canonical`));
+  // T1 HARDENING 2026-10-22 (item 5): 'anonymous' removed from CANONICAL_ACTORS.
+  // A claimed actor is checked only when one is actually claimed; identity for
+  // accounting comes from the verified DID (effectiveSourceAgent, below).
+  const claimedActor = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || null;
+  if (claimedActor && !CANONICAL_ACTORS.has(claimedActor)) {
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${claimedActor}" is not canonical`));
   }
+  const sourceAgent = claimedActor || 'anonymous';
+  // TDZ-SAFE (hotfix 2026-10-22): the res.on('finish') metabolic-ledger
+  // callback below reads this binding. It MUST be initialized before that
+  // callback can fire (early returns finish the response first). Declaring
+  // it as a later `const` crashed the gateway on every unsigned 403.
+  let effectiveSourceAgent = sourceAgent;
   if (targetAgent && !CANONICAL_ACTORS.has(targetAgent)) {
     return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Target agent "${targetAgent}" is not canonical`));
   }
@@ -2953,7 +2985,7 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     const stepType = res.statusCode >= 400 ? 'Execute' : 'Execute';
     const floorVerdict = res.statusCode >= 500 ? 'Hold' : res.statusCode >= 400 ? 'Caution' : 'Pass';
     ingestFlow({
-      actorId: sourceAgent,
+      actorId: effectiveSourceAgent,
       sessionId: resolvedTaskId,
       stepType,
       epistemicLabel: 'Derivation',
@@ -2986,6 +3018,38 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   }
   logEvent('A2A_DID_VERIFIED', resolvedTaskId,
     `from=${didResult.did} organ=${didResult.organId}`);
+
+  // -- T1 HARDENING 2026-10-22 (333-AGI, F13 'gooooo') - items 1+2 ----------
+  // (1) Replay guard: this mutation path had NONE (message/send has had one
+  //     since 2026-07). A captured signed envelope must not re-dispatch.
+  const sendPayloadHash = hashPayload(req.body);
+  if (checkReplay(sendPayloadHash)) {
+    logEvent('A2A_REPLAY_DROP', resolvedTaskId, 'Duplicate payload hash dropped');
+    return res.status(400).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.NONCE_REPLAY,
+      'Duplicate request detected (replay)'));
+  }
+  // (1b) Freshness - enforced only when the caller actually stamps issued_at.
+  //      Measured 2026-10-22: no live builder sets it, so absence is LOGGED,
+  //      not rejected (rejection would have broken every dispatching caller).
+  //      Rejection activates automatically once callers adopt issued_at.
+  const issuedAtMs = Date.parse(envelope.issued_at || '');
+  if (Number.isFinite(issuedAtMs) && Math.abs(Date.now() - issuedAtMs) > 5 * 60 * 1000) {
+    logEvent('A2A_STALE_ENVELOPE', resolvedTaskId, `issued_at=${envelope.issued_at}`);
+    return res.status(400).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.TIMESTAMP_EXPIRED,
+      'envelope.issued_at outside 5min freshness window'));
+  }
+  if (!Number.isFinite(issuedAtMs)) {
+    logEvent('A2A_ISSUED_AT_MISSING', resolvedTaskId,
+      'envelope.issued_at absent - replay window bounded by REPLAY_CACHE_TTL_MS only');
+  }
+
+  // (2) Actor<->signer binding: the claimed actor is decorative until the DID
+  //     says otherwise. Effective actor for accounting = verified organ_id.
+  effectiveSourceAgent = didResult.organId || didResult.did || sourceAgent;
+  if (effectiveSourceAgent !== sourceAgent) {
+    logEvent('A2A_ACTOR_SUPERSEDED', resolvedTaskId,
+      `claimed=${sourceAgent} verified=${effectiveSourceAgent}`);
+  }
 
   logEvent('A2A_DISPATCH', resolvedTaskId, `From: ${req.auth?.scheme || 'unknown'}, Target: ${targetAgent || 'auto'}`);
 
@@ -3103,6 +3167,66 @@ print(json.dumps(json.load(open(RUNTIME_PATH / 'vps_main_arifos.json'))))
   }
 });
 
+// ── Kernel apex-scalar proxy (2026-10-18 · 333-AGI · honesty fix) ────────────
+// AAA is DISPLAY_ONLY. The authoritative apex scalars are MEASURED by the arifOS
+// kernel (per-scalar provenance = arifflow_live_vector / witness_producers).
+// AAA's own (A·P·E·X)^1/4 is a constant-driven local heuristic (A=0.85, P=0.90,
+// E=0.85, X=0.90 ⇒ G≈0.875 by construction, independent of federation state).
+// Publishing that under `apex_scalars` produced a live contradiction:
+//   AAA G=0.875 "HEALTHY"  vs  kernel G=0.5499 MEASURED, F8 fail, status=degraded
+// Measured wins. Kernel values become `apex_scalars`; the local heuristic is
+// demoted to `apex_scalars_local` with authoritative:false. If the kernel is
+// unreachable the key reports UNMEASURED with nulls — never a synthetic fallback
+// wearing a HEALTHY badge.
+const KERNEL_HEALTH_URL = process.env.ARIFOS_LOCAL_URL
+  ? `${process.env.ARIFOS_LOCAL_URL.replace(/\/$/, '')}/health`
+  : 'http://127.0.0.1:8088/health';
+const KERNEL_APEX_TTL_MS = 5000;
+let _kernelApexCache = { data: null, ts: 0 };
+
+function fetchKernelApex() {
+  const now = Date.now();
+  if (_kernelApexCache.ts && now - _kernelApexCache.ts < KERNEL_APEX_TTL_MS) {
+    return Promise.resolve(_kernelApexCache.data);
+  }
+  const stamp = () => new Date().toISOString();
+  return new Promise((resolve) => {
+    let settled = false;
+    const done = (payload) => {
+      if (settled) return;
+      settled = true;
+      _kernelApexCache = { data: payload, ts: Date.now() };
+      resolve(payload);
+    };
+    const req = HTTP.get(KERNEL_HEALTH_URL, { timeout: 1500 }, (r) => {
+      let body = '';
+      r.on('data', (c) => { body += c; });
+      r.on('end', () => {
+        try {
+          const parsed = JSON.parse(body);
+          const scalars = parsed.apex_scalars;
+          if (!scalars || typeof scalars !== 'object') {
+            return done({ ok: false, error: 'kernel_apex_absent', measured_at: stamp() });
+          }
+          return done({
+            ok: true,
+            scalars,
+            kernel_status: parsed.status || null,
+            floor_passed: parsed.floor_passed === undefined ? null : parsed.floor_passed,
+            floors_active: parsed.floors_active || null,
+            kernel_version: parsed.version || null,
+            measured_at: stamp(),
+          });
+        } catch (e) {
+          return done({ ok: false, error: `kernel_parse_error: ${e.message}`, measured_at: stamp() });
+        }
+      });
+    });
+    req.on('timeout', () => { req.destroy(); done({ ok: false, error: 'kernel_timeout', measured_at: stamp() }); });
+    req.on('error', (e) => done({ ok: false, error: `kernel_unreachable: ${e.code || e.message}`, measured_at: stamp() }));
+  });
+}
+
 app.get('/health', async (req, res) => {
   const vaultHealthy = await checkVaultHealth();
   // Include seal chain head — the real heartbeat
@@ -3139,7 +3263,7 @@ app.get('/health', async (req, res) => {
   const deploymentDrift = deployedCommit !== 'UNAVAILABLE' && sourceCommit !== 'UNAVAILABLE' && deployedCommit !== sourceCommit;
   const healthStatus = (deployedCommit === 'UNAVAILABLE' || deploymentDrift) ? 'degraded' : 'healthy';
 
-  // APEX SCALARS — live computation from observable state
+  // APEX SCALARS — LOCAL HEURISTIC (non-authoritative, see fetchKernelApex above)
   // G = (A·P·E·X)^(1/4) — Nash bargaining product (geometric mean)
   const A = identityHash !== 'UNAVAILABLE' ? 0.85 : 0.30;  // Authority: identity present
   const P = !deploymentDrift ? 0.90 : 0.40;                 // Plan integrity: no drift
@@ -3162,6 +3286,8 @@ app.get('/health', async (req, res) => {
   // QDF = Quality Deployment Factor
   const QDF = (healthStatus === 'healthy' ? 1.0 : 0.5) * (vaultHealthy ? 1.0 : 0.5) * (!deploymentDrift ? 1.0 : 0.5);
 
+  const kernelApex = await fetchKernelApex();
+
   res.json({
     status: healthStatus,
     identity: identityHash,
@@ -3169,13 +3295,45 @@ app.get('/health', async (req, res) => {
     deployed_commit: deployedCommit,
     source_commit: sourceCommit,
     deployment_drift: deploymentDrift,
-    apex_scalars: {
+    // Authoritative: proxied from arifOS kernel /health. `authority: MEASURED` is a
+    // claim about the kernel's per-scalar provenance, not about this proxy hop.
+    apex_scalars: kernelApex.ok
+      ? {
+        ...kernelApex.scalars,
+        source: 'arifOS:8088/health',
+        authority: 'MEASURED',
+        measured_at: kernelApex.measured_at,
+      }
+      : {
+        G: { value: null, status: 'UNMEASURED' },
+        C_dark: { value: null, status: 'UNMEASURED' },
+        W3: { value: null, status: 'UNMEASURED' },
+        h: { value: null, status: 'UNMEASURED' },
+        QDF: { value: null, status: 'UNMEASURED' },
+        source: 'arifOS:8088/health',
+        authority: 'UNMEASURED',
+        error: kernelApex.error,
+        measured_at: kernelApex.measured_at,
+      },
+    // Demoted local heuristic — kept for continuity, explicitly non-authoritative.
+    apex_scalars_local: {
       G: { value: parseFloat(G.toFixed(3)), status: G >= 0.70 ? 'HEALTHY' : 'DEGRADED' },
       C_dark: { value: parseFloat(C_dark.toFixed(3)), status: C_dark <= 0.30 ? 'SAFE' : 'ELEVATED' },
       W3: { value: parseFloat(W3.toFixed(3)), status: W3 >= 0.75 ? 'CONSENSUS' : 'WEAK' },
       h: { value: parseFloat(h.toFixed(3)), status: h <= 0.50 ? 'CLEAN' : 'ENTROPIC' },
       QDF: { value: parseFloat(QDF.toFixed(3)), status: QDF >= 0.90 ? 'QUALITY' : 'DEGRADED' },
+      authoritative: false,
+      method: 'AAA local heuristic — (A·P·E·X)^1/4 over identity/drift/vault/runtime flags',
+      note: 'Display-only. Kernel-measured apex_scalars above are authoritative.',
     },
+    kernel_health: kernelApex.ok
+      ? {
+        status: kernelApex.kernel_status,
+        floor_passed: kernelApex.floor_passed,
+        floors_active: kernelApex.floors_active,
+        version: kernelApex.kernel_version,
+      }
+      : { status: 'UNREACHABLE', error: kernelApex.error },
     federation_geometry: {
       status: 'enabled',
       // G9 fix 2026-09-27: subjects was hardcoded 0 while the A2A registry held 47
@@ -3327,7 +3485,7 @@ app.get('/cockpit/queue_depth', async (req, res) => {
 // Surfaces: CRF terminal, web cockpit, machine API — all from one object.
 app.get('/api/state', (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync('/root/AAA/state/federation_state.json', 'utf8'));
+    const data = JSON.parse(fs.readFileSync('/var/lib/aaa/state/federation_state.json', 'utf8'));
     res.setHeader('Cache-Control', 'no-store');
     res.json(data);
   } catch (_) {
@@ -3481,10 +3639,17 @@ app.get('/api/seal-chain/head', async (req, res) => {
     const verify = sealChain.verifyChain();
     const summary = sealChain.getChainSummary();
     const recent = sealChain.getRecent(3);
+    const diagnostics =
+      typeof sealChain.getChainDiagnostics === 'function'
+        ? sealChain.getChainDiagnostics()
+        : null;
     res.json({
       ok: true,
       head,
       chain_ok: verify.ok,
+      chain_break_reason: verify.ok ? null : verify.reason || null,
+      chain_break_at_seq: verify.ok ? null : (verify.broken_at_seq ?? null),
+      chain_diagnostics: diagnostics,
       chain_length: verify.length,
       chain_head_hash: verify.head,
       v1_entries: summary.v1_entries,
@@ -4413,6 +4578,19 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
+    // T1 HARDENING 2026-10-22 (item 4): unsigned callers may not select a real
+    // agent. ACAH2 (2026-10-20) made agent_id/configuration.agent route to the
+    // live router, so an unsigned PREPARE-band call could invoke a real agent.
+    // Envelope-level legacy caps do not cover that field - gate it here.
+    const requestedAgent = params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null;
+    const envForDispatch = req.federationEnvelope || params.envelope || {};
+    if (requestedAgent && !envForDispatch.from_did) {
+      logEvent('A2A_UNSIGNED_AGENT_DISPATCH', String(params.taskId || 'none'),
+        `agent=${requestedAgent} blocked: envelope.from_did missing`);
+      return res.status(403).json(createJSONRPCError(id, -32001,
+        'DID_REQUIRED: dispatching to a real agent requires envelope.from_did. Unsigned calls may create template tasks only.'));
+    }
+
     const lineage = requireTaskLineage(params, id);
     if (!lineage.ok) {
       return res.status(400).json(lineage.error);
@@ -4424,7 +4602,14 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
     await taskStore.set(taskId, task);
     registerContextLineage(contextId, sessionId, taskId);
 
-    await executeTask(taskId, contextId, message, params.agent_id, params);
+    // ACAH2 (2026-10-20, 333-AGI): the DOCUMENTED dispatch field is
+    // configuration.agent — read it as fallback so documented callers reach the
+    // real agent router instead of silently landing in the template responder.
+    // Failure class: template echo returned TASK_STATE_COMPLETED with no agent
+    // executed (A/B probe 2026-10-20: configuration.agent → 0.3s template;
+    // params.agent_id → 21.8s real 555-ASI reply).
+    await executeTask(taskId, contextId, message,
+      params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null, params);
 
     const updatedTask = await taskStore.get(taskId);
     const skill = updatedTask.metadata?.skill || 'general';
@@ -4860,6 +5045,18 @@ app.post('/a2a', jsonRpcValidate, async (req, res) => {
         if (!msgValidation.valid) {
           return res.status(400).json(createJSONRPCError(id, -32602, msgValidation.message));
         }
+
+        // T1 HARDENING 2026-10-22 (item 4b): this dispatcher passes
+        // params.agent_id straight to executeTask. Unsigned JSON-RPC callers
+        // may not select a real agent - same rule as /a2a/message/send (item 4).
+        const requestedAgentJR = params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null;
+        const envJR = req.federationEnvelope || params.envelope || {};
+        if (requestedAgentJR && !envJR.from_did) {
+          logEvent('A2A_UNSIGNED_AGENT_DISPATCH', String(taskId),
+            `agent=${requestedAgentJR} blocked (jsonrpc dispatcher): envelope.from_did missing`);
+          return res.status(403).json(createJSONRPCError(id, -32001,
+            'DID_REQUIRED: dispatching to a real agent requires envelope.from_did. Unsigned calls may create template tasks only.'));
+        }
         
         // External payloads with insufficient witness → downgrade to observe-only
         if (isExternal && authorityOverride === 'OBSERVE_ONLY') {
@@ -5234,7 +5431,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
       console.warn(`[DelegationGuard] WARNING ${sourceAgent} → ${targetSkill}: ${delegationVerdict.reason}`);
     }
 
-    await executeTask(taskId, contextId, message, params.agent_id || params.metadata?.targetAgent || null, params);
+    await executeTask(taskId, contextId, message, params.agent_id || params.configuration?.agent || params.metadata?.targetAgent || null, params);
 
       const updatedTask = await taskStore.get(taskId);
 

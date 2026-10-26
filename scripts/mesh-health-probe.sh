@@ -6,12 +6,12 @@
 #   FAIL      = mesh defect (config drift, auth, middleware)
 #   DOWN      = binary missing
 # Writes /run/arifos/mesh-health.json (SOT). On NEW down-transition appends ONE
-# dated line to /root/AAA/terminal/holds.txt (deleted on resolution — that file's law).
+# dated line to /var/lib/arifos/state/terminal/holds.txt (deleted on resolution — that file's law).
 # Zero spam: state transitions only. Cost: ~7 tiny sessions/day.
 
 set -u
 OUT="/run/arifos/mesh-health.json"
-HOLDS="/root/AAA/terminal/holds.txt"
+HOLDS="/var/lib/arifos/state/terminal/holds.txt"
 STAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 TMP="$(mktemp)"; trap 'rm -f "$TMP"' EXIT
 

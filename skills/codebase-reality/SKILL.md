@@ -4,6 +4,8 @@ description: "Map repo static vs verified code reality via CLI evidence."
 argument-hint: ["<mode> <repo> [args]", "modes: repo|map|symbol|flow|impact|architecture|before_change"]
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # /codebase-reality

@@ -43,6 +43,7 @@ MODES
                 NOT for the hook — see constraint 3.
     --self-test run the built-in positive/negative cases
 """
+
 import calendar
 import hashlib
 import re
@@ -59,10 +60,36 @@ BOT_TOKEN_RE = re.compile(r"(?<!\d)(\d{8,10}):AA[A-Za-z0-9_-]{33,}(?![A-Za-z0-9_
 PB_VALID = set(range(1, 60)) | set(range(71, 86)) | set(range(90, 100))
 
 TEXT_EXTENSIONS = {
-    ".md", ".markdown", ".txt", ".rst", ".html", ".htm", ".css",
-    ".yaml", ".yml", ".json", ".jsonl", ".toml", ".ini", ".cfg", ".conf",
-    ".py", ".js", ".mjs", ".cjs", ".ts", ".tsx", ".jsx", ".sh", ".bash",
-    ".csv", ".tsv", ".sql", ".env", ".tex", ".xml",
+    ".md",
+    ".markdown",
+    ".txt",
+    ".rst",
+    ".html",
+    ".htm",
+    ".css",
+    ".yaml",
+    ".yml",
+    ".json",
+    ".jsonl",
+    ".toml",
+    ".ini",
+    ".cfg",
+    ".conf",
+    ".py",
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx",
+    ".sh",
+    ".bash",
+    ".csv",
+    ".tsv",
+    ".sql",
+    ".env",
+    ".tex",
+    ".xml",
 }
 
 # Repo-relative paths that must never be staged to a remote. Glob-style.
@@ -115,6 +142,7 @@ def load_allowlist() -> set:
         return set()
     try:
         import json
+
         data = json.loads(ALLOWLIST.read_text())
         entries = data.get("allow", [])
         out = set()
@@ -158,7 +186,12 @@ def run(args, timeout=240):
     own failure. Callers must check the returncode.
     """
     try:
-        p = subprocess.run(args, capture_output=True, text=True, timeout=timeout)
+        # errors="replace": staged binary files (PDF/PNG artifacts) make
+        # text=True raise UnicodeDecodeError, which fail-closes the whole
+        # commit on a decode bug instead of a person-data finding. Replacing
+        # undecodable bytes keeps the scan running; it cannot hide a token
+        # because the replacement chars never match the detectors.
+        p = subprocess.run(args, capture_output=True, text=True, errors="replace", timeout=timeout)
         return p.stdout, p.returncode
     except subprocess.TimeoutExpired:
         return "", 124
@@ -167,8 +200,11 @@ def run(args, timeout=240):
 def run_or_die(args, what, timeout=240):
     out, rc = run(args, timeout)
     if rc != 0:
-        print(f"PERSON-DATA GATE [FAIL-CLOSED]: {what} failed (rc={rc}). "
-              f"Refusing to report clean on an unreadable input.", file=sys.stderr)
+        print(
+            f"PERSON-DATA GATE [FAIL-CLOSED]: {what} failed (rc={rc}). "
+            f"Refusing to report clean on an unreadable input.",
+            file=sys.stderr,
+        )
         sys.exit(1)
     return out
 
@@ -183,6 +219,7 @@ def repo_root() -> str:
 
 def match_protected(path: str) -> bool:
     from fnmatch import fnmatch
+
     return any(fnmatch(path, pat) for pat in PROTECTED_PATHS)
 
 
@@ -192,15 +229,14 @@ def check_staged():
     allow = load_allowlist()
     violations = []
 
-    names = run_or_die(["git", "diff", "--cached", "--name-only", "--diff-filter=ACM"],
-                       "reading the staged file list").splitlines()
+    names = run_or_die(
+        ["git", "diff", "--cached", "--name-only", "--diff-filter=ACM"], "reading the staged file list"
+    ).splitlines()
     for path in [n.strip() for n in names if n.strip()]:
         if match_protected(path):
-            violations.append(("PROTECTED-PATH", path, "",
-                               "person registry must never be staged to a remote"))
+            violations.append(("PROTECTED-PATH", path, "", "person registry must never be staged to a remote"))
 
-    diff = run_or_die(["git", "diff", "--cached", "-U0", "--diff-filter=ACM"],
-                      "reading the staged diff")
+    diff = run_or_die(["git", "diff", "--cached", "-U0", "--diff-filter=ACM"], "reading the staged diff")
     current = None
     for line in diff.splitlines():
         if line.startswith("+++ b/"):
@@ -213,11 +249,9 @@ def check_staged():
         content = line[1:]
         nrics, tokens = scan_text(content, allow)
         for val, _ in nrics:
-            violations.append(("NRIC", current, mask_nric(val),
-                               "plausible Malaysian NRIC in added content"))
+            violations.append(("NRIC", current, mask_nric(val), "plausible Malaysian NRIC in added content"))
         for val in tokens:
-            violations.append(("BOT-TOKEN", current, mask_token(val),
-                              "Telegram bot token in added content"))
+            violations.append(("BOT-TOKEN", current, mask_token(val), "Telegram bot token in added content"))
     return violations
 
 
@@ -248,12 +282,12 @@ def check_all(rev="HEAD"):
     allow = load_allowlist()
     # git grep exits 1 when it finds NO match — that is a clean result, not an error.
     # Only rc > 1 is a real failure, and that must fail closed rather than report clean.
-    out, rc = run(["git", "grep", "-I", "-n", "-E",
-                   r"[0-9]{6}-[0-9]{2}-[0-9]{4}|[0-9]{8,10}:AA[A-Za-z0-9_-]{33,}", rev, "--"] +
-                  [f"*{e}" for e in sorted(TEXT_EXTENSIONS)])
+    out, rc = run(
+        ["git", "grep", "-I", "-n", "-E", r"[0-9]{6}-[0-9]{2}-[0-9]{4}|[0-9]{8,10}:AA[A-Za-z0-9_-]{33,}", rev, "--"]
+        + [f"*{e}" for e in sorted(TEXT_EXTENSIONS)]
+    )
     if rc > 1:
-        print(f"PERSON-DATA GATE [FAIL-CLOSED]: git grep over {rev} failed (rc={rc}).",
-              file=sys.stderr)
+        print(f"PERSON-DATA GATE [FAIL-CLOSED]: git grep over {rev} failed (rc={rc}).", file=sys.stderr)
         sys.exit(1)
     found = []
     for line in out.splitlines():
@@ -263,11 +297,9 @@ def check_all(rev="HEAD"):
         _, path, lineno, content = parts
         nrics, tokens = scan_text(content, allow)
         for val, _ in nrics:
-            found.append(("NRIC", f"{path}:{lineno}", mask_nric(val),
-                          "plausible Malaysian NRIC"))
+            found.append(("NRIC", f"{path}:{lineno}", mask_nric(val), "plausible Malaysian NRIC"))
         for val in tokens:
-            found.append(("BOT-TOKEN", f"{path}:{lineno}", mask_token(val),
-                          "Telegram bot token"))
+            found.append(("BOT-TOKEN", f"{path}:{lineno}", mask_token(val), "Telegram bot token"))
     return found
 
 
@@ -279,13 +311,17 @@ def report(violations, label):
             continue
         seen.add(key)
         if kind == "PROTECTED-PATH":
-            print(f"PERSON-DATA GATE [BLOCK]: {where} — {why}. "
-                  f"This file declares itself local-only; it must not reach a remote.",
-                  file=sys.stderr)
+            print(
+                f"PERSON-DATA GATE [BLOCK]: {where} — {why}. "
+                f"This file declares itself local-only; it must not reach a remote.",
+                file=sys.stderr,
+            )
         else:
-            print(f"PERSON-DATA GATE [BLOCK]: {kind} {value} in {where} — {why}. "
-                  f"Redact it, or replace a test fixture with a synthetic number.",
-                  file=sys.stderr)
+            print(
+                f"PERSON-DATA GATE [BLOCK]: {kind} {value} in {where} — {why}. "
+                f"Redact it, or replace a test fixture with a synthetic number.",
+                file=sys.stderr,
+            )
     return len(seen)
 
 
@@ -362,6 +398,7 @@ def main(argv):
         return
     root = repo_root()
     import os
+
     os.chdir(root)
 
     if "--path" in argv:
@@ -380,13 +417,14 @@ def main(argv):
     if violations:
         n = report(violations, label)
         kinds = sorted({v[0] for v in violations})
-        print(f"PERSON-DATA GATE [BLOCK]: {n} finding(s) ({', '.join(kinds)}) in {label}.",
-              file=sys.stderr)
+        print(f"PERSON-DATA GATE [BLOCK]: {n} finding(s) ({', '.join(kinds)}) in {label}.", file=sys.stderr)
         sys.exit(1)
 
     if "--all" not in argv:
-        print("PERSON-DATA GATE [PASS]: no NRIC, bot token, or person-registry path in "
-              f"{label} ({len(PROTECTED_PATHS)} protected paths watched)")
+        print(
+            "PERSON-DATA GATE [PASS]: no NRIC, bot token, or person-registry path in "
+            f"{label} ({len(PROTECTED_PATHS)} protected paths watched)"
+        )
 
 
 if __name__ == "__main__":

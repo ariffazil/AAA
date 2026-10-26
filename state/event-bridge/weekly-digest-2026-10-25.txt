@@ -1,0 +1,13 @@
+=== Weekly Federation Digest — 2026-10-25 14:00 MYT ===
+Capacity: disk=87% mem=89%
+Organs: all healthy
+Scars this week: 0
+Mesh: mesh_links:   VERDICT PASS
+Vault: INTACT_ACTIVE_DEGRADED_HISTORICAL
+Events this month: 34 (P0=8 P1=25)
+Active incidents:
+{"ts":"2026-10-16T16:07:08Z","event_id":"evt_20261017_0007_7a7ab2fd","source":"rsi_exhale","severity":"P0","type":"DETECTED","hash":"7a7ab2fdac7fcbfe","host":"forge"}
+{"ts":"2026-10-21T16:07:08Z","event_id":"evt_20261022_0007_8d3a9983","source":"rsi_exhale","severity":"P0","type":"DETECTED","hash":"8d3a9983ed103f1b","host":"forge"}
+{"ts":"2026-10-21T22:07:07Z","event_id":"evt_20261022_0607_c681d669","source":"rsi_exhale","severity":"P0","type":"DETECTED","hash":"c681d669d1973cdf","host":"forge"}
+
+DITEMPA BUKAN DIBERI

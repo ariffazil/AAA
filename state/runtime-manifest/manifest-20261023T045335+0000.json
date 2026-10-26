@@ -1,0 +1,555 @@
+{
+ "schema": "arifos.runtime-manifest/v1.2",
+ "generated_at": "2026-10-23T04:53:35+00:00",
+ "generator": {
+  "actor": "HERMES",
+  "host": "forge",
+  "script": "/root/AAA/scripts/hermes-runtime-manifest.py",
+  "method": "derive-don't-declare; every field read from /proc, systemd, git, journal or the file itself",
+  "v1_2_additions": [
+   "three-layer tag set ESTABLISHED/STALE/UNVERIFIED",
+   "defects-first block emitted before readiness",
+   "directional witness (no symmetric claim)",
+   "claim rows carry rung + evidence"
+  ]
+ },
+ "defects": [
+  {
+   "id": "D-01",
+   "severity": "HIGH",
+   "defect": "witness is one-directional: kvm2 cannot authenticate into this seat",
+   "evidence": "kvm2->kvm8 = Permission denied (publickey), rc=255; kvm8->kvm2 = ESTABLISHED",
+   "status": "OPEN",
+   "fix": "install a kvm2 key on kvm8 (or run the reverse witness from a third seat) before any claim is called symmetric"
+  },
+  {
+   "id": "D-02",
+   "severity": "MEDIUM",
+   "defect": "FED /health times out at ~6 s while liveness answers in ms",
+   "evidence": "{'http': 0, 'seconds': 6.002}",
+   "status": "OPEN",
+   "fix": "monitors must call /health/liveliness; /health stays a manual deep probe"
+  },
+  {
+   "id": "D-03",
+   "severity": "MEDIUM",
+   "defect": "the stamp format recorded a byte count without mtime or sha",
+   "evidence": "2905 B could not distinguish a stale copy from a diverged copy for 18 days",
+   "status": "STALE_MEASURED",
+   "fix": "stamp = sha256 + mtime + bytes, always; byte count alone is not identity"
+  },
+  {
+   "id": "D-04",
+   "severity": "MEDIUM",
+   "defect": "probe-by-unit-name mis-describes the far node: the systemd unit is inactive while a gateway process is live",
+   "evidence": "kvm2 systemctl is-active -> inactive; pgrep 'gateway run' -> 1 process(es)",
+   "status": "OPEN",
+   "fix": "probe the process/port, not the unit name; a unit name is a local convention, not a body"
+  },
+  {
+   "id": "D-05",
+   "severity": "LOW",
+   "defect": "tool count disagrees by one unit between gateway log and session catalog",
+   "evidence": "442 registered vs 441 accounted",
+   "status": "UNRESOLVED",
+   "fix": "reconcile from tools/list on both surfaces; do not round"
+  },
+  {
+   "id": "D-06",
+   "severity": "MEDIUM",
+   "defect": "this manifest cannot see which model backend served a turn",
+   "evidence": "alias fan-out at the router; no transport receipt retained",
+   "status": "OPEN",
+   "fix": "log requested-vs-resolved model per turn"
+  },
+  {
+   "id": "D-07",
+   "severity": "LOW",
+   "defect": "v1 portrait claimed '446 tools callable' with zero invocations",
+   "evidence": "0 INVOKED at claim time; 3 invoked after 12:32",
+   "status": "CLOSED",
+   "fix": "rung required next to every capability number (fixed in v1.2 schema)"
+  },
+  {
+   "id": "D-08",
+   "severity": "LOW",
+   "defect": "receipt line compares admitted chars (sum across surfaces) with the per-file cap",
+   "evidence": "admitted_chars_total=42572 vs cap_chars=32000 measures different scopes",
+   "status": "OPEN",
+   "fix": "print per-surface verdicts; never subtract a per-file cap from a cross-file total"
+  }
+ ],
+ "claims": [
+  {
+   "id": "C-01",
+   "domain": "identity.soul.kvm8",
+   "value": {
+    "bytes": 9026,
+    "sha256_16": "05f11b575a3bcb49",
+    "mtime": "2026-10-21T19:59:21.614230+00:00"
+   },
+   "tag": "ESTABLISHED",
+   "evidence": "stat+sha256 on this seat, this run"
+  },
+  {
+   "id": "C-02",
+   "domain": "identity.soul.kvm2",
+   "value": {
+    "bytes": 7518,
+    "mtime": "2026-10-05T02:29:14+00:00",
+    "sha256_16": "12066b546b6b6ccb"
+   },
+   "tag": "ESTABLISHED",
+   "evidence": "ssh kvm8->kvm2 \u2014 the direction that answers"
+  },
+  {
+   "id": "C-03",
+   "domain": "identity.soul.stamp",
+   "value": "stamp recorded ~2026-10-05 declared 2905 B against a 7518 B file",
+   "tag": "STALE",
+   "evidence": "two mtimes now measured: kvm2 7518 B @2026-10-05, kvm8 9026 B @2026-10-22. One moving file + one static stamp, not two colliding identities."
+  },
+  {
+   "id": "C-04",
+   "domain": "witness.ssh.kvm8->kvm2",
+   "value": "ESTABLISHED",
+   "tag": "ESTABLISHED",
+   "evidence": "flow-edge"
+  },
+  {
+   "id": "C-05",
+   "domain": "witness.ssh.kvm2->kvm8",
+   "value": "DENIED_PUBLICKEY",
+   "tag": "ESTABLISHED",
+   "evidence": "measured negative: a denial is a measurement. Severance was over-generalised from it."
+  },
+  {
+   "id": "C-06",
+   "domain": "fed.health.timeout",
+   "value": {
+    "http": 0,
+    "seconds": 6.002
+   },
+   "tag": "ESTABLISHED",
+   "evidence": "reproduced on a second node 2026-10-23: /health 000 @6s while /health/liveliness 200 @ms"
+  },
+  {
+   "id": "C-09",
+   "domain": "witness.far_node.gateway",
+   "value": {
+    "unit": "inactive",
+    "processes": 1
+   },
+   "tag": "ESTABLISHED",
+   "evidence": "unit state and process state disagree \u2014 the process is the body, the unit name is a convention"
+  },
+  {
+   "id": "C-07",
+   "domain": "tools.callable_count",
+   "value": "442 REGISTERED at gateway (log) vs 446 in-session catalog minus 5 non-MCP = 441",
+   "tag": "UNVERIFIED",
+   "evidence": "unit disagreement of 1 kept unresolved \u2014 smoothing it would be the defect"
+  },
+  {
+   "id": "C-08",
+   "domain": "model.serving_this_turn",
+   "value": "alias fan-out; no raw upstream response observed",
+   "tag": "UNVERIFIED",
+   "evidence": "cannot name the backend that answered without a transport-level receipt"
+  }
+ ],
+ "witness": {
+  "rule": "A witness claim states its direction. No symmetry without both directions measured.",
+  "seat": {
+   "host": "forge",
+   "hermes_home": "/root/.hermes"
+  },
+  "directions": [
+   {
+    "direction": "kvm8->kvm2",
+    "probe": "ssh kvm2 (stat+sha256+systemctl)",
+    "result": "ESTABLISHED",
+    "remote_host": "flow-edge",
+    "service_unit_state": "inactive",
+    "gateway_procs": 1,
+    "raw_last": "1"
+   },
+   {
+    "direction": "kvm2->kvm8",
+    "probe": "ssh kvm2 'ssh kvm8 hostname'",
+    "result": "DENIED_PUBLICKEY",
+    "evidence": "RC=255"
+   }
+  ],
+  "asymmetry_detected": true,
+  "consequence": "this seat may report on the far node; the far node may not report on this seat until the key path is repaired"
+ },
+ "delta": {
+  "previous": "manifest-20261023T045232+0000.json",
+  "status": "COMPARED",
+  "counts": {
+   "ADDED": 0,
+   "REMOVED": 12,
+   "CHANGED": 6,
+   "REGRESSED": 0,
+   "RECOVERED": 0
+  },
+  "classes": {
+   "ADDED": [],
+   "REMOVED": [
+    "delta.previous",
+    "delta.status",
+    "delta.counts.ADDED",
+    "delta.counts.REMOVED",
+    "delta.counts.CHANGED",
+    "delta.counts.REGRESSED",
+    "delta.counts.RECOVERED",
+    "delta.classes.ADDED",
+    "delta.classes.REMOVED",
+    "delta.classes.CHANGED",
+    "delta.classes.REGRESSED",
+    "delta.classes.RECOVERED"
+   ],
+   "CHANGED": [
+    "generated_at",
+    "defects",
+    "claims",
+    "witness.directions",
+    "build.uptime_seconds",
+    "memory.generated_at"
+   ],
+   "REGRESSED": [],
+   "RECOVERED": []
+  }
+ },
+ "readiness": {
+  "IDENTITY": "VERIFIED_LOCAL",
+  "OBSERVATION": "READY",
+  "ATTENTION": "READY_WITH_LIMITS",
+  "PROPOSAL": "READY_WITH_LIMITS",
+  "VERIFICATION": "PARTIAL",
+  "JUDGMENT": "DEGRADED",
+  "EXECUTION": "NOT_ESTABLISHED_BY_THIS_MANIFEST",
+  "INDEPENDENT_WITNESS": "NOT_PRESENT",
+  "memory_headroom_restored": true,
+  "build_contradiction": "CLOSED",
+  "admission_verdict": "COMPLETE"
+ },
+ "build": {
+  "instance_id": "hermes-kvm8-asi",
+  "actor_tuple": {
+   "actor_name": "HERMES",
+   "host": "forge",
+   "address": "100.64.0.2",
+   "service": "hermes-asi-gateway.service",
+   "pid": "373283",
+   "channel": "@ASI_arifos_bot"
+  },
+  "hermes_home": "/root/.hermes",
+  "started_at_local": "Fri Oct 23 12:28:56 2026",
+  "uptime_seconds": 1470,
+  "exec_start_path": "/usr/local/lib/hermes-agent/.hermes/bin/hermes",
+  "resolved_exe": "/root/runtime/hermes/.hermes/tools/python-3.14.7+20260901-linux-x64/bin/python3.14",
+  "argv_head": "/root/.hermes/tools/python-3.14.7+20260901-linux-x64/bin/python3 -I -c import os, re, sys\nos.environ.pop('PYTHONHOME', None)\nos.environ.pop('PYTHONPATH', None)\nsys.path.insert(0, '/usr/local/lib/herme",
+  "install_tree": "/usr/local/lib/hermes-agent",
+  "install_tree_git_head": "5e16f33277",
+  "install_tree_dirty": "M plugins/platforms/telegram/adapter.py",
+  "editable_workspace_commit": "1fa3f4c",
+  "declared_pyproject_version": "0.0.0",
+  "declared_dist_metadata_version": "0.0.0",
+  "artefact_sha256_16": {
+   "hermes_constants.py": "1bef6b1066658264",
+   "config.yaml": "6b076d45b461e76f",
+   "USER.md": "a7e81cc1c20ff1e1",
+   "MEMORY.md": "3079a587fa75db53"
+  },
+  "contradiction": {
+   "status": "CLOSED",
+   "detail": "pyproject=0.0.0 vs dist-metadata=0.0.0. Neither is a build identity. Binding key = install_tree_git_head=5e16f33277 + artefact hashes above."
+  },
+  "identity_status": "VERIFIED_LOCAL",
+  "verification_scope": "host forge only",
+  "independent_verification": false
+ },
+ "admission": {
+  "surfaces": [
+   {
+    "surface": "AGENTS.md (project context)",
+    "path": "/root/AAA/AGENTS.md",
+    "injected": true,
+    "cap_bound": true,
+    "chars": 4026,
+    "bytes": 4075,
+    "sha256_16": "9a5d2a69795a0b8b",
+    "cap_chars": 32000,
+    "verdict": "COMPLETE",
+    "measured": 43433
+   },
+   {
+    "surface": "SOUL.md (voice)",
+    "path": "/root/.hermes/SOUL.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 8932,
+    "bytes": 9026,
+    "sha256_16": "05f11b575a3bcb49"
+   },
+   {
+    "surface": "USER.md (identity)",
+    "path": "/root/.hermes/memories/USER.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 10314,
+    "bytes": 10475,
+    "sha256_16": "a7e81cc1c20ff1e1"
+   },
+   {
+    "surface": "MEMORY.md (env/lessons)",
+    "path": "/root/.hermes/memories/MEMORY.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 15915,
+    "bytes": 16113,
+    "sha256_16": "3079a587fa75db53"
+   },
+   {
+    "surface": "FEDERATION-INIT-v1 (plugin prompt)",
+    "path": "/root/AAA/state/arifos-plugin/prompts/FEDERATION-INIT-v1.md",
+    "injected": true,
+    "cap_bound": false,
+    "chars": 3674,
+    "bytes": 3759,
+    "sha256_16": "d05e2f53ffcaaad0"
+   }
+  ],
+  "admitted_chars_total": 42861,
+  "capped_surface": null,
+  "cap_chars": 32000,
+  "cap_source": "journal telemetry",
+  "telemetry_line": "Context file AGENTS.md TRUNCATED: 43433 chars exceeds limit of 32000",
+  "verdict": "COMPLETE",
+  "verdict_note": "Invariants are tested across every injected surface, with provenance. A concept that exists only as a path inside AGENTS.md's doctrine index is NOT counted as stated; that distinction is the whole point of this receipt.",
+  "invariants": {
+   "F13_SOVEREIGNTY": {
+    "label": "F13 human sovereignty",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "SOUL.md (voice)",
+     "USER.md (identity)",
+     "MEMORY.md (env/lessons)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "FAIL_CLOSED": {
+    "label": "Fail-closed UNKNOWN/HOLD",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "SOUL.md (voice)",
+     "USER.md (identity)",
+     "MEMORY.md (env/lessons)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "CAP_NE_AUTH": {
+    "label": "Capability != authority",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "NO_SELF_SEAL": {
+    "label": "No agent self-SEAL",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "SEP_POWERS": {
+    "label": "Proposer != judge != executor",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "WITNESS_FIRST": {
+    "label": "Witness before mutation",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "USER.md (identity)",
+     "MEMORY.md (env/lessons)",
+     "FEDERATION-INIT-v1 (plugin prompt)"
+    ],
+    "missing_from_all_admitted": false
+   },
+   "REP_NE_PERSON": {
+    "label": "Representation(person) != person",
+    "present": true,
+    "stated_in": [
+     "AGENTS.md (project context)",
+     "MEMORY.md (env/lessons)"
+    ],
+    "missing_from_all_admitted": false
+   }
+  },
+  "excluded_note": "AGENTS.md is an index of doctrine paths. The index being admitted does not prove the doctrine files behind those paths are read."
+ },
+ "memory": {
+  "generated_at": "2026-10-23T04:53:27+00:00",
+  "mode": "PLAN",
+  "files": {
+   "MEMORY.md": {
+    "path": "/root/.hermes/memories/MEMORY.md",
+    "budget_unit": "characters",
+    "budget_source": "config.yaml memory.{user,memory}_char_limit",
+    "chars_before": 15915,
+    "bytes_before": 16113,
+    "budget": 16000,
+    "over_budget_chars": -85,
+    "sha256_16_before": "3079a587fa75db53",
+    "entries": 48,
+    "classes": {
+     "GATE": 9,
+     "ENV": 18,
+     "SKILL": 11,
+     "SCAR": 2,
+     "LEDGER": 3,
+     "EPISODE": 3,
+     "UNCLASSIFIED": 2
+    },
+    "headroom_before": 85,
+    "status": "PLAN_ONLY"
+   },
+   "USER.md": {
+    "path": "/root/.hermes/memories/USER.md",
+    "budget_unit": "characters",
+    "budget_source": "config.yaml memory.{user,memory}_char_limit",
+    "chars_before": 10314,
+    "bytes_before": 10475,
+    "budget": 11000,
+    "over_budget_chars": -686,
+    "sha256_16_before": "a7e81cc1c20ff1e1",
+    "entries": 36,
+    "classes": {
+     "UNCLASSIFIED": 31,
+     "SCAR": 1,
+     "SKILL": 1,
+     "GATE": 3
+    },
+    "headroom_before": 686,
+    "status": "PLAN_ONLY"
+   }
+  }
+ },
+ "floors": {
+  "active": 13,
+  "floor_passed": false,
+  "fq": 0.1111111111111111,
+  "fq_measured_at": "2026-10-23T04:48:44Z",
+  "pass": [
+   "F11",
+   "F12",
+   "F13",
+   "F2",
+   "F3",
+   "F5"
+  ],
+  "fail": [
+   "F1"
+  ],
+  "unmeasured": [
+   "F10",
+   "F4",
+   "F6",
+   "F7",
+   "F8",
+   "F9"
+  ],
+  "scores": {
+   "F1": 0.0,
+   "F2": 1.0,
+   "F3": 0.9778,
+   "F4": 0.8,
+   "F5": 1.0,
+   "F6": 0.5,
+   "F7": 0.04,
+   "F8": 0.8,
+   "F9": 0.0,
+   "F11": 1.0,
+   "F12": 0.0,
+   "F13": 1.0,
+   "F10": 1.0
+  }
+ },
+ "capability": {
+  "declared": 30,
+  "reachable_http": 22,
+  "stdio_present": 8,
+  "callable_verified": "UNKNOWN",
+  "note": "reachability is not capability; no read-only canary map is claimed in v1.1"
+ },
+ "cron": {
+  "configured": 33,
+  "enabled": 32,
+  "with_last_error": 0,
+  "errors": []
+ },
+ "memory_profiles": {
+  "root_symlinks": {
+   "/root/HERMES": "/root/runtime/hermes/.hermes",
+   "/root/.hermes": "/root/runtime/hermes/.hermes"
+  },
+  "profiles": [
+   {
+    "profile": "default (root memories)",
+    "user_md": "/root/.hermes/memories/USER.md",
+    "chars": 10314,
+    "sha256_16": "a7e81cc1c20ff1e1",
+    "geo_anchor_present": true
+   },
+   {
+    "profile": "aaa-hermes",
+    "user_md": "/root/.hermes/profiles/aaa-hermes/memories/USER.md",
+    "chars": 2054,
+    "sha256_16": "44b1d1bd48595db5",
+    "geo_anchor_present": true
+   },
+   {
+    "profile": "default",
+    "status": "ABSENT"
+   },
+   {
+    "profile": "hermes_apex",
+    "user_md": "/root/.hermes/profiles/hermes_apex/memories/USER.md",
+    "chars": 2933,
+    "sha256_16": "cfb1f3dd4a5f5fa6",
+    "geo_anchor_present": true
+   },
+   {
+    "profile": "hermes_asi",
+    "user_md": "/root/.hermes/profiles/hermes_asi/memories/USER.md",
+    "chars": 2933,
+    "sha256_16": "cfb1f3dd4a5f5fa6",
+    "geo_anchor_present": true
+   },
+   {
+    "profile": "hermes_forge",
+    "user_md": "/root/.hermes/profiles/hermes_forge/memories/USER.md",
+    "chars": 2933,
+    "sha256_16": "cfb1f3dd4a5f5fa6",
+    "geo_anchor_present": true
+   }
+  ],
+  "profiles_with_memory": 5,
+  "geo_anchor_in_all_live": true,
+  "note": "MEMORY-TOPOLOGY.md at the Hermes home explains which profile serves which lane"
+ }
+}

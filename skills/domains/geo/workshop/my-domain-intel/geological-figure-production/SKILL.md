@@ -55,7 +55,7 @@ patterns:
   ("Can we at least put real map please!!!!" → "Fail. No full map. Redo
   again."). Use GeoPandas + Natural Earth 50m + Rasterio bathymetry, full
   regional extent, real lat/lon only. See `scientific-pdf-generation` →
-  `references/governed-geospatial-figures.md` (supersedes the v2 block-map
+  ``references/`` (supersedes the v2 block-map
   pattern in Phase 2 above).
 - **Cross-section / burial curves**: bezier/aesthetic curves are rejected.
   Sclater-Christie decompaction + McKenzie subsidence with declared
@@ -229,6 +229,54 @@ from single PNGs. Before delivering any multi-page geological PDF, run the sweep
    destroys a specialist's trust in the whole pack.
 4. **Ink coverage per page** — under ~2 % is a split or blank page from HTML/print overflow.
 
+## Real bathymetry without an API key (verified 2026-10-19)
+
+GEBCO's WMS endpoint moved and now returns 404 for the old
+`gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv` path. Do not spend time on it.
+
+Use the NOAA/ETOPO ImageServer instead — it needs no key and returns real float32 elevations as GeoTIFF:
+
+```
+https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage
+  ?bbox=113.8,5.15,115.45,6.65&bboxSR=4326&imageSR=4326&size=2000,1800
+  &format=tiff&pixelType=F32&interpolation=RSP_BilinearInterpolation&f=image
+```
+
+At `size=2000` over ~1.6° the cells are ~380-450 m — enough to see thrust-ridge grain, shelf break and
+slope canyons. Read it with rasterio in a `terminal`-run script (the execute_code sandbox has no
+rasterio). Then:
+
+- `LightSource(azdeg=318, altdeg=38).shade(z, cmap=..., blend_mode="overlay", vert_exag=0.004, dx=60, dy=60)`
+  gives publication-quality seafloor relief. `vert_exag` of 0.004-0.02 suits 400 m cells; higher values
+  turn abyssal plains into noise.
+- Measure, do not assert: sample the grid at the field coordinate and quote the depth (a 994 m read on a
+  field reported at 900-1,200 m is a free independent verification that a geologist will trust).
+- Compute slope from `np.gradient(z, dy_m, dx_m)` in metres, and a shelf-to-basin transect with
+  `np.hypot` distances — a real cross-section beats a hand-drawn one.
+
+## NW Sabah deepwater — verified facts that repeately get mangled (2026-10-19)
+
+Four errors appeared in LLM-authored Limbayong material and were caught only by going to the papers. Check
+against these before writing any NW Borneo section:
+
+- **There is no "Stages I–V".** The scheme is **four stages** — Bol & van Hoorn (1980), Bull. GSM 12:1–16;
+  Stage IV (Middle Miocene–Quaternary) is subdivided **IVA–IVG**. Named surfaces (DRU, LIU, UIU, SRU) are
+  from Levell (1987). A Pliocene–Recent "Stage V" is working usage, not part of the definition.
+- **South China Sea spreading is ~32–16 Ma**, not 32–21 Ma; ridge reorganisation ~23 Ma [Chang & Pubellier 2023].
+- **Thrust spacing is 3–15 km** (1–9 km in the compressed north) [Sulaiman 2017, Table 3.2], not 2–5 km.
+  A 30 km structure therefore holds **6–15 panels**, which changes every well-count argument built on it.
+- **Column height is set by capillary seal capacity**, not four-way closure or spill geometry — P50 ≈ 250 m
+  in deepwater turbidites, ≈ 30 m in deltaics [Kessler & Jong 2018]; some structures are not filled to
+  spill, with fault-dependent columns [Ngu et al. 2010].
+- **Gas is lost preferentially; a leaky trap is what produces oil** in this basin [Algar 2012]. That is why
+  an oil rim turns up beneath gas discoveries (Limbayong: gas 2002, 136 m oil sand 2014).
+- **The belt is active but not seismic**: 23 M≥3 within 300 km since 1970, none within 50 km. Deformation is
+  aseismic creep plus episodic failure, thrusting to the Holocene [Hesse et al. 2010]. Do not design for
+  earthquake; design for slow ground movement, shallow gas, hydrates and MTDs.
+- **Geothermal is genuinely contradictory**: 29–34 °C/km on the shelf from 600+ BHTs, but 66.5 °C/km along
+  strike in the deepwater belt [Madon & Jong 2021]. At 66.5 °C/km a 2.5 km reservoir passes the 140 °C
+  quartz-cementation threshold; at shelf gradients it does not. Print both.
+
 ## Companion files
 
 - `references/senegal-basin-figures-v2-script.md` — annotated session script (final working version with all fixes baked in)
@@ -236,3 +284,6 @@ from single PNGs. Before delivering any multi-page geological PDF, run the sweep
 - `references/gempy-2026-api-and-segy-bridge.md` — GemPy 2026.0.3 API drift table (verified-working ImporterHelper CSV flow), the SEGY horizon-picks → GemPy → true-scale section bridge, truth-class propagation rule (OBS→DER, never upgrades), and the falsification-first rule for "ingest real SEGY" requests. Proven 2026-08-20 GEOX session.
 - `references/wire-up-execution-2026-08-20.md` — Post-session update: the bridge→gempy→renderer wire-up **executed end-to-end** in the second Senegal session. Documents `gempy_section_renderer` (the missing third leg), the auto-extent fix for the `zmin=0` silent-failure, the section-index off-by-axis bug, the centroid clip pattern, the z-convention contract, and the v1→v4 dossier progression pattern. Read this **before** running the wire-up — saves ~30 minutes of debugging.
 - `templates/geological-figure-pipeline.py` — starter script combining all 7 figure generators with vision-QA loop
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

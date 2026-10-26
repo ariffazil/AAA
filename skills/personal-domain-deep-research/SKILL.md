@@ -13,6 +13,8 @@ triggers:
   - "Arif offers himself as dataset (tanya aku 5 soalan / I will tell mine next)"
   - "muscle worship / abang sado / worshipper-dynamics topic returns"
   - "I want pdf artifact after a deep personal-domain session"
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Personal-Domain Deep Research

@@ -1,7 +1,7 @@
 ---
 name: aaa-skill-authoring-craft
 description: "Use when authoring or patching a SKILL.md under /root/AAA/skills (the federation's canonical catalog). Captures the AAA-specific pitfalls, YAML frontmatter discipline, and cross-reference culture that the bundled hermes-agent-skill-authoring skill does not cover — notably the unquoted-colon failure class, sibling-subagent concurrency, and the AAA reference-stack (RSI / AUDIT / AGI / FORGE / substrate)."
-version: 1.0.0
+version: 1.3.0
 author: 333-AGI (subagent)
 license: MIT
 metadata:
@@ -380,6 +380,72 @@ files: add minimal `name:` + `description:` frontmatter rather than deleting the
 file — it may be a symlinked reference copy inside another repo (e.g. WELL).
 
 
+
+## Contrast-Hardening: mattpocock/skills (2026-10-23, F13-authorized)
+
+Full contrast run against https://github.com/mattpocock/skills (38 skills, ~2.7KB median
+body, MIT). AAA inverted contrast: 1,128 SKILL.md, 7.4KB median, 143 skills >20KB.
+Patterns ABSORBED below; patterns REJECTED documented too, so nobody re-imports them.
+
+### Absorb — write these rules into every new AAA skill
+
+1. **Body budget: hard target ≤ 12KB per SKILL.md.** Matt\'s largest is 12.6KB (wayfinder)
+   and it plans multi-session work. AAA has 143 skills above 20KB — a skill that big is a
+   doctrine file wearing a skill costume. Move doctrine to `/root/AAA/instructions/` and
+   leave the skill as a 5-verb executable pointer (AAA already does this for the /NNN spine —
+   generalize it). Compression pass: keep trigger clauses, decision rules, receipts; cut
+   narrative, incident history, and repeated doctrine prose (LAW 8).
+2. **Front-load the description\'s first 57 chars as the trigger.** Matt: "Use when X.
+   One-line behavior." The wording of the pointer decides whether the agent reaches the
+   skill. A must-have skill behind a weakly worded description is a variance bug — sharpen
+   wording before inlining more content.
+3. **Feedback-loop-first diagnosis.** diagnosing-bugs: "build a tight pass/fail signal for
+   THIS bug before any staring at code; bisection/hypotheses merely consume it." AAA has
+   helix-diagnosis (loop structure) and probe-before-panic (probe first) but no skill
+   states the loop-construction ladder (failing test → curl → CLI fixture → headless
+   browser → trace replay → throwaway harness → fuzz → bisect → differential → HITL).
+   Reference this ladder from 555-betul and live-system-investigation; propose
+   `forge-feedback-loop-ladder` (see proposals list).
+4. **Interview-frontier pattern for plans (grilling).** One round, whole frontier, numbered
+   questions with recommended answers, sub-agent fetches facts so the human only decides.
+   AAA\'s agent-question-budget already gates question frequency; the frontier shape is the
+   missing structure for plan-sharpening. Compat check before composing questions.
+5. **Wizard pattern: hand humans the steps only they can do.** Interactive bash script that
+   opens URLs, says what to click, captures values, writes .env/secrets. AAA equivalent
+   gap: credential/2FA/setup walks currently collapse into chat Q&A. The wizard\'s
+   confirm-at-every-stage + progress count matches HERMES clarify-tool capacity (5 q/batch).
+6. **Redact-first discipline inside diagnostic skills.** "Show commands and outputs with
+   secrets replaced <REDACTED>; build loops against env vars so credentials stay in the
+   environment." Verified AAA leak class (presigned S3 URLs into state.db) — make this a
+   required section in every skill that captures artifacts.
+7. **disable-model-invocation for human-entry skills.** Matt marks wayfinder/handoff as
+   human-invoked only. AAA equivalent: skills whose trigger is a slash/verb should say so
+   in frontmatter (`triggers:` exists — add explicit "not auto-invoked" line in body when
+   the skill must never fire silently).
+
+### Reject — do NOT import these
+
+- **Per-repo `/setup-*` init skills.** Matt\'s setup asks tracker/config per repo. AAA\'s
+  constitution is federation-level; per-repo setup skills would fragment LAW 8\'s "one road".
+- **skills.sh copy-into-project model.** AAA is canonical-catalog + symlink mesh; copies
+  rot (the 4 broken view links of 2026-10-22 prove it). Never copy bodies out of AAA.
+- **Issue-tracker-as-shared-map (wayfinder\'s tickets).** AAA\'s map surface is
+  carry_forward + tasks.json, already governed. A second tracker = duplicate system.
+- **Retro-as-ceremony.** AAA\'s AGI-decisions-reflect + 999-ingat already close loops with
+  receipts; a standalone retro skill adds ceremony without a new failure class.
+
+### Structural lessons for the catalog (registry/census layer)
+
+- Census VERDICT WARN (2026-10-23): broken view symlinks 4→0 fixed by removing stale
+  hermes-view links into `.archive` + repointing openai-docs + typed alternative_to on the
+  bundled variant. Same-body bundled copies (chatgpt-apps, migrate-to-codex,
+  openai-docs, security-best-practices in kimi/qwen/gemini/opencode) remain WARN-debt:
+  the overlay bundler re-exports bodies; typed `alternative_to` relations are the fix
+  when bodies diverge, deletion is forbidden (fix-not-delete, above).
+- Skill identity = BODY digest, not folder name (census law since 2026-10-18). When
+  importing ANY external skill (including mattpocock/skills), forge into AAA at a distinct
+  name, run census, register in FEDERATED_SKILLS_REGISTRY_V3.yaml, mesh-sync.
+
 ## The Zen
 
 > The catalog is the federation's memory. Every skill forged is a promise: I will load when relevant, I will be honest about my limits, I will not duplicate my peers.
@@ -390,4 +456,5 @@ file — it may be a symlinked reference copy inside another repo (e.g. WELL).
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-08-08 | Initial forge. Captures the unquoted-colon YAML failure class, AAA frontmatter convention, the reference stack (RSI/AUDIT/AGI/FORGE/substrate), and sibling-subagent concurrency discipline. |
+| 1.3.0 | 2026-10-23 | Contrast-hardening vs mattpocock/skills: absorbed body-budget ≤12KB, trigger-front-loading, feedback-loop ladder, interview-frontier, wizard, redact-first, disable-model-invocation patterns; rejected per-repo setup / copy-out / second-tracker / retro-ceremony patterns; census WARN cleanup receipts (4 broken view links fixed, openai-docs identity typed). |
 | 1.1.0 | 2026-08-11 | Added "Patch-Tool Failure Modes for Python Source Injection" section (verified failure 2026-08-11, AAA capability loader). Three safer alternatives + recovery recipe + pre-flight check. New pitfall #9 in Common Pitfalls; new row in Anti-Patterns table.

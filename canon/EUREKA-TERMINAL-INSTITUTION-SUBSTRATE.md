@@ -64,7 +64,7 @@ TIER 5: CONTINUE(L19–L20)  Will this survive us? Consequence map, civilization
 
 1. **What is true?** (Witnessed reality and zero reality debt)
 2. **What is unresolved?** (Open loops and active contradictions)
-3. **What is expensive?** (Thermodynamic entropy sinks and attention leaks)
+3. **What is expensive?** (Policy-drift, state-divergence and coordination-cost sinks, and attention leaks)
 4. **What should stop?** (Pruned capabilities, stale laws, dormant loops)
 5. **What is worth becoming?** (Identity trajectory and civilizational continuity)
 

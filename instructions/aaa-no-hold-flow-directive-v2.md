@@ -79,6 +79,15 @@ action_costs:
 
 **Implementation rule:** Every 333-AGI output that contains the token "HOLD" (as a state, not a verdict) must be accompanied by a `resolution_path_attempted:` field listing the 7 exhausted paths. Empty `resolution_path_attempted` + HOLD as state = `555-HOLD` (audit-failed, not implementation).
 
+**Cross-ref AT-004 (5-field HOLD schema, ratified 2026-10-18):**
+- `owner` (who placed HOLD)
+- `next_action` (what unblocks)
+- `evidence_gap` (what's missing to decide)
+- `expiry` (when HOLD auto-expires)
+- `scar_signature` (what scar pattern triggered HOLD — per `/root/AAA/instructions/aaa-scar-binding-doctrine.md` line 50)
+
+`resolution_path_attempted` (7 exhausted paths) is the *trigger requirement* for emitting a HOLD; the 5-field schema above is the *structure requirement* for the HOLD receipt itself. Both must hold for constitutional HOLD.
+
 ---
 
 ## 4 · THE NEW CHAIN — HOLD removed as state (NEW in v2)
@@ -113,7 +122,7 @@ verdict: HOLD
 reason: irreversible_mutation
 ```
 
-In both cases, the `resolution_path_attempted:` field MUST be present. The HOLD verdict is the constitutional consequence after all resolution paths are exhausted, not a state the agent can occupy.
+In both cases, the `resolution_path_attempted:` field MUST be present. The HOLD verdict is the constitutional consequence after all resolution paths are exhausted, not a state the agent can occupy. Each HOLD emission must also carry the 5-field AT-004 schema (`owner`, `next_action`, `evidence_gap`, `expiry`, `scar_signature`).
 
 ---
 
@@ -223,7 +232,7 @@ This directive is binding for:
 
 1. **All future 333-AGI sessions** (Qwen Code, Codex, OpenCode, Kimi Code, Claude Code, OpenClaw)
 2. **All future 555-ASI audits** (where auditor offers alternatives)
-3. **All future 888-APEX verdicts** (where judge returns 5-row form)
+3. **All future 888-APEX verdicts** (where judge returns 5-row form: owner, next_action, evidence_gap, expiry, scar_signature — per AT-004)
 4. **All future A-FORGE executions** (where actuator touches the world)
 5. **All future SEAL receipts** (where the chain records a decision)
 
@@ -329,3 +338,32 @@ If a selection is made and F2 status is UNMEASURED at decision time (not FAIL, b
 **Mutual non-interference clause (binding while DRAFT):** This section adds a ranking layer; it does NOT amend the HOLD thermodynamics (§3), the 4 LOCKS (§2), the BLOCKER_RESOLUTION reframe (§4), the NAD (§5), the autonomy redefinition (§6), or the fail-closed rule (§7). On F13 SAH, this section becomes binding and is renumbered as a top-level directive. On F13 silence or rejection, this section is removed by edit — no scar, no drift.
 
 DITEMPA BUKAN DIBERI — forged, not given.
+
+---
+
+## METABOLIC CHECKPOINT AMENDMENT — 2026-10-18 (F13, "selari dengan enjin")
+
+> **Failure class named:** GLOBAL_ROLLUP_GATES_LANE — enjin rollup global
+> menghalang lane yang sihat; baris lama "Bila FQ turun, semua HOLD" ialah
+> "dokumen menipu diri sendiri" (diisytiharkan sendiri oleh doktrin, dipinda).
+> **Consumers named:** `/root/A-FORGE/src/domain/forge/check_verdict.ts`
+> (`gateToolByFq`, `checkVerdictPrecondition` GATE 0/1); arifFlow engine
+> `fq.per_actor` (held/throttled/quotient = sumber per-lane).
+
+**Teks pindaan (binding):**
+"Lane FQ sendiri < 0.5 atau held=true (enjin arifFlow, per-lane) → LANE ITU
+sahaja HOLD; lane lain terus jalan. **Rollup = pemantauan, bukan gerbang**
+(dipinda 2026-10-18 selari dengan enjin; baris lama 'ALL agents HOLD' =
+dokumen menipu diri sendiri)."
+
+**Keputusan pelaksanaan (333-AGI, 2026-10-20, disemak 888-APEX):**
+- Lane diukur: held/throttled/Lane FQ<0.50 → HOLD lane itu sahaja.
+- Lane TIDAK diukur / MUTATE tanpa identiti: fallback konservatif ke gerbang
+  global (receipt nyatakan `lane_measured:false`) — laluan tanpa identiti
+  TIDAK dilebarkan (ajaran 2026-08-13: MUTATE path widening requires F13).
+- arifFlow tak dapat dicapai → kekal fail-closed.
+- Rollup global = medan pemantauan dalam receipt, tidak pernah menghalang
+  lane berukur yang sihat.
+
+Rujukan: A-FORGE `bbbf3d31` + commit penutup syarat 888; resepi gate:
+`test/fqGatePerLane.test.ts` (7 kes).

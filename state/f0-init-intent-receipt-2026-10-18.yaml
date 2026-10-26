@@ -1,0 +1,60 @@
+receipt_id: f0-arif-init-intent-2026-10-18
+executed_by: 333-AGI Δ MIND
+executed_at: 2026-10-18T12:25+08:00
+
+# ── ROOT CAUSE ────────────────────────────────────────────────────────
+defect: >
+  arif_init(mode=init) requires an `intent` parameter. Without it the
+  input-contract gate returns result={} → hollow_success_gate rewrites the
+  entire envelope to UNMEASURED → the caller sees "no session, no reason".
+  Every agent calling mode=init without intent retried blind, forever.
+
+evidence:
+  - "mode=init (no intent)  -> HOLD | result.implementation=UNMEASURED | session=unknown"
+  - "meta.reason (masked)   -> 'MISSING_REQUIRED_INPUT: arif_init mode=init requires intent...'"
+  - "mode=init + intent     -> completed | session=SEAL-94c5002df9ea4091"
+  - "mode=full / light / birth / challenge / status -> completed (unaffected)"
+
+# ── FIX SHIPPED (the unblock) ─────────────────────────────────────────
+fix_1_session_start_hook:
+  file: /root/scripts/session_start_bridge.sh
+  change: "INIT_BODY now carries \"intent\": \"qwen-code session start: bind identity and open governed session for this turn\""
+  verified: "hook run -> /root/.qwen/.last_session_id = SEAL-45140d78047c426c (first real session ever)"
+  sessions_jsonl: '{"event":"SessionStart","actor":"qwen-code","session_id":"SEAL-45140d78047c426c"}'
+  before: "session_id: unknown on every SessionStart"
+
+fix_2_kernel_error_visibility:
+  files:
+    - /opt/arifos/app/arifosmcp/tools/session.py (_make_init_hold result={} → reason-bearing; floor_check HOLD same)
+    - /opt/arifos/app/arifosmcp/runtime/tools.py (input-contract gate result={} → reason-bearing; hollow_success_gate carries meta.reason into result)
+  status: PATCHED + py_compile OK + service restarted
+  honest_note: >
+    The final envelope is still rebuilt downstream (result shows implementation/
+    evidence_used/note/reasons/actor/...), so result.reason remains None in the
+    wire response. The reason IS visible at meta.reason. Deeper fix = teach the
+    envelope builder to copy result.reason; staged, not yet done.
+  backups:
+    - session.py.bak-pre-f0-initreason-20261018
+    - tools.py.bak-pre-f0-inputcontract-20261018
+
+# ── REGRESSION SWEEP ──────────────────────────────────────────────────
+no_regression:
+  init: completed (with intent)
+  full: completed
+  light: completed
+  birth: completed
+  status: completed
+  challenge: completed
+  validate: HOLD (correct — requires session_id)
+
+other_callers_checked:
+  niat_executor.py: "mode=init x1, intent x7 — OK"
+  sct_renew.py: "mode=init x1, intent x1 — OK"
+  fire-seal.py / verify_organ_runtime_conformance.py / run_atomic_federation_proof.py / membrane-propagate.py: "no mode=init calls"
+
+# ── LESSON ────────────────────────────────────────────────────────────
+lesson: >
+  An honesty gate that says UNMEASURED without carrying the handler's stated
+  reason converts a clear error into an invisible one. mode=init failed loudly
+  at the handler but silently at the wire — so every caller retried forever.
+  Gate design rule: UNMEASURED must always carry WHY.

@@ -5,6 +5,8 @@ description: |
 allowed-tools:
   - Bash(firecrawl *)
   - Bash(npx firecrawl-cli *)
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # firecrawl download (invoked as `firecrawl x download`)

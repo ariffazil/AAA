@@ -91,6 +91,14 @@ HOW to recover, the WHY is in MEMORY:
 - **Tables with named arg + positional cells** — `table(columns: (1fr, 1fr),
   stroke: ..., [a], [b])` works, but `table(columns: (1fr, 1fr), [a], [b],
   stroke: ...)` fails because `stroke` is named-after-positional.
+- **Bare `<` in body text = "unclosed label"** — typst reads `<...>` as a
+  label reference; `power bank <10,000mAh` fails with `unclosed label`
+  pointing at the `<`. Write "bawah 10,000mAh" or escape. Rule: never put a
+  bare `<` in text — reword or wrap in quotes/`#raw`.
+- **Color + string concat fails** — `fill: color + "18"` errors with "cannot
+  add color and string". For a translucent tint use `color.transparentize(88%)`
+  or an explicit `rgb("#hex", alpha)`. Rule: alpha-tint with
+  `.transparentize()`, never string concat.
 
 ## 5. Header / footer / numbering
 
@@ -116,8 +124,11 @@ pdfinfo out.pdf | grep -E "Pages|Page size"        # G1: structure
 pdftotext out.pdf - | grep -c "<sentinel>"         # G3: round-trip
 ```
 
-For one-shot consumption PDFs G2 rasterize is usually overkill — the BLUF
-on page 1 is the contract. Save verification pdfinfo next to the deliverable.
+For layout-heavy or map-embedding PDFs, G2 rasterize is NOT overkill — run
+`pdftoppm -png -r 70 out.pdf /tmp/page` then `vision_analyze` each page. Proven
+2026-10-17 (concert guide): it caught a long URL overflowing its line and
+confirmed marker placement on embedded OSM maps. For pure-text one-shots the
+BLUF on page 1 is the contract; save `pdfinfo` next to the deliverable either way.
 
 ## 7. Delivery contract
 
@@ -125,7 +136,98 @@ Render to `/root/.hermes/cache/scratch/<name>.pdf`, then attach with
 `MEDIA:/absolute/path.pdf` so Hermes delivers as a Telegram document.
 Never cite the scratch path to Arif — just attach.
 
-## 8. When to extend this file
+## 8. Real map (staticmap + OpenStreetMap + OSRM)
+
+When a consumption PDF needs a REAL geographic map (venue location, directions,
+park-and-ride), do not draw schematic boxes — render real OSM tiles. Proven
+end-to-end 2026-10-17 (concert guide: close-up walking route + overview).
+
+```bash
+pip install staticmap pillow   # staticmap draws OSM tile basemap + markers/lines
+```
+
+1. **Geocode** with Nominatim: `https://nominatim.openstreetmap.org/search?format=json&q=<place>`
+   → returns `lat`/`lon`. Gotcha: use short precise names — "Bukit Jalil station"
+   returns SP17; "Bukit Jalil LRT Station" returns EMPTY. Send a real
+   `User-Agent` header (OSM usage policy).
+2. **Walking route** with OSRM: `https://router.project-osrm.org/route/v1/foot/<lon1>,<lat1>;<lon2>,<lat2>?overview=full&geometries=geojson`
+   → `routes[0].geometry.coordinates` is the polyline; `distance`/`duration`
+   are real metres/seconds to quote in the guide.
+3. **Render** with `staticmap.StaticMap(width, height, headers={"User-Agent": ...})`;
+   add `CircleMarker((lon,lat), "#hex", radius)` + `Line(coords, "#hex", width)`;
+   `img = m.render(zoom=16, center=(lon,lat))` (center omitted → auto-fit).
+4. **Pixel coords** for labels, after render:
+   `px = ((_lon_to_x(lon,zoom)-m.x_center)*256 + m.width/2, (_lat_to_y(lat,zoom)-m.y_center)*256 + m.height/2)`
+   — import `_lon_to_x, _lat_to_y` from `staticmap.staticmap`. Draw labels with
+   PIL: white rounded-rect bg + colored text, offset from the marker.
+5. **Embed** in .typ via `#image("map.png", width: 100%)` + a caption crediting
+   OpenStreetMap. Verify marker placement with the §6 rasterize step.
+
+## 9. Audit stamping & same-day re-probe (consumption PDFs)
+
+Consumption PDFs carrying LIVE logistics (venue, parking, transport, guests)
+go stale within hours. Proven 2026-10-17 (concert guide): a sibling audit
+confirmed the LRT facts but MISSED that parking was already full by 10am the
+same morning (Kosmo, 17/10) — the guide's "drive early" advice was dead by
+render time. Rules:
+
+1. **Same-day re-probe before re-render.** A multi-day-old render is a claim,
+   not current reality. Re-run the live sources (news, transit operator, venue)
+   the same day the PDF ships.
+2. **An auditor can miss what re-search finds.** When a sibling/audit returns
+   claim-by-claim findings, verify each against a fresh live source — do not
+   accept the audit blindly, and do not assume the audit is complete. The
+   auditor missed the parking-full news; a fresh `exa` search caught it.
+3. **Stamp trust classes INTO the artifact.** Add a final "Sumber & label
+   kepercayaan" block with three labels: `SAH` (primary source + outlet + date),
+   `Jangkaan` (unverified expectation — e.g. guest artists not confirmed by
+   open source), `Anggaran` (numbers with no official source — e.g. parking lot
+   counts). A reader should see what is verified vs estimated without asking.
+4. **`#pagebreak()` before big blocks.** Maps and the source block start their
+   own page — otherwise the section heading orphans at the bottom of the prior
+   page with content pushed to the next. Verify with the §6 rasterize step.
+5. **Map + caption must be ONE unbreakable block.** When an image and its
+   caption split across pages, the caption reads as a broken sentence. In typst
+   wrap `#image()` + caption together and `#pagebreak()` before the group (or
+   use `block(breakable: false)`); in fpdf2 use keep-together logic. Wawabot
+   hit the split live 2026-10-17 and fixed it by grouping map+caption before
+   the break — same failure, two engines, one rule.
+
+## 10. Prose-integrity + page-fill gates (cross-pollinated from wawabot kvm2)
+
+Two scripts, verified working on typst output 2026-10-17:
+
+```bash
+# prose integrity — catches stray non-Latin tokens / fused words that lint + exit 0 miss
+python3 scripts/audit_generated_text.py out.pdf --require "key fact" --require "another"
+# per-page fill — numeric sparse-page detector (95/93/34/92/44 spread finds bad breaks)
+python3 scripts/page_fill.py out.pdf
+```
+
+- **`audit_generated_text.py`** scans source + extracted text for non-Latin glyphs
+  and junk tokens. Requires `pymupdf` (pip install pymupdf — one dep, both scripts).
+  `--require` one string per load-bearing fact so a silently dropped section fails.
+- **`page_fill.py`** prints each page's content-end % (excluding footer band) and
+  flags pages under `--min-fill`. It caught p1=46% / p2=65% / p6=23% on a real
+  guide. **Image pages will ALWAYS read sparse** — pymupdf `get_text("blocks")`
+  counts text only, so a page that is 90% map image reports near-empty. Do NOT
+  auto-fix a sparse flag on an image page; lower `--min-fill` for those, or
+  eyeball the raster (§6) to confirm the image is actually there. Wawabot hit
+  this live 2026-10-17 (fpdf2 rebuild flagged p1 as empty when it held a full map).
+- **Calibrate `--junk` BEFORE trusting the gate — it is a mandatory step, not a tip.**
+  `DEFAULT_JUNK` carries short signatures that false-flag inside legitimate
+  machine identifiers (`add_font`, snake_case names like `unowned_output_rate`).
+  Wawabot's own pitfall-22 rule fired AGAIN live on `d_` in `add_font`. Run the
+  gate with `--junk` repeated for the REAL contamination signatures only, and
+  disclose the override in the delivery note — keep the non-Latin floor and
+  `--require` active (those catch real corruption and dropped sections).
+- **Adaptation for typst:** typst + DejaVu render MORE glyphs than fpdf2, so
+  `NONLATIN_FLOOR=0x2200` can flag deliberate emoji (⚠ U+26A0, ✅) that typst
+  renders cleanly. Treat those as informational, not defects — the gate is
+  calibrated for fpdf2's narrower font set. Keep the junk-token and `--require`
+  checks (they are engine-agnostic); relax only the non-Latin floor for typst.
+
+## 11. When to extend this file
 
 Append a new section when a session hits a typst-specific error that took
 more than one compile attempt to fix. Keep the entry at imperative form
@@ -133,3 +235,69 @@ more than one compile attempt to fix. Keep the entry at imperative form
 content"), and one fix. Do not paste full error transcripts — distill the
 rule. If the lesson generalises BEYOND typst (e.g. named-vs-positional
 parameter binding), it belongs in MEMORY, not here.
+
+## 12. BM kampung long-form institutional-audit PDFs (14–25 pages)
+
+Distinct class from concert guides / one-page briefings: multi-section audit PDFs
+where the body mixes cover, front-matter, founder biographies, structural analysis
+(paradoxes, scar ledgers, authority graphs), cross-audit blocks, and a HOLD verdict.
+Proven on Demis Hassabis / Elon Musk / Sam Altman / Dario+Daniela Amodei
+artifacts in one F13 session (2026-10-21). Pitfalls repeated enough to deserve a
+section here rather than fresh discovery each time:
+
+- **Bullet-list items cannot begin with `* `** — Typst parses `*` as emphasis
+  marker at line start and emits `unclosed delimiter` on the next match. A list
+  with seven founders each starting `* <Name> -- title, ...` breaks on the first
+  one. Convert every line-start `* ` to `- `. If you wanted bold inside the bullet,
+  write `- #text(weight: "bold")[Name] -- title, ...`. Verify by
+  `typst compile x.typ x.pdf` after writing the source, before padding with more
+  body — earlier verify catches earlier failures.
+- **`***` (three asterisks in a row) breaks markdown-flavored strings** — anything
+  that would be a starred expletive or redaction (`f---`, `f*****`) triggers the
+  same emphasis-mode parse because Typst sees `*...*`. Substitute with `[REDACTED]`
+  or replace the run with `.` dashes. The class of artifact needs explicit redactions
+  sometimes — choose words, not stars.
+- **Dollar amounts as math: every `$` opens math mode** — Typst interprets
+  `~$130B equity~` and `$1.5 billion` as math expressions. To get a literal dollar
+  glyph, write `\$`. For long audit PDFs that quote many dollar amounts, do a
+  global pass (`text.replace('$', '\\$')` once) before compiling. Math that needs
+  actual math formatting (units like `$10^170$`) is rare in this class — usually
+  every `$` is a currency symbol.
+- **Triple-nested callout, e.g. `#align(left)[#sm[content]]`** is fragile —
+  Typst silently mis-parses when any closing bracket matches a different
+  bracket it expected. Prefer flat callouts: `#block(...)[#text(size: 9pt)[content]]`
+  with no `align(left)` wrapper, and reject the typst `raw(block: true)[...]` form
+  (it expects a raw string, not mixed content; use `block(...)` with monospace
+  font instead). When three compile rounds have failed on the same nested block,
+  restart from the safest form — the time saved on the fourth round exceeds the
+  rewrite cost.
+- **Bullet-list items can stay one-line even when the value is long** — wrap the
+  bullet text at column 90+ in the source. Typst will set bullets in justified
+  paragraphs, and one-line-per-founder in the source makes later rewrites cheaper
+  than multi-line wrapped items.
+
+Pattern that survives every artefact in this class:
+`#set page(paper: "a4", margin: (x: 2.2cm, y: 2cm), numbering: "1")`,
+`#set text(font: "DejaVu Serif", size: 10pt, lang: "ms")`, `leading: 0.6em`,
+`first-line-indent: 0pt`. Add `#set par(justify: true)`. Use
+`#let sect(title) = { v(0.7em); block(fill: luma(232), inset: 8pt)[
+#text(size: 11.5pt, weight: "bold")[#title]]; v(0.3em) }` once at the top.
+
+Verification gate per artefact: `typst compile`, then `pdfinfo <name>.pdf |
+grep Pages` (expect 14–25), then `pdftotext <name>.pdf - | head -40` to
+sanity-check that the first paragraph renders without garbled glyphs or
+empty bullets. Do not ship without the pdfinfo + pdftotext gate.
+
+## 13. Audit voice: never genderize complementarity
+
+Two-founder framing (the Amodei siblings, the Collison brothers) tempts the
+analysis into Dario=intellect / Daniela=operational. That mapping is
+shorthand for "Dario = mind, sibling = hands" and it stereotypes both
+parties. Daniela Amodei, asked at Stanford eCorner (Feb 2024), explicitly
+refused the frame: "much more practical, the business-oriented side" —
+not "less intellectual." Use a complementarity matrix (research vs
+operations vs policy vs governance; org-organ vs genotype-human columns),
+not a binary. The same rule applies to CEO/President, CTO/Chief Scientist,
+or any "founder-plus-founding-X" pair in this class of artefact. When the
+user supplies names, treat them as coordinates on a competency map, not
+as slots in a stereotype.

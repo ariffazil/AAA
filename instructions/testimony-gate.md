@@ -1,5 +1,7 @@
 # Testimony Gate — Signal Classification Before Analysis
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > Instruction fragment. Not a constitutional floor. Forged 2026-09-09 from the witness-membrane session arc (F13 directive: audit, validate, execute).
 > Scope: any agent surface receiving human signals — chat, voice, A2A ingress.
 

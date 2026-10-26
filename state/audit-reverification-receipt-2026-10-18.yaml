@@ -1,0 +1,94 @@
+receipt_id: hermes-bangang-reverification-2026-10-18
+verified_by: 333-AGI Δ MIND
+verified_at: 2026-10-18T11:30+08:00
+mode: READ-ONLY re-probe (0 mutations this round)
+
+# ── Part 1: agy-cli audit Batch 1 re-verification ──────────────────────
+audit_batch_1_status:
+  SINK-04_autosign_flag:
+    audit_claim: "ARIFOS_TRUST_AUTO_SIGN_UNKNOWN=1 live in arifos.service:30"
+    live_reality: REMOVED
+    evidence: "/etc/systemd/system/arifos.service.bak-autosign-20261018-111449 (backup retains line; live unit does not)"
+    verdict: ALREADY_FIXED_TODAY
+  SINK-06_conftest_well_state:
+    audit_claim: "mock_well_state_for_tests writes /root/WELL/state.json"
+    live_reality: "uses tmp_path_factory.mktemp('well_state') exclusively; vps_path symbol absent"
+    verdict: ALREADY_FIXED
+  SINK-10_litellm_cross_tier:
+    audit_claim: "i-arif -> [apex-888, forge-777, agi-333]"
+    live_reality: "i-arif -> [deepseek-flash, mimo-v2.6-flash, MiniMax-M3.1-Flash-Preview, MiniMax-M3]"
+    verdict: ALREADY_FIXED
+  conclusion: "Batch 1 = 3/3 STALE. Must NOT be authorized as written."
+
+audit_p1_status:
+  SINK-03_arifVerifySealLive:
+    live_reality: "calls arif_init(mode='validate'), returns false on failure (fail-closed)"
+    verdict: ALREADY_FIXED
+  SINK-02_callArifVerify:
+    live_reality: "forgeShell.ts:726-727 -> meta.scope_valid ?? (resp.status==='PASS' || resp.verdict==='SEAL')"
+    verdict: PARTIAL — infers from verdict, not explicit field; weaker than audit claimed
+  SINK-05_matchScarsByKeywords:
+    live_reality: "forgeShell.ts:137 -> if (!existsSync(SCAR_RUNTIME_INDEX)) return []"
+    verdict: STILL_LIVE — genuine fail-open; kernel forge_scar_consult.py fails closed on same condition
+    severity: P1 (real)
+
+audit_p2_status:
+  SINK-01_p0GateMiddleware:
+    live_reality: "file exists (Oct 3); serve.ts:1300 carries comment 'runP0GateMiddleware was a stub that returned passed:true'; 0 external callers"
+    verdict: ALREADY_NEUTRALIZED — action ARCHIVE only (cosmetic)
+  SINK-07_missing_artifacts:
+    verdict: STILL_LIVE — MD labels already patched this session (emergence-5-stages overlay)
+
+# ── Part 2: self-correction of my own prior claim ──────────────────────
+my_prior_claim_BANGANG_3:
+  claim: "silence-narration-guard regex too aggressive; suppresses action narration"
+  live_test:
+    - "'Watching now...' -> None (passes through)"
+    - "'Let me analyze this video' -> None (passes through)"
+    - "'one sec' -> None (passes through)"
+    - "'Aku tengok dulu' -> None (passes through)"
+    - "'Silent. A bare link is not a call' -> [SILENT] (correctly suppressed)"
+    - "'not my turn' -> [SILENT]"
+    - "'bukan panggilan aku' -> [SILENT]"
+  verdict: MY_CLAIM_WRONG — guard is correctly scoped to meta-silence only
+  action: retracted; no patch to silence-narration-guard needed
+
+youtube_bug_real_root_cause:
+  observed: "Arif sent bare youtu.be link in sovereign DM -> model emitted 'bare link isn't a call' -> guard correctly suppressed -> empty reply -> system warning"
+  root_cause: "SADO-group lane semantics (bare link = not a call) leaking into sovereign DM lane where bare link = analyze request"
+  fix_location: "lane context / channel semantics for sovereign DM — NOT the guard plugin"
+  status: NOT_FIXED — needs lane_switch or channel_prompts change (T2)
+
+# ── Part 3: findings the audit MISSED ──────────────────────────────────
+new_findings_systemd_overrides:
+  - path: /etc/systemd/system/arifos.service.d/sovereignty-drill-override.conf
+    defect: "Labelled 'Temporary override for sovereignty drill'; mtime 2026-08-02 (77 days); ZERO expiry/owner/removal-condition tokens inside; disables MINIMAX_ENABLED + ILMU_ENABLED"
+    class: STALE_TEMPORARY_AS_STANDING_CONFIG
+    severity: P1
+  - path: /etc/systemd/system/arifos.service.d/25-airlock-mode.conf
+    defect: "ARIFOS_MCP_REQUIRE_VERSION=0 documented in-file as 'Emergency: restores versionless POST acceptance' but live as standing default"
+    class: EMERGENCY_SETTING_AS_DEFAULT
+    severity: P1
+  - path: /etc/systemd/system/arifos.service.d/99-allow-free-nonce.conf
+    defect: "ARIFOS_ALLOW_FREE_NONCE=1 — T3 grant 2026-08-07 by 888 SOVEREIGN, bypasses challenge-store check; still requires valid Ed25519"
+    class: STANDING_BYPASS_F13_GRANTED
+    severity: P2 — legitimate grant, review cadence absent
+  - path: /etc/systemd/system/arifos.service.d/safety-theatre-disable.conf
+    defect: "ARIFOS_DISABLE_SAFETY_THEATRE=1 disables SABAR gate + post_observe_gate; justification 'zero catches in production' asserted 2026-08-14, never re-measured"
+    class: UNVERIFIED_JUSTIFICATION_FOR_DISABLED_SAFETY
+    severity: P2
+
+# ── Part 4: authority classification ───────────────────────────────────
+executable_by_333_T1: []   # nothing safe to blind-execute this round
+needs_arif_authority:
+  - "SINK-05 forgeShell.ts:137 fail-open -> fail-closed (behavior change; could block mutations when scar index absent)"
+  - "sovereignty-drill-override.conf removal (77-day stale temporary; affects model availability)"
+  - "25-airlock-mode.conf REQUIRE_VERSION=0 review (emergency-as-default)"
+  - "99-allow-free-nonce.conf review cadence"
+  - "safety-theatre-disable.conf 'zero catches' re-measurement"
+  - "YouTube bare-link lane semantics (lane_switch / channel_prompts)"
+
+scars_filed:
+  - /root/AAA/scars/2026-10-18-stale-audit-batch-p0-already-fixed.md (w=0.8)
+
+mutations_this_round: 0

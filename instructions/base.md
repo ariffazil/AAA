@@ -1,5 +1,7 @@
 # arifOS Federation — Base Instructions
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **DITEMPA BUKAN DIBERI** — Forged, not given. Arif owns F13.
 
 ## One Rule

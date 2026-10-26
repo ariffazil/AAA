@@ -120,6 +120,12 @@
   .footer a { color:var(--accent); text-decoration:none; }
   .footer a:hover { text-decoration:underline; }
 
+  /* Operator layering & agent state vectors (external review 2026-10-22) */
+  details.op-details { margin-top:8px; font-family:var(--font-mono); font-size:11px; color:var(--muted); }
+  details.op-details > summary { cursor:pointer; color:var(--info); font-size:10px; letter-spacing:0.05em; text-transform:uppercase; padding:4px 0; user-select:none; }
+  .agent-statevec { font-family:var(--font-mono); font-size:10px; color:var(--muted); line-height:1.6; margin-top:4px; }
+  .hold-invariant { margin-top:8px; padding:8px 10px; border:1px solid rgba(245,158,11,0.3); background:rgba(245,158,11,0.06); border-radius:6px; font-size:11px; color:var(--text); line-height:1.6; }
+
   @media (max-width: 768px) {
     .navbar { flex-direction:column; gap:8px; align-items:flex-start; }
     .attention-hero, .section-container { padding:16px; }
@@ -142,6 +148,25 @@
 </header>
 
 <main>
+  <!-- 0. ATTENTION PLANE STRIP (Layer 1 of 3 — review 2026-10-22) -->
+  <section class="section-container" style="margin-bottom:16px">
+    <div class="section-heading">
+      <span>AAA · ATTENTION PLANE</span>
+      <span class="badge-epistemic badge-observed">LIVE · 15s POLL</span>
+    </div>
+    <div class="card" style="padding:14px 18px">
+      <div style="display:flex;flex-wrap:wrap;gap:18px;font-family:var(--font-mono);font-size:12px">
+        <span>MESH: <strong id="strip-mesh">--</strong></span>
+        <span>SERVERS DOWN: <strong id="strip-servers">--</strong></span>
+        <span>MACHINE-HELD: <strong id="strip-held">--</strong></span>
+        <span>HUMAN DECISION: <strong id="strip-human">--</strong></span>
+      </div>
+      <div id="strip-action" style="margin-top:6px;font-size:12px;color:var(--muted)"></div>
+    </div>
+    <!-- Layer 2: satu baris setiap aktor tertahan -->
+    <div id="held-summary-list" style="margin-top:8px;font-family:var(--font-mono);font-size:12px"></div>
+  </section>
+
   <!-- 1. SOVEREIGN ATTENTION DESK -->
   <section class="attention-hero">
     <div class="desk-card all-clear" id="desk-card">
@@ -155,10 +180,11 @@
       </p>
       <div class="desk-principles">
         <span>🛡️ <strong>Membran Perhatian:</strong> Aktif (Arif bukan coder)</span>
-        <span>⚖️ <strong>Autoriti Digital:</strong> MUBAH / Auto-Approved</span>
+        <span>⚖️ <strong>AUTONOMI TIER 1:</strong> AUTO-HANDLED WITHIN PRE-AUTHORIZED BOUNDS</span>
         <span>⚒️ <strong>Prinsip:</strong> Ditempa Bukan Diberi</span>
         <span id="desk-fq-summary">🌊 FQ: Menghitung...</span>
       </div>
+      <div style="margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--muted)">BOLEH: observe · verify · bounded recovery — TAK: main push · frozen-tree mutation · identity change · budget</div>
     </div>
   </section>
 
@@ -177,9 +203,11 @@
           <div class="tier-count" style="color:var(--ok)" id="tier1-count">--</div>
         </div>
         <div class="tier-desc">Tugas autonomi disahkan dan dilaksanakan sendiri oleh ejen di bawah sempadan AMANAH tanpa mengganggu manusia.</div>
-        <div class="row"><span class="label">Status Aliran</span><span class="value" id="tier1-status" style="color:var(--ok)">OPTIMAL</span></div>
-        <div class="row"><span class="label">Sahkan / Laksana</span><span class="value" id="tier1-ratio">-- sah / -- laksana</span></div>
-        <div class="row"><span class="label">Autoriti</span><span class="value">MUBAH (Auto)</span></div>
+        <div class="row"><span class="label">GLOBAL EVENT BALANCE</span><span class="value" id="tier1-balance">UNKNOWN</span></div>
+        <div class="row"><span class="label">ACTOR SAFETY FLOOR</span><span class="value" id="tier1-safety">UNKNOWN</span></div>
+        <div class="row"><span class="label">FEDERATION VERDICT</span><span class="value" id="tier1-verdict">UNKNOWN</span></div>
+        <div class="row"><span class="label">EVENT_RATIO_GLOBAL</span><span class="value" id="tier1-ratio">UNKNOWN (events, not tasks)</span></div>
+        <div class="row"><span class="label">Autoriti</span><span class="value">TIER 1 (Auto-handled)</span></div>
       </div>
 
       <!-- Tier 2: Machine-Held (Expandable Holds) -->
@@ -190,7 +218,10 @@
         </div>
         <div class="tier-desc"><strong>Bukan keputusan untuk Arif.</strong> Server tidak jatuh. Enjin menahan mutasi ejen sehingga saksi semakan dipenuhi.</div>
         <div class="row"><span class="label">Status Sekatan</span><span class="value" id="tier2-verdict" style="color:var(--ok)">LANCAR (0 Sekatan)</span></div>
-        <div class="row"><span class="label">Enjin Penahan</span><span class="value">arifFlow :7073</span></div>
+        <div class="hold-invariant">⚖️ <strong>Kehadiran resit TIDAK memuaskan verification.</strong> Resit hanya diterima bila ia mengikat: consequence yang diperhati · verifier bebas · digest artifak · identiti aktor · timestamp · falsifier · provenance. / A receipt only counts when it binds: observed consequence · independent verifier · artifact digest · actor identity · timestamp · falsifier · provenance — i.e. an <strong>admissible verified consequence</strong>, never "add verify count".</div>
+        <details class="op-details"><summary>OPERATOR · Mekanik dalaman</summary>
+          <div class="row"><span class="label">Enjin Penahan</span><span class="value">arifFlow :7073</span></div>
+        </details>
         <div style="margin-top:12px;font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em">Resit Tertahan (Klik untuk Buka):</div>
         
         <div class="holds-list" id="holds-accordion-list">
@@ -206,6 +237,7 @@
         </div>
         <div class="tier-desc">Hanya keputusan hakiki kedaulatan manusia (F13 Sovereign: bajet, identiti peribadi, atau veto mutlak) yang dinaikkan kepada Arif.</div>
         <div class="row"><span class="label">Keputusan Arif</span><span class="value" id="tier3-status" style="color:var(--ok)">TIADA TUNGGAKAN</span></div>
+        <div id="tier3-pending-list" style="margin-top:4px"></div>
         <div class="row"><span class="label">Membran Kebenaran</span><span class="value">KEBAL / DISARING</span></div>
         <div class="row"><span class="label">Autoriti Tertinggi</span><span class="value" style="color:var(--gold)">ARIF (F13)</span></div>
       </div>
@@ -229,8 +261,9 @@
         <div class="agent-desc">Telegram Gateway & Penyemak Realiti nod luaran. Mengesahkan integriti git dan public surface.</div>
         <div class="agent-meta">
           <span>Saluran: Telegram</span>
-          <span style="color:var(--ok)">AKTIF</span>
+          <span style="color:var(--ok)">PROCESS UP</span>
         </div>
+        <div class="agent-statevec" id="statevec-irfanclaw">PROCESS UP · HEARTBEAT UNKNOWN · WIRE WITNESSED · FLOW UNKNOWN · AUTHORITY UNKNOWN</div>
       </div>
 
       <div class="card">
@@ -241,8 +274,9 @@
         <div class="agent-desc">Pendamping pintar berterusan Arif. Mengendalikan sintesis suara, somatic, dan interaksi peribadi.</div>
         <div class="agent-meta">
           <span>Mod: Sovereign Rasa</span>
-          <span style="color:var(--ok)">AKTIF</span>
+          <span style="color:var(--ok)">PROCESS UP</span>
         </div>
+        <div class="agent-statevec" id="statevec-hermes">PROCESS UP · HEARTBEAT UNKNOWN · WIRE WITNESSED · FLOW UNKNOWN · AUTHORITY UNKNOWN</div>
       </div>
 
       <div class="card">
@@ -253,8 +287,9 @@
         <div class="agent-desc">Pelaksana kod, pembina sistem, dan operator enjin A-FORGE reality loop untuk kemas kini autonomi.</div>
         <div class="agent-meta">
           <span>Autoriti: LIMITED_MUTATE</span>
-          <span style="color:var(--ok)">AKTIF</span>
+          <span style="color:var(--ok)">PROCESS UP</span>
         </div>
+        <div class="agent-statevec" id="statevec-antigravity">PROCESS UP · HEARTBEAT UNKNOWN · WIRE WITNESSED · FLOW UNKNOWN · AUTHORITY LIMITED_MUTATE</div>
       </div>
 
       <div class="card">
@@ -265,8 +300,9 @@
         <div class="agent-desc">Konsolidasi memori L1-L5, penyemak tech-debt berkala, dan pengawal selia integriti repositori.</div>
         <div class="agent-meta">
           <span>Cron: 4h / 6h / 8h</span>
-          <span style="color:var(--ok)">TERATUR</span>
+          <span style="color:var(--warn)">CRON DECLARED</span>
         </div>
+        <div class="agent-statevec" id="statevec-fifleet">PROCESS UP · HEARTBEAT UNKNOWN (cron-declared) · WIRE WITNESSED · FLOW UNKNOWN · AUTHORITY UNKNOWN</div>
       </div>
     </div>
 
@@ -278,6 +314,7 @@
         </span>
         <span style="font-family:var(--font-mono);font-size:11px;color:var(--ok)">4 Laluan Disahkan Aktif</span>
       </div>
+      <details class="op-details"><summary>OPERATOR · Mekanik dalaman (resit, manifest, auth)</summary>
       <p style="font-size:12px;color:var(--muted);margin-bottom:12px">
         Setiap garis di bawah dibuktikan oleh resit trafik sebenar (<code style="color:var(--gold)">A2A_LIVE_WIRE_MANIFEST.json</code> & <code style="color:var(--gold)">decision_ledger.jsonl</code>), bukan topologi kosmetik.
       </p>
@@ -327,6 +364,7 @@
           <div style="color:var(--text);margin-top:4px">Auth: Root Ed25519 Chain Key</div>
         </div>
       </div>
+      </details>
     </div>
   </section>
 
@@ -354,9 +392,11 @@
           <span style="font-weight:700">Metabolisme (arifFLOW)</span>
           <span class="agent-tag" id="meta-verdict-badge">--</span>
         </div>
-        <div class="row"><span class="label">Quotient (FQ)</span><span class="value" id="fq-val">--</span></div>
+        <div class="row"><span class="label">FQ_SIMULATION_WINDOW</span><span class="value" id="fq-val">--</span></div>
         <div class="row"><span class="label">Diagnosis</span><span class="value" id="fq-diag">--</span></div>
-        <div class="row"><span class="label">Sahkan / Laksana</span><span class="value" id="fq-counts">-- / --</span></div>
+        <div class="row"><span class="label">EVENT_RATIO_GLOBAL</span><span class="value" id="fq-counts">UNKNOWN / UNKNOWN</span></div>
+        <div class="row"><span class="label">UNIQUE_TASK_RATIO</span><span class="value">UNKNOWN (tugas unik tidak didedahkan enjin)</span></div>
+        <div class="row"><span class="label">HELD_ACTOR_COUNT</span><span class="value" id="held-actor-count">--</span></div>
         <div class="row"><span class="label">Stuck / Tertahan</span><span class="value" id="fq-stuck">0 / 0</span></div>
       </div>
 
@@ -368,7 +408,11 @@
         </div>
         <div class="row"><span class="label">Sekatan Tertangguh</span><span class="value" id="auth-holds-val">0</span></div>
         <div class="row"><span class="label">Resit Termeterai</span><span class="value" id="auth-seals-val">--</span></div>
-        <div class="row"><span class="label">Akses Wire</span><span class="value">A2A :3001</span></div>
+        <div class="row"><span class="label">State producer</span><span class="value" id="state-freshness-badge">UNKNOWN</span></div>
+        <div class="observatory-meta" id="state-freshness-detail" style="font-size:11px;line-height:1.5;opacity:.85">State producer: UNKNOWN</div>
+        <details class="op-details"><summary>OPERATOR · Mekanik dalaman</summary>
+          <div class="row"><span class="label">Akses Wire</span><span class="value">A2A :3001</span></div>
+        </details>
         <div class="row"><span class="label">Sovereign F13</span><span class="value" style="color:var(--gold)">ARIF</span></div>
       </div>
 
@@ -389,21 +433,47 @@
 <footer class="footer">
   <div>AAA Federation Attention Plane · arifOS Ecosystem · DITEMPA BUKAN DIBERI</div>
   <div style="margin-top:4px">
-    <a href="https://arif-fazil.com/">arif-fazil.com</a> · 
-    <a href="https://arifos.arif-fazil.com/">arifOS Observatory</a> · 
-    <a href="https://mcp.arif-fazil.com/">MCP Gateway</a> ·
     <a href="/truth-contract.json">Truth Contract (truth-contract.json)</a> ·
     <a href="/claims.json">Public Claims (claims.json)</a>
   </div>
+  <details class="op-details" style="max-width:640px;margin:8px auto 0;text-align:left"><summary>OPERATOR · Mekanik dalaman</summary>
+    <div style="margin-top:4px">
+      <a href="https://arif-fazil.com/">arif-fazil.com</a> ·
+      <a href="https://arifos.arif-fazil.com/">arifOS Observatory</a> ·
+      <a href="https://mcp.arif-fazil.com/">MCP Gateway</a>
+    </div>
+    <div style="margin-top:4px;color:var(--muted)">Public proves existence · Operator proves mechanics · Audit proves lineage</div>
+  </details>
   <div style="margin-top:4px;color:rgba(255,255,255,0.4);font-size:10px">
     P0 Invariant: Unmeasured is NEVER a pass. Every displayed pixel points to a witnessed reality.
   </div>
 </footer>
 
+<script src="/state-freshness-witness.js"></script>
 <script>
 const SOT_STATE_API = '/state.json';
 const TRUTH_CONTRACT_API = '/truth-contract.json';
 const REFRESH_MS = 15000;
+
+// Kelas sekatan: identiti ≠ defisit verify (review 2026-10-22, F/E).
+// Identity holds TIDAK boleh dilepaskan dengan kiraan verify — syarat keluaran berbeza.
+function holdClass(h) {
+  const actor = (h.actor || '').toLowerCase();
+  if (actor === 'anonymous') return 'QUARANTINE_IDENTITY';
+  if (actor === 'arif_fazil') return 'HOLD_IDENTITY_BINDING';
+  const diag = (h.diagnosis || '').toUpperCase();
+  if (diag.includes('IDENTITY') || diag.includes('QUARANTINE')) return 'QUARANTINE_IDENTITY';
+  if (!diag || diag === 'UNKNOWN' || diag === 'UNMEASURED') return 'UNMEASURED_CAUSE';
+  return 'VERIFY DEFICIT';
+}
+
+function holdRelease(h) {
+  const cls = holdClass(h);
+  if (cls === 'QUARANTINE_IDENTITY') return 'actor resolution atau event re-attribution — BUKAN hantar resit verify.';
+  if (cls === 'HOLD_IDENTITY_BINDING') return 'bukti identiti — HUMAN, SERVICE, atau DELEGATED_AGENT (amplop delegasi). BUKAN hantar resit verify.';
+  if (cls === 'UNMEASURED_CAUSE') return 'tiada bukti semasa yang menahan aktor ini — semak sama ada latch ini warisan. JANGAN hantar resit untuk kerja yang tidak wujud; lepaskan latch atau biarkan ia dilaporkan sebagai tiada aktiviti.';
+  return 'admissible verified consequence — resit Verify yang mengikat konsekuen diperhati, verifier bebas, provenan penuh (bila FQ aktor ≥ fq_required aktor dalam arifFlow per_actor).';
+}
 
 function renderHoldsAccordion(holds) {
   const container = document.getElementById('holds-accordion-list');
@@ -415,24 +485,33 @@ function renderHoldsAccordion(holds) {
   let html = '';
   for (const h of holds) {
     const actor = h.actor || 'Ejen Tidak Bernama';
-    const diag = h.diagnosis || 'GOVERNANCE_HOLD';
+    const cls = holdClass(h);
     const reason = h.reason || 'Tertahan oleh enjin semakan aliran.';
     const gap = h.evidence_gap || 'Saksi pengesahan belum dimeterai.';
-    const nextAct = h.next_admissible_transition || 'Selesaikan semakan audit sebelum laksana.';
     const falsifierCond = (h.falsifier && h.falsifier.condition) ? h.falsifier.condition : 'Semak telemetri arifFlow :7073 per_actor.';
+    const counts = (h.verify != null && h.execute != null) ? `verify ${h.verify} / execute ${h.execute}` : 'kaunter UNKNOWN';
 
+    // Arahan mekanikal POST /ingest hanya untuk VERIFY DEFICIT — identity holds
+    // tidak dilepaskan dengan kiraan verify (invarian admissibility).
+    const mechanical = cls === 'VERIFY DEFICIT'
+      ? `<div class="hold-row"><span class="hold-label">Mekanikal:</span><span class="hold-val next">${h.next_admissible_transition || 'Hantar resit Verify tulen ke POST /ingest :7073 — latch cerah hanya bila konsekuen terverifikasi masuk.'}</span></div>`
+      : '';
     const receiptId = h.receipt_id || `RECEIPT-FLOW-7073-${actor.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase()}`;
 
     html += `
       <details class="hold-accordion">
         <summary class="hold-summary">
           <span class="hold-actor-name">🛑 ${actor}</span>
-          <span class="hold-badge">${diag}</span>
+          <span class="hold-badge">${cls} · ${counts}</span>
         </summary>
         <div class="hold-details">
           <div class="hold-row">
             <span class="hold-label">Resit / Anchor:</span>
             <span class="hold-val" style="color:var(--gold);font-family:var(--font-mono)">${receiptId}</span>
+          </div>
+          <div class="hold-row">
+            <span class="hold-label">Kelas:</span>
+            <span class="hold-val">${cls}</span>
           </div>
           <div class="hold-row">
             <span class="hold-label">Sebab:</span>
@@ -443,9 +522,10 @@ function renderHoldsAccordion(holds) {
             <span class="hold-val gap">${gap}</span>
           </div>
           <div class="hold-row">
-            <span class="hold-label">Tindakan Lanjut:</span>
-            <span class="hold-val next">${nextAct}</span>
+            <span class="hold-label">Syarat Keluaran:</span>
+            <span class="hold-val next">${holdRelease(h)}</span>
           </div>
+          ${mechanical}
           <div class="hold-row">
             <span class="hold-label">Falsifier:</span>
             <span class="hold-val falsifier">${falsifierCond}</span>
@@ -499,7 +579,9 @@ function render(data, truthData) {
   const deskHoldsCount = document.getElementById('desk-holds-count');
   const deskFqSummary = document.getElementById('desk-fq-summary');
 
-  const holdsCount = Math.max(auth.holds || 0, effectiveHolds.length);
+  // 2026-10-21 unifikasi: kiraan DAN senarai dari sumber sama (effectiveHolds). max() dengan auth.holds
+  // pernah papar 8 kiraan vs 5 nama apabila kontrak lapuk.
+  const holdsCount = effectiveHolds.length;
   if (holdsCount === 0) {
     deskHoldsCount.textContent = '✓ 0 holds aktif (Semua Aliran Lancar)';
     deskHoldsCount.style.color = 'var(--ok)';
@@ -507,17 +589,53 @@ function render(data, truthData) {
     deskHoldsCount.textContent = `${holdsCount} holds aktif`;
     deskHoldsCount.style.color = 'var(--muted)';
   }
-  deskFqSummary.textContent = `🌊 FQ: ${meta.quotient != null ? meta.quotient.toFixed(2) : '--'} (${meta.verdict || 'UNKNOWN'})`;
+  // Fix B (review 2026-10-22): setiap metrik mungkin mempunyai populasi berbeza.
+  // Simulation values SENTIASA berlabel skop; nilai tidak diketahui = UNKNOWN, bukan 0.
+  const execC = (meta.execute_count != null) ? Number(meta.execute_count) : null;
+  const verC = (meta.verify_count != null) ? Number(meta.verify_count) : null;
+  const countsKnown = execC !== null && verC !== null;
+  const _mh = (truthData && truthData.planes && truthData.planes.attention_membrane && truthData.planes.attention_membrane.machine_held) || {};
+  const _ah = (truthData && truthData.planes && truthData.planes.attention_membrane && truthData.planes.attention_membrane.auto_handled) || {};
+  const fqWin = _mh.fq_window_size != null ? `window ${_mh.fq_window_size}` : 'window UNKNOWN';
+  const fqActors = _mh.fq_actors_tracked != null ? `${_mh.fq_actors_tracked} actors` : 'actors UNKNOWN';
+  const isSim = _ah.fq_state_detail === 'SIMULATED' || meta.diagnosis === 'SIMULATION';
+  const fqLabel = isSim ? 'FQ_SIMULATION_WINDOW' : 'FQ';
+  const fqScope = isSim ? 'SIMULATION' : 'scope UNKNOWN';
+  const fqStr = meta.quotient != null
+    ? `${fqLabel} = ${meta.quotient.toFixed(2)} (${fqScope} · ${fqWin} · ${fqActors})`
+    : `${fqLabel} = UNKNOWN (${fqScope} · ${fqWin} · ${fqActors})`;
+  deskFqSummary.textContent = `🌊 ${fqStr}`;
 
-  const ledgerHolds = Number(auth.ledger_holds || 0);
+  // Honesty invariant (Fix I): kiraan yang diukur = nombor (0 sah jika diukur);
+  // data tiada (null/undefined) = UNKNOWN — jangan jadikan 0 lalai.
+  const ledgerHolds = (auth.ledger_holds === undefined || auth.ledger_holds === null) ? null : Number(auth.ledger_holds);
   const names = effectiveHolds.map(h => h.actor).join(', ') || heldActors.join(', ');
 
-  if (ledgerHolds > 0) {
+  // 2026-10-21: peti arif_report — perkara yang BENAR-BENAR tunggu Arif.
+  // number = hidup; null = storan peti tak wujud (UNKNOWN — bukan 0).
+  const pendingN = (auth.pending_for_human === undefined || auth.pending_for_human === null)
+    ? null : Number(auth.pending_for_human);
+  const pendingItems = auth.pending_for_human_items || [];
+
+  if (pendingN !== null && pendingN > 0) {
+    deskCard.className = 'desk-card attention-needed';
+    deskBadge.className = 'desk-badge badge-warn';
+    deskBadge.textContent = 'TUNGGU HANG';
+    deskTitle.textContent = `${pendingN} perkara tunggu keputusan hang`;
+    deskDesc.innerHTML = `Daripada peti arif_report (decision/blocked belum sampai ke telefon hang).<br><strong>Ejen tertahan mesin:</strong> ${names || 'tiada'}`;
+  } else if (ledgerHolds > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
     deskBadge.textContent = 'PERHATIAN DIPERLUKAN';
     deskTitle.textContent = `${ledgerHolds} keputusan dalam buku rasmi`;
     deskDesc.innerHTML = `Ini daripada buku keputusan, bukan kiraan aliran.<br><strong>Tertahan:</strong> ${names || 'lihat buku keputusan'}`;
+  } else if (pendingN === null) {
+    // Sumber peti tak wujud — jangan klaim "KOSONG" tanpa bukti (fail-closed).
+    deskCard.className = 'desk-card attention-needed';
+    deskBadge.className = 'desk-badge badge-warn';
+    deskBadge.textContent = 'PETI TIDAK DAPAT DIBACA';
+    deskTitle.textContent = 'Status peti arif_report UNKNOWN';
+    deskDesc.innerHTML = `Storan /var/lib/arifos/reports tak dapat dibaca oleh penjana state — Tier 3 menunjukkan UNKNOWN, bukan kosong.<br><strong>Ejen tertahan mesin:</strong> ${names || 'tiada'}`;
   } else if (holdsCount > 0) {
     deskCard.className = 'desk-card attention-needed';
     deskBadge.className = 'desk-badge badge-warn';
@@ -532,12 +650,43 @@ function render(data, truthData) {
     deskDesc.textContent = 'Tiada keputusan berisiko tinggi atau sekatan yang memerlukan campur tangan Arif hari ini. Ejen beroperasi secara automatik di bawah sempadan AMANAH dan perlembagaan F1-F13.';
   }
 
-  // 2. 3-Tier Attention Membrane
-  const execC = meta.execute_count || 46;
-  const verC = meta.verify_count || 48;
-  document.getElementById('tier1-count').textContent = execC + verC;
-  document.getElementById('tier1-ratio').textContent = `${verC} sah / ${execC} laksana`;
-  document.getElementById('tier1-status').textContent = meta.diagnosis || 'OPTIMAL';
+  // Layer 1 strip + Layer 2 held-actor summary (review 2026-10-22, H).
+  const downN = (fed.organs || []).filter(o => o.status !== 'UP').length;
+  document.getElementById('strip-mesh').textContent = fed.status || 'UNKNOWN';
+  const stripServers = document.getElementById('strip-servers');
+  stripServers.textContent = downN;
+  stripServers.style.color = downN > 0 ? 'var(--err)' : 'var(--ok)';
+  const stripHeld = document.getElementById('strip-held');
+  stripHeld.textContent = holdsCount;
+  stripHeld.style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
+  const stripHuman = document.getElementById('strip-human');
+  stripHuman.textContent = pendingN === null ? 'UNKNOWN' : pendingN;
+  stripHuman.style.color = (pendingN === null || pendingN > 0) ? 'var(--warn)' : 'var(--ok)';
+  document.getElementById('strip-action').textContent =
+    pendingN === 0 ? 'Tiada tindakan diperlukan dari Arif.'
+    : (pendingN === null ? 'Keputusan manusia: UNKNOWN (peti keputusan tidak dapat dibaca — jangan anggap kosong).'
+      : `${pendingN} keputusan menunggu Arif.`);
+  document.getElementById('held-summary-list').innerHTML = effectiveHolds.map(h => {
+    const cnt = (h.verify != null && h.execute != null) ? `verify ${h.verify} / execute ${h.execute}` : 'kaunter UNKNOWN';
+    return `<div style="padding:2px 0">🛑 ${h.actor || '?'} · ${holdClass(h)} · ${cnt}</div>`;
+  }).join('');
+
+  // 2. 3-Tier Attention Membrane (execC/verC hoisted above — first use is the FQ summary label; TDZ fix 2026-10-22)
+  document.getElementById('tier1-count').textContent = countsKnown ? (execC + verC) + ' peristiwa' : 'UNKNOWN';
+  // Fix A (review 2026-10-22): tiga paksi jelas menggantikan label diagnosis tunggal.
+  document.getElementById('tier1-balance').textContent = countsKnown ? `${verC} verify / ${execC} execute` : 'UNKNOWN';
+  // 2026-10-24: the old label counted HOLDS and called them "below FQ floor 0.50".
+  // arifFlow's per-actor floor is fq_required (0.1 for the actors shown), not 0.50,
+  // and a hold count is not a floor comparison. Publish only what is carried.
+  document.getElementById('tier1-safety').textContent = holdsCount > 0
+    ? `${holdsCount} hold aktif · FQ per aktor: UNKNOWN (tidak dibawa)`
+    : '0 holds · tiada aktor disekat';
+  const t1verdict = document.getElementById('tier1-verdict');
+  t1verdict.textContent = holdsCount > 0 ? `MACHINE-HELD · ${holdsCount}` : 'NOMINAL';
+  t1verdict.style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
+  document.getElementById('tier1-ratio').textContent = countsKnown
+    ? `EVENT_RATIO_GLOBAL = ${verC}/${execC} = ${(verC / execC).toFixed(2)} (events, not tasks)`
+    : 'EVENT_RATIO_GLOBAL = UNKNOWN (events, not tasks)';
 
   const t2Count = document.getElementById('tier2-count');
   t2Count.textContent = holdsCount;
@@ -554,11 +703,62 @@ function render(data, truthData) {
   t2Verdict.style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
   renderHoldsAccordion(effectiveHolds);
 
-  document.getElementById('tier3-count').textContent = ledgerHolds;
-  document.getElementById('tier3-status').textContent = ledgerHolds > 0 ? `${ledgerHolds} PERLU SEMAKAN` : 'TIADA TUNGGAKAN';
+  // Fix D (review 2026-10-22): state vector per kad ejen — machine up ≠ agent released.
+  // FLOW diukur dari senarai holds langsung; paksi tanpa telemetri kekal UNKNOWN.
+  const AGENT_STATEVECS = [
+    { id: 'statevec-irfanclaw',   keys: ['irfanclaw'],             heartbeat: 'UNKNOWN',                wire: 'WITNESSED', auth: 'UNKNOWN' },
+    { id: 'statevec-hermes',      keys: ['hermes'],                heartbeat: 'UNKNOWN',                wire: 'WITNESSED', auth: 'UNKNOWN' },
+    { id: 'statevec-antigravity', keys: ['antigravity', 'fi-004'], heartbeat: 'UNKNOWN',                wire: 'WITNESSED', auth: 'LIMITED_MUTATE' },
+    { id: 'statevec-fifleet',     keys: ['fi-008-cron', 'fi-002', 'fi-'], heartbeat: 'UNKNOWN (cron-declared)', wire: 'WITNESSED', auth: 'UNKNOWN' }
+  ];
+  for (const sv of AGENT_STATEVECS) {
+    const el = document.getElementById(sv.id);
+    if (!el) continue;
+    const matched = effectiveHolds.filter(h => sv.keys.some(k => (h.actor || '').toLowerCase().includes(k)));
+    const flow = matched.length ? `FLOW HELD (${matched.map(h => h.actor).join(', ')})` : 'FLOW CLEAR';
+    el.innerHTML = `PROCESS UP · HEARTBEAT ${sv.heartbeat} · WIRE ${sv.wire} · <span style="color:${matched.length ? 'var(--warn)' : 'var(--ok)'}">${flow}</span> · AUTHORITY ${sv.auth}`;
+  }
 
-  // 3. Organs
-  document.getElementById('organs-ratio').textContent = `${fed.organs_alive || 0}/${fed.organs_total || 0}`;
+  // Tier 3 = peti arif_report (sumber: /var/lib/arifos/reports, semantik
+  // report_lane.pending_for_human). Buku rasmi (ledger_holds) kekal dipaparkan
+  // oleh kad desk di atas — dua sumber berasingan, jangan dicampur.
+  const t3count = document.getElementById('tier3-count');
+  const t3status = document.getElementById('tier3-status');
+  const t3list = document.getElementById('tier3-pending-list');
+  if (pendingN === null) {
+    t3count.textContent = '?';
+    t3count.style.color = 'var(--warn)';
+    t3status.textContent = 'SUMBER PETI TIDAK ADA (UNKNOWN)';
+    t3status.style.color = 'var(--warn)';
+  } else if (pendingN > 0) {
+    t3count.textContent = pendingN;
+    t3count.style.color = 'var(--accent)';
+    t3status.textContent = `${pendingN} PERLU KEPUTUSAN HANG`;
+    t3status.style.color = 'var(--accent)';
+  } else {
+    t3count.textContent = '0';
+    t3count.style.color = 'var(--accent)';
+    t3status.textContent = 'TIADA TUNGGAKAN';
+    t3status.style.color = 'var(--ok)';
+  }
+  if (t3list) {
+    if (pendingItems.length > 0) {
+      let ph = '';
+      for (const it of pendingItems.slice(0, 5)) {
+        ph += `<div style="font-size:11px;color:var(--text);padding:2px 0">• <span style="color:var(--gold)">${it.sender || 'agent'}</span> (${it.kind || '?'}) — ${it.subject || ''}</div>`;
+      }
+      if (pendingItems.length > 5) ph += `<div style="font-size:11px;color:var(--muted)">Lagi ${pendingItems.length - 5} dalam peti.</div>`;
+      t3list.innerHTML = ph;
+    } else {
+      t3list.innerHTML = '';
+    }
+  }
+
+  // 3. Organs — nisbah UNKNOWN bila kiraan tiada; 0/9 sah jika benar-benar diukur.
+  document.getElementById('organs-ratio').textContent =
+    (fed.organs_alive != null && fed.organs_total != null)
+      ? `${Number(fed.organs_alive)}/${Number(fed.organs_total)}`
+      : 'UNKNOWN/UNKNOWN';
   let organsHtml = '';
   for (const o of (fed.organs || [])) {
     const dotCls = o.status === 'UP' ? 'up' : 'down';
@@ -569,16 +769,34 @@ function render(data, truthData) {
 
   // 4. Metabolism
   document.getElementById('meta-verdict-badge').textContent = meta.verdict || 'UNKNOWN';
-  document.getElementById('fq-val').textContent = meta.quotient != null ? meta.quotient.toFixed(2) : '--';
-  document.getElementById('fq-diag').textContent = meta.diagnosis || (meta.verdict && meta.verdict !== 'UNKNOWN' ? meta.verdict : 'Belum diukur');
-  document.getElementById('fq-counts').textContent = `${verC} sah / ${execC} laksana`;
-  document.getElementById('fq-stuck').textContent = `${meta.held_count || 0} tertahan / ${meta.throttled_count || 0} ditapis`;
+  document.getElementById('fq-val').textContent = fqStr;
+  document.getElementById('fq-diag').textContent = meta.diagnosis || (meta.verdict && meta.verdict !== 'UNKNOWN' ? meta.verdict : 'UNKNOWN (belum diukur)');
+  document.getElementById('fq-counts').textContent = countsKnown
+    ? `${verC}/${execC} = ${(verC / execC).toFixed(2)} (events, not tasks)`
+    : 'UNKNOWN / UNKNOWN (events, not tasks)';
+  document.getElementById('held-actor-count').textContent = holdsCount;
+  document.getElementById('fq-stuck').textContent =
+    `${meta.held_count != null ? Number(meta.held_count) : 'UNKNOWN'} tertahan / ${meta.throttled_count != null ? Number(meta.throttled_count) : 'UNKNOWN'} ditapis`;
 
   // 5. Authority
   document.getElementById('auth-holds-badge').textContent = `${holdsCount} holds`;
   document.getElementById('auth-holds-val').textContent = holdsCount;
   document.getElementById('auth-holds-val').style.color = holdsCount > 0 ? 'var(--warn)' : 'var(--ok)';
-  document.getElementById('auth-seals-val').textContent = auth.seals || 0;
+  document.getElementById('auth-seals-val').textContent = auth.seals != null ? Number(auth.seals) : 'UNKNOWN';
+
+  // ── STATE-FRESHNESS-WITNESS (Transaction B, 2026-10-24) ────────────────
+  // /api/state carries generated_at. Render age and refuse to present stale
+  // state as current. Never hides the last reported value.
+  {
+    const _fb = (typeof freshnessBlock === 'function') ? freshnessBlock(data) : null;
+    const _badge = document.getElementById('state-freshness-badge');
+    const _detail = document.getElementById('state-freshness-detail');
+    if (_badge && _fb) {
+      _badge.textContent = _fb.freshness.state;
+      _badge.style.color = _fb.freshness.state === 'FRESH' ? 'var(--ok)' : 'var(--warn)';
+    }
+    if (_detail && _fb) _detail.textContent = _fb.text;
+  }
 
   // 6. Bottleneck
   const bnBox = document.getElementById('bottleneck-box');
@@ -590,7 +808,8 @@ function render(data, truthData) {
     ? 'Yang tertahan ialah ejen, bukan server.'
     : (bn.reason || 'Persekutuan mengalir lancar tanpa rintangan.');
   
-  document.getElementById('fed-status-badge').textContent = `Status: ${fed.status || 'KUKUH'} · ${data.probe_ms || 0}ms`;
+  const probeDisp = data.probe_ms != null ? `${Number(data.probe_ms)}ms` : 'probe UNKNOWN';
+  document.getElementById('fed-status-badge').textContent = `Status: ${fed.status || 'UNKNOWN'} · ${probeDisp}`;
 }
 
 async function poll() {
@@ -611,24 +830,26 @@ async function poll() {
     } catch (_) {}
 
     if (!stateData && truthData) {
-      // Build compatible fallback state from truth contract
+      // Build compatible fallback state from truth contract.
+      // Fix I (review 2026-10-22): tiada nilai fabrikasi — data tiada kekal null
+      // supaya render memaparkan UNKNOWN, bukan 0 / 9/9 / status sihat rekaan.
       stateData = {
         generated_at: truthData.generated_at,
-        probe_ms: truthData.planes?.reality_strip?.total_probe_ms || 950,
+        probe_ms: truthData.planes?.reality_strip?.total_probe_ms ?? null,
         federation: {
-          status: truthData.planes?.reality_strip?.overall_status || 'UP',
-          organs_alive: truthData.planes?.reality_strip?.organs_alive || 9,
-          organs_total: truthData.planes?.reality_strip?.total_organs || 9,
+          status: truthData.planes?.reality_strip?.overall_status || 'UNKNOWN',
+          organs_alive: truthData.planes?.reality_strip?.organs_alive ?? null,
+          organs_total: truthData.planes?.reality_strip?.total_organs ?? null,
           organs: truthData.planes?.reality_strip?.organs || []
         },
         metabolism: {
-          quotient: truthData.planes?.attention_membrane?.auto_handled?.fq_quotient || 1.04,
-          diagnosis: truthData.planes?.attention_membrane?.auto_handled?.diagnosis || 'BALANCED',
-          execute_count: truthData.planes?.attention_membrane?.auto_handled?.execute_count || 46,
-          verify_count: truthData.planes?.attention_membrane?.auto_handled?.verify_count || 48
+          quotient: truthData.planes?.attention_membrane?.auto_handled?.fq_quotient ?? null,
+          diagnosis: truthData.planes?.attention_membrane?.auto_handled?.diagnosis || 'UNKNOWN',
+          execute_count: truthData.planes?.attention_membrane?.auto_handled?.execute_count ?? null,
+          verify_count: truthData.planes?.attention_membrane?.auto_handled?.verify_count ?? null
         },
         authority: {
-          holds: truthData.planes?.attention_membrane?.machine_held?.count || 2,
+          holds: truthData.planes?.attention_membrane?.machine_held?.count ?? null,
           held_actors: (truthData.planes?.attention_membrane?.machine_held?.holds || []).map(h => h.actor)
         }
       };

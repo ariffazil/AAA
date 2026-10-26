@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [entropy, hygiene, cleanup, federation, workspace]
     related: [arifos-federation-ops, verify-gate]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Federation Entropy Reduction

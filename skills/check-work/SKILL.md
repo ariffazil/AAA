@@ -24,6 +24,48 @@ authority_of: AAA
 Verify work by spawning a verifier subagent, checking its verdict, and
 fixing issues until it passes.
 
+## Bila semakan bebas WAJIB (bukan "where required")
+
+`where required` ialah frasa yang boleh ditafsir sampai bila-bila, dan tafsiran itu jatuh kepada
+pengarang — iaitu pemeriksaan diri dengan topi berbeza. Ganti dengan empat pencetus yang boleh
+diukur. **Satu pun cukup.**
+
+1. **Tiada titik pulang** — tiada commit, tiada backup, tiada jalan undur. Kecil apa pun, wajib.
+2. **Laluan baca dikongsi lebih satu harness** — ukur, jangan teka:
+   `python3 /root/scripts/skills-census.py`; kalau path itu muncul dalam `total_symlink_dependents`,
+   ia dikongsi dan perubahan sampai ke harness yang tidak anda uji.
+3. **Angka keluar ke luar** — manifest, claims, `/health`, artifact yang diterbitkan, apa-apa nombor
+   yang manusia luar akan petik balik.
+4. **Mengubah cara sistem mengesahkan dirinya** — gate, hook, judge config, skrip ukur. Perubahan
+   pada alat pemeriksa tidak boleh diperiksa oleh alat yang sama.
+
+**Kiraan fail bukan pencetus.** Bukti terukur: satu fail model di KVM4 (`fed-parity-guard`, 59 gagal
+dalam 2 jam) goncang seluruh routing federasi; 152 direktori skill pula — beratus fail — blast
+radius-nya discovery sahaja dan boleh undur penuh melalui git. Kiraan fail mengukur saiz, bukan
+akibat. Ia akan menangkap perubahan besar yang selamat dan melepaskan perubahan kecil yang bahaya.
+
+**Kiraan agent juga bukan pencetus hari ini.** Federasi senaraikan 9 warga; ambang ">10 agent" tidak
+boleh tercetus. Peraturan yang tidak boleh menyala bukan kawalan — ia hiasan.
+
+## Dua perkataan, jangan campur
+
+- **SELF-CHECK** — pengarang memeriksa kerja sendiri, walaupun dengan alat atau kaedah berbeza.
+  Label yang betul: SELF-CHECK.
+- **VERIFIED** — pihak lain memeriksa. Hanya ini boleh ditulis VERIFIED.
+
+Menulis VERIFIED untuk kerja sendiri ialah memakai topi lain dan menipu diri. Menukar kaedah bukan
+menukar pemeriksa.
+
+## Gate 888: baca verdict, bukan floor_passed
+
+Guna `arif_judge` untuk calon itu. **Jangan** gate atas `floor_passed`: ia `null` kerana beberapa
+floor belum ada instrumen, dan fail-closed pada alat yang belum wujud akan menyekat setiap push
+selama-lamanya. Status `degraded` bukan hakim yang sakit; ia hakim yang menunggu alat ukur.
+
+Kalau 888 tidak dapat memberi verdict, F13 yang putus — tetapi labelnya **SEAL BY SOVEREIGN**, bukan
+independent verification. Dua benda berbeza; mencampur kedua-duanya jadi satu itulah "topi berbeza"
+yang kita tolak di atas.
+
 ## Usage
 
 `/check-work [focus area]`

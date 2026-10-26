@@ -1,0 +1,28 @@
+# FAMILY: github — one federated front door for every GitHub action across AAA state.
+# consumer: all AAA warga agents (every harness) doing GitHub ops · failure_class: identity inflation
+#   (7 physical copies of one 16.7KB body, all md5 66c4fe4a, live in skills/github/<member>/).
+# COLLAPSE PENDING (2026-10-18): first collapse attempt was mirrored by a reactive writer into a
+#   SELF-REFERENTIAL loop (canonical github-ops/SKILL.md -> ../github-ops/SKILL.md) which destroyed
+#   loader resolution for 9 skill IDs. Restored from git within minutes. GUARD RULE for retry:
+#   the collapse MUST exclude the canonical body (github-ops) from any symlink pattern, verify with a
+#   SECOND enumeration (bodies=1 symlinks=6), and commit immediately to pin the state.
+family: github
+canonical_owner: /root/AAA/skills/github/github-ops
+status: ACTIVE
+jobs:
+  auth:         { triggers: [gh auth, token, credential], executor: "github-ops -> references/github-auth.md", maturity: PROVEN, authority: T1 }
+  repo:         { triggers: [repo, clone, remote, secret, release], executor: "github-ops -> references/github-repo-management.md", maturity: PROVEN, authority: T1 }
+  issue:        { triggers: [issue, triage, label], executor: "github-ops -> references/github-issues.md", maturity: PROVEN, authority: T1 }
+  issue_to_pr:  { triggers: ["fix #N", implement issue], executor: "github-ops -> references/github-issue-to-pr.md", maturity: PROVEN, authority: T2 }
+  pr:           { triggers: [branch, PR, CI, merge], executor: "github-ops -> references/github-pr-workflow.md", maturity: PROVEN, authority: T2 }
+  review:       { triggers: [review, verdict], executor: "github-ops -> references/github-code-review.md", maturity: PROVEN, authority: T1 }
+  federated:    { triggers: ["multi-repo", "push main", "force-push", organs.yaml], executor: "github-ops -> references/forge-github-ops.md", maturity: PROVEN, authority: T2 }
+  git_seal:     { triggers: ["commit seal", housekeeping, "decision trail"], executor: /root/AAA/skills/forge-git-seal, maturity: PROVEN, authority: T2 }
+  push_privacy: { triggers: ["push to public repo"], executor: /root/AAA/skills/github-public-push-privacy, maturity: PROVEN, authority: T1 }
+  lane_identity:{ triggers: [git-lane, "lane gate", "commit identity"], executor: "/root/scripts/git-lane + /root/.config/git/lane-identities.tsv", maturity: PROVEN, authority: T1 }
+adapters:
+  workflow_class_umbrella: FORGE-github-workflow  # class-level prose, routes to github-ops
+refusals:
+  - "commit without registered (name,email,key) lane triple — LANE GATE fails closed"
+  - "push main/force-push without F13 confirmation (contradiction in sources: narrower list is standing gate)"
+  - "rework GitHub from memory — open the reference the github-ops FLOW points at"

@@ -1,5 +1,7 @@
 # Agentic Architecture — The Meta-Mesa Doctrine
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Ratified: 2026-08-04 by F13 SOVEREIGN (Arif).**
 > **DITEMPA BUKAN DIBERI** — This is the architecture of the architecture.
 

@@ -1,0 +1,112 @@
+=== snapshot before inversion 2026-10-19T01:16:32+08:00 ===
+--- chain ---
+lrwxrwxrwx  1 root root   15 Oct 16 19:30 /root/.codex -> /root/AAA/codex
+lrwxrwxrwx  1 root root   19 Oct 17 14:30 /root/AAA/codex -> /root/runtime/codex
+drwxr-xr-x 20 root root 4096 Oct 19 01:14 /root/runtime/codex
+--- links ---
+/root/AAA/codex
+/root/runtime/codex
+--- nested symlinks inside real home (maxdepth 3) ---
+/root/runtime/codex/skills-full-backup-20260919 -> /root/AAA/skills
+/root/runtime/codex/skills -> /root/.codex/skills-curated
+/root/runtime/codex/app-server-control/app-server-control.sock -> /tmp/codex-daemon-0/740270edc5f725ecf9ba41870a9b6970562188cd8c77d31b63736e76969d260b
+/root/runtime/codex/hooks/f2-receipt-citation.py -> /root/.arifos/agents/shared/f2-receipt-citation.py
+/root/runtime/codex/hooks/pretool_engine_gate.py -> /root/.arifos/agents/shared/pretool_engine_gate.py
+/root/runtime/codex/skills-curated/know-physics -> /root/AAA/skills/know-physics
+/root/runtime/codex/skills-curated/FORGE-mcp-lifeguard -> /root/AAA/skills/engineering/mcp-ops
+/root/runtime/codex/skills-curated/APEX-quantum-eureka -> /root/AAA/skills/APEX-quantum-eureka
+/root/runtime/codex/skills-curated/know-math -> /root/AAA/skills/know-math
+/root/runtime/codex/skills-curated/FORGE-skill-creator -> /root/AAA/skills/FORGE-skill-creator
+/root/runtime/codex/skills-curated/FORGE-vps-docker -> /root/AAA/skills/FORGE-vps-docker
+/root/runtime/codex/skills-curated/FORGE-musyawarah-gotong -> /root/AAA/skills/forge-musyawarah-gotong
+/root/runtime/codex/skills-curated/memory-manage -> /root/AAA/skills/memory-manage
+/root/runtime/codex/skills-curated/audit-seal -> /root/AAA/skills/audit-seal
+/root/runtime/codex/skills-curated/observe-ground -> /root/AAA/skills/observe-ground
+/root/runtime/codex/skills-curated/FORGE-spatial-grounding -> /root/AAA/skills/forge-spatial-grounding
+/root/runtime/codex/skills-curated/verify-gate -> /root/AAA/skills/verify-gate
+/root/runtime/codex/skills-curated/RSI-recursive-improvement -> /root/AAA/skills/RSI-recursive-improvement
+/root/runtime/codex/skills-curated/route-dispatch -> /root/AAA/skills/route-dispatch
+/root/runtime/codex/skills-curated/FORGE-readme-truth-check -> /root/AAA/skills/FORGE-readme-truth-check
+/root/runtime/codex/skills-curated/FORGE-infra-guardian -> /root/AAA/skills/forge-infra-guardian
+/root/runtime/codex/skills-curated/ASI-agentic-architecture -> /root/.hermes/skills/ASI-agentic-architecture
+/root/runtime/codex/skills-curated/arifos-constitutional-judge -> /root/AAA/skills/arifos-constitutional-judge
+/root/runtime/codex/skills-curated/KERNEL-trinity-33 -> /root/AAA/skills/kernel-trinity-33
+/root/runtime/codex/skills-curated/FORGE-incident-triage -> /root/AAA/skills/FORGE-incident-triage
+/root/runtime/codex/skills-curated/AGI-skill-unification -> /root/AAA/skills/AGI-skill-unification
+/root/runtime/codex/skills-curated/aaa-musyawarah-execution -> /root/AAA/skills/aaa-musyawarah-execution
+/root/runtime/codex/skills-curated/FORGE-google-workspace -> /root/AAA/skills/forge-google-workspace
+/root/runtime/codex/skills-curated/FORGE-pr-governance -> /root/AAA/skills/FORGE-pr-governance
+/root/runtime/codex/skills-curated/know-language -> /root/AAA/skills/know-language
+/root/runtime/codex/skills-curated/FORGE-model-monitor -> /root/AAA/skills/forge-model-monitor
+/root/runtime/codex/skills-curated/FORGE-onboarding -> /root/AAA/skills/forge-onboarding
+/root/runtime/codex/skills-curated/kernel-bind -> /root/AAA/skills/kernel-bind
+/root/runtime/codex/skills-curated/FORGE-ci-diagnose -> /root/AAA/skills/forge-repo-intelligence
+/root/runtime/codex/skills-curated/FORGE-code-analysis -> /root/AAA/skills/forge-code-analysis
+/root/runtime/codex/skills-curated/FORGE-pr-review -> /root/AAA/skills/FORGE-pr-review
+/root/runtime/codex/skills-curated/FORGE-kimi-code -> /root/AAA/skills/forge-kimi-code
+/root/runtime/codex/skills-curated/FORGE-skill-linter -> /root/AAA/skills/FORGE-skill-linter
+/root/runtime/codex/packages/app-server-daemon/current -> /root/.codex/packages/app-server-daemon/releases/0.163.0-x86_64-unknown-linux-musl
+/root/runtime/codex/skills-curated/.profile-archive/forge-onboarding -> /root/AAA/skills/forge-onboarding
+--- top-level inventory ---
+AGENTS.md
+AGENTS.md.bak-membrane-20261010T023506Z
+AGENTS.md.bak-membrane-20261010T023750Z
+AGENTS.md.bak-membrane-20261010T023818Z
+AGENTS.md.bak-membrane-20261010T023911Z
+AGENTS.md.bak-membrane-20261017T054203Z
+AGENTS.md.bak-membrane-20261017T061628Z
+AGENTS.md.test
+app-server-control
+app-server-daemon
+auth.json
+cache
+config.toml
+config.toml.bak-20261014-dedup
+config.toml.bak-20261015T130021Z
+config.toml.pre-zen-redirect-20260811T123700Z
+goals_1.sqlite
+history.jsonl
+hooks
+hooks.json
+installation_id
+log
+logs_2.sqlite
+logs_2.sqlite-shm
+logs_2.sqlite-wal
+mcp-oauth-locks
+mcp.json.legacy
+memories
+memories_1.sqlite
+memories_1.sqlite-shm
+memories_1.sqlite-wal
+mimo-token-plan.config.toml
+model-catalog.local.json
+models_cache.json
+packages
+plugins
+queue_1.sqlite
+queue_1.sqlite-shm
+queue_1.sqlite-wal
+rules
+session_index.jsonl
+sessions
+shell_snapshots
+skills
+skills-curated
+skills-full-backup-20260919
+state
+state_5.sqlite
+thread-writer-locks
+thread_history_1.sqlite
+tmp
+tui-thread-reference-capabilities
+version.json
+--- hooks present ---
+total 32
+drwxr-xr-x+  3 root root  4096 Oct  7 16:36 .
+drwxr-xr-x 20 root root  4096 Oct 19 01:14 ..
+drwxr-xr-x  2 root root  4096 Aug 20 08:52 .bak-20260820-zen-ariflow
+-rw-r--r--  1 root root 13787 Oct  3 14:48 aaa_session_witness.py
+lrwxrwxrwx  1 root root    50 Sep 25 06:40 f2-receipt-citation.py -> /root/.arifos/agents/shared/f2-receipt-citation.py
+-rw-r--r--  1 root root   479 Sep 25 06:57 pretool-gate.log
+lrwxrwxrwx  1 root root    50 Sep 25 07:00 pretool_engine_gate.py -> /root/.arifos/agents/shared/pretool_engine_gate.py
