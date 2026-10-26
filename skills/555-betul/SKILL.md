@@ -3,9 +3,17 @@ name: 555-betul
 description: "Betul — periksa dan betulkan: fakta, kod, keadaan. ZEN spine /555. cognitive-commands doctrine di /root/AAA/skills/cognitive-commands/SKILL.md."
 triggers:
   - "/555_betul"
+atlas_numeral: "555"
+atlas_function: VERIFIER
+atlas_layer: ACT
+atlas_question: "Is it true?"
+slot: apex-9
+kernel_verb: null
 ---
 
 # /555_betul
+
+> Slot: **555 VERIFIER** · APEX-9 spine (law: `cognitive-commands`).
 
 Bila mesej ini tiba (sebagai slash atau teks):
 

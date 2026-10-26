@@ -56,7 +56,7 @@ _registered_resources: list[str] = []
 _session_ids: dict[str, str] = {}
 
 
-async def _mcp_rpc(url: str, method: str, params: dict | None = None, timeout: float = 15) -> Any:
+async def _mcp_rpc(url: str, method: str, params: dict | None = None, timeout: float = 15, allow_retry: bool = True) -> Any:
     """JSON-RPC call to MCP server via streamable-http. Tracks session IDs."""
     payload = {"jsonrpc": "2.0", "id": str(uuid.uuid4()), "method": method, "params": params or {}}
     headers = {
@@ -67,6 +67,15 @@ async def _mcp_rpc(url: str, method: str, params: dict | None = None, timeout: f
         headers["mcp-session-id"] = _session_ids[url]
     async with httpx.AsyncClient(timeout=timeout) as client:
         resp = await client.post(url, json=payload, headers=headers)
+        if resp.status_code in (400, 404) and allow_retry and url in _session_ids:
+            # Stale session detected — purge cache, re-init session, and retry call
+            _session_ids.pop(url, None)
+            try:
+                await _mcp_init(url)
+            except Exception:
+                pass
+            return await _mcp_rpc(url, method, params, timeout=timeout, allow_retry=False)
+
         # Capture session ID from response
         if "mcp-session-id" in resp.headers:
             _session_ids[url] = resp.headers["mcp-session-id"]

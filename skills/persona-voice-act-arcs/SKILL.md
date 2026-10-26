@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: persona-arc-scripting
 name: persona-voice-act-arcs
 description: "Alias → persona-arc-scripting. Load `persona-arc-scripting` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: persona-voice-act-arcs

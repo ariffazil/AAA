@@ -1,0 +1,100 @@
+{
+  "edition": "EDITION-031",
+  "date": "2026-10-26",
+  "built_at": "2026-10-25T22:12:32Z",
+  "stages": {
+    "validate": {
+      "ok": true,
+      "item_count": 20,
+      "problems": []
+    },
+    "state": {
+      "ok": true,
+      "prev_edition": "EDITION-030",
+      "delta": {
+        "new": 8,
+        "moved": 0,
+        "reopened": 0,
+        "still_open": 11,
+        "settled": 1,
+        "dropped": 8
+      },
+      "headline": "8 new, 1 settled, 11 carrying over, 8 dropped without resolution",
+      "semantic_mirror": {
+        "available": true,
+        "detail": "reachable at http://localhost:6333"
+      },
+      "open_items": 141
+    },
+    "registers": {
+      "ok": true,
+      "counts": {
+        "scars": 2,
+        "scar_events": 2,
+        "contradictions": 3,
+        "states": 5,
+        "realities": 4,
+        "items_bound": 12
+      },
+      "error": "",
+      "entropy": {
+        "edition": "EDITION-031",
+        "open_claims": 89,
+        "open_claims_prev": 87,
+        "open_delta": 2,
+        "new": 8,
+        "moved": 0,
+        "settled": 1,
+        "dropped": 3,
+        "exits": 4,
+        "metabolism": 0.25,
+        "aged_claims": 56,
+        "aged_share": 0.629,
+        "median_age_editions": 12,
+        "contradictions_open": 2,
+        "contradictions_aged": 0,
+        "scars_active": 2,
+        "scar_recurrences": 2,
+        "states_active": 5,
+        "states_unobserved": 0,
+        "realities_active": 4,
+        "realities_moved": 0,
+        "unbound_open_claims": 78,
+        "unbound_today": 4,
+        "today_claims": 16,
+        "wall_open": 10,
+        "verdict": "ACCUMULATING",
+        "note": "open_delta is a count of claims, not a thermodynamic quantity. Aged threshold: >7 editions. Contradiction aged: >3."
+      }
+    },
+    "feedback": {
+      "ok": true,
+      "standing_rules": 1,
+      "rules_file": "/root/AAA/forge_work/2026-10-26-edition-031/brief-rules.md"
+    },
+    "build": {
+      "ok": true,
+      "exit": 0,
+      "spec": "/root/AAA/forge_work/2026-10-26-edition-031/spec.json"
+    },
+    "seal": {
+      "ok": true,
+      "artifact": "/root/AAA/forge_work/2026-10-26-edition-031/EDITION-031.pdf",
+      "sidecar": "/root/AAA/forge_work/2026-10-26-edition-031/EDITION-031.sha256",
+      "artifact_sha256": "ec3e8f0c2e29a619e4bbbffbb6798db9b55f39717a980b20fad447681c660ac6",
+      "content_sha256": "69fa8083f22c26bf54b2bfb02e47640a00a477153407e93b75f37503a0d4fac6",
+      "gates_all_pass": true
+    },
+    "mirror": {
+      "ok": true,
+      "detail": "mirrored to hermes_brief_editions"
+    },
+    "dispatch": {
+      "state": "PRODUCED",
+      "literal": true,
+      "detail": "dry run \u2014 artifact sealed on disk, nothing pushed. Set target to actually send.",
+      "artifact": "/root/AAA/forge_work/2026-10-26-edition-031/EDITION-031.pdf"
+    }
+  },
+  "ok": true
+}

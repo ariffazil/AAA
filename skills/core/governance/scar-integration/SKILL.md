@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: wisdom-scar-session-audit
 name: scar-integration
 description: "Alias → wisdom-scar-session-audit. Load `wisdom-scar-session-audit` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: scar-integration

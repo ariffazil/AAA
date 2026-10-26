@@ -2,41 +2,34 @@
   "333-agi": {
     "collapsed_into": "",
     "fi_slot": "",
-    "name": "333-AGI (\u0394 MIND)",
+    "name": "333-AGI (Δ MIND)",
     "role": "Primary reasoning, planning, execution",
     "source": "identity_lanes",
-    "species": "\u0394-MIND",
+    "species": "Δ-MIND",
     "status": "active"
   },
   "555-asi": {
     "collapsed_into": "",
     "fi_slot": "",
-    "name": "555-ASI (\u03a9 CORE)",
+    "name": "555-ASI (Ω CORE)",
     "role": "Memory, telemetry, drift, research",
     "source": "identity_lanes",
-    "species": "\u03a9-CORE",
-    "status": "active"
-  },
-  "777-FORGE": {
-    "fi_slot": "",
-    "name": "777 FORGE \ud83d\udd25\ud83e\udde0\u2692\ufe0f\ud83c\udf0e\ud83d\udc8e",
-    "role": "witness-agent",
-    "source": "frozen_registry",
+    "species": "Ω-CORE",
     "status": "active"
   },
   "777-forge": {
-    "collapsed_into": "333-AGI",
+    "collapsed_into": "",
     "fi_slot": "",
-    "name": "777-forge",
-    "role": "collapsed",
-    "source": "collapsed",
+    "name": "777 FORGE",
+    "role": "execution",
+    "source": "admission_map",
     "species": "",
-    "status": "collapsed"
+    "status": "active"
   },
   "888-apex": {
     "collapsed_into": "",
     "fi_slot": "",
-    "name": "888-APEX (\u03a8 SOUL)",
+    "name": "888-APEX (Ψ SOUL)",
     "role": "Constitutional verdict, SEAL/HOLD/VOID",
     "source": "identity_lanes",
     "species": null,
@@ -64,7 +57,7 @@
     "collapsed_into": "",
     "fi_slot": "",
     "name": "AAA Control Plane",
-    "role": "Control plane \u2014 A2A gateway, cockpit",
+    "role": "Control plane — A2A gateway, cockpit",
     "source": "organs",
     "species": "",
     "status": "active"
@@ -80,7 +73,7 @@
     "collapsed_into": "",
     "fi_slot": "",
     "name": "A-FORGE",
-    "role": "Execution \u2014 build, deploy, forge",
+    "role": "Execution — build, deploy, forge",
     "source": "organs",
     "species": "",
     "status": "active"
@@ -95,7 +88,7 @@
     "status": "active"
   },
   "agy": {
-    "collapsed_into": "",
+    "collapsed_into": "antigravity",
     "fi_slot": "FI-009",
     "name": "AGY (Antigravity CLI)",
     "role": "forge-instrument",
@@ -125,7 +118,7 @@
     "collapsed_into": "",
     "fi_slot": "",
     "name": "arifOS Kernel",
-    "role": "Constitutional kernel \u2014 judge, seal, F1-F13",
+    "role": "Constitutional kernel — judge, seal, F1-F13",
     "source": "organs",
     "species": "",
     "status": "active"
@@ -139,21 +132,21 @@
   },
   "claude-code": {
     "fi_slot": "",
-    "name": "Claude Code \u2014 Warga AAA",
+    "name": "Claude Code — Warga AAA",
     "role": "governed-agent",
     "source": "frozen_registry",
     "status": "active"
   },
   "codex": {
     "fi_slot": "",
-    "name": "Codex CLI \u2014 Warga AAA (FI-005)",
+    "name": "Codex CLI — Warga AAA (FI-005)",
     "role": "forge-instrument",
     "source": "frozen_registry",
     "status": "active"
   },
   "codex-cli": {
     "fi_slot": "",
-    "name": "Codex CLI \u2014 Warga AAA (FI-005)",
+    "name": "Codex CLI — Warga AAA (FI-005)",
     "role": "forge-instrument",
     "source": "frozen_registry",
     "status": "active"
@@ -169,7 +162,7 @@
   },
   "copilot-cli": {
     "fi_slot": "",
-    "name": "GitHub Copilot CLI \u2014 Warga AAA",
+    "name": "GitHub Copilot CLI — Warga AAA",
     "role": "governed-executor",
     "source": "frozen_registry",
     "status": "active"
@@ -208,17 +201,18 @@
   },
   "hermes-asi": {
     "fi_slot": "",
-    "name": "Hermes ASI \u2014 Sovereign Citizen",
+    "name": "Hermes ASI — Sovereign Citizen",
     "role": "autonomous-agent",
     "source": "frozen_registry",
     "status": "active"
   },
   "hermesarifos-bot": {
     "fi_slot": "",
-    "name": "Hermes twin \u2014 dormant",
+    "name": "Hermes twin — dormant",
     "role": "dormant-face",
     "source": "frozen_registry",
-    "status": "dormant"
+    "status": "dormant",
+    "collapsed_into": "hermes"
   },
   "i-arif": {
     "collapsed_into": "",
@@ -231,7 +225,7 @@
   },
   "kimi-code": {
     "fi_slot": "",
-    "name": "Kimi Code CLI \u2014 Warga AAA (FI-008)",
+    "name": "Kimi Code CLI — Warga AAA (FI-008)",
     "role": "forge-instrument",
     "source": "frozen_registry",
     "status": "active"
@@ -258,8 +252,9 @@
     "fi_slot": "",
     "name": "META-MESA Test Agent",
     "role": "test-agent",
-    "source": "frozen_registry",
-    "status": "active"
+    "source": "admission_map",
+    "status": "active",
+    "collapsed_into": ""
   },
   "openclaw": {
     "collapsed_into": "",
@@ -303,15 +298,6 @@
     "name": "SOVEREIGN (Arif)",
     "role": "F13 absolute veto",
     "source": "organs",
-    "species": "",
-    "status": "active"
-  },
-  "unknown": {
-    "collapsed_into": "",
-    "fi_slot": "FI-009",
-    "name": "[VACANT]",
-    "role": "forge-instrument",
-    "source": "forge_instruments",
     "species": "",
     "status": "active"
   },

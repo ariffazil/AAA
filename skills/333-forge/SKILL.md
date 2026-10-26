@@ -1,19 +1,18 @@
 ---
 name: 333-forge
-description: "Forge — bina/eksekusi benda kecil sekarang, bukan cadangan. ZEN spine /333. cognitive-commands doctrine di /root/AAA/skills/cognitive-commands/SKILL.md."
+description: "ALIAS LAMA → 777-forge (EXECUTOR). Numeral 333 kini THINKER = /333_fikir."
 triggers:
   - "/333_forge"
+alias_of: 777-forge
+status: deprecated-alias
+slot: apex-9-alias
 ---
 
-# /333_forge
+# /333_forge — ALIAS (numeral bergerak)
 
-Bila mesej ini tiba (sebagai slash atau teks):
+Law APEX-9: **333 = THINKER** (fikir), **777 = EXECUTOR** (forge). Atlas 9-ATLAS-GENOME, F13 2026-08-08.
 
-1. Ambik kerja paling kecil yang boleh jalan sekarang dan buat sampai selesai atau kena blocker nyata. Receipt > naratif. Jangan buka kerja besar tanpa niat jelas.
-2. Kekal dalam register BM santai + floor F1-F13; rujuk cognitive-commands untuk nada penuh.
-
-## Instrumentation (Wave A · 2026-09-30)
-- **pre_observable**: smallest executable unit identified
-- **post_observable**: artifact path OR blocker named (state, not boolean — PRODUCED≠DELIVERED)
-- **receipt**: `flow_ingest(step_type=Execute, payload={"zen":"333","artifact":<path|blocker>})`
-- **fail_state**: no small unit → HOLD, jangan buka kerja besar
+Bila dipanggil:
+1. Jalan lane forge ikut fail `777-forge/SKILL.md` — kerja tetap jalan, jangan block Arif sebab numeral.
+2. Sebut SATU baris sekali: "333 = fikir; forge = 777."
+3. Receipt guna `zen:"777"` (slot sebenar) + `legacy:"333_alias"` supaya rekod jujur.

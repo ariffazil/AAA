@@ -3,9 +3,17 @@ name: 888-adil
 description: "Adil — keadilan/witness check: siapa dapat, siapa hilang, bukti cukup? ZEN spine /888. cognitive-commands doctrine di /root/AAA/skills/cognitive-commands/SKILL.md."
 triggers:
   - "/888_adil"
+atlas_numeral: "888"
+atlas_function: JUDGE
+atlas_layer: AUTH
+atlas_question: "Is it allowed?"
+slot: apex-9
+kernel_verb: arif_judge
 ---
 
 # /888_adil
+
+> Slot: **888 JUDGE** · APEX-9 spine (law: `cognitive-commands`).
 
 Bila mesej ini tiba (sebagai slash atau teks):
 

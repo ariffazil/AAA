@@ -1,26 +1,7 @@
-# NAMESPACE: apex_verdict_hold
+# NAMESPACE: apex_verdict_hold — RETIRED 2026-10-25
 
-**owner:** AAA  <!-- SK7: derived from dir_name=apex_verdict_hold, default=AAA, added 2026-09-26T23:53:33Z -->
-
-> **Marker file** (added 2026-09-19, Fasa 1 skill hygiene).
-> This directory is a *namespace*, not a skill.
-> Skills live in the subdirectories listed below.
-
-## Purpose
-This namespace groups related skills under one roof for discovery and routing.
-Each subdirectory is an independent skill with its own SKILL.md.
-
-## Contained skills (2)
-- `claude`
-- `hermes`
-
-## Owner
-
-**Owner:** `AAA/apex-verdict-hold`
-
-_Single-writer policy (Fasa 2): owner has write authority; other layers can read but not edit._
-
-## Conventions
-- Do not edit skill SKILL.md files from this namespace layer.
-- To add a new skill: create subdirectory with SKILL.md, then add to FEDERATED_SKILLS_REGISTRY_V3.yaml.
-- To deprecate: rename subdir to `<name>.DEPRECATED-<date>`, do not delete.
+Both contained skills moved to `skills/arifos-act/adapters/` when the
+`arifos-act` canonical was recovered. The holding dir now carries only a
+pointer stub (SKILL.md → apex-verdict). Nothing lives under this namespace.
+Do not add skills here; add them under the skill they adapt.
+Archive: `/root/forge_work/2026-10-25/apex-verdict-fold/archive`

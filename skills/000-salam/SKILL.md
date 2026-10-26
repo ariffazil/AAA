@@ -5,9 +5,17 @@ triggers:
   - "/000_salam"
 floor_scope: [F2, F4, F9, F12]
 autonomy_tier: T1
+atlas_numeral: "000"
+atlas_function: OBSERVER
+atlas_layer: ART
+atlas_question: "What is happening?"
+slot: apex-9
+kernel_verb: arif_observe
 ---
 
 # /000_salam — Salam
+
+> Slot: **000 OBSERVER** · APEX-9 spine (law: `cognitive-commands`).
 
 Bila mesej ini tiba (sebagai slash atau teks):
 
