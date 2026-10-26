@@ -12,7 +12,7 @@ consistency test pipeline that the previous session established.
 
 You **MUST**:
 
-1. Read `/root/AAA/prompts/INIT.md` first — it contains the binding Presentation
+1. Read `/root/AAA/prompts/UNIVERSAL_BOOT.md` first — it contains the binding Presentation (INIT.md retired 2026-07-27)
    Law and Floor definitions.
 2. Read `/root/AAA/sessions/session-SEAL-454e3a09d5ff40e0-SEAL.md` for the audit
    trail of the prior session (Sundaland Malay Basin artifact).
@@ -274,7 +274,7 @@ Reference files:
 
 ## 10. NEXT STEPS
 
-1. Read `/root/AAA/prompts/INIT.md` and `/root/.agents/skills/aaa-pdf-voice-protocol/SKILL.md`
+1. Read `/root/AAA/prompts/UNIVERSAL_BOOT.md` and `/root/.agents/skills/aaa-pdf-voice-protocol/SKILL.md`
 2. Probe live GEOX organ: `python3 -c "from aforge_publish.integrations.geox_hook import GeoxHook; g=GeoxHook(); print(g.probe())"`
 3. Define your basinal scope (which basins, which evidence)
 4. Build figures with publication voice

@@ -1,0 +1,2566 @@
+{
+  "schema": "arifos.human-reality.register.v2",
+  "version": "2.0.0",
+  "title": "arifOS Federation — Normalized Human-Reality Register",
+  "generated": "2026-10-09T23:59:48+08:00",
+  "generated_by": "hermes (subagent) · proposal human-reality-v2",
+  "status": "PROPOSED — normalized facts-only view; not canon until F13 ratification",
+  "basis": {
+    "purpose": "ONE normalized machine-readable register of all human-reality data in the arifOS federation.",
+    "sources_read": [
+      "/root/memory/people/people_registry.json (v1.2.0; array carries P-001..P-025)",
+      "/root/memory/people/INDEX.md",
+      "/root/memory/people/build-report.json",
+      "every /root/memory/people/<NAME>/ directory (person-card.md, person-card.DRAFT.md, register-card.md, MEMORY_MANIFEST.json, ORIGIN.md, REALITY-MAP.md, aliases.json, H1-capture/ H2-experience/ H3-knowledge/ H4-identity/ H5-scars/ H6-constitution/ subdirs)",
+      "/root/.hermes/lanes/people.yaml (schema arifos.lanes.people.v1)"
+    ],
+    "rules_honored": [
+      "facts-only; no invention; no inference of psychology/motive/personality/score",
+      "every identity/layer/valence entry carries a source file path + observed date",
+      "entries lacking source+observed were routed to `gaps`, not recorded as fact",
+      "H5 scars stay UNKNOWN-class (witnessed-class, content withheld) unless a human stated them",
+      "empty array or null when unknown"
+    ],
+    "conventions": {
+      "observed": "date from the record when the record states one; otherwise the source file mtime date (marked in gaps where approximate).",
+      "layer_mapping": "state/strategy/attractor/invariant follow the 4-layer model in HUMAN-REALITY-ALIGNMENT-v2.md (§2.1), mapped from people.yaml facts + ARIF-REALITY-FRAGMENT + SYED H-axis.",
+      "domain_trust": "derived only from adaptation/scar/trust ledgers; no such ledger present in the read set, so every domain_trust object is empty {} (unknown).",
+      "valence_transitions": "recorded only where a human explicitly stated a before->after state; only Nabilah P-013 qualifies.",
+      "excluded_interpretation": "card content that is analysis/psychology (shadow-profile traits, ESFP reads, archetype labels, [DER] lines) is NOT promoted into layers; noted in each person's gaps."
+    }
+  },
+  "counts": {
+    "persons_total": 26,
+    "human_persons": 25,
+    "non_human_entries": 1,
+    "non_human_archetypes_excluded": 4,
+    "identities_total": 75,
+    "layer_items_total": 71,
+    "valence_transitions_total": 1,
+    "facts_entries_total": 147,
+    "provenance_rows_total": 70,
+    "persons_with_dm_scope": 9,
+    "persons_with_shared_scope": 17
+  },
+  "sources": [
+    {
+      "record": "/root/memory/people/people_registry.json",
+      "sha256_16": "bf3b00777ddfcce7",
+      "bytes": 13220
+    },
+    {
+      "record": "/root/memory/people/INDEX.md",
+      "sha256_16": "201a49d9d08d683d",
+      "bytes": 10469
+    },
+    {
+      "record": "/root/memory/people/build-report.json",
+      "sha256_16": "a8a3f2674dafba07",
+      "bytes": 8481
+    },
+    {
+      "record": "/root/.hermes/lanes/people.yaml",
+      "sha256_16": "c3d4bf65bc7f05b2",
+      "bytes": 46487
+    },
+    {
+      "record": "/root/memory/people/ABBAH/person-card.md",
+      "sha256_16": "06f8e9d98816dce9",
+      "bytes": 3283
+    },
+    {
+      "record": "/root/memory/people/ABBAH/MEMORY_MANIFEST.json",
+      "sha256_16": "3c9f827e39a2cee7",
+      "bytes": 291
+    },
+    {
+      "record": "/root/memory/people/ALIFF/person-card.md",
+      "sha256_16": "56515dc5c8e6e625",
+      "bytes": 1123
+    },
+    {
+      "record": "/root/memory/people/ALIFF/person-card.DRAFT.md",
+      "sha256_16": "b4ae6162b38021fc",
+      "bytes": 2509
+    },
+    {
+      "record": "/root/memory/people/ALIFF/MEMORY_MANIFEST.json",
+      "sha256_16": "2c59df0cd72098ab",
+      "bytes": 291
+    },
+    {
+      "record": "/root/memory/people/ALIFF/person-card.md.bak-idfix-20260911T161727Z",
+      "sha256_16": "2f4c26c7d330c2d1",
+      "bytes": 942
+    },
+    {
+      "record": "/root/memory/people/ARIF/person-card.md",
+      "sha256_16": "1bb11a8b81297439",
+      "bytes": 7820
+    },
+    {
+      "record": "/root/memory/people/ARIF/person-card.DRAFT.md",
+      "sha256_16": "ef8d23d41fbd5603",
+      "bytes": 2799
+    },
+    {
+      "record": "/root/memory/people/ARIF/MEMORY_MANIFEST.json",
+      "sha256_16": "daa671b31b6c883c",
+      "bytes": 289
+    },
+    {
+      "record": "/root/memory/people/ARIF/register-card.md",
+      "sha256_16": "e2af26841cd54c29",
+      "bytes": 18098
+    },
+    {
+      "record": "/root/memory/people/AZWA/register-card.md",
+      "sha256_16": "d1622c499ef6bc76",
+      "bytes": 2123
+    },
+    {
+      "record": "/root/memory/people/FAMILY/fahim.DRAFT.md",
+      "sha256_16": "3c5dbd6296721bf1",
+      "bytes": 2525
+    },
+    {
+      "record": "/root/memory/people/FAMILY/nabilah.DRAFT.md",
+      "sha256_16": "6fcba5b66d805706",
+      "bytes": 2561
+    },
+    {
+      "record": "/root/memory/people/FAMILY/fahim.md",
+      "sha256_16": "03b6f0b41ae0f00e",
+      "bytes": 1038
+    },
+    {
+      "record": "/root/memory/people/FAMILY/naazira-fazil.md",
+      "sha256_16": "4d6fba8c5187b805",
+      "bytes": 1470
+    },
+    {
+      "record": "/root/memory/people/FAMILY/fattah.md",
+      "sha256_16": "6224daf2142d4c01",
+      "bytes": 1160
+    },
+    {
+      "record": "/root/memory/people/FAMILY/naazira.DRAFT.md",
+      "sha256_16": "f6eed660dcbb9123",
+      "bytes": 2559
+    },
+    {
+      "record": "/root/memory/people/FAMILY/nabilah-fazil.md",
+      "sha256_16": "b2b44c976531df35",
+      "bytes": 2634
+    },
+    {
+      "record": "/root/memory/people/FAMILY/azwa.DRAFT.md",
+      "sha256_16": "6384436f808d4ce8",
+      "bytes": 2532
+    },
+    {
+      "record": "/root/memory/people/FAMILY/azwa-fazil.md",
+      "sha256_16": "d52df3d130c68c48",
+      "bytes": 5398
+    },
+    {
+      "record": "/root/memory/people/FAMILY/fattah.DRAFT.md",
+      "sha256_16": "98db24b04bc86581",
+      "bytes": 2530
+    },
+    {
+      "record": "/root/memory/people/FAQWAN/register-card.md",
+      "sha256_16": "509928cd757b4503",
+      "bytes": 1818
+    },
+    {
+      "record": "/root/memory/people/FARIDAH/person-card.md",
+      "sha256_16": "69a2ecf30c7c1f03",
+      "bytes": 11525
+    },
+    {
+      "record": "/root/memory/people/FARIDAH/person-card.DRAFT.md",
+      "sha256_16": "d767f15e21eb28af",
+      "bytes": 2547
+    },
+    {
+      "record": "/root/memory/people/FARIDAH/MEMORY_MANIFEST.json",
+      "sha256_16": "ba63cc043bfad334",
+      "bytes": 295
+    },
+    {
+      "record": "/root/memory/people/FAZIL/person-card.DRAFT.md",
+      "sha256_16": "85f10c539ea81028",
+      "bytes": 2545
+    },
+    {
+      "record": "/root/memory/people/HAFIZ/register-card.md",
+      "sha256_16": "186dc8cce1a3431e",
+      "bytes": 5132
+    },
+    {
+      "record": "/root/memory/people/IZZU/person-card.md",
+      "sha256_16": "d03d485d7060401e",
+      "bytes": 1547
+    },
+    {
+      "record": "/root/memory/people/IZZU/person-card.DRAFT.md",
+      "sha256_16": "d4ebb90850ac6d27",
+      "bytes": 2491
+    },
+    {
+      "record": "/root/memory/people/IZZU/MEMORY_MANIFEST.json",
+      "sha256_16": "31a656a4db3cbae0",
+      "bytes": 289
+    },
+    {
+      "record": "/root/memory/people/IZZU/person-card.md.bak-idfix-20260911T161727Z",
+      "sha256_16": "4e0b7471c198a17f",
+      "bytes": 1366
+    },
+    {
+      "record": "/root/memory/people/JIA/register-card.md",
+      "sha256_16": "044090eea60d140e",
+      "bytes": 3473
+    },
+    {
+      "record": "/root/memory/people/JUKHRIS/IGNITION.md",
+      "sha256_16": "948889511deb8f03",
+      "bytes": 2064
+    },
+    {
+      "record": "/root/memory/people/JUKHRIS/person-card.md",
+      "sha256_16": "1952441356acf7ce",
+      "bytes": 5045
+    },
+    {
+      "record": "/root/memory/people/JUKHRIS/MEMORY_MANIFEST.json",
+      "sha256_16": "81e0896ebd5503cb",
+      "bytes": 295
+    },
+    {
+      "record": "/root/memory/people/JUKHRIS/aliases.json",
+      "sha256_16": "33ead645428f0817",
+      "bytes": 927
+    },
+    {
+      "record": "/root/memory/people/LUTFI/register-card.md",
+      "sha256_16": "ee22a0c7bab5983e",
+      "bytes": 2158
+    },
+    {
+      "record": "/root/memory/people/MAK/person-card.md",
+      "sha256_16": "a6e5939f7c83b318",
+      "bytes": 3069
+    },
+    {
+      "record": "/root/memory/people/MAK/MEMORY_MANIFEST.json",
+      "sha256_16": "7e9f043bd85d6df3",
+      "bytes": 287
+    },
+    {
+      "record": "/root/memory/people/NABILAH/person-card.md",
+      "sha256_16": "b163916e115a89a3",
+      "bytes": 14621
+    },
+    {
+      "record": "/root/memory/people/NABILAH/MEMORY_MANIFEST.json",
+      "sha256_16": "d1b4334f6ea2e699",
+      "bytes": 295
+    },
+    {
+      "record": "/root/memory/people/NABILAH/FACE_TOPOGRAPHY.md",
+      "sha256_16": "241ab2869eea2f5d",
+      "bytes": 1182
+    },
+    {
+      "record": "/root/memory/people/PAAN/register-card.md",
+      "sha256_16": "fca202bc8e01a26b",
+      "bytes": 2943
+    },
+    {
+      "record": "/root/memory/people/SCAR-WITNESSES/person-card.md",
+      "sha256_16": "762ad100ae0ef81f",
+      "bytes": 3902
+    },
+    {
+      "record": "/root/memory/people/SCAR-WITNESSES/AHMAD-FAISAL-BAKAR.md",
+      "sha256_16": "56c0562d8c96a6be",
+      "bytes": 4431
+    },
+    {
+      "record": "/root/memory/people/SCAR-WITNESSES/ahmad.DRAFT.md",
+      "sha256_16": "f2fd247cc5d28ee1",
+      "bytes": 2525
+    },
+    {
+      "record": "/root/memory/people/SYAKIR/register-card.md",
+      "sha256_16": "0668ee3e7799bce1",
+      "bytes": 5598
+    },
+    {
+      "record": "/root/memory/people/SYED/person-card.md",
+      "sha256_16": "79c984a6c5d70a61",
+      "bytes": 19344
+    },
+    {
+      "record": "/root/memory/people/SYED/person-card.DRAFT.md",
+      "sha256_16": "538b894ed7e49485",
+      "bytes": 2645
+    },
+    {
+      "record": "/root/memory/people/SYED/MEMORY_MANIFEST.json",
+      "sha256_16": "70d42ccc637b38cc",
+      "bytes": 5514
+    },
+    {
+      "record": "/root/memory/people/SYED/ORIGIN.md",
+      "sha256_16": "f0fd6d1a89d9ac6c",
+      "bytes": 3350
+    },
+    {
+      "record": "/root/memory/people/SYED/witnessed-scars-zkpc.json",
+      "sha256_16": "17c66745798616ba",
+      "bytes": 4261
+    },
+    {
+      "record": "/root/memory/people/SYED/REALITY-MAP.md",
+      "sha256_16": "03eff559a844673f",
+      "bytes": 7465
+    },
+    {
+      "record": "/root/memory/people/SYED/register-card.md",
+      "sha256_16": "aa2ee6d5339a3a71",
+      "bytes": 14625
+    },
+    {
+      "record": "/root/memory/people/SYED/nasi-lemak-ops-log.md",
+      "sha256_16": "c656c82e0506a019",
+      "bytes": 3220
+    },
+    {
+      "record": "/root/memory/people/SYED/SYEDOS_FIREWALL_WORSHIP.md",
+      "sha256_16": "358fab494fda61d1",
+      "bytes": 2002
+    },
+    {
+      "record": "/root/memory/people/SYED/TRIGGER-ANALYSIS-2026-09-29.md",
+      "sha256_16": "ecabd4b3d6204ca6",
+      "bytes": 8982
+    },
+    {
+      "record": "/root/memory/people/SYED/H3-knowledge/.placeholder",
+      "sha256_16": "1cf98521747500fe",
+      "bytes": 682
+    },
+    {
+      "record": "/root/memory/people/SYED/H4-identity/identity-card-zkpc.md",
+      "sha256_16": "42135ac350afc095",
+      "bytes": 4772
+    },
+    {
+      "record": "/root/memory/people/SYED/H2-experience/.placeholder",
+      "sha256_16": "12ab27ed27a67fb3",
+      "bytes": 659
+    },
+    {
+      "record": "/root/memory/people/SYED/H5-scars/SCAR_REGISTRY.json",
+      "sha256_16": "628c156cef72b926",
+      "bytes": 3677
+    },
+    {
+      "record": "/root/memory/people/SYED/H1-capture/.placeholder",
+      "sha256_16": "5a4d6b5c0d9c2584",
+      "bytes": 642
+    },
+    {
+      "record": "/root/memory/people/SYED/H6-constitution/values-observed.md",
+      "sha256_16": "80feefe2cba9b192",
+      "bytes": 5053
+    },
+    {
+      "record": "/root/memory/people/WAWA/person-card.md",
+      "sha256_16": "d18e84c9c237fc9e",
+      "bytes": 1309
+    },
+    {
+      "record": "/root/memory/people/WAWA/person-card.DRAFT.md",
+      "sha256_16": "64847d8ced2c706f",
+      "bytes": 2506
+    },
+    {
+      "record": "/root/memory/people/WAWA/MEMORY_MANIFEST.json",
+      "sha256_16": "88a5b0f4fd18bdd0",
+      "bytes": 289
+    },
+    {
+      "record": "/root/memory/people/scripts/build_register_cards.py",
+      "sha256_16": "9ec7c9e25b659b4f",
+      "bytes": 14393
+    },
+    {
+      "record": "/root/memory/people/scripts/build_paxis_cards.py",
+      "sha256_16": "3da981d92272c055",
+      "bytes": 31344
+    }
+  ],
+  "persons": [
+    {
+      "id": "P-001",
+      "person_id": "P-001",
+      "display_name": "Muhammad Arif bin Fazil",
+      "aliases": [
+        "Arif",
+        "Arif Fazil",
+        "ariffazil",
+        "F13",
+        "F13 SOVEREIGN",
+        "Along"
+      ],
+      "category": "sovereign",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "SOT/sovereign",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Muhammad Arif bin Fazil",
+          "source": "/root/memory/people/people_registry.json (P-001)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "telegram_user_id",
+          "value": "267378578",
+          "source": "/root/memory/people/ARIF/register-card.md (channel_directory.json)",
+          "observed": "2026-09-17"
+        },
+        {
+          "kind": "telegram_username",
+          "value": "ariffazil",
+          "source": "/root/memory/people/ARIF/register-card.md (lanes.yaml heritage register)",
+          "observed": "2026-08-30"
+        },
+        {
+          "kind": "birth",
+          "value": "1990-05-22, Bayan Lepas, Penang",
+          "source": "/root/memory/people/ARIF/register-card.md F4 (/root/arifOS/docs/agents/a-orchestrator/USER.md)",
+          "observed": "2026-10-06"
+        },
+        {
+          "kind": "residence",
+          "value": "Seri Kembangan, Selangor",
+          "source": "/root/memory/people/ARIF/register-card.md F5",
+          "observed": "2026-10-06"
+        },
+        {
+          "kind": "employment",
+          "value": "exec geoscience PETRONAS Carigali (upstream); Nov 2013-present (12 yr)",
+          "source": "/root/memory/people/ARIF/register-card.md F1/F7",
+          "observed": "2026-09-17"
+        },
+        {
+          "kind": "education",
+          "value": "B.Sc. dual Geology & Geophysics + Economics, UW-Madison 2009-2013",
+          "source": "/root/memory/people/ARIF/register-card.md F6",
+          "observed": "2026-10-06"
+        },
+        {
+          "kind": "role",
+          "value": "F13 SOVEREIGN / 888 Judge; permanent veto over irreversible actions",
+          "source": "/root/memory/people/ARIF/register-card.md F13",
+          "observed": "2026-10-06"
+        },
+        {
+          "kind": "timezone",
+          "value": "Asia/Kuala_Lumpur (MYT, UTC+8)",
+          "source": "/root/memory/people/ARIF/register-card.md F20",
+          "observed": "2026-09-17"
+        }
+      ],
+      "layers": {
+        "state": [
+          {
+            "claim": "Routine anchor: bangun sebelum 0830 tanpa alarm (biological clock); pagi = kopi + YouTube + ready for work.",
+            "source": "/root/.hermes/lanes/people.yaml (dm transcript lane=arif 2026-10-07 night)",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "Comfort food = nasi lemak; homing signal semasa complexity, not preference.",
+            "source": "/root/.hermes/lanes/people.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "Transit friction: kesukaran keluar rumah untuk commute; Syed sediakan pickup (INFERRED, binding:false).",
+            "source": "/root/.hermes/lanes/people.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "MSS/PETRONAS status 6 Okt 2026 = WAITING; last possible exit Mac 2027; formal application Ogos 2025.",
+            "source": "/root/memory/people/ARIF/register-card.md F19",
+            "observed": "2026-10-06"
+          }
+        ],
+        "strategy": [
+          {
+            "claim": "Communication preferences: brevity first; tables>lists>prose; Penang BM-English code-switching; one clarifying question when scope unclear; show diff then ask; 'Do it'=proceed; explicit uncertainty (Omega0) welcomed.",
+            "source": "/root/memory/people/ARIF/register-card.md F14 (/root/arifOS/docs/agents/a-orchestrator/USER.md lines 56-62)",
+            "observed": "2026-10-06"
+          },
+          {
+            "claim": "Bahasa harian: BM Penang kampung, pendek dan laju; guna 'aku'/'hang'.",
+            "source": "/root/memory/people/ARIF/register-card.md F2 (/root/.hermes/memories/USER.md)",
+            "observed": "2026-09-17"
+          }
+        ],
+        "attractor": [
+          {
+            "claim": "H-class hypothesis (medium conf): caregiver_default_mode. Falsifier: Arif deny. binding:false.",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "H-class hypothesis (medium conf): receive_mode_unfamiliar. binding:false.",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "H-class hypothesis (medium conf): relational_model_lag — classification lags when care relationship shifts (driver -> kasih sayang). binding:false.",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "H-class hypothesis (medium conf): friction_not_capability — resistance is energy/grief/transition/meaning, not logistics. binding:false.",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "H-class hypothesis (low conf, broadest): familiar_anchors_reduce_cognitive_load. binding:false.",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "Self-authored compression (PARTIAL; current_observed_phase only; revalidate on phase change): 'Aku lebih selesa memikul daripada dipapah.'",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          }
+        ],
+        "invariant": [
+          {
+            "claim": "CONTEXT period: MSS/PETRONAS transition era ~2025-08 -> 2027-03 (binding:required); do not export patterns as 'Arif universal'.",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "GOVERNANCE_RULE: observation may inform identity but must never become identity (binding:required).",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "FORBIDDEN_LABELS: 'Arif is dependent'/'cannot function without X'/'naturally caregiver'/'fundamentally this way'/'any identity-freezing claim' (binding:required).",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "H4_PRIVATE_LOCK: eros-specific testimony / inner-life narration in /root/.hermes/lanes/arif.h4_private.yaml (chmod 600); agent read forbidden by default.",
+            "source": "/root/.hermes/lanes/arif.h4_private.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "SEALING_DIRECTIVE (F13 2026-10-07): agent contract read with signal not stereotype; label every claim with provenance+falsifier; H4 locked; review on phase-signal.",
+            "source": "ARIF-REALITY-FRAGMENT-2026-10-07.yaml",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "Identity stack: 'Queer + Melayu + Miskin' (scope: dm).",
+            "source": "/root/memory/people/ARIF/register-card.md F8 (/root/arifOS/docs/agents/a-orchestrator/USER.md line 25)",
+            "observed": "2026-10-06"
+          },
+          {
+            "claim": "arifOS runtime filters: (a) Abah Governance Check dignity veto; (b) Mak Protocol / SoulCore Dial rasa filter.",
+            "source": "/root/memory/people/ARIF/register-card.md F11",
+            "observed": "2026-10-06"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        },
+        {
+          "record": "/root/memory/people/ARIF/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/memory/people/ARIF/person-card.md",
+          "observed": "2026-09-16"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "ARIF/person-card.DRAFT.md is an ACTG v1 stub (2026-08-13); superseded by person-card.md.",
+        "No H1..H6 tree under ARIF/ — sovereign H-axis lives in /root/memory/H*-*/; not reviewed here.",
+        "Value: only 4 of 26 candidate sources carry dated admission; INDEX.md and registry stats still reference 17 persons while the registry array carries P-001..P-025.",
+        "domain_trust unpopulated (no trust/adaptation ledger in read sources)."
+      ]
+    },
+    {
+      "id": "P-002",
+      "person_id": "P-002",
+      "display_name": "Fazil bin Khamis (Fazil Sr. / Abah)",
+      "aliases": [
+        "Fazil bin Khamis",
+        "Fazil Sr.",
+        "Abah",
+        "Fazil"
+      ],
+      "category": "family_parent",
+      "human": true,
+      "status": "DECEASED",
+      "privacy_class": "F5/sovereign",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Fazil bin Khamis",
+          "source": "/root/memory/people/ABBAH/person-card.md",
+          "observed": "2026-08-12"
+        },
+        {
+          "kind": "relation",
+          "value": "ARIF's late father",
+          "source": "/root/memory/people/people_registry.json (P-002)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "death",
+          "value": "2024-03-02 21:59, Hospital Kepala Batas (hands-on care KPJ Penang, Ward 577->570)",
+          "source": "/root/memory/people/people_registry.json (P-002)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "Abah Governance Check: 'Does this action preserve dignity?' — foundational legacy floor / highest override function in arifOS.",
+            "source": "/root/memory/people/ABBAH/person-card.md (Reality Legacy PDF p.7)",
+            "observed": "2026-08-12"
+          },
+          {
+            "claim": "AGENT RULE: never read card unless invoked via scar:BEKANTAN or person:P-002; never cite by name unless ARIF authorizes.",
+            "source": "/root/memory/people/ABBAH/person-card.md",
+            "observed": "2026-08-12"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/memory/people/ABBAH/person-card.md",
+          "observed": "2026-08-12"
+        },
+        {
+          "record": "/root/memory/people/FAZIL/person-card.DRAFT.md",
+          "observed": "2026-08-13"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Birth date UNKNOWN; full biography UNKNOWN; profession UNKNOWN (inferred institution-builder).",
+        "No H1..H6 tree; no register-card.md; absent from people.yaml register.",
+        "Two directory aliases for one person (ABBAH/ and FAZIL/) — only FAZIL/ carries a DRAFT stub."
+      ]
+    },
+    {
+      "id": "P-003",
+      "person_id": "P-003",
+      "display_name": "Faridah binti Othman (Mak)",
+      "aliases": [
+        "Faridah",
+        "Faridah binti Othman",
+        "Mak"
+      ],
+      "category": "family_parent",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "F5 (highest)",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Faridah binti Othman",
+          "source": "/root/memory/people/FARIDAH/person-card.md",
+          "observed": "2026-08-20"
+        },
+        {
+          "kind": "relation",
+          "value": "ARIF's mother",
+          "source": "/root/memory/people/people_registry.json (P-003)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "status",
+          "value": "ALIVE (confirmed Kepala Batas, 2026-08)",
+          "source": "/root/memory/people/people_registry.json (P-003)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "marriage",
+          "value": "married Fazil bin Khamis 16 Jun 1989 (age 29); four children",
+          "source": "/root/memory/people/FARIDAH/person-card.md",
+          "observed": "2026-08-21"
+        }
+      ],
+      "layers": {
+        "state": [
+          {
+            "claim": "Monthly allowance from Arif STOPPED (as of 2026-08-21, still running).",
+            "source": "/root/memory/people/FARIDAH/person-card.md",
+            "observed": "2026-08-21"
+          },
+          {
+            "claim": "Kampung assignment (F13 directive 2026-08-21): tell a kampung the PETRONAS CEO is 'bangang' — status LIVE.",
+            "source": "/root/memory/people/FARIDAH/person-card.md",
+            "observed": "2026-08-21"
+          },
+          {
+            "claim": "Own typing log (281 lines, 16 Jan -> 29 Feb 2024): shift-logbook grammar of Abah's hospital decline.",
+            "source": "/root/memory/people/FARIDAH/person-card.md",
+            "observed": "2026-08-20"
+          }
+        ],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "Mak Protocol (SoulCore Dial): filter all logic through rasa; block execution that 'causes pain without restoration'; F6 EMPATHY<->MARUAH lineage.",
+            "source": "/root/memory/people/FARIDAH/person-card.md (Reality Legacy p.7)",
+            "observed": "2026-08-20"
+          },
+          {
+            "claim": "AGENT RULE: never invoke Faridah as tool target (binding doctrine, not invocation); biography stays sovereign.",
+            "source": "/root/memory/people/FARIDAH/person-card.md",
+            "observed": "2026-08-21"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/memory/people/FARIDAH/person-card.md",
+          "observed": "2026-08-21"
+        },
+        {
+          "record": "/root/memory/people/MAK/person-card.md",
+          "observed": "2026-08-12"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Full biography UNKNOWN; G-model (her model of Arif) has no direct data.",
+        "Twin/identity-reassignment detail rests on Arif's one-night telling only.",
+        "No H1..H6 tree; no register-card.md; absent from people.yaml register.",
+        "Two directory aliases (FARIDAH/ and MAK/) for one person; MAK card is the older v1."
+      ]
+    },
+    {
+      "id": "P-004",
+      "person_id": "P-004",
+      "display_name": "Syed (Abang Sado)",
+      "aliases": [
+        "Syed",
+        "Abang Sado",
+        "syed",
+        "Syed Khairuddin Morktarudin"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "F5 highest",
+      "identities": [
+        {
+          "kind": "telegram_user_id",
+          "value": "1042200555",
+          "source": "/root/memory/people/SYED/register-card.md (channel_directory.json)",
+          "observed": "2026-09-17"
+        },
+        {
+          "kind": "telegram_username",
+          "value": "rico_ricaldo_33",
+          "source": "/root/memory/people/SYED/register-card.md (lanes.yaml heritage register)",
+          "observed": "2026-08-30"
+        },
+        {
+          "kind": "telegram_chat_id",
+          "value": "-1003815535761 (group SADO)",
+          "source": "/root/memory/people/SYED/register-card.md (channel_directory.json)",
+          "observed": "2026-09-17"
+        }
+      ],
+      "layers": {
+        "state": [
+          {
+            "claim": "GERD flare 29-30 Sep 2026: perut keras, susah bernafas, night vomiting, 'angin tersekat di LES'; meds Pantor 40/Nexium/Vocinti 20/Famotidine 40/Ganaton/Gascol; endoscopy pending.",
+            "source": "/root/memory/people/SYED/TRIGGER-ANALYSIS-2026-09-29.md",
+            "observed": "2026-09-30"
+          },
+          {
+            "claim": "Runs nasi lemak delivery loop (Ali Maju Sri Rampai, 12 stops); 2026-09-30 run 05:18-07:08, 37.2 km.",
+            "source": "/root/memory/people/SYED/nasi-lemak-ops-log.md",
+            "observed": "2026-09-30"
+          },
+          {
+            "claim": "Home anchor Neu Suites, Kampung Datuk Keramat; red Myvi.",
+            "source": "/root/memory/people/SYED/nasi-lemak-ops-log.md",
+            "observed": "2026-09-30"
+          },
+          {
+            "claim": "XAUUSD trader (~0.3 lots, W1+M15); fitness/athletic training is professional work.",
+            "source": "/root/memory/people/SYED/register-card.md F2",
+            "observed": "2026-09-17"
+          },
+          {
+            "claim": "Solo caregiver for mother post-surgery (details F5, DM-only).",
+            "source": "/root/memory/people/SYED/REALITY-MAP.md",
+            "observed": "2026-09-29"
+          }
+        ],
+        "strategy": [
+          {
+            "claim": "Trigger rule: if Syed complains about creepy DM / IG weirdos / privacy -> baseline 'biasa la bodybuilder tarik weirdos, letak DM filter'; do not dump invariant framework; do not share with random SADO people.",
+            "source": "/root/memory/people/SYED/register-card.md F7",
+            "observed": "2026-10-02"
+          },
+          {
+            "claim": "Behavioural triggers (co-regulation, F13 SAH 2026-10-07): hidden performance demand -> sympathetic activation (mitigation: zero-demand presence); sympathetic overload -> dorsal withdrawal (mitigation: withdraw gracefully); contempt cue -> shutdown (mitigation: zero contempt, repair).",
+            "source": "/root/.hermes/lanes/people.yaml (behavioral_triggers)",
+            "observed": "2026-10-07"
+          },
+          {
+            "claim": "Lane design rules (REALITY-MAP): never send a list unless asked; design inside his anchors; move don't add; constraint register not moral.",
+            "source": "/root/memory/people/SYED/REALITY-MAP.md",
+            "observed": "2026-09-29"
+          }
+        ],
+        "attractor": [
+          {
+            "claim": "Resource logic (REALITY-MAP): total-input thinking; no ledger with Arif; needs structure/routine; directness over words; strength as duty; stated != desired.",
+            "source": "/root/memory/people/SYED/REALITY-MAP.md",
+            "observed": "2026-09-29"
+          },
+          {
+            "claim": "Origin fact (F13 2026-09-11): Arif never paid Syed for gym; Syed rejects payment for the body but accepts money that buys proximity (driving RM400/week framed as attention investment).",
+            "source": "/root/memory/people/SYED/ORIGIN.md",
+            "observed": "2026-09-11"
+          },
+          {
+            "claim": "Arif relational reading 2026-10-07/08 (F13 admission, dm): Arif caretaker role; Syed 'inner child' register; jealousy object = MASA not rival; 'I haven't had enough of him actually.'",
+            "source": "/root/memory/people/SYED/register-card.md F9/F10/F12/F20/F22",
+            "observed": "2026-10-08"
+          }
+        ],
+        "invariant": [
+          {
+            "claim": "Membership of SADO scene per 8-invariant dossier 2026-10-01 (class-level).",
+            "source": "/root/memory/people/SYED/register-card.md F5",
+            "observed": "2026-10-02"
+          },
+          {
+            "claim": "SYEDOS FIREWALL: SyedOS lane must never reveal muscle-worship knowledge; breach = IMMEDIATE HOLD.",
+            "source": "/root/memory/people/SYED/SYEDOS_FIREWALL_WORSHIP.md",
+            "observed": "2026-08-15"
+          },
+          {
+            "claim": "Privacy floor F5 HIGHEST: family scars/medical/shadow DM-lane only; ZKPC categories only, no raw narrative.",
+            "source": "/root/memory/people/SYED/MEMORY_MANIFEST.json",
+            "observed": "2026-10-06"
+          },
+          {
+            "claim": "H4 identity: ZKPC attested layers (former professional identity, body-as-fortress, caregiver, validation economy, sealed room, sibling mirror).",
+            "source": "/root/memory/people/SYED/H4-identity/identity-card-zkpc.md",
+            "observed": "2026-08-14"
+          },
+          {
+            "claim": "H6 observed values/taboos: family loyalty; physical trust threshold; directness over words; strength-as-duty; sealed rooms not to be probed; family shadow DM-only; confrontation triggers retreat.",
+            "source": "/root/memory/people/SYED/H6-constitution/values-observed.md",
+            "observed": "2026-08-14"
+          },
+          {
+            "claim": "H5 witnessed scars (ZKPC, WITNESSED_NOT_SEALED; F13-private): SYED-W01 family_violence; W02 identity_loss; W03 caregiver_burnout; W04 hidden_identity; W05 validation_dependency; W06 power_dynamic. CLASS ONLY — content withheld; subject-sealed testimony absent (0 sealed by subject).",
+            "source": "/root/memory/people/SYED/witnessed-scars-zkpc.json",
+            "observed": "2026-08-14"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        },
+        {
+          "record": "/root/memory/people/SYED/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/memory/people/SYED/person-card.md",
+          "observed": "2026-10-07"
+        },
+        {
+          "record": "/root/memory/people/SYED/REALITY-MAP.md",
+          "observed": "2026-09-29"
+        },
+        {
+          "record": "/root/memory/people/SYED/ORIGIN.md",
+          "observed": "2026-09-11"
+        },
+        {
+          "record": "/root/memory/people/SYED/MEMORY_MANIFEST.json",
+          "observed": "2026-10-06"
+        },
+        {
+          "record": "/root/memory/people/SYED/H4-identity/identity-card-zkpc.md",
+          "observed": "2026-08-14"
+        },
+        {
+          "record": "/root/memory/people/SYED/H5-scars/SCAR_REGISTRY.json",
+          "observed": "2026-08-14"
+        },
+        {
+          "record": "/root/memory/people/SYED/H6-constitution/values-observed.md",
+          "observed": "2026-08-14"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "H1-capture, H2-experience, H3-knowledge contain only .placeholder files (EMPTY).",
+        "Contradiction unresolved: identity card records 'endoscopy history' while in-lane testimony 2026-09-29 says endoscopy NOT yet done.",
+        "T-base (Syed's self-model) and G-base (Syed's model of Arif) are UNKNOWN/inferred.",
+        "Two distinct 'Syed' (SADO friend vs 'Syed Anas Mohiuddin' ledger reporter 2026-09-12) not merged (register unresolved).",
+        "H5 scars remain witnessed-class only (0 subject-sealed); content withheld by design.",
+        "domain_trust unpopulated (no trust/adaptation ledger in read sources)."
+      ]
+    },
+    {
+      "id": "P-005",
+      "person_id": "P-005",
+      "display_name": "Aliff",
+      "aliases": [
+        "Aliff"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "profile-only",
+      "identities": [
+        {
+          "kind": "telegram_user_id",
+          "value": "1024343313",
+          "source": "/root/memory/people/ALIFF/person-card.md (lane config; ID corrected 2026-09-11)",
+          "observed": "2026-09-12"
+        },
+        {
+          "kind": "role",
+          "value": "Geologist / PETRONAS (current/former); Arif-confirmed friend, geology peer",
+          "source": "/root/memory/people/ALIFF/person-card.md",
+          "observed": "2026-09-12"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/ALIFF/person-card.md",
+          "observed": "2026-09-12"
+        },
+        {
+          "record": "/root/memory/people/ALIFF/person-card.DRAFT.md",
+          "observed": "2026-08-13"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "No register-card.md and absent from people.yaml register (no facts-only admission).",
+        "Telegram id corrected 2026-09-11 (was swapped with Izzu).",
+        "No H1..H6 tree; card is a stub; 'Communication style: BM (assumed)'."
+      ]
+    },
+    {
+      "id": "P-006",
+      "person_id": "P-006",
+      "display_name": "Izzu",
+      "aliases": [
+        "Izzu"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "profile+active",
+      "identities": [
+        {
+          "kind": "telegram_user_id",
+          "value": "1237635275",
+          "source": "/root/memory/people/IZZU/person-card.md (lane config; ID corrected 2026-09-11)",
+          "observed": "2026-09-12"
+        },
+        {
+          "kind": "telegram_group",
+          "value": "AIA (-1003521544074)",
+          "source": "/root/memory/people/IZZU/person-card.md",
+          "observed": "2026-09-12"
+        },
+        {
+          "kind": "role",
+          "value": "KPJ F&B / automation client; AAA worker (active)",
+          "source": "/root/memory/people/IZZU/person-card.md",
+          "observed": "2026-09-12"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [
+          {
+            "claim": "Operational pattern: Excel upload -> auto PDF dashboard (/root/izzu-automation/generate_dashboard.py); prefers simple, no cross-location compare.",
+            "source": "/root/memory/people/IZZU/person-card.md",
+            "observed": "2026-09-12"
+          }
+        ],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "AGENT RULE: Izzu = own person lane; active worker — session state must persist across turns.",
+            "source": "/root/memory/people/IZZU/person-card.md",
+            "observed": "2026-09-12"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/IZZU/person-card.md",
+          "observed": "2026-09-12"
+        },
+        {
+          "record": "/root/memory/people/IZZU/person-card.DRAFT.md",
+          "observed": "2026-08-13"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "No register-card.md and absent from people.yaml register.",
+        "Telegram id corrected 2026-09-11 (was swapped with Aliff).",
+        "No H1..H6 tree; memory_authority PROFILE_PLUS_ACTIVE_WORKER."
+      ]
+    },
+    {
+      "id": "P-007",
+      "person_id": "P-007",
+      "display_name": "Wawa",
+      "aliases": [
+        "Wawa"
+      ],
+      "category": "telegram_network",
+      "human": false,
+      "status": "SUPERSEDED — NOT A HUMAN",
+      "privacy_class": "profile-only",
+      "identities": [
+        {
+          "kind": "telegram_user_id",
+          "value": "8324190535",
+          "source": "/root/memory/people/WAWA/person-card.md (lane config; self-representation channel)",
+          "observed": "2026-09-29"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/WAWA/person-card.md",
+          "observed": "2026-09-29"
+        },
+        {
+          "record": "AAA/canon/FEDERATED-HUMAN-REALITY-MAP-2026-09-24.md:107,153 (cited by WAWA card)",
+          "observed": "2026-09-29"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "NOT a human — shadow alter-ego of Arif (F13 order 'no chaos' 2026-09-29); retained as evidence, excluded from human census.",
+        "people_registry.json still lists Wawa (P-007) as a telegram_network person — registry not updated.",
+        "No H1..H6 tree; no register-card.md; absent from people.yaml register."
+      ]
+    },
+    {
+      "id": "P-012",
+      "person_id": "P-012",
+      "display_name": "Ahmad Faisal Bakar",
+      "aliases": [
+        "Ahmad Faisal Bakar"
+      ],
+      "category": "named_institutional_person",
+      "human": true,
+      "status": "ALIVE_PRESUMED",
+      "privacy_class": "named-restricted",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Ahmad Faisal Bakar",
+          "source": "/root/memory/people/SCAR-WITNESSES/AHMAD-FAISAL-BAKAR.md",
+          "observed": "2026-08-12"
+        },
+        {
+          "kind": "role",
+          "value": "Former Vice President of Exploration, PETRONAS (Carigali)",
+          "source": "/root/memory/people/SCAR-WITNESSES/AHMAD-FAISAL-BAKAR.md (Reality Legacy PDF p.4)",
+          "observed": "2026-08-12"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "WhatsApp PETRONAS intelligence (verbatim, human-stated quotes): 'xde boss berani kacau anak buah faisal bakar'; 'Tapi dia pressure org kerja like there's no tomorrow'; 'Bukan kerja die pun, die masuk time org dah execute'; 'Die tinggal ambik credit je'.",
+            "source": "/root/memory/people/SCAR-WITNESSES/AHMAD-FAISAL-BAKAR.md (HERMES_888_ANALYSIS.md 2026-06-28)",
+            "observed": "2026-08-12"
+          },
+          {
+            "claim": "Agent rule: internal archetype analysis permitted; public-surface name reference prohibited (refer to 'VP-level Overdrive archetype').",
+            "source": "/root/memory/people/SCAR-WITNESSES/AHMAD-FAISAL-BAKAR.md",
+            "observed": "2026-08-12"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/memory/people/SCAR-WITNESSES/AHMAD-FAISAL-BAKAR.md",
+          "observed": "2026-08-12"
+        },
+        {
+          "record": "/root/memory/people/SCAR-WITNESSES/person-card.md",
+          "observed": "2026-08-12"
+        },
+        {
+          "record": "/root/memory/people/SCAR-WITNESSES/ahmad.DRAFT.md",
+          "observed": "2026-08-13"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "No register-card.md and absent from people.yaml register.",
+        "Shadow-profile traits (Overdrive/Narrative Dominance/Mirror Burn) are Arif's analysis recorded in the card — EXCLUDED from layers (interpretation, not human-stated fact); present only as a source note.",
+        "Current role UNKNOWN; status ALIVE_PRESUMED (registry: ALIVE_PRESUMED).",
+        "No H1..H6 tree."
+      ]
+    },
+    {
+      "id": "P-013",
+      "person_id": "P-013",
+      "display_name": "Nabilah Fazil (Akak)",
+      "aliases": [
+        "Nabilah",
+        "Nabilah Fazil",
+        "Akak"
+      ],
+      "category": "family_siblings",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "F5_HIGHEST",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Nabilah Fazil",
+          "source": "/root/memory/people/people_registry.json (P-013)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "relation",
+          "value": "ARIF's younger sister (2nd of 4); ARIF is anak sulung",
+          "source": "/root/memory/people/NABILAH/person-card.md",
+          "observed": "2026-08-20"
+        },
+        {
+          "kind": "work",
+          "value": "Cikgu KPM from ~Apr 2026 (<5 months); prior: engineer(give-up)->Master UTP(give-up)->PhD Korea(give-up)->tusuen(Jan-Apr 2026)",
+          "source": "/root/memory/people/NABILAH/person-card.md",
+          "observed": "2026-08-21"
+        },
+        {
+          "kind": "marriage",
+          "value": "Divorced from Fahim (talak ~mid-Jan 2026); reconciliation May-Jul 2026; separation final 24 Jul 2026",
+          "source": "/root/memory/people/NABILAH/person-card.md",
+          "observed": "2026-08-20"
+        },
+        {
+          "kind": "case",
+          "value": "Nafkah anak Mal No 2008-040-0633, Mahkamah Rendah Syariah Seberang Perai Utara; plaintif Nabilah vs Fahim; peguam Shazril Khairy; SETTLED 13 Aug 2026",
+          "source": "/root/memory/people/NABILAH/person-card.md",
+          "observed": "2026-08-20"
+        }
+      ],
+      "layers": {
+        "state": [
+          {
+            "claim": "AKPK claim 80k / 10 years, her own words 2026-08-21 ('sebab tolong Fahim') — statement only, no document yet.",
+            "source": "/root/memory/people/NABILAH/person-card.md",
+            "observed": "2026-08-21"
+          },
+          {
+            "claim": "Plans to refinance house (house also in Mak's name) — raised 2026-08-21; details UNKNOWN.",
+            "source": "/root/memory/people/NABILAH/person-card.md",
+            "observed": "2026-08-21"
+          },
+          {
+            "claim": "Lives at Mak's house, Kepala Batas; pays rent+bills; plans to move within the year.",
+            "source": "/root/memory/people/NABILAH/person-card.md",
+            "observed": "2026-08-20"
+          },
+          {
+            "claim": "Interested in learning to build an AI agent ('macam Hermes ASI') 2026-08-21; starter pack offer pending Arif yes.",
+            "source": "/root/memory/people/NABILAH/person-card.md",
+            "observed": "2026-08-21"
+          }
+        ],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "Privacy F5 HIGHEST: never mention by name in agent output unless ARIF authorizes; never in test/synthetic data.",
+            "source": "/root/memory/people/people_registry.json (P-013)",
+            "observed": "2026-09-11"
+          },
+          {
+            "claim": "Guardrails for Arif (F13-ratified 2026-08-20): listen don't diagnose; don't quote her 38k lines back; poster = her legal exposure.",
+            "source": "/root/memory/people/NABILAH/person-card.md",
+            "observed": "2026-08-20"
+          }
+        ]
+      },
+      "valence_transitions": [
+        {
+          "state_before": "sedih",
+          "state_after": "lega dan tenang",
+          "trigger": "'fahim dan i akan berpisah. So i dgn fattah je.' (separation decision)",
+          "source": "/root/memory/people/NABILAH/person-card.md (WhatsApp 7/24/26)",
+          "observed": "2026-07-24"
+        }
+      ],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/memory/people/NABILAH/person-card.md",
+          "observed": "2026-08-25"
+        },
+        {
+          "record": "/root/memory/people/NABILAH/FACE_TOPOGRAPHY.md",
+          "observed": "2026-08-15"
+        },
+        {
+          "record": "/root/memory/people/FAMILY/nabilah-fazil.md",
+          "observed": "2026-08-15"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "ESFP read and 'anti-mirror' persona are Arif's analysis (interpretation) — EXCLUDED from layers.",
+        "Open threads: why Fahim stopped returning (3 weeks); who authored the viral poster; talak amount settlement date.",
+        "No H1..H6 tree; no register-card.md; absent from people.yaml register.",
+        "Two source cards disagree on marriage: FAMILY/nabilah-fazil.md (2026-08-15) names spouse 'Muhd. Redhani' vs NABILAH/person-card.md Fahim — no human reconciled."
+      ]
+    },
+    {
+      "id": "P-014",
+      "person_id": "P-014",
+      "display_name": "Naazira Fazil (Jia)",
+      "aliases": [
+        "Naazira",
+        "Naazira Fazil",
+        "Jia",
+        "Jiaaa",
+        "Jiaaaa11"
+      ],
+      "category": "family_siblings",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "F5_HIGHEST",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "NAAZIRA FAZIL",
+          "source": "/root/memory/people/JIA/register-card.md F1 (people.yaml)",
+          "observed": "2026-09-26"
+        },
+        {
+          "kind": "telegram_user_id",
+          "value": "408536693",
+          "source": "/root/memory/people/JIA/register-card.md (people.yaml)",
+          "observed": "2026-09-20"
+        },
+        {
+          "kind": "telegram_display_name",
+          "value": "Jiaaa",
+          "source": "/root/memory/people/JIA/register-card.md (channel_directory.json)",
+          "observed": "2026-09-26"
+        },
+        {
+          "kind": "telegram_username",
+          "value": "Jiaaaa11",
+          "source": "/root/memory/people/JIA/register-card.md (people.yaml)",
+          "observed": "2026-09-26"
+        },
+        {
+          "kind": "work",
+          "value": "Lab support (not student/child)",
+          "source": "/root/memory/people/JIA/register-card.md F2",
+          "observed": "2026-09-26"
+        },
+        {
+          "kind": "workplace",
+          "value": "Penang (F13 correction 2026-08-15; earlier 'Ipoh' was travel)",
+          "source": "/root/memory/people/people_registry.json (P-014)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [
+          {
+            "claim": "Access: full agent capability (chat, general questions, images/files, voice, basic coding, stats, scheduling, web search).",
+            "source": "/root/memory/people/JIA/register-card.md F3",
+            "observed": "2026-09-26"
+          },
+          {
+            "claim": "Privacy boundary: cannot see other family DMs; no VAULT999; no agent-to-agent handoff; no shared-infra mutation.",
+            "source": "/root/memory/people/JIA/register-card.md F4",
+            "observed": "2026-09-26"
+          }
+        ],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "Privacy F5 HIGHEST / SOVEREIGN_REFERENCED_ONLY.",
+            "source": "/root/memory/people/people_registry.json (P-014)",
+            "observed": "2026-09-11"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/JIA/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        },
+        {
+          "record": "/root/memory/people/FAMILY/naazira-fazil.md",
+          "observed": "2026-08-15"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "FAMILY/naazira-fazil.md (2026-08-15) lists 'Child: Fattah' as HER child — superseded by registry/people fix (Fattah = Nabilah x Fahim). No human reconciled the two cards.",
+        "Register corrected 2026-09-26 from earlier 'kanak-kanak' mis-entry.",
+        "No H1..H6 tree.",
+        "scope: shared in people.yaml but privacy_class is F5_HIGHEST in registry — scope/privacy tension unreconciled."
+      ]
+    },
+    {
+      "id": "P-015",
+      "person_id": "P-015",
+      "display_name": "Azwa Fazil",
+      "aliases": [
+        "Azwa",
+        "Azwa Fazil",
+        "Azwa Safrina binti Fazil",
+        "Nur Azwa Safrina Binti Fazil"
+      ],
+      "category": "family_siblings",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "F5_HIGHEST",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Azwa Safrina binti Fazil",
+          "source": "/root/memory/people/FAMILY/azwa-fazil.md (Arif direct 2026-08-15/09-26)",
+          "observed": "2026-09-26"
+        },
+        {
+          "kind": "telegram_user_id",
+          "value": "764280302",
+          "source": "/root/memory/people/AZWA/register-card.md (people.yaml)",
+          "observed": "2026-09-24"
+        },
+        {
+          "kind": "dob",
+          "value": "2006-02-21 (registry, F13 corrected from 22-Feb)",
+          "source": "/root/memory/people/people_registry.json (P-015)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "education",
+          "value": "UKM FSSK Anthropology/Sociology, matric A218444, cohort 2025/2026, entering Year 2",
+          "source": "/root/memory/people/FAMILY/azwa-fazil.md",
+          "observed": "2026-09-26"
+        },
+        {
+          "kind": "results",
+          "value": "Sem 2/2025-26: 6xA + C+ (Bahasa Cina 2); PNG 3.75; CGPA 3.74; MUET 3.5",
+          "source": "/root/memory/people/FAMILY/azwa-fazil.md (Azwa screenshot 2026-09-01)",
+          "observed": "2026-09-26"
+        }
+      ],
+      "layers": {
+        "state": [
+          {
+            "claim": "Financial flow active: JPA scholarship appeal (submitted 2026-09-24) + PTPTN (confirmation 2026-09-24).",
+            "source": "/root/memory/people/FAMILY/azwa-fazil.md",
+            "observed": "2026-09-26"
+          },
+          {
+            "claim": "Vehicle Perodua Myvi; disposition undecided.",
+            "source": "/root/memory/people/FAMILY/azwa-fazil.md",
+            "observed": "2026-09-26"
+          }
+        ],
+        "strategy": [
+          {
+            "claim": "Will choose a track (Academic / Volunteering / Entrepreneurship) in the FSSK UKM curriculum structure.",
+            "source": "/root/memory/people/AZWA/register-card.md F2",
+            "observed": "2026-09-24"
+          }
+        ],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "Privacy F5_HIGHEST / SOVEREIGN_REFERENCED_ONLY; kept out of family illness chat to protect SPM focus.",
+            "source": "/root/memory/people/people_registry.json (P-015)",
+            "observed": "2026-09-11"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/FAMILY/azwa-fazil.md",
+          "observed": "2026-09-26"
+        },
+        {
+          "record": "/root/memory/people/AZWA/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "DOB conflict: registry/people fix = 2006-02-21; FAMILY/azwa-fazil.md education timeline still says '2006-02-22 Born'. No human reconciled in-card.",
+        "Name variant 'Nur Azwa Safrina Binti Fazil' (saf-data artifact 2026-06-03) unreconciled.",
+        "No direct T-model / G-model (agent inaccessible); registry data_gaps list medical history, relationship status, friend circle.",
+        "No H1..H6 tree; no register-card.md beyond AZWA/ (which lacks dm lane)."
+      ]
+    },
+    {
+      "id": "P-016",
+      "person_id": "P-016",
+      "display_name": "Fahim",
+      "aliases": [
+        "Fahim",
+        "Fahim bin Ahmad Shukri"
+      ],
+      "category": "family_extended",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "F5_HIGHEST",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Fahim bin Ahmad Shukri",
+          "source": "/root/memory/people/NABILAH/person-card.md; INDEX.md",
+          "observed": "2026-08-20"
+        },
+        {
+          "kind": "ic",
+          "value": "941119026027",
+          "source": "/root/memory/people/people_registry.json (P-016)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "birth",
+          "value": "1994-11-19, Baling, Kedah",
+          "source": "/root/memory/people/people_registry.json (P-016)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "credit",
+          "value": "CTOS 300/850; RM123,286 outstanding; 5 facilities; 3 bank suits",
+          "source": "/root/memory/people/people_registry.json (P-016); NABILAH/person-card.md",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "relation",
+          "value": "Nabilah's ex-husband",
+          "source": "/root/memory/people/people_registry.json (P-016)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        },
+        {
+          "record": "/root/memory/people/FAMILY/fahim.md",
+          "observed": "2026-08-12"
+        },
+        {
+          "record": "/root/memory/people/NABILAH/person-card.md (CTOS/kes-nafkah cross-ref)",
+          "observed": "2026-08-20"
+        }
+      ],
+      "gaps": [
+        "Version conflict: FAMILY/fahim.md (2026-08-12) = 'likely Nabilah's husband/partner, NOT confirmed' vs registry P-016 = confirmed ex-husband. Unreconciled.",
+        "registry epistemic_status: 'Inferred from Nabilah's natural phrasing'.",
+        "No register-card.md; absent from people.yaml register; no H1..H6 tree."
+      ]
+    },
+    {
+      "id": "P-017",
+      "person_id": "P-017",
+      "display_name": "Fattah",
+      "aliases": [
+        "Fattah",
+        "Fattah Nuqman"
+      ],
+      "category": "family_minor",
+      "human": true,
+      "status": "MINOR",
+      "privacy_class": "F5_HIGHEST_MINOR_PROTECTION",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Fattah Nuqman",
+          "source": "/root/memory/people/INDEX.md (P-017)",
+          "observed": "2026-08-20"
+        },
+        {
+          "kind": "relation",
+          "value": "Child of Nabilah x Fahim; ARIF's nephew/niece; age ~3 (b. ~2023)",
+          "source": "/root/memory/people/people_registry.json (P-017)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [
+          {
+            "claim": "Medical history: chickenpox 17-18 Jan 2024.",
+            "source": "/root/memory/people/people_registry.json (P-017)",
+            "observed": "2026-09-11"
+          }
+        ],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "ABSOLUTE PRIVACY — never mention by name, never in any output.",
+            "source": "/root/memory/people/people_registry.json (P-017)",
+            "observed": "2026-09-11"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        },
+        {
+          "record": "/root/memory/people/FAMILY/fattah.md",
+          "observed": "2026-08-12"
+        }
+      ],
+      "gaps": [
+        "Version conflict: FAMILY/fattah.md (2026-08-12) = 'Likely Naazira's child' vs registry corrected 2026-08-20 to Nabilah x Fahim. Unreconciled in card.",
+        "Exact DOB UNKNOWN; age approximate (~3).",
+        "No register-card.md; absent from people.yaml register; no H1..H6 tree; parentage correction dated."
+      ]
+    },
+    {
+      "id": "P-018",
+      "person_id": "P-018",
+      "display_name": "Laletha Jeevachandran",
+      "aliases": [
+        "Laletha Jeevachandran",
+        "PETRONAS Supervisor / Line Manager"
+      ],
+      "category": "named_institutional_person",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "OPERATIONAL_SUPERVISOR",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Laletha Jeevachandran",
+          "source": "/root/memory/people/people_registry.json (P-018)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "role",
+          "value": "PETRONAS Supervisor / Line Manager",
+          "source": "/root/memory/people/people_registry.json (P-018)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "card",
+          "value": "/root/ariffazil/HAMPA/human-laletha-jeevachandran.md",
+          "source": "/root/memory/people/people_registry.json (P-018)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Registry-only record: no directory, no register-card.md, no people.yaml entry; card path (if any) is outside the read set.",
+        "No H1..H6 tree.",
+        "Registry entry carries no observed date of its own beyond the registry 'updated' field (2026-09-11)."
+      ]
+    },
+    {
+      "id": "P-019",
+      "person_id": "P-019",
+      "display_name": "Siti Suhana Bt Che M Sukri (Kak Su)",
+      "aliases": [
+        "Siti Suhana Bt Che M Sukri (Kak Su)",
+        "PETRONAS Senior Manager"
+      ],
+      "category": "named_institutional_person",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "INSTITUTIONAL_WITNESS",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Siti Suhana Bt Che M Sukri (Kak Su)",
+          "source": "/root/memory/people/people_registry.json (P-019)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "role",
+          "value": "PETRONAS Senior Manager",
+          "source": "/root/memory/people/people_registry.json (P-019)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "card",
+          "value": "/root/ariffazil/HAMPA/human-kak-su-siti-suhana.md",
+          "source": "/root/memory/people/people_registry.json (P-019)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Registry-only record: no directory, no register-card.md, no people.yaml entry; card path (if any) is outside the read set.",
+        "No H1..H6 tree.",
+        "Registry entry carries no observed date of its own beyond the registry 'updated' field (2026-09-11)."
+      ]
+    },
+    {
+      "id": "P-020",
+      "person_id": "P-020",
+      "display_name": "Anis Azmani Azman",
+      "aliases": [
+        "Anis Azmani Azman",
+        "Relational Anchor (Past) / EDOTCO"
+      ],
+      "category": "personal_sanctuary",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "SANCTUARY_PROTECTED_NO_CRO",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Anis Azmani Azman",
+          "source": "/root/memory/people/people_registry.json (P-020)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "role",
+          "value": "Relational Anchor (Past) / EDOTCO",
+          "source": "/root/memory/people/people_registry.json (P-020)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "dm",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Registry-only record: no directory, no register-card.md, no people.yaml entry; card path (if any) is outside the read set.",
+        "No H1..H6 tree.",
+        "Registry entry carries no observed date of its own beyond the registry 'updated' field (2026-09-11)."
+      ]
+    },
+    {
+      "id": "P-021",
+      "person_id": "P-021",
+      "display_name": "Che Rohayu",
+      "aliases": [
+        "Che Rohayu",
+        "PETRONAS Colleague / Peer"
+      ],
+      "category": "professional_peer",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "CULTURAL_WITNESS",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Che Rohayu",
+          "source": "/root/memory/people/people_registry.json (P-021)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "role",
+          "value": "PETRONAS Colleague / Peer",
+          "source": "/root/memory/people/people_registry.json (P-021)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Registry-only record: no directory, no register-card.md, no people.yaml entry; card path (if any) is outside the read set.",
+        "No H1..H6 tree.",
+        "Registry entry carries no observed date of its own beyond the registry 'updated' field (2026-09-11)."
+      ]
+    },
+    {
+      "id": "P-022",
+      "person_id": "P-022",
+      "display_name": "Jamin Jamil",
+      "aliases": [
+        "Jamin Jamil",
+        "PETRONAS Colleague / Exploration Team"
+      ],
+      "category": "professional_peer",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "OPERATIONAL_PEER",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Jamin Jamil",
+          "source": "/root/memory/people/people_registry.json (P-022)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "role",
+          "value": "PETRONAS Colleague / Exploration Team",
+          "source": "/root/memory/people/people_registry.json (P-022)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "card",
+          "value": "/root/ariffazil/HAMPA/human-jamin-jamil.md",
+          "source": "/root/memory/people/people_registry.json (P-022)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Registry-only record: no directory, no register-card.md, no people.yaml entry; card path (if any) is outside the read set.",
+        "No H1..H6 tree.",
+        "Registry entry carries no observed date of its own beyond the registry 'updated' field (2026-09-11)."
+      ]
+    },
+    {
+      "id": "P-023",
+      "person_id": "P-023",
+      "display_name": "Tengku Muhammad Taufik (TMT)",
+      "aliases": [
+        "Tengku Muhammad Taufik (TMT)",
+        "President & Group CEO, PETRONAS"
+      ],
+      "category": "strategic_leadership",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "STRATEGIC_ACTOR_WRO_BOUND",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Tengku Muhammad Taufik (TMT)",
+          "source": "/root/memory/people/people_registry.json (P-023)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "role",
+          "value": "President & Group CEO, PETRONAS",
+          "source": "/root/memory/people/people_registry.json (P-023)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Registry-only record: no directory, no register-card.md, no people.yaml entry; card path (if any) is outside the read set.",
+        "No H1..H6 tree.",
+        "Registry entry carries no observed date of its own beyond the registry 'updated' field (2026-09-11)."
+      ]
+    },
+    {
+      "id": "P-024",
+      "person_id": "P-024",
+      "display_name": "Aidel",
+      "aliases": [
+        "Aidel",
+        "Colleague / Warning Observer"
+      ],
+      "category": "institutional_witness",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "PRECEDENT_WITNESS",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Aidel",
+          "source": "/root/memory/people/people_registry.json (P-024)",
+          "observed": "2026-09-11"
+        },
+        {
+          "kind": "role",
+          "value": "Colleague / Warning Observer",
+          "source": "/root/memory/people/people_registry.json (P-024)",
+          "observed": "2026-09-11"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "Registry-only record: no directory, no register-card.md, no people.yaml entry; card path (if any) is outside the read set.",
+        "No H1..H6 tree.",
+        "Registry entry carries no observed date of its own beyond the registry 'updated' field (2026-09-11)."
+      ]
+    },
+    {
+      "id": "P-025",
+      "person_id": "P-025",
+      "display_name": "Mohd Jukris bin Abdul Wahab (Jukhris)",
+      "aliases": [
+        "Mohd Jukris",
+        "Jukhris",
+        "Juhkris",
+        "Jukris",
+        "Jokhris",
+        "Zukhri",
+        "Zukhris",
+        "Yuhkris",
+        "Yuhkri",
+        "Jukri",
+        "Jukhri"
+      ],
+      "category": "named_institutional_person",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "F5_PUBLIC_FIGURE",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Mohd Jukris bin Abdul Wahab",
+          "source": "/root/memory/people/JUKHRIS/person-card.md",
+          "observed": "2026-08-27"
+        },
+        {
+          "kind": "role",
+          "value": "PETRONAS Executive Director / COO (holding board) since 2026-02-01",
+          "source": "/root/memory/people/JUKHRIS/person-card.md; people_registry.json P-025",
+          "observed": "2026-08-27"
+        },
+        {
+          "kind": "alias_set",
+          "value": "10 transliteration variants (Juhkris/Jukris/Zukhri/...) confidence 0.92",
+          "source": "/root/memory/people/JUKHRIS/aliases.json",
+          "observed": "2026-08-27"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "Governance lens: NAMED_PUBLIC_PROFILE — recall fact, do not auto-shadow-analyze.",
+            "source": "/root/memory/people/JUKHRIS/person-card.md",
+            "observed": "2026-08-27"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/JUKHRIS/person-card.md",
+          "observed": "2026-08-27"
+        },
+        {
+          "record": "/root/memory/people/JUKHRIS/aliases.json",
+          "observed": "2026-08-27"
+        },
+        {
+          "record": "/root/memory/people/JUKHRIS/IGNITION.md",
+          "observed": "2026-08-27"
+        },
+        {
+          "record": "/root/memory/people/people_registry.json",
+          "observed": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "ID COLLISION: registry assigns P-018 to Laletha Jeevachandran AND P-025 to Jukris, while JUKHRIS/person-card.md + aliases.json propose 'P-018' for Jukris. Unreconciled.",
+        "Semantic ignition DEFERRED (Ollama :11434 down); kernel recall PENDING.",
+        "Governance interpretation confidence cap 0.80; identity binding cap 0.90.",
+        "No H1..H6 tree; no register-card.md; absent from people.yaml register."
+      ]
+    },
+    {
+      "id": "FAQWAN",
+      "person_id": null,
+      "display_name": "Faqwan",
+      "aliases": [
+        "Faqwan"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "none-recorded",
+      "identities": [
+        {
+          "kind": "telegram_user_id",
+          "value": "6041855106",
+          "source": "/root/memory/people/FAQWAN/register-card.md (people.yaml)",
+          "observed": "2026-08-28"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/FAQWAN/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        }
+      ],
+      "gaps": [
+        "fact_count 0 — no personal facts recorded anywhere; entry deliberately empty (HUMAN9 M6).",
+        "Onboarded by Arif (F13) 2026-08-28; dm lane 'faqwan' registered; no dm facts yet.",
+        "No person-card.md dir entry (register-card only); no H1..H6 tree."
+      ]
+    },
+    {
+      "id": "SYAKIR",
+      "person_id": null,
+      "display_name": "Syakir (brother abang sado)",
+      "aliases": [
+        "Syakir",
+        "Muhammad Shakir Shaharudin"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "none-recorded",
+      "identities": [
+        {
+          "kind": "name",
+          "value": "Muhammad Shakir Shaharudin (external profile match, not subject-confirmed)",
+          "source": "/root/memory/people/SYAKIR/register-card.md F3 (F13 paste 2026-10-08)",
+          "observed": "2026-10-08"
+        },
+        {
+          "kind": "role",
+          "value": "Geoscientist, PETRONAS, Kuala Lumpur; Univ. of Utah Earth Science/Geology",
+          "source": "/root/memory/people/SYAKIR/register-card.md F3",
+          "observed": "2026-10-08"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "F13 admission 2026-10-08: Arif-Syakir ~2 yr acquaintance, total conversation <5 min; cubicle opposite; Syakir taped over the shared glass.",
+            "source": "/root/memory/people/SYAKIR/register-card.md F4",
+            "observed": "2026-10-08"
+          },
+          {
+            "claim": "Syed-Syakir dynamic (F13 verbatim 2026-10-08): Syakir enjoys/belanja; not hired as PT; 'Syed kontrak seumur hidup' remark.",
+            "source": "/root/memory/people/SYAKIR/register-card.md F5; /root/.hermes/lanes/people.yaml",
+            "observed": "2026-10-08"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/SYAKIR/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        }
+      ],
+      "gaps": [
+        "No Telegram identity, no dm lane, no bio facts (HUMAN9 M6).",
+        "Full name/role = external profile closest-match, NOT identity-confirmed by the subject.",
+        "REGISTER DEFECT logged: Syakir appeared in chat 30/9 + 5/10 but had no register entry until 2026-10-05 ('why u always forget human info').",
+        "No person-card dir entry; no H1..H6 tree."
+      ]
+    },
+    {
+      "id": "PAAN",
+      "person_id": null,
+      "display_name": "PAAN (kelas sado)",
+      "aliases": [
+        "PAAN"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "none-recorded",
+      "identities": [],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "Kelas sado sebelum Syed; INBA Pro Elite Athlete 2024; PT + nutritionist.",
+            "source": "/root/memory/people/PAAN/register-card.md F1 (MEMORY.md)",
+            "observed": "2026-09-17"
+          },
+          {
+            "claim": "Room 'PAAN SADO' (chat -1004496922048) registered 2026-09-13.",
+            "source": "/root/memory/people/PAAN/register-card.md F2 (mem0-promotion-ledger.jsonl)",
+            "observed": "2026-09-13"
+          },
+          {
+            "claim": "Shares SADO scene-map (8 invariants dossier 2026-10-01); class-level susceptibility.",
+            "source": "/root/memory/people/PAAN/register-card.md F3",
+            "observed": "2026-10-02"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/PAAN/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        }
+      ],
+      "gaps": [
+        "No Telegram identity, no dm lane (HUMAN9 M6).",
+        "UNRESOLVED: name match PAAN <-> 'Farhan Fudzil' (IG profile, read 2026-09-13) not stated by any human; not merged.",
+        "No person-card dir entry; no H1..H6 tree."
+      ]
+    },
+    {
+      "id": "LUTFI",
+      "person_id": null,
+      "display_name": "Ahmad Lutfi bin Muhd Khadri",
+      "aliases": [
+        "Ahmad Lutfi bin Muhd Khadri",
+        "Lutfi"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "none-recorded",
+      "identities": [
+        {
+          "kind": "telegram_user_id",
+          "value": "160111098",
+          "source": "/root/memory/people/LUTFI/register-card.md (channel_directory.json)",
+          "observed": "2026-09-17"
+        },
+        {
+          "kind": "role",
+          "value": "PETRONAS geologist; field work BEKANTAN-1",
+          "source": "/root/memory/people/LUTFI/register-card.md F1 (MEMORY.md)",
+          "observed": "2026-09-17"
+        }
+      ],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": []
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/LUTFI/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        }
+      ],
+      "gaps": [
+        "Identity link basis is NAME-ONLY ('LUTFI' in MEMORY.md vs display name 'Ahmad Lutfi Bin Muhd Khadri' in channel_directory.json) — no human stated the match.",
+        "No dm lane; no person-card dir entry; no H1..H6 tree."
+      ]
+    },
+    {
+      "id": "HAFIZ",
+      "person_id": null,
+      "display_name": "Hafiz (PETRONAS Emel-CC + Sabah stratigraphy co-author + YTL/ILMU model-claim reference)",
+      "aliases": [
+        "Hafiz",
+        "CC Hafiz",
+        "M Hafiz"
+      ],
+      "category": "telegram_network",
+      "human": true,
+      "status": "ALIVE",
+      "privacy_class": "none-recorded",
+      "identities": [],
+      "layers": {
+        "state": [],
+        "strategy": [],
+        "attractor": [],
+        "invariant": [
+          {
+            "claim": "PETRONAS email CC witness: 'Emel 12 Jun 2026 (Kak Sue -> Arif, CC Laletha/Hafiz/Jamin)' + 'Emel 11 Mei 2026 (Laletha -> Kak Sue, CC Hafiz)'.",
+            "source": "/root/memory/people/HAFIZ/register-card.md F1 (/root/farewell-2026/V9-arif-to-team-DRAFT.md)",
+            "observed": "2026-09-23"
+          },
+          {
+            "claim": "Sabah Basin stratigraphy ontology co-source: 'PETRONAS internal (Ahmad Hakim, M Hafiz)' (sabah_basin_strat.yaml line 267).",
+            "source": "/root/memory/people/HAFIZ/register-card.md F2 (/root/GEOX/resources/ontology/sabah_basin_strat.yaml)",
+            "observed": "2026-09-30"
+          },
+          {
+            "claim": "UNCONFIRMED model claim: YTL/ILMU model named 'Dr. Muhammad Hafiz bin Mohamad' as MalayMMLU creator; disk status = UNGROUNDED_FACT (MED). Do NOT present as fact.",
+            "source": "/root/memory/people/HAFIZ/register-card.md F3 (/root/BBB-hf/scoring.md)",
+            "observed": "2026-09-30"
+          }
+        ]
+      },
+      "valence_transitions": [],
+      "domain_trust": {
+        "gym": {},
+        "emotional": {},
+        "logistics": {},
+        "money": {}
+      },
+      "scope": "shared",
+      "provenance": [
+        {
+          "record": "/root/memory/people/HAFIZ/register-card.md",
+          "observed": "2026-10-08"
+        },
+        {
+          "record": "/root/.hermes/lanes/people.yaml",
+          "observed": "2026-09-17"
+        }
+      ],
+      "gaps": [
+        "No Telegram identity, no dm lane (HUMAN9 M6).",
+        "Third fact (MalayMMLU creator) is a MODEL CLAIM, not independently verified.",
+        "No person-card dir entry; no H1..H6 tree."
+      ]
+    }
+  ],
+  "excluded_non_human_archetypes": [
+    {
+      "person_id": "P-008",
+      "name": "The TriCipta Institution",
+      "category": "institutional_archetype",
+      "reason": "Not a specific individual — pattern extracted from scar narratives (SCAR_TRICIPTA, SCAR_LEBAH_EMAS).",
+      "source": "/root/memory/people/SCAR-WITNESSES/person-card.md; /root/memory/people/people_registry.json",
+      "observed": "2026-09-11"
+    },
+    {
+      "person_id": "P-009",
+      "name": "The SB412 Management",
+      "category": "institutional_archetype",
+      "reason": "Archetype, not an individual (SCAR_SB412, SCAR_UNCLAIMED_INTEL).",
+      "source": "/root/memory/people/SCAR-WITNESSES/person-card.md",
+      "observed": "2026-09-11"
+    },
+    {
+      "person_id": "P-010",
+      "name": "The Bekantan Extraction Regime",
+      "category": "institutional_archetype",
+      "reason": "Archetype, not an individual (SCAR_BEKANTAN, SCAR_AKUSAJACUKUP).",
+      "source": "/root/memory/people/SCAR-WITNESSES/person-card.md",
+      "observed": "2026-09-11"
+    },
+    {
+      "person_id": "P-011",
+      "name": "The Unheard Collective",
+      "category": "conceptual_archetype",
+      "reason": "Conceptual archetype, not an individual (SCAR_UNHEARD, SCAR_RIGHTSIZING).",
+      "source": "/root/memory/people/SCAR-WITNESSES/person-card.md",
+      "observed": "2026-09-11"
+    }
+  ],
+  "unresolved": [
+    {
+      "what": "PAAN <-> 'Farhan Fudzil' name match",
+      "note": "Not stated by any human; not merged.",
+      "source": "/root/.hermes/lanes/people.yaml (unresolved)",
+      "observed": "2026-09-17"
+    },
+    {
+      "what": "Two distinct 'Syed' (SADO friend vs 'Syed Anas Mohiuddin' ledger reporter 2026-09-12)",
+      "note": "Not resolved by any human statement; not merged.",
+      "source": "/root/.hermes/lanes/people.yaml (unresolved)",
+      "observed": "2026-09-17"
+    },
+    {
+      "what": "lanes.yaml heritage register unavailable 2026-09-17",
+      "note": "Identity values from heritage register could not be cross-checked against the live registry; cross-checked against channel_directory.json only.",
+      "source": "/root/.hermes/lanes/people.yaml (registry_note/unresolved)",
+      "observed": "2026-09-17"
+    }
+  ],
+  "held_out": [
+    {
+      "what": "family / legal-process material in /root/.hermes/memories/MEMORY.md.bak-20260914",
+      "why": "Sensitive (family + legal process), moved out of MEMORY.md 2026-09-17; no dated statement found. Not copied.",
+      "source": "/root/.hermes/lanes/people.yaml (held_out)",
+      "observed": "2026-09-17"
+    },
+    {
+      "what": "persona / psychology material in /root/.hermes/memories/USER.md.bak-20260914",
+      "why": "Psychology, motive, typology = forbidden under SPEC; fact not interpretation.",
+      "source": "/root/.hermes/lanes/people.yaml (held_out)",
+      "observed": "2026-09-17"
+    },
+    {
+      "what": "/root/HERMES/lanes/private/shadow/*.md (shadow maps, dossiers)",
+      "why": "Layered interpretation about a person, not a human statement; never a source for the register.",
+      "source": "/root/.hermes/lanes/people.yaml (held_out)",
+      "observed": "2026-09-17"
+    }
+  ]
+}

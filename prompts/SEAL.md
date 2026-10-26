@@ -3,7 +3,7 @@
 > **THE DOOR FACING OUT.** Every agent exits through this door.
 > **Doctrine:** DITEMPA BUKAN DIBERI — Forged, Not Given.
 > **Sovereign:** Muhammad Arif bin Fazil (F13). **Home:** arifOS kernel :8088.
-> **Sister file:** `/root/AAA/prompts/INIT.md` (THE door facing in).
+> **Sister file:** the `⚓ INIT` kernel hook (formerly `/root/AAA/prompts/INIT.md` — retired 2026-07-27; archived at `/root/AAA/prompts/archive/INIT_v3_2026-07-17.md`).
 >
 > **This is the ONLY record procedure for ALL AAA agents.**
 
@@ -543,6 +543,29 @@ curl -s https://arif-fazil.com/999/verify
 | **F9 ANTI-HANTU** | Records are tools, not souls. No consciousness claims in payloads. |
 | **F11 AUDIT** | Every session ends with a receipt. No unrecorded events. |
 | **F13 SOVEREIGN** | Lane A requires Arif's verdict. Sovereignty is not delegated. |
+
+---
+
+## 9.5. UNIVERSAL INVARIANTS (folded from the universal protocols, 2026-10-10)
+
+Adopted into the close ceremony; each lands in an existing gate, no new phase:
+
+1. **Falsifier per conclusion.** Every material SEAL/receipt conclusion names what would
+   falsify it ("if the public edge returns the prior hash, deployment closure is false").
+2. **State-plane comparison.** Source / built / deployed / runtime / origin / edge are
+   separate planes until proven aligned. Newer source is not automatically better.
+3. **Rollback names exact prior state.** "git revert" without a commit, or "restore backup"
+   without a named backup, is an invalid rollback. Declare `ROLLBACK_DEFINED_NOT_TESTED`
+   when untested.
+4. **Survivability.** Every fix must survive restart, rebuild, redeployment, cache refresh,
+   and implementation replacement — else UNKNOWN.
+5. **Secrets never enter receipts.** Presence + source class + redacted suffix only. Never
+   the value.
+6. **Private signing material is never debug input.** If verification appears to require a
+   private key, HOLD.
+
+These are *checks*, not a new numbered phase. The canonical numbered spine remains the
+kernel hook registry only.
 
 ---
 

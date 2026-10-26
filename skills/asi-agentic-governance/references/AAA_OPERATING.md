@@ -37,7 +37,22 @@ OWNER:
 INTERFACE:
 BOUNDARY:
 SOURCE OF TRUTH:
+DISCARDED:          # distinctions this abstraction removed (what can no longer be distinguished)
+INVARIANT_UNDER:    # transformations where the answer MUST stay the same (e.g. display colour, harmless paraphrase, unit-preserving rewrite, alias-of-same-principal)
+EQUIVARIANT_UNDER:  # structured transformations where the output must transform correspondingly (e.g. reference-frame change)
+SENSITIVE_TO:       # transformations where the answer MUST change (e.g. negation, recipient, quantity, revoked permission, different principal)
+INVALIDATION:       # observations that would falsify this abstraction's validity for its task
 ```
+
+These five fields close the abstraction audit loop with explicit transformation semantics.
+A representation is valid only while (a) the distinctions it dropped stay irrelevant
+(INVARIANT_UNDER holds), and (b) the distinctions it kept still change the decision
+when meaning changes (SENSITIVE_TO fires). Unit changes that preserve the physical
+quantity are INVARIANT_UNDER; unit changes that alter it are SENSITIVE_TO. An alias
+resolving to the same principal is INVARIANT_UNDER; a different principal is
+SENSITIVE_TO. Identity semantics must be settled before classifying a mismatch as
+a canonicalization defect (answer wrongly stable) or a sensitivity defect (answer
+rightly changed).
 
 ### Attestation
 

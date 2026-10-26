@@ -27,9 +27,13 @@ Don't use for: newsletter campaigns, or when the user only asks to retrieve one 
 
 ## Procedure
 
-### 1. Set the inbox scope
+### 1. Set the inbox scope and target mailbox
 
-Resolve the account, folders/labels, half-open time window, unread/all status, maximum thread count, and allowed actions. Default to read + draft, not send/delete — "handle my inbox" does not imply permission to send or delete. Done when the retrieval query and mutation boundary are explicit.
+Resolve which mailbox is being operated on:
+- **Human Sovereign Mailbox (`arifbfazil@gmail.com`)**: Managed via `gws` / `mailgw_broker.py`. Ejen HANYA ada kuasa read, triage, dan draft. Sebarang penghantaran atau pemadaman perlukan kebenaran manusia eksplisit.
+- **Agent Sovereign Mailbox (`hermes@arif-fazil.com`)**: Managed via `hermes-agent-email` (Cloudflare Worker Webhook / PostgreSQL). Fully autonomous for OTP extraction, invoice collection, and machine service signups.
+
+Resolve folders/labels, half-open time window, unread/all status, maximum thread count, and allowed actions. Default to read + draft, not send/delete — "handle my inbox" does not imply permission to send or delete. Done when the retrieval query and mutation boundary are explicit.
 
 ### 2. Retrieve complete threads
 

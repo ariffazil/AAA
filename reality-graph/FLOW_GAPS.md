@@ -85,11 +85,13 @@ The `stage_id + human_seal_token` branch returns `success: true`, `execution_id`
 
 ## D. Authorization / token path
 
-### G-09 · BYPASS — forged token accepted as SOVEREIGN (proven)
+### G-09 · Historical fail-open: forged SOVEREIGN token accepted at ingress
+DISCOVERED 2026-09-14 · REMEDIATED 2026-09-20 · LOCAL RETEST 2026-10-10 · INGRESS RETEST 2026-10-10
 `/root/AAA/governance/federation_act.py:389–417` — fail-OPEN branch decodes the payload and trusts `auth` without HMAC verification.
 Empirical, 2026-09-14: 4 of 6 attempts **ALLOWED** a token with a garbage signature (`act_v1.<b64({"auth":"SOVEREIGN"})>.deadbeefdeadbeef`); the 2 rejections were `ARIFOS_UNREACHABLE` (kernel timeout), not structural.
 **Live ingress consumers:** `GEOX/src/geox_mcp/geox_middleware.py:593`, `WELL/server.py:13382`, `WEALTH/wealth_mcp/server.py:573`.
 **Consequence:** a shadow authorization path into three organs. (Phase C: F-01, F-02.)
+**RESOLUTION (2026-10-10 audit):** recovery branch now requires local HMAC verification (`_verify_local_hmac`, constant-time, fail-closed on missing secret) plus TTL/schema/actor binding (G-09 residual fix, FI-003 2026-09-20). Local verifier retest 2026-10-10: forged SOVEREIGN signature → `SCT_HMAC_MISMATCH` REFUSED; empty sig → REFUSED; short sig → REFUSED. **Ingress end-to-end retest 2026-10-10** (audit-class G-09-INTEGRATION-RETEST, partial): forged + empty sig via real `gate_tool_ingress()` with header `X-ArifOS-Act` on geox/well/wealth organ paths → all 6 rejected (`SCT_HMAC_MISMATCH` / `SCT_HMAC_MISSING`) before any tool dispatch. NOTE first probe passed header `x-sct` (not an extracted key) → fell through to backward-compat allow path — extraction surface covers `arguments.sct/session_token/arifos_sct`, `_meta`, `X-ArifOS-Act/X-Session-Token/X-ArifOS-Session-Token` headers, `Authorization: Bearer act_v1.*`; the allow-on-no-SCT backward-compat path itself remains a documented design decision (OBSERVE class). **Open residuals:** (1) `hmac-legacy-16` path (lines 138–140) accepts 64-bit HMAC prefix — key-backed compatibility mode, needs documented threat model + rate limiting + migration deadline; candidate deprecation binary #5. (2) Full regression matrix (expired-valid-tag, wrong-actor-valid-tag, revoked, alternate routes, no-side-effect assertions) not yet run. Remediation order below is historical; G-09 closure evidence lives in this paragraph.
 
 ### G-10 · LOOP_BREAK — three token parsers, three answers
 | Parser | Pattern | Accepts |
@@ -102,6 +104,7 @@ Empirical, 2026-09-14: 4 of 6 attempts **ALLOWED** a token with a garbage signat
 
 ### G-11 · BYPASS — `forge_seal_lane_a` explicitly bypasses the canonical HOLD
 `/root/A-FORGE/src/interfaces/mcp/sealLaneA.ts:4` — *"bypasses chat-MCP `arif_seal` HOLD (vault_sovereign lease)"*, spawning `/root/scripts/forge_seal_lane_a.py`.
+**DISPOSITION (2026-10-10, F13 "sah"):** DEFERRED-BY-EVIDENCE. Probe found HMAC mode is the ONLY live canonical seal path — arifOS MCP seals via it; Ed25519 mode HELD by key mismatch. Removal would kill the only working VAULT999 seal lane. Retain + document; wire the gate into the execution path as Lane C follow-up. (Bypass-class finding retained as history; live-bypass claim downgraded.)
 **Consequence:** a second, in-process seal path that does not pass the `arif_seal` HOLD gate. Two ways to reach VAULT999 with different gate coverage.
 
 ---

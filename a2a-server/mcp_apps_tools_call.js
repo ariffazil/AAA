@@ -52,7 +52,6 @@ const OBSERVE_ALLOWLIST = new Set([
   'geox_deep_time_state',
   'geox_earthquake_catalog',
   'geox_registry',
-  'geox_health',
   // WEALTH read surfaces (portfolio dashboard)
   'capital_health',
   'capital_primitive',

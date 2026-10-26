@@ -1,0 +1,84 @@
+{
+  "generated": "2026-10-09T01:30:00+08:00",
+  "source": "wealth_mcp/tools/canonical.py::CAPITAL_TOOL_NAMES + :18082/health",
+  "git_commit": "29e2252",
+  "runtime_seal_state": "SEALED",
+  "live_tool_count": 15,
+  "tools": [
+    {
+      "name": "capital_backtest",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_civx",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_claims",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_diagnose",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_entropy",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_entry_plan",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_health",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_indicator",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_ledger",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_market",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_polix",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_primitive",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "capital_registry",
+      "category": "capital",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "wealth_judge_handoff",
+      "category": "wealth",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    },
+    {
+      "name": "wealth_synthesize",
+      "category": "wealth",
+      "authority_ceiling": "555_COMPUTE_ONLY"
+    }
+  ]
+}

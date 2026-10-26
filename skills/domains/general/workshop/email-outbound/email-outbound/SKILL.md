@@ -30,7 +30,9 @@ Do NOT start by setting up Gmail OAuth. Check what already works:
 ## Brevo transactional lane (default)
 
 Inline payload shape (POST to `api.brevo.com/v3/smtp/email`):
-- `sender: {name, email}` — MUST be a Brevo-verified sender (currently arifbfazil@gmail.com).
+- `sender: {name, email}`:
+  - For human-representing correspondence: `arifbfazil@gmail.com` (Arif Fazil).
+  - For sovereign machine / federation notices: `hermes@arif-fazil.com` (`AAA Federation` / `Hermes`).
 - `to: [{email, name}]`, `subject`, `htmlContent` (escape `&` as `&amp;`).
 - Response: `{"messageId": "<...>"}` — quote it back to Arif; delivery trackable in Brevo dashboard (Transactional → Logs).
 - `env | grep BREVO_API_KEY` → kunci-root.env has it; never echo into chat.
