@@ -89,6 +89,31 @@ def staged_content(path):
     return r.stdout if r.returncode == 0 else ""
 
 
+# Class slot = the text before the first provenance separator. R1 is a *class*
+# claim check, so it reads the HEAD only: a ratified-class noun in a trailing
+# clause ("appended to canon", "home: canon/") is provenance, not a class claim.
+# The K6 threat is a CLASS relabel, which lives in the head. Without this, a
+# `Status: F13_DIRECTED <date> · appended to canon …` line false-blocked, and the
+# agent routed around the gate instead of fixing it (measured 2026-10-10, ARS
+# §INTEGRITY_IS_CHEAPER_v1). Marker/instrument are still read from the FULL value,
+# so nothing that carries a real instrument is newly blocked.
+CLASS_SEGMENT_SPLIT_RE = re.compile(r"\s*(?:·|;|—|–|\s-\s)\s*")
+
+
+def class_segment(value):
+    claim = NEGATED_CLASS_RE.sub(" ", value)
+    return CLASS_SEGMENT_SPLIT_RE.split(claim, maxsplit=1)[0]
+
+
+def r1_violates(value):
+    """True if the Status value claims a ratified class without an F13 instrument."""
+    if not RATIFIED_CLASS_RE.search(class_segment(value)):
+        return False
+    has_marker = bool(F13_MARKER_RE.search(value))
+    has_instrument = bool(DATE_RE.search(value) or QUOTE_RE.search(value))
+    return not (has_marker and has_instrument)
+
+
 def check_file(letter, path, errors):
     content = staged_content(path)
     statuses = STATUS_RE.findall(content)
@@ -98,21 +123,16 @@ def check_file(letter, path, errors):
         errors.append(f"R3 {path}: new watched .md has no Status line — label it (DRAFT_*, PENDING_*, spec, or F13 instrument)")
 
     for value in statuses:
-        # R2 — annex-class always blocks
+        # R2 — annex-class always blocks (scanned on the FULL value)
         if ANNEX_CLASS_RE.search(value):
             errors.append(f"R2 {path}: ANNEX-class Status forbidden ({value[:60]}) — no instrument form exists (K6/UL-002)")
             continue
-        # R1 - ratified-class requires F13 marker + date-or-quote on the line.
-        # Negated occurrences are stripped first: "not sealed" asserts nothing.
-        claim_value = NEGATED_CLASS_RE.sub(" ", value)
-        if RATIFIED_CLASS_RE.search(claim_value):
-            has_marker = bool(F13_MARKER_RE.search(value))
-            has_instrument = bool(DATE_RE.search(value) or QUOTE_RE.search(value))
-            if not (has_marker and has_instrument):
-                errors.append(
-                    f"R1 {path}: ratified-class Status lacks F13 instrument "
-                    f"(need F13_RATIFIED_CHAT + date or quoted phrase) — got: {value[:70]}"
-                )
+        # R1 — ratified-class claim (head slot only) requires F13 marker + date/quote
+        if r1_violates(value):
+            errors.append(
+                f"R1 {path}: ratified-class Status lacks F13 instrument "
+                f"(need F13_RATIFIED_CHAT + date or quoted phrase) — got: {value[:70]}"
+            )
 
 
 def main():

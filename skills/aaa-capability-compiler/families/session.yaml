@@ -15,6 +15,12 @@ jobs:
     triggers: [discover, "federation discovery", librarian, "find session"]
     executor: session-federation-discovery / session-librarian (unmerged cluster)
     maturity: PRESENT
+  session_close:
+    triggers: ["close and seal", "seal this session", "session close", "close session"]
+    executor: seal-session (constitutional close ritual + vault receipt; kernel arif_seal)
+    visibility: deferred   # F06 ruling 2026-10-10: consequence-class verbs never eager
+    tie_policy: abstain    # F06+F11 ruling 2026-10-10: ambiguity on close/seal forces abstention
+    maturity: PRESENT
 adapters:
   temporal_truth: CHRON (consume only — never absorb temporal intelligence into this family)
 

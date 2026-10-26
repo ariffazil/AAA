@@ -338,6 +338,12 @@ VERDICT: PASS
 or
 VERDICT: FAIL
 
+## Suite-level honesty (2026-10-10, scar: AUTHORIZATION_ORDER_VIOLATION)
+Never report a global GREEN when any suite exits non-zero. Report per suite:
+command · exit code · passed / failed / skipped / xfailed · pre-existing baseline
+evidence for any failure labelled pre-existing. One suite's 24/24 cannot
+summarize another suite's 18/19. Fixture: B05.
+
 
 > **Full description (pre-EO-01 intent-first pass, preserved):** Check your work with a verification subagent that reviews diffs, runs builds and tests, and evaluates correctness. Read this file for instructions. Use when asked to "check work", "verify changes", "self-verify", "/check-work", "/check", "/verify", or "/self-verify".
 

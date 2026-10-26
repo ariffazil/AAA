@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifOS.wealth.handoff.v1",
+  "title": "arifOS.wealth_handoff.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "trace_id", "session_id", "actor_id", "proposal", "economic_state_hash", "evidence_root", "models", "scenarios", "contradictions", "missing_evidence", "stakeholder_impacts", "epistemic", "authority"],
+  "properties": {
+    "schema": {"const": "arifOS.wealth_handoff.v1"},
+    "trace_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": "string", "minLength": 1},
+    "actor_id": {"type": "string", "minLength": 1},
+    "proposal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "statement", "jurisdiction", "horizon", "reversibility", "blast_radius"],
+      "properties": {
+        "type": {"type": "string", "examples": ["CAPITAL_POLICY_OR_ALLOCATION_REVIEW"]},
+        "statement": {"type": "string", "minLength": 1},
+        "jurisdiction": {"type": "string", "minLength": 2},
+        "horizon": {"type": "string", "examples": ["12M"]},
+        "reversibility": {"enum": ["REVERSIBLE", "PARTIAL", "IRREVERSIBLE"]},
+        "blast_radius": {"enum": ["LOW", "MEDIUM", "HIGH", "SYSTEMIC"]}
+      }
+    },
+    "economic_state_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "evidence_root": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "models": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "version", "weight"],
+        "properties": {
+          "id": {"type": "string"},
+          "version": {"type": "string"},
+          "weight": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.25}
+        }
+      }
+    },
+    "scenarios": {"type": "array", "items": {"type": "object"}},
+    "contradictions": {"type": "array", "items": {"type": "string"}},
+    "missing_evidence": {"type": "array", "items": {"type": "string"}},
+    "stakeholder_impacts": {"type": "array", "items": {"type": "object"}},
+    "epistemic": {
+      "type": "object", "additionalProperties": false,
+      "required": ["tag", "confidence", "calibration_class", "unknowns"],
+      "properties": {
+        "tag": {"enum": ["OBS", "DER", "INT", "SPEC", "UNKNOWN"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "calibration_class": {"enum": ["UNVALIDATED", "PROVISIONAL", "CALIBRATED"]},
+        "unknowns": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["request", "execution_authorized", "requires_human_confirmation"],
+      "properties": {
+        "request": {"const": "JUDGMENT_ONLY"},
+        "execution_authorized": {"const": false},
+        "requires_human_confirmation": {"const": true}
+      }
+    }
+  }
+}

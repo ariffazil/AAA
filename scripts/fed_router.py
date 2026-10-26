@@ -47,8 +47,7 @@ from fastmcp import FastMCP
 # ── Zen Priority Matrix ───────────────────────────────────────────────
 # ── BL12 calibration gate helper (F13 SAH 2026-09-30) ─────────────────────
 _CALIB_FILE = "/root/chron/data/calibration_per_actor.json"
-_CALIB_CACHE = {"t": 0.0, "idx": {}, "rows": 0, "matched": 0, "penalized": 0,
-                "unmatched": 0, "error": None}
+_CALIB_CACHE = {"t": 0.0, "idx": {}, "rows": 0, "matched": 0, "penalized": 0, "unmatched": 0, "error": None}
 
 
 def _actor_key(raw) -> str:
@@ -282,7 +281,7 @@ _SOT_REQUIRED = (
     "constitutional_allowed",
     "effort",
 )
-_SOT_REQUIRED_PRICING = ("deepseek", "mulerouter", "tokenrouter", "kimi-moonshot", "flame")
+_SOT_REQUIRED_PRICING = ("deepseek", "mulerouter", "tokenrouter", "kimi-moonshot", "flame_retired_2026-09-04")
 _SOT_REQUIRED_EFFORT = ("model_map", "alt_models", "cost_multiplier", "reasoning_passes")
 
 
@@ -326,7 +325,11 @@ DEEPSEEK_PRICING = _SOT["pricing"]["deepseek"]
 MULEROUTER_PRICING = _SOT["pricing"]["mulerouter"]
 TOKENROUTER_PRICING = _SOT["pricing"]["tokenrouter"]
 KIMI_PRICING = _SOT["pricing"]["kimi-moonshot"]
-FLAME_PRICING = _SOT["pricing"]["flame"]
+# FLAME :18901 retired 2026-09-04. This row is the LAST HISTORICAL price record
+# (audit chain trace_id=plan-2026-10-11-0742, F.2). It is NOT an active serving
+# capability; the key is suffixed with the retirement date to prevent
+# downstream readers from mistaking it for a live model.
+FLAME_PRICING_RETIRED = _SOT["pricing"]["flame"]
 QWEN_TEAM_PRICING = _SOT["pricing"]["qwen-token-plan-team"]
 
 # Zen 3.2: Single source of truth for pricing table lookups.
@@ -344,7 +347,7 @@ def _get_pricing_table(provider_id: str) -> dict:
         "deepseek": DEEPSEEK_PRICING,
         "mulerouter": MULEROUTER_PRICING,
         "tokenrouter": TOKENROUTER_PRICING,
-        "flame": FLAME_PRICING,
+        "flame_retired_2026-09-04": FLAME_PRICING_RETIRED,  # F13 SOVEREIGN OVERRIDE per audit chain trace_id=plan-2026-10-11-0742 F.2
         "kimi-moonshot": KIMI_PRICING,
         "qwen-token-plan-team": QWEN_TEAM_PRICING,
         "qwen-token-plan-individual": DEEPSEEK_PRICING,  # Qwen routes deepseek models at similar pricing
@@ -391,8 +394,7 @@ async def fed_health(_request):
                 "lookups_unmatched": _CALIB_CACHE["unmatched"],
                 "load_error": _CALIB_CACHE["error"],
                 "state": (
-                    "ERROR" if _CALIB_CACHE["error"] else
-                    ("VOCABULARY_GAP" if _CALIB_CACHE["rows"] == 0 else "ARMED")
+                    "ERROR" if _CALIB_CACHE["error"] else ("VOCABULARY_GAP" if _CALIB_CACHE["rows"] == 0 else "ARMED")
                 ),
             },
             "tools": [

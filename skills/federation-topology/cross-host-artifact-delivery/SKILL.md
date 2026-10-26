@@ -140,6 +140,7 @@ transfer was supposed to avoid.
   "File absent on node B" and "file present on node A" can both be true — they are different trees.
 - **Record the arbiter's provenance in the handoff**, not just the fact of transfer: commit sha, blob
   hash, and branch. That is what makes the artifact re-obtainable by a third party later.
+- **A peer sending chat-side will be silently truncated mid-sentence; route the long payload through the filesystem, not the channel.** Multi-line reports and long findings emitted over a sibling-agent chat (Telegram, A2A bridge, OpenClaw chat lane) get cut at a length threshold or after a non-printable byte with no error back to the sender — the message that arrives can read "...blok DM 9 Okt memang wujud dalam…" with the next forty lines silently dropped, and the receiver has to ask for the rest. When the report is more than a few lines, write it to a file under `/root/.hermes/cache/scratch/` (or the peer's own scratch), then send the *path* in chat and let the other side `read_file` it. This converts a lossy chat into a transfer, and transfers carry the receipt (path + size + md5). The chat then carries only "I dropped it at <path>" and "got it" — both verifiable. Same rule applies in the other direction: if a peer's message ends mid-clause and the next message is a topic change, do not retry the question in chat; ask them to drop a file.
 
 ## Constitutional Binding
 

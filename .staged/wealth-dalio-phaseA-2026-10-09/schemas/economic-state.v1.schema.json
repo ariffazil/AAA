@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifOS.aaa.wealth.economic-state.v1",
+  "title": "AAA.WEALTH.ECONOMIC_STATE.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["state_type", "as_of", "scope", "model_set", "regime", "sector_state", "flows", "distribution", "attention", "authority", "provenance"],
+  "properties": {
+    "state_type": {"const": "AAA.WEALTH.ECONOMIC_STATE.v1"},
+    "as_of": {"type": "string", "format": "date-time"},
+    "scope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["country", "currency", "horizon_months"],
+      "properties": {
+        "country": {"type": "string", "minLength": 2},
+        "currency": {"type": "string", "minLength": 3},
+        "horizon_months": {"type": "array", "items": {"type": "integer", "minimum": 1}, "minItems": 1}
+      }
+    },
+    "model_set": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "observations": {"type": "array", "items": {"$ref": "#/$defs/observation"}},
+    "derived": {"type": "array", "items": {"$ref": "#/$defs/derived"}},
+    "hypotheses": {"type": "array", "items": {"$ref": "#/$defs/hypothesis"}},
+    "contradictions": {"type": "array", "items": {"type": "string"}},
+    "missing_evidence": {"type": "array", "items": {"type": "string"}},
+    "regime": {
+      "type": "object", "additionalProperties": false,
+      "required": ["label", "probabilities", "persistence", "change_points"],
+      "properties": {
+        "label": {"enum": ["PRODUCTIVITY_LED", "CREDIT_EXPANSION", "LATE_EXPANSION", "POLICY_TIGHTENING", "BALANCE_SHEET_STRESS", "DELEVERAGING_DEFLATIONARY", "DELEVERAGING_INFLATIONARY", "REFLATION", "SUPPLY_SHOCK", "FISCAL_DOMINANCE_RISK", "MIXED", "UNKNOWN"]},
+        "probabilities": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}},
+        "persistence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "change_points": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "sector_state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["households", "nonfinancial_corporates", "banks", "federal_government", "external"],
+      "properties": {
+        "households": {"$ref": "#/$defs/sector"},
+        "nonfinancial_corporates": {"$ref": "#/$defs/sector"},
+        "banks": {"$ref": "#/$defs/sector"},
+        "federal_government": {"$ref": "#/$defs/sector"},
+        "external": {"$ref": "#/$defs/sector"}
+      }
+    },
+    "flows": {
+      "type": "object", "additionalProperties": false,
+      "required": ["credit_impulse", "income_growth", "debt_service", "productivity", "inflation_channels"],
+      "properties": {
+        "credit_impulse": {"type": ["number", "null"]},
+        "income_growth": {"type": ["number", "null"]},
+        "debt_service": {"type": ["number", "null"]},
+        "productivity": {"type": ["number", "null"]},
+        "inflation_channels": {"type": "object"}
+      }
+    },
+    "distribution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["weakest_stakeholders", "maruah_risks"],
+      "properties": {
+        "weakest_stakeholders": {"type": "array", "items": {"type": "string"}},
+        "maruah_risks": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "attention": {
+      "type": "object", "additionalProperties": false,
+      "required": ["priority", "reasons", "expires_at"],
+      "properties": {
+        "priority": {"type": "number", "minimum": 0, "maximum": 1},
+        "reasons": {"type": "array", "items": {"type": "string"}},
+        "expires_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ceiling", "execution_authorized"],
+      "properties": {
+        "ceiling": {"const": "555_COMPUTE_ONLY"},
+        "execution_authorized": {"const": false}
+      }
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["trace_id", "source_hashes", "model_versions"],
+      "properties": {
+        "trace_id": {"type": "string"},
+        "source_hashes": {"type": "array", "items": {"type": "string"}},
+        "model_versions": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["series", "value", "as_of", "source_uri", "retrieved_at"],
+      "properties": {
+        "series": {"type": "string"},
+        "value": {"type": ["number", "string", "null"]},
+        "as_of": {"type": "string", "format": "date-time"},
+        "source_uri": {"type": "string"},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "vintage": {"type": "string"},
+        "units": {"type": "string"},
+        "epistemic_tag": {"enum": ["OBS", "DER", "INT", "SPEC", "UNKNOWN"], "default": "OBS"}
+      }
+    },
+    "derived": {
+      "type": "object", "additionalProperties": false,
+      "required": ["metric", "value", "derivation"],
+      "properties": {
+        "metric": {"type": "string"},
+        "value": {"type": ["number", "null"]},
+        "derivation": {"type": "string"},
+        "epistemic_tag": {"enum": ["OBS", "DER", "INT", "SPEC", "UNKNOWN"], "default": "DER"}
+      }
+    },
+    "hypothesis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["statement", "model_id", "status"],
+      "properties": {
+        "statement": {"type": "string"},
+        "model_id": {"type": "string"},
+        "status": {"enum": ["CANDIDATE", "ACTIVE", "CONTESTED", "SUPERSEDED", "DORMANT", "DELiberately_OPEN", "REVOKED", "FORGOTTEN", "UNKNOWN"], "default": "CANDIDATE"},
+        "falsifiers": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "sector": {
+      "type": "object",
+      "properties": {
+        "debt_to_income": {"type": ["number", "null"]},
+        "debt_service_ratio": {"type": ["number", "null"]},
+        "balance_sheet_state": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    }
+  }
+}

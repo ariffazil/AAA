@@ -9,6 +9,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - DECISION-RECORD-status-is-not-evidence-20261022
 - DOCTRINE-INDEX
 - EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-STAGING-2026-09-25
+- EUREKA-STATELESS-TRANSPORT-GOVERNANCE-LOCUS-2026-10-10
 - F13-RATIFICATION-READINESS
 - FEDERATION_HARDENING_DIGEST_v1
 - HANDOFF_2026-09-29_HERMES_AUDIT
@@ -88,6 +89,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - context-axes
 - cost-of-translation
 - cultural-evolution-doctrine
+- dalio-lens-shadow-proposal
 - data-authority-hierarchy
 - dissipative-transition
 - doctrine-admission-gate
