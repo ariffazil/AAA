@@ -476,3 +476,31 @@ Evidence: [seal_chain seq | forge_vault receipt | carry_forward residue]
 > **Lebih arif, lebih bijaksana, atau tidak sama sekali.**
 
 **NEW — 2026-10-23 (the seal gauge has two clocks):** `seal_chain_head.last_anchor_utc` and `latest_commit` are **bookkeeping anchors**, not seal entries. `hours_since_last_seal` must be measured from the last **seq-bearing SEAL** row in `seal_chain.jsonl`. Live case: head declared seq 72 / canonical 72 + historical 274 = 346 vs 274 file lines, while the chain tail was seq 55 @ 2026-10-15T09:48:35Z = 195.1h; `last_anchor_utc` was 7.3h. Reporting the anchor as "seal silence" is a wrong-gauge claim. State both clocks and the chain-tail seq, or mark chain integrity UNVERIFIED.
+
+## Rule 3p — A control tested by text-grep or container membership is not a control (NEW 2026-10-26)
+
+Two green-test/dead-control instances in one day, both caught only by independent
+mutation testing: (1) an F11 credential mask placed one hop before the wire —
+16 unit tests green while the live response carried the raw token (the attacher
+ran AFTER the mask); (2) an F8 producer gated on `if "F8" not in resolved_floors`
+where the dict is pre-filled for every floor upstream — guard permanently False,
+producer dead code, and its "wiring test" was a grep asserting the BROKEN guard
+string, so a correct fix would have failed the test.
+
+```
+LAW: a wiring/control test must execute the REAL assembler (the actual payload
+builder, the actual terminal closure) and be mutation-tested in BOTH directions:
+remove the control -> the test MUST die; restore it -> the test MUST pass.
+A test that survives removal of the thing it guards is ceremony.
+Corollary (status-is-not-evidence, control edition): guard on provenance/state
+the upstream actually mutates, never on membership in a container you don't own.
+```
+Evidence: eureka E-membership-guard-dead-producer-20261026; commits 59d55d3bb
+(dead) -> 6d8a219dc (fixed, 555 mutation-proven both directions).
+
+## Rule 3q — Safe task traversal, CWD sensitivity, & TCP stream exhaustion (NEW 2026-10-27)
+
+Three operational hazards observed in live sessions:
+1. **Task property type guard:** tasks.json entries may contain null/missing title or non-string values. Any audit or compiler script filtering by string matching must use str(t.get("title") or "") before indexing/lowercasing to avoid TypeError.
+2. **Validator execution CWD:** Organ validation scripts (such as AAA/scripts/validate-aaa.mjs) use relative file paths anchored to repo root (readFile("registries/agents.yaml")). Running them from /root causes ENOENT. Always execute inside the repo tree (cd /root/<repo> && node ...).
+3. **TCP streaming buffer exhaustion (Edge OS-1):** In raw TCP/HTTP bridge ingestors (such as arifFlow/src/main.rs), a single socket read() cannot be assumed to yield the entire payload. Ingestors MUST loop over Content-Length until the full body is buffered, or JSON-RPC payloads truncate under load.
