@@ -58,3 +58,32 @@ test("unrelated changes do not trigger a build; cockpit changes do", () => {
   assert.equal(relevant(["cockpit-pilot/app.js"]), true);
   assert.equal(relevant(["package.json"]), true);
 });
+
+test("ignore-build: no evidence never skips (Vercel no-argv trap fixed)", async () => {
+  const { decide } = await import("../ignore-build.mjs");
+  assert.equal(decide({ argvPaths: [], env: {} }).action, "build");
+  assert.equal(decide({ argvPaths: [], env: {} }).reason, "no-change-evidence");
+});
+
+test("ignore-build: real repo path cockpit/pilot/ is relevant", async () => {
+  const { relevant } = await import("../ignore-build.mjs");
+  assert.equal(relevant(["cockpit/pilot/app.js"]), true);
+  assert.equal(relevant(["cockpit-pilot/app.js"]), true); // legacy prefix kept
+  assert.equal(relevant(["docs/readme.md"]), false);
+});
+
+test("ignore-build: git-diff lane fails safe when git is unavailable", async () => {
+  const { decide } = await import("../ignore-build.mjs");
+  const d = decide({
+    argvPaths: [],
+    env: { VERCEL_GIT_PREVIOUS_SHA: "no-such-sha", VERCEL_GIT_COMMIT_SHA: "also-no-such" },
+  });
+  assert.equal(d.action, "build");
+  assert.equal(d.reason, "git-diff-unavailable");
+});
+
+test("ignore-build: argv lane still skips provably irrelevant changes", async () => {
+  const { decide } = await import("../ignore-build.mjs");
+  assert.equal(decide({ argvPaths: ["docs/x.md"] }).action, "skip");
+  assert.equal(decide({ argvPaths: ["cockpit/pilot/app.js"] }).action, "build");
+});
