@@ -4,7 +4,8 @@ compile_truth_contract.py — P0 Truth Contract Compiler for AAA & arifOS.
 DITEMPA BUKAN DIBERI — Reality > Everything.
 
 Compiles live telemetry from:
-  - /root/AAA/state/federation_state.json (Organ latencies, probe timestamps)
+  - /var/lib/aaa/state/federation_state.json (Organ latencies — live writer,
+    federation-state.timer 30s; legacy mirror /root/AAA/state frozen 2026-10-24)
   - /root/AAA/state/flow_state.json (arifFlow FQ, execute/verify counts)
   - /root/AAA/state/map_atlas_echo.json (Per-actor holds, throttles, diagnoses)
   - /root/AAA/state/status.json (Memory tiers, vault chain status)
@@ -77,11 +78,40 @@ def get_age_seconds(ts_str, now_dt):
     return None
 
 
+# ── Live state resolution (2026-10-26) ──────────────────────────────────
+# The federation-state writer moved to /var/lib/aaa/state/ on 2026-10-24 16:45
+# (federation-state.timer, 30s cadence). The legacy mirror under /root/AAA/state
+# stopped being written and froze at 2026-10-24T05:17Z; reading it made every
+# organ claim a 47h-old probe dressed as live. Pick whichever source carries the
+# newest generated_at, and never let a source older than its TTL read as fresh.
+FED_STATE_CANDIDATES = (
+    "/var/lib/aaa/state/federation_state.json",
+    "/root/AAA/state/federation_state.json",
+)
+
+
+def read_fed_state():
+    best = ({}, None, None)
+    for p in FED_STATE_CANDIDATES:
+        d = read_json(p)
+        if not d:
+            continue
+        ts = parse_iso(d.get("generated_at"))
+        if ts is None:
+            if best[1] is None:
+                best = (d, p, None)
+            continue
+        if best[2] is None or ts > best[2]:
+            best = (d, p, ts)
+    return best[0], best[1]
+
+
 def main():
     now_dt = datetime.now(timezone.utc)
     now_iso = now_dt.isoformat()
 
-    fed_state = read_json("/root/AAA/state/federation_state.json") or {}
+    fed_state, fed_state_path = read_fed_state()
+    fed_state = fed_state or {}
     flow_state = read_json("/root/AAA/state/flow_state.json") or {}
     atlas_echo = read_json("/root/AAA/state/map_atlas_echo.json") or {}
     status_state = read_json("/root/AAA/state/status.json") or {}
@@ -99,9 +129,12 @@ def main():
         "geox": "https://geox.arif-fazil.com/health",
         "wealth": "https://wealth.arif-fazil.com/health",
         "well": "https://well.arif-fazil.com/health",
-        "arifflow": "https://arifos.arif-fazil.com/api/organs/arifflow/health",
-        "fed": "https://arifos.arif-fazil.com/api/organs/fed/health",
-        "chron": "https://arifos.arif-fazil.com/api/organs/chron/health",
+        # 2026-10-26: the /api/organs/<id>/health proxy on arifos returned 404
+        # for all three — a falsifier that 404s cannot falsify anything. Each
+        # organ publishes its own /health (verified 200).
+        "arifflow": "https://arifflow.arif-fazil.com/health",
+        "fed": "https://fed.arif-fazil.com/health",
+        "chron": "https://chron.arif-fazil.com/health",
     }
 
     organ_roles = {
@@ -118,6 +151,9 @@ def main():
 
     reality_strip = []
     organs_alive_count = 0
+    state_age_sec = get_age_seconds(fed_state.get("generated_at"), now_dt)
+    state_ttl_sec = 300
+    state_stale = state_age_sec is not None and state_age_sec > state_ttl_sec
 
     for org in organs_raw:
         oid = org.get("id")
@@ -139,8 +175,11 @@ def main():
                 "epistemic_class": "OBSERVED",
                 "source": f"probe:127.0.0.1:{oid}",
                 "observed_at": fed_state.get("generated_at", now_iso),
-                "freshness_sec": get_age_seconds(fed_state.get("generated_at"), now_dt),
-                "ttl_sec": 300,
+                "freshness_sec": state_age_sec,
+                "ttl_sec": state_ttl_sec,
+                "state_source": fed_state_path,
+                "stale": state_stale,
+                "freshness_verdict": "STALE" if state_stale else "FRESH",
                 "falsifier": {
                     "url": falsifier_url,
                     "method": "GET",
@@ -518,7 +557,14 @@ def main():
             "reality_strip": {
                 "total_organs": len(reality_strip),
                 "organs_alive": organs_alive_count,
-                "overall_status": "UP" if organs_alive_count >= 8 else "DEGRADED",
+                "overall_status": (
+                    "STALE"
+                    if state_stale and organs_alive_count >= 8
+                    else ("UP" if organs_alive_count >= 8 else "DEGRADED")
+                ),
+                "state_source": fed_state_path,
+                "state_age_sec": state_age_sec,
+                "state_ttl_sec": state_ttl_sec,
                 "total_probe_ms": fed_state.get("probe_ms", 936.9),
                 "organs": reality_strip,
             },
@@ -545,9 +591,16 @@ def main():
                 "epistemic_class": "OBSERVED",
                 "value": org["status"],
                 "latency_ms": org["latency_ms"],
-                "state": "MEASURED_PASS" if org["status"] == "REACHABLE" else "MEASURED_FAIL",
+                "state": (
+                    "MEASURED_STALE"
+                    if org.get("stale")
+                    else ("MEASURED_PASS" if org["status"] == "REACHABLE" else "MEASURED_FAIL")
+                ),
                 "source": org["source"],
                 "observed_at": org["observed_at"],
+                "freshness_sec": org.get("freshness_sec"),
+                "ttl_sec": org.get("ttl_sec"),
+                "freshness_verdict": org.get("freshness_verdict"),
                 "falsifier_url": org["falsifier"]["url"],
                 "falsification_condition": org["falsifier"]["condition"],
             }

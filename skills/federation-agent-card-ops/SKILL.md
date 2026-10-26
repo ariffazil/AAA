@@ -6,7 +6,18 @@ tags: [agent-card, identity, registry, aaa, harness, geometry, civ33]
 
 # Federation Agent-Card Ops
 
-The AAA agent-card registry (`/root/AAA/a2a-server/agent-cards/`) is the canonical identity store for every federation agent. `agent-cards/` at the AAA root is **LEGACY** — extensions/functions only. Registry loader: `/root/AAA/a2a-server/agent-card-registry.js` (loaded by `server.js`, served via A2A).
+> **CORRECTION 2026-10-25 (verified against `agent-card-registry.js` + live load):**
+> the canonical identity store is **`/root/AAA/agent-cards/`** (CIV-33 tree). The loader scans
+> three roots in order — `a2a-server/agent-cards/` (legacy, 37 cards) → `agent-cards/` (CIV-33,
+> 19 refreshed) → `agents/` (warga, 35) — and later scans **refresh** same-id entries, so the
+> CIV-33 card wins over the legacy copy. `a2a-server/agent-cards/` is the **legacy scan root**,
+> not the canonical store; the text below that inverts this is retained for audit only.
+> Live evidence: 91 files loaded → 57 unique cards (binding 32 / harness 15 / identity 6 /
+> retired 2 / unclassified 2). Canon: `canon/AGENT-REGISTRY-ALIGNMENT-2026-10-25.md` §4 D2.
+>
+> *Historical text (pre-correction):* "The AAA agent-card registry (`/root/AAA/a2a-server/agent-cards/`) is the canonical identity store for every federation agent. `agent-cards/` at the AAA root is **LEGACY** — extensions/functions only."
+
+Registry loader: `/root/AAA/a2a-server/agent-card-registry.js` (loaded by `server.js`, served via A2A).
 
 ## The 3-layer geometry (ratified 2026-08-09)
 

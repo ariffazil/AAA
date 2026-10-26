@@ -164,7 +164,7 @@ Operational Entropy Proxy
 Consequence Budget
 ```
 
-NOT literal thermodynamic entropy in J/K. It is an **operational policy model**.
+NOT literal thermodynamic entropy in J/K — that label is retired in governance contexts by `arifOS/theory/apex/apex-vocabulary.v1.md`. It is an **operational policy model**: policy drift, state divergence, and coordination cost.
 
 ### Consequence budget as task contract
 

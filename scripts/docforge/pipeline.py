@@ -24,6 +24,7 @@ THE ITEM SOURCE IS INJECTED, NOT HARDCODED
   and it is why the intelligence work can improve without touching the
   rendering, gating, sealing, or dispatch path.
 """
+
 from __future__ import annotations
 
 import json
@@ -33,6 +34,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import dispatch as dispatchmod
+from . import registers as registersmod
 from . import seal as sealmod
 from .state import Store, qdrant_status
 
@@ -51,6 +53,7 @@ def validate_items(items: list[dict]) -> list[str]:
     cycles. All of them at once is one edit.
     """
     from .state import CLAIM_STATES, SECTIONS
+
     problems: list[str] = []
     seen: set[str] = set()
     for i, it in enumerate(items):
@@ -60,13 +63,15 @@ def validate_items(items: list[dict]) -> list[str]:
             continue
         for k in ITEM_REQUIRED:
             if not it.get(k):
-                problems.append(f"{where} ({it.get('item_id','?')}): missing {k!r}")
+                problems.append(f"{where} ({it.get('item_id', '?')}): missing {k!r}")
         iid = it.get("item_id")
         if iid:
             where = f"item {iid!r}"
             if iid in seen:
-                problems.append(f"{where}: duplicate item_id — the delta keys on "
-                                "this, so a collision merges two claims into one")
+                problems.append(
+                    f"{where}: duplicate item_id — the delta keys on "
+                    "this, so a collision merges two claims into one"
+                )
             seen.add(iid)
         sec = it.get("section")
         if sec and sec not in SECTIONS:
@@ -87,29 +92,35 @@ def render_delta_html(delta, prev_edition: str | None) -> str:
     def rows(items, label):
         if not items:
             return ""
-        out = [f"<h3>{label} <span class='small'>({len(items)})</span></h3>",
-               "<table><thead><tr><th>Item</th><th>Section</th>"
-               "<th>Was</th><th>Now</th></tr></thead><tbody>"]
+        out = [
+            f"<h3>{label} <span class='small'>({len(items)})</span></h3>",
+            "<table><thead><tr><th>Item</th><th>Section</th>"
+            "<th>Was</th><th>Now</th></tr></thead><tbody>",
+        ]
         for it in items:
             out.append(
                 f"<tr><td>{it['title']}</td><td>{it['section']}</td>"
-                f"<td>{it.get('was','&mdash;')}</td>"
-                f"<td><strong>{it['claim_state']}</strong></td></tr>")
+                f"<td>{it.get('was', '&mdash;')}</td>"
+                f"<td><strong>{it['claim_state']}</strong></td></tr>"
+            )
         out.append("</tbody></table>")
         return "".join(out)
 
-    head = ("<h2>0 &middot; What Changed Since Yesterday</h2>")
+    head = "<h2>0 &middot; What Changed Since Yesterday</h2>"
     if d["first_edition"]:
         return head + (
             "<div class='box key'><strong>First tracked edition.</strong> There is "
             "no prior state to diff against, so nothing below is a change. From "
             "the next edition onward this section reports only what moved: new "
             "items, state transitions, and anything still unresolved.</div>"
-            + rows(d["new"], "Today's tracked items"))
+            + rows(d["new"], "Today's tracked items")
+        )
 
-    body = [head,
-            f"<p class='small'>Compared against <strong>{prev_edition}</strong>. "
-            f"{delta.headline()}</p>"]
+    body = [
+        head,
+        f"<p class='small'>Compared against <strong>{prev_edition}</strong>. "
+        f"{delta.headline()}</p>",
+    ]
     body.append(rows(d["reopened"], "Reopened (was closed, is live again)"))
     body.append(rows(d["moved"], "Changed state"))
     body.append(rows(d["new"], "New today"))
@@ -119,21 +130,25 @@ def render_delta_html(delta, prev_edition: str | None) -> str:
             "<div class='box warn'><strong>Dropped without resolution "
             f"({c['dropped']})</strong> — these were live yesterday and are absent "
             "today, which is <em>not</em> the same as resolved. They are listed "
-            "rather than silently retired.</div>"
-            + rows(d["dropped"], "Dropped"))
+            "rather than silently retired.</div>" + rows(d["dropped"], "Dropped")
+        )
     if d["still_open"]:
         body.append(
             f"<p class='small'>Carrying over unchanged: <strong>{c['still_open']}</strong> "
-            "item(s). Not repeated in full — see the open-items register.</p>")
+            "item(s). Not repeated in full — see the open-items register.</p>"
+        )
 
     if not any(c[k] for k in ("reopened", "moved", "new", "settled", "dropped")):
-        body.append("<div class='box key'><strong>No state change.</strong> Every "
-                    "tracked claim reads the same as yesterday.</div>")
+        body.append(
+            "<div class='box key'><strong>No state change.</strong> Every "
+            "tracked claim reads the same as yesterday.</div>"
+        )
     return "".join(body)
 
 
 def render_items_html(items: list[dict]) -> str:
     from .state import SECTIONS
+
     order = [s for s in SECTIONS]
     out = []
     for sec in order:
@@ -143,15 +158,21 @@ def render_items_html(items: list[dict]) -> str:
         out.append(f"<h2>{sec.title()}</h2>")
         for it in group:
             cls = {"CONTESTED": "open", "OPEN": "claim", "MOVED": "warn"}.get(
-                it["claim_state"], "key")
+                it["claim_state"], "key"
+            )
             out.append(
                 f"<h3>{it['title']} "
-                f"<span class='tag t-{ 'open' if it['claim_state']=='CONTESTED' else 'doc' }'>"
+                f"<span class='tag t-{'open' if it['claim_state'] == 'CONTESTED' else 'doc'}'>"
                 f"{it['claim_state']}</span></h3>"
                 f"<div class='box {cls}'>{it['summary']}"
-                + (f"<div class='small' style='margin-top:2mm'>Source: "
-                   f"{it['source']}</div>" if it.get("source") else "")
-                + "</div>")
+                + (
+                    f"<div class='small' style='margin-top:2mm'>Source: "
+                    f"{it['source']}</div>"
+                    if it.get("source")
+                    else ""
+                )
+                + "</div>"
+            )
     return "".join(out)
 
 
@@ -168,32 +189,49 @@ def render_rules_html(store) -> str:
     rows = store.active()
     if not rows:
         return ""
-    out = ["<h2>0.1 &middot; Standing Instructions</h2>",
-           "<p class='small'>Derived from your own comments on earlier editions. "
-           "Each shows the words it came from. A rule you no longer want can be "
-           "retired; it is listed here so it cannot operate invisibly.</p>",
-           "<table><thead><tr><th>Instruction</th><th>Standing since</th>"
-           "<th>Editions</th></tr></thead><tbody>"]
+    out = [
+        "<h2>0.3 &middot; Standing Instructions</h2>",
+        "<p class='small'>Derived from your own comments on earlier editions. "
+        "Each shows the words it came from. A rule you no longer want can be "
+        "retired; it is listed here so it cannot operate invisibly.</p>",
+        "<table><thead><tr><th>Instruction</th><th>Standing since</th>"
+        "<th>Editions</th></tr></thead><tbody>",
+    ]
     for r in rows:
-        out.append(f"<tr><td><strong>{r['rule']}</strong><br>"
-                   f"<span class='small'>heard as: &ldquo;{r['raw_text']}&rdquo;</span>"
-                   f"</td><td>{r['created_at'][:10]}</td>"
-                   f"<td>{r['applied_count']}</td></tr>")
+        out.append(
+            f"<tr><td><strong>{r['rule']}</strong><br>"
+            f"<span class='small'>heard as: &ldquo;{r['raw_text']}&rdquo;</span>"
+            f"</td><td>{r['created_at'][:10]}</td>"
+            f"<td>{r['applied_count']}</td></tr>"
+        )
     out.append("</tbody></table>")
     return "".join(out)
 
 
-def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
-        theme: str = "light", title: str = "Executive Brief", subtitle: str = "",
-        run_dir: Path, db: Path | None = None, target: str | None = None,
-        dry_run: bool = False) -> dict:
+def run(
+    items_path: Path,
+    *,
+    edition: str,
+    date: str,
+    template: str = "base-a4",
+    theme: str = "light",
+    title: str = "Executive Brief",
+    subtitle: str = "",
+    run_dir: Path,
+    db: Path | None = None,
+    target: str | None = None,
+    dry_run: bool = False,
+) -> dict:
     """Execute one edition. Returns a receipt describing each stage's real outcome."""
     from . import cli as climod
     from .state import DEFAULT_DB
 
     receipt: dict = {
-        "edition": edition, "date": date, "built_at": sealmod.utc_now(),
-        "stages": {}, "ok": False,
+        "edition": edition,
+        "date": date,
+        "built_at": sealmod.utc_now(),
+        "stages": {},
+        "ok": False,
     }
     run_dir = Path(run_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -201,9 +239,13 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
     # 1. items
     raw = json.loads(Path(items_path).read_text())
     items = raw["items"] if isinstance(raw, dict) else raw
+    declared = raw if isinstance(raw, dict) else {}
     problems = validate_items(items)
     receipt["stages"]["validate"] = {
-        "ok": not problems, "item_count": len(items), "problems": problems}
+        "ok": not problems,
+        "item_count": len(items),
+        "problems": problems,
+    }
     if problems:
         receipt["error"] = "schema violation"
         return receipt
@@ -211,47 +253,94 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
     # 2. state + delta (BEFORE compose, so the document contains the comparison)
     store = Store(db or DEFAULT_DB)
     prev_edition = store._prev_edition(edition)
-    store.record_edition(edition, date, items,
-                         payload={"source_file": str(items_path)})
+    store.record_edition(edition, date, items, payload={"source_file": str(items_path)})
     delta = store.delta(edition)
     ok_q, why_q = qdrant_status()
     receipt["stages"]["state"] = {
-        "ok": True, "prev_edition": prev_edition,
-        "delta": delta.as_dict()["counts"], "headline": delta.headline(),
+        "ok": True,
+        "prev_edition": prev_edition,
+        "delta": delta.as_dict()["counts"],
+        "headline": delta.headline(),
         "semantic_mirror": {"available": ok_q, "detail": why_q},
         "open_items": len(store.open_items()),
     }
 
+    # 2b. registers — the permanent layer (scar / contradiction / state / reality).
+    # A malformed declaration is reported, not swallowed: the edition still ships,
+    # with the defect printed inside it, because a missing morning brief is a
+    # larger harm than a register that says it failed.
+    reg_payload = {
+        k: declared.get(k) for k in ("states", "contradictions", "scars", "realities")
+    }
+    reg_payload["_items"] = items
+    register_error = ""
+    try:
+        reg_counts = registersmod.record_registers(store, reg_payload, edition, date)
+    except (ValueError, TypeError) as exc:
+        reg_counts = {}
+        register_error = f"{type(exc).__name__}: {exc}"
+    receipt["stages"]["registers"] = {
+        "ok": not register_error,
+        "counts": reg_counts,
+        "error": register_error,
+        "entropy": registersmod.entropy(store, edition, delta),
+    }
+
     # 3. compose body: delta first, then standing instructions, then the register
     from .feedback import FeedbackStore
+
     fb = FeedbackStore(db or DEFAULT_DB)
     rules_path = fb.export_rules(run_dir / "brief-rules.md", edition_key=edition)
     receipt["stages"]["feedback"] = {
-        "ok": True, "standing_rules": len(fb.active()),
+        "ok": True,
+        "standing_rules": len(fb.active()),
         "rules_file": str(rules_path),
     }
     # No hard page-break between the front matter and the register. A forced
     # break after a short Standing Instructions block leaves a near-empty page
     # on its own, which the ink_present gate correctly refuses as an orphan
     # (EDITION-008 refusal, 2026-09-23). Let content flow decide the break.
-    body = (render_delta_html(delta, prev_edition)
-            + render_rules_html(fb)
-            + render_items_html(items))
+    body = (
+        render_delta_html(delta, prev_edition)
+        + (
+            (
+                "<div class='box warn'><strong>Register declaration rejected.</strong> "
+                f"{register_error}. The registers below are the last accepted state; "
+                "nothing was silently closed.</div>"
+            )
+            if register_error
+            else ""
+        )
+        + registersmod.render_registers_html(store, edition)
+        + registersmod.render_entropy_html(store, edition, delta)
+        + render_rules_html(fb)
+        + render_items_html(items)
+    )
     src = run_dir / "content.html"
     src.write_text(body)
 
     # 4. build (compose -> render -> gates -> seal)
     spec = {
-        "edition": edition, "edition_date": date, "title": title,
+        "edition": edition,
+        "edition_date": date,
+        "title": title,
         "subtitle": subtitle or f"Delta tracked edition · {delta.headline()}",
-        "template": template, "theme": theme, "source": str(src),
+        "template": template,
+        "theme": theme,
+        "source": str(src),
         "run_dir": str(run_dir),
-        "gates": {"profile": "print-light", "forbid_paths": True,
-                  "cover_orphan_exempt": True},
+        "gates": {
+            "profile": "print-light",
+            "forbid_paths": True,
+            "cover_orphan_exempt": True,
+        },
         "stats": {
-            "new": len(delta.new), "moved": len(delta.moved),
-            "reopened": len(delta.reopened), "still_open": len(delta.still_open),
-            "settled": len(delta.settled), "dropped": len(delta.dropped),
+            "new": len(delta.new),
+            "moved": len(delta.moved),
+            "reopened": len(delta.reopened),
+            "still_open": len(delta.still_open),
+            "settled": len(delta.settled),
+            "dropped": len(delta.dropped),
             "items_total": len(items),
         },
     }
@@ -260,7 +349,9 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
     rc = climod.main(["build", str(spec_path)])
     receipt["stages"]["build"] = {"ok": rc == 0, "exit": rc, "spec": str(spec_path)}
     if rc != 0:
-        receipt["error"] = "gate chain refused the artifact — state was recorded, no seal"
+        receipt["error"] = (
+            "gate chain refused the artifact — state was recorded, no seal"
+        )
         # NOTE: state was recorded above. That is deliberate and stated: the items
         # are real intelligence regardless of whether the rendering succeeded, and
         # losing them would force the next run to re-gather. The SEAL did not
@@ -271,7 +362,9 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
     sidecar = run_dir / f"{edition}.sha256"
     led = json.loads((run_dir / f"{edition}.ledger.json").read_text())
     receipt["stages"]["seal"] = {
-        "ok": True, "artifact": str(artifact), "sidecar": str(sidecar),
+        "ok": True,
+        "artifact": str(artifact),
+        "sidecar": str(sidecar),
         "artifact_sha256": led["artifact_sha256"],
         "content_sha256": led["content_sha256"],
         "gates_all_pass": led["gates_all_pass"],
@@ -280,6 +373,7 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
     # 5. semantic mirror (best effort, never blocks)
     try:
         from .state import mirror_to_qdrant
+
         ok_m, why_m = mirror_to_qdrant(edition, body, {"date": date})
     except Exception as exc:  # noqa: BLE001
         ok_m, why_m = False, f"mirror error: {exc}"
@@ -288,17 +382,24 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
     # 6. dispatch
     if dry_run or not target:
         receipt["stages"]["dispatch"] = {
-            "state": "PRODUCED", "literal": True,
-            "detail": ("dry run — artifact sealed on disk, nothing pushed. "
-                       "Set target to actually send."),
+            "state": "PRODUCED",
+            "literal": True,
+            "detail": (
+                "dry run — artifact sealed on disk, nothing pushed. "
+                "Set target to actually send."
+            ),
             "artifact": str(artifact),
         }
     else:
         d = dispatchmod.send(
-            artifact, target,
-            caption=(f"*{title}* · {edition} · {date}\n{delta.headline()}\n"
-                     f"Seal {led['artifact_sha256'][:16]}…"),
-            sidecar=sidecar)
+            artifact,
+            target,
+            caption=(
+                f"*{title}* · {edition} · {date}\n{delta.headline()}\n"
+                f"Seal {led['artifact_sha256'][:16]}…"
+            ),
+            sidecar=sidecar,
+        )
         receipt["stages"]["dispatch"] = d.as_dict()
         receipt["ok"] = d.state == "SENT"
 
@@ -310,6 +411,7 @@ def run(items_path: Path, *, edition: str, date: str, template: str = "base-a4",
 
 def main(argv=None) -> int:
     import argparse
+
     ap = argparse.ArgumentParser(prog="docforge.pipeline")
     ap.add_argument("items", help="JSON file: {items:[...]} or a bare list")
     ap.add_argument("--edition", required=True)
@@ -320,16 +422,25 @@ def main(argv=None) -> int:
     ap.add_argument("--theme", default="light")
     ap.add_argument("--run-dir", required=True)
     ap.add_argument("--db", default=None)
-    ap.add_argument("--target", default=None,
-                    help="delivery target, e.g. telegram:8410138119")
+    ap.add_argument(
+        "--target", default=None, help="delivery target, e.g. telegram:8410138119"
+    )
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
 
-    receipt = run(Path(a.items), edition=a.edition, date=a.date, template=a.template,
-                  theme=a.theme, title=a.title, subtitle=a.subtitle,
-                  run_dir=Path(a.run_dir),
-                  db=Path(a.db) if a.db else None, target=a.target,
-                  dry_run=a.dry_run)
+    receipt = run(
+        Path(a.items),
+        edition=a.edition,
+        date=a.date,
+        template=a.template,
+        theme=a.theme,
+        title=a.title,
+        subtitle=a.subtitle,
+        run_dir=Path(a.run_dir),
+        db=Path(a.db) if a.db else None,
+        target=a.target,
+        dry_run=a.dry_run,
+    )
     print(json.dumps(receipt, indent=2))
     return 0 if receipt.get("ok") else 1
 

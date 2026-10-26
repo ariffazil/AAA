@@ -1,6 +1,6 @@
 ---
 agent: hermes-asi
-canonical: skills/APEX-act/SKILL.md
+canonical: skills/arifos-act/SKILL.md
 name: APEX ACT — Constitutional Reflex (Hermes ASI)
 skill_id: apex-act-hermes
 description: "Hermes ASI adapter for the APEX ACT reflex arc."
@@ -56,7 +56,7 @@ When the ACT produces an artifact (image, audio, PDF, diagram):
 
 Always reference the canonical AT LEAST once in every ACT output:
 ```
-Canonical path: skills/APEX-act/SKILL.md
+Canonical path: skills/arifos-act/SKILL.md
 ```
 
 ---

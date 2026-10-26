@@ -5,28 +5,28 @@
  "single_writer": true,
  "do_not_hand_edit": true,
  "summary": {
-  "total_entries": 1305,
-  "skills": 1138,
-  "namespaces": 167,
-  "bodies": 1116,
+  "total_entries": 1319,
+  "skills": 1151,
+  "namespaces": 168,
+  "bodies": 1129,
   "projections": 22,
-  "alias_paths": 118,
+  "alias_paths": 119,
   "max_skill_depth": 4,
   "skills_by_depth": {
-   "0": 676,
-   "1": 282,
-   "2": 16,
+   "0": 683,
+   "1": 285,
+   "2": 18,
    "3": 1,
-   "4": 163
+   "4": 164
   },
   "namespaces_by_depth": {
    "0": 70,
-   "1": 27,
+   "1": 28,
    "2": 11,
    "3": 59
   },
-  "with_owner": 405,
-  "with_risk_tier": 367
+  "with_owner": 408,
+  "with_risk_tier": 369
  },
  "harnesses": [
   "claude",
@@ -69,6 +69,17 @@
    "depth": 0,
    "namespace": null,
    "contains": 4,
+   "owner_layer": null,
+   "sha256": null
+  },
+  {
+   "name": "adapters",
+   "path": "/root/AAA/skills/arifos-act/adapters",
+   "kind": "namespace",
+   "state": "namespace",
+   "depth": 1,
+   "namespace": "arifos-act",
+   "contains": 2,
    "owner_layer": null,
    "sha256": null
   },
@@ -343,7 +354,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 164,
+   "contains": 165,
    "owner_layer": null,
    "sha256": null
   },
@@ -1025,7 +1036,7 @@
    "state": "namespace",
    "depth": 1,
    "namespace": "domains",
-   "contains": 7,
+   "contains": 8,
    "owner_layer": null,
    "sha256": null
   },
@@ -1036,7 +1047,7 @@
    "state": "namespace",
    "depth": 2,
    "namespace": "domains",
-   "contains": 7,
+   "contains": 8,
    "owner_layer": null,
    "sha256": null
   },
@@ -1069,7 +1080,7 @@
    "state": "namespace",
    "depth": 3,
    "namespace": "domains",
-   "contains": 2,
+   "contains": 3,
    "owner_layer": null,
    "sha256": null
   },
@@ -1234,7 +1245,7 @@
    "state": "namespace",
    "depth": 0,
    "namespace": null,
-   "contains": 11,
+   "contains": 16,
    "owner_layer": null,
    "sha256": null
   },
@@ -1884,7 +1895,40 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c0e20ff8914078b25acc9d745cc113305e1b60468c10930a1909246247f15ee8",
+   "sha256": "1c5dc1ec42e0061a77214fd253491293c97a8c7499a0bd400658600289875a35",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "111-tengok",
+   "path": "/root/AAA/skills/111-tengok",
+   "skill_md": "/root/AAA/skills/111-tengok/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "42d755e5f411102af2555ae6c35871ed0b3b73b7a551a8bde00cb951df7143a6",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -1905,14 +1949,42 @@
    ]
   },
   {
-   "name": "111-tengok",
-   "path": "/root/AAA/skills/111-tengok",
-   "skill_md": "/root/AAA/skills/111-tengok/SKILL.md",
+   "name": "222-reka",
+   "path": "/root/AAA/skills/222-reka",
+   "skill_md": "/root/AAA/skills/222-reka/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a2d929eadb2a6e50dc76ea9e6d5aceb2d326cf9c94b98d94660d3d1d70523248",
+   "sha256": "0cc2244748be88bf23da93771c878d6b20c8716e037269fbc4e3dba16d7a8db8",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "333-fikir",
+   "path": "/root/AAA/skills/333-fikir",
+   "skill_md": "/root/AAA/skills/333-fikir/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "6074fa56352d3b790a5dab256b40161461e864c137b9cf21ab2f89c150694b0d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -1940,7 +2012,35 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "90ad85f0937ea4ed28e3c91f0f13b5b2990b59837063a4a4399bc07a381e0eac",
+   "sha256": "0fd9fe22cc8a3ba1ef1015d4519dc60bc628b0b705c740e91b89d42ba2bc71f1",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "444-arah",
+   "path": "/root/AAA/skills/444-arah",
+   "skill_md": "/root/AAA/skills/444-arah/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "d78dc8eaf02d6bf4567ff90702d3fc0dcf2435038c5d35cd855a324e8d5e2a6c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -1968,7 +2068,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4f8cc15f13700ffba636da0c98e715862a252c287154032eda5c7454641ac616",
+   "sha256": "0419920b1bb322eceeae04088246d4d9d980c94232d92bc0a97e0092d6b70c9e",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -1996,7 +2096,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1ff74c7da28dfca000c81ff0a119b0bcc3885b0fd61cfe24d6d8bef76d2ddd90",
+   "sha256": "4936725103fb413c53aa443b20b5ecc7554c8b231f90d8af9695abe5d102335c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -2024,7 +2124,35 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f2dc87d6d0fe83e9531abb10e3659c51019416f652f552d3ada09e150b0d57ab",
+   "sha256": "c1b2f4613243e1d6a8226cca368bff86bd438f978b9c4636959d47862ed7348a",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "777-forge",
+   "path": "/root/AAA/skills/777-forge",
+   "skill_md": "/root/AAA/skills/777-forge/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "41f99db203d032bb204fba8f37965ba1f50249c37da833e9e1140352b86e0d18",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -2052,7 +2180,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "34ad58cb5fd24957157e2017099f2edbc5295843eb9b0f377b508b238243bf16",
+   "sha256": "8bb507cf3647482ee739037339971a8105a9d4b4c1f7103b5781686fe06bed65",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -2080,7 +2208,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d41ac1c79fd19f46476e32f69f563ff3f810bd6cc33eacc1077b32876054a7c9",
+   "sha256": "1c62abf30edd763beed879f66a545425c7336521cc86c81525a08dc1f88dd07f",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -2179,8 +2307,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f509955064923822656e7bd904633dfdf941f1bac300c57463569e5d42de4392",
-   "version": "1.0.0",
+   "sha256": "fbc822f0f338f21d7b1c3364bf86aae4af240310d9027d8aeaeef0f2186021ed",
+   "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "AAA",
    "aliases": [
@@ -2724,43 +2852,6 @@
    ]
   },
   {
-   "name": "drift-watch-asi",
-   "path": "/root/AAA/skills/ASI-drift-watch",
-   "skill_md": "/root/AAA/skills/ASI-drift-watch/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "d4a22efae7798bc78d6673528f4a8d891a0c94c562d2b7aee88acd2193b57c36",
-   "version": "1.1.0",
-   "deprecated": false,
-   "owner_layer": "555-ASI",
-   "aliases": [
-    "/root/AAA/skills/domains/forge/drift-watch",
-    "/root/AAA/skills/domains/forge/drift-watch.DEPRECATED-2026-09-19"
-   ],
-   "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T0",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F7",
-     "F11"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "ASI-fabrication-prevention",
    "path": "/root/AAA/skills/ASI-fabrication-prevention",
    "skill_md": "/root/AAA/skills/ASI-fabrication-prevention/SKILL.md",
@@ -2834,20 +2925,20 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "fc022e3b4d95132ab9b91a94e560f89d242a92a9465e6e70e82524bb11b930fb",
-   "version": "2026.08.14.2",
+   "sha256": "e7b4e21e9b9941b8cd863d698bbc2d3d61914f245cb3c1df0f0c75a45d9525e4",
+   "version": null,
    "deprecated": false,
-   "owner_layer": "F13 SOVEREIGN (Arif) \u2014 forged by 333-AGI",
+   "owner_layer": null,
    "aliases": [],
    "authority": {
-    "risk_tier": "low",
-    "autonomy_tier": "T0",
+    "risk_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
     "floor_scope": [
-     "F02",
-     "F04",
-     "F07",
-     "F11"
+     "F2",
+     "F4",
+     "F9",
+     "F12"
     ]
    },
    "harnesses": [
@@ -2900,56 +2991,16 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3d817b46d09c9a4ed0788a9f7b55f929135aa4560f1b05033438b472834e4f37",
-   "version": "1.0.0-2026.07.17",
+   "sha256": "fd20e42797541a555b793da66fab073ca9a3feb3c96438371099e755b27fad41",
+   "version": "0.0.1",
    "deprecated": false,
-   "owner_layer": "A-FORGE",
+   "owner_layer": null,
    "aliases": [],
    "authority": {
-    "risk_tier": "high",
-    "autonomy_tier": "T2",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11",
-     "F12",
-     "F13"
-    ]
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "FORGE-cross-repo-doc-zen",
-   "path": "/root/AAA/skills/FORGE-cross-repo-doc-zen",
-   "skill_md": "/root/AAA/skills/FORGE-cross-repo-doc-zen/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "e05351f681067b6a839ee31a6c2d73cffda74547eadc47389a4f6ea390ce3e43",
-   "version": "2026.09.18",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T2",
+    "risk_tier": null,
+    "autonomy_tier": null,
     "capability_tier": null,
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F4",
-     "F11"
-    ]
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -3033,20 +3084,20 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c165113703a97f4071865450813538f2faa3c371069b41b4e4d1cb17c6f6d7dd",
-   "version": "1.2.0",
+   "sha256": "1120cf3ddd223b890bab994a257afa33bb125855c51653cc24e60ca6602bedaf",
+   "version": null,
    "deprecated": false,
-   "owner_layer": "A-FORGE",
+   "owner_layer": null,
    "aliases": [],
    "authority": {
-    "risk_tier": "low",
+    "risk_tier": null,
     "autonomy_tier": "T1",
     "capability_tier": null,
     "floor_scope": [
-     "F1",
      "F2",
      "F4",
-     "F7"
+     "F9",
+     "F12"
     ]
    },
    "harnesses": [
@@ -3781,16 +3832,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e7d555acdcf3cd30667f3784ae9f8fbace917fc919c19cf750a4023f52a9dfad",
-   "version": null,
+   "sha256": "2089407b09cc3ea8af3339ebaeabf3d7b3bc5ff445a1481a729c5eccc7f2e3fd",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -3809,16 +3865,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "5b71ddb84f78cfaaf749353e38cc30c3a71e33a44bc6e722635c45d99df1d105",
+   "sha256": "31c7ae02adfce5cb03771ee1c78604727359cd3c67396ae78bf90b4071219686",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -3837,7 +3898,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a7a4307b414604c9ab707e2e9faeadced65888149a3e182e9430a00f678129b0",
+   "sha256": "2c4ddd44bd096751f97b2508a05eda85e981a9cfe47b7cc8c665e485953e6cb2",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -3893,16 +3954,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0f02576b987385805463558099a45b9193206468e3f1871ab47711adc8edfbfb",
+   "sha256": "93e53dce3d0973f312093a470ef2db4f078c6f4b7c619b3d0fe3d5ba100c9b67",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -4009,16 +4075,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "807d8acb26e99f768c8e28d5514ca00c99851cb128034ec8a67996e04a789c2b",
+   "sha256": "c96ffd55a3cf14b8cca3b020997a4ce6eb8341586bb2fe728d2480f48c48a296",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -4360,16 +4431,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "63232721e38702f8c781d51df6a9e9b547de3050b5d88276974eca5aaa800d74",
+   "sha256": "af09d221212edd13891cdbcb29c89c48aa3b4b9d3d02212ff8fd633179e03599",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -4416,7 +4492,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "16163733a3380f105f34be1cdc5726a58b3240671c90b8cb7ff41f10513643ac",
+   "sha256": "7ca1ee9ea84e151689393212f752569bfa31377d285cd0c574c993c638471080",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -4444,7 +4520,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3af3cda23a2422c5a48553ad6385a1f748610eb5721fb004d0e2cc83355dab12",
+   "sha256": "348481878655930a8941439065ad77d79a99c57d39d57c4c7d150e4417f76281",
    "version": "1.2.0",
    "deprecated": false,
    "owner_layer": null,
@@ -4472,16 +4548,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b47ef467d6ba21f59c68a880679e6dd3f52d4cc09f3f13262703b23a12080ba6",
+   "sha256": "fefc1d5686e3a04eeb8b291aa86885066dd5758bec18e8beaf196e525ff23db6",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "curator",
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -4635,6 +4716,34 @@
    "namespace": null,
    "sha256": "5499bb4cb8e90fe4bc166a2d0137d8e763f3d40a13104c7603c0347a1150cb1b",
    "version": "2026-08-08-v1",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "agentic-review-gate",
+   "path": "/root/AAA/skills/agentic-review-gate",
+   "skill_md": "/root/AAA/skills/agentic-review-gate/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "2e1db6d595e26f93a378813570d2beb5371de966e406ae30a33adaf16ac4560b",
+   "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -4947,7 +5056,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0718824cac02f150b8d3bcdc114c2e1d279752298dcc4d29baba932a2f207981",
+   "sha256": "52e3f7e3d35fb52dd3f7a5b964a08b6ce3a52ce50cb362a9e2b95cf5c6b0d46c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -5003,16 +5112,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "405d56890b445c772ff5d2d5a05f0ae852588a0890241e616dd8c96172a289dd",
+   "sha256": "b2d91f372fa9f88743def2b02b8a2e7a2496e66dd34855ba8fba8f34381d893d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -5205,7 +5319,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "610d0f947903ae8faef5f1acf9ea07f407ef150b301a7d603180a83e1028cdd2",
+   "sha256": "604705e73220fbb8b6cf30a0396cdf35a83d5de6bac7993701120300bd60f1be",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -5401,43 +5515,15 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ca5c92b11c3b0181cae28a779a5e21ebc648628a9503a9aece36ec4aafe4567d",
-   "version": null,
+   "sha256": "897d0b84dcc98883daec48ea8cdc956abc71f15d43038c4954b6fcb87df358d1",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
-   "name": "arifOS ACT \u2014 Constitutional Reflex",
-   "path": "/root/AAA/skills/apex_verdict_hold/claude",
-   "skill_md": "/root/AAA/skills/apex_verdict_hold/claude/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "apex_verdict_hold",
-   "sha256": "d930edfbc95454aa3f2b3349659c21047cf481b00d801cabb87e46e9f2cf6320",
-   "version": "3.0.0",
-   "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [],
-   "authority": {
-    "risk_tier": "critical",
-    "autonomy_tier": null,
-    "capability_tier": "fed-reasoning-heavy",
+    "autonomy_tier": "T1",
+    "capability_tier": null,
     "floor_scope": [
      "F1",
      "F2",
@@ -5458,36 +5544,6 @@
    ]
   },
   {
-   "name": "APEX ACT \u2014 Constitutional Reflex (Hermes ASI)",
-   "path": "/root/AAA/skills/apex_verdict_hold/hermes",
-   "skill_md": "/root/AAA/skills/apex_verdict_hold/hermes/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 1,
-   "namespace": "apex_verdict_hold",
-   "sha256": "a00751a6b86612e3bd83f30294f85fd32d749efe499078c46a8c10265b2260f6",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [
-    "/root/AAA/skills/apex_verdict_seal/hermes"
-   ],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "apex_verdict_seal",
    "path": "/root/AAA/skills/apex_verdict_seal",
    "skill_md": "/root/AAA/skills/apex_verdict_seal/SKILL.md",
@@ -5495,16 +5551,24 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6bfbb6b829c40af0c4823340e35c3232504224890fe1a440cb191733bcb1ce5d",
-   "version": null,
+   "sha256": "fd281f1560f2e7cabd9f350936cbd14706129f6f952ba38e57b3e342962a7ff8",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "autonomy_tier": "T1",
+    "capability_tier": null,
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F7",
+     "F9",
+     "F11",
+     "F13"
+    ]
    },
    "harnesses": [
     "claude",
@@ -5635,7 +5699,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c8667f7c8fc8e3ca98d01003e0652c0617dfa8b75c3e7261a4451421df4ef4ed",
+   "sha256": "d551dcb75619d3924c501ceaf699f08ba412a6c367e482d32ab8c37613d84eb7",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -5719,8 +5783,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "463f28ee8f314e1d18fe3db3e3ae19e0cf6d413823cd0abd49a87dff0187203d",
-   "version": null,
+   "sha256": "a8bc5beb31aadcbecb1d4fe99ef5004420bd3a30f4ba78022e726a3e423be660",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -5831,8 +5895,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "09a7c8f8800bcf02373ddaa006380aa3e55b89cf3be4f97e76cd9f6e33f057c0",
-   "version": null,
+   "sha256": "9722fd5d3fd505b29ae384db926a7c4a656083d80b73e9c3a9e5f84dfdb76369",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -5913,6 +5977,90 @@
    ]
   },
   {
+   "name": "arifos-act",
+   "path": "/root/AAA/skills/arifos-act",
+   "skill_md": "/root/AAA/skills/arifos-act/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "cdb9065bee8d0734677785d80f2ff05e75f72bbd9bb8cb75e301cc08186ff90d",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "arifOS ACT \u2014 Constitutional Reflex (Claude Code adapter)",
+   "path": "/root/AAA/skills/arifos-act/adapters/claude",
+   "skill_md": "/root/AAA/skills/arifos-act/adapters/claude/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 2,
+   "namespace": "arifos-act",
+   "sha256": "a80a64326751ba2fc9bb6af87aa102068e57fcee6d0f6773c35afb53eba9677e",
+   "version": "3.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": "critical",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "APEX ACT \u2014 Constitutional Reflex (Hermes ASI)",
+   "path": "/root/AAA/skills/arifos-act/adapters/hermes",
+   "skill_md": "/root/AAA/skills/arifos-act/adapters/hermes/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 2,
+   "namespace": "arifos-act",
+   "sha256": "6a35a090a470efd108a6a1906bc369880a4ab572b58148c864dfba35c7b334f5",
+   "version": null,
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "arifos-cognitive-atlas",
    "path": "/root/AAA/skills/arifos-cognitive-atlas",
    "skill_md": "/root/AAA/skills/arifos-cognitive-atlas/SKILL.md",
@@ -5950,7 +6098,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3650d7cf3cfe5c2557b6a920d43b087f87978c08afd1682fe12078434b2e1fe4",
+   "sha256": "de59df3038e9b52d6401d052aafb692d7a33bcae3f4670291db0a6dd2c6a45b5",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -6046,7 +6194,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7956f3c9e979dea549460a03c035fa67504508ff6592dc06110c862322142828",
+   "sha256": "62dc78e50c4e9ef356409731908a69f1e4e32621254d74ac4528d2c3129b39d0",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -6193,7 +6341,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b9dd35722c640e24d28b88966d07627035bcae1705d36000f30ddbcec2016a89",
+   "sha256": "85f4fc71c95dab495d00501f4640d74ad31976367d91e95edeea39179e472d3a",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -6221,7 +6369,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "16cd69b1f37886ea5a0c5c28485c267c7661feaa0f2399495df815adabcbbc64",
+   "sha256": "6c74bcf20002a9f3bed3e1f620d3f648790aa3efe3ab82d4d66d4cb827361014",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -6279,7 +6427,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b6fb9fc94a4156f644ee0233fd200185cebe0a8db3b1170c176668d167f7621e",
+   "sha256": "b3e82990f29ce77bcf1df8fedaed4a2768269898e431b1f25aff84446de8f480",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -6340,16 +6488,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a9b4d24f3cc800cc954a5ebb348281ce4553aec0788d6774aad84fd84171bd5e",
+   "sha256": "cd9aa9b1333bd9e61a06984d68d0b464ec1ac13f5b997253ed6eaaf2e929d057",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -6396,7 +6549,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2d72e45e2f12cd583fdacab59cd18a4aa6c309aef355fa1f92d01652354b95f4",
+   "sha256": "a62c22edb868889932129bfc810b12a11046c6ffa1b80d5cca2bd9bf594ab2d3",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -6515,16 +6668,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "20d2c4236c2811ee0b6239ebd363690c0e40d3c8b4b43ceb3598143529356ec0",
+   "sha256": "b20705f400e4d976c6ff3d9c236707f9b2ba3fbf0eead8c46df0cf316b01b412",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "HERMES",
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -6655,16 +6813,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "65ab9d6f138f433d14e9fa0a62a7c7d3900d40d2089cbfdbe808b3b0fe350559",
+   "sha256": "c8aeaf4449b759a9b18e02968e7014d083568a32fd917de411df6102c801dcb0",
    "version": "0.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -6716,7 +6879,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "175b2edd791f6f475e5354dda481d74f2f44cefb416e0bbbdc2c36a2324ccffb",
+   "sha256": "c5c3a23676faa52a3d6c582292f8ef31df1e6d6e90530ba7b1154e3113b850db",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -6776,7 +6939,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "audit",
-   "sha256": "2f8b86789b7ae9e670b251499b15acce1b4ed4e0bdb12dba29467e124876fc51",
+   "sha256": "77d2a4040abeca6d7d6aec6a70fd398115a125156d033c18ed08114aef9c639c",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN (Arif) \u2014 forged by AAA",
@@ -6814,7 +6977,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "audit",
-   "sha256": "7162c7876138a8f06541fc45eeb609211e9864ed88d11cd19f8328ec87550331",
+   "sha256": "72cedf0294d2504149fec913a7ff8b11780df221ebf3b40b9ebd638c8abe06d4",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
@@ -7025,7 +7188,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "audit",
-   "sha256": "889ea7b19c4b5d2068bf30dc3da4858241e1aa4cf6c368150e99eb9bf3b9359b",
+   "sha256": "51d93534395776fb3ce3e35c4ccd394947ef1de5d87bb365ebafab0bf4ee406b",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "Hermes (arifOS federation)",
@@ -7117,16 +7280,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cf9a8f49971a490221fbc24516afcf2adcfb340f72587d5a51ed5d207045206a",
+   "sha256": "dedb43a2a4c5edf255075de4bbb6ed63e6956e0697628b9d9e04337dbe7ff386",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7275,7 +7443,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "5730c518e227f1621b65f1e3710109034026770794a89bc8d44e6586f225a648",
+   "sha256": "1350d74de8f6ff4234b173593c66991e2e08885db75879a6a619e54796cc8b98",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -7303,16 +7471,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9cc0578f84cb31a72a71caf6a32efde3cd06d270ad5f819d4b3ce3aff8345cf6",
+   "sha256": "719689824caa744685e401961dbbf870d7ed400cbb16cb4c859763285ef95f9a",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7331,16 +7504,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "66fe7ad24bd3cfa047decfe1998950c431b3daeb2670659aa7712fd3ca696f0b",
+   "sha256": "c007ba5589732c6db77122cdf1a9017b2e5f0ff5102eddfd92066ed0a425c9b5",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7359,16 +7537,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "15ec04962e4fcb277c85be02b600697025d1b8b70ff0844404cb095d3858fb4d",
+   "sha256": "43e42fbff94eafb51fac8e15fbff6d7560736a3d51336e09601a90802d0fe51c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7419,16 +7602,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d9e2190bb786085facf6191190c02a9c066d2f60de4e03a878ac2617d42aa03d",
+   "sha256": "caf5bd5dbaffecc1f0b7fe317b1b40d23933d1f5385161b3cb46bb2b6f3048f0",
    "version": "0.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7481,16 +7669,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8492b8d63ef473869aba634ba50964a627cc820edf631800d85cd44972e088e3",
+   "sha256": "85eb1ad846f3864b9b0b5e70170a0fe7640b3205a8ad9cb615616c40017118b3",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "Hermes",
    "aliases": [],
    "authority": {
     "risk_tier": "low",
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7509,16 +7702,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8e04458640358eaa3692292f975ef7aececde07926c0f949db663a401adb6938",
+   "sha256": "a57af11385a3e2fbadf9691947d5e16530b9fb9d0810aa3026963e99c6f31bbf",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7537,16 +7735,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "845d4d03c58682b47e99938af5b362562f604f823bdccda79046f263f3c5fc8f",
+   "sha256": "d11a707b5d40e2c17c05018b72b5b7a9ce233da9c927468c375d4027c45c64d2",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7565,16 +7768,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "42e3ad041403210e02dc2436224741980a67e4320ab40c98f6ef17f0b94c1235",
+   "sha256": "45d526e5c3ccc506c4ecc553262ec8174c8b5dfe735e4f1ebba0bee4ba9dd80b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7621,16 +7829,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f94ba6ebf6972875de44aea0bac549e5612385be40560f383cfea07ca19c4527",
+   "sha256": "a31d4463e7d40941d3e74080c7acf05d930327a83eb4426d0f0086624e9a7342",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7677,16 +7890,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7c3fadfcecef1776b050671d20fb1aad260d88d5945b0308b958a6496418a7f4",
+   "sha256": "beca8664756117f5052dd7a278509383748d61a5a3f4e982fdd03707581e7791",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7801,16 +8019,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2e163cfbb1b76d5fb64d6167d316ccdb544b06b2767530d7faebaecad98e8ab6",
+   "sha256": "a5781f1cc4896ae20354efd264a55f6c013eb0965dee45e0906f349c368da69b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7889,16 +8112,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b1c430ee569f4fbdf40ad7fef16736adbd1cc05bcfa2287b557c5afb1881cc80",
+   "sha256": "18f49aea0421703263c489846f7bd64b6243fa9691177026aed9043d015fa502",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7917,16 +8145,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c3a13a659ce26e9d067b5a97c321e8abec6d8e878afce31b7e841dfcf2635c3a",
+   "sha256": "57c4c0539d77ca84aebda8efe05b1c84f58a9c70a32e829e5246017c290398c3",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -7945,7 +8178,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "eb3a4a10b27ef5277d759455fbdf728f4cfd7cd52f3f09da2cd2dfd1354a5c78",
+   "sha256": "1d9925e0d12ef080f453f25e99bce0a733a3c3e102ffac619551e588445084d1",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -7979,16 +8212,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6c20802913a08c51c89770433e0ee10a9406e79b166d02357c94ffa0086e2c52",
+   "sha256": "5dd85aa65d5e3f8427e0c3fe71dde4ba422fb0c87b48e462afe09d1701cbc1f4",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -8035,7 +8273,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e4499e6f4ed7415a1472cbd31540d5c653189c4511c4cb15bf35f143ebd00b9a",
+   "sha256": "aa87a482d8e72c49b97e4a180cade2d8a27fd6a4757e5143e4c8215dc31f36a2",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
@@ -8135,16 +8373,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cc49ea93a37e6d300b5efce576375f62cb2298686707683ae78d4fb975228787",
+   "sha256": "de7f1eccfa203b9f9ee4a9eba470706cab80e064d257596565ab544bf47ad16d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -8191,16 +8434,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e6b5df19bb0242fed6892e855ef8788c3f56ca66901a82b4dedb023034e4377a",
+   "sha256": "21ccf1412d2fa6cc79c1b5d642c8fd72af40aa8ea9316e423ad3966f8adb2b31",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -8247,7 +8495,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ad16f9d5df6451cc83c78959df3198b9e28adc5323ed51aa58bcaf4359c6eb1e",
+   "sha256": "95f8c4af772a9be6d4cf4674aac85d8129ac3ce1a4c0ce82f6c76cac9cbd38be",
    "version": null,
    "deprecated": false,
    "owner_layer": "AAA",
@@ -8333,16 +8581,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "999e6acbabc0ba0f7f1624eefe36117d164f9227b68893b63100a054916cee74",
+   "sha256": "2caf50ace82131e4bff1688bcd15f4e63779ad0e04c2ac38d5e7ccb8133f2dee",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -8361,16 +8614,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "df7e8d44b8ee0ed63143c18a5fcd748e62d4175324ab32ace20406c809c3e751",
+   "sha256": "6d465d628cd3c4c05d14c679e4b057bfdb0197c425bbd6cbc6260938342c1439",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -8389,7 +8647,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6b78ed95e6f944805f23f40ed9ca70e656c25cb05dc77b264986160c4aa5a06a",
+   "sha256": "5c9da29634e2c49799913f5de2f765674a775d5caf3bd00a8423421d705a5681",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -8482,16 +8740,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cb9f3e94d1d5853bde9db9b3ecf756fd15e331789e517c54bcaa977be2cbf910",
+   "sha256": "c23dbd661fe712cb068df5d0004722109547b01caacab5c225a83f95fef53ea8",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -8510,16 +8773,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d660c17849414b33069d161966f5642785acb28ee171d15345e7a1768fb08f3c",
+   "sha256": "c31d812d80a82f4145b92977f398245f4dcda1a1c48c1091f8403e472042d350",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -8706,23 +8974,16 @@
    "state": "body",
    "depth": 2,
    "namespace": "core",
-   "sha256": "7a13fdf3fc17bdc597414f880272ff5f7b5744e19bfa6a9a11cb57da40a46c65",
-   "version": "2.0.0-wave2-merged",
+   "sha256": "9f60543b8ae75a474327bb4ec6a9b23afab9879a7bef634c9bfab06eb2cc6ea9",
+   "version": "0.0.1",
    "deprecated": false,
-   "owner_layer": "AAA",
-   "aliases": [
-    "/root/AAA/skills/primitives/memory/wisdom-scar-session-audit"
-   ],
+   "owner_layer": null,
+   "aliases": [],
    "authority": {
-    "risk_tier": "medium",
+    "risk_tier": null,
     "autonomy_tier": null,
-    "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F7",
-     "F11"
-    ]
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -8868,16 +9129,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a0162414f40000b6a949259590f74f22b92645bfcf44ade1cb9ec508dc3f1e79",
+   "sha256": "a18081640fbe573a7e7da48f7f03349437a0b4c52085bc8cb44acd10e21a52c2",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -9321,16 +9587,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4f10c793db8f0611fa1e2396f566a992105a1463f49848c1a92eb6c8f7659e0d",
+   "sha256": "1dc823d902e1ebc4c2b847af3844ad78564e333e642589b69bd7b7d1bf10e567",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -9410,16 +9681,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "83d5881402dc943866519252d947d72812adeea8798efded35b20b51cfb31f94",
+   "sha256": "6006284c7a9a848f702b22aa69c142017069cad75f2352d2e150b21e9187180c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -9438,16 +9714,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "119ac791acb8a68b2d979e576d46f87ef9bf19ca81f63203f146133e7edf1e76",
+   "sha256": "821b88ed332c33824b4ff8c0a3c25994417fe04f13828b6758817fc6aca0e19c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -9497,16 +9778,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d3cc18ad0675991acaf5f6dfcde3256df84996ad88f13cebffb30956ac48f526",
+   "sha256": "478de484111fcee30911426bbdd3d4c19b3433a9f5abf6ff9ae75b47860b3833",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -9584,7 +9870,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c0804300a85db5a01e1387faee776e9601e724c799116ac03f4eaa37aa573ba4",
+   "sha256": "1d06d5f3fa897ef511e1fc66e4f35fe211d5f4e4295abbc7e5e32b15d0575704",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -9875,16 +10161,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "139defb57f528d92a28cd55affae6dd9ec23cb569a99edfce97d38f8e16ad6fa",
+   "sha256": "560719b99ce73c2916a02f3b2d19c500d344ad5aa132de694219bffff78447cb",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -10109,16 +10400,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4da336aa16347ef9684105b9cbece9cb57d9e5961e08dbd01774405fbe4c8f73",
+   "sha256": "fbe9eeaf549531a9b749481401a9a28ec5e31cd535da13c31ea627670238a64c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "Hermes",
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -10203,7 +10499,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9617401be66169cd0d751c925ecec301c6deb160fb64e64723bbbc61f9ed61a0",
+   "sha256": "a70eb07cf81176f26da30544d59ec7a7cc00c54e1f8118f8ba022e1c9f3294dc",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -10231,16 +10527,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "bf3453adc2bab8440dc6db822439e8f926206803c965f50c2b18a938f4caba94",
+   "sha256": "41cdb250e52eed2481a4542e61931d72c1d5661b342362d9a4aa32893d3520e1",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -10315,7 +10616,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "document-intel",
-   "sha256": "e5bcceec5238f8e88aea300ee6bf4ebd376f09491135dabc2ee6a1c07e238b89",
+   "sha256": "16ea5510aaaa0649d0495efc0c3544aade78d4ad5a1451df701fdc30a22a7137",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -10399,7 +10700,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "document-intel",
-   "sha256": "b309a7494dc51bafcf727d605108fe6631b13c6640d31d338883474c52867cf4",
+   "sha256": "6071300c344013ebd87633816abef133c63b646b49a4879cde0f0908de432390",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "curator",
@@ -10545,16 +10846,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f1f354a59d11ab48601b05576fc16d618ec37d97fef126cbd2e833bd81173fc7",
+   "sha256": "0ba6e14b7670c81dc3203f952e15e00219e403caedc7236ee5849060318c97be",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -11607,7 +11913,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "376d799fda91e497951ed7b953ac5d660618e2316595092dc0326e67f28ff99c",
+   "sha256": "033059f317512d865a3ddffef13665ce7930d543addf7a7963ecc543f4aa4719",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -11616,9 +11922,14 @@
    ],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -12801,7 +13112,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "9b358cea285dcefe7c2fb1e621250396588681ea4080732a310d66623ded02f0",
+   "sha256": "20d6b65b027884e900645e44c66a38ff56a77fe13c41b9260f36cf2e60921970",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -13057,7 +13368,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "a830ac565542dea14fc7e511a484da4b5db387e5fe51b0abb228312dacad8ce2",
+   "sha256": "3782db543f501a90337950f8bec660aacadb5a5ae85238488f2b31dbfc0d7e34",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -13113,7 +13424,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "556b8aaa197c483f21a2267d4604dce8e404dcd55f6ba568ad2d8ad9e980345b",
+   "sha256": "70f8590fb03376364e1e6c6629cfc752e518796f013214792ba670cf322728f2",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -14862,7 +15173,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "f6eca7395ca6df8a89f4041209a5763885e661a2bd9b1328e8398488bd424dab",
+   "sha256": "d6083484a6b23cfe392d137d8d9f76b35f79d5355f8bd5a84af2ba17b300c273",
    "version": "1.0.0-2026.08.20",
    "deprecated": false,
    "owner_layer": "GEOX",
@@ -14999,6 +15310,39 @@
    ]
   },
   {
+   "name": "my-local-reality",
+   "path": "/root/AAA/skills/domains/my-reality/workshop/my-domain-intel/my-local-reality",
+   "skill_md": "/root/AAA/skills/domains/my-reality/workshop/my-domain-intel/my-local-reality/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 4,
+   "namespace": "domains",
+   "sha256": "21d525620c160eaf7dd24a1da5a1aa3f6df43adb1373a964facb8e4e7c99b13d",
+   "version": "1.1.2",
+   "deprecated": false,
+   "owner_layer": "F13",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T1",
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F6",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "my-reality",
    "path": "/root/AAA/skills/domains/my-reality/workshop/my-domain-intel/my-reality",
    "skill_md": "/root/AAA/skills/domains/my-reality/workshop/my-domain-intel/my-reality/SKILL.md",
@@ -15006,7 +15350,7 @@
    "state": "body",
    "depth": 4,
    "namespace": "domains",
-   "sha256": "d1d794748c2827d7f887ccf7638684f75bf88cc2a77f950ca7be15c89f0bfcc8",
+   "sha256": "140331a72174f1347507a0f906173cf9feed2b7a5ccf078e24b01b5f76f63f0c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -15405,6 +15749,44 @@
    ]
   },
   {
+   "name": "drift-watch-asi",
+   "path": "/root/AAA/skills/drift-watch-asi",
+   "skill_md": "/root/AAA/skills/drift-watch-asi/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "d4a22efae7798bc78d6673528f4a8d891a0c94c562d2b7aee88acd2193b57c36",
+   "version": "1.1.0",
+   "deprecated": false,
+   "owner_layer": "555-ASI",
+   "aliases": [
+    "/root/AAA/skills/ASI-drift-watch",
+    "/root/AAA/skills/domains/forge/drift-watch",
+    "/root/AAA/skills/domains/forge/drift-watch.DEPRECATED-2026-09-19"
+   ],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": "T0",
+    "capability_tier": "fed-agent-subagent",
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F4",
+     "F7",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "duckdb-analytics-engine",
    "path": "/root/AAA/skills/duckdb-analytics-engine",
    "skill_md": "/root/AAA/skills/duckdb-analytics-engine/SKILL.md",
@@ -15412,16 +15794,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f835e22e868fa3f446a41fc31c4032d1165135d92419bf58dba1aab0d9b0e20c",
+   "sha256": "6ad2c8b102abb2e940293044502065c97fcfb18ba1a33dffee2e5531460dd97b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -15530,7 +15917,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d9406947b970918ceed86143c8940691103935ccd040f03c1a78b8138069d7af",
+   "sha256": "fdabc0901b84e94edc416c7a092ed313775964b31505a285607141b9610bedc6",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -15563,16 +15950,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "62e54cd23e26cad5ce4edefd07587be50f9d4cfe5df87d7c63d7852dca6fb441",
+   "sha256": "2fae94b2f2eba7614e3b544b71db285ec39db98e9e9ac8a12c11a00b8c40c903",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -15688,6 +16080,38 @@
    ]
   },
   {
+   "name": "domain-glossary",
+   "path": "/root/AAA/skills/engineering/domain-glossary",
+   "skill_md": "/root/AAA/skills/engineering/domain-glossary/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "engineering",
+   "sha256": "c479877f8a019cd2a301426adf4da242ffc3330db235a81b5194ac978d6ea691",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA/333-AGI",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F7"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "drift-watch",
    "path": "/root/AAA/skills/engineering/drift-watch",
    "skill_md": "/root/AAA/skills/engineering/drift-watch/SKILL.md",
@@ -15695,7 +16119,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "engineering",
-   "sha256": "e2d687f65fa9c75d434bd18ecfde6b9af4af133fcbaa38ca2f6640f7b25dcb7a",
+   "sha256": "575fb8e350ccd203d183debb2e48ba920fbc86472f8ca11c24b63bf1b2208a2d",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -15747,6 +16171,39 @@
      "F4",
      "F8",
      "F11",
+     "F13"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "grilling",
+   "path": "/root/AAA/skills/engineering/grilling",
+   "skill_md": "/root/AAA/skills/engineering/grilling/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "engineering",
+   "sha256": "6475b4dead90906b2a91b7faadcb6be6e47061c04316dabc492a3c36b0c66a4d",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA/333-AGI",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F7",
      "F13"
     ]
    },
@@ -15888,6 +16345,39 @@
    ]
   },
   {
+   "name": "retro",
+   "path": "/root/AAA/skills/engineering/retro",
+   "skill_md": "/root/AAA/skills/engineering/retro/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "engineering",
+   "sha256": "12182c75c2203d7c1ad4a057cc2f393c163522525d0a23effe36055ee8aefdd4",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA/333-AGI",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F7",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "security-audit",
    "path": "/root/AAA/skills/engineering/security-audit",
    "skill_md": "/root/AAA/skills/engineering/security-audit/SKILL.md",
@@ -15927,6 +16417,39 @@
    ]
   },
   {
+   "name": "teach",
+   "path": "/root/AAA/skills/engineering/teach",
+   "skill_md": "/root/AAA/skills/engineering/teach/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "engineering",
+   "sha256": "4681347591787ec431ec0ad9d494cc97952f7def6c90a9f206ae171be3c19bc5",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA/333-AGI",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F6",
+     "F7"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "telemetry-watchdog",
    "path": "/root/AAA/skills/engineering/telemetry-watchdog",
    "skill_md": "/root/AAA/skills/engineering/telemetry-watchdog/SKILL.md",
@@ -15952,6 +16475,39 @@
      "F2",
      "F4",
      "F7"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "to-questionnaire",
+   "path": "/root/AAA/skills/engineering/to-questionnaire",
+   "skill_md": "/root/AAA/skills/engineering/to-questionnaire/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 1,
+   "namespace": "engineering",
+   "sha256": "442568afc2953623845cdb4cb995f297a59ef7b31977c2e3a221397d5016a0ae",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "AAA/333-AGI",
+   "aliases": [],
+   "authority": {
+    "risk_tier": "low",
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F6",
+     "F13"
     ]
    },
    "harnesses": [
@@ -16077,7 +16633,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f52ca743e523ed3d9b4219eca1adc14cac45872cf0b6473f7269e6a843f57568",
+   "sha256": "e5925313fb6874c165e967b1c8ae0302c01b68f7809865b32a6e54b84b5b1016",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -16166,16 +16722,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1f0cd6fca7fb374e3d484e76606c4db9ffdd0c3c5be2b9326e4d448f8bb22f7c",
+   "sha256": "9b2a7b399a908888e36ff87761963abbacfaed2d4fd5b880e42e7965b8ab34e3",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16194,16 +16755,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6eb8b61329fdd396c4102f71e3b08813d470093abf09ca3f866c4e4893b46b45",
+   "sha256": "27695d93d4c31b639f2f3a505bc9f0f9f7c4cefdeae0ddc84b84bc8596a60e75",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16311,16 +16877,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "59ad1667af5af8526847e70ea1a1a9586f74ea81f5006e2872f943835d80bb04",
+   "sha256": "0dad060ac46a0ebfad12d96de1ecec891279e0e6ed667e70270a9dd75b89da9c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16367,7 +16938,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b813d0d16efdd5a9c1dfe497a60e8050bea8f392bc3dfa3972f716e189e6f073",
+   "sha256": "95ddca75f10fcf7dcfa592ac30f129d1ef5862a165e4ddc53980f7e67c4d40b9",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -16395,16 +16966,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e40e71a75dbd5026952223810e83f69859e6ab9083d0861427b43e5a19cc3d88",
+   "sha256": "a05e07d5637e79e9d0e13340e0fccc30001cb6a44d34ebd311edd15af0022585",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16423,16 +16999,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ef91430ed932ff11a4bd0356ed58d49d3d26d80c4a541b3b866dfd36472a78b0",
+   "sha256": "88b6cc088d7ffbf5b9c6317a91d7eb5019cb1e66cc454425fcc6957a18c793dd",
    "version": 1.0,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16451,16 +17032,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c5aafd38fc718b19f0715b2b5d65561b484796341a3ec604a386def41d881896",
+   "sha256": "e4b70066ee768847150ff986a012d982d2f9cb13eaddf08ad582789a7b9f0150",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16539,16 +17125,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c2b2ff72ff09c73ac47a4ce140e27143b5271ac2e0a486614715d88ed19ee28c",
+   "sha256": "0c778450f82cc7491f8f247b07a686aa12acf3b1ad7faebae3d1d5a1ecacc174",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16623,7 +17214,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1242a02b8abb7a92d5fc7658e765a5c14679fe1728b0c512e7a3536e3d1a49f4",
+   "sha256": "ce82269bafe02d1fc7e2f4f9ec267e421c75f3740a1ae703b23059806fd14742",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -16719,7 +17310,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "152fcf3500d0b1d0cb729f1e1d983e81cdbeb1e6a1d8ba26c0e7c0a7a3c2ebff",
+   "sha256": "97b16af870b1d7b12fc7962e24225cd00a6739e5062d38700400cd7e18607903",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -16779,7 +17370,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1a9ae0f63692aec2891ad3513c0dffa919bd7a8465b4d62bf9a91a5936f24a1c",
+   "sha256": "f37bd5017e542115bd248b91e7942d2818e9526068c163883a52b095bc7780d2",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -16835,16 +17426,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9ba99fe599726f2f9f057fe83abd53bc09bd52879805722aa6f83f0fd9e27574",
+   "sha256": "5490b762f30958d81c4eb30d42d1d2100ca0aeec0a6655b84e4d3f984129e6a2",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -16953,7 +17549,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b4ae7f6ab5af1d65afe1d1d00e97cb5c3e4df8c4bb236286b01bb2e9cf734cbb",
+   "sha256": "5f6e6beb086dc8428054bf669da269f02661549c32500862f7b33abb6377d422",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -17013,16 +17609,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e39bcc202cebc4a4f9e05c1d30a53c29924e3f7e444c64fe73d5cd5818f38a68",
+   "sha256": "096a5fae570d8d8b92a369924f5877d275ad6e222c10e64f496be52813040cfc",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -17105,7 +17706,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ea5cbc0d481e26c4d0177348936a6fe005fc4339ca630b1565593cac7818f283",
+   "sha256": "7b7cfcb3b5eb3511307fcdd45a0d58ea7eae4bdbaf5cc89def9dc1f9abb0dd80",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -17249,20 +17850,16 @@
    "state": "body",
    "depth": 1,
    "namespace": "federation-topology",
-   "sha256": "ee6b89880eb8f164826a8a265db2ee6c9fe26e34eaeca83f602a585794db041c",
-   "version": "1.0.0",
+   "sha256": "71c3a562ff75ba407cf379bd3661f4e2d555e65596b12494f058373e30d2cc52",
+   "version": "0.0.1",
    "deprecated": false,
-   "owner_layer": "AAA",
+   "owner_layer": null,
    "aliases": [],
    "authority": {
-    "risk_tier": "medium",
-    "autonomy_tier": "T1",
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": [
-     "F1",
-     "F2",
-     "F11"
-    ]
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
    },
    "harnesses": [
     "claude",
@@ -17313,16 +17910,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "29fa459d5b612482889247810922e4f2f11495167099787599bae5e4641ae2c5",
+   "sha256": "55ac00be2687f8587222252c2257d65e09cbc51e350f5b2f57030f0a80b8b85d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -17620,16 +18222,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ff708c4a35b4a62b079ec5d61de27bd00a8160d041780f71aa4c7987711c8995",
+   "sha256": "c1650c70b6716053d768538fb859db1259139aa02ce0bd91028ae5054950c28c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -17881,16 +18488,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b6cb80b7c7059c4f994eaba97d7c4fbdf661dbcc5d8fae0978646a43eeaea290",
+   "sha256": "d5283c96ea509fcfd9b4512c2a465ee560127e0ded623c0f3370ec1db4439f6c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -17909,16 +18521,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "fc638a0acb954f96256f8e51e5bced7432cbd34eaa559836f50affeeefc03e92",
+   "sha256": "71cda26aaa6022a9c25031f28f3c11b544e71c696553023ed0644af6403410b9",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -17937,16 +18554,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ab28839cb04b4256a9dbd8cd034404059c75cb3d1675792059cdb701b9dfe21a",
+   "sha256": "5d7be1a7d1b97293377d378591bde92a1e04b767c6069f00321c5a8acd264776",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -17965,16 +18587,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "755aae8775c83b5968b05086ad9e77efa3ac4e4eb7ad9b8a54cbda4f130d1521",
+   "sha256": "d96c5ab628ea115d8be0cffa376a70fd6b11a3b011c1c0c365ecc3c3a7c7f014",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -17993,16 +18620,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "02fec49cfc2b662a031d6814060b1b2722b83fd1160405d1e986d7d9439d66f0",
+   "sha256": "4e52c26d444675d6637f35ecceb48b5aced8be7825ef2c6463a40f13c6dd2d03",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18021,16 +18653,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "49af48da1a2d3e863a24656e8dfd2a3ad926215e1d175d3c05fdbe98c29036b3",
+   "sha256": "915767510e401a9f74be6457f56cea7f67c7770f9e5cc00347eabcdfd674739c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18049,16 +18686,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cc0898afef1ca83b443140cef0fe979d83c3df7b31e1e1305cf7e750f42f7e63",
+   "sha256": "0da103ab75e3b31b48a70fd0be038727d57e50ab16821ad752746d282f06d09e",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18077,16 +18719,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f4f2b262564c1532fa210b29fe783213fd41c5a1169b0a7b43c3dfb5dbdd706c",
+   "sha256": "32368b3d51be99159c02c99f1c6494b76973a1b569896a10dee844e0d9d01572",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18105,16 +18752,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "875720a4b6c010c4fb4c31add93e5975521ec9a1d14ba0b6d12843d234551b9d",
+   "sha256": "0787ecb4c69bf7a53f33a643f1983a512fe9be9f9851f071931e7d0d6f987957",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18133,16 +18785,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d19ca2e8bc6ae3bfd39e39ad24e9c4302b2644f63eb5952987355493add1e33b",
+   "sha256": "c26527a7ce6357950948723d513303258c7183344e3b4fd1ee31048673ec8e4d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18161,16 +18818,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "88bb5ef17d7cc7bfb17aa1b1ed0de8c200453513db6af16c38b7ce9b08dc9d26",
+   "sha256": "13c779da063eb186f70d99b68d5ead82e2f92baaf3cfb8908408ec6d09c983f4",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18189,16 +18851,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "db2c565e4e5e2af4229a37ebf2a5053d43333bd735dbe82645f00cbf15d2a48d",
+   "sha256": "7619064a6a362f7ad5ed872815ec19c2db578b6325707eb81d5162c35dfa0e61",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18217,16 +18884,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1127c7d3977794bcb8618e218d0d07a1cfda59da5ab4d9f52a731c45292807f4",
+   "sha256": "8cf2707b6673c7a3a169ccf87d88b774781cbe575797a72d659f2f91d44868da",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18245,16 +18917,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "553c711e05dac9a486b1296222a740d931582daeea05cb09e358f4395b68af94",
+   "sha256": "ab25de88f6ee6c5085f3cecdbb2c4da7ae7f4a97fbe89f803ed202814f0fefd6",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18273,16 +18950,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "33ec3a6223b07f7dd486e08d829ed3be68bf5e4ad29ccdfcdf26d2058f043723",
+   "sha256": "0ecce7033207bc9d2cf917d29da8e7a81f516c58a8e0c5f4a2ebfa3be7e79779",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18301,16 +18983,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "fa0e8eaa0bb57a8c54d17561efb00f40b444f825a4ff9406472eab400841f3c0",
+   "sha256": "137e624514045767406b8ed460ccccc905b96f3afdc61f28e67782cba477d538",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18329,16 +19016,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "000ca5f860b54839815abcebff781053daa446744211265cbea0649ecea3db93",
+   "sha256": "9dfd4d830f2704200e6ba18de9a872ab58455409a007caef332f542b8c62f5e7",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18357,16 +19049,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d7138fdd955fcabe301fb08acf3b30a87a59daf84715b8403061363a0139f955",
+   "sha256": "49a2352cf7cb9ff86a54e8a8f5bbe90ae5c4623f4483971e9b1df2867bee75f7",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18385,16 +19082,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0697e27b5cafa11987235415c556b625e04dd562a295468041d792ea42af06b8",
+   "sha256": "111eb40a3a23274a3dd18229c1b6d8d7f91d37ca0493ac612f25553b5ee03cf2",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18413,16 +19115,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6a90965edc907da2c53e025deb8ec4e45d122f5f3d35ac1cfd8d309440955d8b",
+   "sha256": "7c7e79200a76c7966725ec0c08689015d01254f8c6943d3956198cdfc696c8ef",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18441,16 +19148,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "78547a04d0481497d0ad5ed7e8006b66a0f9168367f70ead75838240c470ffa1",
+   "sha256": "bb0ecc4b1502b6af38785ae9e6fe4b4ec5d112d5805e8c2de1e56f8923bcb432",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18469,16 +19181,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "bb6a1aba463de0b11314e3a63067f8c414a85019248f3de3f753de07e1fad700",
+   "sha256": "6fe20aca086acc914bd383f49edf1929e11e6e40a51a9abbded3503f383f07f6",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18497,16 +19214,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "738893df1b7d47c6acc3eb0c4ddb4f601326b69cd1152f83334ac3c04dcb8087",
+   "sha256": "716f57abb51d94b8f8d9649a47cabc07b2d0c1adefe3bb0770ac235f59525748",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18525,16 +19247,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "39c6a6cff3fdb1c684c3212834e68bc6168f374b57d3acd002523b8c4fe3d07a",
+   "sha256": "264617a3e166a29be26db88aa428225da68b3f7f708b772c5201849be0285c99",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18553,16 +19280,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c304a742d92c3770c2f4d688ed7d0aab9ce10a5ee2e839762329f51201d11f35",
+   "sha256": "e51e964e15c131400bcc893dde2c2ac577f815bb300eadd70c3898789dce802c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18581,16 +19313,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "afb5885258595b1ee606da7d24c568aa69f435612a566fac35b27b2402360f15",
+   "sha256": "1d80b608d3111c43916888b177261ab3c2ffcbedcf9723339a4458a852a2d9bb",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18609,16 +19346,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "bb1f5f6423b34b85bcc5c98cf642cffeaefc11ae8f655fbfa76b717b85209874",
+   "sha256": "873ecaed33244c2079c21e7fbce818ce3f35b8c4e08e994d648d3afff12f9ae0",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18637,16 +19379,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "13c66517441815e33e100b45f83a5e1ea7d42395003f6f12372512875ad8c086",
+   "sha256": "e8f445267eb8ff5324651ff360d2e22f2a90fedd0f8fd8e7473929ed2680b45b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18665,16 +19412,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7930d5efac916a3b1c0fe41f20356a843d4be159f3582b318daf31bb57cb228d",
+   "sha256": "7546e081aa8c6611d902176ef79a33e4839f6071adca124896c3b390362caa3b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18727,16 +19479,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d8f398aff8117a5e228db93df57a693026248974a4537287a4468c6290299ff7",
+   "sha256": "1788cd94edec5081ca82ffb1acd3f5c6908b2d9da5da5fcafbc825fc31d21bb7",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18755,16 +19512,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "dc056eb75b7a7e612b0dfb95df0c6853eff09dd932112cdf53260ec7682c8559",
+   "sha256": "8f32cf500522ae2db843beff1e432fbb58ab846e4d727883a3d3d4daf1074b21",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18783,7 +19545,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8ed7857196291ded7208368ad090a40de5898d769d9a3e41ed1aacce86ab0d4d",
+   "sha256": "ac7da82e88cac5e08f73ae00292c8ff40a89e443f2e567b35ef555bcca0d34e2",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -18792,9 +19554,14 @@
    ],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18902,16 +19669,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "feb6ab0a09d91875e6873dc859f5f88bcdc4daea71256606b9741962929f4abd",
+   "sha256": "d2d8d10777846302978ae746802a468bfe6decc4300f47ac03da38073eb01bc6",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -18930,16 +19702,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c5723fdcc450ecdd303d116e9db0672b3f94ace12e7ccd3886f0eceb63de5172",
+   "sha256": "fed9088ee834fdbdc03427eb5205e918de9673cc50354062c6e14b8ef2515c70",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -19783,7 +20560,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "838144c2691811ca957e6c36bd6b4c03b7562db2107590226e06df9db7827e96",
+   "sha256": "b6428943ba10085616dbd9cb0869d10f26241fc7e9f0e73901c7823f8c91bcd9",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -20149,6 +20926,7 @@
    "owner_layer": "AAA",
    "aliases": [
     "/root/AAA/skills/FORGE-ci-diagnose",
+    "/root/AAA/skills/FORGE-cross-repo-doc-zen",
     "/root/AAA/skills/workflows/core/FORGE-cross-repo-doc-zen"
    ],
    "authority": {
@@ -20287,16 +21065,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7bf5f2f6a0bcd23e3de6589700568d0ef1bc4d94b3e1e5e28fdad41b30b132c1",
+   "sha256": "c55b6ce049548671a91cfd88a1a8a973ea502a1c8f49e2279b35b39caeb90efc",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -20610,7 +21393,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "95c46da58c9b3020d956457a8a99c8f28a47c0278c9c7311fca1e7b8747e8130",
+   "sha256": "f474c4112d8e5253854479857c734f22138b3300110b312c06d02a124fcb6fd6",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -20862,16 +21645,21 @@
    "state": "body",
    "depth": 1,
    "namespace": "forge",
-   "sha256": "baf75d63b8bfa50976aa69ddb0650df1b24b669beefc868aad0172ab2f92beb4",
-   "version": null,
+   "sha256": "8061aa0decb09c597e979c9f677a27d6e2bc48f01be0ad493f71920291baf0f2",
+   "version": "1.1.0",
    "deprecated": false,
-   "owner_layer": null,
+   "owner_layer": "F13 SOVEREIGN",
    "aliases": [],
    "authority": {
-    "risk_tier": null,
+    "risk_tier": "low",
     "autonomy_tier": null,
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F9",
+     "F13"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21250,16 +22038,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "404a1b5030024c2d77bbf9c9bf82e1770d69a9c1026c809efd6a7629d71fe386",
+   "sha256": "9c900b44044832f2017581083c2125fb8e3f4441cb757aeecda293d638887394",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21278,7 +22071,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "df63146c0e584626a444e3d790e51a22aa1d15925553ac3ca9b6efb55af3eba4",
+   "sha256": "a31a565bae84a10f0feb88ff0b241da51a9a2d45068c7d21c1760a79d662cd7a",
    "version": "1.3.0",
    "deprecated": false,
    "owner_layer": null,
@@ -21306,16 +22099,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8915fe9b7a15526f3ae618626e0b483613e37f0366d49075bd0be493a41467af",
+   "sha256": "8038cef0db298c9069d505fcd5747ebfbb364af1b9e5ee5b57fb370fde7b7822",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21362,16 +22160,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "30901e42ab3e191c8864183cc9d3abebdd5d83ab611e9da13ae5d8a73f79e968",
+   "sha256": "44fd6eeef14bf9115739c6d8360fe8962ae6443e66cc021d9f6bf3d7e2ee4ebe",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21576,8 +22379,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "31c56e241d2e479a9aa01dd642cb36ddf0dceffa9ec254496d2a8b12c094957f",
-   "version": null,
+   "sha256": "7e39e6f7647b6243198ab45fdbb514baf0d266d461ce9d08141f443f31cefbbe",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -21604,16 +22407,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c6f220a1af6ae664c983192ffb57eab9c13955b777311514fa5080cb51406517",
+   "sha256": "ef7009b42af1deeeaa4852858e9bd7cd84c15f7fe3af6308aee154d2cb6ed226",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21632,16 +22440,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "706577d45d9ca9478ace0e926406bbf1a307350164c48933eccd7095706d35bb",
+   "sha256": "7d2d86cdbad73ed6e67c86f7558e639d21198219049b4e19df122f7dc86a947e",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": "low",
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -21754,16 +22567,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "305b704e6949a3e999e560ffed887c0f8b8097b97f2f1b4a3198c0d452106981",
+   "sha256": "315a1a3c7330d7a248b791039f98bd498d26109fde9fab6373159da8bfe9804a",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -22005,16 +22823,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "010198ec6d2457cdeff4c10f7261144a9be0ec4e344c6cff2c5502dca29aeb80",
+   "sha256": "0fbd1a6dee832a9b39a0fa78937dd299aeaf7c76fcd48c7c07c936f8cb5bd260",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -22105,16 +22928,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "756eaa1a1b644450c83ac61df1f88462e39abb01d296b95b1866ec651fca191b",
+   "sha256": "cfdb39673c5a76e143b78728e1bd913da7b5297bbd8cae3fdecd54c2df2633ee",
    "version": "1.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -22253,7 +23081,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "48b932547efdf1ab0c652c3576ad9f1e3413b131a4a725f94809f363760f6403",
+   "sha256": "e2a770f3bc92a909a3226aa8100c7fdb5b063ab5c3337964240c41d7f00b9605",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -22421,7 +23249,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1e2a4815b61a5cbe39e68520303387a729e3a8e660db0eeb11bbfed08f8c1146",
+   "sha256": "6bb571b8aea5a6fa99d6c06d85f0421ed343558b2ca63ac41c2ca7c5d67cd7ea",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -22727,7 +23555,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "6796399afd93cde23837ef3aab2e7ec6d42d66de1f3aa28574fac4abdb495f3e",
+   "sha256": "419aa2d42c1907a647df8f7d850fe93a9693447574677b62fe0ff2a337015621",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "Hermes (arifOS federation)",
@@ -23060,7 +23888,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "a594e8e590404417b8778cfaf08e60c79028b22b6b65c3e5a21534d1fe1d620d",
+   "sha256": "26ac2bf0f6ae73e14ef145dac762125e8dfca0c28a5f206b83e4f51c51d58994",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -23981,7 +24809,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "421da0263b7a88b0b6fffacb1c83593396801801c59f97fe4ec30b4625e6200a",
+   "sha256": "ead2eabd11bdc7fe1c01cd4457b78fe7dfd53a1533ab86631c06c2d82454c63b",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "A-FORGE",
@@ -24171,8 +24999,8 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "7e9ae8e5b961907b9ab83d47766df37e32910117a4fe7075cef3802f434f95fa",
-   "version": "1.0.0",
+   "sha256": "1053fb3eb8d0c546764e69eb90f0f5ca4274fcff64229a3b4575907a254ecb5c",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -24315,8 +25143,8 @@
    "state": "body",
    "depth": 1,
    "namespace": "governance",
-   "sha256": "673a79463abce69025fd2f57c8d7d47de8aec41d6affb0a98aaeafcc1273d15c",
-   "version": "1.0.0",
+   "sha256": "cf95c9fd737bcfbc1d5ce49dbe3f2593c4c892509accef81143be3a5e943a4ed",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -24343,16 +25171,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "da6d0f0c8b4661ed3d7a3e443f015c203f998de53fcf56a1673b6d1579a52616",
+   "sha256": "d5ab76bd37e3052dbab8c286644bc28169b56079d4487f20b91dc08390ce0638",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -24403,16 +25236,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "5d640f1d61c50c01e6e2a9744c2d94bb85735b49a54fdb2d965b40583a598b02",
+   "sha256": "117e58cdaf176acf611a85160c607bb08664f9eb04802bcf53e282658fac9945",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -24431,16 +25269,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cd93906cd9333b9c1897004a36f98cb2dc8be3502c4adfbeda966e5edabdb99a",
+   "sha256": "e4040e85680109cfcef1fb85320e3d63e34a1f4c2a184626d30ac6d94f7cfcf4",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -24459,16 +25302,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a62d70045e3fe6920822359ec8ecd8ee0403153afde9d4e5a543cc18d80172f6",
+   "sha256": "1e59806e05083a9ffce28a191f48a12cf31ecfe8ebe30fb6ea2dcd294ff7815c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -24553,16 +25401,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "97448c449529c08b695fcb88c18de857813cf85d903bf87c081ac64d26611b35",
+   "sha256": "4e7e31469ad3b180260f9faa388c8464df6c8b0b4cb3119a4d9e7dc4e392f195",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -24575,8 +25428,8 @@
   },
   {
    "name": "conversation-reality-gate",
-   "path": "/root/AAA/skills/hermes-asi/runtime",
-   "skill_md": "/root/AAA/skills/hermes-asi/runtime/SKILL.md",
+   "path": "/root/AAA/skills/hermes-asi/conversation-reality-gate",
+   "skill_md": "/root/AAA/skills/hermes-asi/conversation-reality-gate/SKILL.md",
    "kind": "skill",
    "state": "body",
    "depth": 1,
@@ -24685,16 +25538,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "53f262cf5dc5185fa1f0283cbf5241ea0586709248fed8e9ba9872c120206ca2",
+   "sha256": "b7c59aa60e084c5568dbe57a93942bfd2e062ed1b49c25676681b9076fca5534",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -25216,16 +26074,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "021d97382ffd674bdc4e5ce49352e8d01e5452d97bd115e557b63c074baaa0db",
+   "sha256": "a964a1cde1863ce04896a353459792abcff381d5fa25bb4dfdaca3459209e78b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -25278,16 +26141,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "347770c03e374451731bf06e5c9485a00084d748d182d931ac1d704935943962",
+   "sha256": "29e849b8608cb0c229be7786c6be552d58e25114e3ca91d97e517159e8a4fcc3",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -25306,7 +26174,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6cb18f333945702b9fb8ce0baf44eb9ca51a0454da8c88870ce4ad65556a227e",
+   "sha256": "ee441cceb3c1ca9b1f3bf60a282b39e860bf844df150b57ffa34e5e507c33d13",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -25334,7 +26202,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "946e2ba731d1c44cc1d5b62ac683525c1ffb7b337455c36f5a26c16148aea7d9",
+   "sha256": "fed9baceff5638dcf2b367e42187d59152127da9f3ef49dba1eedd8816a4b4e9",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -25362,7 +26230,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "68996298f6c0fcaa86aca1b1b2d9c6ad4d4a8dae2d7e77e1c4a998de5ab409ec",
+   "sha256": "cefdad62af4212a14c9d834506df8d8581a13cc4f72bb864417ecb4c62c2e5fd",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -25705,16 +26573,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "676dc67f886a72c70fbd48ac28446abe2a67fa81557599e4a41798ab4c95f4a2",
+   "sha256": "cc2651eb242f7ec349338af6a8c33b2507943320a6b1a01c583c3d7c44477d5d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -25733,16 +26606,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "91d4972d231393a40da8383b404debcbe8ad0d2101ac6941830be8989971dc3b",
+   "sha256": "e8f649dda2b665e1fa97684a98a71c2f88c0ea5e8264a6e5827f461251f87ea1",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -25761,10 +26639,38 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "38383b6c4017de780a55fa8599ed5024ce2385dbcea592a927cc388cb604a624",
+   "sha256": "9016c4a40b977133e8ea5a1e2a676e6579e45e658fd500571d031fe62aa95ff6",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "human-message-referent",
+   "path": "/root/AAA/skills/human-message-referent",
+   "skill_md": "/root/AAA/skills/human-message-referent/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "b349aca7211d0e009392c091d07bf7d3f552f53af829d27443b46baff4f2ed88",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
    "aliases": [],
    "authority": {
     "risk_tier": null,
@@ -25886,16 +26792,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1147992fd105dfc8a0ba4f94d71a789f2ff54e5b3ac7b5ddda96c5512af9c977",
+   "sha256": "3006cee800e56d2b8077330ead5ba48c5f7ea11c7b1a5cc9362d0a33d7dd9bdd",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -26009,16 +26920,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b5dc1e85d53606cf33b4e046191769e9249c74e392c198c3c7b94c3a86522504",
+   "sha256": "2050dcde68f92ff77c53e2daa419a80cc7ad728ab995cf310d04741dd9b0ec88",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -26204,16 +27120,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "181e23e87df1cbaa013216e733f1a7ecc1ead5356380f1bc5360c89160ce48b9",
+   "sha256": "82acd9086f651266bce912053ab3478d459a9ade95b870e5bd8af2e9060815b8",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -26260,7 +27181,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d96bb17392493bbc7fd64e0162ecdc3c1f5db2e6670983c28fda44a6c9ba4c7b",
+   "sha256": "e809bdb14be9b07bbd3ce6dc88e76ab4e7c49d93e9b24e6593723f3df66eeb85",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -26463,7 +27384,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "fc6b2c3dd1a55d299931413299b714d606866d2dcd441909930bfd1e44a310b4",
+   "sha256": "0b1fc8a119f60c26113ed21924d0edbf97ad6b75e0bbcb5c8ed22afb079804b4",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -26524,16 +27445,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "939ef73ac77b1ea86c0d025ea3f062f91be06dfec7247201a7a8d686d1754365",
+   "sha256": "952281f46c31a846bf29db7175a4216e2b9de904021465618e0ab031d88fae13",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -26580,7 +27506,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "055e442e6663b5e063e02be2cadd96d73eb2cbc2f3f84e0c748df643c0575c16",
+   "sha256": "75ac1a72001bc042df7c3a7a0dd2db85641879b74bc2954ed2f15f803ff30ad8",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -26641,7 +27567,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "5908705bf570a2342fe2b2e63c27b7a2199b37f1e60eca1ccf47bc488b2b3fce",
+   "sha256": "b00e175af6bddf0047c4b725a5418df2119a0127515096fda6c3027078f5fcb9",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -26810,16 +27736,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "87a6cfeafc78056d6eeb9520f8fc0cefc7ec85fece36d93dce3b2664fb1ec10a",
+   "sha256": "ca4e7bda87f31f77177633cf4f4769e396bef28e789da03776c48f88491e2f2a",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -26955,7 +27886,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f4d04541e63429e8d98f3edaba0d11552a26f612ccb0135aa9668a13a9da4b6c",
+   "sha256": "9ca7dcca38542e07c10b395771c48c1be86f3a5ebd1a6832a0c2f58f54ed9fbf",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
@@ -27044,16 +27975,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ab50f66a01cb546aeac3a6e17c4176f838ce70f6eebf998690930b5b1e6bc74e",
+   "sha256": "576365e149e7862bcb28a2e3f25baf1b49169416b4139a6a37b28f457d8b7fd9",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27072,16 +28008,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a35203910733ef32cd14c423a86e19d70b725653fb872eb6541bbac8e5b29b96",
+   "sha256": "7c70d38b959e9ba3c73d7404ec0bd3a701b0952195533cbed937dac6be7d2a3c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27100,16 +28041,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "aa002d6ab15900ec9b5f06adfb500a34383f17df6533c12802b9dd46db3a10e1",
+   "sha256": "7e99eca2013b72168fe1b22c8376061b156fb1b6cf771ef55a70d976345320ea",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27128,16 +28074,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e73328d82aa1db5a109b77213b74924ca10c31c3023d86475044c13cd36b3461",
+   "sha256": "60d66632e0be023e4cf5510291794552867950be372de4707f5df1826518df90",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27212,16 +28163,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "126401442995b828f0fc1189dfd5e45bbe87903c4525476937b4e003a4c7d0d6",
+   "sha256": "78188c10c15c422f7286b768ddedc539a8e8f7a68922a90c88f17826d3f2de84",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27296,16 +28252,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6fdae8963cea12a3f740e085ceb640de4d952e2c88bddad2bfa602be1b609ded",
+   "sha256": "2629c2439d4d7bbd72f541cca422f669fd4009da6addae084be3586677e63499",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27324,16 +28285,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ad2b74ef0ee7880d568d3fd6487fda8bac3163e27984df32cb64f2ebd16af8ec",
+   "sha256": "13b36e3035cdbfa28ff553bbab3ec6dfc7f69b02dd1c98b7494e9045ca94a0d9",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27352,16 +28318,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8cfc9d36def93f341063ed24c1f8deb385088c4ad1d925fd6bdf54bde1465e4a",
+   "sha256": "ad7026746a8edb3d173714095db946cbeb40ed08593faedc09754bae0a64a44d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27408,16 +28379,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "52536e913d88808a94202fae3b7fd55c1b321cb9c1db101e12ecdece587d4e24",
+   "sha256": "2891c982c985ce13a147fa4875c96aa677daa1a75960047699ab1ea5a64ca774",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27436,16 +28412,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "df2153c0fc83764f83c8c124ee276ba0a4d49a4cc09a510e6802cbe7402b1736",
+   "sha256": "26d2a0adc34e18d9cb5b3993cc9f8558ecb2038782cc9dcf303063f260eaccb5",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27520,16 +28501,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0059e140bf32b9eb5728829454110de4eeee67f884f42ad5fe93fa69487fbe22",
+   "sha256": "b2d523bd91268ef2d2c993afd7dd60c4f2f2ec591e82484f81225e38a8d7883b",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27548,7 +28534,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2ea84fb2f09fe5a8b8b3c2998b1ef1786133c01c7bb551dec1974e8ceffeaad8",
+   "sha256": "89999b7fba93928104a8995b06cdce8f45027f9ed64964f2229d9f6cfbc30faa",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -27604,7 +28590,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "99e1f4794708e289e56e887573b7327e1a7a55e06c2a49036aa7c82f885dd7d9",
+   "sha256": "228a23959d782e6b56f63b4a7e3f24cb002ca041820e9ca60c8a6c9de870a1d5",
    "version": "1.2.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -27636,16 +28622,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1857a6e790e2b66e4bf1fad4efb643bda2e8f7779d9c62bca996b5585fdf6760",
+   "sha256": "50af45ae29861f1d5aae1bffd6c903e22035b925f38b1647c5fdcd38a5ce3acb",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27836,16 +28827,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "145b7fe48360642cb7a42bad3a817f10833fa8a387ffcb4c2df8a47c01a832e2",
+   "sha256": "966e9eebdcb9f3ab6d60b9ea7537473628595df8829c41ac52ad57a2b0f2e01f",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -27920,16 +28916,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3b96287a83bf0dccb1c49cbaa423e185dc5bce0fc0d64cb3a2f9eba29fb46001",
+   "sha256": "b320433b9a97a5664538035fd02baf130dcf99a252fd737bf2b932d83d970f22",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28178,16 +29179,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "385789ee84af77d7f135a64a4e22330ccd63216b54cd5a6a4966697b10085d85",
+   "sha256": "b78ea5b016549a67a4e365e7b95200d92ad15c6fa550d1c4cd4e85bc2eef4679",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28236,16 +29242,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "38c7a2c73caa562d0bdb393f975797895e1135caa12452dcfc2e81423df81591",
+   "sha256": "8207d220109021ea346ac215f968cffb3cbb3aaf77fc6c3cd208e3428f47ce0e",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28264,16 +29275,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "afdea1af03623334cb647701b4446697732cd256acdab4eed8d39c0944974746",
+   "sha256": "82730d57815ca7dcfa8581a0a133302195f7a7bdad8abdcc878495d029741457",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28325,7 +29341,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "5d890d9f9945d9e59288ac06d6e0778f1a9c3833460da21befef37357da09650",
+   "sha256": "41224fc2e2fb74a697b062dd92e8ea7ec854e1e77288463d5fc02d59c6450092",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN",
@@ -28423,16 +29439,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2cca4b78a03b9b7917785d3a8088ec1ef685db18e86d23e7ceaacd2ace2b0364",
+   "sha256": "745f1bd04a2f148097d4353e5babe5237fd67b55db01fadb90ab5f6fef0f39cd",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28479,16 +29500,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4276bf43e5cc83291188edc9ff207795cdcf4bf9c801f481ee810c535022c2f7",
+   "sha256": "afc1305f2cdef7fd214e0a5f9f720455f230b8e9a6d6f9c578b9773f8572c7ed",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28619,16 +29645,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "057d24b4f36dab38299857777e4c0ca5bcce65d8cf89d917c174c1a0ae23d9f8",
+   "sha256": "52038bb2d9c7cf64e115159b4211d81fa7d6c16cfc6879a828ac3db513b52693",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -28856,16 +29887,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "333d48203eab91eb44a3ec47fb38ab0a0550020a41e07bc96afc8ea7790641b2",
+   "sha256": "4a7fb8510d242fae064a8ab7e1508d1e41fdbf4251fe51b6220a35f789b9c350",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29024,16 +30060,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f3be6e788a927a154a33d5ebea39b165990c029157e90af2c6520590e7ecc5be",
+   "sha256": "bebd07f120353a9e646f06be2e48687c6e6cc6a821ada419ec2e63fd4c912041",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29108,16 +30149,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8391dae8d051ad07e4146756dd5429f5316da0ac8d4989d4627922a2c647fa9e",
+   "sha256": "c9628e98d5023a76c6bc58b1d7f08ae5c4aa372d818d210bc9b9cd093a90117a",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29136,7 +30182,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "486d4d47aba5f46ac83a90c07e13039d493ec1e916f5ff6fd9277f6b1d1b5ce9",
+   "sha256": "0ef9f3e04a5a73cb7f067b95d44426b68d5c65c011b6742a94eb6226d9e79a0f",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil",
@@ -29196,16 +30242,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8ef9f4d6681b8e3c2e8af40c7bdda991e746259ad8cdd3a47d60127d0dd21856",
+   "sha256": "a3a22d485d697a4d48172241f8b8a7eb45ad80678071227597a3e54f273b327b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29252,8 +30303,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3b2533963519c574c82e19655c5a94e2c1d2b4a6679c7e0ab75ef427544c0ab2",
-   "version": "1.0.0",
+   "sha256": "0fbfe0a1ec5d23657fe7108eb06924ee6f082c88b4522a797f5f2ecabf41d626",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -29280,16 +30331,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "04259066db19484e32549f3784116e22a4c3e6ce9cf45206ca11f7ad3bd53441",
+   "sha256": "59b2e550002a8ab62e22f03d392e45347d50dd0fdc072718f2afe42bd3420366",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29308,16 +30364,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a82ff0730d7ccd7bb724d8f14f8a55cd41bb5a8453971a37810ba8f2b9c27dca",
+   "sha256": "e7724b14601bb255dcb429d055852e07f048df410803da524341cc6f1b928b21",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29336,8 +30397,8 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "3821a3f7691673245eb0c5e5c15b81b5d577d7974e9c5f7ba5986e512ab68a95",
-   "version": "1.0.0",
+   "sha256": "1592e0115e518db33652176205c6a72ad362f91da5ff314629ab8437af63e9c1",
+   "version": "0.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
@@ -29364,16 +30425,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "bfd19cc43479e91ce998d1997d1bbb2daf5a8317479993905e339158dca827f6",
+   "sha256": "98bd6141e8514ee94889d7dcb292c1d20b10355cd32afb6cd77f194d9d9d901a",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29420,16 +30486,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b8cf455714b113aaffff1717abb2e0b94a3d25d3e62c01196751eca20f036988",
+   "sha256": "80d3068d06eb3225e0bb0dff4d811e2f90582c1228cc068b2acf599e4dfe538c",
    "version": "1.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29476,16 +30547,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d03c9bc2593e0d2d1c4d7e0d2f0e57703e11bd7be9f7c5d6f478e6f5fdc6b507",
+   "sha256": "5bfd5b2e5dca95bd9fba9114ebd8d4e8e478b8060d4195d06fc6a9f99c4dccc1",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29504,16 +30580,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e196de3a0d48bb42788f42a09b1f8b4201902a774828905183099ad86094b3b3",
+   "sha256": "3e87985aeed0ea1f90cd82c95aa6ec5fca8ce62270138137f486f10079c9544a",
    "version": "1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29627,7 +30708,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "496ef4fe632cf3b24e4e983ff54cb471882b105e11d77cfed341cd2e9b8e76d4",
+   "sha256": "cfd211c1edc03fc6fbd96c831336f60c837444714f777d2ad40f591ae46bd0b8",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -29718,16 +30799,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "326b1e834b279508bd2e57f24893dbb4d067f6d431b500a53951dd96ab02a8a6",
+   "sha256": "4240288605ddbfc9f762cdfc2f45c292b62b096c808955682e2ef772768aa19d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29746,16 +30832,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "dd558e1c279f61a8556c79202d2fa4b5845790b9b56216230d9637d47d008cd0",
+   "sha256": "e917b7fb5bd3927bf7649621badaf0275fdd98cc5058a06e1870ecb081e31848",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29830,16 +30921,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "681903a747025dd6184cca0e28b3b15d6fa5b24dd6609008727e5e28853d2592",
+   "sha256": "76740bda21057b886c56d402ea661ee41baafbac2ca2866152c784df8ed4a589",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29886,16 +30982,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e8bc4aafff6df9686f3bc86ba5eff69bf184b20e7f11553db759b5f282986adb",
+   "sha256": "59f30641bfa24ec3622f55b94ad17c7eb5d35465664a81c4e1a7a70dabfdb917",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -29974,16 +31075,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1948a0ec29e79d43c86b96f1cf609f296bc968b4b42cbdcbedbce5f31a45f9fc",
+   "sha256": "886214a88f1c5eed4069565eebc58bf317eac7b5c4b5e2af05489ac44dd0cfdd",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30030,16 +31136,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "85cd70cc8eb3e237db4c23159c21d8506940fa5409c83e08b1b65e77c219a7b8",
+   "sha256": "459b32d44e9c5c2f6adde69e3333ef6a75e8ce0708f0cc378946b207c6d8da12",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30058,16 +31169,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b7f0e5ac69752fa2b927d323d5ac8df1796ad1d18b474af6aba0f0b8afd1ffd2",
+   "sha256": "19410f4475ccb5c3d5265e45c544d5fea480ce639d02b614d6aed7e8283938a8",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30086,16 +31202,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "70f89c6d92a5127f8f13c67e96c01bbce48d8b53e19d40a1cdd1f2ea01e34887",
+   "sha256": "a5a7e849d1a02455cd144eb6fea01f2c42a827bb30ad169e2a06de40a1b4f6d4",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30114,7 +31235,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "53d1bea3bf5e59396d8d360bfedcc605fcdf663f61b40154f358a50895eaf9f8",
+   "sha256": "9a5e3caba3a9b53cbbcb9c83f0d98c19051aaab1da3e829998e600a8440e6a50",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "AAA",
@@ -30146,16 +31267,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "bdfad369873884961136ce250e37dbadee2e5c14d3c85e0309a7e063aef23b4b",
+   "sha256": "3d4f697794ac8f68f1468a3c8e8ca28a046fa6ed5366514bc5ab315ad65e13d7",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30240,16 +31366,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d65c9a997316a3e4e9b5cdfe8c8c34a49271882e28927f1b17872ca96eab18ea",
+   "sha256": "b850fd77d6ca0d14267280f953a46dc46daae4a21f5f6f40a78a786b27fcb5b3",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30268,16 +31399,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4c31cabe9debc903ae8ccccaad7767141cb28eab86a5e71a80b60f2c3c01841a",
+   "sha256": "d33c6908ebb9bf08bffd5277ce17fe8ee4a179ea7b365731318ae2b320113861",
    "version": "2.2",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30296,16 +31432,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "938662ba4100c6e7ebdf276ed39aebf0cec8d262bdd488412834244645a262c6",
+   "sha256": "86871d13686c050ec4e562c933c8f909f1d561f595ebf6082839f80da7d4ce6a",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30324,16 +31465,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d415aa7b91c6dbcc69a733a659f2d684eb2c04e88096c117bc8f80a062a1c27a",
+   "sha256": "32ba0775bb39fef27fcb1155e333b04ac776d2b8b16aaac042676d0728168541",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30352,16 +31498,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0a2a8c085f26f681c41bc03d52a8ddfd11793dbbc3e9e51111f7c2526f3ded98",
+   "sha256": "76e22485de70e77935d2ea13e387a904a05bc2d26f1fad2aa9c6a9d547a41d91",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30380,16 +31531,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "829939f73085691d8b9ea38a7ac75435e886e406d8e10b979987940767adbc11",
+   "sha256": "37968989c83e37863bc9f8b59a5a991529a1a5aa7f45c443e7bb54deaf9eba5d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30408,16 +31564,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6372acd2985dd003961ab4eee69299ee010f4a7c7e6d4ce65d98b2e96feefd89",
+   "sha256": "734a496658f80f4e59be91317270e9f9ffd3c53ed8cf550f7947fea8bba27e11",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30436,16 +31597,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b3cefd7220801fca0bcc1a9f5876affb329731c38b9cc6afe41a0885a5d9d3ab",
+   "sha256": "e139c38a2ff687ecc6aefef986a33967f3b5d77bf36f90d826845835a6fcae17",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-reasoning-heavy",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30464,16 +31630,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6d327fef8f560091434241897b5d61cd7948d5855fcb5a10b5a275a55e22871d",
+   "sha256": "c6d947d615866ef80b9b225da789f300ea7d7d2c613c828efb2f99f10efa4921",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30492,16 +31663,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ec51b535fe588ee0f56d1c0060bf545ec2f3c78fa9552796e8a2809a08fa513c",
+   "sha256": "15cae02c8b8d56f3ca74212146f9af0c5fb684a2c3674d5cbad0c9717ef743f1",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30520,16 +31696,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "588259d10847f3856bdb02ec715200e45a2ad85193ebaffbd98bb890c7f8b09f",
+   "sha256": "661f89319767902c28edb5570ef27fd1843bc9150ecc8c30de364803cc4dfdc7",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30667,16 +31848,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "51bd245bbd45c957af6a7c7cec73cb27693dcc7c46308346c8f823dd74868d82",
+   "sha256": "35ececbefe32549ec29efc18d82d54b0ab9de5cf399ea7cb73c2a64a196c1ff4",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30695,16 +31881,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d855e4f12dc130be672adbba7cbf5b2f5ef7499e028334d84eadd20ebda2ddcc",
+   "sha256": "6641cb82a6731d9bf3fe226dc337480f52c1d5b8c561a9082bcfb56f331777cb",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30723,16 +31914,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "aa3d388da9b47e02c40aeaa4506e3fef1ed1ad2501a3df9606887043e27e1965",
+   "sha256": "b2d1d95e0128a659e48e9879581b6bf37c36235f24061df825150a3e8ace3bd6",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -30840,7 +32036,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "research-core",
-   "sha256": "658502818300adc02277ca44707aab5623dd16f766d035ba5dbb6424416c5fbf",
+   "sha256": "e45c72a4c49686ac0aca862080104342f82c8c86e768bdb448321f6e3f0c8d5d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -31273,16 +32469,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d68aafc7c377c90b47bd5017982d65365e5b614463908fbabec0f210ab1cc17c",
+   "sha256": "ea86774409820a2f90094e307ef000251b3d2dbfc512916d8e6c70f2c8037c49",
    "version": "0.0.0-untracked",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-multimodal-vision",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -31536,16 +32737,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "4709d5cae613e308079b764dc8c018d219df70e9cf9c4a7c9151d72f546093a7",
+   "sha256": "3082284126816ba65855e79048fc95ef3fac16a9bbf6724999e94af6c1bd2f30",
    "version": "1.0.1",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -31564,7 +32770,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d895f15b861c5858eacdc81303ee7f8782c2c28644ffdb5f2aec64d2f9317778",
+   "sha256": "c7b011ea3a663b5d5b67d1a7806f5635fd6f31b9015d9d255e9a0872a34604a0",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -31592,7 +32798,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "5a0b7160a306d02dc109f2967012b55e9940235c428fe0bcce77f88b7a3bd868",
+   "sha256": "6c896f5e7dd06e2c155ae16fd57d3ffb43a4ce7aae7297885241c39132ddcfe0",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -31620,16 +32826,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f",
+   "sha256": "a4b37a61daf3c5a0f03fd40406d50208d0fc9b9da782f2239090ef1f943a1432",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -31882,6 +33093,34 @@
    ]
   },
   {
+   "name": "service-failure-attribution",
+   "path": "/root/AAA/skills/service-failure-attribution",
+   "skill_md": "/root/AAA/skills/service-failure-attribution/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "283773d33f0b3ac3861f8aa5493b98aa1a8b3aea56e8b43a9799a1f160dd5caf",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": null,
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": "fed-reasoning-heavy",
+    "floor_scope": null
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
    "name": "service-state-schema-drift",
    "path": "/root/AAA/skills/service-state-schema-drift",
    "skill_md": "/root/AAA/skills/service-state-schema-drift/SKILL.md",
@@ -31920,16 +33159,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e6b6b2e95e0dcf97df8c342f2ba0180f12d6b5f41f983cffcf6c8d590eecbf2f",
+   "sha256": "e38375af78077fc23a8d57d218aaf2b75353089288aa101b8b333d29cf19d51e",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32008,16 +33252,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "118b54656ffed5475c3b6b60fb041df247e823331371aa189f41d0bf0c079ed4",
+   "sha256": "5891556a09c722d1a36b2cd5d9852ce8b7849318141b6120c78078c886ee2983",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32064,16 +33313,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1aed07f023e86035a51bc5e6ae4e9d87e45b19e5068f1c4c5a75de3befa83ec0",
+   "sha256": "ace50a8833216614ff375e6b7f66ce5132ebaa15a0dbbc8d58746c282ba6c075",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32092,16 +33346,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "8c6ae67c2dd7498fad115e2b708d46862af1d6ef0fb7a0c60f73adc76c9a3573",
+   "sha256": "378c404d0bd2b0b5fd0e41d952ad344b8cc073706031612e1ed6e3b058abbf7a",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32131,6 +33390,37 @@
     "capability_tier": "fed-agent-subagent",
     "floor_scope": [
      "F1",
+     "F2",
+     "F11"
+    ]
+   },
+   "harnesses": [
+    "claude",
+    "opencode",
+    "kimi",
+    "codex",
+    "qwen",
+    "hermes"
+   ]
+  },
+  {
+   "name": "skill-estate-maintenance",
+   "path": "/root/AAA/skills/skill-estate-maintenance",
+   "skill_md": "/root/AAA/skills/skill-estate-maintenance/SKILL.md",
+   "kind": "skill",
+   "state": "body",
+   "depth": 0,
+   "namespace": null,
+   "sha256": "118a058021f95a058ca121299ece3291c33c816f997b0cd7c9fc8059a8e418bf",
+   "version": "1.0.0",
+   "deprecated": false,
+   "owner_layer": "HERMES",
+   "aliases": [],
+   "authority": {
+    "risk_tier": null,
+    "autonomy_tier": null,
+    "capability_tier": null,
+    "floor_scope": [
      "F2",
      "F11"
     ]
@@ -32246,16 +33536,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "0ba5e0d07af7fd08fed2b81115c6ae2b8acbc153d5ffcf689ad6a741769c71b0",
+   "sha256": "cc6ec4219806521b825e42804e6b6a39cf7008e474c191b45964c8020204cf68",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32274,7 +33569,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ac2245b2e567670f3fb0b40220705f8e59e15d1e82829b5e3cd6faabd729e3bf",
+   "sha256": "010c24fa4bc4492060219a5e6cc1859ec06c02d0bd4b27dc5acc48038deb124d",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "Hermes (curator-managed)",
@@ -32283,7 +33578,12 @@
     "risk_tier": "low",
     "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32330,16 +33630,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "814fb9fbf1e12861cc7d49ad143fc6be6d01a826580809f9e98431efc590a505",
+   "sha256": "f342bb8919a9a4d2c7f6f2f897151d98c6283f390238f9179185e9d8ab3403a0",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32421,7 +33726,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "61cffe59b5f9b3967d720e9b596008c3bc2ba54351ef16dcca8da216f74630dc",
+   "sha256": "3e24403deb3e87c341aae6aa13b40dee0d9f8e66530e218851d9397080a78fce",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -32449,16 +33754,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "452c811a00afc6655adaaf3cc39cfe7d2d81ffe8b13f5059664e8c781dbbf92c",
+   "sha256": "025d11260311b71ba5169cf1bda7dfac796313e1e4b55acfde39cbad4406424a",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32888,16 +34198,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2a5925601efa36744e62f014920e039dd8448ec3f492e8db8e12168fde2ac4ed",
+   "sha256": "0ab6e5462131fadfa162f02b8beb0b5abd50035e64363aee33250a45d65e8c88",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -32946,16 +34261,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "65d6fa10d61bfb855e507bfd41ccca2801c67e451e205b27d75635ab1dfea531",
+   "sha256": "5f55cd83ad8e74deef82a6513dc7131a91c0fe98bfb25911cb9fe6f4445877c1",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": "low",
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33004,7 +34324,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "a25682f90d5d2ed1d0a8661c8fe0b4f31b89a3c558e9951eea6866fdd0ccfd55",
+   "sha256": "bd3f6b7d628a097fdca3fe858e4cb6fb03494357eb540906bd1ee14a1914d0c4",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -33013,7 +34333,12 @@
     "risk_tier": "low",
     "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33032,7 +34357,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "f5a397284a491d0a1e2dea91cf421d6416331c367e90dbab2c9efe1a56066000",
+   "sha256": "1b541b416b8fc4453fee4f01122c4d67a4164d612a2288c1e95a0f531812c921",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -33060,7 +34385,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c384cf81d8407808bf14e9d7a696fd9e7356169c16f70b7218c853cf9e4ad6b2",
+   "sha256": "bb4dd557ba6532d54040bdb68ad9ce355065690a8319e1697e1b19c285cc3015",
    "version": "2.0.0",
    "deprecated": false,
    "owner_layer": "AAA/telegram-ops",
@@ -33150,16 +34475,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "355906cb557099e9ab58972d1f281c19f095990bebbe0582471002d8399f664e",
+   "sha256": "1d291e49bd3c9de4ac6629f073c1f053a14707a4bba1d561a2c4723c899b14ca",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33259,34 +34589,6 @@
    ]
   },
   {
-   "name": "test-curator-write",
-   "path": "/root/AAA/skills/test-curator-write",
-   "skill_md": "/root/AAA/skills/test-curator-write/SKILL.md",
-   "kind": "skill",
-   "state": "body",
-   "depth": 0,
-   "namespace": null,
-   "sha256": "16beacc94d8f7f70b6bb97bbb40960103fcc1d1d7bb68f9ad0b2e990c4fc46f1",
-   "version": null,
-   "deprecated": false,
-   "owner_layer": null,
-   "aliases": [],
-   "authority": {
-    "risk_tier": null,
-    "autonomy_tier": null,
-    "capability_tier": "fed-agent-subagent",
-    "floor_scope": null
-   },
-   "harnesses": [
-    "claude",
-    "opencode",
-    "kimi",
-    "codex",
-    "qwen",
-    "hermes"
-   ]
-  },
-  {
    "name": "think-deep",
    "path": "/root/AAA/skills/think-deep",
    "skill_md": "/root/AAA/skills/think-deep/SKILL.md",
@@ -33322,16 +34624,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "b30c8d0e6af2e8b0e95cd22361e665d5452776f48663e425266dc1d3009dbb6e",
+   "sha256": "828a8bca5e54e90fa454b6d228d6e1afaa8ff36bb291f04d6f1ae0300498f89d",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33378,16 +34685,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9aeebaf6caa47767efc4c2ba2925db41ab1b59b7a4752538b3801ff7d3fa9461",
+   "sha256": "07840ab14a379c290f6ed815bfeebc84bef5fdf739f45cda1e3c44c2dc6fa5e0",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33629,16 +34941,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "c7c5d9ef04cdc9c436443f4cb2cf9962c00257e3c250c3e7db23fc5013dc4873",
+   "sha256": "3842fa0a13496279649c228fcbbed149f4d6eec837d63268af1c89eac9b0d55b",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33685,16 +35002,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e895d56c7084a7a6c1add63aae7a7ae27628629130efae00e79335cb22349b15",
+   "sha256": "d047185f297fdae0509546fa6ed519f763c460e8bca157db16119134019dbe31",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33713,16 +35035,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e955ffdb120aa50a4db71b37c7182c7aab9d7507dd8f1248776e3f61999fbeb2",
+   "sha256": "cc8ca62d69ea8fd0c062ce5fbd98fbb2ab80b3e9787aea5b0306602047d75cc4",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33741,16 +35068,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "738e6557b0e661b32d5c8243a6fc4dce858c5ef0bfabe039d4b9a613329fe569",
+   "sha256": "652da038505f8c800085aa203d41b9cf81d1a2821300b291729b40876600a8f8",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33827,7 +35159,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "644e9e4b842049ccd22d742f11fc72f91c3bcab05f26db77508a9fc6ae28ba66",
+   "sha256": "7fdf79fd623cc3424e33b21eedd85c498884f1f83db716aa76670f7e2e51152c",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
@@ -33943,16 +35275,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "ba1366218c64b7afd27fc0c2975128e1ac8ae271a872508a8f15e2a8a38262b4",
+   "sha256": "fef9b846dbbe085765135d610c1fa580d622464b34508751f29695fb50ef74d1",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -33971,16 +35308,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2e3bc2fd58f9df71a3c96f5e6263c106861ef1fe809645dbcc4fa70374d3fd1e",
+   "sha256": "e971e66264d77b6afeb5e0d3adcb083f1c4814a627f8fb68657e51481d1ee502",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -34294,7 +35636,7 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "d8a92d646799dd2fda92cc1b1fbb8879d5efba8386074547e3f66e7cdac1a896",
+   "sha256": "139841c996fbb82cb2fd911947421ca940580cc9b824d8babfac8d2473e47b79",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -34378,7 +35720,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "vision-analyzer",
-   "sha256": "ce7ac993abc39e56d6c7b39cd5023e3e36f288af2e62654b880cbc8765717a72",
+   "sha256": "c5a190e64a2bbe5429c78d83d70af29099933bf08ecce7a101a5ae47869a035c",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
@@ -34406,16 +35748,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "2cacfc4fe8b4cc4b5a5c1ca370056ca044a56bc07016ae5814ae80b6fd7cec9a",
+   "sha256": "5e9d8b512f2cbffe060ef3f3706051ed3071608eba52f0368d589dd2442819b3",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -34490,16 +35837,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "1f8776c9368dbfaa7de866b0a5aca5ffdc62f242c8cb446d58209b5fda97ed21",
+   "sha256": "c554e20d89d847388c6bf8be06c0891df949a0ff4f77b77f3696298f8bebb8f5",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -34553,16 +35905,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "5887110988435c15c75a3d9a191beb8eb056c53362c12f49cb7f8432359ef429",
+   "sha256": "6653566117cafa052b69713d8c309647ff5b7a71f8ad03b64d5ae256ea52e568",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -35243,16 +36600,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "6c5ffe5897006dce605ecaa41be66e417a8b718b679c5e702f2031d73aca0149",
+   "sha256": "0e236f86e9015276294a6cbc154c6a5406e873150b6e1ea81e9c652ade188fcc",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -35271,16 +36633,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "e093a976cd0e1dc389a978344ccbe2fdf9ebf96738538f0876df6d9fc9afc093",
+   "sha256": "734e0592a35250be175dc4bdff8751d81a353107a179a9d94e87acbd2898aefc",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -35324,14 +36691,14 @@
    ]
   },
   {
-   "name": "well-consent-registry",
+   "name": "WELL Consent Registry Protocol",
    "path": "/root/AAA/skills/well-consent-registry",
    "skill_md": "/root/AAA/skills/well-consent-registry/SKILL.md",
    "kind": "skill",
    "state": "projection",
    "depth": 0,
    "namespace": null,
-   "sha256": "b809a1c85047c84f09dabad524e85b05254e4803560a74dfd7320ff6817ea914",
+   "sha256": "16db005b008420fbe8cd38445c7721d94ba878f962490c1689cb51974f0904e2",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -35357,14 +36724,14 @@
    ]
   },
   {
-   "name": "well-machine-diagnose",
+   "name": "M-WELL Machine Diagnostics",
    "path": "/root/AAA/skills/well-machine-diagnose",
    "skill_md": "/root/AAA/skills/well-machine-diagnose/SKILL.md",
    "kind": "skill",
    "state": "projection",
    "depth": 0,
    "namespace": null,
-   "sha256": "2357952f2800db53e08f8c1258bf26c757b7f743ec1fece8a85c99a7fd487616",
+   "sha256": "666fa0fa222891a2f480ea2c5bda7b76742be846a56eb68270bebd6e31cd1172",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -35390,14 +36757,14 @@
    ]
   },
   {
-   "name": "well-triadic-ops",
+   "name": "WELL Triadic Pipeline Ops",
    "path": "/root/AAA/skills/well-triadic-ops",
    "skill_md": "/root/AAA/skills/well-triadic-ops/SKILL.md",
    "kind": "skill",
    "state": "projection",
    "depth": 0,
    "namespace": null,
-   "sha256": "b9a74ed3e7980de9ec875492a576c7b9458c1900033a18fe63bee969cd77bfa4",
+   "sha256": "442a03b81a1890ed53c6046223c277656263d8d28ad0192d32d831a66bbd2efe",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "333-AGI",
@@ -35497,7 +36864,9 @@
    "version": null,
    "deprecated": false,
    "owner_layer": "AAA",
-   "aliases": [],
+   "aliases": [
+    "/root/AAA/skills/primitives/memory/wisdom-scar-session-audit"
+   ],
    "authority": {
     "risk_tier": null,
     "autonomy_tier": null,
@@ -35521,16 +36890,20 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "711468def031cc900da7fef977719d39062d2d6dc09e5dc207330c90f710ec55",
-   "version": null,
+   "sha256": "e405446d8a09796c0de0de1bf97b22c0d37a0eff862a63cbf5aa2e61a71d3bfd",
+   "version": "1.1.0",
    "deprecated": false,
-   "owner_layer": null,
+   "owner_layer": "F13 SOVEREIGN",
    "aliases": [],
    "authority": {
-    "risk_tier": null,
+    "risk_tier": "low",
     "autonomy_tier": null,
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F1",
+     "F2",
+     "F9"
+    ]
    },
    "harnesses": [
     "claude",
@@ -35549,16 +36922,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "047758a840561d978c30dd7bb63a86d75819fc0cfaeffde0855d82df54a98706",
+   "sha256": "d22b33c9512a3ce6e35da81c9a5baf0f22ed814463168ed2d8e40d5ac73294d3",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -35609,16 +36987,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "cf93ae30730cf441336e78e3639978783f5d7cf8598c749b27e06631d122a3f8",
+   "sha256": "af9219aba1c683388933561edb299c5c5f053db608379a0d84c86b3dd53365d5",
    "version": null,
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": "fed-long-context",
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
@@ -35637,7 +37020,7 @@
    "state": "body",
    "depth": 1,
    "namespace": "workshop",
-   "sha256": "484f1c513442b0ca6295fb65d76c6ff84a43ae9df761eed57c62b5691fc153c1",
+   "sha256": "a52f85933e428a403162472ed8fdb152f0d2eba14a021484806b9da68e12f401",
    "version": "1.0.0",
    "deprecated": false,
    "owner_layer": "F13",
@@ -35946,16 +37329,21 @@
    "state": "body",
    "depth": 0,
    "namespace": null,
-   "sha256": "9f3b778283ca1b1f553771f499a8810563fd328f1f9aa18faf60c6867131c5e0",
+   "sha256": "822e31b2d1a10c8f2d9163fce6c597941ca3b6d2473bc6e93dca55f27db521a5",
    "version": "1.1.0",
    "deprecated": false,
    "owner_layer": null,
    "aliases": [],
    "authority": {
     "risk_tier": null,
-    "autonomy_tier": null,
+    "autonomy_tier": "T1",
     "capability_tier": null,
-    "floor_scope": null
+    "floor_scope": [
+     "F2",
+     "F4",
+     "F9",
+     "F12"
+    ]
    },
    "harnesses": [
     "claude",
