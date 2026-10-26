@@ -1,0 +1,52 @@
+# /etc/systemd/system/openclaw-gateway.service
+[Unit]
+Description=OpenClaw Gateway (Host-based)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=15
+StartLimitInterval=120
+StartLimitBurst=5
+User=root
+WorkingDirectory=/root/.openclaw/workspace
+EnvironmentFile=/root/.secrets/vault.flat.env
+Environment="HOME=/root"
+ExecStart=/usr/bin/openclaw gateway --bind custom --port 18789
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/openclaw-gateway.service.d/05-token-env.conf
+[Service]
+EnvironmentFile=/root/.secrets/tokens/openclaw-runtime.env
+
+# /etc/systemd/system/openclaw-gateway.service.d/10-keys.conf
+[Service]
+EnvironmentFile=/etc/systemd/system/openclaw-gateway.service.d/10-keys.env
+
+# /etc/systemd/system/openclaw-gateway.service.d/40-loopback-nat.conf
+[Service]
+ExecStartPre=/bin/sh -c "iptables -t nat -C OUTPUT -p tcp -d 127.0.0.1 --dport 18789 -j DNAT --to-destination 100.64.0.5:18789 2>/dev/null || iptables -t nat -A OUTPUT -p tcp -d 127.0.0.1 --dport 18789 -j DNAT --to-destination 100.64.0.5:18789"
+
+# /etc/systemd/system/openclaw-gateway.service.d/50-memory-embedding.conf
+[Service]
+Environment=MEMORY_EMBEDDING_PROVIDER=ollama
+
+# /etc/systemd/system/openclaw-gateway.service.d/60-drain-and-order.conf
+# Added 2026-09-29 by HERMES (KVM8) per `openclaw gateway status --deep` recommendations.
+# The updater must be able to stop the gateway so post-update doctor can enter maintenance.
+# A 90s manager default SIGKILLs mid-drain, leaving the agent DB lease stale.
+[Unit]
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment="PATH=/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+TimeoutStopSec=600
+KillMode=mixed
+RestartSec=5
