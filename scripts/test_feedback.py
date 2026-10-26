@@ -146,8 +146,22 @@ def main() -> int:
           s2.active()[0]["applied_count"] == 1,
           str(s2.active()[0]["applied_count"]))
     s2.export_rules(WORK / "rules.md")
-    check("a second export increments again (staleness becomes visible)",
-          s2.active()[0]["applied_count"] == 2)
+    check("a repeat export for the SAME edition does not double count"
+          " (a gate refusal then a retry is ONE edition, not two)",
+          s2.active()[0]["applied_count"] == 1,
+          str(s2.active()[0]["applied_count"]))
+    s2.export_rules(WORK / "rules.md", edition_key="EDITION-011")
+    check("a NEW edition does increment (staleness stays visible)",
+          s2.active()[0]["applied_count"] == 2,
+          str(s2.active()[0]["applied_count"]))
+    s2.export_rules(WORK / "rules.md", edition_key="EDITION-011")
+    check("and a repeat of that edition is still one",
+          s2.active()[0]["applied_count"] == 2,
+          str(s2.active()[0]["applied_count"]))
+    apps = s2.conn.execute(
+        "select count(*) from feedback_applications").fetchone()[0]
+    check("every attempt is RECORDED even when it is not counted",
+          apps == 4, f"{apps} application rows for 2 rules x 2 editions")
     empty = FeedbackStore(WORK / "state3.sqlite3").export_rules(
         WORK / "rules3.md").read_text()
     check("an empty ledger says so instead of inventing content",

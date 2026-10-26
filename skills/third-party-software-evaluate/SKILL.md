@@ -1,6 +1,8 @@
 ---
 name: third-party-software-evaluate
 description: Evaluate third-party software before Arif installs.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Third-Party Software Evaluation — Cold Outreach Triage

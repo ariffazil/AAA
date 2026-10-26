@@ -27,41 +27,68 @@ providers:
   minimax:
     status: live
     api: https://api.minimax.io/v1
-    balance: unknown
-    capabilities: [chat, function_calling, reasoning]
+    balance: subscription — M Plan Build (credits, not PAYG balance)
+    plan_tier: Monthly M Plan Build
+    plan_renewal: 2026-11-19
+    plan_order_id: 2112696757015031993
+    credential_class: sk-cp
+    credential_note: >-
+      MINIMAX_API_KEY (and its aliases MINIMAX_MPLAN_KEY / MINIMAX_PLUGIN_API_KEY) all resolve to the
+      SAME sk-cp plan seat. The former sk-api pay-as-you-go key is preserved as MINIMAX_PAYG_API_KEY and
+      is DEAD — live-probed 2026-10-21: HTTP 402 insufficient_balance_error. Never route production traffic to it.
+    capabilities: [chat, function_calling, reasoning, vision, image_generation, video_generation, text_to_speech, web_search]
     models:
       - id: MiniMax-M3
         tier: heavy
         role: 888-APEX primary · multimodal · vision
-        note: Arif confirmed LIVE 2026-08-04
+        note: P1 head of apex-888 / forge-planner / forge-judge / hermes-default / i-arif
+      - id: MiniMax-M3.1-Flash
+        tier: heavy
+        role: fast general lane
+      - id: MiniMax-M3.1-Flash-Preview
+        tier: heavy
+        role: MiniMax Code / M Plan exclusive
       - id: MiniMax-M2.7
         tier: medium
       - id: MiniMax-M2.5
         tier: medium
       - id: MiniMax-M2.1
         tier: cheap
+    verified: 2026-10-21 (FI-003 live probe — /v1/models 200, /v1/chat/completions 200, /anthropic/v1/messages 200, /v1/responses 200)
 
-  # VIDEO MODELS (MiniMax MCP — server broken, direct API works)
+  # VIDEO MODELS (MiniMax — direct API verified; :18100 media MCP is a separate node REST surface)
   minimax-video:
-    status: live_api_only
+    status: live
     api: https://api.minimax.io/v1/video_generation
     mcp_port: 18100
-    mcp_status: broken  # mcp 1.24-1.29 FastMCP.run() API mismatch
-    workaround: POST /v1/video_generation (async, poll /v1/query/video_generation)
+    mcp_status: live — node minimax-mcp-js (REST mode), NOT the retired FastMCP python server
+    mcp_note: >-
+      The registry previously said 'broken — FastMCP.run() API mismatch'. That was true of the OLD python
+      minimax-mcp-media service (now inactive/disabled). The live :18100 listener is
+      `node /root/.npm-global/bin/minimax-mcp-js --mode rest --port 18100`, verified 2026-10-21.
+    workaround: POST /v1/video_generation (async, poll /v1/query/video_generation) — works directly with the plan key
+    model_id_warning: >-
+      The M Plan tier sheet advertises video model "H3", but POST /v1/video_generation REJECTS H3
+      (status 2013 invalid model param). Callable ids verified 2026-10-21: MiniMax-Hailuo-02, T2V-01 (both accepted).
+      "Hailuo-02" without the MiniMax- prefix is also rejected.
     models:
+      - id: MiniMax-Hailuo-02
+        type: text-to-video
+        max_duration_s: 10
+        resolution: 1080p
+        note: Physics champion (WorldModelBench). Best for human motion. VERIFIED callable 2026-10-21.
       - id: T2V-01
         type: text-to-video
         max_duration_s: 10
         resolution: 1080p
-        cost_per_clip: 0.30
+        note: VERIFIED callable 2026-10-21.
       - id: I2V-01
         type: image-to-video
         max_duration_s: 10
-      - id: Hailuo-02
-        type: text-to-video + image-to-video
-        max_duration_s: 10
-        resolution: 1080p
-        note: Physics champion (WorldModelBench). Best for human motion.
+        note: image-to-video family (I2V-01-Director / I2V-01-live also listed upstream)
+    cost_note: >-
+      cost_per_clip 0.30 was the PAYG list price. On the M Plan Build seat video draws on plan credits
+      (tier advertises 7.5x Go usage and 3 Hailuo clips/day) — treat PAYG per-clip price as reference only.
 
   # ============================================================
   # POOL C — Qwen Individual (RATE LIMITED)

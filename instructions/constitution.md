@@ -1,5 +1,7 @@
 # Constitutional floors (F1–F13)
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Canonical source:** [`/root/arifOS/GENESIS/FLOOR_TABLE.json`](/root/arifOS/GENESIS/FLOOR_TABLE.json)
 > **Canon root:** [`/root/arifOS/GENESIS/000_KERNEL_CANON.md`](/root/arifOS/GENESIS/000_KERNEL_CANON.md) §3
 

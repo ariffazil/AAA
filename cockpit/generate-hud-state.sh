@@ -8,7 +8,7 @@
 # misi tersembun dari sesi lapuk. Fallback eksplisit, bukan karutan.
 budget_bounded="unspecified"
 _now_epoch=$(date -u +%s)
-_epn="/root/AAA/cockpit/execution-path-next.json"
+_epn="/var/lib/arifos/state/cockpit/execution-path-next.json"
 if [[ -r "$_epn" ]]; then
   mission_objective=$(jq -r '.current_state.last_action // .purpose // "no active governed mission"' "$_epn" 2>/dev/null | head -1)
   mission_objective=${mission_objective:-"no active governed mission"}
@@ -77,8 +77,11 @@ running_services=$(systemctl list-units --type=service --state=running --no-page
 total_services=$(systemctl list-units --type=service --no-pager 2>/dev/null | grep -cE '\.service' || echo 0)
 # Sovereign fix 2026-10-02: well.json was a GHOST SOURCE (file never existed).
 # Read real WELL telemetry (machine_state.json, cron /proc collector). Honest "—".
-well_score=$(jq -r '.pressure.score // .pressure.level // "—"' /root/WELL/machine_state.json 2>/dev/null || echo "—")
-_well_ts=$(jq -r '.timestamp_unix // 0' /root/WELL/machine_state.json 2>/dev/null || echo 0)
+_well_file="/var/lib/well/machine_state.json"
+[[ -r "$_well_file" ]] || _well_file="/root/WELL/machine_state.json"
+well_score=$(jq -r '(.truth_status // "—") + " cpu_psi=" + ((.pressure.cpu_some_avg10 // "—")|tostring)' "$_well_file" 2>/dev/null || echo "—")
+_well_ts=$(jq -r '.timestamp_unix // 0' "$_well_file" 2>/dev/null || echo 0)
+_well_ts=${_well_ts%%.*}
 if [[ "$_well_ts" =~ ^[0-9]+$ ]] && (( _well_ts > 0 )); then
   well_age_min=$(( ( _now_epoch - _well_ts ) / 60 )); (( well_age_min < 0 )) && well_age_min=0
 else
@@ -110,6 +113,18 @@ chron_predictions_due=$(jq -r '.predictions_due // 0' /root/chron/data/predictio
 # calibration.json, so the HUD showed a permanent "?" next to existing data.
 _brier_raw=$(jq -r '.mean_brier // empty' /root/chron/data/calibration.json 2>/dev/null || echo "")
 chron_brier=$(printf '%.3f' "$_brier_raw" 2>/dev/null || echo "—")
+
+# ── [4b] METABOLISM (sovereign 2026-10-22) ─────────────────────
+# G / C_dark / W3 are MEASURED at kernel :8088 apex_scalars (NOT :7073).
+# FQ + primary_pathology are the metabolism organ (:7073). Honest "—" when
+# an endpoint is unreachable — never a fabricated 0.
+_kh=$(curl -s --max-time 4 http://127.0.0.1:8088/health 2>/dev/null)
+_af=$(curl -s --max-time 4 http://127.0.0.1:7073/health 2>/dev/null)
+apex_g=$(jq -r '.apex_scalars.G.value // "—"' <<<"$_kh" 2>/dev/null); apex_g=${apex_g:-—}
+apex_cd=$(jq -r '.apex_scalars.C_dark.value // "—"' <<<"$_kh" 2>/dev/null); apex_cd=${apex_cd:-—}
+apex_w3=$(jq -r '.apex_scalars.W3.value // "—"' <<<"$_kh" 2>/dev/null); apex_w3=${apex_w3:-—}
+fq_val=$(jq -r '.fq.quotient // "—"' <<<"$_af" 2>/dev/null); fq_val=${fq_val:-—}
+metab_path=$(jq -r '.vector.diagnosis.primary_pathology // "—"' <<<"$_af" 2>/dev/null); metab_path=${metab_path:-—}
 
 # ── [6] CONCURRENCY ─────────────────────────────────────────────────
 # Bug fix 2026-10-02: prior grep -cE "(claude|forge|hermes|chron|geox)" matched
@@ -167,6 +182,15 @@ if [[ -n "$newest_receipt" ]]; then
   last_consequence="$(basename "$newest_receipt" .md) · ${_rc_age}m ago"
 fi
 
+# ── HUMAN LINE (sovereign 2026-10-22): satu ayat consequence, BM ───────
+if (( mission_age_min >= 0 )) && (( mission_age_min <= 90 )) && [[ "${held_count}" =~ ^[0-9]+$ ]] && (( held_count > 0 )); then
+  human_line="PERLU ARIF: ${held_oldest} (queue age=${mission_age_min}m)."
+elif [[ "${burning}" != "none" ]]; then
+  human_line="TINDAKAN: ${burning}; freshness=${freshness}. Tiada keputusan diperlukan daripada Arif."
+else
+  human_line="AMAN: tiada tindakan diperlukan."
+fi
+
 # ── Build canonical state object ────────────────────────────────────
 # bounded-repair 2026-10-02: punca nilai kosong → default jujur
 _now="$(date -u +%s)"; _iso="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -188,7 +212,10 @@ _now="$(date -u +%s)"; _iso="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 [[ "${chron_predictions_due}" =~ ^[0-9]+$ ]] || chron_predictions_due=0
 [[ "${active_agents_n}" =~ ^[0-9]+$ ]] || active_agents_n=0
 [[ "${leases_n}" =~ ^[0-9]+$ ]] || leases_n=0
+leases_flag=""
+if (( active_agents_n > 0 )) && (( leases_n == 0 )); then leases_flag=" ⚠no-lock"; fi
 : "${NOW_UNIX:=$_now}"
+: "${NOW_UTC:=$(date -u +%Y-%m-%dT%H:%M:%SZ)}"
 
 state=$(jq -n \
   --arg actor "$actor" \
@@ -220,6 +247,13 @@ state=$(jq -n \
   --argjson chron_attention_debt "$chron_attention_debt" \
   --argjson chron_predictions_due "$chron_predictions_due" \
   --arg chron_brier "$chron_brier" \
+  --arg apex_g "$apex_g" \
+  --arg apex_c_dark "$apex_cd" \
+  --arg apex_w3 "$apex_w3" \
+  --arg fq_val "$fq_val" \
+  --arg metab_pathology "$metab_path" \
+  --arg human_line "$human_line" \
+  --arg leases_flag "$leases_flag" \
   --argjson active_agents_n "$active_agents_n" \
   --argjson leases_n "$leases_n" \
   --arg dirty_repos "$dirty_repos" \
@@ -244,7 +278,8 @@ state=$(jq -n \
       waiting: $waiting,
       source_neq_runtime: $source_neq_runtime,
       freshness: $freshness,
-      last_consequence: $last_consequence
+      last_consequence: $last_consequence,
+      human_line: $human_line
     },
     panels: {
       "0_IDENTITY_AUTH": {
@@ -282,6 +317,11 @@ state=$(jq -n \
       "4_JUDGMENT": {
         canon_ok: $canon_ok,
         contradictions_n: $contradictions_n,
+        apex_g: $apex_g,
+        apex_c_dark: $apex_c_dark,
+        apex_w3: $apex_w3,
+        fq: $fq_val,
+        metabolism_pathology: $metab_pathology,
         frame: {
           age_days: $frame_age_days,
           alerts: $frame_alerts,
@@ -297,6 +337,7 @@ state=$(jq -n \
       "6_CONCURRENCY": {
         active_agents: $active_agents_n,
         leases: $leases_n,
+        leases_flag: $leases_flag,
         dirty_repos: $dirty_repos,
         ecw: $ecw_summary
       },
@@ -315,7 +356,7 @@ if [[ "${1:-}" == "--json" ]]; then
   exit 0
 fi
 
-STATE_OUT="${STATE_OUT:-/root/AAA/cockpit/hud-state.json}"
+STATE_OUT="${STATE_OUT:-/var/lib/arifos/state/cockpit/hud-state.json}"
 tmp="${STATE_OUT}.tmp"
 printf '%s\n' "$final" > "$tmp"
 mv "$tmp" "$STATE_OUT"

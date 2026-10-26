@@ -107,11 +107,14 @@
       "class": "METABOLISM",
       "role": "federation_metabolism",
       "port": 7073,
+      "mcp_port": 7075,
       "unit": "arifflow.service",
+      "mcp_unit": "arifflow-mcp.service",
       "owned_domains": [
         "flow_quotient",
         "receipt_metabolism",
-        "attention_checkpointing"
+        "attention_checkpointing",
+        "fastmcp_transport"
       ]
     },
     "signal": {

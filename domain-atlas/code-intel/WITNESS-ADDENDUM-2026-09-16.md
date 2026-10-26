@@ -52,3 +52,20 @@ required disk reconciliation before downstream agents cite phantom paths.
 - Prepared activation packet: add `09-boundary-ratchet.yml` to required status checks for main on the 3 repos (gh api PUT /repos/{o}/{r}/branches/main/protection — needs admin:repo scopes already held). One word from sovereign activates; ledger expiries (2026-12-15) auto-tighten the ratchet after that.
 
 Evidence labels: all rows OBS except "may live on FI-003's machine" (UNKNOWN) and recommendations (INT/SPEC, confidence 0.85).
+
+---
+
+## Doc freshness stamp — 2026-10-16 (D1 from blueprint)
+
+Measured 2026-10-16 on KVM8, FI-003:
+
+- **arifFlow** has **TWO ports** live (Arif's correction to blueprint's "REST only" framing):
+  - `:7073` — Rust HTTP daemon `/opt/arifflow/bin/arifflow` (tailscale + localhost bind)
+  - `:7075` — python3 localhost MCP endpoint (config points here: 7075/mcp)
+  - The blueprint's binary "REST vs MCP" label is **incomplete** — needs reconciliation of which port is canonical. The config currently points to 7075/mcp; the daemon lives on 7073.
+
+- **FLAME :18901** — **ABSENT** (no listener; `ss -ltnp | grep :18901` → 0 hits). All FLAME references in `skills-cold/.archive/` are archived snapshots, not active.
+
+- **i-ARIF :18101** — **ABSENT** (no listener; `ss -ltnp | grep :18101` → 0 hits). All i-ARIF references in `skills-cold/.archive/` are archived snapshots, not active.
+
+- This stamp is the authoritative correction to the doc content above. The 7073 reference in the daemon-rebuild paragraph is preserved (the Rust daemon is on 7073); the 7075 port is the MCP surface the config points to. The two coexist; they are not duplicates.

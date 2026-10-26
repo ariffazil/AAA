@@ -42,7 +42,7 @@ except ImportError:
 
 MODE = os.environ.get("ARIFOS_HERO_MODE", "full")
 TERM = Path("/root/AAA/terminal")
-STATE = TERM / "state.json"
+STATE = Path("/var/lib/arifos/state/terminal/state.json")
 TTL_S = 30
 
 # ── ANSI fallback palette ──
@@ -370,7 +370,7 @@ def observe():
         "LAW": "/root/arifOS/GENESIS/000_KERNEL_CANON.md",
         "LAW_FED": "/root/AAA/prompts/INIT.md",
         "BOOT": "/root/AAA/terminal/BOOT.md",
-        "STATE": "/root/AAA/terminal/state.json",
+        "STATE": "/var/lib/arifos/state/terminal/state.json",
         "BRAIN": "/root/.config/federation-models.json",
         "CAPS": "/root/AAA/registries/models/CAPABILITIES.json",
         "TOOLS": None,

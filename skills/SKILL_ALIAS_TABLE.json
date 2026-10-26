@@ -7368,9 +7368,20 @@
       "new": "wisdom-reader",
       "status": "RENAMED",
       "renamed_at": "2026-09-14T16:22:42.909548+00:00"
-    }
+    },
+    {"old": "scar-integration", "new": "wisdom-scar-session-audit", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "arif-fazil-site-deploy", "new": "arif-sites-ops", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "arif-site-publish", "new": "arif-sites-ops", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "persona-voice-note-render", "new": "persona-voice-render-ops", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "third-party-evaluation-intake", "new": "vendor-evaluation-intake", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "cross-node-artifact-transfer", "new": "cross-host-artifact-delivery", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "FORGE-cicd-docker-deploy", "new": "cicd-deploy", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "geoscience-figure-audit", "new": "geox-geoscience-artifacts", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "weekly-chat-reflection", "new": "weekly-user-reflection", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "persona-voice-act-arcs", "new": "persona-arc-scripting", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"},
+    {"old": "RSI-recursive-improvement", "new": "rsi-federation-mesh", "status": "MERGED_20261023", "renamed_at": "2026-10-23T12:22:19Z", "note": "pointer stub retained for discovery; pre-merge body in /root/forge_work/2026-10-23/skill-audit/archive/frozen-AAA-skills/.frozen/2026-10-23-entropy/"}
   ],
-  "last_updated": "2026-09-14T16:22:42.909548+00:00",
+  "last_updated": "2026-10-23T12:22:19Z",
   "archived_dirs": [
     {
       "name": "aaa-agent-invariants",

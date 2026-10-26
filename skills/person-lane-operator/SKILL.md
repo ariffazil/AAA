@@ -378,7 +378,7 @@ When serving a persona whose life includes housing/tenancy (e.g., Syed Khairuddi
 
 **Letter generation workflow (verified Syed AC case, 2026-08-07):** when the persona needs a formal letter for the landlord (or any 3rd party):
 
-1. **Load the source skill template** — `skill_view(name="malaysia-tenancy-disputes", file_path="templates/aircond-replacement-letter.md")` gives the verified clause citations and formal Malay structure.
+1. **Load the source skill template** — `skill_view(name="malaysia-tenancy-disputes", file_path="/root/AAA/skills/malaysia-tenancy-disputes/templates/aircond-replacement-letter.md")` gives the verified clause citations and formal Malay structure.
 2. **Substitute persona fields** — landlord name, tenant IC, premises address, specific issue dates.
 3. **Render to PDF + DOCX** — use `weasyprint` for PDF (or `pandoc` → `wkhtmltopdf` fallback). DOCX via `pandoc` so the persona can edit fields later.
 4. **Deliver as MEDIA: attachment** in the lane's Telegram DM. The persona forwards to landlord directly; the lane never sends to 3rd parties without explicit consent (F13 rule).
@@ -900,3 +900,9 @@ When the operator shares deep personal research about a 3rd party (psychology, s
 
 *Pattern codified from Syed Khairuddin (Abang Sado) deployment 2026-08-07.*
 *Generalizes to any person the operator wants to give memory-lane treatment.*
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-10-18-git-lane-identity-binding-and-agy-harness
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

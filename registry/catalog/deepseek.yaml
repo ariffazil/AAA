@@ -92,8 +92,13 @@ requires_human_ack_for:
 - external_relay
 - vault_seal
 freshness:
-  review_after: '2026-08-12'
+  review_after: '2027-01-18'
   stale_action: degrade_to_observe_only
-  last_verified: '2026-06-27'
+  last_verified: '2026-10-19'
 notes: 'Migrated from deepseek_soul.yaml + deepseek_shadow.yaml. Original status:
-  PRIMARY_FEDERATION_MODEL. Review and enrich.'
+  PRIMARY_FEDERATION_MODEL. 2026-10-19 UPDATE (333-AGI): canonical DeepSeek model =
+  V4.1-Flash-1017 (api id=deepseek-flash; weights-only checkpoint 2026-10-17 over
+  V4.1-Flash 2026-09-10; 552B MoE causal encoder-decoder, 8B prefill/16B decode active,
+  1M ctx, native vision). Companion V4-Pro (deepseek-v4-pro) = slow-tier sovereign lane.
+  Registry id (deepseek.deepseek-v3) retained for compiled-registry stability; identity
+  drift logged here, not renamed. Balance LOW $2.89 @ 2026-10-19 (alert floor $2.00).'

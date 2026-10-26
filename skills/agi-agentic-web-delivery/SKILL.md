@@ -48,6 +48,32 @@ MCP: `aforge.forge_web_zen` mode `doctor`. CLI has no `audit` mode — crawl you
 
 Next session reads `/root/work/tasks.json` (schema `arifos.work.tasks.v1`). Do not copy metabolism numbers out of it. Oil and gas origin at 2026-10-13T19:13:21Z was the arif static copy, not `/var/www/html/{oil,gas}`. Re-probe. Re-count live HTML that names a hash the new dist lacks before trusting 74 (measured 2026-10-13). The barrel rail is already live. Three T1 jobs are named in the queue (`p1-site-audit-false-delete`, `p2-vitals-rm48-chart`, `p2-generator-dry-run`) and are not started from this skill. Do not run `make deploy`. A receipt is not a SEAL.
 
+## AAA live-state contract (2026-10-17)
+
+The cockpit at `aaa.arif-fazil.com` is a renderer, not a database. Its sources:
+
+| Surface | Source | Writer | Freshness |
+|---|---|---|---|
+| `/state.json` | `/root/AAA/state/federation_state.json` | `federation-state.timer` | 30s |
+| `/truth-contract.json` | `compile_truth_contract.py` | `truth-contract.timer` | 5 min (installed 2026-10-17) |
+| `/claims.json`, `/status.json` | same compiler | same timer | 5 min |
+
+Rules learned from a measured drift:
+
+1. **Canonical verdict is top-level** (`health.verdict`). The nested `fq` block carries only `legacy_verdict`; reading it yields `UNKNOWN` while the engine says `FLOWING`.
+2. **Holds come from live `:7073/health` `fq.per_actor`** (`held` / `throttled`), never from a snapshot file. `map_atlas_echo.json` was 5h old and listed 6 actors that no longer existed in the live flow.
+3. **`generated_at` is part of the contract.** A compiler with no timer is a hand-copied file — check `systemctl list-timers`.
+4. **`decision_ledger.jsonl` is history, not a hold queue.** `SEAL / RESOLVED / PARTIAL` rows must not be counted as active machine holds.
+
+Verification one-liner:
+
+```bash
+curl -s https://aaa.arif-fazil.com/state.json | python3 -c "import sys,json;d=json.load(sys.stdin);m=d['metabolism'];print(m['verdict'],m['diagnosis'],m['quotient'],'holds',d['holds'])"
+curl -s http://127.0.0.1:7073/health | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['verdict'],d['diagnosis'],d['fq']['quotient'])"
+```
+
+The two must agree on verdict; the quotient may differ by one sampling window.
+
 ## Load order (first mission)
 
 1. This skill

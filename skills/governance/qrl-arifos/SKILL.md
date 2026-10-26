@@ -10,6 +10,8 @@ metadata:
     requires_tools: [mcp__arifos__arif_init, mcp__arifos__arif_judge]
 ---
 
+> **DOOR TABLE v2:** peta reality-mesh (7 paksi) ada di `reality-intelligence` — Pintu 4 NAVIGATION. Peranan sini: **Pintu 5 gov** (reality-loop-operator = exec).
+
 # QRL — Quantum Reality Loop (classical; "quantum" is metaphor only)
 
 ## When to Use

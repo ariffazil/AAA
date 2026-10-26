@@ -1,7 +1,7 @@
 # Conscience Embodiment — Kernel & Agent Doctrine
 
 > Forged 2026-08-30 by 333-AGI from sovereign directive (i-arif reflection session, kanak2 context).
-> Status: **OPERATIONAL DOCTRINE (T1)** for behavioral rules. Items marked `F13-PENDING` are constitutional proposals — they bind agents as guidance now, but floor-level enforcement requires Arif's explicit ratification. Do not self-promote them to F1-F13.
+> Status: F13_RATIFIED_CHAT · 2026-10-17 · "aku sahkan"
 
 ## Origin
 

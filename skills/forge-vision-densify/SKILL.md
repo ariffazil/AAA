@@ -371,3 +371,9 @@ Two test prompts required before SEAL:
 >
 > Acknowledged correction: "knowing limits" → "structural governance."
 > Anti-Hantu: character attribution removed. Pipe compliance is the bar.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-007-over-output-verbosity
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

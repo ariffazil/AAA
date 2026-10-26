@@ -154,6 +154,39 @@ and the injection pattern implemented in `geox_middleware.py`.
 - `references/coverage-propagation-doctrine.md` — full reference for hardening GEOX tools to carry coverage_score, epistemic_label, and coverage_model. Includes the 5-tier taxonomy, fail-closed rules, 3-step harden recipe, verification commands, and the remaining tools still pending hardening.
 - `scripts/verify_session_enforcement.py` — runnable verification for auto-mint, tiers, rate limiter, and HTTP mapping.
 
+## 2026-07-28 protocol contract + deploy gate (2026-10-15)
+
+Every stateless-era reply carries `resultType:"complete"` — enforced ONCE inside
+`stateless_era.py` (`augment_stateless_result` / `_augment_captured_response`) at the
+era-bridge choke point: JSON bodies re-serialized, SSE `data:` frames rewritten
+line-wise (split chunks safe), content-length recomputed from emitted bytes. Errors
+and legacy 2025-11-25 traffic untouched. Existing discriminators (`input_required`)
+never clobbered; tool errors (`isError:true`) still get `complete`.
+
+- Contract test: `tests/test_stateless_resulttype_contract.py` (11 tests — run on any
+  stateless_era.py / server.py middleware change).
+- Deploy gate: `make deploy-gate` — fails a deploy unless health SHA == deployed commit,
+  surface_drift ok (registry truth), and tools/list + tools/call + resources/list +
+  prompts/list all reply resultType live over the wire (strict httpx, never curl).
+  Inherited arifOS kernel HOLD state = WARN, not BLOCK (repo_guard Gate-3 doctrine).
+- Live deployment: FHS systemd `geox-mcp.service` from `/opt/geox` (separate clone;
+  same SHA as /root/GEOX). Deploy = push → `cd /opt/geox && git pull && systemctl
+  restart geox-mcp` → `make deploy-gate`. `/opt/geox` legitimately carries untracked
+  runtime dirs (`app/`, `data/dde_cache/`, `ingest/`) — do not "clean" them.
+- `geox_surface_status` reports `deployed_git_sha` + `live_counts` — tools count is
+  NAME-SET filtered to CANONICAL_PUBLIC_TOOLS (one duplicate registration exists on
+  the live instance: tools_total=28 vs 27 public); `tools_public_names`/
+  `tools_nonpublic_names` are the OBS instruments that settle count disputes.
+- Known open defects (2026-10-15): `/health` cold-start bootstrap uses dead
+  `_tool_manager` path (FastMCP 3.4.6 has async `list_tools()` on the instance —
+  no `_tool_manager` attr); G0.7 missing-Mcp-Method 400 body never reaches strict
+  clients (BaseHTTPMiddleware abort, documented server.py ~2847); simpeg declared
+  in pyproject but never imported (retire or wire); pre-existing suite failures:
+  test_mcp_apps_readiness::test_11_phase_01_truth_floor_and_csp_parity,
+  test_truth_loop_hardening::test_w10_deployment_drift_invariant (both fail identically
+  on clean main); transport_manifest + gateway_authority tests flake on generated-
+  artifact set-ordering (tools.json app_export order is hash-randomized per process).
+
 ## Pitfalls
 
 ### 1. `make test` vs bare pytest

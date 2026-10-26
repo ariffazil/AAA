@@ -2,14 +2,14 @@
 """
 arifhud-v3-candidate.py — Calm ARIF/AAA Reality Cockpit v3 renderer.
 Read-only. No network. No MCP. No LLM. No mutation.
-Reads /root/AAA/cockpit/hud-state.json (or path from ARIF_HUD_STATE).
+Reads /var/lib/arifos/state/cockpit/hud-state.json (or path from ARIF_HUD_STATE).
 Honors: TERM=dumb, NO_COLOR, non-TTY, narrow width, missing/malformed state.
 """
 from __future__ import annotations
 import json, os, sys, shutil
 from pathlib import Path
 
-DEFAULT_STATE = "/root/AAA/cockpit/hud-state.json"
+DEFAULT_STATE = "/var/lib/arifos/state/cockpit/hud-state.json"
 STATE = os.environ.get("ARIF_HUD_STATE", DEFAULT_STATE)
 
 # ── capability detection ──────────────────────────────────────────────────
@@ -142,7 +142,7 @@ def render(state: dict | None) -> str:
     band_c = state_color(band)
 
     # NEXT — single highest-value
-    ep_path = "/root/AAA/cockpit/execution-path-next.json"
+    ep_path = "/var/lib/arifos/state/cockpit/execution-path-next.json"
     next_action = "(no execution-path available)"
     waiting_count = 0
     oldest = ""

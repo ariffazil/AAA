@@ -69,7 +69,7 @@ recorded.
    reading. A parse that silently drops wrapped lines turns every later rate into fiction.
 4. **Run the probe set** (speaker counts · lexical attribution · base rate · hour histogram · distress
    vocabulary frequency · service/logistics counts · help-ask vs help-offer asymmetry). Recipes and
-   the gateway-log mining pattern: `references/corpus-probes-and-ledger.md`.
+   the gateway-log mining pattern: ``references/``.
 5. **Write the ledger before writing the answer.** Dated file in the private lane, beside the maps it
    corrects: evidence table with paths and counts, one heading per finding, a correction log, and
    `UNSUBSTANTIATED` / `SOVEREIGN-TESTIMONY-ONLY` / `ASSOCIATION_ONLY` tiers on every old claim the
@@ -174,3 +174,6 @@ falsification discipline. Worked case: `references/asymmetry-extraction-self-ref
 (Laletha ~8yr + Kak Sue 1-night, parallel exports in one turn).
 
 DITEMPA BUKAN DIBERI
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

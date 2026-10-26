@@ -16,6 +16,8 @@ triggers:
   - a rival exchange or a dialogue read aloud
   - one file must carry a narrator plus a character
   - a scene needs concatenating from separately rendered segments
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Synthetic Voice Scene Rendering

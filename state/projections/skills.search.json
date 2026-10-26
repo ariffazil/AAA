@@ -1,0 +1,4988 @@
+{
+ "schema": "aaa/projection/skills-search/v1",
+ "generated_at": "2026-10-22T12:05:50Z",
+ "consumer": "fast skill lookup by token (harness routing)",
+ "failure_class": "skill lookup required reading 785 descriptions",
+ "tokens": 1035,
+ "index": {
+  "000": [
+   "000-salam",
+   "reality-loop-operator"
+  ],
+  "111": [
+   "111-tengok"
+  ],
+  "2026": [
+   "human-apps-roadmap-2026"
+  ],
+  "333": [
+   "333-forge"
+  ],
+  "3baik": [
+   "WELL-3baik-log"
+  ],
+  "555": [
+   "555-betul"
+  ],
+  "666": [
+   "666-rasa"
+  ],
+  "777": [
+   "777-faham"
+  ],
+  "888": [
+   "888-adil"
+  ],
+  "90s": [
+   "forge-explainer-90s"
+  ],
+  "999": [
+   "999-ingat",
+   "reality-loop-operator"
+  ],
+  "a2a": [
+   "FORGE-mcp-a2a-agentic",
+   "a2a-gateway-protocol",
+   "a2a-task-delegator",
+   "forge-mcp-a2a-agentic"
+  ],
+  "aaa": [
+   "AAA-asr-glm-ingest",
+   "AAA-audio-emd-pipeline",
+   "AAA-audio-qualia-doctrine",
+   "AAA-setup-help",
+   "AAA-somatic-emd-pipeline",
+   "AAA-somatic-engine-catalog",
+   "AAA-somatic-music-doctrine",
+   "AAA-tts-engine-catalog",
+   "AAA-voice-cloning-mimo-minimax",
+   "AAA-voice-cloning-qwen-cloud",
+   "aaa-audio-qualia-doctrine",
+   "aaa-capability-compiler",
+   "aaa-chamber-protocol",
+   "aaa-constitution-architecture-audit",
+   "aaa-docs-entropy-reduction",
+   "aaa-doctrine-sealing",
+   "aaa-human-physique-topology",
+   "aaa-image-editing",
+   "aaa-musyawarah-execution",
+   "aaa-ocr-optical-compression",
+   "aaa-pdf-voice-protocol",
+   "aaa-setup-help",
+   "aaa-shadow-mode",
+   "aaa-skill-authoring-craft",
+   "aaa-skill-governor-runtime"
+  ],
+  "abang": [
+   "abang-sado-analysis-doctrine",
+   "abang-sado-tenderness-arc"
+  ],
+  "abi": [
+   "federated-abi-extension"
+  ],
+  "accountability": [
+   "institutional-spend-accountability"
+  ],
+  "act": [
+   "FORGE-act-federation-ingress",
+   "FORGE-sct-federation-ingress",
+   "forge-act-federation-ingress",
+   "persona-voice-act-arcs"
+  ],
+  "action": [
+   "human-reality-field",
+   "loved-one-worry-support",
+   "nusantara-action-spiral",
+   "relationship-kernel"
+  ],
+  "activation": [
+   "mcp-edit-activation"
+  ],
+  "adil": [
+   "888-adil"
+  ],
+  "advisory": [
+   "human-logistics-advisory",
+   "ped-hormone-advisory"
+  ],
+  "advocacy": [
+   "civic-advocacy"
+  ],
+  "agent": [
+   "agent-capability-gap-audit",
+   "agent-capability-self-audit",
+   "agent-claim-verification",
+   "agent-config-validation",
+   "agent-finding-verification",
+   "agent-grammar",
+   "agent-memory-architecture",
+   "agent-message-store-forensics",
+   "agent-question-budget",
+   "agent-readiness-cockpit",
+   "agent-runtime-shadow-repair",
+   "agent-tool-verification",
+   "autonomous-overnight-agent-dispatch",
+   "concurrent-agent-writers",
+   "external-agent-conformance-testing",
+   "federation-agent-card-ops",
+   "federation-agent-identity-binding",
+   "firecrawl-agent",
+   "forge-cross-agent-handoff",
+   "parallel-agent-fanout",
+   "review-agent",
+   "unattended-agent-execution"
+  ],
+  "agentic": [
+   "AGI-agentic-web",
+   "ASI-agentic-architecture",
+   "ASI-agentic-governance",
+   "FORGE-agentic-web-builder",
+   "FORGE-mcp-a2a-agentic",
+   "agentic-genome-species",
+   "agentic-state",
+   "agentic-trust-trajectory",
+   "agi-agentic-web-delivery",
+   "asi-agentic-governance",
+   "forge-agentic-web-builder",
+   "forge-mcp-a2a-agentic",
+   "opencode-agentic-state"
+  ],
+  "agents": [
+   "autonomous-ai-agents"
+  ],
+  "agi": [
+   "AGI-agentic-web",
+   "AGI-audio-quantum-cognition",
+   "AGI-decisions-reflect",
+   "AGI-dream-engine",
+   "AGI-explorer-intelligence",
+   "AGI-graph-engineering-patterns",
+   "AGI-nusantara-substrate",
+   "AGI-skill-unification",
+   "AGI-web-optimization",
+   "agi-agentic-web-delivery",
+   "agi-decisions-reflect",
+   "agi-deep-research-loop",
+   "agi-dream-engine",
+   "agi-multimodal-bridge",
+   "agi-nusantara-substrate",
+   "agi-plan-dag",
+   "agi-web-optimization"
+  ],
+  "agreement": [
+   "malaysia-tenancy-agreement"
+  ],
+  "agy": [
+   "agy-scar-hardening"
+  ],
+  "aia": [
+   "aia-cycle-operator"
+  ],
+  "align": [
+   "hermes-align"
+  ],
+  "alignment": [
+   "architecture-alignment-audit",
+   "federation-alignment-probe",
+   "hermes-persona-alignment",
+   "web-shell-alignment"
+  ],
+  "allocator": [
+   "fed-cognitive-allocator"
+  ],
+  "alpha": [
+   "alpha-zen-lanes"
+  ],
+  "amount": [
+   "monetary-amount-integrity",
+   "monetary-amount-parsing"
+  ],
+  "analysis": [
+   "FORGE-code-analysis",
+   "abang-sado-analysis-doctrine",
+   "company-failure-analysis",
+   "cross-ai-analysis-distillation",
+   "financial-chart-analysis",
+   "forge-code-analysis",
+   "forge-governance-analysis",
+   "market-analysis-scope",
+   "multi-period-cashflow-analysis",
+   "principal-analysis-artifact",
+   "provenance-typed-analysis",
+   "trading-screenshot-analysis",
+   "youtube-analysis"
+  ],
+  "analytics": [
+   "duckdb-analytics-engine"
+  ],
+  "analyzer": [
+   "image-analyzer-vision"
+  ],
+  "anchor": [
+   "temporal-anchor"
+  ],
+  "annotation": [
+   "figure-annotation-verification"
+  ],
+  "anthropology": [
+   "intimate-anthropology",
+   "wawabot-anthropology-surface"
+  ],
+  "anti": [
+   "agent-grammar"
+  ],
+  "apex": [
+   "APEX-humility-godel",
+   "APEX-quantum-eureka",
+   "apex-attention-optimizer",
+   "apex-deliverable-protocol",
+   "apex-fact-check-pass",
+   "apex-judge",
+   "apex-theory-canon",
+   "apex_audit_coverage_check",
+   "apex_authority_check",
+   "apex_floor_check",
+   "apex_reversibility_test",
+   "apex_scope_check",
+   "apex_tool_approval_gate",
+   "apex_verdict_hold",
+   "apex_verdict_seal"
+  ],
+  "api": [
+   "FORGE-fastapi-api-builder",
+   "forge-fastapi-api-builder",
+   "vision-direct-api-fallback"
+  ],
+  "app": [
+   "mobile-app-mockup"
+  ],
+  "apple": [
+   "apple"
+  ],
+  "approval": [
+   "apex_tool_approval_gate"
+  ],
+  "apps": [
+   "chatgpt-apps",
+   "human-apps-roadmap-2026"
+  ],
+  "arabic": [
+   "circular-mark-and-arabic-typography"
+  ],
+  "arc": [
+   "abang-sado-tenderness-arc"
+  ],
+  "architecture": [
+   "ASI-agentic-architecture",
+   "aaa-constitution-architecture-audit",
+   "agent-memory-architecture",
+   "architecture-alignment-audit",
+   "forge-port-architecture",
+   "sovereign-identity-architecture",
+   "tectonic-section-architecture",
+   "wisdom-atlas-architecture"
+  ],
+  "architectures": [
+   "unified-federated-ai-architectures"
+  ],
+  "archived": [
+   "makcikgpt-archived-designs"
+  ],
+  "arcs": [
+   "persona-voice-act-arcs"
+  ],
+  "arif": [
+   "arif-digest-group-chat",
+   "arif-fazil-publication-doctrine",
+   "arif-fazil-site-deploy",
+   "arif-fazil-site-ops",
+   "arif-fazil-web-ops",
+   "arif-site-human-first-audit",
+   "arif-site-publish",
+   "arif-sites-ops",
+   "arif-world-reality-intel",
+   "i-arif-corpus-ops"
+  ],
+  "arifos": [
+   "arifos-auto-init",
+   "arifos-cognitive-atlas",
+   "arifos-collapse-vector-audit",
+   "arifos-constitutional-judge",
+   "arifos-control-plane-sot-audit",
+   "arifos-cron-ops",
+   "arifos-eight-verb-canonical",
+   "arifos-evidence-policy",
+   "arifos-external-council",
+   "arifos-frozen-snapshot-init",
+   "arifos-governance-measurement",
+   "arifos-integration-recon",
+   "arifos-kernel-e2e-testing",
+   "arifos-kernel-eurekas",
+   "arifos-kernel-zen-audit",
+   "arifos-machine-wellness",
+   "arifos-mcp-audit",
+   "arifos-mcp-resource-surface",
+   "arifos-morning-pulse",
+   "arifos-prompt-doctrine",
+   "arifos-site-patch-without-caddy-reload",
+   "opencode-arifos-pitfalls",
+   "qrl-arifos"
+  ],
+  "art": [
+   "ascii-art",
+   "cover-art-pipeline"
+  ],
+  "article": [
+   "civic-article-publishing",
+   "makcikgpt-article-craft"
+  ],
+  "artifact": [
+   "artifact-emission-pipeline",
+   "artifact-source-reconciliation",
+   "chart-artifact-render-qa",
+   "cross-host-artifact-delivery",
+   "cross-node-artifact-transfer",
+   "curated-recommendation-artifact",
+   "evidence-artifact-forensics",
+   "external-artifact-verdict",
+   "generated-artifact-integrity",
+   "generated-scientific-artifact-audit",
+   "geological-artifact-rigor",
+   "loved-one-artifact-ops",
+   "principal-analysis-artifact",
+   "rendered-artifact-verification",
+   "taste-profile-artifact",
+   "technical-artifact-audit",
+   "temporal-artifact-integrity",
+   "third-party-artifact-review"
+  ],
+  "artifacts": [
+   "auditable-numeric-artifacts",
+   "geox-geoscience-artifacts"
+  ],
+  "arxiv": [
+   "arxiv-preprint-pipeline",
+   "arxiv-submission-package"
+  ],
+  "ascii": [
+   "ascii-art"
+  ],
+  "asi": [
+   "ASI-agentic-architecture",
+   "ASI-agentic-governance",
+   "ASI-drift-watch",
+   "ASI-fabrication-prevention",
+   "ASI-skill-binding",
+   "ASI-summarize",
+   "asi-agentic-governance",
+   "asi-summarize",
+   "hermes-asi-intelligence"
+  ],
+  "asr": [
+   "AAA-asr-glm-ingest",
+   "tts-script-asr-gate"
+  ],
+  "assembly": [
+   "multi-voice-note-assembly"
+  ],
+  "assessment": [
+   "body-composition-assessment",
+   "market-claim-assessment",
+   "physique-photo-assessment"
+  ],
+  "asset": [
+   "federation-asset-probe",
+   "geological-asset-brief"
+  ],
+  "atlas": [
+   "arifos-cognitive-atlas",
+   "wisdom-atlas-architecture"
+  ],
+  "atlas333": [
+   "atlas333-cognitive-geometry"
+  ],
+  "attention": [
+   "apex-attention-optimizer"
+  ],
+  "attestation": [
+   "federation-release-attestation",
+   "output-attestation"
+  ],
+  "attribution": [
+   "attribution-integrity",
+   "auth-failure-attribution",
+   "causal-attribution-discipline"
+  ],
+  "audio": [
+   "AAA-audio-emd-pipeline",
+   "AAA-audio-qualia-doctrine",
+   "AGI-audio-quantum-cognition",
+   "aaa-audio-qualia-doctrine",
+   "audio-nervous-system",
+   "forge-audio-prosody-extraction",
+   "generated-audio-provenance",
+   "mimo-audio",
+   "multimodal-audio-pipeline"
+  ],
+  "audit": [
+   "AUDIT-repo-reality",
+   "FORGE-symlink-audit",
+   "FORGE-telegram-audit",
+   "aaa-constitution-architecture-audit",
+   "agent-capability-gap-audit",
+   "agent-capability-self-audit",
+   "agent-claim-verification",
+   "agent-finding-verification",
+   "ai-paper-paste-audit",
+   "apex_audit_coverage_check",
+   "architecture-alignment-audit",
+   "arif-site-human-first-audit",
+   "arifos-collapse-vector-audit",
+   "arifos-control-plane-sot-audit",
+   "arifos-kernel-zen-audit",
+   "arifos-mcp-audit",
+   "audit-and-validate-deliverables",
+   "audit-entity-classify",
+   "audit-falsification-discipline",
+   "audit-intake-verification",
+   "audit-repo-reality",
+   "audit-repository-entropy",
+   "audit-seal",
+   "capability-telemetry-audit",
+   "chokepoint-enforcement-audit",
+   "constitutional-publication-audit",
+   "control-reality-audit",
+   "corporate-language-audit",
+   "cross-ai-analysis-distillation",
+   "cross-surface-conformance-audit",
+   "declared-vs-live-audit",
+   "evidence-chain-audit",
+   "external-review-intake",
+   "federation-constitutional-audit",
+   "federation-wiring-audit",
+   "firecrawl-seo-audit",
+   "first-party-evidence-audit",
+   "forge-symlink-audit",
+   "frontier-model-audit-verification",
+   "gate-grounding-audit",
+   "generated-scientific-artifact-audit",
+   "geoscience-figure-audit",
+   "governance-audit",
+   "governance-contract-self-audit",
+   "hermes-federation-audit",
+   "hermes-naked-prior-audit",
+   "inherited-claim-audit",
+   "institutional-communication-audit",
+   "institutional-language-audit",
+   "kernel-security-claim-audit",
+   "live-system-audit-discipline",
+   "machine-discovery-surface-audit",
+   "pasted-review-falsification",
+   "prediction-honesty-audit",
+   "provenance-field-audit",
+   "public-ingress-audit",
+   "refusal-sink-audit",
+   "serving-parity-audit",
+   "skill-audit-methodology",
+   "submission-readiness-audit",
+   "surface-consistency-audit",
+   "technical-artifact-audit",
+   "third-party-audit-intake",
+   "unauthenticated-read-surface-audit",
+   "vault999-audit-forensics",
+   "wisdom-scar-session-audit",
+   "witness-independence-audit"
+  ],
+  "auditable": [
+   "auditable-numeric-artifacts"
+  ],
+  "auth": [
+   "auth-failure-attribution",
+   "github-auth",
+   "qwencloud-ops-auth"
+  ],
+  "authoring": [
+   "aaa-skill-authoring-craft",
+   "geox-panel-authoring",
+   "governance-benchmark-authoring",
+   "shadow-fdp-authoring"
+  ],
+  "authority": [
+   "apex_authority_check",
+   "authority-reality-grounder"
+  ],
+  "auto": [
+   "arifos-auto-init"
+  ],
+  "autonomous": [
+   "autonomous-ai-agents",
+   "autonomous-overnight-agent-dispatch",
+   "reality-loop-operator"
+  ],
+  "awareness": [
+   "temporal-awareness"
+  ],
+  "backend": [
+   "geox-backend-development"
+  ],
+  "background": [
+   "background-monitor-design"
+  ],
+  "backtest": [
+   "governance-failure-historical-backtest"
+  ],
+  "banda": [
+   "banda-haram-hardcode"
+  ],
+  "base": [
+   "firecrawl-knowledge-base"
+  ],
+  "basin": [
+   "geox-basin-evaluation"
+  ],
+  "before": [
+   "find-live-binary-before-engine-mutation",
+   "verify-before-report"
+  ],
+  "benchmark": [
+   "governance-benchmark-authoring"
+  ],
+  "best": [
+   "security-best-practices"
+  ],
+  "betul": [
+   "555-betul"
+  ],
+  "biases": [
+   "weights-and-biases"
+  ],
+  "bijaksana": [
+   "bijaksana-compile"
+  ],
+  "binary": [
+   "find-live-binary-before-engine-mutation"
+  ],
+  "bind": [
+   "kernel-bind"
+  ],
+  "binding": [
+   "ASI-skill-binding",
+   "federation-agent-identity-binding",
+   "forge-t3a-binding-matrix",
+   "persona-voice-binding"
+  ],
+  "biography": [
+   "documentary-biography-from-chat",
+   "walter-isaacson-biography",
+   "witness-biography-pdf"
+  ],
+  "blind": [
+   "blind-prediction-testing"
+  ],
+  "blogwatcher": [
+   "blogwatcher"
+  ],
+  "body": [
+   "body-composition-assessment"
+  ],
+  "bodybuilding": [
+   "malaysian-bodybuilding-research",
+   "well-bodybuilding-comp-prep"
+  ],
+  "bond": [
+   "bond-corpus-probe",
+   "bond-reading-discipline",
+   "human-reality-field",
+   "loved-one-worry-support",
+   "relationship-kernel"
+  ],
+  "bonded": [
+   "bonded-human-special-lane"
+  ],
+  "bootstrap": [
+   "opencode-ed25519-bootstrap-fix"
+  ],
+  "boundary": [
+   "boundary-debug",
+   "forge-well-boundary-repair",
+   "persona-boundary-conduct",
+   "sanctuary-boundary-enforcer",
+   "verification-boundary-probes"
+  ],
+  "brand": [
+   "brand-identity-mark"
+  ],
+  "bridge": [
+   "agi-multimodal-bridge",
+   "openclaw-mesh-bridge",
+   "scar-bridge-install"
+  ],
+  "brief": [
+   "geological-asset-brief",
+   "layered-perspective-brief",
+   "sovereign-daily-brief",
+   "weekly-sovereign-brief"
+  ],
+  "briefing": [
+   "federation-external-briefing",
+   "futures-forecast-briefing",
+   "intelligence-briefing"
+  ],
+  "browser": [
+   "browser-playwright-runner",
+   "browser-service-ops"
+  ],
+  "budget": [
+   "agent-question-budget"
+  ],
+  "build": [
+   "delegated-build-fanout"
+  ],
+  "builder": [
+   "FORGE-agentic-web-builder",
+   "FORGE-fastapi-api-builder",
+   "forge-agentic-web-builder",
+   "forge-fastapi-api-builder"
+  ],
+  "business": [
+   "bm-business-translation",
+   "business-document-production",
+   "business-letter-pdf",
+   "local-business-deep-dive"
+  ],
+  "caddy": [
+   "arifos-site-patch-without-caddy-reload"
+  ],
+  "calibration": [
+   "forecast-publish-with-calibration-gate",
+   "human-trust-calibration",
+   "interpretation-calibration",
+   "subsidy-paradox-calibration"
+  ],
+  "canon": [
+   "apex-theory-canon",
+   "canon-integrity-check",
+   "canon-single-source"
+  ],
+  "canonical": [
+   "arifos-eight-verb-canonical",
+   "trinity-33-canonical"
+  ],
+  "capability": [
+   "aaa-capability-compiler",
+   "agent-capability-gap-audit",
+   "agent-capability-self-audit",
+   "capability-telemetry-audit",
+   "organ-capability-map"
+  ],
+  "capacity": [
+   "production-capacity-closure"
+  ],
+  "capital": [
+   "upstream-e-p-capital-intelligence",
+   "wealth-capital-primitives"
+  ],
+  "capture": [
+   "scar-capture-sado"
+  ],
+  "card": [
+   "federation-agent-card-ops",
+   "forge_card_migrate",
+   "human-facing-recurring-card"
+  ],
+  "care": [
+   "human-care-coaching",
+   "syed-care-mode"
+  ],
+  "cartography": [
+   "mapbox-cartography-gis"
+  ],
+  "cascade": [
+   "l0-l4-cascade-doctrine"
+  ],
+  "cashflow": [
+   "multi-period-cashflow-analysis"
+  ],
+  "casual": [
+   "casual-bm-chat-register"
+  ],
+  "catalog": [
+   "AAA-somatic-engine-catalog",
+   "AAA-tts-engine-catalog"
+  ],
+  "causal": [
+   "causal-attribution-discipline"
+  ],
+  "causal555": [
+   "causal555-pywhy"
+  ],
+  "ccc": [
+   "ccc-coder-federation"
+  ],
+  "ceremonial": [
+   "ceremonial-letter-pdf"
+  ],
+  "chain": [
+   "arifos-eight-verb-canonical",
+   "evidence-chain-audit",
+   "voice-engine-fallback-chain"
+  ],
+  "chamber": [
+   "aaa-chamber-protocol"
+  ],
+  "chart": [
+   "chart-artifact-render-qa",
+   "financial-chart-analysis",
+   "listed-equity-chart-delivery"
+  ],
+  "charting": [
+   "financial-history-charting"
+  ],
+  "charts": [
+   "all-time-and-delisted-charts"
+  ],
+  "chat": [
+   "arif-digest-group-chat",
+   "casual-bm-chat-register",
+   "documentary-biography-from-chat",
+   "prompts-chat-library",
+   "telegram-chat-resolution"
+  ],
+  "chatgpt": [
+   "chatgpt-apps"
+  ],
+  "check": [
+   "FORGE-readme-truth-check",
+   "apex-fact-check-pass",
+   "apex_audit_coverage_check",
+   "apex_authority_check",
+   "apex_floor_check",
+   "apex_scope_check",
+   "canon-integrity-check",
+   "check-work",
+   "fi-mesh-check",
+   "qwencloud-update-check"
+  ],
+  "chokepoint": [
+   "chokepoint-enforcement-audit"
+  ],
+  "chron": [
+   "chron-consequence-tracking"
+  ],
+  "chunked": [
+   "chunked-tts-render-integrity"
+  ],
+  "cicd": [
+   "FORGE-cicd-docker-deploy"
+  ],
+  "circular": [
+   "circular-mark-and-arabic-typography"
+  ],
+  "civic": [
+   "civic-advocacy",
+   "civic-article-publishing",
+   "civic-petition-forge",
+   "civic-whistleblower-letter"
+  ],
+  "claim": [
+   "agent-claim-verification",
+   "claim-ledger-integrity",
+   "compensation-claim-grading",
+   "corpus-claim-discipline",
+   "corpus-claim-falsification",
+   "divergent-claim-reconciliation",
+   "durable-claim-ledger",
+   "geox-claim-falsification",
+   "inherited-claim-audit",
+   "kernel-security-claim-audit",
+   "market-claim-assessment",
+   "predictive-claim-falsification",
+   "priority-claim-verification"
+  ],
+  "claimed": [
+   "claimed-defect-verification"
+  ],
+  "claims": [
+   "political-fiscal-claims"
+  ],
+  "classify": [
+   "audit-entity-classify"
+  ],
+  "claude": [
+   "claude-meta-mesa",
+   "hermes-claude-code-spawn",
+   "openclaw-claude-code-spawn"
+  ],
+  "clause": [
+   "clause-split-tts-render-ops"
+  ],
+  "cli": [
+   "FORGE-mcp-ops",
+   "mmx-cli",
+   "multi-cli-coding-dispatch"
+  ],
+  "client": [
+   "mcp-client-conformance"
+  ],
+  "clis": [
+   "companion-clis"
+  ],
+  "clone": [
+   "clone-receipt-protocol",
+   "firecrawl-website-design-clone",
+   "qwen-voice-clone-quota",
+   "voice-clone-operations"
+  ],
+  "cloning": [
+   "AAA-voice-cloning-mimo-minimax",
+   "AAA-voice-cloning-qwen-cloud"
+  ],
+  "close": [
+   "forge-seal-a-close"
+  ],
+  "closure": [
+   "forge-hook-mutation-closure",
+   "production-capacity-closure"
+  ],
+  "cloud": [
+   "AAA-voice-cloning-qwen-cloud",
+   "cloud-gpu-provisioning"
+  ],
+  "cluster": [
+   "skill-cluster-merge"
+  ],
+  "coaching": [
+   "human-care-coaching"
+  ],
+  "cockpit": [
+   "agent-readiness-cockpit",
+   "geox-production-cockpit"
+  ],
+  "code": [
+   "FORGE-code-analysis",
+   "FORGE-kimi-code",
+   "contextstream-memory-code-search",
+   "forge-code-analysis",
+   "forge-kimi-code",
+   "github-code-review",
+   "hermes-claude-code-spawn",
+   "kimi-code",
+   "openclaw-claude-code-spawn",
+   "qr-code-ops"
+  ],
+  "codebase": [
+   "codebase-reality"
+  ],
+  "coder": [
+   "ccc-coder-federation"
+  ],
+  "codex": [
+   "codex-family-site-deliverable",
+   "migrate-to-codex"
+  ],
+  "coding": [
+   "hermes-coding-gateway",
+   "multi-cli-coding-dispatch"
+  ],
+  "cognition": [
+   "AGI-audio-quantum-cognition",
+   "delta-omega-psi-multimodal-cognition"
+  ],
+  "cognitive": [
+   "arifos-cognitive-atlas",
+   "atlas333-cognitive-geometry",
+   "cognitive-commands",
+   "fed-cognitive-allocator"
+  ],
+  "cold": [
+   "skills-cold-storage-ops"
+  ],
+  "collapse": [
+   "arifos-collapse-vector-audit",
+   "market-collapse-forensics"
+  ],
+  "color": [
+   "FORGE-komda-color-law",
+   "forge-komda-color-law"
+  ],
+  "column": [
+   "public-column-publishing"
+  ],
+  "comfyui": [
+   "comfyui"
+  ],
+  "command": [
+   "hermes-slash-command-trap"
+  ],
+  "commands": [
+   "cognitive-commands",
+   "constitutional-commands"
+  ],
+  "commercial": [
+   "malaysia-commercial-premise-sourcing"
+  ],
+  "communication": [
+   "institutional-communication-audit"
+  ],
+  "comp": [
+   "well-bodybuilding-comp-prep"
+  ],
+  "companion": [
+   "companion-clis"
+  ],
+  "company": [
+   "company-failure-analysis",
+   "company-solvency-forensics",
+   "firecrawl-company-directories"
+  ],
+  "compensation": [
+   "compensation-claim-grading"
+  ],
+  "competitive": [
+   "firecrawl-competitive-intel"
+  ],
+  "compile": [
+   "bijaksana-compile"
+  ],
+  "compiler": [
+   "aaa-capability-compiler",
+   "doctrine-to-runtime-compiler"
+  ],
+  "composition": [
+   "body-composition-assessment"
+  ],
+  "compress": [
+   "helix-memory-compress"
+  ],
+  "compression": [
+   "FORGE-data-compression",
+   "aaa-ocr-optical-compression",
+   "mcp-context-compression"
+  ],
+  "compressor": [
+   "FORGE-context-compressor",
+   "forge-context-compressor"
+  ],
+  "concurrent": [
+   "concurrent-agent-writers"
+  ],
+  "conduct": [
+   "persona-boundary-conduct"
+  ],
+  "config": [
+   "agent-config-validation",
+   "dynamic-config-taxonomy",
+   "federation-config-incarnation",
+   "federation-dynamic-config",
+   "forge-federation-config-mutation"
+  ],
+  "conformance": [
+   "cross-surface-conformance-audit",
+   "external-agent-conformance-testing",
+   "mcp-client-conformance",
+   "mcp-external-conformance"
+  ],
+  "connect": [
+   "federation-connect-headscale"
+  ],
+  "consent": [
+   "well-consent-registry"
+  ],
+  "consequence": [
+   "chron-consequence-tracking"
+  ],
+  "conservation": [
+   "wealth-runway-conservation"
+  ],
+  "consistency": [
+   "model-narrative-consistency",
+   "surface-consistency-audit"
+  ],
+  "consolidation": [
+   "fastmcp-tool-consolidation"
+  ],
+  "constitution": [
+   "aaa-constitution-architecture-audit"
+  ],
+  "constitutional": [
+   "arifos-constitutional-judge",
+   "constitutional-commands",
+   "constitutional-institution-mapping",
+   "constitutional-organism-doctrine",
+   "constitutional-publication-audit",
+   "federation-constitutional-audit"
+  ],
+  "content": [
+   "media-content-extraction"
+  ],
+  "context": [
+   "FORGE-context-compressor",
+   "forge-context-compressor",
+   "forge-project-context-update",
+   "mcp-context-compression",
+   "scar-context-injector"
+  ],
+  "contextstream": [
+   "contextstream-memory-code-search"
+  ],
+  "continuity": [
+   "persona-voice-continuity"
+  ],
+  "contract": [
+   "governance-contract-self-audit"
+  ],
+  "control": [
+   "arifos-control-plane-sot-audit",
+   "control-reality-audit"
+  ],
+  "conversation": [
+   "conversation-record-forensics"
+  ],
+  "copilot": [
+   "COPILOT-zen-router"
+  ],
+  "coregulation": [
+   "nervous-system-coregulation"
+  ],
+  "corporate": [
+   "corporate-language-audit"
+  ],
+  "corpus": [
+   "bond-corpus-probe",
+   "corpus-claim-discipline",
+   "corpus-claim-falsification",
+   "corpus-evidence-discipline",
+   "human-corpus-falsification",
+   "i-arif-corpus-ops"
+  ],
+  "council": [
+   "arifos-external-council"
+  ],
+  "cover": [
+   "cover-art-pipeline"
+  ],
+  "coverage": [
+   "apex_audit_coverage_check",
+   "enforcement-coverage-verification"
+  ],
+  "cpp": [
+   "llama-cpp"
+  ],
+  "craft": [
+   "aaa-skill-authoring-craft",
+   "makcikgpt-article-craft"
+  ],
+  "crawl": [
+   "firecrawl-crawl"
+  ],
+  "create": [
+   "create-skill"
+  ],
+  "creative": [
+   "creative"
+  ],
+  "creator": [
+   "FORGE-skill-creator",
+   "plugin-creator"
+  ],
+  "credential": [
+   "credential-surface-reality"
+  ],
+  "cron": [
+   "arifos-cron-ops"
+  ],
+  "crons": [
+   "FORGE-infra-crons",
+   "forge-infra-crons"
+  ],
+  "cross": [
+   "FORGE-cross-repo-doc-zen",
+   "cross-ai-analysis-distillation",
+   "cross-harness-reality-test",
+   "cross-harness-relay-wiring",
+   "cross-host-artifact-delivery",
+   "cross-host-tool-lane-integration",
+   "cross-node-artifact-transfer",
+   "cross-surface-conformance-audit",
+   "forge-cross-agent-handoff",
+   "forge-cross-repo-doc-zen"
+  ],
+  "curated": [
+   "curated-recommendation-artifact",
+   "curated-recommendation-lists"
+  ],
+  "curator": [
+   "test-curator-write"
+  ],
+  "cycle": [
+   "aia-cycle-operator",
+   "federation-cycle-instrument"
+  ],
+  "dag": [
+   "agi-plan-dag"
+  ],
+  "daily": [
+   "sovereign-daily-brief"
+  ],
+  "dashboard": [
+   "firecrawl-dashboard-reporting",
+   "kpj-vending-dashboard",
+   "transaction-dashboard-generator",
+   "vending-dashboard-reporting"
+  ],
+  "dashboards": [
+   "live-data-dashboards",
+   "multisite-performance-dashboards"
+  ],
+  "data": [
+   "FORGE-data-compression",
+   "financial-distress-data-lanes",
+   "live-data-dashboards"
+  ],
+  "datacenter": [
+   "youtube-extraction-datacenter-ip"
+  ],
+  "dataset": [
+   "hf-governed-dataset-ops"
+  ],
+  "debug": [
+   "boundary-debug",
+   "telegram-gateway-group-debug"
+  ],
+  "decision": [
+   "decision-risk-quantification"
+  ],
+  "decisions": [
+   "AGI-decisions-reflect",
+   "agi-decisions-reflect"
+  ],
+  "declared": [
+   "declared-vs-live-audit"
+  ],
+  "deep": [
+   "agi-deep-research-loop",
+   "deep-research-plus-wealth",
+   "firecrawl-deep-research",
+   "local-business-deep-dive",
+   "personal-domain-deep-research",
+   "think-deep"
+  ],
+  "defect": [
+   "claimed-defect-verification"
+  ],
+  "delegated": [
+   "delegated-build-fanout"
+  ],
+  "delegator": [
+   "a2a-task-delegator"
+  ],
+  "delisted": [
+   "all-time-and-delisted-charts"
+  ],
+  "deliverable": [
+   "apex-deliverable-protocol",
+   "codex-family-site-deliverable",
+   "sealed-deliverable-provenance"
+  ],
+  "deliverables": [
+   "audit-and-validate-deliverables"
+  ],
+  "delivery": [
+   "agi-agentic-web-delivery",
+   "cross-host-artifact-delivery",
+   "geo-delivery-flow",
+   "hermes-delivery-diagnostics",
+   "listed-equity-chart-delivery",
+   "persona-voice-note-delivery",
+   "presentation-pack-delivery",
+   "sourced-media-delivery",
+   "visual-surface-delivery"
+  ],
+  "delta": [
+   "delta-omega-psi-multimodal-cognition"
+  ],
+  "demo": [
+   "firecrawl-demo-walkthrough"
+  ],
+  "densify": [
+   "forge-vision-densify"
+  ],
+  "dep": [
+   "federation-dep-upgrade"
+  ],
+  "deploy": [
+   "FORGE-cicd-docker-deploy",
+   "arif-fazil-site-deploy",
+   "forge-github-ops",
+   "github-auth",
+   "github-code-review",
+   "github-issue-to-pr",
+   "github-issues",
+   "github-pr-workflow",
+   "github-repo-management",
+   "qwencloud-deploy"
+  ],
+  "design": [
+   "FORGE-design-intelligence",
+   "FORGE-postgres-schema-design",
+   "background-monitor-design",
+   "design-shell-parity",
+   "firecrawl-website-design-clone",
+   "forge-design-intelligence",
+   "forge-postgres-schema-design",
+   "forge-visual-design-system",
+   "injected-html-design-parity",
+   "sovereign-surface-design",
+   "web-surface-design-fidelity"
+  ],
+  "designs": [
+   "makcikgpt-archived-designs"
+  ],
+  "desire": [
+   "desire-structure-mapping"
+  ],
+  "detection": [
+   "fake-governance-detection"
+  ],
+  "detector": [
+   "echo-loop-detector"
+  ],
+  "developer": [
+   "firecrawl-developer-index"
+  ],
+  "development": [
+   "field-development-economics",
+   "field-development-plan",
+   "field-development-plan-review",
+   "field-development-plan-screening",
+   "geox-backend-development"
+  ],
+  "diagnose": [
+   "FORGE-ci-diagnose",
+   "forge-ci-diagnose",
+   "well-machine-diagnose"
+  ],
+  "diagnosis": [
+   "helix-diagnosis"
+  ],
+  "diagnostics": [
+   "hermes-delivery-diagnostics",
+   "provider-quota-diagnostics"
+  ],
+  "did": [
+   "FORGE-did-web-identity",
+   "forge-did-web-identity"
+  ],
+  "differential": [
+   "mcp-tool-differential-testing"
+  ],
+  "digest": [
+   "arif-digest-group-chat"
+  ],
+  "direct": [
+   "vision-direct-api-fallback"
+  ],
+  "directories": [
+   "firecrawl-company-directories"
+  ],
+  "disambiguation": [
+   "production-source-disambiguation"
+  ],
+  "discipline": [
+   "FORGE-react-spa-discipline",
+   "audit-falsification-discipline",
+   "bond-reading-discipline",
+   "causal-attribution-discipline",
+   "corpus-claim-discipline",
+   "corpus-claim-falsification",
+   "corpus-evidence-discipline",
+   "federation-skill-probe-discipline",
+   "forge-react-spa-discipline",
+   "governed-removal-discipline",
+   "live-system-audit-discipline",
+   "measurement-discipline",
+   "money-path-discipline",
+   "seal-discipline",
+   "wealth-ledger-discipline"
+  ],
+  "disclosure": [
+   "model-score-disclosure"
+  ],
+  "discovery": [
+   "discovery-surface-verification",
+   "machine-discovery-surface-audit",
+   "session-federation-discovery"
+  ],
+  "dispatch": [
+   "autonomous-overnight-agent-dispatch",
+   "multi-cli-coding-dispatch",
+   "route-dispatch"
+  ],
+  "disputes": [
+   "malaysia-tenancy-disputes"
+  ],
+  "dissipative": [
+   "dissipative-transition-hold"
+  ],
+  "distillation": [
+   "cross-ai-analysis-distillation"
+  ],
+  "distress": [
+   "financial-distress-data-lanes",
+   "financial-distress-forensics"
+  ],
+  "dive": [
+   "local-business-deep-dive"
+  ],
+  "divergent": [
+   "divergent-claim-reconciliation"
+  ],
+  "dna": [
+   "hermes-dna-telemetry"
+  ],
+  "doc": [
+   "FORGE-cross-repo-doc-zen",
+   "forge-cross-repo-doc-zen"
+  ],
+  "docker": [
+   "FORGE-cicd-docker-deploy",
+   "FORGE-docker-entropy",
+   "FORGE-vps-docker"
+  ],
+  "docs": [
+   "aaa-docs-entropy-reduction",
+   "docs",
+   "openai-docs"
+  ],
+  "doctrine": [
+   "AAA-audio-qualia-doctrine",
+   "AAA-somatic-music-doctrine",
+   "aaa-audio-qualia-doctrine",
+   "aaa-doctrine-sealing",
+   "abang-sado-analysis-doctrine",
+   "arif-fazil-publication-doctrine",
+   "arifos-prompt-doctrine",
+   "constitutional-organism-doctrine",
+   "doctrine-forging",
+   "doctrine-to-runtime-compiler",
+   "hermes-rasa-doctrine",
+   "l0-l4-cascade-doctrine"
+  ],
+  "document": [
+   "business-document-production",
+   "forge-document-intelligence",
+   "formal-document-rebuild"
+  ],
+  "documentary": [
+   "documentary-biography-from-chat"
+  ],
+  "documentation": [
+   "documentation-tier-management"
+  ],
+  "documents": [
+   "ocr-and-documents"
+  ],
+  "domain": [
+   "personal-domain-deep-research",
+   "subsurface-dossier-from-public-domain"
+  ],
+  "dossier": [
+   "entity-dossier-sourcing",
+   "entity-position-dossier",
+   "subsurface-dossier-from-public-domain"
+  ],
+  "download": [
+   "firecrawl-download"
+  ],
+  "dream": [
+   "AGI-dream-engine",
+   "agi-dream-engine",
+   "dream-what"
+  ],
+  "drift": [
+   "ASI-drift-watch",
+   "service-state-schema-drift"
+  ],
+  "duckdb": [
+   "duckdb-analytics-engine"
+  ],
+  "durable": [
+   "durable-claim-ledger"
+  ],
+  "dynamic": [
+   "dynamic-config-taxonomy",
+   "federation-dynamic-config"
+  ],
+  "e2e": [
+   "arifos-kernel-e2e-testing"
+  ],
+  "echo": [
+   "echo-loop-detector"
+  ],
+  "economics": [
+   "fdp-fiscal-economics-modelling",
+   "field-development-economics"
+  ],
+  "ed25519": [
+   "opencode-ed25519-bootstrap-fix"
+  ],
+  "edit": [
+   "forge-lsp-pre-edit-gate",
+   "image-restyle-and-edit",
+   "mcp-edit-activation",
+   "multi-reference-image-edit"
+  ],
+  "editing": [
+   "aaa-image-editing",
+   "image-text-editing"
+  ],
+  "eight": [
+   "arifos-eight-verb-canonical"
+  ],
+  "email": [
+   "email"
+  ],
+  "emd": [
+   "AAA-audio-emd-pipeline",
+   "AAA-somatic-emd-pipeline",
+   "emd-lane-routing"
+  ],
+  "emem": [
+   "emem-shared-memory"
+  ],
+  "emergence": [
+   "emergence-maturation-ladder"
+  ],
+  "emission": [
+   "artifact-emission-pipeline"
+  ],
+  "employment": [
+   "malaysian-employment-separation"
+  ],
+  "endpoint": [
+   "provider-endpoint-migration"
+  ],
+  "enforcement": [
+   "chokepoint-enforcement-audit",
+   "enforcement-coverage-verification",
+   "seven-zen-organs-enforcement"
+  ],
+  "enforcer": [
+   "sanctuary-boundary-enforcer"
+  ],
+  "engine": [
+   "AAA-somatic-engine-catalog",
+   "AAA-tts-engine-catalog",
+   "AGI-dream-engine",
+   "agi-dream-engine",
+   "duckdb-analytics-engine",
+   "find-live-binary-before-engine-mutation",
+   "voice-engine-fallback-chain"
+  ],
+  "engineering": [
+   "AGI-graph-engineering-patterns"
+  ],
+  "entity": [
+   "audit-entity-classify",
+   "entity-dossier-sourcing",
+   "entity-failure-forensics",
+   "entity-position-dossier"
+  ],
+  "entropy": [
+   "FORGE-docker-entropy",
+   "aaa-docs-entropy-reduction",
+   "audit-repository-entropy",
+   "entropy-metabolizer",
+   "federation-entropy-reduction"
+  ],
+  "ephemeral": [
+   "forge-ephemeral-genesis"
+  ],
+  "epistemic": [
+   "institutional-epistemic-sink-forensics"
+  ],
+  "equity": [
+   "listed-equity-chart-delivery"
+  ],
+  "escalation": [
+   "FORGE-incident-escalation"
+  ],
+  "esm": [
+   "FORGE-esm-require-guard",
+   "forge-esm-require-guard"
+  ],
+  "essay": [
+   "essay-publish-pipeline",
+   "essay-publish-watermark"
+  ],
+  "estimation": [
+   "human-state-estimation",
+   "visual-nutrition-estimation"
+  ],
+  "eureka": [
+   "APEX-quantum-eureka",
+   "youtube-eureka",
+   "youtube-extraction-datacenter-ip"
+  ],
+  "eureka777": [
+   "EUREKA777-paradox-resolution"
+  ],
+  "eurekas": [
+   "arifos-kernel-eurekas"
+  ],
+  "evaluate": [
+   "third-party-software-evaluate"
+  ],
+  "evaluating": [
+   "evaluating-llms-harness"
+  ],
+  "evaluation": [
+   "geox-basin-evaluation",
+   "geox-prospect-evaluation",
+   "inbound-evaluation-intake",
+   "vendor-evaluation-intake"
+  ],
+  "event": [
+   "sea-physique-event-intelligence"
+  ],
+  "evidence": [
+   "arifos-evidence-policy",
+   "corpus-evidence-discipline",
+   "evidence-artifact-forensics",
+   "evidence-chain-audit",
+   "evidence-gate-hardening",
+   "evidence-hierarchy",
+   "first-party-evidence-audit",
+   "link-to-evidence",
+   "probe-evidence-integrity",
+   "research-evidence-scout"
+  ],
+  "evolution": [
+   "forge-hermes-self-evolution"
+  ],
+  "excalidraw": [
+   "excalidraw"
+  ],
+  "execution": [
+   "aaa-musyawarah-execution",
+   "forge-execution-governance",
+   "unattended-agent-execution"
+  ],
+  "explainer": [
+   "forge-explainer-90s"
+  ],
+  "explorer": [
+   "AGI-explorer-intelligence"
+  ],
+  "exposure": [
+   "insider-exposure-inventory"
+  ],
+  "extension": [
+   "federated-abi-extension"
+  ],
+  "external": [
+   "arifos-external-council",
+   "external-agent-conformance-testing",
+   "external-artifact-verdict",
+   "external-review-intake",
+   "federation-external-briefing",
+   "mcp-external-conformance"
+  ],
+  "extraction": [
+   "forge-audio-prosody-extraction",
+   "image-text-extraction",
+   "media-content-extraction",
+   "web-extraction-fallbacks",
+   "youtube-extraction-datacenter-ip"
+  ],
+  "fabrication": [
+   "ASI-fabrication-prevention"
+  ],
+  "faceless": [
+   "faceless-subject-rendering"
+  ],
+  "facing": [
+   "human-facing-recurring-card"
+  ],
+  "fact": [
+   "apex-fact-check-pass",
+   "institutional-fact-verification"
+  ],
+  "faham": [
+   "777-faham"
+  ],
+  "failure": [
+   "auth-failure-attribution",
+   "company-failure-analysis",
+   "entity-failure-forensics",
+   "governance-failure-historical-backtest",
+   "tts-provider-failure-triage",
+   "tts-render-failure-modes"
+  ],
+  "fake": [
+   "fake-governance-detection"
+  ],
+  "fallback": [
+   "provider-pool-outage-fallback",
+   "vision-direct-api-fallback",
+   "voice-engine-fallback-chain"
+  ],
+  "fallbacks": [
+   "kvm8-media-lane-fallbacks",
+   "web-extraction-fallbacks"
+  ],
+  "falsification": [
+   "audit-falsification-discipline",
+   "corpus-claim-falsification",
+   "geox-claim-falsification",
+   "human-corpus-falsification",
+   "market-prediction-falsification",
+   "pasted-review-falsification",
+   "predictive-claim-falsification"
+  ],
+  "family": [
+   "codex-family-site-deliverable"
+  ],
+  "fanout": [
+   "delegated-build-fanout",
+   "parallel-agent-fanout"
+  ],
+  "fastapi": [
+   "FORGE-fastapi-api-builder",
+   "forge-fastapi-api-builder"
+  ],
+  "fastmcp": [
+   "FORGE-fastmcp",
+   "fastmcp-organ-staging-migration",
+   "fastmcp-tool-consolidation",
+   "forge-fastmcp"
+  ],
+  "fazil": [
+   "arif-fazil-publication-doctrine",
+   "arif-fazil-site-deploy",
+   "arif-fazil-site-ops",
+   "arif-fazil-web-ops"
+  ],
+  "fdp": [
+   "fdp-fiscal-economics-modelling",
+   "shadow-fdp-authoring"
+  ],
+  "fed": [
+   "fed-cognitive-allocator",
+   "fed-runtime-observations"
+  ],
+  "federated": [
+   "federated-abi-extension",
+   "federated-patch-seal",
+   "hermes-federated-identity",
+   "unified-federated-ai-architectures"
+  ],
+  "federation": [
+   "FORGE-act-federation-ingress",
+   "FORGE-federation-manifest",
+   "FORGE-federation-orchestrator",
+   "FORGE-mcp-federation-ops",
+   "FORGE-sct-federation-ingress",
+   "RSI-federation-mesh",
+   "ccc-coder-federation",
+   "federation-agent-card-ops",
+   "federation-agent-identity-binding",
+   "federation-alignment-probe",
+   "federation-asset-probe",
+   "federation-config-incarnation",
+   "federation-connect-headscale",
+   "federation-constitutional-audit",
+   "federation-cycle-instrument",
+   "federation-dep-upgrade",
+   "federation-dynamic-config",
+   "federation-entropy-reduction",
+   "federation-external-briefing",
+   "federation-identity-reconciliation",
+   "federation-infra-verification",
+   "federation-lane-routing",
+   "federation-metabolism",
+   "federation-provider-integration",
+   "federation-release-attestation",
+   "federation-seat-wiring",
+   "federation-skill-probe-discipline",
+   "federation-substrate-hardening",
+   "federation-wiring-audit",
+   "forge-act-federation-ingress",
+   "forge-federation-config-mutation",
+   "forge-federation-probe",
+   "hermes-federation-audit",
+   "pdf-federation",
+   "rsi-federation-mesh",
+   "rust-federation",
+   "session-federation-discovery",
+   "weekly-federation-maintenance"
+  ],
+  "fidelity": [
+   "retrieval-vs-memory-fidelity",
+   "voice-register-fidelity",
+   "web-surface-design-fidelity"
+  ],
+  "field": [
+   "field-development-economics",
+   "field-development-plan",
+   "field-development-plan-review",
+   "field-development-plan-screening",
+   "human-reality-field",
+   "provenance-field-audit"
+  ],
+  "figure": [
+   "figure-annotation-verification",
+   "geoscience-figure-audit",
+   "geoscience-model-figure"
+  ],
+  "filing": [
+   "institutional-form-filing"
+  ],
+  "financial": [
+   "financial-chart-analysis",
+   "financial-distress-data-lanes",
+   "financial-distress-forensics",
+   "financial-history-charting"
+  ],
+  "find": [
+   "find-live-binary-before-engine-mutation"
+  ],
+  "finding": [
+   "agent-finding-verification"
+  ],
+  "firecrawl": [
+   "firecrawl",
+   "firecrawl-agent",
+   "firecrawl-company-directories",
+   "firecrawl-competitive-intel",
+   "firecrawl-crawl",
+   "firecrawl-dashboard-reporting",
+   "firecrawl-deep-research",
+   "firecrawl-demo-walkthrough",
+   "firecrawl-developer-index",
+   "firecrawl-download",
+   "firecrawl-interact",
+   "firecrawl-knowledge-base",
+   "firecrawl-knowledge-ingest",
+   "firecrawl-lead-gen",
+   "firecrawl-lead-research",
+   "firecrawl-map",
+   "firecrawl-market-research",
+   "firecrawl-monitor",
+   "firecrawl-parse",
+   "firecrawl-qa",
+   "firecrawl-research-index",
+   "firecrawl-research-papers",
+   "firecrawl-scrape",
+   "firecrawl-search",
+   "firecrawl-seo-audit",
+   "firecrawl-shop",
+   "firecrawl-web-search",
+   "firecrawl-website-design-clone",
+   "firecrawl-workflows"
+  ],
+  "first": [
+   "arif-site-human-first-audit",
+   "first-party-evidence-audit",
+   "session-init-human-first"
+  ],
+  "fiscal": [
+   "fdp-fiscal-economics-modelling",
+   "malaysian-psc-fiscal-modelling",
+   "political-fiscal-claims"
+  ],
+  "fix": [
+   "mcp-transport-fix",
+   "opencode-ed25519-bootstrap-fix"
+  ],
+  "flame": [
+   "flame-stage-routing"
+  ],
+  "flash": [
+   "flash"
+  ],
+  "floor": [
+   "apex_floor_check"
+  ],
+  "flow": [
+   "flow",
+   "geo-delivery-flow"
+  ],
+  "forecast": [
+   "forecast-publish-with-calibration-gate",
+   "futures-forecast-briefing"
+  ],
+  "forensics": [
+   "agent-message-store-forensics",
+   "company-solvency-forensics",
+   "conversation-record-forensics",
+   "entity-failure-forensics",
+   "evidence-artifact-forensics",
+   "financial-distress-forensics",
+   "hermes-state-db-forensics",
+   "inbound-provenance-forensics",
+   "institutional-epistemic-sink-forensics",
+   "market-collapse-forensics",
+   "vault999-audit-forensics"
+  ],
+  "forge": [
+   "333-forge",
+   "FORGE-act-federation-ingress",
+   "FORGE-agentic-web-builder",
+   "FORGE-ci-diagnose",
+   "FORGE-cicd-docker-deploy",
+   "FORGE-code-analysis",
+   "FORGE-context-compressor",
+   "FORGE-cross-repo-doc-zen",
+   "FORGE-data-compression",
+   "FORGE-design-intelligence",
+   "FORGE-did-web-identity",
+   "FORGE-docker-entropy",
+   "FORGE-esm-require-guard",
+   "FORGE-fastapi-api-builder",
+   "FORGE-fastmcp",
+   "FORGE-federation-manifest",
+   "FORGE-federation-orchestrator",
+   "FORGE-google-workspace",
+   "FORGE-governance-jsonld",
+   "FORGE-incident-escalation",
+   "FORGE-incident-triage",
+   "FORGE-infra-crons",
+   "FORGE-infra-guardian",
+   "FORGE-kimi-code",
+   "FORGE-komda-color-law",
+   "FORGE-mcp-a2a-agentic",
+   "FORGE-mcp-federation-ops",
+   "FORGE-mcp-gui",
+   "FORGE-mcp-lifeguard",
+   "FORGE-mcp-ops",
+   "FORGE-mcp-probe",
+   "FORGE-mcp-registry-ops",
+   "FORGE-mcp-testing",
+   "FORGE-model-monitor",
+   "FORGE-musyawarah-gotong",
+   "FORGE-nextjs-mastery",
+   "FORGE-onboarding",
+   "FORGE-postgres-schema-design",
+   "FORGE-pr-governance",
+   "FORGE-pr-review",
+   "FORGE-precommit-review",
+   "FORGE-react-spa-discipline",
+   "FORGE-readme-truth-check",
+   "FORGE-redis-qdrant-integration",
+   "FORGE-repo-intelligence",
+   "FORGE-route-least-power",
+   "FORGE-sct-federation-ingress",
+   "FORGE-secret-hygiene",
+   "FORGE-skill-creator",
+   "FORGE-skill-linter",
+   "FORGE-spatial-grounding",
+   "FORGE-symlink-audit",
+   "FORGE-tailwind-tokens",
+   "FORGE-telegram-audit",
+   "FORGE-telemetry-watchdog",
+   "FORGE-vps-docker",
+   "FORGE-vps-runbook",
+   "a-forge-ops",
+   "civic-petition-forge",
+   "forge",
+   "forge-act-federation-ingress",
+   "forge-agentic-web-builder",
+   "forge-audio-prosody-extraction",
+   "forge-ci-diagnose",
+   "forge-code-analysis",
+   "forge-context-compressor",
+   "forge-cross-agent-handoff",
+   "forge-cross-repo-doc-zen",
+   "forge-design-intelligence",
+   "forge-did-web-identity",
+   "forge-document-intelligence",
+   "forge-ephemeral-genesis",
+   "forge-esm-require-guard",
+   "forge-execution-governance",
+   "forge-explainer-90s",
+   "forge-fastapi-api-builder",
+   "forge-fastmcp",
+   "forge-federation-config-mutation",
+   "forge-federation-probe",
+   "forge-git-seal",
+   "forge-github-ops",
+   "forge-google-workspace",
+   "forge-governance-analysis",
+   "forge-governance-jsonld",
+   "forge-hermes-self-evolution",
+   "forge-hook-mutation-closure",
+   "forge-infra-crons",
+   "forge-infra-guardian",
+   "forge-issue-triage",
+   "forge-kimi-code",
+   "forge-komda-color-law",
+   "forge-lsp-pre-edit-gate",
+   "forge-mcp-a2a-agentic",
+   "forge-mcp-gui",
+   "forge-mcp-migration",
+   "forge-model-monitor",
+   "forge-multimodal-router",
+   "forge-musyawarah-gotong",
+   "forge-nextjs-mastery",
+   "forge-onboarding",
+   "forge-port-architecture",
+   "forge-postgres-schema-design",
+   "forge-project-context-update",
+   "forge-react-spa-discipline",
+   "forge-redis-qdrant-integration",
+   "forge-repo-intelligence",
+   "forge-route-least-power",
+   "forge-seal-a-close",
+   "forge-secret-hygiene",
+   "forge-self-loop-guard",
+   "forge-spatial-grounding",
+   "forge-subagent-lifecycle",
+   "forge-subagent-spawn",
+   "forge-symlink-audit",
+   "forge-t3a-binding-matrix",
+   "forge-tailwind-tokens",
+   "forge-vault-seal-receipt",
+   "forge-vault999-witness",
+   "forge-vision-densify",
+   "forge-visual-design-system",
+   "forge-visual-qa-w3",
+   "forge-vss-parser",
+   "forge-vss-verifier-suite",
+   "forge-web-intelligence",
+   "forge-well-boundary-repair",
+   "forge_card_migrate",
+   "geoscience-section-forge",
+   "hermes-forge",
+   "instagram-story-forge",
+   "multi-lens-parallel-forge",
+   "openclaw-forge",
+   "opencode-forge",
+   "presentation-pack-forge",
+   "sovereign-petition-forge"
+  ],
+  "forget": [
+   "forget"
+  ],
+  "forging": [
+   "doctrine-forging"
+  ],
+  "form": [
+   "institutional-form-filing",
+   "long-form-tts-render-integrity"
+  ],
+  "formal": [
+   "formal-document-rebuild"
+  ],
+  "four": [
+   "wealth-four-layer-intelligence"
+  ],
+  "freeze": [
+   "agent-grammar"
+  ],
+  "frontend": [
+   "react-frontend-integration"
+  ],
+  "frontier": [
+   "frontier-model-audit-verification"
+  ],
+  "frozen": [
+   "arifos-frozen-snapshot-init"
+  ],
+  "full": [
+   "youtube-full"
+  ],
+  "futures": [
+   "futures-forecast-briefing"
+  ],
+  "gap": [
+   "agent-capability-gap-audit"
+  ],
+  "gate": [
+   "apex_tool_approval_gate",
+   "evidence-gate-hardening",
+   "forecast-publish-with-calibration-gate",
+   "forge-lsp-pre-edit-gate",
+   "gate-grounding-audit",
+   "tts-script-asr-gate",
+   "verify-gate",
+   "web-search-query-gate-recovery"
+  ],
+  "gateway": [
+   "a2a-gateway-protocol",
+   "hermes-coding-gateway",
+   "hermes-gateway-image-routing",
+   "telegram-gateway-group-debug"
+  ],
+  "gating": [
+   "signal-strength-gating"
+  ],
+  "gemini": [
+   "gemini-integration",
+   "gemini-media-gen"
+  ],
+  "gen": [
+   "firecrawl-lead-gen",
+   "gemini-media-gen",
+   "minimax-image-gen"
+  ],
+  "generalization": [
+   "shape-map-generalization"
+  ],
+  "generated": [
+   "generated-artifact-integrity",
+   "generated-audio-provenance",
+   "generated-scientific-artifact-audit"
+  ],
+  "generation": [
+   "ai-media-generation",
+   "ai-media-generation-ops",
+   "pdf-report-generation",
+   "qwencloud-image-generation",
+   "qwencloud-video-generation"
+  ],
+  "generator": [
+   "transaction-dashboard-generator",
+   "wop-invoice-generator"
+  ],
+  "genesis": [
+   "forge-ephemeral-genesis"
+  ],
+  "genome": [
+   "agentic-genome-species"
+  ],
+  "geo": [
+   "geo-delivery-flow"
+  ],
+  "geological": [
+   "geological-artifact-rigor",
+   "geological-asset-brief"
+  ],
+  "geometry": [
+   "atlas333-cognitive-geometry"
+  ],
+  "geoscience": [
+   "geoscience-figure-audit",
+   "geoscience-model-figure",
+   "geoscience-section-forge",
+   "geox-geoscience-artifacts"
+  ],
+  "geox": [
+   "geox-backend-development",
+   "geox-basin-evaluation",
+   "geox-claim-falsification",
+   "geox-geoscience-artifacts",
+   "geox-grounding",
+   "geox-mcp-tool-invocation",
+   "geox-panel-authoring",
+   "geox-pressure-governance",
+   "geox-production-cockpit",
+   "geox-prospect-evaluation",
+   "geox-seismic-interpretation",
+   "geox-temporal-intelligence",
+   "geox-voice-reality-ingest",
+   "geox-well-log-qc"
+  ],
+  "gis": [
+   "mapbox-cartography-gis"
+  ],
+  "git": [
+   "forge-git-seal"
+  ],
+  "github": [
+   "forge-github-ops",
+   "github-auth",
+   "github-code-review",
+   "github-issue-to-pr",
+   "github-issues",
+   "github-pr-workflow",
+   "github-public-push-privacy",
+   "github-repo-management"
+  ],
+  "glm": [
+   "AAA-asr-glm-ingest"
+  ],
+  "gmail": [
+   "gmail-rest-mailbox-ops"
+  ],
+  "godel": [
+   "APEX-humility-godel"
+  ],
+  "gold": [
+   "gold-site-honest-prediction"
+  ],
+  "google": [
+   "FORGE-google-workspace",
+   "forge-google-workspace",
+   "google-workspace-gws"
+  ],
+  "gotong": [
+   "FORGE-musyawarah-gotong",
+   "forge-musyawarah-gotong"
+  ],
+  "governance": [
+   "ASI-agentic-governance",
+   "FORGE-governance-jsonld",
+   "FORGE-pr-governance",
+   "aaa-doctrine-sealing",
+   "arifos-governance-measurement",
+   "asi-agentic-governance",
+   "fake-governance-detection",
+   "forge-execution-governance",
+   "forge-governance-analysis",
+   "forge-governance-jsonld",
+   "geox-pressure-governance",
+   "governance-audit",
+   "governance-benchmark-authoring",
+   "governance-contract-self-audit",
+   "governance-failure-historical-backtest",
+   "governance-removal-review"
+  ],
+  "governed": [
+   "governed-removal-discipline",
+   "hf-governed-dataset-ops"
+  ],
+  "governor": [
+   "aaa-skill-governor-runtime"
+  ],
+  "gpu": [
+   "cloud-gpu-provisioning"
+  ],
+  "grading": [
+   "compensation-claim-grading"
+  ],
+  "grammar": [
+   "agent-grammar"
+  ],
+  "graph": [
+   "AGI-graph-engineering-patterns"
+  ],
+  "graphiti": [
+   "graphiti-temporal-memory-ops"
+  ],
+  "ground": [
+   "observe-ground"
+  ],
+  "grounder": [
+   "authority-reality-grounder"
+  ],
+  "grounding": [
+   "FORGE-spatial-grounding",
+   "forge-spatial-grounding",
+   "gate-grounding-audit",
+   "geox-grounding"
+  ],
+  "group": [
+   "arif-digest-group-chat",
+   "telegram-gateway-group-debug"
+  ],
+  "guard": [
+   "FORGE-esm-require-guard",
+   "forge-esm-require-guard",
+   "forge-self-loop-guard",
+   "path-hallucination-guard"
+  ],
+  "guardian": [
+   "FORGE-infra-guardian",
+   "forge-infra-guardian"
+  ],
+  "gui": [
+   "FORGE-mcp-gui",
+   "forge-mcp-gui"
+  ],
+  "gws": [
+   "google-workspace-gws"
+  ],
+  "hallucination": [
+   "path-hallucination-guard"
+  ],
+  "handoff": [
+   "forge-cross-agent-handoff"
+  ],
+  "haram": [
+   "banda-haram-hardcode"
+  ],
+  "hardcode": [
+   "banda-haram-hardcode"
+  ],
+  "hardening": [
+   "agy-scar-hardening",
+   "evidence-gate-hardening",
+   "federation-substrate-hardening"
+  ],
+  "harness": [
+   "cross-harness-reality-test",
+   "cross-harness-relay-wiring",
+   "evaluating-llms-harness",
+   "qwen-harness-tools"
+  ],
+  "headscale": [
+   "federation-connect-headscale"
+  ],
+  "health": [
+   "health-provider-navigation",
+   "health-scam-vetting",
+   "malaysia-health-scam-verification"
+  ],
+  "helix": [
+   "helix-diagnosis",
+   "helix-memory-compress"
+  ],
+  "help": [
+   "AAA-setup-help",
+   "aaa-setup-help",
+   "help"
+  ],
+  "hermes": [
+   "HERMES-opencode-protocol",
+   "forge-hermes-self-evolution",
+   "hermes-align",
+   "hermes-asi-intelligence",
+   "hermes-claude-code-spawn",
+   "hermes-coding-gateway",
+   "hermes-delivery-diagnostics",
+   "hermes-dna-telemetry",
+   "hermes-federated-identity",
+   "hermes-federation-audit",
+   "hermes-forge",
+   "hermes-gateway-image-routing",
+   "hermes-init",
+   "hermes-mcp-server-registration",
+   "hermes-multi-human-lanes",
+   "hermes-multi-user-isolation",
+   "hermes-multimodal-intelligence",
+   "hermes-naked-prior-audit",
+   "hermes-opencode-protocol",
+   "hermes-persona-alignment",
+   "hermes-plugin-system",
+   "hermes-propose-seal",
+   "hermes-rasa-doctrine",
+   "hermes-research-substrate",
+   "hermes-room-relay",
+   "hermes-session-hygiene",
+   "hermes-slash-command-trap",
+   "hermes-state-db-forensics"
+  ],
+  "hierarchy": [
+   "evidence-hierarchy"
+  ],
+  "historical": [
+   "governance-failure-historical-backtest"
+  ],
+  "history": [
+   "financial-history-charting",
+   "sovereign-self-history-recall"
+  ],
+  "hold": [
+   "apex_verdict_hold",
+   "dissipative-transition-hold"
+  ],
+  "honest": [
+   "gold-site-honest-prediction"
+  ],
+  "honesty": [
+   "prediction-honesty-audit"
+  ],
+  "hook": [
+   "forge-hook-mutation-closure"
+  ],
+  "hormone": [
+   "ped-hormone-advisory"
+  ],
+  "host": [
+   "cross-host-artifact-delivery",
+   "cross-host-tool-lane-integration"
+  ],
+  "html": [
+   "html-pdf-reporting",
+   "injected-html-design-parity"
+  ],
+  "hub": [
+   "huggingface-hub"
+  ],
+  "huggingface": [
+   "huggingface-hub"
+  ],
+  "human": [
+   "aaa-human-physique-topology",
+   "arif-site-human-first-audit",
+   "bonded-human-special-lane",
+   "hermes-multi-human-lanes",
+   "human-apps-roadmap-2026",
+   "human-care-coaching",
+   "human-corpus-falsification",
+   "human-facing-recurring-card",
+   "human-logistics-advisory",
+   "human-meaning-membrane",
+   "human-memory-organization",
+   "human-reality-field",
+   "human-response-witness",
+   "human-state-estimation",
+   "human-trust-calibration",
+   "loved-one-worry-support",
+   "openclaw-human-meaning",
+   "relationship-kernel",
+   "session-init-human-first",
+   "zkpc-multi-human-memory"
+  ],
+  "humility": [
+   "APEX-humility-godel"
+  ],
+  "hygiene": [
+   "FORGE-secret-hygiene",
+   "forge-secret-hygiene",
+   "hermes-session-hygiene"
+  ],
+  "identity": [
+   "FORGE-did-web-identity",
+   "brand-identity-mark",
+   "federation-agent-identity-binding",
+   "federation-identity-reconciliation",
+   "forge-did-web-identity",
+   "hermes-federated-identity",
+   "identity-reference-verification",
+   "identity-verification",
+   "sovereign-identity-architecture",
+   "voice-identity-provisioning"
+  ],
+  "image": [
+   "aaa-image-editing",
+   "hermes-gateway-image-routing",
+   "image-analyzer-vision",
+   "image-restyle-and-edit",
+   "image-text-editing",
+   "image-text-extraction",
+   "minimax-image-gen",
+   "multi-reference-image-edit",
+   "qwencloud-image-generation",
+   "reference-image-rendering",
+   "token-plan-image"
+  ],
+  "imagegen": [
+   "imagegen"
+  ],
+  "imagine": [
+   "imagine"
+  ],
+  "improvement": [
+   "RSI-recursive-improvement",
+   "reality-loop-operator"
+  ],
+  "inbound": [
+   "inbound-evaluation-intake",
+   "inbound-provenance-forensics"
+  ],
+  "incarnation": [
+   "federation-config-incarnation"
+  ],
+  "incident": [
+   "FORGE-incident-escalation",
+   "FORGE-incident-triage"
+  ],
+  "independence": [
+   "witness-independence-audit"
+  ],
+  "index": [
+   "firecrawl-developer-index",
+   "firecrawl-research-index"
+  ],
+  "infra": [
+   "FORGE-infra-crons",
+   "FORGE-infra-guardian",
+   "federation-infra-verification",
+   "forge-infra-crons",
+   "forge-infra-guardian"
+  ],
+  "infrastructure": [
+   "infrastructure-topology"
+  ],
+  "ingat": [
+   "999-ingat"
+  ],
+  "ingest": [
+   "AAA-asr-glm-ingest",
+   "firecrawl-knowledge-ingest",
+   "geox-voice-reality-ingest",
+   "media-ingest-lane"
+  ],
+  "ingress": [
+   "FORGE-act-federation-ingress",
+   "FORGE-sct-federation-ingress",
+   "forge-act-federation-ingress",
+   "public-ingress-audit"
+  ],
+  "inherited": [
+   "inherited-claim-audit"
+  ],
+  "init": [
+   "arifos-auto-init",
+   "arifos-frozen-snapshot-init",
+   "forge-github-ops",
+   "github-auth",
+   "github-code-review",
+   "github-issue-to-pr",
+   "github-issues",
+   "github-pr-workflow",
+   "github-repo-management",
+   "hermes-init",
+   "openclaw-init",
+   "opencode-init",
+   "session-init-human-first"
+  ],
+  "injected": [
+   "injected-html-design-parity"
+  ],
+  "injector": [
+   "scar-context-injector"
+  ],
+  "insider": [
+   "insider-exposure-inventory"
+  ],
+  "instagram": [
+   "instagram-story-forge"
+  ],
+  "install": [
+   "quarantined-tool-install",
+   "scar-bridge-install"
+  ],
+  "installer": [
+   "skill-installer"
+  ],
+  "institution": [
+   "constitutional-institution-mapping",
+   "institution-telemetry-ops"
+  ],
+  "institutional": [
+   "institutional-communication-audit",
+   "institutional-epistemic-sink-forensics",
+   "institutional-fact-verification",
+   "institutional-form-filing",
+   "institutional-language-audit",
+   "institutional-spend-accountability"
+  ],
+  "instrument": [
+   "federation-cycle-instrument"
+  ],
+  "intake": [
+   "audit-intake-verification",
+   "external-review-intake",
+   "inbound-evaluation-intake",
+   "third-party-audit-intake",
+   "vendor-evaluation-intake"
+  ],
+  "integration": [
+   "FORGE-redis-qdrant-integration",
+   "arifos-integration-recon",
+   "cross-host-tool-lane-integration",
+   "federation-provider-integration",
+   "forge-redis-qdrant-integration",
+   "gemini-integration",
+   "provider-integration",
+   "react-frontend-integration"
+  ],
+  "integrity": [
+   "attribution-integrity",
+   "canon-integrity-check",
+   "chunked-tts-render-integrity",
+   "claim-ledger-integrity",
+   "generated-artifact-integrity",
+   "long-form-tts-render-integrity",
+   "monetary-amount-integrity",
+   "pipeline-integrity",
+   "probe-evidence-integrity",
+   "skill-library-integrity",
+   "temporal-artifact-integrity"
+  ],
+  "intel": [
+   "arif-world-reality-intel",
+   "firecrawl-competitive-intel"
+  ],
+  "intelligence": [
+   "AGI-explorer-intelligence",
+   "FORGE-ci-diagnose",
+   "FORGE-design-intelligence",
+   "FORGE-repo-intelligence",
+   "PETRONAS-intelligence-router",
+   "fb-transaction-intelligence",
+   "forge-ci-diagnose",
+   "forge-cross-repo-doc-zen",
+   "forge-design-intelligence",
+   "forge-document-intelligence",
+   "forge-repo-intelligence",
+   "forge-web-intelligence",
+   "geox-temporal-intelligence",
+   "hermes-asi-intelligence",
+   "hermes-multimodal-intelligence",
+   "intelligence-briefing",
+   "reality-intelligence",
+   "sea-physique-event-intelligence",
+   "social-scene-intelligence",
+   "temporal-intelligence",
+   "upstream-e-p-capital-intelligence",
+   "vision-intelligence-with-rasa",
+   "wealth-four-layer-intelligence"
+  ],
+  "interact": [
+   "firecrawl-interact"
+  ],
+  "interface": [
+   "malaysia-reality-interface"
+  ],
+  "interpretation": [
+   "geox-seismic-interpretation",
+   "interpretation-calibration"
+  ],
+  "intimate": [
+   "intimate-anthropology"
+  ],
+  "inventory": [
+   "insider-exposure-inventory"
+  ],
+  "invocation": [
+   "geox-mcp-tool-invocation"
+  ],
+  "invoice": [
+   "wop-invoice-generator"
+  ],
+  "irfan": [
+   "irfan-stewardship-review"
+  ],
+  "isaacson": [
+   "walter-isaacson-biography"
+  ],
+  "isolation": [
+   "hermes-multi-user-isolation"
+  ],
+  "issue": [
+   "forge-issue-triage",
+   "github-issue-to-pr"
+  ],
+  "issues": [
+   "github-issues"
+  ],
+  "jsonld": [
+   "FORGE-governance-jsonld",
+   "forge-governance-jsonld"
+  ],
+  "judge": [
+   "apex-judge",
+   "arifos-constitutional-judge"
+  ],
+  "kernel": [
+   "KERNEL-trinity-33",
+   "arifos-kernel-e2e-testing",
+   "arifos-kernel-eurekas",
+   "arifos-kernel-zen-audit",
+   "kernel-bind",
+   "kernel-security-claim-audit",
+   "kernel-trinity-33",
+   "relationship-kernel",
+   "trinity-33-canonical"
+  ],
+  "kimi": [
+   "FORGE-kimi-code",
+   "forge-kimi-code",
+   "kimi-code"
+  ],
+  "know": [
+   "know-language",
+   "know-math",
+   "know-physics",
+   "know-pragmatics"
+  ],
+  "knowledge": [
+   "firecrawl-knowledge-base",
+   "firecrawl-knowledge-ingest"
+  ],
+  "komda": [
+   "FORGE-komda-color-law",
+   "forge-komda-color-law"
+  ],
+  "kpj": [
+   "kpj-vending-dashboard"
+  ],
+  "kvm8": [
+   "kvm8-media-lane-fallbacks"
+  ],
+  "ladder": [
+   "emergence-maturation-ladder",
+   "media-lane-outage-ladder"
+  ],
+  "lane": [
+   "bonded-human-special-lane",
+   "cross-host-tool-lane-integration",
+   "emd-lane-routing",
+   "federation-lane-routing",
+   "kvm8-media-lane-fallbacks",
+   "media-ingest-lane",
+   "media-lane-outage-ladder",
+   "person-lane-operator",
+   "sovereign-tts-lanes",
+   "voice-lane"
+  ],
+  "lanes": [
+   "alpha-zen-lanes",
+   "financial-distress-data-lanes",
+   "hermes-multi-human-lanes",
+   "sovereign-tts-lanes"
+  ],
+  "language": [
+   "corporate-language-audit",
+   "institutional-language-audit",
+   "know-language"
+  ],
+  "law": [
+   "FORGE-komda-color-law",
+   "forge-komda-color-law"
+  ],
+  "layer": [
+   "wealth-four-layer-intelligence"
+  ],
+  "layered": [
+   "layered-perspective-brief"
+  ],
+  "lead": [
+   "firecrawl-lead-gen",
+   "firecrawl-lead-research"
+  ],
+  "learning": [
+   "learning-loop-verification"
+  ],
+  "least": [
+   "FORGE-route-least-power",
+   "forge-route-least-power"
+  ],
+  "ledger": [
+   "claim-ledger-integrity",
+   "durable-claim-ledger",
+   "wealth-ledger-discipline"
+  ],
+  "lens": [
+   "multi-lens-parallel-forge"
+  ],
+  "letter": [
+   "business-letter-pdf",
+   "ceremonial-letter-pdf",
+   "civic-whistleblower-letter"
+  ],
+  "librarian": [
+   "session-librarian"
+  ],
+  "library": [
+   "prompts-chat-library",
+   "skill-library-integrity"
+  ],
+  "lifecycle": [
+   "forge-subagent-lifecycle",
+   "session-lifecycle-temporal",
+   "session-lifecycle-temporal-v2"
+  ],
+  "lifeguard": [
+   "FORGE-mcp-lifeguard"
+  ],
+  "link": [
+   "link-to-evidence"
+  ],
+  "linter": [
+   "FORGE-skill-linter"
+  ],
+  "list": [
+   "mcp-sota-shopping-list"
+  ],
+  "listed": [
+   "listed-equity-chart-delivery"
+  ],
+  "listing": [
+   "short-stay-listing-vetting"
+  ],
+  "lists": [
+   "curated-recommendation-lists"
+  ],
+  "live": [
+   "declared-vs-live-audit",
+   "find-live-binary-before-engine-mutation",
+   "live-data-dashboards",
+   "live-system-audit-discipline",
+   "live-worker-session-relay"
+  ],
+  "llama": [
+   "llama-cpp"
+  ],
+  "llms": [
+   "evaluating-llms-harness",
+   "serving-llms-vllm"
+  ],
+  "local": [
+   "local-business-deep-dive",
+   "local-video-read"
+  ],
+  "log": [
+   "WELL-3baik-log",
+   "geox-well-log-qc"
+  ],
+  "logistics": [
+   "human-logistics-advisory"
+  ],
+  "long": [
+   "long-form-tts-render-integrity"
+  ],
+  "loop": [
+   "agi-deep-research-loop",
+   "echo-loop-detector",
+   "forge-self-loop-guard",
+   "learning-loop-verification",
+   "reality-loop-operator",
+   "rtc-loop"
+  ],
+  "loops": [
+   "thinking-model-tool-loops"
+  ],
+  "loved": [
+   "loved-one-artifact-ops",
+   "loved-one-worry-support"
+  ],
+  "lsp": [
+   "forge-lsp-pre-edit-gate"
+  ],
+  "machine": [
+   "arifos-machine-wellness",
+   "machine-discovery-surface-audit",
+   "well-machine-diagnose"
+  ],
+  "mailbox": [
+   "gmail-rest-mailbox-ops"
+  ],
+  "maintenance": [
+   "weekly-federation-maintenance"
+  ],
+  "makcikgpt": [
+   "makcikgpt-archived-designs",
+   "makcikgpt-article-craft"
+  ],
+  "malaysia": [
+   "malaysia-commercial-premise-sourcing",
+   "malaysia-health-scam-verification",
+   "malaysia-reality-interface",
+   "malaysia-rental-vetting",
+   "malaysia-tenancy-agreement",
+   "malaysia-tenancy-disputes"
+  ],
+  "malaysian": [
+   "malaysian-bodybuilding-research",
+   "malaysian-employment-separation",
+   "malaysian-psc-fiscal-modelling"
+  ],
+  "manage": [
+   "memory-manage"
+  ],
+  "management": [
+   "documentation-tier-management",
+   "github-repo-management"
+  ],
+  "manifest": [
+   "FORGE-federation-manifest"
+  ],
+  "map": [
+   "firecrawl-map",
+   "organ-capability-map",
+   "shape-map-generalization"
+  ],
+  "mapbox": [
+   "mapbox-cartography-gis"
+  ],
+  "mapping": [
+   "constitutional-institution-mapping",
+   "desire-structure-mapping",
+   "shadow-pattern-mapping"
+  ],
+  "mark": [
+   "brand-identity-mark",
+   "circular-mark-and-arabic-typography"
+  ],
+  "market": [
+   "firecrawl-market-research",
+   "market-analysis-scope",
+   "market-claim-assessment",
+   "market-collapse-forensics",
+   "market-prediction-falsification",
+   "wealth-market-pulse"
+  ],
+  "mastery": [
+   "FORGE-nextjs-mastery",
+   "forge-nextjs-mastery"
+  ],
+  "mata": [
+   "mata"
+  ],
+  "math": [
+   "know-math"
+  ],
+  "matrix": [
+   "forge-t3a-binding-matrix"
+  ],
+  "maturation": [
+   "emergence-maturation-ladder"
+  ],
+  "mcp": [
+   "FORGE-mcp-a2a-agentic",
+   "FORGE-mcp-federation-ops",
+   "FORGE-mcp-gui",
+   "FORGE-mcp-lifeguard",
+   "FORGE-mcp-ops",
+   "FORGE-mcp-probe",
+   "FORGE-mcp-registry-ops",
+   "FORGE-mcp-testing",
+   "arifos-mcp-audit",
+   "arifos-mcp-resource-surface",
+   "forge-fastmcp",
+   "forge-mcp-a2a-agentic",
+   "forge-mcp-gui",
+   "forge-mcp-migration",
+   "geox-mcp-tool-invocation",
+   "hermes-mcp-server-registration",
+   "mcp-client-conformance",
+   "mcp-context-compression",
+   "mcp-edit-activation",
+   "mcp-external-conformance",
+   "mcp-organ-probe",
+   "mcp-sota-shopping-list",
+   "mcp-stateless-protocol",
+   "mcp-tool-differential-testing",
+   "mcp-transport-fix",
+   "runpod-mcp",
+   "touchdesigner-mcp"
+  ],
+  "mcporter": [
+   "FORGE-mcp-ops"
+  ],
+  "meaning": [
+   "human-meaning-membrane",
+   "openclaw-human-meaning"
+  ],
+  "measurement": [
+   "arifos-governance-measurement",
+   "measurement-discipline"
+  ],
+  "media": [
+   "ai-media-generation",
+   "ai-media-generation-ops",
+   "gemini-media-gen",
+   "kvm8-media-lane-fallbacks",
+   "media",
+   "media-content-extraction",
+   "media-ingest-lane",
+   "media-lane-outage-ladder",
+   "social-media",
+   "sourced-media-delivery"
+  ],
+  "membrane": [
+   "human-meaning-membrane"
+  ],
+  "memory": [
+   "agent-memory-architecture",
+   "contextstream-memory-code-search",
+   "emem-shared-memory",
+   "graphiti-temporal-memory-ops",
+   "helix-memory-compress",
+   "human-memory-organization",
+   "memory-manage",
+   "retrieval-vs-memory-fidelity",
+   "zkpc-multi-human-memory"
+  ],
+  "mention": [
+   "transit-only-mention-probe"
+  ],
+  "merge": [
+   "merge-reconciler",
+   "skill-cluster-merge"
+  ],
+  "mesa": [
+   "claude-meta-mesa",
+   "meta-mesa",
+   "opencode-meta-mesa",
+   "qwen-meta-mesa"
+  ],
+  "mesh": [
+   "RSI-federation-mesh",
+   "aaa-skill-governor-runtime",
+   "fi-mesh-check",
+   "openclaw-mesh-bridge",
+   "rsi-federation-mesh",
+   "skill-audit-methodology",
+   "skill-library-integrity",
+   "skill-mesh",
+   "skill-taxonomy-reclassification",
+   "skills-cold-storage-ops"
+  ],
+  "message": [
+   "agent-message-store-forensics"
+  ],
+  "meta": [
+   "claude-meta-mesa",
+   "meta-mesa",
+   "opencode-meta-mesa",
+   "qwen-meta-mesa"
+  ],
+  "metabolism": [
+   "federation-metabolism"
+  ],
+  "metabolizer": [
+   "entropy-metabolizer"
+  ],
+  "methodology": [
+   "skill-audit-methodology"
+  ],
+  "migrate": [
+   "forge_card_migrate",
+   "migrate-to-codex"
+  ],
+  "migration": [
+   "fastmcp-organ-staging-migration",
+   "forge-mcp-migration",
+   "provider-endpoint-migration"
+  ],
+  "mimo": [
+   "AAA-voice-cloning-mimo-minimax",
+   "mimo-audio",
+   "mimo-v2-5-tts",
+   "mimo-vision"
+  ],
+  "minimax": [
+   "AAA-voice-cloning-mimo-minimax",
+   "minimax-image-gen",
+   "minimax-m-plan"
+  ],
+  "mmx": [
+   "mmx-cli"
+  ],
+  "mobile": [
+   "mobile-app-mockup"
+  ],
+  "mockup": [
+   "mobile-app-mockup"
+  ],
+  "mode": [
+   "aaa-shadow-mode",
+   "syed-care-mode"
+  ],
+  "model": [
+   "FORGE-model-monitor",
+   "forge-model-monitor",
+   "frontier-model-audit-verification",
+   "geoscience-model-figure",
+   "model-narrative-consistency",
+   "model-score-disclosure",
+   "qwencloud-model-selector",
+   "thinking-model-tool-loops"
+  ],
+  "modelling": [
+   "fdp-fiscal-economics-modelling",
+   "malaysian-psc-fiscal-modelling"
+  ],
+  "modes": [
+   "tts-render-failure-modes"
+  ],
+  "monetary": [
+   "monetary-amount-integrity",
+   "monetary-amount-parsing"
+  ],
+  "money": [
+   "money-path-discipline"
+  ],
+  "monitor": [
+   "FORGE-model-monitor",
+   "background-monitor-design",
+   "firecrawl-monitor",
+   "forge-model-monitor"
+  ],
+  "morning": [
+   "arifos-morning-pulse"
+  ],
+  "motive": [
+   "third-party-motive-read"
+  ],
+  "multi": [
+   "hermes-multi-human-lanes",
+   "hermes-multi-user-isolation",
+   "multi-cli-coding-dispatch",
+   "multi-lens-parallel-forge",
+   "multi-period-cashflow-analysis",
+   "multi-reference-image-edit",
+   "multi-voice-note-assembly",
+   "zkpc-multi-human-memory"
+  ],
+  "multimodal": [
+   "agi-multimodal-bridge",
+   "delta-omega-psi-multimodal-cognition",
+   "forge-multimodal-router",
+   "hermes-multimodal-intelligence",
+   "multimodal-audio-pipeline",
+   "youtube-multimodal"
+  ],
+  "multisite": [
+   "multisite-performance-dashboards"
+  ],
+  "music": [
+   "AAA-somatic-music-doctrine"
+  ],
+  "musyawarah": [
+   "FORGE-musyawarah-gotong",
+   "aaa-musyawarah-execution",
+   "forge-musyawarah-gotong"
+  ],
+  "mutation": [
+   "find-live-binary-before-engine-mutation",
+   "forge-federation-config-mutation",
+   "forge-hook-mutation-closure"
+  ],
+  "naked": [
+   "hermes-naked-prior-audit"
+  ],
+  "nano": [
+   "nano-pdf"
+  ],
+  "narrative": [
+   "model-narrative-consistency"
+  ],
+  "navigation": [
+   "health-provider-navigation"
+  ],
+  "nervous": [
+   "audio-nervous-system",
+   "nervous-system-coregulation"
+  ],
+  "nested": [
+   "verify-nested-sibling-reports"
+  ],
+  "nextjs": [
+   "FORGE-nextjs-mastery",
+   "forge-nextjs-mastery"
+  ],
+  "node": [
+   "cross-node-artifact-transfer"
+  ],
+  "note": [
+   "multi-voice-note-assembly",
+   "note-taking",
+   "persona-voice-note-delivery",
+   "persona-voice-note-render"
+  ],
+  "notice": [
+   "provider-notice-triage"
+  ],
+  "now": [
+   "rest-now"
+  ],
+  "numeric": [
+   "auditable-numeric-artifacts"
+  ],
+  "nusantara": [
+   "AGI-nusantara-substrate",
+   "agi-nusantara-substrate",
+   "nusantara-action-spiral"
+  ],
+  "nutrition": [
+   "visual-nutrition-estimation"
+  ],
+  "observations": [
+   "fed-runtime-observations"
+  ],
+  "observe": [
+   "observe-ground"
+  ],
+  "ocr": [
+   "aaa-ocr-optical-compression",
+   "ocr-and-documents"
+  ],
+  "omega": [
+   "delta-omega-psi-multimodal-cognition"
+  ],
+  "onboarding": [
+   "FORGE-onboarding",
+   "forge-onboarding",
+   "telegram-user-onboarding"
+  ],
+  "one": [
+   "loved-one-artifact-ops",
+   "loved-one-worry-support"
+  ],
+  "only": [
+   "transit-only-mention-probe"
+  ],
+  "openai": [
+   "openai-docs"
+  ],
+  "openclaw": [
+   "openclaw",
+   "openclaw-claude-code-spawn",
+   "openclaw-forge",
+   "openclaw-human-meaning",
+   "openclaw-init",
+   "openclaw-mesh-bridge",
+   "openclaw-propose-seal"
+  ],
+  "opencode": [
+   "HERMES-opencode-protocol",
+   "hermes-opencode-protocol",
+   "opencode-agentic-state",
+   "opencode-arifos-pitfalls",
+   "opencode-ed25519-bootstrap-fix",
+   "opencode-forge",
+   "opencode-init",
+   "opencode-meta-mesa",
+   "opencode-propose-seal",
+   "opencode-zen-router"
+  ],
+  "openhue": [
+   "openhue"
+  ],
+  "operations": [
+   "voice-clone-operations"
+  ],
+  "operator": [
+   "aia-cycle-operator",
+   "person-lane-operator",
+   "reality-loop-operator"
+  ],
+  "ops": [
+   "FORGE-mcp-federation-ops",
+   "FORGE-mcp-lifeguard",
+   "FORGE-mcp-ops",
+   "FORGE-mcp-registry-ops",
+   "FORGE-mcp-testing",
+   "a-forge-ops",
+   "aaa-doctrine-sealing",
+   "agent-claim-verification",
+   "agent-finding-verification",
+   "agi-web-optimization",
+   "ai-media-generation-ops",
+   "arif-fazil-site-ops",
+   "arif-fazil-web-ops",
+   "arif-sites-ops",
+   "arifos-auto-init",
+   "arifos-cron-ops",
+   "arifos-frozen-snapshot-init",
+   "audit-falsification-discipline",
+   "audit-intake-verification",
+   "audit-repo-reality",
+   "audit-repository-entropy",
+   "browser-service-ops",
+   "clause-split-tts-render-ops",
+   "cross-ai-analysis-distillation",
+   "cross-surface-conformance-audit",
+   "external-review-intake",
+   "federation-agent-card-ops",
+   "forge-execution-governance",
+   "forge-fastmcp",
+   "forge-github-ops",
+   "forge-governance-analysis",
+   "forge-governance-jsonld",
+   "forge-mcp-a2a-agentic",
+   "forge-mcp-gui",
+   "forge-web-intelligence",
+   "github-auth",
+   "github-code-review",
+   "github-issue-to-pr",
+   "github-issues",
+   "github-pr-workflow",
+   "github-repo-management",
+   "gmail-rest-mailbox-ops",
+   "governance-audit",
+   "governance-benchmark-authoring",
+   "graphiti-temporal-memory-ops",
+   "hermes-naked-prior-audit",
+   "hermes-research-substrate",
+   "hf-governed-dataset-ops",
+   "i-arif-corpus-ops",
+   "inherited-claim-audit",
+   "institution-telemetry-ops",
+   "link-to-evidence",
+   "loved-one-artifact-ops",
+   "mcp-context-compression",
+   "mcp-edit-activation",
+   "mcp-organ-probe",
+   "mcp-sota-shopping-list",
+   "mcp-transport-fix",
+   "pasted-review-falsification",
+   "persona-voice-render-ops",
+   "qr-code-ops",
+   "qwencloud-ops-auth",
+   "session-federation-discovery",
+   "session-init-human-first",
+   "session-librarian",
+   "session-lifecycle-temporal",
+   "session-lifecycle-temporal-v2",
+   "skills-cold-storage-ops",
+   "sovereign-search",
+   "syedos-ops",
+   "telegram-ops",
+   "third-party-audit-intake",
+   "verify-sibling-ops-reports",
+   "web-extraction-fallbacks",
+   "web-ops",
+   "web-scrape",
+   "web-search",
+   "web-search-query-gate-recovery",
+   "well-triadic-ops"
+  ],
+  "optical": [
+   "aaa-ocr-optical-compression"
+  ],
+  "optimization": [
+   "AGI-web-optimization",
+   "agi-web-optimization"
+  ],
+  "optimizer": [
+   "apex-attention-optimizer"
+  ],
+  "orchestrator": [
+   "FORGE-federation-orchestrator"
+  ],
+  "organ": [
+   "fastmcp-organ-staging-migration",
+   "mcp-organ-probe",
+   "organ-capability-map"
+  ],
+  "organism": [
+   "constitutional-organism-doctrine"
+  ],
+  "organization": [
+   "human-memory-organization"
+  ],
+  "organs": [
+   "seven-zen-organs-enforcement"
+  ],
+  "outage": [
+   "media-lane-outage-ladder",
+   "provider-pool-outage-fallback"
+  ],
+  "output": [
+   "output-attestation"
+  ],
+  "overnight": [
+   "autonomous-overnight-agent-dispatch"
+  ],
+  "pack": [
+   "presentation-pack-delivery",
+   "presentation-pack-forge"
+  ],
+  "package": [
+   "arxiv-submission-package"
+  ],
+  "padu": [
+   "padu"
+  ],
+  "panel": [
+   "geox-panel-authoring"
+  ],
+  "paper": [
+   "ai-paper-paste-audit",
+   "research-paper-writing"
+  ],
+  "papers": [
+   "firecrawl-research-papers"
+  ],
+  "paradox": [
+   "EUREKA777-paradox-resolution",
+   "shadow-paradox-13",
+   "subsidy-paradox-calibration"
+  ],
+  "parallel": [
+   "multi-lens-parallel-forge",
+   "parallel-agent-fanout"
+  ],
+  "parity": [
+   "design-shell-parity",
+   "injected-html-design-parity",
+   "serving-parity-audit"
+  ],
+  "parse": [
+   "firecrawl-parse"
+  ],
+  "parser": [
+   "forge-vss-parser"
+  ],
+  "parsing": [
+   "monetary-amount-parsing"
+  ],
+  "party": [
+   "first-party-evidence-audit",
+   "third-party-artifact-review",
+   "third-party-audit-intake",
+   "third-party-motive-read",
+   "third-party-software-evaluate",
+   "third-party-tool-quarantine"
+  ],
+  "pass": [
+   "apex-fact-check-pass"
+  ],
+  "paste": [
+   "ai-paper-paste-audit",
+   "paste-router"
+  ],
+  "pasted": [
+   "pasted-review-falsification"
+  ],
+  "patch": [
+   "arifos-site-patch-without-caddy-reload",
+   "federated-patch-seal"
+  ],
+  "path": [
+   "money-path-discipline",
+   "path-hallucination-guard"
+  ],
+  "pattern": [
+   "shadow-pattern-mapping"
+  ],
+  "patterns": [
+   "AGI-graph-engineering-patterns"
+  ],
+  "pdf": [
+   "aaa-pdf-voice-protocol",
+   "business-letter-pdf",
+   "ceremonial-letter-pdf",
+   "html-pdf-reporting",
+   "nano-pdf",
+   "pdf-federation",
+   "pdf-realmap",
+   "pdf-report-generation",
+   "witness-biography-pdf"
+  ],
+  "ped": [
+   "ped-hormone-advisory"
+  ],
+  "performance": [
+   "multisite-performance-dashboards"
+  ],
+  "period": [
+   "multi-period-cashflow-analysis"
+  ],
+  "person": [
+   "person-lane-operator",
+   "session-store-person-probe"
+  ],
+  "persona": [
+   "hermes-persona-alignment",
+   "persona-boundary-conduct",
+   "persona-triad-reasoning",
+   "persona-voice-act-arcs",
+   "persona-voice-binding",
+   "persona-voice-continuity",
+   "persona-voice-note-delivery",
+   "persona-voice-note-render",
+   "persona-voice-render-ops"
+  ],
+  "personal": [
+   "personal-domain-deep-research"
+  ],
+  "perspective": [
+   "layered-perspective-brief"
+  ],
+  "petition": [
+   "civic-petition-forge",
+   "sovereign-petition-forge"
+  ],
+  "petronas": [
+   "PETRONAS-intelligence-router"
+  ],
+  "photo": [
+   "photo-style-transfer",
+   "physique-photo-assessment"
+  ],
+  "physics": [
+   "know-physics"
+  ],
+  "physique": [
+   "aaa-human-physique-topology",
+   "physique-photo-assessment",
+   "sea-physique-event-intelligence"
+  ],
+  "pipeline": [
+   "AAA-audio-emd-pipeline",
+   "AAA-somatic-emd-pipeline",
+   "artifact-emission-pipeline",
+   "arxiv-preprint-pipeline",
+   "cover-art-pipeline",
+   "essay-publish-pipeline",
+   "multimodal-audio-pipeline",
+   "pipeline-integrity"
+  ],
+  "pitfalls": [
+   "opencode-arifos-pitfalls"
+  ],
+  "plan": [
+   "agi-plan-dag",
+   "field-development-plan",
+   "field-development-plan-review",
+   "field-development-plan-screening",
+   "minimax-m-plan",
+   "plan",
+   "token-plan-image",
+   "token-plan-speech",
+   "token-plan-video"
+  ],
+  "plane": [
+   "arifos-control-plane-sot-audit"
+  ],
+  "playbook": [
+   "recovery-playbook"
+  ],
+  "playwright": [
+   "browser-playwright-runner"
+  ],
+  "plugin": [
+   "hermes-plugin-system",
+   "plugin-creator"
+  ],
+  "plus": [
+   "deep-research-plus-wealth"
+  ],
+  "policy": [
+   "arifos-evidence-policy"
+  ],
+  "political": [
+   "political-fiscal-claims"
+  ],
+  "pool": [
+   "provider-pool-outage-fallback"
+  ],
+  "port": [
+   "forge-port-architecture"
+  ],
+  "portfolio": [
+   "pr-portfolio-sweep"
+  ],
+  "position": [
+   "entity-position-dossier"
+  ],
+  "poster": [
+   "social-promotional-poster"
+  ],
+  "postgres": [
+   "FORGE-postgres-schema-design",
+   "forge-postgres-schema-design"
+  ],
+  "power": [
+   "FORGE-route-least-power",
+   "forge-route-least-power"
+  ],
+  "practices": [
+   "security-best-practices"
+  ],
+  "pragmatics": [
+   "know-pragmatics"
+  ],
+  "pre": [
+   "forge-lsp-pre-edit-gate"
+  ],
+  "precommit": [
+   "FORGE-precommit-review"
+  ],
+  "prediction": [
+   "blind-prediction-testing",
+   "gold-site-honest-prediction",
+   "market-prediction-falsification",
+   "prediction-honesty-audit"
+  ],
+  "predictive": [
+   "predictive-claim-falsification"
+  ],
+  "premise": [
+   "malaysia-commercial-premise-sourcing"
+  ],
+  "prep": [
+   "bm-voice-script-prep",
+   "well-bodybuilding-comp-prep"
+  ],
+  "preprint": [
+   "arxiv-preprint-pipeline"
+  ],
+  "presentation": [
+   "presentation-pack-delivery",
+   "presentation-pack-forge"
+  ],
+  "pressure": [
+   "geox-pressure-governance"
+  ],
+  "pretext": [
+   "pretext"
+  ],
+  "prevention": [
+   "ASI-fabrication-prevention"
+  ],
+  "primitives": [
+   "wealth-capital-primitives"
+  ],
+  "principal": [
+   "principal-analysis-artifact"
+  ],
+  "prior": [
+   "hermes-naked-prior-audit"
+  ],
+  "priority": [
+   "priority-claim-verification"
+  ],
+  "privacy": [
+   "github-public-push-privacy"
+  ],
+  "probe": [
+   "FORGE-mcp-probe",
+   "bond-corpus-probe",
+   "federation-alignment-probe",
+   "federation-asset-probe",
+   "federation-skill-probe-discipline",
+   "fi-zai-probe",
+   "forge-federation-probe",
+   "mcp-organ-probe",
+   "probe-evidence-integrity",
+   "session-store-person-probe",
+   "transit-only-mention-probe"
+  ],
+  "probes": [
+   "verification-boundary-probes"
+  ],
+  "production": [
+   "business-document-production",
+   "geox-production-cockpit",
+   "production-capacity-closure",
+   "production-source-disambiguation"
+  ],
+  "productivity": [
+   "productivity"
+  ],
+  "profile": [
+   "taste-profile-artifact"
+  ],
+  "project": [
+   "forge-project-context-update"
+  ],
+  "promotional": [
+   "social-promotional-poster"
+  ],
+  "prompt": [
+   "arifos-prompt-doctrine"
+  ],
+  "prompts": [
+   "prompts-chat-library"
+  ],
+  "propose": [
+   "hermes-propose-seal",
+   "openclaw-propose-seal",
+   "opencode-propose-seal",
+   "propose-seal"
+  ],
+  "prosody": [
+   "forge-audio-prosody-extraction"
+  ],
+  "prospect": [
+   "geox-prospect-evaluation"
+  ],
+  "protocol": [
+   "HERMES-opencode-protocol",
+   "a2a-gateway-protocol",
+   "aaa-chamber-protocol",
+   "aaa-pdf-voice-protocol",
+   "apex-deliverable-protocol",
+   "clone-receipt-protocol",
+   "hermes-opencode-protocol",
+   "mcp-stateless-protocol"
+  ],
+  "provenance": [
+   "generated-audio-provenance",
+   "inbound-provenance-forensics",
+   "provenance-field-audit",
+   "provenance-typed-analysis",
+   "sealed-deliverable-provenance",
+   "value-provenance-testing"
+  ],
+  "provider": [
+   "federation-provider-integration",
+   "health-provider-navigation",
+   "provider-endpoint-migration",
+   "provider-integration",
+   "provider-notice-triage",
+   "provider-pool-outage-fallback",
+   "provider-quota-diagnostics",
+   "provider-retirement-purge",
+   "tts-provider-failure-triage"
+  ],
+  "provisioning": [
+   "cloud-gpu-provisioning",
+   "voice-identity-provisioning"
+  ],
+  "psc": [
+   "malaysian-psc-fiscal-modelling"
+  ],
+  "psi": [
+   "delta-omega-psi-multimodal-cognition"
+  ],
+  "public": [
+   "github-public-push-privacy",
+   "public-column-publishing",
+   "public-ingress-audit",
+   "subsurface-dossier-from-public-domain"
+  ],
+  "publication": [
+   "arif-fazil-publication-doctrine",
+   "constitutional-publication-audit"
+  ],
+  "publish": [
+   "arif-site-publish",
+   "essay-publish-pipeline",
+   "essay-publish-watermark",
+   "forecast-publish-with-calibration-gate"
+  ],
+  "publishing": [
+   "civic-article-publishing",
+   "public-column-publishing"
+  ],
+  "pulse": [
+   "arifos-morning-pulse",
+   "wealth-market-pulse"
+  ],
+  "purge": [
+   "provider-retirement-purge"
+  ],
+  "push": [
+   "github-public-push-privacy"
+  ],
+  "pywhy": [
+   "causal555-pywhy"
+  ],
+  "qdrant": [
+   "FORGE-redis-qdrant-integration",
+   "forge-redis-qdrant-integration"
+  ],
+  "qqq": [
+   "qqq"
+  ],
+  "qrl": [
+   "qrl",
+   "qrl-arifos"
+  ],
+  "qualia": [
+   "AAA-audio-qualia-doctrine",
+   "aaa-audio-qualia-doctrine"
+  ],
+  "quantification": [
+   "decision-risk-quantification"
+  ],
+  "quantum": [
+   "AGI-audio-quantum-cognition",
+   "APEX-quantum-eureka"
+  ],
+  "quarantine": [
+   "third-party-tool-quarantine"
+  ],
+  "quarantined": [
+   "quarantined-tool-install"
+  ],
+  "query": [
+   "web-search-query-gate-recovery"
+  ],
+  "question": [
+   "agent-question-budget"
+  ],
+  "quota": [
+   "provider-quota-diagnostics",
+   "qwen-voice-clone-quota"
+  ],
+  "qwen": [
+   "AAA-voice-cloning-qwen-cloud",
+   "fi-qwen-upgrade",
+   "qwen-harness-tools",
+   "qwen-meta-mesa",
+   "qwen-voice-clone-quota"
+  ],
+  "qwencloud": [
+   "qwencloud-deploy",
+   "qwencloud-image-generation",
+   "qwencloud-model-selector",
+   "qwencloud-ops-auth",
+   "qwencloud-text",
+   "qwencloud-update-check",
+   "qwencloud-usage",
+   "qwencloud-video-generation",
+   "qwencloud-vision"
+  ],
+  "rasa": [
+   "666-rasa",
+   "hermes-rasa-doctrine",
+   "vision-intelligence-with-rasa"
+  ],
+  "react": [
+   "FORGE-react-spa-discipline",
+   "forge-react-spa-discipline",
+   "react-frontend-integration"
+  ],
+  "read": [
+   "local-video-read",
+   "third-party-motive-read",
+   "unauthenticated-read-surface-audit"
+  ],
+  "reader": [
+   "wisdom-reader"
+  ],
+  "readiness": [
+   "agent-readiness-cockpit",
+   "submission-readiness-audit"
+  ],
+  "reading": [
+   "bond-reading-discipline"
+  ],
+  "readme": [
+   "FORGE-readme-truth-check"
+  ],
+  "reality": [
+   "AUDIT-repo-reality",
+   "arif-world-reality-intel",
+   "audit-repo-reality",
+   "authority-reality-grounder",
+   "codebase-reality",
+   "control-reality-audit",
+   "credential-surface-reality",
+   "cross-harness-reality-test",
+   "geox-voice-reality-ingest",
+   "human-reality-field",
+   "malaysia-reality-interface",
+   "my-reality",
+   "reality-intelligence",
+   "reality-loop-operator"
+  ],
+  "reality333": [
+   "reality333-source-topology"
+  ],
+  "realmap": [
+   "pdf-realmap"
+  ],
+  "reasoning": [
+   "persona-triad-reasoning"
+  ],
+  "rebuild": [
+   "formal-document-rebuild"
+  ],
+  "recall": [
+   "sovereign-self-history-recall",
+   "witness-semantic-recall"
+  ],
+  "receipt": [
+   "clone-receipt-protocol",
+   "forge-vault-seal-receipt"
+  ],
+  "reclassification": [
+   "skill-taxonomy-reclassification"
+  ],
+  "recommendation": [
+   "curated-recommendation-artifact",
+   "curated-recommendation-lists"
+  ],
+  "recon": [
+   "arifos-integration-recon"
+  ],
+  "reconciler": [
+   "merge-reconciler"
+  ],
+  "reconciliation": [
+   "artifact-source-reconciliation",
+   "divergent-claim-reconciliation",
+   "federation-identity-reconciliation"
+  ],
+  "record": [
+   "conversation-record-forensics"
+  ],
+  "recovery": [
+   "recovery-playbook",
+   "web-search-query-gate-recovery"
+  ],
+  "recurring": [
+   "human-facing-recurring-card"
+  ],
+  "recursive": [
+   "RSI-recursive-improvement",
+   "reality-loop-operator"
+  ],
+  "redis": [
+   "FORGE-redis-qdrant-integration",
+   "forge-redis-qdrant-integration"
+  ],
+  "reduction": [
+   "aaa-docs-entropy-reduction",
+   "federation-entropy-reduction"
+  ],
+  "reference": [
+   "identity-reference-verification",
+   "multi-reference-image-edit",
+   "reference-image-rendering"
+  ],
+  "reflect": [
+   "AGI-decisions-reflect",
+   "agi-decisions-reflect"
+  ],
+  "reflection": [
+   "weekly-user-reflection"
+  ],
+  "refusal": [
+   "refusal-sink-audit"
+  ],
+  "register": [
+   "casual-bm-chat-register",
+   "voice-register-fidelity",
+   "voice-register-tuning"
+  ],
+  "registration": [
+   "hermes-mcp-server-registration"
+  ],
+  "registry": [
+   "FORGE-mcp-registry-ops",
+   "well-consent-registry"
+  ],
+  "relationship": [
+   "relationship-kernel",
+   "relationship-state-review"
+  ],
+  "relay": [
+   "cross-harness-relay-wiring",
+   "hermes-room-relay",
+   "live-worker-session-relay"
+  ],
+  "release": [
+   "federation-release-attestation"
+  ],
+  "reload": [
+   "arifos-site-patch-without-caddy-reload"
+  ],
+  "removal": [
+   "governance-removal-review",
+   "governed-removal-discipline"
+  ],
+  "render": [
+   "chart-artifact-render-qa",
+   "chunked-tts-render-integrity",
+   "clause-split-tts-render-ops",
+   "long-form-tts-render-integrity",
+   "persona-voice-note-render",
+   "persona-voice-render-ops",
+   "tts-render-failure-modes",
+   "voice-render-verification"
+  ],
+  "rendered": [
+   "rendered-artifact-verification",
+   "rendered-surface-verification"
+  ],
+  "rendering": [
+   "faceless-subject-rendering",
+   "reference-image-rendering",
+   "synthetic-voice-scene-rendering"
+  ],
+  "rental": [
+   "malaysia-rental-vetting"
+  ],
+  "repair": [
+   "agent-runtime-shadow-repair",
+   "forge-well-boundary-repair"
+  ],
+  "repo": [
+   "AUDIT-repo-reality",
+   "FORGE-ci-diagnose",
+   "FORGE-cross-repo-doc-zen",
+   "FORGE-repo-intelligence",
+   "audit-repo-reality",
+   "forge-ci-diagnose",
+   "forge-cross-repo-doc-zen",
+   "forge-repo-intelligence",
+   "github-repo-management"
+  ],
+  "report": [
+   "pdf-report-generation",
+   "verify-before-report"
+  ],
+  "reporting": [
+   "firecrawl-dashboard-reporting",
+   "html-pdf-reporting",
+   "vending-dashboard-reporting",
+   "vending-site-reporting"
+  ],
+  "reports": [
+   "verify-nested-sibling-reports",
+   "verify-sibling-ops-reports"
+  ],
+  "repository": [
+   "audit-repository-entropy"
+  ],
+  "require": [
+   "FORGE-esm-require-guard",
+   "forge-esm-require-guard"
+  ],
+  "research": [
+   "agi-deep-research-loop",
+   "deep-research-plus-wealth",
+   "firecrawl-deep-research",
+   "firecrawl-lead-research",
+   "firecrawl-market-research",
+   "firecrawl-research-index",
+   "firecrawl-research-papers",
+   "hermes-research-substrate",
+   "malaysian-bodybuilding-research",
+   "personal-domain-deep-research",
+   "research",
+   "research-evidence-scout",
+   "research-paper-writing"
+  ],
+  "resolution": [
+   "EUREKA777-paradox-resolution",
+   "telegram-chat-resolution"
+  ],
+  "resource": [
+   "arifos-mcp-resource-surface"
+  ],
+  "response": [
+   "human-response-witness"
+  ],
+  "rest": [
+   "gmail-rest-mailbox-ops",
+   "rest-now"
+  ],
+  "restyle": [
+   "image-restyle-and-edit"
+  ],
+  "retirement": [
+   "provider-retirement-purge"
+  ],
+  "retrieval": [
+   "retrieval-vs-memory-fidelity"
+  ],
+  "reversibility": [
+   "apex_reversibility_test"
+  ],
+  "review": [
+   "FORGE-pr-governance",
+   "FORGE-pr-review",
+   "FORGE-precommit-review",
+   "external-review-intake",
+   "field-development-plan-review",
+   "github-code-review",
+   "governance-removal-review",
+   "irfan-stewardship-review",
+   "pasted-review-falsification",
+   "relationship-state-review",
+   "review-agent",
+   "third-party-artifact-review",
+   "trading-risk-review"
+  ],
+  "rigor": [
+   "geological-artifact-rigor"
+  ],
+  "risk": [
+   "decision-risk-quantification",
+   "trading-risk-review"
+  ],
+  "roadmap": [
+   "human-apps-roadmap-2026"
+  ],
+  "room": [
+   "hermes-room-relay"
+  ],
+  "route": [
+   "FORGE-route-least-power",
+   "forge-route-least-power",
+   "route-dispatch"
+  ],
+  "router": [
+   "COPILOT-zen-router",
+   "PETRONAS-intelligence-router",
+   "forge-multimodal-router",
+   "opencode-zen-router",
+   "paste-router",
+   "zen-router"
+  ],
+  "routing": [
+   "emd-lane-routing",
+   "federation-lane-routing",
+   "flame-stage-routing",
+   "hermes-gateway-image-routing"
+  ],
+  "rsi": [
+   "RSI-federation-mesh",
+   "RSI-recursive-improvement",
+   "rsi-federation-mesh"
+  ],
+  "rtc": [
+   "rtc-loop"
+  ],
+  "runbook": [
+   "FORGE-vps-runbook"
+  ],
+  "runner": [
+   "browser-playwright-runner"
+  ],
+  "runpod": [
+   "runpod",
+   "runpod-mcp",
+   "runpod-usage"
+  ],
+  "runpodctl": [
+   "runpodctl"
+  ],
+  "runtime": [
+   "aaa-skill-governor-runtime",
+   "agent-runtime-shadow-repair",
+   "doctrine-to-runtime-compiler",
+   "fed-runtime-observations",
+   "runtime"
+  ],
+  "runway": [
+   "wealth-runway-conservation"
+  ],
+  "rust": [
+   "rust-federation"
+  ],
+  "sado": [
+   "abang-sado-analysis-doctrine",
+   "abang-sado-tenderness-arc",
+   "sado-snapshot",
+   "scar-capture-sado"
+  ],
+  "salam": [
+   "000-salam"
+  ],
+  "sanctuary": [
+   "sanctuary-boundary-enforcer"
+  ],
+  "scam": [
+   "health-scam-vetting",
+   "malaysia-health-scam-verification"
+  ],
+  "scar": [
+   "agy-scar-hardening",
+   "scar-bridge-install",
+   "scar-capture-sado",
+   "scar-context-injector",
+   "wisdom-scar-session-audit"
+  ],
+  "scene": [
+   "social-scene-intelligence",
+   "synthetic-voice-scene-rendering"
+  ],
+  "schema": [
+   "FORGE-postgres-schema-design",
+   "forge-postgres-schema-design",
+   "service-state-schema-drift"
+  ],
+  "scientific": [
+   "generated-scientific-artifact-audit"
+  ],
+  "scope": [
+   "apex_scope_check",
+   "market-analysis-scope"
+  ],
+  "score": [
+   "model-score-disclosure"
+  ],
+  "scout": [
+   "research-evidence-scout"
+  ],
+  "scrape": [
+   "firecrawl-scrape",
+   "web-scrape"
+  ],
+  "screening": [
+   "field-development-plan-screening"
+  ],
+  "screenshot": [
+   "trading-screenshot-analysis"
+  ],
+  "script": [
+   "bm-voice-script-prep",
+   "tts-script-asr-gate"
+  ],
+  "sct": [
+   "FORGE-sct-federation-ingress"
+  ],
+  "sea": [
+   "sea-physique-event-intelligence"
+  ],
+  "seal": [
+   "apex_verdict_seal",
+   "audit-seal",
+   "federated-patch-seal",
+   "forge-git-seal",
+   "forge-seal-a-close",
+   "forge-vault-seal-receipt",
+   "hermes-propose-seal",
+   "openclaw-propose-seal",
+   "opencode-propose-seal",
+   "propose-seal",
+   "seal-discipline",
+   "seal-session"
+  ],
+  "sealed": [
+   "sealed-deliverable-provenance"
+  ],
+  "sealing": [
+   "aaa-doctrine-sealing"
+  ],
+  "search": [
+   "contextstream-memory-code-search",
+   "firecrawl-search",
+   "firecrawl-web-search",
+   "sovereign-search",
+   "web-search",
+   "web-search-query-gate-recovery"
+  ],
+  "seat": [
+   "federation-seat-wiring"
+  ],
+  "secret": [
+   "FORGE-secret-hygiene",
+   "forge-secret-hygiene"
+  ],
+  "section": [
+   "geoscience-section-forge",
+   "tectonic-section-architecture"
+  ],
+  "security": [
+   "kernel-security-claim-audit",
+   "security-best-practices"
+  ],
+  "seismic": [
+   "geox-seismic-interpretation"
+  ],
+  "selector": [
+   "qwencloud-model-selector"
+  ],
+  "self": [
+   "agent-capability-self-audit",
+   "forge-hermes-self-evolution",
+   "forge-self-loop-guard",
+   "governance-contract-self-audit",
+   "sovereign-self-history-recall"
+  ],
+  "semantic": [
+   "witness-semantic-recall"
+  ],
+  "seo": [
+   "firecrawl-seo-audit"
+  ],
+  "separation": [
+   "malaysian-employment-separation"
+  ],
+  "server": [
+   "hermes-mcp-server-registration"
+  ],
+  "service": [
+   "browser-service-ops",
+   "service-state-schema-drift"
+  ],
+  "serving": [
+   "serving-llms-vllm",
+   "serving-parity-audit"
+  ],
+  "session": [
+   "arifos-auto-init",
+   "arifos-frozen-snapshot-init",
+   "hermes-naked-prior-audit",
+   "hermes-session-hygiene",
+   "live-worker-session-relay",
+   "seal-session",
+   "session-federation-discovery",
+   "session-init-human-first",
+   "session-librarian",
+   "session-lifecycle-temporal",
+   "session-lifecycle-temporal-v2",
+   "session-store-person-probe",
+   "wisdom-scar-session-audit"
+  ],
+  "setup": [
+   "AAA-setup-help",
+   "aaa-setup-help"
+  ],
+  "seven": [
+   "seven-zen-organs-enforcement"
+  ],
+  "shadow": [
+   "aaa-shadow-mode",
+   "agent-runtime-shadow-repair",
+   "shadow-fdp-authoring",
+   "shadow-paradox-13",
+   "shadow-pattern-mapping"
+  ],
+  "shape": [
+   "shape-map-generalization"
+  ],
+  "shared": [
+   "emem-shared-memory"
+  ],
+  "shell": [
+   "design-shell-parity",
+   "web-shell-alignment"
+  ],
+  "shop": [
+   "firecrawl-shop"
+  ],
+  "shopping": [
+   "mcp-sota-shopping-list"
+  ],
+  "short": [
+   "short-stay-listing-vetting"
+  ],
+  "sibling": [
+   "verify-nested-sibling-reports",
+   "verify-sibling-ops-reports"
+  ],
+  "signal": [
+   "signal-strength-gating"
+  ],
+  "single": [
+   "canon-single-source"
+  ],
+  "sink": [
+   "institutional-epistemic-sink-forensics",
+   "refusal-sink-audit"
+  ],
+  "site": [
+   "arif-fazil-site-deploy",
+   "arif-fazil-site-ops",
+   "arif-site-human-first-audit",
+   "arif-site-publish",
+   "arifos-site-patch-without-caddy-reload",
+   "codex-family-site-deliverable",
+   "gold-site-honest-prediction",
+   "vending-site-reporting"
+  ],
+  "sites": [
+   "arif-sites-ops"
+  ],
+  "sketch": [
+   "sketch"
+  ],
+  "slash": [
+   "hermes-slash-command-trap"
+  ],
+  "snapshot": [
+   "arifos-frozen-snapshot-init",
+   "sado-snapshot"
+  ],
+  "social": [
+   "social-media",
+   "social-promotional-poster",
+   "social-scene-intelligence"
+  ],
+  "software": [
+   "third-party-software-evaluate"
+  ],
+  "solvency": [
+   "company-solvency-forensics"
+  ],
+  "somatic": [
+   "AAA-somatic-emd-pipeline",
+   "AAA-somatic-engine-catalog",
+   "AAA-somatic-music-doctrine"
+  ],
+  "sot": [
+   "arifos-control-plane-sot-audit"
+  ],
+  "sota": [
+   "mcp-sota-shopping-list"
+  ],
+  "source": [
+   "artifact-source-reconciliation",
+   "canon-single-source",
+   "production-source-disambiguation",
+   "reality333-source-topology"
+  ],
+  "sourced": [
+   "sourced-media-delivery"
+  ],
+  "sourcing": [
+   "entity-dossier-sourcing",
+   "malaysia-commercial-premise-sourcing"
+  ],
+  "sovereign": [
+   "aaa-shadow-mode",
+   "sovereign-daily-brief",
+   "sovereign-identity-architecture",
+   "sovereign-petition-forge",
+   "sovereign-search",
+   "sovereign-self-history-recall",
+   "sovereign-surface-design",
+   "sovereign-tts-lanes",
+   "weekly-sovereign-brief"
+  ],
+  "spa": [
+   "FORGE-react-spa-discipline",
+   "forge-react-spa-discipline"
+  ],
+  "spatial": [
+   "FORGE-spatial-grounding",
+   "forge-spatial-grounding"
+  ],
+  "spawn": [
+   "forge-subagent-spawn",
+   "hermes-claude-code-spawn",
+   "openclaw-claude-code-spawn"
+  ],
+  "special": [
+   "bonded-human-special-lane"
+  ],
+  "species": [
+   "agentic-genome-species"
+  ],
+  "speech": [
+   "token-plan-speech"
+  ],
+  "spend": [
+   "institutional-spend-accountability"
+  ],
+  "spiral": [
+   "nusantara-action-spiral"
+  ],
+  "split": [
+   "clause-split-tts-render-ops"
+  ],
+  "stack": [
+   "xauusd-trading"
+  ],
+  "stage": [
+   "flame-stage-routing"
+  ],
+  "staging": [
+   "fastmcp-organ-staging-migration"
+  ],
+  "state": [
+   "agentic-state",
+   "hermes-state-db-forensics",
+   "human-state-estimation",
+   "opencode-agentic-state",
+   "relationship-state-review",
+   "service-state-schema-drift"
+  ],
+  "stateless": [
+   "mcp-stateless-protocol"
+  ],
+  "stay": [
+   "short-stay-listing-vetting"
+  ],
+  "stewardship": [
+   "irfan-stewardship-review"
+  ],
+  "storage": [
+   "skills-cold-storage-ops"
+  ],
+  "store": [
+   "agent-message-store-forensics",
+   "session-store-person-probe"
+  ],
+  "story": [
+   "instagram-story-forge"
+  ],
+  "strength": [
+   "signal-strength-gating"
+  ],
+  "structure": [
+   "desire-structure-mapping"
+  ],
+  "style": [
+   "photo-style-transfer"
+  ],
+  "subagent": [
+   "forge-subagent-lifecycle",
+   "forge-subagent-spawn"
+  ],
+  "subject": [
+   "faceless-subject-rendering"
+  ],
+  "submission": [
+   "arxiv-submission-package",
+   "submission-readiness-audit"
+  ],
+  "subsidy": [
+   "subsidy-paradox-calibration"
+  ],
+  "substrate": [
+   "AGI-nusantara-substrate",
+   "agi-nusantara-substrate",
+   "federation-substrate-hardening",
+   "hermes-research-substrate",
+   "substrate-taxonomy"
+  ],
+  "subsurface": [
+   "subsurface-dossier-from-public-domain"
+  ],
+  "suite": [
+   "forge-vss-verifier-suite"
+  ],
+  "summarize": [
+   "ASI-summarize",
+   "asi-summarize"
+  ],
+  "support": [
+   "loved-one-worry-support"
+  ],
+  "surface": [
+   "arifos-mcp-resource-surface",
+   "credential-surface-reality",
+   "cross-surface-conformance-audit",
+   "discovery-surface-verification",
+   "machine-discovery-surface-audit",
+   "rendered-surface-verification",
+   "sovereign-surface-design",
+   "surface-consistency-audit",
+   "unauthenticated-read-surface-audit",
+   "visual-surface-delivery",
+   "wawabot-anthropology-surface",
+   "web-surface-design-fidelity"
+  ],
+  "sweep": [
+   "pr-portfolio-sweep"
+  ],
+  "syed": [
+   "syed-care-mode"
+  ],
+  "syedos": [
+   "syedos-ops"
+  ],
+  "symlink": [
+   "FORGE-symlink-audit",
+   "forge-symlink-audit"
+  ],
+  "synthetic": [
+   "synthetic-voice-scene-rendering"
+  ],
+  "system": [
+   "audio-nervous-system",
+   "forge-visual-design-system",
+   "hermes-plugin-system",
+   "live-system-audit-discipline",
+   "nervous-system-coregulation"
+  ],
+  "t3a": [
+   "forge-t3a-binding-matrix"
+  ],
+  "tailwind": [
+   "FORGE-tailwind-tokens",
+   "forge-tailwind-tokens"
+  ],
+  "taking": [
+   "note-taking"
+  ],
+  "task": [
+   "a2a-task-delegator"
+  ],
+  "taste": [
+   "taste-profile-artifact"
+  ],
+  "taxonomy": [
+   "dynamic-config-taxonomy",
+   "skill-taxonomy-reclassification",
+   "substrate-taxonomy"
+  ],
+  "technical": [
+   "technical-artifact-audit"
+  ],
+  "tectonic": [
+   "tectonic-section-architecture"
+  ],
+  "telegram": [
+   "FORGE-telegram-audit",
+   "telegram-chat-resolution",
+   "telegram-gateway-group-debug",
+   "telegram-ops",
+   "telegram-user-onboarding"
+  ],
+  "telemetry": [
+   "FORGE-telemetry-watchdog",
+   "capability-telemetry-audit",
+   "hermes-dna-telemetry",
+   "institution-telemetry-ops"
+  ],
+  "temporal": [
+   "geox-temporal-intelligence",
+   "graphiti-temporal-memory-ops",
+   "session-lifecycle-temporal",
+   "session-lifecycle-temporal-v2",
+   "temporal-anchor",
+   "temporal-artifact-integrity",
+   "temporal-awareness",
+   "temporal-intelligence"
+  ],
+  "tenancy": [
+   "malaysia-tenancy-agreement",
+   "malaysia-tenancy-disputes"
+  ],
+  "tenderness": [
+   "abang-sado-tenderness-arc"
+  ],
+  "tengok": [
+   "111-tengok"
+  ],
+  "test": [
+   "apex_reversibility_test",
+   "cross-harness-reality-test",
+   "test-curator-write"
+  ],
+  "testing": [
+   "FORGE-mcp-testing",
+   "arifos-kernel-e2e-testing",
+   "blind-prediction-testing",
+   "external-agent-conformance-testing",
+   "mcp-tool-differential-testing",
+   "value-provenance-testing"
+  ],
+  "text": [
+   "image-text-editing",
+   "image-text-extraction",
+   "qwencloud-text"
+  ],
+  "theory": [
+   "apex-theory-canon"
+  ],
+  "think": [
+   "think-deep"
+  ],
+  "thinking": [
+   "thinking-model-tool-loops"
+  ],
+  "third": [
+   "third-party-artifact-review",
+   "third-party-audit-intake",
+   "third-party-motive-read",
+   "third-party-software-evaluate",
+   "third-party-tool-quarantine"
+  ],
+  "tier": [
+   "documentation-tier-management"
+  ],
+  "time": [
+   "all-time-and-delisted-charts"
+  ],
+  "token": [
+   "token-plan-image",
+   "token-plan-speech",
+   "token-plan-video"
+  ],
+  "tokens": [
+   "FORGE-tailwind-tokens",
+   "forge-tailwind-tokens"
+  ],
+  "tool": [
+   "agent-tool-verification",
+   "apex_tool_approval_gate",
+   "cross-host-tool-lane-integration",
+   "fastmcp-tool-consolidation",
+   "geox-mcp-tool-invocation",
+   "mcp-tool-differential-testing",
+   "quarantined-tool-install",
+   "thinking-model-tool-loops",
+   "third-party-tool-quarantine"
+  ],
+  "tools": [
+   "qwen-harness-tools"
+  ],
+  "topology": [
+   "aaa-human-physique-topology",
+   "infrastructure-topology",
+   "reality333-source-topology"
+  ],
+  "touchdesigner": [
+   "touchdesigner-mcp"
+  ],
+  "tracking": [
+   "chron-consequence-tracking"
+  ],
+  "trading": [
+   "trading-risk-review",
+   "trading-screenshot-analysis",
+   "xauusd-trading"
+  ],
+  "trajectory": [
+   "agentic-trust-trajectory"
+  ],
+  "transaction": [
+   "fb-transaction-intelligence",
+   "transaction-dashboard-generator"
+  ],
+  "transfer": [
+   "cross-node-artifact-transfer",
+   "photo-style-transfer"
+  ],
+  "transit": [
+   "transit-only-mention-probe"
+  ],
+  "transition": [
+   "dissipative-transition-hold"
+  ],
+  "translation": [
+   "bm-business-translation"
+  ],
+  "transport": [
+   "mcp-transport-fix"
+  ],
+  "trap": [
+   "hermes-slash-command-trap"
+  ],
+  "triad": [
+   "persona-triad-reasoning"
+  ],
+  "triadic": [
+   "well-triadic-ops"
+  ],
+  "triage": [
+   "FORGE-incident-triage",
+   "forge-issue-triage",
+   "provider-notice-triage",
+   "tts-provider-failure-triage"
+  ],
+  "trinity": [
+   "KERNEL-trinity-33",
+   "kernel-trinity-33",
+   "trinity-33-canonical"
+  ],
+  "trust": [
+   "agentic-trust-trajectory",
+   "human-trust-calibration"
+  ],
+  "truth": [
+   "FORGE-readme-truth-check"
+  ],
+  "tts": [
+   "AAA-tts-engine-catalog",
+   "chunked-tts-render-integrity",
+   "clause-split-tts-render-ops",
+   "long-form-tts-render-integrity",
+   "mimo-v2-5-tts",
+   "sovereign-tts-lanes",
+   "tts-provider-failure-triage",
+   "tts-render-failure-modes",
+   "tts-script-asr-gate"
+  ],
+  "tuning": [
+   "voice-register-tuning"
+  ],
+  "typed": [
+   "provenance-typed-analysis"
+  ],
+  "typography": [
+   "circular-mark-and-arabic-typography"
+  ],
+  "unattended": [
+   "unattended-agent-execution"
+  ],
+  "unauthenticated": [
+   "unauthenticated-read-surface-audit"
+  ],
+  "unification": [
+   "AGI-skill-unification"
+  ],
+  "unified": [
+   "unified-federated-ai-architectures"
+  ],
+  "update": [
+   "forge-project-context-update",
+   "qwencloud-update-check"
+  ],
+  "upgrade": [
+   "federation-dep-upgrade",
+   "fi-qwen-upgrade"
+  ],
+  "upstream": [
+   "upstream-e-p-capital-intelligence"
+  ],
+  "usage": [
+   "qwencloud-usage",
+   "runpod-usage"
+  ],
+  "user": [
+   "hermes-multi-user-isolation",
+   "telegram-user-onboarding",
+   "weekly-user-reflection"
+  ],
+  "validate": [
+   "audit-and-validate-deliverables"
+  ],
+  "validation": [
+   "agent-config-validation"
+  ],
+  "value": [
+   "value-provenance-testing"
+  ],
+  "vault": [
+   "forge-vault-seal-receipt"
+  ],
+  "vault999": [
+   "forge-vault999-witness",
+   "vault999-audit-forensics"
+  ],
+  "vector": [
+   "arifos-collapse-vector-audit"
+  ],
+  "vending": [
+   "kpj-vending-dashboard",
+   "vending-dashboard-reporting",
+   "vending-site-reporting"
+  ],
+  "vendor": [
+   "vendor-evaluation-intake"
+  ],
+  "verb": [
+   "arifos-eight-verb-canonical"
+  ],
+  "verdict": [
+   "apex_verdict_hold",
+   "apex_verdict_seal",
+   "external-artifact-verdict"
+  ],
+  "verification": [
+   "agent-claim-verification",
+   "agent-finding-verification",
+   "agent-tool-verification",
+   "audit-intake-verification",
+   "claimed-defect-verification",
+   "discovery-surface-verification",
+   "enforcement-coverage-verification",
+   "federation-infra-verification",
+   "figure-annotation-verification",
+   "frontier-model-audit-verification",
+   "identity-reference-verification",
+   "identity-verification",
+   "institutional-fact-verification",
+   "learning-loop-verification",
+   "malaysia-health-scam-verification",
+   "priority-claim-verification",
+   "rendered-artifact-verification",
+   "rendered-surface-verification",
+   "verification-boundary-probes",
+   "voice-render-verification"
+  ],
+  "verifier": [
+   "forge-vss-verifier-suite"
+  ],
+  "verify": [
+   "verify-before-report",
+   "verify-gate",
+   "verify-nested-sibling-reports",
+   "verify-sibling-ops-reports"
+  ],
+  "vetting": [
+   "health-scam-vetting",
+   "malaysia-rental-vetting",
+   "short-stay-listing-vetting"
+  ],
+  "video": [
+   "local-video-read",
+   "qwencloud-video-generation",
+   "token-plan-video"
+  ],
+  "vision": [
+   "forge-vision-densify",
+   "image-analyzer-vision",
+   "mimo-vision",
+   "qwencloud-vision",
+   "vision-direct-api-fallback",
+   "vision-intelligence-with-rasa"
+  ],
+  "visual": [
+   "forge-visual-design-system",
+   "forge-visual-qa-w3",
+   "visual-nutrition-estimation",
+   "visual-surface-delivery"
+  ],
+  "vllm": [
+   "serving-llms-vllm"
+  ],
+  "voice": [
+   "AAA-voice-cloning-mimo-minimax",
+   "AAA-voice-cloning-qwen-cloud",
+   "aaa-pdf-voice-protocol",
+   "bm-voice-script-prep",
+   "geox-voice-reality-ingest",
+   "multi-voice-note-assembly",
+   "persona-voice-act-arcs",
+   "persona-voice-binding",
+   "persona-voice-continuity",
+   "persona-voice-note-delivery",
+   "persona-voice-note-render",
+   "persona-voice-render-ops",
+   "qwen-voice-clone-quota",
+   "sovereign-tts-lanes",
+   "synthetic-voice-scene-rendering",
+   "voice-clone-operations",
+   "voice-engine-fallback-chain",
+   "voice-identity-provisioning",
+   "voice-lane",
+   "voice-register-fidelity",
+   "voice-register-tuning",
+   "voice-render-verification"
+  ],
+  "vps": [
+   "FORGE-vps-docker",
+   "FORGE-vps-runbook"
+  ],
+  "vss": [
+   "forge-vss-parser",
+   "forge-vss-verifier-suite"
+  ],
+  "walkthrough": [
+   "firecrawl-demo-walkthrough"
+  ],
+  "walter": [
+   "walter-isaacson-biography"
+  ],
+  "watch": [
+   "ASI-drift-watch"
+  ],
+  "watchdog": [
+   "FORGE-telemetry-watchdog"
+  ],
+  "watermark": [
+   "essay-publish-watermark"
+  ],
+  "wawabot": [
+   "wawabot-anthropology-surface"
+  ],
+  "wealth": [
+   "deep-research-plus-wealth",
+   "wealth-capital-primitives",
+   "wealth-four-layer-intelligence",
+   "wealth-ledger-discipline",
+   "wealth-market-pulse",
+   "wealth-runway-conservation"
+  ],
+  "web": [
+   "AGI-agentic-web",
+   "AGI-web-optimization",
+   "FORGE-agentic-web-builder",
+   "FORGE-did-web-identity",
+   "agi-agentic-web-delivery",
+   "agi-web-optimization",
+   "arif-fazil-web-ops",
+   "firecrawl-web-search",
+   "forge-agentic-web-builder",
+   "forge-did-web-identity",
+   "forge-web-intelligence",
+   "hermes-research-substrate",
+   "link-to-evidence",
+   "sovereign-search",
+   "web",
+   "web-extraction-fallbacks",
+   "web-ops",
+   "web-scrape",
+   "web-search",
+   "web-search-query-gate-recovery",
+   "web-shell-alignment",
+   "web-surface-design-fidelity"
+  ],
+  "website": [
+   "firecrawl-website-design-clone"
+  ],
+  "weekly": [
+   "weekly-federation-maintenance",
+   "weekly-sovereign-brief",
+   "weekly-user-reflection"
+  ],
+  "weights": [
+   "weights-and-biases"
+  ],
+  "well": [
+   "WELL-3baik-log",
+   "forge-well-boundary-repair",
+   "geox-well-log-qc",
+   "well-bodybuilding-comp-prep",
+   "well-consent-registry",
+   "well-machine-diagnose",
+   "well-triadic-ops"
+  ],
+  "wellness": [
+   "arifos-machine-wellness"
+  ],
+  "what": [
+   "dream-what"
+  ],
+  "whistleblower": [
+   "civic-whistleblower-letter"
+  ],
+  "wide": [
+   "forge-federation-config-mutation"
+  ],
+  "wiring": [
+   "cross-harness-relay-wiring",
+   "federation-seat-wiring",
+   "federation-wiring-audit"
+  ],
+  "wisdom": [
+   "wisdom-atlas-architecture",
+   "wisdom-reader",
+   "wisdom-scar-session-audit"
+  ],
+  "without": [
+   "arifos-site-patch-without-caddy-reload"
+  ],
+  "witness": [
+   "forge-vault999-witness",
+   "human-response-witness",
+   "witness-biography-pdf",
+   "witness-independence-audit",
+   "witness-semantic-recall"
+  ],
+  "wop": [
+   "wop-invoice-generator"
+  ],
+  "work": [
+   "check-work"
+  ],
+  "worker": [
+   "live-worker-session-relay"
+  ],
+  "workflow": [
+   "github-pr-workflow"
+  ],
+  "workflows": [
+   "firecrawl-workflows"
+  ],
+  "workspace": [
+   "FORGE-google-workspace",
+   "forge-google-workspace",
+   "google-workspace-gws"
+  ],
+  "world": [
+   "arif-world-reality-intel"
+  ],
+  "worry": [
+   "loved-one-worry-support"
+  ],
+  "write": [
+   "test-curator-write"
+  ],
+  "writers": [
+   "concurrent-agent-writers"
+  ],
+  "writing": [
+   "research-paper-writing"
+  ],
+  "xauusd": [
+   "xauusd-trading"
+  ],
+  "youtube": [
+   "youtube-analysis",
+   "youtube-eureka",
+   "youtube-extraction-datacenter-ip",
+   "youtube-full",
+   "youtube-multimodal"
+  ],
+  "zai": [
+   "fi-zai-probe"
+  ],
+  "zen": [
+   "COPILOT-zen-router",
+   "FORGE-cross-repo-doc-zen",
+   "alpha-zen-lanes",
+   "arifos-kernel-zen-audit",
+   "forge-cross-repo-doc-zen",
+   "opencode-zen-router",
+   "seven-zen-organs-enforcement",
+   "zen-router"
+  ],
+  "zkpc": [
+   "zkpc-multi-human-memory"
+  ]
+ }
+}

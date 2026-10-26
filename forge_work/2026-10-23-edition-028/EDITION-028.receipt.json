@@ -1,0 +1,59 @@
+{
+  "edition": "EDITION-028",
+  "date": "2026-10-23",
+  "built_at": "2026-10-22T22:31:06Z",
+  "stages": {
+    "validate": {
+      "ok": true,
+      "item_count": 33,
+      "problems": []
+    },
+    "state": {
+      "ok": true,
+      "prev_edition": "EDITION-027",
+      "delta": {
+        "new": 11,
+        "moved": 6,
+        "reopened": 0,
+        "still_open": 16,
+        "settled": 0,
+        "dropped": 4
+      },
+      "headline": "11 new, 6 moved, 16 carrying over, 4 dropped without resolution",
+      "semantic_mirror": {
+        "available": true,
+        "detail": "reachable at http://localhost:6333"
+      },
+      "open_items": 123
+    },
+    "feedback": {
+      "ok": true,
+      "standing_rules": 1,
+      "rules_file": "/root/AAA/forge_work/2026-10-23-edition-028/brief-rules.md"
+    },
+    "build": {
+      "ok": true,
+      "exit": 0,
+      "spec": "/root/AAA/forge_work/2026-10-23-edition-028/spec.json"
+    },
+    "seal": {
+      "ok": true,
+      "artifact": "/root/AAA/forge_work/2026-10-23-edition-028/EDITION-028.pdf",
+      "sidecar": "/root/AAA/forge_work/2026-10-23-edition-028/EDITION-028.sha256",
+      "artifact_sha256": "9e99ba1fbe8726bd3e6b501f8c37dc5ead18f0f78938b1b9a4491f6ac8766e30",
+      "content_sha256": "57924d31e75cce3f717c5ecf6786e57ca0eb8f3fcb8f03714dfad0c6b950a477",
+      "gates_all_pass": true
+    },
+    "mirror": {
+      "ok": true,
+      "detail": "mirrored to hermes_brief_editions"
+    },
+    "dispatch": {
+      "state": "PRODUCED",
+      "literal": true,
+      "detail": "dry run \u2014 artifact sealed on disk, nothing pushed. Set target to actually send.",
+      "artifact": "/root/AAA/forge_work/2026-10-23-edition-028/EDITION-028.pdf"
+    }
+  },
+  "ok": true
+}

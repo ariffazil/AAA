@@ -40,6 +40,17 @@ Screenshots of chat apps are STRUCTURED evidence, not text. The structure — wh
 5. **Timestamps vs live clock.** Before narrating "what is happening NOW", cross-check against `now`/`date`. Screenshots can be hours or days old; requotes older still. (Reinforces the standing TEMPORAL SCAR: cerita ikut jam, bukan jam ikut cerita — any time reference passes through the live clock first.)
 6. **Vision pass on the ACTUAL image.** Do not narrate from remembered text, cached OCR, a previous model's summary, or the text of an earlier analysis. Load the image and look. UI chrome — colors, alignment, quote bars, contact name, read ticks — IS data. Text-only reading of a screenshot is OCR cosplay, and the user will say exactly that.
 
+## Measuring beats narrating — classify structure from pixels
+
+Two vision passes over the same screenshot routinely contradict each other (sender labels, bubble sides and even which side is green swap between passes). Do not vote between passes and do not quote a vision pass's attribution — measure, then validate.
+
+- **Classify each bubble from its fill colour**, sampled with PIL over the rows that carry its text. Dark-theme WhatsApp: outgoing ≈ `(38,75,57)`, incoming ≈ `(34,39,43)`, chat background ≈ `(11,16,20)`. Take the median colour of the longest non-background run on those rows; one clean colour class per bubble, never a mix.
+- **Alignment confirms it:** outgoing ends ≈12–15 px from the right edge, incoming starts ≈5–12 px from the left. Use the NEAR edge, not the bubble's x-position — a wide bubble's far edge sits anywhere.
+- **Validate on anchors first.** Pick one or two lines whose sender the human states personally, run them through the same classifier, and only then classify the rest. A classifier that fails an anchor is reading the wrong colour class; fix it before trusting any output.
+- **A reply-quote panel carries its own colour** and will flip a bubble if you sample inside it — classify rows outside the quoted block.
+- **Timestamps come from OCR, not from a vision reading.** Crop the timestamp strip, upscale 12–16×, run tesseract both inverted and normal at several x-offsets, and accept only a reading that repeats across crops — a single `1`/`3` confusion moves a message twenty minutes.
+- **If the screenshot reaches past the last timestamp of your exported `.txt`, ask for a fresh export instead.** Export attribution is exact and free; pixel forensics is the fallback for what the export does not cover (`bond-corpus-probe`).
+
 ## Failure signature — what the misread looks like from outside
 
 - Narrating stale content as live ("he's on the train now" when he arrived yesterday)

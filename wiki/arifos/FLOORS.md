@@ -27,6 +27,8 @@ arifOS enforces 13 constitutional floors (F0–F13) on all AI tool executions. E
 | **F12** | RESILIENCE | Graceful degradation. System must remain functional if any single component fails. | INFO |
 | **F13** | SOVEREIGN_SCALE | Federation-level governance. Node activation requires explicit human sovereign per node. Floor tourism must be prevented via telemetry. | HOLD |
 
+> **Live floor measurements** render from the Public Truth Envelope — [`/arifos/public-truth.json`](https://arif-fazil.com/arifos/public-truth.json) (envelope v1, rule `public-truth-v1`). This wiki is a projection of canon, not a second canon: any number shown here would drift (declared ≠ actual). Unknown source ⇒ UNMEASURED — never green.
+
 ---
 
 ## Runtime Floor Enforcement

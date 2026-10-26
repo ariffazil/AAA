@@ -133,7 +133,7 @@ hermes memory status
 ≤15s strict, technical/full-DITING), or keep strict everywhere. The technical-vs-casual split
 is a register policy, not an agent decision — propose it as ONE binary choice, never a menu.
 
-**Mechanism.** Voice Governor's "re-draft, never fallback" rule (`references/voice-governor.md`
+**Mechanism.** Voice Governor's "re-draft, never fallback" rule (`/root/AAA/skills/domains/general/aaa/substrate/bridge-protocol/references/voice-governor.md`
 §1) is correct on register — it prevents AI-speak leaks — but the loop has a real cost. A casual
 BM reply that scores 4/5 DITING on first draft takes ~12s to re-draft to 6/6. Stack three drafts
 plus the Presentation Firewall pass plus prefill, and a "30-second reply" is what the human sees.

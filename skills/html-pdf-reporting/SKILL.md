@@ -20,7 +20,7 @@ Federation reports must look engineered, not generated. This skill encodes the p
 
 The Petronas-Brazil report used **path B with CSS-rendered bars** (`.wf-bar` absolute-positioned divs, percentages hard-coded, no canvas). The HTML version still ships Chart.js for interactive viewers, but the PDF render is pure CSS. This is the recommended pattern for simple KPI/tornado/waterfall charts.
 
-If you need real data charts (capacity growth, geographic mix, financial time series, radar, BOD network diagrams), use **path A**. The proven 2026-08-06 sequence: (1) `gen_charts.py` produces matplotlib PNGs at 180 dpi → `/path/to/charts/01_chartname.png` etc; (2) Python script reads each PNG as bytes → base64-encode → replaces `__CHn__` placeholders in the HTML template; (3) WeasyPrint renders the HTML with embedded data URIs. The HTML file ends up ~1-1.3 MB but is fully self-contained — no external image fetches, no CDN dependencies. Verified on Gentari Deep Research v2: 18 pages, 811 KB PDF, 12 charts embedded as image+smask pairs, all rendered correctly. If you must have chart visuals in the PDF, generate them server-side before render — see `references/weasyprint-js-pitfall.md`.
+If you need real data charts (capacity growth, geographic mix, financial time series, radar, BOD network diagrams), use **path A**. The proven 2026-08-06 sequence: (1) `gen_charts.py` produces matplotlib PNGs at 180 dpi → `/path/to/charts/01_chartname.png` etc; (2) Python script reads each PNG as bytes → base64-encode → replaces `__CHn__` placeholders in the HTML template; (3) WeasyPrint renders the HTML with embedded data URIs. The HTML file ends up ~1-1.3 MB but is fully self-contained — no external image fetches, no CDN dependencies. Verified on Gentari Deep Research v2: 18 pages, 811 KB PDF, 12 charts embedded as image+smask pairs, all rendered correctly. If you must have chart visuals in the PDF, generate them server-side before render — see ``references/``.
 
 ### Path A — matplotlib base64-embed pipeline (proven 2026-08-06)
 
@@ -77,7 +77,7 @@ Then deliver via Telegram: `MEDIA:/absolute/path/to/file.pdf` in your reply.
 - **Epistemic tags**: `.tag.obs` green, `.tag.der` blue, `.tag.int` gold — inline after numbers, never as footnotes.
 - **Footer**: page X/Y, document confidentiality line.
 
-See `templates/report-cover.html` and `templates/report-body.html` for starters.
+See ``references/`` and ``references/`` for starters.
 See `references/surat-terbuka-template-2026-08-09.md` for the open-letter/civic-intelligence pattern (cover page, pull quotes, KPI cards, callout boxes — different from data reports).
 
 ## Visual patterns that work (CSS-only, no JS)
@@ -152,8 +152,11 @@ Then embed charts in HTML using `file://` URIs (simpler than base64):
 
 ## Support files
 
-- `templates/report-cover.html` — cover page template (dark theme, gold accent, verdict box).
-- `templates/report-body.html` — body template with KPI row, section, waterfall, donut, timeline, tornado.
-- `references/weasyprint-js-pitfall.md` — full diagnosis + fallback patterns.
-- `references/federated-style.md` — house-style details (colors, fonts, KPI cards).
+- ``references/`` — cover page template (dark theme, gold accent, verdict box).
+- ``references/`` — body template with KPI row, section, waterfall, donut, timeline, tornado.
+- ``references/`` — full diagnosis + fallback patterns.
+- ``references/`` — house-style details (colors, fonts, KPI cards).
 - `references/light-theme-protocol-pdf.md` — light-theme protocol/educational PDF pattern (clean white, step flows, checklists, AI-generated instructional images). For non-federation deliverables: health protocols, reference guides, equipment checklists.
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->

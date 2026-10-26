@@ -1,6 +1,6 @@
 ---
 name: multi-cli-coding-dispatch
-description: Dispatch identical specifications to multiple coding CLIs (qwen-code, opencode, codex, claude-code) in parallel for Gödel E3 provider-diversity independence. Class-level umbrella for sovereign-scale work that benefits from independent cognitive lenses (multi-model consensus, multi-provider reasoning). Use when sovereign work requires more than one cognitive lens on the same artifact, or when the failure of a single model would compromise the artifact. Triggers include "dispatch to multiple agents", "parallel coding agents", "Gödel E3 independence", "3-way comparison", "sovereign petition forge", "multi-lens forge", or any high-stakes artifact where single-model output is unacceptable.
+description: 'Dispatch identical specifications to multiple coding CLIs (qwen-code, opencode, codex, claude-code) in parallel for Gödel E3 provider-diversity independence.'
 version: 1.0.0
 forged: 2026-08-12
 owner: F13 SOVEREIGN
@@ -274,3 +274,7 @@ If the user asks for "draft X" and X already exists, dispatching regenerates. Al
 DITEMPA BUKAN DIBERI — Forged, Not Given.
 
 A sovereign-scale artifact deserves more than one lens. Three cognitive lenses from different model providers, on the same spec, is the minimum independence for F13 disposition.
+
+## Routing notes (moved from description 2026-10-23)
+
+Class-level umbrella for sovereign-scale work that benefits from independent cognitive lenses (multi-model consensus, multi-provider reasoning). Use when sovereign work requires more than one cognitive lens on the same artifact, or when the failure of a single model would compromise the artifact. Triggers include "dispatch to multiple agents", "parallel coding agents", "Gödel E3 independence", "3-way comparison", "sovereign petition forge", "multi-lens forge", or any high-stakes artifact where single-model output is unacceptable.

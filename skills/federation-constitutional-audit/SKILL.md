@@ -1,6 +1,6 @@
 ---
 name: federation-constitutional-audit
-description: "Deep constitutional audit of any arifOS federation organ — 6-phase adversarial methodology comparing declared design against runtime behavior. Covers Reality Inventory, Flow Trace, Constitutional Test, Bridge Node Analysis, Strawberry Principle, and Adversarial Review. Spawns independent execution auditor via OpenCode/Codex/Claude-Code with epistemic labeling discipline. Use when: 'audit arifFlow', 'deep audit of organ X', 'constitutional probe of Y', 'does X match its design', 'find drift in Z', or any comprehensive organ-level verification that goes beyond the quick7-probe forge-federation-probe."
+description: 'Deep constitutional audit of any arifOS federation organ — 6-phase adversarial methodology comparing declared design against runtime behavior.'
 version: 1.0.0
 ---
 
@@ -542,3 +542,7 @@ If after the exercise:
 - `scripts/re_audit_drift_check.sh` — 6-probe weekly drift check (daemon health, fail-closed, persistence, docs, FQ reconciliation, receipt count reconciliation). Exit 1 on drift. Register via cron `0 9 * * 1`.
 - `scripts/recon_fq_from_disk.py` — independent FQ recomputation from durable receipts.jsonl for L2↔L4 reconciliation probe.
 - `references/multi-writer-bypass-2026-08-11.md` — worked example: same symptom (FQ divergence) as stale-load bug but different root cause (receipts bypass /ingest); includes receipt-ID cross-reference diagnostic procedure.
+
+## Routing notes (moved from description 2026-10-23)
+
+Covers Reality Inventory, Flow Trace, Constitutional Test, Bridge Node Analysis, Strawberry Principle, and Adversarial Review. Spawns independent execution auditor via OpenCode/Codex/Claude-Code with epistemic labeling discipline. Use when: 'audit arifFlow', 'deep audit of organ X', 'constitutional probe of Y', 'does X match its design', 'find drift in Z', or any comprehensive organ-level verification that goes beyond the quick7-probe forge-federation-probe.

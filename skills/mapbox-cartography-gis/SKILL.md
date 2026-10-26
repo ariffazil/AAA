@@ -3,6 +3,8 @@ name: mapbox-cartography-gis
 description: "Mapbox developer API suite, cartographic design, style management, GeoJSON validation/preview, coordinate conversion, and token security via Mapbox DevKit MCP server (mcp-devkit.mapbox.com). "
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Mapbox Cartography & GIS Developer Skill (`mapbox`)
 

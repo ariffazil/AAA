@@ -1,6 +1,6 @@
 ---
 name: constitutional-institution-mapping
-description: "Map institutional-economics frameworks (Acemoglu's inclusive/extractive institutions, Ostrom's commons governance, Hayek's spontaneous order, Hofstadter's strange loops) onto the arifOS F1–F13 floor architecture as a verification-of-mapping discipline, not a vibes-mapping one. Distinguish gradient-constructor floors (F2/F7/F9/F11) from the gradient-node (F13). Capture which insights canonize as GENESIS fragments vs which belong in VAULT999 (events only — never insights). Triggers: 'apply <political-economist> to F1–F13', 'why does institution X look like floor Y', 'institutional design analogy', conceptual sibling report that proposes a public-domain framework onto federation canon."
+description: 'Map institutional-economics frameworks (Acemoglu''s inclusive/extractive institutions, Ostrom''s commons governance, Hayek''s spontaneous order, Hofstadter''s strange loops) onto the arifOS F1–F13 floor architecture as a'
 ---
 
 # Constitutional ↔ Institution Mapping
@@ -178,7 +178,14 @@ Both flattery patterns from `verify-sibling-ops-reports` §4.1 and §4.2 hit har
 ## Support files
 
 - `references/acemoglu-mapping-verification-2026-08-05.md` — the 2026-08-05 Acemoglu mapping audit transcript: the verbatim sibling claims, the four-step verification sequence, the corrected claims table, and the GENESIS-vs-VAULT999 home decision.
-- `references/constitutional-vs-institutional-closure-2026-08-05.md` — the thermodynamic extension: why Acemoglu's inclusive/extractive is a political mechanism of failure but the deeper failure is entropy; how F13 + F11 function as the open/import gates; how this maps to the institution-as-open-system vs institution-as-closed-system distinction.
+- ``references/`` — the thermodynamic extension: why Acemoglu's inclusive/extractive is a political mechanism of failure but the deeper failure is entropy; how F13 + F11 function as the open/import gates; how this maps to the institution-as-open-system vs institution-as-closed-system distinction.
 - `references/void-geometries-principal-agent-2026-08-06.md` — the 7 principal-agent voids mapped to arifOS floors; the eighth void (principal underspecification) and F13's structural role; recursive delegation gap and graph-of-trust sketch.
 - `references/spawn-conservation-law-2026-08-07.md` — the Spawn Conservation Law: every `delegate_task` shifts burden to one of four buckets (compute/coordination/judgment/provenance); four-debt timing hierarchy (coordination/verification/judgment/provenance); why "judgment_coverage" alone misses the others.
 - `references/sovereign-artifact-canonization-procedure.md` — when the sovereign (F13) shares a personal artifact (essay, scar document, philosophical thesis) that maps onto the floor architecture: the 4-step procedure for binding it to `canon/`, patching `SOUL.md`, committing with witness, and letting `git_to_vault.py` auto-seal. Demonstrated 2026-08-11 with "The Scar Behind the Vision" (Jobs/architecture-of-rejection).
+
+
+<!-- dead-pointer sweep 2026-10-23: artifacts that could not be located were replaced with the references/ directory; see audit JSON for the missing basenames. -->
+
+## Routing notes (moved from description 2026-10-23)
+
+verification-of-mapping discipline, not a vibes-mapping one. Distinguish gradient-constructor floors (F2/F7/F9/F11) from the gradient-node (F13). Capture which insights canonize as GENESIS fragments vs which belong in VAULT999 (events only — never insights). Triggers: 'apply <political-economist> to F1–F13', 'why does institution X look like floor Y', 'institutional design analogy', conceptual sibling report that proposes a public-domain framework onto federation canon.

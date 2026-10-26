@@ -1,6 +1,8 @@
 ---
 name: weekly-sovereign-brief
 description: "Produce Arif's weekly 'news I need to know' PDF brief — deep research on current events, verdict-first human language, 10-chart pack, WeasyPrint PDF. Load on 'what's happening this week', 'news I need to know', 'weekly brief', Friday current-events deep-dive requests."
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Weekly Sovereign Brief (Arif's Friday News PDF)

@@ -17,7 +17,7 @@
   {
     "id": "e-6207c00b",
     "agent": "333-AGI",
-    "content": "Shadows to next session: S1 ghost docker postgres on :5432 (old vault999 schema, root cause of 12-day receipt blackout) \u2014 retire under D4 lock. S2 vault.flat.env VAULT_WRITER_URL=:8100 dead (writer binds 5001) \u2014 latent trap, fix under 5-R. S3 carry_forward writer agent attribution 'unknown' for some entries. S4 GEOX :8081 + WELL :18083 still degraded \u2014 re-probe after M-WELL heal settles 24h."
+    "content": "Shadows to next session: S1 ghost docker postgres on :5432 (old vault999 schema, root cause of 12-day receipt blackout) \u2014 retire under D4 lock. S2 vault.flat.env VAULT_WRITER_URL=:5001 dead (writer binds 5001) \u2014 latent trap, fix under 5-R. S3 carry_forward writer agent attribution 'unknown' for some entries. S4 GEOX :8081 + WELL :18083 still degraded \u2014 re-probe after M-WELL heal settles 24h."
   },
   {
     "id": "e-e3467803",

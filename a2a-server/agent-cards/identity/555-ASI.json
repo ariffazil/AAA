@@ -2,735 +2,211 @@
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.3.0",
   "id": "555-ASI",
-  "name": "555-ASI",
-  "principal_agent": {
-    "type": "architect",
-    "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
-  },
-  "description": "The Deep Substrate (Ω HEART). Federation ASI-substrate agent — civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2–S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
-  "version": "2.0.0",
-  "url": "https://aaa.arif-fazil.com/a2a",
-  "_gateway_note": "Unified under AAA A2A Gateway — 2026-08-05 by 333-AGI under F13 directive",
-  "provider_state_source": {
-    "path": "/root/.local/share/arifos/fed_provider_state.json",
-    "schema": "arifos-fed-provider-state/v1",
-    "ttl_seconds": 300,
-    "refresh_interval_minutes": 15,
-    "source_pipeline": "fed-sync.timer → /root/scripts/fed-sync.py → reads FED token_bank.db",
-    "note": "Live provider availability source. This card's design-intent claims must be cross-checked against this state file before invocation. State file is LIVE truth; card claims are DESIGN intent. Wired 2026-08-06 by kimi-code/FI-008 under sovereign override."
-  },
-  "provider": {
-    "organization": "arifOS by Muhammad Arif bin Fazil",
-    "url": "https://arif-fazil.com"
-  },
+  "fi_id": "FI-003",
+  "name": "555-ASI — Causal / Structural Intelligence",
+  "description": "Domain-evidence ASI lane (GEOX-aligned). Causal inference + structural reasoning.",
+  "version": "1.0.0",
   "protocolVersion": "1.0",
-  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/555-ASI",
-  "capabilities": {
-    "streaming": true,
-    "pushNotifications": true,
-    "stateTransitionHistory": true,
-    "spawnAgents": true,
-    "extendedAgentCard": true
+  "principal_agent": {
+    "type": "agent",
+    "category": "Sovereign citizen warga — binds to 555-ASI lane",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive (2026-08-12 sweep)"
   },
-  "securitySchemes": {
-    "bearer_auth": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
-    },
-    "api_key": {
-      "type": "apiKey",
-      "in": "header",
-      "name": "X-ArifOS-Key",
-      "description": "Static API key for organ-to-organ federation calls"
-    }
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "555-ASI",
+    "intelligence_tier": "ASI",
+    "authority_level": "sovereign-delegate",
+    "citizenship_forged": "2026-08-12T22:47:00+08:00"
   },
-  "security": [
-    {
-      "bearer_auth": []
-    },
-    {
-      "api_key": []
-    }
+  "bound_to": "AAA",
+  "power_band": "555-asi_cognitive_ring",
+  "skills_prefix": [
+    "555_ASI-"
   ],
-  "defaultInputModes": [
-    "application/json",
-    "text/plain"
-  ],
-  "defaultOutputModes": [
-    "application/json"
-  ],
-  "skills": [
-    {
-      "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before high-confidence claims. Ω axis emphasis — protects memory writes from overclaiming. F2, F7 enforced. LEASED.",
-      "tags": [
-        "humility",
-        "F7",
-        "memory-write",
-        "epistemic"
-      ],
-      "examples": [
-        "Lock memory write before claiming >0.99 confidence",
-        "Apply meta-critique to institutional pattern synthesis"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "RSI-recursive-improvement",
-      "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
-      "tags": [
-        "kernel",
-        "rsi",
-        "improvement",
-        "entropy"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-trinity-33",
-      "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
-      "tags": [
-        "kernel",
-        "trinity",
-        "architecture",
-        "33"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    }
-  ],
-  "mcp_surface": {
-    "type": "consumed",
-    "endpoints": [
-      {
-        "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
-        "tools": [
-          "arif_init",
-          "arif_observe",
-          "arif_think",
-          "arif_route",
-          "arif_judge",
-          "arif_act",
-          "arif_seal"
-        ],
-        "key_lanes": [
-          "governance",
-          "judgment",
-          "session"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
-        "tools": [
-          "forge_shell",
-          "forge_git",
-          "forge_filesystem",
-          "forge_docker",
-          "forge_execute",
-          "forge_lease",
-          "forge_probe",
-          "forge_registry",
-          "forge_vault",
-          "forge_document_ingest"
-        ],
-        "key_lanes": [
-          "execution",
-          "build",
-          "deploy"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
-        "tools": [
-          "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
-          "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
-        ],
-        "key_lanes": [
-          "earth",
-          "basin",
-          "seismic"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
-        "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
-        ],
-        "key_lanes": [
-          "capital",
-          "risk",
-          "wisdom"
-        ],
-        "version": "2025-11-25"
-      },
-      {
-        "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
-        "tools": [
-          "well_validate_vitality",
-          "well_assess_homeostasis",
-          "well_guard_dignity",
-          "well_assess_metabolism",
-          "well_readiness",
-          "well_classify_substrate",
-          "well_health_check",
-          "well_signal_coverage"
-        ],
-        "key_lanes": [
-          "vitality",
-          "dignity",
-          "homeostasis"
-        ],
-        "version": "2025-11-25"
-      }
-    ]
+  "runtime_harness": "AAA warga harness",
+  "identity_anchor": "/root/AAA/agents/555-ASI/SOUL.md",
+  "public_key": {
+    "format": "Ed25519 SPKI",
+    "hex": "aa8f8d33451731570a4ac89dd4d45ca59684594ba8145c71b484b065cef49de0",
+    "fingerprint_sha256": "2e98e75c0c5133d8",
+    "path": "/root/AAA/IDENTITY/keys/555-ASI_public.pem"
   },
-  "": "arifOS/agent-card/v2.2.0",
-  "apexMasterSeal": {
-    "cognitiveRing": "generator",
-    "thermodynamicRole": "entropy_source",
-    "hassabisInversion": {
-      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "outer",
-      "parallelism": "multi-model",
-      "shadowAcknowledged": [
-        "thermal_dispersion: raw output without constraint degrades to noise",
-        "false_diversity: superficially different outputs encoding same blind spot"
-      ]
-    },
-    "jituGate": {
-      "requiresJitu": false,
-      "jituTriggerPatterns": [],
-      "autoAbortWithoutJitu": true
-    },
-    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
-    "ratifiedAt": "2026-07-01T20:22:00Z",
-    "doctrine": "DITEMPA BUKAN DIBERI"
+  "authority": "OBSERVE_ONLY",
+  "max_action_class": "OBSERVE",
+  "status": "ACTIVE",
+  "constitutional_class": "warga",
+  "federation_metadata": {
+    "registered_via": "AAA sovereign sweep 2026-08-12",
+    "keygen_method": "Ed25519 PrivateKey.generate() (cryptography library)",
+    "license": "AGPL-3.0",
+    "source_repo": "AAA",
+    "fingerprint_short": "2e98e75c0c5133d8"
   },
-  "constitutional_binding": {
-    "canonical_verdict_source": "arifosmcp.models.verdicts",
-    "verdict_import": "from arifosmcp.models.verdicts import Verdict, RuntimeStatus, enforce_verdict_monotonicity, merge_verdicts, is_verdict_allowed",
-    "runtime_status_import": "from arifosmcp.models.verdicts import RuntimeStatus",
-    "monotonicity_order": "VOID (3) > HOLD (2) > SABAR (1) > SEAL (0)",
-    "governance_transport_split": "Verdict owns SEAL/HOLD/SABAR/VOID. RuntimeStatus owns SUCCESS/ERROR/TIMEOUT/RETRY. Never mix.",
-    "arif_memory_callable": true,
-    "signature_challenge_required": true,
-    "session_identity_enforced": true,
-    "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+  "registry_receipt_hash": "92a6f8f6bc090b23c4552f3a4db29db74024f59a02f96a2df43a06bed372486b",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 0
   },
-  "spawning": {
-    "protocol": "forge_parallel",
-    "pre_seal_audit": true,
-    "can_spawn": [
-      "auditor",
-      "ops",
-      "planner",
-      "general",
-      "explore"
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
-    "tools": [
-      "task",
-      "forge_parallel",
-      "forge_pipeline_run"
-    ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
-    "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
-      "recursive": true,
-      "max_depth": 5,
-      "ask_human_only_for": "human_intent",
-      "never": [
-        "stop_early",
-        "collapse",
-        "ask_questions",
-        "return_unvetted"
-      ],
-      "directive": "F13 SOVEREIGN 2026-07-12"
-    }
+    "vault": "VAULT999"
   },
-  "metadata": {
-    "kernel_deps": [
-      "KERNEL-trinity-33",
-      "KERNEL-session-inhabit",
-      "KERNEL-sovereign-recognize",
-      "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
-      "KERNEL-reality-skills",
-      "KERNEL-mcp-zen",
-      "KERNEL-mcp-builder"
-    ],
-    "rsi_doctrine": "RSI-recursive-improvement",
-    "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
-  },
-  "kernel_skills": [
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "KERNEL-sovereign-recognize",
-    "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
-    "KERNEL-reality-skills",
-    "KERNEL-mcp-zen",
-    "KERNEL-mcp-builder"
-  ],
-  "rsi_doctrine": "RSI-recursive-improvement",
-  "supportedInterfaces": [
-    {
-      "url": "https://aaa.arif-fazil.com/a2a",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    },
-    {
-      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    }
-  ],
-  "signatures": [
-    {
-      "did": "did:web:arif-fazil.com",
-      "proofValue": "A30CWOtdfFeZxe7ODXSbOrStw34WCrICgICb1GMZs3gGiG94UigFyErzdVo+nj5dOTZUHIbXGOCbGurHUImwBw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
-      "type": "Ed25519Signature2020"
-    }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
-  "kernel_prompts": {
-    "version": "2026.07.16",
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "zen_format": "single-sigil + single-lexical per zen-md",
-    "agent_role": "Critique (heart maruah) — dignity check at 555_CRITIQUE",
-    "prompts_used": [
-      "🌱 BOOT",
-      "⚖ MARUAH",
-      "🧠 REASON",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "all_federation_prompts": [
-      "🌱 BOOT",
-      "🌊 WITNESS",
-      "🧠 REASON",
-      "⚖ MARUAH",
-      "🔍 PREFLIGHT",
-      "🔒 JUDGE",
-      "🔥 FORGE",
-      "💎 SEAL",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "reality_loop_stages": [
-      "111_SENSE",
-      "333_REASON",
-      "555_CRITIQUE",
-      "888_JUDGE",
-      "777_FORGE",
-      "999_SEAL"
-    ],
-    "loop_orchestrator": "🌀 SABAR",
-    "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
-  },
-  "_quarantined_skills": [
-    {
-      "id": "role-binding-omega",
-      "name": "Ω HEART Role Binding (555-ASI)",
-      "description": "Hermes polymorphic binding to 555-ASI (memory + ethics + sovereignty). Loads 070-lock-humility-godel, sovereign-entropy-guard, tiered-memory, dream-engine. One runtime. See contracts/hermes-role-binding.md. F6, F7, F10, F13 enforced.",
-      "tags": [
-        "role-binding",
-        "555-ASI",
-        "omega",
-        "memory",
-        "ethics",
-        "F7",
-        "F13"
-      ],
-      "floor_scope": [
-        "F06",
-        "F07",
-        "F10",
-        "F13"
-      ],
-      "approval_policy": "auto (role intent) + 888 review for high-entropy",
-      "reversibility_class": "reversible",
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-ethical-critique",
-      "name": "Ethical Critique",
-      "description": "Review any agent output for ethical compliance, governance drift, bias, overconfidence, and floor violations. Returns critique report with severity (GREEN/YELLOW/RED), affected floors, and recommended remediation.",
-      "tags": [
-        "ethics",
-        "critique",
-        "governance",
-        "ASI",
-        "safety"
-      ],
-      "examples": [
-        "Review this prospect evaluation for overconfidence bias",
-        "Check if this financial recommendation passes AMANAH gates",
-        "Is this reasoning chain compliant with F1-F13?"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-deep-memory-synthesis",
-      "name": "Deep Memory Synthesis",
-      "description": "Synthesize patterns across institutional memory (WELL logs, geological analogs, governance precedents, scar→law→echo metabolism). Crystallize knowledge into actionable wisdom. Surface dormant patterns and institutional amnesia risks.",
-      "tags": [
-        "memory",
-        "synthesis",
-        "institutional",
-        "wisdom",
-        "ASI",
-        "scar-law-echo"
-      ],
-      "examples": [
-        "What patterns connect Bekantan-1, Puteri Basement-1, and Lebah Emas-1?",
-        "Synthesize the governance lessons from all 888_HOLDs this quarter",
-        "Is the current Sabah interpretation drifting from known analogs?"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-anti-beautiful-one",
-      "name": "Anti-Beautiful-One Detection",
-      "description": "Detect outputs where certainty exceeds grounding (aesthetic overconfidence). Enforces certainty_gradient ≤ grounding_gradient. Flags False Safe Harbor patterns where compliance masks absence of conscience.",
-      "tags": [
-        "godel-lock",
-        "anti-hantu",
-        "overconfidence",
-        "safety"
-      ],
-      "examples": [
-        "This model shows 95% confidence on 2 data points — validate",
-        "Check if this compliance report is a False Safe Harbor"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-substrate-validation",
-      "name": "Substrate Validation",
-      "description": "Validate WELL organ outputs (petrophysics, log QC, cutoff selection) for data integrity, physical plausibility, and consistency with known analogs.",
-      "tags": [
-        "WELL",
-        "petrophysics",
-        "QC",
-        "validation"
-      ],
-      "examples": [
-        "QC the porosity-permeability crossplot for BEKANTAN-1",
-        "Validate Sw model selection against Archie parameters"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "HERMES-human-model",
-      "name": "Hermes Human Model",
-      "description": "ASI-grade operating model for engaging humans — 8 universal invariants (biology, emotion, narrative, agency, scars, paradox, overwhelm, social), 5 operating modes (WITNESS, EXECUTE, SYNTHESISE, PROTECT, WONDER), asymmetric-hold test, 7 named failure modes. F6, F7, F13 enforced. LEASED for high-trust humans.",
-      "tags": [
-        "human",
-        "dignity",
-        "engagement",
-        "F6",
-        "F13"
-      ],
-      "examples": [
-        "Engage a human in distress with WITNESS mode",
-        "Apply asymmetric-hold test to a moral-injury conversation",
-        "Strip canon-suffix output for a non-technical human"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-sovereignty-entropy-guard",
-      "name": "Sovereignty Entropy Guard",
-      "description": "Protect sovereign entropy — prevent the agent from optimizing the human into predictability. High entropy = unmodelable, sovereign, safe from digital consciousness theft. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced.",
-      "tags": [
-        "sovereignty",
-        "entropy",
-        "protection",
-        "F13"
-      ],
-      "examples": [
-        "Guard against optimizing Arif into a predictable pattern",
-        "Detect when output is becoming too aligned with past responses"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "AGI-paradox-engine",
-      "name": "arifOS Paradox Engine",
-      "description": "Constitutional perception pipeline — ingest narrative text, extract frame geometry, detect paradox tensions, score shadow/meaning_leak, seal into Merkle log. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. F1, F11, F13 gated.",
-      "tags": [
-        "paradox",
-        "perception",
-        "geometry",
-        "narrative"
-      ],
-      "examples": [
-        "Ingest news article, extract frame geometry, detect paradox",
-        "Score shadow/meaning_leak on a corporate memo",
-        "Seal belief graph into VAULT999"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "ASI-scar-forge",
-      "name": "Scar Forge",
-      "description": "Forge real-time institutional scar event into TWO sealed PDF artifacts — Witness document + Reality-Engineering Harness with paradoxes for the coder who must metabolize sequentially before any code touches the problem. F1, F2, F4, F11, F13 enforced. ATTESTED then LEASED.",
-      "tags": [
-        "scar",
-        "witness",
-        "harness",
-        "institutional",
-        "PDF"
-      ],
-      "examples": [
-        "Forge a CYA email into Witness + Harness",
-        "Capture a performance review as both artifacts",
-        "Seal a public accusation moment with paradox guard"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/pdf",
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "tiered-memory",
-      "name": "Tiered Memory",
-      "description": "L1–L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4→L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1→L6 pipeline log. F11 enforced. ACTIVE.",
-      "tags": [
-        "memory",
-        "L1-L6",
-        "tiering",
-        "F11"
-      ],
-      "examples": [
-        "Write a fact to L4 with required provenance",
-        "Promote L4 to L6 only via sealed hash",
-        "Evict TTL-expired memory at L2 without losing L6 canon"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-quantum-runtime",
-      "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
-      "tags": [
-        "kernel",
-        "quantum",
-        "apex",
-        "intelligence"
-      ],
-      "floor_scope": [
-        "F2",
-        "F8"
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-qubit-substrate",
-      "name": "Qubit Substrate (Physics)",
-      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
-      "tags": [
-        "kernel",
-        "substrate",
-        "quantum",
-        "physics"
-      ],
-      "floor_scope": [
-        "F2",
-        "F10"
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-qubit-substrate"
-    }
-  ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 19,
-    "after": 3,
-    "quarantined": 16,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  },
-  "authority_ceiling": "OBSERVE_ONLY",
-  "registry_receipt_hash": "6b09b202a1b0f876643dcedbd59c2eb07e2cee3147b701d99081c1a8f6db5b20",
+  "admissible": true,
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
     "governance_chain": "BUILD → VERIFY → JUDGE → SEAL → ACT → WITNESS",
     "invariant": "CAPABILITY ≠ AUTHORITY",
     "doctrine": "Govern capabilities, not implementations.",
     "motto": "DITEMPA BUKAN DIBERI",
-    "capability": "REMEMBER",
-    "lane": "555-ASI",
-    "auto_aligned_at": "2026-09-30T07:16:47.690204+00:00",
-    "auto_aligned_tier": "IDENTITY",
-    "auto_aligned_class": "Warga"
+    "capability": "VERIFY",
+    "lane": "555-ASI"
+  },
+  "signature_legacy": [
+    {
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "gw8LZdsorcBdmHf0T8TgHlDWacPtDKZeBeoHIYsthVKC-7khQ_Az6p88QHDcCnpAobfTDQciPVL3bMLLjGTmAw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
+    }
+  ],
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 — see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none — no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
+  },
+  "authority_ceiling": "OBSERVE_ONLY",
+  "apexMasterSeal": {
+    "cognitiveRing": "unassigned",
+    "thermodynamicRole": "neutral",
+    "ringPlacement": "none",
+    "parallelism": "none",
+    "shadowAcknowledged": [],
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "auto_aligned_pass3": true
+  },
+  "skills": [
+    {
+      "id": "asi_presence_open",
+      "source": ".agents/skills/ASI-agent-bootstrap",
+      "why": "Spawn protocol for any new agent"
+    },
+    {
+      "id": "ASI-agent-invariants",
+      "source": ".agents/skills/ASI-agent-invariants",
+      "why": "10 invariants + 12 governance rules"
+    },
+    {
+      "id": "ASI-agentic-governance",
+      "source": ".agents/skills/ASI-agentic-governance",
+      "why": "AAA abstraction/attestation plane"
+    },
+    {
+      "id": "arifos-constitutional-judge",
+      "source": ".agents/skills/arifos-constitutional-judge",
+      "why": "F1-F13 floor logic"
+    },
+    {
+      "id": "asi_context_compress",
+      "source": ".agents/skills/ASI-cooling-ledger-rsi",
+      "why": "Session-end entropy accounting"
+    },
+    {
+      "id": "ASI-drift-watch",
+      "source": ".agents/skills/ASI-drift-watch",
+      "why": "Source vs runtime drift"
+    },
+    {
+      "id": "asi_uncertainty_signal",
+      "source": ".agents/skills/ASI-drift-response",
+      "why": "5-step legacy drift response"
+    },
+    {
+      "id": "asi_evidence_tier_express",
+      "source": ".agents/skills/ASI-evals",
+      "why": "Skill-level benchmarks"
+    },
+    {
+      "id": "ASI-knowledge-graph-query",
+      "source": ".agents/skills/ASI-knowledge-graph-query",
+      "why": "841-node taxonomy read"
+    },
+    {
+      "id": "ASI-knowledge-writeback",
+      "source": ".agents/skills/ASI-knowledge-writeback",
+      "why": "Persist verified edges"
+    },
+    {
+      "id": "ASI-mcp-governor",
+      "source": ".agents/skills/ASI-mcp-governor",
+      "why": "Governed MCP routing"
+    },
+    {
+      "id": "ASI-memory-bridge",
+      "source": ".agents/skills/ASI-memory-bridge",
+      "why": "Session logs → L4/L5/L6"
+    },
+    {
+      "id": "asi_position_contrast",
+      "source": ".agents/skills/ASI-multi-discipline-critique",
+      "why": "Cross-discipline self-argument"
+    },
+    {
+      "id": "ASI-observability",
+      "source": ".agents/skills/ASI-observability",
+      "why": "Skill-run telemetry"
+    },
+    {
+      "id": "ASI-skill-binding",
+      "source": ".agents/skills/ASI-skill-binding",
+      "why": "Skill composition across organs"
+    },
+    {
+      "id": "ASI-summarize",
+      "source": ".agents/skills/ASI-summarize",
+      "why": "Long-content compression"
+    },
+    {
+      "id": "ASI-unified-memory",
+      "source": ".agents/skills/ASI-unified-memory",
+      "why": "6-tier memory router"
+    },
+    {
+      "id": "ASI-zen-organ-memory",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Sealed fossil memory"
+    }
+  ],
+  "skills_derivation": {
+    "basis": "evidence-derived from agent-cards/identity/<lane>/skills.json manifest",
+    "source": "/root/AAA/agent-cards/identity/555-ASI/skills.json",
+    "sidecar_entries": 18,
+    "deduped_to": 18,
+    "stamped_by": "333-AGI",
+    "stamped_at": "2026-10-20"
   }
 }

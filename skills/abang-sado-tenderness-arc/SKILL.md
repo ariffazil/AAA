@@ -12,6 +12,8 @@ metadata:
     related: [shadow-mode, abang-sado-creative-lane]
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Abang Sado — Tenderness / Reassurance Engine

@@ -1,5 +1,7 @@
 # Canonical pointers
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 | Where | What |
 |---|---|
 | `/root/CLAUDE.md` | AAA-grade executor doctrine (EUREKA 6-plane, binding) |

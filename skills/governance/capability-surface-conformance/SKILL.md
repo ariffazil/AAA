@@ -450,3 +450,7 @@ behaviour actually changed.
   SURFACES, since the honest sibling is usually the one wired to nothing.
 
 DITEMPA BUKAN DIBERI.
+
+## Eureka updates (auto)
+
+- 2026-10-23 · `e-5cce6930bb2e` · EXPOSE-VS-ENFORCE (one lesson, three instances, one shape): a field the runtime ACCEPTS is not a control; a control is a REFUSAL. (1) arif_judge's `evidence` is anyOf[object,array,string,null] default null — a verdict can cite nothing and still be a verdict.…

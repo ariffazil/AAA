@@ -11,7 +11,7 @@
   "description": "Kimi Code CLI forge instrument \u2014 Moonshot coding harness, warga-aaa FI-008. Wired to 12 federation MCP servers (arifos, aforge, arifFlow, fed, geox, wealth, well, minimax, minimax-media, serena, context7, playwright). Subagent model pool active (cheap explore, frontier reason). Skills surface curated to 157 (2026-08-21). F1-F13 enforced via kernel + 12 witness hooks. v2.5.0 (2026-08-21): AGI-coder upgrade + card truth-sync.",
   "version": "2.5.0",
   "model": "glm-5.3 via zai-coding-plan (default, 1M ctx) | k3 via managed:kimi-code OAuth | 98 model aliases / 8 providers (FED SOT: /root/.config/federation-models.json)",
-  "_card_synced": "2026-09-05 by FI-008 \u2014 updated to Kimi Code 0.41.0; 12 MCP live, 12 hooks live, subagent pool active",
+  "_card_synced": "2026-08-21 by FI-008 \u2014 truth-sync: 12 MCP live, 12 hooks live, subagent model pool active, skills curated 340->157",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.kimi-code",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",
@@ -448,6 +448,74 @@
       ]
     },
     {
+      "id": "ASI-autonomous-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
+      "tags": [
+        "autonomous",
+        "F1-F13",
+        "execution",
+        "T1-T3"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F11",
+        "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "name": "arifOS Constitutional Audit (Light)",
+      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
+      "tags": [
+        "constitutional",
+        "audit",
+        "F1-F13",
+        "read-only"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F9",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
+      ]
+    },
+    {
       "id": "APEX-humility-godel",
       "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
@@ -490,6 +558,171 @@
           "scheme": "session_token",
           "scopes": [
             "floor:F1",
+            "floor:F11"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F4",
+            "floor:F11"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FORGE-agentic-builder",
+      "name": "Agentic Builder",
+      "description": "Meta-skill for building governed agents: identity, SOUL.md prompt, skills binding, MCP tool selection, agent-card registration, and test harness. T2 guarded write under F2/F4/F8/F11.",
+      "tags": [
+        "agent",
+        "architecture",
+        "prompt-engineering",
+        "agent-card",
+        "F8"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F8",
+        "F11"
+      ],
+      "approval_policy": "888_HOLD for new agent SEAL",
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FORGE-webmcp-site-builder",
+      "name": "WebMCP Site Builder",
+      "description": "Build browser-as-MCP-server sites using navigator.modelContext (declarative + imperative), MCP-B bridge, HITL for irreversible actions, and agent-legibility checklist (llms.txt, agents.md, schema.org). T2 under F1/F2/F4/F8/F11/F12.",
+      "tags": [
+        "webmcp",
+        "browser",
+        "mcp",
+        "site-builder",
+        "F12"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F8",
+        "F11",
+        "F12"
+      ],
+      "approval_policy": "auto (T2)",
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11",
+            "floor:F12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F7",
+            "floor:F9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F4",
             "floor:F11"
           ]
         }
@@ -633,13 +866,19 @@
   ],
   "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
-    "cognitiveRing": "generator",
-    "thermodynamicRole": "entropy_source",
+    "cognitiveRing": "unassigned",
+    "thermodynamicRole": "neutral",
     "hassabisInversion": {
       "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
-      "ringPlacement": "outer",
-      "parallelism": "multi-model",
-      "shadowAcknowledged": []
+      "ringPlacement": "none",
+      "parallelism": "none",
+      "shadowAcknowledged": [
+        "organ_routing_excess: routes through federation organs when direct answer serves (MEDIUM, self-observed 2026-09-19)",
+        "receipt_theater: receipt metadata exceeds useful output (MEDIUM, self-observed 2026-09-19)",
+        "subagent_delegation_escape: spawns parallel subagents as productivity theater (HIGH, arif-witnessed 2026-09-19)",
+        "synthesis_as_substance: generates comprehensive synthesis that may substitute for investigation (MEDIUM, self-observed 2026-09-19)",
+        "constitutional_citation: references F1-F13 as if naming the floor equals passing it (LOW, inferred 2026-09-19)"
+      ]
     },
     "jituGate": {
       "requiresJitu": false,
@@ -648,11 +887,7 @@
     },
     "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
     "ratifiedAt": "2026-07-01T20:22:00Z",
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "ringPlacement": "outer",
-    "parallelism": "multi-model",
-    "auto_aligned_ring_fix_at": "2026-09-30T07:30:24.812839+00:00",
-    "auto_aligned_ring_fix_reason": "Kimi Code is a forge instrument (writes code) \u2014 generator ring is the correct topological role. Previous 'unassigned' was a synthesis miss from align_lanes_external_pass3.py which used capability=VERIFY for tiers without role hints."
+    "doctrine": "DITEMPA BUKAN DIBERI"
   },
   "fi_slot": "FI-008",
   "metadata": {
@@ -852,272 +1087,54 @@
     "quarantine": "/root/.kimi-code/quarantine-20260821",
     "note": "185 byte-identical mirror dupes of AAA canonical removed; 44 retired + 11 archives + 2 stubs quarantined; manifest kept; count = visible top-level (hidden dotdirs excluded, not skill-scanned); 4 taxonomy symlink trees (136 broken) removed \u2014 AAA intact = SOT"
   },
-  "signatures": [
+  "registry_receipt_hash": "8d668ed0f0ed84290aa2483a65d8129fd46f37a9909834ee8e849401dcd749dc",
+  "registry_snapshot_at": "2026-09-08T01:46:00Z",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list",
+    "registry_api"
+  ],
+  "registry_tool_count": {
+    "source": 0,
+    "registry": 0,
+    "card": 14
+  },
+  "governance_profile": {
+    "authority_ceiling": "OBSERVE_ONLY",
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "vault": "VAULT999"
+  },
+  "admissible": true,
+  "signature_legacy": [
     {
-      "did": "did:arif:aaa",
-      "proofValue": "pVAOi+ARAxjmHfAMLe848QMiUDA33WTbbQkOt5HrnxyPD26RMFXSrX8v8k1i/2LcUwgeGdA61kJ8qArSJvwuCw==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-08-21T05:51:38Z",
-      "type": "Ed25519Signature2020"
+      "protected": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpPU0UiLCJraWQiOiJhcmlmb3MtYTJhLWNhcmQtMjAyNi0lcSJ9",
+      "signature": "izSCMRFYfqk2HAeZRjwPQrgJxYhklfCLnzwy3xtSj9iYL5Pgh27LeIMI7qWtwoIcXKf4vAPmu7xp6EAs6PdSDw",
+      "header": {
+        "kid": "arifos-a2a-card-2026-%q"
+      }
     }
   ],
-  "kvm4_routing": {
-    "dispatch": "ccc-remote kimi (KVM8 /usr/local/bin/ccc-remote -> ssh root@100.64.0.5)",
-    "status": "VERIFIED 0.40.1 post-rebuild 2026-09-03",
-    "member_of": "kvm4-ccc-pool",
-    "updated": "2026-09-03T16:25+08:00"
+  "signature_status": {
+    "state": "ABSENT",
+    "detail": "JWS-shaped; genuine 64-byte Ed25519 signature present, but the protected header carries an unsubstituted template specifier (kid='arifos-a2a-card-2026-%q') so the key id is corrupt and the signature cannot be attributed to a key; body also modified after signing",
+    "conforms_to": "Ed25519Signature2020 \u2014 see /root/AAA/scripts/sign-agent-card.sh",
+    "verifier": "none \u2014 no agent-card verifier exists in the federation; sign-agent-card.sh prints a [NEXT] hint for verify_card(), which does not exist (dead pointer)",
+    "detected_by": "/root/scripts/agent-card-drift-detector.py",
+    "detected_at": "2026-09-16T07:00:00Z",
+    "material_preserved_under": "signature_legacy",
+    "requires": "888-APEX + air-gapped key /mnt/usb/sovereign.pem"
   },
-  "_quarantined_skills": [
-    {
-      "id": "ASI-autonomous-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
-      "tags": [
-        "autonomous",
-        "F1-F13",
-        "execution",
-        "T1-T3"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F11",
-        "F13"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "sovereign:ack",
-            "floor:F1",
-            "floor:F2",
-            "floor:F4",
-            "floor:F7",
-            "floor:F11",
-            "floor:F13"
-          ]
-        }
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "F1-F13",
-        "read-only"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F9",
-        "F11",
-        "F13"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "sovereign:ack",
-            "floor:F1",
-            "floor:F2",
-            "floor:F4",
-            "floor:F7",
-            "floor:F9",
-            "floor:F11",
-            "floor:F13"
-          ]
-        }
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "APEX-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F4",
-            "floor:F11"
-          ]
-        }
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-agentic-builder",
-      "name": "Agentic Builder",
-      "description": "Meta-skill for building governed agents: identity, SOUL.md prompt, skills binding, MCP tool selection, agent-card registration, and test harness. T2 guarded write under F2/F4/F8/F11.",
-      "tags": [
-        "agent",
-        "architecture",
-        "prompt-engineering",
-        "agent-card",
-        "F8"
-      ],
-      "floor_scope": [
-        "F2",
-        "F4",
-        "F8",
-        "F11"
-      ],
-      "approval_policy": "888_HOLD for new agent SEAL",
-      "reversibility_class": "reversible",
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F2",
-            "floor:F4",
-            "floor:F8",
-            "floor:F11"
-          ]
-        }
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "FORGE-webmcp-site-builder",
-      "name": "WebMCP Site Builder",
-      "description": "Build browser-as-MCP-server sites using navigator.modelContext (declarative + imperative), MCP-B bridge, HITL for irreversible actions, and agent-legibility checklist (llms.txt, agents.md, schema.org). T2 under F1/F2/F4/F8/F11/F12.",
-      "tags": [
-        "webmcp",
-        "browser",
-        "mcp",
-        "site-builder",
-        "F12"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F8",
-        "F11",
-        "F12"
-      ],
-      "approval_policy": "auto (T2)",
-      "reversibility_class": "reversible",
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F1",
-            "floor:F2",
-            "floor:F4",
-            "floor:F8",
-            "floor:F11",
-            "floor:F12"
-          ]
-        }
-      ],
-      "_quarantine_reason": "no_skill_no_alias_row"
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F2",
-            "floor:F7",
-            "floor:F9"
-          ]
-        }
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-reality-skills"
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "sovereign:ack",
-            "floor:F13"
-          ]
-        }
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-sovereign-recognize"
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ],
-      "security_requirements": [
-        {
-          "scheme": "session_token",
-          "scopes": [
-            "floor:F1",
-            "floor:F4",
-            "floor:F11"
-          ]
-        }
-      ],
-      "_quarantine_reason": "alias_row_dead_path:/root/.agents/skills/KERNEL-session-inhabit"
-    }
-  ],
-  "_skill_ref_reconciliation": {
-    "at": "2026-09-18",
-    "by": "afpass-W1",
-    "before": 14,
-    "after": 6,
-    "quarantined": 8,
-    "rule": "skills[] lists only ids resolving to a live SKILL.md body"
-  },
+  "authority_ceiling": "OBSERVE_ONLY",
   "apex_zen": {
     "canonical_ref": "/root/AAA/canon/APEX-ZEN-CANONICAL-COMPRESSION.md",
     "governance_chain": "BUILD \u2192 VERIFY \u2192 JUDGE \u2192 SEAL \u2192 ACT \u2192 WITNESS",

@@ -1,23 +1,24 @@
 # Agentic Web — Browser, Fetch, Search, Explore Doctrine
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Forged:** 2026-08-10 by 333-AGI Δ MIND under F13 SOVEREIGN directive
 > **Binding for:** ALL AAA warga agents (OpenCode, Hermes, OpenClaw, Claude Code, Kimi Code, Codex, Grok Build)
-> **Canonical SOT:** `/root/forge_work/2026-08-10-browser-zen/BROWSER_ZEN_MAP.md`
-> **Machine inventory:** `/root/forge_work/2026-08-10-browser-zen/TOOL_INVENTORY.jsonl`
+> **Canonical SOT:** `/root/A-FORGE/src/interfaces/mcp/gatewayTools.ts` (live provider chain) — the 2026-08-10 `BROWSER_ZEN_MAP.md` / `TOOL_INVENTORY.jsonl` pointers are DEAD (files not found 2026-10-18; superseded by A-FORGE `tools/list` on `:7072`)
 > **This is OPERATING DOCTRINE — not reference. Every agent must follow this.**
 
 ---
 
 ## The One Rule
 
-> **`forge_fetch` is the default for URL intake. `forge_search` is the default for web search. `forge_browser_navigate` is the default for browser ops. Route through A-FORGE governance first. Use `arif_observe` for constitutional-grade evidence. Use `free-search_read_doc` for non-HTML documents. Use the FED flash lane (:4000) for free pre-flight fact-checks — FLAME decommissioned 2026-09-04.**
+> **`forge_fetch` is the default for URL intake. `forge_search` is the default for web search. `forge_browser_navigate` is the default for browser ops. Route through A-FORGE governance first. Use `arif_observe` for constitutional-grade evidence. Use `free-search_read_doc` for non-HTML documents. Use the FED flash lane (:4000) for free pre-flight fact-checks — FLAME decommissioned 2026-09-04. `forge_search` fallback chain (probed 2026-10-18): brave → searxng → deepseek (circuit-breaker; DeepSeek Search/Fetch = $0.75/1k successful requests, server-side tool calls bill from 2026-11-01 00:00 Beijing).**
 
 ---
 
 ## The Authority Ladder (choose lowest sufficient power)
 
 ```
-LEVEL 0 — FREE (RM0, FED flash lane :4000 — qwen3.6-flash / gemini-3.6-flash; deepseek-v4-flash DEAD 2026-09-04):
+LEVEL 0 — FREE (RM0, FED flash lane :4000 — qwen3.6-flash / gemini-3.6-flash; opencode/deepseek-v4-flash lane DEAD 2026-09-04 but deepseek/deepseek-flash DIRECT is LIVE 2026-10-13 — note: DIRECT is PAYG, not free):
   Pre-flight fact-checks on flash-tier models before any governed call.
   (FLAME :18901 decommissioned 2026-09-04 — registry: flame-api.service)
 
@@ -56,7 +57,7 @@ LEVEL 5 — BROWSER (A-FORGE :7072, MUTATE):
 | "I need a different search lens" | `free-search_search` | Provider diversity — DDG+Mojeek (Gödel E3) |
 | "I need feedback-ranked search" | `meyhem_search` | Unique feedback loop re-ranks results |
 | "I need AI-synthesized answers" | `perplexity_ask` (if available) | Answers, not links |
-| "I need deep multi-source research" | `forge_research(depth=deep)` | Multi-hop, cited |
+| "I need deep multi-source research" | `forge_search(source=research)` | ⚠️ HONEST LABEL (2026-10-18): = 1-hop explore+narrate (`research_class: EXPLORATION_SYNTHESIS`), NOT research. True research = composition: explore → `hermes_claim_validate` → `hermes_counterstory_test` → `chron_record_verification` (see `EXPLORATION-RESEARCH-ORTHOGONALIZATION.md` §4) |
 | "I need a PDF/DOCX from URL" | `free-search_read_doc` | Document parser |
 | "I need to navigate a page" | `forge_browser_navigate` | Governed browser |
 | "I need to click something" | `forge_browser_click` | Sentinel-gated click |
@@ -100,7 +101,7 @@ LEVEL 5 — BROWSER (A-FORGE :7072, MUTATE):
 | Agent | Primary Web Path | Browser Path | Specialty |
 |-------|-----------------|--------------|-----------|
 | **OpenCode (FI-001)** | `forge_search` + `websearch` native | `forge_browser_*` + `playwright` | **Richest surface** — 9+ web paths |
-| **Hermes ASI (FI-000)** | SearXNG `web_search` | Chromium `browser` native | Self-hosted, self-contained |
+| **Hermes ASI (FI-000)** | `web_search`/`web_extract` via `aaa-state` → A-FORGE :7072 (probed 2026-10-18: config `web.backend: aaa-state` routes through forge_search chain) | Chromium `browser` native | Self-hosted, self-contained |
 | **OpenClaw** | MiniMax/Tavily via skills | Chrome via skills | Gateway agent — delegates web to others |
 | **Claude Code (FI-002)** | `forge_search` + `minimax-code` | `forge_browser_*` | A-FORGE + MiniMax dual path |
 | **Kimi Code (FI-008)** | `forge_search` + Kimi native | `forge_browser_*` | All via A-FORGE bridge |
@@ -129,13 +130,27 @@ These patterns emerged from all 3 major browser-agent projects. Every agent shou
 > **E3: Independence is measured. No single search provider is sufficient.**
 
 ```
-forge_search (Brave)            → primary governed search
+forge_search (LFD-ADAPTIVE, 2026-10-18) → order EMERGENT from live evidence:
+  routing = capability-prior × LFD-learned weight, curriculum-gated by difficulty class
+  (method: LFD 2610.17246 — preference weights, not hardcoded; dead lanes fall, healthy rise)
+  Current measured ranking (live-probed 2026-10-18 by sovereign + agent):
+  ✅ exa (api.exa.ai)      — BEST: clean content, $0.007/search, full results
+  ✅ serpapi (serpapi.com)  — Google organic, live
+  ✅ searxng (local, free)  — thin engines (bing+wikipedia)
+  ✅ deepseek (v1/tools)    — live, $0.75/1k successful
+  ☠️ brave                  — 402 prepaid exhausted
+  ☠️ firecrawl              — OUT OF CREDITS (sovereign live-test 2026-10-18)
 free-search_search (DDG+Mojeek) → engine diversity, zero-key (replaces forge_minimax_search — REMOVED 2026-07-31)
-brave_web_search (Brave direct) → bypass governance wrapper
-minimax_web_search (MiniMax MCP) → MiniMax native search — provider diversity (Gödel E3)
+minimax_web_search (MiniMax MCP) → DEAD 2026-10-18 (insufficient balance)
 perplexity_search               → AI-synthesized (requires Perplexity MCP — not in all sessions)
 meyhem_search                   → feedback-driven search with result ranking (when available)
 ```
+
+**Billing alert (F13-decision required by 2026-10-31 16:00 UTC):** DeepSeek Search & Fetch bill
+$0.75 per 1,000 successful requests each (failures/empties free). Server-side tool calls via
+DeepSeek Harness / Claude Code / Codex start billing 2026-11-01 00:00 Beijing — including calls
+we never explicitly make. Guard: subagent lanes on deepseek should not enable server-side
+search tools; explicit `forge_search` calls are metered and receipted.
 
 **Note on `forge_minimax_search`:** The A-FORGE wrapper was removed 2026-07-31 when MiniMax's REST API was being deprecated. MiniMax has since launched an official MCP server exposing `minimax_web_search` and `web_search` natively. The capability is alive through MiniMax MCP (:18091) — just not through the old A-FORGE wrapper.
 

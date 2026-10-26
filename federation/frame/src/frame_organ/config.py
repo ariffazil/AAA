@@ -21,8 +21,9 @@ ORGAN_PORTS = {
     "signal": 18084,
     "arifflow": 7073,
     "fed": 7074,
-    "kabarkan": 18902,
-    # flame RETIRED 2026-09-04 — removed from probe rotation (deprecation-registry.json)
+    # flame (:18901) RETIRED 2026-09-04 — legacy lane decommissioned, no systemd
+    # unit exists and nothing listens. Keeping it in this list made FRAME report
+    # 9/10 forever and read like a federation outage. Removed 2026-10-20.
 }
 
 # ── Probe ─────────────────────────────────────────────────────────

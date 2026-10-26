@@ -9,7 +9,7 @@ OUT_PATH="${2:?usage: iarif_tts_pipeline.sh <text-file> <output-path> [voice-id]
 # Voice selection order: explicit 3rd arg (lane-selectable) > IARIF_VOICE_ID env > canonical default.
 # An explicit arg does NOT weaken the gate below: registry resolution still FAILS CLOSED
 # on REVOKED or unknown ids, so no caller can route around the V8 revocation.
-VOICE_ID="${3:-${IARIF_VOICE_ID:-iarif-sovereign-v9}}"
+VOICE_ID="${3:-${IARIF_VOICE_ID:-siti}}"
 
 # ---- V8/V9 registry resolution — FAIL CLOSED on REVOKED voices (F1 AMANAH) ----
 # The voice-registry.json is canonical. Any REVOKED or unknown id aborts before
@@ -133,67 +133,33 @@ open(f"{work}/raw.mp3", "wb").write(bytes.fromhex(resp["data"]["audio"]))
 sys.stderr.write(f"IARIF_ENGINE=minimax {voice_id} (Tier 1, rented)\n")
 PYEOF
 
-# ---- Failover 1: PIPER — SOVEREIGN, offline, CPU, zero quota ----
-# Inserted 2026-09-18 after live probing on KVM8.
-#   * MiniMax 2056 lands on a 4-HOUR INTERVAL cap that is separate from the weekly
-#     cap — the lane goes quiet mid-session while weekly headroom remains.
-#   * The rung below it was MiMo, FALSIFIED for BM (nusantara-voice-stack §3):
-#     falling through swapped voice identity for a mangled one, silently.
-#   * Piper renders BM on CPU at 22.05 kHz with no network and no key.
-# KNOWN LIMIT: mangles ENGLISH words inside code-switch (the→teh, everyone→eferione);
-# BM words are clean. Use for BM-dominant text. The engine is LABELLED on stderr so
-# the delivery message can name what actually spoke — never a silent swap.
+# ---- Failover 1: F5-TTS local — SOVEREIGN, offline, zero-shot clone, no quota ----
+# The sovereign offline voice lane. Zero-shot clones the reference audio (IARIF_F5_REF)
+# so it preserves the voice identity that MiniMax's quota block would otherwise kill.
+# Renders on 8 CPU at ~42x slower than realtime — SHORT clips only (guard: <=300 chars).
+# Falsified lanes removed from the ladder (2026-10-18):
+#   * Piper id_ID was NOT the sovereign's voice — it silently swapped identity.
+#   * MiMo base/design is falsified for BM (nusantara-voice-stack §3) — mangles Malay.
+# The engine is LABELLED on stderr so the delivery message can name what actually spoke.
 if [ ! -s "$WORK/raw.mp3" ] && [ ! -s "$WORK/raw.wav" ]; then
-  PIPER_BIN="${IARIF_PIPER_BIN:-/usr/local/bin/piper}"
-  PIPER_MODEL="${IARIF_PIPER_MODEL:-/root/forge_work/piper-sovereign/id_voice.onnx}"
-  if [ -x "$PIPER_BIN" ] && [ -s "$PIPER_MODEL" ]; then
-    echo "iarif_tts_pipeline: MiniMax unavailable → SOVEREIGN FALLBACK Piper (id_ID, offline, zero-quota)" >&2
-    "$PIPER_BIN" -m "$PIPER_MODEL" -f "$WORK/raw.wav" < "$WORK/input.txt" >/dev/null 2>&1 || true
+  F5_PY="${IARIF_F5_PY:-/root/AAA/engines/f5tts/venv/bin/python}"
+  F5_SCRIPT="/root/AAA/engines/f5tts/f5_local_render.py"
+  F5_REF="${IARIF_F5_REF:-/root/AAA/engines/f5tts/pmx_canon_source.wav}"
+  F5_REFTXT="${IARIF_F5_REFTXT:-ini untuk menjaga ini. kleptokrasi bermain satu sistem yang krisis, yang mempunyai kedekatan.}"
+  _chars_f5=$(python3 -c "print(len(open('$WORK/input.txt', encoding='utf-8').read()))")
+  if [ -x "$F5_PY" ] && [ -s "$F5_SCRIPT" ] && [ -s "$F5_REF" ] && [ "$_chars_f5" -le 300 ]; then
+    echo "iarif_tts_pipeline: MiniMax unavailable → SOVEREIGN FALLBACK F5-TTS (offline zero-shot clone)" >&2
+    timeout 600 "$F5_PY" "$F5_SCRIPT" "$F5_REF" "$F5_REFTXT" "$(cat "$WORK/input.txt")" "$WORK/raw.wav" 32 >"$WORK/f5.log" 2>&1 || true
     if [ -s "$WORK/raw.wav" ]; then
-      echo "IARIF_ENGINE=piper id_ID-news_tts-medium (SOVEREIGN)" >&2
+      echo "IARIF_ENGINE=f5-tts-local (SOVEREIGN, offline, zero-shot clone)" >&2
+    else
+      echo "iarif_tts_pipeline: F5-TTS produced no audio (see $WORK/f5.log)" >&2
     fi
   fi
 fi
 
-# Failover 2: MiMo Token Plan (LAST RESORT — falsified for BM, gap filler only)
-if [ ! -s "$WORK/raw.mp3" ] && [ ! -s "$WORK/raw.wav" ]; then
-  echo "iarif_tts_pipeline: Stage 1 MiniMax failed, falling back to MiMo (LAST RESORT — BM unreliable)" >&2
-  python3 - "$WORK" <<'PYMIMO'
-import sys, os, json, urllib.request, base64
-work = sys.argv[1]
-text = open(os.environ["IARIF_TEXT_FILE"]).read().strip()
-key = os.environ.get("MIMO_API_KEY")
-if not key:
-    for env_path in ["/root/.secrets/kunci-root.env", "/root/.secrets/kunci-mas.env"]:
-        if os.path.exists(env_path):
-            with open(env_path) as f:
-                for line in f:
-                    if "MIMO_API_KEY=" in line:
-                        key = line.split("MIMO_API_KEY=", 1)[1].strip().strip(' "\'')
-                        break
-        if key:
-            break
-voice = os.environ.get("IARIF_MIMO_VOICE", "冰糖")
-req = urllib.request.Request(
-    "https://token-plan-sgp.xiaomimimo.com/v1/chat/completions",
-    data=json.dumps({
-        "model": "mimo-v2.5-tts",
-        "modalities": ["audio"],
-        "audio": {"voice": voice, "format": "mp3"},
-        "messages": [
-            {"role": "user", "content": "Read the assistant text aloud in Malay, warm and composed."},
-            {"role": "assistant", "content": text},
-        ],
-    }).encode(),
-    headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
-)
-resp = json.loads(urllib.request.urlopen(req, timeout=120).read())
-audio = resp["choices"][0]["message"]["audio"]["data"]
-open(f"{work}/raw.mp3", "wb").write(base64.b64decode(audio))
-PYMIMO
-fi
-
-# Failover 3: Edge-TTS (cloud, not sovereign — kept as a free last rung below Piper)
+# Failover 2: Edge-TTS (cloud, not sovereign — free last rung; identity lost, delivery-only)
+# ms-MY-OsmanNeural = male BM, exact pronunciation. Falsified MiMo BM lane REMOVED 2026-10-18.
 if [ ! -s "$WORK/raw.mp3" ] && [ ! -s "$WORK/raw.wav" ]; then
   echo "iarif_tts_pipeline: Falling back to Edge-TTS" >&2
   python3 - "$WORK" <<'PYEDGE'
@@ -202,7 +168,7 @@ work = sys.argv[1]
 text = open(os.environ["IARIF_TEXT_FILE"]).read().strip()
 async def main():
     import edge_tts
-    tts = edge_tts.Communicate(text, "ms-MY-YasminNeural", rate="+5%")
+    tts = edge_tts.Communicate(text, "ms-MY-OsmanNeural", rate="+5%")
     await tts.save(f"{work}/raw.mp3")
 asyncio.run(main())
 PYEDGE
@@ -238,7 +204,7 @@ fi
 if [ -s "$WORK/raw.mp3" ]; then
   STABILIZED="$WORK/raw.mp3"
 else
-  STABILIZED="$WORK/raw.wav"   # sovereign Piper rung
+  STABILIZED="$WORK/raw.wav"   # sovereign F5-TTS rung
 fi
 
 # Convert stabilized audio to requested format
@@ -249,3 +215,19 @@ case "$(basename "$OUT_PATH" | sed 's/.*\.//')" in
   *)    ffmpeg -y -v error -i "$STABILIZED" -c:a libopus -b:a 64k -ar 48000 "$OUT_PATH" ;;
 esac
 echo "iarif_tts_pipeline: V9 Nusantara Pure Studio → $OUT_PATH" >&2
+
+# ---- ASR gate (independent witness, groq-stt) ----
+# Emits a transcript receipt so the calling agent can see the WORDS that rendered,
+# not just that a file exists. Divergence from input = the agent should re-render
+# or hold — never ship a mangled take silently. Non-blocking (duration guard already
+# blocks truncation); this is the readability witness.
+if [ -x /root/scripts/groq-stt ] || command -v groq-stt >/dev/null 2>&1; then
+  _asr=$(groq-stt --lang ms "$OUT_PATH" 2>/dev/null | python3 -c 'import sys,json
+try:
+    print(json.load(sys.stdin)["results"][0]["transcript"])
+except Exception:
+    print("")' 2>/dev/null || echo "")
+  if [ -n "$_asr" ]; then
+    echo "IARIF_ASR=$_asr" >&2
+  fi
+fi

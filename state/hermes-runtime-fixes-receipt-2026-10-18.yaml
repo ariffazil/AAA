@@ -1,0 +1,69 @@
+receipt_id: hermes-runtime-fixes-2026-10-18
+executed_by: 333-AGI Δ MIND
+executed_at: 2026-10-18T11:55+08:00
+
+# ── FIX 1 + FIX 2: ALREADY SHIPPED — not by me ────────────────────────
+finding: >
+  Both Hermes runtime bugs Arif hit were already closed by a SOUL.md rewrite
+  at 11:25:49, before this session's work. Gateway restarted 11:39:23, after
+  the write. Rules are live.
+
+timeline:
+  - 11:04:12  Arif sends https://youtu.be/lcSa0GUammQ in DM 267378578
+  - 11:04      model emits bare-link-isn't-a-call -> guard suppresses -> empty
+  - 11:25:49  SOUL.md rewritten with Zero-Prompt Triage + BLIND-STOP + Voice lock + Anti-Khutbah
+  - 11:39:23  gateway restarted (etime confirms)
+  - now        rules live in prompt
+
+rules_now_live_in_soul_md:
+  L36 zero_prompt_triage: "Bila F13 campak apa-apa (link/PDF/video/fail/gambar/chat agent lain) tanpa kapsyen — jangan tunggu arahan — terus KUNYAH → TAPIS → TUNJUK → SATU langkah → DIAM. Bukan menu, bukan kerani, bukan soal balik."
+  L38 blind_stop: "Bila vision/audio/OCR/tool mati (429, 1113, timeout, quota habis) — BERHENTI SERTA-MERTA, lapor SATU baris. Lepas tu DIAM."
+  L40 voice_lock: "Tutup respon dengan soalan selepas kerja siap — HARAM. Init-to-Seal: terus tulis masuk sistem, verify, lapor — bukan minta kebenaran macam kerani."
+  L42 anti_khutbah: "dilarang bentang menu 'Option A / Option B / Option C', dilarang minta pengesahan berulang kali."
+  L44 tagline: "Senyap lebih baik dari soalan bangang."
+
+verdict_fix_1_2: "NO ACTION NEEDED — already shipped, verified live"
+
+# ── FIX 3: hook performance ───────────────────────────────────────────
+target: /root/scripts/aaa-hold-routing-hook.sh
+backup: /root/scripts/aaa-hold-routing-hook.sh.bak-pre-perf-20261018
+
+defect:
+  measured_before: "0.26–0.27 s per call (3 runs, /usr/bin/time)"
+  cause: "5 subprocess spawns: bash + 3x python3 (parse stdin) + 1x check_hold.py + 1x python3 (emit)"
+  impact: "PostToolUse fires on every Qwen tool call; 50 calls/session = ~14s pure overhead"
+
+fix_applied:
+  approach: "single python3 invocation — parse stdin once, import check_hold, match, emit JSON"
+  stdin_handling: "payload captured to env var first (heredoc occupies python stdin) — capped 16KB"
+  contract_preserved: ["stdin JSON in", "stdout JSON out", "always exit 0", "timeout 2s", "observe mode, never blocks"]
+
+measured_after:
+  runs: [0.11, 0.11, 0.11, 0.11, 0.11]
+  improvement: "-58% (0.27s -> 0.11s)"
+  honest_note: "NOT sub-millisecond as the sibling report originally claimed; 110ms is the real number"
+
+functional_verification:
+  parse_ok: "session_id/tool_name/signature all extracted correctly"
+  match_ok: "ask-when-action-is-cheap cost=10 MATCHED (rc=0)"
+  no_match_ladder_ok: "unmatched signature -> 4-action ladder printed (rc=1)"
+  malformed_input: "ledger_unavailable, no crash"
+  empty_input: "routed"
+  oversized_input: "ledger_unavailable (graceful truncation)"
+  exit_code: "0 on all cases"
+
+# ── SECONDARY: stale doctrine pointer ─────────────────────────────────
+target: /root/forge_work/proposals/fi-003/behavioral-memory-stage3/check_hold.py
+defect: "docstring pointed to /root/.qwen/projects/-root/memory/project-2026-10-06-f13-5-stage-emergence-doctrine.md — memory tree archived 07:24 same day"
+fix: "pointer updated to /root/.qwen/archive/raw_2026_10_18/.qwen/projects/-root/memory/... with correction note"
+runtime_impact: "none (docstring only) — fixed to stop misleading future agents"
+
+# ── NOT DONE (deliberately) ───────────────────────────────────────────
+not_done:
+  - "emergence-capability-tensor-v1.yaml — 0 consumers, LAW 3 violation, left as-is"
+  - "wire hook to 6 more harnesses — observe-only hook, no demonstrated failure it prevents"
+  - "pattern_compress.py / Stage 2-5 substrate — no demonstrated failure, constitution-class"
+  - "delete the over-engineered artifacts — would be more work than leaving them"
+
+mutations: 3 (hook rewrite, docstring pointer, backup created)
+reversible: yes (backup + git-tracked file for check_hold.py)

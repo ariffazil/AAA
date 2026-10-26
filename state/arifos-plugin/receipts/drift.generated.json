@@ -1,0 +1,107 @@
+{
+ "_GENERATED": "federation_build.py \u2014 DO NOT HAND-EDIT (FP-06)",
+ "run_at": "2026-10-25T19:07:01+00:00",
+ "mode": "apply-additive",
+ "skill_index": {
+  "skills": 782,
+  "distribution": {
+   "governance": 110,
+   "research": 87,
+   "execution": 129,
+   "domain": 53,
+   "memory": 29,
+   "communication": 79,
+   "unclassified": 332,
+   "engineering": 104
+  }
+ },
+ "projection": {
+  "/root/.kimi-code/skills": {
+   "linked": 13,
+   "kept": 761,
+   "repaired": 0,
+   "preserved": 8
+  },
+  "/root/.qwen/skills": {
+   "linked": 13,
+   "kept": 769,
+   "repaired": 0,
+   "preserved": 0
+  },
+  "/root/.codex/skills": {
+   "linked": 753,
+   "kept": 25,
+   "repaired": 0,
+   "preserved": 4
+  },
+  "/root/.gemini/skills": {
+   "linked": 12,
+   "kept": 770,
+   "repaired": 0,
+   "preserved": 0
+  },
+  "/root/.config/opencode/skills": {
+   "linked": 13,
+   "kept": 769,
+   "repaired": 0,
+   "preserved": 0
+  },
+  "/root/.claude/skills": {
+   "linked": 0,
+   "kept": 0,
+   "repaired": 0,
+   "preserved": 782
+  },
+  "/root/.grok/skills": {
+   "linked": 0,
+   "kept": 0,
+   "repaired": 0,
+   "preserved": 782
+  }
+ },
+ "pointer_integrity": {
+  "/root/.kimi-code/skills": 1,
+  "/root/.qwen/skills": 1,
+  "/root/.codex/skills": 0,
+  "/root/.gemini/skills": 1,
+  "/root/.config/opencode/skills": 1,
+  "/root/.claude/skills": 0,
+  "/root/.grok/skills": 0
+ },
+ "init_guard": {
+  "/root/AGENTS.md": "WIRED",
+  "/root/.kimi-code/AGENTS.md": "WIRED",
+  "/root/.config/opencode/AGENTS.md": "WIRED",
+  "/root/CLAUDE.md": "WIRED",
+  "/root/QWEN.md": "MISSING_READONLY",
+  "/root/GEMINI.md": "WIRED"
+ },
+ "drift": {
+  "registry_declared": {
+   "registry_mcp": 13,
+   "registry_skill_AAA": 255,
+   "refreshed_at": "2026-09-19T16:39:41.345758+00:00"
+  },
+  "live_disk": {
+   "kimi_mcp": 22,
+   "opencode_mcp": 22,
+   "one_mcp": 16,
+   "skills_AAA": 789,
+   "skills_kimi": 797,
+   "skills_qwen": 790,
+   "skills_codex": 794,
+   "skills_gemini": 782,
+   "skills_opencode": 782,
+   "skills_claude": 789
+  }
+ },
+ "problems": [
+  "broken_pointers={'/root/.kimi-code/skills': 1, '/root/.qwen/skills': 1, '/root/.codex/skills': 0, '/root/.gemini/skills': 1, '/root/.config/opencode/skills': 1, '/root/.claude/skills': 0, '/root/.grok/skills': 0}",
+  "init_guard={'/root/AGENTS.md': 'WIRED', '/root/.kimi-code/AGENTS.md': 'WIRED', '/root/.config/opencode/AGENTS.md': 'WIRED', '/root/CLAUDE.md': 'WIRED', '/root/QWEN.md': 'MISSING_READONLY', '/root/GEMINI.md': 'WIRED'}",
+  "registry_stale: 255 vs live 789"
+ ],
+ "state_labels": {
+  "projection": "PRODUCED \u2014 runtime consumption per-harness",
+  "claude_grok_codex": "whole-dir symlinks to SOT (pointer pure) \u2014 no copies exist; REFUTED claim corrected 2026-10-22"
+ }
+}

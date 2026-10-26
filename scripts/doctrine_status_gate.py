@@ -49,7 +49,7 @@ RATIFIED_CLASS_RE = re.compile(r"(?:\b|_)(RATIFIED|SEALED|CANON|CANONICAL|CONSTI
 # the opposite of the K6 threat (a DRAFT relabelled as ratified), so it must not
 # be blocked for lacking an instrument it correctly says it does not have.
 NEGATED_CLASS_RE = re.compile(
-    r"\b(?:not|no|never|non|un|without)\s*[-\s]*(?:yet\s+)?"
+    r"\b(?:not|no|never|non|un|without|awaiting|pending|candidate\s+for)\s*(?:yet\s+|inclusion\s+in\s+|promotion\s+to\s+)?"
     r"(?:RATIFIED|SEALED|CANON|CANONICAL|CONSTITUTIONAL)\w*",
     re.IGNORECASE,
 )

@@ -1,3 +1,5 @@
+Status: ACTIVE_CANONICAL — F13_RATIFIED_SOVEREIGN (2026-09-16)
+
 # HERMES SHADOW: Human Paradox, Disowned Possibility, Rasa Conflict and Agentic Alignment Resource
 
 > **Status:** F13_RATIFIED_SOVEREIGN (2026-09-16) — Arif Fazil (F13)
@@ -8,7 +10,34 @@
 > - $\text{SHADOW} = \text{protect unintegrated possibility}$
 > - $\text{PARADOX} = \text{protect simultaneous truths}$
 > - $\text{arifOS} = \text{protect authority and action}$
-> **Motto:** DITEMPA BUKAN DIBERI ⚒️
+> **Motto:** ---
+
+## 2026-10-17 GROUND-TRUTH AMENDMENT (F13 "go" — HERMES, verified live)
+
+1. **Tool surface (probed live, not assumed):** hermes-rasa MCP serves 31 tools INCLUDING
+   `hermes_shadow_map`, `hermes_agent_shadow`, `hermes_projection_guard`, `hermes_shadow_provenance`.
+   They are LIVE — not removed, not pruned. The 12-tool spec above is accurate. Any claim that they
+   were "pruned" or "never existed" is FALSE and must not propagate. (Verified 2026-10-17 via
+   initialize + tools/list against 127.0.0.1:18420/mcp.)
+
+2. **Glossary — three distinct meanings of "shadow" in this federation.** Name confusion between
+   these three is the source of phantom "delete the shadow tools" proposals:
+   - **Canary mode** — validate + log, do NOT block. DevOps term, not psychology.
+   - **Ψ-Shadow** (adversarial witness, arifOS tests/test_psi_shadow.py) — attacks a proposal for
+     logical contradiction (reversibility, safety bypass, command injection) → verdict REJECT.
+     Red-team logic checker.
+   - **Interpretive lens** (this doctrine) — the gap model: question-not-answer, max class INFERENCE.
+
+3. **Positive-mechanical instruction beats stacked negative prohibition** (Pink Elephant — naming the
+   forbidden concept raises its attention weight). Prefer "answer from facts, code, and physical
+   constraints only" over "do not mind-read / do not declare shadow". Where a SHALL NOT exists, pair it
+   with the MAY statement it enables (§17 already does this).
+
+4. **Light-init discipline:** lightweight execution (fetch a URL, read a file, no state change) uses
+   `arif_init(mode=light|canary)`. Full preflight constitutional gatekeeping is for risky /
+   irreversible actions only. Do not run heavyweight init for a read.
+
+DITEMPA BUKAN DIBERI ⚒️
 
 ---
 
@@ -220,7 +249,6 @@ The SHADOW subsystem automatically triggers `RASA_HOLD` and fails governance if 
 10. The agent treats its own interpretation as superior to human sovereignty.
 
 ---
-
 
 <!-- ARCHIVAL NOTE (2026-10-14, F13 directive shadow-bangang cleanup): The 14-INSTRUCTION RUNTIME PROMPT below is KNOWLEDGE / ON-DEMAND REFERENCE ONLY. It is NOT injected per-turn and MUST NOT run as compulsory psychological profiling on every human interaction. Live runtime = /root/.hermes/SOUL.md (mouth+pointer). Reason: over-psychoanalysis of casual conversation = energy-tax defect (scar:ENERGY-LEECH-2026-10-08). -->
 

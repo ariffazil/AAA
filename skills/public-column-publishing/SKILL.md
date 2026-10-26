@@ -3,6 +3,8 @@ name: public-column-publishing
 description: Use when writing a MakcikGPT/public column article.
 capability_tier: fed-long-context
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Public Column Publishing

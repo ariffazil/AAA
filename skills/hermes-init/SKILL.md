@@ -3,6 +3,10 @@ name: hermes-init
 description: Substrate primitive /init — establishes actor, session, lane, atlas expression, authority tier. EVERY autonomous agent MUST call this before any mutation. SESSION BOUND is the answer to "who is acting?"
 tags: [constitutional, init, substrate-primitive, telegram-native, hermes]
 license: MIT
+relationships:
+  - target: opencode-init
+    type: alternative_to
+    confidence: 1.00
 ---
 # Hermes /init — Substrate Primitive
 
@@ -16,7 +20,7 @@ SESSION BOUND
 Actor:        <ARIF / 267378578 | AAAGW | FORGE | AUDITOR | HERMES>
 Session:      <session_id>
 Lane:         <333-AGI | 555-ASI | 888-APEX | 777-FORGE | SOVEREIGN>
-Runtime:      Hermes (Node.js gateway :18089)
+Runtime:      Hermes (Python gateway, Telegram polling — no inbound port)
 Phenotype:    Coordinate · Sense · Relay
 Bot:          @ASI_arifos_bot
 ────────────────────────────────────

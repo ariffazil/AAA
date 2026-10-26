@@ -144,7 +144,7 @@ system understands itself, human still does      → PASS
 | `/999/` 404 (constitutional Proof page) | **RESOLVED 2026-08-09** — verified 200, title "/999 — Proof · Sealed Vault" during survivability audit |
 | `/trust/` 404 — SITE_CONSTITUTION RULE 2 promises trust ≤3 clicks; the path returns 404 | OPEN — restore source |
 | `/observatory/` 404 — observatory moved to `/arifos/` (200, "arifOS Observatory — Reality Witness") but no redirect from old path; llms.txt still points at arifos.arif-fazil.com (301→/arifos/) | OPEN — add redirect |
-| canon nav/accent divergence — world-model.yaml (DRAFT) 9-domain nav vs live 5-lane nav; atlas.yaml ring accents (SOUL red/MIND cyan/BODY gold/ORGAN violet) vs live hub accents | OPEN — design identity HOLD pending F13; mapping in arif-fazil-web-ops `references/design-canon-sot-2026-08-09.md` |
+| canon nav/accent divergence — world-model.yaml (DRAFT) 9-domain nav vs live 5-lane nav; atlas.yaml ring accents (SOUL red/MIND cyan/BODY gold/ORGAN violet) vs live hub accents | OPEN — design identity HOLD pending F13; mapping in arif-fazil-web-ops `/root/AAA/skills/arif-fazil-web-ops/references/design-canon-sot-2026-08-09.md` |
 | `/words/llms.txt` serves SPA HTML (deceptive 200) | OPEN — create real file |
 | `/work/llms.txt` 404 | OPEN — create real file |
 | `/000/page.json`, `/999/page.json` 404 | OPEN |
@@ -250,3 +250,9 @@ diff <(git -C /var/www/html/<site> ls-tree -r HEAD --name-only | sort) \
 - **Machine files must be REAL files** — Caddy `try_files` serves a real file
   when it exists; the SPA catch-all only fires on missing files.
 - **Deploy ≠ verify-pages** — `make deploy` is T3. The manual path is additive per-route, no `--delete`. Report catalog drift separately (see arif-sites-ops).
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-LEDGER-HUMAN-ARIF-FAZIL-2026-09-23
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

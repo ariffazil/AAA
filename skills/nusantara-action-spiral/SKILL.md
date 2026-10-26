@@ -151,3 +151,9 @@ P5, 888) the chamber waits on rather than improvising around.
 ---
 
 *DITEMPA BUKAN DIBERI — forged in the gap between language paradox and status code.* ⚒️
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-20-governance-visibility-debt, 2026-09-30-frame-chamber-drift-phantom-scars
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->

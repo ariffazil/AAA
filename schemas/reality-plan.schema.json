@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/reality-plan.schema.json",
+  "title": "RealityPlan controller IR",
+  "description": "F13_RATIFIED 2026-10-06 'sah and cal'. Every persistent plan is a controller IR, not prose. PLAN != ACTION != CONSEQUENCE != OBSERVATION; file != reality. CONSUMER: agents emitting persistent plans (work/task manifests, carry-forwards) + validators enforcing the binding in /root/AGENTS.md. FAILURE CLASS CLOSED: schema was declared at this path since 2026-10-06 but absent — plans were 'per schema' with no schema to be per (declared-registry-missing). Created 2026-10-18 by 333-AGI under F13 'setel all'.",
+  "type": "object",
+  "required": ["plan_id", "objective", "steps", "controller"],
+  "additionalProperties": true,
+  "properties": {
+    "plan_id": { "type": "string", "minLength": 1 },
+    "objective": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "default": "reality-plan.v1" },
+    "controller": {
+      "type": "object",
+      "description": "State-transition discipline. Every persistent promise names its transition, never a boolean.",
+      "required": ["state", "expected_next", "owner", "evidence_required"],
+      "properties": {
+        "state": { "type": "string", "enum": ["PLAN", "ACTION", "CONSEQUENCE", "OBSERVATION", "BLOCKED", "PENDING_OPERATOR", "CLOSED"] },
+        "prev_state": { "type": ["string", "null"] },
+        "expected_next": { "type": "string" },
+        "owner": { "type": "string" },
+        "evidence_required": { "type": "string" },
+        "deadline": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "claim"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "enum": ["PLAN", "ACTION", "CONSEQUENCE", "OBSERVATION"] },
+          "claim": { "type": "string" },
+          "evidence": { "type": ["string", "null"] },
+          "depends_on": { "type": "array", "items": { "type": "string" } },
+          "autonomy_tier": { "enum": ["T0", "T1", "T1.5", "T2", "T3"] }
+        }
+      }
+    },
+    "falsifier": { "type": ["string", "null"], "description": "What observation would prove this plan wrong." },
+    "generated_utc": { "type": "string", "format": "date-time", "description": "Mechanically stamped (date -u), never hand-written." }
+  }
+}

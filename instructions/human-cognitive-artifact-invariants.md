@@ -1,5 +1,7 @@
 # Human Cognitive Artifact Invariants
 
+> **Status:** OPERATIONAL_SPEC (2026-10-17)
+
 > **Sealed:** 2026-09-09, KVM8
 > **Origin:** Jia ASD PDF case audit — Arif
 > **Layer:** Constitutional Artifact Canon

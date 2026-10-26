@@ -1,6 +1,6 @@
 ---
 name: arifos-kernel-eurekas
-description: "K1-K12 kernel substrate honesty laws (K1-K4=/health, K5-K6=mutation gate, K7=payload discipline, K8=tool liveness, K9=deploy verification, K10=last-writer timing, K11=honest sensor principle, K12=dual evaluation paths). Runtime-enforced invariants, NOT GENESIS doctrine. Trigger: kernel patches touch /health, vault readers, runtime_floors, floor_passed semantics, _floor_measurement, last_seal_timestamp, .bak hygiene, agent-runtime mutation gates, arif_seal floor evaluation, dual evaluation path (kernel intercept vs seal floor check), or any code path that decides whether measured/unmeasured/failed floors are reported honestly."
+description: 'K1-K12 kernel substrate honesty laws (K1-K4=/health, K5-K6=mutation gate, K7=payload discipline, K8=tool liveness, K9=deploy verification, K10=last-writer timing, K11=honest sensor principle, K12=dual evaluation paths).'
 version: 1.0.0
 author: F13 SOVEREIGN + Hermes Agent
 license: MIT
@@ -436,7 +436,7 @@ If a hit is inside an `elif`/`if` that handles `None` already, you're safe. If a
 
 **Operational consequence:**
 - For RECORD-type seals (`action_class=AUDIT_RECORD`, `seal_purpose=RECORD`), the floor evaluation typically fails on F2 (truth), F3 (tri-witness), F4 (clarity), F7 (humility), F8 (genius), F13 (sovereign) — these are the LLM-judged floors that need well-populated tri-witness data and apex scalar scores above threshold.
-- The dual-path issue is documented in `governance-enforcement-audit` skill and `references/dual-seal-path-record-vs-authorize.md`.
+- The dual-path issue is documented in `governance-enforcement-audit` skill and ``references/``.
 - For an agent attempting a VAULT999 seal: getting ALLOW from the kernel is necessary but not sufficient. To pass the floor evaluation, ensure: (1) tri_witness Nash product >= 0.75, (2) apex G/C_dark/W3/h scalars in healthy range, (3) confidence_band not "UNMEASURED", (4) build_commit == live_commit (no drift).
 
 **Law (K12):** Two independent gates on the same SEAL boundary must both pass. ALLOW at one gate does not imply PASS at the other. Document both gate verdicts in any seal attempt — the receipt must show the dual-path truth.
@@ -501,3 +501,10 @@ assert ki.get("decision") == "ALLOW" and seal_result.get("status") == "OK"
 
 - `scripts/probe_8_tools.py` — agentic probe: exercises all 8 canonical verbs (arif_init/observe/think/route/memory/judge/forge/seal) via JSON-RPC, captures verdict + 9-signal state, reports per-tool pass/HOLD/SEAL. Includes the K4 pre-probe gate (checks `/health` for drift contamination BEFORE probing). Usage: `python3 scripts/probe_8_tools.py` (anonymous) or `python3 scripts/probe_8_tools.py --as-arif` (FULL authority).
 - `scripts/daily_liveness.py` — Rule #4 cron-driven dead-tool detector. Differs from probe_8_tools.py: minimal payloads (no human prompts), JSON output, exit-code semantics (0=alive, 1=dead, 2=substrate gate failed). Pair with systemd timer or `0 6 * * *` crontab. Pair with `git_to_vault.py` to make daily liveness state immutable. Classification rules: `EXPECTED_HOLD (anonymous)` = forge/seal neutering (correct); `VOID`/`HOLD` for read-class = suspicious (audit); `_error`/timeout = DEAD (exit-1).
+
+## Routing notes (moved from description 2026-10-23)
+
+Runtime-enforced invariants, NOT GENESIS doctrine. Trigger: kernel patches touch /health, vault readers, runtime_floors, floor_passed semantics, _floor_measurement, last_seal_timestamp, .bak hygiene, agent-runtime mutation gates, arif_seal floor evaluation, dual evaluation path (kernel intercept vs seal floor check), or any code path that decides whether measured/unmeasured/failed floors are reported honestly.
+
+
+<!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->

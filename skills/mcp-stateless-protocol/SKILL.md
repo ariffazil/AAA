@@ -1,6 +1,6 @@
 ---
 name: mcp-stateless-protocol
-description: "Probe and connect MCP servers on the 2026-07-28 stateless wire format (MCP 2.0). Covers the exact header+envelope handshake (MCP-Protocol-Version, Mcp-Method, Mcp-Name, _meta io.modelcontextprotocol/* keys), the error taxonomy (-32020 HeaderMismatch, -32022 UnsupportedProtocolVersion, -32602 missing envelope keys), using stateless.mcpjam.com/mcp as a conformance test rig (13 fixture tools), and verifying whether any coding agent/client supports the latest MCP (SDK version + trial calls). Trigger: user asks which agents support the latest MCP, wants to connect an https MCP server, or an MCP endpoint rejects initialize with UnsupportedProtocolVersion."
+description: 'Probe and connect MCP servers on the 2026-07-28 stateless wire format (MCP 2.0). Covers the exact header+envelope handshake (MCP-Protocol-Version, Mcp-Method, Mcp-Name, _meta io.modelcontextprotocol/* keys), the error'
 ---
 
 # MCP Stateless Protocol (2026-07-28 wire format)
@@ -56,6 +56,20 @@ Use it as the known-good target when testing whether any client/agent speaks the
 3. Trial: point the agent at `https://stateless.mcpjam.com/mcp`, run `echo` / `get-weather`, watch for `resultType:"complete"`. Failure = the agent's client speaks an older protocol revision.
 4. Status on this box (2026-08-08 — re-probe, versions go stale): OpenClaw ✅ verified; Hermes (Python mcp 1.27.2) ❌; Claude Code 2.1.218, Codex 0.146.0, OpenCode 1.18.11, Kimi Code — installed, unverified.
 
+   ORGAN STATUS UPDATE (2026-10-15, 333-AGI — live-probed):
+   - **GEOX :8081 ✅ VERIFIED** — stateless era fully working. `resultType:'complete'`
+     enforced at the era-bridge choke point for EVERY method (JSON + SSE) since
+     commit 1c624842; deploy gate `make deploy-gate` live; contract
+     tests/test_stateless_resulttype_contract.py 11/11. Public URL
+     https://geox.arif-fazil.com/mcp strict-client ALL PASS (tools 27, resources 52, prompts 16).
+   - **WEALTH :18082 ❌ STATEFUL-ONLY** — stateless envelope returns
+     `-32000 SESSION_MISSING: Mcp-Session-Id header required`; no era bridge.
+     Works via legacy initialize→session flow (Claude Code OK). Porting the GEOX
+     era-bridge pattern is the known fix (backlog).
+   - Federation organ index reconciliation: AAA CAPABILITY_INDEX.json + AGENT_SURFACE_MAP.yaml
+     were advertising retired tool names against live surfaces — reconciled to live
+     probes 2026-10-15. See eureka-2026-10-15-frozen-registry-stale-truth.
+
 ## 5. Pitfalls
 
 - **`curl -sf` swallows error bodies.** Stateless servers answer 400 with a JSON-RPC error that IS the diagnosis. Use `-sS` / `-si` and read `error.data`.
@@ -64,6 +78,8 @@ Use it as the known-good target when testing whether any client/agent speaks the
 - Legacy-era servers sometimes dual-accept prefixes (e.g. `sct_v1|act_v1`); check each server's own `data.supported` rather than assuming.
 - **FastMCP `stateless_http=True` is necessary but not sufficient.** The transport flag enables stateless mode, but you must also: (1) declare protocol "2026-07-28" in health/discovery endpoints, (2) append "2026-07-28" to the mcp SDK's `SUPPORTED_PROTOCOL_VERSIONS` list (it's not included by default in mcp 1.27.x), (3) remove any session-validation middleware that enforces `Mcp-Session-Id` headers. See `references/federation-sdk-readiness-audit-2026-08-11.md` for the exact per-organ checklist.
 - **Session middleware removal is not just code deletion.** WELL had TWO session middlewares (parameter-level + header-level), GEOX has a global `_kernel_mcp_session_id` variable, A-FORGE has an active `sessionIdGenerator`. Each organ's session dependencies are different — grep for `session_id`, `Mcp-Session`, `SessionEnforcement`, `SessionValidation` before declaring stateless readiness.
+- **Enforce era obligations at the choke point, never by method-name matching.** The 2026-10-15 GEOX defect: only tools/list carried resultType (outer middleware matched that one method); every other modern-era reply relayed verbatim by the era bridge → strict clients rejected ALL calls. Fix belongs inside the bridge where every era reply crosses. Regression-proofing = per-method contract test (both transports, both eras, legacy negative tests) + a live deploy gate that fails the deploy when the contract breaks. Law: eureka-2026-10-15-choke-point-protocol-law.
+- **`'Unknown tool'` from a catalog/connector: probe the LIVE organ first.** The advertisement side (AAA CAPABILITY_INDEX, agent cards, DeepWiki) is often the stale side — an immutable registry protects integrity of record, not correctness of content. Reconcile from live probes, then re-freeze. Law: eureka-2026-10-15-frozen-registry-stale-truth.
 - **Don't mistake dual-era negotiation for migration failure.** FastMCP 4.x correctly negotiates 2026-07-28 requests DOWN to 2025-11-25. See "Dual-Era MCP Negotiation" below.
 
 ## 6. Dual-Era MCP Negotiation (forged 2026-08-11)
@@ -202,3 +218,13 @@ Constitutional SOT appears in Phase 0. Registry automation appears in Phase 3. D
 **arifOS IS on 2026-07-28 spec.** Reference file was written before arifOS upgrade completed.
 
 See `references/federation-stateless-migration-2026-08-11.md` for full live inventory.
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: 2026-09-30-f13-ask-h3-polarity-version-drift, SCAR-2026-09-12-phantom-cron-category-error
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
+
+## Routing notes (moved from description 2026-10-23)
+
+taxonomy (-32020 HeaderMismatch, -32022 UnsupportedProtocolVersion, -32602 missing envelope keys), using stateless.mcpjam.com/mcp as a conformance test rig (13 fixture tools), and verifying whether any coding agent/client supports the latest MCP (SDK version + trial calls). Trigger: user asks which agents support the latest MCP, wants to connect an https MCP server, or an MCP endpoint rejects initialize with UnsupportedProtocolVersion.

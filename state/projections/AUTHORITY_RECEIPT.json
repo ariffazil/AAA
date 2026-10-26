@@ -1,0 +1,27 @@
+{
+ "receipt_type": "AUTHORITY_RECEIPT",
+ "timestamp": "2026-10-22T12:05:50Z",
+ "identity": "333-AGI (lane:333-AGI)",
+ "allowed": [
+  "read",
+  "plan",
+  "propose",
+  "synthesize",
+  "reversible local edit",
+  "generate projections"
+ ],
+ "forbidden": [
+  "VAULT999 append (permanence)",
+  "self-issued authority envelope",
+  "mutate runtime systems without lease",
+  "widen authority"
+ ],
+ "derived_from": [
+  "/root/arifOS/arifosmcp/abi/mode_contracts.json",
+  "/root/AAA/arifos_kernel/abi/capability_registry.json",
+  "/root/AAA/registries/AFORGE_VERB_SCHEMA.json",
+  "/root/A-FORGE/src/domain/types/mcp-bridge.ts",
+  "/root/arifOS/arifosmcp/runtime/tools.py"
+ ],
+ "note": "projection outputs are generated artifacts (Lane B reversible); VAULT999 permanence stays 888/F13"
+}

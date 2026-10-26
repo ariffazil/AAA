@@ -1,6 +1,6 @@
 ---
 name: agent-memory-architecture
-description: "Design, audit, and extend AI agent memory systems — multi-layer stacks (L1-L6), the parallel H1-H6 human-memory axis (Capture→Experience→Knowledge→Identity→Scar→Constitution) with the H1 sovereignty gate and scar-witnessing protocol (ratified 2026-08-08), multimodal readiness, the multi-witness MemoryObject doctrine (artifact/semantic/affective/relational/temporal/provenance/salience), affective observation vs interpretation (F2 split), F3 TRI-WITNESS as retrieval arbitration, and the 7-phase memory audit method (MMA-2026-08-07). Includes artifact-state-governance failure pattern (sibling subagent overwrites) and 5 entropy-reduction cron jobs. Constitutional telemetry: see references/hermes-dna-map-atlas-echo.md (MAP/ATLAS/ECHO + double-helix topology + freeze protocol, forged 2026-08-09)."
+description: 'Design, audit, and extend AI agent memory systems — multi-layer stacks (L1-L6), the parallel H1-H6 human-memory axis (Capture→Experience→Knowledge→Identity→Scar→Constitution) with the H1 sovereignty gate and'
 version: 1.2.0
 author: Hermes Agent (aaa-hermes)
 license: MIT
@@ -167,3 +167,13 @@ Full session trace: `references/mma-2026-08-07-session-postmortem.md`.
 - **governance-contract-self-audit** — author and self-audit governance contracts (the audit-write-and-the-audit-of-the-audit pattern)
 - **retrieval-vs-memory-fidelity** — the core distinction this skill operationalizes
 - **arifos-federation-ops** — kernel/session/topology layer; for the H-axis sovereignty gate operating against the federation substrate
+
+<!-- SKILL-WITNESS-NOTE (auto, additive-only) -->
+Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
+Scar signatures: SCAR-AGY-004-session-gate-confusion, SCAR-AGY-007-over-output-verbosity, SCAR-ARCHITECTURE-OF-REJECTION
+Do not treat this skill as neutral until the signatures are resolved.
+<!-- /SKILL-WITNESS-NOTE -->
+
+## Routing notes (moved from description 2026-10-23)
+
+scar-witnessing protocol (ratified 2026-08-08), multimodal readiness, the multi-witness MemoryObject doctrine (artifact/semantic/affective/relational/temporal/provenance/salience), affective observation vs interpretation (F2 split), F3 TRI-WITNESS as retrieval arbitration, and the 7-phase memory audit method (MMA-2026-08-07). Includes artifact-state-governance failure pattern (sibling subagent overwrites) and 5 entropy-reduction cron jobs. Constitutional telemetry: see references/hermes-dna-map-atlas-echo.md (MAP/ATLAS/ECHO + double-helix topology + freeze protocol, forged 2026-08-09).

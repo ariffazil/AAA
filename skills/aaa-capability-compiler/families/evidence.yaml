@@ -12,8 +12,13 @@ jobs:
     executor: agent-claim-verification (identical twin agent-finding-verification archived 2026-10-02)
     maturity: PRESENT
   audit_repo:
-    triggers: ["audit repo", "repo reality", "repository entropy", "audit codebase", audit]
-    executor: audit-repo-reality / audit-repository-entropy (unmerged cluster members)
+    triggers: ["audit repo", "repo reality", "repository entropy", "audit codebase", audit,
+               "declared but unwired", "declared vs live", "not wired", unwired,
+               "orphan mechanism", "dead declaration", "provenance audit"]
+    # executor corrected 2026-10-17 (FI-008): audit-repository-entropy is a DEPRECATED ALIAS
+    # (do_not_select: true, canonical_owner: audit-ops, forged 2026-10-14). It must not be
+    # named as a route target — doing so routes to a skill that refuses selection.
+    executor: audit-repo-reality (canonical, live, v2.0.0)
     maturity: PRESENT
   falsify_paste:
     triggers: ["pasted review", falsify, "review claim"]

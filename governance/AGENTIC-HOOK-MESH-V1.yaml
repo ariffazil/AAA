@@ -4,6 +4,14 @@
 # Constitutional Authority: F1 Amanah, F2 Truth, F4 Clarity (ΔS ≤ 0), F8 Simpler Path, F11 Audit, F13 Sovereign Attention Preservation
 # Standard: Prompt Version AAA-HOOK-FORGE-V1.0
 #
+# v1.3.6 (2026-10-20) — LOOP CLOSURE + ENUMERATED FAMILY FIX (333-AGI).
+#   * ENUMERATED-FAMILY-PREFIX: /etc/sudoers.d/* was NOT matched (the guard
+#     tested f+"/" only, so a sibling dotted family fell through). Live probe
+#     before fix: `echo pwned >> /etc/sudoers.d/evil` => ALLOW/PROCEEDED.
+#     After fix: HOLD/NOT_EXECUTED. hook_mesh_check C9 green.
+#   * C4 PHANTOM MANIFEST: opencode manifest_path was declared as
+#     IPENCODE-... (typo) and never existed. Corrected to
+#     OPENCODE-HOOK-ORDER-MANIFEST.json and the real manifest was written.
 # v1.3.5 (2026-09-25) — QWEN PRETOOLUSE + SHARED ADAPTER: qwen was the only
 #   live coding harness with no pre-execution screen; wired to the SHARED
 #   parameterized pretool_engine_gate.py (actor argv). Per-agent copies of the
@@ -35,9 +43,9 @@
 #   v1.3.0 gaps were stale within the hour because the mesh was being rewritten
 #   concurrently. Each gap below now cites the live observation that establishes it.
 
-version: "1.3.5"
+version: "1.3.6"
 schema_id: "arifos.governance.agentic_hook_mesh.v1"
-last_updated: "2026-09-25T07:40:00Z"
+last_updated: "2026-10-20T11:30:00Z"
 doctrine: "DITEMPA BUKAN DIBERI — Governed emergence across all federation warga."
 
 # =============================================================================
@@ -176,7 +184,7 @@ canonical_lifecycle_events:
 
 harness_hydration_map:
   opencode:
-    manifest_path: "/root/.config/opencode/plugins/IPENCODE-HOOK-ORDER-MANIFEST.json"
+    manifest_path: "/root/.config/opencode/plugins/OPENCODE-HOOK-ORDER-MANIFEST.json"
     dispatcher: "TypeScript Plugin Suite with IPC bridge to federation_hook_engine.py"
     enforcement_owner: "judge-gate.ts (PEP: kernel VOID raises KERNEL_VOID and refuses)"
     event_mappings:
@@ -321,6 +329,50 @@ harness_hydration_map:
 # KNOWN GAPS — declared, not hidden
 # =============================================================================
 known_gaps:
+  - id: SUBAGENT-STOP-UNENFORCED
+    status: OPEN
+    owner: FI-002
+    observed: >
+      2026-10-20, 333-AGI runtime audit: Claude Code has SessionStart, PreToolUse,
+      PostToolUse, Stop and SessionEnd registered. It has NO SubagentStop hook, so
+      a delegated subagent can end mid-task with no closure record and the parent
+      session never sees it. Kimi has aaa-subagent-stop.sh; Claude does not.
+    detail: >
+      The main-session closure gate (closure-stop.py) counts only mutations whose
+      session_id matches the stopping session. Delegated work is invisible to it,
+      which is the exact shape of "agent buat kerja x habis" — the parent believes
+      the work finished because the subagent stopped.
+    prescribed_fix: >
+      Add a SubagentStop hook once the subagent event payload is probed for a
+      stable per-subagent identifier (do not guess field names). The hook must
+      (a) write a subagent completion receipt with mutations/closure counts and
+      (b) block once, with a finish-the-loop reason, when the subagent mutated
+      state and produced no closure evidence. Prove both directions before
+      registering it in settings.local.json.
+  - id: READ-PATH-NOT-SCREENED
+    status: OPEN
+    owner: FI-008
+    observed: >
+      2026-10-20, 333-AGI runtime audit: `bash {command: "cat /etc/shadow"}`
+      returns verdict=ALLOW / execution_status=PROCEEDED. The engine screens
+      writes (exact path or > / >> / tee target) only; reads of enumerated
+      files are outside its matcher, as documented in gate()'s own comment
+      ("Known limit, documented: reads of forbidden files ... are not matched
+      here — kernel arif_judge remains the constitutional backstop").
+    detail: >
+      The kernel backstop currently answers ALLOW for a read of /etc/shadow, so
+      the class is effectively ungated for reads. Not fixed here because
+      broadening the matcher to bare path tokens re-opens the 2026-10-15 scar
+      where prose mentions of a forbidden path VOIDed the agent writing about
+      it. Closing this needs a read-verb-aware screen (cat/head/tail/cp/scp/tar)
+      with an allow-case proof, not a token grep. Test that pins current
+      behaviour: tests/hooks/test_hook_mesh.py::test_read_path_not_screened_is_declared.
+    prescribed_fix: >
+      Add a read-verb-aware screen (cat/head/tail/less/cp/scp/rsync/tar/base64) that
+      matches an enumerated path only when directly preceded by a read verb, and
+      prove BOTH directions (read of enumerated file => HOLD, benign read => ALLOW)
+      before flipping this gap to RESOLVED. Keep the 2026-10-15 anti-false-positive
+      property: prose mentions of a path must not trigger a refusal.
   - id: ENUMERATED-REFUSAL-NO-END-TO-END-TEST
     status: RESOLVED
     observed: >

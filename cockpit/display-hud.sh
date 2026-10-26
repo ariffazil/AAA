@@ -8,9 +8,9 @@
 set -euo pipefail
 
 COCKPIT_DIR="$(cd "$(dirname "$0")" && pwd)"
-STATE_FILE="${COCKPIT_DIR}/hud-state.json"
+STATE_FILE="/var/lib/arifos/state/cockpit/hud-state.json"
 GENERATOR="${COCKPIT_DIR}/generate-hud-state.sh"
-EXEC_PATH="${COCKPIT_DIR}/execution-path-next.json"
+EXEC_PATH="/var/lib/arifos/state/cockpit/execution-path-next.json"
 
 REGEN=1
 RAW=0
@@ -98,6 +98,14 @@ attention_debt=$(s '.panels["5_TIME_LEARNING"].chron_attention_debt')
 predictions_due=$(s '.panels["5_TIME_LEARNING"].chron_predictions_due')
 brier=$(s '.panels["5_TIME_LEARNING"].chron_brier')
 
+# [4b] METABOLISM (2026-10-22)
+apex_g=$(s '.panels["4_JUDGMENT"].apex_g')
+apex_cd=$(s '.panels["4_JUDGMENT"].apex_c_dark')
+apex_w3=$(s '.panels["4_JUDGMENT"].apex_w3')
+fq_val=$(s '.panels["4_JUDGMENT"].fq')
+metab_path=$(s '.panels["4_JUDGMENT"].metabolism_pathology')
+leases_flag=$(s '.panels["6_CONCURRENCY"].leases_flag')
+
 # [6] CONCURRENCY
 active_agents=$(s '.panels["6_CONCURRENCY"].active_agents')
 leases=$(s '.panels["6_CONCURRENCY"].leases')
@@ -137,6 +145,9 @@ if [[ $RAW -eq 0 ]]; then
   printf '%s╠══════════════════════════════════════════════════════════════════════╣%s\n' "$BOLD" "$RESET"
 fi
 
+human_line=$(s '.root_contract.human_line')
+hl_color=$GRN; [[ "$human_line" == PERLU* ]] && hl_color=$YEL; [[ "$human_line" == TINDAKAN* ]] && hl_color=$YEL
+printf '%s%s%s\n' "$hl_color" "$human_line" "$RESET"
 cat <<EOF
 ${BOLD}[0] IDENTITY${RESET}  ${actor} claimed | crypto:${actor_crypto} | AUTH:${authority_band} | MUTATE:${mut_color}${mutation_allowed}${RESET} | lease=${active_lease}
 ${BOLD}[1] MISSION${RESET}     ${mission_line}${term_disp:+ ${term_disp}}
@@ -145,8 +156,9 @@ ${BOLD}[2] RUNTIME${RESET}     src=${src_sha} wheel=${deployed_sha} import=${imp
 ${BOLD}  ↳ MD5${RESET}         arifos=$(jq -r 'if .panels["2_RUNTIME"].md5_identity.arifos.md5_match == true then "MATCH" elif .panels["2_RUNTIME"].md5_identity.arifos.md5_match == false then "DRIFT" else "UNKNOWN" end' "$STATE_FILE" 2>/dev/null) aforge=$(jq -r 'if .panels["2_RUNTIME"].md5_identity.aforge.md5_match == true then "MATCH" elif .panels["2_RUNTIME"].md5_identity.aforge.md5_match == false then "DRIFT" else "UNKNOWN" end' "$STATE_FILE" 2>/dev/null) frame=$(jq -r 'if .panels["2_RUNTIME"].md5_identity.frame.md5_match == true then "MATCH" elif .panels["2_RUNTIME"].md5_identity.frame.md5_match == false then "DRIFT" else "UNKNOWN" end' "$STATE_FILE" 2>/dev/null)
 ${BOLD}[3] SURVIVAL${RESET}    DISK=${disk_pct}% MEM=${mem_pct}% SWAP=${swap_pct}% ZOMB=${zombies}  svc=${sys_run}/${sys_tot}  WELL=${well_score}
 ${BOLD}[4] JUDGMENT${RESET}    canon_integrity=${canon_color}${canon_ok}${RESET} | contradictions_observed=${contradictions_color}${contradictions}${RESET} | FRAME 🔴${frame_alerts} 🟡${frame_warn} 🟢${frame_ok} age=${frame_age}d
+${BOLD}  ↳ METAB${RESET}      G=${apex_g} C_dark=${apex_cd} W3=${apex_w3} FQ=${fq_val} path=${metab_path}
 ${BOLD}[5] TIME${RESET}        chron attention_debt=${attention_debt} | due=${predictions_due} | brier=${brier}
-${BOLD}[6] CONCURRENCY${RESET} agents=${active_agents} leases=${leases} dirty=${dirty}
+${BOLD}[6] CONCURRENCY${RESET} agents=${active_agents} leases=${leases}${leases_flag} dirty=${dirty}
 ${BOLD}[7] ECW${RESET}         probed=${ecw_total} transport=${ecw_transport} semantic_clean=${ecw_sem} SURFACE_DRIFT=$(jq -r '.drift_classes_hit.SURFACE_DRIFT // 0' <<<"$ecw_str" 2>/dev/null || echo "?")
 EOF
 
@@ -189,6 +201,6 @@ printf '%sFRESHNESS%s       %s%s%s  (state=%ss · exec-path=%s)\n' "$BOLD" "$RES
 
 # F1 receipt trail
 echo
-printf '%sreceipt: [receipt: /root/AAA/cockpit/hud-state.json]%s\n' "$DIM" "$RESET"
+printf '%sreceipt: [receipt: /var/lib/arifos/state/cockpit/hud-state.json]%s\n' "$DIM" "$RESET"
 
 exit 0

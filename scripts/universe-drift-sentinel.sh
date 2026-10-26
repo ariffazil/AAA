@@ -19,7 +19,7 @@
 #                  → claim-vs-runtime gap (scar: 2026-09-04 entropy-trim half-execution)
 #
 # Behavior: writes /run/arifos/universe-drift.json (SOT). On NEW drift appends ONE
-# dated line to /root/AAA/terminal/holds.txt; deletes it on resolution (that file's law).
+# dated line to /var/lib/arifos/state/terminal/holds.txt; deletes it on resolution (that file's law).
 # Never renders, never commits, never mutates the map. Cost: ~0 (mtime + git status).
 # Note: render-agents.sh --check is structurally always-diff (embedded render
 # timestamp) — this sentinel uses mtime comparison instead. FI-008 2026-09-04.
@@ -28,7 +28,7 @@ set -u
 
 AAA=/root/AAA
 OUT=/run/arifos/universe-drift.json
-HOLDS=/root/AAA/terminal/holds.txt
+HOLDS=/var/lib/arifos/state/terminal/holds.txt
 STAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 TODAY="$(date -u +%Y-%m-%d)"
 
