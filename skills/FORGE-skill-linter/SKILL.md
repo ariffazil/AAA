@@ -18,7 +18,7 @@ host_compatibility:
 - kimi-code
 dependencies:
   skills:
-  - arifos-recursive-audit
+  - recursive-audit
   servers: []
   tools: []
 examples:
