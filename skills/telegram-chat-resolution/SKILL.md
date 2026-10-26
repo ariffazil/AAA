@@ -11,6 +11,8 @@ triggers:
   - "baca chat id ni"
   - "chat_id ni apa"
   - "resolve this chat before reading it"
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # telegram-chat-resolution — id → type → name, before any read

@@ -3,6 +3,8 @@ name: qqq
 description: "QQQ — recommendation discipline: Q1 enumerate the option space, Q2 quantify each path, Q3 surface second-order effects, then verdict."
 triggers:
   - "/qqq"
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # /qqq

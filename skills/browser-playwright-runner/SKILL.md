@@ -3,6 +3,8 @@ name: browser-playwright-runner
 description: "Run automated headless browser tests and full-page captures."
 capability_tier: fed-multimodal-vision
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Browser Playwright UI & E2E Testing Skill (`browser-playwright-runner`)
 

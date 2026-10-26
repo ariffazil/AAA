@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: cross-host-artifact-delivery
 name: cross-node-artifact-transfer
 description: "Alias → cross-host-artifact-delivery. Load `cross-host-artifact-delivery` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: cross-node-artifact-transfer

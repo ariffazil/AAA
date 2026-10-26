@@ -1,6 +1,8 @@
 ---
 name: bm-voice-script-prep
 description: Use when writing text a Malay TTS voice speaks.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # bm-voice-script-prep

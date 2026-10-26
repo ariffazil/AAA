@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: geox-geoscience-artifacts
 name: geoscience-figure-audit
 description: "Alias → geox-geoscience-artifacts. Load `geox-geoscience-artifacts` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: geoscience-figure-audit

@@ -12,7 +12,6 @@ import {
   AlertCircle,
   AlertTriangle,
 } from 'lucide-react';
-import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
 import HumanPatternReport from './components/cockpit/HumanPatternReport';
 import { useSupabaseQuery } from './hooks/useSupabaseQuery';
@@ -225,8 +224,6 @@ export default function Cockpit() {
   const [sealsCount, setSealsCount] = useState<number>(0);
   const [vaultConnected, setVaultConnected] = useState<boolean>(false);
   const [toolRegistry, setToolRegistry] = useState<{ name: string; requires_888: boolean }[]>([]);
-  const [sessionManifest, setSessionManifest] = useState<SessionManifest | null>(null);
-  const [showConsentDialog, setShowConsentDialog] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'agents' | 'floors' | 'mcp' | 'memory' | 'logs'>('overview');
 
   // Mission Intake
@@ -608,17 +605,6 @@ export default function Cockpit() {
     }
   }, [lastMission]);
 
-  useEffect(() => {
-    if (!sessionManifest || sessionManifest.state !== 'TEMPORAL' || !sessionManifest.valid_until) return;
-    const checkExpiry = () => {
-      if (new Date(sessionManifest.valid_until!) < new Date()) {
-        setSessionManifest(prev => prev ? { ...prev, state: 'EXPIRED' } : null);
-      }
-    };
-    checkExpiry();
-    const interval = setInterval(checkExpiry, 30000);
-    return () => clearInterval(interval);
-  }, [sessionManifest]);
 
   // ── Render ───────────────────────────────────────────────────────────────
 
@@ -663,7 +649,6 @@ export default function Cockpit() {
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60">
               VAULT999: {vaultConnected ? 'CONNECTED' : 'LOCAL'}
             </div>
-            <SessionBadge manifest={sessionManifest} onRevoke={() => setSessionManifest(null)} />
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-emerald-950/20 border border-emerald-500/30 rounded text-[9px] font-mono text-emerald-400" title="JSON-RPC 2.0 + streamable-http — all 6 organs unified, ΔS ≤ 0">
               JSON-RPC · ΔS≤0 <span className="text-emerald-500">[LIVE]</span>
             </div>
@@ -742,14 +727,6 @@ export default function Cockpit() {
                 This is where you act — not where you read.
               </p>
               <div className="flex flex-wrap gap-3">
-                <button
-                  onClick={() => setShowConsentDialog(true)}
-                  className="flex items-center gap-3 px-6 py-3 bg-white text-black font-black text-xs tracking-tighter hover:bg-red-500 hover:text-white transition-all group"
-                >
-                  <Zap className="w-4 h-4 fill-current" />
-                  000_INIT IGNITION
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
                 <a
                   href="https://aaa.arif-fazil.com"
                   target="_blank"
@@ -1403,14 +1380,6 @@ export default function Cockpit() {
 
       </main>
 
-      <ConsentDialog
-        isOpen={showConsentDialog}
-        onClose={() => setShowConsentDialog(false)}
-        onConsent={(manifest) => {
-          setSessionManifest(manifest);
-          setShowConsentDialog(false);
-        }}
-      />
 
       <footer className="max-w-6xl mx-auto px-6 pt-12 border-t border-white/5">
         <div className="mb-8">

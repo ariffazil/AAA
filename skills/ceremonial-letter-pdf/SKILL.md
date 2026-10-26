@@ -6,6 +6,8 @@ metadata:
   hermes:
     tags: [pdf, letter, keepsake, typst, svg, artifact-delivery]
     related_skills: [typst-pdf-report, third-party-advisory-doc, human-facing-artifact-design]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Ceremonial Letter PDF (warkah)

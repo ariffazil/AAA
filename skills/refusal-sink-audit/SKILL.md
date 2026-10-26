@@ -9,6 +9,8 @@ metadata:
   hermes:
     tags: [governance, prompt, audit, refusal]
     related_skills: [arifos-prompt-doctrine, shadow-mode, fake-governance-detection]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Refusal-Sink Audit

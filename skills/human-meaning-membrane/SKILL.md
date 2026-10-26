@@ -3,6 +3,8 @@ name: human-meaning-membrane
 description: "Use when modeling human behavior or intent. "
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # Human Meaning and Uncertainty Membrane
 

@@ -13,6 +13,8 @@ triggers:
   - Transcript cascade (S0-S8) returns all-fail with "No transcript available"
   - User asks to "feel" or "describe" the visual content of a video
 version: 1.1.0
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # YouTube Deep Visual Analysis

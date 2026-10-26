@@ -18,6 +18,8 @@ triggers:
   - a persona-lane turn where the reply should ship as audio, not prose
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Persona Voice Continuity

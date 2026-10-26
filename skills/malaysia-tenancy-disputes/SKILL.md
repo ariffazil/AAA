@@ -11,6 +11,8 @@ triggers:
   - 'user is tenant or landlord with a repair, aircond, deposit, or maintenance dispute'
   - 'owner xnak bayar or boleh potong sewa or camne nak paksa owner'
   - 'user shares a tenancy agreement PDF and asks about rights'
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Malaysia Tenancy Disputes

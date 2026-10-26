@@ -16,6 +16,8 @@ triggers:
   - "value this development"
 capability_tier: fed-agent-subagent
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Field Development Plan Review

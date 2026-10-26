@@ -5,6 +5,8 @@ risk_tier: low
 description: "Forge or audit a geological cross-section."
 version: 1.0.0
 tags: [geology, cross-section, stratigraphy, sabah, falsification]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Geoscience section forge
