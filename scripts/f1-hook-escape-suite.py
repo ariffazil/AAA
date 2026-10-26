@@ -78,6 +78,19 @@ CASES = [
     ("ok26 Write runtime/claude/skills (non-guard)", {"tool_name": "Write", "tool_input": {"file_path": "/root/runtime/claude/todos/x.json", "content": "x"}}, "ALLOW"),
     ("ok27 Write arifOS src (not VAULT999)",  {"tool_name": "Write", "tool_input": {"file_path": "/root/arifOS/arifosmcp/kernel.py", "content": "x"}}, "ALLOW"),
     ("ok28 Bash cat runtime mcp.json (READ)", {"tool_name": "Bash", "tool_input": {"command": "cat /root/runtime/claude/mcp.json"}}, "ALLOW"),
+    # --- ALLOW: an audit write-up must not be blocked by what it DESCRIBES.
+    # Measured false positive: `git commit -m` documenting `echo x > settings.json`
+    # was denied as a real redirection. Blocking the report of a bypass blocks
+    # repair of that bypass.
+    ("ok29 commit -m quoting '> settings.json'", {"tool_name": "Bash", "tool_input": {"command": "/root/scripts/git-lane claude commit -m 'fix: close echo x > /root/.claude/settings.json bypass'"}}, "ALLOW"),
+    ("ok30 commit -m naming VAULT999 path",      {"tool_name": "Bash", "tool_input": {"command": "git commit -m 'docs: symlink target /root/arifOS/VAULT999 was unprotected'"}}, "ALLOW"),
+    ("ok31 commit -m naming rm -f hook",         {"tool_name": "Bash", "tool_input": {"command": "git commit -m 'fix: deny rm -f /root/.claude/hooks/f1-amanah-preshell.py'"}}, "ALLOW"),
+    ("ok32 grep -r for the attack string",       {"tool_name": "Bash", "tool_input": {"command": "grep -rn 'sed -i' /root/.claude/hooks/"}}, "ALLOW"),
+    # --- DENY must survive quoting: a quoted path is still a real target ---
+    ("q1 Bash sed -i QUOTED mcp.json",        {"tool_name": "Bash", "tool_input": {"command": "sed -i 's/a/b/' '/root/.claude/mcp.json'"}}, "DENY"),
+    ("q2 Bash tee QUOTED settings.json",      {"tool_name": "Bash", "tool_input": {"command": "echo x | tee \"/root/.claude/settings.json\""}}, "DENY"),
+    ("q3 Bash real redirect UNQUOTED target", {"tool_name": "Bash", "tool_input": {"command": "echo evil > /root/.claude/settings.json"}}, "DENY"),
+    ("q4 Bash quoted redirect target",        {"tool_name": "Bash", "tool_input": {"command": "echo evil > \"/root/.claude/mcp.json\""}}, "DENY"),
 ]
 
 
