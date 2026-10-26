@@ -17,6 +17,8 @@ triggers:
 related_skills:
   - wealth-mcp-ops
   - financial-chart-analysis
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # GEOX Temporal Intelligence

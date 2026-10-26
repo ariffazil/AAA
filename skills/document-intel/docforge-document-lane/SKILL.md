@@ -90,6 +90,40 @@ Then the delta is a **set operation over recorded state**, not a prose diff. Pro
 - **`open_items` must be latest-known-state PER ITEM**, not the latest edition's subset — otherwise a claim nobody re-mentioned silently falls out of the register.
 - Separate `UNRESOLVED` (knowable, not yet known — a hearing date) from `WITHDRAWN` (cannot be resolved from open sources — a figure with no filing behind it). Collapsing them makes a permanent limit look like tomorrow's research gap.
 
+## Registers — the permanent layer (2026-10-25)
+
+The edition is evidence; the registers are understanding. `docforge.registers` owns five tables in the same SQLite file and renders two sections per edition (`0.1 Registers`, `0.2 Ageing & Entropy`). The daily `items.json` MAY carry four top-level arrays plus a per-item anchor. Omit them and the registers keep their last known state — nothing closes by silence.
+
+```json
+{
+  "items": [{"item_id": "...", "reality": "GULF_ENERGY_WAR"}],
+  "states": [{"state_id":"GULF_ENERGY_WAR","label":"Gulf energy war","phase":"ESCALATING",
+              "confidence":0.83,"first_seen":"EDITION-003","note":"..."}],
+  "contradictions": [{"cid":"C-HORMUZ-FLOWS","topic":"...","claim_a":"...","source_a":"...",
+                      "claim_b":"...","source_b":"...","status":"OPEN","opened_edition":"EDITION-029"}],
+  "scars": [{"scar_id":"SCAR-...","name":"...","severity":"medium","status":"ACTIVE",
+             "symptom":"...","root_cause":"...","fix":"...","first_seen":"EDITION-030",
+             "recurred_today":true,"observed_note":"what happened today"}],
+  "realities": [{"reality_id":"GULF_ENERGY_WAR","label":"Gulf energy war","domain":"energy"}]
+}
+```
+
+Rules the store enforces:
+
+- `phase` ∈ `ESCALATING|ELEVATED|HOLDING|DEESCALATING|LATENT`. `confidence` is **declared**, 0..1 — the store never computes it from source counts and labels it "declared" when absent.
+- A contradiction closes only with a non-empty `resolution`; a scar retires only with a non-empty `fix`. A closed cid cannot be reopened — mint a new one.
+- **`recurred_today` defaults to false.** Listing a standing scar is not evidence it happened again. Set true only with today's symptom. Recurrence is `COUNT(scar_events)`, one row per witnessed edition, so re-running a build cannot inflate it.
+- `items[].reality` is durable: once set it persists across editions that omit it.
+- `scars[].occurrences[]` backfills witnessed history (`[{edition, note}]`), de-duplicated by (scar, edition).
+- Absent ≠ resolved for states, contradictions, scars and realities: they persist and keep ageing.
+
+Two modelling decisions, stated once so they are arguable:
+
+- **EUREKA items are facts, not claims.** They are excluded from the claim backlog, ageing and metabolism; an octopus fact does not need resolving.
+- **`Aged` = older than 7 editions; contradiction aged = older than 3.** `open_delta` is a count of claims, not a thermodynamic quantity, and the receipt says so.
+
+Read without building: `python3 -m docforge.registers --db <path> --edition EDITION-NNN` (or `--json`). Ageing and entropy are derived from the items table alone, so they work on an edition that declares no registers at all.
+
 ## Pitfalls (each cost a build cycle)
 
 - **Dark-fill detection by horizontal run length is wrong.** A 2px rule under a table header and a 26px filled block produce the SAME run length. Measure **thickness**, and measure `dark_frac` (fraction of dark pixels) as the primary signal: light page ~0.03-0.10, dark page ~0.5-0.9.

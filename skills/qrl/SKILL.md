@@ -3,6 +3,8 @@ name: qrl
 description: "QRL — bare /qrl alias for the governed Quantum Reality Loop (qrl-arifos)."
 triggers:
   - "/qrl"
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # /qrl

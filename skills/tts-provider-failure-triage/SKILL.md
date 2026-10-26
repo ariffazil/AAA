@@ -10,6 +10,8 @@ metadata:
     category: audio
     tags: [tts, provider, credentials, diagnostics]
     related_skills: [chunked-tts-render-integrity, voice-render-verification, voice-lane]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # TTS Provider Failure Triage

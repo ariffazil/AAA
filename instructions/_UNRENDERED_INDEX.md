@@ -6,6 +6,8 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - CARRY-FORWARD-PATH-RECONCILIATION
 - CONSTITUTIONAL-NUSANTARA-GLOSSARY-STAGING-2026-09-24
 - DECISION-RECORD-memory-conflicts-20261014
+- DECISION-RECORD-status-is-not-evidence-20261022
+- DOCTRINE-INDEX
 - EDGE-REGISTRY-PERSONS-YAML-CONNECTION-RECEIPT-STAGING-2026-09-25
 - F13-RATIFICATION-READINESS
 - FEDERATION_HARDENING_DIGEST_v1
@@ -27,6 +29,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - agentic-architecture
 - agentic-federation-substrate
 - agentic-kernel-asi-doctrine
+- agentic-self-model
 - agentic-web
 - agi-asi-skills-fundamentals
 - agi-grade-authority-kernel-invariants
@@ -102,6 +105,8 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - experience-metabolism-reflex
 - experience-surface
 - external-action-repair
+- f6-dignity-boundary-ruling
+- federation-init-reality-first-2026-10-22
 - federation-invariants
 - federation-orthogonality
 - federation-orthogonality-future-state
@@ -148,6 +153,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - human-substrate
 - human-substrate-exclusions-PROPOSAL
 - human-zero-visibility-invariant
+- identity-collision-gate
 - identity-continuity
 - institutional-memory-strata
 - inter-agent-protocol
@@ -159,6 +165,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - law-of-binding
 - linkgraph-namespace
 - mail-access
+- maruah-amanah-hikmah-selector
 - maturation-dynamics
 - mcp-client-session-replay
 - meaning-consequence-vitality
@@ -199,6 +206,7 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - sanctuary-invariant
 - scar-engineering
 - scar-litmus-protocol
+- shadow-regulation-porn-lane
 - shebtoc-p0-witness-capture-layer
 - shebtoc-p2-mutation-protocol
 - six-graph-federation-model
@@ -231,13 +239,3 @@ Status: generated index (non-doctrine artifact, holds no authority) — do not e
 - zen
 - zen-alignment-audit-v1
 - zen-checkpoint
-
-## Re-derivation
-
-Core claim: The on-demand fragment index enumerates all unrendered instruction fragments (231 entries as of the 2026-10-21 render) and is machine-regenerated, holding no authority of its own.
-Re-derive against live state:
-
-```
-$ grep -c '^- [A-Za-z]' /root/AAA/instructions/_UNRENDERED_INDEX.md
-$ find /root/AAA/instructions -maxdepth 1 -name '*.md' ! -name 'AGENTS.md' ! -name '_UNRENDERED_INDEX.md' | wc -l
-```

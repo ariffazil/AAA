@@ -2,6 +2,8 @@
 name: provenance-field-audit
 description: "Use when auditing provenance fields in an artifact."
 version: 1.0.0
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Provenance Field Audit

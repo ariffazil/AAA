@@ -3,6 +3,8 @@ name: sovereign-self-history-recall
 description: Use when he asks about his own past, period or town.
 version: 1.0.0
 tags: [memory, recall, biography, sovereign, gap-discipline]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Sovereign Self-History Recall

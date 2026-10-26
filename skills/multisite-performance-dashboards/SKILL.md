@@ -1,6 +1,8 @@
 ---
 name: multisite-performance-dashboards
 description: Use when building a combined multi-site performance PDF.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Multi-Site Performance Dashboards

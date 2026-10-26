@@ -1,6 +1,8 @@
 ---
 name: forecast-publish-with-calibration-gate
 description: Publish commodity forecast with calibration gate enforced.
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Forecast Publish — Calibration Gate Discipline

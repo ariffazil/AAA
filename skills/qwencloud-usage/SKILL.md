@@ -3,6 +3,8 @@ name: qwencloud-usage
 description: "[QwenCloud] Manage account auth and query usage/billing."
 capability_tier: fed-reasoning-heavy
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # QwenCloud Usage
 

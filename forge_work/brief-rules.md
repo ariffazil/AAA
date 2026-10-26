@@ -8,5 +8,5 @@ Counted once per distinct edition from 2026-10-24. Before that it
 counted pipeline runs, so a render refused by a gate inflated it.
 
 - **Buang naratif politik. Fokus pada OD1.**
-  - standing since 2026-09-18, scope `brief`, applied in 28 edition(s)
+  - standing since 2026-09-18, scope `brief`, applied in 30 edition(s)
   - heard as: "Buang naratif politik. Fokus pada OD1."

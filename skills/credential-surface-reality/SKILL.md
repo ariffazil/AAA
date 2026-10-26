@@ -8,6 +8,8 @@ metadata:
   hermes:
     tags: [secrets, hygiene, audit, federation, kvm4, kvm8]
     related_skills: [forge-secret-hygiene, security, hermes-runtime-audit, openclaw]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Credential Surface Reality

@@ -10,6 +10,8 @@ relationships:
   - target: opencode-forge
     type: alternative_to
     confidence: 1.00
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # /forge

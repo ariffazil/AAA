@@ -2,6 +2,8 @@
 name: gemini-integration
 description: "Integrate Gemini API into the arifOS federation — LiteLLM model group wiring (prefix doctrine), managed agent creation via Interactions API, agy CLI (Antigravity) configuration, and MCP server registration. Trigger: 'add Gemini to FED', 'wire GEMINI_API_KEY', 'agy CLI config', 'managed agent creation', 'interactions API with previous_interaction_id', 'why does Gemini need gemini/ not openai/', or any Gemini API key/model routing task."
 tags: [gemini, api-key, litellm, prefix, antigravity, interactions, mcp]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Gemini API Integration

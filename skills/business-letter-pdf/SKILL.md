@@ -2,6 +2,8 @@
 name: business-letter-pdf
 description: Rebuild formal letters as A4 PDF from a photo.
 version: 1.0.0
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Business Letter PDF (rebuild from photo)

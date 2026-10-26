@@ -1,4 +1,6 @@
 ---
+do_not_select: true
+canonical_owner: cicd-deploy
 name: FORGE-cicd-docker-deploy
 description: "Alias → cicd-deploy. Load `cicd-deploy` for the canonical procedure. Pointer kept for discovery after the 2026-10-23 entropy merge."
 id: FORGE-cicd-docker-deploy

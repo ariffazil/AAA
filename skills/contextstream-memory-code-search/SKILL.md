@@ -3,6 +3,8 @@ name: contextstream-memory-code-search
 description: "Persistent conversational memory, semantic code search, dependency graph mapping, pre-compaction session capture, and workspace Q&A via ContextStream MCP server (mcp.contextstream.io/mcp). "
 capability_tier: fed-long-context
 ecology_state: WARM
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 # ContextStream Persistent Memory & Code Search Skill (`contextstream`)
 

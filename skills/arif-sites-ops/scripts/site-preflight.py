@@ -78,18 +78,32 @@ def parse_handlers(conf: Path) -> list[dict]:
 
 
 def match_route(route: str, handlers: list[dict]) -> dict | None:
-    """Longest matching path prefix wins, which is how Caddy orders these."""
-    route = "/" + route.strip("/") + "/"
+    """Caddy path-matcher semantics (fixed 2026-10-25): `handle /x` matches the
+    literal path only; `handle /x/*` matches the subtree. An exact hit wins; among
+    subtree handlers the longest prefix wins.
+
+    The previous model normalized "/x" and "/x/*" both to "/x/", so an exact-match
+    handler (e.g. a 308-redir block) TIED with the real file handler and won by file
+    order — reporting "root (inherited, not declared in block)" UNKNOWN while the
+    winning subtree handler did declare `root`. Measured live on /arifos/ 2026-10-25.
+    """
+    p = route if route.startswith("/") else "/" + route
+    subtree = p if p.endswith("/") else p + "/"
+    exact_hit = None
     best = None
     for h in handlers:
         m = h["matcher"]
         if not m.startswith("/"):
             continue            # named matcher (@foo) — cannot resolve statically
+        if "*" not in m:
+            if p == m:          # literal equality: a bare request path, not a subtree
+                exact_hit = {**h, "prefix": m}
+            continue
         prefix = m.rstrip("*").rstrip("/") + "/"
-        if route.startswith(prefix):
+        if subtree.startswith(prefix):
             if best is None or len(prefix) > len(best["prefix"]):
                 best = {**h, "prefix": prefix}
-    return best
+    return exact_hit or best
 
 
 def check_split_root(route: str) -> dict:

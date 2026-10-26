@@ -8,6 +8,8 @@ metadata:
   hermes:
     tags: [github, git, privacy, secrets, push, public-repo, opsec]
     related_skills: [github-pr-workflow, FORGE-secret-hygiene]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # GitHub Public-Push Privacy Gate

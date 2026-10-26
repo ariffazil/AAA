@@ -9,6 +9,8 @@ metadata:
   hermes:
     category: audio
     related_skills: [voice-engine-fallback-chain, voice-render-verification, persona-voice-binding, abang-sado-tenderness-arc]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Voice Identity Provisioning

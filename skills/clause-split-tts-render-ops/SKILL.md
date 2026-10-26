@@ -15,6 +15,8 @@ triggers:
   - the round-trip gate returned MISSING or INSERTED on a long take
   - a rendered take came out short, or shorter than the same script rendered before
   - a take needs one clause fixed without spending a full re-render
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Clause-Split TTS Render Ops

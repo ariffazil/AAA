@@ -3,6 +3,8 @@ name: health-provider-navigation
 description: "Use when mapping hospital specialists or picking a doctor."
 tags: [medical, provider, roster, dossier, routing, malaysia, pdf]
 related_skills: [person-dossier-from-public-sources, typst-pdf-report, third-party-advisory-doc]
+floor_scope: [F2, F4, F9, F12]
+autonomy_tier: T1
 ---
 
 # Health Provider Navigation
