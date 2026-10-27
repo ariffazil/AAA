@@ -70,6 +70,16 @@ removal. Does **not** cover: feature work, bug fixes, schema migrations, format 
 - **Commits.** `git-lane <lane> -C /root/<repo> commit -m "refactor: …"` — plain
   `git commit` fails by design in governed repos.
 
+## Falsifier (how to prove the gate is live)
+
+Take a module with a known behaviour, delete one branch, and run the procedure from step 1
+without a baseline. PASS = the procedure stops at the HOLD condition ("no baseline behaviour
+captured") instead of editing. Then run it honestly with the baseline: PASS = the `VERIFY`
+line reports a behavioural delta of `none`, with the before/after commands quoted.
+
+A run that refactors first and produces a baseline afterwards is a FAIL — the comparison was
+written to fit the result.
+
 ## Anti-pattern
 
 ```
