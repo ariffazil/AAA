@@ -1,97 +1,168 @@
 {
-    "_comment": "Integrity manifest for the enforcement surface. Compare with: python3 /root/.hermes/scripts/gate-integrity-verify.py",
-    "_generated": "2026-09-18T01:52:00Z",
-    "_generated_by": "hermes (session 2026-09-18, F13 directive 'APEX-Zen: purge legacy, install feedback loop, global transport lock')",
-    "_meaning": "These hashes record the exact bytes of the gate and its conformance suites as SEALED. Any divergence means the enforcement surface changed after seal — which is legitimate only if this manifest is updated deliberately in the same act.",
-    "_limit": "This detects DRIFT, not an adversary. An actor who reads this file and recomputes it can pass verification. See RESIDUAL-OPEN-wscar-gate-v2.md R4.",
-    "_change_log": [
-        {
-            "at": "2026-09-18T01:52:00Z",
-            "what": "Added rule 0.5 TRANSPORT LOCK to the pre_tool_call gate (destination must be DECLARED, not inferred).",
-            "authority": "F13 directive 2026-09-18 — origin.chat_id had captured the BOT's own id (8410138119) for a briefing job, so deliver=origin would have sent the daily brief into a room the principal never reads, with no error surfaced.",
-            "evidence": [
-                "gateway log: 'send to 8410138119 failed: Forbidden: the bot can't send messages to the bot' (x3)",
-                "test_transport_lock.py 7/7",
-                "test_wscar_gate.py re-run after insertion: 11/11 behavioural, 7/7 regex — unchanged"
-            ],
-            "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action, per _meaning."
-        },
-        {
-            "at": "2026-09-20T15:55:38Z",
-            "what": "DEMOTION 2026-09-20: T3 irreversible + W_SCAR v2 demoted from BLOCK to receipt+warn (F13 directive). JITU + TRANSPORT LOCK untouched.",
-            "authority": "F13 directive 2026-09-20 — agent jangan jadi bangang",
-            "evidence": [
-                "test_wscar_gate.py: regex OK",
-                "test_transport_lock.py: 7/7",
-                "DEMOTION rationale: false-positive blocking makes agent stupid, not safe"
-            ],
-            "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action."
-        },
-        {
-            "at": "2026-10-01T09:20:00Z",
-            "what": "Update sealed gate hook hash post-2026-09-26 hardening (commit ffc2e6e9).",
-            "authority": "F13 sovereign ratification 2026-10-01 ('ok aku agree, buat semua elok2 dengan tertib')",
-            "evidence": [
-                "test_wscar_gate.py: 11/11 behavioural, 7/7 regex PASS",
-                "test_transport_lock.py: 7/7 PASS"
-            ],
-            "same_act_requirement_satisfied": "Conformance suites re-run and verified 100% PASS before updating manifest."
-        },
-        {
-            "at": "2026-10-25T14:03:00Z",
-            "what": "Bounded gate repair: restored last known working stdin-fix baseline; eliminated deadlock kernel_consult that collapsed to permanent KERNEL_REJECT HOLD; added fail-closed receipt-write failure guard; added tool_describe to OBSERVE set; updated envelope verdict from SEAL to WITNESSED.",
-            "authority": "F13 sovereign mandate ('please execute all remaining task from this hermes here' / 'Bounded gate repair, canary only')",
-            "evidence": [
-                "test_wscar_gate.py: 11/11 behavioural, 7/7 regex, 3/3 extensions PASS (21/21 assertions)",
-                "test_transport_lock.py: 7/7 PASS",
-                "Live canary write to /root/.hermes/cache/scratch/canary-1792908181.txt verified and cleaned",
-                "Transition path: old seal 7825a972 -> drifted 9b60a8c2 -> repaired a5c8dd52"
-            ],
-            "same_act_requirement_satisfied": "Conformance suites re-run and verified 100% PASS before updating manifest."
-        }
-    ],
-    "artifacts": [
-        {
-            "role": "enforcement-gate",
-            "path": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py",
-            "sha256": "a5c8dd5281834e63b1a772c88027e492afe9193887cd9a3d99652951b0302f8f",
-            "size": 34283,
-            "mtime": "2026-10-25T14:01:00+08:00",
-            "contains_rules": [
-                "JITU",
-                "TRANSPORT_LOCK (0.5)",
-                "W_SCAR v2",
-                "T3",
-                "K-02",
-                "DEMOTION (2026-09-20)",
-                "RECEIPT_FAIL_CLOSED (2026-10-25)"
-            ]
-        },
-        {
-            "role": "conformance-suite",
-            "path": "/root/AAA/federation/protocols/test_wscar_gate.py",
-            "sha256": "7084052708c87494a46f8cd9e740441e422d616e0c2d38ae464f263603e63ad8",
-            "size": 12250,
-            "mtime": "2026-10-25T14:02:00+08:00",
-            "expected_result": "11/11 behavioural, 7/7 regex, 3/3 extensions",
-            "covers": "W_SCAR claim-surface + verified provenance + fail-closed guards"
-        },
-        {
-            "role": "conformance-suite",
-            "path": "/root/AAA/scripts/test_transport_lock.py",
-            "sha256": "293c26f5f74fce078a597b78ef6e00b9a98ca58fb8ee91adc1960735ed6b7393",
-            "size": 3065,
-            "mtime": "2026-09-18T09:48:50.404849",
-            "expected_result": "7/7",
-            "covers": "TRANSPORT LOCK — blocks bot-id, bare-id, cross-human, and targetless sends; leaves non-sends untouched",
-            "note": "Registered so the transport rule has the same drift protection as W_SCAR."
-        },
-        {
-            "role": "residual-register",
-            "path": "/root/AAA/federation/protocols/RESIDUAL-OPEN-wscar-gate-v2.md",
-            "sha256": "0a21c1df09bf2e15b45ce4987e0eadfdcd75b3c85160462f67805795a07b8d08",
-            "size": 4935,
-            "mtime": "2026-09-18T09:02:41.759909726+08:00"
-        }
-    ]
+  "_comment": "Integrity manifest for the enforcement surface. Compare with: python3 /root/.hermes/scripts/gate-integrity-verify.py",
+  "_generated": "2026-09-18T01:52:00Z",
+  "_generated_by": "hermes (session 2026-09-18, F13 directive 'APEX-Zen: purge legacy, install feedback loop, global transport lock')",
+  "_meaning": "These hashes record the exact bytes of the gate and its conformance suites as SEALED. Any divergence means the enforcement surface changed after seal \u2014 which is legitimate only if this manifest is updated deliberately in the same act.",
+  "_limit": "This detects DRIFT, not an adversary. An actor who reads this file and recomputes it can pass verification. See RESIDUAL-OPEN-wscar-gate-v2.md R4.",
+  "_change_log": [
+    {
+      "at": "2026-09-18T01:52:00Z",
+      "what": "Added rule 0.5 TRANSPORT LOCK to the pre_tool_call gate (destination must be DECLARED, not inferred).",
+      "authority": "F13 directive 2026-09-18 \u2014 origin.chat_id had captured the BOT's own id (8410138119) for a briefing job, so deliver=origin would have sent the daily brief into a room the principal never reads, with no error surfaced.",
+      "evidence": [
+        "gateway log: 'send to 8410138119 failed: Forbidden: the bot can't send messages to the bot' (x3)",
+        "test_transport_lock.py 7/7",
+        "test_wscar_gate.py re-run after insertion: 11/11 behavioural, 7/7 regex \u2014 unchanged"
+      ],
+      "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action, per _meaning."
+    },
+    {
+      "at": "2026-09-20T15:55:38Z",
+      "what": "DEMOTION 2026-09-20: T3 irreversible + W_SCAR v2 demoted from BLOCK to receipt+warn (F13 directive). JITU + TRANSPORT LOCK untouched.",
+      "authority": "F13 directive 2026-09-20 \u2014 agent jangan jadi bangang",
+      "evidence": [
+        "test_wscar_gate.py: regex OK",
+        "test_transport_lock.py: 7/7",
+        "DEMOTION rationale: false-positive blocking makes agent stupid, not safe"
+      ],
+      "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action."
+    },
+    {
+      "at": "2026-10-01T09:20:00Z",
+      "what": "Update sealed gate hook hash post-2026-09-26 hardening (commit ffc2e6e9).",
+      "authority": "F13 sovereign ratification 2026-10-01 ('ok aku agree, buat semua elok2 dengan tertib')",
+      "evidence": [
+        "test_wscar_gate.py: 11/11 behavioural, 7/7 regex PASS",
+        "test_transport_lock.py: 7/7 PASS"
+      ],
+      "same_act_requirement_satisfied": "Conformance suites re-run and verified 100% PASS before updating manifest."
+    },
+    {
+      "at": "2026-10-25T14:03:00Z",
+      "what": "Bounded gate repair: restored last known working stdin-fix baseline; eliminated deadlock kernel_consult that collapsed to permanent KERNEL_REJECT HOLD; added fail-closed receipt-write failure guard; added tool_describe to OBSERVE set; updated envelope verdict from SEAL to WITNESSED.",
+      "authority": "F13 sovereign mandate ('please execute all remaining task from this hermes here' / 'Bounded gate repair, canary only')",
+      "evidence": [
+        "test_wscar_gate.py: 11/11 behavioural, 7/7 regex, 3/3 extensions PASS (21/21 assertions)",
+        "test_transport_lock.py: 7/7 PASS",
+        "Live canary write to /root/.hermes/cache/scratch/canary-1792908181.txt verified and cleaned",
+        "Transition path: old seal 7825a972 -> drifted 9b60a8c2 -> repaired a5c8dd52"
+      ],
+      "same_act_requirement_satisfied": "Conformance suites re-run and verified 100% PASS before updating manifest."
+    },
+    {
+      "at": "2026-10-27T09:10:00Z",
+      "what": "STRUCTURE REPAIR + receipt-return fix. (a) e551f438 (24 Oct) had inserted the kernel_consult() definition mid-main(), terminating main() at the transport block and turning the entire W_SCAR audit + T2 witness-allow path into unreachable statements inside kernel_consult's body; the 26 Oct unify-merge 1a1a8ca2 resolved toward that stale copy, re-landing the defect. Restored: constants + kernel_consult() moved above main(); W_SCAR + T2 allow spliced back inside main(). (b) Ported the 25 Oct hardening that the regression had dropped (tz-aware timestamps, HERMES_RECEIPT_PATH override, receipt returns bool). (c) write_receipt() now returns True on a landed receipt: the fail-closed guard added on 25 Oct read the old None return as failure and blocked every T2 mutation while the receipt had in fact been written. Committed as 34189ecc.",
+      "authority": "F13 sovereign (DM 2026-10-27): 'Now please fix and identify what causes HERMES to become useless... Remove unnecessary frictions' + explicit binary approval for the one-line return-True patch after the diagnosis was grounded line-by-line.",
+      "evidence": [
+        "test_wscar_gate.py extensions: 3/3 PASS (junk stdin blocks / plain T2 write emits witnessed receipt / receipt-write failure blocks)",
+        "test_transport_lock.py: 7 passed, 0 failed, 'the transport lock holds its negatives'",
+        "live T2 probe: write_file payload -> exit 0, receipt hermes-gate.witnessed session final-verify-1",
+        "live OBSERVE probe: read-only terminal -> passthrough, no block",
+        "AST check: main() 556-856, kernel_consult() 876-907 (W_scar no longer inside kernel_consult)"
+      ],
+      "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action, per _meaning."
+    },
+    {
+      "at": "2026-10-27T16:42:20Z",
+      "what": "A2A PEER BAN \u2014 a turn carrying HERMES_A2A_PEER may not call shell/mutation tools (terminal, bash, shell, execute_code, process_manage, write_file, patch, read_terminal, close_terminal, delegate_task, cronjob_manage, skill_manage, and mcp__aforge__/forge_/aforge_/mcp__arifos__ prefixes). Placed at decision-order -0.75: after classify, before JITU. Conformance suite extended 3 -> 6 extension cases.",
+      "authority": "F13 sovereign GO 2026-10-28 (chat: 'A: Ya, pilih A. Laksanakan canon-mutate'). Second layer under lane_switch, because the plugin-layer ban was measured FAIL-OPEN when the plugin did not load (a sibling HOME with no `plugins:` block returned uid=0 for an a2a peer).",
+      "evidence": [
+        "pre-install: staged hook, 4 gate cases \u2014 peer+terminal block/exit2, peer+read_file allow, no-peer+terminal allow, peer+forge_shell block",
+        "conformance after install: behavioural 11/11, regex 7/7, extensions 6/6 (3 new A2A cases incl. a negative control)",
+        "transport lock suite: 7/7 (unchanged)",
+        "live: HERMES_A2A_PEER=probe-openclaw `id` refused (session 20261028_002537_bebfbf); no-peer `echo SEALED_OK` printed (20261028_002950_d4739f)",
+        "canon receipt bbac5f60-285a-4c0a-90e4-0a69563462f1, trace trc-20261028-hermes-a2a-ban, lock restored"
+      ],
+      "same_act_requirement_satisfied": "Conformance suites re-run and this manifest updated in the same act, per _meaning."
+    },
+    {
+      "at": "2026-10-27T16:45:53Z",
+      "what": "Manifest re-sealed to the LIVE gate after a concurrent authorised change: trc-20261028-hermes-telemetryfix (00:41:39 MYT) fixed a frozen-telemetry defect in update_telemetry() \u2014 ts emitted '\u2026+00:00Z' (aware) while stored events were naive, so the window comparison raised TypeError, the outer except swallowed it, and the 1h/24h counters froze at 2026-10-27T02:18Z for ~14.5h. That fix and the A2A PEER BAN are both present in the sealed bytes.",
+      "authority": "Two authorised acts, one seal: F13 GO 2026-10-28 for the A2A PEER BAN; the telemetry repair carried its own canon receipt under trace trc-20261028-hermes-telemetryfix.",
+      "evidence": [
+        "sha256 sealed now = 390d9087c918455db36164bb0f5222183884bcda67750783cfe9b7aaafc9f9c6",
+        "conformance re-run against this exact file: behavioural 11/11, regex 7/7, extensions 6/6",
+        "gate-integrity-verify.py silent after this update"
+      ],
+      "same_act_requirement_satisfied": "Conformance re-run and manifest re-sealed against the live bytes in the same act."
+    },
+    {
+      "at": "2026-10-27T17:05:00Z",
+      "what": "MUTUAL WATCH: sealed the outer witness (gate-witness.py) and its pins (gate-witness.pins.json) as manifest artifacts, so the verifier now also checks the witness that checks it. Verifier and witness bytes untouched \u2014 no reseal needed. Every single-file edit in the chain (verifier / witness / pins) now trips at least one other live checker.",
+      "authority": "F13 sovereign 2026-10-28 (chat: 'now u execute this') executing the mutual-check option offered in RECEIPT-gate-witness-outer-2026-10-28.md.",
+      "evidence": [
+        "scratch T0: coherent baseline -> witness silent, rc=0",
+        "scratch T1: witness tampered + pins resealed -> verifier caught via manifest witness-entry, alert passed through, rc=1",
+        "scratch T2: pins text edited (pinned hashes intact) -> verifier caught via manifest pins-entry, rc=1",
+        "scratch T3: bogus manifest artifact -> verifier alert passed through witness, rc=1",
+        "live: gate-integrity-verify.py and gate-witness.py both silent rc=0 after apply; cron 5d11524f35a5 ok"
+      ],
+      "same_act_requirement_satisfied": "Manifest addition applied only after isolated tests passed; witness/verifier hashes unchanged."
+    }
+  ],
+  "artifacts": [
+    {
+      "role": "enforcement-gate",
+      "path": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py",
+      "sha256": "390d9087c918455db36164bb0f5222183884bcda67750783cfe9b7aaafc9f9c6",
+      "size": 34283,
+      "mtime": "2026-10-25T14:01:00+08:00",
+      "contains_rules": [
+        "JITU",
+        "TRANSPORT_LOCK (0.5)",
+        "W_SCAR v2",
+        "T3",
+        "K-02",
+        "DEMOTION (2026-09-20)",
+        "RECEIPT_FAIL_CLOSED (2026-10-25)"
+      ]
+    },
+    {
+      "role": "conformance-suite",
+      "path": "/root/AAA/federation/protocols/test_wscar_gate.py",
+      "sha256": "a54f5261deba40ac84121874420ef11ff673660debdfa1818e08328c77ad66db",
+      "size": 12250,
+      "mtime": "2026-10-25T14:02:00+08:00",
+      "expected_result": "11/11 behavioural, 7/7 regex, 3/3 extensions",
+      "covers": "W_SCAR claim-surface + verified provenance + fail-closed guards"
+    },
+    {
+      "role": "conformance-suite",
+      "path": "/root/AAA/scripts/test_transport_lock.py",
+      "sha256": "293c26f5f74fce078a597b78ef6e00b9a98ca58fb8ee91adc1960735ed6b7393",
+      "size": 3065,
+      "mtime": "2026-09-18T09:48:50.404849",
+      "expected_result": "7/7",
+      "covers": "TRANSPORT LOCK \u2014 blocks bot-id, bare-id, cross-human, and targetless sends; leaves non-sends untouched",
+      "note": "Registered so the transport rule has the same drift protection as W_SCAR."
+    },
+    {
+      "role": "residual-register",
+      "path": "/root/AAA/federation/protocols/RESIDUAL-OPEN-wscar-gate-v2.md",
+      "sha256": "0a21c1df09bf2e15b45ce4987e0eadfdcd75b3c85160462f67805795a07b8d08",
+      "size": 4935,
+      "mtime": "2026-09-18T09:02:41.759909726+08:00"
+    },
+    {
+      "role": "outer-witness",
+      "path": "/root/.hermes/scripts/gate-witness.py",
+      "sha256": "c07c38a5e107c4a5e198c17120cc00fa111e23a17351fbb6a55eda29ad9a493b",
+      "size": 3774,
+      "mtime": "2026-10-27T16:53:07Z",
+      "contains_rules": [
+        "pins-check (verifier hash + witness self-hash)",
+        "fail-closed on unreadable pins",
+        "--reseal same-act discipline"
+      ],
+      "note": "Outer witness installed 2026-10-28 (RECEIPT-gate-witness-outer-2026-10-28.md). Sealed here so the VERIFIER also checks the WITNESS \u2014 mutual watch. A witness rewritten to swallow verifier output entirely still defeats the single-cron architecture (needs a second observer)."
+    },
+    {
+      "role": "witness-pins",
+      "path": "/root/.hermes/scripts/gate-witness.pins.json",
+      "sha256": "a080106d5ed2aee7c7ac54a88bdbcd0b845ade865096d3551ec38d3b01ca6a49",
+      "size": 478,
+      "mtime": "2026-10-27T16:53:12Z",
+      "note": "Any --reseal rewrites this file; update this manifest entry in the SAME act."
+    }
+  ]
 }

@@ -367,7 +367,12 @@ def update_telemetry(event_type: str):
     import tempfile
 
     now = datetime.now(timezone.utc)
-    ts = now.isoformat() + "Z"
+    # 2026-10-28 fix: isoformat() on an aware datetime already carries "+00:00";
+    # appending "Z" produced "…+00:00Z", which parsed back as AWARE while every
+    # historical event in wscar_telemetry.json is NAIVE. The window comparison then
+    # raised TypeError, the outer except swallowed it, and the counters froze silently
+    # at 2026-10-27T02:18Z for ~14.5h. Emit the same naive-UTC "Z" form write_receipt uses.
+    ts = now.isoformat().replace("+00:00", "Z")
     try:
         os.makedirs(os.path.dirname(TELEMETRY_PATH), exist_ok=True)
         # Load existing state
@@ -394,7 +399,20 @@ def update_telemetry(event_type: str):
 
         for window_hours, label in [(1, "window_1h"), (24, "window_24h")]:
             cutoff = now - timedelta(hours=window_hours)
-            window_events = [e for e in state["events"] if datetime.fromisoformat(e["ts"].rstrip("Z")) > cutoff]
+
+            def _ev_ts(raw):
+                # Tolerate both historical naive "…Z" events and any aware ones.
+                s = str(raw).strip()
+                if s.endswith("Z"):
+                    s = s[:-1] + "+00:00"
+                parsed = datetime.fromisoformat(s)
+                return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+
+            try:
+                window_events = [e for e in state["events"] if _ev_ts(e["ts"]) > cutoff]
+            except Exception:
+                # A malformed timestamp must never freeze the counters again.
+                window_events = state["events"]
             state[label] = {
                 "holds": sum(1 for e in window_events if e["type"] == "hold"),
                 "total": len(window_events),
@@ -593,6 +611,56 @@ def main():
     trace_id = os.environ.get("ARIFOS_TRACE_ID") or f"trc-{uuid.uuid4().hex[:12]}"
 
     classification = classify(tool_name, tool_input)
+
+    # ---- -0.75 A2A PEER BAN (F13 2026-10-27, canon install 2026-10-28) ------
+    # A turn that arrived through a2a-platform must never hold shell or mutation
+    # on this host. It runs inside the SERVED profile — so shell there is root
+    # shell with the sovereign's own credentials.
+    #
+    # Why this lives HERE and not only in lane_switch: the same ban was installed
+    # in the lane_switch plugin first, and was then measured FAIL-OPEN when that
+    # plugin did not load (a sibling HOME whose config.yaml had no `plugins:` block:
+    # "64 found, 54 enabled", zero lane_switch lines, `id` returned uid=0). This
+    # hook is declared `fail_closed: true` in config.yaml and loads regardless of
+    # plugin state, so it is the fail-closed home for this rule. The plugin copy
+    # stays as the second layer (defence in depth, cheap).
+    #
+    # Evidence is the TRANSPORT, not the lane and not the peer's claimed name:
+    # the a2a adapter exports HERMES_A2A_PEER into that exact child process
+    # (plugins/platforms/a2a/adapter.py). No env var => no restriction, so normal
+    # CLI and Telegram lanes are untouched.
+    #
+    # Granting it back is an F13 act (run from the sovereign surface, or serve the
+    # peer from an isolated home). It is not a permission bug and must not be
+    # worked around.
+    if os.environ.get("HERMES_A2A_PEER", "").strip():
+        _peer = os.environ["HERMES_A2A_PEER"].strip()
+        _denied_tools = {
+            "terminal", "bash", "shell", "execute_code", "process_manage",
+            "write_file", "patch", "read_terminal", "close_terminal",
+            "delegate_task", "cronjob_manage", "skill_manage",
+        }
+        _denied_prefixes = ("mcp__aforge__", "forge_", "aforge_", "mcp__arifos__")
+        if tool_name in _denied_tools or tool_name.startswith(_denied_prefixes):
+            reason = (
+                f"A2A peer turn (peer='{_peer[:80]}') may not call '{tool_name}': "
+                "shell/mutation on this host is 888 HOLD class"
+            )
+            write_receipt(tool_name, classification, "A2A_PEER_DENIED", reason,
+                          trace_id=trace_id, session_id=session_id)
+            write_falsification_metric("a2a_peer_denied",
+                                       {"tool": tool_name, "peer": _peer[:80]})
+            update_telemetry("hold")
+            print(json.dumps({
+                "decision": "block",
+                "reason": (
+                    f"\U0001f512 A2A PEER BAN: {reason}. A remote agent may not execute "
+                    "shell or mutation inside the sovereign profile. F13-fixed boundary "
+                    "(2026-10-27) — do not retry, do not route around it. Ask the sovereign "
+                    "to run it, or serve this peer from an isolated home."
+                ),
+            }))
+            sys.exit(2)
 
     # ---- 0. JITU: the sovereign brake. Checked before every other rule. ----
     # A read-only observation is still allowed while tripped: stopping investigation is not what a
