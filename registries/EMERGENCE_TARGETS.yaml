@@ -1,0 +1,337 @@
+# AAA::EXECUTABLE_AGENTIC_EMERGENCE — compiled target registry v1
+# Governance: this file is the canonical compile record per F13 decisions
+# 2026-10-27 ("1 ratify, 2 extend je, 3 skip — teruskan") and directive
+# AAA::EXECUTABLE_AGENTIC_EMERGENCE_COMPILE::2026-10-27.
+# Validator: scripts/validate_emergence_targets.py (EA-AT1..EA-AT18).
+# Provenance: statuses are compiled from measured evidence dated 2026-10-27
+# (kernel probes, register reads, git SHAs, live wire verifications). Where a
+# claim could not be resolved to code/test/receipt it is UNKNOWN.
+
+doctrine:
+  doctrine_id: AAA::EXECUTABLE_AGENTIC_EMERGENCE::v1
+  title: Executable Agentic Emergence
+  governing_principle: REALITY > EVERYTHING
+  authority: ARIF
+  status: GOVERNING_REFERENCE
+  mutability: VERSIONED_AND_CORRIGIBLE
+  scope: "MCP and agent-capability design across models, repositories and harnesses"
+  ratified_by_reference: true
+  registered_in: "registries/EMERGENCE_TARGETS.yaml (this file) — smallest unlocked canonical surface; pointer projections may cite it, none may copy it"
+  non_claims:
+    - does not certify any implementation
+    - does not prove runtime conformance
+    - does not grant authority
+    - does not self-ratify
+    - does not replace live receipts
+  source:
+    projection_of: "MCP-AGENTIC-EMERGENCE-AAA doctrine text (supplied to F13 2026-10-27); PDF content-hash not computed by this compile — recorded as UNKNOWN"
+  residual_kx_002_invariant: >-
+    Four scoped names currently project one shared value and formula.
+    Namespace collision is closed. Semantic independence has not yet been demonstrated.
+
+targets:
+  - target_id: G1
+    name: Live capability graph
+    doctrine_requirement: every capability has owner, tests, falsifier, measured status
+    canonical_owner: AAA (registries)
+    existing_artifacts: ["registries/CAPABILITY_GRAPH.json (v0.2.0, generated projection 2026-09-03 — one-capability-one-owner law inside)", "capability_index MCP surface", "arifOS capability-drift suite"]
+    implementation_paths: ["registries/", "arifosmcp capability_drift"]
+    consumer_paths: ["all agents query who-owns-X"]
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["kind-boundary audit 2026-10-27", "capability-drift suite 37ac4da9f"]
+    test_refs: ["arifOS tests capability-drift suite"]
+    falsifier: "a capability with no owner or no negative test still presented as live"
+    known_gap: "find-by-purpose absent; graph is generated — canonical generator source unverified"
+    next_bounded_ticket: "classify CAPABILITY_GRAPH generator; add dormant marking"
+    human_authority_required: false
+    last_observed_at: 2026-10-27T00:00Z/09:45Z+08:00
+
+  - target_id: G2
+    name: Authority graph separate from capability graph
+    doctrine_requirement: actor performing an action is never its sole authorizer
+    canonical_owner: AAA governance + arifOS kernel
+    existing_artifacts: ["governance/AAA-AGENT-ROLE-AND-AUTHORITY-MATRIX.md", "instructions/authority-envelope.md", "chamber protocol skill", "kind-boundary audit 2026-10-27 (AAA/A-FORGE/arifFlow DISTINGUISHED; arifOS verdict-on-generic-dict = gap)"]
+    implementation_paths: ["AAA :3001 typed risk classes", "A-FORGE actionClassifier fail-closed", "kernel floors F1-F13"]
+    consumer_paths: ["arif_judge", "A-FORGE forge gate"]
+    authority_boundary: GOVERNED_MUTATION
+    current_status: PARTIAL
+    evidence_refs: ["2026-10-27 four-agent session: no role collapse, no self-seal, KX-007 closed on cross-agent evidence"]
+    test_refs: ["niat-executor unknown-seal test (71e3e28)"]
+    falsifier: "any executor self-authorizes a seal"
+    known_gap: "authority not machine-readable as graph edges; policy registry grants retired identities (measured 2026-10-26)"
+    next_bounded_ticket: "policy-vs-dispatch id reconciliation"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G3
+    name: Input provenance classes
+    doctrine_requirement: every tool input tagged MODEL_PROPOSED..HUMAN_AUTHORIZED; trusted fields server-minted only
+    canonical_owner: arifOS kernel
+    existing_artifacts: ["arifosmcp/runtime/request_identity.py", "arifosmcp/tools/session.py ingress adapter", "agy identity-ingress provenance lattice (verified 5 anchors 2026-10-27)"]
+    implementation_paths: ["KX-008 lane: aa8b12eab + f66008939-era request_identity"]
+    consumer_paths: ["arif_init/judge/observe identity fields"]
+    authority_boundary: OBSERVE
+    current_status: TESTED
+    evidence_refs: ["commit aa8b12eab (handle/client_ref separation + normalization)", "tests/test_kx008_acceptance.py 294 lines", "my KX-008 phase0 fixture: spoofed label accepted identically (pre-fix)"]
+    test_refs: ["tests/test_kx008_acceptance.py", "tests/test_kx008_handle_contract.py"]
+    falsifier: "caller-supplied string accepted as canonical handle or authority"
+    known_gap: "LIVE_OBSERVED pending deploy of aa8b12eab + live AT7 re-probe; seven-class tagging partial (slice shipped)"
+    next_bounded_ticket: "deploy aa8b12eab + live acceptance probe"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G4
+    name: Tool catalog as ontology
+    doctrine_requirement: tool names name real transitions; no duplicate mutations
+    canonical_owner: arifOS kernel
+    existing_artifacts: ["canonical 8 verbs (init/observe/think/route/memory/judge/forge/seal/report)", "capability-drift suite (public surface vs canonical)"]
+    implementation_paths: ["arifosmcp tools registry"]
+    consumer_paths: ["MCP tools/list", "harness pickers"]
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["capability-drift suite green at 37ac4da9f"]
+    test_refs: ["arifOS capability-drift suite"]
+    falsifier: "two live tools offer same mutation via different contracts undetected"
+    known_gap: "100+ surface tools vs 8 canonical verbs; duplicate-mutation detection measured not asserted"
+    next_bounded_ticket: "duplicate-mutation matrix in drift suite"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G5
+    name: Errors as recovery contracts
+    doctrine_requirement: errors carry code/field/retryable/resume_condition; machine-resolvable remediation
+    canonical_owner: arifOS kernel
+    existing_artifacts: ["input_contract.py rejection contract (3418283b4 + aa8b12eab normalization)", "judge unwitnessed_evidence advisory (f66008939)"]
+    implementation_paths: ["arifosmcp/runtime/input_contract.py", "judge_postcondition.py"]
+    consumer_paths: ["caller agents self-correction"]
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["wire-verified 2026-10-27: url no longer listed as received", "unwitnessed_evidence on wire"]
+    test_refs: ["tests/test_input_contract.py", "tests/test_judge_postcondition_unwitnessed.py"]
+    falsifier: "HOLD returned with no machine-readable gap fields"
+    known_gap: "machine_resolvable/human_required structured blocks absent (agy HOLD-remediation map: free-text only)"
+    next_bounded_ticket: "typed HOLD remediation block (needs F13 schema ratification)"
+    human_authority_required: true
+    last_observed_at: 2026-10-27
+
+  - target_id: G6
+    name: Four decision planes
+    doctrine_requirement: epistemic_state / authority_state / action_disposition / constitutional_verdict separated
+    canonical_owner: F13 (vocabulary) + arifOS (implementation, forbidden in this lane)
+    existing_artifacts: ["FIX PLAN two-axis schema proposal", "Hermes three-axis critique", "KX-007 half-dimension live (epistemic annotation ≠ authority hold)"]
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: FORBIDDEN_RUNTIME_CHANGE_IN_THIS_LANE
+    current_status: DECLARED
+    evidence_refs: ["f66008939 live: judge says evidence-weak while session-state holds"]
+    test_refs: []
+    falsifier: "epistemic SEAL auto-grants execution authority"
+    known_gap: "vocabulary unratified; KX-009 id collision (Ed25519 vs two-axis) unresolved"
+    next_bounded_ticket: "F13 vocabulary ratification then contract-first lane"
+    human_authority_required: true
+    last_observed_at: 2026-10-27
+
+  - target_id: G7
+    name: Receipt-bound evidence
+    doctrine_requirement: evidence must cite server receipt; forged receipt rejected
+    canonical_owner: arifOS kernel
+    existing_artifacts: ["observe mints receipt://web/* IDs", "evidence_receipt blocks (urls_ingested, independent_sources_compared)"]
+    implementation_paths: []
+    consumer_paths: ["arif_judge evidence path"]
+    authority_boundary: GOVERNED_MUTATION
+    current_status: DECLARED
+    evidence_refs: ["2026-10-27 probe: free-typed evidence accepted+digested, never verified against receipt store"]
+    test_refs: []
+    falsifier: "fabricated receipt_id passes judge (AT-3 class)"
+    known_gap: "binding not executable — the strongest unbuilt capability"
+    next_bounded_ticket: "receipt lookup + quote-in-content hash check at judge ingress"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G8
+    name: Governed claim decomposition
+    doctrine_requirement: sub-claims carry provenance, coverage, materiality
+    canonical_owner: UNKNOWN
+    existing_artifacts: []
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: UNKNOWN
+    current_status: UNKNOWN
+    evidence_refs: []
+    test_refs: []
+    falsifier: "gamed decomposition (hard parts marked non-core) passes"
+    known_gap: "no implementation exists"
+    next_bounded_ticket: "none until G7 lands"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G9
+    name: Authority-based capability projection
+    doctrine_requirement: agents see only entitled tools
+    canonical_owner: arifOS kernel
+    existing_artifacts: ["SCT allowed_next_verbs (measured: my token carried 6 verbs, no forge/seal)"]
+    implementation_paths: ["act_token.py"]
+    consumer_paths: ["every arif_* call"]
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["SCT decode 2026-10-27"]
+    test_refs: []
+    falsifier: "unauthorized verb callable with valid session"
+    known_gap: "tools/list projection unproven; deterministic ordering untested"
+    next_bounded_ticket: "tools/list projection probe"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G10
+    name: Agent tool-use evaluations as release gate
+    doctrine_requirement: held-out tasks gate releases
+    canonical_owner: AAA + arifOS CI
+    existing_artifacts: ["acceptance-test discipline (red suites born 2026-10-27: KX-008 AT, KX-007 unwitnessed suite, drift suite)"]
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["red-first gates practiced across 3 lanes today"]
+    test_refs: ["tests/test_kx008_handle_contract.py gate matrix 5-red/3-green/1-skip"]
+    falsifier: "release ships with red acceptance test"
+    known_gap: "no held-out (builder-unseen) evaluations; agent-behavior not measured"
+    next_bounded_ticket: "first held-out eval set"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G11
+    name: Workflow vs autonomy separation
+    doctrine_requirement: deterministic work not delegated to model
+    canonical_owner: doctrine-wide
+    existing_artifacts: ["anti-bangang LAW 8", "practiced: probes as deterministic scripts"]
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["2026-10-27 session practice"]
+    test_refs: []
+    falsifier: "an if/else-able decision routed to LLM"
+    known_gap: "no formal remove-agent test"
+    next_bounded_ticket: "remove-agent audit of LLM call sites"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G12
+    name: Outcome verification first-class
+    doctrine_requirement: execution/world-outcome/human-acceptance distinct records
+    canonical_owner: arifOS + A-FORGE
+    existing_artifacts: ["deploy epochs + rollback registration", "wire-verification practice", "forge_collect_evidence"]
+    implementation_paths: ["scripts/deploy_lease.py epochs"]
+    consumer_paths: ["deploy gate"]
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["deploy arifos-f66008939c2e epoch verified 2026-10-27"]
+    test_refs: []
+    falsifier: "exit code 0 reported as world success"
+    known_gap: "human_acceptance has no separate record type"
+    next_bounded_ticket: "acceptance record type in vault schema"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G13
+    name: Self-falsification loop
+    doctrine_requirement: old decisions re-judged; reversals classified
+    canonical_owner: CHRON organ
+    existing_artifacts: ["chron predictions/verify/calibrate/learn", "four-class reversal taxonomy + same-cutoff replay design (2026-10-27 curve-ball work)"]
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: OBSERVE
+    current_status: DECLARED
+    evidence_refs: []
+    test_refs: []
+    falsifier: "SEAL later VOID with no typed cause"
+    known_gap: "same-cutoff replay not executable; no decision fields pinned (rules_hash etc.)"
+    next_bounded_ticket: "register proxy-reality pairs in CHRON"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G14
+    name: Model-swap survivability
+    doctrine_requirement: governance holds across harnesses/models
+    canonical_owner: federation
+    existing_artifacts: ["FI mesh check skill", "cross-harness reality tests skill"]
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["4 harnesses exercised the kernel 2026-10-27 with identical contract semantics"]
+    test_refs: []
+    falsifier: "weak model bypasses authority boundary"
+    known_gap: "not a release gate; not systematic"
+    next_bounded_ticket: "mesh check as release gate"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G15
+    name: Context poisoning resistance
+    doctrine_requirement: data never becomes authority instruction
+    canonical_owner: HERMES + kernels
+    existing_artifacts: ["qr_guard (live, DM-only)", "untrusted-evidence wrapping doctrine", "QR-as-injection-carrier measurement"]
+    implementation_paths: ["~/.hermes/plugins/qr_guard"]
+    consumer_paths: ["Telegram inbound"]
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["2026-10-20 measurement: group/non-DM images reach LLM ungated"]
+    test_refs: []
+    falsifier: "resource/tool-description content alters policy"
+    known_gap: "resource + description + output surfaces untested as injection vectors; group-media gap open"
+    next_bounded_ticket: "group-path interception; surface injection tests"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G16
+    name: Attention economics
+    doctrine_requirement: silence for no-decision-change; one owner per issue
+    canonical_owner: AAA
+    existing_artifacts: ["human-attention-membrane canon", "peer-lane silence rule", "KX tickets one-owner practice"]
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["2026-10-27: 8 KX tickets each one owner one falsifier"]
+    test_refs: []
+    falsifier: "alert fires that cannot change any decision"
+    known_gap: "decision-change effect of alerts unmeasured"
+    next_bounded_ticket: "alert decision-change metric (with metric card per KX-010)"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G17
+    name: Controlled forgetting
+    doctrine_requirement: expiry/promotion/deprecation machine-readable
+    canonical_owner: memory systems (helix)
+    existing_artifacts: ["helix consolidation 2026-10-19 + 2026-10-25", "NOISE→SCAR classes", "archive/fixed-resolved bundles"]
+    implementation_paths: []
+    consumer_paths: []
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["consolidation receipts in memory catalog"]
+    test_refs: []
+    falsifier: "obsolete state resurfaces as current"
+    known_gap: "no machine-readable expiry on temp traces"
+    next_bounded_ticket: "expiry field on episode-class memories"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
+
+  - target_id: G18
+    name: Executable emergence archive
+    doctrine_requirement: capability↔test↔receipt↔falsifier linked, consistency-checked
+    canonical_owner: AAA registries
+    existing_artifacts: ["THIS FILE (first link layer)", "validate_emergence_targets.py", "canon/AAA-EMERGENCE-ACCEPTANCE-TESTS.md", "contradiction register (every KX entry carries acceptance_test+falsifier)"]
+    implementation_paths: ["registries/EMERGENCE_TARGETS.yaml", "scripts/validate_emergence_targets.py"]
+    consumer_paths: ["agents read targets; validator gates consistency"]
+    authority_boundary: OBSERVE
+    current_status: PARTIAL
+    evidence_refs: ["validator run receipt (this compile)"]
+    test_refs: ["scripts/validate_emergence_targets.py (EA-AT1..18)"]
+    falsifier: "a target with status TESTED+ but no test reference passes the validator"
+    known_gap: "receipt-index links per target not yet resolved (E-links phase pending); one class (authority graph as machine artifact) flagged below"
+    next_bounded_ticket: "receipt resolution pass per target"
+    human_authority_required: false
+    last_observed_at: 2026-10-27
