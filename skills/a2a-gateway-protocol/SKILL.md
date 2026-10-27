@@ -97,6 +97,8 @@ envelope["params"]["signature"] = {
 }
 ```
 
+**Live-verified canonical bytes (2026-10-28, `buildEnvelopeCanonicalBytes` in federation_envelope.js):** the signature covers ONLY `{from_did, to_did, task_id, task_type, issued_at, nonce}` as sorted-key JSON with empty-string defaults — NOT actor_id/agent_id/session_id/action/subject. Convention A above is a stale 2026-08-07 snapshot; read the live function before relying on it.
+
 **Field name mismatches cause silent failures** (2026-08-07 lesson):
 - Legacy: `from_did` at top level → OpenClaw: `did` inside `params`
 - Legacy: `session_id` at top level → OpenClaw: `session_id` inside `params`
@@ -106,12 +108,15 @@ envelope["params"]["signature"] = {
 ```python
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
-# Key files: /root/AAA/auth/keys/<organ>_private.key — 64-byte raw seed, use first 32 bytes
+# Key files: /root/AAA/auth/keys/<organ>_private.key — ASCII-HEX TEXT (64 hex chars as
+# text), NOT raw bytes. Verified 2026-10-28: hex-decode -> derived pubkey matches the
+# registry did:arif:aaa. The old "read 64 raw bytes, first 32" recipe was residual R4's
+# root cause and produces signatures that fail DID_VERIFY_FAIL with no other symptom.
 # NOT PyNaCl (not installed). Use cryptography v50+.
 # NOT /opt/arifos/app/.signing_key — that path does not exist.
 
-with open("/root/AAA/auth/keys/aaa_private.key", "rb") as f:
-    seed = f.read()[:32]
+with open("/root/AAA/auth/keys/aaa_private.key") as f:
+    seed = bytes.fromhex(f.read().strip())
 sk = Ed25519PrivateKey.from_private_bytes(seed)
 ```
 
@@ -155,6 +160,10 @@ wait
 - **`/tasks` not in allowed_tools for agent X** — `allowed_tools` is checked literally against the HTTP path. If a policy has arif-sense_observe but not `/tasks`, dispatch will fail even though the agent is canonical and registered. Add `/tasks` explicitly (proven 2026-08-07).
 - **Signature verification NOT enforced on inbound envelopes (critical, open as of 2026-08-07):** AAA's `verifyEnvelopeSignature()` exists in `federation_envelope.js` (~line 540) but is NOT wired into `createEnvelopeValidator()` middleware. A forged envelope with a valid shape but wrong signing key gets 200 + TASK_STATE_COMPLETED. This is an open gap; do not declare "AAA verified my signature" until the middleware is patched. Safe to build on; not safe to deploy in production without closing this.
 - **`expires_at` not enforced on inbound envelopes (open as of 2026-08-07):** Envelopes with `expires_at` in the past are accepted. Add `if (now > envelope.expires_at) → REJECT` to `validateEnvelope()` to close.
+- **Key files are ASCII-hex text (measured 2026-10-28).** `/root/AAA/auth/keys/*_private.key` holds 64 hex characters as text. `open(path,'rb').read()[:32]` silently produces a wrong key → `DID_VERIFY_FAIL`. `bytes.fromhex(text)` is the correct load.
+- **Three identity lists, three rules (measured 2026-10-28):** the EMD gate's `INTERNAL_PEERS` reads `params.metadata.source_agent` — use e.g. `333-AGI` (`qwen-code` there classifies EXTERNAL → W3=0.1 block). The legacy `/a2a/tasks/send` route's 33-actor set has `qwen-code`/`333-AGI` but REMOVED `anonymous` (T1 hardening 2026-10-22). The jsonrpc `POST /a2a` `createEnvelopeValidator` 16-actor set has `anonymous` but NOT `qwen-code`. Working jsonrpc combo: `metadata.source_agent: "333-AGI"` + `envelope.actor_id: "anonymous"` + did:arif:aaa signature.
+- **Legacy `/a2a/tasks/send` delivers via OpenClaw websocket (KVM4).** All gates can pass and delivery still fails with `-32000 OpenClaw gateway websocket error`. The jsonrpc `POST /a2a` `tasks/send` path (executeTask live-wire) delivers without OpenClaw.
+- **`TASK_STATE_COMPLETED` can be hollow (measured 2026-10-28).** A live-wire dispatch to `555-ASI` "completed" in 0.5s returning a `forge_health_check` echo (`ai_involvement: NONE`, duration_ms 38) — no model read the brief and no output file appeared. COMPLETED ≠ executed: check artifact content and the required output before claiming the agent ran.
 
 ## 8. Verify every delegated subagent claim (F2 TRUTH)
 
