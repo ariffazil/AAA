@@ -142,7 +142,7 @@
     <span>ARIF AGENT ARCHITECTURE</span>
   </a>
   <div class="navbar-meta">
-    <span><span class="pulse-dot" style="background:#eab308"></span> STATUS: MEMERIKSA...</span>
+    <span id="nav-status"><span class="pulse-dot" style="background:#eab308"></span> STATUS: MEMERIKSA...</span>
     <span id="nav-ts">Memuatkan status...</span>
   </div>
 </header>
@@ -554,6 +554,10 @@ function render(data, truthData) {
       ? { state: 'FRESH', age_seconds: ageSec }
       : { state: 'STALE', age_seconds: ageSec };
   const isFresh = _gate.state === 'FRESH';
+  // Kernel floor evaluations happen on the kernel's own cadence, so a correct
+  // reading can legitimately be minutes old. Display threshold only — it names
+  // when a verdict stops being quotable as current; it is not constitutional.
+  const KERNEL_EVAL_TTL = 600;
   {
     const hb = document.getElementById('hero-freshness-badge');
     if (hb) {
@@ -563,6 +567,50 @@ function render(data, truthData) {
     }
     const sl = document.getElementById('strip-held-label');
     if (sl) sl.innerHTML = (isFresh ? 'MACHINE-HELD: ' : 'MACHINE-HELD (last reported): ') + '<strong id="strip-held">--</strong>';
+  }
+
+  // ── NAV STATUS (2026-10-28): the badge used to read "MEMERIKSA..." forever —
+  // a static literal nothing ever wrote, so the page looked permanently unsure
+  // of itself while carrying a verdict 20px below. It now renders the SAME gate
+  // as every other field: no second source of truth, no green without evidence.
+  {
+    const ns = document.getElementById('nav-status');
+    if (ns) {
+      const fedStatus = String((data.federation || {}).status || '').toUpperCase();
+      const heldN = Number(data.holds);
+      const dot = c => `<span class="pulse-dot" style="background:${c}"></span>`;
+      // The nav badge must not look greener than the worst thing it reports.
+      // A fresh snapshot of a constitutionally-degraded kernel is NOT "all good":
+      // freshness and floor health are two axes and the bar carries both.
+      const _k = data.kernel || null;
+      const _kAge = _k && _k.read_at
+        ? Math.round((Date.now() - new Date(_k.read_at).getTime()) / 1000)
+        : null;
+      const _kOld = Number.isFinite(_kAge) && _kAge > KERNEL_EVAL_TTL;
+      const kernelState = (!_k || _k.reachable !== true)
+        ? 'kernel UNKNOWN'
+        : (_k.floor_passed === true
+            ? `kernel PASS${_kOld ? ` (basi ${Math.round(_kAge/60)}m)` : ''}`
+          : _k.floor_passed === false
+            ? `kernel FAIL (${[(_k.failing || []).map(f => f.floor).join(',') || '?', ...(_kOld ? [`basi ${Math.round(_kAge/60)}m`] : [])].join(', ')})`
+            : 'kernel UNMEASURED');
+      const kernelOk = _k && _k.reachable === true && _k.floor_passed === true && !_kOld;
+      if (_gate.state === 'FRESH') {
+        const parts = [`MESH ${fedStatus || 'UNKNOWN'}`, kernelState];
+        if (Number.isFinite(heldN)) parts.push(`${heldN} HOLD`);
+        ns.innerHTML = dot(kernelOk ? 'var(--ok)' : 'var(--warn)')
+          + ` STATUS: ${kernelOk ? 'HIDUP' : 'PERHATIAN'} · ${parts.join(' · ')}`;
+        ns.title = kernelOk
+          ? `Snapshot segar (${_gate.age_seconds}s). Semua nombor di halaman ini dari snapshot ini.`
+          : `Snapshot segar (${_gate.age_seconds}s) tetapi kernel tidak lulus semua floor — lihat KERNEL FLOOR di bawah.`;
+      } else if (_gate.state === 'STALE') {
+        ns.innerHTML = dot('var(--warn)') + ` STATUS: BASI · ${_gate.age_seconds}s`;
+        ns.title = 'Snapshot lebih tua daripada kadens penjana — angka di bawah ialah LAPORAN TERAKHIR, bukan keadaan sekarang.';
+      } else {
+        ns.innerHTML = dot('var(--warn)') + ' STATUS: TIDAK DIKETAHUI';
+        ns.title = 'Tiada cap masa yang boleh dipercayai dalam snapshot. Jangan anggap hijau.';
+      }
+    }
   }
   
   document.getElementById('nav-ts').textContent = `Dikemas kini: ${ageStr}`;
@@ -698,24 +746,41 @@ function render(data, truthData) {
   // KERNEL FLOOR (2026-10-26): the attention plane must carry the kernel's own
   // floor verdict. A missing/unreadable kernel block is UNKNOWN — never green.
   // The FAIL branch names the floor ids so the human knows where to look.
+  //
+  // 2026-10-28: kernel `read_at` is the FLOOR-EVALUATION timestamp, not the
+  // response time — the kernel re-evaluates on its own cadence, so a correct
+  // reading can legitimately be minutes old. It was rendered with no age, so a
+  // 5-minute-old FAIL sat next to a 2-second-old MESH and read as one verdict.
+  // Age is now always shown, and an evaluation older than KERNEL_EVAL_TTL is
+  // labelled BASI in warn colour: a stale verdict may not wear a current face.
   const stripKernel = document.getElementById('strip-kernel');
   if (stripKernel) {
     const k = data.kernel || null;
+    const evalAgeSec = k && k.read_at
+      ? Math.round((Date.now() - new Date(k.read_at).getTime()) / 1000)
+      : null;
+    const ageTag = (evalAgeSec === null || !Number.isFinite(evalAgeSec))
+      ? ' · umur UNKNOWN'
+      : (evalAgeSec < 90 ? ` · dinilai ${evalAgeSec}s lalu`
+                         : ` · dinilai ${Math.round(evalAgeSec/60)}m lalu`);
+    const isOld = Number.isFinite(evalAgeSec) && evalAgeSec > KERNEL_EVAL_TTL;
     if (!k || k.reachable !== true) {
       stripKernel.textContent = 'UNKNOWN';
       stripKernel.style.color = 'var(--warn)';
       stripKernel.title = 'Kernel /health tidak dapat dibaca oleh penjana state.';
     } else if (k.floor_passed === true) {
-      stripKernel.textContent = 'PASS';
-      stripKernel.style.color = 'var(--ok)';
-      stripKernel.title = `floor_measurement=${k.floor_measurement || 'UNKNOWN'}`;
+      stripKernel.textContent = 'PASS' + ageTag;
+      stripKernel.style.color = isOld ? 'var(--warn)' : 'var(--ok)';
+      stripKernel.title = `floor_measurement=${k.floor_measurement || 'UNKNOWN'}`
+        + (isOld ? ` — penilaian lebih tua daripada ${KERNEL_EVAL_TTL}s; anggap LAPORAN TERAKHIR, bukan sekarang.` : '');
     } else if (k.floor_passed === false) {
       const ids = (k.failing || []).map(f => f.floor).join(',') || '?';
-      stripKernel.textContent = `FAIL (${ids})`;
-      stripKernel.style.color = 'var(--err)';
-      stripKernel.title = (k.failing || []).map(f => `${f.floor}: ${f.origin || '?'}`).join(' | ');
+      stripKernel.textContent = `FAIL (${ids})` + ageTag;
+      stripKernel.style.color = isOld ? 'var(--warn)' : 'var(--err)';
+      stripKernel.title = (k.failing || []).map(f => `${f.floor}: ${f.origin || '?'}`).join(' | ')
+        + (isOld ? ` — penilaian lebih tua daripada ${KERNEL_EVAL_TTL}s; mungkin sudah berubah.` : '');
     } else {
-      stripKernel.textContent = 'UNMEASURED';
+      stripKernel.textContent = 'UNMEASURED' + ageTag;
       stripKernel.style.color = 'var(--warn)';
       stripKernel.title = 'Kernel tidak melaporkan floor_passed.';
     }
