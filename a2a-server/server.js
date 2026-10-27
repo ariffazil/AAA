@@ -3316,16 +3316,35 @@ app.get('/health', async (req, res) => {
         measured_at: kernelApex.measured_at,
       },
     // Demoted local heuristic — kept for continuity, explicitly non-authoritative.
-    apex_scalars_local: {
-      G: { value: parseFloat(G.toFixed(3)), status: G >= 0.70 ? 'HEALTHY' : 'DEGRADED' },
-      C_dark: { value: parseFloat(C_dark.toFixed(3)), status: C_dark <= 0.30 ? 'SAFE' : 'ELEVATED' },
-      W3: { value: parseFloat(W3.toFixed(3)), status: W3 >= 0.75 ? 'CONSENSUS' : 'WEAK' },
-      h: { value: parseFloat(h.toFixed(3)), status: h <= 0.50 ? 'CLEAN' : 'ENTROPIC' },
-      QDF: { value: parseFloat(QDF.toFixed(3)), status: QDF >= 0.90 ? 'QUALITY' : 'DEGRADED' },
-      authoritative: false,
-      method: 'AAA local heuristic — (A·P·E·X)^1/4 over identity/drift/vault/runtime flags',
-      note: 'Display-only. Kernel-measured apex_scalars above are authoritative.',
-    },
+    // KX-010 gaps verdict (W2/S2, BINDING): every local scalar carries the
+    // five-field kx010.v1 contract — HEURISTIC / DISPLAY_ONLY. Values, status
+    // thresholds and block meta are untouched (byte-identical semantics).
+    apex_scalars_local: (() => {
+      const kx010Contract = (metric) => ({
+        measurement_id: `kx010.local_${metric.toLowerCase()}`,
+        metric_name: metric,
+        semantic_class: 'HEURISTIC',
+        value: null,
+        unit: '1',
+        measurement_method: 'AAA local heuristic — (A·P·E·X)^1/4 over identity/drift/vault/runtime flags',
+        monotonic_drivers: ['identity/drift/vault/runtime flag mix shifts -> heuristic value shifts'],
+        falsification_test: 'recompute the (A·P·E·X)^1/4 heuristic from the same flags',
+        provenance_class: 'SERVER_OBSERVED',
+        calibration_status: 'HEURISTIC_UNCALIBRATED',
+        decision_eligibility: 'DISPLAY_ONLY',
+        schema_version: 'kx010.v1',
+      });
+      return {
+        G: { value: parseFloat(G.toFixed(3)), status: G >= 0.70 ? 'HEALTHY' : 'DEGRADED', measurement_contract: kx010Contract('G') },
+        C_dark: { value: parseFloat(C_dark.toFixed(3)), status: C_dark <= 0.30 ? 'SAFE' : 'ELEVATED', measurement_contract: kx010Contract('C_dark') },
+        W3: { value: parseFloat(W3.toFixed(3)), status: W3 >= 0.75 ? 'CONSENSUS' : 'WEAK', measurement_contract: kx010Contract('W3') },
+        h: { value: parseFloat(h.toFixed(3)), status: h <= 0.50 ? 'CLEAN' : 'ENTROPIC', measurement_contract: kx010Contract('h') },
+        QDF: { value: parseFloat(QDF.toFixed(3)), status: QDF >= 0.90 ? 'QUALITY' : 'DEGRADED', measurement_contract: kx010Contract('QDF') },
+        authoritative: false,
+        method: 'AAA local heuristic — (A·P·E·X)^1/4 over identity/drift/vault/runtime flags',
+        note: 'Display-only. Kernel-measured apex_scalars above are authoritative.',
+      };
+    })(),
     kernel_health: kernelApex.ok
       ? {
         status: kernelApex.kernel_status,
