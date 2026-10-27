@@ -66,7 +66,7 @@ run this" is a proposition about a file, not a permission.
 | QR images (URL / payload in QR) | `~/.hermes/plugins/qr_guard` | **DM-only**, warn-only — images still pass to the model |
 | Web pages / docs (firecrawl, webfetch, free-search) | prompt-layer fragment only | no behavioural gate |
 | GitHub issues / PR bodies / commit messages | human review | no automated gate |
-| MCP tool results (118 A-FORGE tools, organ tools) | envelope + review gate (`agentic-review-gate`) | gate is on tool *calls*, not on *content read* |
+| MCP tool results (A-FORGE surface; count = `/health.tools_listed`, currently 118 — **surface size measured, per-tool governance coverage UNKNOWN**) | envelope + review gate (`agentic-review-gate`) | gate is on tool *calls*, not on *content read* |
 | Pasted audits from other AIs | `cross-audit-v1`, `verify-sibling-ops-reports` | skill-level, opt-in |
 | README / dependency metadata | `third-party-tool-quarantine` (adoption only) | not on every repo read |
 
