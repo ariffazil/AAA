@@ -141,26 +141,6 @@
       "why": "Cross-domain synthesis"
     },
     {
-      "id": "CLAIM-receipt-v1",
-      "source": ".agents/skills/CLAIM-receipt-v1",
-      "why": "Lightweight evidence attachment"
-    },
-    {
-      "id": "CLAIM-verification-gate",
-      "source": ".agents/skills/CLAIM-verification-gate",
-      "why": "Pre-emission evidence gate"
-    },
-    {
-      "id": "AUDIT-clarity-canon",
-      "source": ".agents/skills/AUDIT-clarity-canon",
-      "why": "Evidence discipline test pack"
-    },
-    {
-      "id": "AUDIT-post-seal-sweep",
-      "source": ".agents/skills/AUDIT-post-seal-sweep",
-      "why": "Commit residue + register ports"
-    },
-    {
       "id": "AUDIT-recursive-audit",
       "source": ".agents/skills/AUDIT-recursive-audit",
       "why": "Skill portfolio audit"
@@ -171,48 +151,14 @@
       "why": "Unified skill inventory"
     },
     {
-      "id": "AUDIT-symbolic-collective-bias",
-      "source": ".agents/skills/AUDIT-symbolic-collective-bias",
-      "why": "Population-bias detector"
+      "id": "audit-seal",
+      "source": ".agents/skills/audit-seal",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
     },
     {
-      "id": "AUDIT-symbolic-trust",
-      "source": ".agents/skills/AUDIT-symbolic-trust",
-      "why": "Structural trust map"
-    },
-    {
-      "id": "ARCHIVE-vault-integrity",
-      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
-      "why": "Append-only hash chain"
-    },
-    {
-      "id": "ARCHIVE-vault-seal",
-      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
-      "why": "Seal to VAULT999"
-    },
-    {
-      "id": "ARCHIVE-vault999-reader",
-      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
-      "why": "Read sealed entries"
-    },
-    {
-      "id": "ARCHIVE-vault999-integrity",
-      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
-      "why": "Chain verification"
-    },
-    {
-      "id": "APEX-post-seal-runtime-verdict",
-      "source": ".agents/skills/FORGE-verify-runtime",
-      "why": "888-APEX (ΦΙ JUDGE) issues SEAL verdicts, but the manifest assigns FORGE-verify-runtime only to OpenCode / 777-forge / aforge. Post-seal verification of runtime health is constitutional work — a SEAL without a runtime check is incomplete. The JUDGE must own this.",
-      "forged_at": "2026-07-12T23:18:41.111426+00:00",
-      "forge_hash": "896ab49c0c51bf66fd0db2e90e6f8db7b4ab852f881ed95e59b1fc6ca1ed987e"
-    },
-    {
-      "id": "apex-audit-mode",
-      "source": "/root/AAA/agents/888-APEX/AUDIT_MODE.md",
-      "why": "666-AUDIT — Gödel mitigation via dual-pass (audit+judge). FED-routed model for reality+receipt checks C1-C6.",
-      "forged_at": "2026-08-10",
-      "forged_by": "333-AGI under F13 SOVEREIGN directive"
+      "id": "seal-discipline",
+      "source": ".agents/skills/seal-discipline",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
     }
   ],
   "skills_derivation": {
