@@ -353,8 +353,69 @@ def gate_extension_checks() -> int:
     passed += ok3
     failed += not ok3
 
+    # 4. A2A PEER BAN (F13 2026-10-27) — a turn carrying HERMES_A2A_PEER may not
+    # hold shell or mutation. This rule was installed in canon 2026-10-28; without
+    # these cases it would be an unverified claim, which is exactly what this file
+    # exists to prevent. Evidence is the transport env var, so the same payload
+    # with and without it must produce DIFFERENT verdicts.
+    peer_session = f"selftest-a2a-{os.getpid()}"
+    p4 = subprocess.run(
+        [sys.executable, GATE],
+        input=json.dumps({
+            "tool_name": "terminal",
+            "tool_input": {"command": "id"},
+            "session_id": peer_session,
+        }),
+        capture_output=True,
+        text=True,
+        timeout=10,
+        env=dict(os.environ, HERMES_A2A_PEER="selftest-peer",
+                 HERMES_RECEIPT_PATH="/root/.local/share/arifos/hermes_hook_receipts.jsonl"),
+    )
+    ok4 = p4.returncode == 2 and "A2A PEER BAN" in p4.stdout
+    print(f"{'PASS' if ok4 else 'FAIL'}  a2a peer + terminal blocks (888 HOLD class)")
+    passed += ok4
+    failed += not ok4
+
+    # 5. Same tool, same args, NO peer marker → must still be allowed. This is the
+    # negative control: without it, a gate that blocks everything would "pass" #4.
+    p5 = subprocess.run(
+        [sys.executable, GATE],
+        input=json.dumps({
+            "tool_name": "terminal",
+            "tool_input": {"command": "id"},
+            "session_id": f"selftest-nopeer-{os.getpid()}",
+        }),
+        capture_output=True,
+        text=True,
+        timeout=10,
+        env={k: v for k, v in os.environ.items() if k != "HERMES_A2A_PEER"},
+    )
+    ok5 = p5.returncode == 0 and "A2A PEER BAN" not in p5.stdout
+    print(f"{'PASS' if ok5 else 'FAIL'}  NEGATIVE CONTROL: no peer marker → terminal allowed")
+    passed += ok5
+    failed += not ok5
+
+    # 6. Read-only stays open to a peer (compartment, not blindness).
+    p6 = subprocess.run(
+        [sys.executable, GATE],
+        input=json.dumps({
+            "tool_name": "read_file",
+            "tool_input": {"path": "/etc/hostname"},
+            "session_id": f"selftest-a2aread-{os.getpid()}",
+        }),
+        capture_output=True,
+        text=True,
+        timeout=10,
+        env=dict(os.environ, HERMES_A2A_PEER="selftest-peer"),
+    )
+    ok6 = p6.returncode == 0 and "A2A PEER BAN" not in p6.stdout
+    print(f"{'PASS' if ok6 else 'FAIL'}  a2a peer + read_file still allowed")
+    passed += ok6
+    failed += not ok6
+
     print("-" * 74)
-    print(f"extensions: {passed}/3 passed, {failed} failed")
+    print(f"extensions: {passed}/6 passed, {failed} failed")
     return 1 if failed else 0
 
 
