@@ -10,7 +10,7 @@ authority: ARIF
 mutability: VERSIONED_AND_CORRIGIBLE
 source:
   guide: "AAA Prompt Guide (Claude, forwarded by F13 2026-10-27, 'now please use these guide for AAA prompt')"
-  evidence_snapshot: "evidence/AAA-PROMPT-GUIDE-2026-10-27.md (pending)"
+  evidence_snapshot: "evidence/AAA-PROMPT-GUIDE-2026-10-27.md (archived, canon-mutate receipt trc-prompt-guide-archive-20261027)"
   doctrine_companion: "registries/EMERGENCE_TARGETS.yaml (doctrine v1) + /root/AAA/evidence/ TIMELESS (archived af7005e4)"
 
 # A work directive (builder prompt, master order, lane ticket) MUST carry all
