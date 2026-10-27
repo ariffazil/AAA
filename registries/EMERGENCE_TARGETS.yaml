@@ -14,6 +14,11 @@ doctrine:
   authority: ARIF
   status: GOVERNING_REFERENCE
   mutability: VERSIONED_AND_CORRIGIBLE
+  acceptance:
+    accepted_by: "ARIF (F13)"
+    accepted_at: "2026-10-27, MYT evening session"
+    acceptance_words: "Sah, terima compile tu"
+    scope: "compile commit 7635c5a1 (EMERGENCE_TARGETS.yaml + validate_emergence_targets.py); EA-AT gate 0 FAIL / 5 STRUCTURAL at acceptance"
   scope: "MCP and agent-capability design across models, repositories and harnesses"
   ratified_by_reference: true
   registered_in: "registries/EMERGENCE_TARGETS.yaml (this file) — smallest unlocked canonical surface; pointer projections may cite it, none may copy it"
