@@ -111,11 +111,6 @@
   },
   "skills": [
     {
-      "id": "AGI-cross-agent-handoff",
-      "source": ".agents/skills/AGI-cross-agent-handoff",
-      "why": "Federation-wide delegation protocol"
-    },
-    {
       "id": "AGI-dream-engine",
       "source": ".agents/skills/AGI-dream-engine",
       "why": "Memory consolidation across warga"
@@ -131,19 +126,9 @@
       "why": "Multi-step execution graphs"
     },
     {
-      "id": "AGI-prospect-maturation",
-      "source": ".agents/skills/AGI-prospect-maturation",
-      "why": "GEOX end-to-end pipeline"
-    },
-    {
       "id": "AGI-skill-unification",
       "source": ".agents/skills/AGI-skill-unification",
       "why": "Cross-harness skill mesh"
-    },
-    {
-      "id": "AGI-sovereign-connector",
-      "source": ".agents/skills/AGI-sovereign-connector",
-      "why": "APA framework, F13 connector"
     },
     {
       "id": "AGI-nusantara-substrate",
@@ -161,54 +146,14 @@
       "why": "Vision+text+geo fusion"
     },
     {
-      "id": "AGI-claude-xml-structured-reasoning",
-      "source": ".aaa/skills/AGI-claude-xml-structured-reasoning",
-      "why": "Structured reasoning"
-    },
-    {
-      "id": "AGI-codex-chain-of-thought",
-      "source": ".aaa/skills/AGI-codex-chain-of-thought",
-      "why": "Step-by-step derivation"
-    },
-    {
-      "id": "AGI-emd-decode",
-      "source": ".aaa/skills/AGI-emd-decode",
-      "why": "Earth-Mind Decoding"
-    },
-    {
-      "id": "AGI-emd-encode",
-      "source": ".aaa/skills/AGI-emd-encode",
-      "why": "Earth-Mind Encoding"
-    },
-    {
-      "id": "AGI-emd-metabolize",
-      "source": ".aaa/skills/AGI-emd-metabolize",
-      "why": "Earth-Mind Metabolism"
-    },
-    {
-      "id": "AGI-entropy-lock-prime",
-      "source": ".aaa/skills/AGI-entropy-lock-prime",
-      "why": "ΔS≤0 prime guard"
-    },
-    {
-      "id": "AGI-hermes-system-prompt-voice",
-      "source": ".aaa/skills/AGI-hermes-system-prompt-voice",
-      "why": "Voice alignment"
-    },
-    {
-      "id": "APEX-act",
-      "source": ".agents/skills/APEX-act",
-      "why": "Constitutional reflex arc"
-    },
-    {
-      "id": "APEX-f1-gate",
-      "source": ".agents/skills/APEX-f1-gate",
-      "why": "F1 AMANAH mutation gate"
-    },
-    {
       "id": "APEX-quantum-eureka",
       "source": ".agents/skills/APEX-quantum-eureka",
       "why": "Insight generation under tension"
+    },
+    {
+      "id": "forge-document-intelligence",
+      "source": ".agents/skills/forge-document-intelligence",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
     }
   ],
   "skills_derivation": {

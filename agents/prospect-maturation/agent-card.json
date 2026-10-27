@@ -69,17 +69,39 @@
     "geox_well_qc"
   ],
   "skills": [
-    "geological-artifact-rigor",
-    "geox-epistemic-ladder",
-    "geox-contradiction-engine",
-    "geox-petrophysics-bounds",
-    "wealth-capital-reasoning",
-    "KERNEL-reality-skills",
-    "KERNEL-sovereign-recognize",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "KERNEL-trinity-33",
-    "KERNEL-mcp-zen"
+    {
+      "id": "geological-artifact-rigor",
+      "name": "geological-artifact-rigor",
+      "source": "/root/AAA/skills/geological-artifact-rigor/SKILL.md",
+      "why": "normalized from string schema [e887a28a5]"
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI-recursive-improvement",
+      "source": "/root/AAA/skills/RSI-recursive-improvement/SKILL.md",
+      "why": "normalized from string schema [e887a28a5]"
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "KERNEL-trinity-33",
+      "source": "/usr/local/lib/hermes-agent/profiles/aaa-hermes/skills/KERNEL-trinity-33/SKILL.md",
+      "why": "normalized from string schema [e887a28a5]"
+    },
+    {
+      "id": "geox-basin-evaluation",
+      "source": "/root/GEOX/skills/geox-basin-evaluation",
+      "why": "rebound from phantom to live GEOX organ skill per audit [e887a28a5]"
+    },
+    {
+      "id": "geox-claim-falsification",
+      "source": "/root/GEOX/skills/geox-claim-falsification",
+      "why": "rebound from phantom to live GEOX organ skill per audit [e887a28a5]"
+    },
+    {
+      "id": "geox-well-log-qc",
+      "source": "/root/GEOX/skills/geox-well-log-qc",
+      "why": "rebound from phantom to live GEOX organ skill per audit [e887a28a5]"
+    }
   ],
   "autonomy_tiers": {
     "T1_AUTO_DO": "observe, simulate, compute, propose — no gates",
