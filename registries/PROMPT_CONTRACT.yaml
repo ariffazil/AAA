@@ -1,0 +1,98 @@
+# AAA PROMPT CONTRACT v1 — canonical structure for work directives to coding agents
+# Derived from the F13-forwarded harness-engineering guide (Claude, 2026-10-27).
+# Law of this contract (from the guide itself): a repeated prompt rule is a
+# candidate for enforcement — this file exists so the structure becomes
+# checkable, not so prompts get longer. Validator: scripts/validate_prompt_contract.py
+
+schema: aaa.prompt.contract/v1
+status: GOVERNING_REFERENCE
+authority: ARIF
+mutability: VERSIONED_AND_CORRIGIBLE
+source:
+  guide: "AAA Prompt Guide (Claude, forwarded by F13 2026-10-27, 'now please use these guide for AAA prompt')"
+  evidence_snapshot: "evidence/AAA-PROMPT-GUIDE-2026-10-27.md (pending)"
+  doctrine_companion: "registries/EMERGENCE_TARGETS.yaml (doctrine v1) + /root/AAA/evidence/ TIMELESS (archived af7005e4)"
+
+# A work directive (builder prompt, master order, lane ticket) MUST carry all
+# twelve sections, in this order. Section headings may vary in wording; the
+# CONCEPT must be present and distinguishable. The validator matches concepts.
+required_sections:
+  - id: AUTHORITY
+    concept: "Who is asking, and what is the ceiling (lane, role, verdict ceiling, self-seal rule)"
+  - id: REALITY
+    concept: "Current observed state — witnessed baseline, treated as claims to re-probe, never trusted blind"
+  - id: SINGLE_MISSION
+    concept: "The one transition being attempted; reasoning breadth may be wide, mutation breadth narrow"
+  - id: SCOPE
+    concept: "Files/services/contracts owned by this lane; concurrent writers named; adjacent ownership declared"
+  - id: FORBIDDEN_MUTATIONS
+    concept: "Attractive shortcuts disallowed — the anti-objective. Without it the objective teaches the goal, not the path"
+  - id: STOP_CONDITIONS
+    concept: "States that force HOLD rather than guesswork"
+  - id: TESTS_FIRST
+    concept: "What must fail before the fix and pass after; red-before-green is the gate, guards stay green"
+  - id: IMPLEMENTATION_BOUNDARY
+    concept: "What may change, what must remain invariant"
+  - id: INDEPENDENT_CHECK
+    concept: "Who/what examines the result separately — named as separate review unless independence is provable on model/evidence/runtime axes"
+  - id: DEPLOYMENT
+    concept: "How source becomes live state — governed path, lease, rollback"
+  - id: CONSEQUENCE
+    concept: "How the world is checked afterward — live probe, not exit code"
+  - id: CLOSURE
+    concept: "Who may accept the outcome — human acceptance never synthesized"
+
+# The forbidden-shortcut floor. Directives MUST declare these (or lane-specific
+# extensions). An objective without its anti-objective is malformed.
+forbidden_shortcuts_floor:
+  - weaken, delete, skip or loosen tests to make them pass
+  - change thresholds or metrics to reach a verdict
+  - bundle unrelated repairs into one commit/PR
+  - accept client-supplied or self-attested authority fields
+  - report a local test pass as a live world outcome
+  - self-close, self-seal, or promote by documentation existence
+
+# Epistemic closure ladder — each rung is a DIFFERENT claim; one boolean can
+# never carry two rungs (LAW-8: command_success != governance_verdict !=
+# world_outcome != human_acceptance).
+closure_ladder:
+  - problem_understood
+  - code_mutated
+  - targeted_tests_passed
+  - full_suite_passed
+  - commit_created
+  - commit_pushed
+  - build_produced
+  - release_deployed
+  - live_endpoint_changed
+  - world_outcome_observed
+  - human_accepted_closure
+
+# Legal exits — an agent must be ABLE to stop honestly; a success/failure-only
+# output format trains false completion.
+legal_exit_vocabulary: [UNKNOWN, PARTIAL, SABAR, HOLD, VOID, READY_FOR_HUMAN_ACCEPTANCE]
+
+# Model-behavior premises this contract assumes (from the guide; they justify
+# the structure, they are not runtime claims):
+premises:
+  - models optimize local coherence; prompts must carry target, current state, authority boundary, stop condition, consequence test
+  - representation determines search space; naming is ontology (session_id vs client_ref)
+  - salience is not automatic; hierarchy: authority > reality > mission > constraints > tests > execution
+  - output interfaces that force one boolean train false completion
+  - fresh context is separate review, not independent verification
+  - single trials prove nothing about capability stability
+  - graders are optimization targets; expect loophole-seeking and close them
+
+# Known prompt-debt traps (each is a candidate enforcement, per the guide):
+prompt_debt_watchlist:
+  - repeated "do not trust caller field X" -> server should refuse field X
+  - test name says one concept, fixture encodes another (test-ontology drift)
+  - compatibility adapters are authority surfaces: need owner, expiry, witness, ceiling, removal condition
+  - catalog caches can leak stale capability projection across authority contexts
+  - "read-only" is not consequence-free: side-effect taxonomy beyond read/write
+  - absence needs provenance: zero-results must carry health/coverage receipt
+  - completion detection: define what proves enough, or verification never stops
+  - federation-level failure modes need federation-level tests
+  - governance must survive model improvement, not just model weakness
+
+last_observed_at: "2026-10-27 (contract minted from the guide; first conforming directives: the day's master order + compile directive, which this contract retro-describes)"
