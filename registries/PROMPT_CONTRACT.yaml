@@ -89,7 +89,7 @@ prompt_debt_watchlist:
   - test name says one concept, fixture encodes another (test-ontology drift)
   - compatibility adapters are authority surfaces: need owner, expiry, witness, ceiling, removal condition
   - catalog caches can leak stale capability projection across authority contexts
-  - "read-only" is not consequence-free: side-effect taxonomy beyond read/write
+  - 'read-only is not consequence-free: side-effect taxonomy beyond read/write'
   - absence needs provenance: zero-results must carry health/coverage receipt
   - completion detection: define what proves enough, or verification never stops
   - federation-level failure modes need federation-level tests
