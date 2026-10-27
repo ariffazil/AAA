@@ -66,11 +66,14 @@ Maps to: APEX-ZEN Reality Loop OBSERVE; eureka doctrine. Both sides locally corr
 ## Closed regression invariant (Margin #10, retired from active defect register)
 
 ```text
-Live judge identity = 666 JUDGE
-888 = retired label, no operational authority, historical mirrors only
+666  = verb slot for arif_judge in the 8-verb chain (000/111/333/444/555/666/777/999)
+888-APEX = constitutional supreme arbiter chamber (lane judge; FEDERATION-INIT v1)
+The retired "888 judge" STAGE label survives only in historical mirrors.
+Verdicts on the wire = ConstitutionalVerdict enum (SEAL/PARTIAL/SABAR/HOLD/VOID),
+never a bare numeral.
 ```
 
-Sources: arifOS README §Stage numbering; A-FORGE README stage-map note (both live as of 2026-10-27).
+Sources: arifOS README §Stage numbering; A-FORGE README stage-map note; EUREKA-AXIOM-B1 §2A settlement (live as of 2026-10-27). Sibling artifact: `/root/AAA/eurekas/EUREKA-AXIOM-B1-BOUNDARY-BEFORE-DETAIL-2026-10-27.md` (architecture distillation: 4 orthogonal graphs, boundary object schema).
 
 ## Final compression
 
