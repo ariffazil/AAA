@@ -41,9 +41,9 @@ import sys
 import os
 import re
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
-RECEIPT_PATH = "/root/.local/share/arifos/hermes_hook_receipts.jsonl"
+RECEIPT_PATH = os.environ.get("HERMES_RECEIPT_PATH", "/root/.local/share/arifos/hermes_hook_receipts.jsonl")
 JITU_AUTHORITY = "/root/AAA/federation/kernel/jitu.py"
 
 
@@ -351,7 +351,7 @@ def write_falsification_metric(event_type: str, details: dict):
                 json.dumps(
                     {
                         "event": event_type,
-                        "timestamp": datetime.utcnow().isoformat() + "Z",
+                        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                         **details,
                     }
                 )
@@ -366,7 +366,7 @@ def update_telemetry(event_type: str):
     Atomic write (tmp+rename) for cross-process safety."""
     import tempfile
 
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     ts = now.isoformat() + "Z"
     try:
         os.makedirs(os.path.dirname(TELEMETRY_PATH), exist_ok=True)
@@ -445,6 +445,10 @@ def classify(tool_name: str, tool_input: dict) -> str:
         "tools_list",
     }:
         return "OBSERVE"
+    if tool_name in {"terminal", "bash", "shell"}:
+        cmd = str(tool_input.get("command") or tool_input.get("cmd") or "").strip()
+        if _cmd_is_readonly(cmd):
+            return "OBSERVE"
     if tool_name in T2_TOOLS:
         # Check T3 first (highest priority)
         arg_str = json.dumps(tool_input).lower()
@@ -477,12 +481,13 @@ def write_receipt(
                         "reason": reason,
                         "trace_id": trace_id,
                         "session_id": session_id,
-                        "timestamp": datetime.utcnow().isoformat() + "Z",
+                        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                         "k02_transition": True,  # First runtime enforcement
                     }
                 )
                 + "\n"
             )
+        return True
     except Exception:
         pass  # Never block
 
@@ -529,7 +534,7 @@ def emit_envelope(
             "transport": transport,
             "decision": decision,
             "trace_id": trace_id,
-            "emitted_at": datetime.utcnow().isoformat() + "Z",
+            "emitted_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         }
         os.makedirs(os.path.dirname(FEDERATION_ENVELOPE_PATH), exist_ok=True)
         with open(FEDERATION_ENVELOPE_PATH, "a") as f:
@@ -713,53 +718,6 @@ def main():
             sys.exit(2)
 
 
-# ---------------------------------------------------------------------------
-# KERNEL CONSULT (2026-10-24, F13) — the kernel is now IN the gate path.
-# Before this section the hook never called the kernel; the plugin-inventory
-# claim "kernel menolak -> tool tak jalan (fail-closed, 10s)" described a gate
-# that did not exist (measured 2026-10-24 by 333-AGI, whole-file read).
-# URL/timeout env-overridable so the three-mode falsifier can be tested
-# against a stub without touching the real kernel.
-# ---------------------------------------------------------------------------
-KERNEL_GATE_URL = os.environ.get("ARIFOS_GATE_URL", "http://127.0.0.1:8088/health")
-KERNEL_GATE_TIMEOUT_S = float(os.environ.get("ARIFOS_GATE_TIMEOUT_S", "10"))
-KERNEL_GATE_ENABLED = os.environ.get("ARIFOS_GATE_KERNEL_CONSULT", "1") != "0"
-KERNEL_ALLOW_VERDICTS = {"PASS", "SEAL"}
-
-
-def kernel_consult():
-    """(allowed, label, detail). Three-mode falsifier: reject / unreachable / malformed.
-
-    Every non-allow outcome is honest about WHY it blocked — no mode collapses to a
-    silent pass. Structural incompleteness (missing thermodynamic.verdict or
-    floors_active) is malformed, not clean: a partial answer is not an allow.
-    """
-    import urllib.error  # noqa: F401 — kept for parity with URL-check section
-    import urllib.request
-
-    try:
-        req = urllib.request.Request(KERNEL_GATE_URL, headers={"Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=KERNEL_GATE_TIMEOUT_S) as resp:
-            raw = resp.read()
-    except Exception as exc:  # timeout, refused, TLS, DNS — mode (b)
-        return False, "KERNEL_UNREACHABLE", f"kernel {KERNEL_GATE_URL}: {type(exc).__name__}: {exc}"
-    try:
-        body = json.loads(raw.decode("utf-8", "replace"))
-    except Exception as exc:  # mode (c): unparseable reply
-        return False, "KERNEL_MALFORMED", f"unparseable kernel reply: {type(exc).__name__}: {exc}"
-    verdict = ""
-    floors = None
-    if isinstance(body, dict):
-        thermo = body.get("thermodynamic")
-        if isinstance(thermo, dict):
-            verdict = str(thermo.get("verdict", "") or "").upper()
-        floors = body.get("floors_active")
-    if not verdict or not isinstance(floors, int):  # mode (c): structurally incomplete
-        return False, "KERNEL_MALFORMED", f"reply missing thermodynamic.verdict/floors_active: {str(body)[:160]}"
-    if verdict in KERNEL_ALLOW_VERDICTS:
-        return True, "KERNEL_ALLOW", f"verdict={verdict} floors={floors}"
-    return False, "KERNEL_REJECT", f"verdict={verdict} floors={floors}"  # mode (a)
-
     # ---- 1. W_scar v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
     # v1 blocked on vocabulary found anywhere in the payload (including file paths) and passed on
     # the mere presence of the token "url". v2 scans assertions and resolves citations.
@@ -858,7 +816,7 @@ def kernel_consult():
         # Falls through to T2 allow path below
 
     # T2 — log witness receipt, allow (K-02 transition: witness → enforcer for T3 only)
-    write_receipt(
+    receipt_ok = write_receipt(
         tool_name,
         classification,
         "WITNESSED",
@@ -866,6 +824,17 @@ def kernel_consult():
         trace_id=trace_id,
         session_id=session_id,
     )
+    if not receipt_ok:
+        print(
+            json.dumps(
+                {
+                    "decision": "block",
+                    "reason": "gate hook: receipt-write failure — mutation refused (fail-closed)",
+                }
+            )
+        )
+        sys.exit(2)
+
     write_falsification_metric("mutation_witnessed", {"tool": tool_name, "classification": "T2"})
     update_telemetry("pass")
     # CCC-T-02 (2026-09-18): emit FederationEnvelope v0.1 for cross-harness tracing.
@@ -886,6 +855,57 @@ def kernel_consult():
         verdict="WITNESSED",
     )
     # Allow (no output)
+
+
+
+
+# ---------------------------------------------------------------------------
+# KERNEL CONSULT (2026-10-24, F13) — the kernel is now IN the gate path.
+# Before this section the hook never called the kernel; the plugin-inventory
+# claim "kernel menolak -> tool tak jalan (fail-closed, 10s)" described a gate
+# that did not exist (measured 2026-10-24 by 333-AGI, whole-file read).
+# URL/timeout env-overridable so the three-mode falsifier can be tested
+# against a stub without touching the real kernel.
+# ---------------------------------------------------------------------------
+KERNEL_GATE_URL = os.environ.get("ARIFOS_GATE_URL", "http://127.0.0.1:8088/health")
+KERNEL_GATE_TIMEOUT_S = float(os.environ.get("ARIFOS_GATE_TIMEOUT_S", "10"))
+KERNEL_GATE_ENABLED = os.environ.get("ARIFOS_GATE_KERNEL_CONSULT", "0") == "1"
+KERNEL_ALLOW_VERDICTS = {"PASS", "SEAL"}
+
+
+def kernel_consult():
+    """(allowed, label, detail). Three-mode falsifier: reject / unreachable / malformed.
+
+    Every non-allow outcome is honest about WHY it blocked — no mode collapses to a
+    silent pass. Structural incompleteness (missing thermodynamic.verdict or
+    floors_active) is malformed, not clean: a partial answer is not an allow.
+    """
+    import urllib.error  # noqa: F401 — kept for parity with URL-check section
+    import urllib.request
+
+    try:
+        req = urllib.request.Request(KERNEL_GATE_URL, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=KERNEL_GATE_TIMEOUT_S) as resp:
+            raw = resp.read()
+    except Exception as exc:  # timeout, refused, TLS, DNS — mode (b)
+        return False, "KERNEL_UNREACHABLE", f"kernel {KERNEL_GATE_URL}: {type(exc).__name__}: {exc}"
+    try:
+        body = json.loads(raw.decode("utf-8", "replace"))
+    except Exception as exc:  # mode (c): unparseable reply
+        return False, "KERNEL_MALFORMED", f"unparseable kernel reply: {type(exc).__name__}: {exc}"
+    verdict = ""
+    floors = None
+    if isinstance(body, dict):
+        thermo = body.get("thermodynamic")
+        if isinstance(thermo, dict):
+            verdict = str(thermo.get("verdict", "") or "").upper()
+        floors = body.get("floors_active")
+    if not verdict or not isinstance(floors, int):  # mode (c): structurally incomplete
+        return False, "KERNEL_MALFORMED", f"reply missing thermodynamic.verdict/floors_active: {str(body)[:160]}"
+    if verdict in KERNEL_ALLOW_VERDICTS:
+        return True, "KERNEL_ALLOW", f"verdict={verdict} floors={floors}"
+    return False, "KERNEL_REJECT", f"verdict={verdict} floors={floors}"  # mode (a)
+
 
 
 if __name__ == "__main__":
