@@ -171,60 +171,6 @@
       ]
     },
     {
-      "id": "ASI-autonomous-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "Governed execution: T1/T2 auto, T3→888_HOLD. F1-F13 enforced.",
-      "tags": [
-        "autonomous",
-        "F1-F13",
-        "execution",
-        "T1-T3"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only six-organ audit. F1-F13 enforced.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "F1-F13",
-        "read-only"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F9",
-        "F11",
-        "F13"
-      ]
-    },
-    {
-      "id": "APEX-humility-lock",
-      "name": "Gödel Humility Lock",
-      "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
-      "tags": [
-        "humility",
-        "F7",
-        "self-critique",
-        "epistemic"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7"
-      ]
-    },
-    {
       "id": "FORGE-github-ops",
       "name": "GitHub Ops (merged v1.2.0)",
       "description": "GitHub ops: repos, PRs, issues, review. F1/F11 enforced.",
@@ -240,19 +186,19 @@
       ]
     },
     {
-      "id": "APEX-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across federation MCP servers. F4/F11 enforced.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
+      "id": "hermes-opencode-protocol",
+      "source": ".agents/skills/hermes-opencode-protocol",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
+    },
+    {
+      "id": "apex-judge",
+      "source": ".agents/skills/apex-judge",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
+    },
+    {
+      "id": "APEX-humility-godel",
+      "source": "/root/AAA/skills/domains/general/apex/recursive-audit/APEX-humility-godel/SKILL.md",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
     }
   ],
   "supported_protocols": [

@@ -120,52 +120,6 @@
   },
   "skills": [
     {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
       "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
@@ -196,26 +150,27 @@
       ]
     },
     {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
-        "zen",
-        "architecture"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
+      "id": "KERNEL-trinity-33",
+      "name": "KERNEL-trinity-33",
+      "source": "/usr/local/lib/hermes-agent/profiles/aaa-hermes/skills/KERNEL-trinity-33/SKILL.md",
+      "why": "normalized from string schema [e887a28a5]"
     },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI-recursive-improvement",
+      "source": "/root/AAA/skills/RSI-recursive-improvement/SKILL.md",
+      "why": "normalized from string schema [e887a28a5]"
+    },
+    {
+      "id": "kernel-bind",
+      "source": ".agents/skills/kernel-bind",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
+    },
+    {
+      "id": "audit-seal",
+      "source": ".agents/skills/audit-seal",
+      "why": "rebound from phantom per SKILLS-ALIGNMENT-AUDIT-2026-10-27 [e887a28a5]"
+    }
   ],
   "mcp_surface": {
     "type": "consumed",
