@@ -23,12 +23,14 @@ Environment:
 """
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import hmac
 import json
 import logging
 import os
 import sys
+import time
 from pathlib import Path
 from typing import Optional
 
@@ -59,6 +61,46 @@ ARIFOS_URL            = os.environ.get("ARIFOS_URL", "http://localhost:8088")
 # fix 2026-10-28: file lives at topology/, not triggers/ - old path made every
 # trigger lookup crash FileNotFoundError after auth passed (dead router bug)
 _TRIGGER_MAP_PATH = _ROOT / "topology" / "trigger-map.yaml"
+
+
+def _make_dpop_proof(bearer_token: str, method: str, url: str) -> str:
+    """Generate a DPoP proof (ES256 dpop+jwt) for an A-FORGE /peer request.
+
+    A-FORGE runs AFORGE_DPOP_MODE=enforce (deliberate security posture, systemd
+    drop-in). Proof claims htm/htu/iat/jti/ath per RFC 9449 as enforced by
+    A-FORGE dpop.ts. Key persisted at AAA_DPOP_KEY (default
+    /root/.secrets/aaa-dpop-key.pem), chmod 600.
+    """
+    import base64 as _b64
+    import uuid as _uuid
+    from jwcrypto import jwk as _jwk
+    from jwcrypto import jws as _jws
+
+    key_path = Path(os.environ.get("AAA_DPOP_KEY", "/root/.secrets/aaa-dpop-key.pem"))
+    if not key_path.exists():
+        key = _jwk.JWK.generate(kty="EC", crv="P-256")
+        key_path.write_text(key.export_to_pem(private_key=True, password=None).decode(), encoding="utf-8")
+        os.chmod(key_path, 0o600)
+    key = _jwk.JWK.from_pem(key_path.read_bytes())
+
+    def _b64u(raw: bytes) -> str:
+        return _b64.urlsafe_b64encode(raw).rstrip(b"=").decode()
+
+    pub = json.loads(key.export_public())
+    pub = {k: pub[k] for k in sorted(pub) if k in ("crv", "kty", "x", "y")}
+
+    ath = _b64u(hashlib.sha256(bearer_token.encode()).digest())
+    header = {"typ": "dpop+jwt", "alg": "ES256", "jwk": pub}
+    payload = {
+        "htm": method.upper(),
+        "htu": url,
+        "iat": int(time.time()),
+        "jti": str(_uuid.uuid4()),
+        "ath": ath,
+    }
+    signed = _jws.JWS(json.dumps(payload, separators=(",", ":")))
+    signed.add_signature(key, alg="ES256", protected=json.dumps(header, separators=(",", ":")))
+    return signed.serialize(compact=True)
 
 # ── Trigger map loader ────────────────────────────────────────────────────────
 
@@ -113,13 +155,17 @@ async def _dispatch(capsule: CAPSULE, trigger: dict) -> dict:
         async with httpx.AsyncClient(timeout=30) as client:
             # A-FORGE contract: POST /peer/execute (peer-contract gated, arifOS-judged).
             # Old target /skill/run never existed on A-FORGE (discovered live 2026-10-28).
+            _headers = {"Content-Type": "application/json"}
+            if AFORGE_OPERATOR_TOKEN:
+                _headers["Authorization"] = f"Bearer {AFORGE_OPERATOR_TOKEN}"
+                _url = f"{AFORGE_URL.rstrip('/').rstrip('/')}/peer/execute"
+                _headers["DPoP"] = await asyncio.to_thread(
+                    _make_dpop_proof, AFORGE_OPERATOR_TOKEN, "POST", _url
+                )
             resp = await client.post(
                 f"{AFORGE_URL}/peer/execute",
                 json=payload,
-                headers={
-                    "Content-Type": "application/json",
-                    **({"Authorization": f"Bearer {AFORGE_OPERATOR_TOKEN}"} if AFORGE_OPERATOR_TOKEN else {}),
-                }
+                headers=_headers,
             )
             if resp.status_code == 200:
                 return {"status": "DISPATCHED", "skill": skill, "response": resp.json()}
