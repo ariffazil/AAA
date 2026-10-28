@@ -45,9 +45,9 @@ providers:
       - id: MiniMax-M3.1-Flash
         tier: heavy
         role: fast general lane
-      - id: MiniMax-M3.1-Flash-Preview
+      - id: MiniMax-M3.1-Flash
         tier: heavy
-        role: MiniMax Code / M Plan exclusive
+        role: MiniMax Code / M Plan exclusive (-Preview id retired by vendor 2026-10)
       - id: MiniMax-M2.7
         tier: medium
       - id: MiniMax-M2.5
