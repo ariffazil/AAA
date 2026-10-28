@@ -23,6 +23,8 @@ Environment:
 """
 from __future__ import annotations
 
+import hashlib
+import hmac
 import json
 import logging
 import os
@@ -48,10 +50,15 @@ log = logging.getLogger("aaa.ingress")
 # ── Config ────────────────────────────────────────────────────────────────────
 
 GITHUB_WEBHOOK_SECRET = os.environ.get("GITHUB_WEBHOOK_SECRET", "")
-AFORGE_URL            = os.environ.get("AFORGE_URL", "http://localhost:3000")
+# fix 2026-10-28: default was :3000 which is Grafana on this host (302 redirect spam).
+# A-FORGE lives at :7071 (Sense API, single-port collapse 2026-08-11).
+AFORGE_URL            = os.environ.get("AFORGE_URL", "http://127.0.0.1:7071")
+AFORGE_OPERATOR_TOKEN = os.environ.get("AFORGE_OPERATOR_TOKEN", os.environ.get("OPERATOR_API_TOKEN", ""))
 ARIFOS_URL            = os.environ.get("ARIFOS_URL", "http://localhost:8088")
 
-_TRIGGER_MAP_PATH = _ROOT / "triggers" / "trigger-map.yaml"
+# fix 2026-10-28: file lives at topology/, not triggers/ - old path made every
+# trigger lookup crash FileNotFoundError after auth passed (dead router bug)
+_TRIGGER_MAP_PATH = _ROOT / "topology" / "trigger-map.yaml"
 
 # ── Trigger map loader ────────────────────────────────────────────────────────
 
@@ -104,10 +111,15 @@ async def _dispatch(capsule: CAPSULE, trigger: dict) -> dict:
 
     try:
         async with httpx.AsyncClient(timeout=30) as client:
+            # A-FORGE contract: POST /peer/execute (peer-contract gated, arifOS-judged).
+            # Old target /skill/run never existed on A-FORGE (discovered live 2026-10-28).
             resp = await client.post(
-                f"{AFORGE_URL}/skill/run",
+                f"{AFORGE_URL}/peer/execute",
                 json=payload,
-                headers={"Content-Type": "application/json"},
+                headers={
+                    "Content-Type": "application/json",
+                    **({"Authorization": f"Bearer {AFORGE_OPERATOR_TOKEN}"} if AFORGE_OPERATOR_TOKEN else {}),
+                }
             )
             if resp.status_code == 200:
                 return {"status": "DISPATCHED", "skill": skill, "response": resp.json()}
@@ -150,8 +162,14 @@ async def github_webhook(
     """
     raw = await request.body()
 
+    # FAIL-CLOSED: no configured secret means no verification is possible.
+    # Reject rather than accept unverified external events.
     if not GITHUB_WEBHOOK_SECRET:
-        log.warning("GITHUB_WEBHOOK_SECRET not set — accepting event without HMAC verification")
+        log.error("GITHUB_WEBHOOK_SECRET not configured — rejecting event (fail-closed)")
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="GITHUB_WEBHOOK_SECRET not configured — endpoint fail-closed, delivery rejected",
+        )
 
     capsule = build_capsule(
         raw_payload=raw,
@@ -190,6 +208,7 @@ async def github_webhook(
 async def manual_trigger(
     event_path: str,
     request: Request,
+    x_hub_signature_256: Optional[str] = Header(default=None),
 ) -> JSONResponse:
     """
     Manual trigger endpoint. event_path becomes the event_type with dots.
@@ -198,15 +217,37 @@ async def manual_trigger(
     raw = await request.body() or b"{}"
     event_type = f"manual.{event_path.replace('/', '.')}"
 
+    # FAIL-CLOSED: manual triggers must present a valid HMAC signature
+    # (same shared secret as GitHub) — no signature, no capsule, no dispatch.
+    if not GITHUB_WEBHOOK_SECRET:
+        log.error("GITHUB_WEBHOOK_SECRET not configured — manual trigger %s rejected (fail-closed)", event_type)
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="GITHUB_WEBHOOK_SECRET not configured — endpoint fail-closed, trigger rejected",
+        )
+    if not x_hub_signature_256:
+        log.error("Manual trigger %s rejected — missing X-Hub-Signature-256", event_type)
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing X-Hub-Signature-256 — signature required",
+        )
+    expected = "sha256=" + hmac.new(GITHUB_WEBHOOK_SECRET.encode(), raw, hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(expected, x_hub_signature_256.strip()):
+        log.error("Manual trigger %s rejected — HMAC mismatch", event_type)
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="HMAC verification failed — signature mismatch",
+        )
+
     capsule = build_capsule(
         raw_payload=raw,
         event_type=event_type,
         source="manual",
         source_did="did:arif:Ω",
-        hmac_header="",
-        github_secret="",
+        hmac_header=x_hub_signature_256,
+        github_secret=GITHUB_WEBHOOK_SECRET,
     )
-    capsule = capsule.model_copy(update={"hmac_verified": True})  # manual = sovereign, always trusted
+    # hmac_verified now reflects the real signature check above.
 
     log.info("Manual trigger %s → capsule %s", event_type, capsule.event_id[:8])
 
@@ -224,19 +265,49 @@ async def manual_trigger(
 
 
 @app.post("/webhook/cron/{schedule}")
-async def cron_trigger(schedule: str, request: Request) -> JSONResponse:
+async def cron_trigger(
+    schedule: str,
+    request: Request,
+    x_hub_signature_256: Optional[str] = Header(default=None),
+) -> JSONResponse:
     """
     Cron bridge. schedule = 'daily' or 'weekly'.
     Called by cron job or systemd timer on the VPS.
+    Callers must present HMAC-SHA256 over the body using GITHUB_WEBHOOK_SECRET.
     """
     event_type = f"cron.{schedule}"
+
+    # FAIL-CLOSED: same signature requirement as the manual endpoint.
+    if not GITHUB_WEBHOOK_SECRET:
+        log.error("GITHUB_WEBHOOK_SECRET not configured — cron trigger %s rejected (fail-closed)", event_type)
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="GITHUB_WEBHOOK_SECRET not configured — endpoint fail-closed, trigger rejected",
+        )
+    if not x_hub_signature_256:
+        log.error("Cron trigger %s rejected — missing X-Hub-Signature-256", event_type)
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing X-Hub-Signature-256 — signature required",
+        )
+    raw = await request.body()
+    expected = "sha256=" + hmac.new(GITHUB_WEBHOOK_SECRET.encode(), raw, hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(expected, x_hub_signature_256.strip()):
+        log.error("Cron trigger %s rejected — HMAC mismatch", event_type)
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="HMAC verification failed — signature mismatch",
+        )
+
     capsule = build_capsule(
-        raw_payload=f'{{"schedule":"{schedule}"}}'.encode(),
+        raw_payload=raw or f'{{"schedule":"{schedule}"}}'.encode(),
         event_type=event_type,
         source="cron",
         source_did="did:arif:aaa",
+        hmac_header=x_hub_signature_256,
+        github_secret=GITHUB_WEBHOOK_SECRET,
     )
-    capsule = capsule.model_copy(update={"hmac_verified": True})
+    # hmac_verified now reflects the real signature check above.
 
     log.info("Cron %s → capsule %s", schedule, capsule.event_id[:8])
 
