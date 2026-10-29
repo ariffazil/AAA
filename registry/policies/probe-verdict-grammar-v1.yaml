@@ -1,0 +1,17 @@
+schema_version: 1
+policy_id: probe-verdict-grammar-v1
+applies_to: [probes, aliases]
+verdict_rules:
+  - "PASS: http 200 AND output_validity all-true AND resolved==requested (or exact witnessed known_remap with severity WARN — then WARN)"
+  - "WARN: exact match to a known_remaps entry on the route (e.g. glm-5.2->glm-5.3); nothing else may be WARN"
+  - "FAIL: http 200 AND (non_empty false OR schema_valid false OR finish_state_valid false) — empty success is FAIL, never PASS"
+  - "HOLD: any undocumented resolution mismatch, or resolution UNKNOWN on a floating alias"
+  - "FAIL: non-200 http status (auth/billing/funds states recorded as separate availability fields, but the probe verdict is FAIL)"
+http200_is_not: "HTTP 200 != verified model identity; != inference ALIVE for /models-only checks (those yield AUTH_VALID / CATALOG_REACHABLE)"
+authority: F13 SOVEREIGN (brief PROBE_CONTRACT, regression cases A-E)
+rationale: "Every verdict class exists because a live incident proved the naive rule wrong — empty successes, silent remaps and catalog phantoms all looked like PASS under looser rules."
+evidence_refs:
+  - "incidents/INC-002 (HOLD-by-default for unclassified resolution)"
+  - "SOT:patch 2026_10_18 (thinking-ON + small max_tokens = 200 with EMPTY content — the empty-success trap)"
+last_reviewed_at: '2026-10-30'
+falsifier: "A verdict rule producing a wrong classification on a live witnessed case — regression suite must fail first."

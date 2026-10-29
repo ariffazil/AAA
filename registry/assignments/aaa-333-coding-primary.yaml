@@ -1,0 +1,14 @@
+schema_version: 1
+assignment_id: aaa-333-coding-primary
+AAA_role: 333-AGI (proposer/builder, FI-003 qwen-code)
+allowed_model_refs: [glm-5.3, glm-5.2]
+allowed_route_refs: [zai-coding-openai, zai-coding-anthropic]
+allowed_tasks: [reversible_code_generation, analysis, registry_authoring, reversible_tool_use]
+forbidden_tasks: [self_authorization, production_mutation_without_grant, independent_provider_witness, frozen_longitudinal_baseline]
+data_boundary: {public: allowed, internal: allowed, confidential: conditional, personal_data: forbidden, credentials: forbidden}
+authority_boundary: "BUILD-capability cell — proposes and builds; never verifies own work, never judges, never seals (APEX-ZEN chain BUILD->VERIFY->JUDGE->SEAL->ACT->WITNESS)"
+required_verification: [probe_receipt_on_route_change, 555_independent_review_for consequential]
+fallback_policy: "On zai outage: HOLD work, no silent family fallback (quota-dead judge lesson: schedule retry, not substitute)"
+failure_domain_refs: [zhipu-ai/api.z.ai/zai-coding-plan]
+independence: {role_class: proposer, independence_state: INDEPENDENT, shared_domain_note: "No overlap with 555/888 route domains; distinct provider org (zhipu-ai vs alibaba/gemini)"}
+evidence_refs: ["SOT:agents[qwen-code] primary glm/glm-5.3 @ zai-coding-plan"]

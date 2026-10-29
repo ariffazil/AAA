@@ -1,0 +1,15 @@
+schema_version: 1
+assignment_id: hermes-asi-lane
+AAA_role: HERMES (Tier-3 boundary interface, sense/research lane)
+allowed_model_refs: [hermes-asi-alias-unnormalized]
+allowed_route_refs: [fed-4000]
+allowed_tasks: [research, evidence_gathering, human_interaction, multimodal_perception]
+forbidden_tasks: [self_authorization, constitutional_judgment, vault_seal origination]
+data_boundary: {public: allowed, internal: allowed, confidential: conditional, personal_data: hold, credentials: forbidden}
+authority_boundary: "Persona lane carries zero federation authority (persona_policy); never a constitutional verifier"
+required_verification: []
+fallback_policy: "FED cascade handles rung fallback internally; visibility partial — identity claims require probe receipts"
+failure_domain_refs: [arifos-federation/fed-4000/router]
+independence: {role_class: proposer, independence_state: UNKNOWN, shared_domain_note: "Shares fed-4000 router with 555/888 FED rungs; upstream resolution UNKNOWN without probe"}
+evidence_refs: ["SOT:agents[hermes] primary hermes-asi @ fed"]
+notes: "hermes-asi alias upstreams not yet normalized (DEBT). Persona/voice lanes (i-ARIF) are out of scope for this assignment."

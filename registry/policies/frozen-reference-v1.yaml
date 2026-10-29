@@ -1,0 +1,19 @@
+schema_version: 1
+policy_id: frozen-reference-v1
+applies_to: [releases, routes, aliases]
+eligible_when:
+  - artifact_pinned          # weights_hash or serving revision pinned
+  - alias_not_floating       # mutability_class not *_FLOATING
+  - probe_identity_matched   # latest probe requested==resolved
+  - evaluation_revision_pinned
+forbidden_when:
+  - unresolved_model
+  - silent_upgrade_unclassified
+  - mutability_class in [PROVIDER_ALIAS_FLOATING, ROUTER_ALIAS_FLOATING]
+authority: F13 SOVEREIGN
+rationale: "A floating alias can change serving revision between two measurements — longitudinal baselines on floating ids measure the alias, not a model."
+evidence_refs:
+  - "incidents/INC-001-glm52-silent-remap"
+  - "releases/deepseek-flash (floating id auto-serves newest checkpoint)"
+last_reviewed_at: '2026-10-30'
+falsifier: "A floating id whose provider contractually pins serving revision with an echoed fingerprint would relax forbidden_when."

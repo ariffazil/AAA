@@ -1,0 +1,25 @@
+schema_version: 1
+policy_id: independence-verification-v1
+applies_to: [assignments]
+rule: >-
+  For consequential dual-signing (propose+verify, verify+judge), the involved roles'
+  routes must not share a failure domain: different provider OR different router. If
+  proposer, verifier and judge all resolve to the same upstream failure domain,
+  independence_state = COLLAPSED and the verdict for consequential use is HOLD.
+collapses_when:
+  - same route_ref
+  - same failure_domain.provider AND same failure_domain.endpoint_cluster
+  - both routed through the same router (fed-4000) with UNKNOWN upstream visibility
+authority: F13 SOVEREIGN (CAPABILITY != AUTHORITY)
+rationale: "A model serving more than one role proves nothing — if proposer, verifier and judge resolve to one upstream failure domain, agreement is one machine agreeing with itself."
+current_federation_reading: >-
+  proposer 333-AGI rides zai-coding (zhipu-ai domain); verifier 555-ASI rides
+  fed-4000->qwen-token-plan; judge 888-APEX rides fed-4000->gemini cascade.
+  Triple intersection is empty (NOT collapsed), but verifier+judge SHARE the FED
+  router domain — independence_state PARTIAL for verify+judge pairs; acceptable for
+  routine judgment, flagged for constitutional-grade dual-signing.
+evidence_refs:
+  - "routes/fed-4000 (partial upstream visibility note)"
+  - "SOT:patch 2026_08_19 (apex-888 hard-locked to litellm-federation cascade for Gödel E3 isolation)"
+last_reviewed_at: '2026-10-30'
+falsifier: "A routing change that gives 555/888 distinct routers, or a probe proving shared upstream resolution."

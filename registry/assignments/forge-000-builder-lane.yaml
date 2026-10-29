@@ -1,0 +1,14 @@
+schema_version: 1
+assignment_id: forge-000-builder-lane
+AAA_role: FORGE 000Ω (builder) + AUDITOR Ψ (opencode subagents)
+allowed_model_refs: [deepseek-v4-pro, deepseek-flash]
+allowed_route_refs: [deepseek-openai, deepseek-anthropic]
+allowed_tasks: [multi_step_execution, code_mutation_under_grant, audit_trail_generation]
+forbidden_tasks: [self_authorization, irreversible_commit_without_ack, constitutional_amendment]
+data_boundary: {public: allowed, internal: allowed, confidential: conditional, personal_data: forbidden, credentials: forbidden}
+authority_boundary: "Builder under grant; FORGE(000Ω)/AUDITOR(Ψ) run inside opencode — their runtime chain was reported pending re-point from dead deepseek-direct rungs (SOT 2026-08-30 note, OUTSTANDING)"
+required_verification: [lease_or_session_auth, post_execution_test_run]
+fallback_policy: "deepseek balance floor $2.00 alert; below -> route to qwen-tp team rung and record the domain switch"
+failure_domain_refs: [deepseek/api.deepseek.com/deepseek-direct]
+independence: {role_class: executor, independence_state: INDEPENDENT, shared_domain_note: "Direct-provider domain; but claude-code/codex agents ALSO primary deepseek-v4-pro — cross-role same-domain flagged for any dual-sign involving those agents"}
+evidence_refs: ["SOT:agents[forge, auditor] primary deepseek/deepseek-v4-pro; SOT 2026-08-30 OUTSTANDING note on opencode runtime"]
