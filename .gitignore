@@ -53,6 +53,7 @@ abstention_corpus.jsonl
 dist/
 benchmarks/floors/results/
 registry/compiled/
+registry/generated/
 # Caches + archives + retired
 **/__pycache__/
 node_modules/
