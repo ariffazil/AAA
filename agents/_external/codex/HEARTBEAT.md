@@ -34,7 +34,7 @@ Before starting a Codex task, verify the upstream gateways are alive:
 | A-FORGE | `curl -s http://127.0.0.1:7072/health` | `ok: true` |
 | A-FORGE SSE | `curl -s http://127.0.0.1:7071/health` | `ok: true` |
 | arifFlow FQ | `curl -s http://127.0.0.1:7073/health` | `diagnosis: BALANCED` |
-| FLAME free lane | `curl -s http://127.0.0.1:18901/health` | `status: live` |
+| FED free lane (FLAME retired 2026-09-04) | `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:4000/v1/models` | `200` |
 | AAA cockpit | `curl -s http://127.0.0.1:3001/health` | `status: healthy` |
 | Config sanity | `codex doctor` | all checks pass |
 

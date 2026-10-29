@@ -40,7 +40,7 @@ arifOS kernel (port 8088) -- F1-F13 floors
     +-- WELL  (port 18083) -- readiness
     +-- GEOX  (port 8081)  -- earth
     |
-    +-- FLAME (port 18901) -- free lane (fact-check, plan-review)
+    +-- FLAME (port 18901) -- RETIRED 2026-09-04; free lane now FED :4000 (SEA-LION/qfree)
     +-- AAA   (port 3001)  -- cockpit / A2A discovery
 ```
 

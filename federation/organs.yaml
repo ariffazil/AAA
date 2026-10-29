@@ -222,6 +222,10 @@ components:
   domain_law: NATURAL_LAW
   authority_ceiling: COMPUTE_ONLY
   port: 8081
+  mcp_port: 8081
+  interfaces:
+    health: /health
+    mcp: /mcp
   unit: geox-mcp.service
   public_mcp: https://geox.arif-fazil.com/mcp
   default_branch: main
@@ -258,6 +262,10 @@ components:
   domain_law: CAPITAL_LAW
   authority_ceiling: COMPUTE_ONLY
   port: 18082
+  mcp_port: 18082
+  interfaces:
+    health: /health
+    mcp: /mcp
   unit: wealth-organ.service
   public_mcp: https://wealth.arif-fazil.com/mcp
   default_branch: main
@@ -287,6 +295,10 @@ components:
   domain_law: SUBSTRATE_LAW
   authority_ceiling: REFLECT_ONLY
   port: 18083
+  mcp_port: 18083
+  interfaces:
+    health: /health
+    mcp: /mcp
   unit: well.service
   public_mcp: https://well.arif-fazil.com/mcp
   default_branch: main
@@ -692,6 +704,10 @@ components:
   role: model_route_advisor
   authority_ceiling: ADVISORY_ONLY
   port: 7074
+  mcp_port: 7074
+  interfaces:
+    health: /health
+    mcp: /mcp
   unit: fed-router.service
   source_path: /root/AAA/scripts/fed_router.py
   owned_domains:

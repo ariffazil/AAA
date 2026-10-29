@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/.well-known/schemas/fed-typed-contract.candidate.v1.json",
+  "title": "FED typed-contract candidate document — wraps machine-contract-extension.v1",
+  "version": "1.0-candidate",
+  "status": "CANDIDATE_NOT_DEPLOYED",
+  "description": "Document-level schema for fed-typed-contract.candidate.json. The four declaration fields are $ref'd from machine-contract-extension.v1 unchanged, so envelope conformance and document conformance are separately testable. The per-tool keys that are NOT part of the extension envelope (capability_id, executed_in_pilot, observation, request_schema, mutation, authority) are typed here rather than left to additionalProperties.",
+  "type": "object",
+  "required": ["candidate_version", "status", "organ", "capabilities"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "candidate_version": {"type": "string"},
+    "status": {"const": "VALIDATED_CANDIDATE_NOT_DEPLOYED"},
+    "organ": {"type": "string"},
+    "authority_ceiling": {"type": "string"},
+    "server": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "generated_by": {"type": "string"},
+    "scope_note": {"type": "string"},
+    "pilot_method": {"type": "string"},
+    "capabilities": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/toolEntry"}
+    }
+  },
+  "$defs": {
+    "envelope": {"$ref": "https://arif-fazil.com/.well-known/schemas/machine-contract-extension.v1.json"},
+    "toolEntry": {
+      "type": "object",
+      "required": ["capability_id", "executed_in_pilot", "observation", "request_schema",
+                   "response_schema", "outcomes", "receipt", "boundary", "mutation"],
+      "additionalProperties": false,
+      "properties": {
+        "capability_id": {"type": "string", "pattern": "^fed\\.[a-z_]+$"},
+        "executed_in_pilot": {"type": "boolean"},
+        "observation": {"enum": ["OBSERVED_RUNTIME", "OBSERVATION_NOT_EXECUTED"]},
+        "request_schema": {
+          "type": "object",
+          "required": ["state", "schema", "evidence_ref", "evidence_class"],
+          "properties": {
+            "state": {"enum": ["DECLARED", "OBSERVED", "UNKNOWN"]},
+            "schema": {"anyOf": [{"type": "object"}, {"type": "null"}]},
+            "evidence_ref": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+            "evidence_class": {"enum": ["DECLARED_TYPED", "OBSERVED_RUNTIME", "DECLARED_PROSE", "UNKNOWN"]}
+          }
+        },
+        "response_schema": {"$ref": "https://arif-fazil.com/.well-known/schemas/machine-contract-extension.v1.json#/properties/response_schema"},
+        "outcomes": {"$ref": "https://arif-fazil.com/.well-known/schemas/machine-contract-extension.v1.json#/properties/outcomes"},
+        "receipt": {"$ref": "https://arif-fazil.com/.well-known/schemas/machine-contract-extension.v1.json#/properties/receipt"},
+        "boundary": {"$ref": "https://arif-fazil.com/.well-known/schemas/machine-contract-extension.v1.json#/properties/boundary"},
+        "mutation": {
+          "type": "object",
+          "required": ["class", "state", "evidence_class", "source"],
+          "properties": {
+            "class": {"enum": ["OBSERVE", "MUTATE", "EXECUTE", "DEPLOY", "undeclared"]},
+            "state": {"enum": ["declared", "declared_in_prose", "undeclared"]},
+            "evidence_class": {"enum": ["DECLARED_TYPED", "OBSERVED_RUNTIME", "DECLARED_PROSE", "UNKNOWN"]},
+            "source": {"type": "string"},
+            "does_not_imply": {"type": "string"}
+          }
+        },
+        "authority": {
+          "type": "object",
+          "required": ["organ_ceiling", "human_veto", "source"],
+          "properties": {
+            "organ_ceiling": {"type": "string"},
+            "human_veto": {"type": "string"},
+            "source": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

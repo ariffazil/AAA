@@ -1,0 +1,300 @@
+{
+ "edition": "EDITION-032",
+ "date": "2026-10-27",
+ "items": [
+  {
+   "item_id": "hormuz-ukmto-23oct-timelate",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Tangki kena tembak 23 Okt — UKMTO baru dedah Isnin",
+   "claim_state": "NEW",
+   "summary": "UKMTO keluarkan amaran 'time-late' Isnin: tanker keluar Hormuz ditembak projektil tak dikenali 23 Okt 08:39 UTC, anak kapal selamat, kapal terhenti. Laporan kedua masa sama: kapal dilaporkan terbakar dekat Basra, Iraq. Ancaman Teluk dikekalkan SUBSTANTIAL — lima serangan dalam Teluk sejak 7 Okt, termasuk dekat anchorage dan pemindahan kapal-ke-kapal. Reuters kira 28 serangan ke atas kapal dalam Hormuz bulan ini sahaja — rekod bulanan. Ini bukan hening; kelajuan serangan belum pernah.",
+   "source": "UKMTO via gcaptain.com dan seatrade-maritime.com, 26 Okt 2026"
+  },
+  {
+   "item_id": "saudi-defense-minister-tehran",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Riyadh-Islamabad-Ankara ke Tehran — saluran rundingan bertambah",
+   "claim_state": "NEW",
+   "summary": "Menteri Pertahanan Saudi Prince Khalid bin Salman jumpa Presiden Pezeshkian di Tehran Isnin; pegawai keselamatan Pakistan dan Turki turut dalam laluan rundingan, kata tradingeconomics. Minyak jatuh bila berita keluar. Ini saluran ketiga dalam dua minggu selepas Qatar dan Oman — koridor diplomasi menebal, tiada siapa kata breakthrough.",
+   "source": "tradingeconomics.com Brent summary + cnbc.com 26 Okt 2026"
+  },
+  {
+   "item_id": "oil-brent-116-settlement",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Brent selesai Jumaat AS$116.72 — Isnin tarik balik ke ~AS$115",
+   "claim_state": "MOVED",
+   "summary": "Penyelesaian rasmi Jumaat AS$116.72, tertinggi sejak April. Isnin jatuh ~1.3% ke AS$115.19-115.22 sebab teknikal overbought dan berita rundingan Tehran. Konteks: naik 17.8% sebulan, 77.5% setahun. Kertas jatuh, fisikal tak berubah.",
+   "source": "tradingeconomics.com Brent 26 Okt + NDTV Profit 26 Okt"
+  },
+  {
+   "item_id": "hormuz-murban-bypass-premium",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Murban naik 3% ke AS$118 — premium sekarang khusus laluan, bukan minyak",
+   "claim_state": "NEW",
+   "summary": "UAE Murban naik 3% ke AS$118 Isnin pada hari Brent dan WTI jatuh. Murban dieksport melalui Fujairah — luar Hormuz. Ini bukti paling bersih bahawa premium risiko sekarang bayaran untuk laluan Teluk, bukan untuk tong. Kurva futures bersetuju: Dec26 ~116-117, Jan27 ~111, Mac27 ~104, Sep27 ~91 — pasar bayar mahal untuk konsimen terdekat dan menurunkan harga 2027 kerana expect de-eskalasi.",
+   "source": "gulfnews.com 26 Okt + ICE Brent futures table 26 Okt"
+  },
+  {
+   "item_id": "risk-hormuz-premium-margin",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "RISK",
+   "title": "Premium risiko Hormuz: kertas turun, laluan bayar",
+   "claim_state": "MOVED",
+   "summary": "Item diteruskan dengan bukti baharu: hari yang sama Brent jatuh 1.3% TAPI Murban (luar Hormuz) naik 3%. Premium tidak lagi umum — ia khusus kepada logistik Teluk. De-eskalasi rundingan Tehran ialah peristiwa risiko tunggal terbesar minggu ini untuk mana-mana pangkalan yang lalu Hormuz.",
+   "source": "sambungan item; diperkukuh Murban 26 Okt"
+  },
+  {
+   "item_id": "petroleum-revenue-projection",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "RISK",
+   "title": "Brent spot AS$115 tapi kurva 2027 kata pasar tak percaya ia kekal",
+   "claim_state": "MOVED",
+   "summary": "Spot jauh atas anggaran harga Belanjawan 2027, tapi kurva futures 26 Okt (Mac 2027 AS$103.94, Sep 2027 AS$91.29) menurun tajam. Dividen PETRONAS RM32 bilion ditetapkan bila harga rendah — realistik pada kurva, bukan spot. Keputusan fiskal sebenar tunggu keputusan rundingan Tehran, bukan tick spot.",
+   "source": "ICE futures 26 Okt + pembentangan Belanjawan 2027 MOF"
+  },
+  {
+   "item_id": "risk-subsidy-ceiling-45b",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "RISK",
+   "title": "RON95 kekal RM1.99 walaupun subsidi capai RM45 bilion — PM (24 Okt)",
+   "claim_state": "MOVED",
+   "summary": "PM kata kerajaan sanggup tanggung hingga RM42-45 bilion setahun, naik dari RM40 bilion lima hari sebelum itu. Angka baharu itu sendiri isu: ia pengakuan kerajaan bersedia scenario harga tinggi berpanjangan. Dibuat di Melaka, enam hari sebelum penamaan calun — bukan kebetulan.",
+   "source": "Malaysiakini (Bernama) + The Star + Straits Times, 24 Okt 2026"
+  },
+  {
+   "item_id": "trump-iran-decision-time",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Trump: 'decision time' — perjanjian atau habiskan",
+   "claim_state": "MOVED",
+   "summary": "Trump Ahad pada Fox News: Tehran berminat perjanjian buka semula Hormuz tapi dia persoal kepatuhan; keputusan antara 'make a deal' dan 'finish them off'. Midterm AS 3 Nov (7 hari) — tetingkap keputusan politik terdekat, sebelum aset serangan lengkap hujung Nov.",
+   "source": "Hindustan Times 26 Okt + Gulf News 26 Okt"
+  },
+  {
+   "item_id": "hormuz-flows-kpler",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Hormuz: CENTCOM kata pulih, JMIC/Windward kata lumpuh — masih CONTESTED",
+   "claim_state": "CONTESTED",
+   "summary": "Dua tuntutan masih hidup: (A) CENTCOM — lebih 3,000 kapal, 1.5 bilion tong lalu sejak musim panas dengan bantuan AS, laluan utama bebas ranjau; media pasaran kutip 'pulih hampir paras pra-perang'. (B) JMIC — hanya 101 transit dibantu AS antara 22-24 Okt lawan baseline ~138 sehari; Windward rekod 13 transit satu tetingkap; pengesan bebas kata 'effectively closed'. Tiada pengesahan bebas menyelesaikan ini. Aku simpan kedua-dua.",
+   "source": "CENTCOM via Asharq Al-Awsat 26 Okt vs JMIC via Gulf News 25 Okt + Windward"
+  },
+  {
+   "item_id": "israel-election-oct27",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "WALL",
+   "title": "Israel mengundi hari ini — exit poll ~3-4 pagi Rabu waktu kita",
+   "claim_state": "MOVED",
+   "summary": "Knesset ke-26: mengundi bermula 12:00 tengahari waktu kita (07:00 Israel), tutup 03:00 pagi Rabu MYT (22:00 Israel). Tinjauan akhir: Yashar 22-23, Likud 19-21, blok Netanyahu 50-59 ikut pengundang, tiada blok dekat 61. 22,000 polis dikerah; dilaporkan ada persiapan scenario satu blok dakwa keputusan dicuri. Exit poll keluar sebaik tutup — edisi esok bawa angka sebenar, keputusan rasmi 4 Nov.",
+   "source": "The Petek tracker + i24News + Arab News, 24-26 Okt 2026"
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "section": "WALL",
+   "title": "Mahkamah Persekutuan 25-29 Jan — 90 hari",
+   "claim_state": "MOVED",
+   "summary": "Pendengaran PETRONAS-Sarawak dijadualkan 25-29 Jan 2027. 90 hari dari hari ini. Datar menunggu.",
+   "source": "kalendar mahkamah; kiraan dari tarikh mutlak 27 Okt 2026"
+  },
+  {
+   "item_id": "melaka-polls-nov14",
+   "section": "WALL",
+   "title": "Melaka: penamaan Sabtu 31 Okt (4 hari), undi 14 Nov (18 hari)",
+   "claim_state": "MOVED",
+   "summary": "Penamaan calun Sabtu ini, pengundian 14 Nov. Pengumuman subsidi RM45 bilion dibuat di Melaka semalam — kitaran pilihan raya kecil sedang berjalan.",
+   "source": "jadual SPR"
+  },
+  {
+   "item_id": "own-od1-window",
+   "reality": "OD1_PERSONAL_TRANSITION",
+   "section": "OWN",
+   "title": "OD1: 125 hari",
+   "claim_state": "MOVED",
+   "summary": "1 Mac 2027 — 125 hari dari hari ini. MSS menunggu (last Mac 2027). Tiada perubahan status.",
+   "source": "kalendar; kiraan dari tarikh mutlak"
+  },
+  {
+   "item_id": "ops-disk-95-percent",
+   "reality": "HERMES_SYSTEM_HEALTH",
+   "section": "OWN",
+   "title": "OPS: cakera KVM8 95 peratus — 20 GB tinggal, semalam 43",
+   "claim_state": "MOVED",
+   "summary": "Kadar kehilangan memecut: 23 GB hilang dalam sehari. Pembesar hari ini: docker 21G + containerd 14G, folder kerja forge 28G (dua folder quarantine 9.2G, folder 2026-10-25 sendiri 6.0G), cache build 21G (huggingface 5.9, whisper 5.0, uv 3.9), restic 23G, runtime/hermes 11G, .arifos/agents 8.3G. Bukan satu punca. Pilihan paling selamat tanpa sentuh kanon/backup: cache build tools (~15-18G) dan quarantine lama. Aku tak padam tanpa arahan.",
+   "source": "df -h / + du -d1 probe langsung 27 Okt 06:00 MYT"
+  },
+  {
+   "item_id": "ops-arifos-f8-degraded",
+   "reality": "HERMES_SYSTEM_HEALTH",
+   "section": "OWN",
+   "title": "OPS: arifOS /health DEGRADED — F8 fail, F6 unmeasured",
+   "claim_state": "NEW",
+   "summary": "Probe 06:01: degraded. 11/13 lantai lulus; F8 (kontradiksi logik aktif) fail, F6 unmeasured. Kernel hidup, vault sihat, tiada drift, FED 7074 sihat. Punca F8: kontradiksi register yang masih open (Hormuz flows, Riyadh airport) dikira aktif. Bukan kecemasan — tapi lantai epistemik sendiri menandakan kerja belum selesai.",
+   "source": "curl 127.0.0.1:8088/health 27 Okt 06:01 MYT"
+  },
+  {
+   "item_id": "ops-calendar-token-still-dead",
+   "reality": "HERMES_SYSTEM_HEALTH",
+   "section": "OWN",
+   "title": "OPS: kalendar Google masih mati — menunggu keputusan hang",
+   "claim_state": "OPEN",
+   "summary": "Aplikasi OAuth status Testing hadkan refresh token 7 hari; token semalam sudah mati. Bahagian kalendar brief ini kosong sebab tiada akses, bukan sebab tiada acara. Dua jalan: publish aplikasi (perlu verification Google) atau service account. Keputusan hang.",
+   "source": "probe token 26-27 Okt; punca had Testing app Google OAuth"
+  },
+  {
+   "item_id": "void-freight-arbitrage",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "VOID",
+   "title": "Kos kapal kini harga minyak: AS$80 juta satu kargo Mexico-Asia",
+   "claim_state": "OPEN",
+   "summary": "Kargo Teluk Mexico ke Asia kini kos AS$80 juta — sekitar AS$40 setong, hampir tiga kali spread Brent-WTI. Tong AS tersekat di darat; Asia ditetapkan oleh kos angkut. Untuk sesiapa jual khidmat geoscience: kos logistik sekarang cipta premium untuk penilaian aset yang tak bergantung kargo Teluk.",
+   "source": "laporan kargo (terbawa dari edisi lepas, masih OPEN)"
+  },
+  {
+   "item_id": "void-rig-market-drillship",
+   "section": "VOID",
+   "title": "Gerek dalam: 85 peratus kapasiti 2027 ditempah, harga empat kali 2020",
+   "claim_state": "OPEN",
+   "summary": "Pasar drillship ketat — 85% kapasiti 2027 sudah ditempah, day rate empat kali paras 2020. Untuk kerja huluan: kos program 2027 naik automatik; untuk khidmat luar selepas OD1, pasar penuh permintaan dan harga. Kedua-dua belah pagar terjejas.",
+   "source": "terbawa dari edisi lepas, masih OPEN"
+  },
+  {
+   "item_id": "eureka-drex-fungus",
+   "section": "EUREKA",
+   "title": "'D-rex': kulat gergasi China, salasilah 65 juta tahun",
+   "claim_state": "NEW",
+   "summary": "Kulat baharu di China tumbuh sampai 50 cm dan berat hampir 2.3 kg — terbesar dalam kumpulannya. Salasilah evolusi bentuk badan ekstremnya berakar 65 juta tahun. Diterbit dalam Frontiers in Fungal Biology 26 Okt.",
+   "source": "ScienceDaily 26 Okt 2026 (Frontiers)"
+  },
+  {
+   "item_id": "eureka-skyrmions-melting",
+   "section": "EUREKA",
+   "title": "Skyrmion 'cair' dirakam kali pertama",
+   "claim_state": "NEW",
+   "summary": "Ahli fizik merakam buat kali pertama vorteks magnet mini (skyrmion) mencair keluar dari kekisi teratur — rakaman tingkah laku yang buka jalan komputer berkira macam otak dengan sebahagian kecil elektrik hari ini. Nature Nanotechnology, 26 Okt.",
+   "source": "ScienceDaily 26 Okt 2026 (NTNU)"
+  },
+  {
+   "item_id": "eureka-bp-med-adherence",
+   "section": "EUREKA",
+   "title": "Termiss ubat darah tinggi = hilang sebahagian besar perlindungan",
+   "claim_state": "NEW",
+   "summary": "Analisis 91,000+ orang: berhenti ambil ubat tekanan darah bukan sekadar kawalan longgar — perlindungan terhadap serangan jantung dan strok hilang sebahagian besarnya. Ambil berat harian menentukan hasil, bukan preskripsi.",
+   "source": "ScienceDaily 25 Okt 2026"
+  }
+ ],
+ "states": [
+  {
+   "state_id": "GULF_ENERGY_WAR",
+   "label": "Gulf energy war",
+   "phase": "ELEVATED",
+   "confidence": 0.75,
+   "first_seen": "EDITION-031",
+   "note": "Serangan Hormuz rekod bulanan (28 pada Okt) TAPI tiga saluran rundingan aktif dan pasar mula harga de-eskalasi 2027. Israel mengundi hari ini; midterm AS 3 Nov."
+  },
+  {
+   "state_id": "MALAYSIA_FISCAL_POLICY",
+   "label": "Malaysia fiscal policy",
+   "phase": "ELEVATED",
+   "confidence": 0.8,
+   "first_seen": "EDITION-031",
+   "note": "Siling subsidi naik RM40 ke RM42-45 bilion; RON95 dikekalkan RM1.99. Tekanan fiskal bergantung Brent melebihi 110 berpanjangan."
+  },
+  {
+   "state_id": "OD1_PERSONAL_TRANSITION",
+   "label": "OD1 personal transition",
+   "phase": "HOLDING",
+   "confidence": 0.9,
+   "first_seen": "EDITION-031",
+   "note": "125 hari. MSS menunggu. Tiada input baharu."
+  },
+  {
+   "state_id": "HERMES_SYSTEM_HEALTH",
+   "label": "Hermes system health",
+   "phase": "ELEVATED",
+   "confidence": 0.7,
+   "first_seen": "EDITION-031",
+   "note": "Cakera 95% (20GB bebas, -23GB sehari) + arifOS F8 fail + kalendar mati. Tiga tekanan berasingan, satu makin kritikal."
+  },
+  {
+   "state_id": "PETRONAS_SARAWAK_AUTHORITY",
+   "label": "PETRONAS-Sarawak authority",
+   "phase": "HOLDING",
+   "confidence": 0.85,
+   "first_seen": "EDITION-031",
+   "note": "Menunggu mahkamah (25-29 Jan), bukan menunggu keputusan."
+  }
+ ],
+ "contradictions": [
+  {
+   "cid": "C-HORMUZ-FLOWS",
+   "topic": "Trafik Hormuz",
+   "claim_a": "CENTCOM: lebih 3,000 kapal, lebih 1.5 bilion tong lalu sejak musim panas; laluan utama bebas ranjau; pulih hampir pra-perang",
+   "source_a": "CENTCOM via Asharq Al-Awsat, 26 Okt",
+   "claim_b": "JMIC: 101 transit dibantu AS 22-24 Okt lawan baseline ~138 sehari; Windward 13 transit satu tetingkap; pengesan bebas: 'effectively closed'",
+   "source_b": "JMIC via Gulf News 25 Okt; Windward tracker",
+   "status": "OPEN",
+   "opened_edition": "EDITION-031"
+  },
+  {
+   "cid": "C-RIYADH-AIRPORT",
+   "topic": "Lapangan terbang Riyadh",
+   "claim_a": "Terminal 1 dan 2 buka semula, beroperasi",
+   "source_a": "laporan 25 Okt (edisi 031)",
+   "claim_b": "Houthi: lapangan terbang kekal sasaran; serangan berterusan",
+   "source_b": "laporan 25-26 Okt (edisi 031)",
+   "status": "OPEN",
+   "opened_edition": "EDITION-031"
+  }
+ ],
+ "scars": [
+  {
+   "scar_id": "SCAR-CALENDAR-TOKEN",
+   "name": "Kalendar OAuth mati setiap 7 hari",
+   "severity": "medium",
+   "status": "ACTIVE",
+   "symptom": "Bahagian kalendar brief kosong lagi hari ini — token mati",
+   "root_cause": "Aplikasi OAuth external status Testing; refresh token had 7 hari",
+   "fix": "Publish aplikasi atau tukar service account — keputusan F13",
+   "first_seen": "EDITION-031",
+   "recurred_today": true,
+   "observed_note": "Probe token hari ini gagal lagi; bahagian kalendar ditinggalkan kosong sengaja"
+  },
+  {
+   "scar_id": "SCAR-PAGE-DATE-ARCHIVE",
+   "name": "Artikel arkib bersiar sebagai berita hari ini",
+   "severity": "medium",
+   "status": "ACTIVE",
+   "symptom": "Artikel lama muncul dalam carian 'hari ini'",
+   "root_cause": "Enjin carian tak menapis tarikh siaran asal",
+   "fix": "Semak tarikh siaran sebelum guna; tapis keluar tiap edisi",
+   "first_seen": "EDITION-031",
+   "recurred_today": false
+  }
+ ],
+ "realities": [
+  {
+   "reality_id": "GULF_ENERGY_WAR",
+   "label": "Gulf energy war",
+   "domain": "energy"
+  },
+  {
+   "reality_id": "MALAYSIA_FISCAL_POLICY",
+   "label": "Malaysia fiscal policy",
+   "domain": "fiscal"
+  },
+  {
+   "reality_id": "OD1_PERSONAL_TRANSITION",
+   "label": "OD1 personal transition",
+   "domain": "personal"
+  },
+  {
+   "reality_id": "HERMES_SYSTEM_HEALTH",
+   "label": "Hermes system health",
+   "domain": "system"
+  }
+ ]
+}

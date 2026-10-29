@@ -388,6 +388,16 @@ async def fed_health(_request):
             "class": "route_advisor",
             "ceiling": "never judges, never hard-blocks",
             "bl12": {
+                # HONEST LABEL (2026-10-27): `state: VOCABULARY_GAP` was read twice tonight
+                # (external audit + 333-AGI) as "the router cannot route". It cannot: it names
+                # the BL12 calibration-PENALTY vocabulary sourced from
+                # /root/chron/data/calibration_per_actor.json, which held 1 actor (UNATTRIBUTED,
+                # routable=false) -> rows=0 -> the penalty can never fire. fed_route itself was
+                # live and returned ranked routes in the same probe. Scope ships with the counter
+                # so a dormant subsystem is never read as organ failure again.
+                "scope": "bl12_calibration_penalty_only",
+                "affects_route_output": bool(_CALIB_CACHE["rows"]),
+                "source": _CALIB_FILE,
                 "routing_keys_known": _CALIB_CACHE["rows"],
                 "lookups_matched": _CALIB_CACHE["matched"],
                 "penalties_applied": _CALIB_CACHE["penalized"],

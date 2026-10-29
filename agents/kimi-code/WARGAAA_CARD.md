@@ -21,7 +21,7 @@
 | `owner` | Muhammad Arif bin Fazil (F13 SOVEREIGN) |
 | `binary` | `/root/.kimi-code/bin/kimi` v0.35.0 (latest on CDN as of 2026-08-13) |
 | `config_home` | `$KIMI_CODE_HOME` → `/root/.arifos/agents/kimi` |
-| `model` | `kimi-code/k3` (Kimi K3, 2.8T MoE, 1M context, vision, thinking) |
+| `model` | `kimi-code/k3.1-pro` (Kimi K3.1 Pro, 2.8T MoE, 1M context, vision, thinking) |
 | `status` | active citizen |
 | `agent_card_version` | **v2.4.0** (2026-08-13 — anti-bangang forge: 12 hooks, YOLO-native governance) |
 | `last_verified` | 2026-08-13 (anti-bangang forge — hooks smoke tested, cards synced) |

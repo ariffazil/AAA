@@ -1,0 +1,2511 @@
+{
+ "probed_at": null,
+ "server": {
+  "name": "FED — Federation Router",
+  "version": "4.1.2"
+ },
+ "tools_list": [
+  {
+   "_meta": {
+    "fastmcp": {
+     "tags": []
+    }
+   },
+   "description": "Primary routing tool. Returns ranked routes for a given task.",
+   "inputSchema": {
+    "properties": {
+     "task": {
+      "default": "",
+      "type": "string",
+      "description": "Natural language description of the task"
+     },
+     "model": {
+      "default": "deepseek-v4-pro",
+      "type": "string",
+      "description": "Target model (default: deepseek-v4-pro). Can also be a capability signature:\nfed-reasoning-heavy  → [deepseek-v4-pro, qwen3.8-max, MiniMax-M3]\nfed-multimodal-vision → [qwen-vl-max, mimo-v2.6-flash, MiniMax-M3]\nfed-long-context     → [MiniMax-M3, mimo-v2.6-pro, qwen3.8-max]\nfed-agent-subagent   → [deepseek-v4-flash, qwen3.6-flash, mimo-v2.6-flash]\nfed-realtime-voice   → [mimo-v2.5-tts, mimo-v2.5-asr]\nfed-local-uncensored → LOCAL RUNTIME: routes to ComfyUI :8188 with full audit"
+     },
+     "modality": {
+      "default": "text",
+      "type": "string",
+      "description": "text, vision, video, audio, omni"
+     },
+     "agent_id": {
+      "default": "opencode",
+      "type": "string",
+      "description": "Calling agent (opencode, hermes, asi-555, apex-888)"
+     },
+     "constitutional_tier": {
+      "default": 333,
+      "type": "integer",
+      "description": "0=default, 333=primary, 555=research, 666=judge, 999=seal"
+     },
+     "effort_level": {
+      "default": "",
+      "type": "string",
+      "description": "Effort Dial — low/medium/high/ultra. Overrides model selection.\nlow: flash models (cheap & fast)\nmedium: pro models (default, balanced)\nhigh: pro + reasoning pass (complex tasks)\nultra: frontier models + multiple reasoning passes (SEAL-grade)"
+     },
+     "tokens_in_estimate": {
+      "default": 0,
+      "type": "integer",
+      "description": "Estimated input tokens (for spend logging)"
+     },
+     "tokens_out_estimate": {
+      "default": 0,
+      "type": "integer",
+      "description": "Estimated output tokens (for spend logging)"
+     },
+     "operation": {
+      "default": "auto",
+      "type": "string"
+     }
+    },
+    "type": "object",
+    "additionalProperties": false
+   },
+   "name": "fed_route",
+   "outputSchema": {
+    "type": "object",
+    "additionalProperties": true
+   },
+   "title": "Fed Route"
+  },
+  {
+   "_meta": {
+    "fastmcp": {
+     "tags": []
+    }
+   },
+   "description": "Return full FED state: all provider balances, route health, latency summary.",
+   "inputSchema": {
+    "properties": {},
+    "type": "object",
+    "additionalProperties": false
+   },
+   "name": "fed_status",
+   "outputSchema": {
+    "type": "object",
+    "additionalProperties": true
+   },
+   "title": "Fed Status"
+  },
+  {
+   "_meta": {
+    "fastmcp": {
+     "tags": []
+    }
+   },
+   "description": "Probe LiteLLM gateway lanes + DB state (v3.3.1).\n\nReplaces the dead delegation to balance_probe.py (probed DeepSeek only,\nhardcoded provider_count=6). Reads live gateway health surfaces directly\nand reports honest DB counts. ADVISORY_ONLY — never judges.",
+   "inputSchema": {
+    "properties": {},
+    "type": "object",
+    "additionalProperties": false
+   },
+   "name": "fed_probe",
+   "outputSchema": {
+    "type": "object",
+    "additionalProperties": true
+   },
+   "title": "Fed Probe"
+  },
+  {
+   "_meta": {
+    "fastmcp": {
+     "tags": []
+    }
+   },
+   "description": "Compare two routes side-by-side: cost, latency, shadow, constitutional fit.",
+   "inputSchema": {
+    "properties": {
+     "route_a": {
+      "type": "string"
+     },
+     "route_b": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "route_a",
+     "route_b"
+    ],
+    "type": "object",
+    "additionalProperties": false
+   },
+   "name": "fed_contrast",
+   "outputSchema": {
+    "type": "object",
+    "additionalProperties": true
+   },
+   "title": "Fed Contrast"
+  },
+  {
+   "_meta": {
+    "fastmcp": {
+     "tags": []
+    }
+   },
+   "description": "FED health check — returns service status and DB integrity.",
+   "inputSchema": {
+    "properties": {},
+    "type": "object",
+    "additionalProperties": false
+   },
+   "name": "fed_health",
+   "outputSchema": {
+    "type": "object",
+    "additionalProperties": true
+   },
+   "title": "Fed Health"
+  },
+  {
+   "_meta": {
+    "fastmcp": {
+     "tags": []
+    }
+   },
+   "description": "Classify a message into a capability lane. Deterministic, identity-blind.\n\nAnswers ONE question: \"capability apa diperlukan oleh mesej ini?\"\nNever identity, never emotion, never philosophy — those live prompt-side.",
+   "inputSchema": {
+    "properties": {
+     "task": {
+      "type": "string",
+      "description": "The message/task text to classify."
+     }
+    },
+    "required": [
+     "task"
+    ],
+    "type": "object",
+    "additionalProperties": false
+   },
+   "name": "fed_classify",
+   "outputSchema": {
+    "type": "object",
+    "additionalProperties": true
+   },
+   "title": "Fed Classify"
+  },
+  {
+   "_meta": {
+    "fastmcp": {
+     "tags": []
+    }
+   },
+   "description": "Report latency for a provider-model route. Agents call this after every\nAPI call to populate route_latency table with live telemetry.",
+   "inputSchema": {
+    "properties": {
+     "provider": {
+      "type": "string",
+      "description": "Provider name (deepseek, mulerouter, tokenrouter, etc.)"
+     },
+     "model": {
+      "type": "string",
+      "description": "Model ID (deepseek-v4-pro, qwen-vl-max, etc.)"
+     },
+     "latency_ms": {
+      "type": "number",
+      "description": "Round-trip latency in milliseconds"
+     },
+     "status_code": {
+      "default": 200,
+      "type": "integer",
+      "description": "HTTP status code (200, 429, 503, etc.)"
+     },
+     "tokens_in": {
+      "default": 0,
+      "type": "integer",
+      "description": "Input tokens used"
+     },
+     "tokens_out": {
+      "default": 0,
+      "type": "integer",
+      "description": "Output tokens generated"
+     },
+     "agent_id": {
+      "default": "unknown",
+      "type": "string",
+      "description": "Reporting agent"
+     },
+     "hcsvog_fingerprint": {
+      "default": "",
+      "type": "string",
+      "description": "ETCSOVG harness fingerprint (SHA256-first-8) linking\nthis latency sample to a specific harness configuration"
+     }
+    },
+    "required": [
+     "provider",
+     "model",
+     "latency_ms"
+    ],
+    "type": "object",
+    "additionalProperties": false
+   },
+   "name": "fed_report_latency",
+   "outputSchema": {
+    "type": "object",
+    "additionalProperties": true
+   },
+   "title": "Fed Report Latency"
+  }
+ ],
+ "calls": {
+  "fed_health": {
+   "arguments": {},
+   "raw_result": {
+    "content": [
+     {
+      "text": "{\"status\":\"LIVE\",\"port\":7074,\"version\":\"3.3.0-zen-classifier\",\"tables\":[\"providers\",\"route_health\",\"route_latency\",\"route_quality\",\"shadow_ledger\",\"sqlite_sequence\",\"token_bank_spend\"],\"state_db\":\"/root/.local/share/arifos/token_bank.db\"}",
+      "type": "text"
+     }
+    ],
+    "isError": false,
+    "structuredContent": {
+     "status": "LIVE",
+     "port": 7074,
+     "version": "3.3.0-zen-classifier",
+     "tables": [
+      "providers",
+      "route_health",
+      "route_latency",
+      "route_quality",
+      "shadow_ledger",
+      "sqlite_sequence",
+      "token_bank_spend"
+     ],
+     "state_db": "/root/.local/share/arifos/token_bank.db"
+    }
+   },
+   "isError": false,
+   "structuredContent": {
+    "status": "LIVE",
+    "port": 7074,
+    "version": "3.3.0-zen-classifier",
+    "tables": [
+     "providers",
+     "route_health",
+     "route_latency",
+     "route_quality",
+     "shadow_ledger",
+     "sqlite_sequence",
+     "token_bank_spend"
+    ],
+    "state_db": "/root/.local/share/arifos/token_bank.db"
+   },
+   "content_text": "{\"status\":\"LIVE\",\"port\":7074,\"version\":\"3.3.0-zen-classifier\",\"tables\":[\"providers\",\"route_health\",\"route_latency\",\"route_quality\",\"shadow_ledger\",\"sqlite_sequence\",\"token_bank_spend\"],\"state_db\":\"/root/.local/share/arifos/token_bank.db\"}"
+  },
+  "fed_status": {
+   "arguments": {},
+   "raw_result": {
+    "content": [
+     {
+      "text": "{\"providers\":[{\"id\":1,\"provider_name\":\"deepseek\",\"track_type\":\"A\",\"balance_usd\":6.46,\"last_updated\":\"2026-10-18T08:55:45.449211+00:00\",\"confidence_score\":1.0,\"last_probed_at\":\"2026-10-26T11:17:01Z\",\"notes\":\"probed via api_probe\",\"balance_confidence\":1.0,\"track\":\"A\"},{\"id\":42,\"provider_name\":\"kimi-moonshot\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-09-06T12:37:00Z\",\"confidence_score\":1.0,\"last_probed_at\":\"2026-09-06T12:37:00Z\",\"notes\":\"PROBED_2026-09-06: LIVE /v1/usages weekly limit=100 used=21 remaining=79 reset=2026-09-10T14:07:59Z, 5h window limit=100 used=24, parallel=30, LEVEL_STANDARD\",\"balance_confidence\":1.0,\"track\":\"A\"},{\"id\":6,\"provider_name\":\"mimo-platform\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-11T23:42:01.514307+00:00\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-09-06T12:37:00Z\",\"notes\":\"LEGACY 2026-08-19T09:35Z — Xiaomi MiMo OPEN Platform (api.xiaomimimo.com, OPEN key). KEPT as fallback only — token-plan path is the canonical primary. Was the active path during 2026-08-12 → 2026-08-18 when token-plan Max was exhausted. Token-plan now refreshed (Max 82B credits) and tp- key verified live 2026-08-19. Key: secrets::MIMO_PAYG_OPENCODE_API_KEY (sk-spv prefix, OPEN dashboard key). Endpoint: https://api.xiaomimimo.com/v1. | BILLING_MODEL=open_platform_payg | FALLBACK_ONLY | SUPERSEDED_BY=mimo-token-plan | PROBED_2026-09-06: 402 insufficient_balance DEAD — do not route | PROBED_2026-09-22: LIVE [witness=chat_completion IMG vision round-trip: model accurately described 1x1 white-pixel PNG content (6] | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (6528ms)]\",\"balance_confidence\":0.95,\"track\":\"A\"},{\"id\":36,\"provider_name\":\"mimo-token-plan\",\"track_type\":\"A\",\"balance_usd\":50.0,\"last_updated\":\"2026-08-19T09:35:00+00:00\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-10-26T11:17:01Z\",\"notes\":\"LIVE 2026-08-19T09:35Z — Xiaomi MiMo V2.5 Token Plan (Singapore, max-monthly 82B credits). Endpoint https://token-plan-sgp.xiaomimimo.com/v1 (OpenAI-compat) + /anthropic (Anthropic-compat). Key: secrets::MIMO_TOKEN_PLAN_API_KEY (tp- prefix, dedicated token-plan key per F13 split 2026-08-17; alias secrets::MIMO_API_KEY). 6 active models: mimo-v2.5-pro (1M ctx), mimo-v2.5 (1M ctx, omni-modal text+img+video+audio), mimo-v2.5-asr (30M cred/h audio), mimo-v2.5-tts + mimo-v2.5-tts-voiceclone + mimo-v2.5-tts-voicedesign (FREE for limited time — 0 credit deduction). USD pricing (landing): v2.5-pro $0.0036/$0.435/$0.87 per MTok (hit/miss/out); v2.5 $0.0028/$0.14/$0.28. Deprecated 2026-06-30: mimo-v2-pro, mimo-v2-omni, mimo-v2-tts. License scope (F13-binding): coding tools only (OpenClaw/OpenCode/Claude/Codex/Kimi/Qwen/Grok); direct API from non-coding backends prohibited. Re-anchored 2026-08-19 from earlier mimo-platform (OPEN key) when token-plan confirmed fresh + tp- key verified HTTP 200 on /v1/models + /v1/chat/completions. | BILLING_MODEL=monthly_token_plan_max | SGP_ENDPOINT | TP-KEY | USD_KNOWN | MULTIMODAL_OMNI | TTS_FREE | API_VERIFIED_2026-08-19 | PROBED_2026-09-06: LIVE mimo-v2.5 637-981ms\",\"balance_confidence\":0.95,\"track\":\"A\"},{\"id\":7,\"provider_name\":\"minimax\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-11 00:57:49\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-10-26T11:17:01Z\",\"notes\":\"LIVE 2026-08-11T00:57:49Z — re-anchored by FED doctor (Kimi Code CLI). MiniMax-M3 verified HTTP 200 chat completion (~1.78s latency, vault key valid). 8 models exposed (M3, M2.7, M2.5, M2.1, M2 + highspeed variants). Token Plan fresh per 2026-08-11 user dashboard (18% 5h, 34% weekly). Key: MINIMAX_API_KEY. Endpoint: https://api.minimax.io/v1. Routing: litellm fed-long-context order=2 (PRIMARY), fed-reasoning-heavy + fed-multimodal-vision order=3. GAP: opencode + codex + kimi-code aliases lack MiniMax fallback (see call_map review). | BILLING_MODEL=monthly_token_plan | FRESH | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: token_plan/remains → status 2062 NO ACTIVE SUBSCRIPTION — group dead until resubscribe | RESUBSCRIBED 2026-09-06: Token Plan Max LIVE (M3 200 in 1.9s; weekly_remains ~35.1M units; renews 2026-10-05; 4-5 concurrent; 1M ctx multimodal; Hailuo 3/day). Rung restored to 7 chains. | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (3929ms)]\",\"balance_confidence\":0.95,\"track\":\"A\"},{\"id\":43,\"provider_name\":\"mistral\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-09-13T07:28:57+00:00\",\"confidence_score\":0.9,\"last_probed_at\":\"2026-09-13T07:28:57+00:00\",\"notes\":\"REGISTERED_2026-09-13 per F13 APEX-ZEN directive (SOT patch_note_2026_09_13_apex_zen) — Order-0 paid bedrock across i-arif/agi-333/forge-777/asi-555. LIVE probe 2026-09-13 (direct api.mistral.ai, chat-level n=1): codestral-latest PONG 378ms, mistral-large-latest PONG 500ms; also HEALTHY via litellm forge-777 health on both KVM8 :4013 and KVM4 :4000. Key secrets::MISTRAL_API_KEY. Jurisdiction FR/EU per SOT federation-models.json providers[0]. Billing payg_active. BALANCE NOT YET PROBED (console PAYG) — balance_usd 0.0 is a placeholder, set real balance + confidence 1.0 on first balance probe.\",\"balance_confidence\":0.9,\"track\":\"A\"},{\"id\":21,\"provider_name\":\"opencode-go\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-11 01:03:20\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-09-13T00:45:00Z\",\"notes\":\"LIVE 2026-08-11T01:03:20Z — OpenCode Go (Anomaly) subscription registered. API verified HTTP 200 (0.58s): https://opencode.ai/zen/go/v1 — 25+ models exposed. Models include: minimax-m3/m2.7/m2.5, kimi-k3/k2.7-code, glm-5.2/5.1/5, deepseek-v4-pro/flash, qwen3.8-max/3.7-max/3.7-plus/3.6-plus/3.5-plus, mimo-v2.5-pro/v2.5, hy3/hy3-preview, gpt-5.6-luna, grok-4.5. Curated OpenRouter-equivalent — one key, many models. Arif subscription: $10/mo Go tier, 0% rolling / 40% weekly / 20% monthly (2026-08-11). Key: OPENCODE_GO_API_KEY (kunci-mas.env). OpenAI-compatible transport at /zen/go/v1. Routed via litellm alias opencode-go and via opencode CLI primary. FI alignment: FI-001 opencode CLI uses opencode-go as PRIMARY 333-AGI / 555-ASI models. FI-008 kimi-code and FI-005 codex now have opencode-go as resilience fallback. | BILLING_MODEL=monthly_subscription | ARIF_TIER=Go | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: 401 CreditsError INSUFFICIENT BALANCE both go+zen (same workspace wrk_01KH1CM97F) — drained | PROBED_2026-09-12T15:50Z (FED doctor, Kimi Code FI-008): LIVE HTTP 200 on /zen/go/v1/models, 37 models exposed — Go cycle reset (dashboard 0%), lane re-anchored from stale 2026-09-06 DEAD | CORRECTED_2026-09-12T15:58Z (FED doctor FI-008 self-audit): /models=200 is a FALSE POSITIVE for this provider — chat completions → 401 CreditsError INSUFFICIENT BALANCE (workspace wrk_01KH1CM97F6SKSD5K1RVRMMZFF). Dashboard shows Go subscription active + 0% usage BECAUSE API calls are balance-blocked. Root cause: account-level billing hold / zero prepaid balance. Lane NOT usable until billing fixed. Probe script gap: fed-provider-probe.sh tests /models only — chat-level probe needed for Anomaly endpoints. i-arif P0 go rung (added then REVERTED 2026-09-12) — re-add after billing fix. | ACTIVATED_2026-09-13T00:4xZ: Arif resubscribed Go ($10/mo). Balance block cleared — chat now 200 (GO-LIVE, cost 0). PROTOCOL: /zen/go/v1 REQUIRES x-opencode-session header (400 MissingSessionID without). i-arif P0-Go rung embedded co-primary order 1 (qwen3.8-max) with header set. Zen (/zen/v1) still 401 — prepaid balance not topped (not needed; Go covers).\",\"balance_confidence\":0.95,\"track\":\"A\"},{\"id\":27,\"provider_name\":\"opencode-zen\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-11T03:22:24.532753+00:00\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-09-12T15:50:00Z\",\"notes\":\"LIVE 2026-08-11T11:14Z — F13 top-up $20 confirmed via OpenCode panel. Balance $19.96 USD remaining (53+ models enabled). Subscription-credit billing: cost debited from prepaid balance per call. OpenAI-compatible at https://opencode.ai/zen/v1. Key: OPENCODE_ZEN_API_KEY (kunci-mas.env). FED catalog synced 2026-08-11 (forged 333-AGI under F13 directive): OPENCODE_ZEN_PRICING 53+ entries, fed-opencode-zen-cascade capability signature, MODEL_ROUTES prefer Zen over dead mulerouter/tokenrouter for claude-sonnet-5, claude-opus-4.8, kimi-k3, glm-5.2. | BILLING_MODEL=subscription_credit | ARIF_TIER=Zen $20 | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: 401 CreditsError drained (same workspace as go) | PROBED_2026-09-12T15:50Z (FED doctor, Kimi Code FI-008): LIVE HTTP 200 on /zen/v1/models — flipped from stale 2026-09-06 DEAD; Zen workspace wrk_01KH1CM97F active again | CORRECTED_2026-09-12T15:58Z: /models=200 FALSE POSITIVE — chat 401 CreditsError same workspace as go. Not usable until billing fix.\",\"balance_confidence\":0.95,\"track\":\"A\"},{\"id\":20,\"provider_name\":\"qwen-token-plan-individual\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-13T20:57:55.011289+00:00\",\"confidence_score\":1.0,\"last_probed_at\":\"2026-09-13T00:05:00Z\",\"notes\":\"PRO PLAN (individual plan) — Aliyun token-plan. Auto-renew ON. 7-day rolling quota cycle. Base URL: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 (+ /apps/anthropic). Model scope (subset of team): qwen3.8-max / qwen3.7-plus / qwen3.7-max / qwen3.6-flash (NO qwen3.6-plus); deepseek-v4-pro-0813 / v4-pro / v4-flash-0731 (NO v4-flash, NO v3.2); glm-5.2 only (NO 5.1/5); NO kimi, NO MiniMax; image/audio/video same. QUOTA = LIVE-PROBED ONLY — never static (F13 audit 2026-08-17). | PROBED_2026-09-06: 429 token-plan 1-week quota EXHAUSTED, resets 2026-09-11T04:01Z (live error body) | TOPUP_2026-09-13T00:05Z: Arif topped up Individual plan — chat VERIFIED HTTP 200 qwen3.8-max (TOPUP-OK). All 09-11 demotions restored by fed-config-generator (24 rungs, 8 groups, i-arif P1=order1/P3=order2). Weekly window note: prior exhaustion error cited reset 09-18 — topup cleared it early.\",\"balance_confidence\":1.0,\"track\":\"A\"},{\"id\":12,\"provider_name\":\"qwen-token-plan-team\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-05T07:47:11.699281\",\"confidence_score\":1.0,\"last_probed_at\":\"2026-09-06T12:37:00Z\",\"notes\":\"TEAM EDITION (Team plan) — Aliyun token-plan. Subscription end 2026-10-01 11:00, auto-renew OFF. 3 seats: 1 Standard (ariffazil) + 2 Advanced (aliyun-owner, arifOS). Base URL: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 (+ /apps/anthropic). Model scope: qwen3.8-max / qwen3.7-plus / qwen3.7-max / qwen3.6-plus / qwen3.6-flash; deepseek-v4-pro-0813 / v4-pro / v4-flash-0731 / v4-flash / v3.2; glm-5.2 / 5.1 / 5; kimi-k2.7-code / k2.6 / k2.5; MiniMax-M2.5; image/audio/video (qwen-image, wan2.7, happyhorse). QUOTA/CREDITS = LIVE-PROBED ONLY — never static (F13 audit 2026-08-17). | PROBED_2026-09-06: 429 insufficient_quota EXHAUSTED (monthly team) | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (8772ms)]\",\"balance_confidence\":1.0,\"track\":\"A\"},{\"id\":5,\"provider_name\":\"bailian-token-plan\",\"track_type\":\"B\",\"balance_usd\":25.0,\"last_updated\":\"2026-07-30T14:22:58.116095+00:00\",\"confidence_score\":1.0,\"last_probed_at\":null,\"notes\":\"Manual top-up 2026-07-30T14:22:58.116095+00:00\",\"balance_confidence\":1.0,\"track\":\"B\"},{\"id\":3,\"provider_name\":\"mulerouter\",\"track_type\":\"B\",\"balance_usd\":49.925,\"last_updated\":\"2026-07-30T14:25:21.036154+00:00\",\"confidence_score\":0.99,\"last_probed_at\":null,\"notes\":\"ARCHIVED 2026-08-04: not in litellm-config.yaml, orphaned from old MuleRouter routing. Manual top-up 2026-07-30T14:25:20.978400+00:00\",\"balance_confidence\":0.99,\"track\":\"B\"},{\"id\":2,\"provider_name\":\"openrouter\",\"track_type\":\"B\",\"balance_usd\":0.5,\"last_updated\":\"2026-08-04 16:21:28\",\"confidence_score\":0.6,\"last_probed_at\":\"2026-07-30T14:37:27.196045+00:00\",\"notes\":\"ARCHIVED (conscious decision 2026-08-05): Near-empty (/usr/bin/bash.50), not in litellm-config, not in MODEL_ROUTES. BLIND probe. FLAME covers free-tier (20rpm/50rpd) as Tier-3 fallback. No re-track needed — deepseek + qwen-token-plan-team cover Track A. Re-evaluate only if OpenRouter balance increases.\",\"balance_confidence\":0.6,\"track\":\"B\"},{\"id\":4,\"provider_name\":\"tokenrouter\",\"track_type\":\"B\",\"balance_usd\":59.9354,\"last_updated\":\"2026-07-30T14:25:21.717927+00:00\",\"confidence_score\":0.98,\"last_probed_at\":null,\"notes\":\"ARCHIVED 2026-08-04: not in litellm-config.yaml, orphaned from old MuleRouter routing. Manual top-up 2026-07-30T14:22:58.065409+00:00\",\"balance_confidence\":0.98,\"track\":\"B\"},{\"id\":29,\"provider_name\":\"zai-direct\",\"track_type\":\"B\",\"balance_usd\":12.0,\"last_updated\":\"2026-08-12T02:36:00+00:00\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-10-26T11:17:01Z\",\"notes\":\"LIVE 2026-08-12T02:36Z — Z.ai GLM Coding Plan Pro. 8 model caps (8/8) + 4 MCP servers + 17-release temporal intelligence + Memory Helix Tier 1 (project + 5 rules + local + 5 lane memories + auto-reflect hook + rollup cron) + temporal drift detection cron + arif_zai_tools.py CLI for Hermes reach. AAA AGENT MCP COVERAGE: 5/5 wired. FED :4000 → :4012 → Z.ai end-to-end VERIFIED HTTP 200 (litellm model_group routing FIXED via model_name=glm-5.2). | BILLING_MODEL=coding_plan_pro | 8_OF_8_CAPS_LIVE | 5_AAA_AGENTS_WIRED | 4_MCP_FEDERATED | TEMPORAL_INTELLIGENCE_LOADED | 17_RELEASES_INDEXED | MEMORY_HELIX_T1_BUILT | FED_E2E_VERIFIED | NO_GAPS | PROBED_2026-09-06: LIVE glm-5.3 1006ms warm\",\"balance_confidence\":0.95,\"track\":\"B\"}],\"latency\":[{\"provider_name\":\"deepseek\",\"model_id\":\"deepseek-v4-pro\",\"p50_ms\":895.29,\"p95_ms\":1524.6,\"sample_count\":10,\"last_sample\":\"2026-09-15T18:16:02.606088+00:00\"},{\"provider_name\":\"mulerouter\",\"model_id\":\"qwen-vl-max\",\"p50_ms\":2400.0,\"p95_ms\":2400.0,\"sample_count\":1,\"last_sample\":\"2026-07-30T14:38:42.691566+00:00\"},{\"provider_name\":\"qwen-token-plan-team\",\"model_id\":\"qwen3.6-flash\",\"p50_ms\":225.0,\"p95_ms\":427.5,\"sample_count\":2,\"last_sample\":\"2026-08-05T07:08:30.011558+00:00\"},{\"provider_name\":\"qwen-token-plan-team\",\"model_id\":\"deepseek-v4-pro\",\"p50_ms\":480.0,\"p95_ms\":480.0,\"sample_count\":1,\"last_sample\":\"2026-08-03T01:37:24.521459+00:00\"},{\"provider_name\":\"minimax\",\"model_id\":\"MiniMax-M3\",\"p50_ms\":1810.8,\"p95_ms\":3377.7,\"sample_count\":5,\"last_sample\":\"2026-08-05T07:08:28.848366+00:00\"},{\"provider_name\":\"qwen-token-plan-individual\",\"model_id\":\"qwen3.8-max\",\"p50_ms\":1600.0,\"p95_ms\":1600.0,\"sample_count\":1,\"last_sample\":\"2026-08-11T09:20:31.723420+00:00\"},{\"provider_name\":\"kimi-moonshot\",\"model_id\":\"k3\",\"p50_ms\":1956.25,\"p95_ms\":2004.96,\"sample_count\":4,\"last_sample\":\"2026-08-13T20:51:39.291548+00:00\"},{\"provider_name\":\"mimo-token-plan\",\"model_id\":\"mimo-v2.5-pro\",\"p50_ms\":1840.0,\"p95_ms\":1840.0,\"sample_count\":1,\"last_sample\":\"2026-08-19T01:28:43.184438+00:00\"},{\"provider_name\":\"mimo-token-plan\",\"model_id\":\"mimo-v2.5\",\"p50_ms\":1500.0,\"p95_ms\":1500.0,\"sample_count\":1,\"last_sample\":\"2026-08-19T01:28:43.205021+00:00\"},{\"provider_name\":\"deepseek\",\"model_id\":\"deepseek-v4-flash\",\"p50_ms\":1198.0,\"p95_ms\":1198.0,\"sample_count\":1,\"last_sample\":\"2026-08-30T11:15:13.907104+00:00\"},{\"provider_name\":\"deepseek\",\"model_id\":\"deepseek-v4-flash-vision-exp\",\"p50_ms\":1595.5,\"p95_ms\":2100.0,\"sample_count\":2,\"last_sample\":\"2026-08-30T23:11:57.300642+00:00\"},{\"provider_name\":\"mistral\",\"model_id\":\"codestral-latest\",\"p50_ms\":378.0,\"p95_ms\":378.0,\"sample_count\":1,\"last_sample\":\"2026-09-13T07:29:17+00:00\"},{\"provider_name\":\"mistral\",\"model_id\":\"mistral-large-latest\",\"p50_ms\":500.3,\"p95_ms\":500.3,\"sample_count\":1,\"last_sample\":\"2026-09-13T07:29:17+00:00\"},{\"provider_name\":\"mimo-platform\",\"model_id\":\"mimo-v2.6-flash\",\"p50_ms\":5605.0,\"p95_ms\":6572.5,\"sample_count\":2,\"last_sample\":\"2026-09-22T05:18:08.287152+00:00\"},{\"provider_name\":\"DeepSeek (深度求索)\",\"model_id\":\"deepseek\",\"p50_ms\":133.71586799621582,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:10Z\"},{\"provider_name\":\"Qwen Cloud Token Plan Team Edition\",\"model_id\":\"qwen-token-plan\",\"p50_ms\":428.58386039733887,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:10Z\"},{\"provider_name\":\"MiniMax (MiniMax / MiniMax AI)\",\"model_id\":\"minimax\",\"p50_ms\":279.24561500549316,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:10Z\"},{\"provider_name\":\"Qwen Cloud Token Plan Pro (via Alibaba Bailian SG)\",\"model_id\":\"bailian-token-plan\",\"p50_ms\":50.676584243774414,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:10Z\"},{\"provider_name\":\"Qwen Cloud Token Plan Team — arifOS seat (Anthropic-compatible API)\",\"model_id\":\"qwen-token-plan-team\",\"p50_ms\":51.85866355895996,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:11Z\"},{\"provider_name\":\"TokenRouter (Artemis Tokenrouter Inc.)\",\"model_id\":\"tokenrouter\",\"p50_ms\":73.97723197937012,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:11Z\"},{\"provider_name\":\"Xiaomi MiMo Open Platform\",\"model_id\":\"mimo-platform\",\"p50_ms\":58.58182907104492,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:11Z\"},{\"provider_name\":\"Xiaomi MiMo Token Plan (Singapore, Max plan)\",\"model_id\":\"mimo-token-plan\",\"p50_ms\":46.1118221282959,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:11Z\"},{\"provider_name\":\"Groq Cloud\",\"model_id\":\"groq\",\"p50_ms\":19.578933715820312,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:11Z\"},{\"provider_name\":\"Google Gemini API\",\"model_id\":\"gemini\",\"p50_ms\":32.38248825073242,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:11Z\"},{\"provider_name\":\"AI Singapore SEA-LION\",\"model_id\":\"sea-lion\",\"p50_ms\":3073.979139328003,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:14Z\"},{\"provider_name\":\"Moonshot AI / Kimi (月之暗面)\",\"model_id\":\"kimi-moonshot\",\"p50_ms\":367.5806522369385,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:14Z\"},{\"provider_name\":\"OpenRouter — Unified LLM Routing Layer\",\"model_id\":\"openrouter\",\"p50_ms\":373.0313777923584,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:15Z\"},{\"provider_name\":\"OpenCode Go (Xiaomi Token Plan FREE tier)\",\"model_id\":\"opencode-go\",\"p50_ms\":533.5090160369873,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:15Z\"},{\"provider_name\":\"Azure OpenAI\",\"model_id\":\"azure-openai\",\"p50_ms\":270.3874111175537,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:15Z\"},{\"provider_name\":\"Cerebras Systems\",\"model_id\":\"cerebras\",\"p50_ms\":24.78933334350586,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:15Z\"},{\"provider_name\":\"xAI (Grok)\",\"model_id\":\"xai\",\"p50_ms\":200.48975944519043,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:16Z\"},{\"provider_name\":\"Zhipu AI / Z.ai (智谱AI)\",\"model_id\":\"zhipu-z-ai\",\"p50_ms\":130.89990615844727,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:16Z\"},{\"provider_name\":\"MuleRouter (multimodal surface)\",\"model_id\":\"mulerouter\",\"p50_ms\":45.24827003479004,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:16Z\"},{\"provider_name\":\"OpenCode Zen (PAYG, monthly caps)\",\"model_id\":\"opencode-zen\",\"p50_ms\":527.1744728088379,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:16Z\"},{\"provider_name\":\"Qwen Cloud Token Plan INDIVIDUAL Pro (home.qwencloud.com)\",\"model_id\":\"qwen-token-plan-individual\",\"p50_ms\":53.14970016479492,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:16Z\"},{\"provider_name\":\"Z.ai GLM Coding Plan (subscription)\",\"model_id\":\"zai-coding-plan\",\"p50_ms\":149.92833137512207,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:17Z\"},{\"provider_name\":\"DashScope PAYG (International, Singapore region)\",\"model_id\":\"dashscope-payg\",\"p50_ms\":215.54899215698242,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:17Z\"},{\"provider_name\":\"Aliyun DashScope International — Free Quota Text Models\",\"model_id\":\"dashscope-free-quota\",\"p50_ms\":60.224056243896484,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:17Z\"},{\"provider_name\":\"Qwen Cloud Token Plan Team — Hermes seat (sk-sp-H.IPRH…)\",\"model_id\":\"qwen-token-plan-hermes\",\"p50_ms\":50.62675476074219,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:17Z\"},{\"provider_name\":\"Kimi (Moonshot) coding plan — direct\",\"model_id\":\"kimi\",\"p50_ms\":337.8608226776123,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:17Z\"},{\"provider_name\":\"Qwen Token Plan — Responses API surface (harness tools)\",\"model_id\":\"qwen-responses\",\"p50_ms\":100.84295272827148,\"p95_ms\":null,\"sample_count\":1,\"last_sample\":\"2026-10-03T00:42:17Z\"},{\"provider_name\":\"zai-direct\",\"model_id\":\"probe-test-goodput\",\"p50_ms\":856.0,\"p95_ms\":900.0,\"sample_count\":2,\"last_sample\":\"2026-10-08T14:53:44.109534+00:00\"}],\"health\":[{\"provider_name\":\"deepseek\",\"model_id\":\"deepseek-v4-pro\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mulerouter\",\"model_id\":\"qwen-vl-max\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"minimax\",\"model_id\":\"MiniMax-M3\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"opencode-go\",\"model_id\":\"opencode-go/default\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"kimi-moonshot\",\"model_id\":\"k3\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mimo-token-plan\",\"model_id\":\"mimo-v2.5-pro\",\"status\":\"LIVE\",\"shadow_id\":\" [2026-10-14: compat-alias window, remove_by 10-21; entitlement LIVE wire-evidenced, attribution portal-pending]\"},{\"provider_name\":\"mimo-token-plan\",\"model_id\":\"mimo-v2.5\",\"status\":\"LIVE\",\"shadow_id\":\" [2026-10-14: compat-alias window, remove_by 10-21; entitlement LIVE wire-evidenced, attribution portal-pending]\"},{\"provider_name\":\"deepseek\",\"model_id\":\"deepseek-v4-flash\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"deepseek\",\"model_id\":\"deepseek-v4-flash-vision-exp\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mistral\",\"model_id\":\"codestral-latest\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mistral\",\"model_id\":\"mistral-large-latest\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mimo-platform\",\"model_id\":\"mimo-v2.6-flash\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mimo-platform\",\"model_id\":\"mimo-v2.6-flash-payg\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"DeepSeek (深度求索)\",\"model_id\":\"deepseek\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Qwen Cloud Token Plan Team Edition\",\"model_id\":\"qwen-token-plan\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"MiniMax (MiniMax / MiniMax AI)\",\"model_id\":\"minimax\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"Qwen Cloud Token Plan Pro (via Alibaba Bailian SG)\",\"model_id\":\"bailian-token-plan\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Qwen Cloud Token Plan Team — arifOS seat (Anthropic-compatible API)\",\"model_id\":\"qwen-token-plan-team\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"TokenRouter (Artemis Tokenrouter Inc.)\",\"model_id\":\"tokenrouter\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Xiaomi MiMo Open Platform\",\"model_id\":\"mimo-platform\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Xiaomi MiMo Token Plan (Singapore, Max plan)\",\"model_id\":\"mimo-token-plan\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"Groq Cloud\",\"model_id\":\"groq\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"Google Gemini API\",\"model_id\":\"gemini\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"AI Singapore SEA-LION\",\"model_id\":\"sea-lion\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Moonshot AI / Kimi (月之暗面)\",\"model_id\":\"kimi-moonshot\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"OpenRouter — Unified LLM Routing Layer\",\"model_id\":\"openrouter\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"OpenCode Go (Xiaomi Token Plan FREE tier)\",\"model_id\":\"opencode-go\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"Azure OpenAI\",\"model_id\":\"azure-openai\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"Cerebras Systems\",\"model_id\":\"cerebras\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"xAI (Grok)\",\"model_id\":\"xai\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"Zhipu AI / Z.ai (智谱AI)\",\"model_id\":\"zhipu-z-ai\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"MuleRouter (multimodal surface)\",\"model_id\":\"mulerouter\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"OpenCode Zen (PAYG, monthly caps)\",\"model_id\":\"opencode-zen\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"Qwen Cloud Token Plan INDIVIDUAL Pro (home.qwencloud.com)\",\"model_id\":\"qwen-token-plan-individual\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Z.ai GLM Coding Plan (subscription)\",\"model_id\":\"zai-coding-plan\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"DashScope PAYG (International, Singapore region)\",\"model_id\":\"dashscope-payg\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Aliyun DashScope International — Free Quota Text Models\",\"model_id\":\"dashscope-free-quota\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Qwen Cloud Token Plan Team — Hermes seat (sk-sp-H.IPRH…)\",\"model_id\":\"qwen-token-plan-hermes\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Kimi (Moonshot) coding plan — direct\",\"model_id\":\"kimi\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"Qwen Token Plan — Responses API surface (harness tools)\",\"model_id\":\"qwen-responses\",\"status\":\"DEAD\",\"shadow_id\":null},{\"provider_name\":\"dashscope-free-quota\",\"model_id\":\"deepseek-v4.1-flash\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"dashscope-free-quota\",\"model_id\":\"glm-5.3\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"dashscope-free-quota\",\"model_id\":\"qwen-audio-3.1-tts-flash\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"dashscope-free-quota\",\"model_id\":\"qwen3.8-omni-flash\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"dashscope-free-quota\",\"model_id\":\"wan3.0-video-prime\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"zai-direct\",\"model_id\":\"probe-test-goodput\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"deepseek\",\"model_id\":\"deepseek-flash\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"zai-coding-plan\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"kimi-moonshot\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"minimax\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mistral\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"gemini\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"groq\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mimo-token-plan\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"mimo-platform\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"qwen-token-plan-individual\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"qwen-token-plan-team\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"deepseek\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"qwen-token-plan-individual\",\"model_id\":\"qwen3.8-max\",\"status\":\"LIVE\",\"shadow_id\":null},{\"provider_name\":\"qwen-token-plan-team\",\"model_id\":\"qwen3.8-max\",\"status\":\"QUOTA_EXHAUSTED\",\"shadow_id\":null},{\"provider_name\":\"qwen-token-plan\",\"model_id\":\"qwen3.8-max\",\"status\":\"QUOTA_EXHAUSTED\",\"shadow_id\":null},{\"provider_name\":\"qwen-token-plan-hermes\",\"model_id\":\"qwen3.8-max\",\"status\":\"QUOTA_EXHAUSTED\",\"shadow_id\":null},{\"provider_name\":\"embedding-lane\",\"model_id\":\"qwen3.7-text-embedding\",\"status\":\"QUOTA_EXHAUSTED\",\"shadow_id\":null},{\"provider_name\":\"opencode-zen\",\"model_id\":\"probe\",\"status\":\"AUTH_FAIL\",\"shadow_id\":null},{\"provider_name\":\"opencode-go\",\"model_id\":\"probe\",\"status\":\"LIVE\",\"shadow_id\":null}],\"spend_summary\":{\"bench\":0.0,\"deepseek\":108.076758,\"gemini\":2.37942,\"kimi-moonshot\":0.0,\"mimo-platform\":0.002876,\"mimo-token-plan\":0.0005,\"minimax\":0.0,\"mulerouter\":0.0076,\"openai\":492.673489,\"opencode-go\":0.0,\"qwen-token-plan-individual\":0.009,\"qwen-token-plan-team\":0.000161,\"sea-lion\":0.01872,\"unknown\":0.0,\"zai-coding-plan\":0.0,\"zai-direct\":0.000155},\"state_db\":\"/root/.local/share/arifos/token_bank.db\",\"generated_at\":\"2026-10-26T11:59:45.475110+00:00\"}",
+      "type": "text"
+     }
+    ],
+    "isError": false,
+    "structuredContent": {
+     "providers": [
+      {
+       "id": 1,
+       "provider_name": "deepseek",
+       "track_type": "A",
+       "balance_usd": 6.46,
+       "last_updated": "2026-10-18T08:55:45.449211+00:00",
+       "confidence_score": 1.0,
+       "last_probed_at": "2026-10-26T11:17:01Z",
+       "notes": "probed via api_probe",
+       "balance_confidence": 1.0,
+       "track": "A"
+      },
+      {
+       "id": 42,
+       "provider_name": "kimi-moonshot",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-09-06T12:37:00Z",
+       "confidence_score": 1.0,
+       "last_probed_at": "2026-09-06T12:37:00Z",
+       "notes": "PROBED_2026-09-06: LIVE /v1/usages weekly limit=100 used=21 remaining=79 reset=2026-09-10T14:07:59Z, 5h window limit=100 used=24, parallel=30, LEVEL_STANDARD",
+       "balance_confidence": 1.0,
+       "track": "A"
+      },
+      {
+       "id": 6,
+       "provider_name": "mimo-platform",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-08-11T23:42:01.514307+00:00",
+       "confidence_score": 0.95,
+       "last_probed_at": "2026-09-06T12:37:00Z",
+       "notes": "LEGACY 2026-08-19T09:35Z — Xiaomi MiMo OPEN Platform (api.xiaomimimo.com, OPEN key). KEPT as fallback only — token-plan path is the canonical primary. Was the active path during 2026-08-12 → 2026-08-18 when token-plan Max was exhausted. Token-plan now refreshed (Max 82B credits) and tp- key verified live 2026-08-19. Key: secrets::MIMO_PAYG_OPENCODE_API_KEY (sk-spv prefix, OPEN dashboard key). Endpoint: https://api.xiaomimimo.com/v1. | BILLING_MODEL=open_platform_payg | FALLBACK_ONLY | SUPERSEDED_BY=mimo-token-plan | PROBED_2026-09-06: 402 insufficient_balance DEAD — do not route | PROBED_2026-09-22: LIVE [witness=chat_completion IMG vision round-trip: model accurately described 1x1 white-pixel PNG content (6] | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (6528ms)]",
+       "balance_confidence": 0.95,
+       "track": "A"
+      },
+      {
+       "id": 36,
+       "provider_name": "mimo-token-plan",
+       "track_type": "A",
+       "balance_usd": 50.0,
+       "last_updated": "2026-08-19T09:35:00+00:00",
+       "confidence_score": 0.95,
+       "last_probed_at": "2026-10-26T11:17:01Z",
+       "notes": "LIVE 2026-08-19T09:35Z — Xiaomi MiMo V2.5 Token Plan (Singapore, max-monthly 82B credits). Endpoint https://token-plan-sgp.xiaomimimo.com/v1 (OpenAI-compat) + /anthropic (Anthropic-compat). Key: secrets::MIMO_TOKEN_PLAN_API_KEY (tp- prefix, dedicated token-plan key per F13 split 2026-08-17; alias secrets::MIMO_API_KEY). 6 active models: mimo-v2.5-pro (1M ctx), mimo-v2.5 (1M ctx, omni-modal text+img+video+audio), mimo-v2.5-asr (30M cred/h audio), mimo-v2.5-tts + mimo-v2.5-tts-voiceclone + mimo-v2.5-tts-voicedesign (FREE for limited time — 0 credit deduction). USD pricing (landing): v2.5-pro $0.0036/$0.435/$0.87 per MTok (hit/miss/out); v2.5 $0.0028/$0.14/$0.28. Deprecated 2026-06-30: mimo-v2-pro, mimo-v2-omni, mimo-v2-tts. License scope (F13-binding): coding tools only (OpenClaw/OpenCode/Claude/Codex/Kimi/Qwen/Grok); direct API from non-coding backends prohibited. Re-anchored 2026-08-19 from earlier mimo-platform (OPEN key) when token-plan confirmed fresh + tp- key verified HTTP 200 on /v1/models + /v1/chat/completions. | BILLING_MODEL=monthly_token_plan_max | SGP_ENDPOINT | TP-KEY | USD_KNOWN | MULTIMODAL_OMNI | TTS_FREE | API_VERIFIED_2026-08-19 | PROBED_2026-09-06: LIVE mimo-v2.5 637-981ms",
+       "balance_confidence": 0.95,
+       "track": "A"
+      },
+      {
+       "id": 7,
+       "provider_name": "minimax",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-08-11 00:57:49",
+       "confidence_score": 0.95,
+       "last_probed_at": "2026-10-26T11:17:01Z",
+       "notes": "LIVE 2026-08-11T00:57:49Z — re-anchored by FED doctor (Kimi Code CLI). MiniMax-M3 verified HTTP 200 chat completion (~1.78s latency, vault key valid). 8 models exposed (M3, M2.7, M2.5, M2.1, M2 + highspeed variants). Token Plan fresh per 2026-08-11 user dashboard (18% 5h, 34% weekly). Key: MINIMAX_API_KEY. Endpoint: https://api.minimax.io/v1. Routing: litellm fed-long-context order=2 (PRIMARY), fed-reasoning-heavy + fed-multimodal-vision order=3. GAP: opencode + codex + kimi-code aliases lack MiniMax fallback (see call_map review). | BILLING_MODEL=monthly_token_plan | FRESH | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: token_plan/remains → status 2062 NO ACTIVE SUBSCRIPTION — group dead until resubscribe | RESUBSCRIBED 2026-09-06: Token Plan Max LIVE (M3 200 in 1.9s; weekly_remains ~35.1M units; renews 2026-10-05; 4-5 concurrent; 1M ctx multimodal; Hailuo 3/day). Rung restored to 7 chains. | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (3929ms)]",
+       "balance_confidence": 0.95,
+       "track": "A"
+      },
+      {
+       "id": 43,
+       "provider_name": "mistral",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-09-13T07:28:57+00:00",
+       "confidence_score": 0.9,
+       "last_probed_at": "2026-09-13T07:28:57+00:00",
+       "notes": "REGISTERED_2026-09-13 per F13 APEX-ZEN directive (SOT patch_note_2026_09_13_apex_zen) — Order-0 paid bedrock across i-arif/agi-333/forge-777/asi-555. LIVE probe 2026-09-13 (direct api.mistral.ai, chat-level n=1): codestral-latest PONG 378ms, mistral-large-latest PONG 500ms; also HEALTHY via litellm forge-777 health on both KVM8 :4013 and KVM4 :4000. Key secrets::MISTRAL_API_KEY. Jurisdiction FR/EU per SOT federation-models.json providers[0]. Billing payg_active. BALANCE NOT YET PROBED (console PAYG) — balance_usd 0.0 is a placeholder, set real balance + confidence 1.0 on first balance probe.",
+       "balance_confidence": 0.9,
+       "track": "A"
+      },
+      {
+       "id": 21,
+       "provider_name": "opencode-go",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-08-11 01:03:20",
+       "confidence_score": 0.95,
+       "last_probed_at": "2026-09-13T00:45:00Z",
+       "notes": "LIVE 2026-08-11T01:03:20Z — OpenCode Go (Anomaly) subscription registered. API verified HTTP 200 (0.58s): https://opencode.ai/zen/go/v1 — 25+ models exposed. Models include: minimax-m3/m2.7/m2.5, kimi-k3/k2.7-code, glm-5.2/5.1/5, deepseek-v4-pro/flash, qwen3.8-max/3.7-max/3.7-plus/3.6-plus/3.5-plus, mimo-v2.5-pro/v2.5, hy3/hy3-preview, gpt-5.6-luna, grok-4.5. Curated OpenRouter-equivalent — one key, many models. Arif subscription: $10/mo Go tier, 0% rolling / 40% weekly / 20% monthly (2026-08-11). Key: OPENCODE_GO_API_KEY (kunci-mas.env). OpenAI-compatible transport at /zen/go/v1. Routed via litellm alias opencode-go and via opencode CLI primary. FI alignment: FI-001 opencode CLI uses opencode-go as PRIMARY 333-AGI / 555-ASI models. FI-008 kimi-code and FI-005 codex now have opencode-go as resilience fallback. | BILLING_MODEL=monthly_subscription | ARIF_TIER=Go | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: 401 CreditsError INSUFFICIENT BALANCE both go+zen (same workspace wrk_01KH1CM97F) — drained | PROBED_2026-09-12T15:50Z (FED doctor, Kimi Code FI-008): LIVE HTTP 200 on /zen/go/v1/models, 37 models exposed — Go cycle reset (dashboard 0%), lane re-anchored from stale 2026-09-06 DEAD | CORRECTED_2026-09-12T15:58Z (FED doctor FI-008 self-audit): /models=200 is a FALSE POSITIVE for this provider — chat completions → 401 CreditsError INSUFFICIENT BALANCE (workspace wrk_01KH1CM97F6SKSD5K1RVRMMZFF). Dashboard shows Go subscription active + 0% usage BECAUSE API calls are balance-blocked. Root cause: account-level billing hold / zero prepaid balance. Lane NOT usable until billing fixed. Probe script gap: fed-provider-probe.sh tests /models only — chat-level probe needed for Anomaly endpoints. i-arif P0 go rung (added then REVERTED 2026-09-12) — re-add after billing fix. | ACTIVATED_2026-09-13T00:4xZ: Arif resubscribed Go ($10/mo). Balance block cleared — chat now 200 (GO-LIVE, cost 0). PROTOCOL: /zen/go/v1 REQUIRES x-opencode-session header (400 MissingSessionID without). i-arif P0-Go rung embedded co-primary order 1 (qwen3.8-max) with header set. Zen (/zen/v1) still 401 — prepaid balance not topped (not needed; Go covers).",
+       "balance_confidence": 0.95,
+       "track": "A"
+      },
+      {
+       "id": 27,
+       "provider_name": "opencode-zen",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-08-11T03:22:24.532753+00:00",
+       "confidence_score": 0.95,
+       "last_probed_at": "2026-09-12T15:50:00Z",
+       "notes": "LIVE 2026-08-11T11:14Z — F13 top-up $20 confirmed via OpenCode panel. Balance $19.96 USD remaining (53+ models enabled). Subscription-credit billing: cost debited from prepaid balance per call. OpenAI-compatible at https://opencode.ai/zen/v1. Key: OPENCODE_ZEN_API_KEY (kunci-mas.env). FED catalog synced 2026-08-11 (forged 333-AGI under F13 directive): OPENCODE_ZEN_PRICING 53+ entries, fed-opencode-zen-cascade capability signature, MODEL_ROUTES prefer Zen over dead mulerouter/tokenrouter for claude-sonnet-5, claude-opus-4.8, kimi-k3, glm-5.2. | BILLING_MODEL=subscription_credit | ARIF_TIER=Zen $20 | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: 401 CreditsError drained (same workspace as go) | PROBED_2026-09-12T15:50Z (FED doctor, Kimi Code FI-008): LIVE HTTP 200 on /zen/v1/models — flipped from stale 2026-09-06 DEAD; Zen workspace wrk_01KH1CM97F active again | CORRECTED_2026-09-12T15:58Z: /models=200 FALSE POSITIVE — chat 401 CreditsError same workspace as go. Not usable until billing fix.",
+       "balance_confidence": 0.95,
+       "track": "A"
+      },
+      {
+       "id": 20,
+       "provider_name": "qwen-token-plan-individual",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-08-13T20:57:55.011289+00:00",
+       "confidence_score": 1.0,
+       "last_probed_at": "2026-09-13T00:05:00Z",
+       "notes": "PRO PLAN (individual plan) — Aliyun token-plan. Auto-renew ON. 7-day rolling quota cycle. Base URL: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 (+ /apps/anthropic). Model scope (subset of team): qwen3.8-max / qwen3.7-plus / qwen3.7-max / qwen3.6-flash (NO qwen3.6-plus); deepseek-v4-pro-0813 / v4-pro / v4-flash-0731 (NO v4-flash, NO v3.2); glm-5.2 only (NO 5.1/5); NO kimi, NO MiniMax; image/audio/video same. QUOTA = LIVE-PROBED ONLY — never static (F13 audit 2026-08-17). | PROBED_2026-09-06: 429 token-plan 1-week quota EXHAUSTED, resets 2026-09-11T04:01Z (live error body) | TOPUP_2026-09-13T00:05Z: Arif topped up Individual plan — chat VERIFIED HTTP 200 qwen3.8-max (TOPUP-OK). All 09-11 demotions restored by fed-config-generator (24 rungs, 8 groups, i-arif P1=order1/P3=order2). Weekly window note: prior exhaustion error cited reset 09-18 — topup cleared it early.",
+       "balance_confidence": 1.0,
+       "track": "A"
+      },
+      {
+       "id": 12,
+       "provider_name": "qwen-token-plan-team",
+       "track_type": "A",
+       "balance_usd": 0.0,
+       "last_updated": "2026-08-05T07:47:11.699281",
+       "confidence_score": 1.0,
+       "last_probed_at": "2026-09-06T12:37:00Z",
+       "notes": "TEAM EDITION (Team plan) — Aliyun token-plan. Subscription end 2026-10-01 11:00, auto-renew OFF. 3 seats: 1 Standard (ariffazil) + 2 Advanced (aliyun-owner, arifOS). Base URL: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 (+ /apps/anthropic). Model scope: qwen3.8-max / qwen3.7-plus / qwen3.7-max / qwen3.6-plus / qwen3.6-flash; deepseek-v4-pro-0813 / v4-pro / v4-flash-0731 / v4-flash / v3.2; glm-5.2 / 5.1 / 5; kimi-k2.7-code / k2.6 / k2.5; MiniMax-M2.5; image/audio/video (qwen-image, wan2.7, happyhorse). QUOTA/CREDITS = LIVE-PROBED ONLY — never static (F13 audit 2026-08-17). | PROBED_2026-09-06: 429 insufficient_quota EXHAUSTED (monthly team) | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (8772ms)]",
+       "balance_confidence": 1.0,
+       "track": "A"
+      },
+      {
+       "id": 5,
+       "provider_name": "bailian-token-plan",
+       "track_type": "B",
+       "balance_usd": 25.0,
+       "last_updated": "2026-07-30T14:22:58.116095+00:00",
+       "confidence_score": 1.0,
+       "last_probed_at": null,
+       "notes": "Manual top-up 2026-07-30T14:22:58.116095+00:00",
+       "balance_confidence": 1.0,
+       "track": "B"
+      },
+      {
+       "id": 3,
+       "provider_name": "mulerouter",
+       "track_type": "B",
+       "balance_usd": 49.925,
+       "last_updated": "2026-07-30T14:25:21.036154+00:00",
+       "confidence_score": 0.99,
+       "last_probed_at": null,
+       "notes": "ARCHIVED 2026-08-04: not in litellm-config.yaml, orphaned from old MuleRouter routing. Manual top-up 2026-07-30T14:25:20.978400+00:00",
+       "balance_confidence": 0.99,
+       "track": "B"
+      },
+      {
+       "id": 2,
+       "provider_name": "openrouter",
+       "track_type": "B",
+       "balance_usd": 0.5,
+       "last_updated": "2026-08-04 16:21:28",
+       "confidence_score": 0.6,
+       "last_probed_at": "2026-07-30T14:37:27.196045+00:00",
+       "notes": "ARCHIVED (conscious decision 2026-08-05): Near-empty (/usr/bin/bash.50), not in litellm-config, not in MODEL_ROUTES. BLIND probe. FLAME covers free-tier (20rpm/50rpd) as Tier-3 fallback. No re-track needed — deepseek + qwen-token-plan-team cover Track A. Re-evaluate only if OpenRouter balance increases.",
+       "balance_confidence": 0.6,
+       "track": "B"
+      },
+      {
+       "id": 4,
+       "provider_name": "tokenrouter",
+       "track_type": "B",
+       "balance_usd": 59.9354,
+       "last_updated": "2026-07-30T14:25:21.717927+00:00",
+       "confidence_score": 0.98,
+       "last_probed_at": null,
+       "notes": "ARCHIVED 2026-08-04: not in litellm-config.yaml, orphaned from old MuleRouter routing. Manual top-up 2026-07-30T14:22:58.065409+00:00",
+       "balance_confidence": 0.98,
+       "track": "B"
+      },
+      {
+       "id": 29,
+       "provider_name": "zai-direct",
+       "track_type": "B",
+       "balance_usd": 12.0,
+       "last_updated": "2026-08-12T02:36:00+00:00",
+       "confidence_score": 0.95,
+       "last_probed_at": "2026-10-26T11:17:01Z",
+       "notes": "LIVE 2026-08-12T02:36Z — Z.ai GLM Coding Plan Pro. 8 model caps (8/8) + 4 MCP servers + 17-release temporal intelligence + Memory Helix Tier 1 (project + 5 rules + local + 5 lane memories + auto-reflect hook + rollup cron) + temporal drift detection cron + arif_zai_tools.py CLI for Hermes reach. AAA AGENT MCP COVERAGE: 5/5 wired. FED :4000 → :4012 → Z.ai end-to-end VERIFIED HTTP 200 (litellm model_group routing FIXED via model_name=glm-5.2). | BILLING_MODEL=coding_plan_pro | 8_OF_8_CAPS_LIVE | 5_AAA_AGENTS_WIRED | 4_MCP_FEDERATED | TEMPORAL_INTELLIGENCE_LOADED | 17_RELEASES_INDEXED | MEMORY_HELIX_T1_BUILT | FED_E2E_VERIFIED | NO_GAPS | PROBED_2026-09-06: LIVE glm-5.3 1006ms warm",
+       "balance_confidence": 0.95,
+       "track": "B"
+      }
+     ],
+     "latency": [
+      {
+       "provider_name": "deepseek",
+       "model_id": "deepseek-v4-pro",
+       "p50_ms": 895.29,
+       "p95_ms": 1524.6,
+       "sample_count": 10,
+       "last_sample": "2026-09-15T18:16:02.606088+00:00"
+      },
+      {
+       "provider_name": "mulerouter",
+       "model_id": "qwen-vl-max",
+       "p50_ms": 2400.0,
+       "p95_ms": 2400.0,
+       "sample_count": 1,
+       "last_sample": "2026-07-30T14:38:42.691566+00:00"
+      },
+      {
+       "provider_name": "qwen-token-plan-team",
+       "model_id": "qwen3.6-flash",
+       "p50_ms": 225.0,
+       "p95_ms": 427.5,
+       "sample_count": 2,
+       "last_sample": "2026-08-05T07:08:30.011558+00:00"
+      },
+      {
+       "provider_name": "qwen-token-plan-team",
+       "model_id": "deepseek-v4-pro",
+       "p50_ms": 480.0,
+       "p95_ms": 480.0,
+       "sample_count": 1,
+       "last_sample": "2026-08-03T01:37:24.521459+00:00"
+      },
+      {
+       "provider_name": "minimax",
+       "model_id": "MiniMax-M3",
+       "p50_ms": 1810.8,
+       "p95_ms": 3377.7,
+       "sample_count": 5,
+       "last_sample": "2026-08-05T07:08:28.848366+00:00"
+      },
+      {
+       "provider_name": "qwen-token-plan-individual",
+       "model_id": "qwen3.8-max",
+       "p50_ms": 1600.0,
+       "p95_ms": 1600.0,
+       "sample_count": 1,
+       "last_sample": "2026-08-11T09:20:31.723420+00:00"
+      },
+      {
+       "provider_name": "kimi-moonshot",
+       "model_id": "k3",
+       "p50_ms": 1956.25,
+       "p95_ms": 2004.96,
+       "sample_count": 4,
+       "last_sample": "2026-08-13T20:51:39.291548+00:00"
+      },
+      {
+       "provider_name": "mimo-token-plan",
+       "model_id": "mimo-v2.5-pro",
+       "p50_ms": 1840.0,
+       "p95_ms": 1840.0,
+       "sample_count": 1,
+       "last_sample": "2026-08-19T01:28:43.184438+00:00"
+      },
+      {
+       "provider_name": "mimo-token-plan",
+       "model_id": "mimo-v2.5",
+       "p50_ms": 1500.0,
+       "p95_ms": 1500.0,
+       "sample_count": 1,
+       "last_sample": "2026-08-19T01:28:43.205021+00:00"
+      },
+      {
+       "provider_name": "deepseek",
+       "model_id": "deepseek-v4-flash",
+       "p50_ms": 1198.0,
+       "p95_ms": 1198.0,
+       "sample_count": 1,
+       "last_sample": "2026-08-30T11:15:13.907104+00:00"
+      },
+      {
+       "provider_name": "deepseek",
+       "model_id": "deepseek-v4-flash-vision-exp",
+       "p50_ms": 1595.5,
+       "p95_ms": 2100.0,
+       "sample_count": 2,
+       "last_sample": "2026-08-30T23:11:57.300642+00:00"
+      },
+      {
+       "provider_name": "mistral",
+       "model_id": "codestral-latest",
+       "p50_ms": 378.0,
+       "p95_ms": 378.0,
+       "sample_count": 1,
+       "last_sample": "2026-09-13T07:29:17+00:00"
+      },
+      {
+       "provider_name": "mistral",
+       "model_id": "mistral-large-latest",
+       "p50_ms": 500.3,
+       "p95_ms": 500.3,
+       "sample_count": 1,
+       "last_sample": "2026-09-13T07:29:17+00:00"
+      },
+      {
+       "provider_name": "mimo-platform",
+       "model_id": "mimo-v2.6-flash",
+       "p50_ms": 5605.0,
+       "p95_ms": 6572.5,
+       "sample_count": 2,
+       "last_sample": "2026-09-22T05:18:08.287152+00:00"
+      },
+      {
+       "provider_name": "DeepSeek (深度求索)",
+       "model_id": "deepseek",
+       "p50_ms": 133.71586799621582,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:10Z"
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Team Edition",
+       "model_id": "qwen-token-plan",
+       "p50_ms": 428.58386039733887,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:10Z"
+      },
+      {
+       "provider_name": "MiniMax (MiniMax / MiniMax AI)",
+       "model_id": "minimax",
+       "p50_ms": 279.24561500549316,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:10Z"
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Pro (via Alibaba Bailian SG)",
+       "model_id": "bailian-token-plan",
+       "p50_ms": 50.676584243774414,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:10Z"
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Team — arifOS seat (Anthropic-compatible API)",
+       "model_id": "qwen-token-plan-team",
+       "p50_ms": 51.85866355895996,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:11Z"
+      },
+      {
+       "provider_name": "TokenRouter (Artemis Tokenrouter Inc.)",
+       "model_id": "tokenrouter",
+       "p50_ms": 73.97723197937012,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:11Z"
+      },
+      {
+       "provider_name": "Xiaomi MiMo Open Platform",
+       "model_id": "mimo-platform",
+       "p50_ms": 58.58182907104492,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:11Z"
+      },
+      {
+       "provider_name": "Xiaomi MiMo Token Plan (Singapore, Max plan)",
+       "model_id": "mimo-token-plan",
+       "p50_ms": 46.1118221282959,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:11Z"
+      },
+      {
+       "provider_name": "Groq Cloud",
+       "model_id": "groq",
+       "p50_ms": 19.578933715820312,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:11Z"
+      },
+      {
+       "provider_name": "Google Gemini API",
+       "model_id": "gemini",
+       "p50_ms": 32.38248825073242,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:11Z"
+      },
+      {
+       "provider_name": "AI Singapore SEA-LION",
+       "model_id": "sea-lion",
+       "p50_ms": 3073.979139328003,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:14Z"
+      },
+      {
+       "provider_name": "Moonshot AI / Kimi (月之暗面)",
+       "model_id": "kimi-moonshot",
+       "p50_ms": 367.5806522369385,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:14Z"
+      },
+      {
+       "provider_name": "OpenRouter — Unified LLM Routing Layer",
+       "model_id": "openrouter",
+       "p50_ms": 373.0313777923584,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:15Z"
+      },
+      {
+       "provider_name": "OpenCode Go (Xiaomi Token Plan FREE tier)",
+       "model_id": "opencode-go",
+       "p50_ms": 533.5090160369873,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:15Z"
+      },
+      {
+       "provider_name": "Azure OpenAI",
+       "model_id": "azure-openai",
+       "p50_ms": 270.3874111175537,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:15Z"
+      },
+      {
+       "provider_name": "Cerebras Systems",
+       "model_id": "cerebras",
+       "p50_ms": 24.78933334350586,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:15Z"
+      },
+      {
+       "provider_name": "xAI (Grok)",
+       "model_id": "xai",
+       "p50_ms": 200.48975944519043,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:16Z"
+      },
+      {
+       "provider_name": "Zhipu AI / Z.ai (智谱AI)",
+       "model_id": "zhipu-z-ai",
+       "p50_ms": 130.89990615844727,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:16Z"
+      },
+      {
+       "provider_name": "MuleRouter (multimodal surface)",
+       "model_id": "mulerouter",
+       "p50_ms": 45.24827003479004,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:16Z"
+      },
+      {
+       "provider_name": "OpenCode Zen (PAYG, monthly caps)",
+       "model_id": "opencode-zen",
+       "p50_ms": 527.1744728088379,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:16Z"
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan INDIVIDUAL Pro (home.qwencloud.com)",
+       "model_id": "qwen-token-plan-individual",
+       "p50_ms": 53.14970016479492,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:16Z"
+      },
+      {
+       "provider_name": "Z.ai GLM Coding Plan (subscription)",
+       "model_id": "zai-coding-plan",
+       "p50_ms": 149.92833137512207,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:17Z"
+      },
+      {
+       "provider_name": "DashScope PAYG (International, Singapore region)",
+       "model_id": "dashscope-payg",
+       "p50_ms": 215.54899215698242,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:17Z"
+      },
+      {
+       "provider_name": "Aliyun DashScope International — Free Quota Text Models",
+       "model_id": "dashscope-free-quota",
+       "p50_ms": 60.224056243896484,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:17Z"
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Team — Hermes seat (sk-sp-H.IPRH…)",
+       "model_id": "qwen-token-plan-hermes",
+       "p50_ms": 50.62675476074219,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:17Z"
+      },
+      {
+       "provider_name": "Kimi (Moonshot) coding plan — direct",
+       "model_id": "kimi",
+       "p50_ms": 337.8608226776123,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:17Z"
+      },
+      {
+       "provider_name": "Qwen Token Plan — Responses API surface (harness tools)",
+       "model_id": "qwen-responses",
+       "p50_ms": 100.84295272827148,
+       "p95_ms": null,
+       "sample_count": 1,
+       "last_sample": "2026-10-03T00:42:17Z"
+      },
+      {
+       "provider_name": "zai-direct",
+       "model_id": "probe-test-goodput",
+       "p50_ms": 856.0,
+       "p95_ms": 900.0,
+       "sample_count": 2,
+       "last_sample": "2026-10-08T14:53:44.109534+00:00"
+      }
+     ],
+     "health": [
+      {
+       "provider_name": "deepseek",
+       "model_id": "deepseek-v4-pro",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mulerouter",
+       "model_id": "qwen-vl-max",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "minimax",
+       "model_id": "MiniMax-M3",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "opencode-go",
+       "model_id": "opencode-go/default",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "kimi-moonshot",
+       "model_id": "k3",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mimo-token-plan",
+       "model_id": "mimo-v2.5-pro",
+       "status": "LIVE",
+       "shadow_id": " [2026-10-14: compat-alias window, remove_by 10-21; entitlement LIVE wire-evidenced, attribution portal-pending]"
+      },
+      {
+       "provider_name": "mimo-token-plan",
+       "model_id": "mimo-v2.5",
+       "status": "LIVE",
+       "shadow_id": " [2026-10-14: compat-alias window, remove_by 10-21; entitlement LIVE wire-evidenced, attribution portal-pending]"
+      },
+      {
+       "provider_name": "deepseek",
+       "model_id": "deepseek-v4-flash",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "deepseek",
+       "model_id": "deepseek-v4-flash-vision-exp",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mistral",
+       "model_id": "codestral-latest",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mistral",
+       "model_id": "mistral-large-latest",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mimo-platform",
+       "model_id": "mimo-v2.6-flash",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mimo-platform",
+       "model_id": "mimo-v2.6-flash-payg",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "DeepSeek (深度求索)",
+       "model_id": "deepseek",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Team Edition",
+       "model_id": "qwen-token-plan",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "MiniMax (MiniMax / MiniMax AI)",
+       "model_id": "minimax",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Pro (via Alibaba Bailian SG)",
+       "model_id": "bailian-token-plan",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Team — arifOS seat (Anthropic-compatible API)",
+       "model_id": "qwen-token-plan-team",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "TokenRouter (Artemis Tokenrouter Inc.)",
+       "model_id": "tokenrouter",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Xiaomi MiMo Open Platform",
+       "model_id": "mimo-platform",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Xiaomi MiMo Token Plan (Singapore, Max plan)",
+       "model_id": "mimo-token-plan",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Groq Cloud",
+       "model_id": "groq",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Google Gemini API",
+       "model_id": "gemini",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "AI Singapore SEA-LION",
+       "model_id": "sea-lion",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Moonshot AI / Kimi (月之暗面)",
+       "model_id": "kimi-moonshot",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "OpenRouter — Unified LLM Routing Layer",
+       "model_id": "openrouter",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "OpenCode Go (Xiaomi Token Plan FREE tier)",
+       "model_id": "opencode-go",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Azure OpenAI",
+       "model_id": "azure-openai",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Cerebras Systems",
+       "model_id": "cerebras",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "xAI (Grok)",
+       "model_id": "xai",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Zhipu AI / Z.ai (智谱AI)",
+       "model_id": "zhipu-z-ai",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "MuleRouter (multimodal surface)",
+       "model_id": "mulerouter",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "OpenCode Zen (PAYG, monthly caps)",
+       "model_id": "opencode-zen",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan INDIVIDUAL Pro (home.qwencloud.com)",
+       "model_id": "qwen-token-plan-individual",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Z.ai GLM Coding Plan (subscription)",
+       "model_id": "zai-coding-plan",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "DashScope PAYG (International, Singapore region)",
+       "model_id": "dashscope-payg",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Aliyun DashScope International — Free Quota Text Models",
+       "model_id": "dashscope-free-quota",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Qwen Cloud Token Plan Team — Hermes seat (sk-sp-H.IPRH…)",
+       "model_id": "qwen-token-plan-hermes",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Kimi (Moonshot) coding plan — direct",
+       "model_id": "kimi",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "Qwen Token Plan — Responses API surface (harness tools)",
+       "model_id": "qwen-responses",
+       "status": "DEAD",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "dashscope-free-quota",
+       "model_id": "deepseek-v4.1-flash",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "dashscope-free-quota",
+       "model_id": "glm-5.3",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "dashscope-free-quota",
+       "model_id": "qwen-audio-3.1-tts-flash",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "dashscope-free-quota",
+       "model_id": "qwen3.8-omni-flash",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "dashscope-free-quota",
+       "model_id": "wan3.0-video-prime",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "zai-direct",
+       "model_id": "probe-test-goodput",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "deepseek",
+       "model_id": "deepseek-flash",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "zai-coding-plan",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "kimi-moonshot",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "minimax",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mistral",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "gemini",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "groq",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mimo-token-plan",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "mimo-platform",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "qwen-token-plan-individual",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "qwen-token-plan-team",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "deepseek",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "qwen-token-plan-individual",
+       "model_id": "qwen3.8-max",
+       "status": "LIVE",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "qwen-token-plan-team",
+       "model_id": "qwen3.8-max",
+       "status": "QUOTA_EXHAUSTED",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "qwen-token-plan",
+       "model_id": "qwen3.8-max",
+       "status": "QUOTA_EXHAUSTED",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "qwen-token-plan-hermes",
+       "model_id": "qwen3.8-max",
+       "status": "QUOTA_EXHAUSTED",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "embedding-lane",
+       "model_id": "qwen3.7-text-embedding",
+       "status": "QUOTA_EXHAUSTED",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "opencode-zen",
+       "model_id": "probe",
+       "status": "AUTH_FAIL",
+       "shadow_id": null
+      },
+      {
+       "provider_name": "opencode-go",
+       "model_id": "probe",
+       "status": "LIVE",
+       "shadow_id": null
+      }
+     ],
+     "spend_summary": {
+      "bench": 0.0,
+      "deepseek": 108.076758,
+      "gemini": 2.37942,
+      "kimi-moonshot": 0.0,
+      "mimo-platform": 0.002876,
+      "mimo-token-plan": 0.0005,
+      "minimax": 0.0,
+      "mulerouter": 0.0076,
+      "openai": 492.673489,
+      "opencode-go": 0.0,
+      "qwen-token-plan-individual": 0.009,
+      "qwen-token-plan-team": 0.000161,
+      "sea-lion": 0.01872,
+      "unknown": 0.0,
+      "zai-coding-plan": 0.0,
+      "zai-direct": 0.000155
+     },
+     "state_db": "/root/.local/share/arifos/token_bank.db",
+     "generated_at": "2026-10-26T11:59:45.475110+00:00"
+    }
+   },
+   "isError": false,
+   "structuredContent": {
+    "providers": [
+     {
+      "id": 1,
+      "provider_name": "deepseek",
+      "track_type": "A",
+      "balance_usd": 6.46,
+      "last_updated": "2026-10-18T08:55:45.449211+00:00",
+      "confidence_score": 1.0,
+      "last_probed_at": "2026-10-26T11:17:01Z",
+      "notes": "probed via api_probe",
+      "balance_confidence": 1.0,
+      "track": "A"
+     },
+     {
+      "id": 42,
+      "provider_name": "kimi-moonshot",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-09-06T12:37:00Z",
+      "confidence_score": 1.0,
+      "last_probed_at": "2026-09-06T12:37:00Z",
+      "notes": "PROBED_2026-09-06: LIVE /v1/usages weekly limit=100 used=21 remaining=79 reset=2026-09-10T14:07:59Z, 5h window limit=100 used=24, parallel=30, LEVEL_STANDARD",
+      "balance_confidence": 1.0,
+      "track": "A"
+     },
+     {
+      "id": 6,
+      "provider_name": "mimo-platform",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-08-11T23:42:01.514307+00:00",
+      "confidence_score": 0.95,
+      "last_probed_at": "2026-09-06T12:37:00Z",
+      "notes": "LEGACY 2026-08-19T09:35Z — Xiaomi MiMo OPEN Platform (api.xiaomimimo.com, OPEN key). KEPT as fallback only — token-plan path is the canonical primary. Was the active path during 2026-08-12 → 2026-08-18 when token-plan Max was exhausted. Token-plan now refreshed (Max 82B credits) and tp- key verified live 2026-08-19. Key: secrets::MIMO_PAYG_OPENCODE_API_KEY (sk-spv prefix, OPEN dashboard key). Endpoint: https://api.xiaomimimo.com/v1. | BILLING_MODEL=open_platform_payg | FALLBACK_ONLY | SUPERSEDED_BY=mimo-token-plan | PROBED_2026-09-06: 402 insufficient_balance DEAD — do not route | PROBED_2026-09-22: LIVE [witness=chat_completion IMG vision round-trip: model accurately described 1x1 white-pixel PNG content (6] | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (6528ms)]",
+      "balance_confidence": 0.95,
+      "track": "A"
+     },
+     {
+      "id": 36,
+      "provider_name": "mimo-token-plan",
+      "track_type": "A",
+      "balance_usd": 50.0,
+      "last_updated": "2026-08-19T09:35:00+00:00",
+      "confidence_score": 0.95,
+      "last_probed_at": "2026-10-26T11:17:01Z",
+      "notes": "LIVE 2026-08-19T09:35Z — Xiaomi MiMo V2.5 Token Plan (Singapore, max-monthly 82B credits). Endpoint https://token-plan-sgp.xiaomimimo.com/v1 (OpenAI-compat) + /anthropic (Anthropic-compat). Key: secrets::MIMO_TOKEN_PLAN_API_KEY (tp- prefix, dedicated token-plan key per F13 split 2026-08-17; alias secrets::MIMO_API_KEY). 6 active models: mimo-v2.5-pro (1M ctx), mimo-v2.5 (1M ctx, omni-modal text+img+video+audio), mimo-v2.5-asr (30M cred/h audio), mimo-v2.5-tts + mimo-v2.5-tts-voiceclone + mimo-v2.5-tts-voicedesign (FREE for limited time — 0 credit deduction). USD pricing (landing): v2.5-pro $0.0036/$0.435/$0.87 per MTok (hit/miss/out); v2.5 $0.0028/$0.14/$0.28. Deprecated 2026-06-30: mimo-v2-pro, mimo-v2-omni, mimo-v2-tts. License scope (F13-binding): coding tools only (OpenClaw/OpenCode/Claude/Codex/Kimi/Qwen/Grok); direct API from non-coding backends prohibited. Re-anchored 2026-08-19 from earlier mimo-platform (OPEN key) when token-plan confirmed fresh + tp- key verified HTTP 200 on /v1/models + /v1/chat/completions. | BILLING_MODEL=monthly_token_plan_max | SGP_ENDPOINT | TP-KEY | USD_KNOWN | MULTIMODAL_OMNI | TTS_FREE | API_VERIFIED_2026-08-19 | PROBED_2026-09-06: LIVE mimo-v2.5 637-981ms",
+      "balance_confidence": 0.95,
+      "track": "A"
+     },
+     {
+      "id": 7,
+      "provider_name": "minimax",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-08-11 00:57:49",
+      "confidence_score": 0.95,
+      "last_probed_at": "2026-10-26T11:17:01Z",
+      "notes": "LIVE 2026-08-11T00:57:49Z — re-anchored by FED doctor (Kimi Code CLI). MiniMax-M3 verified HTTP 200 chat completion (~1.78s latency, vault key valid). 8 models exposed (M3, M2.7, M2.5, M2.1, M2 + highspeed variants). Token Plan fresh per 2026-08-11 user dashboard (18% 5h, 34% weekly). Key: MINIMAX_API_KEY. Endpoint: https://api.minimax.io/v1. Routing: litellm fed-long-context order=2 (PRIMARY), fed-reasoning-heavy + fed-multimodal-vision order=3. GAP: opencode + codex + kimi-code aliases lack MiniMax fallback (see call_map review). | BILLING_MODEL=monthly_token_plan | FRESH | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: token_plan/remains → status 2062 NO ACTIVE SUBSCRIPTION — group dead until resubscribe | RESUBSCRIBED 2026-09-06: Token Plan Max LIVE (M3 200 in 1.9s; weekly_remains ~35.1M units; renews 2026-10-05; 4-5 concurrent; 1M ctx multimodal; Hailuo 3/day). Rung restored to 7 chains. | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (3929ms)]",
+      "balance_confidence": 0.95,
+      "track": "A"
+     },
+     {
+      "id": 43,
+      "provider_name": "mistral",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-09-13T07:28:57+00:00",
+      "confidence_score": 0.9,
+      "last_probed_at": "2026-09-13T07:28:57+00:00",
+      "notes": "REGISTERED_2026-09-13 per F13 APEX-ZEN directive (SOT patch_note_2026_09_13_apex_zen) — Order-0 paid bedrock across i-arif/agi-333/forge-777/asi-555. LIVE probe 2026-09-13 (direct api.mistral.ai, chat-level n=1): codestral-latest PONG 378ms, mistral-large-latest PONG 500ms; also HEALTHY via litellm forge-777 health on both KVM8 :4013 and KVM4 :4000. Key secrets::MISTRAL_API_KEY. Jurisdiction FR/EU per SOT federation-models.json providers[0]. Billing payg_active. BALANCE NOT YET PROBED (console PAYG) — balance_usd 0.0 is a placeholder, set real balance + confidence 1.0 on first balance probe.",
+      "balance_confidence": 0.9,
+      "track": "A"
+     },
+     {
+      "id": 21,
+      "provider_name": "opencode-go",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-08-11 01:03:20",
+      "confidence_score": 0.95,
+      "last_probed_at": "2026-09-13T00:45:00Z",
+      "notes": "LIVE 2026-08-11T01:03:20Z — OpenCode Go (Anomaly) subscription registered. API verified HTTP 200 (0.58s): https://opencode.ai/zen/go/v1 — 25+ models exposed. Models include: minimax-m3/m2.7/m2.5, kimi-k3/k2.7-code, glm-5.2/5.1/5, deepseek-v4-pro/flash, qwen3.8-max/3.7-max/3.7-plus/3.6-plus/3.5-plus, mimo-v2.5-pro/v2.5, hy3/hy3-preview, gpt-5.6-luna, grok-4.5. Curated OpenRouter-equivalent — one key, many models. Arif subscription: $10/mo Go tier, 0% rolling / 40% weekly / 20% monthly (2026-08-11). Key: OPENCODE_GO_API_KEY (kunci-mas.env). OpenAI-compatible transport at /zen/go/v1. Routed via litellm alias opencode-go and via opencode CLI primary. FI alignment: FI-001 opencode CLI uses opencode-go as PRIMARY 333-AGI / 555-ASI models. FI-008 kimi-code and FI-005 codex now have opencode-go as resilience fallback. | BILLING_MODEL=monthly_subscription | ARIF_TIER=Go | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: 401 CreditsError INSUFFICIENT BALANCE both go+zen (same workspace wrk_01KH1CM97F) — drained | PROBED_2026-09-12T15:50Z (FED doctor, Kimi Code FI-008): LIVE HTTP 200 on /zen/go/v1/models, 37 models exposed — Go cycle reset (dashboard 0%), lane re-anchored from stale 2026-09-06 DEAD | CORRECTED_2026-09-12T15:58Z (FED doctor FI-008 self-audit): /models=200 is a FALSE POSITIVE for this provider — chat completions → 401 CreditsError INSUFFICIENT BALANCE (workspace wrk_01KH1CM97F6SKSD5K1RVRMMZFF). Dashboard shows Go subscription active + 0% usage BECAUSE API calls are balance-blocked. Root cause: account-level billing hold / zero prepaid balance. Lane NOT usable until billing fixed. Probe script gap: fed-provider-probe.sh tests /models only — chat-level probe needed for Anomaly endpoints. i-arif P0 go rung (added then REVERTED 2026-09-12) — re-add after billing fix. | ACTIVATED_2026-09-13T00:4xZ: Arif resubscribed Go ($10/mo). Balance block cleared — chat now 200 (GO-LIVE, cost 0). PROTOCOL: /zen/go/v1 REQUIRES x-opencode-session header (400 MissingSessionID without). i-arif P0-Go rung embedded co-primary order 1 (qwen3.8-max) with header set. Zen (/zen/v1) still 401 — prepaid balance not topped (not needed; Go covers).",
+      "balance_confidence": 0.95,
+      "track": "A"
+     },
+     {
+      "id": 27,
+      "provider_name": "opencode-zen",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-08-11T03:22:24.532753+00:00",
+      "confidence_score": 0.95,
+      "last_probed_at": "2026-09-12T15:50:00Z",
+      "notes": "LIVE 2026-08-11T11:14Z — F13 top-up $20 confirmed via OpenCode panel. Balance $19.96 USD remaining (53+ models enabled). Subscription-credit billing: cost debited from prepaid balance per call. OpenAI-compatible at https://opencode.ai/zen/v1. Key: OPENCODE_ZEN_API_KEY (kunci-mas.env). FED catalog synced 2026-08-11 (forged 333-AGI under F13 directive): OPENCODE_ZEN_PRICING 53+ entries, fed-opencode-zen-cascade capability signature, MODEL_ROUTES prefer Zen over dead mulerouter/tokenrouter for claude-sonnet-5, claude-opus-4.8, kimi-k3, glm-5.2. | BILLING_MODEL=subscription_credit | ARIF_TIER=Zen $20 | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: 401 CreditsError drained (same workspace as go) | PROBED_2026-09-12T15:50Z (FED doctor, Kimi Code FI-008): LIVE HTTP 200 on /zen/v1/models — flipped from stale 2026-09-06 DEAD; Zen workspace wrk_01KH1CM97F active again | CORRECTED_2026-09-12T15:58Z: /models=200 FALSE POSITIVE — chat 401 CreditsError same workspace as go. Not usable until billing fix.",
+      "balance_confidence": 0.95,
+      "track": "A"
+     },
+     {
+      "id": 20,
+      "provider_name": "qwen-token-plan-individual",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-08-13T20:57:55.011289+00:00",
+      "confidence_score": 1.0,
+      "last_probed_at": "2026-09-13T00:05:00Z",
+      "notes": "PRO PLAN (individual plan) — Aliyun token-plan. Auto-renew ON. 7-day rolling quota cycle. Base URL: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 (+ /apps/anthropic). Model scope (subset of team): qwen3.8-max / qwen3.7-plus / qwen3.7-max / qwen3.6-flash (NO qwen3.6-plus); deepseek-v4-pro-0813 / v4-pro / v4-flash-0731 (NO v4-flash, NO v3.2); glm-5.2 only (NO 5.1/5); NO kimi, NO MiniMax; image/audio/video same. QUOTA = LIVE-PROBED ONLY — never static (F13 audit 2026-08-17). | PROBED_2026-09-06: 429 token-plan 1-week quota EXHAUSTED, resets 2026-09-11T04:01Z (live error body) | TOPUP_2026-09-13T00:05Z: Arif topped up Individual plan — chat VERIFIED HTTP 200 qwen3.8-max (TOPUP-OK). All 09-11 demotions restored by fed-config-generator (24 rungs, 8 groups, i-arif P1=order1/P3=order2). Weekly window note: prior exhaustion error cited reset 09-18 — topup cleared it early.",
+      "balance_confidence": 1.0,
+      "track": "A"
+     },
+     {
+      "id": 12,
+      "provider_name": "qwen-token-plan-team",
+      "track_type": "A",
+      "balance_usd": 0.0,
+      "last_updated": "2026-08-05T07:47:11.699281",
+      "confidence_score": 1.0,
+      "last_probed_at": "2026-09-06T12:37:00Z",
+      "notes": "TEAM EDITION (Team plan) — Aliyun token-plan. Subscription end 2026-10-01 11:00, auto-renew OFF. 3 seats: 1 Standard (ariffazil) + 2 Advanced (aliyun-owner, arifOS). Base URL: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 (+ /apps/anthropic). Model scope: qwen3.8-max / qwen3.7-plus / qwen3.7-max / qwen3.6-plus / qwen3.6-flash; deepseek-v4-pro-0813 / v4-pro / v4-flash-0731 / v4-flash / v3.2; glm-5.2 / 5.1 / 5; kimi-k2.7-code / k2.6 / k2.5; MiniMax-M2.5; image/audio/video (qwen-image, wan2.7, happyhorse). QUOTA/CREDITS = LIVE-PROBED ONLY — never static (F13 audit 2026-08-17). | PROBED_2026-09-06: 429 insufficient_quota EXHAUSTED (monthly team) | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (8772ms)]",
+      "balance_confidence": 1.0,
+      "track": "A"
+     },
+     {
+      "id": 5,
+      "provider_name": "bailian-token-plan",
+      "track_type": "B",
+      "balance_usd": 25.0,
+      "last_updated": "2026-07-30T14:22:58.116095+00:00",
+      "confidence_score": 1.0,
+      "last_probed_at": null,
+      "notes": "Manual top-up 2026-07-30T14:22:58.116095+00:00",
+      "balance_confidence": 1.0,
+      "track": "B"
+     },
+     {
+      "id": 3,
+      "provider_name": "mulerouter",
+      "track_type": "B",
+      "balance_usd": 49.925,
+      "last_updated": "2026-07-30T14:25:21.036154+00:00",
+      "confidence_score": 0.99,
+      "last_probed_at": null,
+      "notes": "ARCHIVED 2026-08-04: not in litellm-config.yaml, orphaned from old MuleRouter routing. Manual top-up 2026-07-30T14:25:20.978400+00:00",
+      "balance_confidence": 0.99,
+      "track": "B"
+     },
+     {
+      "id": 2,
+      "provider_name": "openrouter",
+      "track_type": "B",
+      "balance_usd": 0.5,
+      "last_updated": "2026-08-04 16:21:28",
+      "confidence_score": 0.6,
+      "last_probed_at": "2026-07-30T14:37:27.196045+00:00",
+      "notes": "ARCHIVED (conscious decision 2026-08-05): Near-empty (/usr/bin/bash.50), not in litellm-config, not in MODEL_ROUTES. BLIND probe. FLAME covers free-tier (20rpm/50rpd) as Tier-3 fallback. No re-track needed — deepseek + qwen-token-plan-team cover Track A. Re-evaluate only if OpenRouter balance increases.",
+      "balance_confidence": 0.6,
+      "track": "B"
+     },
+     {
+      "id": 4,
+      "provider_name": "tokenrouter",
+      "track_type": "B",
+      "balance_usd": 59.9354,
+      "last_updated": "2026-07-30T14:25:21.717927+00:00",
+      "confidence_score": 0.98,
+      "last_probed_at": null,
+      "notes": "ARCHIVED 2026-08-04: not in litellm-config.yaml, orphaned from old MuleRouter routing. Manual top-up 2026-07-30T14:22:58.065409+00:00",
+      "balance_confidence": 0.98,
+      "track": "B"
+     },
+     {
+      "id": 29,
+      "provider_name": "zai-direct",
+      "track_type": "B",
+      "balance_usd": 12.0,
+      "last_updated": "2026-08-12T02:36:00+00:00",
+      "confidence_score": 0.95,
+      "last_probed_at": "2026-10-26T11:17:01Z",
+      "notes": "LIVE 2026-08-12T02:36Z — Z.ai GLM Coding Plan Pro. 8 model caps (8/8) + 4 MCP servers + 17-release temporal intelligence + Memory Helix Tier 1 (project + 5 rules + local + 5 lane memories + auto-reflect hook + rollup cron) + temporal drift detection cron + arif_zai_tools.py CLI for Hermes reach. AAA AGENT MCP COVERAGE: 5/5 wired. FED :4000 → :4012 → Z.ai end-to-end VERIFIED HTTP 200 (litellm model_group routing FIXED via model_name=glm-5.2). | BILLING_MODEL=coding_plan_pro | 8_OF_8_CAPS_LIVE | 5_AAA_AGENTS_WIRED | 4_MCP_FEDERATED | TEMPORAL_INTELLIGENCE_LOADED | 17_RELEASES_INDEXED | MEMORY_HELIX_T1_BUILT | FED_E2E_VERIFIED | NO_GAPS | PROBED_2026-09-06: LIVE glm-5.3 1006ms warm",
+      "balance_confidence": 0.95,
+      "track": "B"
+     }
+    ],
+    "latency": [
+     {
+      "provider_name": "deepseek",
+      "model_id": "deepseek-v4-pro",
+      "p50_ms": 895.29,
+      "p95_ms": 1524.6,
+      "sample_count": 10,
+      "last_sample": "2026-09-15T18:16:02.606088+00:00"
+     },
+     {
+      "provider_name": "mulerouter",
+      "model_id": "qwen-vl-max",
+      "p50_ms": 2400.0,
+      "p95_ms": 2400.0,
+      "sample_count": 1,
+      "last_sample": "2026-07-30T14:38:42.691566+00:00"
+     },
+     {
+      "provider_name": "qwen-token-plan-team",
+      "model_id": "qwen3.6-flash",
+      "p50_ms": 225.0,
+      "p95_ms": 427.5,
+      "sample_count": 2,
+      "last_sample": "2026-08-05T07:08:30.011558+00:00"
+     },
+     {
+      "provider_name": "qwen-token-plan-team",
+      "model_id": "deepseek-v4-pro",
+      "p50_ms": 480.0,
+      "p95_ms": 480.0,
+      "sample_count": 1,
+      "last_sample": "2026-08-03T01:37:24.521459+00:00"
+     },
+     {
+      "provider_name": "minimax",
+      "model_id": "MiniMax-M3",
+      "p50_ms": 1810.8,
+      "p95_ms": 3377.7,
+      "sample_count": 5,
+      "last_sample": "2026-08-05T07:08:28.848366+00:00"
+     },
+     {
+      "provider_name": "qwen-token-plan-individual",
+      "model_id": "qwen3.8-max",
+      "p50_ms": 1600.0,
+      "p95_ms": 1600.0,
+      "sample_count": 1,
+      "last_sample": "2026-08-11T09:20:31.723420+00:00"
+     },
+     {
+      "provider_name": "kimi-moonshot",
+      "model_id": "k3",
+      "p50_ms": 1956.25,
+      "p95_ms": 2004.96,
+      "sample_count": 4,
+      "last_sample": "2026-08-13T20:51:39.291548+00:00"
+     },
+     {
+      "provider_name": "mimo-token-plan",
+      "model_id": "mimo-v2.5-pro",
+      "p50_ms": 1840.0,
+      "p95_ms": 1840.0,
+      "sample_count": 1,
+      "last_sample": "2026-08-19T01:28:43.184438+00:00"
+     },
+     {
+      "provider_name": "mimo-token-plan",
+      "model_id": "mimo-v2.5",
+      "p50_ms": 1500.0,
+      "p95_ms": 1500.0,
+      "sample_count": 1,
+      "last_sample": "2026-08-19T01:28:43.205021+00:00"
+     },
+     {
+      "provider_name": "deepseek",
+      "model_id": "deepseek-v4-flash",
+      "p50_ms": 1198.0,
+      "p95_ms": 1198.0,
+      "sample_count": 1,
+      "last_sample": "2026-08-30T11:15:13.907104+00:00"
+     },
+     {
+      "provider_name": "deepseek",
+      "model_id": "deepseek-v4-flash-vision-exp",
+      "p50_ms": 1595.5,
+      "p95_ms": 2100.0,
+      "sample_count": 2,
+      "last_sample": "2026-08-30T23:11:57.300642+00:00"
+     },
+     {
+      "provider_name": "mistral",
+      "model_id": "codestral-latest",
+      "p50_ms": 378.0,
+      "p95_ms": 378.0,
+      "sample_count": 1,
+      "last_sample": "2026-09-13T07:29:17+00:00"
+     },
+     {
+      "provider_name": "mistral",
+      "model_id": "mistral-large-latest",
+      "p50_ms": 500.3,
+      "p95_ms": 500.3,
+      "sample_count": 1,
+      "last_sample": "2026-09-13T07:29:17+00:00"
+     },
+     {
+      "provider_name": "mimo-platform",
+      "model_id": "mimo-v2.6-flash",
+      "p50_ms": 5605.0,
+      "p95_ms": 6572.5,
+      "sample_count": 2,
+      "last_sample": "2026-09-22T05:18:08.287152+00:00"
+     },
+     {
+      "provider_name": "DeepSeek (深度求索)",
+      "model_id": "deepseek",
+      "p50_ms": 133.71586799621582,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:10Z"
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Team Edition",
+      "model_id": "qwen-token-plan",
+      "p50_ms": 428.58386039733887,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:10Z"
+     },
+     {
+      "provider_name": "MiniMax (MiniMax / MiniMax AI)",
+      "model_id": "minimax",
+      "p50_ms": 279.24561500549316,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:10Z"
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Pro (via Alibaba Bailian SG)",
+      "model_id": "bailian-token-plan",
+      "p50_ms": 50.676584243774414,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:10Z"
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Team — arifOS seat (Anthropic-compatible API)",
+      "model_id": "qwen-token-plan-team",
+      "p50_ms": 51.85866355895996,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:11Z"
+     },
+     {
+      "provider_name": "TokenRouter (Artemis Tokenrouter Inc.)",
+      "model_id": "tokenrouter",
+      "p50_ms": 73.97723197937012,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:11Z"
+     },
+     {
+      "provider_name": "Xiaomi MiMo Open Platform",
+      "model_id": "mimo-platform",
+      "p50_ms": 58.58182907104492,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:11Z"
+     },
+     {
+      "provider_name": "Xiaomi MiMo Token Plan (Singapore, Max plan)",
+      "model_id": "mimo-token-plan",
+      "p50_ms": 46.1118221282959,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:11Z"
+     },
+     {
+      "provider_name": "Groq Cloud",
+      "model_id": "groq",
+      "p50_ms": 19.578933715820312,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:11Z"
+     },
+     {
+      "provider_name": "Google Gemini API",
+      "model_id": "gemini",
+      "p50_ms": 32.38248825073242,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:11Z"
+     },
+     {
+      "provider_name": "AI Singapore SEA-LION",
+      "model_id": "sea-lion",
+      "p50_ms": 3073.979139328003,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:14Z"
+     },
+     {
+      "provider_name": "Moonshot AI / Kimi (月之暗面)",
+      "model_id": "kimi-moonshot",
+      "p50_ms": 367.5806522369385,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:14Z"
+     },
+     {
+      "provider_name": "OpenRouter — Unified LLM Routing Layer",
+      "model_id": "openrouter",
+      "p50_ms": 373.0313777923584,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:15Z"
+     },
+     {
+      "provider_name": "OpenCode Go (Xiaomi Token Plan FREE tier)",
+      "model_id": "opencode-go",
+      "p50_ms": 533.5090160369873,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:15Z"
+     },
+     {
+      "provider_name": "Azure OpenAI",
+      "model_id": "azure-openai",
+      "p50_ms": 270.3874111175537,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:15Z"
+     },
+     {
+      "provider_name": "Cerebras Systems",
+      "model_id": "cerebras",
+      "p50_ms": 24.78933334350586,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:15Z"
+     },
+     {
+      "provider_name": "xAI (Grok)",
+      "model_id": "xai",
+      "p50_ms": 200.48975944519043,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:16Z"
+     },
+     {
+      "provider_name": "Zhipu AI / Z.ai (智谱AI)",
+      "model_id": "zhipu-z-ai",
+      "p50_ms": 130.89990615844727,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:16Z"
+     },
+     {
+      "provider_name": "MuleRouter (multimodal surface)",
+      "model_id": "mulerouter",
+      "p50_ms": 45.24827003479004,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:16Z"
+     },
+     {
+      "provider_name": "OpenCode Zen (PAYG, monthly caps)",
+      "model_id": "opencode-zen",
+      "p50_ms": 527.1744728088379,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:16Z"
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan INDIVIDUAL Pro (home.qwencloud.com)",
+      "model_id": "qwen-token-plan-individual",
+      "p50_ms": 53.14970016479492,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:16Z"
+     },
+     {
+      "provider_name": "Z.ai GLM Coding Plan (subscription)",
+      "model_id": "zai-coding-plan",
+      "p50_ms": 149.92833137512207,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:17Z"
+     },
+     {
+      "provider_name": "DashScope PAYG (International, Singapore region)",
+      "model_id": "dashscope-payg",
+      "p50_ms": 215.54899215698242,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:17Z"
+     },
+     {
+      "provider_name": "Aliyun DashScope International — Free Quota Text Models",
+      "model_id": "dashscope-free-quota",
+      "p50_ms": 60.224056243896484,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:17Z"
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Team — Hermes seat (sk-sp-H.IPRH…)",
+      "model_id": "qwen-token-plan-hermes",
+      "p50_ms": 50.62675476074219,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:17Z"
+     },
+     {
+      "provider_name": "Kimi (Moonshot) coding plan — direct",
+      "model_id": "kimi",
+      "p50_ms": 337.8608226776123,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:17Z"
+     },
+     {
+      "provider_name": "Qwen Token Plan — Responses API surface (harness tools)",
+      "model_id": "qwen-responses",
+      "p50_ms": 100.84295272827148,
+      "p95_ms": null,
+      "sample_count": 1,
+      "last_sample": "2026-10-03T00:42:17Z"
+     },
+     {
+      "provider_name": "zai-direct",
+      "model_id": "probe-test-goodput",
+      "p50_ms": 856.0,
+      "p95_ms": 900.0,
+      "sample_count": 2,
+      "last_sample": "2026-10-08T14:53:44.109534+00:00"
+     }
+    ],
+    "health": [
+     {
+      "provider_name": "deepseek",
+      "model_id": "deepseek-v4-pro",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mulerouter",
+      "model_id": "qwen-vl-max",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "minimax",
+      "model_id": "MiniMax-M3",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "opencode-go",
+      "model_id": "opencode-go/default",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "kimi-moonshot",
+      "model_id": "k3",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mimo-token-plan",
+      "model_id": "mimo-v2.5-pro",
+      "status": "LIVE",
+      "shadow_id": " [2026-10-14: compat-alias window, remove_by 10-21; entitlement LIVE wire-evidenced, attribution portal-pending]"
+     },
+     {
+      "provider_name": "mimo-token-plan",
+      "model_id": "mimo-v2.5",
+      "status": "LIVE",
+      "shadow_id": " [2026-10-14: compat-alias window, remove_by 10-21; entitlement LIVE wire-evidenced, attribution portal-pending]"
+     },
+     {
+      "provider_name": "deepseek",
+      "model_id": "deepseek-v4-flash",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "deepseek",
+      "model_id": "deepseek-v4-flash-vision-exp",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mistral",
+      "model_id": "codestral-latest",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mistral",
+      "model_id": "mistral-large-latest",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mimo-platform",
+      "model_id": "mimo-v2.6-flash",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mimo-platform",
+      "model_id": "mimo-v2.6-flash-payg",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "DeepSeek (深度求索)",
+      "model_id": "deepseek",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Team Edition",
+      "model_id": "qwen-token-plan",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "MiniMax (MiniMax / MiniMax AI)",
+      "model_id": "minimax",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Pro (via Alibaba Bailian SG)",
+      "model_id": "bailian-token-plan",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Team — arifOS seat (Anthropic-compatible API)",
+      "model_id": "qwen-token-plan-team",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "TokenRouter (Artemis Tokenrouter Inc.)",
+      "model_id": "tokenrouter",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Xiaomi MiMo Open Platform",
+      "model_id": "mimo-platform",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Xiaomi MiMo Token Plan (Singapore, Max plan)",
+      "model_id": "mimo-token-plan",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Groq Cloud",
+      "model_id": "groq",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Google Gemini API",
+      "model_id": "gemini",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "AI Singapore SEA-LION",
+      "model_id": "sea-lion",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Moonshot AI / Kimi (月之暗面)",
+      "model_id": "kimi-moonshot",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "OpenRouter — Unified LLM Routing Layer",
+      "model_id": "openrouter",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "OpenCode Go (Xiaomi Token Plan FREE tier)",
+      "model_id": "opencode-go",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Azure OpenAI",
+      "model_id": "azure-openai",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Cerebras Systems",
+      "model_id": "cerebras",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "xAI (Grok)",
+      "model_id": "xai",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Zhipu AI / Z.ai (智谱AI)",
+      "model_id": "zhipu-z-ai",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "MuleRouter (multimodal surface)",
+      "model_id": "mulerouter",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "OpenCode Zen (PAYG, monthly caps)",
+      "model_id": "opencode-zen",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan INDIVIDUAL Pro (home.qwencloud.com)",
+      "model_id": "qwen-token-plan-individual",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Z.ai GLM Coding Plan (subscription)",
+      "model_id": "zai-coding-plan",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "DashScope PAYG (International, Singapore region)",
+      "model_id": "dashscope-payg",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Aliyun DashScope International — Free Quota Text Models",
+      "model_id": "dashscope-free-quota",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Qwen Cloud Token Plan Team — Hermes seat (sk-sp-H.IPRH…)",
+      "model_id": "qwen-token-plan-hermes",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Kimi (Moonshot) coding plan — direct",
+      "model_id": "kimi",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "Qwen Token Plan — Responses API surface (harness tools)",
+      "model_id": "qwen-responses",
+      "status": "DEAD",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "dashscope-free-quota",
+      "model_id": "deepseek-v4.1-flash",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "dashscope-free-quota",
+      "model_id": "glm-5.3",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "dashscope-free-quota",
+      "model_id": "qwen-audio-3.1-tts-flash",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "dashscope-free-quota",
+      "model_id": "qwen3.8-omni-flash",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "dashscope-free-quota",
+      "model_id": "wan3.0-video-prime",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "zai-direct",
+      "model_id": "probe-test-goodput",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "deepseek",
+      "model_id": "deepseek-flash",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "zai-coding-plan",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "kimi-moonshot",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "minimax",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mistral",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "gemini",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "groq",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mimo-token-plan",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "mimo-platform",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "qwen-token-plan-individual",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "qwen-token-plan-team",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "deepseek",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "qwen-token-plan-individual",
+      "model_id": "qwen3.8-max",
+      "status": "LIVE",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "qwen-token-plan-team",
+      "model_id": "qwen3.8-max",
+      "status": "QUOTA_EXHAUSTED",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "qwen-token-plan",
+      "model_id": "qwen3.8-max",
+      "status": "QUOTA_EXHAUSTED",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "qwen-token-plan-hermes",
+      "model_id": "qwen3.8-max",
+      "status": "QUOTA_EXHAUSTED",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "embedding-lane",
+      "model_id": "qwen3.7-text-embedding",
+      "status": "QUOTA_EXHAUSTED",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "opencode-zen",
+      "model_id": "probe",
+      "status": "AUTH_FAIL",
+      "shadow_id": null
+     },
+     {
+      "provider_name": "opencode-go",
+      "model_id": "probe",
+      "status": "LIVE",
+      "shadow_id": null
+     }
+    ],
+    "spend_summary": {
+     "bench": 0.0,
+     "deepseek": 108.076758,
+     "gemini": 2.37942,
+     "kimi-moonshot": 0.0,
+     "mimo-platform": 0.002876,
+     "mimo-token-plan": 0.0005,
+     "minimax": 0.0,
+     "mulerouter": 0.0076,
+     "openai": 492.673489,
+     "opencode-go": 0.0,
+     "qwen-token-plan-individual": 0.009,
+     "qwen-token-plan-team": 0.000161,
+     "sea-lion": 0.01872,
+     "unknown": 0.0,
+     "zai-coding-plan": 0.0,
+     "zai-direct": 0.000155
+    },
+    "state_db": "/root/.local/share/arifos/token_bank.db",
+    "generated_at": "2026-10-26T11:59:45.475110+00:00"
+   },
+   "content_text": "{\"providers\":[{\"id\":1,\"provider_name\":\"deepseek\",\"track_type\":\"A\",\"balance_usd\":6.46,\"last_updated\":\"2026-10-18T08:55:45.449211+00:00\",\"confidence_score\":1.0,\"last_probed_at\":\"2026-10-26T11:17:01Z\",\"notes\":\"probed via api_probe\",\"balance_confidence\":1.0,\"track\":\"A\"},{\"id\":42,\"provider_name\":\"kimi-moonshot\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-09-06T12:37:00Z\",\"confidence_score\":1.0,\"last_probed_at\":\"2026-09-06T12:37:00Z\",\"notes\":\"PROBED_2026-09-06: LIVE /v1/usages weekly limit=100 used=21 remaining=79 reset=2026-09-10T14:07:59Z, 5h window limit=100 used=24, parallel=30, LEVEL_STANDARD\",\"balance_confidence\":1.0,\"track\":\"A\"},{\"id\":6,\"provider_name\":\"mimo-platform\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-11T23:42:01.514307+00:00\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-09-06T12:37:00Z\",\"notes\":\"LEGACY 2026-08-19T09:35Z — Xiaomi MiMo OPEN Platform (api.xiaomimimo.com, OPEN key). KEPT as fallback only — token-plan path is the canonical primary. Was the active path during 2026-08-12 → 2026-08-18 when token-plan Max was exhausted. Token-plan now refreshed (Max 82B credits) and tp- key verified live 2026-08-19. Key: secrets::MIMO_PAYG_OPENCODE_API_KEY (sk-spv prefix, OPEN dashboard key). Endpoint: https://api.xiaomimimo.com/v1. | BILLING_MODEL=open_platform_payg | FALLBACK_ONLY | SUPERSEDED_BY=mimo-token-plan | PROBED_2026-09-06: 402 insufficient_balance DEAD — do not route | PROBED_2026-09-22: LIVE [witness=chat_completion IMG vision round-trip: model accurately described 1x1 white-pixel PNG content (6] | PROBED_2026-09-22: LIVE [witness=chat_completion quality canary 3/3 (6528ms)]\",\"balance_confidence\":0.95,\"track\":\"A\"},{\"id\":36,\"provider_name\":\"mimo-token-plan\",\"track_type\":\"A\",\"balance_usd\":50.0,\"last_updated\":\"2026-08-19T09:35:00+00:00\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-10-26T11:17:01Z\",\"notes\":\"LIVE 2026-08-19T09:35Z — Xiaomi MiMo V2.5 Token Plan (Singapore, max-monthly 82B credits). Endpoint https://token-plan-sgp.xiaomimimo.com/v1 (OpenAI-compat) + /anthropic (Anthropic-compat). Key: secrets::MIMO_TOKEN_PLAN_API_KEY (tp- prefix, dedicated token-plan key per F13 split 2026-08-17; alias secrets::MIMO_API_KEY). 6 active models: mimo-v2.5-pro (1M ctx), mimo-v2.5 (1M ctx, omni-modal text+img+video+audio), mimo-v2.5-asr (30M cred/h audio), mimo-v2.5-tts + mimo-v2.5-tts-voiceclone + mimo-v2.5-tts-voicedesign (FREE for limited time — 0 credit deduction). USD pricing (landing): v2.5-pro $0.0036/$0.435/$0.87 per MTok (hit/miss/out); v2.5 $0.0028/$0.14/$0.28. Deprecated 2026-06-30: mimo-v2-pro, mimo-v2-omni, mimo-v2-tts. License scope (F13-binding): coding tools only (OpenClaw/OpenCode/Claude/Codex/Kimi/Qwen/Grok); direct API from non-coding backends prohibited. Re-anchored 2026-08-19 from earlier mimo-platform (OPEN key) when token-plan confirmed fresh + tp- key verified HTTP 200 on /v1/models + /v1/chat/completions. | BILLING_MODEL=monthly_token_plan_max | SGP_ENDPOINT | TP-KEY | USD_KNOWN | MULTIMODAL_OMNI | TTS_FREE | API_VERIFIED_2026-08-19 | PROBED_2026-09-06: LIVE mimo-v2.5 637-981ms\",\"balance_confidence\":0.95,\"track\":\"A\"},{\"id\":7,\"provider_name\":\"minimax\",\"track_type\":\"A\",\"balance_usd\":0.0,\"last_updated\":\"2026-08-11 00:57:49\",\"confidence_score\":0.95,\"last_probed_at\":\"2026-10-26T11:17:01Z\",\"notes\":\"LIVE 2026-08-11T00:57:49Z — re-anchored by FED doctor (Kimi Code CLI). MiniMax-M3 verified HTTP 200 chat completion (~1.78s latency, vault key valid). 8 models exposed (M3, M2.7, M2.5, M2.1, M2 + highspeed variants). Token Plan fresh per 2026-08-11 user dashboard (18% 5h, 34% weekly). Key: MINIMAX_API_KEY. Endpoint: https://api.minimax.io/v1. Routing: litellm fed-long-context order=2 (PRIMARY), fed-reasoning-heavy + fed-multimodal-vision order=3. GAP: opencode + codex + kimi-code aliases lack MiniMax fallback (see call_map review). | BILLING_MODEL=monthly_token_plan | FRESH | API_VERIFIED_2026-08-11 | PROBED_2026-09-06: token_plan/remains → status 2062 NO ACTIVE SUBSCRIPTION — gr"
+  },
+  "fed_probe": {
+   "arguments": {},
+   "raw_result": {
+    "content": [
+     {
+      "text": "{\"gateways\":{\"litellm_local_4013\":{\"status\":\"LIVE\",\"http\":200,\"body_head\":\"\\\"I'm alive!\\\"\"},\"litellm_kvm4_4000\":{\"status\":\"LIVE\",\"http\":200,\"body_head\":\"\\\"I'm alive!\\\"\"}},\"db_providers\":15,\"route_health\":{\"AUTH_FAIL\":1,\"DEAD\":12,\"LIVE\":48,\"QUOTA_EXHAUSTED\":4},\"note\":\"ADVISORY_ONLY — live probe over narrative (bijaksana audit discipline)\"}",
+      "type": "text"
+     }
+    ],
+    "isError": false,
+    "structuredContent": {
+     "gateways": {
+      "litellm_local_4013": {
+       "status": "LIVE",
+       "http": 200,
+       "body_head": "\"I'm alive!\""
+      },
+      "litellm_kvm4_4000": {
+       "status": "LIVE",
+       "http": 200,
+       "body_head": "\"I'm alive!\""
+      }
+     },
+     "db_providers": 15,
+     "route_health": {
+      "AUTH_FAIL": 1,
+      "DEAD": 12,
+      "LIVE": 48,
+      "QUOTA_EXHAUSTED": 4
+     },
+     "note": "ADVISORY_ONLY — live probe over narrative (bijaksana audit discipline)"
+    }
+   },
+   "isError": false,
+   "structuredContent": {
+    "gateways": {
+     "litellm_local_4013": {
+      "status": "LIVE",
+      "http": 200,
+      "body_head": "\"I'm alive!\""
+     },
+     "litellm_kvm4_4000": {
+      "status": "LIVE",
+      "http": 200,
+      "body_head": "\"I'm alive!\""
+     }
+    },
+    "db_providers": 15,
+    "route_health": {
+     "AUTH_FAIL": 1,
+     "DEAD": 12,
+     "LIVE": 48,
+     "QUOTA_EXHAUSTED": 4
+    },
+    "note": "ADVISORY_ONLY — live probe over narrative (bijaksana audit discipline)"
+   },
+   "content_text": "{\"gateways\":{\"litellm_local_4013\":{\"status\":\"LIVE\",\"http\":200,\"body_head\":\"\\\"I'm alive!\\\"\"},\"litellm_kvm4_4000\":{\"status\":\"LIVE\",\"http\":200,\"body_head\":\"\\\"I'm alive!\\\"\"}},\"db_providers\":15,\"route_health\":{\"AUTH_FAIL\":1,\"DEAD\":12,\"LIVE\":48,\"QUOTA_EXHAUSTED\":4},\"note\":\"ADVISORY_ONLY — live probe over narrative (bijaksana audit discipline)\"}"
+  },
+  "fed_classify": {
+   "arguments": {
+    "task": "propose a constitutional verdict for a vault seal"
+   },
+   "raw_result": {
+    "content": [
+     {
+      "text": "{\"capability\":\"conversation\",\"signature\":\"fed-conversational\",\"confidence\":0.5,\"matched\":[]}",
+      "type": "text"
+     }
+    ],
+    "isError": false,
+    "structuredContent": {
+     "capability": "conversation",
+     "signature": "fed-conversational",
+     "confidence": 0.5,
+     "matched": []
+    }
+   },
+   "isError": false,
+   "structuredContent": {
+    "capability": "conversation",
+    "signature": "fed-conversational",
+    "confidence": 0.5,
+    "matched": []
+   },
+   "content_text": "{\"capability\":\"conversation\",\"signature\":\"fed-conversational\",\"confidence\":0.5,\"matched\":[]}"
+  },
+  "fed_contrast": {
+   "arguments": {
+    "route_a": "deepseek-v4-pro",
+    "route_b": "MiniMax-M3"
+   },
+   "raw_result": {
+    "content": [
+     {
+      "text": "{\"route_a\":{\"provider\":null,\"model\":\"deepseek-v4-pro\",\"balance\":null,\"latency_p50\":null},\"route_b\":{\"provider\":null,\"model\":\"MiniMax-M3\",\"balance\":null,\"latency_p50\":null},\"hcsvog\":{\"v\":1,\"h_execution\":\"bare\",\"h_tools\":\"none\",\"h_context\":\"unknown:none:none\",\"h_schedule\":\"single:unlimited:none\",\"h_observe\":\"none\",\"h_verify\":\"none\",\"h_gov\":\"333:yolo\",\"h_fingerprint\":\"c30325b0\"}}",
+      "type": "text"
+     }
+    ],
+    "isError": false,
+    "structuredContent": {
+     "route_a": {
+      "provider": null,
+      "model": "deepseek-v4-pro",
+      "balance": null,
+      "latency_p50": null
+     },
+     "route_b": {
+      "provider": null,
+      "model": "MiniMax-M3",
+      "balance": null,
+      "latency_p50": null
+     },
+     "hcsvog": {
+      "v": 1,
+      "h_execution": "bare",
+      "h_tools": "none",
+      "h_context": "unknown:none:none",
+      "h_schedule": "single:unlimited:none",
+      "h_observe": "none",
+      "h_verify": "none",
+      "h_gov": "333:yolo",
+      "h_fingerprint": "c30325b0"
+     }
+    }
+   },
+   "isError": false,
+   "structuredContent": {
+    "route_a": {
+     "provider": null,
+     "model": "deepseek-v4-pro",
+     "balance": null,
+     "latency_p50": null
+    },
+    "route_b": {
+     "provider": null,
+     "model": "MiniMax-M3",
+     "balance": null,
+     "latency_p50": null
+    },
+    "hcsvog": {
+     "v": 1,
+     "h_execution": "bare",
+     "h_tools": "none",
+     "h_context": "unknown:none:none",
+     "h_schedule": "single:unlimited:none",
+     "h_observe": "none",
+     "h_verify": "none",
+     "h_gov": "333:yolo",
+     "h_fingerprint": "c30325b0"
+    }
+   },
+   "content_text": "{\"route_a\":{\"provider\":null,\"model\":\"deepseek-v4-pro\",\"balance\":null,\"latency_p50\":null},\"route_b\":{\"provider\":null,\"model\":\"MiniMax-M3\",\"balance\":null,\"latency_p50\":null},\"hcsvog\":{\"v\":1,\"h_execution\":\"bare\",\"h_tools\":\"none\",\"h_context\":\"unknown:none:none\",\"h_schedule\":\"single:unlimited:none\",\"h_observe\":\"none\",\"h_verify\":\"none\",\"h_gov\":\"333:yolo\",\"h_fingerprint\":\"c30325b0\"}}"
+  },
+  "fed_route": {
+   "arguments": {
+    "task": "summarize a legal filing",
+    "constitutional_tier": 333
+   },
+   "raw_result": {
+    "content": [
+     {
+      "text": "{\"routes\":[{\"rank\":1,\"priority\":2,\"provider\":\"qwen-token-plan-team\",\"model\":\"deepseek-v4-pro\",\"router\":\"direct\",\"router_class\":\"direct\",\"balance_usd\":0.0,\"balance_confidence\":1.0,\"balance_track\":\"A\",\"balance_flag\":null,\"latency_p50_ms\":480.0,\"latency_p95_ms\":480.0,\"latency_sample_count\":1,\"latency_flag\":\"INSUFFICIENT_TELEMETRY\",\"health\":\"LIVE\",\"health_flag\":null,\"cost_per_1m_input_usd\":0.435,\"cost_per_1m_output_usd\":0.87,\"shadow\":null,\"free\":false,\"reason\":\"zero gateway contamination; insufficient telemetry samples\",\"effort_applied\":null},{\"rank\":2,\"priority\":4,\"provider\":\"qwen-token-plan-individual\",\"model\":\"deepseek-v4-pro\",\"router\":\"direct\",\"router_class\":\"direct\",\"balance_usd\":0.0,\"balance_confidence\":1.0,\"balance_track\":\"A\",\"balance_flag\":\"LOW_BALANCE_HARD\",\"latency_p50_ms\":null,\"latency_p95_ms\":null,\"latency_sample_count\":0,\"latency_flag\":\"NO_TELEMETRY\",\"health\":\"LIVE\",\"health_flag\":null,\"cost_per_1m_input_usd\":1.32,\"cost_per_1m_output_usd\":3.96,\"shadow\":null,\"free\":false,\"reason\":\"zero gateway contamination; balance < $1.00 (HARD demotion); no telemetry — untested route\",\"effort_applied\":null}],\"meta\":{\"query_time_ms\":30,\"state_db\":\"/root/.local/share/arifos/token_bank.db\",\"queried_at\":\"2026-10-26T12:01:52.719014+00:00\",\"cascade_instruction\":\"Execute routes in rank order. On failure (timeout/auth), emit telemetry and cascade to next rank. Never retry same provider twice.\",\"hcsvog\":{\"v\":1,\"h_execution\":\"bare\",\"h_tools\":\"mcp-core\",\"h_context\":\"unknown:none:none\",\"h_schedule\":\"single:unlimited:none\",\"h_observe\":\"receipt-only\",\"h_verify\":\"none\",\"h_gov\":\"333:yolo\",\"h_fingerprint\":\"c8e8e38f\"}},\"emd\":{\"verdict\":\"EMD_ALIGNED\",\"operation\":\"act\",\"model_class\":\"metabolize\",\"reasons\":[\"ACT <-> METABOLIZE aligned\"],\"suggested\":[]},\"jit\":null,\"trace\":null,\"invocation_contract\":null}",
+      "type": "text"
+     }
+    ],
+    "isError": false,
+    "structuredContent": {
+     "routes": [
+      {
+       "rank": 1,
+       "priority": 2,
+       "provider": "qwen-token-plan-team",
+       "model": "deepseek-v4-pro",
+       "router": "direct",
+       "router_class": "direct",
+       "balance_usd": 0.0,
+       "balance_confidence": 1.0,
+       "balance_track": "A",
+       "balance_flag": null,
+       "latency_p50_ms": 480.0,
+       "latency_p95_ms": 480.0,
+       "latency_sample_count": 1,
+       "latency_flag": "INSUFFICIENT_TELEMETRY",
+       "health": "LIVE",
+       "health_flag": null,
+       "cost_per_1m_input_usd": 0.435,
+       "cost_per_1m_output_usd": 0.87,
+       "shadow": null,
+       "free": false,
+       "reason": "zero gateway contamination; insufficient telemetry samples",
+       "effort_applied": null
+      },
+      {
+       "rank": 2,
+       "priority": 4,
+       "provider": "qwen-token-plan-individual",
+       "model": "deepseek-v4-pro",
+       "router": "direct",
+       "router_class": "direct",
+       "balance_usd": 0.0,
+       "balance_confidence": 1.0,
+       "balance_track": "A",
+       "balance_flag": "LOW_BALANCE_HARD",
+       "latency_p50_ms": null,
+       "latency_p95_ms": null,
+       "latency_sample_count": 0,
+       "latency_flag": "NO_TELEMETRY",
+       "health": "LIVE",
+       "health_flag": null,
+       "cost_per_1m_input_usd": 1.32,
+       "cost_per_1m_output_usd": 3.96,
+       "shadow": null,
+       "free": false,
+       "reason": "zero gateway contamination; balance < $1.00 (HARD demotion); no telemetry — untested route",
+       "effort_applied": null
+      }
+     ],
+     "meta": {
+      "query_time_ms": 30,
+      "state_db": "/root/.local/share/arifos/token_bank.db",
+      "queried_at": "2026-10-26T12:01:52.719014+00:00",
+      "cascade_instruction": "Execute routes in rank order. On failure (timeout/auth), emit telemetry and cascade to next rank. Never retry same provider twice.",
+      "hcsvog": {
+       "v": 1,
+       "h_execution": "bare",
+       "h_tools": "mcp-core",
+       "h_context": "unknown:none:none",
+       "h_schedule": "single:unlimited:none",
+       "h_observe": "receipt-only",
+       "h_verify": "none",
+       "h_gov": "333:yolo",
+       "h_fingerprint": "c8e8e38f"
+      }
+     },
+     "emd": {
+      "verdict": "EMD_ALIGNED",
+      "operation": "act",
+      "model_class": "metabolize",
+      "reasons": [
+       "ACT <-> METABOLIZE aligned"
+      ],
+      "suggested": []
+     },
+     "jit": null,
+     "trace": null,
+     "invocation_contract": null
+    }
+   },
+   "isError": false,
+   "structuredContent": {
+    "routes": [
+     {
+      "rank": 1,
+      "priority": 2,
+      "provider": "qwen-token-plan-team",
+      "model": "deepseek-v4-pro",
+      "router": "direct",
+      "router_class": "direct",
+      "balance_usd": 0.0,
+      "balance_confidence": 1.0,
+      "balance_track": "A",
+      "balance_flag": null,
+      "latency_p50_ms": 480.0,
+      "latency_p95_ms": 480.0,
+      "latency_sample_count": 1,
+      "latency_flag": "INSUFFICIENT_TELEMETRY",
+      "health": "LIVE",
+      "health_flag": null,
+      "cost_per_1m_input_usd": 0.435,
+      "cost_per_1m_output_usd": 0.87,
+      "shadow": null,
+      "free": false,
+      "reason": "zero gateway contamination; insufficient telemetry samples",
+      "effort_applied": null
+     },
+     {
+      "rank": 2,
+      "priority": 4,
+      "provider": "qwen-token-plan-individual",
+      "model": "deepseek-v4-pro",
+      "router": "direct",
+      "router_class": "direct",
+      "balance_usd": 0.0,
+      "balance_confidence": 1.0,
+      "balance_track": "A",
+      "balance_flag": "LOW_BALANCE_HARD",
+      "latency_p50_ms": null,
+      "latency_p95_ms": null,
+      "latency_sample_count": 0,
+      "latency_flag": "NO_TELEMETRY",
+      "health": "LIVE",
+      "health_flag": null,
+      "cost_per_1m_input_usd": 1.32,
+      "cost_per_1m_output_usd": 3.96,
+      "shadow": null,
+      "free": false,
+      "reason": "zero gateway contamination; balance < $1.00 (HARD demotion); no telemetry — untested route",
+      "effort_applied": null
+     }
+    ],
+    "meta": {
+     "query_time_ms": 30,
+     "state_db": "/root/.local/share/arifos/token_bank.db",
+     "queried_at": "2026-10-26T12:01:52.719014+00:00",
+     "cascade_instruction": "Execute routes in rank order. On failure (timeout/auth), emit telemetry and cascade to next rank. Never retry same provider twice.",
+     "hcsvog": {
+      "v": 1,
+      "h_execution": "bare",
+      "h_tools": "mcp-core",
+      "h_context": "unknown:none:none",
+      "h_schedule": "single:unlimited:none",
+      "h_observe": "receipt-only",
+      "h_verify": "none",
+      "h_gov": "333:yolo",
+      "h_fingerprint": "c8e8e38f"
+     }
+    },
+    "emd": {
+     "verdict": "EMD_ALIGNED",
+     "operation": "act",
+     "model_class": "metabolize",
+     "reasons": [
+      "ACT <-> METABOLIZE aligned"
+     ],
+     "suggested": []
+    },
+    "jit": null,
+    "trace": null,
+    "invocation_contract": null
+   },
+   "content_text": "{\"routes\":[{\"rank\":1,\"priority\":2,\"provider\":\"qwen-token-plan-team\",\"model\":\"deepseek-v4-pro\",\"router\":\"direct\",\"router_class\":\"direct\",\"balance_usd\":0.0,\"balance_confidence\":1.0,\"balance_track\":\"A\",\"balance_flag\":null,\"latency_p50_ms\":480.0,\"latency_p95_ms\":480.0,\"latency_sample_count\":1,\"latency_flag\":\"INSUFFICIENT_TELEMETRY\",\"health\":\"LIVE\",\"health_flag\":null,\"cost_per_1m_input_usd\":0.435,\"cost_per_1m_output_usd\":0.87,\"shadow\":null,\"free\":false,\"reason\":\"zero gateway contamination; insufficient telemetry samples\",\"effort_applied\":null},{\"rank\":2,\"priority\":4,\"provider\":\"qwen-token-plan-individual\",\"model\":\"deepseek-v4-pro\",\"router\":\"direct\",\"router_class\":\"direct\",\"balance_usd\":0.0,\"balance_confidence\":1.0,\"balance_track\":\"A\",\"balance_flag\":\"LOW_BALANCE_HARD\",\"latency_p50_ms\":null,\"latency_p95_ms\":null,\"latency_sample_count\":0,\"latency_flag\":\"NO_TELEMETRY\",\"health\":\"LIVE\",\"health_flag\":null,\"cost_per_1m_input_usd\":1.32,\"cost_per_1m_output_usd\":3.96,\"shadow\":null,\"free\":false,\"reason\":\"zero gateway contamination; balance < $1.00 (HARD demotion); no telemetry — untested route\",\"effort_applied\":null}],\"meta\":{\"query_time_ms\":30,\"state_db\":\"/root/.local/share/arifos/token_bank.db\",\"queried_at\":\"2026-10-26T12:01:52.719014+00:00\",\"cascade_instruction\":\"Execute routes in rank order. On failure (timeout/auth), emit telemetry and cascade to next rank. Never retry same provider twice.\",\"hcsvog\":{\"v\":1,\"h_execution\":\"bare\",\"h_tools\":\"mcp-core\",\"h_context\":\"unknown:none:none\",\"h_schedule\":\"single:unlimited:none\",\"h_observe\":\"receipt-only\",\"h_verify\":\"none\",\"h_gov\":\"333:yolo\",\"h_fingerprint\":\"c8e8e38f\"}},\"emd\":{\"verdict\":\"EMD_ALIGNED\",\"operation\":\"act\",\"model_class\":\"metabolize\",\"reasons\":[\"ACT <-> METABOLIZE aligned\"],\"suggested\":[]},\"jit\":null,\"trace\":null,\"invocation_contract\":null}",
+   "note": "second attempt; first attempt failed input validation (constitutional_tier passed as str; inputSchema declares integer default 333). The failure is evidence that input validation is enforced.",
+   "first_attempt": "validation error: constitutional_tier int_parsing (agent error, corrected)"
+  }
+ }
+}

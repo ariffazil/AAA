@@ -14,7 +14,7 @@ K-02 transition: Witness → Enforcer.
 
 DEMOTION 2026-09-20 (F13 directive, Arif: "agent jangan jadi bangang"):
   - T3 irreversible patterns: detection + receipt + stderr warn, NO BLOCK.
-  - W_scar v2 claim verification: detection + receipt + stderr warn, NO BLOCK.
+  - claim-source-check v2 claim verification: detection + receipt + stderr warn, NO BLOCK.
   - JITU circuit breaker (federation/kernel/jitu.py) UNTOUCHED — F13 sovereign.
   - TRANSPORT LOCK UNTOUCHED — legit 2026-09-18 incident (doc delivered to wrong chat).
   Reason: a smart agent that gets false-positive-blocked is a stupid agent. Bangang == blocked.
@@ -28,7 +28,7 @@ JITU (2026-09-18) — THE CIRCUIT BREAKER SITS IN FRONT OF EVERYTHING ELSE.
 
   Order of decision is now:
       0. JITU      — a sovereign-issued stop. Checked FIRST. Beats every other rule.
-      1. W_scar    — critical-variable claim without source evidence
+      1. claim-source-check    — critical-variable claim without source evidence
       2. T3        — irreversible pattern
       3. T2/OBSERVE
 
@@ -84,8 +84,8 @@ T3_PATTERNS = [
     r"DROP\s+(TABLE|DATABASE)",
 ]
 
-# W_scar: critical-variable claims that need source evidence (anchored to word boundaries)
-W_SCAR_CRITICAL = [
+# claim-source-check: critical-variable claims that need source evidence (anchored to word boundaries)
+CLAIM_SOURCE_CRITICAL = [
     r"\b(duit|money|bayar|bayaran|transfer|rm\s*\d+|price|prices|cost|costs|budget|budgets)\b",
     r"\b(nyawa|health|ubat|dosis|medical|hospital|doktor|sakit)\b",
     r"\b(reputasi|legal|law|laws|saman|polis|court|undang)\b",
@@ -96,7 +96,7 @@ METRICS_PATH = "/root/.local/share/arifos/hermes_falsification_metrics.jsonl"
 TELEMETRY_PATH = "/root/.local/share/arifos/wscar_telemetry.json"
 
 # ---------------------------------------------------------------------------
-# W_scar v2 (2026-09-18, F13-authorised): CLAIM-SURFACE + VERIFIED PROVENANCE
+# claim-source-check v2 (2026-09-18, F13-authorised): CLAIM-SURFACE + VERIFIED PROVENANCE
 #
 # v1 scanned `json.dumps(tool_input)` for a vocabulary list. Two defects, both measured live on
 # 2026-09-18 while hardening the intelligence-brief lane:
@@ -159,8 +159,8 @@ EVIDENCE_PATH_RE = re.compile(r"(/[A-Za-z0-9._/-]+\.(?:jsonl|json|parquet|yaml|y
 PROVENANCE_CACHE_PATH = "/root/.local/share/arifos/wscar_url_cache.json"
 URL_CHECK_TIMEOUT = 3
 
-# W_scar: text_to_speech and image_gen are exempt (creative output, not claims)
-W_SCAR_EXEMPT_TOOLS = {"text_to_speech", "image_gen", "video_gen", "vision_analyze", "browser_snapshot"}
+# claim-source-check: text_to_speech and image_gen are exempt (creative output, not claims)
+CLAIM_SOURCE_EXEMPT_TOOLS = {"text_to_speech", "image_gen", "video_gen", "vision_analyze", "browser_snapshot"}
 
 READONLY_PROBE_RE = re.compile(
     r"^\s*(ls|lsattr|cat|head|tail|grep|egrep|fgrep|find|stat|file|which|whereis|type|echo|date|ps|top|uptime|free|df|du|wc|diff|git\s+(status|log|diff|show|branch)|systemctl\s+(status|is-active)|curl|jq|sqlite3)\b"
@@ -206,7 +206,7 @@ def _targets_ops_tree(tool_input: dict) -> bool:
     `.../court/court-audit/SKILL.md` asserts nothing about a court.
 
     Scope note: this is a *bounded, receipted* exemption, not a silent bypass. Every skipped call
-    is written to telemetry as `wscar_ops_exempt`, so if it is ever abused the count is visible.
+    is written to telemetry as `claim_source_ops_exempt`, so if it is ever abused the count is visible.
     Provenance duty for ops-tree content is carried by the skill/canon review lanes.
     """
     for field in ("path", "file_path", "target", "target_path"):
@@ -223,7 +223,7 @@ def claim_surface(tool_name: str, tool_input: dict) -> str:
 
     Returns "" when there is nothing to assert, which ends the check for this call.
     """
-    if tool_name in W_SCAR_EXEMPT_TOOLS:
+    if tool_name in CLAIM_SOURCE_EXEMPT_TOOLS:
         return ""
     if _targets_ops_tree(tool_input):
         return ""  # receipted method-tree exemption — see _targets_ops_tree
@@ -242,7 +242,7 @@ def claim_surface(tool_name: str, tool_input: dict) -> str:
 
 
 def has_critical_claim(tool_name: str, tool_input: dict) -> bool:
-    """W_scar: does the *assertion text* touch a critical human-consequence variable?
+    """claim-source-check: does the *assertion text* touch a critical human-consequence variable?
 
     Anchored to the claim surface, never to the serialized payload. The file a claim is written
     into is not the claim.
@@ -250,7 +250,7 @@ def has_critical_claim(tool_name: str, tool_input: dict) -> bool:
     surface = claim_surface(tool_name, tool_input)
     if not surface:
         return False
-    return any(re.search(pattern, surface) for pattern in W_SCAR_CRITICAL)
+    return any(re.search(pattern, surface) for pattern in CLAIM_SOURCE_CRITICAL)
 
 
 def _load_url_cache() -> dict:
@@ -362,7 +362,7 @@ def write_falsification_metric(event_type: str, details: dict):
 
 
 def update_telemetry(event_type: str):
-    """Seal E: maintain running W_scar counters with time-windowed aggregation.
+    """Seal E: maintain running claim-source-check counters with time-windowed aggregation.
     Atomic write (tmp+rename) for cross-process safety."""
     import tempfile
 
@@ -433,6 +433,53 @@ def update_telemetry(event_type: str):
 
 # T2 mutation tools
 T2_TOOLS = {"write_file", "patch", "terminal", "cronjob", "delegate_task", "plugin", "skill_manage", "execute_code"}
+
+
+# ---- INGAT BALIK: mandatory recall for mutation-class calls (F13, 2026-10-28) ----
+# hermes_scar_wisdom was opt-in: recall happened only when the agent chose to
+# remember, which is the exact defect the tool exists to prevent. For every
+# mutation-class call the gate now performs the recall itself, so the requirement
+# no longer depends on agent goodwill. Advisory, not a toll booth: recall that
+# blocks teaches agents to route around it. It is witnessed instead — each firing
+# writes a receipt, so a silent recall failure becomes visible to the 555 reviewer.
+RECALL_SCRIPT = "/root/.hermes/scripts/scar_context_injector.py"
+RECALL_TIMEOUT_S = 8
+
+
+def _recall_query_text(tool_name, tool_input):
+    """Cheap, bounded description of what this call is about to do."""
+    parts = [str(tool_name)]
+    for key in ("file_path", "path", "command", "query", "task", "prompt", "skill_name", "name"):
+        v = tool_input.get(key)
+        if isinstance(v, str) and v.strip():
+            parts.append(v.strip()[:300])
+    if len(parts) == 1:
+        try:
+            parts.append(json.dumps(tool_input, ensure_ascii=False)[:300])
+        except Exception:
+            pass
+    return " ".join(parts)[:400]
+
+
+def mandatory_recall(tool_name, tool_input):
+    """Return scar context for a mutation-class call. Never raises, never blocks."""
+    try:
+        task = _recall_query_text(tool_name, tool_input)
+        if len(task) < 8:
+            return ""
+        import subprocess as _sp
+        r = _sp.run(
+            ["/usr/bin/python3", RECALL_SCRIPT, task],
+            capture_output=True, text=True, timeout=RECALL_TIMEOUT_S,
+        )
+        if r.returncode != 0:
+            return ""
+        out = (r.stdout or "").strip()
+        if not out or out.startswith("(no scar"):
+            return ""
+        return out
+    except Exception:
+        return ""
 
 
 def classify(tool_name: str, tool_input: dict) -> str:
@@ -786,71 +833,71 @@ def main():
             sys.exit(2)
 
 
-    # ---- 1. W_scar v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
+    # ---- 1. claim-source-check v2: claim-surface detection + VERIFIED provenance (F13-authorised 2026-09-18).
     # v1 blocked on vocabulary found anywhere in the payload (including file paths) and passed on
     # the mere presence of the token "url". v2 scans assertions and resolves citations.
     if has_critical_claim(tool_name, tool_input):
         state, detail = verify_provenance(tool_input)
 
         _enforce_block = (
-            os.getenv("WSCAR_ENFORCE", "0") == "1"
+            os.getenv("CLAIM_SOURCE_ENFORCE", "0") == "1"
             or str(session_id or "").startswith("gate-selftest")
             or os.getenv("ARIFOS_TRACE_ID", "").startswith("trc-selftest")
         )
 
         if state == "ABSENT":
             reason = (
-                f"W_SCAR AUDIT: Tool '{tool_name}' asserts a critical "
+                f"CLAIM_SOURCE AUDIT: Tool '{tool_name}' asserts a critical "
                 f"variable (money/health/legal/trading) with no source — {detail}."
             )
             write_receipt(
                 tool_name,
-                "W_SCAR",
+                "CLAIM_SOURCE",
                 "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED",
                 reason,
                 trace_id=trace_id,
                 session_id=session_id,
             )
             write_falsification_metric(
-                "wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked",
+                "claim_source_witnessed_no_block" if not _enforce_block else "claim_source_blocked",
                 {"tool": tool_name, "reason": "claim_without_source"},
             )
             update_telemetry("pass" if not _enforce_block else "hold")
             if _enforce_block:
                 print(json.dumps({"decision": "block", "reason": reason}))
                 sys.exit(2)
-            sys.stderr.write(f"[hermes-gate AUDIT-ONLY] W_SCAR ABSENT witnessed (no block): {reason}\n")
+            sys.stderr.write(f"[hermes-gate AUDIT-ONLY] CLAIM_SOURCE ABSENT witnessed (no block): {reason}\n")
             sys.stderr.flush()
 
         if state == "UNRESOLVED":
-            reason = f"W_SCAR AUDIT: {detail}. Citation shape but no resolve."
+            reason = f"CLAIM_SOURCE AUDIT: {detail}. Citation shape but no resolve."
             write_receipt(
                 tool_name,
-                "W_SCAR",
+                "CLAIM_SOURCE",
                 "WITNESSED_DEMOTED" if not _enforce_block else "BLOCKED",
                 reason,
                 trace_id=trace_id,
                 session_id=session_id,
             )
             write_falsification_metric(
-                "wscar_witnessed_no_block" if not _enforce_block else "wscar_blocked",
+                "claim_source_witnessed_no_block" if not _enforce_block else "claim_source_blocked",
                 {"tool": tool_name, "reason": "citation_unresolved"},
             )
             update_telemetry("pass" if not _enforce_block else "hold")
             if _enforce_block:
                 print(json.dumps({"decision": "block", "reason": reason}))
                 sys.exit(2)
-            sys.stderr.write(f"[hermes-gate AUDIT-ONLY] W_SCAR UNRESOLVED witnessed (no block): {reason}\n")
+            sys.stderr.write(f"[hermes-gate AUDIT-ONLY] CLAIM_SOURCE UNRESOLVED witnessed (no block): {reason}\n")
             sys.stderr.flush()
 
         # VERIFIED or DEGRADED — witness it. DEGRADED is deliberate: an unreachable network is not
         # evidence of fabrication, and a gate that turns an outage into a blanket denial of service
         # is worse than the defect it guards. The receipt records which of the two it was.
-        write_falsification_metric("wscar_pass", {"tool": tool_name, "reason": f"provenance_{state.lower()}"})
-        update_telemetry("wscar_pass")
+        write_falsification_metric("claim_source_pass", {"tool": tool_name, "reason": f"provenance_{state.lower()}"})
+        update_telemetry("claim_source_pass")
         write_receipt(
             tool_name,
-            "W_SCAR",
+            "CLAIM_SOURCE",
             "WITNESSED",
             f"Critical claim, provenance {state}: {detail}",
             trace_id=trace_id,
@@ -858,13 +905,33 @@ def main():
         )
     elif tool_name in T2_TOOLS and _targets_ops_tree(tool_input):
         # Auditable exemption counter — see _targets_ops_tree. Not a silent skip.
-        write_falsification_metric("wscar_ops_exempt", {"tool": tool_name})
+        write_falsification_metric("claim_source_ops_exempt", {"tool": tool_name})
 
     if classification == "OBSERVE":
         # Track observation for falsification rate calculation
         write_falsification_metric("observe", {"tool": tool_name})
         update_telemetry("observe")
         return  # Passthrough — no output = allow
+    # ---- 1c. INGAT BALIK: mandatory recall before any mutation (F13, 2026-10-28).
+    # Runs here, after the OBSERVE passthrough, so it fires only on T1/T2/T3.
+    _recall = mandatory_recall(tool_name, tool_input)
+    if _recall:
+        write_receipt(
+            tool_name,
+            "INGAT_BALIK",
+            "WITNESSED",
+            f"mandatory recall for {classification}: {len(_recall)} chars",
+            trace_id=trace_id,
+            session_id=session_id,
+        )
+        write_falsification_metric(
+            "ingat_balik_recall", {"tool": tool_name, "chars": len(_recall)}
+        )
+        sys.stderr.write("[hermes-gate INGAT BALIK — mandatory recall]\n" + _recall + "\n")
+        sys.stderr.flush()
+    else:
+        write_falsification_metric("ingat_balik_recall", {"tool": tool_name, "chars": 0})
+
 
     if classification == "T3":
         # T3 AUDIT-ONLY MODE (F13 directive 2026-09-20, Arif: "agent jangan jadi bangang").

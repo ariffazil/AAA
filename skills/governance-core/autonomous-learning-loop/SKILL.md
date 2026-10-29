@@ -182,3 +182,11 @@ tree was walked and whether symlinks were followed.
 - `references/verification-and-promotion-design.md` — atom schema fields, the closed
   failure taxonomy, independence classes, and the consequence verdict table with the
   probe for each.
+
+### Addendum 2026-10-28 - a window shift invalidates the consequence comparison
+
+Live: the same promotion was measured before and after with DIFFERENT measurement bases
+(volume_basis 298 -> 160). The raw before/after percentages would have read as a ~96% fall;
+the honest structural claim was smaller. Compare like with like: when the window moves, report
+the structural measure and label the volume comparison CONFOUNDED. Baseline at FIRST promotion and
+never re-baseline after, or the goalpost moves with the fix.

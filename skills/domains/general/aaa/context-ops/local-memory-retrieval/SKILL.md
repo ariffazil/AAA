@@ -274,3 +274,7 @@ Seven rules that hold for every queue:
 - **"The full log is gone" is an answer, not a gap to fill:** long exports expire from the document cache, leaving a fragment plus distilled entries. Say exactly that. Never imply a decade of source was read, and never reconstruct detail from summaries to make the brief look complete.
 - **"Applied N operations" reported as the outcome:** the count hides what was dropped to fit the budget. A queue adjudication ends with what left and why, plus a read-back grep proving the kept facts are actually in the file. See *The Queue Side*.
 - **Scope:** person-profile depth (source audit, entropy mapping, honest-deliverable format, anti-fabrication rules) lives in the `human-intelligence-gathering` skill — load it for anything beyond retrieval. This skill covers only where stored facts live and how to report them.
+
+## Eureka updates (auto)
+
+- 2026-10-28 · `EUREKA::READERS_MUST_BE_NAMED::v1` · Dua ledger eureka wujud secara live: /root/AAA/eurekas/eureka-entries.jsonl (47 lines, skema ts/artifact_id) dan /root/memory/eureka-entries.jsonl (68 lines, skema id/utc/claim) — inode berbeza, SKEMA berbeza. Sesi adik mencari /root/memory dahulu dan dapat 0…

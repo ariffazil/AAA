@@ -1,3 +1,8 @@
+---
+name: skill-alias-map
+description: Alias→canonical resolution ledger for 110 collapsed skill alias dirs (F5 ACAH2 2026-10-18). Reference table, not an executable skill.
+---
+
 # Skill Alias Map — 110 deprecated aliases collapsed
 
 **Generated:** 2026-10-18 · 333-AGI · F5 ACAH2 remediation

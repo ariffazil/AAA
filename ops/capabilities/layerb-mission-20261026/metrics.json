@@ -1,0 +1,43 @@
+{
+ "n_capabilities": 258,
+ "required_metrics_per_258": {
+  "request_schema_typed": "258/258",
+  "request_schema_field_level": "224/258",
+  "mutation_class_typed": "0/258",
+  "mutation_class_prose_derived": "77/258",
+  "response_schema_typed": "138/258",
+  "response_schema_field_level": "32/258",
+  "response_schema_bare_object": "106/258",
+  "outcomes_typed": "0/258",
+  "receipt_verification_uri_typed": "0/258",
+  "boundary_typed": "0/258"
+ },
+ "A_discovery_coverage": {
+  "live_governed_tools": 258,
+  "organs_live": 13,
+  "organs_probed": 31,
+  "in_compiled_contract": "258/258",
+  "in_legacy_published_surface": "40/258 = 15.5%",
+  "legacy_claims_matching_runtime": "40/40"
+ },
+ "B_typed_contract_coverage": "see required_metrics_per_258 (DECLARED_TYPED only)",
+ "C_observed_but_undeclared": {
+  "response_schema_bare_object": "106/258",
+  "mutation_class_prose_derived": "77/258",
+  "fed_boundary_observed_candidate_only": "7/7 fed tools \u2014 NOT counted as typed",
+  "fed_response_shapes_captured": "6/7 executed read-only"
+ },
+ "D_unknown_coverage": {
+  "mutation_class": "181/258",
+  "response_schema": "120/258",
+  "outcomes": "258/258",
+  "receipt_verification_uri": "258/258",
+  "boundary": "258/258",
+  "fed_outcomes_and_receipt": "7/7 each"
+ },
+ "pilot_effect_on_federation_typed_coverage": {
+  "increase_typed_declarations": 0,
+  "reason": "The FED pilot produced a validated CANDIDATE envelope (7 tools x 4 fields), not runtime declarations. FED's 7 outputSchemas were already inside the 138/258 measured before the pilot ran. Nothing was promoted from OBSERVED to DECLARED; no inferred or observed field is reported as completed coverage."
+ },
+ "never_combined_into_one_percentage": true
+}

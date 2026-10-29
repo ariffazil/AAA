@@ -348,7 +348,7 @@
       },
       {
         "id": "hermes",
-        "url": "FLAME free-lane (port 18901)",
+        "url": "RETIRED 2026-09-04 — was FLAME free-lane (port 18901); free lane now FED :4000",
         "tool_count": 7,
         "key_lanes": [
           "fact-check",
@@ -532,7 +532,7 @@
     "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
     "metabolism_organ": "arifFlow",
     "metabolism_port": 7073,
-    "free_lane": "FLAME :18901",
+    "free_lane": "FED litellm :4000 (SEA-LION/qfree) — FLAME :18901 retired 2026-09-04",
     "cockpit": "AAA :3001",
     "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
   },

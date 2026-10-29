@@ -2,24 +2,24 @@
   "_comment": "Integrity manifest for the enforcement surface. Compare with: python3 /root/.hermes/scripts/gate-integrity-verify.py",
   "_generated": "2026-09-18T01:52:00Z",
   "_generated_by": "hermes (session 2026-09-18, F13 directive 'APEX-Zen: purge legacy, install feedback loop, global transport lock')",
-  "_meaning": "These hashes record the exact bytes of the gate and its conformance suites as SEALED. Any divergence means the enforcement surface changed after seal \u2014 which is legitimate only if this manifest is updated deliberately in the same act.",
+  "_meaning": "These hashes record the exact bytes of the gate and its conformance suites as SEALED. Any divergence means the enforcement surface changed after seal — which is legitimate only if this manifest is updated deliberately in the same act.",
   "_limit": "This detects DRIFT, not an adversary. An actor who reads this file and recomputes it can pass verification. See RESIDUAL-OPEN-wscar-gate-v2.md R4.",
   "_change_log": [
     {
       "at": "2026-09-18T01:52:00Z",
       "what": "Added rule 0.5 TRANSPORT LOCK to the pre_tool_call gate (destination must be DECLARED, not inferred).",
-      "authority": "F13 directive 2026-09-18 \u2014 origin.chat_id had captured the BOT's own id (8410138119) for a briefing job, so deliver=origin would have sent the daily brief into a room the principal never reads, with no error surfaced.",
+      "authority": "F13 directive 2026-09-18 — origin.chat_id had captured the BOT's own id (8410138119) for a briefing job, so deliver=origin would have sent the daily brief into a room the principal never reads, with no error surfaced.",
       "evidence": [
         "gateway log: 'send to 8410138119 failed: Forbidden: the bot can't send messages to the bot' (x3)",
         "test_transport_lock.py 7/7",
-        "test_wscar_gate.py re-run after insertion: 11/11 behavioural, 7/7 regex \u2014 unchanged"
+        "test_wscar_gate.py re-run after insertion: 11/11 behavioural, 7/7 regex — unchanged"
       ],
       "same_act_requirement_satisfied": "Conformance suites re-run and manifest updated in the same action, per _meaning."
     },
     {
       "at": "2026-09-20T15:55:38Z",
       "what": "DEMOTION 2026-09-20: T3 irreversible + W_SCAR v2 demoted from BLOCK to receipt+warn (F13 directive). JITU + TRANSPORT LOCK untouched.",
-      "authority": "F13 directive 2026-09-20 \u2014 agent jangan jadi bangang",
+      "authority": "F13 directive 2026-09-20 — agent jangan jadi bangang",
       "evidence": [
         "test_wscar_gate.py: regex OK",
         "test_transport_lock.py: 7/7",
@@ -64,10 +64,10 @@
     },
     {
       "at": "2026-10-27T16:42:20Z",
-      "what": "A2A PEER BAN \u2014 a turn carrying HERMES_A2A_PEER may not call shell/mutation tools (terminal, bash, shell, execute_code, process_manage, write_file, patch, read_terminal, close_terminal, delegate_task, cronjob_manage, skill_manage, and mcp__aforge__/forge_/aforge_/mcp__arifos__ prefixes). Placed at decision-order -0.75: after classify, before JITU. Conformance suite extended 3 -> 6 extension cases.",
+      "what": "A2A PEER BAN — a turn carrying HERMES_A2A_PEER may not call shell/mutation tools (terminal, bash, shell, execute_code, process_manage, write_file, patch, read_terminal, close_terminal, delegate_task, cronjob_manage, skill_manage, and mcp__aforge__/forge_/aforge_/mcp__arifos__ prefixes). Placed at decision-order -0.75: after classify, before JITU. Conformance suite extended 3 -> 6 extension cases.",
       "authority": "F13 sovereign GO 2026-10-28 (chat: 'A: Ya, pilih A. Laksanakan canon-mutate'). Second layer under lane_switch, because the plugin-layer ban was measured FAIL-OPEN when the plugin did not load (a sibling HOME with no `plugins:` block returned uid=0 for an a2a peer).",
       "evidence": [
-        "pre-install: staged hook, 4 gate cases \u2014 peer+terminal block/exit2, peer+read_file allow, no-peer+terminal allow, peer+forge_shell block",
+        "pre-install: staged hook, 4 gate cases — peer+terminal block/exit2, peer+read_file allow, no-peer+terminal allow, peer+forge_shell block",
         "conformance after install: behavioural 11/11, regex 7/7, extensions 6/6 (3 new A2A cases incl. a negative control)",
         "transport lock suite: 7/7 (unchanged)",
         "live: HERMES_A2A_PEER=probe-openclaw `id` refused (session 20261028_002537_bebfbf); no-peer `echo SEALED_OK` printed (20261028_002950_d4739f)",
@@ -77,7 +77,7 @@
     },
     {
       "at": "2026-10-27T16:45:53Z",
-      "what": "Manifest re-sealed to the LIVE gate after a concurrent authorised change: trc-20261028-hermes-telemetryfix (00:41:39 MYT) fixed a frozen-telemetry defect in update_telemetry() \u2014 ts emitted '\u2026+00:00Z' (aware) while stored events were naive, so the window comparison raised TypeError, the outer except swallowed it, and the 1h/24h counters froze at 2026-10-27T02:18Z for ~14.5h. That fix and the A2A PEER BAN are both present in the sealed bytes.",
+      "what": "Manifest re-sealed to the LIVE gate after a concurrent authorised change: trc-20261028-hermes-telemetryfix (00:41:39 MYT) fixed a frozen-telemetry defect in update_telemetry() — ts emitted '…+00:00Z' (aware) while stored events were naive, so the window comparison raised TypeError, the outer except swallowed it, and the 1h/24h counters froze at 2026-10-27T02:18Z for ~14.5h. That fix and the A2A PEER BAN are both present in the sealed bytes.",
       "authority": "Two authorised acts, one seal: F13 GO 2026-10-28 for the A2A PEER BAN; the telemetry repair carried its own canon receipt under trace trc-20261028-hermes-telemetryfix.",
       "evidence": [
         "sha256 sealed now = 390d9087c918455db36164bb0f5222183884bcda67750783cfe9b7aaafc9f9c6",
@@ -88,7 +88,7 @@
     },
     {
       "at": "2026-10-27T17:05:00Z",
-      "what": "MUTUAL WATCH: sealed the outer witness (gate-witness.py) and its pins (gate-witness.pins.json) as manifest artifacts, so the verifier now also checks the witness that checks it. Verifier and witness bytes untouched \u2014 no reseal needed. Every single-file edit in the chain (verifier / witness / pins) now trips at least one other live checker.",
+      "what": "MUTUAL WATCH: sealed the outer witness (gate-witness.py) and its pins (gate-witness.pins.json) as manifest artifacts, so the verifier now also checks the witness that checks it. Verifier and witness bytes untouched — no reseal needed. Every single-file edit in the chain (verifier / witness / pins) now trips at least one other live checker.",
       "authority": "F13 sovereign 2026-10-28 (chat: 'now u execute this') executing the mutual-check option offered in RECEIPT-gate-witness-outer-2026-10-28.md.",
       "evidence": [
         "scratch T0: coherent baseline -> witness silent, rc=0",
@@ -98,13 +98,27 @@
         "live: gate-integrity-verify.py and gate-witness.py both silent rc=0 after apply; cron 5d11524f35a5 ok"
       ],
       "same_act_requirement_satisfied": "Manifest addition applied only after isolated tests passed; witness/verifier hashes unchanged."
+    },
+    {
+      "at": "2026-10-28T02:30:10Z",
+      "what": "Two wires on the pre_tool_call gate: (1) INGAT BALIK — mandatory scar recall performed by the gate for every T1/T2/T3 call, so recall no longer depends on the agent choosing to call hermes_scar_wisdom; (2) rename W_scar/W_SCAR -> claim-source-check/CLAIM_SOURCE, because the old name described claim provenance and collided with the memory-scar vocabulary.",
+      "authority": "F13 SOVEREIGN, 2026-10-28: 'jadikan ia wajib pada tool yang mutasi, bukan opt-in' + 'buang nama W_scar dari gate hook, tukar jadi claim-source-check. Satu konsep satu nama.'",
+      "evidence": [
+        "test_wscar_gate.py: behavioural 11/11, regex 7/7, extensions 6/6",
+        "test_transport_lock.py: 7/7 — transport lock holds its negatives",
+        "hook compiles in-memory, 46103 bytes",
+        "live hook run: read_file (OBSERVE) -> no recall; write_file (T2) -> '[hermes-gate INGAT BALIK — mandatory recall]' + SCAR CONTEXT emitted",
+        "receipts: /root/.local/share/arifos/hermes_hook_receipts.jsonl carries tool_class INGAT_BALIK with 'mandatory recall for T2: N chars'"
+      ],
+      "same_act_requirement_satisfied": "Suites re-run against these exact bytes; manifest updated in the same canon-mutate act; gate-integrity-verify re-run to silence before exit.",
+      "residual": "Advisory, not blocking: recall is guaranteed to be PRESENT, not guaranteed to be obeyed. The conformance harness filename still says 'wscar'."
     }
   ],
   "artifacts": [
     {
       "role": "enforcement-gate",
       "path": "/root/AAA/federation/protocols/arifos-hermes-gate-hook.py",
-      "sha256": "390d9087c918455db36164bb0f5222183884bcda67750783cfe9b7aaafc9f9c6",
+      "sha256": "17b2e451ec717d5ad48c967658ca27d02a8c2b4af2f4153fccf932b5e0b67347",
       "size": 34283,
       "mtime": "2026-10-25T14:01:00+08:00",
       "contains_rules": [
@@ -115,7 +129,8 @@
         "K-02",
         "DEMOTION (2026-09-20)",
         "RECEIPT_FAIL_CLOSED (2026-10-25)"
-      ]
+      ],
+      "sha256_previous": "390d9087c918455db36164bb0f5222183884bcda67750783cfe9b7aaafc9f9c6"
     },
     {
       "role": "conformance-suite",
@@ -133,7 +148,7 @@
       "size": 3065,
       "mtime": "2026-09-18T09:48:50.404849",
       "expected_result": "7/7",
-      "covers": "TRANSPORT LOCK \u2014 blocks bot-id, bare-id, cross-human, and targetless sends; leaves non-sends untouched",
+      "covers": "TRANSPORT LOCK — blocks bot-id, bare-id, cross-human, and targetless sends; leaves non-sends untouched",
       "note": "Registered so the transport rule has the same drift protection as W_SCAR."
     },
     {
@@ -154,7 +169,7 @@
         "fail-closed on unreadable pins",
         "--reseal same-act discipline"
       ],
-      "note": "Outer witness installed 2026-10-28 (RECEIPT-gate-witness-outer-2026-10-28.md). Sealed here so the VERIFIER also checks the WITNESS \u2014 mutual watch. A witness rewritten to swallow verifier output entirely still defeats the single-cron architecture (needs a second observer)."
+      "note": "Outer witness installed 2026-10-28 (RECEIPT-gate-witness-outer-2026-10-28.md). Sealed here so the VERIFIER also checks the WITNESS — mutual watch. A witness rewritten to swallow verifier output entirely still defeats the single-cron architecture (needs a second observer)."
     },
     {
       "role": "witness-pins",

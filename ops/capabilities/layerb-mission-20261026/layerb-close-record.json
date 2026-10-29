@@ -1,0 +1,23 @@
+{
+  "receipt_type": "SESSION_RECEIPT",
+  "seal_status": "PRODUCED_AUTHORIZED_NOT_WRITTEN",
+  "block": {
+    "gate": "arif_seal kernel interceptor",
+    "reason_code": "888_HOLD",
+    "reason": "Capability 'kernel.seal' requires SOVEREIGN authority. Current: LOW. Actor: 333-AGI.",
+    "derived_from": "kernel_interceptor",
+    "authority_band": "OBSERVE_ONLY",
+    "actor_verified": false,
+    "hold_resolution_offered_by_kernel": "arif_judge :8088 SEAL verdict, or sovereign F13 direct order - then re-fire with receipt"
+  },
+  "authorization_chain": {
+    "f13_directive": "seal all (2026-10-26, in session)",
+    "judge": "888-APEX verdict HOLD with partial-SEAL scope (included/excluded split below)",
+    "verify": "555-ASI independent re-probe: 9/11 CONFIRMED, 2 defects found and fixed",
+    "executor": "333-AGI",
+    "note": "author != judge satisfied (888 judged, 333 authored). The kernel still requires the CALLING session to hold SOVEREIGN authority, which 333-AGI does not have while actor_verified=false."
+  },
+  "payload_fingerprint": "the full 888-specified receipt content (session/seal_scope/mutation_set/gate_results/metrics/verify_lane/independent_witness_888/self_reported_errors/kernel_posture_at_judgment/f8_attribution/open_items_f13/doctrine/authorization_chain) was submitted to arif_seal on 2026-10-27 and returned HOLD; preserved verbatim in the session transcript and reproducible from the mission artifacts",
+  "how_to_complete": "F13 runs: arif_seal with this payload and ack_irreversible=true, from a SOVEREIGN-authority session (or issues the direct order for 888 to execute it). Nothing in the payload needs to change; only the calling authority does.",
+  "scope_note": "Included: mission artifact set (24 files), doctrine transcription fact (NOT promoted), tmpfs quarantine event. Excluded: the 6 open F13 decisions, any deployment claim, any 'SOT repaired as effective' claim."
+}

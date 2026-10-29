@@ -137,3 +137,102 @@ distinguish "stopped working" from "reviewed for two hours".
   C. Declare verification-native roles exempt from the 3:1 fossil pole.
 
 FI-008 does NOT ingest Execute receipts on behalf of another actor.
+
+## OPTION A IMPLEMENTED, DEPLOYED, WITNESSED — AND ITS LIMIT MEASURED
+
+F13 ratified: A — HOLD TTL ikut evidence (no evidence = no hold).
+
+Change (src/main.rs, ~line 2037, not frozen):
+  at boot, persisted holds EXPIRE instead of being restored, because the receipt
+  store is built empty at boot (window_basis = process_lifetime_since_start).
+  Every expiry is witnessed to VAULT999 with authority citation.
+  Reversible at runtime, no rebuild: ARIFLOW_HOLD_RESTORE_ON_BOOT=1
+
+Build : cargo build --release --offline -> OK (9.45s)
+Deploy: atomic rename (live binary was text-file-busy), then
+        systemctl restart arifflow.service -> active
+Backup: /opt/arifflow/bin/arifflow.bak-FI008-20261026T153710Z
+Witness: /root/arifOS/VAULT999/arifflow_sealed.jsonl — 2 entries,
+        decision=EXPIRED, reason=hold_ttl_evidence_window_reset,
+        authority="F13 2026-10-26 option_A_hold_ttl_follows_evidence"
+        for claude-fi-002 and grok-build.
+
+Verification at boot (15:37:16Z):
+  journal: "HOLD EXPIRED — evidence window restarted, hold must be re-earned"
+  /health : held=false, throttled=false for both
+  holds.json: {"hold_count":0,"holds":[]}
+
+### THE LIMIT — MEASURED, NOT ASSUMED
+12 seconds later both actors were HELD AGAIN (held_since_ns = boot + 12s):
+  claude-fi-002 held=true throttled=true quotient 7.3333
+  grok-build    held=true throttled=true quotient 3.6667
+  holds.json: hold_count 2
+
+Reason: they keep emitting the same verify-heavy pattern, so the new evidence
+window re-earns the hold immediately. This is option A WORKING as ratified —
+"no evidence = no hold" and "fresh evidence = hold again". A TTL cannot release
+an actor that keeps re-supplying the evidence for its own hold.
+
+Therefore, holding A as ratified:
+  - the earlier stale/dishonest display is fixed (cockpit now shows live truth);
+  - a hold with NO live evidence now expires with an audit trail;
+  - a hold WITH live verify-heavy evidence is re-earned within seconds, correctly.
+
+To release these two DURABLY, option A is insufficient by construction. It needs
+either option C (declare verification-native roles exempt from the 3:1 fossil
+pole) or genuine Execute receipts from those actors.
+
+## STATE OF THE TWO HOLDS (honest, live)
+  held=true · FOSSILIZED · label accurate for the current window
+  enforcement now has an expiry contract + audit trail it did not have before
+  claude-fi-002 lifetime ledger still reads Execute 1527 / Verify 264 — the
+  history that contradicts "kerja tak gerak" remains invisible to the window.
+
+## OPTION C IMPLEMENTED, DEPLOYED, VERIFIED (F13 ratified 2026-10-26)
+
+Policy: a verification-native ROLE is exempt from the FOSSILISATION hold. The
+FOSSILIZED LABEL still prints (a true statement about the window) and the actor
+still counts toward the federation aggregate. Only the HOLD is suppressed.
+
+Single owner: f3_hold_condition() in src/governance/invariants.rs — the shared
+derivation used by BOTH enforce() and check_actor(), so /enforce and /check can
+never disagree on this exemption.
+
+Declaration (explicit, auditable, reversible):
+  /etc/systemd/system/arifflow.service.d/verify-native.conf
+  Environment=ARIFLOW_VERIFY_NATIVE_ACTORS=grok-build
+
+Scope decision — evidence-based, not convenience:
+  grok-build EXEMPT: archive shows Verify 3271 / Execute 38 / Cool 3267 (86:1)
+    across months. Verification is its nature.
+  claude-fi-002 NOT EXEMPT: lifetime ledger Execute 1527 / Verify 264. It is an
+    executor in a review burst. Declaring it verification-native would be
+    misclassification and would be the same greenwash the hold exists to stop.
+
+Build/deploy: cargo build --release --offline OK (15.08s) -> atomic rename ->
+  daemon-reload -> restart -> active
+Backups: /opt/arifflow/bin/arifflow.bak-FI008-20261026T153710Z (pre-A)
+         (revert = restore backup, remove the drop-in, restart)
+
+VERIFIED LIVE (https://aaa.arif-fazil.com/state.json, age 6s):
+  grok-build      held=false throttled=false verdict=FOSSILIZED  (label kept)
+  claude-fi-002   held=true  throttled=true  verdict=FOSSILIZED
+  holds.json      hold_count 1, actors ["claude-fi-002"]
+  cockpit         holds 1 · held_actors ["claude-fi-002"]
+  metabolism      OPTIMAL / BALANCED
+  authority       pending_for_human 0
+  federation      9/9 organs
+
+## SESSION TALLY — AAA ATTENTION PLANE
+  U1 stale snapshot + false holds:0      FIXED, verified live
+  U2 tier-3 pending_for_human UNKNOWN    FIXED, verified live
+  U3 metabolism UNKNOWN                  FIXED, verified live
+  H1 grok-build hold                     RELEASED via option C, label honest
+  H2 claude-fi-002 hold                  STILL HELD — correct; needs real Execute
+                                         work or an explicit F13 declaration that
+                                         contradicts its own 1527-execute ledger
+
+## STILL OPEN (unchanged, not this task)
+  F8 FAIL — KX-002 (owner 333-AGI), KX-004 (owner F13)
+  F6 UNMEASURED — M1 MEASURED=FAIL (0/20 signed commits, hermes-lane seam), M2..M6
+  No SEAL — author != judge.

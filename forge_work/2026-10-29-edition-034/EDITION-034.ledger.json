@@ -1,0 +1,54 @@
+{
+  "edition": "EDITION-034",
+  "date": "2026-10-29",
+  "built_at": "2026-10-28T22:15:19Z",
+  "engine": "chromium",
+  "engine_version": "Google Chrome 155.0.8059.39",
+  "template": "base-a4",
+  "profile": "print-light",
+  "content_sha256": "ed8412ae3804579c9a35c09021d65e1e9028c40b090b6331080d40041836fa31",
+  "artifact_sha256": "365afb076e14110ff193f69b3198026917beef4598d937d2f55561b8e3d1b82f",
+  "artifact_bytes": 315644,
+  "artifact_file": "EDITION-034.pdf",
+  "artifact_path": "2026-10-29-edition-034/EDITION-034.pdf",
+  "sidecar": "EDITION-034.sha256",
+  "sidecar_verified": true,
+  "gates": [
+    {
+      "gate": "pdf_real",
+      "ok": true,
+      "detail": "real PDF, version 1.4"
+    },
+    {
+      "gate": "geometry",
+      "ok": true,
+      "detail": "10 pages, 594.96 x 841.92 pts (A4)"
+    },
+    {
+      "gate": "ink_present",
+      "ok": true,
+      "detail": "min ink 2.50%, median 9.03%, floor 0.05% \u2014 no blank page | pg-01:2.5% pg-02:8.9% pg-03:8.7% pg-04:9.5% pg-05:7.4% pg-06:10.1% pg-07:12.0% pg-08:10.6% pg-09:9.0% pg-10:3.0%"
+    },
+    {
+      "gate": "theme_light",
+      "ok": true,
+      "detail": "max dark-area 4.6% (pg-07), limit 25% \u2014 no dark fill, bands are rules only"
+    },
+    {
+      "gate": "text_layer",
+      "ok": true,
+      "detail": "22313 chars extracted, no internal path, 0 required string(s) present"
+    },
+    {
+      "gate": "figures",
+      "ok": true,
+      "detail": "not asserted for this document"
+    }
+  ],
+  "gates_all_pass": true,
+  "chain_prev": "ab05cb08b93b3ca13dbda75b6b53c08fc2dab9d5f881a9c5420149efc79c2995",
+  "chain_prev_edition": "EDITION-034",
+  "signature": "not_signed",
+  "signature_note": "no C2PA/X.509 signing identity on this lane; hashes only. Integrity is proven, authorship is not.",
+  "seal_class": "lane-level integrity seal \u2014 NOT an F13 seal and not a canonical record"
+}

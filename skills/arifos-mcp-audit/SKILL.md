@@ -259,3 +259,18 @@ Compile findings into a structured gap map:
 ---
 
 *DITEMPA BUKAN DIBERI — Audit what matters, not what's easy.*
+<!-- AAA-SKILL-PATCH 2026-10-28 provenance=333-AGI trace=trc-skill-align-20261028T135921Z -->
+### Addendum 2026-10-28 - live re-measure (Rule 3n: targets above are STALE)
+
+Measured today against arifOS :8088/mcp (9 tools, bukan 8 - arif_report is the 9th):
+
+- arif_think envelope 29,068B / 37 SC keys / 9,592ms WITH mode=apex (targets say
+  <5KB/<20/<200ms post-G3) => either the G3 fix regressed or never shipped. Re-derive, don't trust.
+- arif_memory 27,100B / 37 keys / 5,367ms - same bloated-envelope family.
+- :8088/mcp throws TRANSIENT 503 while /health is 200 and NRestarts=0 (3 observations in one
+  day, across two independent sessions). A 503 on /mcp with a healthy /health is a
+  middleware/session finding, not an outage - probe twice before declaring the organ down.
+- status=completed can coexist with execution_state=AWAIT_INPUT and verdict=HOLD on the same
+  payload: read all three fields, never status alone (dual-state tell, Rule 3s family).
+- arif_report carries no idempotentHint/openWorldHint - annotation coverage is 8/9, not 8/8.
+- arif_observe requires mode= (query-only calls return a 608B envelope with zero SC keys).

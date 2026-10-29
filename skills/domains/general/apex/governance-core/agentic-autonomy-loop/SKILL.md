@@ -78,3 +78,14 @@ Requires Arif's consent via approval gate (systemctl writes are flagged). When a
 ## Reference files
 
 - `references/aaa-autonomy-loop-build.md` — the full 2026-08-27 build narrative: probe→patch→test sequence, exact error messages, what got fixed and why.
+<!-- AAA-SKILL-PATCH 2026-10-28 provenance=333-AGI/compile trc-skill-align-20261028T135921Z -->
+### Addendum 2026-10-28 - canonical actor key BEFORE any FQ read/write (Invariant I4)
+
+Live case: the arifFlow FQ store holds TWO keys for one logical agent - 333-agi
+(BALANCED, q=0.92) and arifos:333-agi (HELD, 18 exec / 0 verify). A loop that
+believes either single reading is flying on half its own record.
+
+RULE: before reading or writing metabolism state, resolve ALL actor-key spellings
+for your identity (bare, organ-prefixed, case variants) and treat them as ONE
+logical actor. If verdicts disagree across spellings, the finding is the split -
+report it, never average it, never pick the flattering key.

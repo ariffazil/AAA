@@ -1,0 +1,55 @@
+{
+ "gate_results": [
+  {
+   "gate": "1. total tools == 258",
+   "result": "PASS",
+   "detail": "258"
+  },
+  {
+   "gate": "2. organs live == 13",
+   "result": "PASS",
+   "detail": "13"
+  },
+  {
+   "gate": "3. inputSchema 258/258",
+   "result": "PASS",
+   "detail": "258"
+  },
+  {
+   "gate": "4. a-forge == 118",
+   "result": "PASS",
+   "detail": "118"
+  },
+  {
+   "gate": "5. fed == 7",
+   "result": "PASS",
+   "detail": "7"
+  },
+  {
+   "gate": "6. geox/wealth/well discoverable via corrected SOT",
+   "result": "PASS",
+   "detail": "True"
+  },
+  {
+   "gate": "7. observatory_snapshot = HTTP + live",
+   "result": "PASS",
+   "detail": "http/confirmed_reachable/HTTP200"
+  },
+  {
+   "gate": "8. wealth 18/18 = 15 MCP + 3 HTTP",
+   "result": "PASS",
+   "detail": "15+3/18"
+  },
+  {
+   "gate": "9. nothing declared dead by cross-transport absence",
+   "result": "PASS",
+   "detail": "True"
+  },
+  {
+   "gate": "10. byte-identical recompile",
+   "result": "PASS",
+   "detail": "e90b9d63740acae7"
+  }
+ ],
+ "all_pass": true
+}
