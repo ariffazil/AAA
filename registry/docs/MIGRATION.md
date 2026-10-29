@@ -20,9 +20,11 @@ To: normalized 11-object supply-chain registry + deterministic dual projections.
 Every normalized field traces to an SOT patch note, a catalog record, or a frozen
 historical file — see each entity's `evidence_refs`. Where evidence was absent the
 field is `UNKNOWN` (e.g. glm release dates, most knowledge cutoffs, opencode corporate
-operator). Baseline note: the brief's stated baseline commit `7d28533cf` does not
-exist in this repository (it matches an example SHA from the advisory text); the
-witnessed baseline is `0ce43e47` — recorded here rather than silently substituted.
+operator). Baseline note: the brief's stated baseline commit `7d28533cf` is the PUBLIC
+MIRROR head (filtered-mirror SHAs diverge from the local repo, so it does not resolve
+in the local object store — confirmed by the push range `7d28533c..` at publication);
+the witnessed LOCAL baseline is `0ce43e47`. Both are true statements about two
+different histories: local canonical vs filtered public.
 
 ## Field-class decisions
 
