@@ -1,0 +1,23 @@
+{
+  "source_id": "raw:sha256:688c6ab7deefa184abd933dbe3044a44dabecf26e7f13b170bbdcd930ead7fbf",
+  "source_type": "vault_receipt",
+  "uri": "vault999:seq:975",
+  "event_id": "975",
+  "captured_at": "2026-10-28T04:09:35Z",
+  "captured_by": "333-AGI",
+  "run_id": "omc-20261028-s975",
+  "content_sha256": "688c6ab7deefa184abd933dbe3044a44dabecf26e7f13b170bbdcd930ead7fbf",
+  "byte_size": 299,
+  "authority": "observational",
+  "epistemic_class": "EVIDENCE",
+  "immutable": true,
+  "source_timestamp": null,
+  "actor": "kimi-code/FI-008",
+  "origin_path": "/root/VAULT999/SEALED_EVENTS.jsonl",
+  "origin_locator": {
+    "kind": "vault",
+    "id": "975"
+  },
+  "event_type": "PHASE_REALIZATION_SEAL",
+  "verdict": "VERIFIED_WITH_CAVEAT"
+}
