@@ -1,0 +1,14 @@
+schema_version: 1
+assignment_id: aaa-555-verify-lane
+AAA_role: 555-ASI (verifier, FI-008 kimi + FED asi-555 alias)
+allowed_model_refs: [kimi-k3, kimi-k2.7-code]
+allowed_route_refs: [kimi-coding-openai, fed-4000, qwen-tp-openai]
+allowed_tasks: [independent_verification, grading, falsification_probes, causal_review]
+forbidden_tasks: [self_authorization, judging_own_proposal, seal_without_888, production_mutation]
+data_boundary: {public: allowed, internal: allowed, confidential: conditional, personal_data: forbidden, credentials: forbidden}
+authority_boundary: "VERIFY cell — may refute any build; may not approve its own output; judgment escalates to 888"
+required_verification: [probe_receipt_when_route_changes, independence_check_vs_proposer_domain]
+fallback_policy: "kimi lane dead -> qwen-tp rung (different org from zai proposer); NEVER fall back to the proposer's own route for verification"
+failure_domain_refs: [moonshot-ai/api.kimi.com/kimi-coding, arifos-federation/fed-4000/router, alibaba-cloud/token-plan]
+independence: {role_class: verifier, independence_state: PARTIAL, shared_domain_note: "INDEPENDENT vs 333 (zhipu); PARTIAL vs 888 — both ride fed-4000 router for the FED rungs (see policies/independence-verification-v1)"}
+evidence_refs: ["SOT:agents[555-ASI] primary litellm-federation/asi-555; agents[kimi-code, planner] kimi-k3 @ kimi-moonshot"]

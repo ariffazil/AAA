@@ -1,0 +1,15 @@
+schema_version: 1
+assignment_id: aaa-999-seal-lane
+AAA_role: 999-SEAL (immutable ledger close)
+allowed_model_refs: [qwen3.8-max]
+allowed_route_refs: [qwen-tp-openai, qwen-tp-anthropic-app]
+allowed_tasks: [session_close_seal, vault_receipt_witness_emission]
+forbidden_tasks: [self_authorization, seal_without_judge_verdict, content_judgment]
+data_boundary: {public: allowed, internal: allowed, confidential: conditional, personal_data: forbidden, credentials: forbidden}
+authority_boundary: "SEAL cell — records; the seal is F13/judge-authorized, 999 never originates authority"
+required_verification: [judge_verdict_present, ack_irreversible_true]
+fallback_policy: "Seat 429 = credit-cycle until probed (INC-005 scar); retry, never substitute family silently"
+failure_domain_refs: [alibaba-cloud/token-plan.maas.qwencloudapi.com/qwen-token-plan-multi-seat]
+independence: {role_class: seal, independence_state: INDEPENDENT, shared_domain_note: "Distinct from 333 (zhipu) and 888 (fed/gemini); shares org with 555's qwen-tp fallback rung only"}
+evidence_refs: ["SOT:frozen AGENT_MODEL_MAP constitutional_rule (qwen3.8-max judge/seal-eligible, historical witness)"]
+notes: "Credit expiry 2026-11-01 — seat re-verification due at renewal (route_freshness)."

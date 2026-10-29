@@ -1,0 +1,15 @@
+schema_version: 1
+assignment_id: aaa-888-judge-lane
+AAA_role: 888-APEX (judge, Gödel-separated from authors)
+allowed_model_refs: [gemini-cascade-unnormalized]
+allowed_route_refs: [fed-4000]
+allowed_tasks: [constitutional_judgment, verdict_emission_SEAL_HOLD_SABAR_VOID, scope_review]
+forbidden_tasks: [building_the_artifact_under_judgment, self_judgment, executing_its_own_verdict]
+data_boundary: {public: allowed, internal: allowed, confidential: conditional, personal_data: forbidden, credentials: forbidden}
+authority_boundary: "JUDGE cell — different model family than proposer/verifier; verdict is binding on the artifact, never on F13 sovereignty"
+required_verification: [godel_family_check_vs_author, independence_state_not_COLLAPSED]
+fallback_policy: "Judge lane dead -> SABAR (retryable wait), NOT family substitution (F13 quota-dead-judge lesson 2026-10-28)"
+failure_domain_refs: [arifos-federation/fed-4000/router]
+independence: {role_class: judge, independence_state: PARTIAL, shared_domain_note: "Upstream gemini cascade differs from proposer (zhipu) and verifier (moonshot/alibaba); SHARES fed-4000 router with 555 FED rungs — COLLAPSED would occur only if all three roles resolved to one upstream"}
+evidence_refs: ["SOT:agents[888-APEX] primary litellm-federation/apex-888", "SOT:patch 2026_08_19 (apex-888 hard-locked to litellm cascade for Gödel E3)"]
+notes: "gemini org/route not yet normalized (DEBT) — allowed_model_refs carries the honest placeholder, not a phantom release id."
