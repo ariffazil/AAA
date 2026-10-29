@@ -1,0 +1,23 @@
+evidence_refs:
+- 'catalog:registry/catalog/zai.yaml (live mesh-proven 2026-10-30: qwen-code FI-003
+  + kimi zai-coding-plan/glm-5.3 both marker-PASS)'
+evidence_status: migrated_from_sot
+expected_marker: MESH_MARKER_PASS
+http_status: 200
+latency_ms: null
+notes: Migrated witness from catalog + SOT; marker = FI mesh marker protocol. Rerun
+  live probe for latency/fingerprint.
+observed_at: '2026-10-30T07:26:00+08:00'
+output_validity:
+  expected_marker_present: true
+  finish_state_valid: true
+  non_empty: true
+  schema_valid: true
+probe_id: probe-20261030t072600z-zai-glm53
+receipt_hash: 5dffdc1daa090ef2191a853b1c0de523f436891cb857ba1608cd94b1338aa5bb
+requested_model: glm-5.3
+resolved_model: glm-5.3
+response_fingerprint: null
+route_ref: zai-coding-openai
+schema_version: 1
+verdict: PASS

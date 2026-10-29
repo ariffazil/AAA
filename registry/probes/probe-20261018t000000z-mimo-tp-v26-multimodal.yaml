@@ -1,0 +1,23 @@
+evidence_refs:
+- SOT:patch 2026_10_18_mimo_multimodal_understanding (image 1024 tok correct description;
+  audio 25 tok exact transcript; video 1144+19 tok correct scene — via FED alias layer
+  AND direct token-plan lane)
+evidence_status: migrated_from_sot
+expected_marker: CORRECT_DESCRIPTION
+http_status: 200
+latency_ms: null
+notes: Cleared the 2026-09-22 audio/video runtime-probe caveat on all 5 V2.6 entries.
+observed_at: '2026-10-18T00:00:00+08:00'
+output_validity:
+  expected_marker_present: true
+  finish_state_valid: true
+  non_empty: true
+  schema_valid: true
+probe_id: probe-20261018t000000z-mimo-tp-v26-multimodal
+receipt_hash: 809560f4b9693ac7af585196bfe193ebc43d3c66d09c6ee2a3dd927f04fb8f75
+requested_model: mimo-v2.6-pro
+resolved_model: mimo-v2.6-pro
+response_fingerprint: null
+route_ref: mimo-tp-openai
+schema_version: 1
+verdict: PASS
