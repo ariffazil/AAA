@@ -1,0 +1,24 @@
+# zai-coding-plan — Z.AI GLM Coding Plan (Pro tier)
+# SOT: /root/.config/federation-models.json (provider zai-coding-plan) — this file is the AAA catalog projection.
+# Landed 2026-10-30 (FI-003, F13 "make sure our model registry in AAA repo being updated") — catalog was glm-silent since 2026-07-17.
+provider: zai-coding-plan
+status: ACTIVE
+plan: coding_pro
+endpoints:
+  openai_compat: https://api.z.ai/api/coding/paas/v4
+  anthropic_compat: https://api.z.ai/api/anthropic
+auth_env: ZAI_API_KEY
+models:
+  - id: glm-5.3
+    role: primary
+    note: live-probed 2026-10-30 FI mesh — qwen-code (FI-003) + kimi (zai-coding-plan/glm-5.3) both marker-PASS on this engine
+  - id: glm-5.2
+    note: silently redirects to 5.3 upstream (verified 2026-08-15); kept as compat alias
+  - id: glm-5.1
+    note: compat alias
+usage:
+  - kimi-code primary surface since 2026-08-21 (F13 directive; RCR honoured — SOT edit, picker pen F13)
+  - qwen-code FI-003 session engine (GLM-5.3)
+provenance:
+  sot_patch_refs: [2026-08-21_zai, 2026-10-30_catalog_projection]
+  falsifier: any live probe of api.z.ai coding endpoints returning non-200 on glm-5.3
