@@ -1,0 +1,20 @@
+schema_version: 1
+route_id: deepseek-openai
+offering_ref: deepseek-direct-payg
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://api.deepseek.com/v1
+credential_env_refs: [DEEPSEEK_API_KEY]
+inference_host_ref: deepseek
+region: CN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: deepseek, account: deepseek-direct, endpoint_cluster: api.deepseek.com, upstream_model_host: deepseek}
+route_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+  note: 'PONG 200 fingerprint e72d3c7f (1017) 2026-10-26; balance $1.32 LOW'
+evidence_refs: ["SOT:providers[deepseek] + patch 2026_10_26_deepseek1017_audit"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing or resolving deepseek-flash off the Flash family"

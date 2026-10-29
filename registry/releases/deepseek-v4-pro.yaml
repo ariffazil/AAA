@@ -1,0 +1,24 @@
+schema_version: 1
+release_id: deepseek-v4-pro
+family_ref: deepseek
+developer_refs: [deepseek]
+publisher_refs: [deepseek]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: [reasoning, tool_call, code]
+  observed: [text]
+  verified: [text]
+lifecycle:
+  status: active
+  deprecated_at: {value: null, evidence_status: UNKNOWN, source: null}
+evidence_refs:
+  - "SOT:model_routes[deepseek-v4-pro] (p1 direct restored after 2026-08-30 revival)"
+  - "SOT:patch 2026_09_13_v41flash ('V4-PRO CONTINUES past 2026-09-14 — deprecation reversed')"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe resolving v4-pro to different weights, or a new deprecation notice"
+notes: "Slow-tier sovereign lane; primary of SOT agents forge/auditor/claude-code/codex. Native Responses + Anthropic API since V4-Pro GA 2026-08-13 (SOT patch 2026-10-26)."

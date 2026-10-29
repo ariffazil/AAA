@@ -1,0 +1,15 @@
+schema_version: 1
+alias_id: fed/mimo-v2.5-pro
+route_ref: fed-4000
+requested_model: mimo-v2.5-pro
+expected_resolution: mimo-v2.6-pro
+resolution_policy: known_remap
+known_remaps:
+  - {from: 'mimo-v2.5*', to: 'mimo-v2.6-* upstreams', witnessed_at: '2026-10-18', severity_on_match: WARN, receipt_ref: 'SOT:patch 2026_10_18_mimo_multimodal_understanding'}
+mismatch_verdict: HOLD
+evidence_refs:
+  - "SOT:patch 2026_10_18 (FED keeps v2.5* alias names for picker compat, routes to v2.6 upstreams; vendor retires v2.5 ids 2026-10-21)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "a FED probe resolving mimo-v2.5-pro to actual v2.5 weights post-retirement"
+notes: "FED-side remap (router), not a provider-side remap — mutability class of the router alias is ROUTER_ALIAS_FLOATING."

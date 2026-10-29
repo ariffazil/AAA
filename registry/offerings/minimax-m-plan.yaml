@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: minimax-m-plan
+provider_ref: minimax
+plan: m_plan
+advertised_models: [minimax-m3]
+alias_policy: UNKNOWN
+billing_class: subscription_with_credits
+quota_state: {state: available, observed_at: '2026-10-26', note: 'sk-cp subscription seat CANONICAL; PAYG lane DEAD (HTTP 402)'}
+credit_expiry: null
+lifecycle: {status: active}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[minimax] (monthly_token_plan; MINIMAX_API_KEY canonical, PAYG 402)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "M Plan key failing, or 402 clearing on the PAYG lane"

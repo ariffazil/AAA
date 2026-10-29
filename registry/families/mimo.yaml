@@ -1,0 +1,22 @@
+schema_version: 1
+family_id: mimo
+canonical_name: Xiaomi MiMo
+developer_refs: [xiaomi]
+parent_family_ref: null
+release_refs: [mimo-v2.5-pro, mimo-v2.6-pro, mimo-v2.6-flash, mimo-v2.6-pro-ultraspeed]
+modalities: [text, image_in, audio_in, video_in, audio_out]
+lineage_evidence:
+  published: true
+  basis: official_publication
+  note: "mimo.mi.com docs witnessed via SOT patch 2026-10-18 (image/audio/video understanding across v2.5/v2.6)"
+family_freshness:
+  last_verified: '2026-10-18'
+  review_after: '2026-11-18'
+  stale_action: probe_recheck
+evidence_refs:
+  - "SOT:patch notes 2026_09_22_mimo_v26*, 2026_10_18_mimo_multimodal_understanding"
+  - "catalog:registry/catalog/xiaomi_mimo.yaml"
+  - "SOT:model_routes[mimo-v2.6-pro, mimo-v2.6-flash, mimo-v2.6-pro-ultraspeed]"
+evidence_status: verified
+last_reviewed_at: '2026-10-30'
+falsifier: "mimo.mi.com docs contradicting v2.5->v2.6 lineage or the 2026-10-21 v2.5 id retirement"

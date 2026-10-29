@@ -1,0 +1,29 @@
+schema_version: 1
+organization_id: groq
+canonical_name: Groq Cloud
+brands: [Groq]
+organization_types: [inference_host, API_provider]
+jurisdiction:
+  value: US
+  evidence_status: witnessed
+services:
+  - api.groq.com openai-compatible API (SOT billing_model free_tier)
+official_sources:
+  - https://console.groq.com/docs/overview
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:providers[groq] (ACTIVE, free_tier, US, last_verified 2026-08-15)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Groq docs/source shows a different operator, or the endpoint no longer hosts open-weight (non-Groq-developed) models"
+notes: >-
+  Inference HOST of other developers' open-weight models. Groq is not the developer
+  of the models it serves. Historically hosted gpt-oss before that family was removed
+  from federation SOT (2026-08-31).

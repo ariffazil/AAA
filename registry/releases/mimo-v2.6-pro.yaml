@@ -1,0 +1,22 @@
+schema_version: 1
+release_id: mimo-v2.6-pro
+family_ref: mimo
+developer_refs: [xiaomi]
+publisher_refs: [xiaomi]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: [multimodal text+image+video+audio]
+  observed: [text, image_in, audio_in, video_in]
+  verified: [text, image_in, audio_in, video_in]
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:patch 2026_10_18_mimo_multimodal_understanding (all 3 understanding modalities runtime-VERIFIED through FED + direct)"
+  - "SOT:model_routes[mimo-v2.6-pro]"
+evidence_status: verified
+last_reviewed_at: '2026-10-30'
+falsifier: "modality probe failing post-2026-10-18, or catalog removal"
+notes: "AA Index 46 / pricing claims from FI-008 were falsified as unverified 2026-09-22 and are intentionally NOT carried here."

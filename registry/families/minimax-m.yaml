@@ -1,0 +1,21 @@
+schema_version: 1
+family_id: minimax-m
+canonical_name: MiniMax M-series
+developer_refs: [minimax]
+parent_family_ref: null
+release_refs: [minimax-m3, minimax-m2.5]
+modalities: [text]
+lineage_evidence:
+  published: false
+  basis: runtime_observation
+  note: "M3 witnessed via catalog + frozen AGENT_MODEL_MAP constitutional_rule; M2.5 witnessed on Alibaba token-plan catalog"
+family_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+evidence_refs:
+  - "catalog:registry/catalog/minimax.yaml (minimax.m3)"
+  - "SOT:providers[qwen-token-plan*].model_catalog (MiniMax-M2.5)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "MiniMax official lineage contradicting M2.5 -> M3 order, or M-plan catalog changing"

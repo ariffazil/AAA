@@ -1,0 +1,14 @@
+schema_version: 1
+incident_id: INC-001-glm52-silent-remap
+incident_type: silent_remap_witnessed
+route_ref: zai-coding-openai
+requested_model: glm-5.2
+resolved_model: glm-5.3
+first_observed_at: '2026-08-15'
+latest_observed_at: '2026-08-15'
+evidence_refs:
+  - "SOT:providers[zai-coding-plan].notes ('requesting glm-5.2 returns model=glm-5.3 — silent redirect — VERIFIED 2026-08-15 FI-003, session SEAL-d186bb9c9f934225')"
+evidence_status: verified
+status: classified
+corrective_action: "Recorded as known_remap WARN in aliases/zai_glm-5.2; glm-5.2 release marked retired_compat with replacement glm-5.3; never eligible as frozen baseline id on this route."
+falsifier: "glm-5.2 resolving to true 5.2 weights again, or an official Z.AI deprecation notice changing the classification."

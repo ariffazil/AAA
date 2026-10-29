@@ -1,0 +1,32 @@
+schema_version: 1
+organization_id: zhipu-ai
+canonical_name: Zhipu AI
+brands: [Z.AI, Zhipu, bigmodel.cn]
+organization_types: [model_developer, API_provider]
+jurisdiction:
+  value: CN
+  evidence_status: witnessed
+services:
+  - zai-coding-plan (GLM coding subscription)
+  - open.bigmodel.cn open platform (provider surface 'zhipu-z-ai' — SOT status UNREGISTERED, not in live use)
+official_sources: []
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:/root/.config/federation-models.json:providers[zai-coding-plan] (ACTIVE, api.z.ai, Z.ai GLM Coding Plan)"
+  - "SOT:providers[zhipu-z-ai] (UNREGISTERED)"
+  - "catalog:registry/catalog/zai.yaml"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Zhipu/Z.AI official source contradicts developer attribution of the GLM family, or the api.z.ai endpoints are operated by a different legal entity"
+notes: >-
+  Developer of the GLM family. The Z.AI coding plan is a subscription offering on
+  api.z.ai. Corporate relationship between zhipu-z-ai (bigmodel.cn) and zai-coding-plan
+  (api.z.ai) is naming-consistent but not legally verified — kept as one organization
+  on brand evidence, flagged unverified.

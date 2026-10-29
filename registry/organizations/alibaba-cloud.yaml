@@ -1,0 +1,36 @@
+schema_version: 1
+organization_id: alibaba-cloud
+canonical_name: Alibaba Cloud (QwenCloud / DashScope / Bailian)
+brands: [Alibaba Cloud, DashScope, Bailian, QwenCloud, qwen]
+organization_types: [model_developer, API_provider, inference_host, commercial_platform]
+jurisdiction:
+  value: CN
+  evidence_status: witnessed
+services:
+  - "dashscope (SOT: ABSENT_NO_ENDPOINT)"
+  - "dashscope-payg (SOT: BLOCKED_403_PAYMENT_OR_FREE_TIER_ONLY)"
+  - "dashscope-free-quota (SOT: ACTIVE_FREE_QUOTA)"
+  - "qwen token plan (4 seats, token-plan.maas.qwencloudapi.com)"
+official_sources:
+  - https://docs.qwencloud.com/token-plan
+  - https://home.qwencloud.com
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:providers[qwen-token-plan, qwen-token-plan-team, qwen-token-plan-individual, qwen-token-plan-hermes, qwen-responses, bailian-token-plan*, dashscope*]"
+  - "SOT:patch note _patch_2026_10_01_qwen_token_plan_reality (4 seats 200 chat+anthropic)"
+  - "catalog:registry/catalog/qwen.yaml"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Official Alibaba/QwenCloud source reassigns token-plan/DashScope operation to a different entity, or the 26-model catalog stops including third-party families"
+notes: >-
+  API provider that serves THIRD-PARTY model families on one subscription catalog:
+  SOT model_catalog witnesses deepseek-*, glm-*, kimi-k2.*, MiniMax-M2.5 served beside
+  qwen* and wan* ids. Developer of the qwen/wan families only — serving deepseek-*
+  on this platform does NOT make Alibaba their developer.

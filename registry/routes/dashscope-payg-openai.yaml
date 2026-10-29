@@ -1,0 +1,20 @@
+schema_version: 1
+route_id: dashscope-payg-openai
+offering_ref: dashscope-payg
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+credential_env_refs: [DASHSCOPE_API_KEY]
+inference_host_ref: alibaba-cloud
+region: UNKNOWN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: alibaba-cloud, account: dashscope-intl, endpoint_cluster: dashscope-intl.aliyuncs.com, upstream_model_host: alibaba-cloud}
+route_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+  note: 'SOT BLOCKED_403_PAYMENT_OR_FREE_TIER_ONLY — same credential as free-quota lane, different billing lane'
+evidence_refs: ["SOT:providers[dashscope-payg]"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "403 clearing after payment/tier change"

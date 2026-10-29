@@ -1,0 +1,21 @@
+schema_version: 1
+release_id: deepseek-v4-flash
+family_ref: deepseek
+developer_refs: [deepseek]
+publisher_refs: [deepseek]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [], observed: [text], verified: []}
+lifecycle:
+  status: retired_compat
+  deprecated_at: {value: '2026-09-13', evidence_status: verified, source: 'SOT patch 2026_09_13_v41flash: RETIRED-COMPAT-PENDING, DeepSeek compat-routes the name to V4.1-Flash'}
+  replacement: deepseek-flash
+evidence_refs:
+  - "SOT:patch 2026_09_13_v41flash + 2026_10_26_deepseek1017_audit (legacy v4-flash ids remain compat aliases billed at Flash price)"
+evidence_status: verified
+last_reviewed_at: '2026-10-30'
+falsifier: "probe showing the id hard-fails instead of compat-routing, or official removal"
+notes: "Same class: deepseek-v4-flash-vision-exp (also retired-compat to V4.1-Flash; per 2026-09-13 correction current Flash image bound = 1024 tok/image)."

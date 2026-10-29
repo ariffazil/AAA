@@ -1,0 +1,33 @@
+schema_version: 1
+organization_id: xiaomi
+canonical_name: Xiaomi (MiMo)
+brands: [Xiaomi, MiMo]
+organization_types: [model_developer, API_provider, inference_host]
+jurisdiction:
+  value: CN
+  evidence_status: witnessed
+services:
+  - mimo-token-plan (token-plan-sgp.xiaomimimo.com, Max plan tiers Lite/Standard/Pro)
+  - mimo-platform PAYG (api.xiaomimimo.com)
+  - mimo.mi.com (docs)
+official_sources:
+  - https://mimo.mi.com
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:providers[mimo-token-plan] (ACTIVE, monthly_token_plan_max, SG endpoint), providers[mimo-platform] (ACTIVE PAYG)"
+  - "SOT:patch notes 2026_09_22_mimo_v26*, 2026_10_18_mimo_multimodal_understanding"
+  - "catalog:registry/catalog/xiaomi_mimo.yaml"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Xiaomi/MiMo official source contradicts MiMo-family developer attribution or endpoint operation"
+notes: >-
+  Vendor retires mimo-v2.5* model ids 2026-10-21 10:00 UTC+8 (SOT patch 2026-10-18);
+  FED pre-migrated chat upstreams to v2.6 while keeping v2.5 alias names for picker
+  compat. Multimodal understanding (image/audio/video-in) runtime-verified 2026-10-18.

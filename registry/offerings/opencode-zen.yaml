@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: opencode-zen
+provider_ref: opencode
+plan: zen
+advertised_models: []
+alias_policy: UNKNOWN
+billing_class: UNKNOWN
+quota_state: {state: blocked, observed_at: null, note: 'SOT provider status auth_fail at last witness — no live credential'}
+credit_expiry: null
+lifecycle: {status: parked, note: 'auth_fail; not a live lane'}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[opencode-zen] (auth_fail)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "credential repair + successful probe"

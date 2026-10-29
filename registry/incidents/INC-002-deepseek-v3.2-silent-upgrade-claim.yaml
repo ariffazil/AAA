@@ -1,0 +1,19 @@
+schema_version: 1
+incident_id: INC-002-deepseek-v3.2-silent-upgrade-claim
+incident_type: silent_model_upgrade
+route_ref: qwen-tp-openai
+requested_model: deepseek-v3.2
+resolved_model: deepseek-v4-pro
+first_observed_at: '2026-10-30'
+latest_observed_at: '2026-10-30'
+evidence_refs:
+  - "SOT:providers[qwen-token-plan*].model_catalog (deepseek-v3.2 catalog presence — the ONLY first-party witness)"
+  - "external:ARIFOS::AAA_MODEL_SUPPLY_CHAIN_REGISTRY brief regression case B (claim of v3.2->v4-pro resolution via FED)"
+evidence_status: external_claim
+status: UNVERIFIED
+corrective_action: "Alias qwen-tp/deepseek-v3.2 locked to mismatch_verdict HOLD with floating policy; no WARN classification until a live four-field probe records the actual resolution on this route."
+falsifier: "A live probe: requested deepseek-v3.2 — record resolved_model, then classify (exact echo = PASS; witnessed remap = WARN; anything else = HOLD)."
+notes: >-
+  The catalog lists deepseek-v3.2 TODAY while DeepSeek's own direct API has moved to
+  V4/V4.1 — a third-party-served legacy id is a prime silent-upgrade surface. This
+  incident stays open-by-default (fail-closed).

@@ -1,0 +1,19 @@
+schema_version: 1
+release_id: kimi-k3
+family_ref: kimi
+developer_refs: [moonshot-ai]
+publisher_refs: [moonshot-ai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [], observed: [text, code], verified: []}
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:agents[planner, kimi-code, image-prompt-architect] primary kimi-k3 @ kimi-moonshot"
+  - "SOT:model_routes[kimi-k3, k3, k3-256k]"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe resolving k3 to k2.x weights, or official lineage disclosure contradicting sequence"
+notes: "'k3' and 'k3-256k' are ALIASES of this release (see aliases/), not separate releases."

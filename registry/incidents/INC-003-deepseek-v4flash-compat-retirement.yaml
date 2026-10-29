@@ -1,0 +1,15 @@
+schema_version: 1
+incident_id: INC-003-deepseek-v4flash-compat-retirement
+incident_type: compat_retirement_remap
+route_ref: deepseek-openai
+requested_model: deepseek-v4-flash
+resolved_model: deepseek-flash
+first_observed_at: '2026-09-10'
+latest_observed_at: '2026-09-13'
+evidence_refs:
+  - "SOT:patch 2026_09_13_v41flash (V4.1-Flash GA; v4-flash + v4-flash-vision-exp RETIRED-COMPAT-PENDING, provider compat-routes both to V4.1-Flash)"
+  - "SOT:patch 2026_09_13 correction (vision-exp still accepted but served by V4.1-Flash; image bound now 1024 tok)"
+evidence_status: verified
+status: resolved
+corrective_action: "aliases/deepseek_v4-flash records the WARN remap; releases retired_compat with replacement; -0731 variant already dead-400 is kept as history only."
+falsifier: "Provider hard-failing the compat ids (reclassify withdrawn) or restoring true v4-flash weights."

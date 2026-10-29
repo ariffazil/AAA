@@ -1,0 +1,25 @@
+schema_version: 1
+release_id: glm-5.2
+family_ref: glm
+developer_refs: [zhipu-ai]
+publisher_refs: [zhipu-ai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: []
+  observed: [text]
+  verified: []
+lifecycle:
+  status: retired_compat
+  deprecated_at: {value: '2026-08-15', evidence_status: witnessed, source: 'SOT zai-coding-plan notes: glm-5.2 does NOT exist on zai coding plan anymore'}
+  replacement: glm-5.3
+evidence_refs:
+  - "SOT:providers[zai-coding-plan].notes (silent redirect verified 2026-08-15, session SEAL-d186bb9c9f934225)"
+  - "catalog:registry/catalog/zai.yaml known_remaps"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe requesting glm-5.2 on zai resolving to actual glm-5.2 weights, or an official Z.AI deprecation notice"
+notes: "On the Z.AI coding plan this id resolves to glm-5.3 (KNOWN_REMAP, WARN). True 5.2 access would require a different route."

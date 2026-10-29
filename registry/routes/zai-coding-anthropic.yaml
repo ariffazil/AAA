@@ -1,0 +1,21 @@
+schema_version: 1
+route_id: zai-coding-anthropic
+offering_ref: zai-coding-plan-pro
+router_ref: null
+protocol: anthropic_compatible
+endpoint_ref: https://api.z.ai/api/anthropic
+credential_env_refs: [ZAI_API_KEY]
+inference_host_ref: zhipu-ai
+region: CN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: zhipu-ai, account: zai-coding-plan, endpoint_cluster: api.z.ai, upstream_model_host: UNKNOWN}
+route_freshness:
+  last_verified: '2026-08-21'
+  review_after: '2026-11-06'
+  stale_action: probe_recheck
+  note: 'anthropic endpoint live-probed glm-5.3 HTTP 200 (SOT patch 2026-08-21); primary Kimi surface'
+evidence_refs: ["SOT:providers[zai-coding-plan].anthropic_endpoint_url", "catalog:registry/catalog/zai.yaml"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe contract failing on /api/anthropic"
+notes: "Shares failure domain with zai-coding-openai (same account + cluster) — the two routes are NOT independent verification of each other."

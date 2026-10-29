@@ -1,0 +1,21 @@
+schema_version: 1
+family_id: glm
+canonical_name: GLM (General Language Model)
+developer_refs: [zhipu-ai]
+parent_family_ref: null
+release_refs: [glm-5.1, glm-5.2, glm-5.3, glm-5.3-flash]
+modalities: [text]
+lineage_evidence:
+  published: false
+  basis: runtime_observation
+  note: "5.x sequence observed on zai offering + token-plan catalog; no official lineage publication held in-repo"
+family_freshness:
+  last_verified: '2026-10-30'
+  review_after: '2026-11-06'
+  stale_action: probe_recheck
+evidence_refs:
+  - "catalog:registry/catalog/zai.yaml (glm-5.3 primary live mesh-proven 2026-10-30)"
+  - "SOT:providers[zai-coding-plan].notes (glm-5.2 -> glm-5.3 silent redirect verified 2026-08-15)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Z.AI official lineage page contradicting the 5.1/5.2/5.3 sequence, or a probe resolving glm-5.3 to a different family"

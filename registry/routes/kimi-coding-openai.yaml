@@ -1,0 +1,20 @@
+schema_version: 1
+route_id: kimi-coding-openai
+offering_ref: kimi-coding-plan
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://api.kimi.com/coding/v1
+credential_env_refs: [KIMI_API_KEY]
+inference_host_ref: moonshot-ai
+region: CN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: moonshot-ai, account: kimi-coding, endpoint_cluster: api.kimi.com, upstream_model_host: moonshot-ai}
+route_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+  note: 'ACTIVE in SOT; planner/kimi-code primaries live on it'
+evidence_refs: ["SOT:providers[kimi-moonshot]", "SOT:agents[planner, kimi-code]"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing or k3 resolving to k2.x"

@@ -1,0 +1,21 @@
+schema_version: 1
+offering_id: qwen-token-plan
+provider_ref: alibaba-cloud
+plan: token_plan
+advertised_models: [qwen3.6-flash, qwen3.6-plus, qwen3.7-plus, qwen3.7-max, qwen3.8-flash, qwen3.8-max, deepseek-v3.2, deepseek-v4-flash, deepseek-v4-pro, deepseek-v4.1-flash, glm-5, glm-5.1, glm-5.2, glm-5.3, kimi-k2.5, kimi-k2.6, kimi-k2.7-code, MiniMax-M2.5, qwen-image-2.0, qwen-image-2.0-pro, wan2.7-image, wan2.7-image-pro, qwen-audio-3.0-realtime-plus, qwen-audio-3.0-tts-plus, auto]
+alias_policy: floating
+billing_class: subscription_with_credits
+quota_state: {state: available, observed_at: '2026-10-01', note: '4 seats 200 chat+anthropic 2026-10-01; console ~99,988/100,000 team credits'}
+credit_expiry: '2026-11-01'
+lifecycle: {status: active, note: '4 seats: individual / owner / arifos(sovereign) / hermes — seats differ by credential, not by catalog'}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[qwen-token-plan, -team, -individual, -hermes] + patch _patch_2026_10_01_qwen_token_plan_reality"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "seat probe failing on both hosts, or catalog/resolution behavior changing after 2026-11-01 renewal"
+notes: >-
+  Cross-vendor catalog: deepseek-*, glm-*, kimi-*, MiniMax-M2.5 are served here but
+  developed elsewhere. 'deepseek-v3.2' remains a catalog id with UNKNOWN resolution
+  (see alias + incident INC-002).

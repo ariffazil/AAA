@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: dashscope-free-quota
+provider_ref: alibaba-cloud
+plan: free_quota
+advertised_models: []
+alias_policy: UNKNOWN
+billing_class: free_tier
+quota_state: {state: available, observed_at: '2026-08-25', note: 'SOT ACTIVE_FREE_QUOTA — independent pool from PAYG; staleness flagged'}
+credit_expiry: null
+lifecycle: {status: active}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[dashscope-free-quota] + patch last_patch_note_free_quota (2026-08-25)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "free-quota probe failing (two of 28 rungs returned 403 free-quota-exhausted on 2026-10-26 — lane may be partially drained)"

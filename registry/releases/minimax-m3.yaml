@@ -1,0 +1,19 @@
+schema_version: 1
+release_id: minimax-m3
+family_ref: minimax-m
+developer_refs: [minimax]
+publisher_refs: [minimax]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [analyze, reason, translate], observed: [text], verified: []}
+lifecycle: {status: active}
+evidence_refs:
+  - "catalog:registry/catalog/minimax.yaml (status degraded)"
+  - "frozen:registries/models/AGENT_MODEL_MAP.json constitutional_rule (M3 judge-seat eligible, historical)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "M Plan catalog dropping M3, or a probe resolving M3 to other weights"
+notes: "apex-888 was hard-locked OFF MiniMax-M3 direct 2026-08-19 (moved to litellm-federation Gemini cascade for Gödel E3 isolation) — SOT patch witness."

@@ -1,0 +1,19 @@
+schema_version: 1
+release_id: mimo-v2.6-pro-ultraspeed
+family_ref: mimo
+developer_refs: [xiaomi]
+publisher_refs: [xiaomi]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [high_throughput], observed: [text], verified: []}
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:model_routes[mimo-v2.6-pro-ultraspeed]"
+  - "SOT:patch 2026_09_22_mimo_v26 (UltraSpeed PAYG-only; skipped token plan per /models listing 2026-09-22)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing, or id moving onto the token plan"
+notes: "PAYG-only lane. Catalog hazard: never the sole load-bearing path (resource-limited variant)."

@@ -1,0 +1,20 @@
+schema_version: 1
+route_id: qwen-tp-anthropic-app
+offering_ref: qwen-token-plan
+router_ref: null
+protocol: anthropic_compatible
+endpoint_ref: https://token-plan.maas.qwencloudapi.com/apps/anthropic
+credential_env_refs: [QWEN_TEAM_OWNER_API_KEY, QWEN_ARIFOS_API_KEY, QWEN_HERMES_API_KEY]
+inference_host_ref: alibaba-cloud
+region: UNKNOWN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: alibaba-cloud, account: qwen-token-plan-multi-seat, endpoint_cluster: token-plan.maas.qwencloudapi.com, upstream_model_host: UNKNOWN}
+route_freshness:
+  last_verified: '2026-10-01'
+  review_after: '2026-11-01'
+  stale_action: probe_recheck
+  note: 'apps/anthropic /v1/messages 200 incl thinking+tool_use and SSE (2026-08-18/10-01 witnesses)'
+evidence_refs: ["SOT:providers[qwen-token-plan-team].anthropic_endpoint_url + patch 2026-08-18"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing on the anthropic app path"

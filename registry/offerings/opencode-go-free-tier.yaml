@@ -1,0 +1,18 @@
+schema_version: 1
+offering_id: opencode-go-free-tier
+provider_ref: opencode
+plan: go
+advertised_models: []
+alias_policy: floating
+billing_class: free_tier
+quota_state: {state: available, observed_at: '2026-08-19', note: '27 models on /v1/models probed 2026-08-19 — stale, re-probe'}
+credit_expiry: null
+lifecycle: {status: active}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[opencode-go] (ACTIVE, free_tier; provider_name witnesses 'Xiaomi Token Plan FREE tier')"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing on opencode.ai/zen/go/v1, or catalog count diverging"
+notes: "Upstream inference host per SOT naming: Xiaomi (SG region). Router visibility partial — resolved identity per request UNKNOWN without probe."

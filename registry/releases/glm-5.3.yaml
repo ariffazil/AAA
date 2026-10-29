@@ -1,0 +1,22 @@
+schema_version: 1
+release_id: glm-5.3
+family_ref: glm
+developer_refs: [zhipu-ai]
+publisher_refs: [zhipu-ai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: []
+  observed: [text, code, tool_call]
+  verified: []
+lifecycle: {status: active}
+evidence_refs:
+  - "catalog:registry/catalog/zai.yaml (role: primary; live mesh-proven 2026-10-30 qwen+kimi marker-PASS)"
+  - "SOT:providers[zai-coding-plan] (anthropic_endpoint_url live-probed glm-5.3 HTTP 200, 2026-08-21 patch)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe resolving glm-5.3 to a different family, or serving revision changing without notice (mutability stays PROVIDER_ALIAS_FLOATING)"
+notes: "Current session engine of FI-003 (qwen-code). Alias-floated at provider level — never eligible as frozen longitudinal baseline."

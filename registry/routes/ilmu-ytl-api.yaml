@@ -1,0 +1,20 @@
+schema_version: 1
+route_id: ilmu-ytl-api
+offering_ref: ilmu-ytl-api
+router_ref: null
+protocol: UNKNOWN
+endpoint_ref: UNKNOWN
+credential_env_refs: []
+inference_host_ref: ytl-ai-cloud
+region: MY
+mutability_class: UNKNOWN
+failure_domain: {provider: ytl-ai-cloud, account: UNKNOWN, endpoint_cluster: UNKNOWN, upstream_model_host: UNKNOWN}
+route_freshness:
+  last_verified: null
+  review_after: '2026-11-27'
+  stale_action: degrade_to_observe_only
+  note: 'governance-blocked; no endpoint witness carried in SOT'
+evidence_refs: ["catalog:registry/catalog/ilmu.yaml"]
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "F13 lifting the block + an authorized probe battery"

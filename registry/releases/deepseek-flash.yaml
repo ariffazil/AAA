@@ -1,0 +1,27 @@
+schema_version: 1
+release_id: deepseek-flash
+family_ref: deepseek
+developer_refs: [deepseek]
+publisher_refs: [deepseek]
+release_date: {value: '2026-09-10', evidence_status: verified, source: 'api-docs.deepseek.com/updates (V4.1-Flash); 1017 weights-only update 2026-10-17 auto-served under same id'}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+snapshot_date: {value: '2026-10-17', evidence_status: verified, source: 'V4.1-Flash-1017 weights-only checkpoint (SOT patch 2026-10-26 deep-research)'}
+distribution: {api: true, weights: true}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: [reasoning, tool_call, code, plan, agentic, vision, image_ocr, chart_reading, multimodal_agent]
+  observed: [text, image_in]
+  verified: [text]
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:patch notes 2026_09_13_v41flash, 2026_10_18_v41flash1017, 2026_10_26_deepseek1017_audit"
+  - "SOT:model_routes[deepseek-flash]; live canary fingerprint e72d3c7f (2026-10-18/26)"
+evidence_status: verified
+last_reviewed_at: '2026-10-30'
+falsifier: "DeepSeek updates page changing the id policy, or a probe resolving deepseek-flash to non-Flash weights"
+notes: >-
+  FLOATING provider alias: id auto-serves the newest Flash checkpoint. FED :4000
+  aliases (forge-777 / hermes-asi / deepseek-flash) returned fingerprint e72d3c7f
+  (1017) on 2026-10-26. Thinking-ON with small max_tokens returns EMPTY content +
+  finish_reason=length — pin thinking:disabled or budget room (SOT patch 2026-10-18).

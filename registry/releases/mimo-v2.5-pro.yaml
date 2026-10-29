@@ -1,0 +1,25 @@
+schema_version: 1
+release_id: mimo-v2.5-pro
+family_ref: mimo
+developer_refs: [xiaomi]
+publisher_refs: [xiaomi]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: [omni-modal]
+  observed: [text, image_in, audio_in, video_in, tts, voice_clone]
+  verified: []
+lifecycle:
+  status: deprecated
+  withdrawal_at: {value: '2026-10-21', evidence_status: witnessed, source: 'vendor retires mimo-v2.5 ids 2026-10-21 10:00 UTC+8 (SOT patch 2026-10-18)'}
+  replacement: mimo-v2.6-pro
+evidence_refs:
+  - "catalog:registry/catalog/xiaomi_mimo.yaml"
+  - "SOT:patch 2026_10_18_mimo_multimodal_understanding (FED keeps v2.5* alias names routed to v2.6 upstreams)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "id still serving v2.5 weights after 2026-10-21, or official retirement reversal"
+notes: "FED-side KNOWN remap v2.5* -> v2.6 upstreams (picker compat). Alias resolves forward — probes must record it as WARN-classified remap, not identity match."

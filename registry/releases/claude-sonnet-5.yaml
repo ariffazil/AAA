@@ -1,0 +1,18 @@
+schema_version: 1
+release_id: claude-sonnet-5
+family_ref: claude
+developer_refs: [anthropic]
+publisher_refs: [anthropic]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: UNKNOWN, weights: false}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [], observed: [], verified: []}
+lifecycle: {status: UNKNOWN}
+evidence_refs:
+  - "SOT:model_routes[claude-sonnet-5]"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "any live probe receipt on a claude route — none exists in the federation today"
+notes: "Route key only. No observed runtime identity; catalog 'Fable 5' persona labels are governance_prior, non_identity."

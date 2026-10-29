@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: mimo-token-plan-max
+provider_ref: xiaomi
+plan: max
+advertised_models: [mimo-v2.6-pro, mimo-v2.6-flash]
+alias_policy: floating
+billing_class: subscription_with_credits
+quota_state: {state: UNKNOWN, observed_at: '2026-10-18', note: 'understanding modalities verified 2026-10-18; credit state not carried'}
+credit_expiry: null
+lifecycle: {status: active, note: 'tiers Lite/Standard/Pro witnessed in SOT; UltraSpeed PAYG-only'}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[mimo-token-plan] (monthly_token_plan_max, SG endpoint) + patch 2026_10_18_mimo_multimodal_understanding"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "seat probe failing, or tier catalog changing"

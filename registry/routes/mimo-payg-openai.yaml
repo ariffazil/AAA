@@ -1,0 +1,21 @@
+schema_version: 1
+route_id: mimo-payg-openai
+offering_ref: mimo-platform-payg
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://api.xiaomimimo.com/v1
+credential_env_refs: [MIMO_PLATFORM_API_KEY]
+inference_host_ref: xiaomi
+region: UNKNOWN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: xiaomi, account: mimo-platform-payg, endpoint_cluster: api.xiaomimimo.com, upstream_model_host: xiaomi}
+route_freshness:
+  last_verified: '2026-09-22'
+  review_after: '2026-11-22'
+  stale_action: probe_recheck
+  note: 'PAYG 200 with reasoning_content 2026-09-22 — separate quota pool from token plan'
+evidence_refs: ["SOT:providers[mimo-platform] + patch 2026_09_22_mimo_v26_fi003_payg_mirror"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "PAYG probe failing"
+notes: "Same upstream org as mimo-tp-openai but different account+cluster — org-level independence only, NOT account-level."

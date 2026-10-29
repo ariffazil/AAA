@@ -1,0 +1,32 @@
+schema_version: 1
+organization_id: openai
+canonical_name: OpenAI
+brands: [OpenAI, ChatGPT]
+organization_types: [model_developer, publisher, API_provider, commercial_platform]
+jurisdiction:
+  value: US
+  evidence_status: unverified
+services:
+  - ChatGPT consumer surface (catalog route 'chatgpt' for gpt-5.6-sol)
+  - azure-openai (SOT provider DEPRECATING — hosted mirror lane, evidence-bounded)
+official_sources: []
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "catalog:registry/catalog/gpt-5.6-sol.yaml (identity.route=chatgpt; sources: GPT-5.6 system card L2-verified)"
+  - "SOT:providers[azure-openai] (DEPRECATING)"
+  - "SOT:model_routes[gpt-5.6-sol, gpt-5.5]"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "OpenAI official source contradicts GPT-5.6/5.5 attribution or the ChatGPT route observation"
+notes: >-
+  GPT-OSS open-weight family was REMOVED from federation SOT 2026-08-31 per F13
+  ('GPT OSS tu x perlu kot') — it is intentionally absent from families/releases.
+  No direct openai API provider entry exists in SOT; observed via model_routes and
+  the catalog record only.
