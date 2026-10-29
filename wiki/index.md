@@ -1,7 +1,7 @@
 ---
 title: AAA Wiki Index
 created: 2026-05-17
-updated: 2026-10-27
+updated: 2026-10-29
 type: index
 tags: [federation, wiki, index]
 confidence: high
@@ -13,7 +13,7 @@ confidence: high
 > Its strongest current capability is preserving and checking records. A binding refusal path for other consequence-bearing humans has not yet been demonstrated.
 
 ### Parity & Epistemic Status
-> - **SOURCE TREE REPORTS**: 114 entries (updated 2026-10-27)
+> - **SOURCE TREE REPORTS**: 119 entries (updated 2026-10-29)
 > - **PUBLICLY RETRIEVED SURFACE**: older Ω-Wiki projection (2026-08-25)
 > - **STATUS**: SOURCE/DEPLOYMENT PARITY UNRESOLVED
 
@@ -165,6 +165,11 @@ confidence: high
 
 | URI | Title | Summary |
 |---|---|---|
+| `tree777://scar/scar-20261030-kod-bukan-wayar` | Scar — Komen kod bukan wayar: kod ada ≠ perilaku berlaku | Anotasi kod, deklarasi fungsi, dan nama formula dibaca sebagai bukti tingkah laku runtime. |
+| `tree777://scar/scar-20261030-resit-bukan-verdict` | Scar — Resit bukan verdict: receipt ≠ constitutional SEAL | Session receipt dinamakan "SEAL" — nama fail mencampurkan penutupan kerja (Lane B) |
+| `tree777://scar/scar-20261030-semantik-atas-nama` | Scar — Semantik runtime atas nama formula | Nama formula dipakai sebagai jaminan tingkah laku: "G=(A·P·E·X)^¼" sebut di dokumen |
+| `tree777://scar/scar-20261030-simpan-respons-penuh` | Scar — Simpan respons penuh probe governed | Probe governed direkod sebagai ringkasan (status OK, bilangan lulus) — bukan respons penuh. |
+| `tree777://scar/scar-20261030-snapshot-lapuk` | Scar — Snapshot lapuk: papan status 13 saat = sejarah, bukan kini | Attention plane papar "1 HOLD aktif · fi-008" dari snapshot 13 saat lama. Probe langsung |
 | `tree777://scar/scar-graphiti` | Scar — graphiti Hyphen Escape Failure in FalkorDB Fulltext Search | During MCP federation audit on 2026-05-17, search_nodes and search_memory_facts in graphiti MCP  |
 | `tree777://scar/scar-judge-evidence-bridge` | Scar — Judge Evidence Transport Severed (Bridge Stringifies Composite Args) | While connecting the federation's first load-bearing tree777 scar citation |
 | `tree777://scar/scar-kimi` | Scar — Kimi Site Audit Fabrication (Trusted Docs Over Runtime) | On 2026-05-17, user asked about three subdomains: arif-fazil.com, arifos.arif-fazil.com, aaa.ari |
@@ -392,6 +397,7 @@ confidence: high
 | `/root/AAA/governance/RASA-QUALIA-DOCTRINE-v1.md` | 2026-10-14 |
 | `/root/AAA/governance/RETENTION.md` | 2026-10-10 |
 | **Eureka records (insight, not canon)** | |
+| `/root/AAA/eurekas/EUREKA-TTME-EVOLVING-MEMORY-2026-10-29.md` | 2026-10-29 |
 | `/root/AAA/eurekas/EUREKA-AXIOM-B1-BOUNDARY-BEFORE-DETAIL-2026-10-27.md` | 2026-10-27 |
 | `/root/AAA/eurekas/EUREKA-DEPTH-REUSE-ICL-2026-10-26.md` | 2026-10-26 |
 | `/root/AAA/eurekas/EUREKA-LANGUAGE-SOVEREIGNTY-ENGLISH-ZERO-DAY-2026-10-27.md` | 2026-10-26 |
@@ -406,6 +412,6 @@ confidence: high
 
 ---
 
-_Generated: 2026-10-27 · 114 entries_
+_Generated: 2026-10-29 · 119 entries_
 
 DITEMPA BUKAN DIBERI — 999 SEAL ALIVE
