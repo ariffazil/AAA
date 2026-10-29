@@ -1,0 +1,23 @@
+{
+  "source_id": "raw:sha256:d6a1dbbc374e75b09baef1218a0262b60cdac117cfd20ceb129fa48a82e8037a",
+  "source_type": "vault_receipt",
+  "uri": "vault999:seq:981",
+  "event_id": "981",
+  "captured_at": "2026-10-28T04:00:16Z",
+  "captured_by": "333-AGI",
+  "run_id": "omc-20261028-s981",
+  "content_sha256": "d6a1dbbc374e75b09baef1218a0262b60cdac117cfd20ceb129fa48a82e8037a",
+  "byte_size": 1885,
+  "authority": "observational",
+  "epistemic_class": "EVIDENCE",
+  "immutable": true,
+  "source_timestamp": "2026-10-15T14:40:03.101514+00:00",
+  "actor": "333-AGI",
+  "origin_path": "/root/VAULT999/SEALED_EVENTS.jsonl",
+  "origin_locator": {
+    "kind": "vault",
+    "id": "981"
+  },
+  "event_type": "F13_RATIFICATION_SEAL",
+  "verdict": "SEALED"
+}

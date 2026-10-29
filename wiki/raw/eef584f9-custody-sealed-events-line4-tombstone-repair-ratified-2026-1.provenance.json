@@ -1,0 +1,23 @@
+{
+  "source_id": "raw:sha256:eef584f9d2c178075c76378ffee40ecb76241fcb78c5f211173a24ffed9e3db8",
+  "source_type": "vault_receipt",
+  "uri": "vault999:seq:984",
+  "event_id": "984",
+  "captured_at": "2026-10-28T22:40:40Z",
+  "captured_by": "333-AGI",
+  "run_id": "omc-20261029-s984",
+  "content_sha256": "eef584f9d2c178075c76378ffee40ecb76241fcb78c5f211173a24ffed9e3db8",
+  "byte_size": 330,
+  "authority": "observational",
+  "epistemic_class": "EVIDENCE",
+  "immutable": true,
+  "source_timestamp": "2026-10-28T17:19:19.154532+00:00",
+  "actor": "kimi-code/FI-008",
+  "origin_path": "/root/VAULT999/SEALED_EVENTS.jsonl",
+  "origin_locator": {
+    "kind": "vault",
+    "id": "984"
+  },
+  "event_type": "CUSTODY_NOTE",
+  "verdict": null
+}
