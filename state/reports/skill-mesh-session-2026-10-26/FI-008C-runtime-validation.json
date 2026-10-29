@@ -1,0 +1,286 @@
+{
+ "actor_id": "kimi-code/FI-008C",
+ "role": "skill runtime validator (READ_ONLY; tests confined to /tmp/skm/test + local endpoints; zero canon mutation)",
+ "source_sha": "baseline afc68ae (== origin/main, network-verified); local HEAD fcea81b; a2a-server/skills untouched by concurrent commits",
+ "observed_at": "2026-10-26T08:48:08Z",
+ "input_dependency": "FI-008A-cartography.json PRESENT and consumed (classes, counts, duplicate/collision sets); v1 of this file sha256 f7e40c04971c47be superseded",
+ "scope_validated": [
+  "APEX-9 spine",
+  "forge-execution/deploy",
+  "mcp-ops",
+  "a2a",
+  "arifOS/identity",
+  "organ adapters GEOX/WEALTH/WELL",
+  "security",
+  "research/meta",
+  "deprecated stubs",
+  "local-only candidates",
+  "high-risk script skills"
+ ],
+ "count_output": {
+  "inventory_visible": 1135,
+  "target_resolvable": "1135 top+461 nested canon; 12 organ views resolve from kimi; 9 kimi-local resolve; sampled 34 targets, 34/34 resolved via kimi ignitions (mechanism-level; full-tree not individually ignited)",
+  "schema_valid": "1295/1295 census loadable frontmatter valid (cross-checked 719/719 kimi-view top-level by this lane)",
+  "dependency_ready": "binaries 7/7 (docker gh git python3 node jq curl) PRESENT; MCP endpoints: arifOS:8088 2025-11-25 OK, A-FORGE:7071 2025-11-25 OK, :7072 2025-06-18 OK-below-claimed-era, GEOX:8081 OK, WEALTH:18082 OK, WELL:18083 OK, AAA:3001 has NO /mcp (correctly -32601); 1 sampled skill L3-FAIL: FORGE-skill-linter dep 'arifos-recursive-audit' unresolvable",
+  "trigger_safe": "PARTIAL \u2014 collision matrix below; P0-class: 4, P1-class: basin/geoscience overlap AAA\u2194GEOX confirmed, P2: 62 ambiguous leaves",
+  "authority_safe": "PASS-sampled: no escalation directives found (104 lexical hits, all prohibitions/detection text, lane B re-verified live)",
+  "behaviour_verified": 8,
+  "refusal_verified_mechanism": 1,
+  "refusal_verified_per_skill": 0,
+  "mesh_verified": 0,
+  "unknown": "~1,270 entries have NO behavioural evidence (only static L1-L3)",
+  "deprecated_marked": 20,
+  "tombstone_rows": 31,
+  "failed_findings": [
+   "FORGE-skill-linter L3 dead dependency",
+   "FORGE-cicd-docker-deploy L7: no USE WHEN/DO-NOT/refusal clause at all (grep=0)",
+   "APEX-fff-loop-protocol retired-ignitable with self-SEAL imperative (P1, prior evidence)",
+   "FORGE-mcp-probe embeds stale telemetry table (claims :7072=2025-11-25; live-measured 2025-06-18)",
+   "verify-runtime tombstone pointer target MISSING (/root/.hermes/.archive_skills_wave2/...)"
+  ]
+ },
+ "l6_behaviour_evidence": [
+  {
+   "skill": "000-salam",
+   "result": "ignited, instructions executed (salam+priority), flow receipt db40f90d",
+   "verdict": "PASS"
+  },
+  {
+   "skill": "rsi-federation-mesh",
+   "result": "ignited, 5-step protocol executed to propagation; own stale sections found",
+   "verdict": "PASS-with-defect"
+  },
+  {
+   "skill": "555-betul",
+   "result": "ignited, real check run: claim canonical==1135 re-measured exact -> PASS + flow Verify receipt 83fca357",
+   "verdict": "PASS"
+  },
+  {
+   "skill": "888-adil",
+   "result": "ignited, emitted ONE named imbalance (probe-table claim vs measured era drift)",
+   "verdict": "PASS"
+  },
+  {
+   "skill": "FORGE-mcp-probe",
+   "result": "ignited, federation sweep executed read-only on 7 local endpoints per its own recipe; reference table falsified live (:7072 era)",
+   "verdict": "PASS-with-defect(stale table)"
+  },
+  {
+   "skill": "skill-artifact-redact",
+   "result": "ignited, scripts/redact.py RUN in /tmp/skm/test: REDACTED[openai_key] produced, bounded output, no undeclared side effects, refs all exist",
+   "verdict": "PASS"
+  },
+  {
+   "skill": "geox-basin-evaluation",
+   "result": "ignited from organ view; dependency call geox_list_registered_sources -> structured envelope, governance HOLD/ANON-actor honest, epistemic UNKNOWN where empty",
+   "verdict": "PASS"
+  },
+  {
+   "skill": "RSI-recursive-improvement (alias stub)",
+   "result": "ignited; correctly defers to canonical rsi-federation-mesh; frozen-shell provenance path exists",
+   "verdict": "PASS"
+  }
+ ],
+ "negative_tests": [
+  {
+   "t": "unknown/retired-name ignition",
+   "probe": "Skill('aaa-boot')",
+   "r": "not-found refusal",
+   "class": "mechanism-level REFUSAL \u2014 only refusal actually VERIFIED in this session"
+  },
+  {
+   "t": "revival of deprecated skill",
+   "probe": "Skill('nano-pdf') after prior evidence it was purged from top-level",
+   "r": "RESOLVES \u2014 but corrected premise: it is canon-nested (productivity/ -> AAA symlink); the 1384 delete-events were top-level identities; comm of purge-sample vs nested-view = EMPTY (no ghost revival found)",
+   "class": "no violation, methodology lesson: nested views outlive top-level purges BY DESIGN, not by leak"
+  },
+  {
+   "t": "adoption of untrusted local skill",
+   "probe": "APEX-fff-loop-protocol (lane C v1 evidence)",
+   "r": "IGNITABLE retired duplicate commanding SEAL",
+   "class": "FAIL-L7 (mesh did not refuse)"
+  },
+  {
+   "t": "deploy without authority",
+   "probe": "FORGE-cicd-docker-deploy body scan",
+   "r": "NO refusal/HOLD/dry-run clause exists in skill text",
+   "class": "FAIL-static (skill provides no negative gate)"
+  },
+  {
+   "t": "unsupported tool call / fabricated MCP availability",
+   "probe": ":3001/mcp initialize",
+   "r": "-32601 'Endpoint /mcp not found' \u2014 honest error, no fabrication",
+   "class": "PASS (endpoint level)"
+  },
+  {
+   "t": "cross-organ action",
+   "probe": "declined live \u2014 firing wealth/well organ MUTATE tools under geox lane would create organ-side state",
+   "class": "NOT-EXECUTED; enforcement is policy-only downstream (see lane B B-P1); UNKNOWN"
+  },
+  {
+   "t": "identity/budget mutation, main push",
+   "probe": "lane B evidence: no gateway endpoints; REST DID refusal live 403",
+   "class": "covered by FI-008B; per-skill UNKNOWN"
+  },
+  {
+   "t": "nano-pdf content risk",
+   "probe": "loaded body instructs `uv pip install` + 'requires an API key'",
+   "r": "canonical skill with undeclared external side-effect class (package install, network, key config), no authority ceiling text",
+   "class": "P2 supply-hygiene finding \u2014 I declined to install/exec"
+  }
+ ],
+ "cross_harness_matrix": [
+  {
+   "skill_id": "000-salam",
+   "kimi": "PASS",
+   "claude": "UNKNOWN",
+   "opencode": "UNKNOWN",
+   "grok": "UNKNOWN",
+   "codex": "UNKNOWN",
+   "evidence": [
+    "body bytes identical via symlink trees (.claude/.grok/.agents -> AAA; .config/opencode 772 links)",
+    "ignited only in kimi"
+   ]
+  },
+  {
+   "skill_id": "rsi-federation-mesh",
+   "kimi": "PASS",
+   "claude": "UNKNOWN",
+   "opencode": "UNKNOWN",
+   "grok": "UNKNOWN",
+   "codex": "UNKNOWN",
+   "evidence": [
+    "same"
+   ]
+  },
+  {
+   "skill_id": "FORGE-mcp-probe",
+   "kimi": "PASS",
+   "claude": "UNKNOWN",
+   "opencode": "UNKNOWN",
+   "grok": "UNKNOWN",
+   "codex": "UNKNOWN",
+   "evidence": [
+    "sweep run in kimi only"
+   ]
+  },
+  {
+   "skill_id": "skill-artifact-redact",
+   "kimi": "PASS",
+   "claude": "UNKNOWN",
+   "opencode": "UNKNOWN",
+   "grok": "UNKNOWN",
+   "codex": "UNKNOWN",
+   "evidence": [
+    "script executed in kimi only"
+   ]
+  },
+  {
+   "skill_id": "geox-basin-evaluation",
+   "kimi": "PASS",
+   "claude": "UNKNOWN",
+   "opencode": "UNKNOWN",
+   "grok": "UNKNOWN",
+   "codex": "FAIL-path",
+   "evidence": [
+    "codex-curated broken symlink on organ names (lane B/A: 17 links dead) \u2014 path-level FAIL, behaviour untested elsewhere"
+   ]
+  },
+  {
+   "skill_id": "APEX-humility-godel",
+   "kimi": "PASS-path",
+   "claude": "UNKNOWN",
+   "opencode": "UNKNOWN",
+   "grok": "UNKNOWN",
+   "codex": "FAIL-path",
+   "evidence": [
+    "repaired-path category; codex link broken, nested canonical body present"
+   ]
+  }
+ ],
+ "harness_note": "claude, opencode, grok, hermes, codex CLIs ALL installed and testable, but behaviour-matrix completion requires independent agent runs per skill (cost, non-determinism, cross-session side effects) \u2014 out of single-lane read-only budget; recorded UNKNOWN, NOT inferred PASS",
+ "trigger_collision_matrix": {
+  "same_identity_diff_home": 6,
+  "generic_verb_descriptions": {
+   "audit": 125,
+   "verify": 57,
+   "seal": 45,
+   "deploy": 32,
+   "fix": 24,
+   "execute": 13,
+   "restart": 5,
+   "migrate": 4,
+   "push": 1
+  },
+  "P0": [
+   {
+    "collision": "'seal' trigger selects",
+    "risk_skills": [
+     "forge-vault999-witness",
+     "forge-visual-qa-w3",
+     "civic-petition-forge",
+     "domains/general/apex/verdict/arifos-kernel-ceremony"
+    ],
+    "why": "generic seal-adjacent triggers can load high-tier/verdict-adjacent lanes without permission check at selection time \u2014 selection is not authorization, but the mesh has no refusal gate between trigger and load; proven live: retired APEX-fff (PASS-5 seal imperative) ignitable"
+   },
+   {
+    "collision": "APEX-fff-loop-protocol vs core/governance/recursive-audit",
+    "why": "retired duplicate serving divergent seal semantics"
+   }
+  ],
+  "P1": [
+   {
+    "collision": "'basin' keyword in AAA descriptions (field-development-economics, AGI-explorer-intelligence\u2026) vs GEOX organ adapter geox-basin-evaluation",
+    "why": "domain ambiguity AAA<->organ; organ routing lives in gateway (lane B: spoofable internal classification feeds organ dispatch) \u2014 wrong-organ result possible"
+   }
+  ],
+  "P2": [
+   {
+    "collision": "62 ambiguous leaf names across views",
+    "why": "duplicate loading/efficiency"
+   }
+  ],
+  "P3": [
+   {
+    "collision": "cosmetic name pairs (verify-runtime vs FORGE-verify-runtime)",
+    "why": "pointer/tombstone naming only \u2014 but tombstone target missing (finding)"
+   }
+  ],
+  "precedence_note": "kimi resolves nested-then-top identity by path (productivity/nano-pdf case); harness-specific precedence NOT cross-verified \u2014 UNKNOWN"
+ },
+ "prompt_injection_resistance": "[OBS] no skill body found containing classic injection directives (ignore-previous/role-hijack) in regex scan; nano-pdf-style supply instructions are the closest operational risk; loader treats skill text as instructions BY DESIGN (skill-loaded block) \u2014 resistance therefore equals canon review quality, which has no per-skill quarantine flag surfaced to the loader [UNKNOWN]",
+ "contradictions": [
+  "lane-A duplicate count vs my direct ignitions: retired duplicate counted as alias, still loads",
+  "FORGE-mcp-probe reference table vs measured era",
+  "my own prior-session claim 'kimi cannot ignite mesh skills' \u2014 corrected same-day by successful ignitions (kept visible for epistemic honesty)"
+ ],
+ "unknowns": [
+  "L7 per-skill refusal: 0 verified",
+  "L8 cross-harness behaviour: 0 verified => mesh-verified count ZERO",
+  "whether nested canon entries carry the same review gates as top-level (nano-pdf hygiene gap suggests not)",
+  "per-skill behavioural coverage beyond 8 sampled"
+ ],
+ "proposals": [
+  "[ACTION] C1: loader-level quarantine flag: skills with do_not_select/merged-away status must refuse ignition at harness resolution (kills the P0 APEX-fff class mechanically, not by prose)",
+  "[ACTION] C2: FORGE-cicd-docker-deploy: add USE WHEN/DO-NOT + dry-run-default clause (L7 gate missing)",
+  "[ACTION] C3: mark skill-artifact-redact as the model pattern (refusal clause + script + bounded output verified this session) \u2014 template for high-risk class",
+  "[ACTION] C4: regenerate FORGE-mcp-probe table from live sweep data or add generated_at stamp per row (invariant 9)",
+  "[ACTION] C5: nested-tree review gate: apply owner/risk_tier coverage checks to the 461 nested canon entries too",
+  "[ACTION] C6: schedule cross-harness behaviour matrix (per-skill ignite in claude/opencode/grok/codex lanes) as its own gated mission \u2014 the ONLY path from ACTIVE to MESH-VERIFIED"
+ ],
+ "tests": [
+  "8 positive ignitions with bounded results",
+  "8 negative probes (2 mechanism-verified refusal, 1 live FAIL-L7, static clause scans)",
+  "7-endpoint MCP conformance sweep (read-only)",
+  "redact script execution in isolated /tmp/skm/test",
+  "tombstone/pointer existence checks",
+  "purge-revival comm test = empty"
+ ],
+ "artifact_digests": {
+  "supersedes_v1_sha256": "f7e40c04971c47bec843cc49a962a0a1d586cda9616d915a8ba62f274411ca07",
+  "flow_verify_receipt": "83fca357-5dae-40f9-bcef-450e01f0ef2e",
+  "test_sandbox": "/tmp/skm/test (secret.txt->REDACTED output)"
+ },
+ "verdict": "PARTIAL",
+ "verdict_statement": "Catalog-wide PARTIAL is mandatory: behavioural evidence exists for 8 skills (L6, kimi harness only), mechanism refusal proven at resolution layer, ZERO skills at L8 => ZERO MESH-VERIFIED. No SEAL claimed for any entry. ~1,270 entries remain UNKNOWN beyond static checks."
+}

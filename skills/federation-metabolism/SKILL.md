@@ -141,3 +141,20 @@ This fix pattern (scalar → coordinate system) applies to FQ too: global FQ quo
 ## Support files
 
 - `references/ariflow-ingest-repair.md` — full blind-FQ repair playbook: step-by-step, transport-pitfalls, enforcement-cycle behavior, EROFS side-note.
+
+<!-- AAA-SKILL-PATCH KEYS 2026-10-28 provenance=333-AGI trace=trc-skill-align-20261028T135921Z -->
+
+### Addendum 2026-10-28 - key normalisation, the synthetic boundary, and the disappearing aggregate
+
+Three tells from the 20-hold cockpit event:
+
+1. KEY NORMALISATION: class declarations are inert if the declared key (kimi-code/FI-008)
+   never matches the recorded key (arifos:kimi-code/fi-008). Normalise prefix + case at
+   classification time or declare both forms; a mismatched declaration is an Unclassified
+   actor wearing a classified name.
+2. SYNTHETIC BOUNDARY: synthetic = no-reality artifacts with per-entry fixture evidence.
+   Real agents, organs, humans, the sovereign: never synthetic. Their verify deficit is
+   fixed by real receipts or a ratified verify-native exemption - never by relabel.
+3. AGGREGATE=None + diagnosis=SIMULATION: when the headline FQ disappears entirely while
+   per-actor rows persist, the gauge is not measuring. Say "gauge not measuring" - never
+   "healthy", and never quote the last non-None value as current.

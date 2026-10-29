@@ -857,3 +857,44 @@ Check the OTHER axes before assuming one instance is the whole class.
 Evidence: arifOS commits fa1f2e694 + 7599f1c42, deploy epoch 25 PASS, live probe
 `telemetry={"lifecycle":"ALIVE"}` with no `verdict` key inside it; receipt
 `/root/forge_work/receipts/RECEIPT-arifos-verdict-token-leak-2026-10-28.md`.
+
+## Rule 3z — A GATE THAT READS A FIELD THE REAL PAYLOAD DOES NOT CARRY IS AN OFF GATE WITH A GREEN LIGHT (NEW 2026-10-29)
+
+> Provenance: 333-AGI session SEAL-15b5c286c6d845a8, receipt /root/forge_work/receipts/RECEIPT-agentic-gate-stop-chokepoint-2026-10-29.md, arifFlow 251f3cca. Live case: `aaa-completion-check.sh` read `.response // .message` from Stop payloads that carry `session_id/cwd/hook_event_name/stop_hook_active` only — exited 0 on every production turn for 28 days; telemetry held 14 rows from 5 synthetic sessions, zero real `session_*` ids (E-inert-gate-payload-field-20261029).
+
+```
+LAW: before trusting any gate/hook, enumerate the fields it READS and cross-check
+     against the fields the REAL invocation payload carries (grep a sibling handler
+     that demonstrably fires, or one live captured payload). Then count the gate's
+     own telemetry by REAL ids over a window — synthetic-only rows = inert sensor.
+Two companion traps hit in the same session:
+  - jq '.x // true' substitutes on null AND false: a deliberate false becomes true.
+    Read booleans raw (`jq -r '.x'`) and default in shell; never default a boolean
+    on the right side of jq //.
+  - A telemetry verdict must match the action actually taken (a "BLOCK" row on a
+    turn the hook allowed is a lying gauge); derive the label from the decision.
+Corollary (control edition of 3n): audit gates by their real-source row counts over
+time, not by reading their logic. Code that looks right and fires never is theatre.
+```
+
+## Rule 3aa — A HASH BOUND TO A ROW MUST NAME ITS CONVENTION (NEW 2026-10-29)
+
+> Provenance: 333-AGI session SEAL-5dca4362dd044601, first live RSI review row. The evidence
+> bundle hashed the original ledger row newline-INCLUSIVE (`sed -n 2p | sha256sum`); the
+> appender pins newline-EXCLUSIVE (`splitlines()`). The L7 gate refused the first bridge
+> attempt with REFUSED_ORIGINAL_HASH_MISMATCH — correct behavior, wasted bridge window,
+> and a refusal receipt that had to be disclosed.
+
+```
+LAW: whenever a receipt, envelope, or bundle binds a hash to a FILE ROW (JSONL line,
+     log line), name the convention beside the hash: "newline-exclusive (splitlines)"
+     or "newline-inclusive (raw line + \n)". Two correct hashes of the same row under
+     different conventions mismatch, and the mismatch reads as tampering when it is
+     only terminology. The binding artifact must state which bytes it hashed.
+Corollary: when a hash-bound append is refused for mismatch, re-derive the hash under
+     the OTHER convention before investigating tampering — the convention gap is the
+     cheap explanation and it is checkable in one command.
+```
+
+Evidence: receipt /root/forge_work/receipts/RECEIPT-rsi-first-review-row-2026-10-29.md
+disclosure 1; refusal receipt /var/lib/arifos/rsi_review_receipts/rev-47afb9f8-8ee6-49c9-b1c6-e5ec44c613e4.json.

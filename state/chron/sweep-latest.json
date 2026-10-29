@@ -2,83 +2,97 @@
   "adapter_version": "1.0.0",
   "funnel": {
     "learn": 7,
-    "learn_per_verify": 0.104,
-    "observe": 199317,
-    "predict": 129,
-    "predict_per_1000_observe": 0.647,
-    "verify": 67,
-    "verify_per_predict": 0.519
+    "learn_per_verify": 0.096,
+    "observe": 199343,
+    "predict": 136,
+    "predict_per_1000_observe": 0.682,
+    "verify": 73,
+    "verify_per_predict": 0.537
   },
   "learning_closure_gap": {
     "actionable_lessons": 2,
-    "episodes_total": 199520,
+    "episodes_total": 199559,
     "gap": false,
     "rule": "gap = (episodes_total >= 100) and (actionable_lessons == 0)",
-    "unclassified_outcomes": 13
+    "unclassified_outcomes": 14
   },
   "lesson_health": {
     "active": 12,
     "blind": 10,
     "total": 14
   },
-  "next_verify_at": "2026-10-28T23:59:59+08:00",
-  "swept_at": "2026-10-25T22:23:01Z",
+  "next_verify_at": "2026-10-30T23:59:59+08:00",
+  "swept_at": "2026-10-28T22:23:01Z",
   "verification_debt": {
-    "count": 8,
+    "count": 10,
     "items": [
       {
         "claim": "Event: F-A IRFAN falsification target: individually-SEAL-clean action-class repeated N times normalizes extraction (trajectory failure, per-act passes F1-F13); ",
         "confidence": 0.5383333333,
-        "overdue_days": 2.27,
+        "overdue_days": 5.27,
         "prediction_id": "pred-b1c05a5a0b0b",
         "verify_at": "2026-10-23T23:59:59+08:00"
       },
       {
         "claim": "Event: F-B IRFAN falsification target: Authority-Envelope-passing action where a narrower alternative sufficed \u2014 CanMutate = A AND S AND T AND B has NO Necessit",
         "confidence": 0.5383333333,
-        "overdue_days": 2.27,
+        "overdue_days": 5.27,
         "prediction_id": "pred-f843acc96c16",
         "verify_at": "2026-10-23T23:59:59+08:00"
       },
       {
         "claim": "Event: QRL increment 1 falsifiers: F0 hygiene-zero-divergence, F1 branches \u22653/10-loops, F2 irreversible-never-SEAL, F3 one-prediction-per-collapse, C1 advisory-",
         "confidence": 0.6764028612,
-        "overdue_days": 4.27,
+        "overdue_days": 7.27,
         "prediction_id": "pred-da1bd9e25304",
         "verify_at": "2026-10-21T23:59:59+08:00"
       },
       {
         "claim": "Event: APEX AX-0: zero-data feeds must yield zero numbers (D2-D4 falsifier, blocks all APEX results)",
         "confidence": 0.6764028612,
-        "overdue_days": 5.27,
+        "overdue_days": 8.27,
         "prediction_id": "pred-387b8923fb0d",
         "verify_at": "2026-10-20T23:59:59+08:00"
       },
       {
         "claim": "Event: APEX Lane B falsifier: one definition per symbol + verdicts pass with G/C_dark=None",
         "confidence": 0.6764028612,
-        "overdue_days": 4.27,
+        "overdue_days": 7.27,
         "prediction_id": "pred-2792d9cb4832",
         "verify_at": "2026-10-21T23:59:59+08:00"
       },
       {
+        "claim": "Event: APEX Lane C falsifier: Ricci AUC vs betweenness baseline \u22650.05 or stay telemetry-only",
+        "confidence": 0.6764028612,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-e9e75220d78c",
+        "verify_at": "2026-10-28T23:59:59+08:00"
+      },
+      {
+        "claim": "Event: APEX Lane D falsifier: superseded-never-current + OBS/NORM never convert (property test)",
+        "confidence": 0.6764028612,
+        "overdue_days": 0.27,
+        "prediction_id": "pred-8b8352fdf5db",
+        "verify_at": "2026-10-28T23:59:59+08:00"
+      },
+      {
         "claim": "Event: EROI audit /opt (t0+7 hari): jumpa >=5 service dalam kelas 1:1/mati (corn-ethanol)",
         "confidence": 0.6889028612,
-        "overdue_days": 4.27,
+        "overdue_days": 7.27,
         "prediction_id": "pred-7229f53b827e",
         "verify_at": "2026-10-21T23:59:59+08:00"
       },
       {
         "claim": "Verified predictions reach >= 40 by 2026-10-22 (Lane A evidence growth)",
         "confidence": 0.6514028612,
-        "overdue_days": 3.27,
+        "overdue_days": 6.27,
         "prediction_id": "pred-9b8ad2e39891",
         "verify_at": "2026-10-22T23:59:59+08:00"
       },
       {
         "claim": "Event: Identiti bekas menteri (44) ditahan khalwat PJ diumumkan = Nik Nazmi Nik Ahmad (predicted 0.75)",
         "confidence": 0.6667650815,
-        "overdue_days": 2.27,
+        "overdue_days": 5.27,
         "prediction_id": "pred-a955a3b42092",
         "verify_at": "2026-10-23T23:59:59+08:00"
       }

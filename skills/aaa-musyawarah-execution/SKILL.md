@@ -79,3 +79,15 @@ Federation equivalent for A2A dispatch: a bounded task with a typed output contr
 human channel. Evidence that the boundary holds on our own stack: an ADK agent driving `arif_route` over
 MCP was answered `verdict: HOLD`, `actor_verified: false` — capability to call bought no authority
 (CAPABILITY ≠ AUTHORITY). Measured 2026-10-03, `/root/forge_work/2026-10-03-adk-geox/test_aaa_adk_interop.py`.
+
+<!-- AAA-SKILL-PATCH LINECITE 2026-10-28 provenance=333-AGI trace=trc-skill-align-20261028T135921Z -->
+
+### [2026-10-28] A cited file:line must re-open at the cited line (extends 2026-09-15 lesson)
+
+The external autopsy cited REQUEST_TIMEOUT_S=10 at "src/governance/arifos_governance.rs:21".
+The file lives at src/bridge/arifos_governance.rs:21 - value and line correct, tree wrong.
+Value-and-line rightness made the citation LOOK verified; only opening the cited path
+exposed the tree error. Convergence addendum: every file:line citation in a position file
+must be re-opened by the convergence step - a citation whose content resolves at a wrong
+path is the strongest form of unchecked claim, because grep-for-the-value passes while
+grep-for-the-path fails.

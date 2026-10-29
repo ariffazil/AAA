@@ -1,0 +1,268 @@
+{
+ "actor_id": "kimi-code/FI-008B",
+ "role": "a2a-authority auditor (READ_ONLY; no receipt ingestion by this lane; no mutations)",
+ "source_sha": "tested source == /root/AAA HEAD fcea81b; origin/main afc68ae verified via git ls-remote (network); a2a-server subtree last touched 0cf2b173@12:56+08:00, clean, process started 15:42:49+08:00 -> tested bytes == serving bytes for a2a-server",
+ "observed_at": "2026-10-26T08:42:35Z",
+ "scope": [
+  "a2a-server/server.js",
+  "a2a-version-middleware.js",
+  "federation_envelope.js",
+  "emd-validation-gate.js",
+  "agent_lifecycle.js",
+  "agent-state/",
+  "a2a-port-map.json",
+  "live loopback :3001",
+  "organs arifos:8088 aforge:7071/7072 probe-only",
+  "concurrent untracked ops/capabilities/* observed in git status \u2014 outside this lane"
+ ],
+ "supersedes": "FI-008B v1 combined-session draft",
+ "protocol_version": "A2A v1.0 \u2014 code-verified: SUPPORTED_A2A_VERSIONS={'1.0','1.0.0'} required=true on /a2a,/tasks; card protocolVersion '1.0', JSONRPC binding",
+ "main_sha": "fcea81b4e9e8473e15cd6cdb39f7ec7ce204f7bf (local main; origin/main afc68ae behind by two FI-002 commits, none in a2a-server)",
+ "deployed_sha": "c32c8f1 \u2014 SELF-REPORTED DRIFT: /health {deployed_commit:c32c8f1, source_commit:fcea81b, deployment_drift:true}; kernel direct /health independently says software_release.drift=true. SEAL condition deployed==tested NOT met.",
+ "advertised_methods": {
+  "wire_card": "agent card v1.0 (DISPLAY_ONLY description, 8 skills)",
+  "live_jsonrpc": [
+   "agent/getCard",
+   "agent/listSkills",
+   "tasks/send",
+   "tasks/get",
+   "tasks/cancel",
+   "tasks/list",
+   "PascalCase aliases: SendMessage,SendStreamingMessage,GetTask,ListTasks,CancelTask,GetAgentCard,SubscribeToTask,Ping"
+  ],
+  "advertised_not_in_live_switch": [
+   "message/send",
+   "tasks/sendSubscribe",
+   "tasks/subscribe",
+   "kernel.handshake",
+   "kernel.ping",
+   "agent.dispatch",
+   "agent.handoff",
+   "status.query"
+  ]
+ },
+ "handler_classification": [
+  {
+   "endpoint": "GET /.well-known/* + discovery GETs",
+   "class": "read-only",
+   "guard": "public by design; version middleware exempts discovery"
+  },
+  {
+   "endpoint": "POST /a2a agent/getCard|agent/listSkills",
+   "class": "read-only",
+   "guard": "jsonRpcValidate; EMD skips discovery"
+  },
+  {
+   "endpoint": "POST /a2a tasks/get|tasks/list",
+   "class": "read-only over taskStore",
+   "guard": "loopback auth (any local process)"
+  },
+  {
+   "endpoint": "POST /a2a tasks/cancel",
+   "class": "state-mutation (taskStore)",
+   "guard": "loopback auth"
+  },
+  {
+   "endpoint": "POST /a2a tasks/send (live dispatcher L4992)",
+   "class": "state-mutation + EXTERNAL-MUTATION-POTENTIAL (organ MCP tools/call via metadata; Telegram; sudo-hermes; VAULT999 writeSeal attempt)",
+   "guard": "EMD tri-witness (spoofable classification) + SYNTACTIC session_id + unsigned agent-selection block; NO DID signature required for organ routing"
+  },
+  {
+   "endpoint": "POST /a2a/tasks/send (REST L2926)",
+   "class": "state-mutation + external dispatch",
+   "guard": "STRONG: loopback -> canonical actor -> DID from_did+signature -> registry verify -> payload replay -> issued_at (DORMANT) -> effective actor = verified organ_id (claimed superseded)"
+  },
+  {
+   "endpoint": "/tasks/send + /tasks/sendSubscribe aliases",
+   "class": "re-dispatch to strong REST path",
+   "guard": "same"
+  },
+  {
+   "endpoint": "executeTask organ dispatch",
+   "class": "EXTERNAL-MUTATION: caller-chosen metadata.tool+metadata.args -> tools/call on geox/wealth/well/aforge; NO allowlist",
+   "guard": "EMD external-class only"
+  },
+  {
+   "endpoint": "executeTask hermes lane",
+   "class": "EXECUTION: sudo -n hermes -z <prompt> (sudoers.d binary-scoped)",
+   "guard": "F9 output check -> TASK_STATE_REJECTED on fail; card boundary read-only"
+  },
+  {
+   "endpoint": "executeTask forge lane",
+   "class": "EXTERNAL: Telegram sendMessage",
+   "guard": "env tokens; DID only via REST path"
+  },
+  {
+   "endpoint": "POST /api/message/send",
+   "class": "state-mutation",
+   "guard": "envelopeValidator legacy-wrap: T2/PREPARE ceiling, legacy MUTATE/ATOMIC HOLD (correct fail-closed)"
+  },
+  {
+   "endpoint": "cockpit/*",
+   "class": "read-only rendering",
+   "guard": "none"
+  },
+  {
+   "endpoint": "writeSeal on every jsonrpc tasks/send",
+   "class": "EXTERNAL attempt: arifOS VAULT999 seal write",
+   "guard": "session/context lineage (Ghost-Task refuse) + remote vault auth",
+   "contradiction": "card claims 'Never writes VAULT999'"
+  }
+ ],
+ "positive_tests": [
+  "GET /.well-known/agent-card.json w/o A2A-Version -> 200, version header echoed",
+  "GET /health -> 200 degraded-with-reasons (honest)",
+  "POST /a2a agent/getCard + A2A-Version:1.0 -> 200",
+  "POST /a2a agent/listSkills -> 200 skills=8"
+ ],
+ "negative_tests": [
+  {
+   "t": "missing A2A-Version",
+   "r": "400 -32600 'required. Set A2A-Version: 1.0'",
+   "pass": true
+  },
+  {
+   "t": "unsupported version 9.9",
+   "r": "400 -32600 'Unsupported ... Supported: 1.0'",
+   "pass": true
+  },
+  {
+   "t": "malformed JSON",
+   "r": "400 HTML (not JSON-RPC envelope) \u2014 deterministic but shape-inconsistent",
+   "pass": true
+  },
+  {
+   "t": "unknown method Foo/Bar",
+   "r": "400 -32601 + enumerated list",
+   "pass": true
+  },
+  {
+   "t": "SendMessage alias (v1.0 verb)",
+   "r": "403 EMD_VALIDATION_BLOCKED before dispatcher; verb has no live switch case",
+   "pass": true
+  },
+  {
+   "t": "forged actor MEGA-FAKE-9000",
+   "r": "403 not canonical; rejected before receipt registration",
+   "pass": true
+  },
+  {
+   "t": "missing authority receipt (no envelope)",
+   "r": "403 DID_REQUIRED",
+   "pass": true
+  },
+  {
+   "t": "forged identity (unregistered did:web:evil)",
+   "r": "403 DID_VERIFY_FAIL 'DID not in registry'",
+   "pass": true
+  },
+  {
+   "t": "max-priority packet without permission",
+   "r": "tasks/send priority:999 + agent_id=888-APEX unsigned -> 403 DID_REQUIRED; priority ignored entirely",
+   "pass": true
+  },
+  {
+   "t": "metadata channel to wealth read tool",
+   "r": "403 EMD_BLOCKED (unspoofed)",
+   "pass": true
+  },
+  {
+   "t": "replayed identical body x2",
+   "r": "identical 403 both \u2014 deterministic",
+   "pass": true
+  },
+  {
+   "t": "arifOS degraded",
+   "r": "kernel :8088 degraded, gateway scalars kernel_timeout->UNMEASURED; no self-authorization fallback",
+   "pass": true
+  },
+  {
+   "t": "A-FORGE probe surface",
+   "r": "real :7071 healthy 118 tools vs gateway organ-health 'tools:0' \u2014 behavior passes, rendering fails",
+   "pass": true
+  },
+  {
+   "t": "frozen-tree/identity/budget/deploy under spoofed-internal header",
+   "r": "NOT-EXECUTED: would require exploiting the spoofable EMD header, firing real organ writes \u2014 read-only lane refusal",
+   "pass": false,
+   "declared": "UNKNOWN"
+  }
+ ],
+ "authority_bypasses": [
+  {
+   "id": "B-P1",
+   "sev": "HIGH",
+   "finding": "EMD internal-classification spoofable: sourceId from metadata.source_agent/params.agent_id/x-a2a-internal header, SUBSTRING match over INTERNAL_PEERS('arifos','aaa','vault999',...) \u2014 loopback caller claiming an internal-looking name skips tri-witness, then jsonrpc tasks/send metadata.routing/tool/args performs MCP tools/call with ARBITRARY tool names on organs, no allowlist, no arifOS verdict, actor defaults 'aaa-gateway'. GEOX/WEALTH/WELL tools accept optional session_id and several append organ state (claim ledger, receipts). Containment is downstream organ auth only (aforge/arifOS enforce leases)."
+  },
+  {
+   "id": "B-P2",
+   "sev": "MEDIUM",
+   "finding": "Guard asymmetry REST(DID-enforced) vs jsonrpc dispatcher(no DID for organ routing; session_id syntactic denylist only)"
+  },
+  {
+   "id": "B-P3",
+   "sev": "MEDIUM",
+   "finding": "Card claims 'Never executes/Never writes VAULT999' vs live code: sudo-exec, Telegram, arbitrary organ tools/call, per-task writeSeal attempts"
+  },
+  {
+   "id": "B-P4",
+   "sev": "LOW",
+   "finding": "issued_at freshness DORMANT (no builder stamps it \u2014 code comment); replay store in-memory, cleared on restart (15:42 restart today)"
+  },
+  {
+   "id": "B-P5",
+   "sev": "LOW",
+   "finding": "gateway mints arifFlow Execute receipts for REJECTED REST requests (res.on registered before DID gate + vacuous ternary stepType); my 4 negatives produced 4 gateway-side receipts \u2014 disclosed; lane ingested none"
+  }
+ ],
+ "stale_truth_findings": [
+  "cockpit: arifos 'LIVE age_seconds 0' while /health same-minute says kernel_timeout \u2014 two truths, same server (invariant 9)",
+  "organ-health aforge healthy-but-tools:0 vs real 118 tools",
+  "haram_enforcement.json last_updated 2026-06-30 claiming active A2A enforcement; no live enforcement ref found in server.js scan window [UNKNOWN]",
+  "port-map sample consistent: WEALTH LIVE :18082 listening, WELL DEGRADED :18083 listening \u2014 kept as verified contrast",
+  "A2A_ROUTER.md/RSI prose months-old (cross-ref lane A)"
+ ],
+ "registry_contradictions": [
+  "agents.json advertises 54 cards vs CANONICAL_ACTORS dispatch gate \u2014 >=20 advertised identities (agy, mcporter, qwen, chron, abang-sado, kanak-kanak, agent-zero, decisions, forge-bot, skill-auditor, dream-555-ASI, forge-A-FORGE, judge-888-APEX, think-333-AGI, 555-ASI-VISION, antigravity-cli, arifOS_bot, i-ARIF, i-AZWA, kvm4-ccc-pool, hermesarifos-bot, agentic-trading-companion) would 403 if targeted: advertised != dispatchable",
+  "hermes-asi: registered card silently rewritten to 'hermes' at every entry (X11 fix) \u2014 advertised identity is an alias"
+ ],
+ "unknowns": [
+  "[UNKNOWN] exploit path under spoofed-internal header (refused by authority)",
+  "[UNKNOWN] verifyA2ASignature valid-DID/bad-signature/expired-DID branches (no key material)",
+  "[UNKNOWN] ingress stripping of x-a2a-internal for external peers (Caddy/haproxy/tsnet config not probed)",
+  "[UNKNOWN] whether VAULT999 ever accepts gateway writeSeal",
+  "[UNKNOWN] held-flag consistency (test 18) \u2014 no held_actors surface found in gateway state files"
+ ],
+ "verdict": "PARTIAL",
+ "observations": [
+  "13 negatives executed fail-closed deterministically; priority!=permission proven live; arifOS degraded without self-auth fallback; no fabricated pass"
+ ],
+ "contradictions": [
+  "card-vs-code DISPLAY_ONLY",
+  "LIVE-vs-timeout",
+  "54-cards-vs-canonical",
+  "deployed-vs-source drift"
+ ],
+ "proposals": [
+  "[ACTION] P1: bind EMD internal-class to VERIFIED identity only (DID registry / tailnet identity via existing tailnetIdentityMiddleware), never header/substring; exact-match peer list",
+  "[ACTION] P2: unify DID gate across both tasks/send surfaces; kernel-validated session lineage",
+  "[ACTION] P3: organ tool allowlist (OBSERVE-class) in dispatchToOrgan; MUTATE-class must route via A-FORGE lease + arifOS verdict",
+  "[ACTION] P4: reconcile agent card text with code paths (card is the peer-verified surface)",
+  "[ACTION] P5: move ingestFlow behind DID gate; fix vacuous ternary",
+  "[ACTION] P6: close deployment_drift (rebuild/re-attest) \u2014 health surface already self-labels honestly; keep it",
+  "[ACTION] P7: registry sync \u2014 advertised cards must be dispatchable or explicitly card-only"
+ ],
+ "artifact_digests": {
+  "tested": "server.js bytes == HEAD 0cf2b173+clean (git log/status)",
+  "health": "deployed c32c8f1 source fcea81b drift true",
+  "negatives_corpus": "/tmp/skm 2026-10-26T08:36-08:41Z",
+  "emd_hole": "classifySource L58-76 substring internal-signal"
+ },
+ "tests": [
+  "4 positives wire",
+  "13 negatives",
+  "kernel/aforge direct-vs-gateway comparison",
+  "git ancestry + start-time ordering"
+ ],
+ "verdict_field": "PARTIAL"
+}

@@ -91,7 +91,6 @@ agents:
   - aaa-gateway
   - hermes-asi
   - antigravity
-  - 777-forge
   - arifos-kernel
   allowed_servers:
   - arifos-mcp
@@ -262,7 +261,6 @@ agents:
   - aaa-gateway
   - antigravity
   - claude-code
-  - 777-forge
   - arifos-kernel
   - geox-witness
   - wealth-witness
@@ -359,7 +357,6 @@ agents:
   - hermes-asi
   - antigravity
   - claude-code
-  - 777-forge
   - arifos-kernel
   - geox-witness
   - wealth-witness
@@ -605,7 +602,6 @@ agents:
     transport: opencode-cli-1.17.4
 - a2a_exposure: authenticated
   allowed_peers:
-  - 777-forge
   - aaa-gateway
   - hermes-asi
   - claude-code
@@ -632,7 +628,7 @@ agents:
     restart/reload, no chmod/chown). 4 hooks: write-gate (PreToolUse→arif_judge),
     write-seal (PostToolUse→VAULT999), destructive-command-gate (PreToolUse→block
     rm-rf/DROP/force-push), session-stop (Stop→organ health+receipt).'
-  host_binding: gemini-cli
+  host_binding: antigravity
   id: antigravity
   intelligence_band: AGI
   intelligence_tier: AGI
@@ -1086,7 +1082,7 @@ agents:
   intelligence_band: AGI
   lane: A-FORGE
   a2a_exposure: internal
-  host_binding: gemini-cli
+  host_binding: antigravity
   description: FI-004 DECEASED 2026-09-13. Replaced by Antigravity CLI.
 - id: qwen-code
   name: Qwen Code — Lightweight Reasoner

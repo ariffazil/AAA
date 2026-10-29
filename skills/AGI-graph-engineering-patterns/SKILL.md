@@ -403,3 +403,30 @@ Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
 Scar signatures: 2026-10-04-wrong-probe-pattern-false-absence
 Do not treat this skill as neutral until the signatures are resolved.
 <!-- /SKILL-WITNESS-NOTE -->
+trc-skill-align-20261028T135921Z
+trc-skill-align-20261028T135921Z
+### Addendum 2026-10-28 — Pattern 7 caveat: verifier independence is model-route independence
+
+Pattern 7 splits generator from verifier, but if both lanes share a fallback rung, degradation
+converges them onto one engine exactly when independence matters most. Live chains found:
+333-fallback#2 == 888-primary (MiniMax-M3); 555-head == 888-P4 (glm-5.3-flash).
+
+```
+RULE: before claiming a verification edge is independent, diff the FULL model chains
+(primary + every fallback) of both lanes. No model may appear in >1 role chain.
+Independence that exists only at nominal state is decorative.
+```
+
+
+<!-- AAA-SKILL-PATCH 2026-10-28 provenance=333-AGI/compile trace=trc-skill-align-20261028T135921Z -->
+
+### Addendum 2026-10-28 - Pattern 7 caveat: verifier independence is model-route independence
+
+Pattern 7 splits generator from verifier, but if both lanes share a fallback rung,
+degradation converges them onto one engine exactly when independence matters most.
+Live chains: 333-fallback#2 == 888-primary (MiniMax-M3); 555-head == 888-P4 (glm-5.3-flash).
+
+RULE: before claiming a verification edge is independent, diff the FULL model chains
+(primary + every fallback) of both lanes. No model may appear in >1 role chain.
+Independence that exists only at nominal state is decorative.
+

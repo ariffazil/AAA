@@ -7,7 +7,6 @@ risk_tier: low
 autonomy_tier: T1
 tags: [research, social-dynamics, community, subculture, cross-audit, person-profile]
 floor_scope: [F2, F4, F9, F12]
-autonomy_tier: T1
 ---
 
 # Social Scene Intelligence

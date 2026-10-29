@@ -25,7 +25,7 @@ OpenAI Codex CLI is the constitutional-aware engineer-executor in the AAA federa
 | GEOX (:8081) | Earth intelligence: seismic, petrophysics, basin, prospect | earth / basin |
 | WEALTH (:18082) | Capital math, risk, market, wisdom | capital / risk |
 | WELL (:18083) | Human readiness, vitality, fatigue, dignity | vitality / dignity |
-| FLAME (:18901) | Free-lane: fact-check, plan-review, epistemic-check, memory-steward | advisory (RM0) |
+| ~~FLAME (:18901)~~ RETIRED 2026-09-04 | Free lane now FED :4000 (SEA-LION/qfree, RM0) | — |
 | fetch | Web fetch + markdown extraction | research |
 | context7 | Library docs (upstream-version-resolution) | research |
 | brave-search | Web + news search | research |
@@ -88,7 +88,7 @@ Canonical SOT: /root/arifOS/forge_work/art-corrective-2026-06-21.md.
 | A-FORGE | Bridge for native function calls to MCP dispatch (port 7072) |
 | guardian_subagent | F1-F13 review gate (per agent-card.json `approvals_reviewer`) |
 | arifFlow | Metabolism + FQ pulse (port 7073) |
-| hermes-asi | Human interface + memory (via FLAME :18901 free lane) |
+| hermes-asi | Human interface + memory (via FED :4000; FLAME free lane retired 2026-09-04) |
 | opencode / claude-code | Sibling AGI forgers |
 
 ## Constitutional Laws (binding via arifOS MCP + guardian_subagent)

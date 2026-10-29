@@ -1,0 +1,392 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://arif-fazil.com/.well-known/schemas/machine-contract-extension.v1.json",
+ "title": "arifOS Machine Contract Extension \u2014 typed declaration envelope",
+ "version": "1.0-candidate",
+ "status": "CANDIDATE_NOT_DEPLOYED",
+ "generated_by": "333-AGI mission LAYER_B_DISCOVERY_CLOSURE_AND_FED_CALIBRATION 2026-10-26",
+ "description": "Candidate envelope for the four declarations the runtime does not yet make per tool: response_schema, outcomes, receipt.verification_uri, boundary. Every field carries an evidence state. DECLARED = explicitly supplied by the organ runtime or its typed registry. OBSERVED = derived from a captured runtime response or deployment configuration, not declared. UNKNOWN = neither declared nor safely established. OBSERVED is never promoted to DECLARED. null plus UNKNOWN is valid; fabricated completeness is invalid. Tool descriptions are prose, not typed declarations. An HTTP 200 does not by itself prove a public boundary. A receipt identifier does not prove a verification URI exists. Possible outcomes must not be confused with the verdict of one call. Minimum shape is a floor, not a ceiling: the provenance fields evidence_class, reason and does_not_imply are typed here so evidence is carried without opening additionalProperties. Conditional rule (if/then): when a field's state is UNKNOWN, its value MUST be null. A field that is not declared cannot carry an asserted value. This closes the gap where a class or value could be asserted beside an UNKNOWN state.",
+ "type": "object",
+ "required": [
+  "response_schema",
+  "outcomes",
+  "receipt",
+  "boundary"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "response_schema": {
+   "type": "object",
+   "required": [
+    "state",
+    "schema",
+    "evidence_ref"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "state": {
+     "enum": [
+      "DECLARED",
+      "OBSERVED",
+      "UNKNOWN"
+     ]
+    },
+    "schema": {
+     "anyOf": [
+      {
+       "type": "object"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "JSON Schema object when DECLARED or OBSERVED; null when UNKNOWN."
+    },
+    "evidence_ref": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "Pointer to the evidence artifact (probe record, source file:line). null when UNKNOWN."
+    },
+    "evidence_class": {
+     "enum": [
+      "DECLARED_TYPED",
+      "OBSERVED_RUNTIME",
+      "DECLARED_PROSE",
+      "UNKNOWN"
+     ],
+     "description": "Only DECLARED_TYPED counts toward typed runtime coverage."
+    },
+    "reason": {
+     "type": "string"
+    },
+    "does_not_imply": {
+     "type": "string",
+     "description": "Explicit non-entailment. Required discipline: what this evidence does NOT prove."
+    },
+    "richness": {
+     "enum": [
+      "field_level",
+      "bare_object",
+      null
+     ],
+     "description": "field_level = schema declares properties; bare_object = {type:object} with no properties (FastMCP `-> dict`)."
+    },
+    "observed_shape": {
+     "type": "object",
+     "description": "Runtime-captured shape, kept SEPARATE from the declared schema. Never promoted to DECLARED.",
+     "properties": {
+      "state": {
+       "enum": [
+        "OBSERVED",
+        "UNKNOWN"
+       ]
+      },
+      "top_level_keys": {
+       "anyOf": [
+        {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "evidence_ref": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "note": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "state"
+     ]
+    }
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "state": {
+        "const": "UNKNOWN"
+       }
+      },
+      "required": [
+       "state"
+      ]
+     },
+     "then": {
+      "properties": {
+       "schema": {
+        "type": "null"
+       }
+      }
+     }
+    }
+   ]
+  },
+  "outcomes": {
+   "type": "object",
+   "required": [
+    "state",
+    "allowed",
+    "evidence_ref"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "state": {
+     "enum": [
+      "DECLARED",
+      "OBSERVED",
+      "UNKNOWN"
+     ]
+    },
+    "allowed": {
+     "anyOf": [
+      {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "Typed enumeration of possible outcome values. null when UNKNOWN. Never populated from the verdict of a single call."
+    },
+    "evidence_ref": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "evidence_class": {
+     "enum": [
+      "DECLARED_TYPED",
+      "OBSERVED_RUNTIME",
+      "DECLARED_PROSE",
+      "UNKNOWN"
+     ],
+     "description": "Only DECLARED_TYPED counts toward typed runtime coverage."
+    },
+    "reason": {
+     "type": "string"
+    },
+    "does_not_imply": {
+     "type": "string",
+     "description": "Explicit non-entailment. Required discipline: what this evidence does NOT prove."
+    },
+    "observed_single_call_values_NOT_outcomes": {
+     "anyOf": [
+      {
+       "type": "object"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "Values seen in ONE response. Recorded for audit only; they are NOT the declared outcome set."
+    }
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "state": {
+        "const": "UNKNOWN"
+       }
+      },
+      "required": [
+       "state"
+      ]
+     },
+     "then": {
+      "properties": {
+       "allowed": {
+        "type": "null"
+       }
+      }
+     }
+    }
+   ]
+  },
+  "receipt": {
+   "type": "object",
+   "required": [
+    "state",
+    "verification_uri",
+    "evidence_ref"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "state": {
+     "enum": [
+      "DECLARED",
+      "OBSERVED",
+      "UNKNOWN"
+     ]
+    },
+    "verification_uri": {
+     "anyOf": [
+      {
+       "type": "string",
+       "format": "uri"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "A URI that resolves to independent verification of the receipt. A receipt id alone does not qualify."
+    },
+    "evidence_ref": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "evidence_class": {
+     "enum": [
+      "DECLARED_TYPED",
+      "OBSERVED_RUNTIME",
+      "DECLARED_PROSE",
+      "UNKNOWN"
+     ],
+     "description": "Only DECLARED_TYPED counts toward typed runtime coverage."
+    },
+    "reason": {
+     "type": "string"
+    },
+    "does_not_imply": {
+     "type": "string",
+     "description": "Explicit non-entailment. Required discipline: what this evidence does NOT prove."
+    }
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "state": {
+        "const": "UNKNOWN"
+       }
+      },
+      "required": [
+       "state"
+      ]
+     },
+     "then": {
+      "properties": {
+       "verification_uri": {
+        "type": "null"
+       }
+      }
+     }
+    }
+   ]
+  },
+  "boundary": {
+   "type": "object",
+   "required": [
+    "state",
+    "class",
+    "evidence_ref"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "state": {
+     "enum": [
+      "DECLARED",
+      "OBSERVED",
+      "UNKNOWN"
+     ]
+    },
+    "class": {
+     "anyOf": [
+      {
+       "enum": [
+        "public",
+        "internal",
+        "governed"
+       ]
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "public = answers on a public route without authentication; internal = no public route; governed = public route with enforced authority gate. Set only from explicit policy or runtime/deployment declaration."
+    },
+    "evidence_ref": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "evidence_class": {
+     "enum": [
+      "DECLARED_TYPED",
+      "OBSERVED_RUNTIME",
+      "DECLARED_PROSE",
+      "UNKNOWN"
+     ],
+     "description": "Only DECLARED_TYPED counts toward typed runtime coverage."
+    },
+    "reason": {
+     "type": "string"
+    },
+    "does_not_imply": {
+     "type": "string",
+     "description": "Explicit non-entailment. Required discipline: what this evidence does NOT prove."
+    }
+   },
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "state": {
+        "const": "UNKNOWN"
+       }
+      },
+      "required": [
+       "state"
+      ]
+     },
+     "then": {
+      "properties": {
+       "class": {
+        "type": "null"
+       }
+      }
+     }
+    }
+   ]
+  }
+ }
+}

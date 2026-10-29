@@ -120,3 +120,45 @@ Witnessed reality moved this skill's selection to **ROUTE or MERGE**.
 Scar signatures: SCAR-AGY-005-canonical-path-hallucination
 Do not treat this skill as neutral until the signatures are resolved.
 <!-- /SKILL-WITNESS-NOTE -->
+trc-skill-align-20261028T135921Z
+trc-skill-align-20261028T135921Z
+### Addendum 2026-10-28 — read provenance BEFORE mapping a verdict (3s.3/3r.1 applied)
+
+The verdict table above assumes the FQ number means what it says. Live case: FQ 0.333 carried
+origin `constellation=SIMULATION` while `floor_measurement` claimed "measured", and the aggregate
+was min-gated by one actor while `decomposition.raw` moved 1.39-1.64.
+
+```
+RULE: before mapping any flow verdict to a next step, read the ORIGIN string on the same payload.
+SIMULATION / ESTIMATED / MOCK in origin  -> treat the number DISPLAY_ONLY; route on G/W3 instead.
+aggregate << raw_pool_quotient           -> a min-gate fired; name the gating actor, never
+                                            quote the gated number as a health measurement.
+```
+
+
+<!-- AAA-SKILL-PATCH 2026-10-28 provenance=333-AGI/compile trace=trc-skill-align-20261028T135921Z -->
+
+### Addendum 2026-10-28 - read provenance BEFORE mapping a verdict (3s.3/3r.1 applied)
+
+The verdict table assumes the FQ number means what it says. Live case: FQ 0.333 carried
+origin constellation=SIMULATION while floor_measurement claimed "measured", and the
+aggregate was min-gated by one actor while decomposition.raw moved 1.39-1.64.
+
+RULE: before mapping any flow verdict to a next step, read the ORIGIN string on the same
+payload. SIMULATION/ESTIMATED/MOCK in origin -> DISPLAY_ONLY; route on G/W3 instead.
+aggregate << raw_pool_quotient -> a min-gate fired; name the gating actor, never quote
+the gated number as a health measurement.
+
+
+### Addendum 2026-10-28 - TWO CLASSIFIERS MUST AGREE, AND THE REPORT IS NOT THE AGGREGATE
+
+Live: the Rust aggregate (`entity_class.rs::classify`) and the Python MCP entity report
+(`mcp/arifflow_mcp_fastmcp.py`) each resolved actor classes independently. The Rust side tolerated
+an `<organ>:` prefix; the Python side did not. So the SAME actor read `human_agent` in the aggregate
+and `unknown` in the report an auditor actually reads — and the report's coverage said
+"23 of 29 actors unclassified" while the aggregate was already classifying them.
+
+    RULE: when a number is computed in more than one place, a reader may reach EITHER place.
+          Probe the classification at EVERY surface that publishes it, and make the surfaces agree.
+          A report that disagrees with the aggregate is a governance defect, not a formatting nit.
+    TELL: an actor id that is `unknown` in the report but classified in the aggregate => two classifiers.

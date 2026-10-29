@@ -130,3 +130,7 @@ Receipts of record: `/root/AAA/registries/memory-redemption-ledger-2026-09-15.md
 `memory-pending-archive-2026-09-15.json`.
 
 ## Support files
+
+## Eureka updates (auto)
+
+- 2026-10-28 · `EUREKA::READERS_MUST_BE_NAMED::v1` · Dua ledger eureka wujud secara live: /root/AAA/eurekas/eureka-entries.jsonl (47 lines, skema ts/artifact_id) dan /root/memory/eureka-entries.jsonl (68 lines, skema id/utc/claim) — inode berbeza, SKEMA berbeza. Sesi adik mencari /root/memory dahulu dan dapat 0…

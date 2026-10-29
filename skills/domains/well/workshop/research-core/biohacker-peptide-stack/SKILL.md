@@ -61,6 +61,7 @@ NAD+ → Complex I → CoQ10 → Complex III → Cyt C → Complex IV → ATP
 - **MOTS-c**: see Probiohacker protocol above
 - **NAD+**: see Probiohacker protocol above
 - **SS-31 / Elamipretide**: 40mg/day. Mitochondrial membrane repair. Expensive.
+  - Correction (Arif/Syed lane 24/10): real usage range 1-10mg; trial 4mg vs 40mg tak beza. Tolak angka rekaan - minta angka + video Dr Trevor Bachmeyer sebelum terima claim.
 - **5-Amino-1MQ**: 50mg oral. Fat loss + energy, blocks NNMT enzyme.
 
 ### Sleep & Hormones

@@ -1,0 +1,647 @@
+{
+ "$schema": "https://arif-fazil.com/.well-known/schemas/machine-contract-extension.v1.json",
+ "candidate_version": "1.0-candidate",
+ "status": "VALIDATED_CANDIDATE_NOT_DEPLOYED",
+ "organ": "fed",
+ "authority_ceiling": "ADVISORY_ONLY",
+ "server": "FED — Federation Router 4.1.2",
+ "generated_at": "2026-10-26T12:10:00Z",
+ "generated_by": "333-AGI mission LAYER_B_DISCOVERY_CLOSURE_AND_FED_CALIBRATION",
+ "scope_note": "FED only. No other organ was calibrated. Nothing here is published or deployed.",
+ "pilot_method": "MCP initialize handshake + tools/list (request/outputSchema capture); tools/call executed ONLY for read/compute-safe tools; GET-only HTTP checks; public boundary probed with read-only tools/list.",
+ "capabilities": {
+  "fed_route": {
+   "capability_id": "fed.fed_route",
+   "executed_in_pilot": true,
+   "observation": "OBSERVED_RUNTIME",
+   "request_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "properties": {
+      "task": {
+       "default": "",
+       "type": "string",
+       "description": "Natural language description of the task"
+      },
+      "model": {
+       "default": "deepseek-v4-pro",
+       "type": "string",
+       "description": "Target model (default: deepseek-v4-pro). Can also be a capability signature:\nfed-reasoning-heavy  → [deepseek-v4-pro, qwen3.8-max, MiniMax-M3]\nfed-multimodal-vision → [qwen-vl-max, mimo-v2.6-flash, MiniMax-M3]\nfed-long-context     → [MiniMax-M3, mimo-v2.6-pro, qwen3.8-max]\nfed-agent-subagent   → [deepseek-v4-flash, qwen3.6-flash, mimo-v2.6-flash]\nfed-realtime-voice   → [mimo-v2.5-tts, mimo-v2.5-asr]\nfed-local-uncensored → LOCAL RUNTIME: routes to ComfyUI :8188 with full audit"
+      },
+      "modality": {
+       "default": "text",
+       "type": "string",
+       "description": "text, vision, video, audio, omni"
+      },
+      "agent_id": {
+       "default": "opencode",
+       "type": "string",
+       "description": "Calling agent (opencode, hermes, asi-555, apex-888)"
+      },
+      "constitutional_tier": {
+       "default": 333,
+       "type": "integer",
+       "description": "0=default, 333=primary, 555=research, 666=judge, 999=seal"
+      },
+      "effort_level": {
+       "default": "",
+       "type": "string",
+       "description": "Effort Dial — low/medium/high/ultra. Overrides model selection.\nlow: flash models (cheap & fast)\nmedium: pro models (default, balanced)\nhigh: pro + reasoning pass (complex tasks)\nultra: frontier models + multiple reasoning passes (SEAL-grade)"
+      },
+      "tokens_in_estimate": {
+       "default": 0,
+       "type": "integer",
+       "description": "Estimated input tokens (for spend logging)"
+      },
+      "tokens_out_estimate": {
+       "default": 0,
+       "type": "integer",
+       "description": "Estimated output tokens (for spend logging)"
+      },
+      "operation": {
+       "default": "auto",
+       "type": "string"
+      }
+     },
+     "type": "object",
+     "additionalProperties": false
+    },
+    "evidence_ref": "live tools/list inputSchema (fed :7074, probe 2026-10-26T12:10:00Z)",
+    "evidence_class": "DECLARED_TYPED"
+   },
+   "response_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "type": "object",
+     "additionalProperties": true
+    },
+    "richness": "bare_object",
+    "evidence_ref": "live tools/list outputSchema; FastMCP generated it from the `-> dict` return annotation in /root/AAA/scripts/fed_router.py (no pydantic response_model, no tools_sot.yaml for FED)",
+    "evidence_class": "DECLARED_TYPED",
+    "does_not_imply": "a bare {type:object} schema constrains only that the result is an object; it declares no fields",
+    "observed_shape": {
+     "state": "OBSERVED",
+     "top_level_keys": [
+      "emd",
+      "invocation_contract",
+      "jit",
+      "meta",
+      "routes",
+      "trace"
+     ],
+     "evidence_ref": "fed-pilot-raw.json calls.fed_route.structuredContent",
+     "note": "observed top-level keys from ONE read-only call; a single response is not a schema"
+    }
+   },
+   "outcomes": {
+    "state": "UNKNOWN",
+    "allowed": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no typed outcome enumeration is declared in tools/list, outputSchema or _meta (_meta={\"fastmcp\": {\"tags\": []}}); tool descriptions state only what is returned, in prose",
+    "observed_single_call_values_NOT_outcomes": {
+     "emd.verdict": "EMD_ALIGNED",
+     "meta.hcsvog.h_verify": "none",
+     "latency_flag": "INSUFFICIENT_TELEMETRY",
+     "health": "LIVE"
+    },
+    "does_not_imply": "values seen in one response are not the declared set of possible outcomes"
+   },
+   "receipt": {
+    "state": "UNKNOWN",
+    "verification_uri": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no verification_uri is declared or observed. FED emits no receipt identifier; observed fed_route.trace=null and fed_route.invocation_contract=null, and h_verify='none' in fed_route/fed_contrast",
+    "does_not_imply": "absence of a receipt id does not prove no verification path exists elsewhere (UNPROBED)"
+   },
+   "boundary": {
+    "state": "OBSERVED",
+    "class": "public",
+    "evidence_ref": "/etc/caddy/vhosts/fed.arif-fazil.com.conf:6 reverse_proxy 127.0.0.1:7074 (deployment config) + live unauthenticated POST https://fed.arif-fazil.com/mcp tools/list returned all 7 tools (HTTP 200, no credential)",
+    "evidence_class": "OBSERVED_RUNTIME",
+    "reason": "public route answers the MCP surface with no credential presented",
+    "does_not_imply": "an unauthenticated tools/list does not prove every tool executes unauthenticated — fed_report_latency was NOT executed, so its public mutability is UNPROBED"
+   },
+   "authority": {
+    "organ_ceiling": "ADVISORY_ONLY",
+    "human_veto": "ARIF (F13 SOVEREIGN)",
+    "source": "/root/AAA/federation/organs.yaml components[id=fed]"
+   },
+   "mutation": {
+    "class": "OBSERVE",
+    "state": "declared_in_prose",
+    "evidence_class": "DECLARED_PROSE",
+    "source": "description states read/compute only; no write language",
+    "does_not_imply": "prose-derived; FED declares no typed mutation field"
+   }
+  },
+  "fed_status": {
+   "capability_id": "fed.fed_status",
+   "executed_in_pilot": true,
+   "observation": "OBSERVED_RUNTIME",
+   "request_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "properties": {},
+     "type": "object",
+     "additionalProperties": false
+    },
+    "evidence_ref": "live tools/list inputSchema (fed :7074, probe 2026-10-26T12:10:00Z)",
+    "evidence_class": "DECLARED_TYPED"
+   },
+   "response_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "type": "object",
+     "additionalProperties": true
+    },
+    "richness": "bare_object",
+    "evidence_ref": "live tools/list outputSchema; FastMCP generated it from the `-> dict` return annotation in /root/AAA/scripts/fed_router.py (no pydantic response_model, no tools_sot.yaml for FED)",
+    "evidence_class": "DECLARED_TYPED",
+    "does_not_imply": "a bare {type:object} schema constrains only that the result is an object; it declares no fields",
+    "observed_shape": {
+     "state": "OBSERVED",
+     "top_level_keys": [
+      "generated_at",
+      "health",
+      "latency",
+      "providers",
+      "spend_summary",
+      "state_db"
+     ],
+     "evidence_ref": "fed-pilot-raw.json calls.fed_status.structuredContent",
+     "note": "observed top-level keys from ONE read-only call; a single response is not a schema"
+    }
+   },
+   "outcomes": {
+    "state": "UNKNOWN",
+    "allowed": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no typed outcome enumeration is declared in tools/list, outputSchema or _meta (_meta={\"fastmcp\": {\"tags\": []}}); tool descriptions state only what is returned, in prose",
+    "observed_single_call_values_NOT_outcomes": null,
+    "does_not_imply": "values seen in one response are not the declared set of possible outcomes"
+   },
+   "receipt": {
+    "state": "UNKNOWN",
+    "verification_uri": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no verification_uri is declared or observed. FED emits no receipt identifier; observed fed_route.trace=null and fed_route.invocation_contract=null, and h_verify='none' in fed_route/fed_contrast",
+    "does_not_imply": "absence of a receipt id does not prove no verification path exists elsewhere (UNPROBED)"
+   },
+   "boundary": {
+    "state": "OBSERVED",
+    "class": "public",
+    "evidence_ref": "/etc/caddy/vhosts/fed.arif-fazil.com.conf:6 reverse_proxy 127.0.0.1:7074 (deployment config) + live unauthenticated POST https://fed.arif-fazil.com/mcp tools/list returned all 7 tools (HTTP 200, no credential)",
+    "evidence_class": "OBSERVED_RUNTIME",
+    "reason": "public route answers the MCP surface with no credential presented",
+    "does_not_imply": "an unauthenticated tools/list does not prove every tool executes unauthenticated — fed_report_latency was NOT executed, so its public mutability is UNPROBED"
+   },
+   "authority": {
+    "organ_ceiling": "ADVISORY_ONLY",
+    "human_veto": "ARIF (F13 SOVEREIGN)",
+    "source": "/root/AAA/federation/organs.yaml components[id=fed]"
+   },
+   "mutation": {
+    "class": "OBSERVE",
+    "state": "declared_in_prose",
+    "evidence_class": "DECLARED_PROSE",
+    "source": "description states read/compute only; no write language",
+    "does_not_imply": "prose-derived; FED declares no typed mutation field"
+   }
+  },
+  "fed_probe": {
+   "capability_id": "fed.fed_probe",
+   "executed_in_pilot": true,
+   "observation": "OBSERVED_RUNTIME",
+   "request_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "properties": {},
+     "type": "object",
+     "additionalProperties": false
+    },
+    "evidence_ref": "live tools/list inputSchema (fed :7074, probe 2026-10-26T12:10:00Z)",
+    "evidence_class": "DECLARED_TYPED"
+   },
+   "response_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "type": "object",
+     "additionalProperties": true
+    },
+    "richness": "bare_object",
+    "evidence_ref": "live tools/list outputSchema; FastMCP generated it from the `-> dict` return annotation in /root/AAA/scripts/fed_router.py (no pydantic response_model, no tools_sot.yaml for FED)",
+    "evidence_class": "DECLARED_TYPED",
+    "does_not_imply": "a bare {type:object} schema constrains only that the result is an object; it declares no fields",
+    "observed_shape": {
+     "state": "OBSERVED",
+     "top_level_keys": [
+      "db_providers",
+      "gateways",
+      "note",
+      "route_health"
+     ],
+     "evidence_ref": "fed-pilot-raw.json calls.fed_probe.structuredContent",
+     "note": "observed top-level keys from ONE read-only call; a single response is not a schema"
+    }
+   },
+   "outcomes": {
+    "state": "UNKNOWN",
+    "allowed": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no typed outcome enumeration is declared in tools/list, outputSchema or _meta (_meta={\"fastmcp\": {\"tags\": []}}); tool descriptions state only what is returned, in prose",
+    "observed_single_call_values_NOT_outcomes": null,
+    "does_not_imply": "values seen in one response are not the declared set of possible outcomes"
+   },
+   "receipt": {
+    "state": "UNKNOWN",
+    "verification_uri": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no verification_uri is declared or observed. FED emits no receipt identifier; observed fed_route.trace=null and fed_route.invocation_contract=null, and h_verify='none' in fed_route/fed_contrast",
+    "does_not_imply": "absence of a receipt id does not prove no verification path exists elsewhere (UNPROBED)"
+   },
+   "boundary": {
+    "state": "OBSERVED",
+    "class": "public",
+    "evidence_ref": "/etc/caddy/vhosts/fed.arif-fazil.com.conf:6 reverse_proxy 127.0.0.1:7074 (deployment config) + live unauthenticated POST https://fed.arif-fazil.com/mcp tools/list returned all 7 tools (HTTP 200, no credential)",
+    "evidence_class": "OBSERVED_RUNTIME",
+    "reason": "public route answers the MCP surface with no credential presented",
+    "does_not_imply": "an unauthenticated tools/list does not prove every tool executes unauthenticated — fed_report_latency was NOT executed, so its public mutability is UNPROBED"
+   },
+   "authority": {
+    "organ_ceiling": "ADVISORY_ONLY",
+    "human_veto": "ARIF (F13 SOVEREIGN)",
+    "source": "/root/AAA/federation/organs.yaml components[id=fed]"
+   },
+   "mutation": {
+    "class": "OBSERVE",
+    "state": "declared_in_prose",
+    "evidence_class": "DECLARED_PROSE",
+    "source": "description states read/compute only; no write language",
+    "does_not_imply": "prose-derived; FED declares no typed mutation field"
+   }
+  },
+  "fed_contrast": {
+   "capability_id": "fed.fed_contrast",
+   "executed_in_pilot": true,
+   "observation": "OBSERVED_RUNTIME",
+   "request_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "properties": {
+      "route_a": {
+       "type": "string"
+      },
+      "route_b": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "route_a",
+      "route_b"
+     ],
+     "type": "object",
+     "additionalProperties": false
+    },
+    "evidence_ref": "live tools/list inputSchema (fed :7074, probe 2026-10-26T12:10:00Z)",
+    "evidence_class": "DECLARED_TYPED"
+   },
+   "response_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "type": "object",
+     "additionalProperties": true
+    },
+    "richness": "bare_object",
+    "evidence_ref": "live tools/list outputSchema; FastMCP generated it from the `-> dict` return annotation in /root/AAA/scripts/fed_router.py (no pydantic response_model, no tools_sot.yaml for FED)",
+    "evidence_class": "DECLARED_TYPED",
+    "does_not_imply": "a bare {type:object} schema constrains only that the result is an object; it declares no fields",
+    "observed_shape": {
+     "state": "OBSERVED",
+     "top_level_keys": [
+      "hcsvog",
+      "route_a",
+      "route_b"
+     ],
+     "evidence_ref": "fed-pilot-raw.json calls.fed_contrast.structuredContent",
+     "note": "observed top-level keys from ONE read-only call; a single response is not a schema"
+    }
+   },
+   "outcomes": {
+    "state": "UNKNOWN",
+    "allowed": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no typed outcome enumeration is declared in tools/list, outputSchema or _meta (_meta={\"fastmcp\": {\"tags\": []}}); tool descriptions state only what is returned, in prose",
+    "observed_single_call_values_NOT_outcomes": {
+     "hcsvog.h_verify": "none"
+    },
+    "does_not_imply": "values seen in one response are not the declared set of possible outcomes"
+   },
+   "receipt": {
+    "state": "UNKNOWN",
+    "verification_uri": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no verification_uri is declared or observed. FED emits no receipt identifier; observed fed_route.trace=null and fed_route.invocation_contract=null, and h_verify='none' in fed_route/fed_contrast",
+    "does_not_imply": "absence of a receipt id does not prove no verification path exists elsewhere (UNPROBED)"
+   },
+   "boundary": {
+    "state": "OBSERVED",
+    "class": "public",
+    "evidence_ref": "/etc/caddy/vhosts/fed.arif-fazil.com.conf:6 reverse_proxy 127.0.0.1:7074 (deployment config) + live unauthenticated POST https://fed.arif-fazil.com/mcp tools/list returned all 7 tools (HTTP 200, no credential)",
+    "evidence_class": "OBSERVED_RUNTIME",
+    "reason": "public route answers the MCP surface with no credential presented",
+    "does_not_imply": "an unauthenticated tools/list does not prove every tool executes unauthenticated — fed_report_latency was NOT executed, so its public mutability is UNPROBED"
+   },
+   "authority": {
+    "organ_ceiling": "ADVISORY_ONLY",
+    "human_veto": "ARIF (F13 SOVEREIGN)",
+    "source": "/root/AAA/federation/organs.yaml components[id=fed]"
+   },
+   "mutation": {
+    "class": "OBSERVE",
+    "state": "declared_in_prose",
+    "evidence_class": "DECLARED_PROSE",
+    "source": "description states read/compute only; no write language",
+    "does_not_imply": "prose-derived; FED declares no typed mutation field"
+   }
+  },
+  "fed_health": {
+   "capability_id": "fed.fed_health",
+   "executed_in_pilot": true,
+   "observation": "OBSERVED_RUNTIME",
+   "request_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "properties": {},
+     "type": "object",
+     "additionalProperties": false
+    },
+    "evidence_ref": "live tools/list inputSchema (fed :7074, probe 2026-10-26T12:10:00Z)",
+    "evidence_class": "DECLARED_TYPED"
+   },
+   "response_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "type": "object",
+     "additionalProperties": true
+    },
+    "richness": "bare_object",
+    "evidence_ref": "live tools/list outputSchema; FastMCP generated it from the `-> dict` return annotation in /root/AAA/scripts/fed_router.py (no pydantic response_model, no tools_sot.yaml for FED)",
+    "evidence_class": "DECLARED_TYPED",
+    "does_not_imply": "a bare {type:object} schema constrains only that the result is an object; it declares no fields",
+    "observed_shape": {
+     "state": "OBSERVED",
+     "top_level_keys": [
+      "port",
+      "state_db",
+      "status",
+      "tables",
+      "version"
+     ],
+     "evidence_ref": "fed-pilot-raw.json calls.fed_health.structuredContent",
+     "note": "observed top-level keys from ONE read-only call; a single response is not a schema"
+    }
+   },
+   "outcomes": {
+    "state": "UNKNOWN",
+    "allowed": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no typed outcome enumeration is declared in tools/list, outputSchema or _meta (_meta={\"fastmcp\": {\"tags\": []}}); tool descriptions state only what is returned, in prose",
+    "observed_single_call_values_NOT_outcomes": null,
+    "does_not_imply": "values seen in one response are not the declared set of possible outcomes"
+   },
+   "receipt": {
+    "state": "UNKNOWN",
+    "verification_uri": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no verification_uri is declared or observed. FED emits no receipt identifier; observed fed_route.trace=null and fed_route.invocation_contract=null, and h_verify='none' in fed_route/fed_contrast",
+    "does_not_imply": "absence of a receipt id does not prove no verification path exists elsewhere (UNPROBED)"
+   },
+   "boundary": {
+    "state": "OBSERVED",
+    "class": "public",
+    "evidence_ref": "/etc/caddy/vhosts/fed.arif-fazil.com.conf:6 reverse_proxy 127.0.0.1:7074 (deployment config) + live unauthenticated POST https://fed.arif-fazil.com/mcp tools/list returned all 7 tools (HTTP 200, no credential)",
+    "evidence_class": "OBSERVED_RUNTIME",
+    "reason": "public route answers the MCP surface with no credential presented",
+    "does_not_imply": "an unauthenticated tools/list does not prove every tool executes unauthenticated — fed_report_latency was NOT executed, so its public mutability is UNPROBED"
+   },
+   "authority": {
+    "organ_ceiling": "ADVISORY_ONLY",
+    "human_veto": "ARIF (F13 SOVEREIGN)",
+    "source": "/root/AAA/federation/organs.yaml components[id=fed]"
+   },
+   "mutation": {
+    "class": "OBSERVE",
+    "state": "declared_in_prose",
+    "evidence_class": "DECLARED_PROSE",
+    "source": "description states read/compute only; no write language",
+    "does_not_imply": "prose-derived; FED declares no typed mutation field"
+   }
+  },
+  "fed_classify": {
+   "capability_id": "fed.fed_classify",
+   "executed_in_pilot": true,
+   "observation": "OBSERVED_RUNTIME",
+   "request_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "properties": {
+      "task": {
+       "type": "string",
+       "description": "The message/task text to classify."
+      }
+     },
+     "required": [
+      "task"
+     ],
+     "type": "object",
+     "additionalProperties": false
+    },
+    "evidence_ref": "live tools/list inputSchema (fed :7074, probe 2026-10-26T12:10:00Z)",
+    "evidence_class": "DECLARED_TYPED"
+   },
+   "response_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "type": "object",
+     "additionalProperties": true
+    },
+    "richness": "bare_object",
+    "evidence_ref": "live tools/list outputSchema; FastMCP generated it from the `-> dict` return annotation in /root/AAA/scripts/fed_router.py (no pydantic response_model, no tools_sot.yaml for FED)",
+    "evidence_class": "DECLARED_TYPED",
+    "does_not_imply": "a bare {type:object} schema constrains only that the result is an object; it declares no fields",
+    "observed_shape": {
+     "state": "OBSERVED",
+     "top_level_keys": [
+      "capability",
+      "confidence",
+      "matched",
+      "signature"
+     ],
+     "evidence_ref": "fed-pilot-raw.json calls.fed_classify.structuredContent",
+     "note": "observed top-level keys from ONE read-only call; a single response is not a schema"
+    }
+   },
+   "outcomes": {
+    "state": "UNKNOWN",
+    "allowed": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no typed outcome enumeration is declared in tools/list, outputSchema or _meta (_meta={\"fastmcp\": {\"tags\": []}}); tool descriptions state only what is returned, in prose",
+    "observed_single_call_values_NOT_outcomes": {
+     "signature": "fed-conversational"
+    },
+    "does_not_imply": "values seen in one response are not the declared set of possible outcomes"
+   },
+   "receipt": {
+    "state": "UNKNOWN",
+    "verification_uri": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no verification_uri is declared or observed. FED emits no receipt identifier; observed fed_route.trace=null and fed_route.invocation_contract=null, and h_verify='none' in fed_route/fed_contrast",
+    "does_not_imply": "absence of a receipt id does not prove no verification path exists elsewhere (UNPROBED)"
+   },
+   "boundary": {
+    "state": "OBSERVED",
+    "class": "public",
+    "evidence_ref": "/etc/caddy/vhosts/fed.arif-fazil.com.conf:6 reverse_proxy 127.0.0.1:7074 (deployment config) + live unauthenticated POST https://fed.arif-fazil.com/mcp tools/list returned all 7 tools (HTTP 200, no credential)",
+    "evidence_class": "OBSERVED_RUNTIME",
+    "reason": "public route answers the MCP surface with no credential presented",
+    "does_not_imply": "an unauthenticated tools/list does not prove every tool executes unauthenticated — fed_report_latency was NOT executed, so its public mutability is UNPROBED"
+   },
+   "authority": {
+    "organ_ceiling": "ADVISORY_ONLY",
+    "human_veto": "ARIF (F13 SOVEREIGN)",
+    "source": "/root/AAA/federation/organs.yaml components[id=fed]"
+   },
+   "mutation": {
+    "class": "OBSERVE",
+    "state": "declared_in_prose",
+    "evidence_class": "DECLARED_PROSE",
+    "source": "description states read/compute only; no write language",
+    "does_not_imply": "prose-derived; FED declares no typed mutation field"
+   }
+  },
+  "fed_report_latency": {
+   "capability_id": "fed.fed_report_latency",
+   "executed_in_pilot": false,
+   "observation": "OBSERVATION_NOT_EXECUTED",
+   "request_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "properties": {
+      "provider": {
+       "type": "string",
+       "description": "Provider name (deepseek, mulerouter, tokenrouter, etc.)"
+      },
+      "model": {
+       "type": "string",
+       "description": "Model ID (deepseek-v4-pro, qwen-vl-max, etc.)"
+      },
+      "latency_ms": {
+       "type": "number",
+       "description": "Round-trip latency in milliseconds"
+      },
+      "status_code": {
+       "default": 200,
+       "type": "integer",
+       "description": "HTTP status code (200, 429, 503, etc.)"
+      },
+      "tokens_in": {
+       "default": 0,
+       "type": "integer",
+       "description": "Input tokens used"
+      },
+      "tokens_out": {
+       "default": 0,
+       "type": "integer",
+       "description": "Output tokens generated"
+      },
+      "agent_id": {
+       "default": "unknown",
+       "type": "string",
+       "description": "Reporting agent"
+      },
+      "hcsvog_fingerprint": {
+       "default": "",
+       "type": "string",
+       "description": "ETCSOVG harness fingerprint (SHA256-first-8) linking\nthis latency sample to a specific harness configuration"
+      }
+     },
+     "required": [
+      "provider",
+      "model",
+      "latency_ms"
+     ],
+     "type": "object",
+     "additionalProperties": false
+    },
+    "evidence_ref": "live tools/list inputSchema (fed :7074, probe 2026-10-26T12:10:00Z)",
+    "evidence_class": "DECLARED_TYPED"
+   },
+   "response_schema": {
+    "state": "DECLARED",
+    "schema": {
+     "type": "object",
+     "additionalProperties": true
+    },
+    "richness": "bare_object",
+    "evidence_ref": "live tools/list outputSchema; FastMCP generated it from the `-> dict` return annotation in /root/AAA/scripts/fed_router.py (no pydantic response_model, no tools_sot.yaml for FED)",
+    "evidence_class": "DECLARED_TYPED",
+    "does_not_imply": "a bare {type:object} schema constrains only that the result is an object; it declares no fields",
+    "observed_shape": {
+     "state": "UNKNOWN",
+     "top_level_keys": null,
+     "evidence_ref": null,
+     "note": "OBSERVATION_NOT_EXECUTED — its own description states it writes the route_latency table ('Agents call this after every API call to populate route_latency table'). Executing it to sample a response would be a mutation, so no response was captured."
+    }
+   },
+   "outcomes": {
+    "state": "UNKNOWN",
+    "allowed": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no typed outcome enumeration is declared in tools/list, outputSchema or _meta (_meta={\"fastmcp\": {\"tags\": []}}); tool descriptions state only what is returned, in prose",
+    "observed_single_call_values_NOT_outcomes": null,
+    "does_not_imply": "values seen in one response are not the declared set of possible outcomes"
+   },
+   "receipt": {
+    "state": "UNKNOWN",
+    "verification_uri": null,
+    "evidence_ref": null,
+    "evidence_class": "UNKNOWN",
+    "reason": "no verification_uri is declared or observed. FED emits no receipt identifier; observed fed_route.trace=null and fed_route.invocation_contract=null, and h_verify='none' in fed_route/fed_contrast",
+    "does_not_imply": "absence of a receipt id does not prove no verification path exists elsewhere (UNPROBED)"
+   },
+   "boundary": {
+    "state": "OBSERVED",
+    "class": "public",
+    "evidence_ref": "/etc/caddy/vhosts/fed.arif-fazil.com.conf:6 reverse_proxy 127.0.0.1:7074 (deployment config) + live unauthenticated POST https://fed.arif-fazil.com/mcp tools/list returned all 7 tools (HTTP 200, no credential)",
+    "evidence_class": "OBSERVED_RUNTIME",
+    "reason": "public route answers the MCP surface with no credential presented",
+    "does_not_imply": "an unauthenticated tools/list does not prove every tool executes unauthenticated — fed_report_latency was NOT executed, so its public mutability is UNPROBED"
+   },
+   "authority": {
+    "organ_ceiling": "ADVISORY_ONLY",
+    "human_veto": "ARIF (F13 SOVEREIGN)",
+    "source": "/root/AAA/federation/organs.yaml components[id=fed]"
+   },
+   "mutation": {
+    "class": "MUTATE",
+    "state": "declared_in_prose",
+    "evidence_class": "DECLARED_PROSE",
+    "source": "description: 'populate route_latency table with live telemetry' -> write",
+    "does_not_imply": "prose-derived; FED declares no typed mutation field"
+   }
+  }
+ }
+}

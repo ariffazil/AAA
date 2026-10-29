@@ -59,6 +59,35 @@ and worked case, kept so the compression lost nothing).
 
 ---
 
+## THE NEGATIVE CLAIM (added 2026-10-27)
+
+"I have no caller" is a claim, and it is the easiest one to fabricate. A single grep over source
+trees produced `no production caller` for FED `:7074` while **two live harnesses were calling it**:
+`/root/.config/opencode/opencode.json` and `~/.hermes/config.yaml` → `mcp_servers.fed` (7 tools).
+Acting on that negative (tombstone) would have deleted a working capability from both.
+
+Before asserting absence, walk this ladder — each rung is one command:
+
+| Rung | Probe |
+|---|---|
+| 1. code | `grep -rn <port\|name>` over the repos, **excluding** `node_modules`, `*-wt-*`, `_archive`, `.bak` |
+| 2. MCP client configs | `opencode.json`, `~/.hermes/config.yaml: mcp_servers`, `~/.codex/config*`, `.kimi-code`, any `*mcp*.json` — a URL in a client config IS a caller |
+| 3. federation SOT | `AAA/federation/organs.yaml` (does it declare a consumer?), Caddy route, systemd `After=`/`Wants=` |
+| 4. registry/capability | `AAA/ops/capabilities/*machine-contract*.json`, agent cards, A2A registry |
+| 5. runtime | `ss -tnp` / journal: who actually connected in the last 24h |
+
+Also probe the **surface**, not only the caller: exercise the organ (`tools/list` then a real
+`tools/call`). If it answers, "unused" is false regardless of grep results. And when a caller
+passes the wrong argument name, the error is evidence of a caller — it is not evidence of absence.
+
+**Corollary (2026-10-27): a service that has never been restarted is not verified.** `fed-router`
+answered `status: healthy` with 7 tools while carrying a fatal startup assertion
+(`SOT pricing missing provider flame_retired_2026-09-04`) — the running process predated the
+requirement, so it could serve but never restart. `systemctl restart` is a probe, not an outage.
+Any organ reported "healthy" whose `ExecMainStartTimestamp` predates its source's most recent
+governing requirement has an unmeasured startup path: mark it `RUNNING_UNRESTARTABLE` until a
+restart succeeds.
+
 ## TOP EIGHT PITFALLS
 
 1. **Judge verdicts are self-reports too.** A delegated 888-APEX verdict can hallucinate a
