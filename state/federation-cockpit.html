@@ -10,12 +10,12 @@
 <meta property="og:description" content="Live federation attention desk — 3-tier attention membrane and expandable receipt-linked holds.">
 <meta property="og:url" content="https://aaa.arif-fazil.com/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://arif-fazil.com/og-identity.png">
+<meta property="og:image" content="https://aaa.arif-fazil.com/images/og-constellation-1200x630.jpg">
 <meta property="og:site_name" content="arif-fazil.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AAA · Attention Desk & Agent Federation">
 <meta name="twitter:description" content="Live federation attention desk — 3-tier attention membrane and expandable receipt-linked holds.">
-<meta name="twitter:image" content="https://arif-fazil.com/og-identity.png">
+<meta name="twitter:image" content="https://aaa.arif-fazil.com/images/og-constellation-1200x630.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"AAA","url":"https://aaa.arif-fazil.com/"}
 </script>
@@ -138,7 +138,7 @@
 
 <header class="navbar">
   <a href="/" class="navbar-brand">
-    <span class="logo-badge">AAA</span>
+    <img src="/images/constellation-emblem-256.png" alt="AAA federation constellation" width="26" height="26" style="display:inline-block;vertical-align:middle;border-radius:5px;margin-right:6px" /><span class="logo-badge">AAA</span>
     <span>ARIF AGENT ARCHITECTURE</span>
   </a>
   <div class="navbar-meta">
@@ -672,10 +672,19 @@ function render(data, truthData) {
   const isSim = _ah.fq_state_detail === 'SIMULATED' || meta.diagnosis === 'SIMULATION';
   const fqLabel = isSim ? 'FQ_SIMULATION_WINDOW' : 'FQ';
   const fqScope = isSim ? 'SIMULATION' : 'scope UNKNOWN';
+  // KX-010 five-field contract (2026-10-28). A physics-labelled scalar shown to
+  // a human must carry: canonical name, value+unit, measurement method,
+  // provenance, and a falsifier. Without all five it is decoration that cannot
+  // be argued with. Unit/method/falsifier are literals so they cannot drift
+  // silently away from the number they describe.
+  const FQ_UNIT = 'ratio (unit 1)';
+  const FQ_METHOD = 'arifFlow qg.v0.3.1 quotient over the receipt window';
+  const FQ_FALSIFIER = 'recompute from the same window: a different value, or a value >1.0 without a declared scale, falsifies it';
   const fqStr = meta.quotient != null
-    ? `${fqLabel} = ${meta.quotient.toFixed(2)} (${fqScope} · ${fqWin} · ${fqActors})`
-    : `${fqLabel} = UNKNOWN (${fqScope} · ${fqWin} · ${fqActors})`;
+    ? `${fqLabel} = ${meta.quotient.toFixed(2)} ${FQ_UNIT} · ${fqScope} · ${fqWin} · ${fqActors} · method: ${FQ_METHOD} · provenance: arifFlow SERVER_OBSERVED · falsifier: ${FQ_FALSIFIER}`
+    : `${fqLabel} = UNKNOWN (not zero) · ${fqScope} · ${fqWin} · ${fqActors} · method: ${FQ_METHOD} · provenance: arifFlow · falsifier: ${FQ_FALSIFIER}`;
   deskFqSummary.textContent = `🌊 ${fqStr}`;
+  deskFqSummary.title = fqStr;
 
   // Honesty invariant (Fix I): kiraan yang diukur = nombor (0 sah jika diukur);
   // data tiada (null/undefined) = UNKNOWN — jangan jadikan 0 lalai.
