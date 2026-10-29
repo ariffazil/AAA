@@ -122,3 +122,27 @@ freshness:
   last_verified: '2026-06-27'
 notes: 'Migrated from qwen_soul.yaml + qwen_shadow.yaml. Original status: ACTIVE.
   Review and enrich.'
+
+# ── token-plan seats (appended 2026-10-30, FI-003 — SOT projection) ──────────
+# Canonical host (console-advertised since 2026-10-01): token-plan.maas.qwencloudapi.com
+# All four seats re-verified HTTP 200 chat+anthropic 2026-10-01 (SOT patch note _patch_2026_10_01_qwen_token_plan_reality).
+# Credit expiry observed 2026-11-01 (re-check on renewal).
+token_plan:
+  status: ACTIVE
+  hosts:
+    canonical: https://token-plan.maas.qwencloudapi.com
+    anthropic_app: https://token-plan.maas.qwencloudapi.com/apps/anthropic
+    legacy_fallback: aliyuncs token-plan host (still 200, not preferred)
+  seats:
+    - id: individual
+      auth_env: BAILIAN_TOKEN_PLAN_API_KEY
+      note: 26-model catalog incl kimi-k2.7-code, glm-5.x, MiniMax-M2.5, qwen-image-2.0-pro
+    - id: owner
+      auth_env: QWEN_TEAM_OWNER_API_KEY
+    - id: arifos
+      note: sovereign lane seat
+    - id: hermes
+      note: HERMES lane seat
+  provenance:
+    sot_patch_refs: [_patch_2026_10_01_qwen_token_plan_reality]
+    falsifier: seat probe returning non-200 on canonical host chat+anthropic
