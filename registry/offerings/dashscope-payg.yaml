@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: dashscope-payg
+provider_ref: alibaba-cloud
+plan: payg
+advertised_models: []
+alias_policy: UNKNOWN
+billing_class: payg
+quota_state: {state: blocked, observed_at: '2026-10-26', note: 'SOT status BLOCKED_403_PAYMENT_OR_FREE_TIER_ONLY'}
+credit_expiry: null
+lifecycle: {status: parked, note: 'blocked at provider; not a live lane'}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[dashscope-payg]"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "403 clearing on a live probe after payment/tier change"

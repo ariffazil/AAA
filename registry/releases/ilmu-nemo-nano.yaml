@@ -1,0 +1,18 @@
+schema_version: 1
+release_id: ilmu-nemo-nano
+family_ref: ilmu-nemo
+developer_refs: []  # developer UNKNOWN — attribution refused
+publisher_refs: [ytl-ai-cloud]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [bm_fluency], observed: [text], verified: []}
+lifecycle: {status: UNKNOWN}
+evidence_refs:
+  - "catalog:registry/catalog/ilmu.yaml (status blocked; 14 shadows incl. critical fff_blocked_verdict_all_sovereign_paths)"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "YTL architecture disclosure, or a governance-approved probe battery changing the block verdict"
+notes: "Audit-trail retention only. Forbidden on all sovereign/constitutional paths per catalog shadow_ilmu_013 (critical)."

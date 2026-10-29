@@ -1,0 +1,24 @@
+schema_version: 1
+family_id: claude
+canonical_name: Claude
+developer_refs: [anthropic]
+parent_family_ref: null
+release_refs: [claude-sonnet-5, claude-opus-4.8]
+modalities: [text]
+lineage_evidence:
+  published: false
+  basis: runtime_observation
+  note: "sonnet-5 / opus-4.8 witnessed only as SOT model_routes keys; no direct provider credential route exists"
+family_freshness:
+  last_verified: null
+  review_after: '2026-11-06'
+  stale_action: probe_recheck
+evidence_refs:
+  - "SOT:model_routes[claude-sonnet-5, claude-opus-4.8]"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "A probe on any claude route resolving identity, or official Anthropic lineage page"
+notes: >-
+  Catalog archetype names (e.g. 'Fable 5') are governance_prior persona labels, NOT
+  release identities. No observed runtime identity exists for this family in the
+  federation — every identity field stays UNKNOWN.

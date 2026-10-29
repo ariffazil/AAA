@@ -1,0 +1,25 @@
+schema_version: 1
+family_id: deepseek
+canonical_name: DeepSeek (V-series / Flash)
+developer_refs: [deepseek]
+parent_family_ref: null
+release_refs: [deepseek-flash, deepseek-v4-pro, deepseek-v4-flash]
+modalities: [text, image_in]
+lineage_evidence:
+  published: true
+  basis: official_publication
+  note: "api-docs.deepseek.com/updates witnessed in SOT patch notes (2026-09-10 V4.1-Flash, 2026-10-17 1017 weights-only)"
+family_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+evidence_refs:
+  - "SOT:patch notes 2026_09_13_v41flash, 2026_10_18_v41flash1017, 2026_10_26_deepseek1017_audit"
+  - "catalog:registry/catalog/deepseek.yaml"
+evidence_status: verified
+last_reviewed_at: '2026-10-30'
+falsifier: "DeepSeek updates page contradicting the V4/V4.1 lineage or the compat-alias policy"
+notes: >-
+  Canonical api id deepseek-flash FLOATS to the newest Flash checkpoint (currently
+  V4.1-Flash-1017, same id auto-serves). v4-flash and v4-flash-vision-exp are
+  RETIRED-COMPAT ids still routed by the provider to V4.1-Flash.

@@ -1,0 +1,24 @@
+schema_version: 1
+family_id: qwen
+canonical_name: Qwen
+developer_refs: [alibaba-cloud]
+parent_family_ref: null
+release_refs: [qwen3.6-flash, qwen3.7-plus, qwen3.7-max, qwen3.8-flash, qwen3.8-max]
+modalities: [text, image_in, image_out, audio_in, audio_out, video_in]
+lineage_evidence:
+  published: false
+  basis: runtime_observation
+  note: "3.6/3.7/3.8 sequence witnessed on token-plan catalogs and model_routes; older vl/omni ids exist in SOT but are not yet normalized (DEBT)"
+family_freshness:
+  last_verified: '2026-10-01'
+  review_after: '2026-11-01'
+  stale_action: probe_recheck
+evidence_refs:
+  - "SOT:providers[qwen-token-plan*].model_catalog (qwen3.6-flash..qwen3.8-max, wan2.7-image*)"
+  - "SOT:model_routes[qwen3.6-flash, qwen3.7-plus, qwen3.7-max, qwen3.8-max, qwen3.8-flash]"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "QwenCloud official source contradicting the 3.x generation sequence or modality claims"
+notes: >-
+  FAMILY-level freshness preserved from catalog qwen.yaml family_freshness semantics;
+  SEAT-level freshness lives on routes (route_freshness). The two must never be merged.

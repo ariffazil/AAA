@@ -1,0 +1,21 @@
+schema_version: 1
+route_id: dashscope-free-openai
+offering_ref: dashscope-free-quota
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+credential_env_refs: [DASHSCOPE_API_KEY]
+inference_host_ref: alibaba-cloud
+region: UNKNOWN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: alibaba-cloud, account: dashscope-intl-free-quota, endpoint_cluster: dashscope-intl.aliyuncs.com, upstream_model_host: alibaba-cloud}
+route_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+  note: 'two QFREE rungs returned 403 free-quota-exhausted 2026-10-26 — lane partially drained; SAME endpoint as payg lane, different quota pool'
+evidence_refs: ["SOT:providers[dashscope-free-quota] + patch 2026_10_26 (403 rungs)"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "free-quota probe passing again, or full exhaustion"
+notes: "Shares endpoint_cluster with dashscope-payg-openai — a payg-pass + free-pass pair is NOT independent verification."

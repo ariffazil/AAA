@@ -1,0 +1,18 @@
+schema_version: 1
+offering_id: deepseek-direct-payg
+provider_ref: deepseek
+plan: payg
+advertised_models: [deepseek-flash, deepseek-v4-pro, deepseek-v4-flash]
+alias_policy: floating
+billing_class: payg
+quota_state: {state: low, observed_at: '2026-10-26', note: 'balance $1.32 (below $2 alert floor) at 2026-10-26 witness'}
+credit_expiry: null
+lifecycle: {status: active}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[deepseek] (prepaid) + patch 2026_10_26_deepseek1017_audit (balance $1.32)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "balance probe contradicting the low state, or endpoint auth failure"
+notes: "Two keys, one account (SOT witness). deepseek-flash id floats to newest Flash checkpoint — PAYG + floating alias = double drift surface."

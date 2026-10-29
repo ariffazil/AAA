@@ -1,0 +1,30 @@
+schema_version: 1
+organization_id: anthropic
+canonical_name: Anthropic
+brands: [Anthropic, Claude]
+organization_types: [model_developer, publisher, API_provider]
+jurisdiction:
+  value: US
+  evidence_status: unverified
+services:
+  - Claude API (direct provider entry ABSENT from federation SOT providers[])
+official_sources: []
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:model_routes[claude-sonnet-5, claude-opus-4.8] (routes exist without a direct provider entry)"
+  - "SOT:agents[claude-code] (harness lane FI-002)"
+  - "catalog:registry/catalog/anthropic.yaml"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "Live probe of a claude route resolving an Anthropic-hosted endpoint, or official source contradicting Claude-family attribution"
+notes: >-
+  Presence witnessed only through model_routes and the harness lane — no direct
+  federation credential route exists in SOT. All runtime identity claims stay UNKNOWN
+  until a probe receipt exists.

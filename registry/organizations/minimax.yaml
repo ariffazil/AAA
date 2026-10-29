@@ -1,0 +1,31 @@
+schema_version: 1
+organization_id: minimax
+canonical_name: MiniMax (MiniMax AI)
+brands: [MiniMax]
+organization_types: [model_developer, API_provider]
+jurisdiction:
+  value: CN
+  evidence_status: witnessed
+services:
+  - api.minimax.io (M Plan subscription, sk-cp seat CANONICAL per SOT)
+  - platform.minimax.io (docs/portal)
+official_sources:
+  - https://platform.minimax.io/docs
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:providers[minimax] (ACTIVE, monthly_token_plan; PAYG lane DEAD HTTP 402)"
+  - "catalog:registry/catalog/minimax.yaml (minimax.m3, status degraded)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "MiniMax official source contradicts M-series developer attribution or api.minimax.io operation"
+notes: >-
+  M Plan is the only working federation credential (SOT api_key_ref witness);
+  PAYG lane funds_exhausted (HTTP 402). MiniMax-M2.5 is also served on the Alibaba
+  token-plan catalog — Alibaba serves it, MiniMax develops it.

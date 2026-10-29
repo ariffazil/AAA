@@ -1,0 +1,15 @@
+schema_version: 1
+incident_id: INC-005-qwen-tp-quota-false-death
+incident_type: availability_state_flip
+route_ref: qwen-tp-openai
+requested_model: null
+resolved_model: null
+first_observed_at: '2026-09-28'
+latest_observed_at: '2026-10-01'
+evidence_refs:
+  - "SOT:patch _patch_2026_10_01_qwen_token_plan_reality ('the 429 quota_exhausted claims carried since 2026-09-28 were a credit-cycle artefact' — seats were alive; ~225k credits idle while 23 rungs piled on the smallest seat)"
+evidence_status: verified
+status: resolved
+corrective_action: "Availability-state grammar adopted: 429/quota states are time-bound observations bound to observed_at, never model properties; /models=200 yields AUTH_VALID/CATALOG_REACHABLE only — never inference-ALIVE."
+falsifier: "A repeat of state-flip without a credit-cycle cause would reclassify as provider instability."
+notes: "The canonical scar for why availability_state and mutability_class are first-class registry fields."

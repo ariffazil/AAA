@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: ilmu-ytl-api
+provider_ref: ytl-ai-cloud
+plan: null
+advertised_models: [ilmu-nemo-nano]
+alias_policy: UNKNOWN
+billing_class: UNKNOWN
+quota_state: {state: blocked, observed_at: null, note: 'catalog status blocked — governance block, not a vendor outage'}
+credit_expiry: null
+lifecycle: {status: parked, note: 'retained for audit trail only'}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "catalog:registry/catalog/ilmu.yaml"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "F13 lifting the governance block (vendor state is not the blocker)"

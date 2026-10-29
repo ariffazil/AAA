@@ -1,0 +1,18 @@
+schema_version: 1
+alias_id: fed/forge-777
+route_ref: fed-4000
+requested_model: forge-777
+expected_resolution: null
+resolution_policy: floating
+known_remaps: []
+mismatch_verdict: HOLD
+evidence_refs:
+  - "SOT:agents[333-AGI].primary_model = litellm-federation/forge-777"
+  - "SOT:patch 2026_10_26 (FED alias probes returned fingerprint e72d3c7f — deepseek-flash 1017 — on 2026-10-26)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "a probe recording resolved_model for forge-777 — currently the strongest witness points at a deepseek-flash upstream rung"
+notes: >-
+  FED cascade alias. Cascade rungs change without notice; last strong witness
+  (2026-10-26) resolved the deepseek-flash fingerprint. Never treat two FED aliases
+  as independent providers — they share the router failure domain.

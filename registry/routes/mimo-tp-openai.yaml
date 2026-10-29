@@ -1,0 +1,20 @@
+schema_version: 1
+route_id: mimo-tp-openai
+offering_ref: mimo-token-plan-max
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://token-plan-sgp.xiaomimimo.com/v1
+credential_env_refs: [MIMO_TOKEN_PLAN_API_KEY, MIMO_API_KEY]
+inference_host_ref: xiaomi
+region: SG
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: xiaomi, account: mimo-token-plan-max, endpoint_cluster: token-plan-sgp.xiaomimimo.com, upstream_model_host: xiaomi}
+route_freshness:
+  last_verified: '2026-10-18'
+  review_after: '2026-11-18'
+  stale_action: probe_recheck
+  note: 'multimodal understanding verified 2026-10-18; v2.5 ids retired 2026-10-21 upstream'
+evidence_refs: ["SOT:providers[mimo-token-plan] + patch 2026_10_18"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "seat probe failing post v2.5 retirement"

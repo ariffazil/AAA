@@ -1,0 +1,22 @@
+schema_version: 1
+release_id: glm-5.3-flash
+family_ref: glm
+developer_refs: [zhipu-ai]
+publisher_refs: [zhipu-ai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: []
+  observed: [text]
+  verified: []
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:model_routes[glm-5.3-flash]"
+  - "catalog:registry/catalog/zai.yaml known_remaps note ('zai glm endpoints occasionally serve glm-5.3-flash when quota near')"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "system_fingerprint evidence showing glm-5.3-flash is not a distinct serving configuration"
+notes: "Served near quota exhaustion on zai endpoints — a quota-induced resolution drift surface, watch via probes."

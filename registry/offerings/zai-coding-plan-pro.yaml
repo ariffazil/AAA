@@ -1,0 +1,18 @@
+schema_version: 1
+offering_id: zai-coding-plan-pro
+provider_ref: zhipu-ai
+plan: coding_pro
+advertised_models: [glm-5.3, glm-5.2, glm-5.1]
+alias_policy: floating
+billing_class: subscription_with_credits
+quota_state: {state: available, observed_at: '2026-10-30', note: 'live mesh-proven 2026-10-30 (qwen+kimi marker-PASS on glm-5.3)'}
+credit_expiry: null
+lifecycle: {status: active, note: 'Pro tier, credit multipliers, 50% off-peak (SOT patch 2026-08-21)'}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[zai-coding-plan] (monthly_coding_plan_pro credits)"
+  - "catalog:registry/catalog/zai.yaml"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "plan catalog changing, quota wall, or glm-5.3 no longer primary-served"

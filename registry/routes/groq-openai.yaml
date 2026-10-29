@@ -1,0 +1,21 @@
+schema_version: 1
+route_id: groq-openai
+offering_ref: groq-cloud-free-tier
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://api.groq.com/openai/v1
+credential_env_refs: [GROQ_API_KEY]
+inference_host_ref: groq
+region: US
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: groq, account: groq-free-tier, endpoint_cluster: api.groq.com, upstream_model_host: groq}
+route_freshness:
+  last_verified: '2026-08-15'
+  review_after: '2026-10-15'
+  stale_action: probe_recheck
+  note: 'SOT last_verified 2026-08-15 — STALE, probe before reliance'
+evidence_refs: ["SOT:providers[groq]"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "live probe with current credential"
+notes: "Host of other developers' open-weight models — model developer fields never point at groq."

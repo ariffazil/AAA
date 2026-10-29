@@ -1,0 +1,21 @@
+schema_version: 1
+route_id: deepseek-anthropic
+offering_ref: deepseek-direct-payg
+router_ref: null
+protocol: anthropic_compatible
+endpoint_ref: https://api.deepseek.com/anthropic
+credential_env_refs: [DEEPSEEK_ANTHROPIC_KEY]
+inference_host_ref: deepseek
+region: CN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: deepseek, account: deepseek-direct, endpoint_cluster: api.deepseek.com, upstream_model_host: deepseek}
+route_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+  note: '/anthropic/v1/messages 200 both keys (2026-08-30 revival witness); same account as openai lane'
+evidence_refs: ["SOT:providers[deepseek] + patch 2026_08_30_deepseek_revival"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing on the anthropic-compat path"
+notes: "Same account/cluster as deepseek-openai — NOT an independent lane for verification purposes."

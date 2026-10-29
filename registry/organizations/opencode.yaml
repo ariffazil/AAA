@@ -1,0 +1,31 @@
+schema_version: 1
+organization_id: opencode
+canonical_name: OpenCode (opencode.ai zen platform)
+brands: [OpenCode Zen, OpenCode Go]
+organization_types: [commercial_platform, router_operator]
+jurisdiction:
+  value: UNKNOWN
+  evidence_status: UNKNOWN
+services:
+  - opencode.ai/zen/go/v1 (SOT ACTIVE, free_tier, 27 models on /v1/models probed 2026-08-19)
+  - opencode.ai/zen/v1 (SOT status auth_fail at last witness)
+official_sources:
+  - https://opencode.ai/docs/zen
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:providers[opencode-go] (ACTIVE, free_tier, 'Xiaomi Token Plan FREE tier' per provider_name)"
+  - "SOT:providers[opencode-zen] (auth_fail)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "opencode.ai docs contradict the zen/go platform model, or the /v1/models catalog diverges from the SOT witness"
+notes: >-
+  Router/platform, not a model developer. SOT provider_name witnesses OpenCode Go as
+  'Xiaomi Token Plan FREE tier' — upstream inference host is Xiaomi for that lane
+  (corporate operator of opencode.ai itself: UNKNOWN).

@@ -1,0 +1,23 @@
+schema_version: 1
+family_id: ilmu-nemo
+canonical_name: ILMU (Nemo line)
+developer_refs: []  # base-model developer UNKNOWN — YTL is operator, not verified developer
+parent_family_ref: null
+release_refs: [ilmu-nemo-nano]
+modalities: [text]
+lineage_evidence:
+  published: false
+  basis: UNKNOWN
+  note: "No architecture disclosure; NVIDIA NeMo wrapper hypothesis is catalog INT (shadow_ilmu_003), never recorded as fact"
+family_freshness:
+  last_verified: '2026-06-27'
+  review_after: '2026-11-27'
+  stale_action: degrade_to_observe_only
+evidence_refs:
+  - "catalog:registry/catalog/ilmu.yaml (status blocked; F13-blocked from sovereign paths)"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "YTL architectural disclosure or an official base-model attribution"
+notes: >-
+  developer_refs intentionally EMPTY — the supply-chain map refuses to attribute the
+  base model. YTL AI Cloud is recorded only as API_provider/commercial_platform.

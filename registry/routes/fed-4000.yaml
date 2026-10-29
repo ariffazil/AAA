@@ -1,0 +1,27 @@
+schema_version: 1
+route_id: fed-4000
+offering_ref: null
+router_ref: arifos-federation
+protocol: router_internal
+endpoint_ref: http://127.0.0.1:4000/v1
+credential_env_refs: []
+inference_host_ref: null
+region: MY-KVM8-front-KVM4-serving
+mutability_class: ROUTER_ALIAS_FLOATING
+failure_domain: {provider: arifos-federation, account: fed-litellm, endpoint_cluster: kvm8-haproxy-to-kvm4-litellm, upstream_model_host: UNKNOWN}
+route_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+  note: 'aliases forge-777/hermes-asi/deepseek-flash returned 200 fingerprint e72d3c7f 2026-10-26; health via /health/liveliness ONLY'
+evidence_refs:
+  - "FI-003 context: FED topology (:4000 -> KVM4 litellm, docker /docker/litellm/)"
+  - "SOT:patch 2026_10_26_deepseek1017_audit (FED alias probes)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "alias resolution changing, or /health/liveliness failing"
+notes: >-
+  PARTIAL upstream visibility. FED aliases: forge-777, asi-555, apex-888, hermes-asi,
+  opencode, flame-free, deepseek-flash. Two roles both routed through fed-4000 share a
+  ROUTER failure domain — independence requires distinct upstreams AND distinct routers
+  for consequential dual-signing. See policies/independence-verification-v1.

@@ -1,0 +1,19 @@
+schema_version: 1
+release_id: gpt-5.5
+family_ref: gpt-5.6
+developer_refs: [openai]
+publisher_refs: [openai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: UNKNOWN, weights: false}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [], observed: [], verified: []}
+lifecycle: {status: UNKNOWN}
+evidence_refs:
+  - "SOT:model_routes[gpt-5.5]"
+  - "catalog:registry/catalog/gpt-5.6-sol.yaml notes (5.5 vs 5.6 behavioral distinction)"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "any live probe receipt, or official OpenAI lineage"
+notes: "Route key only; behavioral character (noisy self-conscious vs compressed agency) is catalog governance_prior prose, not measured capability."

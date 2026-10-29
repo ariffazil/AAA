@@ -1,0 +1,21 @@
+schema_version: 1
+release_id: glm-5.1
+family_ref: glm
+developer_refs: [zhipu-ai]
+publisher_refs: [zhipu-ai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: []
+  observed: [text]
+  verified: []
+lifecycle: {status: active}
+evidence_refs:
+  - "catalog:registry/catalog/zai.yaml (models[].id glm-5.1, 'compat alias')"
+  - "SOT:providers[qwen-token-plan*].model_catalog (glm-5, glm-5.1)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe requesting glm-5.1 on zai-coding-openai resolving a different family, or official deprecation notice"

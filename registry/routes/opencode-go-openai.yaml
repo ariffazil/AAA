@@ -1,0 +1,23 @@
+schema_version: 1
+route_id: opencode-go-openai
+offering_ref: opencode-go-free-tier
+router_ref: opencode
+protocol: openai_compatible
+endpoint_ref: https://opencode.ai/zen/go/v1
+credential_env_refs: [OPENCODE_GO_API_KEY]
+inference_host_ref: xiaomi
+region: SG
+mutability_class: ROUTER_ALIAS_FLOATING
+failure_domain: {provider: opencode, account: opencode-go-free, endpoint_cluster: opencode.ai, upstream_model_host: xiaomi}
+route_freshness:
+  last_verified: '2026-08-19'
+  review_after: '2026-10-19'
+  stale_action: probe_recheck
+  note: '27 models on /v1/models 2026-08-19 — STALE witness, re-probe'
+evidence_refs: ["SOT:providers[opencode-go] ('Xiaomi Token Plan FREE tier')"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing or catalog diverging"
+notes: >-
+  Router alias: opencode.ai sits in front of an upstream host (Xiaomi per SOT naming).
+  requested != resolved must be probed per call — upstream serving revision is not echoed.

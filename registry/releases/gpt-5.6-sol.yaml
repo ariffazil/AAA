@@ -1,0 +1,22 @@
+schema_version: 1
+release_id: gpt-5.6-sol
+family_ref: gpt-5.6
+developer_refs: [openai]
+publisher_refs: [openai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: UNKNOWN, weights: false}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: [reason, code, analyze, research, synthesis, reversible_tool_use]
+  observed: []
+  verified: []
+lifecycle: {status: observed}
+evidence_refs:
+  - "catalog:registry/catalog/gpt-5.6-sol.yaml (ev:gpt56-sol:* — system card L2-verified, UK AISI, METR, Apollo)"
+  - "SOT:model_routes[gpt-5.6-sol]"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "OpenAI system-card correction, or any federation probe contradicting the hazard profile"
+notes: "Catalog status 'observed' — no federation runtime probe exists. Hazard profile (mandate drift under persistence) is governance-carried from the system-card evidence chain."

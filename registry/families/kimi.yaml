@@ -1,0 +1,26 @@
+schema_version: 1
+family_id: kimi
+canonical_name: Kimi (K-series)
+developer_refs: [moonshot-ai]
+parent_family_ref: null
+release_refs: [kimi-k2.7-code, kimi-k3]
+modalities: [text, code]
+lineage_evidence:
+  published: false
+  basis: runtime_observation
+  note: "k2.5/k2.6/k2.7-code witnessed on Alibaba token-plan catalog; k3 witnessed on api.kimi.com coding routes + SOT agents (planner/kimi-code primaries)"
+family_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+evidence_refs:
+  - "SOT:providers[kimi-moonshot].aliases (kimi-for-coding*, kimi-code)"
+  - "SOT:agents[planner, kimi-code] primary kimi-k3"
+  - "SOT:providers[qwen-token-plan*].model_catalog (kimi-k2.5, kimi-k2.6, kimi-k2.7-code)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Moonshot official lineage contradicting the K2.x -> K3 sequence, or k3 probes resolving to a K2 upstream"
+notes: >-
+  k2.7 is ALSO served by Alibaba's token plan — cross-vendor serving, Moonshot remains
+  developer. 'kimi-for-coding' / '-highspeed' / 'k3-256k' are offering-level ids and
+  aliases, not separate releases.

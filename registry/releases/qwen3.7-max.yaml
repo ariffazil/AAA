@@ -1,0 +1,18 @@
+schema_version: 1
+release_id: qwen3.7-max
+family_ref: qwen
+developer_refs: [alibaba-cloud]
+publisher_refs: [alibaba-cloud]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [], observed: [text], verified: []}
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:providers[qwen-token-plan*].model_catalog"
+  - "SOT:model_routes[qwen3.7-max]"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "token-plan catalog dropping the id, or a probe resolving it to a different generation"

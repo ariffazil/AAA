@@ -1,0 +1,20 @@
+schema_version: 1
+route_id: minimax-openai
+offering_ref: minimax-m-plan
+router_ref: null
+protocol: openai_compatible
+endpoint_ref: https://api.minimax.io/v1
+credential_env_refs: [MINIMAX_API_KEY, MINIMAX_MPLAN_KEY, MINIMAX_PLUGIN_API_KEY, MINIMAX_PAYG_API_KEY]
+inference_host_ref: minimax
+region: CN
+mutability_class: PROVIDER_ALIAS_FLOATING
+failure_domain: {provider: minimax, account: minimax-m-plan-sk-cp, endpoint_cluster: api.minimax.io, upstream_model_host: minimax}
+route_freshness:
+  last_verified: '2026-10-26'
+  review_after: '2026-11-26'
+  stale_action: probe_recheck
+  note: 'M Plan sk-cp seat canonical; PAYG key 402 funds_exhausted (dead lane on same route)'
+evidence_refs: ["SOT:providers[minimax]"]
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "M Plan probe failing"

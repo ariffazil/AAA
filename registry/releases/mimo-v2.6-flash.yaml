@@ -1,0 +1,22 @@
+schema_version: 1
+release_id: mimo-v2.6-flash
+family_ref: mimo
+developer_refs: [xiaomi]
+publisher_refs: [xiaomi]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: [multimodal]
+  observed: [text, image_in]
+  verified: [text]
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:patch 2026_09_22_mimo_v26_fi003_payg_mirror (PAYG 200 with reasoning_content, 12:48 MYT)"
+  - "SOT:model_routes[mimo-v2.6-flash]"
+evidence_status: verified
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failing on both token-plan and PAYG lanes"
+notes: "Token Plan lane was 429 quota-exhausted 2026-09-22 while PAYG (mimo-platform) served 200 — lane-specific availability, never model-level 'dead'."

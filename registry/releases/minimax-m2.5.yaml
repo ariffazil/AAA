@@ -1,0 +1,18 @@
+schema_version: 1
+release_id: minimax-m2.5
+family_ref: minimax-m
+developer_refs: [minimax]
+publisher_refs: [minimax]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [], observed: [text], verified: []}
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:providers[qwen-token-plan*].model_catalog (MiniMax-M2.5 — served by Alibaba, developed by MiniMax)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "token-plan catalog dropping the id, or a probe resolving it to different weights"
+notes: "Cross-vendor serving witness: Alibaba token plan serves MiniMax's model. No MiniMax-direct lane for M2.5 is witnessed."

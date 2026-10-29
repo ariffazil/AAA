@@ -1,0 +1,28 @@
+schema_version: 1
+organization_id: moonshot-ai
+canonical_name: Moonshot AI (月之暗面)
+brands: [Moonshot AI, Kimi]
+organization_types: [model_developer, API_provider]
+jurisdiction:
+  value: CN
+  evidence_status: witnessed
+services:
+  - api.kimi.com/coding (Kimi coding plan, monthly; OpenAI + Anthropic compatible)
+  - platform.moonshot.ai (docs/portal)
+official_sources:
+  - https://platform.moonshot.ai/docs
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:providers[kimi-moonshot] (ACTIVE, monthly, CN; aliases kimi-code/kimi-coding/kimi-for-coding/managed:kimi-code)"
+  - "SOT:providers[kimi] (NOT_PROBED_THIS_SESSION — duplicate surface)"
+  - "catalog:registry/catalog/kimi.yaml"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Moonshot official source contradicts Kimi-family developer attribution or api.kimi.com operation"

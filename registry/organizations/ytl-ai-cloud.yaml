@@ -1,0 +1,28 @@
+schema_version: 1
+organization_id: ytl-ai-cloud
+canonical_name: YTL AI Cloud (ILMU)
+brands: [ILMU, YTL AI]
+organization_types: [API_provider, commercial_platform]
+jurisdiction:
+  value: MY
+  evidence_status: unverified
+services:
+  - ILMU API (route status BLOCKED at catalog level — F13-blocked for sovereign paths)
+official_sources: []
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: UNKNOWN
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "catalog:registry/catalog/ilmu.yaml (ilmu.nemo-nano, status blocked; YTL AI Cloud dependency + nemo-wrapper suspicion recorded as INT, not fact)"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "YTL publishes architecture disclosure contradicting the wrapper hypothesis, or ILMU service state changes"
+notes: >-
+  Base-model developer of ilmu-nemo-nano is UNKNOWN (suspected NVIDIA NeMo wrapper —
+  catalog INT, never recorded as fact). Retained for audit trail only; blocked from
+  all sovereign paths (catalog shadow_ilmu_013 critical).

@@ -1,0 +1,14 @@
+schema_version: 1
+incident_id: INC-004-mimo-v25-id-retirement
+incident_type: model_id_retirement
+route_ref: fed-4000
+requested_model: mimo-v2.5-pro
+resolved_model: mimo-v2.6-pro
+first_observed_at: '2026-10-18'
+latest_observed_at: '2026-10-21'
+evidence_refs:
+  - "SOT:patch 2026_10_18_mimo_multimodal_understanding (vendor retires mimo-v2.5 ids 2026-10-21 10:00 UTC+8; FED pre-migrated every chat upstream to v2.6, alias names kept for picker compat)"
+evidence_status: verified
+status: resolved
+corrective_action: "aliases/fed_mimo-v2.5 records the router-side WARN remap; release mimo-v2.5-pro marked deprecated with withdrawal date + replacement."
+falsifier: "v2.5 ids still serving v2.5 weights after 2026-10-21, or official reversal."

@@ -1,0 +1,33 @@
+schema_version: 1
+organization_id: deepseek
+canonical_name: DeepSeek (深度求索)
+brands: [DeepSeek]
+organization_types: [model_developer, publisher, weight_distributor, API_provider]
+jurisdiction:
+  value: CN
+  evidence_status: witnessed
+services:
+  - api.deepseek.com direct API (prepaid PAYG; Anthropic-compat /anthropic)
+  - open weights on HuggingFace + ModelScope (witnessed SOT patch 2026-10-26)
+official_sources:
+  - https://api-docs.deepseek.com/updates
+  - https://api-docs.deepseek.com/quick_start/pricing
+data_governance:
+  retention_policy: UNKNOWN
+  training_on_customer_data: UNKNOWN
+  region_controls: UNKNOWN
+operational:
+  status_page: UNKNOWN
+  deprecation_feed: https://api-docs.deepseek.com/updates
+  model_listing_endpoint: UNKNOWN
+evidence_refs:
+  - "SOT:providers[deepseek] (ACTIVE, prepaid, CN, both endpoints)"
+  - "SOT:patch notes 2026_08_30_deepseek_revival, 2026_09_13_v41flash, 2026_10_26_deepseek1017_audit"
+  - "catalog:registry/catalog/deepseek.yaml"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "DeepSeek official docs reassign API operation or weight publication to another entity"
+notes: >-
+  Canonical api id deepseek-flash auto-serves the newest Flash checkpoint (V4.1-Flash-1017,
+  weights-only update 2026-10-17) — a KNOWN floating-alias policy at the provider level.
+  v4-pro continues past the reversed 2026-09-14 deprecation.

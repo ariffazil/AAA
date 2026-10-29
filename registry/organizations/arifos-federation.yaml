@@ -1,0 +1,32 @@
+schema_version: 1
+organization_id: arifos-federation
+canonical_name: arifOS Federation (self)
+brands: [arifOS, AAA, FED]
+organization_types: [router_operator]
+jurisdiction:
+  value: MY
+  evidence_status: witnessed
+services:
+  - "FED :4000 — KVM8 HAProxy front door -> KVM4 litellm (fed-litellm.service, /docker/litellm/)"
+  - AAA model registry (this registry — canonical SOT of record)
+official_sources: []
+data_governance:
+  retention_policy: local-first
+  training_on_customer_data: forbidden
+  region_controls: KVM8/KVM4 sovereign mesh
+operational:
+  status_page: "FED health: /health/liveliness ONLY (/health falsely returns 000)"
+  deprecation_feed: N/A
+  model_listing_endpoint: "http://127.0.0.1:4000/v1/models"
+evidence_refs:
+  - "FI-003 context QWEN.md FED topology table (:4000 -> KVM4 litellm)"
+  - "SOT:providers[litellm-federation referenced by agents 333-AGI/555-ASI/888-APEX primaries]"
+  - "SOT:agents[*] primary_provider=litellm-federation|fed"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "Live FED probe contradicting the HAProxy->KVM4 topology or alias resolution behavior"
+notes: >-
+  Router operator with PARTIAL upstream visibility: FED aliases (forge-777, asi-555,
+  apex-888, hermes-asi, opencode, flame-free) resolve to upstream rungs whose serving
+  revision FED does not always echo. Two routes through the same alias family are NOT
+  independent verification.

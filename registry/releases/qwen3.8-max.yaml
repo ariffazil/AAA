@@ -1,0 +1,22 @@
+schema_version: 1
+release_id: qwen3.8-max
+family_ref: qwen
+developer_refs: [alibaba-cloud]
+publisher_refs: [alibaba-cloud]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities:
+  advertised: [text, vision]
+  observed: [text, image_in]
+  verified: []
+lifecycle: {status: active}
+evidence_refs:
+  - "SOT:providers[qwen-token-plan*].model_catalog"
+  - "SOT:model_routes[qwen3.8-max] + patch note _patch_2026_10_01 (vision-in on qwen3.8-max witnessed)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "token-plan catalog dropping the id, or vision-in failing a live probe"
+notes: "666_JUDGE / 999_SEAL capable lane per frozen AGENT_MODEL_MAP constitutional_rule (historical witness) — current eligibility governed by assignments/ + policies/, not by this note."

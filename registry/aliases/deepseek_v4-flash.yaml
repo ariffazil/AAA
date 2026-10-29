@@ -1,0 +1,16 @@
+schema_version: 1
+alias_id: deepseek/deepseek-v4-flash
+route_ref: deepseek-openai
+requested_model: deepseek-v4-flash
+expected_resolution: deepseek-flash
+resolution_policy: known_remap
+known_remaps:
+  - {from: deepseek-v4-flash, to: deepseek-flash, witnessed_at: '2026-09-13', severity_on_match: WARN, receipt_ref: 'SOT:patch 2026_09_13_v41flash'}
+mismatch_verdict: HOLD
+evidence_refs:
+  - "SOT:patch 2026_09_13_v41flash (RETIRED-COMPAT-PENDING, provider compat-routes the name)"
+  - "SOT:patch 2026_10_26 (legacy ids remain compat aliases billed at Flash price)"
+evidence_status: verified
+last_reviewed_at: '2026-10-30'
+falsifier: "id hard-failing (400) instead of compat-routing — then reclassify as WITHDRAWN"
+notes: "Same class applies to deepseek-v4-flash-vision-exp and deepseek-v4-flash-0731 (0731 already dead 400 per SOT 2026-09-22 patch — kept as history, not a live alias)."

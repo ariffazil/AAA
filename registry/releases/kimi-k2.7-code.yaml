@@ -1,0 +1,19 @@
+schema_version: 1
+release_id: kimi-k2.7-code
+family_ref: kimi
+developer_refs: [moonshot-ai]
+publisher_refs: [moonshot-ai]
+release_date: {value: null, evidence_status: UNKNOWN, source: null}
+knowledge_cutoff: {value: null, evidence_status: UNKNOWN, source: null}
+distribution: {api: true, weights: UNKNOWN}
+license: {weights_license: UNKNOWN, api_terms_revision: UNKNOWN, commercial_use: UNKNOWN, redistribution: UNKNOWN}
+artifact_identity: {weights_hash: null, tokenizer_hash: null, config_hash: null}
+capabilities: {advertised: [code], observed: [text, code], verified: []}
+lifecycle: {status: active}
+evidence_refs:
+  - "catalog:registry/catalog/kimi.yaml (k2.7 forced-thinking + sampling-lock hazards)"
+  - "SOT:providers[qwen-token-plan*].model_catalog (kimi-k2.7-code served by Alibaba token plan)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe resolving k2.7-code to a K3 upstream, or catalog removal"
+notes: "Thinking CANNOT be disabled on k2.7 (API rejects) — determinism-sensitive lanes must route elsewhere. Served by BOTH Moonshot (api.kimi.com) and Alibaba (token plan): cross-vendor serving, one developer."

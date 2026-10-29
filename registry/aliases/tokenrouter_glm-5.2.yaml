@@ -1,0 +1,14 @@
+schema_version: 1
+alias_id: tokenrouter/glm-5.2
+route_ref: null
+requested_model: z-ai/glm-5.2
+expected_resolution: null
+resolution_policy: UNKNOWN
+known_remaps: []
+mismatch_verdict: HOLD
+evidence_refs:
+  - "SOT:agents[copilot].primary = z-ai/glm-5.2 @ tokenrouter (provider PARKED, no route normalized)"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "tokenrouter un-parked + probe recording resolution"
+notes: "DEBT-anchored: copilot's lane rides a PARKED provider with no normalized route; route_ref null is intentional — this alias is NOT resolvable today."

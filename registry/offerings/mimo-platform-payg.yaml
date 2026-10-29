@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: mimo-platform-payg
+provider_ref: xiaomi
+plan: payg
+advertised_models: [mimo-v2.6-pro, mimo-v2.6-flash, mimo-v2.6-pro-ultraspeed]
+alias_policy: UNKNOWN
+billing_class: payg
+quota_state: {state: available, observed_at: '2026-09-22', note: 'PAYG lane alive while token-plan lane was 429 — lane-split witness'}
+credit_expiry: null
+lifecycle: {status: active}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[mimo-platform] (ACTIVE PAYG) + patch 2026_09_22_mimo_v26_fi003_payg_mirror"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "PAYG probe failing or 402/429"

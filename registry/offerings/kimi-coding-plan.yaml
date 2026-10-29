@@ -1,0 +1,17 @@
+schema_version: 1
+offering_id: kimi-coding-plan
+provider_ref: moonshot-ai
+plan: coding
+advertised_models: [kimi-k3, kimi-k2.7-code]
+alias_policy: floating
+billing_class: subscription
+quota_state: {state: available, observed_at: '2026-10-26', note: 'lane ACTIVE in SOT; per-seat quota not carried'}
+credit_expiry: null
+lifecycle: {status: active}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[kimi-moonshot] (monthly; aliases kimi-for-coding*, kimi-code)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "probe failure on api.kimi.com/coding, or plan terms changing"

@@ -1,0 +1,18 @@
+schema_version: 1
+offering_id: groq-cloud-free-tier
+provider_ref: groq
+plan: free_tier
+advertised_models: []
+alias_policy: UNKNOWN
+billing_class: free_tier
+quota_state: {state: UNKNOWN, observed_at: null, note: 'SOT last_verified 2026-08-15 — stale, re-probe before reliance'}
+credit_expiry: null
+lifecycle: {status: active}
+terms_source: null
+data_policy_source: null
+evidence_refs:
+  - "SOT:providers[groq] (ACTIVE, free_tier, US)"
+evidence_status: witnessed
+last_reviewed_at: '2026-10-30'
+falsifier: "live probe of api.groq.com with current credential"
+notes: "Hosts open-weight models of OTHER developers. Advertised list not carried — no witnessed catalog snapshot in SOT."

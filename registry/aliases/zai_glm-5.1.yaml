@@ -1,0 +1,14 @@
+schema_version: 1
+alias_id: zai/glm-5.1
+route_ref: zai-coding-openai
+requested_model: glm-5.1
+expected_resolution: glm-5.3
+resolution_policy: known_compat
+known_remaps: []
+mismatch_verdict: WARN
+evidence_refs:
+  - "catalog:registry/catalog/zai.yaml (glm-5.1 'compat alias' — resolution target not directly witnessed)"
+evidence_status: unverified
+last_reviewed_at: '2026-10-30'
+falsifier: "a live probe recording the actual resolved_model for glm-5.1"
+notes: "Expected 5.3 by family pattern, but UNWITNESSED — first live probe must record the true resolution and reclassify."
