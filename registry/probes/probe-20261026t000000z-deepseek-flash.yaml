@@ -1,0 +1,23 @@
+evidence_refs:
+- SOT:patch 2026_10_26_deepseek1017_audit (deepseek-flash + v4-pro direct 200 PONG/PRO;
+  FED aliases same fingerprint)
+evidence_status: migrated_from_sot
+expected_marker: PONG
+http_status: 200
+latency_ms: null
+notes: Fingerprint e72d3c7f = 1017 checkpoint. Balance $1.32 LOW at witness. Thinking-ON
+  small-budget trap recorded in policy probe-verdict-grammar-v1.
+observed_at: '2026-10-26T00:00:00+08:00'
+output_validity:
+  expected_marker_present: true
+  finish_state_valid: true
+  non_empty: true
+  schema_valid: true
+probe_id: probe-20261026t000000z-deepseek-flash
+receipt_hash: 3a6ee1759d0b8204711f40dde500a314d33e285ad42693e2891e0067d57837de
+requested_model: deepseek-flash
+resolved_model: deepseek-flash
+response_fingerprint: e72d3c7f
+route_ref: deepseek-openai
+schema_version: 1
+verdict: PASS

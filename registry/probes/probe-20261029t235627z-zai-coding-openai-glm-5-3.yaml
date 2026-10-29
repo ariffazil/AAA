@@ -1,0 +1,21 @@
+evidence_refs:
+- live probe by FI-003
+evidence_status: live
+expected_marker: PONG
+http_status: 200
+latency_ms: 1241
+notes: finish_reason=stop
+observed_at: '2026-10-29T23:56:27.503596+00:00'
+output_validity:
+  expected_marker_present: true
+  finish_state_valid: true
+  non_empty: true
+  schema_valid: true
+probe_id: probe-20261029t235627z-zai-coding-openai-glm-5-3
+receipt_hash: b61f77b5d92e65b2112852d9a0f62baf8a2c3ab41a696ba3a66469c78e754662
+requested_model: glm-5.3
+resolved_model: glm-5.3
+response_fingerprint: null
+route_ref: zai-coding-openai
+schema_version: 1
+verdict: PASS

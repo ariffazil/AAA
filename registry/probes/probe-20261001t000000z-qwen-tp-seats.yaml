@@ -1,0 +1,23 @@
+evidence_refs:
+- SOT:patch _patch_2026_10_01_qwen_token_plan_reality (all four keys HTTP 200 on chat
+  + anthropic, both hosts)
+evidence_status: migrated_from_sot
+expected_marker: null
+http_status: 200
+latency_ms: null
+notes: Route-liveness witness for 4 seats; no single-model identity claim. AUTH/liveness
+  only — NOT a model-identity probe; per-id probes still owed (DEBT).
+observed_at: '2026-10-01T00:00:00+08:00'
+output_validity:
+  expected_marker_present: false
+  finish_state_valid: true
+  non_empty: true
+  schema_valid: true
+probe_id: probe-20261001t000000z-qwen-tp-seats
+receipt_hash: 278967247f715ed67f192babcf40fdcdd3a4d35843373160181f1c2b0ccc7916
+requested_model: seat-catalog-check
+resolved_model: null
+response_fingerprint: null
+route_ref: qwen-tp-openai
+schema_version: 1
+verdict: PASS
