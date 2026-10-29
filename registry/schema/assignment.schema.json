@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/assignment@1",
+  "title": "Assignment — which AAA role may use which model/route for which task. Capability != execution authority",
+  "type": "object",
+  "required": ["schema_version", "assignment_id", "AAA_role", "allowed_model_refs", "allowed_route_refs", "allowed_tasks", "forbidden_tasks", "data_boundary", "authority_boundary", "required_verification", "fallback_policy", "failure_domain_refs", "independence"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "assignment_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "AAA_role": {"type": "string", "minLength": 1},
+    "allowed_model_refs": {"type": "array", "items": {"type": "string"}},
+    "allowed_route_refs": {"type": "array", "items": {"type": "string"}},
+    "allowed_tasks": {"type": "array", "items": {"type": "string"}},
+    "forbidden_tasks": {"type": "array", "items": {"type": "string"}},
+    "data_boundary": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "public": {"enum": ["allowed", "conditional", "forbidden"]},
+        "internal": {"enum": ["allowed", "conditional", "forbidden"]},
+        "confidential": {"enum": ["allowed", "conditional", "forbidden"]},
+        "personal_data": {"enum": ["allowed", "conditional", "forbidden", "hold"]},
+        "credentials": {"enum": ["allowed", "conditional", "forbidden", "hold"]}
+      }
+    },
+    "authority_boundary": {"type": "string", "minLength": 8},
+    "required_verification": {"type": "array", "items": {"type": "string"}},
+    "fallback_policy": {"type": "string"},
+    "failure_domain_refs": {"type": "array", "items": {"type": "string"}, "description": "route failure-domains this assignment depends on"},
+    "independence": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "role_class": {"enum": ["proposer", "verifier", "judge", "seal", "witness", "executor"]},
+        "independence_state": {"enum": ["INDEPENDENT", "COLLAPSED", "PARTIAL", "UNKNOWN"]},
+        "shared_domain_note": {"type": ["string", "null"]}
+      },
+      "required": ["role_class", "independence_state", "shared_domain_note"]
+    },
+    "evidence_refs": {"type": "array", "items": {"type": "string"}}
+  }
+}

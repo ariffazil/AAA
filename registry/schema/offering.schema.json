@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/offering@1",
+  "title": "Offering — commercial product / plan exposing models (a plan is not a model)",
+  "type": "object",
+  "required": ["schema_version", "offering_id", "provider_ref", "plan", "advertised_models", "alias_policy", "billing_class", "quota_state", "lifecycle", "terms_source", "data_policy_source", "evidence_status", "last_reviewed_at", "falsifier"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "offering_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "provider_ref": {"type": "string"},
+    "plan": {"type": ["string", "null"]},
+    "advertised_models": {"type": "array", "items": {"type": "string"}},
+    "alias_policy": {"enum": ["floating", "pinned", "mixed", "UNKNOWN"]},
+    "billing_class": {"enum": ["subscription", "payg", "free_tier", "subscription_with_credits", "UNKNOWN"]},
+    "quota_state": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "state": {"enum": ["available", "low", "quota_exhausted", "funds_exhausted", "blocked", "UNKNOWN"]},
+        "observed_at": {"type": ["string", "null"]},
+        "note": {"type": ["string", "null"]}
+      },
+      "required": ["state", "observed_at"]
+    },
+    "credit_expiry": {"type": ["string", "null"]},
+    "lifecycle": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "status": {"enum": ["active", "degrading", "deprecated", "withdrawn", "parked", "UNKNOWN"]},
+        "note": {"type": ["string", "null"]}
+      },
+      "required": ["status"]
+    },
+    "terms_source": {"type": ["string", "null"]},
+    "data_policy_source": {"type": ["string", "null"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_status": {"enum": ["verified", "witnessed", "unverified", "external_claim", "UNKNOWN"]},
+    "last_reviewed_at": {"type": "string", "format": "date"},
+    "falsifier": {"type": "string", "minLength": 8}
+  }
+}

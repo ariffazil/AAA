@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/probe@1",
+  "title": "Probe receipt — append-only runtime observation. HTTP 200 != identity; empty 200 = FAIL",
+  "type": "object",
+  "required": ["schema_version", "probe_id", "route_ref", "requested_model", "resolved_model", "http_status", "output_validity", "observed_at", "latency_ms", "response_fingerprint", "receipt_hash", "verdict"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "probe_id": {"type": "string", "pattern": "^probe-[0-9]{8}t[0-9]{6}z-[a-z0-9-]+$"},
+    "route_ref": {"type": "string"},
+    "requested_model": {"type": "string"},
+    "resolved_model": {"type": ["string", "null"], "description": "null = provider did not echo an identity"},
+    "http_status": {"type": ["integer", "null"]},
+    "output_validity": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "non_empty": {"type": "boolean"},
+        "schema_valid": {"type": "boolean"},
+        "finish_state_valid": {"type": "boolean"},
+        "expected_marker_present": {"type": "boolean"}
+      },
+      "required": ["non_empty", "schema_valid", "finish_state_valid", "expected_marker_present"]
+    },
+    "observed_at": {"type": "string"},
+    "latency_ms": {"type": ["integer", "null"]},
+    "response_fingerprint": {"type": ["string", "null"]},
+    "receipt_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$", "description": "sha256 of canonical record excluding receipt_hash"},
+    "verdict": {"enum": ["PASS", "WARN", "HOLD", "FAIL"]},
+    "evidence_status": {"enum": ["live", "migrated_from_sot", "external_claim"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": ["string", "null"]}
+  }
+}

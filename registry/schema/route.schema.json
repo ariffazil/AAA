@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/route@1",
+  "title": "Route — concrete technical path from a credential to an endpoint",
+  "type": "object",
+  "required": ["schema_version", "route_id", "offering_ref", "router_ref", "protocol", "endpoint_ref", "credential_env_refs", "inference_host_ref", "region", "mutability_class", "failure_domain", "route_freshness", "evidence_status", "last_reviewed_at", "falsifier"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "route_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "offering_ref": {"type": ["string", "null"]},
+    "router_ref": {"type": ["string", "null"]},
+    "protocol": {"enum": ["openai_compatible", "anthropic_compatible", "native", "router_internal", "UNKNOWN"]},
+    "endpoint_ref": {"type": "string"},
+    "credential_env_refs": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$", "description": "ENV-VARIABLE NAMES ONLY — never a secret value"}
+    },
+    "inference_host_ref": {"type": ["string", "null"]},
+    "region": {"type": ["string", "null"]},
+    "mutability_class": {"enum": ["SELF_HOSTED_HASH_PINNED", "PROVIDER_SNAPSHOT_PINNED", "PROVIDER_ALIAS_FLOATING", "ROUTER_ALIAS_FLOATING", "KNOWN_REMAP", "UNKNOWN"]},
+    "failure_domain": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "provider": {"type": ["string", "null"]},
+        "account": {"type": ["string", "null"]},
+        "endpoint_cluster": {"type": ["string", "null"]},
+        "upstream_model_host": {"type": ["string", "null"]}
+      },
+      "required": ["provider", "account", "endpoint_cluster", "upstream_model_host"]
+    },
+    "route_freshness": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "last_verified": {"type": ["string", "null"]},
+        "review_after": {"type": ["string", "null"]},
+        "stale_action": {"enum": ["degrade_to_observe_only", "probe_recheck", "warn"]},
+        "note": {"type": ["string", "null"]}
+      },
+      "required": ["last_verified", "review_after", "stale_action"]
+    },
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_status": {"enum": ["verified", "witnessed", "unverified", "external_claim", "UNKNOWN"]},
+    "last_reviewed_at": {"type": "string", "format": "date"},
+    "falsifier": {"type": "string", "minLength": 8}
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/family@1",
+  "title": "Model family — lineage container, never inferred from naming similarity",
+  "type": "object",
+  "required": ["schema_version", "family_id", "canonical_name", "developer_refs", "release_refs", "modalities", "lineage_evidence", "family_freshness", "evidence_status", "last_reviewed_at", "falsifier"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "family_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*$"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "developer_refs": {"type": "array", "items": {"type": "string"}, "description": "empty array = developer UNKNOWN (refused attribution)"},
+    "parent_family_ref": {"type": ["string", "null"]},
+    "release_refs": {"type": "array", "items": {"type": "string"}},
+    "modalities": {"type": "array", "items": {"type": "string"}},
+    "lineage_evidence": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "published": {"type": "boolean"},
+        "basis": {"enum": ["official_publication", "runtime_observation", "naming_similarity_only", "UNKNOWN"]},
+        "note": {"type": ["string", "null"]}
+      },
+      "required": ["published", "basis"]
+    },
+    "family_freshness": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "last_verified": {"type": ["string", "null"]},
+        "review_after": {"type": ["string", "null"]},
+        "stale_action": {"enum": ["degrade_to_observe_only", "probe_recheck", "warn"]}
+      },
+      "required": ["last_verified", "review_after", "stale_action"]
+    },
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_status": {"enum": ["verified", "witnessed", "unverified", "external_claim", "UNKNOWN"]},
+    "last_reviewed_at": {"type": "string", "format": "date"},
+    "falsifier": {"type": "string", "minLength": 8}
+  }
+}
