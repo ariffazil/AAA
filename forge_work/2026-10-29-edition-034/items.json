@@ -1,0 +1,388 @@
+{
+ "items": [
+  {
+   "item_id": "us-gulf-warning-short-intense",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "AS amaran perang pendek dan padu pada Iran selepas midterm - tapi ada penafian",
+   "claim_state": "CONTESTED",
+   "summary": "WSJ (28 Okt, petikan pegawai): Washington sudah beri amaran melalui saluran diplomatik dan ketenteraan supaya negara Teluk sedia bagi kempen ketenteraan pendek dan padu terhadap Iran selepas midterm AS 3 Nov. Trump belum buat keputusan akhir; White House menolak komen. Tapi NewsNation pada hari sama laporkan sebaliknya - kontradiksi terbuka, jangan baca ini sebagai lampu hijau.",
+   "source": "WSJ 28 Okt 2026 (via TampaFP/BNT/IranWire/MEE rujukan); NewsNation 'US reportedly hasn't warned Gulf nations to prepare for possible Iran offensive' 28 Okt 2026 — dua statement yang berlawan"
+  },
+  {
+   "item_id": "houthi-saudi-refinery-strike",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Houthi serang kilang-largest Saudi — Asas bekalan kembali hidup",
+   "claim_state": "NEW",
+   "summary": "Houthi kata mereka serang kilang penapisan terbesar Saudi Aramco dan lapangan terbang Abha pada 28 Okt. Reuters dan AP sahkan harga minyak naik dalam dagangan atas risiko bekalan yang menyala semula. Kali ini sasarannya hiliran Arab Saudi, bukan Selat Hormuz - untuk PETRONAS upstream kesannya tak terus, tapi melalui premium insurans perang dan freight.",
+   "source": "Reuters 'Oil prices rise on Yemen fighting, Saudi refinery attack' 28 Okt 2026; Semafor 28 Okt 2026; Dawn/AFP 28 Okt 2026"
+  },
+  {
+   "item_id": "oil-brent-settle-110",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Brent settle AS$110.44 - tiga sesi turun, walaupun intraday naik",
+   "claim_state": "CONTESTED",
+   "summary": "Siri tutup Yahoo: 23 Okt AS$116.72, 26 Okt AS$115.81, 27 Okt AS$113.88, 28 Okt AS$110.44. Dalam dagangan 28 Okt, Brent naik 1-2.7 peratus atas serangan kilang Saudi - jadi arah headline dan arah tutup berlawan. Penurunan tiga hari itu real; sebabnya belum settle. Jangan baca turun sebagai lega.",
+   "source": "Yahoo Finance BZ=F chart 5d close 28 Okt (110.44); CNBC 28 Okt; AP via TTNews 'Brent crude rises 2.7% to $112.39' 28 Okt"
+  },
+  {
+   "item_id": "fed-holds-oct-2026",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Fed tahan kadar faedah — undian terbelah, Warsh umum fewer meetings",
+   "claim_state": "MOVED",
+   "summary": "FOMC tahan kadar dalam undian terbelah, malam kita 29 Okt 2 pagi. CNBC/Fox laporkan pegawai yang tegaskan politik tak main peranan menjelang midterm. Warsh umum bank pusat akan kurangkan jumlah mesyuarat penetapan kadar tahun-tahun depan - perubahan struktur, bukan arah kadar. Untuk ringgit: pasar dah letak 90 peratus tahan, jadi tiada kejutan.",
+   "source": "CNBC 'Fed holds rates steady despite concerns over inflation' 28 Okt 2026; Yahoo Finance 'Fed meeting live updates' 28 Okt 2026; WSJ 'Fed's Rate Hold Sends Bond Yields in Different Directions'"
+  },
+  {
+   "item_id": "israel-election-deadlock",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Israel: keputusan awal kebuntuan - tiada majority jelas",
+   "claim_state": "MOVED",
+   "summary": "Keputusan awal 28 Okt: Netanyahu mendahului tapi bloknya tiada majority 61 kerusi (FT, Le Monde, DW); Netanyahu dan Eisenkot sama-sama dakwa mandat (AFP). Dibawa sebagai jam risiko minyak sahaja - keputusan rasmi 4 Nov, kerajaan boleh ambil minggu.",
+   "source": "FT 'Benjamin Netanyahu ahead but no clear winner' 28 Okt; AFP 28 Okt; DW 'Early Israeli election results point to deadlock'"
+  },
+  {
+   "item_id": "iran-mediation-conditions",
+   "reality": "GULF_ENERGY_WAR",
+   "section": "SITUATION",
+   "title": "Iran kata semua mediation idea terbaru tak boleh diterima",
+   "claim_state": "MOVED",
+   "summary": "Times of Israel 28 Okt: Iran kata semua ide mediation terbaru 'unacceptable'. Al Jazeera live: Iran says 'close contact' with mediators on plan to end war. Dua-dua benar — contact ada, content tak ada. Khamenei sudah_REQ conditions 27 Okt. Trump 28 Okt: war ends 'when I want it to', kos war dilaporkan AS$47 bilion.",
+   "source": "Times of Israel 28 Okt 2026; Al Jazeera 'Iran war live' 28 Okt; Bloomberg 'Khamenei Reiterates Conditions' 27 Okt; CNBC 'Trump says Iran war will end when I want it to' 28 Okt"
+  },
+  {
+   "item_id": "petrol-price-band-nov",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "SITUATION",
+   "title": "Harga pam naik 10 sen, diesel 20 sen — RON95 tanpa subsidi AS$4.42",
+   "claim_state": "MOVED",
+   "summary": "Untuk 29 Okt-4 Nov: RON95 tanpa subsidi naik 10 sen ke RM4.42/liter, RON97 RM4.90, diesel naik 20 sen ke RM5.27. BUDI95 untuk rakyat kekal RM1.99. Band pertama yang naik lepas beberapa band turun - lagi satu bukti kos subsidi ikut Brent, bukan ikut rasa.",
+   "source": "The Edge Malaysia 28 Okt 2026; The Malaysian Reserve 28 Okt 2026; Portal Rasmi KKW"
+  },
+  {
+   "item_id": "penang-subsidy-misuse-station",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "RISK",
+   "title": "Stesen petrol Penang disekat — RM270,000 suspek salah guna BUDI",
+   "claim_state": "NEW",
+   "summary": "Sebuah stesen petrol di Penang disekat atas RM270,000 suspek salah guna subsidi BUDI (28 Okt). Ini bukan berita kecil - ia ujian laksana: racionalisasi subsidi hanya jalan kalau penguatkuasaan hidup. Salah guna yang naik bermakna tekanan naik atas seluruh skema.",
+   "source": "Fintech News Malaysia 28 Okt 2026"
+  },
+  {
+   "item_id": "petronas-1h2026-results",
+   "reality": "PETRONAS_SARAWAK_AUTHORITY",
+   "section": "SITUATION",
+   "title": "PETRONAS 1H26 masih baseline terakhir — tiada earnings release baharu",
+   "claim_state": "OPEN",
+   "summary": "Tiada earnings release PETRONAS baharu sejak 1H 2026. Capex huluan 1H26 RM8.7 bilion (naik 19%) kekal latest published baseline. Fiscal 2027 capex direction belum ada filing —<Void masih Void.",
+   "source": "RHB via edisi 033; tiada filing PETRONAS baharu dikesan 29 Okt 2026"
+  },
+  {
+   "item_id": "petronas-singapore-power-corridor",
+   "reality": "MALAYSIA_ENERGY_TRANSITION",
+   "section": "SITUATION",
+   "title": "PETRONAS: Singapore beri conditional approval untuk regional power corridor",
+   "claim_state": "NEW",
+   "summary": "Reuters 26 Okt: Singapura beri kelulusan bersyarat untuk koridor kuasa serantau yang melibatkan PETRONAS. Jambatan kuasa merentas sempadan - bukan huluan, tapi satu kaki pendapatan baharu PETRONAS dalam elektrik. Bersyarat: belum boleh kira komited.",
+   "source": "Reuters 'Petronas says Singapore grants conditional approval for regional power corridor' 26 Okt 2026"
+  },
+  {
+   "item_id": "petronas-carbon-storage-jv",
+   "reality": "MALAYSIA_ENERGY_TRANSITION",
+   "section": "SITUATION",
+   "title": "JV simpan karbon PETRONAS-TotalEnergies-Mitsui di luar pesisir Semenanjung",
+   "claim_state": "NEW",
+   "summary": "The Malaysian Reserve 23 Okt: PETRONAS, TotalEnergies dan Mitsui bentuk JV pembangunan penyimpanan karbon di luar pesisir Semenanjung. Infrastruktur CCS untuk industri, bukan production. Volum komited belum diumum - impak belum boleh dikira.",
+   "source": "The Malaysian Reserve 23 Okt 2026"
+  },
+  {
+   "item_id": "t7-global-petronas-eni-contract",
+   "reality": "MALAYSIA_ENERGY_TRANSITION",
+   "section": "SITUATION",
+   "title": "T7 Global dapat kontrak commissioning tiga tahun daripada JV PETRONAS-Eni",
+   "claim_state": "NEW",
+   "summary": "The Edge 28 Okt: T7 Global dapat kontrak commissioning tiga tahun daripada JV PETRONAS-Eni. Ini servis hiliran - tanda JV itu ada kerja sebenar berjalan. Nilai scope tak diumumkan; jangan anggap ia hasil PETRONAS terus.",
+   "source": "The Edge Malaysia 28 Okt 2026"
+  },
+  {
+   "item_id": "hr-wage-framework-2027",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "SITUATION",
+   "title": "Framework gaji 2027: minimum RM2,000 Jun, graduat RM2,500",
+   "claim_state": "OPEN",
+   "summary": "Gaji minimum RM2,000 mulai Jun 2027, graduat RM2,500 (framework baru, dibawa edisi 033). Untuk upstream Malaysia, implikasi sebenar ialah kos retention jurutera dan geosaintis - dan tekanan keluar bagi gaji bawah garis itu.",
+   "source": "Edisi 033 — tiada perkembangan baharu 29 Okt 2026"
+  },
+  {
+   "item_id": "melaka-nomination-31-oct",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "WALL",
+   "title": "Melaka: penamaan 31 Okt, undi 14 Nov",
+   "claim_state": "MOVED",
+   "summary": "Penamaan Sabtu 31 Okt, undi 14 Nov. BN-PN tandatangan pakatan 28 Okt. Letak sebagai tarikh sahaja, bukan naratif - tiada apa yang berubah untuk eksplorasi huluan.",
+   "source": "The Star 28 Okt 2026 'Melaka polls: MBMB will remove non-compliant campaign materials'; NST 28 Okt 'BN, PN ink pact'"
+  },
+  {
+   "item_id": "fc-hearing-date",
+   "reality": "MALAYSIA_FISCAL_POLICY",
+   "section": "WALL",
+   "title": "Mahkamah Persekutuan: 25-29 Jan 2027 — 88 hari",
+   "claim_state": "OPEN",
+   "summary": "Perbentukan di Mahkamah Persekutuan 25-29 Jan. Tiada pergerakan docket. Kes ini mengawal jurisdiksi gas Sarawak, bukan production hari ini.",
+   "source": "Edisi 033; tiada docket update 29 Okt 2026"
+  },
+  {
+   "item_id": "own-od1-window",
+   "reality": "OD1_PERSONAL_TRANSITION",
+   "section": "OWN",
+   "title": "OD1: 123 hari lagi",
+   "claim_state": "MOVED",
+   "summary": "Tiga hari dicicir. Tiada paper, filing, atau calendar event yang menyentuh OD1 hari ini. Ini tetap wedge nombor utama yang paling penting untuk hang — semua yang lain sekunder.",
+   "source": "Kiraan hari dari Mac 2027; tiada sumber luaran — Arithmetic"
+  },
+  {
+   "item_id": "ops-disk-93-percent",
+   "reality": "HERMES_SYSTEM_HEALTH",
+   "section": "SITUATION",
+   "title": "Cakera 93 peratus — 30 GB bebas, turun lagi",
+   "claim_state": "MOVED",
+   "summary": "Disk host 93% guna, 30G bebas. Semalam 91% dengan 36G — turun 6GB dalam 24 jam tanpa aku clear. Aktor lain pada host ni masih aktif. Cakera 30GB dengan docker build cache akan kena.",
+   "source": "df -h / pada 29 Okt 06:01 MYT"
+  },
+  {
+   "item_id": "ops-arifos-f8-degraded",
+   "reality": "HERMES_SYSTEM_HEALTH",
+   "section": "SITUATION",
+   "title": "arifOS masih degraded — F6 unmeasured, constitutional layer",
+   "claim_state": "MOVED",
+   "summary": "arifOS /health: degraded, sebab constitution F6 unmeasured (tiada instrument), 12/13 floors pass, 0 failing. F6 M1 authority_bypass FAIL — 20/20 commit terakhir unsigned. Runtime aligned, deployment aligned, drift zero. Degraded di constitutional layer, bukan rosak operasi.",
+   "source": "curl 127.0.0.1:8088/health 29 Okt 06:01 MYT — layer_health.constitutional"
+  },
+  {
+   "item_id": "ops-digest-stale-6days",
+   "reality": "HERMES_SYSTEM_HEALTH",
+   "section": "SITUATION",
+   "title": "Digest federasi senyap tujuh hari — fail masih 22 Okt",
+   "claim_state": "MOVED",
+   "summary": "federation_digest_latest.md masih bertarikh 22 Okt - kandungannya kata cakera 83 peratus (kini 93) dan tiada perkara perlu perhatian (kini ada tiga). Digest pengeluar cron mati; senyap tujuh hari. Bukan kerosakan data - kerosakan decay.",
+   "source": "Digest inbox dalam cron state Hermes — fail federation_digest_latest.md masih bertarikh 22 Okt, dibaca 29 Okt 06:01 MYT"
+  },
+  {
+   "item_id": "ops-fed-health",
+   "reality": "HERMES_SYSTEM_HEALTH",
+   "section": "SITUATION",
+   "title": "FED :7074 hijau — role advisory only, vocabulary gap",
+   "claim_state": "MOVED",
+   "summary": "FED health OK, tools 7 exposed. BL12 calibration: 3 lookup unmatched, 0 keys known — VOCABULARY_GAP. Fed tak block, cuma tak calibrate.",
+   "source": "curl 127.0.0.1:7074/health 29 Okt 06:01 MYT"
+  },
+  {
+   "item_id": "eureka-dwarf-planet-sixth",
+   "section": "EUREKA",
+   "title": "Bumi potentially dapat planet kerdil ke-enam — tersembunyi dalam cahaya Bintang Susur",
+   "claim_state": "NEW",
+   "summary": "Rubin Observatory jumpa calon planet kerdil baharu jauh di luar Pluto - tersembunyi dalam cahaya Bima Sakti, terlepas pandang bertahun-tahun. Kalau disahkan, ia planet kerdil ke-6 sistem suria. Masih calon: pengesahan penuh ambil masa.",
+   "source": "Space.com 28 Okt 2026; Yahoo Tech 28 Okt 2026; ZME Science 28 Okt 2026"
+  },
+  {
+   "item_id": "eureka-fruitless-mosquito",
+   "section": "EUREKA",
+   "title": "Gen fruitless boleh hentikan pembiakan nyamuk",
+   "claim_state": "NEW",
+   "summary": "Kajian baharu: eksploitasi gen fruitless boleh hentikan pembiakan nyamuk - kawalan sasaran gen, bukan racun semburan. Relevan langsung dengan denggi. Masih peringkat makmal.",
+   "source": "SF Weekly 27 Okt 2026 'Study finds exploiting fruitless gene could stop mating mosquitoes'"
+  },
+  {
+   "item_id": "eureka-ai-math-discovery",
+   "section": "EUREKA",
+   "title": "OpenAI kata AI buat discovery dalam matematik, computer science, physics",
+   "claim_state": "NEW",
+   "summary": "Al Jazeera 27 Okt reports OpenAI claims AI made discoveries in mathematics, computer science and physics. Episod Claude/Anthropic 'accelerating drug development' 27 Okt. Careful: vendor claim, peer review belum — ini GUI verdict, bukan evidence discovery.",
+   "source": "Al Jazeera 'AI makes discoveries in mathematics, computer science, physics, OpenAI says' 27 Okt 2026; Anthropic 'Early progress on accelerating drug development with Claude' 27 Okt 2026"
+  },
+  {
+   "item_id": "eureka-slower-aging-gut",
+   "section": "EUREKA",
+   "title": "Rahsia perlahan umut mungkin tersembunyi dalam gut microbiome",
+   "claim_state": "NEW",
+   "summary": "Science Daily 27 Okt: kaitan microbiome usus dengan penuaan lebih perlahan - bukti tambahan, bukan preskripsi. Untuk sesiapa yang nak tidur lena dan tua dengan baik.",
+   "source": "Science Daily 27 Okt 2026 'The secret to slower aging may be hiding in your gut'"
+  }
+ ],
+ "states": [
+  {
+   "state_id": "GULF_ENERGY_WAR",
+   "label": "Perang ekonomi Iran dan risiko Hormuz",
+   "phase": "ESCALATING",
+   "confidence": 0.78,
+   "first_seen": "EDITION-020",
+   "note": "28 Okt: Houthi serang kilang Saudi terbesar, AS preparing 'short intense' campaign post-midterm, Iran tolak mediation. Harga session naik, close turun tiga hari."
+  },
+  {
+   "state_id": "MALAYSIA_FISCAL_POLICY",
+   "label": "Belanjawan, subsidi dan harga bahan api Malaysia",
+   "phase": "ELEVATED",
+   "confidence": 0.8,
+   "first_seen": "EDITION-012",
+   "note": "29 Okt-4 Nov: harga pam naik (RON95 tak subsidi RM4.42). Stesen Penang disekat RM270k salah guna BUDI. Subsidi jadi grief enforcement, bukan hanya kos."
+  },
+  {
+   "state_id": "PETRONAS_SARAWAK_AUTHORITY",
+   "label": "Jurisdiksi PETRONAS-Sarawak dan FMC",
+   "phase": "HOLDING",
+   "confidence": 0.7,
+   "first_seen": "EDITION-009",
+   "note": "Mahkamah 25-29 Jan. Tiada movement. Cross-border developments (Singapore power corridor, CCS JV) berasingan dari disputes."
+  },
+  {
+   "state_id": "OD1_PERSONAL_TRANSITION",
+   "label": "Transisi OD1",
+   "phase": "HOLDING",
+   "confidence": 0.6,
+   "first_seen": "EDITION-001",
+   "note": "123 hari. Tiada paper movement. Semua input lain sekunder kepada ini."
+  },
+  {
+   "state_id": "HERMES_SYSTEM_HEALTH",
+   "label": "Kesihatan sistem Hermes dan arifOS",
+   "phase": "HOLDING",
+   "confidence": 0.75,
+   "first_seen": "EDITION-001",
+   "note": "Disk 93% (30G). arifOS degraded di constitutional layer (F6 unmeasured). FED hijau. Digest stale 7 hari."
+  },
+  {
+   "state_id": "MALAYSIA_ENERGY_TRANSITION",
+   "label": "Transisi tenaga dan CCS Malaysia",
+   "phase": "ELEVATED",
+   "confidence": 0.6,
+   "first_seen": "EDITION-031",
+   "note": "PETRONAS dapat conditional approval Singapore power corridor; JV CCS dengan TotalEnergies-Mitsui; T7 Global kontrak commissioning PETRONAS-Eni."
+  }
+ ],
+ "contradictions": [
+  {
+   "cid": "C-GULF-WARNING-AUTH",
+   "topic": "Sama ada AS benar-benar memberi amaran 'pendek dan padu' kepada negara Teluk",
+   "claim_a": "AS sudah beri amaran melalui saluran diplomatik dan ketenteraan supaya negara Teluk sedia bagi kempen pendek dan padu terhadap Iran selepas midterm",
+   "source_a": "Wall Street Journal, 28 Okt 2026 (dipetik dalam IranWire, MEE, Anadolu, TampaFP)",
+   "claim_b": "AS tidak pernah beri amaran kepada negara Teluk supaya sedia bagi ofensif ke atas Iran",
+   "source_b": "NewsNation, 28 Okt 2026",
+   "status": "OPEN",
+   "opened_edition": "EDITION-034"
+  },
+  {
+   "cid": "C-BRENT-INTRA-CLOSE",
+   "topic": "Arah harga Brent 28 Okt: intraday naik atau close turun",
+   "claim_a": "Brent naik 2.7% ke AS$112.39 intraday 28 Okt atas serangan kilang Saudi",
+   "source_a": "Associated Press via TTNews, 28 Okt 2026",
+   "claim_b": "Brent settle AS$110.44, turun ketiga hari berturut-turut",
+   "source_b": "Yahoo Finance BZ=F closing series 23-28 Okt 2026",
+   "status": "OPEN",
+   "opened_edition": "EDITION-034"
+  },
+  {
+   "cid": "C-HORMUZ-MINE-CLAIM",
+   "topic": "Status ranjau di Selat Hormuz",
+   "claim_a": "Tentera Laut Iran: sebuah tangki kena ranjau dan terbakar, Selat masih 'ditutup' kepada kapal tanpa penyelarasan",
+   "source_a": "Tentera Laut Iran, 27 Okt 2026",
+   "claim_b": "Laluan utama 'bebas dan bersih daripada ranjau laut Iran'",
+   "source_b": "Komander CENTCOM, 25 Okt 2026",
+   "status": "OPEN",
+   "opened_edition": "EDITION-033"
+  },
+  {
+   "cid": "C-HORMUZ-FLOW",
+   "topic": "Berapakah tong Hormuz sebenarnya yang boleh melalui",
+   "claim_a": "Tong hampir pulih ke paras pra-perang",
+   "source_a": "Kpler via edisi 032",
+   "claim_b": "Kapal masih kurang dua pertiga",
+   "source_b": "Kpler via edisi 033",
+   "status": "OPEN",
+   "opened_edition": "EDITION-032"
+  },
+  {
+   "cid": "C-PETRONAS-FY27",
+   "topic": "Arah capex PETRONAS FY27: pulih atau potong",
+   "claim_a": "Capex huluan 1H26 RM8.7 bilion, naik 19% — huluan masih kuat",
+   "source_a": "RHB, 28 Okt 2026",
+   "claim_b": "Analis pecah sama: ada yang baca pulih, ada yang baca potong",
+   "source_b": "Analyst split, edisi 023",
+   "status": "OPEN",
+   "opened_edition": "EDITION-023"
+  }
+ ],
+ "scars": [
+  {
+   "scar_id": "SCAR-DIGEST-STALE",
+   "name": "Digest federasi senyap",
+   "severity": "medium",
+   "status": "ACTIVE",
+   "symptom": "federation_digest_latest.md kekal bertarikh 22 Okt; cakera 83% dan 'PERLU PERHATIAN: tiada' sudah tak benar",
+   "root_cause": "Cron penghasil digest mati; tiada heartbeat yang gagal dengan jelas",
+   "fix": "Semak why cron digest tidak jalan, pulih skrip, dan tambah alert bila artifact lama",
+   "first_seen": "EDITION-033",
+   "recurred_today": true,
+   "observed_note": "29 Okt 06:01 — fail masih 22 Okt, senyap tujuh hari. Cakera host kini 93%, digest masih cakap 83%."
+  },
+  {
+   "scar_id": "SCAR-F6-UNMEASURED",
+   "name": "F6 constitutional floor tiada instrument",
+   "severity": "medium",
+   "status": "ACTIVE",
+   "symptom": "arifOS health degraded: F6 unmeasured, M1 authority_bypass FAIL (20/20 commit terakhir unsigned)",
+   "root_cause": "Meter F6 belum ada production producer untuk 5 dari 6 meter",
+   "fix": "Bina producer ledger untuk M2-M6 dan tutup signature seam git-lane",
+   "first_seen": "EDITION-033",
+   "recurred_today": true,
+   "observed_note": "29 Okt 06:01 — status degraded sama, F6 masih UNMEASURED, M1 masih FAIL."
+  },
+  {
+   "scar_id": "SCAR-DISK-GROWTH",
+   "name": "Cakera host membesar tanpa owner",
+   "severity": "medium",
+   "status": "ACTIVE",
+   "symptom": "Disk 93% (30G), turun 6GB dari semalam (91%, 36G) tanpa tindakan cleanup yang diketahui",
+   "root_cause": "Lebih daripada satu aktor pada host; tiada satu owner yang jelas",
+   "fix": "Kenal pasti proses yang tumbuh, tambah had cache docker, owner yang jelas",
+   "first_seen": "EDITION-033",
+   "recurred_today": true,
+   "observed_note": "29 Okt 06:01 — 93%, 30G bebas. Docker cache tetap sifar semalam; ada aktiviti lain."
+  }
+ ],
+ "realities": [
+  {
+   "reality_id": "GULF_ENERGY_WAR",
+   "label": "Perang ekonomi Iran dan risiko Hormuz",
+   "domain": "energy"
+  },
+  {
+   "reality_id": "MALAYSIA_FISCAL_POLICY",
+   "label": "Belanjawan, subsidi dan harga bahan api Malaysia",
+   "domain": "malaysia"
+  },
+  {
+   "reality_id": "PETRONAS_SARAWAK_AUTHORITY",
+   "label": "Jurisdiksi PETRONAS-Sarawak",
+   "domain": "upstream"
+  },
+  {
+   "reality_id": "OD1_PERSONAL_TRANSITION",
+   "label": "Transisi OD1",
+   "domain": "personal"
+  },
+  {
+   "reality_id": "HERMES_SYSTEM_HEALTH",
+   "label": "Kesihatan sistem Hermes dan arifOS",
+   "domain": "infra"
+  },
+  {
+   "reality_id": "MALAYSIA_ENERGY_TRANSITION",
+   "label": "Transisi tenaga dan CCS Malaysia",
+   "domain": "energy"
+  }
+ ]
+}

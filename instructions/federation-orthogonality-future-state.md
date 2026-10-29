@@ -107,7 +107,7 @@ FRAME           → independent observer
 | core/primitives/action-classification | FED router action classes | PARTIAL |
 | core/primitives/evidence-contract | evidence-contract references in AGENTS.md | CANON only |
 | core/primitives/receipt-witness | vault999-writer + MerkleReceiptAnchor | LIVE |
-| core/routing/intent-routing | FED router + FLAME | LIVE |
+| core/routing/intent-routing | FED router (FLAME retired 2026-09-04) | LIVE |
 | core/routing/attention-budget | skill trigger system | PARTIAL |
 
 **Gap:** evidence-contract and attention-budget are canon-only. Phase 1 wires them to runtime gates.

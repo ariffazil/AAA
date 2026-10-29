@@ -1,0 +1,737 @@
+{
+ "record": "protocol-probe",
+ "phase": "after Phase-1 repair",
+ "generated_at": "2026-10-26T08:26:43Z",
+ "probe_method": "MCP initialize handshake + notifications/initialized + tools/list per organ port; published claims verified under EACH entry's own declared protocol; HTTP GET only",
+ "published_source": "/root/arif-fazil.com/sites/arif-fazil.com/public/.well-known/capabilities.json",
+ "published_source_deployed": false,
+ "live_surface": {
+  "organs_probed": 31,
+  "organs_live": 13,
+  "live_tools": 258,
+  "input_schema_valid": 258
+ },
+ "published_by_protocol": {
+  "webmcp": {
+   "claims": 18,
+   "confirmed": 18,
+   "defects": 0
+  },
+  "http": {
+   "claims": 7,
+   "confirmed": 7,
+   "defects": 0
+  },
+  "mcp": {
+   "claims": 15,
+   "confirmed": 15,
+   "defects": 0
+  }
+ },
+ "published_claims": [
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "federation_status",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "market_overview",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "market_ticker",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "wealth_briefing",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "gold_price",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "gold_history",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "gold_signals",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "gold_levels",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "gold_macro",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "makcikgpt",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "vitality_snapshot",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "biological_clock",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "readiness_score",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "basin_info",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "formation_detail",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "earth_globe_state",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "verify_did",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arif-fazil.com",
+   "mapped_organ": "UNMAPPED (no organs.yaml public URL)",
+   "name": "get_constitution",
+   "declared_protocol": "webmcp",
+   "verdict": "confirmed_reachable",
+   "http_status": 404,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arifos.arif-fazil.com",
+   "mapped_organ": "arifos",
+   "name": "observatory_snapshot",
+   "declared_protocol": "http",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "arifos.arif-fazil.com",
+   "mapped_organ": "arifos",
+   "name": "kernel_health",
+   "declared_protocol": "http",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "geox.arif-fazil.com",
+   "mapped_organ": "geox",
+   "name": "geox_health",
+   "declared_protocol": "http",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_primitive",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_health",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_diagnose",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_market",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_ledger",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_registry",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_claims",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_entropy",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "wealth_judge_handoff",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_indicator",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_backtest",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_entry_plan",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "wealth_synthesize",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_polix",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "capital_civx",
+   "declared_protocol": "mcp",
+   "verdict": "confirmed_live",
+   "http_status": null,
+   "method": "present in live tools/list"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "wealth_tools_list",
+   "declared_protocol": "http",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "wealth_markets_registry",
+   "declared_protocol": "http",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "wealth.arif-fazil.com",
+   "mapped_organ": "wealth",
+   "name": "wealth_health",
+   "declared_protocol": "http",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  },
+  {
+   "surface": "well.arif-fazil.com",
+   "mapped_organ": "well",
+   "name": "well_health",
+   "declared_protocol": "http",
+   "verdict": "confirmed_reachable",
+   "http_status": 200,
+   "method": "GET only (webmcp tool invocation not executed)"
+  }
+ ],
+ "organs": [
+  {
+   "organ": "arifos",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:8088/mcp",
+   "liveness": "live",
+   "tools": 9,
+   "input_schema_valid": 9,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "JUDGE_ONLY",
+   "server_version": "kanon-2026.10.26+07b4312"
+  },
+  {
+   "organ": "a-forge",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:7072/mcp",
+   "liveness": "live",
+   "tools": 118,
+   "input_schema_valid": 118,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "EXECUTE_AFTER_SEAL",
+   "server_version": "v2026.09.30-fix"
+  },
+  {
+   "organ": "aaa",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:3001/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "DISPLAY_ONLY",
+   "server_version": null
+  },
+  {
+   "organ": "openclaw",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18789/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "T1",
+   "server_version": null
+  },
+  {
+   "organ": "geox",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:8081/mcp",
+   "liveness": "live",
+   "tools": 27,
+   "input_schema_valid": 27,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "COMPUTE_ONLY",
+   "server_version": "v2026.10.03"
+  },
+  {
+   "organ": "wealth",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18082/mcp",
+   "liveness": "live",
+   "tools": 15,
+   "input_schema_valid": 15,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "COMPUTE_ONLY",
+   "server_version": "v2026.07.24"
+  },
+  {
+   "organ": "well",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18083/mcp",
+   "liveness": "live",
+   "tools": 10,
+   "input_schema_valid": 10,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "REFLECT_ONLY",
+   "server_version": "v2026.07.24"
+  },
+  {
+   "organ": "arifflow",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:7073/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "METABOLIZE_ONLY",
+   "server_version": null
+  },
+  {
+   "organ": "signal",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18084/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "OBSERVE_ONLY",
+   "server_version": null
+  },
+  {
+   "organ": "frame",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18085/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "OBSERVE_ONLY",
+   "server_version": null
+  },
+  {
+   "organ": "chron",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18102/mcp",
+   "liveness": "live",
+   "tools": 22,
+   "input_schema_valid": 22,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "COMPUTE_ONLY",
+   "server_version": "4.2.0"
+  },
+  {
+   "organ": "minimax-media",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18100/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "OBSERVE_AND_GENERATE",
+   "server_version": null
+  },
+  {
+   "organ": "claim-ledger",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:8791/mcp",
+   "liveness": "live",
+   "tools": 10,
+   "input_schema_valid": 10,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "APPEND_ONLY",
+   "server_version": "2026.09.15"
+  },
+  {
+   "organ": "filings",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18410/mcp",
+   "liveness": "live",
+   "tools": 8,
+   "input_schema_valid": 8,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "READ_ONLY",
+   "server_version": "2026.09.15"
+  },
+  {
+   "organ": "media-ingest",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18411/mcp",
+   "liveness": "live",
+   "tools": 4,
+   "input_schema_valid": 4,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "OBSERVE_AND_GENERATE",
+   "server_version": "4.1.0"
+  },
+  {
+   "organ": "numeric-audit",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:3013/mcp",
+   "liveness": "live",
+   "tools": 7,
+   "input_schema_valid": 7,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "ADVISORY_ONLY",
+   "server_version": "2026.09.15"
+  },
+  {
+   "organ": "session-federation",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18088/mcp",
+   "liveness": "live",
+   "tools": 6,
+   "input_schema_valid": 6,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "READ_ONLY",
+   "server_version": "1.0.0"
+  },
+  {
+   "organ": "fed",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:7074/mcp",
+   "liveness": "live",
+   "tools": 7,
+   "input_schema_valid": 7,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "ADVISORY_ONLY",
+   "server_version": "4.1.2"
+  },
+  {
+   "organ": "flame",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18901/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "ADVISORY_WORKER",
+   "server_version": null
+  },
+  {
+   "organ": "hermes",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18087/mcp",
+   "liveness": "live",
+   "tools": 15,
+   "input_schema_valid": 15,
+   "declares_mcp_in_organs_yaml": true,
+   "authority_ceiling": "RELAY_ONLY",
+   "server_version": "2026.09.25.1"
+  },
+  {
+   "organ": "aaa-signing",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18900/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "CRYPTO_HELPER",
+   "server_version": null
+  },
+  {
+   "organ": "postgres",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:5432/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "redis",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:6379/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "qdrant",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:6333/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "falkordb",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:6380/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "graphiti-mcp",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:18412/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "minio",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:9000/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "nats",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:4222/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "searxng",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:8080/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "headscale",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:8083/mcp",
+   "liveness": "no_mcp_surface",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "undeclared",
+   "server_version": null
+  },
+  {
+   "organ": "qwen",
+   "transport": "mcp",
+   "endpoint_local": "http://127.0.0.1:4357/mcp",
+   "liveness": "unreachable",
+   "tools": 0,
+   "input_schema_valid": 0,
+   "declares_mcp_in_organs_yaml": false,
+   "authority_ceiling": "COMPUTE_ONLY",
+   "server_version": null
+  }
+ ],
+ "organs_yaml_defects": []
+}

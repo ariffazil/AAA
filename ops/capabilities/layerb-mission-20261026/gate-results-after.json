@@ -1,0 +1,61 @@
+{
+ "compiler": "v1.1",
+ "inputs": {
+  "organs_yaml": "patched(+16/-0)",
+  "capabilities_json": "patched(+1/-1, byte-exact elsewhere)",
+  "probe_cache": "reused, evidence ts 2026-10-26T08:26:43Z"
+ },
+ "gate_results": [
+  {
+   "gate": "1 total==258",
+   "result": "PASS",
+   "detail": "258"
+  },
+  {
+   "gate": "2 organs==13",
+   "result": "PASS",
+   "detail": "13"
+  },
+  {
+   "gate": "3 inputSchema==258",
+   "result": "PASS",
+   "detail": "258"
+  },
+  {
+   "gate": "4 a-forge==118",
+   "result": "PASS",
+   "detail": "118"
+  },
+  {
+   "gate": "5 fed==7",
+   "result": "PASS",
+   "detail": "7"
+  },
+  {
+   "gate": "6 geox/wealth/well via corrected SOT",
+   "result": "PASS",
+   "detail": "True"
+  },
+  {
+   "gate": "7 observatory http+live",
+   "result": "PASS",
+   "detail": "http/confirmed_reachable/200"
+  },
+  {
+   "gate": "8 wealth 15+3=18",
+   "result": "PASS",
+   "detail": "15+3/18"
+  },
+  {
+   "gate": "9 no cross-transport death",
+   "result": "PASS",
+   "detail": "True"
+  },
+  {
+   "gate": "10 byte-identical",
+   "result": "PASS",
+   "detail": "6ff7b67dac0641c0"
+  }
+ ],
+ "all_pass": true
+}

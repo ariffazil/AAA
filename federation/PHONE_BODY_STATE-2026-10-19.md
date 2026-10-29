@@ -8,8 +8,16 @@
 
 | Body | Role | Tailnet | Bridge | State (OBS) |
 |---|---|---|---|---|
-| Honor 600 Pro | **ACTIVE main** | `100.64.0.6` | `http://100.64.0.6:8765` | health 200; battery 100%, 33.0 °C, 4443 mV, cycle 67; sensors live (`ak0991x` magnetometer); F-Droid Termux:API active |
-| Samsung S24 | **STANDBY fixed** | `100.64.0.1` | `http://100.64.0.1:8765` | health 200; battery 100%, 39.6 °C, plugged AC |
+| Honor 600 Pro | **ACTIVE main** | `100.64.0.6` | `http://100.64.0.6:8765` | **BRIDGE DOWN at 2026-10-27 17:27 MYT** (`/health` -> 000). Tailnet alive: `active; direct 49.125.97.162:18627`. Last confirmed-green: 2026-10-19 |
+| Samsung S24 | **STANDBY fixed** | `100.64.0.1` | `http://100.64.0.1:8765` | **OFFLINE** - Tailscale `offline, last seen 7d ago`; `/health` -> 000. Do not plan around this body |
+
+**Freshness (added 2026-10-27, SOUL reforge):**
+- `observed_at`: 2026-10-27T17:27:31+08:00
+- `valid_until`: null - no freshness policy exists, so no expiry date is asserted
+- `freshness_rule`: REPROBE_BEFORE_DEPENDENT_ACTION - the reader probes; this file does not grant a time window it was never authorised to define
+- `source`: live probe from KVM8
+- `probe`: `for ip in 100.64.0.6 100.64.0.1; do curl -s -m 6 -o /dev/null -w "$ip %{http_code}\n" http://$ip:8765/health; done`
+- **Rule:** tailnet reachability is not bridge reachability. Honor answering ping with `/health` at 000 means the phone is on the network and the bridge service is dead - not a dead body, not a healthy body.
 
 - VPS client SOT: `/root/AAA/phone-bridge/.env` → Honor `.6`; `BRIDGE_USE_HTTPS=0`. Switch recorded in-file: **2026-09-29 14:0x MYT, S24 → Honor** (same day as localhost.run → Tailscale direct). Honor has been the canonical body since then.
 - S24 fallback env backup: `/root/AAA/phone-bridge/.env.bak-s24-active-*` — do not switch without a reason.

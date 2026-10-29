@@ -1,7 +1,8 @@
 ---
 name: flame-stage-routing
 description: >
-  FLAME stage routing — tool_name interception that routes payloads to the right tier
+  ⛔ RETIRED ORGAN 2026-09-04 — historical lessons only; do not operate. Free lane = FED litellm
+  :4000 (SEA-LION/qfree, RM0). Was: FLAME stage routing — tool_name interception that routes payloads to the right tier
   (T0=Ollama local, T1=Groq cloud, T2=governed frontier). Covers the full pipeline:
   config rules → router interception → API passthrough → cascade fallback.
   Also covers the critical two-source drift pitfall and dead provider cleanup patterns.
@@ -15,6 +16,15 @@ floor_scope:
   - F4
   - F9
 ---
+
+> ⛔ RETIRED ORGAN — DO NOT OPERATE (tombstone: organs.yaml `flame` RETIRED 2026-09-04, 888 directive).
+> Cause of death: free-tier exhausted, ZERO live callers, fallback burned paid qwen-max (7 wasted retries).
+> Corpse state (probed 2026-10-26): /root/FLAME + /root/A-FORGE/flame ABSENT, flame-api.service unit gone,
+> :18901 dead, archive dir vanished. LIVE replacement: FED litellm :4000 free lanes — SEA-LION (free local)
+> primary + QwenCloud qfree rungs (glm-5.3 exp 2026-11-23, deepseek-v4.1-flash exp 2026-12-13, zero cost).
+> This skill survives ONLY for its lessons (two-source drift, dead-provider cleanup, cold-start cascade).
+> "FREE IS FREE" (F13 2026-10-26): the concept lives in litellm lanes; the organ stays in the tombstone.
+> Revival requires F13 + a NAMED caller.
 
 # FLAME Stage Routing — tool_name → tier interception
 

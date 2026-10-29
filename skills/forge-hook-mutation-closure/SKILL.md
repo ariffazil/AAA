@@ -175,6 +175,18 @@ Don't write the receipt before the test passes.
 
 9. **Don't propose more than 3 options to F13.** A/B/C menu is fine. A/B/C/D/E is choice paralysis. If you have 4+ options, recommend one with a one-line justification and let the human override — don't list them.
 
+11. **A hook handler's SIGNATURE is part of the contract, and the engine swallows the mismatch (2026-10-27).** Hermes invokes every plugin hook with **keywords only** (`hermes_cli.plugins.invoke_hook(**kwargs)`; `agent/inline_tool_executors.tool_hook_ids` supplies `session_id/turn_id/tool_call_id/task_id`). A handler written `def on_post_tool_call(agent, **kwargs)` therefore raises `TypeError: missing 1 required positional argument` on EVERY call — and `emit_terminal_post_tool_call` wraps the emit in `except Exception: pass`, so the hook silently does nothing while `plugins list` shows `enabled` and health is green. Live cost: the INV-ACT-01 promissory gate counted 0 tool calls and rewrote honest turns (including one that had just delivered a PDF), because its counter never incremented.
+    ```
+    LAW: after writing or reviewing any hook, invoke it EXACTLY as the engine does:
+         handler(function_name=..., args={}, result=..., session_id=..., turn_id=..., tool_call_id=...)
+    A handler that only passes when called with a positional `agent` is dead code with a green light.
+    Static check that survives: parse register_hook("event", fn) -> resolve fn -> assert no REQUIRED
+    params outside (self, agent). Resolving the callback NAME matters: a `def pre_tool_call` grep
+    misses `_on_pre_tool_call`, and a narrow grep is how you fabricate a clean zero.
+    ```
+
+12. **Unit tests must never write the production ledger (2026-10-27).** The same gate's tests appended fixture violations into `/root/.hermes/logs/inv_act_promissory_violations.jsonl` — 4 of 6 live rows were test data, so any "violations today" metric read from that file counted the tests as crime. Route the path through an env var resolved at **call time**, not import time (`os.environ.get("X_PATH", DEFAULT)` inside the writer), and set it in `setUp`. Prove it: record the live file's line count before and after the suite and assert equality.
+
 10. **"Belum habis" is a label, not a confession.** When you cannot complete a step in this session, write "belum habis: <what's missing>" in the receipt. Don't fold unfinished work back to the user as a question. Don't pretend it's done.
 
 ## References

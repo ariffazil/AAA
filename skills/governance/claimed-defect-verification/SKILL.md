@@ -244,3 +244,7 @@ class, the value at the boundary), not the phrasing of the message.
 - `live-system-investigation` — how to probe without causing harm (redaction, mutation class,
   attribution). This skill covers the inbound direction: you were *given* a failure claim.
 - `assertion-window-discipline` — the pre-assertion gate before any negative claim.
+
+## Eureka updates (auto)
+
+- 2026-10-28 · `LESSON::TICKET-CLAIM-VS-LIVE-RESIDUAL::v1` · A ticket's description is a CLAIM about reality, not reality. p1-memory-audit-zero-laundering claimed 'arif_memory audit still writes witness human/ai/earth = 0.0 and G_star = 0.0 when unmeasured'. A live probe showed null, not 0.0 - that half was already…

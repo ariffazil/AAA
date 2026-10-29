@@ -1,0 +1,167 @@
+{
+ "schema_version": "aaa.projection.agent_task_alignment.v1",
+ "algorithm_version": "v1 (owner-token > word-boundary keyword > override)",
+ "generated_utc": "2026-10-27T16:18:19Z",
+ "producer": "/root/scripts/projection_pipeline.py",
+ "producer_sha256": "384e6b96b8d022812e80ccf68456a36dbaeac6e962dd811d2916fd3e27c4b582",
+ "source": {
+  "path": "/root/work/tasks.json",
+  "sha256": "f78bc8550b7cacd082913541a710f848f90f4fdb1b7803900cbe455a8c20015d",
+  "mtime_utc": "2026-10-27T15:46:41Z",
+  "records": 296,
+  "status_field": "advisory; view derives from owner/owner_raw"
+ },
+ "registry": {
+  "path": "/root/AAA/registries/AAA_AGENTS_REGISTRY.json",
+  "sha256": "ccaf10b672fc851f3aa2f4f4b032a994793e346df3863d8e817842d8e35eb349",
+  "ids": [
+   "opencode",
+   "kimi-code",
+   "claude-code",
+   "hermes-asi",
+   "hermesarifos-bot",
+   "aaa-gateway",
+   "geox-witness",
+   "wealth-witness",
+   "geox-personal",
+   "arifos-kernel",
+   "777-FORGE",
+   "antigravity",
+   "codex-cli",
+   "grok-build",
+   "mesa-test-agent",
+   "copilot-cli"
+  ],
+  "status": "READ_ONLY_BUILD_SOURCE"
+ },
+ "stale_if_sha_differs": {
+  "rule": "regenerate when sha256(tasks.json) != source.sha256",
+  "previous_source_sha256": "f78bc8550b7cacd082913541a710f848f90f4fdb1b7803900cbe455a8c20015d",
+  "was_stale_before_this_run": false
+ },
+ "counts": {
+  "total": 296,
+  "closed": 44,
+  "non_closed": 252,
+  "unmeasured": 108,
+  "unassigned_open": 0
+ },
+ "alignment": {
+  "arifos-kernel": {
+   "total": 127,
+   "open": 113,
+   "unmeasured": 42,
+   "p0_open": 14,
+   "p1_open": 44
+  },
+  "opencode": {
+   "total": 66,
+   "open": 57,
+   "unmeasured": 25,
+   "p0_open": 2,
+   "p1_open": 17
+  },
+  "777-FORGE": {
+   "total": 35,
+   "open": 31,
+   "unmeasured": 12,
+   "p0_open": 1,
+   "p1_open": 12
+  },
+  "kimi-code": {
+   "total": 16,
+   "open": 15,
+   "unmeasured": 8,
+   "p0_open": 0,
+   "p1_open": 3
+  },
+  "hermes-asi": {
+   "total": 15,
+   "open": 14,
+   "unmeasured": 4,
+   "p0_open": 0,
+   "p1_open": 2
+  },
+  "SOVEREIGN": {
+   "total": 12,
+   "open": 10,
+   "unmeasured": 9,
+   "p0_open": 1,
+   "p1_open": 3
+  },
+  "aaa-gateway": {
+   "total": 9,
+   "open": 7,
+   "unmeasured": 5,
+   "p0_open": 0,
+   "p1_open": 4
+  },
+  "wealth-witness": {
+   "total": 2,
+   "open": 2,
+   "unmeasured": 2,
+   "p0_open": 0,
+   "p1_open": 0
+  },
+  "geox-witness": {
+   "total": 1,
+   "open": 1,
+   "unmeasured": 1,
+   "p0_open": 0,
+   "p1_open": 0
+  },
+  "codex-cli": {
+   "total": 2,
+   "open": 1,
+   "unmeasured": 0,
+   "p0_open": 0,
+   "p1_open": 0
+  },
+  "claude-code": {
+   "total": 1,
+   "open": 1,
+   "unmeasured": 0,
+   "p0_open": 0,
+   "p1_open": 0
+  },
+  "UNASSIGNED": {
+   "total": 10,
+   "open": 0,
+   "unmeasured": 0,
+   "p0_open": 0,
+   "p1_open": 0
+  }
+ },
+ "confidence": {
+  "keyword": 135,
+  "id-explicit": 49,
+  "override": 4,
+  "owner-token": 87,
+  "unassigned": 10,
+  "owner-sovereign": 11
+ },
+ "overrides_applied": [
+  {
+   "id": "s3-export-delete-memory-proof",
+   "agent": "arifos-kernel",
+   "reason": "'port' matched inside 'export'"
+  },
+  {
+   "id": "p1-well-legacy-before-20261016",
+   "agent": "arifos-kernel",
+   "reason": "'well' is the WELL organ, not geology"
+  },
+  {
+   "id": "p2-user-room-isolation",
+   "agent": "hermes-asi",
+   "reason": "'cache' unrelated; DM/lane isolation is gateway work"
+  },
+  {
+   "id": "well-head-task-extension-broken",
+   "agent": "opencode",
+   "reason": "'well' matched an MCP tool-registration defect"
+  }
+ ],
+ "registry_ids_unknown": [],
+ "authority_note": "assignment is a routing proposal; it is not authorization and not owner acceptance"
+}

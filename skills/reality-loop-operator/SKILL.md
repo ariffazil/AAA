@@ -206,3 +206,28 @@ The loop may rewrite methods, never the constitution.
 > When zen margin → 0, the loop seals. When zen margin > 0, the loop forges.
 > The federation doesn't ask "should I stop?" — it measures whether continuing produces value.
 > DITEMPA BUKAN DIBERI — and the forging knows when to stop.
+trc-skill-align-20261028T135921Z
+trc-skill-align-20261028T135921Z
+### Addendum 2026-10-28 — zen_margin must not ingest gated or simulated metrics
+
+zen_margin sums entropy reduction + hypothesis resolution + evidence completeness. If the
+entropy or health term is a min-gated FQ aggregate or a SIMULATION-labelled reading, the loop
+auto-seals on a number that does not discriminate (2.8x input change, same verdict token).
+
+```
+RULE: zen_margin accepts only MEASURED, un-gated, provenance-clean inputs. Gated FQ and
+SIMULATION-origin readings are DISPLAY_ONLY — they may inform the RETURN stage, never the
+seal decision.
+```
+
+
+<!-- AAA-SKILL-PATCH 2026-10-28 provenance=333-AGI/compile trace=trc-skill-align-20261028T135921Z -->
+
+### Addendum 2026-10-28 - zen_margin must not ingest gated or simulated metrics
+
+If the entropy/health term is a min-gated FQ aggregate or a SIMULATION-labelled reading,
+the loop auto-seals on a number that does not discriminate (2.8x input change, same token).
+
+RULE: zen_margin accepts only MEASURED, un-gated, provenance-clean inputs. Gated FQ and
+SIMULATION-origin readings are DISPLAY_ONLY - they may inform RETURN, never the seal.
+

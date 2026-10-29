@@ -1,0 +1,54 @@
+# HASH MANIFEST — mission LAYER_B_DISCOVERY_CLOSURE_AND_FED_CALIBRATION
+# generated 2026-10-26T14:13:13Z by 333-AGI · all hashes computed, none transcribed
+# trace trc-layerb-mission-20261026
+# post-verification-lane revision: FED document schema + validator added; protocol-probe.* regenerated as protocol records;
+# coverage snapshots kept under contract-coverage.{before,after}.json; pilot MD conformance claim scoped + corrected
+
+## Phase 0 frozen baseline (pre-mutation)
+/var/www/html/.well-known/machine-contract.json                7921e5bfa1acc91b514782e1e9c62478dc2098ec644fd8ffe50211b072589026  938594B
+/root/AAA/ops/capabilities/machine-contract.json (v1.0 output) 7921e5bfa1acc91b514782e1e9c62478dc2098ec644fd8ffe50211b072589026  938594B
+/root/AAA/ops/capabilities/CONTRACT-COVERAGE.md                cd61f68b82dab2dd54d3989780d13da89dc5add368b710dc94a82c9053c4817a  6600B
+compile_machine_contract.py v1.0 (superseded by v1.1)          ea1bd293fcf82ab3c64f1681395cd06c429bf675aeecea9213afe0124ec853b8  26080B
+organs.yaml pre-patch git blob                                 0fd38b7a939a65d303e00fe24d6574b26a40ea23
+capabilities.json pre-patch git blob                           4f457d7eddd50c89a5df68945002ef772a4bc6e7
+
+## Mutated sources (post-mutation, live on disk)
+/root/AAA/federation/organs.yaml  7f7e99855ae31c1902e74514ec3295c21f979899e7f2bbfe41195b336e686f34  33667B
+/root/arif-fazil.com/sites/arif-fazil.com/public/.well-known/capabilities.json  8c53976b0d89d02c3bc4aa340026382830d36bc30df3ac1f5587875e3f0fff0f  13694B
+/root/AAA/ops/capabilities/compile_machine_contract.py  48782166194e184126d42695d8d54b498ccb6171bb20e85f1623b1dce0996bca  28553B
+
+## Mission deliverables (sha256 / bytes)
+CONTRADICTION-UNKNOWN-LEDGER.md                      620ea648e09852a133dd4489f4a9a19a2144f846ba09cb536ab08ebf19b11af8  7407B
+DISCOVERY-SOT-REPAIR.md                              a36feadedd675789ac62d2bb47fceff5c385acc2e7be9cbc687f226eab9f5c34  9720B
+FED-TYPED-CONTRACT-PILOT.md                          40c625c8d5eb223aee4a1514aa2d85725d68dbbdb9dfe47117cef3dd82c5bae6  15432B
+ROLLBACK.md                                          634969f53b61e301974161875a7b3d78b3d072d3751bfcd3e9b4bf16864833f4  5261B
+contract-coverage.after.json                         d545b75e6835995583333db03334e334e0fe1daa287312f649b99393ed9ae253  23021B
+contract-coverage.before.json                        ef1159f22e6bd366a5e48b865e5980fb0059622eb391a1ec7ec6ec602114259d  23244B
+fed-pilot-raw.json                                   9fe0ba21d6b8ca424307f0f47fc7cc6e3f4b88eba680460ceb3035b8170e5811  128279B
+fed-typed-contract.candidate.json                    d6e002a6d9ba2ca49975311fda027dd18f288a68ba6193d09cdadfaf28c4eb53  27419B
+fed-typed-contract.candidate.schema.json             ab7fd6ab5336bd49cae1171194c9915e217ba82cce80ac801f0ae36cb4b13551  3937B
+fed_pilot_probe.py                                   c0894790605eb1872ba9e2fa2a7a7d7a5e9508e2810ff013d8dd306c34a47e16  3445B
+gate-results-after.json                              a0cdb2b855023136d4554dfd2acad73907374ab3c8c7fa1ea15cdec4ef28701b  1103B
+gate-results.json                                    b78bb767140aa75ead1acccbc7d607a570f7125df1c4e45c9d2a0c6be4583a5f  1018B
+machine-contract-extension.schema.json               5c269d4ecc5856a65b3f53633549cbb57e7428f2efd185a2d3f1fb7e2baf3eb2  8753B
+machine-contract.after.json                          6ff7b67dac0641c07b7e8dd6bdaa04bf8d42a31c1aa0f2111e70c6636de03129  1068716B
+machine-contract.before.json                         e90b9d63740acae746a6cf6d3a0384e4ab193c5bbf229e4e5e1c71d068e19e07  938594B
+metrics.json                                         a41e6a9826d848c1152752caab8e31123954a1b130c56b09b38de6fbf10a464d  1709B
+protocol-probe.after.json                            fda1b770beda3b940dfba22979f858f784b25b3625bac6908deed870b9024267  20243B
+protocol-probe.before.json                           048035c9401ced543280fcacf9850e24860eb5b51098168a44f3d86dd3d194fd  20537B
+source-diff-capabilities.json.diff                   6692f7bc242b891f5b7ea8e8f7dffeca6998c9643db4e8b1f85289e4de81e34f  573B
+source-diff-organs.yaml.diff                         6d3990bec7c10bb09982bb5e77f57d7f0a97c5396e9226a228bc5e982a80fb37  1259B
+validate_candidate.py                                2c62e0e5276f6b014b11d25257db33ac262972b484eb4d716cbc5d252df07b66  4711B
+after/contract-coverage.json                         d545b75e6835995583333db03334e334e0fe1daa287312f649b99393ed9ae253  23021B
+after/machine-contract.json                          6ff7b67dac0641c07b7e8dd6bdaa04bf8d42a31c1aa0f2111e70c6636de03129  1068716B
+
+## Live public surface — NOT deployed, unchanged by this mission
+https://arif-fazil.com/.well-known/capabilities.json still returns protocol='mcp' for observatory_snapshot (verified post-mutation by author AND by verify lane)
+machine-contract.json / contract-coverage.json on the public surface are the prior session's artifacts (7921e5bf… / 6b5182fe…), not rewritten here
+
+## Verification lane (555-ASI, independent)
+Re-probed 11 claims: 9 CONFIRMED, 1 CONFIRMED with a filename defect (fixed), 1 PARTIALLY CONFIRMED (fixed).
+Recompile from unchanged inputs reproduced byte-identically: sha256 6ff7b67dac0641c0… (author's after-hash).
+Conformance after fix: SCOPE A (envelope) 7/7, SCOPE B (document) 1/1, 4 reject-controls + 2 accept-controls all correct. Reproduce:
+    /usr/bin/python3 /root/AAA/ops/capabilities/layerb-mission-20261026/validate_candidate.py \
+      /root/AAA/ops/capabilities/layerb-mission-20261026

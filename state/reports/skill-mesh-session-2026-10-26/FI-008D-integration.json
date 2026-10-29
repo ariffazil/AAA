@@ -1,0 +1,86 @@
+{
+  "actor_id": "kimi-code/FI-008",
+  "role": "integration (lanes A+B+C merged; proposals only, zero repo mutation)",
+  "source_sha": "baseline afc68ae274b0f1c412876eea4f52dc1626eb4a77 (== origin/main, unchanged all session); concurrent local commits 50e406d + fcea81b by claude-code/FI-002 touched scripts/, state/reports/, scars/ only \u2014 0 files under skills/, baseline valid",
+  "observed_at": "2026-10-26T08:25:00Z",
+  "scope": [
+    "ignition ordering",
+    "recursive-improvement plan per applied skill",
+    "mesh integration of every finding",
+    "stop-condition audit"
+  ],
+  "observations": [
+    "[OBS] Stop-condition audit, each checked against live evidence: repo is expected (git toplevel=/root/AAA, remote ariffazil/AAA) OK; origin/main unchanged during analysis OK; concurrent agent modified files OUTSIDE skills/ scope OK (disclosed, not a collision); canonical ownership WAS ambiguous (two canonical claims) \u2014 resolved to /root/AAA/skills by live evidence (config+symlink direction+index root+V3 header all agree), so not a HOLD trigger, but recorded as contradiction A/B; no secret material encountered in skill trees sampled; no mutation crosses an organ boundary (all proposals touch AAA-owned or kimi-view files only, and are proposals, not actions); evidence is NOT a stale generated index \u2014 the stale registry block was independently re-derived via live census + raw tree probes.",
+    "[OBS] Mesh reality check vs session objective: the kimi runtime DOES ignite AAA canonical skills through merged views (proven twice); the catalog is NOT being inflated this session (0 new skills forged \u2014 findings land as state-plane artifacts, which is AAA's actual lane: attention/discovery/routing/state plane, never execution)."
+  ],
+  "IGNITION_ORDER": {
+    "rationale": "ignite spine-contact first (cheapest live proof the mesh serves the agent), then machine-authority (census, to distrust every count including my own), then the federation protocol (RSI-mesh), then quality gates (linter) after its L3 repair, then the audit pair on the enumerated defect queues. Organ skills stay in their organs' lanes.",
+    "applied_this_session": [
+      "1. 000-salam \u2014 L6 reached (receipt db40f90d)",
+      "2. skills-census.py (tool, read path) \u2014 live WARN derived, feeds every lane",
+      "3. rsi-federation-mesh \u2014 L6 reached, protocol executed steps 1-5",
+      "4. FORGE-skill-linter \u2014 BLOCKED at L3 (stale dependency name); queued as first post-repair ignition",
+      "5. AUDIT-recursive-audit \u2014 next (consumes: 6 duplicate groups, 62 ambiguous leaves, 91 dead alias rows)",
+      "6. AUDIT-skill-atlas \u2014 next (gap detection after dedup truth is stable)"
+    ],
+    "predicted_first_ignition_next_session": "rsi-federation-mesh Step 1-2 \u2014 it inherits this session's artifacts via carry-forward; that is the recursive handoff the constitution's zen requires"
+  },
+  "recursive_improvement_plan_per_applied_skill": [
+    {
+      "skill": "000-salam",
+      "defect_observed": "instrumentation emits flow receipt and selection-witness event, but outcome never closes (outcome_success null) and liveness not bumped",
+      "rsi_pass": "Blue-diagnose done; fix = C3/C4 ledger joins (owner: AAA state-plane), NOT a content edit to the skill",
+      "verify_next": "next session: selections.jsonl entry for a spine ignition carries outcome_success=true; acceptance probe = tail ledger"
+    },
+    {
+      "skill": "skills-census.py (tool)",
+      "defect_observed": "--write registry block refreshes only on manual run; readers of the yaml cannot tell it is stale; WARN reason not machine-listed",
+      "rsi_pass": "fix A1 (run --write under gate) + add 'warn_reasons: []' field to output (owner: A-FORGE tool lane, proposal only)",
+      "verify_next": "yaml block byte-matches a fresh --json within the same minute"
+    },
+    {
+      "skill": "rsi-federation-mesh",
+      "defect_observed": "its own \u00a73.2/\u00a76 carry stale 2026-08 numbers and reference a nonexistent registry field (reg['skills']); its propagation target queue was dead 43 days",
+      "rsi_pass": "rewrite \u00a73.2 as generated-from-census (with generated_at stamp), \u00a76 snippet -> SKILLS_INDEX.json schema; this session's queue append re-animates propagation",
+      "verify_next": "run its Step 3 against real schema without error; queue shows this entry consumed by an audit owner"
+    },
+    {
+      "skill": "FORGE-skill-linter",
+      "defect_observed": "dependency 'arifos-recursive-audit' unresolvable -> L3 FAIL",
+      "rsi_pass": "fix dependency id to 'recursive-audit' (A-FORGE gate), then ignite it over the 62 ambiguous_leaf_names (its own lane: trigger collisions)",
+      "verify_next": "linter itself passes its own lint; produces collision report for duplicate group names"
+    },
+    {
+      "skill": "APEX-fff-loop-protocol (retired duplicate, applied-as-defect not as-skill)",
+      "defect_observed": "ignitable dead copy commanding self-SEAL",
+      "rsi_pass": "C1 alias-stub replacement; census dedup class (C5)",
+      "verify_next": "Skill('APEX-fff-loop-protocol') refuses or resolves to stub->recursive-audit; census duplicate count drops a group"
+    }
+  ],
+  "contradictions": [
+    "[OBS] see lanes A/B/C \u2014 consolidated priority order: C1 (self-seal duplicate) > A1 (stale registry telemetry) > B1 (overlay broken links) > C2/linter > A3 (dead aliases) > A2 (dual canonical claims) > C3/C4 (outcome closure) > B2/B3/B4/B5 > A4."
+  ],
+  "unknowns": [
+    "[UNKNOWN] L7 per-skill refusal behaviour; L8 cross-harness \u2014 nothing this session may be called MESH-VERIFIED.",
+    "[UNKNOWN] Independent verification not yet performed: I am proposer and executor-of-reads; constitution invariant 7/8 forbids me promoting my own findings into canon."
+  ],
+  "proposals": [
+    "[ACTION] D1: hand these four artifacts to an independent verifier (555-betul / aa-verifier / a different harness agent) \u2014 only after its live re-probes may any skill move above PARTIAL.",
+    "[ACTION] D2: schedule mutation gates for C1, A1, C2, B1 as one branch + evidence bundle (isolated branch per invariant 8), each with its acceptance probe from the RSI plan above.",
+    "[ACTION] D3: append this session's findings to federation-sync-queue.jsonl (done below, append-only state-plane write, the skill's own F11 obligation).",
+    "[ACTION] D4: label discipline now: only 000-salam and rsi-federation-mesh may be called ACTIVE (L6, kimi harness); the other ~1,290 loadable skills are L0-L5 static-pass or UNKNOWN. MESH-VERIFIED: zero."
+  ],
+  "artifact_digests": {
+    "FI-008A": "c4fce8016e02e6583583fc77b16031fb202bd2aecf416438fb9b5355bd4be1f7 (pre-source_sha-patch)",
+    "FI-008B": "9f0d6a4be7f155772e513bcdbcf2d6b06ccb444f9fb2fa040e9051083db68366 (pre-patch)",
+    "FI-008C": "16fce4819241423f1c731dcd683b020fa6b4877234efb4e27c9ac4057a61ee97 (pre-patch)",
+    "census_live": "08da84c5f8099c35a7bf57f3f0ac4f18c7179e46796044e7eaaf752d68713666",
+    "witness_hash_census": "620403835b61e2ad"
+  },
+  "tests": [
+    "stop-condition checklist against live evidence (this file, observations)",
+    "ignition-order executed in-session with receipts",
+    "federation-sync-queue append verified by tail after write"
+  ],
+  "verdict": "PARTIAL"
+}

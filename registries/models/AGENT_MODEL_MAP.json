@@ -1078,10 +1078,10 @@
       "balance_note": "PURGED 2026-08-05 by 333-AGI. Static balance (was None) removed. Use FED :7074 for live balance -- never trust cached registry."
     },
     {
-      "provider_id": "qwen-individual",
+      "provider_id": "qwen-token-plan-individual",
       "provider_name": "Qwen Cloud Token Plan INDIVIDUAL Pro (home.qwencloud.com)",
       "jurisdiction": "CN (SG region endpoint)",
-      "endpoint_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "endpoint_url": "https://token-plan.maas.qwencloudapi.com/compatible-mode/v1",
       "anthropic_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic",
       "api_key_ref": "secrets::QWEN_INDIVIDUAL_API_KEY",
       "billing_model": "monthly_token_plan",
@@ -1094,17 +1094,23 @@
       "route": "direct",
       "dialect": "openai_chat",
       "live_models_probed": [
-        "deepseek-v4-pro",
+        "auto",
         "deepseek-v4-flash-0731",
-        "qwen3.8-max",
+        "deepseek-v4-pro",
+        "deepseek-v4.1-flash",
+        "glm-5.2",
+        "glm-5.3",
+        "qwen-audio-3.0-asr-flash",
+        "qwen-audio-3.0-realtime-plus",
+        "qwen-audio-3.0-tts-plus",
+        "qwen-image-3.0-pro",
+        "qwen3.6-flash",
         "qwen3.7-max",
         "qwen3.7-plus",
-        "qwen3.6-flash",
-        "glm-5.2",
+        "qwen3.8-flash",
+        "qwen3.8-max",
         "wan2.7-image",
-        "wan2.7-image-pro",
-        "qwen-audio-3.0-realtime-plus",
-        "qwen-audio-3.0-tts-plus"
+        "wan2.7-image-pro"
       ],
       "balance_source": "FED ::7074 (fed_status / curl :7074/health)",
       "balance_note": "PROMOTED 2026-08-08 from Track-B estimate to Track-A direct. Probed live via api.deepseek test completions. 7-day window: 94.5% remaining (40K total). 5hr limit temporarily removed by QwenCloud.",
@@ -1120,8 +1126,10 @@
         "aug_spend": 0.0,
         "credit_packs_purchased": 0
       },
-      "last_verified": "2026-08-08",
-      "note": "WIRED 2026-08-08 by user direction. THIS is the live quota lane (not Team). Team plan (QWEN_API_KEY) is EXHAUSTED (0/150,000 credits). Individual has quota: 94.5% of 40K 7-day window remaining. Constitutional eligible: deepseek-v4-pro, glm-5.2, qwen3.8-max."
+      "last_verified": "2026-10-29",
+      "note": "WIRED 2026-08-08 by user direction. THIS is the live quota lane (not Team). Team plan (QWEN_API_KEY) is EXHAUSTED (0/150,000 credits). Individual has quota: 94.5% of 40K 7-day window remaining. Constitutional eligible: deepseek-v4-pro, glm-5.2, qwen3.8-max.",
+      "endpoint_note": "Endpoint migrated to token-plan.maas.qwencloudapi.com (roster+chat 200 live 2026-10-29); legacy ap-southeast-1 also still serving.",
+      "notes": "2026-10-29 F13 sambung: renamed qwen-individual -> qwen-token-plan-individual (canonical id already referenced by models[] fallback chains since 2026-08-05); model \"auto\" = platform meta-router added; wired to OpenCode provider + FED alias qwen-auto."
     }
   ],
   "models": [

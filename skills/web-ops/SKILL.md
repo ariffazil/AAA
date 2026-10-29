@@ -1,13 +1,13 @@
 ---
 name: web-ops
 id: web-ops
-version: 2.0.0
+version: 2.1.0
 owner: AAA
 risk_tier: low
 floor_scope: [F1, F2, F4, F7, F12]
 autonomy_tier: T1
 description: "Use when a web search, link or page must be read. Routes search, extract, extraction-blocked fallback and recovery down one ladder."
-tags: [web, search, extraction, fallback, searxng, firecrawl, scrape, evidence, research, agentic-web]
+tags: [web, search, extraction, fallback, searxng, firecrawl, scrape, evidence, research, agentic-web, og-image, image-fetch, ecommerce-malaysia]
 triggers:
   - "web"
   - "optimization"
@@ -27,6 +27,7 @@ triggers:
   - "media"
   - "probe"
   - "Use when a shared link must be read as evidence."
+  - "get image of a product / find product photo"
   - "hermes"
   - "search"
   - "searxng"
@@ -433,6 +434,38 @@ Union of every member's scars. This is the part a summariser would destroy — s
 - **Dedup by DOI** before it reaches the claim graph.
 - **No agent self-ratifies truth.** Evidence-weighted consensus with confidence levels, provenance lineage
   preserved, re-examination on new evidence, and F13 ratification for knowledge promotion.
+
+### Media lane (2026-10-28, forged from live session — Arif: "why did the agent stop at Brave 402")
+
+- **"Get an image of X" is an OUTCOME, not a capability name.** The failing agent treated "image"
+  = image-search API (Brave → 402 `Prepaid credit balance is insufficient`, quota dead) and
+  Watsons scraping (bot-walled) as the whole ladder, then stopped and offered prose instead of
+  the product. The actual ladder, all verified on this host the same hour:
+  1. search for the **product page** on a curl-able MY pharmacy (exa live, or DDG HTML) —
+     no image API anywhere in the chain;
+  2. `curl` the page, take `<meta property="og:image">` — retailers embed the product photo
+     for social sharing, free;
+  3. `curl -sIL` the image URL → assert `200` + `content-type: image/*`;
+  4. download, `file` it, deliver.
+- **Watsons is the only hard block; AA Pharmacy / Alpro / Big Pharmacy are all plain curl.**
+  Measured: `aapharmacy.com.my` and `alpropharmacy.com.my` product pages return full HTML
+  (2.2 MB / 555 KB) with og:image; image CDN answers `image/jpeg` 200.
+- **`http://` og:image URLs work via a 301 to https** — don't discard a hit because the meta
+  tag says `http://`; follow redirects with `-L` and verify the final `content-type`.
+- **Verify the og:image is the PRODUCT, not a banner.** An og:image with a generated filename
+  (`Slide22_<uuid>.jpg`) may be a marketing slide; a product-code filename
+  (`1697677050797.jpg`) is more likely the product shot. When the vision lane is down, say
+  which one you could NOT verify — do not ship the first URL as "the product image".
+  Filename heuristics lie in BOTH directions (proven 2026-10-28: `Slide22_*.jpg` WAS the
+  product box, `1697677050797.jpg` WAS a banner) — only pixel inspection settles it.
+- **Vision lane "404" is usually a wrong base_url, not a dead lane.** `GEMINI_BASE_URL` in
+  kunci-mas.flat.env ends in `/openai` (OpenAI-compat path); appending `/models/X:generateContent`
+  to it yields 404. Native REST path verified working 2026-10-28:
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY`
+  body `{"contents":[{"parts":[{"text":...},{"inline_data":{"mime_type":"image/jpeg","data":<b64>}}]}]}` (200, ~3s).
+  OpenCode GO lane needs `x-opencode-session` header and returns 402 upstream — not usable for vision.
+- **Brave 402 is a billing state, not a lane death sentence for the task.** Naming the quota
+  error is the reason for a pivot, never the end of the request.
 
 ### Cross-lane
 

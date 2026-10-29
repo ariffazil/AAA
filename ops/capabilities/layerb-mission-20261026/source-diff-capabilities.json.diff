@@ -1,0 +1,13 @@
+diff --git a/sites/arif-fazil.com/public/.well-known/capabilities.json b/sites/arif-fazil.com/public/.well-known/capabilities.json
+index 4f457d7..ead1c28 100644
+--- a/sites/arif-fazil.com/public/.well-known/capabilities.json
++++ b/sites/arif-fazil.com/public/.well-known/capabilities.json
+@@ -145,7 +145,7 @@
+         {
+           "name": "observatory_snapshot",
+           "description": "Full federation observatory state (110KB JSON)",
+-          "protocol": "mcp",
++          "protocol": "http",
+           "path": "/api/observatory/v1/snapshot"
+         },
+         {

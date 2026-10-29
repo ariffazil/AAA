@@ -244,3 +244,14 @@ typically starts at 100+.
 
 
 <!-- dead-pointer sweep 2026-10-23: unresolved artifacts from the gate report were replaced with the references/ directory. Basenames are preserved in the audit JSON. -->
+
+## 0. Env + stack baseline (2026-10-29)
+- `HF_HUB_ENABLE_HF_TRANSFER` is DEPRECATED in huggingface_hub >=1.x (hf_transfer removed). All 11
+  `/root/.secrets/*.env` files migrated to `HF_XET_HIGH_PERFORMANCE` on 2026-10-29 (sed rename,
+  values untouched). Processes started before that date still carry the old var in inherited env -
+  restart the process to clear the `FutureWarning`.
+- Verified stack (import-tested): huggingface_hub 2.3.0 | transformers 5.21.0 | datasets 5.1.0 |
+  tokenizers 0.23.3 | sentence-transformers 6.2.0 | accelerate 1.15.0 | safetensors 0.8.0 |
+  hf-xet 1.7.1 | gradio 6.31.0. KNOWN CONFLICT: surya-ocr 0.22.1 pins huggingface-hub<2 - broken
+  on this box until surya is upgraded or moved to its own venv (already broken on opencv/pillow
+  pins before this upgrade).
