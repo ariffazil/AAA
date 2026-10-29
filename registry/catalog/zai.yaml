@@ -21,4 +21,12 @@ usage:
   - qwen-code FI-003 session engine (GLM-5.3)
 provenance:
   sot_patch_refs: [2026-08-21_zai, 2026-10-30_catalog_projection]
-  falsifier: any live probe of api.z.ai coding endpoints returning non-200 on glm-5.3
+  falsifier:
+    probe_contract:
+      requested_model: 'model field must be glm-5.3 (or declared alias); unexpected = FAIL'
+      resolved_model: 'response model/system_fingerprint must match requested family (silent remap glm-5.2->5.3 = WARN, different family = FAIL)'
+      http_status: 'must be 200 on both /api/coding/paas/v4/chat/completions and /api/anthropic/v1/messages'
+      output_validity: 'response must contain non-empty choices[0].message.content (200 with empty content or finish_reason=length without content = FAIL)'
+    known_remaps:
+      - 'glm-5.2 -> glm-5.3 (verified 2026-08-15, benign; WARN not FAIL)'
+      - 'zai glm endpoints occasionally serve glm-5.3-flash when quota near — check system_fingerprint'

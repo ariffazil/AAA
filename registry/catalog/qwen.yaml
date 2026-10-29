@@ -116,10 +116,22 @@ requires_human_ack_for:
 - git_push
 - external_relay
 - vault_seal
-freshness:
+family_freshness:
   review_after: '2026-08-12'
   stale_action: degrade_to_observe_only
   last_verified: '2026-06-27'
+  note: 'FAMILY-level — covers legacy qwen-family route entries above; does NOT govern token_plan seats below'
+route_freshness:
+  token_plan:
+    last_verified: '2026-10-01'
+    review_after: '2026-11-01'
+    stale_action: probe_recheck
+    note: 'SEAT-level — 4 seats re-verified 200 on chat+anthropic 2026-10-01 (SOT patch); credit expiry 2026-11-01'
+  zai_coding_plan:
+    last_verified: '2026-10-30'
+    review_after: '2026-11-06'
+    stale_action: probe_recheck
+    note: 'Live mesh-proven 2026-10-30 (qwen+kimi both marker-PASS on glm-5.3)'
 notes: 'Migrated from qwen_soul.yaml + qwen_shadow.yaml. Original status: ACTIVE.
   Review and enrich.'
 
@@ -145,4 +157,9 @@ token_plan:
       note: HERMES lane seat
   provenance:
     sot_patch_refs: [_patch_2026_10_01_qwen_token_plan_reality]
-    falsifier: seat probe returning non-200 on canonical host chat+anthropic
+    falsifier:
+      probe_contract:
+        requested_model: 'model field in request body must match declared seat model'
+        resolved_model: 'response system_fingerprint or model field must match requested (no silent remap)'
+        http_status: 'must be 200 on both /compatible-mode/v1/chat/completions and /apps/anthropic/v1/messages'
+        output_validity: 'response must contain non-empty choices[0].message.content (200 with empty content = FAIL)'
