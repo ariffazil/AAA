@@ -7,6 +7,13 @@ autonomy_tier: T1
 
 # doctrine-to-runtime-compiler
 
+> **LOOP BINDING (APEX-ZEN alignment, 2026-10-29):** This compiler owns ONE phase-gate of the
+> ONE reality loop — **SEAL → DEPLOY** for LAW (F13-ratified prose → runtime constraint + SHA
+> receipt). Input contract: RATIFIED doctrine only — ratification is F13's; proposals arrive via
+> bijaksana wisdom/eureka or sovereign order, never self-granted. Output contract: gate module +
+> adversarial self-test + receipt; gate violations surface as receipts in bijaksana's SHADOW.
+> Never routes jobs; never compiles the queue.
+
 A class of work that recurs each time a new floor-class doctrine document is ratified: the prose must run, not just exist. This skill is the procedure. The reference holds the table shape and the receipt schema.
 
 ## When this skill is the right one

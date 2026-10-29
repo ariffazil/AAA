@@ -13,6 +13,13 @@ proven_pattern: pdf-federation (13 PDF skills → 1 door, live-probed 2026-10-02
 
 # aaa-capability-compiler — one router, many families
 
+> **LOOP BINDING (APEX-ZEN alignment, 2026-10-29):** This compiler owns ONE phase-gate of the
+> ONE reality loop — **PLAN → EXECUTE** (route collapse: job → ONE canonical door → executor →
+> receipt). Input contract: a job (often a row of the bijaksana-compiled `/root/work/tasks.json`).
+> Output contract: routed executor + PROOFS receipt that bijaksana's next compile re-derives
+> status from. Routes only — never implements (authority stays arifOS/F13); never compiles the
+> queue; never instantiates law (doctrine-to-runtime-compiler's gate).
+
 **The agent asks WHAT JOB, never "which of 14 strangely similar skill names should I open?"**
 
 ```
