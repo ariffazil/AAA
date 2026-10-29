@@ -13,6 +13,13 @@ ecology_state: WARM
 > **Scar-bound:** SCAR-002, SCAR-005, SCAR-KERNEL-LEGACY-VERDICT-LEAK-002, SCAR-AFORGE-SSE-HANDSHAKE-001
 
 > **PRIME LAW (F13-articulated 2026-10-22, Arif):** **STATUS IS NOT EVIDENCE** -- *Status bukan bukti.*
+
+> **LOOP BINDING (APEX-ZEN alignment, 2026-10-29):** This compiler owns ONE phase-gate of the
+> ONE reality loop — **IMPROVE → OBSERVE** (between-session metabolism). Input contract:
+> substrate residue + execution receipts (arifFlow / forge_vault / PROOFS). Output contract:
+> re-derived queue (`/root/work/tasks.json`, Rule 3n) + wisdom writeback. Lessons needing FORCE
+> are proposed to F13 for doctrine-to-runtime compilation — never self-applied. Never routes
+> jobs (aaa-capability-compiler's gate); never writes runtime gates (doctrine-to-runtime-compiler's gate).
 > A stored status field is a claim about the past, not a measurement of the present. Compile by
 > **re-deriving** each row from a live probe; never carry a status forward. See Rule 3n.
 
@@ -504,3 +511,349 @@ Three operational hazards observed in live sessions:
 1. **Task property type guard:** tasks.json entries may contain null/missing title or non-string values. Any audit or compiler script filtering by string matching must use str(t.get("title") or "") before indexing/lowercasing to avoid TypeError.
 2. **Validator execution CWD:** Organ validation scripts (such as AAA/scripts/validate-aaa.mjs) use relative file paths anchored to repo root (readFile("registries/agents.yaml")). Running them from /root causes ENOENT. Always execute inside the repo tree (cd /root/<repo> && node ...).
 3. **TCP streaming buffer exhaustion (Edge OS-1):** In raw TCP/HTTP bridge ingestors (such as arifFlow/src/main.rs), a single socket read() cannot be assumed to yield the entire payload. Ingestors MUST loop over Content-Length until the full body is buffered, or JSON-RPC payloads truncate under load.
+
+
+## Rule 3r — NEVER TRUST A NAME WITHOUT TRACING ITS BINDING *AND ITS BEARER* (NEW 2026-10-28)
+
+> **Provenance:** derived from ARIF's 2026-10-28 reading of the night's audit and applied on his
+> instruction ("ya buatlah sampai setel"). Every case below was probed live in the same session;
+> each names the file, the field, and the measured value. Staged source (kept for audit):
+> `/root/forge_work/patches/bijaksana-compile-rules-3rst-20261028/STAGED-SKILL-PATCH.md`.
+> Placed at file tail, after Rules 3p/3q, to match how 3p and 3q were added — not before
+> `## Workflow (canonical)` as the staging doc first proposed, because inserting mid-file would
+> put 3r between 3o and 3p and break monotonic rule order.
+
+A name is a claim that a binding exists. Audit the binding, then audit who pays when the name
+is wrong. Four probes, and the finding must name which one failed:
+
+```
+1. BINDING TO A VALUE    — does the name point at ONE measurable thing?
+                           (aggregate vs raw member, measurement_id vs scalar)
+2. BINDING TO A SET      — does the label resolve to ONE closed vocabulary?
+                           (status tokens, verdict tokens, actor spellings)
+3. BINDING TO A PATH     — does a live caller actually consume it?
+                           (object exists, schema slot exists, caller exists — all three)
+4. BINDING TO A BEARER   — is the party who absorbs the error named, authenticated,
+                           and able to refuse BEFORE the act?
+```
+
+If a name fails any probe, the correct sentence is *"this name is unbound at layer N"* — never
+*"this capability is missing"* and never *"this metric is X"*. A name that passes 1-3 but fails
+4 is the most dangerous shape: it looks fully engineered and charges the cost to someone who
+never agreed.
+
+### Tell 3r.1 — an aggregate that equals one member
+When a federation-wide number collapses, probe for ONE actor before believing a systemic
+failure. arifFlow `federation_fq_aggregate` (`src/governance/invariants.rs:611`) gates the
+aggregate to `min_i(FQ_i)` whenever any active actor drops below 0.50.
+
+Live case: `arifos:claude/opus-5.5` at 7 execute / 1 verify ⇒ q = 0.1428 = 1/7 ⇒
+whole-federation FQ printed 0.1428, constitutional floor **F1** failed, kernel `degraded` —
+while `raw_pool_quotient` in the same payload was **1.39–1.64** (it moves; the gated number
+does not).
+
+```
+TELL: aggregate == a simple 1/n for integer n  -> find the actor with n executes, 1 verify.
+TELL: aggregate << raw_pool_quotient          -> the min-gate fired; the gap IS the finding.
+TELL: decomposition.raw == value while a gate exists
+      -> the payload labels the GATED number as "raw". Worst case: normalization:"NONE".
+```
+
+That third tell is the real one. The operation is not hidden by omission — it is hidden by a
+label that contradicts it:
+`{"raw": 0.142857…, "normalization": "NONE_PASSTHROUGH_QUOTIENT"}` on a value that has been
+min-gated. A reader who trusts the field name concludes "no transform happened". The transform
+is the finding. **Provenance means naming the operation, not printing its output.**
+
+Rule: never report a min-gated aggregate as a health measurement without naming the gating
+actor; and an Unclassified / short-window actor must not be able to redden a constitutional
+floor — classify it or exclude it, never let a probe class vote.
+
+### Tell 3r.2 — a label with an open vocabulary
+`STATUS IS NOT EVIDENCE` (3n) tells you to re-probe rows. It does not help when the vocabulary
+is open-ended: 311 rows carrying **78 distinct status tokens** (99 `CARRIED_UNMEASURED`, 50
+`OPEN`, 27 `OPEN_MEASURED`, 22 `COMPLETED`, dozens of singletons such as
+`PARTIAL_KX004_RESOLVED_KX002_ACTIVE`) cannot be counted at all.
+
+```
+Before any open/closed count:  len({row["status"] for row in tasks})
+If tokens > ~12, the count is a guess. Report the token count as the headline finding.
+```
+
+**Count, don't narrate — the compiler is not exempt.** In the pass this rule came from, the
+task row describing the sprawl was *itself* created with a hand-typed "85 tokens" that no
+`len()` had produced; measured value 78. Every N in a task title or body must come from a
+`len()` in the same process, or carry `CARRIED (unmeasured)`. The catch only happened because
+3c already required `len()` — the gate caught the compiler, not the compiler's honesty.
+**Promote the gate, not the confession**: a finding that depends on an individual admitting
+error has survival ≈ 0; a finding enforced by a mechanical check survives a change of author.
+
+### Tell 3r.3 — a concept with vocabulary but no caller
+A control can be **half-built in several places and called from none**, which looks identical
+to not existing if you only grep the concept. Probe three layers separately:
+
+```
+1. vocabulary — does the word appear at all?     grep -rn <concept> --include=*.py
+2. object     — is there a typed slot/schema?    inspect the TOOL SCHEMA, not the docs
+3. caller     — does the LIVE path invoke it?    grep the EXECUTOR, not the author
+```
+
+Live case (refusal): vocabulary in 12 kernel files (`three_locks.py` defines
+`HOLD_TYPE_F13_REFUSAL`, `rights_registry.py` defines `RIGHT_TO_REFUSE_PROFILING`), an
+executable wrapper on disk with a 12/12 self-proof, and **zero callers at every layer** —
+including a judge whose input schema had no refusal field at all. Correct finding: *N partial
+implementations, no consumer* — strictly worse than nothing, because both look like safety.
+
+Corollary: **whoever builds the gate must not be whoever it gates.** If the agent that wants to
+act also wires and checks the gate, requester == issuer and the control is ceremony. Name the
+non-author executor hop explicitly, or do not claim the control is installed.
+
+### Tell 3r.4 — a bearer recorded but not standing
+The strongest failure is a name that carries a *bearer field* and no *bearer capability*.
+
+Live cases measured 2026-10-28:
+
+| Surface | Bearer field | Bearer capability | Verdict |
+|---|---|---|---|
+| `refusal_store.issue()` | `bearer_id` required, free text | `signature` **optional** | a NO attributed to a human is forgeable by anyone who can write the file |
+| VAULT999 `outcomes.jsonl` (3,220 rows) | **0 rows** name a payer (`affected_humans`/`bearer`/`consent` all absent) | none | 70 rows assert `harm_detected: true` with no field naming the harmed party |
+| `arif_judge` schema | no refusal, no bearer, no affected_humans input | none | the judge cannot be told who pays |
+| AAA attention page | `fq_source: "live:arifFlow:7073/vector.dimensions.fq"` | `GET /vector` → **HTTP 404** | the provenance pointer names a dead endpoint |
+
+```
+RULE: a bearer field is not standing.
+Standing requires: (i) an identity that can be authenticated,
+                   (ii) a scope that bounds what may be refused,
+                   (iii) a persistence guarantee across retry/restart/handoff,
+                   (iv) a caller path that consults it before the act.
+Missing any of the four ⇒ write "bearer recorded, standing ABSENT".
+```
+
+Corollary (the one that costs the most): **a provenance field is itself a claim and must be
+probed.** `fq_source` pointing at a 404 is the same defect class as `decomposition.raw` naming
+a gated value "raw". Both are true-looking strings that resolve to nothing.
+
+## Rule 3s — A COUNTER THAT DECREMENTS IS A WINDOW; A VERDICT THAT DOES NOT MOVE IS NOT MEASURING (NEW 2026-10-28)
+
+Four tells from one night's probes. Each is a label that survived contact with a changing value.
+
+### Tell 3s.1 — a count that moves DOWN is a window, not a total
+
+`verify_count` read **48** then **47** thirty seconds later while `execute_count` went 43 → 44.
+A cumulative total cannot decrement. The instant a "count" goes down you are reading a
+**rolling window**, and every ratio built on it has an unknown denominator.
+
+```
+TELL: n(t2) < n(t1) on a field named *_count  ->  windowed, not cumulative
+TELL: the payload exposes no window/scope      ->  the ratio is uninterpretable, say so
+```
+
+FI-002 first called this a *dead counter*. It was not — it was live and windowed. **A metric that
+moves is not thereby meaningful; movement proves the writer exists, not that the scope is known.**
+
+### Tell 3s.2 — discrimination test: change the input, watch the verdict
+
+```
+quotient 0.1667  ->  verdict OPTIMAL / BALANCED
+quotient 0.4667  ->  verdict OPTIMAL / BALANCED      (x2.8 in 30s, label unchanged)
+```
+
+A verdict that yields the same token across a 2.8× change in its own input is either not a
+function of that input, or its thresholds are too wide to discriminate. Either way the token
+carries no information and must not be quoted as a health measurement.
+
+```
+TEST before quoting any verdict token: sample it twice, move the input, re-read.
+Invariant token across a material input change -> "does not discriminate", not "stable".
+```
+
+### Tell 3s.3 — a provenance label that contradicts its own origin string
+
+```
+kernel.floor_measurement = "measured"
+kernel.failing[0]        = {floor:"F1", score:0.0,
+                            origin:"arifflow_probe:quotient=0.1667;floor=0.5;
+                                    constellation=SIMULATION@2026-10-27T20:39:59Z"}
+```
+
+The word *measured* sat beside an origin naming a **simulation**. This is Rule 3r.4's corollary
+(a provenance field is itself a claim) with a precise tell: **read the origin, not the class.**
+`SIMULATION` / `ESTIMATED` / `MOCK` inside an origin string demotes any `measurement:"measured"`,
+`provenance_class:"SERVER_OBSERVED"` or `state:"live"` on the same object.
+
+### Tell 3s.4 — write-reachability is not read-wiring
+
+Three carry-forward stores exist, three inodes (`80494`, `5274483`, `1595648`). FI-002 wrote a
+decision into `/root/memory/carry_forward.json` (87 KB, schema `recent_decisions`) and reported
+"every agent inherits". The **canonical** store is
+`/root/.local/share/arifos/carry_forward.json` (329 KB, schema `entries`) whose
+`recent_decisions = 0` and whose actor list contains no `claude-code-kvm8` row — the work was
+never there. Reader probe: `scripts/witness-heartbeat.sh` reads the canonical one only.
+
+```
+TEST before claiming inheritance: name the reader. grep for the PATH, not the concept.
+No caller found -> "written, unread" is the only true sentence.
+A file you can write to is not a file anyone opens.
+```
+trc-skill-align-20261028T135921Z
+## Rule 3t — INDEPENDENCE IS A FUNCTION OF STATE; A DISPATCH THAT DIES IS NOT A LESSON THAT DIES (NEW 2026-10-28)
+
+> Provenance: derived live in the GEOX Phase 1 session (333-AGI, branch ccdbb491, arif_judge trace trc-600aa066a6ff). Both findings probed the same turn.
+
+### Tell 3t.1 - Goedel separation holds at primary, collapses at cascade
+
+Role separation (builder/verifier/judge) audited by reading only primary models:
+333=forge-777, 555=glm-5.3-flash, 888=MiniMax-M3 - three families, conclusion "independent".
+The fallback rungs tell the opposite story:
+
+```
+333 chain: forge-777 -> deepseek-v4-pro -> MiniMax-M3   <- fb#2 == 888's P1
+888 chain: MiniMax-M3 (P1) -> glm-5.3-flash (P4) -> deepseek-flash (P8)
+555 chain: glm-5.3-flash (head)                          <- head == 888's P4
+```
+
+LAW: audit independence across FULL chains (primary + every fallback), never primaries alone.
+Independence that exists only when nothing is broken is not independence - degradation is exactly
+when you need the judge to be someone else. Falsifiable test (no new infra): submit the same
+verdict request through a role lane at nominal state and at cascade state; measure verdict
+convergence. Convergence under cascade = the separation is decorative.
+
+### Tell 3t.2 - a dispatch that fails to resolve is not permission to drop the lesson
+
+Mid-session, the harness rebuilt its agent/skill tables and dropped 555-ASI from the subagent
+map: every later dispatch died with "Agent not found" before executing. The AAA registry
+(/root/AAA/agents/555-ASI) was intact - the loss was harness-layer only.
+
+```
+RULE: when the author-role agent cannot be dispatched, the work does not wait for the registry.
+Complete the correction IN-SESSION, and put the provenance IN THE COMMIT MESSAGE: who authored
+the original, who made the correction, why the original author was unavailable, and who still
+holds the judge role. Author != approver must survive the outage, not be suspended by it.
+```
+
+Corollary: this compile itself was gated mid-session by a review-gate (f1-protected-command,
+fail-closed, three times, on protected-path probe strings). The gate's own instruction is the
+rule: report the block, do not retry, mark the unreadable store CANNOT_WITNESS - a blocked probe
+is a finding about the residue store, not an excuse to carry its status forward.
+
+### Where this rule bites today
+
+- The deploy of GEOX Phase 1 is HOLD because F1 failed - and the F1 provenance string carries
+  constellation=SIMULATION beside floor_measurement:"measured" (Tell 3s.3 applied upward:
+  the gate's own instrument demotes itself). Owner of that fix: kernel/F13, not the blocked organ.
+- The canonical carry_forward store under the arifos state dir was unreadable to this compiler
+  (gate-blocked); its residue is therefore CARRIED (unmeasured) throughout this manifest.
+
+### Invariants locked (external review 2026-10-28, Copilot HOLD report)
+
+I2  Global P0 outranks harness-local phase ordering.
+I3  A simulated metric cannot silently exercise production authority.
+I5  Verification independence includes model-route independence.
+I6  Compilation validity ends when its source state changes.
+I7  The lane holding a lock must be included in any plan to release it.
+
+
+<!-- AAA-SKILL-PATCH-3U 2026-10-28 provenance=333-AGI trace=trc-skill-align-20261028T135921Z -->
+
+
+## Rule 3u — A MUTATION CYCLE THAT SAYS NO_EFFECT AFTER A SCRIPT THAT PRINTED SUCCESS HAS REVERTED YOUR WRITE (NEW 2026-10-28)
+
+Live case (same session as 3t): a multi-file patch ran inside a canon cycle. The script
+printed "PATCHED: <file> <bytes>" for all four targets; the cycle exited rc=0 with
+`effect=NO_EFFECT` — and a post-cycle grep found the marker in ZERO files. The cycle
+rolled the tree back when its expectation could not be classified. The single-file
+variant of the same patch (`canon-mutate file`, no expectation flags) persisted with
+`effect=CHANGED pre=10103 post=10850`.
+
+```
+LAW: verify the ARTIFACT after every gated mutation — grep the marker in the file,
+count the bytes — never trust the mutation script's own stdout. A gate that restores
+state on an unmet expectation reports rc=0, not an error; rc=0 + NO_EFFECT = reverted.
+Corollary: prefer many single-file cycles with measured effect=CHANGED over one
+multi-file tree cycle whose expectation you cannot state precisely.
+```
+
+<!-- AAA-SKILL-PATCH 3V 2026-10-28 provenance=333-AGI trace=trc-skill-align-20261028T135921Z -->
+
+## Rule 3v — A CLASSIFICATION THAT TURNS A FLOOR GREEN IS A GOVERNANCE ACT, NOT A FIXTURE TAG (NEW 2026-10-28)
+
+Live case: cockpit showed 20 machine-held actors + kernel FAIL (F1). The proposed fix listed
+12 actors for the synthetic class - including kimi-code/fi-008 (an F13-ratified human_agent
+in entity_classes.yaml), wealth-mcp (a live organ), claude/opus-5.5 (a real model lane), and
+work by a named human. Relabeling those would turn F1 green while their verify deficit
+stayed real: gauge edited, meter untouched.
+
+LAW: synthetic is for no-reality artifacts (probes, test rows, self-check receipts) with
+per-entry fixture evidence - the config file itself models this with dated session-cited
+entries. A real agent, organ, human, or the sovereign is NEVER synthetic. If a real actor's
+missing verification reddens a floor, the fix is receipts or a ratified verify-native role
+exemption (invariants.rs option C, F13 2026-10-26) - never a relabel. And before writing
+ANY class entry, diff the classifier KEY against the keys actually recorded: on 2026-10-28
+the human_agent list declared kimi-code/FI-008 while the live key was arifos:kimi-code/fi-008
+- a correct declaration made INERT by a prefix/case mismatch.
+
+<!-- AAA-SKILL-PATCH 3W 2026-10-28 provenance=333-AGI trace=trc-skill-align-20261028T135921Z-3w -->
+
+
+## Rule 3w — A MARKER-PRESENCE CHECK PASSES ON A CORRUPTED ARTIFACT; VERIFY LINE COUNT AND BYTE DELTA (NEW 2026-10-28)
+
+Live case (my own defect, found by reading the served file instead of trusting the check): a patch
+template was built as `MARK.replace("TRCID", trace)` and the staging step did
+`script.replace("TRCID", "")` first - turning it into `MARK.replace("", trace)`. Python's
+`str.replace` with an EMPTY old string inserts the replacement BETWEEN EVERY CHARACTER: the marker
+exploded into a ~1,000-char garbage line, its literal no longer matched, the "already patched?"
+check passed, and the rule was appended TWICE. The verification I ran (`grep` for the marker)
+reported 23/23 OK on a corrupted artifact.
+
+```
+LAW: a presence check is not an integrity check. After any patch, compare
+      line count AND byte delta against the pre-image (you have it - the cycle printed pre/post),
+      and assert the count of the new section HEADER (exactly 1), not just the presence of a marker.
+Corollary: never build a patch template by replacing a token OUT of a template that later
+replaces that token IN - and never trust str.replace with an empty old string; it is an insertion
+machine, not a deletion tool.
+```
+
+## Rule 3x — A GOVERNED COMMIT WRAPPER THAT COMMITS NOTHING STILL REPORTS SUCCESS; A WINDOW SHIFT INVALIDATES THE COMPARISON (NEW 2026-10-28)
+
+Two traps from one session, both in the compile path itself.
+
+**3x.1 — the wrapper, not the git.** `git-lane <lane> commit` returned a plausible tail
+(`no changes added to commit (use "git add" ...)`) and exit 0, while the change stayed UNCOMMITTED.
+The push that followed then moved the remote to a DIFFERENT commit (a sibling's), so it LOOKED like a
+successful publish. The defect survived until the tree was re-checked afterwards.
+
+    TELL: the commit output mentions "no changes added" / "use git add"  -> NOTHING WAS COMMITTED.
+          A commit path that does not stage is a wrapper, not a commit.
+    LAW:  after every governed commit, re-derive the truth: git status --porcelain (must be empty for
+          the files you touched) AND git rev-parse HEAD (must equal the sha you intended to publish).
+          Never treat the wrapper's exit code as the commit's success.
+
+**3x.2 — the window moved, so the numbers are not the same numbers.** The baseline read
+`volume_basis 298`; the post-measurement read `volume_basis 160`. A "123 of 298 -> 23 of 160"
+comparison is window-confounded and would have been reported as a 96% fall.
+
+    LAW:  a consequence comparison requires the SAME measurement window/population on both sides.
+          If the basis moved, report the structural measure (which actors changed class) and label
+          the volume comparison CONFOUNDED. A number from a different window is not a smaller number.
+
+
+## Rule 3y — A KEY NAMED `verdict` IS A VERDICT BY NAME; RENAME THE AXIS, NEVER THE VALUE (NEW 2026-10-28)
+
+Live case (333-AGI, 2026-10-28): `TelemetryMetrics` published ALIVE/PAUSED/DEGRADED — lifecycle tokens —
+under a key named `verdict` (`model.py:462`). The verdict walker validates every verdict-bearing key
+against CANONICAL_VERDICTS, so EVERY `arif_memory`/`arif_judge` response tripped
+`UNKNOWN_VERDICT_TOKEN → INCONSISTENT_STATE → HOLD`. The kernel had already fixed the identical class on
+the metabolic axis (`fq_gate.py` renamed `verdict` → `fq_outcome`) and was missing it on telemetry.
+
+```
+LAW: before diagnosing a HOLD as substantive, DECODE hold_reason. If it names
+UNKNOWN_VERDICT_TOKEN:<path>=<token>, the defect is the KEY NAME at <path> — not the value,
+not the floor. Fix the key: rename the axis (lifecycle / fq_outcome), keep the values,
+then re-probe: hold_reason must move to a substantive code (NEEDS_REVIEW etc.).
+Check the OTHER axes before assuming one instance is the whole class.
+```
+
+Evidence: arifOS commits fa1f2e694 + 7599f1c42, deploy epoch 25 PASS, live probe
+`telemetry={"lifecycle":"ALIVE"}` with no `verdict` key inside it; receipt
+`/root/forge_work/receipts/RECEIPT-arifos-verdict-token-leak-2026-10-28.md`.
