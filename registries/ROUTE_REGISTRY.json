@@ -119,7 +119,7 @@
     "claw.arif-fazil.com": {"target": "Hermes/OpenClaw (:18789)"},
     "openclaw.arif-fazil.com": {"target": "Hermes/OpenClaw (:18789)"},
     "syedos.arif-fazil.com": {"target": "SyedOS static site"},
-    "wiki.arif-fazil.com": {"redirect": "arifos.arif-fazil.com/wiki", "note": "Legacy — canonical wiki path is on arifos subdomain"},
+    "wiki.arif-fazil.com": {"target": "arifOS knowledge base — MkDocs; source /root/AAA/wiki; producer /root/scripts/wiki-build.sh", "note": "Canonical wiki surface — arif-fazil.com/wiki/* and arifos.arif-fazil.com/wiki/* redirect here (2026-08-10 flip)"},
     "a-forge.arif-fazil.com": {"redirect": "forge.arif-fazil.com", "note": "Legacy alias"},
     "vault999.arif-fazil.com": {"response": "403 — VAULT999 is internal only. Use /999 for public verification."},
     "arifosmcp.arif-fazil.com": {"redirect": "mcp.arif-fazil.com", "note": "Legacy MCP domain"},
