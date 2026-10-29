@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/alias@1",
+  "title": "Alias — machine-testable resolution contract (silent remaps become states, not notes)",
+  "type": "object",
+  "required": ["schema_version", "alias_id", "route_ref", "requested_model", "expected_resolution", "resolution_policy", "known_remaps", "mismatch_verdict", "evidence_refs", "evidence_status", "last_reviewed_at", "falsifier"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "alias_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._/@-]*$"},
+    "route_ref": {"type": ["string", "null"], "description": "null only for aliases with no normalized route (unresolvable today — DEBT-anchored)"},
+    "requested_model": {"type": "string", "minLength": 1},
+    "expected_resolution": {"type": ["string", "null"], "description": "null = resolution UNKNOWN / floating"},
+    "resolution_policy": {"enum": ["known_remap", "known_compat", "floating", "UNKNOWN"]},
+    "known_remaps": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "witnessed_at": {"type": ["string", "null"]},
+          "severity_on_match": {"enum": ["WARN", "PASS"]},
+          "receipt_ref": {"type": ["string", "null"]}
+        },
+        "required": ["from", "to", "witnessed_at", "severity_on_match", "receipt_ref"]
+      }
+    },
+    "mismatch_verdict": {"enum": ["WARN", "HOLD", "FAIL"]},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_status": {"enum": ["verified", "witnessed", "unverified", "external_claim", "UNKNOWN"]},
+    "last_reviewed_at": {"type": "string", "format": "date"},
+    "falsifier": {"type": "string", "minLength": 8}
+  }
+}

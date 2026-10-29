@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/evaluation@1",
+  "title": "Evaluation — performance bound to scope, route, dataset revision. No universal 'good at X' facts",
+  "type": "object",
+  "required": ["schema_version", "evaluation_id", "release_ref", "route_ref", "task_scope", "language_scope", "tool_state", "kernel_state", "dataset_bindings", "prompt_set_revision", "sampling_configuration", "observed_results", "verdict", "evaluated_at"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "evaluation_id": {"type": "string", "pattern": "^eval-[a-z0-9-]+$"},
+    "release_ref": {"type": "string"},
+    "route_ref": {"type": "string"},
+    "task_scope": {"type": "object", "properties": {"task": {"type": "string"}}},
+    "language_scope": {"type": "object"},
+    "tool_state": {"type": "object"},
+    "kernel_state": {"type": "object"},
+    "dataset_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "properties": {
+          "dataset": {"type": "string", "pattern": "^hf://datasets/ariffazil/(AAA|BBB|CCC|DDD|EEE|FFF)$"},
+          "revision": {"type": "string", "not": {"enum": ["main", "master", "latest", "HEAD"]}, "description": "immutable HF commit — floating refs are not audit evidence"}
+        },
+        "required": ["dataset", "revision"]
+      }
+    },
+    "prompt_set_revision": {"type": ["string", "null"]},
+    "sampling_configuration": {"type": "object"},
+    "observed_results": {"type": "object"},
+    "verdict": {"enum": ["PASS", "PARTIAL", "FAIL", "INCONCLUSIVE"]},
+    "evaluated_at": {"type": "string"},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}}
+  }
+}

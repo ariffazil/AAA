@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/incident@1",
+  "title": "Incident — durable drift/scar history. Never deleted merely because current behavior is healthy",
+  "type": "object",
+  "required": ["schema_version", "incident_id", "incident_type", "route_ref", "requested_model", "resolved_model", "first_observed_at", "latest_observed_at", "evidence_refs", "status", "corrective_action"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {"const": 1},
+    "incident_id": {"type": "string", "pattern": "^INC-[0-9]{3}-[a-z0-9.-]+$"},
+    "incident_type": {"enum": ["silent_model_upgrade", "silent_remap_witnessed", "compat_retirement_remap", "model_id_retirement", "availability_state_flip", "identity_mismatch", "other_drift"]},
+    "route_ref": {"type": ["string", "null"]},
+    "requested_model": {"type": ["string", "null"]},
+    "resolved_model": {"type": ["string", "null"]},
+    "first_observed_at": {"type": "string"},
+    "latest_observed_at": {"type": "string"},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_status": {"enum": ["verified", "witnessed", "unverified", "external_claim"]},
+    "status": {"enum": ["open", "classified", "resolved", "monitoring", "UNVERIFIED"]},
+    "corrective_action": {"type": "string", "minLength": 8},
+    "falsifier": {"type": ["string", "null"]}
+  }
+}

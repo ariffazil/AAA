@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "aaa/registry/release@1",
+  "title": "Model release — one model or snapshot; release_date / snapshot_date / knowledge_cutoff stay separate",
+  "type": "object",
+  "required": ["schema_version", "release_id", "family_ref", "developer_refs", "publisher_refs", "release_date", "knowledge_cutoff", "distribution", "license", "artifact_identity", "capabilities", "lifecycle", "evidence_status", "last_reviewed_at", "falsifier"],
+  "additionalProperties": true,
+  "definitions": {
+    "dated_claim": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "value": {"type": ["string", "null"], "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "evidence_status": {"enum": ["verified", "witnessed", "unverified", "UNKNOWN"]},
+        "source": {"type": ["string", "null"]}
+      },
+      "required": ["value", "evidence_status"]
+    }
+  },
+  "properties": {
+    "schema_version": {"const": 1},
+    "release_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "family_ref": {"type": "string"},
+    "developer_refs": {"type": "array", "items": {"type": "string"}, "description": "empty array = developer UNKNOWN (refused attribution)"},
+    "publisher_refs": {"type": "array", "items": {"type": "string"}},
+    "release_date": {"$ref": "#/definitions/dated_claim"},
+    "snapshot_date": {"$ref": "#/definitions/dated_claim"},
+    "knowledge_cutoff": {"$ref": "#/definitions/dated_claim"},
+    "distribution": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "api": {"enum": [true, false, "UNKNOWN"]},
+        "weights": {"enum": [true, false, "UNKNOWN"]}
+      },
+      "required": ["api", "weights"]
+    },
+    "license": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "weights_license": {"type": ["string", "null"]},
+        "api_terms_revision": {"type": ["string", "null"]},
+        "commercial_use": {"enum": ["allowed", "forbidden", "conditional", "UNKNOWN"]},
+        "redistribution": {"enum": ["allowed", "forbidden", "conditional", "UNKNOWN"]}
+      }
+    },
+    "artifact_identity": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "weights_hash": {"type": ["string", "null"]},
+        "tokenizer_hash": {"type": ["string", "null"]},
+        "config_hash": {"type": ["string", "null"]}
+      },
+      "required": ["weights_hash", "tokenizer_hash", "config_hash"]
+    },
+    "capabilities": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "advertised": {"type": "array", "items": {"type": "string"}},
+        "observed": {"type": "array", "items": {"type": "string"}},
+        "verified": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["advertised", "observed", "verified"]
+    },
+    "lifecycle": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "status": {"enum": ["active", "retired_compat", "deprecated", "withdrawn", "observed", "UNKNOWN"]},
+        "introduced_at": {"$ref": "#/definitions/dated_claim"},
+        "deprecated_at": {"$ref": "#/definitions/dated_claim"},
+        "withdrawal_at": {"$ref": "#/definitions/dated_claim"},
+        "replacement": {"type": ["string", "null"]}
+      },
+      "required": ["status"]
+    },
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "evidence_status": {"enum": ["verified", "witnessed", "unverified", "external_claim", "UNKNOWN"]},
+    "last_reviewed_at": {"type": "string", "format": "date"},
+    "falsifier": {"type": "string", "minLength": 8}
+  }
+}
