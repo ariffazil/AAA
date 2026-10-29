@@ -231,7 +231,7 @@ GEOX / WEALTH / WELL produce domain evidence. FRAME independently witnesses. VAU
 
 | Check | Result |
 |---|---|
-| AAA service `:3001` | **UP, DEGRADED** — `deployment_drift: true` (deployed `c0d1469` ≠ source `e5bec19`) |
+| AAA service `:3001` | **UP, DEGRADED** — `deployment_drift: true` (deployed `a549881` ≠ source `8be58a5`) (OBS 2026-10-30) |
 | Agent Card | reachable — `agent/getCard` answers |
 | A2A `agent/listSkills` | pass — **8 published skills** (measured) |
 | `getAuthenticatedExtendedCard` | **not served** on the live gateway |
