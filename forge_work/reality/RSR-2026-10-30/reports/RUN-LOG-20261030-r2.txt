@@ -1,0 +1,16 @@
+test_f08_fed_scope_time_reconciliation (__main__.Fixtures.test_f08_fed_scope_time_reconciliation) ... ok
+test_f1_kernel_hold_dominates_tool_ok (__main__.Fixtures.test_f1_kernel_hold_dominates_tool_ok) ... ok
+test_f2_three_summaries_one_lineage (__main__.Fixtures.test_f2_three_summaries_one_lineage) ... ok
+test_f3_supersession_discards_review_basis (__main__.Fixtures.test_f3_supersession_discards_review_basis) ... ok
+test_f4_future_timestamp_quarantined (__main__.Fixtures.test_f4_future_timestamp_quarantined) ... ok
+test_f5_unobservable_forecast_rejected (__main__.Fixtures.test_f5_unobservable_forecast_rejected) ... ok
+test_f6_changed_action_needs_reapproval (__main__.Fixtures.test_f6_changed_action_needs_reapproval) ... ok
+test_f7_side_door_flagged (__main__.Fixtures.test_f7_side_door_flagged) ... ok
+test_replay_fed_contested_fixture (__main__.Replays.test_replay_fed_contested_fixture) ... ok
+test_replay_kernel_void_receipt (__main__.Replays.test_replay_kernel_void_receipt) ... ok
+test_replay_well_honest_envelope (__main__.Replays.test_replay_well_honest_envelope) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK
