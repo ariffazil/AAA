@@ -170,6 +170,21 @@ def derived_generated_at() -> str:
     return datetime.fromtimestamp(ts, timezone.utc).isoformat()
 
 
+def _load_card_builder():
+    """Load governance_cards.py from THIS registry dir (copy-safe, optional)."""
+    import importlib.util as _ilu
+    gc_path = REGISTRY / "governance_cards.py"
+    if not gc_path.exists():
+        return None
+    try:
+        spec = _ilu.spec_from_file_location("governance_cards_local", gc_path)
+        mod = _ilu.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+    except Exception:  # noqa: BLE001 — cards are additive, never break the compile
+        return None
+
+
 def source_commit() -> str:
     try:
         return subprocess.run(
@@ -764,7 +779,19 @@ def compile_registry() -> int:
     state_json = dumps(model_state)
     (COMPILED_DIR / "model-state.json").write_text(state_json, encoding="utf-8")
 
+    gc = _load_card_builder()
+    card_count = 0
+    if gc is not None:
+        cards_meta = dict(meta)
+        cards_meta["source_manifest_hash"] = content_hash((GENERATED_DIR / "catalog.json").read_text(encoding="utf-8"))
+        cards_dir = GENERATED_DIR / "model-governance-cards"
+        cards_dir.mkdir(parents=True, exist_ok=True)
+        for lane, card in sorted(gc.build_cards(entities, cards_meta).items()):
+            (cards_dir / f"{lane}.json").write_text(dumps(card), encoding="utf-8")
+            card_count += 1
+
     gen_hashes = {p.name: content_hash(p.read_text(encoding="utf-8")) for p in sorted(GENERATED_DIR.glob("*.json"))}
+    gen_hashes.update({f"model-governance-cards/{p.name}": content_hash(p.read_text(encoding="utf-8")) for p in sorted((GENERATED_DIR / "model-governance-cards").glob("*.json"))})
     manifest = {
         "compiled_at": generated_at,
         "compiler": "aaa-registry compile",
@@ -782,7 +809,7 @@ def compile_registry() -> int:
         },
     }
     (COMPILED_DIR / "manifest.json").write_text(dumps(manifest), encoding="utf-8")
-    print(f"\nGenerated {len(gen_hashes)} projections + 4 legacy views")
+    print(f"\nGenerated {len(gen_hashes)} projections (+{card_count} governance cards) + 4 legacy views")
     print(f"Registry digest: {content_hash(manifest)[:16]}…")
 
     if errors:
