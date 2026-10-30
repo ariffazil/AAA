@@ -1,6 +1,6 @@
 # Runtime Wiring — Model Governance Card
 
-ARIFOS::AAA_MODEL_GOVERNANCE_RUNTIME_WIRING::2026-10-30::v1 — F13-sealed, executed 2026-10-30/31 night.
+ARIFOS::AAA_MODEL_GOVERNANCE_RUNTIME_WIRING::2026-10-30::v1 — F13-sealed. Executed 2026-10-30T08:00+08:00 → 2026-10-31T10:05+08:00 (envelope closeout).
 
 ## What is live
 
@@ -14,10 +14,13 @@ ARIFOS::AAA_MODEL_GOVERNANCE_RUNTIME_WIRING::2026-10-30::v1 — F13-sealed, exec
    UNAVAILABLE/UNKNOWN with zeroed ceiling). Surface count 32→33, locked test synced
    (completing the tree777 sync owed by 91a1281fd).
 3. **arif_init binding (arifOS)** — `SessionManifest.model_governance` field; card
-   attached at all arif_init `_sm` returns + post-strip projection; proven in-process
-   (lane 333, matched, authorize=false). **Open item:** one HTTP envelope wrapper
-   (trace_tool/minimal projection layer) still drops the field on the wire — resource
-   read is the interim consumption path.
+   attached at all arif_init `_sm` returns + post-strip projection. **CLOSED
+   2026-10-31T10:0x+08:00 (arifOS@84efcec47):** the last-mile wrapper was
+   `trim_for_verbosity` minimal mode (verbosity.py `_SEMANTIC_PRESERVED_FIELDS`);
+   the card now joins the preserved set. Wire canary proof: actor QWEN → card
+   PRESENT on the HTTP envelope, `card_hash` byte-identical to the compiled
+   projection (a39b54df8639…); unmapped actor → explicit UNKNOWN card with zeroed
+   ceiling, never silent omission.
 
 ## Laws carried into runtime
 
