@@ -1,0 +1,13 @@
+PASS  F1 hold-dominates  — mismatch surfaced in projection
+PASS  F2 lineage-dedup
+PASS  F3 dependency-scoped-invalidation
+PASS  F4 future-quarantine
+PASS  F5 quarantine-no-fabrication
+PASS  F6 crash-recovery  — replayed ingest deduped against persisted ledger
+PASS  F6b corrupt-tail-quarantined  — clean record preserved, corrupt line surfaced in quarantine
+PASS  F7 verification-stays-pending
+PASS  A2 update-new-version-original-kept
+PASS  A9 mode-field
+PASS  A10 projection-no-authority
+
+11/11 passed. Failures: none
