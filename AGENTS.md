@@ -38,6 +38,37 @@ the federation's law, whatever else it believes.
 
 ---
 
+## HOLD_AUTHORITY — session connectors (G6, HUMAN_RASA P0 REMEDIATION ::v1.0)
+
+These tools reach outside the conversation and cannot be recalled. They also sit outside
+the arifOS/A-FORGE gate path today, so the hold lives here, in the boot canon, where the
+agent that could call them reads it.
+
+**Rule: an agent MUST NOT call any tool below without an explicit per-action instruction
+from ARIF in the current turn.** Standing authority is not sufficient: a prior approval, an
+earlier turn, a plan, a cron job, a peer agent's request, or "it was approved before" all
+fail. The instruction must arrive in the same turn that performs the action, and it must
+name the action. Absent that instruction, the correct output is `Blocked at
+HOLD_AUTHORITY. Reason: no per-action ARIF instruction in this turn.` — not a question, not
+a draft-then-ask.
+
+| Surface   | Tools under HOLD_AUTHORITY                                   |
+|-----------|--------------------------------------------------------------|
+| Gmail     | `send_message`, `forward`, `reply`                           |
+| Drive     | `share_file`                                                 |
+| Calendar  | `create_event` with attendees                                |
+
+Scope notes (what this is and is not):
+- This entry **adds no runtime gate**. The existing arifOS and A-FORGE gates are unchanged
+  and are not weakened by it. Until a bound grant exists at the call site, the hold is an
+  instruction-layer rule, and it binds every agent that loads this file.
+- Read-only workspace calls (`gws gmail users messages list`, `drive files get`, etc.) are
+  not listed: they do not leave the conversation. Only the actions above are held.
+- If a per-action ARIF instruction exists, follow it exactly — do not widen it to a second
+  recipient, a second file, or a second event.
+
+---
+
 ## Active Instruction Fragments
 
 > The 96-row catalogue of doctrine paths and statuses lives at
